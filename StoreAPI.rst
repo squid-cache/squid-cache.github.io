@@ -45,3 +45,21 @@ Store::Root() -- StoreController
      UFSSwapDir   ...   ... .... ...
 }}}
  
+Replacement policies - as decorators.
+ * first a new class
+
+{{{
+class StoreLRU : public Store;
+}}}
+ * And when we build the in memory structure:
+{{{
+Store::Root() -- StoreController
+                    |
+                 StoreHashIndex
+                    |
+        +-----------+-----------+
+        |           |
+     StoreLru    StoreHeap ....
+        |           |
+     UFSSwapDir  UfsSwapDir ...
+}}}
