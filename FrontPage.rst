@@ -45,3 +45,4 @@ You can find information about what a Wiki is and how to use it at AboutWiki.
  * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla] database
  * Squijj [http://www.mnot.net/squij/] refresh_pattern analysis
  * Calamaris [http://freshmeat.net/projects/calamaris/] log file analysis
+ * Visolve's Squid 3.0 [http://squid.visolve.com/squid/configuration_manual_30.htm configuration manual]
