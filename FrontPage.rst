@@ -37,8 +37,9 @@ A transcript of a recent IRC chat about using ClientStreams to request pages int
 
 You can find information about what a Wiki is and how to use it at AboutWiki.
 = Other Squid-related resources =
-
+  
  * The main [http://www.squid-cache.org/ Squid site]
  * The current version of the [http://www.squid-cache.org/Doc/FAQ/FAQ.html Squid FAQ]
  * The [http://devel.squid-cache.org Squid development site]
  * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla] database
+ * Squijj [http://www.mnot.net/squij/] refresh_pattern analysis
