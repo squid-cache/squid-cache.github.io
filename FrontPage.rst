@@ -1,6 +1,8 @@
 #language en
 #pragma section-numbers off
 
+[[TableOfContents]]
+
 = Squid Proxy Web Cache Wiki =
 
 This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. Eventually it will host the Squid FAQ and assorted documentation.
@@ -14,9 +16,13 @@ header_access Accept-Encoding deny ie6 hotmail_domains}}}
 
 (para-quoted from http://www.swelltech.com/news.html for the concise summary)
 
-= Squid Sprint =
+= Developers corner =
+== Squid Sprint ==
 Recently an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
  * ["StoreAPI"]
+
+== ClientStreams ==
+A transcript of a recent IRC chat about using ClientStreams to request pages internally to squid.
 
 = Interesting starting points =
  * RecentChanges: see where people are currently working 
