@@ -21,3 +21,27 @@ public:
     RefCount<StoreSearch> search (String const url, HttpRequest * request) = 0;
 };
 }}}
+
+Current class hierarchy.
+
+{{{
+Store ----- StoreController
+       +--- StoreHashIndex
+       +--- SwapDir
+       +--- UFSSwapDir
+       +--- CossSwapDir
+       +--- NullSwapDir
+}}}
+
+The current squid 2.5 capabilities are not yet changed. They are implemented by constructing the following memory structure of class instances
+
+{{{
+Store::Root() -- StoreController
+                    |
+                 StoreHashIndex
+                    |
+        +-----------+----+------+
+        |
+     UFSSwapDir   ...   ... .... ...
+}}}
+ 
