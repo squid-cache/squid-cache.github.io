@@ -16,6 +16,9 @@ header_access Accept-Encoding deny ie6 hotmail_domains}}}
 
 (para-quoted from http://www.swelltech.com/news.html for the concise summary)
 
+= General Questions =
+ * ["NTLMIssues"]: Things you can (and cannot) do with NTLM
+
 = Developers corner =
 == Squid Sprint ==
 Recently an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
