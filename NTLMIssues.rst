@@ -1,4 +1,8 @@
-== Single Sign-on with databases other than LDAP ==
+#language en
+
+[[TableOfContents]]
+
+== Single Sign-on with databases other than Microsoft's user databases ==
 
 In < OFFFA0E624.849C9A55-ON43256F7E.00374070-43256F7E.003972B7@zahid.com > an user asked:
 
