@@ -43,3 +43,4 @@ You can find information about what a Wiki is and how to use it at AboutWiki.
  * The [http://devel.squid-cache.org Squid development site]
  * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla] database
  * Squijj [http://www.mnot.net/squij/] refresh_pattern analysis
+ * Calamaris [http://freshmeat.net/projects/calamaris/] log file analysis
