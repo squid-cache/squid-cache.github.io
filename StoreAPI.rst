@@ -44,8 +44,9 @@ Store::Root() -- StoreController
         |
      UFSSwapDir   ...   ... .... ...
 }}}
- 
-Replacement policies - as decorators.
+
+= Replacement policies = 
+== as decorators ==
  * first a new class
 
 {{{
@@ -60,6 +61,19 @@ Store::Root() -- StoreController
         +-----------+-----------+
         |           |
      StoreLru    StoreHeap ....
+        |           |
+     UFSSwapDir  UfsSwapDir ...
+}}}
+
+alternatively
+{{{
+Store::Root() -- StoreController
+                    |
+                 StoreLru
+                    |
+                 StoreHashIndex
+                    |
+        +-----------+-----------+
         |           |
      UFSSwapDir  UfsSwapDir ...
 }}}
