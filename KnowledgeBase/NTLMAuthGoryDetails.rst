@@ -2,7 +2,7 @@
 
 = Client-Squid NTLM authentication protocol description =
 
-This document details the mechanics of the NTLM authentication scheme as applied to Web proxies. Client-side, it is supported by Microsoft's Internet Explorer and by Mozilla Firefox (now on all platforms). Server-side it is supported by Microsoft Proxy / ISA Server (of course), Squid version 2.5 (only NTLMv1 up to Squid 2.5STABLE5), an Apache 1.3 module [http://download.samba.org/ftp/unpacked/lorikeet/trunk/mod_ntlm_winbind/ mod_ntlm_winbind] implementation is available from [http://download.samba.org/ftp/unpacked/lorikeet/trunk/ Samba's lorkikeet repository].
+This document details the mechanics of the NTLM authentication scheme as applied to Web proxies. Client-side, it is supported by Microsoft's Internet Explorer and by Mozilla Firefox (now on all platforms). Server-side it is supported by Microsoft Proxy / ISA Server (of course), Squid version 2.5 (only NTLMv1 up to Squid 2.5STABLE5), an Apache 1.3 module [http://download.samba.org/ftp/unpacked/lorikeet/trunk/mod_ntlm_winbind/ mod_ntlm_winbind] is available from [http://download.samba.org/ftp/unpacked/lorikeet/trunk/ Samba's lorkikeet repository].
 
 == The mechanics of NTLM authentication ==
  1.  The client connects and issues a request without any authentication info. This happens for ALL new connections, unlike what happens with most Basic authentication implementations which will supply authentication information automatically for all connections after a successful authentication is performed.
