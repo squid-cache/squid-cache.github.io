@@ -18,9 +18,9 @@ header_access Accept-Encoding deny ie6 hotmail_domains}}}
 Recently an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
  * ["StoreAPI"]
 
-Interesting starting points:
+= Interesting starting points =
  * RecentChanges: see where people are currently working 
- * FindPage: search or browse the database in various ways
+ * FindPage: search or browse the pages hosted in this wiki in various ways
  * SiteNavigation: get an overview over this site and what it contains
  * SyntaxReference: quick access to wiki syntax
  * WikiSandBox: feel free to change this page and experiment with editing
