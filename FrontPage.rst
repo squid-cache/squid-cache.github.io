@@ -19,6 +19,7 @@ header_access Accept-Encoding deny ie6 hotmail_domains}}}
 = General Questions =
  * ["NTLMIssues"]: Things you can (and cannot) do with NTLM
  * ZeroSizedReply: Recurrent issues with some setups.
+ * MultipleInstances: how-to run multiple squid servers on a single box.
 
 = Developers corner =
 == Squid Sprint ==
