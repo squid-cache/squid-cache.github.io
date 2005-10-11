@@ -26,6 +26,7 @@ header_access Accept-Encoding deny ie6 hotmail_domains}}}
 == Squid Sprint ==
 Recently an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
  * ["StoreAPI"]
+ * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
 
 == ClientStreams ==
 A transcript of a recent IRC chat about using ClientStreams to request pages internally to squid.
