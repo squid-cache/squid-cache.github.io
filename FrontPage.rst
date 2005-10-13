@@ -21,6 +21,7 @@ header_access Accept-Encoding deny ie6 hotmail_domains}}}
  * ZeroSizedReply: Recurrent issues with some setups.
  * MultipleInstances: how-to run multiple squid servers on a single box.
  * PerformanceAnalisys: "Help! My users complain that the proxy is slow!"
+ * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
 
 = Developers corner =
 == Squid Sprint ==
