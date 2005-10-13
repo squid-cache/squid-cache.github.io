@@ -28,6 +28,8 @@ What matters the most to obtain the most out of any setup is to properly tune a 
    of course the disk type matters: SCSI performs better than ATA, 15kRPM is better than 5.4kRPM, etc.
  * noatime mount option
    atime is just useless for cache data - squid does its own timestamping, mounting the filesystem with the noatime option just saves a whole lot of writes to the disks
+ * amount of space used
+   always leave about 20% of free space on the filesystems containing your cache_dirs: generally FS performance degrades dramatically if used space exceeds 80%
  * on OSes which offer multiple choices, type of filesystem (except for a few really bad choices)
 
 On systems with syncronous directory updates (Solaris, some BSD versions)
