@@ -3,7 +3,7 @@
 = What is the Best OS for Squid? =
 
 This is an all-time favourite FAQ, bound to show up every month or so on the Squid Users mailing-list.
-Let's try to dispell some facts, and clarify first and foremost what OS are '''not''' suited for running Squid. You might want to avoid:
+Let's try to dispel some myths first, and clarify first and foremost what OS are '''not''' suited for running Squid. You might want to avoid:
 
  1. Commodore (VIC20, 64,128) OSes - YMMV on Amiga systems. Status is unclear on Sinclairs and Spectrums.
  1. Palm OS and other palmtop systems, including PocketPC, Symbian and TRon. We have no success stories on the Sharp Zaurus yet (but also no mention of failures)
