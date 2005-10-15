@@ -14,7 +14,7 @@ In some people's opinions, you might also want to avoid
  1. Microsoft Windows client systems
 
 
-While this is probably true from those requiring high performance, not all do and it might be perfectly reasonable to run Squid on MS-Windows systems in some environments (small office comes to mind).
+While this is probably true for those outfits who desire to obtain the highest possible performance, not all do and it might be perfectly reasonable to run Squid on MS-Windows systems in some environments (a small office comes to mind as the perfect example).
 
 === What about Unices? ===
 Generally speaking, any modern Unix or Unix-like operating system will offer similarly good performance. A technically sensible administrator will choose the best tool for the job, which means whatever OS she is most comfortable with.
