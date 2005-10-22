@@ -1,7 +1,5 @@
 #language en
 
-= NEGOTIATE Authentication =
-
 There are four major flavours of authentication available in the HTTP world at this moment (October 2005):
  * Basic - been around since the very beginning
  * NTLM - Microsoft's first attempt at single-sign-on
