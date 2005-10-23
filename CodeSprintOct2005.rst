@@ -25,4 +25,4 @@ Accomplishments:
 
 Failures:
 
-  * We did not manage to get Samba-4 running for the Negotiate tests. Instead a Windows host was used to verify the authentication exchanges.
+  * We did not manage to get Samba-4 running for the Negotiate tests. Instead a [:NegotiateAuthentication:Windows host was used to verify the authentication exchanges].
