@@ -26,6 +26,7 @@ header_access Accept-Encoding deny ie6 hotmail_domains}}}
 = Developers corner =
 == Squid Sprint ==
 Recently an informal squid sprint was held in Rivioli, hosted by GuidoSerassio. Some of the topics of discussion...
+ * CodeSprintOct2005
  * NegotiateAuthentication support for Squid-3 (the main focus of the sprint)
  * ["Squid-2.6"]
  * NiceLittleProjects: projects which can be completed in a few days' work, waiting for someone to step up. Any takers?
