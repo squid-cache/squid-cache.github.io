@@ -5,7 +5,7 @@ Short report on the code sprint which took place in October 2005
 Participants:
 
   * HenrikNordström
-  * Francesco 'Kinkie' Chemolli
+  * Francesco '[kinkie]' Chemolli
   * GuidoSerassio
 
 Primary goal:
