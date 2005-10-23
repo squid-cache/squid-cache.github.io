@@ -13,14 +13,14 @@ Squid-3.0 to stabilize.
 
 List of things we have thought of include in a Squid-2.6 release include
 
-  - cbdatareference
-  - windows cygwin service support
-  - negotiate (+ NTLM cleanup)
-  - reverse proxy improvements
-  - ssl client + fixes
-  - epoll
-  - digest LDAP helper
-  - overlapping helper requests
-  - external acl improvements
-  - UNIX sockets IPC
-  - custom log formats
+  * cbdatareference
+  * windows cygwin service support
+  * negotiate (+ NTLM cleanup)
+  * reverse proxy improvements
+  * ssl client + fixes
+  * epoll
+  * digest LDAP helper
+  * overlapping helper requests
+  * external acl improvements
+  * UNIX sockets IPC
+  * custom log formats
