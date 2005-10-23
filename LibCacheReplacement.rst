@@ -1,4 +1,4 @@
-based on a discussion at a local postgresql UserGroup last week..
+based on a discussion at a local postgresql user group last week..
 
 Could we factor out the cache management routines in a sane generic library - for C, and then bind to it from language-Foo. (rather like libevent) ?
 
