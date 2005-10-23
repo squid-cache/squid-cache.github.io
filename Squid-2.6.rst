@@ -24,3 +24,5 @@ List of things we have thought of include in a Squid-2.6 release include
   * external acl improvements
   * UNIX sockets IPC
   * custom log formats
+  * ETag
+  * MAXHOSTNAMELEN cleanup
