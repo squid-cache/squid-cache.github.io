@@ -26,6 +26,7 @@ List of things we have thought of include in a Squid-2.6 release include
   * custom log formats
   * ETag
   * MAXHOSTNAMELEN cleanup
+  * Connection pinning
 
 
 And there is some upcoming projects which may get included if they make it in time:
