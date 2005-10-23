@@ -25,10 +25,13 @@ header_access Accept-Encoding deny ie6 hotmail_domains}}}
 
 = Developers corner =
 == Squid Sprint ==
-Recently an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
+Recently an informal squid sprint was held in Rivioli, hosted by GuidoSerassio. Some of the topics of discussion...
+ * Negotiate support for Squid-3 (the main focus of the sprint)
+ * NiceLittleProjects: projects which can be completed in a few days' work, waiting for someone to step up. Any takers?
+
+In december 2004 an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
  * ["StoreAPI"]
  * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
- * NiceLittleProjects: projects which can be completed in a few days' work, waiting for someone to step up. Any takers?
 
 == ClientStreams ==
 A transcript of a recent IRC chat about using ClientStreams to request pages internally to squid.
