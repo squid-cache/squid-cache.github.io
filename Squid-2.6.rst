@@ -38,3 +38,35 @@ List of things we have thought of include in a Squid-2.6 release include
 And there is some upcoming projects which may get included if they make it in time:
 
   * FreeBSD kqueue support
+
+
+
+=== Opinions on if there should be a release ===
+
+Summary of the opinions regarding a Squid-2.6 release
+
+
+Full in favor, including performance enhancements:
+
+  * Henrik Nordstrom *
+  * Guido Serassio *
+  * Adrian Chadd *
+  * Francesco 'Kinkie' Chemolli
+  * Reuben Farrelly
+
+In favor, but no clear indication
+
+  * Andrey Shorin
+  * Paul Armstrong
+
+Maybe, not including performance enhancements:
+
+  * Alex Rousskov *
+
+No answer yet:
+
+  * Duane Wessels *
+  * Robert Collins *
+
+
+* = Core team member
