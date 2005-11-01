@@ -14,7 +14,8 @@ Squid-3.0 to stabilize.
 List of things we have thought of include in a Squid-2.6 release include
 
   * cbdatareference
-  * windows cygwin service support
+  * addition of IPPROTO_TCP & IPPROTO_UDP usage 
+  * Cygwin full support (Windows service, ARP acl, ...) 
   * negotiate (+ NTLM cleanup)
   * reverse proxy improvements
   * ssl client + fixes
@@ -27,7 +28,9 @@ List of things we have thought of include in a Squid-2.6 release include
   * ETag
   * MAXHOSTNAMELEN cleanup
   * Connection pinning
-
+  * Bug #802: squid should report username in stats when auth is enabled 
+  * Bug #907: patch to suppress version string in HTTP headers and HTML error pages
+  * Bug #1326: Correctly use search path from /etc/resolv.conf 
 
 And there is some upcoming projects which may get included if they make it in time:
 
