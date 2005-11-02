@@ -13,7 +13,6 @@ Squid-3.0 to stabilize.
 
 List of things we have thought of include in a Squid-2.6 release include
 
-  * cbdatareference
   * addition of IPPROTO_TCP & IPPROTO_UDP usage 
   * Cygwin full support
     * --enable-default-hostsfile configure option 
@@ -39,6 +38,7 @@ And there is some upcoming projects which may get included if they make it in ti
 
   * FreeBSD kqueue support
   * Deferred reads cleanup
+  * cbdatareference (needs to be resurrected from old 2.6 branch)
 
 
 
