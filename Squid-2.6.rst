@@ -38,6 +38,7 @@ List of things we have thought of include in a Squid-2.6 release include
 And there is some upcoming projects which may get included if they make it in time:
 
   * FreeBSD kqueue support
+  * Deferred reads cleanup
 
 
 
