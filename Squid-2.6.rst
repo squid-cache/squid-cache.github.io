@@ -60,14 +60,13 @@ In favor, but no clear indication
   * Andrey Shorin
   * Paul Armstrong
 
+Mixed feelins
+
+  * Duane Wessels *
+
 Maybe, not including performance enhancements:
 
   * Alex Rousskov *
-
-No answer yet:
-
-  * Duane Wessels *
   * Robert Collins *
-
 
 * = Core team member
