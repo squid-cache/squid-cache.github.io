@@ -55,4 +55,5 @@ You can find information about what a Wiki is and how to use it at AboutWiki.
  * Squijj [http://www.mnot.net/squij/] refresh_pattern analysis
  * Calamaris [http://freshmeat.net/projects/calamaris/] log file analysis
  * Visolve's Squid 3.0 [http://squid.visolve.com/squid/configuration_manual_30.htm configuration manual]
+ * [http://people.redhat.com/stransky/squid/ Martin Stransky]'s squid page. He's the maintainer of the official Red Hat package
  * ExternalLinks: some external resources which might be of interest
