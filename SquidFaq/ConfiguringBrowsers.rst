@@ -38,7 +38,7 @@ You may also wish to consult Netscape's documentation for the Navigator
 [http://home.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
 
 Here is a sample auto configuration Java''''''Script from Oskar Pearson:
-{{{#!javascript
+{{{
 //We (www.is.co.za) run a central cache for our customers that they
 //access through a firewall - thus if they want to connect to their intranet
 //system (or anything in their domain at all) they have to connect
