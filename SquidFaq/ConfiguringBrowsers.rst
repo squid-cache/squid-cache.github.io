@@ -25,7 +25,7 @@ does not support, leave the fields blank.
 == Netscape automatic configuration ==
 
 Netscape Navigator's proxy configuration can be automated with
-JavaScript (for Navigator versions 2.0 or higher).  Select
+Java''''''Script (for Navigator versions 2.0 or higher).  Select
 '''Network Preferences''' from the '''Options'''
 menu.  On the '''Proxies''' page, click the radio button
 next to '''Automatic Proxy Configuration''' and then
@@ -35,10 +35,10 @@ right as you go.
 
 
 You may also wish to consult Netscape's documentation for the Navigator
-[http://home.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html Java''''''Script proxy configuration]
+[http://home.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
 
-Here is a sample auto configuration JavaScript from Oskar Pearson:
-{{{
+Here is a sample auto configuration Java''''''Script from Oskar Pearson:
+{{{#!javascript
 //We (www.is.co.za) run a central cache for our customers that they
 //access through a firewall - thus if they want to connect to their intranet
 //system (or anything in their domain at all) they have to connect
@@ -202,24 +202,18 @@ port number for the Squid server (by default, 3128) in the
 does not support, leave the fields blank.
 
 
-Microsoft is also starting to support Netscape-style JavaScript
-automated proxy configuration.  As of now, only MSIE version 3.0a
-for Windows 3.1 and Windows NT 3.51 supports this feature (i.e.,
-as of version 3.01 build 1225 for Windows 95 and NT 4.0, the feature
-was not included).
-
-If you have a version of MSIE that does have this feature, elect
+Microsoft Internet Explorer, versions 4.0 and above, supports Java''''''Script automatic proxy configuration in a Netscape-compatible way. Just select
 '''Options''' from the '''View''' menu.
 Click on the '''Advanced''' tab.  In the lower left-hand
 corner, click on the '''Automatic Configuration'''
 button.  Fill in the URL for your JavaScript file in the dialog
 box it presents you.  Then exit MSIE and restart it for the changes
-to take effect.  MSIE will reload the JavaScript file every time
+to take effect.  MSIE will reload the Java''''''Script file every time
 it starts.
 
 == Netmanage Internet Chameleon WebSurfer configuration ==
 
-Netmanage WebSurfer supports manual proxy configuration and exclusion
+Netmanage Web''''''Surfer supports manual proxy configuration and exclusion
 lists for hosts or domains that should not be fetched via proxy
 (this information is current as of WebSurfer 5.0).  Select
 '''Preferences''' from the '''Settings'''
