@@ -4,3 +4,4 @@
 
  * ../AboutSquid
  * ../CompilingSquid
+ * ../InstallingSquid
