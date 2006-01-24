@@ -38,7 +38,7 @@ In december 2004 an informal squid sprint was held in Stockholm, hosted by Henri
 A transcript of a recent IRC chat about using ClientStreams to request pages internally to squid.
 
 = Interesting starting points =
- * RecentChanges: see where people are currently working 
+ * RecentChanges: see where people are currently working
  * FindPage: search or browse the pages hosted in this wiki in various ways
  * SiteNavigation: get an overview over this site and what it contains
  * SyntaxReference: quick access to wiki syntax
@@ -47,9 +47,9 @@ A transcript of a recent IRC chat about using ClientStreams to request pages int
 
 You can find information about what a Wiki is and how to use it at AboutWiki.
 = Other Squid-related resources =
-  
+
  * The main [http://www.squid-cache.org/ Squid site]
- * The current version of the [http://www.squid-cache.org/Doc/FAQ/FAQ.html Squid FAQ] ( ["Faq/FaqIndex"] is a Local wikified Copy)
+ * The current version of the [http://www.squid-cache.org/Doc/FAQ/FAQ.html Squid FAQ] ( ["SquidFaq/FaqIndex"] is a local wikified Copy)
  * The [http://devel.squid-cache.org Squid development site]
  * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla] database
  * Squijj [http://www.mnot.net/squij/] refresh_pattern analysis
