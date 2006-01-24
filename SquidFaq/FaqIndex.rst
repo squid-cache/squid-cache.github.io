@@ -1,0 +1,5 @@
+#language en
+
+= Squid Web Cache FAQ Table of contents =
+
+* ../AboutSquid
