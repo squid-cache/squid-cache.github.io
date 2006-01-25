@@ -11,7 +11,7 @@
  * ../OperatingSquid: how to perform various tasks on squid and its cache
  * ../SquidMemory describes how squid uses RAM and how to optimize its usage
  * ../CacheManager explains how to use the Cache Manager to profile how squid is working
- * ../SquidAcl: controlling squid's powerful access control features
+ * ../SquidAcl (or Authorization): controlling squid's powerful access control features
  * ../TroubleShooting gives a few hints on what to do when squid fails or misbehaves
  * ../InnerWorkings: a few insights into squid and its underlying logic
  * ../MultiCast explains how to set squid ICP up in a multicast environment
