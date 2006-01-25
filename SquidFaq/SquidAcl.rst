@@ -1,0 +1,841 @@
+#language en
+[[TableOfContents]]
+
+
+Squid's access control scheme is relatively comprehensive and difficult
+for some people to understand.  There are two different components: ''ACL elements'',
+and ''access lists''.  An access list consists of an ''allow'' or ''deny'' action
+followed by a number of ACL elements.
+
+
+== ACL elements ==
+
+''Note: The information here is current for version 2.5.''
+
+Squid knows about the following types of ACL elements:
+
+  *'''src''': source (client) IP addresses
+  *'''dst''': destination (server) IP addresses
+  *'''myip''': the local IP address of a client's connection
+  *'''srcdomain''': source (client) domain name
+  *'''dstdomain''': destination (server) domain name
+  *'''srcdom_regex''': source (client) regular expression pattern matching
+  *'''dstdom_regex''': destination (server) regular expression pattern matching
+  *'''time''': time of day, and day of week
+  *'''url_regex''': URL regular expression pattern matching
+  *'''urlpath_regex''': URL-path regular expression pattern matching, leaves out the protocol and hostname
+  *'''port''': destination (server) port number
+  *'''myport''': local port number that client connected to
+  *'''proto''': transfer protocol (http, ftp, etc)
+  *'''method''': HTTP request method (get, post, etc)
+  *'''browser''': regular expression pattern matching on the request's user-agent header
+  *'''ident''': string matching on the user's name
+  *'''ident_regex''': regular expression pattern matching on the user's name
+  *'''src_as''': source (client) Autonomous System number
+  *'''dst_as''': destination (server) Autonomous System number
+  *'''proxy_auth''': user authentication via external processes
+  *'''proxy_auth_regex''': user authentication via external processes
+  *'''snmp_community''': SNMP community string matching
+  *'''maxconn''': a limit on the maximum number of connections from a single client IP address
+  *'''req_mime_type''': regular expression pattern matching on the request content-type header
+  *'''arp''': Ethernet (MAC) address matching
+  *'''rep_mime_type''': regular expression pattern matching on the reply (downloaded content) content-type header. This is only usable in the http_reply_access directive, not http_access.
+  *'''external''': lookup via external acl helper defined by external_acl_type
+
+
+'''Notes''':
+
+Not all of the ACL elements can be used with all types of access lists (described below).  For example, ''snmp_community'' is only meaningful when used with ''snmp_access''.  The ''src_as'' and ''dst_as'' types are only used in ''cache_peer_access'' access lists.
+
+The ''arp'' ACL requires the special configure option --enable-arp-acl.  Furthermore, the ARP ACL code is not portable to all operating systems.  It works on Linux, Solaris, and some *BSD variants.
+
+The SNMP ACL element and access list require the --enable-snmp configure option.
+
+Some ACL elements can cause processing delays.  For example, use of ''src_domain'' and ''srcdom_regex'' require a reverse DNS lookup on the client's IP address.  This lookup adds some delay to the request.
+
+Each ACL element is assigned a unique ''name''.  A named ACL element consists of a ''list of values''.
+When checking for a match, the multiple values use OR logic.  In other words, an ACL element is ''matched'' when any one of its values is a match.
+
+You can't give the same name to two different types of ACL elements.  It will generate a syntax error.
+
+You can put different values for the same ACL name on different lines.  Squid combines them into
+one list.
+
+
+== Access Lists ==
+
+There are a number of different access lists:
+
+  *'''http_access''': Allows HTTP clients (browsers) to access the HTTP port.  This is the primary access control list.
+  *'''http_reply_access''': Allows HTTP clients (browsers) to receive the reply to their request. This further restricts permissions given by http_access, and is primarily intended to be used together with the rep_mime_type acl type for blocking different content types.
+  *'''icp_access''': Allows neighbor caches to query your cache with ICP.
+  *'''miss_access''': Allows certain clients to forward cache misses through your cache. This further restricts permissions given by http_access, and is primarily intended to be used for enforcing sibling relations by denying siblings from forwarding cache misses through your cache.
+  *'''no_cache''': Defines responses that should not be cached.
+  *'''redirector_access''': Controls which requests are sent through the redirector pool.
+  *'''ident_lookup_access''': Controls which requests need an Ident lookup.
+  *'''always_direct''': Controls which requests should always be forwarded directly to origin servers.
+  *'''never_direct''': Controls which requests should never be forwarded directly to origin servers.
+  *'''snmp_access''': Controls SNMP client access to the cache.
+  *'''broken_posts''': Defines requests for which squid appends an extra CRLF after POST message bodies as required by some broken origin servers.
+  *'''cache_peer_access''': Controls which requests can be forwarded to a given neighbor (peer).
+
+
+
+
+'''Notes''':
+
+
+An access list ''rule'' consists of an ''allow'' or ''deny'' keyword, followed by a list of ACL element names.
+
+
+An access list consists of one or more access list rules.
+
+
+Access list rules are checked in the order they are written.  List searching terminates as soon as one
+of the rules is a match.
+
+
+If a rule has multiple ACL elements, it uses AND logic.  In other
+words, ''all'' ACL elements of the rule must be a match in order
+for the rule to be a match.  This means that it is possible to
+write a rule that can never be matched.  For example, a port number
+can never be equal to both 80 AND 8000 at the same time.
+
+
+To summarise the acl logics can be described as:
+{{{
+http_access allow|deny acl AND acl AND ...
+        OR
+http_access allow|deny acl AND acl AND ...
+        OR
+...
+}}}
+
+
+
+If none of the rules are matched, then the default action is the
+''opposite'' of the last rule in the list.  Its a good idea to
+be explicit with the default action.  The best way is to thse
+the ''all'' ACL.  For example:
+{{{
+acl all src 0/0
+http_access deny all
+}}}
+
+
+
+
+== How do I allow my clients to use the cache? ==
+
+
+Define an ACL that corresponds to your client's IP addresses.
+For example:
+{{{
+acl myclients src 172.16.5.0/24
+}}}
+
+Next, allow those clients in the ''http_access'' list:
+{{{
+http_access allow myclients
+}}}
+
+
+
+== how do I configure Squid not to cache a specific server?  ==
+
+
+
+{{{
+acl someserver dstdomain .someserver.com
+no_cache deny someserver
+}}}
+
+
+
+
+== How do I implement an ACL ban list? ==
+
+
+As an example, we will assume that you would like to prevent users from
+accessing cooking recipes.
+
+
+One way to implement this would be to deny access to any URLs
+that contain the words "cooking" or "recipe."
+You would use these configuration lines:
+{{{
+acl Cooking1 url_regex cooking
+acl Recipe1 url_regex recipe
+http_access deny Cooking1
+http_access deny Recipe1
+http_access allow all
+}}}
+
+The ''url_regex'' means to search the entire URL for the regular
+expression you specify.  Note that these regular expressions are case-sensitive,
+so a url containing "Cooking" would not be denied.
+
+
+Another way is to deny access to specific servers which are known
+to hold recipes.  For example:
+{{{
+acl Cooking2 dstdomain www.gourmet-chef.com
+http_access deny Cooking2
+http_access allow all
+}}}
+
+The ''dstdomain'' means to search the hostname in the URL for the
+string "www.gourmet-chef.com."
+Note that when IP addresses are used in URLs (instead of domain names),
+Squid-1.1 implements relaxed access controls.  If the a domain name
+for the IP address has been saved in Squid's "FQDN cache," then
+Squid can compare the destination domain against the access controls.
+However, if the domain is not immediately available, Squid allows
+the request and makes a lookup for the IP address so that it may
+be available for future reqeusts.
+
+
+
+
+== How do I block specific users or groups from accessing my cache? ==
+
+
+=== Using Ident ===
+
+You can use
+[ftp://ftp.isi.edu/in-notes/rfc931.txt ident lookups]
+to allow specific users access to your cache.  This requires that an
+[ftp://ftp.lysator.liu.se/pub/ident/servers ident server]
+process runs on the user's machine(s).
+In your ''squid.conf'' configuration
+file you would write something like this:
+{{{
+ident_lookup_access allow all
+acl friends ident kim lisa frank joe
+http_access allow friends
+http_access deny all
+}}}
+
+
+
+=== Using Proxy Authentication ===
+
+Another option is to use proxy-authentication.    In this scheme, you assign
+usernames and passwords to individuals.  When they first use the proxy
+they are asked to authenticate themselves by entering their username and
+password.
+
+
+In Squid v2 this authentication is hanled via external processes.  For
+information on how to configure this, please see ../ProxyAuthentication.
+
+
+== Do you have a CGI program which lets users change their own proxy passwords? ==
+
+
+
+[mailto:orso@brturbo.com Pedro L Orso]
+has adapted the Apache's ''htpasswd'' into a CGI program
+called 
+[/htpasswd/chpasswd-cgi.tar.gz chpasswd.cgi].
+
+
+
+
+== Is there a way to do ident lookups only for a certain host and compare the result with a userlist in squid.conf? ==
+
+
+You can use the ''ident_access'' directive to control for which hosts Squid will issue
+[ftp://ftp.isi.edu/in-notes/rfc931.txt ident lookup] requests.
+
+
+Additionally, if you use a ''ident'' ACL in squid conf, then Squid will make
+sure an ident lookup is performed while evaluating the acl even if ''iden_access''
+does not indicate ident lookups should be performed.
+
+
+However, Squid does not wait for the lookup to complete unless the ACL rules require it.  Consider this
+configuration:
+{{{
+acl host1 src 10.0.0.1
+acl host2 src 10.0.0.2
+acl pals  ident kim lisa frank joe
+http_access allow host1
+http_access allow host2 pals
+}}}
+
+Requests coming from 10.0.0.1 will be allowed immediately because
+there are no user requirements for that host.  However, requests
+from 10.0.0.2 will be allowed only after the ident lookup completes, and
+if the username is in the set kim, lisa, frank, or joe.
+
+
+== Common Mistakes ==
+
+
+=== And/Or logic ===
+
+You've probably noticed (and been frustrated by) the fact that
+you cannot combine access controls with terms like "and" or "or."
+These operations are already built in to the access control scheme
+in a fundamental way which you must understand.
+
+  *'''All elements of an ''acl'' entry are OR'ed together'''.
+  *'''All elements of an ''access'' entry are AND'ed together''' (e.g. ''http_access'' and ''icp_access'')
+
+
+
+
+For example, the following access control configuration will never work:
+{{{
+acl ME src 10.0.0.1
+acl YOU src 10.0.0.2
+http_access allow ME YOU
+}}}
+
+In order for the request to be allowed, it must match the "ME" acl AND the "YOU" acl.
+This is impossible because any IP address could only match one or the other.  This
+should instead be rewritten as:
+{{{
+acl ME src 10.0.0.1
+acl YOU src 10.0.0.2
+http_access allow ME
+http_access allow YOU
+}}}
+
+Or, alternatively, this would also work:
+{{{
+acl US src 10.0.0.1 10.0.0.2
+http_access allow US
+}}}
+
+
+
+=== allow/deny mixups ===
+
+''I have read through my squid.conf numerous times, spoken to my
+neighbors, read the FAQ and Squid Docs and cannot for the life of
+me work out why the following will not work.''
+
+
+''I can successfully access cachemgr.cgi from our web server machine here,
+but I would like to use MRTG to monitor various aspects of our proxy.
+When I try to use 'squidclient' or GET cache_object from the machine the
+proxy is running on, I always get access denied.''
+
+
+{{{
+acl manager proto cache_object
+acl localhost src 127.0.0.1/255.255.255.255
+acl server    src 1.2.3.4/255.255.255.255
+acl all src 0.0.0.0/0.0.0.0
+acl ourhosts src 1.2.0.0/255.255.0.0
+
+http_access deny manager !localhost !server
+http_access allow ourhosts
+http_access deny all
+}}}
+
+
+
+The intent here is to allow cache manager requests from the ''localhost''
+and ''server'' addresses, and deny all others.  This policy has been
+expressed here:
+{{{
+http_access deny manager !localhost !server
+}}}
+
+
+
+The problem here is that for allowable requests, this access rule is
+not matched.  For example, if the source IP address is ''localhost'',
+then "!localhost" is ''false'' and the access rule is not matched, so
+Squid continues checking the other rules.  Cache manager requests from
+the ''server'' address work because ''server'' is a subset of ''ourhosts''
+and the second access rule will match and allow the request.  Also note that
+this means any cache manager request from ''ourhosts'' would be allowed.
+
+
+To implement the desired policy correctly, the access rules should be
+rewritten as
+{{{
+http_access allow manager localhost
+http_access allow manager server
+http_access deny manager
+http_access allow ourhosts
+http_access deny all
+}}}
+
+If you're using ''miss_access'', then don't forget to also add
+a ''miss_access'' rule for the cache manager:
+{{{
+miss_access allow manager
+}}}
+
+
+
+You may be concerned that the having five access rules instead of three
+may have an impact on the cache performance.  In our experience this is
+not the case.  Squid is able to handle a moderate amount of access control
+checking without degrading overall performance.  You may like to verify
+that for yourself, however.
+
+
+=== Differences between ''src'' and ''srcdomain'' ACL types ===
+
+For the ''srcdomain'' ACL type, Squid does a reverse lookup
+of the client's IP address and checks the result with the domains
+given on the ''acl'' line.  With the ''src'' ACL type, Squid
+converts hostnames to IP addresses at startup and then only compares
+the client's IP address.  The ''src'' ACL is preferred over ''srcdomain''
+because it does not require address-to-name lookups for each request.
+
+
+
+== I set up my access controls, but they don't work!  why? ==
+
+
+If ACLs are giving you problems and you don't know why they
+aren't working, you can use this tip to debug them.
+
+In ''squid.conf'' enable debugging for section 33 at level 2.
+For example:
+{{{
+debug_options ALL,1 33,2
+}}}
+
+Then restart or reconfigure squid.
+
+From now on, your ''cache.log'' should contain a line for every
+request that explains if it was allowed, or denied, and which
+ACL was the last one that it matched.
+
+If this does not give you sufficient information to nail down the
+problem you can also enable detailed debug information on ACL processing
+{{{
+debug_options ALL,1 33,2 28,9
+}}}
+
+Then restart or reconfigure squid as above.
+
+From now on, your ''cache.log'' should contain detailed traces
+of all access list processing. Be warned that this can be quite
+some lines per request.
+
+
+See also ../TrouleShooting.
+
+
+== Proxy-authentication and neighbor caches ==
+
+
+''' The problem '''
+{{{
+               [ Parents ]
+               /         \
+              /           \
+       [ Proxy A ] --- [ Proxy B ]
+           |
+           |
+          USER
+}}}
+
+''Proxy A sends and ICP query to Proxy B about an object, Proxy B replies with an ICP_HIT.  Proxy A forwards the HTTP request to Proxy B, but does not pass on the authentication details, therefore the HTTP GET from Proxy A fails.''
+
+
+Only ONE proxy cache in a chain is allowed to "use" the Proxy-Authentication
+request header.  Once the header is used, it must not be passed on to
+other proxies.
+
+
+Therefore, you must allow the neighbor caches to request from each other
+without proxy authentication.  This is simply accomplished by listing
+the neighbor ACL's first in the list of ''http_access'' lines.  For example:
+{{{
+acl proxy-A src 10.0.0.1
+acl proxy-B src 10.0.0.2
+acl user_passwords proxy_auth /tmp/user_passwds
+
+http_access allow proxy-A
+http_access allow proxy-B
+http_access allow user_passwords
+http_access deny all
+}}}
+
+
+
+== Is there an easy way of banning all Destination addresses except one? ==
+
+
+
+{{{
+acl GOOD dst 10.0.0.1
+acl BAD dst 0.0.0.0/0.0.0.0
+http_access allow GOOD
+http_access deny BAD
+}}}
+
+
+
+== Does anyone have a ban list of porn sites and such? ==
+
+  * [http://members.lycos.co.uk/njadmin Jasons Staudenmayer]
+  * [http://web.onda.com.br/orso/ Pedro Lineu Orso's List]
+  * [http://www.hklc.com/squidblock/ Linux Center Hong Kong's List]
+  * Snerpa, an ISP in Iceland operates a DNS-database of IP-addresses of blacklisted sites containing porn, violence, etc. which is utilized using a small perl-script redirector.  Information on this on the [http://www.snerpa.is/notendur/infilter/infilter-en.phtml INfilter] webpage.
+  * The [http://www.squidguard.org/blacklist/ SquidGuard] redirector folks provide a blacklist.
+  * Bill Stearns maintains the [http://www.stearns.org/sa-blacklist/ sa-blacklist] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more
+importantly, they can no longer send out requests for things like scripts
+and gifs that have a unique identifer attached, showing that they opened
+the email and making their addresses more valuable to the spammer.
+  * The [http://www.rambris.com/fredrik/sleezeball/ SleezeBall site] has a list of patterns that you can download.
+
+
+== Squid doesn't match my subdomains ==
+
+
+If you are using Squid-2.4 or later then keep in mind that dstdomain
+acls uses different syntax for exact host matches and entire domain matches.
+www.example.com matches the exact host www.example.com, while .example.com
+matches the entire domain example.com (including example.com alone)
+
+
+There is also subtle issues if your dstdomain ACLs contains matches
+for both an exact host in a domain and the whole domain where both are in the
+same domain (i.e. both www.example.com and .example.com). Depending on how
+your data is ordered this may cause only the most specific of these (e.g.
+www.example.com) to be used.
+
+
+NOTE: Current Squid versions (as of Squid-2.4) will warn you
+when this kind of configuration is used. If your Squid does not warn
+you while reading the configuration file you do not have the problem
+described below. Also the configuration here uses the dstdomain syntax
+of Squid-2.1 or earlier.. (2.2 and later needs to have domains prefixed
+by a dot)
+
+
+There is a subtle problem with domain-name based access controls
+when a single ACL element has an entry that is a subdomain of
+another entry.  For example, consider this list:
+{{{
+acl FOO dstdomain boulder.co.us vail.co.us co.us
+}}}
+
+
+In the first place, the above list is simply wrong because
+the first two (''boulder.co.us'' and ''vail.co.us'') are
+unnecessary.  Any domain name that matches one of the first two
+will also match the last one (''co.us'').  Ok, but why does this
+happen?
+
+
+The problem stems from the data structure used to index domain
+names in an access control list.  Squid uses ''Splay trees''
+for lists of domain names.  As other tree-based data structures,
+the searching algorithm requires a comparison function that returns
+-1, 0, or +1 for any pair of keys (domain names).  This is similar
+to the way that ''strcmp()'' works.
+
+
+The problem is that it is wrong to say that ''co.us'' is greater-than,
+equal-to, or less-than ''boulder.co.us''.
+
+
+For example, if you
+said that ''co.us'' is LESS than ''fff.co.us'', then
+the Splay tree searching algorithm might never discover
+''co.us'' as a match for ''kkk.co.us''.
+
+
+similarly, if you said that ''co.us'' is GREATER than ''fff.co.us'',
+then the Splay tree searching algorithm might never
+discover ''co.us'' as a match for ''bbb.co.us''.
+
+
+The bottom line is that you can't have one entry that is a subdomain
+of another.  Squid-2.2 will warn you if it detects this condition.
+
+
+== Why does Squid deny some port numbers? ==
+
+
+It is dangerous to allow Squid to connect to certain port numbers.
+For example, it has been demonstrated that someone can use Squid
+as an SMTP (email) relay.  As I'm sure you know, SMTP relays are
+one of the ways that spammers are able to flood our mailboxes.
+To prevent mail relaying, Squid denies requests when the URL port
+number is 25.  Other ports should be blocked as well, as a precaution.
+
+
+There are two ways to filter by port number: either allow specific
+ports, or deny specific ports.  By default, Squid does the first.  This
+is the ACL entry that comes in the default ''squid.conf'':
+{{{
+acl Safe_ports port 80 21 443 563 70 210 1025-65535
+http_access deny !Safe_ports
+}}}
+
+The above configuration denies requests when the URL port number is
+not in the list.  The list allows connections to the standard
+ports for HTTP, FTP, Gopher, SSL, WAIS, and all non-priveleged
+ports.
+
+
+Another approach is to deny dangerous ports.  The dangerous
+port list should look something like:
+{{{
+acl Dangerous_ports 7 9 19 22 23 25 53 109 110 119
+http_access deny Dangerous_ports
+}}}
+
+...and probably many others.
+
+
+Please consult the ''/etc/services'' file on your system
+for a list of known ports and protocols.
+
+
+== Does Squid support the use of a database such as mySQL for storing the ACL list? ==
+
+
+''Note: The information here is current for version 2.2.''
+
+No, it does not.
+
+
+== How can I allow a single address to access a specific URL? ==
+
+
+This example allows only the ''special_client'' to access
+the ''special_url''.  Any other client that tries to access
+the ''special_url'' is denied.
+{{{
+acl special_client src 10.1.2.3
+acl special_url url_regex ^http://www.squid-cache.org/Doc/FAQ/$
+http_access allow special_client special_url
+http_access deny special_url
+}}}
+
+
+
+== How can I allow some clients to use the cache at specific times? ==
+
+
+Let's say you have two workstations that should only be allowed access
+to the Internet during working hours (8:30 - 17:30).  You can use
+something like this:
+{{{
+acl FOO src 10.1.2.3 10.1.2.4
+acl WORKING time MTWHF 08:30-17:30
+http_access allow FOO WORKING
+http_access deny FOO
+}}}
+
+
+
+== How can I allow some users to use the cache at specific times? ==
+
+
+
+{{{
+acl USER1 proxy_auth Dick
+acl USER2 proxy_auth Jane
+acl DAY time 06:00-18:00
+http_access allow USER1 DAY
+http_access deny USER1
+http_access allow USER2 !DAY
+http_access deny USER2
+}}}
+
+
+
+== Problems with IP ACL's that have complicated netmasks ==
+
+
+''Note: The information here is current for version 2.3.''
+
+The following ACL entry gives inconsistent or unexpected results:
+{{{
+acl restricted  src 10.0.0.128/255.0.0.128 10.85.0.0/16
+}}}
+
+The reason is that IP access lists are stored in "splay" tree
+data structures.  These trees require the keys to be sortable.
+When you use a complicated, or non-standard, netmask (255.0.0.128), it confuses
+the function that compares two address/mask pairs.
+
+The best way to fix this problem is to use separate ACL names
+for each ACL value.  For example, change the above to:
+{{{
+acl restricted1 src 10.0.0.128/255.0.0.128
+acl restricted2 src 10.85.0.0/16
+}}}
+
+
+Then, of course, you'll have to rewrite your ''http_access''
+lines as well.
+
+
+== Can I set up ACL's based on MAC address rather than IP? ==
+
+
+Yes, for some operating systes.  Squid calls these "ARP ACLs" and
+they are supported on Linux, Solaris, and probably BSD variants.
+
+NOTE: Squid can only determine the MAC address for clients that
+are on the same subnet.  If the client is on a different subnet,
+then Squid can not find out its MAC address.
+
+To use ARP (MAC) access controls, you
+first need to compile in the optional code.  Do this with
+the ''--enable-arp-acl'' configure option:
+{{{
+% ./configure --enable-arp-acl ...
+% make clean
+% make
+}}}
+
+If ''src/acl.c'' doesn't compile, then ARP ACLs are probably not
+supported on your system.
+
+If everything compiles, then you can add some ARP ACL lines to
+your ''squid.conf'':
+{{{
+acl M1 arp 01:02:03:04:05:06
+acl M2 arp 11:12:13:14:15:16
+http_access allow M1
+http_access allow M2
+http_access deny all
+}}}
+
+
+
+== Debugging ACLs ==
+
+
+See ''I set up my access controls, but they don't work! why?'' and
+../TroubleShooting.
+
+
+== Can I limit the number of connections from a client? ==
+
+
+Yes, use the ''maxconn'' ACL type in conjunction with ''http_access deny''.
+For example:
+{{{
+acl losers src 1.2.3.0/24
+acl 5CONN maxconn 5
+http_access deny 5CONN losers
+}}}
+
+
+Given the above configuration, when a client whose source IP address
+is in the 1.2.3.0/24 subnet tries to establish 6 or more connections
+at once, Squid returns an error page.  Unless you use the
+''deny_info'' feature, the error message will just say "access
+denied."
+
+The ''maxconn'' ACL requires the client_db feature.  If you've
+disabled client_db (for example with ''client_db off'') then
+''maxconn'' ALCs will not work.
+
+Note, the ''maxconn'' ACL type is kind of tricky because it
+uses less-than comparison.  The ACL is a match when the number
+of established connections is ''greater'' than the value you
+specify.  Because of that, you don't want to use the ''maxconn''
+ACL with ''http_access allow''.
+
+Also note that you could use ''maxconn'' in conjunction with
+a user type (ident, proxy_auth), rather than an IP address type.  
+
+
+==  I'm trying to deny ''foo.com'', but it's not working.] ==
+
+
+In Squid-2.3 we changed the way that Squid matches subdomains.
+There is a difference between ''.foo.com'' and ''foo.com''.  The
+first matches any domain in ''foo.com'', while the latter matches
+only "foo.com" exactly.  So if you want to deny ''bar.foo.com'',
+you should write
+{{{
+acl yuck dstdomain .foo.com
+http_access deny yuck
+}}}
+
+
+
+== I want to customize, or make my own error messages. ==
+
+
+You can customize the existing error messages as described in
+''Customizable Error Messages'' in ../MiscFeatures.
+You can also create new error messages and use these in conjunction
+with the ''deny_info'' option.
+
+For example, lets say you want your users to see a special message
+when they request something that matches your pornography list.
+First, create a file named ERR_NO_PORNO in the
+''/usr/local/squid/etc/errors'' directory.  That file might
+contain something like this:
+{{{
+Our company policy is to deny requests to known porno sites.  If you
+feel you've received this message in error, please contact 
+the support staff (support@this.company.com, 555-1234).
+}}}
+
+
+Next, set up your access controls as follows:
+{{{
+acl porn url_regex "/usr/local/squid/etc/porno.txt"
+deny_info ERR_NO_PORNO porn
+http_access deny porn
+(additional http_access lines ...)
+}}}
+
+
+== I want to use local time zone in error messages. ==
+
+Squid, by default, uses GMT as timestamp in all generated error messages.
+This to allow the cache to participate in a hierarchy of caches in different
+timezones without risking confusion about what the time is.
+
+To change the timestamp in Squid generated error messages you must change
+the Squid signature. See ''Customizable Error Messages'' in ../MiscFeatures. The signature by defaults uses %T as timestamp, but if you like
+then you can use %t instead for a timestamp using local time zone.
+
+== I want to put ACL parameters in an external file. ==
+
+
+by Adam Aube
+
+
+Squid can read ACL parameters from an external file. To do this, first
+place the acl parameters, one per line, in a file. Then, on the ACL line
+in ''squid.conf'', put the full path to the file in double quotes.
+
+
+For example, instead of:
+
+
+{{{
+acl trusted_users proxy_auth john jane jim
+}}}
+
+you would have:
+
+{{{
+acl trusted_users proxy_auth "/usr/local/squid/etc/trusted_users.txt"
+}}}
+
+Inside trusted_users.txt, there is:
+
+{{{
+john
+jane
+jim
+}}}
+
+
+== I want to authorize users depending on their MS Windows group memberships ==
+There is an excellent resource over at http://workaround.org/moin/SquidLdap on how to use LDAP-based group membership checking.
