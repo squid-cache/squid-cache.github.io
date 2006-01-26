@@ -1,0 +1,128 @@
+#language en
+[[TableOfContents]]
+== Clients ==
+
+
+=== Wget ===
+
+[ftp://gnjilux.cc.fer.hr/pub/unix/util/wget/ Wget] is a command-line Web client.  It supports HTTP and FTP URLs, recursive retrievals, and HTTP proxies.
+
+=== echoping ===
+
+If you want to test your Squid cache in batch (from a cron command, for
+instance), you can use the
+[ftp://ftp.internatif.org/pub/unix/echoping/ echoping] program,
+which will tell you (in plain text or via an exit code) if the cache is
+up or not, and will indicate the response times.
+
+
+== Logfile Analysis ==
+
+
+Rather than maintain the same list in two places, please see the
+[http://www.squid-cache.org/Scripts/ Logfile Analysis Scripts] page
+on the Web server.
+
+
+== Configuration Tools ==
+
+=== 3Dhierarchy.pl ===
+
+Kenichi Matsui has a simple perl script which generates a 3D hierarchy map (in VRML) from squid.conf.
+[ftp://ftp.nemoto.ecei.tohoku.ac.jp/pub/Net/WWW/VRML/converter/3Dhierarchy.pl 3Dhierarchy.pl].
+
+
+== Squid add-ons ==
+
+
+=== transproxy ===
+
+
+[http://www.transproxy.nlc.net.au/ transproxy]
+is a program used in conjunction with the Linux Transparent Proxy
+networking feature, and ipfwadm, to intercept HTTP and
+other requests.  Transproxy is written by
+[mailto:john@nlc.net.au John Saunders].
+
+
+=== Iain's redirector package ===
+
+A [ftp://ftp.sbs.de/pub/www/cache/redirector/redirector.tar.gz redirector package] from [mailto:iain@ecrc.de Iain Lea] to allow Intranet (restricted) or Internet (full) access with URL deny and redirection for sites that are not deemed acceptable for a userbase all via a single proxy port.
+
+
+=== Junkbusters ===
+
+
+[http://internet.junkbuster.com Junkbusters] Corp has a
+copyleft privacy-enhancing, ad-blocking proxy server which you can
+use in conjunction with Squid.
+
+
+=== Squirm ===
+
+
+[http://squirm.foote.com.au/ Squirm] is a configurable, efficient redirector for Squid by [mailto:chris@senet.com.au Chris Foote].  Features:
+
+  * Very fast
+  * Virtually no memory usage
+  * It can re-read it's config files while running by sending it a HUP signal
+  * Interactive test mode for checking new configs
+  * Full regular expression matching and replacement
+  * Config files for patterns and IP addresses.
+  * If you mess up the config file, Squirm runs in Dodo Mode so your squid keeps working :-)
+
+
+=== chpasswd.cgi ===
+
+
+[mailto:orso@ineparnet.com.br Pedro L Orso] has adapated the Apache's [../../htpasswd/ htpasswd] into a CGI program called [http://web.onda.com.br/orso/chpasswd.html chpasswd.cgi].
+
+
+=== jesred ===
+
+[http://ivs.cs.uni-magdeburg.de/~elkner/webtools/jesred/ jesred] by [mailto:elkner@wotan.cs.Uni-Magdeburg.DE Jens Elkner].
+
+
+=== squidGuard ===
+
+
+[http://www.squidguard.org/ squidGuard] is
+a free (GPL), flexible and efficient filter and
+redirector program for squid.  It lets you define multiple access
+rules with different restrictions for different user groups on a squid
+cache.  squidGuard uses squid standard redirector interface.
+
+
+=== Central Squid Server ===
+
+The Smart Neighbour [URL disappeared]
+(or 'Central Squid Server' - CSS) is a cut-down
+version of Squid without HTTP or object caching functionality.  The
+CSS deals only with ICP messages.  Instead of caching objects, the CSS
+records the availability of objects in each of its neighbour caches.
+Caches that have smart neighbours update each smart neighbour with the
+status of their cache by sending ICP_STORE_NOTIFY/ICP_RELEASE_NOTIFY
+messages upon storing/releasing an object from their cache.  The CSS
+maintains an up to date 'object map' recording the availability of
+objects in its neighbouring caches.
+
+
+=== Cerberian content filter (subscription service) ===
+
+The
+[http://www.marasystems.com/?section=cerberian Cerberian content filter]
+is a very flexible URL rating system with full Squid integration
+provided by
+[http://marasystems.com/download/cerberian MARA Systems AB]. The service
+requires a license (priced by the number of seats) but evaluation licenses are available.
+
+
+== Ident Servers ==
+
+
+For
+[http://ftp.tdcnorge.no/pub/windows/Identd/ Windows NT],
+[http://identd.sourceforge.net/ Windows 95/98],
+and
+[http://www2.lysator.liu.se/~pen/pidentd/ Unix].
+
