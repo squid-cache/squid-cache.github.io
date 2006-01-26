@@ -22,6 +22,7 @@ up or not, and will indicate the response times.
 Rather than maintain the same list in two places, please see the
 [http://www.squid-cache.org/Scripts/ Logfile Analysis Scripts] page
 on the Web server.
+ * [http://sourceforge.net/projects/squidoptimizer/ Squeezer] is a logfile analysis software aimed at measuring Squid's performance
 
 
 == Configuration Tools ==
@@ -125,4 +126,3 @@ For
 [http://identd.sourceforge.net/ Windows 95/98],
 and
 [http://www2.lysator.liu.se/~pen/pidentd/ Unix].
-
