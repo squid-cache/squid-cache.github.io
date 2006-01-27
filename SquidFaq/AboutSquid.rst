@@ -87,7 +87,7 @@ Recent versions of Squid will ''compile and run'' on Windows NT and later incarn
 [http://www.mingw.org/ Mingw] packages.
 
 [http://www.acmeconsulting.it/SquidNT/ Guido Serassio]
-maintains the native NT port of Squid and is actively working on having the needed changes integrated into the standard Squid distribution. Partially based on earlier NT port by 
+maintains the native NT port of Squid and is actively working on having the needed changes integrated into the standard Squid distribution. Partially based on earlier NT port by
 [http://www.phys-iasi.ro/users/romeo/squidnt.htm Romeo Anghelache].
 
 
@@ -152,13 +152,13 @@ does one of two things:
   - The browser tunnels the request through Squid with the ''CONNECT'' request method.
 
 The ''CONNECT'' method is a way to tunnel any kind of
-connection through an HTTP proxy.  The proxy doesn't 
-understand or interpret the contents.  It just passes 
+connection through an HTTP proxy.  The proxy doesn't
+understand or interpret the contents.  It just passes
 bytes back and forth between the client and server.
 For the gory details on tunnelling and the CONNECT
 method, please see
 [ftp://ftp.isi.edu/in-notes/rfc2817.txt RFC 2817]
-and 
+and
 [http://www.web-cache.com/Writings/Internet-Drafts/draft-luotonen-web-proxy-tunneling-01.txt Tunneling TCP based protocols through Web proxy servers] (expired).
 
 
@@ -192,7 +192,7 @@ Patches:
   * [http://www.squid-cache.org/Y2K/patch2 Henrik's src/ftpget.c patch].
   * [http://www.squid-cache.org/Y2K/patch1 Arjan's lib/rfc1123.c patch].
 
-Squid-2.2 and earlier versions have a 
+Squid-2.2 and earlier versions have a
 [http://www.squid-cache.org/Versions/v2/2.2/bugs/index.html#squid-2.2.stable5-mkhttpdlogtime-end-of-year New Year bug].  This is not strictly a Year-2000 bug; it would happen on the first day of any year.
 
 
@@ -272,3 +272,6 @@ We always welcome help keeping the Squid FAQ up-to-date.
 If you would like to help out, please register with this
 Wiki and send a note to squid-faq@squid-cache.org asking for
 edit privileges.
+
+----
+Back to ../FaqIndex
