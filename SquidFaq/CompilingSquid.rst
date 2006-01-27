@@ -1,7 +1,6 @@
 #language en
-[[TableOfContents]]
 
-== Getting and Compiling Squid ==
+[[TableOfContents]]
 
 == Which file do I download to get Squid? ==
 
@@ -55,25 +54,15 @@ on your system.
 
 == Do you have pre-compiled binaries available? ==
 
-The developers do not have the resources to make pre-compiled
-binaries available.  Instead, we invest effort into making
-the source code very portable.  Some people have made
-binary packages available.  Please see our
-[http://www.squid-cache.org/platforms.html Platforms Page].
+The developers do not have the resources to make pre-compiled binaries available.  Instead, we invest effort into making the source code very portable.  Some people have made binary packages available.  Please see our [http://www.squid-cache.org/platforms.html Platforms Page].
 
-The
-[http://freeware.sgi.com/ SGI Freeware] site
-has pre-compiled packages for SGI IRIX.
+The [http://freeware.sgi.com/ SGI Freeware] site has pre-compiled packages for SGI IRIX.
 
-Squid binaries for
-[http://www.freebsd.org/cgi/ports.cgi?query=squid-2&stype=all FreeBSD on Alpha and Intel].
+Squid binaries for [http://www.freebsd.org/cgi/ports.cgi?query=squid-2&stype=all FreeBSD on Alpha and Intel].
 
-Squid binaries for
-[ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid/README.html NetBSD on everything]
+Squid binaries for [ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid/README.html NetBSD on everything]
 
-Gurkan Sengun has some
-[http://www.linuks.mine.nu/solaris/ Sparc/Solaris packages]
-available.
+Gurkan Sengun has some [http://www.linuks.mine.nu/solaris/ Sparc/Solaris packages] available.
 
 == How do I apply a patch or a diff? ==
 
@@ -101,7 +90,7 @@ After the patch has been applied, you must rebuild Squid from the
 very beginning, i.e.:
 {{{
 make distclean
-./configure ...
+./configure [--option --option...]
 make
 make install
 }}}
@@ -352,11 +341,11 @@ necessary.
 
 I made a few modifications to the pristine EMX 0.9d install.
 
-  - added defines for ''strcasecmp()'' & ''strncasecmp()'' to ''string.h''
-  - changed all occurrences of time_t to signed long instead of unsigned long
-  - hacked ld.exe
-    - to search for both xxxx.a and libxxxx.a
-    - to produce the correct filename when using the -Zexe option
+  * added defines for ''strcasecmp()'' & ''strncasecmp()'' to ''string.h''
+  * changed all occurrences of time_t to signed long instead of unsigned long
+  * hacked ld.exe
+    * to search for both xxxx.a and libxxxx.a
+    * to produce the correct filename when using the -Zexe option
 
 You will need to run ''scripts/convert.configure.to.os2'' (in the
 Squid source distribution) to modify
@@ -389,3 +378,7 @@ to install somewhere else, see the ''--prefix'' option for configure.
 
 Now, don't forget to set EMXOPT before running squid each time. I
 recommend using the -Y and -N options.
+
+
+----
+Back to ../FaqIndex
