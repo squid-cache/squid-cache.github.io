@@ -366,3 +366,6 @@ Generally seek time is what you want to optimize for Squid, or
 more precisely the total amount of seeks/s your system can sustain.
 Choosing the right RAID solution generally decreases the amount of seeks/s
 your system can sustain significantly.
+
+----
+Back to ../FaqIndex
