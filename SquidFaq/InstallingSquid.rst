@@ -1,8 +1,6 @@
 #language en
 [[TableOfContents]]
 
-== Installing and Running Squid ==
-
 == How big of a system do I need to run Squid? ==
 
 There are no hard-and-fast rules.  The most important resource for
@@ -27,7 +25,7 @@ with this simple command:
 % make install
 }}}
 
-If you have enabled the [:../OperatingSquid#Icmp:pinger]
+If you have enabled the [:../OperatingSquid:pinger]
 then you will also want to type
 {{{
 % su
@@ -61,8 +59,7 @@ option.
 == How do I start Squid? ==
 
 First you need to make your Squid configuration. The Squid configuration
-can be found in ''/usr/local/squid/etc/squid.conf'' and by default includes
-documentation on all directives.
+can be found in ''/usr/local/squid/etc/squid.conf'' and by default includes documentation on all directives.
 
 In the Suqid distribution there is a small QUICKSTART guide indicating
 which directives you need to look closer at and why. At a absolute minimum
@@ -89,9 +86,7 @@ running Squid with the -z option:
 % /usr/local/squid/sbin/squid -z
 }}}
 
-NOTE: If you run Squid as root then you may need to first create
-/usr/local/squid/var/logs and your cache_dir directories and assign ownership
-of these to the cache_effective_user configured in your squid.conf.
+|| <!> ||If you run Squid as root then you may need to first create ''/usr/local/squid/var/logs'' and your ''cache_dir'' directories and assign ownership of these to the cache_effective_user configured in your squid.conf||
 
 Once the creation of the cache directories completes, you can start Squid
 and try it out. Probably the best thing to do is run it from your terminal
@@ -111,65 +106,54 @@ just leave off all options:
 % /usr/local/squid/sbin/squid
 }}}
 
-NOTE: depending on which http_port you select you may need to start
-squid as root (http_port <1024).
+|| <!> ||Depending on which http_port you select you may need to start squid as root (http_port <1024)||
 
-NOTE: In Squid-2.4 and earlier Squid was installed in bin by default, not sbin.
+|| <!> ||In Squid-2.4 and earlier Squid was installed in bin by default, not sbin||
 
 == How do I start Squid automatically when the system boots? ==
 
+=== by hand ===
+
 Squid-2 has a restart feature built in.  This greatly simplifies
-starting Squid and means that you don't need to use ''RunCache''
+starting Squid and means that you don't need to use ''Run''''''Cache''
 or ''inittab''.  At the minimum, you only need to enter the
 pathname to the Squid executable.  For example:
 {{{
 /usr/local/squid/sbin/squid
 }}}
 
-Squid will automatically background itself and then spawn
-a child process.  In your ''syslog'' messages file, you
-should see something like this:
+Squid will automatically background itself and then spawn a child process.  In your ''syslog'' messages file, you should see something like this:
 {{{
 Sep 23 23:55:58 kitty squid[14616]: Squid Parent: child process 14617 started
 }}}
 
-That means that process ID 14563 is the parent process which monitors the child
-process (pid 14617).  The child process is the one that does all of the
-work.  The parent process just waits for the child process to exit.  If the
-child process exits unexpectedly, the parent will automatically start another
-child process.  In that case, ''syslog'' shows:
+That means that process ID 14563 is the parent process which monitors the child process (pid 14617).  The child process is the one that does all of the work. The parent process just waits for the child process to exit. If the child process exits unexpectedly, the parent will automatically start another child process.  In that case, ''syslog'' shows:
 {{{
 Sep 23 23:56:02 kitty squid[14616]: Squid Parent: child process 14617 exited with status 1
 Sep 23 23:56:05 kitty squid[14616]: Squid Parent: child process 14619 started
 }}}
 
-If there is some problem, and Squid can not start, the parent process will give up
-after a while.  Your ''syslog'' will show:
+If there is some problem, and Squid can not start, the parent process will give up after a while.  Your ''syslog'' will show:
 {{{
 Sep 23 23:56:12 kitty squid[14616]: Exiting due to repeated, frequent failures
 }}}
 
-When this happens you should check your ''syslog'' messages and
-''cache.log'' file for error messages.
+When this happens you should check your ''syslog'' messages and ''cache.log'' file for error messages.
 
-When  you look at a process (''ps'' command) listing,  you'll see two squid processes:
+When  you look at a process (''ps'' command) listing, you'll see two squid processes:
 {{{
 24353  ??  Ss     0:00.00 /usr/local/squid/bin/squid
 24354  ??  R      0:03.39 (squid) (squid)
 }}}
 
-The first is the parent process, and the child process is the one called "(squid)".
-Note that if you accidentally kill the parent process, the child process will not
-notice.
+The first is the parent process, and the child process is the one called "(squid)". Note that if you accidentally kill the parent process, the child process will not notice.
 
-If you want to run Squid from your termainal and prevent it from
-backgrounding and spawning a child process, use the ''-N'' command
-line option.
+If you want to run Squid from your termainal and prevent it from backgrounding and spawning a child process, use the ''-N'' command line option.
 {{{
 /usr/local/squid/bin/squid -N
 }}}
 
-**From inittab**
+=== from inittab ===
 
 On systems which have an ''/etc/inittab'' file (Digital Unix,
 Solaris, IRIX, HP-UX, Linux), you can add a line like this:
@@ -203,7 +187,7 @@ done
 exec bin/squid -N $opts
 }}}
 
-**From rc.local**
+=== from rc.local ===
 
 On BSD-ish systems, you will need to start Squid from the "rc" files,
 usually ''/etc/rc.local''.  For example:
@@ -214,7 +198,7 @@ if [ -f /usr/local/squid/sbin/squid ]; then
 fi
 }}}
 
-**From init.d**
+=== from init.d ===
 
 Squid ships with a init.d type startup script in contrib/squid.rc which
 works on most init.d type systems. Or you can write your own using any
@@ -263,7 +247,7 @@ Also, check the log files, most importantly the ''access.log'' and
 
 ==  squid command line options ==
 
-These are the command line options for **Squid-2**:
+These are the command line options for *'''Squid-2''':
 
 '''-a''' Specify an alternate port number for incoming HTTP requests.
 Useful for testing a configuration file on a non-standard port.
