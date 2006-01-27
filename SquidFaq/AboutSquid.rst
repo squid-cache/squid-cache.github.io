@@ -42,7 +42,7 @@ Squid is the result of efforts by numerous individuals from the Internet communi
 
  * Adrian Chadd
  * RobertCollins
- * HenrikNordstrom
+ * HenrikNordström
  * GuidoSerassio
  * Duane Wessels
 
