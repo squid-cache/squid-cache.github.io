@@ -37,8 +37,8 @@ for reasons of a perceived misbehaviour, etc.
 
 The user agent log file is only maintained, if
 
-  - you configured the compile time ''--enable-useragent-log'' option, and
-  - you pointed the ''useragent_log'' configuration option to a file.
+  * you configured the compile time ''--enable-useragent-log'' option, and
+  * you pointed the ''useragent_log'' configuration option to a file.
 
 From the user agent log file you are able to find out about distributation
 of browsers of your clients. Using this option in conjunction with a loaded
@@ -75,15 +75,15 @@ space-separated columns, compare with the ''storeLog()'' function in file
 [2] '''action''' The action the object was sumitted to, compare with ''src/store_log.c'':
 
   * '''CREATE''' Seems to be unused.
-  * '''RELEASE''' The object was removed from the cache (see also '''file number''' below). 
+  * '''RELEASE''' The object was removed from the cache (see also '''file number''' below).
   * '''SWAPOUT''' The object was saved to disk.
   * '''SWAPIN''' The object existed on disk and was read into memory.
 
-[3] '''dir number''' 
+[3] '''dir number'''
 The cache_dir number this object was stored into, starting at 0 for your first
 cache_dir line.
 
-[4] '''file number''' 
+[4] '''file number'''
 The file number for the object storage file. Please note that the path to
 this file is calculated according to your ''cache_dir'' configuration.
 
@@ -236,7 +236,7 @@ Also, the ''log_fqdn'' configuration option may log the fully qualified
 domain name of the client instead of the dotted quad. The use of that
 option is discouraged due to its performance impact.
 
-[4] '''result codes''' 
+[4] '''result codes'''
 This column is made up of two entries separated by a slash. This column
 encodes the transaction result:
 
@@ -298,8 +298,8 @@ types ":" or even empty ones.
 
 There may be two more columns in the ''access.log'', if the (debug) option
 ''log_mime_headers'' is enabled In this case, the HTTP request headers are
-logged between a "[" and a "]", and the HTTP reply headers are also
-logged between "[" and "]". All control characters like CR and LF are
+logged between a "[[" and a "]]", and the HTTP reply headers are also
+logged between "[[" and "]]". All control characters like CR and LF are
 URL-escaped, but spaces are ''not'' escaped! Parsers should watch out for
 this.
 
@@ -326,16 +326,16 @@ The IMS query failed and the stale object was delivered.
 '''TCP_REFRESH_MISS''' The requested object was cached but ''STALE''.
 The IMS query returned the new content.
 
-'''TCP_CLIENT_REFRESH_MISS''' 
+'''TCP_CLIENT_REFRESH_MISS'''
 The client issued a "no-cache" pragma, or some analogous cache
 control command along with the request. Thus, the cache has to
 refetch the object.
 
-'''TCP_IMS_HIT''' 
+'''TCP_IMS_HIT'''
 The client issued an IMS request for an object which was in the
 cache and fresh.
 
-'''TCP_SWAPFAIL_MISS''' 
+'''TCP_SWAPFAIL_MISS'''
 The object was believed to be in the cache,
 but could not be accessed.
 
@@ -362,7 +362,7 @@ validates any object, see ''offline_mode'' in
 
 '''UDP_INVALID''' An invalid request was received.
 
-'''UDP_MISS_NOFETCH''' 
+'''UDP_MISS_NOFETCH'''
 During "-Y" startup, or during frequent
 failures, a cache in hit only mode will return either UDP_HIT or
 this code. Neighbours will thus only fetch hits.
@@ -711,18 +711,11 @@ To disable ''cache.log'':
 cache_log /dev/null
 }}}
 
-'''Note ''': It is a bad idea to disable the ''cache.log'' because this
-file contains many important status and debugging messages.  However, if
-you really want to, you can.
+|| <!> ||It is a bad idea to disable the ''cache.log'' because this file contains many important status and debugging messages.  However, if you really want to, you can||
 
-'''Warning ''': If /dev/null is specified to any of the above log files,
-''logfile rotate'' must also be set to ''0'' or else risk Squid
-rotating away /dev/null making it a plain log file.
+|| /!\ ||If /dev/null is specified to any of the above log files, ''logfile rotate'' must also be set to ''0'' or else risk Squid rotating away /dev/null making it a plain log file||
 
-'''Tip ''': Instead of disabling the log files, it is advisable to use a
-smaller value for ''logfile_rotate'' and properly rotating Squid's log
-files in your cron. That way, your log files are more controllable and
-self-maintained by your system.
+|| {i} ||Instead of disabling the log files, it is advisable to use a smaller value for ''logfile_rotate'' and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system||
 
 
 == What is the maximum size of access.log? ==
@@ -732,6 +725,8 @@ systems have a maximum file size limit, however.  If a Squid log file
 exceeds the operating system's size limit, Squid receives a write error
 and shuts down.  You should regularly rotate Squid's log files
 so that they do not become very large.
+
+|| /!\ ||Logging is very important to Squid. In fact, it is so important that it will shut itself down if it can't write to its logfiles. This includes cases such as a full log disk, or logfiles getting too big.||
 
 == My log files get very big! ==
 
@@ -744,7 +739,7 @@ You need to ''rotate'' your log files with a cron job.  For example:
 
 If you set ''logfile_rotate'' to 0, Squid simply closes and then
 re-opens the logs.  This allows third-party logfile management systems,
-such as ''newsyslog'' or ''logrotate'', to maintain the log files.
+such as [http://www.weird.com/~woods/projects/newsyslog.html newsyslog] or ''logrotate'', to maintain the log files.
 
 == Managing log files ==
 
@@ -775,7 +770,7 @@ to obey when handling and processing log files:
 
   * Respect the privacy of your clients when publishing results.
   * Keep logs unavailable unless anonymized. Most countries have laws on privacy protection, and some even on how long you are legally allowed to keep certain kinds of information.
-  * Rotate and process log files at least once a day. Even if you don't process the log files, they will grow quite large, see [#my_log_files_get_very_big! My log files get very big!] If you rely on processing the log files, reserve a large enough partition solely for log files.
+  * Rotate and process log files at least once a day. Even if you don't process the log files, they will grow quite large, see ''My log files get very big'' above here. If you rely on processing the log files, reserve a large enough partition solely for log files.
   * Keep the size in mind when processing. It might take longer to process log files than to generate them!
   * Limit yourself to the numbers you are interested in. There is data beyond your dreams available in your log file, some quite obvious, others by combination of different views. Here are some examples for figures to watch:
     * The hosts using your cache.
@@ -838,3 +833,6 @@ logged in ''store.log'' with the RELEASE tag.  To differentiate these
 two, you can look at the filenumber (3rd) field.  When an uncachable
 response is released, the filenumber is FFFFFFFF (-1).  Any other
 filenumber indicates a cached response was released.
+
+-----
+To ../FaqIndex
