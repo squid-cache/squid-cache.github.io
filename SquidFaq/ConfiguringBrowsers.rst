@@ -206,7 +206,7 @@ Microsoft Internet Explorer, versions 4.0 and above, supports Java''''''Script a
 '''Options''' from the '''View''' menu.
 Click on the '''Advanced''' tab.  In the lower left-hand
 corner, click on the '''Automatic Configuration'''
-button.  Fill in the URL for your JavaScript file in the dialog
+button.  Fill in the URL for your Java''''''Script file in the dialog
 box it presents you.  Then exit MSIE and restart it for the changes
 to take effect.  MSIE will reload the Java''''''Script file every time
 it starts.
@@ -215,7 +215,7 @@ it starts.
 
 Netmanage Web''''''Surfer supports manual proxy configuration and exclusion
 lists for hosts or domains that should not be fetched via proxy
-(this information is current as of WebSurfer 5.0).  Select
+(this information is current as of Web''''''Surfer 5.0).  Select
 '''Preferences''' from the '''Settings'''
 menu.  Click on the '''Proxies''' tab.  Select the
 '''Use Proxy''' options for HTTP, FTP, and gopher.  For
@@ -227,7 +227,7 @@ your Squid does not support, leave the fields blank.
 
 On the same configuration window, you'll find a button to bring up
 the exclusion list dialog box, which will let you enter some hosts
-or domains that you don't want fetched via proxy.  
+or domains that you don't want fetched via proxy.
 
 == Opera 2.12 proxy configuration ==
 
@@ -276,8 +276,7 @@ Implementing wpad requires you to '''fully''' understand:
   * squid proxy server (or others) installation etc.
   * Domain Name System maintenance etc.
 
-Please don't bombard the squid list with web server or DNS questions. See
-your system administrator, or do some more research on those topics.
+|| <!> ||Please don't bombard the squid list with web server or DNS questions. See your system administrator, or do some more research on those topics.||
 
 This is not a recommendation for any product or version. As far as I
 know IE5 is the only browser out now implementing wpad. I think wpad
@@ -292,13 +291,9 @@ method worked for me. It '''may''' work for you.
 
 But if you'd rather just have a go ...
 
-Create a standard netscape [#netscape_automatic_configuration auto proxy] config file.  The sample provided there is more than adequate to get you going.  No doubt all the other load balancing and backup scripts will be fine also.
+Create a standard Netscape ''auto proxy'' config file.  The sample provided above is more than adequate to get you going.  No doubt all the other load balancing and backup scripts will be fine also.
 
-Store the resultant file in the document root directory of a handy web server as
-''wpad.dat'' (Not ''proxy.pac'' as you may have previously done.) Andrei Ivanov
-notes that you should be able to use an HTTP redirect if you
-want to store the wpad.dat file somewhere else.  You can probably
-even redirect ''wpad.dat'' to ''proxy.pac'':
+Store the resultant file in the document root directory of a handy web server as ''wpad.dat'' (Not ''proxy.pac'' as you may have previously done.) Andrei Ivanov notes that you should be able to use an HTTP redirect if you want to store the wpad.dat file somewhere else.  You can probably even redirect ''wpad.dat'' to ''proxy.pac'':
 
 {{{
 Redirect /wpad.dat http://racoon.riga.lv/proxy.pac
@@ -434,3 +429,6 @@ According to Joao Coutinho, this simple solution also corrects the problem:
 Another possible workaround to these problems is to make the
 ERR_CACHE_ACCESS_DENIED larger than 1460 bytes. This should trigger
 IE to handle the authentication in a slightly different manner.
+
+-----
+Go to ../FaqIndex
