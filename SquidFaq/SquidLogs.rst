@@ -460,7 +460,7 @@ Yes, there are really two entries for status code
 Squid recognizes several request methods as defined in
 [ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2616]. Newer versions of Squid (2.2.STABLE5 and above)
 also recognize
-[ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2518] "HTTP Extensions for Distributed Authoring --
+[ftp://ftp.isi.edu/in-notes/rfc2618.txt RFC 2518] "HTTP Extensions for Distributed Authoring --
 WEBDAV" extensions.
 
 {{{
