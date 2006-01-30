@@ -158,7 +158,7 @@ made so often and the entries are frequently non-existent anyway).
 === Tuning ===
 
 Have a look at
-[http://www.sean.de/Solaris/soltune.html - Tuning your TCP/IP stack and more] by 
+[http://www.sean.de/Solaris/soltune.html Tuning your TCP/IP stack and more] by 
 Jens-S. Voeckler.
 
 
