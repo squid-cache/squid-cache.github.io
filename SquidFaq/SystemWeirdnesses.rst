@@ -158,8 +158,8 @@ made so often and the entries are frequently non-existent anyway).
 === Tuning ===
 
 
-[http://www.rvs.uni-hannover.de/people/voeckler/tune/EN/tune.html Solaris 2.x - tuning your TCP/IP stack and more] by 
-[http://www.rvs.uni-hannover.de/people/voeckler/ Jens-S. Vckler]
+[http://www.sean.de/Solaris/soltune.html - Tuning your TCP/IP stack and more] by 
+Jens-S. Voeckler
 
 
 === disk write error: (28) No space left on device ===
