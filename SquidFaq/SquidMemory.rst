@@ -114,8 +114,7 @@ See also
 
 ''Note: This information is specific to Squid-1.1 versions''
 
-Look at your ''cachemgr.cgi'' <CODE>Cache
-Information</CODE> page.  For example:
+Look at your ''cachemgr.cgi'' ''Cache Information'' page.  For example:
 {{{
 Memory usage for squid via mallinfo():
        Total space in arena:   94687 KB
@@ -140,41 +139,41 @@ Miscellaneous                              =   2600 KB
 total Accounted                            =  58499 KB
 }}}
 
-First note that <CODE>mallinfo()</CODE> reports 94M in "arena."  This
+First note that ''mallinfo()'' reports 94M in "arena."  This
 is pretty close to what ''top'' says (97M).
 
 Of that 94M, 81% (76M) is actually being used at the moment.  The
-rest has been freed, or pre-allocated by <CODE>malloc(3)</CODE>
+rest has been freed, or pre-allocated by ''malloc(3)''
 and not yet used.
 
 Of the 76M in use, we can account for 58.5M (76%).  There are some
-calls to <CODE>malloc(3)</CODE> for which we can't account.
+calls to ''malloc(3)'' for which we can't account.
 
-The <CODE>Meta Data</CODE> list gives the breakdown of where the
-accounted memory has gone.  45% has gone to <CODE>StoreEntry</CODE>
+The ''Meta Data'' list gives the breakdown of where the
+accounted memory has gone.  45% has gone to ''Store''''''Entry''
 and URL strings.  Another 42% has gone to buffering hold objects
-in VM while they are fetched and relayed to the clients (<CODE>Pool
-for in-memory object</CODE>).
+in VM while they are fetched and relayed to the clients (''Pool
+for in-memory object'').
 
 The pool sizes are specified by ''squid.conf'' parameters.
 In version 1.0, these pools are somewhat broken:  we keep a stack
-of unused pages instead of freeing the block.  In the <CODE>Pool
-for in-memory object</CODE>, the unused stack size is 1/2 of
-<CODE>cache_mem</CODE>.  The <CODE>Pool for disk I/O</CODE> is
-hardcoded at 200.  For <CODE>MemObject</CODE> and <CODE>Request</CODE>
-it's 1/8 of your system's <CODE>FD_SETSIZE</CODE> value.
+of unused pages instead of freeing the block.  In the ''Pool
+for in-memory object'', the unused stack size is 1/2 of
+''cache_mem''.  The ''Pool for disk I/O'' is
+hardcoded at 200.  For ''Mem''''''Object'' and ''Request''
+it's 1/8 of your system's ''FD_SETSIZE'' value.
 
 If you need to lower your process size, we recommend lowering the
 max object sizes in the 'http', 'ftp' and 'gopher' config lines.
-You may also want to lower <CODE>cache_mem</CODE> to suit your
-needs. But if you <CODE>make cache_mem</CODE> too low, then some
+You may also want to lower ''cache_mem'' to suit your
+needs. But if you ''make cache_mem'' too low, then some
 objects may not get saved to disk during high-load periods.  Newer
-Squid versions allow you to set <CODE>memory_pools off</CODE> to
+Squid versions allow you to set ''memory_pools off'' to
 disable the free memory pools.
 
 == The "Total memory accounted" value is less than the size of my Squid process. ==
 
-We are not able to account for ''all'' memory that Squid uses.  This
+We are not able to account for '''all''' memory that Squid uses.  This
 would require excessive amounts of code to keep track of every last byte.
 We do our best to account for the major uses of memory.
 
@@ -194,8 +193,8 @@ Messages like "FATAL: xcalloc: Unable to allocate 4096 blocks of 1 bytes!"
 appear when Squid can't allocate more memory, and on most operating systems
 (inclusive BSD) there are only two possible reasons:
 
-  -The machine is out of swap
-  -The process' maximum data segment size has been reached
+  * The machine is out of swap
+  * The process' maximum data segment size has been reached
 
 The first case is detected using the normal swap monitoring tools
 available on the platform (''pstat'' on SunOS, perhaps ''pstat'' is
@@ -208,8 +207,8 @@ doubts.
 
 The data segment size can be limited by two factors:
 
-  -Kernel imposed maximum, which no user can go above
-  -The size set with ulimit, which the user can control.
+  * Kernel imposed maximum, which no user can go above
+  * The size set with ulimit, which the user can control.
 
 When squid starts it sets data and file ulimit's to the hard level. If
 you manually tune ulimit before starting Squid make sure that you set
@@ -282,7 +281,7 @@ This should give enough space for a 256MB squid process.
 
 '''FreeBSD (2.2.X)'''
 
-by Duane Wessels
+by [wessels Duane Wessels]
 
 The procedure is almost identical to that for BSD/OS above.
 Increase the open filedescriptor limit in ''/sys/conf/param.c'':
@@ -333,7 +332,7 @@ And don't forget to run "cap_mkdb /etc/login.conf" after editing that file.
 
 by ''Ong Beng Hui''
 
-To increase the data size for Digital UNIX, edit the file <CODE>/etc/sysconfigtab</CODE>
+To increase the data size for Digital UNIX, edit the file ''/etc/sysconfigtab''
 and add the entry...
 {{{
 proc:
@@ -345,7 +344,7 @@ Or, with csh, use the limit command, such as
 > limit datasize 1024M
 }}}
 
-Editing <CODE>/etc/sysconfigtab</CODE> requires a reboot, but the limit command
+Editing ''/etc/sysconfigtab'' requires a reboot, but the limit command
 doesn't.
 
 == fork: (12) Cannot allocate memory ==
@@ -377,23 +376,11 @@ If your cache performance is suffering because of memory limitations,
 you might consider buying more memory.  But if that is not an option,
 There are a number of things to try:
 
-  *Try a
-[[#alternate-malloc|different malloc library]].
-  *Reduce the ''cache_mem'' parameter in the config file.  This controls
-how many "hot" objects are kept in memory.  Reducing this parameter
-will not significantly affect performance, but you may recieve
-some warnings in ''cache.log'' if your cache is busy.
-  *Turn the ''memory_pools off'' in the config file.  This causes
-Squid to give up unused memory by calling ''free()'' instead of
-holding on to the chunk for potential, future use.
-  *Reduce the ''cache_swap'' parameter in your config file.  This will
-reduce the number of objects Squid keeps.  Your overall hit ratio may go down a
-little, but your cache will perform significantly better.
-  *Reduce the ''maximum_object_size'' parameter (Squid-1.1 only).
-You won't be able to
-cache the larger objects, and your byte volume hit ratio may go down,
-but Squid will perform better overall.
-  *If you are using Squid-1.1.x, try the "NOVM" version.
+  * Try a different malloc library (see below)
+  * Reduce the ''cache_mem'' parameter in the config file.  This controls how many "hot" objects are kept in memory.  Reducing this parameter will not significantly affect performance, but you may recieve some warnings in ''cache.log'' if your cache is busy.
+  * Turn the ''memory_pools off'' in the config file.  This causes Squid to give up unused memory by calling ''free()'' instead of holding on to the chunk for potential, future use. Generally speaking, this is a bad idea as it will induce heap fragmentation. Use  ''memory_pools_limit'' instead.
+  * Reduce the ''cache_swap'' parameter in your config file.  This will reduce the number of objects Squid keeps.  Your overall hit ratio may go down a little, but your cache will perform significantly better.
+
 
 ==  Using an alternate malloc library ==
 
@@ -471,3 +458,7 @@ memory and affecting performance. A very large cache_dir total and
 insufficient physical RAM + Swap could cause Squid to stop functioning
 completely. The solution for larger caches is to get more physical RAM;
 allocating more to Squid via cache_mem will not help.
+
+-----
+
+to ../FaqIndex
