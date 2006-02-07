@@ -14,7 +14,7 @@ These can be applied with the ''patch'' program (available from
 
 == How do I compile Squid? ==
 
-For **Squid-1.0** and **Squid-1.1** versions, you can just
+For '''Squid-1.0''' and '''Squid-1.1''' versions, you can just
 type ''make'' from the top-level directory after unpacking
 the source files.  For example:
 {{{
@@ -23,7 +23,7 @@ the source files.  For example:
 % make
 }}}
 
-For **Squid-2** you must run the ''configure'' script yourself
+For '''Squid-2''' you must run the ''configure'' script yourself
 before running ''make'':
 {{{
 % tar xzf squid-2.0.RELEASE-src.tar.gz
@@ -305,14 +305,14 @@ make[1]: Leaving directory `/tmp/squid-1.1.11/lib'
 make: *** [all] Error 1
 }}}
 
-Note on the second line the **/usr/bin/false**.   This is supposed
+Note on the second line the ''/usr/bin/false''.   This is supposed
 to be a path to the ''ar'' program.  If ''configure'' cannot find ''ar''
 on your system, then it substitues ''false''.
 
 To fix this you either need to:
 
   * Add ''/usr/ccs/bin'' to your PATH.  This is where the ''ar'' command should be.  You need to install SUNWbtool if ''ar'' is not there.  Otherwise,
-  * Install the **binutils** package from [ftp://ftp.gnu.org/gnu/binutils the GNU FTP ite]. This package includes programs such as ''ar'', ''as'', and ''ld''.
+  * Install the '''binutils''' package from [ftp://ftp.gnu.org/gnu/binutils the GNU FTP ite]. This package includes programs such as ''ar'', ''as'', and ''ld''.
 
 == I have problems compiling Squid on Platform Foo. ==
 
