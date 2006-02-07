@@ -37,69 +37,9 @@ right as you go.
 You may also wish to consult Netscape's documentation for the Navigator
 [http://home.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
 
-Here is a sample auto configuration Java''''''Script from Oskar Pearson:
-{{{
-//We (www.is.co.za) run a central cache for our customers that they
-//access through a firewall - thus if they want to connect to their intranet
-//system (or anything in their domain at all) they have to connect
-//directly - hence all the "fiddling" to see if they are trying to connect
-//to their local domain.
-//
-//Replace each occurrence of company.com with your domain name
-//and if you have some kind of intranet system, make sure
-//that you put it's name in place of "internal" below.
-//
-//We also assume that your cache is called "cache.company.com", and
-//that it runs on port 8080. Change it down at the bottom.
-//
-//(C) Oskar Pearson and the Internet Solution (http://www.is.co.za)
+Here is a sample auto configuration file from Oskar Pearson (link to save at the bottom):
 
-function FindProxyForURL(url, host)
-{
-    //If they have only specified a hostname, go directly.
-    if (isPlainHostName(host))
-            return "DIRECT";
-
-    //These connect directly if the machine they are trying to
-    //connect to starts with "intranet" - ie http://intranet
-    //Connect  directly if it is intranet.*
-    //If you have another machine that you want them to
-    //access directly, replace "internal*" with that
-    //machine's name
-    if (shExpMatch( host, "intranet*")||
-                    shExpMatch(host, "internal*"))
-        return "DIRECT";
-
-    //Connect directly to our domains (NB for Important News)
-    if (dnsDomainIs( host,"company.com")||
-    //If you have another domain that you wish to connect to
-    //directly, put it in here
-                    dnsDomainIs(host,"sistercompany.com"))
-        return "DIRECT";
-
-    //So the error message "no such host" will appear through the
-    //normal Netscape box - less support queries :)
-    if (!isResolvable(host))
-            return "DIRECT";
-
-    //We only cache http, ftp and gopher
-    if (url.substring(0, 5) == "http:" ||
-                    url.substring(0, 4) == "ftp:"||
-                    url.substring(0, 7) == "gopher:")
-
-    //Change the ":8080" to the port that your cache
-    //runs on, and "cache.company.com" to the machine that
-    //you run the cache on
-            return "PROXY cache.company.com:8080; DIRECT";
-
-    //We don't cache WAIS
-    if (url.substring(0, 5) == "wais:")
-            return "DIRECT";
-
-    else
-            return "DIRECT";
-}
-}}}
+inline:sample1.pac.txt
 
 == Lynx and Mosaic configuration ==
 
@@ -155,27 +95,7 @@ proxy   IN      A       10.0.0.1 ; IP address of proxy1
 
 The clients just refer to 'http://proxy/proxy.pac'.  This script looks like this:
 
-{{{
-function FindProxyForURL(url,host)
-{
-// Hostname without domainname or host within our own domain?
-// Try them directly:
-// http://www.domain.com actually lives before the firewall, so
-// make an exception:
-if ((isPlainHostName(host)||dnsDomainIs( host,".domain.com")) &&
-        !localHostOrDomainIs(host, "www.domain.com"))
-        return "DIRECT";
-
-// First try proxy1 then proxy2. One server mostly caches '.com'
-// to make sure both servers are not
-// caching the same data in the normal situation. The other
-// server caches the other domains normally.
-// If one of 'm is down the client will try the other server.
-else if (shExpMatch(host, "*.com"))
-        return "PROXY proxy1.domain.com:8080; PROXY proxy2.domain.com:8081; DIRECT";
-return "PROXY proxy2.domain.com:8081; PROXY proxy1.domain.com:8080; DIRECT";
-}
-}}}
+inline:sample2.pac.txt
 
 I made sure every client domain has the appropriate 'proxy' entry.
 The clients are automatically configured with two nameservers using
