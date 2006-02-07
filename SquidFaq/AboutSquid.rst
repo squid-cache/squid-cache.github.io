@@ -268,10 +268,7 @@ It was converted to a Wiki in July 2005.
 
 == Want to contribute? ==
 
-We always welcome help keeping the Squid FAQ up-to-date.
-If you would like to help out, please register with this
-Wiki and send a note to squid-faq@squid-cache.org asking for
-edit privileges.
+We always welcome help keeping the Squid FAQ up-to-date. If you would like to help out, please register with this Wiki and type away. Please also send a note to the wiki operator (wiki at kinkie dot it) to inform him of your changes.
 
 ----
 Back to ../FaqIndex
