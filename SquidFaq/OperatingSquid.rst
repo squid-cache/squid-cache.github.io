@@ -390,3 +390,6 @@ In this situation, you must ensure that all HTTP packets destined for
 the client IP addresses are routed to the Squid box.  If the packets
 take another path, the real clients will send TCP resets to the
 origin servers, thereby breaking the connections.
+
+-----
+Back to ../FaqIndex
