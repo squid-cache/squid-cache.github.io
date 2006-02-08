@@ -475,7 +475,7 @@ This will forward the user's credentials '''as-is''' to the parent proxy which w
 {{{
 cache_peer parent.foo.com parent login=*:somepassword
 }}}
-This will perform ''Basic'' authentication against the parent, sending the '''username''' of the current client connection and as password '''always''' ''somepassword''. The parent will need to authorization against the child cache's IP address, as if there was no authentication forwarding, and it will need to perform client authentication for all usernames against ''somepassword'' via a specially-designed authentication helper. The purpose is to log the client cache's usernames into the parent's ''access.log''.
+This will perform ''Basic'' authentication against the parent, sending the '''username''' of the current client connection and as password '''always''' ''somepassword''. The parent will need to authorization against the child cache's IP address, as if there was no authentication forwarding, and it will need to perform client authentication for all usernames against ''somepassword'' via a specially-designed authentication helper. The purpose is to log the client cache's usernames into the parent's ''access.log''. You can find an example semi-tested helper of that kind as attachment:parent_auth.pl.
 
 
 
