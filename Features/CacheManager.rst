@@ -16,19 +16,15 @@ That depends on which web server you're using.  Below you will
 find instructions for configuring the CERN and Apache servers
 to permit ''cachemgr.cgi'' usage.
 
-''EDITOR'S NOTE: readers are encouraged to submit instructions
-for configuration of cachemgr.cgi on other web server platforms, such
-as Netscape.''
+|| {i} ||''EDITOR'S NOTE: readers are encouraged to submit instructions for configuration of cachemgr.cgi on other web server platforms, such as Netscape.''||
 
 After you edit the server configuration files, you will probably
 need to either restart your web server or or send it a SIGHUP signal
 to tell it to re-read its configuration files.
 
-When you're done configuring your web server, you'll connect to
-the cache manager with a web browser, using a URL such as:
-{{{
-http://www.example.com/Squid/cgi-bin/cachemgr.cgi
-}}}
+When you're done configuring your web server, you'll connect to the cache manager with a web browser, using a URL such as:
+
+''http://www.example.com/Squid/cgi-bin/cachemgr.cgi''
 
 == Cache manager configuration for CERN httpd 3.0 ==
 
@@ -198,8 +194,7 @@ browser. So if your web server lives somewhere else, you should
 make sure that IP address of the web server that has ''cachemgr.cgi''
 installed on it is in the example ACL above.
 
-Always be sure to send a SIGHUP signal to ''squid''
-any time you change the ''squid.conf'' file.
+Always be sure to send a SIGHUP signal to ''squid'' any time you change the ''squid.conf'' file, or to run ''squid -k reconfigure''.
 
 == Why does it say I need a password and a URL? ==
 
@@ -247,25 +242,20 @@ explicitly garbage collect (unless you tell it to in other ways).
 
 == What do the Meta Data entries mean? ==
 
-'''Store''''''Entry''' Entry describing an object in the cache.
-
-'''IP''''''Cache''''''Entry''' An entry in the DNS cache.
-
-'''Hash link''' Link in the cache hash table structure.
-
-'''URL strings''' The strings of the URLs themselves that map to
-an object number in the cache, allowing access to the
-Store''''''Entry.
+ StoreEntry:: Entry describing an object in the cache.
+ IPCacheEntry:: An entry in the DNS cache.
+ Hash link:: Link in the cache hash table structure.
+ URL strings:: The strings of the URLs themselves that map to an object number in the cache, allowing access to the Store''''''Entry.
 
 
 Basically just like the log file in your cache directory:
 
-  - Pool''''''Mem''''''Object structures
-  - Info about objects currently in memory, (eg, in the process of being transferred).
-  - Pool for Request structures
-  - Information about each request as it happens.
-  - Pool for in-memory object
-  - Space for object data as it is retrieved.
+  * Pool''''''Mem''''''Object structures
+  * Info about objects currently in memory, (eg, in the process of being transferred).
+  * Pool for Request structures
+  * Information about each request as it happens.
+  * Pool for in-memory object
+  * Space for object data as it is retrieved.
 
 If ''squid'' is much smaller than this field, run for cover!
 Something is very wrong, and you should probably restart ''squid''.
@@ -298,11 +288,7 @@ maximum buffer sizes.
 
 == What is the Objects section for? ==
 
-'''Warning:''' this will download to your browser
-a list of every URL in the cache and statistics about it. It can
-be very, very large.  ''Sometimes it will be larger than
-the amount of available memory in your client!'' You
-probably don't need this information anyway.
+|| <!> ||This will download to your browser a list of every URL in the cache and statistics about it. It can be very, very large.  ''Sometimes it will be larger than the amount of available memory in your client!'' You probably don't need this information anyway.||
 
 == What is the VM Objects section for? ==
 
@@ -328,20 +314,19 @@ The hostname is the name that was requested to be resolved.
 
 For the Flags column:
 
-  * C Means positively cached.
-  * N Means negatively cached.
-  * P Means the request is pending being dispatched.
-  * D Means the request has been dispatched and we're waiting for an answer.
-  * L Means it is a locked entry because it represents a parent or sibling.
+  * '''C''' means positively cached.
+  * '''N''' means negatively cached.
+  * '''P''' means the request is pending being dispatched.
+  * '''D''' means the request has been dispatched and we're waiting for an answer.
+  * '''L''' means it is a locked entry because it represents a parent or sibling.
 
 The TTL column represents "Time To Live" (i.e., how long
-the cache entry is valid).  (May be negative if the document has
+the cache entry is valid).  (May be negative if the entry has
 expired.)
 
-The N column is the number of IP addresses from which
-the cache has documents.
+The N column is the number of hostnames which the cache has translations for.
 
-The rest of the line lists all the IP addresses that have been associated
+The rest of the line lists all the host names that have been associated
 with that IP cache entry.
 
 == What is the fqdncache and how is it different from the ipcache? ==
@@ -510,7 +495,10 @@ reasons:
 
   * The URL in the reply could not be found in the cache at all.
   * The URL in the reply was already being fetched.  Probably this ICP reply arrived too late.
-  * The URL in the reply did not have a MemObject associated with it.  Either the request is already finished, or the user aborted before the ICP arrived.
+  * The URL in the reply did not have a Mem''''''Object associated with it.  Either the request is already finished, or the user aborted before the ICP arrived.
   * The reply came from a multicast-responder, but the ''cache_peer_access'' configuration does not allow us to forward this request to that neighbor.
   * Source-Echo replies from known neighbors are ignored.
   * ICP_OP_DENIED replies are ignored after the first 100.
+
+-----
+To ../FaqIndex
