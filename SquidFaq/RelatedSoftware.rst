@@ -24,6 +24,40 @@ Rather than maintain the same list in two places, please see the
 on the Web server.
  * [http://sourceforge.net/projects/squidoptimizer/ Squeezer] is a logfile analysis software aimed at measuring Squid's performance
 
+=== SGI's Performance Co-Pilot ===
+
+Jan-Frode Myklebust writes:
+
+I use Performance Co''''''Pilot from http://oss.sgi.com/projects/pcp/ for
+keeping track of squid and server performance. It comes by default
+with a huge number of system performance metrics, and also has a nice
+plugin (PMDA, Performance Metrics Domain Agent) for collecting metrics
+from the squid access.log.
+
+i.e. it can collect historic, or show live how many requests/s or
+byte/s squid is answering of type:
+
+ * total
+ * get
+ * head
+ * post
+ * other
+ * size.zero le3k le10k le30k le100k le300k le1m le3m gt3m unknown
+ * client.total
+ * cached.total
+ * cached.size.zero le3k le10k le30k le100k le300k le1m le3m gt3m unknown
+ * uncached.total
+ * uncached.size.zero le3k le10k le30k le100k le300k le1m le3m gt3m unknown
+
+and also combine this with system level metrics like load, system cpu
+time, cpu i/o wait, per partition byte/s, network interface byte/s,
+and much more..
+
+Because of it's historic logs of all this, it's great for collecting
+the performance numbers during high activity, and then replaying it
+to analyse what goes wrong later on.
+
+
 
 == Configuration Tools ==
 
