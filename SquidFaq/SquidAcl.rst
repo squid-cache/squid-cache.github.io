@@ -10,7 +10,7 @@ followed by a number of ACL elements.
 
 == ACL elements ==
 
-''Note: The information here is current for version 2.5.''
+|| {i} ||The information here is current for version 2.5.||
 
 Squid knows about the following types of ACL elements:
 
@@ -166,9 +166,11 @@ You would use these configuration lines:
 {{{
 acl Cooking1 url_regex cooking
 acl Recipe1 url_regex recipe
+acl myclients src 172.16.5.0/24
 http_access deny Cooking1
 http_access deny Recipe1
-http_access allow all
+http_access allow myclients
+http_access deny all
 }}}
 
 The ''url_regex'' means to search the entire URL for the regular
@@ -463,6 +465,19 @@ http_access deny all
 }}}
 
 
+Squid 2.5 allows two exceptions to this rule, by defining the appropriate cache_peer options:
+{{{
+cache_peer parent.foo.com parent login=PASS
+}}}
+This will forward the user's credentials '''as-is''' to the parent proxy which will be thus able to authenticate again.
+|| <!> ||This will '''only''' work with the ''Basic'' authentication scheme. If any other scheme is enabled, it will fail||
+
+{{{
+cache_peer parent.foo.com parent login=*:somepassword
+}}}
+This will perform ''Basic'' authentication against the parent, sending the '''username''' of the current client connection and as password '''always''' ''somepassword''. The parent will need to authorization against the child cache's IP address, as if there was no authentication forwarding, and it will need to perform client authentication for all usernames against ''somepassword'' via a specially-designed authentication helper. The purpose is to log the client cache's usernames into the parent's ''access.log''.
+
+
 
 == Is there an easy way of banning all Destination addresses except one? ==
 
@@ -482,12 +497,9 @@ http_access deny BAD
   * [http://members.lycos.co.uk/njadmin Jasons Staudenmayer]
   * [http://web.onda.com.br/orso/ Pedro Lineu Orso's List]
   * [http://www.hklc.com/squidblock/ Linux Center Hong Kong's List]
-  * Snerpa, an ISP in Iceland operates a DNS-database of IP-addresses of blacklisted sites containing porn, violence, etc. which is utilized using a small perl-script redirector.  Information on this on the [http://www.snerpa.is/notendur/infilter/infilter-en.phtml INfilter] webpage.
+  * Snerpa, an ISP in Iceland operates a DNS-database of IP-addresses of blacklisted sites containing porn, violence, etc. which is utilized using a small perl-script redirector.  Information on this on the  [http://www.snerpa.is/notendur/infilter/infilter-en.phtml INfilter] webpage.
   * The [http://www.squidguard.org/blacklist/ SquidGuard] redirector folks provide a blacklist.
-  * Bill Stearns maintains the [http://www.stearns.org/sa-blacklist/ sa-blacklist] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more
-importantly, they can no longer send out requests for things like scripts
-and gifs that have a unique identifer attached, showing that they opened
-the email and making their addresses more valuable to the spammer.
+  * Bill Stearns maintains the [http://www.stearns.org/sa-blacklist/ sa-blacklist] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
   * The [http://www.rambris.com/fredrik/sleezeball/ SleezeBall site] has a list of patterns that you can download.
 
 
@@ -496,23 +508,18 @@ the email and making their addresses more valuable to the spammer.
 
 If you are using Squid-2.4 or later then keep in mind that dstdomain
 acls uses different syntax for exact host matches and entire domain matches.
-www.example.com matches the exact host www.example.com, while .example.com
-matches the entire domain example.com (including example.com alone)
+''www.example.com'' matches the '''exact host''' ''www.example.com'', while ''.example.com''
+matches the '''entire domain''' example.com (including example.com alone)
 
 
 There is also subtle issues if your dstdomain ACLs contains matches
 for both an exact host in a domain and the whole domain where both are in the
-same domain (i.e. both www.example.com and .example.com). Depending on how
+same domain (i.e. both ''www.example.com'' and ''.example.com''). Depending on how
 your data is ordered this may cause only the most specific of these (e.g.
-www.example.com) to be used.
+''www.example.com'') to be used.
 
 
-NOTE: Current Squid versions (as of Squid-2.4) will warn you
-when this kind of configuration is used. If your Squid does not warn
-you while reading the configuration file you do not have the problem
-described below. Also the configuration here uses the dstdomain syntax
-of Squid-2.1 or earlier.. (2.2 and later needs to have domains prefixed
-by a dot)
+|| {i} ||Current Squid versions (as of Squid-2.4) will warn you when this kind of configuration is used. If your Squid does not warn you while reading the configuration file you do not have the problem described below. Also the configuration here uses the dstdomain syntax of Squid-2.1 or earlier.. (2.2 and later needs to have domains prefixed by a dot)||
 
 
 There is a subtle problem with domain-name based access controls
@@ -599,7 +606,7 @@ for a list of known ports and protocols.
 == Does Squid support the use of a database such as mySQL for storing the ACL list? ==
 
 
-''Note: The information here is current for version 2.2.''
+|| {i} ||The information here is current for version 2.2.||
 
 No, it does not.
 
@@ -653,7 +660,7 @@ http_access deny USER2
 == Problems with IP ACL's that have complicated netmasks ==
 
 
-''Note: The information here is current for version 2.3.''
+|| {i} ||The information here is current for version 2.3.||
 
 The following ACL entry gives inconsistent or unexpected results:
 {{{
@@ -683,9 +690,7 @@ lines as well.
 Yes, for some operating systes.  Squid calls these "ARP ACLs" and
 they are supported on Linux, Solaris, and probably BSD variants.
 
-NOTE: Squid can only determine the MAC address for clients that
-are on the same subnet.  If the client is on a different subnet,
-then Squid can not find out its MAC address.
+|| /!\ ||Squid can only determine the MAC address for clients that are on the same subnet.  If the client is on a different subnet, then Squid can not find out its MAC address.||
 
 To use ARP (MAC) access controls, you
 first need to compile in the optional code.  Do this with
@@ -714,8 +719,7 @@ http_access deny all
 == Debugging ACLs ==
 
 
-See ''I set up my access controls, but they don't work! why?'' and
-../TroubleShooting.
+See ''I set up my access controls, but they don't work! why?'' and ../TroubleShooting.
 
 
 == Can I limit the number of connections from a client? ==
@@ -750,7 +754,7 @@ Also note that you could use ''maxconn'' in conjunction with
 a user type (ident, proxy_auth), rather than an IP address type.  
 
 
-==  I'm trying to deny ''foo.com'', but it's not working.] ==
+==  I'm trying to deny ''foo.com'', but it's not working. ==
 
 
 In Squid-2.3 we changed the way that Squid matches subdomains.
@@ -768,8 +772,7 @@ http_access deny yuck
 == I want to customize, or make my own error messages. ==
 
 
-You can customize the existing error messages as described in
-''Customizable Error Messages'' in ../MiscFeatures.
+You can customize the existing error messages as described in ''Customizable Error Messages'' in ../MiscFeatures.
 You can also create new error messages and use these in conjunction
 with the ''deny_info'' option.
 
@@ -839,3 +842,6 @@ jim
 
 == I want to authorize users depending on their MS Windows group memberships ==
 There is an excellent resource over at http://workaround.org/moin/SquidLdap on how to use LDAP-based group membership checking.
+
+-----
+To ../FaqIndex
