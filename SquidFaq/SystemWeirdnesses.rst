@@ -599,7 +599,7 @@ user account for Squid and set ''cache_effective_user'' to that.
 Alternately you can change the UID for the ''nobody'' account
 from 65535 to 65534.
 
-Another problem is that RedHat 5.0 Linux seems to have a broken
+Another problem is that Red``Hat 5.0 Linux seems to have a broken
 ''setresuid()'' function.  There are two ways to fix this.
 Before running configure:
 {{{
@@ -646,7 +646,7 @@ With Squid-2, use the ''--enable-gnuregex'' configure option.
 by 
 [mailto:radu at netsoft dot ro Radu Greab]
 
-The gethostbyname() function leaks memory in RedHat
+The gethostbyname() function leaks memory in Red``Hat
 6.0 with glibc 2.1.1. The quick fix is to delete nisplus service from
 hosts entry in ''/etc/nsswitch.conf''. In my tests dnsserver memory use
 remained stable after I made the above change.
