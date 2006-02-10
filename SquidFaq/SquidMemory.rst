@@ -74,7 +74,7 @@ Total free:              8153 KB 6%
 If your RSS (Resident Set Size) value is much lower than your
 process size, then your cache performance is most likely suffering
 due to Paging.
-See also ["CacheManager#what_does_page_faults_with_physical_io4897_mean"]
+See also ../CacheManager
 
 == My Squid process grows without bounds. ==
 
