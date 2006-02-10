@@ -371,7 +371,7 @@ Yes, this is a little problem sometimes.  Seems like the operating system
 gets confused and doesn't always release shared memory and message
 queue resources when processes exit, especially if they exit abnormally.
 To fix it you can "manually" clear the resources with the ''ipcs'' command.
-Add this command into your ''RunCache'' or ''squid_start''
+Add this command into your ''Run``Cache'' or ''squid_start''
 script:
 {{{
 ipcs | awk '/squid/ {printf "ipcrm -%s %s\n", $1, $2}' | /bin/sh
