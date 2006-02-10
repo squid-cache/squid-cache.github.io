@@ -59,10 +59,10 @@ to create new directories:
 
 by ''Rodney van den Oever'' and ''James R Grinter''
 
-  * Point the Real''''''Player at your Squid server's HTTP port (e.g. 3128).
+  * Point the Real``Player at your Squid server's HTTP port (e.g. 3128).
   * Using the Preferences->Transport tab, select ''Use specified transports'' and with the ''Specified Transports'' button, select use ''HTTP Only''.
 
-The Real''''''Player (and Real''''''Player Plus) manual states:
+The Real``Player (and Real``Player Plus) manual states:
 {{{
 Use HTTP Only
 Select this option if you are behind a firewall and cannot
@@ -107,7 +107,7 @@ switched it on, and you're using a version 4 client. If someone has made the
 file available via their HTTP server, then it'll be cachable. Otherwise, it
 won't be (as far as we can tell.)
 
-The more common Real''''''Audio link connects via their own ''pnm:'' method and is
+The more common Real``Audio link connects via their own ''pnm:'' method and is
 transferred using their proprietary protocol (via TCP or UDP) and not using
 HTTP. It can't be cached nor proxied by Squid, and requires something such as
 the simple proxy that Progressive Networks themselves have made available, if
@@ -115,7 +115,7 @@ you're in a firewall/no direct route situation. Their product does not cache
 (and I don't know of any software available that does.)
 
 Some confusion arises because there is also a configuration option to use an
-HTTP proxy (such as Squid) with the Real''''''Audio/Real''''''Video players. This is
+HTTP proxy (such as Squid) with the Real``Audio/Real``Video players. This is
 because the players can fetch the ".ram" file that contains the ''pnm:''
 reference for the audio/video stream. They fetch that .ram file from an HTTP
 server, using HTTP.
@@ -315,30 +315,27 @@ you can't simply change squid.conf and then reconfigure.  You can't
 stop using a ''cache_dir'' while Squid is running.  Also note
 that Squid requires at least one ''cache_dir'' to run.
 
-  - Edit your ''squid.conf'' file and comment out, or delete the ''cache_dir'' line for the cache directory that you want to remove.
-  - If you don't have any ''cache_dir'' lines in your squid.conf, then Squid was using the default.   You'll need to add a new ''cache_dir'' line because Squid will continue to use the default otherwise.  You can add a small, temporary directory, for example:{{{
+  * Edit your ''squid.conf'' file and comment out, or delete the ''cache_dir'' line for the cache directory that you want to remove.
+  * If you don't have any ''cache_dir'' lines in your squid.conf, then Squid was using the default.   You'll need to add a new ''cache_dir'' line because Squid will continue to use the default otherwise.  You can add a small, temporary directory, for example:{{{
 /usr/local/squid/cachetmp ....
 }}}If you add a new ''cache_dir'' you have to run ''squid -z'' to initialize that directory.
-  - Remeber that you can not delete a cache directory from a running Squid process; you can not simply reconfigure squid.  You must shutdown Squid:
-{{{
+  * Remeber that you can not delete a cache directory from a running Squid process; you can not simply reconfigure squid.  You must shutdown Squid: {{{
 squid -k shutdown
 }}}
-  - Once Squid exits, you may immediately start it up again.  Since  you deleted the old ''cache_dir'' from squid.conf, Squid won't try to access that directory.  If you use the RunCache script, Squid should start up again automatically.
-  - Now Squid is no longer using the cache directory that you removed from the config file.  You can verify this by checking "Store Directory" information with the cache manager.  From the command line, type:
-{{{
+  * Once Squid exits, you may immediately start it up again.  Since  you deleted the old ''cache_dir'' from squid.conf, Squid won't try to access that directory.  If you use the Run``Cache script, Squid should start up again automatically.
+  * Now Squid is no longer using the cache directory that you removed from the config file.  You can verify this by checking "Store Directory" information with the cache manager.  From the command line, type: {{{
 squidclient mgr:storedir
 }}}
-  -Now that Squid is not using the cache directory, you can ''rm -rf'' it, format the disk, build a new filesystem, or whatever.
+  * Now that Squid is not using the cache directory, you can ''rm -rf'' it, format the disk, build a new filesystem, or whatever.
 
 The procedure is similar to recreate the directory.
 
-  - Edit ''squid.conf'' and add a new ''cache_dir'' line.
-  - Shutdown Squid  (''squid -k shutdown'')
-  - Initialize the new directory by running
-{{{
+  * Edit ''squid.conf'' and add a new ''cache_dir'' line.
+  * Shutdown Squid  (''squid -k shutdown'')
+  * Initialize the new directory by running {{{
 % squid -z
 }}}
-  -Start Squid again
+  * Start Squid again
 
 == Why can't I run Squid as root? ==
 
