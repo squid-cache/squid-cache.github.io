@@ -21,7 +21,7 @@ Accomplishments:
 
   * NegotiateAuthentication fully merged to HEAD
   * ["Squid-2.6"] development cycle started
-  * ConnectionPinning implemented
+  * [wiki:Self:NiceLittleProjects#connectionpinning ConnectionPinning] implemented
 
 Failures:
 
