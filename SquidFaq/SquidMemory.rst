@@ -187,7 +187,7 @@ represents the maximum size your Squid process has reached.
 
 == xmalloc: Unable to allocate 4096 bytes! ==
 
-by HenrikNordstrom
+by HenrikNordström
 
 Messages like "FATAL: xcalloc: Unable to allocate 4096 blocks of 1 bytes!"
 appear when Squid can't allocate more memory, and on most operating systems
