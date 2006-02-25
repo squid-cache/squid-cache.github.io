@@ -242,13 +242,9 @@ shared memory parameters:
 
  SHMALL:: Total amount of shared memory that can be used.
 
+For Squid and DISKD, ''SHMSEG'' and ''SHMMNI'' must be greater than or equal to the number of cache_dir's that you have. ''SHMMAX'' must be at least 800 kilobytes. ''SHMALL'' must be at least 800 kilobytes multiplied by the number of cache_dir's.
 
-
-For Squid and DISKD, ''SHMMNI'' and ''SHMMNI'' must be greater than
-or equal to the number of ''cache_dir'''s that you have.   ''SHMMAX''
-must be at least 800 kilobytes.  ''SHMALL'' must be at least
-''SHMMAX'' 800 kilobytes multiplied by the number of ''cache_dir'''s.
-
+Note that some operating systems express ''SHMALL'' in pages, rather than bytes, so be sure to divide the number of bytes by the page size if necessary. Use the ''pagesize'' command to determine your system's page size, or use 4096 as a reasonable guess.
 
 === FreeBSD ===
 
