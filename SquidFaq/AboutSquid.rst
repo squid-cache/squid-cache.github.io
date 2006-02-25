@@ -115,11 +115,11 @@ addresses that you must use for subscribe and unsubscribe requests.  To unsubscr
 == What other Squid-related documentation is available? ==
 
   * [http://www.squid-cache.org/ The Squid home page] for information on the Squid software
-  * [http://squidbook.org/ Squid: The Definitive Guide] written by Duane Wessels and published by [[http://www.oreilly.com/catalog/squid/ O'Reilly and Associates] January 2004.
+  * [http://squidbook.org/ Squid: The Definitive Guide] written by Duane Wessels and published by [http://www.oreilly.com/catalog/squid/ O'Reilly and Associates] January 2004.
   * [http://www.ircache.net/ The IRCache Mesh] gives information on our operational mesh of caches.
   * [http://www.squid-cache.org/Doc/FAQ/ The Squid FAQ] (uh, you're reading it).
   * [http://squid-docs.sourceforge.net/latest/html/book1.html Oskar's Squid Users Guide].
-  * [http://www.visolve.com/squidman/Configuration Guide.html Visolve's Configuration Guide].
+  * [http://squid.visolve.com/squid/configuration_manual_24.htm Visolve's Configuration Guide].
   * Squid documentation in [http://www.squid-handbuch.de/ German], [http://istanbul.linux.org.tr/~ilkerg/squid/elkitabi.html Turkish], [http://merlino.merlinobbs.net/Squid-Book/ Italian], [http://www.linuxman.pro.br/squid/ Brazilian Portugese], and another in [http://www.geocities.com/glasswalk3r/linux/squidnomicon.html Brazilian Portugese].
   * [http://www.squid-cache.org/Doc/Prog-Guide/prog-guide.html Squid Programmers Guide]. Yeah, its extremely incomplete.  I assure you this is the most recent version.
   * [http://www.web-cache.com Web Caching Resources]
