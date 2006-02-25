@@ -54,7 +54,7 @@ new disk and leave the existing ones in place.
 
 
 Authentication is handled via external processes.
-Arjan's [http://www.iae.nl/users/devet/squid/proxy_auth/ proxy auth page]
+Arjan's [http://www.devet.org/squid/proxy_auth/ proxy auth page]
 describes how to set it up.  Some simple instructions are given below as well.
 
 
@@ -580,4 +580,3 @@ connect_timeout 120 seconds
 read_timeout 15 minutes
 
 }}}
-
