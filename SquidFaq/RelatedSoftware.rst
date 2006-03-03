@@ -160,3 +160,6 @@ For
 [http://identd.sourceforge.net/ Windows 95/98],
 and
 [http://www2.lysator.liu.se/~pen/pidentd/ Unix].
+
+-----
+Back to the SquidFaq
