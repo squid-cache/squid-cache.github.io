@@ -844,4 +844,4 @@ jim
 There is an excellent resource over at http://workaround.org/moin/SquidLdap on how to use LDAP-based group membership checking.
 
 -----
-To ../FaqIndex
+Back to the SquidFaq
