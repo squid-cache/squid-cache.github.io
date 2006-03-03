@@ -580,3 +580,6 @@ connect_timeout 120 seconds
 read_timeout 15 minutes
 
 }}}
+
+-----
+Back to the SquidFaq
