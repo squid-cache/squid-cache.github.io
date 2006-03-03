@@ -158,3 +158,6 @@ httpd_accel_port 80
 Note, you probably also need to add an ''/etc/hosts'' entry
 of 127.0.0.1 for your server hostname.  Otherwise, Squid may
 get stuck in a forwarding loop.
+
+-----
+Back to the SquidFaq
