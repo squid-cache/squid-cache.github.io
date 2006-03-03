@@ -179,3 +179,6 @@ addresses.  Here you can configure well-defined boundaries for the
 traffic to a specific address.  The
 [ftp://ftp.isi.edu/in-notes/rfc2365.txt Administratively Scoped IP Multicast RFC]
 describes this.
+
+-----
+Back to the SquidFaq
