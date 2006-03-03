@@ -299,4 +299,4 @@ recommend using the -Y and -N options.
 
 
 ----
-Back to ../FaqIndex
+Back to the SquidFaq
