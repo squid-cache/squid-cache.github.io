@@ -271,4 +271,4 @@ It was converted to a Wiki in July 2005.
 We always welcome help keeping the Squid FAQ up-to-date. If you would like to help out, please register with this Wiki and type away. Please also send a note to the wiki operator (wiki at kinkie dot it) to inform him of your changes.
 
 ----
-Back to ../FaqIndex
+Back to the SquidFaq
