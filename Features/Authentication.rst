@@ -540,4 +540,4 @@ For all other auth-schemes this cannot be done; this is not a limitation in squi
  * [http://www.samba.org/samba/docs/man/ntlm_auth.1.html ntlm_auth man page]
 
 -----
-To ../FaqIndex
+Back to the SquidFaq
