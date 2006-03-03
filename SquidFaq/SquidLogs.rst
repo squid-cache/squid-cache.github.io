@@ -835,4 +835,4 @@ response is released, the filenumber is FFFFFFFF (-1).  Any other
 filenumber indicates a cached response was released.
 
 -----
-To ../FaqIndex
+Back to the SquidFaq
