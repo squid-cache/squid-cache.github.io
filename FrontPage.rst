@@ -5,7 +5,7 @@
 
 = Squid Proxy Web Cache Wiki =
 
-This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts an updated FAQ (as SquidFaq/FaqIndex) and assorted documentation.
+This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts an updated FAQ at SquidFaq and assorted documentation.
 
 = Hotmail and IE6 Issue With Interception Proxies =
 Recent changes at Hotmail.com and has led to some users receiving a blank page in response to a login request when browsing through a proxy operating in interception, or transparent, mode. This is due to Hotmail incorrectly responding with Transfer-Encoding encoded response when the HTTP/1.0 request has an Accept-Encoding header. (Transfer-Encoding absolutely REQUIRES HTTP/1.1 and is forbidden within HTTP/1.0)
@@ -21,6 +21,7 @@ header_access Accept-Encoding deny hotmail_domains}}}
  * MultipleInstances: how-to run multiple squid servers on a single box.
  * PerformanceAnalisys: "Help! My users complain that the proxy is slow!"
  * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
+ * SquidFaq: the Wikified and updated squid FAQ
 
 = Developers corner =
 == Squid Sprint ==
@@ -37,7 +38,7 @@ In december 2004 an informal squid sprint was held in Stockholm, hosted by Henri
 == ClientStreams ==
 A transcript of a recent IRC chat about using ClientStreams to request pages internally to squid.
 
-= Interesting starting points =
+= Interesting starting points for this Wiki =
  * RecentChanges: see where people are currently working
  * FindPage: search or browse the pages hosted in this wiki in various ways
  * SiteNavigation: get an overview over this site and what it contains
@@ -49,7 +50,7 @@ You can find information about what a Wiki is and how to use it at AboutWiki.
 = Other Squid-related resources =
 
  * The main [http://www.squid-cache.org/ Squid site]
- * The current version of the [http://www.squid-cache.org/Doc/FAQ/FAQ.html Squid FAQ] ( ["SquidFaq/FaqIndex"] is a local wikified Copy)
+ * The current version of the [http://www.squid-cache.org/Doc/FAQ/FAQ.html Squid FAQ] (SquidFaq is a local wikified Copy)
  * The [http://devel.squid-cache.org Squid development site]
  * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla] database
  * Squijj [http://www.mnot.net/squij/] refresh_pattern analysis
