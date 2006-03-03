@@ -368,4 +368,4 @@ Choosing the right RAID solution generally decreases the amount of seeks/s
 your system can sustain significantly.
 
 ----
-Back to ../FaqIndex
+Back to the SquidFaq
