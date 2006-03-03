@@ -351,4 +351,4 @@ ERR_CACHE_ACCESS_DENIED larger than 1460 bytes. This should trigger
 IE to handle the authentication in a slightly different manner.
 
 -----
-Go to ../FaqIndex
+Back to the SquidFaq
