@@ -805,3 +805,6 @@ eg ''LDR_CNTRL="MAXDATA=0x80000000"''; or
 See 
 [http://publibn.boulder.ibm.com/doc_link/en_US/a_doc_lib/aixprggd/genprogc/lrg_prg_support.htm IBM's documentation] on large program support for more information,
 including how to patch an already-compiled program.
+
+-----
+Back to the SquidFaq
