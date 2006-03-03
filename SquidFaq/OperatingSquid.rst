@@ -389,4 +389,4 @@ take another path, the real clients will send TCP resets to the
 origin servers, thereby breaking the connections.
 
 -----
-Back to ../FaqIndex
+Back to the SquidFaq
