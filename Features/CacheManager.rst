@@ -501,4 +501,4 @@ reasons:
   * ICP_OP_DENIED replies are ignored after the first 100.
 
 -----
-To ../FaqIndex
+Back to the SquidFaq
