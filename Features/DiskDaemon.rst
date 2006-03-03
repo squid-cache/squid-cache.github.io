@@ -401,3 +401,7 @@ Reasonable Q1 and Q2 values are 64 and 72.
 If you would rather have good hit ratio and bad response time,
 set Q1 > Q2.  Otherwise, if you would rather have good response
 time and bad hit ratio, set Q1 < Q2.
+
+
+-----
+Back to the SquidFaq
