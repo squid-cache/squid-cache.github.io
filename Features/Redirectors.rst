@@ -137,3 +137,6 @@ like this:
 acl foo ident REQUIRED
 http_access allow foo
 }}}
+
+-----
+Back to the SquidFaq
