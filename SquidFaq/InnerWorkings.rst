@@ -1102,3 +1102,6 @@ This requires your "security device" to permit any host outside from port
 In passive mode, when you request a data transfer, the server tells the
 client "I am listening on <ip address> <port>." Your client then connects
 to the server on that IP and port and data flows.
+
+-----
+Back to the SquidFaq
