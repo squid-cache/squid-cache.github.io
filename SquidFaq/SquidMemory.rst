@@ -461,4 +461,4 @@ allocating more to Squid via cache_mem will not help.
 
 -----
 
-to ../FaqIndex
+Back to the SquidFaq
