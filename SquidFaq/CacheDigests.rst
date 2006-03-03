@@ -621,4 +621,4 @@ solve the "big scale" problem.
 
 
 -----
-To ../FaqIndex
+Back to the SquidFaq
