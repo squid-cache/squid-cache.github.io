@@ -162,20 +162,20 @@ capabilities for NT based user accounts.  From Squid's perspective winbind provi
 robust and efficient engine for both basic and NTLM challenge/response authentication
 against an NT domain controller.
 
-The winbind authenticators have been used successfully under Linux, FreeBSD and Solaris.
+The winbind authenticators have been used successfully under Linux, FreeBSD, Solaris and Tru64.
 
 
 
 === Supported Samba Releases ===
 
-Samba-3.X is supported natively using the ntlm_auth helper shipped as part of Samba.
-No Squid specific winbind helpers need to be compiled (and even if compiled they won't
-work with Samba-3.X)
+Samba-3.X is supported natively using the ntlm_auth helper shipped as part of Samba. No Squid specific winbind helpers need to be compiled (and even if compiled they won't work with Samba-3.X). Starting from Squid-2.5.STABLE5, NTLM NEGOTIATE packets are supported. This feature, in conjunction with a NTLM NEGOTIATE capable helper like ntlm_auth, allow the usage of NTLMv2 client autentication. At least Samba version 3.0.2 is needed for a working NTLM NEGOTIATE packet support, but Samba 3.0.21b or later is needed for full NTLMv2 support.
 
 
 Samba-2.2.X is supported using the winbind helpers shipped with Squid, and uses an
-internal Samba interface to communicate with the winbindd daemon.  It is therefore sensitive
-to any changes the Samba team may make to the interface.
+internal Samba interface to communicate with the winbindd daemon. It is therefore sensitive to any changes the Samba team may make to the interface.
+
+
+NOTE: Samba 2.2.X reached its End-Of-Life on October 1, 2004.
 
 
 The winbind helpers shipped with Squid-2.5.STABLE2 supports Samba-2.2.6 to Samba-2.2.7a
@@ -191,11 +191,7 @@ Squid-2.5.STABLE2 or later recommended with current Samba-2.X releases.
 
 For Samba-3.X the winbind helpers shipped with Squid '''should not''' be used (and won't work
 if you attempt to do so), instead the ntlm_auth helper shipped as part of the Samba-3
-distribution should be used. This helper supports all versions of Squid and both the ntlm and
-basic authentication schemes. For details on how to use this Samba helper see the Samba
-documentation. For group membership lookups the wbinfo_group helper shipped
-with Squid can be used (this is just a wrapper around the samba wbinfo program and works with
-all versions of Samba)
+distribution should be used. This helper supports all versions of Squid and both the ntlm and basic authentication schemes. For details on how to use this Samba helper see the Samba documentation. For group membership lookups the wbinfo_group helper shipped with Squid can be used (this is just a wrapper around the samba wbinfo program and works with all versions of Samba)
 
 
 === Configure Samba ===
@@ -423,6 +419,8 @@ auth_param ntlm program /usr/local/bin/ntlm_auth --helper-protocol=squid-2.5-ntl
 auth_param ntlm children 30
 auth_param ntlm max_challenge_reuses 0
 auth_param ntlm max_challenge_lifetime 2 minutes
+# ntlm_auth from Samba 3 supports NTLM NEGOTIATE packet
+auth_param ntlm use_ntlm_negotiate on
 
 auth_param basic program /usr/local/bin/ntlm_auth --helper-protocol=squid-2.5-basic
 auth_param basic children 5
@@ -443,6 +441,8 @@ auth_param ntlm program /usr/local/squid/libexec/wb_ntlmauth
 auth_param ntlm children 5
 auth_param ntlm max_challenge_reuses 0
 auth_param ntlm max_challenge_lifetime 2 minutes
+# Samba 2 helpers doesn't support NTLM NEGOTIATE packet
+auth_param ntlm use_ntlm_negotiate off
 
 auth_param basic program /usr/local/squid/libexec/wb_auth
 auth_param basic children 5
@@ -471,16 +471,16 @@ http_access allow all AuthorizedUsers
 
 == Test Squid with auth ===
 
-  *Internet Explorer:
-Test browsing through squid with IE. If logged into the domain,
-a password prompt should NOT pop up.
+  *Internet Explorer, Mozilla, FireFox:
+
+Test browsing through squid with a NTLM capable browser. If logged into the domain, a password prompt should NOT pop up.
 
 Confirm the traffic really is being authorized by tailing access.log.
 The domain\username should be present.
 
 
-  *Netscape, mozilla, opera...:
-Test with a non-IE browser.  A standard password dialog should appear.
+  *Netscape, Mozilla ( < 1.4), Opera...:
+Test with a NTLM non-capable browser. A standard password dialog should appear.
 
 Entering the domain should not be required if the user is in the
 default domain and "winbind use default domain = yes" is set in
@@ -529,15 +529,15 @@ For all other auth-schemes this cannot be done; this is not a limitation in squi
 == References ==
 
 
- * [http://www.samba.org/samba/docs/man/Samba-HOWTO-Collection.html#WINBIND Samba Winbind Overview]
- * [http://www.samba.org/samba/docs/man/Samba-HOWTO-Collection.html#AEN1134 Joining a Domain in Samba 2.2.x]
- * [http://www.samba.org/samba/docs/man/winbindd.8.html winbindd man page]
- * [http://www.samba.org/samba/docs/man/wbinfo.1.html wbinfo man page]
- * [http://www.samba.org/samba/docs/man/nmbd.8.html nmbd man page]
- * [http://www.samba.org/samba/docs/man/smbd.8.html smbd man page]
- * [http://www.samba.org/samba/docs/man/smb.conf.5.html smb.conf man page]
- * [http://www.samba.org/samba/docs/man/smbclient.1.html smbclient man page]
- * [http://www.samba.org/samba/docs/man/ntlm_auth.1.html ntlm_auth man page]
+ * [http://samba.org/samba/docs/man/Samba3-HOWTO/winbind.html Winbind: Use of Domain Accounts]
+ * [http://samba.org/samba/docs/man/Samba-HOWTO-Collection/domain-member.html Domain Membership]
+ * [http://samba.org/samba/docs/man/manpages-3/winbindd.8.html winbindd man page]
+ * [http://samba.org/samba/docs/man/manpages-3/wbinfo.1.html wbinfo man page]
+ * [http://samba.org/samba/docs/man/manpages-3/nmbd.8.html nmbd man page]
+ * [http://samba.org/samba/docs/man/manpages-3/smbd.8.html smbd man page]
+ * [http://samba.org/samba/docs/man/manpages-3/smb.conf.5.html smb.conf man page]
+ * [http://samba.org/samba/docs/man/manpages-3/smbclient.1.html smbclient man page]
+ * [http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html ntlm_auth man page]
 
 -----
 Back to the SquidFaq
