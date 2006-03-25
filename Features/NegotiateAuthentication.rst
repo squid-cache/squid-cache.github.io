@@ -7,15 +7,22 @@ There are four major flavours of authentication available in the HTTP world at t
  * Negotiate (aka SPNEGO) - Microsoft's second attempt at single-sign-on
    Maybe, as it often happens to them, they'll get it right by version 3.0
 
-There are reports of a "Kerberos" authentication scheme being seen in the wild (ISA Server 2004). If you see it, shoot on sight. Microsoft recommends to use NEGOTIATE instead.
+There are reports of a "Kerberos" authentication scheme being seen in the wild (ISA Server 2004). If you see it, shoot on sight. Microsoft recommends to use Negotiate instead.
 
-Squid supports Basic, NTLM (v1 and v2) and Digest. Support for NEGOTIATE is being worked in for both squid 2.5 and 3.0
+Squid supports Basic, NTLM (v1 and v2) and Digest. Support for Negotiate is being worked in 
+for both squid 2.5 and 3.0
+
+Currently only Firefox 1.5 and latest beta of Internet Explorer 7 are known to supporting Negotiate authentication with Squid and ISA server 2004
 
 == So what is this "NEGOTIATE" thing anyways? ==
 
 Negotiate is a wrapper protocol around GSSAPI, which in turn is a wrapper around either Kerberos or NTLM. Why a wrapper of a wrapper? No one outside Microsoft knows at this time. GSSAPI would have been more than enough.
 
 The real significance is that supporting it allows to support transparent Kerberos authentication to a MS Windows domain. It is significantly more secure than NTLM and also poses much less burden on the Domain Controller.
+
+== Experimental Squid native Windows build with NEGOTIATE support ==
+
+For testing purpose is now available an experimental native Windows build of Squid 2.5 STABLE13 with Negotiate support. The code is based on the merge of negotiate-2.5 and nt-2.5 branches into the new nego-nt-2.5 branch.
 
 == What do I need to do to support NEGOTIATE on Squid? ==
 
