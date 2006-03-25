@@ -12,7 +12,7 @@ There are reports of a "Kerberos" authentication scheme being seen in the wild (
 Squid supports Basic, NTLM (v1 and v2) and Digest. Support for Negotiate is being worked in 
 for both squid 2.5 and 3.0
 
-Currently only Firefox 1.5 and latest beta of Internet Explorer 7 are known to supporting Negotiate authentication with Squid and ISA server 2004
+Currently only Firefox 1.5, SeaMonkey 1.0 and latest beta of Internet Explorer 7 are known to supporting Negotiate authentication with Squid and ISA server 2004
 
 == So what is this "NEGOTIATE" thing anyways? ==
 
