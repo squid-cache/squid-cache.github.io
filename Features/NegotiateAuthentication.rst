@@ -24,6 +24,9 @@ The real significance is that supporting it allows to support transparent Kerber
 
 For testing purpose is now available an experimental native Windows build of Squid 2.5 STABLE13 with Negotiate support. The code is based on the merge of negotiate-2.5 and nt-2.5 branches into the new nego-nt-2.5 branch.
 
+The binary package and source archive are available on http://www.acmeconsulting.it/SquidNT.html.
+
+
 == What do I need to do to support NEGOTIATE on Squid? ==
 
 Just like any other security protocol, support for Negotiate in Squid is made up by two parts: code within Squid to talk to the client and one or more authentication helpers which perform the grunt work. Of course the protocol needs to be enabled in the configuration file for everything to work.
