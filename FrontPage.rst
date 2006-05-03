@@ -22,6 +22,7 @@ header_access Accept-Encoding deny hotmail_domains}}}
  * PerformanceAnalisys: "Help! My users complain that the proxy is slow!"
  * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
  * SquidFaq: the Wikified and updated squid FAQ
+ * ["Squid-3.0"], or "So what is this Squid 3.0 thing and why is it taking so long?"
 
 = Developers corner =
 == Squid Sprint ==
