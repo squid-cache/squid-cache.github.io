@@ -7,9 +7,9 @@ The general consensus among the code sprint participants (HenrikNordström, Fran
 
 List of things we have thought of include in a Squid-2.6 release include
 
- * addition of IPPROTO_TCP & IPPROTO_UDP usage
+ * addition of IPPROTO_TCP & IPPROTO_UDP usage - OK
  * Cygwin full support
-  * --enable-default-hostsfile configure option
+  * --enable-default-hostsfile configure option - OK
   * Windows service
   * ARP acl
  * negotiate (+ NTLM cleanup)
@@ -22,9 +22,9 @@ List of things we have thought of include in a Squid-2.6 release include
  * UNIX sockets IPC
  * custom log formats
  * ETag
- * MAXHOSTNAMELEN cleanup
+ * MAXHOSTNAMELEN cleanup - OK
  * Connection pinning
- * Bug #802: squid should report username in stats when auth is enabled
+ * Bug #802: squid should report username in stats when auth is enabled - OK
  * Bug #907: patch to suppress version string in HTTP headers and HTML error pages
  * Bug #1326: Correctly use search path from /etc/resolv.conf
  * WCCPv2
