@@ -25,16 +25,15 @@ List of things we have thought of include in a Squid-2.6 release include
  * MAXHOSTNAMELEN cleanup - OK
  * Connection pinning
  * Bug #802: squid should report username in stats when auth is enabled - OK
- * Bug #907: patch to suppress version string in HTTP headers and HTML error pages
+ * Bug #907: patch to suppress version string in HTTP headers and HTML error pages - OK
  * Bug #1326: Correctly use search path from /etc/resolv.conf
- * WCCPv2
-
+ * WCCPv2 - OK
 And there is some upcoming projects which may get included if they make it in time:
 
  * FreeBSD kqueue support
  * Deferred reads cleanup
  * cbdatareference (needs to be resurrected from old 2.6 branch)
-
+ * New improved COSS (maybe even production ready?)
 === Opinions on if there should be a release ===
 Summary of the opinions regarding a Squid-2.6 release
 
@@ -46,19 +45,15 @@ Full in favor, including performance enhancements:
  * Francesco 'Kinkie' Chemolli
  * Reuben Farrelly
  * Steven Wilton
-
 In favor, but no clear indication
 
  * Andrey Shorin
  * Paul Armstrong
-
 Mixed feelins
 
  * Duane Wessels *
  * Robert Collins *
-
 Maybe, not including performance enhancements:
 
  * Alex Rousskov *
-
 * = Core team member
