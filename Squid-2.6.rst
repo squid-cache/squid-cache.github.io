@@ -14,15 +14,17 @@ List of things we have thought of include in a Squid-2.6 release include
   * ARP acl
  * negotiate (+ NTLM cleanup) - OK
  * reverse proxy improvements - OK
-
  * ssl client + fixes
  * epoll (linux)
  * digest LDAP helper - OK
+ * overlapping helper requests - OK
 
- * overlapping helper requests
  * external acl improvements
+  * %PATH - OK
+  * log= - OK
+  * password= from 3.0
+  * grace parameter from external_acl_fuzzy (but not the cache "level" thing)
  * UNIX sockets IPC - OK
-
  * custom log formats - OK
  * ETag
  * MAXHOSTNAMELEN cleanup - OK
