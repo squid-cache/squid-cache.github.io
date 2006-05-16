@@ -12,15 +12,18 @@ List of things we have thought of include in a Squid-2.6 release include
   * --enable-default-hostsfile configure option - OK
   * Windows service
   * ARP acl
- * negotiate (+ NTLM cleanup)
+ * negotiate (+ NTLM cleanup) - OK
+
  * reverse proxy improvements
  * ssl client + fixes
  * epoll (linux)
  * digest LDAP helper
  * overlapping helper requests
  * external acl improvements
- * UNIX sockets IPC
- * custom log formats
+ * UNIX sockets IPC (wait for rproxy)
+
+ * custom log formats - OK
+
  * ETag
  * MAXHOSTNAMELEN cleanup - OK
  * Connection pinning
