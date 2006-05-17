@@ -31,8 +31,9 @@ List of things we have thought of include in a Squid-2.6 release include
  * Connection pinning
  * Bug #802: squid should report username in stats when auth is enabled - OK
  * Bug #907: patch to suppress version string in HTTP headers and HTML error pages - OK
- * Bug #1326: Correctly use search path from /etc/resolv.conf
+ * Bug #1326: Correctly use search path from /etc/resolv.conf - OK
  * WCCPv2 - OK
+
 And there is some upcoming projects which may get included if they make it in time:
 
  * FreeBSD kqueue support
