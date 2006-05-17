@@ -11,7 +11,7 @@ List of things we have thought of include in a Squid-2.6 release include
  * Cygwin full support
   * --enable-default-hostsfile configure option - OK
   * Windows service
-  * ARP acl
+  * ARP acl - OK
  * negotiate (+ NTLM cleanup) - OK
  * reverse proxy improvements - OK
  * ssl client + fixes
