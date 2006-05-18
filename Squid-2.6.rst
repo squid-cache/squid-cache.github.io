@@ -15,7 +15,6 @@ List of things we have thought of include in a Squid-2.6 release include
  * negotiate (+ NTLM cleanup) - OK
  * reverse proxy improvements - OK
  * ssl client + fixes - OK
-
  * epoll (linux)
  * digest LDAP helper - OK
  * overlapping helper requests - OK
@@ -23,7 +22,7 @@ List of things we have thought of include in a Squid-2.6 release include
   * %PATH - OK
   * log= - OK
   * password= from 3.0
-  * grace parameter from external_acl_fuzzy (but not the cache "level" thing)
+  * grace parameter from external_acl_fuzzy / 3.0 (but not the cache "level" thing)
  * UNIX sockets IPC - OK
  * custom log formats - OK
  * ETag
@@ -33,13 +32,13 @@ List of things we have thought of include in a Squid-2.6 release include
  * Bug #907: patch to suppress version string in HTTP headers and HTML error pages - OK
  * Bug #1326: Correctly use search path from /etc/resolv.conf - OK
  * WCCPv2 - OK
-
 And there is some upcoming projects which may get included if they make it in time:
 
  * FreeBSD kqueue support
  * Deferred reads cleanup
  * cbdatareference (needs to be resurrected from old 2.6 branch)
  * New improved COSS (maybe even production ready?)
+ * Collapsed Forwarding (ready, but needs to go into Squid-3 first..)
 === Opinions on if there should be a release ===
 Summary of the opinions regarding a Squid-2.6 release
 
