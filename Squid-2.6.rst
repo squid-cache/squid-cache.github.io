@@ -16,19 +16,21 @@ List of things we have thought of include in a Squid-2.6 release include
  * reverse proxy improvements - OK
  * ssl client + fixes - OK
  * epoll (linux) - OK
-
  * digest LDAP helper - OK
  * overlapping helper requests - OK
- * external acl improvements
+ * external acl improvements - OK
+
   * %PATH - OK
   * log= - OK
   * password= from 3.0 - OK
-  * grace parameter from external_acl_fuzzy / 3.0 (but not the cache "level" thing)
+  * grace parameter from external_acl_fuzzy / 3.0 (but not the cache "level" thing) - OK
+
  * UNIX sockets IPC - OK
  * custom log formats - OK
  * ETag
  * MAXHOSTNAMELEN cleanup - OK
- * Connection pinning
+ * Connection pinning - OK
+
  * Bug #802: squid should report username in stats when auth is enabled - OK
  * Bug #907: patch to suppress version string in HTTP headers and HTML error pages - OK
  * Bug #1326: Correctly use search path from /etc/resolv.conf - OK
