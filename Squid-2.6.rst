@@ -21,7 +21,8 @@ List of things we have thought of include in a Squid-2.6 release include
  * external acl improvements
   * %PATH - OK
   * log= - OK
-  * password= from 3.0
+  * password= from 3.0 - OK
+
   * grace parameter from external_acl_fuzzy / 3.0 (but not the cache "level" thing)
  * UNIX sockets IPC - OK
  * custom log formats - OK
@@ -39,8 +40,7 @@ And there is some upcoming projects which may get included if they make it in ti
  * Deferred reads cleanup
  * cbdatareference (needs to be resurrected from old 2.6 branch)
  * New improved COSS (maybe even production ready?) - OK
-
- * Automake updates to work with newew autoconf/automake
+ * Automake updates to work with newer autoconf/automake
 === Opinions on if there should be a release ===
 Summary of the opinions regarding a Squid-2.6 release
 
