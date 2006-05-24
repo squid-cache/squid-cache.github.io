@@ -8,9 +8,9 @@ The general consensus among the code sprint participants (["Henrik Nordström"],
 List of things we have thought of include in a Squid-2.6 release include
 
  * addition of IPPROTO_TCP & IPPROTO_UDP usage - OK
- * Cygwin full support
+ * Cygwin full support - almost complete
   * --enable-default-hostsfile configure option - OK
-  * Windows service
+  * Windows service - OK
   * ARP acl - OK
  * negotiate (+ NTLM cleanup) - OK
  * reverse proxy improvements - OK
