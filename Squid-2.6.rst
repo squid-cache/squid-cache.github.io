@@ -12,7 +12,7 @@ List of things we have thought of include in a Squid-2.6 release include
   * --enable-default-hostsfile configure option - OK
   * Windows service - OK
   * ARP acl - OK
-  * Native Windows helpers (basic, NTLM, negotiate and groups)
+  * Native Windows helpers (basic, NTLM, negotiate and groups) - OK
  * negotiate (+ NTLM cleanup) - OK
  * reverse proxy improvements - OK
  * ssl client + fixes - OK
