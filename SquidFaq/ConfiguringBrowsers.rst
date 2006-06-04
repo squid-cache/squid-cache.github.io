@@ -21,6 +21,14 @@ and put the HTTP port number for the Squid server (by default, 3128) in
 the '''Port''' column.  For any protocols that your Squid
 does not support, leave the fields blank.
 
+== Firefox and Thunderbird automatic configuration ==
+
+Both Firefox and Thunderbird are configured in the same way.  Look in the Tools menu, Options, General and then Connection Settings.  The options in there are fairly self explanatory.  Firefox and Thunderbird support manually specifying the proxy server, automatically downloading a wpad.dat file from a specified source, and additionally wpad auto-detection.
+
+Thunderbird uses these settings for downloading HTTP images in emails.
+
+In both cases if you are manually configuring proxies, make sure you should add relevant statements for your network in the "No Proxy For" boxes.
+
 
 == Netscape automatic configuration ==
 
@@ -35,7 +43,7 @@ right as you go.
 
 
 You may also wish to consult Netscape's documentation for the Navigator
-[http://home.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
+[http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
 
 Here is a sample auto configuration file from Oskar Pearson (link to save at the bottom):
 
@@ -296,8 +304,7 @@ option wpad "http://www.example.com/proxy.pac\n";
 
 == IE 5.0x crops trailing slashes from FTP URL's ==
 
-by
-[mailto:reuben at reub dot net Reuben Farrelly]
+by Reuben Farrelly
 
 There was a bug in the 5.0x releases of Internet Explorer in which IE
 cropped any trailing slash off an FTP URL.  The URL showed up correctly in
@@ -311,7 +318,7 @@ an older version of Squid or another vendors software which displayed
 directory listings with broken icons and you wanted your own local version
 of squid to generate proper FTP directory listings instead.
 The workaround for this is to add a double slash to any directory listing
-in which the slash was important, or else upgrade to IE 5.5.  (Or use Netscape)
+in which the slash was important, or else upgrade to IE 5.5.  (Or use Firefox if you cannot upgrade your IE)
 
 == IE 6.0 SP1 fails when using authentication ==
 
