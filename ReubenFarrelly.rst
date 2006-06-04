@@ -2,7 +2,7 @@
 #format wiki
 == Reuben Farrelly ==
 
-Email: [[MailTo(reuben AT SPAMFREE reub DOT net)]]
+Email: [[MailTo(reuben SPAMFREE AT reub DOT net)]]
 
 I've been doing things with Squid for a few years now.  In the past I have maintained Squid boxes for several ISPs and at present work as a Field Network Engineer where I configure and maintain mostly cisco network equipment.
 
