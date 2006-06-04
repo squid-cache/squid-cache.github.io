@@ -581,6 +581,9 @@ to ''/etc/rc.local'' will disable the behavior systemwide.
 
 == Linux ==
 
+Generally we recommend you use Squid with an up-to-date Linux distribution, preferably one with a 2.6 kernel.  Recent 2.6 kernels support some features in new versions of Squid such as epoll and WCCP/GRE support built in that will give better performance and flexibility.  Note that Squid will however still function just fine under older Linux kernels.  You will need to be mindful of the security implications of running your Squid proxy on the Internet if you are using a very old and unsupported distribution.
+
+There have been issues with GLIBC in some very old distributions.
 
 === Cannot bind socket FD 5 to 127.0.0.1:0: (49) Can't assign requested address ===
 
@@ -598,31 +601,6 @@ than ''nobody'' will succeed.  One solution is to create a
 user account for Squid and set ''cache_effective_user'' to that.
 Alternately you can change the UID for the ''nobody'' account
 from 65535 to 65534.
-
-Another problem is that Red``Hat 5.0 Linux seems to have a broken
-''setresuid()'' function.  There are two ways to fix this.
-Before running configure:
-{{{
-% setenv ac_cv_func_setresuid no
-% ./configure ...
-% make clean
-% make install
-}}}
-
-Or after running configure, manually edit include/autoconf.h and
-change the HAVE_SETRESUID line to:
-{{{
-#define HAVE_SETRESUID 0
-}}}
-
-
-
-Also, some users report this error is due to a NIS configuration
-problem.  By adding ''compat'' to the ''passwd'' and ''group''
-lines of ''/etc/nsswitch.conf'', the problem goes away.
-(
-[mailto:acli@ada.ddns.org Ambrose Li]).
-
 
 
 [mailto:galifrey@crown.net Russ Mellon] notes
@@ -688,11 +666,11 @@ When using Squid, some sites may give erorrs such as
 "(111) Connection refused" or "(110) Connection timed out"
 although these sites work fine without going through Squid.
 
-Some versions of linux implement 
-[http://www.aciri.org/floyd/ecn.html Explicit Congestion Notification] (ECN) and this can cause
-some TCP connections to fail when contacting some sites with broken firewalls
-or broken TCP/IP implementations. A list of sites to be broken can be found at 
-[http://urchin.earth.li/ecn/ ECN Hall of Shame].
+Linux 2.6 implements  
+[http://www.aciri.org/floyd/ecn.html Explicit Congestion Notification] (ECN) support and this can cause
+some TCP connections to fail when contacting some sites with broken firewalls or broken TCP/IP implementations.
+
+As of June 2006, the number of sites that fail when ECN is enabled is very low and you may find you benefit more from having this feature enabled than globally turning it off.
 
 To work around such broken sites you can disable ECN with
 the following command:
@@ -733,6 +711,8 @@ See also the
 [http://www.aciri.org/floyd/ecn.html Sally Floyd's page on ECN and problems related to it] or 
 [http://urchin.earth.li/ecn/ ECN Hall of Shame] for more  information.
 
+
+You may also very occasionally have problems with TCP Window Scaling on Linux.  At first you may be able to TCP connect to the site, but then unable to transfer any data across your connection.  This is due to some broken firewalls on the Internet (it is not a bug with Linux) mangling this field when the TCP connection is established.  More details and a workaround can be found at [http://lwn.net/Articles/92727/ lwn.net].
 
 
 
