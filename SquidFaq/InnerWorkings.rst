@@ -47,25 +47,7 @@ implemented external to the main process.  The ''dnsserver''
 processes do not cache DNS lookups, that is implemented inside the
 ''squid'' process.
 
-
-
-==  What is the ''ftpget'' program for? ==
-
-
-''ftpget'' exists only in Squid 1.1 and Squid 1.0 versions.
-
-The ''ftpget'' program is an FTP client used for retrieving
-files from FTP servers.  Because the FTP protocol is complicated,
-it is easier to implement it separately from the main ''squid''
-code.
-
-
-
-== FTP PUT's don't work! ==
-
-
-FTP PUT should work with Squid-2.0 and later versions.  If you
-are using Squid-1.1, then you need to upgrade before PUT will work.
+The ''dnsserver'' program was integrated into the main Squid binary in Squid-2.  If you have reason to use the old style dnsserver process you can build it at ./configure time.  However we would suggest that you file a bug if you find that the internal DNS process does not work as you would expect.
 
 
 == What is a cache hierarchy?  What are parents and siblings? ==
@@ -278,14 +260,7 @@ listing entry, denoting the type of object to which the
 link refers (image, text file, etc.).
 
 
-In Squid 1.0 and 1.1, we used internal browser icons with names
-like ''gopher-internal-image''.  Unfortunately, these were
-not very portable.  Not all browsers had internal icons, or
-even used the same names.  Perhaps only Netscape and Mosaic
-used these names.
-
-
-For Squid 2 we include a set of icons in the source distribution.
+We include a set of icons in the source distribution for this purpose.
 These icon files are loaded by Squid as cached objects at runtime.
 Thus, every Squid cache now has its own icons to use in Gopher and FTP
 listings.  Just like other objects available on the web, we refer to
@@ -350,13 +325,9 @@ to
 [ftp://ftp.isi.edu/in-notes/rfc2109.txt RFC 2109]
 is to cache the whole object, ''EXCEPT'' the ''Set-Cookie'' header lines.
 
-With Squid-1.1, we can not filter out specific HTTP headers, so
-Squid-1.1 does not cache any response which contains a ''Set-Cookie''
-header.
-
-With Squid-2, however, we can filter out specific HTTP headers.  But instead
+However, we can filter out specific HTTP headers.  But instead
 of filtering them on the receiving-side, we filter them on the sending-side.
-Thus, Squid-2 does cache replies with ''Set-Cookie'' headers, but
+Thus, Squid does cache replies with ''Set-Cookie'' headers, but
 it filters out the ''Set-Cookie'' header itself for cache hits.
 
 
@@ -401,40 +372,8 @@ match is found.  Then the algorithms below are applied for determining
 if an object is fresh or stale.
 
 
-=== Squid-1.1 and Squid-1.NOVM algorithm ===
+The refresh algorithm used in Squid-2 looks like this:
 
-
-{{{
-    if (CLIENT_MAX_AGE)
-        if (OBJ_AGE > CLIENT_MAX_AGE)
-            return STALE
-    if (OBJ_AGE <= CONF_MIN)
-        return FRESH
-    if (EXPIRES) {
-        if (EXPIRES <= NOW)
-            return STALE
-        else
-            return FRESH
-    }
-    if (OBJ_AGE > CONF_MAX)
-        return STALE
-    if (LM_FACTOR < CONF_PERCENT)
-        return FRESH
-    return STALE
-}}}
-
-
-
-
-''Kolics Bertold'' has made an excellent
-[http://www.squid-cache.org/Doc/FAQ/refresh-flowchart.gif flow chart diagram] showing this process.
-
-
-=== Squid-2 algorithm ===
-
-For Squid-2 the refresh algorithm has been slightly modified to give the
-''EXPIRES'' value a higher precedence, and the ''CONF_MIN'' value
-lower precedence:
 {{{
     if (EXPIRES) {
         if (EXPIRES <= NOW)
@@ -588,7 +527,7 @@ All other HTTP status codes are NOT cachable, including:
 
 
 The ''keep-alive ratio'' shows up in the ''server_list''
-cache manager page for Squid 2.
+cache manager page.
 
 This is a mechanism to try detecting neighbor caches which might
 not be able to deal with persistent connections.  Every
@@ -651,39 +590,14 @@ the current request rate.  Typical values for the LRU threshold are 1 to
 
 Back to selecting objects for removal.  Obviously it is not possible to
 check every object in the cache every time we need to remove some of them.
-We can only check a small subset each time.  The way in which
-this is implemented is very different between Squid-1.1 and Squid-2.
+We can only check a small subset each time.
 
-
-=== Squid 1.1 ===
-
-The Squid cache storage is implemented as a hash table with some number
-of "hash buckets."  Squid-1.1 scans one bucket at a time and sorts all the
-objects in the bucket by their LRU age.  Objects with an LRU age
-over the threshold are removed.  The scan rate is adjusted so that
-it takes approximately 24 hours to scan the entire cache.  The
-store buckets are randomized so that we don't always scan the same
-buckets at the same time of the day.
-
-
-This algorithm has some flaws.  Because we only scan one bucket,
-there are going to be better candidates for removal in some of
-the other 16,000 or so buckets.  Also, the qsort() function
-might take a non-trivial amount of CPU time, depending on how many
-entries are in each bucket.
-
-
-=== Squid 2 ===
-
-For Squid-2 we eliminated the need to use qsort() by indexing
-cached objects into an automatically sorted linked list.  Every time
-an object is accessed, it gets moved to the top of the list.  Over time,
+Every time an object is accessed, it gets moved to the top of a list.  Over time,
 the least used objects migrate to the bottom of the list.  When looking
 for objects to remove, we only need to check the last 100 or so objects
 in the list.  Unfortunately this approach increases our memory usage
 because of the need to store three additional pointers per cache object.
-But for Squid-2 we're still ahead of the game because we also replaced
-plain-text cache keys with MD5 hashes.
+We also use cache keys with MD5 hashes.
 
 
 == What are private and public keys? ==
@@ -691,8 +605,7 @@ plain-text cache keys with MD5 hashes.
 
 ''keys'' refers to the database keys which Squid uses to index
 cache objects.  Every object in the cache--whether saved on disk
-or currently being downloaded--has a cache key.  For Squid-1.0 and
-Squid-1.1 the cache key was basically the URL.  Squid-2 uses
+or currently being downloaded--has a cache key.  We use
 MD5 checksums for cache keys.
 
 
@@ -898,16 +811,16 @@ instead of marking it as half-closed.
 == What does --enable-heap-replacement do? ==
 
 
-Squid has traditionally used an LRU replacement algorithm.  As of
-[http://www.squid-cache.org/Versions/v2/2.3/ version 2.3], you can use
-some other replacement algorithms by using the ''--enable-heap-replacement''
-configure option.  Currently, the heap replacement code supports two
-additional algorithms: LFUDA, and GDS.
+Squid has traditionally used an LRU replacement algorithm.
+However with Squid version 2.4 and later you should use this configure option:
 
-With Squid version 2.4 and later you should use this configure option:
 {{{
 ./configure --enable-removal-policies=heap
 }}}
+
+Currently, the heap replacement code supports two additional algorithms: LFUDA, and GDS.
+
+
 
 
 Then, in ''squid.conf'', you can select different policies with the
@@ -943,6 +856,7 @@ thinks.  When calculating total disk usage, Squid rounds
 file sizes up to a whole number of 1024 byte blocks.  If
 your filesystem uses larger blocks, then some "wasted" space
 is not accounted.
+  *Your cache has suffered some minor corruption and some objects have gotten lost without being removed from the swap.state file.  Over time, Squid will detect this and automatically fix it.
 
 
 
@@ -1014,7 +928,7 @@ When the file is opened, Squid checks that the disk file MD5 matches the
 MD5 of the URL requested by the user.  If they don't match, the warning
 is printed and Squid forwards the request to the origin server.
 
-You do not need to worry about this warning.  It means that Squid is 
+You do not need to worry about this warning.  It means that Squid is automatically
 recovering from a corrupted cache directory.
 
 
@@ -1081,6 +995,8 @@ code.
 
 Note that in some versions, Squid limits ''dns_children'' to 32.  To
 increase it beyond that value, you would have to edit the source code.
+
+As we have mentioned previously in this page, you should NOT be running with external DNS processes.
 
 
 == What are FTP passive connections? ==
