@@ -9,6 +9,10 @@ to use a Squid server as a proxy.  Some browsers support advanced features
 such as lists of domains or URL patterns that shouldn't be fetched through
 the proxy, or Java''''''Script automatic proxy configuration.
 
+There are three ways to configure browsers to use Squid.  The first method involves manually configuring the proxy in each browser.  Alternatively, a proxy.pac file can be manually entered into each browser so that it will download the proxy settings (partial auto configuration), and lastly all modern browsers can also and indeed are configured by default to fully automatically configure themselves if the network is configured to support this.
+
+== Manual Browser Configuration ==
+
 == Firefox and Thunderbird manual configuration ==
 
 Both Firefox and Thunderbird are configured in the same way.  Look in the Tools menu, Options, General and then Connection Settings.  The options in there are fairly self explanatory.  Firefox and Thunderbird support manually specifying the proxy server, automatically downloading a wpad.dat file from a specified source, and additionally wpad auto-detection.
@@ -25,35 +29,8 @@ Select '''Options''' from the '''View''' menu.  Click on the '''Connection''' ta
 
 == Netscape manual configuration ==
 
-Select '''Network Preferences''' from the
-'''Options''' menu.  On the '''Proxies'''
-page, click the radio button next to '''Manual Proxy
-Configuration''' and then click on the '''View'''
-button.  For each protocol that your Squid server supports (by default,
-HTTP, FTP, and gopher) enter the Squid server's hostname or IP address
-and put the HTTP port number for the Squid server (by default, 3128) in
-the '''Port''' column.  For any protocols that your Squid
-does not support, leave the fields blank.
-
-
-== Netscape automatic configuration ==
-
-Netscape Navigator's proxy configuration can be automated with
-Java''''''Script (for Navigator versions 2.0 or higher).  Select
-'''Network Preferences''' from the '''Options'''
-menu.  On the '''Proxies''' page, click the radio button
-next to '''Automatic Proxy Configuration''' and then
-fill in the URL for your Java''''''Script proxy configuration file in the
-text box.  The box is too small, but the text will scroll to the
-right as you go.
-
-
-You may also wish to consult Netscape's documentation for the Navigator
-[http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
-
-Here is a sample auto configuration file from Oskar Pearson (link to save at the bottom):
-
-inline:sample1.pac.txt
+Select '''Network Preferences''' from the '''Options''' menu.  On the '''Proxies''' page, click the radio button next to '''Manual Proxy
+Configuration''' and then click on the '''View''' button.  For each protocol that your Squid server supports (by default, HTTP, FTP, and gopher) enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' column.  For any protocols that your Squid does not support, leave the fields blank.
 
 == Lynx and Mosaic configuration ==
 
@@ -75,6 +52,53 @@ http_proxy:http://mycache.example.com:3128/
 ftp_proxy:http://mycache.example.com:3128/
 gopher_proxy:http://mycache.example.com:3128/
 }}}
+
+== Opera 2.12 proxy configuration ==
+
+by Hume Smith
+
+Select ''Proxy Servers...'' from the ''Preferences'' menu.  Check each
+protocol that your Squid server supports (by default, HTTP, FTP, and
+Gopher) and enter the Squid server's address as hostname:port (e.g.
+mycache.example.com:3128 or 123.45.67.89:3128).  Click on ''Okay'' to accept the
+setup.
+
+Notes:
+
+  * Opera 2.12 doesn't support gopher on its own, but requires a proxy; therefore Squid's gopher proxying can extend the utility of your Opera immensely.
+  * Unfortunately, Opera 2.12 chokes on some HTTP requests, for example [http://spam.abuse.net/spam/ abuse.net].
+At the moment I think it has something to do with cookies.  If you have trouble with a site, try disabling the HTTP proxying by unchecking that protocol in the ''Preferences''|''Proxy Servers...'' dialogue.  Opera will remember the address, so reenabling is easy.
+
+
+== Netmanage Internet Chameleon WebSurfer configuration ==
+
+Netmanage Web''''''Surfer supports manual proxy configuration and exclusion lists for hosts or domains that should not be fetched via proxy (this information is current as of Web''''''Surfer 5.0).  Select '''Preferences''' from the '''Settings''' menu.  Click on the '''Proxies''' tab.  Select the '''Use Proxy''' options for HTTP, FTP, and gopher.  For each protocol that enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' boxes.  For any protocols that your Squid does not support, leave the fields blank.
+
+On the same configuration window, you'll find a button to bring up
+the exclusion list dialog box, which will let you enter some hosts
+or domains that you don't want fetched via proxy.
+
+
+== Partially Automatic Configuration ==
+
+This involves the browser being preconfigured with the location of an autoconfiguration script.
+
+== Netscape automatic configuration ==
+
+Netscape Navigator's proxy configuration can be automated with Java''''''Script (for Navigator versions 2.0 or higher).  Select
+'''Network Preferences''' from the '''Options''' menu.  On the '''Proxies''' page, click the radio button next to '''Automatic Proxy Configuration''' and then fill in the URL for your Java''''''Script proxy configuration file in the text box.  The box is too small, but the text will scroll to the r8ight as you go.
+
+You may also wish to consult Netscape's documentation for the Navigator
+[http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
+
+Here is a sample auto configuration file from Oskar Pearson (link to save at the bottom):
+
+inline:sample1.pac.txt
+
+== Microsoft Internet Explorer ==
+
+Microsoft Internet Explorer, versions 4.0 and above, supports Java''''''Script automatic proxy configuration in a Netscape-compatible way. Just select '''Options''' from the '''View''' menu. Click on the '''Advanced''' tab.  In the lower left-hand corner, click on the '''Automatic Configuration''' button.  Fill in the URL for your Java''''''Script file in the dialog box it presents you.  Then exit MSIE and restart it for the changes to take effect.  MSIE will reload the Java''''''Script file every time
+it starts.
 
 
 == Redundant Proxy Auto-Configuration ==
@@ -123,50 +147,7 @@ contains a lot of good information about hash-based proxy auto-configuration
 scripts.  With these you can distribute the load between a number
 of caching proxies.
 
-== Microsoft Internet Explorer ==
 
-Microsoft Internet Explorer, versions 4.0 and above, supports Java''''''Script automatic proxy configuration in a Netscape-compatible way. Just select
-'''Options''' from the '''View''' menu.
-Click on the '''Advanced''' tab.  In the lower left-hand
-corner, click on the '''Automatic Configuration'''
-button.  Fill in the URL for your Java''''''Script file in the dialog
-box it presents you.  Then exit MSIE and restart it for the changes
-to take effect.  MSIE will reload the Java''''''Script file every time
-it starts.
-
-== Netmanage Internet Chameleon WebSurfer configuration ==
-
-Netmanage Web''''''Surfer supports manual proxy configuration and exclusion
-lists for hosts or domains that should not be fetched via proxy
-(this information is current as of Web''''''Surfer 5.0).  Select
-'''Preferences''' from the '''Settings'''
-menu.  Click on the '''Proxies''' tab.  Select the
-'''Use Proxy''' options for HTTP, FTP, and gopher.  For
-each protocol that enter the Squid server's hostname or IP address
-and put the HTTP port number for the Squid server (by default,
-3128) in the '''Port''' boxes.  For any protocols that
-your Squid does not support, leave the fields blank.
-
-
-On the same configuration window, you'll find a button to bring up
-the exclusion list dialog box, which will let you enter some hosts
-or domains that you don't want fetched via proxy.
-
-== Opera 2.12 proxy configuration ==
-
-by Hume Smith
-
-Select ''Proxy Servers...'' from the ''Preferences'' menu.  Check each
-protocol that your Squid server supports (by default, HTTP, FTP, and
-Gopher) and enter the Squid server's address as hostname:port (e.g.
-mycache.example.com:3128 or 123.45.67.89:3128).  Click on ''Okay'' to accept the
-setup.
-
-Notes:
-
-  * Opera 2.12 doesn't support gopher on its own, but requires a proxy; therefore Squid's gopher proxying can extend the utility of your Opera immensely.
-  * Unfortunately, Opera 2.12 chokes on some HTTP requests, for example [http://spam.abuse.net/spam/ abuse.net].
-At the moment I think it has something to do with cookies.  If you have trouble with a site, try disabling the HTTP proxying by unchecking that protocol in the ''Preferences''|''Proxy Servers...'' dialogue.  Opera will remember the address, so reenabling is easy.
 
 == How do I tell Squid to use a specific username for FTP urls? ==
 
@@ -184,7 +165,8 @@ ftp://joecool:secret@ftp.foo.org/
 However, we certainly do not recommend this, as it could be very
 easy for someone to see or grab your password.
 
-== Configuring Browsers for WPAD ==
+== Fully Automatically Configuring Browsers for WPAD ==
+
 by Mark Reynolds
 
 You may like to start by reading the
@@ -269,7 +251,7 @@ detailed here in the future. Things like ''wpad.dat'' files being served
 from the proxy server themselves, maybe with a round robin dns setup
 for the WPAD host.
 
-== Configuring Browsers for WPAD with DHCP ==
+== Fully Automatically Configuring Browsers for WPAD with DHCP ==
 
 You can also use DHCP to configure browsers for WPAD.
 This technique allows you to set any URL as the PAC
@@ -296,7 +278,7 @@ option wpad "http://www.example.com/proxy.pac\n";
 
 == IE 5.0x crops trailing slashes from FTP URL's ==
 
-by Reuben Farrelly
+by ReubenFarrelly
 
 There was a bug in the 5.0x releases of Internet Explorer in which IE
 cropped any trailing slash off an FTP URL.  The URL showed up correctly in
