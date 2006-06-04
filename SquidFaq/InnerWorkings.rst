@@ -692,25 +692,11 @@ ignore_unknown_nameservers off
 See ''storeDirMapAllocate()'' in the source code.
 
 
-When Squid wants to create a new disk file for storing an object, it
-first selects which ''cache_dir'' the object will go into.  This is done
-with the ''storeDirSelectSwapDir()'' function.  If you have ''N''
-cache directories, the function identifies the ''3N/4'' (75%)
-of them with the most available space.  These directories are
-then used, in order of having the most available space.  When Squid has
-stored one URL to each of the 
-''3N/4'' ''cache_dir'''s, the process repeats and 
-''storeDirSelectSwapDir()'' finds a new set of ''3N/4''
-cache directories with the most available space.
+When Squid wants to create a new disk file for storing an object, it first selects which ''cache_dir'' the object will go into.  This is done
+with the ''storeDirSelectSwapDir()'' function.  If you have ''N'' cache directories, the function identifies the ''3N/4'' (75%) of them with the most available space.  These directories are then used, in order of having the most available space.  When Squid has stored one URL to each of the ''3N/4'' ''cache_dir''s, the process repeats and  ''storeDirSelectSwapDir()'' finds a new set of ''3N/4'' cache directories with the most available space.
 
 
-Once the ''cache_dir'' has been selected, the next step is to find
-an available ''swap file number''.  This is accomplished
-by checking the ''file map'', with the ''file_map_allocate()''
-function.  Essentially the swap file numbers are allocated
-sequentially.  For example, if the last number allocated 
-happens to be 1000, then the next one will be the first
-number after 1000 that is not already being used.
+Once the ''cache_dir'' has been selected, the next step is to find an available ''swap file number''.  This is accomplished by checking the ''file map'', with the ''file_map_allocate()'' function.  Essentially the swap file numbers are allocated sequentially.  For example, if the last number allocated happens to be 1000, then the next one will be the first number after 1000 that is not already being used.
 
 
 == Why do I see negative byte hit ratio? ==
@@ -731,22 +717,12 @@ with a negative value.
 The server_bytes may be greater than client_bytes for a number
 of reasons, including:
 
-  *Cache Digests and other internally generated requests.
-Cache Digest messages are quite large.  They are counted
-in the server_bytes, but since they are consumed internally,
-they do not count in client_bytes.
-  *User-aborted requests.  If your ''quick_abort'' setting
-allows it, Squid sometimes continues to fetch aborted
-requests from the server-side, without sending any
-data to the client-side.
-  *Some range requests, in combination with Squid bugs, can
-consume more bandwidth on the server-side than on the
-client-side.  In a range request, the client is asking for
-only some part of the object.  Squid may decide to retrieve
-the whole object anyway, so that it can be used later on.
-This means downloading more from the server than sending
-to the client.  You can affect this behavior with
-the ''range_offset_limit'' option.
+  *Cache Digests and other internally generated requests. Cache Digest messages are quite large.  They are counted in the server_bytes, but since they are consumed internally, they do not count in client_bytes.
+  *User-aborted requests.  If your ''quick_abort'' setting allows it, Squid sometimes continues to fetch aborted requests from the server-side, without sending any data to the client-side.
+  *Some range requests, in combination with Squid bugs, can consume more bandwidth on the server-side than on the
+client-side.  In a range request, the client is asking for only some part of the object.  Squid may decide to retrieve
+the whole object anyway, so that it can be used later on. This means downloading more from the server than sending
+to the client.  You can affect this behavior with the ''range_offset_limit'' option.
 
 
 
@@ -757,27 +733,13 @@ the ''range_offset_limit'' option.
 First you need to understand the difference between public and private keys.
 
 
-When Squid sends ICP queries, it uses the ICP ''reqnum'' field
-to hold the private key data.  In other words, when Squid gets an
-ICP reply, it uses the ''reqnum'' value to build the private cache key for
-the pending object.
+When Squid sends ICP queries, it uses the ICP 'reqnum' field to hold the private key data.  In other words, when Squid gets an
+ICP reply, it uses the 'reqnum' value to build the private cache key for the pending object.
+
+Some ICP implementations always set the 'reqnum' field to zero when they send a reply.   Squid can not use private cache keys with such neighbor caches because Squid will not be able to locate cache keys for those ICP replies.  Thus, if Squid detects a neighbor cache that sends zero reqnum's, it disables the use of private cache keys.
 
 
-
-Some ICP implementations always set the ''reqnum'' field to zero
-when they send a reply.   Squid can not use private cache keys with
-such neighbor caches because Squid will not be able to
-locate cache keys for those ICP replies.  Thus, if Squid detects a neighbor
-cache that sends zero reqnum's, it 
-disables the use of private cache keys.
-
-
-Not having private cache keys has some important privacy
-implications.  Two users could receive one response that was
-meant for only one of the users.  This response could contain
-personal, confidential information.  You will need to disable
-the "zero reqnum" neighbor if you want Squid to use private
-cache keys.
+Not having private cache keys has some important privacy implications.  Two users could receive one response that was meant for only one of the users.  This response could contain personal, confidential information.  You will need to disable the 'zero reqnum' neighbor if you want Squid to use private cache keys.
 
 
 == What is a half-closed filedescriptor? ==
