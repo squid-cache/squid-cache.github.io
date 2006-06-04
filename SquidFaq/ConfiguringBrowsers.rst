@@ -9,6 +9,15 @@ to use a Squid server as a proxy.  Some browsers support advanced features
 such as lists of domains or URL patterns that shouldn't be fetched through
 the proxy, or Java''''''Script automatic proxy configuration.
 
+== Firefox and Thunderbird manual and automatic configuration ==
+
+Both Firefox and Thunderbird are configured in the same way.  Look in the Tools menu, Options, General and then Connection Settings.  The options in there are fairly self explanatory.  Firefox and Thunderbird support manually specifying the proxy server, automatically downloading a wpad.dat file from a specified source, and additionally wpad auto-detection.
+
+Thunderbird uses these settings for downloading HTTP images in emails.
+
+In both cases if you are manually configuring proxies, make sure you should add relevant statements for your network in the "No Proxy For" boxes.
+
+
 == Netscape manual configuration ==
 
 Select '''Network Preferences''' from the
@@ -21,13 +30,6 @@ and put the HTTP port number for the Squid server (by default, 3128) in
 the '''Port''' column.  For any protocols that your Squid
 does not support, leave the fields blank.
 
-== Firefox and Thunderbird automatic configuration ==
-
-Both Firefox and Thunderbird are configured in the same way.  Look in the Tools menu, Options, General and then Connection Settings.  The options in there are fairly self explanatory.  Firefox and Thunderbird support manually specifying the proxy server, automatically downloading a wpad.dat file from a specified source, and additionally wpad auto-detection.
-
-Thunderbird uses these settings for downloading HTTP images in emails.
-
-In both cases if you are manually configuring proxies, make sure you should add relevant statements for your network in the "No Proxy For" boxes.
 
 
 == Netscape automatic configuration ==
