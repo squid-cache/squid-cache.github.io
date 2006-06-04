@@ -583,14 +583,7 @@ to ''/etc/rc.local'' will disable the behavior systemwide.
 
 Generally we recommend you use Squid with an up-to-date Linux distribution, preferably one with a 2.6 kernel.  Recent 2.6 kernels support some features in new versions of Squid such as epoll and WCCP/GRE support built in that will give better performance and flexibility.  Note that Squid will however still function just fine under older Linux kernels.  You will need to be mindful of the security implications of running your Squid proxy on the Internet if you are using a very old and unsupported distribution.
 
-There have been issues with GLIBC in some very old distributions.
-
-=== Cannot bind socket FD 5 to 127.0.0.1:0: (49) Can't assign requested address ===
-
-Try a different version of Linux.  We have received many reports of this
-"bug" from people running Linux 2.0.30.  The ''bind(2)'' system
-call should NEVER give this error when binding to port 0.
-
+There have been issues with GLIBC in some very old distributions, and upgrading or fixing GLIBC is not for the faint of heart.
 
 === FATAL: Don't run Squid as root, set 'cache_effective_user'! ===
 
@@ -713,19 +706,6 @@ See also the
 
 
 You may also very occasionally have problems with TCP Window Scaling on Linux.  At first you may be able to TCP connect to the site, but then unable to transfer any data across your connection.  This is due to some broken firewalls on the Internet (it is not a bug with Linux) mangling this field when the TCP connection is established.  More details and a workaround can be found at [http://lwn.net/Articles/92727/ lwn.net].
-
-
-
-== HP-UX ==
-
-
-=== StatHist.c:74: failed assertion `statHistBin(H, min) == 0' ===
-
-This was a very mysterious and unexplainable bug with GCC on HP-UX.
-Certain functions, when specified as ''static'', would cause
-math bugs.  The compiler also failed to handle implied
-int-double conversions properly.  These bugs should all be
-handled correctly in Squid version 2.2.
 
 
 == IRIX ==
