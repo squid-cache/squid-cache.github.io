@@ -12,7 +12,7 @@ Squid keeps meta data and especially hot objects cached in RAM, caches DNS looku
 
 Squid supports SSL, extensive access controls, and full request logging.  By using the lightweight Internet Cache Protocol, Squid caches can be arranged in a hierarchy or mesh for additional bandwidth savings.
 
-Squid consists of a main server program ''squid'', an optional Domain Name System lookup program ''dnsserver'' (squid nowadays implements the DNS protocol on its own by default), some optional programs for rewriting requests and performing authentication, and some management and client tools.
+Squid consists of a main server program ''squid'', an optional Domain Name System lookup program ''dnsserver'' (Squid nowadays implements the DNS protocol on its own by default), some optional programs for rewriting requests and performing authentication, and some management and client tools.
 
 Squid is originally derived from the ARPA-funded [http://webharvest.sourceforge.net/ng/ Harvest project].
 Since then it has gone through many changes and has many new features.
@@ -32,7 +32,7 @@ We needed to distinguish this new version from the Harvest cache software.  Squi
 
 == What is the latest version of Squid? ==
 
-At the present time, Squid-2.5 is the stable version and Squid-3.0 is under development. There have been talks of a ["Squid-2.6"] version but at this time it's unclear when (and if) it will ever see the light.
+At the time of writing (June 06), Squid-2.5 is the stable version and Squid-2.6 and Squid-3.0 are under development.  We expect Squid-2.6 to be released some time in the next month or two, while Squid-3.0 will likely not be released for a while longer.
 
 Please see [http://www.squid-cache.org/ the Squid home page] for the most recent versions.
 
@@ -50,14 +50,14 @@ Please see [http://www.squid-cache.org/CONTRIBUTORS the CONTRIBUTORS file] for a
 
 == Where can I get Squid? ==
 
-You can download Squid via FTP from [ftp://ftp.squid-cache.org/pub/ the primary FTP site] or one of the many worldwide [http://www.squid-cache.org/mirrors.html mirror sites].
+You can download Squid via FTP from one of the many worldwide [http://www.squid-cache.org/mirrors.html mirror sites] or [ftp://ftp.squid-cache.org/pub/ the primary FTP site].
 
 Many sushi bars also have Squid.
 
 == What Operating Systems does Squid support? ==
 
 
-The software is designed to operate on any modern Unix system, and
+The software is designed to operate on any modern system, and
 is known to work on at least the following platforms:
 
   * Linux
@@ -73,10 +73,11 @@ is known to work on at least the following platforms:
   * SCO Unix
   * AIX
   * HP-UX
+  * Microsoft Windows Cygwin and MinGW
   * [Compiling#building_squid_on_os_2 OS/2]
 
 For more specific information, please see [http://www.squid-cache.org/platforms.html platforms.html].
-If you encounter any platform-specific problems, please let us know by registering a entry in our [http://www.squid-cache.org/bugs/ bug database].
+If you encounter any platform-specific problems, please let us know by registering an entry in our [http://www.squid-cache.org/bugs/ bug database].
 If you're curious about what is the best OS to run Squid, see BestOsForSquid.
 
 
@@ -84,11 +85,10 @@ If you're curious about what is the best OS to run Squid, see BestOsForSquid.
 
 Recent versions of Squid will ''compile and run'' on Windows NT and later incarnations with the
 [http://www.cygwin.com/ Cygwin] /
-[http://www.mingw.org/ Mingw] packages.
+[http://www.mingw.org/ MinGW packages.
 
 [http://www.acmeconsulting.it/SquidNT/ Guido Serassio]
-maintains the native NT port of Squid and is actively working on having the needed changes integrated into the standard Squid distribution. Partially based on earlier NT port by
-[http://www.phys-iasi.ro/users/romeo/squidnt.htm Romeo Anghelache].
+maintains the native NT port of Squid and is actively working on having the needed changes integrated into the standard Squid distribution. Partially based on earlier NT port by Romeo Anghelache.
 
 
 == What Squid mailing lists are available? ==
@@ -172,34 +172,11 @@ Squid uses some [http://www.squid-cache.org/Doc/FAQ/squid-credits.txt code devel
 Squid is [http://www.gnu.org/philosophy/free-sw.html Free Software], licensed under the terms of the [http://www.gnu.org/copyleft/gpl.html GNU General Public License].
 
 
-== Is Squid year-2000 compliant? ==
-
-We made the following fixes in to address the year 2000 issue:
-
-  * ''cache.log'' timestamps use 4-digit years instead of just 2 digits.
-  * ''parse_rfc1123()'' assumes years less than "70" are after 2000.
-  * ''parse_iso3307_time()'' checks all four year digits.
-
-Year-2000 fixes were applied to the following Squid versions:
-
-  * [http://www.squid-cache.org/Versions/v2/2.1/ squid-2.1]: Year parsing bug fixed for dates in the "Wed Jun  9 01:29:59 1993 GMT" format (Richard Kettlewell).
-  * squid-1.1.22:  Fixed likely year-2000 bug in ftpget's timestamp parsing (Henrik Nordstrom).
-  * squid-1.1.20: Misc fixes (Arjan de Vet).
-
-Patches:
-
-  * [http://www.squid-cache.org/Y2K/patch3 Richard's lib/rfc1123.c patch]. If you are still running 1.1.X, then you should apply this patch to your source and recompile.
-  * [http://www.squid-cache.org/Y2K/patch2 Henrik's src/ftpget.c patch].
-  * [http://www.squid-cache.org/Y2K/patch1 Arjan's lib/rfc1123.c patch].
-
-Squid-2.2 and earlier versions have a
-[http://www.squid-cache.org/Versions/v2/2.2/bugs/index.html#squid-2.2.stable5-mkhttpdlogtime-end-of-year New Year bug].  This is not strictly a Year-2000 bug; it would happen on the first day of any year.
-
 
 == Can I pay someone for Squid support? ==
 
 
-Yep.  Please see SquidSupportServices.
+Yes.  Please see SquidSupportServices.
 
 
 == Squid FAQ contributors ==
@@ -211,7 +188,7 @@ Jonathan Larmour,
 Cord Beermann,
 Tony Sterrett,
 Gerard Hynes,
-Katayama, Tak,eo
+Katayama, Takeo,
 Duane Wessels,
 K Claffy,
 Paul Southworth,
@@ -256,12 +233,13 @@ Simon White,
 Jerry Murdock,
 Gerard Eviston,
 Rob Poe,
-FrancescoChemolli
+FrancescoChemolli,
+ReubenFarrelly
 
 
 == About This Document ==
 
-The Squid FAQ is copyrighted (2005) by The Squid Core Team.
+The Squid FAQ is copyrighted (2006) by The Squid Core Team.
 
 This FAQ was maintained for a long time as an XML Docbook file.
 It was converted to a Wiki in July 2005.
