@@ -9,13 +9,18 @@ to use a Squid server as a proxy.  Some browsers support advanced features
 such as lists of domains or URL patterns that shouldn't be fetched through
 the proxy, or Java''''''Script automatic proxy configuration.
 
-== Firefox and Thunderbird manual and automatic configuration ==
+== Firefox and Thunderbird manual configuration ==
 
 Both Firefox and Thunderbird are configured in the same way.  Look in the Tools menu, Options, General and then Connection Settings.  The options in there are fairly self explanatory.  Firefox and Thunderbird support manually specifying the proxy server, automatically downloading a wpad.dat file from a specified source, and additionally wpad auto-detection.
 
 Thunderbird uses these settings for downloading HTTP images in emails.
 
 In both cases if you are manually configuring proxies, make sure you should add relevant statements for your network in the "No Proxy For" boxes.
+
+== Microsoft Internet Explorer manual configuration ==
+
+Select '''Options''' from the '''View''' menu.  Click on the '''Connection''' tab.  Tick the
+'''Connect through Proxy Server''' option and hit the '''Proxy Settings''' button.  For each protocol that your Squid server supports (by default, HTTP, FTP, and gopher) enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' column.  For any protocols that your Squid does not support, leave the fields blank.
 
 
 == Netscape manual configuration ==
@@ -29,7 +34,6 @@ HTTP, FTP, and gopher) enter the Squid server's hostname or IP address
 and put the HTTP port number for the Squid server (by default, 3128) in
 the '''Port''' column.  For any protocols that your Squid
 does not support, leave the fields blank.
-
 
 
 == Netscape automatic configuration ==
@@ -119,18 +123,7 @@ contains a lot of good information about hash-based proxy auto-configuration
 scripts.  With these you can distribute the load between a number
 of caching proxies.
 
-== Microsoft Internet Explorer configuration ==
-
-Select '''Options''' from the '''View'''
-menu.  Click on the '''Connection''' tab.  Tick the
-'''Connect through Proxy Server''' option and hit the
-'''Proxy Settings''' button.  For each protocol that
-your Squid server supports (by default, HTTP, FTP, and gopher)
-enter the Squid server's hostname or IP address and put the HTTP
-port number for the Squid server (by default, 3128) in the
-'''Port''' column.  For any protocols that your Squid
-does not support, leave the fields blank.
-
+== Microsoft Internet Explorer ==
 
 Microsoft Internet Explorer, versions 4.0 and above, supports Java''''''Script automatic proxy configuration in a Netscape-compatible way. Just select
 '''Options''' from the '''View''' menu.
@@ -208,11 +201,8 @@ Implementing wpad requires you to '''fully''' understand:
 
 || <!> ||Please don't bombard the squid list with web server or DNS questions. See your system administrator, or do some more research on those topics.||
 
-This is not a recommendation for any product or version. As far as I
-know IE5 is the only browser out now implementing wpad. I think wpad
+This is not a recommendation for any product or version. All major browsers out now implementing WPAD. I think WPAD
 is an excellent feature that will return several hours of life per month.
-Hopefully, all browser clients will implement it as well. But it will take
-years for all the older browsers to fade away though.
 
 I have only focused on the domain name method, to the exclusion of the
 DHCP method. I think the dns method might be easier for most people.
