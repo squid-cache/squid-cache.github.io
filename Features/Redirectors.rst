@@ -71,7 +71,7 @@ while (<>) {
 Normally, the ''redirector'' feature is used to rewrite requested URLs.
 Squid then transparently requests the new URL.  However, in some situations,
 it may be desirable to return an HTTP "301" or "302" redirect message
-to the client.  This is now possible with Squid version 1.1.19.
+to the client.
 
 
 Simply modify your redirector program to prepend either "301:" or "302:"
@@ -104,7 +104,7 @@ for an explanation of the 301 and 302 HTTP reply codes.
 
 A redirector process must exit (stop running) only when its
 ''stdin'' is closed.  If you see
-the "All redirectories have exited" message, it probably means your
+the "All redirectors have exited" message, it probably means your
 redirector program has a bug.  Maybe it runs out of memory or has memory
 access errors.  You may want to test your redirector program outside of
 squid with a big input list, taken from your ''access.log'' perhaps.
