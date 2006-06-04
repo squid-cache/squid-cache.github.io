@@ -4,13 +4,13 @@
 == How big of a system do I need to run Squid? ==
 
 There are no hard-and-fast rules.  The most important resource for
-Squid is physical memory.  Your processor does not need to be
+Squid is physical memory, so put as much in your Squid box as you can.  Your processor does not need to be
 ultra-fast.  We recommend buying whatever is economical at the time.
 
 Your disk system will be the major bottleneck, so fast disks are
 important for high-volume caches.  SCSI disks generally perform
-better than ATA, if you can afford them.  Your system disk, and
-logfile disk can probably be IDE without losing any cache performance.
+better than ATA, if you can afford them.  Serial ATA (SATA) performs somewhere between the two.
+Your system disk, and logfile disk can probably be IDE without losing any cache performance.
 
 The ratio of memory-to-disk can be important.  We recommend that
 you have at least 32 MB of RAM for each GB of disk space that you
@@ -347,25 +347,28 @@ and need to run various statistics collections during peak hours.
 The authentication and group helpers barely use any CPU and does
 not benefit from dual-CPU configuration.
 
-== Is it okay to use separate drives and RAID on Squid? ==
+== Is it okay to use separate drives for Squid? ==
 
-RAID1 is fine, and so are separate drives.
+Yes.  Running Squid on separate drives to that which your OS is running is often a very good idea.
 
-RAID0 (striping) with Squid only gives you the drawback that if
-you lose one of the drives the whole stripe set is lost. There is no
-benefit in performance as Squid already distributes the load on the drives
-quite nicely.
+Generally seek time is what you want to optimize for Squid, or more precisely the total amount of seeks/s your system can sustain.  This is why it is better to have your cache_dir spread over multiple smaller disks than one huge drive (especially with SCSI).
 
-Squid is the worst case application for RAID5, whether hardware or
-software, and will absolutely kill the performance of a RAID5. Once the
-cache has been filled Squid uses a lot of small random writes which the
-worst case workload for RAID5, effectively reducing write speed to only
+If your system is very I/O bound, you will want to have both your OS and log directories running on separate drives.
+
+== Is it okay to use RAID on Squid? ==
+
+We generally recommend you do not run RAID on the Squid disks especially those on which your cache content is stored.
+
+If you must use RAID:
+
+RAID1 suffers a very slight degradation in write performance but slight improvement in read performance, and you may find it better use of resources to run two separate drives and have double the disk cache space.  Cache data is not usually considered critical so generally there is little point in running squid on a RAID1 array.  However as pointed out above it may make sense to run your O/S in a RAID-1 configuration.
+
+RAID0 (striping) with Squid only gives you the drawback that if you lose one of the drives the whole stripe set is lost. There is no
+benefit in performance as Squid already distributes the load on the drives quite nicely.  It is better to configure multiple separate drives with a separate cache_dir entrie for each one than one RAID0 partition.
+
+Squid is the worst case application for RAID5, whether hardware or software, and will absolutely kill the performance of a RAID5. Once the
+cache has been filled Squid uses a lot of small random writes which the worst case workload for RAID5, effectively reducing write speed to only
 little more than that of one single drive.
-
-Generally seek time is what you want to optimize for Squid, or
-more precisely the total amount of seeks/s your system can sustain.
-Choosing the right RAID solution generally decreases the amount of seeks/s
-your system can sustain significantly.
 
 ----
 Back to the SquidFaq
