@@ -5,30 +5,25 @@
 == Which file do I download to get Squid? ==
 
 You must download a source archive file of the form
-squid-x.y.z-src.tar.gz (eg, squid-1.1.6-src.tar.gz) from
-[http://www.squid-cache.org/ the Squid home page], or.
-[ftp://www.squid-cache.org/pub/ the Squid FTP site].
+squid-x.y.tar.gz or squid-x.y.tar.bz2 (eg, squid-2.5.STABLE14.tar.bz2).
+We recommend you first try one of our [http://www.squid-cache.org/Mirrors/http-mirrors.html mirror sites].
+
+Alternatively, the main Squid WWW site 
+[http://www.squid-cache.org/ www.squid-cache.org], and FTP site
+[ftp://www.squid-cache.org/pub/ ftp.squid-cache.org] have these files.
+
 Context diffs are available for upgrading to new versions.
 These can be applied with the ''patch'' program (available from
-[ftp://ftp.gnu.org/gnu/patch the GNU FTP site]).
+[ftp://ftp.gnu.org/gnu/patch the GNU FTP site] or your distribution).
 
 == How do I compile Squid? ==
 
-For '''Squid-1.0''' and '''Squid-1.1''' versions, you can just
-type ''make'' from the top-level directory after unpacking
-the source files.  For example:
-{{{
-% tar xzf squid-1.1.21-src.tar.gz
-% cd squid-1.1.21
-% make
-}}}
+You must run the ''configure'' script yourself before running ''make''.  We suggest that you firstly invoke ./configure and make a note of the configure options you need in order to support the features you intend to use.  Do not compile in features you do not think you will need.
 
-For '''Squid-2''' you must run the ''configure'' script yourself
-before running ''make'':
 {{{
-% tar xzf squid-2.0.RELEASE-src.tar.gz
-% cd squid-2.0.RELEASE
-% ./configure
+% tar xzf squid-2.5.RELEASExy.tar.gz
+% cd squid-2.5.RELEASExy
+% ./configure --with-MYOPTION --with-MYOPTION2 etc
 % make
 }}}
 
@@ -40,11 +35,8 @@ just fine.  The old ''SunOS'' compilers do not have support for ANSI
 C, and the Sun compiler for ''Solaris'' is a product which
 must be purchased separately.
 
-If you are uncertain about your system's C compiler, The GNU C compiler is
-available at
-[ftp://ftp.gnu.org/gnu/gcc the GNU FTP site].
-In addition to gcc, you may also want or need to install the ''binutils''
-package.
+If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems.  It is also well tested with Squid.  If your OS does not come with GCC you may download it from [ftp://ftp.gnu.org/gnu/gcc the GNU FTP site].
+In addition to gcc, you may also want or need to install the ''binutils'' package.
 
 == What else do I need to compile Squid? ==
 
@@ -68,22 +60,13 @@ Gurkan Sengun has some [http://www.linuks.mine.nu/solaris/ Sparc/Solaris package
 
 You need the ''patch'' program.  You should probably duplicate the
 entire directory structure before applying the patch.  For example, if
-you are upgrading from squid-1.1.10 to 1.1.11, you would run
+you are upgrading from squid-2.5STABLE13 to 2.5STABLE14, you would run
 these commands:
-{{{
-cd squid-2.5.STABLE3
-mkdir ../squid-2.5.STABLE4
-find . -depth -print | cpio -pdv ../squid-1.1.11
-cd ../squid-1.1.11
-patch -p1 < /tmp/squid-2.5.STABLE3-STABLE4.diff
-}}}
-
-or alternatively
 
 {{{
-cp -rl squid-2.5.STABLE3 squid-2.5.STABLE4
-cd squid-2.5.STABLE4
-zcat /tmp/squid-2.5.STABLE3-STABLE4.diff.gz | patch -p1
+cp -rl squid-2.5.STABLE13 squid-2.5.STABLE14
+cd squid-2.5.STABLE14
+zcat /tmp/squid-2.5.STABLE13-STABLE14.diff.gz | patch -p1
 }}}
 
 After the patch has been applied, you must rebuild Squid from the
@@ -98,6 +81,8 @@ make install
 If your ''patch'' program seems to complain or refuses to work,
 you should get a more recent version, from the
 [ftp://ftp.gnu.ai.mit.edu/pub/gnu/ GNU FTP site], for example.
+
+Ideally you should use the patch command which comes with your OS.
 
 ==  configure options ==
 
@@ -208,7 +193,7 @@ Check your gcc version with
 gcc -v
 }}}
 
-If it is earlier than 2.7.2, you might consider upgrading.
+If it is earlier than 2.7.2, you might consider upgrading.  Gcc 2.7.2 is very old and not widely supported.
 
 
 ==  Problems compiling libmiscutil.a on Solaris ==
