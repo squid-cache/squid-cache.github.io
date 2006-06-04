@@ -13,6 +13,8 @@ There are three ways to configure browsers to use Squid.  The first method invol
 
 == Manual Browser Configuration ==
 
+This involves manually specifying the proxy server and port name in each browser.
+
 == Firefox and Thunderbird manual configuration ==
 
 Both Firefox and Thunderbird are configured in the same way.  Look in the Tools menu, Options, General and then Connection Settings.  The options in there are fairly self explanatory.  Firefox and Thunderbird support manually specifying the proxy server, automatically downloading a wpad.dat file from a specified source, and additionally wpad auto-detection.
@@ -32,7 +34,7 @@ Select '''Options''' from the '''View''' menu.  Click on the '''Connection''' ta
 Select '''Network Preferences''' from the '''Options''' menu.  On the '''Proxies''' page, click the radio button next to '''Manual Proxy
 Configuration''' and then click on the '''View''' button.  For each protocol that your Squid server supports (by default, HTTP, FTP, and gopher) enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' column.  For any protocols that your Squid does not support, leave the fields blank.
 
-== Lynx and Mosaic configuration ==
+== Lynx and Mosaic manual configuration ==
 
 For Mosaic and Lynx, you can set environment variables
 before starting the application.  For example (assuming csh or tcsh):
@@ -53,7 +55,7 @@ ftp_proxy:http://mycache.example.com:3128/
 gopher_proxy:http://mycache.example.com:3128/
 }}}
 
-== Opera 2.12 proxy configuration ==
+== Opera 2.12 manual configuration ==
 
 by Hume Smith
 
@@ -70,13 +72,11 @@ Notes:
 At the moment I think it has something to do with cookies.  If you have trouble with a site, try disabling the HTTP proxying by unchecking that protocol in the ''Preferences''|''Proxy Servers...'' dialogue.  Opera will remember the address, so reenabling is easy.
 
 
-== Netmanage Internet Chameleon WebSurfer configuration ==
+== Netmanage Internet Chameleon WebSurfer manual configuration ==
 
 Netmanage Web''''''Surfer supports manual proxy configuration and exclusion lists for hosts or domains that should not be fetched via proxy (this information is current as of Web''''''Surfer 5.0).  Select '''Preferences''' from the '''Settings''' menu.  Click on the '''Proxies''' tab.  Select the '''Use Proxy''' options for HTTP, FTP, and gopher.  For each protocol that enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' boxes.  For any protocols that your Squid does not support, leave the fields blank.
 
-On the same configuration window, you'll find a button to bring up
-the exclusion list dialog box, which will let you enter some hosts
-or domains that you don't want fetched via proxy.
+On the same configuration window, you'll find a button to bring up the exclusion list dialog box, which will let you enter some hosts or domains that you don't want fetched via proxy.
 
 
 == Partially Automatic Configuration ==
@@ -99,71 +99,6 @@ inline:sample1.pac.txt
 
 Microsoft Internet Explorer, versions 4.0 and above, supports Java''''''Script automatic proxy configuration in a Netscape-compatible way. Just select '''Options''' from the '''View''' menu. Click on the '''Advanced''' tab.  In the lower left-hand corner, click on the '''Automatic Configuration''' button.  Fill in the URL for your Java''''''Script file in the dialog box it presents you.  Then exit MSIE and restart it for the changes to take effect.  MSIE will reload the Java''''''Script file every time
 it starts.
-
-
-== Redundant Proxy Auto-Configuration ==
-
-by Rodney van den Oever
-
-There's one nasty side-effect to using auto-proxy scripts: if you start
-the web browser it will try and load the auto-proxy-script.
-
-If your script isn't available either because the web server hosting the
-script is down or your workstation can't reach the web server (e.g.
-because you're working off-line with your notebook and just want to
-read a previously saved HTML-file) you'll get different errors depending
-on the browser you use.
-
-The Netscape browser will just return an error after a timeout (after
-that it tries to find the site 'www.proxy.com' if the script you use is
-called 'proxy.pac').
-
-The Microsoft Internet Explorer on the other hand won't even start, no
-window displays, only after about 1 minute it'll display a window asking
-you to go on with/without proxy configuration.
-
-The point is that your workstations always need to locate the
-proxy-script. I created some extra redundancy by hosting the script on
-two web servers (actually Apache web servers on the proxy servers
-themselves) and adding the following records to my primary nameserver:
-{{{
-proxy   IN      A       10.0.0.1 ; IP address of proxy1
-        IN      A       10.0.0.2 ; IP address of proxy2
-}}}
-
-The clients just refer to 'http://proxy/proxy.pac'.  This script looks like this:
-
-inline:sample2.pac.txt
-
-I made sure every client domain has the appropriate 'proxy' entry.
-The clients are automatically configured with two nameservers using
-DHCP.
-
-== Proxy Auto-Configuration with URL Hashing ==
-
-The
-[http://naragw.sharp.co.jp/sps/ Sharp Super Proxy Script page]
-contains a lot of good information about hash-based proxy auto-configuration
-scripts.  With these you can distribute the load between a number
-of caching proxies.
-
-
-
-== How do I tell Squid to use a specific username for FTP urls? ==
-
-Insert your username in the host part of the URL, for example:
-{{{
-ftp://joecool@ftp.foo.org/
-}}}
-
-Squid should then prompt you for your account password.  Alternatively,
-you can specify both your username and password in the URL itself:
-{{{
-ftp://joecool:secret@ftp.foo.org/
-}}}
-
-However, we certainly do not recommend this, as it could be very
-easy for someone to see or grab your password.
 
 == Fully Automatically Configuring Browsers for WPAD ==
 
@@ -275,6 +210,73 @@ it work with both IE 5.0 and 6.0:
 {{{
 option wpad "http://www.example.com/proxy.pac\n";
 }}}
+
+
+
+== Redundant Proxy Auto-Configuration ==
+
+by Rodney van den Oever
+
+There's one nasty side-effect to using auto-proxy scripts: if you start
+the web browser it will try and load the auto-proxy-script.
+
+If your script isn't available either because the web server hosting the
+script is down or your workstation can't reach the web server (e.g.
+because you're working off-line with your notebook and just want to
+read a previously saved HTML-file) you'll get different errors depending
+on the browser you use.
+
+The Netscape browser will just return an error after a timeout (after
+that it tries to find the site 'www.proxy.com' if the script you use is
+called 'proxy.pac').
+
+The Microsoft Internet Explorer on the other hand won't even start, no
+window displays, only after about 1 minute it'll display a window asking
+you to go on with/without proxy configuration.
+
+The point is that your workstations always need to locate the
+proxy-script. I created some extra redundancy by hosting the script on
+two web servers (actually Apache web servers on the proxy servers
+themselves) and adding the following records to my primary nameserver:
+{{{
+proxy   IN      A       10.0.0.1 ; IP address of proxy1
+        IN      A       10.0.0.2 ; IP address of proxy2
+}}}
+
+The clients just refer to 'http://proxy/proxy.pac'.  This script looks like this:
+
+inline:sample2.pac.txt
+
+I made sure every client domain has the appropriate 'proxy' entry.
+The clients are automatically configured with two nameservers using
+DHCP.
+
+== Proxy Auto-Configuration with URL Hashing ==
+
+The
+[http://naragw.sharp.co.jp/sps/ Sharp Super Proxy Script page]
+contains a lot of good information about hash-based proxy auto-configuration
+scripts.  With these you can distribute the load between a number
+of caching proxies.
+
+
+
+== How do I tell Squid to use a specific username for FTP urls? ==
+
+Insert your username in the host part of the URL, for example:
+{{{
+ftp://joecool@ftp.foo.org/
+}}}
+
+Squid should then prompt you for your account password.  Alternatively,
+you can specify both your username and password in the URL itself:
+{{{
+ftp://joecool:secret@ftp.foo.org/
+}}}
+
+However, we certainly do not recommend this, as it could be very
+easy for someone to see or grab your password.
+
 
 == IE 5.0x crops trailing slashes from FTP URL's ==
 
