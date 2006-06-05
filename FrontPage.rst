@@ -38,7 +38,7 @@ In december 2004 an informal squid sprint was held in Stockholm, hosted by Henri
 == ClientStreams ==
 A transcript of a IRC chat with Robert Collins (aka lifeless) about using ClientStreams to request pages internally to squid.
 
-=== Profiling ===
+== Profiling ==
  * Linux Profiling with [:LinuxOprofile:oprofile]
 = Interesting starting points for this Wiki =
  * RecentChanges: see where people are currently working
