@@ -334,9 +334,6 @@ http_access deny BAD
 }}}
 
 == Does anyone have a ban list of porn sites and such? ==
- * [http://members.lycos.co.uk/njadmin Jasons Staudenmayer]
- * [http://web.onda.com.br/orso/ Pedro Lineu Orso's List]
- * [http://www.hklc.com/squidblock/ Linux Center Hong Kong's List]
  * Snerpa, an ISP in Iceland operates a DNS-database of IP-addresses of blacklisted sites containing porn, violence, etc. which is utilized using a small perl-script redirector.  Information on this on the  [http://www.snerpa.is/notendur/infilter/infilter-en.phtml INfilter] webpage.
  * The [http://www.squidguard.org/blacklist/ SquidGuard] redirector folks provide a blacklist.
  * Bill Stearns maintains the [http://www.stearns.org/sa-blacklist/ sa-blacklist] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
