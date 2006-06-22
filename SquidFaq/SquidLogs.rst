@@ -519,12 +519,14 @@ There's a whole load of possible problems, security risks and DOS scenarios that
 There's a few tricks that can be used to still be able to work around this:
 
  * using the ''tail -f '' UNIX command on access.log
-  . It will keep on reading the access.log file and write to stdout (or to a pipe) the lines being added in almost real time. Unfortunately it doesn't behave correctly if the access.log file gets renamed (via link/unlink, which is what squid does on ''-k rotate'': ''tail'' will happily keep the old file open, but noone is writing to it anymore
+   It will keep on reading the access.log file and write to stdout (or to a pipe) the lines being added in almost real time. Unfortunately it doesn't behave correctly if the access.log file gets renamed (via link/unlink, which is what squid does on ''-k rotate'': ''tail'' will happily keep the old file open, but noone is writing to it anymore
+ * using the ''tail -F'' feature of GNU tail
+   GNU tail supports an extra option, which allows it to notice if a file gets renamed and recreated. 
  * using ''File::Tail'' from within a PERL script
-  . ''File::Tail'' addresses the shortcomings of ''tail -f''. It is however only available in PERL.
-It's unfortunately highly unlikely that either of those will work under MS Windows, due to its brain-dead file-sharing semantics.
-||<tablewidth="100%" tablestyle="text-align: left;"> {i} ||Anyone with good MS Windows experience or knowing any better is invited to amend the previous sentence. ||
+   ''File::Tail'' behaves like ''tail -F''. It is however only available in PERL.
 
+It's unfortunately highly unlikely that either of those will work under MS Windows, due to its brain-dead file-sharing semantics.
+|| {i} ||Anyone with good MS Windows experience or knowing any better is invited to amend the previous sentence. ||
 
 If you really really want to send your squid logs to some external script, AND you're really really sure you know what you're doing (but then again, if you're doing this you probably you don't know what you're doing), you can use the UNIX command ''mkfifo'' to create a named pipe. You need to
 
