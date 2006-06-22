@@ -35,6 +35,8 @@ In december 2004 an informal squid sprint was held in Stockholm, hosted by Henri
 
  * ["StoreAPI"]
  * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
+ * DevelopmentIdeas: a collection of possible improvements to squid to be evaluated and possibly implemented
+
 == ClientStreams ==
 A transcript of a IRC chat with Robert Collins (aka lifeless) about using ClientStreams to request pages internally to squid.
 
