@@ -123,8 +123,7 @@ s/^\d+\.\d+/localtime $&/e;
 }}}
 [2] '''duration''' The elapsed time considers how many milliseconds the transaction busied the cache. It differs in interpretation between TCP and UDP:
 
- * For HTTP/1.0, this is basically the time between ''accept()'' and ''close()''.
- * For persistent connections, this ought to be the time between scheduling the reply and finishing sending it.
+ * For HTTP this is basically the time from having received the request to when Squid finishes sending the last byte of the response.
  * For ICP, this is the time between scheduling a reply and actually sending it.
 Please note that the entries are logged ''after'' the reply finished being sent, ''not'' during the lifetime of the transaction.
 
