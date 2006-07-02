@@ -1,4 +1,7 @@
 #language en
+
+=== Squid-2.6 ===
+
 During the sprint it was recognised that it would be beneficial to collect all of the available completed Squid-2.5 based works into a Squid-2.6 release while we work on getting Squid-3.0 ready.
 
 There is very a large list of completed features developed for Squid-2.5 over the years and then ported and merged to Squid-3, but in reality production environments are all running the Squid-2.5 versions with different amounts of extra patches today. Not surprising given the fact that Squid-2.5 has been feature frozen for 3 years now.
@@ -39,15 +42,16 @@ And there is some upcoming projects which may get included if they make it in ti
 
  * epoll support for pending connections (added by SSL update)
 
- * FreeBSD kqueue support - NAK (later)
+ * FreeBSD kqueue support - OK
 
- * Deferred reads cleanup - NAK (later)
+ * Deferred reads cleanup - Partial (epoll/kqueue only)
 
  * cbdatareference (needs to be resurrected from old 2.6 branch) - NAK (no time)
 
  * New improved COSS (maybe even production ready?) - OK
  * Automake updates to work with newer autoconf/automake - OK
  * commloops separation - OK
+
 === Opinions on if there should be a release ===
 Summary of the opinions regarding a Squid-2.6 release
 
