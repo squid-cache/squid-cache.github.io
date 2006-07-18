@@ -3,7 +3,7 @@
 [[TableOfContents]]
 
 = Squid Proxy Web Cache Wiki =
-This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts an updated FAQ at SquidFaq and assorted documentation.
+This is a wiki1 dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts an updated FAQ at SquidFaq and assorted documentation.
 
 = Hotmail and IE6 Issue With Interception Proxies =
 Recent changes at Hotmail.com and has led to some users receiving a blank page in response to a login request when browsing through a proxy operating in interception, or transparent, mode. This is due to Hotmail incorrectly responding with Transfer-Encoding encoded response when the HTTP/1.0 request has an Accept-Encoding header. (Transfer-Encoding absolutely REQUIRES HTTP/1.1 and is forbidden within HTTP/1.0)
