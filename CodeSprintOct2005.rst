@@ -8,6 +8,8 @@ Participants:
   * FrancescoChemolli (kinkie)
   * GuidoSerassio
 
+[http://www.kinkie.it/gallery/2005-squid-code-sprint A few pictures] from the event
+
 Primary goal:
 
   * Port NegotiateAuthentication support from the negotiate-2.5 branch to Squid-3.
