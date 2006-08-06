@@ -49,5 +49,8 @@ In case you didn't read the previous paragraph, please do! In case you ''still''
     see the note about "really bad choices" above.
 
  * Solaris
-  * UFS
-  * ZFS UZse ZFS, which is included in Solaris 10 Release 6/06 http://www.sun.com/software/solaris/zfs_learning_center.jsp
+  * UFS 
+    UFS is the old Solaris File System, which good and stable. Use "noatime" as mount option.
+  * ZFS 
+    Use ZFS, if you want really high performance for your Squid Cache. ZFS is included in Solaris beginning with Solaris 10. Release 6/06. Use "noatime" as mount option.
+    More Infos about ZFS: http://www.sun.com/software/solaris/zfs_learning_center.jsp
