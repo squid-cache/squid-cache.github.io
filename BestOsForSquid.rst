@@ -47,3 +47,7 @@ In case you didn't read the previous paragraph, please do! In case you ''still''
     well, ext2 is a venerable good filesystem. But do you really want to wait for hours while your FS is being checked?
   * everything else
     see the note about "really bad choices" above.
+
+ * Solaris
+  * UFS
+  * ZFS UZse ZFS, which is included in Solaris 10 Release 6/06 http://www.sun.com/software/solaris/zfs_learning_center.jsp
