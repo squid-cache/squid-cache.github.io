@@ -539,5 +539,9 @@ For all other auth-schemes this cannot be done; this is not a limitation in squi
  * [http://samba.org/samba/docs/man/manpages-3/smbclient.1.html smbclient man page]
  * [http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html ntlm_auth man page]
 
+== Other Resources ==
+ * [http://kb.papercutsoftware.com/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory Integrating with MS Active Directory using LDAP and groups]
+
+
 -----
 Back to the SquidFaq
