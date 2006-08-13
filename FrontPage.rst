@@ -13,6 +13,8 @@ This is a wiki dedicated to hosting documentation, hints and assorted notes abou
  * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
  * SquidFaq: the Wikified and updated squid FAQ
  * ["Squid-3.0"], or "So what is this Squid 3.0 thing and why is it taking so long?"
+ * We're looking for a new SquidLogo
+
 = Developers corner =
 == Squid Sprint ==
 Recently an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
@@ -26,12 +28,11 @@ In december 2004 an informal squid sprint was held in Stockholm, hosted by Henri
  * ["StoreAPI"]
  * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
  * DevelopmentIdeas: a collection of possible improvements to squid to be evaluated and possibly implemented
+ * Linux Profiling with [:LinuxOprofile:oprofile]
 
 == ClientStreams ==
 A transcript of a IRC chat with Robert Collins (aka lifeless) about using ClientStreams to request pages internally to squid.
 
-== Profiling ==
- * Linux Profiling with [:LinuxOprofile:oprofile]
 = Interesting starting points for this Wiki =
  * RecentChanges: see where people are currently working
  * FindPage: search or browse the pages hosted in this wiki in various ways
