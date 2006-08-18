@@ -16,8 +16,11 @@ This is a wiki dedicated to hosting documentation, hints and assorted notes abou
  * We're looking for a new SquidLogo
 
 = Developers corner =
+
+There's a separate section for DeveloperResources, such as instructions for CVS access, coding guidelines and other useful documentation.
+
 == Squid Sprint ==
-Recently an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
+In December 2005 an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
 
  * CodeSprintOct2005
  * NegotiateAuthentication support for Squid-3 (the main focus of the sprint)
