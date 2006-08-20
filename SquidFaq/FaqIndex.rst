@@ -1,29 +1,58 @@
 #language en
 
-= Squid Web Cache FAQ Table of contents =
+= Complete Squid Faq Index =
 
- * ../AboutSquid is about squid itself and the people behind it
- * ../CompilingSquid describes how to compile the software
- * ../InstallingSquid no use in compiling without installing, right?
- * ../ConfiguringSquid how to configure squid, especially regarding cache relationships and IRCache
- * ../ConfiguringBrowsers: how to tell the most common browsers that they should be using a proxy
- * ../SquidLogs: writing and most important '''reading''' the various squid log files
- * ../OperatingSquid: how to perform various tasks on squid and its cache
- * ../SquidMemory describes how squid uses RAM and how to optimize its usage
- * ../CacheManager explains how to use the Cache Manager to profile how squid is working
- * ../SquidAcl (or Authorization): controlling squid's powerful access control features
- * ../TroubleShooting gives a few hints on what to do when squid fails or misbehaves
- * ../InnerWorkings: a few insights into squid and its underlying logic
- * ../MultiCast explains how to set squid ICP up in a multicast environment
- * ../SystemWeirdnesses shows how to expect some operating-system-dependent unexpected behaviours
- * ../SquidRedirectors explains how to tap into Squid's powerful ''redirector'' API
- * ../CacheDigests or ICP on steroids
- * ../InterceptionProxy or how to run a proxy without your users knowing (mostly)
- * ../SquidSnmp: using SNMP to monitor Squid's vital signs
- * ../MiscFeatures: Squid 2.X miscellaneous features
- * ../ReverseProxy or Accelerator-mode: running Squid to improve a webserver pool's performance
- * ../RelatedSoftware
- * ../DiskDaemon: what it is and how to optimize its running environment
- * ../ProxyAuthentication: how to authenticate your users (mostly against MS Windows domains)
- * ../TermIndex: glossary of common terms
- * ../SecurityPitfalls: common security problems in new setups
+=== About Squid ===
+[[Include(SquidFaq/AboutSquid,,titlesonly)]]
+=== Compiling Squid ===
+[[Include(SquidFaq/CompilingSquid,,titlesonly)]]
+=== Installing Squid ===
+[[Include(SquidFaq/InstallingSquid,,titlesonly)]]
+=== Configuring Squid ===
+[[Include(SquidFaq/ConfiguringSquid,,titlesonly)]]
+=== Configuring Browsers ===
+[[Include(SquidFaq/ConfiguringBrowsers,,titlesonly)]]
+=== Squid Logs ===
+[[Include(SquidFaq/SquidLogs,,titlesonly)]]
+=== Operating Squid ===
+[[Include(SquidFaq/OperatingSquid,,titlesonly)]]
+=== Squid Memory ===
+[[Include(SquidFaq/SquidMemory,,titlesonly)]]
+=== Cache Manager ===
+[[Include(SquidFaq/CacheManager,,titlesonly)]]
+=== Squid Acl ===
+[[Include(SquidFaq/SquidAcl,,titlesonly)]]
+=== Trouble Shooting ===
+[[Include(SquidFaq/TroubleShooting,,titlesonly)]]
+=== Inner Workings ===
+[[Include(SquidFaq/InnerWorkings,,titlesonly)]]
+=== Multicast ===
+[[Include(SquidFaq/MultiCast,,titlesonly)]]
+=== System Weirdnesses ===
+[[Include(SquidFaq/SystemWeirdnesses,,titlesonly)]]
+=== Squid Redirectors ===
+[[Include(SquidFaq/SquidRedirectors,,titlesonly)]]
+=== Cache Digests ===
+[[Include(SquidFaq/CacheDigests,,titlesonly)]]
+=== Interception Proxy ===
+[[Include(SquidFaq/InterceptionProxy,,titlesonly)]]
+=== Squid Snmp ===
+[[Include(SquidFaq/SquidSnmp,,titlesonly)]]
+=== Misc Features ===
+[[Include(SquidFaq/MiscFeatures,,titlesonly)]]
+=== Reverse Proxy ===
+[[Include(SquidFaq/ReverseProxy,,titlesonly)]]
+=== Related Software ===
+[[Include(SquidFaq/RelatedSoftware,,titlesonly)]]
+=== Other Resources ===
+[[Include(SquidFaq/OtherResources,,titlesonly)]]
+=== Disk Daemon ===
+[[Include(SquidFaq/DiskDaemon,,titlesonly)]]
+=== Proxy Authentication ===
+[[Include(SquidFaq/ProxyAuthentication,,titlesonly)]]
+=== Term Index ===
+[[Include(SquidFaq/TermIndex,,titlesonly)]]
+=== Security Pitfalls ===
+[[Include(SquidFaq/SecurityPitfalls,,titlesonly)]]
+=== Too Many Misses ===
+[[Include(SquidFaq/ToomanyMisses,,titlesonly)]]
