@@ -1,5 +1,6 @@
 #language en
 #pragma section-numbers off
+
 [[TableOfContents]]
 
 = Squid Proxy Web Cache Wiki =
