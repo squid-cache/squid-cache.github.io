@@ -6,8 +6,8 @@
 ## [[TableOfContents]]
 
 = Squid Programming Guide Table of Contents =
- * /PGIndex is the complete list of covered topics
- * /PGIntroduction
+ * /FullIndex is the complete list of covered topics
+ * /IntroductionAndConventions
  * /SquidComponents
  * /ExternalPrograms
  * /RequestFlow
