@@ -27,6 +27,11 @@ To update your source tree later, type:
 {{{
   % cvs update
 }}}
+
+== Access to developer branches ==
+
+Many works in progress is hosted in our public developer CVS repository. For more information see the developer site at http://devel.squid-cache.org/
+
 == Access to older Squid version ==
 
 To access older Squid releases use the same procedure as above to login and then checkout the specific version sources
