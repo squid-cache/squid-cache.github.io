@@ -11,7 +11,15 @@ CVS access instructions are detailed in CvsInstructions; to interactively browse
 
 In order to use the CVS sources, or when developing some parts of Squid, you need to performe a source bootstrap operation. How and Why are described in SourceBootstrap.
 
+== Developer Projects ==
+
+To make life easier we provide space for each developer
+interested in developing a feature in Squid. For more
+information see http://devel.squid-cache.org/.
+
 == Contributing ==
+
+If you wish to become a developer the first step is to sign up to the squid-dev mailinglist. This is done by first posting an introduction of yourself to squid-dev@squid-cache.org, then send a subscription request to squid-dev-subscribe@squid-cache.org. Please note that all messages must be sent in plain-text only (no HTML email).
 
 If you wish to contribute squid there are certain guidelines you need to follow in your coding style. They are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The ProgrammingGuide offers some (but certainly not enough) informations on the Squid internals.
 
@@ -25,4 +33,4 @@ CppUnit is used to perform unit testing.
 
 == Project organization ==
 
-ReleaseProcess describes the process and criterias used by the Squid Developers when making new Squid releases.
+[ReleaseProcess describes the process and criterias used by the Squid Developers when making new Squid releases.
