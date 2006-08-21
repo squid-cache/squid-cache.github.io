@@ -469,23 +469,18 @@ http_access allow all AuthorizedUsers
 
 
 
-== Test Squid with auth ===
+=== Test Squid with auth ===
 
-  *Internet Explorer, Mozilla, FireFox:
-
-Test browsing through squid with a NTLM capable browser. If logged into the domain, a password prompt should NOT pop up.
-
-Confirm the traffic really is being authorized by tailing access.log.
-The domain\username should be present.
+ * Internet Explorer, Mozilla, FireFox:
+   Test browsing through squid with a NTLM capable browser. If logged into the domain, a password prompt should NOT pop up.
+   Confirm the traffic really is being authorized by tailing access.log.
+   The domain\username should be present.
 
 
-  *Netscape, Mozilla ( < 1.4), Opera...:
-Test with a NTLM non-capable browser. A standard password dialog should appear.
+ * Netscape, Mozilla ( < 1.4), Opera...:
+   Test with a NTLM non-capable browser. A standard password dialog should appear.
 
-Entering the domain should not be required if the user is in the
-default domain and "winbind use default domain = yes" is set in
-smb.conf.  Otherwise, the username must be entered in "domain+username" format.
-(where + is the domain separator set in smb.conf)
+   Entering the domain should not be required if the user is in the default domain and "winbind use default domain = yes" is set in smb.conf.  Otherwise, the username must be entered in "domain+username" format. (where + is the domain separator set in smb.conf)
 
 
 If no usernames appear in access.log and/or no password dialogs appear
