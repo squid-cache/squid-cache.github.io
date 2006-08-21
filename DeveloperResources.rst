@@ -33,4 +33,4 @@ CppUnit is used to perform unit testing.
 
 == Project organization ==
 
-[ReleaseProcess describes the process and criterias used by the Squid Developers when making new Squid releases.
+ReleaseProcess describes the process and criterias used by the Squid Developers when making new Squid releases.
