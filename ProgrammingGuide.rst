@@ -13,10 +13,10 @@
  * /RequestFlow
  * /ClientStreams
  * /StorageManager
- * /IPCache
+ * /IpCache
  * /ServerProtocols
  * /AuthenticationFramework
- * /CBData
+ * /CbData
  * /RefCount
  * /HttpHeaders
  * /FileFormats
