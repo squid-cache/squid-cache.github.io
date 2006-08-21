@@ -1,14 +1,24 @@
 #language en
 
-## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-
-## if you want to have a table of comments remove the heading hashes from the next line
-## [[TableOfContents]]
+[[TableOfContents(1)]]
 
 = Squid 3.0 =
 
 It's the holy grail of squid development, also know as "The Great Rewrite".
 Squid-2.* is already written in object-oriented C, with quite a few coding compromises to make up for the language's lack of OO features.
 
-It was thus decided to port the whole codebase over to C++, in order to benefit from a full OO framework.
+It was thus decided to port the whole codebase over to C++, in order to benefit from the OO support of that language.
 Two years into that, and despite some major efforts by many developers, we're still in the middle of the transition.
+
+The actual transition may take much longer to fully complete, because there is a lot of code to update. However we also got into do long desired improvements at the same time, and the combination led to some instability.
+
+= Next steps =
+
+ * Fix all critical and major bugs.
+ * Do some pre-releases and get user feedback.
+ * release 3.0
+ * Work on performance in 3.1
+
+= Coordination =
+
+Bug-squashing weekend 2nd and 3rd September in #squiddev on irc.freenode.net (use a IRC client like 'xchat' to connection.
