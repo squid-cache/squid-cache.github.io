@@ -48,6 +48,8 @@
 [[Include(SquidFaq/OtherResources,,titlesonly)]]
 === Disk Daemon ===
 [[Include(SquidFaq/DiskDaemon,,titlesonly)]]
+=== Cyclic Object Storage System, aka COSS ===
+[[Include(SquidFaq/CyclicObjectStorageSystem,,titlesonly)]]
 === Proxy Authentication ===
 [[Include(SquidFaq/ProxyAuthentication,,titlesonly)]]
 === Term Index ===
