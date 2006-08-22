@@ -7,5 +7,3 @@ Here go resources to external sites which might be of interest to developers and
 
  * http://www.web-cache.com/
    This page has links of to a huge amount of interesting content about Web Caching including the protocols used, software available and a huge number of organisations involved with caches.
-
- * [http://isulong-seophil.com Isulong SEOPh]
