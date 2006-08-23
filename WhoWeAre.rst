@@ -13,3 +13,4 @@
 = Certified Developers =
  * FrancescoChemolli is struggling to provide documentation and related infrastructure
  * Steven Wilton is bringing the [:SquidFaq/CyclicObjectStorageSystem:COSS] storage engine to maturity
+ * Doug Dixon is the Squid 3.0 release manager
