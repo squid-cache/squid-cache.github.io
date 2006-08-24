@@ -2,6 +2,7 @@
 
 [[TableOfContents]]
 
+##begin
 == Which file do I download to get Squid? ==
 
 You must download a source archive file of the form
@@ -18,7 +19,7 @@ These can be applied with the ''patch'' program (available from
 
 == How do I compile Squid? ==
 
-You must run the ''configure'' script yourself before running ''make''.  We suggest that you firstly invoke ./configure and make a note of the configure options you need in order to support the features you intend to use.  Do not compile in features you do not think you will need.
+You must run the ''configure'' script yourself before running ''make''.  We suggest that you first invoke ''./configure --help'' and make a note of the configure options you need in order to support the features you intend to use.  Do not compile in features you do not think you will need.
 
 {{{
 % tar xzf squid-2.5.RELEASExy.tar.gz
@@ -40,21 +41,16 @@ In addition to gcc, you may also want or need to install the ''binutils'' packag
 
 == What else do I need to compile Squid? ==
 
-You will need
-[http://www.perl.com/ Perl] installed
-on your system.
+You will need [http://www.perl.com/ Perl] installed on your system.
 
 == Do you have pre-compiled binaries available? ==
 
-The developers do not have the resources to make pre-compiled binaries available.  Instead, we invest effort into making the source code very portable.  Some people have made binary packages available.  Please see our [http://www.squid-cache.org/platforms.html Platforms Page].
+The squid core team members do not have the resources to make pre-compiled binaries available. Instead, we invest effort into making the source code very portable. Some contributors have made binary packages available. Please see our [http://www.squid-cache.org/platforms.html Platforms Page].
 
-The [http://freeware.sgi.com/ SGI Freeware] site has pre-compiled packages for SGI IRIX.
-
-Squid binaries for [http://www.freebsd.org/cgi/ports.cgi?query=squid-2&stype=all FreeBSD on Alpha and Intel].
-
-Squid binaries for [ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid/README.html NetBSD on everything]
-
-Gurkan Sengun has some [http://www.linuks.mine.nu/solaris/ Sparc/Solaris packages] available.
+ * The [http://freeware.sgi.com/ SGI Freeware] site has pre-compiled packages for SGI IRIX.
+ * Squid binaries for [http://www.freebsd.org/cgi/ports.cgi?query=squid-2&stype=all FreeBSD on Alpha and Intel].
+ * Squid binaries for [ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid/README.html NetBSD on everything]
+ * Gurkan Sengun has some [http://www.linuks.mine.nu/solaris/ Sparc/Solaris packages] available.
 
 == How do I apply a patch or a diff? ==
 
@@ -137,8 +133,8 @@ Some options which are used often include:
 
 == undefined reference to __inet_ntoa ==
 
-by [mailto:SarKev@topnz.ac.nz Kevin Sartorelli]
-and [mailto:doering@usf.uni-kassel.de Andreas Doering].
+by Kevin Sartorelli ([[MailTo(SarKev AT topnz DOT ac DOT nz)]])
+and Andreas Doering ([[MailTo([doering AT usf DOT uni-kassel DOT de)]]).
 
 Probably you've recently installed bind 8.x.  There is a mismatch between
 the header files and DNS library that Squid has found.  There are a couple
@@ -179,6 +175,7 @@ This hack was contributed by
 
  * attachment:bind-4.9.4.patch
  * attachment:bind-8.patch
+
 == My platform is BSD/OS or BSDI and I can't compile Squid ==
 
 {{{
@@ -234,7 +231,7 @@ compile-time warnings, please do so and send us the patches.
 
 == Building Squid on OS/2 ==
 
-by [mailto:nazard@man-assoc.on.ca Doug Nazar]
+by Doug Nazar ([[MailTo(nazard AT man-assoc DOT on DOT ca)]]).
 
 In order in compile squid, you need to have a reasonable facsimile of a
 Unix system installed.  This includes ''bash'', ''make'', ''sed'',
@@ -282,6 +279,6 @@ to install somewhere else, see the ''--prefix'' option for configure.
 Now, don't forget to set EMXOPT before running squid each time. I
 recommend using the -Y and -N options.
 
-
+##end
 ----
 Back to the SquidFaq
