@@ -84,10 +84,10 @@ GuidoSerassio maintains the [http://www.acmeconsulting.it/SquidNT/ native NT por
 
 == What Squid mailing lists are available? ==
 
-  * [[MailTo(squid-users AT squid-cache DOT org)]]: general discussions about the Squid cache software. subscribe via [[MailTo(squid-users-subscribe AT squid-cache DOT org)]]. Previous messages are available for browsing at [http://www.squid-cache.org/mail-archive/squid-users/ the Squid Users Archive], and also at [http://marc.theaimsgroup.com/?l=squid-users&r=1&w=2 theaimsgroup.com].
+  * [[MailTo(squid-users AT squid-cache DOT org)]] hosts general discussions about the Squid cache software. subscribe via [[MailTo(squid-users-subscribe AT squid-cache DOT org)]]. Previous messages are available for browsing at [http://www.squid-cache.org/mail-archive/squid-users/ the Squid Users Archive], and also at [http://marc.theaimsgroup.com/?l=squid-users&r=1&w=2 theaimsgroup.com].
   * squid-users-digest: digested (daily) version of above.  Subscribe via [[MailTo(squid-users-digest-subscribe AT squid-cache DOT org)]].
-  * [[MailTo(squid-announce AT squid-cache DOT org)]]: A receive-only list for announcements of new versions. Subscribe via [[MailTo(squid-announce-subscribe AT squid-cache DOT org)]].
-  * [[MailTo(squid-bugs AT squid-cache DOT org)]]: A closed list for sending us bug reports. Bug reports received here are given priority over those mentioned on squid-users.
+  * [[MailTo(squid-announce AT squid-cache DOT org)]] is a receive-only list for announcements of new versions. Subscribe via [[MailTo(squid-announce-subscribe AT squid-cache DOT org)]].
+  * [[MailTo(squid-bugs AT squid-cache DOT org)]] is meant for sending us bug reports. Bug reports received here are given priority over those mentioned on squid-users.
   * [[MailTo(squid AT squid-cache DOT org)]]: A closed list for sending us feed-back and ideas.
   * [[MailTo(squid-faq AT squid-cache DOT org)]]: A closed list for sending us feed-back, updates, and additions to the Squid FAQ.
 
