@@ -38,15 +38,7 @@ Please see [http://www.squid-cache.org/ the Squid home page] for the most recent
 
 == Who is responsible for Squid? ==
 
-Squid is the result of efforts by numerous individuals from the Internet community.  Currently the core team consists of
-
- * Adrian Chadd
- * RobertCollins
- * HenrikNordström
- * GuidoSerassio
- * Duane Wessels
-
-Please see [http://www.squid-cache.org/CONTRIBUTORS the CONTRIBUTORS file] for a list of our excellent contributors.
+Squid is the result of efforts by numerous individuals from the Internet community.  The core team and main can be seen at WhoWeAre; a list of our excellent contributors can be seen in [http://www.squid-cache.org/CONTRIBUTORS the CONTRIBUTORS file].
 
 == Where can I get Squid? ==
 
