@@ -2,11 +2,12 @@
 
 [[TableOfContents]]
 
+##begin
+
 == What is Squid? ==
 
 
-Squid is a high-performance proxy caching server for web clients, supporting FTP, gopher, and HTTP data objects.  Unlike  traditional
-caching software, Squid handles all requests in a single, non-blocking, I/O-driven process.
+Squid is a high-performance proxy caching server for web clients, supporting FTP, gopher, and HTTP data objects.  Squid handles all requests in a single, non-blocking, I/O-driven process.
 
 Squid keeps meta data and especially hot objects cached in RAM, caches DNS lookups, supports non-blocking DNS lookups, and implements negative caching of failed requests.
 
@@ -32,13 +33,13 @@ We needed to distinguish this new version from the Harvest cache software.  Squi
 
 == What is the latest version of Squid? ==
 
-At the time of writing (June 06), Squid-2.5 is the stable version and Squid-2.6 and Squid-3.0 are under development.  We expect Squid-2.6 to be released some time in the next month or two, while Squid-3.0 will likely not be released for a while longer.
+At the time of writing (August 2006), [Squid-2.6] is the stable version and [Squid-3.0] is under development.
 
 Please see [http://www.squid-cache.org/ the Squid home page] for the most recent versions.
 
 == Who is responsible for Squid? ==
 
-Squid is the result of efforts by numerous individuals from the Internet community.  The core team and main can be seen at WhoWeAre; a list of our excellent contributors can be seen in [http://www.squid-cache.org/CONTRIBUTORS the CONTRIBUTORS file].
+Squid is the result of efforts by numerous individuals from the Internet community.  The core team and main contributors list is at WhoWeAre; a list of our excellent contributors can be seen in [http://www.squid-cache.org/CONTRIBUTORS the CONTRIBUTORS file].
 
 == Where can I get Squid? ==
 
@@ -66,7 +67,7 @@ is known to work on at least the following platforms:
   * AIX
   * HP-UX
   * Microsoft Windows Cygwin and MinGW
-  * [Compiling#building_squid_on_os_2 OS/2]
+  * OS/2
 
 For more specific information, please see [http://www.squid-cache.org/platforms.html platforms.html].
 If you encounter any platform-specific problems, please let us know by registering an entry in our [http://www.squid-cache.org/bugs/ bug database].
@@ -76,32 +77,25 @@ If you're curious about what is the best OS to run Squid, see BestOsForSquid.
 == Does Squid run on Windows NT? ==
 
 Recent versions of Squid will ''compile and run'' on Windows NT and later incarnations with the
-[http://www.cygwin.com/ Cygwin] /
-[http://www.mingw.org/ MinGW packages.
+[http://www.cygwin.com/ Cygwin] / [http://www.mingw.org/ MinGW packages.
 
-[http://www.acmeconsulting.it/SquidNT/ Guido Serassio]
-maintains the native NT port of Squid and is actively working on having the needed changes integrated into the standard Squid distribution. Partially based on earlier NT port by Romeo Anghelache.
+GuidoSerassio maintains the [http://www.acmeconsulting.it/SquidNT/ native NT port] of Squid (built using the Microsoft toolchain) and is actively working on having the needed changes integrated into the standard Squid distribution. His effort is partially based on earlier NT port by Romeo Anghelache.
 
 
 == What Squid mailing lists are available? ==
 
-  * squid-users@squid-cache.org: general discussions about the Squid cache software. subscribe via ''squid-users-subscribe@squid-cache.org''. Previous messages are available for browsing at [http://www.squid-cache.org/mail-archive/squid-users/ the Squid Users Archive], and also at [http://marc.theaimsgroup.com/?l=squid-users&r=1&w=2 theaimsgroup.com].
-
-  *squid-users-digest: digested (daily) version of above.  Subscribe via ''squid-users-digest-subscribe@squid-cache.org''.
-
-  *squid-announce@squid-cache.org: A receive-only list for announcements of new versions. Subscribe via ''squid-announce-subscribe@squid-cache.org''.
-
-  *''squid-bugs@squid-cache.org'': A closed list for sending us bug reports. Bug reports received here are given priority over those mentioned on squid-users.
-
-  *''squid@squid-cache.org'': A closed list for sending us feed-back and ideas.
-
-  *''squid-faq@squid-cache.org'': A closed list for sending us feed-back, updates, and additions to the Squid FAQ.
+  * [[MailTo(squid-users AT squid-cache DOT org)]]: general discussions about the Squid cache software. subscribe via [[MailTo(squid-users-subscribe AT squid-cache DOT org)]]. Previous messages are available for browsing at [http://www.squid-cache.org/mail-archive/squid-users/ the Squid Users Archive], and also at [http://marc.theaimsgroup.com/?l=squid-users&r=1&w=2 theaimsgroup.com].
+  * squid-users-digest: digested (daily) version of above.  Subscribe via [[MailTo(squid-users-digest-subscribe AT squid-cache DOT org)]].
+  * [[MailTo(squid-announce AT squid-cache DOT org)]]: A receive-only list for announcements of new versions. Subscribe via [[MailTo(squid-announce-subscribe AT squid-cache DOT org)]].
+  * [[MailTo(squid-bugs AT squid-cache DOT org)]]: A closed list for sending us bug reports. Bug reports received here are given priority over those mentioned on squid-users.
+  * [[MailTo(squid AT squid-cache DOT org)]]: A closed list for sending us feed-back and ideas.
+  * [[MailTo(squid-faq AT squid-cache DOT org)]]: A closed list for sending us feed-back, updates, and additions to the Squid FAQ.
 
 
 == I can't figure out how to unsubscribe from your mailing list. ==
 
 All of our mailing lists have "-subscribe" and "-unsubscribe"
-addresses that you must use for subscribe and unsubscribe requests.  To unsubscribe from the squid-users list, you send a message to ''squid-users-unsubscribe@squid-cache.org''.
+addresses that you must use for subscribe and unsubscribe requests.  To unsubscribe from the squid-users list, you send a message to [[MailTo(squid-users-unsubscribe AT squid-cache DOT org)]].
 
 
 == What other Squid-related documentation is available? ==
@@ -124,10 +118,7 @@ addresses that you must use for subscribe and unsubscribe requests.  To unsubscr
 == Does Squid support SSL/HTTPS/TLS? ==
 
 
-As of version 2.5, Squid can terminate SSL connections.  This is perhaps
-only useful in a surrogate (http accelerator) configuration.  You must
-run configure with ''--enable-ssl''.  See ''https_port'' in
-squid.conf for more information.
+As of version 2.5, Squid can terminate SSL connections.  This is perhaps only useful in a surrogate (http accelerator) configuration.  You must run configure with ''--enable-ssl''.  See ''https_port'' in squid.conf for more information.
 
 
 Squid also supports these encrypted protocols by "tunneling"
@@ -135,24 +126,14 @@ traffic between clients and servers.  In this case, Squid can relay
 the encrypted bits between a client and a server.
 
 
-Normally, when your browser comes across an ''https'' URL, it
-does one of two things:
-
-
+Normally, when your browser comes across an ''https'' URL, it does one of two things:
 
   - The browser opens an SSL connection directly to the origin server.
   - The browser tunnels the request through Squid with the ''CONNECT'' request method.
 
-The ''CONNECT'' method is a way to tunnel any kind of
-connection through an HTTP proxy.  The proxy doesn't
-understand or interpret the contents.  It just passes
-bytes back and forth between the client and server.
-For the gory details on tunnelling and the CONNECT
-method, please see
-[ftp://ftp.isi.edu/in-notes/rfc2817.txt RFC 2817]
-and
+The ''CONNECT'' method is a way to tunnel any kind of connection through an HTTP proxy.  The proxy doesn't understand or interpret the contents.  It just passes bytes back and forth between the client and server.
+For the gory details on tunnelling and the CONNECT method, please see [ftp://ftp.isi.edu/in-notes/rfc2817.txt RFC 2817] and
 [http://www.web-cache.com/Writings/Internet-Drafts/draft-luotonen-web-proxy-tunneling-01.txt Tunneling TCP based protocols through Web proxy servers] (expired).
-
 
 
 == What's the legal status of Squid? ==
@@ -169,7 +150,7 @@ Squid is [http://www.gnu.org/philosophy/free-sw.html Free Software], licensed un
 
 
 Yes.  Please see SquidSupportServices.
-
+You can also [http://www.squid-cache.org/donate.html donate] money or equipment to members of the squid core team.
 
 == Squid FAQ contributors ==
 
@@ -234,11 +215,13 @@ ReubenFarrelly
 The Squid FAQ is copyrighted (2006) by The Squid Core Team.
 
 This FAQ was maintained for a long time as an XML Docbook file.
-It was converted to a Wiki in July 2005.
+It was converted to a Wiki in March 2006. The wiki is now the authoritative version.
 
 == Want to contribute? ==
 
-We always welcome help keeping the Squid FAQ up-to-date. If you would like to help out, please register with this Wiki and type away. Please also send a note to the wiki operator (wiki at kinkie dot it) to inform him of your changes.
+We always welcome help keeping the Squid FAQ up-to-date. If you would like to help out, please register with this Wiki and type away. Please also send a note to the wiki operator [[MailTo(wiki AT kinkie DOT it)]] to inform him of your changes.
+
+##end
 
 ----
 Back to the SquidFaq
