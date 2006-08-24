@@ -1,6 +1,5 @@
 #language en
 #pragma section-numbers off
-
 [[TableOfContents]]
 
 = Squid Proxy Web Cache Wiki =
@@ -15,9 +14,7 @@ This is a wiki dedicated to hosting documentation, hints and assorted notes abou
  * SquidFaq: the Wikified and updated squid FAQ
  * ["Squid-3.0"], or "So what is this Squid 3.0 thing and why is it taking so long?"
  * We're looking for a new SquidLogo
-
 = Developers corner =
-
 There's a separate section for DeveloperResources, such as instructions for CVS access, coding guidelines and other useful documentation.
 
 == Squid Sprint ==
@@ -33,7 +30,6 @@ In december 2004 an informal squid sprint was held in Stockholm, hosted by Henri
  * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
  * DevelopmentIdeas: a collection of possible improvements to squid to be evaluated and possibly implemented
  * Linux Profiling with [:LinuxOprofile:oprofile]
-
 == ClientStreams ==
 A transcript of a IRC chat with Robert Collins (aka lifeless) about using ClientStreams to request pages internally to squid.
 
@@ -47,7 +43,7 @@ You can find information about what a Wiki is and how to use it at AboutWiki.
 
 = Other Squid-related resources =
  * The main [http://www.squid-cache.org/ Squid site]
- * The current version of the [http://www.squid-cache.org/Doc/FAQ/FAQ.html Squid FAQ] (SquidFaq is a local wikified Copy)
+ * The [:SquidFaq:Squid FAQ] covering most common questions
  * The [http://devel.squid-cache.org Squid development site]
  * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla] database
  * Squijj http://www.mnot.net/squij/ refresh_pattern analysis
