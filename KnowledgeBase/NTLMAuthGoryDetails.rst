@@ -16,3 +16,7 @@ This document details the mechanics of the [http://davenport.sourceforge.net/ntl
  1.  The client sends a new GET-request, along with an header: {{{Proxy-Authenticate: NTLM cmon_we_are_almost_done}}} where cmon_we_are_almost_done is an authenticate packet. The packet includes informations about the user name and domain, the challenge nonce encoded with the user's password (actually it MIGHT contain it encoded TWICE using different algorithms).
 
  1.  Either the server denies the authentication via a 407/DENIED or 403/DENIED return code, and we're back to square one, or it returns the requested resource. From now on, until the TCP connection is  kept alive, no further credentials will be sent from the client to the proxy. The TCP connection is marked as "OK", and the client expects that it can pump whatever it wants.
+
+== External resources ==
+ * http://www.innovation.ch/personal/ronald/ntlm.html
+ * http://davenport.sourceforge.net/ntlm.html
