@@ -4,11 +4,11 @@
 
 = Squid Core Team =
 
- * ["Henrik Nordström"]
+ * ["Henrik Nordström"], Squid Hacker Extraordinaire and Squid-2.X release manager.
  * [http://www.squid-cache.org/~adrian/ Adrian Chadd]
- * [http://www.squid-cache.org/~robertc/ RobertCollins] is the main driver of the [Squid-3.0] project
- * GuidoSerassio leads the !SquidNT effort
- * [http://wessels.squid-cache.org/ DuaneVessels]
+ * [http://www.squid-cache.org/~robertc/ RobertCollins] is the main driver of the Squid-3 C++ migration.
+ * GuidoSerassio leads the [http://www.acmeconsulting.it/SquidNT/ SquidNT] effort
+ * [http://wessels.squid-cache.org/ DuaneVessels], Chief Procrastinator
 
 = Certified Developers =
  * FrancescoChemolli is struggling to provide documentation and related infrastructure
