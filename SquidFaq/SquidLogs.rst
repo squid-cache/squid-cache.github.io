@@ -1,16 +1,17 @@
 #language en
 [[TableOfContents]]
 
+##begin
 == Squid Log Files ==
 The logs are a valuable source of information about Squid workloads and performance. The logs record not only access information, but also system configuration errors and resource consumption (eg, memory, disk space). There are several log file maintained by Squid. Some have to be explicitely activated during compile time, others can safely be deactivated during run-time.
 
 There are a few basic points common to all log files. The time stamps logged into the log files are usually UTC seconds unless stated otherwise. The initial time stamp usually contains a millisecond extension.
 
 == squid.out ==
-If you run your Squid from the ''Run''''''Cache'' script, a file ''squid.out'' contains the Squid startup times, and also all fatal errors, e.g. as produced by an ''assert()'' failure. If you are not using ''Run''''''Cache'', you will not see such a file.
+If you run your Squid from the ''!RunCache'' script, a file ''squid.out'' contains the Squid startup times, and also all fatal errors, e.g. as produced by an ''assert()'' failure. If you are not using ''!RunCache'', you will not see such a file.
 
 == cache.log ==
-The ''cache.log'' file contains the debug and error messages that Squid generates. If you start your Squid using the default ''Run''''''Cache'' script, or start it with the ''-s'' command line option, a copy of certain messages will go into your syslog facilities. It is a matter of personal preferences to use a separate file for the squid log data.
+The ''cache.log'' file contains the debug and error messages that Squid generates. If you start your Squid using the default ''!RunCache'' script, or start it with the ''-s'' command line option, a copy of certain messages will go into your syslog facilities. It is a matter of personal preferences to use a separate file for the squid log data.
 
 From the area of automatic log file analysis, the ''cache.log'' file does not have much to offer. You will usually look into this file for automated error reports, when programming Squid, testing new features, or searching for reasons of a perceived misbehaviour, etc.
 
@@ -31,43 +32,27 @@ The print format for a store log entry (one line) consists of thirteen space-sep
 {{{
 9ld.%03d %-7s %02d %08X %s %4d %9ld %9ld %9ld %s %ld/%ld %s %s
 }}}
-[1] '''time''' The timestamp when the line was logged in UTC with a millisecond fraction.
-
-[2] '''action''' The action the object was sumitted to, compare with ''src/store_log.c'':
-
- * '''CREATE''' Seems to be unused.
- * '''RELEASE''' The object was removed from the cache (see also '''file number''' below).
- * '''SWAPOUT''' The object was saved to disk.
- * '''SWAPIN''' The object existed on disk and was read into memory.
-[3] '''dir number''' The cache_dir number this object was stored into, starting at 0 for your first cache_dir line.
-
-[4] '''file number''' The file number for the object storage file. Please note that the path to this file is calculated according to your ''cache_dir'' configuration.
-
-A file number of ''FFFFFFFF'' indicates "memory only" objects. Any action code for such a file number refers to an object which existed only in memory, not on disk.  For instance, if a ''RELEASE'' code was logged with file number ''FFFFFFFF'', the object existed only in memory, and was released from memory.
-
-[5] '''hash''' The hash value used to index the object in the cache. Squid currently uses MD5 for the hash value.
-
-[6] '''status''' The HTTP reply status code.
-
-[7] '''datehdr''' The value of the HTTP ''Date'' reply header.
-
-[8] '''lastmod''' The value of the HTTP ''Last-Modified'' reply header.
-
-[9] '''expires''' The value of the HTTP "Expires: " reply header.
-
-[10] '''type''' The HTTP ''Content-Type'' major value, or "unknown" if it cannot be determined.
-
-[11] '''sizes''' This column consists of two slash separated fields:
-
- * The advertised content length from the HTTP ''Content-Length'' reply header.
- * The size actually read.
-If the advertised (or expected) length is missing, it will be set to zero. If the advertised length is not zero, but not equal to the real length, the object will be realeased from the cache.
-
-[12] '''method''' The request method for the object, e.g. ''GET''.
-
-[13] '''key''' The key to the object, usually the URL.
-
-The '''datehdr''', '''lastmod''', and '''expires''' values are all expressed in UTC seconds. The actual values are parsed from the HTTP reply headers. An unparsable header is represented by a value of -1, and a missing header is represented by a value of -2.
+ 1. '''time''' The timestamp when the line was logged in UTC with a millisecond fraction.
+ 1. '''action''' The action the object was sumitted to, compare with ''src/store_log.c'':
+   * '''CREATE''' Seems to be unused.
+   * '''RELEASE''' The object was removed from the cache (see also '''file number''' below).
+   * '''SWAPOUT''' The object was saved to disk.
+   * '''SWAPIN''' The object existed on disk and was read into memory.
+ 1. '''dir number''' The cache_dir number this object was stored into, starting at 0 for your first cache_dir line.
+ 1. '''file number''' The file number for the object storage file. Please note that the path to this file is calculated according to your ''cache_dir'' configuration. A file number of ''FFFFFFFF'' indicates "memory only" objects. Any action code for such a file number refers to an object which existed only in memory, not on disk.  For instance, if a ''RELEASE'' code was logged with file number ''FFFFFFFF'', the object existed only in memory, and was released from memory.
+ 1. '''hash''' The hash value used to index the object in the cache. Squid currently uses MD5 for the hash value.
+ 1. '''status''' The HTTP reply status code.
+ 1. '''datehdr''' The value of the HTTP ''Date'' reply header.
+ 1. '''lastmod''' The value of the HTTP ''Last-Modified'' reply header.
+ 1. '''expires''' The value of the HTTP "Expires: " reply header.
+ 1. '''type''' The HTTP ''Content-Type'' major value, or "unknown" if it cannot be determined.
+ 1. '''sizes''' This column consists of two slash separated fields:
+   * The advertised content length from the HTTP ''Content-Length'' reply header.
+   * The size actually read.
+     If the advertised (or expected) length is missing, it will be set to zero. If the advertised length is not zero, but not equal to the real length, the object will be realeased from the cache.
+ 1. '''method''' The request method for the object, e.g. ''GET''.
+ 1. '''key''' The key to the object, usually the URL.
+    The '''datehdr''', '''lastmod''', and '''expires''' values are all expressed in UTC seconds. The actual values are parsed from the HTTP reply headers. An unparsable header is represented by a value of -1, and a missing header is represented by a value of -2.
 
 == hierarchy.log ==
 This logfile exists for Squid-1.0 only.  The format is
@@ -115,46 +100,30 @@ We recommend that you use Squid's native log format due to its greater amount of
 }}}
 Therefore, an ''access.log'' entry usually consists of (at least) 10 columns separated by one ore more spaces:
 
-[1] '''time''' A Unix timestamp as UTC seconds with a millisecond resolution. You can convert Unix timestamps into something more human readable using this short perl script:
-
-{{{
+ 1. '''time''' A Unix timestamp as UTC seconds with a millisecond resolution. You can convert Unix timestamps into something more human readable using this short perl script:
+   {{{
 #! /usr/bin/perl -p
 s/^\d+\.\d+/localtime $&/e;
-}}}
-[2] '''duration''' The elapsed time considers how many milliseconds the transaction busied the cache. It differs in interpretation between TCP and UDP:
-
- * For HTTP this is basically the time from having received the request to when Squid finishes sending the last byte of the response.
- * For ICP, this is the time between scheduling a reply and actually sending it.
-Please note that the entries are logged ''after'' the reply finished being sent, ''not'' during the lifetime of the transaction.
-
-[3] '''client address''' The IP address of the requesting instance, the client IP address. The ''client_netmask'' configuration option can distort the clients for data protection reasons, but it makes analysis more difficult. Often it is better to use one of the log file anonymizers.
-
-Also, the ''log_fqdn'' configuration option may log the fully qualified domain name of the client instead of the dotted quad. The use of that option is discouraged due to its performance impact.
-
-[4] '''result codes''' This column is made up of two entries separated by a slash. This column encodes the transaction result:
-
-The cache result of the request contains information on the kind of request, how it was satisfied, or in what way it failed. Please refer to [#squid_result_codes Squid result codes] for valid symbolic result codes.
-
-Several codes from older versions are no longer available, were renamed, or split. Especially the ''ERR_'' codes do not seem to appear in the log file any more. Also refer to [#squid_result_codes Squid result codes] for details on the codes no longer available in Squid-2.
-
-The NOVM versions and Squid-2 also rely on the Unix buffer cache, thus you will see less ''TCP_MEM_HIT''s than with a Squid-1. Basically, the NOVM feature relies on ''read()'' to obtain an object, but due to the kernel buffer cache, no disk activity is needed. Only small objects (below 8KByte) are kept in Squid's part of main memory.
-
-The status part contains the HTTP result codes with some Squid specific extensions. Squid uses a subset of the RFC defined error codes for HTTP. Refer to section [#http_status_codes status codes] for details of the status codes ecognized by a Squid-2.
-
-[5] '''bytes''' The size is the amount of data delivered to the client. Mind that this does not constitute the net object size, as headers are also counted. Also, failed requests may deliver an error page, the size of which is also logged here.
-
-[6] '''request method''' The request method to obtain an object. Please refer to section [#request-methods request-methods] for available methods. If you turned off ''log_icp_queries'' in your configuration, you will not see (and thus unable to analyse) ICP exchanges. The ''PURGE'' method is only available, if you have an ACL for "method purge" enabled in your configuration file.
-
-[7] '''URL''' This column contains the URL requested. Please note that the log file may contain whitespaces for the URI. The default configuration for ''uri_whitespace'' denies whitespaces, though.
-
-[8] '''rfc931''' The eigth column may contain the ident lookups for the requesting client. Since ident lookups have performance impact, the default configuration turns ''ident_loookups'' off. If turned off, or no ident information is available, a "-" will be logged.
-
-[9] '''hierarchy code''' The hierarchy information consists of three items:
-
- * Any hierarchy tag may be prefixed with ''TIMEOUT_'', if the timeout occurs waiting for all ICP replies to return from the neighbours. The timeout is either dynamic, if the ''icp_query_timeout'' was not set, or the time configured there has run up.
- * A code that explains how the request was handled, e.g. by forwarding it to a peer, or going straight to the source. Refer to [#hierarchy_codes Hierarchy Codes] for details on hierarchy codes and removed hierarchy codes.
- * The IP address or hostname where the request (if a miss) was forwarded. For requests sent to origin servers, this is the origin server's IP address. For requests sent to a neighbor cache, this is the neighbor's hostname. NOTE: older versions of Squid would put the origin server hostname here.
-[10] '''type''' The content type of the object as seen in the HTTP reply header. Please note that ICP exchanges usually don't have any content type, and thus are logged "-". Also, some weird replies have content types ":" or even empty ones.
+   }}}
+ 1. '''duration''' The elapsed time considers how many milliseconds the transaction busied the cache. It differs in interpretation between TCP and UDP:
+  * For HTTP this is basically the time from having received the request to when Squid finishes sending the last byte of the response.
+  * For ICP, this is the time between scheduling a reply and actually sending it.
+    Please note that the entries are logged ''after'' the reply finished being sent, ''not'' during the lifetime of the transaction.
+ 1. '''client address''' The IP address of the requesting instance, the client IP address. The ''client_netmask'' configuration option can distort the clients for data protection reasons, but it makes analysis more difficult. Often it is better to use one of the log file anonymizers. Also, the ''log_fqdn'' configuration option may log the fully qualified domain name of the client instead of the dotted quad. The use of that option is discouraged due to its performance impact.
+ 1. '''result codes''' This column is made up of two entries separated by a slash. This column encodes the transaction result:
+    The cache result of the request contains information on the kind of request, how it was satisfied, or in what way it failed. Please refer to [#squid_result_codes Squid result codes] for valid symbolic result codes.
+    Several codes from older versions are no longer available, were renamed, or split. Especially the ''ERR_'' codes do not seem to appear in the log file any more. Also refer to [#squid_result_codes Squid result codes] for details on the codes no longer available in Squid-2.
+    The NOVM versions and Squid-2 also rely on the Unix buffer cache, thus you will see less ''TCP_MEM_HIT''s than with a Squid-1. Basically, the NOVM feature relies on ''read()'' to obtain an object, but due to the kernel buffer cache, no disk activity is needed. Only small objects (below 8KByte) are kept in Squid's part of main memory.
+    The status part contains the HTTP result codes with some Squid specific extensions. Squid uses a subset of the RFC defined error codes for HTTP. Refer to section [#http_status_codes status codes] for details of the status codes ecognized by a Squid-2.
+ 1. '''bytes''' The size is the amount of data delivered to the client. Mind that this does not constitute the net object size, as headers are also counted. Also, failed requests may deliver an error page, the size of which is also logged here.
+ 1. '''request method''' The request method to obtain an object. Please refer to section [#request-methods request-methods] for available methods. If you turned off ''log_icp_queries'' in your configuration, you will not see (and thus unable to analyse) ICP exchanges. The ''PURGE'' method is only available, if you have an ACL for "method purge" enabled in your configuration file.
+ 1. '''URL''' This column contains the URL requested. Please note that the log file may contain whitespaces for the URI. The default configuration for ''uri_whitespace'' denies whitespaces, though.
+ 1. '''rfc931''' The eigth column may contain the ident lookups for the requesting client. Since ident lookups have performance impact, the default configuration turns ''ident_loookups'' off. If turned off, or no ident information is available, a "-" will be logged.
+ 1. '''hierarchy code''' The hierarchy information consists of three items:
+   * Any hierarchy tag may be prefixed with ''TIMEOUT_'', if the timeout occurs waiting for all ICP replies to return from the neighbours. The timeout is either dynamic, if the ''icp_query_timeout'' was not set, or the time configured there has run up.
+   * A code that explains how the request was handled, e.g. by forwarding it to a peer, or going straight to the source. Refer to [#hierarchy_codes Hierarchy Codes] for details on hierarchy codes and removed hierarchy codes.
+   * The IP address or hostname where the request (if a miss) was forwarded. For requests sent to origin servers, this is the origin server's IP address. For requests sent to a neighbor cache, this is the neighbor's hostname. NOTE: older versions of Squid would put the origin server hostname here.
+ 1. '''type''' The content type of the object as seen in the HTTP reply header. Please note that ICP exchanges usually don't have any content type, and thus are logged "-". Also, some weird replies have content types ":" or even empty ones.
 
 There may be two more columns in the ''access.log'', if the (debug) option ''log_mime_headers'' is enabled In this case, the HTTP request headers are logged between a "{{{[" and a "}}}]", and the HTTP reply headers are also logged between "{{{[" and "}}}]". All control characters like CR and LF are URL-escaped, but spaces are ''not'' escaped! Parsers should watch out for this.
 
@@ -376,7 +345,7 @@ For Squid-1.1, there are six fields:
 [6] '''url''': The URL naming this object.
 
 == swap.state (Squid-2.x) ==
-In Squid-2, the swap log file is now called ''swap.state''.  This is a binary file that includes MD5 checksums, and ''Store''''''Entry'' fields. Please see the Programmers' Guide for information on the contents and format of that file.
+In Squid-2, the swap log file is now called ''swap.state''.  This is a binary file that includes MD5 checksums, and ''!StoreEntry'' fields. Please see the Programmers' Guide for information on the contents and format of that file.
 
 If you remove ''swap.state'' while Squid is running, simply send Squid the signal to rotate its log files:
 
@@ -534,5 +503,6 @@ If you really really want to send your squid logs to some external script, AND y
  1. start squid
 The problem with this approach is that if the text-processor blocks, squid blocks. If it crashes, in the best case squid blocks until the processor is restarted. In the second-best case, squid crashes or aborts. There is no worst case (than this).
 
+##end
 -----
-Back to theSquidFaq .
+Back to the SquidFaq
