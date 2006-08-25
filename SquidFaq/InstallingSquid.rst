@@ -1,19 +1,16 @@
 #language en
 [[TableOfContents]]
 
+##begin
 == How big of a system do I need to run Squid? ==
 
-There are no hard-and-fast rules.  The most important resource for
-Squid is physical memory, so put as much in your Squid box as you can.  Your processor does not need to be
-ultra-fast.  We recommend buying whatever is economical at the time.
+There are no hard-and-fast rules.  The most important resource for Squid is physical memory, so put as much in your Squid box as you can.  Your processor does not need to be ultra-fast. We recommend buying whatever is economical at the time.
 
-Your disk system will be the major bottleneck, so fast disks are
-important for high-volume caches.  SCSI disks generally perform
-better than ATA, if you can afford them.  Serial ATA (SATA) performs somewhere between the two.
+Your disk system will be the major bottleneck, so fast disks are important for high-volume caches. SCSI disks generally perform
+better than ATA, if you can afford them. Serial ATA (SATA) performs somewhere between the two.
 Your system disk, and logfile disk can probably be IDE without losing any cache performance.
 
-The ratio of memory-to-disk can be important.  We recommend that
-you have at least 32 MB of RAM for each GB of disk space that you
+The ratio of memory-to-disk can be important.  We recommend that you have at least 32 MB of RAM for each GB of disk space that you
 plan to use for caching.
 
 == How do I install Squid? ==
@@ -32,13 +29,9 @@ then you will also want to type
 # make install-pinger
 }}}
 
-After installing, you will want to edit and customize
-the ''squid.conf'' file.  By default, this file is
-located at ''/usr/local/squid/etc/squid.conf''.
+After installing, you will want to edit and customize the ''squid.conf'' file. By default, this file is located at ''/usr/local/squid/etc/squid.conf''.
 
-Also, a QUICKSTART guide has been included with the source
-distribution.  Please see the directory where you
-unpacked the source archive.
+Also, a QUICKSTART guide has been included with the source distribution. Please see the directory where you unpacked the source archive.
 
 ==  What does the squid.conf file do? ==
 
@@ -58,8 +51,8 @@ option.
 
 == How do I start Squid? ==
 
-First you need to make your Squid configuration. The Squid configuration
-can be found in ''/usr/local/squid/etc/squid.conf'' and by default includes documentation on all directives.
+First you need to check your Squid configuration. The Squid configuration
+can be found in ''/usr/local/squid/etc/squid.conf'' and includes documentation on all directives.
 
 In the Suqid distribution there is a small QUICKSTART guide indicating
 which directives you need to look closer at and why. At a absolute minimum
@@ -115,7 +108,7 @@ just leave off all options:
 === by hand ===
 
 Squid-2 has a restart feature built in.  This greatly simplifies
-starting Squid and means that you don't need to use ''Run''''''Cache''
+starting Squid and means that you don't need to use ''!RunCache''
 or ''inittab''.  At the minimum, you only need to enter the
 pathname to the Squid executable.  For example:
 {{{
@@ -247,7 +240,7 @@ Also, check the log files, most importantly the ''access.log'' and
 
 ==  squid command line options ==
 
-These are the command line options for *'''Squid-2''':
+These are the command line options for '''Squid-2''':
 
 '''-a''' Specify an alternate port number for incoming HTTP requests.
 Useful for testing a configuration file on a non-standard port.
@@ -370,5 +363,6 @@ Squid is the worst case application for RAID5, whether hardware or software, and
 cache has been filled Squid uses a lot of small random writes which the worst case workload for RAID5, effectively reducing write speed to only
 little more than that of one single drive.
 
+##end
 ----
 Back to the SquidFaq
