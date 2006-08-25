@@ -24,7 +24,7 @@ In December 2005 an informal squid sprint was held in Rivoli, hosted by GuidoSer
  * NegotiateAuthentication support for Squid-3 (the main focus of the sprint)
  * ["Squid-2.6"]
  * NiceLittleProjects: projects which can be completed in a few days' work, waiting for someone to step up. Any takers?
-In december 2004 an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
+In December 2004 an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
 
  * ["StoreAPI"]
  * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
