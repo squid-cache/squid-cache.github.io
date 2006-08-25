@@ -2,12 +2,13 @@
 
 [[TableOfContents]]
 
+##begin
 == Communication between browsers and Squid ==
 
 Most web browsers available today support proxying and are easily configured
 to use a Squid server as a proxy.  Some browsers support advanced features
 such as lists of domains or URL patterns that shouldn't be fetched through
-the proxy, or Java''''''Script automatic proxy configuration.
+the proxy, or !JavaScript automatic proxy configuration.
 
 There are three ways to configure browsers to use Squid.  The first method involves manually configuring the proxy in each browser.  Alternatively, a proxy.pac file can be manually entered into each browser so that it will download the proxy settings (partial auto configuration), and lastly all modern browsers can also and indeed are configured by default to fully automatically configure themselves if the network is configured to support this.
 
@@ -74,7 +75,7 @@ At the moment I think it has something to do with cookies.  If you have trouble 
 
 == Netmanage Internet Chameleon WebSurfer manual configuration ==
 
-Netmanage Web''''''Surfer supports manual proxy configuration and exclusion lists for hosts or domains that should not be fetched via proxy (this information is current as of Web''''''Surfer 5.0).  Select '''Preferences''' from the '''Settings''' menu.  Click on the '''Proxies''' tab.  Select the '''Use Proxy''' options for HTTP, FTP, and gopher.  For each protocol that enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' boxes.  For any protocols that your Squid does not support, leave the fields blank.
+Netmanage !WebSurfer supports manual proxy configuration and exclusion lists for hosts or domains that should not be fetched via proxy (this information is current as of !WebSurfer 5.0).  Select '''Preferences''' from the '''Settings''' menu.  Click on the '''Proxies''' tab.  Select the '''Use Proxy''' options for HTTP, FTP, and gopher.  For each protocol that enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' boxes.  For any protocols that your Squid does not support, leave the fields blank.
 
 On the same configuration window, you'll find a button to bring up the exclusion list dialog box, which will let you enter some hosts or domains that you don't want fetched via proxy.
 
@@ -85,8 +86,8 @@ This involves the browser being preconfigured with the location of an autoconfig
 
 == Netscape automatic configuration ==
 
-Netscape Navigator's proxy configuration can be automated with Java''''''Script (for Navigator versions 2.0 or higher).  Select
-'''Network Preferences''' from the '''Options''' menu.  On the '''Proxies''' page, click the radio button next to '''Automatic Proxy Configuration''' and then fill in the URL for your Java''''''Script proxy configuration file in the text box.  The box is too small, but the text will scroll to the r8ight as you go.
+Netscape Navigator's proxy configuration can be automated with !JavaScript (for Navigator versions 2.0 or higher).  Select
+'''Network Preferences''' from the '''Options''' menu.  On the '''Proxies''' page, click the radio button next to '''Automatic Proxy Configuration''' and then fill in the URL for your !JavaScript proxy configuration file in the text box.  The box is too small, but the text will scroll to the r8ight as you go.
 
 You may also wish to consult Netscape's documentation for the Navigator
 [http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
@@ -97,7 +98,7 @@ inline:sample1.pac.txt
 
 == Microsoft Internet Explorer ==
 
-Microsoft Internet Explorer, versions 4.0 and above, supports Java''''''Script automatic proxy configuration in a Netscape-compatible way. Just select '''Options''' from the '''View''' menu. Click on the '''Advanced''' tab.  In the lower left-hand corner, click on the '''Automatic Configuration''' button.  Fill in the URL for your Java''''''Script file in the dialog box it presents you.  Then exit MSIE and restart it for the changes to take effect.  MSIE will reload the Java''''''Script file every time
+Microsoft Internet Explorer, versions 4.0 and above, supports !JavaScript automatic proxy configuration in a Netscape-compatible way. Just select '''Options''' from the '''View''' menu. Click on the '''Advanced''' tab.  In the lower left-hand corner, click on the '''Automatic Configuration''' button.  Fill in the URL for your !JavaScript file in the dialog box it presents you.  Then exit MSIE and restart it for the changes to take effect.  MSIE will reload the !JavaScript file every time
 it starts.
 
 == Fully Automatically Configuring Browsers for WPAD ==
@@ -155,7 +156,7 @@ that all works as per your script and network.  There's no point
 continuing until this works ...
 
 Create/install/implement a DNS record so that
-wpad.your.domain.name< resolves to the host above where
+wpad.your.domain.name resolves to the host above where
 you have a functioning auto config script running. You should
 now be able to use http://wpad.your.domain.name/wpad.dat
 as the Auto Config Script location in step 5 above.
@@ -333,5 +334,6 @@ Another possible workaround to these problems is to make the
 ERR_CACHE_ACCESS_DENIED larger than 1460 bytes. This should trigger
 IE to handle the authentication in a slightly different manner.
 
+##end
 -----
 Back to the SquidFaq
