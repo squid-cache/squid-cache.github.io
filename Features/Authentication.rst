@@ -115,6 +115,75 @@ are allowed to use the proxy at all times.  Other users
 are allowed only during daytime hours.
 
 
+== How do I ask for authentication of an already authenticated user? ==
+
+If a user is authenticated at the proxy you cannot "log out" and re-authenticate.
+The user usually has to close and re-open the browser windows to be able to re-login at the proxy.
+A simple configuration will probably look like this:
+
+{{{
+acl my_auth proxy_auth REQUIRED
+http_access allow my_auth
+http_access deny all
+}}}
+
+Now there is a tricky change that was introduced in Squid 2.5.10. It allows to control when the user
+is prompted to authenticate. Now it's possible to force the user to re-authenticate although
+the username and password are still correct. Example configuration:
+
+{{{
+acl my_auth proxy_auth REQUIRED
+acl google dstdomain .google.com
+http_access allow my_auth
+http_access deny google my_auth
+http_access deny all
+}}}
+
+In this case if the user requests ''www.google.com'' then the second ''http_access''
+line matches and triggers re-authentication. Remember: it's always the last ACL on
+a ''http_access'' line that "matches". If the matching ACL deals with authentication
+a re-authentication is triggered. If you didn't want that you would need to switch the
+order of ACLs so that you get {{{http_access deny my_auth google}}}.
+
+You might also run into an '''authentication loop''' if you are not careful.
+Assume that you use LDAP group lookups and want to deny access based on
+an LDAP group (e.g. only members of a certain LDAP group are allowed to reach
+certain web sites). In this case you may trigger re-authentication although you
+don't intend to. This config is likely wrong for you:
+
+{{{
+acl ldap-auth proxy_auth REQUIRED
+acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
+
+http_access deny !ldap-auth
+http_access deny !ldapgroup-allowed
+http_access allow all
+}}}
+
+The second ''http_access'' line would force the user to re-authenticate time
+and again if he/she is not member of the PROXY_ALLOWED group. This is perhaps
+not what you want. You rather wanted to deny access to non-members. So you
+need to rewrite this ''http_access'' line so that an ACL matches that has nothing
+to do with authentication. This is the correct example:
+
+{{{
+acl ldap-auth proxy_auth REQUIRED
+acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
+acl dummy src 0.0.0.0/0.0.0.0
+
+http_access deny !ldap-auth
+http_access deny !ldapgroup-allowed dummy
+http_access allow all
+}}}
+
+This way the second ''http_access'' line still matches. But it's the ''dummy'' ACL
+which is now last in the line. Since ''dummy'' is a static ACL (that always matches)
+and has nothing to do with authentication you will find that the access is just
+denied.
+
+See also: http://www.squid-cache.org/mail-archive/squid-users/200511/0339.html
+
+
 == Does Squid cache authentication lookups? ==
 
 
