@@ -1,6 +1,7 @@
 #language en
 [[TableOfContents]]
 
+##begin
 Chapter contributed by ''Jonathan Larmour''
 
 == What is the cache manager? ==
@@ -501,4 +502,5 @@ reasons:
   * ICP_OP_DENIED replies are ignored after the first 100.
 
 -----
+##end
 Back to the SquidFaq
