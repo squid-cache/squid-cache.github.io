@@ -2,6 +2,7 @@
 
 [[TableOfContents]]
 
+##begin
 == Why does Squid use so much memory!? ==
 
 Squid uses a lot of memory for performance reasons.  It takes much, much
@@ -9,11 +10,11 @@ longer to read something from disk than it does to read directly from
 memory.
 
 A small amount of metadata for each cached object is kept in memory.
-This is the ''Store''''''Entry'' data structure.  For ''Squid-2'' this is
+This is the ''!StoreEntry'' data structure.  For ''Squid-2'' this is
 56-bytes on "small" pointer architectures (Intel, Sparc, MIPS, etc) and
 88-bytes on "large" pointer architectures (Alpha).  In addition, there
 is a 16-byte cache key (MD5 checksum) associated with each
-''Store''''''Entry''.  This means there are 72 or 104 bytes of metadata in
+''!StoreEntry''.  This means there are 72 or 104 bytes of metadata in
 memory for every object in your cache.  A cache with 1,000,000
 objects therefore requires 72MB of memory for ''metadata only''.
 In practice it requires much more than that.
@@ -95,7 +96,7 @@ new ones are least easy to identify.
 Memory leaks may also be present in your system's libraries, such
 as ''libc.a'' or even ''libmalloc.a''.  If you experience the ever-growing
 process size phenomenon, we suggest you first try
-["#using_an_alternate_malloc_library"].
+[#alternate-malloc].
 
 ==  I set cache_mem to XX, but the process grows beyond that! ==
 
@@ -108,7 +109,7 @@ also reduce the process size, but not necessarily, and there are
 other ways to reduce Squid's memory usage (see below).
 
 See also
-[[#how-much-ram|How much memory do I need in my Squid server?]].
+[#how-much-ram How much memory do I need in my Squid server?].
 
 == How do I analyze memory usage from the cache manger output? ==
 
@@ -150,7 +151,7 @@ Of the 76M in use, we can account for 58.5M (76%).  There are some
 calls to ''malloc(3)'' for which we can't account.
 
 The ''Meta Data'' list gives the breakdown of where the
-accounted memory has gone.  45% has gone to ''Store''''''Entry''
+accounted memory has gone.  45% has gone to ''!StoreEntry''
 and URL strings.  Another 42% has gone to buffering hold objects
 in VM while they are fetched and relayed to the clients (''Pool
 for in-memory object'').
@@ -160,7 +161,7 @@ In version 1.0, these pools are somewhat broken:  we keep a stack
 of unused pages instead of freeing the block.  In the ''Pool
 for in-memory object'', the unused stack size is 1/2 of
 ''cache_mem''.  The ''Pool for disk I/O'' is
-hardcoded at 200.  For ''Mem''''''Object'' and ''Request''
+hardcoded at 200.  For ''!MemObject'' and ''Request''
 it's 1/8 of your system's ''FD_SETSIZE'' value.
 
 If you need to lower your process size, we recommend lowering the
@@ -381,7 +382,7 @@ There are a number of things to try:
   * Turn the ''memory_pools off'' in the config file.  This causes Squid to give up unused memory by calling ''free()'' instead of holding on to the chunk for potential, future use. Generally speaking, this is a bad idea as it will induce heap fragmentation. Use  ''memory_pools_limit'' instead.
   * Reduce the ''cache_swap'' parameter in your config file.  This will reduce the number of objects Squid keeps.  Your overall hit ratio may go down a little, but your cache will perform significantly better.
 
-
+[[Anchor(alternate-malloc)]]
 ==  Using an alternate malloc library ==
 
 Many users have found improved performance and memory utilization when
@@ -435,6 +436,7 @@ script:
 % ./configure --enable-dlmalloc ...
 }}}
 
+[[Anchor(how-much-ram)]]
 == How much memory do I need in my Squid server? ==
 
 As a rule of thumb on Squid uses approximately 10 MB of RAM per GB of the
@@ -460,5 +462,6 @@ completely. The solution for larger caches is to get more physical RAM;
 allocating more to Squid via cache_mem will not help.
 
 -----
+##end
 
 Back to the SquidFaq
