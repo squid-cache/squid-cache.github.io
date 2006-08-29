@@ -1,5 +1,8 @@
 #language en
-[[TableOfContents]]Squid's access control scheme is relatively comprehensive and difficult for some people to understand.  There are two different components: ''ACL elements'', and ''access lists''.  An access list consists of an ''allow'' or ''deny'' action followed by a number of ACL elements.
+[[TableOfContents]]
+
+##begin
+Squid's access control scheme is relatively comprehensive and difficult for some people to understand.  There are two different components: ''ACL elements'', and ''access lists''.  An access list consists of an ''allow'' or ''deny'' action followed by a number of ACL elements.
 
 == ACL elements ==
 || {i} ||The information here is current for version 2.5. ||
@@ -63,6 +66,7 @@ There are a number of different access lists:
  * '''snmp_access''': Controls SNMP client access to the cache.
  * '''broken_posts''': Defines requests for which squid appends an extra CRLF after POST message bodies as required by some broken origin servers.
  * '''cache_peer_access''': Controls which requests can be forwarded to a given neighbor (peer).
+
 '''Notes''':
 
 An access list ''rule'' consists of an ''allow'' or ''deny'' keyword, followed by a list of ACL element names.
@@ -401,8 +405,8 @@ Then, of course, you'll have to rewrite your ''http_access'' lines as well.
 
 == Can I set up ACL's based on MAC address rather than IP? ==
 Yes, for some operating systes.  Squid calls these "ARP ACLs" and they are supported on Linux, Solaris, and probably BSD variants.
-|| /!\ ||MAC address is only available for clients that are on the same subnet.  If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router.
-||
+
+|| /!\ ||MAC address is only available for clients that are on the same subnet.  If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router.||
 
 
 To use ARP (MAC) access controls, you first need to compile in the optional code.  Do this with the ''--enable-arp-acl'' configure option:
@@ -501,4 +505,6 @@ By default the maximum length of an ACL name is 32-1 = 31 characters, but it can
 #define ACL_NAME_SZ 32
 }}}
 -----
- . Back to the SquidFaq
+##end
+
+Back to the SquidFaq
