@@ -1,6 +1,7 @@
 #language en
 [[TableOfContents]]
 
+##begin
 == Solaris ==
 
 
@@ -767,4 +768,5 @@ See
 including how to patch an already-compiled program.
 
 -----
+##end
 Back to the SquidFaq
