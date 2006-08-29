@@ -1,6 +1,7 @@
 #language en
 [[TableOfContents]]
 
+##begin
 == How do I see system level Squid statistics? ==
 
 The Squid distribution includes a CGI utility called ''cachemgr.cgi''
@@ -388,5 +389,6 @@ the client IP addresses are routed to the Squid box.  If the packets
 take another path, the real clients will send TCP resets to the
 origin servers, thereby breaking the connections.
 
+##end
 -----
 Back to the SquidFaq
