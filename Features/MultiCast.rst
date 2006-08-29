@@ -1,8 +1,8 @@
 #language en
 [[TableOfContents]]
 
+##begin
 == What is Multicast? ==
-
 
 Multicast is essentially the ability to send one IP packet to multiple
 receivers.  Multicast is often used for audio and video conferencing systems.
@@ -181,4 +181,6 @@ traffic to a specific address.  The
 describes this.
 
 -----
+
+##end
 Back to the SquidFaq
