@@ -2,6 +2,7 @@
 
 [[TableOfContents]]
 
+##begin
 == What are cachable objects? ==
 
 An Internet Object is a file, document or response to a query for
@@ -982,4 +983,5 @@ client "I am listening on <ip address> <port>." Your client then connects
 to the server on that IP and port and data flows.
 
 -----
+##end
 Back to the SquidFaq
