@@ -21,3 +21,15 @@ Those '''''might''''' be useful in different cases: respectively disk cache hit,
 '''Discussion '''
 
 ----
+= Request Flow reorganization =
+(from the old Faq-O-Matic)
+
+The request flow should be as clean as possible 
+ 1. The proxy request flow should be just that. Separate cache from the request flow. 
+ 1. No double or triple copying of data. Make use of reference counted data buffers to pass data as-is from reader to writer, including to/from cache. 
+ 1. As few special cases as possible. Beware of "huge" requests, or joined requests with a "huge" distance between two users. 
+
+Due to requirement 'c', I think we should drop the idea of joined requests where there is more than one client. Better if we simply support storage of partial objects, and then ignores the whole issue.
+
+[:Henrik Nordström]
+'''Discussion'''
