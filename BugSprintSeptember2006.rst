@@ -9,3 +9,7 @@ Other useful bug views:
 
 Roberts configure option list for debugging:
 `'--prefix=/home/robertc/install/squid' '--enable-gopher' '--enable-ssl' '--enable-urn' '--enable-wais' '--enable-whois' '--enable-auth=negotiate,ntlm,basic,digest' '--enable-storeio=aufs,diskd,ufs,coss,null' '--enable-cache-digests' '--enable-htcp' '--enable-removal-policies=lru,heap' '--enable-snmp' '--enable-icmp' '--enable-debug-cbdata' '--enable-basic-auth-helpers=NCSA' '--enable-delay-pools' '--enable-maintainer-mode' '--enable-cpu-profiling' 'CFLAGS=-g -O2 -Wall' '--enable-esi' '--enable-icap-client' '--disable-inline' '--enable-for-via-db'`
+
+Henriks build script. Use -g for debug build:
+
+[http://devel.squid-cache.org/hno/build.sh Build script]
