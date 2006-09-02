@@ -21,7 +21,14 @@ When prompted for a password, enter 'anoncvs'.
 {{{
   % cvs checkout squid3
 }}}
-You can use {{{ cvs -d }}} if you are afraid of csh or don't like to set environment variables.
+You can use {{{ cvs -d :pserver:anoncvs@cvs.squid-cache.org:/squid checkout squid3 }}} for a shorter all-in-one method that wont set environment variables.
+
+You will need to bootstrap your tree - 
+{{{
+sh bootstrap.sh
+}}}
+
+This may give errors if you dont have the right distribution-time dependencies (libtool, automake > 1.5, autoconf > 2.50).
 
 To update your source tree later, type:
 {{{
