@@ -162,20 +162,6 @@ If that doesn't seem to work, edit your ''arpa/inet.h'' file and comment out the
 #define inet_nsap_ntoa          __inet_nsap_ntoa
 }}}
 
-== How can I get true DNS TTL info into Squid's IP cache? ==
-
-If you have source for BIND, you can modify it as indicated in the diff
-below.  It causes the global variable _dns_ttl_ to be set with the TTL
-of the most recent lookup.  Then, when you compile Squid, the configure
-script will look for the _dns_ttl_ symbol in libresolv.a.  If found,
-dnsserver will return the TTL value for every lookup.
-
-This hack was contributed by
-[mailto:bne@CareNet.hu Endre Balint Nagy].
-
- * attachment:bind-4.9.4.patch
- * attachment:bind-8.patch
-
 == My platform is BSD/OS or BSDI and I can't compile Squid ==
 
 {{{
