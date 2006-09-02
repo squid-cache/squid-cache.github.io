@@ -5,6 +5,7 @@ We're hitting this [http://www.squid-cache.org/bugs/buglist.cgi?query_format=adv
 We started with 42, and have addressed:
 
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=772
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=897
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1402
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1493
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1567
