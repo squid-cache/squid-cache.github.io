@@ -8,7 +8,7 @@ We started with 42, and have addressed:
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1567
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1568
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1598
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1716
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=1642
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1716
 
 Other useful bug views:
