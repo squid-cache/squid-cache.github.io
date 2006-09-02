@@ -7,44 +7,44 @@ This is an attempt to document how the various parts of squid '''should''' inter
 = Request that is not parsable =
  1. OS reports new socket available.
   * Comms layer constructs Socket object.
-  * Comms layer holds reference to Socket - it cannot be freed until the OS is notified etc.
-  * Socket holds cbdata reference to the comms layer to notify it of close.
+  * Comms layer holds RefCountReference to Socket - it cannot be freed until the OS is notified etc.
+  * Socket holds CallbackReference to the comms layer to notify it of close.
  1. New Socket is passed to the listening factory for the port it was recieved on.
   * Factory constructs SocketClient to represent the Socket at the protocol layer.
-  * Comms layer holds reference to Socket
-  * SocketClient holds reference to Socket - the socket cannot be freed until the SC requests it.
-  * Socket holds reference to SocketClient - neither 'owns' each other - the SocketClient is providing policy, the Socket providing implementation. 
+  * Comms layer holds RefCountReference to Socket
+  * SocketClient holds RefCountReference to Socket - the socket cannot be freed until the SC requests it.
+  * Socket holds RefCountReference to SocketClient - neither 'owns' each other - the SocketClient is providing policy, the Socket providing implementation. 
  1. SocketClient tries to perform a read on the new socket.
-  * Socket gets a callback reference to the SocketClient and the nominated dispatcher.
+  * Socket gets a CallbackReference to the SocketClient and the nominated dispatcher.
  1. Socket requests read from the OS
  1. read completes
   * Socket hands itself and the read data to the dispatcher
-  * Dispatcher holds cbdata reference to SocketClient
-  * Socket drops its cbdata reference to SocketClient
+  * Dispatcher holds CallbackReference to SocketClient
+  * Socket drops its CallbackReference to SocketClient
  1. Dispatcher calls back SocketClient
   * SocketClient fails to parse the request.
   * SocketClient issues a write of an error page
-  * Socket holds a cbdata reference to the SocketClient and dispatcher
+  * Socket holds a CallbackReference to the SocketClient and dispatcher
  1. Socket issues a write to the OS
  1. write completes
   * Socket hands itself and the write result to the dispatcher
-  * Dispatcher holds cbdata reference to SocketClient
-  * Socket drops its cbdata reference to SocketClient
+  * Dispatcher holds CallbackReference to SocketClient
+  * Socket drops its CallbackReference to SocketClient
  1. Dispatcher calls back SocketClient
   * SocketClient calls close on Socket
-  * Dispatch drops its reference
-  * Socket holds reference to the SocketClient and dispatcher
+  * Dispatch drops its CallbackReference
+  * Socket holds CallbackReference to the SocketClient and dispatcher
  1. Socket calls shutdown(SD_BOTH) to the os
   * Dispatcher gets given message to give to the Comms layer 
-  * Socket drops its cbdata reference to the comms layer.
-  * Dispatcher gets cbdata reference to SocketClient
-  * Socket drops it cbdata reference to the SocketClient
+  * Socket drops its CallbackReference to the comms layer.
+  * Dispatcher gets CallbackReference to SocketClient
+  * Socket drops it CallbackReference to the SocketClient
  1. Dispatcher dispatches close-complete to the SocketClient
-  * SocketClient removes its reference to the Socket
+  * SocketClient removes its RefCountReference to the Socket
  1. Dispatcher dispatches close-complete to the Comms layer
-  * Comms layer drops its reference to the Socket object
- 1. Socket Object has no references, frees.
- 1. SocketClient has no references, frees.
+  * Comms layer drops its RefCountReference to the Socket object
+ 1. Socket Object has no RefCountReferences held on it, and so frees.
+ 1. SocketClient has no RefCountReferences held on it, and so frees.
 
 
 = Internal Request =
