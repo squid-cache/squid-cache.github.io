@@ -36,11 +36,12 @@ Many works in progress is hosted in our public developer CVS repository. For mor
 
 To access older Squid releases use the same procedure as above to login and then checkout the specific version sources
 
+Squid-2.6
+{{{
+  cvs checkout -d squid-2.6 squid
+}}}
+
 Squid-2.5
 {{{
   cvs checkout -d squid-2.5 -r SQUID_2_5 squid
-}}}
-Squid-2.4
-{{{
-  cvs checkout -d squid-2.4 -r SQUID_2_4 squid
 }}}
