@@ -1,3 +1,6 @@
+Getting squid going:
+SquidFaq/CompilingSquid and CvsInstructions
+
 We're hitting this [http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&short_desc_type=allwordssubstr&short_desc=&target_milestone=3.0&long_desc_type=allwordssubstr&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&bug_id=&votes=&chfieldfrom=&chfieldto=Now&chfieldvalue=&cmdtype=doit&order=Reuse+same+sort+as+last+time&query_based_on=3.0+bugs&field0-0-0=noop&type0-0-0=noop&value0-0-0= bug list] all weekend.
 
 Other useful bug views:
