@@ -13,6 +13,7 @@ We started with 42, and have addressed:
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1598
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1642
  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1716
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=1750
  * http://www.squid-cache.org/Versions/v3/3.0/changesets/10427.patch
 Other useful bug views:
 
