@@ -14,11 +14,12 @@ The actual transition may take much longer to fully complete, because there is a
 
 = Next steps =
 
- * Fix all critical and major bugs.
+ * Fix all critical and major bugs. 
  * Do some pre-releases and get user feedback.
  * release 3.0
  * Work on performance in 3.1
 
-= Coordination =
+= Drive =
 
-Bug-squashing weekend 2nd and 3rd September in #squiddev on irc.freenode.net (use a IRC client like 'xchat' to connection.
+Bug-squashing weekend 2nd and 3rd September in #squiddev on irc.freenode.net (use a IRC client like 'xchat' to connect).
+For results and coordination see BugSprintSeptember2006
