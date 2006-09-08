@@ -3,6 +3,22 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
 
+== Outline ==
+ * Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/1 and running VLANs to a DMZ and internal network on fa1/1
+ * Plugged into a VLAN-aware switch to break out the VLAN across multiple ports
+ * Run WCCP on the NATted DMZ IPs; not on everything
+ * Squid server has two ethernet ports - one with an IP on the DMZ, one with an IP on the internal network
+ * Redirected requests occur to the internal network port of the Squid server
+ * Squid server makes requests through the DMZ IP; avoiding being WCCP intercepted
+
+This network architecture isn't very pretty because:
+
+ * Its better(!) to do WCCPv2 interception on the outbound interface, rather than inbound from the internal interface(s);
+ * It is also better to try and do the Squid cache with a single network port rather than two - but this is my home development environment, thankfully!
+ 
+
+---- /!\ '''Edit conflict - other version:''' ----
+
 == Outline==
  * Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/1 and running VLANs to a DMZ and internal network on fa1/1
  * Plugged into a VLAN-aware switch to break out the VLAN across multiple ports
@@ -16,6 +32,10 @@ This network architecture isn't very pretty because:
  * Its better(!) to do WCCPv2 interception on the outbound interface, rather than inbound from the internal interface(s);
  * It is also better to try and do the Squid cache with a single network port rather than two - but this is my home development environment, thankfully!
  
+
+---- /!\ '''Edit conflict - your version:''' ----
+
+---- /!\ '''End of edit conflict''' ----
 == Diagram ==
 == Cisco Router Configuration ==
 Router version: 2651 running 12.4(2)T1 C2600-TELCO-M, 96Mb RAM, 16Mb Flash
@@ -32,13 +52,28 @@ service password-encryption
 !
 hostname cacheboy-1
 !
+
+---- /!\ '''Edit conflict - other version:''' ----
+
+---- /!\ '''Edit conflict - your version:''' ----
+
+---- /!\ '''End of edit conflict''' ----
 logging buffered 8192 debugging
 no logging console
 enable secret 5 <password>
 !
+
+---- /!\ '''Edit conflict - other version:''' ----
 no network-clock-participate wic 0 
 ip subnet-zero
 ip wccp web-cache
+
+---- /!\ '''Edit conflict - your version:''' ----
+no network-clock-participate wic 0 
+ip subnet-zero
+ip wccp web-cache
+
+---- /!\ '''End of edit conflict''' ----
 !
 !
 ip cef
@@ -48,9 +83,18 @@ ip dhcp excluded-address 192.168.7.1 192.168.7.128
 !
 ip dhcp pool localnet
    network 192.168.1.0 255.255.255.0
+
+---- /!\ '''Edit conflict - other version:''' ----
    default-router 192.168.1.1 
    domain-name home.cacheboy.net
    dns-server 203.56.15.78 
+
+---- /!\ '''Edit conflict - your version:''' ----
+   default-router 192.168.1.1 
+   domain-name home.cacheboy.net
+   dns-server 203.56.15.78 
+
+---- /!\ '''End of edit conflict''' ----
    lease 30
 !
 !
@@ -62,31 +106,66 @@ vpdn enable
 vpdn-group 1
  request-dialin
   protocol pppoe
+
+---- /!\ '''Edit conflict - other version:''' ----
 !         
 !         
 !         
 !         
+
+---- /!\ '''Edit conflict - your version:''' ----
+!         
+!         
+!         
+!         
+
+---- /!\ '''End of edit conflict''' ----
 interface FastEthernet0/0
  ip address 192.168.3.2 255.255.255.0
  duplex auto
  speed auto
  pppoe enable
  pppoe-client dial-pool-number 1
+
+---- /!\ '''Edit conflict - other version:''' ----
 !         
 interface FastEthernet0/1
  ip address 192.168.1.1 255.255.255.0
  ip wccp web-cache redirect in
  ip nat inside
+
+---- /!\ '''Edit conflict - your version:''' ----
+!         
+interface FastEthernet0/1
+ ip address 192.168.1.1 255.255.255.0
+ ip wccp web-cache redirect in
+ ip nat inside
+
+---- /!\ '''End of edit conflict''' ----
  ip virtual-reassembly
  duplex auto
  speed auto
+
+---- /!\ '''Edit conflict - other version:''' ----
 !         
+
+---- /!\ '''Edit conflict - your version:''' ----
+!         
+
+---- /!\ '''End of edit conflict''' ----
 interface FastEthernet0/1.2
  description DMZ
  encapsulation dot1Q 2
  ip address 203.56.15.73 255.255.255.248
  no snmp trap link-status
+
+---- /!\ '''Edit conflict - other version:''' ----
 !               
+
+---- /!\ '''Edit conflict - your version:''' ----
+!               
+
+---- /!\ '''End of edit conflict''' ----
 interface Dialer1
  description ADSL
  ip address negotiated
@@ -105,12 +184,27 @@ interface Dialer1
  ppp chap password 7 <password>
  ppp chap refuse
  ppp pap sent-username <username> password 7 <password>
+
+---- /!\ '''Edit conflict - other version:''' ----
 !         
+
+---- /!\ '''Edit conflict - your version:''' ----
+!         
+
+---- /!\ '''End of edit conflict''' ----
 no ip http server
 ip classless
 ip route 0.0.0.0 0.0.0.0 Dialer1
+
+---- /!\ '''Edit conflict - other version:''' ----
 !         
 !         
+
+---- /!\ '''Edit conflict - your version:''' ----
+!         
+!         
+
+---- /!\ '''End of edit conflict''' ----
 ip nat translation timeout never
 ip nat translation tcp-timeout never
 ip nat translation udp-timeout never
@@ -118,8 +212,16 @@ ip nat translation finrst-timeout never
 ip nat translation syn-timeout never
 ip nat translation dns-timeout never
 ip nat translation icmp-timeout never
+
+---- /!\ '''Edit conflict - other version:''' ----
 ip nat inside source list 11 interface Dialer1 overload
 !         
+
+---- /!\ '''Edit conflict - your version:''' ----
+ip nat inside source list 11 interface Dialer1 overload
+!         
+
+---- /!\ '''End of edit conflict''' ----
 access-list 3 permit any
 access-list 11 permit 192.168.1.0 0.0.0.255
 access-list 11 permit 192.168.65.0 0.0.0.255
@@ -130,10 +232,20 @@ access-list 12 permit 203.56.15.72 0.0.0.3
 access-list 13 permit 192.168.0.0 0.0.255.255
 dialer-list 1 protocol ip permit
 snmp-server community <password> RO
+
+---- /!\ '''Edit conflict - other version:''' ----
 !                  
 control-plane
 !         
 !         
+
+---- /!\ '''Edit conflict - your version:''' ----
+!                  
+control-plane
+!         
+!         
+
+---- /!\ '''End of edit conflict''' ----
 line con 0
  speed 115200
  flowcontrol hardware
@@ -142,8 +254,16 @@ line aux 0
  stopbits 1
 line vty 0 4
  password 7 <password>
+
+---- /!\ '''Edit conflict - other version:''' ----
  login    
 !         
+
+---- /!\ '''Edit conflict - your version:''' ----
+ login    
+!         
+
+---- /!\ '''End of edit conflict''' ----
 ntp clock-period 17207619
 ntp server 130.95.128.58
 end
