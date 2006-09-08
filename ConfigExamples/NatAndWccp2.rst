@@ -20,6 +20,9 @@ This network architecture isn't very pretty because:
  
 
 == Diagram ==
+
+[attachment:WCCP%20diagram.png]
+
 == Cisco Router Configuration ==
 Router version: 2651 running 12.4(2)T1 C2600-TELCO-M, 96Mb RAM, 16Mb Flash
 {{{
