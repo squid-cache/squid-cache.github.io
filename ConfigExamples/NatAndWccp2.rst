@@ -6,7 +6,7 @@
 = WCCP2 and NAT on a private internal network =
 
 == Outline ==
- * Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/1 and running VLANs to a DMZ and internal network on fa1/1
+ * Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/0 and running VLANs to a DMZ and internal network on fa0/1
  * Plugged into a VLAN-aware switch to break out the VLAN across multiple ports
  * Run WCCP on the NATted DMZ IPs; not on everything
  * Squid server has two ethernet ports - one with an IP on the DMZ, one with an IP on the internal network
