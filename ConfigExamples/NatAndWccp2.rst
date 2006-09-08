@@ -17,25 +17,6 @@ This network architecture isn't very pretty because:
  * It is also better to try and do the Squid cache with a single network port rather than two - but this is my home development environment, thankfully!
  
 
----- /!\ '''Edit conflict - other version:''' ----
-
-== Outline==
- * Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/1 and running VLANs to a DMZ and internal network on fa1/1
- * Plugged into a VLAN-aware switch to break out the VLAN across multiple ports
- * Run WCCP on the NATted DMZ IPs; not on everything
- * Squid server has two ethernet ports - one with an IP on the DMZ, one with an IP on the internal network
- * Redirected requests occur to the internal network port of the Squid server
- * Squid server makes requests through the DMZ IP; avoiding being WCCP intercepted
-
-This network architecture isn't very pretty because:
-
- * Its better(!) to do WCCPv2 interception on the outbound interface, rather than inbound from the internal interface(s);
- * It is also better to try and do the Squid cache with a single network port rather than two - but this is my home development environment, thankfully!
- 
-
----- /!\ '''Edit conflict - your version:''' ----
-
----- /!\ '''End of edit conflict''' ----
 == Diagram ==
 == Cisco Router Configuration ==
 Router version: 2651 running 12.4(2)T1 C2600-TELCO-M, 96Mb RAM, 16Mb Flash
