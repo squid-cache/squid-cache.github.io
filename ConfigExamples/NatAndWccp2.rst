@@ -3,6 +3,8 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
 
+= WCCP2 and NAT on a private internal network =
+
 == Outline ==
  * Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/1 and running VLANs to a DMZ and internal network on fa1/1
  * Plugged into a VLAN-aware switch to break out the VLAN across multiple ports
