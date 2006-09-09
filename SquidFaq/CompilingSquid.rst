@@ -51,6 +51,7 @@ The squid core team members do not have the resources to make pre-compiled binar
  * Squid binaries for [http://www.freebsd.org/cgi/ports.cgi?query=squid-2&stype=all FreeBSD on Alpha and Intel].
  * Squid binaries for [ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid/README.html NetBSD on everything]
  * Gurkan Sengun has some [http://www.linuks.mine.nu/solaris/ Sparc/Solaris packages] available.
+ * Squid binaries for [http://www.acmeconsulting.it/SquidNT/download.html Windows].
 
 == How do I apply a patch or a diff? ==
 
