@@ -265,6 +265,36 @@ to install somewhere else, see the ''--prefix'' option for configure.
 Now, don't forget to set EMXOPT before running squid each time. I
 recommend using the -Y and -N options.
 
+== Building Squid on Cygwin ==
+
+In order to compile squid, you need to have Cygwin fully installed.
+
+Unpack the source archive as usual and run configure:
+{{{
+./configure
+}}}
+
+Compile everything:
+{{{
+make
+}}}
+
+and finally, install:
+{{{
+make install
+}}}
+
+This will by default, install into ''/usr/local/squid''. If you wish to install somewhere else, see the ''--prefix'' option for configure.
+
+Now, add a new Cygwin user - see the Cygwin user guide - and map it to SYSTEM, or create a new NT user, and a matching Cygwin user and they become the squid runas users.
+
+Read the squid FAQ on permissions if you are using CYGWIN=ntsec.
+
+After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
+
+Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. You may need to check permissions here.
+
+
 ##end
 ----
 Back to the SquidFaq
