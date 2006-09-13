@@ -7,6 +7,8 @@
 
 = Configuring multiple interception ports using WCCPv2 =
 
+By AdrianChadd
+
 == Outline ==
 
 The Squid WCCPv2 implementation can intercept more than TCP port 80. The currrent implementation can create multiple arbitrary TCP and UDP ports.
