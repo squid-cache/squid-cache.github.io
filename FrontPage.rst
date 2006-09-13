@@ -15,6 +15,7 @@ Due to some episodes of wiki-spam we had to restrict editing to the wiki. If you
  * PerformanceAnalisys: "Help! My users complain that the proxy is slow!"
  * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
  * SquidFaq: the Wikified and updated squid FAQ
+ * Release milestones are detailed in our RoadMap
  * ["Squid-3.0"], or "So what is this Squid 3.0 thing and why is it taking so long?"
  * We're looking for a new SquidLogo
 = Developers corner =
