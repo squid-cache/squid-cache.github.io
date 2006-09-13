@@ -461,6 +461,18 @@ insufficient physical RAM + Swap could cause Squid to stop functioning
 completely. The solution for larger caches is to get more physical RAM;
 allocating more to Squid via cache_mem will not help.
 
+== Why can't my Squid process grow beyond a certain size? ==
+
+by [AdrianChadd Adrian Chadd]
+
+A number of people are running Squid with more than a gigabyte of memory.
+Here are some things to keep in mind.
+
+ * The Operating System may put a limit on how much memory available per-process. Check the resource limits (/etc/security/limits.conf or similar under PAM systems, 'ulimit', etc.)
+ * The Operating System may have a limit on the size of processes. 32-bit platforms are sometimes "split" to be 2gb process/2gb kernel; this can be changed to be 3gb process/1gb kernel through a kernel recompile.
+ * Some malloc implementations may not support > 2gb of memory - eg dlmalloc. Don't use dlmalloc unless your platform is very broken (and then realise you won't be able to use >2gb RAM using it.)
+ * Make sure the Squid has been compiled to be a 64 bit binary (using 'file'); some platforms may have a 64 bit kernel but a 32 bit userland, or the compiler may default to a 32 bit userland.
+ 
 -----
 ##end
 
