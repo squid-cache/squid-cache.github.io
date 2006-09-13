@@ -186,15 +186,19 @@ cache_dir ufs /usr/local/squid/cache 512 16 64}}}
 
 {{{
 #!/bin/sh
+
+ip tunnel add gre0 mode gre remote 192.168.1.1 local 192.168.1.10 dev eth1
 ifconfig gre0 inet 1.2.3.4 netmask 255.255.255.0 up
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 0 > /proc/sys/net/ipv4/conf/default/rp_filter
 echo 0 > /proc/sys/net/ipv4/conf/all/rp_filter
 echo 0 > /proc/sys/net/ipv4/conf/eth0/rp_filter
+echo 0 > /proc/sys/net/ipv4/conf/eth1/rp_filter
 echo 0 > /proc/sys/net/ipv4/conf/lo/rp_filter
 echo 0 > /proc/sys/net/ipv4/conf/gre0/rp_filter
+
 iptables -F -t nat
-# iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3128
+# iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3128 
 iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 80 -j DNAT --to-destination 192.168.1.10:3128
 }}}
 Kernel Version:
