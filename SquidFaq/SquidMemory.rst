@@ -469,9 +469,9 @@ A number of people are running Squid with more than a gigabyte of memory.
 Here are some things to keep in mind.
 
  * The Operating System may put a limit on how much memory available per-process. Check the resource limits (/etc/security/limits.conf or similar under PAM systems, 'ulimit', etc.)
- * The Operating System may have a limit on the size of processes. 32-bit platforms are sometimes "split" to be 2gb process/2gb kernel; this can be changed to be 3gb process/1gb kernel through a kernel recompile.
+ * The Operating System may have a limit on the size of processes. 32-bit platforms are sometimes "split" to be 2gb process/2gb kernel; this can be changed to be 3gb process/1gb kernel through a kernel recompile or boot-time option. Check your operating system's documentation for specific details.
  * Some malloc implementations may not support > 2gb of memory - eg dlmalloc. Don't use dlmalloc unless your platform is very broken (and then realise you won't be able to use >2gb RAM using it.)
- * Make sure the Squid has been compiled to be a 64 bit binary (using 'file'); some platforms may have a 64 bit kernel but a 32 bit userland, or the compiler may default to a 32 bit userland.
+ * Make sure the Squid has been compiled to be a 64 bit binary (with modern Unix-like OSes you can use the 'file' command for this); some platforms may have a 64 bit kernel but a 32 bit userland, or the compiler may default to a 32 bit userland.
  
 -----
 ##end
