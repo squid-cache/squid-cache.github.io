@@ -6,6 +6,8 @@
 
 = WCCP2 and NAT on a private internal network =
 
+By AdrianChadd
+
 == Outline ==
  * Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/0 and running VLANs to a DMZ and internal network on fa0/1
  * Plugged into a VLAN-aware switch to break out the VLAN across multiple ports
