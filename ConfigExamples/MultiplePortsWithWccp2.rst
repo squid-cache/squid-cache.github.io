@@ -17,7 +17,7 @@ There are a few caveats:
 
  * Squid will have to be configured to listen on each port - the wccp2 service configuration only tells WCCPv2 what to do, not Squid;
  * WCCPv2 (as far as I know) can't be told to redirect random dynamic TCP sessions, only "fixed" service ports - so it can't intercept and cache the FTP data streams;
- * You could use Squid to advertise services which are handled by "other" software running on the server (for example, if you had a RealServer proxy which functioned you could use Squid to cache the web traffic and announce the RealMedia port interception and RealMedia to proxy.)
+ * You could use Squid to advertise services which are handled by "other" software running on the server (for example, if you had a !RealServer proxy which functioned you could use Squid to cache the web traffic and announce the !RealMedia port interception and !RealMedia to proxy.)
 
 == Example ==
 
