@@ -25,6 +25,8 @@ Here is an example of redirecting port 80 and port 8080 traffic to a Squid proxy
 
 === Cisco configuration ===
 
+This configures a dynamic service group - group 80 - which is handed a bunch of details by the neighbour caches. I chose 80 because its "web and some other stuff", but it doesn't have to be 80 and it doesn't have to involve http (tcp port 80.) It could be 90, or 100, or 123.
+
 {{{
 !                                                                                                                                        
 ip wccp 80                                                                                                                               
