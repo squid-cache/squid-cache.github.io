@@ -5,7 +5,7 @@
 #format wiki
 #language en
 
-This is a collection of example Squid Configurations intended to demonstrate the flexibility of Squid.
+This is a collection of example Squid Configurations intended to demonstrate the flexibility of Squid. These examples are provided "as-is" with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list.
 
 To add a page to this category, add a link to this page on the last line of the page. You can add multiple categories to a page.
 
