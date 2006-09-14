@@ -64,10 +64,10 @@ CommSelectEngine::checkEvents()
  * The comm_read/comm_write routines should use a statically allocated - one per FD - read/write callback structure. This structure should have a dlink_node to 'thread' them together to form a completed callback list.
  * The UDP send/receive routines should become callback-driven
  * The buffer management should be done by the comm layer and a reference to completed buffers should be given to the callee. Why?
- ** I'd like the comm code to fill/empty the buffers as appropriate;
- ** and if producers/consumers wish to consume less (eg delay pools) then the comm buffer will fill up and the comm layer will cease scheduling IO until the buffer is close to or empty;
- ** It also means we could cut down on IO scheduling overhead (which Steve Wilton managed to "do" as an optimisation in the epoll code, ta Steve!) to schedule IO changes whenever they happen, not each read/write
- ** I'd like to support Windows Completion IO and whatever strange and wonderful things the *NIX world comes up with in the future to cut back on that extra copy
+  * I'd like the comm code to fill/empty the buffers as appropriate;
+  * and if producers/consumers wish to consume less (eg delay pools) then the comm buffer will fill up and the comm layer will cease scheduling IO until the buffer is close to or empty;
+  * It also means we could cut down on IO scheduling overhead (which Steve Wilton managed to "do" as an optimisation in the epoll code, ta Steve!) to schedule IO changes whenever they happen, not each read/write
+  * I'd like to support Windows Completion IO and whatever strange and wonderful things the *NIX world comes up with in the future to cut back on that extra copy
  * Finally, it has to stay simple and lightweight but filling and emptying buffers as quickly and efficiently as possible.
 
 What needs to be thought about!
