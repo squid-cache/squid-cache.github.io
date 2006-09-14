@@ -16,6 +16,7 @@
  * It should also take control of creating and tearing down sockets; tracking half-closed sockets and such
  * In theory, code shouldn't ever get its fingers into the fd_table[] and fdc_table[]; there should be really cheap inline methods to do so
 === The current comm API ===
+{{{
 comm_read
 comm_fill_immediate
 comm_empty_os_read_buffers
@@ -55,4 +56,5 @@ commIsHalfClosed
 commCheckHalfClosed
 DeferredRead::DeferredRead()
 CommSelectEngine::checkEvents()
+}}}
 === What I'd like the comm layer to look like ===
