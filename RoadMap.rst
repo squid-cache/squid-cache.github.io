@@ -4,13 +4,13 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
 == Current Goals for Squid-3.0 ==
-We are aiming to have Squid-3.0 released as soon as it is possible. The project aims to release the first FC ("Feature Complete") release at the end of October.
+We are aiming to have Squid-3.0 released as soon as it is possible. The project aims to release the next PRE release at the end of October.
 
-The FC releases will first concentrate on repairing any bugs that arise during the testing process. Discussion will take place to choose specific areas to concentrate on improving performance with the goal of matching the Squid-2.6 performance within +/ ~10%.
+The PRE releases will first concentrate on repairing any bugs that arise during the testing process. Discussion will take place to choose specific areas to concentrate on improving performance with the goal of matching the Squid-2.6 performance within +/ ~10%.
 
-FC releases should be released approximately one per month. Each FC release will have a small, fixed set of goals rather than sweeping changes to multiple parts of the codebase.
+Further PRE releases should be released approximately one per month. Each PRE release will have a small, fixed set of goals rather than sweeping changes to multiple parts of the codebase.
 
-What is required before Squid-FC is called Squid-3.0 :
+What is required before Squid-PRE is called Squid-3.0 :
 
  * Bring over a number of stable features from the Squid-2.6 branch - TPROXY, COSS, Pinned Connections
  * Concentrate on correctness and fixing bugs
