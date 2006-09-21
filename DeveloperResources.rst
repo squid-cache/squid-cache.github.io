@@ -13,7 +13,7 @@ During the life of the Squid project, a number of [http://www.squid-cache.org/De
 == Contributing ==
 If you wish to become a developer the first step is to sign up to the squid-dev mailinglist. This is done by first posting an introduction of yourself to [[MailTo( squid-dev AT squid-cache DOT org)]] , then send a subscription request to [[MailTo(squid-dev-subscribe AT squid-cache DOT org)]]. Please note that all messages must be sent in plain-text only (no HTML email). A read-only [http://www.squid-cache.org/mail-archive/squid-dev/ archive] is available to everyone.
 
-If you wish to contribute squid there are certain guidelines you need to follow in your coding style. They are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The ProgrammingGuide offers some (but certainly not enough) informations on the Squid internals.
+If you wish to contribute squid there are certain guidelines you need to follow in your coding style. They are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The ProgrammingGuide offers some (but certainly not enough) informations on the Squid internals. SquidInternals offers some more-or-less (mostly less) organized snippets.
 
 If you are looking for a new project to work on, query the bugzilla database for [http://www.squid-cache.org/bugs/buglist.cgi?component=feature&cmdtype=doit feature requests].
 
