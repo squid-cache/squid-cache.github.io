@@ -7,11 +7,15 @@
 
 This is a collection of example Squid Configurations intended to demonstrate the flexibility of Squid. These examples are provided "as-is" with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list.
 
-To add a page to this category, add a link to this page on the last line of the page. You can add multiple categories to a page.
+== Create new configuration example ==
 
-'''List of pages in this category:'''
+Choose a good WikiName for your new example and enter it here:
 
-[[FullSearch()]]
+[[NewPage(ConfigExampleTemplate, Create, ConfigExamples)]]
+
+== Current configuration examples ==
+
+[[FullSearch(title:regex:^ConfigExamples/[^/]*$)]]
 
 ----
-CategoryCategory
+CategoryConfigExample
