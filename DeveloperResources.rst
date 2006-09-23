@@ -10,6 +10,10 @@ To make life easier we provide space for each developer interested in developing
 
 During the life of the Squid project, a number of [http://www.squid-cache.org/Devel/papers/ papers] have been published.
 
+NiceLittleProjects is a list of ideas for development scenarios.
+
+DeadProjects contains finished or half-finished iedads or code which never really made it to the Squid trunk.
+
 == Contributing ==
 If you wish to become a developer the first step is to sign up to the squid-dev mailinglist. This is done by first posting an introduction of yourself to [[MailTo( squid-dev AT squid-cache DOT org)]] , then send a subscription request to [[MailTo(squid-dev-subscribe AT squid-cache DOT org)]]. Please note that all messages must be sent in plain-text only (no HTML email). A read-only [http://www.squid-cache.org/mail-archive/squid-dev/ archive] is available to everyone.
 
