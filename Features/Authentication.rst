@@ -540,7 +540,7 @@ http_access allow all AuthorizedUsers
 
 === Test Squid with auth ===
 
- * Internet Explorer, Mozilla, FireFox:
+ * Internet Explorer, Mozilla, Firefox:
    Test browsing through squid with a NTLM capable browser. If logged into the domain, a password prompt should NOT pop up.
    Confirm the traffic really is being authorized by tailing access.log.
    The domain\username should be present.
