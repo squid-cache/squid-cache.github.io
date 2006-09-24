@@ -8,6 +8,10 @@
 
 By AdrianChadd
 
+[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+
+[[TableOfContents]]
+
 == Outline ==
  * Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/0 and running VLANs to a DMZ and internal network on fa0/1
  * Plugged into a VLAN-aware switch to break out the VLAN across multiple ports
@@ -210,3 +214,6 @@ Kernel Version:
 adrian@cindy:~$ uname -a
 Linux cindy 2.6.17-1.2174_FC5xenU #1 SMP Tue Aug 8 17:36:31 EDT 2006 i686 GNU/Linux
 }}}
+
+----
+CategoryConfigExample
