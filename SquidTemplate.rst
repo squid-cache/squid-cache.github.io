@@ -1,3 +1,5 @@
+##master-page:CategoryTemplate
+#format wiki
 #language en
 
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
