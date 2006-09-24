@@ -9,6 +9,10 @@
 
 By AdrianChadd
 
+[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+
+[[TableOfContents]]
+
 == Outline ==
 
 The Squid WCCPv2 implementation can intercept more than TCP port 80. The currrent implementation can create multiple arbitrary TCP and UDP ports.
@@ -81,3 +85,6 @@ iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 8000 -j DNAT --to-de
 iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 2080 -j DNAT --to-destination 192.168.1.10:2080
 
 }}}
+
+----
+CategoryConfigExample
