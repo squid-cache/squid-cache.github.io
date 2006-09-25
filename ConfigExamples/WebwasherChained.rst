@@ -20,10 +20,17 @@ So this article deals with the integration of the WebWasher proxy software (made
 <!> DISCLAIMER: Webwasher is a relatively expensive piece of software.
 If you want to save your kids at home from porn web sites this article is not for you.
 The reason this article exists is that we use it at work. It's not meant as an advertisement.
+This setup is a bit tough and you should be familiar with the basics of Squid and LDAP.
 
 == The example setup ==
 
-The setup that is described below works roughly like this:
+What we do is authenticate our users against an LDAP database. As different users need to be
+allowed different things on the internet there are several LDAP groups that assign the users
+a certain profile. Example: Nobody is allowed to use public webmail services but the group
+of mail server administrators is given that permission so that they can test their own server
+from the internet.
+
+The setup described below works roughly like this:
 
  * Users point their browsers to the Squid proxy
  * When accessing the proxy the user gets asked for authentication (by verifying the credentials through LDAP)
@@ -39,7 +46,82 @@ What the Webwasher does:
  * Checking of allowed content types (it does not just accept the content type that is sent by the browser but instead checks the actual content by so called ''magic bytes'' that are also used by the UNIX' '''file''' command)
  * Sanity checks: depth and size of archives, Microsoft Authenticode (most incorrectly signed scripts seem to come from Microsoft itself)
 
+What the Webwasher currently does not:
+
+ * The concept of ''profiles'' is very different from Squid's concept of ACLs. With ACLs and '''http_access''' statements you run through those rules from top to bottom and the first matching entry determines whether the access is allowed or not. Profiles on the other hand define whether a certain filter is enabled or not. One ''default'' profile may disallow surfing to adult websites. But another profile might allow just that. The major drawback is that you cannot use inheritance with profiles. There is no way to say "I want the default profile but want to allow adult sites, too". You can just copy the default profile and change some settings. But if the default profile will be changed later no other profiles that are derived from the default profile will know about that change. So the longer you work with profiles the lesser you really know what each profile is doing.
+
+== Squid configuration ==
+
+The Squid proxy is mainly used for complex ACLs. Some users/client IPs do not need to authenticate. Some URLs are blocked manually. Squid's ACLs are perfect for that job.
+
+=== LDAP authentication ===
+
+First define how LDAP authentication will work:
+
+{{{
+auth_param basic children 50
+auth_param basic realm Proxy
+auth_param basic credentialsttl 1 minute
+auth_param basic program /usr/lib/squid/ldap_auth -b o=ourcompany -h ldapserver -D cn=proxyauth,o=ourcompany -w secretpassword -f (&(objectclass=person)(cn=%s))
+}}}
+
+The interesting part is the call to '''ldap_auth'''. These are the meanings of the respective arguments:
+
+|| o=ourcompany || the DN (distinguished name) the defines where your LDAP tree starts ||
+|| ldapserver || the DNS name or IP address of your LDAP server to query ||
+|| cn=proxyauth,o=ourcompany || the DN of the LDAP user that is used to verify the username and password of a user ||
+|| secretpassword || the password that the above LDAP user needs to query the LDAP server ||
+|| (&(objectclass=person)(cn=%s)) || an LDAP expression limiting which kind of LDAP objects/users you are searching ||
+
+If you want Squid to query the LDAP database to see whether a certain user is part of a certain LDAP group you also need to define LDAP lookups:
+
+{{{
+external_acl_type ldapgroup ttl=60 concurrency=20 %LOGIN /usr/lib/squid/squid_ldap_group \
+   -b o=ourcompany -f (&(objectclass=person)(cn=%v)(groupMembership=cn=%a,ou=groupcontainer,o=ourcompany)) \
+   -D cn=proxyauth,o=ourcompany -w secretpassword -h ldapserver
+}}}
+
+Here the interesting part is '''(&(objectclass=person)(cn=%v)(groupMembership=cn=%a,ou=groupcontainer,o=ourcompany))'''.
+This LDAP expression queries for (1) all persons whose (2) name is '''%v''' [this is defined by your ACL later] and you
+(3) look in groups inside the '''ou=groupcontainer,o=ourcompany''' branch.
+
+A minimal ACL/http_access configuration that uses authentication will look like this:
+
+{{{
+acl ldap-auth proxy_auth REQUIRED
+http_access deny !ldap-auth
+
+http_access allow all
+}}}
+
+OPTIONAL:
+
+You may want to create a special LDAP group with users that are allowed
+to surf through the proxy. Perhaps you have an LDAP directory where all your
+users are listed and you don't want to allow everybody internet access.
+So you create an LDAP group '''user_can_surf''' and list all privileged
+users there. Example configuration:
+
+{{{
+acl ldap-auth proxy_auth REQUIRED
+http_access deny !ldap-auth
+
+acl ldapgroup-enabled external ldapgroup user_can_surf
+deny_info denied-ldapenabled ldapgroup-enabled
+http_access deny !ldapgroup-enabled
+
+http_access allow all
+}}}
+
+To tell the user why the access was denied you should consider using '''deny_info''' statements
+to define your own error pages. See your squid.conf for details.
+
 ...
+
+== Frequently Asked Questions ==
+
+ 1. Why do you use Squid at all? Seems like Webwasher can do all you want without Squid.
+    * Squid is used for caching and because of its flexible ACLs. If you don't need that you can as well just use Webwasher and let that do the authentication.
 
 ----
 CategoryConfigExample
