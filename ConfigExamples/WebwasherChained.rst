@@ -54,7 +54,7 @@ What the Webwasher currently does not:
 
 The Squid proxy is mainly used for complex ACLs. Some users/client IPs do not need to authenticate. Some URLs are blocked manually. Squid's ACLs are perfect for that job.
 
-=== LDAP authentication ===
+=== LDAP authentication and authorisation ===
 
 First define how LDAP authentication will work:
 
@@ -116,7 +116,54 @@ http_access allow all
 To tell the user why the access was denied you should consider using '''deny_info''' statements
 to define your own error pages. See your squid.conf for details.
 
-...
+=== Proxy chain ===
+
+Now that Squid's job of authenticating the user is done and Squid decided that the access is
+allowed you want to forward the request to the Webwasher. This is done in a ''proxy chain''.
+Set up a cache peer in your squid.conf:
+
+{{{
+cache_peer localhost parent 9090 0 no-query no-digest default login=*:foobar
+}}}
+
+You can run the Webwasher process on the same host as Squid itself. That's why the
+peer host is ''localhost'' here. The additional options '''no-query''' and
+'''no-digest''' tell Squid that the Webwasher does not know about ICP queries and
+sibling relationships. But there is something special here: '''login=*:foobar'''.
+This option forwards the HTTP '''Proxy-Authorization''' header to the parent proxy
+but replaces the user's password by the string '''foobar'''. That way the Webwasher
+can later use the name of the current Squid user to assign a certain profile.
+
+Also tell your Squid that you want all requests to be forwarded to the Webwasher
+proxy without fetching the URL directly:
+
+{{{
+never_direct allow all
+}}}
+
+If you have certain URLs that you want to be queried directly because it's your
+intranet site or because Webwasher does something bad with the web site you can
+always use '''always_direct allow ...''' to send certain types of queries directly
+from the Squid to the web server.
+
+== Webwasher configuration ==
+
+Since the configuration options in the web interface have moved between version 5.x and
+6.x I won't describe the exact path. If you don't know where to find a certain option
+just use the search box on the top right.
+
+First of all define your ''profiles''. You will probably already have an idea what
+different types of users you have and create a profile for each.
+
+=== LDAP authorisation ===
+
+Find the ''Policy Management'' option in the web interface. Next select ''Web Mapping''.
+Here you can define which profile a certain user gets assigned. You can do that by
+
+ * IP mapping: The profile gets assigned depending on the IP of the user's client PC. Set '''forwarded_for on''' in the squid.conf to use this.
+ * Username mapping: .......
+
+.......
 
 == Frequently Asked Questions ==
 
