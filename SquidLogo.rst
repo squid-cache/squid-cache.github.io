@@ -8,6 +8,8 @@
 It might be useful to give Squid a new logo, to increase the project's visibility and as a sign of its renewed vitality.
 This page is meant as a collection and a starting point for discussion.
 
+|| attachment:squid-logo-rpivato-1.png ||
+|| Designed by [:rpivato:Rafael Pivato] ||
 
 || attachment:squid-logo-lucky-1.gif ||
 || Designed by Luciano Costarelli ||
