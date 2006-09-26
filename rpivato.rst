@@ -11,9 +11,11 @@ Email: [[MailTo(rpivato AT SPAMFREE gmail DOT com)]]
 
 === Drafts ===
 
-The main purpose of these drafts is to avoid not start writing. I’ve decided to publish them in some sub pages of mine. If you have write access to this wiki, fell free to modify.
+--(The main purpose of these drafts is to avoid not start writing. I’ve decided to publish them in some sub pages of mine. If you have write access to this wiki, fell free to modify.)--
 
 [[FullSearch(title:regex:"^rpivato/Draft")]]
+
+I am getting off this section. After an advice from [:kinkie:Kinkie] I will start publishing directly where the "''final''" version would be.
 
 ----
 CategoryHomepage
