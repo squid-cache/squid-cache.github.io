@@ -161,9 +161,23 @@ Find the ''Policy Management'' option in the web interface. Next select ''Web Ma
 Here you can define which profile a certain user gets assigned. You can do that by
 
  * IP mapping: The profile gets assigned depending on the IP of the user's client PC. Set '''forwarded_for on''' in the squid.conf to use this.
- * Username mapping: .......
+ * Username mapping: The name of the user as authenticated by Squid is taken into account.
+   * Mapping method: Map from "Username" / Map via "LDAP lookup"
+   * Extract user information from: Standard Request Header (Proxy-Authorization)
+   * Mapping options: Do not verify password when using request headers (this is important to just map the username provided in Proxy-Authorization to a profile without checking the password again)
+   * Current Rules: set mappings here. On the left select the profile to be assigned. And on the right put the name of an LDAP group that contains the users who should get this profile assigned.
 
-.......
+Of course you need to have LDAP configured already. The setup depends on your LDAP software of course. This is an example configuration:
+
+ * User:
+   * Attributes to extract: cn
+ * Group object:
+   * Attributes to extract: cn
+   * Base DN to group objects: ou=proxygroups,o=ourcompany
+   * Group member attribute name: uniqueMember
+   * Object class for groups: groupOfNames
+
+(To debug LDAP lookups ethereal/ethershark can be really useful.)
 
 == Frequently Asked Questions ==
 
