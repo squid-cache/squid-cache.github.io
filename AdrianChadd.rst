@@ -29,7 +29,10 @@ The following data has been gathered with the following:
  * command line: {{{ ab -c 10 -n 10000000 http://192.168.1.8:3128/squid-internal-static/icons/anthony-c.gif }}}
  * reply size: 160 bytes
 
+The progress:
+
  * 2006/09/25: Squid-3; ~ 3244req/sec
+ * 2006/09/26: Squid-3; ~ 3158req/sec (remove 'prefix' buffer and associated copy; introduce a little overhead in the parsing which will eventually go away.)
 
 ----
 CategoryHomepage
