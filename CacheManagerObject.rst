@@ -1,0 +1,1 @@
+While dealing with the CacheManager, each accessible entity is abstracted as an object. Those are the '''Cache Manager Objects'''. Each one performs a management action in behalf of a client request. Because of this they are referred as actions too. The '''menu''' is one of the basic objects. Triggering will enumerate all available actions.
