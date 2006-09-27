@@ -1,1 +1,1 @@
-The '''cache_object''' is a pseudo-protocol used to access [:CacheManagerObject:Cache Manager Objects].
+The '''cache_object''' is a pseudo-protocol used to access [:CacheManagerObject:Cache Manager Objects]. It works on a very simple fashion. The client establishes a connection with the server. Request access to an object, optionally supplying a password. The server processes its request, maybe performing some management action, and writes the result down to the client, closing the connection.
