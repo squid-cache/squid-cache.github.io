@@ -214,6 +214,35 @@ while /usr/local/squid/sbin/squid -k check && [ $n -gt 120 ]; do
 done
 }}}
 
+=== with daemontools ===
+
+Create squid service directory, and the log directory (if it does not exist yet).
+{{{
+mkdir -p /usr/local/squid/supervise/log /var/log/squid
+chown squid /var/log/squid
+}}}
+Then, change to the service directory,
+{{{
+cd /usr/local/squid/supervise
+}}}
+and create 2 executable scripts: '''run'''
+{{{
+#!/bin/sh
+rm -f /var/run/squid/squid.pid
+exec /usr/local/squid/sbin/squid -N 2>&1
+}}}
+and '''log/run'''.
+{{{
+#!/bin/sh
+exec /usr/local/bin/multilog t /var/log/squid
+}}}
+Finally, start the squid service by linking it into svscan monitored area.
+{{{
+cd /service
+ln -s /usr/local/squid/supervise squid
+}}}
+Squid should start within 5 seconds.
+
 == How do I tell if Squid is running? ==
 
 You can use the ''squidclient'' program:
