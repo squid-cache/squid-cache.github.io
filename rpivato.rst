@@ -9,13 +9,10 @@ I am here to learn more about this software and contribute whenever possible to 
 
 Email: [[MailTo(rpivato AT SPAMFREE gmail DOT com)]]
 
-=== Drafts ===
+=== To Do ===
 
---(The main purpose of these drafts is to avoid not start writing. I’ve decided to publish them in some sub pages of mine. If you have write access to this wiki, fell free to modify.)--
-
-[[FullSearch(title:regex:"^rpivato/Draft")]]
-
-I am getting off this section. After an advice from [:kinkie:Kinkie] I will start publishing directly where the "''final''" version would be.
+ * Finish interlinked pages about the [:CacheManager:Cache Manager].
+ * Write some new [:ConfigExamples:configuration example].
 
 ----
 CategoryHomepage
