@@ -77,11 +77,11 @@ If you're curious about what is the best OS to run Squid, see BestOsForSquid.
 == Does Squid run on Windows ? ==
 
 Recent versions of Squid will ''compile and run'' on Windows NT and later incarnations with the
-[http://www.cygwin.com/ Cygwin] / [http://www.mingw.org/ MinGW packages.
+[http://www.cygwin.com/ Cygwin] / [http://www.mingw.org/ MinGW] packages.
 
 GuidoSerassio maintains the [http://www.acmeconsulting.it/SquidNT/ native Windows port] of Squid (built using the Microsoft toolchain) and is actively working on having the needed changes integrated into the standard Squid distribution. His effort is partially based on earlier Windows NT port by Romeo Anghelache.
 
-UPDATE: starting from 2.6.STABLE4, Windows MinGW support will be available in the standard Squid distribution.
+UPDATE: starting from 2.6.STABLE4, Windows MinGW support is available in the standard Squid distribution.
 
 
 == What Squid mailing lists are available? ==
