@@ -7,7 +7,7 @@ By ChristophHaas
 == Outline ==
 Squid is a brilliant caching proxy software. But it lacks a component for content filtering. Often Squid administrators get ordered to prevent downloading of virus-infected files or to filter out adult content. There is software like Dansguardian or Squidguard that attempts to do just that. But in a corporate environment this isn't sufficient at all.
 
-Squid 3.x includes an ICAP client which at least allows you to connect ICAP-capable content filters. But even with Squid 2.x you can connect other proxies in a ''proxy chain''. So this article deals with the integration of the WebWasher proxy software (made by ''Secure Computing'').
+Squid 3.x includes an ICAP client which at least allows you to connect ICAP-capable content filters. But even with Squid 2.x you can connect other proxies in a ''proxy chain''. So this article deals with the integration of the Webwasher proxy software (made by ''Secure Computing'').
 
 <!> DISCLAIMER: Webwasher is a relatively expensive piece of software. If you want to save your kids at home from porn web sites this article is not for you. The reason this article exists is that we use it at work. It's not meant as an advertisement. This setup is a bit tough and you should be familiar with the basics of Squid and LDAP.
 
