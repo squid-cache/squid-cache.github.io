@@ -152,6 +152,11 @@ provided by
 requires a license (priced by the number of seats) but evaluation licenses are available.
 
 
+=== Filter-Modules patch for Squid ===
+
+It's a patch for squid-2.4 and squid-2.5 to enable inline alteration of data passing through the proxy; available at http://sites.inka.de/~bigred/devel/squid-filter.html
+
+
 == Ident Servers ==
 
 
