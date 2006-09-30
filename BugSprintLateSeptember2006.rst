@@ -4,6 +4,7 @@ We're hitting this [http://www.squid-cache.org/bugs/buglist.cgi?query_format=adv
 
 Attendees:
  * RobertCollins (lifeless on irc) : most of the weekend, GMT+1000 timezone, have social engagements saturday evening and sunday lunch.
+ * [:kinkie:Kinkie] will hop by any time he has the chance to
 
 We started with 32 bugs in that list, and have addressed:
 
