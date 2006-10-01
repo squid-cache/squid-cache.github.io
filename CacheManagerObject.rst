@@ -4,7 +4,7 @@ Some objects have a kind of access control. When they have the attribute ''passw
 
 The '''menu''' is one of the basic actions. Triggering will enumerate all available actions to the client. Following there are all possible Cache Manager Objects with ["Squid-2.6"], remembering that some of them may be conditioned to a specific compile-time configuration. 
 
-
+[[Anchor(actiontable)]]
 ||'''Action Name'''||'''Short Description'''||'''Password Required'''||
 ||via_headers||Via Request Headers||No||
 ||forw_headers||X-Forwarded-For Request Headers||No||
