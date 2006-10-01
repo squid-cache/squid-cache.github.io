@@ -63,3 +63,10 @@ The '''menu''' is one of the basic actions. Triggering will enumerate all availa
 ||squidaio_counts||Async IO Function Counters||No||
 ||coss||COSS Stats||No||
 ||diskd||DISKD Stats||No||
+
+== See also ==
+
+ * CacheManager
+ * CacheObjectProtocol
+ * CacheObjectScheme
+ * CacheManagerCgi
