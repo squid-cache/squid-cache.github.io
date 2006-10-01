@@ -22,4 +22,8 @@ The actual transition may take much longer to fully complete, because there is a
 = Drive =
 
 Bug-squashing weekend 2nd and 3rd September in #squiddev on irc.freenode.net (use a IRC client like 'xchat' to connect).
-For results and coordination see BugSprintSeptember2006
+Currently we have the BugSprintLateSeptember2006 running.
+
+For results and coordination see 
+ 1. BugSprintSeptember2006
+ 1. BugSprintLateSeptember2006
