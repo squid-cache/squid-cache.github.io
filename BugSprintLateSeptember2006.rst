@@ -7,6 +7,7 @@ Attendees:
  * [:kinkie:Kinkie] will hop by any time he has the chance to
 
 We started with 32 bugs in that list, and have addressed:
+ * Mostly infrastructure work towards proper refcounting of !FwdState objects. RobertCollins is halfway done with a !FwdStateManager.
 
 Other useful bug views:
 
