@@ -79,4 +79,11 @@ At the time of initialization only a few actions will be registered. The most im
 ||coss||COSS Stats||No||
 ||diskd||DISKD Stats||No||
 
-Internally, the handlers are simple C functions with a common prototype. It means that they could be called directly, avoiding the subsystem, or indirectly, using the `cachemgrFindAction` function. But the Cache Manager was designed mainly to communicate with external entities using the [:ProgrammingGuide/StorageManager:Storage Manager].
+Internally, the handlers are simple C functions with a common prototype. It means that they could be called directly, avoiding the subsystem, or indirectly, using the `cachemgrFindAction` function. But the Cache Manager was designed mainly to communicate with external entities using the [:ProgrammingGuide/StorageManager:Storage Manager]. Clients of our internal subsystem use the [:CacheObjectProtocol:Cache Object Protocol] to reach it, but they will never do any direct communication. They will always be proxied by Squid itself, which will trigger management actions and return results as objects.
+
+== See also ==
+
+ * CacheManagerObject
+ * CacheObjectProtocol
+ * CacheObjectScheme
+ * CacheManagerCgi
