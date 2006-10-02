@@ -11,8 +11,17 @@ Email: [[MailTo(rpivato AT SPAMFREE gmail DOT com)]]
 
 === To Do ===
 
- * Finish interlinked pages about the [:CacheManager:Cache Manager].
  * Write some new [:ConfigExamples:configuration example].
+
+=== Done ===
+
+ * Finished interlinked pages about the [:CacheManager:Cache Manager]. They are still very short, but will let it as is for a while... for public scrutiny.
+
+  * CacheManager 
+  * CacheManagerObject 
+  * CacheObjectProtocol 
+  * CacheObjectScheme
+  * CacheManagerCgi 
 
 ----
 CategoryHomepage
