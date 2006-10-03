@@ -72,7 +72,7 @@ Case 1: the read gets EOF first (the shutdown was acked by the far end)
  1. the read completes
   * Socket marks its read channel as closed.
   * Socket hands the LingerCloseSocketClient and the read result to the dispatcher.
-  * Dispatcher holds CallbackReference to LingerSockerClient
+  * Dispatcher holds CallbackReference to LingerSocketClient
  1. Dispatch hands read result to LingerSocketClient
   * LingerSocketClient sees that EOF has been reached.
  1. LingerSocket calls close on Socket.
