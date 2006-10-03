@@ -3,9 +3,6 @@
 
 == How does Proxy Authentication work in Squid? ==
 
-
-''Note: The information here is current for version 2.5.''
-
 Users will be authenticated if squid is configured to use ''proxy_auth''
 ACLs (see next question).
 
@@ -51,11 +48,12 @@ These include:
   * PAM: Uses the Linux Pluggable Authentication Modules scheme.
   * SMB: Uses a SMB server like Windows NT or Samba.
   * getpwam: Uses the old-fashioned Unix password file.
-  * sasl: Uses SALS libraries.
-  * winbind: Uses Samba authenticate in a Windows NT domain
+  * SASL: Uses SALS libraries.
+  * mswin_sspi: Windows native authenticator
+  * YP: Uses the NIS database
 
 
-In addition Squid also supports the NTLM and Digest authentication schemes which
+In addition Squid also supports the NTLM, Negotiate and Digest authentication schemes which
 provide more secure authentication methods, in that where the password is not
 exchanged in plain text over the wire. Each scheme have their own set of helpers and auth_param
 settings. Notice that helpers for different authentication schemes use different protocols to talk with squid, so they can't be mixed.
@@ -127,23 +125,25 @@ http_access allow my_auth
 http_access deny all
 }}}
 
-Now there is a tricky change that was introduced in Squid 2.5.10. It allows to control when the user
-is prompted to authenticate. Now it's possible to force the user to re-authenticate although
-the username and password are still correct. Example configuration:
+But there is a trick which can force the user to authenticate with a different account in
+certain situations. This happens if you deny access with an authentication related ACL last
+in the http_access deny statement. Example configuration:
 
 {{{
 acl my_auth proxy_auth REQUIRED
+acl google_users proxyauth user1 user2 user3
 acl google dstdomain .google.com
+http_access deny google !google_users
 http_access allow my_auth
-http_access deny google my_auth
 http_access deny all
 }}}
 
-In this case if the user requests ''www.google.com'' then the second ''http_access''
-line matches and triggers re-authentication. Remember: it's always the last ACL on
-a ''http_access'' line that "matches". If the matching ACL deals with authentication
-a re-authentication is triggered. If you didn't want that you would need to switch the
-order of ACLs so that you get {{{http_access deny my_auth google}}}.
+In this case if the user requests ''www.google.com'' then first second ''http_access''
+line matches and triggers re-authentication unless the user is one of the listed users.
+Remember: it's always the last ACL on a ''http_access'' line that "matches". If the
+matching ACL deals with authentication a re-authentication is triggered. If you didn't
+want that you would need to switch the order of ACLs so that you get
+{{{http_access deny !google_users google}}}.
 
 You might also run into an '''authentication loop''' if you are not careful.
 Assume that you use LDAP group lookups and want to deny access based on
@@ -152,10 +152,8 @@ certain web sites). In this case you may trigger re-authentication although you
 don't intend to. This config is likely wrong for you:
 
 {{{
-acl ldap-auth proxy_auth REQUIRED
 acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
 
-http_access deny !ldap-auth
 http_access deny !ldapgroup-allowed
 http_access allow all
 }}}
@@ -167,16 +165,14 @@ need to rewrite this ''http_access'' line so that an ACL matches that has nothin
 to do with authentication. This is the correct example:
 
 {{{
-acl ldap-auth proxy_auth REQUIRED
 acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
 acl dummy src 0.0.0.0/0.0.0.0
 
-http_access deny !ldap-auth
 http_access deny !ldapgroup-allowed dummy
 http_access allow all
 }}}
 
-This way the second ''http_access'' line still matches. But it's the ''dummy'' ACL
+This way the ''http_access'' line still matches. But it's the ''dummy'' ACL
 which is now last in the line. Since ''dummy'' is a static ACL (that always matches)
 and has nothing to do with authentication you will find that the access is just
 denied.
@@ -205,20 +201,27 @@ if the password is still valid.
 
 == Are passwords stored in clear text or encrypted? ==
 
+In the basic scheme passwords is exchanged in plain text. In the other schemes
+only cryptographic hashes of the password is exchanges.
 
-Squid stores cleartext passwords in itsmemory cache.
+Squid stores cleartext passwords in its basic authentication memory cache.
 
 Squid writes cleartext usernames and passwords when talking to
-the external authentication processes.  Note, however, that this
+the external basic authentication processes.  Note, however, that this
 interprocess communication occors over TCP connections bound to
 the loopback interface or private UNIX pipes.  Thus, its not possile
 for processes on other comuters or local users without root privileges
 to "snoop" on the authentication traffic.
 
-
 Each authentication program must select its own scheme for persistent
 storage of passwords and usernames.
 
+For the digest scheme Squid never sees the actual password, but the backend
+helper needs either plaintext passwords or Digest specific hashes of the same.
+
+In the ntlm or Negotiate schemes Squid also never sees the actual password. Usually this
+is connected to a Windows realm or Kerberos realm and how these authentication services
+stores the password is outside of this document but usually it's not in plain text.
 
 == How do I use the Winbind authenticators? ==
 
@@ -237,31 +240,13 @@ The winbind authenticators have been used successfully under Linux, FreeBSD, Sol
 
 === Supported Samba Releases ===
 
-Samba-3.X is supported natively using the ntlm_auth helper shipped as part of Samba. No Squid specific winbind helpers need to be compiled (and even if compiled they won't work with Samba-3.X). Starting from Squid-2.5.STABLE5, NTLM NEGOTIATE packets are supported. This feature, in conjunction with a NTLM NEGOTIATE capable helper like ntlm_auth, allow the usage of NTLMv2 client autentication. At least Samba version 3.0.2 is needed for a working NTLM NEGOTIATE packet support, but Samba 3.0.21b or later is needed for full NTLMv2 support.
+Samba-3.X is supported natively using the ntlm_auth helper shipped as part of Samba. No Squid specific winbind helpers need to be compiled (and even if compiled they won't work with Samba-3.X). 
 
+NOTE: Samba 2.2.X reached its End-Of-Life on October 1, 2004. It was supported using the winbind helpers shipped with Squid-2.5 but is no longer supported with later versions, even if using the helper from 2.5 may still work.
 
-Samba-2.2.X is supported using the winbind helpers shipped with Squid, and uses an
-internal Samba interface to communicate with the winbindd daemon. It is therefore sensitive to any changes the Samba team may make to the interface.
-
-
-NOTE: Samba 2.2.X reached its End-Of-Life on October 1, 2004.
-
-
-The winbind helpers shipped with Squid-2.5.STABLE2 supports Samba-2.2.6 to Samba-2.2.7a
-and hopefully later Samba-2.X versions. To use Squid-2.5.STABLE2 with Samba versions 2.2.5
-or ealier the new --with-samba-sources=... configure option is required.
-This may also be the case with Samba-2.2.X versions later than 2.2.7a or
-if you have applied any winbind related patches to your Samba tree.
-
-
-Squid-2.5.STABLE1 supported Samba 2.2.4 or 2.2.5 only. Use of
-Squid-2.5.STABLE2 or later recommended with current Samba-2.X releases.
-
-
-For Samba-3.X the winbind helpers shipped with Squid '''should not''' be used (and won't work
+For Samba-3.X the winbind helpers which was shipped with Squid '''should not''' be used (and won't work
 if you attempt to do so), instead the ntlm_auth helper shipped as part of the Samba-3
 distribution should be used. This helper supports all versions of Squid and both the ntlm and basic authentication schemes. For details on how to use this Samba helper see the Samba documentation. For group membership lookups the wbinfo_group helper shipped with Squid can be used (this is just a wrapper around the samba wbinfo program and works with all versions of Samba)
-
 
 === Configure Samba ===
 
@@ -269,36 +254,20 @@ For full details on how to configure Samba and joining a domain please see the S
 documentation. The Samba team has quite extensive documentation both on how to join
 a NT domain and how to join a Active Directory tree.
 
-'''Samba 3.X'''
-
 Samba must be built with these configure options:
 {{{
         --with-winbind
 }}}
-
+and is normally enabled by default if you installed Samba from a prepackaged distribution.
 
 Then follow the Samba installation instructions. But please note that neither nsswitch
 or the pam modules needs to be installed for Squid to function, these are only needed
 if you want your OS to integrate with the domain for UNIX accounts.
 
-'''Samba-2.2.X'''
-
-Samba must be built with these configure options:
-{{{
-        --with-winbind
-        --with-winbind-auth-challenge
-}}}
-
-
-Optionally, if building Samba 2.2.5, apply the
-[http://www.squid-cache.org/mail-archive/squid-dev/200207/att-0117/01-smbpasswd.diff smbpasswd.diff]
-patch.  See ''SMBD and Machine Trust Accounts'' below to
-determine if the patch is worthwhile.
-
 === Test Samba's winbindd ===
 
-  -Edit smb.conf for winbindd functionality.  The following entries in
-the [global] section of smb.conf may be used as a template.
+Edit smb.conf for winbindd functionality.  The following entries in the [global] section of smb.conf may be used as a template.
+
 {{{
 workgroup = mydomain
 password server = myPDC
@@ -308,17 +277,21 @@ winbind gid = 10000-20000
 winbind use default domain = yes
 }}}
 
-  -Join the NT domain as outlined in the winbindd man page for your
-version of samba.
-  -Start nmbd (required to insure proper operation).
-  -Start winbindd.
-  -Test basic winbindd functionality "wbinfo -t":
+Join the NT domain as outlined in the winbindd man page for your version of samba.
+
+Start nmbd (required to insure proper operation).
+
+Start winbindd.
+
+Test basic winbindd functionality "wbinfo -t":
+
 {{{
 # wbinfo -t
 Secret is good
 }}}
 
-  -Test winbindd user authentication:
+Test winbindd user authentication:
+
 {{{
 # wbinfo -a mydomain\\myuser%mypasswd
 plaintext password authentication succeeded
@@ -336,74 +309,23 @@ authentication.
 
 === SMBD and Machine Trust Accounts ===
 
-
-
-'''Samba 3.x'''
-
 The Samba team has incorporated functionality to change the machine
 trust account password in the new "net" command.  A simple daily cron
-job scheduling "<CODE>net rpc changetrustpw</CODE>" is all that is needed,
+job scheduling "'''net rpc changetrustpw'''" is all that is needed,
 if anything at all.
 
-
-'''Samba 2.2.x'''
-
-Samba's smbd daemon, while not strictly required by winbindd may be needed
-to manage the machine's trust account.
-
-Well behaved domain members change the account password on a regular
-basis.  Windows and Samba servers default to changing this password
-every seven days.
-
-The Samba component responsible for managing the trust account password
-is smbd. Smbd needs to receive requests to trigger the password change.
-If the machine will be used for file and print services, then just
-running smbd to serve routine requests should keep everything happy.
-
-However, in cases where Squid's winbind helpers are the only reason
-Samba components are running, smbd may sit idle.  Indeed, there may be
-no other reason to run smbd at all.
-
-There are two sample options to change the trust account. Either may be scheduled daily via a cron job to
-change the trust password.
-
-
-[http://www.squid-cache.org/mail-archive/squid-dev/200207/att-0076/02-UglySolution.pl UglySolution.pl]
-is a sample perl script to load smbd, connect to
-a Samba share using smbclient, and generate enough dummy activity to
-trigger smbd's machine trust account password change code.
-
-
-[http://www.squid-cache.org/mail-archive/squid-dev/200207/att-0117/01-smbpasswd.diff smbpasswd.diff]
-is a patch to Samba 2.2.5's smbpasswd utility to allow
-changing the machine account password at will.  It is a minimal patch
-simply exposing a command line interface to an existing Samba function.
-
-'''Note: This patch has been included in Samba as of 2.2.6pre2.'''
-
-
-Once patched, the smbpasswd syntax to change the password is:
-{{{
-        smbpasswd -t DOMAIN -r PDC
-}}}
-
-
-=== winbind privileged pipe permissions (Samba-3.X) ===
-
+=== winbind privileged pipe permissions ===
 
 ntlm_auth requires access to the privileged winbind pipe in order
 to function properly. You enable this access by changing group
 of the winbind_privileged directory to the group you run Squid as
 (cache_effective_group setting in squid.conf).
 
+{{{
 chgrp squid /path/to/winbind_privileged
-
+}}}
 
 === Configure Squid ===
-
-
-'''Samba-3.X'''
-
 
 As Samba-3.x has it's own authentication helper there is no need to build
 any of the Squid authentication helpers for use with Samba-3.x (and the helpers
@@ -418,19 +340,6 @@ you may want to use the wbinfo_group helper for group lookups
 }}}
 
 
-
-'''Samba-2.X'''
-
-
-Squid must be built with the configure options:
-{{{
-        --enable-auth="ntlm,basic"
-        --enable-basic-auth-helpers="winbind"
-        --enable-ntlm-auth-helpers="winbind"
-        --enable-external-acl-helpers="wb_group"
-}}}
-
-
 === Test Squid without auth ===
 
 Before going further, test basic Squid functionality.  Make sure squid
@@ -438,8 +347,6 @@ is functioning without requiring authorization.
 
 
 === Test the helpers ===
-
-'''Samba-3.x'''
 
 Testing the winbind ntlm helper is not really possible from the command
 line, but the winbind basic authenticator can be tested like any other
@@ -456,31 +363,8 @@ The helper should return "OK" if given a valid username/password.
 ''+'' is the ''domain separator'' set in your smb.conf
 
 
-'''Samba-2.2.X'''
-
-Testing the winbind ntlm helper is not really possible from the command
-line, but the winbind basic authenticator can be tested like any other
-basic helper:
-
-
-{{{
-# /usr/local/squid/libexec/wb_auth -d
-/wb_auth[65180](wb_basic_auth.c:136): basic winbindd auth helper ...
-mydomain\myuser mypasswd
-/wb_auth[65180](wb_basic_auth.c:107): Got 'mydomain\myuser mypasswd' from squid (length: 24).
-/wb_auth[65180](wb_basic_auth.c:54): winbindd result: 0
-/wb_auth[65180](wb_basic_auth.c:57): sending 'OK' to squid
-OK
-}}}
-
-The helper should return "OK" if given a valid username/password.
-
-
 === Relevant squid.conf parameters ===
 
-
-
-  *Setup the authenticators. (Samba-3.X)
 Add the following to enable both the winbind basic and ntlm
 authenticators. IE will use ntlm and everything else basic:
 {{{
@@ -498,36 +382,7 @@ auth_param basic credentialsttl 2 hours
 }}}
 
 
-Note: If your Samba was installed as a binary package ntlm_auth is probably installed
-as /usr/bin/ntlm_auth, not /usr/local/bin/ntlm_auth. Adjust the paths above accordingly.
-
-
-  *Setup the authenticators. (Samba-2.2.X)
-Add the following to enable both the winbind basic and ntlm
-authenticators. IE will use ntlm and everything else basic:
-{{{
-auth_param ntlm program /usr/local/squid/libexec/wb_ntlmauth
-auth_param ntlm children 5
-auth_param ntlm max_challenge_reuses 0
-auth_param ntlm max_challenge_lifetime 2 minutes
-# Samba 2 helpers doesn't support NTLM NEGOTIATE packet
-auth_param ntlm use_ntlm_negotiate off
-
-auth_param basic program /usr/local/squid/libexec/wb_auth
-auth_param basic children 5
-auth_param basic realm Squid proxy-caching web server
-auth_param basic credentialsttl 2 hours
-}}}
-
-
-
-Note: For Samba-3.X the Samba ntlm_auth helper is used instead of
-the wb_ntlmauth and wb_auth helpers above. This helper supports all
-Squid versions and both ntlm and basic schemes via the --helper-protocol=
-option. See the Samba documentation for details.
-
-
-  *Add acl entries to require authentication:
+And the following acl entries to require authentication:
 {{{
 acl AuthorizedUsers proxy_auth REQUIRED
 ..
@@ -561,8 +416,6 @@ Note that when using NTLM authentication, you will see two
 is due to the challenge-response process of NTLM.
 
 == Can I use different authentication mechanisms together? ==
-
-|| {i} ||This chapter only refers to squid 2.5 and 3.0||
 
 Yes, with limitations.
 
