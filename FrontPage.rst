@@ -17,6 +17,7 @@ Due to some episodes of wiki-spam we had to restrict editing to the wiki. If you
  * SquidFaq: the Wikified and updated squid FAQ
  * Release milestones are detailed in our RoadMap
  * ["Squid-3.0"], or "So what is this Squid 3.0 thing and why is it taking so long?"
+ * ConfigExamples: Example Configurations (WCCPv2, NTLM authentication, etc.)
  * We're looking for a new SquidLogo
 = Developers corner =
 There's a separate section for DeveloperResources, such as instructions for CVS access, coding guidelines and other useful documentation.
