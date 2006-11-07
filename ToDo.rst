@@ -7,6 +7,6 @@ This page just has a general TODO of various bogons noticed in squid.
  * HTCP requests are not listed in the client db
  * ICP and HTCP are not protocols like the other protocols - split them out ?
 
-= Wiki-related !ToDo's =
+= Wiki-related ToDo's =
 
  * Install [http://moinmoin.wikiwikiweb.de/ActionMarket/PdfAction PdfAction] - ["kinkie"]
