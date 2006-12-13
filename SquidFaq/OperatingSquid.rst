@@ -156,6 +156,14 @@ Date: Thu, 17 Jul 1997 16:03:22 GMT
 Server: Squid/1.1.14
 }}}
 
+== How can i purge multiple objects from my cache? ==
+
+It's not possible; you have to purte the objects one by one by URL.
+This is because squid doesn't keep in memory the URL of every object it stores, but only a compact representation of it (a hash). Finding the hash given the URL is easy, the other way around is not possible.
+
+Purging by wildcard, by domain etc. are unfortunately not possible at this time.
+
+
 == Using ICMP to Measure the Network ==
 
 As of version 1.1.9, Squid is able to utilize ICMP Round-Trip-Time (RTT)
