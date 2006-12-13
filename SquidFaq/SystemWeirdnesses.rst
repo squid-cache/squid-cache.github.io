@@ -672,29 +672,31 @@ the following command:
 echo 0 > /proc/sys/net/ipv4/tcp_ecn
 }}}
 
-
-Found this on the FreeBSD mailing list:
+HenrikNordstrom explains:
 {{{
-From: Robert Watson
+ECN is an standard extension to TCP/IP, making TCP/IP behave better in
+overload conditions where the available bandwidth is all used up (i.e.
+the default condition for any WAN link).
 
-As Bill Fumerola has indicated, and I thought I'd follow up in with a bit
-more detail, the behavior you're seeing is the result of a bug in the
-FreeBSD IPFW code.  FreeBSD did a direct comparison of the TCP header flag
-field with an internal field in the IPFW rule description structure.
-Unfortunately, at some point, someone decided to overload the IPFW rule
-description structure field to add a flag representing "ESTABLISHED". They
-used a flag value that was previously unused by the TCP protocol (which
-doesn't make it safer, just less noticeable).  Later, when that flag was
-allocated for ECN (Endpoint Congestion Notification) in TCP, and Linux
-began using ECN by default, the packets began to match ESTABLISHED rules
-regardless of the other TCP header flags.  This bug was corrected on the
-RELENG_4 branch, and security advisory for the bug was released.  This
-was, needless to say, a pretty serious bug, and good example of why you
-should be very careful to compare only the bits you really mean to, and
-should seperate packet state from protocol state in management structures,
-as well as make use of extensive testing to make sure rules actually have
-the effect you describe.
+Defined by Internet RFC3168 issued by the Networking Working Group at
+IETF, the standardization body responsible for the evolution of TCP/IP
+and other core Internet technologies such as routing.
 
+It's implemented by using two previously unused bits (of 6) in the TCP
+header, plus redefining two bits of the never standardized TOS field in
+the IP header (dividing TOS in 6 bits Diffserv and 2 bit ECN fields),
+allowing routers to clearly indicate overload conditions to the
+participating computers instead of dropping packets hoping that the
+computers will realize there is too much traffic.
+
+The main problem is the use of those previously unused bits in the TCP
+header. The TCP/IP standard has always said that those bits is reserved
+for future use, but many old firewalls assume the bits will never be
+used and simply drops all traffic using this new feature thinking it's
+invalid use of TCP/IP to evolve beyond the original standards from 1981.
+
+ECN in it's final form was defined 2001, but earlier specifications was
+circulated several years earlier.
 }}}
 
 
@@ -707,6 +709,7 @@ See also the
 
 
 You may also very occasionally have problems with TCP Window Scaling on Linux.  At first you may be able to TCP connect to the site, but then unable to transfer any data across your connection.  This is due to some broken firewalls on the Internet (it is not a bug with Linux) mangling this field when the TCP connection is established.  More details and a workaround can be found at [http://lwn.net/Articles/92727/ lwn.net].
+
 
 
 == IRIX ==
