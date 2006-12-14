@@ -661,7 +661,7 @@ When using Squid, some sites may give erorrs such as
 although these sites work fine without going through Squid.
 
 Linux 2.6 implements  
-[http://www.aciri.org/floyd/ecn.html Explicit Congestion Notification] (ECN) support and this can cause
+[http://en.wikipedia.org/wiki/Explicit_Congestion_Notification Explicit Congestion Notification] (ECN) support and this can cause
 some TCP connections to fail when contacting some sites with broken firewalls or broken TCP/IP implementations.
 
 As of June 2006, the number of sites that fail when ECN is enabled is very low and you may find you benefit more from having this feature enabled than globally turning it off.
