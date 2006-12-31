@@ -39,10 +39,12 @@ When both defaultsite and vhost is specified defaultsite specifies the domain na
 
 == Sending different requests to different backend web servers ==
 To control which web servers (cache_peer) gets which requests the cache_peer_access or cache_peer_domain directives is used. These directives limit which requests may be sent to a given peer.
+
 {{{
 cache_peer ip.of.server1 80 0 no-query originserver name=server_1
 acl sites_server_1 dstdomain www.example.com example.com
 cache_peer_access server_1 allow sites_server_1
+
 cache_peer ip.of.server2 80 0 no-query originserver name=server_2
 acl sites_server_2 dstdomain www.example.net .example.net
 cache_peer_access server_2 allow sites_server_2
@@ -68,6 +70,7 @@ Other web servers uses similar directives specifying the address where it should
 
 == Load balancing of backend servers ==
 To load balance requests among a set of backend servers allow requests to be forwarded to more than one cache_peer, and use one of the load balancing options in the cache_peer lines. I.e. the round-robin option.
+
 {{{
 cache_peer ip.of.server1 parent 80 0 no-query originserver round-robin
 cache_peer ip.of.server2 parent 80 0 no-query originserver round-robin
