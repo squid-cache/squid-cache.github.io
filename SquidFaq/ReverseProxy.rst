@@ -84,5 +84,13 @@ To fix this make sure that defaultsite is the site name requested by clients, an
 
 Alternatively you can also use the location_rewrite helper interface to Squid to fixup redirects on the way out to the client, but this only works for the Location header, not URLs dynamically embedded in the returned content.
 
+== Access to password protected content via the reverse proxy? ==
+
+If the content on the web servers is password protected then you need to tell the proxy to trust your web server with authetication credentials. This is done via the login= option to cache_peer. Normally you would use login=PASS to have the login information forwarded. The other alternatives is meant to be used when it's the reverse proxy which processes the authentication as such but you like to have information about the authenticated account forwarded to the backend web server.
+
+{{{
+cache_peer ip.of.server parent 80 0 no-query originserver login=PASS
+}}}
+
 -----
  . Back to the SquidFaq
