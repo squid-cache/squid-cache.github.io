@@ -23,7 +23,7 @@ When prompted for a password, enter 'anoncvs'.
 }}}
 You can use {{{ cvs -d :pserver:anoncvs@cvs.squid-cache.org:/squid checkout squid3 }}} for a shorter all-in-one method that wont set environment variables.
 
-You will need to bootstrap your tree - 
+If you make automake related changes then you will need to bootstrap your tree - 
 {{{
 sh bootstrap.sh
 }}}
@@ -43,12 +43,12 @@ Many works in progress is hosted in our public developer CVS repository. For mor
 
 To access older Squid releases use the same procedure as above to login and then checkout the specific version sources
 
-Squid-2.6
+Squid-2, please use this when submitting patches etc
 {{{
-  cvs checkout -d squid-2.6 squid
+  cvs checkout -d squid-2 squid
 }}}
 
-Squid-2.5
+Squid-2.6.STABLE, for tracking the current STABLE release.
 {{{
-  cvs checkout -d squid-2.5 -r SQUID_2_5 squid
+  cvs checkout -d squid-2.6 -r SQUID_2_6 squid
 }}}
