@@ -151,7 +151,7 @@ Squid is [http://www.gnu.org/philosophy/free-sw.html Free Software], licensed un
 == Can I pay someone for Squid support? ==
 
 
-Yes.  Please see SquidSupportServices.
+Yes.  Please see [http://www.squid-cache.org/Support/services.html Squid Support Services].
 You can also [http://www.squid-cache.org/donate.html donate] money or equipment to members of the squid core team.
 
 == Squid FAQ contributors ==
