@@ -16,10 +16,12 @@ The Squid storage manager does a bunch of things inefficiently. Namely:
  * The in-memory representation looks just like the on-disk representation (sans on-disk metadata); and they both look just like what was read from the network
  * Which means, in Squid-3 and up to Squid-2.6 the client-side just reads the reply from the beginning and parses the  reply and headers. This is wasteful. Squid-2 HEAD just uses the parsed copy in MemObject->reply rather than re-parsing it for every reply - but this parsed reply is actually parsed by the store routines rather than being 'handed' a parsed structure to store away.
  * It doesn't handle partial object contents at all - which is partially storage and partially HTTP-server side as something would need to know how to satisfy range requests from the memory cache and from the network.
+ * There is no intermediary layer. All refresh, Vary/ETag and Range logics is tightly coupled with the client side processing.
+ * Not possible to modify/add headers on the fly. Required on refreshes where the 304 may carry updated headers, and to support tralier headers in chunked encoding.
 
 === Client-related stuff ===
 
-  * All the data is actually copied out via storeClientCopy(), rather than referenced. Which is a bit silly since the data is almost always then just written out to the client-side file descriptor.
+ * All the data is actually copied out via storeClientCopy(), rather than referenced. Which is a bit silly since the data is almost always then just written out to the client-side file descriptor.
  * each call to storeClientCopy() which satisfies from data from the memory cache actually starts at the beginning of the memory object and starts walking along each 4k page until it finds the offset which satisfies that copy. This is fine for objects under a few multiples of 4k but if you run a cache_mem of a couple gigabytes and don't mind caching >10 megabyte objects in RAM, things get a bit fiddly.
 
 === Disk-related stuff ===
@@ -39,3 +41,10 @@ The Squid storage manager does a bunch of things inefficiently. Namely:
  * (If we ever reach this point, it'd be even more efficient to be able to store http server-side read() buffers directly into the store, with relevant offset+size information (since some of that buffer may not actually be data - could be partial header information, could be trailers information for HTTP/1.1, could be TE-related metadata in the stream, etc.)
  * Lots of restructuring of the swapout code, as said above
  * Perhaps think about allowing disk objects to become hot objects again. It wouldn't actually be -that- hard to do that now, come to think about it.. one would have to consider memory cache thrashing however. Hm, the ZFS dual-LFS type cache replacement policy (whose name escapes me!) to try and avoid that kind of cache thrashing may prove to be useful.
+
+== Long term notes ==
+
+ * There should be a intermediary layer responsible for figuring out where to find the needed data, refreshes, Vary/ETag etc.
+ * The client API should be presented as two streams of data. One stream with status line and parsed entity headers (hop-by-hop headers should be filtered at the protocol side), the other a sparse octet stream. Sparse to suppor ranges. Maybe there should be a seek function as well, but not really needed with the intermediary layer taking care of ranges.
+ * Store API should be similarly split on both read write. Here a seek operation is needed on read to be able to collect the needed pieces to build a range response. And it's beneficial if the headers can be rewritten/updated independently of the body to properly support refreshes and storing of trailer headers as part of the object header.
+ * And serverside->intermediary and intermediary->clientside also needs to support intermediate 1xx responses (i.e. 100 Continue). These responses only need to be forwarded while waiting for the real response, never stored.
