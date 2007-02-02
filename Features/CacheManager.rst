@@ -93,6 +93,13 @@ where 1.2.3.4 is the IP address for workstation.example.com
 
 Save the configuration, and you're done.
 
+== Cache manager access from squidclient ==
+A simple way to test the access to the cache manager is:
+{{{
+% ./squidclient -p 8080 mgr:info@yourcachemanagerpassword}}}
+Note,''8080''and''yourcachemanagerpassword''come from your exact squid.configuration
+See squidclient -h for more options.
+
 == Cache manager ACLs in squid.conf ==
 The default cache manager access configuration in ''squid.conf'' is:
 
