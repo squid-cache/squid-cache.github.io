@@ -97,7 +97,7 @@ Save the configuration, and you're done.
 A simple way to test the access to the cache manager is:
 {{{
 % ./squidclient -p 8080 mgr:info@yourcachemanagerpassword}}}
-Note,''8080''and''yourcachemanagerpassword''come from your exact squid.configuration
+Note, ''8080'' and '' yourcachemanagerpassword ''come from your exact squid.configuration
 See squidclient -h for more options.
 
 == Cache manager ACLs in squid.conf ==
