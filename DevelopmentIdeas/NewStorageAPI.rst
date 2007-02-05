@@ -61,6 +61,12 @@ The Storage API in Squid-2 has many serious shortcomings which limits performanc
  * store_client * storeClientRegister(StoreEntry *e, void *owner)
  * void storeClientUnregster(store_client *sc, StoreEntry *e, void *owner)
  * void storeClientCopy(store_client *sc, StoreEntry *e, squid_off_t seen_offset, squid_off_t copy_offset, size_t *size, char *buf, STCB *callback, void *data)
+ * int storeClientCopyPending(store_client * sc, StoreEntry * e, void *data)
+ * squid_off_t storeLowestMemReaderOffset(const StoreEntry * entry)
+ * void InvokeHandlers(StoreEntry * e)
+ * int storePendingNClients(const StoreEntry * e)
+
+
  
 ==== Server-side ====
 
