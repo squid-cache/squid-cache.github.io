@@ -100,11 +100,11 @@ Stuff that might pop up:
 ==== API changes: first set ====
 
  * storeAppend() is split into two:
- ** storeAppendReplyBody() to append reply body data
- ** storeAppendReplyStatus() to set reply status
- ** storeAppendReplyAddHeader() to add a header
- ** (if needed, a "remove header" and "insert header" primitives)
- ** finally, a storeAppendHeadersDone() routine to signal we've completed appending the first set of headers and data will begin flowing
+  * storeAppendReplyBody() to append reply body data
+  * storeAppendReplyStatus() to set reply status
+  * storeAppendReplyAddHeader() to add a header
+  * (if needed, a "remove header" and "insert header" primitives)
+  * finally, a storeAppendHeadersDone() routine to signal we've completed appending the first set of headers and data will begin flowing
  * storeClientCopyData() will mirror storeClientCopy() but assume the data starts at offset 0, rather than the reply status + headers being at 0.
  * storeClientGetReply() is an async call which will return a cloned reply (status + headers) plus any data requested, if any is available. (This is so small objects in memory can then be written in one write(), as what happens in previous Squid versions, without having to wait for a second trip through the event loop.
  * the Store Layer will be handed a MemObject to write out and will first be responsible for writing out the headers any way it sees fit. This'll probably involve using the Packer for the time being to pack the reply+headers into a contiguous memory reigon before writing out. I'll investigate the usefulness of writev() for this little task much later on.
