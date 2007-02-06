@@ -74,3 +74,37 @@ The Storage API in Squid-2 has many serious shortcomings which limits performanc
  * void storeAppendPrintf(StoreEntry * e, const char *fmt,...)
  * void storeAppendVPrintf(StoreEntry * e, const char *fmt, va_list vargs)
  
+=== New API, phase 1 ===
+
+==== Overview ====
+
+The first cut of the API should focus on a small set of issues, namely:
+
+ * Separation of entity body from entity headers;
+ * Handle the concept of 'trailers' from HTTP/1.1 (ie, arbitrary new headers popping up at some point in the dataflow)
+ * Not involve copying of any data into or out of the store (or, if absolutely necessary, hide the copying behind a sane API that lends itself later to reference counted data access)
+ * O(1) streaming access from any particular offset in the store, with O(N) seek performance for now (which can be optimised out later by arranging the object chunks in a tree of some sort rather than a straight list, but that can come later.)
+
+This first round of API modifications won't cover, very specifically:
+
+ * Async'ing the storeGet*() interface calls
+ * Fixing up the Vary handling code
+ * Doing intrusive changes to the client or server code to take advantage of the new efficient data copying
+ * Any new object stores, just yet.
+ * A way of tagging objects and pages inside objects as being written, not yet written or not going to written; with an aim to be able to submit entire objects to be read from/written to disk rather than the current store method. It'll probably be something for the second cut of the API.
+
+Stuff that might pop up:
+
+ * The ability for objects that are on disk to re-enter the memory store, rather than being "disk clients". This is dangerous and risks thrashing the memory cache somewhat so I'll leave it until the rest of the code has been written. (There's ways around it, possibly, like the ZFS page cache maintaining algorithm which looks like a dual-LRU. I need to find the reference for it.)
+
+==== API changes: first set ====
+
+ * storeAppend() is split into two:
+ ** storeAppendReplyBody() to append reply body data
+ ** storeAppendReplyStatus() to set reply status
+ ** storeAppendReplyAddHeader() to add a header
+ ** (if needed, a "remove header" and "insert header" primitives)
+ ** finally, a storeAppendHeadersDone() routine to signal we've completed appending the first set of headers and data will begin flowing
+ * storeClientCopyData() will mirror storeClientCopy() but assume the data starts at offset 0, rather than the reply status + headers being at 0.
+ * storeClientGetReply() is an async call which will return a cloned reply (status + headers) plus any data requested, if any is available. (This is so small objects in memory can then be written in one write(), as what happens in previous Squid versions, without having to wait for a second trip through the event loop.
+ * the Store Layer will be handed a MemObject to write out and will first be responsible for writing out the headers any way it sees fit. This'll probably involve using the Packer for the time being to pack the reply+headers into a contiguous memory reigon before writing out. I'll investigate the usefulness of writev() for this little task much later on.
