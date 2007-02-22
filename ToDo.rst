@@ -10,3 +10,4 @@ This page just has a general TODO of various bogons noticed in squid.
 = Wiki-related ToDo's =
 
  * Install [http://moinmoin.wikiwikiweb.de/ActionMarket/PdfAction PdfAction] - ["kinkie"]
+ * Find a better way than th current 403s to handle crawlers trying to index wiki actions - ["kinkie"]
