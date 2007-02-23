@@ -41,11 +41,10 @@ When both defaultsite and vhost is specified defaultsite specifies the domain na
 To control which web servers (cache_peer) gets which requests the cache_peer_access or cache_peer_domain directives is used. These directives limit which requests may be sent to a given peer.
 
 {{{
-cache_peer ip.of.server1 80 0 no-query originserver name=server_1
+cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
 acl sites_server_1 dstdomain www.example.com example.com
 cache_peer_access server_1 allow sites_server_1
-
-cache_peer ip.of.server2 80 0 no-query originserver name=server_2
+cache_peer ip.of.server2 parent 80 0 no-query originserver name=server_2
 acl sites_server_2 dstdomain www.example.net .example.net
 cache_peer_access server_2 allow sites_server_2
 }}}
@@ -85,12 +84,10 @@ To fix this make sure that defaultsite is the site name requested by clients, an
 Alternatively you can also use the location_rewrite helper interface to Squid to fixup redirects on the way out to the client, but this only works for the Location header, not URLs dynamically embedded in the returned content.
 
 == Access to password protected content fails via the reverse proxy ==
-
 If the content on the web servers is password protected then you need to tell the proxy to trust your web server with authetication credentials. This is done via the login= option to cache_peer. Normally you would use login=PASS to have the login information forwarded. The other alternatives is meant to be used when it's the reverse proxy which processes the authentication as such but you like to have information about the authenticated account forwarded to the backend web server.
 
 {{{
 cache_peer ip.of.server parent 80 0 no-query originserver login=PASS
 }}}
-
 -----
  . Back to the SquidFaq
