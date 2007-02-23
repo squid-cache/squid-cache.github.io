@@ -20,20 +20,24 @@ In such a configuration, the web administrator renames all non-cachable URLs to 
 First, you have to tell Squid to listen on port 80 (usually), so set the 'http_port' option with the defaultsite option telling Squid it's an accelerator for this site:
 
 {{{
-http_port 80 defaultsite=your.main.website
+http_port 80 accel defaultsite=your.main.website
 }}}
 Next, you need to tell Squid where to find the real web server:
 
 {{{
-cache_peer ip.of.webserver 80 0 no-query originserver
+cache_peer ip.of.webserver parent 80 0 no-query originserver
 }}}
 You should now be able to start Squid and it will serve requests as a HTTP server.
+
+Note: The accel option to http_port is optional and should only be specified for 2.6.STABLE8 and later. In all versions Squid-2.6 and later specifying one of defaultsite or vhost is sufficient.
+
+
 
 == Domain based virtual host support ==
 If you are using Squid has an accelerator for a domain based virtual host system then you need to additionally specify the vhost option to http_port
 
 {{{
-http_port 80 defaultsite=your.main.website vhost
+http_port 80 accel defaultsite=your.main.website vhost
 }}}
 When both defaultsite and vhost is specified defaultsite specifies the domain name old HTTP/1.0 clients not sending a Host header should be sent to. Squid will run fine if you only use vhost, but there is still some software out there not sending Host headers so it's recommended to specify defaultsite as well. If defaultsite is not specified those clients will get an "Invalid request" error.
 
@@ -44,6 +48,7 @@ To control which web servers (cache_peer) gets which requests the cache_peer_acc
 cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
 acl sites_server_1 dstdomain www.example.com example.com
 cache_peer_access server_1 allow sites_server_1
+
 cache_peer ip.of.server2 parent 80 0 no-query originserver name=server_2
 acl sites_server_2 dstdomain www.example.net .example.net
 cache_peer_access server_2 allow sites_server_2
@@ -56,7 +61,7 @@ While not generally recommended it is possible to run both the accelerator and t
 In Squid this is done by specifying the IP address in http_port, and using 127.0.0.1 as address to the web server
 
 {{{
-http_port the.public.ip.address:80 defaultsite=your.main.website
+http_port the.public.ip.address:80 accel defaultsite=your.main.website
 cache_peer 127.0.0.1 parent 80 0 no-query originserver
 }}}
 And[http://www.apache.org/ Apache] may be configured like in ''httpd.conf ''to listen on the loopback address:
