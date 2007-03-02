@@ -14,7 +14,7 @@ The Squid storage manager does a bunch of things inefficiently. Namely:
 
  * Storing stuff in 4k linked lists, which mean more than one copy needs to happen to write out an object;
  * The in-memory representation looks just like the on-disk representation (sans on-disk metadata); and they both look just like what was read from the network
- * Which means, in Squid-3 and up to Squid-2.6 the client-side just reads the reply from the beginning and parses the  reply and headers. This is wasteful. Squid-2 HEAD just uses the parsed copy in MemObject->reply rather than re-parsing it for every reply - but this parsed reply is actually parsed by the store routines rather than being 'handed' a parsed structure to store away.
+ * Which means, in Squid-3 and up to Squid-2.6 the client-side just reads the reply from the beginning and parses the  reply and headers. This is wasteful. Squid-2 HEAD just uses the parsed copy in {{{MemObject->reply}}} rather than re-parsing it for every reply - but this parsed reply is actually parsed by the store routines rather than being 'handed' a parsed structure to store away.
  * It doesn't handle partial object contents at all - which is partially storage and partially HTTP-server side as something would need to know how to satisfy range requests from the memory cache and from the network.
  * There is no intermediary layer. All refresh, Vary/ETag and Range logics is tightly coupled with the client side processing.
  * Not possible to modify/add headers on the fly. Required on refreshes where the 304 may carry updated headers, and to support tralier headers in chunked encoding.
@@ -33,7 +33,7 @@ The Squid storage manager does a bunch of things inefficiently. Namely:
 == What to do ==
 
  * Modify the store client API to not include header data in the storeClientCopy() able areas.
- * Remove the implied "please start reading the server side if you haven't already and populate the headers in MemObject->reply where appropriately" which is kickstarted with the storeClientCopy(). Replace this with an explicit "GrabReply" async routine which'll do said kicking (including reading object data from disk where appropriate) and return the reply status + headers, and any data thats available.
+ * Remove the implied "please start reading the server side if you haven't already and populate the headers in {{{MemObject->reply}}} where appropriately" which is kickstarted with the storeClientCopy(). Replace this with an explicit "{{{GrabReply}}}" async routine which'll do said kicking (including reading object data from disk where appropriate) and return the reply status + headers, and any data thats available.
  * That should mean we can get rid of the seen_offset stuff. Thats only ever used, as far as I can tell, when trying to parse the reply headers.
  * Once thats happy (and its a significant amount of work!), modify the storeClientCopy() API again take an offset and return a (mem_node + offset + size) which will supply the data required. The offset is required because the mem_node may contain data which has already be seen; the size is required because the mem_node may not yet be filled.
  * Once -thats- happy (and thats another large chunk of work right there!) consider changing things to not need to keep seeking into the memory object. Instead we should just do it in two parts - a seek() type call to set the current position, then return pages. Full pages, or perhaps (mem_node + offset + size).
