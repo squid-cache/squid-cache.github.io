@@ -256,7 +256,7 @@ Then restart or reconfigure squid as above.
 
 From now on, your ''cache.log'' should contain detailed traces of all access list processing. Be warned that this can be quite some lines per request.
 
-See also ../TrouleShooting.
+See also ../TroubleShooting.
 
 == Proxy-authentication and neighbor caches ==
 ''' The problem '''
