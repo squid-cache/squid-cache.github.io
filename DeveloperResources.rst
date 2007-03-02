@@ -23,7 +23,7 @@ If you are looking for a new project to work on, query the bugzilla database for
 
 Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written a [http://devel.squid-cache.org/squidhttp1.1.htm checklist] for HTTP/1.1 compliance.
 
-CppUnit is used to perform unit testing.
+[http://cppunit.sourceforge.net/cppunit-wiki CppUnit] is used to perform unit testing.
 
 == Project organization ==
 ReleaseProcess describes the process and criterias used by the Squid Developers when making new Squid releases.
