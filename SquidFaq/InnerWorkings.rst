@@ -549,7 +549,7 @@ sending the keep-alive request header to that neighbor.
 Squid uses an LRU (least recently used) algorithm to replace old cache
 objects.  This means objects which have not been accessed for the
 longest time are removed first.  In the source code, the
-StoreEntry->lastref value is updated every time an object is accessed.
+{{{StoreEntry->lastref}}} value is updated every time an object is accessed.
 
 
 Objects are not necessarily removed "on-demand."  Instead, a regularly
@@ -899,7 +899,7 @@ recovering from a corrupted cache directory.
 
 
 Each of Squid's disk cache files has a metadata section at the beginning.
-This header is used to store the URL MD5, some StoreEntry data, and more.
+This header is used to store the URL MD5, some {{{StoreEntry}}} data, and more.
 When Squid opens a disk file for reading, it looks for the meta data
 header and unpacks it.
 
