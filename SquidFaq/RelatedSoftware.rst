@@ -15,6 +15,9 @@ instance), you can use the
 which will tell you (in plain text or via an exit code) if the cache is
 up or not, and will indicate the response times.
 
+=== curl-loader ===
+A stress-testing tool for performance analysis, available at http://sourceforge.net/projects/curl-loader
+
 
 == Logfile Analysis ==
 
