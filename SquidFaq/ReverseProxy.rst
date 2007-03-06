@@ -31,8 +31,6 @@ You should now be able to start Squid and it will serve requests as a HTTP serve
 
 Note: The accel option to http_port is optional and should only be specified for 2.6.STABLE8 and later. In all versions Squid-2.6 and later specifying one of defaultsite or vhost is sufficient.
 
-
-
 == Domain based virtual host support ==
 If you are using Squid has an accelerator for a domain based virtual host system then you need to additionally specify the vhost option to http_port
 
@@ -48,7 +46,6 @@ To control which web servers (cache_peer) gets which requests the cache_peer_acc
 cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
 acl sites_server_1 dstdomain www.example.com example.com
 cache_peer_access server_1 allow sites_server_1
-
 cache_peer ip.of.server2 parent 80 0 no-query originserver name=server_2
 acl sites_server_2 dstdomain www.example.net .example.net
 cache_peer_access server_2 allow sites_server_2
@@ -94,5 +91,22 @@ If the content on the web servers is password protected then you need to tell th
 {{{
 cache_peer ip.of.server parent 80 0 no-query originserver login=PASS
 }}}
+== Mapping different URLs to different backend servers ==
+If you need to map different URLs to different backend servers then define one cache_peer per server, then use cache_peer_access (or _domain) to define which URLs should be sent to each server. Remember that a cache_peer is by default a candidate for all requests unless limited by cache_peer_access (or _domain) so you need to define this for all peers.
+
+Example:
+
+{{{
+/foo            ->      server2
+the rest        ->      server1
+}}}
+squid.conf:
+
+{{{
+cache_peer ip.of.server1 parent 80 0 no-query originserver name=server1
+cache_peer ip.of.server2 parent 80 0 no-query originserver name=server2
+acl foo urlpath_regex ^/foo
+cache_peer_access server2 allow foo
+cache_peer_access server1 deny foo}}}
 -----
  . Back to the SquidFaq
