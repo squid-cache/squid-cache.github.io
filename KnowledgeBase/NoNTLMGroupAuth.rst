@@ -38,3 +38,7 @@ To verify, use:
 == Thanks ==
 
 Thanks to David Whitehead <dwhitehead@seacrestvillage.org> for working with the Squid team to resolve and document this issue.
+
+
+----
+CategoryKnowledgeBase
