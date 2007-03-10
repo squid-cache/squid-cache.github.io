@@ -6,22 +6,22 @@
 
 = Article Title =
 
-== Synopsis ==
+'''Synopsis'''
 
 
-== Symptoms ==
+'''Symptoms'''
 
  * 
  * 
  * 
 
-== Explanation ==
+'''Explanation'''
 
 
-== Workaround ==
+'''Workaround'''
 
 
-== Thanks ==
+'''Thanks'''
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
 CategoryKnowledgeBase
