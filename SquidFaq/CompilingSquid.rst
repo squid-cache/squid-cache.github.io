@@ -199,7 +199,7 @@ on your system, then it substitues ''false''.
 To fix this you either need to:
 
   * Add ''/usr/ccs/bin'' to your PATH.  This is where the ''ar'' command should be.  You need to install SUNWbtool if ''ar'' is not there.  Otherwise,
-  * Install the '''binutils''' package from [ftp://ftp.gnu.org/gnu/binutils the GNU FTP ite]. This package includes programs such as ''ar'', ''as'', and ''ld''.
+  * Install the '''binutils''' package from [ftp://ftp.gnu.org/gnu/binutils the GNU FTP site]. This package includes programs such as ''ar'', ''as'', and ''ld''.
 
 == I have problems compiling Squid on Platform Foo. ==
 
@@ -270,9 +270,9 @@ recommend using the -Y and -N options.
 
 In order to compile squid, you need to have Cygwin fully installed.
 
-Unpack the source archive as usual and run configure:
+Unpack the source archive as usual and run configure disabling WCCP and WCCP2 (not available on Windows):
 {{{
-./configure
+./configure --disable-wccp --disable-wccpv2
 }}}
 
 Compile everything:
@@ -294,6 +294,40 @@ Read the squid FAQ on permissions if you are using CYGWIN=ntsec.
 After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
 
 Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. You may need to check permissions here.
+
+== Building Squid on MinGW ==
+
+In order to compile squid using the MinGW environment, the packages MSYS, MinGW and msysDTK must be installed. Some additional libraries and tools must be downloaded separately:
+
+ * OpenSSL: [http://www.slproweb.com/products/Win32OpenSSL.html Shining Light Productions Win32 OpenSSL]
+ * libcrypt: [http://sourceforge.net/projects/mingwrep/ MinGW packages repository]
+ * db-1.85: [http://tinycobol.org/download.html TinyCOBOL download area]
+ * uudecode: [http://unxutils.sourceforge.net/ Native Win32 ports of some GNU utilities]
+
+
+Unpack the source archive as usual and run configure.
+The following are the recommended minimal options for Windows:
+{{{
+./configure --prefix=c:/squid --disable-wccp --disable-wccpv2 --enable-win32-service --enable-default-hostsfile=none
+}}}
+
+Compile everything:
+{{{
+make
+}}}
+
+and finally, install:
+{{{
+make install
+}}}
+
+This will install into ''c:\squid''. If you wish to install somewhere else, change the ''--prefix'' option for configure.
+
+After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
+
+Now, to run Squid as a system service, run ''squid -n''.
+
+Always check the provided release notes for any version specific detail.
 
 
 ##end
