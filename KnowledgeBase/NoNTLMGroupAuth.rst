@@ -1,20 +1,20 @@
 = NTLM Group ACLs fail during upgrade from Squid-2.5 to Squid-2.6 =
 
-== Synopsis ==
+'''Synopsis'''
 
 An upgrade from Squid-2.5 to Squid-2.6 (and possibly an underlying upgrade of Samba/Winbind in the process) breaks NTLM group authentication. NTLM user authentication still succeeds normally.
 
-== Symptoms ==
+'''Symptoms'''
 
  * wbinfo returns valid information; eg "wbinfo -t" and "wbinfo -g" return user and group lists respectively;
  * Squid can authenticate users via NTLM fine;
  * cache.log logs messages similar to "Could not convert sid S-1-5-21-466765145-1792897056-1845911597-1995 to gid"
 
-== Explanation ==
+'''Explanation'''
 
 Group ACLs for NTLM are implemented by using the helper "wbinfo_group.pl" to map users+groups into true or false. Squid then uses the results of this in the ACL. "wbinfo_group.pl" internally uses the command line program "wbinfo" to perform the lookups. If "wbinfo" can't map the user/group sid to a group id (gid) then all lookups will return failure/false and Squid will deny access.
 
-== Repairing ==
+'''Repairing'''
 
 At least one report of this issue was solved by deleting a corrupted "winbindd_idmap.tdb" file in /var/db/samba. The steps taken to resolve the issue were:
 
@@ -35,10 +35,9 @@ To verify, use:
 
  * wbinfo -n <name or group>; which will attempt to map the given user or group name to an SID.
 
-== Thanks ==
+'''Thanks'''
 
-Thanks to David Whitehead <dwhitehead@seacrestvillage.org> for working with the Squid team to resolve and document this issue.
-
+Thanks to [[MailTo(dwhitehead AT seacrestvillage DOT org,David Whitehead)]] for working with the Squid team to resolve and document this issue.
 
 ----
 CategoryKnowledgeBase
