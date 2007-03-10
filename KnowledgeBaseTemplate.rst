@@ -22,6 +22,6 @@
 
 
 == Thanks ==
-##please use [[MAILTO(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
+##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
 CategoryKnowledgeBase
