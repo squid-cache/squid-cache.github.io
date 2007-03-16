@@ -3,7 +3,7 @@
 [[TableOfContents]]
 
 = Squid Proxy Web Cache Wiki =
-This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts an updated FAQ at SquidFaq and assorted documentation.
+This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts the FAQ master copy at SquidFaq and assorted documentation.
 
 == Contributing to this Wiki ==
 Due to some episodes of wiki-spam we had to restrict editing to the wiki. If you wish to contribute, please register (by using the Login link) and mail [[MailTo(kinkie AT squid-cache DOT org,the wiki administrator)]] to be granted write-access.
@@ -22,19 +22,6 @@ Due to some episodes of wiki-spam we had to restrict editing to the wiki. If you
 = Developers corner =
 There's a separate section for DeveloperResources, such as instructions for CVS access, coding guidelines and other useful documentation.
 
-== Squid Sprint ==
-In December 2005 an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
-
- * CodeSprintOct2005
- * NegotiateAuthentication support for Squid-3 (the main focus of the sprint)
- * ["Squid-2.6"]
- * NiceLittleProjects: projects which can be completed in a few days' work, waiting for someone to step up. Any takers?
-In December 2004 an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
-
- * ["StoreAPI"]
- * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
- * DevelopmentIdeas: a collection of possible improvements to squid to be evaluated and possibly implemented
- * Linux Profiling with [:LinuxOprofile:oprofile]
 == ClientStreams ==
 A transcript of a IRC chat with Robert Collins (aka lifeless) about using ClientStreams to request pages internally to squid.
 
