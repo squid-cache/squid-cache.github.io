@@ -29,3 +29,19 @@ Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written
 ReleaseProcess describes the process and criterias used by the Squid Developers when making new Squid releases.
 
 WhoWeAre explains who are the people working on the squid project.
+
+== Squid Code Sprint 2005 ==
+In December 2005 an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
+
+ * CodeSprintOct2005
+ * NegotiateAuthentication support for Squid-3 (the main focus of the sprint)
+ * ["Squid-2.6"]
+ * NiceLittleProjects: projects which can be completed in a few days' work, waiting for someone to step up. Any takers?
+
+== Squid Code Sprint 2004 ==
+In December 2004 an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
+
+ * ["StoreAPI"]
+ * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
+ * DevelopmentIdeas: a collection of possible improvements to squid to be evaluated and possibly implemented
+ * Linux Profiling with [:LinuxOprofile:oprofile]
