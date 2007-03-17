@@ -31,7 +31,7 @@ ReleaseProcess describes the process and criterias used by the Squid Developers 
 WhoWeAre explains who are the people working on the squid project.
 
 == Squid Code Sprint 2005 ==
-In December 2005 an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
+In October 2005 an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
 
  * CodeSprintOct2005
  * NegotiateAuthentication support for Squid-3 (the main focus of the sprint)
