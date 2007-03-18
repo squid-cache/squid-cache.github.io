@@ -40,6 +40,13 @@ What it won't implement:
 
 == How to handle errors? ==
 
+Its relatively easy to handle errors in a single-process non-threaded setup - just abort all the outstanding requests and delete the object there and then. This probably won't cut it in a threaded setup, so:
+
+ * The connection closing shouldn't force the object to immediately disappear - it should go into a CLOSED state
+ * It should hang around until the current pending request has completed or aborted - so it should set some abort flag on the request and wait for it to come back. It might come back almost straight away; it might take a little longer as queued events in other threads get notified that the request is being cancelled
+ * Once all pending requests have been cancelled or have returned -then- the object can move to the DEAD state and be deallocated.
+
+
 == What about threading? ==
 
 In theory the server connections should be self-contained; so multiple threads can run multiplexed server connections without any interthread locking needed. This might not be so true for certain 'things' (such as a shared HTTP authentication cache, DNS requests, etc) but these could be seperate message queues.
