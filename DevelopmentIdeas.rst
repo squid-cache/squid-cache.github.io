@@ -5,3 +5,4 @@ Ideas for possible new developments should be posted as sub-pages here, along wi
  * [:/NewStorageAPI]
  * /RequestFlowOptimization
  * /StorageStuff
+ * AdrianChadd's ideas about how to rework the HTTP communications layer are laid out at NewClientSide and NewServerSide
