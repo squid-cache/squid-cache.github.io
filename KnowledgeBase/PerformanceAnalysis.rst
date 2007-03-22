@@ -4,7 +4,7 @@
 
 [[TableOfContents]]
 
-== How to analyze whether squid is performing well ==
+= How to analyze whether squid is performing well =
 
 Users will '''always''' complain that Internet access is slow. The problem is: can they be trusted? Rarely. And the general availability of broadband at home has, if anything, made users even less reliable as a source of performance information as it raises their performance expectations beyond what is reasonable in a work environment.
 
@@ -28,3 +28,5 @@ Only at this point you should have a clear enough picture to know what knob to t
 None, before having understood what is really going on.
 
 Some of the solutions could actually end up worsening the problem: for instance increasing cache_mem on a memory-bound system can actually be detrimental to overall squid performance: if you end up using more memory than your system has, parts of squid end up being swapped to disk trashing performance. In such cases it's much better to actually '''reduce''' cache_mem.
+----
+CategoryKnowledgeBase
