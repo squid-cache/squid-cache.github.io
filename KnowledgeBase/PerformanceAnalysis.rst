@@ -23,7 +23,7 @@ Repeat the analisys at different times in different days, check for variations i
 Only at this point you should have a clear enough picture to know what knob to turn in order to fix your problem. if there really is a problem. If everything so far points at squid being the source of the problems, try to follow the steps in SquidFaq/SquidProfiling.
 
 
-== What settings should I change? ==
+''' What settings should I change? '''
 
 None, before having understood what is really going on.
 
