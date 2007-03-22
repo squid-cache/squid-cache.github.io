@@ -3,7 +3,7 @@
 [[TableOfContents]]
 
 = Squid Proxy Web Cache Wiki =
-This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts the FAQ master copy at SquidFaq and assorted documentation.
+This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts the FAQ master copy at SquidFaq, a growing series of KnowledgeBase articles, and assorted documentation.
 
 == Contributing to this Wiki ==
 Due to some episodes of wiki-spam we had to restrict editing to the wiki. If you wish to contribute, please register (by using the Login link) and mail [[MailTo(kinkie AT squid-cache DOT org,the wiki administrator)]] to be granted write-access.
