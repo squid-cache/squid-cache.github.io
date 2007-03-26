@@ -18,5 +18,10 @@ Choose a good WikiName for your new example and enter it here:
 
 [[FullSearch(title:regex:^ConfigExamples/[^/]*$)]]
 
+== External configuration examples ==
+
+* [http://freshmeat.net/articles/view/1433/] -  Configuring a Transparent Proxy/Webcache in a Bridge using Squid and ebtables (Jan 1st, 2005)
+
+
 ----
 CategoryConfigExample
