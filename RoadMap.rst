@@ -33,6 +33,6 @@ Additionally, more work towards HTTP/1.1 compliance is needed. To this effect, s
  * HTTP range requests
  * Storage Manager API and data flow
 == Website Goals ==
- * ('''Robert Collins''') Finish the work Duane has started with the website redesign/reorganisation
- * Start working on example configurations to explain how to configure and manage Squid in different environments
+ * ('''Adrian Chadd''') Finish the work Duane has started with the website redesign/reorganisation - '''Almost Completed''' - http://new.squid-cache.org
+ * ('''Adrian Chadd''') Start working on example configurations to explain how to configure and manage Squid in different environments - in progress under ConfigExamples
  * Work on more general web caching documents showing why its good - perhaps some "case studies" from those using Squid at the moment.
