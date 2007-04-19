@@ -27,6 +27,8 @@
 [[TocOf(SquidFaq/InnerWorkings)]]
 === Multicast ===
 [[TocOf(SquidFaq/MultiCast)]]
+=== System-specific Optimizations ===
+[[TocOf(SquidFaq/SystemSpecificOptimizations)]]
 === System Weirdnesses ===
 [[TocOf(SquidFaq/SystemWeirdnesses)]]
 === Squid Redirectors ===
