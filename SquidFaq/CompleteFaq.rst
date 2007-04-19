@@ -15,6 +15,7 @@
 [[Include(SquidFaq/TroubleShooting, ,1,to="^Back to the")]]
 [[Include(SquidFaq/InnerWorkings, ,1,to="^Back to the")]]
 [[Include(SquidFaq/MultiCast, ,1,to="^Back to the")]]
+[[Include(SquidFaq/SystemSpecificOptimizations, ,1,to="^Back to the")]]
 [[Include(SquidFaq/SystemWeirdnesses, ,1,to="^Back to the")]]
 [[Include(SquidFaq/SquidRedirectors, ,1,to="^Back to the")]]
 [[Include(SquidFaq/CacheDigests, ,1,to="^Back to the")]]
