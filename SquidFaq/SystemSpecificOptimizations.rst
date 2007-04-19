@@ -8,7 +8,7 @@
 
 ##begin
 
-== General advice ===
+== General advice ==
 The settings detailed in this FAQ chapter are suggestion for operating-system-specific settings which '''may''' help when running busy caches.
 It is recommended to check that the settings have the desired effect by using the [:../CacheManager:Cache Manager].
 
