@@ -12,7 +12,7 @@ Due to some episodes of wiki-spam we had to restrict editing to the wiki. If you
  * ["NTLMIssues"]: Things you can (and cannot) do with NTLM
  * ZeroSizedReply: Recurrent issues with some setups.
  * MultipleInstances: how-to run multiple squid servers on a single box.
- * PerformanceAnalysis: "Help! My users complain that the proxy is slow!"
+ * [:KnowledgeBase/PerformanceAnalysis:Performance Analysis]: "Help! My users complain that the proxy is slow!"
  * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
  * SquidFaq: the Wikified and updated squid FAQ
  * Release milestones are detailed in our RoadMap
