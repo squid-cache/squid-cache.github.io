@@ -58,5 +58,40 @@ ICAP support is slated for Squid-3. Patches exist for Squid-2.5 and Squid-2.6 to
 Please contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
 
 
+== IPv6 Compatibility ==
+
+=== Contacts ===
+
+Amos Jeffries
+
+=== Description ===
+
+We need squid to be fully capable of connecting to over IPv6. This is not presently available in any public version of Squid.
+There have been some attempts at patches made as far back as squid 2.5. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial patch for 2.6 STABLE6 at [url]http://jaringan.info/2007/01/02/squid-ipv6-update-1/[/url].
+
+=== Progress ===
+
+Progress has been rocky on this feature with some time spent with no maintainers. Progress is being made rapidly now however and a hopefully testing version is now available. After testing it is scheduled for inclusion in Squid 3.1 due to Squid 3.0 now being in feature freeze.
+
+Please read [url]http://devel.squid-cache.org/squid3-ipv6/[/url] for the latest details then contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
+
+== HTTP File Helper ==
+
+=== Contacts ===
+
+Henrik Nordstrom, Amos Jeffries
+
+=== Description ===
+
+A small but useful feature would be for squid to contain a simple dumb HTTP server capable of providing content such as error page images and CSS. Possibly also PAC files, either static or built from squid.conf. This feature would sort out a number of long standing issues Squid has.
+As envisioned this would serve its files from a standard network port (defaults: 80 or 81) such that squid can generate links to ip:port in pages and process any resulting requests as a standard HTTP request.
+
+=== Progress ===
+
+The existence of such a helper is still very much on the drawing board.
+
+Please contact the Squid developer team if you're interested in discussing the implementation of this feature.
+
+
 ----
 CategoryHomepage
