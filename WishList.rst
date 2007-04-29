@@ -67,13 +67,13 @@ Amos Jeffries
 === Description ===
 
 We need squid to be fully capable of connecting to over IPv6. This is not presently available in any public version of Squid.
-There have been some attempts at patches made as far back as squid 2.5. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial patch for 2.6 STABLE6 at [url]http://jaringan.info/2007/01/02/squid-ipv6-update-1/[/url].
+There have been some attempts at patches made as far back as squid 2.5. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial patch for 2.6 STABLE6 at http://jaringan.info/2007/01/02/squid-ipv6-update-1/.
 
 === Progress ===
 
 Progress has been rocky on this feature with some time spent with no maintainers. Progress is being made rapidly now however and a hopefully testing version is now available. After testing it is scheduled for inclusion in Squid 3.1 due to Squid 3.0 now being in feature freeze.
 
-Please read [url]http://devel.squid-cache.org/squid3-ipv6/[/url] for the latest details then contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
+Please read http://devel.squid-cache.org/squid3-ipv6/ for the latest details then contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
 
 == HTTP File Helper ==
 
