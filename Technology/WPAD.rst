@@ -23,3 +23,7 @@ WPAD has found use in ISP and Enterprise networks to integrate web proxies into 
  * http://www.wlug.org.nz/WPAD
  * http://tools.ietf.org/wg/wrec/draft-ietf-wrec-wpad/
  * http://blogs.msdn.com/wndp/articles/IPV6_PAC_Extensions_v0_9.aspx
+
+== WPAD-like functionality in other protocols ==
+
+ * The Azereus Bittorrent client implements a WPAD-like Cache discovery protocol (JPC) to discover JPC-compatible caches. (Links?) 
