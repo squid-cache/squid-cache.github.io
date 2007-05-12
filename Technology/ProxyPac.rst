@@ -17,4 +17,4 @@ Most modern User Agents implement a method of configuring proxy servers based on
  * Microsoft proposed IPv6 extensions to proxy.pac: http://blogs.msdn.com/wndp/articles/IPV6_PAC_Extensions_v0_9.aspx
 
 ----
-CategoryTechnologyIndex
+CategoryTechnologyIndex CategoryTechnology
