@@ -31,4 +31,4 @@ WPAD has found use in ISP and Enterprise networks to integrate web proxies into 
  * The Azereus Bittorrent client implements a WPAD-like Cache discovery protocol (JPC) to discover JPC-compatible caches. (Links?) 
 
 ----
-CategoryTechnologyIndex
+CategoryTechnologyIndex CategoryTechnology
