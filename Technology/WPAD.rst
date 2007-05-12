@@ -14,7 +14,7 @@ WPAD has found use in ISP and Enterprise networks to integrate web proxies into 
 
  * (Placeholder) covers the motivation behind WPAD and how it attempts to solve the issue;
  * (Placeholder) covers how User Agents can detect the existance of the proxy authentication file via DHCP
- * ["WPAD/DNS"] covers how User Agents can detect the existance of the proxy autoconfiguration file via DNS
+ * [:Technology/WPAD/DNS:WPAD DNS] covers how User Agents can detect the existance of the proxy autoconfiguration file via DNS
  * (Placeholder) covers some example WPAD configurations
 
 == Other Articles and Information on WPAD ==
