@@ -14,6 +14,8 @@ This isn't known to be a problem with other web browsers.
 
 Internet Explorer records the chosen proxy server (or DIRECT? should verify -adrian) from a call to '''FindProxyForURL()''' against the hostname part of the URL. It then uses this for further URL accesses whose hostname matches the cached entry. If the proxy server then fails Internet Explorer will return a "Page can not be displayed" error.
 
+There has been another report that some versions of Internet Explorer may detect a failed proxy and failover, but will not fail back to the original proxy until the Internet Explorer process has terminated and is restarted.
+
 Microsoft has published a Tech Note article on this behaviour and explains how to disable the behaviour via Group Policy and Registry modifications. Please read the article for further information.
 
 == Links ==
