@@ -6,6 +6,8 @@ WPAD is an Internet Draft standard which attempts to enumerate the discovery of 
 
 WPAD does not do much more than to allow the User Agent to discover a proxy autoconfiguration file. Building and using a proxy autoconfiguration script will be described in another section (to be written.)
 
+This set of articles is aimed at the network/system administrator who wishes to configure automatic proxy detection on their network through WPAD. It is not designed as a tutorial for implementation of the discovery process in a User Agent. Please read the most recent expired draft to gather more background information.
+
 == When is WPAD useful? ==
 
 WPAD has found use in ISP and Enterprise networks to integrate web proxies into the network without resorting to transparent network interception or enforcing configuration through technologies such as Windows Active Directory Group Policy.
@@ -14,7 +16,7 @@ WPAD has found use in ISP and Enterprise networks to integrate web proxies into 
 
  * (Placeholder) covers the motivation behind WPAD and how it attempts to solve the issue;
  * (Placeholder) covers how User Agents can detect the existance of the proxy authentication file via DHCP
- * [:Technology/WPAD/DNS:WPAD DNS] covers how User Agents can detect the existance of the proxy autoconfiguration file via DNS
+ * [:Technology/WPAD/DNS:WPAD DNS] covers how User Agents can detect the existance of the proxy autoconfiguration file via DNS "Well Known Aliases"
  * (Placeholder) covers some example WPAD configurations
 
 == Other Articles and Information on WPAD ==
