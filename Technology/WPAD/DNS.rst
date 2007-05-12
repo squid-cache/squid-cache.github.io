@@ -2,7 +2,11 @@
 
 == Overview ==
 
-WPAD can use DNS to probe for the existance of a WPAD web server to fetch the proxy configuration file from.
+WPAD can use DNS to probe for the existance of a WPAD web server to fetch the proxy configuration file from. The WPAD specification enumerates a number of possibilities; the only required DNS method is the "Well known alias" method.
+
+The "Well known alias" method simply requires a "wpad." host to have an IN A DNS resource entry. The User Agent constructs a series of DNS lookups to discover this hostname and if it finds the host it will query a web server at that host for a proxy autoconfiguration file.
+
+A handful of other DNS-related methods are covered in the WPAD specification; they are not covered in this article.
 
 == Explanation (IPv4 specific) ==
 
@@ -45,3 +49,6 @@ This can mean that servers configured to answer to the 'wpad' host in a domain l
 Duane Wessels owns wpad.net, wpad.org and wpad.com; he provides graphed statistics for his webserver at http://www.life-gone-hazy.com/%7esnmp/http_status.cgi . (I believe the 404's include failed wpad.dat lookups; I should check -Adrian).
 
 It would be nice if Registrars prohibited the registration of the "wpad" domain name; its not known if this is policy for any current DNS registry.
+
+----
+CategoryTechnology
