@@ -6,6 +6,8 @@ Most modern User Agents implement a method of configuring proxy servers based on
 
 == Articles ==
 
+ * InternetExplorerCaching - Microsoft Internet Explorer's automatic proxy caching; how it can interfere with proxy.pac load balancing and failover
+
 == Examples ==
 
 == Further Reading ==
