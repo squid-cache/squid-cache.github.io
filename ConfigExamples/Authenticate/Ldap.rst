@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/ConfigExamples/SquidAndLDAP
 ##master-page:CategoryTemplate
 #format wiki
 #language en
