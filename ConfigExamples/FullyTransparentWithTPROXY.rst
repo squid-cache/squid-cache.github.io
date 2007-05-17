@@ -147,21 +147,16 @@ check-up my pc by opening whatismyipaddress.com --> yes it is my pc's ip
 
 Now,  I will try tuning-up my box & squid.conf tommorow
 
-== More ==
 
+== Another Example ==
 
-
-{{{
-
-acl all src 0.0.0.0/0.0.0.0
-acl manager proto cache_object
-acl localhost src 127.0.0.1/255.255.255.255
-http_access deny all
-
-}}}
-
+ * Mailing list post: http://www.squid-cache.org/mail-archive/squid-users/200705/0443.html and http://www.squid-cache.org/mail-archive/squid-users/200705/0447.html
 
 == References ==
+
+ * TPROXY patch homepage: http://www.balabit.com/support/community/products/tproxy/
+ * A useful script to test: http://devel.squid-cache.org/cgi-bin/test
+
 
 ----
 CategoryConfigExample
