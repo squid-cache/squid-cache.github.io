@@ -16,6 +16,8 @@ Order specific items.
  1. Re-write Comm Layer. (Aim: Reduce complexity)
  2. Modulise handling of all URI within squid. (Aim: major reduction in code complexity for URI usage)
  3. Add IPv6 capability (Aim: usage and promotional boost, client satisfaction)
+ 4. Place new code in a seperate location (yes, another one!) and make sure said code doesn't depend on code in the rest of the tree (Aim: reduce cross-dependencies on stuff; enumerate Copyright ownership so we know how much effort is involved in un-tainting the codebase.)
+ 5. Rewrite the HTTP handling code - to use std::string, to have a lightweight parser, to have cheaper "clone" operation (for copying server-side to reply-side http requests.)
 
 Other items when the above have been completed.
  * Add full UnitTests for each class already in existence. (Aim: improve code quality and speed future testing)
