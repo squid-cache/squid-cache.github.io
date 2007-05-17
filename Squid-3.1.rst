@@ -14,9 +14,9 @@ The actual transition may take much longer to fully complete, because there is s
 = 3.1 Roadmap =
 
 Order specific items.
- 1.1 Re-write Comm Layer. (Aim: Reduce complexity, )
- 1.2 Modulise handling of all URI within squid. (Aim: major reduction in code complexity for URI usage)
- 2 Add IPv6 capability (Aim: usage and promotional boost)
+ 1 Re-write Comm Layer. (Aim: Reduce complexity)
+ 2 Modulise handling of all URI within squid. (Aim: major reduction in code complexity for URI usage)
+ 3 Add IPv6 capability (Aim: usage and promotional boost, client satisfaction)
 
 Other items when the above have been completed.
  * Add full UnitTests for each class already in existence. (Aim: improve code quality and speed future testing)
