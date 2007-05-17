@@ -6,7 +6,7 @@ WPAD can use DNS to probe for the existance of a WPAD web server to fetch the pr
 
 The "Well known alias" method simply requires a "wpad." host to have an IN A DNS resource entry. The User Agent constructs a series of DNS lookups to discover this hostname and if it finds the host it will query a web server at that host for a proxy autoconfiguration file.
 
-A handful of other DNS-related methods are covered in the WPAD specification; they are not covered in this article.
+A handful of other DNS-related methods are documented in the WPAD specification; they are not covered in this article.
 
 == Explanation (IPv4 specific) ==
 
@@ -15,9 +15,9 @@ A WPAD-enabled User Agent will construct a DNS lookup for a "wpad" host in a lis
  * The reverse DNS resolution of the hosts' IP;
  * Configured DNS domain search list
 
-It then tries performing an address (A) lookup for each of the domain entries, prepended with "wpad". If it doesn't find an A response it removes the first part of the domain name and tries again.
+The User Agent then tries an address (A) lookup for each of the domain entries, prepended with "wpad". If it doesn't find an A response it tries the next domain in the domain search list.  Some clients may also remove the leftmost part of the domain name and try again.
 
-If a match is found the User Agent then attempts to connect to the webserver at that address over port 80/http and request the "/wpad.dat" file, with the Host set to the domain name.
+If an A record is found, the User Agent then attempts to connect to the webserver at that address on the HTTP port (normally port 80) and requests the "/wpad.dat" file, with the Host set to the domain name.
 
 == Example ==
 
@@ -26,12 +26,12 @@ A client has an IP 1.2.3.4 which resolves to host-1-2-3-4.pop1.isp.net. The clie
  * The client does a PTR lookup on 1.2.3.4 and finds it resolves to host-1.2.3.4.pop1.isp.net;
  * The client does an A lookup on wpad.pop1.isp.net and finds it doesn't exist;
  * The client does an A lookup on wpad.isp.net and finds it exists;
- * The client issues a HTTP request to wpad.isp.net on port 80/http requesting http://wpad.isp.net/wpad.dat;
+ * The client issues a HTTP request to wpad.isp.net requesting http://wpad.isp.net/wpad.dat;
  * The client retrieves wpad.dat and uses it as its proxy autoconfiguration script.
 
 == Implementation Issues ==
 
- * Some have reported (Amos?) that various WPAD implementations require the WPAD domain name to match one or more of the listed domains in the DNS domain search list. This is unverified but please consider ensuring the wpad domain exists in the DNS search list.
+ * Some have reported (Amos?) that various WPAD implementations require the WPAD host name to match one or more of the listed domains in the DNS domain search list. This is unverified but please consider ensuring the wpad domain exists in the DNS search list.
   * If the IP resolves to host-x-x-x-x.pop1.isp.net, and the WPAD DNS name is wpad.isp.net, make sure "isp.net" is configured in the DNS search list.
   * If the IP resolves to host-x.x.x.x.pop1.isp.net, and the WPAD DNS name is wpad.pop1.isp.net, having "isp.net" in the DNS search list may not be enough.
 
@@ -39,12 +39,12 @@ A client has an IP 1.2.3.4 which resolves to host-1-2-3-4.pop1.isp.net. The clie
 
 === WPAD DNS server searching ===
 
-WPAD searches the DNS looking for wpad. at each domain. This means the following kind of example can occur:
+WPAD searches the DNS looking for wpad. at each domain.  Additionally, many clients implement a "Fallback" mechanism which checks the parent domains as well. This means the following kind of example can occur:
  * WPAD looks for wpad.corp.example.com;
  * WPAD looks for wpad.example.com;
  * WPAD looks for wpad.com;
 
-This can mean that servers configured to answer to the 'wpad' host in a domain listed in the DNS path may return a proxy autoconfiguration file for an external proxy service. This could be used as part of a denial of service or to intercept proxy traffic.
+This can mean that a server configured to answer to the 'wpad' host in a parent domain may return a proxy autoconfiguration file for an external proxy service. This could be used as part of a denial of service or to intercept client traffic.  This "Fallback" mechanism is deprecated by the IETF and is disabled in Mozilla Firefox, but may still be implemented in some browsers.
 
 Duane Wessels owns wpad.net, wpad.org and wpad.com; he provides graphed statistics for his webserver at http://www.life-gone-hazy.com/%7esnmp/http_status.cgi . (I believe the 404's include failed wpad.dat lookups; I should check -Adrian).
 
