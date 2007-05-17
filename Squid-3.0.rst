@@ -4,7 +4,7 @@
 
 = Squid 3.0 =
 
-It's the holy grail of squid development, also know as "The Great Rewrite".
+It's the holy grail of squid development, also known as "The Great Rewrite".
 Squid-2.* is already written in object-oriented C, with quite a few coding compromises to make up for the language's lack of OO features.
 
 It was thus decided to port the whole codebase over to C++, in order to benefit from the OO support of that language.
@@ -17,7 +17,7 @@ The actual transition may take much longer to fully complete, because there is a
  * Fix all critical and major bugs. 
  * Do some pre-releases and get user feedback.
  * release 3.0
- * Work on performance in 3.1
+ * Work on performance in Squid-3.1
 
 = Drive =
 
