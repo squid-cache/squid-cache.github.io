@@ -2,13 +2,18 @@
 
 == Overview ==
 
-Most modern User Agents implement a method of configuring proxy servers based on the Netscape-designed "proxy.pac" feature. This utilises the JavaScript engine to provide administrators with a method of allowing the User Agent to selectively uses proxy servers based on certain criteria.
+Many modern User Agents implement a method of configuring proxy servers based on the Netscape-designed "proxy.pac" feature, also known as Automatic Proxy Configuration (APC). This utilises the JavaScript engine to provide administrators with a method of allowing the User Agent to selectively uses proxy servers based on certain criteria.
+
 
 == Articles ==
 
  * [:Technology/ProxyPac/InternetExplorerCaching:Internet Explorer Caching] - Microsoft Internet Explorer's automatic proxy caching; how it can interfere with proxy.pac load balancing and failover
 
 == Examples ==
+
+Most modern graphical Web Browsers implement APC, including the current releases of Firefox, Internet Explorer, Netscape, Opera, and Safari.
+
+Sun's Java Web Start (JWS) has limited support for APC.
 
 == Further Reading ==
 
