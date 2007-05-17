@@ -6,10 +6,9 @@
 
 Now that Squid-3.0 is well into code-lock for its release we can start planning the activities needed for Squid-3.1. Enough time has been spent on 3.0 to give all the developers a good idea of where the code still needs major re-working with OO data protection.
 
-It was thus decided to port the whole codebase over to C++, in order to benefit from the OO support of that language.
-Two years into that, and despite some major efforts by many developers, we're still in the middle of the transition.
+Since it was decided to port the whole codebase over to C++, and despite some major efforts by many developers, we're still in the middle of the transition.
 
-The actual transition may take much longer to fully complete, because there is still a lot of code to update. However we also got into do long desired improvements at the same time, and the combination led to some instability.
+The actual transition may take much longer to fully complete, because there is still a lot of code that is duplicated or not properly OO-safe. Improvement of these areas should be given priority over completely new features added. If a new feature would naturally involve the cleanup of some area of code it should be looked at.
 
 = 3.1 Roadmap =
 
