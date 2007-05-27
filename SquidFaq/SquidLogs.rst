@@ -60,10 +60,15 @@ This logfile exists for Squid-1.0 only.  The format is
 {{{
 [date] URL peerstatus peerhost
 }}}
-== access.log ==
-Most log file analysis program are based on the entries in ''access.log''. Currently, there are two file formats possible for the log file, depending on your configuration for the ''emulate_httpd_log'' option. By default, Squid will log in its native log file format. If the above option is enabled, Squid will log in the common log file format as defined by the CERN web daemon.
 
-The common log file format contains other information than the native log file, and less. The native format contains more information for the admin interested in cache evaluation.
+== access.log ==
+
+Most log file analysis program are based on the entries in ''access.log''.
+
+[:Squid-2.6:Squid 2.6] allows the administrators to configure their logfile format with great flexibility previous version offered a much more limited functionality.
+
+Previous versions allow to log accesses either in native logformat (default) or using the [:http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format:http common logfile format] (CLF). The latter is enabled by specifying the ''emulate_httpd_log'' option in squid.conf.
+
 
 === The common log file format ===
 The [http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format Common Logfile Format] is used by numerous HTTP servers. This format consists of the following seven fields:
@@ -127,7 +132,7 @@ s/^\d+\.\d+/localtime $&/e;
 
 There may be two more columns in the ''access.log'', if the (debug) option ''log_mime_headers'' is enabled In this case, the HTTP request headers are logged between a "{{{[" and a "}}}]", and the HTTP reply headers are also logged between "{{{[" and "}}}]". All control characters like CR and LF are URL-escaped, but spaces are ''not'' escaped! Parsers should watch out for this.
 
-== Squid result codes ==
+=== Squid result codes ===
 The '''TCP_''' codes refer to requests on the HTTP port (usually 3128). The '''UDP_''' codes refer to requests on the ICP port (usually 3130). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged.
 
 The following result codes were taken from a Squid-2, compare with the ''log_tags'' struct in ''src/access_log.c'':
@@ -182,7 +187,7 @@ The following codes are no longer available in Squid-2:
 
 '''UDP_RELOADING''' See: UDP_MISS_NOFETCH.
 
-== HTTP status codes ==
+=== HTTP status codes ===
 These are taken from [ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2616] and verified for Squid. Squid-2 uses almost all codes except 307 (Temporary Redirect), 416 (Request Range Not Satisfiable), and 417 (Expectation Failed). Extra codes include 0 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for [ftp://ftp.isi.edu/in-notes/rfc2518.txt RFC 2518] (WebDAV). Yes, there are really two entries for status code 424, compare with ''http_status'' in ''src/enums.h'':
 
 {{{
@@ -235,7 +240,8 @@ These are taken from [ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2616] and verif
 *507 Insufficient Storage
  600 Squid header parsing error
 }}}
-== Request methods ==
+
+=== Request methods ===
 Squid recognizes several request methods as defined in [ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2616]. Newer versions of Squid (2.2.STABLE5 and above) also recognize [ftp://ftp.isi.edu/in-notes/rfc2518.txt RFC 2518] "HTTP Extensions for Distributed Authoring -- WEBDAV" extensions.
 
 {{{
@@ -259,7 +265,8 @@ Squid recognizes several request methods as defined in [ftp://ftp.isi.edu/in-not
  LOCK      rfc2518    never      lock an object against modifications.
  UNLOCK    rfc2518    never      unlock an object.
 }}}
-== Hierarchy Codes ==
+
+=== Hierarchy Codes ===
 The following hierarchy codes are used with Squid-2:
 
 '''NONE''' For TCP HIT, TCP failures, cachemgr requests and all UDP requests, there is no hierarchy information.
@@ -319,6 +326,30 @@ SSL_PARENT_MISS       SSL can now be handled by squid.
 FIREWALL_IP_DIRECT    No special logging for hosts inside the firewall.
 LOCAL_IP_DIRECT       No special logging for local networks.
 }}}
+
+== sending access.log to syslog ==
+
+[:Squid-2.6:Squid 2.6] allows to send access.log contents to a local syslog server by specifying {{{syslog}}} as a file path, for example as in:
+{{{
+access_log syslog squid
+}}}
+
+
+== customizable access.log ==
+
+[:Squid-2.6:Squid 2.6] and later versions feature a customizeable access.log format. To use this feature you must first  define a log format name using the '''logformat''' directive, then use the extended '''access_log''' directive specifying your newly-defined logfile format.
+
+
+=== defining a format ===
+
+/!\ FIXME: complete this chapter
+
+
+=== using a custom logfile format ===
+
+/!\ FIXME: complete this chapter
+
+
 == cache/log (Squid-1.x) ==
 This file has a rather unfortunate name.  It also is often called the ''swap log''.  It is a record of every cache object written to disk. It is read when Squid starts up to "reload" the cache.  If you remove this file when squid is NOT running, you will effectively wipe out your cache contents.  If you remove this file while squid IS running, you can easily recreate it.  The safest way is to simply shutdown the running process:
 
@@ -377,6 +408,7 @@ For example, use this cron entry to rotate the logs at midnight:
 {{{
 0 0 * * * /usr/local/squid/bin/squid -k rotate
 }}}
+
 == How can I disable Squid's log files? ==
 '''For Squid 2.4:'''
 
