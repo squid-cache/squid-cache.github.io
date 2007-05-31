@@ -66,7 +66,6 @@ There are a number of different access lists:
  * '''snmp_access''': Controls SNMP client access to the cache.
  * '''broken_posts''': Defines requests for which squid appends an extra CRLF after POST message bodies as required by some broken origin servers.
  * '''cache_peer_access''': Controls which requests can be forwarded to a given neighbor (peer).
-
 '''Notes''':
 
 An access list ''rule'' consists of an ''allow'' or ''deny'' keyword, followed by a list of ACL element names.
@@ -86,7 +85,7 @@ http_access allow|deny acl AND acl AND ...
         OR
 ...
 }}}
-If none of the rules are matched, then the default action is the ''opposite'' of the last rule in the list.  Its a good idea to be explicit with the default action.  The best way is to thse the ''all'' ACL.  For example:
+If none of the rules are matched, then the default action is the ''opposite'' of the last rule in the list.  Its a good idea to be explicit with the default action.  The best way is to use the ''all'' ACL.  For example:
 
 {{{
 acl all src 0/0
@@ -405,8 +404,7 @@ Then, of course, you'll have to rewrite your ''http_access'' lines as well.
 
 == Can I set up ACL's based on MAC address rather than IP? ==
 Yes, for some operating systes.  Squid calls these "ARP ACLs" and they are supported on Linux, Solaris, and probably BSD variants.
-
-|| /!\ ||MAC address is only available for clients that are on the same subnet.  If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router.||
+|| /!\ ||MAC address is only available for clients that are on the same subnet.  If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router. ||
 
 
 To use ARP (MAC) access controls, you first need to compile in the optional code.  Do this with the ''--enable-arp-acl'' configure option:
@@ -506,5 +504,4 @@ By default the maximum length of an ACL name is 32-1 = 31 characters, but it can
 }}}
 -----
 ##end
-
 Back to the SquidFaq
