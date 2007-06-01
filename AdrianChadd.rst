@@ -36,6 +36,12 @@ The progress:
  * 2006/09/27: Squid-3; ~ 3305req/sec (replace http request line parser with new one; remove another request buffer copy; introduce another temporary copy for the url buffer.)
  * 2007/06/01; Squid-3; ~ 3550req/sec (memory allocation changes in squid3_adri - don't bzero() buffers and such)
 
+Issues at the moment:
+
+ * 10% CPU use in memset() (the 0'ing of allocated buffers) - slowly fixing via some patches to not bzero()'ing certain buffers, but a lot of code assumes zero'ed structs and doesn't initialise everything.
+ * 5% CPU in memcpy() - header packing, copying copies of copied data..
+ * A hideously long tail of call timings; I need to try and aggregate the per-call timings into something that tells me which areas of the code are taking the most time as too many function calls take half a percent here, half a percent there..
+
 === TODO List ===
 
  * Evaluate linking Squid against libevent rather than rolling our own event framework
