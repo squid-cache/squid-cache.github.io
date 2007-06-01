@@ -8,7 +8,7 @@ How to email me? Google for "adrian chadd". Plenty of ways to contact me are ava
 
 === What do I do anyway? ===
 
-I work on Squid for fun. I'm employed as a network engineer currently rolling out QoS/VoIP to enterprises and fixing WAN networking issues. Simple stuff, but its fun. I'm also studying Psychology and Linguistics on the side; I need to complete my CCNA, CCDP and CCVP sometime in the next 6 months as part of my latest job; and somewhere I fit in sleep. So Squid is something I do for fun rather than because I'm using it in production anywhere.
+I work on Squid for fun. I'm back at University, studying Psychology and Linguistics on the side; I'm also working on various Cisco certifications just to keep a toe in the networking world. So Squid is something I do for fun rather than because I'm using it in production anywhere.
 
 My homepage can be found at http://www.creative.net.au/. Some old-ish squid related stuff can be found at http://www.squid-cache.org/~adrian/.
 
@@ -34,6 +34,19 @@ The progress:
  * 2006/09/25: Squid-3; ~ 3244req/sec
  * 2006/09/26: Squid-3; ~ 3158req/sec (remove 'prefix' buffer and associated copy; introduce a little overhead in the parsing which will eventually go away.)
  * 2006/09/27: Squid-3; ~ 3305req/sec (replace http request line parser with new one; remove another request buffer copy; introduce another temporary copy for the url buffer.)
+ * 2007/06/01; Squid-3; ~ 3550req/sec (memory allocation changes in squid3_adri - don't bzero() buffers and such)
+
+=== TODO List ===
+
+ * Evaluate linking Squid against libevent rather than rolling our own event framework
+ * Evaluate using boost::asio for network IO; which would allow for a whole lot of interesting stuff (efficient windows networking, scatter/gather IO, multi-thread event layer, etc.)
+ * Look at writing a "link" class which has a TCP socket on one side and producer/consumer hooks on the other side; so various networking bits don't have to care about sockets
+ * Rip out all of the delay-aware read code and give some thought to doing it "neatly"
+ * Write some gather write() code to implement a writev() type and evaluate what speedup is achievable by using writev() to write a list of headers to a socket rather than using the packer (as the kernel still has to copy the data anyway) - this'll be trickyish as the API needs to ensure the underlying data used doesn't change, rather than the current situation where once the reply has been packed into a MemBuf said reply can be freed, and the MemBuf will hang around.. (not that I think that happens, but it needs to be explicitly defined that way..)
+ * Look at the ClientStreams interface and try to separate out various HTTP "messages" (request/reply info, headers, request body, reply body, trailers) so we don't have to re-parse/pack the stream so many times
+
+
+
 
 ----
 CategoryHomepage
