@@ -4,7 +4,7 @@
 
 = Squid 3.1 =
 
-Now that Squid-3.0 is well into code-lock for its release we can start planning the activities needed for Squid-3.1. Enough time has been spent on 3.0 to give all the developers a good idea of where the code still needs major re-working with OO data protection.
+Now that ["Squid-3.0"] Squid-3.0 is well into code-lock for its release we can start planning the activities needed for Squid-3.1. Enough time has been spent on 3.0 to give all the developers a good idea of where the code still needs major re-working with OO data protection.
 
 Since it was decided to port the whole codebase over to C++, and despite some major efforts by many developers, we're still in the middle of the transition.
 
