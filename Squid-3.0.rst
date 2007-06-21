@@ -17,7 +17,7 @@ The actual transition may take much longer to fully complete, because there is a
  * Fix all critical and major bugs. 
  * Do some pre-releases and get user feedback.
  * release 3.0
- * Work on performance in Squid-3.1
+ * Work on performance in ["Squid-3.1"]
 
 = Drive =
 
