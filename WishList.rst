@@ -67,7 +67,7 @@ Amos Jeffries
 === Description ===
 
 We need squid to be fully capable of connecting to over IPv6. This is not presently available in any public STABLE version of Squid.
-There have been some attempts at patches made as far back as squid 1.1. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial but apparently excellent patch for ["Squid-2.6"] STABLE6 at http://jaringan.info/2007/01/02/squid-ipv6-update-1/ , though be warned a few issues have been fixed in ["Squid-2.6"] since STABLE6 was released.
+There have been some attempts at patches made as far back as squid 1.1. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial but apparently excellent patch for ["Squid-2.6"] STABLE6 at http://jaringan.info/2007/01/02/squid-ipv6-update-1/ , ([http://jaringan.info/squid/squid-2.6.STABLE6.v6patch.20070109.diff download]) though be warned a few issues have been fixed in ["Squid-2.6"] since STABLE6 was released.
 
 === Progress ===
 
