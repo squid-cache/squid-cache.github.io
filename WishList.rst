@@ -66,14 +66,14 @@ Amos Jeffries
 
 === Description ===
 
-We need squid to be fully capable of connecting to over IPv6. This is not presently available in any public version of Squid.
-There have been some attempts at patches made as far back as squid 2.5. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial patch for 2.6 STABLE6 at http://jaringan.info/2007/01/02/squid-ipv6-update-1/.
+We need squid to be fully capable of connecting to over IPv6. This is not presently available in any public STABLE version of Squid.
+There have been some attempts at patches made as far back as squid 1.1. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial but apparently excellent patch for 2.6 STABLE6 at http://jaringan.info/2007/01/02/squid-ipv6-update-1/ , though be warned a few issues have been fixed in 2.6 since STABLE6 was released.
 
 === Progress ===
 
-Progress has been rocky on this feature with some time spent with no maintainers. Progress is being made rapidly now however and a hopefully testing version is now available. After testing it is scheduled for inclusion in Squid 3.1 due to Squid 3.0 now being in feature freeze.
+Progress has been rocky on this feature with quite some time spent with no maintainers. Progress is being made rapidly now however and a Beta testing version is now available. It is scheduled for inclusion in Squid 3.1 due to Squid 3.0 now being in feature freeze. In the meanwhile it is supported and open for public testing and use if it passes your tests.
 
-Please read http://devel.squid-cache.org/squid3-ipv6/ for the latest details then contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
+Please read http://devel.squid-cache.org/squid3-ipv6/ for the latest details then either download teh versio from CVS or contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
 
 == HTTP File Helper ==
 
