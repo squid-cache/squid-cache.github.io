@@ -29,7 +29,7 @@ The ability to write logfile contents (specifically the access log, but extended
 
 === Progress ===
 
-Prototyping was done using Squid-2 - check the devel site for patches. Work wasn't merged into the Squid-2.6 or Squid-2 tree. Adrian has slated for this work to appear sometime in Squid-3. Tim Starling from the Wikipedia project has contributed some test patches for UDP logging.
+Prototyping was done using Squid-2 - check the devel site for patches. Work wasn't merged into the ["Squid-2.6"] or Squid-2 tree. Adrian has slated for this work to appear sometime in Squid-3. Tim Starling from the Wikipedia project has contributed some test patches for UDP logging.
 
 This needs to be tied into a simple, generic logfile layer for punting logfile handling to various modules. This will allow people to implement their own logfile layer as they see fit.
 
@@ -53,7 +53,7 @@ Alex Russkov.
 
 === Description ===
 
-ICAP support is slated for Squid-3. Patches exist for Squid-2.5 and Squid-2.6 to implement ICAP but they're a hack at best and have been known to have subtle issues with various ICAP servers.
+ICAP support is slated for ["Squid-3.0"]. Patches exist for ["Squid-2.5"] and ["Squid-2.6"] to implement ICAP but they're a hack at best and have been known to have subtle issues with various ICAP servers.
 
 Please contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
 
@@ -67,13 +67,13 @@ Amos Jeffries
 === Description ===
 
 We need squid to be fully capable of connecting to over IPv6. This is not presently available in any public STABLE version of Squid.
-There have been some attempts at patches made as far back as squid 1.1. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial but apparently excellent patch for 2.6 STABLE6 at http://jaringan.info/2007/01/02/squid-ipv6-update-1/ , though be warned a few issues have been fixed in 2.6 since STABLE6 was released.
+There have been some attempts at patches made as far back as squid 1.1. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial but apparently excellent patch for ["Squid-2.6"] STABLE6 at http://jaringan.info/2007/01/02/squid-ipv6-update-1/ , though be warned a few issues have been fixed in ["Squid-2.6"] since STABLE6 was released.
 
 === Progress ===
 
-Progress has been rocky on this feature with quite some time spent with no maintainers. Progress is being made rapidly now however and a Beta testing version is now available. It is scheduled for inclusion in Squid 3.1 due to Squid 3.0 now being in feature freeze. In the meanwhile it is supported and open for public testing and use if it passes your tests.
+Progress has been rocky on this feature with quite some time spent with no maintainers. Progress is being made rapidly now however and a Beta testing version is available. It is scheduled for inclusion in ["Squid-3.1"] due to ["Squid-3.0"] now being in feature freeze. In the meanwhile it is supported and open for public testing and use if it passes your tests.
 
-Please read http://devel.squid-cache.org/squid3-ipv6/ for the latest details then either download teh versio from CVS or contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
+Please read http://devel.squid-cache.org/squid3-ipv6/ for the latest details then either download the version from CVS or contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
 
 == HTTP File Helper ==
 
