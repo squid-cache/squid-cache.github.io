@@ -93,5 +93,24 @@ The existence of such a helper is still very much on the drawing board.
 Please contact the Squid developer team if you're interested in discussing the implementation of this feature.
 
 
+== squid.conf Modular Configuration ==
+
+=== Contacts ===
+
+Amos Jeffries
+
+=== Description ===
+
+Adding an include option to squid.conf patterned on the Apache 2.0 Include directive would allow a number of improvements including ACL sharing - a commonly used set of ACL and permissions can be officially bundled in their own file and distributed.
+  Splitting the permission flow of HTTP requests from those of FTP, and from Peer config etc. would make most configurations much simpler to understand and maintain in the long-term.
+
+While the idea for this is simple and completely backward compatible with existing configurations. The implementation may not be simple as there are a number of internal mechanisms that interact with the squid.conf source files at compile and release time.
+
+=== Progress ===
+
+The existence is still very much on the drawing board.
+
+Please contact the Squid developer team if you're interested in discussing the implementation of this feature.
+
 ----
 CategoryHomepage
