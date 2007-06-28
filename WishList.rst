@@ -13,6 +13,9 @@ This is an attempt to collate and publicise the list of features people would li
 
 If people are interested in partially or fully funding any given Squid project then please contact the Squid developers or the contact person for each project listed below. Organising funding, even if its just a little, is by far the best way to get something done (of course, the best best way is if you've coded it yourself, but we do understand that not everyone can code.)
 
+[[TableOfContents]]
+
+
 == Logfile helpers ==
 
 === Contacts ===
