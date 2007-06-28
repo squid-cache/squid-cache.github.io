@@ -5,7 +5,7 @@
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 
 ## if you want to have a table of comments remove the heading hashes from the next line
-## [[TableOfContents(2)]]
+## [[TableOfContents]]
 
 = The Squid Wish List =
 
@@ -13,7 +13,7 @@ This is an attempt to collate and publicise the list of features people would li
 
 If people are interested in partially or fully funding any given Squid project then please contact the Squid developers or the contact person for each project listed below. Organising funding, even if its just a little, is by far the best way to get something done (of course, the best best way is if you've coded it yourself, but we do understand that not everyone can code.)
 
-[[TableOfContents]]
+[[TableOfContents(2)]]
 
 
 == Logfile helpers ==
