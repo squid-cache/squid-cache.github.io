@@ -28,7 +28,7 @@ If you make automake related changes then you will need to bootstrap your tree -
 sh bootstrap.sh
 }}}
 
-This may give errors if you dont have the right distribution-time dependencies (libtool, automake > 1.5, autoconf > 2.50).
+This may give errors if you don't have the right distribution-time dependencies (libtool, automake > 1.5, autoconf > 2.50).
 
 To update your source tree later, type:
 {{{
@@ -37,7 +37,7 @@ To update your source tree later, type:
 
 == Access to developer branches ==
 
-Many works in progress is hosted in our public developer CVS repository. For more information see the developer site at http://devel.squid-cache.org/
+Many works in progress are hosted in our public [http://devel.squid-cache.org/CVS.html developer CVS] respository. Information for developers and testers is on the developer site at http://devel.squid-cache.org/
 
 == Access to older Squid version ==
 
