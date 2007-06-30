@@ -3,7 +3,7 @@
 == The Bleeding Edge ==
 CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [http://www.squid-cache.org/cgi-bin/cvsweb.cgi CVSWeb].
 
-In order to use the CVS sources, or when developing some parts of Squid, you need to performe a source bootstrap operation. How and Why are described in SourceBootstrap.
+In order to use the CVS sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in SourceBootstrap.
 
 == Developer Projects ==
 To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
@@ -25,8 +25,14 @@ Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written
 
 [http://cppunit.sourceforge.net/cppunit-wiki CppUnit] is used to perform unit testing.
 
+== Testing ==
+
+If you are looking to test the latest release of Squid you will need to grab yourself a copy of the sources from CVS (CVSInstructions) or one of the DailySnapshot tarballs.
+
+To test a specific project branch you will need to either pull the daily snapshot and apply the branch patch available at http://devel.squid-cache.org/projects.html or pull the branch code directly from CVS.
+
 == Project organization ==
-ReleaseProcess describes the process and criterias used by the Squid Developers when making new Squid releases.
+ReleaseProcess describes the process and criteria used by the Squid Developers when making new Squid releases.
 
 WhoWeAre explains who are the people working on the squid project.
 
