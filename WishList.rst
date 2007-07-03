@@ -70,11 +70,11 @@ Amos Jeffries
 === Description ===
 
 We need squid to be fully capable of connecting to over IPv6. This is not presently available in any public STABLE version of Squid.
-There have been some attempts at patches made as far back as squid 1.1. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial but apparently excellent patch for ["Squid-2.6"] STABLE6 at http://jaringan.info/2007/01/02/squid-ipv6-update-1/ , ([http://jaringan.info/squid/squid-2.6.STABLE6.v6patch.20070109.diff download]) though be warned a few issues have been fixed in ["Squid-2.6"] since STABLE6 was released.
+There have been some attempts at patches made as far back as squid 1.1. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial third-party patch for ["Squid-2.6"] at http://jaringan.info/. the latest diff is also available for download from http://devel.squid-cache.org/squid3-ipv6/.
 
 === Progress ===
 
-Progress has been rocky on this feature with quite some time spent with no maintainers. Progress is being made rapidly now however and a Beta testing version is available. It is scheduled for inclusion in ["Squid-3.1"] due to ["Squid-3.0"] now being in feature freeze. In the meanwhile it is supported and open for public testing and use if it passes your tests.
+Progress has been rocky on this feature with quite some time spent with no maintainers. Progress has been made rapidly now however and eth code has reached a Beta testing version. It is scheduled for inclusion in ["Squid-3.1"] due to ["Squid-3.0"] now being in feature freeze. In the meanwhile it is supported and open for public testing and use if it passes your tests.
 
 Please read http://devel.squid-cache.org/squid3-ipv6/ for the latest details then either download the version from CVS or contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
 
