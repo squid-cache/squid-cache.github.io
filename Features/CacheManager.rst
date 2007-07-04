@@ -36,7 +36,7 @@ Exec            /Squid/cgi-bin/*.cgi    /usr/local/squid/bin/*.cgi
 }}}
 This marks the script as executable to those in MGR-PROT.
 
-== Cache manager configuration for Apache ==
+== Cache manager configuration for Apache 1.x ==
 First, make sure the cgi-bin directory you're using is listed with a Script''''''Alias in your Apache ''httpd.conf'' file like this:
 
 {{{
@@ -66,6 +66,41 @@ require user cachemanager
 </Location>
 }}}
 Consult the Apache documentation for information on using ''htpasswd'' to set a password for this "user."
+
+== Cache manager configuration for Apache 2.x ==
+
+First, make sure the cgi-bin directory you're using is listed with a Script''''''Alias in your Apache config.
+In the Apache config there is a sub-directory ''/etc/apache2/conf.d'' for application specific settings (unrelated to any specific site). Create a file ''conf.d/squid'' containing this:
+
+{{{
+ScriptAlias /Squid/cgi-bin/cachemgr.cgi /usr/local/squid/cgi-bin/cachemgr.cgi
+
+<Location /Squid/cgi-bin/cachemgr.cgi>
+order allow,deny
+allow from workstation.example.com
+</Location>
+}}}
+'''SECURITY NOTE:''' 
+It's possible but a '''bad''' idea to Script''''''Alias the entire ''//usr/local/squid/bin/'' directory where all the Squid executables live.
+
+You should ensure that only specified workstations can access the cache manager.  That is done in your Apache ''conf.d/squid'' <Location> settings, not in ''squid.conf''.
+
+You can have more than one allow line, and you can allow domains or networks.
+
+Alternately, ''cachemgr.cgi'' can be password-protected.  You'd add the following to ''conf.d/squid'':
+
+{{{
+<Location /Squid/cgi-bin/cachemgr.cgi>
+AuthUserFile /path/to/password/file
+AuthGroupFile /dev/null
+AuthName User/Password Required
+AuthType Basic
+require user cachemanager
+</Location>
+}}}
+Consult the Apache 2.0 documentation for information on using ''htpasswd'' to set a password for this "user."
+
+To further protect the cache-manager on public systems you should consider creating a whole new <VirtualHost> segment in the Apache configuration for the squid manager. This is done by creating a file in the Apache configuration sub-directory ''.../apache2/sites-enabled/'' usually with the domain name of the new site, see the Apache 2.0 documentation for further details for your system.
 
 == Cache manager configuration for Roxen 2.0 and later ==
 by FrancescoChemolli
