@@ -4,13 +4,21 @@
 #format wiki
 #language en
 
-= Blocking Content Based on Mime Types =
+= Blocking Content Based on MIME Types =
 
 '''Synopsis'''
 
-A popular request is to block certain content types from being served to clients. Squid currently can not do "content inspection" to decide on the file type based on the contents, but it is able to block HTTP replies based on the servers' content Mime Type reply.
+A popular request is to block certain content types from being served to clients. Squid currently can not do "content inspection" to decide on the file type based on the contents, but it is able to block HTTP replies based on the servers' content MIME Type reply.
 
-The Mime Type reply is generally set correctly so browsers are able to pass the reply to the correct module (image, text, html, flash, music, mpeg, etc.)
+The MIME Type reply is generally set correctly so browsers are able to pass the reply to the correct module (image, text, html, flash, music, mpeg, etc.)
+
+'''Example: Blocking Flash Video'''
+
+One popular example is to block flash video, used by sites such as Youtube.
+
+The MIME type for such content is "video/flv". Creating an ACL to block this is easy.
+
+First, create an ACL which matches the MIME type in question.
 
 {{{ 
 acl deny_rep_mime_flashvideo rep_mime_type video/flv
