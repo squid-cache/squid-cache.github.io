@@ -27,9 +27,17 @@ Next, you need to tell Squid where to find the real web server:
 {{{
 cache_peer ip.of.webserver parent 80 0 no-query originserver
 }}}
+And finally you need to set up access controls to allow access to your site
+
+{{{
+acl our_sites dstdomain your.main.website
+http_access allow our_sites
+}}}
 You should now be able to start Squid and it will serve requests as a HTTP server.
 
 Note: The accel option to http_port is optional and should only be specified for 2.6.STABLE8 and later. In all versions Squid-2.6 and later specifying one of defaultsite or vhost is sufficient.
+
+Accelerator mode in Squid-2.5 worked quite differently, and upgrade to 2.6 or later is strongly recommended if you still use Squid-2.5.
 
 == Domain based virtual host support ==
 If you are using Squid has an accelerator for a domain based virtual host system then you need to additionally specify the vhost option to http_port
