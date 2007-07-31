@@ -50,15 +50,50 @@ When both defaultsite and vhost is specified defaultsite specifies the domain na
 == Sending different requests to different backend web servers ==
 To control which web servers (cache_peer) gets which requests the cache_peer_access or cache_peer_domain directives is used. These directives limit which requests may be sent to a given peer.
 
+Example mapping different host names to different peers:
+
+{{{
+www.example.com		-> server 1
+example.com		-> server 1
+download.example.com 	-> server 2
+.example.net		-> server 2
+}}}
+squid.conf:
+
 {{{
 cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
 acl sites_server_1 dstdomain www.example.com example.com
 cache_peer_access server_1 allow sites_server_1
 cache_peer ip.of.server2 parent 80 0 no-query originserver name=server_2
-acl sites_server_2 dstdomain www.example.net .example.net
+acl sites_server_2 dstdomain www.example.net download.example.com .example.net
 cache_peer_access server_2 allow sites_server_2
 }}}
-It's also possible to route requests based on other criterias than the host name by using other acl types, such as urlpath_regex. But be warned that the cache is on the requested URL so don't use user dependent acls if the content is cached.
+Or the same using cache_peer_domain
+
+{{{
+cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
+cache_peer_domain server_1 www.example.com example.com
+cache_peer ip.of.server2 parent 80 0 no-query originserver name=server_2
+cache_peer_domain server_2 download.example.com .example.net
+}}}
+It's also possible to route requests based on other criterias than the host name by using other acl types, such as urlpath_regex.
+
+Example mapping requests based on the URL-path:{{{
+/foo            ->      server2
+the rest        ->      server1
+}}}
+squid.conf:
+
+{{{
+cache_peer ip.of.server1 parent 80 0 no-query originserver name=server1
+cache_peer ip.of.server2 parent 80 0 no-query originserver name=server2
+acl foo urlpath_regex ^/foo
+cache_peer_access server2 allow foo
+cache_peer_access server1 deny foo
+}}}
+Note: Remember that the cache is on the requested URL and not which peer the request is forwarded to so don't use user dependent acls if the content is cached.
+
+
 
 == Running the web server on the same server ==
 While not generally recommended it is possible to run both the accelerator and the backend web server on the same host. To do this you need to make them listen on different IP addresses. Usually the loopback address (127.0.0.1) is used for the web server.
@@ -99,22 +134,7 @@ If the content on the web servers is password protected then you need to tell th
 {{{
 cache_peer ip.of.server parent 80 0 no-query originserver login=PASS
 }}}
-== Mapping different URLs to different backend servers ==
-If you need to map different URLs to different backend servers then define one cache_peer per server, then use cache_peer_access (or _domain) to define which URLs should be sent to each server. Remember that a cache_peer is by default a candidate for all requests unless limited by cache_peer_access (or _domain) so you need to define this for all peers.
 
-Example:
 
-{{{
-/foo            ->      server2
-the rest        ->      server1
-}}}
-squid.conf:
-
-{{{
-cache_peer ip.of.server1 parent 80 0 no-query originserver name=server1
-cache_peer ip.of.server2 parent 80 0 no-query originserver name=server2
-acl foo urlpath_regex ^/foo
-cache_peer_access server2 allow foo
-cache_peer_access server1 deny foo}}}
 -----
  . Back to the SquidFaq
