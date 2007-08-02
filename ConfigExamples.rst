@@ -8,6 +8,13 @@ This is a collection of example Squid Configurations intended to demonstrate the
 '''Warning''': Any example presented here is provided "as-is" with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list.
 ## warning end
 
+
+We now provide an the Authoritative Configuration Manual for each version of squid. These manuals are built daily and directly from the squid source code to provide the most up to date information on squid options. Recent releases of squid now come packaged with a copy of their Manual built during the release process.
+
+For Squid-2.6 the Manual is at http://www.squid-cache.org/Versions/v2/2.6/cfgman/
+
+For Squid-3.0 the Manual is at http://www.squid-cache.org/Versions/v3/3.0/cfgman/
+
 == Create new configuration example ==
 
 Choose a good WikiName for your new example and enter it here:
