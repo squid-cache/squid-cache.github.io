@@ -40,7 +40,12 @@ The following are typical content adaptation needs. Virtually all of the adaptat
 
 == ICAP ==
 
-Internet Content Adaptation Protocol (RFC [http://www.rfc-editor.org/rfc/rfc3507.txt 3507], subject to [http://www.measurement-factory.com/std/icap/ errata]) specifies how an HTTP proxy (an ICAP client) can outsource content adaptation to an external ICAP server. Most popular proxies, including Squid, support ICAP. If your adaptation algorithm resides in an ICAP server, it will be able to work in a variety of environments and will not depend on a single proxy project or vendor. No proxy modifications are necessary for most content adaptations using ICAP.
+Internet Content Adaptation Protocol (RFC [http://www.rfc-editor.org/rfc/rfc3507.txt 3507], subject to [http://www.measurement-factory.com/std/icap/ errata]) specifies how an HTTP proxy (an ICAP client) can outsource content adaptation to an external ICAP server. Most popular proxies, including Squid, support ICAP. If your adaptation algorithm resides in an ICAP server, it will be able to work in a variety of environments and will not depend on a single proxy project or vendor. No proxy code modifications are necessary for most content adaptations using ICAP.
+
+ '''Pros''': Clear API, proxy-independent, focus on adaptation, supports remote adaptation servers.
+
+ '''Cons''': Communication delays, protocol limitations, needs a stand-alone ICAP server process or box.
+
 
 One proxy may access many ICAP servers, and one ICAP server may be accessed by many proxies. An ICAP server may reside on the same physical machine as Squid or run on a remote host. Depending on configuration and context, some ICAP failures can be bypassed, making them invisible to proxy end-users.
 
@@ -60,38 +65,35 @@ The above list is not comprehensive and is not meant as an endorsement. Any ICAP
 
 More information about ICAP is available on the ICAP [http://www.icap-forum.org/ Forum]. While the Forum site has not been actively maintained, its members-only [http://www.icap-forum.org/chat/ newsgroup] is still a good place to discuss ICAP issues.
 
-'''Pros''': Clear API, proxy-independent, focus on adaptation, supports remote adaptation servers.
-
-'''Cons''': Communication delays, protocol limitations, needs a stand-alone server process or box.
-
 
 == Client Streams ==
 
 Squid3 comes with a Client Streams classes that was designed for embedded server side includes (ESI) and can be used to support other forms of content adaptation. Client Streams are limited to response modification. Unfortunately, Client Streams creators have not been actively participating in Squid development for a while, little API documentation is available, and the long-term sustainability of the code is uncertain. Custom Client Streams integrated with Squid may need to be licensed under GPL (TODO: Point to doxygen and other Client Streams documentation)
 
-'''Pros''': Fast, integrated, focus on adaptation, mostly independent from Squid sources modifications.
+ '''Pros''': Fast, integrated, focus on adaptation, mostly independent from Squid sources modifications.
 
-'''Cons''': Lack of API documentation and support, cannot modify or satisfy requests, dependent on Squid (installation and license).
+ '''Cons''': Lack of API documentation and support, cannot modify or satisfy requests, dependent on Squid (installation and license).
 
 
 == eCAM ==
 
 It would be nice to add support for pluggable or embedded Content Adaptation Modules to Squid3. Such modules would be written using a simple public API and dynamically or statically loaded into Squid. This approach will allow for fast content adaptation without tight dependency on Squid sources. Other proxies and even ICAP servers may chose to support the same API, removing dependency on Squid.
 
+ '''Pros''': Fast, integrated, clear API, focus on adaptation.
+
+ '''Cons''': dependent on Squid installation (at least in the beginning).
+
 If you need to implement an integrated content adaptation solution without ICAP overheads, please consider working with Squid developers on finalizing the eCAM interfaces and implement your code using that API. On the Squid side, a lot of ICAP-related code can be reused for communicating with eCAM modules (with networking calls replaced by function calls) so no major Squid rewrite should be necessary.
 
-'''Pros''': Fast, integrated, clear API, focus on adaptation.
-
-'''Cons''': dependent on Squid installation (at least in the beginning).
 
 
 == Code hacks ==
 
 It is possible to modify Squid sources to perform custom content adaptation. Simple and generic adaptations such as header manipulations may be accepted into the official Squid code base, minimizing long-term maintenance overheads. Unfortunately, most adaptations are complex, not limited to headers, or highly customized and, hence, are unlikely to be accepted. You may need to modify your code for every Squid release and license your software under GPL. The code will not work with other proxies.
 
-'''Pros''': Fast, integrated.
+ '''Pros''': Fast, integrated.
 
-'''Cons''': Must study Squid sources (no API), dependent on Squid (installation, sources, license).
+ '''Cons''': Must study Squid sources (no API), dependent on Squid (installation, sources, license).
 
 
 
