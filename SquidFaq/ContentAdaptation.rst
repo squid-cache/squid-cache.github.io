@@ -19,21 +19,21 @@ This page highlights content adaptation approaches supported by Squid.
 
 The following are typical content adaptation needs. Virtually all of the adaptations listed below have been implemented using one or more mechanisms described in this document.
 
-* Add, remove, or modify an HTTP header field (e.g., cookies)
+ * Add, remove, or modify an HTTP header field (e.g., cookies)
 
-* Block messages based on request URLs 
+ * Block messages based on request URLs
 
-* Block messages based on content
+ * Block messages based on content
 
-* Redirect certain requests to a custom page or server
+ * Redirect certain requests to a custom page or server
 
-* Respond to certain requests with a custom page
+ * Respond to certain requests with a custom page
 
-* Modify a page to insert new content (e.g., warnings or ads)
+ * Modify a page to insert new content (e.g., warnings or ads)
 
-* Modify a page to remove existing content (e.g., images or ads)
+ * Modify a page to remove existing content (e.g., images or ads)
 
-* Scale an embedded image (e.g., for mobile devices)
+ * Scale an embedded image (e.g., for mobile devices)
 
 
 = Adaptation Mechanisms =
@@ -48,13 +48,13 @@ Squid3 comes with integrated ICAP support. Pre-cache REQMOD and RESPMOD vectorin
 
 While writing a yet another ICAP server from scratch is always a possibility, the following ICAP servers can be modified to support the adaptations you need. Some ICAP servers even accept custom adaptation modules or plugins.
 
-* [http://c-icap.sourceforge.net/ C-ICAP]
+ * [http://c-icap.sourceforge.net/ C-ICAP]
 
-* [http://spicer.measurement-factory.com/ Traffic Spicer]
+ * [http://spicer.measurement-factory.com/ Traffic Spicer]
 
-* [http://www.poesia-filter.org/ POESIA]
+ * [http://www.poesia-filter.org/ POESIA]
 
-* original [http://www.icap-forum.org/spec/icap-server10.tar.gz reference implementation] by Network Appliance
+ * original [http://www.icap-forum.org/spec/icap-server10.tar.gz reference implementation] by Network Appliance
 
 The above list is not comprehensive and is not meant as an endorsement. Any ICAP server will have unique set of pros and cons in the context of your adaptation project.
 
@@ -102,7 +102,7 @@ The following mailing list threads cover some content adaptation scenarios and o
 
 = Warning =
 
-Certain forms of content adaptation are considered illegal by [http://www.ietf.org/ IETF] (see, for example, RFC [http://www.rfc-editor.org/rfc/rfc3238.txt 3238]). Many forms of content adaptation will annoy content owners, producers, consumers, or all of the above. Not everything that is technically possible is ethical, desirable, or legal. Think before you adapt others content!
+Certain forms of content adaptation are considered harmful by [http://www.ietf.org/ IETF] (see, for example, RFC [http://www.rfc-editor.org/rfc/rfc3238.txt 3238]). Many forms of content adaptation will annoy content owners, producers, consumers, or all of the above. Not everything that is technically possible is ethical, desirable, or legal. Think before you adapt others content!
 
 ----
 CategoryKnowledgeBase
