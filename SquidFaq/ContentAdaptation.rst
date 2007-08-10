@@ -31,6 +31,7 @@ The following are typical content adaptation needs. Virtually all of the adaptat
 
 = Adaptation Mechanisms =
 
+[[Anchor(secICAP)]]
 == ICAP ==
 
 Internet Content Adaptation Protocol (RFC [http://www.rfc-editor.org/rfc/rfc3507.txt 3507], subject to [http://www.measurement-factory.com/std/icap/ errata]) specifies how an HTTP proxy (an ICAP client) can outsource content adaptation to an external ICAP server. Most popular proxies, including Squid, support ICAP. If your adaptation algorithm resides in an ICAP server, it will be able to work in a variety of environments and will not depend on a single proxy project or vendor. No proxy code modifications are necessary for most content adaptations using ICAP.
@@ -55,6 +56,7 @@ The above list is not comprehensive and is not meant as an endorsement. Any ICAP
 More information about ICAP is available on the ICAP [http://www.icap-forum.org/ Forum]. While the Forum site has not been actively maintained, its members-only [http://www.icap-forum.org/chat/ newsgroup] is still a good place to discuss ICAP issues.
 
 
+[[Anchor(secClientStreams)]]
 == Client Streams ==
 
 Squid3 sources include [:ProgrammingGuide/ClientStreams:ClientStreams] classes designed for embedded server-side includes (ESI). A Client Streams node has access to the HTTP response message being received from the origin server or being fetched from the cache. By modifying Squid code, new nodes performing custom content adaptation may be added. Client Streams are limited to response modification.
@@ -66,7 +68,7 @@ Squid3 sources include [:ProgrammingGuide/ClientStreams:ClientStreams] classes d
 Unfortunately, Client Streams creators have not been actively participating in Squid development for a while, little API [:ProgrammingGuide/ClientStreams:documentation] is available, and the long-term sustainability of the code is uncertain. Custom Client Streams code integrated with Squid may need to be licensed under GPL.
 
 
-
+[[Anchor(seceCAM)]]
 == eCAM ==
 
 Pluggable or embedded Content Adaptation Modules are like ICAP servers embedded into Squid. The Adaptation Modules would be written using a simple public API and dynamically or statically loaded into Squid. This approach will allow for fast content adaptation without tight dependency on Squid sources. Other proxies and even ICAP servers may chose to support the same API, removing dependency on Squid. This API has not been developed yet.
@@ -78,6 +80,7 @@ Pluggable or embedded Content Adaptation Modules are like ICAP servers embedded 
 If you need to implement an integrated content adaptation solution without ICAP overheads, please consider working with Squid developers on finalizing the eCAM interfaces and implement your code using that API. On the Squid side, a lot of ICAP-related code can be reused for communicating with eCAM modules (with networking calls replaced by function calls) so no major Squid rewrite should be necessary.
 
 
+[[Anchor(secCodeHacks)]]
 == Code hacks ==
 
 It is possible to modify Squid sources to perform custom content adaptation without using the Client Streams mechanism described above. Simple and generic adaptations such as header manipulations may be accepted into the official Squid code base, minimizing long-term maintenance overheads.
@@ -89,6 +92,19 @@ It is possible to modify Squid sources to perform custom content adaptation with
 Unfortunately, most adaptations are relatively complex, not limited to headers, or highly customized and, hence, are unlikely to be accepted. Message body adaptation is especially difficult because Squid does not buffer the entire message body, but instead processes one semi-random piece of content at a time.
 
 Developers concerned with Squid code quality and bloat may not want to help you with specific coding problems. On the other hand, you may need to modify your code for every Squid release and license your software under GPL. The code will not work with other proxies.
+
+== Summary ==
+
+Each adaptation mechanism has its strength and weaknesses. The following table attempts to rank mechanisms using frequently used evaluation criteria.
+
+|| '''Evaluation Criteria''' || '''Mechanisms in rough order from "best" to "worst"''' ||
+|| Squid independence || [#secICAP ICAP], [#seceCAM eCAM], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
+|| Processing speed || [#seceCAM eCAM] or [#secClientStreams Client Streams] or [#secCodeHacks code hacks], [#secICAP ICAP] ||
+|| Development effort (header adaptation)|| [#secCodeHacks code hacks], [#secClientStreams Client Streams], [#seceCAM eCAM], [#secICAP ICAP] ||
+|| Development effort (content adaptation)|| [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
+|| Versatility || [#secCodeHacks code hacks], [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams] ||
+|| Maintenance overheads || [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
+
 
 = Additional resources =
 
