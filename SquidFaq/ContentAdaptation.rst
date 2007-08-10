@@ -42,9 +42,9 @@ The following are typical content adaptation needs. Virtually all of the adaptat
 
 Internet Content Adaptation Protocol (RFC [http://www.rfc-editor.org/rfc/rfc3507.txt 3507], subject to [http://www.measurement-factory.com/std/icap/ errata]) specifies how an HTTP proxy (an ICAP client) can outsource content adaptation to an external ICAP server. Most popular proxies, including Squid, support ICAP. If your adaptation algorithm resides in an ICAP server, it will be able to work in a variety of environments and will not depend on a single proxy project or vendor. No proxy code modifications are necessary for most content adaptations using ICAP.
 
- '''Pros''': Clear API, proxy-independent, focus on adaptation, supports remote adaptation servers.
+ '''Pros''': Proxy-independent, adaptation-focused API, supports remote adaptation servers, Squid sources independent, scalable.
 
- '''Cons''': Communication delays, protocol limitations, needs a stand-alone ICAP server process or box.
+ '''Cons''': Communication delays, protocol functionality limitations, needs a stand-alone ICAP server process or box.
 
 
 One proxy may access many ICAP servers, and one ICAP server may be accessed by many proxies. An ICAP server may reside on the same physical machine as Squid or run on a remote host. Depending on configuration and context, some ICAP failures can be bypassed, making them invisible to proxy end-users.
@@ -68,20 +68,23 @@ More information about ICAP is available on the ICAP [http://www.icap-forum.org/
 
 == Client Streams ==
 
-Squid3 comes with a Client Streams classes that was designed for embedded server side includes (ESI) and can be used to support other forms of content adaptation. Client Streams are limited to response modification. Unfortunately, Client Streams creators have not been actively participating in Squid development for a while, little API documentation is available, and the long-term sustainability of the code is uncertain. Custom Client Streams integrated with Squid may need to be licensed under GPL (TODO: Point to doxygen and other Client Streams documentation)
+Squid3 sources include [/ProgrammingGuide/ClientStreams Client Streams] classes designed for embedded server-side includes (ESI). A Client Streams node has access to the HTTP response message being received from the origin server or being fetched from the cache. By modifying Squid code, new nodes performing custom content adaptation may be added. Client Streams are limited to response modification.
 
- '''Pros''': Fast, integrated, focus on adaptation, mostly independent from Squid sources modifications.
+ '''Pros''': Fast, integrated, mostly Squid sources independent.
 
- '''Cons''': Lack of API documentation and support, cannot modify or satisfy requests, dependent on Squid (installation and license).
+ '''Cons''': Limited API documentation, lack of support, cannot adapt requests, dependent on Squid (installation, license, and some code modification).
+
+Unfortunately, Client Streams creators have not been actively participating in Squid development for a while, little API [/ProgrammingGuide/ClientStreams documentation] is available, and the long-term sustainability of the code is uncertain. Custom Client Streams code integrated with Squid may need to be licensed under GPL.
+
 
 
 == eCAM ==
 
-It would be nice to add support for pluggable or embedded Content Adaptation Modules to Squid3. Such modules would be written using a simple public API and dynamically or statically loaded into Squid. This approach will allow for fast content adaptation without tight dependency on Squid sources. Other proxies and even ICAP servers may chose to support the same API, removing dependency on Squid.
+Pluggable or embedded Content Adaptation Modules are like ICAP servers embedded into Squid. The Adaptation Modules would be written using a simple public API and dynamically or statically loaded into Squid. This approach will allow for fast content adaptation without tight dependency on Squid sources. Other proxies and even ICAP servers may chose to support the same API, removing dependency on Squid. This API has not been developed yet.
 
- '''Pros''': Fast, integrated, clear API, focus on adaptation.
+ '''Pros''': Fast, integrated, adaptation-focused API, independent from Squid sources modifications.
 
- '''Cons''': dependent on Squid installation (at least in the beginning).
+ '''Cons''': Dependent on Squid installation (at least in the beginning), needs sponsorship to develop the API.
 
 If you need to implement an integrated content adaptation solution without ICAP overheads, please consider working with Squid developers on finalizing the eCAM interfaces and implement your code using that API. On the Squid side, a lot of ICAP-related code can be reused for communicating with eCAM modules (with networking calls replaced by function calls) so no major Squid rewrite should be necessary.
 
@@ -89,13 +92,15 @@ If you need to implement an integrated content adaptation solution without ICAP 
 
 == Code hacks ==
 
-It is possible to modify Squid sources to perform custom content adaptation. Simple and generic adaptations such as header manipulations may be accepted into the official Squid code base, minimizing long-term maintenance overheads. Unfortunately, most adaptations are complex, not limited to headers, or highly customized and, hence, are unlikely to be accepted. You may need to modify your code for every Squid release and license your software under GPL. The code will not work with other proxies.
+It is possible to modify Squid sources to perform custom content adaptation without using the Client Streams mechanism described above. Simple and generic adaptations such as header manipulations may be accepted into the official Squid code base, minimizing long-term maintenance overheads.
 
  '''Pros''': Fast, integrated.
 
- '''Cons''': Must study Squid sources (no API), dependent on Squid (installation, sources, license).
+ '''Cons''': Must study Squid sources (no API), limited support, dependent on Squid (installation, sources, license).
 
+Unfortunately, most adaptations are relatively complex, not limited to headers, or highly customized and, hence, are unlikely to be accepted. Message body adaptation is especially difficult because Squid does not buffer the entire message body, but instead processes one semi-random piece of content at a time.
 
+Developers concerned with Squid code quality and bloat may not want to help you with specific coding problems. On the other hand, you may need to modify your code for every Squid release and license your software under GPL. The code will not work with other proxies.
 
 = Additional resources =
 
