@@ -80,6 +80,18 @@ Pluggable or embedded Content Adaptation Modules are like ICAP servers embedded 
 If you need to implement an integrated content adaptation solution without ICAP overheads, please consider working with Squid developers on finalizing the eCAM interfaces and implement your code using that API. On the Squid side, a lot of ICAP-related code can be reused for communicating with eCAM modules (with networking calls replaced by function calls) so no major Squid rewrite should be necessary.
 
 
+[[Anchor(secACLs)]]
+== Squid.conf ACLs ==
+
+Simple HTTP request header adaptation is possible without writing any code. Squid supports a few configuration options that allow the administrator to delete or replace specified HTTP headers: ''request_header_access'', ''reply_header_access'', and ''header_replace''.
+
+ '''Pros''': Fast, integrated, adaptation-focused API, no Squid modifications.
+
+ '''Cons''': Limited to simple header adaptations, dependent on Squid installation.
+
+Header modification via Squid ACLs is limited to deleting a header or replacing a matching header with a constant string. Moreover, it is not possible to replace a response header because the ''header_replace'' option only works with HTTP requests.
+
+
 [[Anchor(secCodeHacks)]]
 == Code hacks ==
 
@@ -98,12 +110,12 @@ Developers concerned with Squid code quality and bloat may not want to help you 
 Each adaptation mechanism has its strength and weaknesses. The following table attempts to rank mechanisms using frequently used evaluation criteria.
 
 || '''Evaluation Criteria''' || '''Mechanisms in rough order from "best" to "worst"''' ||
-|| Squid independence || [#secICAP ICAP], [#seceCAM eCAM], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
-|| Processing speed || [#seceCAM eCAM] or [#secClientStreams Client Streams] or [#secCodeHacks code hacks], [#secICAP ICAP] ||
-|| Development effort (header adaptation)|| [#secCodeHacks code hacks], [#secClientStreams Client Streams], [#seceCAM eCAM], [#secICAP ICAP] ||
+|| Squid independence || [#secICAP ICAP], [#seceCAM eCAM], [#secACLs ACLs], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
+|| Processing speed || [#seceCAM eCAM] or [#secClientStreams Client Streams] or [#secACLs ACLs] or [#secCodeHacks code hacks], [#secICAP ICAP] ||
+|| Development effort (header adaptation)|| [#secACLs ACLs], [#secCodeHacks code hacks], [#secClientStreams Client Streams], [#seceCAM eCAM], [#secICAP ICAP] ||
 || Development effort (content adaptation)|| [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
-|| Versatility || [#secCodeHacks code hacks], [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams] ||
-|| Maintenance overheads || [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
+|| Versatility || [#secCodeHacks code hacks], [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secACLs ACLs] ||
+|| Maintenance overheads || [#secACLs ACLs], [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
 
 
 = Additional resources =
