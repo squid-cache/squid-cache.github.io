@@ -2,9 +2,9 @@
 == What is WPAD? ==
 WPAD is an Internet Draft standard which attempts to enumerate the discovery of web proxy autoconfiguration scripts. It has two main deployment modes - DNS-based and DHCP-based - which can allow a network administrator to provide proxy configuration scripts to clients without explicit script path configuration in the User Agent (typically a web browser.)
 
-WPAD does not do much more than to allow the User Agent to discover a proxy autoconfiguration file. Building and using a proxy autoconfiguration script will be described in another section (to be written.)
+WPAD does not do much more than to allow the User Agent to discover a [:Technology/ProxyPac: PAC or Proxy Auto-Configuration] file.
 
-This set of articles is aimed at the network/system administrator who wishes to configure automatic proxy detection on their network through WPAD. It is not designed as a tutorial for implementation of the discovery process in a User Agent. Please read the most recent expired draft to gather more background information.
+This article is aimed at the network/system administrator who wishes to configure automatic proxy detection on their network through WPAD. It is not designed as a tutorial for implementation of the discovery process in a User Agent. Please read the most recent expired draft to gather more background information.
 
 == When is WPAD useful? ==
 WPAD has found use in ISP and Enterprise networks to integrate web proxies into the network without resorting to transparent network interception or enforcing configuration through technologies such as Windows Active Directory Group Policy.
