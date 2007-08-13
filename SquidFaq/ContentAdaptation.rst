@@ -107,6 +107,17 @@ Developers concerned with Squid code quality and bloat may not want to help you 
 
 == Summary ==
 
+Some adaptation mechanisms are limited in their scope. The following table summarizes what messages and what message parts 
+the mechanisms can adapt.
+
+||<|2> '''Mechanism''' ||<:-2>'''Request''' ||<:-2>'''Response''' ||
+||<:>'''Header''' ||<:> '''Body''' ||<:> '''Header''' ||<:> '''Body''' ||
+|| [#secICAP ICAP] ||<:>yes ||<:>yes ||<:>yes ||<:>yes ||
+|| [#secClientStreams Client Streams] ||  ||  ||<:>yes ||<:>yes ||
+|| [#seceCAM eCAM] ||<:>yes ||<:>yes ||<:>yes ||<:>yes ||
+|| [#secACLs ACLs] ||<:>yes ||  ||<:>del ||  ||
+|| [#secCodeHacks code hacks] ||<:>yes ||<:>yes ||<:>yes ||<:>yes ||
+
 Each adaptation mechanism has its strength and weaknesses. The following table attempts to rank mechanisms using frequently used evaluation criteria.
 
 || '''Evaluation Criteria''' || '''Mechanisms in rough order from "best" to "worst"''' ||
