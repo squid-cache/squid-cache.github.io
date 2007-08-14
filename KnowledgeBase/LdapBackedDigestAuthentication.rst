@@ -90,7 +90,7 @@ echo "digestpass" > /etc/digestreader_cred
 chown proxy:proxy /etc/digestreader_cred
 chmod 440 /etc/digestreader_cred
 }}}
-In Debian squid runs as the user proxy and so helpers are executed as the user proxy.
+In Debian, Squid runs as the user proxy and so helpers are executed as the user proxy.
 
 '''7.''' Test the helper again using the object created to bind to the base and the file with the password.
 
@@ -164,8 +164,6 @@ passwd chat = "Changing password for*\nNew password*" %n\n "*Retype new password
 '''Result'''
 
 At that point your Windows clients can change their passwords from inside Windows and Linux clients can change their passwords using smbldap-passwd. All passwords and digests will remain in sync.''' '''
-
-'''Thanks'''
 
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
