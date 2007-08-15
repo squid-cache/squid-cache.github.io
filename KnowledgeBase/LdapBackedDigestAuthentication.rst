@@ -10,7 +10,7 @@ A lot of people storing their password in an LDAP base don't feel comfortable wh
 
 '''Environment and what is expected that you have or already know'''
 
-The environment used in the test was composed by two Debian Sarge servers, one playing a role of an internet gateway (running Squid) and the other hosting the LDAP base (running OpenLDAP) and beeing the PDC of the Samba domain. Doesn't matter much how or where your services are running, but is expected from who are reading this:
+The environment used in the test was composed by two Debian Sarge servers, one playing a role of an internet gateway (running Squid) and the other hosting the LDAP base (running OpenLDAP) and being the PDC of the Samba domain. Doesn't matter much how or where your services are running, but is expected from who are reading this:
 
  * Already working Squid, Samba and LDAP servers.
  * Already configured Idealx's smbldap-tools to manipulate the accounts (it relies on this to sync).
@@ -19,7 +19,7 @@ The environment used in the test was composed by two Debian Sarge servers, one p
 
 To manipulate the attributes in LDAP was used the tools from the package ldap-utils (those beginning with ldap* and used to manipulate the base when running, pretty standard). Theres n ways to do that, feeding the base with LDIF files, using administration tools with a web interface, these will not be shown here. LDAP can be populated in various different forms, so, its expected that yours can be a little different than mine (the structure used by Idealx's smbldap-populate script, and the way Debian sets up an administrator account was used here).
 
-It was used an attribute called "l" (defined in core.schema) to hold the digest, its not exactly made for this, but I couldnt though in anything more appropriated, but anyway, its not a problem. You will see sometimes a host called "fileserver" being used (its because my Squid and LDAP + Samba aren't in the same host). The DN of my LDAP administrator is "cn=admin,dc=minharede,dc=lan" with a password "temppass", its the account that can do anything inside the base.
+It was used an attribute called "l" (defined in core.schema) to hold the digest, its not exactly made for this, but I couldn't though in anything more appropriated, but anyway, its not a problem. You will see sometimes a host called "fileserver" being used (its because my Squid and LDAP + Samba aren't in the same host). The DN of my LDAP administrator is "cn=admin,dc=minharede,dc=lan" with a password "temppass", its the account that can do anything inside the base.
 
 '''How the digest is calculated and what is expected to be in the base'''
 
