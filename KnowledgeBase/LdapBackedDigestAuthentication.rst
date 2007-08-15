@@ -3,7 +3,7 @@
 ##Page-Original-Author:EdmundoValle
 #format wiki
 #language en
-= Using the digest LDAP authetication helper =
+= Using the digest LDAP authentication helper =
 '''Synopsis'''
 
 A lot of people storing their password in an LDAP base don't feel comfortable when using the basic mechanism because it sends the passwords in clear text to Squid (a base64 encoded string), and sometimes ends up by using NTLM to talk to a CIFS server. The purpose of this document is to show how to configure an authentication helper in Squid using the digest mechanism and storing the passwords (or in that case, the digests) in LDAP.
