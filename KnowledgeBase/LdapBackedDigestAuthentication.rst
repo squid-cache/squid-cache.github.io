@@ -137,7 +137,7 @@ my $realm = "Squid proxy-caching web server";
 # Creates the digest.
 my $HA1digest = md5_hex("$user:$realm:$pass");
 my $realmdigest = "$realm:$HA1digest";
-# Add the attribute, if it already exists it will be overwrited.
+# Add the attribute, if it already exists it will be overwritten.
 $modify = $ldap_master->modify ( "$dn",
       changes => [
          replace => [l => $realmdigest]
