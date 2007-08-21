@@ -10,7 +10,7 @@ A lot of people storing their password in an LDAP base don't feel comfortable wh
 
 '''Environment and what is expected that you have or already know'''
 
-The environment used in the test was composed by two Debian Sarge servers, one playing a role of an internet gateway (running Squid) and the other hosting the LDAP base (running OpenLDAP) and being the PDC of the Samba domain. Doesn't matter much how or where your services are running, but is expected from who are reading this:
+The environment used in the test was composed by two Debian Sarge servers, one playing a role of an internet gateway (running Squid 2.5.9) and the other hosting the LDAP base (running OpenLDAP) and being the PDC of the Samba domain. Doesn't matter much how or where your services are running, but is expected from who are reading this:
 
  * Already working Squid, Samba and LDAP servers.
  * Already configured Idealx's smbldap-tools to manipulate the accounts (it relies on this to sync).
