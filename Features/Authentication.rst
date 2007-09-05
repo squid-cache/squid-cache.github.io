@@ -457,7 +457,7 @@ For all other auth-schemes this cannot be done; this is not a limitation in squi
  * [http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html ntlm_auth man page]
 
 == Other Resources ==
- * [http://www.papercut.biz/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory Configuring Squid Proxy To Authenticate With Active Directory]
+ * [http://www.papercut.com/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory Configuring Squid Proxy To Authenticate With Active Directory]
 
 
 -----
