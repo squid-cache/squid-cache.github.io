@@ -325,7 +325,7 @@ This will install into ''c:\squid''. If you wish to install somewhere else, chan
 
 After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
 
-Now, to run Squid as a system service, run ''squid -n''.
+Now, to run Squid as a Windows system service, run ''squid -n'', this will create a service named "Squid" with automatic startup. To start it run ''net start squid'' from command line prompt or use the Services Administrative Applet.
 
 Always check the provided release notes for any version specific detail.
 
