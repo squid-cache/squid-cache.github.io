@@ -20,7 +20,7 @@ This is a work in progress and needs to be verified as working.
 
 There's no obvious policy routing in Linux - you use iptables to mark interesting traffic, iproute2 ip rules to choose an alternate routing table and a default route in the alternate routing table to policy route to the distribution.
 
-How:
+Please realise that this just gets the packets to the cache; you have to then configure transparent interception on the cache to redirect traffic to the Squid TCP port!
 
 ("201" is just a unique routing table number. Check the file contents first!)
 
