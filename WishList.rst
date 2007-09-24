@@ -34,7 +34,7 @@ The ability to write logfile contents (specifically the access log, but extended
 
 Prototyping was done using Squid-2 - check the devel site for patches. Work wasn't merged into the ["Squid-2.6"] or Squid-2 tree. Adrian has slated for this work to appear sometime in Squid-3. Tim Starling from the Wikipedia project has contributed some test patches for UDP logging.
 
-This needs to be tied into a simple, generic logfile layer for punting logfile handling to various modules. This will allow people to implement their own logfile layer as they see fit.
+Its been implemented in squid-2.HEAD. Patches exist for Squid-3 which will be included after Squid-3 has been released.
 
 == SSL interception/proxying ==
 
