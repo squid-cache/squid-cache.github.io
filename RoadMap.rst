@@ -8,6 +8,6 @@
 
 A number of project roadmaps are here:
 
- * [/RoadMap/Squid2] - Squid-2 Roadmap
- * [/RoadMap/Squid3] - Squid-3 Roadmap
- * [/RoadMap/Website] - Squid Website / documentation Roadmap
+ * [Squid2] - Squid-2 Roadmap
+ * [/Squid3] - Squid-3 Roadmap
+ * [/Website] - Squid Website / documentation Roadmap
