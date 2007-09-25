@@ -8,6 +8,4 @@
 
 A number of project roadmaps are here:
 
- * [Squid2] - Squid-2 Roadmap
- * [/Squid3] - Squid-3 Roadmap
- * [/Website] - Squid Website / documentation Roadmap
+[[FullSearch(title:regex:^RoadMap/[^/]*$)]]
