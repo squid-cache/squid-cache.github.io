@@ -27,7 +27,7 @@ Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written
 
 == Testing ==
 
-If you are looking to test the latest release of Squid you will need to grab yourself a copy of the sources from CVS (CVSInstructions) or one of the DailySnapshot tarballs.
+If you are looking to test the latest release of Squid you will need to grab yourself a copy of the sources from CVS (CvsInstructions) or one of the daily snapshot tarballs.
 
 To test a specific project branch you will need to either pull the daily snapshot and apply the branch patch available at http://devel.squid-cache.org/projects.html or pull the branch code directly from CVS.
 
