@@ -48,18 +48,6 @@ Various people have requested the ability for Squid to handle transparent interc
 
 Feel free to contact the Squid developer team if you're interested in implementing this feature.
 
-== ICAP support ==
-
-=== Contacts ===
-
-Alex Russkov.
-
-=== Description ===
-
-ICAP support is slated for ["Squid-3.0"]. Patches exist for ["Squid-2.5"] and ["Squid-2.6"] to implement ICAP but they're a hack at best and have been known to have subtle issues with various ICAP servers.
-
-Please contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
-
 
 == IPv6 Compatibility ==
 
