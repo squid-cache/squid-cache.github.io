@@ -4,7 +4,7 @@
  * [http://www.squid-cache.org/~adrian/ Adrian Chadd]
  * [http://www.squid-cache.org/~robertc/ Robert Collins] is the main driver of the Squid-3 C++ migration effort.
  * [:GuidoSerassio:Guido Serassio] leads the [http://www.acmeconsulting.it/SquidNT/ SquidNT] effort
- * [:AlexRousskov:Alex Rousskov] is bringing ICAP support to ["Squid-3.0"].
+ * [:AlexRousskov:Alex Rousskov] manages various Squid 3 projects.
  * [http://wessels.squid-cache.org/ Duane Wessels], Chief Procrastinator
  * [:AmosJeffries:Amos Jeffries] coordinates the Squid IPv6 upgrade in ["Squid-3.1"]
 = Certified Developers =
