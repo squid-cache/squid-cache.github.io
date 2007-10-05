@@ -34,7 +34,7 @@ To test a specific project branch you will need to either pull the daily snapsho
 == Project organization ==
 ReleaseProcess describes the process and criteria used by the Squid Developers when making new Squid releases.
 
-WhoWeAre explains who are the people working on the squid project.
+WhoWeAre explains who the people working on the Squid project are.
 
 == Squid Code Sprint 2005 ==
 In October 2005 an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
