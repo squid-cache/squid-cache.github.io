@@ -471,7 +471,7 @@ Digests work):
 
 There is now, thanks to
 [[MailTo(martin AT net DOT lut DOT ac DOT uk,Martin Hamilton)]] and
-[[MailTo(rousskov AT ircache DOT net,Alex Rousskov)]].
+AlexRousskov.
 
 Cache Digests, as implemented in Squid 2.1.PATCH2, are described in
 [http://www.squid-cache.org/CacheDigest/cache-digest-v5.txt cache-digest-v5.txt].
