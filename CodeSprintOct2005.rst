@@ -1,14 +1,12 @@
 #language en
 
-Short report on the code sprint which took place in October 2005
+This code sprint took place in October 2005 and was hosted by GuidoSerassio in Rivoli. A few [http://www.kinkie.it/gallery/2005-squid-code-sprint pictures] from the event are available.
 
 Participants:
 
   * HenrikNordström
   * FrancescoChemolli (kinkie)
   * GuidoSerassio
-
-[http://www.kinkie.it/gallery/2005-squid-code-sprint A few pictures] from the event
 
 Primary goal:
 
