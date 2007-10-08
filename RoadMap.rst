@@ -1,11 +1,10 @@
 ## page was renamed from Roadmap
 #language en
-## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-## if you want to have a table of comments remove the heading hashes from the next line
-## [[TableOfContents]]
 
-= Squid Roadmaps =
+= Squid Roadmap =
 
-A number of project roadmaps are here:
+Squid roadmap consists of version-specific highways and a scenic web site loop:
 
 [[FullSearch(title:regex:^RoadMap/[^/]*$)]]
+
+A wish list of poorly documented Squid features unrelated to any specific version is available [wiki:Features/Other elsewhere].
