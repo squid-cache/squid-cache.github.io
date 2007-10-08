@@ -36,18 +36,11 @@ ReleaseProcess describes the process and criteria used by the Squid Developers w
 
 WhoWeAre explains who the people working on the Squid project are.
 
-== Squid Code Sprint 2005 ==
-In October 2005 an informal squid sprint was held in Rivoli, hosted by GuidoSerassio. Some of the topics of discussion...
+== Code Sprints ==
 
- * CodeSprintOct2005
- * NegotiateAuthentication support for Squid-3 (the main focus of the sprint)
- * ["Squid-2.6"]
- * NiceLittleProjects: projects which can be completed in a few days' work, waiting for someone to step up. Any takers?
+Code Sprints are informal gatherings of Squid developers with a focus on developing urgently needed features or fixing major bugs.
 
-== Squid Code Sprint 2004 ==
-In December 2004 an informal squid sprint was held in Stockholm, hosted by HenrikNordström. Some of the topics of discussion...
-
- * ["StoreAPI"]
- * LibCacheReplacement: free thoughts about designing an event-driven generic cache lib
- * DevelopmentIdeas: a collection of possible improvements to squid to be evaluated and possibly implemented
- * Linux Profiling with [:LinuxOprofile:oprofile]
+ 1. BugSprintLateSeptember2006
+ 1. BugSprintSeptember2006
+ 1. CodeSprintOct2005
+ 1. CodeSprintDec2004
