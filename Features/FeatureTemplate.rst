@@ -8,9 +8,11 @@
 
  * '''Goal''': What must this feature accomplish? Try to use specific, testable goals so that it is clear whether the goal was satisfied. Goals using unquantified words such as "improve", "better", or "faster" are often not testable. Do not specify ''how'' you will accomplish the goal (use the Details section below for that).
 
- * '''Status''': What is the current status? Standard choices are "Not started", "In progress", "Completed". You can specify details after a semicolon (e.g., the reason why the development has not started yet or the first release version).
+ * '''Status''': What is the current status? Standard choices are ''Not started'', ''In progress'', and ''Completed''. You can specify details after a semicolon (e.g., the reason why the development has not started yet or the first release version).
 
- * '''ETA''': What is the estimated time of completion? Use either calendar days or an absolute date. Leave blank if unknown.
+ * '''ETA''': What is the estimated time of completion? Use either number of calendar days for not started features. Use an absolute date for started and completed features. Use ''unknown'' if unknown.
+
+ * '''Version''': What Squid version(s) will get this feature? Remove if irrelevant.
 
  * '''Developer''': Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
 
