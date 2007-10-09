@@ -9,7 +9,7 @@ This wiki is dedicated to hosting [http://www.squid-cache.org/ Squid Web Cache] 
 
 To contribute to this Wiki, please register by using the Login link and then email [[MailTo(kinkie AT squid-cache DOT org,the wiki administrator)]] to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox.
 
-= Starting points =
+== Starting points ==
 
 You can learn about what a Wiki is and how to use it at AboutWiki. The following pages are good starting points.
 
@@ -18,7 +18,7 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * Configuration [wiki:ConfigExamples examples] (WCCPv2, NTLM authentication, etc.)
  * Wiki [wiki:SiteNavigation navigation]
 
-= Popular topics =
+=== Popular topics ===
  * [:KnowledgeBase/PerformanceAnalysis:Performance Analysis]: "Help! My users complain that the proxy is slow!"
  * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
  * ["NTLMIssues"]: Things you can (and cannot) do with NTLM
@@ -26,11 +26,11 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * MultipleInstances: how-to run multiple squid servers on a single box.
  * We're looking for a new SquidLogo
 
-= Developers corner =
+== Developers corner ==
 
 DeveloperResources section has instructions for CVS access, coding guidelines, and other useful documentation.
 
-= Related resources =
+== Related resources ==
 
  * The main [http://www.squid-cache.org/ Squid site].
  * The [http://devel.squid-cache.org Squid development site].
