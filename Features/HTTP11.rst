@@ -7,7 +7,7 @@
  * '''Status''': Planning.
  * '''ETA''': unknown
  * '''Version''': 3 & 2.x
- * '''Developer''': Henrik Nordström
+ * '''Developer''': ["Henrik Nordström"]
  * '''More''':
 ## Details
 ##
