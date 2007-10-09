@@ -107,10 +107,9 @@ Side effects:
 Detachs the tail of the stream. CURRENTLY DOES NOT clean up the tail node data - this must be done separately. Thus Abort may ONLY be called by the tail node.
 
 
-= Processing Client Requests =
+== More information ==
 
-
-To be written...
+A Squid IRC chat [wiki:ClientStreams transcript] discusses how to use !ClientStreams for content analysis.
 
 
 = Delay Pools =
