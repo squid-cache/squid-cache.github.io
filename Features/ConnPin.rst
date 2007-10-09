@@ -30,5 +30,4 @@ This feature has been implemented for ["Squid-2.6"] by HenrikNordström during t
 Connection Pinning needs to be re-implemented in Squid 3.
 
 ----
-CategoryFeature
-CategoryWish
+CategoryFeature | CategoryWish
