@@ -1,17 +1,13 @@
 #language en
 
-## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
+= Squid Programming Guide =
 
-## if you want to have a table of comments remove the heading hashes from the next line
-## [[TableOfContents]]
-
-= Squid Programming Guide Table of Contents =
- * /FullIndex is the complete list of covered topics
  * /IntroductionAndConventions
  * /SquidComponents
  * /ExternalPrograms
  * /RequestFlow
  * /ClientStreams
+ * /DelayPools
  * /StorageManager
  * /IpCache
  * /ServerProtocols
@@ -22,3 +18,5 @@
  * /FileFormats
  * /LeakFinder
  * /MemPools
+
+A detailed index of covered topics is [wiki:/FullIndex available].
