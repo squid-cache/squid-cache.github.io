@@ -2,44 +2,40 @@
 #pragma section-numbers off
 [[TableOfContents]]
 
-= Squid Proxy Web Cache Wiki =
-This is a wiki dedicated to hosting documentation, hints and assorted notes about the Squid Web Cache. It also hosts the FAQ master copy at SquidFaq, a growing series of KnowledgeBase articles, and assorted documentation.
+= Squid Web Cache Wiki =
 
-== Contributing to this Wiki ==
-Due to some episodes of wiki-spam we had to restrict editing to the wiki. If you wish to contribute, please register (by using the Login link) and mail [[MailTo(kinkie AT squid-cache DOT org,the wiki administrator)]] to be granted write-access.
+This wiki is dedicated to hosting Squid Web Cache documentation, including the [SquidFAQ FAQ], a growing series of KnowledgeBase articles, ConfigExamples, and a development RoadMap.
 
-= General Questions =
+To contribute to this Wiki, please register by using the Login link and email [[MailTo(kinkie AT squid-cache DOT org,the wiki administrator)]] to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox.
+
+= Starting points =
+
+You can learn about what a Wiki is and how to use it at AboutWiki. The following pages are good starting points.
+
+ * [wiki:SquidFaq FAQ]
+ * Release [wiki:RoadMap plans]
+ * Configuration [wiki:ConfigExamples examples] (WCCPv2, NTLM authentication, etc.)
+ * Wiki [wiki:SiteNavigation navigation]
+
+= Popular topics =
+ * [:KnowledgeBase/PerformanceAnalysis:Performance Analysis]: "Help! My users complain that the proxy is slow!"
+ * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
  * ["NTLMIssues"]: Things you can (and cannot) do with NTLM
  * ZeroSizedReply: Recurrent issues with some setups.
  * MultipleInstances: how-to run multiple squid servers on a single box.
- * [:KnowledgeBase/PerformanceAnalysis:Performance Analysis]: "Help! My users complain that the proxy is slow!"
- * BestOsForSquid: an all-time FAQ: "What is the best OS for Squid?"
- * SquidFaq: the Wikified and updated squid FAQ
- * Release milestones are detailed in our RoadMap
- * ["Squid-3.0"], or "So what is this Squid 3.0 thing and why is it taking so long?"
- * ConfigExamples: Example Configurations (WCCPv2, NTLM authentication, etc.)
  * We're looking for a new SquidLogo
+
 = Developers corner =
-There's a separate section for DeveloperResources, such as instructions for CVS access, coding guidelines and other useful documentation.
 
-== ClientStreams ==
-A transcript of a IRC chat with Robert Collins (aka lifeless) about using ClientStreams to request pages internally to squid.
-
-= Interesting starting points for this Wiki =
- * RecentChanges: see where people are currently working
- * FindPage: search or browse the pages hosted in this wiki in various ways
- * SiteNavigation: get an overview over this site and what it contains
- * SyntaxReference: quick access to wiki syntax
- * WikiSandBox: feel free to change this page and experiment with editing
-You can find information about what a Wiki is and how to use it at AboutWiki.
+DeveloperResources section has instructions for CVS access, coding guidelines, and other useful documentation.
 
 = Other Squid-related resources =
- * The main [http://www.squid-cache.org/ Squid site]
- * The [:SquidFaq:Squid FAQ] covering most common questions
- * The [http://devel.squid-cache.org Squid development site]
- * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla] database
- * Squijj http://www.mnot.net/squij/ refresh_pattern analysis
- * Calamaris http://freshmeat.net/projects/calamaris/ log file analysis
- * Visolve's Squid 3.0 [http://squid.visolve.com/squid/configuration_manual_30.htm configuration manual]
- * [http://people.redhat.com/stransky/squid/ Martin Stransky]'s squid page. He's the maintainer of the official Red Hat package
- * ExternalLinks: some external resources which might be of interest
+
+ * The main [http://www.squid-cache.org/ Squid site].
+ * The [http://devel.squid-cache.org Squid development site].
+ * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla database].
+ * [http://www.mnot.net/squij/ Squijj] refresh_pattern analysis tool.
+ * [http://freshmeat.net/projects/calamaris/ Calamaris] log file analysis tool.
+ * Visolve's Squid 3.0 [http://squid.visolve.com/squid/configuration_manual_30.htm configuration manual].
+ * [http://people.redhat.com/stransky/squid/ Martin Stransky]'s squid page. He's the maintainer of the official Red Hat package.
+ * ExternalLinks: other external resources which might be of interest.
