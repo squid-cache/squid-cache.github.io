@@ -22,5 +22,4 @@ Support for squid to act as a load balancer is almost there, but some features a
  * Session affinity can currently be done using the client IP addresses. To have that done as a cookie, it is now responsibility of the backend application to set that cookie. It would be nice to have an external authenticator in charge of that.
 
 ----
-CategoryFeature
-CategoryWish
+CategoryFeature | CategoryWish
