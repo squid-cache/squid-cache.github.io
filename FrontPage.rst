@@ -1,12 +1,13 @@
 #language en
 #pragma section-numbers off
-[[TableOfContents]]
+
+## [[TableOfContents]]
 
 = Squid Web Cache Wiki =
 
-This wiki is dedicated to hosting Squid Web Cache documentation, including the [SquidFAQ FAQ], a growing series of KnowledgeBase articles, ConfigExamples, and a development RoadMap.
+This wiki is dedicated to hosting [http://www.squid-cache.org/ Squid Web Cache] documentation, including the [wiki:SquidFaq FAQ], KnowledgeBase articles, ConfigExamples, and the development RoadMap.
 
-To contribute to this Wiki, please register by using the Login link and email [[MailTo(kinkie AT squid-cache DOT org,the wiki administrator)]] to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox.
+To contribute to this Wiki, please register by using the Login link and then email [[MailTo(kinkie AT squid-cache DOT org,the wiki administrator)]] to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox.
 
 = Starting points =
 
@@ -29,7 +30,7 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
 
 DeveloperResources section has instructions for CVS access, coding guidelines, and other useful documentation.
 
-= Other Squid-related resources =
+= Related resources =
 
  * The main [http://www.squid-cache.org/ Squid site].
  * The [http://devel.squid-cache.org Squid development site].
