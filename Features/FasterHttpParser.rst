@@ -16,5 +16,4 @@
 Avoid parsing the same HTTP header several times. Possibly implement incremental header parsing.
 
 ----
-CategoryFeature
-CategoryWish
+CategoryFeature | CategoryWish
