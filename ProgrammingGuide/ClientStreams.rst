@@ -109,7 +109,7 @@ Detachs the tail of the stream. CURRENTLY DOES NOT clean up the tail node data -
 
 == More information ==
 
-A Squid IRC chat [wiki:ClientStreams transcript] discusses how to use !ClientStreams for content analysis.
+The [wiki:ClientStreams transcript] of the Squid IRC chat with Robert Collins (aka ''lifeless'') discusses how to use !ClientStreams for content analysis.
 
 
 = Delay Pools =
