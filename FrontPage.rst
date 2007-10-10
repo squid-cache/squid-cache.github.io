@@ -1,13 +1,10 @@
 #language en
-#pragma section-numbers off
 
-## [[TableOfContents]]
-
-= Squid Web Cache Wiki =
+= Squid Wiki =
 
 This wiki is dedicated to hosting [http://www.squid-cache.org/ Squid Web Cache] documentation, including the [wiki:SquidFaq FAQ], KnowledgeBase articles, ConfigExamples, and the development RoadMap.
 
-To contribute to this Wiki, please register by using the Login link and then email [[MailTo(kinkie AT squid-cache DOT org,the wiki administrator)]] to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox.
+To contribute to this Wiki, please register by using the Login link and then email the [[MailTo(kinkie AT squid-cache DOT org,wiki administrator)]] to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox.
 
 == Starting points ==
 
@@ -32,11 +29,11 @@ DeveloperResources section has instructions for CVS access, coding guidelines, a
 
 == Related resources ==
 
- * The main [http://www.squid-cache.org/ Squid site].
- * The [http://devel.squid-cache.org Squid development site].
- * The [http://www.squid-cache.org/bugs/index.cgi Bugzilla database].
- * [http://www.mnot.net/squij/ Squijj] refresh_pattern analysis tool.
- * [http://freshmeat.net/projects/calamaris/ Calamaris] log file analysis tool.
- * Visolve's Squid 3.0 [http://squid.visolve.com/squid/configuration_manual_30.htm configuration manual].
- * [http://people.redhat.com/stransky/squid/ Martin Stransky]'s squid page. He's the maintainer of the official Red Hat package.
- * ExternalLinks: other external resources which might be of interest.
+ * The main Squid [http://www.squid-cache.org/ site].
+ * The Squid development [http://devel.squid-cache.org site].
+ * The Bugzilla [http://www.squid-cache.org/bugs/index.cgi database].
+ * The Squijj refresh_pattern analysis [http://www.mnot.net/squij/ program].
+ * The Calamaris log file analysis [http://freshmeat.net/projects/calamaris/ tool].
+ * Visolve's Squid 3.0 configuration [http://squid.visolve.com/squid/configuration_manual_30.htm manual].
+ * Martin Stransky's Squid [http://people.redhat.com/stransky/squid/ page]. Martin maintains the official Red Hat package.
+ * Other external [ExternalLinks links].
