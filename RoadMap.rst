@@ -7,4 +7,4 @@ Squid roadmap consists of version-specific highways and a scenic web site loop:
 
 [[FullSearch(title:regex:^RoadMap/[^/]*$)]]
 
-A wish list of poorly documented Squid features unrelated to any specific version is available [wiki:Features/Other elsewhere].
+A list of future features unrelated to any specific Squid version is available [wiki:Features elsewhere].
