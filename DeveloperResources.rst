@@ -10,7 +10,7 @@ To make life easier we provide space for each developer interested in developing
 
 During the life of the Squid project, a number of [http://www.squid-cache.org/Devel/papers/ papers] have been published.
 
-NiceLittleProjects is a list of ideas for development scenarios.
+Browse Wish List wiki:Features if you want to contribute but do not have a specific project in mind.
 
 DeadProjects contains ideas or code which never really made it to the Squid trunk.
 
