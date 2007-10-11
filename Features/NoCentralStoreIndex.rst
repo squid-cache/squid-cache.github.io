@@ -33,4 +33,4 @@ We need to move away from this, providing an asyncronous store lookup mechanism 
 Goal of not having a central index, making it possible to push more of the store logics down..
 
 ----
-CategoryFeature
+CategoryFeature | CategoryWish
