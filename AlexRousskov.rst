@@ -6,5 +6,10 @@ Email: [[MailTo(rousskov@measurement-factory.com)]]
 
 Together with Duane Wessels, I orchestrate [http://www.measurement-factory.com/ The Measurement Factory] work on various Squid projects.
 
+Here is an ''auto-generated'' list of my current public Squid projects:
+
+[[FullSearch(CategoryFeature regex:Developer.*AlexRousskov)]]
+
+
 ----
 CategoryHomepage
