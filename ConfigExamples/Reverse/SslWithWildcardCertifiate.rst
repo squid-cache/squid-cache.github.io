@@ -206,7 +206,11 @@ http_access deny manager
 http_access deny all
 
 }}}
-== See Also ==
+== Thanks ==
+You can Also Visit the link to know more about setting up CA server , the OpenSSL config was taken from the following link
+
 http://mia.ece.uic.edu/~papers/volans/settingupCA.html
+
+Thanks to Sudhir Kumar Gupta < shekharsahab14@gmail.com > for providing the background information for this article
 
 CategoryConfigExample
