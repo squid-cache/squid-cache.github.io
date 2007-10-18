@@ -175,6 +175,15 @@ Data Base Updated}}}
 == Squid Configuration File ==
 Please note that the https_port and cache_peer lines may wrap in your browser!
 
+You have to make entires in host file as we will be sstarting the squid with -D option which will disable the DNS query for squid .
+
+Edit your /etc/hosts file
+
+
+
+{{{
+10.112.62.20 websiteA.mydomain.com websiteA 10.112.143.112 mywebsite.mydomain.com mywebsite 10.112.90.20 websiteB.mydomain.com websiteB
+}}}
 {{{
 https_port 443 cert=/usr/newrprgate/CertAuth/testcert.cert key=/usr/newrprgate/CertAuth/testkey.pem
 defaultsite=mywebsite.mydomain.com vhost
@@ -197,5 +206,7 @@ miss_access deny all
 http_access allow manager localhost
 http_access deny manager
 http_access deny all
+
 }}}
+== See Also ==
 CategoryConfigExample
