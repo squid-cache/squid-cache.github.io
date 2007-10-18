@@ -117,7 +117,6 @@ authorityKeyIdentifier=keyid:always,issuer:always
 {{{
 [root@rprgate ~]#openssl req -x509 -newkey rsa -out cacert.pem -outform PEM -days 1000}}}
 {{{
-
 Generating a 2048 bit RSA private key
 ..........................................................................................+++
 ................................................................................................................+++
@@ -143,7 +142,7 @@ State or Province Name (full name) [Berkshire]:UP
 Locality Name (eg, city) [Newbury]:Noida
 Organization Name (eg, company) [My Company Ltd]:Pie Dreams
 Organizational Unit Name (eg, section) []:Pie Solutions
-Common Name (eg, your name or your server's hostname) []:Pie Solutions
+Common Name (eg, your name or your server's hostname) []:*.mydomain.com
 Email Address []:sudhirkumargupta@gmail.com
 Please enter the following 'extra' attributes
 to be sent with your certificate request
@@ -166,14 +165,13 @@ stateOrProvinceName   :PRINTABLE:'UP'
 localityName          :PRINTABLE:'Noida'
 organizationName      :PRINTABLE:'Pie Dreams'
 organizationalUnitName:PRINTABLE:'Pie Solutions'
-commonName            :PRINTABLE:'Pie Solutions'
+commonName            :PRINTABLE:'mydomain.com'
 emailAddress          :IA5STRING:'sudhirkumargupta@gmail.com'
 Certificate is to be certified until Oct 18 22:54:31 2007 GMT (365 days)
 Sign the certificate? [y/n]:y
 1 out of 1 certificate requests certified, commit? [y/n]y
 Write out database with 1 new entries
 Data Base Updated}}}
-----
 == Squid Configuration File ==
 Please note that the https_port and cache_peer lines may wrap in your browser!
 
