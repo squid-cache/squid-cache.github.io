@@ -1,7 +1,4 @@
-
 ##master-page:CategoryTemplate
-#format wiki
-#language en
 ## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 = Configuring Squid as SSL Reverse Proxy With Wild Card Certificate to Support Multiple Web Site =
 [[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
@@ -181,7 +178,9 @@ You have to make entires in host file as we will be sstarting the squid with -D 
 Edit your /etc/hosts file
 
 {{{
-10.112.62.20 websiteA.mydomain.com websiteA 10.112.143.112 mywebsite.mydomain.com mywebsite 10.112.90.20 websiteB.mydomain.com websiteB
+10.112.62.20 websiteA.mydomain.com websiteA
+10.112.143.112 mywebsite.mydomain.com mywebsite
+10.112.90.20 websiteB.mydomain.com websiteB
 }}}
 {{{
 https_port 443 cert=/usr/newrprgate/CertAuth/testcert.cert key=/usr/newrprgate/CertAuth/testkey.pem
