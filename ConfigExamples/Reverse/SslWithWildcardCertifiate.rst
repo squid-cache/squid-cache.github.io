@@ -1,3 +1,4 @@
+
 ##master-page:CategoryTemplate
 #format wiki
 #language en
@@ -179,8 +180,6 @@ You have to make entires in host file as we will be sstarting the squid with -D 
 
 Edit your /etc/hosts file
 
-
-
 {{{
 10.112.62.20 websiteA.mydomain.com websiteA 10.112.143.112 mywebsite.mydomain.com mywebsite 10.112.90.20 websiteB.mydomain.com websiteB
 }}}
@@ -209,4 +208,6 @@ http_access deny all
 
 }}}
 == See Also ==
+http://mia.ece.uic.edu/~papers/volans/settingupCA.html
+
 CategoryConfigExample
