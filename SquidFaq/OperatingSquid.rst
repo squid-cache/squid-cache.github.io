@@ -284,30 +284,30 @@ the object to be pulled into the cache.
 
 == How can I make Squid NOT cache some servers or URLs? ==
 
-In Squid-2, you use the ''no_cache'' option to specify uncachable
+In Squid-2, you use the ''cache'' option to specify uncachable
 requests.  For example, this makes all responses from origin servers
 in the 10.0.1.0/24 network uncachable:
 {{{
 acl Local dst 10.0.1.0/24
-no_cache deny Local
+cache deny Local
 }}}
 
 This example makes all URL's with '.html' uncachable:
 {{{
 acl HTML url_regex .html$
-no_cache deny HTML
+cache deny HTML
 }}}
 
 This example makes  a specific URL uncachable:
 {{{
 acl XYZZY url_regex ^http://www.i.suck.com/foo.html$
-no_cache deny XYZZY
+cache deny XYZZY
 }}}
 
 This example caches nothing between the hours of 8AM to 11AM:
 {{{
 acl Morning time 08:00-11:00
-no_cache deny Morning
+cache deny Morning
 }}}
 
 In Squid-1.1,
