@@ -187,7 +187,7 @@ http_access allow purge AdminBoxes
 http_access deny purge
 http_access deny !Safe_ports
 http_access deny CONNECT !SSL_ports
-no_cache deny the_Servers
+cache deny the_Servers
 http_access allow the_network
 http_access allow localhost
 http_access deny all
