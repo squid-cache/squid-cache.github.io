@@ -58,7 +58,7 @@ There are a number of different access lists:
  * '''http_reply_access''': Allows HTTP clients (browsers) to receive the reply to their request. This further restricts permissions given by http_access, and is primarily intended to be used together with the rep_mime_type acl type for blocking different content types.
  * '''icp_access''': Allows neighbor caches to query your cache with ICP.
  * '''miss_access''': Allows certain clients to forward cache misses through your cache. This further restricts permissions given by http_access, and is primarily intended to be used for enforcing sibling relations by denying siblings from forwarding cache misses through your cache.
- * '''no_cache''': Defines responses that should not be cached.
+ * '''cache''': Defines responses that should not be cached.
  * '''redirector_access''': Controls which requests are sent through the redirector pool.
  * '''ident_lookup_access''': Controls which requests need an Ident lookup.
  * '''always_direct''': Controls which requests should always be forwarded directly to origin servers.
@@ -105,7 +105,7 @@ http_access allow myclients
 == how do I configure Squid not to cache a specific server? ==
 {{{
 acl someserver dstdomain .someserver.com
-no_cache deny someserver
+cache deny someserver
 }}}
 == How do I implement an ACL ban list? ==
 As an example, we will assume that you would like to prevent users from accessing cooking recipes.
