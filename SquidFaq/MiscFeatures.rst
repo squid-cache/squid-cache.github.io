@@ -384,11 +384,11 @@ cache_host_domain:: Renamed to ''cache_peer_domain''
 
 local_ip, local_domain:: The functaionality provided by these directives is now implemented as access control lists.  You will use the ''always_direct'' and ''never_direct'' options.  The new ''squid.conf'' file has some examples.
 
-cache_stoplist:: This directive also has been reimplemented with access control lists.  You will use the ''no_cache'' option.  For example:
+cache_stoplist:: This directive also has been reimplemented with access control lists.  You will use the ''cache'' option since ["Squid-2.6"].  For example:
 
 {{{
         acl Uncachable url_regex cgi ?
-        no_cache deny Uncachable
+        cache deny Uncachable
 }}}
 cache_swap:: This option used to specify the cache disk size.  Now you specify the disk size on each ''cache_dir'' line.
 
