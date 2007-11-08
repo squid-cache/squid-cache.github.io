@@ -93,7 +93,7 @@ http_access allow foo
 http_access deny all
 }}}
 
-The REQURIED term means that any authenticated user will match the
+The REQUIRED term means that any authenticated user will match the
 ACL named ''foo''.
 
 Squid allows you to provide fine-grained controls
