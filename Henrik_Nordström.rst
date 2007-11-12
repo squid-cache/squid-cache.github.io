@@ -7,5 +7,7 @@ More information can be found from the personal homepage http://www.henriknordst
 
 Email: [[MailTo(hno AT SPAMFREE squid-cache DOT org)]]
 
+Future [:Henrik Nordström/Plans:plans for Squid]
+
 ----
  . CategoryHomepage
