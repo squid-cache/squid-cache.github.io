@@ -40,11 +40,13 @@ First, you need to determine which URLs to send to the store url rewriter.
 
 {{{
 acl store_rewrite_list dstdomain mt.google.com mt0.google.com mt1.google.com mt2.google.com
-acl store_rewrite_list mt3.google.com
+acl store_rewrite_list dstdomain mt3.google.com
 acl store_rewrite_list dstdomain kh.google.com kh0.google.com kh1.google.com kh2.google.com
-acl store_rewrite_list kh3.google.com
+acl store_rewrite_list dstdomain kh3.google.com
 acl store_rewrite_list dstdomain kh.google.com.au kh0.google.com.au kh1.google.com.au
-acl store_rewrite_list kh2.google.com.au kh3.google.com.au
+acl store_rewrite_list dstdomain kh2.google.com.au kh3.google.com.au
+
+# This needs to be narrowed down quite a bit!
 acl store_rewrite_list dstdomain .youtube.com
 
 storeurl_access allow store_rewrite_list
