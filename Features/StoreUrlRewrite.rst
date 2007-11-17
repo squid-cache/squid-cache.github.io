@@ -110,8 +110,7 @@ refresh_pattern .               0       20%     4320
 
 These rules make sure that you don't try caching cgi-bin and ? URLs unless expiry information is explictly given. Make sure you don't add the rules after a "refresh_pattern ." line; refresh_pattern entries are evaluated in order and the first match is used! The last entry must be the "." entry!
 
-Finally, restart Squid-2.HEAD and browse google maps; check your access.log and store.log to make sure URLs are being cached!
-
+Finally, restart Squid-2.HEAD and browse google maps; check your access.log and store.log to make sure URLs are being cached! Check store.log to make sure that the google maps/earth images are being stored in the cache (SWAPOUT) and not just RELEASEd immediately.
 
 
 ----
