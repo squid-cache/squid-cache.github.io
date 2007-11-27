@@ -1,4 +1,3 @@
-
 Helper Script:
 
 {{{
@@ -41,7 +40,8 @@ ACLs and store rewrite declaration:
 # maps:
 acl store_rewrite_list dstdomain mt.google.com mt0.google.com mt1.google.com mt2.google.com mt3.google.com
 acl store_rewrite_list dstdomain kh.google.com kh0.google.com kh1.google.com kh2.google.com kh3.google.com
-acl store_rewrite_list dstdomain kh.google.com.au kh0.google.com.au kh1.google.com.au kh2.google.com.au kh3.google.com.au
+acl store_rewrite_list dstdomain kh.google.com.au kh0.google.com.au kh1.google.com.au kh2.google.com.au
+acl store_rewrite_list dstdomain kh3.google.com.au
 
 # old-style youtube URL:
 # http://sjl-v4.sjl.youtube.com/get_video?video_id=o6iJeypmPbs
