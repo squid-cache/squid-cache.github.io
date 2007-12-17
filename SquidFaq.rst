@@ -35,5 +35,5 @@
  * /SecurityPitfalls: common security problems in new setups
  * /ToomanyMisses: why more than just a few TCP_SWAPFAIL_MISS
  * /SquidProfiling How to identify obvious resource shortages with Squid (A work in progress)
- * /WindowsUpdate: configuring squid to pass WindowsUpdate
+ * /WindowsUpdate: configuring squid to pass Windows Update
  * /CompleteFaq is a meta-document with the entire FAQ contents.
