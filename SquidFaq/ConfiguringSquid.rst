@@ -301,7 +301,7 @@ Windows XP users will need:
 
 When squid is built you will then be able to start squid and see some IPv6 operations. The most active will be DNS as IPv6 addresses are looked up for each website.
 
-=== I built squid with IPv6 but it won't listen for IPv6 requests. ===
+=== Squid builds with IPv6 but it won't listen for IPv6 requests. ===
 
 '''Your squid may be configured to only listen for IPv4.'''
 Each of the port lines in squid.conf (http_port, icp_port, snmp_port, https_port, maybe others) can take either a port, hostname:port, or ip:port combo.
@@ -317,18 +317,18 @@ src, dst, and other ACL which accept IPv4 addresses or netmasks will also accept
 acl localhost src 127.0.0.1/32 ::1/128
 }}}
 
-=== I built squid with IPv6 but it won't listen for IPv6 requests. ===
-'''Your squid may be configured to only send through specific IPv4.'''
-A number of networks are know to configure tcp_outgoing_address (or other ..._outgoing_address) in their squid.conf. These can force squid to request the website over IPv4 when it should be trying IPv6 instead or as well as. There is a little bit fof ACL magic possible with tcp_outgoing_address which will get around this problem.
+=== It listens on IPv6 but says 'Access Denied' or similar. ===
+'''Your squid may be configured to only sconnect out through specific IPv4.'''
+A number of networks are know to configure tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit fof ACL magic possible with tcp_outgoing_address which will get around this problem.
 
 {{{
 acl to_ipv6 dst ipv6
 
-tcp_outgoing_address 10.0.0.1 !to_ipv6
+tcp_outgoing_address 10.255.0.1 !to_ipv6
 tcp_outgoing_address 2001:dead:beef::1 to_ipv6
 }}}
 
-That will split all outgoing requests into two groups, those headed for IPv4 and those headed for IPv6. It will push the requests out the IP which matches their network and allow IPv4/IPv6 access with controlled source address exactly as before.
+That will split all outgoing requests into two groups, those headed for IPv4 and those headed for IPv6. It will push the requests out the IP which matches the destination side of the Internet and allow IPv4/IPv6 access with controlled source address exactly as before.
 
 === How do I make squid use IPv6 to its helpers? ===
 With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. By default to work with older setups helpers are still connected over IPv4. You can add '''ipv6''' option to use IPv6.
@@ -336,10 +336,14 @@ With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6
 external_acl_type hi ipv6 %DST /etc/squid/hello_world.sh
 }}}
 
-=== How do I block IPv6 traffic ===
-Why you would want to do that is beyond me but here it is.
+=== How do I block IPv6 traffic? ===
+Why you would want to do that without similar limits on IPv4 (using '''all''') is beyond me but here it is.
 Previously squid defined the '''all''' ACL which means the whole Internet. It still does, but now it means both IPv6 and IPv4 so using it will not block IPv6.
 A new ACL '''ipv6''' has been added to match only IPv6. It can be used directly in a deny or inverted with '''!''' to match IPv4 in an allow.
+
+{{{
+acl to_ipv6 dst ipv6
+}}}
 
 ----
  . Back to the SquidFaq
