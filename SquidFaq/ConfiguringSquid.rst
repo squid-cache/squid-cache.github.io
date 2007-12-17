@@ -289,16 +289,17 @@ If the HTTP response coming from the server has a Content-length'' header, then 
 ''Note that "creative" user-agents will still be able to download really large files through the cache using HTTP/1.1 range requests. ''
 
 == How do I enable IPv6? ==
-You will need a squid 3.1 release or a daily development snapshot later than 16th Dec 2007.
-And also a computer system with IPv6 capabilities. IPv6 is available in most Linux 2.6+ kernels, MacOSX 10+, all of the BSD vrariants, Windows XP/Vista, and others. Soo yoru operating system documentation for its capability and configuration.
+You will need a squid 3.1 release or a daily development snapshot later than 16th Dec 2007 and a computer system with IPv6 capabilities.
 
-IPv6 support in squid needs to be enabled first with
+IPv6 is available in most Linux 2.6+ kernels, MacOSX 10+, all of the BSD vrariants, Windows XP/Vista, and others. See your system documentation for its capability and configuration.
+
+'''IPv6 support''' in squid needs to be enabled first with
 {{{
 ./configure --enable-ipv6
 }}}
 If you are using a packaged version without it, please contact the maintainer about enabling it.
 
-Windows XP users will need:
+'''Windows XP''' users will need:
 {{{
 ./configure --enable-ipv6 --with-ipv6-split-stack
 }}}
@@ -308,6 +309,7 @@ When squid is built you will then be able to start squid and see some IPv6 opera
 === Squid builds with IPv6 but it won't listen for IPv6 requests. ===
 
 '''Your squid may be configured to only listen for IPv4.'''
+
 Each of the port lines in squid.conf (http_port, icp_port, snmp_port, https_port, maybe others) can take either a port, hostname:port, or ip:port combo.
 
 When these lines contain an IPv4 address or a hostname with only IPv4 addresses squid will only open on those IPv4 you configured. You can add new port lines for IPv6 using [ipv6]:port, add AAAA records to the hostname in DNS, or use only a port.
@@ -318,6 +320,7 @@ Again Windows XP users are unique, the geeks out there will notice two ports ope
 
 
 '''Your squid may be configured with restrictive ACL.'''
+
 A good squid configuration will allow only the traffic it has to and deny any other. If you are testing IPv6 using a pre-existing config you may need to update your ACL lines to include the IPv6 addresses or network ranges which should be allowed.
 src, dst, and other ACL which accept IPv4 addresses or netmasks will also accept IPv6 addresses or CIDR masks now. For example the old ACL to match traffic from localhost is now:
 {{{
@@ -326,6 +329,7 @@ acl localhost src 127.0.0.1/32 ::1/128
 
 === Squid listens on IPv6 but says 'Access Denied' or similar. ===
 '''Your squid may be configured to only sconnect out through specific IPv4.'''
+
 A number of networks are known to need tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit fof ACL magic possible with tcp_outgoing_address which will get around this problem.
 
 {{{
