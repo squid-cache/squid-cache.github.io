@@ -16,7 +16,7 @@ The set of new Squid 3.1 features has not been determined yet. The set will dete
 The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline. To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO List and Wish List.
 
 
-=== TODO List ===
+== TODO List ==
 
 TODO List features determine the release focus and timeline.
 
@@ -32,8 +32,9 @@ Once Squid 3.1 release timeline is agreed upon, developers must obey it or move 
  * [:Features/NativeAsyncCalls] [[Include(Features/NativeAsyncCalls,,,from="ETA.*:",to="$")]]
  * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
+ * [:Features/RemoveNullStore] [[Include(Features/RemoveNullStore,,,from="ETA.*:",to="$")]]
 
-=== Wish List ===
+== Wish List ==
 
 The Wish List accumulates features that do not meet the strict TODO List criteria. Many of these features can be implemented if there is enough demand. Some may get implemented outside of the official process, submitted as patches, and accepted into the release.
 
