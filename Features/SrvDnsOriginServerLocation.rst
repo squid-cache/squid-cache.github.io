@@ -25,6 +25,9 @@
 ## If you have multiple sections and ToC, please place them here,
 ## leaving the above summary information in the page "header".
 
+== Proof Of Concept Code ==
+attachment:srv-redir.pl
+
 == Details ==
 [http://en.wikipedia.org/wiki/SRV_record DNS SRV records], defined in [http://www.ietf.org/rfc/rfc2782.txt RFC 2782] can help attain some level of high availability and load balancing in a very straightforward manner.
 Their query structure includes a naming convention to locate a certain well-known network service, and their reply structure includes two different fields to indicate the level of priority a certain pointer of a set has.
