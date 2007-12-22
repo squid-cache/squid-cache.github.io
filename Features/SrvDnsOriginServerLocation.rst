@@ -28,6 +28,14 @@
 == Proof Of Concept Code ==
 attachment:srv-redir.pl
 
+Configuration snippet: {{{
+url_rewrite_program /path/to/srv-redir.pl
+url_rewrite_children 5
+url_rewrite_concurrency 0
+url_rewrite_host_header off
+}}}
+Some tuneables are in the redirector script itself.
+
 == Details ==
 [http://en.wikipedia.org/wiki/SRV_record DNS SRV records], defined in [http://www.ietf.org/rfc/rfc2782.txt RFC 2782] can help attain some level of high availability and load balancing in a very straightforward manner.
 Their query structure includes a naming convention to locate a certain well-known network service, and their reply structure includes two different fields to indicate the level of priority a certain pointer of a set has.
