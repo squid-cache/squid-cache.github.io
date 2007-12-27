@@ -30,4 +30,4 @@
 Squid needs a usable quota control. The existing approaches of using external acls or redirectors is somewhat limited in that they need to process access.log to calculate the bandwidth usage, plus that they are only evaluated at the start of the request. Because of these limitations users may go significantly over their quota before Squid reacts.
 
 ----
-CategoryFeature
+CategoryFeature CategoryWish
