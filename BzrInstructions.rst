@@ -16,15 +16,15 @@ with on sourceforge with the mirror from trunk.
  * friendly to automation for build tests etc in the future.
  * anonymous code browsing facility (viewvc etc)
 
+= Repository Location =
 
-The adhoc conversion I ran to see the repositories shape is here:
-http://www.squid-cache.org/~robertc/bzr/cvsps/squid3/bzr/squid3/branches/HEAD/
+For committers:
+{{{
+bzr+ssh://squid-cache.org/bzr/squid3/trunk}}}
 
-The writable copy for committers is here:
-{{{bzr+ssh://squid-cache.org/bzr/squid3/trunk}}}
-
-you can make a local branch by doing 'bzr branch' e.g. 'bzr branch $URL
-squid3'.
+For anonymous access/mirroring/etc:
+{{{
+http://www.squid-cache.org/bzr/squid3/trunk}}}
 
 = Recipes =
 
@@ -96,6 +96,36 @@ e.g. if you were to use the launchpad.net bzr hosting service:
 bzr push bzr+ssh://bazaar.launchpad.net/~USER/squid/NAME
 }}}
 
+== Commit to trunk ==
+get a checkout of trunk.
+
+Either follow 'setting up a development environment' and then {{{bzr switch}}} to your local copy of trunk, or just do a checkout:
+{{{bzr checkout bzr+ssh://squid-cache.org/bzr/squid3/trunk}}}
+
+Make sure you have a clean tree:
+{{{bzr status
+}}} This should show nothing. If it shows something:
+{{{bzr revert}}}
+
+If you are merging a development branch:
+{{{
+bzr merge DEVELOPMENTBRANCH_URL
+bzr commit -m "Merge feature FOO"
+}}}
+
+If you are applying a patch from somewhere:
+{{{
+bzr patch PATCHFILE_OR_URL
+bzr commit
+# edit the commit message
+}}}
+
+If you are back/forward porting a specific change:
+{{{
+bzr merge -c REVNO OTHERBRANCH_URL
+bzr commit
+# edit the commit message
+}}}
 
 = TODO =
 
@@ -109,7 +139,6 @@ bzr push bzr+ssh://bazaar.launchpad.net/~USER/squid/NAME
    Needs clarification about which/what/where these are.
 
  * Write up recipes for how to do common tasks:
-   * commit something which has been developed back to trunk
    * cherry pick something back to an older release using CVS
    * cherry pick something back to an older release using bzr. 
    * bring a new branch up to date with it's ancestor
