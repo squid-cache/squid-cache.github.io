@@ -199,19 +199,23 @@ bzr help revisionspec
 
 = TODO =
 
- * Install bzr and its additional components on the squid-cache.org server.
+== Install bzr and its additional components on the squid-cache.org server. ==
    Needs loggerhead installed.
 
+== Convert scripts ==
  * the snapshot scripts need a little update to use the right tools for checking out the source tree.
    Need to convert them - they live in the source tree.
 
  * the release scripts as well
    Need to convert them - they live in the source tree.
 
+== Set cut over date ==
  * Set a cut over date
 
+== Run new conversion ==
  * Run a conversion of the master repository at that date
 
+== Migrate existing branches ? ==
  * Migrate in progress development branches
 
 = Possible future things =
