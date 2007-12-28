@@ -1,6 +1,13 @@
 [[TableOfContents()]]
+
+= Overview =
 For squid 3.1 I propose to migrate the development trunk and web code browsers to [http://bazaar-vcs.org/ Bazaar].
 
+= Bazaar =
+
+Bazaar is a distributed VCS written in python. It offers both drop-in CVS replacement workflow (use checkouts to work on code), and full distributed workflow (every copy is a new branch), up to the user to work as they want.
+
+= Installation =
 Bazaar is available in most O/S's these days: http://bazaar-vcs.org/Download.
 
 Things to install (as a user):
@@ -207,7 +214,7 @@ bzr help revisionspec
 
  * Migrate in progress development branches
 
-= Under discussion =
+= Possible future things =
 
 {{{
 > But some script to mirror HEAD and STABLE branches into CVS while
