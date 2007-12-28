@@ -2,6 +2,11 @@ For squid 3.1 I propose to migrate the development trunk and web code browsers t
 
 Bazaar is available in most O/S's these days: http://bazaar-vcs.org/Download.
 
+Things to install:
+ * bzr
+ * bzr-email (as a package it may be a bit old, try:
+   {{{bzr branch http://bazaar.launchpad.net/~bzr/bzr-email/trunk/ ~/.bazaar/plugins/email}}}
+   Then do 'bzr help email' and setup any local machine configuration you need in bazaar.conf - such as mailer to use etc.
 
 Notes from the mailing list thread:
 
