@@ -20,6 +20,9 @@ with on sourceforge with the mirror from trunk.
 The adhoc conversion I ran to see the repositories shape is here:
 http://www.squid-cache.org/~robertc/bzr/cvsps/squid3/bzr/squid3/branches/HEAD/
 
+The writable copy for committers is here:
+{{{bzr+ssh://squid-cache.org/bzr/squid3/trunk}}}
+
 you can make a local branch by doing 'bzr branch' e.g. 'bzr branch $URL
 squid3'.
 
@@ -40,10 +43,16 @@ This can be done many ways. The following recipe gives you a local repository wh
 {{{# create a local repository to store branches in
 bzr init-repo --no-trees ~/squid-repo
 # get the 3.1 trunk into this repository
-bzr branch http://www.squid-cache.org/~robertc/bzr/cvsps/squid3/bzr/squid3/branches/HEAD/ ~/squid-repo/trunk
+# If you have commit access to trunk:
+export TRUNKURL=bzr+ssh://www.squid-cache.org/bzr/squid3/trunk
+# otherwise:
+export TRUNKURL=http://www.squid-cache.org/bzr/squid3/trunk
+
+bzr branch $TRUNKURL ~/squid-repo/trunk
+
 cd ~/squid-repo/trunk
 # bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
-bzr bind http://www.squid-cache.org/~robertc/bzr/cvsps/squid3/bzr/squid3/branches/HEAD/
+bzr bind $TRUNKURL
 }}}
 
 To update the local copy:
