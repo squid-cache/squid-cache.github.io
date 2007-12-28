@@ -1,3 +1,4 @@
+[[TableOfContents()]]
 For squid 3.1 I propose to migrate the development trunk and web code browsers to [http://bazaar-vcs.org/ Bazaar].
 
 Bazaar is available in most O/S's these days: http://bazaar-vcs.org/Download.
@@ -132,6 +133,63 @@ bzr commit
 # edit the commit message
 }}}
 
+== cherry pick something back to an older release using CVS ==
+Generate a diff using bzr:
+{{{
+bzr diff -r FROMREVNO..TOREVNO > patchfile
+}}}
+or if its a single commit
+{{{
+bzr diff -c COMMITREVNO > patchfile
+}}}
+
+and apply that to cvs with patch:
+{{{
+patch -p1 patchfile
+}}}
+
+== bring a branch up to date with it's ancestor ==
+Just use merge:
+{{{
+# you need a tree to merge: see 'setting up a development environment'
+cd checkout-of-branch
+bzr merge ~/squid-repo/trunk
+bzr commit -m "Merge trunk"
+}}}
+
+== merge another branch into yours ==
+You can merge in arbitrary patterns, though because bzr 1.0 defaults to 'merge3' for conflict resolution the best results occur if a hub-and-spoke system is used where each branch only merges from one other branch, except when changes from a 'child' branch are completed and being merged into that branch.
+{{{
+cd checkout-of-branch
+bzr merge URL_OF_SOURCE_BRANCH
+}}}
+
+== diffing against arbitrary revisions/branches ==
+To diff against a different branch there are several options.
+The most common and most useful one is 'ancestor' and will give you the diff since the most recent merge of that other branch.
+If there is a third branch that has been merged into both your branch and the one you are diffing, it's changes will appear in the diff. There is work underway to provide diffs that handle any merge pattern more gracefully - see [http://bundlebuggy.aaronbentley.com/request/%3C47730F98.2030405%40utoronto.ca%3E merge-preview] as the start of the work in bzr.
+{{{
+cd MYBRANCH
+bzr diff -r ancestor:URL_OF_OTHER_BRANCH
+}}}
+
+Another useful option is to diff against the current tip of a branch, which will show things that you have not merged from that branch as 'removed' and things you have created locally as 'added':
+{{{
+cd MYBRANCH
+bzr diff -r branch:URL_OF_OTHER_BRANCH
+}}}
+
+You can also diff against arbitrary revnos in the other branch:
+{{{
+cd MYBRANCH
+bzr diff -r 34:URL_OF_OTHER_BRANCH
+}}}
+
+For more information: 
+{{{
+bzr help revisionspec
+}}}
+
 = TODO =
 
  * Install bzr and its additional components on the squid-cache.org server.
@@ -142,15 +200,6 @@ bzr commit
 
  * the release scripts as well
    Need to convert them - they live in the source tree.
-
- * Write up recipes for how to do common tasks:
-   * cherry pick something back to an older release using CVS
-   * cherry pick something back to an older release using bzr. 
-   * bring a new branch up to date with it's ancestor
-   * merge another branch into yours
-   * how to generate a clean patch when having another branch merged into yours (i.e. diff relative to an up to date version of that branch, not
-your natural ancestor)
-   * others ?
 
  * Set a cut over date
 
