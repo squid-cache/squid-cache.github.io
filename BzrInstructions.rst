@@ -33,6 +33,61 @@ The following commands are equivalent:
 {{{bzr diff -c 10
 bzr diff -r 9..10}}}
 
+== Setup a mirror/development environment ==
+
+This can be done many ways. The following recipe gives you a local repository which can be used to develop many branches in an offline manner with a single build directory (so you don't have to do a full rebuild when switching branches).
+
+{{{# create a local repository to store branches in
+bzr init-repo --no-trees ~/squid-repo
+# get the 3.1 trunk into this repository
+bzr branch http://www.squid-cache.org/~robertc/bzr/cvsps/squid3/bzr/squid3/branches/HEAD/ ~/squid-repo/trunk
+cd ~/squid-repo/trunk
+# bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
+bzr bind http://www.squid-cache.org/~robertc/bzr/cvsps/squid3/bzr/squid3/branches/HEAD/
+}}}
+
+To update the local copy:
+{{{
+cd ~/squid-repo/trunk
+bzr update
+}}}
+
+To get a working tree to perform edits or merges:
+{{{
+cd ~/source/squid
+bzr checkout --lightweight ~/squid-repo/BRANCHNAME
+}}}
+
+To change the branch that a checkout has been made from
+{{{
+cd ~/source/squid/acheckout
+bzr switch ~/squid-repo/BRANCHNAME
+}}}
+
+NOTE: Until bzr+ssh access to the trunk is available, you cannot commit to the trunk!
+
+== Make a new branch to hack on ==
+First follow the instructions above to setup a development environment
+
+Now, replace SOURCE with the branch you want your new branch based on, and NAME with the name you want your new branch to have in the following:
+{{{
+bzr branch SOURCE ~/squid-repo/NAME
+cd ~/source/squid
+# alternatively, see the 'setup a development environment' recipe for instructions on switching a working area to a different branch.
+bzr checkout --lightweight ~/squid-repo/NAME
+}}}
+
+If you want to share the branch with others also do:
+{{{
+bzr push PUBLIC_URL
+}}}
+
+e.g. if you were to use the launchpad.net bzr hosting service:
+{{{
+bzr push bzr+ssh://bazaar.launchpad.net/~USER/squid/NAME
+}}}
+
+
 = TODO =
 
  * Install bzr and its additional components on the squid-cache.org server.
@@ -45,8 +100,6 @@ bzr diff -r 9..10}}}
    Needs clarification about which/what/where these are.
 
  * Write up recipes for how to do common tasks:
-   * get a mirror of the development source to hack on
-   * make a new branch to hack on
    * commit something which has been developed back to trunk
    * cherry pick something back to an older release using CVS
    * cherry pick something back to an older release using bzr. 
