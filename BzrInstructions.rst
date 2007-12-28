@@ -135,13 +135,13 @@ bzr commit
 = TODO =
 
  * Install bzr and its additional components on the squid-cache.org server.
-   Needs bzr, bzrtools, loggerhead installed. 1.0 or newer of bzr desired.
+   Needs loggerhead installed.
 
  * the snapshot scripts need a little update to use the right tools for checking out the source tree.
-   Needs clarification about which/what/where these are.
+   Need to convert them - they live in the source tree.
 
  * the release scripts as well
-   Needs clarification about which/what/where these are.
+   Need to convert them - they live in the source tree.
 
  * Write up recipes for how to do common tasks:
    * cherry pick something back to an older release using CVS
