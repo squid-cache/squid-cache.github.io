@@ -23,6 +23,16 @@ http://www.squid-cache.org/~robertc/bzr/cvsps/squid3/bzr/squid3/branches/HEAD/
 you can make a local branch by doing 'bzr branch' e.g. 'bzr branch $URL
 squid3'.
 
+= Recipes =
+
+== Generate a patch for a commit ==
+{{{bzr diff -c revno}}} or
+{{{bzr diff -r revno..otherrevno}}} to use an arbitrary range.
+
+The following commands are equivalent:
+{{{bzr diff -c 10
+bzr diff -r 9..10}}}
+
 = TODO =
 
  * Install bzr and its additional components on the squid-cache.org server.
@@ -35,12 +45,15 @@ squid3'.
    Needs clarification about which/what/where these are.
 
  * Write up recipes for how to do common tasks:
-   * generate a patch for a commit
    * get a mirror of the development source to hack on
    * make a new branch to hack on
    * commit something which has been developed back to trunk
    * cherry pick something back to an older release using CVS
-   * cherry pick something back to an older release using bzr.
+   * cherry pick something back to an older release using bzr. 
+   * bring a new branch up to date with it's ancestor
+   * merge another branch into yours
+   * how to generate a clean patch when having another branch merged into yours (i.e. diff relative to an up to date version of that branch, not
+your natural ancestor)
    * others ?
 
  * Set a cut over date
