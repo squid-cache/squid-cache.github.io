@@ -200,14 +200,16 @@ bzr help revisionspec
 = TODO =
 
 == Install bzr and its additional components on the squid-cache.org server. ==
-   Needs loggerhead installed.
+   loggerhead is mostly running at /bzrview/. Some config issue I'm investigating causes a crash on startup but this is solvable once th devs get back from leave.
 
 == Convert scripts ==
+This is done, needs the result committed.
+
  * the snapshot scripts need a little update to use the right tools for checking out the source tree.
-   Need to convert them - they live in the source tree.
+   Patch sent to list.
 
  * the release scripts as well
-   Need to convert them - they live in the source tree.
+   Patch sent to list
 
 == Set cut over date ==
  * Set a cut over date
