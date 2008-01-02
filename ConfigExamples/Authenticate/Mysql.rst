@@ -52,7 +52,7 @@ Edit squid.conf so that authentication against Mysql db works
 
 {{{
 
-auth_param basic program /usr/local/squid/libexec/squid_db_auth --user testuser --password test --plaintext --persist
+auth_param basic program /usr/local/squid/libexec/squid_db_auth --user someuser --password xxxx --plaintext --persist
 auth_param basic children 5
 auth_param basic realm Web-Proxy
 auth_param basic credentialsttl 1 minute
