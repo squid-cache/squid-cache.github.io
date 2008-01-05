@@ -4,7 +4,8 @@
 
 ## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 
-= Configuration Title =
+= Configuring a Squid Server to authenticate from RADIUS =
+By Askar Ali Khan
 
 [[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
 
@@ -12,7 +13,7 @@
 
 == Outline ==
 
-In this example a squid installation will use radius "squid_radius_auth" Squid RADIUS authentication helper to authenticate users before allowing them to surf the web. For security reasons users need to enter their username and password before they are allowed to surf the internet.
+In this example a squid installation will use RADIUS "squid_radius_auth" Squid RADIUS authentication helper to authenticate users before allowing them to surf the web. For security reasons users need to enter their username and password before they are allowed to surf the internet.
 
 
 == Squid Installation ==
