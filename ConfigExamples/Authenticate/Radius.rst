@@ -41,27 +41,47 @@ Here is my radius config
 vi /etc/radius_config
 
 server 192.168.10.20
-secret dummyone
+secret someSecret
 
 }}}
 
+== Test the squid_radius_auth helper ==
 
-
-Create more sections as you wish.
-
-== Squid Configuration File ==
-
-Paste the configuration file like this:
+Before making changes to squid.conf its better to test the helper from command line.
 
 {{{
 
-acl all src 0.0.0.0/0.0.0.0
-acl manager proto cache_object
-acl localhost src 127.0.0.1/255.255.255.255
-http_access deny all
+/usr/local/squid/libexec/squid_radius_auth -f /etc/radius_config
+
+Or, if you are not using configuration file then ...
+
+/usr/local/squid/libexec/squid_radius_auth -h 192.168.10.20 -w someSecret
+
 
 }}}
 
+Type your radius username/password on the same line separated with space, on successful authentication it will give "OK" otherwise "ERR login failure"
+
+== Squid Configuration File ==
+
+{{{
+
+auth_param basic program /usr/local/squid/libexec/squid_radius_auth -f /etc/radius_config
+auth_param basic children 5
+auth_param basic realm Web-Proxy
+auth_param basic credentialsttl 5 minute
+auth_param basic casesensitive off
+
+}}}
+
+{{{
+
+acl radius-auth proxy_auth REQUIRED
+http_access allow radius-auth
+http_access allow localhost
+http_access deny all
+
+}}}
 
 ----
 CategoryConfigExample
