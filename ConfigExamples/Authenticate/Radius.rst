@@ -62,7 +62,7 @@ Or, if you are not using configuration file then ...
 
 Type your radius username/password on the same line separated with space, on successful authentication it will give "OK" otherwise "ERR login failure"
 
-== Squid Configuration File ==
+== Relevant squid.conf parameters ==
 
 {{{
 
