@@ -69,7 +69,7 @@ http_access deny all
 
 }}}
 
-== Testing the squid_db_auth ==
+== Testing the squid_db_auth helper ==
 
 It good idea to test the squid_db_auth helper from command line to make sure it authenticating with mysql before trying from browser.
 
