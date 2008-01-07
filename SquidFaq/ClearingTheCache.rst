@@ -1,0 +1,36 @@
+## Please edit system and help pages ONLY in the moinmaster wiki! For more
+## information, please see MoinMaster:MoinPagesEditorGroup.
+##acl MoinPagesEditorGroup:read,write,delete,revert All:read
+##master-page:HelpTemplate
+##master-date:Unknown-Date
+#format wiki
+#language en
+== Pruning the Cache Down ==
+Clearing the cache can be necessary under some unusual circumstances. Usually if the estimated size of the cache was calculated incorrectly and needs adjusting.
+
+To fix simple cases such as the above where the cache just needs to have a portion of the total removed Altering squid.conf and reconfiguring squid is sufficient. Squid will handle the changes automatically and purge the cache down to size again within 10 minutes of the configure.
+
+old squid.conf
+{{{
+cache_dir ufs /squid/cache 1000 255 255
+}}}
+new squid.conf
+{{{
+cache_dir ufs /squid/cache 100 255 255
+}}}
+and reconfigure ...
+{{{
+squid -k reconfigure
+}}}
+
+== Changing the Cache Levels ==
+Altering the cache_dir L1 and L2 sizes has not been tested with the above altering. It is still recommended to manually delete the cache directory and rebuild after altering the configuration.
+
+{{{
+squid -k shutdown
+rm -r /squid/cache/*
+squid -z
+squid
+}}}
+
+If you wish to try the pruning method with a level change and let us know the results then please do. We would like this page to cover all known resizing requirements and options.
