@@ -39,6 +39,10 @@ For anonymous access/mirroring/etc:
 {{{
 http://www.squid-cache.org/bzr/squid3/trunk}}}
 
+= Web view =
+
+http://squid-cache.org/bzrview/
+
 = Recipes =
 
 == Generate a patch for a commit ==
@@ -198,9 +202,6 @@ bzr help revisionspec
 }}}
 
 = TODO =
-
-== Install bzr and its additional components on the squid-cache.org server. ==
-   loggerhead is mostly running at /bzrview/. Some config issue I'm investigating causes a crash on startup but this is solvable once th devs get back from leave.
 
 == Convert scripts ==
 This is done, needs the result committed.
