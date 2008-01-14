@@ -26,10 +26,12 @@ Squid-2.7 is a future release with the number of current and planned improvement
  * Removal of the dummy "null" store type and useless default cache_dir.
 
 === Squid-2.8 ? ===
-Two main changes would be done for a Squid-2.8 release:
+Three main changes would be done for a Squid-2.8 release:
 
- * Redesigning the network comms layer - improve SSL, introduce compression abilities, be much more efficient under Windows
+ * Redesigning the network comms layer - improve SSL, introduce compression abilities, be much more efficient under Windows. (Adrian)
+ * Redesigning the data flow - incorporate reference counted buffering, eliminate data copying and temporary string allocation where possible. (Adrian)
  * Include IPv6 support similar to Squid-3, for both forward and reverse proxy modes
+
 A lot of work will be involved in integrating and testing these two features, so further work should be suspended until these two main features are stable.
 
 Other ideas
