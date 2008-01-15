@@ -14,6 +14,7 @@ The set of new Squid 3.1 features has not been fully determined yet. The set wil
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
  * [:Features/IPv6]
  * [:Features/RemoveNullStore]
+ * [:Features/ConfigIncludes]
 
 Development snapshots of squid 3.1 source code are already available with these features at
 http://www.squid-cache.org/Versions/v3/HEAD/
