@@ -12,7 +12,7 @@
 
  * '''Version''': 3.1.
 
- * '''Developer''': AmosJeffries, HenrikNordstrom.
+ * '''Developer''': HenrikNordstrom.
 
  * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=1614
 
