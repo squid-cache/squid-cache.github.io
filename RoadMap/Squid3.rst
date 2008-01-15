@@ -9,7 +9,14 @@
 
 == Squid 3.1 ==
 
-The set of new Squid 3.1 features has not been determined yet. The set will determine the release timeline. To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO List and Wish List.
+The set of new Squid 3.1 features has not been fully determined yet. The set will determine the release timeline. To minimize noise and the number of half-baked abandoned features, two Features sets are established: TODO List and Wish List.
+
+Some features have already been completed and merged into the codebase for 3.1 release. They are:
+ * [:Features/IPv6]
+ * [:Features/RemoveNullStore]
+
+Development snapshots of squid 3.1 source code are already available with these features at
+http://www.squid-cache.org/Versions/v3/HEAD/
 
 == Squid 3.2 ==
 
@@ -27,12 +34,14 @@ Once Squid 3.1 release timeline is agreed upon, developers must obey it or move 
 ## The category search matches this page as well, for unknown reason
 ## [[FullSearch(CategoryFeature "Version''': Squid 3.1" -CategoryWish)]]
 
- * [:Features/IPv6] [[Include(Features/IPv6,,,from="ETA.*:",to="$")]]
+Several Features are done but awaiting a final check and patching into the main codebase:
+
  * [:Features/SslBump] [[Include(Features/SslBump,,,from="ETA.*:",to="$")]]
+
+Others are still under development:
  * [:Features/NativeAsyncCalls] [[Include(Features/NativeAsyncCalls,,,from="ETA.*:",to="$")]]
  * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
- * [:Features/RemoveNullStore] [[Include(Features/RemoveNullStore,,,from="ETA.*:",to="$")]]
 
 == Wish List ==
 
