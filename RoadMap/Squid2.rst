@@ -38,20 +38,20 @@ This release concentrates on modularising existing code whilst improving perform
 
 These changes pave the way for the next phase of performance improvements and HTTP/1.1 compliance.
 
-With funding and available manpower, the bulk of these changes could be implemented within ~3 months. 
+With funding and available manpower, the bulk of these changes could be completed and included within ~3 months. 
 
 The planned changes will include:
 
  * IPv6
  * Config include support '''(Complete)'''
  * Restructure the data paths:
-  * Store -> Client buffer referencing (Complete)
-  * Server -> Store buffer referencing (Complete; not integrated)
+  * Store -> Client buffer referencing '''(Complete)'''
+  * Server -> Store buffer referencing '''(Complete; not integrated)'''
  * Restructure HTTP request and reply paths to take advantage of buffer referencing (Complete; not integrated)
  * Abstract out tproxy code into os-independant subroutines - aim to support tproxy-2 (Linux), tproxy-4 (Linux), upcoming FreeBSD support (which will be similar to the tproxy-4 method.)
- * Migrate internals to reference counted buffers rather than memcpy() / string copying (Complete)
+ * Migrate internals to reference counted buffers rather than memcpy() / string copying '''(Complete)'''
  * Communications layer to seperate out SSL, TCP, (SCTP?), out of client/server side; and make Windows porting easier
- * Break out some code into seperate library modules, including documentation and some unit testing (In Progress)
+ * Break out some code into seperate library modules, including documentation and some unit testing '''(In Progress)'''
   * memory management
   * debugging
   * buffers
