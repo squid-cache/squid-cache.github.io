@@ -36,6 +36,8 @@ Squid-2.7 is a future release with the number of current and planned improvement
 
 This release concentrates on modularising existing code whilst improving performance. These changes should keep future developments in mind (HTTP/1.1, inline content processing, more efficient storage methods, threading.) The aim is to reduce user-space CPU usage (specifically, without ACL lookups - these can use a lot of CPU; these can be re-evaluated later.)
 
+Adrian's seperate Squid-2 development branch (s27_adri) is showing 10-15% CPU usage improvement for in-memory workloads (ie, with no disk storage). Squid-2.8 should use ~20% to ~30% less CPU than Squid-2.6 / Squid-3.0 for memory-only workloads with minimal ACLs/refresh patterns. (Sorry - ACLs and refresh patterns are -very- expensive compared to the rest of the Squid codebase; especially if many regular expressions are involved.)
+
 These changes pave the way for the next phase of performance improvements and HTTP/1.1 compliance.
 
 With funding and available manpower, the bulk of these changes could be completed and included within ~3 months. 
@@ -67,6 +69,7 @@ This release should bring in HTTP/1.1 support, enabled by improvements to the da
 
 This release should focus on further modularisation and API changes to enable new functionality. Specific goals include:
 
+ * Migrate to PCRE - this supports more regexp processing without having to convert string data to a NUL-terminated string
  * Seperate out client-side server-side code from caching logic
   * Allow for "other" code to use HTTP clients and servers, similar to Squid-3 but made much more generic
  * Message-based data flow model? - something enabling both HTTP/1.1 and inline content transformation
