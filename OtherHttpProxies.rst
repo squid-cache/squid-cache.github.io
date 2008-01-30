@@ -36,7 +36,7 @@
  * [http://www.stratacache.com/1!_stratacore-caching.html StrataCache Stratacore]
  
 
-=== Squid-based commercial products ===
+== Squid-based commercial products ==
 
 
 === Discontinued products ===
