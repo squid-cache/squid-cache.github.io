@@ -71,7 +71,10 @@
 === Discontinued products ===
 
 == Squid-based commercial products ==
-
+ * [http://www.smoothwall.net/ Smoothwall]
+   previously the SmoothWall Open Source project, now a fully commercial venture. Uses a vanilla Squid to perform its caching and proxy capabilities.
+ * [http://www.securecomputing.com/index.cfm?skey=1485 SnapGear]
+   uses a small HTTP proxy based on squid for web traffic management in some devices.
 
 === Discontinued products ===
 
