@@ -61,6 +61,8 @@
  
 === Discontinued products ===
 
+ * !NetApp's !NetCache product line was sold to [http://www.bluecoat.com/ BlueCoat Systems] in 2006, and the product was discontinued
+
 == Free (as in beer) products ==
 
  * [http://www.handcraftedsoftware.org/index.php?page=5 FreeProxy Internet Suite]
