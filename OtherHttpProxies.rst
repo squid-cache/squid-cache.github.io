@@ -23,6 +23,18 @@
    its main purpose is to enable disconnected operation, and allows for content modification aimed to this purpose
  * [http://varnish.projects.linpro.no/ Varnish]
    the main purpose of Varnish is high-performance HTTP reverse-proxying and content acceleration
+ * [http://havp.sourceforge.net/ HTTP Anti Virus Proxy]
+   focus of the project is !ClamAV integration
+ * [http://transproxy.sourceforge.net/ Transproxy]
+   Linux / FreeBSD specific transparent proxy 
+ * [http://shweby.sourceforge.net/ Shweby]
+   ICAP support is the main focus of this project. Its design limits its applicability to very small groups of users
+ * [http://ssproxy.sourceforge.net/ Small Screen Proxy]
+   this project's focus is content adaptation for small-screen devices such as handlehds and PDAs
+ * [http://www.parosproxy.org/index.shtml Paros Proxy]
+   this Java-based project focuses on allowing security auditing and content modification of web applications
+ * [http://ntlmaps.sourceforge.net/ NTLM Authorization Proxy Server]
+   this non-caching proxy's purpose is to act an authentication scheme gateway between NTLM (server-side) and Basic (client-side) to enable non-NTLM-aware clients to authenticate against NTLM-only servers.
 
 === Discontinued projects ===
  * [http://proxomitron.info/ Proximitron]
@@ -42,7 +54,19 @@
    includes an HTTP/1.1 reverse-proxy
  * [http://www.wingate.com/product-wingate.php WinGate HTTP Proxy]
    runs on MS-Windows systems, its main purpose is to allow a small group of users to share a single network link
+ * [http://anonproxyserver.sourceforge.net/ ANON Proxy Server] 
+   despite the name, anonymity is an optional part of this software. HTTP(s) and Socks
+ * [http://tinyproxy.sourceforge.net/ tinyproxy]
+   name says it all :)
  
+=== Discontinued products ===
+
+== Free (as in beer) products ==
+
+ * [http://www.handcraftedsoftware.org/index.php?page=5 FreeProxy Internet Suite]
+   runs on MS-Windows, aimed mainly at small groups, offers a wide range of connectivity options and protocols
+
+=== Discontinued products ===
 
 == Squid-based commercial products ==
 
@@ -56,6 +80,7 @@
    non-caching, filtering, flow-altering proxy
  * [http://www.torproject.org/ The Onion Router] (aka TOR) (free)
  * [http://www.inetprivacy.com/a4proxy/ Anonymity 4 Proxy] (commercial)
+
 
 
 === Discontinued projects ===
