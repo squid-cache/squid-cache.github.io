@@ -19,6 +19,10 @@
  * [http://search.cpan.org/~book/HTTP-Proxy-0.20/ PERL HTTP::Proxy]
    Pure-PERL HTTP proxy implementation
  * [http://www.nginx.net/ nginx]
+ * [http://www.gedanken.demon.co.uk/wwwoffle/ WWWOffle]
+   its main purpose is to enable disconnected operation, and allows for content modification aimed to this purpose
+ * [http://varnish.projects.linpro.no/ Varnish]
+   the main purpose of Varnish is high-performance HTTP reverse-proxying and content acceleration
 
 === Discontinued projects ===
  * [http://proxomitron.info/ Proximitron]
@@ -36,6 +40,8 @@
  * [http://www.stratacache.com/1!_stratacore-caching.html StrataCache Stratacore]
  * [http://www.zeus.com/products/zws/techspecs.html Zeus Web Server]
    includes an HTTP/1.1 reverse-proxy
+ * [http://www.wingate.com/product-wingate.php WinGate HTTP Proxy]
+   runs on MS-Windows systems, its main purpose is to allow a small group of users to share a single network link
  
 
 == Squid-based commercial products ==
@@ -48,6 +54,7 @@
  * [http://www.proxybolt.com/ Proxybolt]
  * [http://www.privoxy.org/ Privoxy]
    non-caching, filtering, flow-altering proxy
+ * [http://www.torproject.org/ The Onion Router] (aka TOR)
 
 === Discontinued projects ===
  * [http://sourceforge.net/projects/poxy/ PHProxy]
