@@ -51,10 +51,12 @@
 
 
 == Anonymizers ==
- * [http://www.proxybolt.com/ Proxybolt]
- * [http://www.privoxy.org/ Privoxy]
+ * [http://www.proxybolt.com/ Proxybolt] (free)
+ * [http://www.privoxy.org/ Privoxy] (free)
    non-caching, filtering, flow-altering proxy
- * [http://www.torproject.org/ The Onion Router] (aka TOR)
+ * [http://www.torproject.org/ The Onion Router] (aka TOR) (free)
+ * [http://www.inetprivacy.com/a4proxy/ Anonymity 4 Proxy] (commercial)
+
 
 === Discontinued projects ===
  * [http://sourceforge.net/projects/poxy/ PHProxy]
