@@ -7,7 +7,7 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 [[TableOfContents]]
 
-This page contains a list of non-
+
 
 == Free / Open Source HTTP proxy servers ==
  * [http://httpd.apache.org/ Apache]
