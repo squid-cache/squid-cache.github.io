@@ -34,6 +34,8 @@
  * [http://www.cisco.com/en/US/products/ps5680/Products_Sub_Category_Home.html Cisco Wide Area Application Services] (aka WAAS)
    is the umpteenth attempt by Cisco to provide transparent acceleration services for HTTP and non-HTTP traffic
  * [http://www.stratacache.com/1!_stratacore-caching.html StrataCache Stratacore]
+ * [http://www.zeus.com/products/zws/techspecs.html Zeus Web Server]
+   includes an HTTP/1.1 reverse-proxy
  
 
 == Squid-based commercial products ==
