@@ -15,7 +15,7 @@
  * [http://ziproxy.sourceforge.net/ Ziproxy]
    ''forwarding, non-caching, compressing HTTP proxy server''. Its main feature is on-the-fly image and text (re)compression.
  * [http://www.pps.jussieu.fr/~jch/software/polipo/ Polipo]
-   a (mostly) HTTP/1.1-compliant proxy supporting IPv6, targeted for small groups of users
+   a (mostly) HTTP/1.1-compliant proxy supporting IPv6, targeted for small groups of users; author attempted to make pipelined connection logic that "worked" in the real world with all the broken origin servers out there
  * [http://search.cpan.org/~book/HTTP-Proxy-0.20/ PERL HTTP::Proxy]
    Pure-PERL HTTP proxy implementation
  * [http://www.nginx.net/ nginx]
