@@ -259,26 +259,26 @@ always_direct allow hotmail
 == Can I make Squid proxy only, without caching anything? ==
 Sure, there are few things you can do.
 
-You can use the ncache access list to make Squid never cache any response:
+You can use the ''cache'' access list to make Squid never cache any response:
 
 {{{
 acl all src 0.0.0.0/0
 cache deny all
 }}}
-With Squid-2.4 and later you can also use the "null" storage module to avoid having a cache directory:
 
+With Squid-2.7, Squid-3.1 and later you can also remove all 'cache_dir' options from your squid.conf to avoid having a cache directory.
+
+With Squid-2.4, 2.5, 2.6, and 3.0 you can do the same by using the "null" storage module:
 {{{
 cache_dir null /tmp
 }}}
-Note: a null cache_dir does not disable caching, but it does save you from creating a cache structure if you have disabled caching with cache.
-
-Note: the directory (e.g., {{{/tmp}}}) must exist so that squid can chdir to it, unless you also use the {{{coredump_dir}}} option.
+Note: a null cache_dir does not disable caching, but it does save you from creating a cache structure if you have disabled caching with cache. The directory (e.g., {{{/tmp}}}) must exist so that squid can chdir to it, unless you also use the {{{coredump_dir}}} option.
 
 To configure Squid for the "null" storage module, specify it on the configure'' command line: ''
-
 {{{
 --enable-storeio=null,...
 }}}
+
 == Can I prevent users from downloading large files? ==
 You can set the global {{{reply_body_max_size}}} parameter.  This option controls the largest HTTP message body that will be sent to a cache client for one request.
 
@@ -291,7 +291,7 @@ If the HTTP response coming from the server has a Content-length'' header, then 
 == How do I enable IPv6? ==
 You will need a squid 3.1 release or a daily development snapshot later than 16th Dec 2007 and a computer system with IPv6 capabilities.
 
-IPv6 is available in most Linux 2.6+ kernels, MacOSX 10+, all of the BSD vrariants, Windows XP/Vista, and others. See your system documentation for its capability and configuration.
+IPv6 is available in most Linux 2.6+ kernels, MacOSX 10+, all of the BSD variants, Windows XP/Vista, and others. See your system documentation for its capability and configuration.
 
 '''IPv6 support''' in squid needs to be enabled first with
 {{{
@@ -306,6 +306,8 @@ If you are using a packaged version without it, please contact the maintainer ab
 
 When squid is built you will then be able to start squid and see some IPv6 operations. The most active will be DNS as IPv6 addresses are looked up for each website, and IPv6 addresses in the cachemgr reports and logs.
 
+Note: make sure that you check you helper script can handle IPv6 addresses
+
 === Squid builds with IPv6 but it won't listen for IPv6 requests. ===
 
 '''Your squid may be configured to only listen for IPv4.'''
@@ -316,7 +318,7 @@ When these lines contain an IPv4 address or a hostname with only IPv4 addresses 
 
 When only a port is set it should be opening for IPv6 access as well as IPv4. The one exception to default IPv6-listening are port lines where 'transparent' or 'tproxy' options are set. NAT-interception (commonly called transparent proxy) cannot be done in IPv6 so squid will only listen on IPv4 for that type of traffic.
 
-Again Windows XP users are unique, the geeks out there will notice two ports opening for seperate IPv4 and IPv6 acceess with each plain-port squid.conf line. The effect is the same as with more modern systems.
+Again Windows XP users are unique, the geeks out there will notice two ports opening for seperate IPv4 and IPv6 access with each plain-port squid.conf line. The effect is the same as with more modern systems.
 
 
 '''Your squid may be configured with restrictive ACL.'''
@@ -328,9 +330,9 @@ acl localhost src 127.0.0.1/32 ::1/128
 }}}
 
 === Squid listens on IPv6 but says 'Access Denied' or similar. ===
-'''Your squid may be configured to only sconnect out through specific IPv4.'''
+'''Your squid may be configured to only connect out through specific IPv4.'''
 
-A number of networks are known to need tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit fof ACL magic possible with tcp_outgoing_address which will get around this problem.
+A number of networks are known to need tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit of ACL magic possible with tcp_outgoing_address which will get around this problem.
 
 {{{
 acl to_ipv6 dst ipv6
