@@ -118,5 +118,10 @@ Further examples of Squid MRTG configurations can be found here:
  * [http://thproxy.jinr.ru/file-archive/doc/squid/cache-snmp/mrtg-demo/ MRTG & Squid] by Glenn Chisholm
  * [http://www.braindump.dk/en/wiki/?catid=7&wikipage=ConfigFiles Braindump] by Joakim Recht
 
+== Monitoring Squid with Cacti ==
+
+Cacti is a software tool based on the same concepts as MRTG, but with a more user-friendly interface and infrastructure. Its home is at http://www.cacti.net/.
+It allows to use pre-defined templates to facilitate deployment. Templates for squid can be found on [http://forums.cacti.net/about4142.html the cacti forums]
+
 -----
 Back to the SquidFaq
