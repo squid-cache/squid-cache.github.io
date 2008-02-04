@@ -5,7 +5,7 @@
 = Feature: IPv6 =
 
  * '''Goal''': Support IPv6 clients, servers, peers, and resolvers.
- * '''Status''': Done.
+ * '''Status''': completed
  * '''ETA''': Done.
  * '''Version''': Squid 3.1
  * '''Developer''': AmosJeffries
