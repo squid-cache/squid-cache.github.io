@@ -35,6 +35,8 @@
    this Java-based project focuses on allowing security auditing and content modification of web applications
  * [http://ntlmaps.sourceforge.net/ NTLM Authorization Proxy Server]
    this non-caching proxy's purpose is to act an authentication scheme gateway between NTLM (server-side) and Basic (client-side) to enable non-NTLM-aware clients to authenticate against NTLM-only servers.
+ * [http://haproxy.1wt.eu/ HAProxy]
+   despite the name, it's a reverse-proxy and load-balancer, meant for HTTP but also able to do TCP port-forwarding.
 
 === Discontinued projects ===
  * [http://proxomitron.info/ Proximitron]
