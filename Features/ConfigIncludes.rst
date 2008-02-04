@@ -6,13 +6,13 @@
 
  * '''Goal''': squid.conf should be able to include other configuration files to allow more efficient maintenance.
 
- * '''Status''': Done for 3.1, patch for 2.7 available.
+ * '''Status''': completed
 
  * '''ETA''': Done.
 
- * '''Version''': 3.1, 2.7?
+ * '''Version''': 3.1, 2.7
 
- * '''Developer''': AdrianChadd, AmosJeffries
+ * '''Developer''': AdrianChadd (2.7), AmosJeffries (3.1)
 
  * '''More''': 
 
