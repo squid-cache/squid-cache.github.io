@@ -1,0 +1,82 @@
+#language en
+[[TableOfContents]]
+== Open-access proxies ==
+
+
+Squid's default configuration file denies all client requests.  It is the
+administrator's responsibility to configure Squid to allow access only
+to trusted hosts and/or users.
+
+If your proxy allows access from untrusted hosts or users, you can be
+sure that people will find and abuse your service.  Some people
+will use your proxy to make their browsing anonymous.  Others will
+intentionally use your proxy for transactions that may be illegal
+(such as credit card fraud).  A number of web sites exist simply
+to provide the world with a list of open-access HTTP proxies.  You
+don't want to end up on this list.
+
+Be sure to carefully design your access control scheme.  You should
+also check it from time to time to make sure that it works as you
+expect.
+
+
+== Mail relaying ==
+
+
+SMTP and HTTP are rather similar in design.  This, unfortunately, may
+allow someone to relay an email message through your HTTP proxy.  To
+prevent this, you must make sure that your proxy denies HTTP requests
+to port 25, the SMTP port.
+
+Squid is configured this way by default.  The default ''squid.conf''
+file lists a small number of trusted ports.  See the ''Safe_ports''
+ACL in ''squid.conf''.  Your configuration file should always deny
+unsafe ports early in the ''http_access'' lists:
+{{{
+http_access deny !Safe_ports
+(additional http_access lines ...)
+}}}
+
+
+Do NOT add port 25 to ''Safe_ports'' (unless your goal is to end
+up in the
+[http://mail-abuse.org/rbl/ RBL]).  You may
+want to make a cron job that regularly verifies that your proxy blocks
+access to port 25.
+
+== Hijackable proxies ==
+
+Squid's default configuration file denies all client requests.  It is the
+administrator's responsibility to configure Squid to allow access only
+to trusted hosts and/or users.
+
+If your proxy allows unrestricted access to any ports.  Some people
+may use your proxy to make their website anonymous.  A number of websites
+commonly seen in Spam and Phishing emails are using this method of hiding
+and software is available in some circles supporting the automatic detection
+of these partially-open proxies.
+
+{{{
+acl mycoolapp port 1234
+...
+http_access allow mycoolapp
+}}}
+
+Be careful that configuration lines like these are kept behind any lines that block public access to your squid.
+
+{{{
+acl mycoolapp port 1234
+...
+http_access deny !localnet
+...
+http_access allow mycoolapp
+
+OR even better:
+
+acl mycoolapp port 1234
+...
+http_access allow localnet mycoolapp
+}}}
+
+-----
+Back to the SquidFaq
