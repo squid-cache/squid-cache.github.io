@@ -492,56 +492,16 @@ connections.  Squid-1.1 does not support persistent connections.
 == Does Squid work with NTLM Authentication? ==
 
 [http://www.squid-cache.org/Versions/v2/2.5/ Version 2.5]
-supports Microsoft NTLM authentication.  However, there are some
-limits on our support: we cannot proxy connections to a origin
-server that use NTLM authentication, but we can act as a web
-accelerator or proxy server and authenticate the client connection
-using NTLM.
+supports Microsoft NTLM authentication to authenticate users accessing the proxy server itself (be it in a forward or reverse setup). See ../ProxyAuthentication for further details
 
+[http://www.squid-cache.org/Versions/v2/2.6/ Version 2.6] and onwards also support the kind of infrastructure that's needed to properly allow an user to authenticate against an NTLM-enabled webserver.
 
-We support NT4, Samba, and Windows 2000 Domain Controllers. For
-more information see ../ProxyAuthentication .
+As NTLM authentication backends go, the real work is usually done by [http://www.samba.org/ Samba] on squid's behalf. That being the case, Squid supports any authentication backend supported by Samba, including Samba itself and MS Windows 3.51 and onwards Domain Controllers.
 
-
-Why we cannot proxy NTLM even though we can use it.
-Quoting from summary at the end of the browser authentication section in
-[http://support.microsoft.com/support/kb/articles/Q198/1/16.ASP this article]:
-{{{
-In summary, Basic authentication does not require an implicit end-to-end
-state, and can therefore be used through a proxy server. Windows NT
-Challenge/Response authentication requires implicit end-to-end state and
-will not work through a proxy server.
-}}}
-
-
-
-Squid transparently passes the NTLM request and response headers between
-clients and servers. NTLM relies on a single end-end connection (possibly
-with men-in-the-middle, but a single connection every step of the way. This implies that for NTLM authentication to work at all with proxy caches, the proxy would need to tightly link the client-proxy and proxy-server links, as well as understand the state of the link at any one time. NTLM through a CONNECT might work, but we as far as we know that  hasn't been implemented by anyone, and it would prevent the pages being cached - removing the value of the proxy.
-
-NTLM authentication is carried entirely inside the HTTP protocol, but is not a true HTTP authentication protocol and is different from Basic and Digest authentication in many ways, the most notable of which are:
-
-
-
-  1. It is dependent on a stateful end-to-end connection which collides with RFC 2616 for proxy-servers to disjoin the client-proxy and proxy-server connections.
-
-  1. It is only taking place once per connection, not per request. Once the connection is authenticated then all future requests on the same connection inherities the authentication. The connection must be reestablished to set up other authentication or re-identify the user. This too collides with RFC 2616 where authentication is defined as a property of the HTTP messages, not connections.
-
-
-
-The reasons why it is not implemented in Netscape is probably:
-
-
-
-  * It is very specific for the Windows platform
-  * It is not defined in any RFC or even internet draft.
-  * The protocol has several shortcomings, where the most apparent one is that it cannot be proxied.
-  * There exists an open internet standard which does mostly the same but without the shortcomings or platform dependencies: [ftp://ftp.isi.edu/in-notes/rfc2617.txt digest authentication].
-
+NTLM for HTTP is, however, an horrible example of an authentication protocol, and we recommend to avoid using it in favour of saner and standard-sanctioned alternatives such as Digest.
 
 
 ==  The ''default'' parent option isn't working! ==
-
 
 This message was received at ''squid-bugs'':
 
