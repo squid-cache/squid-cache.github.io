@@ -59,3 +59,7 @@ More ideas are available [wiki:Features/Other elsewhere].
 ## == Squid 3.2 ==
 ##
 ## The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline. To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO List and Wish List.
+
+== Future versions ==
+
+The set of features going beyond Squid 3.1 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome.
