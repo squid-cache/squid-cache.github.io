@@ -36,4 +36,5 @@
  * /ToomanyMisses: why more than just a few TCP_SWAPFAIL_MISS
  * /SquidProfiling How to identify obvious resource shortages with Squid (A work in progress)
  * /WindowsUpdate: configuring squid to pass Windows Update
+ * /ClearingTheCache: how to wipe your entire disk cacehe in one go
  * /CompleteFaq is a meta-document with the entire FAQ contents.
