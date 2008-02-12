@@ -59,6 +59,8 @@
 [[TocOf(SquidFaq/SecurityPitfalls)]]
 === Too Many Misses ===
 [[TocOf(SquidFaq/ToomanyMisses)]]
+=== Clearing the Cache ===
+[[TocOf(SquidFaq/ClearingTheCache)]]
 
 -----
 Back to the SquidFaq
