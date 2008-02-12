@@ -13,8 +13,9 @@ The set of new Squid 3.1 features has not been fully determined yet. The set wil
 
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
  * [:Features/IPv6]
- * [:Features/RemoveNullStore]
+ * [:Features/SslBump]
  * [:Features/ConfigIncludes]
+ * [:Features/RemoveNullStore]
 
 Development snapshots of squid 3.1 source code are already available with these features at
 http://www.squid-cache.org/Versions/v3/HEAD/
@@ -35,11 +36,10 @@ Once Squid 3.1 release timeline is agreed upon, developers must obey it or move 
 ## The category search matches this page as well, for unknown reason
 ## [[FullSearch(CategoryFeature "Version''': Squid 3.1" -CategoryWish)]]
 
-Several Features are done but awaiting a final check and patching into the main codebase:
+## Several Features are done but awaiting a final check and patching into the main codebase:
+##  * [:Features/FEATURE_ID_HERE] [[Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")]]
 
- * [:Features/SslBump] [[Include(Features/SslBump,,,from="ETA.*:",to="$")]]
-
-Others are still under development:
+Features under development:
  * [:Features/NativeAsyncCalls] [[Include(Features/NativeAsyncCalls,,,from="ETA.*:",to="$")]]
  * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
