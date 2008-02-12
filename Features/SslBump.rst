@@ -5,7 +5,7 @@
 = Feature: Squid-in-the-middle SSL Bump =
 
  * '''Goal''': Enable ICAP inspection of SSL traffic.
- * '''Status''': Done; committed to Squid3 HEAD
+ * '''Status''': completed; committed to Squid3 HEAD
  * '''Version''': Squid 3.1
  * '''Developer''': AlexRousskov
 
