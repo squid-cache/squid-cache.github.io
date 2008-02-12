@@ -9,7 +9,7 @@
 
 == Squid 3.1 ==
 
-The set of new Squid 3.1 features has not been fully determined yet. The set will determine the release timeline. To minimize noise and the number of half-baked abandoned features, two Features sets are established: TODO List and Wish List.
+The set of new Squid 3.1 features has not been fully determined yet. The set will determine the release timeline.
 
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
  * [:Features/IPv6]
@@ -20,10 +20,7 @@ Some features have already been completed and merged into the codebase for 3.1 r
 Development snapshots of squid 3.1 source code are already available with these features at
 http://www.squid-cache.org/Versions/v3/HEAD/
 
-== Squid 3.2 ==
-
-The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline. To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO List and Wish List.
-
+To minimize noise and the number of half-baked abandoned features, two Feature sets are established for Squid3 development projects: TODO List and Wish List.
 
 == TODO List ==
 
@@ -56,3 +53,9 @@ The Wish List accumulates features that do not meet the strict TODO List criteri
 
 
 More ideas are available [wiki:Features/Other elsewhere].
+
+
+
+## == Squid 3.2 ==
+##
+## The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline. To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO List and Wish List.
