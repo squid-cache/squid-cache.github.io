@@ -2,6 +2,11 @@
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
+
+== Next-Generation Source Control solution ==
+/!\ a wide consensus has been reached towards replacing CVS with another more modern Version Control solution. Please see [:Squid3VCS].
+
+
 == CVS access to current Squid source ==
 If you need to get CVS, start at [http://www.cvshome.org/ CVSHome].
 
@@ -32,8 +37,10 @@ To update your source tree later, type:
 {{{
   % cvs update
 }}}
+
 == Browsing the current CVS sources ==
 To view the CVS history online and browse the current sourecs use the [http://www.squid-cache.org/cgi-bin/cvsweb.cgi CVSWeb interface].
+
 == Access to developer branches ==
 Many works in progress are hosted in our public [http://devel.squid-cache.org/CVS.html developer CVS] respository. Information for developers and testers is on the developer site at http://devel.squid-cache.org/
 
