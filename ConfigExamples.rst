@@ -10,7 +10,7 @@ This is a collection of example Squid Configurations intended to demonstrate the
 
 
 '''Notice:'''
-We now provide an the Authoritative Configuration Manual for each version of squid. These manuals are built daily and directly from the squid source code to provide the most up to date information on squid options. Recent releases of squid now come packaged with a copy of their Manual built during the release process.
+We now provide an the Authoritative Configuration Manual for each version of squid. These manuals are built daily and directly from the squid source code to provide the most up to date information on squid options.
 
 For Squid-2.6 the Manual is at http://www.squid-cache.org/Versions/v2/2.6/cfgman/
 
