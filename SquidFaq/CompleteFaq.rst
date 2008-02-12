@@ -31,6 +31,7 @@
 [[Include(SquidFaq/TermIndex, ,1,to="^Back to the")]]
 [[Include(SquidFaq/SecurityPitfalls, ,1,to="^Back to the")]]
 [[Include(SquidFaq/ToomanyMisses, ,1,to="^Back to the")]]
+[[Include(SquidFaq/ClearingTheCache, ,1,to="^Back to the")]]
 
 
 ----
