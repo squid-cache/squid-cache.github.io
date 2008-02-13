@@ -48,8 +48,8 @@ The Wish List accumulates features that do not meet the strict TODO List criteri
 ## Does not work, see FullSearch above
 ## [[FullSearch(CategoryFeature CategoryWish)]]
 
- * [:Features/BetterStringBuffer] [[Include(Features/BetterStringBuffer,,,from="ETA.*:",to="$")]]
- * [:Features/FasterHttpParser] [[Include(Features/FasterHttpParser,,,from="ETA.*:",to="$")]]
+ * [:Features/BetterStringBuffer]
+ * [:Features/FasterHttpParser]
 
 
 More ideas are available [wiki:Features/Other elsewhere].
