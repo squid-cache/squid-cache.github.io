@@ -204,3 +204,5 @@ Kernel Version:
 adrian@cindy:~$ uname -a
 Linux cindy 2.6.17-1.2174_FC5xenU #1 SMP Tue Aug 8 17:36:31 EDT 2006 i686 GNU/Linux
 }}}
+----
+CategoryConfigExample
