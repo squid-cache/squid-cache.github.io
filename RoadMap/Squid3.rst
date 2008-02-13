@@ -2,12 +2,13 @@
 #format wiki
 #language en
 
-= Squid 3 Roadmap =
+### XXX: how to make a title without affecting ToC?
+~+Squid 3 Roadmap+~
 
 [[TableOfContents]]
 
 
-== Squid 3.1 ==
+= Squid 3.1 =
 
 The set of new Squid 3.1 features has not been fully determined yet. The set will determine the release timeline.
 
@@ -23,7 +24,7 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 
 To minimize noise and the number of half-baked abandoned features, two Feature sets are established for Squid3 development projects: TODO List and Wish List.
 
-== TODO List ==
+= TODO List =
 
 TODO List features determine the release focus and timeline.
 
@@ -41,7 +42,7 @@ Features under development:
  * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
 
-== Wish List ==
+= Wish List =
 
 The Wish List accumulates features that do not meet the strict TODO List criteria. Many of these features can be implemented if there is enough demand. Some may get implemented outside of the official process, submitted as patches, and accepted into the release.
 
@@ -56,10 +57,10 @@ More ideas are available [wiki:Features/Other elsewhere].
 
 
 
-## == Squid 3.2 ==
+## = Squid 3.2 =
 ##
 ## The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline. To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO List and Wish List.
 
-== Future versions ==
+= Future versions =
 
 The set of features going beyond Squid 3.1 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome.
