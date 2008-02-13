@@ -49,7 +49,7 @@ While writing a yet another ICAP server from scratch is always a possibility, th
  * [http://c-icap.sourceforge.net/ C-ICAP]
  * [http://spicer.measurement-factory.com/ Traffic Spicer]
  * [http://www.poesia-filter.org/ POESIA]
- * original [http://www.icap-forum.org/spec/icap-server10.tar.gz reference implementation] by Network Appliance
+ * original [http://www.icap-forum.org/spec/icap-server10.tar.gz reference implementation] by Network Appliance (XXX: that link needs to be fixed after the ICAP Forum site reorganization).
 
 The above list is not comprehensive and is not meant as an endorsement. Any ICAP server will have unique set of pros and cons in the context of your adaptation project.
 
@@ -67,9 +67,9 @@ Squid3 sources include [:ProgrammingGuide/ClientStreams:ClientStreams] classes d
 
 Unfortunately, Client Streams creators have not been actively participating in Squid development for a while, little API [:ProgrammingGuide/ClientStreams:documentation] is available, and the long-term sustainability of the code is uncertain. Custom Client Streams code integrated with Squid may need to be licensed under GPL.
 
-
-[[Anchor(seceCAM)]]
-== eCAM ==
+## TODO: Delete eCAM anchor after 2008/06/01
+[[Anchor(seceCAP)]][[Anchor(seceCAM)]]
+== eCAP ==
 
 Pluggable or embedded Content Adaptation Modules are like ICAP servers embedded into Squid. The Adaptation Modules are written using a simple public API and dynamically or statically loaded into Squid. This approach allows for fast content adaptation without tight dependency on Squid sources. Other proxies and even ICAP servers may chose to support the same API, removing dependency on Squid.
 
@@ -77,9 +77,9 @@ Pluggable or embedded Content Adaptation Modules are like ICAP servers embedded 
 
  '''Cons''': Dependent on Squid installation (at least in the beginning)
 
-If you need to implement an integrated content adaptation solution without ICAP overheads, please consider working with Squid developers on finalizing the eCAM interfaces and implement your code using that API.
+If you need to implement an integrated content adaptation solution without ICAP overheads, please consider working with Squid developers on finalizing the eCAP interfaces and implement your code using that API.
 
-Initial support for eCAM is planned for [wiki:RoadMap/Squid3 Squid 3.1]. You can find more details [wiki:Features/eCAP elsewhere].
+Initial support for eCAP is planned for [wiki:RoadMap/Squid3 Squid 3.1]. You can find more details [wiki:Features/eCAP elsewhere].
 
 
 [[Anchor(secACLs)]]
@@ -116,19 +116,19 @@ the mechanisms can adapt.
 ||<:>'''Header''' ||<:> '''Body''' ||<:> '''Header''' ||<:> '''Body''' ||
 || [#secICAP ICAP] ||<:>yes ||<:>yes ||<:>yes ||<:>yes ||
 || [#secClientStreams Client Streams] ||  ||  ||<:>yes ||<:>yes ||
-|| [#seceCAM eCAM] ||<:>yes ||<:>yes ||<:>yes ||<:>yes ||
+|| [#seceCAP eCAP] ||<:>yes ||<:>yes ||<:>yes ||<:>yes ||
 || [#secACLs ACLs] ||<:>yes ||  ||<:>del ||  ||
 || [#secCodeHacks code hacks] ||<:>yes ||<:>yes ||<:>yes ||<:>yes ||
 
 Each adaptation mechanism has its strength and weaknesses. The following table attempts to rank mechanisms using frequently used evaluation criteria.
 
 || '''Evaluation Criteria''' || '''Mechanisms in rough order from "best" to "worst"''' ||
-|| Squid independence || [#secICAP ICAP], [#seceCAM eCAM], [#secACLs ACLs], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
-|| Processing speed || [#seceCAM eCAM] or [#secClientStreams Client Streams] or [#secACLs ACLs] or [#secCodeHacks code hacks], [#secICAP ICAP] ||
-|| Development effort (header adaptation)|| [#secACLs ACLs], [#secCodeHacks code hacks], [#secClientStreams Client Streams], [#seceCAM eCAM], [#secICAP ICAP] ||
-|| Development effort (content adaptation)|| [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
-|| Versatility || [#secCodeHacks code hacks], [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secACLs ACLs] ||
-|| Maintenance overheads || [#secACLs ACLs], [#seceCAM eCAM], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
+|| Squid independence || [#secICAP ICAP], [#seceCAP eCAP], [#secACLs ACLs], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
+|| Processing speed || [#seceCAP eCAP] or [#secClientStreams Client Streams] or [#secACLs ACLs] or [#secCodeHacks code hacks], [#secICAP ICAP] ||
+|| Development effort (header adaptation)|| [#secACLs ACLs], [#secCodeHacks code hacks], [#secClientStreams Client Streams], [#seceCAP eCAP], [#secICAP ICAP] ||
+|| Development effort (content adaptation)|| [#seceCAP eCAP], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
+|| Versatility || [#secCodeHacks code hacks], [#seceCAP eCAP], [#secICAP ICAP], [#secClientStreams Client Streams], [#secACLs ACLs] ||
+|| Maintenance overheads || [#secACLs ACLs], [#seceCAP eCAP], [#secICAP ICAP], [#secClientStreams Client Streams], [#secCodeHacks code hacks] ||
 
 
 = Additional resources =
