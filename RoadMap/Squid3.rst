@@ -15,6 +15,7 @@ Some features have already been completed and merged into the codebase for 3.1 r
  * [:Features/IPv6]
  * [:Features/SslBump]
  * [:Features/ConfigIncludes]
+ * [:Features/NativeAsyncCalls]
  * [:Features/RemoveNullStore]
 
 Development snapshots of squid 3.1 source code are already available with these features at
@@ -37,7 +38,6 @@ Once Squid 3.1 release timeline is agreed upon, developers must obey it or move 
 ##  * [:Features/FEATURE_ID_HERE] [[Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")]]
 
 Features under development:
- * [:Features/NativeAsyncCalls] [[Include(Features/NativeAsyncCalls,,,from="ETA.*:",to="$")]]
  * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
 
