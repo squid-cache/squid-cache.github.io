@@ -24,6 +24,7 @@ This section is used to edit and finalize the grouping of source files. The '''G
 || ''HTTP/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || ''ICAP/'' || ICAP support || ICAP/ICAP* ||
 || ''ESI/'' || ESI support || ESI* ||
+|| ''ICMP/'' || ICMP support || ICMP* ||
 || ''AnyP/'' || Protocol-independent protocol primitives || url* urn* ProtoPort* ||
 ...
 
