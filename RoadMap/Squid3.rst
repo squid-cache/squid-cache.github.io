@@ -7,10 +7,9 @@
 
 [[TableOfContents]]
 
-
 = Squid 3.1 =
 
-The set of new Squid 3.1 features has not been fully determined yet. The set will determine the release timeline.
+New features may still be requested or suggested up until March 2008. After which the Squid 3.1 features will be determined. Available developer time will then determine the release timeline.
 
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
  * [:Features/IPv6]
@@ -63,7 +62,8 @@ More ideas are available [wiki:Features/Other elsewhere].
 
 ## = Squid 3.2 =
 ##
-## The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline. ##To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO
+## The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline.
+##To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO
 ##List and Wish List.
 ##
 ##= Wish list =
