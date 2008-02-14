@@ -10,7 +10,7 @@
 
  * '''ETA''': Unknown
 
- * '''Version''': Squid 3.1
+ * '''Version''': 3.1
 
  * '''Developer''': AdrianChadd
 
