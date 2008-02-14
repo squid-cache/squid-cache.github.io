@@ -6,7 +6,7 @@
 
  * '''Goal''': Finish porting Squid2 Log Daemon to Squid3.
 
- * '''Status''': Not started.
+ * '''Status''': Done?
 
  * '''ETA''': Unknown
 
