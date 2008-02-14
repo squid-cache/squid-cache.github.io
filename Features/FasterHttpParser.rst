@@ -7,10 +7,10 @@
 = Feature: Faster HTTP parser =
 
  * '''Goal''':  Improve non-caching Squid3 performance by 20+%
- * '''Version''':
- * '''Status''':
- * '''ETA''':
- * '''Developer''':
+ * '''Version''': 3.1, 3.2
+ * '''Status''': not started
+ * '''ETA''': unknown
+ * '''Developer''': none yet.
  * '''More''': TODO: link to Squid2 parser work here.
 
 Avoid parsing the same HTTP header several times. Possibly implement incremental header parsing.
