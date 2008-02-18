@@ -36,36 +36,6 @@ Prototyping was done using Squid-2 - check the devel site for patches. Work wasn
 
 Its been implemented in squid-2.HEAD. Patches exist for Squid-3 which will be included after Squid-3 has been released.
 
-== SSL interception/proxying ==
-
-=== Contacts ===
-
-Noone.
-
-=== Description ===
-
-Various people have requested the ability for Squid to handle transparent interception of SSL requests. SSL can't be inspected without breaking the encryption and warning the end-user something is going on (by design!) but some filtering can be done on the request before its punted off to the origin server or upstream. Specifically, ACLs such as source/destination client can be applied to block known bad SSL destination sites.
-
-Feel free to contact the Squid developer team if you're interested in implementing this feature.
-
-
-== IPv6 Compatibility ==
-
-=== Contacts ===
-
-Amos Jeffries
-
-=== Description ===
-
-We need squid to be fully capable of connecting to over IPv6. This is not presently available in any public STABLE version of Squid.
-There have been some attempts at patches made as far back as squid 1.1. However the official ones for squid 2.x have all been abandoned. There is a so far unofficial third-party patch for ["Squid-2.6"] at http://jaringan.info/. the latest diff is also available for download from http://devel.squid-cache.org/squid3-ipv6/.
-
-=== Progress ===
-
-Progress has been rocky on this feature with quite some time spent with no maintainers. Progress has been made rapidly now however and eth code has reached a Beta testing version. It is scheduled for inclusion in ["Squid-3.1"] due to ["Squid-3.0"] now being in feature freeze. In the meanwhile it is supported and open for public testing and use if it passes your tests.
-
-Please read http://devel.squid-cache.org/squid3-ipv6/ for the latest details then either download the version from CVS or contact the Squid developer team if you're interested in testing or assisting with the implementation of this feature.
-
 == HTTP File Helper ==
 
 === Contacts ===
@@ -80,27 +50,6 @@ As envisioned this would serve its files from a standard network port (defaults:
 === Progress ===
 
 The existence of such a helper is still very much on the drawing board.
-
-Please contact the Squid developer team if you're interested in discussing the implementation of this feature.
-
-
-== squid.conf Modular Configuration ==
-
-=== Contacts ===
-
-Amos Jeffries
-
-=== Description ===
-
-Adding an include option to squid.conf patterned on the Apache 2.0 Include directive would allow a number of improvements including ACL sharing - a commonly used set of ACL and permissions can be officially bundled in their own file and distributed with specific author attributions.
-  Splitting the permission flow of HTTP requests from those of FTP, and from Peer config etc. would make most configurations much simpler to understand and maintain in the long-term. Likewise for configurations with MultipleInstances, and common program bypasses such as WindowsUpdate.
-
-While the idea for this is simple and completely backward compatible with existing configurations. The implementation may not be simple as there are a number of internal mechanisms that interact with the squid.conf source files at compile and release time.
-
-
-=== Progress ===
-
-The existence is still very much on the drawing board.
 
 Please contact the Squid developer team if you're interested in discussing the implementation of this feature.
 
