@@ -111,3 +111,6 @@ The GopherURLScheme will be a subclass of ForwardableURLScheme
 Connect will return true for `protocolClientAvailable()` calls.
 The protocolClientFactory for gopher will return a !GopherClient object.
 There is no Gopher peer type, because our gopher implementation cannot forward other protocols.
+
+----
+CategoryFeature CategoryWish
