@@ -1,7 +1,43 @@
 #language en
+
+= Configuring Squid =
+
 [[TableOfContents]]
 
 ##begin
+
+== How do I configure Squid without re-compiling it? ==
+
+The ''squid.conf'' file. By default, this file is located at ''/usr/local/squid/etc/squid.conf''.
+
+Also, a QUICKSTART guide has been included with the source distribution. Please see the directory where you unpacked the source archive.
+
+
+==  What does the squid.conf file do? ==
+
+The ''squid.conf'' file defines the configuration for
+''squid''.  the configuration includes (but not limited to)
+HTTP port number, the ICP request port number, incoming and outgoing
+requests, information about firewall access, and various timeout
+information.
+
+==  Do you have a squid.conf example? ==
+
+Yes, after you ''make install'', a sample ''squid.conf'' file will
+exist in the ''etc'' directory under the Squid installation directory.
+
+The sample ''squid.conf'' file contains comments explaining each
+option.
+
+From 2.6 the Squid developers also provide a set of Configuration Guides online. They list all the options each version of Squid can accept in its squid.conf file, including the current development test releases.
+
+ * [http://www.squid-cache.org/Versions/v2/2.6/cfgman/ Squid 2.6] Configuration Guide
+ * [http://www.squid-cache.org/Versions/v2/2.7/cfgman/ Squid 2.7] Configuration Guide
+ * [http://www.squid-cache.org/Versions/v3/3.0/cfgman/ Squid 3.0] Configuration Guide
+ * [http://www.squid-cache.org/Versions/v2/HEAD/cfgman/ Squid 2-HEAD] Configuration Guide
+ * [http://www.squid-cache.org/Versions/v2/HEAD/cfgman/ Squid 3-HEAD] Configuration Guide
+
+
 == How do I join a cache hierarchy? ==
 To place your cache in a hierarchy, use the ''cache_peer'' directive in ''squid.conf'' to specify the parent and sibling nodes.
 
@@ -58,8 +94,7 @@ Visit the NLANR cache [http://www.ircache.net/Cache/Tracker/ registration databa
 == My cache registration is not appearing in the Tracker database. ==
  * Your site will not be listed if your cache IP address does not have a DNS PTR record. If we can't map the IP address back to a domain name, it will be listed as "Unknown."
  * The registration messages are sent with UDP. We may not be receiving your announcement message due to firewalls which block UDP, or dropped packets due to congestion.
-== What is the httpd-accelerator mode? ==
-This entry has been moved to its own ../ReverseProxy page.
+
 
 == How do I configure Squid to work behind a firewall? ==
 If you are behind a firewall then you can't make direct connections to the outside world, so you '''must''' use a parent cache. Normally Squid tries to be smart and only uses cache peers when it makes sense from a perspective of global hit ratio, and thus you need to tell Squid when it can not go direct and must use a parent proxy even if it knows the request will be a cache miss.
