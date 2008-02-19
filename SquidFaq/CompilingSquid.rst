@@ -144,7 +144,7 @@ Some options which are used often include:
 
 
 
-== Building Squid on ==
+== Building Squid on ... ==
 
 === BSD/OS or BSDI ===
 
