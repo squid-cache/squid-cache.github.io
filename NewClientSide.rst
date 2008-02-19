@@ -52,3 +52,7 @@ Its relatively easy to handle errors in a single-process non-threaded setup - ju
 In theory the server connections should be self-contained; so multiple threads can run multiplexed server connections without any interthread locking needed. This might not be so true for certain 'things' (such as a shared HTTP authentication cache, DNS requests, etc) but these could be seperate message queues.
 
 The trick is to keep the server side around long enough to receive all the queued messages it has or be able to cancel them.
+
+
+----
+CategoryFeature CategoryWish
