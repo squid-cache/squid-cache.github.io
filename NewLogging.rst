@@ -66,3 +66,6 @@ The aim of this is to enumerate a replacement logging facility for Squid which w
  * TLV the logfile lines (which should be easy for the custom logfile format)
  * shared memory ring buffers?
  * What else?
+
+----
+CategoryFeature CategoryWish
