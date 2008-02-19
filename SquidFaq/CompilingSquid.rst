@@ -1,5 +1,7 @@
 #language en
 
+= Compiling Squid =
+
 [[TableOfContents]]
 
 ##begin
@@ -17,32 +19,6 @@ Context diffs are available for upgrading to new versions.
 These can be applied with the ''patch'' program (available from
 [ftp://ftp.gnu.org/gnu/patch the GNU FTP site] or your distribution).
 
-== How do I compile Squid? ==
-
-You must run the ''configure'' script yourself before running ''make''.  We suggest that you first invoke ''./configure --help'' and make a note of the configure options you need in order to support the features you intend to use.  Do not compile in features you do not think you will need.
-
-{{{
-% tar xzf squid-2.5.RELEASExy.tar.gz
-% cd squid-2.5.RELEASExy
-% ./configure --with-MYOPTION --with-MYOPTION2 etc
-% make
-}}}
-
-== What kind of compiler do I need? ==
-
-To compile Squid, you will need an ANSI C compiler.  Almost all
-modern Unix systems come with pre-installed compilers which work
-just fine.  The old ''SunOS'' compilers do not have support for ANSI
-C, and the Sun compiler for ''Solaris'' is a product which
-must be purchased separately.
-
-If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems.  It is also well tested with Squid.  If your OS does not come with GCC you may download it from [ftp://ftp.gnu.org/gnu/gcc the GNU FTP site].
-In addition to gcc, you may also want or need to install the ''binutils'' package.
-
-== What else do I need to compile Squid? ==
-
-You will need [http://www.perl.com/ Perl] installed on your system.
-
 == Do you have pre-compiled binaries available? ==
 
 The squid core team members do not have the resources to make pre-compiled binaries available. Instead, we invest effort into making the source code very portable. Some contributors have made binary packages available. Please see our [http://www.squid-cache.org/platforms.html Platforms Page].
@@ -53,7 +29,41 @@ The squid core team members do not have the resources to make pre-compiled binar
  * Gurkan Sengun has some [http://www.linuks.mine.nu/solaris/ Sparc/Solaris packages] available.
  * Squid binaries for [http://www.acmeconsulting.it/SquidNT/download.html Windows].
 
-== How do I apply a patch or a diff? ==
+== How do I compile Squid? ==
+
+You must run the ''configure'' script yourself before running ''make''.  We suggest that you first invoke ''./configure --help'' and make a note of the configure options you need in order to support the features you intend to use.  Do not compile in features you do not think you will need.
+
+{{{
+% tar xzf squid-2.5.RELEASExy.tar.gz
+% cd squid-2.5.RELEASExy
+% ./configure --with-MYOPTION --with-MYOPTION2 etc
+% make
+}}}
+  ... and finally install...
+{{{
+% make install
+}}}
+
+Squid  will by default, install into ''/usr/local/squid''. If you wish
+to install somewhere else, see the ''--prefix'' option for configure.
+
+
+=== What kind of compiler do I need? ===
+
+To compile Squid, you will need an ANSI C compiler.  Almost all
+modern Unix systems come with pre-installed compilers which work
+just fine.  The old ''SunOS'' compilers do not have support for ANSI
+C, and the Sun compiler for ''Solaris'' is a product which
+must be purchased separately.
+
+If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems.  It is also well tested with Squid.  If your OS does not come with GCC you may download it from [ftp://ftp.gnu.org/gnu/gcc the GNU FTP site].
+In addition to gcc, you may also want or need to install the ''binutils'' package.
+
+=== What else do I need to compile Squid? ===
+
+You will need [http://www.perl.com/ Perl] installed on your system.
+
+=== How do I apply a patch or a diff? ===
 
 You need the ''patch'' program.  You should probably duplicate the
 entire directory structure before applying the patch.  For example, if
@@ -81,7 +91,7 @@ you should get a more recent version, from the
 
 Ideally you should use the patch command which comes with your OS.
 
-==  configure options ==
+=== configure options ===
 
 The configure script can take numerous options.  The most
 useful is ''--prefix'' to install it in a different directory.
@@ -132,6 +142,206 @@ Some options which are used often include:
                         Select language for Error pages (see errors dir)
 }}}
 
+
+
+== Building Squid on ==
+
+=== BSD/OS or BSDI ===
+
+Known Problem:
+
+{{{
+cache_cf.c: In function `parseConfigFile':
+cache_cf.c:1353: yacc stack overflow before `token'
+...
+}}}
+
+You may need to upgrade your gcc installation to a more recent version.
+Check your gcc version with
+{{{
+gcc -v
+}}}
+
+If it is earlier than 2.7.2, you might consider upgrading.  Gcc 2.7.2 is very old and not widely supported.
+
+
+=== Cygwin (Windows) ===
+
+In order to compile Squid, you need to have Cygwin fully installed.
+
+WCCP is not available on Windows so the following configure options are needed to disable them:
+{{{
+  --disable-wccp
+  --disable-wccpv2
+}}}
+
+Squid will by default, install into ''/usr/local/squid''. If you wish to install somewhere else, see the ''--prefix'' option for configure.
+
+Now, add a new Cygwin user - see the Cygwin user guide - and map it to SYSTEM, or create a new NT user, and a matching Cygwin user and they become the squid runas users.
+
+Read the squid FAQ on permissions if you are using CYGWIN=ntsec.
+
+After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
+
+Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. You may need to check permissions here.
+
+
+=== Debian ===
+
+From 2.6 STABLE 14 Squid should compile easily on this platform.
+
+There is just one known problem. The Linux system layout differs markedly from the Squid defaults. The following ./configure options are needed to install Squid into the Linux structure properly:
+
+{{{
+  --prefix=/usr
+  --localstatedir=/var
+  --libexecdir=${prefix}/lib/squid
+  --srcdir=.
+  --datadir=${prefix}/share/squid
+  --sysconfdir=/etc/squid
+}}}
+
+From Squid 3.0 the default user can also be set. The Debian package default is:
+{{{
+  --with-default-user=proxy
+}}}
+
+The following patch also needs to be applied since the /var/logs/ directory for logs has no configure option.
+
+{{{
+--- src/Makefile.am     2007-09-17 14:22:33.000000000 +1200
++++ src/Makefile.am-new   2007-09-12 19:31:53.000000000 +1200
+@@ -985,7 +985,7 @@
+ DEFAULT_CONFIG_FILE     = $(sysconfdir)/squid.conf
+ DEFAULT_MIME_TABLE     = $(sysconfdir)/mime.conf
+ DEFAULT_DNSSERVER       = $(libexecdir)/`echo dnsserver | sed '$(transform);s/$$/$(EXEEXT)/'`
+-DEFAULT_LOG_PREFIX     = $(localstatedir)/logs
++DEFAULT_LOG_PREFIX     = $(localstatedir)/log
+ DEFAULT_CACHE_LOG       = $(DEFAULT_LOG_PREFIX)/cache.log
+ DEFAULT_ACCESS_LOG      = $(DEFAULT_LOG_PREFIX)/access.log
+ DEFAULT_STORE_LOG       = $(DEFAULT_LOG_PREFIX)/store.log
+}}}
+
+
+=== FreeBSD, NetBDS, OpenBSD ===
+
+Squid is developed on FreeBSD. The general build instructions above should be all you need.
+
+
+=== MinGW (Windows) ===
+
+In order to compile squid using the MinGW environment, the packages MSYS, MinGW and msysDTK must be installed. Some additional libraries and tools must be downloaded separately:
+
+ * OpenSSL: [http://www.slproweb.com/products/Win32OpenSSL.html Shining Light Productions Win32 OpenSSL]
+ * libcrypt: [http://sourceforge.net/projects/mingwrep/ MinGW packages repository]
+ * db-1.85: [http://tinycobol.org/download.html TinyCOBOL download area]
+ * uudecode: [http://unxutils.sourceforge.net/ Native Win32 ports of some GNU utilities]
+
+Unpack the source archive as usual and run configure.
+
+The following are the recommended minimal options for Windows:
+{{{
+--prefix=c:/squid
+--disable-wccp
+--disable-wccpv2
+--enable-win32-service
+--enable-default-hostsfile=none
+}}}
+
+Then run make and install as usual.
+
+Squid will install into ''c:\squid''. If you wish to install somewhere else, change the ''--prefix'' option for configure.
+
+After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
+
+Now, to run Squid as a Windows system service, run ''squid -n'', this will create a service named "Squid" with automatic startup. To start it run ''net start squid'' from command line prompt or use the Services Administrative Applet.
+
+Always check the provided release notes for any version specific detail.
+
+
+=== OS/2 ===
+
+by Doug Nazar ([[MailTo(nazard AT man-assoc DOT on DOT ca)]]).
+
+In order in compile squid, you need to have a reasonable facsimile of a
+Unix system installed.  This includes ''bash'', ''make'', ''sed'',
+''emx'', various file utilities and a few more. I've setup a TVFS
+drive that matches a Unix file system but this probably isn't strictly
+necessary.
+
+I made a few modifications to the pristine EMX 0.9d install.
+
+  * added defines for ''strcasecmp()'' & ''strncasecmp()'' to ''string.h''
+  * changed all occurrences of time_t to signed long instead of unsigned long
+  * hacked ld.exe
+    * to search for both xxxx.a and libxxxx.a
+    * to produce the correct filename when using the -Zexe option
+
+You will need to run ''scripts/convert.configure.to.os2'' (in the
+Squid source distribution) to modify
+the configure script so that it can search for the various programs.
+
+Next, you need to set a few environment variables (see EMX docs
+for meaning):
+{{{
+export EMXOPT="-h256 -c"
+export LDFLAGS="-Zexe -Zbin -s"
+}}}
+
+Now you are ready to configure, make, and install Squid.
+
+
+Now, '''don't forget to set EMXOPT before running squid each time'''. I
+recommend using the -Y and -N options.
+
+
+=== Solaris ===
+
+Many squid are running well on Solaris. There is just one known problem encountered when building.
+
+The following error occurs on Solaris systems using gcc when the Solaris C
+compiler is not installed:
+{{{
+/usr/bin/rm -f libmiscutil.a
+/usr/bin/false r libmiscutil.a rfc1123.o rfc1738.o util.o ...
+make[1]: *** [libmiscutil.a] Error 255
+make[1]: Leaving directory `/tmp/squid-1.1.11/lib'
+make: *** [all] Error 1
+}}}
+
+Note on the second line the ''/usr/bin/false''.   This is supposed
+to be a path to the ''ar'' program.  If ''configure'' cannot find ''ar''
+on your system, then it substitues ''false''.
+
+To fix this you either need to:
+
+  * Add ''/usr/ccs/bin'' to your PATH.  This is where the ''ar'' command should be.  You need to install SUNWbtool if ''ar'' is not there.  Otherwise,
+  * Install the '''binutils''' package from [ftp://ftp.gnu.org/gnu/binutils the GNU FTP site]. This package includes programs such as ''ar'', ''as'', and ''ld''.
+
+
+=== Ubuntu ===
+
+From 2.6 STABLE 14 Squid should compile easily on this platform.
+See the Debian build for details on the remaining known problem(s).
+
+
+=== Other Platforms ===
+
+Please let us know of other platforms you have built squid. Whether successful or not.
+
+Please check the page of platforms on which Squid is known to compile.
+Your problem might be listed there together with a solution.  If it isn't listed there, mail
+us what you are trying, your Squid version, and the problems you encounter.
+
+
+== I see a lot warnings while compiling Squid. ==
+
+Warnings are usually not usually a big concern, and can be common with software
+designed to operate on multiple platforms.  The Squid developers do wish to make
+Squid build without errors or warning. If you feel like fixing compile-time warnings,
+please do so and send us the patches.
+
+
 == undefined reference to __inet_ntoa ==
 
 by Kevin Sartorelli ([[MailTo(SarKev AT topnz DOT ac DOT nz)]])
@@ -162,172 +372,6 @@ If that doesn't seem to work, edit your ''arpa/inet.h'' file and comment out the
 #define inet_nsap_addr          __inet_nsap_addr
 #define inet_nsap_ntoa          __inet_nsap_ntoa
 }}}
-
-== My platform is BSD/OS or BSDI and I can't compile Squid ==
-
-{{{
-cache_cf.c: In function `parseConfigFile':
-cache_cf.c:1353: yacc stack overflow before `token'
-...
-}}}
-
-You may need to upgrade your gcc installation to a more recent version.
-Check your gcc version with
-{{{
-gcc -v
-}}}
-
-If it is earlier than 2.7.2, you might consider upgrading.  Gcc 2.7.2 is very old and not widely supported.
-
-
-==  Problems compiling libmiscutil.a on Solaris ==
-
-The following error occurs on Solaris systems using gcc when the Solaris C
-compiler is not installed:
-{{{
-/usr/bin/rm -f libmiscutil.a
-/usr/bin/false r libmiscutil.a rfc1123.o rfc1738.o util.o ...
-make[1]: *** [libmiscutil.a] Error 255
-make[1]: Leaving directory `/tmp/squid-1.1.11/lib'
-make: *** [all] Error 1
-}}}
-
-Note on the second line the ''/usr/bin/false''.   This is supposed
-to be a path to the ''ar'' program.  If ''configure'' cannot find ''ar''
-on your system, then it substitues ''false''.
-
-To fix this you either need to:
-
-  * Add ''/usr/ccs/bin'' to your PATH.  This is where the ''ar'' command should be.  You need to install SUNWbtool if ''ar'' is not there.  Otherwise,
-  * Install the '''binutils''' package from [ftp://ftp.gnu.org/gnu/binutils the GNU FTP site]. This package includes programs such as ''ar'', ''as'', and ''ld''.
-
-== I have problems compiling Squid on Platform Foo. ==
-
-Please check the
-[http://www.squid-cache.org/platforms.html page of platforms]
-on which Squid is known to compile.  Your problem might be listed
-there together with a solution.  If it isn't listed there, mail
-us what you are trying, your Squid version, and the problems
-you encounter.
-
-== I see a lot warnings while compiling Squid. ==
-
-Warnings are usually not a big concern, and can be common with software
-designed to operate on multiple platforms.  If you feel like fixing
-compile-time warnings, please do so and send us the patches.
-
-== Building Squid on OS/2 ==
-
-by Doug Nazar ([[MailTo(nazard AT man-assoc DOT on DOT ca)]]).
-
-In order in compile squid, you need to have a reasonable facsimile of a
-Unix system installed.  This includes ''bash'', ''make'', ''sed'',
-''emx'', various file utilities and a few more. I've setup a TVFS
-drive that matches a Unix file system but this probably isn't strictly
-necessary.
-
-I made a few modifications to the pristine EMX 0.9d install.
-
-  * added defines for ''strcasecmp()'' & ''strncasecmp()'' to ''string.h''
-  * changed all occurrences of time_t to signed long instead of unsigned long
-  * hacked ld.exe
-    * to search for both xxxx.a and libxxxx.a
-    * to produce the correct filename when using the -Zexe option
-
-You will need to run ''scripts/convert.configure.to.os2'' (in the
-Squid source distribution) to modify
-the configure script so that it can search for the various programs.
-
-Next, you need to set a few environment variables (see EMX docs
-for meaning):
-{{{
-export EMXOPT="-h256 -c"
-export LDFLAGS="-Zexe -Zbin -s"
-}}}
-
-Now you are ready to configure squid:
-{{{
-./configure
-}}}
-
-Compile everything:
-{{{
-make
-}}}
-
-and finally, install:
-{{{
-make install
-}}}
-
-This will by default, install into ''/usr/local/squid''. If you wish
-to install somewhere else, see the ''--prefix'' option for configure.
-
-Now, don't forget to set EMXOPT before running squid each time. I
-recommend using the -Y and -N options.
-
-== Building Squid on Cygwin ==
-
-In order to compile squid, you need to have Cygwin fully installed.
-
-Unpack the source archive as usual and run configure disabling WCCP and WCCP2 (not available on Windows):
-{{{
-./configure --disable-wccp --disable-wccpv2
-}}}
-
-Compile everything:
-{{{
-make
-}}}
-
-and finally, install:
-{{{
-make install
-}}}
-
-This will by default, install into ''/usr/local/squid''. If you wish to install somewhere else, see the ''--prefix'' option for configure.
-
-Now, add a new Cygwin user - see the Cygwin user guide - and map it to SYSTEM, or create a new NT user, and a matching Cygwin user and they become the squid runas users.
-
-Read the squid FAQ on permissions if you are using CYGWIN=ntsec.
-
-After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
-
-Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. You may need to check permissions here.
-
-== Building Squid on MinGW ==
-
-In order to compile squid using the MinGW environment, the packages MSYS, MinGW and msysDTK must be installed. Some additional libraries and tools must be downloaded separately:
-
- * OpenSSL: [http://www.slproweb.com/products/Win32OpenSSL.html Shining Light Productions Win32 OpenSSL]
- * libcrypt: [http://sourceforge.net/projects/mingwrep/ MinGW packages repository]
- * db-1.85: [http://tinycobol.org/download.html TinyCOBOL download area]
- * uudecode: [http://unxutils.sourceforge.net/ Native Win32 ports of some GNU utilities]
-
-
-Unpack the source archive as usual and run configure.
-The following are the recommended minimal options for Windows:
-{{{
-./configure --prefix=c:/squid --disable-wccp --disable-wccpv2 --enable-win32-service --enable-default-hostsfile=none
-}}}
-
-Compile everything:
-{{{
-make
-}}}
-
-and finally, install:
-{{{
-make install
-}}}
-
-This will install into ''c:\squid''. If you wish to install somewhere else, change the ''--prefix'' option for configure.
-
-After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
-
-Now, to run Squid as a Windows system service, run ''squid -n'', this will create a service named "Squid" with automatic startup. To start it run ''net start squid'' from command line prompt or use the Services Administrative Applet.
-
-Always check the provided release notes for any version specific detail.
 
 
 ##end
