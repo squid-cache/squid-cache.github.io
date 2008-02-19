@@ -13,7 +13,9 @@ or maybe (if you want kernel time mixed with the application)
   opcontrol --start-daemon
 }}}
 
-Stat Squid and give it the workload you want to profile. Then tell oprofile to collect the desired data
+NP: /path/to/sbin/squid MUST be the actual binary. A symlink will result in no-symbols-found errors later.
+
+Start Squid and give it the workload you want to profile. Then tell oprofile to collect the desired data
 
 {{{
   opcontrol --start
