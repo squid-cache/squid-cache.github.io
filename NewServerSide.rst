@@ -50,3 +50,6 @@ Threading needs to take into account the idea of pinned/persistent connection po
  * be cheap: implement concurrency through multiple processes and force each process to handle a small set of persistent connections to servers (with relevant BSD hacks to hand off FD's between processes if we really need to migrate stuff.)
  * Implement multiple threads for handling client and server events; the majority of connections (normal, pinned) will be inside a given thread and so won't need to involve thread locking to queue stuff. Persistent connections could be managed as above to limit thread locking overhead or, well, we could just lock the persistent connection set.
  * 
+
+== 
+CategoryWish CategoryFeature
