@@ -29,7 +29,7 @@ then you will also want to type
 # make install-pinger
 }}}
 
-After installing, you will want to [/ConfiguringSquid edit and customize] Squid to run the way tyou want it to. 
+After installing, you will want to read ../ConfiguringSquid to edit and customize Squid to run the way you want it to. 
 
 
 == How do I start Squid? ==
