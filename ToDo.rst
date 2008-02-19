@@ -9,5 +9,11 @@ This page just has a general TODO of various bogons noticed in squid.
 
 = Wiki-related ToDo's =
 
- * Install [http://moinmoin.wikiwikiweb.de/ActionMarket/PdfAction PdfAction] - ["kinkie"]
+ * Install [http://www.moinmo.in/ActionMarket/PdfAction PdfAction] - ["kinkie"]
  * Find a better way than th current 403s to handle crawlers trying to index wiki actions - ["kinkie"]
+ * Enable interwiki synchronization (http://master.moinmo.in/HelpOnSynchronisation)
+ * Properly register squid in InterWiki
+ * Restructure the SquidFaq? - it would be nice to have automatic content indexing, and just use subpages
+ * Add a reverse-proxy in front of the wiki
+   * make moinmoin reverse-proxy friendlier (maybe it's just a matter of upgrading to version 1.6
+ * upgrade to version 1.6 to get better search capabilities?
