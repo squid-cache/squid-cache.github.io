@@ -51,5 +51,5 @@ Threading needs to take into account the idea of pinned/persistent connection po
  * Implement multiple threads for handling client and server events; the majority of connections (normal, pinned) will be inside a given thread and so won't need to involve thread locking to queue stuff. Persistent connections could be managed as above to limit thread locking overhead or, well, we could just lock the persistent connection set.
  * 
 
-== 
+----
 CategoryWish CategoryFeature
