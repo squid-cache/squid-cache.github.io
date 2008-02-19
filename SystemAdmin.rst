@@ -7,3 +7,11 @@
 #language en
 
 [[SystemAdmin]]
+
+----
+
+Extra installed Macros:
+ * [http://www.moinmo.in/MacroMarket/Hits Hits]
+ * [http://www.moinmo.in/MacroMarket/Navitree NaviTree]
+ * [http://www.moinmo.in/MacroMarket/AdminTools WikiLog]
+ * [http://www.moinmo.in/MacroMarket/FullSearchWithoutSelf FullSearchWithoutSelf]
