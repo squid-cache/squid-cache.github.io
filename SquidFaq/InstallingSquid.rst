@@ -29,25 +29,8 @@ then you will also want to type
 # make install-pinger
 }}}
 
-After installing, you will want to edit and customize the ''squid.conf'' file. By default, this file is located at ''/usr/local/squid/etc/squid.conf''.
+After installing, you will want to [/ConfiguringSquid edit and customize] Squid to run the way tyou want it to. 
 
-Also, a QUICKSTART guide has been included with the source distribution. Please see the directory where you unpacked the source archive.
-
-==  What does the squid.conf file do? ==
-
-The ''squid.conf'' file defines the configuration for
-''squid''.  the configuration includes (but not limited to)
-HTTP port number, the ICP request port number, incoming and outgoing
-requests, information about firewall access, and various timeout
-information.
-
-==  Do you have a squid.conf example? ==
-
-Yes, after you ''make install'', a sample ''squid.conf'' file will
-exist in the ''etc'' directory under the Squid installation directory.
-
-The sample ''squid.conf'' file contains comments explaining each
-option.
 
 == How do I start Squid? ==
 
