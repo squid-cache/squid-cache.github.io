@@ -25,7 +25,7 @@ Start Squid and give it the workload you want to profile. Then tell oprofile to 
   opcontrol --stop
 }}}
 
-opreport in various ways to dig out the deteails
+opreport in various ways to dig out the details
 
 {{{
  opreport --symbols
