@@ -1,5 +1,5 @@
 #language en
-How to profile Squid using oprofile on Linux
+= How to profile Squid using oprofile on Linux =
 
 Setup oprofile
 {{{
