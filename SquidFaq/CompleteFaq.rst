@@ -3,7 +3,7 @@
 [[TableOfContents(2)]]
 
 [[Include(SquidFaq/AboutSquid, ,1,from="^##begin",to="^##end")]]
-[[Include(SquidFaq/CompilingSquid, ,1,from="^##begin",to="^##end")]]
+[[Include(SquidFaq/CompilingSquid, ,1,to="^##end")]]
 [[Include(SquidFaq/InstallingSquid, ,1,to="^Back to the")]]
 [[Include(SquidFaq/ConfiguringSquid, ,1,to="^Back to the")]]
 [[Include(SquidFaq/ConfiguringBrowsers, ,1,to="^Back to the")]]
