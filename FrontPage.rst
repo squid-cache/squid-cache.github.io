@@ -21,7 +21,6 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * ["NTLMIssues"]: Things you can (and cannot) do with NTLM
  * ZeroSizedReply: Recurrent issues with some setups.
  * MultipleInstances: how-to run multiple squid servers on a single box.
- * We're looking for a new SquidLogo
 
 == Developers corner ==
 
