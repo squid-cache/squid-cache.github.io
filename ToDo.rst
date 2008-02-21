@@ -17,4 +17,5 @@ This page just has a general TODO of various bogons noticed in squid.
  * Add a reverse-proxy in front of the wiki
    * make moinmoin reverse-proxy friendlier (maybe it's just a matter of upgrading to version 1.6
  * upgrade to version 1.6 to get better search capabilities?
+   * /!\ Notice: moin version 1.6 CHANGED the wiki syntax for most links and macros
  * [http://www.moinmo.in/MacroMarket/PageDicts PageDicts] would seem a nice way to auto-index FAQs and similar documents
