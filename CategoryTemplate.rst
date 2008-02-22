@@ -13,5 +13,8 @@ To add a page to this category, add a link to this page on the last line of the 
 
 [[FullSearch(title:regex:^Category)]]
 
+'''List of templates defined in this wiki:'''
+[[FullSearch(title:regex:Template$)]]
+
 ----
 CategoryCategory
