@@ -8,7 +8,7 @@ Together with Duane Wessels, I orchestrate [http://www.measurement-factory.com/ 
 
 Here is an ''auto-generated'' list of my current public Squid projects:
 
-[[FullSearch(regex:C{1}ategoryFeature regex:D{1}eveloper.*AlexRousskov)]]
+[[FullSearchCached(regex:C{1}ategoryFeature regex:D{1}eveloper.*AlexRousskov)]]
 
 
 ----
