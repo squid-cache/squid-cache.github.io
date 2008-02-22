@@ -10,7 +10,7 @@ I run a Web Development business [http://www.treenet.co.nz]; Treehouse Networks 
 
 Here is an ''auto-generated'' list of my current public Squid projects:
 
-[[FullSearch(regex:C{1}ategoryFeature regex:D{1}eveloper.*AmosJeffries)]]
+[[FullSearchCached(regex:C{1}ategoryFeature regex:D{1}eveloper.*AmosJeffries)]]
 
 
 ----
