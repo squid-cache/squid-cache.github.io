@@ -33,4 +33,13 @@ squid -z
 squid
 }}}
 
+If your cache directory and state files are at the root level of a partition there are a few system objects you need to be careful with. To get around these you may need to change the ''rm -r '' to a safer list of specific squid files:
+
+{{{
+rm -rf /squid/cache/[0-9]*
+rm -f /squid/cache/swap*
+rm -f /squid/cache/netdb*
+rm -f /squid/cache/*.log
+}}}
+
 If you wish to try the pruning method with a level change and let us know the results then please do. We would like this page to cover all known resizing requirements and options.
