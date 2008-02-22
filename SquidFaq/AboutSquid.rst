@@ -69,7 +69,6 @@ is known to work on at least the following platforms:
   * Microsoft Windows Cygwin and MinGW
   * OS/2
 
-For more specific information, please see [http://www.squid-cache.org/platforms.html platforms.html].
 If you encounter any platform-specific problems, please let us know by registering an entry in our [http://www.squid-cache.org/bugs/ bug database].
 If you're curious about what is the best OS to run Squid, see BestOsForSquid.
 
