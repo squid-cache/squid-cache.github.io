@@ -32,7 +32,7 @@ TODO features must document their desired effect and estimated development time.
 Once Squid 3.1 release timeline is agreed upon, developers must obey it or move their feature to the next Squid release.
 
 ## The category search matches this page as well, for unknown reason
-## [[FullSearch(CategoryFeature "Version''': Squid 3.1" -CategoryWish)]]
+## [[FullSearchCached(CategoryFeature "Version''': Squid 3.1" -CategoryWish)]]
 
 ## Several Features are done but awaiting a final check and patching into the main codebase:
 ##  * [:Features/FEATURE_ID_HERE] [[Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")]]
