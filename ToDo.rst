@@ -1,16 +1,3 @@
-= Wiki-related ToDo's =
-
- * Install [http://www.moinmo.in/ActionMarket/PdfAction PdfAction] - ["kinkie"]
- * Find a better way than th current 403s to handle crawlers trying to index wiki actions - ["kinkie"]
- * Enable interwiki synchronization (http://master.moinmo.in/HelpOnSynchronisation)
- * Properly register squid in InterWiki
- * Restructure the SquidFaq? - it would be nice to have automatic content indexing, and just use subpages
- * Add a reverse-proxy in front of the wiki
-   * make moinmoin reverse-proxy friendlier (maybe it's just a matter of upgrading to version 1.6
- * upgrade to version 1.6 to get better search capabilities?
-   * /!\ Notice: moin version 1.6 CHANGED the wiki syntax for most links and macros
- * [http://www.moinmo.in/MacroMarket/PageDicts PageDicts] would seem a nice way to auto-index FAQs and similar documents
-
 = Misplaced ToDo's =
 
 /!\ Notice: The right place to list bugs is the bugzilla database. The right place to list future improvements is the ["Features"] interface. Please do not dump to-do items here. If you get a chance, move these items to the right places.
