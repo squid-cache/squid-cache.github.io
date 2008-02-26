@@ -16,7 +16,7 @@ This is another working example of Squid 2.6 talking WCCPv2 to a Cisco router to
 
 == Cisco Information ==
 
-The Cisco router has six serial subinterfaces to the internet; GigabitEthernet0/1 is connected to the web proxy server. Clients would be on other interfaces.
+The Cisco router has six serial subinterfaces to the internet; {{{GigabitEthernet0/1}}} is connected to the web proxy server. Clients would be on other interfaces.
 
 WCCP is configured to intercept packets as they attempt to leave the router and travel to upstreams.
 
