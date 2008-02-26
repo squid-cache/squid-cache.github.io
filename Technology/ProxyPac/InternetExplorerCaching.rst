@@ -2,7 +2,7 @@
 
 == Overview ==
 
-Most User Agents which implement the proxy autoconfiguration script will call the '''FindProxyForURL()''' once for each object to be fetched. This may impose significant overheads to browsing on slower machines, with pages with many, many individual objects, or with a very large amount of JavaScript in the function call.
+Most User Agents which implement the proxy autoconfiguration script will call the '''FindProxyForURL()''' once for each object to be fetched. This may impose significant overheads to browsing on slower machines, with pages with many, many individual objects, or with a very large amount of javascript in the function call.
 
 Internet Explorer by default caches the result from the function for that given host - it is known as the '''Automatic Proxy Result Cache'''. This results in less calls to the '''FindProxyForURL()''' function and may speed up browsing but it has a number of implications.
 
