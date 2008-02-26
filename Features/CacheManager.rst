@@ -100,7 +100,7 @@ require user cachemanager
 }}}
 Consult the Apache 2.0 documentation for information on using ''htpasswd'' to set a password for this "user."
 
-To further protect the cache-manager on public systems you should consider creating a whole new <VirtualHost> segment in the Apache configuration for the squid manager. This is done by creating a file in the Apache configuration sub-directory ''.../apache2/sites-enabled/'' usually with the domain name of the new site, see the Apache 2.0 documentation for further details for your system.
+To further protect the cache-manager on public systems you should consider creating a whole new <!VirtualHost> segment in the Apache configuration for the squid manager. This is done by creating a file in the Apache configuration sub-directory ''.../apache2/sites-enabled/'' usually with the domain name of the new site, see the Apache 2.0 documentation for further details for your system.
 
 == Cache manager configuration for Roxen 2.0 and later ==
 by FrancescoChemolli
