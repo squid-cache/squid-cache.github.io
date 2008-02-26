@@ -84,7 +84,7 @@ This release should focus on further modularisation and API changes to enable ne
 
 Like the proposed Squid-2.8; these changes should be feasible within a ~3 month timeframe. Again, these changes both build on Squid-2.8 and provide the ability to improve functionality in the following release.
 
-Finally, this release should begin looking at taking advantage of multiple processors. Specifically - threading Squid as a whole is probably a bad goal; beginning to support concurrency in each seperate module is more realistic. (ObNote: Its entirely possible the best places to support concurrency with minimal changes to Squid proper is to support inline content modification, URL rewriting and ACL lookups in threads; these will most likely be the most CPU-heavy operations and would benefit the most from parallelism.)
+Finally, this release should begin looking at taking advantage of multiple processors. Specifically - threading Squid as a whole is probably a bad goal; beginning to support concurrency in each seperate module is more realistic. (Note: Its entirely possible the best places to support concurrency with minimal changes to Squid proper is to support inline content modification, URL rewriting and ACL lookups in threads; these will most likely be the most CPU-heavy operations and would benefit the most from parallelism.)
 
 ----
 CategoryFeature
