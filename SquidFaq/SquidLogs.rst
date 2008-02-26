@@ -67,7 +67,7 @@ Most log file analysis program are based on the entries in ''access.log''.
 
 [:Squid-2.6:Squid 2.6] allows the administrators to configure their logfile format with great flexibility previous version offered a much more limited functionality.
 
-Previous versions allow to log accesses either in native logformat (default) or using the [:http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format:http common logfile format] (CLF). The latter is enabled by specifying the ''emulate_httpd_log'' option in squid.conf.
+Previous versions allow to log accesses either in native logformat (default) or using the [http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format http common logfile format] (CLF). The latter is enabled by specifying the ''emulate_httpd_log'' option in squid.conf.
 
 
 === The common log file format ===
