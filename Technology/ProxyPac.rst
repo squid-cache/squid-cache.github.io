@@ -2,7 +2,7 @@
 
 == Overview ==
 
-Many modern User Agents implement a method of configuring proxy servers based on the Netscape-designed "proxy.pac" feature, also known as Automatic Proxy Configuration (APC). This utilises the JavaScript engine to provide administrators with a method of allowing the User Agent to selectively uses proxy servers based on certain criteria.
+Many modern User Agents implement a method of configuring proxy servers based on the Netscape-designed "proxy.pac" feature, also known as Automatic Proxy Configuration (APC). This utilises the javascript engine to provide administrators with a method of allowing the User Agent to selectively uses proxy servers based on certain criteria.
 
 
 == Articles ==
