@@ -21,7 +21,7 @@ That policy setting was created at a time when dynamic pages rarely contained pr
 The changed policy is to remove the QUERY ACL and paired cache line. To be replaced by the refresh_patterns below:
 
 {{{
-refresh_pattern (cgi-bin|\?) 0 0% 0
+refresh_pattern (/cgi-bin/|\?) 0 0% 0
 refresh_pattern .            0 20% 4320
 }}}
 
