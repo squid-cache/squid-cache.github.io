@@ -39,9 +39,11 @@ bzr init-repo --no-trees ~/squid-repo
 # Create a place where to keep working trees
 mkdir ~/source/squid
 # Configure ~/.bazaar/locations.conf mapping the working trees to your repository
+cat >> ~/.bazaar/locations.conf << EOF
 [~/source/squid]
 cbranch_target=~/squid-repo
 cbranch_target:policy = appendpath
+EOF
 # get the Squid-3 trunk into this repository
 # If you have commit access to trunk:
 export TRUNKURL=bzr+ssh://www.squid-cache.org/bzr/squid3/trunk
