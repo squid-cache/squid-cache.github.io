@@ -30,6 +30,18 @@ http://www.squid-cache.org/bzr/squid3/trunk}}}
 web view: http://squid-cache.org/bzrview/squid3/BRANCH RSS feed: http://www.squid-cache.org/bzrview//squid3/BRANCH/atom
 
 = Recipes =
+== Let bzr know who you are ==
+bzr needs to know your identity. A bzr identity is your name & email address.
+{{{
+bzr whoami "Your Fullname <email@address.domain>"
+}}}
+or to verify what bzr thinks your identity is
+
+{{{
+bzr whoami
+}}}
+If you don't do this bzr guesses based on your account and compuer name.
+
 == Setup a mirror/development environment ==
 This can be done many ways. The following recipe gives you a local repository which can be used to develop many branches in an offline manner with a single build directory (so you don't have to do a full rebuild when switching branches). It also uses the cbranch command from bzrtools to save a bit of time.
 
@@ -109,7 +121,7 @@ Verify the contents of your branch
 {{{
 bzr diff -r submit: | less
 }}}
-Generate a diff bundle and mail it to squid-dev
+If it looks fine then generate a diff bundle and mail it to squid-dev
 
 {{{
 bzr send --mail-to squid-dev@squid-cache.org
@@ -123,7 +135,8 @@ Make sure you have a clean up to date trunk tree:
 bzr status
 bzr update
 }}}
- . bzr status should show nothing. If it shows something:
+bzr status should show nothing. If it shows something:
+
 {{{
 bzr revert
 }}}
