@@ -12,11 +12,11 @@ Bazaar is available in most O/S's these days: http://bazaar-vcs.org/Download.
 Things to install (as a user):
 
  * bzr
+  . version 1.2 or later recommended for best performance, but 1.0 or later is sufficient.
  * bzr-email (as a package it may be a bit old, try:
   . {{{bzr branch http://bazaar.launchpad.net/~bzr/bzr-email/trunk/ ~/.bazaar/plugins/email}}} Then do 'bzr help email' and setup any local machine configuration you need in bazaar.conf - such as mailer to use etc.
  * bzrtools
-  . adds the cbranch plugin
-
+  . adds the cbranch plugin, making it easier to work with a local repository
 = Repository Location =
 For committers:
 
@@ -27,8 +27,7 @@ For anonymous access/mirroring/etc:
 {{{
 http://www.squid-cache.org/bzr/squid3/trunk}}}
 = Web view =
-web view: http://squid-cache.org/bzrview/squid3/BRANCH
-RSS feed: http://www.squid-cache.org/bzrview//squid3/BRANCH/atom
+web view: http://squid-cache.org/bzrview/squid3/BRANCH RSS feed: http://www.squid-cache.org/bzrview//squid3/BRANCH/atom
 
 = Recipes =
 == Generate a patch for a commit ==
@@ -38,41 +37,38 @@ The following commands are equivalent:
 
 {{{
 bzr diff -c 10
-bzr diff -r 9..10}}}
-
+bzr diff -r 9..10
+}}}
 == Setup a mirror/development environment ==
-This can be done many ways. The following recipe gives you a local repository which can be used to develop many branches in an offline manner with a single build directory (so you don't have to do a full rebuild when switching branches).
+This can be done many ways. The following recipe gives you a local repository which can be used to develop many branches in an offline manner with a single build directory (so you don't have to do a full rebuild when switching branches). It also uses the cbranch command from bzrtools to save a bit of time.
 
 {{{
 # create a local repository to store branches in
 bzr init-repo --no-trees ~/squid-repo
-# get the 3.1 trunk into this repository
+# Create a place where to keep working trees
+mkdir ~/source/squid
+# Configure ~/.bazaar/locations.conf mapping the working trees to your repository
+[~/source/squid]
+cbranch_target=~/squid-repo
+cbranch_target:policy = appendpath
+# get the Squid-3 trunk into this repository
 # If you have commit access to trunk:
 export TRUNKURL=bzr+ssh://www.squid-cache.org/bzr/squid3/trunk
 # otherwise:
 export TRUNKURL=http://www.squid-cache.org/bzr/squid3/trunk
-bzr branch $TRUNKURL ~/squid-repo/trunk
-cd ~/squid-repo/trunk
+bzr cbranch $TRUNKURL trunk
 # bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
+cd ~/squid-repo/trunk
 bzr bind $TRUNKURL
 }}}
-
-
-To get a working tree to perform edits or merges:
-
-{{{
-cd ~/source/squid
-bzr checkout --lightweight ~/squid-repo/BRANCHNAME
-}}}
-
-
 To update the local mirror of trunk:
+
 {{{
-cd ~/source/squid/trunk
+cd ~/squid-src/trunk
 bzr update
 }}}
-
 To change the branch that a checkout has been made from
+
 {{{
 cd ~/source/squid/acheckout
 bzr switch ~/squid-repo/BRANCHNAME
@@ -85,14 +81,15 @@ First follow the instructions above to setup a development environment
 Now, replace SOURCE with the branch you want your new branch based on, and NAME with the name you want your new branch to have in the following:
 
 {{{
-bzr branch SOURCE ~/squid-repo/NAME
 cd ~/source/squid
-# alternatively, see the 'setup a development environment' recipe for instructions on switching a working area to a different branch.
-bzr checkout --lightweight ~/squid-repo/NAME
+bzr cbranch --lightweight ~/squid-repo/trunk NAME
+cd NAME
+bzr merge --remember ~/squid-repo/trunk
 }}}
-If you want to share the branch with others also do:
+ you want to share the branch with others also do:
 
 {{{
+cd NAME
 bzr push PUBLIC_URL
 }}}
 e.g. if you were to use the launchpad.net bzr hosting service:
@@ -101,14 +98,11 @@ e.g. if you were to use the launchpad.net bzr hosting service:
 bzr push bzr+ssh://bazaar.launchpad.net/~USER/squid/NAME
 }}}
 == Commit to trunk ==
-get a checkout of trunk.
-
-Either follow 'setting up a development environment' and then {{{bzr switch}}} to your local copy of trunk, or just do a checkout: {{{bzr checkout bzr+ssh://squid-cache.org/bzr/squid3/trunk}}}
-
-Make sure you have a clean tree:
+Make sure you have a clean up to date trunk tree:
 
 {{{
 bzr status
+bzr update
 }}}
  . This should show nothing. If it shows something:{{{bzr revert}}}
 If you are merging a development branch:
@@ -147,14 +141,24 @@ and apply that to cvs with patch:
 {{{
 patch -p1 patchfile
 }}}
+== Submit a patch for submission ==
+Generate a diff bundle and mail it to squid-dev
+{{{
+bzr send --mail-to squid-dev@squid-cache.org}}}
 == bring a branch up to date with it's ancestor ==
 Just use merge:
 
 {{{
 # you need a tree to merge: see 'setting up a development environment'
 cd checkout-of-branch
-bzr merge ~/squid-repo/trunk
-bzr commit -m "Merge trunk"
+bzr merge
+bzr commit -m "Merge from trunk"
+}}}
+If bzr merge complains on not having a source to merge from then use
+
+{{{
+bzr merge --remember ~/squid-repo/trunk
+bzr commit -m "Merge from trunk"
 }}}
 == merge another branch into yours ==
 You can merge in arbitrary patterns, though because bzr 1.0 defaults to 'merge3' for conflict resolution the best results occur if a hub-and-spoke system is used where each branch only merges from one other branch, except when changes from a 'child' branch are completed and being merged into that branch.
