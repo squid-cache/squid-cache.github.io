@@ -78,7 +78,7 @@ To change the branch that a checkout has been made from
 cd ~/source/squid/acheckout
 bzr switch ~/squid-repo/BRANCHNAME
 }}}
-NOTE: Until bzr+ssh access to the trunk is available, you cannot commit to the trunk!
+NOTE: Unless you have bzr+ssh access to the trunk, you cannot commit to the trunk!
 
 == Make a new branch to hack on ==
 First follow the instructions above to setup a development environment
