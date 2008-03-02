@@ -87,9 +87,9 @@ bzr push
 First update your copy of the ancestor
 
 {{{
-# cd source/squid/trunk
-# bzr update
-# bzr commit}}}
+cd ~/source/squid/trunk
+bzr update
+}}}
 Then merge the changes into your branch:
 
 {{{
