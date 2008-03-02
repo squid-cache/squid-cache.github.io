@@ -14,15 +14,9 @@ Things to install (as a user):
  * bzr
  * bzr-email (as a package it may be a bit old, try:
   . {{{bzr branch http://bazaar.launchpad.net/~bzr/bzr-email/trunk/ ~/.bazaar/plugins/email}}} Then do 'bzr help email' and setup any local machine configuration you need in bazaar.conf - such as mailer to use etc.
-Notes from the mailing list thread:
+ * bzrtools
+  . adds the cbranch plugin
 
- * Anonymous access [e.g. to 'track HEAD']
- * Mirrorable repositories to separate out trunk on squid-cache.org from devel.squid-cache.org as we currently do (as people seem happy with this setup).
- * commits to trunk over ssh or similar secure mechanism
- * works well with branches to remove the current cruft we have to deal with on sourceforge with the mirror from trunk.
- * works well on windows and unix
- * friendly to automation for build tests etc in the future.
- * anonymous code browsing facility (viewvc etc)
 = Repository Location =
 For committers:
 
@@ -205,6 +199,7 @@ hno: These will be dealt with when we switch over.
 == Migrate existing branches ? ==
  * Migrate in progress development branches
 hno: I wote no on this. It's up to respective sub-project to merge over if they like.
+
 = Possible future things =
 {{{
 > But some script to mirror HEAD and STABLE branches into CVS while
@@ -214,3 +209,12 @@ hno: I wote no on this. It's up to respective sub-project to merge over if they 
 robert: I'd *prefer* to set an expectation about a switchover time and switch & disable the CVS mirrors; because the higher fidelity of a VCS that doesrenames etc makes correct mirroring into CVS really annoying.
 
 hno: The existing sourceforge CVS mirror will continue as before. Just needs a small update in the script used to change the source tree from cvs to bzr. It's not an exact or correct mirror and has never been, just good enough for developments.
+
+= Note from the mailing list thread: =
+ * Anonymous access [e.g. to 'track HEAD']
+ * Mirrorable repositories to separate out trunk on squid-cache.org from devel.squid-cache.org as we currently do (as people seem happy with this setup).
+ * commits to trunk over ssh or similar secure mechanism
+ * works well with branches to remove the current cruft we have to deal with on sourceforge with the mirror from trunk.
+ * works well on windows and unix
+ * friendly to automation fo hbr build tests etc in the future.
+ * anonymous code browsing facility (viewvc etc)
