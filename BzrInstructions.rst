@@ -38,6 +38,7 @@ The following commands are equivalent:
 {{{
 bzr diff -c 10
 bzr diff -r 9..10}}}
+
 == Setup a mirror/development environment ==
 This can be done many ways. The following recipe gives you a local repository which can be used to develop many branches in an offline manner with a single build directory (so you don't have to do a full rebuild when switching branches).
 
@@ -54,20 +55,23 @@ cd ~/squid-repo/trunk
 # bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
 bzr bind $TRUNKURL
 }}}
-To update the local copy:
 
-{{{
-cd ~/squid-repo/trunk
-bzr update
-}}}
+
 To get a working tree to perform edits or merges:
 
 {{{
 cd ~/source/squid
 bzr checkout --lightweight ~/squid-repo/BRANCHNAME
 }}}
-To change the branch that a checkout has been made from
 
+
+To update the local mirror of trunk:
+{{{
+cd ~/source/squid/trunk
+bzr update
+}}}
+
+To change the branch that a checkout has been made from
 {{{
 cd ~/source/squid/acheckout
 bzr switch ~/squid-repo/BRANCHNAME
