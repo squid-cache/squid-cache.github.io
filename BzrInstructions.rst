@@ -40,7 +40,7 @@ bzr init-repo --no-trees ~/squid-repo
 mkdir ~/source/squid
 # Configure ~/.bazaar/locations.conf mapping the working trees to your repository
 cat >> ~/.bazaar/locations.conf << EOF
-[~/source/squid]
+[/home/USER/source/squid]
 cbranch_target=~/squid-repo
 cbranch_target:policy = appendpath
 EOF
@@ -50,7 +50,7 @@ export TRUNKURL=bzr+ssh://www.squid-cache.org/bzr/squid3/trunk
 # otherwise:
 export TRUNKURL=http://www.squid-cache.org/bzr/squid3/trunk
 cd ~/source/squid
-bzr cbranch $TRUNKURL trunk
+bzr cbranch --lightweight $TRUNKURL trunk
 # bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
 cd ~/squid-repo/trunk
 bzr bind $TRUNKURL
