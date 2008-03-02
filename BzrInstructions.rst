@@ -30,15 +30,6 @@ http://www.squid-cache.org/bzr/squid3/trunk}}}
 web view: http://squid-cache.org/bzrview/squid3/BRANCH RSS feed: http://www.squid-cache.org/bzrview//squid3/BRANCH/atom
 
 = Recipes =
-== Generate a patch for a commit ==
-{{{bzr diff -c revno}}} or {{{bzr diff -r revno..otherrevno}}} to use an arbitrary range.
-
-The following commands are equivalent:
-
-{{{
-bzr diff -c 10
-bzr diff -r 9..10
-}}}
 == Setup a mirror/development environment ==
 This can be done many ways. The following recipe gives you a local repository which can be used to develop many branches in an offline manner with a single build directory (so you don't have to do a full rebuild when switching branches). It also uses the cbranch command from bzrtools to save a bit of time.
 
@@ -61,20 +52,6 @@ bzr cbranch $TRUNKURL trunk
 cd ~/squid-repo/trunk
 bzr bind $TRUNKURL
 }}}
-To update the local mirror of trunk:
-
-{{{
-cd ~/squid-src/trunk
-bzr update
-}}}
-To change the branch that a checkout has been made from
-
-{{{
-cd ~/source/squid/acheckout
-bzr switch ~/squid-repo/BRANCHNAME
-}}}
-NOTE: Unless you have bzr+ssh access to the trunk, you cannot commit to the trunk!
-
 == Make a new branch to hack on ==
 First follow the instructions above to setup a development environment
 
@@ -117,11 +94,16 @@ bzr merge --remember ~/squid-repo/trunk
 bzr commit -m "Merge from trunk"
 }}}
 == Submit a patch for inclusion in the main tree or discussion ==
+Verify the contents of your branch
+
+{{{
+bzr diff -r submit: | less
+}}}
 Generate a diff bundle and mail it to squid-dev
 
 {{{
 bzr send --mail-to squid-dev@squid-cache.org}}}
-== Commit to trunk ==
+== Commit directly to trunk ==
 Make sure you have a clean up to date trunk tree:
 
 {{{
@@ -224,7 +206,7 @@ robert: I'd *prefer* to set an expectation about a switchover time and switch & 
 
 hno: The existing sourceforge CVS mirror will continue as before. Just needs a small update in the script used to change the source tree from cvs to bzr. It's not an exact or correct mirror and has never been, just good enough for developments.
 
-= Note from the mailing list thread: =
+= Notes from the mailing list thread: =
  * Anonymous access [e.g. to 'track HEAD']
  * Mirrorable repositories to separate out trunk on squid-cache.org from devel.squid-cache.org as we currently do (as people seem happy with this setup).
  * commits to trunk over ssh or similar secure mechanism
