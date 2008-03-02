@@ -47,6 +47,7 @@ cbranch_target:policy = appendpath
 export TRUNKURL=bzr+ssh://www.squid-cache.org/bzr/squid3/trunk
 # otherwise:
 export TRUNKURL=http://www.squid-cache.org/bzr/squid3/trunk
+cd ~/source/squid
 bzr cbranch $TRUNKURL trunk
 # bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
 cd ~/squid-repo/trunk
@@ -63,15 +64,22 @@ bzr cbranch --lightweight ~/squid-repo/trunk NAME
 cd NAME
 bzr merge --remember ~/squid-repo/trunk
 }}}
- . you want to share the branch with others also do:
+== Share the branch with others: ==
+you want to share (read-only) the branch with others also do:
+
 {{{
 cd NAME
-bzr push PUBLIC_URL
+bzr push --remember PUBLIC_URL
 }}}
 e.g. if you were to use the launchpad.net bzr hosting service:
 
 {{{
-bzr push bzr+ssh://bazaar.launchpad.net/~USER/squid/NAME
+bzr push --remember bzr+ssh://bazaar.launchpad.net/~USER/squid/NAME
+}}}
+to update the shared copy in the future all you need to run is
+
+{{{
+bzr push
 }}}
 == bring a branch up to date with it's ancestor ==
 First update your copy of the ancestor
@@ -104,7 +112,7 @@ Generate a diff bundle and mail it to squid-dev
 {{{
 bzr send --mail-to squid-dev@squid-cache.org
 }}}
-It's also possible to cherrypick what to send using the -r option.
+It's also possible to cherrypick what to send using the -r option. See {{{bzr help revisionspec}}} for details
 
 == Commit directly to trunk ==
 Make sure you have a clean up to date trunk tree:
@@ -113,7 +121,10 @@ Make sure you have a clean up to date trunk tree:
 bzr status
 bzr update
 }}}
- . bzr status should show nothing. If it shows something:{{{bzr revert}}}
+ . bzr status should show nothing. If it shows something:
+{{{
+bzr revert
+}}}
 If you are merging a development branch:
 
 {{{
