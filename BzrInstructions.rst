@@ -86,8 +86,7 @@ bzr cbranch --lightweight ~/squid-repo/trunk NAME
 cd NAME
 bzr merge --remember ~/squid-repo/trunk
 }}}
- you want to share the branch with others also do:
-
+ . you want to share the branch with others also do:
 {{{
 cd NAME
 bzr push PUBLIC_URL
@@ -97,6 +96,31 @@ e.g. if you were to use the launchpad.net bzr hosting service:
 {{{
 bzr push bzr+ssh://bazaar.launchpad.net/~USER/squid/NAME
 }}}
+== bring a branch up to date with it's ancestor ==
+First update your copy of the ancestor
+
+{{{
+# cd source/squid/trunk
+# bzr update
+# bzr commit}}}
+Then merge the changes into your branch:
+
+{{{
+cd ../NAME
+bzr merge
+bzr commit -m "Merge from trunk"
+}}}
+If bzr merge complains on not having a source to merge from then use
+
+{{{
+bzr merge --remember ~/squid-repo/trunk
+bzr commit -m "Merge from trunk"
+}}}
+== Submit a patch for inclusion in the main tree or discussion ==
+Generate a diff bundle and mail it to squid-dev
+
+{{{
+bzr send --mail-to squid-dev@squid-cache.org}}}
 == Commit to trunk ==
 Make sure you have a clean up to date trunk tree:
 
@@ -104,7 +128,7 @@ Make sure you have a clean up to date trunk tree:
 bzr status
 bzr update
 }}}
- . This should show nothing. If it shows something:{{{bzr revert}}}
+ . bzr status should show nothing. If it shows something:{{{bzr revert}}}
 If you are merging a development branch:
 
 {{{
@@ -140,25 +164,6 @@ and apply that to cvs with patch:
 
 {{{
 patch -p1 patchfile
-}}}
-== Submit a patch for submission ==
-Generate a diff bundle and mail it to squid-dev
-{{{
-bzr send --mail-to squid-dev@squid-cache.org}}}
-== bring a branch up to date with it's ancestor ==
-Just use merge:
-
-{{{
-# you need a tree to merge: see 'setting up a development environment'
-cd checkout-of-branch
-bzr merge
-bzr commit -m "Merge from trunk"
-}}}
-If bzr merge complains on not having a source to merge from then use
-
-{{{
-bzr merge --remember ~/squid-repo/trunk
-bzr commit -m "Merge from trunk"
 }}}
 == merge another branch into yours ==
 You can merge in arbitrary patterns, though because bzr 1.0 defaults to 'merge3' for conflict resolution the best results occur if a hub-and-spoke system is used where each branch only merges from one other branch, except when changes from a 'child' branch are completed and being merged into that branch.
