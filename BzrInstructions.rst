@@ -102,7 +102,10 @@ bzr diff -r submit: | less
 Generate a diff bundle and mail it to squid-dev
 
 {{{
-bzr send --mail-to squid-dev@squid-cache.org}}}
+bzr send --mail-to squid-dev@squid-cache.org
+}}}
+It's also possible to cherrypick what to send using the -r option.
+
 == Commit directly to trunk ==
 Make sure you have a clean up to date trunk tree:
 
@@ -114,10 +117,10 @@ bzr update
 If you are merging a development branch:
 
 {{{
-bzr merge DEVELOPMENTBRANCH_URL
+bzr merge DEVELOPMENTBRANCH_URL (or bundle)
 bzr commit -m "Merge feature FOO"
 }}}
-If you are applying a patch from somewhere:
+If you are applying a plain patch from somewhere:
 
 {{{
 bzr patch PATCHFILE_OR_URL
