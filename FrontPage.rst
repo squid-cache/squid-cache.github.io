@@ -35,4 +35,4 @@ DeveloperResources section has instructions for CVS access, coding guidelines, a
  * The Calamaris log file analysis [http://freshmeat.net/projects/calamaris/ tool].
  * Visolve's Squid 3.0 configuration [http://squid.visolve.com/squid/configuration_manual_30.htm manual].
  * Martin Stransky's Squid [http://people.redhat.com/stransky/squid/ page]. Martin maintains the official Red Hat package.
- * Other external [ExternalLinks links].
+ * Other [wiki:ExternalLinks external links]
