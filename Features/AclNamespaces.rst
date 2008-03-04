@@ -16,7 +16,7 @@
 
  * '''Developer''': AlexeyVeselovsky
 
- * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
+ * '''More''': 
 
 
 ## Details
