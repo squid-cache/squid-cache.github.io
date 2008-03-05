@@ -49,7 +49,7 @@ This can be done many ways. The following recipe gives you a local repository wh
 # create a local repository to store branches in
 bzr init-repo --no-trees ~/squid-repo
 # Create a place where to keep working trees
-mkdir ~/source/squid
+mkdir -p ~/source/squid
 # Configure ~/.bazaar/locations.conf mapping the working trees to your repository
 cat >> ~/.bazaar/locations.conf << EOF
 [/home/USER/source/squid]
@@ -218,9 +218,10 @@ This is done, needs the result committed.
 hno: These will be dealt with when we switch over.
 
 == Set cut over date ==
- * Set a cut over date
+ * Tuesday, 04 March 2008.
 == Run new conversion ==
  * Run a conversion of the master repository at that date
+
 == Migrate existing branches ? ==
  * Migrate in progress development branches
 hno: I wote no on this. It's up to respective sub-project to merge over if they like.
