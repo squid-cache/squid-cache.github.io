@@ -7,6 +7,33 @@
 
 [[TableOfContents]]
 
+= Squid 3.0 =
+
+Now in stable cycle. The features have largely been set.
+Additions are limited to:
+ * Security fixes
+ * Stability fixes
+ * small optimizations
+ * easily ported features already available in 2.6.
+
+Large code changes are reserved for later versions.
+
+Basic new features in 3.0
+
+ * ICAP (Internet Content Adaptation Protocol)
+ * ESI (Edge Side Includes)
+ * HTTP status ACL
+ * Control Path-MTU discovery
+ * Weighted Round-Robin peer selection mechanism
+ * Per-User bandwidth limits (class 4 delay pool)
+
+From STABLE 2
+ * [:Features/ConfigIncludes]
+ * Port-name ACL
+
+Packages of squid 3.0 source code are available at
+http://www.squid-cache.org/Versions/v3/3.0/
+
 = Squid 3.1 =
 
 New features may still be requested or suggested up until March 2008. After which the Squid 3.1 features will be determined. Available developer time will then determine the release timeline.
@@ -52,9 +79,10 @@ The Wish List accumulates features that do not meet the strict TODO List criteri
  * [:Features/FasterHttpParser]
  * [:Features/CollapsedForwarding]
  * [:Features/ConnPin]
+ * [:Features/LogDaemon]
  * [:Features/Optimizations]
  * [:Features/SrvDnsOriginServerLocation]
- * [:Features/LogDaemon]
+ * [:Features/TproxyUpdate]
 
 More ideas are available [wiki:Features/Other elsewhere].
 
