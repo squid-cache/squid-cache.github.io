@@ -4,7 +4,7 @@
 
 = Feature: Connection Pinning =
 
- * '''Goal''': TODO: Why do we need it?
+ * '''Goal''': Why do we need it? Client/Sponsor Requested.
 
  * '''Status''': No started
 
