@@ -67,6 +67,9 @@ Once Squid 3.1 release timeline is agreed upon, developers must obey it or move 
 Features under development:
  * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
+ * [:Features/TproxyUpdate] [[Include(Features/TproxyUpdate,,,from="ETA.*:",to="$")]]
+ * [:Features/LogDaemon] [[Include(Features/LogDaemon,,,from="ETA.*:",to="$")]]
+ * [:Features/CodeTestBed] [[Include(Features/CodeTestBed,,,from="ETA.*:",to="$")]]
 
 = Wish List =
 
@@ -79,10 +82,8 @@ The Wish List accumulates features that do not meet the strict TODO List criteri
  * [:Features/FasterHttpParser]
  * [:Features/CollapsedForwarding]
  * [:Features/ConnPin]
- * [:Features/LogDaemon]
  * [:Features/Optimizations]
  * [:Features/SrvDnsOriginServerLocation]
- * [:Features/TproxyUpdate]
 
 More ideas are available [wiki:Features/Other elsewhere].
 
