@@ -16,13 +16,13 @@
 
  * '''More''': 
 
-= Details =
+== Details ==
 
 The Squid-3 developers have decided that the Squid-3 codebase can now handle a better method of testing than just ad-hoc CPP Unit-tests and developer self-testing.
 
 This testing involves a number of changes to both the codebase and current developer practices.
 
-== Automated Code Testing ==
+=== Automated Code Testing ===
 
  * CPP Unit-Tests. (Already provided ad-hoc by cppunit tools, more to be added)
 
@@ -32,11 +32,11 @@ This testing involves a number of changes to both the codebase and current devel
 
  * other tests may yet be chosen for use.
 
-== Patching Guidelines ==
+=== Patching Guidelines ===
 
  * a set of guidelines for all future alterations to the squid code. ''' To be finalised'''
 
-== Behavior Testing  ==
+=== Behavior Testing  ===
 
 Testing of squid run-time behavior still has to be worked out. A selection of tools have been suggested, and some machinery is being assembled. But as yet there is no
 
