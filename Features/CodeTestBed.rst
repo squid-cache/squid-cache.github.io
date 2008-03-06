@@ -32,6 +32,16 @@ This testing involves a number of changes to both the codebase and current devel
 
  * other tests may yet be chosen for use.
 
+=== Architecture Re-alignment ===
+
+Modulating code into convenient functional units is all what 3.x is about.
+
+VCS has been changed to Bazaar in part to make these changes easier and more manageable.
+
+The makefiles still need the current functional units to be cleaned up to match the code-level cleaning that has been done. To build each functional unit as an internal lib* module.
+
+This builds on the dependency tree automation, to ensure that the functionality units are independent.
+
 === Patching Guidelines ===
 
  * a set of guidelines for all future alterations to the squid code. ''' To be finalised'''
