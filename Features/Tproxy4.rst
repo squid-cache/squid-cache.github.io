@@ -10,7 +10,7 @@
 
  * '''Status''': experimental patches
 
- * '''ETA''': unknown
+ * '''ETA''': 30 April, 2008
 
  * '''Version''': 2.6, 3.0, 3.1
 
