@@ -12,7 +12,7 @@
 
  * '''Version''': 3.0, 3.1
 
- * '''Developer''': AmosJeffries, everyone
+ * '''Developer''': AmosJeffries, AlexRousskov, everyone
 
  * '''More''': 
 
