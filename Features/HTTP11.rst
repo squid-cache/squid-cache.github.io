@@ -37,7 +37,7 @@ This is likely to touch the store API as today all mesages go via the store, eve
 
 HTTP/1.1 requires support for chunked encoding in both parsers and composers. This applies to both responses and requests.
 
-There is preleminary patches available for both Squid-3 and Squid-2 adding at least response chunked decoding.
+There is preleminary patches available for both Squid-3 and Squid-2 adding at least response chunked decoding. ''Now integrated in 3.1.''
 
 == Related minor tasks ==
 
