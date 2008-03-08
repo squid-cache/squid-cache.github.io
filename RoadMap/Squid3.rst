@@ -79,6 +79,7 @@ The Wish List accumulates features that do not meet the strict TODO List criteri
 ## [[FullSearch(CategoryFeature CategoryWish)]]
 
  * [:Features/BetterStringBuffer]
+ * [:Features/ETagVarySupport]
  * [:Features/FasterHttpParser]
  * [:Features/CollapsedForwarding]
  * [:Features/ConnPin]
