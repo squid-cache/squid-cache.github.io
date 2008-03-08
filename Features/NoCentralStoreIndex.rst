@@ -14,15 +14,13 @@
 
  * '''Version''': What Squid version(s) will get this feature?
 
- * '''Developer''': Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
+ * '''Developer''':
+## Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
 
- * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
+ * '''More''':
+## Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
 
-## Details
-##
-## Any other details you can document? This section is optional.
-## If you have multiple sections and ToC, please place them here,
-## leaving the above summary information in the page "header".
+== Details ==
 
 Squid is currently operating around a single in-memory index of all cached objects, which is quite good for performance but very resource demanding in bigger installations and also making it harder to add SMP support.
 
