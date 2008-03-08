@@ -85,6 +85,7 @@ The Wish List accumulates features that do not meet the strict TODO List criteri
  * [:Features/ConnPin]
  * [:Features/COSS]
  * [:Features/Optimizations]
+ * [:Features/NoCentralStoreIndex]
  * [:Features/SrvDnsOriginServerLocation]
 
 More ideas are available [wiki:Features/Other elsewhere].
