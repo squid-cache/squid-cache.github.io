@@ -1,0 +1,31 @@
+##master-page:CategoryTemplate
+#format wiki
+#language en
+
+## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
+
+= Feature: ETAG and Vary Support incomplete in 3.x =
+
+ * '''Goal''': ETAg/Vary experiments need porting over from 2.6
+
+ * '''Status''': Not started
+
+ * '''ETA''': unknown
+
+ * '''Version''': Squid 3
+
+ * '''Developer''': 
+
+ * '''More''': 
+http://www.squid-cache.org/bugs/show_bug.cgi?id=1647
+http://www.squid-cache.org/bugs/show_bug.cgi?id=1631
+
+
+## Details
+##
+## Any other details you can document? This section is optional.
+## If you have multiple sections and ToC, please place them here,
+## leaving the above summary information in the page "header".
+
+----
+CategoryFeature
