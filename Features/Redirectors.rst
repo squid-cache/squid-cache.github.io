@@ -115,6 +115,10 @@ acl foo ident REQUIRED
 http_access allow foo
 }}}
 
+== Redirections by origin servers ==
+
+Redirectors only act on ''client'' requests; if you wish to modify server-generated redirections (the HTTP ''Location'' header) you have to use a {{{location_rewrite}}} helper
+
 -----
 
 ##end
