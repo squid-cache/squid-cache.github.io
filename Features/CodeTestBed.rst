@@ -8,7 +8,7 @@
 
  * '''Status''': First Steps
 
- * '''ETA''': unknown, part 1: 31 April 2008
+ * '''ETA''': unknown, part 1: 17 March 2008
 
  * '''Version''': 3.0, 3.1
 
