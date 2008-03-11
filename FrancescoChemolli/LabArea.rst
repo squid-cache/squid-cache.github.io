@@ -4,11 +4,12 @@ This area is meant to be used as a lab for wiki features in development, such as
 
 -----
 
-[[ForEach(title:/LabArea/,\[\[TocOf(%%)\]\], )]]
+[[ForEach(title:/LabArea/,\[\[TocOf(%%)\]\])]]
 
 -----
 
-[[ForEach(title:/LabArea/,\[\[TocOf\(FrancescoChemolli/LabArea/Page1\)\]\] )]]
+[[ForEach(title:/LabArea/,\[\[Include(%%)\]\])]]
+
 
 -----
 Subpages:
