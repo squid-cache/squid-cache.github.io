@@ -5,3 +5,5 @@ I'm involved with squid development since 2000, I've been working mainly in the 
 Besides this, I'm a general nag-person for the other developers and I'm this wiki's admin.
 
 I'm also known by the nickname "Kinkie".
+
+There's a playground for new features available at /LabArea
