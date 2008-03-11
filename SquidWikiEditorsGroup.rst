@@ -37,3 +37,4 @@
  * Firebus
  * RandyHall
  * AlexeyVeselovsky
+ * RadomirDopieralski
