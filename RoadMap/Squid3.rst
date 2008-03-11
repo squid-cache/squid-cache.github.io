@@ -84,6 +84,7 @@ The Wish List accumulates features that do not meet the strict TODO List criteri
  * [:Features/CollapsedForwarding]
  * [:Features/ConnPin]
  * [:Features/COSS]
+ * [:Features/SmpScale]
  * [:Features/Optimizations]
  * [:Features/NoCentralStoreIndex]
  * [:Features/SrvDnsOriginServerLocation]
