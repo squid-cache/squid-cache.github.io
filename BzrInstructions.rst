@@ -32,6 +32,7 @@ web view: http://squid-cache.org/bzrview/squid3/BRANCH RSS feed: http://www.squi
 = Recipes =
 == Let bzr know who you are ==
 bzr needs to know your identity. A bzr identity is your name & email address.
+
 {{{
 bzr whoami "Your Fullname <email@address.domain>"
 }}}
@@ -99,8 +100,8 @@ bzr push
 First update your copy of the ancestor
 
 {{{
-cd ~/source/squid/trunk
-bzr update
+cd ~/source/squid/trunk (or ~/squid-repo/trunk if no local checkout of trunk)
+bzr pull
 }}}
 Then merge the changes into your branch:
 
@@ -221,7 +222,6 @@ hno: These will be dealt with when we switch over.
  * Tuesday, 04 March 2008.
 == Run new conversion ==
  * Run a conversion of the master repository at that date
-
 == Migrate existing branches ? ==
  * Migrate in progress development branches
 hno: I wote no on this. It's up to respective sub-project to merge over if they like.
