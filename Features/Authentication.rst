@@ -456,6 +456,12 @@ For all other auth-schemes this cannot be done; this is not a limitation in squi
  * [http://samba.org/samba/docs/man/manpages-3/smbclient.1.html smbclient man page]
  * [http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html ntlm_auth man page]
 
+
+== Authentication in interception and transparent modes ==
+
+Simply said, it's not possible to authenticate users using proxy authentication schemes when running in interception or transparent modes. See ../InterceptionProxy for details on why.
+
+
 == Other Resources ==
  * [http://www.papercut.com/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory Configuring Squid Proxy To Authenticate With Active Directory]
 
