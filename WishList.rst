@@ -79,5 +79,17 @@ Enabling squid to detect such duplication and serve the content from cache, with
 The existence has not yet even made it to the drawing board properly. A number of problems have been identified, but not all solved as yet.
 Please contact the Squid developer team if you're interested in discussing the implementation of this feature.
 
-----
-CategoryHomepage
+== Squid Virtual Appliance ==
+
+=== Contacts ===
+
+FrancescoChemolli
+
+=== Description ===
+
+VMWare has a Virtual Appliance for running Squid at http://www.vmware.com/appliances/directory/57.
+It would be interesting to check it out, and see whether it supports the full squid feature set (interception, transparent, etc) and/or build a similar tool or a live cd.
+
+=== Progress ===
+
+Not started.
