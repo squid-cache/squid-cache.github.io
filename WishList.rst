@@ -2,6 +2,9 @@
 #format wiki
 #language en
 
+/!\ Please consider adding new wishes as ["Features"] pages rather than dumping them here. Wishes as Feature pages are more visible, easier to update, easier to keep track of, and easier to add to Squid3 roadmap. Thank you.
+
+
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 
 ## if you want to have a table of comments remove the heading hashes from the next line
