@@ -85,7 +85,7 @@ UPDATE: starting from 2.6.STABLE4, Windows MinGW support is available in the sta
 
 == What Squid mailing lists are available? ==
 
-  * [[MailTo(squid-users AT squid-cache DOT org)]] hosts general discussions about the Squid cache software. subscribe via [[MailTo(squid-users-subscribe AT squid-cache DOT org)]]. Previous messages are available for browsing at [http://www.squid-cache.org/mail-archive/squid-users/ the Squid Users Archive], and also at [http://marc.theaimsgroup.com/?l=squid-users&r=1&w=2 theaimsgroup.com].
+  * [[MailTo(squid-users AT squid-cache DOT org)]] hosts general discussions about the Squid cache software. subscribe via [[MailTo(squid-users-subscribe AT squid-cache DOT org)]]. Previous messages are available for browsing at [http://www.squid-cache.org/mail-archive/squid-users/ the Squid Users Archive], and also at [http://marc.theaimsgroup.com/?l=squid-users&r=1&w=2 theaimsgroup.com] and [http://squid.markmail.org/ MarkMail].
   * squid-users-digest: digested (daily) version of above.  Subscribe via [[MailTo(squid-users-digest-subscribe AT squid-cache DOT org)]].
   * [[MailTo(squid-announce AT squid-cache DOT org)]] is a receive-only list for announcements of new versions. Subscribe via [[MailTo(squid-announce-subscribe AT squid-cache DOT org)]].
   * [[MailTo(squid-bugs AT squid-cache DOT org)]] is meant for sending us bug reports. Bug reports received here are given priority over those mentioned on squid-users.
