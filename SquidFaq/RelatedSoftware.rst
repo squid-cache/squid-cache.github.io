@@ -159,5 +159,9 @@ For
 and
 [http://www2.lysator.liu.se/~pen/pidentd/ Unix].
 
+== Cacheability Validators ==
+
+The [http://www.mnot.net/cacheability/ Cacheability Engine] is a python script that validates an URL, analyzing the clues a web server gives to understand how cacheable is the served content. An online tool is available at http://www.ircache.net/cgi-bin/cacheability.py
+
 -----
 Back to the SquidFaq
