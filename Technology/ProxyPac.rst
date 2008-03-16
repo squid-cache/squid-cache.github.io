@@ -15,6 +15,8 @@ Most modern graphical Web Browsers implement APC, including the current releases
 
 Sun's Java Web Start (JWS) has limited support for APC.
 
+Manu Garg has written a PAC-parser library with python bindings, available at http://code.google.com/p/pacparser/
+
 == Further Reading ==
 
  * Original specification: http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html
