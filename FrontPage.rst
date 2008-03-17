@@ -33,6 +33,6 @@ DeveloperResources section has instructions for CVS access, coding guidelines, a
  * The Bugzilla [http://www.squid-cache.org/bugs/index.cgi database].
  * The Squijj refresh_pattern analysis [http://www.mnot.net/squij/ program].
  * The Calamaris log file analysis [http://freshmeat.net/projects/calamaris/ tool].
- * Visolve's Squid 3.0 configuration [http://squid.visolve.com/squid/configuration_manual_30.htm manual].
+ * Visolve's  configuration manuals for [http://squid.visolve.com/squid/configuration_manual_30.htm Squid 3.0] and [http://www.visolve.com/squid/squid26/contents.php Squid 2.6]
  * Martin Stransky's Squid [http://people.redhat.com/stransky/squid/ page]. Martin maintains the official Red Hat package.
  * Other [wiki:ExternalLinks external links]
