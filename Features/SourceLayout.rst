@@ -4,8 +4,7 @@
 
 = Feature: Source layout improvements =
 
- * '''Goal''': Ease development. Support installable Squid headers and libraries. Fix distclean.
-
+ * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean.
  * '''Status''': In progress
  * '''ETA''': 2008/06/15
  * '''Version''': 3.2?
