@@ -15,6 +15,10 @@ Improve the usage of memory-pooled strings and the string API. The code is prese
 
 Plans for the string API are intended to allow improved access at all current usage of strings (ESI, ICAP, others?) and allow for improved and safer access to larger buffers (HTTP parser, URI Parser, etc).
 
+== Plan ==
+
+Implementing a single semi-generic referenced-String class that acts as both a parent-buffer and a child-string (see below) simultaneously is easy enough. Once created we can slowly migrate usage of it around Squid. If done carefully with a char* and squidString  in/out conversion we can insert them seamlessly at any point in the code with no loss of performance, but an overall gain in places where two can reference each other.
+
 == Requirements ==
 
 === I/O Buffers ===
