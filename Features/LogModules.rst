@@ -8,11 +8,11 @@
 
  * '''Status''': Done?
 
- * '''ETA''': Unknown
+ * '''ETA''': 30 April 2007
 
  * '''Version''': 3.1
 
- * '''Developer''': AdrianChadd
+ * '''Developer''': AdrianChadd, AmosJeffries
 
 
 == Squid3 status details ==
