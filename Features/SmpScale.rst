@@ -24,4 +24,4 @@ We need to isolate CPU-intensive Squid functionality into mostly independent log
 The implementation speed will depend on funding available for this project.
 
 ----
-CategoryFeature
+CategoryFeature CategoryWish
