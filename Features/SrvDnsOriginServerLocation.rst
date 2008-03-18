@@ -58,4 +58,4 @@ The (expired) Internet Draft [http://tools.ietf.org/html/draft-andrews-http-srv 
 The redirector is RFC-compliant at version 0.4. Andrews' draft is the next target for integration.
 
 ----
- CategoryFeature
+ CategoryFeature CategoryWish
