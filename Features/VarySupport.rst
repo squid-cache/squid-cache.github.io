@@ -28,4 +28,4 @@ http://www.squid-cache.org/bugs/show_bug.cgi?id=1631
 ## leaving the above summary information in the page "header".
 
 ----
-CategoryFeature
+CategoryFeature CategoryWish
