@@ -44,7 +44,7 @@ bzr whoami
 If you don't do this bzr guesses based on your account and compuer name.
 
 == Setup a mirror/development environment ==
-This can be done many ways. The following recipe gives you a local repository which can be used to develop many branches in an offline manner with a single build directory (so you don't have to do a full rebuild when switching branches). It also uses the cbranch command from bzrtools to save a bit of time.
+This can be done many ways. The following recipe gives you a local repository separate from the working trees, which can be used to develop many branches in an offline manner. It makes use of cbranch command from bzrtools to save a bit of time in this kind of setup.
 
 {{{
 # create a local repository to store branches in
@@ -54,7 +54,7 @@ mkdir -p ~/source/squid
 # Configure ~/.bazaar/locations.conf mapping the working trees to your repository
 cat >> ~/.bazaar/locations.conf << EOF
 [/home/USER/source/squid]
-cbranch_target=~/squid-repo
+cbranch_target=/home/USER/squid-repo
 cbranch_target:policy = appendpath
 EOF
 # get the Squid-3 trunk into this repository
@@ -65,7 +65,7 @@ export TRUNKURL=http://www.squid-cache.org/bzr/squid3/trunk
 cd ~/source/squid
 bzr cbranch --lightweight $TRUNKURL trunk
 # bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
-cd ~/squid-repo/trunk
+cd trunk
 bzr bind $TRUNKURL
 }}}
 == Make a new branch to hack on ==
@@ -101,21 +101,37 @@ First update your copy of the ancestor
 
 {{{
 cd ~/source/squid/trunk (or ~/squid-repo/trunk if no local checkout of trunk)
-bzr pull
+bzr update
 }}}
 Then merge the changes into your branch:
 
 {{{
 cd ../NAME
 bzr merge
+[fix conflicts if any]
 bzr commit -m "Merge from trunk"
 }}}
-If bzr merge complains on not having a source to merge from then use
+Then continue hacking on your branch.
+
+If bzr merge complains on not having a source to merge from then use the following merge command once
 
 {{{
 bzr merge --remember ~/squid-repo/trunk
-bzr commit -m "Merge from trunk"
 }}}
+If the bzr update step runs very quick and doesn't seem to bring in any updates then verify that the main branch is bound to the main repository location, not only having it as parent. "bzr info" should report something like the following:
+{{{
+Lightweight checkout (format: dirstate or dirstate-tags or pack-0.92 or rich-root or rich-root-pack)
+Location:
+       light checkout root: .
+  repository checkout root: /home/henrik/squid-repo/squid3/hno/trunk
+        checkout of branch: bzr+ssh://squid-cache.org/bzr/squid3/trunk/
+         shared repository: /home/henrik/squid-repo/squid3
+Related branches:
+  parent branch: bzr+ssh://squid-cache.org/bzr/squid3/trunk/}}}
+If "checkout of branch" indicates your local repository instead of the main source then you need to bind the tree. But first verify that you really are in the main working tree and not your own branch..
+
+{{{
+bzr bind bzr+ssh://squid-cache.org/bzr/squid3/trunk/ }}}
 == Submit a patch for inclusion in the main tree or discussion ==
 Verify the contents of your branch
 
@@ -181,8 +197,8 @@ patch -p1 patchfile
 You can merge in arbitrary patterns, though because bzr 1.0 defaults to 'merge3' for conflict resolution the best results occur if a hub-and-spoke system is used where each branch only merges from one other branch, except when changes from a 'child' branch are completed and being merged into that branch.
 
 {{{
-cd checkout-of-branch
-bzr merge URL_OF_SOURCE_BRANCH
+cd yourbranch
+bzr merge URL_OF_BRANCH_TO_MERGE
 }}}
 == diffing against arbitrary revisions/branches ==
 To diff against a different branch there are several options. The most common and most useful one is 'ancestor' and will give you the diff since the most recent merge of that other branch. If there is a third branch that has been merged into both your branch and the one you are diffing, it's changes will appear in the diff. There is work underway to provide diffs that handle any merge pattern more gracefully - see [http://bundlebuggy.aaronbentley.com/request/<47730F98.2030405@utoronto.ca> merge-preview] as the start of the work in bzr.
