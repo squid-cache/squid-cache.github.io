@@ -27,4 +27,4 @@ latency on dynamic content, but there can be benefit from enabling
 this in accelerator setups where the web servers are the bottleneck
 and reliable and returns mostly cacheable information.
 ----
-CategoryFeature
+CategoryFeature CategoryWish
