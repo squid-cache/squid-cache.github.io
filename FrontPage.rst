@@ -24,7 +24,7 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
 
 == Developers corner ==
 
-DeveloperResources section has instructions for CVS access, coding guidelines, and other useful documentation.
+DeveloperResources section has instructions for [wiki:Squid3VCS Bazaar] and [wiki:CvsInstructions CVS] access, coding guidelines, and other useful documentation.
 
 == Related resources ==
 
