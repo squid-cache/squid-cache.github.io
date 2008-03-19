@@ -39,3 +39,4 @@
  * AlexeyVeselovsky
  * RadomirDopieralski
  * TimBates
+ * Atamido
