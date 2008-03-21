@@ -23,4 +23,4 @@ The definition of a feature is discussed [wiki:CategoryFeature elsewhere].
 
 Choose a good WikiName for it and enter it here:
 
-[[NewPage(Featyres/FeatureTemplate, Create, Features)]]
+[[NewPage(Features/FeatureTemplate, Create, Features)]]
