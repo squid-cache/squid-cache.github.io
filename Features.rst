@@ -17,3 +17,10 @@ Less documented ideas and wishes are available [wiki:Features/Other elsewhere].
 ## [[FullSearch(title:regex:Features/.* -title:regex:.*(Template|Other) regex:Status[^A-z]+completed)]]
 
 The definition of a feature is discussed [wiki:CategoryFeature elsewhere].
+
+
+== Create a new Feature page ==
+
+Choose a good WikiName for it and enter it here:
+
+[[NewPage(Featyres/FeatureTemplate, Create, Features)]]
