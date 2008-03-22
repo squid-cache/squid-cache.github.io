@@ -40,4 +40,4 @@ cache_dir ufs /squid/cache 20GB
 
 
 ----
-CategoryFeature
+CategoryFeature CategoryWish
