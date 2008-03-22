@@ -23,10 +23,11 @@
 
 What I mean here is, if you have multiple cache_dirs configured (presumably on separate disks) squid should not refuse to start if one is unavailable. It should scream loudly, yes, but should be able to carry on with the ones it can use. For bonus points, make squid capable of "dropping" a cache_dir that becomes unavailable during runtime. 
 
+
 === Better handling of disk overflow ===
 
-Squid should be capable of detecting a disk-full error and purging stable cache objects to free up space.
-As a secondary goal it should also be possible to shrink the swap.state logs when they are becoming either too large or the above mentioned disk-overflow happens.
+Squid should be capable of detecting a disk-full error and purging stale cache objects to free up space.
+As a secondary goal it should also be possible to shrink the swap.state logs when it becomes either too large or the above mentioned disk-overflow happens.
 
 
 === Bonus points for cache-size auto-detection ===
