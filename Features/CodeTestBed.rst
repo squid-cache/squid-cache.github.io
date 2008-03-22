@@ -8,7 +8,7 @@
 
  * '''Status''': First Steps
 
- * '''ETA''': unknown, part 1: 17 March 2008
+ * '''ETA''': unknown, part 1: 17 March 2008.
 
  * '''Version''': 3.0, 3.1
 
@@ -26,7 +26,7 @@ This testing involves a number of changes to both the codebase and current devel
 
  * CPP Unit-Tests. (Already provided ad-hoc by cppunit tools, more to be added)
 
- * Squid-wide dependency test tool. To effectively unit-test the code dependency tree. (Problems detected by this tool are being worked out of 3.1 in the cleanup branch.)
+ * Squid-wide dependency test tool. To effectively unit-test the code dependency tree. ('''Done''')
 
  * valgrind memory management testing. (Integrated for use, but not used regularly by all developers yet. This may be included in the Patching Guidelines.)
 
