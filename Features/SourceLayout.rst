@@ -36,7 +36,10 @@ If you know the solution or can improve the proposed one, please write to squid-
 || '''Problem''' || '''Proposed solution''' ||
 ||Where to put OS-compatibilities wrappers that are currently located in squid/lib and squid/include?||squid/compat/lib squid/compat/include||
 ||Where to put 3rd party libraries that are currently located in squid/lib and squid/include?|| /squid/import/libFoo/||
-||Can we remove Foo prefix from FOO/!FooSomething.h file names? The prefix carries no additional information and is probably not required for modern compilers, especially in C++ world.||File name should match the primary class declared or defined in that file. Directory name should match the namespace used by classes in that directory. We should move from PROTOFoo to PROTO::Foo classes.||
+||Can we remove Foo prefix from FOO/!FooSomething.h file names? The prefix carries no additional information and is probably not required for modern compilers, especially in C++ world.||File name should match the primary class declared or defined in that file. Directory name should match the namespace used by classes in that directory. We should move from PROTOFoo to PROTO::Foo classes.
+
+Some systemic problems have been found cleaning filenames like this with compiler include methods.
+||
 ||Should client- and server- side files be separated?||yes||
 ||Should directory names use just_small, !CamelCase, or CAPS letters? Does Windows portability require lowercase letters? || lower_case ||
 || Should we use squid/src/squid/ root for most sources to include header files as <squid/group/file.h>? This may be required for installed headers and 3rd party code using those headers. It is not clear whether Squid will have installed headers in the foreseeable future. The Feature/eCAP work will determine that. || no ||
