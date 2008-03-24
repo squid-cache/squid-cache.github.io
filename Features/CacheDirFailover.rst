@@ -4,19 +4,18 @@
 
 ## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
 
-= Feature: Cache Directory Failvers =
+= Feature: Cache Directory Error Handling =
 
- * '''Goal''': To add handling of recoverable cache store directory errors
+ * '''Goal''': Better handling of various cache store directory errors
 
  * '''Status''': Not Started.
-
  * '''ETA''': unknown
-
  * '''Version''': 3.1?, 3.2?
-
  * '''Developer''': none yet
 
 == Details ==
+
+This Feature is really a set of several features. If you decide to implement a subset, please create separate Feature page(s).
 
 === Better handling of cache_dir failures ===
 ''Requested by Chris Woodfield''
