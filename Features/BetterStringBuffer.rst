@@ -15,7 +15,7 @@ Improve the usage of memory-pooled strings and the string API. The code is prese
 
 Plans for the string API are intended to allow improved access at all current usage of strings (ESI, ICAP, others?) and allow for improved and safer access to larger buffers (HTTP parser, URI Parser, etc).
 
-  {i} Please clarify your goal. What "usage" aspects are you trying to improve? APIs are rarely the goal, they are usually the means to archive some goal(s). It is not clear what "improved access" means.
+  {i} Please clarify your goal. What "usage" aspects are you trying to improve? APIs are rarely the goal, they are usually the means to achieve some goal(s). It is not clear what "improved access" means.
 
 
 == Plan ==
