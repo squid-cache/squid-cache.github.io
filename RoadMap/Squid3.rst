@@ -55,7 +55,6 @@ New features may be requested, suggested, or added until March 31, 2008. After t
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
  * [:Features/IPv6]
  * [:Features/SslBump]
- * [:Features/ConfigIncludes]
  * [:Features/NativeAsyncCalls]
  * [:Features/RemoveNullStore]
 
