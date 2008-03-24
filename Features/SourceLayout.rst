@@ -6,7 +6,7 @@
 
  * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean.
  * '''Status''': In progress
- * '''ETA''': 2008/06/15
+ * '''ETA''': June 2008
  * '''Version''': 3.2?
  * '''Developer''': TBD
  * '''More''': [http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html email07121]
