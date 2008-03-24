@@ -4,7 +4,7 @@
 
 = Feature: Helper Pause State =
 
- * '''Goal''': Add a '''BUSY'''/'''PAUSE''' return state to helpers. So squid can failover to another helper without delays.
+ * '''Goal''': Skip busy helpers without delays.
 
  * '''Status''': Not Started.
 
