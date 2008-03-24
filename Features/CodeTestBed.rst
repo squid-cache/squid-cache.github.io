@@ -2,9 +2,9 @@
 #format wiki
 #language en
 
-= Feature: Testing Platform =
+= Feature: Source Code Testing =
 
- * '''Goal''': To provide a unified Testing environment for Squid-3
+ * '''Goal''': To provide a comprehensive whitebox code testing environment for Squid-3
 
  * '''Status''': First Steps
 
@@ -46,9 +46,9 @@ This builds on the dependency tree automation, to ensure that the functionality 
 
  * a set of guidelines for all future alterations to the squid code. ''' To be finalised'''
 
-=== Behavior Testing  ===
+=== Other Testing  ===
 
-Testing of squid run-time behavior still has to be worked out. A selection of tools have been suggested, and some machinery is being assembled. But as yet there is no
+Testing of squid run-time behavior still has to be worked out. A selection of blackbox testing tools have been suggested, and some machinery is being assembled. That work will be covered by a separate Feature page soon.
 
 ----
 CategoryFeature
