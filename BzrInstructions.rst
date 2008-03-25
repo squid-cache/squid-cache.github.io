@@ -224,6 +224,7 @@ For more information:
 {{{
 bzr help revisionspec
 }}}
+
 = TODO =
 == Convert scripts ==
 This is done, needs the result committed.
@@ -234,13 +235,21 @@ This is done, needs the result committed.
   . Patch sent to list
 hno: These will be dealt with when we switch over.
 
-== Set cut over date ==
- * Tuesday, 04 March 2008.
-== Run new conversion ==
- * Run a conversion of the master repository at that date
+== Helper scripts ==
+
+While bzr provides simple operation access. so did CVS in most cases. The problem is, mistakes are easier too. We need to provide some recipes as easy to use scripts.
+
+ * testing a branch before submission
+ * cleaning up a branch or patch for auditing
+ * submitting a patch for consideration
+ * all three of the above in sequence with problem handling.
+
+ * merging a patch from TRUNK down to a STABLE branch
+ * merging a child branch up to its parent and handling conflicts
+
 == Migrate existing branches ? ==
  * Migrate in progress development branches
-hno: I wote no on this. It's up to respective sub-project to merge over if they like.
+hno: I vote no on this. It's up to respective sub-project to merge over if they like.
 
 = Possible future things =
 {{{
@@ -248,7 +257,7 @@ hno: I wote no on this. It's up to respective sub-project to merge over if they 
 > keeping the CVS structure of things would be nice in order to continue
 > serving reasonable anoncvs read-only access. Not a requirement however.
 }}}
-robert: I'd *prefer* to set an expectation about a switchover time and switch & disable the CVS mirrors; because the higher fidelity of a VCS that doesrenames etc makes correct mirroring into CVS really annoying.
+robert: I'd *prefer* to set an expectation about a switchover time and switch & disable the CVS mirrors; because the higher fidelity of a VCS that does renames etc makes correct mirroring into CVS really annoying.
 
 hno: The existing sourceforge CVS mirror will continue as before. Just needs a small update in the script used to change the source tree from cvs to bzr. It's not an exact or correct mirror and has never been, just good enough for developments.
 
