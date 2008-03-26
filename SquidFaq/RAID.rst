@@ -9,22 +9,86 @@
 
 = Using RAID with Squid cache directories =
 
-In a word. Don't.
+The choice of disks is an important one since the performance of the Squid cache
+also depends on how fast the disk access is.
 
-== Why Not? ==
+RAID comes is many flavors and with different properties.
+For a technical description of RAID you are referred to
+[http://en.wikipedia.org/wiki/RAID Wikipedia].
+In a nutshell, RAID is used to protect data and guarantee availability of disk systems.
 
-RAID systems are designed for two purposes.
- * To protect against data loss.
- * To provide a large virtual drive space for use.
+Various options exist for the implementation of a disk system for a Squid cache.
+The most important parameters for making a choice for any disk system, are
+''price'', ''performance'' and ''availability''.
 
-=== Data Loss ===
+Availability is an important parameter for environments where a large number of people
+depend on the use of technology.
+RAID disks improve the availability of a Squid cache while sophisticated disk arrays also add significant performance.
+Alternatively, you may want to use more than one Squid cache and use VRRP to achieve high availability.
 
-The Squid cache content is NOT critical or important data. It can be recovered live from the Internet as needed in normal squid operations. It is often better to fetch new content from upstream than to preserve a large collection of stale data. When restarted squid must spend time re-indexing its cache and then possibly more time discarding old content before it can serve any client requests.
+In the following paragraphs the various options are described in more detail which are meant as a guideline for choosing the option for your Squid cache.  There are other RAID options which are not discussed here.  They are omitted since the author believes that they do not represent better options than the ones already given.
 
-This makes RAID-1,4,5, and 10 irrelevant in the context of squid cache directories. When their added level of disk access overhead is considered they actually degrade the performance of squid by up to 50% all by themselves to no benefit.
 
-=== Cheap Large Disks ===
+=== JBOD ===
 
-Squid can easily access more than one disk on its own and stores files in an efficient manner between all of its configured cache_dir's. With added controls available in Squid to tune file sizes and storage types on the individual base drives to suit their speed and physical limits.
+JBOD stands for "just a bunch of disks" and is the cheapest implementation in a server for a disk system.
+JBOD has no data protection and a Squid cache fails if a disk that holds one of the cache directories fails.
+Since JBOD does not guarantee disk availability, multiple Squid caches and VRRP are recommended if
+availability is an important parameter.
 
-This makes RAID-0,10, and linear irrelevant since no large drive is necessary and the efficient hashing method squid uses is so similar in result to the RAID-0 process.
+Use only one cache directory per disk.
+Using more disks improves performance.
+
+Summary:
+ * price: lowest
+ * performance: modest
+ * availability: modest, the Squid cache is unavailable in case of a single disk failure
+
+=== Software RAID1 or RAID5 ===
+
+RAID1 or RAID5 implemented by an Operating System adds availability at the expense
+of a small extra cost.
+Software RAID5 is generally slower than Software RAID1 and JBOD.
+
+If you have 4 disks, Software RAID1 is considered better than Software RAID5 since 
+you can make 2 logical disks with RAID1 and only 1 logical disk with RAID5
+and using more logical disks improves performance.
+
+Use only one cache directory per logical disk.
+Do not put multiple logical disks on the same set of physical disks.
+
+Summary:
+ * price: low
+ * performance: low-modest
+ * availability: good, the Squid cache is available in case of a single disk failure
+
+=== Hardware RAID1 or RAID5 ===
+
+Hardware RAID1 or RAID5 implemented with a host-based controller with 
+at least 64 MB battery-backed cache
+is a relatively cheap solution to have availability and performance.
+
+RAID1 is faster than and more expensive than RAID5.
+Use RAID1 or RAID5 depending on the performance requirements.
+
+Use only one cache directory per logical disk.
+Do not put multiple logical disks on the same set of physical disks.
+
+Summary:
+ * price: modest (An extra server with VRRP is a real alternative)
+ * performance: modest or better (depends on the RAID controller)
+ * availability: good, the Squid cache is available in case of a single disk failure
+
+=== Sophisticated Disk Arrays ===
+
+Sophisticated disk arrays from EMC, HP and others are well known
+to be relatively expensive and have an extremely high performance and availability.
+
+Use only one cache directory per logical disk.
+Configure the logical disk to use many spindles.
+Using more logical disks improves performance.
+
+Summary:
+ * price: highest
+ * performance: highest
+ * availability: highest, the squid cache is available in case of a single host-controller failure
