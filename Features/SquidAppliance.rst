@@ -19,7 +19,7 @@
  * '''More''': Quick mailing list discussion. http://www.squid-cache.org/mail-archive/squid-users/200803/0206.html
 
 
-== Details==
+== Details ==
 
 There area number of features and design ideas that I think, if implemented, would make this a very useful project.  This would be a way to get a system up and running with Squid extremely quickly with good performance, but without a lot of technical knowledge.  Tweaking manually would offer better performance.  People seeking the best possible performance or more advanced configurations (like reverse proxies) should be looking at building their setup manually.
 
