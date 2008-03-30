@@ -44,6 +44,7 @@ bzr whoami
 If you don't do this bzr guesses based on your account and compuer name.
 
 == Setup a mirror/development environment ==
+
 This can be done many ways. The following recipe gives you a local repository separate from the working trees, which can be used to develop many branches in an offline manner. It makes use of cbranch command from bzrtools to save a bit of time in this kind of setup.
 
 {{{
@@ -57,6 +58,14 @@ cat >> ~/.bazaar/locations.conf << EOF
 cbranch_target=/home/USER/squid-repo
 cbranch_target:policy = appendpath
 EOF
+}}}
+
+
+== Checkout an existing branch to work with on ==
+
+After your setup is done its time to checkout the first branch you are going to work on directly, or create a child branch for. In most cases this will be the '''trunk''' branch.
+
+{{{
 # get the Squid-3 trunk into this repository
 # If you have commit access to trunk:
 export TRUNKURL=bzr+ssh://www.squid-cache.org/bzr/squid3/trunk
@@ -64,14 +73,16 @@ export TRUNKURL=bzr+ssh://www.squid-cache.org/bzr/squid3/trunk
 export TRUNKURL=http://www.squid-cache.org/bzr/squid3/trunk
 cd ~/source/squid
 bzr cbranch --lightweight $TRUNKURL trunk
+#
 # bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
 cd trunk
 bzr bind $TRUNKURL
 }}}
-== Make a new branch to hack on ==
+
+== Make a new child branch to hack on ==
 First follow the instructions above to setup a development environment
 
-Now, replace SOURCE with the branch you want your new branch based on, and NAME with the name you want your new branch to have in the following:
+Now, in the below example, replace SOURCE with the branch you want your new branch based on, and NAME with the name you want your new branch to have in the following:
 
 {{{
 cd ~/source/squid
@@ -79,6 +90,7 @@ bzr cbranch --lightweight ~/squid-repo/trunk NAME
 cd NAME
 bzr merge --remember ~/squid-repo/trunk
 }}}
+
 == Share the branch with others: ==
 you want to share (read-only) the branch with others also do:
 
@@ -96,21 +108,22 @@ to update the shared copy in the future all you need to run is
 {{{
 bzr push
 }}}
-== bring a branch up to date with it's ancestor ==
-First update your copy of the ancestor
 
+== bring a branch up to date with it's ancestor ==
+First update your copy of the ancestor;
 {{{
-cd ~/source/squid/trunk (or ~/squid-repo/trunk if no local checkout of trunk)
+cd ~/source/squid/trunk
 bzr update
 }}}
-Then merge the changes into your branch:
 
+Then merge the changes into your child branch:
 {{{
 cd ../NAME
 bzr merge
 [fix conflicts if any]
 bzr commit -m "Merge from trunk"
 }}}
+
 Then continue hacking on your branch.
 
 If bzr merge complains on not having a source to merge from then use the following merge command once
@@ -132,6 +145,7 @@ If "checkout of branch" indicates your local repository instead of the main sour
 
 {{{
 bzr bind bzr+ssh://squid-cache.org/bzr/squid3/trunk/ }}}
+
 == Submit a patch for inclusion in the main tree or discussion ==
 Verify the contents of your branch
 
@@ -141,7 +155,7 @@ bzr diff -r submit: | less
 If it looks fine then generate a diff bundle and mail it to squid-dev
 
 {{{
-bzr send --mail-to squid-dev@squid-cache.org
+bzr send --mail-to=squid-dev@squid-cache.org
 }}}
 It's also possible to cherrypick what to send using the -r option. See {{{bzr help revisionspec}}} for details
 
@@ -149,6 +163,7 @@ It's also possible to cherrypick what to send using the -r option. See {{{bzr he
 Make sure you have a clean up to date trunk tree:
 
 {{{
+cd ~/squid/source/trunk
 bzr status
 bzr update
 }}}
@@ -160,12 +175,15 @@ bzr revert
 If you are merging a development branch:
 
 {{{
-bzr merge DEVELOPMENTBRANCH_URL (or bundle)
+cd ~/squid/source/trunk
+bzr merge ~/squid/source/childbranchFOO
 bzr commit -m "Merge feature FOO"
 }}}
+
 If you are applying a plain patch from somewhere:
 
 {{{
+cd ~/squid/source/trunk
 bzr patch PATCHFILE_OR_URL
 bzr commit
 # edit the commit message
@@ -173,10 +191,12 @@ bzr commit
 If you are back/forward porting a specific change:
 
 {{{
+cd ~/squid/source/trunk
 bzr merge -c REVNO OTHERBRANCH_URL
 bzr commit
 # edit the commit message
 }}}
+
 == cherry pick something back to an older release using CVS ==
 Generate a diff using bzr:
 
@@ -193,14 +213,21 @@ and apply that to cvs with patch:
 {{{
 patch -p1 patchfile
 }}}
-== merge another branch into yours ==
+
+== Merge another branch into yours ==
+
 You can merge in arbitrary patterns, though because bzr 1.0 defaults to 'merge3' for conflict resolution the best results occur if a hub-and-spoke system is used where each branch only merges from one other branch, except when changes from a 'child' branch are completed and being merged into that branch.
 
 {{{
-cd yourbranch
-bzr merge URL_OF_BRANCH_TO_MERGE
+cd ~/squid/source/DESTINATION
+bzr merge ~/squid/source/SOURCE_OF_FOO
+bzr commit -m "Merge feature FOO"
 }}}
+
+'''NP:''' The DESTINATION branch must be a local checkout of files to patch. The SOURCE branch may be the folder, bundle, or online URL of another branch.
+
 == diffing against arbitrary revisions/branches ==
+
 To diff against a different branch there are several options. The most common and most useful one is 'ancestor' and will give you the diff since the most recent merge of that other branch. If there is a third branch that has been merged into both your branch and the one you are diffing, it's changes will appear in the diff. There is work underway to provide diffs that handle any merge pattern more gracefully - see [http://bundlebuggy.aaronbentley.com/request/<47730F98.2030405@utoronto.ca> merge-preview] as the start of the work in bzr.
 
 {{{
