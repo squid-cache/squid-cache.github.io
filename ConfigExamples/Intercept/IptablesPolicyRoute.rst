@@ -16,6 +16,8 @@ This example outlines how to configure a Linux router to policy route traffic (w
 
 This is a work in progress and needs to be verified as working.
 
+You also need to configure the squid machine to handle the traffic it receives. See ["../LinuxInterceptREDIRECT"] and ["../FullyTransparentWithTPROXY"] for details on configuring the rest.
+
 == Usage ==
 
 There's no obvious policy routing in Linux - you use iptables to mark interesting traffic, iproute2 ip rules to choose an alternate routing table and a default route in the alternate routing table to policy route to the distribution.
