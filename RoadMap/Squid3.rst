@@ -74,6 +74,8 @@ Features under development:
  * [:Features/TproxyUpdate] [[Include(Features/TproxyUpdate,,,from="ETA.*:",to="$")]]
  * [:Features/LogDaemon] [[Include(Features/LogDaemon,,,from="ETA.*:",to="$")]]
  * [:Features/CodeTestBed] [[Include(Features/CodeTestBed,,,from="ETA.*:",to="$")]]
+ * Porting umask Support from 2.6
+ * Porting X-Forwarded-For Support from 2.6
 
 == Wish List ==
 
