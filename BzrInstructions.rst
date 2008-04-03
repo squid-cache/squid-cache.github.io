@@ -14,7 +14,7 @@ Things to install (as a user):
  * bzr
   . version 1.2 or later recommended for best performance, but 1.0 or later is sufficient.
  * bzr-email (as a package it may be a bit old, try:
-  . {{{bzr branch http://bazaar.launchpad.net/~bzr/bzr-email/trunk/ ~/.bazaar/plugins/email}}} Then do 'bzr help email' and setup any local machine configuration you need in bazaar.conf - such as mailer to use etc.
+  . {{{mkdir -p ~/.bazaar/plugins/ && bzr branch http://bazaar.launchpad.net/~bzr/bzr-email/trunk/ ~/.bazaar/plugins/email}}} Then do 'bzr help email' and setup any local machine configuration you need in bazaar.conf - such as mailer to use etc.
  * bzrtools
   . adds the cbranch plugin, making it easier to work with a local repository
 = Repository Location =
