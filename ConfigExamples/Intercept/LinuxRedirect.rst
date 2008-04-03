@@ -14,8 +14,9 @@
 
 To Intercept web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
 
+'''NOTE:''' If squid is not running on the gateway router See ../LinuxPolicyRouteWebTraffic for additional configuration needed.
 
-== iptables configuration == 
+== iptables configuration ==
 
 Replace SQUIDIP with the public IP(s) which squid may use for its outbound connections.
 Without this your setup may encounter problems with forwarding loops.
