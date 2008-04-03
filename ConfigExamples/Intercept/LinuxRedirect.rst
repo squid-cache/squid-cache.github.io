@@ -22,7 +22,7 @@ Replace SQUIDIP with the public IP(s) which squid may use for its outbound conne
 Without this your setup may encounter problems with forwarding loops.
 
 {{{
-iptables -t nat -A PREROUTING -s SQUIDIP --dport 80 -j ACCEPT
+iptables -t nat -A PREROUTING -s SQUIDIP -p tcp --dport 80 -j ACCEPT
 iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3129
 }}}
 
