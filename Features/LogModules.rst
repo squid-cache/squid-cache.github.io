@@ -29,4 +29,4 @@ AdrianChadd written some code to push logfile writing into an external process, 
 The code has the cute side-effect of allowing people to finally write plugins to easily throw squid logs into an external program - eg mysql logging, or something to log over TCP to a central logging server, etc.
 
 ----
-CategoryFeature | CategoryWish
+CategoryFeature
