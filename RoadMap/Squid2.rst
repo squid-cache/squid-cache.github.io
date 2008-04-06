@@ -44,7 +44,8 @@ With funding and available manpower, the bulk of these changes could be complete
 
 The planned changes will include:
 
- * IPv6
+ * Client-side only IPv6 (ie, IPv6 clients connecting to Squid) - forwarding to IPv4 upstreams
+  * Specifically for accelerator setups (ie, gatewaying v6 clients to existing v4 setups) but this allows the initial IPv6 code to take shape without requiring the extensive support in HTTP and FTP forwarding that would be required for a full-blown IPv6 implementation.
  * Config include support '''(Complete)'''
  * Restructure the data paths:
   * Store -> Client buffer referencing '''(Complete)'''
@@ -73,6 +74,7 @@ This release should focus on further modularisation and API changes to enable ne
  * Seperate out client-side server-side code from caching logic
   * Allow for "other" code to use HTTP clients and servers, similar to Squid-3 but made much more generic
  * Message-based data flow model? - something enabling both HTTP/1.1 and inline content transformation
+ * Investigate HTTP server-side IPv6 support and gatewaying
  * HTTP/1.1 support
  * Transfer/Content gzip encoding (if possible)
  * Memory and Disk storage changes
