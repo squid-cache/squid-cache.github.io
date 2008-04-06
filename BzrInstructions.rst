@@ -21,11 +21,15 @@ Things to install (as a user):
 For committers:
 
 {{{
-bzr+ssh://squid-cache.org/bzr/squid3/trunk}}}
+bzr+ssh://USERNAME@squid-cache.org/bzr/squid3/trunk
+}}}
+
 For anonymous access/mirroring/etc:
 
 {{{
-http://www.squid-cache.org/bzr/squid3/trunk}}}
+http://www.squid-cache.org/bzr/squid3/trunk
+}}}
+
 = Web view =
 web view: http://squid-cache.org/bzrview/squid3/BRANCH RSS feed: http://www.squid-cache.org/bzrview//squid3/BRANCH/atom
 
