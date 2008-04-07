@@ -57,3 +57,6 @@ Squid-2.6.STABLE, for tracking the current STABLE release.
 {{{
   cvs checkout -d squid-2.6 -r SQUID_2_6 squid
 }}}
+
+----
+CategoryObsoletePage
