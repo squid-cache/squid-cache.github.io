@@ -1,9 +1,14 @@
 #language en
 ## [[TableOfContents]]
 == The Bleeding Edge ==
-CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [http://www.squid-cache.org/cgi-bin/cvsweb.cgi CVSWeb].
 
-In order to use the CVS sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in SourceBootstrap.
+|| /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [http://www.squid-cache.org/cgi-bin/cvsweb.cgi CVSWeb].||
+
+The Squid project has now moved to Bazaar as its configuration management tool (see [:Squid3VCS]).
+
+To interactively browse the repository you can use [http://www.squid-cache.org/bzrview/ BzrView], the development trunk is at http://www.squid-cache.org/bzrview/squid3/trunk/changes.
+
+|| {i} || In order to use the CVS sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in SourceBootstrap.||
 
 == Developer Projects ==
 To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
@@ -27,7 +32,25 @@ Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written
 
 If you are looking to test the latest release of Squid you will need to grab yourself a copy of the sources from CVS (CvsInstructions) or one of the daily snapshot tarballs.
 
-To test a specific project branch you will need to either pull the daily snapshot and apply the branch patch available at http://devel.squid-cache.org/projects.html or pull the branch code directly from CVS.
+To test a specific project branch you will need to either pull the daily snapshot and apply the branch patch available at http://devel.squid-cache.org/projects.html or pull the branch code directly from bzr.
+
+=== Getting the sources via rsync ===
+As a more lightweight alternative you can use rsync; the latest sources are available at address {{{rsync://squid-cache.org/source/<version>}}}
+To use this feature you may use
+{{{
+$ rsync rsync://squid-cache.org/source
+(sample output)
+drwxr-xr-x         512 2008/04/06 17:28:57 .
+drwxr-xr-x        1024 2008/04/06 17:22:10 squid-2.6
+drwxr-xr-x        1024 2008/04/06 17:22:20 squid-2.7
+drwxr-xr-x        1024 2008/04/06 17:21:55 squid-2
+drwxr-xr-x        1024 2008/04/06 17:22:58 squid-3.0
+drwxr-xr-x        1024 2008/04/06 17:56:42 squid-3
+}}}
+After you've selected the version you wish to download you can:
+{{{
+rsync -avz rsync://squid-cache.org/source/<version> .
+}}}
 
 == Project organization ==
 ReleaseProcess describes the process and criteria used by the Squid Developers when making new Squid releases.
