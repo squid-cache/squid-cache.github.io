@@ -59,4 +59,4 @@ Squid-2.6.STABLE, for tracking the current STABLE release.
 }}}
 
 ----
-CategoryObsoletePage
+CategoryObsolete
