@@ -19,7 +19,7 @@ The various directives are evaluated in this order:
     if it matches as ''allow'', go to origin
  1. determine if a request is hierarchic
     if it is, check whether siblings or parents have the object via cache digests or ICP. In case of hit, ask the fastest among those hiting for the object
- 1. never_direct
+ 1. {{{never_direct}}}
     if it matches as ''allow'', go to parent.
  1. go to origin
 
