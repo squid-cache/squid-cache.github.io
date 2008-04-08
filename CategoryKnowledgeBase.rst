@@ -18,6 +18,6 @@ To create a new knowledge base article, specify its title: [[NewPage(KnowledgeBa
 
 == Pages in category ==
 
-[[FullSearchCached(KnowledgeBase -title:CategoryKnowledgeBase -title:FrontPage)]]
+[[FullSearch(KnowledgeBase -title:CategoryKnowledgeBase -title:FrontPage)]]
 ----
 CategoryCategory
