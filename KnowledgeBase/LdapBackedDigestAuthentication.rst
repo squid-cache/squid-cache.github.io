@@ -1,3 +1,4 @@
+## page was renamed from KnowledgeBase/Using the digest LDAP authetication helper
 ##master-page:KnowledgeBaseTemplate
 ##Page-Creation-Date:[[Date(2007-08-14T21:51:10Z)]]
 ##Page-Original-Author:EdmundoValle
