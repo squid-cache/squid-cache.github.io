@@ -44,6 +44,11 @@ It should be noted that your redirect should be executable.
 
 I will be placing the redirect in my squid configuration directory (/etc/squid), this is not a requirement, but its easier to find when you want to go back after a few months and make a few changes.
 
+Don't forget to add the redirect program to your squid configuration.
+{{{
+redirect_program /etc/squid/redirect.php
+}}}
+
 == PHP Redirect (Simple) ==
 
 {{{
