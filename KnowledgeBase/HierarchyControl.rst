@@ -16,7 +16,7 @@ The various directives are evaluated in this order:
  1. {{{always_direct}}}
     if it matches as ''allow'', go to origin
  1. {{{never_direct}}}
-    if it matches as ''allow'', go to parent.
+    if it matches as ''allow'', go to a parent instead of origin in the cases below
  1. {{{hierarchy_stoplist}}}
     if it matches as ''allow'', go to origin
  1. determine if a request is hierarchic
