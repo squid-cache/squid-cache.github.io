@@ -51,6 +51,10 @@ while (<>) {
 }
 }}}
 
+=== Can I use something other than perl ? ===
+
+Almost any external script can be used to perform a redirect. [http://wiki.squid-cache.org/ConfigExamples/php_redirects Here] are instructions for a complex redirect using php.
+
 == Can I use the redirector to return HTTP redirect messages? ==
 
 Normally, the ''redirector'' feature is used to rewrite requested URLs.
