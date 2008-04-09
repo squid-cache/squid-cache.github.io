@@ -18,7 +18,7 @@ A friend helped me capture the output from the squid proxy to a file so that I c
 
 The information here could also be used to author a redirect in some other language.
 
-== What information is sent to our program? ==
+== What information is sent from squid? ==
 
 Squid sends the following information (space delimited) to what ever
 redirect program you may want to use:
