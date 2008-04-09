@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Feature: Embedded content adaptation modules =
+= Feature: Embedded content adaptation plugins (eCAP) =
 
  * '''Goal''':  Improve Squid3 content adaptation performance by 20+%, remove the need for an ICAP server
  * '''Version''': Squid 3.1
