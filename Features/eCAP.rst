@@ -6,17 +6,17 @@
 
  * '''Goal''':  Improve Squid3 content adaptation performance by 20+%, remove the need for an ICAP server
  * '''Version''': Squid 3.1
- * '''Status''': In progress
- * '''ETA''': March 31, 2008
+ * '''Status''': In progress; part1 submitted for Squid HEAD inclusion
+ * '''ETA''': May 31, 2008
  * '''Developer''': AlexRousskov
  * '''More''': [http://wiki.squid-cache.org/SquidFaq/ContentAdaptation#head-b3e83ccdb647537404a70d9c17c87463524a470b context], [http://devel.squid-cache.org/projects.html#eCAP code]
 
 
 == API sketch ==
 
-The following is a very rough sketch of the proposed adaptation module API. The code was taken from the Traffic Spicer module API that is known to work in an ICAP server context. We will need to adjust this to better match the proxy context.
+The following is a very rough and outdated sketch of the proposed adaptation module API. The code was taken from the Traffic Spicer module API that is known to work in an ICAP server context. We will need to adjust this to better match the proxy context.
 
-Each module would need to link with a Squid-provided API library. Upon loading, the module would create an object, which class was derived from the following !ContentAdapter interface:
+Each module would need to link with an eCAP library. Upon loading, the module would create an object, which class was derived from the following !ContentAdapter interface:
 
 {{{
 
@@ -64,7 +64,7 @@ class ContentAdapter {
 
 == Compatibility with other proxies and ICAP servers ==
 
-An ideal API would let other proxies and ICAP servers to implement the same interface and support the same modules without source code modifications. The module would just need to be recompiled against another proxy or server library, and even that may be optional if the module code does not use non-eCAM features of its host.
+An ideal API would let other proxies and ICAP servers to implement the same interface and support the same modules without source code modifications. The module would just need to be recompiled against another proxy or server library, and even that may be optional if the module code does not use non-eCAP features of its host.
 
 We may never reach that ideal because HTTP message representation differs from host to host (and we do not want to re-parse messages), but we may be able to come close.
 
