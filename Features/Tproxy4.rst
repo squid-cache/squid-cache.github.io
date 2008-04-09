@@ -14,7 +14,7 @@
 
  * '''Version''': 2.6, 3.0, 3.1
 
- * '''Developer''': Laszlo Attilla Toth (of Balabit)
+ * '''Developer''': Laszlo Attilla Toth (of Balabit), AmosJeffries, AdrianChadd
 
  * '''More''': http://www.balabit.com/downloads/files/tproxy/
 
