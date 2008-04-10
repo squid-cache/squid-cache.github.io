@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/php redirects
 ##master-page:CategoryTemplate
 #format wiki
 #language en
