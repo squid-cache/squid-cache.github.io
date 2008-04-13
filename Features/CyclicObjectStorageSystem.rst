@@ -56,7 +56,6 @@ where:
 
 The cache_swap_log option should be set to a directory that squid has write access to.  This is used to store all the swap.state files for all cache_dirs, and needs to be set when using COSS because COSS does not have a normal filesystem that it can store this information on.
 
-
 == Are there any other configuration options for COSS? ==
 
 COSS partitions have a number of different configuration options available.  These options are:
@@ -117,6 +116,10 @@ Each cache_dir will reserve the last 2 maxfullbufs for cache hits (ie they will 
 
 '''The default is to leave the maxfullbufs option as unlimited (ie we can always accept new objects).'''
 
+
+== Store index rebuilding ==
+
+The current (Squid 2.6) COSS implementation needs to scan the whole data-file to rebuild the object index, which happens every time squid is reconfigured or rotates the logfiles. This implies a spike in CPU load when those activities are performed.
 
 == Examples ==
 {{{
