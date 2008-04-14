@@ -27,6 +27,7 @@ This section is used to edit and finalize the grouping of source files. The '''G
 || ''icap/'' || ICAP support || ICAP/ICAP* ||
 || ''ecap/'' || eCAP support || - ||
 || ''esi/'' || ESI support || ESI* ||
+|| ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 ...
 
 == Problems ==
