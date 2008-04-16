@@ -146,6 +146,18 @@ Squid uses some [http://www.squid-cache.org/Doc/FAQ/squid-credits.txt code devel
 Squid is [http://www.gnu.org/philosophy/free-sw.html Free Software], licensed under the terms of the [http://www.gnu.org/copyleft/gpl.html GNU General Public License].
 
 
+== How to add a new Squid feature, enhance, of fix something? ==
+
+Adding new features, enhancing, or fixing Squid behavior usually requires source code modifications. Several options are generally available to those who need Squid development:
+
+ * '''Wait''' for somebody to do it: Waiting is free but may take forever. If you want to use this option, make sure you file a [http://bugs.squid-cache.org/ bugzilla report] describing the bug or enhancement so that others know what you need. Posting feature requests to a [http://www.squid-cache.org/Support/mailing-lists.dyn mailing list] is often useful because it can generate interest and discussion, but without a bugzilla record, your request may be overlooked or forgotten.
+
+ * '''Do''' it yourself: Enhancing Squid and working with other developers can be a very rewarding experience. However, this option requires understanding and modifying the source code, which is getting better, but it is still very complex, often ugly, and lacking documentation. These obstacles affect the required development effort. In most cases, you would want your changes to be incorporated into the official Squid sources for long-term support. To get the code committed, one needs to cooperate with other developers. It is a good idea to describe the changes you are going to work on before diving into development. Development-related discussions happen on squid-dev [http://www.squid-cache.org/Support/mailing-lists.dyn mailing list]. Documenting upcoming changes as a [http://bugs.squid-cache.org/ bugzilla entry] or a wiki [wiki:CategoryFeature feature page] helps attract contributors or sponsors.
+
+ * '''Pay''' somebody to do it: Many [http://www.squid-cache.org/Support/services.dyn companies] offer commercial Squid development services. When selecting the developer, discuss how they plan to integrate the changes with the official Squid sources and consider the company past contributions to the Squid project.
+
+The best development option depends on many factors. Here is some project dynamics information that may help you pick the right one: Most Squid features and maintenance is done by individual contributors, working alone or in small development/consulting shops. In the early years (1990-2000), these developers were able to work on Squid using their free time, research grants, or similarly broad-scope financial support. Requested features were often added on-demand because many folks could work on them. Most recent (2006-2008) contributions, especially large features, are the result of paid development contracts, reflecting both the maturity of software and the lack of "free" time among active Squid developers.
+
 
 == Can I pay someone for Squid support? ==
 
@@ -209,6 +221,7 @@ Gerard Eviston,
 Rob Poe,
 FrancescoChemolli,
 ReubenFarrelly
+AlexRousskov
 
 
 == About This Document ==
