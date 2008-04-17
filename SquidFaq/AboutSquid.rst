@@ -163,7 +163,7 @@ The best development option depends on many factors. Here is some project dynami
 
 
 Yes.  Please see [http://www.squid-cache.org/Support/services.dyn Squid Support Services].
-You can also [http://www.squid-cache.org/donate.dyn donate] money or equipment to members of the squid core team.
+You can also [http://www.squid-cache.org/Support/services.dyn donate] money or equipment to members of the squid core team.
 
 == Squid FAQ contributors ==
 
