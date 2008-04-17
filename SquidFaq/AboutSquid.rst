@@ -145,7 +145,7 @@ Squid uses some [http://www.squid-cache.org/Doc/FAQ/squid-credits.txt code devel
 
 Squid is [http://www.gnu.org/philosophy/free-sw.html Free Software], licensed under the terms of the [http://www.gnu.org/copyleft/gpl.html GNU General Public License].
 
-
+[[Anchor(HowToAddOrFix)]]
 == How to add a new Squid feature, enhance, of fix something? ==
 
 Adding new features, enhancing, or fixing Squid behavior usually requires source code modifications. Several options are generally available to those who need Squid development:
