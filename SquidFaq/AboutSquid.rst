@@ -162,8 +162,8 @@ The best development option depends on many factors. Here is some project dynami
 == Can I pay someone for Squid support? ==
 
 
-Yes.  Please see [http://www.squid-cache.org/Support/services.html Squid Support Services].
-You can also [http://www.squid-cache.org/donate.html donate] money or equipment to members of the squid core team.
+Yes.  Please see [http://www.squid-cache.org/Support/services.dyn Squid Support Services].
+You can also [http://www.squid-cache.org/donate.dyn donate] money or equipment to members of the squid core team.
 
 == Squid FAQ contributors ==
 
