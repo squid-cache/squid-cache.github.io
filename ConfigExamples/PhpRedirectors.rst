@@ -188,7 +188,7 @@ while ( $input = fgets(STDIN) ) {
 }
 }}}
 
-This is rather interesting, it redirects some flash gaming sites and two major social sites, but only during work hours. It also redirects limewire, and forces that moron who uses yahoo to use google for all his stock quotes!
+This is rather interesting, it redirects some flash gaming sites and two major social sites, but only during work hours. It also redirects limewire, and forces a machine to use google instead of yahoo for all their stock quotes!
 
 ----
 CategoryConfigExample
