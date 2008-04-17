@@ -8,7 +8,7 @@
 
  * '''Goal''': Balabit only supports TProxy version 4.1 but in the squid "--enable-tproxy" requires version 2 which is obsolete for a while.
 
- * '''Status''': experimental patches
+ * '''Status''': Basics Integrated to 3.1. Experimental patches on others.
 
  * '''ETA''': 30 April, 2008
 
