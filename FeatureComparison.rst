@@ -40,3 +40,8 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 || ICAP           || -   || -   || -   || X   || Y   || 2.6: Patch available has major bugs ||
 || IPv6           || -   || Ps13|| -   || -   || Y   ||
 || Wais           || Y   || Y   || Y   || Y   || Y   ||
+|||||||||||| '''Storage Filesystems''' ||
+|| AUFS           || -   || Y   || Y   || Y   || Y   ||
+|| DiskD          || Y   || Y   || Y   || Y   || Y   ||
+|| UFS            || Y   || Y   || Y   || Y   || Y   ||
+|| COSS           || -   || Y   || Y   || X   || X   ||
