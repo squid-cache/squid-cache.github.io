@@ -2,6 +2,7 @@
 ## [[TableOfContents]]
 == The Bleeding Edge ==
 
+ '''Squid-3:'''
 The Squid project has now moved to Bazaar as its configuration management tool (see [:Squid3VCS]).
 
 To interactively browse the repository you can use [http://www.squid-cache.org/bzrview/ BzrView], the development trunk is at http://www.squid-cache.org/bzrview/squid3/trunk/changes.
