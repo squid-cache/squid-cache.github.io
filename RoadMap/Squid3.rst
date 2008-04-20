@@ -93,8 +93,8 @@ More ideas are available [wiki:Features/Other elsewhere].
 ##
 ##= Wish list =
 
-= Future versions =
+= Squid 3.2 and future versions =
 
 The set of features going beyond Squid 3.1 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome. Here is a Wish List of features for Squid versions beyond 3.1:
 
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish -regex:Version...:.*3.0 -regex:Version...:.*3.1)]]
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Version...:.*3.0 -regex:Version...:.*3.1)]]
