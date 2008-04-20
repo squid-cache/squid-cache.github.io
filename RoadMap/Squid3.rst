@@ -3,7 +3,7 @@
 #language en
 
 ### XXX: how to make a title without affecting ToC?
-~+Squid 3 Roadmap+~
+~+ '''Squid 3 Roadmap''' +~
 
 [[TableOfContents]]
 
