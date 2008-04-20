@@ -23,4 +23,4 @@ We need thin and clean HTTP server code that makes sense to developers. Clear in
 Affected client_side* classes may be renamed to reflect the fact that they implement an HTTP server. This code communicates with Squid clients and, hence, has been called ''client side''.
 
 ----
-CategoryFeature
+CategoryFeature CategoryWish
