@@ -48,15 +48,12 @@ http://www.squid-cache.org/Versions/v3/3.0/
 
 = Squid 3.1 =
 
-New features may be requested, suggested, or added until March 31, 2008. After that date, the Squid feature set should be frozen. Available developer time will then determine the release timeline.
+The deadline for new feature requests to 3.1 is past. Available developer time will now determine the release timeline. Feature requests are now open for Squid 3.2
 
 == Done ==
 
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
- * [:Features/IPv6]
- * [:Features/SslBump]
- * [:Features/NativeAsyncCalls]
- * [:Features/RemoveNullStore]
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:Status...: completed -regex:ETA...:)]]
 
 Development snapshots of squid 3.1 source code are already available with these features at
 http://www.squid-cache.org/Versions/v3/HEAD/
@@ -73,28 +70,39 @@ Features under development:
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
  * [:Features/TproxyUpdate] [[Include(Features/TproxyUpdate,,,from="ETA.*:",to="$")]]
  * [:Features/LogDaemon] [[Include(Features/LogDaemon,,,from="ETA.*:",to="$")]]
- * [:Features/CodeTestBed] [[Include(Features/CodeTestBed,,,from="ETA.*:",to="$")]]
  * Porting umask Support from 2.6 (patch available: http://www.squid-cache.org/bugs/show_bug.cgi?id=2254)
  * Porting X-Forwarded-For Support from 2.6
 
+Others being developed for 3.1 but with unknown ETA. These may be bumped to 3.2 if not completed by initial 3.1 release:
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:ETA...: unknown)]]
+
+= Squid 3.2 =
+
+The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline.
+New features may be requested, suggested, or added up to an undecided date. After that date, the Squid feature set should be frozen. Available developer time will then determine the release timeline.
+
+== TODO ==
+
+## The category search matches this page as well, for unknown reason
+## [[FullSearchCached(CategoryFeature "Version''': Squid 3.1" -CategoryWish)]]
+##
+##  * [:Features/FEATURE_ID_HERE] [[Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")]]
+##
+## Features under development:
+## * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
+## * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
+##
+Others non-Wishlist but with unknown ETA. These may be bumped to 3.3 if not completed by initial 3.2 release:
+ [[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)]]
+
 == Wish List ==
 
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3.1)]]
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3.2)]]
 
 More ideas are available [wiki:Features/Other elsewhere].
 
+= Future versions =
 
+The set of features going beyond Squid 3.1 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome. Here is a Wish List of features for Squid versions beyond 3.2:
 
-## = Squid 3.2 =
-##
-## The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline.
-##To minimize noise and the number of half-baked abandoned features, two feature sets are established: TODO
-##List and Wish List.
-##
-##= Wish list =
-
-= Squid 3.2 and future versions =
-
-The set of features going beyond Squid 3.1 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome. Here is a Wish List of features for Squid versions beyond 3.1:
-
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Version...:.*3.0 -regex:Version...:.*3.1)]]
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Version...:.*3.0 -regex:Version...:.*3.1 -regex:Version...:.*3.2)]]
