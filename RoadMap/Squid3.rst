@@ -70,7 +70,7 @@ Features under development:
  * Porting umask Support from 2.6 (patch available: http://www.squid-cache.org/bugs/show_bug.cgi?id=2254)
  * Porting X-Forwarded-For Support from 2.6
 
-Others being developed for 3.1 but with unknown ETA. These may be bumped to 3.2 if not completed by initial 3.1 release:
+Others being developed for 3.1 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.2 if not completed by initial 3.1 release:
 [[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:ETA...: unknown)]]
 
 == Wish List ==
