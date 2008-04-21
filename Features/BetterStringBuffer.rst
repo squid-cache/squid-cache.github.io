@@ -7,7 +7,7 @@
  * '''Goal''':  Improve the usage of short strings to use best-practice, efficient, pointer-safe APIs.
  * '''Status''': On hold
  * '''ETA''': unknown
- * '''Version''': Squid 3.1
+ * '''Version''': Squid 3
  * '''Developer''': AmosJeffries
 
 == Details ==
