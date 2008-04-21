@@ -21,4 +21,4 @@
 Zero Penalty hit created a patch to set QoS markers on outgoing traffic. For some reason it has not yet made it into the mainstream code.
 
 ----
-CategoryFeature CategoryWish
+CategoryFeature
