@@ -10,7 +10,7 @@
 
  * '''Status''': Not Started.
  * '''ETA''': unknown
- * '''Version''': 3.1?, 3.2?
+ * '''Version''': 3
  * '''Developer''': none yet
 
 == Details ==
