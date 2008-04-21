@@ -12,9 +12,9 @@ The following is an ''auto-generated'' list of the features that we wish were be
 
 Less documented ideas and wishes are available [wiki:Features/Other elsewhere].
 
-## The following is an ''auto-generated'' list of the features that have been completed and added to squid:
-##
-## [[FullSearch(title:regex:Features/.* -title:regex:.*(Template|Other) regex:Status[^A-z]+completed)]]
+The following is an ''auto-generated'' list of the features that have been completed and added to squid:
+
+[[FullSearch(title:regex:Features/.* -title:regex:.*(Template|Other) regex:Status[^A-z]+completed)]]
 
 The definition of a feature is discussed [wiki:CategoryFeature elsewhere].
 
