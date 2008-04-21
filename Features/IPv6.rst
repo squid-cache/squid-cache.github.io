@@ -6,8 +6,7 @@
 
  * '''Goal''': Support IPv6 clients, servers, peers, and resolvers.
  * '''Status''': completed
- * '''ETA''': Done.
- * '''Version''': Squid 3.1
+ * '''Version''': 3.1
  * '''Developer''': AmosJeffries
  * '''More''': http://devel.squid-cache.org/squid3-ipv6/
 
