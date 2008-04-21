@@ -60,9 +60,6 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 
 == TODO ==
 
-## The category search matches this page as well, for unknown reason
-## [[FullSearchCached(CategoryFeature "Version''': Squid 3.1" -CategoryWish)]]
-
 ##  * [:Features/FEATURE_ID_HERE] [[Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")]]
 
 Features under development:
@@ -76,6 +73,13 @@ Features under development:
 Others being developed for 3.1 but with unknown ETA. These may be bumped to 3.2 if not completed by initial 3.1 release:
 [[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:ETA...: unknown)]]
 
+== Wish List ==
+
+There should be no v3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in for Squid v3.1 but still do not have an ETA or other attributes required to be on the TODO list.
+
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 regex:Version...:.*3\.1)]]
+
+
 = Squid 3.2 =
 
 The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline.
@@ -83,26 +87,22 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 
 == TODO ==
 
-## The category search matches this page as well, for unknown reason
-## [[FullSearchCached(CategoryFeature "Version''': Squid 3.1" -CategoryWish)]]
-##
-##  * [:Features/FEATURE_ID_HERE] [[Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")]]
-##
-## Features under development:
-## * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
-## * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
-##
-Others non-Wishlist but with unknown ETA. These may be bumped to 3.3 if not completed by initial 3.2 release:
- [[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)]]
+[[FullSearchCached(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3\.2)]]
+
+## Others non-Wishlist but with unknown ETA. These may be bumped to 3.3 if not completed by initial 3.2 release:
+## [[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)]]
 
 == Wish List ==
 
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3.2)]]
+## Squid3 wishes other than those for v3.0 and v3.1
+## Adjust and move to the next section once v3.2 feature set is frozen.
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 -regex:Version...:.*3\.[01])]]
 
 More ideas are available [wiki:Features/Other elsewhere].
 
 = Future versions =
 
-The set of features going beyond Squid 3.2 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome. Here is a Wish List of features for Squid versions beyond 3.2:
+The set of features going beyond Squid 3.2 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome.
 
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Version...:.*3.0 -regex:Version...:.*3.1 -regex:Version...:.*3.2)]]
+## Squid3 wishes without a specific minor version.
+## [[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3[^\.])]]
