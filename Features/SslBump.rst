@@ -5,8 +5,8 @@
 = Feature: Squid-in-the-middle SSL Bump =
 
  * '''Goal''': Enable ICAP inspection of SSL traffic.
- * '''Status''': completed; committed to Squid3 HEAD
- * '''Version''': Squid 3.1
+ * '''Status''': completed
+ * '''Version''': 3.1
  * '''Developer''': AlexRousskov
 
 Squid-in-the-middle decryption and encryption of straight CONNECT and transparently redirected SSL traffic, using configurable client- and server-side certificates. While decrypted, the traffic can be inspected using ICAP.
