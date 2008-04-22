@@ -7,7 +7,7 @@
 = Feature: Faster HTTP parser =
 
  * '''Goal''':  Improve non-caching Squid3 performance by 20+%
- * '''Version''': 3.1, 3.2
+ * '''Version''': 3.2 or later
  * '''Status''': not started
  * '''ETA''': unknown
  * '''Developer''': none yet.
