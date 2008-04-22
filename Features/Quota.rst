@@ -12,7 +12,7 @@
 
  * '''ETA''': ''unknown''
 
- * '''Version''': 3.1?
+ * '''Version''': Squid 3?
 
  * '''Developer''': 
 
