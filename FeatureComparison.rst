@@ -35,6 +35,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 || Gopher         || Y   || Y   || Y   || Y   || Y   ||
 || Whois          || Y   || Y   || Y   || Y   || Y   ||
 |||||||||||| '''Other Protocols''' ||
+|| HTCP           || Y   || Y   || Y   || Y   || Y   ||
 || ICP (v2)       || Y   || Y   || Y   || Y   || Y   ||
 || ICP (v3)       || -   || Y   || Y   || Y   || Y   ||
 || ICAP           || -   || -   || -   || X   || Y   || 2.6: Patch available has major bugs ||
