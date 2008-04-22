@@ -6,7 +6,7 @@
 
  * '''Goal''': To provide a comprehensive whitebox code testing environment for Squid-3
 
- * '''Status''': Stage 2
+ * '''Status''': Stage 1-2 completed (3.0 to 3.1 code) done, Stage 3 pending.
 
  * '''ETA''': unknown.
 
@@ -31,10 +31,10 @@ This testing involves a number of changes to both the codebase and current devel
  * other tests may yet be chosen for use.
 
 || '''Stage''' || '''Status''' * || '''Actions''' ||
-|| 1 || '''DONE''' || Automated dependency testing ||
-|| 1 || '''DONE''' || Automated build-testing of STABLE 3.0 releases ||
-|| 2 || || Daily automated test of HEAD/TRUNK ||
-|| 3 || || Test scheduling on multiple OS ||
+|| 1 || '''DONE''' || 3.0+ Automated build-testing of releases ||
+|| 2 || '''DONE''' || 3.1+ Automated dependency testing of code ||
+|| 3 || || Daily automated test of HEAD/TRUNK ||
+|| 4 || || Test scheduling on multiple OS ||
 
 * '''NP''': All stages of this system implementation may involve ongoing improvements. The status here is merely an indication that the stage actions have been implemented and begun to be used.
 
