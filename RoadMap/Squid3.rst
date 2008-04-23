@@ -67,6 +67,7 @@ Features under development:
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
  * [:Features/TproxyUpdate] [[Include(Features/TproxyUpdate,,,from="ETA.*:",to="$")]]
  * [:Features/LogDaemon] [[Include(Features/LogDaemon,,,from="ETA.*:",to="$")]]
+ * [:Features/QualityOfService] [[Include(Features/QualityOfService,,,from="ETA.*:",to="$")]]
  * Porting umask Support from 2.6 (patch available: http://www.squid-cache.org/bugs/show_bug.cgi?id=2254)
  * Porting X-Forwarded-For Support from 2.6
 
