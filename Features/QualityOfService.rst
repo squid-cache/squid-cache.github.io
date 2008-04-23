@@ -6,11 +6,11 @@
 
  * '''Goal''': Enable configuration of QoS priorities on Squid outbound traffic.
 
- * '''Status''': Started.
+ * '''Status''': Experimental Patch
 
- * '''ETA''': unknown
+ * '''ETA''': 30 April 2008
 
- * '''Version''': 3.1, 3.2
+ * '''Version''': 3.0, 3.1, 3.2
 
  * '''Developer''': Marin Stavrev
 
