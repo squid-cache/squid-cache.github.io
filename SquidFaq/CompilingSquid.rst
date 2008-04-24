@@ -228,6 +228,20 @@ The following patch also needs to be applied since the /var/logs/ directory for 
 Squid is developed on FreeBSD. The general build instructions above should be all you need.
 
 
+=== RedHat ===
+
+The following ./configure options install Squid into the RedHat structure properly:
+{{{
+  --prefix=/usr
+  --includedir=/usr/include
+  --datadir=/usr/share
+  --bindir=/usr/sbin
+  --libexecdir=/usr/lib/squid
+  --localstatedir=/var
+  --sysconfdir=/etc/squid
+}}}
+
+
 === MinGW (Windows) ===
 
 In order to compile squid using the MinGW environment, the packages MSYS, MinGW and msysDTK must be installed. Some additional libraries and tools must be downloaded separately:
