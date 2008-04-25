@@ -148,34 +148,30 @@ Some options which are used often include:
 
 === BSD/OS or BSDI ===
 
-Known Problem:
-
+{X} Known Problem:
 {{{
 cache_cf.c: In function `parseConfigFile':
 cache_cf.c:1353: yacc stack overflow before `token'
 ...
 }}}
 
-You may need to upgrade your gcc installation to a more recent version.
-Check your gcc version with
+You may need to upgrade your gcc installation to a more recent version. Check your gcc version with
 {{{
-gcc -v
+  gcc -v
 }}}
-
-If it is earlier than 2.7.2, you might consider upgrading.  Gcc 2.7.2 is very old and not widely supported.
-
+If it is earlier than 2.7.2, you might consider upgrading. Gcc 2.7.2 is very old and not widely supported.
 
 === Cygwin (Windows) ===
 
 In order to compile Squid, you need to have Cygwin fully installed.
 
-WCCP is not available on Windows so the following configure options are needed to disable them:
+ /i\ WCCP is not available on Windows so the following configure options are needed to disable them:
 {{{
   --disable-wccp
   --disable-wccpv2
 }}}
 
-Squid will by default, install into ''/usr/local/squid''. If you wish to install somewhere else, see the ''--prefix'' option for configure.
+|| {i} ||Squid will by default, install into ''/usr/local/squid''. If you wish to install somewhere else, see the ''--prefix'' option for configure.||
 
 Now, add a new Cygwin user - see the Cygwin user guide - and map it to SYSTEM, or create a new NT user, and a matching Cygwin user and they become the squid runas users.
 
@@ -190,8 +186,7 @@ Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. Y
 
 From 2.6 STABLE 14 Squid should compile easily on this platform.
 
-There is just one known problem. The Linux system layout differs markedly from the Squid defaults. The following ./configure options are needed to install Squid into the Linux structure properly:
-
+ /i\ There is just one known problem. The Linux system layout differs markedly from the Squid defaults. The following ./configure options are needed to install Squid into the Linux structure properly:
 {{{
   --prefix=/usr
   --localstatedir=/var
@@ -206,8 +201,7 @@ From Squid 3.0 the default user can also be set. The Debian package default is:
   --with-default-user=proxy
 }}}
 
-The following patch also needs to be applied since the /var/logs/ directory for logs has no configure option.
-
+{X} The following patch also needs to be applied since the /var/logs/ directory for logs has no configure option.
 {{{
 --- src/Makefile.am     2007-09-17 14:22:33.000000000 +1200
 +++ src/Makefile.am-new   2007-09-12 19:31:53.000000000 +1200
@@ -228,7 +222,7 @@ The following patch also needs to be applied since the /var/logs/ directory for 
 Squid is developed on FreeBSD. The general build instructions above should be all you need.
 
 
-=== RedHat ===
+=== RedHat Enterprise Linux ===
 
 The following ./configure options install Squid into the RedHat structure properly:
 {{{
@@ -240,6 +234,8 @@ The following ./configure options install Squid into the RedHat structure proper
   --localstatedir=/var
   --sysconfdir=/etc/squid
 }}}
+
+|| /!\ || SELinux on RHEL 5 does not give the proper context to the default SNMP port (3401) (as of selinux-policy-2.4.6-106.el5) .  The command "semanage port -a -t http_cache_port_t -p udp 3401" takes care of this problem (via http://tanso.net/selinux/squid/).||
 
 
 === MinGW (Windows) ===
