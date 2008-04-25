@@ -10,7 +10,7 @@
 
  * '''Status''': Done. Patches on 2.6.STABLE18.
 
- * '''ETA''': competed.
+ * '''ETA''': completed.
 
  * '''Version''': 3.1
 
