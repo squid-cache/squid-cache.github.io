@@ -182,7 +182,7 @@ After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should 
 Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. You may need to check permissions here.
 
 
-=== Debian ===
+=== Debian, Ubuntu ===
 
 From 2.6 STABLE 14 Squid should compile easily on this platform.
 
@@ -327,12 +327,6 @@ To fix this you either need to:
 
   * Add ''/usr/ccs/bin'' to your PATH.  This is where the ''ar'' command should be.  You need to install SUNWbtool if ''ar'' is not there.  Otherwise,
   * Install the '''binutils''' package from [ftp://ftp.gnu.org/gnu/binutils the GNU FTP site]. This package includes programs such as ''ar'', ''as'', and ''ld''.
-
-
-=== Ubuntu ===
-
-From 2.6 STABLE 14 Squid should compile easily on this platform.
-See the Debian build for details on the remaining known problem(s).
 
 
 === Other Platforms ===
