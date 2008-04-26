@@ -21,14 +21,12 @@ Once release timeline is agreed upon, developers must obey it or move their feat
 
 = Squid 3.0 =
 
-Now in stable cycle. The features have largely been set.
+Now in stable cycle. The features have largely been set and large code changes are reserved for later versions.
 Additions are limited to:
  * Security fixes
  * Stability fixes
  * small optimizations
  * easily ported features already available in 2.6.
-
-Large code changes are reserved for later versions.
 
 Basic new features in 3.0
 
