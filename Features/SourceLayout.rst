@@ -30,6 +30,8 @@ This section is used to edit and finalize the grouping of source files. The '''G
 || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 ...
 
+|| ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
+
 == Problems ==
 
 If you know the solution or can improve the proposed one, please write to squid-dev mailing list.
