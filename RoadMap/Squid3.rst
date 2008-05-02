@@ -41,6 +41,9 @@ From STABLE 2
  * [:Features/ConfigIncludes]
  * Port-name ACL
 
+From STABLE 6
+ * umask Support
+
 Packages of squid 3.0 source code are available at
 http://www.squid-cache.org/Versions/v3/3.0/
 
@@ -65,7 +68,6 @@ Features under development:
  * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
  * [:Features/SourceLayout] [[Include(Features/SourceLayout,,,from="ETA.*:",to="$")]]
  * [:Features/LogDaemon] [[Include(Features/LogDaemon,,,from="ETA.*:",to="$")]]
- * Porting umask Support from 2.6 (patch available: http://www.squid-cache.org/bugs/show_bug.cgi?id=2254)
  * Porting X-Forwarded-For Support from 2.6
 
 Others being developed for 3.1 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.2 if not completed by initial 3.1 release:
