@@ -47,7 +47,7 @@ I will be placing the redirect in my squid configuration directory (/etc/squid),
 
 Don't forget to add the redirect program to your squid configuration.
 {{{
-redirect_program /etc/squid/redirect.php
+url_rewrite_program /etc/squid/redirect.php
 }}}
 
 == PHP Redirect (Simple) ==
