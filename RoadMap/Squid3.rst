@@ -70,16 +70,6 @@ Features under development:
  * [:Features/LogDaemon] [[Include(Features/LogDaemon,,,from="ETA.*:",to="$")]]
  * Porting X-Forwarded-For Support from 2.6
 
-Others being developed for 3.1 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.2 if not completed by initial 3.1 release:
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:ETA...: unknown)]]
-
-== Wish List ==
-
-There should be no v3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in for Squid v3.1 but still do not have an ETA or other attributes required to be on the TODO list.
-
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 regex:Version...:.*3\.1)]]
-
-
 = Squid 3.2 =
 
 The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline.
@@ -87,10 +77,11 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 
 == TODO ==
 
-[[FullSearchCached(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3\.2)]]
+ * (None timelined yet).
+## * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
 
-## Others non-Wishlist but with unknown ETA. These may be bumped to 3.3 if not completed by initial 3.2 release:
-## [[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)]]
+Others being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)]]
 
 == Wish List ==
 
@@ -99,6 +90,16 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 [[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 -regex:Version...:.*3\.[01])]]
 
 More ideas are available [wiki:Features/Other elsewhere].
+
+## Some items got stuck in the wrong version or not marked properly with complete status.
+
+There should be no 3.0 to 3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
+
+(3.0)
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.0 -regex:Status...:.complete)]]
+(3.1)
+[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 regex:Version...:.*3\.1 -regex:Status...:.complete)]]
+
 
 = Future versions =
 
