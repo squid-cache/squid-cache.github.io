@@ -6,7 +6,7 @@
  * '''Goal''': Make use of informations available in DNS to locate the origin server for a given website. The needed information can be found in SRV records, where available.
  * '''Status''': In progress; a working redirector-based proof-of-concept is available. It can be improved upon, with the aim of mimicking Squid's internal processes.
  * '''ETA''': A few days for the POC. Work needed to get into Squid body is unknown.
- * '''Version''': POC can run on 2.5 an later, 3.0 and later. Target for integration might be 3.2 or later.
+ * '''Version''': Squid-3
  * '''Developer''': POC: FrancescoChemolli. Integration: unknown
  * '''More''':
 ## Details
