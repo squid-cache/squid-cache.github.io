@@ -25,13 +25,15 @@ http_port 80 accel defaultsite=your.main.website
 Next, you need to tell Squid where to find the real web server:
 
 {{{
-cache_peer ip.of.webserver parent 80 0 no-query originserver
+cache_peer ip.of.webserver parent 80 0 no-query originserver name=myAccel
 }}}
-And finally you need to set up access controls to allow access to your site
+And finally you need to set up access controls to allow access to your site without pushing other web requests to your web server.
 
 {{{
 acl our_sites dstdomain your.main.website
 http_access allow our_sites
+cache_peer_access myAccel allow our_sites
+cache_peer_access myAccel deny all
 }}}
 You should now be able to start Squid and it will serve requests as a HTTP server.
 
