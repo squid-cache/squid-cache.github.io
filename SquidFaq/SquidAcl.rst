@@ -305,7 +305,7 @@ acl BAD dst 0.0.0.0/0.0.0.0
 http_access allow GOOD
 http_access deny BAD
 }}}
-== How can I block access to porn sites?
+== How can I block access to porn sites? ==
 Often, the hardest part about using Squid to deny pornography
 is coming up with the list of sites that should be
 blocked.  You may want to maintain such a list yourself,
