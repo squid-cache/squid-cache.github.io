@@ -305,6 +305,22 @@ acl BAD dst 0.0.0.0/0.0.0.0
 http_access allow GOOD
 http_access deny BAD
 }}}
+== How can I block access to porn sites?
+Often, the hardest part about using Squid to deny pornography
+is coming up with the list of sites that should be
+blocked.  You may want to maintain such a list yourself,
+or get one from somewhere else (see below).
+
+The ACL syntax for using such a list depends on its contents.
+If the list contains regular expressions, use this:
+{{{
+acl PornSites url_regex "/usr/local/squid/etc/pornlist"
+http_access deny PornSites
+}}}
+On the other hand, if the list contains origin server
+hostnames, simply change ''url_regex''
+to ''dstdomain'' in this example.
+
 == Does anyone have a ban list of porn sites and such? ==
  * Snerpa, an ISP in Iceland operates a DNS-database of IP-addresses of blacklisted sites containing porn, violence, etc. which is utilized using a small perl-script redirector.  Information on this on the  [http://www.snerpa.is/notendur/infilter/infilter-en.phtml INfilter] webpage.
  * The [http://www.squidguard.org/blacklist/ SquidGuard] redirector folks provide a blacklist.
