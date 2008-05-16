@@ -322,8 +322,7 @@ hostnames, simply change ''url_regex''
 to ''dstdomain'' in this example.
 
 == Does anyone have a ban list of porn sites and such? ==
- * Snerpa, an ISP in Iceland operates a DNS-database of IP-addresses of blacklisted sites containing porn, violence, etc. which is utilized using a small perl-script redirector.  Information on this on the  [http://www.snerpa.is/notendur/infilter/infilter-en.phtml INfilter] webpage.
- * The [http://www.squidguard.org/blacklist/ SquidGuard] redirector folks provide a blacklist.
+ * The [http://www.squidguard.org/blacklists.html SquidGuard] redirector folks have links to some lists.
  * Bill Stearns maintains the [http://www.stearns.org/sa-blacklist/ sa-blacklist] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
  * The [http://www.rambris.com/fredrik/sleezeball/ SleezeBall site] has a list of patterns that you can download.
 == Squid doesn't match my subdomains ==
