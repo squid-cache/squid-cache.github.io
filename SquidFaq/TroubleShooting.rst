@@ -1,6 +1,6 @@
 #language en
 #format wiki
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == Why am I getting "Proxy Access Denied?" ==
@@ -39,7 +39,7 @@ Alternatively you can
  * Set the runtime ulimit as described above when starting Squid.
 If running things as root is not an option then get your sysadmin to install a the needed ulimit command in /etc/inittscript (see man initscript), install a patched kernel where INR_OPEN in include/linux/fs.h is changed to at least the amount you need or have them install a small suid program which sets the limit (see link below).
 
-More information can be found from Henriks [http://squid.sourceforge.net/hno/linux-lfd.html How to get many filedescriptors on Linux 2.2.X and later] page.
+More information can be found from Henriks [[http://squid.sourceforge.net/hno/linux-lfd.html|How to get many filedescriptors on Linux 2.2.X and later]] page.
 
 === Solaris ===
 Add the following to your ''/etc/system'' file and reboot to increase your maximum file descriptors per process:
@@ -52,7 +52,7 @@ Next you should re-run the ''configure'' script in the top directory so that it 
 Jens-S. Voeckler advises that you should NOT change the default soft limit (''rlim_fd_cur'') to anything larger than 256.  It will break other programs, such as the license manager needed for the SUN workshop compiler.  Jens-S. also says that it should be safe to raise the limit for the Squid process as high as 16,384 except that there may be problems duruing reconfigure or logrotate if all of the lower 256 filedescriptors are in use at the time or rotate/reconfigure.
 
 === FreeBSD ===
-by [mailto:torsten.sturm@axis.de Torsten Sturm]
+by [[mailto:torsten.sturm@axis.de|Torsten Sturm]]
 
  * How do I check my maximum filedescriptors?
   . Do ''sysctl -a'' and look for the value of ''kern.maxfilesperproc''.
@@ -159,16 +159,16 @@ cache_peer proxy.parent.com parent 3128 3130
 You can also see this warning when sending ICP queries to multicast addresses.  For security reasons, Squid requires your configuration to list all other caches listening on the multicast group address.  If an unknown cache listens to that address and sends replies, your cache will log the warning message.  To fix this situation, either tell the unknown cache to stop listening on the multicast address, or if they are legitimate, add them to your configuration file.
 
 == DNS lookups for domain names with underscores (_) always fail. ==
-The standards for naming hosts ( [ftp://ftp.isi.edu/in-notes/rfc952.txt RFC 952] and [ftp://ftp.isi.edu/in-notes/rfc1101.txt RFC 1101]) do not allow underscores in domain names:
+The standards for naming hosts ( [[ftp://ftp.isi.edu/in-notes/rfc952.txt|RFC 952]] and [[ftp://ftp.isi.edu/in-notes/rfc1101.txt|RFC 1101]]) do not allow underscores in domain names:
 
 {{{
 A "name" (Net, Host, Gateway, or Domain name) is a text string up to 24 characters drawn from the alphabet (A-Z), digits (0-9), minus sign (-), and period (.).
 }}}
 The resolver library that ships with recent versions of BIND enforces this restriction, returning an error for any host with underscore in the hostname.  The best solution is to complain to the hostmaster of the offending site, and ask them to rename their host.
 
-See also the [http://www.intac.com/~cdp/cptd-faq/section4.html#underscore comp.protocols.tcp-ip.domains FAQ].
+See also the [[http://www.intac.com/~cdp/cptd-faq/section4.html#underscore|comp.protocols.tcp-ip.domains FAQ]].
 
-Some people have noticed that [ftp://ftp.isi.edu/in-notes/rfc1033.txt RFC 1033] implies that underscores __are__ allowed.  However, this is an __informational__ RFC with a poorly chosen example, and not a __standard__ by any means.
+Some people have noticed that [[ftp://ftp.isi.edu/in-notes/rfc1033.txt|RFC 1033]] implies that underscores __are__ allowed.  However, this is an __informational__ RFC with a poorly chosen example, and not a __standard__ by any means.
 
 == Why does Squid say: "Illegal character in hostname; underscores are not allowed?' ==
 See the above question.  The underscore character is not valid for hostnames.
@@ -188,7 +188,7 @@ and then recompile:
 }}}
 == Why am I getting access denied from a sibling cache? ==
 The answer to this is somewhat complicated, so please hold on.
-|| {i} ||Most of this text is taken from [http://www.life-gone-hazy.com/writings/icp-squid.ps.gz ICP and the Squid Web Cache] ||
+|| {i} ||Most of this text is taken from [[http://www.life-gone-hazy.com/writings/icp-squid.ps.gz|ICP and the Squid Web Cache]] ||
 
 
 An ICP query does not include any parent or sibling designation, so the receiver really has no indication of how the peer cache is configured to use it.  This issue becomes important when a cache is willing to serve cache hits to anyone, but only handle cache misses for its paying users or customers.  In other words, whether or not to allow the request depends on if the result is a hit or a miss.  To accomplish this, Squid acquired the ''miss_access'' feature in October of 1996.
@@ -219,7 +219,7 @@ That will show all sockets in the LISTEN state.  You might also try
 {{{
 netstat -naf inet | grep 8080
 }}}
-If you find that some process has bound to your port, but you're not sure which process it is, you might be able to use the excellent [ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/ lsof] program.  It will show you which processes own every open file descriptor on your system.
+If you find that some process has bound to your port, but you're not sure which process it is, you might be able to use the excellent [[ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/|lsof]] program.  It will show you which processes own every open file descriptor on your system.
 
 == icpDetectClientClose: ERROR xxx.xxx.xxx.xxx: (32) Broken pipe ==
 This means that the client socket was closed by the client before Squid was finished sending data to it.  Squid detects this by trying to read(2)'' some data from the socket.  If the ''read(2)'' call fails, then Squid konws the socket has been closed.   Normally the ''read(2)'' call returns ''ECONNRESET: Connection reset by peer'' and these are NOT logged.  Any other error messages (such as ''EPIPE: Broken pipe'' are logged to ''cache.log''.  See the "intro" of section 2 of your Unix manual for a list of all error codes. ''
@@ -228,11 +228,11 @@ This means that the client socket was closed by the client before Squid was fini
 These are caused by misbehaving Web clients attempting to use persistent connections.  Squid-1.1 does not support persistent connections.
 
 == Does Squid work with NTLM Authentication? ==
-[http://www.squid-cache.org/Versions/v2/2.5/ Version 2.5] supports Microsoft NTLM authentication to authenticate users accessing the proxy server itself (be it in a forward or reverse setup). See ../ProxyAuthentication for further details
+[[http://www.squid-cache.org/Versions/v2/2.5/|Version 2.5]] supports Microsoft NTLM authentication to authenticate users accessing the proxy server itself (be it in a forward or reverse setup). See ../ProxyAuthentication for further details
 
-[http://www.squid-cache.org/Versions/v2/2.6/ Version 2.6] and onwards also support the kind of infrastructure that's needed to properly allow an user to authenticate against an NTLM-enabled webserver.
+[[http://www.squid-cache.org/Versions/v2/2.6/|Version 2.6]] and onwards also support the kind of infrastructure that's needed to properly allow an user to authenticate against an NTLM-enabled webserver.
 
-As NTLM authentication backends go, the real work is usually done by [http://www.samba.org/ Samba] on squid's behalf. That being the case, Squid supports any authentication backend supported by Samba, including Samba itself and MS Windows 3.51 and onwards Domain Controllers.
+As NTLM authentication backends go, the real work is usually done by [[http://www.samba.org/|Samba]] on squid's behalf. That being the case, Squid supports any authentication backend supported by Samba, including Samba itself and MS Windows 3.51 and onwards Domain Controllers.
 
 NTLM for HTTP is, however, an horrible example of an authentication protocol, and we recommend to avoid using it in favour of saner and standard-sanctioned alternatives such as Digest.
 
@@ -288,7 +288,7 @@ $ttl 82067
 $end
 }}}
 == Sending bug reports to the Squid team ==
-Bug reports for Squid should be registered in our [http://www.squid-cache.org/bugs/ bug database].  Any bug report must include
+Bug reports for Squid should be registered in our [[http://www.squid-cache.org/bugs/|bug database]].  Any bug report must include
 
  * The Squid version
  * Your Operating System type and version
@@ -448,7 +448,7 @@ to create the swap directories on your filesystem.  If you have set the cache_ef
 
 {{{
 }}}
-Alternatively, if the directory already exists, then your operating system may be returning "Permission Denied" instead of "File Exists" on the mkdir() system call.  This [store.c-mkdir.patch patch] by [mailto:miquels@cistron.nl Miquel van Smoorenburg] should fix it.
+Alternatively, if the directory already exists, then your operating system may be returning "Permission Denied" instead of "File Exists" on the mkdir() system call.  This [store.c-mkdir.patch patch] by [[mailto:miquels@cistron.nl|Miquel van Smoorenburg]] should fix it.
 
 == FATAL: Cannot open HTTP Port ==
 Either
@@ -459,7 +459,7 @@ Remember that root privileges are required to open port numbers less than 1024. 
 
 SELinux can also deny squid access to port 80, even if you are starting squid as root. Configure SELinux to allow squid to open port 80 or disable SELinux in this case.
 
-Maybe you are running in the HTTP Accelerator mode and there is already a HTTP server running on port 80?  If you're really stuck, install the way cool [ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/ lsof] utility to show you which process has your port in use.
+Maybe you are running in the HTTP Accelerator mode and there is already a HTTP server running on port 80?  If you're really stuck, install the way cool [[ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/|lsof]] utility to show you which process has your port in use.
 
 == FATAL: All redirectors have exited! ==
 This is explained in ../SquidRedirectors.
@@ -513,7 +513,7 @@ In Unix, things like processes'' and ''files'' have an ''owner''. For Squid, the
 }}}
 A process is normally owned by the user who starts it.  However, Unix sometimes allows a process to change its owner.  If you specified a value for the effective_user'' option in ''squid.conf'', then that will be the process owner. The files must be owned by this same userid. ''
 
-''If all this is confusing, then you probably should not be running Squid until you learn some more about Unix. As a reference, I suggest [http://www.oreilly.com/catalog/lunix4/ Learning the UNIX Operating System, 4th Edition]. ''
+''If all this is confusing, then you probably should not be running Squid until you learn some more about Unix. As a reference, I suggest [[http://www.oreilly.com/catalog/lunix4/|Learning the UNIX Operating System, 4th Edition]]. ''
 
 == When using a username and password, I can not access some files. ==
 If I try by way of a test, to access'' ''
@@ -560,7 +560,7 @@ When Squid detects a forwarding loop, it is logged to the cache.log'' file with 
 The above configuration instructs squid to NOT forward a request to parents A, B, or C when a request is received from any one of those caches.
 
 == accept failure: (71) Protocol error ==
-This error message is seen mostly on Solaris systems. [mailto:mtk@ny.ubs.com Mark Kennedy] gives a great explanation:
+This error message is seen mostly on Solaris systems. [[mailto:mtk@ny.ubs.com|Mark Kennedy]] gives a great explanation:
 
 {{{
 Error 71 [EPROTO] is an obscure way of reporting that clients made it onto your
@@ -608,7 +608,7 @@ Their intention is to:
  * make people think they are not IP addresses and unknown domain names, in an attempt to stop them trying to locate and complain to the ISP.
 Any browser or proxy that works with them should be considered a security risk.
 
-[http://www.ietf.org/rfc/rfc1738.txt RFC 1738] has this to say about the hostname part of a URL:
+[[http://www.ietf.org/rfc/rfc1738.txt|RFC 1738]] has this to say about the hostname part of a URL:
 
 {{{
 The fully qualified domain name of a network host, or its IP
@@ -632,7 +632,7 @@ If you want Squid to accept URL's with whitespace, you have to decide how to han
  * ALLOW'' ''
   . ''The request is allowed and the URL remains unchanged. ''
  * ENCODE'' ''
-  . ''The whitespace characters are encoded according to [http://www.ietf.org/rfc/rfc1738.txt RFC 1738].  This can be considered a violation of the HTTP specification. ''
+  . ''The whitespace characters are encoded according to [[http://www.ietf.org/rfc/rfc1738.txt|RFC 1738]].  This can be considered a violation of the HTTP specification. ''
  * CHOP'' ''
   . ''The URL is chopped at the first whitespace character and then processed normally.  This also can be considered a violation of HTTP. ''
 == commBind: Cannot bind socket FD 5 to 127.0.0.1:0: (49) Can't assign requested address ==
@@ -748,7 +748,7 @@ gcc -g -Wall -I../include -I../include -c rfc1123.c
 == urlParse: Illegal character in hostname 'proxy.mydomain.com:8080proxy.mydomain.com' ==
 By Yomler of fnac.net
 
-A combination of a bad configuration of Internet Explorer and any application which use the cydoor DLLs will produce the entry in the log. See [http://www.cydoor.com/ cydoor.com] for a complete list.
+A combination of a bad configuration of Internet Explorer and any application which use the cydoor DLLs will produce the entry in the log. See [[http://www.cydoor.com/|cydoor.com]] for a complete list.
 
 The bad configuration of IE is the use of a active configuration script (proxy.pac) and an active or inactive, but filled proxy settings. IE will only use the proxy.pac. Cydoor aps will use both and will generate the errors.
 
@@ -761,7 +761,7 @@ Some people have asked why requests for domain names using national symbols as "
 
 When there is a consensus in the DNS and HTTP standardization groups on how to handle international domain names Squid will be changed to support this if any changes to Squid will be required.
 
-If you are interested in the progress of the standardization process for international domain names please see the IETF IDN working group's [http://www.i-d-n.net/ dedicated page].
+If you are interested in the progress of the standardization process for international domain names please see the IETF IDN working group's [[http://www.i-d-n.net/|dedicated page]].
 
 == Why do I sometimes get "Zero Sized Reply"? ==
 This happens when Squid makes a TCP connection to an origin server, but for some reason, the connection is closed before Squid reads any data. Depending on various factors, Squid may be able to retry the request again. If you see the "Zero Sized Reply" error message, it means that Squid was unable to retry, or that all retry attempts also failed.
@@ -786,7 +786,7 @@ You may be able to use tcpdump'' to track down and observe the problem. ''
  * Upgrade to Squid-2.5.STABLE4 or later to work around a Host header related bug in Cisco PIX HTTP inspection. The Cisco PIX firewall wrongly assumes the Host header can be found in the first packet of the request.
 If this error causes serious problems for you and the above does not help, Squid developers would be happy to help you uncover the problem.  However, we will require high-quality debugging information from you, such as tcpdump'' output, server IP addresses, operating system versions, and ''access.log'' entries with full HTTP headers. ''
 
-''If you want to make Squid give the Zero Sized error on demand, you can use [attachment:zerosized_reply.c a short C program].  Simply compile and start the program on a system that doesn't already have a server running on port 80.  Then try to connect to this fake server through Squid: ''
+''If you want to make Squid give the Zero Sized error on demand, you can use [[attachment:zerosized_reply.c|a short C program]].  Simply compile and start the program on a system that doesn't already have a server running on port 80.  Then try to connect to this fake server through Squid: ''
 
 == Why do I get "The request or reply is too large" errors? ==
 by Grzegorz Janoszka
