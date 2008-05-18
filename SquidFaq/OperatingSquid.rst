@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == How do I see system level Squid statistics? ==
@@ -390,7 +390,7 @@ and port numbers together (see the squid.conf comments).
 Normally you cannot.  Most TCP/IP stacks do not allow applications to
 create sockets with the local endpoint assigned to a foreign IP address.
 However, some folks have some
-[http://www.balabit.hu/en/downloads/tproxy/ patches to Linux] that allow exactly that.
+[[http://www.balabit.hu/en/downloads/tproxy/|patches to Linux]] that allow exactly that.
 
 In this situation, you must ensure that all HTTP packets destined for
 the client IP addresses are routed to the Squid box.  If the packets
