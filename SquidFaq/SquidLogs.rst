@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == Squid Log Files ==
@@ -65,13 +65,13 @@ This logfile exists for Squid-1.0 only.  The format is
 
 Most log file analysis program are based on the entries in ''access.log''.
 
-[:Squid-2.6:Squid 2.6] allows the administrators to configure their logfile format with great flexibility previous version offered a much more limited functionality.
+[[Squid-2.6|Squid 2.6]] allows the administrators to configure their logfile format with great flexibility previous version offered a much more limited functionality.
 
-Previous versions allow to log accesses either in native logformat (default) or using the [http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format http common logfile format] (CLF). The latter is enabled by specifying the ''emulate_httpd_log'' option in squid.conf.
+Previous versions allow to log accesses either in native logformat (default) or using the [[http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format|http common logfile format]] (CLF). The latter is enabled by specifying the ''emulate_httpd_log'' option in squid.conf.
 
 
 === The common log file format ===
-The [http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format Common Logfile Format] is used by numerous HTTP servers. This format consists of the following seven fields:
+The [[http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format|Common Logfile Format]] is used by numerous HTTP servers. This format consists of the following seven fields:
 
 {{{
 remotehost rfc931 authuser [date] "method URL" status bytes
@@ -116,17 +116,17 @@ s/^\d+\.\d+/localtime $&/e;
     Please note that the entries are logged ''after'' the reply finished being sent, ''not'' during the lifetime of the transaction.
  1. '''client address''' The IP address of the requesting instance, the client IP address. The ''client_netmask'' configuration option can distort the clients for data protection reasons, but it makes analysis more difficult. Often it is better to use one of the log file anonymizers. Also, the ''log_fqdn'' configuration option may log the fully qualified domain name of the client instead of the dotted quad. The use of that option is discouraged due to its performance impact.
  1. '''result codes''' This column is made up of two entries separated by a slash. This column encodes the transaction result:
-    The cache result of the request contains information on the kind of request, how it was satisfied, or in what way it failed. Please refer to [#squid_result_codes Squid result codes] for valid symbolic result codes.
-    Several codes from older versions are no longer available, were renamed, or split. Especially the ''ERR_'' codes do not seem to appear in the log file any more. Also refer to [#squid_result_codes Squid result codes] for details on the codes no longer available in Squid-2.
+    The cache result of the request contains information on the kind of request, how it was satisfied, or in what way it failed. Please refer to [[#squid_result_codes|Squid result codes]] for valid symbolic result codes.
+    Several codes from older versions are no longer available, were renamed, or split. Especially the ''ERR_'' codes do not seem to appear in the log file any more. Also refer to [[#squid_result_codes|Squid result codes]] for details on the codes no longer available in Squid-2.
     The NOVM versions and Squid-2 also rely on the Unix buffer cache, thus you will see less ''TCP_MEM_HIT''s than with a Squid-1. Basically, the NOVM feature relies on ''read()'' to obtain an object, but due to the kernel buffer cache, no disk activity is needed. Only small objects (below 8KByte) are kept in Squid's part of main memory.
-    The status part contains the HTTP result codes with some Squid specific extensions. Squid uses a subset of the RFC defined error codes for HTTP. Refer to section [#http_status_codes status codes] for details of the status codes ecognized by a Squid-2.
+    The status part contains the HTTP result codes with some Squid specific extensions. Squid uses a subset of the RFC defined error codes for HTTP. Refer to section [[#http_status_codes|status codes]] for details of the status codes ecognized by a Squid-2.
  1. '''bytes''' The size is the amount of data delivered to the client. Mind that this does not constitute the net object size, as headers are also counted. Also, failed requests may deliver an error page, the size of which is also logged here.
- 1. '''request method''' The request method to obtain an object. Please refer to section [#request-methods request-methods] for available methods. If you turned off ''log_icp_queries'' in your configuration, you will not see (and thus unable to analyse) ICP exchanges. The ''PURGE'' method is only available, if you have an ACL for "method purge" enabled in your configuration file.
+ 1. '''request method''' The request method to obtain an object. Please refer to section [[#request-methods|request-methods]] for available methods. If you turned off ''log_icp_queries'' in your configuration, you will not see (and thus unable to analyse) ICP exchanges. The ''PURGE'' method is only available, if you have an ACL for "method purge" enabled in your configuration file.
  1. '''URL''' This column contains the URL requested. Please note that the log file may contain whitespaces for the URI. The default configuration for ''uri_whitespace'' denies whitespaces, though.
  1. '''rfc931''' The eigth column may contain the ident lookups for the requesting client. Since ident lookups have performance impact, the default configuration turns ''ident_loookups'' off. If turned off, or no ident information is available, a "-" will be logged.
  1. '''hierarchy code''' The hierarchy information consists of three items:
    * Any hierarchy tag may be prefixed with ''TIMEOUT_'', if the timeout occurs waiting for all ICP replies to return from the neighbours. The timeout is either dynamic, if the ''icp_query_timeout'' was not set, or the time configured there has run up.
-   * A code that explains how the request was handled, e.g. by forwarding it to a peer, or going straight to the source. Refer to [#hierarchy_codes Hierarchy Codes] for details on hierarchy codes and removed hierarchy codes.
+   * A code that explains how the request was handled, e.g. by forwarding it to a peer, or going straight to the source. Refer to [[#hierarchy_codes|Hierarchy Codes]] for details on hierarchy codes and removed hierarchy codes.
    * The IP address or hostname where the request (if a miss) was forwarded. For requests sent to origin servers, this is the origin server's IP address. For requests sent to a neighbor cache, this is the neighbor's hostname. NOTE: older versions of Squid would put the origin server hostname here.
  1. '''type''' The content type of the object as seen in the HTTP reply header. Please note that ICP exchanges usually don't have any content type, and thus are logged "-". Also, some weird replies have content types ":" or even empty ones.
 
@@ -188,7 +188,7 @@ The following codes are no longer available in Squid-2:
 '''UDP_RELOADING''' See: UDP_MISS_NOFETCH.
 
 === HTTP status codes ===
-These are taken from [ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2616] and verified for Squid. Squid-2 uses almost all codes except 307 (Temporary Redirect), 416 (Request Range Not Satisfiable), and 417 (Expectation Failed). Extra codes include 0 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for [ftp://ftp.isi.edu/in-notes/rfc2518.txt RFC 2518] (WebDAV). Yes, there are really two entries for status code 424, compare with ''http_status'' in ''src/enums.h'':
+These are taken from [[ftp://ftp.isi.edu/in-notes/rfc2616.txt|RFC 2616]] and verified for Squid. Squid-2 uses almost all codes except 307 (Temporary Redirect), 416 (Request Range Not Satisfiable), and 417 (Expectation Failed). Extra codes include 0 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for [[ftp://ftp.isi.edu/in-notes/rfc2518.txt|RFC 2518]] (WebDAV). Yes, there are really two entries for status code 424, compare with ''http_status'' in ''src/enums.h'':
 
 {{{
  000 Used mostly with UDP traffic.
@@ -242,7 +242,7 @@ These are taken from [ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2616] and verif
 }}}
 
 === Request methods ===
-Squid recognizes several request methods as defined in [ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2616]. Newer versions of Squid (2.2.STABLE5 and above) also recognize [ftp://ftp.isi.edu/in-notes/rfc2518.txt RFC 2518] "HTTP Extensions for Distributed Authoring -- WEBDAV" extensions.
+Squid recognizes several request methods as defined in [[ftp://ftp.isi.edu/in-notes/rfc2616.txt|RFC 2616]]. Newer versions of Squid (2.2.STABLE5 and above) also recognize [[ftp://ftp.isi.edu/in-notes/rfc2518.txt|RFC 2518]] "HTTP Extensions for Distributed Authoring -- WEBDAV" extensions.
 
 {{{
  method    defined    cachabil.  meaning
@@ -329,7 +329,7 @@ LOCAL_IP_DIRECT       No special logging for local networks.
 
 == sending access.log to syslog ==
 
-[:Squid-2.6:Squid 2.6] allows to send access.log contents to a local syslog server by specifying {{{syslog}}} as a file path, for example as in:
+[[Squid-2.6|Squid 2.6]] allows to send access.log contents to a local syslog server by specifying {{{syslog}}} as a file path, for example as in:
 {{{
 access_log syslog squid
 }}}
@@ -337,7 +337,7 @@ access_log syslog squid
 
 == customizable access.log ==
 
-[:Squid-2.6:Squid 2.6] and later versions feature a customizeable access.log format. To use this feature you must first  define a log format name using the '''logformat''' directive, then use the extended '''access_log''' directive specifying your newly-defined logfile format.
+[[Squid-2.6|Squid 2.6]] and later versions feature a customizeable access.log format. To use this feature you must first  define a log format name using the '''logformat''' directive, then use the extended '''access_log''' directive specifying your newly-defined logfile format.
 
 
 === defining a format ===
@@ -459,7 +459,7 @@ You need to ''rotate'' your log files with a cron job.  For example:
 0 0 * * * /usr/local/squid/bin/squid -k rotate
 }}}
 == I want to use another tool to maintain the log files. ==
-If you set ''logfile_rotate'' to 0, Squid simply closes and then re-opens the logs.  This allows third-party logfile management systems, such as [http://www.weird.com/~woods/projects/newsyslog.html newsyslog] or ''logrotate'', to maintain the log files.
+If you set ''logfile_rotate'' to 0, Squid simply closes and then re-opens the logs.  This allows third-party logfile management systems, such as [[http://www.weird.com/~woods/projects/newsyslog.html|newsyslog]] or ''logrotate'', to maintain the log files.
 
 == Managing log files ==
 The preferred log file for analysis is the ''access.log'' file in native format. For long term evaluations, the log file should be obtained at regular intervals. Squid offers an easy to use API for rotating log files, in order that they may be moved (or removed) without disturbing the cache operations in progress. The procedures were described above.
@@ -468,7 +468,7 @@ Depending on the disk space allocated for log file storage, it is recommended to
 
 Before transport, the log files can be compressed during off-peak time. On the analysis host, the log file are concatinated into one file, so one file for 24 hours is the yield. Also note that with ''log_icp_queries'' enabled, you might have around 1 GB of uncompressed log information per day and busy cache. Look into you cache manager info page to make an educated guess on the size of your log files.
 
-The EU project [http://www.desire.org/ DESIRE] developed some [http://www.uninett.no/prosjekt/desire/arneberg/statistics.html some basic rules] to obey when handling and processing log files:
+The EU project [[http://www.desire.org/|DESIRE]] developed some [[http://www.uninett.no/prosjekt/desire/arneberg/statistics.html|some basic rules]] to obey when handling and processing log files:
 
  * Respect the privacy of your clients when publishing results.
  * Keep logs unavailable unless anonymized. Most countries have laws on privacy protection, and some even on how long you are legally allowed to keep certain kinds of information.
