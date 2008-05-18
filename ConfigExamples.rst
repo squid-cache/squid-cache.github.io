@@ -20,15 +20,15 @@ For Squid-3.0 the Manual is at http://www.squid-cache.org/Versions/v3/3.0/cfgman
 
 Choose a good WikiName for your new example and enter it here:
 
-[[NewPage(ConfigExampleTemplate, Create, ConfigExamples)]]
+<<NewPage(ConfigExampleTemplate, Create, ConfigExamples)>>
 
 == Current configuration examples ==
 
-[[FullSearchCached(title:regex:^ConfigExamples/[^/]*$)]]
+<<FullSearchCached(title:regex:^ConfigExamples/[^/]*$)>>
 
 == External configuration examples ==
 
-* [http://freshmeat.net/articles/view/1433/] -  Configuring a Transparent Proxy/Webcache in a Bridge using Squid and ebtables (Jan 1st, 2005)
+* [[http://freshmeat.net/articles/view/1433/]] -  Configuring a Transparent Proxy/Webcache in a Bridge using Squid and ebtables (Jan 1st, 2005)
 
 
 ----
