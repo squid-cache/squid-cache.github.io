@@ -8,9 +8,9 @@
  * '''Version''': 3.1
  * '''Status''': completed
  * '''Developer''': AlexRousskov
- * '''More''': [http://www.squid-cache.org/bugs/show_bug.cgi?id=1912 bug1912], [http://www.squid-cache.org/bugs/show_bug.cgi?id=2093 bug2093], and item 1 in [http://www.squid-cache.org/mail-archive/squid-dev/200707/0109.html email109]
+ * '''More''': [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1912|bug1912]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2093|bug2093]], and item 1 in [[http://www.squid-cache.org/mail-archive/squid-dev/200707/0109.html|email109]]
 
-[[TableOfContents()]]
+<<TableOfContents>>
 
 == Design sketch ==
 
@@ -122,7 +122,7 @@ TheSelect.scan(timeout); // when descriptors are ready
 
 == Challenges ==
 
-There will be templates, macros, and/or code-generated classes that handle arbitrary call destination addresses and calls with one, two, or three parameters (at least). Designing a simple and efficient set of wrappers without using a template-based library like [http://www.boost.org/ Boost] will be tricky.
+There will be templates, macros, and/or code-generated classes that handle arbitrary call destination addresses and calls with one, two, or three parameters (at least). Designing a simple and efficient set of wrappers without using a template-based library like [[http://www.boost.org/|Boost]] will be tricky.
 
 ----
 CategoryFeature
