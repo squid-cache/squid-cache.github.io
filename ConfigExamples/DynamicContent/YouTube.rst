@@ -4,11 +4,11 @@
 
 = Caching YouTube Content =
 
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 == Outline ==
 
-The default configuration of squid prevents the caching of [:ConfigExamples/DynamicContent:dynamic content] and youtube.com specifically implement several 'features' that prevent their flash videos being effectivly distributed by caches.
+The default configuration of squid prevents the caching of [[ConfigExamples/DynamicContent|dynamic content]] and youtube.com specifically implement several 'features' that prevent their flash videos being effectivly distributed by caches.
 
 This page details the publicly available tactics used to overcome at least some of this and allow caching of a lot of youtube.com content. Be advised this demonstrated configuration has a mixed success rate, it works for some but others have reported it strangely not working at all.
 
@@ -19,10 +19,10 @@ Each configuration action is detailed with its reason and effect so if you find 
 
 Some private modifications of squid have apparently achieved youtube.com caching. However, there is presently no simple solution available to the general public.
 
-To cache youtube.com files, you will need to enable caching of [:ConfigExamples/DynamicContent:dynamic content] and some other measures, which technically break the HTTP standards.
+To cache youtube.com files, you will need to enable caching of [[ConfigExamples/DynamicContent|dynamic content]] and some other measures, which technically break the HTTP standards.
 
 ***SECURITY NOTE:***
-Some of the required configuration (quick_abort_min + large maximum_object_size) requires collapsed-forwarding feature to protect from high bandwidth consumption and possible cache DDoS attacks. ["Squid-3.0"] does not have that feature at this time. ["Squid-2.6"] is recommended for use with these settings.
+Some of the required configuration (quick_abort_min + large maximum_object_size) requires collapsed-forwarding feature to protect from high bandwidth consumption and possible cache DDoS attacks. [[Squid-3.0]] does not have that feature at this time. [[Squid-2.6]] is recommended for use with these settings.
 
 == Missing Pieces ==
 
