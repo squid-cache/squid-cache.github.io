@@ -7,4 +7,4 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
 
-This wiki's design has been created by FrancescoChemolli, using the [http://www.moinmo.in/ThemeMarket/leftsidebarsmaller leftsidebarsmaller] theme by Julian Yap as a starting point.
+This wiki's design has been created by FrancescoChemolli, using the [[http://www.moinmo.in/ThemeMarket/leftsidebarsmaller|leftsidebarsmaller]] theme by Julian Yap as a starting point.
