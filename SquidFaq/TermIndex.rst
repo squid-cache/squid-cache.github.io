@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 == Neighbor ==
 
 
@@ -18,8 +18,8 @@ neighbor is still accepted in some Squid configuration options.
 
 Regular expressions are patterns that used for matching sequences
 of characters in text.  For more information, see
-[http://jmason.org/software/sitescooper/tao_regexps.html A Tao of Regular Expressions] and
-[http://www.newbie.org/gazette/xxaxx/xprmnt02.html Newbie's page].
+[[http://jmason.org/software/sitescooper/tao_regexps.html|A Tao of Regular Expressions]] and
+[[http://www.newbie.org/gazette/xxaxx/xprmnt02.html|Newbie's page]].
 
 -----
 Back to the SquidFaq
