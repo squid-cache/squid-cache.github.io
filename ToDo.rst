@@ -1,6 +1,6 @@
 = Misplaced ToDo's =
 
-/!\ Notice: The right place to list bugs is the bugzilla database. The right place to list future improvements is the ["Features"] interface. Please do not dump to-do items here. If you get a chance, move these items to the right places.
+/!\ Notice: The right place to list bugs is the bugzilla database. The right place to list future improvements is the [[Features]] interface. Please do not dump to-do items here. If you get a chance, move these items to the right places.
 
 This list page just has a general TODO of various bogons noticed in squid.
 
