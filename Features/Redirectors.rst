@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == What is a redirector? ==
@@ -35,10 +35,10 @@ URL ip-address/fqdn ident method
 == Do you have any examples? ==
 
 A simple very fast redirector called 
-[http://squirm.foote.com.au/ SQUIRM] is a good place to
+[[http://squirm.foote.com.au/|SQUIRM]] is a good place to
 start, it uses the regex lib to allow pattern matching.
 
-Also see [http://ivs.cs.uni-magdeburg.de/~elkner/webtools/jesred/ jesred].
+Also see [[http://ivs.cs.uni-magdeburg.de/~elkner/webtools/jesred/|jesred]].
 
 The following Perl script may also be used as a template for writing
 your own redirector:
@@ -81,7 +81,7 @@ while (<>) {
 }
 }}}
 
-Please see sections 10.3.2 and 10.3.3 of [ftp://ftp.isi.edu/in-notes/rfc2068.txt RFC 2068]
+Please see sections 10.3.2 and 10.3.3 of [[ftp://ftp.isi.edu/in-notes/rfc2068.txt|RFC 2068]]
 for an explanation of the 301 and 302 HTTP reply codes.
 
 == FATAL: All redirectors have exited! ==
