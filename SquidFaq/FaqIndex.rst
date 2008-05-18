@@ -2,65 +2,65 @@
 
 = Complete Squid Faq Index =
 === About Squid ===
-[[TocOf(SquidFaq/AboutSquid)]]
+<<TocOf(SquidFaq/AboutSquid)>>
 === Compiling Squid ===
-[[TocOf(SquidFaq/CompilingSquid)]]
+<<TocOf(SquidFaq/CompilingSquid)>>
 === Installing Squid ===
-[[TocOf(SquidFaq/InstallingSquid)]]
+<<TocOf(SquidFaq/InstallingSquid)>>
 === Configuring Squid ===
-[[TocOf(SquidFaq/ConfiguringSquid)]]
+<<TocOf(SquidFaq/ConfiguringSquid)>>
 === Configuring Browsers ===
-[[TocOf(SquidFaq/ConfiguringBrowsers)]]
+<<TocOf(SquidFaq/ConfiguringBrowsers)>>
 === Squid Logs ===
-[[TocOf(SquidFaq/SquidLogs)]]
+<<TocOf(SquidFaq/SquidLogs)>>
 === Operating Squid ===
-[[TocOf(SquidFaq/OperatingSquid)]]
+<<TocOf(SquidFaq/OperatingSquid)>>
 === Squid Memory ===
-[[TocOf(SquidFaq/SquidMemory)]]
+<<TocOf(SquidFaq/SquidMemory)>>
 === Cache Manager ===
-[[TocOf(SquidFaq/CacheManager)]]
+<<TocOf(SquidFaq/CacheManager)>>
 === Squid Acl ===
-[[TocOf(SquidFaq/SquidAcl)]]
+<<TocOf(SquidFaq/SquidAcl)>>
 === Trouble Shooting ===
-[[TocOf(SquidFaq/TroubleShooting)]]
+<<TocOf(SquidFaq/TroubleShooting)>>
 === Inner Workings ===
-[[TocOf(SquidFaq/InnerWorkings)]]
+<<TocOf(SquidFaq/InnerWorkings)>>
 === Multicast ===
-[[TocOf(SquidFaq/MultiCast)]]
+<<TocOf(SquidFaq/MultiCast)>>
 === System-specific Optimizations ===
-[[TocOf(SquidFaq/SystemSpecificOptimizations)]]
+<<TocOf(SquidFaq/SystemSpecificOptimizations)>>
 === System Weirdnesses ===
-[[TocOf(SquidFaq/SystemWeirdnesses)]]
+<<TocOf(SquidFaq/SystemWeirdnesses)>>
 === Squid Redirectors ===
-[[TocOf(SquidFaq/SquidRedirectors)]]
+<<TocOf(SquidFaq/SquidRedirectors)>>
 === Cache Digests ===
-[[TocOf(SquidFaq/CacheDigests)]]
+<<TocOf(SquidFaq/CacheDigests)>>
 === Interception Proxy ===
-[[TocOf(SquidFaq/InterceptionProxy)]]
+<<TocOf(SquidFaq/InterceptionProxy)>>
 === Squid Snmp ===
-[[TocOf(SquidFaq/SquidSnmp)]]
+<<TocOf(SquidFaq/SquidSnmp)>>
 === Misc Features ===
-[[TocOf(SquidFaq/MiscFeatures)]]
+<<TocOf(SquidFaq/MiscFeatures)>>
 === Reverse Proxy ===
-[[TocOf(SquidFaq/ReverseProxy)]]
+<<TocOf(SquidFaq/ReverseProxy)>>
 === Related Software ===
-[[TocOf(SquidFaq/RelatedSoftware)]]
+<<TocOf(SquidFaq/RelatedSoftware)>>
 === Other Resources ===
-[[TocOf(SquidFaq/OtherResources)]]
+<<TocOf(SquidFaq/OtherResources)>>
 === Disk Daemon ===
-[[TocOf(SquidFaq/DiskDaemon)]]
+<<TocOf(SquidFaq/DiskDaemon)>>
 === Cyclic Object Storage System, aka COSS ===
-[[TocOf(SquidFaq/CyclicObjectStorageSystem)]]
+<<TocOf(SquidFaq/CyclicObjectStorageSystem)>>
 === Proxy Authentication ===
-[[TocOf(SquidFaq/ProxyAuthentication)]]
+<<TocOf(SquidFaq/ProxyAuthentication)>>
 === Term Index ===
-[[TocOf(SquidFaq/TermIndex)]]
+<<TocOf(SquidFaq/TermIndex)>>
 === Security Pitfalls ===
-[[TocOf(SquidFaq/SecurityPitfalls)]]
+<<TocOf(SquidFaq/SecurityPitfalls)>>
 === Too Many Misses ===
-[[TocOf(SquidFaq/ToomanyMisses)]]
+<<TocOf(SquidFaq/ToomanyMisses)>>
 === Clearing the Cache ===
-[[TocOf(SquidFaq/ClearingTheCache)]]
+<<TocOf(SquidFaq/ClearingTheCache)>>
 
 -----
 Back to the SquidFaq
