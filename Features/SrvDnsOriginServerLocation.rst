@@ -15,7 +15,7 @@
 ## If you have multiple sections and ToC, please place them here,
 ## leaving the above summary information in the page "header".
 == Proof Of Concept Code ==
-[[AttachList]]
+<<AttachList>>
 
 Configuration snippet:
 
@@ -29,7 +29,7 @@ Some tuneables are in the redirector script itself.
 
 
 == Details ==
-[http://en.wikipedia.org/wiki/SRV_record DNS SRV records], defined in [http://www.ietf.org/rfc/rfc2782.txt RFC 2782] can help attain some level of high availability and load balancing in a very straightforward manner. Their query structure includes a naming convention to locate a certain well-known network service, and their reply structure includes two different fields to indicate the level of priority a certain pointer of a set has.
+[[http://en.wikipedia.org/wiki/SRV_record|DNS SRV records]], defined in [[http://www.ietf.org/rfc/rfc2782.txt|RFC 2782]] can help attain some level of high availability and load balancing in a very straightforward manner. Their query structure includes a naming convention to locate a certain well-known network service, and their reply structure includes two different fields to indicate the level of priority a certain pointer of a set has.
 
 For example a query: {{{ _http._tcp.www.kinkie.it. SRV }}} Might return results similar to those:
 || '''priority''' || '''weight''' || '''target''' ||
@@ -52,7 +52,7 @@ relative weight for entries with the same priority. Larger
 weights SHOULD be given a proportionately higher probability of
 being selected.
 }}}
-The (expired) Internet Draft [http://tools.ietf.org/html/draft-andrews-http-srv draft-andrews-http-srv] tries to address some inconsistencies of the general addressing scheme.
+The (expired) Internet Draft [[http://tools.ietf.org/html/draft-andrews-http-srv|draft-andrews-http-srv]] tries to address some inconsistencies of the general addressing scheme.
 
 == Status ==
 The redirector is RFC-compliant at version 0.4. Andrews' draft is the next target for integration.
