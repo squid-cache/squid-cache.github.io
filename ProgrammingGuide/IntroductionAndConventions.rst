@@ -3,7 +3,7 @@
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 
 ## if you want to have a table of comments remove the heading hashes from the next line
-[[TableOfContents]]
+<<TableOfContents>>
 = Introduction =
 
 The Squid source code has evolved more from empirical observation and
