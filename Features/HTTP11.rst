@@ -7,7 +7,7 @@
  * '''Status''': Planning.
  * '''ETA''': unknown
  * '''Version''': 3 & 2.x
- * '''Developer''': ["Henrik Nordström"], others welcome
+ * '''Developer''': [[Henrik_Nordström]], others welcome
  * '''More''':
 ## Details
 ##
@@ -15,7 +15,7 @@
 ## If you have multiple sections and ToC, please place them here,
 ## leaving the above summary information in the page "header".
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Details ==
 
@@ -48,7 +48,7 @@ Additionally work should also be done in the following
 
 == Older notes ==
 
-Copied from ["Features/Other"]:
+Copied from [[Features/Other]]:
 
 Some thought will need to be put into the following areas:
 
