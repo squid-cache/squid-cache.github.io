@@ -1,12 +1,12 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == What are cachable objects? ==
 An Internet Object is a file, document or response to a query for an Internet service such as FTP, HTTP, or gopher.  A client requests an Internet object from a caching proxy; if the object is not already cached, the proxy server fetches the object (either from the host specified in the URL or from a parent or sibling cache) and delivers it to the client.
 
 == What is the ICP protocol? ==
-ICP is a protocol used for communication among squid caches. The ICP protocol is defined in two Internet RFC's. [http://www.ircache.net/Cache/ICP/rfc2186.txt RFC 2186] describes the protocol itself, while [http://www.ircache.net/Cache/ICP/rfc2187.txt RFC 2187] describes the application of ICP to hierarchical Web caching.
+ICP is a protocol used for communication among squid caches. The ICP protocol is defined in two Internet RFC's. [[http://www.ircache.net/Cache/ICP/rfc2186.txt|RFC 2186]] describes the protocol itself, while [[http://www.ircache.net/Cache/ICP/rfc2187.txt|RFC 2187]] describes the application of ICP to hierarchical Web caching.
 
 ICP is primarily used within a cache hierarchy to locate specific objects in sibling caches.  If a squid cache does not have a requested document, it sends an ICP query to its siblings, and the siblings respond with ICP replies indicating a "HIT" or a "MISS." The cache then uses the replies to choose from which cache to resolve its own MISS.
 
@@ -39,12 +39,12 @@ There are several open issues for the caching project namely more automatic load
 
 For our other to-do list items, please see our "TODO" file in the recent source distributions.
 
-Prospective developers should review the resources available at the [http://www.squid-cache.org/Devel/ Squid developers corner]
+Prospective developers should review the resources available at the [[http://www.squid-cache.org/Devel/|Squid developers corner]]
 
 == Tell me more about Internet traffic workloads ==
 Workload can be characterized as the burden a client or group of clients imposes on a system.  Understanding the nature of workloads is important to the managing system capacity.
 
-If you are interested in Internet traffic workloads then NLANR's [http://www.nlanr.net/NA/ Network Analysis activities] is a good place to start.
+If you are interested in Internet traffic workloads then NLANR's [[http://www.nlanr.net/NA/|Network Analysis activities]] is a good place to start.
 
 == What are the tradeoffs of caching with the NLANR cache system? ==
 The NLANR root caches are at the NSF supercomputer centers (SCCs), which are interconnected via NSF's high speed backbone service (vBNS).  So inter-cache communication between the NLANR root caches does not cross the Internet.
@@ -52,7 +52,7 @@ The NLANR root caches are at the NSF supercomputer centers (SCCs), which are int
 The benefits of hierarchical caching (namely, reduced network bandwidth consumption, reduced access latency, and improved resiliency) come at a price.  Caches higher in the hierarchy must field  the misses of their descendents. If the equilibrium hit rate of a leaf cache is 50%, half of all leaf references have to be resolved through a second level cache rather than directly from the object's source.  If this second level cache has most of the documents, it is usually still a win, but if higher level caches often don't have the document, or become overloaded, then they could actually increase access latency, rather than reduce it.
 
 == Where can I find out more about firewalls? ==
-Please see the [http://www.faqs.org/faqs/firewalls-faq/ Firewalls FAQ] information site.
+Please see the [[http://www.faqs.org/faqs/firewalls-faq/|Firewalls FAQ]] information site.
 
 == What is the "Storage LRU Expiration Age?" ==
 For example:
@@ -93,12 +93,12 @@ Unfortunately there are times when Squid can not use the ''unlinkd'' process but
 == What is an icon URL? ==
 One of the most unpleasant things Squid must do is generate HTML pages of Gopher and FTP directory listings.  For some strange reason, people like to have little ''icons'' next to each listing entry, denoting the type of object to which the link refers (image, text file, etc.).
 
-We include a set of icons in the source distribution for this purpose. These icon files are loaded by Squid as cached objects at runtime. Thus, every Squid cache now has its own icons to use in Gopher and FTP listings.  Just like other objects available on the web, we refer to the icons with [ftp://ftp.isi.edu/in-notes/rfc1738.txt Uniform Resource Locators], or ''URLs''.
+We include a set of icons in the source distribution for this purpose. These icon files are loaded by Squid as cached objects at runtime. Thus, every Squid cache now has its own icons to use in Gopher and FTP listings.  Just like other objects available on the web, we refer to the icons with [[ftp://ftp.isi.edu/in-notes/rfc1738.txt|Uniform Resource Locators]], or ''URLs''.
 
 == Can I make my regular FTP clients use a Squid cache? ==
 Nope, its not possible.  Squid only accepts HTTP requests.  It speaks FTP on the ''server-side'', but '''not''' on the ''client-side''.
 
-The very cool [ftp://gnjilux.cc.fer.hr/pub/unix/util/wget/ wget] will download FTP URLs via Squid (and probably any other proxy cache).
+The very cool [[ftp://gnjilux.cc.fer.hr/pub/unix/util/wget/|wget]] will download FTP URLs via Squid (and probably any other proxy cache).
 
 == Why is the select loop average time so high? ==
 ''Is there any way to speed up the time spent dealing with select''? Cachemgr shows:
@@ -124,7 +124,7 @@ Select loop called: 84319441 times, 9.578 ms avg
 == How does Squid deal with Cookies? ==
 The presence of Cookies headers in '''requests''' does not affect whether or not an HTTP reply can be cached.   Similarly, the presense of ''Set-Cookie'' headers in '''replies''' does not affect whether the reply can be cached.
 
-The proper way to deal with ''Set-Cookie'' reply headers, according to  [ftp://ftp.isi.edu/in-notes/rfc2109.txt RFC 2109] is to cache the whole object, ''EXCEPT'' the ''Set-Cookie'' header lines.
+The proper way to deal with ''Set-Cookie'' reply headers, according to  [[ftp://ftp.isi.edu/in-notes/rfc2109.txt|RFC 2109]] is to cache the whole object, ''EXCEPT'' the ''Set-Cookie'' header lines.
 
 However, we can filter out specific HTTP headers.  But instead of filtering them on the receiving-side, we filter them on the sending-side. Thus, Squid does cache replies with ''Set-Cookie'' headers, but it filters out the ''Set-Cookie'' header itself for cache hits.
 
@@ -193,7 +193,7 @@ Sometimes reading on the server-side gets ahead of writing to the client-side.  
 == Why is my cache's inbound traffic equal to the outbound traffic? ==
 ''I've been monitoring the traffic on my cache's ethernet adapter an found a behavior I can't explain: the inbound traffic is equal to the outbound traffic. The differences are negligible. The hit ratio reports 40%. Shouldn't the outbound be at least 40% greater than the inbound?''
 
-by  [mailto:david@avarice.nepean.uws.edu.au David J N Begley]
+by  [[mailto:david@avarice.nepean.uws.edu.au|David J N Begley]]
 
 I can't account for the exact behavior you're seeing, but I can offer this advice;  whenever you start measuring raw Ethernet or IP traffic on interfaces, you can forget about getting all the numbers to exactly match what Squid reports as the amount of traffic it has sent/received.
 
@@ -277,12 +277,12 @@ The Squid cache uses the notions of ''private'' and ''public'' cache keys.  An o
 Objects are changed from private to public after all of the HTTP reply headers have been received and parsed.  In some cases, the reply headers will indicate the object should not be made public. For example, if the ''no-cache'' Cache-Control directive is used.
 
 == What is FORW_VIA_DB for? ==
-We use it to collect data for  [http://www.ircache.net/Cache/Plankton/ Plankton].
+We use it to collect data for  [[http://www.ircache.net/Cache/Plankton/|Plankton]].
 
 == Does Squid send packets to port 7 (echo)?  If so, why? ==
 It may.  This is an old feature from the Harvest cache software. The cache would send ICP "SECHO" message to the echo ports of origin servers.  If the SECHO message came back before any of the other ICP replies, then it meant the origin server was probably closer than any neighbor cache.  In that case Harvest/Squid sent the request directly to the origin server.
 
-With more attention focused on security, many administrators filter UDP packets to port 7.  The Computer Emergency Response Team (CERT) once issued an advisory note ( [http://www.cert.org/advisories/CA-96.01.UDP_service_denial.html CA-96.01: UDP Port Denial-of-Service Attack]) that says UDP echo and chargen services can be used for a denial of service attack.  This made admins extremely nervous about any packets hitting port 7 on their systems, and they made complaints.
+With more attention focused on security, many administrators filter UDP packets to port 7.  The Computer Emergency Response Team (CERT) once issued an advisory note ( [[http://www.cert.org/advisories/CA-96.01.UDP_service_denial.html|CA-96.01: UDP Port Denial-of-Service Attack]]) that says UDP echo and chargen services can be used for a denial of service attack.  This made admins extremely nervous about any packets hitting port 7 on their systems, and they made complaints.
 
 The ''source_ping'' feature has been disabled in Squid-2.  If you're seeing packets to port 7 that are coming from a Squid cache (remote port 3130), then its probably a very old version of Squid.
 
@@ -358,10 +358,10 @@ Then, in ''squid.conf'', you can select different policies with the ''cache_repl
 The LFUDA and GDS replacement code was contributed by John Dilley and others from Hewlett-Packard.  Their work is described in these papers:
 
  . -
-[http://www.hpl.hp.com/techreports/1999/HPL-1999-69.html Enhancement and Validation of Squid's Cache Replacement Policy] (HP Tech Report).
+[[http://www.hpl.hp.com/techreports/1999/HPL-1999-69.html|Enhancement and Validation of Squid's Cache Replacement Policy]] (HP Tech Report).
 
  . -
-[http://workshop.ircache.net/Papers/dilley-abstract.html Enhancement and Validation of the Squid Cache Replacement Policy] (WCW 1999 paper).
+[[http://workshop.ircache.net/Papers/dilley-abstract.html|Enhancement and Validation of the Squid Cache Replacement Policy]] (WCW 1999 paper).
 
 == Why is actual filesystem space used greater than what Squid thinks? ==
 If you compare ''df'' output and cachemgr ''storedir'' output, you will notice that actual disk usage is greater than what Squid reports.  This may be due to a number of reasons:
@@ -428,7 +428,7 @@ When Squid wants to make an ident query, it creates a new TCP socket and ''binds
 
 ''So why bind in that way? If you know you are interception proxying, then why not bind the local endpoint to the host's (intranet) IP address? Why make the masses suffer needlessly?''
 
-Because thats just how ident works.   Please read  [ftp://ftp.isi.edu/in-notes/rfc931.txt RFC 931], in particular the RESTRICTIONS section.
+Because thats just how ident works.   Please read  [[ftp://ftp.isi.edu/in-notes/rfc931.txt|RFC 931]], in particular the RESTRICTIONS section.
 
 == dnsSubmit: queue overload, rejecting blah ==
 This means that you are using external ''dnsserver'' processes for lookups, and all processes are busy, and Squid's pending queue is full.  Each ''dnsserver'' program can only handle one request at a time.  When all ''dnsserver'' processes are busy, Squid queues up requests, but only to a certain point.
