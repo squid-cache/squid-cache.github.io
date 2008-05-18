@@ -2,7 +2,7 @@
 ## page was renamed from PerformanceAnalisys
 #language en
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 = How to analyze whether squid is performing well =
 
