@@ -34,6 +34,6 @@ will force non-resolvable names to be forwarded to the proxy immediately. This s
 
 '''Thanks'''
 
-Thanks to [[MailTo(riffle AT klamathcc DOT edu,Brian Riffle)]] for reporting the issue and successfully applying the suggested fix and [[MailTo(David.Gameau AT unisa DOT edu DOT au,David Gameau)]] for identifying the problem and suggesting the workaround.
+Thanks to <<MailTo(riffle AT klamathcc DOT edu,Brian Riffle)>> for reporting the issue and successfully applying the suggested fix and <<MailTo(David.Gameau AT unisa DOT edu DOT au,David Gameau)>> for identifying the problem and suggesting the workaround.
 ----
 CategoryKnowledgeBase
