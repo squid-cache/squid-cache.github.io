@@ -1,6 +1,6 @@
 #language en
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 = Refcount Data Allocator (C++ Only) =
 
