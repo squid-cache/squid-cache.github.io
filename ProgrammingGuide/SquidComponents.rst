@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 
 = Overview of Squid Components =
@@ -381,7 +381,7 @@ We are experimenting with URN support in Squid version 1.2.
 Note, we're not talking full-blown generic URN's here. This
 is primarily targeted toward using URN's as an smart way
 of handling lists of mirror sites.  For more details, please
-see [http://squid.nlanr.net/Squid/urn-support.html URN support in Squid].
+see [[http://squid.nlanr.net/Squid/urn-support.html|URN support in Squid]].
 
 == ESI ==
 
