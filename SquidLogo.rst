@@ -10,12 +10,12 @@ Here you can find a sample of other applicants.
 
 Thanks to all who contributed!
 
-|| attachment:squid-logo-rpivato-1.png ||
-|| Designed by [:rpivato:Rafael Pivato] ||
+|| {{attachment:squid-logo-rpivato-1.png}} ||
+|| Designed by [[rpivato|Rafael Pivato]] ||
 
-|| attachment:squid-logo-lucky-1.gif ||
+|| {{attachment:squid-logo-lucky-1.gif}} ||
 || Designed by Luciano Costarelli ||
 
-|| attachment:squid-logo-lucky-2.gif ||
+|| {{attachment:squid-logo-lucky-2.gif}} ||
 || Designed by Luciano Costarelli ||
 This logo was used for this wiki, and so far seems to be the most-liked one among the developers.
