@@ -5,7 +5,7 @@ I'm one of the core team Squid developers. Currently I'm the maintainer of the n
 
 More information about me can be found on my personal homepage http://www.serassio.it/.
 
-Email: [[MailTo(serassio AT SPAMFREE squid-cache DOT org)]]
+Email: <<MailTo(serassio AT SPAMFREE squid-cache DOT org)>>
 
 ----
  . CategoryHomepage
