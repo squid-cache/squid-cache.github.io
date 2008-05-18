@@ -1,7 +1,7 @@
-[[TableOfContents()]]
+<<TableOfContents>>
 
 = Overview =
-For squid 3.x we are migrating the development trunk and web code browsers to [http://bazaar-vcs.org/ Bazaar].
+For squid 3.x we are migrating the development trunk and web code browsers to [[http://bazaar-vcs.org/|Bazaar]].
 
 = Bazaar =
 Bazaar is a distributed VCS written in python. It offers both drop-in CVS replacement workflow (use checkouts to work on code), and full distributed workflow (every copy is a new branch), up to the user to work as they want.
@@ -232,7 +232,7 @@ bzr commit -m "Merge feature FOO"
 
 == diffing against arbitrary revisions/branches ==
 
-To diff against a different branch there are several options. The most common and most useful one is 'ancestor' and will give you the diff since the most recent merge of that other branch. If there is a third branch that has been merged into both your branch and the one you are diffing, it's changes will appear in the diff. There is work underway to provide diffs that handle any merge pattern more gracefully - see [http://bundlebuggy.aaronbentley.com/request/<47730F98.2030405@utoronto.ca> merge-preview] as the start of the work in bzr.
+To diff against a different branch there are several options. The most common and most useful one is 'ancestor' and will give you the diff since the most recent merge of that other branch. If there is a third branch that has been merged into both your branch and the one you are diffing, it's changes will appear in the diff. There is work underway to provide diffs that handle any merge pattern more gracefully - see [[http://bundlebuggy.aaronbentley.com/request/<47730F98.2030405@utoronto.ca>|merge-preview]] as the start of the work in bzr.
 
 {{{
 cd MYBRANCH
