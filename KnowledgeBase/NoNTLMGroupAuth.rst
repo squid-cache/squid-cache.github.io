@@ -37,7 +37,7 @@ To verify, use:
 
 '''Thanks'''
 
-Thanks to [[MailTo(dwhitehead AT seacrestvillage DOT org,David Whitehead)]] for working with the Squid team to resolve and document this issue.
+Thanks to <<MailTo(dwhitehead AT seacrestvillage DOT org,David Whitehead)>> for working with the Squid team to resolve and document this issue.
 
 ----
 CategoryKnowledgeBase
