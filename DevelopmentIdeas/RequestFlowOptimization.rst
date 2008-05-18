@@ -17,8 +17,8 @@ The request flow should be as clean as possible
 
 Due to requirement '3', I think we should drop the idea of joined requests where there is more than one client. Better if we simply support storage of partial objects, and then ignores the whole issue.
 
-[:Henrik Nordström]
+[[Henrik_Nordström]]
 
 '''Discussion'''
 
-[[Date(2007-03-02T19:39:29Z)]] AdrianChadd is working on this in the [Squid-2.6] codebase.
+<<Date(2007-03-02T19:39:29Z)>> AdrianChadd is working on this in the [Squid-2.6] codebase.
