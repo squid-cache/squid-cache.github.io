@@ -1,6 +1,6 @@
 #language en
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 = Callback Data Allocator =
 
