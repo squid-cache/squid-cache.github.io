@@ -4,13 +4,13 @@
 ## [[TableOfContents]]
 
 == Next-Generation Source Control solution ==
-/!\ a wide consensus has been reached towards replacing CVS with another more modern Version Control solution. Please see [:Squid3VCS].
+/!\ a wide consensus has been reached towards replacing CVS with another more modern Version Control solution. Please see [[Squid3VCS]].
 
 
 == CVS access to current Squid source ==
-If you need to get CVS, start at [http://www.cvshome.org/ CVSHome].
+If you need to get CVS, start at [[http://www.cvshome.org/|CVSHome]].
 
-If you need to learn about CVS, read this great [http://www.network-theory.co.uk/docs/cvsmanual/ reference manual].
+If you need to learn about CVS, read this great [[http://www.network-theory.co.uk/docs/cvsmanual/|reference manual]].
 
 To checkout the current source tree from our CVS server:
 
@@ -39,10 +39,10 @@ To update your source tree later, type:
 }}}
 
 == Browsing the current CVS sources ==
-To view the CVS history online and browse the current sourecs use the [http://www.squid-cache.org/cgi-bin/cvsweb.cgi CVSWeb interface].
+To view the CVS history online and browse the current sourecs use the [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb interface]].
 
 == Access to developer branches ==
-Many works in progress are hosted in our public [http://devel.squid-cache.org/CVS.html developer CVS] respository. Information for developers and testers is on the developer site at http://devel.squid-cache.org/
+Many works in progress are hosted in our public [[http://devel.squid-cache.org/CVS.html|developer CVS]] respository. Information for developers and testers is on the developer site at http://devel.squid-cache.org/
 
 == Access to older Squid version ==
 To access older Squid releases use the same procedure as above to login and then checkout the specific version sources
