@@ -2,32 +2,32 @@
 
 = Compiling Squid =
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == Which file do I download to get Squid? ==
 
 You must download a source archive file of the form
 squid-x.y.tar.gz or squid-x.y.tar.bz2 (eg, squid-2.5.STABLE14.tar.bz2).
-We recommend you first try one of our [http://www.squid-cache.org/Mirrors/http-mirrors.html mirror sites].
+We recommend you first try one of our [[http://www.squid-cache.org/Mirrors/http-mirrors.html|mirror sites]].
 
 Alternatively, the main Squid WWW site 
-[http://www.squid-cache.org/ www.squid-cache.org], and FTP site
-[ftp://www.squid-cache.org/pub/ ftp.squid-cache.org] have these files.
+[[http://www.squid-cache.org/|www.squid-cache.org]], and FTP site
+[[ftp://www.squid-cache.org/pub/|ftp.squid-cache.org]] have these files.
 
 Context diffs are available for upgrading to new versions.
 These can be applied with the ''patch'' program (available from
-[ftp://ftp.gnu.org/gnu/patch the GNU FTP site] or your distribution).
+[[ftp://ftp.gnu.org/gnu/patch|the GNU FTP site]] or your distribution).
 
 == Do you have pre-compiled binaries available? ==
 
-The squid core team members do not have the resources to make pre-compiled binaries available. Instead, we invest effort into making the source code very portable. Some contributors have made binary packages available. Please see our [http://www.squid-cache.org/platforms.html Platforms Page].
+The squid core team members do not have the resources to make pre-compiled binaries available. Instead, we invest effort into making the source code very portable. Some contributors have made binary packages available. Please see our [[http://www.squid-cache.org/platforms.html|Platforms Page]].
 
- * The [http://freeware.sgi.com/ SGI Freeware] site has pre-compiled packages for SGI IRIX.
- * Squid binaries for [http://www.freebsd.org/cgi/ports.cgi?query=squid-2&stype=all FreeBSD on Alpha and Intel].
- * Squid binaries for [ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid/README.html NetBSD on everything]
- * Gurkan Sengun has some [http://www.linuks.mine.nu/solaris/ Sparc/Solaris packages] available.
- * Squid binaries for [http://www.acmeconsulting.it/SquidNT/download.html Windows].
+ * The [[http://freeware.sgi.com/|SGI Freeware]] site has pre-compiled packages for SGI IRIX.
+ * Squid binaries for [[http://www.freebsd.org/cgi/ports.cgi?query=squid-2&stype=all|FreeBSD on Alpha and Intel]].
+ * Squid binaries for [[ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid/README.html|NetBSD on everything]]
+ * Gurkan Sengun has some [[http://www.linuks.mine.nu/solaris/|Sparc/Solaris packages]] available.
+ * Squid binaries for [[http://www.acmeconsulting.it/SquidNT/download.html|Windows]].
 
 == How do I compile Squid? ==
 
@@ -56,12 +56,12 @@ just fine.  The old ''SunOS'' compilers do not have support for ANSI
 C, and the Sun compiler for ''Solaris'' is a product which
 must be purchased separately.
 
-If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems.  It is also well tested with Squid.  If your OS does not come with GCC you may download it from [ftp://ftp.gnu.org/gnu/gcc the GNU FTP site].
+If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems.  It is also well tested with Squid.  If your OS does not come with GCC you may download it from [[ftp://ftp.gnu.org/gnu/gcc|the GNU FTP site]].
 In addition to gcc, you may also want or need to install the ''binutils'' package.
 
 === What else do I need to compile Squid? ===
 
-You will need [http://www.perl.com/ Perl] installed on your system.
+You will need [[http://www.perl.com/|Perl]] installed on your system.
 
 === How do I apply a patch or a diff? ===
 
@@ -87,7 +87,7 @@ make install
 
 If your ''patch'' program seems to complain or refuses to work,
 you should get a more recent version, from the
-[ftp://ftp.gnu.ai.mit.edu/pub/gnu/ GNU FTP site], for example.
+[[ftp://ftp.gnu.ai.mit.edu/pub/gnu/|GNU FTP site]], for example.
 
 Ideally you should use the patch command which comes with your OS.
 
@@ -242,10 +242,10 @@ The following ./configure options install Squid into the RedHat structure proper
 
 In order to compile squid using the MinGW environment, the packages MSYS, MinGW and msysDTK must be installed. Some additional libraries and tools must be downloaded separately:
 
- * OpenSSL: [http://www.slproweb.com/products/Win32OpenSSL.html Shining Light Productions Win32 OpenSSL]
- * libcrypt: [http://sourceforge.net/projects/mingwrep/ MinGW packages repository]
- * db-1.85: [http://tinycobol.org/download.html TinyCOBOL download area]
- * uudecode: [http://unxutils.sourceforge.net/ Native Win32 ports of some GNU utilities]
+ * OpenSSL: [[http://www.slproweb.com/products/Win32OpenSSL.html|Shining Light Productions Win32 OpenSSL]]
+ * libcrypt: [[http://sourceforge.net/projects/mingwrep/|MinGW packages repository]]
+ * db-1.85: [[http://tinycobol.org/download.html|TinyCOBOL download area]]
+ * uudecode: [[http://unxutils.sourceforge.net/|Native Win32 ports of some GNU utilities]]
 
 Unpack the source archive as usual and run configure.
 
@@ -271,7 +271,7 @@ Always check the provided release notes for any version specific detail.
 
 === OS/2 ===
 
-by Doug Nazar ([[MailTo(nazard AT man-assoc DOT on DOT ca)]]).
+by Doug Nazar (<<MailTo(nazard AT man-assoc DOT on DOT ca)>>).
 
 In order in compile squid, you need to have a reasonable facsimile of a
 Unix system installed.  This includes ''bash'', ''make'', ''sed'',
@@ -326,7 +326,7 @@ on your system, then it substitues ''false''.
 To fix this you either need to:
 
   * Add ''/usr/ccs/bin'' to your PATH.  This is where the ''ar'' command should be.  You need to install SUNWbtool if ''ar'' is not there.  Otherwise,
-  * Install the '''binutils''' package from [ftp://ftp.gnu.org/gnu/binutils the GNU FTP site]. This package includes programs such as ''ar'', ''as'', and ''ld''.
+  * Install the '''binutils''' package from [[ftp://ftp.gnu.org/gnu/binutils|the GNU FTP site]]. This package includes programs such as ''ar'', ''as'', and ''ld''.
 
 
 === Other Platforms ===
@@ -348,8 +348,8 @@ please do so and send us the patches.
 
 == undefined reference to __inet_ntoa ==
 
-by Kevin Sartorelli ([[MailTo(SarKev AT topnz DOT ac DOT nz)]])
-and Andreas Doering ([[MailTo([doering AT usf DOT uni-kassel DOT de)]]).
+by Kevin Sartorelli (<<MailTo(SarKev AT topnz DOT ac DOT nz)>>)
+and Andreas Doering (<<MailTo([doering AT usf DOT uni-kassel DOT de)>>).
 
 Probably you've recently installed bind 8.x.  There is a mismatch between
 the header files and DNS library that Squid has found.  There are a couple
