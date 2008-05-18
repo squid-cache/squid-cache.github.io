@@ -1,7 +1,7 @@
 #format wiki
 #language en
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Using multiple upstream providers ==
 
