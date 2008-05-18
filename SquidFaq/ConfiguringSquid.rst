@@ -2,7 +2,7 @@
 
 = Configuring Squid =
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 
@@ -31,11 +31,11 @@ option.
 
 From 2.6 the Squid developers also provide a set of Configuration Guides online. They list all the options each version of Squid can accept in its squid.conf file, including the current development test releases.
 
- * [http://www.squid-cache.org/Versions/v2/2.6/cfgman/ Squid 2.6] Configuration Guide
- * [http://www.squid-cache.org/Versions/v2/2.7/cfgman/ Squid 2.7] Configuration Guide
- * [http://www.squid-cache.org/Versions/v3/3.0/cfgman/ Squid 3.0] Configuration Guide
- * [http://www.squid-cache.org/Versions/v2/HEAD/cfgman/ Squid 2-HEAD] Configuration Guide
- * [http://www.squid-cache.org/Versions/v2/HEAD/cfgman/ Squid 3-HEAD] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v2/2.6/cfgman/|Squid 2.6]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v2/2.7/cfgman/|Squid 2.7]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v3/3.0/cfgman/|Squid 3.0]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v2/HEAD/cfgman/|Squid 2-HEAD]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v2/HEAD/cfgman/|Squid 3-HEAD]] Configuration Guide
 
 
 == How do I join a cache hierarchy? ==
@@ -75,7 +75,7 @@ cache_peer_domain sd.cache.nlanr.net     .mx .za .mu .zm
 The configuration above indicates that the cache will use ''pb.cache.nlanr.net'' and ''it.cache.nlanr.net'' for domains uk, de, fr, no, se and it, ''sd.cache.nlanr.net'' for domains mx, za, mu and zm, and ''cache1.nzgate.net.nz'' for domains au, aq, fj, and nz.
 
 == How do I join NLANR's cache hierarchy? ==
-We have a simple set of [http://www.ircache.net/Cache/joining.html guidelines for joining] the NLANR cache hierarchy.
+We have a simple set of [[http://www.ircache.net/Cache/joining.html|guidelines for joining]] the NLANR cache hierarchy.
 
 == Why should I want to join NLANR's cache hierarchy? ==
 The NLANR hierarchy can provide you with an initial source for parent or sibling caches.  Joining the NLANR global cache system will frequently improve the performance of your caching service.
@@ -89,7 +89,7 @@ announce_to sd.cache.nlanr.net:3131
 }}}
 || <!> ||Announcing your cache '''is not''' the same thing as joining the NLANR cache hierarchy. You can join the NLANR cache hierarchy without registering, and you can register without joining the NLANR cache hierarchy ||
 == How do I find other caches close to me and arrange parent/child/sibling relationships with them? ==
-Visit the NLANR cache [http://www.ircache.net/Cache/Tracker/ registration database] to discover other caches near you.  Keep in mind that just because a cache is registered in the database '''does not''' mean they are willing to be your parent/sibling/child.  But it can't hurt to ask...
+Visit the NLANR cache [[http://www.ircache.net/Cache/Tracker/|registration database]] to discover other caches near you.  Keep in mind that just because a cache is registered in the database '''does not''' mean they are willing to be your parent/sibling/child.  But it can't hurt to ask...
 
 == My cache registration is not appearing in the Tracker database. ==
  * Your site will not be listed if your cache IP address does not have a DNS PTR record. If we can't map the IP address back to a domain name, it will be listed as "Unknown."
@@ -180,7 +180,7 @@ If you're getting "disk full" write errors, then you definately need to decrease
 With Squid-2, you will not lose your existing cache. You can add and delete cache_dir lines without affecting any of the others.
 
 == Squid and http-gw from the TIS toolkit. ==
-Several people on both the fwtk-users and the squid-users mailing asked about using Squid in combination with http-gw from the [http://www.tis.com/ TIS toolkit]. The most elegant way in my opinion is to run an internal Squid caching proxyserver which handles client requests and let this server forward it's requests to the http-gw running on the firewall. Cache hits won't need to be handled by the firewall.
+Several people on both the fwtk-users and the squid-users mailing asked about using Squid in combination with http-gw from the [[http://www.tis.com/|TIS toolkit]]. The most elegant way in my opinion is to run an internal Squid caching proxyserver which handles client requests and let this server forward it's requests to the http-gw running on the firewall. Cache hits won't need to be handled by the firewall.
 
 In this example Squid runs on the same server as the http-gw, Squid uses 8000 and http-gw uses 8080 (web).  The local domain is home.nl.
 
@@ -256,7 +256,7 @@ Disadvantages:
 
  * The internal Squid proxyserver can't (and shouldn't) work with other parent or neighbor caches.
  * Initial requests are slower because these go through http-gw, http-gw also does reverse lookups. Run a nameserver on the firewall or use an internal nameserver.
-(contributed by [mailto:RvdOever@baan.nl Rodney van den Oever])
+(contributed by [[mailto:RvdOever@baan.nl|Rodney van den Oever]])
 
 == What is "HTTP_X_FORWARDED_FOR"?  Why does squid provide it to WWW servers, and how can I stop it? ==
 When a proxy-cache is used, a server does not see the connection coming from the originating client.  Many people like to implement access controls based on the client address. To accommodate these people, Squid adds its own request header called "X-Forwarded-For" which looks like this:
@@ -268,7 +268,7 @@ Entries are always IP addresses, or the word unknown if the address could not be
 
 We must note that access controls based on this header are extremely weak and simple to fake.  Anyone may hand-enter a request with any IP address whatsoever.  This is perhaps the reason why client IP addresses have been omitted from the HTTP/1.1 specification.
 
-Because of the weakness of this header, support for access controls based on X-Forwarded-For is not yet available in any officially released version of squid.  However, unofficial patches are available from the [http://devel.squid-cache.org/follow_xff/index.html follow_xff] Squid development project and may be integrated into later versions of Squid once a suitable trust model have been developed.'' ''
+Because of the weakness of this header, support for access controls based on X-Forwarded-For is not yet available in any officially released version of squid.  However, unofficial patches are available from the [[http://devel.squid-cache.org/follow_xff/index.html|follow_xff]] Squid development project and may be integrated into later versions of Squid once a suitable trust model have been developed.'' ''
 
 == Can Squid anonymize HTTP requests? ==
 Yes it can, however the way of doing it has changed from earlier versions of squid. As of squid-2.2 a more customisable method has been introduced. Please follow the instructions for the version of squid that you are using. As a default, no anonymizing is done.
@@ -280,7 +280,7 @@ With the introduction of squid 2.2 the anonoymizer has become more customisable.
 
 For details see the documentation of the http_header_access and header_replace directives in squid.conf.default.
 
-References: [http://www.iks-jena.de/mitarb/lutz/anon/web.en.html Anonymous WWW]
+References: [[http://www.iks-jena.de/mitarb/lutz/anon/web.en.html|Anonymous WWW]]
 
 == Can I make Squid go direct for some sites? ==
 Sure, just use the always_direct access list.
