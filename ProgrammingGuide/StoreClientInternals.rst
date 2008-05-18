@@ -5,7 +5,7 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
 
-By ["Henrik Nordström"]:
+By [[Henrik_Nordström]]:
 
 {{{
 Given the StoreEntry pointer for a cached object, how can I read its contents (HTML text)?
