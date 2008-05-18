@@ -1,7 +1,7 @@
 #format wiki
 #language en
 
-[[TableOfContents(2)]]
+<<TableOfContents(2)>>
 
 = Storage Manager =
 
