@@ -1,4 +1,4 @@
-[[TableOfContents]]
+<<TableOfContents>>
 
 == What is COSS? ==
 
@@ -17,7 +17,7 @@ Yes.  At the time of writing COSS is the fastest performing cache_dir available 
 
 
 You need to run Squid version
-[http://www.squid-cache.org/Versions/v2/2.6 2.6] or later to be able to run a stable version of COSS.
+[[http://www.squid-cache.org/Versions/v2/2.6|2.6]] or later to be able to run a stable version of COSS.
 
 To configure Squid for COSS, use the ''--enable-storeio'' option (and the --enable-coss-aio-ops to enable async I/O):
 {{{
