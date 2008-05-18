@@ -1,10 +1,10 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == Solaris ==
 === TCP incompatibility? ===
-J.D. Bronson (jb at ktxg dot com) reported that his Solaris box could not talk to certain origin servers, such as [http://moneycentral.msn.com/ moneycentral.msn.com] and  [http://www.mbnanetaccess.com www.mbnanetaccess.com]. J.D. fixed his problem by setting:
+J.D. Bronson (jb at ktxg dot com) reported that his Solaris box could not talk to certain origin servers, such as [[http://moneycentral.msn.com/|moneycentral.msn.com]] and  [[http://www.mbnanetaccess.com|www.mbnanetaccess.com]]. J.D. fixed his problem by setting:
 
 {{{
 tcp_xmit_hiwat 49152
@@ -20,7 +20,7 @@ For older Squid versions you can enable ''poll()'' manually by changing HAVE_POL
 libmalloc.a is leaky.  Squid's configure does not use -lmalloc on Solaris.
 
 === DNS lookups and ''nscd'' ===
-by  [mailto:david@avarice.nepean.uws.edu.au David J N Begley].
+by  [[mailto:david@avarice.nepean.uws.edu.au|David J N Begley]].
 
 DNS lookups can be slow because of some mysterious thing called '''ncsd'''.  You should edit ''/etc/nscd.conf'' and make it say:
 
@@ -29,14 +29,14 @@ enable-cache            hosts           no
 }}}
 Apparently nscd serializes DNS queries thus slowing everything down when an application (such as Squid) hits the resolver hard.  You may notice something similar if you run a log processor executing many DNS resolver queries - the resolver starts to slow.. right.. down.. .  .   .
 
-According to [mailto:andre at online dot ee Andres Kroonmaa], users of Solaris starting from version 2.6 and up should NOT completely disable ''nscd'' daemon. ''nscd'' should be running and caching passwd and group files, although it is suggested to disable hosts caching as it may interfere with DNS lookups.
+According to [[mailto:andre|at online dot ee Andres Kroonmaa]], users of Solaris starting from version 2.6 and up should NOT completely disable ''nscd'' daemon. ''nscd'' should be running and caching passwd and group files, although it is suggested to disable hosts caching as it may interfere with DNS lookups.
 
 Several library calls rely on available free FILE descriptors FD < 256. Systems running without nscd may fail on such calls if first 256 files are all in use.
 
 Since solaris 2.6 Sun has changed the way some system calls work and is using ''nscd'' daemon as a implementor of them. To communicate to ''nscd'' Solaris is using undocumented door calls. Basically ''nscd'' is used to reduce memory usage of user-space system libraries that use passwd and group files. Before 2.6 Solaris cached full passwd file in library memory on the first use but as this was considered to use up too much ram on large multiuser systems Sun has decided to move implementation of these calls out of libraries and to a single dedicated daemon.
 
 === DNS lookups and /etc/nsswitch.conf ===
-by  [mailto:ARMISTEJ@oeca.otis.com Jason Armistead].
+by  [[mailto:ARMISTEJ@oeca.otis.com|Jason Armistead]].
 
 The ''/etc/nsswitch.conf'' file determines the order of searches for lookups (amongst other things).  You might only have it set up to allow NIS and HOSTS files to work.  You definitely want the "hosts:" line to include the word ''dns'', e.g.:
 
@@ -44,7 +44,7 @@ The ''/etc/nsswitch.conf'' file determines the order of searches for lookups (am
 hosts:      nis dns [NOTFOUND=return] files
 }}}
 === DNS lookups and NIS ===
-by  [mailto:cudch@csv.warwick.ac.uk Chris Tilbury].
+by  [[mailto:cudch@csv.warwick.ac.uk|Chris Tilbury]].
 
 Our site cache is running on a Solaris 2.6 machine. We use NIS to distribute authentication and local hosts information around and in common with our multiuser systems, we run a slave NIS server on it to help the response of NIS queries.
 
@@ -63,7 +63,7 @@ If you're running in this kind of setup, then you will want to make sure that
 We changed these here, and saw our average lookup times drop by up to an order of magnitude (~150msec for name-ip queries and ~1.5sec for ip-name queries, the latter still so high, I suspect, because more of these fail and timeout since they are not made so often and the entries are frequently non-existent anyway).
 
 === Tuning ===
-Have a look at [http://www.sean.de/Solaris/soltune.html Tuning your TCP/IP stack and more] by  Jens-S. Voeckler.
+Have a look at [[http://www.sean.de/Solaris/soltune.html|Tuning your TCP/IP stack and more]] by  Jens-S. Voeckler.
 
 === disk write error: (28) No space left on device ===
 You might get this error even if your disk is not full, and is not out of inodes.  Check your syslog logs (/var/adm/messages, normally) for messages like either of these:
@@ -80,10 +80,10 @@ The first is to buy a copy of VxFS, the Veritas Filesystem. This is an extent-ba
 
 The second is to change certain parameters of the UFS filesystem. Unmount your cache filesystems and use tunefs to change optimization to "space" and to reduce the "minfree" value to 3-5% (under Solaris 2.6 and higher, very large filesystems will almost certainly have a minfree of 2% already and you shouldn't increase this). You should be able to get fragmentation down to around 3% by doing this, with an accompanied increase in the amount of space available.
 
-Thanks to  [mailto:cudch@csv.warwick.ac.uk Chris Tilbury].
+Thanks to  [[mailto:cudch@csv.warwick.ac.uk|Chris Tilbury]].
 
 === Solaris X86 and IPFilter ===
-by  [mailto:jeff@sisna.com Jeff Madison]
+by  [[mailto:jeff@sisna.com|Jeff Madison]]
 
 Important update regarding Squid running on Solaris x86.  I have been working for several months to resolve what appeared to be a memory leak in squid when running on Solaris x86 regardless of the malloc that was used.  I have made 2 discoveries that anyone running Squid on this platform may be interested in.
 
@@ -94,7 +94,7 @@ Number 2:  There is some type of resource problem, memory or other, with IPFilte
 Because the problem appears to be with IPFilter  I would guess that you would only run into this issue if you are trying to run Squid as a interception proxy using IPFilter.  That makes sense.  If there is anyone with information that would indicate my finding are incorrect  I am willing to investigate further.
 
 === Changing the directory lookup cache size ===
-by  [mailto:mbatchelor@citysearch.com Mike Batchelor]
+by  [[mailto:mbatchelor@citysearch.com|Mike Batchelor]]
 
 On Solaris, the kernel variable for the directory name lookup cache size is ''ncsize''.  In ''/etc/system'', you might want to try
 
@@ -112,12 +112,12 @@ Solaris 2.5.1 : (max_nprocs + 16 + maxusers) + 64
 Solaris 2.6/Solaris 7 : 4 * (max_nprocs + maxusers) + 320
 }}}
 === The priority_paging algorithm ===
-by [mailto:mbatchelor@citysearch.com Mike Batchelor]
+by [[mailto:mbatchelor@citysearch.com|Mike Batchelor]]
 
 Another new tuneable (actually a toggle) in Solaris 2.5.1, 2.6 or Solaris 7 is the ''priority_paging'' algorithm.  This is actually a complete rewrite of the virtual memory system on Solaris.  It will page out application data last, and filesystem pages first, if you turn it on (set ''priority_paging'' = 1 in ''/etc/system'').  As you may know, the Solaris buffer cache grows to fill available pages, and under the old VM system, applications could get paged out to make way for the buffer cache, which can lead to swap thrashing and degraded application performance.  The new ''priority_paging'' helps keep application and shared library pages in memory, preventing the buffer cache from paging them out, until memory gets REALLY short.  Solaris 2.5.1 requires patch 103640-25 or higher and Solaris 2.6 requires 105181-10 or higher to get priority_paging.  Solaris 7 needs no patch, but all versions have it turned off by default.
 
 === assertion failed: StatHist.c:91: `statHistBin(H, max) == H->capacity - 1' ===
-by  [mailto:mremy@gmx.ch Marc]
+by  [[mailto:mremy@gmx.ch|Marc]]
 
 This crash happen on Solaris, when you don't have the "math.h"  file at the compile time. I guess it can happen on every system without the  correct include, but I have not verified.
 
@@ -206,7 +206,7 @@ You will want to comment out the ''B=-b'' line so that ''ypserv'' does not do DN
 === FreeBSD 3.3: The lo0 (loop-back) device is not configured on startup ===
 Squid requires a the loopback interface to be up and configured.  If it is not, you will get errors such as  [FAQ-11.html#comm-bind-loopback-fail commBind].
 
-From  [http://www.freebsd.org/releases/3.3R/errata.html FreeBSD 3.3 Errata Notes]:
+From  [[http://www.freebsd.org/releases/3.3R/errata.html|FreeBSD 3.3 Errata Notes]]:
 
 {{{
 Fix: Assuming that you experience this problem at all, edit ''/etc/rc.conf''
@@ -217,10 +217,10 @@ be adequately determined.  Since your other interface(s) will already
 be set in the network_interfaces variable after initial installation,
 it's reasonable to simply s/auto/lo0/ in rc.conf and move on.
 }}}
-Thanks to  [mailto:robl at lentil dot org Robert Lister].
+Thanks to  [[mailto:robl|at lentil dot org Robert Lister]].
 
 === FreeBSD 3.x or newer: Speed up disk writes using Softupdates ===
-by  [mailto:andre.albsmeier@mchp.siemens.de Andre Albsmeier]
+by  [[mailto:andre.albsmeier@mchp.siemens.de|Andre Albsmeier]]
 
 FreeBSD 3.x and newer support Softupdates. This is a mechanism to speed up disk writes as it is possible by mounting ufs volumes async. However, Softupdates does this in a way that a performance similar or better than async is achieved but without loosing security in a case of a system crash. For more detailed information and the copyright terms see ''/sys/contrib/softupdates/README'' and ''/sys/ufs/ffs/README.softupdate''.
 
@@ -245,7 +245,7 @@ Some users report problems with running Squid in the jail environment.  Specific
 You can eliminate the problem by putting the jail's network interface address in the 'udp_outgoing_addr' configuration option in ''squid.conf''.
 
 === "Zero Sized Reply" error due to TCP blackholing ===
-by  [mailto:david@landgren.net David Landgren]
+by  [[mailto:david@landgren.net|David Landgren]]
 
 On FreeBSD, make sure that TCP blackholing is not active. You can verify the current setting with:
 
@@ -277,15 +277,15 @@ Some people report [FAQ-2.html#bsdi-compile difficulties compiling squid on BSD/
 === process priority ===
 ''I've noticed that my Squid process seems to stick at a nice value of four, and clicks back to that even after I renice it to a higher priority.  However, looking through the Squid source, I can't find any instance of a setpriority() call, or anything else that would seem to indicate Squid's adjusting its own priority.''
 
-by  [mailto:bogstad@pobox.com Bill Bogstad]
+by  [[mailto:bogstad@pobox.com|Bill Bogstad]]
 
 BSD Unices traditionally have auto-niced non-root processes to 4 after they used alot (4 minutes???) of CPU time.  My guess is that it's the BSD/OS not Squid that is doing this.  I don't know offhand if there is a way to disable this on BSD/OS.
 
-by  [mailto:Arjan.deVet@adv.iae.nl Arjan de Vet]
+by  [[mailto:Arjan.deVet@adv.iae.nl|Arjan de Vet]]
 
 You can get around this by starting Squid with nice-level -4 (or another negative value).
 
-by  [mailto:bert_driehuis at nl dot compuware dot com Bert Driehuis]
+by  [[mailto:bert_driehuis|at nl dot compuware dot com Bert Driehuis]]
 
 The autonice behavior is a leftover from the history of BSD as a university OS. It penalises CPU bound jobs by nicing them after using 600 CPU seconds. Adding
 
@@ -302,7 +302,7 @@ There have been issues with GLIBC in some very old distributions, and upgrading 
 === FATAL: Don't run Squid as root, set 'cache_effective_user'! ===
 Some users have reported that setting ''cache_effective_user'' to ''nobody'' under Linux does not work. However, it appears that using any ''cache_effective_user'' other than ''nobody'' will succeed.  One solution is to create a user account for Squid and set ''cache_effective_user'' to that. Alternately you can change the UID for the ''nobody'' account from 65535 to 65534.
 
-[mailto:galifrey@crown.net Russ Mellon] notes that these problems with ''cache_effective_user'' are fixed in version 2.2.x of the Linux kernel.
+[[mailto:galifrey@crown.net|Russ Mellon]] notes that these problems with ''cache_effective_user'' are fixed in version 2.2.x of the Linux kernel.
 
 === Large ACL lists make Squid slow ===
 The regular expression library which comes with Linux is known to be very slow.  Some people report it entirely fails to work after long periods of time.
@@ -310,14 +310,14 @@ The regular expression library which comes with Linux is known to be very slow. 
 To fix, use the GNUregex library included with the Squid source code. With Squid-2, use the ''--enable-gnuregex'' configure option.
 
 === gethostbyname() leaks memory in RedHat 6.0 with glibc 2.1.1. ===
-by  [mailto:radu at netsoft dot ro Radu Greab]
+by  [[mailto:radu|at netsoft dot ro Radu Greab]]
 
 The gethostbyname() function leaks memory in Red``Hat 6.0 with glibc 2.1.1. The quick fix is to delete nisplus service from hosts entry in ''/etc/nsswitch.conf''. In my tests dnsserver memory use remained stable after I made the above change.
 
-See  [http://developer.redhat.com/bugzilla/show_bug.cgi?id=3919 RedHat bug id 3919].
+See  [[http://developer.redhat.com/bugzilla/show_bug.cgi?id=3919|RedHat bug id 3919]].
 
 === assertion failed: StatHist.c:91: `statHistBin(H, max) == H->capacity - 1' on Alpha system. ===
-by  [mailto:jraymond@gnu.org Jamie Raymond]
+by  [[mailto:jraymond@gnu.org|Jamie Raymond]]
 
 Some early versions of Linux have a kernel bug that causes this. All that is needed is a recent kernel that doesn't have the mentioned bug.
 
@@ -331,7 +331,7 @@ We think this glibc bug is present in versions 2.1.1 (or 2.1.0) and earlier.   T
 === Can't connect to some sites through Squid ===
 When using Squid, some sites may give erorrs such as "(111) Connection refused" or "(110) Connection timed out" although these sites work fine without going through Squid.
 
-Linux 2.6 implements   [http://en.wikipedia.org/wiki/Explicit_Congestion_Notification Explicit Congestion Notification] (ECN) support and this can cause some TCP connections to fail when contacting some sites with broken firewalls or broken TCP/IP implementations.
+Linux 2.6 implements   [[http://en.wikipedia.org/wiki/Explicit_Congestion_Notification|Explicit Congestion Notification]] (ECN) support and this can cause some TCP connections to fail when contacting some sites with broken firewalls or broken TCP/IP implementations.
 
 As of June 2006, the number of sites that fail when ECN is enabled is very low and you may find you benefit more from having this feature enabled than globally turning it off.
 
@@ -363,10 +363,10 @@ invalid use of TCP/IP to evolve beyond the original standards from 1981.
 ECN in it's final form was defined 2001, but earlier specifications was
 circulated several years earlier.
 }}}
-See also the  [http://answerpointe.cctec.com/maillists/nanog/historical/0104/msg00714.html thread on the NANOG mailing list], [ftp://ftp.isi.edu/in-notes/rfc3168.txt RFC3168 &quot;The Addition of Explicit Congestion Notification (ECN) to IP, PROPOSED STANDARD&quot;] ,  [http://www.aciri.org/floyd/ecn.html Sally Floyd's page on ECN and problems related to it] or  [http://urchin.earth.li/ecn/ ECN Hall of Shame] for more  information.
+See also the  [[http://answerpointe.cctec.com/maillists/nanog/historical/0104/msg00714.html|thread on the NANOG mailing list]], [[ftp://ftp.isi.edu/in-notes/rfc3168.txt|RFC3168 &quot;The Addition of Explicit Congestion Notification (ECN) to IP, PROPOSED STANDARD&quot;]] ,  [[http://www.aciri.org/floyd/ecn.html|Sally Floyd's page on ECN and problems related to it]] or  [[http://urchin.earth.li/ecn/|ECN Hall of Shame]] for more  information.
 
 === Some sites load extremely slowly or not at all ===
-You may occasionally have problems with TCP Window Scaling on Linux.  At first you may be able to TCP connect to the site, but then unable to transfer any data across your connection or that data flows extremely slowly.  This is due to some broken firewalls on the Internet (it is not a bug with Linux) mangling the window scaling option when the TCP connection is established.  More details and a workaround can be found at [http://lwn.net/Articles/92727/ lwn.net].
+You may occasionally have problems with TCP Window Scaling on Linux.  At first you may be able to TCP connect to the site, but then unable to transfer any data across your connection or that data flows extremely slowly.  This is due to some broken firewalls on the Internet (it is not a bug with Linux) mangling the window scaling option when the TCP connection is established.  More details and a workaround can be found at [[http://lwn.net/Articles/92727/|lwn.net]].
 
 The reason why this is experienced with Linux and not most other OS:es is that all desktop OS:es advertise a quite small window scaling factor if at all, and therefore the firewall bug goes unnoticed with these OS:es.
 
@@ -375,7 +375,7 @@ The reason why this is experienced with Linux and not most other OS:es is that a
 There is a problem with GCC (2.8.1 at least) on Irix 6 which causes it to always return the string 255.255.255.255 for _ANY_ address when calling inet_ntoa().  If this happens to you, compile Squid with the native C compiler instead of GCC.
 
 == SCO-UNIX ==
-by  [mailto:f.j.bosscha@nhl.nl F.J. Bosscha]
+by  [[mailto:f.j.bosscha@nhl.nl|F.J. Bosscha]]
 
 To make squid run comfortable on SCO-unix you need to do the following:
 
@@ -395,7 +395,7 @@ eg ''LDR_CNTRL="MAXDATA=0x80000000"''; or
 
  * link with ''-bmaxdata:0x80000000''; or
  * patch the squid binary
-See  [http://publibn.boulder.ibm.com/doc_link/en_US/a_doc_lib/aixprggd/genprogc/lrg_prg_support.htm IBM's documentation] on large program support for more information, including how to patch an already-compiled program.
+See  [[http://publibn.boulder.ibm.com/doc_link/en_US/a_doc_lib/aixprggd/genprogc/lrg_prg_support.htm|IBM's documentation]] on large program support for more information, including how to patch an already-compiled program.
 
 -----
 ##end
