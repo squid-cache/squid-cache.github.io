@@ -12,7 +12,7 @@
 The choice of disk storage architecture is an important factor in determining the performance of a Squid cache.
 
 RAID comes is many flavors and with different properties.
-For a technical description of RAID you check the relevant entry in [http://en.wikipedia.org/wiki/RAID Wikipedia].
+For a technical description of RAID you check the relevant entry in [[http://en.wikipedia.org/wiki/RAID|Wikipedia]].
 In a nutshell, RAID is used to increase the reliability of a disk subsystem by redundancy.
 
 Various options exist for the implementation of a disk system for a Squid cache.
@@ -20,7 +20,7 @@ The most important parameters for making a choice for any disk system, are ''pri
 
 Reliability is an important parameter for environments where a large number of people depend on the use of technology; the most common mean of increasing a service's reliability is by redundancy of its critical components.
 RAID disks improve the reliability of a Squid cache while sophisticated disk arrays also add significant performance.
-Alternatively, you may want to use more than one Squid cache and use load-balancing mechanisms such as [http://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol VRRP], external load-balancers or ad-hoc Proxy Auto-Configuration Scripts (see ../ConfiguringBrowsers and [:Technology/ProxyPac]) to achieve higher availability.
+Alternatively, you may want to use more than one Squid cache and use load-balancing mechanisms such as [[http://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol|VRRP]], external load-balancers or ad-hoc Proxy Auto-Configuration Scripts (see ../ConfiguringBrowsers and [[Technology/ProxyPac]]) to achieve higher availability.
 
 In the following paragraphs the various options are described in more detail which are meant as a guideline for choosing the option for your Squid cache.  There are other RAID options which are not discussed here.  They are omitted since the author believes that they do not represent better options than the ones already given.
 
@@ -30,7 +30,7 @@ In the following paragraphs the various options are described in more detail whi
 JBOD stands for "Just a Bunch Of Disks" and is the cheapest implementation in a server for a disk system.
 JBOD has no data protection and a Squid cache fails if a disk that holds one of the cache directories fails.
 
-  {i} There are [:Features/CacheDirFailover:Plans] to make squid more robust against disk failures.
+  {i} There are [[Features/CacheDirFailover|Plans]] to make squid more robust against disk failures.
 
 Since JBOD does not guarantee high availability for the disk subsystem, the easiest way to obtain high reliability is to duplicate the whole cache.
 
@@ -85,7 +85,7 @@ Summary:
 
 Sophisticated disk arrays from all hardware vendors and specialized firms are well known for their extremely high performance, reliability and price tag.
 
-They generally consist of big to enormous storage pools, which then are sliced and virtualized over [http://en.wikipedia.org/wiki/Fiber_channel fiber-channel] or [http://en.wikipedia.org/wiki/ISCSI iSCSI] transport layers. Sophisticated management and caching mechanisms are used to maximize disk throughput. 
+They generally consist of big to enormous storage pools, which then are sliced and virtualized over [[http://en.wikipedia.org/wiki/Fiber_channel|fiber-channel]] or [[http://en.wikipedia.org/wiki/ISCSI|iSCSI]] transport layers. Sophisticated management and caching mechanisms are used to maximize disk throughput. 
 Thanks to those writes can be considered nearly instantaneous, and reads are very fast.
 
 Use only one cache directory per logical disk.
