@@ -5,9 +5,9 @@
 = Configuring a Squid Server to authenticate from Mysql DB =
 By Askar Ali Khan
 
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Outline ==
 
