@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-/!\ Please consider adding new wishes as ["Features"] pages rather than dumping them here. Wishes as Feature pages are more visible, easier to update, easier to keep track of, and easier to add to Squid3 roadmap. Thank you.
+/!\ Please consider adding new wishes as [[Features]] pages rather than dumping them here. Wishes as Feature pages are more visible, easier to update, easier to keep track of, and easier to add to Squid3 roadmap. Thank you.
 
 
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
@@ -16,7 +16,7 @@ This is an attempt to collate and publicise the list of features people would li
 
 If people are interested in partially or fully funding any given Squid project then please contact the Squid developers or the contact person for each project listed below. Organising funding, even if its just a little, is by far the best way to get something done (of course, the best best way is if you've coded it yourself, but we do understand that not everyone can code.)
 
-[[TableOfContents(2)]]
+<<TableOfContents(2)>>
 
 
 == Logfile helpers ==
@@ -35,7 +35,7 @@ The ability to write logfile contents (specifically the access log, but extended
 
 === Progress ===
 
-Prototyping was done using Squid-2 - check the devel site for patches. Work wasn't merged into the ["Squid-2.6"] or Squid-2 tree. Adrian has slated for this work to appear sometime in Squid-3. Tim Starling from the Wikipedia project has contributed some test patches for UDP logging.
+Prototyping was done using Squid-2 - check the devel site for patches. Work wasn't merged into the [[Squid-2.6]] or Squid-2 tree. Adrian has slated for this work to appear sometime in Squid-3. Tim Starling from the Wikipedia project has contributed some test patches for UDP logging.
 
 Its been implemented in squid-2.HEAD. Patches exist for Squid-3 which will be included after Squid-3 has been released.
 
