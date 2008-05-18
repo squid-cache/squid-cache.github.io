@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == How big of a system do I need to run Squid? ==
@@ -22,7 +22,7 @@ with this simple command:
 % make install
 }}}
 
-If you have enabled the [:../OperatingSquid:pinger]
+If you have enabled the [[../OperatingSquid|pinger]]
 then you will also want to type
 {{{
 % su
@@ -235,9 +235,9 @@ You can use the ''squidclient'' program:
 
 There are other command-line HTTP client programs available
 as well.  Two that you may find useful are
-[ftp://gnjilux.cc.fer.hr/pub/unix/util/wget/ wget]
+[[ftp://gnjilux.cc.fer.hr/pub/unix/util/wget/|wget]]
 and
-[ftp://ftp.internatif.org/pub/unix/echoping/ echoping].
+[[ftp://ftp.internatif.org/pub/unix/echoping/|echoping]].
 
 Another way is to use Squid itself to see if it can signal a running
 Squid process:
