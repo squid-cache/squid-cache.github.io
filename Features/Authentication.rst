@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 == How does Proxy Authentication work in Squid? ==
 
@@ -24,7 +24,7 @@ requests to the proxy.
 
 ''NOTE'': The name and password are encoded using "base64"
 (See section 11.1 of
-[ftp://ftp.isi.edu/in-notes/rfc2616.txt RFC 2616]).  However, base64 is a binary-to-text encoding only,
+[[ftp://ftp.isi.edu/in-notes/rfc2616.txt|RFC 2616]]).  However, base64 is a binary-to-text encoding only,
 it does NOT encrypt the information it encodes.  This means that
 the username and password are essentially "cleartext" between
 the browser and the proxy.  Therefore, you probably should not use
@@ -64,7 +64,7 @@ For information on how to set up NTLM authentication see ''winbind'' below.
 In order to authenticate users, you need to compile and install
 one of the supplied authentication modules found in the
 ''helpers/basic_auth''/ directory, one of
-[http://www.squid-cache.org/related-software.html#auth the others],
+[[http://www.squid-cache.org/related-software.html#auth|the others]],
 or supply your own.
 
 
@@ -427,7 +427,7 @@ Commonly deployed user-agents support at least one and up to four different auth
 
 Those schemes are explained in detail elsewhere (see ../ProxyAuthentication, NegotiateAuthentication and ../TroubleShooting). You __can__ enable more than one at any given moment, just configure the relevant ''auth_param'' sections for each different scheme you want to offer to the browsers.
 
-|| /!\ ||Due to a '''bug''' in common User-Agents (most notably Microsoft Internet Explorer) the __order__ the auth-schemes are configured __is__ relevant. [http://www.ietf.org/rfc/rfc2617.txt RFC 2617], chapter 4.6, states: ''A user agent MUST choose to use the strongest auth-scheme it understands''. Microsoft Internet Explorer instead chooses the __first__ authe-scheme (in the order they are offered) it understands||
+|| /!\ ||Due to a '''bug''' in common User-Agents (most notably Microsoft Internet Explorer) the __order__ the auth-schemes are configured __is__ relevant. [[http://www.ietf.org/rfc/rfc2617.txt|RFC 2617]], chapter 4.6, states: ''A user agent MUST choose to use the strongest auth-scheme it understands''. Microsoft Internet Explorer instead chooses the __first__ authe-scheme (in the order they are offered) it understands||
 
 In other words, you '''SHOULD''' use this order for the ''auth_params'' directives:
  1. negotiate
@@ -446,15 +446,15 @@ For all other auth-schemes this cannot be done; this is not a limitation in squi
 == References ==
 
 
- * [http://samba.org/samba/docs/man/Samba3-HOWTO/winbind.html Winbind: Use of Domain Accounts]
- * [http://samba.org/samba/docs/man/Samba-HOWTO-Collection/domain-member.html Domain Membership]
- * [http://samba.org/samba/docs/man/manpages-3/winbindd.8.html winbindd man page]
- * [http://samba.org/samba/docs/man/manpages-3/wbinfo.1.html wbinfo man page]
- * [http://samba.org/samba/docs/man/manpages-3/nmbd.8.html nmbd man page]
- * [http://samba.org/samba/docs/man/manpages-3/smbd.8.html smbd man page]
- * [http://samba.org/samba/docs/man/manpages-3/smb.conf.5.html smb.conf man page]
- * [http://samba.org/samba/docs/man/manpages-3/smbclient.1.html smbclient man page]
- * [http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html ntlm_auth man page]
+ * [[http://samba.org/samba/docs/man/Samba3-HOWTO/winbind.html|Winbind: Use of Domain Accounts]]
+ * [[http://samba.org/samba/docs/man/Samba-HOWTO-Collection/domain-member.html|Domain Membership]]
+ * [[http://samba.org/samba/docs/man/manpages-3/winbindd.8.html|winbindd man page]]
+ * [[http://samba.org/samba/docs/man/manpages-3/wbinfo.1.html|wbinfo man page]]
+ * [[http://samba.org/samba/docs/man/manpages-3/nmbd.8.html|nmbd man page]]
+ * [[http://samba.org/samba/docs/man/manpages-3/smbd.8.html|smbd man page]]
+ * [[http://samba.org/samba/docs/man/manpages-3/smb.conf.5.html|smb.conf man page]]
+ * [[http://samba.org/samba/docs/man/manpages-3/smbclient.1.html|smbclient man page]]
+ * [[http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html|ntlm_auth man page]]
 
 
 == Authentication in interception and transparent modes ==
@@ -463,7 +463,7 @@ Simply said, it's not possible to authenticate users using proxy authentication 
 
 
 == Other Resources ==
- * [http://www.papercut.com/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory Configuring Squid Proxy To Authenticate With Active Directory]
+ * [[http://www.papercut.com/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory|Configuring Squid Proxy To Authenticate With Active Directory]]
 
 
 -----
