@@ -19,4 +19,4 @@
  * /LeakFinder
  * /MemPools
 
-A detailed index of covered topics is [wiki:/FullIndex available].
+A detailed index of covered topics is [[/FullIndex|available]].
