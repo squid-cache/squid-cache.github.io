@@ -29,7 +29,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 || ICP (v3)       || -   || Y   || Y   || Y   || Y   ||
 |||||||||||| '''URI Protocols handled''' ||
 || HTTP 1.0       || Y   || Y   || Y   || Y   || Y   ||
-|| HTTP 1.1       || -   || -   || P   || -   || -   || see ["../Features/HTTP11"] ||
+|| HTTP 1.1       || -   || -   || P   || -   || -   || see [[../Features/HTTP11]] ||
 || HTTPS          || Y   || Y   || Y   || Y   || Y   ||
 || FTP            || Y   || Y   || Y   || Y   || Y   ||
 || Gopher         || Y   || Y   || Y   || Y   || Y   ||
