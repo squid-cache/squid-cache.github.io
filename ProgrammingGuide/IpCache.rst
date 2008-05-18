@@ -1,6 +1,6 @@
 #language en
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 = IP Cache and FQDN Cache =
 
