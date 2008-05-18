@@ -7,7 +7,7 @@ Pages describing various "wish list" items belong to this category. Wish list it
 
 '''List of pages in this category:'''
 
-[[FullSearchCached(CategoryWish -title:CategoryWish)]]
+<<FullSearchCached(CategoryWish -title:CategoryWish)>>
 
 ----
 CategoryCategory
