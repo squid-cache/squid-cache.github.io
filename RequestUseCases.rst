@@ -2,7 +2,7 @@ This is an attempt to document how the various parts of squid '''should''' inter
 
 /!\ Currently draft, read in fear for your mind
 
-[[TableOfContents()]]
+<<TableOfContents>>
 
 = Guiding principles =
  * Objects that need to make arbitrary calls on other objects should hold {{{RefCountReferences}}}
