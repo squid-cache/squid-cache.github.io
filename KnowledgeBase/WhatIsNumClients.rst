@@ -6,7 +6,7 @@
 
 = What is the "Number of clients accessing cache"? =
 
-In the [:SquidFaq/CacheManager:cache manager]'s "general runtime information" page, Squid specifies the number of clients accesssing the cache; but WHAT it is is not really explained anywhere.
+In the [[SquidFaq/CacheManager|cache manager]]'s "general runtime information" page, Squid specifies the number of clients accesssing the cache; but WHAT it is is not really explained anywhere.
 
 Technically speaking, it's the size of the clients database, where Squid records some informations about the clients haivng recently accessed its services.
 
