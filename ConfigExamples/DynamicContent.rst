@@ -4,7 +4,7 @@
 
 = Caching Dynamic Content =
 
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 == Outline ==
 
@@ -29,7 +29,7 @@ refresh_pattern .            0 20% 4320
 
 To enable your Squid to cache some websites with ? you will need to create a bypass ACL to catch those sites and turn the caching back on.
 
-The example below is for the popular website youtube.com, which is dynamic, uses query Strings (?) but despite that has large flash video files in relatively static locations. NOTE: this is not a full configuration for youtube, there are other specific needs detailed in ["ConfigExamples/DynamicContent/YouTube"].
+The example below is for the popular website youtube.com, which is dynamic, uses query Strings (?) but despite that has large flash video files in relatively static locations. NOTE: this is not a full configuration for youtube, there are other specific needs detailed in [[ConfigExamples/DynamicContent/YouTube]].
 
 == Squid Configuration File ==
 
