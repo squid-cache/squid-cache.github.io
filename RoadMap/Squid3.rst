@@ -5,7 +5,7 @@
 ### XXX: how to make a title without affecting ToC?
 ~+ '''Squid 3 Roadmap''' +~
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 = Roadmap rules =
 
@@ -38,7 +38,7 @@ Basic new features in 3.0
  * Per-User bandwidth limits (class 4 delay pool)
 
 From STABLE 2
- * [:Features/ConfigIncludes]
+ * [[Features/ConfigIncludes]]
  * Port-name ACL
 
 From STABLE 6
@@ -54,7 +54,7 @@ The deadline for new feature requests to 3.1 is past. Available developer time w
 == Done ==
 
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:Status...: completed -regex:ETA...:)]]
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:Status...: completed -regex:ETA...:)>>
 
 Development snapshots of squid 3.1 source code are already available with these features at
 http://www.squid-cache.org/Versions/v3/HEAD/
@@ -64,10 +64,10 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 ##  * [:Features/FEATURE_ID_HERE] [[Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")]]
 
 Features under development:
- * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
- * [:Features/CppCodeFormat] [[Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")]]
- * [:Features/SourceLayout] [[Include(Features/SourceLayout,,,from="ETA.*:",to="$")]]
- * [:Features/LogDaemon] [[Include(Features/LogDaemon,,,from="ETA.*:",to="$")]]
+ * [[Features/eCAP]] <<Include(Features/eCAP,,,from="ETA.*:",to="$")>>
+ * [[Features/CppCodeFormat]] <<Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")>>
+ * [[Features/SourceLayout]] <<Include(Features/SourceLayout,,,from="ETA.*:",to="$")>>
+ * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
  * Porting X-Forwarded-For Support from 2.6
 
 = Squid 3.2 =
@@ -81,24 +81,24 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 ## * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
 
 Others being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)]]
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)>>
 
 == Wish List ==
 
 ## Squid3 wishes other than those for v3.0 and v3.1
 ## Adjust and move to the next section once v3.2 feature set is frozen.
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 -regex:Version...:.*3\.[01])]]
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 -regex:Version...:.*3\.[01])>>
 
-More ideas are available [wiki:Features/Other elsewhere].
+More ideas are available [[Features/Other|elsewhere]].
 
 ## Some items got stuck in the wrong version or not marked properly with complete status.
 
 There should be no 3.0 to 3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
 
 (3.0)
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.0 -regex:Status...:.complete)]]
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.0 -regex:Status...:.complete)>>
 (3.1)
-[[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 regex:Version...:.*3\.1 -regex:Status...:.complete)]]
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 regex:Version...:.*3\.1 -regex:Status...:.complete)>>
 
 
 = Future versions =
