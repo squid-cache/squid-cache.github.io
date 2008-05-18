@@ -7,7 +7,7 @@ This category is used for marking obsolete pages.
 
 '''List of pages in this category:'''
 
-[[FullSearch()]]
+<<FullSearch>>
 
 ----
 CategoryCategory
