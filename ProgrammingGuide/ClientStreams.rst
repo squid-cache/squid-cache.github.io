@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 = Client Streams =
 == Introduction ==
@@ -109,4 +109,4 @@ Detachs the tail of the stream. CURRENTLY DOES NOT clean up the tail node data -
 
 == More information ==
 
-The [wiki:ClientStreams transcript] of the Squid IRC chat with Robert Collins (aka ''lifeless'') discusses how to use !ClientStreams for content analysis.
+The [[ClientStreams|transcript]] of the Squid IRC chat with Robert Collins (aka ''lifeless'') discusses how to use !ClientStreams for content analysis.
