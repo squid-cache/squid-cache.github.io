@@ -11,7 +11,7 @@ Contributors are encouraged to check here regularly.
 
 '''List of pages in this category:'''
 
-[[FullSearch()]]
+<<FullSearch>>
 
 '''Guidelines'''
 
