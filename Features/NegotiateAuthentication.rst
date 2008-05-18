@@ -1,17 +1,17 @@
 #language en
 
 There are four major flavours of authentication available in the HTTP world at this moment (October 2005):
- * [wiki:WikiPedia/BasicAuthenticationScheme Basic] - been around since the very beginning
+ * [[WikiPedia:BasicAuthenticationScheme|Basic]] - been around since the very beginning
  * WikiPedia:NTLM - Microsoft's first attempt at single-sign-on
- * [wiki:WikiPedia/DigestAccessAuthentication Digest] - w3c's attempt at having a secure authentication system
- * [wiki:WikiPedia/SPNEGO Negotiate (aka SPNEGO)] - Microsoft's second attempt at single-sign-on. Maybe, as it often happens to them, they'll get it right by version 3.0
+ * [[WikiPedia:DigestAccessAuthentication|Digest]] - w3c's attempt at having a secure authentication system
+ * [[WikiPedia:SPNEGO|Negotiate (aka SPNEGO)]] - Microsoft's second attempt at single-sign-on. Maybe, as it often happens to them, they'll get it right by version 3.0
 
-There are reports of a [wiki:WikiPedia/KerberosProtocol Kerberos] authentication scheme being seen in the wild (ISA Server 2004). If you see it, shoot on sight. Microsoft recommends to use Negotiate instead.
+There are reports of a [[WikiPedia:KerberosProtocol|Kerberos]] authentication scheme being seen in the wild (ISA Server 2004). If you see it, shoot on sight. Microsoft recommends to use Negotiate instead.
 
 Squid supports Basic, NTLM (v1 and v2) and Digest. Support for Negotiate is being worked in 
 for both squid 2.5 and 3.0
 
-Currently only WikiPedia:Firefox 1.5, WikiPedia:SeaMonkey 1.0 and latest beta of [wiki:WikiPedia/InternetExplorer Internet Explorer] 7 are known to supporting Negotiate authentication with Squid and ISA server 2004
+Currently only WikiPedia:Firefox 1.5, WikiPedia:SeaMonkey 1.0 and latest beta of [[WikiPedia:InternetExplorer|Internet Explorer]] 7 are known to supporting Negotiate authentication with Squid and ISA server 2004
 
 == So what is this "NEGOTIATE" thing anyways? ==
 
