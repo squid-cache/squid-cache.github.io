@@ -1,3 +1,3 @@
 #language en
 
-[[Include(^ProgrammingGuide/,,titlesonly)]]
+<<Include(^ProgrammingGuide/,,titlesonly)>>
