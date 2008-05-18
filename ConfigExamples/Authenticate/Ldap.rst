@@ -6,9 +6,9 @@
 = Configuring a Squid Server to authenticate off OpenLDAP =
 By Askar Ali Khan
 
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Outline ==
 In this example a squid installation will use LDAP to authenticate users before allowing them to surf the web. For security reasons users need to enter their username and password before they are allowed to surf the internet.
