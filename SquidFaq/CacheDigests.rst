@@ -1,9 +1,9 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 
 ''Cache Digest FAQs compiled by
-[[MailTo(ndoherty AT eei DOT ericsson DOT se,Niall Doherty)]].''
+<<MailTo(ndoherty AT eei DOT ericsson DOT se,Niall Doherty)>>.''
 
 == What is a Cache Digest? ==
 
@@ -470,11 +470,11 @@ Digests work):
 == Is there a Cache Digest Specification? ==
 
 There is now, thanks to
-[[MailTo(martin AT net DOT lut DOT ac DOT uk,Martin Hamilton)]] and
+<<MailTo(martin AT net DOT lut DOT ac DOT uk,Martin Hamilton)>> and
 AlexRousskov.
 
 Cache Digests, as implemented in Squid 2.1.PATCH2, are described in
-[http://www.squid-cache.org/CacheDigest/cache-digest-v5.txt cache-digest-v5.txt].
+[[http://www.squid-cache.org/CacheDigest/cache-digest-v5.txt|cache-digest-v5.txt]].
 
 You'll notice the format is similar to an Internet Draft.
 We decided not to submit this document as a draft because Cache Digests
