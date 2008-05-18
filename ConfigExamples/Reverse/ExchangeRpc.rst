@@ -6,9 +6,9 @@
 
 = Configuring Squid to Accelerate/ACL RPC over HTTP =
 
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Outline ==
 
