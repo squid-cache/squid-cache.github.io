@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 == What is the httpd-accelerator mode? ==
 Occasionally people have trouble understanding accelerators and proxy caches, usually resulting from mixed up interpretations of "incoming" and "outgoing" data.  I think in terms of requests (i.e., an outgoing request is from the local site out to the big bad Internet).  The data received in reply is incoming, of course. Others think in the opposite sense of "a request for incoming data".
@@ -106,7 +106,7 @@ In Squid this is done by specifying the IP address in http_port, and using 127.0
 http_port the.public.ip.address:80 accel defaultsite=your.main.website
 cache_peer 127.0.0.1 parent 80 0 no-query originserver
 }}}
-And[http://www.apache.org/ Apache] may be configured like in ''httpd.conf ''to listen on the loopback address:
+And[[http://www.apache.org/|Apache]] may be configured like in ''httpd.conf ''to listen on the loopback address:
 
 {{{
 Port 80
