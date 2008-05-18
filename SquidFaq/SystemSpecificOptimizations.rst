@@ -4,13 +4,13 @@
 
 ## This page is meant to contain informations about system-specific settings
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 
 == General advice ==
 The settings detailed in this FAQ chapter are suggestion for operating-system-specific settings which '''may''' help when running busy caches.
-It is recommended to check that the settings have the desired effect by using the [:../CacheManager:Cache Manager].
+It is recommended to check that the settings have the desired effect by using the [[../CacheManager|Cache Manager]].
 
 == FreeBSD ==
 
