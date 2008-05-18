@@ -26,7 +26,7 @@ Squid-2.7 is a future release with the number of current and planned improvement
 
  * Modular logging work - including external logging daemon support, UDP logging support '''(Done)'''
  * Work towards HTTP/1.1 compliance
- * Fixing (or at least working around) [http://www.squid-cache.org/bugs/show_bug.cgi?id=7 Bug #7]
+ * Fixing (or at least working around) [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|Bug #7]]
  * Further transparent interception improvements from Steven Wilton '''(Done)'''
  * "store rewrite" stuff from Adrian Chadd - rewrite URLs when used for object storage and lookup; useful for caching sites with dynamic URLs with static content (eg Windows Updates, !YouTube, Google Maps, etc) as well as some CDN-like uses. '''(Done)'''
  * Removal of the dummy "null" store type and useless default cache_dir. '''(Done)'''
