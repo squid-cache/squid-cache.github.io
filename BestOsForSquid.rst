@@ -24,7 +24,7 @@ What matters the most to obtain the most out of any setup is to properly tune a 
  * amount of physical memory available
    the more the better, squid performance will suffer badly if parts of it are swapped out of core memory
  * Number of harddrives used for cache and their architecture
-   squid disk access patterns hit particularly hard RAID systems - especially RAID4/5. Since the data are not by definition valuable, it is recommended to run the cache_dirs on JBOD [[FootNote(just a bunch of disks, in other words NO RAID)]]
+   squid disk access patterns hit particularly hard RAID systems - especially RAID4/5. Since the data are not by definition valuable, it is recommended to run the cache_dirs on JBOD <<FootNote(just a bunch of disks, in other words NO RAID)>>
    of course the disk type matters: SCSI performs better than ATA, 15kRPM is better than 5.4kRPM, etc.
  * noatime mount option
    atime is just useless for cache data - squid does its own timestamping, mounting the filesystem with the noatime option just saves a whole lot of writes to the disks
