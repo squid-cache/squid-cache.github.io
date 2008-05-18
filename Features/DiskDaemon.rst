@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 == What is DISKD? ==
 
@@ -17,8 +17,8 @@ data to be read and written.
 
 
 Yes.  We benchmarked Squid-2.4 with DISKD at the
-[http://polygraph.ircache.net/Results/bakeoff-2/ Second IRCache Bake-Off].  The results are also described
-[http://www.squid-cache.org/Benchmarking/bakeoff-02/ here].  At the bakeoff, we
+[[http://polygraph.ircache.net/Results/bakeoff-2/|Second IRCache Bake-Off]].  The results are also described
+[[http://www.squid-cache.org/Benchmarking/bakeoff-02/|here]].  At the bakeoff, we
 got 160 req/sec with diskd.  Without diskd, we'd have gotten about
 40 req/sec.
 
@@ -27,7 +27,7 @@ got 160 req/sec with diskd.  Without diskd, we'd have gotten about
 
 
 You need to run Squid version
-[http://www.squid-cache.org/Versions/v2/2.4 2.4] or later.
+[[http://www.squid-cache.org/Versions/v2/2.4|2.4]] or later.
 Your operating system must support message queues, and shared memory.
 
 To configure Squid for DISKD, use the ''--enable-storeio'' option:
@@ -205,7 +205,7 @@ You can modify the message queue configuration by writing to these files:
 === Solaris ===
 
 Refer to
-[http://www.sunworld.com/sunworldonline/swol-11-1997/swol-11-insidesolaris.html Demangling Message Queues] in Sunworld Magazine.
+[[http://www.sunworld.com/sunworldonline/swol-11-1997/swol-11-insidesolaris.html|Demangling Message Queues]] in Sunworld Magazine.
 
 
 I don't think the above article really tells you how to set the parameters.
@@ -346,7 +346,7 @@ into your kernel, then you can change the following values:
 === Solaris ===
 
 Refer to
-[http://www.sunworld.com/swol-09-1997/swol-09-insidesolaris.html Shared memory uncovered]
+[[http://www.sunworld.com/swol-09-1997/swol-09-insidesolaris.html|Shared memory uncovered]]
 in Sunworld Magazine.
 
 
