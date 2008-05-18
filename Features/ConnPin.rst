@@ -25,7 +25,7 @@ Connection Pinning is especially useful for proxied connections to servers using
 
 The HTTP protocol extensions used to negotiate this is documented in Internet Draft draft-jaganathan-kerberos-http-01.txt (a copy can be found in doc/rfc/ in the development tree)
 
-This feature has been implemented for ["Squid-2.6"] by HenrikNordström during the CodeSprintOct2005 code sprint in Torino.
+This feature has been implemented for [[Squid-2.6]] by HenrikNordström during the CodeSprintOct2005 code sprint in Torino.
 
 Connection Pinning needs to be re-implemented in Squid 3.
 
