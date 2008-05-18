@@ -1,9 +1,9 @@
 ##master-page:CategoryTemplate
 ## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 = Configuring Squid as SSL Reverse Proxy With Wild Card Certificate to Support Multiple Web Site =
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Outline ==
 Squid can be configured to provide Reverse SSL Proxy Feature . This can talk to http or https websites hosted at the back of it . For this configuration I will be using Squid-2.6 STABLE 13 release .
