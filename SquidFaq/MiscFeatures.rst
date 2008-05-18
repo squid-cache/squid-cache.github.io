@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 == What are the new features in squid 2.X? ==
  * persistent connections.
@@ -35,7 +35,7 @@ The above lines tell Squid to NOT use ''parent2'' for SSL, so it should always u
 Simply add your new ''cache_dir'' line to ''squid.conf'', then run ''squid -z'' again.  Squid will create swap directories on the new disk and leave the existing ones in place.
 
 == How do I configure proxy authentication? ==
-Authentication is handled via external processes. Arjan's [http://www.devet.org/squid/proxy_auth/ proxy auth page] describes how to set it up.  Some simple instructions are given below as well.
+Authentication is handled via external processes. Arjan's [[http://www.devet.org/squid/proxy_auth/|proxy auth page]] describes how to set it up.  Some simple instructions are given below as well.
 
  * We assume you have configured an ACL entry with proxy_auth, for example:
 {{{
@@ -74,7 +74,7 @@ Please update your ACL appropriately - a username of ''REQUIRED'' will permit al
 auth_param basic credentialsttl timeout
 }}}
 == Delay Pools ==
-by [mailto:david@luyer.net David Luyer].
+by [[mailto:david@luyer.net|David Luyer]].
 
 Delay pools provide a way to limit the bandwidth of certain requests based on any list of criteria.  The idea came from a Western Australian university who wanted to restrict student traffic costs (without affecting staff traffic, and still getting cache and local peering hits at full speed).  There was some early Squid 1.0 code by Central Network Services at Murdoch University, which I then developed (at the University of Western Australia) into a much more complex patch for Squid 1.0 called "DELAY_HACK."  I then tried to code it in a much cleaner style and with slightly more generic options than I personally needed, and called this "delay pools" in Squid 2.  I almost completely recoded this in Squid 2.2 to provide the greater flexibility requested by people using the feature.
 
@@ -384,7 +384,7 @@ cache_host_domain:: Renamed to ''cache_peer_domain''
 
 local_ip, local_domain:: The functaionality provided by these directives is now implemented as access control lists.  You will use the ''always_direct'' and ''never_direct'' options.  The new ''squid.conf'' file has some examples.
 
-cache_stoplist:: This directive also has been reimplemented with access control lists.  You will use the ''cache'' option since ["Squid-2.6"].  For example:
+cache_stoplist:: This directive also has been reimplemented with access control lists.  You will use the ''cache'' option since [[Squid-2.6]].  For example:
 
 {{{
         acl Uncachable url_regex cgi ?
