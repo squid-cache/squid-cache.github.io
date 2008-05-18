@@ -7,13 +7,13 @@
 
 = Using PHP for Redirects =
 
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Why PHP? ==
 
-When looking at the documentation for squid I was relieved to find the page regarding [http://wiki.squid-cache.org/SquidFaq/SquidRedirectors redirecting] urls. However, when I finally got there I was disappointed to see that it was in [http://perl.org perl]. Not knocking perl, I know it is a more clean language than PHP, but I have little knowledge of the language, which limitted my ability to edit and manipulate the redirect as I have done here.
+When looking at the documentation for squid I was relieved to find the page regarding [[http://wiki.squid-cache.org/SquidFaq/SquidRedirectors|redirecting]] urls. However, when I finally got there I was disappointed to see that it was in [[http://perl.org|perl]]. Not knocking perl, I know it is a more clean language than PHP, but I have little knowledge of the language, which limitted my ability to edit and manipulate the redirect as I have done here.
 
 A friend helped me capture the output from the squid proxy to a file so that I could write a php redirect page, after I finished I figured that I would post the information here so that someone else might benefit from my work.
 
