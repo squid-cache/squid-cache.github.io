@@ -1,12 +1,12 @@
 #language en
 
-TODO: These ideas should be reviewed, morphed into CategoryFeature pages, and moved into the wiki:Features space.
+TODO: These ideas should be reviewed, morphed into CategoryFeature pages, and moved into the [[Features]] space.
 
-{2}: [wiki:RoadMap/Squid2 Squid-2] related[[BR]]
-{3}: [wiki:RoadMap/Squid3 Squid-3] related
+{2}: [[RoadMap/Squid2|Squid-2]] related<<BR>>
+{3}: [[RoadMap/Squid3|Squid-3]] related
 
- * [:/LinuxOptimizedIO] {2} {3}
- * [:/NewStorageAPI] {2}
+ * [[/LinuxOptimizedIO]] {2} {3}
+ * [[/NewStorageAPI]] {2}
  * /RequestFlowOptimization {2} {3}
  * /StorageStuff {2} {3}
  * AdrianChadd's ideas about how to rework the HTTP communications layer are laid out at NewClientSide and NewServerSide {2}
