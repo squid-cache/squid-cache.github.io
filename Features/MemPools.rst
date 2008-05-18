@@ -1,6 +1,6 @@
 #language en
 
-[[TableOfContents(2)]]
+<<TableOfContents(2)>>
 
 = MemPools =
 
