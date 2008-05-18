@@ -9,7 +9,7 @@
  * '''Status''': In progress; part1 submitted for Squid HEAD inclusion
  * '''ETA''': May 31, 2008
  * '''Developer''': AlexRousskov
- * '''More''': [http://wiki.squid-cache.org/SquidFaq/ContentAdaptation#head-b3e83ccdb647537404a70d9c17c87463524a470b context], [http://devel.squid-cache.org/projects.html#eCAP code]
+ * '''More''': [[http://wiki.squid-cache.org/SquidFaq/ContentAdaptation#head-b3e83ccdb647537404a70d9c17c87463524a470b|context]], [[http://devel.squid-cache.org/projects.html#eCAP|code]]
 
 
 == API sketch ==
