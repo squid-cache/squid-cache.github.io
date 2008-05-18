@@ -1,6 +1,6 @@
 #language en
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == Why does Squid use so much memory!? ==
@@ -96,7 +96,7 @@ new ones are least easy to identify.
 Memory leaks may also be present in your system's libraries, such
 as ''libc.a'' or even ''libmalloc.a''.  If you experience the ever-growing
 process size phenomenon, we suggest you first try
-[#alternate-malloc].
+[[#alternate-malloc]].
 
 ==  I set cache_mem to XX, but the process grows beyond that! ==
 
@@ -109,7 +109,7 @@ also reduce the process size, but not necessarily, and there are
 other ways to reduce Squid's memory usage (see below).
 
 See also
-[#how-much-ram How much memory do I need in my Squid server?].
+[[#how-much-ram|How much memory do I need in my Squid server?]].
 
 == How do I analyze memory usage from the cache manger output? ==
 
@@ -382,7 +382,7 @@ There are a number of things to try:
   * Turn the ''memory_pools off'' in the config file.  This causes Squid to give up unused memory by calling ''free()'' instead of holding on to the chunk for potential, future use. Generally speaking, this is a bad idea as it will induce heap fragmentation. Use  ''memory_pools_limit'' instead.
   * Reduce the ''cache_swap'' parameter in your config file.  This will reduce the number of objects Squid keeps.  Your overall hit ratio may go down a little, but your cache will perform significantly better.
 
-[[Anchor(alternate-malloc)]]
+<<Anchor(alternate-malloc)>>
 ==  Using an alternate malloc library ==
 
 Many users have found improved performance and memory utilization when
@@ -393,7 +393,7 @@ GNU malloc, or dlmalloc.
 
 To make Squid use GNU malloc follow these simple steps:
 
- - Download the GNU malloc source, available from one of [[http://www.gnu.org/order/ftp.html|The GNU FTP Mirror sites].  
+ - Download the GNU malloc source, available from one of [[[http://www.gnu.org/order/ftp.html|The|GNU FTP Mirror sites]].  
  - Compile it
 {{{
 % gzip -dc malloc.tar.gz | tar xf -
@@ -421,7 +421,7 @@ As Squid's configure script runs, watch its output.  You should find that it loc
 
 === dlmalloc ===
 
-[http://g.oswego.edu/dl/html/malloc.html dlmalloc]
+[[http://g.oswego.edu/dl/html/malloc.html|dlmalloc]]
 has been written by ''Doug Lea''.  According to Doug:
 {{{
 This is not the fastest, most space-conserving, most portable, or
@@ -436,7 +436,7 @@ script:
 % ./configure --enable-dlmalloc ...
 }}}
 
-[[Anchor(how-much-ram)]]
+<<Anchor(how-much-ram)>>
 == How much memory do I need in my Squid server? ==
 
 As a rule of thumb on Squid uses approximately 10 MB of RAM per GB of the
