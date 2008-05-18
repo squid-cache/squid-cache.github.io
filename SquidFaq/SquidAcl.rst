@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 Squid's access control scheme is relatively comprehensive and difficult for some people to understand.  There are two different components: ''ACL elements'', and ''access lists''.  An access list consists of an ''allow'' or ''deny'' action followed by a number of ACL elements.
@@ -134,7 +134,7 @@ The ''dstdomain'' means to search the hostname in the URL for the string "www.go
 
 == How do I block specific users or groups from accessing my cache? ==
 === Using Ident ===
-You can use [ftp://ftp.isi.edu/in-notes/rfc931.txt ident lookups] to allow specific users access to your cache.  This requires that an [ftp://ftp.lysator.liu.se/pub/ident/servers ident server] process runs on the user's machine(s). In your ''squid.conf'' configuration file you would write something like this:
+You can use [[ftp://ftp.isi.edu/in-notes/rfc931.txt|ident lookups]] to allow specific users access to your cache.  This requires that an [[ftp://ftp.lysator.liu.se/pub/ident/servers|ident server]] process runs on the user's machine(s). In your ''squid.conf'' configuration file you would write something like this:
 
 {{{
 ident_lookup_access allow all
@@ -148,10 +148,10 @@ Another option is to use proxy-authentication.    In this scheme, you assign use
 In Squid v2 this authentication is hanled via external processes.  For information on how to configure this, please see ../ProxyAuthentication.
 
 == Do you have a CGI program which lets users change their own proxy passwords? ==
-[mailto:orso@brturbo.com Pedro L Orso] has adapted the Apache's ''htpasswd'' into a CGI program called  [/htpasswd/chpasswd-cgi.tar.gz chpasswd.cgi].
+[[mailto:orso@brturbo.com|Pedro L Orso]] has adapted the Apache's ''htpasswd'' into a CGI program called  [/htpasswd/chpasswd-cgi.tar.gz chpasswd.cgi].
 
 == Is there a way to do ident lookups only for a certain host and compare the result with a userlist in squid.conf? ==
-You can use the ''ident_access'' directive to control for which hosts Squid will issue [ftp://ftp.isi.edu/in-notes/rfc931.txt ident lookup] requests.
+You can use the ''ident_access'' directive to control for which hosts Squid will issue [[ftp://ftp.isi.edu/in-notes/rfc931.txt|ident lookup]] requests.
 
 Additionally, if you use a ''ident'' ACL in squid conf, then Squid will make sure an ident lookup is performed while evaluating the acl even if ''iden_access'' does not indicate ident lookups should be performed.
 
@@ -296,7 +296,7 @@ This will forward the user's credentials '''as-is''' to the parent proxy which w
 {{{
 cache_peer parent.foo.com parent login=*:somepassword
 }}}
-This will perform ''Basic'' authentication against the parent, sending the '''username''' of the current client connection and as password '''always''' ''somepassword''. The parent will need to authorization against the child cache's IP address, as if there was no authentication forwarding, and it will need to perform client authentication for all usernames against ''somepassword'' via a specially-designed authentication helper. The purpose is to log the client cache's usernames into the parent's ''access.log''. You can find an example semi-tested helper of that kind as attachment:parent_auth.pl .
+This will perform ''Basic'' authentication against the parent, sending the '''username''' of the current client connection and as password '''always''' ''somepassword''. The parent will need to authorization against the child cache's IP address, as if there was no authentication forwarding, and it will need to perform client authentication for all usernames against ''somepassword'' via a specially-designed authentication helper. The purpose is to log the client cache's usernames into the parent's ''access.log''. You can find an example semi-tested helper of that kind as [[attachment:parent_auth.pl]] .
 
 == Is there an easy way of banning all Destination addresses except one? ==
 {{{
@@ -322,9 +322,9 @@ hostnames, simply change ''url_regex''
 to ''dstdomain'' in this example.
 
 == Does anyone have a ban list of porn sites and such? ==
- * The [http://www.squidguard.org/blacklists.html SquidGuard] redirector folks have links to some lists.
- * Bill Stearns maintains the [http://www.stearns.org/sa-blacklist/ sa-blacklist] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
- * The [http://www.rambris.com/fredrik/sleezeball/ SleezeBall site] has a list of patterns that you can download.
+ * The [[http://www.squidguard.org/blacklists.html|SquidGuard]] redirector folks have links to some lists.
+ * Bill Stearns maintains the [[http://www.stearns.org/sa-blacklist/|sa-blacklist]] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
+ * The [[http://www.rambris.com/fredrik/sleezeball/|SleezeBall site]] has a list of patterns that you can download.
 == Squid doesn't match my subdomains ==
 If you are using Squid-2.4 or later then keep in mind that dstdomain acls uses different syntax for exact host matches and entire domain matches. ''www.example.com'' matches the '''exact host''' ''www.example.com'', while ''.example.com'' matches the '''entire domain''' example.com (including example.com alone)
 
