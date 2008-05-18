@@ -14,7 +14,7 @@
 
  * '''Developer''': 
 
- * '''More''': [http://www.mail-archive.com/squid-dev@squid-cache.org/msg07889.html squid-dev thread]
+ * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07889.html|squid-dev thread]]
 
 == Details ==
 
