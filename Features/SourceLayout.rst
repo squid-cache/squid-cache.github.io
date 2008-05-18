@@ -9,7 +9,7 @@
  * '''ETA''': April 2008
  * '''Version''': 3.1
  * '''Developer''': AlexRousskov
- * '''More''': [http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html email07121] [http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html email07506]
+ * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html|email07121]] [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html|email07506]]
 
 Historically, many Squid source files have been dumped into squid/src directory. That directory has occumulated more than 400 source files. This project will group closely related files and place groups in individual directories. The squid/src directory will contain pretty much nothing but Makefiles and subdirectories.
 
