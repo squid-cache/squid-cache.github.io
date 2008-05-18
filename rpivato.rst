@@ -7,15 +7,15 @@ As a network administrator I use Squid as the key point to give Internet access 
 
 I am here to learn more about this software and contribute whenever possible to this wiki.
 
-Email: [[MailTo(rpivato AT SPAMFREE gmail DOT com)]]
+Email: <<MailTo(rpivato AT SPAMFREE gmail DOT com)>>
 
 === To Do ===
 
- * Write some new [:ConfigExamples:configuration example].
+ * Write some new [[ConfigExamples|configuration example]].
 
 === Done ===
 
- * Finished interlinked pages about the [:CacheManager:Cache Manager]. They are still very short, but will let it as is for a while... for public scrutiny.
+ * Finished interlinked pages about the [[CacheManager|Cache Manager]]. They are still very short, but will let it as is for a while... for public scrutiny.
 
   * CacheManager 
   * CacheManagerObject 
