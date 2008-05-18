@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == What is Multicast? ==
@@ -17,7 +17,7 @@ doesn't know, or looks at you funny, then you probably don't have it.
 
 Another way is to use the ''mtrace'' program, which can be found
 on the 
-[ftp://parcftp.xerox.com/pub/net-research/ipmulti/ Xerox PARC FTP site].  Mtrace is similar to traceroute.  It will
+[[ftp://parcftp.xerox.com/pub/net-research/ipmulti/|Xerox PARC FTP site]].  Mtrace is similar to traceroute.  It will
 tell you about the multicast path between your site and another.  For example:
 {{{
 > mtrace mbone.ucar.edu
@@ -168,7 +168,7 @@ someone else will not also randomly choose the same address?  NLANR
 has been assigned a block of multicast addresses by the IANA for use
 in situations such as this.  If you would like to be assigned one
 of these addresses, please 
-[mailto:nlanr-cache@nlanr.net write to us].  However, note that NLANR or IANA have no
+[[mailto:nlanr-cache@nlanr.net|write to us]].  However, note that NLANR or IANA have no
 authority to prevent anyone from using an address assigned to you.
 
 
@@ -177,7 +177,7 @@ solution.  They can be limited with the TTL value discussed above, or
 with some newer techniques known as administratively scoped
 addresses.  Here you can configure well-defined boundaries for the
 traffic to a specific address.  The
-[ftp://ftp.isi.edu/in-notes/rfc2365.txt Administratively Scoped IP Multicast RFC]
+[[ftp://ftp.isi.edu/in-notes/rfc2365.txt|Administratively Scoped IP Multicast RFC]]
 describes this.
 
 -----
