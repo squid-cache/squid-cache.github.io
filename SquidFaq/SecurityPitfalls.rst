@@ -1,5 +1,5 @@
 #language en
-[[TableOfContents]]
+<<TableOfContents>>
 == Open-access proxies ==
 
 
@@ -40,7 +40,7 @@ http_access deny !Safe_ports
 
 Do NOT add port 25 to ''Safe_ports'' (unless your goal is to end
 up in the
-[http://mail-abuse.org/rbl/ RBL]).  You may
+[[http://mail-abuse.org/rbl/|RBL]]).  You may
 want to make a cron job that regularly verifies that your proxy blocks
 access to port 25.
 
