@@ -14,7 +14,7 @@ There area number of features and design ideas that I think, if implemented, wou
 
 Offering a quick install method like this means that organizations can drop a Squid cache into place without needing to devote much in the way of man hours.  This significantly reduces the risk to opportunity cost for organizations.  If the attempt doesn't work, then the organization can remove the cache and only be out a few man hours instead of days.
 
-I will be referencing [http://mysettopbox.tv/knoppmyth.html KnoppMyth] for some of this as I feel that they got a number of design issues right.
+I will be referencing [[http://mysettopbox.tv/knoppmyth.html|KnoppMyth]] for some of this as I feel that they got a number of design issues right.
 
 === Disk Layout ===
 Partitioning and formatting should happen automatically on install.
@@ -25,10 +25,10 @@ For the OS partition EXT3 is probably a good choice as it is stable.  It may be 
 
 A backup of the configuration files is relatively static and should not make a difference on files system choice for the cache ( orpersistent storage) partition.  If the cache is setup as it's own direct access partition, then a single smaller partition should be created to hold the configuration files.
 
-According to [http://wiki.squid-cache.org/BestOsForSquid this page] the best file system to set up the cache is probably ReiserFS or EXT3.
+According to [[http://wiki.squid-cache.org/BestOsForSquid|this page]] the best file system to set up the cache is probably ReiserFS or EXT3.
 
 === Cache File Options ===
-[http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem COSS] is apparently the recommended cache system now for small objects.  There does not seem to be any information as to if it is better installed on a file system or with direct partition access.  Presumably direct partition access would be best.
+[[http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem|COSS]] is apparently the recommended cache system now for small objects.  There does not seem to be any information as to if it is better installed on a file system or with direct partition access.  Presumably direct partition access would be best.
 
 I don't see any information on which of the other cache_dir types (aufs, diskd or ufs) are best for storing large files.
 
@@ -50,7 +50,7 @@ Statistics should be provided through some sort of web interface.  A quick and/o
 Possibly some sort of -tail display of the logs, to see the last items requested.  Bonus points if they are formatted nicely.
 
 === Authentication ===
-Adding authentication can make the complexity of the project an order of magnitude more complex. Possibly an IP list would be easy.  If people want this, they are best off with a larger all inclusive project like [http://www.smoothwall.org/ SmoothWall], [http://ipcop.org/ IPCop], or simply rolling their own.
+Adding authentication can make the complexity of the project an order of magnitude more complex. Possibly an IP list would be easy.  If people want this, they are best off with a larger all inclusive project like [[http://www.smoothwall.org/|SmoothWall]], [[http://ipcop.org/|IPCop]], or simply rolling their own.
 
 === Filtering ===
 Adding filtering can make the complexity of the project an order of magnitude more complex.  Possibly a domain list would be easy to implement.  Users could try installing SquidGuard, DansGuardian, etc, or trying one of the packages mentioned above in Authentication.
@@ -80,10 +80,10 @@ A prototype of install options should be made, along with what specifically chan
  * Yes (set in bridged mode, set to whatever port, etc)
  * No
 ==== Transparent Proxy ====
- * Yes (set up [http://wiki.squid-cache.org/ConfigExamples/FullyTransparentWithTPROXY TPROXY]
+ * Yes (set up [[http://wiki.squid-cache.org/ConfigExamples/FullyTransparentWithTPROXY|TPROXY]]
  * No
 ==== Proxy Purpose ====
- * Accelerate Internet browsing (Large [http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem COSS] partition for small files and small other type of cache partition for large files)
+ * Accelerate Internet browsing (Large [[http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem|COSS]] partition for small files and small other type of cache partition for large files)
  * Save bandwidth (small COSS partition and larger other type of partition)
  * Balance accelerating browsing and saving bandwidth (more balanced partition sizes)
 ==== IP Information ====
