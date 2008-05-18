@@ -5,9 +5,9 @@ Henrik is one of the core team Squid developers, been with Squid since the early
 
 More information can be found from the personal homepage http://www.henriknordstrom.net/
 
-Email: [[MailTo(hno AT SPAMFREE squid-cache DOT org)]]
+Email: <<MailTo(hno AT SPAMFREE squid-cache DOT org)>>
 
-Future [:Henrik Nordström/Plans:plans for Squid]
+Future [[Henrik_Nordström/Plans|plans for Squid]]
 
 ----
  . CategoryHomepage
