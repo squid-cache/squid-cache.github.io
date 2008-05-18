@@ -2,9 +2,9 @@ While dealing with the CacheManager, each accessible entity is abstracted as an 
 
 Some objects have a kind of access control. When they have the attribute ''password required'' set to true, the client accessing it should supply a password, otherwise they will get a ''Page Not Found''. Maybe ''hidden'' would be a better attribute name.
 
-The '''menu''' is one of the basic actions. Triggering will enumerate all available actions to the client. Following there are all possible Cache Manager Objects with ["Squid-2.6"], remembering that some of them may be conditioned to a specific compile-time configuration. 
+The '''menu''' is one of the basic actions. Triggering will enumerate all available actions to the client. Following there are all possible Cache Manager Objects with [[Squid-2.6]], remembering that some of them may be conditioned to a specific compile-time configuration. 
 
-[[Anchor(actiontable)]]
+<<Anchor(actiontable)>>
 ||'''Action Name'''||'''Short Description'''||'''Password Required'''||
 ||via_headers||Via Request Headers||No||
 ||forw_headers||X-Forwarded-For Request Headers||No||
