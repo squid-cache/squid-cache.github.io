@@ -11,10 +11,10 @@ To add a page to this category, add a link to this page on the last line of the 
 
 '''List of pages in this category:'''
 
-[[FullSearch(title:regex:^Category)]]
+<<FullSearch(title:regex:^Category)>>
 
 '''List of templates defined in this wiki:'''
-[[FullSearch(title:regex:Template$)]]
+<<FullSearch(title:regex:Template$)>>
 
 ----
 CategoryCategory
