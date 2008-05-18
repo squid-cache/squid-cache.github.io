@@ -2,7 +2,7 @@
 = Configuring Squid and Webwasher in a proxy chain =
 By ChristophHaas
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Outline ==
 Squid is a brilliant caching proxy software. But it lacks a component for content filtering. Often Squid administrators get ordered to prevent downloading of virus-infected files or to filter out adult content. There is software like Dansguardian or Squidguard that attempts to do just that. But in a corporate environment this isn't sufficient at all.
@@ -23,7 +23,7 @@ The setup described below works roughly like this:
  * The transmitted content (request and response) are checked by the rules of the assigned profile and is either allowed or blocked
 The big picture:
 
-attachment:bigpicture.png
+{{attachment:bigpicture.png}}
 
 What the Webwasher does:
 
