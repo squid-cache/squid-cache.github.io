@@ -6,9 +6,9 @@
 
 = Squid and WCCPv2 to a 7206VXR =
 
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Outline ==
 
