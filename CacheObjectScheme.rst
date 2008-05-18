@@ -1,7 +1,7 @@
 #format wiki
 #language en
 
-The '''`cache_object`''' is the URI scheme which defines a naming structure suitable for referring to [:CacheManagerObject:Cache Manager Objects]. The scheme specific part is defined as below:
+The '''`cache_object`''' is the URI scheme which defines a naming structure suitable for referring to [[CacheManagerObject|Cache Manager Objects]]. The scheme specific part is defined as below:
 
 ## the lines below are ugly, I know
 
