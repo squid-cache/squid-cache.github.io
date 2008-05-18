@@ -6,9 +6,9 @@
 
 = Policy Routing Web Traffic On A Linux Router =
 
-[[Include(ConfigExamples, , from="^## warning begin", to="^## warning end")]]
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Outline ==
 
@@ -16,7 +16,7 @@ This example outlines how to configure a Linux router to policy route traffic (w
 
 This is a work in progress and needs to be verified as working.
 
-You also need to configure the squid machine to handle the traffic it receives. See ["../LinuxInterceptREDIRECT"] and ["../FullyTransparentWithTPROXY"] for details on configuring the rest.
+You also need to configure the squid machine to handle the traffic it receives. See [[../LinuxInterceptREDIRECT]] and [[../FullyTransparentWithTPROXY]] for details on configuring the rest.
 
 == Usage ==
 
