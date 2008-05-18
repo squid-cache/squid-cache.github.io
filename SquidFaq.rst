@@ -22,7 +22,7 @@
  * /ToomanyMisses: why more than just a few TCP_SWAPFAIL_MISS
  * /WindowsUpdate: configuring squid to pass Windows Update
  * /ClearingTheCache: how to wipe your entire disk cache in one easy step
- * ["/RAID"]: Why Squid and RAID play nasty together and what to do about it.
+ * [[/RAID]]: Why Squid and RAID play nasty together and what to do about it.
 
 ==== Performance Tuning ====
  * /SystemSpecificOptimizations has a few OS-specific tips for performance tuning
