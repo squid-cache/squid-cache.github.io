@@ -1,6 +1,6 @@
 #language en
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 ##begin
 == Communication between browsers and Squid ==
@@ -69,7 +69,7 @@ setup.
 Notes:
 
   * Opera 2.12 doesn't support gopher on its own, but requires a proxy; therefore Squid's gopher proxying can extend the utility of your Opera immensely.
-  * Unfortunately, Opera 2.12 chokes on some HTTP requests, for example [http://spam.abuse.net/spam/ abuse.net].
+  * Unfortunately, Opera 2.12 chokes on some HTTP requests, for example [[http://spam.abuse.net/spam/|abuse.net]].
 At the moment I think it has something to do with cookies.  If you have trouble with a site, try disabling the HTTP proxying by unchecking that protocol in the ''Preferences''|''Proxy Servers...'' dialogue.  Opera will remember the address, so reenabling is easy.
 
 
@@ -90,11 +90,11 @@ Netscape Navigator's proxy configuration can be automated with !JavaScript (for 
 '''Network Preferences''' from the '''Options''' menu.  On the '''Proxies''' page, click the radio button next to '''Automatic Proxy Configuration''' and then fill in the URL for your !JavaScript proxy configuration file in the text box.  The box is too small, but the text will scroll to the r8ight as you go.
 
 You may also wish to consult Netscape's documentation for the Navigator
-[http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html JavaScript proxy configuration]
+[[http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html|JavaScript proxy configuration]]
 
 Here is a sample auto configuration file from Oskar Pearson (link to save at the bottom):
 
-inline:sample1.pac.txt
+{{attachment:sample1.pac.txt}}
 
 == Microsoft Internet Explorer ==
 
@@ -106,7 +106,7 @@ it starts.
 by Mark Reynolds
 
 You may like to start by reading the
-[http://www.web-cache.com/Writings/Internet-Drafts/draft-ietf-wrec-wpad-01.txt Expired Internet-Draft]
+[[http://www.web-cache.com/Writings/Internet-Drafts/draft-ietf-wrec-wpad-01.txt|Expired Internet-Draft]]
 that describes WPAD.
 
 After reading the 8 steps below, if you don't understand any of the
@@ -246,7 +246,7 @@ proxy   IN      A       10.0.0.1 ; IP address of proxy1
 
 The clients just refer to 'http://proxy/proxy.pac'.  This script looks like this:
 
-inline:sample2.pac.txt
+{{attachment:sample2.pac.txt}}
 
 I made sure every client domain has the appropriate 'proxy' entry.
 The clients are automatically configured with two nameservers using
@@ -255,7 +255,7 @@ DHCP.
 == Proxy Auto-Configuration with URL Hashing ==
 
 The
-[http://naragw.sharp.co.jp/sps/ Sharp Super Proxy Script page]
+[[http://naragw.sharp.co.jp/sps/|Sharp Super Proxy Script page]]
 contains a lot of good information about hash-based proxy auto-configuration
 scripts.  With these you can distribute the load between a number
 of caching proxies.
@@ -312,7 +312,7 @@ Authentication when they put out IE6 SP1.
 
 There is a knowledgebase article
 (
-[http://support.microsoft.com/default.aspx?id=kb;en-us;331906 KB 331906])
+[[http://support.microsoft.com/default.aspx?id=kb;en-us;331906|KB 331906]])
 regarding this issue, which contains a link to a downloadable
 "hot fix." They do warn that this code is not "regression tested"
 but so far there have not been any reports of this breaking anything
@@ -320,7 +320,7 @@ else. The problematic file is wininet.dll. Please note that this
 hotfix is included in the latest security update.
 
 Lloyd Parkes notes that the article references another article,
-[http://support.microsoft.com/default.aspx?scid=kb;EN-US;312176 KB 312176].
+[[http://support.microsoft.com/default.aspx?scid=kb;EN-US;312176|KB 312176]].
 He says that you must '''not''' have the registry entry that KB
 312176 encourages users to add to their registry.
 
