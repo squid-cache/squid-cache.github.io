@@ -18,13 +18,13 @@ The environment used in the test was composed by two Debian Sarge servers, one p
  * Some knowledge on how LDAP works and stores its information.
 '''The way it was done'''
 
-To manipulate the attributes in LDAP was used the tools from the package ldap-utils (those beginning with ldap* and used to manipulate the base when running, pretty standard). Theres n ways to do that, feeding the base with LDIF files, using administration tools with a web interface, these will not be shown here. LDAP can be populated in various different forms, so, its expected that yours can be a little different than mine (the structure used by Idealx's smbldap-populate script, and the way Debian sets up an administrator account was used here).
+To manipulate the attributes in LDAP was used the tools from the package ldap-utils (those beginning with ldap* and used to manipulate the base when running, pretty standard). Theres n ways to do that, feeding the base with LDIF files, using administration tools with a web interface, these will not be shown here. LDAP can be populated in various different forms, so, it is expected that yours can be a little different than mine (the structure used by Idealx's smbldap-populate script, and the way Debian sets up an administrator account was used here).
 
-It was used an attribute called "l" (defined in core.schema) to hold the digest, its not exactly made for this, but I couldn't though in anything more appropriated, but anyway, its not a problem. You will see sometimes a host called "fileserver" being used (its because my Squid and LDAP + Samba aren't in the same host). The DN of my LDAP administrator is "cn=admin,dc=minharede,dc=lan" with a password "temppass", its the account that can do anything inside the base.
+It was used an attribute called "l" (defined in core.schema) to hold the digest, its not exactly made for this, but I couldn't though in anything more appropriate, but anyway, it is not a problem. You will see sometimes a host called "fileserver" being used (it is because my Squid and LDAP + Samba aren't in the same host). The DN of my LDAP administrator is "cn=admin,dc=minharede,dc=lan" with a password "temppass", it is the account that can do anything inside the base.
 
 '''How the digest is calculated and what is expected to be in the base'''
 
-The base needs to hold an attribute containing a pair, realm and H(A1) separated by a separator like realm:H(A1) inside an distiguished name representing an user name. Where H(A1) is the digested value of username:realm:password.
+The base needs to hold an attribute containing a pair, realm and H(A1) separated by a separator like realm:H(A1) inside a distiguished name representing an user name. Where H(A1) is the digested value of username:realm:password.
 
 '''Installing and testing the helper'''
 
