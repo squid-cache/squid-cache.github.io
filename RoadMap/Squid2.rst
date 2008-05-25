@@ -9,8 +9,10 @@
 
 == Overview ==
 
-This document outlines future Squid-2 features. At the time of writing, there is no consensus among Squid developers on when to stop making major Squid-2 releases and focus all efforts on Squid-3. Until Squid-2 is in feature freeze, Squid-2 and Squid-3 development trees will continue to cross-pollinate.
+This document outlines future Squid-2 features.
+## At the time of writing, there is no consensus among Squid developers on when to stop making major Squid-2 releases and focus all efforts on Squid-3. Until Squid-2 is in feature freeze, Squid-2 and Squid-3 development trees will continue to cross-pollinate.
 
+UPDATE: As of May 2008 the situation has changed. The active Squid developers are now concentrating all new features and developments at Squid-3. If Squid-3 does not meet your requirements, please notify squid-dev of the missing requirements which need to be ported from Squid-2. Some are already known and listed on the [[RoadMap/Squid3|Roadmap for Squid-3]]
 
 == Release Map ==
 
@@ -24,13 +26,13 @@ This is the current "stable" release. No new features are planned at this time f
 === Squid-2.7 ===
 Squid-2.7 is a future release with the number of current and planned improvements:
 
- * Modular logging work - including external logging daemon support, UDP logging support '''(Done)'''
- * Work towards HTTP/1.1 compliance
+ * '''DONE (2.7)''' Modular logging work - including external logging daemon support, UDP logging support
+ * '''DONE (2.7)''' Further transparent interception improvements from Steven Wilton
+ * '''DONE (2.7)''' "store rewrite" stuff from Adrian Chadd - rewrite URLs when used for object storage and lookup; useful for caching sites with dynamic URLs with static content (eg Windows Updates, !YouTube, Google Maps, etc) as well as some CDN-like uses.
+ * '''DONE (2.7, 3.1)''' Removal of the dummy "null" store type and useless default cache_dir.
+ * '''DONE (2.7, 3.1)''' Include configuration file support
+ * '''ONGOING (2.7, 3.0+)''' Work towards HTTP/1.1 compliance
  * Fixing (or at least working around) [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|Bug #7]]
- * Further transparent interception improvements from Steven Wilton '''(Done)'''
- * "store rewrite" stuff from Adrian Chadd - rewrite URLs when used for object storage and lookup; useful for caching sites with dynamic URLs with static content (eg Windows Updates, !YouTube, Google Maps, etc) as well as some CDN-like uses. '''(Done)'''
- * Removal of the dummy "null" store type and useless default cache_dir. '''(Done)'''
- * Include configuration file support '''(Done)'''
 
 === Squid-2.8 ===
 
@@ -44,15 +46,15 @@ With funding and available manpower, the bulk of these changes could be complete
 
 The planned changes will include:
 
- * Client-side only IPv6 (ie, IPv6 clients connecting to Squid) - forwarding to IPv4 upstreams
-  * Specifically for accelerator setups (ie, gatewaying v6 clients to existing v4 setups) but this allows the initial IPv6 code to take shape without requiring the extensive support in HTTP and FTP forwarding that would be required for a full-blown IPv6 implementation.
- * Config include support '''(Complete)'''
+ * '''DONE (3.1)''' Client-side only IPv6 (ie, IPv6 clients connecting to Squid) - forwarding to IPv4 upstreams
+  * '''DONE (3.1)''' Specifically for accelerator setups (ie, gatewaying v6 clients to existing v4 setups) but this allows the initial IPv6 code to take shape without requiring the extensive support in HTTP and FTP forwarding that would be required for a full-blown IPv6 implementation.
+ * '''DONE (3.1)''' Abstract out tproxy code into os-independant subroutines - aim to support tproxy-2 (Linux), tproxy-4 (Linux), upcoming FreeBSD support (which will be similar to the tproxy-4 method.)
+ * '''DONE (2.7, 3.1)''' Config include support
  * Restructure the data paths:
-  * Store -> Client buffer referencing '''(Complete)'''
+  * '''DONE (2.7)''' Store -> Client buffer referencing
   * Server -> Store buffer referencing '''(Complete; not integrated)'''
  * Restructure HTTP request and reply paths to take advantage of buffer referencing (Complete; not integrated)
- * Abstract out tproxy code into os-independant subroutines - aim to support tproxy-2 (Linux), tproxy-4 (Linux), upcoming FreeBSD support (which will be similar to the tproxy-4 method.)
- * Migrate internals to reference counted buffers rather than memcpy() / string copying '''(Complete)'''
+ * '''DONE (2.7?)''' Migrate internals to reference counted buffers rather than memcpy() / string copying
  * Communications layer to seperate out SSL, TCP, (SCTP?), out of client/server side; and make Windows porting easier
  * Break out some code into seperate library modules, including documentation and some unit testing '''(In Progress)'''
   * memory management
@@ -74,7 +76,7 @@ This release should focus on further modularisation and API changes to enable ne
  * Seperate out client-side server-side code from caching logic
   * Allow for "other" code to use HTTP clients and servers, similar to Squid-3 but made much more generic
  * Message-based data flow model? - something enabling both HTTP/1.1 and inline content transformation
- * Investigate HTTP server-side IPv6 support and gatewaying
+ * '''DONE (3.1)''' Investigate HTTP server-side IPv6 support and gatewaying
  * HTTP/1.1 support
  * Transfer/Content gzip encoding (if possible)
  * Memory and Disk storage changes
