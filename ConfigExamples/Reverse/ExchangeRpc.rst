@@ -29,6 +29,7 @@ cache_peer ip_of_exchange_server parent 443 0 no-query originserver login=PASS s
 acl EXCH dstdomain .rpcohttp.url.com
 
 cache_peer_access the_exchange_server allow EXCH
+cache_peer_access the_exchange_server deny all
 
 # Lock down access to just the Exchange Server!
 http_access allow EXCH
