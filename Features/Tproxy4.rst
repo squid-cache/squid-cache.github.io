@@ -31,5 +31,9 @@ The patch is available here for 2.6-STABLE18:
 
  http://www.balabit.com/downloads/files/tproxy/
 
+Squid-3 support has been completed and integrated into the latest sources:
+
+ http://www.squid-cache.org/Versions/v3/HEAD/
+
 ----
 CategoryFeature
