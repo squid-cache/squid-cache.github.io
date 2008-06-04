@@ -30,5 +30,10 @@ Adds '''--enable-zph-qos''' options to turn on the following:
   
  * Allows you to mask certain bits in the TOS received from the remote server, before copying the value to the TOS send towards clients.
 
+Update:
+
+What I'd really like to see is a slightly better config which looks like this:
+  qos_mode on off ip tos parent=0x1 sibling=0x1 local=0x1 option=136
+
 ----
 CategoryFeature
