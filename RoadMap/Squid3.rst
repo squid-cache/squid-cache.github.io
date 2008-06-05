@@ -78,8 +78,9 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 
 == TODO ==
 
- * (None timelined yet).
-## * [:Features/eCAP] [[Include(Features/eCAP,,,from="ETA.*:",to="$")]]
+ * Internal URL Re-writing - 10 days
+
+## * [[Features/eCAP]] <<Include(Features/eCAP,,,from="ETA.*:",to="$")>>
 
 Others being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)>>
