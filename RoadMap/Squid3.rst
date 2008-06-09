@@ -55,6 +55,7 @@ The deadline for new feature requests to 3.1 is past. Available developer time w
 
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:Status...: completed -regex:ETA...:)>>
+ * Follow X-Forwarded-For support ported from 2.6
  * X-Forwarded-For options extended (truncate, delete, transparent)
 
 Development snapshots of squid 3.1 source code are already available with these features at
@@ -62,14 +63,13 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 
 == TODO ==
 
-##  * [:Features/FEATURE_ID_HERE] [[Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")]]
+##  * [:Features/FEATURE_ID_HERE] <<Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")>>
 
 Features under development:
  * [[Features/eCAP]] <<Include(Features/eCAP,,,from="ETA.*:",to="$")>>
  * [[Features/CppCodeFormat]] <<Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")>>
  * [[Features/SourceLayout]] <<Include(Features/SourceLayout,,,from="ETA.*:",to="$")>>
  * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
- * Porting X-Forwarded-For Support from 2.6
 
 = Squid 3.2 =
 
@@ -108,4 +108,4 @@ There should be no 3.0 to 3.1 wishes after the feature set has been frozen. The 
 The set of features going beyond Squid 3.2 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome.
 
 ## Squid3 wishes without a specific minor version.
-## [[FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3[^\.])]]
+## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3[^\.])>>
