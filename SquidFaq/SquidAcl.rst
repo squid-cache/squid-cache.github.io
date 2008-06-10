@@ -88,7 +88,7 @@ http_access allow|deny acl AND acl AND ...
 If none of the rules are matched, then the default action is the ''opposite'' of the last rule in the list.  Its a good idea to be explicit with the default action.  The best way is to use the ''all'' ACL.  For example:
 
 {{{
-acl all src 0/0
+acl all src all
 http_access deny all
 }}}
 == How do I allow my clients to use the cache? ==
@@ -202,8 +202,7 @@ http_access allow US
 acl manager proto cache_object
 acl localhost src 127.0.0.1/255.255.255.255
 acl server    src 1.2.3.4/255.255.255.255
-acl all src 0.0.0.0/0.0.0.0
-acl ourhosts src 1.2.0.0/255.255.0.0
+acl ourhosts  src 1.2.0.0/255.255.0.0
 http_access deny manager !localhost !server
 http_access allow ourhosts
 http_access deny all
@@ -301,9 +300,8 @@ This will perform ''Basic'' authentication against the parent, sending the '''us
 == Is there an easy way of banning all Destination addresses except one? ==
 {{{
 acl GOOD dst 10.0.0.1
-acl BAD dst 0.0.0.0/0.0.0.0
 http_access allow GOOD
-http_access deny BAD
+http_access deny all
 }}}
 == How can I block access to porn sites? ==
 Often, the hardest part about using Squid to deny pornography
