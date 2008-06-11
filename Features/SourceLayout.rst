@@ -28,6 +28,8 @@ This section is used to edit and finalize the grouping of source files. The '''G
 || ''ecap/'' || eCAP support || - ||
 || ''esi/'' || ESI support || ESI* ||
 || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
+|| ''debug/'' || Debug core utilities || debug.cc Debug.h ||
+|| ''mem/'' || Basic Memory management || mem* ||
 ...
 
 || ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
