@@ -60,6 +60,7 @@ If you're running in this kind of setup, then you will want to make sure that
 
  * ypserv doesn't start with the ''-d'' flag.
  * you don't have the ''YP_INTERDOMAIN'' key in the hosts table (find the ''B=-b'' line in the yp Makefile and change it to ''B='')
+
 We changed these here, and saw our average lookup times drop by up to an order of magnitude (~150msec for name-ip queries and ~1.5sec for ip-name queries, the latter still so high, I suspect, because more of these fail and timeout since they are not made so often and the entries are frequently non-existent anyway).
 
 === Tuning ===
@@ -328,6 +329,7 @@ We think this glibc bug is present in versions 2.1.1 (or 2.1.0) and earlier.   T
 
  * Make sure /usr/include/linux and /usr/include/asm are from the kernel version glibc is build/configured for, not any other kernel version.  Only compiling of loadable kernel modules outside of the kernel sources depends on having the current versions of these, and for such builds -I/usr/src/linux/include (or where ever the new kernel headers are located) can be used to resolve the matter.
  * Upgrade glibc to 2.1.2 or later. This is always a good idea anyway, provided a prebuilt upgrade package exists for the Linux distribution used.. Note: Do not attempt to manually build and install glibc from source unless you know exactly what you are doing, as this can easily render the system unuseable.
+
 === Can't connect to some sites through Squid ===
 When using Squid, some sites may give erorrs such as "(111) Connection refused" or "(110) Connection timed out" although these sites work fine without going through Squid.
 
@@ -368,7 +370,16 @@ See also the  [[http://answerpointe.cctec.com/maillists/nanog/historical/0104/ms
 === Some sites load extremely slowly or not at all ===
 You may occasionally have problems with TCP Window Scaling on Linux.  At first you may be able to TCP connect to the site, but then unable to transfer any data across your connection or that data flows extremely slowly.  This is due to some broken firewalls on the Internet (it is not a bug with Linux) mangling the window scaling option when the TCP connection is established.  More details and a workaround can be found at [[http://lwn.net/Articles/92727/|lwn.net]].
 
-The reason why this is experienced with Linux and not most other OS:es is that all desktop OS:es advertise a quite small window scaling factor if at all, and therefore the firewall bug goes unnoticed with these OS:es.
+Window scaling is a standard TCP feature which makes TCP perform well over high speed wan links. Without window scaling the round trip latency seriously limits the bandwidth that can be used by a single TCP connection.
+
+The reason why this is experienced with Linux and not most other OS:es is that all desktop OS:es advertise a quite small window scaling factor if at all, and therefore the firewall bug goes unnoticed with these OS:es. Windows OS:es is also known to have plenty of workarounds to automatically and silently work around these issues, where the Linux community has as policy to not make such workarounds, most likely in an attempt trying to put some pressure on getting the failing network equipment fixed..
+
+To test if this is the source of your problem try the following:
+{{{
+echo 0 >/proc/sys/net/ipv4/tcp_window_scaling}}}
+But be warned that this will quite noticeably degrade TCP performance.
+
+Other possible alternatives is setting tcp_recv_bufsize in squid.conf, or using the /sbin/ip route ... window=xxx option.
 
 == IRIX ==
 === ''dnsserver'' always returns 255.255.255.255 ===
@@ -391,10 +402,12 @@ One thing left is the number of tcp-connections the system can handle. Default i
 32-bit processes cannot use more than 256MB of stack and data in the default  memory model. To force the loader to use large address space for squid,  either:
 
  * set the ''LDR_CNTRL'' environment variable,
+
 eg ''LDR_CNTRL="MAXDATA=0x80000000"''; or
 
  * link with ''-bmaxdata:0x80000000''; or
  * patch the squid binary
+
 See  [[http://publibn.boulder.ibm.com/doc_link/en_US/a_doc_lib/aixprggd/genprogc/lrg_prg_support.htm|IBM's documentation]] on large program support for more information, including how to patch an already-compiled program.
 
 -----
