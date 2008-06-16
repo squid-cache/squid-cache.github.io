@@ -14,16 +14,9 @@
 
 This is a work in progress.
 
-
-== Building Squid-3 ==
-
-Squid-3 doesn't currently support IPFW transparent interception: a patch should be committed to Squid-3 shortly.
-If you're interested: http://www.creative.net.au/diffs/2007-05-19-squid3-ipfw-transparent.diff
-
 == Squid Configuration File ==
 
 {{{
-
 http_port 127.0.0.1:3128 transparent
 wccp2_router 192.168.1.1
 # GRE forwarding
@@ -31,15 +24,12 @@ wccp2_forwarding_method 1
 # GRE return method
 wccp2_return_method 1
 wccp2_service standard 0
-
-
 }}}
 
 == Cisco router ==
 
 This was done on a Cisco 3640 running c3640-is-mz.122-23f.bin; its acting as a NAT gateway and home router.
 {{{
-
 !
 ip wccp web-cache
 !
@@ -69,11 +59,9 @@ interface FastEthernet2/0.1
 
 The GRE packets are sourced from one of the IPs on the router - I'm guessing its the "Router Identifier". This may not be the local ethernet IP (so in this case it isn't 192.168.1.1.)
 
-
 /etc/rc.firewall.local :
 
 {{{
-
 #!/bin/sh
 
 IPFW=/sbin/ipfw
@@ -81,7 +69,6 @@ IPFW=/sbin/ipfw
 ${IPFW} -f flush
 ${IPFW} add 60000 permit ip from any to any
 ${IPFW} add 100 fwd 127.0.0.1,3128 tcp from any to any 80 recv gre0
-
 }}}
 
 /etc/sysctl.conf
@@ -100,7 +87,6 @@ kern.ipc.nmbclusters=32768
 # This is the important one anyway..
 
 net.inet.ip.forwarding=1
-
 }}}
 
 gre configuration:
