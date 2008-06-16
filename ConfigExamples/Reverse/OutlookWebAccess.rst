@@ -26,12 +26,12 @@ The example situation involves a single Outlook Web Access server and a single S
 Please note that the https_port and cache_peer lines may wrap in your browser!
 
 {{{
-https_port ip_of_squid:443 cert=/path/to/certificate/ defaultsite=owa_hostname
+https_port ip_of_squid:443 cert=/path/to/certificate/ defaultsite=owa_domain_name
 
-cache_peer ip_of_owa_server parent 80 0 no-query originserver login=PASS front-end-https=on name=owa_hostname
+cache_peer ip_of_owa_server parent 80 0 no-query originserver login=PASS front-end-https=on name=owaServer
 
-acl OWA dstdomain owa_hostname
-cache_peer_access owa_hostname allow OWA
+acl OWA dstdomain owa_domain_name
+cache_peer_access owaServer allow OWA
 never_direct allow OWA
 
 # lock down access to only query the OWA server!
@@ -44,7 +44,7 @@ miss_access deny all
 If the connection to the OWA server requires SSL then the cache_peer line should be changed appropriately:
 
 {{{
-cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/certificate name=owa_hostname
+cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/certificate name=owaServer
 }}}
 
 == See also ==
