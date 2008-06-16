@@ -19,7 +19,8 @@ Squid can be easily used to provide SSL acceleration services for Outlook Web Ac
 The example situation involves a single Outlook Web Access server and a single Squid server. The following information is required:
 
  * The IP of the Squid server (ip_of_squid)
- * The hostname and IP of the Outlook Web Access server (owa_hostname and ip_of_owa_server)
+ * The 'public' domain used for Outlook Web Access (owa_domain_name)
+ * The IP of the Outlook Web Access server (ip_of_owa_server)
 
 == Configuration ==
 
