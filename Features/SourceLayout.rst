@@ -21,7 +21,8 @@ This section is used to edit and finalize the grouping of source files. The '''G
 || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
-|| ''icmp/'' || ICMP support and Network measurement || ICMP* net_db.cc ||
+|| ''icmp/'' || ICMP support and Network measurement || ICMP* net_db.* ||
+|| ''ident/'' || Ident support || ident.* ||
 || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 || ''icap/'' || ICAP support || ICAP/ICAP* ||
