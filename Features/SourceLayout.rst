@@ -21,7 +21,7 @@ This section is used to edit and finalize the grouping of source files. The '''G
 || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
-|| ''icmp/'' || ICMP support || ICMP* ||
+|| ''icmp/'' || ICMP support and Network measurement || ICMP* net_db.cc ||
 || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 || ''icap/'' || ICAP support || ICAP/ICAP* ||
@@ -45,6 +45,7 @@ If you know the solution or can improve the proposed one, please write to squid-
 ||Should client- and server- side files be separated?||yes||
 ||Should directory names use just_small, !CamelCase, or CAPS letters? Does Windows portability require lowercase letters? || lower_case ||
 || Should we use squid/src/squid/ root for most sources to include header files as <squid/group/file.h>? This may be required for installed headers and 3rd party code using those headers. It is not clear whether Squid will have installed headers in the foreseeable future. The Feature/eCAP work will determine that. || no ||
+|| Should we form a generic mini-cache object type to combine the shared portions of fqdncache, ipcache, idns queue, netdb, ident-cache, maybe others not yet found? || ||
 
 ----
 CategoryFeature
