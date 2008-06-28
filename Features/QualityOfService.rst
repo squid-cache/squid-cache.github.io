@@ -16,7 +16,7 @@
 
 == Details ==
 
-Zero Penalty hit created a patch to set QoS markers on outgoing traffic. 
+'''Zero Penalty Hit''' created a patch to set QoS markers on outgoing traffic. 
 
 Adds '''--enable-zph-qos''' options to turn on the following:
   
@@ -34,6 +34,9 @@ Update:
 
 What I'd really like to see is a slightly better config which looks like this:
   qos_mode on off ip tos parent=0x1 sibling=0x1 local=0x1 option=136
+
+Meanwhile for those who keep asking:
+  3.0 does have an untested patch at http://www.squid-cache.org/Versions/v3/3.0/changesets/b8770.patch . But be warned, it has had no testing outside the initial developer, and does not use the same config syntax as the final versions.
 
 ----
 CategoryFeature
