@@ -9,7 +9,7 @@
    * [[http://www.sebelpierone.com.au/|Sebel Pier One]] - ~5 minute walk, about AU$180
    * [[http://www.vibehotels.com.au/|Vibe Hotel Sydney]] - ~10 minute train ride + ~20 minute walk, about AU$150
    * [[http://www.hotelcoronation.com.au/|Hotel Coronation]] - ~10 minute train + ~20 minute walk, about AU$110
-
+   * [[http://www.yhotel.com.au/|Y Hotel Hyde Park]] - ~10 minute train + ~20 minute walk, about AU$90
 
 == Participants ==
 
