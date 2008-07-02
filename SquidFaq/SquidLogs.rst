@@ -135,7 +135,7 @@ There may be two more columns in the ''access.log'', if the (debug) option ''log
 === Squid result codes ===
 The '''TCP_''' codes refer to requests on the HTTP port (usually 3128). The '''UDP_''' codes refer to requests on the ICP port (usually 3130). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged.
 
-The following result codes were taken from a Squid-2, compare with the ''log_tags'' struct in ''src/access_log.c'':
+The following result codes were taken from a Squid-2, compare with the ''log_type'' enum in ''src/enums.h'':
 
 '''TCP_HIT''' A valid copy of the requested object was in the cache.
 
@@ -143,7 +143,7 @@ The following result codes were taken from a Squid-2, compare with the ''log_tag
 
 '''TCP_REFRESH_HIT''' The requested object was cached but ''STALE''. The IMS query for the object resulted in "304 not modified".
 
-'''TCP_REF_FAIL_HIT''' The requested object was cached but ''STALE''. The IMS query failed and the stale object was delivered.
+'''TCP_REFRESH_FAIL_HIT''' The requested object was cached but ''STALE''. The IMS query failed and the stale object was delivered.
 
 '''TCP_REFRESH_MISS''' The requested object was cached but ''STALE''. The IMS query returned the new content.
 
@@ -160,6 +160,12 @@ The following result codes were taken from a Squid-2, compare with the ''log_tag
 '''TCP_DENIED''' Access was denied for this request.
 
 '''TCP_OFFLINE_HIT''' The requested object was retrieved from the cache during offline mode. The offline mode never validates any object, see ''offline_mode'' in ''squid.conf'' file.
+
+'''TCP_STALE_HIT''' The object was cached and served stale. This is usually caused by stale-while-revalidate or stale-if-error.
+
+'''TCP_ASYNC_HIT''' A background request (e.g., one started by stale-while-revalidate) resulted in a refresh hit.
+
+'''TCP_ASYNC_MISS''' A background request (e.g., one started by stale-while-revalidate) resulted in a miss; i.e., the cached object (if any) was updated).
 
 '''UDP_HIT''' A valid copy of the requested object was in the cache.
 
