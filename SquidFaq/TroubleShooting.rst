@@ -23,10 +23,11 @@ If the HTTP port number is wrong but the ICP port is correct you will send ICP q
 
 == Running out of filedescriptors ==
 If you see the ''Too many open files'' error message, you are most likely running out of file descriptors.  This may be due to running Squid on an operating system with a low filedescriptor limit.  This limit is often configurable in the kernel or with other system tuning tools.  There are two ways to run out of file descriptors:  first, you can hit the per-process limit on file descriptors.  Second, you can hit the system limit on total file descriptors for all processes.
-
 || {i} (!) || Squid 1.x the following per-OS help applies. ||
 || {i} (!) || Squid 2.x provide a ./configure option --with-maxfd=N ||
 || {i} (!) || Squid 3.x provide a ./configure option --with-filedescriptors=N ||
+
+
 
 
 === Linux ===
@@ -36,12 +37,14 @@ Linux kernel 2.2.12 and later supports "unlimited" number of open files without 
  * Before configuring Squid run "''ulimit -HSn ####''" (where #### is the number of filedescriptors you need to support). Be sure to run "make clean" before configure if you have already run configure as the script might otherwise have cached the prior result.
  * Configure, build and install Squid as usual
  * Make sure your script for starting Squid contains the above ''ulimit'' command to raise the filedescriptor limit. You may also need to allow a larger port span for outgoing connections (set in /proc/sys/net/ipv4/, like in "''echo 1024 32768 > /proc/sys/net/ipv4/ip_local_port_range''")
+
 Alternatively you can
 
  * Run configure with your needed configure options
  * edit include/autoconf.h and define SQUID_MAXFD to your desired limit. Make sure to make it a nice and clean modulo 64 value (multiple of 64) to avoid various bugs in the libc headers.
  * build and install Squid as usual
  * Set the runtime ulimit as described above when starting Squid.
+
 If running things as root is not an option then get your sysadmin to install a the needed ulimit command in /etc/inittscript (see man initscript), install a patched kernel where INR_OPEN in include/linux/fs.h is changed to at least the amount you need or have them install a small suid program which sets the limit (see link below).
 
 More information can be found from Henriks [[http://squid.sourceforge.net/hno/linux-lfd.html|How to get many filedescriptors on Linux 2.2.X and later]] page.
@@ -62,13 +65,17 @@ by [[mailto:torsten.sturm@axis.de|Torsten Sturm]]
  * How do I check my maximum filedescriptors?
   . Do ''sysctl -a'' and look for the value of ''kern.maxfilesperproc''.
  * How do I increase them?
+
 {{{
 sysctl -w kern.maxfiles=XXXX
 sysctl -w kern.maxfilesperproc=XXXX
 }}}
 || /!\ ||You probably want ''maxfiles > maxfilesperproc'' if you're going to be pushing the limit. ||
+
+
  * What is the upper limit?
   . I don't think there is a formal upper limit inside the kernel. All the data structures are dynamically allocated.  In practice there might be unintended metaphenomena (kernel spending too much time searching tables, for example).
+
 === General BSD ===
 For most BSD-derived systems (SunOS, 4.4BSD, OpenBSD, FreeBSD, NetBSD, BSD/OS, 386BSD, Ultrix) you can also use the "brute force" method to increase these values in the kernel (requires a kernel rebuild):
 
@@ -78,6 +85,7 @@ For most BSD-derived systems (SunOS, 4.4BSD, OpenBSD, FreeBSD, NetBSD, BSD/OS, 3
   . One way is to increase the value of the ''maxusers'' variable in the kernel configuration file and build a new kernel.  This method is quick and easy but also has the effect of increasing a wide variety of other variables that you may not need or want increased.
  * Is there a more precise method?
   . Another way is to find the ''param.c'' file in your kernel build area and change the arithmetic behind the relationship between ''maxusers'' and the maximum number of open files.
+
 Here are a few examples which should lead you in the right direction:
 
 ==== SunOS ====
@@ -140,6 +148,7 @@ Why, yes you can!  Select the following menus:
  * Programs
  * Microsoft Internet Server (Common)
  * Internet Service Manager
+
 This will bring up a box with icons for your various services. One of them should be a little ftp "folder." Double click on this.
 
 You will then have to select the server (there should only be one) Select that and then choose "Properties" from the menu and choose the "directories" tab along the top.
@@ -196,6 +205,8 @@ The answer to this is somewhat complicated, so please hold on.
 || {i} ||Most of this text is taken from [[http://www.life-gone-hazy.com/writings/icp-squid.ps.gz|ICP and the Squid Web Cache]] ||
 
 
+
+
 An ICP query does not include any parent or sibling designation, so the receiver really has no indication of how the peer cache is configured to use it.  This issue becomes important when a cache is willing to serve cache hits to anyone, but only handle cache misses for its paying users or customers.  In other words, whether or not to allow the request depends on if the result is a hit or a miss.  To accomplish this, Squid acquired the ''miss_access'' feature in October of 1996.
 
 The necessity of "miss access" makes life a little bit complicated, and not only because it was awkward to implement.  Miss access means that the ICP query reply must be an extremely accurate prediction of the result of a subsequent HTTP request.  Ascertaining this result is actually very hard, if not impossible to do, since the ICP request cannot convey the full HTTP request. Additionally, there are more types of HTTP request results than there are for ICP.  The ICP query reply will either be a hit or miss. However, the HTTP request might result in a "''304 Not Modified''" reply sent from the origin server.  Such a reply is not strictly a hit since the peer needed to forward a conditional request to the source.  At the same time, its not strictly a miss either since the local object data is still valid, and the Not-Modified reply is quite small.
@@ -212,6 +223,7 @@ In an HTTP/1.0 world, ''C'' (and ''Cs client) will receive an object that was ne
 
  * ''Make sure all members have the same ''refresh_rules'' parameters. ''
  * Do not use miss_access'' at all.  Promise your sibling cache administrator that ''your'' cache is properly configured and that you will not abuse their generosity.  The sibling cache administrator can check his log files to make sure you are keeping your word. ''
+
 If neither of these is realistic, then the sibling relationship should not exist.
 
 == Cannot bind socket FD NN to *:8080 (125) Address already in use ==
@@ -269,6 +281,8 @@ Then, examine the Cache Manager Info'' ouput and look at these two lines: ''
 {{{
 }}}
 || {i} ||If your system does not have the getrusage()'' function, then you will not see the page faults line.'' ||
+
+
 Divide the number of page faults by the number of connections.  In this case 16720/121104 = 0.14.  Ideally this ratio should be in the 0.0 - 0.1 range.  It may be acceptable to be in the 0.1 - 0.2 range.  Above that, however, and you will most likely find that Squid's performance is unacceptably slow.
 
 If the ratio is too high, you will need to make some changes as detailed in ../SquidMemory.
@@ -299,17 +313,24 @@ Bug reports for Squid should be registered in our [[http://www.squid-cache.org/b
  * Your Operating System type and version
  * A clear description of the bug symptoms.
  * If your Squid crashes the report must include a coredumps stack trace as described below
+
 Please note that bug reports are only processed if they can be reproduced or identified in the current STABLE or development versions of Squid. If you are running an older version of Squid the first response will be to ask you to upgrade unless the developer who looks at your bug report immediately can identify that the bug also exists in the current versions. It should also be noted that any patches provided by the Squid developer team will be to the current STABLE version even if you run an older version.
 
 === crashes and core dumps ===
 There are two conditions under which squid will exit abnormally and generate a coredump.  First, a SIGSEGV or SIGBUS signal will cause Squid to exit and dump core.  Second, many functions include consistency checks.  If one of those checks fail, Squid calls abort() to generate a core dump.
 
+If you have a core dump file then use gdb to extract a stack trace from the core as follows:
+
+{{{
+% gdb /usr/local/squid/sbin/squid core
+gdb> backtrace }}}
 Many people report that Squid doesn't leave a coredump anywhere.  This may be due to one of the following reasons:
 
  * Resource Limits
   . The shell has limits on the size of a coredump file.  You may need to increase the limit using ulimit or a similar command (see below)
  * sysctl options
   . On FreeBSD, you won't get a coredump from programs that call setuid() and/or setgid() (like Squid sometimes does) unless you enable this option:
+
 {{{
 # sysctl -w kern.sugid_coredump=1
 }}}
@@ -318,6 +339,7 @@ Many people report that Squid doesn't leave a coredump anywhere.  This may be du
  * Threads and Linux
   . On Linux, threaded applications do not generat core dumps.  When you use the aufs cache_dir type, it uses threads and you can't get a coredump.
  * It did leave a coredump file, you just can't find it.
+
 === Resource Limits ===
 These limits can usually be changed in shell scripts.  The command to change the resource limits is usually either limit'' or ''limits''.  Sometimes it is a shell-builtin function, and sometimes it is a regular program.  Also note that you can set resource limits in the ''/etc/login.conf'' file on FreeBSD and maybe other systems. ''
 
@@ -363,6 +385,7 @@ The core dump file will be left in one of the following locations:
  1. The coredump_dir'' directory, if you set that option. ''
  1. The first cache_dir'' directory if you have used the  ''cache_effective_user'' option. ''
  1. The current directory when Squid was started
+
 Recent versions of Squid report their current directory after starting, so look there first:
 
 {{{
@@ -414,6 +437,7 @@ Other options if the above cannot be done is to:
  1. Build Squid with the --enable-stacktraces option, if support exists for your OS (exists for Linux glibc on Intel, and Solaris with some extra libraries which seems rather impossible to find these days..)
 
  1. Run Squid using the "catchsegv" tool. (Linux glibc Intel)
+
 {i} these approaches does not by far provide as much details as using gdb.
 
 == Debugging Squid ==
@@ -439,6 +463,7 @@ Squid normally tests your system's DNS configuration before it starts server req
  * ''your DNS nameserver is unreachable or not running. ''
  * your /etc/resolv.conf'' file may contain incorrect information. ''
  * your /etc/resolv.conf'' file may have incorrect permissions, and may be unreadable by Squid. ''
+
 To disable this feature, use the -D'' command line option. ''
 
 ''Note, Squid does NOT use the ''dnsservers'' to test the DNS.  The test is performed internally, before the ''dnsservers'' start. ''
@@ -460,6 +485,7 @@ Either
 
  1. the Squid userid does not have permission to bind to the port, or
  1. some other process has bound itself to the port
+
 Remember that root privileges are required to open port numbers less than 1024.  If you see this message when using a high port number, or even when starting Squid as root, then the port has already been opened by another process.
 
 SELinux can also deny squid access to port 80, even if you are starting squid as root. Configure SELinux to allow squid to open port 80 or disable SELinux in this case.
@@ -474,6 +500,8 @@ See the next question.
 
 == FATAL: You've run out of swap file numbers. ==
 || {i} || The information here applies to version 2.2 and earlier ||
+
+
 Squid keeps an in-memory bitmap of disk files that are available for use, or are being used.  The size of this bitmap is determined at run name, based on two things: the size of your cache, and the average (mean) cache object size.
 
 The size of your cache is specified in squid.conf, on the cache_dir'' lines.  The mean object size can also be specified in squid.conf, with the 'store_avg_object_size' directive.  By default, Squid uses 13 Kbytes as the average size. ''
@@ -498,6 +526,7 @@ Now, if you see the "You've run out of swap file numbers" message, then it means
 
  1. You've found a Squid bug.
  1. Your cache's average file size is much smaller than the 'store_avg_object_size' value.
+
 To check the average file size of object currently in your cache, look at the cache manager 'info' page, and you will find a line like:
 
 {{{
@@ -507,6 +536,8 @@ To make the warning message go away, set 'store_avg_object_size' to that value (
 
 == I am using up over 95% of the filemap bits?!! ==
 || {i} ||The information here is current for version 2.3 ||
+
+
 Calm down, this is now normal.  Squid now dynamically allocates filemap bits based on the number of objects in your cache. You won't run out of them, we promise.
 
 == FATAL: Cannot open /usr/local/squid/logs/access.log: (13) Permission denied ==
@@ -550,8 +581,11 @@ A forwarding loop is when a request passes through one proxy more than once.  Yo
 
  * a cache forwards requests to itself.  This might happen with interception caching (or server acceleration) configurations.
  * a pair or group of caches forward requests to each other.  This can happen when Squid uses ICP, Cache Digests, or the ICMP RTT database to select a next-hop cache.
+
 Forwarding loops are detected by examining the Via'' request header. Each cache which "touches" a request must add its hostname to the ''Via'' header.  If a cache notices its own hostname in this header for an incoming request, it knows there is a forwarding loop somewhere. ''
 || <!> ||Squid may report a forwarding loop if a request goes through two caches that have the same visible_hostname'' value. If you want to have multiple machines with the same ''visible_hostname'' then you must give each machine a different ''unique_hostname'' so that forwarding loops are correctly detected.'' ||
+
+
 
 
 When Squid detects a forwarding loop, it is logged to the cache.log'' file with the recieved ''Via'' header.  From this header you can determine which cache (the last in the list) forwarded the request to you. ''
@@ -577,6 +611,8 @@ block for a long time.
 }}}
 == storeSwapInFileOpened: ... Size mismatch ==
 || {i} ||These messages are specific to squid 2.X ||
+
+
 Got these messages in my cache log - I guess it means that the index contents do not match the contents on disk.'' ''
 
 {{{
@@ -601,6 +637,8 @@ Now, all of the headers, and the message body have been sent, unencrypted'' to S
 || /!\ || This browser bug does represent a security risk because the browser is sending sensitive information unencrypted over the network. ||
 
 
+
+
 == Squid can't access URLs like http://3626046468/ab2/cybercards/moreinfo.html ==
 by Dave J Woolley (DJW at bts dot co dot uk)
 
@@ -611,6 +649,7 @@ Their intention is to:
  * confuse content filtering rules on proxies, and possibly some browsers' idea of whether they are trusted sites on the local intranet;
  * confuse whois (?);
  * make people think they are not IP addresses and unknown domain names, in an attempt to stop them trying to locate and complain to the ISP.
+
 Any browser or proxy that works with them should be considered a security risk.
 
 [[http://www.ietf.org/rfc/rfc1738.txt|RFC 1738]] has this to say about the hostname part of a URL:
@@ -640,6 +679,7 @@ If you want Squid to accept URL's with whitespace, you have to decide how to han
   . ''The whitespace characters are encoded according to [[http://www.ietf.org/rfc/rfc1738.txt|RFC 1738]].  This can be considered a violation of the HTTP specification. ''
  * CHOP'' ''
   . ''The URL is chopped at the first whitespace character and then processed normally.  This also can be considered a violation of HTTP. ''
+
 == commBind: Cannot bind socket FD 5 to 127.0.0.1:0: (49) Can't assign requested address ==
 This likely means that your system does not have a loopback network device, or that device is not properly configured. All Unix systems should have a network device named lo0'', and it should be configured with the address 127.0.0.1.  If not, you may get the above error message. To check your system, run: ''
 
@@ -671,6 +711,7 @@ Sort of.   As of Squid 2.3, the default is to use internal DNS lookup code. The 
  * ''See if the ''append_domain'' option will work for you instead. ''
  * Configure squid with --disable-internal-dns to use the external dnsservers.
  * Enhance src/dns_internal.c'' to understand the ''search'' and ''domain'' lines from ''/etc/resolv.conf''. ''
+
 == What does "sslReadClient: FD 14: read failure: (104) Connection reset by peer" mean? ==
 "Connection reset by peer" is an error code that Unix operating systems sometimes return for read'', ''write'', ''connect'', and other system calls. ''
 
@@ -718,8 +759,6 @@ The reconfigure process creates a new PID file automatically.
 == FATAL: getgrnam failed to find groupid for effective group 'nogroup' ==
 You are probably starting Squid as root.  Squid is trying to find a group-id that doesn't have any special priveleges that it will run as.  The default is nogroup'', but this may not be defined on your system.  You need to edit ''squid.conf'' and set ''cache_effective_group'' to the name of an unpriveledged group from ''/etc/group''.  There is a good chance that ''nobody'' will work for you. ''
 
-
-
 == Squid uses 100% CPU ==
 There may be many causes for this.
 
@@ -750,6 +789,8 @@ gcc -g -Wall -I../include -I../include -c rfc1123.c
 ...etc...
 }}}
 || <!> || Some people worry that disabling compiler optimization will negatively impact Squid's performance.  The impact should be negligible, unless your cache is really busy and already runs at a high CPU usage.  For most people, the compiler optimization makes little or no difference at all ||
+
+
 == urlParse: Illegal character in hostname 'proxy.mydomain.com:8080proxy.mydomain.com' ==
 By Yomler of fnac.net
 
@@ -779,6 +820,7 @@ What causes a connection to close prematurely?  It could be a number of things, 
  * Buggy or misconfigured NAT boxes, firewalls, and load-balancers.
  * Denial of service attacks.
  * Utilizing TCP blackholing on FreeBSD (check ../SystemWeirdnesses).
+
 You may be able to use tcpdump'' to track down and observe the problem. ''
 
 ''Some users believe the problem is caused by very large cookies. One user reports that his Zero Sized Reply problem went away when he told Internet Explorer to not accept third-party cookies. ''
@@ -789,6 +831,7 @@ You may be able to use tcpdump'' to track down and observe the problem. ''
  * Disable HTTP persistent connections with the server_persistent_connections'' and ''client_persistent_connections'' directives. ''
  * Disable any advanced TCP features on the Squid system.  Disable ECN on Linux with echo 0 > /proc/sys/net/ipv4/tcp_ecn/''. ''
  * Upgrade to Squid-2.5.STABLE4 or later to work around a Host header related bug in Cisco PIX HTTP inspection. The Cisco PIX firewall wrongly assumes the Host header can be found in the first packet of the request.
+
 If this error causes serious problems for you and the above does not help, Squid developers would be happy to help you uncover the problem.  However, we will require high-quality debugging information from you, such as tcpdump'' output, server IP addresses, operating system versions, and ''access.log'' entries with full HTTP headers. ''
 
 ''If you want to make Squid give the Zero Sized error on demand, you can use [[attachment:zerosized_reply.c|a short C program]].  Simply compile and start the program on a system that doesn't already have a server running on port 80.  Then try to connect to this fake server through Squid: ''
