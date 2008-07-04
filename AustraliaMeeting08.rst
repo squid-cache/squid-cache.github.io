@@ -18,3 +18,5 @@
 
 
 == Agenda ==
+
+Note: This is *not* a user-focused meeting; however, users are welcome to sit through developer discussions if they wish.
