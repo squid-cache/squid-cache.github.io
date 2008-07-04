@@ -15,6 +15,7 @@
 
  * Mark Nottingham (Yahoo!)
  * Adrian Chadd (Squid Core)
+ * Amos Jeffries (Squid Core)
 
 
 == Agenda ==
