@@ -14,6 +14,7 @@
 == Participants ==
 
  * Mark Nottingham (Yahoo!)
+ * Adrian Chadd (Squid Core)
 
 
 == Agenda ==
