@@ -16,6 +16,8 @@
  * Mark Nottingham (Yahoo!)
  * Adrian Chadd (Squid Core)
  * Amos Jeffries (Squid Core)
+ * Benno Rice (random Squid hacker)
+
 
 
 == Agenda ==
