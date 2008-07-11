@@ -22,6 +22,8 @@ The Squid-3 developers have decided that the Squid-3 codebase can now handle a b
 
 This testing involves a number of changes to both the codebase and current developer practices.
 
+<<TableOfContents>>
+
 === Automated Code Testing ===
 
  * CPP Unit-Tests. (Already provided ad-hoc by cppunit tools, more to be added)
