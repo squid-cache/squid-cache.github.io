@@ -40,13 +40,13 @@ This testing involves a number of changes to both the codebase and current devel
 
 * '''NP''': All stages of this system implementation may involve ongoing improvements. The status here is merely an indication that the stage actions have been implemented and begun to be used.
 
-Tasks needing a volunteer:
+===== Tasks needing a volunteer: =====
 
  * Locating and listing all the classes which are NOT yet unit-tested
  * Locating and marking all the class methods which are not yet unit-tested
  * Adding unit-tests for the above
 
-==== Component Test Controls ====
+=== Component Test Controls ===
 
 We now have a set of test-suite scripts for quick and easy compile tests of any component in Squid. This is controlled by a set of files in the source code called test-suite/buildtests/layer-N-*.opts .
 
@@ -63,6 +63,10 @@ They are split into a set of layers which get run sequentially during testing. E
 
 
 || {i} || Provision is also made via os-X.opts control files for platform specific builds to be tested. These files are not expected to build properly on foreign OS, so are completely optional and not guaranteed to be authoritative. The hope is that planned multi-system testing can use these provided by package maintainers to reduce cross-platform problems. ||
+
+===== Tasks needing a volunteer: =====
+
+ * A code monkey is needed to check all components independence. This can easily be identified by the ''#if USE_X'' macros throughout the code. But may take some time.
 
 === Architecture Re-alignment ===
 
