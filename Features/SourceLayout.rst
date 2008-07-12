@@ -48,6 +48,7 @@ If you know the solution or can improve the proposed one, please write to squid-
 ||Should directory names use just_small, !CamelCase, or CAPS letters? Does Windows portability require lowercase letters? || lower_case ||
 || Should we use squid/src/squid/ root for most sources to include header files as <squid/group/file.h>? This may be required for installed headers and 3rd party code using those headers. It is not clear whether Squid will have installed headers in the foreseeable future. The Feature/eCAP work will determine that. || no ||
 || Should we form a generic mini-cache object type to combine the shared portions of fqdncache, ipcache, idns queue, netdb, ident-cache, maybe others not yet found? || Probably, that will be a separate feature event though. ||
+|| What to do with all the mixed test* and stub_* files during this restructure? || ||
 
 ----
 CategoryFeature
