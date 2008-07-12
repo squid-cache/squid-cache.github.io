@@ -17,23 +17,23 @@ Historically, many Squid source files have been dumped into squid/src directory.
 
 This section is used to edit and finalize the grouping of source files. The '''Group''' column contains src/ subdirectory names. The '''Files''' section lists current file names and assumes file extensions .h, .cc, and .cci are added to the corresponding file names and masks.
 
-|| '''Group''' || '''Definition''' || '''Files''' ||
-|| ''comm/'' || I/O subsystem || Comm*, comm*  ||
-|| ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
-|| ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
-|| ''icmp/'' || ICMP support and Network measurement || ICMP* net_db.* ||
-|| ''ident/'' || Ident support || ident.* ||
-|| ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-|| ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
-|| ''icap/'' || ICAP support || ICAP/ICAP* ||
-|| ''ecap/'' || eCAP support || - ||
-|| ''esi/'' || ESI support || ESI* ||
-|| ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
-|| ''debug/'' || Debug core utilities || debug.cc Debug.h ||
-|| ''mem/'' || Basic Memory management || mem* ||
+||  || '''Group''' || '''Definition''' || '''Files''' ||
+||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
+||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
+||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
+||  || ''icmp/'' || ICMP support and Network measurement || ICMP* net_db.* ||
+||  || ''ident/'' || Ident support || ident.* ||
+||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
+||  || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
+||  || ''icap/'' || ICAP support || ICAP/ICAP* ||
+||  || ''ecap/'' || eCAP support || - ||
+||  || ''esi/'' || ESI support || ESI* ||
+||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
+||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
+||  || ''mem/'' || Basic Memory management || mem* ||
 ...
 
-|| ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
+||  || ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
 
 == Problems ==
 
