@@ -6,21 +6,20 @@
 
  * '''Goal''': Finish porting Squid2 Log Daemon to Squid3.
 
- * '''Status''': Done?
+ * '''Status''': Testing and Polishing
 
- * '''ETA''': 30 June 2008
+ * '''ETA''': 30 July 2008
 
  * '''Version''': 3.1
 
- * '''Developer''': AdrianChadd, AmosJeffries
+ * '''Developer''': AdrianChadd (Squid-2), AmosJeffries (Squid-3 port)
 
 
 == Squid3 status details ==
 
- * From AdrianChadd's email to squid-dev: The squid-2 stuff has been committed. The squid-3 stuff is a bit out of date but is a direct port from the squid-2 stuff, albeit wrapped up in a basic class interface. I'll wait until after Squid-3 is released and stable before committing it in time for Squid-3.1. Testing is obviously needed
+ * From AdrianChadd's email to squid-dev: The squid-2 stuff has been committed. The squid-3 stuff is a bit out of date but is a direct port from the squid-2 stuff, albeit wrapped up in a basic class interface. I'll wait until after Squid-3 is released and stable before committing it in time for Squid-3.1. Testing is obviously needed.
 
- * From HenrikNordström's email to squid-dev: Forward porting to Squid-3 should not be very complex, but not likely to start before 3.0 forks from HEAD.
-
+ * Port updated with patches found by Squid-2 usage testing. Structure revised for C++ objects in an API interface with module Instantiations. Testing is underway to see if it works to a usable standard.
 
 == Squid2 information ==
 
