@@ -1,0 +1,65 @@
+##master-page:CategoryTemplate
+#format wiki
+#language en
+
+= Internationalization of Squid =
+
+ * '''Goal''': To make Squid error pages available in many languages.
+
+ * '''Status''': Translations needed. Code being written.
+
+ * '''Version''': 3.1 and later
+
+ * '''Developer''': AmosJeffries is coordinating. Anyone can contribute translations.
+
+== Why? Squid already has translated error pages ==
+
+Older Squid releases are provided with a fixed set of pre-translated pages which have been gathered from many contributors over a long period. These pages naturally have a mixed set of HTML standards (mostly obsolete or deprecated) and an ever more mixed amount of information available. The format tags (%) for embedding details about the error have not always been kept in the right places, and have changed in various releases.
+
+We are hopping to bring all the error pages into an easily maintained structure for language translation and future upgrades. The commonly used .PO/.POT translation format has been chosen for the dictionaries due to the wide existing community support and tools. They also allow automated translation from a single set of template files which can be easily updated.
+
+== How can I contribute? ==
+
+You can get the dictionary template in a few ways:
+ * Contact the squid-dev mailing list and ask for a current dictionary template (.POT file).
+ * Download the latest [[http://www.squid-cache.org/Versions/v3/HEAD/|Squid-3 HEAD source code]] and grab the '''errors/dictionary.pot''' file.
+
+When you have done the translation submit the resulting .PO file to squid-dev mailing list for approval.
+
+How-To's on translating are widely available, so I won't cover those details here.
+There are a few items specific to the squid dictionary which you will need to be careful of:
+
+ * HTML tags may surround some words. Please do not alter or remove the tag itself. Moving it about to suit the translation words is fine though.
+ * Squid use codes starting with % to insert certain items. Please leave these in the translated message as they are important for accurate error reporting. I have found that the messages where they mix with text to be translated the code usually represents a singular noun.
+
+|| /!\ || The current translation templates assume ISO-8859-1 character set. We will still accept other character translations. But until we get that bug out there may be some delay in merging. ||
+
+== How does this affect my installed Squid? ==
+
+Squid earlier than 3.1 won't be affected by this just yet. Sorry. We may at a later date, provide pre-translated pages to be used like custom errors. But not just yet.
+
+Any existing Squid which have been configured with a non-default ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and upgrading to the auto-language settings.
+
+== So how can I do this upgrade? ==
+
+Squid built with:
+{{{
+ --enable-auto-locale
+}}}
+
+will have the capability of loading any translated templates for the visitors browser. Squid admin just need to follow these steps:
+
+ * Check that your preferred language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en_US, etc.) .
+ * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if one can be negotiated with the browser.
+ * Remove ''error_directory'' from squid.conf
+
+Reconfigure or restart squid and Hey presto, its going.
+
+=== Now I keep getting: "Unable to load default language. Reset to English" ===
+
+The language code you have entered in squid.conf for ''error_default_language'' does not match any of the currently installed error page translations.
+
+Check that you spelled it correctly, it must match the ISO code used for one of the directory names in your squid errors directory.
+
+----
+CategoryFeature
