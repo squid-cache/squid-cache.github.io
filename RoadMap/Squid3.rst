@@ -55,6 +55,7 @@ The deadline for new feature requests to 3.1 is past. Available developer time w
 
 Some features have already been completed and merged into the codebase for 3.1 release. They are:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 regex:Status...: completed -regex:ETA...:)>>
+ * [[../../Translations|Error Page Translations]]
  * Follow X-Forwarded-For support ported from 2.6
  * X-Forwarded-For options extended (truncate, delete, transparent)
 
