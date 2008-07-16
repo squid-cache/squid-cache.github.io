@@ -24,19 +24,19 @@ You can get the dictionary template in a few ways:
  * Contact the squid-dev mailing list and ask for a current dictionary template (.POT file).
  * Download the latest [[http://www.squid-cache.org/Versions/v3/HEAD/|Squid-3 HEAD source code]] and grab the '''errors/dictionary.pot''' file.
 
-When you have done the translation submit the resulting .PO file to squid-dev mailing list for approval. We need them with ISO-639 code information to indicate the language, and if possible the country ISO-3166 variant code as well. If you don't know these, an indication of the info may be just as useful (ie american english, or british english, not just english).
+When you have done the translation submit the resulting .PO file to squid-dev mailing list for approval. We need them with ISO-639 code information to indicate the language, and if possible the country ISO-3166 variant code as well. If you don't know these, an indication of that info may be just as useful (ie american english, or british english, not just english).
 
 How-To's on translating are widely available, so I won't cover those details here.
 There are a few items specific to the squid dictionary which you will need to be careful of:
 
  * HTML tags may surround some words. Please do not alter or remove the tag itself. Moving it about to suit the translation words is fine though.
- * Squid use codes starting with % to insert certain items. Please leave these in the translated message as they are important for accurate error reporting. I have found that the messages where they mix with text to be translated the code usually represents a singular noun.
+ * Squid uses codes starting with % to insert certain items. Please leave these in the translated message as they are important for accurate error reporting. I have found that in messages where they mix with text to be translated, the code usually represents a singular noun.
 
-|| /!\ || The current translation templates assume ISO-8859-1 character set. We will still accept other character translations. But until we get that bug out there may be some delay in merging. ||
+|| /!\ || The current translation templates assume ISO-8859-1 character set. We will still accept other character translations. But until we get that bug sorted out there may be a short delay in merging. ||
 
 == How does this affect my installed Squid? ==
 
-Squid earlier than 3.1 won't be affected by this just yet. Sorry. We may at a later date, provide pre-translated pages to be used like custom errors. But not just yet.
+Squid earlier than 3.1 won't be affected by this just yet. Sorry. I hope to provide pre-translated page sets for drop-in to older Squid, like custom errors. But thats as far as planned on back porting.
 
 Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the auto-language settings.
 
@@ -54,7 +54,7 @@ Squid built with:
 will have the capability of loading any translated templates for the visitors browser. Squid admin just need to follow these steps:
 
  * Check that your preferred language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en_US, etc.) .
- * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if one can be negotiated with the browser.
+ * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
  * Remove ''error_directory'' from squid.conf
 
 Reconfigure or restart squid and Hey presto, its going.
