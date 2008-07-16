@@ -6,7 +6,7 @@
 
  * '''Goal''': To make Squid error pages available in many languages.
 
- * '''Status''': Translations needed. Code being written.
+ * '''Status''': Translations needed. Code being tested.
 
  * '''Version''': 3.1 and later
 
@@ -38,7 +38,11 @@ There are a few items specific to the squid dictionary which you will need to be
 
 Squid earlier than 3.1 won't be affected by this just yet. Sorry. We may at a later date, provide pre-translated pages to be used like custom errors. But not just yet.
 
-Any existing Squid which have been configured with a non-default ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and upgrading to the auto-language settings.
+Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the auto-language settings.
+
+|| /!\ || Code portion still in alpha testing. Will be out very, very soon. The rest of the page is currently FYI so you can all see where this is going... ||
+
+When the code portion of this project has passed alpha-testing. Squid 3.1 will have gained the capability not only of providing better translated error pages, but pages matched to visitors own browser language settings. Currently they only see one language from squid.conf, whether they can read it or not.
 
 == So how can I do this upgrade? ==
 
