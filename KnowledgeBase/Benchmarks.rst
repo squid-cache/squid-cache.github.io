@@ -55,6 +55,15 @@ Submitted by: Martin Marji Cermak. 2005-01-14.
 http://www.squid-cache.org/mail-archive/squid-users/200501/0374.html
 }}}
 
+= Other Benchmarking =
+
+Mark Nottingham benchmarked Squid 2.5 vs 2.6 in late 2006:
+http://www.mnot.net/blog/2006/08/21/caching_performance
+
+The Measurement Factory benchmarked Squid 2.4, in particular IO systems in 2000
+http://polygraph.ircache.net/Results/bakeoff-2/
+
+
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
 CategoryKnowledgeBase
