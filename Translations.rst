@@ -5,11 +5,8 @@
 = Internationalization of Squid =
 
  * '''Goal''': To make Squid error pages available in many languages.
-
  * '''Status''': Translations needed. Code being tested.
-
  * '''Version''': 3.1 and later
-
  * '''Developer''': AmosJeffries is coordinating. Anyone can contribute translations.
 
 == Why? Squid already has translated error pages ==
@@ -19,6 +16,8 @@ Older Squid releases are provided with a fixed set of pre-translated pages which
 We are hopping to bring all the error pages into an easily maintained structure for language translation and future upgrades. The commonly used .PO/.POT translation format has been chosen for the dictionaries due to the wide existing community support and tools. They also allow automated translation from a single set of template files which can be easily updated.
 
 == How can I contribute? ==
+
+You need the [[http://translate.sourceforge.net/|Translate Toolkit]] to be able to work on this project.
 
 You can get the dictionary template in a few ways:
  * Contact the squid-dev mailing list and ask for a current dictionary template (.POT file).
