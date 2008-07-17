@@ -38,11 +38,16 @@ Basic new features in 3.0
  * Per-User bandwidth limits (class 4 delay pool)
 
 From STABLE 2
- * [[Features/ConfigIncludes]]
+ * [[Features/ConfigIncludes|include Directive]]
  * Port-name ACL
 
 From STABLE 6
  * umask Support
+
+From STABLE 8
+ * userhash Peer Selection
+ * sourcehash Peer Selection
+ * cachemgr.cgi Sub-Actions
 
 Packages of squid 3.0 source code are available at
 http://www.squid-cache.org/Versions/v3/3.0/
