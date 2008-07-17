@@ -24,7 +24,7 @@ Sorted by Squid Release and CPU.
 || Users || ~100 ||
 || RPS || Unknown: 'reasonable response rate' ||
 {{{
-Submitted by: Philipp Rusch - New Vision.
+Submitted by: Philipp Rusch - New Vision. 2008-07-17.
 
 IBM xSeries 3250 M2. This system is doing virus-scanning with ICAP-enabled Squid through KAV 5.5 Kaspersky AntiVirus for Internet Gateways
 AND it is doing web-content filtering with SquidGuard 1.3
