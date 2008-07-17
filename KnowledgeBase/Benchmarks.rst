@@ -31,10 +31,29 @@ AND it is doing web-content filtering with SquidGuard 1.3
 AND it is doing NTLM AUTH against the internal W2k3-ADS-domain
 }}}
 
-
-== Squid 2.7 STABLE 3 ==
+== Squid 2.7 ==
 
 No details yet....
+
+== Squid 2.6  ==
+
+No details yet....
+
+== Squid 2.5 STABLE ?? ==
+
+NP: probably 2.5.STABLE7 or earlier going by the release dates.
+
+|| CPU || P4 2.8GHz ||
+|| RAM || 4 GB ||
+|| HDD || 2 x 36GB 10 RPM, 2 x 73 15 RPM scsi disks  ||
+|| OS  || Debian 2.4.25 ||
+|| Users || ~3200 ||
+|| RPS || 220 ||
+|| Hit Ratio || 54% ||
+{{{
+Submitted by: Martin Marji Cermak. 2005-01-14.
+http://www.squid-cache.org/mail-archive/squid-users/200501/0374.html
+}}}
 
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
