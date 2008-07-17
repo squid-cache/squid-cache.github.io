@@ -22,6 +22,7 @@ Yes.  We benchmarked Squid-2.4 with DISKD at the
 got 160 req/sec with diskd.  Without diskd, we'd have gotten about
 40 req/sec.
 
+|| /!\ || Modern ''Linux'' systems the Disk Daemon has been trumped by extremely fast AUFS. diskd is still recommended for ''BSD'' variants. However, we may have found an implementation bug in squid which was hobbling AUFS on BSD. ||
 
 == How do I use it? ==
 
