@@ -21,6 +21,8 @@ This is a work in progress (read: a place for Adrian to jot down TPROXY document
 
 The kernel and iptables need to be patched with the tproxy patches (and the tproxy include file needs to be placed in /usr/include/linux/netfilter_ipv4/ip_tproxy.h or include/netfilter_ipv4/ip_tproxy.h in the squid src tree).
 
+|| /!\ || Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code [[../../Features/TproxyUpdate|TPROXY Updates]] ||
+
 TThe iptables rule needs to use the TPROXY target (instead of the REDIRECT target) to redirect the port 80 traffic to the proxy.  Ie:
 
 {{{
@@ -155,6 +157,7 @@ Now,  I will try tuning-up my box & squid.conf tommorow
 
 == References ==
 
+ * Squid [[../../Feature/TproxyUpdate| 3.1 TPROXY Support update]]
  * TPROXY patch homepage: http://www.balabit.com/support/community/products/tproxy/
  * A useful script to test: http://devel.squid-cache.org/cgi-bin/test
 
