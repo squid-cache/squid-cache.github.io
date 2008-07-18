@@ -59,6 +59,8 @@ ReleaseProcess describes the process and criteria used by the Squid Developers w
 
 WhoWeAre explains who the people working on the Squid project are.
 
+MergeProcedure explains how to get your feature or improvement accepted into squid
+
 == Code Sprints ==
 
 Code Sprints are informal gatherings of Squid developers with a focus on developing urgently needed features or fixing major bugs.
