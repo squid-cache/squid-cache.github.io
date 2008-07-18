@@ -18,9 +18,14 @@
 
 = Sponsor =
 
-This feature is presently being Sponsored and developed by Balabit.
+This feature was Sponsored and developed by Balabit.
 
 = Details =
+
+ * Still requires patched kernel (patches available at Balabit)
+ * Only requires --enable-linux-netfilter configure option
+ * '''Obsolete'''' --enable-tproxy option. Remains only for legacy v2.2 support.
+
 ''by Laszlo Attilla Toth''
 
 Current implementation doesn't require kernel support, only a new socket option, IP_TRANSPARENT, also I made a patch which drops "--enable-tproxy" because TProxy 4.1 uses netfilter/iptables (TPROXY target and socket match). If "--enable-linux-netfilter" is used, the "tproxy" option is available for "http_proxy".
