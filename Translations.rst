@@ -17,21 +17,30 @@ We are hopping to bring all the error pages into an easily maintained structure 
 
 == How can I contribute? ==
 
-You need the [[http://translate.sourceforge.net/|Translate Toolkit]] to be able to work on this project.
+'''The easy way:'''
+ Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]. Accounts are automatic, but please contact AmosJeffries for for translation privileges, or to get new languages added.
+
+
+There are a few items specific to the squid dictionary which everyone needs to be careful of:
+
+ * HTML tags may surround some words. Please do not alter or remove the tag itself. Moving it about to suit the translation words is fine though.
+ * Squid uses codes starting with % to insert certain items. Please leave these in the translated message as they are important for accurate error reporting. I have found that in messages where they mix with text to be translated, the code usually represents a singular noun.
+
+
+'''Hard(er) way:'''
+  To do lone translations, you will need the [[http://translate.sourceforge.net/|Translate Toolkit]], or a good text editor.
 
 You can get the dictionary template in a few ways:
+ * Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]
  * Contact the squid-dev mailing list and ask for a current dictionary template (.POT file).
  * Download the latest [[http://www.squid-cache.org/Versions/v3/HEAD/|Squid-3 HEAD source code]] and grab the '''errors/dictionary.pot''' file.
 
 When you have done the translation submit the resulting .PO file to squid-dev mailing list for approval. We need them with ISO-639 code information to indicate the language, and if possible the country ISO-3166 variant code as well. If you don't know these, an indication of that info may be just as useful (ie american english, or british english, not just english).
 
 How-To's on translating are widely available, so I won't cover those details here.
-There are a few items specific to the squid dictionary which you will need to be careful of:
-
- * HTML tags may surround some words. Please do not alter or remove the tag itself. Moving it about to suit the translation words is fine though.
- * Squid uses codes starting with % to insert certain items. Please leave these in the translated message as they are important for accurate error reporting. I have found that in messages where they mix with text to be translated, the code usually represents a singular noun.
 
 || /!\ || The current translation templates assume ISO-8859-1 character set. We will still accept other character translations. But until we get that bug sorted out there may be a short delay in merging. ||
+
 
 == How does this affect my installed Squid? ==
 
@@ -58,7 +67,7 @@ will have the capability of loading any translated templates for the visitors br
 
 Reconfigure or restart squid and Hey presto, its going.
 
-=== Now I keep getting: "Unable to load default language. Reset to English" ===
+=== Now I keep getting: "Unable to load default language. Reset to 'en' (English)" ===
 
 The language code you have entered in squid.conf for ''error_default_language'' does not match any of the currently installed error page translations.
 
