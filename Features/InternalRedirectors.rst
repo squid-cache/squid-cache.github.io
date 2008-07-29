@@ -10,7 +10,7 @@
 
  * '''Status''': Untested patches for 2.6 and 3.1 available.
 
- * '''ETA''': ''unknown''
+ * '''ETA''': 3.1 +45 days
 
  * '''Version''': 3.2
 
