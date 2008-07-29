@@ -10,7 +10,7 @@
  * [[http://wessels.squid-cache.org/|Duane Wessels]], Chief Procrastinator
 
 = Certified Developers =
- * [[FrancescoChemolli|Francesco Chemolli]] is struggling to provide documentation and related infrastructure
+ * [[FrancescoChemolli|Francesco Chemolli]] works mainly on documentation and maintains the wiki, but also chimes in with patches every now and then.
  * [[StevenWilton|Steven Wilton]] is bringing the [[SquidFaq/CyclicObjectStorageSystem|COSS]] storage engine to maturity
  * [[DougDixon|Doug Dixon]]
 
