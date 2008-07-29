@@ -85,7 +85,7 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 
 == TODO ==
 
- * [[Features/InternalRedirectors||INternal URL-rewriting]] - 45 days
+ * [[Features/InternalRedirectors|Internal URL-rewriting]] - 45 days
 
 ## * [[Features/eCAP]] <<Include(Features/eCAP,,,from="ETA.*:",to="$")>>
 
