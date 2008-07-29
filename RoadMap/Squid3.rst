@@ -75,7 +75,6 @@ Features under development:
  * [[Features/eCAP]] <<Include(Features/eCAP,,,from="ETA.*:",to="$")>>
  * [[Features/CppCodeFormat]] <<Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")>>
  * [[Features/SourceLayout]] <<Include(Features/SourceLayout,,,from="ETA.*:",to="$")>>
- * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
  * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&version=3.HEAD&target_milestone=3.1&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&cmdtype=doit |Bug Zapping]]
 
 = Squid 3.2 =
@@ -85,7 +84,9 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 
 == TODO ==
 
-## * [[Features/eCAP]] <<Include(Features/eCAP,,,from="ETA.*:",to="$")>>
+Features under development:
+ * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectorsP,,,from="ETA.*:",to="$")>>
+ * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
 
 Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)>>
