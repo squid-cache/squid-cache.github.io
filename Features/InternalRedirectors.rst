@@ -8,20 +8,38 @@
 
  * '''Goal''': To provide an internal URL-rewrite mechanism which can be used with ACL to replace simple redirectors.
 
- * '''Status''': Untested patches for 2.6 and 3.1 available.
+ * '''Status''': Merged with 2-HEAD. Port to 3.1 underway
 
  * '''ETA''': 3.1 +45 days
 
  * '''Version''': 3.2
 
- * '''Developer''': AmosJeffries
+ * '''Developer''': Gonzalo Arana (2.x), AmosJeffries (3.x)
 
  * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=1208
 
 
 == Details ==
 
-|| {i} || The format for 3.1 differs from 2.6 in the directives it provides. This description covers the 3.1 version in detail. ||
+Any explicit external URL-rewiter helper via '''url_rewrite_program''' overrides internal redirectors and the external helper is used instead.
+
+=== Squid 2.x ===
+|| {i} || The format for 3.x differs from 2.x in the directives it provides. This description covers the 2.x version in detail. ||
+|| {i} || The patch for 2.x has been accepted into the main code for testing and release in 2.8 ||
+
+Squid 2.x this feature is enabled by default.
+
+An extra squid.conf options are made available to re-write URL without a rewriter helper.
+{{{
+rewrite_access acl [acl [acl ...]]
+
+rewrite dsturl acl [acl [acl ...]]
+}}}
+
+see url_map* descriptions below for details on their operation. The names differ, but behavior remains identical.
+
+=== Squid 3.x ===
+|| {i} || The format for 3.x differs from 2.x in the directives it provides. This description covers the 3.x version in detail. ||
 
 When squid is built with configure option:
 {{{
