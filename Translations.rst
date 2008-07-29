@@ -18,8 +18,9 @@ We are hopping to bring all the error pages into an easily maintained structure 
 == How can I contribute? ==
 
 '''The easy way:'''
- Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]. Accounts are automatic, but please contact AmosJeffries for for translation privileges, or to get new languages added.
+ Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]. Accounts are automatic, fill out the register form, then when you can login select any language and start suggesting translations.
 
+If you are interested in longer contribution we do need people familiar enough with a language to approve/reject differences in suggestions. Please contact AmosJeffries about becoming an admin, or to get new languages added.
 
 There are a few items specific to the squid dictionary which everyone needs to be careful of:
 
@@ -44,13 +45,13 @@ How-To's on translating are widely available, so I won't cover those details her
 
 == How does this affect my installed Squid? ==
 
-Squid earlier than 3.1 won't be affected by this just yet. Sorry. I hope to provide pre-translated page sets for drop-in to older Squid, like custom errors. But thats as far as planned on back porting.
+Squid earlier than 3.1 won't be affected by this just yet. Sorry. I intend to provide pre-translated page sets for drop-in to older Squid, like custom errors. But thats as far as planned on back porting.
 
 Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the auto-language settings.
 
-|| /!\ || Code portion still in alpha testing. Will be out very, very soon. The rest of the page is currently FYI so you can all see where this is going... ||
+|| /!\ || Code portion is still awaiting squid-dev final approval for merge. Will be out very, very soon. The rest of the page is currently FYI so you can all see where this is going... ||
 
-When the code portion of this project has passed alpha-testing. Squid 3.1 will have gained the capability not only of providing better translated error pages, but pages matched to visitors own browser language settings. Currently they only see one language from squid.conf, whether they can read it or not.
+When the code portion of this project has merged. Squid 3.1 will have gained the capability not only of providing better translated error pages, but pages matched to visitors own browser language settings. Currently they only see one language from squid.conf, whether they can read it or not.
 
 == So how can I do this upgrade? ==
 
