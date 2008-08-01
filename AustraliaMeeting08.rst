@@ -13,6 +13,8 @@
 
 == Participants ==
 
+_If you don't have edit access to this page, please e-mail your details to mnot@mnot.net_
+
  * Mark Nottingham (Yahoo!)
  * Adrian Chadd (Squid Core)
  * Amos Jeffries (Squid Core)
@@ -22,4 +24,28 @@
 
 == Agenda ==
 
-Note: This is *not* a user-focused meeting; however, users are welcome to sit through developer discussions if they wish.
+=== Monday, August 18 10:00am-5:00pm ===
+
+ * 10am-10:30am: agenda bashing, intros
+ * 10:30am-12:30pm: use cases, user feedback, etc.
+ * 12:30pm-1:30pm: lunch 
+ * 1:30pm-3pm: developer discussion
+ * 3pm-5pm: Squid-2 roadmap discussions (Henrik on the phone)
+
+
+=== Tuesday, August 19 9:00am-4:00pm===
+
+Developer discussion (continued)
+
+
+
+== Developer Discussion Topics ==
+
+ * Performance
+ * HTTP/1.1
+ * Testing, continuous integration
+ * Issue tracking
+ * Documentation
+ * Release process
+ * Squid-2 roadmap
+ * Squid-3 roadmap
