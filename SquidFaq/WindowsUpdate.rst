@@ -36,6 +36,16 @@ http_access allow windowsupdate localnet
 
 The above config is also useful for other automatic update sites such as Anti-Virus vendors, just add their domains to the acl.
 
+|| {i} || If you have squid listening on a localhost port with other software in front (ie dansGuardian). You will probably need to add permission for '''localhost''' address so the front-end service can relay the requests. ||
+
+{{{
+...
+http_access allow CONNECT wuCONNECT localnet
+http_access allow CONNECT wuCONNECT localhost
+http_access allow windowsupdate localnet
+http_access allow windowsupdate localhost
+}}}
+
 ##end
 ----
 Back to the SquidFaq
