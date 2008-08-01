@@ -12,7 +12,7 @@
 
 || '''Language''' || '''Translations verified by:''' ||
 || English || AmosJeffries ||
-|| German || Constantin Rack and Robert Dessa ||
+|| German || Constantin Rack and  Robert Förster ||
 || Italian || FrancescoChemolli ||
 || Others || '''Unverified''', If you are familiar with any other language, please volunteer. It does not take very much time. ||
 
