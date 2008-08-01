@@ -49,4 +49,5 @@ Developer discussion (continued)
  * Release process
  * Squid-2 roadmap
  * Squid-3 roadmap
- * AdrianChadd - Disk Storage overview - AUFS, COSS, future work, brainstorming
+ * AdrianChadd - Disk Storage overview - AUFS, COSS, performance, issues, future work, brainstorming
+ * AdrianChadd - Networking overview - performance, issues, future work (threading, zero-copy), brainstorming
