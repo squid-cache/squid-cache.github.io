@@ -49,3 +49,4 @@ Developer discussion (continued)
  * Release process
  * Squid-2 roadmap
  * Squid-3 roadmap
+ * AdrianChadd - Disk Storage overview - AUFS, COSS, future work, brainstorming
