@@ -13,7 +13,7 @@
 
 == Participants ==
 
-_If you don't have edit access to this page, please e-mail your details to mnot@mnot.net_
+''If you don't have edit access to this page, please e-mail your details to mnot@mnot.net''
 
  * Mark Nottingham (Yahoo!)
  * Adrian Chadd (Squid Core)
@@ -33,7 +33,7 @@ _If you don't have edit access to this page, please e-mail your details to mnot@
  * 3pm-5pm: Squid-2 roadmap discussions (Henrik on the phone)
 
 
-=== Tuesday, August 19 9:00am-4:00pm===
+=== Tuesday, August 19 9:00am-4:00pm ===
 
 Developer discussion (continued)
 
