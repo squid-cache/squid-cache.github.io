@@ -7,7 +7,15 @@
  * '''Goal''': To make Squid error pages available in many languages.
  * '''Status''': Translations needed. Code being tested.
  * '''Version''': 3.1 and later
- * '''Developer''': AmosJeffries is coordinating. Anyone can contribute translations.
+ * '''Coordinator''': AmosJeffries. Anyone can contribute translations.
+ * '''Verified''': Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
+
+|| '''Language''' || '''Translations verified by:''' ||
+|| English || AmosJeffries ||
+|| German || Constantin Rack and Robert Dessa ||
+|| Italian || FrancescoChemolli ||
+|| Others || '''Unverified''', If you are familiar with any other language, please volunteer. It does not take very much time. ||
+
 
 == Why? Squid already has translated error pages ==
 
@@ -26,12 +34,6 @@ There are a few items specific to the squid dictionary which everyone needs to b
 
  * HTML tags may surround some words. Please do not alter or remove the tag itself. Moving it about to suit the translation words is fine though.
  * Squid uses codes starting with % to insert certain items. Please leave these in the translated message as they are important for accurate error reporting. I have found that in messages where they mix with text to be translated, the code usually represents a singular noun.
-
-We have some volunteers already working on and approving translations for a few languages:
-|| '''Language''' || '''Translators in Charge''' ||
-|| English || AmosJeffries ||
-|| German || Constantin Rack and Robert Dessa ||
-|| Italian || FrancescoChemolli ||
 
 
 '''Hard(er) way:'''
