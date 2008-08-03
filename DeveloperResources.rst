@@ -64,8 +64,4 @@ MergeProcedure explains how to get your feature or improvement accepted into squ
 == Code Sprints ==
 
 Code Sprints are informal gatherings of Squid developers with a focus on developing urgently needed features or fixing major bugs.
-
- 1. BugSprintLateSeptember2006
- 1. BugSprintSeptember2006
- 1. CodeSprintOct2005
- 1. CodeSprintDec2004
+You can find links to related documents in MeetUps.
