@@ -26,6 +26,8 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
 
 DeveloperResources section has instructions for [[Squid3VCS|Bazaar]] and [[CvsInstructions|CVS]] access, coding guidelines, and other useful documentation.
 
+Every now and then we try to organize some [[MeetUps|events, developer meetups or code sprints]]. In the MeetUps page you'll find schedules, notes and other event-related documentation.
+
 == Related resources ==
 
  * The main Squid [[http://www.squid-cache.org/|site]].
