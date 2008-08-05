@@ -8,6 +8,9 @@
   * [[http://www.vibehotels.com.au/|Vibe Hotel Sydney]] - ~15 minute train ride + ~20 minute walk, about AU$150
   * [[http://www.hotelcoronation.com.au/|Hotel Coronation]] - ~10 minute train + ~20 minute walk, about AU$110
   * [[http://www.yhotel.com.au/|Y Hotel Hyde Park]] - ~10 minute train + ~20 minute walk, about AU$90
+ * Parking: $22/day across Hickson Road, just past Towns Place
+ * Public transport: closest is Wynyard and Circular Quay; both about a 20 minute walk (from Circular Quay is picturesque)
+
 
 == Participants ==
 ''If you don't have edit access to this page, please e-mail your details to mnot@mnot.net ''
