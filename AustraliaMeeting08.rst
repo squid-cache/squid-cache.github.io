@@ -17,6 +17,7 @@
  * Mark Nottingham (Yahoo!)
  * Tim Starling (Wikimedia)
  * John Ferlito (Vquence)
+ * Adam Carter (Optus Enterprise Networks)
 
 === Developers ===
 
