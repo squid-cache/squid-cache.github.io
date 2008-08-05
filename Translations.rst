@@ -48,9 +48,6 @@ When you have done the translation submit the resulting .PO file to squid-dev ma
 
 How-To's on translating are widely available, so I won't cover those details here.
 
-|| /!\ || The current translation templates assume ISO-8859-1 character set. We will still accept other character translations. But until we get that bug sorted out there may be a short delay in merging. ||
-
-
 == How does this affect my installed Squid? ==
 
 Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Versions/v3/HEAD/|langpack]] tarballs, but the auto-negotiate feature is not planned for back-porting.
