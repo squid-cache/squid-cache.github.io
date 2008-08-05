@@ -12,7 +12,13 @@
 == Participants ==
 ''If you don't have edit access to this page, please e-mail your details to mnot@mnot.net ''
 
+=== Users ===
+
  * Mark Nottingham (Yahoo!)
+ * John Ferlito (Vquence)
+
+=== Developers ===
+
  * Adrian Chadd (Squid Core)
  * Amos Jeffries (Squid Core)
  * Benno Rice (random Squid hacker)
