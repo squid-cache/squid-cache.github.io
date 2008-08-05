@@ -15,6 +15,7 @@
 === Users ===
 
  * Mark Nottingham (Yahoo!)
+ * Tim Starling (Wikimedia)
  * John Ferlito (Vquence)
 
 === Developers ===
