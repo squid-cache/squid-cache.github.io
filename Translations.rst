@@ -6,7 +6,7 @@
 
  * '''Goal''': To make Squid error pages available in many languages.
  * '''Status''': Translations needed. Code being tested.
- * '''Version''': 3.1 and later
+ * '''Version''': 2.5+ (langpacks), 3.1+ (auto-negotiate)
  * '''Coordinator''': AmosJeffries. Anyone can contribute translations.
  * '''Verified''': Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
 
@@ -53,9 +53,9 @@ How-To's on translating are widely available, so I won't cover those details her
 
 == How does this affect my installed Squid? ==
 
-Squid earlier than 3.1 won't be affected by this just yet. Sorry. I intend to provide pre-translated page sets for drop-in to older Squid, like custom errors. But thats as far as planned on back porting.
+Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Versions/v3/HEAD/|langpack]] tarballs, but the auto-negotiate feature is not planned for back-porting.
 
-Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the auto-language settings.
+Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
 
 || /!\ || Code portion is still awaiting squid-dev final approval for merge. Will be out very, very soon. The rest of the page is currently FYI so you can all see where this is going... ||
 
@@ -70,7 +70,7 @@ Squid built with:
 
 will have the capability of loading any translated templates for the visitors browser. Squid admin just need to follow these steps:
 
- * Check that your preferred language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en_US, etc.) .
+ * Check that your preferred language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en-gb, etc.) .
  * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
  * Remove ''error_directory'' from squid.conf
 
