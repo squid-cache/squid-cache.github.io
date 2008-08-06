@@ -7,6 +7,7 @@
  * '''Goal''': To make Squid error pages available in many languages.
  * '''Status''': Translations needed. Code being tested.
  * '''Version''': 2.5+ (langpacks), 3.1+ (auto-negotiate)
+ * '''Download''': [[http://www.squid-cache.org/Versions/langpack/]]
  * '''Coordinator''': AmosJeffries. Anyone can contribute translations.
  * '''Verified''': Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
 
@@ -50,7 +51,7 @@ How-To's on translating are widely available, so I won't cover those details her
 
 == How does this affect my installed Squid? ==
 
-Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Versions/v3/HEAD/|langpack]] tarballs, but the auto-negotiate feature is not planned for back-porting.
+Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Versions/langpack/|langpack]] tarballs, but the auto-negotiate feature is not planned for back-porting.
 
 Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
 
