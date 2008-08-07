@@ -51,3 +51,8 @@ Developer discussion (continued)
  * Squid-3 roadmap
  * AdrianChadd - Disk Storage overview - AUFS, COSS, performance, issues, future work, brainstorming
  * AdrianChadd - Networking overview - performance, issues, future work (threading, zero-copy), brainstorming
+ * AmosJeffries - Portability, component seperation
+
+== User Interest Topics ==
+If time permits or interest is high
+ * AmosJeffries - IPv6 in Squid
