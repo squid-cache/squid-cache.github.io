@@ -28,7 +28,7 @@ We are hopping to bring all the error pages into an easily maintained structure 
 == How can I contribute? ==
 
 '''The easy way:'''
- Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]. Accounts are automatic, fill out the register form, then when you can login select any language and start suggesting translations.
+ Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]. Accounts are automatic, fill out the register form, then when you can login select any language and start suggesting translations. 
 
 If you are interested in longer contribution we do need people familiar enough with a language to approve/reject differences in suggestions. Please contact AmosJeffries about becoming an admin, or to get new languages added.
 
@@ -37,6 +37,7 @@ There are a few items specific to the squid dictionary which everyone needs to b
  * HTML tags may surround some words. Please do not alter or remove the tag itself. Moving it about to suit the translation words is fine though.
  * Squid uses codes starting with % to insert certain items. Please leave these in the translated message as they are important for accurate error reporting. I have found that in messages where they mix with text to be translated, the code usually represents a singular noun.
 
+A reference of the available tags is available in the  [[SquidFaq/MiscFeatures#head-fd8f5559ec842b21e1acb06823eaa9b83897fcc3|FAQ]]
 
 '''Hard(er) way:'''
   To do lone translations, you will need the [[http://translate.sourceforge.net/|Translate Toolkit]], or a good text editor.
