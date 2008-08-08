@@ -15,6 +15,7 @@
 || English || AmosJeffries ||
 || German || Constantin Rack and  Robert Förster ||
 || Italian || FrancescoChemolli ||
+|| Turkish || Umut Çinar ||
 || Others || '''Unverified''', If you are familiar with any other language, please volunteer. It does not take very much time. ||
 
 
