@@ -40,5 +40,8 @@ Squid-3 support has been completed and integrated into the latest sources:
 
  http://www.squid-cache.org/Versions/v3/HEAD/
 
+=== References ===
+http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
+
 ----
 CategoryFeature
