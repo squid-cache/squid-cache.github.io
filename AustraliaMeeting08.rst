@@ -56,3 +56,4 @@ Developer discussion (continued)
 == User Interest Topics ==
 If time permits or interest is high
  * AmosJeffries - IPv6 in Squid
+ * AdrianChadd - Cacheboy, or "Where could Squid-2 go?"
