@@ -87,6 +87,10 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 Features under development:
  * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectorsP,,,from="ETA.*:",to="$")>>
  * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
+ * [[Features/StaleWhileRevalidate]] <<Include(Features/StaleWhileRevalidate,,,from="ETA.*:",to="$")>>
+ * [[Features/COSS]] <<Include(Features/COSS,,,from="ETA.*:",to="$")>>
+ * Variant Invalidation
+
 
 Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)>>
