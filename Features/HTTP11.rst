@@ -6,7 +6,7 @@
  * '''Goal''': HTTP/1.1 proxy support.
  * '''Status''': Planning.
  * '''ETA''': unknown
- * '''Version''': 3 & 2.x
+ * '''Version''': 3.2 & 2.x
  * '''Developer''': [[Henrik_Nordström]], others welcome
  * '''More''':
 ## Details
