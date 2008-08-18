@@ -93,6 +93,7 @@ Features being developed for 3.2 but with unknown ETA, violating the TODO list r
 
  * [[Features/StaleWhileRevalidate]] <<Include(Features/StaleWhileRevalidate,,,from="ETA.*:",to="$")>>
  * [[Features/COSS]] <<Include(Features/COSS,,,from="ETA.*:",to="$")>>
+ * [[Features/CollapsedForwarding]] <<Include(Features/CollapsedForwarding,,,from="ETA.*:",to="$")>>
  * Variant Invalidation
 
 == Wish List ==
