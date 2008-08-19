@@ -48,6 +48,7 @@ header layout:
   * words in class names are capitalized, including the first word
   * Global variables, including static data members are capitalized
   * non global variables and methods should be capitalized after the first word.
+  * getter and setter methods should be named '''get'''Somehing() and '''set'''Something(), methods testing some object state should be named '''is'''SomeState()
 
 == Example ==
 
@@ -55,7 +56,8 @@ header layout:
   class ClassName {
   public:
     static ClassName &Instance();
-    bool someMethod() const;
+    void setFoo ( bool newState);
+    bool isFoo() const;
   
   private:
     static ClassName TheInstance;
