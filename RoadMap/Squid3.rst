@@ -85,22 +85,27 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 == TODO ==
 
 Features under development:
- * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectorsP,,,from="ETA.*:",to="$")>>
+ * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
  * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
 
-Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown)>>
+## Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a
+## timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
 
- * [[Features/StaleWhileRevalidate]] <<Include(Features/StaleWhileRevalidate,,,from="ETA.*:",to="$")>>
- * [[Features/COSS]] <<Include(Features/COSS,,,from="ETA.*:",to="$")>>
- * [[Features/CollapsedForwarding]] <<Include(Features/CollapsedForwarding,,,from="ETA.*:",to="$")>>
+Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
+
+(Priority 1)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*1)>>
+(Priority 2)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*2)>>
  * Variant Invalidation
+(Others)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown -regex:Priority...:)>>
 
 == Wish List ==
 
-## Squid3 wishes other than those for v3.0 and v3.1
+## Squid3 wishes other than those for v3.0, v3.1, v3.2
 ## Adjust and move to the next section once v3.2 feature set is frozen.
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 -regex:Version...:.*3\.[01])>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 -regex:Version...:.*3\.[012])>>
 
 More ideas are available [[Features/Other|elsewhere]].
 
