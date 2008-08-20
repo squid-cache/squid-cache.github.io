@@ -1,10 +1,9 @@
-## Please edit system and help pages ONLY in the moinmaster wiki! For more
-## information, please see MoinMaster:MoinPagesEditorGroup.
-##acl MoinPagesEditorGroup:read,write,delete,revert All:read
-##master-page:HelpTemplate
-##master-date:Unknown-Date
 #format wiki
 #language en
+
+<<TableOfContents>>
+
+##begin
 == Adding a Cache Dir ==
 
 ''by Chris Robertson''
@@ -33,3 +32,7 @@ NP: this does not apply to large caches as there is no touching of the existing 
  2. Add a cache_dir directive to squid.conf referencing the new mount point
  3. Run squid -z -f ./squid.conf (as root or as the effective_squid_user)
  4. Reconfigure the running squid (-k reconfigure)
+
+##end
+-----
+Back to the SquidFaq
