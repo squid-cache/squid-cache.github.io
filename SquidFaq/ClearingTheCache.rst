@@ -1,10 +1,10 @@
-## Please edit system and help pages ONLY in the moinmaster wiki! For more
-## information, please see MoinMaster:MoinPagesEditorGroup.
-##acl MoinPagesEditorGroup:read,write,delete,revert All:read
-##master-page:HelpTemplate
-##master-date:Unknown-Date
 #format wiki
 #language en
+
+<<TableOfContents>>
+
+##begin
+
 
 == Pruning the Cache Down ==
 
@@ -46,3 +46,7 @@ rm -f /squid/cache/*.log
 }}}
 
 If you wish to try the pruning method with a level change and let us know the results then please do. We would like this page to cover all known resizing requirements and options.
+
+##end
+-----
+Back to the SquidFaq
