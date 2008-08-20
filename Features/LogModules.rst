@@ -8,7 +8,7 @@
 
  * '''Status''': Testing and Polishing
 
- * '''ETA''': 30 July 2008
+ * '''ETA''': 3.1 + 14 days
 
  * '''Version''': 3.1
 
