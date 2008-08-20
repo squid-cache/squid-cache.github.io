@@ -58,4 +58,4 @@ Some thought will need to be put into the following areas:
 Discussion: What is meant by These? Please expand and move up.
 
 ----
-CategoryFeature | CategoryWish
+CategoryFeature
