@@ -15,7 +15,7 @@
  * /SecurityPitfalls: common security problems in new setups
  * /ConfiguringBrowsers: how to tell the most common browsers that they should be using a proxy
  * /OperatingSquid: how to perform various tasks on squid and its cache
- * /AddACacheDir: hints on how to increase a cache's capacity
+ * [[/AddACacheDir]]: hints on how to increase a cache's capacity
  * /ClearingTheCache
 
 ===== Troubleshooting =====
