@@ -59,8 +59,12 @@
 <<TocOf(SquidFaq/SecurityPitfalls)>>
 === Too Many Misses ===
 <<TocOf(SquidFaq/ToomanyMisses)>>
+=== Adding a Cache dir ===
+<<TocOf(SquidFaq/AddACacheDir)>>
 === Clearing the Cache ===
 <<TocOf(SquidFaq/ClearingTheCache)>>
+=== RAID or JBOD? ===
+<<TocOf(SquidFaq/RAID)>>
 
 -----
 Back to the SquidFaq
