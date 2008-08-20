@@ -57,30 +57,30 @@ Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Version
 
 Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
 
-|| /!\ || Code portion is still awaiting squid-dev final approval for merge. Will be out very, very soon. The rest of the page is currently FYI so you can all see where this is going... ||
-
-When the code portion of this project has merged. Squid 3.1 will have gained the capability not only of providing better translated error pages, but pages matched to visitors own browser language settings. Currently they only see one language from squid.conf, whether they can read it or not.
+Squid 3.1 will have the capability not only of providing better translated error pages, but pages matched to visitors own browser language settings. Currently they only see one language defined in squid.conf, whether they can read it or not.
 
 == So how can I do this upgrade? ==
 
-Squid built with:
+Squid 3.1+ built with:
 {{{
  --enable-auto-locale
 }}}
 
-will have the capability of loading any translated templates for the visitors browser. Squid admin just need to follow these steps:
+have the capability of loading any translated templates for the visitors browser. Squid admin just need to follow these steps:
 
  * Check that your preferred language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en-gb, etc.) .
  * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
  * Remove ''error_directory'' from squid.conf
 
-Reconfigure or restart squid and Hey presto, its going.
+Reconfigure or restart squid.
 
-=== Now I keep getting: "Unable to load default language. Reset to 'en' (English)" ===
+=== Now I keep getting: "Unable to load default language. Reset to English" ===
 
 The language code you have entered in squid.conf for ''error_default_language'' does not match any of the currently installed error page translations.
 
 Check that you spelled it correctly, it must match the ISO code used for one of the directory names in your squid errors directory.
+
+'''NP:''' This only affects the backup language, if the users preferred is not available.
 
 ----
 CategoryFeature
