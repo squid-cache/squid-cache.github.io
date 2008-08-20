@@ -5,41 +5,31 @@
 ##master-date:Unknown-Date
 #format wiki
 #language en
-== Pruning the Cache Down ==
-Clearing the cache can be necessary under some unusual circumstances. Usually if the estimated size of the cache was calculated incorrectly and needs adjusting.
+== Adding a Cache Dir ==
 
-To fix simple cases such as the above where the cache just needs to have a portion of the total removed Altering squid.conf and reconfiguring squid is sufficient. Squid will handle the changes automatically and purge the cache down to size again within 10 minutes of the configure.
+''by Chris Robertson''
 
-old squid.conf
-{{{
-cache_dir ufs /squid/cache 1000 255 255
-}}}
-new squid.conf
-{{{
-cache_dir ufs /squid/cache 100 255 255
-}}}
-and reconfigure ...
-{{{
-squid -k reconfigure
-}}}
+Adding a new drive to Squids cache directory set is a useful thing to know. And simple as well.
 
-== Changing the Cache Levels ==
-Altering the cache_dir L1 and L2 sizes has not been tested with the above altering. It is still recommended to manually delete the cache directory and rebuild after altering the configuration.
+Squid will handle the changes semi-automatically, but there are still a few operations that need to be kicked off manually.
 
-{{{
-squid -k shutdown
-rm -r /squid/cache/*
-squid -z
-squid
-}}}
+Assuming your disk is attached, your OS recognizes it and the disk is formatted:
 
-If your cache directory and state files are at the root level of a partition there are a few system objects you need to be careful with. To get around these you may need to change the ''rm -r '' to a safer list of specific squid files:
+ 1. Ensure the effective_squid_user has write capability on the mount point
+ 2. Add a cache_dir directive to squid.conf referencing the new mount point
+ 3. Stop squid
+ 4. Run squid -z (as root or as the effective_squid_user)
+ 5. Start squid
 
-{{{
-rm -rf /squid/cache/[0-9]*
-rm -f /squid/cache/swap*
-rm -f /squid/cache/netdb*
-rm -f /squid/cache/*.log
-}}}
+== Downtime reduction hack ==
 
-If you wish to try the pruning method with a level change and let us know the results then please do. We would like this page to cover all known resizing requirements and options.
+''by Amos Jeffries''
+
+Disclaimer: This hack is theoretical, still needing confirmation of success. There is a slight chance the squid -z will abort early if it discovers another running squid instance.
+
+NP: this does not apply to large caches as there is no touching of the existing cache_dir anyway.
+
+ 1. Ensure the effective_squid_user has write capability on the mount point
+ 2. Add a cache_dir directive to squid.conf referencing the new mount point
+ 3. Run squid -z -f ./squid.conf (as root or as the effective_squid_user)
+ 4. Reconfigure the running squid (-k reconfigure)
