@@ -14,6 +14,8 @@
 
  * '''Version''': 3.2
 
+ * '''Priority''': 1
+
  * '''Developer''': unknown
 
  * '''More''': 
