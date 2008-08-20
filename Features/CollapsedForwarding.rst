@@ -12,6 +12,8 @@
 
  * '''Version''': 3.2
 
+ * '''Priority''': 1
+
  * '''Developer''': HenrikNordstrom.
 
  * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=1614
