@@ -15,14 +15,13 @@
  * /SecurityPitfalls: common security problems in new setups
  * /ConfiguringBrowsers: how to tell the most common browsers that they should be using a proxy
  * /OperatingSquid: how to perform various tasks on squid and its cache
- * [[/AddACacheDir]]: hints on how to increase a cache's capacity
- * /ClearingTheCache
 
 ===== Troubleshooting =====
  * /TroubleShooting gives a few hints on what to do when squid fails or misbehaves
  * /SystemWeirdnesses shows how to expect some operating-system-dependent unexpected behaviors
  * /ToomanyMisses: why more than just a few TCP_SWAPFAIL_MISS
  * /WindowsUpdate: configuring squid to pass Windows Update
+ * [[/AddACacheDir]]: hints on how to increase a cache's capacity
  * /ClearingTheCache: how to wipe your entire disk cache in one easy step
  * [[/RAID]]: Why Squid and RAID play nasty together and what to do about it.
 
