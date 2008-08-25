@@ -8,7 +8,7 @@
 == Which file do I download to get Squid? ==
 
 You must download a source archive file of the form
-squid-x.y.tar.gz or squid-x.y.tar.bz2 (eg, squid-2.5.STABLE14.tar.bz2).
+squid-x.y.tar.gz or squid-x.y.tar.bz2 (eg, squid-2.6.STABLE14.tar.bz2).
 We recommend you first try one of our [[http://www.squid-cache.org/Mirrors/http-mirrors.html|mirror sites]].
 
 Alternatively, the main Squid WWW site 
@@ -34,8 +34,8 @@ The squid core team members do not have the resources to make pre-compiled binar
 You must run the ''configure'' script yourself before running ''make''.  We suggest that you first invoke ''./configure --help'' and make a note of the configure options you need in order to support the features you intend to use.  Do not compile in features you do not think you will need.
 
 {{{
-% tar xzf squid-2.5.RELEASExy.tar.gz
-% cd squid-2.5.RELEASExy
+% tar xzf squid-2.6.RELEASExy.tar.gz
+% cd squid-2.6.RELEASExy
 % ./configure --with-MYOPTION --with-MYOPTION2 etc
 % make
 }}}
@@ -67,13 +67,13 @@ You will need [[http://www.perl.com/|Perl]] installed on your system.
 
 You need the ''patch'' program.  You should probably duplicate the
 entire directory structure before applying the patch.  For example, if
-you are upgrading from squid-2.5STABLE13 to 2.5STABLE14, you would run
+you are upgrading from squid-2.6.STABLE13 to 2.6.STABLE14, you would run
 these commands:
 
 {{{
-cp -rl squid-2.5.STABLE13 squid-2.5.STABLE14
-cd squid-2.5.STABLE14
-zcat /tmp/squid-2.5.STABLE13-STABLE14.diff.gz | patch -p1
+cp -rl squid-2.6.STABLE13 squid-2.6.STABLE14
+cd squid-2.6.STABLE14
+zcat /tmp/squid-2.6.STABLE13-STABLE14.diff.gz | patch -p1
 }}}
 
 After the patch has been applied, you must rebuild Squid from the
