@@ -2,15 +2,149 @@
 #format wiki
 #language en
 
-= Feature: IPv6 =
+= IPv6 in Squid =
 
- * '''Goal''': Support IPv6 clients, servers, peers, and resolvers.
- * '''Status''': completed
  * '''Version''': 3.1
  * '''Developer''': AmosJeffries
  * '''More''': http://devel.squid-cache.org/squid3-ipv6/
 
-All initial goals for this feature have been completed along with many others found on the way. Full IPv6 support is almost complete. While not itself in feature-freeze, the emphasis has turned to bugs. Remaining features will now be converted by request as needed, or slowly in the regular process of code cleanup. The branch has now been merged into Squid 3-HEAD and the regular daily snapshots.
+== How do I enable IPv6? ==
+
+You will need a squid 3.1 release or a 3-HEAD development snapshot later than 16th Dec 2007 and a computer system with IPv6 capabilities.
+
+IPv6 is available in most Linux 2.6+ kernels, MacOSX 10+, all of the BSD variants, Windows XP/Vista, and others. See your system documentation for its capability and configuration.
+
+'''IPv6 support''' in Squid needs to be enabled first with
+{{{
+./configure --enable-ipv6
+}}}
+If you are using a packaged version 3.1 without it, please contact the maintainer about enabling it.
+
+'''Windows XP''' users will need:
+{{{
+./configure --enable-ipv6 --with-ipv6-split-stack
+}}}
+
+When squid is built you will then be able to start Squid and see some IPv6 operations. The most active will be DNS as IPv6 addresses are looked up for each website, and IPv6 addresses in the cachemgr reports and logs.
+
+|| /!\ || Make sure that you check you helper script can handle IPv6 addresses ||
+
+
+== How do I setup squid.conf for IPv6? ==
+
+Same as you would for IPv4 with CIDR.  IPv6 is only a slightly different address after all.
+
+Most of the IPv6 upgrade changes are very minor extensions of existing background behavior.
+
+The only points of possible interest for some will be:
+ * external_acl_type flags 'ipv4' or 'ipv6'
+ * tcp_outgoing_address magic ACL's
+ * CIDR is required - that brand spanking new concept (from 1993).
+
+== Fine Tuning IPv6 Performance ==
+
+ * DNS works best and fastest through the internal resolver built into squid. Check that your configure options do not disable it.
+
+ * IPv6 links still commonly have some tunnel lag. Squid can benefit most from a fast link, so test the various tunnel methods and brokers available for speed.
+
+ * A single listening port '''http_port 3128''' is less resource hungry than one for each IPv4 and IPv6. Also, its fully compatible with IPv6 auto-configuration.
+
+ * Splitting the listening ports on input mode however (standard, transparent, accelerator) is better than mixing two modes on one port.
+
+
+=== Squid builds with IPv6 but it won't listen for IPv6 requests. ===
+
+'''Your squid may be configured to only listen for IPv4.'''
+
+Each of the port lines in squid.conf (http_port, icp_port, snmp_port, https_port, maybe others) can take either a port, hostname:port, or ip:port combo.
+
+When these lines contain an IPv4 address or a hostname with only IPv4 addresses squid will only open on those IPv4 you configured. You can add new port lines for IPv6 using [ipv6]:port, add AAAA records to the hostname in DNS, or use only a port.
+
+When only a port is set it should be opening for IPv6 access as well as IPv4. The one exception to default IPv6-listening are port lines where 'transparent' or 'tproxy' options are set. NAT-interception (commonly called transparent proxy) cannot be done in IPv6 so squid will only listen on IPv4 for that type of traffic.
+
+Again Windows XP users are unique, the geeks out there will notice two ports opening for seperate IPv4 and IPv6 access with each plain-port squid.conf line. The effect is the same as with more modern systems.
+
+
+'''Your squid may be configured with restrictive ACL.'''
+
+A good squid configuration will allow only the traffic it has to and deny any other. If you are testing IPv6 using a pre-existing config you may need to update your ACL lines to include the IPv6 addresses or network ranges which should be allowed.
+src, dst, and other ACL which accept IPv4 addresses or netmasks will also accept IPv6 addresses or CIDR masks now. For example the old ACL to match traffic from localhost is now:
+{{{
+acl localhost src 127.0.0.1/32 ::1/128
+}}}
+
+'''Your Operating System may be configured to prevent Dual-Stack sockets.'''
+
+Dual-Stack is easiest achieved by a method known as v4-mapping. Where all IPv4 addresses map into a special part of IPv6 space for a socket connection. Squid makes use of this feature of IPv6.
+
+You can fix the issue by building squid with the '''--with-ipv4-mapped''' option. Which will explicitly re-enable v4-mapping on Squid sockets without altering system defaults.
+
+=== Squid listens on IPv6 but says 'Access Denied' or similar. ===
+'''Your squid may be configured to only connect out through specific IPv4.'''
+
+A number of networks are known to need tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit of ACL magic possible with tcp_outgoing_address which will get around this problem.
+
+{{{
+acl to_ipv6 dst ipv6
+
+tcp_outgoing_address 10.255.0.1 !to_ipv6
+tcp_outgoing_address 2001:dead:beef::1 to_ipv6
+}}}
+
+That will split all outgoing requests into two groups, those headed for IPv4 and those headed for IPv6. It will push the requests out the IP which matches the destination side of the Internet and allow IPv4/IPv6 access with controlled source address exactly as before.
+
+=== How do I make squid use IPv6 to its helpers? ===
+With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. By default to work with older setups, helpers are still connected over IPv4. You can add '''ipv6''' option to use IPv6.
+{{{
+external_acl_type hi ipv6 %DST /etc/squid/hello_world.sh
+}}}
+
+=== How do I block IPv6 traffic? ===
+
+Why you would want to do that without similar limits on IPv4 (using '''all''') is beyond me but here it is.
+
+Previously squid defined the '''all''' ACL which means the whole Internet. It still does, but now it means both IPv6 and IPv4 so using it will not block IPv6.
+
+A new ACL tag '''ipv6''' has been added to match only IPv6. It can be used directly in a deny or inverted with '''!''' to match IPv4 in an allow.
+
+Example creation in squid.conf:
+{{{
+acl to_ipv6 dst ipv6
+}}}
+
+=== So what gets broken by IPv6 ===
+
+Well, nothing that we know of yet. A few features can't quite be used with IPv6 though.
+
+IPv4 traffic going through Squid is unaffected by this. Particularly traffic from IPv4 clients.
+
+==== Transparent Proxy ====
+
+NAT simply does not exist in IPv6. By Design.
+
+Given that transparency/interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do transparency and interception that way.
+
+==== Delay Pools ====
+
+Squid delay pools are still linked to class-B and class-C networking (from pre-1995 Internet design). Until that gets modernized the address-based pool classes can't apply to IPv6 address sizes.
+
+The one pool that should still work is the Squid-3 username based pool.
+
+==== WCCP (v1 and v2) ====
+
+WCCP is a Cisco protocol designed very closely around IPv4.
+As yet there is no IPv6 equivalent for Squid to use.
+
+==== ARP (MAC address ACLs) ====
+
+ARP does not exist in IPv6. Proper IPV6 auto-configuration of networks can provide an equivalent in the IPv6 address itself.
+
+However we are still pondering a way to do this securely and reliably.
+
+==== RADIUS authentication ====
+
+Simply put we need a new RADIUS auth helper daemon. There is a RADIUS protocol upgrade for IPv6.
+But we have none yet able to write and test the helper.
 
 ----
 CategoryFeature
