@@ -348,35 +348,38 @@ please do so and send us the patches.
 
 == undefined reference to __inet_ntoa ==
 
-by Kevin Sartorelli (<<MailTo(SarKev AT topnz DOT ac DOT nz)>>)
-and Andreas Doering (<<MailTo([doering AT usf DOT uni-kassel DOT de)>>).
+Probably you have bind 8.x installed.
 
-Probably you've recently installed bind 8.x.  There is a mismatch between
-the header files and DNS library that Squid has found.  There are a couple
-of things you can try.
+'''UPDATE:''' That version of bind is now officially obsolete and known to be vulnerable to a critical infrastructure flaw. It should be upgraded to bind 9.x or replaced as soon as possible.
 
-First, try adding ''-lbind'' to ''XTRA_LIBS''  in ''src/Makefile''.
-If ''-lresolv'' is already there, remove it.
-
-If that doesn't seem to work, edit your ''arpa/inet.h'' file and comment out the following:
-
-{{{
-#define inet_addr               __inet_addr
-#define inet_aton               __inet_aton
-#define inet_lnaof              __inet_lnaof
-#define inet_makeaddr           __inet_makeaddr
-#define inet_neta               __inet_neta
-#define inet_netof              __inet_netof
-#define inet_network            __inet_network
-#define inet_net_ntop           __inet_net_ntop
-#define inet_net_pton           __inet_net_pton
-#define inet_ntoa               __inet_ntoa
-#define inet_pton               __inet_pton
-#define inet_ntop               __inet_ntop
-#define inet_nsap_addr          __inet_nsap_addr
-#define inet_nsap_ntoa          __inet_nsap_ntoa
-}}}
-
+## by Kevin Sartorelli (<<MailTo(SarKev AT topnz DOT ac DOT nz)>>)
+## and Andreas Doering (<<MailTo([doering AT usf DOT uni-kassel DOT de)>>).
+## 
+## Probably you've recently installed bind 8.x.  There is a mismatch between
+## the header files and DNS library that Squid has found.  There are a couple
+## of things you can try.
+## 
+## First, try adding ''-lbind'' to ''XTRA_LIBS''  in ''src/Makefile''.
+## If ''-lresolv'' is already there, remove it.
+## 
+## If that doesn't seem to work, edit your ''arpa/inet.h'' file and comment out the following:
+## 
+## {{{
+## #define inet_addr               __inet_addr
+## #define inet_aton               __inet_aton
+## #define inet_lnaof              __inet_lnaof
+## #define inet_makeaddr           __inet_makeaddr
+## #define inet_neta               __inet_neta
+## #define inet_netof              __inet_netof
+## #define inet_network            __inet_network
+## #define inet_net_ntop           __inet_net_ntop
+## #define inet_net_pton           __inet_net_pton
+## #define inet_ntoa               __inet_ntoa
+## #define inet_pton               __inet_pton
+## #define inet_ntop               __inet_ntop
+## #define inet_nsap_addr          __inet_nsap_addr
+## #define inet_nsap_ntoa          __inet_nsap_ntoa
+## }}}
 
 ##end
 ----
