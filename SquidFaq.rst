@@ -1,4 +1,6 @@
 #language en
+## #pragma section-numbers 1
+##
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
@@ -44,6 +46,14 @@
  * /SquidSnmp: using SNMP to monitor Squid's vital signs
  * /CyclicObjectStorageSystem or COSS: how to use it to optimize speed on small objects
  * /MiscFeatures: Squid 2.X miscellaneous features
+
+## Once a user-oriented feature has been completed we can re-use the description page to document
+## the usage and configuration details about the feature
+## Set the initial version and remove the Status:,ETA:,Priority: fields to get them auto-listed in the FAQ.
+## Naturally the features aimed as easing developer life should not be FAQ'd.
+## Leave them with Status:completed to evade this auto-listing
+##
+<<FullSearch(title:Features/ regex:Version...: -regex:Status...:)>>
 
 ==== Modes ====
  * /InterceptionProxy or how to run a proxy without your users knowing (mostly)
