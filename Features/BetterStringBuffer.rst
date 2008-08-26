@@ -8,7 +8,7 @@
  * '''Status''': On hold
  * '''ETA''': unknown
  * '''Version''': Squid 3
- * '''Developer''': AmosJeffries
+ * '''Developer''': AmosJeffries, FrancescoChemolli
 
 == Details ==
 Improve the usage of memory-pooled strings and the string API. The code is presently not using best-practice or pointer-safety with regards to short strings. Nor is it using them widely in place of un-pooled character arrays where it could provide greater memory management easily.
@@ -23,6 +23,9 @@ Safer access, means with a coded non-char* access to raw data buffers which we c
  * max-size of 65536 bytes. This was made evident by earlier attempts at using it universally for char* replacement.
  * direct access to a self-controlled char* buffer. No existing ability for non-local buffer sharing.
  * existing usage within squid strictly assuming the above two limits are always true.
+
+FrancescoChemolli has started a sample implementation, drawing from many concepts in this page and AdrianChadd's implementation in branch s27_adri.
+General concepts and discussion in /StringNg, will be merged here once better sketched.
 
 == Plan ==
 
