@@ -7,7 +7,7 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 ##[[TableOfContents]]
 
-StringNg is FrancescoChemolli's effort at improving squid's handling of strings (and memory buffers in general).
+!StringNg is FrancescoChemolli's effort at improving squid's handling of strings (and memory buffers in general).
 While probably not yet optimal, its aim is to be an improvement on the current implementation, especially to aid improve the string users in squid.
 
 == Aims ==
@@ -50,7 +50,7 @@ class String {
 };
 }}}
 
-Strings have an N-to-1 relationship with Bufs: one Buf hold the data of many strings, possibly partly or totally.
+Strings have an N-to-1 relationship with Bufs: one Buf hold the data of many strings, possibly overlapping in part or in whole.
 An empty string (equivalent to {{{char * =NULL}}} references no Buf.
 
 Importing a {{{char[]}}} (at construction time or via assignment) into a String requires allocating a big enough Buf and copying the string over.
@@ -62,9 +62,16 @@ String slicing is also cheap: after bounds checking etc, create a new String whi
 Appending is a bit trickier. It can be done without copying the appended-to string, provided that there is enough unused space in the Buf AND that the appended-to String is at the end of the used region in the Buf. If those are true, the appended String is copied over, otherwise a new big enough Buf is created, the appended-to string is copied at its head, and then the append takes place. This operation should be cheap enough in most common cases, which are when the Buf is owned by a single String.
 
 Memory Manager friendliness can be obtained by tuning the allocation strategies for Bufs. Current thoughts are:
-- small Bufs (<8Kb) should be managed by MemPools.
+- small Bufs (<8Kb) should be managed by !MemPools.
 - Bufs bigger than 8Kb should be allocated in sizes compatible with the system page size (minus malloc() overhead). This will maximize the amount of memory available for use while avoiding heap fragmentation.
 
+=== Optimizations ===
+Strings are mainly immutable. It needn't be so in all cases. For instance, changing portions of strings may be allowed when a String owns a Buf (aka when the Buf's refcount is 0).
 
+=== Thread safety ===
+Thread safety is currently out of scope. This work is however a step in the right direction, as it moves all string-related logic in one place.
+It is also to be understood how to best implement it: not all Strings need it, and it's expensive.
+
+=== Prototype ===
 Development will be held out-of-tree until a reasonable prototype of the implementing class has been reached.
-The code is in LaunchPad at [[https://code.launchpad.net/~kinkie/squid/string-ng|lp:~kinkie/squid/string-ng]]
+The code is in !LaunchPad at [[https://code.launchpad.net/~kinkie/squid/string-ng|lp:~kinkie/squid/string-ng]]
