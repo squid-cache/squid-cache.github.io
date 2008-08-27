@@ -95,6 +95,8 @@ Features considered high-priority for including with 3.2, but not yet with a ded
 
 (Priority 1)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*1)>>
+ * NTLM Passthru port from 2.6
+ * Store URL re-write port rom 2.7
 (Priority 2)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*2)>>
  * Variant Invalidation
