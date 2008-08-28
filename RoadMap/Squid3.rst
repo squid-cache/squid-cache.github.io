@@ -97,9 +97,12 @@ Features considered high-priority for including with 3.2, but not yet with a ded
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*1)>>
  * NTLM Passthru port from 2.6
  * Store URL re-write port rom 2.7
+ * Reply headers to external ACL. http://www.squid-cache.org/bugs/show_bug.cgi?id=740
+ * monitor* port from 2.6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2185
 (Priority 2)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*2)>>
  * Variant Invalidation
+
 (Others)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown -regex:Priority...:)>>
 
