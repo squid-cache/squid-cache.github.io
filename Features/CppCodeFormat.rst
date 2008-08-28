@@ -6,8 +6,8 @@
 = Feature: C++ code formatting =
 
  * '''Goal''': Minimize patch conflicts, reduce commit noise, and improve code readability.
- * '''Status''': In progress
- * '''ETA''': March 31, 2008
+ * '''Status''': Waiting Merge
+ * '''ETA''': September, 2008
  * '''Version''': Squid 3.1
  * '''Developer''': AlexRousskov
 
