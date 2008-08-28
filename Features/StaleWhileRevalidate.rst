@@ -16,9 +16,9 @@
 
  * '''Priority''': 1
 
- * '''Developer''': unknown
+ * '''Developer''': AlexRousskov
 
- * '''More''': 
+ * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=2256
 
 ## Details
 ##
