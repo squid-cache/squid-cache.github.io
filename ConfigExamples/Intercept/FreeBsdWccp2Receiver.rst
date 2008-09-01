@@ -1,3 +1,4 @@
+## page was copied from ConfigExamples/FreeBsdAndWccp2
 ##master-page:CategoryTemplate
 #format wiki
 #language en
