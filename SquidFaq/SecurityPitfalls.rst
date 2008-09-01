@@ -3,7 +3,7 @@
 == Open-access proxies ==
 
 
-Squid's default configuration file denies all client requests.  It is the
+Squid's default configuration file denies all external requests.  It is the
 administrator's responsibility to configure Squid to allow access only
 to trusted hosts and/or users.
 
@@ -46,7 +46,7 @@ access to port 25.
 
 == Hijackable proxies ==
 
-Squid's default configuration file denies all client requests.  It is the
+Squid's default configuration file denies all external requests.  It is the
 administrator's responsibility to configure Squid to allow access only
 to trusted hosts and/or users.
 
@@ -77,6 +77,17 @@ acl mycoolapp port 1234
 ...
 http_access allow localnet mycoolapp
 }}}
+
+
+== X-Forwarded-For fiddling ==
+
+The '''X-Forwarded-For''' header is inserted by Squid to identify the internal client making a request.  Some people mistake it for a data-breach and crop it from their traffic streams.
+
+Please understand that it is there for your protection.  Many security systems use it to identify the true source of any breach, to protect against and for reporting those sources accurately. This is particularly important now that the Internet has degraded into a vast network of NAT systems and transparent middleware.
+
+If it is not present in web requests the middleware proxy is identified as the trouble source and administrators can find their entire network under boycott for the actions of a single user. It may seem useful to simply find and block borged proxies, but tracking the origin source is far more so, and the borged proxy can be clearly identified as a traffic hop anyway.
+
+The configuration controls provided by Squid are intended for Accelerator setups.
 
 -----
 Back to the SquidFaq
