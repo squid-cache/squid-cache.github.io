@@ -13,7 +13,7 @@
 
 == Outline ==
 
-To Intercept web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
+To Intercept web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on. This is only possible in IPv4 with NAT.
 
 '''NOTE:''' If squid is not running on the gateway router See ../IptablesPolicyRoute for additional configuration needed.
 
