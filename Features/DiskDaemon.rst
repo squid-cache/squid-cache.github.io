@@ -182,25 +182,22 @@ You have to reboot for the change to take effect.
 
 === Linux ===
 
-Stefan K&ouml;psell reports that if you compile sysctl support
-into your kernel, then you can change the following values:
+ /!\ Use AUFS on Linux. It's much faster.
 
-  *kernel.msgmnb
-  *kernel.msgmni
-  *kernel.msgmax
-
-
-
-
-Winfried Truemper reports: The default values should be large enough for most common cases.
-You can modify the message queue configuration by writing to these files:
-
-  */proc/sys/kernel/msgmax
-  */proc/sys/kernel/msgmnb
-  */proc/sys/kernel/msgmni
+## Stefan K&ouml;psell reports that if you compile sysctl support
+## into your kernel, then you can change the following values:
+## 
+##   *kernel.msgmnb
+##   *kernel.msgmni
+##   *kernel.msgmax
 
 
-
+## Winfried Truemper reports: The default values should be large enough for most common cases.
+## You can modify the message queue configuration by writing to these files:
+## 
+##   */proc/sys/kernel/msgmax
+##   */proc/sys/kernel/msgmnb
+##   */proc/sys/kernel/msgmni
 
 
 === Solaris ===
@@ -321,27 +318,24 @@ You have to reboot for the change to take effect.
 
 === Linux ===
 
-Winfried Truemper reports: The default values should be large enough
-for most common cases.  You can modify the shared memory configuration
-by writing to these files:
+ /!\ Use AUFS on Linux. It's much faster.
 
-  */proc/sys/kernel/shmall
-  */proc/sys/kernel/shmmax
-  */proc/sys/kernel/shmmni
-  */proc/sys/kernel/shm-use-bigpages
-
-
-
-
-
-Stefan K&ouml;psell reports that if you compile sysctl support
-into your kernel, then you can change the following values:
-
-  *kernel.shmall
-  *kernel.shmmni
-  *kernel.shmmax
+## Winfried Truemper reports: The default values should be large enough
+## for most common cases.  You can modify the shared memory configuration
+## by writing to these files:
+## 
+##   */proc/sys/kernel/shmall
+##   */proc/sys/kernel/shmmax
+##   */proc/sys/kernel/shmmni
+##   */proc/sys/kernel/shm-use-bigpages
 
 
+## Stefan K&ouml;psell reports that if you compile sysctl support
+## into your kernel, then you can change the following values:
+## 
+##   *kernel.shmall
+##   *kernel.shmmni
+##   *kernel.shmmax
 
 
 === Solaris ===
@@ -357,8 +351,6 @@ set shmsys:shminfo_shmmax=2097152
 set shmsys:shminfo_shmmni=32
 set shmsys:shminfo_shmseg=16
 }}}
-
-
 
 
 == Sometimes shared memory and message queues aren't released when Squid exits. ==
