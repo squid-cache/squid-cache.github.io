@@ -15,11 +15,11 @@
 
 To Intercept web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
 
-'''NP:''' This configuration is given for use '''on the squid box'''. We have had no successful reports of people using DNAT at the gateway machine to direct traffic at a separate squid box. We have had several good reports about ../LinuxPolicyRouteWebTraffic for those setups.
+'''NP:''' This configuration is given for use '''on the squid box'''. We have had no successful reports of people using DNAT at the gateway machine to direct traffic at a separate squid box. We have had several good reports about ../IptablesPolicyRoute for those setups.
 
 == iptables configuration ==
 
-Replace SQUIDIP with the public IP(s) which squid may use for its listening port and outbound connections.
+ /!\ Replace '''SQUIDIP''' with the public IP(s) which squid may use for its listening port and outbound connections.
 Without the first line here being first your setup may encounter problems with forwarding loops.
 
 {{{
@@ -37,6 +37,10 @@ You will need to configure squid to know the IP is being intercepted like so:
 http_port 3129 transparent
 }}}
 
+ /!\ In Squid 3.1+ the ''transparent'' option has been split. Use ''''intercept''' to catch DNAT packets.
+{{{
+http_port 3129 intercept
+}}}
 
 ----
 CategoryConfigExample
