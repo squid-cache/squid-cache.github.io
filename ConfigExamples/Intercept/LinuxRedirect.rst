@@ -15,7 +15,7 @@
 
 To Intercept web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
 
-'''NOTE:''' If squid is not running on the gateway router See ../LinuxPolicyRouteWebTraffic for additional configuration needed.
+'''NOTE:''' If squid is not running on the gateway router See ../IptablesPolicyRoute for additional configuration needed.
 
 == iptables configuration ==
 
