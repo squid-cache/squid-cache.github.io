@@ -36,7 +36,7 @@ You will need to configure squid to know the IP is being intercepted like so:
 http_port 3129 transparent
 }}}
 
- /!\ In Squid 3.1+ the ''transparent'' option has been split. Use ''''intercept''' to catceh REDIRECT packets.
+ /!\ In Squid 3.1+ the ''transparent'' option has been split. Use ''''intercept''' to catch REDIRECT packets.
 {{{
 http_port 3129 intercept
 }}}
