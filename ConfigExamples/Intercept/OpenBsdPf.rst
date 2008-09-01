@@ -3,8 +3,6 @@
 #format wiki
 #language en
 
-## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-
 = Intercepting traffic with PF on OpenBSD =
 
 by Chris Benech
@@ -15,27 +13,25 @@ by Chris Benech
 
 == Outline ==
 
-I am using squid-2.6STABLE19 and OpenBSD 4.1, MP kernel.
+I am using OpenBSD 4.1, MP kernel and Squid 2.6 or later.
 
-First, compile and install Squid. I used the following options
+== Squid Configuration ==
+
+First, compile and install Squid. It requires the following options:
 {{{
-./configure --prefix=/var/squid --with-pthreads --enable-pf-transparent
-}}}
-obviously prefix is entirely up to the users choice.
-
-== squid.conf Configuration ==
-
-Inside squid.conf all of the options are pretty much boilerplate except for the following:
-
-{{{
-acl our_networks src 192.168.231.0/24
-http_access allow our_networks
-
-# Squid normally listens to port 3128
-http_port 192.168.231.1:3128 transparent
+./configure --with-pthreads --enable-pf-transparent
 }}}
 
-Note the '''transparent''' keyword at the end.
+You will need to configure squid to know the IP is being intercepted like so:
+
+{{{
+http_port 3129 transparent
+}}}
+
+ /!\ In Squid 3.1+ the ''transparent'' option has been split. Use ''''intercept''' to catch PF packets.
+{{{
+http_port 3129 intercept
+}}}
 
 == pf.conf Configuration ==
 
@@ -71,7 +67,7 @@ Some pointers:
 To test if it worked, use the '''nc''' utility.
 Stop squid and from the command line as root type in:
 {{{
-nc -l 3128
+nc -l 3129
 }}}
 
 Then restart squid and try to navigate to a page.
@@ -80,7 +76,7 @@ You should now see an output like this:
 
 {{{
 <root:openbsd> [/root]
-> nc -l 3128
+> nc -l 3129
 GET /mail/?ui=pb HTTP/1.1
 User-Agent: Mozilla/5.0 (compatible; GNotify 1.0.25.0)
 Host: mail.google.com
