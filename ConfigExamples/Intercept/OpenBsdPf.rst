@@ -1,3 +1,4 @@
+## page was copied from ConfigExamples/InterceptWithPF
 ##master-page:CategoryTemplate
 #format wiki
 #language en
