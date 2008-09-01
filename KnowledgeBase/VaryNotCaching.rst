@@ -32,6 +32,11 @@ In summary, Squid is doing the right thing. Origin servers need to set correct E
  * Make sure the origin server sets Vary: Accept-Encoding for both compressed and non-compressed replies, or Squid will replace the Vary objects with the single non-compressed object.
  * Make sure the origin server sets a different ETag for each variant reply type - ie, a different ETag for compressed and uncompressed - or browsers/caches will believe the replies are equivalent.
 
+'''See Also'''
+
+ * http://devel.squid-cache.org/vary/
+ * http://devel.squid-cache.org/etag/
+
 '''Thanks'''
 
  * HenrikNordstrom - providing information on the Vary code behaviour
