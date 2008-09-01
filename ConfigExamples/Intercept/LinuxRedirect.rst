@@ -1,3 +1,4 @@
+## page was copied from ConfigExamples/LinuxInterceptREDIRECT
 ##master-page:CategoryTemplate
 #format wiki
 #language en
