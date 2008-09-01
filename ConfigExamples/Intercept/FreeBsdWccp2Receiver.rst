@@ -15,46 +15,8 @@
 
 This is a work in progress.
 
-== Squid Configuration File ==
+This configuration or a FreeBSD box running Squid and receiving WCCPv2 traffic. It is expected that another device will perform the WCCPv2 routing and forward it to this box for processing.
 
-{{{
-http_port 127.0.0.1:3128 transparent
-wccp2_router 192.168.1.1
-# GRE forwarding
-wccp2_forwarding_method 1
-# GRE return method
-wccp2_return_method 1
-wccp2_service standard 0
-}}}
-
-== Cisco router ==
-
-This was done on a Cisco 3640 running c3640-is-mz.122-23f.bin; its acting as a NAT gateway and home router.
-{{{
-!
-ip wccp web-cache
-!
-interface Ethernet1/0
- description Public interface
- ip address X.X.X.X 255.255.255.248
- no ip redirects
- no ip unreachables
- ip nat outside
- full-duplex
-!
-interface FastEthernet2/0
- no ip address
- duplex auto
- speed auto
-!
-interface FastEthernet2/0.1
- encapsulation dot1Q 1 native
- ip address 192.168.1.1 255.255.255.0
- no ip redirects
- no ip unreachables
- ip wccp web-cache redirect in
- ip nat inside
-}}}
 
 == FreeBSD configuration ==
 
@@ -101,6 +63,20 @@ ifconfig gre0 link2
 ifconfig gre0 tunnel 192.168.1.9 X.X.X.X
 ifconfig gre0 inet 1.1.1.1 1.1.1.2
 }}}
+
+
+== Squid Configuration File ==
+
+{{{
+http_port 127.0.0.1:3128 transparent
+wccp2_router 192.168.1.1
+# GRE forwarding
+wccp2_forwarding_method 1
+# GRE return method
+wccp2_return_method 1
+wccp2_service standard 0
+}}}
+
 
 ----
 CategoryConfigExample
