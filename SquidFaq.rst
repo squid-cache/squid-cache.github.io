@@ -26,10 +26,11 @@
  * [[/AddACacheDir]]: hints on how to increase a cache's capacity
  * /ClearingTheCache: how to wipe your entire disk cache in one easy step
  * [[/RAID]]: Why Squid and RAID play nasty together and what to do about it.
+ * [[../KnowledgeBase]]: Covers how things are supposed to work and what to look out for
+ * [[../ConfigExamples]]: Gives detailed configurations in case you have missed something
 
 ==== Performance Tuning ====
  * /SystemSpecificOptimizations has a few OS-specific tips for performance tuning
- * /DiskDaemon: what it is and how to optimize its running environment
  * /SquidProfiling How to identify obvious resource shortages with Squid (A work in progress)
  * /NetworkOptimizations
 
@@ -45,6 +46,7 @@
  * /CacheDigests or ICP on steroids
  * /SquidSnmp: using SNMP to monitor Squid's vital signs
  * /CyclicObjectStorageSystem or COSS: how to use it to optimize speed on small objects
+ * /DiskDaemon: what it is and how to optimize its running environment
  * /MiscFeatures: Squid 2.X miscellaneous features
 
 ## Once a user-oriented feature has been completed we can re-use the description page to document
