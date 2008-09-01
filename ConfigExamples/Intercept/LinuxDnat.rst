@@ -1,3 +1,4 @@
+## page was copied from ConfigExamples/LinuxInterceptDNAT
 ##master-page:CategoryTemplate
 #format wiki
 #language en
