@@ -1193,8 +1193,6 @@ WCCP Client information:
           CEF:                   0
 router#
 }}}
-==== Joe Cooper's Patch ====
-Joe Cooper has a patch for Linux 2.2.18 kernel on his  [[http://www.swelltech.com/pengies/joe/patches/|Squid page]].
 
 === Further information about configuring Interception Caching with Squid ===
 ReubenFarrelly has written a fairly comprehensive but somewhat incomplete guide to configuring WCCP with cisco routers on his website.  You can find it at [[http://www.reub.net/node/3|www.reub.net]].
