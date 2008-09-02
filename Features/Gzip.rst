@@ -10,6 +10,8 @@
 
  * '''ETA''': unknown
 
+ * '''Priority''': 2
+
  * '''Version''': 3.3
 
  * '''Developer''': 
@@ -20,6 +22,9 @@
 == Details ==
 
 A patch (linked above) was started for early 3.0. This needs to be updated to current code, tested, and integrated into the main sources.
+
+
+'''[Update]''': This content-adaptation is now waiting on the [[../eCAP]] feature. That is expected to allow simple port as an eCAP module which just streams the data object through a gzip library and adds the appropriate header changes to Squid.
 
 ----
 CategoryFeature
