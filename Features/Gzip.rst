@@ -14,7 +14,7 @@
 
  * '''Version''': 3.3
 
- * '''Developer''': 
+ * '''Developer''': AmosJeffries
 
  * '''More''': http://devel.squid-cache.org/projects.html#gzip
 
