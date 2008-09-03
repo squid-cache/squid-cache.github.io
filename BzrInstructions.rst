@@ -61,6 +61,8 @@ cat >> ~/.bazaar/locations.conf << EOF
 [/home/USER/source/squid]
 cbranch_target=/home/USER/squid-repo
 cbranch_target:policy = appendpath
+[/home/USER/source/squid/trunk]
+public_branch = http://www.squid-cache.org/bzr/squid3/trunk/
 EOF
 }}}
 
