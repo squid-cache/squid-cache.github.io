@@ -75,3 +75,6 @@ It is also to be understood how to best implement it: not all Strings need it, a
 === Prototype ===
 Development will be held out-of-tree until a reasonable prototype of the implementing class has been reached.
 The code is in !LaunchPad at [[https://code.launchpad.net/~kinkie/squid/string-ng|lp:~kinkie/squid/string-ng]]
+
+=== Step-by-step diagram of MemBuf-emulation functionalities ===
+{{attachment:KBuf-work-diagram.png}}
