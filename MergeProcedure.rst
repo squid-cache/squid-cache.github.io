@@ -14,7 +14,7 @@ We would like everyone to discuss their plans in the [[http://www.squid-cache.or
  * and, prevent duplication of effort (your feature may be half-developed already)
  * and, sometimes the feature wanted already exists in a unexpected way.
 
-The core developers are often able to provide jobs of for anyone just wanting to contribute.
+Other developers are often able to provide projects for anyone just wanting to contribute.
 
 === Code Style ===
 There are specific coding styles used in Squid-2 and Squid-3. Both are different. They can be found (where is the most current??)
