@@ -5,27 +5,25 @@
 
 ## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
 
-= Feature: TPROXY Update =
+= Feature: TPROXY version 4.1+ Support =
 
  * '''Goal''': Balabit only supports TProxy version 4.1 but in the squid "--enable-tproxy" requires version 2 which is obsolete for a while.
 
- * '''Status''': completed. Patches on 2.6.STABLE18.
-
  * '''Version''': 3.1
 
- * '''Developer''': Laszlo Attilla Toth (of Balabit), AmosJeffries, AdrianChadd
+ * '''Developer''': Laszlo Attilla Toth (Balabit), AmosJeffries (3.1), AdrianChadd (2.x)
 
  * '''More''': http://www.balabit.com/downloads/files/tproxy/
 
-= Sponsor =
+== Sponsor ==
 
 This feature was Sponsored and developed by Balabit.
 
-= Details =
+== Details ==
 
  * Still requires patched kernel (patches available at Balabit)
  * Only requires --enable-linux-netfilter configure option
- * '''Obsolete'''' --enable-tproxy option. Remains only for legacy v2.2 support.
+ * '''Obsolete'''' --enable-tproxy option. Remains only for legacy v2.2 cttproxy support.
 
 ''by Laszlo Attilla Toth''
 
@@ -40,6 +38,18 @@ The patch is available here for 2.6-STABLE18:
 Squid-3 support has been completed and integrated into the latest sources:
 
  http://www.squid-cache.org/Versions/v3/HEAD/
+
+== Squid Configuration ==
+
+Configure build options
+{{{
+./configure --enable-linux-netfilter
+}}}
+
+squid.conf settings
+{{{
+http_port 3129 tproxy
+}}}
 
 === References ===
 http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
