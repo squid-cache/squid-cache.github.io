@@ -9,7 +9,12 @@
  * '''Version''': 3.1
  * '''Developer''': AlexRousskov
 
-Squid-in-the-middle decryption and encryption of straight CONNECT and transparently redirected SSL traffic, using configurable client- and server-side certificates. While decrypted, the traffic can be inspected using ICAP.
+== Details ==
+
+Squid-in-the-middle decryption and encryption of straight '''CONNECT''' and transparently redirected SSL traffic, using configurable client- and server-side certificates. While decrypted, the traffic can be inspected using ICAP.
+
+
+== Squid Configuration ==
 
 Here is a sample squid.conf excerpt with SSL Bump-related options:
 
