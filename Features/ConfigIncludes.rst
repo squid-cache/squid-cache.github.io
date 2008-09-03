@@ -4,9 +4,9 @@
 
 = Config Includes =
 
- * '''Version''': 3.1, 2.7
+ * '''Version''': 3.0, 2.7
 
- * '''Developer''': AdrianChadd (2.7), AmosJeffries (3.1)
+ * '''Developer''': AdrianChadd (2.7), AmosJeffries (3.0)
 
 = Details =
 
