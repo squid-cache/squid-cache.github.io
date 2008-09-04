@@ -50,11 +50,11 @@ Submissions are normally merged on the next maintenance cycle after acceptance (
 
 The first matching rule wins. A submission is automatically counted as one positive vote from the submitter.
 
+ 1. One negative vote by a core developer blocks the merge until resolved.
+
  1. Two positive votes from core developers accept the submission (with a high priority for merging).
 
- 1. One negative vote by any core developer blocks the merge until resolved.
-
- 1. Any 3 positive votes accept the submission.
+ 1. Any three positive votes accept the submission.
 
  1. Submissions older than 10 days without negative votes are accepted.
 
