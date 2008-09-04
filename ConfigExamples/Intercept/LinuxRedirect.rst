@@ -25,6 +25,7 @@ Without this your setup may encounter problems with forwarding loops.
 {{{
 iptables -t nat -A PREROUTING -s SQUIDIP -p tcp --dport 80 -j ACCEPT
 iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3129
+iptables -t nat -A POSTROUTING -j MASQUERADE
 }}}
 
 
