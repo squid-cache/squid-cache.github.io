@@ -26,7 +26,7 @@ Choose a good WikiName for your new example and enter it here:
 
 == Current configuration examples ==
 
-<<FullSearchCached(title:regex:^ConfigExamples/[^/]*$)>>
+<<FullSearchCached(title:regex:^ConfigExamples/.*$)>>
 
 == External configuration examples ==
 
