@@ -11,4 +11,4 @@
  * RobertCollins
  * GuidoSerassio
  * wessels
- * AmosJeffries
+ * Amos Jeffries
