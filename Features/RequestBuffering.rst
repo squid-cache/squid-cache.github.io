@@ -6,9 +6,9 @@
 
  * '''Goal''': Add configuration option to have Squid buffer requests with bodies, to remove burden of slow clients from back-end servers (usually for accelerator deployments).
 
- * '''Status''': Not started
+ * '''Status''': Started
 
- * '''ETA''': unknown
+ * '''ETA''': late October, 2008
 
  * '''Version''': 2.8
 
