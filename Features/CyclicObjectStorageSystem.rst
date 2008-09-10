@@ -48,13 +48,16 @@ cache_swap_log /var/spool/squid/%s
 
 where:
 
-'''<file>''' is the partition or filename that you want to use as the COSS store (you will need to pre-create the file if it doesn't exist)
+'''<file>''' is the partition, directory, or file name that you want to use as the COSS store. You will need to pre-create the file if it doesn't exist.
 
 '''<size>''' is the size of the COSS cache_dir in MB
 
 '''<max-size>''' is the size of the largest object that this cache_dir can store.  This value can not be bigger then 1MB in the default configuration.
 
-The cache_swap_log option should be set to a directory that squid has write access to.  This is used to store all the swap.state files for all cache_dirs, and needs to be set when using COSS because COSS does not have a normal filesystem that it can store this information on.
+If a regular file name is used as <file>, use the cache_swap_log option to specify a directory where Squid should store swap.state files for all cache_dirs that lack their own directory (see below).
+
+If a directory name is used as <file>, Squid creates COSS store in that directory, using "stripe" as a file name, while placing the swap state in the swap.state file in the same directory. In this case, Squid ignores the cache_swap_state option discussed above. Specifying a directory for COSS storage is handy for isolating COSS cache_dir I/O and failures to a single disk.
+
 
 == Are there any other configuration options for COSS? ==
 
