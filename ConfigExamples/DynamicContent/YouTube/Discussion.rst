@@ -84,9 +84,9 @@ storeurl_rewrite_children 16
 and refresh pattern
 
 {{{
-refresh_pattern -i (get_video\?|videoplayback\?) 161280 50000% 525948 override-expire reload-into-ims override-lastmod
+refresh_pattern -i (get_video\?|videoplayback\?) 161280 50000% 525948 override-expire override-lastmod reload-into-ims
 #and for pictures
-refresh_pattern -i \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv) 161280	3000%	525948		reload-into-ims override-expire
+refresh_pattern -i \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv) 161280 3000% 525948 override-expire reload-into-ims
 }}}
 Storeurl script or the test.pl above
 {{{
