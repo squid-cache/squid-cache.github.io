@@ -8,11 +8,11 @@
 
  * '''Goal''': Separate out the URL used for storage lookups from the URL used for forwarding. This allows for multiple destination URLs to reference the same backend content and cut back on duplicated content, both for forward proxies (think "google maps") and CDN type reverse proxies.
 
- * '''Status''': ''In Progress''.
+ * '''Status''': ''Completed''.
 
- * '''ETA''': ''Unknown''; in testing phase at the moment.
+ * '''ETA''':
 
- * '''Version''': Squid-2.HEAD.
+ * '''Version''': Squid-2.HEAD; Squid-2.7
 
  * '''Developer''': AdrianChadd.
 
