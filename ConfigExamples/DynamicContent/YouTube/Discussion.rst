@@ -21,7 +21,9 @@ See [[Features/StoreUrlRewrite]]
 
 My example is my favorite band;
 
-{{{http://www.youtube.com/watch?v=pNL7nHWhMh0&feature=PlayList&p=E5F2BD7B040088AA&index=0}}}
+{{{
+http://www.youtube.com/watch?v=pNL7nHWhMh0&feature=PlayList&p=E5F2BD7B040088AA&index=0
+}}}
 
 The video file and header below.
 {{{
@@ -96,7 +98,7 @@ while (<>) {
         chomp;
     
         if 	(m/^http:\/\/([A-Za-z]*?)-(.*?)\.(.*)\.youtube\.com\/get_video\?video_id=(.*?)&(.*?) /) {
-                print "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $3 . "\n";
+                print "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $4 . "\n";
               
         } elsif (m/^http:\/\/(.*?)\/get_video\?video_id=(.*?)&(.*?) /) {
                 print "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
