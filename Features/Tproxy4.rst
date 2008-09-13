@@ -31,6 +31,8 @@ Current implementation doesn't require kernel support, only a new socket option,
 
 It is not yet finished, the squid proxy doesn't bind to the client's address. Furthermore I think it would be better to have a different option for this, and "tproxy" wouldn't imply this.
 
+|| /!\ || UPDATE: Squid-3 does attempt to spoof the client IP. This is the key difference between current TPROXY and NAT support in Squid-3 ||
+
 The patch is available here for 2.6-STABLE18:
 
  http://www.balabit.com/downloads/files/tproxy/
