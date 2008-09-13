@@ -216,6 +216,6 @@ change this on your squid.conf
 minimum_object_size 512 bytes
 }}}
 This will ignore content 512 bytes and below. Since redirect file is smaller.
-The '''Disadvantage''' is this will ignore all files below 512 bytes.
+The '''Disadvantage''' is this will ignore all content below 512 bytes in your cache.
 
 If you have other idea that could help please email me chudy_fernandez@yahoo.com.
