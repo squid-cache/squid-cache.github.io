@@ -209,3 +209,13 @@ If only we could deny these Location reply header to storeurl will solve the pro
 additional tuning for its performance if we only pass bigger files to storeurl.
 
 Im just hoping youtube will never do that again(redirecting without Cache-Control:no-cache header).But its still not safe for other sites.
+
+===== Temporary Bug Solution =====
+change this on your squid.conf
+{{{
+minimum_object_size 512 bytes
+}}}
+This will ignore content 512 bytes and below. Since redirect file is smaller.
+The '''Disadvantage''' is this will ignore all files below 512 bytes.
+
+If you have other idea that could help please email me chudy_fernandez@yahoo.com.
