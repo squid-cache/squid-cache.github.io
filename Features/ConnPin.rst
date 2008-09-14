@@ -6,13 +6,13 @@
 
  * '''Goal''': Why do we need it? Client/Sponsor Requested.
 
- * '''Status''': No started
+ * '''Status''': Waiting merge
 
- * '''ETA''': unknown
+ * '''ETA''': 10 Days
 
- * '''Version''': Squid 3
+ * '''Version''': 3.1
 
- * '''Developer''':
+ * '''Developer''': Christos Tsantilas
 
  * '''More''': draft-jaganathan-kerberos-http-01.txt and Squid 2 implementation;
 ## TODO: add real links
