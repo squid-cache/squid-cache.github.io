@@ -75,6 +75,7 @@ Features under development:
  * [[Features/eCAP]] <<Include(Features/eCAP,,,from="ETA.*:",to="$")>>
  * [[Features/CppCodeFormat]] <<Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")>>
  * [[Features/SourceLayout]] <<Include(Features/SourceLayout,,,from="ETA.*:",to="$")>>
+ * [[Features/ConnPin]] <<Include(Features/ConnPin,,,from="ETA.*:",to="$")>>
  * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&version=3.HEAD&target_milestone=3.1&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&cmdtype=doit |Bug Zapping]]
 
 = Squid 3.2 =
@@ -87,6 +88,7 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 Features under development:
  * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
  * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
+ * Reply headers to external ACL. http://www.squid-cache.org/bugs/show_bug.cgi?id=740
 
 ## Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a
 ## timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
@@ -95,9 +97,7 @@ Features considered high-priority for including with 3.2, but not yet with a ded
 
 (Priority 1)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*1)>>
- * NTLM Passthru port from 2.6
  * Store URL re-write port rom 2.7
- * Reply headers to external ACL. http://www.squid-cache.org/bugs/show_bug.cgi?id=740
  * monitor* port from 2.6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2185
 (Priority 2)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*2)>>
@@ -119,9 +119,9 @@ More ideas are available [[Features/Other|elsewhere]].
 There should be no 3.0 to 3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
 
 (3.0)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.0 -regex:Status...:.complete)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.0 regex:ETA...:.unknown -regex:Status...:.complete)>>
 (3.1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 regex:Version...:.*3\.1 -regex:Status...:.complete)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.1 regex:ETA...:.unknown -regex:Status...:.complete)>>
 
 
 = Future versions =
