@@ -21,9 +21,7 @@ See [[Features/StoreUrlRewrite]]
 
 My example is my favorite band;
 
-{{{
 http://www.youtube.com/watch?v=pNL7nHWhMh0&feature=PlayList&p=E5F2BD7B040088AA&index=0
-}}}
 
 The video file and header below.
 {{{
