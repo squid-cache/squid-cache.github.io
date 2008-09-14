@@ -30,7 +30,7 @@ Additions are limited to:
 
 Basic new features in 3.0
 
- * ICAP (Internet Content Adaptation Protocol)
+ * [[../../Features/ICAP|ICAP (Internet Content Adaptation Protocol)]]
  * ESI (Edge Side Includes)
  * HTTP status ACL
  * Control Path-MTU discovery
