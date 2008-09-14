@@ -8,13 +8,13 @@
 
  * '''Status''': Stage 1-2 completed (3.0 to 3.1 code) done, Stage 3 pending.
 
- * '''ETA''': unknown.
+ * '''ETA''': underway.
 
- * '''Version''': 3.0, 3.1, 3.2
+ * '''Version''': 3.1
 
  * '''Developer''': AmosJeffries, AlexRousskov, everyone
 
- * '''More''': 
+## * '''More''': 
 
 == Details ==
 
