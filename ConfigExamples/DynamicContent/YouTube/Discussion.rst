@@ -208,8 +208,6 @@ Which will also loop back to redirect content.
 If only we could deny these Location reply header to storeurl will solve the problem and for
 additional tuning for its performance if we only pass bigger files to storeurl.
 
-Im just hoping youtube will never do that again(redirecting without Cache-Control:no-cache header).But its still not safe for other sites.
-
 ===== Temporary Bug Solution =====
 change this on your squid.conf
 {{{
