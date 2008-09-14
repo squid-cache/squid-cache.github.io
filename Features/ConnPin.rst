@@ -4,7 +4,7 @@
 
 = Feature: Connection Pinning =
 
- * '''Goal''': Why do we need it? Client/Sponsor Requested.
+ * '''Goal''': Support connection handling required for NTLM authentication passthrough
 
  * '''Status''': Waiting merge
 
