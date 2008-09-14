@@ -215,3 +215,17 @@ This will ignore content 512 bytes and below. Since redirect file is smaller.
 The '''Disadvantage''' is this will ignore all content below 512 bytes in your cache.
 
 If you have other idea that could help please email me chudy_fernandez@yahoo.com.
+
+----
+ . <<Anchor(C3)>>
+
+Right, so you need to deny caching the temporary redirect from Google so you can always hit your local cache for the initial URL?
+The problem is that the store URL stuff is rewriting the URL on the -request-. Its pointless to rewrite the store URL on -reply- because you'd not be able to handle a cache hit that way. :)
+
+This could be done separately from the store URL stuff. Whats needed is a way to set the cachability of something based on a -reply- ACL.
+
+That way you could match on the HTTP status code and the Location URL; and just say "don't bother caching this"; the client would then request the redirected URL (which is presumably the video) from you.
+
+Do you think that'd be enough?
+
+-- AdrianChadd <<DateTime(2008-09-14T17:20:00+0800)>>
