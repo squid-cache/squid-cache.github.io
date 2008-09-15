@@ -76,7 +76,7 @@ Features under development:
  * [[Features/CppCodeFormat]] <<Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")>>
  * [[Features/SourceLayout]] <<Include(Features/SourceLayout,,,from="ETA.*:",to="$")>>
  * [[Features/ConnPin]] <<Include(Features/ConnPin,,,from="ETA.*:",to="$")>>
- * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&version=3.HEAD&target_milestone=3.1&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&cmdtype=doit |Bug Zapping]]
+ * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&target_milestone=3.1&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&cmdtype=doit |Bug Zapping]]
 
 = Squid 3.2 =
 
