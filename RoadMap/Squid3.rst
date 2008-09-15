@@ -88,6 +88,7 @@ New features may be requested, suggested, or added up to an undecided date. Afte
 Features under development:
  * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
  * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
+ * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
  * Reply headers to external ACL. http://www.squid-cache.org/bugs/show_bug.cgi?id=740
 
 ## Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a
