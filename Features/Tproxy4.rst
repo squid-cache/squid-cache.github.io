@@ -33,13 +33,21 @@ It is not yet finished, the squid proxy doesn't bind to the client's address. Fu
 
 || /!\ || UPDATE: Squid-3 does attempt to spoof the client IP. This is the key difference between current TPROXY and NAT support in Squid-3 ||
 
-The patch is available here for 2.6-STABLE18:
-
- http://www.balabit.com/downloads/files/tproxy/
+## The patch is available here for 2.6-STABLE18:
+##
+##   http://www.balabit.com/downloads/files/tproxy/
 
 Squid-3 support has been completed and integrated into the latest sources:
 
  http://www.squid-cache.org/Versions/v3/HEAD/
+
+== Current Patches Required ==
+
+Additional patch required for linux 2.6.25 (on top of the Balabit supplied patch):
+  http://treenet.co.nz/projects/squid/patches/linux-2.6.25_rXX_tproxy_getsockopt_ip_transparent.patch
+
+Additional patch to correct a URL handling bug found in Squid when tproxy is used:
+  http://treenet.co.nz/projects/squid/patches/tproxy4-uri-handling.merge
 
 == Squid Configuration ==
 
