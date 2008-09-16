@@ -11,13 +11,20 @@
  * '''Coordinator''': AmosJeffries. Anyone can contribute translations.
  * '''Verified''': Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
 
-|| '''Language''' || '''Translations verified by:''' ||
-|| English || AmosJeffries ||
-|| German || Constantin Rack and  Robert Förster ||
-|| Italian || FrancescoChemolli ||
-|| Turkish || Umut Çinar ||
-|| Others || '''Unverified''', If you are familiar with any other language, please volunteer. It does not take very much time. ||
-
+||<-2> '''Language''' || '''Translations verified by:''' ||
+|| German || de || Constantin Rack and  Robert Förster ||
+|| English || en, en-au, en-gb || AmosJeffries ||
+|| Italian || it || FrancescoChemolli ||
+## || Turkish || tr || Umut Çinar ||
+||<|9> Others || ||<|9> '''Unverified''', If you are familiar with any other language, please volunteer. It does not take very much time. ||
+|| Catalan (ca) ||
+|| Danish (da) ||
+|| French (fr) ||
+|| Spanish (es) ||
+|| Indonesian (id) ||
+|| Dutch (nl) ||
+|| Brazilian Portuguese (pt-br) ||
+|| Swedish (sv) ||
 
 == Why? Squid already has translated error pages ==
 
@@ -28,9 +35,9 @@ We are hopping to bring all the error pages into an easily maintained structure 
 == How can I contribute? ==
 
 '''The easy way:'''
- Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]. Accounts are automatic, fill out the register form, then when you can login select any language and start suggesting translations. 
+ Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]. Accounts are automatic, fill out the register form, then when you can login select any language and start suggesting translations. They will appear in the Squid code shorty after someone has checked them
 
-If you are interested in longer contribution we do need people familiar enough with a language to approve/reject differences in suggestions. Please contact AmosJeffries about becoming an admin, or to get new languages added.
+If you are able to provide a longer contribution we do need people familiar enough with each language to approve/reject differences in suggestions. Please contact AmosJeffries about becoming a moderator, or to get new languages added.
 
 There are a few items specific to the squid dictionary which everyone needs to be careful of:
 
@@ -57,7 +64,7 @@ Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Version
 
 Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
 
-Squid 3.1 will have the capability not only of providing better translated error pages, but pages matched to visitors own browser language settings. Currently they only see one language defined in squid.conf, whether they can read it or not.
+Squid 3.1 has the capability not only of providing better translated error pages, but pages matched to visitors own browser language settings. Currently they only see one language defined in squid.conf, whether they can read it or not.
 
 == So how can I do this upgrade? ==
 
@@ -68,11 +75,13 @@ Squid 3.1+ built with:
 
 have the capability of loading any translated templates for the visitors browser. Squid admin just need to follow these steps:
 
- * Check that your preferred language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en-gb, etc.) .
+ * Check that your preferred language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en-gb, etc.).
  * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
  * Remove ''error_directory'' from squid.conf
 
 Reconfigure or restart squid.
+
+'''NP:''' Languages specified by their full name (ie ''English'') are not able to be auto-negotiated.
 
 === Now I keep getting: "Unable to load default language. Reset to English" ===
 
