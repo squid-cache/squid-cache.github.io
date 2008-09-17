@@ -10,9 +10,9 @@
 
 == How do I enable IPv6? ==
 
-You will need a squid 3.1 release or a 3-HEAD development snapshot later than 16th Dec 2007 and a computer system with IPv6 capabilities.
+You will need a squid 3.1 release or a 3-HEAD development snapshot and a computer system with IPv6 capabilities.
 
-IPv6 is available in most Linux 2.6+ kernels, MacOSX 10+, all of the BSD variants, Windows XP/Vista, and others. See your system documentation for its capability and configuration.
+IPv6 is available in ALL current operating systems. Most now provide it enabled by default. See your system documentation for its capability and configuration.
 
 '''IPv6 support''' in Squid needs to be enabled first with
 {{{
@@ -145,6 +145,11 @@ However we are still pondering a way to do this securely and reliably.
 
 Simply put we need a new RADIUS auth helper daemon. There is a RADIUS protocol upgrade for IPv6.
 But we have none yet able to write and test the helper.
+
+= Other Resources =
+
+[http://www.braintrust.co.nz/ipv6wwwtest/]
+For content providers Braintrust Ltd. provide a test script to check what happens when you turn on AAAA records for your website. If you have any worries this can be run and show how many if any of your clients and visitors might have trouble.
 
 ----
 CategoryFeature
