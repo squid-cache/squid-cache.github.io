@@ -247,6 +247,8 @@ In order to compile squid using the MinGW environment, the packages MSYS, MinGW 
  * db-1.85: [[http://tinycobol.org/download.html|TinyCOBOL download area]]
  * uudecode: [[http://unxutils.sourceforge.net/|Native Win32 ports of some GNU utilities]]
 
+ {i} 3.0+ releases do not require uudecode.
+
 Unpack the source archive as usual and run configure.
 
 The following are the recommended minimal options for Windows:
