@@ -30,6 +30,9 @@ For anonymous access/mirroring/etc:
 http://www.squid-cache.org/bzr/squid3/trunk
 }}}
 
+Also mirrors are available at:
+  https://code.launchpad.net/~lifeless/squid/squid3-trunk
+
 = Web view =
 web view: http://squid-cache.org/bzrview/squid3/BRANCH RSS feed: http://www.squid-cache.org/bzrview//squid3/BRANCH/atom
 
