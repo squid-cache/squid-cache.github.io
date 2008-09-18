@@ -21,13 +21,7 @@ These can be applied with the ''patch'' program (available from
 
 == Do you have pre-compiled binaries available? ==
 
-The squid core team members do not have the resources to make pre-compiled binaries available. Instead, we invest effort into making the source code very portable. Some contributors have made binary packages available. Please see our [[http://www.squid-cache.org/platforms.html|Platforms Page]].
-
- * The [[http://freeware.sgi.com/|SGI Freeware]] site has pre-compiled packages for SGI IRIX.
- * Squid binaries for [[http://www.freebsd.org/cgi/ports.cgi?query=squid-2&stype=all|FreeBSD on Alpha and Intel]].
- * Squid binaries for [[ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid/README.html|NetBSD on everything]]
- * Gurkan Sengun has some [[http://www.linuks.mine.nu/solaris/|Sparc/Solaris packages]] available.
- * Squid binaries for [[http://www.acmeconsulting.it/SquidNT/download.html|Windows]].
+The squid core team members do not have the resources to make pre-compiled binaries available. Instead, we invest effort into making the source code very portable. Some contributors have made binary packages available. Please see our [[http://www.squid-cache.org/Download/binaries.dyn|Binaries Page]].
 
 == How do I compile Squid? ==
 
