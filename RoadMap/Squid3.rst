@@ -11,12 +11,15 @@
 
 To minimize noise and the number of half-baked abandoned features, two Feature sets are established for Squid3 development projects: The TODO List and The Wish List.
 
-  TODO list:: TODO list features determine the release focus and timeline. Each feature must document their desired effect and estimated development time. Each feature must have a known active developer behind it. The developer must be ready to spend the time to fully develop the proposed feature (i.e., write, test, document, commit, and provide initial support).
+  TODO list:: TODO list features determine the release focus and timeline. Each feature must document their desired effect and estimated development time. Each feature must have at least one known active developer behind it willing to prioritize the feature and be ready to spend the time to fully develop the proposed feature (i.e., write, test, document, commit, and provide initial support).
+
+  Priorities:: Each developer needs to prioritize the features they are dedicated to completing with a rating estimating on the order they will complete the feature. This makes the priority public, so another developer may join and push the feature faster if needed.
 
   Wish List:: The Wish List accumulates features that do not meet the strict TODO List criteria. Many of these features can be implemented if there is enough demand or a sponsor. Some may get implemented outside of the official process, submitted as patches, and accepted into the release.
 
-Once release timeline is agreed upon, developers must obey it or move their feature to the next Squid release.
-
+There are no longer any freezing points in the 3.x Roadmap.  Instead, Point Releases are now made at regular intervals as determined by; a reasonable time since last point release, or a large number of features being added.
+All features must pass an auditing process for commit to HEAD, and any feature which has passed that process at time of release will be included in that release.
+Features which have not reached completion or have failed the audit, are automatically delayed to the next Squid release. Which should not be an unreasonable delay given the new fast-track release plan.
 
 
 = Squid 3.0 =
@@ -26,7 +29,8 @@ Additions are limited to:
  * Security fixes
  * Stability fixes
  * small optimizations
- * easily ported features already available in 2.6.
+##Should be no more of these:
+## * easily ported features already available in 2.6.
 
 Basic new features in 3.0
 
@@ -54,7 +58,7 @@ http://www.squid-cache.org/Versions/v3/3.0/
 
 = Squid 3.1 =
 
-The deadline for new feature requests to 3.1 is past. Available developer time will now determine the release timeline. Feature requests are now open for Squid 3.2
+Branching of the 3.1 and 3.2 code will commence 29 September. 3.1.PRE1 release is planned for early October when the last minute features have been tested and confirmed stable.
 
 == Done ==
 
@@ -80,8 +84,9 @@ Features under development:
 
 = Squid 3.2 =
 
-The set of new Squid 3.2 features has not been determined yet. The set will determine the release timeline.
-New features may be requested, suggested, or added up to an undecided date. After that date, the Squid feature set should be frozen. Available developer time will then determine the release timeline.
+The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be requested, suggested, or added to the plan at any time.
+
+The intention is to remove the backlog of feature parity between 2.7 and 3.2 then concentrate on performance improvements.
 
 == TODO ==
 
@@ -97,21 +102,24 @@ Features under development:
 Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
 
 (Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*1)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*1)>>
  * Store URL re-write port rom 2.7
  * monitor* port from 2.6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2185
 (Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*2)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*2)>>
  * Variant Invalidation
 
 (Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 regex:ETA...: unknown -regex:Priority...:)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3.2 regex:ETA...:.unknown -regex:Priority...:)>>
 
 == Wish List ==
 
-## Squid3 wishes other than those for v3.0, v3.1, v3.2
-## Adjust and move to the next section once v3.2 feature set is frozen.
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:C{1}ategoryWish regex:Version...:.*3 -regex:Version...:.*3\.[012])>>
+Wishlist consists of features which have been suggested or requested but do not yet have a developer or any contributor willing to see the feature completed and support it.
+
+Please contact squid-dev and discuss these if you with to take on development of one.
+
+## That means any feature without a named developer....
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3)>>
 
 More ideas are available [[Features/Other|elsewhere]].
 
