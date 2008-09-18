@@ -186,7 +186,7 @@ Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. Y
 
 From 2.6 STABLE 14 Squid should compile easily on this platform.
 
- /i\ There is just one known problem. The Linux system layout differs markedly from the Squid defaults. The following ./configure options are needed to install Squid into the Linux structure properly:
+ /!\ There is just one known problem. The Linux system layout differs markedly from the Squid defaults. The following ./configure options are needed to install Squid into the Linux structure properly:
 {{{
   --prefix=/usr
   --localstatedir=/var
