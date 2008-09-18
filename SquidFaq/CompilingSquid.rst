@@ -165,7 +165,7 @@ If it is earlier than 2.7.2, you might consider upgrading. Gcc 2.7.2 is very old
 
 In order to compile Squid, you need to have Cygwin fully installed.
 
- /i\ WCCP is not available on Windows so the following configure options are needed to disable them:
+ /!\ WCCP is not available on Windows so the following configure options are needed to disable them:
 {{{
   --disable-wccp
   --disable-wccpv2
