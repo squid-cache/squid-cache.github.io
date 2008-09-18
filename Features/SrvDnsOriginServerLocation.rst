@@ -5,8 +5,10 @@
 = Feature: DNS-based origin server location =
  * '''Goal''': Make use of informations available in DNS to locate the origin server for a given website. The needed information can be found in SRV records, where available.
  * '''Status''': In progress; a working redirector-based proof-of-concept is available. It can be improved upon, with the aim of mimicking Squid's internal processes.
+ * '''ETA''': unknown
  * '''ETA''': A few days for the POC. Work needed to get into Squid body is unknown.
  * '''Version''': Squid-3
+ * '''Priority''': 3
  * '''Developer''': POC: FrancescoChemolli. Integration: unknown
  * '''More''':
 ## Details
@@ -14,6 +16,7 @@
 ## Any other details you can document? This section is optional.
 ## If you have multiple sections and ToC, please place them here,
 ## leaving the above summary information in the page "header".
+
 == Proof Of Concept Code ==
 <<AttachList>>
 
