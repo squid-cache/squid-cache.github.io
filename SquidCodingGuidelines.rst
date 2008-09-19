@@ -19,7 +19,7 @@
   * Use const qualifiers in declarations.
   * Use bool for boolean types.
   * Avoid macros.
-  * Do not start names with underscore
+  * Do not start names with an underscore
 
 === Word capitalization example ===
 
