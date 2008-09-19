@@ -24,9 +24,9 @@ If the HTTP port number is wrong but the ICP port is correct you will send ICP q
 == Running out of filedescriptors ==
 If you see the ''Too many open files'' error message, you are most likely running out of file descriptors.  This may be due to running Squid on an operating system with a low filedescriptor limit.  This limit is often configurable in the kernel or with other system tuning tools.  There are two ways to run out of file descriptors:  first, you can hit the per-process limit on file descriptors.  Second, you can hit the system limit on total file descriptors for all processes.
 || {i} (!) || Squid 1.x the following per-OS help applies. ||
-|| {i} (!) || Squid 2.x provide a ./configure option --with-maxfd=N ||
+|| {i} (!) || Squid 2.0-2.6 provide a ./configure option --with-maxfd=N ||
+|| {i} (!) || Squid 2.7+ provide a squid.conf option max_filedescriptors ||
 || {i} (!) || Squid 3.x provide a ./configure option --with-filedescriptors=N ||
-
 
 
 
