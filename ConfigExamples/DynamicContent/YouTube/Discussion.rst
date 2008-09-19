@@ -229,8 +229,12 @@ That way you could match on the HTTP status code and the Location URL; and just 
 Do you think that'd be enough?
 
 -- AdrianChadd <<DateTime(2008-09-14T17:20:00+0800)>>
+
+----
+
 ==== Temporary Fix ====
-'''''But needs to recompile.'''''
+
+It's temporary until they fix it and it needs to recompile from source. They call it hacking the squid.
 Its on the src/http.c where MOVE_TEMPORARILY reply is being cache. So I try to modify it. Below is the diff file. I just wanna share if somebody might be looking.
 {{{
 diff -u -r c:/squidheadvirgin/src/http.c c:/squidhead/src/http.c
@@ -263,3 +267,5 @@ diff -u -r c:/squidheadvirgin/src/http.c c:/squidhead/src/http.c
 '''Squid version:''' squid-2.HEAD-20080904
 
 Good luck!
+
+Chudy_Fernandez@yahoo.com
