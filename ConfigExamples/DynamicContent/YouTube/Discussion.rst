@@ -206,7 +206,7 @@ Which will also loop back to redirect content.
 If only we could deny these Location reply header to storeurl will solve the problem and for
 additional tuning for its performance if we only pass bigger files to storeurl.
 
-===== Temporary Bug Solution =====
+===== Temporary work around =====
 change this on your squid.conf
 {{{
 minimum_object_size 512 bytes
@@ -229,3 +229,36 @@ That way you could match on the HTTP status code and the Location URL; and just 
 Do you think that'd be enough?
 
 -- AdrianChadd <<DateTime(2008-09-14T17:20:00+0800)>>
+==== Temporary Fix ====
+'''''But needs to recompile.'''''
+Its on the src/http.c where MOVE_TEMPORARILY reply is being cache. So I try to modify it. Below is the diff file. I just wanna share if somebody might be looking.
+{{{
+diff -u -r c:/squidheadvirgin/src/http.c c:/squidhead/src/http.c
+--- c:/squidheadvirgin/src/http.c	Fri Aug 29 08:21:39 2008
++++ c:/squidhead/src/http.c	Fri Sep 19 19:28:13 2008
+@@ -334,14 +334,6 @@
+ 	    return 0;
+ 	/* NOTREACHED */
+ 	break;
+-	/* Responses that only are cacheable if the server says so */
+-    case HTTP_MOVED_TEMPORARILY:
+-	if (rep->expires > rep->date && rep->date > 0)
+-	    return 1;
+-	else
+-	    return 0;
+-	/* NOTREACHED */
+-	break;
+ 	/* Errors can be negatively cached */
+     case HTTP_NO_CONTENT:
+     case HTTP_USE_PROXY:
+@@ -361,6 +353,7 @@
+ 	/* Some responses can never be cached */
+     case HTTP_PARTIAL_CONTENT:	/* Not yet supported */
+     case HTTP_SEE_OTHER:
++	case HTTP_MOVED_TEMPORARILY:
+     case HTTP_NOT_MODIFIED:
+     case HTTP_UNAUTHORIZED:
+     case HTTP_PROXY_AUTHENTICATION_REQUIRED:
+}}}
+'''Squid version:''' squid-2.HEAD-20080904
+Good luck!
