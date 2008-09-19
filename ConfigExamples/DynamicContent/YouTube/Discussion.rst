@@ -261,4 +261,5 @@ diff -u -r c:/squidheadvirgin/src/http.c c:/squidhead/src/http.c
      case HTTP_PROXY_AUTHENTICATION_REQUIRED:
 }}}
 '''Squid version:''' squid-2.HEAD-20080904
+
 Good luck!
