@@ -110,7 +110,7 @@ $| = 1;
 				
         } elsif (m/^http:\/\/(.*?)\/videoplayback\?id=(.*?)&(.*?) /) {
                 print "http://video-srv.youtube.com.SQUIDINTERNAL/videoplayback?id=" . $2 . "\n";				
-#not related to youtube and the others below                
+			#not related to youtube and the others below                
         } elsif (m/^http:\/\/([0-9.]*?)\/\/(.*?)\.(.*)\?(.*?) /) {
                 print "http://squid-cdn-url//" . $2  . "." . $3 . "\n";
 		
@@ -135,7 +135,6 @@ $| = 1;
 	}
 
 }
-
 }}}
 
 ==== The bug ====
