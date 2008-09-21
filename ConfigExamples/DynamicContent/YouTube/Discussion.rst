@@ -77,7 +77,8 @@ storeurl_access allow store_rewrite_list_web store_rewrite_list_path
 storeurl_access deny all
 #rewrite_program path is base on windows so use use your own path
 storeurl_rewrite_program C:/perl/bin/perl.exe C:/squid/etc/test.pl
-storeurl_rewrite_children 16
+storeurl_rewrite_children 1
+storeurl_rewrite_concurrency 3
 }}}
 and refresh pattern
 
@@ -90,23 +91,29 @@ Storeurl script or the test.pl above
 {{{
 #!/usr/bin/perl -w
 
-$| = 1;
+use threads;
 
-while (<>) {
+$thr = threads->new(\&sub1);
+
+@ReturnData = $thr->join;
+
+sub sub1 {
+$| = 1;
+	while (<>) {
         chomp;
     
         if 	(m/^http:\/\/([A-Za-z]*?)-(.*?)\.(.*)\.youtube\.com\/get_video\?video_id=(.*?)&(.*?) /) {
                 print "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $4 . "\n";
-              
-        } elsif (m/^http:\/\/(.*?)\/get_video\?video_id=(.*?)&(.*?) /) {
+               
+		} elsif (m/^http:\/\/(.*?)\/get_video\?video_id=(.*?)&(.*?) /) {
                 print "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
 				
         } elsif (m/^http:\/\/(.*?)\/videoplayback\?id=(.*?)&(.*?) /) {
                 print "http://video-srv.youtube.com.SQUIDINTERNAL/videoplayback?id=" . $2 . "\n";				
-                
+#not related to youtube and the others below                
         } elsif (m/^http:\/\/([0-9.]*?)\/\/(.*?)\.(.*)\?(.*?) /) {
                 print "http://squid-cdn-url//" . $2  . "." . $3 . "\n";
-		#not related to youtube and the others below		
+		
         } elsif (m/^http:\/\/(.*?)\.yimg\.com\/(.*?)\.yimg\.com\/(.*?)\?(.*?) /) {
                 print "http://cdn.yimg.com/"  . $3 . "\n";
 				
@@ -116,14 +123,18 @@ while (<>) {
         } elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*)\/(.*?) /) {
                 print "http://cdn." . $3 . "." . $4 . "/" . $5 . "\n";				
 				
-        } elsif (m/^http:\/\/(.*?)\/(.*?)\.(.*)\?(.*?) /) {
+        } elsif (m/^http:\/\/(.*?)\/(.*?)\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?(.*?) /) {
                 print "http://" . $1 . "/" . $2  . "." . $3 . "\n";
+				
+        } elsif (m/^http:\/\/(.*?)\/(ads)\?(.*?) /) {
+                print "http://" . $1 . "/" . $2  . "\n";
 				
         } else {
                 print $_ . "\n";
         }
-}
+	}
 
+}
 
 }}}
 
