@@ -91,13 +91,6 @@ Storeurl script or the test.pl above
 {{{
 #!/usr/bin/perl -w
 
-use threads;
-
-$thr = threads->new(\&sub1);
-
-@ReturnData = $thr->join;
-
-sub sub1 {
 $| = 1;
 	while (<>) {
         chomp;
@@ -134,7 +127,7 @@ $| = 1;
         }
 	}
 
-}
+
 }}}
 
 ==== The bug ====
