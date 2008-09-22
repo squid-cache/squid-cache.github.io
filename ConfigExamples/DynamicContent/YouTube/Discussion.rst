@@ -97,6 +97,7 @@ while (<>) {
 chomp;
  # $x is the concurrent channel and $_ is the url + ip ...
  # $_ .= " "; just add space at the end. I just like it. :)
+ # Using per 5.10. I don't know if using $_ works on older version.
  my ($x, $_) = split(/ /); 
 	$_ .= " ";
          
