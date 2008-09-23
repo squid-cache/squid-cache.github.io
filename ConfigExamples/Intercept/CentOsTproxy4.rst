@@ -123,8 +123,9 @@ After preparing the kernel and iptables as above.
 
  * Configure squid as noted in the squid and tproxy readmes.
 {{{
-http_port 3128 tproxy
+http_port 3129 tproxy
 }}}
+|| /!\ || A special http_port line is recommended since tproxy mode for Squid can interfere with non-tproxy requests on the same port. ||
 
 ----
  . CategoryConfigExample
