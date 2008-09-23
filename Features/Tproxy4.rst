@@ -11,31 +11,24 @@
 
  * '''Version''': 3.1
 
- * '''Developer''': Laszlo Attilla Toth (Balabit), AmosJeffries (3.1), AdrianChadd (2.x)
+ * '''Developer''': Laszlo Attilla Toth (Balabit), Krisztian Kovacs, AmosJeffries
+## * '''Developer''': 2.x: AdrianChadd (2.x)
 
  * '''More''': http://www.balabit.com/downloads/files/tproxy/
 
 == Sponsor ==
 
-This feature was Sponsored and developed by Balabit.
+This feature was Sponsored by Balabit and developed by Laszlo Attilla Toth and AmosJeffries.
+Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ritter.
 
 == Details ==
 
- * Still requires patched kernel (patches available at Balabit)
+ * Still requires patched kernel (patches available at [[http://www.balabit.com/downloads/files/tproxy/|Balabit]])
  * Only requires --enable-linux-netfilter configure option
- * '''Obsolete'''' --enable-tproxy option. Remains only for legacy v2.2 cttproxy support.
+ * '''Obsolete''' --enable-tproxy option. Remains only for legacy v2.2 cttproxy support.
 
-''by Laszlo Attilla Toth''
 
-Current implementation doesn't require kernel support, only a new socket option, IP_TRANSPARENT, also I made a patch which drops "--enable-tproxy" because TProxy 4.1 uses netfilter/iptables (TPROXY target and socket match). If "--enable-linux-netfilter" is used, the "tproxy" option is available for "http_proxy".
-
-It is not yet finished, the squid proxy doesn't bind to the client's address. Furthermore I think it would be better to have a different option for this, and "tproxy" wouldn't imply this.
-
-|| /!\ || UPDATE: Squid-3 does attempt to spoof the client IP. This is the key difference between current TPROXY and NAT support in Squid-3 ||
-
-## The patch is available here for 2.6-STABLE18:
-##
-##   http://www.balabit.com/downloads/files/tproxy/
+TProxy 4.1 uses netfilter/iptables (TPROXY target and socket match). If "--enable-linux-netfilter" is used, the "tproxy" option is available for "http_proxy".
 
 Squid-3 support has been completed and integrated into the latest sources:
 
@@ -46,9 +39,6 @@ Squid-3 support has been completed and integrated into the latest sources:
 Additional patch required for linux 2.6.25 (on top of the Balabit supplied patch):
   http://treenet.co.nz/projects/squid/patches/linux-2.6.25_rXX_tproxy_getsockopt_ip_transparent.patch
 
-Additional patch to correct a URL handling bug found in Squid when tproxy is used:
-  http://treenet.co.nz/projects/squid/patches/tproxy4-uri-handling.merge
-
 == Squid Configuration ==
 
 Configure build options
@@ -58,8 +48,11 @@ Configure build options
 
 squid.conf settings
 {{{
+http_port 3128
 http_port 3129 tproxy
 }}}
+
+ {i} NP: The way TPROXYv4 works makes it incompatible with NAT interception and reverse-proxy acceleration. The '''intercept''', '''accel''' and related flags cannot be set on the same http_port with '''tproxy''' flag.
 
 === References ===
 http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
