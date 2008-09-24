@@ -34,10 +34,8 @@ Squid-3 support has been completed and integrated into the latest sources:
 
  http://www.squid-cache.org/Versions/v3/HEAD/
 
-== Current Patches Required ==
-
-Additional patch required for linux 2.6.25 (on top of the Balabit supplied patch):
-  http://treenet.co.nz/projects/squid/patches/linux-2.6.25_rXX_tproxy_getsockopt_ip_transparent.patch
+## == Current Patches Required ==
+##
 
 == Squid Configuration ==
 
