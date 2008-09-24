@@ -15,6 +15,7 @@
 || German || de || Constantin Rack and  Robert Förster ||
 || English || en, en-au, en-gb || AmosJeffries ||
 || Italian || it || FrancescoChemolli ||
+|| Portuguese (Brazil) || pt-br || Aecio F. Neto ||
 ## || Turkish || tr || Umut Çinar ||
 ||<|9> Others || ||<|9> '''Unverified''', If you are familiar with any other language, please volunteer. It does not take very much time. ||
 || Catalan (ca) ||
@@ -23,7 +24,6 @@
 || Spanish (es) ||
 || Indonesian (id) ||
 || Dutch (nl) ||
-|| Brazilian Portuguese (pt-br) ||
 || Swedish (sv) ||
 
 == Why? Squid already has translated error pages ==
