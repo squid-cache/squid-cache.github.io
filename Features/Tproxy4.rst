@@ -28,7 +28,7 @@ Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ri
  * '''Obsolete''' --enable-tproxy option. Remains only for legacy v2.2 cttproxy support.
 
 
-TProxy 4.1 uses netfilter/iptables (TPROXY target and socket match). If "--enable-linux-netfilter" is used, the "tproxy" option is available for "http_proxy".
+TProxy 4.1 uses netfilter/iptables (TPROXY target and socket match). If "--enable-linux-netfilter" is used, the "tproxy" option is available for "http_port" lines.
 
 Squid-3 support has been completed and integrated into the latest sources:
 
