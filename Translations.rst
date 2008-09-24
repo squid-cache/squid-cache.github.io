@@ -6,7 +6,7 @@
 
  * '''Goal''': To make Squid error pages available in many languages.
  * '''Status''': Translations needed. Code being tested.
- * '''Version''': 2.5+ (langpacks), 3.1+ (auto-negotiate)
+ * '''Version''': 2.5+ (langpacks), 3.1+ (auto-negotiate, CSS)
  * '''Download''': [[http://www.squid-cache.org/Versions/langpack/]]
  * '''Coordinator''': AmosJeffries. Anyone can contribute translations.
  * '''Verified''': Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
@@ -66,6 +66,8 @@ Any existing Squid which have been configured with ''error_directory'' in their 
 
 Squid 3.1 has the capability not only of providing better translated error pages, but pages matched to visitors own browser language settings. Currently they only see one language defined in squid.conf, whether they can read it or not.
 
+ {i} Coming soon: CSS control over negotiated error page display.
+
 == So how can I do this upgrade? ==
 
 Squid 3.1+ built with:
@@ -78,16 +80,17 @@ have the capability of loading any translated templates for the visitors browser
  * Check that your preferred language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en-gb, etc.).
  * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
  * Remove ''error_directory'' from squid.conf
+ * Optional: download newest translations and languages [[http://www.squid-cache.org/Versions/langpack/|package]]
 
 Reconfigure or restart squid.
 
 '''NP:''' Languages specified by their full name (ie ''English'') are not able to be auto-negotiated.
 
-=== Now I keep getting: "Unable to load default language. Reset to English" ===
+=== Now I keep getting: "Unable to load default language. Reset to English." ===
 
 The language code you have entered in squid.conf for ''error_default_language'' does not match any of the currently installed error page translations.
 
-Check that you spelled it correctly, it must match the ISO code used for one of the directory names in your squid errors directory.
+Check that you spelled it correctly, it must match the ISO codes used for one of the directory names in your squid errors directory.
 
 '''NP:''' This only affects the backup language, if the users preferred is not available.
 
