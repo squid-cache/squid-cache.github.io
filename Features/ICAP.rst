@@ -29,7 +29,7 @@ While writing yet another ICAP server from scratch is always a possibility, the 
  * [[http://c-icap.sourceforge.net/|C-ICAP]]
  * [[http://spicer.measurement-factory.com/|Traffic Spicer]]
  * [[http://www.poesia-filter.org/|POESIA]]
- * original [[http://www.icap-forum.org/documents/other/icap-server10.zip|reference implementation]] by Network Appliance (XXX: that link needs to be fixed after the ICAP Forum site reorganization).
+ * original [[http://www.icap-forum.org/documents/other/icap-server10.zip|reference implementation]] by Network Appliance.
 
 The above list is not comprehensive and is not meant as an endorsement. Any ICAP server will have unique set of pros and cons in the context of your adaptation project.
 
