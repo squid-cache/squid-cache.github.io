@@ -13,11 +13,12 @@ There are some good reasons why you may want to use this technique:
 However there are also significant disadvantages for this strategy, as outlined by Mark Elsen:
 
  * Intercepting HTTP breaks TCP/IP standards because user agents think they are talking directly to the origin server.
+ * Requires IPv4 with NAT.
  * It causes path-MTU (PMTUD) to fail, possibly making some remote sites inaccessible.  This is not usually a problem if your client machines are connected via Ethernet or DSL PPPoATM where the MTU of all links between the cache and client is 1500 or more.  If your clients are connecting via DSL PPPoE then this is likely to be a problem as PPPoE links often have a reduced MTU (1472 is very common).
  * On older IE versions before version 6, the ctrl-reload function did not work as expected.
  * Proxy authentication does not work, and IP based authentication conceptually fails because the users are all seen to come from the Interception Cache's own IP address.
  * You can't use IDENT lookups (which are inherently very insecure anyway)
- * Interception Caching only supports the HTTP protocol, not gopher, SSL or FTP.  You cannot setup a redirection-rule to the proxy server for other protocols other than HTTP since it will not know how to deal with it.
+ * Interception Caching only supports the HTTP protocol, not gopher, SSL, or FTP.  You cannot setup a redirection-rule to the proxy server for other protocols other than HTTP since it will not know how to deal with it.
  * Intercepting Caches are incompatible with IP filtering designed to prevent address spoofing.
  * Clients are still expected to have full Internet DNS resolving capabilities; in certain intranet/firewalling setups, this is not always wanted.
  * Related to above: suppose the users browser connects to a site which is down. However, due to the transparent proxying, it gets a connected state to the interceptor.   The end user may get wrong error messages or a hung browser, for seemingly unknown reasons to them.
@@ -25,19 +26,19 @@ If you feel that the advantages outweigh the disadvantages in your network, you 
 
 == Requirements and methods for Interception Caching ==
  * You need to have a good understanding of what you are doing before you start.  This involves understanding at a TCP layer what is happening to the connections.  This will help you both configure the system and additionally assist you if your end clients experience problems after you have deployed your solution.
- * Squid-2.5, Squid-2.6 or Squid-3.0.  You should run the latest version of 2.6 or 3.0 that is available at the time.
- * A newer OS may make things easier, especially with Linux.  Linux 2.6.9 supports WCCP via the native GRE kernel module.  This will save you having to build the ip_wccp module by hand later on, and also means that any upgrades to your kernel will not result in a broken binary WCCP module.
+ * A current Squid (2.5+).  You should run the latest version of Squid that is available at the time.
+ * A current OS may make things easier.
  * Quite likely you will need a network device which can redirect the traffic to your cache.  If your Squid box is also functioning as a router and all traffic from and to your network is in the path, you can skip this step.  If your cache is a standalone box on a LAN that does not normally see your clients web browsing traffic, you will need to choose a method of redirecting the HTTP traffic from your client machines to the cache.  This is typically done with a network appliance such as a router or Layer 3 switch which either rewrite the destination MAC address or alternatively encapsulate the network traffic via a GRE or WCCP tunnel to your cache.
 NB: If you are using Cisco routers and switches in your network you may wish to investigate the use of WCCP.  WCCP is an extremely flexible way of redirecting traffic and is intelligent enough to automatically stop redirecting client traffic if your cache goes offline.  This may involve you upgrading your router or switch to a release of IOS or an upgraded featureset which supports WCCP.  There is a section written specifically on WCCP below.
 
 == Steps involved in configuring Interception Caching ==
- * Building a Squid with the correct options to ./configure to support the redirection and handle the clients correctly
+ * Building a Squid with the correct options to ./configure to support the redirection and handle the clients correctly.
  * Routing the traffic from port 80 to the port your Squid is configured to accept the connections on
  * Decapsulating the traffic that your network device sends to Squid (only if you are using GRE or WCCP to intercept the traffic)
  * Configuring your network device to redirect the port 80 traffic.
 The first two steps are required and the last two may or may not be required depending on how you intend to route the HTTP traffic to your cache.
 
-!It is ''critical'' to read the full comments in the squid.conf file and in this document in it's entirety before you begin.  Getting Interception Caching to work with Squid is non-trivial and requires many subsystems of both Squid and your network to be configured exactly right or else you will find that it will not work and your users will not be able to browse at all.  You MUST test your configuration out in a non-live environment before you unleash this feature on your end users.
+!It is '''critical''' to read the full comments in the squid.conf file and in this document in it's entirety before you begin.  Getting Interception Caching to work with Squid is non-trivial and requires many subsystems of both Squid and your network to be configured exactly right or else you will find that it will not work and your users will not be able to browse at all.  You MUST test your configuration out in a non-live environment before you unleash this feature on your end users.
 
 === Compile a version of Squid which accepts connections for other addresses ===
 Firstly you need to build Squid with the correct options to ./configure, and then you need to configure squid.conf to support Intercept Caching.
@@ -45,38 +46,23 @@ Firstly you need to build Squid with the correct options to ./configure, and the
 ==== Choosing the right options to pass to ./configure ====
 All supported versions of Squid currently available support Interception Caching, however for this to work properly, your operating system and network also need to be configured. For some operating systems, you need to have configured and built a version of Squid which can recognize the hijacked connections and discern the destination addresses. For Linux this works by configuring Squid with the {{{--enable-linux-netfilter}}} option.  For *BSD-based systems, you probably have to configure squid with the {{{--enable-ipf-transparent}}} option if you're using IP Filter, or {{{--enable-pf-transparent}}} if you're using OpenBSD's PF.  Do a {{{make clean}}} if you previously configured without that option, or the correct settings may not be present.
 
-By default, Squid-2.6 and Squid-3.0 support both WCCPv1 and WCCPv2 by default (unless explicitly disabled).
+Squid-2.6 and Squid-3.0 support both WCCPv1 and WCCPv2 by default (unless explicitly disabled).
 
 ==== Configure Squid to accept and process the redirected port 80 connections ====
+
 You have to change the Squid configuration settings to recognize the hijacked connections and discern the destination addresses.
 
-For Squid-2.6 and Squid-3.0 you simply need to add the keyword {{{transparent}}} on the http_port that your proxy will receive the redirected requests on as the above directives are not necessary and in fact have been removed in those releases:
+A number of different interception methods and their specific configuration is detailed at [[../../ConfigExamples/Intercept]]
 
-{{{
-http_port 3128 transparent
-}}}
-<!> You can manually configure browsers to connect to the IP address and port which you have specified as transparent.  The only drawback is that there will be a very slight (and probably unnoticeable) performance hit as a syscall done to see if the connection is intercepted. If no interception state is found it is processed just like a normal connection.
+<!> You can usually manually configure browsers to connect to the IP address and port which you have specified as intercepted.  The only drawback is that there will be a very slight (and probably unnoticeable) performance hit as a syscall done to see if the connection is intercepted. If no interception state is found it is processed just like a normal connection.
 
-For Squid-2.5 and earlier the configuration is a little more complex. Here are the important settings in {{{squid.conf}}} for Squid-2.5 and earlier:
-
-{{{
-http_port 3128
-httpd_accel_host virtual
-httpd_accel_port 80
-httpd_accel_with_proxy  on
-httpd_accel_uses_host_header on
-}}}
- * The {{{http_port 3128}}} in this example assumes you will redirect incoming port {{{80}}} packets to port {{{3128}}} on your cache machine.  You may use any other port like {{{8080}}}, the most important thing is that the port number matches the interception rules in the local firewall.
- * In the {{{httpd_accel_host}}} option, use the keyword {{{virtual}}}
- * The {{{httpd_accel_with_proxy on}}} is required to enable interception proxy mode; essentially in interception proxy mode Squid thinks it is acting both as an accelerator (hence accepting packets for other IPs on port 80) and a caching proxy (hence serving files out of cache.)
- * You '''must''' use {{{httpd_accel_uses_host_header on}}} to get the cache to work properly in interception mode. This enables the cache to index its stored objects under the true hostname, as is done in a normal proxy, rather than under the IP address. This is especially important if you want to use a parent cache hierarchy, or to share cache data between interception proxy users and non-interception proxy users, which you can do with Squid in this configuration.
 === Getting your traffic to the right port on your Squid Cache ===
 You have to configure your cache host to accept the redirected packets - any IP address, on port 80 - and deliver them to your cache application.  This is typically done with IP filtering/forwarding features built into the kernel. On Linux this is called {{{iptables}}} (kernel 2.4 and above), {{{ipchains}}} (2.2.x) or
 
 {{{ipfwadm}}} (2.0.x). On FreeBSD its called {{{ipfw}}}.  Other BSD systems may use {{{ip filter}}}, {{{ipnat}}} or {{{pf}}}.
 
 On most systems, it may require rebuilding the kernel or adding a new loadable kernel module.  If you are running a modern Linux distribution and using the vendor supplied kernel you will likely not need to do any rebuilding as the required modules will have been built by default.
-
+=
 ==== Interception Caching packet redirection for Solaris, SunOS, and BSD systems ====
 <!> You don't need to use IP Filter on FreeBSD.  Use the built-in ''ipfw'' feature instead.  See the FreeBSD subsection below.
 
@@ -118,208 +104,6 @@ rdr pass on $i inet proto tcp to any port 80 -> $i port 3128
 }}}
 Also, see [[http://www.benzedrine.cx/transquid.html|Daniel Hartmeier's page on the subject.]]
 
-==== Interception Caching packet redirection for Linux ====
-Specific instructions depend on what version of Linux Kernel you are using.
-
-===== Interception Caching packet redirection with Linux 2.0 and ipfwadm =====
-by  [[mailto:Rodney.van.den.Oever@tip.nl|Rodney van den Oever]]
-
-<!> Interception proxying does NOT work with Linux-2.0.30! Linux-2.0.29 is known to work well.  If you're using a more recent kernel, like 2.2.X, then you should probably use an ipchains configuration, as described below.
-
-<!> This technique has some shortcomings.
-
-If you can live with the side-effects, go ahead and compile your kernel with firewalling and redirection support.  Here are the important parameters from
-
-{{{/usr/src/linux/.config}}}:
-
-{{{
-#
-# Code maturity level options
-#
-CONFIG_EXPERIMENTAL=y
-#
-# Networking options
-#
-CONFIG_FIREWALL=y
-# CONFIG_NET_ALIAS is not set
-CONFIG_INET=y
-CONFIG_IP_FORWARD=y
-# CONFIG_IP_MULTICAST is not set
-CONFIG_IP_FIREWALL=y
-# CONFIG_IP_FIREWALL_VERBOSE is not set
-CONFIG_IP_MASQUERADE=y
-CONFIG_IP_TRANSPARENT_PROXY=y
-CONFIG_IP_ALWAYS_DEFRAG=y
-# CONFIG_IP_ACCT is not set
-CONFIG_IP_ROUTER=y
-}}}
-You may also need to enable '''IP Forwarding'''.  One way to do it is to add this line to your startup scripts:
-
-{{{
-echo 1 > /proc/sys/net/ipv4/ip_forward
-}}}
-Alternatively edit {{{/etc/sysctl.conf}}}
-
-You can either go to the [[http://www.xos.nl/linux/ipfwadm/|Linux IP Firewall and Accounting]] page, obtain the source distribution to {{{ipfwadm}}} and install it OR better still, download a precompiled binary from your distribution. Older versions of {{{ipfwadm}}} may not work.  You might need at least version '''2.3.0'''. You'll use {{{ipfwadm}}} to setup the redirection rules.  I added this rule to the script that runs from {{{/etc/rc.d/rc.inet1}}} (Slackware) which sets up the interfaces at boot-time. The redirection should be done before any other Input-accept rule.
-
-To really make sure it worked I disabled the forwarding (masquerading) I normally do.
-
-{{{/etc/rc.d/rc.firewall}}}:
-
-{{{
-#!/bin/sh
-# rc.firewall   Linux kernel firewalling rules
-FW=/sbin/ipfwadm
-# Flush rules, for testing purposes
-for i in I O F # A      # If we enabled accounting too
-do
-        ${FW} -$i -f
-done
-# Default policies:
-${FW} -I -p rej         # Incoming policy: reject (quick error)
-${FW} -O -p acc         # Output policy: accept
-${FW} -F -p den         # Forwarding policy: deny
-# Input Rules:
-# Loopback-interface (local access, eg, to local nameserver):
-${FW} -I -a acc -S localhost/32 -D localhost/32
-# Local Ethernet-interface:
-# Redirect to Squid proxy server:
-${FW} -I -a acc -P tcp -D default/0 80 -r 8080
-# Accept packets from local network:
-${FW} -I -a acc -P all -S localnet/8 -D default/0 -W eth0
-# Only required for other types of traffic (FTP, Telnet):
-# Forward localnet with masquerading (udp and tcp, no icmp!):
-${FW} -F -a m -P tcp -S localnet/8 -D default/0
-${FW} -F -a m -P udp -S localnet/8 -D default/0
-}}}
-Here all traffic from the local LAN with any destination gets redirected to the local port 8080.  Rules can be viewed like this:
-
-{{{
-IP firewall input rules, default policy: reject
-type  prot source               destination          ports
-acc   all  127.0.0.1            127.0.0.1            n/a
-acc/r tcp  10.0.0.0/8           0.0.0.0/0            * -> 80 => 8080
-acc   all  10.0.0.0/8           0.0.0.0/0            n/a
-acc   tcp  0.0.0.0/0            0.0.0.0/0            * -> *
-}}}
-I did some testing on Windows 95 with both Microsoft Internet Explorer 3.01 and Netscape Communicator pre-release and it worked with both browsers with the proxy-settings disabled.
-
-At one time Squid seemed to get in a loop when I pointed the browser to the local port 80.  But this could be avoided by adding a reject rule for client to this address:
-
-{{{
-${FW} -I -a rej -P tcp -S localnet/8 -D hostname/32 80
-IP firewall input rules, default policy: reject
-type  prot source               destination          ports
-acc   all  127.0.0.1            127.0.0.1            n/a
-rej   tcp  10.0.0.0/8           10.0.0.1             * -> 80
-acc/r tcp  10.0.0.0/8           0.0.0.0/0            * -> 80 => 8080
-acc   all  10.0.0.0/8           0.0.0.0/0            n/a
-acc   tcp  0.0.0.0/0            0.0.0.0/0            * -> *
-}}}
-''NOTE on resolving names'':  Instead of just passing the URLs to the proxy server, the browser itself has to resolve the URLs.  Make sure the workstations are setup to query a local nameserver, to minimize outgoing traffic.
-
-If you're already running a nameserver at the firewall or proxy server (which is a good idea anyway IMHO) let the workstations use this nameserver.
-
-Additional notes from [[mailto:RichardA@noho.co.uk|Richard Ayres]]
-
-{{{
-I'm using such a setup. The only issues so far have been that:
- * Linux kernel 2.0.30 is a no-no as interception proxying is broken (Use 2.0.29 or 2.0.31 or later)
- * The Microsoft Network won't authorize its users through a proxy, so I have to specifically *not* redirect those packets (my company is a MSN content provider).
-}}}
-See also  [[http://www.ibiblio.org/pub/linux/docs/HOWTO/TransparentProxy|Daniel Kiracofe's HOWTO page]].
-
-===== Interception Caching packet redirection with Linux 2.2 and ipchains =====
-by [[mailto:Support@dnet.co.uk|Martin Lyons]]
-
-You need to configure your kernel for ipchains. Configuring Linux kernels is beyond the scope of this FAQ.  One way to do it is:
-
-{{{
-# cd /usr/src/linux
-# make menuconfig
-}}}
-The following shows important kernel features to include:
-
-{{{
-[*] Network firewalls
-[ ] Socket Filtering
-[*] Unix domain sockets
-[*] TCP/IP networking
-[ ] IP: multicasting
-[ ] IP: advanced router
-[ ] IP: kernel level autoconfiguration
-[*] IP: firewalling
-[ ] IP: firewall packet netlink device
-[*] IP: always defragment (required for masquerading)
-[*] IP: transparent proxy support
-}}}
-You must include the ''IP: always defragment'', otherwise it prevents you from using the REDIRECT chain. You can use this script as a template for your own ''rc.firewall'' to configure ipchains:
-
-{{{
-#!/bin/sh
-# rc.firewall   Linux kernel firewalling rules
-# Leon Brooks (leon at brooks dot fdns dot net)
-FW=/sbin/ipchains
-ADD="$FW -A"
-# Flush rules, for testing purposes
-for i in I O F # A      # If we enabled accounting too
-do
-        ${FW} -F $i
-done
-# Default policies:
-${FW} -P input REJECT   # Incoming policy: reject (quick error)
-${FW} -P output ACCEPT  # Output policy: accept
-${FW} -P forward DENY   # Forwarding policy: deny
-# Input Rules:
-# Loopback-interface (local access, eg, to local nameserver):
-${ADD} input -j ACCEPT -s localhost/32 -d localhost/32
-# Local Ethernet-interface:
-# Redirect to Squid proxy server:
-${ADD} input -p tcp -d 0/0 80 -j REDIRECT 8080
-# Accept packets from local network:
-${ADD} input -j ACCEPT -s localnet/8 -d 0/0 -i eth0
-# Only required for other types of traffic (FTP, Telnet):
-# Forward localnet with masquerading (udp and tcp, no icmp!):
-${ADD} forward -j MASQ -p tcp -s localnet/8 -d 0/0
-${ADD} forward -j MASQ -P udp -s localnet/8 -d 0/0
-}}}
-Also,  [[mailto:andrew@careless.net|Andrew Shipton]] notes that with 2.0.x kernels you don't need to enable packet forwarding, but with the 2.1.x and 2.2.x kernels using ipchains you do.  Edit /etc/sysctl.conf to make this change permanent.  Packet forwarding is enabled with the following command:
-
-{{{
-echo 1 > /proc/sys/net/ipv4/ip_forward
-}}}
-===== Interception Caching packet redirection with Linux 2.4 or later and Netfilter =====
-NOTE: this information comes from Daniel Kiracofe's [[http://www.ibiblio.org/pub/linux/docs/HOWTO/TransparentProxy|Transparent Proxy with Squid HOWTO]].
-
-To support Netfilter transparent interception on Linux 2.4 or later, remember Squid must be compiled with the {{{--enable-linux-netfilter}}} option.
-
-If you are running a custom built kernel (rather than one supplied by your Linux distribution), you need to build in support for at least these options:
-
- * Networking support
- * Sysctl support
- * Network packet filtering
- * TCP/IP networking
- * Connection tracking (Under "IP: Netfilter Configuration" in menuconfig)
- * IP tables support
- * Full NAT
- * REDIRECT target support
-Quite likely you will already have most if not all of those options.
-
-You must say NO to "Fast switching".
-
-After building the kernel, install it and reboot.
-
-You may need to enable packet forwarding (e.g. in your startup scripts):
-
-{{{
-echo 1 > /proc/sys/net/ipv4/ip_forward
-}}}
-Use the {{{iptables}}} command to make your kernel intercept HTTP connections and send them to Squid:
-
-{{{
-iptables -t nat -A PREROUTING -i eth0 -d 192.168.0.0/255.255.255.0 ACCEPT
-iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3128
-}}}
 === Get the packets from the end clients to your cache server ===
 There are several ways to do this.  First, if your proxy machine is already in the path of the packets (i.e. it is routing between your proxy users and the Internet) then you don't have to worry about this step as the Interception Caching should now be working.  This would be true if you install Squid on a firewall machine, or on a UNIX-based router.  If the cache is not in the natural path of the connections, then you have to divert the packets from the normal path to your cache host using a router or switch.
 
@@ -579,7 +363,8 @@ WCCPv1 is documented in the Internet-Draft [[http://www.web-cache.com/Writings/I
 For WCCP to work, you firstly need to configure your Squid Cache, and additionally configure the host OS to redirect the HTTP traffic from port 80 to whatever port your Squid box is listening to the traffic on.  Once you have done this you can then proceed to configure WCCP on your router.
 
 ==== Does Squid support WCCP? ====
-Cisco's Web Cache Coordination Protocol V1.0 is supported in all current versions of Squid. WCCPv2 is supported by Squid-2.6 and later.
+
+Cisco's Web Cache Coordination Protocol V1.0 and WCCPv2 are both supported in all current versions of Squid.
 
 ==== Do I need a cisco router to run WCCP? ====
 No.  Originally WCCP support could only be found on cisco devices, but some other network vendors now support WCCP as well.  If you have any information on how to configure non-cisco devices, please post this here.
@@ -690,7 +475,7 @@ There are two parts to this.  Firstly you need to configure Squid to talk WCCP, 
 ===== Configuring Squid to talk WCCP =====
 The configuration directives for this are well documented in squid.conf.
 
-For Squid-2.5 which supports only WCCPv1, you need these directives:
+For WCCPv1, you need these directives:
 
 {{{
 wccp_router a.b.c.d
@@ -700,11 +485,10 @@ wccp_outgoing_address e.f.g.h
 }}}
  * a.b.c.d is the address of your WCCP router
  * e.f.g.h is the address that you want your WCCP requests to come and go from.  If you are not sure or have only a single IP address on your cache, do not specify these.
-For Squid-2.6 and Squid-3.0:
 
-<!> Note: do NOT configure both the WCCPv1 directives (wccp_*) and WCCPv2 (wccp2_*) options at the same time in your squid.conf.  Squid 2.6 and above only supports configuration of one version at a time, either WCCPv1 or WCCPv2.  With no configuration, the unconfigured version(s) are not enabled.  Unpredictable things might happen if you configure both sets of options.
+<!> Note: do NOT configure both the WCCPv1 directives (wccp_*) and WCCPv2 (wccp2_*) options at the same time in your squid.conf.  Squid only supports configuration of one version at a time, either WCCPv1 or WCCPv2.  With no configuration, the unconfigured version(s) are not enabled.  Unpredictable things might happen if you configure both sets of options.
 
-If you are doing WCCPv1, then the configuration is the same as for Squid-2.5. If you wish to run WCCPv2, then you will want something like this:
+For WCCPv2, then you will want something like this:
 
 {{{
 wccp2_router a.b.c.d
@@ -731,11 +515,14 @@ FreeBSD first needs to be configured to receive and strip the GRE  encapsulation
 }}}
  * Download [[http://www.squid-cache.org/WCCP-support/FreeBSD-3.x/gre.c|gre.c for FreeBSD-3.x]]. Save this file as ''/usr/src/sys/netinet/gre.c''.
  * Add "options GRE" to your kernel config file and rebuild your kernel. Note, the ''opt_gre.h'' file is created when you run ''config''. Once your kernel is installed you will need to configure FreeBSD for interception proxying (see below).
-====== FreeBSD 4.0 through 4.7 ======= The procedure is nearly identical to the above for 3.x, but the source files are a little different.
+
+====== FreeBSD 4.0 through 4.7 =======
+The procedure is nearly identical to the above for 3.x, but the source files are a little different.
 
  * Apply the most appropriate patch file from the list of [[http://www.squid-cache.org/WCCP-support/FreeBSD-4.x/|patches for 4.x kernels]].
  * Download [[http://www.squid-cache.org/WCCP-support/FreeBSD-3.x/gre.c|gre.c for FreeBSD-3.x]]. Save this file as ''/usr/src/sys/netinet/gre.c''.
  * Add "options GRE" to your kernel config file and rebuild your kernel. Note, the ''opt_gre.h'' file is created when you run ''config''. Once your kernel is installed you will need to [[#trans-freebsd|configure FreeBSD for interception proxying]].
+
 ===== FreeBSD 4.8 and later =====
 The operating system now comes standard with some GRE support.  You need to make a kernel with the GRE code enabled:
 
@@ -762,7 +549,8 @@ Since the WCCP/GRE tunnel is one-way, Squid never sends any packets to 10.20.30.
 FreeBSD 6.x has GRE support in kernel by default. It also supports both WCCPv1 and WCCPv2. From gre(4) manpage: "Since there is no reliable way to distinguish between WCCP versions, it should be configured manually using the link2 flag. If the link2 flag is not set (default), then WCCP version 1 is selected." The rest of configuration is just as it was in 4.8+
 
 ===== Standard Linux GRE Tunnel =====
-Linux 2.2 kernels already support GRE, as long as the GRE module is compiled into the kernel. However, WCCP uses a slightly non-standard GRE encapsulation format and Linux versions earlier than 2.6.9 may need to be patched to support WCCP.  That is why we strongly recommend you run a recent version of the Linux kernel, as if you are you simply need to modprobe the module to gain it's functionality.
+
+Linux versions earlier than 2.6.9 may need to be patched to support WCCP.  That is why we strongly recommend you run a recent version of the Linux kernel, as if you are you simply need to modprobe the module to gain it's functionality.
 
 Ensure that the GRE code is either built as static or as a module by chosing the appropriate option in your kernel config. Then rebuild your kernel. If it is a module you will need to:
 
@@ -792,30 +580,13 @@ echo 0 >/proc/sys/net/ipv4/conf/wccp0/rp_filter
 And then you need to tell the Linux NAT kernel to redirect incoming traffic on the wccp0 interface to Squid
 
 {{{
-iptables -t nat -A PREROUTING -i wccp0 -j REDIRECT --redirect-to 3128}}}
-===== WCCP Specific Module =====
-This module is not part of the standard Linux distributon. It needs to be compiled as a module and loaded on your system to function. Do not attempt to build this in as a static part of your kernel.
-
-This module is most suited to Linux kernels prior to 2.6.9.  Kernels more recent than that support WCCP with the ip_gre module that comes with the kernel.
-
-Download the  [[http://www.squid-cache.org/WCCP-support/Linux/|Linux WCCP module]] and compile it as you would any Linux network module.  In most cases this is just to run {{{make install}}} in the module source directory. Note: Compiling kernel modules requires the kernel development files to be installed.
-
-Finally you will need to load the module:
-
-{{{
-modprobe ip_wccp
+iptables -t nat -A PREROUTING -i wccp0 -j REDIRECT --redirect-to 3128
 }}}
-If the WCCP redirected traffic is coming on on a different interface than where return traffic to the clients are sent then you may also need to disable the {{{rp_filter}}} function. If enabled any packets redirected by WCCP will be silendly discarded by the TCP/IP stack due to their "unexpected" origin from the other interface.
 
-{{{
-echo 0 >/proc/sys/net/ipv4/conf/eth0/rp_filter
-}}}
-And finally set up Netfilter/iptables to redirect the intercepted traffic to your Squid port
-
-{{{
-iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --redirect-to 3128
-}}}
 === TProxy Interception ===
+
+==== TProxy v2.2 ===
+
 TProxy is a new feature in Squid-2.6 which enhances standard Interception Caching so that it further hides the presence of your cache.  Normally with Interception Caching the remote server sees your cache engine as the source of the HTTP request.  TProxy takes this a step further by hiding your cache engine so that the end client is seen as the source of the request (even though really they aren't).
 
 Here are some notes by StevenWilton on how to get TProxy working properly:
@@ -863,6 +634,11 @@ interface GigabitEthernet0/3.102
 }}}
  * It's highly recommended to turn httpd_accel_no_pmtu_disc on in the squid.conf.
 The homepage for the TProxy software is at [[http://www.balabit.com/products/oss/tproxy/|balabit.com]].
+
+==== TProxy v4.1+ ====
+
+Starting with Squid 3.1 support for TProxy is closely tied into the netfilter component of Linux kernels.
+see [../../Features/Tproxy4|TProxy v4.4 Feature] for current details.
 
 === Complete ===
 By now if you have followed the documentation you should have a working Interception Caching system.  Verify this by unconfiguring any proxy settings in your browser and surfing out through your system.  You should see entries appearing in your access.log for the sites you are visiting in your browser.  If your system does not work as you would expect, you will want to read on to our troubleshooting section below.
@@ -915,6 +691,9 @@ ip route 1.2.3.4 255.255.255.255 Null0 250
 This appears to cause the correct behaviour.
 
 === Configuration Examples contributed by users who have working installations ===
+
+see [[../../ConfigExamples/Intercept]] for most current details.
+
 ==== Linux 2.0.33 and Cisco policy-routing ====
 By [[mailto:signal@shreve.net|Brian Feeny]]
 
