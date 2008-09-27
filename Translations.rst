@@ -25,6 +25,7 @@
 || Indonesian (id) ||
 || Dutch (nl) ||
 || Swedish (sv) ||
+|| Ukrainian (uk) ||
 
 == Why? Squid already has translated error pages ==
 
