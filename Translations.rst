@@ -61,7 +61,7 @@ How-To's on translating are widely available, so I won't cover those details her
 
 == How does this affect my installed Squid? ==
 
-Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Versions/langpack/|langpack]] tarballs, but the auto-negotiate feature is not planned for back-porting.
+Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Versions/langpack/|langpack]] tarballs, but the auto-negotiate and CSS features are not planned for back-porting.
 
 Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
 
@@ -85,15 +85,15 @@ have the capability of loading any translated templates for the visitors browser
 
 Reconfigure or restart squid.
 
-'''NP:''' Languages specified by their full name (ie ''English'') are not able to be auto-negotiated.
+ {i} Languages specified by their full name (ie ''English'') are not able to be auto-negotiated. They are now deprecated and due for removal as soon as ISO coded versions are made available.
 
-=== Now I keep getting: "Unable to load default language. Reset to English." ===
+=== Now I keep getting: "Unable to load default error language files. Reset to backups." ===
 
 The language code you have entered in squid.conf for ''error_default_language'' does not match any of the currently installed error page translations.
 
 Check that you spelled it correctly, it must match the ISO codes used for one of the directory names in your squid errors directory.
 
-'''NP:''' This only affects the backup language, if the users preferred is not available.
+ {i} This only affects the backup language, if the users preferred is not available.
 
 ----
 CategoryFeature
