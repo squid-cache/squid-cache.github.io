@@ -19,7 +19,7 @@ Install ''libecap'' and build Squid with the --enable-ecap ''configure'' option.
 Configure Squid to load an adapter module and specify which services the module provides:
 
 {{{
-loadable_modules  /usr/local/lib/ecap_adapter_modifying.so
+loadable_modules  /usr/local/lib/ecap_adapter_minimal.so
 ecap_service eReqmod reqmod_precache 0 ecap://e-cap.org/ecap/services/sample/minimal
 ecap_service eRespmod respmod_precache 0 ecap://e-cap.org/ecap/services/sample/minimal
 }}}
