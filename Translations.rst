@@ -9,23 +9,28 @@
  * '''Version''': 2.5+ (langpacks), 3.1+ (auto-negotiate, CSS)
  * '''Download''': [[http://www.squid-cache.org/Versions/langpack/]]
  * '''Coordinator''': AmosJeffries. Anyone can contribute translations.
- * '''Verified''': Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
+
+Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
 
 ||<-2> '''Language''' || '''Translations verified by:''' ||
+|| Bulgarian || bg || Evgeni Gechev ||
 || German || de || Constantin Rack and  Robert Förster ||
 || English || en, en-au, en-gb || AmosJeffries ||
 || Italian || it || FrancescoChemolli ||
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
+|| Swedish || sv || HenrikNordstrom ||
 ## || Turkish || tr || Umut Çinar ||
-||<|9> Others || ||<|9> '''Unverified''', If you are familiar with any other language, please volunteer. It does not take very much time. ||
+||<|99> Others || ||<|99> '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It does not take very much time. ||
 || Catalan (ca) ||
+|| Czech (cs) ||
 || Danish (da) ||
 || French (fr) ||
 || Spanish (es) ||
+|| Japanese (ja) ||
 || Indonesian (id) ||
 || Dutch (nl) ||
-|| Swedish (sv) ||
 || Ukrainian (uk) ||
+|| ||
 
 == Why? Squid already has translated error pages ==
 
