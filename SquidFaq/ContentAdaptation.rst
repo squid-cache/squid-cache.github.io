@@ -55,19 +55,16 @@ Squid3 sources include [[ProgrammingGuide/ClientStreams|ClientStreams]] classes 
 
 Unfortunately, Client Streams creators have not been actively participating in Squid development for a while, little API [[ProgrammingGuide/ClientStreams|documentation]] is available, and the long-term sustainability of the code is uncertain. Custom Client Streams code integrated with Squid may need to be licensed under GPL.
 
-## TODO: Delete eCAM anchor after 2008/06/01
-<<Anchor(seceCAP)>><<Anchor(seceCAM)>>
+<<Anchor(seceCAP)>>
 == eCAP ==
 
-Pluggable or embedded Content Adaptation Modules are like ICAP servers embedded into Squid. The Adaptation Modules are written using a simple public API and dynamically or statically loaded into Squid. This approach allows for fast content adaptation without tight dependency on Squid sources. Other proxies and even ICAP servers may chose to support the same API, removing dependency on Squid.
+[[http://www.e-cap.org/|eCAP]] services are like ICAP services embedded into Squid. eCAP is an interface that lets Squid and other servers to use embedded adaptation modules that are dynamically or statically loaded into the host application. This approach allows for fast content adaptation without tight dependency on Squid sources. Other proxies and even ICAP servers may chose to support the same API, removing dependency on Squid.
 
  '''Pros''': Fast, integrated, adaptation-focused API, no Squid modifications.
 
  '''Cons''': Dependent on Squid installation (at least in the beginning)
 
-If you need to implement an integrated content adaptation solution without ICAP overheads, please consider working with Squid developers on finalizing the eCAP interfaces and implement your code using that API.
-
-Initial support for eCAP is planned for [[RoadMap/Squid3|Squid 3.1]]. You can find more details [[Features/eCAP|elsewhere]].
+Initial support for eCAP is available in [[RoadMap/Squid3|Squid 3.1]]. You can find more details [[Features/eCAP|elsewhere]].
 
 
 <<Anchor(secACLs)>>
