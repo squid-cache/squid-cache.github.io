@@ -35,29 +35,11 @@ We are hopping to bring all the error pages into an easily maintained structure 
 
 == How can I contribute? ==
 
-'''The easy way:'''
- Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]. Accounts are automatic, fill out the register form, then when you can login select any language and start suggesting translations. They will appear in the Squid code shorty after someone has checked them
+How we do translations and who you can join in is detailed at [[Translations/Basics]]
 
-If you are able to provide a longer contribution we do need people familiar enough with each language to approve/reject differences in suggestions. Please contact AmosJeffries about becoming a moderator, or to get new languages added.
+What you need to know to make useful translations is at [[Translations/Guidelines]]
 
-There are a few items specific to the squid dictionary which everyone needs to be careful of:
-
- * HTML tags may surround some words. Please do not alter or remove the tag itself. Moving it about to suit the translation words is fine though.
- * Squid uses codes starting with % to insert certain items. Please leave these in the translated message as they are important for accurate error reporting. I have found that in messages where they mix with text to be translated, the code usually represents a singular noun.
-
-A reference of the available tags is available in the  [[SquidFaq/MiscFeatures#head-fd8f5559ec842b21e1acb06823eaa9b83897fcc3|FAQ]]
-
-'''Hard(er) way:'''
-  To do lone translations, you will need the [[http://translate.sourceforge.net/|Translate Toolkit]], or a good text editor.
-
-You can get the dictionary template in a few ways:
- * Join the group effort at [[http://translate.treenet.co.nz/projects/squid/]]
- * Contact the squid-dev mailing list and ask for a current dictionary template (.POT file).
- * Download the latest [[http://www.squid-cache.org/Versions/v3/HEAD/|Squid-3 HEAD source code]] and grab the '''errors/dictionary.pot''' file.
-
-When you have done the translation submit the resulting .PO file to squid-dev mailing list for approval. We need them with ISO-639 code information to indicate the language, and if possible the country ISO-3166 variant code as well. If you don't know these, an indication of that info may be just as useful (ie american english, or british english, not just english).
-
-How-To's on translating are widely available, so I won't cover those details here.
+If you are able to provide a longer contribution we do need people familiar enough with each language listed above without a current translator to approve/reject differences in suggestions. Please contact AmosJeffries about becoming a moderator, or to get new languages added.
 
 == How does this affect my installed Squid? ==
 
