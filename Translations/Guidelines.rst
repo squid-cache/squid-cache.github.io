@@ -61,7 +61,7 @@ If you are truly against using the existing translation toolkit system we run. Y
 
  /!\ You still need to meet all the translation guidelines listed above about codes and content.
 
- {i} '''.PO''' files need to haveh ISO-639 code information to indicate the language, and if possible the country ISO-3166 variant code as well. If you don't know these, an indication of that info may be just as useful (ie american english, or british english, not just english).
+ {i} '''.PO''' files need to have ISO-639 code information to indicate the language, and if possible the country ISO-3166 variant code as well. If you don't know these, an indication of that info may be just as useful (ie american english, or british english, not just english).
 
 ----
 CategoryKnowledgeBase
