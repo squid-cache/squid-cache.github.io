@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Feature: Support eCAP =
+= Feature: eCAP support =
 
  * '''Goal''':  Improve Squid3 content adaptation performance by 20+%, remove the need for an ICAP server
  * '''Version''': 3.1
