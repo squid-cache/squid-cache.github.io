@@ -34,6 +34,9 @@ Squid-3 support has been completed and integrated into the latest sources:
 
  http://www.squid-cache.org/Versions/v3/HEAD/
 
+
+To use TPROXY without patching you will need to run Squid 3.1, Linux kernel 2.6.28 and the corresponding iptables release (which should be 1.4.3) when they are all available.
+
 ## == Current Patches Required ==
 ##
 
