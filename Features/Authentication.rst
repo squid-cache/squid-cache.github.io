@@ -166,9 +166,8 @@ to do with authentication. This is the correct example:
 
 {{{
 acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
-acl dummy src 0.0.0.0/0.0.0.0
 
-http_access deny !ldapgroup-allowed dummy
+http_access deny !ldapgroup-allowed all
 http_access allow all
 }}}
 
