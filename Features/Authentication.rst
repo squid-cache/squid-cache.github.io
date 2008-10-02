@@ -171,8 +171,8 @@ http_access deny !ldapgroup-allowed all
 http_access allow all
 }}}
 
-This way the ''http_access'' line still matches. But it's the ''dummy'' ACL
-which is now last in the line. Since ''dummy'' is a static ACL (that always matches)
+This way the ''http_access'' line still matches. But it's the ''all'' ACL
+which is now last in the line. Since ''all'' is a static ACL (that always matches)
 and has nothing to do with authentication you will find that the access is just
 denied.
 
