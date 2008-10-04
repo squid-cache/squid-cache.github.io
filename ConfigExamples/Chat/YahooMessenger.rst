@@ -15,8 +15,10 @@ Configuration file to Include:
 {{{
 
 # Yahoo! Messenger
-acl ym dstdomain .messenger.yahoo.com .psq.yahoo.com .us.il.yimg.com .msg.yahoo.com .pager.yahoo.com
-acl ym dstdomain .rareedge.com .ytunnelpro.com .chat.yahoo.com .voice.yahoo.com
+acl ym dstdomain .messenger.yahoo.com .psq.yahoo.com
+acl ym dstdomain .us.il.yimg.com .msg.yahoo.com .pager.yahoo.com
+acl ym dstdomain .rareedge.com .ytunnelpro.com .chat.yahoo.com
+acl ym dstdomain .voice.yahoo.com
 
 acl ymregex url_regex yupdater.yim ymsgr myspaceim
 
