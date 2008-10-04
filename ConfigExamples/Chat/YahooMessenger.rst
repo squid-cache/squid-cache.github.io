@@ -30,5 +30,29 @@ http_access deny ymregex
 
 }}}
 
+
+## Original config had a comment about needing global FTP access
+## for Yahoo!Messenger blocking to work...
+
+## But that seems illogical.
+
+##{{{
+## we have to allow ftp access using proxy since yahoo messenger can
+## connect to ftp or telnet port without proxy.
+##ftp_user user@domain.com
+##ftp_list_width 64
+##ftp_passive on
+##acl ftp proto FTP
+##}}}
+
+##Then, the HTTP access section:
+
+##{{{
+## allow ftp ip
+##http_access deny local ftp
+##http_access allow ftp
+##http_reply_access allow ftp
+##}}}
+
 ----
 CategoryConfigExample
