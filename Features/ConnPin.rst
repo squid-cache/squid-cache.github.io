@@ -6,7 +6,7 @@
 
  * '''Goal''': Support connection handling required for NTLM authentication passthrough
 
- * '''Status''': Complete.
+ * '''Status''': done
 
  * '''Version''': 3.1
 
@@ -30,4 +30,4 @@ This feature has been implemented for [[Squid-2.6]] by HenrikNordström during t
 Connection Pinning has been re-implemented in Squid 3.1
 
 ----
-CategoryFeature | CategoryWish
+CategoryFeature
