@@ -6,7 +6,7 @@
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-<<TableOfContents>>
+## <<TableOfContents>>
 
 == Squid Configuration File ==
 
@@ -21,7 +21,6 @@ acl msn1 req_mime_type ^application/x-msn-messenger$
 
 http_access deny msn
 http_access deny msn1
-http_reply_access deny msn
 
 }}}
 
