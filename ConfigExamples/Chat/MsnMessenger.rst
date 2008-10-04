@@ -13,12 +13,13 @@
 Configuration file to Include:
 
 {{{
+# MSN Messenger
 
-# Block MSN Messenger access
-
-acl msn url_regex -i gateway.dll messenger.msn.com gateway.messenger.hotmail.com                                                                             
+acl msn url_regex -i gateway.dll
+acl msnd dstdomain messenger.msn.com gateway.messenger.hotmail.com
 acl msn1 req_mime_type ^application/x-msn-messenger$
 
+http_access deny msnd
 http_access deny msn
 http_access deny msn1
 
