@@ -6,9 +6,7 @@
 
  * '''Goal''': Support connection handling required for NTLM authentication passthrough
 
- * '''Status''': Waiting merge
-
- * '''ETA''': 10 Days
+ * '''Status''': Complete.
 
  * '''Version''': 3.1
 
@@ -29,7 +27,7 @@ The HTTP protocol extensions used to negotiate this is documented in Internet Dr
 
 This feature has been implemented for [[Squid-2.6]] by HenrikNordström during the CodeSprintOct2005 code sprint in Torino.
 
-Connection Pinning needs to be re-implemented in Squid 3.
+Connection Pinning has been re-implemented in Squid 3.1
 
 ----
 CategoryFeature | CategoryWish
