@@ -70,9 +70,11 @@ acl mycoolapp port 1234
 http_access deny !localnet
 ...
 http_access allow mycoolapp
+}}}
 
 OR even better:
 
+{{{
 acl mycoolapp port 1234
 ...
 http_access allow localnet mycoolapp
@@ -88,6 +90,29 @@ Please understand that it is there for your protection.  Many security systems u
 If it is not present in web requests the middleware proxy is identified as the trouble source and administrators can find their entire network under boycott for the actions of a single user. It may seem useful to simply find and block borged proxies, but tracking the origin source is far more so, and the borged proxy can be clearly identified as a traffic hop anyway.
 
 The configuration controls provided by Squid are intended for Accelerator setups.
+
+== Safe_Ports and SSL_Ports ACL ==
+
+These ACL controls are listed in a very specific way in the default squid.conf to protect Squid against
+Security issues such as those outlines for SMTP above.
+
+ Safe_Ports:: Prevents people from making requests to any of the registered protocol ports. For which Squid is unable to proxy and filter the protocol.
+
+ SSL_Ports:: Along with the CONNECT ACL prevents anyone from making an unfiltered tunnel to any of the otherwise safe ports which don't need it.
+
+'''Notes:'''
+
+ (!) They should be left as the top access control lines in any standard forward-proxy configuration.
+
+ {i} Only Reverse-Proxy configurations need to go above them.
+
+Default usage:
+{{{
+http_access deny !Safe_ports
+http_access deny CONNECT !SSL_Ports
+...
+# Other http_access controls
+}}}
 
 -----
 Back to the SquidFaq
