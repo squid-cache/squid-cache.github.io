@@ -85,3 +85,7 @@ Summary:
 
 === So what should I do? ===
 It depends, there is no one-size-fits-all approach, it depends on your organization's . In general, the cheapest way to obtain an higher reliability is by duplicating the caches and using cheap storage, at the expense of some extra complexity at the network level.
+
+For nearly most setups the JBOD approach is the most beneficial, maybe with a software RAID1 for the OS. Also it's better to build two cache servers than spending a lot of money on the disk subsystem. You will need at least 4 drives for optimal performance. Above 4 cache drives it's hard to see any additional performance gains.
+
+If you do not need absolutely top performance and your organisation has standardized on hardware with built-in RAID5 controller then that's a suitable choice as it gives you high reliability and easy service, but it's not the best performer if you really need to push the limits.
