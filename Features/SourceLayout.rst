@@ -31,7 +31,7 @@ This section is used to edit and finalize the grouping of source files. The '''G
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
-||  || ''algorithms/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
+||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
 ...
 
 ||  || ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
