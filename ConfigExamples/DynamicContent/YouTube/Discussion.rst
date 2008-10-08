@@ -56,7 +56,7 @@ add this to squid.conf
 {{{
 #  The keyword for all youtube video files are "get_video?video_id" and "videoplaybeck?id" 
 #  The "\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?" is only for pictures and other videos
-acl store_rewrite_list urlpath_regex \/(get_video\?video_id|videoplayback\?id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?
+acl store_rewrite_list urlpath_regex \/(get_video\?|videoplayback\?id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?
 acl store_rewrite_list_web url_regex ^http:\/\/([A-Za-z-]+[0-9]+)*\.[A-Za-z]*\.[A-Za-z]*
 acl store_rewrite_list_path urlpath_regex \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)$
 }}}
@@ -94,21 +94,27 @@ use strict;
 
 $| = 1 ;
 while (<>) { 
-chomp;
- # $x is the concurrent channel and $_ is the url + ip ...
- # $_ .= " "; just add space at the end. I just like it. :)
- # Using per 5.10. I don't know if using $_ works on older version.
- my ($x, $_) = split(/ /); 
+	chomp;
+		# $x is the concurrent channel $_ is the url + ip ...
+		#$_ .= " "; just add space at the end.
+	my ($x, $url) = split(/ /);
+	$_ = $url; 
 	$_ .= " ";
          
         if 	(m/^http:\/\/([A-Za-z]*?)-(.*?)\.(.*)\.youtube\.com\/get_video\?video_id=(.*?)&(.*?) /) {
                 print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $4 . "\n";
                
-		} elsif (m/^http:\/\/(.*?)\/get_video\?video_id=(.*?)&(.*?) /) {
+	} elsif (m/^http:\/\/(.*?)\/get_video\?video_id=(.*?)&(.*?) /) {
                 print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
 				
         } elsif (m/^http:\/\/(.*?)\/videoplayback\?id=(.*?)&(.*?) /) {
-                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/videoplayback?id=" . $2 . "\n";				
+                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/videoplayback?id=" . $2 . "\n";
+
+	} elsif (m/^http:\/\/(.*?)video_id=(.*?)&(.*?) /) {
+                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";	
+			#cache high latency ads	
+        } elsif (m/^http:\/\/(.*?)\/(ads)\?(.*?) /) {
+                print $x . "http://" . $1 . "/" . $2  . "\n";				
                 #not related to youtube and the others below
         } elsif (m/^http:\/\/([0-9.]*?)\/\/(.*?)\.(.*)\?(.*?) /) {
                 print $x . "http://squid-cdn-url//" . $2  . "." . $3 . "\n";
@@ -120,18 +126,19 @@ chomp;
                 print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 . "." . $6 . "\n";
 
         } elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*?)\.(.{3,5}) /) {
-                print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 . "." . $6 . "\n";				
+                print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 . "." . $6 . "\n";	
+
+        } elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*?) /) {
+                print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 .  "\n";				
 				
         } elsif (m/^http:\/\/(.*?)\/(.*?)\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?(.*?) /) {
                 print $x . "http://" . $1 . "/" . $2  . "." . $3 . "\n";
-				
-        } elsif (m/^http:\/\/(.*?)\/(ads)\?(.*?) /) {
-                print $x . "http://" . $1 . "/" . $2  . "\n";
 				
         } else {
                 print $x . $_ . "\n";
         }
 	}
+
 
 
 }}}
