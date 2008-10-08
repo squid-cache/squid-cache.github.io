@@ -262,20 +262,12 @@ bzr help revisionspec
 }}}
 
 = TODO =
-== Convert scripts ==
-This is done, needs the result committed.
-
- * the snapshot scripts need a little update to use the right tools for checking out the source tree.
-  . Patch sent to list.
- * the release scripts as well
-  . Patch sent to list
-hno: These will be dealt with when we switch over.
-
 == Helper scripts ==
 
 While bzr provides simple operation access. so did CVS in most cases. The problem is, mistakes are easier too. We need to provide some recipes as easy to use scripts.
 
  * testing a branch before submission
+  * '''./test-builds.sh''' in squid source. Runs configure and build permutation tests.
  * cleaning up a branch or patch for auditing
  * submitting a patch for consideration
  * all three of the above in sequence with problem handling.
