@@ -10,7 +10,7 @@
  * '''Version''': 3.2
  * '''Priority''': 1
  * '''Developer''': AlexRousskov, Christos Tsantilas
- * '''More''':
+ * '''More''': [[https://code.launchpad.net/~rousskov/squid/IcapLog3p0|v3.0 branch]]
 
 = Details =
 
