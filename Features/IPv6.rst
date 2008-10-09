@@ -10,7 +10,7 @@
 
 == How do I enable IPv6? ==
 
-You will need a squid 3.1 release or a 3-HEAD development snapshot and a computer system with IPv6 capabilities.
+You will need a squid 3.1 or later release and a computer system with IPv6 capabilities.
 
 IPv6 is available in ALL current operating systems. Most now provide it enabled by default. See your system documentation for its capability and configuration.
 
@@ -27,14 +27,14 @@ If you are using a packaged version 3.1 without it, please contact the maintaine
 
 When squid is built you will then be able to start Squid and see some IPv6 operations. The most active will be DNS as IPv6 addresses are looked up for each website, and IPv6 addresses in the cachemgr reports and logs.
 
-|| /!\ || Make sure that you check you helper script can handle IPv6 addresses ||
+|| /!\ || Make sure that you check your helper script can handle IPv6 addresses as input ||
 
 
 == How do I setup squid.conf for IPv6? ==
 
 Same as you would for IPv4 with CIDR.  IPv6 is only a slightly different address after all.
 
-Most of the IPv6 upgrade changes are very minor extensions of existing background behavior.
+Most of the IPv6 upgrade changes are very minor extensions to existing background behavior.
 
 The only points of possible interest for some will be:
  * external_acl_type flags 'ipv4' or 'ipv6'
@@ -49,8 +49,9 @@ The only points of possible interest for some will be:
 
  * A single listening port '''http_port 3128''' is less resource hungry than one for each IPv4 and IPv6. Also, its fully compatible with IPv6 auto-configuration.
 
- * Splitting the listening ports on input mode however (standard, transparent, accelerator) is better than mixing two modes on one port.
+ * Splitting the listening ports on input mode however (standard, transparent, intercept, accelerator) is better than mixing two modes on one port.
 
+ * Squid can already cope with bad or inaccessible IPs. This can be improved by tuning the '''connection_timeout''' down from minutes to a few seconds.
 
 === Squid builds with IPv6 but it won't listen for IPv6 requests. ===
 
@@ -60,7 +61,7 @@ Each of the port lines in squid.conf (http_port, icp_port, snmp_port, https_port
 
 When these lines contain an IPv4 address or a hostname with only IPv4 addresses squid will only open on those IPv4 you configured. You can add new port lines for IPv6 using [ipv6]:port, add AAAA records to the hostname in DNS, or use only a port.
 
-When only a port is set it should be opening for IPv6 access as well as IPv4. The one exception to default IPv6-listening are port lines where 'transparent' or 'tproxy' options are set. NAT-interception (commonly called transparent proxy) cannot be done in IPv6 so squid will only listen on IPv4 for that type of traffic.
+When only a port is set it should be opening for IPv6 access as well as IPv4. The one exception to default IPv6-listening are port lines where 'transparent', 'intercept' or 'tproxy' options are set. NAT-interception (commonly called transparent proxy) cannot be done in IPv6 so squid will only listen on IPv4 for that type of traffic.
 
 Again Windows XP users are unique, the geeks out there will notice two ports opening for seperate IPv4 and IPv6 access with each plain-port squid.conf line. The effect is the same as with more modern systems.
 
@@ -103,9 +104,9 @@ external_acl_type hi ipv6 %DST /etc/squid/hello_world.sh
 
 Why you would want to do that without similar limits on IPv4 (using '''all''') is beyond me but here it is.
 
-Previously squid defined the '''all''' ACL which means the whole Internet. It still does, but now it means both IPv6 and IPv4 so using it will not block IPv6.
+Previously squid defined the '''all''' ACL which means the whole Internet. It still does, but now it means both IPv6 and IPv4 so using it will not block only IPv6.
 
-A new ACL tag '''ipv6''' has been added to match only IPv6. It can be used directly in a deny or inverted with '''!''' to match IPv4 in an allow.
+A new ACL tag '''ipv6''' has been added to match only IPv6 public space. It can be used directly in a deny or inverted with '''!''' to match IPv4 in an allow.
 
 Example creation in squid.conf:
 {{{
