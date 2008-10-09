@@ -87,7 +87,7 @@ Features under development:
  * [[Features/SourceLayout]] <<Include(Features/SourceLayout,,,from="ETA.*:",to="$")>>
  * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&target_milestone=3.1&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&cmdtype=doit |Bug Zapping]]
 
-= Squid 3.2 =
+= Squid 3.2 (HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
 The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be requested, suggested, or added to the plan at any time until the branching of 3.2 and 3.3 expected around April 2009.
@@ -97,6 +97,10 @@ The intention is to remove the backlog of feature parity between 2.7 and 3.2 the
 == Done ==
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 -regex:ETA...:)>>
+
+
+Development snapshots of Squid source code are available at
+http://www.squid-cache.org/Versions/v3/HEAD/
 
 == TODO ==
 
