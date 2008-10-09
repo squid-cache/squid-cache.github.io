@@ -6,7 +6,7 @@
 
  * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean.
  * '''Status''': In progress
- * '''ETA''': April 2008
+ * '''ETA''': October-November 2008
  * '''Version''': 3.1
  * '''Developer''': AlexRousskov
  * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html|email07121]] [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html|email07506]]
@@ -16,6 +16,10 @@ Historically, many Squid source files have been dumped into squid/src directory.
 == Layout ==
 
 This section is used to edit and finalize the grouping of source files. The '''Group''' column contains src/ subdirectory names. The '''Files''' section lists current file names and assumes file extensions .h, .cc, and .cci are added to the corresponding file names and masks.
+
+Key:
+ * (./) Done.
+ * {2} AmosJeffries doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
@@ -34,7 +38,7 @@ This section is used to edit and finalize the grouping of source files. The '''G
 ||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
 ...
 
-||  || ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
+|| {2} || ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
 
 == Problems ==
 
