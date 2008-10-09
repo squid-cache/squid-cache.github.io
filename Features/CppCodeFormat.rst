@@ -7,7 +7,7 @@
 
  * '''Goal''': Minimize patch conflicts, reduce commit noise, and improve code readability.
  * '''Status''': Waiting Merge
- * '''ETA''': September, 2008
+ * '''ETA''': 10 days
  * '''Version''': Squid 3.1
  * '''Developer''': AlexRousskov
 
