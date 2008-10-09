@@ -24,13 +24,8 @@ Features which have not reached completion or have failed the audit, are automat
 
 = Squid 3.0 =
 
-Now in stable cycle. The features have largely been set and large code changes are reserved for later versions.
-Additions are limited to:
- * Security fixes
- * Stability fixes
- * small optimizations
-##Should be no more of these:
-## * easily ported features already available in 2.6.
+Now in '''STABLE''' cycle.
+The features have largely been set and large code changes are reserved for later versions. Additions are limited to '''Security fixes'''
 
 Basic new features in 3.0
 
@@ -58,22 +53,34 @@ http://www.squid-cache.org/Versions/v3/3.0/
 
 = Squid 3.1 =
 
-Branching of the 3.1 and 3.2 code will commence 29 September. 3.1.PRE1 release is planned for early October when the last minute features have been tested and confirmed stable.
+Now in '''RELEASE CANDIDATE''' cycle.
+The features have been set and large code changes are reserved for later versions.
 
-== Done ==
+Additions are limited to:
+ * Security fixes
+ * Stability fixes
+ * small optimizations
 
-Some features have already been completed and merged into the codebase for 3.1 release. They are:
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.1 -regex:ETA...:)>>
- * [[../../Translations|Error Page Translations]]
- * Follow X-Forwarded-For support ported from 2.6
+Basic new features in 3.1
+
+ * [[../../Features/ConnPin|Connection Pinning (for NTLM Auth Passthrough)]]
+ * [[../../Features/IPv6|Full Native IPv6]]
+ * [[../../Features/QualityOfService|Quality of Service (QoS) Flow support]]
+ * [[../../Features/RemoveNullStore|Native Memory Cache]]
+ * [[../../Features/SslBump|SSL Bump (for HTTPS Filtering and Adaptation)]]
+ * [[../../Features/Tproxy4|TProxy v4.1+ support]]
+ * [[../../Features/eCAP|eCAP Adaptation Module support]]
+ * [[../../Translations|Error Page Localization]]
+ * Follow X-Forwarded-For support
  * X-Forwarded-For options extended (truncate, delete, transparent)
 
-Development snapshots of squid 3.1 source code are already available with these features at
-http://www.squid-cache.org/Versions/v3/HEAD/
+## Developer-only relevant features
+## * Features/NativeAsyncCalls
 
-== TODO ==
+Packages of squid 3.1 source code are available at
+http://www.squid-cache.org/Versions/v3/3.1/
 
-##  * [:Features/FEATURE_ID_HERE] <<Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")>>
+== Remaining TODO ==
 
 Features under development:
  * [[Features/CppCodeFormat]] <<Include(Features/CppCodeFormat,,,from="ETA.*:",to="$")>>
@@ -82,11 +89,18 @@ Features under development:
 
 = Squid 3.2 =
 
-The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be requested, suggested, or added to the plan at any time.
+Now in '''DEVELOPMENT''' cycle.
+The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be requested, suggested, or added to the plan at any time until the branching of 3.2 and 3.3 expected around April 2009.
 
 The intention is to remove the backlog of feature parity between 2.7 and 3.2 then concentrate on performance improvements.
 
+== Done ==
+
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 -regex:ETA...:)>>
+
 == TODO ==
+
+##  * [:Features/FEATURE_ID_HERE] <<Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")>>
 
 Features under development:
  * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
@@ -106,9 +120,11 @@ Features considered high-priority for including with 3.2, but not yet with a ded
 (Priority 2)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*2)>>
  * Variant Invalidation
+(Priority 3)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*3)>>
 
 (Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3.2 regex:ETA...:.unknown -regex:Priority...:)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3.2 regex:ETA...:.unknown -regex:Priority...:.[123])>>
 
 == Wish List ==
 
@@ -123,17 +139,17 @@ More ideas are available [[Features/Other|elsewhere]].
 
 ## Some items got stuck in the wrong version or not marked properly with complete status.
 
-There should be no 3.0 to 3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
+## There should be no 3.0 to 3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
 
-(3.0)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.0 regex:ETA...:.unknown -regex:Status...:.complete)>>
-(3.1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.1 regex:ETA...:.unknown -regex:Status...:.complete)>>
+## (3.0)
+## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.0 regex:ETA...:.unknown -regex:Status...:.complete)>>
+## (3.1)
+## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.1 regex:ETA...:.unknown -regex:Status...:.complete)>>
 
 
-= Future versions =
+## = Future versions =
 
-The set of features going beyond Squid 3.2 release has not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome.
+## The set of features going beyond Squid 3.2 release have not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome.
 
 ## Squid3 wishes without a specific minor version.
 ## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3[^\.])>>
