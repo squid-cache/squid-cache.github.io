@@ -1,6 +1,9 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
+##
+## Change to 'yes' for a listing under Features in the Squid FAQ.
+#faqlisted no
 
 ## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
 
@@ -9,8 +12,6 @@
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': What must this feature accomplish? Try to use specific, testable goals so that it is clear whether the goal was satisfied. Goals using unquantified words such as "improve", "better", or "faster" are often not testable. Do not specify ''how'' you will accomplish the goal (use the Details section below for that).
 
-## Remove this entry entirely if the feature is completed and users need to know about.
-##  it will then be auto-listed in the Squid FAQ.
  * '''Status''': What is the current status? Standard choices are ''Not started'', ''In progress'', and ''Completed''. You can specify details after a semicolon (e.g., the reason why the development has not started yet or the first release version).
 
 ## Remove this entry once the feature has been merged into trunk.
