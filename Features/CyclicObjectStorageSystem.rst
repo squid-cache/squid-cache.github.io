@@ -1,3 +1,15 @@
+##master-page:CategoryTemplate
+#format wiki
+#language en
+## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
+= Feature: COSS (Cyclic Object Storage System) =
+## * '''Goal''': COSS support.
+ * '''Status''': 2.6+ complete. 3.x needs stability fixed ported from 2.6
+## * '''Priority''': ?
+ * '''Version''': 2.6, 3.2?
+ * '''Developer''': [[Henrik_Nordström]], others welcome
+## * '''More''':
+
 <<TableOfContents>>
 
 == What is COSS? ==
@@ -14,7 +26,6 @@ When a stripe is filled, the stripe is written to disk, and a new memory stripe 
 Yes.  At the time of writing COSS is the fastest performing cache_dir available in squid.  Because COSS cache_dirs can only store small cache objects, they need to be combineds with another cache_dir type (aufs, diskd or ufs) in order to allow caching of larger objects.  Because COSS takes care of the small objects more efficiently, the non-COSS cache_dirs also perform more efficiently because they have a small number of larger objects to deal with.
 
 == How do I use it? ==
-
 
 You need to run Squid version
 [[http://www.squid-cache.org/Versions/v2/2.6|2.6]] or later to be able to run a stable version of COSS.
