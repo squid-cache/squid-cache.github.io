@@ -1,12 +1,15 @@
 ##master-page:FeatureTemplate
 #format wiki
 #language en
+#faqlisted yes
 
 = IPv6 in Squid =
 
  * '''Version''': 3.1
+ * '''Status''': completed.
  * '''Developer''': AmosJeffries
- * '''More''': http://devel.squid-cache.org/squid3-ipv6/
+ * '''More''': http://www.squid-cache.org/Versions/v3/3.1/
+## * '''More''': http://devel.squid-cache.org/squid3-ipv6/
 
 == How do I enable IPv6? ==
 
