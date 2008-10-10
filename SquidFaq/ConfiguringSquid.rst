@@ -305,7 +305,7 @@ Disadvantages:
 
 == What is "HTTP_X_FORWARDED_FOR"?  Why does squid provide it to WWW servers, and how can I stop it? ==
 
-see. [[/SecurityPitfalls#head-bc80c66abc9dfd9d6463fac3113bf5101d7b741e| Security - X-Forwarded-For]]
+see. [[../SecurityPitfalls#head-bc80c66abc9dfd9d6463fac3113bf5101d7b741e| Security - X-Forwarded-For]]
 
 When a proxy-cache is used, a server does not see the connection coming from the originating client.  Many people like to implement access controls based on the client address. To accommodate these people, Squid adds the request header called "X-Forwarded-For" which looks like this:
 
