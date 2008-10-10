@@ -1,16 +1,19 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
+#faqlisted yes
 
 = Config Includes =
 
  * '''Version''': 3.0, 2.7
 
+ * '''Status''': complete.
+
  * '''Developer''': AdrianChadd (2.7), AmosJeffries (3.0)
 
 = Details =
 
-Other popular software, most notably apache, have long had the capability of breaking their large or complex configurations into smaller more managable files which are included into the main configuration.
+Other popular software, most notably apache, have long had the capability of breaking their large or complex configurations into smaller more manageable files which are included into the main configuration.
 
 This feature adds similar properties to the squid.conf file.
 
@@ -43,7 +46,7 @@ This will include a sorted list of files matching the pattern in order at the in
 
 With this feature available it permits the development of a library of configuration snippets to be easily shared between the squid user community.
 
-We hope to provide a repository of config examples for general use.
+We hope to provide a repository of config examples for general use. Some work has been done towards this in the [[../../ConfigExamples|Config Examples]] section.
 
 ----
 CategoryFeature
