@@ -9,7 +9,7 @@
 
  * '''Status''': Completed
 
- * '''Version''': 2.6+
+ * '''Version''': 2.2+
 
  * '''Developer''': David Luyer
 
