@@ -28,10 +28,17 @@ Summary:
 
  * price: lowest
  * performance: good
- * reliability: modest, the Squid cache is unavailable in case of a single disk failure
+ * reliability: modest, the Squid proxy is unavailable in case of a single disk failure
 
 === RAID0 (Striping) ===
 RAID0 is not really a proper RAID level, more a technique to optimize a system for very large read/write operations on a few very big files, and a administrative tool to merge many smaller disks as if they were one large. As squid mostly deals with small I/O operations in the KB range randomly spread out over a large number of files RAID0 do not provide any benefits for Squid and only the drawbacks of loosing the whole cache should a single drive fail. Instead use JBOD as it gives you the same performance and better reliability than RAID0/striping
+
+Summary:
+
+ * price: lowest
+ * performance: good
+ * reliability: poor. risk of losing entire cache.
+
 
 === Software RAID1 ===
 RAID 1, or mirroring, will make one logical disk out of two physical volumes; data is written to both disks simultaneously, and if one disk fails, the system can rely on the one that's still working. One high-level write operation requires two low-level writes, while read operations can be optimized by issuing a single read operation to either disk. Since a Squid proxy uses more writes than reads, RAID1 is considered slower than JBOD.
