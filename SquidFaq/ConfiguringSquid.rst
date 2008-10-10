@@ -16,27 +16,68 @@ Also, a QUICKSTART guide has been included with the source distribution. Please 
 ==  What does the squid.conf file do? ==
 
 The ''squid.conf'' file defines the configuration for
-''squid''.  the configuration includes (but not limited to)
+''squid''.  The configuration includes (but not limited to)
 HTTP port number, the ICP request port number, incoming and outgoing
 requests, information about firewall access, and various timeout
 information.
 
 ==  Do you have a squid.conf example? ==
 
-Yes, after you ''make install'', a sample ''squid.conf'' file will
+Yes.
+For Squid 2.x and 3.0 after you ''make install'', a sample ''squid.conf.default'' file will
 exist in the ''etc'' directory under the Squid installation directory.
-
-The sample ''squid.conf'' file contains comments explaining each
-option.
 
 From 2.6 the Squid developers also provide a set of Configuration Guides online. They list all the options each version of Squid can accept in its squid.conf file, including the current development test releases.
 
  * [[http://www.squid-cache.org/Versions/v2/2.6/cfgman/|Squid 2.6]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v2/2.7/cfgman/|Squid 2.7]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/3.0/cfgman/|Squid 3.0]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v3/3.1/cfgman/|Squid 3.1]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v2/HEAD/cfgman/|Squid 2-HEAD]] Configuration Guide
- * [[http://www.squid-cache.org/Versions/v2/HEAD/cfgman/|Squid 3-HEAD]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v3/HEAD/cfgman/|Squid 3-HEAD]] Configuration Guide
 
+From 3.1 a lot of configuration cleanups have been done to make things easier.
+
+ /!\ This minimal configuration does not work with versions earlier than 3.1 which are missing special cleanup done to the code.
+
+{{{
+http_port 3128
+
+hierarchy_stoplist cgi-bin ?
+
+refresh_pattern ^ftp:		1440	20%	10080
+refresh_pattern ^gopher:	1440	0%	1440
+refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
+refresh_pattern .		0	20%	4320
+
+acl manager proto cache_object
+acl localhost src 127.0.0.1/32
+acl to_localhost dst 127.0.0.0/8
+
+acl localnet src 10.0.0.0/8	# RFC 1918 possible internal network
+acl localnet src 172.16.0.0/12	# RFC 1918 possible internal network
+acl localnet src 192.168.0.0/16	# RFC 1918 possible internal network
+
+acl SSL_ports port 443
+acl Safe_ports port 80		# http
+acl Safe_ports port 21		# ftp
+acl Safe_ports port 443		# https
+acl Safe_ports port 70		# gopher
+acl Safe_ports port 210		# wais
+acl Safe_ports port 1025-65535	# unregistered ports
+acl Safe_ports port 280		# http-mgmt
+acl Safe_ports port 488		# gss-http
+acl Safe_ports port 591		# filemaker
+acl Safe_ports port 777		# multiling http
+acl CONNECT method CONNECT
+
+http_access allow manager localhost
+http_access deny manager
+http_access deny !Safe_ports
+http_access deny CONNECT !SSL_ports
+http_access allow localnet
+http_access deny all
+}}}
 
 == How do I join a cache hierarchy? ==
 To place your cache in a hierarchy, use the ''cache_peer'' directive in ''squid.conf'' to specify the parent and sibling nodes.
@@ -125,7 +166,6 @@ First, you need to give Squid a parent cache.  Second, you need to tell Squid it
 
 {{{
 cache_peer parentcache.foo.com parent 3128 0 no-query default
-acl all src 0.0.0.0/0.0.0.0
 never_direct allow all
 }}}
 Note, with this configuration, if the parent cache fails or becomes unreachable, then every request will result in an error message.
@@ -136,29 +176,34 @@ In case you want to be able to use direct connections when all the parents go do
 cache_peer parentcache.foo.com parent 3128 0 no-query
 prefer_direct off
 }}}
-The default behaviour of Squid in the absence of positive ICP, HTCP, etc replies is to connect to the origin server instead of using parents. The ''prefer_direct off'' directive tells Squid to try parents first.
+The default behavior of Squid in the absence of positive ICP, HTCP, etc replies is to connect to the origin server instead of using parents. The ''prefer_direct off'' directive tells Squid to try parents first.
 
 == I have "dnsserver" processes that aren't being used, should I lower the number in "squid.conf"? ==
-The ''dnsserver'' processes are used by ''squid'' because the ''gethostbyname(3)'' library routines used to convert web sites names to their internet addresses blocks until the function returns (i.e., the process that calls it has to wait for a reply). Since there is only one ''squid'' process, everyone who uses the cache would have to wait each time the routine was called.  This is why the ''dnsserver'' is a separate process, so that these processes can block, without causing blocking in ''squid''.
+
+The ''dnsserver'' processes were originally used by ''squid'' because the ''gethostbyname(3)'' library routines used to convert web sites names to their internet addresses blocks until the function returns (i.e., the process that calls it has to wait for a reply). Since there is only one ''squid'' process, everyone who uses the cache would have to wait each time the routine was called.  This is why the ''dnsserver'' is a separate process, so that these processes can block, without causing blocking in ''squid''.
+
+Squid now contains an internal DNS client which does not rely on gethostbyname(). It is much faster and can scale to match traffic levels without needing a reconfigure. Simply remove the configure option '''--disable-internal-dns''' and rebuild squid in order to use it. If your squid does not have that option it is not using the ''dnsserver'' helper.
 
 It's very important that there are enough ''dnsserver'' processes to cope with every access you will need, otherwise ''squid'' will stop occasionally.  A good rule of thumb is to make sure you have at least the maximum number of dnsservers ''squid'' has '''ever''' needed on your system, and probably add two to be on the safe side. In other words, if you have only ever seen at most three ''dnsserver'' processes in use, make at least five.  Remember that a ''dnsserver'' is small and, if unused, will be swapped out.
 
 == My ''dnsserver'' average/median service time seems high, how can I reduce it? ==
+
+ (!) Use the internal DNS resolver now built into Squid. It is not limited to single request-response blocking.
+
 First, find out if you have enough ''dnsserver'' processes running by looking at the ../CacheManager ''dns'' output.  Ideally, you should see that the first ''dnsserver'' handles a lot of requests, the second one less than the first, etc.  The last ''dnsserver'' should have serviced relatively few requests.  If there is not an obvious decreasing trend, then you need to increase the number of ''dns_children'' in the configuration file.  If the last ''dnsserver'' has zero requests, then you definately have enough.
 
-Another factor which affects the ''dnsserver'' service time is the proximity of your DNS resolver.  Normally we do not recommend running Squid and ''named'' on the same host.  Instead you should try use a DNS resolver (''named'') on a different host, but on the same LAN. If your DNS traffic must pass through one or more routers, this could be causing unnecessary delays.
+Another factor which affects the DNS service time is the proximity of your DNS resolver.  Normally we do not recommend running Squid and Resolver on the same host.  Instead you should try use a DNS resolver on a different host, but on the same LAN. If your DNS traffic must pass through one or more routers, this could be causing unnecessary delays.
 
-== How can I easily change the default HTTP port? ==
-Before you run the configure script, simply set the ''CACHE_HTTP_PORT'' environment variable.
+## Not relevant any more??
+## == How can I easily change the default HTTP port? ==
+##Before you run the configure script, simply set the ''CACHE_HTTP_PORT'' environment variable.
 
-{{{
-setenv CACHE_HTTP_PORT 8080
-./configure
-make
-make install
-}}}
-== Is it possible to control how big each ''cache_dir'' is? ==
-With Squid-1.1 it is NOT possible.  Each ''cache_dir'' is assumed to be the same size.  The ''cache_swap'' setting defines the size of all ''cache_dir''s taken together.  If you have N ''cache_dir''s then each one will hold ''cache_swap'' / N Megabytes.
+## {{{
+## setenv CACHE_HTTP_PORT 8080
+## ./configure
+## make
+## make install
+## }}}
 
 == What ''cache_dir'' size should I use? ==
 This chapter assumes that you are dedicating an entire disk partition to a squid cache_dir, as is often the case.
@@ -172,12 +217,12 @@ Let's see an example: you have a 9Gb disk (these times they're even hard to find
 {{{
 cache_dir ... 7000 16 256
 }}}
-Its better to start out with a conservative setting and then, after the cache has been filled, look at the disk usage.  If you think there is plenty of unused space, then increase the ''cache_dir'' setting a little.
+Its better to start out with a conservative setting and then, after the cache has been filled, look at the disk usage.  If you think there is plenty of unused space, then increase the cache_dir setting a little.
 
-If you're getting "disk full" write errors, then you definately need to decrease your cache size.
+If you're getting "disk full" write errors, then you definitely need to decrease your cache size.
 
 == I'm adding a new cache_dir. Will I lose my cache? ==
-With Squid-2, you will not lose your existing cache. You can add and delete cache_dir lines without affecting any of the others.
+No. You can add and delete cache_dir lines without affecting any of the others.
 
 == Squid and http-gw from the TIS toolkit. ==
 Several people on both the fwtk-users and the squid-users mailing asked about using Squid in combination with http-gw from the [[http://www.tis.com/|TIS toolkit]]. The most elegant way in my opinion is to run an internal Squid caching proxyserver which handles client requests and let this server forward it's requests to the http-gw running on the firewall. Cache hits won't need to be handled by the firewall.
@@ -259,7 +304,10 @@ Disadvantages:
 (contributed by [[mailto:RvdOever@baan.nl|Rodney van den Oever]])
 
 == What is "HTTP_X_FORWARDED_FOR"?  Why does squid provide it to WWW servers, and how can I stop it? ==
-When a proxy-cache is used, a server does not see the connection coming from the originating client.  Many people like to implement access controls based on the client address. To accommodate these people, Squid adds its own request header called "X-Forwarded-For" which looks like this:
+
+see. [[/SecurityPitfalls#head-bc80c66abc9dfd9d6463fac3113bf5101d7b741e| Security - X-Forwarded-For]]
+
+When a proxy-cache is used, a server does not see the connection coming from the originating client.  Many people like to implement access controls based on the client address. To accommodate these people, Squid adds the request header called "X-Forwarded-For" which looks like this:
 
 {{{
 X-Forwarded-For: 128.138.243.150, unknown, 192.52.106.30
@@ -268,24 +316,35 @@ Entries are always IP addresses, or the word unknown if the address could not be
 
 We must note that access controls based on this header are extremely weak and simple to fake.  Anyone may hand-enter a request with any IP address whatsoever.  This is perhaps the reason why client IP addresses have been omitted from the HTTP/1.1 specification.
 
-Because of the weakness of this header, support for access controls based on X-Forwarded-For is not yet available in any officially released version of squid.  However, unofficial patches are available from the [[http://devel.squid-cache.org/follow_xff/index.html|follow_xff]] Squid development project and may be integrated into later versions of Squid once a suitable trust model have been developed.'' ''
+Because of the weakness of this header, access controls based on X-Forwarded-For are not used by default. It's needs to be specifically enabled with '''follow_x_forwarded_for'''.
 
 == Can Squid anonymize HTTP requests? ==
-Yes it can, however the way of doing it has changed from earlier versions of squid. As of squid-2.2 a more customisable method has been introduced. Please follow the instructions for the version of squid that you are using. As a default, no anonymizing is done.
+Yes it can, however the way of doing it has changed from earlier versions of squid.
+Please follow the instructions for the version of squid that you are using. As a default, no anonymizing is done.
 
 If you choose to use the anonymizer you might wish to investigate the forwarded_for option to prevent the client address being disclosed. Failure to turn off the forwarded_for option will reduce the effectiveness of the anonymizer. Finally if you filter the User-Agent header using the fake_user_agent option can prevent some user problems as some sites require the User-Agent header.
 
-=== Squid 2.2 ===
-With the introduction of squid 2.2 the anonoymizer has become more customisable. It now allows specification of exactly which headers will be allowed to pass. This is further extended in Squid-2.5 to allow headers to be anonymized conditionally.
+NP: Squid must be built with the '''--enable-http-violations''' configure option before building.
 
-For details see the documentation of the http_header_access and header_replace directives in squid.conf.default.
+Current squid releases provide a mix of header control directives and capability;
+
+ Squid 2.6 - 2.7:: Allow erasure or replacement of specific headers through the '''http_header_access''' and '''header_replace''' options.
+
+ Squid 3.0:: Allows selective erasure and replacement of specific headers in either request or reply with the '''request_header_access''' and '''reply_header_access''' and '''header_replace''' settings.
+
+ Squid 3.1:: Adds to the 3.0 capability with truncation, replacement, or removal of X-Forwarded-For header.
+
+For details see the documentation in squid.conf.default or squid.conf.documented for your specific version of squid.
+
+http:/www.squid-cache.org/Versions/v2/HEAD/cfgman/
+http:/www.squid-cache.org/Versions/v3/HEAD/cfgman/
 
 References: [[http://www.iks-jena.de/mitarb/lutz/anon/web.en.html|Anonymous WWW]]
 
 == Can I make Squid go direct for some sites? ==
-Sure, just use the always_direct access list.
+Sure, just use the '''always_direct''' access list.
 
-For example, if you want Squid to connect directly to hotmail.com servers, you can use these lines in  your config file:'' ''
+For example, if you want Squid to connect directly to hotmail.com servers, you can use these lines in your config file:
 
 {{{
 acl hotmail dstdomain .hotmail.com
@@ -295,15 +354,13 @@ always_direct allow hotmail
 Sure, there are few things you can do.
 
 You can use the ''cache'' access list to make Squid never cache any response:
-
 {{{
-acl all src all
 cache deny all
 }}}
 
 With Squid-2.7, Squid-3.1 and later you can also remove all 'cache_dir' options from your squid.conf to avoid having a cache directory.
 
-With Squid-2.4, 2.5, 2.6, and 3.0 you can do the same by using the "null" storage module:
+With Squid-2.4, 2.5, 2.6, and 3.0 you need to use the "null" storage module:
 {{{
 cache_dir null /tmp
 }}}
@@ -317,11 +374,11 @@ To configure Squid for the "null" storage module, specify it on the configure'' 
 == Can I prevent users from downloading large files? ==
 You can set the global {{{reply_body_max_size}}} parameter.  This option controls the largest HTTP message body that will be sent to a cache client for one request.
 
-If the HTTP response coming from the server has a Content-length'' header, then Squid compares the content-length value to the {{{reply_body_max_size}}} value.  If the content-length is larger,the server connection is closed and the user receives an error message from Squid. ''
+If the HTTP response coming from the server has a ''Content-length'' header, then Squid compares the content-length value to the {{{reply_body_max_size}}} value.  If the content-length is larger,the server connection is closed and the user receives an error message from Squid.
 
 ''Some responses don't have ''Content-length'' headers. In this case, Squid counts how many bytes are written to the client.  Once the limit is reached, the client's connection is simply closed. ''
 
-''Note that "creative" user-agents will still be able to download really large files through the cache using HTTP/1.1 range requests. ''
+ (!) Note that "creative" user-agents will still be able to download really large files through the cache using HTTP/1.1 range requests.
 
 
 == How do I enable IPv6? ==
