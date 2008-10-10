@@ -1,6 +1,7 @@
 ##master-page:FeatureTemplate
 #format wiki
 #language en
+#faqlisted yes
 
 = Feature: Connection Pinning =
 
@@ -13,9 +14,10 @@
  * '''Developer''': Christos Tsantilas
 
  * '''More''': draft-jaganathan-kerberos-http-01.txt and Squid 2 implementation;
-## TODO: add real links
  * '''More''': also http://www.squid-cache.org/bugs/show_bug.cgi?id=1632
+## TODO: add real links
 
+== Details ==
 Connection Pinning is especially useful for proxied connections to servers using Microsoft Integrated Login (NTLM/Negotiate), it needs:
 
  * code to tie a client-side and a server-side socket exclusively when needed
