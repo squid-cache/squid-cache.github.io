@@ -2,13 +2,14 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
+#faqlisted yes
+
 = Feature: COSS (Cyclic Object Storage System) =
 ## * '''Goal''': COSS support.
  * '''Status''': 2.6+ complete. 3.x needs stability fixed ported from 2.6
-## * '''Priority''': ?
- * '''Version''': 2.6, 3.2?
+ * '''Version''': 2.6
  * '''Developer''': [[Henrik_Nordström]], others welcome
+## * '''Priority''': ?
 ## * '''More''':
 
 <<TableOfContents>>
