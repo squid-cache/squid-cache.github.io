@@ -1,6 +1,7 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
+#faqlisted yes
 
 = Feature: ICAP (Internet Content Adaptation Protocol) =
 
