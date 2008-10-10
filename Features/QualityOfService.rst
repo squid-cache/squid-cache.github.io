@@ -1,6 +1,7 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
+#faqlisted yes
 
 = QoS (Quality of Service) Support =
 
