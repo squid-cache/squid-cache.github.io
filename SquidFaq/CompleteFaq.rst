@@ -26,7 +26,6 @@
 <<Include(SquidFaq/RelatedSoftware, ,1,to="^Back to the")>>
 <<Include(SquidFaq/OtherResources, ,1,to="^Back to the")>>
 <<Include(SquidFaq/DiskDaemon, ,1,to="^Back to the")>>
-<<Include(SquidFaq/CyclicObjectStorageSystem, ,1,to="^Back to the")>>
 <<Include(SquidFaq/ProxyAuthentication, ,1,to="^Back to the")>>
 <<Include(SquidFaq/TermIndex, ,1,to="^Back to the")>>
 <<Include(SquidFaq/SecurityPitfalls, ,1,to="^Back to the")>>
