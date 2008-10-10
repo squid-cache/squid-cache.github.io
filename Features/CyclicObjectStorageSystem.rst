@@ -1,3 +1,4 @@
+## page was renamed from SquidFaq/CyclicObjectStorageSystem
 ##master-page:CategoryTemplate
 #format wiki
 #language en
