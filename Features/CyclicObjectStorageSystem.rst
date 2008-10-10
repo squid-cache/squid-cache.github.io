@@ -5,11 +5,11 @@
 #faqlisted yes
 
 = Feature: COSS (Cyclic Object Storage System) =
-## * '''Goal''': COSS support.
- * '''Status''': 2.6+ complete. 3.x needs stability fixed ported from 2.6
+ * '''Goal''': Stabilized COSS systems in all Squid.
+ * '''Status''': 2.6+ complete. 3.x needs stability fixes ported from 2.6
  * '''Version''': 2.6
  * '''Developer''': [[Henrik_Nordström]], others welcome
-## * '''Priority''': ?
+ * '''Priority''': 2
 ## * '''More''':
 
 <<TableOfContents>>
