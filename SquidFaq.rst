@@ -45,17 +45,16 @@
  * /SquidRedirectors explains how to tap into Squid's powerful ''redirector'' API
  * /CacheDigests or ICP on steroids
  * /SquidSnmp: using SNMP to monitor Squid's vital signs
- * /CyclicObjectStorageSystem or COSS: how to use it to optimize speed on small objects
  * /DiskDaemon: what it is and how to optimize its running environment
  * /MiscFeatures: Squid 2.X miscellaneous features
 
-## Once a user-oriented feature has been completed we can re-use the description page to document
-## the usage and configuration details about the feature
-## Set the initial version and remove the Status:,ETA:,Priority: fields to get them auto-listed in the FAQ.
+## Once a user-oriented feature has been completed we can re-use the description page
+## to document the usage and configuration details about the feature
+## Set the initial version and chaneg teh faqlisted meta-data to 'yes' to get them
+## auto-listed in the FAQ.
 ## Naturally the features aimed as easing developer life should not be FAQ'd.
-## Leave them with Status:completed to evade this auto-listing
 ##
-<<FullSearch(title:Features/ regex:Version...: -regex:Status...:)>>
+<<FullSearch(title:Features/ regex:faqlisted.yes)>>
 
 ==== Modes ====
  * /InterceptionProxy or how to run a proxy without your users knowing (mostly)
