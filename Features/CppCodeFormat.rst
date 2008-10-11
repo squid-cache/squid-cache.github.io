@@ -14,7 +14,7 @@
 
 Squid-2 code has a specific format which is enforced on CVS commit.
 
-This project adds a similar format to Squid-3 code. Starting with 3.1. To format the source correctly you require astyle version 1.22 and an md5sum (binary or script equivalent).
+This project adds a similar format to Squid-3 code. Starting with 3.1. To format the source correctly you require '''astyle version 1.22''' and an '''md5sum''' (binary or script equivalent).
 
 === When to format. ===
 
@@ -33,7 +33,7 @@ To speed things up and limit the files checked, simply run it from the sub-direc
 For example:
 {{{
 cd ~/squid-3/src
-~/squid-3/scrips/srcformat.sh
+~/squid-3/scripts/srcformat.sh
 }}}
 will only format the src/* area of the checkout.
 
