@@ -48,7 +48,7 @@ Now you can send in a suggestion to add or correct translations.
 
  . ''' How-To '''
  * [[http://translate.treenet.co.nz/login.html|Log in]] (if you haven't already)
- * Visit [[http://translate.treenet.co.nz/project/squid/]]
+ * Visit [[http://translate.treenet.co.nz/projects/squid/]]
  * Click on the name of your language.
  * Click on '''Show Editing Functions''' just under the language name.
  * Click on '''View Untranslated''' which comes up in the '''dark grey box'''
@@ -83,7 +83,7 @@ New suggestions are likely to come in at some point. They need to be checked
 
  . ''' How-To '''
  * [[http://translate.treenet.co.nz/login.html|Log in]] (if you haven't already)
- * Visit [[http://translate.treenet.co.nz/project/squid/]]
+ * Visit [[http://translate.treenet.co.nz/projects/squid/]]
  * Click on the name of your language.
  * Click on '''Show Editing Functions''' just under the language name.
  * Click on '''View Suggestions''' which comes up.
