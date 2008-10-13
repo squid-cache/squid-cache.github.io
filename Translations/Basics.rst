@@ -21,8 +21,7 @@ To ensure good quality results there is a short process you need to be aware of.
 
 Further details about these steps are covered below. Along with hints and examples of the tools used.
 
- . (!) Each of the steps above is done manually by a member of the Squid Project. So things like timing are variable.
- (!) (!) links if provided below in the instructions can be used as shortcuts.
+ . (!) Each of the steps above is done manually by a member of the Squid Project. So things like timing are variable. (!) (!) links if provided below in the instructions can be used as shortcuts.
 
 === Registration ===
 Registration is free and only involves providing a Name and contact email address.
@@ -49,7 +48,7 @@ Now you can send in a suggestion to add or correct translations.
 
  . ''' How-To '''
  * [[http://translate.treenet.co.nz/login.html|Log in]] (if you haven't already)
- * Visit [[http://translation.treenet.co.nz/project/squid/|http://translate.treenet.co.nz/project/squid/]]
+ * Visit [[http://translate.treenet.co.nz/project/squid/]]
  * Click on the name of your language.
  * Click on '''Show Editing Functions''' just under the language name.
  * Click on '''View Untranslated''' which comes up in the '''dark grey box'''
@@ -65,8 +64,7 @@ But don't expect any suggestions to be included in the sources or even visible u
 
 See [[Translations/Guidelines|Translation Guidelines]] for what sort of things are needed to get your suggestion accepted.
 
- . (!) Special characters which standard PC keyboards may not provide easily are listed. Leaving the mouse cursor in the text box, and clicking on a character adds it to the text.
- (!) If you are not fully certain you got the text right. Clicking the fuzzy checkbox can help the translator know they need to double-check it.
+ . (!) Special characters which standard PC keyboards may not provide easily are listed. Leaving the mouse cursor in the text box, and clicking on a character adds it to the text. (!) If you are not fully certain you got the text right. Clicking the fuzzy checkbox can help the translator know they need to double-check it.
 
 === Translators ===
 Some wonderful people have been willing to go further than just sending us suggestions. They have agreed to spend a few minutes a week checking a bunch of those suggestions.
@@ -85,7 +83,7 @@ New suggestions are likely to come in at some point. They need to be checked
 
  . ''' How-To '''
  * [[http://translate.treenet.co.nz/login.html|Log in]] (if you haven't already)
- * Visit [[http://translation.treenet.co.nz/project/squid/|http://translate.treenet.co.nz/project/squid/]]
+ * Visit [[http://translate.treenet.co.nz/project/squid/]]
  * Click on the name of your language.
  * Click on '''Show Editing Functions''' just under the language name.
  * Click on '''View Suggestions''' which comes up.
@@ -115,4 +113,4 @@ Like any software package maintenance position this position has a few tasks:
  * Contact point about any issues or changes to the system.
 
 ----
- CategoryKnowledgeBase
+ . CategoryKnowledgeBase
