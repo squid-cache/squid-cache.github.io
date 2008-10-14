@@ -11,6 +11,8 @@
  * '''More''': http://www.squid-cache.org/Versions/v3/3.1/
 ## * '''More''': http://devel.squid-cache.org/squid3-ipv6/
 
+<<TableOfContents>>
+
 == How do I enable IPv6? ==
 
 You will need a squid 3.1 or later release and a computer system with IPv6 capabilities.
@@ -118,7 +120,7 @@ Example creation in squid.conf:
 acl to_ipv6 dst ipv6
 }}}
 
-=== So what gets broken by IPv6 ===
+=== So what gets broken by IPv6? ===
 
 Well, nothing that we know of yet. A few features can't quite be used with IPv6 though.
 
