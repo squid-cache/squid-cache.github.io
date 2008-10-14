@@ -8,7 +8,7 @@
  * '''Goal''': Minimize patch conflicts, reduce commit noise, and improve code readability.
  * '''Status''': completed
  * '''Version''': Squid 3.1
- * '''Developer''': AlexRousskov AmosJeffries
+ * '''Developer''': Christos Tsantilas, AmosJeffries
 
 == Details ==
 
