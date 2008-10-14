@@ -58,6 +58,7 @@ The only points of possible interest for some will be:
 
  * Squid can already cope with bad or inaccessible IPs. This can be improved by tuning the '''connection_timeout''' down from minutes to a few seconds.
 
+== Trouble Shooting IPv6 ==
 === Squid builds with IPv6 but it won't listen for IPv6 requests. ===
 
 '''Your squid may be configured to only listen for IPv4.'''
@@ -101,13 +102,13 @@ That will split all outgoing requests into two groups, those headed for IPv4 and
 
 Please note the '''dst''' ACL only works for DIRECT requests. Traffic destined for peers needs to be left without an outgoing_address set. This peer bug is being worked on and a fix is expected shortly.
 
-=== How do I make squid use IPv6 to its helpers? ===
+== How do I make squid use IPv6 to its helpers? ==
 With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. By default to work with older setups, helpers are still connected over IPv4. You can add '''ipv6''' option to use IPv6.
 {{{
 external_acl_type hi ipv6 %DST /etc/squid/hello_world.sh
 }}}
 
-=== How do I block IPv6 traffic? ===
+== How do I block IPv6 traffic? ==
 
 Why you would want to do that without similar limits on IPv4 (using '''all''') is beyond me but here it is.
 
@@ -120,36 +121,36 @@ Example creation in squid.conf:
 acl to_ipv6 dst ipv6
 }}}
 
-=== So what gets broken by IPv6? ===
+== So what gets broken by IPv6? ==
 
 Well, nothing that we know of yet. A few features can't quite be used with IPv6 though.
 
 IPv4 traffic going through Squid is unaffected by this. Particularly traffic from IPv4 clients.
 
-==== Transparent Proxy ====
+=== Transparent Proxy ===
 
 NAT simply does not exist in IPv6. By Design.
 
 Given that transparency/interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do transparency and interception that way.
 
-==== Delay Pools ====
+=== Delay Pools ===
 
 Squid delay pools are still linked to class-B and class-C networking (from pre-1995 Internet design). Until that gets modernized the address-based pool classes can't apply to IPv6 address sizes.
 
 The one pool that should still work is the Squid-3 username based pool.
 
-==== WCCP (v1 and v2) ====
+=== WCCP (v1 and v2) ===
 
 WCCP is a Cisco protocol designed very closely around IPv4.
 As yet there is no IPv6 equivalent for Squid to use.
 
-==== ARP (MAC address ACLs) ====
+=== ARP (MAC address ACLs) ===
 
 ARP does not exist in IPv6. Proper IPV6 auto-configuration of networks can provide an equivalent in the IPv6 address itself.
 
 However we are still pondering a way to do this securely and reliably.
 
-==== RADIUS authentication ====
+=== RADIUS authentication ===
 
 Simply put we need a new RADIUS auth helper daemon. There is a RADIUS protocol upgrade for IPv6.
 But we have none yet able to write and test the helper.
