@@ -86,7 +86,7 @@ You can fix the issue by building squid with the '''--with-ipv4-mapped''' option
 === Squid listens on IPv6 but says 'Access Denied' or similar. ===
 '''Your squid may be configured to only connect out through specific IPv4.'''
 
-A number of networks are known to need tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit of ACL magic possible with tcp_outgoing_address which will get around this problem.
+A number of networks are known to need tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit of ACL magic possible with tcp_outgoing_address which will get around this problem for DIRECT requests.
 
 {{{
 acl to_ipv6 dst ipv6
@@ -96,6 +96,8 @@ tcp_outgoing_address 2001:dead:beef::1 to_ipv6
 }}}
 
 That will split all outgoing requests into two groups, those headed for IPv4 and those headed for IPv6. It will push the requests out the IP which matches the destination side of the Internet and allow IPv4/IPv6 access with controlled source address exactly as before.
+
+Please note the '''dst''' ACL only works for DIRECT requests. Traffic destined for peers needs to be left without an outgoing_address set. This peer bug is being worked on and a fix is expected shortly.
 
 === How do I make squid use IPv6 to its helpers? ===
 With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. By default to work with older setups, helpers are still connected over IPv4. You can add '''ipv6''' option to use IPv6.
