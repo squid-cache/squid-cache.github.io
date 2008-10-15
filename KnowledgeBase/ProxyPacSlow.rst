@@ -23,14 +23,16 @@ This requires the browser to perform a DNS lookup to map the given host to an IP
 Some browsers will do a seperate DNS lookup for each {{{isInNet()}}} function call, resulting in a very long delay before finally completing the proxy lookup. This can result in slow or non-functional web browsing.
 '''Workaround'''
 
-A javascript function is available to check whether the given host is resolvable. This should be done before any isInNet() checks are performed. For example:
+A javascript function is available to check whether the given host is resolvable. For example:
 {{{
-is (! isResolvable(host)) {
+if (! isResolvable(host)) {
     return "PROXY proxy.example.com:3128";
 }
 }}}
 
-will force non-resolvable names to be forwarded to the proxy immediately. This should be included before any javascript functions which require a DNS lookup to be performed, such as {{{isInNet()}}}.
+will force non-resolvable names to be forwarded to the proxy immediately.
+
+ /!\ This should be included before any javascript functions which require a DNS lookup to be performed, such as {{{isInNet()}}}.
 
 '''Thanks'''
 
