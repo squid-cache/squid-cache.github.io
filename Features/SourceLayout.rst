@@ -25,7 +25,7 @@ Key:
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
-|| {2} || ''icmp/'' || ICMP support and Network measurement || ICMP* net_db.* ||
+|| (./) || ''icmp/'' || ICMP support and Network measurement || ICMP* net_db.* ||
 ||  || ''ident/'' || Ident support || ident.* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 ||  || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
