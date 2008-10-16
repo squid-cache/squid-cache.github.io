@@ -22,6 +22,7 @@ Key:
  * {2} AmosJeffries doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
+|| {2} || ''auth/'' || Athentication support || auth/* ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
