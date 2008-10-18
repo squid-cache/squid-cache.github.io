@@ -250,7 +250,7 @@ This means that another processes is already listening on port 8080 (or whatever
 netstat -antup | grep 8080
 }}}
 
- {i} {!}  Windows Users need to use ''netstat -ant'' and manually find the entry.
+ {i} (!)  Windows Users need to use ''netstat -ant'' and manually find the entry.
 
 If you find that some process has bound to your port, but you're not sure which process it is, you might be able to use the excellent [[ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/|lsof]] program.  It will show you which processes own every open file descriptor on your system.
 
@@ -295,7 +295,7 @@ This is most likely because Squid is using more memory than it should be for you
 
 == WARNING: Failed to start 'dnsserver' ==
 
- {i} {!} All current Squid now contain an optimized internal DNS engine. Which is much faster and responsive that then the dnsserver helper. That should be used by preference.
+ {i} (!) All current Squid now contain an optimized internal DNS engine. Which is much faster and responsive that then the dnsserver helper. That should be used by preference.
 
 This could be a permission problem.  Does the Squid userid have permission to execute the dnsserver'' program? ''
 
@@ -490,7 +490,7 @@ Once you have the debugging captured to ''cache.log'', take a look at it yoursel
 
 == FATAL: ipcache_init: DNS name lookup tests failed ==
 
- {i} {!} This issue is now permanently resolved in Squid 3.1 and later.
+ {i} (!) This issue is now permanently resolved in Squid 3.1 and later.
 
 Squid normally tests your system's DNS configuration before it starts server requests.  Squid tries to resolve some common DNS names, as defined in the dns_testnames'' configuration directive.  If Squid cannot resolve these names, it could mean: ''
 
@@ -577,7 +577,7 @@ or
 # chmod 4755 /usr/local/squid/bin/pinger
 }}}
 
- {i} {!} location of the pinger binary may vary. I recommend searching for it first:
+ {i} (!) location of the pinger binary may vary. I recommend searching for it first:
 {{{
 locate bin/pinger
 }}}
@@ -595,9 +595,9 @@ Forwarding loops are detected by examining the Via'' request header. Each cache 
 
 When Squid detects a forwarding loop, it is logged to the ''cache.log'' file with the recieved ''Via'' header.  From this header you can determine which cache (the last in the list) forwarded the request to you.
 
- {!} One way to reduce forwarding loops is to change a ''parent'' relationship to a ''sibling'' relationship.
+ (!) One way to reduce forwarding loops is to change a ''parent'' relationship to a ''sibling'' relationship.
 
- {!} Another way is to use ''cache_peer_access'' rules.
+ (!) Another way is to use ''cache_peer_access'' rules.
 
 == accept failure: (71) Protocol error ==
 This error message is seen mostly on Solaris systems. [[mailto:mtk@ny.ubs.com|Mark Kennedy]] gives a great explanation:
@@ -638,13 +638,13 @@ CONNECT https://www.buy.com/corp/ordertracking.asp HTTP/1.0
 }}}
 Now, all of the headers, and the message body have been sent, ''unencrypted'' to Squid.  There is no way for Squid to somehow turn this into an SSL request. The only thing we can do is return the error message. ''
 
- <!> {!} This browser bug does represent a '''security risk''' because the browser is sending sensitive information unencrypted over the network.
+ <!> (!) This browser bug does represent a '''security risk''' because the browser is sending sensitive information unencrypted over the network.
 
 
 == Squid can't access URLs like http://3626046468/ab2/cybercards/moreinfo.html ==
 by Dave J Woolley (DJW at bts dot co dot uk)
 
- {!} These are illegal URLs, generally only used by illegal sites; typically the web site that supports a spammer and is expected to survive a few hours longer than the spamming account.
+ (!) These are illegal URLs, generally only used by illegal sites; typically the web site that supports a spammer and is expected to survive a few hours longer than the spamming account.
 
 Their intention is to:
 
@@ -671,16 +671,16 @@ addresses.
 
 == I get a lot of "URI has whitespace" error messages in my cache log, what should I do? ==
 
- {!} Whitespace characters (space, tab, newline, carriage return) are not allowed in URI's and URL's.
+ (!) Whitespace characters (space, tab, newline, carriage return) are not allowed in URI's and URL's.
 
 Unfortunately, a number of web services generate URL's with whitespace.  Of course your favorite browser silently accomodates these bad URL's.  The servers (or people) that generate these URL's are in violation of Internet standards.  The whitespace characters should be encoded.
 
 If you want Squid to accept URL's with whitespace, you have to decide how to handle them.  There are four choices that you can set with the ''uri_whitespace'' option in squid.conf:
 
  * STRIP'' ''
-  . '' {!} This is the correct way to handle them. This is the default for Squid 3.x. ''
+  . '' (!) This is the correct way to handle them. This is the default for Squid 3.x. ''
  * DENY'' ''
-  . '' {!} The request is denied with an "Invalid Request" message. This is the default for Squid2.x. ''
+  . '' (!) The request is denied with an "Invalid Request" message. This is the default for Squid2.x. ''
  * ALLOW'' ''
   . ''The request is allowed and the URL remains unchanged. ''
  * ENCODE'' ''
@@ -859,7 +859,7 @@ Here are some things you can try to reduce the occurance of the Zero Sized Reply
  * Delete or rename your cookie file and configure your browser to prompt you before accepting any new cookies.
  * Disable HTTP persistent connections with the ''server_persistent_connections'' and ''client_persistent_connections'' directives.
  * Disable any advanced TCP features on the Squid system.  Disable ECN on Linux with ''echo 0 > /proc/sys/net/ipv4/tcp_ecn/''.
- * {!} Upgrade to Squid-2.6 or later to work around a Host header related bug in Cisco PIX HTTP inspection. The Cisco PIX firewall wrongly assumes the Host header can be found in the first packet of the request.
+ * (!) Upgrade to Squid-2.6 or later to work around a Host header related bug in Cisco PIX HTTP inspection. The Cisco PIX firewall wrongly assumes the Host header can be found in the first packet of the request.
 
 If this error causes serious problems for you and the above does not help, Squid developers would be happy to help you uncover the problem.  However, we will require high-quality debugging information from you, such as ''tcpdump'' '' output, server IP addresses, operating system versions, and ''access.log'' entries with full HTTP headers.
 
