@@ -74,6 +74,7 @@ Basic new features in 3.1
  * Follow X-Forwarded-For support
  * X-Forwarded-For options extended (truncate, delete, transparent)
  * Peer-Name ACL
+ * Reply headers to external ACL.
 
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
@@ -110,7 +111,6 @@ Features under development:
  * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
  * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
  * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
- * Reply headers to external ACL. http://www.squid-cache.org/bugs/show_bug.cgi?id=740
  * [[Features/AdaptationLog]] <<Include(Features/AdaptationLog,,,from="ETA.*:",to="$")>>
 
 ## Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a
