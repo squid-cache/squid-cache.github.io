@@ -18,6 +18,8 @@ For Squid-2.7 the Manual is at http://www.squid-cache.org/Versions/v2/2.7/cfgman
 
 For Squid-3.0 the Manual is at http://www.squid-cache.org/Versions/v3/3.0/cfgman/
 
+For Squid-3.1 the Manual is at http://www.squid-cache.org/Versions/v3/3.1/cfgman/
+
 == Create new configuration example ==
 
 Choose a good WikiName for your new example and enter it here:
