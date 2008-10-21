@@ -32,7 +32,7 @@ Squid-2.7 is a future release with the number of current and planned improvement
  * '''DONE (2.7, 3.1)''' Removal of the dummy "null" store type and useless default cache_dir.
  * '''DONE (2.7, 3.1)''' Include configuration file support
  * '''ONGOING (2.7, 3.0+)''' Work towards HTTP/1.1 compliance
- * Fixing (or at least working around) [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|Bug #7]]
+ * '''DONE 2.7, UNDERWAY 3.1:''' Fixing (or at least working around) [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|Bug #7]]
 
 === Squid-2.8 ===
 
@@ -56,7 +56,7 @@ The planned changes will include:
  * Restructure HTTP request and reply paths to take advantage of buffer referencing (Complete; not integrated)
  * '''DONE (2.7?)''' Migrate internals to reference counted buffers rather than memcpy() / string copying
  * Communications layer to separate out SSL, TCP, (SCTP?), out of client/server side; and make Windows porting easier
- * Break out some code into separate library modules, including documentation and some unit testing '''(In Progress 3.1,3.2)'''
+ * Break out some code into separate library modules, including documentation and some unit testing '''(In Progress 3.1+)'''
   * memory management
   * debugging
   * buffers
