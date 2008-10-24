@@ -638,7 +638,7 @@ The homepage for the TProxy software is at [[http://www.balabit.com/products/oss
 ==== TProxy v4.1+ ====
 
 Starting with Squid 3.1 support for TProxy is closely tied into the netfilter component of Linux kernels.
-see [../../Features/Tproxy4|TProxy v4.4 Feature] for current details.
+see [[../../Features/Tproxy4|TProxy v4.1 Feature]] for current details.
 
 === Complete ===
 By now if you have followed the documentation you should have a working Interception Caching system.  Verify this by unconfiguring any proxy settings in your browser and surfing out through your system.  You should see entries appearing in your access.log for the sites you are visiting in your browser.  If your system does not work as you would expect, you will want to read on to our troubleshooting section below.
@@ -669,7 +669,7 @@ router#
 If none of these steps yield any useful clues, post the vital information including the versions of your router, proxy, operating system, your traffic redirection rules, debugging output and any other things you have tried to the squid-users mailing list.
 
 ==== Why can't I use authentication together with interception proxying? ====
-Interception Proxying works by having an active agent (the proxy) where there should be none. The browser is not expecting it to be there, and it's for all effects and purposes being cheated or, at best, confused.  As an user of that browser, I would ''require'' it not to give away any credentials to an unexpected party, wouldn't you agree? Especially so when the user-agent can do so without notifying the user, like Microsoft browsers can do when the proxy offers any of the Microsoft-designed authentication schemes such as NTLM (see ../ProxyAuthentication and NegotiateAuthentication).
+Interception Proxying works by having an active agent (the proxy) where there should be none. The browser is not expecting it to be there, and it's for all effects and purposes being cheated or, at best, confused.  As an user of that browser, I would ''require'' it not to give away any credentials to an unexpected party, wouldn't you agree? Especially so when the user-agent can do so without notifying the user, like Microsoft browsers can do when the proxy offers any of the Microsoft-designed authentication schemes such as NTLM (see [[../ProxyAuthentication]] and NegotiateAuthentication).
 
 In other words, it's not a squid bug, but a '''browser security''' feature.
 
@@ -778,6 +778,7 @@ gid=`id -g proxy`
 iptables -t nat -A OUTPUT -p tcp --dport 80 -m owner --gid-owner $gid -j ACCEPT
 iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination 192.168.0.2:8080
 }}}
+
 ==== Interception Caching with FreeBSD by by DuaneWessels ====
 I set out yesterday to make interception caching work with Squid-2 and FreeBSD.  It was, uh, fun.
 
@@ -819,29 +820,12 @@ The second line (rule 50) is the one which hijacks the connection. The first lin
 
 This prevents forwarding loops.
 
-Note that I am not changing the port number here.  That is, port 80 packets are simply diverted to Squid on port 80. My Squid configuration is:
-
-{{{
-http_port 80
-httpd_accel_host virtual
-httpd_accel_port 80
-httpd_accel_with_proxy on
-httpd_accel_uses_host_header on
-}}}
-If you don't want Squid to listen on port 80 (because that requires root privileges) then you can use another port. In that case your ipfw redirect rule looks like:
+Note that I am not changing the port number here.  That is, port 80 packets are simply diverted to Squid on port 80. If you don't want Squid to listen on port 80 (because that requires root privileges) then you can use another port. In that case your ipfw redirect rule looks like:
 
 {{{
 ipfw add 50 fwd 127.0.0.1,3128 tcp from any to any 80
 }}}
-and the ''squid.conf'' lines are:
 
-{{{
-http_port 3128
-httpd_accel_host virtual
-httpd_accel_port 80
-httpd_accel_with_proxy on
-httpd_accel_uses_host_header on
-}}}
 ==== Interception Caching with Linux 2.6.18, ip_gre, Squid-2.6 and cisco IOS 12.4(6)T2 by ReubenFarrelly ====
 Here's how I do it.  My system is a Fedora Core 5 based system, and I am presently running Squid-2.6 with WCCPv2.  The cache is located on the same subnet as my router and client PC's.
 
