@@ -112,7 +112,7 @@ the ident was not available at the time of calling the redirector,
 but became available by the time the request is complete and
 logged to access.log.
 
-If you want to block requests waiting for ident lookup, try something
+If you want to pause requests until ident lookup is completed, try something
 like this:
 {{{
 acl foo ident REQUIRED
