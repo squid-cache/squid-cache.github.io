@@ -78,9 +78,8 @@ acl localhost src 127.0.0.1/32 ::1/128
 
 '''Your Operating System may be configured to prevent Dual-Stack sockets.'''
 
-Dual-Stack is easiest achieved by a method known as v4-mapping. Where all IPv4 addresses map into a special part of IPv6 space for a socket connection. Squid makes use of this feature of IPv6.
+Dual-Stack is easiest achieved by a method known as v4-mapping. Where all IPv4 addresses map into a special part of IPv6 space for a socket connection. Squid makes use of this feature of IPv6. It is expected to enable this capability on the sockets it uses, but may be failing, check your cache.log for warnings or errors about 'V6ONLY'.
 
-You can fix the issue by building squid with the '''--with-ipv4-mapped''' option. Which will explicitly re-enable v4-mapping on Squid sockets without altering system defaults.
 
 === Squid listens on IPv6 but says 'Access Denied' or similar. ===
 '''Your squid may be configured to only connect out through specific IPv4.'''
