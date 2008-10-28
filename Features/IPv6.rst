@@ -19,18 +19,14 @@ You will need a squid 3.1 or later release and a computer system with IPv6 capab
 
 IPv6 is available in ALL current operating systems. Most now provide it enabled by default. See your system documentation for its capability and configuration.
 
-'''IPv6 support''' in Squid needs to be enabled first with
-{{{
-./configure --enable-ipv6
-}}}
-If you are using a packaged version 3.1 without it, please contact the maintainer about enabling it.
+'''IPv6 support''' is enabled by default in Squid 3.1. If you are using a packaged version of 3.1 without it, please contact the package maintainer about enabling it.
 
 '''Windows XP''' users will need:
 {{{
-./configure --enable-ipv6 --with-ipv6-split-stack
+./configure --with-ipv6-split-stack
 }}}
 
-When squid is built you will then be able to start Squid and see some IPv6 operations. The most active will be DNS as IPv6 addresses are looked up for each website, and IPv6 addresses in the cachemgr reports and logs.
+When squid is built you will be able to start Squid and see some IPv6 operations. The most active will be DNS as IPv6 addresses are looked up for each website, and IPv6 addresses in the cachemgr reports and logs.
 
 || /!\ || Make sure that you check your helper script can handle IPv6 addresses as input ||
 
@@ -50,7 +46,7 @@ The only points of possible interest for some will be:
 
  * DNS works best and fastest through the internal resolver built into squid. Check that your configure options do not disable it.
 
- * IPv6 links still commonly have some tunnel lag. Squid can benefit most from a fast link, so test the various tunnel methods and brokers available for speed.
+ * IPv6 links still commonly have some tunnel lag. Squid can benefit most from a fast link, so test the various tunnel methods and brokers available for speed. This is a good idea in general for your IPv6 experience.
 
  * A single listening port '''http_port 3128''' is less resource hungry than one for each IPv4 and IPv6. Also, its fully compatible with IPv6 auto-configuration.
 
