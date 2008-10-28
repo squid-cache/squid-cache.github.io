@@ -93,7 +93,7 @@ Features under development:
 Now in '''DEVELOPMENT''' cycle.
 The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be requested, suggested, or added to the plan at any time until the branching of 3.2 and 3.3 expected around April 2009.
 
-The intention is to remove the backlog of feature parity between 2.7 and 3.2 then concentrate on performance improvements.
+The intention is to remove the backlog of feature parity between 2.7 and 3.2 (listed as regressions in 3.1 http://www.squid-cache.org/Versions/v3/3.1/RELEASENOTES.html#s7) then concentrate on performance improvements.
 
 == Done ==
 
@@ -130,6 +130,7 @@ Features considered high-priority for including with 3.2, but not yet with a ded
 
 (Others)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3.2 regex:ETA...:.unknown -regex:Priority...:.[123])>>
+
 
 == Wish List ==
 
