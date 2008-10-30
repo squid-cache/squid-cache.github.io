@@ -14,7 +14,7 @@
 
  * '''Priority''': 1
 
- * '''Developer''': AlexRousskov
+ * '''Developer''': AlexRousskov, Andrew Balabohin
 
  * '''More''': Requires [[Features/SslBump|SslBump]]
 
