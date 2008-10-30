@@ -5,36 +5,51 @@
 Squid's access control scheme is relatively comprehensive and difficult for some people to understand.  There are two different components: ''ACL elements'', and ''access lists''.  An access list consists of an ''allow'' or ''deny'' action followed by a number of ACL elements.
 
 == ACL elements ==
-|| {i} ||The information here is current for version 2.5. ||
+|| {i} || The information here is current for version 3.1 see http://www.squid-cache.org/Doc/config/acl/ for current configuration guide. ||
+
 Squid knows about the following types of ACL elements:
+
+***** ACL TYPES AVAILABLE *****
 
  * '''src''': source (client) IP addresses
  * '''dst''': destination (server) IP addresses
  * '''myip''': the local IP address of a client's connection
+ * '''arp''': Ethernet (MAC) address matching
  * '''srcdomain''': source (client) domain name
  * '''dstdomain''': destination (server) domain name
  * '''srcdom_regex''': source (client) regular expression pattern matching
  * '''dstdom_regex''': destination (server) regular expression pattern matching
+ * '''src_as''': source (client) Autonomous System number
+ * '''dst_as''': destination (server) Autonomous System number
+ * '''peername''': name tag assigned to the cache_peer where request is expected to be sent.
  * '''time''': time of day, and day of week
  * '''url_regex''': URL regular expression pattern matching
  * '''urlpath_regex''': URL-path regular expression pattern matching, leaves out the protocol and hostname
  * '''port''': destination (server) port number
  * '''myport''': local port number that client connected to
+ * '''myportname''': name tag assigned to the squid listening port that client connected to
  * '''proto''': transfer protocol (http, ftp, etc)
  * '''method''': HTTP request method (get, post, etc)
- * '''browser''': regular expression pattern matching on the request's user-agent header
+ * '''http_status''': HTTP response status (200 302 404 etc.)
+ * '''browser''': regular expression pattern matching on the request user-agent header
+ * '''referer_regex''': regular expression pattern matching on the request http-referer header
  * '''ident''': string matching on the user's name
  * '''ident_regex''': regular expression pattern matching on the user's name
- * '''src_as''': source (client) Autonomous System number
- * '''dst_as''': destination (server) Autonomous System number
  * '''proxy_auth''': user authentication via external processes
  * '''proxy_auth_regex''': user authentication via external processes
  * '''snmp_community''': SNMP community string matching
  * '''maxconn''': a limit on the maximum number of connections from a single client IP address
+ * '''max_user_ip''': a limit on the maximum number of IP addresses one user can login from
  * '''req_mime_type''': regular expression pattern matching on the request content-type header
- * '''arp''': Ethernet (MAC) address matching
+ * '''req_header''': regular expression pattern matching on a request header content
  * '''rep_mime_type''': regular expression pattern matching on the reply (downloaded content) content-type header. This is only usable in the http_reply_access directive, not http_access.
+ * '''rep_header''': regular expression pattern matching on a reply header content. This is only usable in the http_reply_access directive, not http_access.
  * '''external''': lookup via external acl helper defined by external_acl_type
+ * '''user_cert''': match against attributes in a user SSL certificate
+ * '''ca_cert''': match against attributes a users issuing CA SSL certificate
+ * '''ext_user''': match on user= field returned by external acl helper defined by external_acl_type
+ * '''ext_user''': regular expression pattern matching on user= field returned by external acl helper defined by external_acl_type
+
 '''Notes''':
 
 Not all of the ACL elements can be used with all types of access lists (described below).  For example, ''snmp_community'' is only meaningful when used with ''snmp_access''.  The ''src_as'' and ''dst_as'' types are only used in ''cache_peer_access'' access lists.
@@ -88,7 +103,6 @@ http_access allow|deny acl AND acl AND ...
 If none of the rules are matched, then the default action is the ''opposite'' of the last rule in the list.  Its a good idea to be explicit with the default action.  The best way is to use the ''all'' ACL.  For example:
 
 {{{
-acl all src all
 http_access deny all
 }}}
 == How do I allow my clients to use the cache? ==
