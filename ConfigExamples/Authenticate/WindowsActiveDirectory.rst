@@ -209,4 +209,4 @@ icp_access deny all
 The ntlm authentication helper will start logging authentication attempts (success and failure) to the `cache.log` file.
 
 ----
-CategoryConfigExample CategoryConfigExample
+CategoryConfigExample
