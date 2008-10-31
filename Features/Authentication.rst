@@ -316,13 +316,13 @@ if anything at all.
 === winbind privileged pipe permissions ===
 
 ntlm_auth requires access to the privileged winbind pipe in order
-to function properly. You enable this access by changing group
-of the winbind_privileged directory to the group you run Squid as
-(cache_effective_group setting in squid.conf).
+to function properly. You enable this access by adding Squid to the winbindd_priv group.
 
 {{{
-chgrp squid /path/to/winbind_privileged
+gpasswd -a proxy winbindd_priv
 }}}
+
+Remove the cache_effective_group setting in squid.conf, if present.  This setting causes squid to ignore the auxiliary winbindd_priv group membership.
 
 === Configure Squid ===
 
@@ -373,7 +373,8 @@ auth_param ntlm max_challenge_reuses 0
 auth_param ntlm max_challenge_lifetime 2 minutes
 # ntlm_auth from Samba 3 supports NTLM NEGOTIATE packet
 auth_param ntlm use_ntlm_negotiate on
-
+# warning: basic authentication sends passwords plaintext
+# a network sniffer can and will discover passwords
 auth_param basic program /usr/local/bin/ntlm_auth --helper-protocol=squid-2.5-basic
 auth_param basic children 5
 auth_param basic realm Squid proxy-caching web server
