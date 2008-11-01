@@ -211,7 +211,7 @@ From Squid 3.0 the default user can also be set. The Debian package default is:
 }}}
 
 
-=== FreeBSD, NetBDS, OpenBSD ===
+=== FreeBSD, NetBSD, OpenBSD ===
 
 Squid is developed on FreeBSD. The general build instructions above should be all you need.
 
