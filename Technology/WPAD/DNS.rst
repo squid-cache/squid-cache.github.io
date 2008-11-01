@@ -8,7 +8,7 @@ The "Well known alias" method simply requires a "wpad." host to have an IN A DNS
 
 A handful of other DNS-related methods are documented in the WPAD specification; they are not covered in this article.
 
-== Explanation (IPv4 specific) ==
+== Explanation ==
 
 A WPAD-enabled User Agent will construct a DNS lookup for a "wpad" host in a list of domain names. It may assemble this domain name list from a variety of sources, including:
 
@@ -21,6 +21,8 @@ If an A record is found, the User Agent then attempts to connect to the webserve
 
 == Example ==
 
+ {i} Note: This example is browser and IPv4 specific.
+
 A client has an IP 1.2.3.4 which resolves to host-1-2-3-4.pop1.isp.net. The client has their DNS search set to "isp.net". The ISP runs a WPAD server at wpad.isp.net.
 
  * The client does a PTR lookup on 1.2.3.4 and finds it resolves to host-1.2.3.4.pop1.isp.net;
@@ -31,7 +33,7 @@ A client has an IP 1.2.3.4 which resolves to host-1-2-3-4.pop1.isp.net. The clie
 
 == Implementation Issues ==
 
- * Some have reported (Amos?) that various WPAD implementations require the WPAD host name to match one or more of the listed domains in the DNS domain search list. This is unverified but please consider ensuring the wpad domain exists in the DNS search list.
+ * Some have reported that various WPAD implementations require the WPAD host name to match one or more of the listed domains in the DNS domain search list. This is unverified but please consider ensuring the wpad domain exists in the DNS search list.
   * If the IP resolves to host-x-x-x-x.pop1.isp.net, and the WPAD DNS name is wpad.isp.net, make sure "isp.net" is configured in the DNS search list.
   * If the IP resolves to host-x.x.x.x.pop1.isp.net, and the WPAD DNS name is wpad.pop1.isp.net, having "isp.net" in the DNS search list may not be enough.
 
@@ -40,9 +42,10 @@ A client has an IP 1.2.3.4 which resolves to host-1-2-3-4.pop1.isp.net. The clie
 === WPAD DNS server searching ===
 
 WPAD searches the DNS looking for wpad. at each domain.  Additionally, many clients implement a "Fallback" mechanism which checks the parent domains as well. This means the following kind of example can occur:
- * WPAD looks for wpad.corp.example.com;
- * WPAD looks for wpad.example.com;
- * WPAD looks for wpad.com;
+ * WPAD looks for wpad.corp.example.com.;
+ * WPAD looks for wpad.example.com.;
+ * WPAD looks for wpad.com.;
+ * WPAD looks for wpad.;
 
 This can mean that a server configured to answer to the 'wpad' host in a parent domain may return a proxy autoconfiguration file for an external proxy service. This could be used as part of a denial of service or to intercept client traffic.  This "Fallback" mechanism is deprecated by the IETF and is disabled in Mozilla Firefox, but may still be implemented in some browsers.
 
