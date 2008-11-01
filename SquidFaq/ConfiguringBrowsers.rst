@@ -16,7 +16,7 @@ There are three ways to configure browsers to use Squid.  The first method invol
 
 This involves manually specifying the proxy server and port name in each browser.
 
-== Firefox and Thunderbird manual configuration ==
+=== Firefox and Thunderbird manual configuration ===
 
 Both Firefox and Thunderbird are configured in the same way.  Look in the Tools menu, Options, General and then Connection Settings.  The options in there are fairly self explanatory.  Firefox and Thunderbird support manually specifying the proxy server, automatically downloading a wpad.dat file from a specified source, and additionally wpad auto-detection.
 
@@ -24,18 +24,18 @@ Thunderbird uses these settings for downloading HTTP images in emails.
 
 In both cases if you are manually configuring proxies, make sure you should add relevant statements for your network in the "No Proxy For" boxes.
 
-== Microsoft Internet Explorer manual configuration ==
+=== Microsoft Internet Explorer manual configuration ===
 
 Select '''Options''' from the '''View''' menu.  Click on the '''Connection''' tab.  Tick the
 '''Connect through Proxy Server''' option and hit the '''Proxy Settings''' button.  For each protocol that your Squid server supports (by default, HTTP, FTP, and gopher) enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' column.  For any protocols that your Squid does not support, leave the fields blank.
 
 
-== Netscape manual configuration ==
+=== Netscape manual configuration ===
 
 Select '''Network Preferences''' from the '''Options''' menu.  On the '''Proxies''' page, click the radio button next to '''Manual Proxy
 Configuration''' and then click on the '''View''' button.  For each protocol that your Squid server supports (by default, HTTP, FTP, and gopher) enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' column.  For any protocols that your Squid does not support, leave the fields blank.
 
-== Lynx and Mosaic manual configuration ==
+=== Lynx and Mosaic manual configuration ===
 
 For Mosaic and Lynx, you can set environment variables
 before starting the application.  For example (assuming csh or tcsh):
@@ -56,7 +56,7 @@ ftp_proxy:http://mycache.example.com:3128/
 gopher_proxy:http://mycache.example.com:3128/
 }}}
 
-== Opera 2.12 manual configuration ==
+=== Opera 2.12 manual configuration ===
 
 by Hume Smith
 
@@ -73,7 +73,7 @@ Notes:
 At the moment I think it has something to do with cookies.  If you have trouble with a site, try disabling the HTTP proxying by unchecking that protocol in the ''Preferences''|''Proxy Servers...'' dialogue.  Opera will remember the address, so reenabling is easy.
 
 
-== Netmanage Internet Chameleon WebSurfer manual configuration ==
+=== Netmanage Internet Chameleon WebSurfer manual configuration ===
 
 Netmanage !WebSurfer supports manual proxy configuration and exclusion lists for hosts or domains that should not be fetched via proxy (this information is current as of !WebSurfer 5.0).  Select '''Preferences''' from the '''Settings''' menu.  Click on the '''Proxies''' tab.  Select the '''Use Proxy''' options for HTTP, FTP, and gopher.  For each protocol that enter the Squid server's hostname or IP address and put the HTTP port number for the Squid server (by default, 3128) in the '''Port''' boxes.  For any protocols that your Squid does not support, leave the fields blank.
 
@@ -84,7 +84,7 @@ On the same configuration window, you'll find a button to bring up the exclusion
 
 This involves the browser being preconfigured with the location of an autoconfiguration script.
 
-== Netscape automatic configuration ==
+=== Netscape automatic configuration ===
 
 Netscape Navigator's proxy configuration can be automated with !JavaScript (for Navigator versions 2.0 or higher).  Select
 '''Network Preferences''' from the '''Options''' menu.  On the '''Proxies''' page, click the radio button next to '''Automatic Proxy Configuration''' and then fill in the URL for your !JavaScript proxy configuration file in the text box.  The box is too small, but the text will scroll to the r8ight as you go.
@@ -96,7 +96,7 @@ Here is a sample auto configuration file from Oskar Pearson (link to save at the
 
 {{attachment:sample1.pac.txt}}
 
-== Microsoft Internet Explorer ==
+=== Microsoft Internet Explorer ===
 
 Microsoft Internet Explorer, versions 4.0 and above, supports !JavaScript automatic proxy configuration in a Netscape-compatible way. Just select '''Options''' from the '''View''' menu. Click on the '''Advanced''' tab.  In the lower left-hand corner, click on the '''Automatic Configuration''' button.  Fill in the URL for your !JavaScript file in the dialog box it presents you.  Then exit MSIE and restart it for the changes to take effect.  MSIE will reload the !JavaScript file every time
 it starts.
@@ -122,12 +122,19 @@ Implementing wpad requires you to '''fully''' understand:
 This is not a recommendation for any product or version. All major browsers out now implementing WPAD. I think WPAD
 is an excellent feature that will return several hours of life per month.
 
+There are probably many more tricks and tips which hopefully will be
+detailed here in the future. Things like ''wpad.dat'' files being served
+from the proxy server themselves, maybe with a round robin dns setup
+for the WPAD host.
+
 I have only focused on the domain name method, to the exclusion of the
 DHCP method. I think the dns method might be easier for most people.
 I don't currently, and may never, fully understand wpad and IE5, but this
 method worked for me. It '''may''' work for you.
 
 But if you'd rather just have a go ...
+
+=== The PAC file ===
 
 Create a standard Netscape ''auto proxy'' config file.  The sample provided above is more than adequate to get you going.  No doubt all the other load balancing and backup scripts will be fine also.
 
@@ -147,13 +154,17 @@ application/x-ns-proxy-autoconfig       dat
 }}}
 And then restart your web server, for new mime type to work.
 
-Assuming Internet Explorer 5, under ''Tools'', ''Internet
-Options'', ''Connections'', ''Settings'' '''or''' ''Lan
+=== Browser Configurations ===
+==== Internet explorer 5 ====
+Under ''Tools'', ''Internet Options'', ''Connections'', ''Settings'' '''or''' ''Lan
 Settings'', set '''ONLY''' ''Use Automatic Configuration Script''
 to be the URL for where your new ''wpad.dat'' file can be found.
-i.e.  http://www.your.domain.name/wpad.dat. Test that
-that all works as per your script and network.  There's no point
-continuing until this works ...
+
+i.e.  http://www.your.domain.name/wpad.dat.
+
+Test that that all works as per your script and network. There's no point continuing until this works ...
+
+=== Automatic WPAD with DNS ===
 
 Create/install/implement a DNS record so that
 wpad.your.domain.name resolves to the host above where
@@ -178,16 +189,7 @@ instance, it would try ''wpad.b.microsoft.com'' next. IE 5 would
 stop searching when it found a WPAD server or reached the
 third-level domain, ''wpad.microsoft.com''.
 
-Anybody using these steps to install and test, please feel free to make
-notes, corrections or additions for improvements, and post back to the
-squid list...
-
-There are probably many more tricks and tips which hopefully will be
-detailed here in the future. Things like ''wpad.dat'' files being served
-from the proxy server themselves, maybe with a round robin dns setup
-for the WPAD host.
-
-== Fully Automatically Configuring Browsers for WPAD with DHCP ==
+=== Automatic WPAD with DHCP ===
 
 You can also use DHCP to configure browsers for WPAD.
 This technique allows you to set any URL as the PAC
@@ -269,8 +271,9 @@ Insert your username in the host part of the URL, for example:
 ftp://joecool@ftp.foo.org/
 }}}
 
-Squid should then prompt you for your account password.  Alternatively,
-you can specify both your username and password in the URL itself:
+Squid and the browser should then prompt you for your account password.
+
+Alternatively, you can specify both your username and password in the URL itself:
 {{{
 ftp://joecool:secret@ftp.foo.org/
 }}}
