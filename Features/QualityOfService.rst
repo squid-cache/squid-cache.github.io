@@ -35,7 +35,8 @@
 
 === Squid 3.1 ===
 
-The configuration options for 2.7 and 3.1 are based on different ZPH patches. The 3.1 configuration provides clear TOS settings for each outbound response type.
+The configuration options for 2.7 and 3.1 are based on different ZPH patches.
+The 3.1 configuration provides clear TOS settings for each outbound response type.
 
  {i} The 0xNN values here are set according to your system policy. They may differ from those shown.
 
@@ -92,8 +93,11 @@ zph_parent 0x30
 
 Update:
 
-What I'd really like to see is a slightly better config which looks like this:
+What I'd really like to see is a slightly better config which looks something like this:
   qos_mode on off ip tos parent=0x1 sibling=0x1 local=0x1 option=136
+
+ {i} NP: Now working on the config polish for 3.1. It's hit a few hurdles with the parser, but getting close to done.
+
 
 Meanwhile for those who keep asking:
   3.0 does have an untested patch at http://www.squid-cache.org/Versions/v3/3.0/changesets/b8770.patch . But be warned;
