@@ -15,7 +15,7 @@ accessed, it also has a ''!MemObject'' structure.
 
 
 Squid can quickly locate cached objects because it keeps
-(in memory) a hash table of all ''!StoreEntry''es.  The
+(in memory) a hash table of all ''!StoreEntry''.  The
 keys for the hash table are MD5 checksums of the objects
 URI.  In addition there is also a storage policy such
 as LRU that keeps track of the objects and determines
