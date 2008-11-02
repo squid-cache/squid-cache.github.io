@@ -38,4 +38,7 @@ This can be thougt of as application level firewalling of the proxy service.
 Needs to be a "slow/async" acl match like http_access so external acls may be plugged in for extra functionality such as integration with packet level firewalls, cluster wide connection accounting etc.
 
 ----
+[[/Discussion]]
+
+----
 CategoryFeature
