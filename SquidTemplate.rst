@@ -1,4 +1,4 @@
-##master-page:CategoryTemplate
+##master-page:SquidTemplate
 #format wiki
 #language en
 
@@ -6,3 +6,8 @@
 
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
+
+----
+Discuss this page using the "Discussion" link in the main menu
+
+<<Include(/Discussion)>>
