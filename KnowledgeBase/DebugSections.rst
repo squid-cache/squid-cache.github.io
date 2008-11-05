@@ -19,7 +19,7 @@ They are configured in squid.conf with the debug_options setting as a list of Se
 
 Generally only ALL,0 is used, to display any major issues in need of urgent fix. These are problems fatal to squid and if your squid is crashing the problem is mentioned in cache.log at level 0.
 
-Administrators may also set '''debug_options ALL,1''' to get a report of issues which are not causing critical problems to squid, but which may be fatal to certain clients requests. They usually also indicate network issues they should be looking at fixing.
+Administrators may also set '''debug_options ALL,1''' to get a report of issues which are not causing critical problems to squid, but which may be fatal to certain client requests. These messages usually also indicate network issues the admin should be looking at fixing.
 
 Higher debugging levels are available if an issue needs tracking step-by-step through the code. They go up to 9, though 6 contain most information needed by the developers to debug.
 
