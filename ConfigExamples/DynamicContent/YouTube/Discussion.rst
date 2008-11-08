@@ -1,3 +1,4 @@
+## page was renamed from WikiSandBox/Discussion/YoutubeCaching
 ##master-page:DiscussionTemplate
 #format wiki
 #language en
