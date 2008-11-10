@@ -95,25 +95,25 @@ use strict;
 
 $| = 1 ;
 while (<>) { 
-	chomp;
-		# $x is the concurrent channel $_ is the url + ip ...
-		#$_ .= " "; just add space at the end.
-	my ($x, $url) = split(/ /);
-	$_ = $url; 
-	$_ .= " ";
+		chomp;
+			# $x is the concurrent channel $_ is the url + ip ...
+			#$_ .= " "; just add space at the end.
+		my ($x, $url) = split(/ /);
+		$_ = $url; 
+		$_ .= " ";
          
-        if 	(m/^http:\/\/([A-Za-z]*?)-(.*?)\.(.*)\.youtube\.com\/get_video\?video_id=(.*?)&(.*?) /) {
+        if 		(m/^http:\/\/([A-Za-z]*?)-(.*?)\.(.*)\.youtube\.com\/get_video\?video_id=(.*?)&(.*?) /) {
                 print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $4 . "\n";
                
-	} elsif (m/^http:\/\/(.*?)\/get_video\?video_id=(.*?)&(.*?) /) {
+		} elsif (m/^http:\/\/(.*?)\/get_video\?video_id=(.*?)&(.*?) /) {
                 print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
 				
         } elsif (m/^http:\/\/(.*?)\/videoplayback\?id=(.*?)&(.*?) /) {
                 print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/videoplayback?id=" . $2 . "\n";
 
-	} elsif (m/^http:\/\/(.*?)video_id=(.*?)&(.*?) /) {
-                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";	
-			#cache high latency ads	
+		} elsif (m/^http:\/\/(.*?)video_id=(.*?)&(.*?) /) {
+                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
+						#cache high latency ads	
         } elsif (m/^http:\/\/(.*?)\/(ads)\?(.*?) /) {
                 print $x . "http://" . $1 . "/" . $2  . "\n";				
                 #not related to youtube and the others below
@@ -135,11 +135,13 @@ while (<>) {
         } elsif (m/^http:\/\/(.*?)\/(.*?)\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?(.*?) /) {
                 print $x . "http://" . $1 . "/" . $2  . "." . $3 . "\n";
 				
+        } elsif (m/^http:\/\/(.*?)\/(.*?)\;(.*?) /) {
+                print $x . "http://" . $1 . "/" . $2  . "\n";
+				
         } else {
                 print $x . $_ . "\n";
         }
 	}
-
 
 
 }}}
