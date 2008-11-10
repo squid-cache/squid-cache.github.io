@@ -57,15 +57,17 @@ add this to squid.conf
 {{{
 #  The keyword for all youtube video files are "get_video?video_id" and "videoplaybeck?id" 
 #  The "\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?" is only for pictures and other videos
-acl store_rewrite_list urlpath_regex \/(get_video\?|videoplayback\?id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?
+acl store_rewrite_list urlpath_regex \/(get_video\?|videoplayback\?id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\? \/ads\? 
 acl store_rewrite_list_web url_regex ^http:\/\/([A-Za-z-]+[0-9]+)*\.[A-Za-z]*\.[A-Za-z]*
 acl store_rewrite_list_path urlpath_regex \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)$
+acl store_rewrite_list_web_CDN url_regex ^http:\/\/[a-z]+[0-9]\.google\.com doubleclick\.net
 }}}
 and also this if you have cache deny QUERY line. if not just ignore it.
 {{{
 #add this line before cache deny 
 acl QUERY2 urlpath_regex get_video\? videoplayback\? \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?
 cache allow QUERY2
+cache allow store_rewrite_list_web_CDN
 #cache deny url that has cgi-bin and ? this is the default for below squid 2.7 version
 acl QUERY urlpath_regex cgi-bin \?
 cache deny QUERY
@@ -74,6 +76,7 @@ and the storeurl feature
 {{{
 storeurl_access allow store_rewrite_list
 #this is not related to youtube video its only for CDN pictures
+storeurl_access allow store_rewrite_list_web_CDN
 storeurl_access allow store_rewrite_list_web store_rewrite_list_path
 storeurl_access deny all
 #rewrite_program path is base on windows so use use your own path
