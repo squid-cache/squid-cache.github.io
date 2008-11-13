@@ -1,6 +1,8 @@
 #format wiki
 #language en
 
+<<TableOfContents>>
+
 = Transparent Interception with WCCP =
 
 WCCP is a tunneling method. Since a tunnel could be built using any two devices. The configurations have been broken into endpoint configurations.
