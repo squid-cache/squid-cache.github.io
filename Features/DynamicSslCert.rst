@@ -16,7 +16,7 @@
 
  * '''Developer''': AlexRousskov, Andrew Balabohin
 
- * '''More''': Requires [[Features/SslBump|SslBump]]
+ * '''More''': Requires [[Features/SslBump|SslBump]], development [[https://code.launchpad.net/~rousskov/squid/DynamicSslCert|branch]]
 
 = Details =
 
