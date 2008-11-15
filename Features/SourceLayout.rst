@@ -8,10 +8,10 @@
  * '''Status''': In progress
  * '''ETA''': October-November 2008
  * '''Version''': 3.1
- * '''Developer''': AlexRousskov
+ * '''Developer''': AlexRousskov and AmosJeffries
  * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html|email07121]] [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html|email07506]]
 
-Historically, many Squid source files have been dumped into squid/src directory. That directory has occumulated more than 400 source files. This project will group closely related files and place groups in individual directories. The squid/src directory will contain pretty much nothing but Makefiles and subdirectories.
+Historically, many Squid source files have been dumped into squid/src directory. That directory has accumulated more than 400 source files. This project will group closely related files and place groups in individual directories. The squid/src directory will contain pretty much nothing but Makefiles and subdirectories.
 
 == Layout ==
 
@@ -34,14 +34,16 @@ Key:
 ||  || ''icap/'' || ICAP support || ICAP/ICAP* ||
 ||  || ''ecap/'' || eCAP support || - ||
 ||  || ''esi/'' || ESI support || ESI* ||
-||  || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
+
 ...
+The following shuffling is linked to major code re-writes and will be held back to 3.2.
 
 || {2} || ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
+|| {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
 
 == Problems ==
 
