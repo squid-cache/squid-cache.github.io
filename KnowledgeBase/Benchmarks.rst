@@ -14,15 +14,17 @@ Sorted by Squid Release and CPU.
 
 <<TableOfContents>>
 
-== Squid 3.0 STABLE 5 ==
+== Squid 3.0 ==
 
-=== Dual-Core ===
+=== STABLE 5 ===
+==== Dual-Core ====
 || CPU || 1x Intel Core 2 Duo E4600 2.4 Ghz/800 MHz (2 MB L2 cache) ||
 || RAM || 3 GB PC2-5300 CL5 ECC DDR2 SDRAM DIMM ||
 || HDD || 2x 250 GB SATA in as a mirror configuration ||
 || OS  || OpenSUSE 10.3 ||
 || Users || ~100 ||
 || RPS || Unknown: 'reasonable response rate' ||
+|| Hit Ratio ||  ||
 {{{
 Submitted by: Philipp Rusch - New Vision. 2008-07-17.
 
@@ -32,14 +34,24 @@ AND it is doing NTLM AUTH against the internal W2k3-ADS-domain
 }}}
 
 == Squid 2.7 ==
-
-No details yet....
+=== STABLE 4 ===
+==== Dual-Core ====
+|| CPU || Core 2 Duo 2.33 GHz ||
+|| RAM || 8 GB ||
+|| HDD || 4x 160GB SATA for cache ||
+|| OS  || ||
+|| Users || ~2300 ||
+|| RPS || 175 ||
+|| Hit Ratio || 30.2-30.7% ||
+{{{
+Submitted by: Nyamul Hassan. 2008-11-15.
+}}}
 
 == Squid 2.6  ==
 
 No details yet....
 
-== Squid 2.5 STABLE ?? ==
+== Squid 2.5 ==
 
 NP: probably 2.5.STABLE7 or earlier going by the release dates.
 
