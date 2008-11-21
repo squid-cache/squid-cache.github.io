@@ -31,10 +31,19 @@ http://www.squid-cache.org/bzr/squid3/trunk
 }}}
 
 Also mirrors are available at:
-  https://code.launchpad.net/~lifeless/squid/squid3-trunk
+ * https://code.launchpad.net/~lifeless/squid/squid3-trunk
+ * https://code.launchpad.net/~squid3/squid/3.1
+ * https://code.launchpad.net/~squid3/squid/SQUID_3_0
 
 = Web view =
-web view: http://squid-cache.org/bzrview/squid3/BRANCH RSS feed: http://www.squid-cache.org/bzrview//squid3/BRANCH/atom
+
+Web view:
+|| 3.1 || http://squid-cache.org/bzrview/squid3/SQUID_3_1 ||
+|| 3.0 || http://squid-cache.org/bzrview/squid3/SQUID_3_0 ||
+
+RSS feed:
+ * http://www.squid-cache.org/bzrview//squid3/SQUID_3_1/atom
+ * http://www.squid-cache.org/bzrview//squid3/SQUID_3_0/atom
 
 = Recipes =
 == Let bzr know who you are ==
