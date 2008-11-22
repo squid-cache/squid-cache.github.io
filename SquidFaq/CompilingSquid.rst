@@ -195,7 +195,12 @@ From Squid 3.0 the default user can also be set. The Debian package default is:
   --with-default-user=proxy
 }}}
 
-{X} The following patch also needs to be applied since the /var/logs/ directory for logs has no configure option.
+From Squid 3.1 the log directory is also configurable. The Debian package default is:
+{{{
+--with-logdir=/var/log
+}}}
+
+{X} Older Squid needs the following patch to be applied since the /var/logs/ directory for logs has no configure option.
 {{{
 --- src/Makefile.am     2007-09-17 14:22:33.000000000 +1200
 +++ src/Makefile.am-new   2007-09-12 19:31:53.000000000 +1200
