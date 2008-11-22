@@ -1,5 +1,23 @@
 ## page was renamed from SquidFaq/DiskDaemon
 #language en
+#faqlisted yes
+
+= Feature: Disk Daemon (diskd) helper =
+
+## Move this down into the details documentation when feature is complete.
+## * '''Goal''': What must this feature accomplish? Try to use specific, testable goals so that it is clear whether the goal was satisfied. Goals using unquantified words such as "improve", "better", or "faster" are often not testable. Do not specify ''how'' you will accomplish the goal (use the Details section below for that).
+
+ * '''Status''': Complete.
+
+ * '''Version''': 2.4
+
+## * '''Priority''': How important on a scale of 0 to 5 is this for the developer working on it?
+
+## * '''Developer''': Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
+
+## * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
+
+= Details =
 <<TableOfContents>>
 
 == What is DISKD? ==
@@ -181,9 +199,9 @@ You have to reboot for the change to take effect.
 
 
 
-=== Linux ===
+## === Linux ===
 
- /!\ Use AUFS on Linux. It's much faster.
+## /!\ Use AUFS on Linux. It's much faster.
 
 ## Stefan K&ouml;psell reports that if you compile sysctl support
 ## into your kernel, then you can change the following values:
@@ -317,9 +335,9 @@ You have to reboot for the change to take effect.
 
 
 
-=== Linux ===
+## === Linux ===
 
- /!\ Use AUFS on Linux. It's much faster.
+## /!\ Use AUFS on Linux. It's much faster.
 
 ## Winfried Truemper reports: The default values should be large enough
 ## for most common cases.  You can modify the shared memory configuration
