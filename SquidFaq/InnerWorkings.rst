@@ -12,13 +12,6 @@ ICP is primarily used within a cache hierarchy to locate specific objects in sib
 
 ICP also supports multiplexed transmission of multiple object streams over a single TCP connection.  ICP is currently implemented on top of UDP.  Current versions of Squid also support ICP via multicast.
 
-== What is the ''dnsserver''? ==
-The ''dnsserver'' is a process forked by ''squid'' to resolve IP addresses from domain names.  This is necessary because the ''gethostbyname(3)'' function blocks the calling process until the DNS query is completed.
-
-Squid must use non-blocking I/O at all times, so DNS lookups are implemented external to the main process.  The ''dnsserver'' processes do not cache DNS lookups, that is implemented inside the ''squid'' process.
-
-The ''dnsserver'' program was integrated into the main Squid binary in Squid-2.  If you have reason to use the old style dnsserver process you can build it at ./configure time.  However we would suggest that you file a bug if you find that the internal DNS process does not work as you would expect.
-
 == What is a cache hierarchy?  What are parents and siblings? ==
 A cache hierarchy is a collection of caching proxy servers organized in a logical parent/child and sibling arrangement so that caches closest to Internet gateways (closest to the backbone transit entry-points) act as parents to caches at locations farther from the backbone.  The parent caches resolve "misses" for their children. In other words, when a cache requests an object from its parent, and the parent does not have the object in its cache, the parent fetches the object, caches it, and delivers it to the child.  This ensures that the hierarchy achieves the maximum reduction in bandwidth utilization on the backbone transit links, helps reduce load on Internet information servers outside the network served by the hierarchy, and builds a rich cache on the parents so that the other child caches in the hierarchy will obtain better "hit" rates against their parents.
 
@@ -35,11 +28,8 @@ The algorithm is somewhat more complicated when firewalls are involved.
 The ''single_parent_bypass'' directive can be used to skip the ICP queries if the only appropriate sibling is a parent cache (i.e., if there's only one place you'd fetch the object from, why bother querying?)
 
 == What features are Squid developers currently working on? ==
-There are several open issues for the caching project namely more automatic load balancing and (both configured and dynamic) selection of parents, routing, multicast cache-to-cache communication, and better recognition of URLs that are not worth caching.
 
-For our other to-do list items, please see our "TODO" file in the recent source distributions.
-
-Prospective developers should review the resources available at the [[http://www.squid-cache.org/Devel/|Squid developers corner]]
+The features and areas we work on are aways changing. See the [[../../RoadMap|Squid Road Maps]] for more details on current activities.
 
 == Tell me more about Internet traffic workloads ==
 Workload can be characterized as the burden a client or group of clients imposes on a system.  Understanding the nature of workloads is important to the managing system capacity.
@@ -291,15 +281,17 @@ It means Squid sent a DNS query to one IP address, but the response  came back f
 
 There are a number of reasons why this would happen:
 
- . -Your DNS name server just works this way, either becuase its been configured to, or because its stupid and doesn't know any better.
+ . -Your DNS name server just works this way, either because its been configured to, or because its stupid and doesn't know any better.
  -You have a weird broadcast address, like 0.0.0.0, in your ''/etc/resolv.conf'' file. -Somebody is trying to send spoofed DNS responses to your cache.
 If you recognize the IP address in the warning as one of your name server hosts, then its probably numbers (1) or (2).
 
 You can make these warnings stop, and allow responses from "unknown" name servers by setting this configuration option:
-
 {{{
 ignore_unknown_nameservers off
 }}}
+
+/!\ WARNING: this opens your Squid up to many possible security breaches. You should prefer to configure your set of possible nameserver IPs correctly.
+
 == How does Squid distribute cache files among the available directories? ==
 ''Note: The information here is current for version 2.2.''
 
@@ -375,6 +367,7 @@ file, which normally resides on each ''cache_dir''.
 thinks.  When calculating total disk usage, Squid rounds file sizes up to a whole number of 1024 byte blocks.  If your filesystem uses larger blocks, then some "wasted" space is not accounted.
 
  * Your cache has suffered some minor corruption and some objects have gotten lost without being removed from the swap.state file.  Over time, Squid will detect this and automatically fix it.
+
 == How do ''positive_dns_ttl'' and ''negative_dns_ttl'' work? ==
 ''positive_dns_ttl'' is how long Squid caches a successful DNS lookup. Similarly, ''negative_dns_ttl'' is how long Squid caches a failed DNS lookup.
 
@@ -429,15 +422,6 @@ When Squid wants to make an ident query, it creates a new TCP socket and ''binds
 ''So why bind in that way? If you know you are interception proxying, then why not bind the local endpoint to the host's (intranet) IP address? Why make the masses suffer needlessly?''
 
 Because thats just how ident works.   Please read  [[ftp://ftp.isi.edu/in-notes/rfc931.txt|RFC 931]], in particular the RESTRICTIONS section.
-
-== dnsSubmit: queue overload, rejecting blah ==
-This means that you are using external ''dnsserver'' processes for lookups, and all processes are busy, and Squid's pending queue is full.  Each ''dnsserver'' program can only handle one request at a time.  When all ''dnsserver'' processes are busy, Squid queues up requests, but only to a certain point.
-
-To alleviate this condition, you need to either (1) increase the number of ''dnsserver'' processes by changing the value for ''dns_children'' in your config file, or (2) switch to using Squid's internal DNS client code.
-
-Note that in some versions, Squid limits ''dns_children'' to 32.  To increase it beyond that value, you would have to edit the source code.
-
-As we have mentioned previously in this page, you should NOT be running with external DNS processes.
 
 == What are FTP passive connections? ==
 by Colin Campbell
