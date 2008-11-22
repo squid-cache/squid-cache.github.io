@@ -45,12 +45,11 @@
  * /SquidRedirectors explains how to tap into Squid's powerful ''redirector'' API
  * /CacheDigests or ICP on steroids
  * /SquidSnmp: using SNMP to monitor Squid's vital signs
- * /DiskDaemon: what it is and how to optimize its running environment
  * /MiscFeatures: Squid 2.X miscellaneous features
 
 ## Once a user-oriented feature has been completed we can re-use the description page
 ## to document the usage and configuration details about the feature
-## Set the initial version and chaneg teh faqlisted meta-data to 'yes' to get them
+## Set the initial version and change the faqlisted meta-data to 'yes' to get them
 ## auto-listed in the FAQ.
 ## Naturally the features aimed as easing developer life should not be FAQ'd.
 ##
