@@ -6,7 +6,7 @@
 
  * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean.
  * '''Status''': In progress
- * '''ETA''': October-November 2008
+ * '''ETA''': November-December 2008
  * '''Version''': 3.1
  * '''Developer''': AlexRousskov and AmosJeffries
  * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html|email07121]] [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html|email07506]]
@@ -22,7 +22,7 @@ Key:
  * {2} AmosJeffries doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
-|| || ''acl/'' || Access Controls || ACL* external_acl.* ||
+||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
 || {2} || ''auth/'' || Authentication support || auth/* ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
@@ -38,6 +38,7 @@ Key:
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
+|| {2} || ''ip/'' || IP Protocol || IPAddress.* IPInterception.* Qos* ||
 
 ...
 The following shuffling is linked to major code re-writes and will be held back to 3.2.
