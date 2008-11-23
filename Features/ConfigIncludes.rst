@@ -2,6 +2,7 @@
 #format wiki
 #language en
 #faqlisted yes
+#completed yes
 
 = Config Includes =
 
