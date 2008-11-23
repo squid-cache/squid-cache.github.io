@@ -2,12 +2,13 @@
 #format wiki
 #language en
 #faqlisted yes
+#completed yes
 
 = Feature: Connection Pinning =
 
  * '''Goal''': Support connection handling required for NTLM authentication passthrough
 
- * '''Status''': done
+ * '''Status''': complete
 
  * '''Version''': 3.1
 
