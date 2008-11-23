@@ -1,23 +1,22 @@
 #format wiki
 #language en
 
-Here is an ''auto-generated'' list of features that are either already being worked on or will be worked on soon, according to the RoadMap.
+== Current Features ==
 
-##<<FullSearch(title:regex:Features/.* -CategoryWish -title:regex:.*(Template|Other)$ -regex:Status[^A-z]+completed)>>
-<<FullSearch(category:CategoryFeature -category:CategoryWish -regex:Status[^A-z]+completed title:Features/)>>
+For the currently configurable features see the SquidFaq
 
+== Future ==
+Here is an ''auto-generated'' list of features that are not yet completed or started.
 
-The following is an ''auto-generated'' list of the features that we wish were being worked on:
+A timeline of feature integration is listed on the [[../RoadMap/Squid3|Squid-3 RoadMap]]
 
-##<<FullSearch(title:regex:Features/.* category:CategoryWish -title:regex:.*(Template|Other)$ -regex:Status[^A-z]+completed )>>
-<<FullSearch(category:CategoryFeature category:CategoryWish -regex:Status[^A-z]+completed title:Features/)>>
+## When completed yes|no metadata is inserted into features we could use this...
+<<FullSearch(title:Features/ regex:completed.no )>>
+
+<<FullSearch(category:CategoryFeature title:Features/ regex:Status...: -regex:Status[^A-z]+completed -regex:Status[^A-z]+Obsolete -regex:completed.no -regex:completed.yes )>>
+
 
 Less documented ideas and wishes are available [[Features/Other|elsewhere]].
-
-The following is an ''auto-generated'' list of the features that have been completed and added to squid:
-
-##<<FullSearch(title:regex:Features/.* -title:regex:.*(Template|Other) regex:Status[^A-z]+completed)>>
-<<FullSearch(category:CategoryFeature regex:Status[^A-z]+completed title:Features/)>>
 
 The definition of a feature is discussed [[CategoryFeature|elsewhere]].
 
