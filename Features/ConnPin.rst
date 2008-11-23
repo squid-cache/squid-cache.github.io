@@ -10,9 +10,9 @@
 
  * '''Status''': complete
 
- * '''Version''': 3.1
+ * '''Version''': 2.6, 3.1
 
- * '''Developer''': Christos Tsantilas
+ * '''Developer''': HenrikNordstrom (2.6), Christos Tsantilas (3.1)
 
  * '''More''': draft-jaganathan-kerberos-http-01.txt and Squid 2 implementation;
  * '''More''': also http://www.squid-cache.org/bugs/show_bug.cgi?id=1632
