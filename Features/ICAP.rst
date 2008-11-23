@@ -2,14 +2,13 @@
 #format wiki
 #language en
 #faqlisted yes
+#completed yes
 
 = Feature: ICAP (Internet Content Adaptation Protocol) =
 
-## Remove this entry entirely if the feature is completed and users need to know about.
-##  it will then be auto-listed in the Squid FAQ.
-## * '''Status''': What is the current status? Standard choices are ''Not started'', ''In progress'', and ''Completed''. You can specify details after a semicolon (e.g., the reason why the development has not started yet or the first release version).
+ * '''Status''': Completed.
 
- * '''Version''': 3.0+
+ * '''Version''': 3.0
 
  * '''Developer''': AlexRousskov
 
