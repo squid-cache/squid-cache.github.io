@@ -30,9 +30,9 @@ This article is intended to be a guide to help Squid Administrators configure fi
 
 We are still seeking confirmed information on configurations to identify:
 
- * GoogleTalk
+ * !GoogleTalk
  * IRC
- * WindowsLiveMessenger
+ * !WindowsLiveMessenger
  * MSNLive
  * MSNExplorer
 
