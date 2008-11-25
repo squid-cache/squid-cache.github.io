@@ -15,7 +15,7 @@ This is a work in progress (read: a place for Adrian to jot down TPROXY document
 (stuff from emails from Steve Wilton)
 
 The kernel and iptables need to be patched with the tproxy patches (and the tproxy include file needs to be placed in /usr/include/linux/netfilter_ipv4/ip_tproxy.h or include/netfilter_ipv4/ip_tproxy.h in the squid src tree).
-|| /!\ || Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code [[Features/TproxyUpdate|TPROXY Updates]] ||
+|| /!\ || Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [[Features/Tproxy4]]) ||
 
 
 
@@ -141,7 +141,7 @@ Now,  I will try tuning-up my box & squid.conf tommorow
  * Mailing list post: http://www.squid-cache.org/mail-archive/squid-users/200705/0443.html and http://www.squid-cache.org/mail-archive/squid-users/200705/0447.html
 
 == References ==
- * Squid [[Feature/TproxyUpdate|3.1 TPROXY Support update]]
+ * Squid [[Features/Tproxy4]]
  * TPROXY patch homepage: http://www.balabit.com/support/community/products/tproxy/
  * A useful script to test: http://devel.squid-cache.org/cgi-bin/test
 
