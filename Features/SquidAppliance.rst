@@ -53,7 +53,7 @@ Possibly some sort of -tail display of the logs, to see the last items requested
 Adding authentication can make the complexity of the project an order of magnitude more complex. Possibly an IP list would be easy.  If people want this, they are best off with a larger all inclusive project like [[http://www.smoothwall.org/|SmoothWall]], [[http://ipcop.org/|IPCop]], or simply rolling their own.
 
 === Filtering ===
-Adding filtering can make the complexity of the project an order of magnitude more complex.  Possibly a domain list would be easy to implement.  Users could try installing SquidGuard, DansGuardian, etc, or trying one of the packages mentioned above in Authentication.
+Adding filtering can make the complexity of the project an order of magnitude more complex.  Possibly a domain list would be easy to implement.  Users could try installing !SquidGuard, !DansGuardian, etc, or trying one of the packages mentioned above in Authentication.
 
 === Operating System ===
 The BestOsForSquid says almost any Unix-like OS would work.  It should be a very common distro with a large user base so that regular updates are likely, and questions regarding obscure OS errors might be answered.
@@ -80,7 +80,7 @@ A prototype of install options should be made, along with what specifically chan
  * Yes (set in bridged mode, set to whatever port, etc)
  * No
 ==== Transparent Proxy ====
- * Yes (set up [[http://wiki.squid-cache.org/ConfigExamples/FullyTransparentWithTPROXY|TPROXY]]
+ * Yes (set up [[http://wiki.squid-cache.org/ConfigExamples/FullyTransparentWithTPROXY|TPROXY]] )
  * No
 ==== Proxy Purpose ====
  * Accelerate Internet browsing (Large [[http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem|COSS]] partition for small files and small other type of cache partition for large files)
