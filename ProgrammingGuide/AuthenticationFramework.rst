@@ -66,7 +66,7 @@ modules:
 	has been given valid parameters and is able to handle
 	authentication requests if initialised.  If configured
 	returns 0 no other module functions except
-	Shutdown/Dump/Parse/!FreeConfig will be called by Squid.
+	Shutdown/Dump/Parse/Free'''''''Config will be called by Squid.
 
  * {{{typedef void  AUTHSSETUP(authscheme_entry_t *); }}} 
 	functions of type AUTHSSETUP are used to register an
