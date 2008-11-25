@@ -17,7 +17,7 @@ For this Following information will be required
  * IP and the Hostname for all the 3 Servers
  * Openssl installed on the same server
 == OpenSSL Configuration for CA and Certificate Generation ==
-Download and install the openssl software: If you are on RH linux, just check if this software is installed using '''rpm -qi openssl''' . Please find the openssl.cnf file in which some changes were made for '''dir = /usr/newrprgate/!CertAuth , private_key = $dir/private/cakey.pem''' , '''default_keyfile = /usr/newrprgate/!CertAuth/private/cakey.pem '''rest of the config is used as default .
+Download and install the openssl software: If you are on RH linux, just check if this software is installed using '''rpm -qi openssl''' . Please find the openssl.cnf file in which some changes were made for '''dir = /usr/newrprgate/Cert''''''Auth , private_key = $dir/private/cakey.pem''' , '''default_keyfile = /usr/newrprgate/Cert''''''Auth/private/cakey.pem '''rest of the config is used as default .
 
 {{{
 HOME                    = .
