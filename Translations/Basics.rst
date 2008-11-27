@@ -64,7 +64,8 @@ But don't expect any suggestions to be included in the sources or even visible u
 
 See [[Translations/Guidelines|Translation Guidelines]] for what sort of things are needed to get your suggestion accepted.
 
- . (!) Special characters which standard PC keyboards may not provide easily are listed. Leaving the mouse cursor in the text box, and clicking on a character adds it to the text. (!) If you are not fully certain you got the text right. Clicking the fuzzy checkbox can help the translator know they need to double-check it.
+ . (!) Special characters which standard PC keyboards may not provide easily are listed. Leaving the mouse cursor in the text box, and clicking on a character adds it to the text.
+ . (!) If you are not fully certain you got the text right. Clicking the fuzzy checkbox can help the language moderator know they need to double-check it.
 
 === Translators ===
 Some wonderful people have been willing to go further than just sending us suggestions. They have agreed to spend a few minutes a week checking a bunch of those suggestions.
@@ -72,11 +73,11 @@ Some wonderful people have been willing to go further than just sending us sugge
  . (!) Only the languages listed as [[Translations|verified]] are checked. All the other suggestions just pile up waiting for someone who can do the job.
 
 ==== Weekly Notices ====
-Once a week each languages is checked for missing text, new suggestions, and a few other things. The results of these checks are counted up and a summary TODO list is sent to the language translator.
+Once a week each language is checked for missing text, new suggestions, and a few other things. The results of these checks are counted up and a summary TODO list is sent to the language translator.
 
- . {i} If there is no translator the list gets sent to the Squid project team as a digest. We usually don't know the languages so it's only an indication of where we need to track down new helpers from.
+The translators then have a week to check the things on that list before they get another reminder TODO summary.
 
-The translators then have a week to check the things on that list or they get another.
+ . {i} If there is no translator the list gets sent to the Squid project team as a digest. We usually don't know the language so it's only an indication of where we need to track down new helpers from.
 
 ==== Suggestion Checks ====
 New suggestions are likely to come in at some point. They need to be checked
