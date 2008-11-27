@@ -20,6 +20,10 @@ For Squid-3.0 the Manual is at http://www.squid-cache.org/Versions/v3/3.0/cfgman
 
 For Squid-3.1 the Manual is at http://www.squid-cache.org/Versions/v3/3.1/cfgman/
 
+
+A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ with details on each option supported in Squid, and what differences can be encountered between major Squid releases.
+
+
 == Create new configuration example ==
 
 Choose a good WikiName for your new example and enter it here:
