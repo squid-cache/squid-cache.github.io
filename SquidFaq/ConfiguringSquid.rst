@@ -374,8 +374,5 @@ If the HTTP response coming from the server has a ''Content-length'' header, the
  (!) Note that "creative" user-agents will still be able to download really large files through the cache using HTTP/1.1 range requests.
 
 
-== How do I enable IPv6? ==
-see [[../../Features/IPv6]]
-
 ----
  . Back to the SquidFaq
