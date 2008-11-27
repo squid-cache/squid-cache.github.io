@@ -21,18 +21,35 @@ HTTP port number, the ICP request port number, incoming and outgoing
 requests, information about firewall access, and various timeout
 information.
 
+== Where can I find examples and configuration for a Feature? ==
+
+There is still a fair bit of config knowledge buried in the old SquidFaq and Guide pages of this wiki. We are endeavoring to pull them into a layout easier to use.
+
+What we have so far is:
+
+ * The general background configuration info here on this page
+
+ * Specific feature descriptions pros/cons and some config are linked from the main SquidFaq in a features section.
+
+ * Any complex tuning stuff mixing features and specific demos in ConfigExamples and usually linked from the related features or FAQ pages as well.
+
+
 ==  Do you have a squid.conf example? ==
 
 Yes.
+
 For Squid 2.x and 3.0 after you ''make install'', a sample ''squid.conf.default'' file will
 exist in the ''etc'' directory under the Squid installation directory.
 
-From 2.6 the Squid developers also provide a set of Configuration Guides online. They list all the options each version of Squid can accept in its squid.conf file, including the current development test releases.
+From 2.6 the Squid developers also provide a set of Configuration Guides online. They list all the options each version of Squid can accept in its squid.conf file
 
  * [[http://www.squid-cache.org/Versions/v2/2.6/cfgman/|Squid 2.6]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v2/2.7/cfgman/|Squid 2.7]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/3.0/cfgman/|Squid 3.0]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/3.1/cfgman/|Squid 3.1]] Configuration Guide
+
+including guides for the current development test releases
+
  * [[http://www.squid-cache.org/Versions/v2/HEAD/cfgman/|Squid 2-HEAD]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/HEAD/cfgman/|Squid 3-HEAD]] Configuration Guide
 
@@ -129,6 +146,7 @@ cache_announce 24
 announce_to sd.cache.nlanr.net:3131
 }}}
 || <!> ||Announcing your cache '''is not''' the same thing as joining the NLANR cache hierarchy. You can join the NLANR cache hierarchy without registering, and you can register without joining the NLANR cache hierarchy ||
+
 == How do I find other caches close to me and arrange parent/child/sibling relationships with them? ==
 Visit the NLANR cache [[http://www.ircache.net/Cache/Tracker/|registration database]] to discover other caches near you.  Keep in mind that just because a cache is registered in the database '''does not''' mean they are willing to be your parent/sibling/child.  But it can't hurt to ask...
 
@@ -161,6 +179,7 @@ If you use ''never_direct'' and you have multiple parent caches, then you probab
 {{{
 cache_peer xyz.mydomain.com parent 3128 0 no-query default
 }}}
+
 == How do I configure Squid forward all requests to another proxy? ==
 First, you need to give Squid a parent cache.  Second, you need to tell Squid it can not connect directly to origin servers.  This is done with three configuration file lines:
 
