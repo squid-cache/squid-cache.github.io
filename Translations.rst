@@ -41,11 +41,14 @@ We are hopping to bring all the error pages into an easily maintained structure 
 
 == How can I contribute? ==
 
-How we do translations and who you can join in is detailed at [[Translations/Basics]]
+=== Suggest a translation fix ===
+  How we do translations and who you can join in is detailed at [[Translations/Basics]]
 
-What you need to know to make useful translations is at [[Translations/Guidelines]]
+  What you need to know to make useful translations is at [[Translations/Guidelines]]
 
-If you are able to provide a longer contribution we do need people familiar enough with each language listed above without a current translator to approve/reject differences in suggestions. Please contact AmosJeffries about becoming a moderator, or to get new languages added.
+=== Become a language moderator ===
+
+If you are able to help out over a longer period or even short term.  We really need people familiar enough with each language listed above to verify and approve/reject the general suggestions. Please contact AmosJeffries directly about becoming a moderator.
 
 == How does this affect my installed Squid? ==
 
