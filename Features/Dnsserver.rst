@@ -23,13 +23,14 @@
 
  /!\ dnsserver helper is now replaced by a faster internal DNS client. You should NOT be running with external DNS processes.
 
+<<TableOfContents>>
 
 == What is the ''dnsserver''? ==
 The ''dnsserver'' is a process forked by ''squid'' to resolve IP addresses from domain names.  This is necessary because the ''gethostbyname(3)'' function blocks the calling process until the DNS query is completed.
 
 Squid must use non-blocking I/O at all times, so DNS lookups are implemented external to the main process.  The ''dnsserver'' processes do not cache DNS lookups, that is implemented inside the ''squid'' process.
 
-An internal DNS client was integrated into the main Squid binary in Squid-2.3.  If you have reason to use the old style ''dnsserver'' process you can build it at ./configure time.  However we would suggest that you file a bug if you find that the internal DNS process does not work as you would expect.
+An internal DNS client was integrated into the main Squid binary in Squid-2.3. It is much faster and can scale to match traffic levels without needing a reconfigure. If you have reason to use the old style ''dnsserver'' process you can build it at ./configure time using ''--disable-internal-dns''.  However we would suggest that you file a bug if you find that the internal DNS process does not work as you would expect.
 
 = Configuration Options =
 
@@ -47,6 +48,31 @@ To alleviate this condition, you need to either (1) increase the number of ''dns
 
 Note that in some versions, Squid limits ''dns_children'' to 32.  To increase it beyond that value, you would have to edit the source code.
 
+== My ''dnsserver'' average/median service time seems high, how can I reduce it? ==
+
+ (!) Use the internal DNS resolver now built into Squid. It is not limited to single request-response blocking.
+
+First, find out if you have enough ''dnsserver'' processes running by looking at the ../CacheManager ''dns'' output.  Ideally, you should see that the first ''dnsserver'' handles a lot of requests, the second one less than the first, etc.  The last ''dnsserver'' should have serviced relatively few requests.  If there is not an obvious decreasing trend, then you need to increase the number of ''dns_children'' in the configuration file.  If the last ''dnsserver'' has zero requests, then you definately have enough.
+
+Another factor which affects the DNS service time is the proximity of your DNS resolver.  Normally we do not recommend running Squid and Resolver on the same host.  Instead you should try use a DNS resolver on a different host, but on the same LAN. If your DNS traffic must pass through one or more routers, this could be causing unnecessary delays.
+
+== I have "dnsserver" processes that aren't being used, should I lower the number in "squid.conf"? ==
+
+The ''dnsserver'' processes were originally used by ''squid'' because the ''gethostbyname(3)'' library routines used to convert web sites names to their internet addresses blocks until the function returns (i.e., the process that calls it has to wait for a reply). Since there is only one ''squid'' process, everyone who uses the cache would have to wait each time the routine was called.  This is why the ''dnsserver'' is a separate process, so that these processes can block, without causing blocking in ''squid''.
+
+It's very important that there are enough ''dnsserver'' processes to cope with every access you will need, otherwise ''squid'' will stop occasionally.  A good rule of thumb is to make sure you have at least the maximum number of dnsservers ''squid'' has '''ever''' needed on your system, and probably add two to be on the safe side. In other words, if you have only ever seen at most three ''dnsserver'' processes in use, make at least five.  Remember that a ''dnsserver'' is small and, if unused, will be swapped out.
+
+
+## Not relevant any more??
+## == How can I easily change the default HTTP port? ==
+##Before you run the configure script, simply set the ''CACHE_HTTP_PORT'' environment variable.
+
+## {{{
+## setenv CACHE_HTTP_PORT 8080
+## ./configure
+## make
+## make install
+## }}}
 
 ----
 CategoryFeature
