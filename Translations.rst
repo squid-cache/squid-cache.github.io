@@ -20,7 +20,7 @@ Several people have volunteered their time to check and confirm translations to 
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
 || Swedish || sv || HenrikNordstrom ||
 ## || Turkish || tr || Umut Çinar ||
-||<|99> Others || ||<|99> '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It does not take very much time. ||
+||<|99> Others || ||<|99> '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in a occasional week. Without a moderator we cannot fix any bad language errors. ||
 || Catalan (ca) ||
 || Czech (cs) ||
 || Danish (da) ||
@@ -30,6 +30,7 @@ Several people have volunteered their time to check and confirm translations to 
 || Indonesian (id) ||
 || Dutch (nl) ||
 || Ukrainian (uk) ||
+|| Chinese (zh-cn) ||
 || ||
 
 == Why? Squid already has translated error pages ==
