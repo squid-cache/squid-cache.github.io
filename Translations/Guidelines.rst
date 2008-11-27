@@ -47,7 +47,7 @@ Please leave these in the translated message as they are important for accurate 
 
 I have found that in most messages where they mix with text, the code usually represents a singular noun. (IP Address, URL,or Hostnames)
 
-A reference of the available tags if you need to know what one means to translate it properly is available in the [[SquidFaq/MiscFeatures#head-fd8f5559ec842b21e1acb06823eaa9b83897fcc3|FAQ]]
+A reference of the available tags if you need to know what one means to translate it properly is available in the [[http://wiki.squid-cache.org/Features/CustomErrors|Custom Errors Feature]]
 
 
 
