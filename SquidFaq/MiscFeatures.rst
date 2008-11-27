@@ -15,6 +15,7 @@
  * Routing requests based on AS numbers.
  * ../CacheDigests
  * ...and many more!
+
 == How do I configure 'ssl_proxy' now? ==
 By default, Squid connects directly to origin servers for SSL requests. But if you must force SSL requests through a parent, first tell Squid it can not go direct for SSL:
 
@@ -74,82 +75,6 @@ Please update your ACL appropriately - a username of ''REQUIRED'' will permit al
 auth_param basic credentialsttl timeout
 }}}
 
-== Customizable Error Messages ==
-Squid-2 lets you customize your error messages.  The source distribution includes error messages in different languages.  You can select the language with the configure option:
-
-{{{
---enable-err-language=lang
-}}}
-Furthermore, you can rewrite the error message template files if you like. This list describes the tags which Squid will insert into the messages:
-
-'''%a''':: User identity
-
-'''%B''':: URL with FTP %2f hack
-
-'''%c''':: Squid error code
-
-'''%d''':: seconds elapsed since request received (not yet implemented)
-
-'''%e''':: errno
-
-'''%E''':: strerror()
-
-'''%f''':: FTP request line
-
-'''%F''':: FTP reply line
-
-'''%g''':: FTP server message
-
-'''%h''':: cache hostname
-
-'''%H''':: server host name
-
-'''%i''':: client IP address
-
-'''%I''':: server IP address
-
-'''%L''':: contents of ''err_html_text'' config option
-
-'''%M''':: Request Method
-
-'''%m''':: Error message returned by external auth helper
-
-'''%o''':: Message returned by external acl helper
-
-'''%p''':: URL port \#
-
-'''%P''':: Protocol
-
-'''%R''':: Full HTTP Request
-
-'''%S''':: squid default signature. Automatically added unless %s is used.
-
-'''%s''':: caching proxy software with version
-
-'''%t''':: local time
-
-'''%T''':: UTC
-
-'''%U''':: URL without password
-
-'''%u''':: URL with password (Squid-2.5 and later only)
-
-'''%w''':: cachemgr email address
-
-'''%z''':: dns server error message
-
-The Squid default signature is added automatically unless %s is used in the error page. To change the signature you must manually append the signature to each error page.
-
-The default signature reads like:
-
-{{{
-<BR clear="all">
-<HR noshade size="1px">
-<ADDRESS>
-Generated %T by %h (%s)
-</ADDRESS>
-</BODY></HTML>
-}}}
 == My squid.conf from version 1.1 doesn't work! ==
 Yes, a number of configuration directives have been renamed. Here are some of them:
 
