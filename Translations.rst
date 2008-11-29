@@ -26,9 +26,11 @@ Several people have volunteered their time to check and confirm translations to 
 || Danish (da) ||
 || French (fr) ||
 || Spanish (es) ||
+|| Estonian (et) ||
 || Japanese (ja) ||
 || Indonesian (id) ||
 || Dutch (nl) ||
+|| Russian (ru) ||
 || Ukrainian (uk) ||
 || Chinese (zh-cn) ||
 || ||
