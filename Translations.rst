@@ -31,6 +31,7 @@ Several people have volunteered their time to check and confirm translations to 
 || Indonesian (id) ||
 || Dutch (nl) ||
 || Russian (ru) ||
+|| Serbian (sr) ||
 || Ukrainian (uk) ||
 || Chinese (zh-cn) ||
 || ||
