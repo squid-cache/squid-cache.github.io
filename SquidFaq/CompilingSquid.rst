@@ -116,7 +116,6 @@ Some options which are used often include:
                         Detailed trace of memory allocations
 --enable-xmalloc-statistics
                         Show malloc statistics in status page
---enable-carp           Enable CARP support
 --enable-async-io       Do ASYNC disk I/O using threads
 --enable-icmp           Enable ICMP pinging
 --enable-delay-pools    Enable delay pools to limit bandwith usage
@@ -124,7 +123,6 @@ Some options which are used often include:
 --enable-useragent-log  Enable logging of User-Agent header
 --enable-kill-parent-hack
                         Kill parent on shutdown
---enable-snmp           Enable SNMP monitoring
 --enable-cachemgr-hostname[=hostname]
                         Make cachemgr.cgi default to this host
 --enable-arp-acl        Enable use of ARP ACL lists (ether address)
@@ -132,6 +130,12 @@ Some options which are used often include:
 --enable-forw-via-db    Enable Forw/Via database
 --enable-cache-digests  Use Cache Digests
                         see http://www.squid-cache.org/Doc/FAQ/FAQ-16.html
+}}}
+
+These are also commonly needed by Squid-2, but are now defaults in Squid-3.
+{{{
+--enable-carp           Enable CARP support
+--enable-snmp           Enable SNMP monitoring
 --enable-err-language=lang
                         Select language for Error pages (see errors dir)
 }}}
