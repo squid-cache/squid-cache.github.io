@@ -88,7 +88,7 @@ and refresh pattern
 
 {{{
 #youtube's videos
-refresh_pattern -i (get_video\?|videodownload\?|videoplayback\?) 161280 50000% 525948 override-expire reload-into-ims
+refresh_pattern -i (get_video\?|videodownload\?|videoplayback\?) 161280 50000% 525948 override-expire ignore-reload
 #and for pictures
 refresh_pattern -i \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)(\?|$) 161280 3000% 525948 override-expire reload-into-ims
 }}}
