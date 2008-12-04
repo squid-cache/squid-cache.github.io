@@ -55,9 +55,9 @@ Date: Thu, 11 Sep 2008 16:03:50 GMT
 add this to squid.conf
 
 {{{
-#  The keyword for all youtube video files are "get_video?video_id" and "videoplaybeck?id" 
+#  The keyword for all youtube video files are "get_video?", "videodownload?" and "videoplaybeck?id" 
 #  The "\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?" is only for pictures and other videos
-acl store_rewrite_list urlpath_regex \/(get_video\?|videoplayback\?id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\? \/ads\? 
+acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback\?id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\? \/ads\? 
 acl store_rewrite_list_web url_regex ^http:\/\/([A-Za-z-]+[0-9]+)*\.[A-Za-z]*\.[A-Za-z]*
 acl store_rewrite_list_path urlpath_regex \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)$
 acl store_rewrite_list_web_CDN url_regex ^http:\/\/[a-z]+[0-9]\.google\.com doubleclick\.net
@@ -87,9 +87,10 @@ storeurl_rewrite_concurrency 10
 and refresh pattern
 
 {{{
-refresh_pattern -i (get_video\?|videoplayback\?) 161280 50000% 525948 override-expire reload-into-ims
+#youtube's videos
+refresh_pattern -i (get_video\?|videodownload\?|videoplayback\?) 161280 50000% 525948 override-expire reload-into-ims
 #and for pictures
-refresh_pattern -i \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv) 161280 3000% 525948 override-expire reload-into-ims
+refresh_pattern -i \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)(\?|$) 161280 3000% 525948 override-expire reload-into-ims
 }}}
 Storeurl script(where concurrency is > 0) or the test.pl above. concurrency 10 is faster than children 10.
 {{{
@@ -280,7 +281,7 @@ Diff file below..
      debug(33, 2) ("clientCacheHit: refreshCheckHTTPStale returned %d\n", stale);
      if (stale == 0) {
 }}}
-'''Squid version:''' squid-2.HEAD-20081105
+'''Squid version:''' squid-2.HEAD-20081105 also works on 2.7 series
 
 Good luck!
 
