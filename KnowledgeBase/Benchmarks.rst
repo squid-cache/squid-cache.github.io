@@ -23,6 +23,21 @@ There is no good fixed benchmark test yet to measure by so comparisons are not s
 || RPS || Add all number for '''Average *** requests per minute since start''' together and divide by 60 for per-second ||
 || Hit Ratio || Values of '''Request Hit Ratios''': 5min - 60min . Only total hit ratio matters here. disk and memory hit ratios are highly specific to the amount of RAM available.  ||
 
+## TEMPLATE entry:
+##
+##|| CPU ||  ||
+##|| RAM ||  ||
+##|| HDD ||  ||
+##|| OS  ||  ||
+##|| Users ||  ||
+##|| RPS ||  ||
+##|| Hit Ratio || ||
+##
+##{{{
+##Submitted by: NAME - COMPANY-IF_ALLOWED. DATE.
+##}}}
+##
+
 = Squid 3.0 =
 
 == STABLE 5 ==
