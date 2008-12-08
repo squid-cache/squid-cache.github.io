@@ -22,6 +22,10 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * ZeroSizedReply: Recurrent issues with some setups.
  * MultipleInstances: how-to run multiple squid servers on a single box.
 
+== Site News ==
+
+ * <<Date(2008-12-08T23:46:37Z)>> The Squid Wiki is now also reachable using IPv6, at the URL http://eu6.squid-cache.org/, running Squid 3.1.0 as a front-end reverse proxy. An IPv6 record will be added within a few weeks for the main URL. If you run a v6-enabled client, please try using the test URL and report any issues to FrancescoChemolli
+
 == Developers corner ==
 
 DeveloperResources section has instructions for [[Squid3VCS|Bazaar]] and [[CvsInstructions|CVS]] access, coding guidelines, and other useful documentation.
