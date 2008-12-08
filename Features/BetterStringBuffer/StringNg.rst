@@ -8,73 +8,57 @@
 ##[[TableOfContents]]
 
 !StringNg is FrancescoChemolli's effort at improving squid's handling of strings (and memory buffers in general).
-While probably not yet optimal, its aim is to be an improvement on the current implementation, especially to aid improve the string users in squid.
 
 == Aims ==
 Aim of this implementation effort is to increase the primitives squid uses for string manipulation, in particular:
  1. memory management
  :: strings should be refcounted and automatically cleaned-up
  1. low-cost copying
- 1. low-cost string slicing (substrings) and pattern matching
+ 1. low-cost string slicing (substrings)
  :: to improve string parsing (HTTP in particular, but not only)
- 1. reasonable appending semantics
- 1. memory manager friendlyness
+ 1. good appending semantics
+ 1. memory manager (!MemPools) friendlyness
  1. functionally complete interface
+ :: leaving the memory-managed realm should be unnecessary except when engaging external libraries.
 
 == Architectural overview ==
-A couple of classes work together to perform the job:
- * {{{String}}} is the public face, and offers access to accessor functions etc.
- * {{{String::Buf}}} performs the (private) low-level work of memory management
+Three main classes perform the job
+ * {{{SBuf}}} is the public face, and offers access to accessor functions. It's aimed at efficient manipulation of binary blobs.
+ * {{{SBuf::SBufStore}}} performs the (private) low-level work of memory management, implementing !RefCountable
+ * {{{StringNg}}} uses a SBuf as a backing store, and implements encoding-aware handling of (non-binary) strings, e.g. for unicode etc.
 
-{{{Buf}}}'s general structure is:
-{{{#!cplusplus
-class Buf {            //Buf is actually a private member class of String
-    char *mem;         //handle to the underlying memory region
-    u_int32_t bufsize; //size of the memory region
-    u_int32_t bufused; //extent of the memory region actually used
-    u_int32_t refs;    //refcount: how many Strings hold references to this Buf
+Instances of SBuf have an N-to-1 relationship with insatnces of SBufStore: one SBufStore holds the data of many strings, possibly overlapping in part or in whole.
 
-    // constructrors, destructors, etc
+An empty SBuf (equivalent to {{{char * =NULL}}} references no SBufStore.
 
-    // utility functions to be described later
-};
-class String {
-    Buf *memhandle;    //reference to the Buf managing the low-level storage area
-    char *buf;         //MUST point into memhandle->mem. It's our data
-    u_int32_t len;     //actual length of this string
+In general SBufs' contents are read-only, and attempting writes to them will perform a copy-on-write operation. Shortcuts are provided for the expected common cases, e.g. appending to a SBuf (no COW when there is unused space at the end of the SBufStore) or when the SBuf is the only holder of the SBufStore.
 
-    // constructors, destructors
-    // assignment operators
-    // accessors, etc.
-    // utility functions
-};
-}}}
+Importing a {{{char[]}}} (at construction time or via assignment) into a SBuf requires allocating a big enough SBufStore and copying the string over.
 
-Strings have an N-to-1 relationship with Bufs: one Buf hold the data of many strings, possibly overlapping in part or in whole.
-An empty string (equivalent to {{{char * =NULL}}} references no Buf.
+Assignment (or copy-construction) of a SBuf is cheap via refcounting
 
-Importing a {{{char[]}}} (at construction time or via assignment) into a String requires allocating a big enough Buf and copying the string over.
+String slicing is also cheap: after bounds checking etc, a new SBuf is created, pointing to a portion of the underlying SBufStore. No attempt is made at joining SBufs with the same contents.
 
-Assignment (or copy-construction) of a String is cheap: clone the data members of String and increase the refcount of the underlying membuf.
-
-String slicing is also cheap: after bounds checking etc, create a new String which points to a portion of the sliced String, and refcount the Buf.
-
-Appending is a bit trickier. It can be done without copying the appended-to string, provided that there is enough unused space in the Buf AND that the appended-to String is at the end of the used region in the Buf. If those are true, the appended String is copied over, otherwise a new big enough Buf is created, the appended-to string is copied at its head, and then the append takes place. This operation should be cheap enough in most common cases, which are when the Buf is owned by a single String.
+Appending is a bit trickier. It can be done without copying the appended-to SBuf, provided that there is enough unused space in the SBufStore AND that the appended-to SBuf is at the end of the used region in the SBufStore. If those are true, the appended SBuf is copied over, otherwise a new big enough SBufStore is created (using hints on the SBuf's history to determine how much headroom to leave), the appended-to SBuf is copied at its head, and then the append takes place. This operation should be cheap enough in most common cases, which are when the SBufStore is owned by a single SBuf.
 
 Memory Manager friendliness can be obtained by tuning the allocation strategies for Bufs. Current thoughts are:
-- small Bufs (<8Kb) should be managed by !MemPools.
-- Bufs bigger than 8Kb should be allocated in sizes compatible with the system page size (minus malloc() overhead). This will maximize the amount of memory available for use while avoiding heap fragmentation.
+- small SBufStores (<8Kb) should be managed by !MemPools.
+- SBufStores bigger than 8Kb should be allocated in sizes compatible with the system page size (minus malloc() overhead). This will maximize the amount of memory available for use while avoiding heap fragmentation.
+
+|| /!\ || A SBufList class is on the drawing board, which would provide even cheaper append semantics, and writev(2)-friendly comm functions. ||
 
 === Optimizations ===
-Strings are mainly immutable. It needn't be so in all cases. For instance, changing portions of strings may be allowed when a String owns a Buf (aka when the Buf's refcount is 0).
+SBufs (and !StringNgs) are mainly immutable. It needn't be so in all cases. For instance, changing portions of strings may be allowed when a SBuf owns a SBufStore (aka when the SBufStore's refcount is 1).
 
 === Thread safety ===
-Thread safety is currently out of scope. This work is however a step in the right direction, as it moves all string-related logic in one place.
-It is also to be understood how to best implement it: not all Strings need it, and it's expensive.
+Thread safety is currently out of scope. This work is however a step in the right direction, as it moves all string-related logic in one place. If it is ever attempted, the best API would seem to be through a lock object, rather than through lock()/unlock().
+
 
 === Prototype ===
-Development will be held out-of-tree until a reasonable prototype of the implementing class has been reached.
-The code is in !LaunchPad at [[https://code.launchpad.net/~kinkie/squid/string-ng|lp:~kinkie/squid/string-ng]]
+Development was started out-of-tree until a reasonable prototype of the implementing class was reached. Launchpad. Branch [[https://code.launchpad.net/~kinkie/squid/string-ng|lp:~kinkie/squid/string-ng]].
+
+Currently being carried out as a feature-branch of HEAD at [[https://code.launchpad.net/~kinkie/squid/|lp:~kinkie/squid/stringng]].
 
 === Step-by-step diagram of MemBuf-emulation functionalities ===
+|| /!\ || Note: this diagram is out-of-date. SBufs no longer point to a char* inside the SBufStore address space, but carry an {offset,length} relative to the head of the SBufStore. ||
 {{attachment:KBuf-work-diagram.png}}
