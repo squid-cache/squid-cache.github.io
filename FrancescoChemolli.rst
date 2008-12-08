@@ -8,6 +8,8 @@ I'm also known by the nickname "Kinkie".
 
 There's a playground for new features available at /LabArea
 
+I'm reachable by email at <<MailTo(kinkie@squid-cache.org)>>
+
 ----
 I'm investigating the possibility of importing IRC logs into the wiki.
 For pointers on how to, see
