@@ -17,6 +17,7 @@ Several people have volunteered their time to check and confirm translations to 
 || German || de || Constantin Rack and  Robert Förster ||
 || English || en, en-au, en-gb || AmosJeffries ||
 || Italian || it || FrancescoChemolli ||
+|| Dutch (Nederland) || nl || Rene Wijninga ||
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
 || Swedish || sv || HenrikNordstrom ||
 ## || Turkish || tr || Umut Çinar ||
@@ -29,7 +30,6 @@ Several people have volunteered their time to check and confirm translations to 
 || Estonian (et) ||
 || Japanese (ja) ||
 || Indonesian (id) ||
-|| Dutch (nl) ||
 || Russian (ru) ||
 || Serbian (sr) ||
 || Ukrainian (uk) ||
