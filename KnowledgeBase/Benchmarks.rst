@@ -80,7 +80,7 @@ Squid is doing a close to default configuration with ICP with peers and Collapse
 || Quad Core ||
 || CPU || Intel(R) Xeon(R) CPU  E5420  @ 2.50GHz ||
 || RAM || 50 GB ||
-|| HDD || N/A (Memory Cache) ||
+|| HDD || N/A (Memory Cache of 40 GB) ||
 || OS  || Centos 5 ||
 || Users || N/A (Reverse Proxy) ||
 || RPS || 323 ||
