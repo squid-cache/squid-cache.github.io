@@ -20,6 +20,7 @@ This section is used to edit and finalize the grouping of source files. The '''G
 Key:
  * (./) Done.
  * {2} AmosJeffries doing now.
+ * {3} AdrianChadd doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
@@ -35,7 +36,7 @@ Key:
 ||  || ''ecap/'' || eCAP support || - ||
 ||  || ''esi/'' || ESI support || ESI* ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
-||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
+|| {3}  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
 || {2} || ''ip/'' || IP Protocol || IPAddress.* IPInterception.* Qos* ||
