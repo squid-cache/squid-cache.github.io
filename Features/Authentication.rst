@@ -440,7 +440,7 @@ Once the admin decides to offer multiple auth-schemes to the clients, Squid __ca
 
 == Can I use more than one user-database? ==
 
-Generally speaking, no. The only exception is the Basic authentication scheme, where you can cook a proxy script which relays the requests to different authenticators and applies an 'OR' type of logic.
+Generally speaking the answer is no, at least not from within Squid.   Unix's PAM authentication method is quite flexible and can authenticate in an either/or/both fashion from more than one authentication source.  The web server Basic authentication scheme provides another approach, where you can cook a proxy script which relays the requests to different authenticators and applies an 'OR' type of logic.
 For all other auth-schemes this cannot be done; this is not a limitation in squid, but it's a feature of the authentication protocols themselves: allowing multiple user-databases would open the door for replay attacks to the protocols.
 
 == References ==
