@@ -20,6 +20,8 @@ Less documented ideas and wishes are available [[Features/Other|elsewhere]].
 
 The definition of a feature is discussed [[CategoryFeature|elsewhere]].
 
+FeatureComparison shows the high-level differences in supported features in the latest Squid releases.
+
 
 == Create a new Feature page ==
 
