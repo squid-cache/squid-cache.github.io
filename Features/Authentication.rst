@@ -45,7 +45,7 @@ These include:
   * LDAP: Uses the Lightweight Directory Access Protocol
   * NCSA: Uses an NCSA-style username and password file.
   * MSNT: Uses a Windows NT authentication domain.
-  * PAM: Uses the Linux Pluggable Authentication Modules scheme.
+  * PAM: Uses the Unix Pluggable Authentication Modules scheme.
   * SMB: Uses a SMB server like Windows NT or Samba.
   * getpwam: Uses the old-fashioned Unix password file.
   * SASL: Uses SALS libraries.
