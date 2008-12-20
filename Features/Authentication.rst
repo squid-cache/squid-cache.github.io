@@ -468,7 +468,7 @@ Simply said, it's not possible to authenticate users using proxy authentication 
 
 == Other Resources ==
  * [[http://www.papercut.com/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory|Configuring Squid Proxy To Authenticate With Active Directory]]
-
-
+ * [[http://wiki.samba.org/index.php/Samba_%26_Active_Directory|Samba & Active Directory]]
+ * [[http://www.kernel.org/pub/linux/libs/pam/Linux-PAM-html/Linux-PAM_SAG.html|The Linux-PAM System Administrators' Guide]]
 -----
 Back to the SquidFaq
