@@ -261,7 +261,11 @@ and is normally enabled by default if you installed Samba from a prepackaged dis
 
 Then follow the Samba installation instructions. But please note that neither nsswitch
 or the pam modules needs to be installed for Squid to function, these are only needed
-if you want your OS to integrate with the domain for UNIX accounts.
+if you want your OS to integrate with the domain for UNIX accounts.  (Note that if
+PAM '''is''' configured to authenticate against Active Directory, so that AD controls
+access to your Unix accounts etc., it may be prudent to have Squid authenticate against
+PAM as well.  PAM can send Squid's authentication requests to Active Directory.  This approach keeps
+all authentication running through PAM, centralizing admiinistration.)
 
 === Test Samba's winbindd ===
 
