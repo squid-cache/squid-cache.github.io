@@ -350,22 +350,6 @@ access_log syslog squid
 /!\ FIXME: complete this chapter
 
 
-== cache/log (Squid-1.x) ==
-
-For Squid-1.1, there are six fields:
-
-[1] '''fileno''': The swap file number holding the object data.  This is mapped to a pathname on your filesystem.
-
-[2] '''timestamp''': This is the time when the object was last verified to be current.  The time is a hexadecimal representation of Unix time.
-
-[3] '''expires''': This is the value of the Expires header in the HTTP reply.  If an Expires header was not present, this will be -2 or FFFFFFFE.  If the Expires header was present, but invalid (unparsable), this will be -1 or FFFFFFFF.
-
-[4] '''lastmod''': Value of the HTTP reply Last-Modified header.  If missing it will be -2, if invalid it will be -1.
-
-[5] '''size''': Size of the object, including headers.
-
-[6] '''url''': The URL naming this object.
-
 == swap.state ==
 
 This file has a rather unfortunate history which has led to it often being called the ''swap log''.  It is in fact a journal of the cache index with a record of every cache object written to disk. It is read when Squid starts up to "reload" the cache quickly.
