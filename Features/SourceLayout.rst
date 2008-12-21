@@ -25,6 +25,7 @@ Key:
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
 || {2} || ''auth/'' || Authentication support || auth/* ||
+|| {3} || ''core/'' || Core stuff which hasn't been further broken apart || ? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
