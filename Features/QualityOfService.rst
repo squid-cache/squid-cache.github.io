@@ -20,9 +20,9 @@
   
  * Allows you to select a TOS/Diffserv value to mark peer hits.
   
- * Allows you to selectively set only sibling or sibling+parent requests
+ * Allows you to selectively set only sibling or parent requests
   
- * Allows any HTTP response towards clients will have the TOS value of the response coming from the remote server masked with the value of zph_preserve_miss_tos_mask. For this to work correctly, you will need to patch your linux kernel with the TOS preserving ZPH patch. The kernel patch can be downloaded from http://zph.bratcheda.org
+ * Allows any HTTP response towards clients will have the TOS value of the response coming from the remote server masked. For this to work correctly, you will need to patch your linux kernel with the TOS preserving ZPH patch. The kernel patch can be downloaded from http://zph.bratcheda.org
   
  * Allows you to mask certain bits in the TOS received from the remote server, before copying the value to the TOS send towards clients.
 
