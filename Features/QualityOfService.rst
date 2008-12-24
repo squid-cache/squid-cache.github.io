@@ -40,27 +40,30 @@ The 3.1 configuration provides clear TOS settings for each outbound response typ
 
  {i} The 0xNN values here are set according to your system policy. They may differ from those shown.
 
+ {i} '''qos_flows''' has been created as final polish from 3.1.0.4.
+
 Responses found as a HIT in the local cache
 {{{
-zph_tos_local 0x30
+qos_flows local-hit=0x30
 }}}
 
-Responses found as a HIT on peer (sibling only) caches.
+Responses found as a HIT on sibling peer.
 {{{
-zph_tos_peer 0x31
-zph_tos_parent off
+qos_flows sibling-hit=0x31
 }}}
 
-Responses found as a HIT on peer (sibling AND parent) caches.
+Responses found as a HIT on parent peer.
+
 {{{
-zph_tos_peer 0x31
-# zph_tos_parent on
+qos_flows parent-hit=0x32
 }}}
 
-Use the same ToS settings received by Squid from the remote server, on the client connection.
- /!\ requires kernel patching.
+'''preserve-miss''' locates and passes the same TOS settings received by Squid from the remote server, on the client connection.
+ /!\ requires Linux with kernel patching.
+
+On non-Linux or unpatched Linux the miss TOS is always zero. The capability may be disabled if desired.
 {{{
-zph_preserve_miss_tos on
+qos_flows disable-preserve-miss
 }}}
 
 
@@ -80,30 +83,14 @@ zph_local 0x30
 Responses found as a HIT on peer (sibling only) caches.
 {{{
 zph_mode tos
-zph_sibling 0x30
+zph_sibling 0x31
 }}}
 
 Responses found as a HIT on peer (parent only) caches.
 {{{
 zph_mode tos
-zph_parent 0x30
+zph_parent 0x32
 }}}
-
-== Future Developments ==
-
-Update:
-
-What I'd really like to see is a slightly better config which looks something like this:
-  qos_mode on off ip tos parent=0x1 sibling=0x1 local=0x1 option=136
-
- {i} NP: Now working on the config polish for 3.1. It's hit a few hurdles with the parser, but getting close to done.
-
-
-Meanwhile for those who keep asking:
-  3.0 does have an untested patch at http://www.squid-cache.org/Versions/v3/3.0/changesets/b8770.patch . But be warned;
- * it has had no testing outside the initial developer.
- * Does not use the same config syntax as the final versions.
- * has at least one known bug so far.
 
 ----
 CategoryFeature
