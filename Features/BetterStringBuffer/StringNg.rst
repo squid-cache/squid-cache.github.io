@@ -23,11 +23,11 @@ Aim of this implementation effort is to increase the primitives squid uses for s
 
 == Architectural overview ==
 Three main classes perform the job
- * {{{SBuf}}} is the public face, and offers access to accessor functions. It's aimed at efficient manipulation of binary blobs.
- * {{{SBuf::SBufStore}}} performs the (private) low-level work of memory management, implementing !RefCountable
- * {{{StringNg}}} uses a SBuf as a backing store, and implements encoding-aware handling of (non-binary) strings, e.g. for unicode etc.
+ * {{{SBuf}}} is the public face, and offers access to various manipulation functions. It's aimed at efficient manipulation of binary blobs.
+ * {{{SBuf::SBufStore}}} performs the (private) low-level work of memory management, via the {{{RefCountable}}} framework
+ * {{{StringNg}}} uses a SBuf as a backing store, and implements encoding-aware handling of (non-binary) strings, e.g. for Unicode etc.
 
-Instances of SBuf have an N-to-1 relationship with insatnces of SBufStore: one SBufStore holds the data of many strings, possibly overlapping in part or in whole.
+Instances of SBuf have an N-to-1 relationship with instances of SBufStore: one SBufStore holds the data of many strings, possibly overlapping in part or in whole.
 
 An empty SBuf (equivalent to {{{char * =NULL}}} references no SBufStore.
 
