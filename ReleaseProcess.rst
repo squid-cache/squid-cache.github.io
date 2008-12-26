@@ -23,7 +23,7 @@ AmosJeffries makes a new Stable release for Squid-3 at soonest available time af
 
  * At least one new major, critical, or blocker bug is fixed.
  * 4 or more less important bugs have been fixed.
- * 100 lines of more have been changed in the code.
+ * 100 lines or more have been changed in the code.
  * 4-8 weeks have passed and changes have been made to the code.
 
 == Beta Release / Candidate Release ==
@@ -43,7 +43,7 @@ AmosJeffries makes a Beta release for Squid-3 at soonest available time after on
 
  * At least one new critical, or blocker bug is fixed.
  * ~10 or more less important bugs have been fixed.
- * 1000 lines of more have been changed in the code.
+ * 1000 lines or more have been changed in the code.
  * 8-16 weeks have passed and changes have been made to the code.
 
 == Development Release ==
