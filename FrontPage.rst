@@ -6,12 +6,6 @@ This wiki is dedicated to hosting [[http://www.squid-cache.org/|Squid Web Cache]
 
 To contribute to this Wiki, please register by using the Login link and then email the <<MailTo(kinkie AT squid-cache DOT org,wiki administrator)>> to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox.
 
-= Main site temporarily down! =
-The main squid server is temporarily unreachable due to a hardware failure.
-You can still reach any of the main site mirrors: here's a few
-|| [[http://www1.at.squid-cache.org|at]] || [[http://www1.gr.squid-cache.org|gr]] || [[http://www2.de.squid-cache.org|de2]] ||
-|| [[http://www1.is.squid-cache.org|is]] || [[http://www1.jp.squid-cache.org|jp]] || [[http://www1.us.squid-cache.org|us1]] ||
-|| [[http://www1.it.squid-cache.org|it]] || [[http://www2.nl.squid-cache.org|nl2]] || [[http://www1.ie.squid-cache.org|ie]] ||
 
 == Starting points ==
 
@@ -21,6 +15,8 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * Release [[RoadMap|plans]]
  * Configuration [[ConfigExamples|examples]] (WCCPv2, NTLM authentication, etc.)
  * Wiki [[SiteNavigation|navigation]]
+ * main project site (and some of its mirrors): [[http://www1.it.squid-cache.org|it]] [[http://www1.at.squid-cache.org|at]] [[http://www1.gr.squid-cache.org|gr]] [[http://www2.de.squid-cache.org|de2]] [[http://www1.is.squid-cache.org|is]] [[http://www1.jp.squid-cache.org|jp]] [[http://www1.us.squid-cache.org|us1]] [[http://www2.nl.squid-cache.org|nl2]] [[http://www1.ie.squid-cache.org|ie]] [[http://www.squid-cache.org|us]]
+
 
 === Popular topics ===
  * [[KnowledgeBase/PerformanceAnalysis|Performance Analysis]]: "Help! My users complain that the proxy is slow!"
