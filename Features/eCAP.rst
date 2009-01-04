@@ -39,5 +39,11 @@ adaptation_access reqFilter allow all
 
 ICAP and eCAP services can co-exist. ACLs control which service gets to process the HTTP message.
 
+
+== Modules available for Squid 3.1 and later ==
+
+ * gzip compression http://www.vigos.com/products/eCAP/
+
+
 ----
 CategoryFeature
