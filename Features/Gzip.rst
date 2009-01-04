@@ -6,17 +6,13 @@
 
  * '''Goal''': To make Squid capable of compressing or decompressing objects in transit.
 
- * '''Status''': Groundwork done.
+ * '''Status''': Done. eCAP module available.
 
- * '''ETA''': unknown
+ * '''Version''': 3.1
 
- * '''Priority''': 2
+ * '''Developer''': Constantin Rack
 
- * '''Version''': 3.3
-
- * '''Developer''': AmosJeffries
-
- * '''More''': http://devel.squid-cache.org/projects.html#gzip
+ * '''More''': http://www.vigos.com/products/eCAP/
 
 
 == Details ==
@@ -24,7 +20,8 @@
 A patch (linked above) was started for early 3.0. This needs to be updated to current code, tested, and integrated into the main sources.
 
 
-'''[Update]''': This content-adaptation is now waiting on the [[../eCAP]] feature. That is expected to allow simple port as an eCAP module which just streams the data object through a gzip library and adds the appropriate header changes to Squid.
+'''[Update]''': This content-adaptation is now available as an [[../eCAP]] feature.
+
 
 ----
 CategoryFeature
