@@ -19,6 +19,9 @@ Other developers are often able to provide projects for anyone just wanting to c
 === Code Style ===
 Squid-2 and Squid-3 use different coding styles. Style requirements can be found (where is the most current??)
 
+Squid-3 formatting is presently handled by the maintainer post-commit. Self-checks may be done using '''astyle 2.62''' and the '''scripts/srcformat.sh''' script.
+
+
 === Submission Format ===
 
 Submissions are emailed to squid-dev for merging, one submission per post. The submission email must contain:
@@ -30,7 +33,7 @@ Submissions are emailed to squid-dev for merging, one submission per post. The s
 
 === Merging Steps for Squid3 ===
 
- 1. Check that you have added release notes, if any are needed: '''doc/release-notes-3.X.sgml'''. Don't worry about the HTML or TXT files, they are automatically built by the maintainer.
+ 1. Check that you have added release notes, if any are needed: '''doc/release-notes/release-3.X.sgml'''. Don't worry about the HTML or TXT files, they are automatically built by the maintainer.
 
  1. If applicable, check that you have added the feature sponsor to the SPONSORS file.
 
