@@ -4,7 +4,6 @@
 
 ## This page documents the requirements for distributing third-party modules as part of Squid
 
-## if you want to have a table of comments remove the heading hashes from the next line
 <<TableOfContents>>
 
 == Third Party Modules in Squid ==
@@ -23,6 +22,8 @@ It is also possible to use this wiki to distribute those modules as [[HelpOnActi
 
 To be given write-access to the wiki please follow the instructions in FrontPage.
 
+
+---- /!\ '''Edit conflict - other version:''' ----
 === Using LaunchPad ===
 
 [[https://launchpad.net/|LaunchPad]] is a service maintained by Canonical to host and help Free/Open Source Software projects by offering services related to code development, such as code repositories, bug tracking databases, documentation repositories etc. It is very well integrated with [[Squid3VCS|Bazaar]], the code repository tool used by the Squid project.
@@ -30,10 +31,14 @@ To be given write-access to the wiki please follow the instructions in FrontPage
 It is possible to also use Launchpad to mainain a link to the squid project for self-distributed modules: the easiest way is to use a Launchpad Blueprint, mentioning "squid" as a dependency for a project. That will automatically link third-party projects to the [[https://blueprints.launchpad.net/squid|Squid Blueprints]] page.
 
 
+---- /!\ '''Edit conflict - your version:''' ----
+
+---- /!\ '''End of edit conflict''' ----
+
 == Bundled modules ==
 
 The Squid Team is also open to requests from third-parties to bundle extension modules with the Squid releases.
-We are currently developing a set of guidelines to help ease the distribution integration. Until they are finalized, we ask interested parties to use a [[Features|Feature submission]] to track them
+We are currently developing a set of guidelines to help ease the distribution integration. Until they are finalized, we ask interested parties to use a [[Features|Feature submission]] to track them and apply with the project MergeProcedure
 
 
 
