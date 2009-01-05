@@ -1,0 +1,38 @@
+##master-page:SquidTemplate
+#format wiki
+#language en
+
+## This page documents the requirements for distributing third-party modules as part of Squid
+
+## if you want to have a table of comments remove the heading hashes from the next line
+<<TableOfContents>>
+
+== Third Party Modules in Squid ==
+
+Squid offers many different interfaces and API for extension, and has for quite some time. The number and power of these interfaces has grown in time, as has their usefulness.
+Finding those plugins may be a hard task for the interested users; the purpose of this page is to help extension modules' authors make their work known to users.
+
+|| /!\ || The Squid Development Team cannot in any way offer any warranty, or take any responsibility, on any third-party code. We did not write it, and we cannot support nor maintain it. ||
+
+== Self-distributed modules ==
+
+Authors who wish to self-distribute their add-on modules can publish a feature-like page pointing to their work in the [[ThirdPartyModuleCategory|Third-party modules registry]].
+
+It is possible - and in fact encouraged - to use the Squid Wiki infrastructure to document extension modules.
+It is also possible to use this wiki to distribute those modules as [[HelpOnActions/AttachFile|Wiki Attachments]]
+
+To be given write-access to the wiki please follow the instructions in FrontPage.
+
+
+== Bundled modules ==
+
+The Squid Team is also open to requests from third-parties to bundle extension modules with the Squid releases.
+We are currently developing a set of guidelines to help ease the distribution integration. Until they are finalized, we ask interested parties to use a [[Features|Feature submission]] to track them
+
+
+
+
+----
+Discuss this page using the "Discussion" link in the main menu
+
+<<Include(/Discussion)>>
