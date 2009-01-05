@@ -15,13 +15,12 @@ Finding those plugins may be a hard task for the interested users; the purpose o
 
 == Self-distributed modules ==
 
-Authors who wish to self-distribute their add-on modules can publish a feature-like page pointing to their work in the [[ThirdPartyModuleCategory|Third-party modules registry]].
+Authors who wish to self-distribute their add-on modules can publish a feature-like page pointing to their work in the [[#modules|Third-party modules registry]].
 
 It is possible - and in fact encouraged - to use the Squid Wiki infrastructure to document extension modules.
 It is also possible to use this wiki to distribute those modules as [[HelpOnActions/AttachFile|Wiki Attachments]]
 
 To be given write-access to the wiki please follow the instructions in FrontPage.
-
 
 === Using LaunchPad ===
 
@@ -32,15 +31,17 @@ It is possible to also use Launchpad to mainain a link to the squid project for 
 == Bundled modules ==
 
 The Squid Team is also open to requests from third-parties to bundle extension modules with the Squid releases.
-We are currently developing a set of guidelines to help ease the distribution integration. Until they are finalized, we ask interested parties to them for tracking and apply with the project MergeProcedure
+We are currently developing a set of guidelines to help ease the distribution integration. Until they are finalized, we ask interested parties to them for tracking and apply with the project MergeProcedure.
 
 
-<<Anchor(modules-registry)>>
+<<Anchor(modules)>>
 = Modules Registry =
 
+Here's an auto-generated list of available third-party modules.
 <<FullSearch(title:ThirdPartyModules/)>>
 
-=== Register a new third-party module ===
+== Register a new third-party module ==
+
 Choose a good WikiName for it and enter it here:
 <<NewPage(ThirdPartyModuleTemplate, Create, ThirdPartyModules)>>
 
