@@ -32,7 +32,7 @@ It is possible to also use Launchpad to mainain a link to the squid project for 
 == Bundled modules ==
 
 The Squid Team is also open to requests from third-parties to bundle extension modules with the Squid releases.
-We are currently developing a set of guidelines to help ease the distribution integration. Until they are finalized, we ask interested parties to use a [[Features|Feature submission]] to track them and apply with the project MergeProcedure
+We are currently developing a set of guidelines to help ease the distribution integration. Until they are finalized, we ask interested parties to them for tracking and apply with the project MergeProcedure
 
 
 <<Anchor(modules-registry)>>
