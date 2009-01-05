@@ -23,17 +23,11 @@ It is also possible to use this wiki to distribute those modules as [[HelpOnActi
 To be given write-access to the wiki please follow the instructions in FrontPage.
 
 
----- /!\ '''Edit conflict - other version:''' ----
 === Using LaunchPad ===
 
 [[https://launchpad.net/|LaunchPad]] is a service maintained by Canonical to host and help Free/Open Source Software projects by offering services related to code development, such as code repositories, bug tracking databases, documentation repositories etc. It is very well integrated with [[Squid3VCS|Bazaar]], the code repository tool used by the Squid project.
 
 It is possible to also use Launchpad to mainain a link to the squid project for self-distributed modules: the easiest way is to use a Launchpad Blueprint, mentioning "squid" as a dependency for a project. That will automatically link third-party projects to the [[https://blueprints.launchpad.net/squid|Squid Blueprints]] page.
-
-
----- /!\ '''Edit conflict - your version:''' ----
-
----- /!\ '''End of edit conflict''' ----
 
 == Bundled modules ==
 
