@@ -44,3 +44,4 @@
  * ChudyFernandez
  * JamesJohnston
  * KarlPinc
+ * RegardtVanDeVyver
