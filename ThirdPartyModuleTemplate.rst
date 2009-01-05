@@ -25,9 +25,11 @@
 ## leaving the above summary information in the page "header".
 
 <<Anchor(files)>>
+## 
+## To upload your module, you can use the "Attachments" item in the wiki actions menu (here on the left)
+##
 ## If you do not distribute your module from the wiki, please remove everything after this line..
 <<AttachList>>
-<<AttachFile>>
 ## and until this line.
 ## Thanks for keeping your wiki neighbourhood clean!
 
