@@ -13,7 +13,7 @@
 
 Historically, many Squid source files have been dumped into squid/src directory. That directory has accumulated more than 400 source files. This project will group closely related files and place groups in individual directories. The squid/src directory will contain pretty much nothing but Makefiles and subdirectories.
 
-== Layout ==
+== Squid Source Code Layout ==
 
 This section is used to edit and finalize the grouping of source files. The '''Group''' column contains src/ subdirectory names. The '''Files''' section lists current file names and assumes file extensions .h, .cc, and .cci are added to the corresponding file names and masks.
 
@@ -50,19 +50,17 @@ The following shuffling is linked to major code re-writes and will be held back 
 
 == Non-Squid Bundled Source code ==
 
-Additional sources,
-
-This section is used to edit and finalize the grouping of source files important for users but not integral to build and run Squid. These sources are generally contributed by third parties and vetted by the Squid Developers.
+This section is used to edit and finalize the grouping of source files important for users but not integral to build and run Squid. These sources are generally contributed by third parties under GPL and vetted by the Squid Developers for bundling.
 
 || '''Directory''' || || '''Content Type''' ||
 ||<-2> helpers/ || Helper applications which may be run by configuration. ||
-|| || helpers/basic_auth/ || auth_param basic ||
-|| || helpers/digest_auth/ || auth_param digest ||
-|| || helpers/external_acl/ || external_acl_type ||
-|| || helpers/negotiate_auth/ || auth_param negotiate ||
-|| || helpers/ntlm_auth/ || auth_param ntlm ||
+|| || basic_auth/ || auth_param basic ||
+|| || digest_auth/ || auth_param digest ||
+|| || external_acl/ || external_acl_type ||
+|| || negotiate_auth/ || auth_param negotiate ||
+|| || ntlm_auth/ || auth_param ntlm ||
 ||<-2> modules/ || Extension modules which may be linked by configuration. ||
-|| || modules/ecap/ || eCAP ||
+|| || ecap/ || eCAP ||
 ||<-2> tools/ || Administration tools ||
 
 
