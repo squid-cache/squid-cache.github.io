@@ -7,7 +7,7 @@
 
 = Module: What do you want others to call this module? =
 
-|| Author || @NAME@ ||
+|| Author || @USERNAME@ ||
 || Date Added || @DATE@ ||
 || Summary || What is the purpose of this module? ||
 || Status || What is the status of this module? Is it under development or production-tested? ||
