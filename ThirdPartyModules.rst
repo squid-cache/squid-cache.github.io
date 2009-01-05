@@ -6,7 +6,7 @@
 
 <<TableOfContents>>
 
-== Third Party Modules in Squid ==
+= Third Party Modules in Squid =
 
 Squid offers many different interfaces and API for extension, and has for quite some time. The number and power of these interfaces has grown in time, as has their usefulness.
 Finding those plugins may be a hard task for the interested users; the purpose of this page is to help extension modules' authors make their work known to users.
@@ -35,6 +35,14 @@ The Squid Team is also open to requests from third-parties to bundle extension m
 We are currently developing a set of guidelines to help ease the distribution integration. Until they are finalized, we ask interested parties to use a [[Features|Feature submission]] to track them and apply with the project MergeProcedure
 
 
+<<Anchor(modules-registry)>>
+= Modules Registry =
+
+<<FullSearch(title:ThirdPartyModules/)>>
+
+=== Register a new third-party module ===
+Choose a good WikiName for it and enter it here:
+<<NewPage(ThirdPartyModuleTemplate, Create, ThirdPartyModules)>>
 
 
 ----
