@@ -68,7 +68,7 @@ Any existing Squid which have been configured with ''error_directory'' in their 
 
 == So how can I do this upgrade? ==
 
-Squid admin just need to follow these steps:
+Squid 3.1 admin just need to follow these steps:
 
  * Check that your preferred default language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en-gb, etc.).
  * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
