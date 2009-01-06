@@ -152,10 +152,11 @@ More ideas are available [[Features/Other|elsewhere]].
 ## (3.1)
 ## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.1 regex:ETA...:.unknown -regex:Status...:.complete)>>
 
+= Schedule for Future Removals =
 
-## = Future versions =
+Certain features are no longer relevant as the code improves and are planned for removal. Due to the possibility they are being used we list them here along with the release version they are expected to disappear.
 
-## The set of features going beyond Squid 3.2 release have not been determined yet. As usual, both performance and functionality improvements are expected. Suggestions are welcome.
-
-## Squid3 wishes without a specific minor version.
-## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3[^\.])>>
+|| ''' Version''' || '''Feature''' || '''Why''' ||
+|| 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[../../Translations|langpack]] ||
+|| 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
+|| 3.3 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
