@@ -22,7 +22,7 @@ with this simple command:
 % make install
 }}}
 
-If you have enabled the [[../OperatingSquid|pinger]]
+If you have enabled ICMP or the [[../OperatingSquid|pinger]]
 then you will also want to type
 {{{
 % su
@@ -37,7 +37,7 @@ After installing, you will want to read ../ConfiguringSquid to edit and customiz
 First you need to check your Squid configuration. The Squid configuration
 can be found in ''/usr/local/squid/etc/squid.conf'' and includes documentation on all directives.
 
-In the Suqid distribution there is a small QUICKSTART guide indicating
+In the Squid distribution there is a small QUICKSTART guide indicating
 which directives you need to look closer at and why. At a absolute minimum
 you need to change the http_access configuration to allow access from
 your clients.
@@ -49,7 +49,7 @@ To verify your configuration file you can use the -k parse option
 
 If this outputs any errors then these are syntax errors or other fatal
 misconfigurations and needs to be corrected before you continue. If it is
-silent and immediately gives back the command promt then your squid.conf
+silent and immediately gives back the command prompt then your squid.conf
 is syntactically correct and could be understood by Squid.
 
 After you've finished editing the configuration file, you can
@@ -84,13 +84,11 @@ just leave off all options:
 
 || <!> ||Depending on which http_port you select you may need to start squid as root (http_port <1024)||
 
-|| <!> ||In Squid-2.4 and earlier Squid was installed in bin by default, not sbin||
-
 == How do I start Squid automatically when the system boots? ==
 
 === by hand ===
 
-Squid-2 has a restart feature built in.  This greatly simplifies
+Squid has a restart feature built in.  This greatly simplifies
 starting Squid and means that you don't need to use ''!RunCache''
 or ''inittab''.  At the minimum, you only need to enter the
 pathname to the Squid executable.  For example:
@@ -136,9 +134,10 @@ Solaris, IRIX, HP-UX, Linux), you can add a line like this:
 {{{
 sq:3:respawn:/usr/local/squid/sbin/squid.sh < /dev/null >> /tmp/squid.log 2>&1
 }}}
+## AYJ: is the respawn still relevant with auto-restart?
 
 We recommend using a ''squid.sh'' shell script, but you could instead call
-Squid directly with the -N option and other options you may require.  A sameple ''squid.sh'' script is shown below:
+Squid directly with the -N option and other options you may require.  A sample ''squid.sh'' script is shown below:
 {{{
 #!/bin/sh
 C=/usr/local/squid
@@ -310,21 +309,17 @@ modify the ''cache_dir'' configuration.
 
 '''-D''' Do not make initial DNS tests.  Normally, Squid looks up
 some well-known DNS hostnames to ensure that your DNS
-name resolution service is working properly.
+name resolution service is working properly. (!) obsolete in 3.1 and later.
 
 '''-F''' If the ''swap.state'' logs are clean, then the cache is
 rebuilt in the "foreground" before any requests are
 served.  This will decrease the time required to rebuild
-the cache, but HTTP requests will not be satisified during
+the cache, but HTTP requests will not be satisfied during
 this time.
 
 '''-N''' Do not automatically become a background daemon process.
 
 '''-R''' Do not set the SO_REUSEADDR option on sockets.
-
-'''-V''' Enable virtual host support for the httpd-accelerator mode.
-This is identical to writing ''httpd_accel_host virtual''
-in the config file.
 
 '''-X''' Enable full debugging while parsing the config file.
 
@@ -350,7 +345,7 @@ tasks on the same server as the proxy, such as if you have a lot of logs
 and need to run various statistics collections during peak hours.
 
 The authentication and group helpers barely use any CPU and does
-not benefit from dual-CPU configuration.
+not benefit much from dual-CPU configuration.
 
 == Is it okay to use separate drives for Squid? ==
 
@@ -362,18 +357,7 @@ If your system is very I/O bound, you will want to have both your OS and log dir
 
 == Is it okay to use RAID on Squid? ==
 
-We generally recommend you do not run RAID on the Squid disks especially those on which your cache content is stored.
-
-If you must use RAID:
-
-RAID1 suffers a very slight degradation in write performance but slight improvement in read performance, and you may find it better use of resources to run two separate drives and have double the disk cache space.  Cache data is not usually considered critical so generally there is little point in running squid on a RAID1 array.  However as pointed out above it may make sense to run your O/S in a RAID-1 configuration.
-
-RAID0 (striping) with Squid only gives you the drawback that if you lose one of the drives the whole stripe set is lost. There is no
-benefit in performance as Squid already distributes the load on the drives quite nicely.  It is better to configure multiple separate drives with a separate cache_dir entrie for each one than one RAID0 partition.
-
-Squid is the worst case application for RAID5, whether hardware or software, and will absolutely kill the performance of a RAID5. Once the
-cache has been filled Squid uses a lot of small random writes which the worst case workload for RAID5, effectively reducing write speed to only
-little more than that of one single drive.
+see Section on [[../RAID|RAID]]
 
 ##end
 ----
