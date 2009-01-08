@@ -50,7 +50,7 @@ The following shuffling is linked to major code re-writes and will be held back 
 
 == Non-Squid Bundled Source code ==
 
-This section is used to edit and finalize the grouping of source files important for users but not integral to build and run Squid. These sources are generally contributed by third parties under GPL and vetted by the Squid Developers for bundling.
+This section is used to edit and finalize the grouping of source files important for users but not integral to build and run Squid. These sources are generally contributed by third parties and vetted by the Squid Developers for bundling.
 
 || '''Directory''' || || '''Content Type''' ||
 ||<-2> helpers/ || Helper applications which may be run by configuration. ||
