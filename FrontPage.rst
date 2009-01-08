@@ -12,8 +12,8 @@ To contribute to this Wiki, please register by using the Login link and then ema
 You can learn about what a Wiki is and how to use it at AboutWiki. The following pages are good starting points.
 
  * [[SquidFaq|FAQ]]
- * Release [[RoadMap|plans]]
- * Configuration [[ConfigExamples|examples]] (WCCPv2, NTLM authentication, etc.)
+ * Development RoadMap
+ * [[ConfigExamples|Configuration examples]], or tips on how to address specific scenarios
  * Wiki [[SiteNavigation|navigation]]
  * main project site (and some of its mirrors): [[http://www1.it.squid-cache.org|it]] [[http://www1.at.squid-cache.org|at]] [[http://www1.gr.squid-cache.org|gr]] [[http://www2.de.squid-cache.org|de2]] [[http://www1.is.squid-cache.org|is]] [[http://www1.jp.squid-cache.org|jp]] [[http://www1.us.squid-cache.org|us1]] [[http://www2.nl.squid-cache.org|nl2]] [[http://www1.ie.squid-cache.org|ie]] [[http://www.squid-cache.org|us]]
 
@@ -24,10 +24,13 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * [[NTLMIssues]]: Things you can (and cannot) do with NTLM
  * ZeroSizedReply: Recurrent issues with some setups.
  * MultipleInstances: how-to run multiple squid servers on a single box.
+ * Squid ConfigExamples
+ * The KnowledgeBase (tips, tricks and various troubleshooting howtos)
 
 == Site News ==
 
  * <<Date(2008-12-08T23:46:37Z)>> The Squid Wiki is now also reachable using IPv6, at the URL http://eu6.squid-cache.org/, running Squid 3.1.0 as a front-end reverse proxy. An IPv6 record will be added within a few weeks for the main URL. If you run a v6-enabled client, please try using the test URL and report any issues to FrancescoChemolli
+ * <<Date(2009-01-08T08:52:58Z)>> Added ThirdPartyModules registry. All developers of squid add-ons (authenticators, redirectors, external authorization modules, ICAP and eCAP adapters) are encouraged to register their work there.
 
 If you experience problems with the site or the contents, please see ReportingWikiProblems for instructions on how to help us out improve.
 
