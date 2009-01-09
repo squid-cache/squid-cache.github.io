@@ -20,13 +20,10 @@ The aim is to maintain and develop the Squid-2 branch to meet performance, scala
 
 This roadmap covers approximately twelve months of development and testing time, if required funding is obtained.
 
-=== Squid-2.6 ===
-This is the current "stable" release. No new features are planned at this time for inclusion into Squid-2.6.
-
 === Squid-2.7 ===
-Squid-2.7 is a future release with the number of current and planned improvements:
+This is the current "stable" release. No new features are planned at this time for inclusion into Squid-2.7.
 
- * '''DONE (2.7)''' Modular logging work - including external logging daemon support, UDP logging support
+ * '''DONE (2.7), UNDERWAY 3.2''' Modular logging work - including external logging daemon support, UDP logging support
  * '''DONE (2.7)''' Further transparent interception improvements from Steven Wilton
  * '''DONE (2.7)''' "store rewrite" stuff from Adrian Chadd - rewrite URLs when used for object storage and lookup; useful for caching sites with dynamic URLs with static content (eg Windows Updates, !YouTube, Google Maps, etc) as well as some CDN-like uses.
  * '''DONE (2.7, 3.1)''' Removal of the dummy "null" store type and useless default cache_dir.
@@ -78,13 +75,13 @@ This release should focus on further modularization and API changes to enable ne
  * Message-based data flow model? - something enabling both HTTP/1.1 and inline content transformation
  * '''DONE (3.1)''' Investigate HTTP server-side IPv6 support and gatewaying
  * HTTP/1.1 support
- * Transfer/Content gzip encoding (if possible)
+ * '''DONE 3.1''' Transfer/Content gzip encoding (if possible)
  * Memory and Disk storage changes
   * Split storage index lookup code to be fully asynchronous
   * Look at supporting sparse objects efficiently
   * Look at improvements for reading, writing, creating and deleting objects
   * Look at improved disk storage mechanisms for small and large object stores
-  * Improve large memory object performance
+  * '''DONE 3.0''' Improve large memory object performance
 
 Like the proposed Squid-2.8; these changes should be feasible within a ~3 month timeframe. Again, these changes both build on Squid-2.8 and provide the ability to improve functionality in the following release.
 
