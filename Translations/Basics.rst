@@ -87,14 +87,14 @@ New suggestions are likely to come in at some point. They need to be checked
  * Visit [[http://translate.treenet.co.nz/projects/squid/]]
  * Click on the name of your language.
  * Click on '''Show Editing Functions''' just under the language name.
- * Click on '''View Suggestions''' which comes up.
+ * Click on '''Review Suggestions''' which comes up.
 
 Each phrase with suggestions will come up with all current details about that text. Changes from existing translation are highlighted to quickly see what the issue is.
 
 Each is listed with two buttons:
 
- * Click on '''accept''' to replace existing translation with the suggested one.
- * Click on '''reject''' to remove the suggestion.
+ * Click on ''green ./''' (accept) to replace existing translation with the suggested one.
+ * Click on '''red X''' (reject) to remove the suggestion.
 
 ==== Adding New Translations ====
 Translators are also encouraged to make sure there are no untranslated entries in the language.
