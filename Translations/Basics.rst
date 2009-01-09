@@ -77,6 +77,8 @@ Once a week each language is checked for missing text, new suggestions, and a fe
 
 The translators then have a week to check the things on that list before they get another reminder TODO summary.
 
+The notice emails contain helpful links which go direct to the page where the needed task can be completed. Saving much time locating things in the maze of job links.
+
  . {i} If there is no translator the list gets sent to the Squid project team as a digest. We usually don't know the language so it's only an indication of where we need to track down new helpers from.
 
 ==== Suggestion Checks ====
