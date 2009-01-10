@@ -29,10 +29,9 @@ Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ri
 
 TProxy 4.1 uses netfilter/iptables (TPROXY target and socket match). If "--enable-linux-netfilter" is used, the "tproxy" option is available for "http_port" lines.
 
-Squid-3 support has been completed and integrated into the latest sources:
+Squid-3 support has been completed and integrated into the sources:
 
- http://www.squid-cache.org/Versions/v3/HEAD/
-
+ http://www.squid-cache.org/Versions/v3/3.1/
 
 To use TPROXY without patching you will need to run Squid 3.1, Linux kernel 2.6.28 and the corresponding iptables release (which should be 1.4.3) when they are all available.
 
