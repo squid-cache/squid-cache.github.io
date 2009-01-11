@@ -204,7 +204,7 @@ From Squid 3.1 the log directory is also configurable. The Debian package defaul
 --with-logdir=/var/log
 }}}
 
-{X} Older Squid needs the following patch to be applied since the /var/logs/ directory for logs has no configure option.
+{X} Older Squid needs the following patch to be applied since the /var/logs/ directory for logs has no configure option. This exact patch requires ./bootstrap.sh to be run again. If that is not possible the same line change can be manually made in src/Makefile.in as well.
 {{{
 --- src/Makefile.am     2007-09-17 14:22:33.000000000 +1200
 +++ src/Makefile.am-new   2007-09-12 19:31:53.000000000 +1200
