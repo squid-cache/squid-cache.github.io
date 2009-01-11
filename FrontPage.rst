@@ -29,7 +29,11 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
 
 == Site News ==
 
- * <<Date(2008-12-08T23:46:37Z)>> The Squid Wiki is now also reachable using IPv6, at the URL http://eu6.squid-cache.org/, running Squid 3.1.0 as a front-end reverse proxy. An IPv6 record will be added within a few weeks for the main URL. If you run a v6-enabled client, please try using the test URL and report any issues to FrancescoChemolli
+ * <<Date(2009-01-12T12:31:37Z)>> The wiki is now fully IPv6 active. The main Squid website is also edging closer with the first full IPv6 mirror in Europe http://www.eu.squid-cache.org .
+
+ * <<Date(2008-12-08T23:46:37Z)>> The Squid Wiki is now also reachable using IPv6, at the URL http://eu6.squid-cache.org/, running Squid 3.1.0 as a front-end reverse proxy. An IPv6 record will be added within a few weeks for the main URL. If you run a v6-enabled client, please try using the test URL and 
+report any issues to FrancescoChemolli
+
  * <<Date(2009-01-08T08:52:58Z)>> Added ThirdPartyModules registry. All developers of squid add-ons (authenticators, redirectors, external authorization modules, ICAP and eCAP adapters) are encouraged to register their work there.
 
 If you experience problems with the site or the contents, please see ReportingWikiProblems for instructions on how to help us out improve.
