@@ -23,7 +23,7 @@ This roadmap covers approximately twelve months of development and testing time,
 === Squid-2.7 ===
 This is the current "stable" release. No new features are planned at this time for inclusion into Squid-2.7.
 
-#content27
+##content27
 
 (ported to 3.0)
  * Work towards HTTP/1.1 compliance
@@ -43,7 +43,7 @@ This is the current "stable" release. No new features are planned at this time f
  * Further transparent interception improvements from Steven Wilton
  * "store rewrite" stuff from Adrian Chadd - rewrite URLs when used for object storage and lookup; useful for caching sites with dynamic URLs with static content (eg Windows Updates, !YouTube, Google Maps, etc) as well as some CDN-like uses.
 
-#endcontent27
+##endcontent27
 
 === Squid-2.8 ===
 
