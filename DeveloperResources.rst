@@ -13,18 +13,22 @@ To interactively browse the repository you can use [[http://www.squid-cache.org/
 || /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb]].||
 
 == Developer Projects ==
+
+ '''Squid-3:'''
+http://launchpad.net provide space for developers to publish and associate their code with the squid project.
+
+ '''Squid-2:'''
 To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
 
 During the life of the Squid project, a number of [[http://www.squid-cache.org/Devel/papers/|papers]] have been published.
 
-Browse Wish List [[Features]] if you want to contribute but do not have a specific project in mind.
 
 == Contributing ==
-If you wish to become a developer the first step is to sign up to the squid-dev mailinglist. This is done by first posting an introduction of yourself to <<MailTo( squid-dev AT squid-cache DOT org)>> , then send a subscription request to <<MailTo(squid-dev-subscribe AT squid-cache DOT org)>>. Please note that all messages must be sent in plain-text only (no HTML email). A read-only [[http://www.squid-cache.org/mail-archive/squid-dev/|archive]] is available to everyone.
+If you wish to become a developer the first step is to sign up to the squid-dev mailing list. This is done by first posting an introduction of yourself to <<MailTo( squid-dev AT squid-cache DOT org)>> , then send a subscription request to <<MailTo(squid-dev-subscribe AT squid-cache DOT org)>>. Please note that all messages must be sent in plain-text only (no HTML email). A read-only [[http://www.squid-cache.org/mail-archive/squid-dev/|archive]] is available to everyone.
 
 If you wish to contribute squid there are certain guidelines you need to follow in your coding style. They are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The [[http://squid.treenet.co.nz/Doc/Code/|Programming Guide]] offers some (but certainly not enough) information on the Squid internals. SquidInternals offers some more-or-less (mostly less) organized snippets.
 
-If you are looking for a new project to work on, query the bugzilla database for [[http://www.squid-cache.org/bugs/buglist.cgi?component=feature&cmdtype=doit|feature requests]].
+If you are looking for a new project to work on check the Wish List at [[RoadMap/Squid3]] or query the bugzilla database for [[http://www.squid-cache.org/bugs/buglist.cgi?component=feature&cmdtype=doit|feature requests]].
 
 Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written a [[http://devel.squid-cache.org/squidhttp1.1.htm|checklist]] for HTTP/1.1 compliance.
 
@@ -47,6 +51,7 @@ drwxr-xr-x        1024 2008/04/06 17:22:10 squid-2.6
 drwxr-xr-x        1024 2008/04/06 17:22:20 squid-2.7
 drwxr-xr-x        1024 2008/04/06 17:21:55 squid-2
 drwxr-xr-x        1024 2008/04/06 17:22:58 squid-3.0
+drwxr-xr-x        1024 2008/04/06 17:22:58 squid-3.1
 drwxr-xr-x        1024 2008/04/06 17:56:42 squid-3
 }}}
 After you've selected the version you wish to download you can:
