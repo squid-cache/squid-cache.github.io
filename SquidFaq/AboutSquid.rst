@@ -32,12 +32,7 @@ We needed to distinguish this new version from the Harvest cache software.  Squi
 
 == What is the latest version of Squid? ==
 
-At the time of update (October 2008);
- * [[../../RoadMap/Squid2|Squid-2.7]] (old stable) [[Squid-3.0]] (current stable) are the stable versions
- * [[Squid-3.1]] is being tested for stability.
- * [[Squid-3.2]] is under development.
-
-Please see [[http://www.squid-cache.org/Versions/|the Squid Versions page]] for the most recent releases and versions.
+This is best answered by the [[http://www.squid-cache.org/Versions/|the Squid Versions page]] where you can also download the sources for releases and versions.
 
 
 == Who is responsible for Squid? ==
@@ -57,6 +52,8 @@ The software is designed to operate on any modern system, and
 is known to work on at least the following platforms:
 
   * Linux
+  * Debian
+  * Ubuntu
   * FreeBSD
   * NetBSD
   * OpenBSD
@@ -83,7 +80,7 @@ Starting from 2.6.STABLE4, Squid will ''compile and run'' on Windows NT and late
 
 GuidoSerassio maintains the official [[http://squid.acmeconsulting.it/|native Windows port]] of Squid (built using the Microsoft toolchain) and is actively working on having the needed changes integrated into the standard Squid distribution. His effort is partially based on earlier Windows NT port by Romeo Anghelache.
 
-The original development code name of the 2.5 project port was SquidNT, but after the 2.6.STABLE4 release, this project was complete. So when speaking about Squid on Windows, people should always refer to Squid, instead to the old SquidNT name.   
+ {i} The original development code name of the 2.5 project port was SquidNT, but after the 2.6.STABLE4 release, this project was complete. So when speaking about Squid on Windows, people should always refer to Squid, instead to the old SquidNT name.   
 
 == What Squid mailing lists are available? ==
 
@@ -171,7 +168,7 @@ The best development option depends on many factors. Here is some project dynami
 
 
 Yes.  Please see [[http://www.squid-cache.org/Support/services.dyn|Squid Support Services]].
-You can also [[http://www.squid-cache.org/Support/services.dyn|donate]] money or equipment to members of the squid core team.
+You can also [[http://www.squid-cache.org/Support/thankyou.dyn|donate]] money or equipment to members of the squid core team.
 
 == Squid FAQ contributors ==
 
@@ -206,7 +203,7 @@ tom minchin,
 Jens-S. V&ouml;ckler,
 Andre Albsmeier,
 Doug Nazar,
-Henrik Nordstrom,
+HenrikNordstrom,
 Mark Reynolds,
 Arjan de Vet,
 Peter Wemm,
@@ -234,7 +231,7 @@ AmosJeffries
 
 == About This Document ==
 
-The Squid FAQ is copyrighted (2006) by The Squid Core Team.
+The Squid FAQ is copyrighted (2006-2009) by The Squid Core Team.
 
 This FAQ was maintained for a long time as an XML Docbook file.
 It was converted to a Wiki in March 2006. The wiki is now the authoritative version.
