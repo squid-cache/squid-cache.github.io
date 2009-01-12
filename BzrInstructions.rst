@@ -229,7 +229,7 @@ bzr diff -c COMMITREVNO > patchfile
 and apply that to cvs with patch:
 
 {{{
-patch -p1 patchfile
+patch -p0 <patchfile
 }}}
 
 == Merge another branch into yours ==
