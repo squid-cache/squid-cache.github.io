@@ -1,3 +1,4 @@
+## page was renamed from NegotiateAuthentication
 #language en
 
 There are four major flavours of authentication available in the HTTP world at this moment (October 2005):
