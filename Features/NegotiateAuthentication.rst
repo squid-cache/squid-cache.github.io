@@ -1,5 +1,23 @@
 ## page was renamed from NegotiateAuthentication
+##master-page:CategoryTemplate
+#format wiki
 #language en
+#faqlisted yes
+
+= Feature: Negotiate Authentication =
+
+ * '''Goal''': Make Squid support Negotiate authentication protocol.
+
+ * '''Status''': Complete.
+
+ * '''Version''': 2.6, 3.0
+
+ * '''Developer''': GuidoSerassio
+
+ * '''More''': http://squid.acmeconsulting.it/
+
+
+= Details =
 
 There are four major flavours of authentication available in the HTTP world at this moment (October 2005):
  * [[WikiPedia:BasicAuthenticationScheme|Basic]] - been around since the very beginning
@@ -9,8 +27,7 @@ There are four major flavours of authentication available in the HTTP world at t
 
 There are reports of a [[WikiPedia:KerberosProtocol|Kerberos]] authentication scheme being seen in the wild (ISA Server 2004). If you see it, shoot on sight. Microsoft recommends to use Negotiate instead.
 
-Squid supports Basic, NTLM (v1 and v2) and Digest. Support for Negotiate is being worked in 
-for both squid 2.5 and 3.0
+Squid supports Basic, NTLM (v1 and v2), Digest, and from Squid-2.6 Negotiate.
 
 Currently only WikiPedia:Firefox 1.5, WikiPedia:SeaMonkey 1.0 and latest beta of [[WikiPedia:InternetExplorer|Internet Explorer]] 7 are known to supporting Negotiate authentication with Squid and ISA server 2004
 
@@ -20,11 +37,9 @@ Negotiate is a wrapper protocol around GSSAPI, which in turn is a wrapper around
 
 The real significance is that supporting it allows to support transparent Kerberos authentication to a MS Windows domain. It is significantly more secure than NTLM and also poses much less burden on the Domain Controller.
 
-== Experimental Squid native Windows build with NEGOTIATE support ==
+== Squid native Windows build with NEGOTIATE support ==
 
-For testing purpose is now available an experimental native Windows build of Squid 2.5 STABLE13 with Negotiate support. The code is based on the merge of negotiate-2.5 and nt-2.5 branches into the new nego-nt-2.5 branch.
-
-The binary package and source archive are available on http://www.acmeconsulting.it/SquidNT.html.
+A native Windows build of Squid with Negotiate support. Binary package and source archive are available on http://squid.acmeconsulting.it/.
 
 
 == What do I need to do to support NEGOTIATE on Squid? ==
@@ -48,3 +63,6 @@ If you want to test the UNIX side of things out, there actually is a way to acce
   {{{
    auth_param negotiate ssh system@netbiosname.domain "win32_negotiate_auth.exe"
 }}}
+
+----
+CategoryFeature
