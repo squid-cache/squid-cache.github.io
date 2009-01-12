@@ -23,13 +23,27 @@ This roadmap covers approximately twelve months of development and testing time,
 === Squid-2.7 ===
 This is the current "stable" release. No new features are planned at this time for inclusion into Squid-2.7.
 
- * '''DONE (2.7), UNDERWAY 3.2''' Modular logging work - including external logging daemon support, UDP logging support
- * '''DONE (2.7)''' Further transparent interception improvements from Steven Wilton
- * '''DONE (2.7)''' "store rewrite" stuff from Adrian Chadd - rewrite URLs when used for object storage and lookup; useful for caching sites with dynamic URLs with static content (eg Windows Updates, !YouTube, Google Maps, etc) as well as some CDN-like uses.
- * '''DONE (2.7, 3.1)''' Removal of the dummy "null" store type and useless default cache_dir.
- * '''DONE (2.7, 3.1)''' Include configuration file support
- * '''ONGOING (2.7, 3.0+)''' Work towards HTTP/1.1 compliance
- * '''DONE 2.7, UNDERWAY 3.1:''' Fixing (or at least working around) [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|Bug #7]]
+#content27
+
+(ported to 3.0)
+ * Work towards HTTP/1.1 compliance
+
+(ported to 3.1)
+
+ * Removal of the dummy "null" store type and useless default cache_dir.
+ * Include configuration file support
+
+(ported to 3.2)
+
+ * Modular logging work - including external logging daemon support, UDP logging support
+
+(not yet ported to Squid-3)
+
+ * Fixing (or at least working around) [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|Bug #7]]
+ * Further transparent interception improvements from Steven Wilton
+ * "store rewrite" stuff from Adrian Chadd - rewrite URLs when used for object storage and lookup; useful for caching sites with dynamic URLs with static content (eg Windows Updates, !YouTube, Google Maps, etc) as well as some CDN-like uses.
+
+#endcontent27
 
 === Squid-2.8 ===
 
@@ -46,7 +60,6 @@ The planned changes will include:
  * '''DONE (3.1)''' Client-side only IPv6 (ie, IPv6 clients connecting to Squid) - forwarding to IPv4 upstreams
   * '''DONE (3.1)''' Specifically for accelerator setups (ie, gatewaying v6 clients to existing v4 setups) but this allows the initial IPv6 code to take shape without requiring the extensive support in HTTP and FTP forwarding that would be required for a full-blown IPv6 implementation.
  * '''DONE (3.1)''' Abstract out tproxy code into os-independent subroutines - aim to support tproxy-2 (Linux), tproxy-4 (Linux), upcoming FreeBSD support (which will be similar to the tproxy-4 method.)
- * '''DONE (2.7, 3.1)''' Config include support
  * Restructure the data paths:
   * '''DONE (2.7)''' Store -> Client buffer referencing
   * Server -> Store buffer referencing '''(Complete; not integrated)'''
