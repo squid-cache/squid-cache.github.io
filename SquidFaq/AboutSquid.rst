@@ -231,7 +231,7 @@ AmosJeffries
 
 == About This Document ==
 
-The Squid FAQ is copyrighted (2006) by The Squid Core Team.
+## The Squid FAQ is copyrighted (2006) by The Squid Core Team.
 
 This FAQ was maintained for a long time as an XML Docbook file.
 It was converted to a Wiki in March 2006. The wiki is now the authoritative version.
