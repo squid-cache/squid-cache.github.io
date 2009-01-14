@@ -12,7 +12,7 @@
 
  * '''Version''': 2.6, 3.0
 
- * '''Developer''': GuidoSerassio
+ * '''Developer''': GuidoSerassio, HenrikNordstrom, RobertCollins, FrancescoChemolli
 
  * '''More''': http://squid.acmeconsulting.it/
 
