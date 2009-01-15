@@ -11,13 +11,15 @@
 == Outline ==
 This is a work in progress (read: a place for Adrian to jot down TPROXY documentation notes as he's coming up with the authoritative documentation.)
 
+ {i} The following documentation applies to Squid-2 WCCPv2 support and TPROXYv2 support running on a Linux box. If you have a newer version of the exact configuration options may differ.
+
+|| /!\ || Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [[Features/Tproxy4]]) ||
+
+
 == Usage ==
 (stuff from emails from Steve Wilton)
 
 The kernel and iptables need to be patched with the tproxy patches (and the tproxy include file needs to be placed in /usr/include/linux/netfilter_ipv4/ip_tproxy.h or include/netfilter_ipv4/ip_tproxy.h in the squid src tree).
-|| /!\ || Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [[Features/Tproxy4]]) ||
-
-
 
 
 TThe iptables rule needs to use the TPROXY target (instead of the REDIRECT target) to redirect the port 80 traffic to the proxy.  Ie:
