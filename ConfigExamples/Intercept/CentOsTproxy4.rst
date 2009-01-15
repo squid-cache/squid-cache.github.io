@@ -12,8 +12,9 @@ by ''Nicholas Ritter''
 == Outline ==
 Listed below are the beginnings of steps I have. They are not complete, I left out some steps which I will add and repost. Please let me know if you have questions/troubles with the steps. I have not fully checked the steps for clarity and accuracy...but I eventually will.
 
-These steps are for setting Squid3-HEAD with TProxy, IP spoofing and Cisco WCCP. This is not a bridging setup.
-|| {i} || '''Also''', there is a patch for squid that I have applied which I have not noted in the steps, but I want to talk to them about it's commit status before putting it in the steps. ||
+These steps are for setting [[Squid-3.1]] with [[../../Features/Tproxy4|TPROXYv4]], IP spoofing and Cisco WCCP. This is not a bridging setup.
+
+## || {i} || '''Also''', there is a patch for squid that I have applied which I have not noted in the steps, but I want to talk to them about it's commit status before putting it in the steps. ||
 
 
 
@@ -29,7 +30,7 @@ These steps are for setting Squid3-HEAD with TProxy, IP spoofing and Cisco WCCP.
  4. Download iptables-1.4.0 from netfilter.org.
   a. /!\ Be sure to '''NOT''' download a later version of iptables 1.4 (such as 1.4.1 or 1.4.1.1)
  5. Download kernel 2.6.25.11 from kernel mirror
- 6. Download [[http://www.squid-cache.org/Versions/v3/HEAD/|Squid3-HEAD]] (squid 3.1 source code).
+ 6. Download [[http://www.squid-cache.org/Versions/v3/3.1/|Squid v3.1 source code]]
  7. Download tproxy patch for iptables from balabit.
   a. /!\ Be sure to get the correct patch, should be: tproxy-iptables-1.4.0-20080521-113954-1211362794.patch <<BR>> '''Note:''' so long as the tproxy-iptables-1.4.0 part of the patch name is the same as the iptables version, it is the correct patch.
  8. Download tproxy patch for kernel from Balabit.
@@ -114,12 +115,12 @@ iptables -t filter -NLocalFW iptables -A FORWARD -j LocalFW iptables -A INPUT -j
 
 After preparing the kernel and iptables as above.
 
- * Build [[http://www.squid-cache.org/Versions/v3/HEAD/|Squid3-HEAD]] source as noted in the Squid readme and tproxy readme, enabling netfilter with:
+ * Build [[http://www.squid-cache.org/Versions/v3/3.1/|Squid 3.1 source]] as noted in the Squid readme and tproxy readme, enabling netfilter with:
 {{{
 --enable-linux-netfilter
 }}}
 
-|| /!\ || --enable-linux-tproxy was phased out because tproxy is being more tightly integrated with iptables/netfilter and Squid. ||
+|| /!\ || --enable-linux-tproxy was phased out because tproxy has been more tightly integrated with iptables/netfilter and Squid. ||
 
  * Configure squid as noted in the squid and tproxy readmes.
 {{{
