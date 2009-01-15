@@ -24,7 +24,7 @@ Key:
 
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
-|| {2} || ''auth/'' || Authentication support || auth/* ||
+||  || ''auth/'' || Authentication support || auth/* ||
 || {3} || ''core/'' || Core stuff which hasn't been further broken apart || ? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
@@ -40,7 +40,7 @@ Key:
 || {3}  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
-|| {2} || ''ip/'' || IP Protocol || IPAddress.* IPInterception.* Qos* ||
+|| (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
 
 ...
 The following shuffling is linked to major code re-writes and will be held back to 3.2.
