@@ -6,7 +6,7 @@
 
  * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean.
  * '''Status''': In progress
- * '''ETA''': November-December 2008
+ * '''ETA''': 29 Feb 2009
  * '''Version''': 3.1
  * '''Developer''': AlexRousskov and AmosJeffries
  * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html|email07121]] [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html|email07506]]
@@ -25,7 +25,7 @@ Key:
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
 ||  || ''auth/'' || Authentication support || auth/* ||
-|| {3} || ''core/'' || Core stuff which hasn't been further broken apart || ? ||
+|| {3} || ''base/'' || Core stuff which hasn't been further broken apart || ? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
@@ -45,7 +45,7 @@ Key:
 ...
 The following shuffling is linked to major code re-writes and will be held back to 3.2.
 
-|| {2} || ''compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
+|| {2} || ''~/libsquid-compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
 
 == Non-Squid Bundled Source code ==
