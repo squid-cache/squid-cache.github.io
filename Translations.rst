@@ -88,5 +88,11 @@ Check that you spelled it correctly, it must match the ISO codes used for one of
 
  {i} This only affects the backup language, the one used if the users preferred is not available.
 
+=== What about the custom ERR_MY_PAGE files I made? ===
+
+Yes Squid can still present them. Even while presenting localized copies of the basic error pages. They will only need unique names, so as not to clash with the default pages.
+
+Your custom templates should for now go into the '''templates/''' directory when using the localization.
+
 ----
 CategoryFeature
