@@ -19,7 +19,7 @@ Other developers are often able to provide projects for anyone just wanting to c
 === Code Style ===
 Squid-2 and Squid-3 use different coding styles. Style requirements can be found (where is the most current??)
 
-Squid-3 formatting is presently handled by the maintainer post-commit. Self-checks may be done using '''astyle 2.62''' and the '''scripts/srcformat.sh''' script.
+Squid-3 formatting is presently handled by the maintainer post-commit. Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
 
 
 === Submission Format ===
