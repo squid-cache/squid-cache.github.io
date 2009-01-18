@@ -14,5 +14,5 @@ Long answer: in order to implement this you need to have access to a database co
 
 == 407/DENIED and NTLM ==
 
-Due to the way NTLM authentication over HTTP has been designed by Microsoft, each new TCP connection needs to be denied twice to perform the authentication handshake. Then as long as it's kept alive it won't need any further authentication. Yes, it breaks protocol layering. Yes, it breaks HTTP's statelessness. And yes, it wastes lots of bandwidth (two ~2kb denies for an average-sizeed 16k object means a whopping 20% overhead in a bad-but-not-unreasonable scenario).
-For the gory details of how auth is performed, see [[NTLMAuthGoryDetails]]
+Due to the way NTLM authentication over HTTP has been designed by Microsoft, each new TCP connection needs to be denied twice to perform the authentication handshake. Then as long as it's kept alive it won't need any further authentication. Yes, it breaks protocol layering. Yes, it breaks HTTP's statelessness. And yes, it wastes lots of bandwidth (two ~2kb denies for an average-sized 16k object means a whopping 20% overhead in a bad-but-not-unreasonable scenario).
+For the gory details of how auth is performed, see [[KnowledgeBase/NTLMAuthGoryDetails]]
