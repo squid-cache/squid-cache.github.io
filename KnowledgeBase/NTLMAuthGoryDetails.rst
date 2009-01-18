@@ -1,3 +1,4 @@
+## page was renamed from NTLMAuthGoryDetails
 #language en
 
 = Client-Squid NTLM authentication protocol description =
