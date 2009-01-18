@@ -15,7 +15,7 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * Development RoadMap
  * [[ConfigExamples|Configuration examples]], or tips on how to address specific scenarios
  * Wiki [[SiteNavigation|navigation]]
- * Main project website (or one of the mirrors at [[http://www.squid-cache.org/Download/http-mirrors.dyn|squid-cache.org]])
+ * main project site (and some of its mirrors): [[http://www1.it.squid-cache.org|it]] [[http://www1.at.squid-cache.org|at]] [[http://www1.gr.squid-cache.org|gr]] [[http://www2.de.squid-cache.org|de2]] [[http://www1.is.squid-cache.org|is]] [[http://www1.jp.squid-cache.org|jp]] [[http://www1.us.squid-cache.org|us1]] [[http://www2.nl.squid-cache.org|nl2]] [[http://www1.ie.squid-cache.org|ie]] [[http://www.squid-cache.org|us]]
 
 
 === Popular topics ===
