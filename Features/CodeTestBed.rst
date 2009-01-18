@@ -6,7 +6,7 @@
 
  * '''Goal''': To provide a comprehensive whitebox code testing environment for Squid-3
 
- * '''Status''': Stage 1-2 completed (3.0 to 3.1 code) done, Stage 3 pending.
+ * '''Status''': Stage 1-3 completed, Stage 4 pending.
 
  * '''ETA''': underway.
 
