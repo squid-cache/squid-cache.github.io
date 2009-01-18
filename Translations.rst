@@ -42,7 +42,7 @@ Several people have volunteered their time to check and confirm translations to 
 
 Older Squid releases are provided with a fixed set of pre-translated pages which have been gathered from many contributors over a long period. These pages naturally have a mixed set of HTML standards (mostly obsolete or deprecated) and an ever more mixed amount of information available. The format tags (%) for embedding details about the error have not always been kept in the right places, and have changed in various releases.
 
-We are hopping to bring all the error pages into an easily maintained structure for language translation and future upgrades. The commonly used .PO/.POT translation format has been chosen for the dictionaries due to the wide existing community support and tools. They also allow automated translation from a single set of template files which can be easily updated.
+This project brings all the error pages into an easily maintained structure for translation and future upgrades. The commonly used .PO/.POT translation format has been chosen for the dictionaries due to the wide existing community support and tools. They also allow automated translation from a single set of template files which can be easily updated.
 
 == How can I contribute? ==
 
@@ -53,7 +53,7 @@ We are hopping to bring all the error pages into an easily maintained structure 
 
 === Become a language moderator ===
 
-If you are able to help out over a longer period or even short term.  We really need people familiar enough with each language listed above to verify and approve/reject the general suggestions. Please contact AmosJeffries directly about becoming a moderator.
+We really need people familiar enough with each language listed above to verify and approve/reject the general suggestions. Please contact AmosJeffries directly about becoming a moderator.
 
 == How does this affect my installed Squid? ==
 
@@ -70,7 +70,7 @@ Any existing Squid which have been configured with ''error_directory'' in their 
 
 == So how can I do this upgrade? ==
 
-Squid 3.1 admin just need to follow these steps:
+[[Squid-3.1]] admin just need to follow these steps:
 
  * Check that your preferred default language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en-gb, etc.).
  * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
@@ -92,9 +92,9 @@ Check that you spelled it correctly, it must match the ISO codes used for one of
 
 === What about the custom ERR_MY_PAGE files I made? ===
 
-Yes Squid can still present them. Even while presenting localized copies of the basic error pages. They will only need unique names, so as not to clash with the default pages.
+Yes Squid can still present them. Even while presenting localized copies of the basic error pages.
 
-Your custom templates should for now go into the '''templates/''' directory when using the localization.
+Your custom templates should for now go into the '''templates/''' directory when using the localization. They will need unique names, so as not to clash with the default pages.
 
 ----
 CategoryFeature
