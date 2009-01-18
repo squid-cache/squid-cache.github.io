@@ -75,9 +75,9 @@ They are split into a set of layers which get run sequentially during testing. E
 
 Modulating code into convenient functional units is all what 3.x is about.
 
-VCS has been changed to Bazaar in part to make these changes easier and more manageable.
+VCS has been changed to [[../../Squid3VCS|Bazaar]] in part to make these changes easier and more manageable.
 
-The makefiles still need the current functional units to be cleaned up to match the code-level cleaning that has been done. To build each functional unit as an internal lib* module.
+The code is being [[../SourceLayout|re-arranged]] into functional units an built as internal library modules to match the code-level cleaning that has been done.
 
 This builds on the dependency tree automation, to ensure that the functionality units are independent.
 
