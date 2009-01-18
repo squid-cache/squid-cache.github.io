@@ -48,6 +48,8 @@ If the connection to the OWA server requires SSL then the cache_peer line should
 cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/certificate name=owaServer
 }}}
 
+ (!) an apparent bug in Squid-3.1 means that https_port may also need to use the '''connection-auth=off''' option for now.
+
 == See also ==
 
  * [[http://support.microsoft.com/?scid=kb%3Ben-us%3B327800&x=17&y=16]] - "How to configure SSL Offloading for Outlook Web Access in Exchange 2000 Server and in Exchange Server 2003"
