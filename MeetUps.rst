@@ -12,9 +12,10 @@ The developers do occasionally come out in public. The next public event where y
 
 = Squid Developer Meetups =
 
-While the Squid project doesn't have (yet?) fixed-schedule meetings like other Free/Open Source Software projects, we try to meet up every now and then to plan future developments, or just to try and hang around together. Each such meeting has a page of its own:
+While the Squid project does not have regularly scheduled meetings (yet?), we do try to meet up every now and then:
 
  * AustraliaMeeting08, held in Sydney on August 17-18th 2008
+ * [[http://www.squid-cache.org/mail-archive/squid-users/200802/0692.html|LondonMeeting2008]], held in London, UK on March 1-2nd 2008
  * BugSprintLateSeptember2006
  * BugSprintSeptember2006 held over IRC
  * CodeSprintOct2005 held in Torino in October 2005
