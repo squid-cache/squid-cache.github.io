@@ -35,7 +35,7 @@ This testing involves a number of changes to both the codebase and current devel
 || '''Stage''' || '''Status''' * || '''Actions''' ||
 || 1 || '''DONE''' || 3.0+ Automated build-testing of releases ||
 || 2 || '''DONE''' || 3.1+ Automated dependency testing of code ||
-|| 3 || '''DONE''' || 3.1+ Daily automated test ||
+|| 3 || '''DONE''' || 3.0+ Daily automated test ||
 || 4 || || Test scheduling on multiple OS ||
 
 * '''NP''': All stages of this system implementation may involve ongoing improvements. The status here is merely an indication that the stage actions have been implemented and begun to be used.
@@ -60,9 +60,9 @@ They are split into a set of layers which get run sequentially during testing. E
 || '''Layer''' || '''File'''   || '''Content''' ||
 || 00 || layer-00-default.opts || This provides NO new options. Leaving ./configure at its defaults. ||
 || 01 || layer-01-minimal.opts || This defines all options need to disable components. Down to the bare minimum for squid to operate ||
-|| 02 || layer-02-basic.opts   || This provides ALL the components which may be enabled, AND do not depend on other components in squid. An example of this would be ident ||
- . . .
-|| 99 || layer-99-full.opts || Everything which may be enabled is enabled. ||
+|| 02 || layer-02-maximus.opts || Defines everything which may be enabled to ON. ||
+|| 03 || layer-03-*.opts || Failure testing. Individual options or combos which are expected to Fail. ||
+|| 04+ || ''undecided'' || This provides ALL the components which may be enabled, AND do not depend on other components in squid. An example of this would be ident ||
 
 
 || {i} || Provision is also made via os-X.opts control files for platform specific builds to be tested. These files are not expected to build properly on foreign OS, so are completely optional and not guaranteed to be authoritative. The hope is that planned multi-system testing can use these provided by package maintainers to reduce cross-platform problems. ||
