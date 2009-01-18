@@ -21,7 +21,8 @@ Several people have volunteered their time to check and confirm translations to 
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
 || Swedish || sv || HenrikNordstrom ||
 ## || Turkish || tr || Umut Çinar ||
-||<|99> Others || ||<|99> '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in a occasional week. Without a moderator we cannot fix any bad language errors. ||
+||<|99> Others || ||<|99> '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
+|| Azerbaijani (az) ||
 || Catalan (ca) ||
 || Czech (cs) ||
 || Danish (da) ||
@@ -30,6 +31,7 @@ Several people have volunteered their time to check and confirm translations to 
 || Estonian (et) ||
 || Japanese (ja) ||
 || Indonesian (id) ||
+|| Romanian (ro) ||
 || Russian (ru) ||
 || Serbian (sr) ||
 || Ukrainian (uk) ||
