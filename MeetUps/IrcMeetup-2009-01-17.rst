@@ -7,7 +7,16 @@
 An informal meeting was held over IRC on Jan 17th, 2009 in the #squiddev freenode channel.
 The main topic was [[Features/BetterStringBuffer/StringNg|StringNg]], its implementation architecture and strategy for eventual merge into Squid.
 
+Participants:
+ * rousskov is AlexRousskov
+ * kinkie is FrancescoChemolli
+ * amosjeffries is AmosJeffries
+ * adri is AdrianChadd
+ * lifeless is Robert Collins
+ * Holocaine is Benno Rice
+
 Here's the discussion log.
+
 
 {{{#!irc
 19:47 < rousskov> kinkie, do we need < and >? Have you found a use for them already?
