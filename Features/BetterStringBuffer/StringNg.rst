@@ -9,6 +9,8 @@
 
 !StringNg is FrancescoChemolli's effort at improving squid's handling of strings (and memory buffers in general).
 
+It is now almost complete to be useable, a discussion about its interface, issues and integration strategy was held as part of the [[MeetUps/IrcMeetup-2009-01-17|January 2009 IRC meetup]]
+
 == Aims ==
 Aim of this implementation effort is to increase the primitives squid uses for string manipulation, in particular:
  1. memory management
