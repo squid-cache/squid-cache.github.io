@@ -14,6 +14,7 @@ Participants:
  * adri is AdrianChadd
  * lifeless is Robert Collins
  * Holocaine is Benno Rice
+ * hno is [[Henrik_Nordström]]
 
 Here's the discussion log.
 
@@ -623,6 +624,382 @@ Here's the discussion log.
 
 }}}
 
+Further discussion happened on the topic on Jan 21st, 2009
+
+{{{#!irc
+15:38 < kinkie> Hello Henrik, nice to see you again..
+15:39 < kinkie> I see you've chimed in on the StringNg debate.. I have a few hiints about the current implementation which may address the points you raise..
+15:39 < hno> And sorry for not having done a proper review of your code.
+15:40 < kinkie> you don't need to. I only hope that the end results won't be 'start over'. I couldn't do that. But if a relatively small changeset is what's needed, I'll happily do it.
+15:40 < hno> I don't really care if there is a String class or not, other than that I think it adds clarity to the implementation.
+15:41 < kinkie> Regarding "String/Buffer split & encoding" - that's more or less how it's done now. Some functionalities would need to be moved out of SBuf into StringNg, but it's doable. Folding everything back into one class if it shows no good advantage is doable.
+15:43 < kinkie> Regarding "who creates i/o buffers": as long as an I/O buffer is a contiguous chunk of memory, SBuf.importBuf() will happily accept it and memory-manage it. So the caller would have to allocate a char[], fill it in, importBuf(),return the resulting SBuf and forget about it all.
+15:44 < hno> That's a side discussion, not really relevant. But it's good if the use case described works.
+15:45 < kinkie> Regarding "String consume method": I refer you to the current implementaiton of SBuf::consume(), as it's easier to see it in code than to explain. In short words, consuming does not move data. When appending ends the available tail space, cow() occurs. Heuristics are applied to try and be smart about how much free tail-space to reserve.
+15:45 < hno> which is a producer of some kind filling up linear memory, which gets fed to the received as String or Buffer as it gets filled.
+15:46 < kinkie> (of course cow() only copies the non-consumed data)
+15:46 < kinkie> Nod.
+15:47 < hno> That's fine, but more of a corner use case. Normal operations should not trigger that cow.
+15:47 < kinkie> Yes. It's all up to finding the right balance between cpu and memory.
+15:48 < hno> In this case I'd say it's more of finding the right producer/consumer model and who is responsible for what..
+15:48 < kinkie> If we're generous about leaving more unused free tail-space in buffers, less copying will occur. The right balance needs to be found, I've put the code doing the smarts together to be able to more finely tune
+15:49 < hno> in the model of "producer allocates" you rarely if ever needs append. But you will need the non-linear container class.
+15:49 < kinkie> For the heavy lifting of producer-consumer workloads in a medium-term development timeframe, please see my answer to Alex in "Buffer/String split, take2"
+15:50 < kinkie> (in particular the paragraph on vector i/o
+15:50 < kinkie> )
+15:51 < hno> Ok. I'll read it in detail in an hour or so.
+15:52 < kinkie> ok
+15:52 < hno> What do you refer to by "D&C approach"?
+15:52 < kinkie> That's Alex's Divide & Conquer approach.
+15:53 < hno> Saw it now.
+15:54 < rousskov> evening
+15:54 < kinkie> hi Alex
+15:54 < rousskov> hno, feeling better?
+16:08 < adri> hai
+16:08 < adri> replying to email(s)
+16:13 < rousskov> kinkie, if we have one Buffer for all uses and users, your "smart heuristics" are more likely to be harmful than helpful.
+16:13 < rousskov> Short string users needs differ from that of I/O buffer users, for example.
+16:14 < rousskov> I doubt we can optimize both in the same class.
+16:14 < kinkie> (hang on, phone call)
+16:14 < rousskov> This is one of the reasons why D&C strategy works.
+16:18 < kinkie> rousskov: imo it's more useful to D&C THAT too: if reallocation strategy is the only one difference, then let's just make that modular via a Strategy object or some tuneables
+16:18 < rousskov> I doubt allocation is the only difference.
+16:19 < kinkie> Downside: it increases sizeof(buffer). Upside: less code duplication.
+16:19 < rousskov> I do not see much code duplication in D&C
+16:19 < rousskov> D is for divide, not duplicate.
+16:20 < kinkie> The D&C you suggest moves the substringing out of Blob and into String*. I don't see that as a big win..
+16:21 < rousskov> As for "whose blueprint has also been available for 5 month", I think it is an invalid argument because at least half of the folks reviewing your code from the very start wanted something other than what you kept producing.
+16:22 < rousskov> In other words, "you were not listening for 5 months" or "you were ignoring the repeated calls for a change for 5 months"
+16:22 < rousskov> Substring can be moved to Buffer if all or most Buffers need sub-areas. See (note).
+16:23 < kinkie> I believe I changed lots, and what I didn't change, it's for sure I didn't understand.
+16:23 < adri> And that may have been purely a communication issue, with no actual badness on anyones' part
+16:23 < rousskov> I am not saying it was
+16:24 < rousskov> I am saying it is not a valid argument to tell others that it is too late to argue for a different design.
+16:24 < kinkie> Please, don't see me as placing blame on anyone but myself. Still the reasons for me not doing a rewrite-from-scratch stand.
+16:24 < rousskov> If that different design has been advocated even _before_ StringNg
+16:25 < rousskov> Whether you are going to finish the project or not is a separate issue.
+16:25 < adri> You don't have to do a rewrite from scratch
+16:25 < adri> the path forward shouldn't be that
+16:25 < adri> the path forward should be
+16:25 < rousskov> That is true as well.
+16:25 < adri> "what have we learnt from this, now what should we pull in and in what order?"
+16:25 < adri> "What sized chunks"
+16:25 < adri> "What needs to happen elsewhere first before we pull in the next bits"
+16:26 < kinkie> adri: that's exactly my point
+16:26 < adri> The point of your work kinkie, is not to throw it away, its to add to the "clue" that is the "squid project clue"
+16:26 < rousskov> kinkie, the code you have now has the right pieces. If D&C wins, the pieces will need to be rearranged. Not a "from scratch rewrite".
+16:26 < adri> And part of clue is not just "use it or toss it"
+16:26 < adri> sometimes its "what not to do" as much as "What to do"
+16:28 < adri> I've been through this string / buffer crap at least 3 times in various squid-2 branches
+16:28 < kinkie> nod
+16:28 < adri> Its not something you get right first, and its certainly not something you toss all of your clue away each time
+16:28 < adri> You go "Hm, that didn't work, lets try another approach building on what I've done"
+16:28 < adri> in my eyes, the bits that we should steal right now is the refcounted backing buffer with minimal sugar, glue it into String, fix the String users right now so its not completely sucky, and then see where to go
+16:29 < adri> Others disagree on the path forward, sure
+16:29 < adri> but the point is, you can -start- with the bits you've written.
+16:29 < adri> heck, the svn branch I linked you to
+16:29 < adri> ended up using the buffer code I wrote in my last attempt, verbatim
+16:29 < adri> but I did the String stuff differently
+16:30 < adri> hence why I managed to get refcounted NUL string sin like two tiny commits. :)
+16:30 < adri> Rather than my -last- attempt, which was to fix all the current users of NUL Strings to -not- assume NUL termination
+16:30 < adri> That was too much to bite off in one chunk
+16:32 < hno> rousskov: Yes thanks.
+16:33 < rousskov> Glad to hear that.
+16:36 < hno> refcounted backing store, with a slicing & dicing thing ontop is defenitely the first step. Very useful foundation to build Strings, parsers etc ontop.
+16:37 < adri> Well, the NUL termination puts an unfortunate halt on slicing/dicint
+16:37 < adri> slicing/dicing
+16:37 < hno> Does it? See my squid-dev post earlier today.
+16:37 < adri> otherwise you may end up slicing up a buffer into a string, and said string may just have a NUL in the middle
+16:37 < adri> because some substring of it now has a NUL there
+16:37 < adri> And I'm saying, you haven't thought this through enough. :)
+16:37 < kinkie> hno: you refer to a very specific corner-case
+16:38 < adri> If you slice/dice using NUL and then use the current codeabse but with NUL terminated refcounted buffers
+16:38 < hno> Ah, that. Well.. \0 within string data is badness, but not a stopper.
+16:38 < rousskov> adri, I agree with hno regarding foundation and I would add cow to that.
+16:38 < adri> all your subtsr operations suddenly turn into COW
+16:38 < adri> since strictly speaking, you -are- modifying the buffer
+16:38 < hno> rousskov: I would not cow at this level.
+16:38 < rousskov> adri, no
+16:38 < adri> or you don't COW on slice/dice, and risk random overwrites
+16:39 < adri> Or, you just go "thats too hard for pass one", and don't implement cheap substrings in the first pass
+16:39 < rousskov> adri, we know how to implement cow so that it works and is safe. I do not think we should argue about that.
+16:39 < adri> in fact, COW for NUL terminated strings, with copy for new / substring
+16:39 < hno> Most strings or buffers should be const imho.
+16:39 < adri> is probably the easiest thing
+16:39 < hno> except for the one producing it in the first place.
+16:39 < adri> hno: sure. But if you're creating strings by referencing some backing buffer which you're parsing
+16:39 < hno> and? 
+16:40 < adri> hno: suddenly you're breaking the expectation that once you have a reference it won't change
+16:40 < adri> hno: because the parser may scribble further NULs inside substrs
+16:40 < adri> for example
+16:40 < adri> in the current parser
+16:40 < adri> and certainly in logging
+16:40 < adri> a bunch of stuff works on -lines-, not fields
+16:40 < adri> So you create a line
+16:40 < adri> you get one str with a \0 at the end
+16:40 < adri> then you further parse that buffer into field/value
+16:41 < adri> ok, then you end up with two \0 terminated strings in that buffer, but the original line string now has a \0 in the middle
+16:41 < rousskov> adri, cow will address all that. The code can then be made more efficient to reduce COW invocations.
+16:41 < hno> Yes. But I don't consider that a problem. It's only a problem if there is multiple references before you started adding those \0s..
+16:41 < adri> Sure
+16:41 < adri> hno: and this is my point
+16:41 < adri> hno: that code isn't very sensible
+16:41 < adri> hno: it may be sensible right now, but having to add that as a 'catch' in the API is going to trip up people later on
+16:42 < rousskov> We need better foundation to make it sensible, IMO.
+16:42 < adri> hno: this doesn'te ven begin to touch on the actual issue surrounding trying to pull that move
+16:42 < rousskov> You want to make it sensible using old foundation. We will never agree on that.
+16:42 < adri> hno: which is 'how do I grestructure the client/http code to actually -give- the parser a buffer it can refcount in the first place"
+16:42 < adri> rousskov: except that _I_ have working code you can look at and evaluate right now. :)
+16:43 < adri> rousskov: everyone else is just talking. :)
+16:43 < hno> Well, there is a clear distinction between immutable strings and writeable strings.
+16:43 < rousskov> adri, you are not the only person in the world working with code.
+16:43 < adri> rousskov: ok, let me rephrase. I'm the only one with public code right now based on some Squid version, which he's tested, and is sharing with everyone.
+16:44 < rousskov> adri, and we cannot copy the code you did, so it is of marginal value.
+16:44 < adri> rousskov: this isn't the first time someone's done this to Squid. But I don't see any other public codebases.
+16:44 < adri> Of course you can
+16:44 < adri> You'd be surprised how much of it you -can- copy
+16:44 < adri> Half of the work is actually tidying up the damned users of the code in the first place
+16:44 < adri> as I keep saying. :)
+16:44 < rousskov> Patches for Squid3 are welcome.
+16:45 < hno> adri: Exacly, and that part is very hard for anyone but you to copy.
+16:45 < adri> rousskov: I'm not going to head down a path with Squid-3 which is going to make things unstable, until people stop making it unstable.
+16:45 < adri> rousskov: I've said this before.
+16:45 < rousskov> Right. So let's stop arguing about it. It is a dead end.
+16:45 < adri> rousskov: I've offered to help kinkie identify and work on bits of the codebase which use String incorrectly, and if thats the path forward, then I'll go with that
+16:46 < hno> That is a path forward, no matter what happens with StringNg.
+16:46 < rousskov> And I am not against that "as such" but I am focusing on String issues right now.
+16:46 < rousskov> Because kinkie needs an answer.
+16:47 < adri> hno: and my concern isn't that its a path forward, it's that I hold that much, much higher than any actual decisions on what a replacement buffer/string backend should look like.
+16:47 < rousskov> And I do not want to give him "do something else for 5 month" answer.
+16:47 < adri> hno: Is eem to be singular here.
+16:47 < adri> rousskov: if he's willing to work with me on tidying up some of the busted things to do with String, then I'm happy to
+16:47 < adri> rousskov: he's said before that he doesn't think that working on String is the path forward, so we disagree there
+16:48 < rousskov> well, he wants to commit it!
+16:48 < rousskov> If he does not, we should not be wasting time rererereviewing that code and arguing about it.
+16:48 < kinkie> adri, alex: those are parallel paths
+16:48 < kinkie> I'd like to commit StringNg so that *new* code can start using it.
+16:48 < adri> no
+16:48 < adri> argh!
+16:48 < kinkie> Then for adoption there's a multi-stragetegy
+16:48 < rousskov> There you go
+16:48 < adri> kinkie: look.
+16:48 < adri> ok
+16:49 < adri> I'm not going to agree with that
+16:49 < kinkie> String users need to be sanitized so that they can be converted.
+16:49 < adri> I don't thing new code should be using it right now
+16:49 < kinkie> Committing will allow more developers to
+16:49 < hno> adri: I don't get you. What is the problem you try to highlight?
+16:49 < kinkie> - fix what's broken to StringNg rather than tell me how to do it, me misunderstanding and misimplementing
+16:49 < adri> hno: there's lots of problems, all to do with the order people are attacking this
+16:49 < kinkie> - get to work themselves on comverting what they see as useful
+16:49 < rousskov> kinkie, _and_ writing new code using correct APIs
+16:50 < rousskov> that do not need to be converted a few months later.
+16:50 < adri> hno: _I_ would like to see the refcounted buffer stuff go in, and for the few stupid uses of String to be unstupidified
+16:50 < kinkie> rousskov: I already told it, I would _love_ if someone else fixed what I've broken in StringNg.
+16:50 < hno> anyone against what adri just said?
+16:50 < adri> hno: I'm worried that if new code is added and used, whilst ther'es another two ways of doing String, we're never goign to end up with -one- majority way
+16:51 < adri> hno: if we find out that some incorrect assumptions were made, then suddenly you have to try and fix all the new code which uses StringNg
+16:51 < rousskov> hno, I agree with the first part: "good API in, bad code polished"
+16:51 < kinkie> hno:  I volunteered (and still do) to work with Adri to that end
+16:51 < adri> hno: i don't think adding in another String API in its entirety is the way to go
+16:51 < adri> hno: I don't think that having new code -use- the new APIs is the way to go
+16:52 < rousskov> And those I disagree with.
+16:52 < adri> hno: I think that converting over the mess we have, and using it very restrictively, to achieve a small set of goals (tidy up the String users, which need to happen anyway; parsing, which needs to happen aanyway)
+16:52 < rousskov> for some definition of "entirety"
+16:52 < adri> hno: and then standing back, looking at what was done, and re-evaluating
+16:52 < adri> hno: is the way to go.
+16:52 < adri> hno: because I've seen ever ysingle time someone tries introducingv some new thing and then use it where -they- see fit
+16:53 < hno> A agree with the principle, but see little choice here as a moving directly to the "right" String is faily major and potentially disruptive.
+16:53 < adri> hno: its completely stupid
+16:53 < adri> hno: and ends up breaking stuff which takes a lot of developer time to fix
+16:53 < adri> hno: in ways which the people working on it to start with didn't think about or didn't test, because they were working in -their- areas on stuff -they- saw interesting
+16:53 < adri> hno: and didn't see how it broke the bigger picture
+16:54 < rousskov> hno, what do you mean by "moving directly to the right String"?
+16:55 < hno> rousskov: Getting String fixed in a way that makes it behave like StringNg, eleminating the need of StringNg, all in one go.
+16:55 < rousskov> That would be bad.
+16:55 < hno> instead of a transition from String to StringNg.
+16:55 < rousskov> So let's try to split this into three questions:
+16:56 < hno> My vote (once the API discussion settles) is to rename String to ObsoleteString, and merge the new one as String.
+16:56 < rousskov> 1) Do we need to polish bad String users? Yes.
+16:56 < hno> with a project goal of eleminating ObsoleteStrng.
+16:56 < hno> 1. Yes.
+16:56 < rousskov> 2) Do we commit new Buffer/String code. TBD.
+16:57 < rousskov> 3) Do we immediately replace all old String users with code that uses new String. No.
+16:57 < rousskov> So I think the only place where adri and I disagree is #2.
+16:57 < adri> 4) Should new code and stuff outside of what uses String use the new API?
+16:58 < rousskov> I want to make a decision and commit the new API. He wants #1 to happen first.
+16:58 < adri> I disageree on that too
+16:58 < rousskov> adri, that is part of #2. If something is committed, it should be used, of course.
+16:58 < rousskov> There is no point in committing something we are not going to use.
+16:59 < kinkie> rousskov: yes and no.. it could be committed so that everyone has a better chance to fix what's broken in it before using it
+16:59  * adri sighs
+16:59 < rousskov> kinkie, you do not know what is broken if you are not using it
+16:59 < kinkie> Unless you want to work on my branch - which is of course also fine
+17:00 < kinkie> misdesign for instance.. things I'm not able to understand
+17:00 < rousskov> kinkie, you do not know what is broken if you are not using it
+17:00 < rousskov> especially things like inferior design.
+17:01 < kinkie> rousskov: there's also misimplementation issues.. I've had quite a few false steps where I misunderstood what you were objecting to, and tried fixing the wrong thing
+17:01 < hno> Ok. here is a proposal. There is three tasks, all which need to be done.
+17:01 < rousskov> Sure, but just committing code that nobody uses will not find any misimplementation issues.
+17:02 < hno> 1. As above.
+17:02 < kinkie> s/misimplementation/misdesign/
+17:02 < hno> 2. Code needs to start using StringNg. Before merge.
+17:03 < hno> 3. these reviews combined with 2 should highlught any possible misdesigns..
+17:03 < hno> (well most..)
+17:04 < hno> 1 & 2 can both start, and is independent.
+17:04 < adri> Great, so whats your escape plan?
+17:04 < rousskov> I am not against your proposal, but I think we need to agree on the initial design now, before #2 gets too far.
+17:05 < rousskov> Kinkie is already reluctant to redo stuff and will be even more reluctant to redo stuff after converting a lot of code to use StringNg
+17:05 < rousskov> understandably so!
+17:06 < kinkie> rousskov: I'm reluctant to restart from scratch. If changes need to be applied, I'll gladly apply them.
+17:06 < rousskov> It is all relative. Still I think the decision on the initial class hierarchy should happen now.
+17:07 < adri> Why do you need to commit -all- of it right now?
+17:07 < rousskov> hno plan does not call for commits right now.
+17:07 < adri> 16:02 < hno> 2. Code needs to start using StringNg. Before merge.
+17:07 < rousskov> See, _before_ merge.
+17:07 < rousskov> Meaning that it is done on a branch.
+17:08 < rousskov> To stress-test the initial design.
+17:08 < adri> What I'm saying is
+17:08 < adri> Don't even -do- that
+17:08 < adri> Just leave the StringNg stuff alone
+17:08 < rousskov> Yes, we know. You have a different plan.
+17:08 < adri> Grab just the buffer stuff
+17:08 < adri> stuff it into String, where it already assumes a NUL termintaed C buffer, so you're nto actually changing semantics
+17:08 < adri> The amount of new code is minimised
+17:09 < adri> Do the changes you have to do -anywa- to the main code to tidy things up
+17:09 < kinkie> adri: the fact is that if the 'Universal String' approach goes through, there is no 'buffer stuff', everything happens within the Universal String.
+17:09 < hno> 1 should be committed, incrementally.
+17:09 < kinkie> and the 'buffer stuff' is almost a dumb struct.
+17:10 < adri> and I'm saying we can blissfully ignore that right now to get a fraction of your stuff in, right now
+17:10 < adri> so it can be used with minimal changes by a lot of the core code, right now
+17:10 < adri> without changing semantics of -anything-
+17:10 < rousskov> And if D&C gets through, I am not 100% against doing/committing Buffer alone first, although I think that would not be the best option.
+17:10 < adri> do the needed changing
+17:10 < adri> but limit the use of the new code to -just- String
+17:10  * hno has to go. Dinner time.
+17:10 < adri> anyway
+17:10 < adri> I have to go do paid work
+17:11 < adri> And try to eliminat ethe last couple memcpy()'s and *printf()s in the critical path
+17:11 < adri> So I know what stuff needs stabbing in the longer term
+17:13 < kinkie> In the meantime I'll open a feature-branch to start and work on (1), as it's an independent issue.
+19:05 < kinkie> Hi all
+19:19 < rousskov> kinkie, IIRC, you were wondering if regular Sunday chats are a good idea. FWIW, I would prefer a weekday chat and may have to miss many weekend chats.
+19:20 < kinkie> sure.. the idea is, let's see if we can make up some more-or-less-regular schedule
+19:20 < rousskov> A brief weekly chat would be neat.
+19:21 < kinkie> fine by me. We need to agree on day and time, hopefully accomodating as many people as possible
+19:44  * hno is back.
+19:47 < rousskov> Seen recent emails on squid-dev? Can we agree on the step 2 of the plan and the initial class hierarchy?
+19:47 < kinkie> welcome
+19:48 < kinkie> Let me summarize what I understood of today's discussion and mails, so that I know how to move forward.
+19:49 < kinkie> 1. I open a new feature-branch off trunk, dedicated to fixing OldString users. This will get aggressively merged so that stuff can be tested. Adrian will help me out with the nastier spots.
+19:49 < hno> jwestfall: Initial reaction is that most likely storeUpdate() probably needs to be throttled allowing the swapout or internal client(when chained) to catch up..
+19:50 < hno> kinkie: 1. Yes.
+19:50 < kinkie> Some parts of the lower-layers of StringNg are sane under case 'UniversalString' and 'D&C (note)'. I can thus concentrate on those parts, applying some of the remarks Alex already sent me.
+19:51 < hno> Yes. And when satisfied send those for review & merge again.
+19:51 < kinkie> Ok.
+19:51 < kinkie> Re 1: it may require extending the OldString API somewhat, without changing its innards significantly.
+19:52  * hno sent a mail with more detailed producer use cases some minutes ago.
+19:52  * kinkie checks
+19:52 < kinkie> haven't gotten it yet.
+19:53 < kinkie> The question: UniversalString or D&C still stands, but this strategy gives everyone more time to decide the best option forward.
+19:54 < hno> It's about more than just String..
+19:55 < hno> it's also about MemBuf, and lots of places where we still use "char *"...
+19:55 < hno> and general way of design..
+19:55 < kinkie> Yes.
+19:55 < kinkie> In time, I hope most of those will just be converted away.
+19:56 < kinkie> That 'more' part is the part I'm the most unfamiliar with, so I'll rely on the Team to define the best way forward. I hope that the discussion won't die off now to return in full force at the next merge request
+19:56 < jwestfall> hi hno
+19:56 < hno> We need a well defined foundation, and then start the migration onto that..
+19:57 < hno> and getting rid of lots of legacy (OldString, MemBuf, strdup() etc..)
+19:57 < rousskov> We need to make that decision.
+19:58 < hno> rousskov: Which one?
+19:58 < hno> moving forward, or staing in the worst position?
+19:58 < rousskov> Step 1 is not blocked on it, but we need to decide on the set of "foundation" classes
+19:59 < rousskov> And knowing the future foundation would help to avoid wrong changes in step 1 as well.
+20:00 < hno> 1 is pretty isolated in it self, and likelyhood for wrong changes is low. But there is a significant risk that many areas touched in 1 then goes away or gets rewritten anyway.
+20:00 < rousskov> So, we need to decide between Unified String and D&C (unless there are other design choices offered).
+20:00 < hno> but 1 prepares te path.
+20:01 < rousskov> Right. A lot of work in #1 may end up being a waste, but I am not against that step, especially if it makes Adrian happier
+20:01 < kinkie> I kind of assume that everything touched in #1 will have to be re-touched in #2. But I don't mind that really
+20:02 < hno> It makes 2 easier, as there is a more uniform codebase to deal with.
+20:02 < kinkie> yes
+20:02 < rousskov> My focus is on the classes at the moment. Kinkie and Adrian can handle #1 on their own, but they cannot handle #2.
+20:02 < kinkie> AND it requires not to think about too many corner cases.
+20:02 < kinkie> rousskov: yes
+20:03 < kinkie> (I'm speaking for myself, Adiran is certainly more than able to handle his stuff)
+20:05 < hno> My view doesn't really fit either of UniveralBuffer or D&C I think. And I don't quite get the Buffer in D&C..
+20:07 < hno> but it's more aligned with D&C than UniversalBuffer I suppose.
+20:07 < rousskov> Buffer is your Buffer, region of a memory area. (memory area, offset, size). 
+20:07 < hno> rousskov: "works with Blob as a whole: not areas"
+20:07 < rousskov> But see (note)
+20:08 < rousskov> With (note), the area code is moved to Buffer, and it starts matching your Buffer
+20:08 < hno> ok. So D&C is now the "possible variation" version?
+20:10 < rousskov> I guess. To make it easier to reach a consensus
+20:13 < hno> Then the difference between UniversalBuffer and D&C is how much to subclass Buffer into special-purpose classes for specific tasks, all inheriting Buffer, right?
+20:13 < kinkie> as it is now String holds Buffer, doesn't inherit it.
+20:14 < rousskov> hno, right
+20:14 < rousskov> kinkie, does not matter
+20:15 < kinkie> ok
+20:17 < hno> On that I am pretty neutral as long as casting to/from Buffer is a cheap operation.
+20:18 < hno> so actually I am more in the UniversalBuffer camp I guess. 
+20:19 < hno> traceroute from squid-cache.org:  2  12.116.159.125 (12.116.159.125)  170.575 ms  181.820 ms  158.040 ms
+20:19 < kinkie> whoa... reminds me of the 56k modem days
+20:20 < rousskov> OK. So do we go with UniBuffer?
+20:21 < rousskov> hno, how we will write I/O code that needs to read, append, consume? See my email.
+20:21 < rousskov> Would not a custom buffer be better for that than one-size-fits-all?
+20:22 < rousskov> With UniBuffer, the code itself will have to deal with allocation of new buffers...
+20:22 < hno> As long as it's "refcounted Blob" + "Buffer with offset,length" I am happy. Don't care if Buffer is subclassed to special-purpose classes adding additional methods or one large jumo-class with all different operations we may need...
+20:28 < jwestfall> hno any ideas on how to throttle the store update?
+20:31 < rousskov> OK. Since nobody is pushing hard for D&C, let's do UniBuffer
+20:32 < rousskov> nobody but me, I guess
+20:36 < kinkie> rousskov: it's not that. for me it's that I don't see the advantage in the added complexity. Changing from one model to the other doesn't seem THAT hard, so the complexity may be added later if the need is there.
+20:36 < kinkie> But again, I trust in the Team to choose what's right
+20:38 < jwestfall> i imagine we need something like if(state->oldentry->mem_obj->inmem_hi - storeLowestMemReaderOffset(state->oldentry) > Config.readAheadGap) { stop reading } in storeUpdateCopy()
+20:39 < rousskov> kinkie, it would be quite hard to split later.
+20:39 < rousskov> because the user code will be written to morph meanings together
+20:40 < rousskov> but this is not a Huge Deal for me. I can live with One Buffer For All. I might add custom buffers for I/O, but their use would be localized to low-level I/O code.
+20:40 < kinkie> that's a possibility.
+20:41 < kinkie> OR we may add specialized buffers and handy cast functions.. in the end it's all a (char*,len) or array of (char*,len)...
+20:42 < rousskov> I am more worried, currently, about the smart heuristics you mentioned recently. Please keep the code as simple and straight as possible. Correctness comes before optimizations as long as there is room left for the latter.
+20:42 < kinkie> just see SBuf::realloc_strategy(). It's all in there
+20:43 < kinkie> maybe 20 LOC altogether
+20:43 < rousskov> kinkie, that kind of "in the end" thinking is a bad idea for OO
+20:44 < rousskov> I will check it out once you merge and apply my StringNg comments.
+20:44 < kinkie> So you would object to a UniversalBuffer foo=SpecializedBuffer.convertToUniVersalBuffer()?
+20:44 < kinkie> rousskov: ok
+20:44 < hno> rousskov: I don't see much difference between UniBuffer and D&C with the note..
+20:47 < hno> if you want a preference from me then my preference is specialized classes, and not everything jumbled togeter in a big mess. Blob, Buffer referencing Blob. String being a child of Buffer. Producers sitting somewhere inbetween as explained on squid-dev.
+20:49 < rousskov> kinkie, that question lacks context.
+20:50 < rousskov> hno, then why are you voting for UniBuffer?
+20:50 < rousskov> hno, your vote is the deciding one here. There are less than two votes for D&C and less than two votes for UniBuffer.
+20:51 < rousskov> We have to pick one and run with it.
+20:52 < kinkie> rousskov: context is "general OOP". If you have a problem with two implementation of a mostly similar interface, one better in some scenarios and the other in others, what do you do? Try to merge them? Make them implementations of a pure-virtual and use static_cast? Or create a factory method in each to be used when appropriate? Just curious
+20:56 < rousskov> The question is too general to answer, sorry.
+20:56 < hno> Refcounted Blob + Buffer with offset,lenth is my vote. Today I don't care if there is one single Buffer class, or a class hierarchy for special purposes, at this stage I consider that more of an implementation detail that will give itself once things starts to be reasonably implemented. That's pretty easy to swich between as needed.
+20:57 < rousskov> I disagree on the switch part.
+20:57 < rousskov> hno, since the part of the design you vote for is common to both options, your vote does not help :-)
+20:58 < hno> But if subclasses is used, then it should be restricted to adding new methods. Any design needing to venture into virtual methods should be avoided on Buffer.
+20:58 < rousskov> I agree with no virtual in Buffer
+20:58 < rousskov> Adding data members should be OK though.
+21:01 < hno> Yes and no. Means it needs to be dynamically casted (copied), including blob refcount bumps. Not a problem if done right, but also easy to get wrong (in terms of performance, not code sanity).
+21:01 < rousskov> kinkie, to sum it up, it looks like you should merge String back into Buffer. 
+21:03 < kinkie> Ok. I'll add an edited log from today to the wiki with the contents of Sunday's discussion, and then then work on.
+21:03 < rousskov> hno, probably does not matter for now, but I do not think there would be casting complications or performance overheads from adding data members to Buffer kids. Clearly, once such a kid is converted to Buffer, the added functionality would disappear. And that is OK.
+21:04 < kinkie> I need to be off for 3 hours or so.. see you later
+21:05 < rousskov> Buffer forTheRestOfTheCode; IoBuffer forThisIo; ...; forTheRestOfTheCode = forThisIo; // should work fine
+21:05 < rousskov> This is just a sketch, of course.
+21:07 < rousskov> Performance cost = one extra refcounted "copy".
+21:07 < hno> rousskov: Just afraid there will be frequent for (something) { SpecialBuffer forMe = SomeBufferIFoundSomewhere; operations on forMe.. }
+21:08 < rousskov> But even that is pretty cheap.
+21:09 < rousskov> And probably better overall than spreading "special state" all over the place while manipulating a generic Buffer
+21:09 < rousskov> Let's see how it plays out.
+21:10 < hno> First steps is the same anyway, and is imho the hard part.
+21:10 < rousskov> Agreed
+21:11 < rousskov> hno, how does your schedule look now? Will you be able to resume Rock Store work soon?
+21:11 < hno> I prefer deferring the discussion on UniBuffer vs hierarchy until there is something meaningful other than plain String to discuss around.
+21:11 < hno> Yes.
+21:12 < rousskov> hno, OK regarding deferring.
+}}}
 
 ----
 Discuss this page using the "Discussion" link in the main menu
