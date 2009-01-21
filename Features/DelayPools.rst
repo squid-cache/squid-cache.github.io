@@ -124,11 +124,7 @@ The same code is also used by a some of departments using class 2 delay pools to
 This is also pretty well documented in the configuration file, with examples. Squid install with a squid.conf.documented or squid.conf.default file.
 If you no longer have a documented config file the latest version is provided on the squid-cache.org website.
 
- http://www.squid-cache.org/Versions/v2/HEAD/cfgman/
- http://www.squid-cache.org/Versions/v3/HEAD/cfgman/
-
-
- {i} Sometimes the config is upgraded between versions. Change '''HEAD''' to the version number of your Squid to get the most relevant config details.
+ * http://www.squid-cache.org/Doc/config/delay_parameters/
 
 ----
 CategoryFeature
