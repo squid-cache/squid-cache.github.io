@@ -19,7 +19,9 @@ In this example a squid installation will use RADIUS "squid_radius_auth" Squid R
 
 == Squid Installation ==
 
-Install squid using your distro package management system or using source, make sure squid is compiled with --enable-basic-auth-helpers="squid_radius_auth" option which is only available in Squid: Version 2.6.STABLE17 and later. 
+Install squid using your distro package management system or using source.
+
+Make sure squid is compiled with '''--enable-basic-auth-helpers="squid_radius_auth"''' option which is only available in Squid-2.6.STABLE17 and later. 
 
 == Create radius configuration file ==
 
@@ -36,15 +38,11 @@ port portnumber: Specifies the port number or  service name where the helper sho
 
 }}}
 
-Here is my radius config
+Here is my radius config: /etc/radius_config
 
 {{{
-
-vi /etc/radius_config
-
 server 192.168.10.20
 secret someSecret
-
 }}}
 
 == Test the squid_radius_auth helper ==
@@ -55,16 +53,20 @@ Before making changes to squid.conf its better to test the helper from command l
 
 /usr/local/squid/libexec/squid_radius_auth -f /etc/radius_config
 
+}}}
+
 Or, if you are not using configuration file then ...
 
-/usr/local/squid/libexec/squid_radius_auth -h 192.168.10.20 -w someSecret
+{{{
 
+/usr/local/squid/libexec/squid_radius_auth -h 192.168.10.20 -w someSecret
 
 }}}
 
 Type your radius username/password on the same line separated with space, on successful authentication it will give "OK" otherwise "ERR login failure"
 
-== Relevant squid.conf parameters ==
+
+== squid.conf Configuration ==
 
 {{{
 
@@ -74,9 +76,6 @@ auth_param basic realm Web-Proxy
 auth_param basic credentialsttl 5 minute
 auth_param basic casesensitive off
 
-}}}
-
-{{{
 
 acl radius-auth proxy_auth REQUIRED
 http_access allow radius-auth
