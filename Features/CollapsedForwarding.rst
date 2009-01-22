@@ -81,8 +81,8 @@ The stale_hit effect uses the same mechanism by disregarding that the object is 
 
 == Known issues and shortcomings ==
 
- * The 30 second window should be tuneable; see [http://www.squid-cache.org/bugs/show_bug.cgi?id=2504 bug 2504].
- * At least in the 2.6 implementation, non-successful responses are not collapsed, leading to the potential for overwhelming the back-end server; see [http://www.squid-cache.org/bugs/show_bug.cgi?id=1918 bug 1918].
+ * The 30 second window should be tuneable; see [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2504|bug 2504]].
+ * At least in the 2.6 implementation, non-successful responses are not collapsed, leading to the potential for overwhelming the back-end server; see [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1918|bug 1918]].
  * Might even be suitable for the general Internet proxy situation, not only reverse proxies. 
 
 ----
