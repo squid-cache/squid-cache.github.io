@@ -30,7 +30,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 || ICP (v3)       || - || Y || Y || Y || Y || Y ||
 |||||||||||||| '''URI Protocols handled''' ||
 || HTTP 1.0       || Y || Y || Y || Y || Y || Y ||
-|| HTTP 1.1       || - || - || X || - || - || - || see [[../Features/HTTP11]] ||
+|| [[../Features/HTTP11|HTTP 1.1]] || - || - || X || - || - || - ||
 || HTTPS          || Y || Y || Y || Y || Y || Y ||
 || FTP            || Y || Y || Y || Y || Y || Y ||
 || Gopher         || Y || Y || Y || Y || Y || Y ||
@@ -48,12 +48,18 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 || DiskD          || Y || Y || Y || Y || Y || Y ||
 || UFS            || Y || Y || Y || Y || Y || Y ||
 || COSS           || - || Y || Y || B || B || B ||
-|||||||||||||| '''Efficiency aids''' ||
-|| [[Features/CollapsedForwarding|Collapsed Forwarding]] || - || Y || Y || - || - || - ||
-|| [[Features/StaleIfError|stale-if-error]] || - || - || Y || - || - || - ||
-|| [[Features/StaleWhileRevalidate|stale-while-revalidate]] || - || - || Y || - || - || - ||
-|||||||||||||| '''AAA''' ||
-|| Basic Authentication || Y || Y || Y || Y || Y || Y ||
-|| Digest Authentication || Y || Y || Y || Y || Y || Y ||
-|| NTLM Authentication || Y || Y || Y || Y || Y || Y || For full NTLMv2 we rely on Samba ||
+|||||||||||||| '''Authentication Schemes''' ||
+|| Basic Authentication     || Y || Y || Y || Y || Y || Y ||
+|| Digest Authentication    || Y || Y || Y || Y || Y || Y ||
+|| NTLM Authentication      || Y || Y || Y || Y || Y || Y || For full NTLMv2 we rely on Samba ||
 || Negotiate Authentication || - || Y || Y || Y || Y || Y || aka Kerberos ||
+|||||||||||||| '''Efficiency aids''' ||
+|| [[Features/CollapsedForwarding|Collapsed Forwarding]]    || - || Y || Y || - || - || - ||
+|| [[Features/StaleIfError|stale-if-error]]                 || - || - || Y || - || - || - ||
+|| [[Features/StaleWhileRevalidate|stale-while-revalidate]] || - || - || Y || - || - || - ||
+|||||||||||||| '''Authorization Sources''' ||
+|| RADIUS Authorization     || - || Ys17 || Y || Y || Y || Y ||
+|| LDAP Authorization       ||   || Y    || Y || Y || Y || Y ||
+|| PAM Authorization        ||   || Y    || Y || Y || Y || Y ||
+|| Samba Authorization      ||   || Y    || Y || Y || Y || Y ||
+|| eDirectory Authorization || - || -    || Y || Y || Y || Y ||
