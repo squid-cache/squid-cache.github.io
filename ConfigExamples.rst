@@ -3,7 +3,7 @@
 
 This is a collection of example Squid Configurations intended to demonstrate the flexibility of Squid.
 
-## The warning below is Include'd in the template ConfigExampleTemplate and possibly in some other pages. Please, do not remove the enclosing comments.
+## The warning below is Included in the template ConfigExampleTemplate and possibly in some other pages. Please, do not remove the enclosing comments.
 ## warning begin
 '''Warning''': Any example presented here is provided "as-is" with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list.
 ## warning end
@@ -32,7 +32,18 @@ Choose a good WikiName for your new example and enter it here:
 
 == Current configuration examples ==
 
-<<FullSearchCached(title:regex:^ConfigExamples/.*$)>>
+=== Authentication ===
+<<FullSearchCached(title:regex:^ConfigExamples/Authenticate/.*$)>>
+
+=== Interception ===
+[[ConfigExamples/Intercept|Overview and explanation]]
+<<FullSearchCached(title:regex:^ConfigExamples/Intercept/.*$)>>
+
+=== Instant Messaging / Chat Program filtering ===
+<<FullSearchCached(title:regex:^ConfigExamples/Chat/.*$)>>
+
+=== General ===
+<<FullSearchCached(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat )>>
 
 == External configuration examples ==
 
