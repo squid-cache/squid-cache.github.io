@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Configuring a Squid Server to authenticate from Mysql DB =
+= Configuring a Squid Server to authenticate from MySQL database =
 By Askar Ali Khan
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
@@ -11,17 +11,22 @@ By Askar Ali Khan
 
 == Outline ==
 
-In this example a squid installation will use Mysql to authenticate users before allowing them to surf the web. For security reasons users need to enter their username and password before they are allowed to surf the internet.
+In this example a squid installation will use MySQL to authenticate users before allowing them to surf the web. For security reasons users need to enter their username and password before they are allowed to surf the internet.
 
 == Squid Installation ==
 
-Install squid using your distro package management system or using source, make sure squid is compiled with '--enable-basic-auth-helpers=DB' option.
+Install squid using your distro package management system or using source.
 
-== Creating Mysql db/table to hold user credentials ==
+Make sure squid is compiled with '''--enable-basic-auth-helpers=DB''' option.
 
+== Creating MySQL db/table to hold user credentials ==
+
+{{{
 mysql> create database squid;
 
-mysql> grant select  on squid.* to someuser@localhost identified by 'xxxx';
+mysql> grant select on squid.* to someuser@localhost identified by 'xxxx';
+
+}}}
 
 Create table 'passwd' in 'squid' db.
 
@@ -48,7 +53,7 @@ mysql> insert into passwd values('testuser','test',1,'Test User','for testing pu
 
 == Squid Configuration File ==
 
-Edit squid.conf so that authentication against Mysql db works
+Edit squid.conf so that authentication against MySQL db works
 
 {{{
 
@@ -58,9 +63,6 @@ auth_param basic realm Web-Proxy
 auth_param basic credentialsttl 1 minute
 auth_param basic casesensitive off
 
-}}}
-
-{{{
 
 acl db-auth proxy_auth REQUIRED
 http_access allow db-auth
