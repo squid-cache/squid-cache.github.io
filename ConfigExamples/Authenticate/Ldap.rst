@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/Authenticate/LDAP
 ## page was renamed from ConfigExamples/SquidAndLDAP
 ## page was renamed from ConfigExamples/ConfigExamples/SquidAndLDAP
 ##master-page:CategoryTemplate
