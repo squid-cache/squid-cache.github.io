@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/RadiusAuthentication
 ## page was renamed from ConfigExamples/SquidAndRadius
 ##master-page:CategoryTemplate
 #format wiki
