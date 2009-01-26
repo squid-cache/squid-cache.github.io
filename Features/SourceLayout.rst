@@ -41,11 +41,12 @@ Key:
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
+|| {2} || ''~/libsquid-compat/'' || Portability primitives || various include/* lib/* and snippets ||
 
 ...
 The following shuffling is linked to major code re-writes and will be held back to 3.2.
 
-|| {2} || ''~/libsquid-compat/'' || Portability primitives || include/os/* include/compat.h include/squid_* ||
+
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
 
 == Non-Squid Bundled Source code ==
