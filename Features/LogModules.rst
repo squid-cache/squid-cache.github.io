@@ -8,7 +8,7 @@
 
  * '''Status''': Testing and Polishing
 
- * '''ETA''': 3.1 + 14 days
+ * '''ETA''': unknown
 
  * '''Version''': 3.1
 
