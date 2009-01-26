@@ -108,7 +108,11 @@ iptables -A RH-Firewall-1-INPUT -s 10.48.33.2/32 -p udp -m udp --dport 2048 -j A
 
 || {i} '''note:''' || When running '''iptables''' commands, you my find that you have no firewall rules at all. In this case you will need to create an input chain to add some of the rules to. I created a chain called '''LocalFW''' instead (see below) and added the final WCCP rule to that chain. The other rules stay as they are. To do this, learn iptables...or something *LIKE* what is listed below: ||
 {{{
-iptables -t filter -NLocalFW iptables -A FORWARD -j LocalFW iptables -A INPUT -j LocalFW iptables -A LocalFW -i lo -j ACCEPT iptables -A LocalFW -p icmp -m icmp --icmp-type any -j ACCEPT
+iptables -t filter -NLocalFW
+iptables -A FORWARD -j LocalFW
+iptables -A INPUT -j LocalFW
+iptables -A LocalFW -i lo -j ACCEPT
+iptables -A LocalFW -p icmp -m icmp --icmp-type any -j ACCEPT
 }}}
 
 === Building Squid ===
