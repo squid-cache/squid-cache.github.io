@@ -61,8 +61,9 @@ They are split into a set of layers which get run sequentially during testing. E
 || 00 || layer-00-default.opts || This provides NO new options. Leaving ./configure at its defaults. ||
 || 01 || layer-01-minimal.opts || This defines all options need to disable components. Down to the bare minimum for squid to operate ||
 || 02 || layer-02-maximus.opts || Defines everything which may be enabled to ON. ||
-|| 03 || layer-03-*.opts || Failure testing. Individual options or combos which are expected to Fail. ||
-|| 04+ || ''undecided'' || This provides ALL the components which may be enabled, AND do not depend on other components in squid. An example of this would be ident ||
+|| 03 || layer-03-fail-*.opts || Failure testing. Individual options or combos which are expected to Fail. ||
+|| 04 || layer-04-maybe-*.opts || Failure testing. Individual options or combos which might fail but also may succeed. ie eCAP with/without library installed ||
+|| 05+ || ''undecided'' || This provides ALL the components which may be enabled, AND do not depend on other components in squid. An example of this would be ident ||
 
 
 || {i} || Provision is also made via os-X.opts control files for platform specific builds to be tested. These files are not expected to build properly on foreign OS, so are completely optional and not guaranteed to be authoritative. The hope is that planned multi-system testing can use these provided by package maintainers to reduce cross-platform problems. ||
@@ -70,6 +71,8 @@ They are split into a set of layers which get run sequentially during testing. E
 ===== Tasks needing a volunteer: =====
 
  * A code monkey is needed to check all components independence. This can easily be identified by the ''#if USE_X'' macros throughout the code. But may take some time.
+ * Handlers for layer 03 and 04 failure need adding to the master scripts
+ * layer 03 and 04 case .opts need to be created
 
 === Architecture Re-alignment ===
 
