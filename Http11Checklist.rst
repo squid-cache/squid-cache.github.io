@@ -1,11 +1,7 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-##
-## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted no
-
-
 
 = Feature: Progress of the HTTP/1.1 conversion of Squid? =
  * '''Goal''': To make Squid a full HTTP/1.1 proxy
@@ -13,41 +9,45 @@
  * '''Status''': Underway
 
 ## * '''Version''': What Squid version(s) will get this feature?
-
 ## * '''Priority''': How important on a scale of 0 to 5 is this for the developer working on it?
-
 ## * '''Developer''': Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
-
 == Details ==
+
+Information is not up to date. Empty entries need to be checked against in the code.
+
+ * >:> - Supported
+ * :o - Still required.
+ * <:( - Missing, but optional
+
 || '''2.x''' || '''3.x''' || '''ID''' || '''Requirement type''' || '''section''' || '''requirement''' || '''notes''' ||
-|| || || 1 || REQUIRED || 2.1 || handle implied LWS            = [CRLF] 1*( SP | HT ) || should do now ||
-|| || || 2 || REQUIRED || 2.2 || fold CRLF in headers into one long header before interpreting || should do now ||
-|| || || 3 || MUST || 3.1 || parse HTTP-Version as two multi-digit integers || unknown ||
-|| || || 4 || SHOULD || 3.1 || send HTTP/1.1 in messages once we are conditionally compliant || not done ||
-|| || || 5 || MUST || 3.1 || send HTTP/1.1 in messages that are not compatible with HTTP/1.0 || not done ||
-||Y ||Y || 6 || MUST NOT || 3.1 || send HTTP versions greater than that of squid itself. (squid will be 1.1 when and only when it is conditionally compliant with rfc 2616 || when we support all of http/1.1 send http/1.1 ||
-|| y || y || 7 || MUST || 3.1 || downgrade requests from greater than squid supports to what squid supports, return an error, or switch to tunnel behavior || Downgrades the protocol number and decodes TE. Few attempts in downgrading the request is done. ||
-||Y ||Y || 8 || MUST || 3.1 || upgrade client requests to the highest version of HTTP supported by squid. || conversion may involve altering header fields in ways that break the versions involved; HNO - 8: HTTP/0.9 is upgraded to HTTP/1.0 if support for 0.9 is enabled (and fixed). ||
-|| || || 9 || MUST || 3.1 || respond to old client requests with HTTP in the same major version. Ie a 1.x client must get a 1.x response, regardless if squid is a 2.x proxy by that point || all responses from squid are in squids current http version ||
-|| Y || Y || 10 || MUST || 3.2.1 || handle the URI of any resource served out (read proxied) ||
+|| >:> || >:> || 1 || REQUIRED || 2.1 || handle implied LWS            = [CRLF] 1*( SP | HT ) || ||
+|| >:> || >:> || 2 || REQUIRED || 2.2 || fold CRLF in headers into one long header before interpreting || ||
+|| || || 3 || MUST || 3.1 || parse HTTP-Version as two multi-digit integers || ||
+|| :o || :o || 4 || SHOULD || 3.1 || send HTTP/1.1 in messages once we are conditionally compliant || ||
+|| :o || :o || 5 || MUST || 3.1 || send HTTP/1.1 in messages that are not compatible with HTTP/1.0 || ||
+|| >:> || >:> || 6 || MUST NOT || 3.1 || send HTTP versions greater than that of squid itself. (squid will be 1.1 when and only when it is conditionally compliant with rfc 2616 || when we support all of http/1.1 send http/1.1 ||
+|| >:> || >:> || 7 || MUST || 3.1 || downgrade requests from greater than squid supports to what squid supports, return an error, or switch to tunnel behavior || Downgrades the protocol number and decodes TE. Few attempts in downgrading the request is done. ||
+|| >:> || >:> || 8 || MUST || 3.1 || upgrade client requests to the highest version of HTTP supported by squid. || conversion may involve altering header fields in ways that break the versions involved; HNO - 8: HTTP/0.9 is upgraded to HTTP/1.0 if support for 0.9 is enabled (and fixed). ||
+|| <:( || :o || 9 || MUST || 3.1 || respond to old client requests with HTTP in the same major version. Ie a 1.x client must get a 1.x response, regardless if squid is a 2.x proxy by that point || all 3.x responses from squid are in squids current http version. 2.x has upgrade_http0.9 which keeps 0.9 in their own major version. ||
+|| >:> || >:> || 10 || MUST || 3.2.1 || handle the URI of any resource served out (read proxied) ||
 || 4KB || 8KB || 11 || SHOULD || 3.2.1 || handle unbounded length URI's if we allow long GET requests || we set an upper limit on URI's ||
 || || || 12 || SHOULD || 3.2.1 || return 414 for URI's longer than we can actually handle || use caution handling URI's more than 255 bytes long - old clients or downstream proxies may break. Hno - we currently return some other error code ||
-||Y ||Y || 13 || SHOULD || 3.2.2 || avoid using ip address's in generated URL's || squids host name is used ||
+|| >:> || >:> || 13 || SHOULD || 3.2.2 || avoid using ip address's in generated URL's || squids host name is used ||
 || || || 14 || MUST || 3.2.2 || add / to http urls that have no abs_path; and if generating requests include the / || done when sending to origin, not when sending to another proxy ||
 || || || 15 || MUST NOT || 3.2.2 || change the hostname in a request with a FQDN in it || redirectors can violate this ||
-||Y ||Y || 16 || MAY || 3.2.2 || add squids domain to the hostname that are not fully qualified in requests received by squid || configure squid with append_domain ||
+|| >:> || >:> || 16 || MAY || 3.2.2 || add squids domain to the hostname that are not fully qualified in requests received by squid ||  append_domain ||
 || || || 17 || SHOULD || 3.2.3 || compare URI's by case-sensitive octet-by-octet comparison of the entire URI. || empty or absent ports are equivalent to the default for that resource; empty abs_path ="/" ||
-|| || || 18 || MUST || 3.2.3 || compare hostnames in URI's case-insensitively || not done ||
-|| || || 19 || MUST || 3.2.3 || compare scheme names in URI's case-insensitively || not done ||
+|| || || 18 || MUST || 3.2.3 || compare hostnames in URI's case-insensitively || ||
+|| || || 19 || MUST || 3.2.3 || compare scheme names in URI's case-insensitively || ||
 || || || 20 || MUST || 3.2.3 || match % HEX HEX encoded characters with those outside the reserved and unsafe sets when comparing URI's || ie http://abc.com:80/~smith/home.html; [[http://ABC.com/~smith/home.html;|http://ABC.com/%7Esmith/home.html;]] [[http://ABC.com:/~smith/home.html|http://ABC.com:/%7esmith/home.html]] match ||
-||Y ||Y || 21 || MUST || 3.3.1 || handle the three date formats of HTTP/1.0 || robustness is encouraged :) ||
-||Y ||Y || 22 || MUST || 3.3.1 || only generate dates in rfc 1123 format ||
-||Y ||Y || 23 || MUST || 3.3.1 || generate all dates in GMT (UTC) time. ||
-||Y ||Y || 24 || MUST || 3.3.1 || assume GMT time when reading asctime format ||
-|| || || 25 || MUST || 3.3.1 || not add LWS to the HTTP-date format other than that specifically included in the grammer || should do now ||
-|| || || 26 || MUST || 3.4 || specify the mapping associated with a MIME character set name when using MIME character sets || error pages specify the charset & possibly other places ||
-|| || || 27 || SHOULD || 3.4 || limit the use of MIME character sets to IANA registry defined character sets ||
-|| || || 28 || MAY || 3.4.1 || include a charset parameter even when the charset is ISO-8559-1 ||
+|| >:> || >:> || 21 || MUST || 3.3.1 || handle the three date formats of HTTP/1.0 || robustness is encouraged :) ||
+|| >:> || >:> || 22 || MUST || 3.3.1 || only generate dates in rfc 1123 format ||
+|| >:> || >:> || 23 || MUST || 3.3.1 || generate all dates in GMT (UTC) time. ||
+|| >:> || >:> || 24 || MUST || 3.3.1 || assume GMT time when reading asctime format ||
+|| >:> || >:> || 25 || MUST || 3.3.1 || not add LWS to the HTTP-date format other than that specifically included in the grammar || ||
+|| >:> || >:> || 26 || MUST || 3.4 || specify the mapping associated with a MIME character set name when using MIME character sets || error pages specify the charset & possibly other places ||
+|| >:> || >:> || 27 || SHOULD || 3.4 || limit the use of MIME character sets to IANA registry defined character sets ||
+|| >:> || >:> || 28 || MAY || 3.4.1 || include a charset parameter even when the charset is ISO-8559-1 ||
 || || || 29 || SHOULD || 3.4.1 || include a charset parameter even when the charset is ISO-8559-1 when we know we will not confuse the client || not done ||
 || || || 30 || MUST || 3.4.1 || for the 'client' respect the charset label provided by the sender. ||
 || || || 31 || SHOULD NOT || 3.5 || create responses with Content-Encoding: identity || should do now ||
@@ -62,10 +62,10 @@
 || || || 40 || MUST NOT || 3.6.1 || put headers in the trailer unless a) the request included a TE header that indicates trailers is acceptable in the transfercoding (see 14.39) or b) the server is the origin, (and paraphrasing) the trailers are not needed to use the response) || hno - check the te branch ||
 || || || 41 || MUST || 3.6.1 || understand "chunked" transfer-coding || hno - check the te branch ||
 || || || 42 || MUST || 3.6.1 || ignore chunk-extensions not understood || hno - check the te branch ||
-|| Y || Y || 43 || MUST NOT || 3.7 || use LWS between the type and sub type in media-types, or between attribute and values || does now for squid generated headers ||
+|| >:> || >:> || 43 || MUST NOT || 3.7 || use LWS between the type and sub type in media-types, or between attribute and values || does now for squid generated headers ||
 || || || 44 || SHOULD || 3.7 || when sending to older applications (< HTTP/1.1) only use media types when required by the type/subtype definition ||
-|| Y || Y || 45 || MUST || 3.7.1 || represent entity-bodies in canonical media-type form (except "text" types). ||
-|| Y || Y || 46 || MUST || 3.7.1 || represent entity-bodies in canonical media-type form (except "text" types) prior to content-coding them ||
+|| >:> || >:> || 45 || MUST || 3.7.1 || represent entity-bodies in canonical media-type form (except "text" types). ||
+|| >:> || >:> || 46 || MUST || 3.7.1 || represent entity-bodies in canonical media-type form (except "text" types) prior to content-coding them ||
 || || || 47 || MUST || 3.7.1 || label data in charsets other than ISO-8859-1" with an appropriate charset value. || see rfc 2616 section 3.4.1 for compatibility notes ||
 || || || 48 || MUST || 3.7.2 || include a boundary parameter as part of the media type value for multipart media types || hno - squid does not generate or touch mulipart entries. Rbc - we may need to with TE content. Ermm, ||
 || || || 49 || MUST || 3.7.2 || only use CRLF in multipart messages to represent line breaks between body-parts. || hno - squid does not generate or touch mulipart entries. Rbc - we may need to with TE content. Ermm, ||
@@ -80,7 +80,7 @@
 || || || 58 || SHOULD || 3.8 || only change the product-version portion of a product value when changing version numbers ||
 || || || 59 || MUST NOT || 3.9 || generate more than 3 digits after the decimal point in quality values ||
 || || || 60 || SHOULD || 3.9 || limit user configuration to 3 digits on quality values ||
-|| N || 3.1 || 61 || MUST || 3.10 || use rfc 1766 language tags in the accept-language and content-language fields ||
+|| |) || >:> || 61 || MUST || 3.10 || use rfc 1766 language tags in the accept-language and content-language fields ||
 || || || 62 || MAY || 3.11 || provide the same "strong" entity tag for two resources only if they are equivalent by octet equality ||
 || || || 63 || MAY || 3.11 || provide the same "weak" entity tag for two resources only if they are equivalent and can be substituted with no significant semantic changes ||
 || || || 64 || MUST || 3.11 || when giving entity tags provide unique entity tags for all versions of entities associated with a particular resource ||
@@ -96,13 +96,13 @@
 || || || 74 || MUST || 4.2 || when generating multiple message header fields with the same field-name, be possible for the client or downstream to combine by appending ", field-value" in the order received to generate one long header-field ||
 || || || 75 || MUST NOT || 4.2 || alter the order on multiple message headers with the same field-name ||
 || || || 76 || MUST || 4.3 || use Transfer-Encoding to indicate any transfer encodings used when transmitting messages. ||
-|| Y || 3.1 || 77 || MAY || 4.3 || add or remove Transfer-Encoding along the request chain (ie receive a message as a plain entity-body and transfer-encode via gzip for transmission downstream ||
+|| >:> || >:> || 77 || MAY || 4.3 || add or remove Transfer-Encoding along the request chain (ie receive a message as a plain entity-body and transfer-encode via gzip for transmission downstream ||
 || || || 78 || MUST NOT || 4.3 || include a message-body in a request if the request-method does not allow it ||
-|| || || 79 || SHOULD || 4.3 || read and forward message-bodies on any request ||
+|| >:> || >:> || 79 || SHOULD || 4.3 || read and forward message-bodies on any request ||
 || || || 80 || SHOULD || 4.3 || ignore message-bodies when semantics for the requests method do not define a message-body ||
-|| || || 81 || MUST NOT || 4.3 || include a message-body in a response to a HEAD request ||
+|| >:> || >:> || 81 || MUST NOT || 4.3 || include a message-body in a response to a HEAD request ||
 || || || 82 || MUST NOT || 4.3 || include a message body in 1xx, 204 and 304 responses ||
-|| || || 83 || MUST || 4.3 || include a message body in all other responses, although it MAY be zero length ||
+|| >:> || >:> || 83 || MUST || 4.3 || include a message body in all other responses, although it MAY be zero length ||
 || || || 84 || MUST || 4.4 || assume message termination by the first empty line after the header fields in responses that "MUST NOT" have message bodies (ie 1xx, 204, 304 and HEAD requests) ||
 || || || 85 || MUST NOT || 4.4 || send a Content-Length header if the entity-length and the transfer-length are not equal ||
 || || || 86 || MUST || 4.4 || ignore the Content-Length header if a Transfer-Encoding header is received ||
@@ -121,7 +121,7 @@
 || || || 99 || MUST || 5.1.1 || implementh other methods beyond GET and HEAD in accordance with rfc 2616 ||
 || || || 100 || MUST || 5.1.1 || recognize all squid server names, including any aliases, local variations, and the numeric IP address ||
 || || || 101 || MUST || 5.1.1 || accept absolute URI's for all requests. ||
-|| Y || Y || 102 || MAY || 5.1.1 || forward requests to other proxies or to the origin server. ||
+|| >:> || >:> || 102 || MAY || 5.1.1 || forward requests to other proxies or to the origin server. ||
 || || || 103 || MUST || 5.1.2 || decode URI's with % HEX HEX format before interpreting the request. ||
 || || || 104 || SHOULD || 5.1.2 || return appropriate status codes to invalid Request-URIs ||
 || || || 105 || MUST NOT || 5.1.2 || in transparent mode; rewrite the abs_path in the Request-URI (other than replacing a null abs_path with "/") ||
@@ -132,16 +132,17 @@
 || || || 110 || MUST || 6.1 || understand the class of status codes (the 1st digit) and treat unrecognized responses as x00. ||
 || || || 111 || MUST NOT || 6.1 || cache responses with unrecognized status codes ||
 || || || 112 || MAY || 7 || transmit an entity if not otherwise restricted by the request method or response code ||
-|| || || 113 || MUST || 7.1 || in transparent mode: forward unrecognized header fields ||
-|| || || 114 || SHOULD || 7.2.1 || include a Content-Type header for generated HTTP/1.1 messages w/entity bodies ||
+|| >:> || >:> || 113 || MUST || 7.1 || in transparent mode: forward unrecognized header fields ||
+|| >:> || >:> || 114 || SHOULD || 7.2.1 || include a Content-Type header for generated HTTP/1.1 messages w/entity bodies ||
 || || || 115 || SHOULD || 7.2.1 || treat unknown media-types as application/octet-stream ||
-|| || || 116 || SHOULD || 8.1.1 || implement HTTP/1.1 persistent connections ||
-|| || || 117 || SHOULD || 8.1.2 || assume http/1.1 servers will maintain persistent connections even after error responses from the server ||
-|| || || 118 || MUST NOT || 8.1.2 || send more requests on a connection after a close is signaled ||
-|| || || 119 || MAY || 8.1.2.1 || Assume a HTTP/1.1 client intends to maintain a persistent connection unless a Connection header with token close was received in the request ||
-|| || || 120 || SHOULD || 8.1.2.1 || Send a Connection header with token close if we want to close the client side connection immediately after sending the response ||
-|| || || 121 || MAY || 8.1.2.1 || expect a connection to remain open - but decide based on the server response (does it have a connection header with token close)? ||
-|| || || 122 || SHOULD || 8.1.2.1 || send a Connection header with token close if we want to only send one request and then close the server side connection ||
+|| >:> || >:> || 116 || SHOULD || 8.1.1 || implement HTTP/1.1 persistent connections ||
+|| || <:( || 117 || SHOULD || 8.1.2 || assume http/1.1 servers will maintain persistent connections even after error responses from the server ||
+|| || >:> || 118 || MUST NOT || 8.1.2 || send more requests on a connection after a close is signaled ||
+|| || >:> || 119 || MAY || 8.1.2.1 || Assume a HTTP/1.1 client intends to maintain a persistent connection unless a Connection header with token close was received in the request ||
+|| || >:> || 120 || SHOULD || 8.1.2.1 || Send a Connection header with token close if we want to close the client side connection immediately after sending the response ||
+|| || >:> || 121 || MAY || 8.1.2.1 || expect a connection to remain open - but decide based on the server response (does it have a connection header with token close)? ||
+||
+ || >:> || 122 || SHOULD || 8.1.2.1 || send a Connection header with token close if we want to only send one request and then close the server side connection ||
 || || || 123 || SHOULD NOT || 8.1.2.1 || assume a persistent connection is maintained for pre-HTTP/1.1 versions unless it is explicitly signaled. ||
 || || || 124 || MUST || 8.1.2.1 || always create messages with self-defined message lengths ||
 || || || 125 || MAY || 8.1.2.2 || pipeline requests to upstream servers ||
@@ -151,17 +152,17 @@
 || || || 129 || MUST || 8.1.2.2 || be prepared to resend requests if a server closes the connection before sending all the pipelined requests ||
 || || || 130 || SHOULD NOT || 8.1.2.2 || pipeline non idempotent methods or non-idempotent sequences of methods. ||
 || || || 131 || SHOULD || 8.1.2.2 || wait to send non-idempotent requests after receiving the response status for the previous request || note: this may be a non-issue for us. ||
-|| || || 132 || recommendation || 8.1.3 || implement the Connection header field properly ||
-|| || || 133 || MUST || 8.1.3 || signal persistent connections separately with clients and upstream servers ||
+|| || >:> || 132 || recommendation || 8.1.3 || implement the Connection header field properly ||
+|| || >:> || 133 || MUST || 8.1.3 || signal persistent connections separately with clients and upstream servers ||
 || || || 134 || MUST NOT || 8.1.3 || establish a HTTP/1.1 persistent connection with a HTTP/1.0 client ||
-|| || || 135 || SHOULD || 8.1.4 || issue a graceful close on the transport connection when timing out persistent connections ||
-|| || || 136 || SHOULD || 8.1.4 || watch persistent connections for close signals and respond to it as appropriate ||
-|| || || 137 || MAY || 8.1.4 || close any connection at any time. ||
+|| || >:> || 135 || SHOULD || 8.1.4 || issue a graceful close on the transport connection when timing out persistent connections ||
+|| || >:> || 136 || SHOULD || 8.1.4 || watch persistent connections for close signals and respond to it as appropriate ||
+|| >:> || >:> || 137 || MAY || 8.1.4 || close any connection at any time. ||
 || || || 138 || MUST || 8.1.4 || be able to recover from asynchronous close events. ||
 || || || 139 || SHOULD || 8.1.4 || after an asynchronous close event reopen the transport connection and retransmit the aborted sequence automatically as long as the request is idempotent ||
 || || || 140 || MUST NOT || 8.1.4 || after an asynchronous close event reopen the transport connection and retransmit the aborted sequence automatically if the request is non-idempotent ||
-|| || || 141 || SHOULD || 8.1.4 || always respond to at least one request per connection if possible ||
-|| || || 142 || SHOULD NOT || 8.1.4 || close a connection in the middle of transmitting a response, unless network or client failure is suspected ||
+|| >:> || >:> || 141 || SHOULD || 8.1.4 || always respond to at least one request per connection if possible ||
+|| >:> || >:> || 142 || SHOULD NOT || 8.1.4 || close a connection in the middle of transmitting a response, unless network or client failure is suspected ||
 || || || 143 || SHOULD || 8.1.4 || for the client program - limit the number of simultaneous connections maintained to a given server. ||
 || || || 144 || SHOULD NOT || 8.1.4 || for the client program - maintain more than 2 connections with any given server or proxy ||
 || || || 145 || SHOULD || 8.1.4 || for the proxy - use up to 2*N with another server or proxy, when N is the number of simultaneous connected active users ||
@@ -269,8 +270,8 @@
 || || || 247 || MAY || 10.5.4 || return a Retry-After when returning a 503 if we are overloaded, or unable to serve requests due to maintenance. (the header would indicate when the maintenance should finish ||
 || || || 248 || SHOULD || 10.5.5 || return a 504 on an upstream timeout, or timeout on an auxilary server - ie DNS/authentication helper || we may be returning 400 or 500 presently ||
 || || || 249 || MUST || 10.5.6 || return a 505 if we don't support, (or have #defed it out) the HTTP major version in the request message ||
-|| || || 250 || OPTIONAL || 11 || implement basic and or digest authentication ||
-|| N || Y || 251 || MAY || 12 || use content-negotiation on any entity body request/response - ie in selecting what language the error should be in || 3.1 and later ||
+|| >:> || >:> || 250 || OPTIONAL || 11 || implement basic and or digest authentication ||
+|| <:( || >:> || 251 || MAY || 12 || use content-negotiation on any entity body request/response - ie in selecting what language the error should be in || ||
 || || || 252 || MAY || 12.1 || for the squid client - include request header fields (Accept, Accept-Language, Accept-Encoding etc) in requests ||
 || || || 253 || MAY || 12.3 || develop transparent negotiation capabilities within HTTP/1.1 ||
 || || || 254 || recommendation || 13 || Note: The server, cache, or client implementor might be faced with design decisions not explicitly discussed in this specification. If a decision might affect semantic transparency, the implementor ought to err on the side of maintaining transparency unless a careful and complete analysis shows significant benefits in breaking transparency. ||
@@ -284,10 +285,10 @@
 || || || 262 || MUST || 13.1.2 || delete 1xx warnings from cached responses after successful revalidation ||
 || || || 263 || MAY || 13.1.2 || generate 1xx warnings when validating a cached entry ||
 || || || 264 || MUST NOT || 13.1.2 || delete 2xx warning from cached responses after successful revalidation ||
-||  ||  || 265 || MAY || 13.1.2 || choose the warning text description language (perhaps based on Accept headers) ||
+|| || || 265 || MAY || 13.1.2 || choose the warning text description language (perhaps based on Accept headers) ||
 || || || 266 || MAY || 13.1.2 || allow/create responses with multiple warnings, including multiple warnings with the same code ||
 || || || 267 || recommendation || 13.1.3 || use the most restrictive interpretation of caching issue /spec conflicts ||
-|| Y || Y || 268 || MAY || 13.1.5 || have squid configurable to return stale responses even when not requested by clients ||
+|| >:> || >:> || 268 || MAY || 13.1.5 || have squid configurable to return stale responses even when not requested by clients ||
 || || || 269 || MUST || 13.1.5 || mark stale responses with a Warning header ||
 || || || 270 || SHOULD NOT || 13.1.5 || return a stale response if the client explicitly requests a first-hand or fresh one, unless technical or policy reasons require returning a stale response || ie: offline mode, refresh to IMS are allowed but MUST require deliberate configuration by the admin ||
 || N/A || N/A || 271 || SHOULD || 13.2.3 || be running on a host that uses NTP or equivalent for clock synchronization ||
@@ -362,7 +363,7 @@
 || || || 340 || MAY || 14.3 || assume the client will accept any content coding when no Accept-Encoding header is presented ||
 || || || 341 || SHOULD || 14.3 || for the squid 'server' send identity content-coding when no Accept-Encoding header is presented ||
 || N/A || N/A || 342 || MAY || 14.4 || have q values for preferred language ||
-|| Y || Y || 343 || SHOULD || 14.4 || assume all languages are ok when there is no header ||
+|| >:> || >:> || 343 || SHOULD || 14.4 || assume all languages are ok when there is no header ||
 || || || 344 || MAY || 14.5 || for the squid  'server' send  Accept-ranges: none to tell clients not to attempt range requests ||
 || || || 345 || MUST || 14.6 || when an age header we receive is larger than our largest integer, or if an Age calculation overflows, transmit age of 2147483648 (2^31). ||
 || || || 346 || SHOULD || 14.6 || use integers of at least 31 bits ||
@@ -444,7 +445,7 @@
 || || || 422 || MUST NOT || 14.36 || for the client - send a referer field if the request-URI was not obtained from a source with it's own URI - ie the keyboard ||
 || || || 423 || MAY || 14.37 || use Retry-After to indicate how long a client should wait before requesting the new location ||
 || || || 424 || MUST NOT || 14.38 || modify the Server header on forwarded responses ||
-|| Y || Y || 425 || SHOULD || 14.38 || include a Via header on forwarded responses || unless admin suppressed ||
+|| >:> || >:> || 425 || SHOULD || 14.38 || include a Via header on forwarded responses || unless admin suppressed ||
 || || || 426 || MUST || 14.39 || include the TE connection token whenever we use TE on a connection ||
 || || || 427 || SHOULD NOT || 14.40 || include header fields in the trailer with having sent a Trailer header ||
 || || || 428 || MUST NOT || 14.40 || send Transfer-Encoding; Content-Length or Trailer as Trailer field values ||
@@ -485,13 +486,13 @@
 || || || 463 || MUST || 14.46 || include a warn-date that matches the Date in the response in messages sent with warning headers whose version is HTTP/1.0 or lower ||
 || || || 464 || MUST || 14.46 || delete warning-values that have a warn-date differing form the Date value in the response ||
 || || || 465 || MUST || 14.46 || delete the warning header if it is empty ||
-|| Y || Y || 466 || MUST || 14.47 || include WWW-Authenticate in 401 responses ||
+|| >:> || >:> || 466 || MUST || 14.47 || include WWW-Authenticate in 401 responses ||
 || || || 467 || SHOULD || 15.1 || be careful not to disclose personal information of the clients ||
 || || || 468 || SHOULD || 15.1.2 || be able to filter/alter the From field when acting as a gateway ||
 || || || 469 || SHOULD || 19.3 || assume RC 850 dates more than 50 years in the future are in the past ||
 || || || 470 || MAY || 19.3 || internally represent an Expires date as earlier than the proper value, but MUST NOT represent it as later than the proper value ||
-|| || || 471 || MUST || 19.3 || do date calculations in GMT ||
-|| || || 472 || MUST || 19.3 || convert HTTP header dates to GMT using the most conservative possible conversion if they are not in GMT ||
+|| >:> || >:> || 471 || MUST || 19.3 || do date calculations in GMT ||
+|| >:> || >:> || 472 || MUST || 19.3 || convert HTTP header dates to GMT using the most conservative possible conversion if they are not in GMT ||
 || || || 473 || idea || 19.5.1 || sanitize the content-disposition header by removing directory information ||
 
 
