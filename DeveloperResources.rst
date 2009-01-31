@@ -30,7 +30,7 @@ If you wish to contribute squid there are certain guidelines you need to follow 
 
 If you are looking for a new project to work on check the Wish List at [[RoadMap/Squid3]] or query the bugzilla database for [[http://www.squid-cache.org/bugs/buglist.cgi?component=feature&cmdtype=doit|feature requests]].
 
-Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written a [[http://devel.squid-cache.org/squidhttp1.1.htm|checklist]] for HTTP/1.1 compliance.
+Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written a [[Http11Checklist|checklist]] for HTTP/1.1 compliance.
 
 [[http://cppunit.sourceforge.net/cppunit-wiki|CppUnit]] is used to perform unit testing.
 
