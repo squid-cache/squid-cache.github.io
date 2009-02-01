@@ -14,7 +14,7 @@ It's hard to seperate the stream types by application so the config below includ
 
 == Squid Configuration File ==
 
-Configuration file to Include:
+Configuration file to [[Features/ConfigIncludes|Include]]:
 
 {{{
 # Media Streams
