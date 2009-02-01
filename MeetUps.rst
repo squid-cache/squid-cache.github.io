@@ -8,7 +8,7 @@
 
 The developers do occasionally come out in public. The next public event where you can find a Squid developer for an informal meet-up:
 
- * Jan 28-30, 2009 - AmosJeffries will be attending NZNOG-09 Conference in Auckland New Zealand
+## OVER. * Jan 28-30, 2009 - AmosJeffries will be attending NZNOG-09 Conference in Auckland New Zealand
 
 = Squid Developer Meetups =
 
