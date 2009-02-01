@@ -7,7 +7,7 @@
 <<TableOfContents>>
 
 == Outline ==
-Squid can be configured to provide Reverse SSL Proxy Feature . This can talk to http or https websites hosted at the back of it . For this configuration I will be using Squid-2.6 STABLE 13 release .
+Squid can be configured to provide Reverse SSL Proxy Feature . This can talk to http or https websites hosted at the back of it.
 
 == Setup ==
 This Example Involves hosting 3 Websites Using Wildcard Certificate. The Wild Card Certificate will be Generated on the same server on which Squid will be installed also the same will be acting as a CA for Signing the Certificates .
@@ -17,6 +17,7 @@ For this Following information will be required
  * IP Address of the Squid Server ( Squid is installed at default location .i.e /usr/local/squid/ )
  * IP and the Hostname for all the 3 Servers
  * Openssl installed on the same server
+
 == OpenSSL Configuration for CA and Certificate Generation ==
 Download and install the openssl software: If you are on RH linux, just check if this software is installed using '''rpm -qi openssl''' . Please find the openssl.cnf file in which some changes were made for '''dir = /usr/newrprgate/Cert''''''Auth , private_key = $dir/private/cakey.pem''' , '''default_keyfile = /usr/newrprgate/Cert''''''Auth/private/cakey.pem '''rest of the config is used as default .
 
@@ -179,39 +180,40 @@ You have to make entires in host file as we will be starting the squid with -D o
 Edit your /etc/hosts file
 
 {{{
-10.112.62.20 websiteA.mydomain.com websiteA
-10.112.143.112 mywebsite.mydomain.com mywebsite
-10.112.90.20 websiteB.mydomain.com websiteB
-}}}
-{{{
-https_port 443 cert=/usr/newrprgate/CertAuth/testcert.cert key=/usr/newrprgate/CertAuth/testkey.pem
-defaultsite=mywebsite.mydomain.com vhost
-cache_peer 10.112.62.20 parent 80 0 no-query originserver login=PASS
-name=websiteA.mydomain.com
+https_port 443 cert=/usr/newrprgate/CertAuth/testcert.cert key=/usr/newrprgate/CertAuth/testkey.pem defaultsite=mywebsite.mydomain.com vhost
+
+# First HTTPS peer
+cache_peer 10.112.62.20 parent 80 0 no-query originserver login=PASS name=websiteA
+
 acl sites_server_1 dstdomain websiteA.mydomain.com
-cache_peer_access websiteA.mydomain.com allow sites_server_1
-cache_peer 10.112.143.112 parent 80 0 no-query originserver login=PASS
-name=mywebsite.mydomain.com
+cache_peer_access websiteA allow sites_server_1
+http_access allow sites_server_1
+
+# Second HTTPS peer
+cache_peer 10.112.143.112 parent 80 0 no-query originserver login=PASS name=mywebsite
+
 acl sites_server_2 dstdomain mywebsite.mydomain.com
-cache_peer_access mywebsite.mydomain.com allow sites_server_2
-cache_peer 10.112.90.20 parent 443 0 no-query originserver ssl sslflags=DONT_VERIFY_PEER name=websiteB.mydomain.com
+cache_peer_access mywebsite allow sites_server_2
+http_access allow sites_server_2
+
+# Third HTTPS peer
+cache_peer 10.112.90.20 parent 443 0 no-query originserver ssl sslflags=DONT_VERIFY_PEER name=websiteB
+
 acl sites_server_3 dstdomain websiteB.mydomain.com
-cache_peer_access websiteB.mydomain.com allow sites_server_3
-acl webserver dst 10.112.62.20 10.112.143.112 10.112.90.20
-http_access allow webserver
-http_access allow all
-miss_access allow webserver
-miss_access deny all
-http_access allow manager localhost
-http_access deny manager
+cache_peer_access websiteB allow sites_server_3
+http_access allow sites_server_3
+
+# Security block for non-hosted sites
 http_access deny all
 
 }}}
+
 == Thanks ==
 You can Also Visit the link to know more about setting up CA server , the OpenSSL config was taken from the following link
 
 http://mia.ece.uic.edu/~papers/volans/settingupCA.html
 
 Thanks to Sudhir Kumar Gupta < shekharsahab14@gmail.com > for providing the background information for this article
+
 
 CategoryConfigExample
