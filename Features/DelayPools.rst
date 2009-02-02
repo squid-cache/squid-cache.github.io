@@ -4,7 +4,6 @@
 #faqlisted yes
 
 = Feature: Delay Pools =
-
  * '''Goal''': To provide a way to limit the bandwidth of certain requests based on any list of criteria.
 
  * '''Status''': Completed
@@ -14,14 +13,12 @@
  * '''Developer''': David Luyer
 
 ## * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
-
 == Delay Pools ==
 by [[mailto:david@luyer.net|David Luyer]].
 
 To enable delay pools features in Squid configure with ''--enable-delay-pools'' before compilation.
 
 ==== Terminology for this FAQ entry: ====
-
  pool:: a collection of bucket groups as appropriate to a given class
  bucket group:: a group of buckets within a pool, such as the per-host bucket group, the per-network bucket group or the aggregate bucket group (the aggregate bucket group is actually a single bucket)
  bucket:: an individual delay bucket represents a traffic allocation which is replenished at a given rate (up to a given limit) and causes traffic to be delayed when empty
@@ -29,16 +26,19 @@ To enable delay pools features in Squid configure with ''--enable-delay-pools'' 
  class 1:: a class 1 delay pool contains a single unified bucket which is used for all requests from hosts subject to the pool
  class 2:: a class 2 delay pool contains one unified bucket and 255 buckets, one for each host on an 8-bit network (IPv4 class C)
  class 3:: contains 255 buckets for the subnets in a 16-bit network, and individual buckets for every host on these networks (IPv4 class B )
+ class 4:: as class 3 but in addition have per authenticated user buckets, one per user.
+ class 5:: custom class based on tag values returned by external acl helpers in http_access. One bucket per used tag value.
+
 Delay pools allows you to limit traffic for clients or client groups, with various features:
 
  * can specify peer hosts which aren't affected by delay pools, ie, local peering or other 'free' traffic (with the ''no-delay'' peer option).
  * delay behavior is selected by ACLs (low and high priority traffic, staff vs students or student vs authenticated student or so on).
  * each group of users has a number of buckets, a bucket has an amount coming into it in a second and a maximum amount it can grow to; when  it reaches zero, objects reads are deferred until one of the object's clients has some traffic allowance.
  * any number of pools can be configured with a given class and any set of limits within the pools can be disabled, for example you might only want to use the aggregate and per-host bucket groups of class 3, not the per-network one.
+
 This allows options such as creating a number of class 1 delay pools and allowing a certain amount of bandwidth to given object types (by using URL regular expressions or similar), and many other uses I'm sure I haven't even though of beyond the original fair balancing of a relatively small traffic allocation across a large number of users.
 
 ==== There are some limitations of delay pools: ====
-
  * delay pools are incompatible with slow aborts; quick abort should be set fairly low to prevent objects being retrieved at full speed once there are no clients requesting them (as the traffic allocation is based on the current clients, and when there are no clients attached to the object there is no way to determine the traffic allocation).
  * delay pools only limits the actual data transferred and is not inclusive of overheads such as TCP overheads, ICP, DNS, ICMP pings, etc.
  * it is possible for one connection or a small number of connections to take all the bandwidth from a given bucket and the other connections to be starved completely, which can be a major problem if there are a number of large objects being transferred and the parameters are set in a way that a few large objects will cause all clients to be starved (potentially fixed by a currently experimental patch).
@@ -120,11 +120,13 @@ delay_parameters 2 2048/65536 512/32768
 The same code is also used by a some of departments using class 2 delay pools to give them more flexibility in giving different performance to different labs or students.
 
 === Where else can I find out about delay pools? ===
-
-This is also pretty well documented in the configuration file, with examples. Squid install with a squid.conf.documented or squid.conf.default file.
-If you no longer have a documented config file the latest version is provided on the squid-cache.org website.
+This is also pretty well documented in the configuration file, with examples. Squid install with a squid.conf.documented or squid.conf.default file. If you no longer have a documented config file the latest version is provided on the squid-cache.org website.
 
  * http://www.squid-cache.org/Doc/config/delay_parameters/
+ * http://www.squid-cache.org/Doc/config/delay_pools/
+ * http://www.squid-cache.org/Doc/config/delay_class/
+ * http://www.squid-cache.org/Doc/config/delay_access/
+ * http://www.squid-cache.org/Doc/config/external_acl_type/
 
 ----
-CategoryFeature
+ . CategoryFeature
