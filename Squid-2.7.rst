@@ -8,6 +8,9 @@ Unfortunately most of them were not ported to Squid-3 which compounded the probl
 
 <<Include(RoadMap/Squid2, ,1,from="^##content27",to="^##endcontent27")>>
 
+Packages of squid 2.7 source code are available at http://www.squid-cache.org/Versions/v2/2.7/
+
+
 === The Future ===
 
 With two Squid releases now provided and supported. The core developers gathered to discuss what alternatives could be taken other than further splitting the code between two branches.
