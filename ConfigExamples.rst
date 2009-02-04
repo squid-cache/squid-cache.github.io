@@ -39,7 +39,7 @@ Choose a good WikiName for your new example and enter it here:
 [[ConfigExamples/Intercept|Overview and explanation]]
 <<FullSearchCached(title:regex:^ConfigExamples/Intercept/.*$)>>
 
-== Reverse Proxy (Acceleration) ==
+=== Reverse Proxy (Acceleration) ===
 <<FullSearchCached(title:regex:^ConfigExamples/Reverse/.*$)>>
 
 === Instant Messaging / Chat Program filtering ===
