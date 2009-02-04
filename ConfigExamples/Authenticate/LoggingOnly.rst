@@ -10,11 +10,27 @@
 
 == Outline ==
 
-Squid can log usernames for each request made. But it will only do this if an ACL demands authentication (and an authentication method is configured). If an upstream proxy requires authentication, and you require username logging, chances are you will not have access to the upstream password database (or you could probably just check the logs there instead).
+Squid can log usernames for each request made. But it will only do this if an ACL demands authentication and an authentication method is configured. If an upstream proxy requires authentication, and you require username logging, chances are you will not have access to the upstream password database (or you could probably just check the logs there instead).
 
-== Dummy Auth Helpers ==
+== Silent Authentication Demand ==
 
-=== Basic Authentication ===
+To make squid 'demand' authentication details for logging this small hack needs to be used:
+
+{{{
+acl dummyAuth proxy_auth REQUIRED
+http_access deny !dummyAuth all
+}}}
+Remember that http_access order is very important. If you allow access without the "dummyAuth" acl, you won't get usernames logged.
+
+
+One of the following authentication helpers is also needed to ensure that login details are available for use when that demand is made.
+
+
+== Basic Authentication ==
+
+=== Dummy Auth Helpers ===
+
+## TODO: bundle this with Squid as basic_fake_auth
 
 Since Squid is only supplied with real authentication helpers (at the time of writing), you pretty much need to make your own. I simply cut down a supplied one to suite. It simply does NO authentication, and replies "OK" to any username/password combination.
 This could probably be improved upon by someone with knowledge of C. For example, the "#define ERR" line is probably not necessary.
@@ -50,15 +66,10 @@ int main()
 You can compile this on most Linux  by saving the content to a file called "dummy_auth.c" and running "gcc dummy_auth.c -o dummy_auth".
 Windows users will need to find a C compiler on their own (I believe GCC is also available for Windows, but I can't be sure).
 
-=== NTLM Authentication ===
-
-Squid provides a helper '''fakeauth'' to do the NTLM handshake and authentication challenges needed.
-The helper like the dummy helper above always returns '''OK''' when whatever the result.
-
-== Squid Configuration File ==
+=== Squid Configuration File ===
 
 Now that you have a dummy_auth program, you can tell Squid how to use it.
-This section defines the authetication helper and related settings.
+This section defines the authentication helper and related settings.
 {{{
 auth_param basic program /usr/lib/squid/dummy_auth
 auth_param basic children 10
@@ -67,12 +78,20 @@ auth_param basic credentialsttl 1 hours
 auth_param basic casesensitive off
 }}}
 
-And to make squid actually use it:
+== NTLM Authentication ==
+
+Squid provides a helper '''fakeauth''' to do the NTLM handshake and authentication challenges needed.
+The helper always returns '''OK''' whatever the result.
+
+=== Squid Configuration File ===
+
 {{{
-acl dummyAuth proxy_auth REQUIRED
-http_access deny !dummyAuth all
+auth_param ntlm program /usr/lib/squid/fakeauth
+auth_param ntlm children 10
+auth_param ntlm realm My Proxy
+auth_param ntlm credentialsttl 1 hours
+auth_param ntlm casesensitive off
 }}}
-Remember that http_access order is very important. If you allow access without the "dummyAuth" acl, you won't get usernames logged.
 
 ----
 CategoryConfigExample
