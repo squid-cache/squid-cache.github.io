@@ -23,18 +23,6 @@ This configuration or a FreeBSD box running Squid and receiving WCCPv2 traffic. 
 
 The GRE packets are sourced from one of the IPs on the router - I'm guessing its the "Router Identifier". This may not be the local ethernet IP (so in this case it isn't 192.168.1.1.)
 
-/etc/rc.firewall.local :
-
-{{{
-#!/bin/sh
-
-IPFW=/sbin/ipfw
-
-${IPFW} -f flush
-${IPFW} add 60000 permit ip from any to any
-${IPFW} add 100 fwd 127.0.0.1,3128 tcp from any to any 80 recv gre0
-}}}
-
 /etc/sysctl.conf
 
 {{{
@@ -67,7 +55,19 @@ ifconfig gre0 inet 1.1.1.1 1.1.1.2
 
 == FreeBSD Intercept configuration ==
 
-NP: There is currently no documentation on how to perform NAT on FreeBSD to get the packets into Squid :( please help out and write some
+Then you need to redirect the packets coming in the gre0 interface to the Squid application.
+
+/etc/rc.firewall.local :
+
+{{{
+#!/bin/sh
+
+IPFW=/sbin/ipfw
+
+${IPFW} -f flush
+${IPFW} add 60000 permit ip from any to any
+${IPFW} add 100 fwd 127.0.0.1,3128 tcp from any to any 80 recv gre0
+}}}
 
 == Squid Configuration File ==
 
