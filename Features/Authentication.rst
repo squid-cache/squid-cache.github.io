@@ -39,7 +39,7 @@ a number of different authentication protocols (named "schemes" in this context)
 When multiple authentication schemes are offered by the server (Squid in this case), it is up to the User-Agent to choose one and authenticate using it. By RFC it should choose the safest one it can handle; in practice usually Microsoft Internet Explorer chooses the first one it's been offered that it can handle, and Mozilla browsers are bug-compatible with the Microsoft system in this field.
 
 
-The Squid source code comes with a few authentcation backends ("''helpers''") for Basic authentication.
+The Squid source code comes with a few authentication backends ("''helpers''") for Basic authentication.
 These include:
 
   * LDAP: Uses the Lightweight Directory Access Protocol
@@ -112,6 +112,9 @@ In this example, users named lisa, sarah, joe, and frank
 are allowed to use the proxy at all times.  Other users
 are allowed only during daytime hours.
 
+The [[ConfigExamples]] area contains some detailed examples:
+
+<<FullSearchCached(title:regex:^ConfigExamples/Authenticate/.*$)>>
 
 == How do I ask for authentication of an already authenticated user? ==
 
