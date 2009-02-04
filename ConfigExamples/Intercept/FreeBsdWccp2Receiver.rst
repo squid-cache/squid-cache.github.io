@@ -19,7 +19,7 @@ This is a work in progress.
 This configuration or a FreeBSD box running Squid and receiving WCCPv2 traffic. It is expected that another device will perform the WCCPv2 routing and forward it to this box for processing.
 
 
-== FreeBSD configuration ==
+== FreeBSD WCCP configuration ==
 
 The GRE packets are sourced from one of the IPs on the router - I'm guessing its the "Router Identifier". This may not be the local ethernet IP (so in this case it isn't 192.168.1.1.)
 
@@ -65,6 +65,9 @@ ifconfig gre0 tunnel 192.168.1.9 X.X.X.X
 ifconfig gre0 inet 1.1.1.1 1.1.1.2
 }}}
 
+== FreeBSD Intercept configuration ==
+
+NP: There is currently no documentation on how to perform NAT on FreeBSD to get the packets into Squid :( please help out and write some
 
 == Squid Configuration File ==
 
