@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/WindowsAuthenticationNTLM
 #language en
 #format wiki
 
