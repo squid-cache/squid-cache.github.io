@@ -11,30 +11,6 @@
 == Why PHP? ==
 When looking at the documentation for squid I was relieved to find the page regarding [[http://wiki.squid-cache.org/SquidFaq/SquidRedirectors|redirecting]] urls. However, when I finally got there I was disappointed to see that it was in [[http://perl.org|perl]]. Not knocking perl, I know it is a more clean language than PHP, but I have little knowledge of the language, which limitted my ability to edit and manipulate the redirect as I have done here.
 
-A friend helped me capture the output from the squid proxy to a file so that I could write a php redirect page, after I finished I figured that I would post the information here so that someone else might benefit from my work.
-
-The information here could also be used to author a redirect in some other language.
-
-== What information is sent from squid? ==
-Squid sends the following information (space delimited) to what ever redirect program you may want to use:
-|| 1.) || URL ||
-|| 2.) || IP Address Making the Request ||
-|| 3.) || ??? ||
-|| 4.) || Method (ie. POST, GET) ||
-|| 5.) || ??? ||
-
-
-
-
-Direct output from squid to a redirect program:
-
-{{{
-http://www.google.com/ 192.168.3.144/- - GET -
-http://google.com/ 192.168.3.149/- - GET -
-http://img0.gmodules.com/ig/images/skins/planets/saturn/x_blue_highlight.gif 192.168.3.149/- - GET -
-}}}
-As you can see the first field is the url of the page that was requested, followed by the IP address that requested it. The rest of the fields are not necessary for our redirect program but I included them in case some one else needed them.
-
 == Getting Started ==
 It should be noted that your redirect should be executable.
 
