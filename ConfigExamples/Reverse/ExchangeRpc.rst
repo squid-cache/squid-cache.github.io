@@ -27,10 +27,6 @@ The example situation involves a single Outlook Web Access server and a single S
 == Configuration ==
 
 {{{
-
-# Define the required extension methods
-extension_methods RPC_IN_DATA RPC_OUT_DATA
-
 # Publish the RPCoHTTP service via SSL
 https_port ip_of_squid:443 cert=/path/to/clientcertificate defaultsite=rpc_domain_name
 
@@ -48,6 +44,14 @@ http_access deny all
 miss_access allow EXCH
 miss_access deny all
 }}}
+
+Squid older than 3.1 also need to define several extension methods:
+
+{{{
+# Define the required extension methods
+extension_methods RPC_IN_DATA RPC_OUT_DATA
+}}}
+
 
 == Thanks to ==
 
