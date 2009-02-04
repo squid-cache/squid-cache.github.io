@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/LogUsernamesWithPassthroughAuth
 ##master-page:CategoryTemplate
 #format wiki
 #language en
