@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/SquidAndOutlookWebAccess
 ##master-page:CategoryTemplate
 #format wiki
 #language en
