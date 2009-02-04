@@ -1,26 +1,32 @@
 ## page was renamed from SquidFaq/SquidRedirectors
 #language en
+#faqlisted yes
+
+= Feature: Redirection Helpers =
+
+ * '''Goal''': Allow Squid to use custom helpers to hijack and redirect web requests on demand to another location.
+
+ * '''Status''': Done.
+
+ * '''Version''': Squid 2.5+
+
+## * '''Developer''': 
+
+## * '''More''': 
+
+
 <<TableOfContents>>
 
-##begin
+
 == What is a redirector? ==
 
-Squid has the ability to rewrite requested URLs.  Implemented
-as an external process (similar to a dnsserver), Squid can be
-configured to pass every incoming URL through a ''redirector'' process
-that returns either a new URL, or a blank line to indicate no change.
+Squid has the ability to rewrite requested URLs.  Implemented as an external process, Squid can be configured to pass every incoming URL through a ''redirector'' process that returns either a new URL, or a blank line to indicate no change.
 
-The ''redirector'' program is '''__NOT__''' a standard part of the Squid
-package.  However, some examples are provided below, and in the
-"contrib/" directory of the source distribution.  Since everyone has
-different needs, it is up to the individual administrators to write
-their own implementation.
+The ''redirector'' program is '''__NOT__''' a standard part of the Squid package.  However, some examples are provided below, and in the "contrib/" directory of the source distribution.  Since everyone has different needs, it is up to the individual administrators to write their own implementation.
 
 == Why use a redirector? ==
 
-A redirector allows the administrator to control the locations to which
-his users goto.  Using this in conjunction with interception proxies
-allows simple but effective porn control.
+A redirector allows the administrator to control the locations to which his users go.  Using this in conjunction with interception proxies allows simple but effective porn control.
 
 == How does it work? ==
 
@@ -28,10 +34,15 @@ The redirector program must read URLs (one per line) on standard input,
 and write rewritten URLs or blank lines on standard output.  Note that
 the redirector program can not use buffered I/O.  Squid writes
 additional information after the URL which a redirector can use to make
-a decision.  The input line consists of four fields:
+a decision.  The input line consists of four fields followed by a series of optional extension values:
 {{{
-URL ip-address/fqdn ident method
+URL ip/fqdn ident method key-pairs
 }}}
+
+Some of the key=value pairs:
+|| myport=... || Squid receiving port ||
+|| myip=... || Squid receiving address ||
+
 
 == Do you have any examples? ==
 
@@ -94,7 +105,7 @@ redirector program has a bug.  Maybe it runs out of memory or has memory
 access errors.  You may want to test your redirector program outside of
 squid with a big input list, taken from your ''access.log'' perhaps.
 Also, check for coredump files from the redirector program (see
-../TroubleShooting to define where).
+[[SquidFaq/TroubleShooting]] to define where).
 
 == Redirector interface is broken re IDENT values ==
 
@@ -125,6 +136,3 @@ http_access allow foo
 Redirectors only act on ''client'' requests; if you wish to modify server-generated redirections (the HTTP ''Location'' header) you have to use a {{{location_rewrite}}} helper
 
 -----
-
-##end
-Back to the SquidFaq
