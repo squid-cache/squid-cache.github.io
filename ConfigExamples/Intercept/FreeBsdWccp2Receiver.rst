@@ -43,8 +43,8 @@ net.inet.ip.forwarding=1
 
 gre configuration:
 
-192.168.1.9: Proxy server IP
-X.X.X.X: IP of the WCCPv2 router; you may need to tcpdump on the local network to find where the GRE packets are sourced.
+ * 192.168.1.9: Proxy server IP
+ * X.X.X.X: IP of the WCCPv2 router; you may need to tcpdump on the local network to find where the GRE packets are sourced.
 
 {{{
 ifconfig gre0 plumb
