@@ -21,7 +21,7 @@ These steps are for setting [[Squid-3.1]] with [[../../Features/Tproxy4|TPROXYv4
 
 == Steps ==
 
-=== Preperation ===
+=== Preparation ===
 
 || {i} || Linux kernel 2.6.28 is now available. Apparently it has the kernel patches below already applied. ||
 
@@ -56,6 +56,9 @@ cat <path_to_tproxy_kernel_patches>/00*.patch | patch -p1
  5. reboot into the new kernel
 
 === Patching iptables ===
+
+|| {i} || iptables 1.4.3 has support integrated with the current development snapshots. http://www.netfilter.org/projects/iptables/index.html ||
+
 Patch configure, compile and install iptables. This is done with the thought in mind to correctly overwrite the existing iptables setup so that the current service init script that ships with CentOS 5.2 can be used. To do this, decompress the iptables 1.4.0 source code, and cd to that directory. The follow the steps noted:
   * Patch the iptables source with the TProxy patch as noted in the TProxy README:
 {{{
