@@ -53,6 +53,14 @@ http_port 3129 tproxy
 
  {i} NP: The way TPROXYv4 works makes it incompatible with NAT interception and reverse-proxy acceleration. The '''intercept''', '''accel''' and related flags cannot be set on the same http_port with '''tproxy''' flag.
 
+== Linux Kernel 2.6.28 Configuration ==
+
+TODO.
+
+== iptables 1.4.3 Configuration ==
+
+TODO.
+
 === References ===
 http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
 
