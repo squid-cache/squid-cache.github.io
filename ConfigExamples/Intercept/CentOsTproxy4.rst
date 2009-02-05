@@ -92,7 +92,7 @@ iptables -t mangle -A DIVERT -j MARK --set-mark 1 iptables -t mangle -A DIVERT -
 
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0xffffffff
 
-iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3128
+iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
 
 || {i} '''Note:''' || If any of the above commands fails, there is something wrong with iptables update to 1.4.0 and/or tproxy module status in iptables 1.4.0. Keep in mind that the commands are sensitive to case, spacing, and hyphenation. ||
