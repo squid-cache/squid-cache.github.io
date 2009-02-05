@@ -11,9 +11,11 @@
  * '''Version''': 3.1
 
  * '''Developer''': Laszlo Attilla Toth (Balabit), Krisztian Kovacs, AmosJeffries
-## * '''Developer''': 2.x: AdrianChadd (2.x)
 
  * '''More''': http://www.balabit.com/downloads/files/tproxy/
+
+
+<<TableOfContents>>
 
 == Sponsor ==
 
@@ -33,10 +35,8 @@ Squid-3 support has been completed and integrated into the sources:
 
  http://www.squid-cache.org/Versions/v3/3.1/
 
-To use TPROXY without patching you will need to run Squid 3.1, Linux kernel 2.6.28 and the corresponding iptables release (which should be 1.4.3) when they are all available.
+To use TPROXY without patching you will need to run Squid 3.1, Linux kernel 2.6.28, and iptables 1.4.3 when they are all available.
 
-## == Current Patches Required ==
-##
 
 == Squid Configuration ==
 
@@ -55,13 +55,41 @@ http_port 3129 tproxy
 
 == Linux Kernel 2.6.28 Configuration ==
 
-TODO.
+ /!\ Requires kernel built with the configuration options:
+{{{
+NETFILTER_TPROXY
+NETFILTER_XT_MATCH_SOCKET
+NETFILTER_XT_TARGET_TPROXY
+}}}
+
+ * NP: can anyone provide a clean step-by-step how-to for setting those?
 
 == iptables 1.4.3 Configuration ==
 
-TODO.
+Setup a chain ''DIVERT'' to mark packets
+{{{
+iptables -t mangle -N DIVERT
+iptables -t mangle -A DIVERT -j MARK --set-mark 1
+iptables -t mangle -A DIVERT -j ACCEPT
+}}}
+
+Use ''DIVERT'' to bypass interception on packets leaving Squid:
+{{{
+iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
+}}}
+
+## not sure why there are two rules here...
+
+Mark all other packets and use TPROXY to pass into Squid:
+{{{
+iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0xffffffff
+
+iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
+}}}
 
 === References ===
+
+Older config how-to from before the kernel and iptables bundles were available...
 http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
 
 ----
