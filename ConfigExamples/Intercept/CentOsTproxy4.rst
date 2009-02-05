@@ -88,7 +88,8 @@ make BINDDIR=/sbin LIBDIR=/lib64 KERNEL_DIR=/usr/src/linux install
 {{{
 iptables -t mangle -N DIVERT iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
 
-iptables -t mangle -A DIVERT -j MARK --set-mark 1 iptables -t mangle -A DIVERT -j ACCEPT
+iptables -t mangle -A DIVERT -j MARK --set-mark 1
+iptables -t mangle -A DIVERT -j ACCEPT
 
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0xffffffff
 
