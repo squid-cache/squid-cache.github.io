@@ -141,8 +141,7 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || >:> || 119 || MAY || 8.1.2.1 || Assume a HTTP/1.1 client intends to maintain a persistent connection unless a Connection header with token close was received in the request ||
 || || >:> || 120 || SHOULD || 8.1.2.1 || Send a Connection header with token close if we want to close the client side connection immediately after sending the response ||
 || || >:> || 121 || MAY || 8.1.2.1 || expect a connection to remain open - but decide based on the server response (does it have a connection header with token close)? ||
-||
- || >:> || 122 || SHOULD || 8.1.2.1 || send a Connection header with token close if we want to only send one request and then close the server side connection ||
+|| || >:> || 122 || SHOULD || 8.1.2.1 || send a Connection header with token close if we want to only send one request and then close the server side connection ||
 || || || 123 || SHOULD NOT || 8.1.2.1 || assume a persistent connection is maintained for pre-HTTP/1.1 versions unless it is explicitly signaled. ||
 || || || 124 || MUST || 8.1.2.1 || always create messages with self-defined message lengths ||
 || || || 125 || MAY || 8.1.2.2 || pipeline requests to upstream servers ||
@@ -269,7 +268,7 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || || 246 || SHOULD || 10.5.4 || return a 503 if we are overloaded, or unable to serve requests due to maintenance. ||
 || || || 247 || MAY || 10.5.4 || return a Retry-After when returning a 503 if we are overloaded, or unable to serve requests due to maintenance. (the header would indicate when the maintenance should finish ||
 || || || 248 || SHOULD || 10.5.5 || return a 504 on an upstream timeout, or timeout on an auxilary server - ie DNS/authentication helper || we may be returning 400 or 500 presently ||
-|| || || 249 || MUST || 10.5.6 || return a 505 if we don't support, (or have #defed it out) the HTTP major version in the request message ||
+|| <:( || <:(  || 249 || MUST || 10.5.6 || return a 505 if we don't support, (or have #defed it out) the HTTP major version in the request message ||
 || >:> || >:> || 250 || OPTIONAL || 11 || implement basic and or digest authentication ||
 || <:( || >:> || 251 || MAY || 12 || use content-negotiation on any entity body request/response - ie in selecting what language the error should be in || ||
 || || || 252 || MAY || 12.1 || for the squid client - include request header fields (Accept, Accept-Language, Accept-Encoding etc) in requests ||
