@@ -22,6 +22,9 @@ These steps are for setting [[Squid-3.1]] with [[../../Features/Tproxy4|TPROXYv4
 == Steps ==
 
 === Preperation ===
+
+|| {i} || Linux kernel 2.6.28 is now available. Apparently it has the kernel patches below already applied. ||
+
  1. Install CentOS 5.2
   a. be sure '''NOT''' to install squid via the OS installer
   b. install the development libraries and tools, as well as the legacy software development
