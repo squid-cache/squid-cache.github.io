@@ -83,7 +83,28 @@ Mark all other packets and use TPROXY to pass into Squid:
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
 
-=== References ===
+
+= Troubleshooting =
+
+== commBind: cannot bind socket FD X to X.X.X.X: (99) cannot assign requested address ==
+
+This error has many reasons for ocurring.
+
+It might be seen repeatedly when Squid is running with TPROXY configured:
+
+ * If the squid port receives traffic by other means than TPROXY interception. <<BR>> Ports using the '''tproxy''' flag /!\ MUST NOT /!\ receive traffic for any other mode Squid can run in.
+
+ * If Squid is receiving TPROXY traffic on a port without the '''tproxy''' flag.
+
+ * If the kernel is missing the capability to bind to any random IP.
+
+
+It may also be seen ony at startup due to unrelated issues:
+
+ * [[SquidFaq/TroubleShooting#head-97c3ff164d9706d3782ea3b242b6e409ce8395f6|Another program already using the port]]
+ * [[SquidFaq/TroubleShooting#head-19aa8aba19772e32d6e3f783a20b0d2be0edc6a2|Address not assigned to any interface]]
+
+= References =
 
 Older config how-to from before the kernel and iptables bundles were available...
 http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
