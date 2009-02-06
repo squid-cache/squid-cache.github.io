@@ -78,12 +78,8 @@ Use ''DIVERT'' to bypass interception on packets leaving Squid:
 iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
 }}}
 
-## not sure why there are two rules here...
-
 Mark all other packets and use TPROXY to pass into Squid:
 {{{
-iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0xffffffff
-
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
 
