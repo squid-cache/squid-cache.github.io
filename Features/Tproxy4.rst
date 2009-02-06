@@ -22,21 +22,13 @@
 This feature was Sponsored by Balabit and developed by Laszlo Attilla Toth and AmosJeffries.
 Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ritter.
 
-== Details ==
+== Requirements ==
 
- * Still requires patched kernel (patches available at [[http://www.balabit.com/downloads/files/tproxy/|Balabit]])
- * Only requires --enable-linux-netfilter configure option
- * '''Obsolete''' --enable-tproxy option. Remains only for legacy v2.2 cttproxy support.
+ || Linux Kernel 2.6.28 || [[http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.28.3.tar.bz2|2.6.28.3 release]] ||
+ || iptables 1.4.3      || [[ftp://ftp.netfilter.org/pub/iptables/snapshot/iptables-20090205.tar.bz2|development snapshot]] ||
+ || Squid 3.1           || [[http://www.squid-cache.org/Versions/v3/3.1/squid-3.1.0.5.tar.bz2|3.1.0.5 release]] ||
 
-
-TProxy 4.1 uses netfilter/iptables (TPROXY target and socket match). If "--enable-linux-netfilter" is used, the "tproxy" option is available for "http_port" lines.
-
-Squid-3 support has been completed and integrated into the sources:
-
- http://www.squid-cache.org/Versions/v3/3.1/
-
-To use TPROXY without patching you will need to run Squid 3.1, Linux kernel 2.6.28, and iptables 1.4.3 when they are all available.
-
+NP: the links above are an arbitrary sample from the expected working versions, and may be old in some cases. The web directories where the files sit allow you to browse to newer versions if you like.
 
 == Squid Configuration ==
 
@@ -51,7 +43,9 @@ http_port 3128
 http_port 3129 tproxy
 }}}
 
- {i} NP: The way TPROXYv4 works makes it incompatible with NAT interception and reverse-proxy acceleration. The '''intercept''', '''accel''' and related flags cannot be set on the same http_port with '''tproxy''' flag.
+ {i} NP: A dedicated squid port for tproxy is REQUIRED.  The way TPROXYv4 works makes it incompatible with NAT interception, reverse-proxy acceleration, and standard proxy traffic. The '''intercept''', '''accel''' and related flags cannot be set on the same http_port with '''tproxy''' flag.
+
+ * '''Obsolete''' --enable-tproxy option. Remains only for legacy v2.2 cttproxy support.
 
 == Linux Kernel 2.6.28 Configuration ==
 
