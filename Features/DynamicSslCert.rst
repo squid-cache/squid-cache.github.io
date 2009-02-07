@@ -6,7 +6,7 @@
 
  * '''Goal''': Reduce the number of "certificate mismatch" browser warnings when impersonating a site using the [[Features/SslBump|SslBump]] feature
 
- * '''Status''': In progress; phase2 almost completed
+ * '''Status''': In progress; phase3b almost completed
 
  * '''ETA''': February 15, 2008
 
