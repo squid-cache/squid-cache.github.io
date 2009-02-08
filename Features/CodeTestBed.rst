@@ -59,7 +59,9 @@ We now have a basic multi-system test script ready. To run this you will need bz
 
 Setup:
  * Create a low-privilege user account.
- * Setup local checkout of the Squid-3 Sources
+   {i} Optional: The core developers would like access to this account so we can tinker around for a fix when your machine detects a code problem.
+
+ * In that account setup a local checkout of each tested Squid-3 Sources
 {{{
 bzr checkout http://www.squid-cache.org/bzr/squid3/trunk ~/squid-3
 bzr checkout http://www.squid-cache.org/bzr/squid3/branches/SQUID_3_1 ~/squid-3.1
@@ -67,8 +69,9 @@ bzr checkout http://www.squid-cache.org/bzr/squid3/branches/SQUID_3_0 ~/squid-3.
 }}}
 
  * Setup cron to run the tests daily.
-  1. MACHINE should be a unique identifier we can use to identify your machine.
-  2. YOUREMAIL should be a contact email address we can use to get in touch if problems occur.
+  1. the frequency of testing is optional, less than daily is not very useful, but longer delays means slower problem detection.
+  2. MACHINE should be a unique identifier we can use to identify your machine.
+  3. YOUREMAIL should be a contact email address we can use to get in touch if problems occur.
 {{{
 # Run automated Squid-3 TestBed daily at 1.30am.
 30 1 * * *      cd ~/squid-3 && /bin/sh ./scripts/testbed.sh MACHINE YOUREMAIL
