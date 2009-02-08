@@ -36,12 +36,46 @@ This testing involves a number of changes to both the codebase and current devel
 || 1 || '''DONE''' || 3.0+ Automated build-testing of releases ||
 || 2 || '''DONE''' || 3.1+ Automated dependency testing of code ||
 || 3 || '''DONE''' || 3.0+ Daily automated test ||
-|| 4 || || Test scheduling on multiple OS ||
+|| 4 || '''STARTED''' || Test scheduling on multiple OS ||
+
 
 * '''NP''': All stages of this system implementation may involve ongoing improvements. The status here is merely an indication that the stage actions have been implemented and begun to be used.
 
  * '''Stage 4:''' A setup involving Bitten has been suggested to involve more of the available community during this stage of testing. Demo available at: http://bitten.edgewall.org/build/trunk
   The benefit appears to be that any willing users can sign up easily and supply test hardware for their own preferred OS and machines with none of the delivery and setup costs currently plaguing hardware donations.
+
+ For now we have a cron-based script you can run on a branch checkout that will email us test results.
+The systems currently being tested regularly are listed below:
+
+ || '''OS''' || '''version''' || '''32-bit''' || '''64-bit''' ||
+ || FreeBSD  || 6.3     || - || - ||
+ || Linux    || 2.6.26  || Y || - ||
+ || Linux    || 2.6.24  || Y || - ||
+ || Linux    || 2.6.18  || - || Y ||
+
+==== Taking Part in the Testing ====
+
+We now have a basic multi-system test script ready. To run this you will need bzr and a mailer that provides sendmail API, along with the other requirements to build Squid on your system.
+
+Setup:
+ * Create a low-privilege user account.
+ * Setup local checkout of the Squid-3 Sources
+{{{
+bzr checkout http://www.squid-cache.org/bzr/squid3/trunk ~/squid-3
+bzr checkout http://www.squid-cache.org/bzr/squid3/branches/SQUID_3_1 ~/squid-3.1
+bzr checkout http://www.squid-cache.org/bzr/squid3/branches/SQUID_3_0 ~/squid-3.0
+}}}
+
+ * Setup cron to run the tests daily.
+  1. MACHINE should be a unique identifier we can use to identify your machine.
+  2. YOUREMAIL should be a contact email address we can use to get in touch if problems occur.
+{{{
+# Run automated Squid-3 TestBed daily at 1.30am.
+30 1 * * *      cd ~/squid-3 && /bin/sh ./scripts/testbed.sh MACHINE YOUREMAIL
+30 1 * * *      cd ~/squid-3.1 && /bin/sh ./scripts/testbed.sh MACHINE YOUREMAIL
+30 1 * * *      cd ~/squid-3.0 && /bin/sh ./scripts/testbed.sh MACHINE YOUREMAIL
+}}}
+
 
 ===== Tasks needing a volunteer: =====
 
