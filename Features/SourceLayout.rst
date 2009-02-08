@@ -23,30 +23,30 @@ Key:
  * {3} AdrianChadd doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
+|| {2} || ''~/squid-compat/'' || Portability primitives || various include/* lib/* and snippets ||
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
+||  || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
+||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 ||  || ''auth/'' || Authentication support || auth/* ||
 || {3} || ''base/'' || Core stuff which hasn't been further broken apart || ? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
-||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
-||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
-|| (./) || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* ||
-||  || ''ident/'' || Ident support || ident.* ||
-||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-||  || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
-||  || ''icap/'' || ICAP support || ICAP/ICAP* ||
+||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
+|| {3}  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
+||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 ||  || ''ecap/'' || eCAP support || - ||
 ||  || ''esi/'' || ESI support || ESI* ||
-||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
-|| {3}  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
-||  || ''mem/'' || Basic Memory management || mem* ||
-||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
+||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
+||  || ''icap/'' || ICAP support || ICAP/ICAP* ||
+|| (./) || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* ||
+||  || ''ident/'' || Ident support || ident.* ||
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
-|| {2} || ''~/squid-compat/'' || Portability primitives || various include/* lib/* and snippets ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* (later: logdaemon) ||
+||  || ''mem/'' || Basic Memory management || mem* ||
+||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
+||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
 
 ...
 The following shuffling is linked to major code re-writes and will be held back to 3.2.
-
 
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
 
