@@ -41,7 +41,7 @@ Key:
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
-|| {2} || ''~/libsquid-compat/'' || Portability primitives || various include/* lib/* and snippets ||
+|| {2} || ''~/squid-compat/'' || Portability primitives || various include/* lib/* and snippets ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* (later: logdaemon) ||
 
 ...
