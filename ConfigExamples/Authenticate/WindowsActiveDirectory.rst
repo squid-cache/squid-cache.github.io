@@ -11,6 +11,9 @@ By Adrian Chadd
 
 == Basic Concepts ==
 In this example, a Squid installation will use the Samba ntlm_auth helper to authenticate against an Windows Active Directory. The server will be joined to the Active Directory domain and other services can use the ntlm_auth helper to authenticate users (but be out of the scope of this document.)
+
+ {i} Windows 2003 Active Directory is also capable of [[ConfigExamples/Authenticate/Ldap|LDAP authentication]]
+
 == Environment ==
  * Windows Server 2003 AD
  * Ubuntu Dapper installation
