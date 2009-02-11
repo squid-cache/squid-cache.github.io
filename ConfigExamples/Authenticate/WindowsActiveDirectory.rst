@@ -158,59 +158,10 @@ Next, restart samba and winbind, ie
     * `wbinfo -t` will check whether the trust exists
     * `wbinfo -u` will list the users in the domain 
 
-== Fix Ownership ==
 
-By default Squid will run as a non-root user; but the directory with the winbind socket (perhaps /var/run/winbindd_privileged/) is generally owned by root and only readable by people in the root group, or the special group winbindd_priv.
+## Import a segment about configuring squid to Winbind from the generic NTLM docs.
 
-Don't try changing the ownership of the directory - it'll just revert at reboot. Instead you need to add Squid to the winbindd_priv group to allow Squid to take advantage of it:
-
-{{{
-# gpasswd -a proxy winbindd_priv
-}}}
-
-Some Squid packages come with a default squid.conf line of:
-
-{{{
-cache_effective_group proxy
-}}}
-
-Remove any cache_effective_group line.  This command tells Squid to ignore any groups that proxy is a member of - including winbindd_priv.
-
-If the above steps aren't taken and Squid doesn't get access to this directory, you won't be able to successfully authenticate with NTLM, and you'll get complaints in your cache.log.
-
-== Configuring Squid to use the Samba 3 ntlm_auth program for authentication ==
-
-Finally, configure Squid to talk to the NTLM authentication helper:
-
-{{{
-auth_param ntlm program /usr/bin/ntlm_auth --helper-protocol=squid-2.5-ntlmssp
-auth_param ntlm children 10
-#auth_param ntlm max_challenge_reuses 0
-#auth_param ntlm max_challenge_lifetime 2 minutes
-#auth_param ntlm use_ntlm_negotiate off
-auth_param basic program /usr/bin/ntlm_auth --helper-protocol=squid-2.5-basic
-auth_param basic children 5
-auth_param basic realm Domain Proxy Server
-auth_param basic credentialsttl 2 hours
-auth_param basic casesensitive off
-authenticate_cache_garbage_interval 10 seconds
-
-# Credentials past their TTL are removed from memory
-authenticate_ttl 0 seconds
-}}}
-
-Make sure you add the relevant ACL statements to force proxy authentication, eg:
-
-{{{
-acl lcl src 192.168.0.0/16
-acl auth  proxy_auth REQUIRED
-
-http_access allow lcl auth
-http_access deny all
-miss_access allow all
-icp_access deny all
-}}}
-The ntlm authentication helper will start logging authentication attempts (success and failure) to the `cache.log` file.
+<<Include(ConfigExamples/Authenticate/Ntlm, , from="^=== winbind privileged pipe permissions ===", to="^----")>>
 
 ----
 CategoryConfigExample
