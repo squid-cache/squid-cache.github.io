@@ -34,7 +34,7 @@ This configuration is still not complete, youtube.com performs some behavior whi
 
 The combined solution to both of these is to add a feature to squid for detecting identical content and differing URL. Possibly limited by ACL to a certain site range, etc. Anyone able to donate time and/or money for this would be greatly loved by many.
 
-UPDATE: see the storeurl feature in [[Squid-2.7]]
+UPDATE: see the storeurl feature in [[Squid-2.7]] and the [[ConfigExamples/DynamicContent/YouTube/Discussion|discussion]] about this entry.
 
 == Squid Configuration File ==
 
