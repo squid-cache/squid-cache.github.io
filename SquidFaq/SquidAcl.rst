@@ -159,7 +159,7 @@ http_access deny all
 === Using Proxy Authentication ===
 Another option is to use proxy-authentication.    In this scheme, you assign usernames and passwords to individuals.  When they first use the proxy they are asked to authenticate themselves by entering their username and password.
 
-In Squid v2 this authentication is hanled via external processes.  For information on how to configure this, please see ../ProxyAuthentication.
+In Squid v2 this authentication is handled via external processes.  For information on how to configure this, please see ../ProxyAuthentication.
 
 == Do you have a CGI program which lets users change their own proxy passwords? ==
 [[mailto:orso@brturbo.com|Pedro L Orso]] has adapted the Apache's ''htpasswd'' into a CGI program called  [/htpasswd/chpasswd-cgi.tar.gz chpasswd.cgi].
@@ -167,7 +167,7 @@ In Squid v2 this authentication is hanled via external processes.  For informati
 == Is there a way to do ident lookups only for a certain host and compare the result with a userlist in squid.conf? ==
 You can use the ''ident_access'' directive to control for which hosts Squid will issue [[ftp://ftp.isi.edu/in-notes/rfc931.txt|ident lookup]] requests.
 
-Additionally, if you use a ''ident'' ACL in squid conf, then Squid will make sure an ident lookup is performed while evaluating the acl even if ''iden_access'' does not indicate ident lookups should be performed.
+Additionally, if you use a ''ident'' ACL in squid conf, then Squid will make sure an ident lookup is performed while evaluating the acl even if ''ident_access'' does not indicate ident lookups should be performed.
 
 However, Squid does not wait for the lookup to complete unless the ACL rules require it.  Consider this configuration:
 
@@ -496,7 +496,7 @@ http_access deny porn
 == I want to use local time zone in error messages. ==
 Squid, by default, uses GMT as timestamp in all generated error messages. This to allow the cache to participate in a hierarchy of caches in different timezones without risking confusion about what the time is.
 
-To change the timestamp in Squid generated error messages you must change the Squid signature. See ''Customizable Error Messages'' in ../MiscFeatures. The signature by defaults uses %T as timestamp, but if you like then you can use %t instead for a timestamp using local time zone.
+To change the timestamp in Squid generated error messages you must change the Squid signature. See ''Customizable Error Messages'' in [[SquidFaq/MiscFeatures|MiscFeatures]]. The signature by defaults uses %T as timestamp, but if you like then you can use %t instead for a timestamp using local time zone.
 
 == I want to put ACL parameters in an external file. ==
 by Adam Aube
@@ -520,8 +520,11 @@ john
 jane
 jim
 }}}
+
 == I want to authorize users depending on their MS Windows group memberships ==
-There is an excellent resource over at http://workaround.org/moin/SquidLdap on how to use LDAP-based group membership checking.
+There is an excellent resource over at http://workaround.org/squid-ldap on how to use LDAP-based group membership checking.
+\
+Also the [[ConfigExamples/Authenticate/Ldap| LDAP]] or [[ConfigExamples/Authenticate/WindowsActiveDirectory|Active Directory]] config example]] here in the squid wiki might prove useful.
 
 == Maximum length of an acl name ==
 By default the maximum length of an ACL name is 32-1 = 31 characters, but it can be changed by editing the source: in ''defines.h''
