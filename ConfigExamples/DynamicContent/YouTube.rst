@@ -12,7 +12,7 @@ The default configuration of squid prevents the caching of [[ConfigExamples/Dyna
 
 This page details the publicly available tactics used to overcome at least some of this and allow caching of a lot of youtube.com content. Be advised this demonstrated configuration has a mixed success rate, it works for some but others have reported it strangely not working at all.
 
-Each configuration action is detailed with its reason and effect so if you find one that wrong or missing please let us know.
+Each configuration action is detailed with its reason and effect so if you find one that is wrong or missing please let us know.
 
 
 == Partial Solution ==
@@ -22,17 +22,19 @@ Some private modifications of squid have apparently achieved youtube.com caching
 To cache youtube.com files, you will need to enable caching of [[ConfigExamples/DynamicContent|dynamic content]] and some other measures, which technically break the HTTP standards.
 
 ***SECURITY NOTE:***
-Some of the required configuration (quick_abort_min + large maximum_object_size) requires collapsed-forwarding feature to protect from high bandwidth consumption and possible cache DDoS attacks. [[Squid-3.0]] does not have that feature at this time. [[Squid-2.6]] is recommended for use with these settings.
+Some of the required configuration (quick_abort_min + large maximum_object_size) requires collapsed-forwarding feature to protect from high bandwidth consumption and possible cache DDoS attacks. [[Squid-3.0]] does not have that feature at this time. [[Squid-2.7]] is recommended for use with these settings.
 
 == Missing Pieces ==
 
 This configuration is still not complete, youtube.com performs some behavior which squid as yet cannot handle by itself. Thus the private ports are variations, rather than configurations.
 
- * Each video request from youtube.com contains a non-random but changing argument next to the video name. Squid cannot yet keep only *part* of a query-string for hashing. its an all-or-nothing deal straight out of the box.
+ * Each video request from youtube.com contains a non-random but changing argument next to the video name. Squid cannot yet keep only *part* of a query-string for hashing. Its an all-or-nothing deal straight out of the box.
 
- * The youtube.com load balancing method make use of many varying sub-domains. Again any given video appears to be able to come from several of these. And again squid has an all-or-nothing deal on its URI hashing for domains.
+ * The youtube.com load balancing methods make use of many varying sub-domains. Again any given video appears to be able to come from several of these. And again squid has an all-or-nothing deal on its URI hashing for domains.
 
 The combined solution to both of these is to add a feature to squid for detecting identical content and differing URL. Possibly limited by ACL to a certain site range, etc. Anyone able to donate time and/or money for this would be greatly loved by many.
+
+UPDATE: see the storeurl feature in [[Squid-2.7]]
 
 == Squid Configuration File ==
 
