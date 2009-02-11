@@ -88,7 +88,6 @@ Add some ''proxy_auth'' ACL entries to your squid configuration.
 For example:
 {{{
 acl foo proxy_auth REQUIRED
-acl all src 0/0
 http_access allow foo
 http_access deny all
 }}}
@@ -102,7 +101,6 @@ by specifying individual user names.  For example:
 acl foo proxy_auth REQUIRED
 acl bar proxy_auth lisa sarah frank joe
 acl daytime time 08:00-17:00
-acl all src 0/0
 http_access allow bar
 http_access allow foo daytime
 http_access deny all
