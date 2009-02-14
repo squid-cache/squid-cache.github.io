@@ -101,8 +101,10 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || || 78 || MUST NOT || 4.3 || include a message-body in a request if the request-method does not allow it ||
 || >:> || >:> || 79 || SHOULD || 4.3 || read and forward message-bodies on any request ||
 || || || 80 || SHOULD || 4.3 || ignore message-bodies when semantics for the requests method do not define a message-body ||
-|| >:> || >:> || 81 || MUST NOT || 4.3 || include a message-body in a response to a HEAD request ||
-|| || || 82 || MUST NOT || 4.3 || include a message body in 1xx, 204 and 304 responses ||
+||< class="green"> || >:> || 81 || MUST NOT || 4.3 || include a message-body in a response to a HEAD request ||
+|| || || 82 || MUST NOT || 4.3 || include a message body in 1xx responses ||
+|| || || 82 || MUST NOT || 4.3 || include a message body in 204 responses ||
+||< class="green"> || || 82 || MUST NOT || 4.3 || include a message body in 304 responses ||
 || >:> || >:> || 83 || MUST || 4.3 || include a message body in all other responses, although it MAY be zero length ||
 || || || 84 || MUST || 4.4 || assume message termination by the first empty line after the header fields in responses that "MUST NOT" have message bodies (ie 1xx, 204, 304 and HEAD requests) ||
 || || || 85 || MUST NOT || 4.4 || send a Content-Length header if the entity-length and the transfer-length are not equal ||
@@ -276,7 +278,7 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || || 253 || MAY || 12.3 || develop transparent negotiation capabilities within HTTP/1.1 ||
 || || || 254 || recommendation || 13 || Note: The server, cache, or client implementor might be faced with design decisions not explicitly discussed in this specification. If a decision might affect semantic transparency, the implementor ought to err on the side of maintaining transparency unless a careful and complete analysis shows significant benefits in breaking transparency. ||
 || || || 255 || MUST || 13.1.1 || respond to a request with the most up-to-date response held by squid which is appropriate to the request (see 13.2.5,13.2.6,13.12) and meets one of : 1) it has been revalidated with the origin, 2) it is "fresh enough (see 13.12) & 14.9 or 3) it is an appropriate 304/305/ 4xx/5xx response ||
-|| || || 256 || MAY || 13.1.1 || If a stored response is not "fresh enough" by the most restrictive freshness requirement of both the client and the origin server, in carefully considered circumstances the cache MAY still return the response with the appropriate Warning header (see section 13.1.5 and 14.46), unless such a response is prohibited (e.g., by a "no-store" cache-directive, or by a "no-cache" cache-request-directive; see section 14.9). ||
+||< class="red"> 2.7 || || 256 || MAY || 13.1.1 || If a stored response is not "fresh enough" by the most restrictive freshness requirement of both the client and the origin server, in carefully considered circumstances the cache MAY still return the response with the appropriate Warning header (see section 13.1.5 and 14.46), unless such a response is prohibited (e.g., by a "no-store" cache-directive, or by a "no-cache" cache-request-directive; see section 14.9). ||
 || || || 257 || SHOULD || 13.1.1 || forward received responses even if the response itself is stale without adding a new Warning header ||
 || || || 258 || SHOULD NOT || 13.1.1 || attempt to revalidate responses that become stale in transit to squid ||
 || || || 259 || SHOULD || 13.1.1 || respond as per the 13.1.1 respond rules even if the origin server cannot be contacted. ||
@@ -377,10 +379,10 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || || 354 || MAY || 14.9.1 || cache responses with cache-control: public even of the header/method might not normally be cacheable ||
 || || || 355 || MUST NOT || 14.9.1 || cache responses with cache-control: private ||
 || || || 356 || MUST NOT || 14.9.1 || use responses with cache-control: no-cache to satisfy other requests without successful revalidation || ie auto GET to IMS is allowed ||
-|| || || 357 || MAY || 14.9.1 || use responses with cache-control: no-cache to satisfy other requests without successful revalidation if the no-cache directive includes field-names ||
+||< class="green"> || || 357 || MAY || 14.9.1 || use responses with cache-control: no-cache to satisfy other requests without successful revalidation if the no-cache directive includes field-names ||
 || || || 358 || MUST NOT || 14.9.1 || send the headers listed in responses with cache-control: no-cache (header…) to satisfy other requests without successful revalidation if the no-cache directive includes field-names ||
 || || || 359 || MAY || 14.9.2 || use no-store on requests or responses to prevent data storage ||
-|| || || 360 || MUST NOT || 14.9.2 || store any part of a request or it's response if the cache-control: no-store directive was in the request || This directive applies to both non-shared and shared caches. "MUST NOT store" in this context means  that the cache MUST NOT intentionally store the information in  non-volatile storage, and MUST make a best-effort attempt to remove the information from volatile storage as promptly as possible after forwarding it. ||
+||< class="green"> || || 360 || MUST NOT || 14.9.2 || store any part of a request or it's response if the cache-control: no-store directive was in the request || This directive applies to both non-shared and shared caches. "MUST NOT store" in this context means  that the cache MUST NOT intentionally store the information in  non-volatile storage, and MUST make a best-effort attempt to remove the information from volatile storage as promptly as possible after forwarding it. ||
 || || || 361 || MUST NOT || 14.9.2 || store any part of a response or the request that elicited it if the cache-control: no-store directive was in the response || This directive applies to both non-shared and shared caches. "MUST NOT store" in this context means  that the cache MUST NOT intentionally store the information in  non-volatile storage, and MUST make a best-effort attempt to remove the information from volatile storage as promptly as possible after forwarding it. ||
 || || || 362 || SHOULD || 14.9.3 || consider responses with an Expires value that is <= the response date and no cache-control header field to be non-cacheable ||
 || || || 363 || MUST || 14.9.3 || mark stale responses with Warning 110 ||
@@ -391,13 +393,13 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || || 368 || MUST || 14.9.4 || obey the must-revalidate directive at all times ||
 || || || 369 || MUST || 14.9.4 || return 504 if a must-revalidate directive would need access to an unavailable origin server ||
 || || || 370 || MUST NOT || 14.9.5 || change any headers (or part of the request specified by those headers) from section 13.5.2 when a message with cache-control: no-transform is received ||
-|| || || 371 || MUST || 14.9.6 || ignore unrecognized cache-control headers ||
-|| || || 372 || MUST || 14.10 || parse the Connection header before a message is forwarded ||
-|| || || 373 || MUST || 14.10 || remove headers from messages that match headers specified in the connection header ||
-|| || || 374 || MUST NOT || 14.10 || list end to end headers in the connection header ||
+||< class="green"> || || 371 || MUST || 14.9.6 || ignore unrecognized cache-control headers ||
+|| || >:> || 372 || MUST || 14.10 || parse the Connection header before a message is forwarded ||
+|| || >:> || 373 || MUST || 14.10 || remove headers from messages that match headers specified in the connection header ||
+|| || >:> || 374 || MUST NOT || 14.10 || list end to end headers in the connection header ||
 || || || 375 || MUST || 14.10 || for applications that do not support persistent connection (ie squid 'server' and client) include Connection: close in every message ||
-|| || || 376 || MUST || 14.10 || on pre-http/1.1 messages with a connection header, for each connection-token, remove AND ignore and header fields with the same name as the token ||
-|| || || 377 || MAY || 14.11 || as a NON-TRANSPARENT proxy modify content-coding to be more suitable to a client request ||
+|| || >:> || 376 || MUST || 14.10 || on pre-http/1.1 messages with a connection header, for each connection-token, remove AND ignore and header fields with the same name as the token ||
+|| || >:> || 377 || MAY || 14.11 || as a NON-TRANSPARENT proxy modify content-coding to be more suitable to a client request ||
 || || || 378 || MUST || 14.11 || if the content encoding of an entity is not "identity" ||
 || || || 379 || MUST || 14.11 || list in applied order the content codings applied to an entity ||
 || N/A || N/A || 380 || MAY || 14.12 || list multiple languages in a Content-Language header if the response is intended for multiple audiences (perhaps a multi-lingual error page?) || only one language sent ||
@@ -445,7 +447,7 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || || 422 || MUST NOT || 14.36 || for the client - send a referer field if the request-URI was not obtained from a source with it's own URI - ie the keyboard ||
 || || || 423 || MAY || 14.37 || use Retry-After to indicate how long a client should wait before requesting the new location ||
 || || || 424 || MUST NOT || 14.38 || modify the Server header on forwarded responses ||
-|| >:> || >:> || 425 || SHOULD || 14.38 || include a Via header on forwarded responses || unless admin suppressed ||
+||< class="green"> || >:> || 425 || SHOULD || 14.38 || include a Via header on forwarded responses || unless admin suppressed ||
 || || || 426 || MUST || 14.39 || include the TE connection token whenever we use TE on a connection ||
 || || || 427 || SHOULD NOT || 14.40 || include header fields in the trailer with having sent a Trailer header ||
 || || || 428 || MUST NOT || 14.40 || send Transfer-Encoding; Content-Length or Trailer as Trailer field values ||
@@ -457,9 +459,9 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || || 434 || MAY || 14.44 || for the 'server' include a vary header with a non-cacheable response the used server negotiation ||
 || || || 435 || MAY || 14.44 || assume the same response will be given by a server for future requests with the same request field values as those listed by the vary header in the response whilst the response is still fresh ||
 || || || 436 || MUST NOT || 14.44 || generate a * value for a vary field ||
-|| || || 437 || MUST || 14.45 || fill in the Via header ||
-|| || || 438 || MAY || 14.45 || replace the host in the via header with a pseudonym for security/privacy ||
-|| || || 439 || MUST || 14.45 || append our details to the Via header ||
+||< class="green"> || || 437 || MUST || 14.45 || fill in the Via header ||
+||< class="green"> || || 438 || MAY || 14.45 || replace the host in the via header with a pseudonym for security/privacy ||
+||< class="green"> || || 439 || MUST || 14.45 || append our details to the Via header ||
 || || || 440 || MAY || 14.45 || remove comments from the via header before forwarding ||
 || || || 441 || MAY || 14.45 || put comments in the via header before forwarding ||
 || || || 442 || SHOULD NOT || 14.45 || when used as a gateway/ http firewall forward names/hosts/ports of hosts within the firewall || perhaps a config directive - firewall - turn on several things? ||
