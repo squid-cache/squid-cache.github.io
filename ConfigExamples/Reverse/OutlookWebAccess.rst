@@ -25,6 +25,8 @@ The example situation involves a single Outlook Web Access server and a single S
 
 == Configuration ==
 
+<<Include(ConfigExamples/Reverse/BasicAccelerator, , from="^## begin locationwarning", to="^## end locationwarning")>>
+
 Please note that the https_port and cache_peer lines may wrap in your browser!
 
 {{{
