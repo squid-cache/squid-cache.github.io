@@ -27,6 +27,8 @@ The example situation involves a single Outlook Web Access server and a single S
 
 == Configuration ==
 
+<<Include(ConfigExamples/Reverse/BasicAccelerator, , from="^## begin locationwarning", to="^## end locationwarning")>>
+
 {{{
 # Publish the RPCoHTTP service via SSL
 https_port ip_of_squid:443 cert=/path/to/clientcertificate defaultsite=rpc_domain_name
