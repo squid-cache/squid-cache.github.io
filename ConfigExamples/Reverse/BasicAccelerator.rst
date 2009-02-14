@@ -18,19 +18,11 @@ see the [[SquidFaq/ReverseProxy|FAQ Reverse Proxy]] page for detailed overview o
 
 || /!\ || Accelerator mode in Squid-2.5 worked quite differently, and upgrade to 2.6 or later is strongly recommended if you still use Squid-2.5. ||
 
-
-## == Usage ==
-
-## Tell about some cases where this configuration would be good.
-
-## == More ==
-
-## Create more sections as you wish.
-
 == Squid Configuration File ==
 
+## begin locationwarning
  /!\ This configuration MUST appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site.
-
+## end locationwarning
 
 First, you have to tell Squid to listen on port 80 (usually), so set the '''http_port''' option with the defaultsite option telling Squid it's an accelerator for this site:
 
