@@ -11,6 +11,7 @@ To contribute to this Wiki, please register by using the Login link and then ema
 
 You can learn about what a Wiki is and how to use it at AboutWiki. The following pages are good starting points.
 
+ * WhySquid ?
  * [[SquidFaq|FAQ]]
  * Development RoadMap
  * [[ConfigExamples|Configuration examples]], or tips on how to address specific scenarios
