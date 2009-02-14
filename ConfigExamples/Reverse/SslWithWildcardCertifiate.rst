@@ -104,7 +104,9 @@ basicConstraints = CA:true
 [ crl_ext ]
 authorityKeyIdentifier=keyid:always,issuer:always
 }}}
-== Please proceed as Follow to Generate OpenSSL Certificate ==
+
+== To Generate OpenSSL Certificate ==
+=== Setup a certificate Signing Authority (if needed) ===
 {{{
 [root@rprgate ~]# cd /usr
 [root@rprgate ~]# mkdir newprpgate; cd newrprgate
@@ -123,19 +125,26 @@ Generating a 2048 bit RSA private key
 writing new private key to '/etc/CertAuth/private/cakey.pem'
 Enter PEM pass phrase:
 Verifying - Enter PEM pass phrase:}}}
-{{{
-Users generating a certificate request: Now we have a certificate authority. But some user who wants to get his certificate signed from us, has to generate a certificate request. here are the list of commands that i will follow... Two files are created testkey.pem and testreq.pem }}}
-{{{
-testkey.pem ==> private key generated for the user (protected by the pass phrase.. usually I will not provide a passphrase as i need to use this for automatic creation without user intervention. To do this, I have to provide the -nodes option on the command line.)
-testreq.pem ==> request to be sent to the CA for being accepted.
 
-}}}
+=== Generating a certificate request ===
+
+ Now we have a certificate authority. But some user who wants to get his certificate signed from us, has to generate a certificate request. here are the list of commands that I will follow... Two files are created testkey.pem and testreq.pem
+
+ * '''testkey.pem''' ==> private key generated for the user (protected by the pass phrase)
+    {i} Usually we will not provide a passphrase as we need to use this for automatic startup without user intervention. To do this, we have to provide the -nodes option on the command line.
+
+ * '''testreq.pem''' ==> request to be sent to the CA for being accepted.
+
 {{{
-[root@rprgate ~]#openssl req -newkey rsa:1024 -keyout testkey.pem -keyform PEM -out testreq.pem -outform PEM -nodes}}}
+[root@rprgate ~]#openssl req -newkey rsa:1024 -keyout testkey.pem -keyform PEM -out testreq.pem -outform PEM -nodes
+}}}
+
 {{{
 Generating a 1024 bit RSA private key .........................++++++ .++++++ writing new private key to 'testkey.pem'
 
-You are about to be asked to enter information that will be incorporated into your certificate request. What you are about to enter is what is called a Distinguished Name or a DN. There are quite a few fields but you can leave some blank For some fields there will be a default value, If you enter '.', the field will be left blank. }}}
+You are about to be asked to enter information that will be incorporated into your certificate request. What you are about to enter is what is called a Distinguished Name or a DN. There are quite a few fields but you can leave some blank For some fields there will be a default value, If you enter '.', the field will be left blank.
+}}}
+
 {{{
 Country Name (2 letter code) [GB]:IN
 State or Province Name (full name) [Berkshire]:UP
@@ -149,11 +158,16 @@ to be sent with your certificate request
 A challenge password []:i am a good boy
 An optional company name []: PRESS ENTER
 }}}
+
+=== Authority signing the certificate ===
+
+Issuing the certificate: The CA should verify that the certificate comes from the right person and issue it using the following command. It is recommended that u use the "-notext" and "-out testcert.cert" option. This will not print any output to stdout.. and make a copy of the certificate in the file testcert.cert in the current directory.. This way you will not have to search the certs/ directory for the new certifcate.
+
+
 {{{
-Issuing the certificate: The CA should verify that the certifiacte comes from the right person and issue it using the following command. It is recommended that u use the "-notext" and "-out testcert.cert" option. This will not print any output to stdout.. and make a copy of the certificate in the file testcert.cert in the current directory.. This way you will not have to search the certs/ directory for the new certifcate.
+[root@rprgate ~]#openssl ca -in testreq.pem -notext -out testcert.cert
 }}}
-{{{
-[root@rprgate ~]#openssl ca -in testreq.pem -notext -out testcert.cert}}}
+
 {{{
 Using configuration from /etc/CertAuth/openssl.cnf
 Enter pass phrase for /etc/CertAuth/private/cakey.pem:secretcode
@@ -171,7 +185,8 @@ Certificate is to be certified until Oct 18 22:54:31 2007 GMT (365 days)
 Sign the certificate? [y/n]:y
 1 out of 1 certificate requests certified, commit? [y/n]y
 Write out database with 1 new entries
-Data Base Updated}}}
+Data Base Updated
+}}}
 
 == Squid Configuration File ==
 
