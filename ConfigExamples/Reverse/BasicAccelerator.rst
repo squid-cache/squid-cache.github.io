@@ -30,6 +30,8 @@ First, you have to tell Squid to listen on port 80 (usually), so set the '''http
 http_port 80 accel defaultsite=your.main.website.name
 }}}
 
+## shared with VirtualHosting
+
 Next, you need to tell Squid where to find the real web server:
 
 {{{
