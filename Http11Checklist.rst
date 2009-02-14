@@ -15,22 +15,23 @@
 
 Information is not up to date. Empty entries need to be checked against in the code.
 
- ||< style="background-color:#00ff00"> || Supported. Expect it to work. A minimum version may be indicated. ||
- ||< style="background-color:#ff0000"> || Absent and needs to be done ||
+ ||< style="background-color:#00ff00"> || Supported. Expect it to work. Verified by third-party testing. A minimum version may be indicated. ||
+ ||< style="background-color:#ff0000"> || Absent and needs to be done. Third-party tested. A last-tested version may be indicated. ||
+ || >:> || Developers expect hiss to work. Not third-party confirmed. ||
  || <:( || Missing, but optional ||
 
 || '''2.x''' || '''3.x''' || '''ID''' || '''Requirement type''' || '''section''' || '''requirement''' || '''notes''' ||
-||<-2 style="background-color:#00ff00"> || 1 || REQUIRED || 2.1 || handle implied {{{ LWS = [CRLF] 1*( SP | HT ) }}} ||
-||<-2 style="background-color:#00ff00"> || 2 || REQUIRED || 2.2 || fold CRLF in headers into one long header before interpreting ||
-||<-2 style="background-color:#00ff00"> || 3 || MUST || 3.1 || parse HTTP-Version as two multi-digit integers ||
+|| >:> || >:> || 1 || REQUIRED || 2.1 || handle implied {{{ LWS = [CRLF] 1*( SP | HT ) }}} ||
+|| >:> || >:> || 2 || REQUIRED || 2.2 || fold CRLF in headers into one long header before interpreting ||
+|| >:> || >:> || 3 || MUST || 3.1 || parse HTTP-Version as two multi-digit integers ||
 || :o || :o || 4 || SHOULD || 3.1 || send HTTP/1.1 in messages once we are conditionally compliant ||
 || :o || :o || 5 || MUST || 3.1 || send HTTP/1.1 in messages that are not compatible with HTTP/1.0 ||
-||<-2 style="background-color:#00ff00"> || 6 || MUST NOT || 3.1 || send HTTP versions greater than that of squid itself. (squid will be 1.1 when and only when it is conditionally compliant with rfc 2616 || when we support all of http/1.1 send http/1.1 ||
-||<-2 style="background-color:#00ff00"> || 7 || MUST || 3.1 || downgrade requests from greater than squid supports to what squid supports, return an error, or switch to tunnel behavior || Downgrades the protocol number and decodes TE. Few attempts in downgrading the request is done. ||
-||<-2 style="background-color:#00ff00"> || 8 || MUST || 3.1 || upgrade client requests to the highest version of HTTP supported by squid. || conversion may involve altering header fields in ways that break the versions involved; HNO - 8: HTTP/0.9 is upgraded to HTTP/1.0 if support for 0.9 is enabled (and fixed). ||
-|| <:( || :o || 9 || MUST || 3.1 || respond to old client requests with HTTP in the same major version. Ie a 1.x client must get a 1.x response, regardless if squid is a 2.x proxy by that point || all 3.x responses from squid are in squids current http version. 2.x has upgrade_http0.9 which keeps 0.9 in their own major version. ||
-||<-2 style="background-color:#00ff00"> || 10 || MUST || 3.2.1 || handle the URI of any resource served out (read proxied) ||
-||< style="background-color:#ff0000"> 4KB ||< style="background-color:#ff0000"> 8KB || 11 || SHOULD || 3.2.1 || handle unbounded length URI's if we allow long GET requests || we set an upper limit on URI's ||
+|| >:> || >:> || 6 || MUST NOT || 3.1 || send HTTP versions greater than that of squid itself. (squid will be 1.1 when and only when it is conditionally compliant with rfc 2616 || when we support all of http/1.1 send http/1.1 ||
+|| >:> || >:>  || 7 || MUST || 3.1 || downgrade requests from greater than squid supports to what squid supports, return an error, or switch to tunnel behavior || Downgrades the protocol number and decodes TE. Few attempts in downgrading the request is done. ||
+|| >:> || >:>  || 8 || MUST || 3.1 || upgrade client requests to the highest version of HTTP supported by squid. || conversion may involve altering header fields in ways that break the versions involved; HNO - 8: HTTP/0.9 is upgraded to HTTP/1.0 if support for 0.9 is enabled (and fixed). ||
+|| :o || :o || 9 || MUST || 3.1 || respond to old client requests with HTTP in the same major version. Ie a 1.x client must get a 1.x response, regardless if squid is a 2.x proxy by that point || all 3.x responses from squid are in squids current http version. 2.x has upgrade_http0.9 which keeps 0.9 in their own major version. ||
+|| >:> || >:>  || 10 || MUST || 3.2.1 || handle the URI of any resource served out (read proxied) ||
+|| 4KB || 8KB || 11 || SHOULD || 3.2.1 || handle unbounded length URI's if we allow long GET requests || we set an upper limit on URI's ||
 || || || 12 || SHOULD || 3.2.1 || return 414 for URI's longer than we can actually handle || use caution handling URI's more than 255 bytes long - old clients or downstream proxies may break. Hno - we currently return some other error code ||
 || >:> || >:> || 13 || SHOULD || 3.2.2 || avoid using ip address's in generated URL's || squids host name is used ||
 || || || 14 || MUST || 3.2.2 || add / to http urls that have no abs_path; and if generating requests include the / || done when sending to origin, not when sending to another proxy ||
@@ -136,7 +137,7 @@ Information is not up to date. Empty entries need to be checked against in the c
 || >:> || >:> || 114 || SHOULD || 7.2.1 || include a Content-Type header for generated HTTP/1.1 messages w/entity bodies ||
 || || || 115 || SHOULD || 7.2.1 || treat unknown media-types as application/octet-stream ||
 || >:> || >:> || 116 || SHOULD || 8.1.1 || implement HTTP/1.1 persistent connections ||
-|| || <:( || 117 || SHOULD || 8.1.2 || assume http/1.1 servers will maintain persistent connections even after error responses from the server ||
+|| || :o || 117 || SHOULD || 8.1.2 || assume http/1.1 servers will maintain persistent connections even after error responses from the server ||
 || || >:> || 118 || MUST NOT || 8.1.2 || send more requests on a connection after a close is signaled ||
 || || >:> || 119 || MAY || 8.1.2.1 || Assume a HTTP/1.1 client intends to maintain a persistent connection unless a Connection header with token close was received in the request ||
 || || >:> || 120 || SHOULD || 8.1.2.1 || Send a Connection header with token close if we want to close the client side connection immediately after sending the response ||
@@ -262,15 +263,15 @@ Information is not up to date. Empty entries need to be checked against in the c
 || || || 240 || MAY || 10.4.14 || return a 413 error when the request entity is too large. ||
 || || || 241 || SHOULD || 10.4.14 || When returning a 413 error when the request entity is too large and it is a time based (or temporary) restriction, include a Retry-After header indicating when it should be ok ||
 || || || 242 || SHOULD || 10.4.18 || return 417 when we have unambiguous evidence that the expectation given in a request can not be met by the next hop server ||
-||<-2 style="background-color:#00ff00"> || 243 || SHOULD || 10.5 || include an entity body when we create 5xx error responses explaining the issue (other than to HEAD requests) ||
+|| >:> || >:> || 243 || SHOULD || 10.5 || include an entity body when we create 5xx error responses explaining the issue (other than to HEAD requests) ||
 || || || 244 || SHOULD || 10.5.2 || return a 501 if we don't implement a given method and can't just proxy it an hope ||
 || || || 245 || SHOULD || 10.5.3 || return a 502 if we get an invalid upstream response ||
 || || || 246 || SHOULD || 10.5.4 || return a 503 if we are overloaded, or unable to serve requests due to maintenance. ||
 || || || 247 || MAY || 10.5.4 || return a Retry-After when returning a 503 if we are overloaded, or unable to serve requests due to maintenance. (the header would indicate when the maintenance should finish ||
 || || || 248 || SHOULD || 10.5.5 || return a 504 on an upstream timeout, or timeout on an auxilary server - ie DNS/authentication helper || we may be returning 400 or 500 presently ||
-||< style="background-color:#ff0000"> ||< style="background-color:#00ff00"> 3.1  || 249 || MUST || 10.5.6 || return a 505 if we don't support, (or have #defed it out) the HTTP major version in the request message ||
+|| :o || >:> 3.1  || 249 || MUST || 10.5.6 || return a 505 if we don't support, (or have #defed it out) the HTTP major version in the request message ||
 || >:> || >:> || 250 || OPTIONAL || 11 || implement basic and or digest authentication ||
-|| <:( || >:> || 251 || MAY || 12 || use content-negotiation on any entity body request/response - ie in selecting what language the error should be in || ||
+|| :o || >:> || 251 || MAY || 12 || use content-negotiation on any entity body request/response - ie in selecting what language the error should be in || ||
 || || || 252 || MAY || 12.1 || for the squid client - include request header fields (Accept, Accept-Language, Accept-Encoding etc) in requests ||
 || || || 253 || MAY || 12.3 || develop transparent negotiation capabilities within HTTP/1.1 ||
 || || || 254 || recommendation || 13 || Note: The server, cache, or client implementor might be faced with design decisions not explicitly discussed in this specification. If a decision might affect semantic transparency, the implementor ought to err on the side of maintaining transparency unless a careful and complete analysis shows significant benefits in breaking transparency. ||
@@ -290,7 +291,7 @@ Information is not up to date. Empty entries need to be checked against in the c
 || >:> || >:> || 268 || MAY || 13.1.5 || have squid configurable to return stale responses even when not requested by clients ||
 || || || 269 || MUST || 13.1.5 || mark stale responses with a Warning header ||
 || || || 270 || SHOULD NOT || 13.1.5 || return a stale response if the client explicitly requests a first-hand or fresh one, unless technical or policy reasons require returning a stale response || ie: offline mode, refresh to IMS are allowed but MUST require deliberate configuration by the admin ||
-||< style="background-color:#00ff00"> N/A ||< style="background-color:#00ff00"> N/A || 271 || SHOULD || 13.2.3 || be running on a host that uses NTP or equivalent for clock synchronization ||
+|| N/A || N/A || 271 || SHOULD || 13.2.3 || be running on a host that uses NTP or equivalent for clock synchronization ||
 || || || 272 || MUST || 13.2.3 || calculate corrected_received_age as max(now-date_value, age_value) ||
 || || || 273 || MUST || 13.2.3 || interpret Age header values (age_value) relative to the time the request was initiated, not the response time. ||
 || || || 274 || MUST || 13.2.3 || calculate corrected_initial_age as corrected_received_age +(now - request_time) ; request_time = time the request was sent upstream ||
