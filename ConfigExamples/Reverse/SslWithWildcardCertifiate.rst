@@ -172,12 +172,12 @@ Sign the certificate? [y/n]:y
 1 out of 1 certificate requests certified, commit? [y/n]y
 Write out database with 1 new entries
 Data Base Updated}}}
+
 == Squid Configuration File ==
-Please note that the https_port and cache_peer lines may wrap in your browser!
 
-You have to make entires in host file as we will be starting the squid with -D option which will disable the DNS query for squid .
+ {i} Please note that the https_port and cache_peer lines may wrap in your browser!
 
-Edit your /etc/hosts file
+<<Include(ConfigExamples/Reverse/BasicAccelerator, , from="^## begin locationwarning", to="^## end locationwarning")>>
 
 {{{
 https_port 443 cert=/usr/newrprgate/CertAuth/testcert.cert key=/usr/newrprgate/CertAuth/testkey.pem defaultsite=mywebsite.mydomain.com vhost
