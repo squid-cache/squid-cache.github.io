@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Configuration Title =
+= Configuring a Basic Reverse Proxy (Website Accelerator) =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
@@ -28,6 +28,9 @@ see the [[SquidFaq/ReverseProxy|FAQ Reverse Proxy]] page for detailed overview o
 ## Create more sections as you wish.
 
 == Squid Configuration File ==
+
+ /!\ This configuration MUST appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site.
+
 
 First, you have to tell Squid to listen on port 80 (usually), so set the '''http_port''' option with the defaultsite option telling Squid it's an accelerator for this site:
 
