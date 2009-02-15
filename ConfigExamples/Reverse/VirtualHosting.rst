@@ -8,7 +8,10 @@
 
 <<TableOfContents>>
 
-== Outline ==
+==  Squid Configuration ==
+
+
+<<Include(ConfigExamples/Reverse/BasicAccelerator, , from="^## begin locationwarning", to="^## end locationwarning")>>
 
 If you are using Squid has an accelerator for a domain based virtual host system then you need to additionally specify the '''vhost''' option to http_port
 
