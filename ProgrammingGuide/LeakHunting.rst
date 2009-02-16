@@ -1,6 +1,8 @@
 ## page was renamed from ProgrammingGuide/LeakFinder
 #language en
 
+Memory management is a thorny issue in Squid. Its single-process nature makes it very important no to leak memory in any circumstance, as even a single leaked byte per request can grind a proxy to a halt in a few hours of production useage.
+
 <<TableOfContents>>
 
 = leakFinder =
@@ -78,3 +80,12 @@ access.  Pointers that haven't been accessed for a long time are
 candidates for leaks.  The filename and line numbers tell you where
 that pointer was last accessed.  If there is a leak, then the bug
 occurs somewhere after that point of the code.
+
+
+= Valgrind =
+
+[[http://valgrind.org/|Valgrind]] is a very advanced runtime profiler, which can be highly useful to analyze an application memory useage patterns, including tools to find leaks.
+
+Squid can be run within a valgrind environment, but developers may also decise to include specific instrumentation within squid, by specifying the {{{--with-valgrind-debug}}} option to {{{./configure}}}
+
+Accessing the memory statistics cachemgr object ({{{squidclient mgr:mem}}}) will then trigger the production of a valgrind report , which can be analyzed to try and understand where the leaks originates from.
