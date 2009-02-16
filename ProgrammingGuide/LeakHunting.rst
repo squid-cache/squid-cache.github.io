@@ -1,3 +1,4 @@
+## page was renamed from ProgrammingGuide/LeakFinder
 #language en
 
 <<TableOfContents>>
