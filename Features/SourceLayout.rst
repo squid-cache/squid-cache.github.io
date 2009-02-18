@@ -21,11 +21,12 @@ Key:
  * (./) Done.
  * {2} AmosJeffries doing now.
  * {3} AdrianChadd doing now.
+ * {1} AlexRousskov doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
 || {2} || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets ||
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
-||  || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
+|| {1} || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 ||  || ''auth/'' || Authentication support || auth/* ||
 || {3} || ''base/'' || Core stuff which hasn't been further broken apart. <<BR>> Stuff that is global within Squid, but not qualifying as part of the compat layer. || ? ||
@@ -33,10 +34,10 @@ Key:
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 || {3}  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
-||  || ''ecap/'' || eCAP support || - ||
+|| {1} || ''ecap/'' || eCAP support || - ||
 ||  || ''esi/'' || ESI support || ESI* ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
-||  || ''icap/'' || ICAP support || ICAP/ICAP* ||
+|| {1} || ''icap/'' || ICAP support || ICAP/ICAP* ||
 || (./) || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* ||
 ||  || ''ident/'' || Ident support || ident.* ||
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
