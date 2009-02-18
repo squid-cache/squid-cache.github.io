@@ -23,12 +23,12 @@ Key:
  * {3} AdrianChadd doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' ||
-|| {2} || ''~/squid-compat/'' || Portability primitives || various include/* lib/* and snippets ||
+|| {2} || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets ||
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
 ||  || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 ||  || ''auth/'' || Authentication support || auth/* ||
-|| {3} || ''base/'' || Core stuff which hasn't been further broken apart || ? ||
+|| {3} || ''base/'' || Core stuff which hasn't been further broken apart. <<BR>> Stuff that is global within Squid, but not qualifying as part of the compat layer. || ? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 || {3}  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
