@@ -29,7 +29,7 @@ Key:
 || {1} || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 ||  || ''auth/'' || Authentication support || auth/* ||
-|| {3} || ''base/'' || Core stuff which hasn't been further broken apart. <<BR>> Stuff that is global within Squid, but not qualifying as part of the compat layer. || ? ||
+|| {3} {1} || ''base/'' || Commonly used code whithout a better place to go. || Async*? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 || {3}  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
