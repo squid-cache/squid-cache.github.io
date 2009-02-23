@@ -17,8 +17,7 @@ based on the subnet/ip-address of the client.
 
 For example;
  A client from one subnet would authenticate against NTLM.
- While a client from another subnet would authenticate against an LDAP 
-server.
+ While a client from another subnet would authenticate against an LDAP server.
 
 To date this is normally done by running multiple instances of squid; 
 but we have the requirement to do it with a single instance.  One way 
