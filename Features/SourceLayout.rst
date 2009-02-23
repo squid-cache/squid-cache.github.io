@@ -28,7 +28,7 @@ Key:
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
 || {1} || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-||  || ''auth/'' || Authentication support || auth/* ||
+|| {1} || ''auth/'' || Authentication support || auth/* ||
 || {1} || ''base/'' || Commonly used code whithout a better place to go. || Async*? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
