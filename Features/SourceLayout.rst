@@ -36,7 +36,7 @@ Key:
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || {1} || ''ecap/'' || eCAP support || - ||
 ||  || ''esi/'' || ESI support || ESI* ||
-||  || ''fs/'' || file system-specific cache store support? || fs/* ||
+|| {1} || ''fs/'' || file system-specific cache store support? || fs/* ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || {1} || ''icap/'' || ICAP support || ICAP/ICAP* ||
 || (./) || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* ||
