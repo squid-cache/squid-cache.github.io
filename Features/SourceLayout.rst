@@ -19,26 +19,27 @@ This section is used to edit and finalize the grouping of source files. The '''G
 
 Key:
  * (./) Done.
+ * :\ Improved, but needs more work. Nobody is working on this now. See the To-do column for details.
  * {2} AmosJeffries doing now.
 ## * {3} AdrianChadd doing now.
  * {1} AlexRousskov doing now.
 
-||  || '''Group''' || '''Definition''' || '''Files''' ||
+||  || '''Group''' || '''Definition''' || '''Files''' || '''To-do''' ||
 || {2} || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets ||
 ||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
-|| {1} || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
+|| (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-|| {1} || ''auth/'' || Authentication support || auth/* ||
+|| :\ || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
 || {1} || ''base/'' || Commonly used code whithout a better place to go. || Async*? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
-|| {1} || ''ecap/'' || eCAP support || - ||
+|| (./) || ''adaptation/ecap/'' || eCAP support || - ||
 ||  || ''esi/'' || ESI support || ESI* ||
-|| {1} || ''fs/'' || file system-specific cache store support? || fs/* ||
+|| :\ || ''fs/'' || file system-specific cache store support? || fs/* || Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
-|| {1} || ''icap/'' || ICAP support || ICAP/ICAP* ||
+|| (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
 || (./) || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* ||
 ||  || ''ident/'' || Ident support || ident.* ||
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
