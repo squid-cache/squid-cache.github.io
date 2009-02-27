@@ -63,6 +63,32 @@ while (<>) {
 }
 }}}
 
+== How do I make in concurrent? ==
+
+Concurrency is handled very simply. Squid labels each request sent to your program with an ID number. All you have to do is make your program send that ID back with the result.
+
+When it comes to concurrency vs children. More concurrency is often better than more children helpers.
+
+The input line now consists of five fields followed by a series of optional extension values:
+{{{
+ID URL ip/fqdn ident method key-pairs
+}}}
+
+Your output lines should contain:
+{{{
+ID URL
+}}}
+or for a 'null-result' which was previously just an empty line:
+{{{
+ID \n
+}}}
+
+The squid.conf file needs to be adapted slightly to contain this:
+{{{
+url_rewrite_concurrency 10
+}}}
+the above example uses 10 concurrent requests, you may need more depending on your Squid load.
+
 === Can I use something other than perl? ===
 
 Almost any external script can be used to perform a redirect. See ConfigExamples/PhpRedirectors for hints on writing complex redirectors using php.
