@@ -26,7 +26,7 @@ Key:
 
 ||  || '''Group''' || '''Definition''' || '''Files''' || '''To-do''' ||
 || {2} || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets ||
-||  || ''acl/'' || Access Controls || ACL* external_acl.* ||
+|| {1} || ''acl/'' || Access Controls || ACL* external_acl.* ||
 || (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 || :\ || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
