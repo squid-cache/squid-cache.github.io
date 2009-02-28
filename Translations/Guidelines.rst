@@ -49,6 +49,19 @@ I have found that in most messages where they mix with text, the code usually re
 
 A reference of the available tags if you need to know what one means to translate it properly is available in the [[http://wiki.squid-cache.org/Features/CustomErrors|Custom Errors Feature]]
 
+== Language Dialects ==
+
+The messages from Squid which you are looking at translating, are automatically negotiated with website visitors during their creation.
+
+This means that the language they are translated into is very specific and we cannot accept a mix of dialects within a single coded .po translation file.  Each dialect whether within a language or between countries needs to be given its own code and translated separately. See the various English or Dutch codes for an example of what this means.
+
+If you have any unusual situation with language and country combination or language variant combinations that is not already solved, please contact the translation maintainer for assistance. (AmosJeffries at present).
+
+== Special Language Display ==
+
+Some languages require Right-to-Left or otherwise altered display instead of the standard HTML English Left-to-Right settings. This is currently achieved through the use of ''':lang()''' attributes in CSS.
+
+To ensure compatibility with Squid-2 which does not natively perform the same CSS insertion as [[Squid-3.1]] these language settings are embedded directly into the templates and alterations need to be brought to the attention of the Squid Developers.
 
 
 = Submissions Outside the System =
