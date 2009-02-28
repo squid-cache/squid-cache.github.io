@@ -95,7 +95,7 @@ Each phrase with suggestions will come up with all current details about that te
 
 Each is listed with two buttons:
 
- * Click on ''green ./''' (accept) to replace existing translation with the suggested one.
+ * Click on '''green (./) ''' (accept) to replace existing translation with the suggested one.
  * Click on '''red X''' (reject) to remove the suggestion.
 
 ==== Adding New Translations ====
