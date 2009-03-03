@@ -64,3 +64,8 @@ Currently being carried out as a feature-branch of HEAD at [[https://code.launch
 === Step-by-step diagram of MemBuf-emulation functionalities ===
 || /!\ || Note: this diagram is out-of-date. SBufs no longer point to a char* inside the SBufStore address space, but carry an {offset,length} relative to the head of the SBufStore. ||
 {{attachment:KBuf-work-diagram.png}}
+
+== Dead code repository ==
+[[attachment:sbuf-mempool-failed-integration.patch]] contains an attempt at mempool integration.
+It failed because global variables are initialized before mempools are running, which results in their buffers being xalloc()ed by mempools. At destruction time, mempools can't find the pool to free the item from (because it doesn't exists) and complains loudly.
+The interim solution is to remove the dependency on mempools. Further attempts are re-introducing the isLiteral/isImported flags to !MemBlobs, or to make sure that mempools are initialized before global variables.
