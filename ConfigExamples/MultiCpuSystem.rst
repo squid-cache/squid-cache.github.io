@@ -35,16 +35,25 @@ Should anyone put this in production, he's encouraged to share the results to he
 
 == Squid Configuration File ==
 
-Paste the configuration file like this:
+For a 2-backends system, there are 5 configuration files to be used.
+You can click below each file on its filename to download it, no need to copy and paste. The .txt extension an artifact, please remove it.
 
-{{{
+=== acl ===
+This file contains the ACL's that are common to all running instances. This allows to change cluster-wide parameters without needing to touch each instance's. Each instance will still have to be reconfigured individually.
+{{attachment:common.acl.conf.txt}}
 
-acl all src 0.0.0.0/0.0.0.0
-acl manager proto cache_object
-acl localhost src 127.0.0.1/255.255.255.255
-http_access deny all
+=== common backend parameters ===
+Backends share most of the configuration, it makes sense to also join those
+{{attachment:common.backend.conf.txt}}
 
-}}}
+=== frontend ===
+{{attachment:frontend.conf.txt}}
+
+=== backend 1 ===
+{{attachment:backend-1.conf.txt}}
+
+=== backend 2 ===
+{{attachment:backend-2.conf.txt}}
 
 
 ----
