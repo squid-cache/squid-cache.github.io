@@ -51,10 +51,10 @@ The following example instructs [[Squid-3.1]] to talk to two ICAP services, one 
 icap_enable on
 
 icap_service service_req reqmod_precache 1 icap://127.0.0.1:1344/request
-adaptation_access class_req allow all
+adaptation_access service_req allow all
 
 icap_service service_resp respmod_precache 0 icap://127.0.0.1:1344/response
-adaptation_access class_resp allow all
+adaptation_access service_resp allow all
 }}}
 
  * [[http://www.squid-cache.org/Doc/config/adaptation_access|adaptation_access]]
