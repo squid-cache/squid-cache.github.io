@@ -29,7 +29,7 @@ Key:
 || {1} || ''acl/'' || Access Controls || ACL* external_acl.* ||
 || (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-|| :\ || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
+|| {1} || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
 || {1} || ''base/'' || Commonly used code whithout a better place to go. || Async*? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
