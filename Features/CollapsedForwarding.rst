@@ -9,7 +9,7 @@
 
  * '''Status''': Done in 2.6+.  Ported to 3.0 but not tested or updated to 3.1.
 
- * '''ETA''': unknown. planned for 3.2
+ * '''ETA''': unknown
 
  * '''Version''': 2.6+
 
