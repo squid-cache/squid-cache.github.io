@@ -18,7 +18,9 @@ To minimize noise and the number of half-baked abandoned features, two Feature s
   Wish List:: The Wish List accumulates features that do not meet the strict TODO List criteria. Many of these features can be implemented if there is enough demand or a sponsor. Some may get implemented outside of the official process, submitted as patches, and accepted into the release.
 
 There are no longer any freezing points in the 3.x Roadmap.  Instead, Point Releases are now made at regular intervals as determined by; a reasonable time since last point release, or a large number of features being added.
+
 All features must pass an auditing process for commit to HEAD, and any feature which has passed that process at time of release will be included in that release.
+
 Features which have not reached completion or have failed the audit, are automatically delayed to the next Squid release. Which should not be an unreasonable delay given the new fast-track release plan.
 
 
@@ -113,7 +115,7 @@ Features under development:
  * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
  * [[Features/AdaptationLog]] <<Include(Features/AdaptationLog,,,from="ETA.*:",to="$")>>
 
-## some we will need to maualy add to this list...
+## some we will need to manually add to this list...
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 -regex:ETA...:.unknown regex:Developer...:....*)>>
 
 ## Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a
@@ -122,17 +124,17 @@ Features under development:
 Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
 
 (Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...:.unknown regex:Priority...:.*1)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:ETA...:.unknown regex:Priority...:.*1)>>
  * Store URL re-write port from 2.7
  * monitor* port from 2.6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2185
 (Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...:.unknown regex:Priority...:.*2)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:ETA...:.unknown regex:Priority...:.*2)>>
  * Variant Invalidation
 (Priority 3)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...:.unknown regex:Priority...:.*3)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:ETA...:.unknown regex:Priority...:.*3)>>
 
 (Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3.2 regex:ETA...:.unknown -regex:Priority...:.[123])>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3 regex:ETA...:.unknown -regex:Priority...:.[123])>>
 
 
 == Wish List ==
