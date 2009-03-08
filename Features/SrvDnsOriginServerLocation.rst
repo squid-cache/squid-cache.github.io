@@ -7,9 +7,10 @@
  * '''Status''': In progress; a working redirector-based proof-of-concept is available. It can be improved upon, with the aim of mimicking Squid's internal processes.
  * '''ETA''': unknown
  * '''ETA''': A few days for the POC. Work needed to get into Squid body is unknown.
- * '''Version''': Squid-3
+ * '''Version''': 3.x
  * '''Priority''': 3
- * '''Developer''': POC: FrancescoChemolli. Integration: unknown
+ * '''Proof of Concept''': FrancescoChemolli
+ * '''Developer''':
  * '''More''':
 ## Details
 ##
