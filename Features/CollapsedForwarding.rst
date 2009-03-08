@@ -7,11 +7,11 @@
 
  * '''Goal''': This work aims at providing optimized request forwarding for accelerator setups by collapsing multiple requests for the same object into one backend server request.
 
- * '''Status''': Done in 2.6+.  Ported to 3.0 but not tested or updated to 3.1.
+ * '''Status''': Done in 2.6+.  Ported to 3.0 but not tested or updated to 3.2.
 
  * '''ETA''': unknown
 
- * '''Version''': 2.6+
+ * '''Version''': 2.6+,
 
  * '''Priority''': 1
 
