@@ -139,7 +139,11 @@ Wishlist consists of features which have been suggested or requested but do not 
 Please contact squid-dev and discuss these if you with to take on development of one.
 
 ## That means any feature without a named developer....
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+)>>
+##<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3)>>
+
+# experiment: wishlist of features *without* being in category feature
+<<FullSearch(title:Features/ -regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+)>>
 
 More ideas are available [[Features/Other|elsewhere]].
 
