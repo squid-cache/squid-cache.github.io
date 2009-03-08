@@ -12,7 +12,9 @@
 
  * '''ETA''': unknown
 
- * '''Version''': Squid 3
+ * '''Version''': 3.2
+
+ * '''Priority''': other
 
  * '''Developer''': AlexeyVeselovsky
 
