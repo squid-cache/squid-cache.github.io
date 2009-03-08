@@ -10,7 +10,7 @@
  * '''Version''': 3.2 or later
  * '''Status''': not started
  * '''ETA''': unknown
- * '''Developer''': none yet.
+ * '''Developer''': 
  * '''More''': TODO: link to Squid2 parser work here.
 
 Avoid parsing the same HTTP header several times. Possibly implement incremental header parsing.
