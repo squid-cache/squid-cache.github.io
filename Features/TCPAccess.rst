@@ -5,7 +5,6 @@
 ## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted no
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
 
 = Feature: Early access control knob to block connection floods =
 
@@ -23,7 +22,7 @@
 
  * '''Priority''': None assigned
 
- * '''Developer''': None assigned
+ * '''Developer''': 
 
  * '''More''': 
 
