@@ -10,7 +10,7 @@
 
  * '''Version''': Squid 2.5+
 
-## * '''Developer''': 
+## * '''Developer''': unknown
 
 ## * '''More''': 
 
