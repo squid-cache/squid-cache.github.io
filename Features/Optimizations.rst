@@ -7,7 +7,7 @@
  * '''Goal''': Waste less CPU
  * '''Status''': ''In Progress''
  * '''ETA''': unknown
- * '''Version''': Squid 2 and Squid 3
+ * '''Version''': Squid 2.7+ and Squid 3.1+
  * '''Developer''': AdrianChadd, AmosJeffries, everyone
  * '''More''': Current work at http://devel.squid-cache.org/changesets/squid/s27_adri.html
 
