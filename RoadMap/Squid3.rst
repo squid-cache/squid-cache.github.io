@@ -108,10 +108,13 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 ##  * [:Features/FEATURE_ID_HERE] <<Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")>>
 
 Features under development:
- * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
- * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
+## * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
+## * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
  * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
  * [[Features/AdaptationLog]] <<Include(Features/AdaptationLog,,,from="ETA.*:",to="$")>>
+
+## some we will need to maualy add to this list...
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 -regex:ETA...:.unknown regex:Developer...:....*)>>
 
 ## Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a
 ## timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
@@ -119,14 +122,14 @@ Features under development:
 Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
 
 (Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*1)>>
- * Store URL re-write port rom 2.7
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...:.unknown regex:Priority...:.*1)>>
+ * Store URL re-write port from 2.7
  * monitor* port from 2.6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2185
 (Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*2)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...:.unknown regex:Priority...:.*2)>>
  * Variant Invalidation
 (Priority 3)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...: unknown regex:Priority...:.*3)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 regex:ETA...:.unknown regex:Priority...:.*3)>>
 
 (Others)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3.2 regex:ETA...:.unknown -regex:Priority...:.[123])>>
@@ -139,11 +142,9 @@ Wishlist consists of features which have been suggested or requested but do not 
 Please contact squid-dev and discuss these if you with to take on development of one.
 
 ## That means any feature without a named developer....
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+)>>
-##<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3)>>
+##<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+)>>
 
-# experiment: wishlist of features *without* being in category feature
-<<FullSearch(title:Features/ -regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+)>>
+##<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3)>>
 
 More ideas are available [[Features/Other|elsewhere]].
 
