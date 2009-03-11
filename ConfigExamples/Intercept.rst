@@ -26,5 +26,7 @@ Once the packets reach the Squid box they still need passing into Squid. This is
 
 <<FullSearch(title:regex:^ConfigExamples/Intercept/ -title:regex:^ConfigExamples/Intercept/.*Wccp -title:regex:^ConfigExamples/Intercept/.*Route )>>
 
+ * [[../../Features/Tproxy4|Linux TPROXY Real Transparent Interception (without NAT)]]
+
 ----
 CategoryConfigExample
