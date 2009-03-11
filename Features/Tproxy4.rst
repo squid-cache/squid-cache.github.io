@@ -12,7 +12,7 @@
 
  * '''Developer''': Laszlo Attilla Toth (Balabit), Krisztian Kovacs, AmosJeffries
 
- * '''More''': http://www.balabit.com/downloads/files/tproxy/
+ * '''More''': http://www.balabit.com/downloads/files/tproxy/README.txt
 
 
 <<TableOfContents>>
