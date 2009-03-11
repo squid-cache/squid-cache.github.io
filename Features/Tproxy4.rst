@@ -51,9 +51,9 @@ http_port 3129 tproxy
 
  /!\ Requires kernel built with the configuration options:
 {{{
-NETFILTER_TPROXY=m
-NETFILTER_XT_MATCH_SOCKET=m
-NETFILTER_XT_TARGET_TPROXY=m
+NETFILTER_TPROXY
+NETFILTER_XT_MATCH_SOCKET
+NETFILTER_XT_TARGET_TPROXY
 }}}
 
  * NP: can anyone provide a clean step-by-step how-to for setting those?
@@ -67,19 +67,19 @@ iptables -t mangle -A DIVERT -j MARK --set-mark 1
 iptables -t mangle -A DIVERT -j ACCEPT
 }}}
 
-Use ''DIVERT'' to bypass interception on packets leaving Squid:
+Use ''DIVERT'' to prevent existing connections going through TPROXY twice:
 {{{
 iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
 }}}
 
-Mark all other packets and use TPROXY to pass into Squid:
+Mark all other (new) packets and use ''TPROXY'' to pass into Squid:
 {{{
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
 
 == Routing configuration ==
 
-The routing features in your kernel also need to be configured to enable correct handling of the intercepted packets.
+The routing features in your kernel also need to be configured to enable correct handling of the intercepted packets. Both arriving and leaving your system.
 
 {{{
 ip rule add fwmark 1 lookup 100
@@ -116,6 +116,14 @@ It may also be seen only at startup due to unrelated issues:
 
  * [[SquidFaq/TroubleShooting#head-97c3ff164d9706d3782ea3b242b6e409ce8395f6|Another program already using the port]]
  * [[SquidFaq/TroubleShooting#head-19aa8aba19772e32d6e3f783a20b0d2be0edc6a2|Address not assigned to any interface]]
+
+== Traffic going through Squid but the timing out ==
+
+This is usually seen when the network design prevents packets coming back to Squid. To prevent this the current design in Squid only spoofs the traffic seen by the Client.
+
+ * Check that the Routing portion of the config above is set correctly.
+ * Check that the ''DIVERT'' is done before ''TPROXY'' rules in iptables '''PREROUTING''' chain.
+
 
 = References =
 
