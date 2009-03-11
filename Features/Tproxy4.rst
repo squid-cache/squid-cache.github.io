@@ -25,8 +25,8 @@ Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ri
 == Requirements ==
 
  || Linux Kernel 2.6.28 || [[http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.28.3.tar.bz2|2.6.28.3 release]] ||
- || iptables 1.4.3      || [[ftp://ftp.netfilter.org/pub/iptables/snapshot/iptables-20090205.tar.bz2|development snapshot]] ||
- || Squid 3.1           || [[http://www.squid-cache.org/Versions/v3/3.1/squid-3.1.0.5.tar.bz2|3.1.0.5 release]] ||
+ || iptables 1.4.3      || [[ftp://ftp.netfilter.org/pub/iptables/snapshot/iptables-20090310.tar.bz2|development snapshot]] ||
+ || Squid 3.1           || [[http://www.squid-cache.org/Versions/v3/3.1/squid-3.1.0.6.tar.bz2|3.1.0.6 release]] ||
 
 NP: the links above are an arbitrary sample from the expected working versions, and may be old in some cases. The web directories where the files sit allow you to browse to newer versions if you like.
 
@@ -51,9 +51,9 @@ http_port 3129 tproxy
 
  /!\ Requires kernel built with the configuration options:
 {{{
-NETFILTER_TPROXY
-NETFILTER_XT_MATCH_SOCKET
-NETFILTER_XT_TARGET_TPROXY
+NETFILTER_TPROXY=m
+NETFILTER_XT_MATCH_SOCKET=m
+NETFILTER_XT_TARGET_TPROXY=m
 }}}
 
  * NP: can anyone provide a clean step-by-step how-to for setting those?
@@ -77,6 +77,25 @@ Mark all other packets and use TPROXY to pass into Squid:
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
 
+== Routing configuration ==
+
+The routing features in your kernel also need to be configured to enable correct handling of the intercepted packets.
+
+{{{
+ip rule add fwmark 1 lookup 100
+ip route add local 0.0.0.0/0 dev lo table 100
+}}}
+
+On each boot startup set:
+{{{
+echo 1 > /proc/sys/net/ipv4/ip_forward
+}}}
+
+Or configure '''/etc/sysctl.conf''':
+{{{
+set net.ipv4.forwarding = 1
+}}}
+
 
 = Troubleshooting =
 
@@ -93,7 +112,7 @@ It might be seen repeatedly when Squid is running with TPROXY configured:
  * If the kernel is missing the capability to bind to any random IP.
 
 
-It may also be seen ony at startup due to unrelated issues:
+It may also be seen only at startup due to unrelated issues:
 
  * [[SquidFaq/TroubleShooting#head-97c3ff164d9706d3782ea3b242b6e409ce8395f6|Another program already using the port]]
  * [[SquidFaq/TroubleShooting#head-19aa8aba19772e32d6e3f783a20b0d2be0edc6a2|Address not assigned to any interface]]
