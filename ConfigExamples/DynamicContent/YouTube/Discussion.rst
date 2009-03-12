@@ -95,58 +95,62 @@ refresh_pattern -i \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)(\?|$) 161280 3000% 
 Storeurl script(where concurrency is > 0) or the test.pl above. concurrency 10 is faster than children 10.
 {{{
 #!/usr/bin/perl -w
-use strict;
+#!c:\perl\bin\perl.exe
+$|=1;
+while (<>) {
+    @X = split;
+	$x = $X[0];
+	$_ = $X[1];
+	$u = $X[1];
 
-$| = 1 ;
-while (<>) { 
-		chomp;
-			# $x is the concurrent channel $_ is the url + ip ...
-			#$_ .= " "; just add space at the end.
-		my ($x, $url) = split(/ /);
-		$_ = $url; 
-		$_ .= " ";
-         
-        if 		(m/^http:\/\/([A-Za-z]*?)-(.*?)\.(.*)\.youtube\.com\/get_video\?video_id=(.*?)&(.*?) /) {
-                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $4 . "\n";
-               
-		} elsif (m/^http:\/\/(.*?)\/get_video\?video_id=(.*?)&(.*?) /) {
-                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
-				
-        } elsif (m/^http:\/\/(.*?)\/videoplayback\?id=(.*?)&(.*?) /) {
-                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/videoplayback?id=" . $2 . "\n";
+if (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?(videoplayback\?id=.*?|video_id=.*?)\&(.*?)/) {
+	$z = $2; $z =~ s/video_id=/get_video?video_id=/; # compatible to old cached get_video?video_id
+	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $z . "\n";
+			# google utm.gif
+} elsif (m/^http:\/\/www\.google-analytics\.com\/__utm\.gif\?.*/) {
+	print $x . "http://www.google-analytics.com/__utm.gif\n";
+			#cache high latency ads	
+} elsif (m/^http:\/\/(.*?)\/(ads)\?(.*?)/) {
+	print $x . "http://" . $1 . "/" . $2  . "\n";
 
-		} elsif (m/^http:\/\/(.*?)video_id=(.*?)&(.*?) /) {
-                print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
-						#cache high latency ads	
-        } elsif (m/^http:\/\/(.*?)\/(ads)\?(.*?) /) {
-                print $x . "http://" . $1 . "/" . $2  . "\n";				
-                #not related to youtube and the others below
-        } elsif (m/^http:\/\/([0-9.]*?)\/\/(.*?)\.(.*)\?(.*?) /) {
-                print $x . "http://squid-cdn-url//" . $2  . "." . $3 . "\n";
-				
-        } elsif (m/^http:\/\/(.*?)\.yimg\.com\/(.*?)\.yimg\.com\/(.*?)\?(.*?) /) {
-                print $x . "http://cdn.yimg.com/"  . $3 . "\n";
-				
-        } elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*?)\.(.*?)\?(.*?) /) {
-                print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 . "." . $6 . "\n";
+			# spicific servers starts here....
+} elsif (m/^http:\/\/(www\.ziddu\.com.*\.[^\/]{3,4})\/(.*?)/) {
+	print $x . "http://" . $1 . "\n";	
+			#rapidshare
+} elsif (($u =~ /rapidshare/) && (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)([a-z]*\.[^\/]{3}\/[a-z]*\/[0-9]*)\/(.*?)\/([^\/\?\&]{4,})$/)) {
+	print $x . "http://cdn." . $3 . "/SQUIDINTERNAL/" . $5 . "\n";
 
-        } elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*?)\.(.{3,5}) /) {
-                print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 . "." . $6 . "\n";	
+} elsif (($u =~ /maxporn/) && (m/^http:\/\/([^\/]*?)\/(.*?)\/([^\/]*?)(\?.*)?$/)) {
+#	$z = $1; $z =~ s/[A-Za-z]+[0-9-.]+/cdn/;
+	print $x . "http://" . $1 . "/SQUIDINTERNAL/" . $3 . "\n";	
+	
+			#like porn hub variables url and center part of the path, filename etention 3 or 4 with or withour ? at the end
+} elsif (($u =~ /tube8|pornhub/) && (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.([a-z]*[0-9]?\.[^\/]{3}\/[a-z]*)(.*?)((\/[a-z]*)?(\/[^\/]*){4}\.[^\/\?]{3,4})(\?.*)?$/)) {
+	print $x . "http://cdn." . $3 . $5 . "\n";		
+			#...spicific servers end here.
+			#general purpose for cdn servers. add above your specific servers.
+} elsif (m/^http:\/\/([0-9.]*?)\/\/(.*?)\.(.*)\?(.*?)/) {
+	print $x . "http://squid-cdn-url//" . $2  . "." . $3 . "\n";
+			#for yimg.com
+} elsif (m/^http:\/\/(.*?)\.yimg\.com\/(.*?)\.yimg\.com\/(.*?)\?(.*?)/) {
+	print $x . "http://cdn.yimg.com/"  . $3 . "\n";
+			#generic http://variable.domain.com/path/filename."ext" or "exte" with or withour "?"
+} elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*?)\.([^\/\?\&]{3,4})(\?.*)?$/) {
+	print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 . "." . $6 . "\n";
+			# generic http://variable.domain.com/...
+} elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*)$/) {
+	print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 .  "\n";				
+			# spicific extention that ends with ?
+} elsif (m/^http:\/\/(.*?)\/(.*?)\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?(.*)/) {
+	print $x . "http://" . $1 . "/" . $2  . "." . $3 . "\n";
+			# all that ends with ;
+} elsif (m/^http:\/\/(.*?)\/(.*?)\;(.*)/) {
+	print $x . "http://" . $1 . "/" . $2  . "\n";
 
-        } elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*?) /) {
-                print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 .  "\n";				
-				
-        } elsif (m/^http:\/\/(.*?)\/(.*?)\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?(.*?) /) {
-                print $x . "http://" . $1 . "/" . $2  . "." . $3 . "\n";
-				
-        } elsif (m/^http:\/\/(.*?)\/(.*?)\;(.*?) /) {
-                print $x . "http://" . $1 . "/" . $2  . "\n";
-				
-        } else {
-                print $x . $_ . "\n";
-        }
-	}
-
+} else {
+	print $x . $_ . "\n";
+}
+}
 
 }}}
 
