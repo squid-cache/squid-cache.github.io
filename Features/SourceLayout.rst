@@ -26,10 +26,10 @@ Key:
 
 ||  || '''Group''' || '''Definition''' || '''Files''' || '''To-do''' ||
 || {2} || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets ||
-|| {1} || ''acl/'' || Access Controls || ACL* external_acl.* ||
+|| :\ || ''acl/'' || Access Controls || ACL* external_acl.* || Add Acl namespace and rename classes? ||
 || (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-|| {1} || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
+|| :\ || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
 || {1} || ''base/'' || Commonly used code whithout a better place to go. || Async*? ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
