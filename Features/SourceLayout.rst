@@ -36,7 +36,7 @@ Key:
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || (./) || ''adaptation/ecap/'' || eCAP support || - ||
-|| {1} || ''esi/'' || ESI support || ESI* ||
+|| :\ || ''esi/'' || ESI support || ESI* || Add Esi namespace, rename classes ||
 || :\ || ''fs/'' || file system-specific cache store support? || fs/* || Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
