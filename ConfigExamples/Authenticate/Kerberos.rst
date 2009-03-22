@@ -35,7 +35,37 @@ msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab
 
 == krb5.conf Configuration ==
 
- Yet to be written.
+ * /!\ In IE the proxy must be specified as FQDN not as an IP-address
+
+A minimal setup without DNS resolution of AD servers would be:
+
+{{{
+[libdefaults]
+      default_realm = WIN2003R2.HOME
+      dns_lookup_kdc = no
+      dns_lookup_realm = no
+      default_keytab_name = /etc/krb5.keytab
+      default_tgs_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
+      default_tkt_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
+      permitted_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
+[realms]
+      WIN2003R2.HOME = {
+              kdc = w2k3r2.win2003r2.home
+              admin_server = w2k3r2.win2003r2.home
+      }
+
+[domain_realm]
+      .linux.home = WIN2003R2.HOME
+      .win2003r2.home = WIN2003R2.HOME
+      win2003r2.home = WIN2003R2.HOME
+
+[logging]
+  kdc = FILE:/var/log/kdc.log
+  admin_server = FILE:/var/log/kadmin.log
+  default = FILE:/var/log/krb5lib.log
+
+}}}
+
 
 == Squid Configuration File ==
 
