@@ -36,6 +36,7 @@ msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab
 == krb5.conf Configuration ==
 
  * /!\ In IE the proxy must be specified as FQDN not as an IP-address
+ * {i} rc4-hmac should be listed as encryption type.
 
 A minimal setup without DNS resolution of AD servers would be:
 
