@@ -26,7 +26,7 @@ Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ri
 
  || Linux Kernel 2.6.28 || [[http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.28.3.tar.bz2|2.6.28.3 release]] || [[http://www.kernel.org/|Official releases page]] ||
  || iptables 1.4.3      || [[http://www.netfilter.org/projects/iptables/files/iptables-1.4.3.tar.bz2|1.4.3 release]] || [[http://www.netfilter.org/projects/iptables/downloads.html|Offical releases page]] ||
- || Squid 3.1           || [[http://www.squid-cache.org/Versions/v3/3.1/squid-3.1.0.6.tar.bz2|3.1.0.6 release]] || [[http://www.squid-cache.org/Versions/v3/3.1/|Official releases page]] ||
+ || Squid 3.1           || [[http://www.squid-cache.org/Versions/v3/3.1/squid-3.1.0.6.tar.bz2|3.1.0.6 release]] || [[http://www.squid-cache.org/Versions/|Official releases page]] ||
 
 NP: the links above are an arbitrary sample from the expected working versions, and may be old in some cases. The web directories where the files sit allow you to browse to newer versions if you like.
 
