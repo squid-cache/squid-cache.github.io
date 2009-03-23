@@ -15,28 +15,37 @@ Several people have volunteered their time to check and confirm translations to 
 ||<-2> '''Language''' || '''Translations verified by:''' ||
 || Bulgarian || bg || Evgeni Gechev ||
 || German || de || Constantin Rack and  Robert Förster ||
-|| English || en, en-au, en-gb || AmosJeffries ||
-|| Italian || it || FrancescoChemolli ||
+|| English || en, en-au, en-gb || AmosJeffries (Squid Project) ||
+|| Persian || fa || Mohsen Saeedi (Fedora Project) ||
+|| Italian || it || FrancescoChemolli (Squid Project) ||
 || Dutch (Nederland) || nl || Rene Wijninga ||
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
-|| Swedish || sv || HenrikNordstrom ||
+|| Swedish || sv || HenrikNordstrom (Squid Project) ||
 ## || Turkish || tr || Umut Çinar ||
 ||<|99> Others || ||<|99> '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
+|| Arabic (ar) ||
 || Azerbaijani (az) ||
 || Catalan (ca) ||
 || Czech (cs) ||
 || Danish (da) ||
+|| Greek (el) ||
+|| Finnish (fi) ||
 || French (fr) ||
 || Spanish (es) ||
 || Estonian (et) ||
-|| Japanese (ja) ||
+|| Armenian (hy) ||
 || Indonesian (id) ||
+|| Japanese (ja) ||
+|| Latvian (lv) ||
 || Romanian (ro) ||
 || Russian (ru) ||
 || Serbian (sr) ||
+|| Turkish (tr) ||
 || Ukrainian (uk) ||
+|| Uzbek  (uz) ||
 || Chinese (zh-cn) ||
 || ||
+
 
 == Why? Squid already has translated error pages ==
 
