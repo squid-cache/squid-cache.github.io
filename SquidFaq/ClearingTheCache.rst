@@ -10,7 +10,9 @@
 
 Clearing the cache can be necessary under some unusual circumstances. Usually if the estimated size of the cache was calculated incorrectly and needs adjusting.
 
-To fix simple cases such as the above where the cache just needs to have a portion of the total removed Altering squid.conf and reconfiguring squid is sufficient. Squid will handle the changes automatically and purge the cache down to size again within 10 minutes of the configure.
+To fix simple cases such as the above where the cache just needs to have a portion of the total removed Altering squid.conf and reconfiguring squid is sufficient. Squid will handle the changes automatically and starts to purge the cache down to size again within 10 minutes of the configure.
+
+ {i} NP: on particularly large caches the prune has been known to take a long time and/or a lot of CPU.
 
 old squid.conf
 {{{
