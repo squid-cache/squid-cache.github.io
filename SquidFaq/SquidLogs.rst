@@ -331,7 +331,7 @@ LOCAL_IP_DIRECT       No special logging for local networks.
 
 [[Squid-2.6|Squid 2.6]] allows to send access.log contents to a local syslog server by specifying {{{syslog}}} as a file path, for example as in:
 {{{
-access_log syslog squid
+access_log syslog: squid
 }}}
 
 
