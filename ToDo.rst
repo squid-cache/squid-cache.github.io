@@ -1,8 +1,10 @@
 = Misplaced ToDo's =
 
  /!\ The right place to list bugs is the bugzilla database.
+
  /!\ The right place to list future improvements is the [[Features]] interface.
- /!\ The right place to list minor tasks anyone can do is the [[/RoadMap/Tasks|Roadmap Tasks list]].
+
+ /!\ The right place to list minor tasks anyone can do is the [[../RoadMap/Tasks|Roadmap Tasks list]].
 
 Please do not dump to-do items here. If you get a chance, move these items to the right places.
 
