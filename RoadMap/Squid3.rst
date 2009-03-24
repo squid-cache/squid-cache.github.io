@@ -118,8 +118,6 @@ Features under development:
 ## some we will need to manually add to this list...
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 -regex:ETA...:.unknown regex:Developer...:....*)>>
 
-## Features being developed for 3.2 but with unknown ETA, violating the TODO list requirement of having a
-## timeline. These may be bumped to 3.3 if not completed by initial 3.2 release:
 
 Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
 
@@ -136,6 +134,7 @@ Features considered high-priority for including with 3.2, but not yet with a ded
 (Others)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3 regex:ETA...:.unknown -regex:Priority...:.[123])>>
 
+ There is also a list of [[/Tasks|Tasks]] which anyone can help with.
 
 == Wish List ==
 
