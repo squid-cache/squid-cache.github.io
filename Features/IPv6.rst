@@ -97,6 +97,34 @@ That will split all outgoing requests into two groups, those headed for IPv4 and
 
 Please note the '''dst''' ACL only works for DIRECT requests. Traffic destined for peers needs to be left without an outgoing_address set. This peer bug is being worked on and a fix is expected shortly.
 
+== Mistakes people are making ==
+
+Please don't do these. Particularly in immortal online documents.
+
+=== Defining acl all src ::/0 0.0.0.0/0 ===
+ * '''all''' is pre-defined in every Squid-3 release.
+ * It will now throw nasty confusing WARNING: at confused people.
+
+=== Defining IPv4 with ::ffff:a.b.c.d ===
+ * Squid still understands IPv4.
+ * No need to write anything new and confusing.
+
+=== Defining IPv6 as 2000::/3 ===
+ * It's not true.
+ * Squid does it better with ACL magic moniker '''ipv6''' meaning the currently routable IPv6 space.
+{{{
+acl globalIPv6 src ipv6
+}}}
+
+=== Defining IPv6 space as containing any address starting with F ===
+ * they are '''local-only''' ranges.
+ * Add them to your localnet ACL when actually needed.
+
+=== Defining 3ffe::/16 ===
+ * Once upon a time there was a experimental network called 6bone.
+ * It's dead now. No need to even mention it anymore.
+
+
 == How do I make squid use IPv6 to its helpers? ==
 With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. By default to work with older setups, helpers are still connected over IPv4. You can add '''ipv6''' option to use IPv6.
 {{{
