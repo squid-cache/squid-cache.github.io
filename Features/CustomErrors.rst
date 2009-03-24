@@ -21,7 +21,7 @@
 
 Squid lets you customize your error messages. The source distribution includes error messages in different languages.
 
-From Squid 3.1:
+'''From Squid 3.1:'''
  * CSS hooks are available for display redesign and coloring.
  * Language translations are done by default automatically when language pages are installed.
 
@@ -33,61 +33,63 @@ If needed, you can make a copy and re-write the error message template files in 
 
 This list describes the tags which Squid will insert into the messages:
 
-'''%a''':: User identity
+ %a:: User identity
 
-'''%B''':: URL with FTP %2f hack
+ %B:: URL with FTP %2f hack
 
-'''%c''':: Squid error code
+ %c:: Squid error code
 
-'''%d''':: seconds elapsed since request received (not yet implemented)
+ %d:: seconds elapsed since request received (not yet implemented)
 
-'''%e''':: errno
+ %e:: errno
 
-'''%E''':: strerror()
+ %E:: strerror()
 
-'''%f''':: FTP request line
+ %f:: FTP request line
 
-'''%F''':: FTP reply line
+ %F:: FTP reply line
 
-'''%g''':: FTP server message
+ %g:: FTP server message
 
-'''%h''':: cache hostname
+ %h:: cache hostname
 
-'''%H''':: server host name
+ %H:: server host name
 
-'''%i''':: client IP address
+ %i:: client IP address
 
-'''%I''':: server IP address
+ %I:: server IP address
 
-'''%L''':: contents of ''err_html_text'' config option
+ %l:: Local site CSS stylesheet. (Squid-3.1 and later only.)
 
-'''%M''':: Request Method
+ %L:: contents of '''err_html_text''' config option
 
-'''%m''':: Error message returned by external auth helper
+ %M:: Request Method
 
-'''%o''':: Message returned by external acl helper
+ %m:: Error message returned by external auth helper
 
-'''%p''':: URL port \#
+ %o:: Message returned by external acl helper
 
-'''%P''':: Protocol
+ %p:: URL port \#
 
-'''%R''':: Full HTTP Request
+ %P:: Protocol
 
-'''%S''':: squid default signature. (Squid prior to 3.1 automatically add unless %s is used.)
+ %R:: Full HTTP Request
 
-'''%s''':: caching proxy software with version
+ %S:: squid default signature. (Squid prior to 3.1 automatically add unless %s is used.)
 
-'''%t''':: local time
+ %s:: caching proxy software with version
 
-'''%T''':: UTC
+ %t:: local time
 
-'''%U''':: URL without password
+ %T:: UTC
 
-'''%u''':: URL with password (Squid-2.5 and later only)
+ %U:: URL without password
 
-'''%w''':: cachemgr email address
+ %u:: URL with password. (Squid-2.5 and later only.)
 
-'''%z''':: DNS server error message
+ %w:: cachemgr email address
+
+ %z:: DNS server error message
 
 ----
 CategoryFeature
