@@ -1,4 +1,4 @@
-##master-page:CategoryTemplate
+##master-page:Features/FeatureTemplate
 #format wiki
 #language en
 ##
