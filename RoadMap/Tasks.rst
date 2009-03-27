@@ -16,6 +16,10 @@ Check with squid-dev mailing list to see what we are up to and how you can assis
 
  * Add unit tests for each class, API method and function already in existence to improve code quality and speedup future testing.
 
+ * Removing useless includes.
+  1. Pick a system .h listed in compat/types.h and drop all other places its #include by src/* and includes/*
+  2. going through each .h file and minimizing the other .h it includes, using class pre-defines where possible. (This is being done during SourceLayout somewhat so contact squid-dev before attempting).
+
 === Small Tasks ===
 
 Small, but nagging. These might be done already if this page is not updated regularly.
