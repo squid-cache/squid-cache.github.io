@@ -30,5 +30,10 @@ Check with squid-dev to see if its already done.
  * Verify or Update one of the non-modified [[../../Translations|translated Squid error pages]].
  * Add a new language [[../../Translations|translation for Squid error pages]].
 
+ * Cleanup Squid component macros that enable/disable components:
+  1. make all the naming convention USE_* (with USE_SQUID_* for those which may clash with OS defines).
+  2. make all have the same #if...#endif syntax (currently a mix of #if and #ifdef)
+  3. add a testbed scan to detect misuse of (2) syntax
+
 ----
 CategoryWish
