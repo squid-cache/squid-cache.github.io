@@ -35,5 +35,11 @@ Check with squid-dev to see if its already done.
   2. make all have the same #if...#endif syntax (currently a mix of #if and #ifdef)
   3. add a testbed scan to detect misuse of (2) syntax
 
+ * Fix Squid-3 MD5 layer:
+  1. migrate MD5 code to libcompat
+  2. ensure correct use of system libraries when such can be found
+  3. ensure correct failover to squid code when such are missing
+  4. port --without-system-md5 configure option to force the above
+
 ----
 CategoryWish
