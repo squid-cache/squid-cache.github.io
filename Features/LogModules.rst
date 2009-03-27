@@ -21,6 +21,8 @@
 
  * Port updated with patches found by Squid-2 usage testing. Structure revised for C++ objects in an API interface with module Instantiations. Testing is underway to see if it works to a usable standard.
 
+ * Will need to be re-worked a bit to fit in with and build on the SourceLayout changes to logging.
+
 == Squid2 information ==
 
 AdrianChadd written some code to push logfile writing into an external process, freeing up the main squid process from the potentially blocking stdio writes.
