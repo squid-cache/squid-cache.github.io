@@ -27,7 +27,22 @@ To complete this work is needed in the following areas:
 
 The forwarding path needs to be cleaned up to better separate HTTP messages and actual content, allowing for proper forwarding of 1xx responses.
 
-This is likely to touch the store API as today all mesages go via the store, even if just an interim 1xx response.
+This is likely to touch the store API as today all messages go via the store, even if just an interim 1xx response.
+
+ * Temporary step for Squid-3: catch expect-100 on requests and send back the correct error to cause a retry when client sends Expect-100 in a request. Until such time as Squid can support expect-100.
+
+== Request/Reply Upgrade path ==
+
+ NP: if this already exists then it needs to be documented properly and the related bugs / upgrade_http0.9 portage issues closed off.
+
+RFC2616 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
+
+So we must design the upgrade to 1.1 carefully to allow deeper control than a simple upgrade/don't upgrade switch. I'd suggest a generic ''upgrade_http'' option which takes a version number, allow/deny, and a list of ACLs. Plus two new ACLs to test for the request HTTP version and reply HTTP version.
+
+Requirements to consider:
+ * ACL controls to halt the upgrade at a certain level (ie permit upgrade 0.9 to 1.0, but not 0.9->1.1).
+ * separate upgrade 0.9 -> 1.0 from 1.0->1.1 tasks.
+ * reply pathway stepping stones similar to handle reply downgrade in mirror to the upgrades made.
 
 == Transfer encoding ==
 
