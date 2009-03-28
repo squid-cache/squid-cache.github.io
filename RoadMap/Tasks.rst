@@ -45,5 +45,8 @@ Check with squid-dev to see if its already done.
   3. ensure correct failover to squid code when such are missing
   4. port --without-system-md5 configure option to force the above
 
+ * SMP preparation
+  1. remove all uses of LOCAL_ARRAY() macro
+
 ----
 CategoryWish
