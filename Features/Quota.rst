@@ -2,11 +2,10 @@
 #format wiki
 #language en
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
 
 = Feature: Quota control =
 
- * '''Goal''': Usable quota controls
+ * '''Goal''': Better quota controls
 
  * '''Status''': ''Not started''
 
@@ -16,18 +15,14 @@
 
  * '''Developer''': 
 
- * '''More''': 
+ * '''More''': [[http://www.squid-cache.org/mail-archive/squid-dev/200902/0138.html|squid-dev thread]]
 
-
-## Details
-##
-## Any other details you can document? This section is optional.
-## If you have multiple sections and ToC, please place them here,
-## leaving the above summary information in the page "header".
 
 == Description ==
 
-Squid needs a usable quota control. The existing approaches of using external acls or redirectors is somewhat limited in that they need to process access.log to calculate the bandwidth usage, plus that they are only evaluated at the start of the request. Because of these limitations users may go significantly over their quota before Squid reacts.
+Squid needs better interface to control quotas. The existing approaches to quota control require the use of external ACLs or redirectors. The external helpers need to process access.log to calculate the bandwidth usage and are only contacted at the start of the request. Due to these limitations, users may go significantly over their quota before Squid reacts.
+
+Also, external helpers cannot do traffic shaping (i.e., slowing down the transfer instead of denying the request). It is not yet clear whether a single interface should serve both purposes.
 
 ----
 CategoryFeature CategoryWish
