@@ -15,6 +15,24 @@ plan to use for caching.
 
 == How do I install Squid? ==
 
+=== on Debian / Ubuntu ===
+
+'''Squid-2''':
+{{{
+apt-get install squid
+}}}
+
+'''Squid-3''':
+{{{
+apt-get install squid3
+}}}
+
+=== on FreeBSD ===
+{{{
+yum install squid
+}}}
+
+=== from Source Code ===
 After
 ../CompilingSquid, you can install it
 with this simple command:
