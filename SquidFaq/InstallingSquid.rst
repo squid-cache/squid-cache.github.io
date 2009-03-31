@@ -348,7 +348,7 @@ cache to rebuild faster.
 
 == How do I see how Squid works? ==
 
-  * Check the ''cache.log'' file in your logs directory.  It logs interesting (and boring) things as a part of its normal operation.
+  * Check the ''cache.log'' file in your logs directory.  It logs interesting things as a part of its normal operation and can be boosted to show all the boring details.
   * Install and use the ../CacheManager.
 
 == Can Squid benefit from SMP systems? ==
