@@ -41,17 +41,6 @@ If the content is blocked the following similar line will be seen in access.log:
 
  {i} Note that the reply mime-type is "text/html" because the error page being returned is HTML rather than the original flash video.
 
-The configuration: [[Squid-3.0]] (and [[Squid-2.6]]); transparent interception. This should also work when configured non-transparently as long as browsers are forced to use the proxy.
-
-{{{
- http_port 3129 transparent
- http_port 3128
-
- acl deny_rep_mime_type rep_mime_type video/flv
- http_reply_access deny deny_rep_mime_type
-}}}
-
-
 === Thanks ===
 
 Thanks to AdrianChadd for this basic outline; please feel free to apply for a Wiki Editor account and update the page!
