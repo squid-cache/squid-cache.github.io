@@ -30,6 +30,7 @@ acl media rep_mime_type ^.*x-ms-asf.*
 acl mediapr urlpath_regex \.asf$ \.afx$
 
 ## Flash Video Format
+acl media rep_mime_type video/flv
 acl mediapr urlpath_regex \.flv$
 
 ## Others currently unknown
