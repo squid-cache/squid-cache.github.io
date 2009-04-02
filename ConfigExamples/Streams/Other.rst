@@ -22,15 +22,15 @@ Configuration file to [[Features/ConfigIncludes|Include]]:
 
 ## MediaPlayer MMS Protocol
 acl media rep_mime_type ^.*mms.*
-acl mediapr urlpath_regex dvrplayer mediastream mms://
+acl mediapr url_regex dvrplayer mediastream ^mms://
 ## (Squid does not yet handle the URI as a known proto type.)
 
 ## Active Stream Format (Windows Media Player)
 acl media rep_mime_type ^.*x-ms-asf.*
-acl mediapr urlpath_regex \.asf$ \.afx$ \.flv$
+acl mediapr urlpath_regex \.asf$ \.afx$
 
 ## Flash Video Format
-acl mediapr urlpath_regex \.asf$ \.afx$ \.flv$
+acl mediapr urlpath_regex \.flv$
 
 ## Others currently unknown
 acl media rep_mime_type ^.*ms-hdr.*
