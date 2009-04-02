@@ -8,123 +8,41 @@ The Squid distribution includes a CGI utility called ''cachemgr.cgi''
 which can be used to view squid statistics with a web browser.
 See ../CacheManager for more information on its usage and installation.
 
-== How can I find the biggest objects in my cache? ==
+== Managing the Cache Storage ==
 
+=== How can I make Squid NOT cache some servers or URLs? ===
+
+From Squid-2.6, you use the '''cache''' option to specify uncachable
+requests and any exceptions to your cachable rules.
+
+For example, this makes all responses from origin servers in the 10.0.1.0/24 network uncachable:
 {{{
-sort -r -n +4 -5 access.log | awk '{print $5, $7}' | head -25
+acl localnet dst 10.0.1.0/24
+cache deny localnet
 }}}
 
-If your cache processes several hundred hits per second, good luck.
-
-
-== I want to restart Squid with a clean cache ==
-
-''Note: The information here is current for version 2.2 and later.''
-
-First of all, you must stop Squid of course.  You can use
-the command:
+This example makes all URL's with '.html' uncachable:
 {{{
-% squid -k shutdown
+acl HTML url_regex .html$
+cache deny HTML
 }}}
 
-The fastest way to restart with an entirely clean cache is
-to over write the ''swap.state'' files for each ''cache_dir''
-in  your config file.  Note, you can not just remove the
-''swap.state'' file, or truncate it to zero size.  Instead,
-you should put just one byte of garbage there.  For example:
+This example makes a specific URL uncachable:
 {{{
-% echo "" > /cache1/swap.state
+acl XYZZY url_regex ^http://www.i.suck.com/foo.html$
+cache deny XYZZY
 }}}
 
-Repeat that for every ''cache_dir'', then restart Squid.
-Be sure to leave the ''swap.state'' file with the same
-owner and permissions that it had before!
-
-Another way, which takes longer, is to have squid recreate all the
-''cache_dir'' directories.  But first you must move the existing
-directories out of the way.  For example,  you can try this:
+This example caches nothing between the hours of 8AM to 11AM:
 {{{
-% cd /cache1
-% mkdir JUNK
-% mv ?? swap.state* JUNK
-% rm -rf JUNK &
+acl Morning time 08:00-11:00
+cache deny Morning
 }}}
 
-Repeat this for your other ''cache_dir''s, then tell Squid
-to create new directories:
-{{{
-% squid -z
-}}}
 
-== How can I proxy/cache Real Audio? ==
+=== How can I purge an object from my cache? ===
 
-by ''Rodney van den Oever'' and ''James R Grinter''
-
-  * Point the Real``Player at your Squid server's HTTP port (e.g. 3128).
-  * Using the Preferences->Transport tab, select ''Use specified transports'' and with the ''Specified Transports'' button, select use ''HTTP Only''.
-
-The Real``Player (and Real``Player Plus) manual states:
-{{{
-Use HTTP Only
-Select this option if you are behind a firewall and cannot
-receive data through TCP.  All data will be streamed through
-HTTP.
-
-Note:  You may not be able to receive some content if you select
-this option.
-}}}
-
-Again, from the documentation:
-{{{
-RealPlayer 4.0 identifies itself to the firewall when making a
-request for content to a RealServer.  The following string is
-attached to any URL that the Player requests using HTTP GET:
-
-/SmpDsBhgRl
-
-Thus, to identify an HTTP GET request from the RealPlayer, look
-for:
-
-http://[^/]+/SmpDsBhgRl
-
-The Player can also be identified by the mime type in a POST to
-the RealServer.  The RealPlayer POST has the following mime
-type:
-
-"application/x-pncmd"
-}}}
-
-Note that the first request is a POST, and the second has a '?' in the URL, so
-standard Squid configurations would treat it as non-cachable. It also looks
-rather "magic."
-
-HTTP is an alternative delivery mechanism introduced with version 3 players,
-and it allows a reasonable approximation to "streaming" data - that is playing
-it as you receive it.
-
-It isn't available in the general case: only if someone has made the realaudio
-file available via an HTTP server, or they're using a version 4 server, they've
-switched it on, and you're using a version 4 client. If someone has made the
-file available via their HTTP server, then it'll be cachable. Otherwise, it
-won't be (as far as we can tell.)
-
-The more common Real``Audio link connects via their own ''pnm:'' method and is
-transferred using their proprietary protocol (via TCP or UDP) and not using
-HTTP. It can't be cached nor proxied by Squid, and requires something such as
-the simple proxy that Progressive Networks themselves have made available, if
-you're in a firewall/no direct route situation. Their product does not cache
-(and I don't know of any software available that does.)
-
-Some confusion arises because there is also a configuration option to use an
-HTTP proxy (such as Squid) with the Real``Audio/Real``Video players. This is
-because the players can fetch the ".ram" file that contains the ''pnm:''
-reference for the audio/video stream. They fetch that .ram file from an HTTP
-server, using HTTP.
-
-== How can I purge an object from my cache? ==
-
-Squid does not allow
-you to purge objects unless it is configured with access controls
+Squid does not allow you to purge objects unless it is configured with access controls
 in ''squid.conf''.  First you must add something like
 {{{
 acl PURGE method PURGE
@@ -145,23 +63,93 @@ If the purge was successful, you will see a "200 OK" response:
 {{{
 HTTP/1.0 200 OK
 Date: Thu, 17 Jul 1997 16:03:32 GMT
-Server: Squid/1.1.14
+...
 }}}
 
-If the object was not found in the cache, you will see a "404 Not Found"
+Sometimes if the object was not found in the cache, you will see a "404 Not Found"
 response:
 {{{
 HTTP/1.0 404 Not Found
 Date: Thu, 17 Jul 1997 16:03:22 GMT
-Server: Squid/1.1.14
+...
 }}}
 
-== How can i purge multiple objects from my cache? ==
+Such 404 are not failures. It simply means the object has already been purged by other means or never existed. So the final result you wanted (object no longer exists in cache) has happened.
 
-It's not possible; you have to purte the objects one by one by URL.
+=== How can I purge multiple objects from my cache? ===
+
+It's not possible; you have to purge the objects one by one by URL.
 This is because squid doesn't keep in memory the URL of every object it stores, but only a compact representation of it (a hash). Finding the hash given the URL is easy, the other way around is not possible.
 
-Purging by wildcard, by domain etc. are unfortunately not possible at this time.
+Purging by wildcard, by domain, by time period, etc. are unfortunately not possible at this time.
+
+
+=== How can I find the biggest objects in my cache? ===
+
+{{{
+sort -r -n +4 -5 access.log | awk '{print $5, $7}' | head -25
+}}}
+
+If your cache processes several hundred hits per second, good luck.
+
+
+=== How can I add a cache directory? ===
+
+ 1. Edit '''squid.conf''' and add a new '''cache_dir''' line.
+ 2. Shutdown Squid  {{{ squid -k shutdown }}}
+ 3. Initialize the new directory by running {{{
+ squid -z }}}
+ 4. Start Squid again
+
+=== How can I delete a cache directory? ===
+
+ {i} If you don't have any ''cache_dir'' lines in your squid.conf, then Squid was using the default. From Squid-3.1 the default has been changed to memory-only cache and does not involve cache_dir.
+
+ For Squid older than 3.1 using the default you'll need to add a new '''cache_dir''' line because Squid will continue to use the default otherwise. You can add a small, temporary directory, for example:
+ {{{
+/usr/local/squid/cachetmp ....
+}}}
+ see above about creating a new cache directory.
+ /!\ do not use /tmp !! That will cause Squid to periodically encounter fatal errors.
+
+'''The removal:'''
+
+ 1. Edit your '''squid.conf''' file and comment out, or delete the '''cache_dir''' line for the cache directory that you want to remove.
+ 2. You can not delete a cache directory from a running Squid process; you can not simply reconfigure squid.
+ 3. You must shutdown Squid: {{{
+squid -k shutdown
+}}}
+ 4. Once Squid exits, you may immediately start it up again.
+
+Since you deleted the old '''cache_dir''' from squid.conf, Squid won't try to access that directory.  If you use the RunCache script, Squid should start up again automatically.
+
+Now Squid is no longer using the cache directory that you removed from the config file.  You can verify this by checking "Store Directory" information with the cache manager.  From the command line, type: {{{
+squidclient mgr:storedir
+}}}
+
+=== I want to restart Squid with a clean cache ===
+
+Squid-2.6 and later contain mechanisms which will automatically detect ''dirty'' information in both the cache directories and swap.state file. When squid starts up it runs these validation and security checks. The objects which fail for any reason are automatically purged from the cache.
+
+The above mechanisms can be triggered manually to force squid into a full cache_dir scan and re-load all objects from disk by simply shuttign down Squid and deleting the '''swap.state''' journal from each cache_dir before restarting.
+
+ ''NP:'' Deleting the swap.state before shutting down will cause Squid to generate new ones and fail to do the re-scan you wanted.
+
+=== I want to restart Squid with an empty cache ===
+
+To erase the entire contents of the cache and make Squid start fresh the following commands provide the fastest recovery time:
+{{{
+ squid -k shutdown
+ mv /dir/cache /dir/cache.old
+}}}
+repeat for each cache_dir location you wish to empty.
+{{{
+ squid -z
+ squid
+ rm -rf /dir/cache.old
+}}}
+
+The '''rm''' command may take some time, but since Squid is already back up and running the service downtime is reduced.
 
 
 == Using ICMP to Measure the Network ==
@@ -281,70 +269,6 @@ different, then Squid returns TCP_IMS_MISS.  In most cases, the cached
 object will not have changed, so the result is TCP_IMS_HIT.  Squid will
 only return TCP_IMS_MISS if some other client causes a newer version of
 the object to be pulled into the cache.
-
-== How can I make Squid NOT cache some servers or URLs? ==
-
-In Squid-2, you use the ''cache'' option to specify uncachable
-requests.  For example, this makes all responses from origin servers
-in the 10.0.1.0/24 network uncachable:
-{{{
-acl Local dst 10.0.1.0/24
-cache deny Local
-}}}
-
-This example makes all URL's with '.html' uncachable:
-{{{
-acl HTML url_regex .html$
-cache deny HTML
-}}}
-
-This example makes  a specific URL uncachable:
-{{{
-acl XYZZY url_regex ^http://www.i.suck.com/foo.html$
-cache deny XYZZY
-}}}
-
-This example caches nothing between the hours of 8AM to 11AM:
-{{{
-acl Morning time 08:00-11:00
-cache deny Morning
-}}}
-
-In Squid-1.1,
-whether or not an object gets cached is controlled by the
-''cache_stoplist'', and ''cache_stoplist_pattern'' options.  So, you may add:
-{{{
-cache_stoplist my.domain.com
-}}}
-
-== How can I delete and recreate a cache directory? ==
-
-Deleting an existing cache directory is not too difficult.  Unfortunately,
-you can't simply change squid.conf and then reconfigure.  You can't
-stop using a ''cache_dir'' while Squid is running.  Also note
-that Squid requires at least one ''cache_dir'' to run.
-
-  * Edit your ''squid.conf'' file and comment out, or delete the ''cache_dir'' line for the cache directory that you want to remove.
-  * If you don't have any ''cache_dir'' lines in your squid.conf, then Squid was using the default.   You'll need to add a new ''cache_dir'' line because Squid will continue to use the default otherwise.  You can add a small, temporary directory, for example:{{{
-/usr/local/squid/cachetmp ....
-}}}If you add a new ''cache_dir'' you have to run ''squid -z'' to initialize that directory.
-  * Remeber that you can not delete a cache directory from a running Squid process; you can not simply reconfigure squid.  You must shutdown Squid: {{{
-squid -k shutdown
-}}}
-  * Once Squid exits, you may immediately start it up again.  Since  you deleted the old ''cache_dir'' from squid.conf, Squid won't try to access that directory.  If you use the Run``Cache script, Squid should start up again automatically.
-  * Now Squid is no longer using the cache directory that you removed from the config file.  You can verify this by checking "Store Directory" information with the cache manager.  From the command line, type: {{{
-squidclient mgr:storedir
-}}}
-  * Now that Squid is not using the cache directory, you can ''rm -rf'' it, format the disk, build a new filesystem, or whatever.
-
-The procedure is similar to recreate the directory.
-
-  * Edit ''squid.conf'' and add a new ''cache_dir'' line.
-  * Shutdown Squid  (''squid -k shutdown'')
-  * Initialize the new directory by running {{{
-% squid -z
-}}}
-  * Start Squid again
 
 == Why can't I run Squid as root? ==
 
