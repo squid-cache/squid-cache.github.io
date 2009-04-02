@@ -45,8 +45,11 @@ Choose a good WikiName for your new example and enter it here:
 === Instant Messaging / Chat Program filtering ===
 <<FullSearchCached(title:regex:^ConfigExamples/Chat/.*$)>>
 
+=== Multimedia and Data Stream filtering ===
+<<FullSearchCached(title:regex:^ConfigExamples/Streams/.*$)>>
+
 === General ===
-<<FullSearchCached(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat  -regex:ConfigExamples/Reverse )>>
+<<FullSearchCached(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse )>>
 
 == External configuration examples ==
 
