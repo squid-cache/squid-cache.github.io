@@ -966,15 +966,8 @@ DuaneWessels has written an O'Reilly book about Web Caching which is an invaluab
 If you have managed to configure your operating system to support WCCP with Squid please contact us or add the details to this wiki so that others may benefit.
 
 == Issues with HotMail ==
-Recent changes at Hotmail.com and has led to some users receiving a blank page in response to a login request when browsing through a proxy operating in interception, or transparent, mode. This is due to Hotmail incorrectly responding with Transfer-Encoding encoded response when the HTTP/1.0 request has an Accept-Encoding header. (Transfer-Encoding absolutely REQUIRES HTTP/1.1 and is forbidden within HTTP/1.0)
 
-A workaround is simply to add the following three lines to /etc/squid/squid.conf:
-
-{{{
-acl hotmail_domains dstdomain .hotmail.msn.com
-header_access Accept-Encoding deny hotmail_domains
-}}}
-(para-quoted by HenrikNordström from http://www.swelltech.com/news.html)
+Hotmail has been known to suffer from the HTTP/1.1 Transfer Encoding problem. see http://squidproxy.wordpress.com/2008/04/29/chunked-decoding/ for more details on that and some solutions.
 
 -----
  Back to the SquidFaq
