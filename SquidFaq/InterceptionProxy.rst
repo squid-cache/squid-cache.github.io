@@ -779,54 +779,6 @@ iptables -t nat -A OUTPUT -p tcp --dport 80 -m owner --gid-owner $gid -j ACCEPT
 iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination 192.168.0.2:8080
 }}}
 
-==== Interception Caching with FreeBSD by by DuaneWessels ====
-I set out yesterday to make interception caching work with Squid-2 and FreeBSD.  It was, uh, fun.
-
-It was relatively easy to configure a cisco to divert port 80 packets to my FreeBSD box.  Configuration goes something like this:
-
-{{{
-access-list 110 deny   tcp host 10.0.3.22 any eq www
-access-list 110 permit tcp any any eq www
-route-map proxy-redirect permit 10
- match ip address 110
- set ip next-hop 10.0.3.22
-int eth2/0
- ip policy route-map proxy-redirect
-}}}
-Here, 10.0.3.22 is the IP address of the FreeBSD cache machine.
-
-Once I have packets going to the FreeBSD box, I need to get the kernel to deliver them to Squid. I started on FreeBSD-2.2.7, and then downloaded
-
-[[ftp://coombs.anu.edu.au/pub/net/ip-filter/|IPFilter]].  This was a dead end for me.  The IPFilter distribution includes patches to the FreeBSD kernel sources, but many of these had conflicts.  Then I noticed that the IPFilter page says "It comes as a part of [FreeBSD-2.2 and later]."  Fair enough.  Unfortunately, you can't hijack connections with the FreeBSD-2.2.X IPFIREWALL code (''ipfw''), and you can't (or at least I couldn't) do it with ''natd'' either.
-
-FreeBSD-3.0 has much better support for connection hijacking, so I suggest you start with that.  You need to build a kernel with the following options:
-
-{{{
-options         IPFIREWALL
-options         IPFIREWALL_FORWARD
-}}}
-Next, its time to configure the IP firewall rules with ''ipfw''. By default, there are no "allow" rules and all packets are denied. I added these commands to ''/etc/rc.local'' just to be able to use the machine on my network:
-
-{{{
-ipfw add 60000 allow all from any to any
-}}}
-But we're still not hijacking connections.  To accomplish that, add these rules:
-
-{{{
-ipfw add 49  allow tcp from 10.0.3.22 to any
-ipfw add 50  fwd 127.0.0.1 tcp from any to any 80
-}}}
-The second line (rule 50) is the one which hijacks the connection. The first line makes sure we never hit rule 50 for traffic originated by the local machine.
-
-This prevents forwarding loops.
-
-Note that I am not changing the port number here.  That is, port 80 packets are simply diverted to Squid on port 80. If you don't want Squid to listen on port 80 (because that requires root privileges) then you can use another port. In that case your ipfw redirect rule looks like:
-
-{{{
-ipfw add 50 fwd 127.0.0.1,3128 tcp from any to any 80
-}}}
-
-
 === Further information about configuring Interception Caching with Squid ===
 ReubenFarrelly has written a fairly comprehensive but somewhat incomplete guide to configuring WCCP with cisco routers on his website.  You can find it at [[http://www.reub.net/node/3|www.reub.net]].
 
