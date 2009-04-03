@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/Intercept/LinuxWccp2Receiver
 ##master-page:CategoryTemplate
 #format wiki
 #language en
