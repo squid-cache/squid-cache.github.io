@@ -29,6 +29,18 @@ iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination SQUIDIP
 iptables -t nat -A POSTROUTING -j MASQUERADE
 }}}
 
+== /etc/sysctl.conf Configuration ==
+
+{{{
+# Controls IP packet forwarding
+net.ipv4.ip_forward = 1
+
+# Controls source route verification
+net.ipv4.conf.default.rp_filter = 0
+
+# Do not accept source routing
+net.ipv4.conf.default.accept_source_route = 0
+}}}
 
 == Squid Configuration File ==
 
