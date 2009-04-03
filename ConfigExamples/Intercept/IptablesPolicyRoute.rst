@@ -3,8 +3,6 @@
 #format wiki
 #language en
 
-## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-
 = Policy Routing Web Traffic On A Linux Router =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
