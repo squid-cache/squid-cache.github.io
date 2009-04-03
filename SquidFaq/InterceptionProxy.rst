@@ -593,7 +593,7 @@ iptables -t nat -A PREROUTING -i wccp0 -j REDIRECT --redirect-to 3128
 
 === TProxy Interception ===
 
-==== TProxy v2.2 ===
+==== TProxy v2.2 ====
 
 TProxy is a new feature in Squid-2.6 which enhances standard Interception Caching so that it further hides the presence of your cache.  Normally with Interception Caching the remote server sees your cache engine as the source of the HTTP request.  TProxy takes this a step further by hiding your cache engine so that the end client is seen as the source of the request (even though really they aren't).
 
