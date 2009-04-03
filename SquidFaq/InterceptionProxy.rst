@@ -44,25 +44,33 @@ The first two steps are required and the last two may or may not be required dep
 Firstly you need to build Squid with the correct options to ./configure, and then you need to configure squid.conf to support Intercept Caching.
 
 ==== Choosing the right options to pass to ./configure ====
-All supported versions of Squid currently available support Interception Caching, however for this to work properly, your operating system and network also need to be configured. For some operating systems, you need to have configured and built a version of Squid which can recognize the hijacked connections and discern the destination addresses. For Linux this works by configuring Squid with the {{{--enable-linux-netfilter}}} option.  For *BSD-based systems, you probably have to configure squid with the {{{--enable-ipf-transparent}}} option if you're using IP Filter, or {{{--enable-pf-transparent}}} if you're using OpenBSD's PF.  Do a {{{make clean}}} if you previously configured without that option, or the correct settings may not be present.
+All supported versions of Squid currently available support Interception Caching, however for this to work properly, your operating system and network also need to be configured. For some operating systems, you need to have configured and built a version of Squid which can recognize the hijacked connections and discern the destination addresses.
 
-Squid-2.6 and Squid-3.0 support both WCCPv1 and WCCPv2 by default (unless explicitly disabled).
+ * For Linux configure Squid with the {{{--enable-linux-netfilter}}} option.
+ * For *BSD-based systems with IP filter configure Squid with the {{{--enable-ipf-transparent}}} option.
+ * If you're using OpenBSD's PF configure Squid with {{{--enable-pf-transparent}}}.
+
+Do a {{{make clean}}} if you previously configured without that option, or the correct settings may not be present.
+
+Squid-2.6+ and Squid-3.0+ support both WCCPv1 and WCCPv2 by default (unless explicitly disabled).
 
 ==== Configure Squid to accept and process the redirected port 80 connections ====
 
 You have to change the Squid configuration settings to recognize the hijacked connections and discern the destination addresses.
 
-A number of different interception methods and their specific configuration is detailed at [[../../ConfigExamples/Intercept]]
+A number of different interception methods and their specific configuration is detailed at [[ConfigExamples/Intercept]]
 
 <!> You can usually manually configure browsers to connect to the IP address and port which you have specified as intercepted.  The only drawback is that there will be a very slight (and probably unnoticeable) performance hit as a syscall done to see if the connection is intercepted. If no interception state is found it is processed just like a normal connection.
 
 === Getting your traffic to the right port on your Squid Cache ===
-You have to configure your cache host to accept the redirected packets - any IP address, on port 80 - and deliver them to your cache application.  This is typically done with IP filtering/forwarding features built into the kernel. On Linux this is called {{{iptables}}} (kernel 2.4 and above), {{{ipchains}}} (2.2.x) or
+You have to configure your cache host to accept the redirected packets - any IP address, on port 80 - and deliver them to your cache application.  This is typically done with IP filtering/forwarding features built into the kernel.
 
-{{{ipfwadm}}} (2.0.x). On FreeBSD its called {{{ipfw}}}.  Other BSD systems may use {{{ip filter}}}, {{{ipnat}}} or {{{pf}}}.
+ * On Linux 2.4 and above this is called {{{iptables}}}
+ * On FreeBSD its called {{{ipfw}}}.
+ * Other BSD systems may use {{{ip filter}}}, {{{ipnat}}} or {{{pf}}}.
 
 On most systems, it may require rebuilding the kernel or adding a new loadable kernel module.  If you are running a modern Linux distribution and using the vendor supplied kernel you will likely not need to do any rebuilding as the required modules will have been built by default.
-=
+
 ==== Interception Caching packet redirection for Solaris, SunOS, and BSD systems ====
 <!> You don't need to use IP Filter on FreeBSD.  Use the built-in ''ipfw'' feature instead.  See the FreeBSD subsection below.
 
@@ -640,6 +648,13 @@ The homepage for the TProxy software is at [[http://www.balabit.com/products/oss
 Starting with Squid 3.1 support for TProxy is closely tied into the netfilter component of Linux kernels.
 see [[../../Features/Tproxy4|TProxy v4.1 Feature]] for current details.
 
+
+=== Other Configuration Examples ===
+
+Contributed by users who have working installations can be found in the [[ConfigExamples/Intercept]] section for most current details.
+
+If you have managed to configure your operating system to support WCCP with Squid please contact us or add the details to this wiki so that others may benefit.
+
 === Complete ===
 By now if you have followed the documentation you should have a working Interception Caching system.  Verify this by unconfiguring any proxy settings in your browser and surfing out through your system.  You should see entries appearing in your access.log for the sites you are visiting in your browser.  If your system does not work as you would expect, you will want to read on to our troubleshooting section below.
 
@@ -690,18 +705,10 @@ ip route 1.2.3.4 255.255.255.255 Null0 250
 }}}
 This appears to cause the correct behaviour.
 
-=== Configuration Examples contributed by users who have working installations ===
-
-see [[ConfigExamples/Intercept]] for most current details.
-
-
 === Further information about configuring Interception Caching with Squid ===
 ReubenFarrelly has written a fairly comprehensive but somewhat incomplete guide to configuring WCCP with cisco routers on his website.  You can find it at [[http://www.reub.net/node/3|www.reub.net]].
 
 DuaneWessels has written an O'Reilly book about Web Caching which is an invaluable reference guide for Squid (and in fact non-Squid) cache administrators.  A sample chapter on "Interception Proxying and Caching" from his book is up online, at http://www.oreilly.com/catalog/webcaching/chapter/ch05.html.
-
-== Configuring Other Operating Systems ==
-If you have managed to configure your operating system to support WCCP with Squid please contact us or add the details to this wiki so that others may benefit.
 
 == Issues with HotMail ==
 
