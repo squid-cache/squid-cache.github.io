@@ -22,6 +22,7 @@ There is no good fixed benchmark test yet to measure by so comparisons are not s
 || Users || Maximum value seen for '''Number of clients accessing cache'''. ||
 || RPS || Add all number for '''Average *** requests per minute since start''' together and divide by 60 for per-second ||
 || Hit Ratio || Values of '''Request Hit Ratios''': 5min - 60min . Only total hit ratio matters here. disk and memory hit ratios are highly specific to the amount of RAM available.  ||
+|| CPU Load || It can be extracted from the '''general runtime information''' or '''info''' cachemgr page. It's the value marked "CPU Usage" ||
 
 ## TEMPLATE entry:
 ##
@@ -32,6 +33,7 @@ There is no good fixed benchmark test yet to measure by so comparisons are not s
 ##|| Users ||  ||
 ##|| RPS ||  ||
 ##|| Hit Ratio || ||
+##|| CPU Usage || ||
 ##
 ##{{{
 ##Submitted by: NAME - COMPANY-IF_ALLOWED. DATE.
