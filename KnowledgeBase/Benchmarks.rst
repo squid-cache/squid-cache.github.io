@@ -78,6 +78,26 @@ Squid is doing a close to default configuration with ICP with peers and Collapse
 }}}
 
 == Squid 2.6  ==
+=== STABLE 18 ===
+
+|| CPU || Dual Core Intel(R) Xeon(R) CPU  3050  @ 2.13GHz ||
+|| RAM || 8GB ||
+|| HDD || 2x SATA disks (150GB, 1TB) ||
+|| OS  || 32-Bit Ubuntu GNU/Linux (Hardy) ||
+|| Users || ~3000 ||
+|| RPS || 130 ||
+|| Hit Ratio || 35% - 40% ||
+|| Byte Hit Ratio || ~13% ||
+|| CPU Usage ||  ||
+
+{{{
+Submitted by: Gavin McCullagh, Griffith College Dublin
+
+Cache: 1x 600GB. With this hit ratio and cache size, substantial cpu time is spent in iowait
+as the disk is overloaded.  Reducing the cache to 450GB relieves this, but
+the hit rate drops to more like 10-11%.
+}}}
+
 === STABLE 6 ===
 || Quad Core ||
 || CPU || Intel(R) Xeon(R) CPU  E5420  @ 2.50GHz ||
