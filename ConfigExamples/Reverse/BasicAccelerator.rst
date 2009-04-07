@@ -30,6 +30,9 @@ First, you have to tell Squid to listen on port 80 (usually), so set the '''http
 http_port 80 accel defaultsite=your.main.website.name
 }}}
 
+ * '''accel''' tells Squid to handle requests coming in this port as if it was a Web Server
+ * '''defaultsite=X''' tells Squid to assume the domain ''X'' was wanted when broken clients fail to send a Host: header properly.
+
 ## shared with VirtualHosting
 
 Next, you need to tell Squid where to find the real web server:
