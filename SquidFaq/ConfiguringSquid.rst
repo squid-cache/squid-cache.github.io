@@ -6,6 +6,14 @@
 
 ##begin
 
+= Before you start configuring =
+
+ The best all around advice I can give on Squid is to start simple!  Once everything works the way you expect, then start tweaking your way into complexity with a means to track the (in)effectiveness of each change you make (and a known good configuration that you can always go back to when you inevitably fubar the thing!).
+
+ ''by Gregori Parker''
+
+ Seconded by all the Squid developers and Squid helpers.
+
 == How do I configure Squid without re-compiling it? ==
 
 The ''squid.conf'' file. By default, this file is located at ''/usr/local/squid/etc/squid.conf''.
