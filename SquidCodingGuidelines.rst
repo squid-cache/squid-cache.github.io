@@ -138,6 +138,9 @@ Squid uses autoconf defined macros to eliminate experimental or optional compone
  * should be tested with #if and #if !  rather than #ifdef or #ifndef
  * should be wrapped around all code related solely to a component; including compiler directives and #include statements
 
+ENFORCED:
+ * MUST be used inside .h to wrap relevant code.
+
 == File naming ==
 
   * .h files should only declare one class or a collection of simple, closely related classes.
@@ -146,7 +149,7 @@ Squid uses autoconf defined macros to eliminate experimental or optional compone
 
 ENFORCED:
 
-  * .h files MUST be parseable as a single translation unit [[BR]] (ie it includes it's dependent headers / forward declares classes as needed).
+  * .h files MUST be parseable as a single translation unit <<BR>> (ie it includes it's dependent headers / forward declares classes as needed).
 
 == File #include guidelines ==
 
