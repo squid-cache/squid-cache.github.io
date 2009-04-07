@@ -1,22 +1,27 @@
 #language en
 
+ {i} details labeled ENFORCED are checked and forced by source testing mechanisms.
 
 == C++ source formatting guidelines ==
 
  * 4-space indentation, no tabs
- * TBD. We are working on an ''astyle'' wrapper that formats the code without breaking it.
+ * We have an ''astyle'' wrapper that formats the code without breaking it.
+ * If you have astyle version 1.22 or later please format your changes with ~/scripts/formater.pl
 
 == Mandatory coding rules ==
 
-  * Document, at least briefly, every new type, member, or global.
+  * Document, at least briefly, every new type, class, member, or global. Doxygen format is appreciated.
   * The Big Three: Every class that has one of (Destructor, copy constructor, assignment operator) must have all three. This includes base and derived classes.
+  * Naming conventions as covered in [[Features/SourceLayout]] are to be used.
 
 == Suggested coding rules ==
 
   * Use internally consistent naming scheme (see below for choices).
-  * Words in global names and all type names are capitalized, including the first word. This includes class types, global variables, static class members, and macros.
-  * Words in other names should be capitalized after the first word.
-  * Use const qualifiers in declarations.
+  * Words in global names and all type names are CamelCase capitalized:
+   * including the first word.
+   * acronyms are to be downcased to fit (ie Http)
+   * This includes class types, global variables, static class members, and macros.
+  * Use const qualifiers in declarations as much as appropriate.
   * Use bool for boolean types.
   * Avoid macros.
   * Do not start names with an underscore
@@ -125,13 +130,58 @@ The verb ''is'' may be omitted, especially if the result cannot be confused with
       bool empty() const; // XXX: may look like a "become empty" command
 }}}
 
+== Component Macros ==
+
+Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
+
+ * name should start with USE_
+ * should be tested with #if and #if !  rather than #ifdef or #ifndef
+ * should be wrapped around all code related solely to a component; including compiler directives and #include statements
 
 == File naming ==
 
   * .h files should only declare one class or a collection of simple, closely related classes.
-  * Any .h file should be parseable as a single translation unit (ie it includes it's dependent headers / forward declares classes as needed).
   * No two file names that differ only in capitalization
   * For new group of files, follow [[Features/SourceLayout]]
+
+ENFORCED:
+
+  * .h files MUST be parseable as a single translation unit [[BR]] (ie it includes it's dependent headers / forward declares classes as needed).
+
+== File #include guidelines ==
+
+'''.cc'''
+  * include either config.h or squid.h as their first include
+   * config.h - minimal dependency include
+   * squid.h - full squid dependency tree include (globals, protos, types, defines, everything is in here)
+
+'''.h''' and '''.cci'''
+ * prefer config.h over squid.h
+ * must include config.h before any component USE_ macros
+
+'''all'''
+ * place internal header includes above system includes
+ * reference internal includes by their full internal path (may exclude src/ from path)
+ * sort internal includes alphabetically
+ * minimal system includes
+ * wrap system include in autoconf HAVE_FILE_H protection macros
+ * sort system includes alphabetically
+  * should import order-dependent headers through libcompat
+
+Preferred include layout:
+{{{
+#include "squid.h"
+
+#include "cutom.h"
+#include "local.h"
+
+#ifdef HAVE_ACCESS_H
+#include <access.h>
+#endif
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+}}}
 
 == C source guidelines ==
 As per Squid2CodingGuidelines.
