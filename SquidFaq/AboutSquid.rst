@@ -51,27 +51,46 @@ Many sushi bars also have Squid.
 The software is designed to operate on any modern system, and
 is known to work on at least the following platforms:
 
-  * Linux
-  * Debian
-  * Ubuntu
-  * FreeBSD
-  * NetBSD
-  * OpenBSD
-  * DragonflyBSD
+'''BSD:'''
   * BSDI
+  * DragonflyBSD
+  * FreeBSD
   * Mac OS/X
+  * NetBSD
+  * NeXTStep
+  * OpenBSD
+  * SunOS/Solaris
+
+'''Linux:'''
+  * CentOS
+  * Debian
+  * Fedora Core
+  * Gentoo
+  * RedHat Enterprise Linux
+  * Ubuntu
+
+'''Unix:'''
   * OSF/Digital Unix/Tru64
   * IRIX
-  * SunOS/Solaris
-  * NeXTStep
   * SCO Unix
   * AIX
   * HP-UX
-  * Microsoft Windows Cygwin and MinGW
+
+'''Windows:''' (Cygwin and MinGW)
+  * Windows 2000 Server
+  * Windows NT
+  * Windows XP Server
+  * Windows 2003 Server
+  * Windows Vista Server
+
+'''Other:'''
   * OS/2
+
 
 If you encounter any platform-specific problems, please let us know by registering an entry in our [[http://bugs.squid-cache.org/|bug database]].
 If you're curious about what is the best OS to run Squid, see BestOsForSquid.
+
+If you would like your favorite OS to join the list above, please try to build the latest Squid on it and send any feedback to the squid-dev mailing list.
 
 
 == Does Squid run on Windows ? ==
