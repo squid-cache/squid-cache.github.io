@@ -5,7 +5,7 @@
 = Feature: Adaptation logging =
 
  * '''Goal''': Log ICAP and eCAP transaction details
- * '''Status''': Completed for v3.0; being ported to v3.1 and v3.2
+ * '''Status''': In progress; completed for v3.0, being ported to v3.1 and v3.2
  * '''ETA''': November 2008
  * '''Version''': 3.2
  * '''Priority''': 1
