@@ -112,8 +112,8 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 Features under development:
 ## * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
 ## * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
- * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
- * [[Features/AdaptationLog]] <<Include(Features/AdaptationLog,,,from="ETA.*:",to="$")>>
+## * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
+## * [[Features/AdaptationLog]] <<Include(Features/AdaptationLog,,,from="ETA.*:",to="$")>>
 
 ## some we will need to manually add to this list...
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 -regex:ETA...:.unknown regex:Developer...:....*)>>
