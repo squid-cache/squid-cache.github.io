@@ -39,7 +39,11 @@ Keeping the total time accumulator is probably insufficient. To deal with concur
 
 If the concurrency level is positive at the master transaction logging time, the logged value is increased by ''current_time-start'' difference.
 
-It may be difficult to locate the master transaction from where DNS lookups are initiated or finished. Solving this puzzle may help properly fix Squid [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2459|bug #2459]]. 
+It may be difficult to locate the master transaction from where DNS lookups are initiated or finished. Solving this puzzle may help properly fix Squid [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2459|bug #2459]].
+
+= Availability =
+
+The development is done on Squid3 trunk, targeting official v3.2 inclusion. The feature is also unofficially ported to v3.1.
 
 ----
 CategoryFeature
