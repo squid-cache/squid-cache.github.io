@@ -79,13 +79,18 @@ If ICAP is enabled, the following two codes become available for access.log:
                         argument.  Will not change semantics
                         when multiple ICAP transactions per HTTP
                         transaction are supported.
+
+        adaptation_xact_times  A comma-separated list of individual
+                        related adaptation transactions response times,
+                        in milliseconds. The order is to be defined
+                        during implementation.
 }}}
 
 Please see ''squid.conf.documented'' for more details.
 
 = Availability =
 
-The code is unofficially available for Squid v3.0 as a Launchpad [[https://code.launchpad.net/~rousskov/squid/3p0-plus|branch]]. Adaptation logging features will be committed to Squid3 trunk and scheduled for v3.2 release. The code will also be unofficially available for Squid v3.1.
+Most of the features described here are unofficially available for Squid v3.0 as a Launchpad [[https://code.launchpad.net/~rousskov/squid/3p0-plus|branch]]. Adaptation logging features will be committed to Squid3 trunk and scheduled for v3.2 release. The code will also be unofficially available for Squid v3.1.
 
 ----
 CategoryFeature
