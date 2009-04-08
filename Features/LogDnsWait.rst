@@ -43,7 +43,7 @@ It may be difficult to locate the master transaction from where DNS lookups are 
 
 = Availability =
 
-The development is done on Squid3 trunk, targeting official v3.2 inclusion. The feature is also unofficially ported to v3.1.
+The development is done on Squid3 trunk, targeting official v3.2 inclusion. The feature is also unofficially ported to [[https://code.launchpad.net/~rousskov/squid/3p1-plus|v3.1]].
 
 ----
 CategoryFeature
