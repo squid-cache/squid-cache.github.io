@@ -337,11 +337,17 @@ To disable half-closed connections, simply put this in squid.conf:
 }}}
 Then, Squid will always close its side of the connection instead of marking it as half-closed.
 
+  '''NP:''' from Squid-3.0 the default is now OFF.
+
+
 == What does --enable-heap-replacement do? ==
+
+ ''This option is only relevant for Squid-2. It has been replaced in Squid-3 by --enable-removal-policies=heap''
+
 Squid has traditionally used an LRU replacement algorithm. However with Squid version 2.4 and later you should use this configure option:
 
 {{{
-./configure --enable-removal-policies=heap
+./configure --enable-heap-replacement
 }}}
 Currently, the heap replacement code supports two additional algorithms: LFUDA, and GDS.
 
