@@ -34,6 +34,7 @@ Key:
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
+||  || ''shaping/'' || Traffic shaping and delay pools || *[Dd]elay.* *[Pp]ool*.* ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || (./) || ''adaptation/ecap/'' || eCAP support || - ||
 || :\ || ''esi/'' || ESI support || ESI* || Add Esi namespace, rename classes ||
