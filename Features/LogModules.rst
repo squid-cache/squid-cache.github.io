@@ -14,6 +14,10 @@
 
  * '''Developer''': AdrianChadd (Squid-2), AmosJeffries (Squid-3 port)
 
+ * '''Daemons''':
+   * syslog : built-in
+   * MySQL : http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html
+
 
 == Squid3 status details ==
 
