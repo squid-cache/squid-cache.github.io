@@ -33,7 +33,7 @@ This could be a lot more user friendly if a squid.conf validation and updater sc
 
  * squid developers are continually improving squid.conf settings and the systems behind them  so the system must be easily updated.
 
- * might be done best as a built-in parser processing path. However the current parsers (plural!) and configure startup/restart/reload/shutdown pathways all need to be re-worked properly before this can be built-in.
+ * might be done best as a built-in parser processing path. However the current parsers (plural!) and configure startup/restart/reload/shutdown pathways all need to be re-worked properly before this can be built-in. see [[Features/HotConf]] for details on that work.
 
 ----
 CategoryFeature
