@@ -21,14 +21,14 @@ We need a set of dumb configuration-holding objects created by parsers. Those ob
 
 In pseudo C++, and simplifying a bit:
 {{{
-    // lifecycle
-    void Module::init();
-    void Module::configure(const Module::Config &cfg);
-    void Module::reconfigure(const Module::Config &newCfg);
-    void Module::shutdown();
+// lifecycle
+void Module::init();
+void Module::configure(const Module::Config &cfg);
+void Module::reconfigure(const Module::Config &newCfg);
+void Module::shutdown();
 
-    // parsing; probably static to avoid module creation  
-    Module::Config *Module::Parse(const SquidDotConfTokenizer &text);
+// parsing; probably static to avoid module creation  
+Module::Config *Module::Parse(const SquidDotConfTokenizer &text);
 }}}
 
 -- AlexRousskov <<DateTime(2009-04-08T22:11:39-0700)>>
@@ -43,3 +43,98 @@ My model is one where the object with API methods is either inherited or templat
 The parser is tightly wound with hot-conf since hot-conf is a desirable and planned effect of the parsing design. Not the other way around. This is needed to RefCount the objects shared between old conf and new conf. Parser controls and uses both current and future dumb::Config to determine what goes into future (a RefCounted clone of the current or a new allocation). Indeed Parser controls whether there is a future object or if its editing current on the spot (think err directory locations, size limits, and other state-agnostic settings).
 
 -- AmosJeffries <<DateTime(2009-04-10T01:58:00-1200)>>
+
+----
+<<Anchor(C1)>>
+I am worried about several ideas expressed here but I may be just misinterpreting what you are saying. I will provide specific sketches in hope to make this discussion less vague and more structured.
+
+I disagree that it is a good idea to keep parser tightly coupled with configuration. There is certainly a way around it (see my sketch). We would be significantly increasing the complexity of the overall design if modules keep parsing and configuring at the same time. Also, if you want to write module-specific test cases, the ability to create and [re]configure a module without parsing is very valuable. 
+
+Refcounting has nothing to do with this issue, IMO. Refcounting is just a low-level memory-saving mechanism, and we are discussing a high-level API (which should work with or without refcounting).
+
+The Parser should _not_ be editing "on the spot". It should always create and fill brand new dumb configuration objects. It will spend a little bit more memory compared to the current "stuff everything into one global" design, but the spending is relatively small, temporary, and results in several significant advantages, including the ability to write clear reconfiguration code that can compare old and new configuration objects, identify the differences, and decide whether hot reconfiguration is possible.  
+
+I do not think it is a good idea to start running with defaults and then reconfigure to the actual configuration values. It buys you nothing but complexity because you still have to write initial configuration code (the one that applies the defaults) and then perform possibly complex reconfiguration. 
+
+Having initial configuration code also allows you to avoid implementing true hot reconfiguration when necessary:
+
+{{{
+// a sketch of a possible default implementation for modules
+void Module::reconfigure(const Config &newCfg) {
+    shutdown();
+    init();
+    configure(newCfg);
+}
+}}} 
+
+This approach allows for steady migration from the code that does not support hot reconfiguration to the code that does. The minimum requirement is to implement init/shutdown/configure, which is something we need anyway.
+
+
+Finally, I am not sure how the top-level [re]configuration manager should look like, but I do not understand the problem of "handling individual module configs" that your are referring to. Something like this sketch might work:
+
+{{{
+int main() {
+    addModule(new Module1); // calls init() and registers
+    addModule(new Module2); // calls init() and registers
+    addModule(new Module3); // calls init() and registers
+    addModule(new Module4); // calls init() and registers
+    ...
+
+    SquidConfig *cfg = parse();
+    configure(*cfg);
+
+    mainLoop();
+
+    while (registered module container is not empty) {
+        delete popModule(); // calls shutdown() and deregisters popped m
+    }
+}
+
+// note how parsing is unaware of individual module and configuration
+// types
+SquidConfig *parse() {
+    // I do not like the Tokenizer name here; the class does more than
+    // just tokenizing because it allows to search for relevant lines
+    SquidDotConfTokenizer tokenizer(...);
+
+    SquidConfig *cfg = new SquidConfig; // collection of Module cfgs
+    for each registered module m {
+        // the module will find lines that belong to it by searching
+        // for module-specific option names
+        Config *moduleCfg = m->parse(tokenizer);
+        cfg->add(moduleCfg);
+    }
+
+    if (tokenizer.unusedLines())
+        throw "unclaimed config options";
+
+    return cfg;
+}
+
+void configure(const SquidConfig &cfg) {
+    for each registered module m {
+        // find module configuration; hide this inside m->configure()?
+        Config *mcfg = cfg.find(m);
+
+        // configure the module
+        m->configure(*mcfg);
+    }
+}
+
+void reconfigure() {
+    SquidConfig *newCfg = parse(...);
+
+    for each registered module m {
+        // find module configuration; hide this inside m->reconfigure()?
+        Config *mcfg = newCfg->find(m);
+
+        // reconfigure the module
+        m->reconfigure(*mcfg);
+    }
+
+    delete newCfg; // or replace the old global refcounted pointer
+}
+
+}}}
+
+-- AlexRousskov <<DateTime(2009-04-09T08:00:45-0700)>>
