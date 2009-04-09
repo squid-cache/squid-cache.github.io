@@ -1,8 +1,6 @@
 ##master-page:SquidTemplate
 #format wiki
 #language en
-## if you want to have a table of comments remove the heading hashes from the next line
-TableOfContents
 
 = Squid Build Farm =
 The Squid project supports a big number of OSes (SquidFaq/AboutSquid has the list), but it lacks the resources to test all of them, relying on user feedback instead. Aim of the Build Farm effort is to have a greater number of OS platforms directly available for unit-testing and development. The backbone of the build farm will be composed by a number of virtual machines running on eu.squid-cache.org. The currently-planned farm consists of:
