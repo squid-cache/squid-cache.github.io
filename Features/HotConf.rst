@@ -42,7 +42,7 @@ Also, neither of the current config parser designs can completely resolve the se
 
 == New Design for Squid-3.1+ ==
 
-The current work begun already in Squid-3.1 and building in with SourceLayout takes the Squid-3.0 parser idea of modular component config (each sub-library has its own XX::Config object which holds only that components configuration settings.
+The current work begun already in Squid-3.1 and building in with [[Features/SourceLayout]] takes the Squid-3.0 parser idea of modular component config (each sub-library has its own XX::Config object which holds only that components configuration settings.
 
 But also leaves the legacy parser per-type parsing function. Which causes two layers to emerge:
  * the underlayer of legacy parser which handles file actions
@@ -60,8 +60,7 @@ The option handlers:
  * parse the squid.conf line for that option
  * produce clear and understandable error messages when a line is bad
  * produce clear warnings when an option is being deprecated
- * provide for migrating obsolete squid.conf options into new config options
-   (ie config dump BUT skipping default settings)
+ * provide for migrating obsolete squid.conf options, a built-in [[Features/ConfigUpdater]]
 
 It also must provide an API for the startup, shutdown, reload, and reconfigure processes. The reconfigure is in need of the most work.
 
