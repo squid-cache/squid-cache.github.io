@@ -40,6 +40,8 @@ If you are looking to test the latest release of Squid you will need to grab you
 
 To test a specific project branch you will need to either pull the daily snapshot and apply the branch patch available at http://devel.squid-cache.org/projects.html or pull the branch code directly from bzr.
 
+We are currently setting up a BuildFarm. Additions to it are welcome.
+
 === Getting the sources via rsync ===
 As a more lightweight alternative you can use rsync; the latest sources are available at address {{{rsync://squid-cache.org/source/<version>}}}
 To use this feature you may use
