@@ -111,5 +111,10 @@ When this is completed;
  * shutdown will be a fast event
  * components such as auth and helpers will be reconfigurable
 
+
+== Discussion ==
+/!\ To answer, use the "Discussion" link in the main menu
+<<Include(/Discussion)>>
+
 ----
 CategoryFeature
