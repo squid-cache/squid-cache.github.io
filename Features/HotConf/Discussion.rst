@@ -32,3 +32,14 @@ In pseudo C++, and simplifying a bit:
 }}}
 
 -- AlexRousskov <<DateTime(2009-04-08T22:11:39-0700)>>
+
+----
+Good point, I can see the switchover case would need that separation of data vs handlers. However I dislike the need to pass config objects to them. manager will be the one doing the calls and we don't want the manager to handle individual Config objects, only the current state of processing and the current squid.conf line string.
+
+NP: I envision startup to be just a special case of reconfigure. where defaults are built into the ::Config constructors and used for first X seconds until local config 
+
+My model is one where the object with API methods is either inherited or templated from a master/shared object which provides the basic tokenizing methods. Similar to Robs earlier attempt at a parser, but without the call nesting going outside the currently parsing object. (yes, I must make exception for ACL list already since they are tacked on the end of many things, but after much browsing of the config I see no others)
+
+The parser is tightly wound with hot-conf since hot-conf is a desirable and planned effect of the parsing design. Not the other way around. This is needed to RefCount the objects shared between old conf and new conf. Parser controls and uses both current and future dumb::Config to determine what goes into future (a RefCounted clone of the current or a new allocation). Indeed Parser controls whether there is a future object or if its editing current on the spot (think err directory locations, size limits, and other state-agnostic settings).
+
+-- AmosJeffries <<DateTime(2009-04-10T01:58:00-1200)>>
