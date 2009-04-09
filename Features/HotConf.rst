@@ -29,6 +29,20 @@ This causes many issues which are visible:
  * INVALID URL errors when protocol info disappears.
  * request denials when ACLs being checked disappear.
 
+Related Bug reports:
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=219
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=498
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=513
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=537
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=1545
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=1946
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=2110
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=2460
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=2549
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=2570
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=2586
+ * http://www.squid-cache.org/bugs/show_bug.cgi?id=2626
+
 == State up to Squid-3.1 ==
 
 The plan begun during early 3.0 cycle was to re-work the existing squid.conf parser to pass the syntax parsing into each component which had better knowledge of the requirements.
