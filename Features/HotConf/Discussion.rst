@@ -138,3 +138,104 @@ void reconfigure() {
 }}}
 
 -- AlexRousskov <<DateTime(2009-04-09T08:00:45-0700)>>
+
+----
+
+Aw, heck no. That leaves the configure startup/shutdown process outside the main loop and inaccessible to async operations.
+
+Have adjusted your example to be more what I mean:
+{{{
+int main() {
+    addModule(new Module1);
+        // calls init() and registers "no_cache" as Store::??::parse_cache_acl(...) etc.
+    addModule(new Module2);
+        // calls init() and registers "adaptation_enable" as Adaptation::??::parse_enable(...) etc.
+    ...
+
+    SquidConfig::startConfigure();
+    scheduleAsync(..., SquidConfig::parse(), ...); // as next job with zero time delay
+    scheduleAsync(..., SquidConfig::doneConfigure(), ...); // as next job with zero time delay after parse...
+
+    mainLoop();
+
+// I like this loop, however for code simplicity I think it should be its own async event 'shutdown'
+    while (registered module container is not empty) {
+        delete popModule(); // calls shutdown() and deregisters popped m
+    }
+}
+
+// note how parsing is unaware of individual module and configuration
+// types AND even of individual line content tokens!!
+void parse() {
+    SquidDotConfTokenizer tokenizer(...);
+
+    for each registered config_option opt {
+        // the module will find lines that belong to it by searching
+        // for module-specific option names
+       opt->parseHandler(tokenizer);
+    }
+
+    if (tokenizer.unusedLines())
+        throw "unclaimed config options";
+}
+
+// only used to prep-state during a true reconfigure
+void startConfigure() {
+    for each registered module m {
+        // find module configuration; maybe even hide this inside parse()
+        cfg.startingConfigure();
+    }
+}
+
+// used after any config changes from any source...
+void doneConfigure() {
+    for each registered module m {
+        // find module configuration; maybe even hide this inside parse()
+        cfg.reconfigureCompleted();
+    }
+}
+
+}}}
+
+{{{
+
+using namespace Module; // ...
+
+Module::Config *current;
+Module::Config *future;
+
+// NP: legacy code here might call its own shutdown() instead of the hot-conf clone().
+startConfigure()
+{
+   future = current->clone();
+    // maybe followup with any removals needed to reset the future config to 'unused state'
+}
+
+parse(tokeniser)
+{
+    // parse tokeniser line into *future ...
+}
+
+// NP: _this_ is the entirety of hot-swap.
+// legacy code which did shutdown earlier will be doing its own restart() stuff here instead of hot-swap.
+reconfigureComplete()
+{
+   if (!changed) {
+      delete future;
+      return;
+   }
+
+   // anything else needed to finish up with ...
+   Module::Config *tmp = current;
+   current = future;
+   delete tmp;
+}
+
+}}}
+
+both layers are essentially the same in call meaning Squid::startConfigure calls Module::startConfigure etc.
+BUT the difference is that the scope of each method reduces from file to line and increases in the amount of tokenizer interaction between these layers.
+
+The parsing tokenizer needs to be looked at separately as you pointed out. But that is not relevant to the reconfigure scope of this feature.
+
+-- AmosJeffries <<DateTime(2009-04-10T14:03:02+1200)>>
