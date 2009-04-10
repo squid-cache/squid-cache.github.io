@@ -169,10 +169,12 @@ int main() {
 void parse() {
     SquidDotConfTokenizer tokenizer(...);
 
-    for each registered config_option opt {
-        // the module will find lines that belong to it by searching
-        // for module-specific option names
-       opt->parseHandler(tokenizer);
+    for each tag = SquidDotConfTokenizer.nextLine() {
+       // find handler for that named config option...
+       if ( opt = find(tag)) 
+           opt->parseHandler(tokenizer);
+       else
+           handleUnclaimedLine(tag, tokenizer)
     }
 
     if (tokenizer.unusedLines())
