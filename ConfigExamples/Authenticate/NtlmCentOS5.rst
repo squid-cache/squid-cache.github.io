@@ -20,7 +20,8 @@ If this query returns nothing, install it:
 {{{
 # yum install ntp
 }}}
-Now edit '''/etc/ntp.conf''' and comment out any lines that begin with ''server'' and create one that points to your Active Directory PDC Emulator, lastly set the daemon to start automatically at boot and start it:
+Now edit '''/etc/ntp.conf''' and comment out any lines that begin with '''server''' and create only one that points to your Active Directory PDC Emulator.<<BR>>
+Set the daemon to start automatically at boot and start it:
 {{{
 # vi /etc/ntp.conf
 server pdce.example.local
@@ -28,7 +29,8 @@ server pdce.example.local
 # service ntpd start
 }}}
 === Samba and Winbind ===
-The Samba configuration file '''/etc/samba/smb.conf''' and Squid authentication helper '''/usr/bin/ntlm_auth''' are provided by the samba-common package. Check if the software is installed:
+The Samba configuration file '''/etc/samba/smb.conf''' and Squid authentication helper '''/usr/bin/ntlm_auth''' are provided by the samba-common package.<<BR>>
+Check if the software is installed:
 {{{
 # rpm -qa |egrep -i '(krb5-workstation|samba-common|authconfig)'
 authconfig-5.3.21-5.el5
@@ -77,9 +79,9 @@ If you are able to enumerate your Active Directory Groups and Users, everything 
 
 == Configuring Squid ==
 I created an Active Directory Group to control who gets access to the proxy. Check the man pages for [[http://www.samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html|ntlm_auth]] for options.<<BR>>
-Edit your '''/etc/squid/squid.conf''' to enable the helper and adjust ''our_networks'' accordingly:
+Edit your '''/etc/squid/squid.conf''' to enable the helper and adjust '''our_networks''' accordingly:
 {{{
-auth_param ntlm program /usr/bin/ntlm_auth --helper-protocol=squid-2.5-ntlmssp --require-membership-of=EXAMPLE\\AD-GROUP
+auth_param ntlm program /usr/bin/ntlm_auth --helper-protocol=squid-2.5-ntlmssp --require-membership-of=EXAMPLE+ADGROUP
 auth_param ntlm children 5
 auth_param ntlm keep_alive on
 
