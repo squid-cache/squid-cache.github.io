@@ -47,7 +47,7 @@ Key:
 || {2} || ''logs/'' || Logging components || Log* access_log.* (later: logdaemon) ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
-||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* ||
+||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* string.* SquidString.* ||
 
 ...
 The following shuffling is linked to major code re-writes and will be held back to 3.2.
