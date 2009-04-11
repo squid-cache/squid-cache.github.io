@@ -538,8 +538,9 @@ By default the maximum length of an ACL name is 32-1 = 31 characters, but it can
 <<Anchor(acl_types)>>
 
 Some ACL types require information which may not be already available to Squid. Checking them requires suspending work on the current request, querying some external source, and resuming work when the needed information becomes available. This is for example the case for DNS, authenticators or external authorization scripts. ACLs can thus be divided in '''FAST''' ACLs, which do not require going to external sources to be fulfilled, and '''SLOW''' ACLs, which do.
+
 Fast ACLs include (as of squid 3.1.0.7):
- * all
+ * all (built-in)
  * src
  * myip
  * arp
