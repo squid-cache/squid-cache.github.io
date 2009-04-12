@@ -31,6 +31,12 @@ For older Squid you can select the language with the configure option ''--enable
 
 If needed, you can make a copy and re-write the error message template files in any version.
 
+== Codes for embeding into remote ''deny_info'' URLs ==
+
+ %s:: URL requested by client
+
+== Codes for embedding into custom ERR_* templates ==
+
 This list describes the tags which Squid will insert into the messages:
 
  %a:: User identity
