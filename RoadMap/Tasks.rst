@@ -32,7 +32,7 @@ Some of the more urgent smaller tasks inside these big ones have been broken out
 Small, but nagging. These might be done already if this page is not updated regularly.
 Check with squid-dev to see if its already done.
 
- * Migrate Feature requests from bugzilla to wiki pages.
+ * Migrate Feature requests from bugzilla to wiki pages. (FrancescoChemolli, mostly done. Needs second round after Apr 20th, 2009)
 
  * Fix kqueue bugs once and for all (ie, delete events for closed FDs)
  * Implement /dev/poll support for Solaris 7/8/9/10 network IO
