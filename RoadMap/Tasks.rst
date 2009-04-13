@@ -12,9 +12,16 @@ Feel free to jump in and try any of these tasks. Most can be done in small steps
 These are large when looked at in full, but any small incremental part you can do is a lot of help.
 Check with squid-dev mailing list to see what we are up to and how you can assist the move forward on these.
 
- * Document the source code with Doxygen format.
+Some of the more urgent smaller tasks inside these big ones have been broken out.
+
+ * Document the source code with Doxygen format
+  1. src/Store.* and related
+  1. src/comm.* and related
+  3. src/DelayPools.* and related
 
  * Add unit tests for each class, API method and function already in existence to improve code quality and speedup future testing.
+  1. src/acl/*
+  2. src/ip/*
 
  * Removing useless includes.
   1. Pick a system .h listed in compat/types.h and drop all other places its #include by src/* and includes/*
