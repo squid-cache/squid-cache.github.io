@@ -18,5 +18,6 @@
  * /FileFormats
  * /LeakFinder
  * /MemPools
+ * /DoxygenDocumentation
 
 A detailed index of covered topics is [[/FullIndex|available]].
