@@ -337,18 +337,7 @@ access_log syslog: squid
 
 == customizable access.log ==
 
-[[Squid-2.6|Squid 2.6]] and later versions feature a customizeable access.log format. To use this feature you must first  define a log format name using the '''logformat''' directive, then use the extended '''access_log''' directive specifying your newly-defined logfile format.
-
-
-=== defining a format ===
-
-/!\ FIXME: complete this chapter
-
-
-=== using a custom logfile format ===
-
-/!\ FIXME: complete this chapter
-
+[[Squid-2.6|Squid 2.6]] and later versions feature a [[Features/LogFormat|customizable access.log format]].
 
 == swap.state ==
 
