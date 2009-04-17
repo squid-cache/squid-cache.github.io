@@ -199,9 +199,10 @@ From Squid 3.0 the default user can also be set. The Debian package default is:
   --with-default-user=proxy
 }}}
 
-From Squid 3.1 the log directory is also configurable. The Debian package default is:
+From Squid 3.1 the log directory and PID file location are also configurable. The Debian package defaults are:
 {{{
 --with-logdir=/var/log
+--with-pidfile=/var/run/squid.pid
 }}}
 
 {X} Older Squid needs the following patch to be applied since the /var/logs/ directory for logs has no configure option. This exact patch requires ./bootstrap.sh to be run again. If that is not possible the same line change can be manually made in src/Makefile.in as well.
