@@ -24,7 +24,7 @@ What matters the most to obtain the most out of any setup is to properly tune a 
  * amount of physical memory available
    the more the better, squid performance will suffer badly if parts of it are swapped out of core memory
  * Number of harddrives used for cache and their architecture
-   squid disk access patterns hit particularly hard RAID systems - especially RAID4/5. Since the data are not by definition valuable, it is recommended to run the cache_dirs on JBOD <<FootNote(just a bunch of disks, in other words NO RAID)>>
+   squid disk access patterns hit particularly hard RAID systems - especially RAID4/5. Since the data are not by definition valuable, it is recommended to run the cache_dirs on JBOD <<FootNote(just a bunch of disks, in other words NO RAID)>> (see [[SquidFaq/Raid]])
    of course the disk type matters: SCSI performs better than ATA, 15kRPM is better than 5.4kRPM, etc.
  * noatime mount option
    atime is just useless for cache data - squid does its own timestamping, mounting the filesystem with the noatime option just saves a whole lot of writes to the disks
@@ -41,6 +41,8 @@ In case you didn't read the previous paragraph, please do! In case you ''still''
  * Linux
   * Reiserfs
     reiserfs3 works just fine, it's recommended that you mount with ''noatime'' and ''notail'' options, and for the performance freaks put the journal on a different spindle
+  * ext4
+    no data. we are looking for some ext4 experienced users to send tuning details in (if any!).
   * ext3
     another fine blend, the defaults filesystem creation parameters are just good for squid - watch out for the number of inodes - squid cached objects are usually about 12-16kb in size, make sure you have enough.
   * ext2
