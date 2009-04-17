@@ -24,9 +24,9 @@ I've made a few alterations that need to be noted:
 
  Both functions and methods need to have any named parameters be identical in their declaration as in their definition. That includes adding to the declaration where missing.
 
- The use of {{{\addtogroup}} are not useful on a per-class basis. Each class should have a 1-1 relationship with the component API its part of. So the group definitions can be entirely outsourced to the component.dox files which contains the API high-level documentation.
+ The use of {{{\addtogroup}}} are not useful on a per-class basis. Each class should have a 1-1 relationship with the component API its part of. So the group definitions can be entirely outsourced to the component.dox files which contains the API high-level documentation.
 
- The use of {{\see}} is likewise very little utility. The auto-docs generate references, referenced-by, called-by, and smart links for everything that is directly related.
+ The use of {{{\see}}} is likewise very little utility. The auto-docs generate references, referenced-by, called-by, and smart links for everything that is directly related.
 
  Component-Level documentation (component.dox files) are a whole other beast entirely than short clean code documentation. Feel free to move that description or make a better template.
 
