@@ -4,8 +4,8 @@
  * [[AmosJeffries|Amos Jeffries]] IPv6 guru, [[Translations]] coordinator, and [[RoadMap/Squid3|Squid-3.x]] release manager.
 
 ## * [[http://www.squid-cache.org/~adrian/|Adrian Chadd]], Squid-2 developer, performance/scalability stuff.
- * [[http://www.squid-cache.org/~robertc/|Robert Collins]] was the main driver of the Squid-3 C++ migration effort.
- * [[GuidoSerassio|Guido Serassio]] leads the [[http://www.acmeconsulting.it/SquidNT/|SquidNT]] effort
+ * [[http://www.squid-cache.org/~robertc/|Robert Collins]] was the main driver of the initial Squid-3 C++ migration effort.
+ * [[GuidoSerassio|Guido Serassio]] leads the [[http://squid.acmeconsulting.it/|Squid for Windows]] effort
  * [[AlexRousskov|Alex Rousskov]] manages various Squid-3 projects.
  * [[http://wessels.squid-cache.org/|Duane Wessels]], Chief Procrastinator
 
