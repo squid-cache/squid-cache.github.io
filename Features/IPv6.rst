@@ -52,7 +52,7 @@ The only points of possible interest for some will be:
 
  * Splitting the listening ports on input mode however (standard, transparent, intercept, accelerator) is better than mixing two modes on one port.
 
- * Squid can already cope with bad or inaccessible IPs. This can be improved by tuning the '''connection_timeout''' down from minutes to a few seconds.
+ * Squid can already cope with bad or inaccessible IPs. This can be improved by tuning the [[http://www.squid-cache.org/Doc/config/connect_timeout/|connect_timeout]] down to a few seconds.
 
 == Trouble Shooting IPv6 ==
 === Squid builds with IPv6 but it won't listen for IPv6 requests. ===
