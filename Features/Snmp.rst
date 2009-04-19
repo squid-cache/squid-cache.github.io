@@ -104,7 +104,7 @@ Some people use  [[http://www.mrtg.org/|MRTG]] to query Squid through its SNMP i
 To get instruction on using MRTG with Squid please visit these pages:
 
  * [[http://www.cache.dfn.de/DFN-Cache/Development/Monitoring/|Cache Monitoring - How to set up your own monitoring]] by DFN-Cache
- * [[http://www.acmeconsulting.it/SquidNT.html|Using MRTG to monitor Squid]] by ACME Consulting
+ * [[http://squid.acmeconsulting.it/mrtg.html|Using MRTG to monitor Squid]] by ACME Consulting
 
  * [[http://squid.visolve.com/related/snmp/monitoringsquid.htm|Squid Configuration Manual - Monitoring Squid]] by Visolve
  * [[http://www.arnes.si/~matija/utrecht/lecture.html|Using MRTG for Squid monitoring]] Desire II caching workshop session by Matija Grabnar
