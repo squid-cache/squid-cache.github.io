@@ -137,7 +137,7 @@ Why you would want to do that without similar limits on IPv4 (using '''all''') i
 
 Previously squid defined the '''all''' ACL which means the whole Internet. It still does, but now it means both IPv6 and IPv4 so using it will not block only IPv6.
 
-A new ACL tag '''ipv6''' has been added to match only IPv6 public space. It can be used directly in a deny or inverted with '''!''' to match IPv4 in an allow.
+A new ACL tag '''ipv6''' has been added to match only IPv6 public space.
 
 Example creation in squid.conf:
 {{{
@@ -155,6 +155,8 @@ IPv4 traffic going through Squid is unaffected by this. Particularly traffic fro
 NAT simply does not exist in IPv6. By Design.
 
 Given that transparency/interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do transparency and interception that way.
+
+Talk amongst the Linux netfilter guys indicates that the [[Features/Tproxy4|TPROXY v4]] feature should be easily capable of IPv6. '''But they have not yet written that bit of the code'''
 
 === Delay Pools ===
 
