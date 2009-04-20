@@ -48,7 +48,6 @@
  * /ContentAdaptation how to analyze, capture, block, replace, or modify the messages being proxied
  * /MultiCast explains how to set squid ICP up in a multicast environment
  * /CacheDigests or ICP on steroids
- * /SquidSnmp: using SNMP to monitor Squid's vital signs
  * /MiscFeatures: Squid 2.X miscellaneous features
 
 ## Once a user-oriented feature has been completed we can re-use the description page
