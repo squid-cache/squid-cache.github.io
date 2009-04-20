@@ -1,3 +1,4 @@
+## page was renamed from SquidFaq/SquidSnmp
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
