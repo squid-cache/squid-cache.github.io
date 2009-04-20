@@ -38,7 +38,7 @@
 === Interception Proxy ===
 <<TocOf(SquidFaq/InterceptionProxy)>>
 === Squid Snmp ===
-<<TocOf(SquidFaq/SquidSnmp)>>
+<<TocOf(Features/Snmp)>>
 === Misc Features ===
 <<TocOf(SquidFaq/MiscFeatures)>>
 === Reverse Proxy ===
@@ -48,7 +48,7 @@
 === Other Resources ===
 <<TocOf(SquidFaq/OtherResources)>>
 === Disk Daemon ===
-<<TocOf(SquidFaq/DiskDaemon)>>
+<<TocOf(Features/DiskDaemon)>>
 === Cyclic Object Storage System, aka COSS ===
 <<TocOf(SquidFaq/CyclicObjectStorageSystem)>>
 === Proxy Authentication ===
