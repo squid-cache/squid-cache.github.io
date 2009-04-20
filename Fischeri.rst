@@ -33,13 +33,14 @@ This is currently being done by AmosJeffries with the assistance of others.
  * Test branch where everything can be setup before merge
  * script to tie everything together (mkpackage.sh)
 
- * Have attempted to contact the following package maintainers already:
-  * Debian: Luigi Gangitano
-  * FreeBSD: Thomas-Martin Seck
-  * Gentoo: Alin Nastac
-  * NetBSD: Takahiro Kambe
-## * Ubuntu: see Debian
-  * Windows: Guido Serassio
+ * Have attempted to contact the following package maintainers already, here is what has resulted:
+ || '''OS''' || '''Maintainer'''   || '''Results of discussion''' ||
+ || Debian   || Luigi Gangitano    || Issues with Debian QA policy vs developers knowledge levels. ||
+ || FreeBSD  || Thomas-Martin Seck || ||
+ || Gentoo   || Alin Nastac        || Gentoo packaging system seems incompatible. ||
+ || NetBSD   || Takahiro Kambe     || waiting response ||
+ || Ubuntu   ||-2 see Debian       ||
+ || Windows  || Guido Serassio     || critical bzr VCS issues ||
 
 ## TODO:
 ## Solaris: Steven M. Christensen <sunfreeware_at_gmail.com>
@@ -47,7 +48,7 @@ This is currently being done by AmosJeffries with the assistance of others.
 ## Mandrivia: anyone?
 ## IRIX: anyone?
 ## Darwin: who? (mww@macports.org)
-## Fink: (squid-unified) Benjamin Reed
+## Fink: (squid-unified) Benjamin Reed (rangerrick@befunk.com)
 ## Fedora: Henrik? others?
 ## OpenBSD: who?
 ## RHEL: who?
@@ -58,13 +59,13 @@ This is currently being done by AmosJeffries with the assistance of others.
 
   If you know of other package maintainers not listed above please bring them to my attention. I want the to be a part of this project, to gain from their experience and skills.
 
-Awaiting:
+=== Stuff Waiting: ===
 
- * distro developers contributions
-
-
- * volunteers to assist with packaging for OS without current maintainers.
-   Will require BZR and some local OS knowledge. No long term commitment is asked.
+ * Major issues:
+  * bzr VCS not possible for all distros (leads into problem #2)
+  * would entail some amount of code duplication with distribution maintainers.<<BR>>
+    which leads to maintenance issues keeping it in sync.
+  * some packaging systems not possible to be externally scripted.
 
 == Current Packages ==
 
