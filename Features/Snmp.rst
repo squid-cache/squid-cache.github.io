@@ -1,10 +1,28 @@
+##master-page:Features/FeatureTemplate
+#format wiki
 #language en
-<<TableOfContents>>Contributors:  [[mailto:glenn@ircache.net|Glenn Chisholm]].
+#faqlisted yes
 
-== Does Squid support SNMP? ==
-Yes.  You will need to configure Squid with SNMP support and edit your squid.conf file with appropriate access conrols.
+= Feature: SNMP =
 
-== Enabling SNMP in Squid ==
+ * '''Status''': Completed
+
+ * '''Version''': 2.x
+
+## * '''Developer''': unknown
+
+## * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
+
+
+<<TableOfContents>>
+
+= Details =
+
+Contributors:  [[mailto:glenn@ircache.net|Glenn Chisholm]].
+
+= Enabling SNMP in Squid =
+
+=== Squid-2 ===
 To use SNMP, it must first be enabled with the ''configure'' script, and squid rebuilt. To enable is first run the script:
 
 {{{
@@ -23,8 +41,12 @@ Once the compile is completed and the new binary is installed the ''squid.conf''
 
 You may also want to move the Squid mib.txt into your SNMP MIB directory so that you can view the output as text rather than raw OID numbers.
 
-== Configuring Squid ==
-To configure SNMP first specify a list of communities that you would like to allow access by using a standard acl of the form:
+=== Squid-3 ===
+
+It's now built in by default. Simply add the configuration options to squid.conf.
+
+= Configuring Squid =
+To configure SNMP first specify a list of communities that you would like to allow access by using a standard [[http://www.squid-cache.org/Doc/config/acl/|acl]] of the form:
 
 {{{
 acl aclname snmp_community string
@@ -39,7 +61,9 @@ acl snmpjoebloggs snmp_community joebloggs
 
 This creates two acl's, with two different communities, public and joebloggs. You can name the acl's and the community strings anything that you like.
 
-To specify the port that the agent will listen on modify the "snmp_port" parameter, it is defaulted to 3401. The port that the agent will forward requests that can not be furfilled by this agent to is set by "forward_snmpd_port" it is defaulted to off. It must be configured for this to work. Remember that as the requests will be originating from this agent you will need to make sure that you configure your access accordingly.
+To specify the port that the agent will listen on modify the [[http://www.squid-cache.org/Doc/config/snmp_port/|snmp_port]] parameter, the official SNMP port is '''3401'''.
+
+## The port that the agent will forward requests that can not be fulfilled by this agent to is set by "forward_snmpd_port" it is defaulted to off. It must be configured for this to work. Remember that as the requests will be originating from this agent you will need to make sure that you configure your access accordingly.
 
 To allow access to Squid's SNMP agent, define an ''snmp_access'' ACL with the community strings that you previously defined. For example:
 
@@ -50,21 +74,23 @@ snmp_access deny all
 
 The above will allow anyone on the localhost who uses the community ''public'' to access the agent. It will deny all others access.
 
-If you do not define any ''snmp_access'' ACL's, then SNMP access is denied by default.
+ /!\ If you do not define any ''snmp_access'' ACL's, then SNMP access is denied by default.
 
-Finally squid allows to you to configure the address that the agent will bind to for incoming and outgoing traffic. These are defaulted to 0.0.0.0, changing these will cause the agent to bind to a specific address on the host, rather than the default which is all.
+Finally squid allows to you to configure the address that the agent will bind to for incoming and outgoing traffic. These are defaulted to all addresses on the system, changing these will cause the agent to bind to a specific address on the host.
 
+Defaults:
 {{{
 snmp_incoming_address 0.0.0.0
 snmp_outgoing_address 0.0.0.0
 }}}
 
+= FAQ =
 
 == How can I query the Squid SNMP Agent ==
 You can test if your Squid supports SNMP with the ''snmpwalk'' program (''snmpwalk'' is a part of the [[http://net-snmp.sourceforge.net/|NET-SNMP project]]). Note that you have to specify the SNMP port, which in Squid defaults to 3401.
 
 {{{
-snmpwalk -m /usr/share/squid/mib.txt -v2c -c communitystring hostname:3401 .1.3.6.1.4.1.3495.1.1
+snmpwalk -m /usr/share/squid/mib.txt -v2c -Cc -c communitystring hostname:3401 .1.3.6.1.4.1.3495.1.1
 }}}
 
 If it gives output like:
@@ -125,3 +151,5 @@ It allows to use pre-defined templates to facilitate deployment. Templates for s
 
 -----
 Back to the SquidFaq
+
+CategoryFeature
