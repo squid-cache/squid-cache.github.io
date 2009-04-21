@@ -39,6 +39,7 @@ This is currently being done by AmosJeffries with the assistance of others.
  || FreeBSD  || Thomas-Martin Seck || ||
  || Gentoo   || Alin Nastac        || Gentoo packaging system seems incompatible. ||
  || NetBSD   || Takahiro Kambe     || waiting response ||
+ || OpenBSD  || Brad Smith         || ||
  || Ubuntu   ||-2 see Debian       ||
  || Windows  || Guido Serassio     || critical bzr VCS issues ||
 
@@ -50,7 +51,6 @@ This is currently being done by AmosJeffries with the assistance of others.
 ## Darwin: who? (mww@macports.org)
 ## Fink: (squid-unified) Benjamin Reed (rangerrick@befunk.com)
 ## Fedora: Henrik? others?
-## OpenBSD: who?
 ## RHEL: who?
 ## NextStep: anyone?
 ## UNIX: anyone?
