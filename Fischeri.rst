@@ -37,8 +37,8 @@ This is currently being done by AmosJeffries with the assistance of others.
  || '''OS''' || '''Maintainer'''   || '''Results of discussion''' ||
  || Debian   || Luigi Gangitano    || Issues with Debian QA policy vs developers knowledge levels. ||
  || FreeBSD  || Thomas-Martin Seck || ||
- || Gentoo   || Alin Nastac        || Gentoo packaging system seems incompatible. ||
- || NetBSD   || Takahiro Kambe (3.0)<<BR>>''tron'' (3.1) || ||
+ || Gentoo   || Alin Nastac        || Gentoo packaging system incompatible. ||
+ || NetBSD   || Takahiro Kambe (3.0)<<BR>>Matthias Scheler (3.1) || ||
  || OpenBSD  || Brad Smith         || ||
  || Ubuntu   ||-2 see Debian       ||
  || Windows  || Guido Serassio     || critical bzr VCS issues ||
