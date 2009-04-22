@@ -10,7 +10,12 @@ There's a playground for new features available at /LabArea
 
 I'm reachable by email at <<MailTo(kinkie@squid-cache.org)>>
 
-----
+== Development hints and bits ==
+ * [[http://tokyocabinet.sourceforge.net/|Tokyo Cabinet]]
+   :: seems to be an interesting on-disk associative-array database (a la dbm, ndbm, gdbm, qdbm), it claims to be very fast. Might it be useful to store data or metadata?
+
+== Random pointers ==
+
 I'm investigating the possibility of importing IRC logs into the wiki.
 For pointers on how to, see
  * http://www.moinmo.in/MoinMoinChat/Logs/moin-dev
