@@ -14,7 +14,7 @@ Administrators often need to permit or block the use of IM (Instant Messengers) 
 
 == Applications ==
 
-<<Include(ConfigExamples/Chat/*,,from="^=",to="^----")>>
+<<Include(^ConfigExamples/Chat/.*,,,to="^----")>>
 
 
 ----
