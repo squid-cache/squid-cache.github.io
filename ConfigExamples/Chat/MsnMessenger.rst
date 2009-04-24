@@ -8,6 +8,10 @@
 
 ## <<TableOfContents>>
 
+== Details ==
+
+MSN Messenger natively uses port 1863 and bypasses the Squid proxy. But when that has been locked down by the firewall admin it will failover to port 80 and enter Squid.
+
 == Squid Configuration File ==
 
 Configuration file to Include:
