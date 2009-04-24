@@ -43,6 +43,7 @@ Choose a good WikiName for your new example and enter it here:
 <<FullSearchCached(title:regex:^ConfigExamples/Reverse/.*$)>>
 
 === Instant Messaging / Chat Program filtering ===
+[[ConfigExamples/Chat|Overview and explanation]]
 <<FullSearchCached(title:regex:^ConfigExamples/Chat/.*$)>>
 
 === Multimedia and Data Stream filtering ===
