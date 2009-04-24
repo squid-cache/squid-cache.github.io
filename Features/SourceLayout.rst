@@ -30,7 +30,7 @@ Key:
 || (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 || :\ || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
-|| {1} || ''base/'' || Commonly used code whithout a better place to go. || Async*? ||
+|| {1} || ''base/'' || Commonly used code whithout a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* SquidString.* ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
@@ -47,7 +47,7 @@ Key:
 || {2} || ''logs/'' || Logging components || Log* access_log.* (later: logdaemon) ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
-||  || ''structures/'' || Basic pattern algorithm primitives || wordlist.* dlink.* hash.* string.* SquidString.* ||
+
 
 ...
 The following shuffling is linked to major code re-writes and will be held back to 3.2.
