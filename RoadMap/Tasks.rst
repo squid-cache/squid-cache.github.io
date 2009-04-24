@@ -16,7 +16,7 @@ Some of the more urgent smaller tasks inside these big ones have been broken out
 
  * Document the source code with Doxygen format
   1. src/Store.* and related
-  1. src/comm.* and related
+  2. src/comm.* and related
   3. src/DelayPools.* and related
 
  * Add unit tests for each class, API method and function already in existence to improve code quality and speedup future testing.
@@ -24,8 +24,13 @@ Some of the more urgent smaller tasks inside these big ones have been broken out
   2. src/ip/*
 
  * Removing useless includes.
-  1. Pick a system .h listed in compat/types.h and drop all other places its #include by src/* and includes/*
+  1. Pick a system .h listed in compat/types.h and drop all other places with #include by src/* and includes/* files.
   2. going through each .h file and minimizing the other .h it includes, using class pre-defines where possible. (This is being done during SourceLayout somewhat so contact squid-dev before attempting).
+
+ * Check external Copyrights are up-to-date in CREDITS
+ 1. Go through the helper/* files and check ~/CREDITS contains one copy of each copyright for any files with header-copyright present.
+ 2. do the above for each lib/* and lib/libTrie file 
+ 3. highlight any non-GPLv2 compatible copyrights found to squid-dev.
 
 === Small Tasks ===
 
