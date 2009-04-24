@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/InstantMessenger
 ##master-page:CategoryTemplate
 #format wiki
 #language en
