@@ -45,12 +45,13 @@ http_port 3129 tproxy
 
  {i} NP: A dedicated squid port for tproxy is REQUIRED.  The way TPROXYv4 works makes it incompatible with NAT interception, reverse-proxy acceleration, and standard proxy traffic. The '''intercept''', '''accel''' and related flags cannot be set on the same http_port with '''tproxy''' flag.
 
- * '''Obsolete''' --enable-tproxy option. Remains only for legacy v2.2 cttproxy support.
+ * '''Obsolete''' --enable-tproxy option. Remains only for legacy v2.2 ctt proxy support.
 
 == Linux Kernel 2.6.28 Configuration ==
 
  /!\ Requires kernel built with the configuration options:
 {{{
+NF_CONNTRACK
 NETFILTER_TPROXY
 NETFILTER_XT_MATCH_SOCKET
 NETFILTER_XT_TARGET_TPROXY
