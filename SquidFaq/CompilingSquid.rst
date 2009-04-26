@@ -7,21 +7,24 @@
 ##begin
 == Which file do I download to get Squid? ==
 
+That depends on the version of Squid you have chosen to try. The list of current versions released can be found at http://www.squid-cache.org/Versions/. Each version has a page of release bundles. Usually you want the release bundle that is listed as the most current.
+
 You must download a source archive file of the form
 squid-x.y.tar.gz or squid-x.y.tar.bz2 (eg, squid-2.6.STABLE14.tar.bz2).
-We recommend you first try one of our [[http://www.squid-cache.org/Mirrors/http-mirrors.html|mirror sites]].
+
+We recommend you first try one of our [[http://www.squid-cache.org/Mirrors/http-mirrors.html|mirror sites]] for the actually download. They are usually faster.
 
 Alternatively, the main Squid WWW site 
 [[http://www.squid-cache.org/|www.squid-cache.org]], and FTP site
 [[ftp://www.squid-cache.org/pub/|ftp.squid-cache.org]] have these files.
 
-Context diffs are available for upgrading to new versions.
+Context diffs are usually available for upgrading to new versions.
 These can be applied with the ''patch'' program (available from
 [[ftp://ftp.gnu.org/gnu/patch|the GNU FTP site]] or your distribution).
 
 == Do you have pre-compiled binaries available? ==
 
-The squid core team members do not have the resources to make pre-compiled binaries available. Instead, we invest effort into making the source code very portable. Some contributors have made binary packages available. Please see our [[http://www.squid-cache.org/Download/binaries.dyn|Binaries Page]].
+see [[SquidFaq/BinaryPackages]]
 
 == How do I compile Squid? ==
 
