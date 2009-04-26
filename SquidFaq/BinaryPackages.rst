@@ -38,6 +38,13 @@ Latest SRPMs can be found [[http://download.fedora.redhat.com/pub/fedora/linux/d
 Binaries for Alpha and Intel platforms, from the FreeBSD ports collection.
 http://www.freebsd.org/cgi/ports.cgi?query=^squid-&stype=name
 
+=== Mandrivia, Mandrake ===
+
+ '''Squid-2.7:'''
+{{{
+ urpmi squid
+}}}
+
 === NetBSD ===
 
 Binaries for all NetBSD platforms, from the NetBSD packages collection.
