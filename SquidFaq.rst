@@ -11,6 +11,7 @@
  * /InnerWorkings: a few insights into squid and its underlying logic
 
 ===== Installation and Use =====
+ * /BinaryPackages describes how to easily install official packages for some OS
  * /CompilingSquid describes how to compile the software
  * /InstallingSquid no use in compiling without installing, right?
  * /ConfiguringSquid how to configure squid, especially regarding cache relationships and IRCache
