@@ -46,7 +46,7 @@ This is currently being done by AmosJeffries with the assistance of others.
 ## TODO:
 ## Solaris: Steven M. Christensen <sunfreeware_at_gmail.com>
 ## SuSE: who?
-## Mandrivia: anyone?
+## Mandrivia: Oden Eriksson
 ## IRIX: anyone?
 ## Darwin: who? (mww@macports.org)
 ## Fink: (squid-unified) Benjamin Reed (rangerrick@befunk.com)
