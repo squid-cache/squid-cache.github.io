@@ -40,11 +40,11 @@ This is currently being done by AmosJeffries with the assistance of others.
  || Gentoo   || Alin Nastac        || Gentoo packaging system incompatible. ||
  || NetBSD   || Takahiro Kambe (3.0)<<BR>>Matthias Scheler (3.1) || ||
  || OpenBSD  || Brad Smith         || ||
- || Ubuntu   ||-2 see Debian       ||
+ || Ubuntu   || see Debian       ||
  || Windows  || Guido Serassio     || critical bzr VCS issues ||
 
 ## TODO:
-## Solaris: Steven M. Christensen <sunfreeware_at_gmail.com>
+## Solaris: Steven M. Christensen <sunfreeware_at_gmail.com>,
 ## SuSE: who?
 ## Mandrivia: Oden Eriksson
 ## IRIX: anyone?
