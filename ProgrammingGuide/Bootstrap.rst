@@ -52,4 +52,18 @@ __Problem__
 
 __Solution__
 
-    install libltdl3-dev
+    install libltdl3-dev or libltdl7-dev
+
+
+__Problem__
+
+    Generally in Debian based systems:
+
+    libtoolize: `ltdl.m4' not found in `/usr/share/aclocal'
+    libtoolize failed
+    Autotool bootstrapping failed. You will need to investigate and correct
+    before you can develop on this source tree
+
+__Solution__
+
+    install libltdl7-dev
