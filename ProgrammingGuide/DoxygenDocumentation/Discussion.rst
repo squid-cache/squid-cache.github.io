@@ -61,3 +61,10 @@ C++ comments (/// and ///<) should be allowed and ''encouraged'' for one-line de
 
 -- AlexRousskov <<DateTime(2009-04-28T14:05:38-0700)>>
  
+
+----
+<<Anchor(C4)>>
+
+FWIW, I am strongly against the proposed "Function / Class Method documentation template". It is too verbose and yet useless in most cases. The documentation should help the developer understand the code, not duplicate the code in English. In-source documentation should be concise and supply new information that is not readily available from the next line of code. We should not document what the code already says, loud and clear. For example, correct types and good parameter names are usually sufficient for parameter documentation.
+
+-- AlexRousskov <<DateTime(2009-04-28T14:13:41-0700)>>
