@@ -68,3 +68,14 @@ C++ comments (/// and ///<) should be allowed and ''encouraged'' for one-line de
 FWIW, I am strongly against the proposed "Function / Class Method documentation template". It is too verbose and yet useless in most cases. The documentation should help the developer understand the code, not duplicate the code in English. In-source documentation should be concise and supply new information that is not readily available from the next line of code. We should not document what the code already says, loud and clear. For example, correct types and good parameter names are usually sufficient for parameter documentation.
 
 -- AlexRousskov <<DateTime(2009-04-28T14:13:41-0700)>>
+
+
+----
+<<Anchor(C5)>>
+
+The template states (and if it doesn't, it should) that almost all clauses are optional. Everything else is (for good and bed) left to the good sense of the documentor. I'm not fully with you in saying that it should not replicate what the code says, as repeating it in english allows the docuemntor to state the contracts (explicit or implicit) that the code obeys to, or should obey to, allows for cross-referencing, and can be extracted to a separate document.
+I agree that in most cases the code is more accurate than the documentation, and thus unless otherwise stated it takes precedence.
+
+Please remind that the main purpose for the template is to avoid the documentor the hassle of having to actually _learn_ doxygen, replacing this for a 'copy,paste'n edit' approach.
+
+-- FrancescoChemolli <<DateTime(2009-04-28T22:22:42Z)>>
