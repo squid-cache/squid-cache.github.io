@@ -88,14 +88,13 @@ and refresh pattern
 
 {{{
 #youtube's videos
-refresh_pattern -i (get_video\?|videodownload\?|videoplayback\?) 161280 50000% 525948 override-expire ignore-reload
+refresh_pattern -i (get_video\?|videoplayback\?id|videoplayback.*id) 161280 50000% 525948 override-expire ignore-reload
 #and for pictures
 refresh_pattern -i \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)(\?|$) 161280 3000% 525948 override-expire reload-into-ims
 }}}
 Storeurl script(where concurrency is > 0) or the test.pl above. concurrency 10 is faster than children 10.
 {{{
-#!/usr/bin/perl -w
-#!c:\perl\bin\perl.exe
+#!/usr/local/bin/perl
 $|=1;
 while (<>) {
     @X = split;
@@ -106,7 +105,11 @@ while (<>) {
 if (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?(videoplayback\?id=.*?|video_id=.*?)\&(.*?)/) {
 	$z = $2; $z =~ s/video_id=/get_video?video_id=/; # compatible to old cached get_video?video_id
 	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $z . "\n";
-			# google utm.gif
+			# new youtube
+
+} elsif (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(id=[a-zA-Z0-9]*)/) {
+	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $2 . "\n";
+
 } elsif (m/^http:\/\/www\.google-analytics\.com\/__utm\.gif\?.*/) {
 	print $x . "http://www.google-analytics.com/__utm.gif\n";
 			#cache high latency ads	
@@ -141,7 +144,7 @@ if (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.goo
 } elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*)$/) {
 	print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 .  "\n";				
 			# spicific extention that ends with ?
-} elsif (m/^http:\/\/(.*?)\/(.*?)\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?(.*)/) {
+} elsif (m/^http:\/\/(.*?)\/(.*?)\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv|on2)\?(.*)/) {
 	print $x . "http://" . $1 . "/" . $2  . "." . $3 . "\n";
 			# all that ends with ;
 } elsif (m/^http:\/\/(.*?)\/(.*?)\;(.*)/) {
@@ -151,6 +154,8 @@ if (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.goo
 	print $x . $_ . "\n";
 }
 }
+
+
 
 }}}
 
