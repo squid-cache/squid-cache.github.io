@@ -264,4 +264,5 @@ I feel it is critical to separate parsing from [re]configuration. We should not 
  3. '''Application''' -- Module::reconfigure(cfg) is called for all modules. Should not fail. Changes current config.
 
 One of the biggest challenges here is handling dependencies between modules, but having Module::Config objects free of side-effects will help with that.
+
 -- AlexRousskov <<DateTime(2009-04-28T13:41:32-0700)>>
