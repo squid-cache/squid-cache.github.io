@@ -35,3 +35,20 @@ I've made a few alterations that need to be noted:
  {{{\bug}}} and {{{\todo}}} really needs to be documented in the code where the bug/todo exists. They are usually part of a code-path that the developer has no time for completing in current work scope and are very code-line specific.
 
 AmosJeffries  2009-04-17 21:26
+
+----
+<<Anchor(C2)>>
+
+Entities terminology needs to be polished to be correct from C++ point of view and to be more consistent/natural. Here is a step towards that direction:
+
+== Entities to be documented ==
+
+
+There are several types of entities that must be documented, including '''components''', '''globals''' (including types, classes, and global variables), and '''members''' (including class methods and data members).
+
+ Components:: Includes additional documentation information, such as component API object groups, and component state flow diagrams etc, this documentation has more complex requirements. see below
+ Globals:: should be documented where they are declared, just above or to the left of their declaration. Use the shortest sufficient description to document the purpose of the global.
+ Members:: should be documented where they are declared. Use the shortest sufficient description to document the purpose of the global. Method definitions may have more detailed, expanded documentation. 
+
+
+-- AlexRousskov <<DateTime(2009-04-28T14:03:12-0700)>>
