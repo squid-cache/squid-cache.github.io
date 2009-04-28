@@ -52,3 +52,12 @@ There are several types of entities that must be documented, including '''compon
 
 
 -- AlexRousskov <<DateTime(2009-04-28T14:03:12-0700)>>
+
+
+----
+<<Anchor(C3)>>
+
+C++ comments (/// and ///<) should be allowed and ''encouraged'' for one-line descriptions, IMO.
+
+-- AlexRousskov <<DateTime(2009-04-28T14:05:38-0700)>>
+ 
