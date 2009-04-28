@@ -4,7 +4,8 @@
 
 See [[../|Discussed Page]]
 
-## Please begin your contribution with "----" and an anchor for C# (incrementing the number for each comment) and end it with "-- AlexRousskov <<DateTime(2009-04-08T22:11:39-0700)>>"
+## Please begin your contribution with "----" and an anchor for C# (incrementing the number for each comment)
+## and end it with "at" SIG "at" (no spaces).
 ## this will help for references. Append to discussion at the bottom of the page.
 ## You can quote using
 ## {{{
@@ -45,7 +46,7 @@ The parser is tightly wound with hot-conf since hot-conf is a desirable and plan
 -- AmosJeffries <<DateTime(2009-04-10T01:58:00-1200)>>
 
 ----
-<<Anchor(C1)>>
+<<Anchor(C3)>>
 I am worried about several ideas expressed here but I may be just misinterpreting what you are saying. I will provide specific sketches in hope to make this discussion less vague and more structured.
 
 I disagree that it is a good idea to keep parser tightly coupled with configuration. There is certainly a way around it (see my sketch). We would be significantly increasing the complexity of the overall design if modules keep parsing and configuring at the same time. Also, if you want to write module-specific test cases, the ability to create and [re]configure a module without parsing is very valuable. 
@@ -241,3 +242,26 @@ BUT the difference is that the scope of each method reduces from file to line an
 The parsing tokenizer needs to be looked at separately as you pointed out. But that is not relevant to the reconfigure scope of this feature.
 
 -- AmosJeffries <<DateTime(2009-04-10T14:03:02+1200)>>
+
+----
+<<Anchor(C5)>>
+
+Making configuration asynchronous is worth trying.
+
+You have added "AND even of individual line content tokens" comment. That was true in my sketch as well.
+
+
+I do not think it is a good idea to limit module configuration API to "one option at a time" and add an "module option registration" interface.  In my sketch the module knows its options and handles them however it wants. There may be a common/shared code that a module can reuse to handle one option at a time, of course, but I would not expose that detail to the upper layer or force it on lower layers. 
+
+It is possible that two modules will need access to the same option, for example. We also do not know the order in which the options should be handled by the module (and that order can be dynamic so always using the registration order is not good enough). Overall, it just adds complexity and makes the interface more rigid than necessary.
+
+The last bit in your sketch is about a possible way to implement reconfiguration, I think. Again, I would not force that way on all modules. I would just give them the new or "future" Module::Config object and let them figure out how to handle the transition. The arguments are very similar to the "one registered line at a time only" objections above.
+
+I feel it is critical to separate parsing from [re]configuration. We should not even attempt to [re]configure Squid if parsing fails. Parsing produces Module::Config objects, that have no effect other than memory use. Most common errors are detected at this stage. If everything is OK, all modules are asked to [re]configure themselves using these Config objects. We can even go further and have three reconfiguration steps:
+
+ 1. '''Parsing''' --  Module::parse(tokenizer) is called for all modules, producing Module::Config objects. Abort reconfiguration on errors. No changes to the current config.
+ 2. '''Validation''' -- Module::canReconfigure(cfg) is called for all modules, producing success/errors. Abort reconfiguration on errors. No changes to the current config.
+ 3. '''Application''' -- Module::reconfigure(cfg) is called for all modules. Should not fail. Changes current config.
+
+One of the biggest challenges here is handling dependencies between modules, but having Module::Config objects free of side-effects will help with that.
+-- AlexRousskov <<DateTime(2009-04-28T13:41:32-0700)>>
