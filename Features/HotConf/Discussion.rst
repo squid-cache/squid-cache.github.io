@@ -360,3 +360,25 @@ Validation IMO should happen at the point of parsing. It's either a valid parse 
 
 
 -- AmosJeffries <<DateTime(2009-04-29T17:46:56+1200)>>
+
+----
+<<Anchor(C7)>>
+
+I am sorry, but do not follow most of your comments because I think you are attacking a model that I am not proposing while discussing low-level details that seem irrelevant to me. I suspect there is just basic disconnect between our terminology and expressions that prevents us from understanding each other and making progress. We need to step back, I think.
+
+We should either make smaller steps or discuss this online. I will try the former first.
+
+In my model, there are two most important design decisions:
+
+ a. Each module has its own Config class (i.e., Module::Config), inherited from some common base !ModuleConfig class. Only module M users know the details of M::Config. Others just know it is an instance of the base !ModuleConfig class, with a few common methods for reporting and such. Configs from all modules are collected into one !SquidConfig class, but that is not important in most cases. The exact shape of that !SquidConfig class is not important for now.
+ a. A module Config object has no runtime effect on Squid except when it is used as the "current" config for the module. For each module, many, possibly conflicting, Config objects might exist at the same time, but there is only one current config for each module and for Squid as a whole.
+
+And there are three most important configuration and reconfiguration steps:
+
+ 1. During the first step, each Module creates its Config object by parsing whatever squid.conf options are needed to be parsed for that module. Let's ignore how that parsing is done for now. Let's ignore how the module decides which parts of squid.conf are relevant to that module. Let's ignore how squid.conf is presented to the module. Created Config objects are assembled into a Squid Config object. Let's ignore how that is done and by whom. That Squid Config object, with no runtime effect, is the ultimate result of step1. If a module fails to produce a valid Config object, step1 aborts.
+ 2. During the second step, each module validates its Config object in the context of other Config objects where necessary. This step can be merged with step1, but it is better to keep it separate for several reasons. One reason is to allow for inter-module checks such as "My config option Foo requires option Bar in module M2. Is M2::Bar specified?". You cannot do such checks during parsing because module M2 may be creating its Config after we created ours. Also note that if some module decides to merge step1 and step2, it is free to do so. Such module will just always say "yes, this config is valid" for step2.
+ 3. During the third step, each module applies its Config object (i.e., makes the supplied Config object "current"). This step must be separate and last because we do not want to leave Squid in a partially configured state. If squid.conf became invalid, reconfiguration should be a no-op (except error messages and such).
+
+Ignoring all other details, do you see any serious problems with the above?
+
+-- AlexRousskov <<DateTime(2009-04-29T14:24:49-0700)>>
