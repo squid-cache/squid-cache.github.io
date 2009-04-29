@@ -79,3 +79,27 @@ I agree that in most cases the code is more accurate than the documentation, and
 Please remind that the main purpose for the template is to avoid the documentor the hassle of having to actually _learn_ doxygen, replacing this for a 'copy,paste'n edit' approach.
 
 -- FrancescoChemolli <<DateTime(2009-04-28T22:22:42Z)>>
+
+----
+<<Anchor(C6)>>
+
+{{{
+almost all clauses are optional. Everything else is left to the good sense of the documentor. 
+}}}
+
+Until we get skillful documetors on board, I do not think it is a good idea to present a 30-line template and hope that the documentor will come to her senses and cut most of the stuff out when documenting a simple 5-line function. At least that is not a good idea unless your goal is to get patches where every method is prefixed with 30 lines of mostly useless comments based on a copy-pasted template.
+
+If we provide templates, let's provide the minimum one-line template and then document what can be added, with elaborate examples if needed. Like you, I do not want the documentor to learn Doxygen. However, I am more concerned about the reviewer who may have to tell the documentor that 1000 lines of painfully detailed comments and copy-pasted templates should be removed. It is much easier to suggest that a few missing details are added than to ask that the results of the hard work should be removed.
+
+FWIW, the one-line template may look like this:
+
+{{{
+/// One-line description of effect, without restating the function name in English. 
+functionName()
+{
+  ...
+}
+}}}
+
+
+-- AlexRousskov <<DateTime(2009-04-29T15:08:31-0700)>>
