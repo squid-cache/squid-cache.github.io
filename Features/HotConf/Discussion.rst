@@ -371,7 +371,7 @@ We should either make smaller steps or discuss this online. I will try the forme
 In my model, there are two most important design decisions:
 
  a. Each module has its own Config class (i.e., Module::Config), inherited from some common base !ModuleConfig class. Only module M users know the details of M::Config. Others just know it is an instance of the base !ModuleConfig class, with a few common methods for reporting and such. Configs from all modules are collected into one !SquidConfig class, but that is not important in most cases. The exact shape of that !SquidConfig class is not important for now.
- a. A module Config object has no runtime effect on Squid except when it is used as the "current" config for the module. For each module, many, possibly conflicting, Config objects might exist at the same time, but there is only one current config for each module and for Squid as a whole.
+ b. A module Config object has no runtime effect on Squid except when it is used as the "current" config for the module. For each module, many, possibly conflicting, Config objects might exist at the same time, but there is only one current config for each module and for Squid as a whole.
 
 And there are three most important configuration and reconfiguration steps:
 
@@ -382,3 +382,65 @@ And there are three most important configuration and reconfiguration steps:
 Ignoring all other details, do you see any serious problems with the above?
 
 -- AlexRousskov <<DateTime(2009-04-29T14:24:49-0700)>>
+
+----
+<<Anchor(C8)>>
+
+Yes I think we are definitely talking to different things. I will try harder to catch you on IRC about the fine details of the processing.
+
+For now I will concentrate on your design for the config objects and point out where I disagree instead of comparing:
+
+{{{
+ a. Each module has its own Config class (i.e., Module::Config), inherited from some common base !ModuleConfig class. Only module M users know the details of M::Config. Others just know it is an instance of the base !ModuleConfig class, with a few common methods for reporting and such. Configs from all modules are collected into one !SquidConfig class, but that is not important in most cases. The exact shape of that !SquidConfig class is not important for now.
+}}}
+
+You make 3 design choices above.
+ * ''Module::Config existence''. I agree and am coding with you in SourceLayout for this.
+ * ''Module::Config inheriting from a base class''. May be useful if the API methods are to be virtual. The only use I see for this is the cachemgr config 'dump' display. I could go either way here.
+ * ''Module::Config being integrated into a Squid::Config''. This worries me. A _lot_ of the current dependency loops in Squid are directly caused by the existence of struct SquidConfig. I was under the impression that the cleanup work was dropping such dependency. We need to clarify this further.
+
+
+{{{
+ b. A module Config object has no runtime effect on Squid except when it is used as the "current" config for the module. For each module, many, possibly conflicting, Config objects might exist at the same time, but there is only one current config for each module and for Squid as a whole.
+}}}
+
+I disagree with ''For each module, many, possibly conflicting, Config objects might exist at the same time''. I see no cause for more than 2 to exist at the same time for any given module. One active config. One shadow config being altered.
+
+More than 2 config objects and we enter realms of state maintenance and merge complexity which I strongly believe are unnecessary to even consider allowing inside Squid.
+
+----
+I think we begin to differ wildly on the reconfiguring process.
+
+I break step (1) down to show how/why we differ in view here and seek to understand what you are talking about...
+
+''1. During the first step, each Module creates its Config object by parsing whatever squid.conf options are needed to be parsed for that module.''
+  * Agreed. So far we are mostly in-sync, only the meaning of ''creates'' vs ''fills'' could be confusion or difference.
+ a. ''Let's ignore how that parsing is done for now.''
+  * I get worried. But okay.
+ b. ''Let's ignore how the module decides which parts of squid.conf are relevant to that module.''
+  * Here we hit a vital assumption. I don't think we _can_ ignore it.
+  * How this happens defines critically whether we are doing '''fill Module::Config''' or '''create Module::Config''' (with strict state of existence meanings to those words).
+  * How this happens defines large parts of the parser (okay we ignoring that).
+  * How these decisions are made defines how many little Module::Config are left floating around inside Squid and how we reference to them.
+  * How many ModuleX::Config instances we have defines how we handle correlating them back together.
+ c. ''Let's ignore how squid.conf is presented to the module.''
+  * Another vital assumption. I don't think we can ignore this one either.
+  * How this is presented defines what configuration states which can exist.
+  * Backward compatibility adds a lot of constraints.
+  * How the constraints are handled by the Module::Config states defines how relevant squid.conf parts are detected. (see the loop?)
+ d. ''Created Config objects are assembled into a Squid Config object. Let's ignore how that is done and by whom.''
+  * Another vital assumption we can't just ignore.
+  * IMO unnecessary as stated.
+  * The only use I see here is to allow calling of the Module::Config API methods.
+  * We need to clarify what you are trying to achieve with this.
+  * This one defines whether or not we _can_ handle more than one Module::Config object at all.
+  * Also defines the central core step of what is termed hot-config, which I thought we were aiming at a design for.
+ e.''That Squid Config object, with no runtime effect, is the ultimate result of step1. If a module fails to produce a valid Config object, step1 aborts.''
+  * IMO the super-object does not need to even exist as a data construct.
+  * It can exist perfectly well as an information state.
+  * Fatal error at any point up or down the configure system is a fatal error, not just the data currently held at sub-system terminus.
+
+The other steps (2) and (3) only make sense under the basic assumptions you are making for the above step. Until we agree on step (1) design I think we should skip them.
+
+
+-- AmosJeffries <<DateTime(2009-04-30T15:51:00+1200)>>
