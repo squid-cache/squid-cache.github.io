@@ -103,3 +103,19 @@ functionName()
 
 
 -- AlexRousskov <<DateTime(2009-04-29T15:08:31-0700)>>
+
+
+----
+<<Anchor(C8)>>
+
+{{{
+Until we get skillful documetors on board, I do not think it is a good idea to present a 30-line template and hope that the documentor will come to her senses and cut most of the stuff out when documenting a simple 5-line function.
+}}}
+
+At this time it's not really a problem, as I'm the only one actively working on this.
+
+I agree that also suggesting a one-line template is a good idea. But I would also like that when a more complex documentation is needed, then all instances follow the same layout and general structure. Least-surprise principle..
+
+For a practical example of how it may end up looking like, please see http://bazaar.launchpad.net/~kinkie/squid/documentation/annotate/head%3A/src/ip/IpAddress.h .
+
+-- FrancescoChemolli <<DateTime(2009-04-30T07:11:28Z)>>
