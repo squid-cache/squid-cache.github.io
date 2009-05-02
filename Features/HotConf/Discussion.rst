@@ -371,7 +371,7 @@ We should either make smaller steps or discuss this online. I will try the forme
 In my model, there are two most important design decisions:
 
  a. Each module has its own Config class (i.e., Module::Config), inherited from some common base !ModuleConfig class. Only module M users know the details of M::Config. Others just know it is an instance of the base !ModuleConfig class, with a few common methods for reporting and such. Configs from all modules are collected into one !SquidConfig class, but that is not important in most cases. The exact shape of that !SquidConfig class is not important for now.
- b. A module Config object has no runtime effect on Squid except when it is used as the "current" config for the module. For each module, many, possibly conflicting, Config objects might exist at the same time, but there is only one current config for each module and for Squid as a whole.
+ a. A module Config object has no runtime effect on Squid except when it is used as the "current" config for the module. For each module, many, possibly conflicting, Config objects might exist at the same time, but there is only one current config for each module and for Squid as a whole.
 
 And there are three most important configuration and reconfiguration steps:
 
