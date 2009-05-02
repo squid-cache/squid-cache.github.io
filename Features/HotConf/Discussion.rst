@@ -468,3 +468,18 @@ From the design point of view, 2 or 22 should make no significant difference at 
 So these are settled, I think. Let's call that progress!
 
 -- AlexRousskov <<DateTime(2009-05-01T22:54:46-0700)>>
+
+----
+<<Anchor(C10)>>
+
+I believe we have rough agreement on the high-level definition for the first configuration step, despite that you think you cannot ignore some of the details. As long as you agree that my high-level statements _may_ be correct (if we do the details right), we are in agreement.
+
+I think we can ignore most of what you are worried about until the high-level steps are agreed upon. One can always ignore things until there is nothing to argue about (with a risk that some high-level decisions would have to be redone when details are considered)! However, let's try to nail at least two of these concerns now:
+
+1. I do not really understand the "creation versus fill" problem. I think we will create _and_ fill. Clearly, the module will create its own Config object: The module knows the actual Module::Config type. The Configurator (i.e., Squid code performing the high-level configuration steps) does not use and should not know that specific type. The created object will then be filled with specific values based on the actual configuration file. We cannot immediately create a filled object so this "filling" process seems to be reasonable and necessary. Whether the module code will fill Config or Config will fill itself is not important for now.
+
+2. Existence of a "cumulative config" class called !SquidConfig or similar. Again, I doubt we can or should avoid it. C9 above gives one motivation: cross-module config validation. We cannot check whether future module M1 config is consistent with future module M2 config if we do not have access to both future configs from the same place. Thus, we need to store all future configs somewhere before we can validate and apply them. That storage is !SquidConfig. Other uses include reporting and persistent storage: neither should know the list of all modules (by name) and, hence, both would need some kind of "config container". I hope the fact that I am not proposing a monolithic structure with "Module1::Config c1; Module2::Config c2; ..." as members addresses your corresponding concerns.  
+
+If the above is satisfactory, let's try to move on to step2 discussion and come back to the lower-level details as needed.
+
+-- AlexRousskov <<DateTime(2009-05-01T23:29:04-0700)>>
