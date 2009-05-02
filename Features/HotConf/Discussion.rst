@@ -444,3 +444,27 @@ The other steps (2) and (3) only make sense under the basic assumptions you are 
 
 
 -- AmosJeffries <<DateTime(2009-04-30T15:51:00+1200)>>
+
+<<Anchor(C9)>>
+
+Your first two worries are non-issues, I think:
+
+{{{
+"Module::Config being integrated into a Squid::Config" worries me. A _lot_ of the current dependency loops in Squid are directly caused by the existence of struct SquidConfig. I was under the impression that the cleanup work was dropping such dependency. We need to clarify this further.
+}}}
+
+Integration does not mean we are going to have a struct comprising of individual module configuration members. We may have a searchable collection of !ModuleConfig pointers (one for each module) or something of that kind. The resulting !SquidConfig class will not know about individual modules. We most likely need a "single config" class so that we can pass global configuration around to code that needs it. 
+
+For example, during validation step, some code may need access to Module::Config objects from various modules and that code cannot just ask modules themselves because those Module::Config objects have not been applied/stored yet. 
+
+{{{
+I disagree with ''For each module, many, possibly conflicting, Config objects might exist at the same time''. I see no cause for more than 2 to exist at the same time for any given module. One active config. One shadow config being altered.
+}}}
+
+I agree that we probably do not need more than two Config objects per module in the Squid executable. Some future configuration-related tools might deal with more (e.g., some kind of a config upgrade tool with user input capability and an undo or history operation).
+
+From the design point of view, 2 or 22 should make no significant difference at this stage though. I said "many" to emphasize that the Config objects are not assumed to be well-known global singulars, tied to their module state like we have them now (at best). They will be "regular" objects that one could multiply as needed.
+
+So these are settled, I think. Let's call that progress!
+
+-- AlexRousskov <<DateTime(2009-05-01T22:54:46-0700)>>
