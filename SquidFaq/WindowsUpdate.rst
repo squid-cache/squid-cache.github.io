@@ -26,9 +26,13 @@ acl windowsupdate dstdomain c.microsoft.com
 acl windowsupdate dstdomain www.download.windowsupdate.com
 acl windowsupdate dstdomain wustat.windows.com
 acl windowsupdate dstdomain crl.microsoft.com
+acl windowsupdate dstdomain sls.microsoft.com
+acl windowsupdate dstdomain productactivation.one.microsoft.com
+acl windowsupdate dstdomain ntservicepack.microsoft.com
 
 acl CONNECT method CONNECT
 acl wuCONNECT dstdomain www.update.microsoft.com
+acl wuCONNECT dstdomain sls.microsoft.com
 
 http_access allow CONNECT wuCONNECT localnet
 http_access allow windowsupdate localnet
