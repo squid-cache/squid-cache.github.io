@@ -27,7 +27,7 @@ Features which have not reached completion or have failed the audit, are automat
 = Squid 3.0 =
 
 Now in '''STABLE''' cycle.
-The features have largely been set and large code changes are reserved for later versions. Additions are limited to '''Security fixes'''
+The features have largely been set and large code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
 
 Basic new features in 3.0
 
@@ -84,7 +84,7 @@ Basic new features in 3.1
 Packages of squid 3.1 source code are available at
 http://www.squid-cache.org/Versions/v3/3.1/
 
-== Remaining TODO ==
+== Remaining 3.1 TODO ==
 
 Features under development:
  * [[Features/SourceLayout]] <<Include(Features/SourceLayout,,,from="ETA.*:",to="$")>>
@@ -93,9 +93,9 @@ Features under development:
 = Squid 3.2 (HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be requested, suggested, or added to the plan at any time until the branching of 3.2 which will probably not happen sooner than May 2009 or February 2010, depending on who you ask.
+The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will probably not happen sooner than June 2009 or February 2010, depending on who you ask.
 
-The intention is to remove the backlog of feature parity between 2.7 and 3.2 (listed as regressions in 3.1 http://www.squid-cache.org/Versions/v3/3.1/RELEASENOTES.html#s7) and concentrate on performance improvements.
+The intention is to remove the backlog of feature parity between 2.7 and 3.2 (listed as regressions in 3.1 http://www.squid-cache.org/Versions/v3/3.1/RELEASENOTES.html#s7) and concentrate on further performance and HTTP/1.1 improvements.
 
 == Done ==
 
@@ -105,7 +105,10 @@ The intention is to remove the backlog of feature parity between 2.7 and 3.2 (li
 Development snapshots of Squid source code are available at
 http://www.squid-cache.org/Versions/v3/HEAD/
 
-== TODO ==
+= TODO =
+
+These are the feature we are trying to work on at present. New features may be requested, suggested, or added to the plan at any time. Those which are completed and merged will be in the next formal branch after their merge date.
+
 
 ##  * [:Features/FEATURE_ID_HERE] <<Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")>>
 
@@ -136,7 +139,7 @@ Features considered high-priority for including with 3.2, but not yet with a ded
 
  There is also a list of [[/Tasks|Tasks]] which anyone can help with.
 
-== Wish List ==
+= Wish List =
 
 Wishlist consists of features which have been suggested or requested but do not yet have a developer or any contributor willing to see the feature completed and support it.
 
