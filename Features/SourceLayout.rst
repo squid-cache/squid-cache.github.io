@@ -85,5 +85,22 @@ If you know the solution or can improve the proposed one, please write to squid-
 || Should we form a generic mini-cache object type to combine the shared portions of fqdncache, ipcache, idns queue, netdb, ident-cache, maybe others not yet found? || Probably, that will be a separate feature event though. ||
 || What to do with all the mixed test* and stub_* files during this restructure? || AYJ: I'm sticking them in the same folder as the code, and prefixing with test* and stub* as needed. ||
 
+=== Other: ===
+'''Explicit initialization vs self-initialization'''
+{{{
+The more I think on this the more I am of the opinion that using
+self-registering static/global objects as method of initialization &
+registration is generally a mistake. Better if each such class have a
+method for initialization, with initialization order explicitly coded in
+the main program. Also makes transition to runtime loaded modules easier
+and less intrusive as each module can assume the modules it registers
+into has been properly initialized already which means it can do a full
+initialization.
+
+Regards
+Henrik
+}}}
+
+
 ----
 CategoryFeature
