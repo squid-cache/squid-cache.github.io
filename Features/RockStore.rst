@@ -22,6 +22,14 @@
 
  * '''More''':
 
+ * '''Related Bugs''':
+  1. http://www.squid-cache.org/bugs/show_bug.cgi?id=7
+  2. http://www.squid-cache.org/bugs/show_bug.cgi?id=498
+  3. http://www.squid-cache.org/bugs/show_bug.cgi?id=1581
+  4. http://www.squid-cache.org/bugs/show_bug.cgi?id=2487
+  5. http://www.squid-cache.org/bugs/show_bug.cgi?id=2543
+  6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2155
+  7. http://www.squid-cache.org/bugs/show_bug.cgi?id=2359
 
 == Scope ==
 
