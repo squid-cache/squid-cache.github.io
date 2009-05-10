@@ -11,7 +11,7 @@
 
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
- * '''ETA''': What is the estimated time of completion? Use either number of calendar days for not started features. Use an absolute date for started and completed features. Use ''unknown'' if unknown.
+ * '''ETA''': unknown
 
  * '''Version''': none yet
 
