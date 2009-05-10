@@ -23,13 +23,40 @@
  * '''More''':
 
  * '''Related Bugs''':
-  1. http://www.squid-cache.org/bugs/show_bug.cgi?id=7
-  2. http://www.squid-cache.org/bugs/show_bug.cgi?id=498
-  3. http://www.squid-cache.org/bugs/show_bug.cgi?id=1581
-  4. http://www.squid-cache.org/bugs/show_bug.cgi?id=2487
-  5. http://www.squid-cache.org/bugs/show_bug.cgi?id=2543
-  6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2155
-  7. http://www.squid-cache.org/bugs/show_bug.cgi?id=2359
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=7
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=410
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=424
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=457
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=498
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=537
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=761
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1284
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1581
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1791
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1830
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1926
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1927
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1944
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2013
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2140
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2155
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2160
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2259
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2313
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2316
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2336
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2359
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2409
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2428
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2472
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2487
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2488
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2532
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2543
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2551
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2558
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2570
+  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2649
 
 == Scope ==
 
