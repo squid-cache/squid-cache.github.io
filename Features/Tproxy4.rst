@@ -133,7 +133,8 @@ It may also be seen only at startup due to unrelated issues:
 
 == Traffic going through Squid but the timing out ==
 
-This is usually seen when the network design prevents packets coming back to Squid. To prevent this the current design in Squid only spoofs the traffic seen by the Client.
+This is usually seen when the network design prevents packets coming back to Squid.
+## To prevent this the current design in Squid only spoofs the traffic seen by the Client.
 
  * Check that the Routing portion of the config above is set correctly.
  * Check that the ''DIVERT'' is done before ''TPROXY'' rules in iptables '''PREROUTING''' chain.
