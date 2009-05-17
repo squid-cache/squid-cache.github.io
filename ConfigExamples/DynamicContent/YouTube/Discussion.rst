@@ -57,7 +57,7 @@ add this to squid.conf
 {{{
 #  The keyword for all youtube video files are "get_video?", "videodownload?" and "videoplaybeck?id" 
 #  The "\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?" is only for pictures and other videos
-acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback\?id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\? \/ads\? 
+acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback.*id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\? \/ads\? 
 acl store_rewrite_list_web url_regex ^http:\/\/([A-Za-z-]+[0-9]+)*\.[A-Za-z]*\.[A-Za-z]*
 acl store_rewrite_list_path urlpath_regex \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)$
 acl store_rewrite_list_web_CDN url_regex ^http:\/\/[a-z]+[0-9]\.google\.com doubleclick\.net
