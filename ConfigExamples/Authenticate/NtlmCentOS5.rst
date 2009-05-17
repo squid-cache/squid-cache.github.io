@@ -88,7 +88,7 @@ auth_param ntlm keep_alive on
 acl our_networks 192.168.0.0/24 192.168.1.0/24
 
 acl ntlm proxy_auth REQUIRED
-http_access allow ntlm our_networks
+http_access allow our_networks ntlm
 }}}
   * This is not an inclusive set of parameters for Squid to function but is what is required for the authentication portion.
 
