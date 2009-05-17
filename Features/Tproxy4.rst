@@ -100,6 +100,19 @@ set net.ipv4.forwarding = 1
 
 = Troubleshooting =
 
+== Squid not spoofing the client IP ==
+
+Could be a few things. Check cache.log for messages like those listed here in Troubleshooting.
+
+== Stopping full transparency: Error enabling needed capabilities. ==
+
+Something went wrong while setting advanced privileges. What exactly, we don't know at this point.
+Unfortunately its not logged anywhere either. Perhaps your syslog will have details recorded by the OS.
+
+== Stopping full transparency: Missing needed capability support. ==
+
+'''libcap''' support appears to be missing.  The library needs to be built into Squid so a rebuild is required after installed the related packages for your system.
+
 == commBind: cannot bind socket FD X to X.X.X.X: (99) cannot assign requested address ==
 
 This error has many reasons for occurring.
