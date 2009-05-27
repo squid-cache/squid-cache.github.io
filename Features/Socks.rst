@@ -9,15 +9,15 @@
 
  * '''Goal''': To add SOCKS support to Squid.
 
- * '''Status''': not started
+ * '''Status''': Testing.
 
  * '''ETA''': unknown
 
- * '''Version''': Squid-3
+ * '''Version''': 3.2
 
- * '''Priority''': 
+ * '''Priority''': 2
 
- * '''Developer''':
+ * '''Developer''': AmosJeffries
 
 ## * '''More''':
 
@@ -41,6 +41,10 @@ Adding:
 I'm not certain at this point if a new socks_port config option is called for to open the socks port. Easy enough to add if needed.
 A socks_outbound <port> option may also be needed for outbound SOCKS bindings.
 A new COMM_SOCKSBIND flag will be needed to the comm_open*() calls for the listener binding, outbound maybe a config setting acting on the bind() choice directly.
+
+----
+
+I've had a bit of time too short to do anything much and created a branch that is supposed to do listening port and SOCKS peers. When I get it building I'll push to launchpad for anyone interested to test.
 
 ----
 CategoryFeature
