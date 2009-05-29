@@ -9,7 +9,7 @@ to trusted hosts and/or users.
 
 If your proxy allows access from untrusted hosts or users, you can be
 sure that people will find and abuse your service.  Some people
-will use your proxy to make their browsing anonymous.  Others will
+will use your proxy to make their browsing semi-anonymous.  Others will
 intentionally use your proxy for transactions that may be illegal
 (such as credit card fraud).  A number of web sites exist simply
 to provide the world with a list of open-access HTTP proxies.  You
