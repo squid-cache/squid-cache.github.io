@@ -42,7 +42,7 @@ Key:
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
 || :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* || C++ convert net_db* ||
-||  || ''ident/'' || Ident support || ident.* ||
+|| :\ || ''ident/'' || Ident support || ident.* || Make remote connection handling into an AsyncJob||
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* (later: logdaemon) ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
