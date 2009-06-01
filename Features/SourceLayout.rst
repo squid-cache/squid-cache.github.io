@@ -30,7 +30,7 @@ Key:
 || (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 || :\ || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
-|| {1} || ''base/'' || Commonly used code whithout a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* SquidString.* ||
+|| {1} || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* SquidString.* ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
@@ -41,9 +41,9 @@ Key:
 || :\ || ''fs/'' || file system-specific cache store support? || fs/* || Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
-|| :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* || C++ convert net_db* ||
+|| :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* || C++ convert net_db*, Add Icmp namespace and rename classes ||
 || :\ || ''ident/'' || Ident support || ident.* || Make remote connection handling into an AsyncJob||
-|| (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
+|| :\ || ''ip/'' || IP Protocol || Ip* Qos* || Add Ip Namespace and rename classes ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* (later: logdaemon) ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
