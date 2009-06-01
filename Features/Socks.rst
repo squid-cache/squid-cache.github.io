@@ -1,17 +1,15 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-##
-## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted no
 
 = Feature: SOCKS Support =
 
  * '''Goal''': To add SOCKS support to Squid.
 
- * '''Status''': Testing.
+ * '''Status''': Testing. Code available.
 
- * '''ETA''': unknown
+ * '''ETA''': Dec 2009
 
  * '''Version''': 3.2
 
