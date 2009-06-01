@@ -34,6 +34,11 @@ $IPTABLES -t mangle -A PREROUTING -i $INPUTINTERFACE -p tcp --dport 80 -j MARK -
 $IPTABLES -t mangle -A PREROUTING -m mark --mark 2 -j ACCEPT
 }}}
 
+NP: Ensure that traffic from inside the network is allowed to loop back inside again.
+{{{
+$IPTABLES -t filter -A FORWARD -i $INTERNALIFACE -o $INTERNALIFACE -p tcp --dport 80 -j ACCEPT
+}}}
+
 === Routing Setup ===
 
 Needs to be run as root.
