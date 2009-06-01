@@ -21,24 +21,36 @@ You also need to configure the squid machine to handle the traffic it receives. 
 
 There's no obvious policy routing in Linux - you use iptables to mark interesting traffic, iproute2 ip rules to choose an alternate routing table and a default route in the alternate routing table to policy route to the distribution.
 
-Please realise that this just gets the packets to the cache; you have to then configure transparent interception on the cache to redirect traffic to the Squid TCP port!
+Please realize that this just gets the packets to the cache; you have to then configure interception on the cache itself to redirect traffic to the Squid TCP port!
 
-("201" is just a unique routing table number. Check the file contents first!)
+=== iptables Setup ===
 
 {{{
+# permit Squid box out to the Internet
+$IPTABLES -t mangle -A PREROUTING -p tcp --dport 80 -s  $PROXYIP -j ACCEPT
 
-Run as root:
-
-# echo "201   proxy" > /etc/iproute2/rt_tables
-# ip rule add fwmark 2 table proxy
-# ip route add default via PROXYIP table proxy
-
-IP Tables line:
-
-$IPTABLES -t mangle -A PREROUTING -i INPUTINTERFACE -p tcp --dport 80 -j MARK --set-mark 2
+# mark everything else on port 80 to be routed to the Squid box
+$IPTABLES -t mangle -A PREROUTING -i $INPUTINTERFACE -p tcp --dport 80 -j MARK --set-mark 2
 $IPTABLES -t mangle -A PREROUTING -m mark --mark 2 -j ACCEPT
-
 }}}
+
+=== Routing Setup ===
+
+Needs to be run as root.
+
+ /!\ "201" is just a unique routing table number. Check the file contents first!
+
+Create a routing table for our intercepted proxy traffic
+{{{
+echo "201   proxy" >> /etc/iproute2/rt_tables
+}}}
+
+Configure what traffic gets handled by that table (stuff marked 2 earlier by iptables), and create a default route for it to the squid box at '''$PROXYIP'''.
+{{{
+ip rule add fwmark 2 table proxy
+ip route add default via $PROXYIP table proxy
+}}}
+
 
 ----
 CategoryConfigExample
