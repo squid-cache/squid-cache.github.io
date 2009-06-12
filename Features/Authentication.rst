@@ -1,5 +1,6 @@
 ## page was renamed from SquidFaq/ProxyAuthentication
 #language en
+#faqlisted yes
 
 = Proxy Authentication =
 
