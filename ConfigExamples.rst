@@ -33,6 +33,7 @@ Choose a good WikiName for your new example and enter it here:
 == Current configuration examples ==
 
 === Authentication ===
+[[Features/Authentication|Overview and explanation]]
 <<FullSearchCached(title:regex:^ConfigExamples/Authenticate/.*$)>>
 
 === Interception ===
