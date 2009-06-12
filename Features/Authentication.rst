@@ -1,4 +1,7 @@
 #language en
+
+= Proxy Authentication =
+
 <<TableOfContents>>
 
 == How does Proxy Authentication work in Squid? ==
