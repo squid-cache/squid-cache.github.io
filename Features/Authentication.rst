@@ -10,15 +10,11 @@ Browsers send the user's authentication credentials in the
 ''Authorization'' request header.
 
 If Squid gets a request and the ''http_access'' rule list
-gets to a ''proxy_auth'' ACL, Squid looks for the ''Authorization''
-header.  If the header is present, Squid decodes it and extracts
+gets to a ''proxy_auth'' ACL or an external ACL with ''%LOGIN'' parameter, Squid looks for the ''Authorization'' header.  If the header is present, Squid decodes it and extracts
 a username and password.
 
-If the header is missing, Squid returns
-an HTTP reply with status 407 (Proxy Authentication Required).
-The user agent (browser) receives the 407 reply and then prompts
-the user to enter a name and password.  The name and password are
-encoded, and sent in the ''Authorization'' header for subsequent
+If the header is missing, Squid returns an HTTP reply with status 407 (Proxy Authentication Required).
+The user agent (browser) receives the 407 reply and then attempts to locate the users credentials. Sometimes this means a background lookup, sometimes a popup prompt for the user to enter a name and password.  The name and password are encoded, and sent in the ''Authorization'' header for subsequent
 requests to the proxy.
 
 
@@ -92,8 +88,20 @@ http_access allow foo
 http_access deny all
 }}}
 
-The REQUIRED term means that any authenticated user will match the
+The REQUIRED term means that any already authenticated user will match the
 ACL named ''foo''.
+
+ /!\ Not that '''allow''' will NOT trigger the 407 authentication denial to fetch new auth details if the user is not correctly logged in already. Some browsers will send ''anonymous'' auth details by default.
+
+A slightly better way to do this and ensure the browser auth gets validated is:
+{{{
+acl foo proxy_auth REQUIRED
+http_access deny !foo
+http_access allow localnet
+http_access deny all
+}}}
+
+
 
 Squid allows you to provide fine-grained controls
 by specifying individual user names.  For example:
@@ -101,8 +109,8 @@ by specifying individual user names.  For example:
 acl foo proxy_auth REQUIRED
 acl bar proxy_auth lisa sarah frank joe
 acl daytime time 08:00-17:00
-http_access allow bar
 http_access allow foo daytime
+http_access allow bar
 http_access deny all
 }}}
 
@@ -123,6 +131,7 @@ A simple configuration will probably look like this:
 {{{
 acl my_auth proxy_auth REQUIRED
 http_access allow my_auth
+http_access deny !my_auth
 http_access deny all
 }}}
 
@@ -208,9 +217,9 @@ Squid stores cleartext passwords in its basic authentication memory cache.
 
 Squid writes cleartext usernames and passwords when talking to
 the external basic authentication processes.  Note, however, that this
-interprocess communication occors over TCP connections bound to
-the loopback interface or private UNIX pipes.  Thus, its not possile
-for processes on other comuters or local users without root privileges
+interprocess communication occurs over TCP connections bound to
+the loopback interface or private UNIX pipes.  Thus, its not possible
+for processes on other commuters or local users without root privileges
 to "snoop" on the authentication traffic.
 
 Each authentication program must select its own scheme for persistent
@@ -268,7 +277,7 @@ For all other auth-schemes this cannot be done; this is not a limitation in squi
 
 == Authentication in interception and transparent modes ==
 
-Simply said, it's not possible to authenticate users using proxy authentication schemes when running in interception or transparent modes. See ../InterceptionProxy for details on why.
+Simply said, it's not possible to authenticate users using proxy authentication schemes when running in interception or transparent modes. See [[SquidFaq/InterceptionProxy]] for details on why.
 
 
 == Other Resources ==
