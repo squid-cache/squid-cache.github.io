@@ -1,3 +1,4 @@
+## page was renamed from SquidFaq/ProxyAuthentication
 #language en
 
 = Proxy Authentication =
