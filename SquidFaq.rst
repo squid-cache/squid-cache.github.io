@@ -41,7 +41,6 @@
  * /NetworkOptimizations
 
 ==== Features ====
- * /ProxyAuthentication: how to authenticate your users (mostly against MS Windows domains)
  * /SquidLogs: writing and most important '''reading''' the various squid log files
  * /SquidMemory describes how squid uses RAM and how to optimize its usage
  * /CacheManager explains how to use the Cache Manager to profile how squid is working
