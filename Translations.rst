@@ -5,7 +5,7 @@
 = Internationalization of Squid =
 
  * '''Goal''': To make Squid error pages available in many languages.
- * '''Status''': Translations needed. Code being tested.
+ * '''Status''': Translations needed.
  * '''Version''': 2.5+ (langpacks), 3.1+ (auto-negotiate, CSS)
  * '''Download''': [[http://www.squid-cache.org/Versions/langpack/]]
  * '''Coordinator''': AmosJeffries. Anyone can contribute translations.
