@@ -23,36 +23,6 @@ All features must pass an auditing process for commit to HEAD, and any feature w
 
 Features which have not reached completion or have failed the audit, are automatically delayed to the next Squid release. Which should not be an unreasonable delay given the new fast-track release plan.
 
-
-= Squid 3.0 =
-
-Now in '''STABLE''' cycle.
-The features have largely been set and large code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
-
-Basic new features in 3.0
-
- * [[../../Features/ICAP|ICAP (Internet Content Adaptation Protocol)]]
- * ESI (Edge Side Includes)
- * HTTP status ACL
- * Control Path-MTU discovery
- * Weighted Round-Robin peer selection mechanism
- * Per-User bandwidth limits (class 4 delay pool)
-
-From STABLE 2
- * [[Features/ConfigIncludes|include Directive]]
- * Port-name ACL
-
-From STABLE 6
- * umask Support
-
-From STABLE 8
- * userhash Peer Selection
- * sourcehash Peer Selection
- * cachemgr.cgi Sub-Actions
-
-Packages of squid 3.0 source code are available at
-http://www.squid-cache.org/Versions/v3/3.0/
-
 = Squid 3.1 =
 
 Now in '''RELEASE CANDIDATE''' cycle.
