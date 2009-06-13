@@ -4,7 +4,7 @@
 
 During 2006 and 2007 AdrianChadd continued to develop the Squid-2 branch post- [[Squid-2.6]] to meet performance, scalability and functionality demands in high-performance environments. Additional patches and features continued to be provided by interested users as well.
 
-Unfortunately most of them were not ported to Squid-3 which compounded the problem begun with [[Squid-2.6]]. These features developed specifically for high-performance needs were found to be large enough to gather for an additional [[Squid-2.7]] release in parallel with the maturing [[Squid-3.0]].
+Unfortunately most of them were not ported to [[Squid-3.0]] which compounded the problem begun with [[Squid-2.6]]. These features developed specifically for high-performance needs were found to be large enough to gather for an additional [[Squid-2.7]] release in parallel with the maturing [[Squid-3.0]].
 
 <<Include(RoadMap/Squid2, ,1,from="^##content27",to="^##endcontent27")>>
 
