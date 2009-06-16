@@ -10,41 +10,22 @@
  * '''Download''': [[http://www.squid-cache.org/Versions/langpack/]]
  * '''Coordinator''': AmosJeffries. Anyone can contribute translations.
 
+<<TableOfContents>>
+
+== Volunteer Translation Moderators ==
 Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
 
 ||<-2> '''Language''' || '''Translations verified by:''' ||
 || Bulgarian || bg || Evgeni Gechev ||
 || German || de || Constantin Rack and  Robert Förster ||
-|| English || en, en-au, en-gb || AmosJeffries (Squid Project) ||
+|| English || en, en-au, en-gb, en-us, en-nz || AmosJeffries (Squid Project) ||
 || Persian || fa || Mohsen Saeedi (Fedora Project) ||
 || Italian || it || FrancescoChemolli (Squid Project) ||
 || Dutch (Nederland) || nl || Rene Wijninga ||
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
 || Swedish || sv || HenrikNordstrom (Squid Project) ||
 ## || Turkish || tr || Umut Çinar ||
-||<|99> Others || ||<|99> '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
-|| Arabic (ar) ||
-|| Azerbaijani (az) ||
-|| Catalan (ca) ||
-|| Czech (cs) ||
-|| Danish (da) ||
-|| Greek (el) ||
-|| Finnish (fi) ||
-|| French (fr) ||
-|| Spanish (es) ||
-|| Estonian (et) ||
-|| Armenian (hy) ||
-|| Indonesian (id) ||
-|| Japanese (ja) ||
-|| Latvian (lv) ||
-|| Romanian (ro) ||
-|| Russian (ru) ||
-|| Serbian (sr) ||
-|| Turkish (tr) ||
-|| Ukrainian (uk) ||
-|| Uzbek  (uz) ||
-|| Chinese (zh-cn) ||
-|| ||
+|| Others || || '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
 
 
 == Why? Squid already has translated error pages ==
@@ -91,6 +72,13 @@ Reconfigure or restart squid.
 
  {i} Languages specified by their full name (ie ''English'') are not able to be auto-negotiated. They are now deprecated and due for removal as soon as ISO coded versions are made available.
 
+=== Installing on Debian and Ubuntu ===
+
+Starting with Debian Squeeze or Ubuntu Karmic the langpack bundle is available as a package '''squid-langpack'''.
+
+Install that package and update your squid.conf settings as above. Noting that the error page files are now installed under '''/usr/share/squid-langpack'''
+
+== Troubleshooting ==
 === Now I keep getting: "Unable to load default error language files. Reset to backups." ===
 
 The language code you have entered in squid.conf for ''error_default_language'' does not match any of the currently installed error page translations.
