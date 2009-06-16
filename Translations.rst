@@ -28,11 +28,18 @@ Several people have volunteered their time to check and confirm translations to 
 || Others || || '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
 
 
-== Why? Squid already has translated error pages ==
-
-Older Squid releases are provided with a fixed set of pre-translated pages which have been gathered from many contributors over a long period. These pages naturally have a mixed set of HTML standards (mostly obsolete or deprecated) and an ever more mixed amount of information available. The format tags (%) for embedding details about the error have not always been kept in the right places, and have changed in various releases.
-
-This project brings all the error pages into an easily maintained structure for translation and future upgrades. The commonly used .PO/.POT translation format has been chosen for the dictionaries due to the wide existing community support and tools. They also allow automated translation from a single set of template files which can be easily updated.
+# == Why? Squid already has translated error pages ==
+#
+# Older Squid releases are provided with a fixed set of pre-translated pages which have been
+# gathered from many contributors over a long period. These pages naturally have a mixed set
+# of HTML standards (mostly obsolete or deprecated) and an ever more mixed amount of
+# information available. The format tags (%) for embedding details about the error have not
+# always been kept in the right places, and have changed in various releases.
+#
+# This project brings all the error pages into an easily maintained structure for translation
+# and future upgrades. The commonly used .PO/.POT translation format has been chosen for the
+# dictionaries due to the wide existing community support and tools. They also allow
+# automated translation from a single set of template files which can be easily updated.
 
 == How can I contribute? ==
 
@@ -51,6 +58,8 @@ Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Version
 
 Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
 
+ /!\ Squid older than 3.1 without an explicit error_directory entry have a default one. This may need overriding to use the new files.
+
 == What has been done? ==
 
  * More languages and new page translations
@@ -59,6 +68,8 @@ Any existing Squid which have been configured with ''error_directory'' in their 
  * Provides direct control of error page display using CSS.
 
 == So how can I do this upgrade? ==
+
+== Manual Install ==
 
 [[Squid-3.1]] admin just need to follow these steps:
 
@@ -72,9 +83,9 @@ Reconfigure or restart squid.
 
  {i} Languages specified by their full name (ie ''English'') are not able to be auto-negotiated. They are now deprecated and due for removal as soon as ISO coded versions are made available.
 
-=== Installing on Debian and Ubuntu ===
+=== Debian and Ubuntu ===
 
-Starting with Debian Squeeze or Ubuntu Karmic the langpack bundle is available as a package '''squid-langpack'''.
+The error pages bundle is available as a package '''squid-langpack''' starting with Debian Squeeze or Ubuntu Karmic Koala.
 
 Install that package and update your squid.conf settings as above. Noting that the error page files are now installed under '''/usr/share/squid-langpack'''
 
