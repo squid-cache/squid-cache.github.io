@@ -27,20 +27,6 @@ Several people have volunteered their time to check and confirm translations to 
 ## || Turkish || tr || Umut Çinar ||
 || Others || || '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
 
-
-# == Why? Squid already has translated error pages ==
-#
-# Older Squid releases are provided with a fixed set of pre-translated pages which have been
-# gathered from many contributors over a long period. These pages naturally have a mixed set
-# of HTML standards (mostly obsolete or deprecated) and an ever more mixed amount of
-# information available. The format tags (%) for embedding details about the error have not
-# always been kept in the right places, and have changed in various releases.
-#
-# This project brings all the error pages into an easily maintained structure for translation
-# and future upgrades. The commonly used .PO/.POT translation format has been chosen for the
-# dictionaries due to the wide existing community support and tools. They also allow
-# automated translation from a single set of template files which can be easily updated.
-
 == How can I contribute? ==
 
 === Suggest a translation fix ===
