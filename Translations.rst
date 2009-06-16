@@ -30,7 +30,7 @@ Several people have volunteered their time to check and confirm translations to 
 == How can I contribute? ==
 
 === Suggest a translation fix ===
-  How we do translations and who you can join in is detailed at [[Translations/Basics]]
+  How we do translations and how you can join in is detailed at [[Translations/Basics]]
 
   What you need to know to make useful translations is at [[Translations/Guidelines]]
 
