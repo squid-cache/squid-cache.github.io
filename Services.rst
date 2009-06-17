@@ -1,4 +1,3 @@
-
 = Services Offered by the Squid Project and related providers =
 
 The Squid Project is not currently a financial concern. It is run by volunteers on Donations of both money, time and occasionally equipment.
@@ -17,7 +16,7 @@ The Squid Project is not currently a financial concern. It is run by volunteers 
 
 === Free Technical support ===
 
-For current release code (alpha, beta, or stable) is provided by the team developers on the '''squid-dev''' mailing list. This is free-time support so no guarantees on time of completion or even response can be made. Please be aware that discussion on these issues should be kept public so anyone later can benefit from the one solution and minimize repeat problems.
+For current release code (experimental, release candidate beta, or stable released) is provided by the team developers on the '''squid-dev''' mailing list. This is free-time support so no guarantees on time of completion or even response can be made. Please be aware that discussion on these issues should be kept public so anyone later can benefit from the one solution and minimize repeat problems.
 
 === Paid Technical Support ===
 
@@ -26,7 +25,7 @@ These are listed at http://www.squid-cache.org/Support/services.dyn
 
 == Security Advisories ==
 
-Are provided free as email to the ''squid-announce''' mailing list alongside important release information. Also to several other relevant mailing lists and security sources as can be found by the announcer.
+Are provided free as email to the '''squid-announce''' mailing list alongside important release information. Also to several other relevant mailing lists and security sources as can be found by the announcer.
 
 A history of Advisories can be found at http://www.squid-cache.org/Advisories/
 
