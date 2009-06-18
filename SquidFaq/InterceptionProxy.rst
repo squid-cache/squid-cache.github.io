@@ -416,66 +416,10 @@ Version 7.2(1) of the cisco PIX software now also supports WCCP, allowing you to
 7.2(1) has been tested and verified to work with Squid-2.6.
 
 ===== What about WCCPv2? =====
-WCCPv2 is a new feature to Squid-2.6 and Squid-3.0.  WCCPv2 configuration is similar to the WCCPv1 configuration.  The directives in squid.conf are slightly different but are well documented within that file. Router configuration for WCCPv2 is identical except that you must not force the router to use WCCPv1 (it defaults to WCCPv2 unless you tell it otherwise).
+WCCPv2 is a new feature to [[Squid-2.6]] and [[Squid-3.0]].  WCCPv2 configuration is similar to the WCCPv1 configuration.  The directives in squid.conf are slightly different but are well documented within that file. Router configuration for WCCPv2 is identical except that you must not force the router to use WCCPv1 (it defaults to WCCPv2 unless you tell it otherwise).
 
 ===== Configuring your router =====
 There are two different methods of configuring WCCP on Cisco routers. The first method is for routers that only support V1.0 of the protocol. The second is for routers that support both.
-
-===== IOS Version 11.x =====
-For very old versions of IOS you will need this config:
-
-{{{
-conf t
-wccp enable
-!
-interface [Interface carrying Outgoing Traffic]x/x
-!
-ip wccp web-cache redirect
-!
-CTRL Z
-copy running-config startup-config
-}}}
-===== IOS Version 12.x =====
-Some of the early versions of 12.x do not have the 'ip wccp version' command. You will need to upgrade your IOS version to use V1.0.
-
-{{{
-conf t
-ip wccp version 1
-ip wccp web-cache redirect-list 150
-!
-interface [Interface carrying Outgoing/Incoming Traffic]x/x
-ip wccp web-cache redirect out|in
-!
-CTRL Z
-copy running-config startup-config
-}}}
-IOS defaults to using WCCP version 2 if you do not explicitly specify a version.
-
-Replace 150 with an access list number (either standard or extended)  which lists IP addresses which you do not wish to be transparently  redirected to your cache.  If you wish to redirect all client traffic then do not add the ip wccp web-cache redirect-list command.
-
-WCCP is smart enough that it will automatically bypass your cache from the redirection process, ensuring that your cache does not become redirected back to itself.
-
-===== IOS 12.x problems =====
-Some people report problems with WCCP and IOS 12.x.
-
-If you find that the redirection does not work properly, try turning off CEF and disabling the route-cache on the interface.  WCCP has a nasty habit of sometimes badly interacting with some other cisco features.  Note that both features result in quite significant performance penalties, so only disable them if there is no other way.
-
-IOS firewall inspection can also cause problems with WCCP and is worth disabling if you experience problems.
-
-===== Configuring you cisco PIX to run WCCP =====
-Cisco PIX is very easy to configure.  The configuration format is almost identical to a cisco router, which is hardly surprising given many of the features are common to both.  Like cisco router's, PIX supports the GRE encapsulation method of traffic redirection.
-
-Merely put this in your global config:
-
-{{{
-wccp web-cache
-wccp interface inside web-cache redirect in
-}}}
-There is no interface specific configuration required.
-
-Note that the only supported configuration of WCCP on the PIX is with the WCCP cache engine on the inside of the network (most people want this anyway).  The PIX only supports WCCPv2 and not WCCPv1.  There are some other limitations of this WCCP support, but this feature has been tested and proven to work with a simple PIX config using version 7.2(1) and Squid-2.6.
-
-You can find more information about configuring this and how the PIX handles WCCP at http://www.cisco.com/en/US/customer/products/ps6120/products_configuration_guide_chapter09186a0080636f31.html#wp1094445
 
 ==== Cache/Host configuration of WCCP ====
 There are two parts to this.  Firstly you need to configure Squid to talk WCCP, and additionally you need to configure your operating system to decapsulate the WCCP traffic as it comes from the router.
