@@ -7,8 +7,8 @@ Very important passage from the Cisco-Manual:
  * then configure following in squid.conf
 
 {{{
- http_port 3128 transparent
- wccp2_router $IP-OF-ASA 
+http_port 3128 transparent
+wccp2_router $IP-OF-ASA 
 wccp2_forwarding_method 1 
 wccp2_return_method 1
 wccp2_service standard 0 password=foo 
