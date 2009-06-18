@@ -26,11 +26,16 @@ ip wccp web-cache redirect out|in
 CTRL Z
 copy running-config startup-config
 }}}
-IOS defaults to using WCCP version 2 if you do not explicitly specify a version.
+ {X} IOS defaults to using WCCP version 2 if you do not explicitly specify a version.
 
-Replace 150 with an access list number (either standard or extended)  which lists IP addresses which you do not wish to be transparently  redirected to your cache.  If you wish to redirect all client traffic then do not add the ip wccp web-cache redirect-list command.
+Replace 150 with an access list number (either standard or extended)  which lists IP addresses which you do not wish to be transparently redirected to your cache.
 
-WCCP is smart enough that it will automatically bypass your cache from the redirection process, ensuring that your cache does not become redirected back to itself.
+If you wish to redirect all client traffic then remove the:
+{{{
+ip wccp web-cache redirect-list
+}}}
+
+ (!) WCCP is smart enough that it will automatically bypass your cache from the redirection process, ensuring that your cache does not become redirected back to itself.
 
 == Troubleshooting ==
 
