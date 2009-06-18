@@ -513,23 +513,7 @@ wccp2_outgoing_address e.f.g.h
 Now you need to read on for the details of configuring your operating system to support WCCP.
 
 ===== Configuring FreeBSD =====
-FreeBSD first needs to be configured to receive and strip the GRE  encapsulation from the packets from the router. To do this you will need to patch and recompile your kernel.  The steps depend on your kernel version.
-
-===== FreeBSD-3.x =====
- * Apply the [[http://www.squid-cache.org/WCCP-support/FreeBSD-3.x/|patch for FreeBSD-3.x kernels]]:
-{{{
-# cd /usr/src
-# patch -s < /tmp/gre.patch
-}}}
- * Download [[http://www.squid-cache.org/WCCP-support/FreeBSD-3.x/gre.c|gre.c for FreeBSD-3.x]]. Save this file as ''/usr/src/sys/netinet/gre.c''.
- * Add "options GRE" to your kernel config file and rebuild your kernel. Note, the ''opt_gre.h'' file is created when you run ''config''. Once your kernel is installed you will need to configure FreeBSD for interception proxying (see below).
-
-====== FreeBSD 4.0 through 4.7 =======
-The procedure is nearly identical to the above for 3.x, but the source files are a little different.
-
- * Apply the most appropriate patch file from the list of [[http://www.squid-cache.org/WCCP-support/FreeBSD-4.x/|patches for 4.x kernels]].
- * Download [[http://www.squid-cache.org/WCCP-support/FreeBSD-3.x/gre.c|gre.c for FreeBSD-3.x]]. Save this file as ''/usr/src/sys/netinet/gre.c''.
- * Add "options GRE" to your kernel config file and rebuild your kernel. Note, the ''opt_gre.h'' file is created when you run ''config''. Once your kernel is installed you will need to [[#trans-freebsd|configure FreeBSD for interception proxying]].
+FreeBSD first needs to be configured to receive and strip the GRE  encapsulation from the packets from the router. The steps depend on your kernel version.
 
 ===== FreeBSD 4.8 and later =====
 The operating system now comes standard with some GRE support.  You need to make a kernel with the GRE code enabled:
