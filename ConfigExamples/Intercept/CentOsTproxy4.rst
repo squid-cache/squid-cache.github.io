@@ -84,7 +84,8 @@ make BINDDIR=/sbin LIBDIR=/lib64 KERNEL_DIR=/usr/src/linux install
 
  18. Is the following iptables commands to enable TPROXY functionality in the running iptables instance:
 {{{
-iptables -t mangle -N DIVERT iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
+iptables -t mangle -N DIVERT
+iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
 
 iptables -t mangle -A DIVERT -j MARK --set-mark 1
 iptables -t mangle -A DIVERT -j ACCEPT
