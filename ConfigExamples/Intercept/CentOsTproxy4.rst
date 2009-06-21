@@ -12,18 +12,16 @@ by ''Nicholas Ritter''
 == Outline ==
 Listed below are the beginnings of steps I have. They are not complete, I left out some steps which I will add and repost. Please let me know if you have questions/troubles with the steps. I have not fully checked the steps for clarity and accuracy...but I eventually will.
 
-These steps are for setting [[Squid-3.1]] with [[../../Features/Tproxy4|TPROXYv4]], IP spoofing and Cisco WCCP. This is not a bridging setup.
+These steps are for setting [[Squid-3.1]] with [[Features/Tproxy4|TPROXYv4]], IP spoofing and Cisco WCCP. This is not a bridging setup.
 
 ## || {i} || '''Also''', there is a patch for squid that I have applied which I have not noted in the steps, but I want to talk to them about it's commit status before putting it in the steps. ||
-
-
 
 
 == Steps ==
 
 === Preparation ===
 
-|| {i} || Linux kernel 2.6.28 is now available. Apparently it has the kernel patches below already applied. ||
+|| {i} || Linux kernel 2.6.28 is now available. It has the kernel patches below already applied. ||
 
  1. Install CentOS 5.2
   a. be sure '''NOT''' to install squid via the OS installer
@@ -57,7 +55,7 @@ cat <path_to_tproxy_kernel_patches>/00*.patch | patch -p1
 
 === Patching iptables ===
 
-|| {i} || iptables 1.4.3 has support integrated with the current development snapshots. http://www.netfilter.org/projects/iptables/index.html ||
+|| {i} || iptables 1.4.3 is now released and has support integrated. http://www.netfilter.org/projects/iptables/index.html ||
 
 Patch configure, compile and install iptables. This is done with the thought in mind to correctly overwrite the existing iptables setup so that the current service init script that ships with CentOS 5.2 can be used. To do this, decompress the iptables 1.4.0 source code, and cd to that directory. The follow the steps noted:
   * Patch the iptables source with the TProxy patch as noted in the TProxy README:
@@ -90,8 +88,6 @@ iptables -t mangle -N DIVERT iptables -t mangle -A PREROUTING -p tcp -m socket -
 
 iptables -t mangle -A DIVERT -j MARK --set-mark 1
 iptables -t mangle -A DIVERT -j ACCEPT
-
-iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0xffffffff
 
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
