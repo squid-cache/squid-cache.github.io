@@ -100,7 +100,7 @@ iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0
 
  * WCCP related iptables rules need to be created next...this and further steps are only needed if L4 WCCPv2 is used with a router, and not L2 WCCP with a switch.
 {{{
-iptables -A INPUT -i gre0 -j ACCEPT iptables -A INPUT -i gre0 -j ACCEPT
+iptables -A INPUT -i gre0 -j ACCEPT
 
 iptables -A INPUT -p gre -j ACCEPT
 }}}
