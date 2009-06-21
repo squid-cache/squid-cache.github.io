@@ -50,6 +50,8 @@ http_port 3129 tproxy
 
  * '''Obsolete''' --enable-tproxy option. Remains only for legacy v2.2 ctt proxy support.
 
+ * NP: The Balabit document still refers to using options ''tproxy transparent''. '''Do not do this'''. It was only needed short-term for a bug which is now fixed.
+
 == Linux Kernel 2.6.28 Configuration ==
 
  /!\ Requires kernel built with the configuration options:
