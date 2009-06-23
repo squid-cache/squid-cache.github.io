@@ -55,32 +55,25 @@ Date: Thu, 11 Sep 2008 16:03:50 GMT
 add this to squid.conf
 
 {{{
-#  The keyword for all youtube video files are "get_video?", "videodownload?" and "videoplaybeck?id" 
-#  The "\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?" is only for pictures and other videos
-acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback.*id) \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\? \/ads\? 
-acl store_rewrite_list_web url_regex ^http:\/\/([A-Za-z-]+[0-9]+)*\.[A-Za-z]*\.[A-Za-z]*
-acl store_rewrite_list_path urlpath_regex \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)$
-acl store_rewrite_list_web_CDN url_regex ^http:\/\/[a-z]+[0-9]\.google\.com doubleclick\.net
+#  The keyword for all youtube video files are "get_video?", "videodownload?" and "videoplayback" plus the id,
+acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback.*id)
+acl dontrewrite url_regex www.youtube.com.*get_video
 }}}
 and also this if you have cache deny QUERY line. if not just ignore it.
 {{{
 #add this line before cache deny 
-acl QUERY2 urlpath_regex get_video\? videoplayback\? \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)\?
+acl QUERY2 urlpath_regex get_video\? videoplayback\?
 cache allow QUERY2
-cache allow store_rewrite_list_web_CDN
-#cache deny url that has cgi-bin and ? this is the default for below squid 2.7 version
+#cache deny url that has cgi-bin and ? this is the default earlier than squid 2.7 version
 acl QUERY urlpath_regex cgi-bin \?
 cache deny QUERY
 }}}
 and the storeurl feature
 {{{
+storeurl_access deny dontrewrite
 storeurl_access allow store_rewrite_list
-#this is not related to youtube video its only for CDN pictures
-storeurl_access allow store_rewrite_list_web_CDN
-storeurl_access allow store_rewrite_list_web store_rewrite_list_path
 storeurl_access deny all
-#rewrite_program path is base on windows so use use your own path
-storeurl_rewrite_program C:/perl/bin/perl.exe C:/squid/etc/test.pl
+storeurl_rewrite_program /usr/local/etc/squid/storeurl.pl
 storeurl_rewrite_children 1
 storeurl_rewrite_concurrency 10
 }}}
@@ -88,74 +81,34 @@ and refresh pattern
 
 {{{
 #youtube's videos
-refresh_pattern -i (get_video\?|videoplayback\?id|videoplayback.*id) 161280 50000% 525948 override-expire ignore-reload
-#and for pictures
-refresh_pattern -i \.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv)(\?|$) 161280 3000% 525948 override-expire reload-into-ims
+refresh_pattern (get_video\?|videoplayback\?|videodownload\?) 5259487 90% 5259487 override-expire override-lastmod 
 }}}
 Storeurl script(where concurrency is > 0) or the test.pl above. concurrency 10 is faster than children 10.
 {{{
-#!/usr/local/bin/perl
+#!perl location in here
 $|=1;
 while (<>) {
     @X = split;
 	$x = $X[0];
 	$_ = $X[1];
-	$u = $X[1];
 
+# compatibility from old cached get_video?video_id
 if (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?(videoplayback\?id=.*?|video_id=.*?)\&(.*?)/) {
-	$z = $2; $z =~ s/video_id=/get_video?video_id=/; # compatible to old cached get_video?video_id
+	$z = $2; $z =~ s/video_id=/get_video?video_id=/; 
 	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $z . "\n";
-			# new youtube
 
-} elsif (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(id=[a-zA-Z0-9]*)/) {
-	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $2 . "\n";
-
-} elsif (m/^http:\/\/www\.google-analytics\.com\/__utm\.gif\?.*/) {
-	print $x . "http://www.google-analytics.com/__utm.gif\n";
-			#cache high latency ads	
-} elsif (m/^http:\/\/(.*?)\/(ads)\?(.*?)/) {
-	print $x . "http://" . $1 . "/" . $2  . "\n";
-
-			# spicific servers starts here....
-} elsif (m/^http:\/\/(www\.ziddu\.com.*\.[^\/]{3,4})\/(.*?)/) {
-	print $x . "http://" . $1 . "\n";	
-			#rapidshare
-} elsif (($u =~ /rapidshare/) && (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)([a-z]*\.[^\/]{3}\/[a-z]*\/[0-9]*)\/(.*?)\/([^\/\?\&]{4,})$/)) {
-	print $x . "http://cdn." . $3 . "/SQUIDINTERNAL/" . $5 . "\n";
-
-} elsif (($u =~ /maxporn/) && (m/^http:\/\/([^\/]*?)\/(.*?)\/([^\/]*?)(\?.*)?$/)) {
-#	$z = $1; $z =~ s/[A-Za-z]+[0-9-.]+/cdn/;
-	print $x . "http://" . $1 . "/SQUIDINTERNAL/" . $3 . "\n";	
+# youtube HD itag=22
+} elsif (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(itag=22).*?\&(id=[a-zA-Z0-9]*)/) {
+	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $2 . "&" . $3 . "\n";	
 	
-			#like porn hub variables url and center part of the path, filename etention 3 or 4 with or withour ? at the end
-} elsif (($u =~ /tube8|pornhub/) && (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.([a-z]*[0-9]?\.[^\/]{3}\/[a-z]*)(.*?)((\/[a-z]*)?(\/[^\/]*){4}\.[^\/\?]{3,4})(\?.*)?$/)) {
-	print $x . "http://cdn." . $3 . $5 . "\n";		
-			#...spicific servers end here.
-			#general purpose for cdn servers. add above your specific servers.
-} elsif (m/^http:\/\/([0-9.]*?)\/\/(.*?)\.(.*)\?(.*?)/) {
-	print $x . "http://squid-cdn-url//" . $2  . "." . $3 . "\n";
-			#for yimg.com
-} elsif (m/^http:\/\/(.*?)\.yimg\.com\/(.*?)\.yimg\.com\/(.*?)\?(.*?)/) {
-	print $x . "http://cdn.yimg.com/"  . $3 . "\n";
-			#generic http://variable.domain.com/path/filename."ext" or "exte" with or withour "?"
-} elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*?)\.([^\/\?\&]{3,4})(\?.*)?$/) {
-	print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 . "." . $6 . "\n";
-			# generic http://variable.domain.com/...
-} elsif (m/^http:\/\/(([A-Za-z]+[0-9-.]+)*?)\.(.*?)\.(.*?)\/(.*)$/) {
-	print $x . "http://cdn." . $3 . "." . $4 . "/" . $5 .  "\n";				
-			# spicific extention that ends with ?
-} elsif (m/^http:\/\/(.*?)\/(.*?)\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico|flv|on2)\?(.*)/) {
-	print $x . "http://" . $1 . "/" . $2  . "." . $3 . "\n";
-			# all that ends with ;
-} elsif (m/^http:\/\/(.*?)\/(.*?)\;(.*)/) {
-	print $x . "http://" . $1 . "/" . $2  . "\n";
+# youtube Normal screen always HD itag 35, Normal screen never HD itag 34, itag=18 <--normal?
+} elsif (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(itag=[0-9]*).*?\&(id=[a-zA-Z0-9]*)/) {
+	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $3 . "\n";
 
 } else {
 	print $x . $_ . "\n";
 }
 }
-
-
 
 }}}
 
