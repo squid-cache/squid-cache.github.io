@@ -62,7 +62,7 @@ acl dontrewrite url_regex www.youtube.com.*get_video
 and also this if you have cache deny QUERY line. if not just ignore it.
 {{{
 #add this line before cache deny 
-acl QUERY2 urlpath_regex get_video\? videoplayback\?
+acl QUERY2 urlpath_regex get_video\? videoplayback\? videodownload\?
 cache allow QUERY2
 #cache deny url that has cgi-bin and ? this is the default earlier than squid 2.7 version
 acl QUERY urlpath_regex cgi-bin \?
