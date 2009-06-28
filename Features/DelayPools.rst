@@ -43,6 +43,7 @@ This allows options such as creating a number of class 1 delay pools and allowin
  * delay pools only limits the actual data transferred and is not inclusive of overheads such as TCP overheads, ICP, DNS, ICMP pings, etc.
  * it is possible for one connection or a small number of connections to take all the bandwidth from a given bucket and the other connections to be starved completely, which can be a major problem if there are a number of large objects being transferred and the parameters are set in a way that a few large objects will cause all clients to be starved (potentially fixed by a currently experimental patch).
  * in Squid 3.1 the class-based pools do not work yet with IPv6 addressed clients.
+ * In squid older than 3.1 the delay pool bucket is limited to 32-bits and thus has a rather low MB cap on both bucket content and refill rate. The bucket size is now raised to 64-bit 'unlimited' values, but refill rate remains low.
 
 === How can I limit Squid's total bandwidth to, say, 512 Kbps? ===
 {{{
