@@ -141,11 +141,21 @@ It may also be seen only at startup due to unrelated issues:
 == Traffic going through Squid but the timing out ==
 
 This is usually seen when the network design prevents packets coming back to Squid.
-## To prevent this the current design in Squid only spoofs the traffic seen by the Client.
 
  * Check that the Routing portion of the config above is set correctly.
  * Check that the ''DIVERT'' is done before ''TPROXY'' rules in iptables '''PREROUTING''' chain.
 
+=== Timeouts with Squid not running in the router directly ===
+
+ {i} /!\ the above configuration assumes that squid is running on the router OR has a direct connection to the Internet without having to go through the capture router again. For both outbound and return traffic.
+
+If your network topology uses a squid box sitting the '''inside''' the router which passes packets to Squid. Then you will need to explicitly add some additional configuration.
+
+We can't point to exact routing configuration since it will depend on your router. But you will need to figure out some rule(s) which identify the Squid outbound traffic. Dedicated router interface, service groups, TOS set by Squid tcp_outgoing_tos, and MAC source have all been found to be useful under specific situations. '''IP address rules are the one thing guaranteed to fail'''.
+
+ {i} I should not really need to say it; but these exception rules '''MUST''' be placed before any of the capture TPROXY/DIVERT rules.
+
+ {i} Note that WCCP/WCCPv2 devices are documented as automatically identifying and permit the proxy traffic outbound. These tend to use IP address which '''no longer works when TPROXYv4 spoofing is used'''. Newer devices ''may'' be using interface characteristics, but don't assume so without.
 
 = References =
 
