@@ -68,5 +68,10 @@ Obviously a client process and server process.  I'm kind of assuming there is so
 
 Suggestions please?
 
+
+== Discussion ==
+/!\ To answer, use the "Discussion" link in the main menu
+<<Include(/Discussion)>>
+
 ----
 CategoryFeature
