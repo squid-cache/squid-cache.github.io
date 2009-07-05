@@ -117,7 +117,7 @@ authorityKeyIdentifier=keyid:always,issuer:always
 [root@rprgate ~]# touch index.txt
 }}}
 {{{
-[root@rprgate ~]#openssl req -x509 -newkey rsa -out cacert.pem -outform PEM -days 1000}}}
+[root@rprgate ~]#openssl req -x509 -newkey rsa:2048 -out cacert.pem -outform PEM -days 1000}}}
 {{{
 Generating a 2048 bit RSA private key
 ..........................................................................................+++
