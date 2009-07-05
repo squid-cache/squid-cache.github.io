@@ -83,9 +83,9 @@ and refresh pattern
 #youtube's videos
 refresh_pattern (get_video\?|videoplayback\?|videodownload\?) 5259487 90% 5259487 override-expire override-lastmod 
 }}}
-Storeurl script(where concurrency is > 0) or the test.pl above. concurrency 10 is faster than children 10.
+Storeurl script(where concurrency is > 0) or the storeurl.pl above. concurrency 10 is faster than children 10.
 {{{
-#!perl location in here
+#your perl location in here, mine is #!/bin/perl
 $|=1;
 while (<>) {
     @X = split;
@@ -221,8 +221,8 @@ Do you think that'd be enough?
 
 Diff file below..
 {{{
---- c:/squidheadvirgin/src/client_side.c	2008-10-30 07:37:56 +0800
-+++ c:/squidhead/src/client_side.c	2008-11-05 23:44:55 +0800
+--- src/client_side.c	2008-10-30 07:37:56 +0800
++++ src/client_side.c	2008-11-05 23:44:55 +0800
 @@ -2399,6 +2399,18 @@
  		is_modified = 0;
  	}
