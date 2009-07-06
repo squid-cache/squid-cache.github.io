@@ -109,7 +109,7 @@ authorityKeyIdentifier=keyid:always,issuer:always
 === Setup a certificate Signing Authority (if needed) ===
 {{{
 [root@rprgate ~]# cd /usr
-[root@rprgate ~]# mkdir newprpgate; cd newrprgate
+[root@rprgate ~]# mkdir newrprgate; cd newrprgate
 [root@rprgate ~]# mkdir CertAuth; cd CertAuth
 [root@rprgate ~]# mkdir certs; mkdir private
 [root@rprgate ~]# chmod 700 private
