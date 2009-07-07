@@ -597,6 +597,7 @@ The following are '''SLOW''' access clauses:
  * location_rewrite_access
  * always_direct
  * never_direct
+ * cache
 
 These are instead '''FAST''' access clauses:
  * icp_access
@@ -611,6 +612,9 @@ These are instead '''FAST''' access clauses:
  * delay_access
  * snmp_access
  * cache_peer_access
+ * ssl_bump
+ * sslproxy_cert_error
+ * follow_x_forwarded_for
 
 Thus the safest course of action is to only use fast ACLs in fast access clauses, and any kind of ACL in slow access clauses.
 
