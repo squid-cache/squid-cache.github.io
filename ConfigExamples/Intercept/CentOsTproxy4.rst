@@ -1,8 +1,8 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-= Patching CentOS 5.2 with TPROXY =
+
+= TPROXY v4 with CentOS 5.3 =
 by ''Nicholas Ritter''
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
@@ -18,8 +18,6 @@ These steps are for setting [[Squid-3.1]] with [[Features/Tproxy4|TPROXYv4]], IP
 
 == Steps ==
 === Preparation ===
-|| {i} || Linux kernel 2.6.28 is now available. It has the kernel patches below already applied. ||
-
 
  1. Install CentOS 5.3
   a. be sure '''NOT''' to install squid via the OS installer b. install the development libraries and tools, as well as the legacy software development
