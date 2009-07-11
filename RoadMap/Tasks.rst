@@ -42,9 +42,10 @@ Check with squid-dev to see if its already done.
  * Fix kqueue bugs once and for all (ie, delete events for closed FDs)
  * Implement /dev/poll support for Solaris 7/8/9/10 network IO
 
- * Copy-n-paste ''deprecated'' languages text snippets from old templates into new ''.po'' system. (taking ~1-3 hrs per language)
- * Verify or Update one of the non-modified [[../../Translations|translated Squid error pages]].
- * Add a new language [[../../Translations|translation for Squid error pages]].
+ * Language and Translation
+  1. Verify or Update one of the non-modified [[Translations|translated Squid error pages]].
+  2. Add a new language [[Translations|translation for Squid error pages]].
+  3. log the language dialect(s) going through your Squid (logformat languages %{Accept-Language} ) and help supply the translations team (via squid-dev)
 
  * Cleanup Squid component macros that enable/disable components:
   1. make all the naming convention USE_* (with USE_SQUID_* for those which may clash with OS defines).
