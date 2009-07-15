@@ -11,7 +11,7 @@ The squid core team members do not have the resources to make pre-compiled binar
 
 == How do I install a binary for ... ==
 
-Most operating system distributions provide packages in the formats appropriate for direct install on those systems.
+Most operating system distributions provide packages in the formats appropriate for direct install on those systems. Please thank them.
 
 === Debian, Ubuntu ===
 Packages available for Squid on multiple architectures, maintained by Luigi Gangitano.
@@ -58,6 +58,16 @@ Binaries for all NetBSD platforms, from the NetBSD packages collection.
  '''Squid-3.1:'''
  ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid31/README.html
 
+=== RedHat Enterprise Linux (RHEL) ===
+
+ '''squid-2.5''': (TODO: install instructions and reference required)<<BR>>
+
+Jiri Skala @ RedHat maintains experimental squid packages for Red Hat Enterprise Linux 4 and 5. These packages are unofficial and are not supported by Red Hat. They are intended for RHEL users who would like to try newer squid packages.
+
+ '''Squid-2.6''': http://people.redhat.com/jskala/squid/ <<BR>>
+ '''Squid-2.7''': http://people.redhat.com/jskala/squid/ <<BR>>
+ '''Squid-3.0''': http://people.redhat.com/jskala/squid/ <<BR>>
+
 === Solaris ===
 
 http://www.sunfreeware.com/ hosts binary Squid packages for SPARC/Solaris 2.5-10 and x86/Solaris 8-10. 
@@ -73,16 +83,6 @@ Native port maintained by Guido Serassio of [[http://www.acmeconsulting.it/|Acme
 
  '''Squid-2.6, Squid-2.7, Squid-3.0:''' Binaries for Windows NT/2000/XP/2003 are at http://squid.acmeconsulting.it/
 
-
-== The official package is too old. Where can I get a newer one? ==
-
- /!\ This list may be incomplete. We are not all-seeing. If you find another source please update this page.
-
-Some contributors have made binary packages available through unofficial channels.
-
-Please see our [[http://www.squid-cache.org/Download/binaries.dyn|Binaries Page]].
-
-|| Red Hat Enterprise Linux || Squid-2.6 <<BR>>Squid-2.7<<BR>>Squid-3.0 || Jiri Skala @ RedHat maintains experimental squid packages for Red Hat Enterprise Linux 4 and 5. These packages are unofficial and are not supported by Red Hat. They are intended for RHEL users who would like to try newer squid packages. http://people.redhat.com/jskala/squid/ ||
 
 ##end
 ----
