@@ -48,6 +48,10 @@ Basic new features in 3.1
  * Peer-Name ACL
  * Reply headers to external ACL.
 
+From 3.1.0.11:
+ * [[Features/AdaptationLog|ICAP and eCAP Logging]]
+ * ICAP Service Sets and Chains
+
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
 
@@ -84,7 +88,6 @@ Features under development:
 ## * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
 ## * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
 ## * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
-## * [[Features/AdaptationLog]] <<Include(Features/AdaptationLog,,,from="ETA.*:",to="$")>>
 
 ## some we will need to manually add to this list...
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 -regex:ETA...:.unknown regex:Developer...:....*)>>
