@@ -9,7 +9,9 @@ This is a collection of example Squid Configurations intended to demonstrate the
 ## warning end
 
 
-'''Notice:'''
+<<TableOfContents>>
+
+== Online Manuals ==
 We now provide an the Authoritative Configuration Manual for each version of squid. These manuals are built daily and directly from the squid source code to provide the most up to date information on squid options.
 
 For Squid-2.6 the Manual is at http://www.squid-cache.org/Versions/v2/2.6/cfgman/
@@ -22,13 +24,6 @@ For Squid-3.1 the Manual is at http://www.squid-cache.org/Versions/v3/3.1/cfgman
 
 
 A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ with details on each option supported in Squid, and what differences can be encountered between major Squid releases.
-
-
-== Create new configuration example ==
-
-Choose a good WikiName for your new example and enter it here:
-
-<<NewPage(ConfigExampleTemplate, Create, ConfigExamples)>>
 
 == Current configuration examples ==
 
@@ -57,6 +52,11 @@ Choose a good WikiName for your new example and enter it here:
 
 * [[http://freshmeat.net/articles/view/1433/]] -  Configuring a Transparent Proxy/Webcache in a Bridge using Squid and ebtables (Jan 1st, 2005)
 
+== Create new configuration example ==
+
+Choose a good WikiName for your new example and enter it here:
+
+<<NewPage(ConfigExampleTemplate, Create, ConfigExamples)>>
 
 ----
 CategoryConfigExample
