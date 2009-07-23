@@ -6,13 +6,13 @@
 
  * '''Goal''': Reduce the number of "certificate mismatch" browser warnings when impersonating a site using the [[Features/SslBump|SslBump]] feature
 
- * '''Status''': In progress; phase3b almost completed
+ * '''Status''': Stalled; all phases completed; code needs to be polished and synced
 
- * '''ETA''': February 15, 2008
+ * '''ETA''': Unknown
 
  * '''Version''': v3.2
 
- * '''Priority''': 1
+ * '''Priority''': 2
 
  * '''Developer''': AlexRousskov, Andrew Balabohin
 
