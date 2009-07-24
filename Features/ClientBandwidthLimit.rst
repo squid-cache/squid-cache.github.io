@@ -9,13 +9,13 @@
 
  * '''Goal''': Shape Squid-to-client bandwidth usage on client IP-level, for 4M IPs (/10 network).
 
- * '''Status''': Not started; looking for co-developers
+ * '''Status''': In progress
 
- * '''ETA''': July 2009
+ * '''ETA''': August 2009
 
  * '''Version''': 3.2
 
- * '''Priority''': 2
+ * '''Priority''': 1
 
  * '''Developer''': AlexRousskov
 
