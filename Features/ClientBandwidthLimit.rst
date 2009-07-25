@@ -26,6 +26,9 @@
 
 In mobile environments, Squid needs to limit Squid-to-client bandwidth available to individual users, identified by their IP addresses. The IP address pool can be as large as /10 network (4 million unique IP addresses).
 
+NP: With IPv6 networks the range may be as large as a /32 with individual end-site resolution. This is equivalent to /0, the entire IPv4 space with single-IP resolution. For individual host resolution an additional 64-bit long host identifier must be added on top of that.
+Related: http://www.squid-cache.org/bugs/show_bug.cgi?id=2144
+
 = Existing tools =
 
 A few existing mechanisms should be considered and reused to the extent possible:
