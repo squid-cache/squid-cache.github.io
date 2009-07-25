@@ -1,25 +1,21 @@
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
-##
-## Change to 'yes' for a listing under Features in the Squid FAQ.
-#faqlisted no
+#faqlisted yes
 
-= Feature: Adaptation chains =
+= Feature: Adaptation Chains =
 
  * '''Goal''': Support multiple ICAP and eCAP services applied to a single master transaction, at a single vectoring point
 
- * '''Status''': In progress
+ * '''Status''': Done
 
- * '''ETA''': June 2009
-
- * '''Version''': 3.1, 3.2
+ * '''Version''': 3.1
 
  * '''Priority''': 1
 
  * '''Developer''': AlexRousskov
 
- * '''More''': 
+## * '''More''': 
 
 = Overview =
 
@@ -29,7 +25,10 @@ Dynamic chaining allows a "managing" ICAP service to determine the chain of othe
 
 = Availability =
 
-The development is done on Squid3 trunk, targeting official v3.2 inclusion. The feature is also unofficially ported to [[https://code.launchpad.net/~rousskov/squid/3p1-plus|v3.1]].
+The feature has been added to Squid-3.1 from release 3.1.0.11.
+
+# The development is done on Squid3 trunk, targeting official v3.2 inclusion. The feature is also
+# unofficially ported to [[https://code.launchpad.net/~rousskov/squid/3p1-plus|v3.1]].
 
 ----
 CategoryFeature
