@@ -24,7 +24,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 |||||||||||||| '''Accepted Input Protocols''' ||
 || HTTP 0.9       || Y || Y || Y || Y || Y || Y ||
 || HTTP 1.0       || Y || Y || Y || Y || Y || Y ||
-|| HTTP 1.1       || - || X || Y || Bs16+ || Y || Y || hacks allow most 1.1 operations from 3.0.STABLE16 ||
+|| HTTP 1.1       || - || X || Y || Bs16+ || B || B || most 1.1 handled cleanly. Expect-100 is broken in 3.x ||
 || HTTPS          || - || Y || Y || Y || Y || Y ||
 || ICP (v2)       || - || Y || Y || Y || Y || Y ||
 || ICP (v3)       || - || Y || Y || Y || Y || Y ||
