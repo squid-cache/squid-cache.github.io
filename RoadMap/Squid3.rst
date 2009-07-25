@@ -50,7 +50,7 @@ Basic new features in 3.1
 
 From 3.1.0.11:
  * [[Features/AdaptationLog|ICAP and eCAP Logging]]
- * ICAP Service Sets and Chains
+ * [[Features/AdaptationChain|ICAP Service Sets and Chains]]
 
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
