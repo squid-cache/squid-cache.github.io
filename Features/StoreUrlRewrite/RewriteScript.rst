@@ -47,6 +47,7 @@ Places these refresh patterns at the end of your list.
 refresh_pattern ^http:\/\/74\.125       86400 20% 86400 override-expire override-lastmod
 # This pattern defaults all content without revalidation/explicit expiry information to
 # not be cached; replacing the old "cache deny QUERY" rule. 
+refresh_pattern -i (/cgi-bin/|\?) 0  0%  0
 refresh_pattern .               0       20%     4320
 }}}
 
