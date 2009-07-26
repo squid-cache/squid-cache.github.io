@@ -37,11 +37,6 @@ The example below is for the popular website youtube.com, which is dynamic, uses
 # Let the clients favourite video site through
 acl youtube dstdomain .youtube.com
 cache allow youtube
-
-# NOW stop any other dynamic stuff being cached
-hierarchy_stoplist cgi-bin ?
-acl QUERY urlpath_regex cgi-bin \?
-cache deny QUERY
 }}}
 
 ----
