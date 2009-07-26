@@ -39,6 +39,13 @@ UPDATE: see the storeurl feature in [[Squid-2.7]] and the [[ConfigExamples/Dynam
 == Squid Configuration File ==
 
 {{{
+# REMOVE these lines from squid.conf
+
+acl QUERY urlpath_regex cgi-bin \?
+cache deny QUERY
+}}}
+
+{{{
 # Break HTTP standard for flash videos. Keep them in cache even if asked not to.
 refresh_pattern -i \.flv$ 10080 90% 999999 ignore-no-cache override-expire ignore-private
 
@@ -58,13 +65,10 @@ maximum_object_size 4 GB
 acl youtube dstdomain .youtube.com
 cache allow youtube
 
-# Do all the above BEFORE blocking dynamic caching
-# - Not required. Just recommended from general squid.conf
-# kept to demonstrate that the above go before this.
-hierarchy_stoplist cgi-bin ?
-acl QUERY urlpath_regex cgi-bin \?
-cache deny QUERY
 
+# kept to demonstrate that the refresh_patterns involved above go before this.
+refresh_pattern -i (/cgi-bin/|\?)   0   0%      0
+refresh_pattern .                   0   0%   4320
 }}}
 
 ----
