@@ -97,15 +97,14 @@ and replace it with:
 cache allow all
 }}}
 
-Make sure you check your configuration file for cache and nocache directives; you need to disable
+Make sure you check your configuration file for cache and no_cache directives; you need to disable
 them and use refresh_patterns where applicable to tell Squid what to not cache!
 
-Then, add these refresh patterns at the bottom of your refresh_pattern section.
+Then, add these refresh patterns at the '''bottom''' of your refresh_pattern section.
 
 {{{
-refresh_pattern cgi-bin         0       0%      0
-refresh_pattern \?              0       0%      0
-refresh_pattern .               0       20%     4320
+refresh_pattern -i (/cgi-bin/|\?)   0       0%      0
+refresh_pattern .                   0       20%     4320
 }}}
 
 These rules make sure that you don't try caching cgi-bin and ? URLs unless expiry information is explictly given. Make sure you don't add the rules after a "refresh_pattern ." line; refresh_pattern entries are evaluated in order and the first match is used! The last entry must be the "." entry!
