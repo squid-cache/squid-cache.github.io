@@ -27,8 +27,8 @@ Dynamic chaining allows a "managing" ICAP service to determine the chain of othe
 
 The feature has been added to Squid-3.1 from release 3.1.0.11.
 
-# The development is done on Squid3 trunk, targeting official v3.2 inclusion. The feature is also
-# unofficially ported to [[https://code.launchpad.net/~rousskov/squid/3p1-plus|v3.1]].
+## The development is done on Squid3 trunk, targeting official v3.2 inclusion. The feature is also
+## unofficially ported to [[https://code.launchpad.net/~rousskov/squid/3p1-plus|v3.1]].
 
 ----
 CategoryFeature
