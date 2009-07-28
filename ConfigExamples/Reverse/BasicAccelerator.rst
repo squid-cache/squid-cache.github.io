@@ -21,7 +21,7 @@ see the [[SquidFaq/ReverseProxy|FAQ Reverse Proxy]] page for detailed overview o
 == Squid Configuration File ==
 
 ## begin locationwarning
- /!\ This configuration MUST appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site.
+|| /!\ || This configuration '''MUST''' appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. ||
 ## end locationwarning
 
 First, you have to tell Squid to listen on port 80 (usually), so set the '''http_port''' option with the defaultsite option telling Squid it's an accelerator for this site:
