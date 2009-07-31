@@ -93,16 +93,16 @@ while (<>) {
 	$_ = $X[1];
 
 # compatibility from old cached get_video?video_id
-if (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?(videoplayback\?id=.*?|video_id=.*?)\&(.*?)/) {
+if (m/^http:\/\/([0-9.]{4}|.*\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?(videoplayback\?id=.*?|video_id=.*?)\&(.*?)/) {
 	$z = $2; $z =~ s/video_id=/get_video?video_id=/; 
 	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $z . "\n";
 
 # youtube HD itag=22
-} elsif (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(itag=22).*?\&(id=[a-zA-Z0-9]*)/) {
+} elsif (m/^http:\/\/([0-9.]{4}|.*\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(itag=22).*?\&(id=[a-zA-Z0-9]*)/) {
 	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $2 . "&" . $3 . "\n";	
 	
 # youtube Normal screen always HD itag 35, Normal screen never HD itag 34, itag=18 <--normal?
-} elsif (m/^http:\/\/([0-9.]{4}|www\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(itag=[0-9]*).*?\&(id=[a-zA-Z0-9]*)/) {
+} elsif (m/^http:\/\/([0-9.]{4}|.*\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(itag=[0-9]*).*?\&(id=[a-zA-Z0-9]*)/) {
 	print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $3 . "\n";
 
 } else {
