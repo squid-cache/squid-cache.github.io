@@ -41,6 +41,8 @@ http://download.fedora.redhat.com/pub/fedora/linux/
 
 Binary RPMs for Fedora are available via the Fedora download/update servers for all active Fedora versions like most other free software.
 
+Maintainers: https://admin.fedoraproject.org/pkgdb/packages/name/squid
+
 ==== Squid-3.0 ====
 
  * '''FC 12 Download:''' http://download.fedora.redhat.com/pub/fedora/linux/development/source/SRPMS/
