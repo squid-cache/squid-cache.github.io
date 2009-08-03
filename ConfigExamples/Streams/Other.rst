@@ -11,7 +11,7 @@
 
 Media Streams come in many types. Most commonly used are Audio, Video, or Audio-Visual Streaming.
 
-It's hard to seperate the stream types by application so the config below includes all the known streams and simply comments the commonly known ones where possible.
+It's hard to separate the stream types by application so the config below includes all the known streams and simply comments the commonly known ones where possible.
 
 == Squid Configuration File ==
 
@@ -22,13 +22,13 @@ Configuration file to [[Features/ConfigIncludes|Include]]:
 
 
 ## MediaPlayer MMS Protocol
-acl media rep_mime_type ^.*mms.*
+acl media rep_mime_type mms
 acl mediapr url_regex dvrplayer mediastream ^mms://
 ## (Squid does not yet handle the URI as a known proto type.)
 
 
 ## Active Stream Format (Windows Media Player)
-acl media rep_mime_type ^.*x-ms-asf.*
+acl media rep_mime_type x-ms-asf
 acl mediapr urlpath_regex \.(afx|asf)(\?.*)?$
 
 
@@ -43,8 +43,8 @@ acl mediapr urlpath_regex \.swf(\?.*)?$
 
 
 ## Others currently unknown
-acl media rep_mime_type ^.*ms-hdr.*
-acl media rep_mime_type ^.*x-fcs.*
+acl media rep_mime_type ms-hdr
+acl media rep_mime_type x-fcs
 
 
 http_access deny mediapr
