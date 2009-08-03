@@ -23,7 +23,7 @@ Configuration file to Include:
 
 acl msn url_regex -i gateway.dll
 acl msnd dstdomain messenger.msn.com gateway.messenger.hotmail.com
-acl msn1 req_mime_type ^application/x-msn-messenger$
+acl msn1 req_mime_type application/x-msn-messenger
 
 http_access deny msnd
 http_access deny msn
