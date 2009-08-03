@@ -20,18 +20,27 @@ Configuration file to [[Features/ConfigIncludes|Include]]:
 {{{
 # Media Streams
 
+
 ## MediaPlayer MMS Protocol
 acl media rep_mime_type ^.*mms.*
 acl mediapr url_regex dvrplayer mediastream ^mms://
 ## (Squid does not yet handle the URI as a known proto type.)
 
+
 ## Active Stream Format (Windows Media Player)
 acl media rep_mime_type ^.*x-ms-asf.*
 acl mediapr urlpath_regex \.(afx|asf)(\?.*)?$
 
+
 ## Flash Video Format
 acl media rep_mime_type video/flv
 acl mediapr urlpath_regex \.flv(\?.*)?$
+
+
+## Flash General Media Scripts (Animation)
+acl media rep_mime_type application/x-shockwave-flash
+acl mediapr urlpath_regex \.swf(\?.*)?$
+
 
 ## Others currently unknown
 acl media rep_mime_type ^.*ms-hdr.*
