@@ -27,11 +27,11 @@ acl mediapr url_regex dvrplayer mediastream ^mms://
 
 ## Active Stream Format (Windows Media Player)
 acl media rep_mime_type ^.*x-ms-asf.*
-acl mediapr urlpath_regex \.asf$ \.afx$
+acl mediapr urlpath_regex \.asf$ \.afx(\?.*)?$
 
 ## Flash Video Format
 acl media rep_mime_type video/flv
-acl mediapr urlpath_regex \.flv$
+acl mediapr urlpath_regex \.flv(\?.*)?$
 
 ## Others currently unknown
 acl media rep_mime_type ^.*ms-hdr.*
