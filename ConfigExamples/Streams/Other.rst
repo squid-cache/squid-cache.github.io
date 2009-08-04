@@ -33,7 +33,7 @@ acl mediapr urlpath_regex \.(afx|asf)(\?.*)?$
 
 
 ## Flash Video Format
-acl media rep_mime_type video/flv
+acl media rep_mime_type video/flv video/x-flv
 acl mediapr urlpath_regex \.flv(\?.*)?$
 
 
