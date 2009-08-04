@@ -87,11 +87,17 @@ http_access allow auth
 http_access deny all
 }}}
 
-
 Add the following to the squid startup script
 {{{
 KRB5_KTNAME=/etc/squid/HTTP.keytab
 export KRB5_KTNAME
+}}}
+
+Kerberos keeps a replay cache to detect the reuse of a Kerberos tickets (usually only possible in a 5 minute window) . If squid is under high load with Negotiate(Kerberos) proxy authentication requests the replay cache checks can create high CPU load. If the environment does not require high security the replay cache check can be disabled by adding the following to the startup script
+
+{{{
+KRB5RCACHETYPE=none
+export KRB5RCACHETYPE 
 }}}
 
 ----
