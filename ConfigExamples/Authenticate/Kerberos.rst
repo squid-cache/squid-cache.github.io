@@ -11,7 +11,14 @@ by ''Markus Moeller''
 == Outline ==
 Squid-2.6 and later are capable of performing Kerberos authentication (for example with Windows Vista).
 
-For Squid-2.7 and later the helper is bundled with the Squid sources. Earlier Squid require squid_kerb_auth from https://sourceforge.net/project/showfiles.php?group_id=196348
+For Squid-2.7 and later two helpers are bundled with the Squid sources:
+
+ * '''squid_kerb_auth''' for Unix/Linux systems
+ * '''mswin_negotiate_auth.exe''' for Windows systems
+
+Earlier Squid require squid_kerb_auth from https://sourceforge.net/project/showfiles.php?group_id=196348
+
+The following documentation applies to squid_kerb_auth on Unix/Linux systems, on Windows mswin_negotiate_auth.exe doesn't need any kind of configuration, it works just out of the box.
 
 ## == Usage ==
 ## Tell about some cases where this configuration would be good.
@@ -89,4 +96,4 @@ KRB5RCACHETYPE=none
 export KRB5RCACHETYPE
 }}}
 ----
-CategoryConfigExample
+ . CategoryConfigExample
