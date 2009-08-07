@@ -542,6 +542,8 @@ Some ACL types require information which may not be already available to Squid. 
 Fast ACLs include (as of squid 3.1.0.7):
  * all (built-in)
  * src
+ * dstdomain
+ * dstdom_regex
  * myip
  * arp
  * src_as
@@ -570,9 +572,7 @@ Slow ACLs include:
  * dst
  * dst_as
  * srcdomain
- * dstdomain
  * srcdom_regex
- * dstdom_regex
  * ident
  * ident_regex
  * proxy_auth
