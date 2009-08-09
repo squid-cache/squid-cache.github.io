@@ -17,7 +17,25 @@ The Squid project supports a big number of OSes (SquidFaq/AboutSquid has the lis
 
 Donations of disk space and CPU time on non-x86 systems are welcome and encouraged.
 
-The actual testring will be coordinated by [[http://djmitche.github.com/buildbot/docs/0.7.10/|BuildBot]].
+The actual testring will be coordinated by [[https://hudson.dev.java.net/|Hudson]]. [[http://eu.squid-cache.org:8081/|Our instance]] 
+
+Setting up a hudson account (needed by administrators only):
+ * [[http://eu.squid-cache.org:8081/signup|create a usercode]] (Use a simple username like 'myname' no spaces etc.
+ * [[http://eu.squid-cache.org:8081/configure|Grant access]] to this usercode to administer hudson
+
+Setting up a slave machine (to run test builds) - as an administrator:
+ * [[http://eu.squid-cache.org:8081/computer/new|add a node]] (Use a simple name, doesn't need to be a hostname)
+ * [[http://eu.squid-cache.org:8081/newJob|Create a new job]] Select copy-from existing and put in "squid3-centos-eu.quid-cache.org" as the job to copy from. Give your new job a name like "squid3-OS-nodename"
+ * Configure your new job, and change the "tie this job to a node" to select the new node.
+
+Activating a slave machine (as the machine owner):
+ * Install java
+ * Add a useraccount for the builds to run under
+ * As that user, down load the [[http://eu.squid-cache.org:8081/jnlpJars/slave.jar|slave jar]] to slave.jar
+ * For unix: {{{java -jar slave.jar -jnlpUrl http://eu.squid-cache.org:8081/computer/$NODENAME/slave-agent.jnlp}}}. Put this in rc.local or something, to run on every startup.
+ * For windows visit the slave web page and click on 'java web start', then in the java applet that starts, click the create a service option.
+
+Setting up a hudson slave (a machine to test a particular platform):
 
 FrancescoChemolli is leading this effort.
 
