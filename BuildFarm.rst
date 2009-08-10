@@ -15,7 +15,7 @@ The currently-planned farm consists of:
 || [[http://www.ubuntu.com/|Ubuntu-x32]] || || ||
 || [[http://www.debian.org/|Debian-x32 (unstable)]] || rio.treenetnz.com || {OK} Sponsored. ||
 || [[http://www.openbsd.org/|OpenBSD]] || vobsd.squid-cache.org || Being set up ||
-|| [[http://www.freebsd.org/|FreeBSD-x32]] || || Volunteers sought ||
+|| [[http://www.freebsd.org/|FreeBSD-x32]] || squid-cache.org || Volunteers sought ||
 || [[http://opensolaris.org/|OpenSolaris]] || || Volunteers sought ||
 || [[http://www.microsoft.com/windows/default.aspx|MS Windows]] || || Need license for OS & dev-tools ||
 || [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || || ||
@@ -54,8 +54,10 @@ You will be contacted back by one of the administrators with details to complete
  /!\ '''needed by administrators only'''
 
  * [[http://eu.squid-cache.org:8081/computer/new|add a node]] (Use a simple name, doesn't need to be a hostname)
- * [[http://eu.squid-cache.org:8081/newJob|Create a new job]] Select copy-from existing and put in "squid3-centos-eu.quid-cache.org" as the job to copy from. Give your new job a name like "squid3-OS-nodename"
- * Configure your new job, and change the "tie this job to a node" to select the new node.
+ * [[http://eu.squid-cache.org:8081/newJob|Create a new job]] Select copy-from existing and put in "squid3-centos-eu.quid-cache.org" as the job to copy from. Give your new job a name like "3.HEAD-$ARCH-$OS-$VERSION". E.g. "3.HEAD-i386-FreeBSD-6.4".
+ * Configure your new job, and change :
+  * the "tie this job to a node" to select the ARCH-OS-VERSION your machine is.
+  * The labels list for the machine to have $ARCH $OS $VERSION $ARCH-$OS $OS-$VERSION $ARCH-$OS-$VERSION
 
 
 ## Setting up a hudson slave (a machine to test a particular platform):
