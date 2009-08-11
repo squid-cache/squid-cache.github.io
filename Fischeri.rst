@@ -27,7 +27,7 @@ How the names are formed depends on the packaging system used.
 
 == Current State ==
 
-This is currently being done by AmosJeffries with the assistance of others.
+This is currently being done by AmosJeffries with the assistance of the BuildFarm and official package maintainers.
 
 === Stuff Underway: ===
  * Test branch where everything can be setup before merge
@@ -36,11 +36,11 @@ This is currently being done by AmosJeffries with the assistance of others.
  * Have attempted to contact the following package maintainers already, here is what has resulted:
  || '''OS''' || '''Maintainer'''   || '''Results of discussion''' ||
  || Debian   || Luigi Gangitano    || Issues with Debian QA policy vs developers knowledge levels. ||
- || FreeBSD  || Thomas-Martin Seck || ||
+ || FreeBSD  || Thomas-Martin Seck || {OK} (pending further work) ||
  || Gentoo   || Alin Nastac        || Gentoo packaging system incompatible. ||
  || NetBSD   || Takahiro Kambe (3.0)<<BR>>Matthias Scheler (3.1) || ||
  || OpenBSD  || Brad Smith         || ||
- || Ubuntu   || see Debian       ||
+ || Ubuntu   || see Debian       || https://launchpad.net/~yadi/+archive/ppa ||
  || Windows  || Guido Serassio     || critical bzr VCS issues ||
 
 ## TODO:
@@ -69,7 +69,7 @@ This is currently being done by AmosJeffries with the assistance of others.
 
 == Current Packages ==
 
- None.
+ || Ubuntu   || https://launchpad.net/~yadi/+archive/ppa ||
 
 == Build-your-own package ==
 
