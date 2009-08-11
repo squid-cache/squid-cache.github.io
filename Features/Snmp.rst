@@ -8,7 +8,7 @@
 
  * '''Status''': Completed
 
- * '''Version''': 2.x
+ * '''Version''': 2.x, 3.x
 
 ## * '''Developer''': unknown
 
@@ -149,6 +149,10 @@ Further examples of Squid MRTG configurations can be found here:
 
 Cacti is a software tool based on the same concepts as MRTG, but with a more user-friendly interface and infrastructure. Its home is at http://www.cacti.net/.
 It allows to use pre-defined templates to facilitate deployment. Templates for squid can be found on [[http://forums.cacti.net/about4142.html|the cacti forums]]
+
+== Monitoring with OpenNMS ==
+
+The OpenNMS site has a [[http://www.opennms.org/wiki/Squid_Data_Collection|complete tutorial]].
 
 -----
 Back to the SquidFaq
