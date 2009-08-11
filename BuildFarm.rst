@@ -32,9 +32,12 @@ The actual testing will be coordinated by [[https://hudson.dev.java.net/|Hudson]
   3. The CPU type(s) of that machine
  * The address you send this email from is assumed to be your contact.
 
-You will be contacted back by one of the administrators with details to complete the activation sequence below.
+You will be contacted back by one of the administrators with details required to complete the activation sequence below.
 
 == Activating a slave machine (as the machine owner) ==
+
+ {i} $NODENAME is a name for your bot which is assigned by the build farm administrators.
+
  * Install java
  * Add a useraccount for the builds to run under
  * As that user, down load the [[http://eu.squid-cache.org:8081/jnlpJars/slave.jar|slave jar]] to slave.jar
