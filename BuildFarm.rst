@@ -8,17 +8,17 @@ The Squid project supports a big number of OSes (SquidFaq/AboutSquid has the sho
 FrancescoChemolli is leading this effort.
 
 The currently-planned farm consists of:
-|| OS || system-name || Status ||
-|| [[http://www.centos.org/|CentOS-x64]] || eu.squid-cache.org || {OK} ||
-|| [[http://www.centos.org/|CentOS-x32]] || labyrinth.squid-cache.org || Being set up ||
-|| [[http://www.gentoo.org/|Gentoo-x32]] || || ||
-|| [[http://www.ubuntu.com/|Ubuntu-x32]] || || ||
-|| [[http://www.debian.org/|Debian-x32 (unstable)]] || rio.treenetnz.com || {OK} Sponsored. ||
-|| [[http://www.openbsd.org/|OpenBSD]] || vobsd.squid-cache.org || Being set up ||
-|| [[http://www.freebsd.org/|FreeBSD-x32]] || squid-cache.org || Volunteers sought ||
-|| [[http://opensolaris.org/|OpenSolaris]] || || Volunteers sought ||
-|| [[http://www.microsoft.com/windows/default.aspx|MS Windows]] || || Need license for OS & dev-tools ||
-|| [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || || ||
+|| OS || Ver || system-name || Status ||
+|| [[http://www.centos.org/|CentOS-x64]] || 5.2 || eu.squid-cache.org || {OK} ||
+|| [[http://www.centos.org/|CentOS-x32]] || || labyrinth.squid-cache.org || Being set up ||
+|| [[http://www.gentoo.org/|Gentoo-x32]] || || || ||
+|| [[http://www.ubuntu.com/|Ubuntu-x32]] || || || ||
+|| [[http://www.debian.org/|Debian-x32]] || sid || rio.treenetnz.com || {OK} Sponsored. ||
+|| [[http://www.openbsd.org/|OpenBSD]] || || vobsd.squid-cache.org || Being set up ||
+|| [[http://www.freebsd.org/|FreeBSD-x32]] || 6.4 || squid-cache.org || {OK} / Volunteers sought ||
+|| [[http://opensolaris.org/|OpenSolaris]] || || || Volunteers sought ||
+|| [[http://www.microsoft.com/windows/default.aspx|MS Windows]] || || || Need license for OS & dev-tools ||
+|| [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || || || ||
 
 Donations of disk space and CPU time on non-x86 systems are welcome and encouraged.
 
