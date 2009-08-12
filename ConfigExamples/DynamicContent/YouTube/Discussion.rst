@@ -81,7 +81,7 @@ and refresh pattern
 
 {{{
 #youtube's videos
-refresh_pattern (get_video\?|videoplayback\?|videodownload\?) 5259487 90% 5259487 override-expire override-lastmod 
+refresh_pattern (get_video\?|videoplayback\?|videodownload\?) 5259487 99999999% 5259487 override-expire ignore-reload store-stale
 }}}
 Storeurl script(where concurrency is > 0) or the storeurl.pl above. concurrency 10 is faster than children 10.
 {{{
