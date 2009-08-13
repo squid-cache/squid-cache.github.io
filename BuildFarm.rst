@@ -56,16 +56,16 @@ You will be contacted back by one of the administrators with details required to
 
  /!\ '''needed by administrators only'''
 
- * [[http://eu.squid-cache.org:8081/computer/new|add a node]] (Use a simple name, doesn't need to be a hostname)
- * [[http://eu.squid-cache.org:8081/newJob|Create a new job]] Select copy-from existing and put in "squid3-centos-eu.quid-cache.org" as the job to copy from. Give your new job a name like "3.HEAD-$ARCH-$OS-$VERSION". E.g. "3.HEAD-i386-FreeBSD-6.4".
+ 1. [[http://eu.squid-cache.org:8081/computer/new|Add the slave node]]. Use a simple name, doesn't need to be a hostname.
+ 2. Configure job '''testnode''' to ensure the slave node is available and active with correct filesystem privileges. This must pass before its worth continuing to the remaining steps.
+ 3. Configure job '''test-builddeps''' to ensure that the slave has the correct dependencies to actually build the source. This must pass before its worth continuing to the remaining steps. Note that this is still based on the real HEAD sources, so its best to run this when HEAD is expected to build clean.
+
+If there is no job already present for this ARCH-OS-VERSION combination, AND the node is confirmed to be able to build the sources:
+
+ * [[http://eu.squid-cache.org:8081/newJob|Create a new job]] Select copy-from existing and put in the name of one of the existing jobs for the same squid branch as the job to copy from. Give your new job a name like "3.HEAD-$ARCH-$OS-$VERSION". E.g. "3.HEAD-i386-FreeBSD-6.4".
  * Configure your new job, and change :
   * the "tie this job to a node" to select the ARCH-OS-VERSION your machine is.
   * The labels list for the machine to have $ARCH $OS $VERSION $ARCH-$OS $OS-$VERSION $ARCH-$OS-$VERSION
-
-
-## Setting up a hudson slave (a machine to test a particular platform):
-
-
 
 ----
  Discuss this page using the "Discussion" link in the main menu
