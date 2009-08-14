@@ -15,14 +15,14 @@ The currently-planned farm consists of:
 || [[http://www.ubuntu.com/|Ubuntu-x32]] || || || ||
 || [[http://www.debian.org/|Debian-x32]] || sid || rio.treenetnz.com || {OK} Sponsored. ||
 || [[http://www.openbsd.org/|OpenBSD]] || || vobsd.squid-cache.org || Being set up ||
-|| [[http://www.freebsd.org/|FreeBSD-x32]] || 6.4 || squid-cache.org || {OK} / Volunteers sought ||
+|| [[http://www.freebsd.org/|FreeBSD-x32]] || 6.4 || squid-cache.org || {OK} ||
 || [[http://opensolaris.org/|OpenSolaris]] || || || Volunteers sought ||
 || [[http://www.microsoft.com/windows/default.aspx|MS Windows]] || || || Need license for OS & dev-tools ||
 || [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || || || ||
 
 Donations of disk space and CPU time on non-x86 systems are welcome and encouraged.
 
-The actual testing will be coordinated by [[https://hudson.dev.java.net/|Hudson]]. [[http://eu.squid-cache.org:8081/|Our instance]] 
+The actual testing will be coordinated by [[https://hudson.dev.java.net/|Hudson]]. [[http://build.squid-cache.org/|Our instance]] 
 
 == Registering a slave machine (as the machine owner) ==
 
@@ -40,8 +40,8 @@ You will be contacted back by one of the administrators with details required to
 
  * Install java
  * Add a useraccount for the builds to run under
- * As that user, down load the [[http://eu.squid-cache.org:8081/jnlpJars/slave.jar|slave jar]] to slave.jar
- * For unix: {{{java -jar slave.jar -jnlpUrl http://eu.squid-cache.org:8081/computer/$NODENAME/slave-agent.jnlp}}}. Put this in rc.local or something, to run on every startup.
+ * As that user, down load the [[http://build.squid-cache.org/jnlpJars/slave.jar|slave jar]] to slave.jar
+ * For unix: {{{java -jar slave.jar -jnlpUrl http://build.squid-cache.org/computer/$NODENAME/slave-agent.jnlp}}}. Put this in rc.local or something, to run on every startup.
  * For windows visit the slave web page and click on 'java web start', then in the java applet that starts, click the create a service option.
 
 
@@ -49,14 +49,14 @@ You will be contacted back by one of the administrators with details required to
 
  /!\ '''needed by administrators only'''
 
- * [[http://eu.squid-cache.org:8081/signup|create a usercode]] (Use a simple username like 'myname' no spaces etc.
- * [[http://eu.squid-cache.org:8081/configure|Grant access]] to this usercode to administer hudson
+ * [[http://build.squid-cache.org/signup|create a usercode]] (Use a simple username like 'myname' no spaces etc.
+ * [[http://build.squid-cache.org/configure|Grant access]] to this usercode to administer hudson
 
 == Setting up a slave machine (to run test builds) ==
 
  /!\ '''needed by administrators only'''
 
- 1. [[http://eu.squid-cache.org:8081/computer/new|Add the slave node]]. Use a simple name, doesn't need to be a hostname.
+ 1. [[http://build.squid-cache.org/computer/new|Add the slave node]]. Use a simple name, doesn't need to be a hostname.
  2. Configure job '''testnode''' to ensure the slave node is available and active with correct filesystem privileges. This must pass before its worth continuing to the remaining steps.
  3. Configure job '''test-builddeps''' to ensure that the slave has the correct dependencies to actually build the source. This must pass before its worth continuing to the remaining steps. Note that this is still based on the real HEAD sources, so its best to run this when HEAD is expected to build clean.
 
@@ -66,7 +66,7 @@ When the node passes both of those tests:
 
 If there is no job already present for this ARCH-OS-VERSION combination, AND the node is confirmed to be able to build the sources:
 
- * [[http://eu.squid-cache.org:8081/newJob|Create a new job]] Select copy-from existing and put in the name of one of the existing jobs for the same squid branch as the job to copy from. Give your new job a name like "3.HEAD-$ARCH-$OS-$VERSION". E.g. "3.HEAD-i386-FreeBSD-6.4".
+ * [[http://build.squid-cache.org/newJob|Create a new job]] Select copy-from existing and put in the name of one of the existing jobs for the same squid branch as the job to copy from. Give your new job a name like "3.HEAD-$ARCH-$OS-$VERSION". E.g. "3.HEAD-i386-FreeBSD-6.4".
  * Configure your new job, and change the '''tie this job to a node''' to select the ARCH-OS-VERSION of the new slave node.
 
 ----
