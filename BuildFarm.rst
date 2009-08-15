@@ -24,6 +24,23 @@ Donations of disk space and CPU time on non-x86 systems are welcome and encourag
 
 The actual testing will be coordinated by [[https://hudson.dev.java.net/|Hudson]]. [[http://build.squid-cache.org/|Our instance]] 
 
+== Slave Node software requirements ==
+Since the test nodes are doing more than just building Squid from a prepared tarball there are additional development tools required:
+
+ * Java 1.6 or higher (required to run the Hudson slave)
+ * Bazaar
+ * CppUnit
+ * Perl
+ * autoconf 2.61 or later
+ * automake
+ * libtool and libltdl development libraries
+
+Optional extras: (not required, but when present more gets tested)
+
+ * libcap
+ * po2html
+ * po4a
+
 == Registering a slave machine (as the machine owner) ==
 
  * Send an email to (TBA) containing the following details:
