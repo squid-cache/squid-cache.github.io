@@ -21,7 +21,7 @@ Configuration file to Include:
 {{{
 # MSN Messenger
 
-acl msn url_regex -i gateway.dll
+acl msn urlpath_regex -i gateway.dll
 acl msnd dstdomain messenger.msn.com gateway.messenger.hotmail.com
 acl msn1 req_mime_type application/x-msn-messenger
 
