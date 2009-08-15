@@ -2,8 +2,9 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-= Fully Transparent Interception with TPROXY and WCCP =
+
+
+= Fully Transparent Interception with Squid-2, TPROXYv2 and WCCP =
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 <<TableOfContents>>
@@ -14,6 +15,8 @@ This is a work in progress (read: a place for Adrian to jot down TPROXY document
  {i} The following documentation applies to Squid-2 WCCPv2 support and TPROXYv2 support running on a Linux box. If you have a newer version of the exact configuration options may differ.
 
 || /!\ || Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [[Features/Tproxy4]]) ||
+
+ {i} The configuration for Squid-3.1 is very different than the following documentation.
 
 
 == Usage ==
@@ -73,7 +76,7 @@ If you have some clients who set their proxy, it is recommended to use a separat
 
 (next email)
 
-The tproxy support in squid 2.6 does not need to be run as root.  It maintains root capabilities for network requests at all times (allowing the tproxy patch to work), without the need to maintain all root capabilities.
+The tproxy support in [[Squid-2.6]] does not need to be run as root.  It maintains root capabilities for network requests at all times (allowing the tproxy patch to work), without the need to maintain all root capabilities.
 
 (next email)
 
