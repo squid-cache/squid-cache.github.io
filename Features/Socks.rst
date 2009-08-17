@@ -29,16 +29,24 @@ The aim of this project will be to add a socks_port and socks_outgoing_address t
 ----
 
 A little research indicates SOCKSv5 is supposed to be as easy as a new bind() call and library linkage.
-
+http://www.squid-cache.org/mail-archive/squid-users/199901/0033.html
 {{{
 Adding:
  " -Dbind=SOCKSbind " to the CCFLAGS and CXXFLAGS environment variables.
  " -lsocks " to the LDADD environment variable.
 }}}
 
+With knowledge of how upstream peering works it follows that the connect() calls Squid may also need to be socksified to use cache_peer with a socks proxy. Which would just be 
+{{{
+  " -Dconnect=SOCKSconnect " to the CCFLAGS and CXXFLAGS environment variables.
+}}}
+
+----
+
 I'm not certain at this point if a new socks_port config option is called for to open the socks port. Easy enough to add if needed.
 A socks_outbound <port> option may also be needed for outbound SOCKS bindings.
-A new COMM_SOCKSBIND flag will be needed to the comm_open*() calls for the listener binding, outbound maybe a config setting acting on the bind() choice directly.
+
+A new COMM_SOCKSBIND flag will be needed to the comm_open*() calls for the listener binding, outbound maybe a config setting for cache_peer acting on the bind() choice directly.
 
 ----
 
@@ -47,6 +55,10 @@ Bazaar Branch available on launchpad at https://code.launchpad.net/~squid3/squid
 
 I'd particularly like some info on real-world situations where Squid needs to interact with SOCKS.
 So far I only know of certain apps sending HTTP but can be configured only with SOCKS proxy (not HTTP proxy) as a relay. Weird but true.
+
+----
+
+Extra additions: there seems to also be a system configuration setting and config file(s) for setting a parent SOCKSv5 proxy. It may be useful to pull this is as a possible automatic cache_peer entry.
 
 ----
 CategoryFeature
