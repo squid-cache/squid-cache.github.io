@@ -15,8 +15,27 @@
 
 ## * '''More''': 
 
-
 = Details =
+
+
+== How do I configure Squid forward all requests to another proxy? ==
+
+First, you need to give Squid a parent cache.  Second, you need to tell Squid it can not connect directly to origin servers.  This is done with three configuration file lines:
+
+{{{
+cache_peer parentcache.foo.com parent 3128 0 no-query default
+never_direct allow all
+}}}
+Note, with this configuration, if the parent cache fails or becomes unreachable, then every request will result in an error message.
+
+In case you want to be able to use direct connections when all the parents go down you should use a different approach:
+
+{{{
+cache_peer parentcache.foo.com parent 3128 0 no-query
+prefer_direct off
+}}}
+The default behavior of Squid in the absence of positive ICP, HTCP, etc replies is to connect to the origin server instead of using parents. The ''prefer_direct off'' directive tells Squid to try parents first.
+
 
 == How do I join a cache hierarchy? ==
 To place your cache in a hierarchy, use the ''cache_peer'' directive in ''squid.conf'' to specify the parent and sibling nodes.
