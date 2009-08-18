@@ -46,7 +46,7 @@ Optional extras: (not required, but when present more gets tested)
 
 == Registering a slave machine (as the machine owner) ==
 
- * Send an email to (TBA) containing the following details:
+ * Send an email to {{{noc at squid dash cache dot org}}} containing the following details:
   1. A public FQDN for your machine
   2. The operating system name, version, and bit-type (32-bit, 64-bit)
   3. The CPU type(s) of that machine
