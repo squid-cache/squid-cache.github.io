@@ -27,22 +27,27 @@ The actual testing will be coordinated by [[https://hudson.dev.java.net/|Hudson]
 == Slave Node software requirements ==
 Since the test nodes are doing more than just building Squid from a prepared tarball there are additional development tools required:
 
+'''Basics:'''
  * Java 1.6 or higher (required to run the Hudson slave)
- * Bazaar
- * CppUnit
+ * lsb_release (for linux slaves)
  * Perl
  * autoconf 2.61 or later
  * automake
  * libtool and libltdl development libraries
- * lsb_release (for linux slaves)
+
+'''Squid-3 Testing:'''
+ * Bazaar
+ * CppUnit
  * OpenSSL development library (libssl-dev)
+ * Optional extras for better testing:
+  * libcap
+  * po2html
+  * po4a
 
-Optional extras: (not required, but when present more gets tested)
-
- * libcap
- * po2html
- * po4a
+'''Squid-2 Testing:'''
  * cvs
+ * sharutils (or any other source of uudecode)
+
 
 == Registering a slave machine (as the machine owner) ==
 
