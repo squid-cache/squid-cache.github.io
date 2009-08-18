@@ -79,6 +79,7 @@ You will be contacted back by one of the administrators with details required to
 
 When the node passes both of those tests:
 
+/!\ '''Not needed anymore - labels should be automatically generated.'''
   * Configure the node labels list for the machine to have $ARCH $OS $VERSION $ARCH-$OS $OS-$VERSION $ARCH-$OS-$VERSION
 
 If there is no job already present for this ARCH-OS-VERSION combination, AND the node is confirmed to be able to build the sources:
