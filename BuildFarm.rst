@@ -35,12 +35,14 @@ Since the test nodes are doing more than just building Squid from a prepared tar
  * automake
  * libtool and libltdl development libraries
  * lsb_release (for linux slaves)
+ * OpenSSL development library (libssl-dev)
 
 Optional extras: (not required, but when present more gets tested)
 
  * libcap
  * po2html
  * po4a
+ * cvs
 
 == Registering a slave machine (as the machine owner) ==
 
