@@ -34,6 +34,7 @@ Since the test nodes are doing more than just building Squid from a prepared tar
  * autoconf 2.61 or later
  * automake
  * libtool and libltdl development libraries
+ * lsb_release (for linux slaves)
 
 Optional extras: (not required, but when present more gets tested)
 
