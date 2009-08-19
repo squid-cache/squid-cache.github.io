@@ -92,6 +92,14 @@ If there is no job already present for this ARCH-OS-VERSION combination, AND the
  * [[http://build.squid-cache.org/newJob|Create a new job]] Select copy-from existing and put in the name of one of the existing jobs for the same squid branch as the job to copy from. Give your new job a name like "3.HEAD-$ARCH-$OS-$VERSION". E.g. "3.HEAD-i386-FreeBSD-6.4".
  * Configure your new job, and change the '''tie this job to a node''' to select the ARCH-OS-VERSION of the new slave node.
 
+== Virtual nodes on eu.squid-cache.org ==
+
+/!\ Administrator info
+
+ * on the host /home/hudson/shared is dedicated to providing homedirs for hudson slaves
+ * each slave mounts /home/hudson/shared/$nodename at /home/hudson
+ * such clients should set /home/hudson as their root in the node config page.
+
 ----
  Discuss this page using the "Discussion" link in the main menu
 
