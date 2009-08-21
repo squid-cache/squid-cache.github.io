@@ -1,0 +1,38 @@
+##master-page:CategoryTemplate
+#format wiki
+#language en
+
+= Running Squid inside a Chroot Jail =
+
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
+
+<<TableOfContents>>
+
+== Outline ==
+
+Write some introduction here.
+
+== Usage ==
+
+Tell about some cases where this configuration would be good.
+
+== More ==
+
+Create more sections as you wish.
+
+== Squid Configuration File ==
+
+Paste the configuration file like this:
+
+{{{
+
+acl all src 0.0.0.0/0.0.0.0
+acl manager proto cache_object
+acl localhost src 127.0.0.1/255.255.255.255
+http_access deny all
+
+}}}
+
+
+----
+CategoryConfigExample
