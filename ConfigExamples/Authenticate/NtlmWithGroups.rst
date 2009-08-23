@@ -1,0 +1,35 @@
+##master-page:CategoryTemplate
+#format wiki
+#language en
+
+= Configure Squid for NTLM with Group-Based Access controls =
+
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
+
+<<TableOfContents>>
+
+== Outline ==
+
+To perform group-based access controls you need to already have NTLM authentication configured and working on a per-user basis.
+
+Details on how to do that are covered in:
+ * [[ConfigExamples/Authenticate/Ntlm]]
+ * [[Authenticate/WindowsActiveDirectory]]
+
+== Squid Configuration File ==
+
+Create and ACL for checking the group access:
+{{{
+external_acl_type NT_Group %LOGIN /usr/local/squid/libexec/wbinfo_group.pl
+
+acl group1 external NT_Group group1
+}}}
+
+and to use the ACL as you would any other authentication ACL
+{{{
+http_access allow group1
+}}}
+
+
+----
+CategoryConfigExample
