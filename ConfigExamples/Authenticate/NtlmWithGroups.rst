@@ -14,7 +14,7 @@ To perform group-based access controls you need to already have NTLM authenticat
 
 Details on how to do that are covered in:
  * [[ConfigExamples/Authenticate/Ntlm]]
- * [[Authenticate/WindowsActiveDirectory]]
+ * [[ConfigExamples/Authenticate/WindowsActiveDirectory]]
 
 == Squid Configuration File ==
 
