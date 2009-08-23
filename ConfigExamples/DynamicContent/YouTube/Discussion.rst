@@ -57,7 +57,6 @@ add this to squid.conf
 {{{
 #  The keyword for all youtube video files are "get_video?", "videodownload?" and "videoplayback" plus the id,
 acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback.*id)
-acl dontrewrite url_regex www.youtube.com.*get_video
 }}}
 and also this if you have cache deny QUERY line. if not just ignore it.
 {{{
@@ -70,7 +69,6 @@ cache deny QUERY
 }}}
 and the storeurl feature
 {{{
-storeurl_access deny dontrewrite
 storeurl_access allow store_rewrite_list
 storeurl_access deny all
 storeurl_rewrite_program /usr/local/etc/squid/storeurl.pl
