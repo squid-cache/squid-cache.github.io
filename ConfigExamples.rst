@@ -29,24 +29,24 @@ A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ w
 
 === Authentication ===
 [[Features/Authentication|Overview and explanation]]
-<<FullSearchCached(title:regex:^ConfigExamples/Authenticate/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Authenticate/.*$)>>
 
 === Interception ===
 [[ConfigExamples/Intercept|Overview and explanation]]
-<<FullSearchCached(title:regex:^ConfigExamples/Intercept/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Intercept/.*$)>>
 
 === Reverse Proxy (Acceleration) ===
-<<FullSearchCached(title:regex:^ConfigExamples/Reverse/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Reverse/.*$)>>
 
 === Instant Messaging / Chat Program filtering ===
 [[ConfigExamples/Chat|Overview and explanation]]
-<<FullSearchCached(title:regex:^ConfigExamples/Chat/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Chat/.*$)>>
 
 === Multimedia and Data Stream filtering ===
-<<FullSearchCached(title:regex:^ConfigExamples/Streams/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
 
 === General ===
-<<FullSearchCached(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse )>>
+<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse )>>
 
 == External configuration examples ==
 
