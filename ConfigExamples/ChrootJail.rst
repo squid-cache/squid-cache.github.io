@@ -1,38 +1,38 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-
 = Running Squid inside a Chroot Jail =
-
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 <<TableOfContents>>
 
-== Outline ==
 
-Write some introduction here.
 
-== Usage ==
-
-Tell about some cases where this configuration would be good.
-
-== More ==
-
-Create more sections as you wish.
-
-== Squid Configuration File ==
-
-Paste the configuration file like this:
-
+== create directory tree and copy files ==  
 {{{
-
-acl all src 0.0.0.0/0.0.0.0
-acl manager proto cache_object
-acl localhost src 127.0.0.1/255.255.255.255
-http_access deny all
-
+mkdir -p /usr/local/squid3/var/cache/squid3
+chown proxy:nogroup /usr/local/squid3/var/cache/squid3
+mkdir -p /usr/local/squid3/var/log/squid3
+mkdir -p /usr/local/squid3/var/run/nscd
+chown proxy:nogroup /usr/local/squid3/var/run
+mkdir -p /usr/local/squid3/etc
+mkdir -p /usr/local/squid3/lib
+mkdir -p /usr/local/squid3/var/spool/squid3
+chown proxy:nogroup /usr/local/squid3/var/spool/squid3
+mkdir -p /usr/local/squid3/usr/share/squid3
+cp /usr/share/squid3/mime.conf /usr/local/squid3/usr/share/squid3/
+cp -r /usr/share/squid3/icons /usr/local/squid3/usr/share/squid3/
+mkdir -p /usr/local/squid3/etc
+cp /etc/resolv.conf /usr/local/squid3/etc/
+cp /etc/nsswitch.conf /usr/local/squid3/etc/
+mkdir -p /usr/local/squid3/lib
+cp /lib/libnss_dns* /usr/local/squid3/lib/
+mkdir -p /usr/local/squid3/usr/lib/squid3
+cp /usr/lib/squid3/* /usr/local/squid3/usr/lib/squid3/
 }}}
-
-
+== modify squid.conf ==
+{{{
+chroot /usr/local/squid3
+}}}
 ----
-CategoryConfigExample
+ CategoryConfigExample
