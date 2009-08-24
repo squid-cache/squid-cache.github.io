@@ -8,7 +8,7 @@
 
 
 
-==create directory tree and copy files==  
+== create directory tree and copy files ==;  
 {{{
 mkdir -p /usr/local/squid3/var/cache/squid3
 chown proxy:nogroup /usr/local/squid3/var/cache/squid3
@@ -30,7 +30,7 @@ cp /lib/libnss_dns* /usr/local/squid3/lib/
 mkdir -p /usr/local/squid3/usr/lib/squid3
 cp /usr/lib/squid3/* /usr/local/squid3/usr/lib/squid3/
 }}}
-==modify squid.conf==
+== modify squid.conf ==;
 {{{
 chroot /usr/local/squid3
 }}}
