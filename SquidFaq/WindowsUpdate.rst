@@ -4,13 +4,18 @@
 ##begin
 == Why does it go so slowly through Squid? ==
 
-Windows Update apparently uses HTTP Range-Offsets' (AKA file partial ranges) to grab pieces of the Microsoft Update archive in parallel or using a random-access algorithm trying to reduce the web tarffic. Some versions of Squid do not handle or store Ranges very well yet.
+Windows Update apparently uses HTTP Range-Offsets' (AKA file partial ranges) to grab pieces of the Microsoft Update archive in parallel or using a random-access algorithm trying to reduce the web traffic. Some versions of Squid do not handle or store Ranges very well yet.
 
-The work-around used by many cache maintainers has been to set the range_offset to -1. Meaning that squid is configured to always pull the entire file from the start when a range is requested.
+The work-around used by many cache maintainers has been to set the '''range_offset -1'''. Meaning that squid is configured to always pull the entire file from the start when a range is requested.
 
-Compounding the problem and ironically causing your slowdown is the fact that some of the Microsoft servers may be telling your Squid not to store the archive file. This means that Squid will pull the entire archive every time it needs any small piece.
+ {i} Compounding the problem and ironically causing some slowdowns is the fact that some of the Microsoft servers may be telling your Squid not to store the archive file. This means that Squid will pull the entire archive every time it needs any small piece.
 
 You will need to test your squid config with and without the range_offset bypass and see which provides the best results for you.
+
+Another symptoms which occasionally appear when attempting to force caching of windows updates is service packs.
+
+ {i} If the quick_abort_* settings are set to abort a download incomplete and a client closes with almost but not quite enough of the service pack downloaded. That clients following requests will often timeout waiting for Squid to re-download the whole object from the start. Which naturally causes the problem to repeat on following restart attempts.
+
 
 == How do I stop Squid popping up the Authentication box for Windows Update? ==
 
