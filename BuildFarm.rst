@@ -9,16 +9,18 @@ FrancescoChemolli is leading this effort.
 
 The currently-planned farm consists of:
 || OS || Ver || system-name || Status ||
-|| [[http://www.centos.org/|CentOS-x64]] || 5.2 || eu.squid-cache.org || {OK} ||
-|| [[http://www.centos.org/|CentOS-x32]] || || labyrinth.squid-cache.org || Being set up ||
-|| [[http://www.gentoo.org/|Gentoo-x32]] || || || ||
+|| [[http://www.centos.org/|CentOS-x64]] || 5.3 || eu.squid-cache.org || {OK} ||
+|| [[http://www.centos.org/|CentOS-x32]] || || || ||
 || [[http://www.ubuntu.com/|Ubuntu-x32]] || || || ||
+|| [[http://www.ubuntu.com/|Ubuntu-ARM]] || || || ||
 || [[http://www.debian.org/|Debian-x32]] || sid || rio.treenetnz.com || {OK} Sponsored. ||
-|| [[http://www.openbsd.org/|OpenBSD]] || || vobsd.squid-cache.org || Being set up ||
+|| [[http://www.openbsd.org/|OpenBSD]] || || vobsd.squid-cache.org || {OK} ||
 || [[http://www.freebsd.org/|FreeBSD-x32]] || 6.4 || squid-cache.org || {OK} ||
-|| [[http://opensolaris.org/|OpenSolaris]] || || || Volunteers sought ||
+|| [[http://www.freebsd.org/|FreeBSD-x64]] || 7.2 || diablo.squid-cache.org || Being set up. ||
+|| [[http://opensolaris.org/|OpenSolaris-x64]] || || || Volunteers sought ||
+|| [[http://opensolaris.org/|OpenSolaris-sparc]] || || || Volunteers sought ||
 || [[http://www.microsoft.com/windows/default.aspx|MS Windows]] || || || Need license for OS & dev-tools ||
-|| [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || || || ||
+|| [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || || || Volunteers sought ||
 
 Donations of disk space and CPU time on non-x86 systems are welcome and encouraged.
 
