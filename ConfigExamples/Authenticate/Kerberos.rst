@@ -34,6 +34,7 @@ kinit administrator@DOMAIN
 msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-HTTP --upn HTTP/<fqdn> --server <domain controller> --verbose
 }}}
  * /!\ beware the wrap! above 'mskutil' options are meant to be on one line.
+ * /!\ beware the <computer-name> has Windows Netbios limitations of 15 characters.
 
 == krb5.conf Configuration ==
  * /!\ In IE the proxy must be specified as FQDN not as an IP-address
@@ -100,4 +101,6 @@ export KRB5RCACHETYPE
  . CategoryConfigExample
 
 ----
- CategoryConfigExample CategoryConfigExample
+ . CategoryConfigExample CategoryConfigExample
+----
+CategoryConfigExample
