@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Skype Access Controls=
+= Skype Access Controls =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
