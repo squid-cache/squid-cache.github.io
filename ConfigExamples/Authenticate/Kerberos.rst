@@ -24,7 +24,8 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 ## Tell about some cases where this configuration would be good.
 == Pre-requisites ==
  1. Install kerberos client package
- 1. Install msktutil package from http://dag.wieers.com/rpm/packages/msktutil/
+ 1. Install msktutil package from http://dag.wieers.com/rpm/packages/msktutil/ or from http://download.systemimager.org/~finley/msktutil/ (msktutil_0.3.16-7 required for 2008 Domain Controller)
+
  1. Create keytab for HTTP/fqdn with msktutil.
 
 {{{
@@ -97,3 +98,5 @@ export KRB5RCACHETYPE
 }}}
 ----
  . CategoryConfigExample
+----
+CategoryConfigExample
