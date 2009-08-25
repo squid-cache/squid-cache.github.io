@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Skype =
+= Skype Access Controls=
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
@@ -14,6 +14,7 @@ Configuration file to Include:
 
  /!\ Since FTP uses numeric IPs the Skype ACL must be exact including the port.
 
+=== Blocking ===
 {{{
 # Skype
 
@@ -24,6 +25,21 @@ http_access deny numeric_IPS
 http_access deny Skype_UA
 
 }}}
+
+=== Permitting ===
+
+ /!\ This needs to be done before any restrictive CONNECT http_access controls.
+
+{{{
+acl numeric_IPs url_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9af]+)?:([0-9af:]+)?:([0-9af+)?\])):443
+acl Skype_UA browser ^skype^
+
+http_access allow CONNECT localnet numeric_IPS Skype_UA
+}}}
+
+ {i} Note that Skype prefers the '''port 443''' which is by default enabled in Squid anyway so this configuration is only needed when you block HTTPS access through the proxy.
+
+If you limit HTTPS access to known sites only, then permitting Skype will break that policy.
 
 ----
 CategoryConfigExample
