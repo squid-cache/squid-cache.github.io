@@ -40,7 +40,7 @@ msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab
  * /!\ In IE the proxy must be specified as FQDN not as an IP-address
  * {i} rc4-hmac should be listed as encryption type.
 
-A minimal setup without DNS resolution of AD servers would be:
+A minimal setup without DNS resolution of AD servers would be (MIT Kerberos example):
 
 {{{
 [libdefaults]
@@ -102,5 +102,6 @@ export KRB5RCACHETYPE
 
 ----
  . CategoryConfigExample CategoryConfigExample
+
 ----
-CategoryConfigExample
+CategoryConfigExample CategoryConfigExample
