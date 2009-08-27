@@ -85,7 +85,7 @@ http_access deny !auth
 http_access allow auth
 http_access deny all
 }}}
-Add the following to the squid startup script
+Add the following to the squid startup script (Make sure the keytab is readable by the squid process owner)
 
 {{{
 KRB5_KTNAME=/etc/squid/HTTP.keytab
@@ -104,4 +104,4 @@ export KRB5RCACHETYPE
  . CategoryConfigExample CategoryConfigExample
 
 ----
-CategoryConfigExample CategoryConfigExample
+CategoryConfigExample CategoryConfigExample CategoryConfigExample
