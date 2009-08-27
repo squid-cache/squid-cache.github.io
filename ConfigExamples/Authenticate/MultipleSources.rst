@@ -50,7 +50,7 @@ http_access allow MyAcl
 $|=1;
 
 while (<>) {
-        print "OK";
+        print "OK\n";
 }
 }}}
 
