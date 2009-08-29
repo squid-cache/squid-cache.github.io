@@ -32,6 +32,11 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 kinit administrator@DOMAIN
 
 msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-HTTP --upn HTTP/<fqdn> --server <domain controller> --verbose
+
+or for Windows 2008 for AES support
+
+msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-HTTP --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
+
 }}}
  * /!\ beware the wrap! above 'mskutil' options are meant to be on one line.
  * /!\ beware the <computer-name> has Windows Netbios limitations of 15 characters.
@@ -51,6 +56,12 @@ A minimal setup without DNS resolution of AD servers would be (MIT Kerberos exam
       default_tgs_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
       default_tkt_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
       permitted_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
+
+; for Windows 2008 with AES
+;      default_tgs_enctypes = aes256-cts-hmac-sha1-96 rc4-hmac des-cbc-crc des-cbc-md5
+;      default_tkt_enctypes = aes256-cts-hmac-sha1-96 rc4-hmac des-cbc-crc des-cbc-md5
+;      permitted_enctypes = aes256-cts-hmac-sha1-96 rc4-hmac des-cbc-crc des-cbc-md5
+
 [realms]
       WIN2003R2.HOME = {
               kdc = w2k3r2.win2003r2.home
@@ -104,4 +115,4 @@ export KRB5RCACHETYPE
  . CategoryConfigExample CategoryConfigExample
 
 ----
-CategoryConfigExample CategoryConfigExample CategoryConfigExample
+CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
