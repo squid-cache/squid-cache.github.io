@@ -97,7 +97,7 @@ http_access deny !auth
 http_access allow auth
 http_access deny all
 }}}
-Add the following to the squid startup script (Make sure the keytab is readable by the squid process owner)
+Add the following to the squid startup script (Make sure the keytab is readable by the squid process owner e.g. chgrp squid /etc/squid/HTTP.keytab; chmod g+r /etc/squid/HTTP.keytab )
 
 {{{
 KRB5_KTNAME=/etc/squid/HTTP.keytab
@@ -124,4 +124,6 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
  . CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
 
 ----
- CategoryConfigExample
+ . CategoryConfigExample
+----
+CategoryConfigExample
