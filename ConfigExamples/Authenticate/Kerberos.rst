@@ -109,6 +109,11 @@ Kerberos can keep a replay cache to detect the reuse of Kerberos tickets (usuall
 KRB5RCACHETYPE=none
 export KRB5RCACHETYPE
 }}}
+== Troubleshooting Tools ==
+On Windows client use __kerbtray__ from Microsoft to list and purge keys.
+
+__Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KDC_ERR_PREAUTH_REQUIRED is not an error, but an informational message to the client)
+
 ----
  . CategoryConfigExample
 
@@ -116,4 +121,7 @@ export KRB5RCACHETYPE
  . CategoryConfigExample CategoryConfigExample
 
 ----
- CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
+ . CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
+
+----
+ CategoryConfigExample
