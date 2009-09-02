@@ -31,16 +31,17 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 {{{
 kinit administrator@DOMAIN
 
-msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-HTTP --upn HTTP/<fqdn> --server <domain controller> --verbose
+msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose
 
 or for Windows 2008 for AES support
 
-msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-HTTP --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
+msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
 
 }}}
  * /!\ beware the wrap! above 'mskutil' options are meant to be on one line.
  * /!\ beware the <computer-name> has Windows Netbios limitations of 15 characters.
  * /!\ msktutil requires cyrus-sasl-gssapi ldap plugin to authenticate to AD ldap.
+ * /!\ because of a bug in msktutil the <computer-name> must be lowercase
 
 == krb5.conf Configuration ==
  * /!\ In IE the proxy must be specified as FQDN not as an IP-address
@@ -125,5 +126,6 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
 
 ----
  . CategoryConfigExample
+
 ----
-CategoryConfigExample
+ CategoryConfigExample CategoryConfigExample
