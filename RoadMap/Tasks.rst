@@ -61,5 +61,9 @@ Check with squid-dev to see if its already done.
  * SMP preparation
   1. remove all uses of LOCAL_ARRAY() macro
 
+ * Helper and Tool Manuals
+  1. Write a manual man(8) page for a helpers/ program that does not have one.
+  2. Update the existing helper manuals to fit a template (yet to be designed)
+
 ----
 CategoryWish
