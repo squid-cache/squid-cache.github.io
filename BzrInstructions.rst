@@ -31,9 +31,10 @@ http://www.squid-cache.org/bzr/squid3/trunk
 }}}
 
 Also mirrors are available at:
- * https://code.launchpad.net/~lifeless/squid/squid3-trunk
- * https://code.launchpad.net/~squid3/squid/3.1
- * https://code.launchpad.net/~squid3/squid/SQUID_3_0
+ * https://code.launchpad.net/~squid/squid/squid3-trunk
+ * https://code.launchpad.net/~squid/squid/3.1
+ * https://code.launchpad.net/~squid/squid/SQUID_3_0
+ * Other developer code branches: https://code.launchpad.net/squid/
 
 = Web view =
 
