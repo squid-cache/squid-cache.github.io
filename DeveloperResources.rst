@@ -15,7 +15,7 @@ To interactively browse the repository you can use [[http://www.squid-cache.org/
 == Developer Projects ==
 
  '''Squid-3:'''
-http://launchpad.net provide space for developers to publish and associate their code with the squid project.
+https://code.launchpad.net/squid provide space for Squid developers to publish and associate their code with the squid project.
 
  '''Squid-2:'''
 To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
