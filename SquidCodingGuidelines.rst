@@ -167,23 +167,27 @@ ENFORCED:
  * reference internal includes by their full internal path (may exclude src/ from path)
  * sort internal includes alphabetically
  * minimal system includes
- * wrap system include in autoconf HAVE_FILE_H protection macros
+ * wrap system includes in autoconf HAVE_FILE_H protection macros
  * sort system includes alphabetically
   * should import order-dependent headers through libcompat
 
 Preferred include layout:
 {{{
+// required first include
 #include "squid.h"
 
+// local source files alphabetically sorted
 #include "cutom.h"
 #include "local.h"
 
+// System includes alphabetically sorted
 #ifdef HAVE_ACCESS_H
 #include <access.h>
 #endif
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
+
 }}}
 
 == C source guidelines ==
