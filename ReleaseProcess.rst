@@ -19,12 +19,13 @@ Please check the '''Pending Bugs''' page for your particular release.
 
 HenrikNordstrom Stable release practices for Squid-2 yet to be documented.
 
-AmosJeffries makes a new Stable release for Squid-3 at soonest available time after one of the following conditions are met since the previous release:
+AmosJeffries makes a new Stable release for Squid-3 at soonest available time after the following conditions are met since the previous release:
 
  * At least one new major, critical, or blocker bug is fixed.
- * 4 or more less important bugs have been fixed.
- * 100 lines or more have been changed in the code.
+  * or, 4 or more less important bugs have been fixed.
+  * or, 100 lines or more have been changed in the code.
  * 4-8 weeks have passed and changes have been made to the code.
+  * {i} exceptions are made for security vulnerabilities or similar serious bugs.
 
 == Beta Release / Candidate Release ==
 
@@ -42,13 +43,14 @@ HenrikNordstrom Beta release practices for Squid-2 yet to be documented.
 AmosJeffries makes a Beta release for Squid-3 at soonest available time after one of the following conditions are met since the previous release:
 
  * At least one new critical, or blocker bug is fixed.
- * ~10 or more less important bugs have been fixed.
- * 1000 lines or more have been changed in the code.
+  * or, ~10 or more less important bugs have been fixed.
+  * or, 1000 lines or more have been changed in the code.
  * 8-16 weeks have passed and changes have been made to the code.
+  * {i} exceptions are made for security vulnerabilities or similar serious bugs.
 
 == Development Release ==
 
-All Squid Releases made from [[http://www.squid-cache.org/Version/v3/HEAD/|3.HEAD]] and [[http://www.squid-cache.org/Version/v2/HEAD/|2.HEAD]] are development releases. As are snapshots generated from all branches currently in beta.
+All Squid Releases made from [[http://www.squid-cache.org/Version/v3/HEAD/|3.HEAD]] and [[http://www.squid-cache.org/Version/v2/HEAD/|2.HEAD]] are development releases.
 
 These releases are meant for Squid users who are already familiar with Squid.
 You should expect to find numerous bugs and problems with the development releases.
