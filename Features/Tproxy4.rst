@@ -33,6 +33,12 @@ Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ri
 
  {i} '''libcap''' or '''libcap2''' need the developer versions (libcap-dev?) to compile with Squid. Any current version should do since these are old requirements unchanged since TPROXY version 2.
 
+=== IPv6 Support ===
+
+There is now some support available from Balabit for patched kernels and iptables to perform TPROXY with IPv6 protocol.
+
+[[Squid-3.2]] (HEAD) has been adjusted to use IPv6 on http_port set with the tproxy option.
+
 == Squid Configuration ==
 
 Configure build options
