@@ -26,10 +26,12 @@ The implementation speed will depend on funding available for this project.
 == Progress and Dependencies ==
  This constitutes how the Squid-3 maintainer sees the current work flowing towards SMP support. There are likely to be problems and unexpected things encountered at every turn.
 
+ http://www.squid-cache.org/Devel/papers/threading-notes.txt while old still contains a good and valid analysis of the SMP problems inside Squid which must be hurdled.
 
-We have broken the SMP requirements of Squid into a series of smaller work units and are trying to get them completed as spare time permits.
 
- 1. The modularization of Squid code into logical work units suitable for SMP consideration. Tracked as [[Features/SourceLayout]]
+We have broken the SMP requirements of Squid into a series of smaller work units and are trying to get the following completed as spare time permits.
+
+ 1. The modularization of Squid code into compact logical work units suitable for SMP consideration. Tracked as [[Features/SourceLayout]]
 
  2. Those resulting module libraries then need to be made fully Async [[Features/NativeAsyncCalls]] jobs.
 
