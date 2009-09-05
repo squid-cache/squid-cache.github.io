@@ -71,6 +71,19 @@ The intention is to remove the backlog of feature parity between 2.7 and 3.2 (li
 
 == Done ==
 
+Features Ported from 2.7:
+
+ * Unique Sequence numbering for access.log lines.
+
+Basic new features in 3.2:
+
+ * Login to cache_peer:
+  * Fully transparent credential pass-thru
+  * Kerberos login (proxy to proxy)
+ * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
+ * Helpers:
+  * New helpers to demo url_rewrite_program programs.
+
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 -regex:ETA...:)>>
 
 
