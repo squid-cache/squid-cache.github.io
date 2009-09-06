@@ -47,5 +47,22 @@ Some other features are aimed at reducing the blocker problems for SMP. Not exac
  * [[Features/ClientSideCleanup]]
  * Forwarding API also needs work, but has no tracker feature yet.
 
+== Thread / Resource Safety ==
+
+All resources shared between calls and clients will need to have appropriate locking mechanisms added.  
+
+These include, but may not be limited to:
+ * hash_link
+ * dlink_list
+ * ipcache, fqdncache  (or maybe a better merged version)
+ * storage (see above)
+ * FD / fde handling
+ * statistic counters
+ * memory manager
+ * configuration objects
+ * others?
+
+One possibility often spoken of is to replace one or more of the low-level components with a public implementation having better thread-safe implementation (usually referring to the linked-list and hash algorithms).  Deep testing will be needed however to check for suitable speedy and efficient versions.
+
 ----
 CategoryFeature CategoryWish
