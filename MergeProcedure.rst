@@ -17,9 +17,16 @@ We would like everyone to discuss their plans in the [[http://www.squid-cache.or
 Other developers are often able to provide projects for anyone just wanting to contribute.
 
 === Code Style ===
-Squid-2 and Squid-3 use different coding styles. Style requirements can be found (where is the most current??)
+Squid-2 and Squid-3 use different coding styles.
 
-Squid-3 formatting is presently handled by the maintainer post-commit. Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
+'''Squid-2''':
+ * Properly indented with a style similar to the rest of the code.
+ * Any C code will be indented by GNU indent 1.9.1 (exact version, no other GNU indent version) with the options:
+ * {{{indent -br -ce -i4 -ci4 -l80 -nlp -npcs -npsl -d0 -sc -di0 -psl}}}.
+
+'''Squid-3''':
+ * Formatting is presently handled by the maintainer post-commit.
+ * Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
 
 
 === Submission Format ===
@@ -85,7 +92,7 @@ If a follow up change (bugfix etc) is committed directly related to an earlier c
 
 If you suspect that there will be a series of incremental commits relating to a specific feature or reorganisation then make the subject line easy to connect together by starting the title line with a short featurename:  (i.e. "rproxy: header fixes")
 
-Add to the above the parts of the Suqid-3 procedure you think makes sense. Use of common sense is the main rule of conduct.
+Add to the above the parts of the Squid-3 procedure you think makes sense. Use of common sense is the main rule of conduct.
 
 === Core Developers ===
 The [[WhoWeAre|core developers]] mentioned above are experienced developers with serious long-term dedication and contribution to the Squid project as a whole and Squid code in particular. They are usually active on squid-dev and often perform the auditing duties personally. Core folks have collective responsibility for the Squid project and may use their super powers to resolve conflicts or prevent disasters.
