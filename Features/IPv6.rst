@@ -156,7 +156,7 @@ NAT simply does not exist in IPv6. By Design.
 
 Given that transparency/interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do transparency and interception that way.
 
-Talk amongst the Linux netfilter guys indicates that the [[Features/Tproxy4|TPROXY v4]] feature should be easily capable of IPv6. '''But they have not yet written that bit of the code'''
+[[Features/Tproxy4|TPROXY v4]] is capable of IPv6. '''Kernel and iptables patches for IPv6 TPROXY are now available. Contact Balabit.''' You will also need the very latest 3.1 beta code, which will now permit tproxy ports to listen on IPv6 ... if your system has been patched.
 
 === Delay Pools ===
 
