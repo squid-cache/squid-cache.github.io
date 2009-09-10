@@ -7,6 +7,7 @@ Squid's access control scheme is relatively comprehensive and difficult for some
 == ACL elements ==
 || {i} || The information here is current for version 3.1 see http://www.squid-cache.org/Doc/config/acl/ for current configuration guide. ||
 
+
 Squid knows about the following types of ACL elements:
 
 ***** ACL TYPES AVAILABLE *****
@@ -69,18 +70,19 @@ You can put different values for the same ACL name on different lines.  Squid co
 == Access Lists ==
 There are a number of different access lists:
 
- * '''http_access''': Allows HTTP clients (browsers) to access the HTTP port.  This is the primary access control list.
- * '''http_reply_access''': Allows HTTP clients (browsers) to receive the reply to their request. This further restricts permissions given by http_access, and is primarily intended to be used together with the rep_mime_type acl type for blocking different content types.
- * '''icp_access''': Allows neighbor caches to query your cache with ICP.
- * '''miss_access''': Allows certain clients to forward cache misses through your cache. This further restricts permissions given by http_access, and is primarily intended to be used for enforcing sibling relations by denying siblings from forwarding cache misses through your cache.
- * '''cache''': Defines responses that should not be cached.
- * '''redirector_access''': Controls which requests are sent through the redirector pool.
- * '''ident_lookup_access''': Controls which requests need an Ident lookup.
- * '''always_direct''': Controls which requests should always be forwarded directly to origin servers.
- * '''never_direct''': Controls which requests should never be forwarded directly to origin servers.
- * '''snmp_access''': Controls SNMP client access to the cache.
- * '''broken_posts''': Defines requests for which squid appends an extra CRLF after POST message bodies as required by some broken origin servers.
- * '''cache_peer_access''': Controls which requests can be forwarded to a given neighbor (peer).
+ * [[http://www.squid-cache.org/Doc/config/http_access/|http_access]]: Allows HTTP clients (browsers) to access the HTTP port.  This is the primary access control list.
+ * [[http://www.squid-cache.org/Doc/config/http_reply_access/|http_reply_access]]: Allows HTTP clients (browsers) to receive the reply to their request. This further restricts permissions given by http_access, and is primarily intended to be used together with the rep_mime_type acl type for blocking different content types.
+ * [[http://www.squid-cache.org/Doc/config/icp_access/|icp_access]]: Allows neighbor caches to query your cache with ICP.
+ * [[http://www.squid-cache.org/Doc/config/miss_access/|miss_access]]: Allows certain clients to forward cache misses through your cache. This further restricts permissions given by http_access, and is primarily intended to be used for enforcing sibling relations by denying siblings from forwarding cache misses through your cache.
+ * [[http://www.squid-cache.org/Doc/config/cache/|cache]]: Defines responses that should not be cached.
+ * [[http://www.squid-cache.org/Doc/config/url_rewrite_access/|url_rewrite_access]]: Controls which requests are sent through the redirector pool.
+ * [[http://www.squid-cache.org/Doc/config/ident_lookup_access/|ident_lookup_access]]: Controls which requests need an Ident lookup.
+ * [[http://www.squid-cache.org/Doc/config/always_direct/|always_direct]]: Controls which requests should always be forwarded directly to origin servers.
+ * [[http://www.squid-cache.org/Doc/config/never_direct/|never_direct]]: Controls which requests should never be forwarded directly to origin servers.
+ * [[http://www.squid-cache.org/Doc/config/snmp_access/|snmp_access]]: Controls SNMP client access to the cache.
+ * [[http://www.squid-cache.org/Doc/config/broken_posts/|broken_posts]]: Defines requests for which squid appends an extra CRLF after POST message bodies as required by some broken origin servers.
+ * [[http://www.squid-cache.org/Doc/config/cache_peer_access/|cache_peer_access]]: Controls which requests can be forwarded to a given neighbor (peer).
+
 '''Notes''':
 
 An access list ''rule'' consists of an ''allow'' or ''deny'' keyword, followed by a list of ACL element names.
@@ -186,6 +188,7 @@ You've probably noticed (and been frustrated by) the fact that you cannot combin
 
  * '''All elements of an ''acl'' entry are OR'ed together'''.
  * '''All elements of an ''access'' entry are AND'ed together''' (e.g. ''http_access'' and ''icp_access'')
+
 For example, the following access control configuration will never work:
 
 {{{
@@ -306,6 +309,8 @@ This will forward the user's credentials '''as-is''' to the parent proxy which w
 || <!> ||This will '''only''' work with the ''Basic'' authentication scheme. If any other scheme is enabled, it will fail ||
 
 
+
+
 {{{
 cache_peer parent.foo.com parent login=*:somepassword
 }}}
@@ -318,30 +323,28 @@ http_access allow GOOD
 http_access deny all
 }}}
 == How can I block access to porn sites? ==
-Often, the hardest part about using Squid to deny pornography
-is coming up with the list of sites that should be
-blocked.  You may want to maintain such a list yourself,
-or get one from somewhere else (see below).
+Often, the hardest part about using Squid to deny pornography is coming up with the list of sites that should be blocked.  You may want to maintain such a list yourself, or get one from somewhere else (see below).
 
-The ACL syntax for using such a list depends on its contents.
-If the list contains regular expressions, use this:
+The ACL syntax for using such a list depends on its contents. If the list contains regular expressions, use this:
+
 {{{
 acl PornSites url_regex "/usr/local/squid/etc/pornlist"
 http_access deny PornSites
 }}}
-On the other hand, if the list contains origin server
-hostnames, simply change ''url_regex''
-to ''dstdomain'' in this example.
+On the other hand, if the list contains origin server hostnames, simply change ''url_regex'' to ''dstdomain'' in this example.
 
 == Does anyone have a ban list of porn sites and such? ==
  * The [[http://www.squidguard.org/blacklists.html|SquidGuard]] redirector folks have links to some lists.
  * Bill Stearns maintains the [[http://www.stearns.org/sa-blacklist/|sa-blacklist]] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
  * The [[http://www.rambris.com/fredrik/sleezeball/|SleezeBall site]] has a list of patterns that you can download.
+
 == Squid doesn't match my subdomains ==
 If you are using Squid-2.4 or later then keep in mind that dstdomain acls uses different syntax for exact host matches and entire domain matches. ''www.example.com'' matches the '''exact host''' ''www.example.com'', while ''.example.com'' matches the '''entire domain''' example.com (including example.com alone)
 
 There is also subtle issues if your dstdomain ACLs contains matches for both an exact host in a domain and the whole domain where both are in the same domain (i.e. both ''www.example.com'' and ''.example.com''). Depending on how your data is ordered this may cause only the most specific of these (e.g. ''www.example.com'') to be used.
 || {i} ||Current Squid versions (as of Squid-2.4) will warn you when this kind of configuration is used. If your Squid does not warn you while reading the configuration file you do not have the problem described below. Also the configuration here uses the dstdomain syntax of Squid-2.1 or earlier.. (2.2 and later needs to have domains prefixed by a dot) ||
+
+
 
 
 There is a subtle problem with domain-name based access controls when a single ACL element has an entry that is a subdomain of another entry.  For example, consider this list:
@@ -434,6 +437,8 @@ Yes, for some operating systes.  Squid calls these "ARP ACLs" and they are suppo
 || /!\ ||MAC address is only available for clients that are on the same subnet.  If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router. ||
 
 
+
+
 To use ARP (MAC) access controls, you first need to compile in the optional code.  Do this with the ''--enable-arp-acl'' configure option:
 
 {{{
@@ -520,11 +525,10 @@ john
 jane
 jim
 }}}
-
 == I want to authorize users depending on their MS Windows group memberships ==
 There is an excellent resource over at http://workaround.org/squid-ldap on how to use LDAP-based group membership checking.
 
-Also the [[ConfigExamples/Authenticate/Ldap| LDAP]] or [[ConfigExamples/Authenticate/WindowsActiveDirectory|Active Directory]] config example]] here in the squid wiki might prove useful.
+Also the [[ConfigExamples/Authenticate/Ldap|LDAP]] or [[ConfigExamples/Authenticate/WindowsActiveDirectory|Active Directory]] config example]] here in the squid wiki might prove useful.
 
 == Maximum length of an acl name ==
 By default the maximum length of an ACL name is 32-1 = 31 characters, but it can be changed by editing the source: in ''defines.h''
@@ -532,14 +536,13 @@ By default the maximum length of an ACL name is 32-1 = 31 characters, but it can
 {{{
 #define ACL_NAME_SZ 32
 }}}
-
-
 == Fast and Slow ACLs ==
 <<Anchor(acl_types)>>
 
 Some ACL types require information which may not be already available to Squid. Checking them requires suspending work on the current request, querying some external source, and resuming work when the needed information becomes available. This is for example the case for DNS, authenticators or external authorization scripts. ACLs can thus be divided in '''FAST''' ACLs, which do not require going to external sources to be fulfilled, and '''SLOW''' ACLs, which do.
 
 Fast ACLs include (as of squid 3.1.0.7):
+
  * all (built-in)
  * src
  * dstdomain
@@ -569,6 +572,7 @@ Fast ACLs include (as of squid 3.1.0.7):
  * ca_cert
 
 Slow ACLs include:
+
  * dst
  * dst_as
  * srcdomain
@@ -581,14 +585,14 @@ Slow ACLs include:
  * ext_user
  * ext_user_regex
 
-This list may be incomplete or out-of-date. See your {{{squid.conf.documented}}} file for details.
-ACL types marked with {R} are ''reply'' ACLs, see the dedicated FAQ chapter.
+This list may be incomplete or out-of-date. See your {{{squid.conf.documented}}} file for details. ACL types marked with {R} are ''reply'' ACLs, see the dedicated FAQ chapter.
 
 Squid caches the results of ACL lookups whenever possible, thus slow ACLs will not always need to go to the external data-source.
 
 Knowing the behaviour of an ACL type is relevant because not all ACL matching directives support all kinds of ACLs. Some check-points will '''not''' suspend the request: they allow (or deny) immediately. If a SLOW acl has to be checked, and the results of the check are not cached, the corresponding ACL result will be as if it didn't match. In other words, such ACL types are in general not reliable in all access check clauses.
 
 The following are '''SLOW''' access clauses:
+
  * http_access
  * http_access2
  * http_reply_access
@@ -600,6 +604,7 @@ The following are '''SLOW''' access clauses:
  * cache
 
 These are instead '''FAST''' access clauses:
+
  * icp_access
  * htcp_access
  * htcp_clr_access
@@ -620,8 +625,6 @@ Thus the safest course of action is to only use fast ACLs in fast access clauses
 
 A possible workaround which can mitigate the effect of this characteristic consists in exploiting caching, by setting some "useless" ACL checks in slow clauses, so that subsequent fast clauses may have a cached result to evaluate against.
 
-
 ##end
 -----
-
 Back to the SquidFaq
