@@ -8,7 +8,6 @@
  * '''ETA''': unknown
  * '''Version''': 3.2 & 2.x
  * '''Developer''': [[Henrik_Nordström]], others welcome
- * '''More''': [[attachment:HTTP-1.1-Checklist_2009-09-12.ods]]
 
 <<TableOfContents>>
 
@@ -22,6 +21,21 @@ We still are HTTP/1.0, not 1.1. There is many reasons to this but lets begin wit
 To complete this work is needed in the following areas:
  * Store API and data flow, to enable forwarding of 1xx responses. And maybe to give some thought on how to proxy transfer encodings (i.e. gzip) without having to recode.
  * Protocol parsing & composing for transfer encoding (at minimum chunked).
+
+=== Checklist ===
+
+The full current state of Squid: [[attachment:HTTP-1.1-Checklist_2009-09-12.ods]]
+
+This document starts with several columns titled '''AUDIT''' for the audited versions where exact HTTP/1.1 support has been determined by a Sponsor. Includes an overall percentage of support then detailing which requirements are supported and which broken.
+
+Following that are columns titled '''GUESS''' for the next version which has not been audited fully yet.
+The support percentage here assumes that:
+ 1. no regressions have been made over the previous audited release in the version chain.
+ 2. new additions which are expected to raise HTTP/1.1 support will actually pass the standard requirements.
+
+A future audit will determine the accuracy of these expectations.
+
+The tests are on vanilla Squid with no special alterations made during build.  The 2.7 test appears to have been done with the configurable HTTP/1.1 advertisement to Servers turned on, which is not available in Squid 3.x.
 
 == Forwarding path ==
 
