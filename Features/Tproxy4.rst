@@ -6,7 +6,7 @@
 
 = Feature: TPROXY version 4.1+ Support =
 
- * '''Goal''': Balabit only supports TProxy version 4.1 but in the squid "--enable-tproxy" requires version 2 which is obsolete for a while.
+ * '''Goal''': Support current TPROXYv4.1+ with full IPv4 and IPv6 transparent interception of HTTP.
 
  * '''Version''': 3.1
 
@@ -37,7 +37,7 @@ Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ri
 
 There is now some support available from Balabit for patched kernels and iptables to perform TPROXY with IPv6 protocol.
 
-[[Squid-3.2]] (HEAD) has been adjusted to use IPv6 on http_port set with the tproxy option.
+[[Squid-3.2]] (HEAD) has been adjusted to use IPv6 on http_port set with the tproxy option when kernel support is available.
 
 == Squid Configuration ==
 
