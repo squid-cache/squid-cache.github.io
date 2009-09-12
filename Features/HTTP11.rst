@@ -8,7 +8,7 @@
  * '''ETA''': unknown
  * '''Version''': 3.2 & 2.x
  * '''Developer''': [[Henrik_Nordström]], others welcome
- * '''More''': [[Http11Checklist]]
+ * '''More''': [[attachment:HTTP-1.1-Checklist_2009-09-12.ods]]
 
 <<TableOfContents>>
 
@@ -54,7 +54,7 @@ There is preliminary patches available for both Squid-3 and Squid-2 adding at le
 
 Additionally work should also be done in the following
 
- * Cleanups to comply better with the RFCs. (see the [[Http11Checklist]])
+ * Cleanups to comply better with the RFCs. (see the Checklist)
  * Implement cache invalidation requirements.
 
 == Older notes ==
