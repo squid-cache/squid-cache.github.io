@@ -84,7 +84,7 @@ Basic new features in 3.2:
  * Helpers:
   * New helpers to demo url_rewrite_program programs.
 
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:Version...:.*3.2 -regex:ETA...:)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
 
 
 Development snapshots of Squid source code are available at
@@ -103,23 +103,23 @@ Features under development:
 ## * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
 
 ## some we will need to manually add to this list...
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3.2 -regex:ETA...:.unknown regex:Developer...:....*)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" -regex:"ETA...:.unknown" regex:"Developer...:....*")>>
 
 
 Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
 
 (Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:ETA...:.unknown regex:Priority...:.*1)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"ETA...:.unknown" regex:"Priority...:.*1")>>
  * Store URL re-write port from 2.7
  * monitor* port from 2.6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2185
 (Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:ETA...:.unknown regex:Priority...:.*2)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"ETA...:.unknown" regex:"Priority...:.*2")>>
  * Variant Invalidation
 (Priority 3)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:ETA...:.unknown regex:Priority...:.*3)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"ETA...:.unknown" regex:"Priority...:.*3")>>
 
 (Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3 regex:ETA...:.unknown -regex:Priority...:.[123])>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3" regex:"ETA...:.unknown" -regex:"Priority...:.[123]")>>
 
  There is also a list of [[RoadMap/Tasks|Tasks]] which anyone can help with.
 
@@ -130,9 +130,9 @@ Wishlist consists of features which have been suggested or requested but do not 
 Please contact squid-dev and discuss these if you with to take on development of one.
 
 ## That means any feature without a named developer....
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+)>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:"Developer...:.*[a-zA-Z]+")>>
 
-##<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:Developer...:.*[a-zA-Z]+ regex:Version...:.*3)>>
+##<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3")>>
 
 More ideas are available [[Features/Other|elsewhere]].
 
@@ -141,15 +141,16 @@ More ideas are available [[Features/Other|elsewhere]].
 ## There should be no 3.0 to 3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
 
 ## (3.0)
-## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.0 regex:ETA...:.unknown -regex:Status...:.complete)>>
+## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.0" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
 ## (3.1)
-## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:Version...:.*3 regex:Version...:.*3\.1 regex:ETA...:.unknown -regex:Status...:.complete)>>
+## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.1" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
 
 = Schedule for Future Removals =
 
-Certain features are no longer relevant as the code improves and are planned for removal. Due to the possibility they are being used we list them here along with the release version they are expected to disappear.
+Certain features are no longer relevant as the code improves and are planned for removal. Due to the possibility they are being used we list them here along with the release version they are expected to disappear. Warnings should also be present in the code where possible.
 
 || ''' Version''' || '''Feature''' || '''Why''' ||
 || 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[../../Translations|langpack]] ||
 || 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
+|| 3.2+ || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
 || 3.3 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
