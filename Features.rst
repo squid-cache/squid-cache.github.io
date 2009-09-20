@@ -13,7 +13,7 @@ A timeline of feature integration is listed on the [[../RoadMap/Squid3|Squid-3 R
 ## When completed yes|no metadata is inserted into features we could use this...
 <<FullSearch(title:Features/ regex:completed.no )>>
 
-<<FullSearch(category:CategoryFeature title:Features/ regex:Status...: -regex:Status[^A-z]+completed -regex:Status[^A-z]+Obsolete -regex:completed.no -regex:completed.yes )>>
+<<FullSearch(category:CategoryFeature title:Features/ regex:"Status...:" -regex:Status[^A-z]+completed -regex:Status[^A-z]+Obsolete -regex:completed.no -regex:completed.yes )>>
 
 
 Less documented ideas and wishes are available [[Features/Other|elsewhere]].
