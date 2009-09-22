@@ -887,32 +887,9 @@ In some situations where swap.state has been corrupted Squid can be very confuse
 
 If this does not work or causes too high load on your server due to the reindexing of the cache then delete the cache content as explained in ../OperatingSquid.
 
+== Problems with Windows update ==
 
-== Squid problems with Windows Update v5 ==
-By Janno de Wit
-
-There seems to be some problems with Microsoft Windows to access the Windows Update website. This is especially a problem when you block all traffic by a firewall and force your users to go through the Squid Cache.
-
-Symptom: Windows Update gives error codes like 0x80072EFD and cannot update, automatic updates aren't working too.
-
-Cause: In earlier Windows-versions Windows Update takes the proxy-settings from Internet Explorer. Since XP SP2 this is not sure. At my machine I ran Windows XP SP1 without Windows Update problems. When I upgraded to SP2 Windows Update started to give errors when searching updates etc.
-
-The problem was that WU did not go through the proxy and tries to establish direct HTTP connections to Update-servers. Even when I set the proxy in IE again, it didn't help . It isn't Squid's problem that Windows Update doesn't work, but it is in Windows itself. The solution is to use the 'proxycfg' tool shipped with Windows XP. With this tool you can set the proxy for WinHTTP.
-
- {i} Similar issues are found with other Microsoft products in the same Windows versions. The comands below often fix all Microsoft proxy issues at once.
-
-Commands:
-
-{{{
-C:\> proxycfg
-# gives information about the current connection type. Note: 'Direct Connection' does not force WU to bypass proxy
-C:\> proxycfg -d
-# Set Direct Connection
-C:\> proxycfg -p wu-proxy.lan:8080
-# Set Proxy to use with Windows Update to wu-proxy.lan, port 8080
-c:\> proxycfg -u
-# Set proxy to Internet Explorer settings.
-}}}
+ see [[SquidFaq/WindowsUpdate]]
 
 -----
 ##end
