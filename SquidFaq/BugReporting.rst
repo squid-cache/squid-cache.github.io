@@ -7,7 +7,9 @@
 
 = Sending Bug Reports to the Squid Team =
 
-Bug reports for Squid should be registered in our [[http://bugs.squid-cache.org/|bug database]].  Any bug report must include
+Bug reports for Squid should be registered in our [[http://bugs.squid-cache.org/|bug database]].
+
+Any bug report must include
 
  * The Squid release version
  * Your Operating System type and version
