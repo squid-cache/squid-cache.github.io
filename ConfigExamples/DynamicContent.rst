@@ -25,19 +25,14 @@ refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern .            0 20% 4320
 }}}
 
-== Usage ==
+== Additional ==
+Some websites use query strings to obfuscate the file locations and increase their traffic loading.
 
-To enable your Squid to cache some websites with ? you will need to create a bypass ACL to catch those sites and turn the caching back on.
+The popular website youtube.com is one example which is dynamic, using query strings (?) to obfuscate the video locations but despite that has large flash video files and images in relatively static locations.
 
-The example below is for the popular website youtube.com, which is dynamic, uses query Strings (?) but despite that has large flash video files in relatively static locations. NOTE: this is not a full configuration for youtube, there are other specific needs detailed in [[ConfigExamples/DynamicContent/YouTube]].
+There are other specific needs detailed in [[ConfigExamples/DynamicContent/YouTube]].
 
-== Squid Configuration File ==
-
-{{{
-# Let the clients favourite video site through
-acl youtube dstdomain .youtube.com
-cache allow youtube
-}}}
+The same mechanisms may be employed for other less popular sites as long as the site behavior and  obfuscation pattern is understood.
 
 ----
 CategoryConfigExample
