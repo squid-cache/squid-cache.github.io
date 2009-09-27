@@ -128,7 +128,7 @@ KRB5RCACHETYPE=none
 export KRB5RCACHETYPE
 }}}
 == Troubleshooting Tools ==
-On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ from Microsoft to list and purge keys.
+On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ or klist from Microsoft resource kit to list and purge keys.
 
 __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KDC_ERR_PREAUTH_REQUIRED is not an error, but an informational message to the client)
 
@@ -154,4 +154,4 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
 
 ----
 
-CategoryConfigExample CategoryConfigExample CategoryConfigExample
+CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
