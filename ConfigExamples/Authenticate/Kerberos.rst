@@ -24,6 +24,7 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 ## Tell about some cases where this configuration would be good.
 == Pre-requisites ==
  1. Install msktutil package from http://dag.wieers.com/rpm/packages/msktutil/ or from http://download.systemimager.org/~finley/msktutil/ (msktutil_0.3.16-7 required for 2008 Domain Controller)
+
 OR
 
  1. Install samba
@@ -87,8 +88,6 @@ OR with Samba
  1. Join host to domain with net ads join
  1. Create keytab for HTTP/fqdn with net ads keytab
 
-
-
 {{{
 kinit administrator@DOMAIN
 
@@ -129,24 +128,30 @@ KRB5RCACHETYPE=none
 export KRB5RCACHETYPE
 }}}
 == Troubleshooting Tools ==
-On Windows client use __kerbtray__ from Microsoft to list and purge keys.
+On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ from Microsoft to list and purge keys.
 
 __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KDC_ERR_PREAUTH_REQUIRED is not an error, but an informational message to the client)
 
 ----
+
  . CategoryConfigExample
 
 ----
+
  . CategoryConfigExample CategoryConfigExample
 
 ----
+
  . CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
 
 ----
+
  . CategoryConfigExample
 
 ----
+
  . CategoryConfigExample CategoryConfigExample
 
 ----
-CategoryConfigExample CategoryConfigExample
+
+CategoryConfigExample CategoryConfigExample CategoryConfigExample
