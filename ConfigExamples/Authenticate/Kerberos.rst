@@ -22,46 +22,15 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 
 ## == Usage ==
 ## Tell about some cases where this configuration would be good.
-== Pre-requisites (Samba installed) ==
- 1. Install kerberos client package
- 1. Add host to domain with net ads join
- 1. Create keytab for HTTP/fqdn with net ads keytab
-
-{{{
-kinit administrator@DOMAIN
-
-export KRB5_KTNAME=FILE:/etc/squid/HTTP.keytab
-
-net ads keytab CREATE
-
-net ads keytab ADD HTTP
-
-unset KRB5_KTNAME
-
-}}}
-== Pre-requisites (Samba not installed) ==
- 1. Install kerberos client package
+== Pre-requisites ==
  1. Install msktutil package from http://dag.wieers.com/rpm/packages/msktutil/ or from http://download.systemimager.org/~finley/msktutil/ (msktutil_0.3.16-7 required for 2008 Domain Controller)
+OR
 
- 1. Create keytab for HTTP/fqdn with msktutil.
-
-{{{
-kinit administrator@DOMAIN
-
-msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose
-
-or for Windows 2008 for AES support
-
-msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
-}}}
- * /!\ beware the wrap! above 'mskutil' options are meant to be on one line.
- * /!\ beware the <computer-name> has Windows Netbios limitations of 15 characters.
- * /!\ msktutil requires cyrus-sasl-gssapi ldap plugin to authenticate to AD ldap.
- * /!\ because of a bug in msktutil the <computer-name> must be lowercase
+ 1. Install samba
 
 == krb5.conf Configuration ==
  * /!\ In IE the proxy must be specified as FQDN not as an IP-address
- * {i} rc4-hmac should be listed as encryption type.
+ * {i} rc4-hmac should be listed as encryption type for windows 2003.
 
 A minimal setup without DNS resolution of AD servers would be (MIT Kerberos example):
 
@@ -95,6 +64,40 @@ A minimal setup without DNS resolution of AD servers would be (MIT Kerberos exam
   kdc = FILE:/var/log/kdc.log
   admin_server = FILE:/var/log/kadmin.log
   default = FILE:/var/log/krb5lib.log
+}}}
+== Create keytab ==
+ 1. Create keytab for HTTP/fqdn with msktutil.
+
+{{{
+kinit administrator@DOMAIN
+
+msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose
+
+or for Windows 2008 for AES support
+
+msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
+}}}
+ * /!\ beware the wrap! above 'mskutil' options are meant to be on one line.
+ * /!\ beware the <computer-name> has Windows Netbios limitations of 15 characters.
+ * /!\ msktutil requires cyrus-sasl-gssapi ldap plugin to authenticate to AD ldap.
+ * /!\ because of a bug in msktutil the <computer-name> must be lowercase
+
+OR with Samba
+
+ 1. Join host to domain with net ads join
+ 1. Create keytab for HTTP/fqdn with net ads keytab
+
+
+
+{{{
+kinit administrator@DOMAIN
+
+export KRB5_KTNAME=FILE:/etc/squid/HTTP.keytab
+
+net ads keytab CREATE
+net ads keytab ADD HTTP
+
+unset KRB5_KTNAME
 }}}
 == Squid Configuration File ==
 Paste the configuration file like this:
@@ -144,5 +147,6 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
 
 ----
  . CategoryConfigExample CategoryConfigExample
+
 ----
-CategoryConfigExample
+CategoryConfigExample CategoryConfigExample
