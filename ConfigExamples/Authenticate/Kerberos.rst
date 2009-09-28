@@ -67,7 +67,7 @@ A minimal setup without DNS resolution of AD servers would be (MIT Kerberos exam
   default = FILE:/var/log/krb5lib.log
 }}}
 == Create keytab ==
- 1. Create keytab for HTTP/fqdn with msktutil. (If used together with samba net join use another computer name than the hostname)
+ 1. Create keytab for HTTP/fqdn with msktutil. (If used together with samba net join use another computer name than the hostname used by net join)
 
 {{{
 kinit administrator@DOMAIN
@@ -154,4 +154,4 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
 
 ----
 
-CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
+CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
