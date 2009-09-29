@@ -1,8 +1,10 @@
 #language en
 
 = Complete Squid Faq Index =
-<<ChildPages(on=not:edit|AttachFile|LocalSiteMap, more_link=More..., max_pages=7, title=<h3>%s</h3>)>> 
 
+Sorry, we've had to disable this page due to issues with the wiki engine. We'll try to restore it, in the meantime please refer to the main SquidFaq index, or you can search for contents using FindPage.
+
+Thanks, FrancescoChemolli
 
 ##=== About Squid ===
 ##<<TocOf(SquidFaq/AboutSquid)>>
