@@ -31,9 +31,14 @@ If you wish to become a developer the first step is to sign up to the squid-dev 
 
 If you wish to contribute squid there are certain guidelines you need to follow in your coding style. They are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The [[http://squid.treenet.co.nz/Doc/Code/|Programming Guide]] offers some (but certainly not enough) information on the Squid internals. SquidInternals offers some more-or-less (mostly less) organized snippets.
 
-If you are looking for a new project to work on check the Wish List at [[RoadMap/Squid3]] or query the bugzilla database for [[http://www.squid-cache.org/bugs/buglist.cgi?component=feature&cmdtype=doit|feature requests]].
+If you are looking for a new project to work on check the feature wish list at [[RoadMap/Squid3]] or query the bugzilla database for [[http://bugs.squid-cache.org/buglist.cgi?component=feature&cmdtype=doit|enhancement requests]].
 
-Squid is HTTP/1.0 due to the lack of certain features. RobertCollins has written a [[Http11Checklist|checklist]] for HTTP/1.1 compliance.
+Squid is HTTP/1.0 due to the lack of certain features. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still.
+
+=== Required Tools ===
+
+ * '''Squid-3''': [[Squid3VCS|Bazaar]]
+ * '''Squid-2''': [[CvsInstructions|CVS]]
 
 === Required Build Tools ===
 
@@ -55,11 +60,11 @@ If you are looking to test the latest release of Squid for your own use you will
 
 To test a specific project branch you will need to:
 
- '''Squid-2''':
- * either pull the daily snapshot and apply the branch patch available at http://devel.squid-cache.org/projects.html
-
  '''Squid-3''':
  * Pull the branch code directly from bzr  https://code.launchpad.net/squid
+
+ '''Squid-2''':
+ * either pull the daily snapshot and apply the branch patch available at http://devel.squid-cache.org/projects.html
 
 
 === Getting the sources via Bazaar (bzr) ===
@@ -68,7 +73,7 @@ To test a specific project branch you will need to:
 
 see [[Squid3VCS]]
 
- {i} Note that Bazaar checkouts require the same build toolschains as developers. The repository does not contains makefiles etc which are present in the snapshots and rsync.
+ {i} Note that Bazaar checkouts require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
 
 
 === Getting the sources via CVS ===
@@ -76,7 +81,7 @@ see [[Squid3VCS]]
 '''Squid-2''':
 see [[CvsInstructions]]
 
- {i} NP: This is primarily for Squid-2 sources. Squid-3 uses Bazaar. Though sourceforge mirror does retain a CVS mirror of Squid-3.
+ {i} NP: This is primarily for Squid-2 sources. Squid-3 uses Bazaar. Though sourceforge mirror does retain a CVS mirror of Squid-3 for read-only access.
 
 === Getting the sources via tarball ===
 
