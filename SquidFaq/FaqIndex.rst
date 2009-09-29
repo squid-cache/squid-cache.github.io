@@ -1,7 +1,8 @@
 #language en
 
 = Complete Squid Faq Index =
-<<ChildPages(title=<h3>%s</h3>,use_list=true)>>
+<<ChildPages(on=not:edit|AttachFile|LocalSiteMap, more_link=More..., max_pages=7, title=<h3>%s</h3>)>> 
+
 
 ##=== About Squid ===
 ##<<TocOf(SquidFaq/AboutSquid)>>
