@@ -110,13 +110,15 @@ GuidoSerassio maintains the official [[http://squid.acmeconsulting.it/|native Wi
 
   * <<MailTo(squid-announce AT squid-cache DOT org)>> is a receive-only list for announcements of new versions and any major security issues. Subscribe via <<MailTo(squid-announce-subscribe AT squid-cache DOT org)>>.
 
-  * <<MailTo(squid-bugs AT squid-cache DOT org)>> is meant for sending us bug reports. Bug reports received here are given priority over those mentioned on squid-users.
+  * <<MailTo(squid-bugs AT squid-cache DOT org)>> is meant for sending us bug reports. Bug reports received here are given priority over those mentioned on squid-users. Security related bugs should always be sent to this mailing list instead of Bugzilla.
 
   * <<MailTo(squid AT squid-cache DOT org)>>: A closed list for sending us feed-back and ideas.
 
   * <<MailTo(squid-faq AT squid-cache DOT org)>>: A closed list for sending us feed-back, updates, and additions to the Squid FAQ. Bugzilla Website section can also be used.
 
   * <<MailTo(squid-dev AT squid-cache DOT org)>>: An open list for developer discussions about Squid code.
+
+  * <<MailTo(noc AT squid-cache DOT org)>>: An (open? closed?) list for notices and discussion about the software and machines behind the Squid Project services.
 
 == I can't figure out how to unsubscribe from your mailing list. ==
 
@@ -144,12 +146,10 @@ addresses that you must use for subscribe and unsubscribe requests.  To unsubscr
 == Does Squid support SSL/HTTPS/TLS? ==
 
 
-As of version 2.5, Squid can terminate SSL connections.  This is perhaps only useful in a surrogate (http accelerator) configuration.  You must run configure with ''--enable-ssl''.  See ''https_port'' in squid.conf for more information.
+Squid-2.5 and later can terminate SSL connections.  This is perhaps only useful in a surrogate (http accelerator) configuration.  You must run configure with ''--enable-ssl''.  See ''SquidConf:https_port'' in squid.conf for more information.
 
 
-Squid also supports these encrypted protocols by "tunneling"
-traffic between clients and servers.  In this case, Squid can relay
-the encrypted bits between a client and a server.
+Squid also supports these encrypted protocols by "tunneling" traffic between clients and servers.  In this case, Squid can relay the encrypted bits between a client and a server.
 
 
 Normally, when your browser comes across an ''https'' URL, it does one of two things:
@@ -166,7 +166,7 @@ For the gory details on tunnelling and the CONNECT method, please see [[ftp://ft
 
 Squid as a whole is copyrighted by the University of California San Diego.
 Squid uses some [[http://www.squid-cache.org/Doc/FAQ/squid-credits.txt|code developed by others]].
-Individual features may be copyrighted by their contributors.
+Individual features may be copyrighted by their contributors or sponsors.
 
 Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], licensed under the terms of the [[http://www.gnu.org/copyleft/gpl.html|GNU General Public License]].
 
