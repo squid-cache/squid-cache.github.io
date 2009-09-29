@@ -27,7 +27,7 @@ bzr+ssh://USERNAME@squid-cache.org/bzr/squid3/trunk
 For anonymous access/mirroring/etc:
 
 {{{
-http://www.squid-cache.org/bzr/squid3/trunk
+http://squid-cache.org/bzr/squid3/trunk
 }}}
 
 Also mirrors are available at:
@@ -75,7 +75,7 @@ cat >> ~/.bazaar/locations.conf << EOF
 cbranch_target=/home/USER/squid-repo
 cbranch_target:policy = appendpath
 [/home/USER/source/squid/trunk]
-public_branch = http://www.squid-cache.org/bzr/squid3/trunk/
+public_branch = http://squid-cache.org/bzr/squid3/trunk/
 EOF
 }}}
 
@@ -87,9 +87,9 @@ After your setup is done its time to checkout the first branch you are going to 
 {{{
 # get the Squid-3 trunk into this repository
 # If you have commit access to trunk:
-export TRUNKURL=bzr+ssh://www.squid-cache.org/bzr/squid3/trunk
+export TRUNKURL=bzr+ssh://squid-cache.org/bzr/squid3/trunk
 # otherwise:
-export TRUNKURL=http://www.squid-cache.org/bzr/squid3/trunk
+export TRUNKURL=http://squid-cache.org/bzr/squid3/trunk
 cd ~/source/squid
 bzr cbranch --lightweight $TRUNKURL trunk
 #
