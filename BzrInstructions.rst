@@ -176,6 +176,16 @@ If it looks fine then generate a diff bundle and mail it to squid-dev
 {{{
 bzr send --mail-to=squid-dev@squid-cache.org
 }}}
+
+alternatively if that fails try:
+
+{{{
+bzr send -oYourFeatureName.merge
+}}}
+
+Then manually email the file '''YourFeatureName.merge''' as an attachment to squid-dev mailing list.
+
+
 It's also possible to cherrypick what to send using the -r option. See {{{bzr help revisionspec}}} for details
 
 == Commit directly to trunk ==
@@ -271,39 +281,42 @@ For more information:
 bzr help revisionspec
 }}}
 
-= TODO =
+
 == Helper scripts ==
 
-While bzr provides simple operation access. so did CVS in most cases. The problem is, mistakes are easier too. We need to provide some recipes as easy to use scripts.
+While bzr provides simple operation access. So did CVS in most cases. The problem is, mistakes are easier too. We need to provide some recipes as easy to use scripts.
 
  * testing a branch before submission
   * '''./test-builds.sh''' in squid source. Runs configure and build permutation tests.
  * cleaning up a branch or patch for auditing
- * submitting a patch for consideration
- * all three of the above in sequence with problem handling.
+  * '''./scripts/srcformat.sh''' *** provided you have the right astyle version not to alter '''all''' the code.
 
- * merging a patch from TRUNK down to a STABLE branch
- * merging a child branch up to its parent and handling conflicts
+## Not needed... bzr does these very nicely itself.
+## * submitting a patch for consideration
+## * all three of the above in sequence with problem handling.
+## * merging a patch from TRUNK down to a STABLE branch
+## * merging a child branch up to its parent and handling conflicts
 
-== Migrate existing branches ? ==
- * Migrate in progress development branches
-hno: I vote no on this. It's up to respective sub-project to merge over if they like.
 
-= Possible future things =
-{{{
-> But some script to mirror HEAD and STABLE branches into CVS while
-> keeping the CVS structure of things would be nice in order to continue
-> serving reasonable anoncvs read-only access. Not a requirement however.
-}}}
-robert: I'd *prefer* to set an expectation about a switchover time and switch & disable the CVS mirrors; because the higher fidelity of a VCS that does renames etc makes correct mirroring into CVS really annoying.
+## == Migrate existing branches ? ==
+## * Migrate in progress development branches
+## hno: I vote no on this. It's up to respective sub-project to merge over if they like.
 
-hno: The existing sourceforge CVS mirror will continue as before. Just needs a small update in the script used to change the source tree from cvs to bzr. It's not an exact or correct mirror and has never been, just good enough for developments.
+## = Possible future things =
+## {{{
+## > But some script to mirror HEAD and STABLE branches into CVS while
+## > keeping the CVS structure of things would be nice in order to continue
+## > serving reasonable anoncvs read-only access. Not a requirement however.
+## }}}
+## robert: I'd *prefer* to set an expectation about a switchover time and switch & disable the CVS mirrors; because the higher fidelity of a VCS that does renames etc makes correct mirroring into CVS really annoying.
+## 
+## hno: The existing sourceforge CVS mirror will continue as before. Just needs a small update in the script used to change the source tree from cvs to bzr. It's not an exact or correct mirror and has never been, just good enough for developments.
 
-= Notes from the mailing list thread: =
- * Anonymous access [e.g. to 'track HEAD']
- * Mirrorable repositories to separate out trunk on squid-cache.org from devel.squid-cache.org as we currently do (as people seem happy with this setup).
- * commits to trunk over ssh or similar secure mechanism
- * works well with branches to remove the current cruft we have to deal with on sourceforge with the mirror from trunk.
- * works well on windows and unix
- * friendly to automation fo hbr build tests etc in the future.
- * anonymous code browsing facility (viewvc etc)
+## = Notes from the mailing list thread: =
+## * Anonymous access [e.g. to 'track HEAD']
+## * Mirrorable repositories to separate out trunk on squid-cache.org from devel.squid-cache.org as we currently do (as people seem happy with this setup).
+## * commits to trunk over ssh or similar secure mechanism
+## * works well with branches to remove the current cruft we have to deal with on sourceforge with the mirror from trunk.
+## * works well on windows and unix
+## * friendly to automation of hbr build tests etc in the future.
+## * anonymous code browsing facility (viewvc etc)
