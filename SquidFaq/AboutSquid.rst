@@ -55,6 +55,7 @@ is known to work on at least the following platforms:
   * BSDI
   * DragonflyBSD
   * FreeBSD
+  * GNU/kFreeBSD
   * Mac OS/X
   * NetBSD
   * NeXTStep
