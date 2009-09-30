@@ -51,7 +51,7 @@ A minimal setup without DNS resolution of AD servers would be (MIT Kerberos exam
 ;      default_tkt_enctypes = aes256-cts-hmac-sha1-96 rc4-hmac des-cbc-crc des-cbc-md5
 ;      permitted_enctypes = aes256-cts-hmac-sha1-96 rc4-hmac des-cbc-crc des-cbc-md5
 ;
-; for MIT/Heimdal no need to restrict encryption type
+; for MIT/Heimdal kdc no need to restrict encryption type
 
 [realms]
       WIN2003R2.HOME = {
@@ -138,19 +138,25 @@ On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ or __k
 __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KDC_ERR_PREAUTH_REQUIRED is not an error, but an informational message to the client)
 
 ----
+
  . CategoryConfigExample
 
 ----
+
  . CategoryConfigExample CategoryConfigExample
 
 ----
+
  . CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
 
 ----
+
  . CategoryConfigExample
 
 ----
+
  . CategoryConfigExample CategoryConfigExample
 
 ----
-CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
+
+CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
