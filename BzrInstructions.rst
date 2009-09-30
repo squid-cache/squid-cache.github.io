@@ -21,13 +21,13 @@ Things to install (as a user):
 For committers:
 
 {{{
-bzr+ssh://USERNAME@squid-cache.org/bzr/squid3/trunk
+bzr+ssh://USERNAME@bzr.squid-cache.org/bzr/squid3/trunk
 }}}
 
 For anonymous access/mirroring/etc:
 
 {{{
-http://squid-cache.org/bzr/squid3/trunk
+http://bzr.squid-cache.org/bzr/squid3/trunk
 }}}
 
 Also mirrors are available at:
@@ -39,12 +39,12 @@ Also mirrors are available at:
 = Web view =
 
 Web view:
-|| 3.1 || http://squid-cache.org/bzrview/squid3/SQUID_3_1 ||
-|| 3.0 || http://squid-cache.org/bzrview/squid3/SQUID_3_0 ||
+|| 3.1 || http://bzr.squid-cache.org/bzrview/squid3/SQUID_3_1 ||
+|| 3.0 || http://bzr.squid-cache.org/bzrview/squid3/SQUID_3_0 ||
 
 RSS feed:
- * http://www.squid-cache.org/bzrview//squid3/SQUID_3_1/atom
- * http://www.squid-cache.org/bzrview//squid3/SQUID_3_0/atom
+ * http://bzr.squid-cache.org/bzrview//squid3/SQUID_3_1/atom
+ * http://bzr.squid-cache.org/bzrview//squid3/SQUID_3_0/atom
 
 = Recipes =
 == Let bzr know who you are ==
@@ -75,7 +75,7 @@ cat >> ~/.bazaar/locations.conf << EOF
 cbranch_target=/home/USER/squid-repo
 cbranch_target:policy = appendpath
 [/home/USER/source/squid/trunk]
-public_branch = http://squid-cache.org/bzr/squid3/trunk/
+public_branch = http://bzr.squid-cache.org/bzr/squid3/trunk/
 EOF
 }}}
 
@@ -87,9 +87,9 @@ After your setup is done its time to checkout the first branch you are going to 
 {{{
 # get the Squid-3 trunk into this repository
 # If you have commit access to trunk:
-export TRUNKURL=bzr+ssh://squid-cache.org/bzr/squid3/trunk
+export TRUNKURL=bzr+ssh://bzr.squid-cache.org/bzr/squid3/trunk
 # otherwise:
-export TRUNKURL=http://squid-cache.org/bzr/squid3/trunk
+export TRUNKURL=http://bzr.squid-cache.org/bzr/squid3/trunk
 cd ~/source/squid
 bzr cbranch --lightweight $TRUNKURL trunk
 #
@@ -156,14 +156,14 @@ Lightweight checkout (format: dirstate or dirstate-tags or pack-0.92 or rich-roo
 Location:
        light checkout root: .
   repository checkout root: /home/henrik/squid-repo/squid3/hno/trunk
-        checkout of branch: bzr+ssh://squid-cache.org/bzr/squid3/trunk/
+        checkout of branch: bzr+ssh://bzr.squid-cache.org/bzr/squid3/trunk/
          shared repository: /home/henrik/squid-repo/squid3
 Related branches:
-  parent branch: bzr+ssh://squid-cache.org/bzr/squid3/trunk/}}}
+  parent branch: bzr+ssh://bzr.squid-cache.org/bzr/squid3/trunk/}}}
 If "checkout of branch" indicates your local repository instead of the main source then you need to bind the tree. But first verify that you really are in the main working tree and not your own branch..
 
 {{{
-bzr bind bzr+ssh://squid-cache.org/bzr/squid3/trunk/ }}}
+bzr bind bzr+ssh://bzr.squid-cache.org/bzr/squid3/trunk/ }}}
 
 == Submit a patch for inclusion in the main tree or discussion ==
 Verify the contents of your branch
@@ -314,7 +314,7 @@ While bzr provides simple operation access. So did CVS in most cases. The proble
 
 ## = Notes from the mailing list thread: =
 ## * Anonymous access [e.g. to 'track HEAD']
-## * Mirrorable repositories to separate out trunk on squid-cache.org from devel.squid-cache.org as we currently do (as people seem happy with this setup).
+## * Mirrorable repositories to separate out trunk on bzr.squid-cache.org from devel.squid-cache.org as we currently do (as people seem happy with this setup).
 ## * commits to trunk over ssh or similar secure mechanism
 ## * works well with branches to remove the current cruft we have to deal with on sourceforge with the mirror from trunk.
 ## * works well on windows and unix
