@@ -22,7 +22,7 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 
 ## == Usage ==
 ## Tell about some cases where this configuration would be good.
-== Pre-requisites ==
+== Pre-requisites for Active Directory integration ==
  1. Install msktutil package from http://dag.wieers.com/rpm/packages/msktutil/ or from http://download.systemimager.org/~finley/msktutil/ (msktutil_0.3.16-7 required for 2008 Domain Controller)
 
 OR
@@ -41,6 +41,7 @@ A minimal setup without DNS resolution of AD servers would be (MIT Kerberos exam
       dns_lookup_kdc = no
       dns_lookup_realm = no
       default_keytab_name = /etc/krb5.keytab
+; for Windows 2003
       default_tgs_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
       default_tkt_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
       permitted_enctypes = rc4-hmac des-cbc-crc des-cbc-md5
@@ -49,6 +50,8 @@ A minimal setup without DNS resolution of AD servers would be (MIT Kerberos exam
 ;      default_tgs_enctypes = aes256-cts-hmac-sha1-96 rc4-hmac des-cbc-crc des-cbc-md5
 ;      default_tkt_enctypes = aes256-cts-hmac-sha1-96 rc4-hmac des-cbc-crc des-cbc-md5
 ;      permitted_enctypes = aes256-cts-hmac-sha1-96 rc4-hmac des-cbc-crc des-cbc-md5
+;
+; for MIT/Heimdal no need to restrict encryption type
 
 [realms]
       WIN2003R2.HOME = {
@@ -98,6 +101,8 @@ net ads keytab ADD HTTP
 
 unset KRB5_KTNAME
 }}}
+OR with MIT/Heimdal kdamin tool
+
 == Squid Configuration File ==
 Paste the configuration file like this:
 
@@ -133,25 +138,19 @@ On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ or __k
 __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KDC_ERR_PREAUTH_REQUIRED is not an error, but an informational message to the client)
 
 ----
-
  . CategoryConfigExample
 
 ----
-
  . CategoryConfigExample CategoryConfigExample
 
 ----
-
  . CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
 
 ----
-
  . CategoryConfigExample
 
 ----
-
  . CategoryConfigExample CategoryConfigExample
 
 ----
-
-CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
+CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample CategoryConfigExample
