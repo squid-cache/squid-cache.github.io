@@ -5,7 +5,7 @@
 == Why does Squid use so much memory!? ==
 Squid uses a lot of memory for performance reasons.  It takes much, much longer to read something from disk than it does to read directly from memory.
 
-A small amount of metadata for each cached object is kept in memory. This is the ''!StoreEntry'' data structure.  For ''Squid-2'' this is 56-bytes on 32-bit architectures and 88-bytes on 64-bit architectures.  In addition, there is a 16-byte cache key (MD5 checksum) associated with each ''!StoreEntry''.  This means there are 72 or 104 bytes of metadata in memory for every object in your cache.  A cache with 1,000,000 objects therefore requires 72MB of memory for ''metadata only''. In practice it requires much more than that.
+A small amount of metadata for each cached object is kept in memory. This is the ''!StoreEntry'' data structure.  This is 56-bytes on 32-bit architectures and 88-bytes on 64-bit architectures.  In addition, there is a 16-byte cache key (MD5 checksum) associated with each ''!StoreEntry''.  This means there are 72 or 104 bytes of metadata in memory for every object in your cache.  A cache with 1,000,000 objects therefore requires 72MB of memory for ''metadata only''. In practice it requires much more than that.
 
 Other uses of memory by Squid include:
 
