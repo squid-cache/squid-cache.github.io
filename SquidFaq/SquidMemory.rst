@@ -1,54 +1,35 @@
 #language en
-
 <<TableOfContents>>
 
 ##begin
 == Why does Squid use so much memory!? ==
+Squid uses a lot of memory for performance reasons.  It takes much, much longer to read something from disk than it does to read directly from memory.
 
-Squid uses a lot of memory for performance reasons.  It takes much, much
-longer to read something from disk than it does to read directly from
-memory.
-
-A small amount of metadata for each cached object is kept in memory.
-This is the ''!StoreEntry'' data structure.  For ''Squid-2'' this is
-56-bytes on "small" pointer architectures (Intel, Sparc, MIPS, etc) and
-88-bytes on "large" pointer architectures (Alpha).  In addition, there
-is a 16-byte cache key (MD5 checksum) associated with each
-''!StoreEntry''.  This means there are 72 or 104 bytes of metadata in
-memory for every object in your cache.  A cache with 1,000,000
-objects therefore requires 72MB of memory for ''metadata only''.
-In practice it requires much more than that.
-
+A small amount of metadata for each cached object is kept in memory. This is the ''!StoreEntry'' data structure.  For ''Squid-2'' this is 56-bytes on 32-bit architectures and 88-bytes on 64-bit architectures.  In addition, there is a 16-byte cache key (MD5 checksum) associated with each ''!StoreEntry''.  This means there are 72 or 104 bytes of metadata in memory for every object in your cache.  A cache with 1,000,000 objects therefore requires 72MB of memory for ''metadata only''. In practice it requires much more than that.
 
 Other uses of memory by Squid include:
 
-  * Disk buffers for reading and writing
-  * Network I/O buffers
-  * IP Cache contents
-  * FQDN Cache contents
-  * Netdb ICMP measurement database
-  * Per-request state information, including full request and reply headers
-  * Miscellaneous statistics collection.
-  * "Hot objects" which are kept entirely in memory.
+ * Disk buffers for reading and writing
+ * Network I/O buffers
+ * IP Cache contents
+ * FQDN Cache contents
+ * Netdb ICMP measurement database
+ * Per-request state information, including full request and reply headers
+ * Miscellaneous statistics collection.
+ * "Hot objects" which are kept entirely in memory.
 
 == How can I tell how much memory my Squid process is using? ==
+One way is to simply look at ''ps'' output on your system. For BSD-ish systems, you probably want to use the ''-u'' option and look at the ''VSZ'' and ''RSS'' fields:
 
-One way is to simply look at ''ps'' output on your system.
-For BSD-ish systems, you probably want to use the ''-u'' option
-and look at the ''VSZ'' and ''RSS'' fields:
 {{{
 wessels ~ 236% ps -axuhm
 USER       PID %CPU %MEM   VSZ  RSS  TT  STAT STARTED       TIME COMMAND
 squid     9631  4.6 26.4 141204 137852  ??  S    10:13PM   78:22.80 squid -NCYs
 }}}
+For SYSV-ish, you probably want to use the ''-l'' option. When interpreting the ''ps'' output, be sure to check your ''ps'' manual page.  It may not be obvious if the reported numbers are kbytes, or pages (usually 4 kb).
 
-For SYSV-ish, you probably want to use the ''-l'' option.
-When interpreting the ''ps'' output, be sure to check your ''ps''
-manual page.  It may not be obvious if the reported numbers are kbytes,
-or pages (usually 4 kb).
+A nicer way to check the memory usage is with a program called ''top'':
 
-A nicer way to check the memory usage is with a program called
-''top'':
 {{{
 last pid: 20128;  load averages:  0.06,  0.12,  0.11                   14:10:58
 46 processes:  1 running, 45 sleeping
@@ -59,11 +40,8 @@ Swap: 1024M Total, 256K Used, 1024M Free
   PID USERNAME PRI NICE SIZE    RES STATE    TIME   WCPU    CPU COMMAND
  9631 squid     2   0   138M   135M select  78:45  3.93%  3.93% squid
 }}}
+Finally, you can ask the Squid process to report its own memory usage.  This is available on the Cache Manager ''info'' page. Your output may vary depending upon your operating system and Squid version, but it looks similar to this:
 
-Finally, you can ask the Squid process to report its own memory
-usage.  This is available on the Cache Manager ''info'' page.
-Your output may vary depending upon your operating system and
-Squid version, but it looks similar to this:
 {{{
 Resource usage for squid:
 Maximum Resident Size: 137892 KB
@@ -71,51 +49,27 @@ Memory usage for squid via mstats():
 Total space in arena:  140144 KB
 Total free:              8153 KB 6%
 }}}
-
-If your RSS (Resident Set Size) value is much lower than your
-process size, then your cache performance is most likely suffering
-due to Paging.
-See also ../CacheManager
+If your RSS (Resident Set Size) value is much lower than your process size, then your cache performance is most likely suffering due to Paging. See also ../CacheManager
 
 == My Squid process grows without bounds. ==
+You might just have your ''cache_mem'' parameter set too high.  See ''What can I do to reduce Squid's memory usage?'' below.
 
-You might just have your ''cache_mem'' parameter set too high.  See
-''What can I do to reduce Squid's memory usage?'' below.
+When a process continually grows in size, without levelling off or slowing down, it often indicates a memory leak.  A memory leak is when some chunk of memory is used, but not free'd when it is done being used.
 
-When a process continually grows in size, without levelling off
-or slowing down, it often indicates a memory leak.  A memory leak
-is when some chunk of memory is used, but not free'd when it is
-done being used.
+Memory leaks are a real problem for programs (like Squid) which do all of their processing within a single process.  Historically, Squid has had real memory leak problems.  But as the software has matured, we believe almost all of Squid's memory leaks have been eliminated, and new ones are least easy to identify.
 
-Memory leaks are a real problem for programs (like Squid) which do all
-of their processing within a single process.  Historically, Squid has
-had real memory leak problems.  But as the software has matured, we
-believe almost all of Squid's memory leaks have been eliminated, and
-new ones are least easy to identify.
+Memory leaks may also be present in your system's libraries, such as ''libc.a'' or even ''libmalloc.a''.  If you experience the ever-growing process size phenomenon, we suggest you first try [[#alternate-malloc]].
 
-Memory leaks may also be present in your system's libraries, such
-as ''libc.a'' or even ''libmalloc.a''.  If you experience the ever-growing
-process size phenomenon, we suggest you first try
-[[#alternate-malloc]].
+== I set cache_mem to XX, but the process grows beyond that! ==
+The ''cache_mem'' parameter '''does NOT''' specify the maximum size of the process.  It only specifies how much memory to use for caching "hot" (very popular) replies.   Squid's actual memory usage is depends very strongly on your cache size (disk space) and your incoming request load.  Reducing ''cache_mem'' will usually also reduce the process size, but not necessarily, and there are other ways to reduce Squid's memory usage (see below).
 
-==  I set cache_mem to XX, but the process grows beyond that! ==
-
-The ''cache_mem'' parameter '''does NOT''' specify the maximum
-size of the process.  It only specifies how much memory to use
-for caching "hot" (very popular) replies.   Squid's actual memory
-usage is depends very strongly on your cache size (disk space) and
-your incoming request load.  Reducing ''cache_mem'' will usually
-also reduce the process size, but not necessarily, and there are
-other ways to reduce Squid's memory usage (see below).
-
-See also
-[[#how-much-ram|How much memory do I need in my Squid server?]].
+See also [[#how-much-ram|How much memory do I need in my Squid server?]].
 
 == How do I analyze memory usage from the cache manger output? ==
-
 ''Note: This information is specific to Squid-1.1 versions''
 
 Look at your ''cachemgr.cgi'' ''Cache Information'' page.  For example:
+
 {{{
 Memory usage for squid via mallinfo():
        Total space in arena:   94687 KB
@@ -139,100 +93,57 @@ Pool for disk I/O         242 x 8192 bytes =   1936 KB (  1888 free)
 Miscellaneous                              =   2600 KB
 total Accounted                            =  58499 KB
 }}}
+First note that ''mallinfo()'' reports 94M in "arena."  This is pretty close to what ''top'' says (97M).
 
-First note that ''mallinfo()'' reports 94M in "arena."  This
-is pretty close to what ''top'' says (97M).
+Of that 94M, 81% (76M) is actually being used at the moment.  The rest has been freed, or pre-allocated by ''malloc(3)'' and not yet used.
 
-Of that 94M, 81% (76M) is actually being used at the moment.  The
-rest has been freed, or pre-allocated by ''malloc(3)''
-and not yet used.
+Of the 76M in use, we can account for 58.5M (76%).  There are some calls to ''malloc(3)'' for which we can't account.
 
-Of the 76M in use, we can account for 58.5M (76%).  There are some
-calls to ''malloc(3)'' for which we can't account.
+The ''Meta Data'' list gives the breakdown of where the accounted memory has gone.  45% has gone to ''!StoreEntry'' and URL strings.  Another 42% has gone to buffering hold objects in VM while they are fetched and relayed to the clients (''Pool for in-memory object'').
 
-The ''Meta Data'' list gives the breakdown of where the
-accounted memory has gone.  45% has gone to ''!StoreEntry''
-and URL strings.  Another 42% has gone to buffering hold objects
-in VM while they are fetched and relayed to the clients (''Pool
-for in-memory object'').
+The pool sizes are specified by ''squid.conf'' parameters. In version 1.0, these pools are somewhat broken:  we keep a stack of unused pages instead of freeing the block.  In the ''Pool for in-memory object'', the unused stack size is 1/2 of ''cache_mem''.  The ''Pool for disk I/O'' is hardcoded at 200.  For ''!MemObject'' and ''Request'' it's 1/8 of your system's ''FD_SETSIZE'' value.
 
-The pool sizes are specified by ''squid.conf'' parameters.
-In version 1.0, these pools are somewhat broken:  we keep a stack
-of unused pages instead of freeing the block.  In the ''Pool
-for in-memory object'', the unused stack size is 1/2 of
-''cache_mem''.  The ''Pool for disk I/O'' is
-hardcoded at 200.  For ''!MemObject'' and ''Request''
-it's 1/8 of your system's ''FD_SETSIZE'' value.
-
-If you need to lower your process size, we recommend lowering the
-max object sizes in the 'http', 'ftp' and 'gopher' config lines.
-You may also want to lower ''cache_mem'' to suit your
-needs. But if you ''make cache_mem'' too low, then some
-objects may not get saved to disk during high-load periods.  Newer
-Squid versions allow you to set ''memory_pools off'' to
-disable the free memory pools.
+If you need to lower your process size, we recommend lowering the max object sizes in the 'http', 'ftp' and 'gopher' config lines. You may also want to lower ''cache_mem'' to suit your needs. But if you ''make cache_mem'' too low, then some objects may not get saved to disk during high-load periods.  Newer Squid versions allow you to set ''memory_pools off'' to disable the free memory pools.
 
 == The "Total memory accounted" value is less than the size of my Squid process. ==
+We are not able to account for '''all''' memory that Squid uses.  This would require excessive amounts of code to keep track of every last byte. We do our best to account for the major uses of memory.
 
-We are not able to account for '''all''' memory that Squid uses.  This
-would require excessive amounts of code to keep track of every last byte.
-We do our best to account for the major uses of memory.
-
-Also, note that the ''malloc'' and ''free'' functions have
-their own overhead.  Some additional memory is required to keep
-track of which chunks are in use, and which are free.  Additionally,
-most operating systems do not allow processes to shrink in size.
-When a process gives up memory by calling ''free'', the total
-process size does not shrink.  So the process size really
-represents the maximum size your Squid process has reached.
+Also, note that the ''malloc'' and ''free'' functions have their own overhead.  Some additional memory is required to keep track of which chunks are in use, and which are free.  Additionally, most operating systems do not allow processes to shrink in size. When a process gives up memory by calling ''free'', the total process size does not shrink.  So the process size really represents the maximum size your Squid process has reached.
 
 == xmalloc: Unable to allocate 4096 bytes! ==
-
 by HenrikNordström
 
-Messages like "FATAL: xcalloc: Unable to allocate 4096 blocks of 1 bytes!"
-appear when Squid can't allocate more memory, and on most operating systems
-(inclusive BSD) there are only two possible reasons:
+Messages like "FATAL: xcalloc: Unable to allocate 4096 blocks of 1 bytes!" appear when Squid can't allocate more memory, and on most operating systems (inclusive BSD) there are only two possible reasons:
 
-  * The machine is out of swap
-  * The process' maximum data segment size has been reached
+ * The machine is out of swap
+ * The process' maximum data segment size has been reached
 
-The first case is detected using the normal swap monitoring tools
-available on the platform (''pstat'' on SunOS, perhaps ''pstat'' is
-used on BSD as well).
+The first case is detected using the normal swap monitoring tools available on the platform (''pstat'' on SunOS, perhaps ''pstat'' is used on BSD as well).
 
-To tell if it is the second case, first rule out the first case and then
-monitor the size of the Squid process. If it dies at a certain size with
-plenty of swap left then the max data segment size is reached without no
-doubts.
+To tell if it is the second case, first rule out the first case and then monitor the size of the Squid process. If it dies at a certain size with plenty of swap left then the max data segment size is reached without no doubts.
 
 The data segment size can be limited by two factors:
 
-  * Kernel imposed maximum, which no user can go above
-  * The size set with ulimit, which the user can control.
+ * Kernel imposed maximum, which no user can go above
+ * The size set with ulimit, which the user can control.
 
-When squid starts it sets data and file ulimit's to the hard level. If
-you manually tune ulimit before starting Squid make sure that you set
-the hard limit and not only the soft limit (the default operation of
-ulimit is to only change the soft limit). root is allowed to raise the
-soft limit above the hard limit.
+When squid starts it sets data and file ulimit's to the hard level. If you manually tune ulimit before starting Squid make sure that you set the hard limit and not only the soft limit (the default operation of ulimit is to only change the soft limit). root is allowed to raise the soft limit above the hard limit.
 
 This command prints the hard limits:
+
 {{{
 ulimit -aH
 }}}
-
 This command sets the data size to unlimited:
+
 {{{
 ulimit -HSd unlimited
 }}}
-
 '''BSD/OS'''
 
 by ''Arjan de Vet''
 
-The default kernel limit on BSD/OS for datasize is 64MB (at least on 3.0
-which I'm using).
+The default kernel limit on BSD/OS for datasize is 64MB (at least on 3.0 which I'm using).
 
 Recompile a kernel with larger datasize settings:
 
@@ -247,7 +158,6 @@ options         "DFLSSIZ=\(8*1024*1024\)"
 options         "SOMAXCONN=128"
 options         "MAXDSIZ=\(256*1024*1024\)"
 }}}
-
 See ''/usr/share/doc/bsdi/config.n'' for more info.
 
 In /etc/login.conf I have this:
@@ -277,40 +187,36 @@ daemon:\
 #       :openfiles-cur=256:\
 #       :maxproc-cur=256:\
 }}}
-
 This should give enough space for a 256MB squid process.
 
 '''FreeBSD (2.2.X)'''
 
 by [wessels Duane Wessels]
 
-The procedure is almost identical to that for BSD/OS above.
-Increase the open filedescriptor limit in ''/sys/conf/param.c'':
+The procedure is almost identical to that for BSD/OS above. Increase the open filedescriptor limit in ''/sys/conf/param.c'':
+
 {{{
 int     maxfiles = 4096;
 int     maxfilesperproc = 1024;
 }}}
+Increase the maximum and default data segment size in your kernel config file, e.g. ''/sys/conf/i386/CONFIG'':
 
-Increase the maximum and default data segment size in your kernel
-config file, e.g. ''/sys/conf/i386/CONFIG'':
 {{{
 options         "MAXDSIZ=(512*1024*1024)"
 options         "DFLDSIZ=(128*1024*1024)"
 }}}
-
 We also found it necessary to increase the number of mbuf clusters:
+
 {{{
 options         "NMBCLUSTERS=10240"
 }}}
+And, if you have more than 256 MB of physical memory, you probably have to disable BOUNCE_BUFFERS (whatever that is), so comment out this line:
 
-And, if you have more than 256 MB of physical memory, you probably
-have to disable BOUNCE_BUFFERS (whatever that is), so comment
-out this line:
 {{{
 #options        BOUNCE_BUFFERS          #include support for DMA bounce buffers
 }}}
-
 Also, update limits in ''/etc/login.conf'':
+
 {{{
 # Settings used by /etc/rc
 #
@@ -326,91 +232,67 @@ daemon:\
         :stacksize=64M:\
         :tc=default:
 }}}
-
 And don't forget to run "cap_mkdb /etc/login.conf" after editing that file.
 
 '''OSF, Digital Unix'''
 
 by ''Ong Beng Hui''
 
-To increase the data size for Digital UNIX, edit the file ''/etc/sysconfigtab''
-and add the entry...
+To increase the data size for Digital UNIX, edit the file ''/etc/sysconfigtab'' and add the entry...
+
 {{{
 proc:
         per-proc-data-size=1073741824
 }}}
-
 Or, with csh, use the limit command, such as
+
 {{{
 > limit datasize 1024M
 }}}
-
-Editing ''/etc/sysconfigtab'' requires a reboot, but the limit command
-doesn't.
+Editing ''/etc/sysconfigtab'' requires a reboot, but the limit command doesn't.
 
 == fork: (12) Cannot allocate memory ==
+When Squid is reconfigured (SIGHUP) or the logs are rotated (SIGUSR1), some of the helper processes (dnsserver) must be killed and restarted.  If your system does not have enough virtual memory, the Squid process may not be able to fork to start the new helper processes. This is due to the UNIX way of starting child processes using the fork() system call which temporary duplicates the whole Squid process, and when rapidly starting many child processes such as on "squid -k rotate" the memory usage can temporarily grow to many times the normal memory usage due to several temporary copies of the whole process.
 
-When Squid is reconfigured (SIGHUP) or the logs are rotated (SIGUSR1),
-some of the helper processes (dnsserver) must be killed and
-restarted.  If your system does not have enough virtual memory,
-the Squid process may not be able to fork to start the new helper
-processes. This is due to the UNIX way of starting child processes
-using the fork() system call which temporary duplicates the whole Squid
-process, and when rapidly starting many child processes such as on
-"squid -k rotate" the memory usage can temporarily grow to many times
-the normal memory usage due to several temporary copies of the whole
-process.
-
-The best way to fix this is to increase your virtual memory by adding
-swap space.  Normally your system uses raw disk partitions for swap
-space, but most operating systems also support swapping on regular
-files (Digital Unix excepted).  See your system manual pages for
-''swap'', ''swapon'', and ''mkfile''. Alternatively you can use the
-sleep_after_fork directive to make Squid sleep a little while invoking
-helpers to allow the helper to start up before trying to start the next
-one. This can be helpful if you find that Squid sometimes fail to restart
-all helpers on "squid -k reconfigure".
+The best way to fix this is to increase your virtual memory by adding swap space.  Normally your system uses raw disk partitions for swap space, but most operating systems also support swapping on regular files (Digital Unix excepted).  See your system manual pages for ''swap'', ''swapon'', and ''mkfile''. Alternatively you can use the sleep_after_fork directive to make Squid sleep a little while invoking helpers to allow the helper to start up before trying to start the next one. This can be helpful if you find that Squid sometimes fail to restart all helpers on "squid -k reconfigure".
 
 == What can I do to reduce Squid's memory usage? ==
+If your cache performance is suffering because of memory limitations, you might consider buying more memory.  But if that is not an option, There are a number of things to try:
 
-If your cache performance is suffering because of memory limitations,
-you might consider buying more memory.  But if that is not an option,
-There are a number of things to try:
-
-  * Try a different malloc library (see below)
-  * Reduce the ''cache_mem'' parameter in the config file.  This controls how many "hot" objects are kept in memory.  Reducing this parameter will not significantly affect performance, but you may recieve some warnings in ''cache.log'' if your cache is busy.
-  * Turn the ''memory_pools off'' in the config file.  This causes Squid to give up unused memory by calling ''free()'' instead of holding on to the chunk for potential, future use. Generally speaking, this is a bad idea as it will induce heap fragmentation. Use  ''memory_pools_limit'' instead.
-  * Reduce the ''cache_swap'' parameter in your config file.  This will reduce the number of objects Squid keeps.  Your overall hit ratio may go down a little, but your cache will perform significantly better.
+ * Try a different malloc library (see below)
+ * Reduce the ''cache_mem'' parameter in the config file.  This controls how many "hot" objects are kept in memory.  Reducing this parameter will not significantly affect performance, but you may recieve some warnings in ''cache.log'' if your cache is busy.
+ * Turn the ''memory_pools off'' in the config file.  This causes Squid to give up unused memory by calling ''free()'' instead of holding on to the chunk for potential, future use. Generally speaking, this is a bad idea as it will induce heap fragmentation. Use  ''memory_pools_limit'' instead.
+ * Reduce the ''cache_swap'' parameter in your config file.  This will reduce the number of objects Squid keeps.  Your overall hit ratio may go down a little, but your cache will perform significantly better.
 
 <<Anchor(alternate-malloc)>>
-==  Using an alternate malloc library ==
 
-Many users have found improved performance and memory utilization when
-linking Squid with an external malloc library.  We recommend either
-GNU malloc, or dlmalloc.
+== Using an alternate malloc library ==
+Many users have found improved performance and memory utilization when linking Squid with an external malloc library.  We recommend either GNU malloc, or dlmalloc.
 
 === GNU malloc ===
-
 To make Squid use GNU malloc follow these simple steps:
 
- - Download the GNU malloc source, available from one of [[[http://www.gnu.org/order/ftp.html|The|GNU FTP Mirror sites]].  
- - Compile it
+ . - Download the GNU malloc source, available from one of [[[http://www.gnu.org/order/ftp.html|The]].   - Compile it
+
 {{{
 % gzip -dc malloc.tar.gz | tar xf -
 % cd malloc
 % vi Makefile     # edit as needed
 % make
 }}}
-  - Copy libmalloc.a to your system's library directory and be sure to name it ''libgnumalloc.a''.
+ . - Copy libmalloc.a to your system's library directory and be sure to name it ''libgnumalloc.a''.
+
 {{{
 % su
 # cp malloc.a /usr/lib/libgnumalloc.a
 }}}
-  - (Optional) Copy the GNU malloc.h to your system's include directory and be sure to name it ''gnumalloc.h''.  This step is not required, but if you do this, then Squid will be able to use the ''mstat()'' function to report memory usage statistics on the cachemgr info page.
+ . - (Optional) Copy the GNU malloc.h to your system's include directory and be sure to name it ''gnumalloc.h''.  This step is not required, but if you do this, then Squid will be able to use the ''mstat()'' function to report memory usage statistics on the cachemgr info page.
+
 {{{
 # cp malloc.h /usr/include/gnumalloc.h
 }}}
-  - Reconfigure and recompile Squid
+ . - Reconfigure and recompile Squid
+
 {{{
 % make distclean
 % ./configure ...
@@ -420,60 +302,37 @@ To make Squid use GNU malloc follow these simple steps:
 As Squid's configure script runs, watch its output.  You should find that it locates libgnumalloc.a and optionally gnumalloc.h.
 
 === dlmalloc ===
+[[http://g.oswego.edu/dl/html/malloc.html|dlmalloc]] has been written by ''Doug Lea''.  According to Doug:
 
-[[http://g.oswego.edu/dl/html/malloc.html|dlmalloc]]
-has been written by ''Doug Lea''.  According to Doug:
 {{{
 This is not the fastest, most space-conserving, most portable, or
 most tunable malloc ever written. However it is among the fastest
 while also being among the most space-conserving, portable and tunable.
 }}}
+dlmalloc is included with the ''Squid-2'' source distribution. To use this library, you simply give an option to the ''configure'' script:
 
-dlmalloc is included with the ''Squid-2'' source distribution.
-To use this library, you simply give an option to the ''configure''
-script:
 {{{
 % ./configure --enable-dlmalloc ...
 }}}
-
 <<Anchor(how-much-ram)>>
+
 == How much memory do I need in my Squid server? ==
+As a rule of thumb on Squid uses approximately 10 MB of RAM per GB of the total of all cache_dirs (more on 64 bit servers such as Alpha), plus your cache_mem setting and about an additional 10-20MB. It is recommended to have at least twice this amount of physical RAM available on your Squid server. For a more detailed discussion on Squid's memory usage see the sections above.
 
-As a rule of thumb on Squid uses approximately 10 MB of RAM per GB of the
-total of all cache_dirs (more on 64 bit servers such as Alpha), plus your
-cache_mem setting and about an additional 10-20MB. It is recommended to
-have at least twice this amount of physical RAM available on your Squid
-server. For a more detailed discussion on Squid's memory usage see the
-sections above.
+The recommended extra RAM besides what is used by Squid is used by the operating system to improve disk I/O performance and by other applications or services running on the server. This will be true even of a server which runs Squid as the only tcp service, since there is a minimum level of memory needed for process management, logging, and other OS level routines.
 
-The recommended extra RAM besides what is used by Squid is used by the
-operating system to improve disk I/O performance and by other applications or
-services running on the server. This will be true even of a server which
-runs Squid as the only tcp service, since there is a minimum level of
-memory needed for process management, logging, and other OS level
-routines.
-
-If you have a low memory server, and a large disk, then you will not
-necessarily be able to use all the disk space, since as the cache fills
-the memory available will be insufficient, forcing Squid to swap out
-memory and affecting performance. A very large cache_dir total and
-insufficient physical RAM + Swap could cause Squid to stop functioning
-completely. The solution for larger caches is to get more physical RAM;
-allocating more to Squid via cache_mem will not help.
+If you have a low memory server, and a large disk, then you will not necessarily be able to use all the disk space, since as the cache fills the memory available will be insufficient, forcing Squid to swap out memory and affecting performance. A very large cache_dir total and insufficient physical RAM + Swap could cause Squid to stop functioning completely. The solution for larger caches is to get more physical RAM; allocating more to Squid via cache_mem will not help.
 
 == Why can't my Squid process grow beyond a certain size? ==
-
 by [AdrianChadd Adrian Chadd]
 
-A number of people are running Squid with more than a gigabyte of memory.
-Here are some things to keep in mind.
+A number of people are running Squid with more than a gigabyte of memory. Here are some things to keep in mind.
 
  * The Operating System may put a limit on how much memory available per-process. Check the resource limits (/etc/security/limits.conf or similar under PAM systems, 'ulimit', etc.)
  * The Operating System may have a limit on the size of processes. 32-bit platforms are sometimes "split" to be 2gb process/2gb kernel; this can be changed to be 3gb process/1gb kernel through a kernel recompile or boot-time option. Check your operating system's documentation for specific details.
  * Some malloc implementations may not support > 2gb of memory - eg dlmalloc. Don't use dlmalloc unless your platform is very broken (and then realise you won't be able to use >2gb RAM using it.)
  * Make sure the Squid has been compiled to be a 64 bit binary (with modern Unix-like OSes you can use the 'file' command for this); some platforms may have a 64 bit kernel but a 32 bit userland, or the compiler may default to a 32 bit userland.
- 
+
 -----
 ##end
-
 Back to the SquidFaq
