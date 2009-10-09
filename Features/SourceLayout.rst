@@ -39,6 +39,7 @@ Key:
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || (./) || ''adaptation/ecap/'' || eCAP support || - ||
 || :\ || ''esi/'' || ESI support || ESI* || Add Esi namespace, rename classes ||
+|| {2} || ''eui/'' || EUI-48 / MAC / ARP operations || pieces from acl/Arp.cc ||
 || :\ || ''fs/'' || file system-specific cache store support? || fs/* || Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
