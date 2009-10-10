@@ -11,14 +11,14 @@
 
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': Implemnt some external mechanism to allow adoption of squid's multi-slot helper protocol
- * '''Status''': ''Not started''
+ * '''Status''': ''Running'' , first implementation done
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
  * '''ETA''': 5 days
  * '''Version''': 3.2
  * '''Priority''': 4
  * '''Developer''': FrancescoChemolli
- * '''More''': 
+ * '''More''': https://code.launchpad.net/~kinkie/squid/helper-mux
 
 = Details =
 
