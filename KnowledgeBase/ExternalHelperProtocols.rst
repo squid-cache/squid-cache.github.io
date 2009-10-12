@@ -12,26 +12,25 @@ Some extension mechanisms are starndards-based, such as [[Features/ICAP|ICAP]], 
 So you want to build your own helper. Here is a description of HOW it should talk to squid
 
 == Basic Authentication ==
-Features/Authentication
+[[Features/Authentication]]
 
 == NTLM Authentication ==
 http://squid.sourceforge.net/ntlm/squid_helper_protocol.html
 
 == Digest Authentication ==
-Features/Authentication KnowledgeBase/LdapBackedDigestAuthentication
+[[Features/Authentication]] [[KnowledgeBase/LdapBackedDigestAuthentication]]
 
 == Kerberos Authentication ==
-ConfigExamples/Authenticate/Kerberos
-Features/NegotiateAuthentication
+[[ConfigExamples/Authenticate/Kerberos]] [[Features/NegotiateAuthentication]]
 
 == External Authorization ==
 SquidConf:external_acl_type
 
 == URL Rewriters ==
-Features/Redirectors
+[[Features/Redirectors]]
 
 == Store URL Rewriters ==
-Features/StoreUrlRewrite
+[[Features/StoreUrlRewrite]]
 
 
 '''Synopsis'''
