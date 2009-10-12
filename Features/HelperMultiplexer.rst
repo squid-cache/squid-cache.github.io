@@ -25,5 +25,17 @@
 Squid 3.0+ supports a multi-slot variant of the helper protocol, which allows to run multiple concurrent requests over a single helper.
 Few helpers - if any - support that protocol though. Aim of this Feature is to have a middleware object - probably written in PERL - which talks the multi-slot protocol to Squid and runs a farm of helpers talking the single-slot variant of the protocol to them.
 
+What's currently done:
+ * data flows forwarding engine
+ * multiplexer is agnostic on the variant of helper protocol used
+ * lazy instantiation of work helpers - no predetermined limit
+ * some helper error handling
+ * diagnostics and debugging (too much of it)
+
+What's to do
+ * handle work helper reaping / restarting
+   maybe will need to have the muxer understand at least part of the actual variant of the helper protocol. '''Started'''
+ * debugging code cleanup
+
 ----
 CategoryFeature
