@@ -48,6 +48,13 @@ A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ w
 === General ===
 <<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse )>>
 
+
+=== Strange and Weird configurations ===
+##start_WEIRD_INTRO
+This is a section for weird (and sometimes wonderful) configurations Squid is capable of. Clued in admin often find no actual useful benefits from going to this much trouble, but well, people seems to occasionally ask for them...
+##end_WEIRD_INTRO
+<<FullSearch(title:regex:^ConfigExamples/Strange/.*$)>>
+
 == External configuration examples ==
 
 * [[http://freshmeat.net/articles/view/1433/]] -  Configuring a Transparent Proxy/Webcache in a Bridge using Squid and ebtables (Jan 1st, 2005)
