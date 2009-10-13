@@ -46,7 +46,7 @@ A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ w
 <<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
 
 === General ===
-<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse )>>
+<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse -regex:ConfigExamples/Strange )>>
 
 
 === Strange and Weird configurations ===
