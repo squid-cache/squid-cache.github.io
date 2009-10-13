@@ -36,7 +36,7 @@ This configures a dynamic service group - group 80 - which is handed a bunch of 
 ip wccp 80                                                                                                                               
 !                                                                                                                                        
 interface FastEthernet0/1                                                                                                                
- ip address 192.168.1.1 255.255.255.0                                                                                                    
+ ip address 192.0.2.1 255.255.255.0                                                                                                    
  ip wccp 80 redirect in                                                                                                                  
  ip nat inside                                                                                                                           
  ip virtual-reassembly                                                                                                                   
@@ -47,17 +47,17 @@ interface FastEthernet0/1
 
 === Squid configuration ===
 
-This configuration covers the interception part - this Squid sits behind a NATted interface that is WCCPv2 intercepted. The Squid server sits on two network interfaces: an external interface with real a IP address that squid binds to with tcp_outgoing_address, and the internal 192.168.1.0/24 WCCPv2 intercept + NAT'ted address.
+This configuration covers the interception part - this Squid sits behind a NATted interface that is WCCPv2 intercepted. The Squid server sits on two network interfaces: an external interface with real a IP address that squid binds to with tcp_outgoing_address, and the internal 192.0.2.0/24 WCCPv2 intercept + NAT'ted address.
 
 {{{
 wccp2_service dynamic 80                                                                                                                 
 wccp2_service_info 80 protocol=tcp priority=240 ports=80,8000,2080                                                                       
                                                                                                                                          
-wccp2_router 192.168.1.1:2048                                                                                                            
+wccp2_router 192.0.2.1:2048                                                                                                            
                                                                                                                                          
-http_port 192.168.1.10:3128 transparent vport=80                                                                                         
-http_port 192.168.1.10:8000 transparent vport=8000                                                                                       
-http_port 192.168.1.10:2080 transparent vport=2080                                                                                       
+http_port 192.0.2.10:3128 transparent vport=80                                                                                         
+http_port 192.0.2.10:8000 transparent vport=8000                                                                                       
+http_port 192.0.2.10:2080 transparent vport=2080                                                                                       
                                                                                                                                          
 }}}
 
@@ -69,8 +69,8 @@ eth0 is the external (public) IP address; eth1 is the internal IP address which 
 
 #!/bin/sh
 
-ip tunnel add gre0 mode gre remote 192.168.1.1 local 192.168.1.10 dev eth1
-ifconfig gre0 inet 1.2.3.4 netmask 255.255.255.0 up
+ip tunnel add gre0 mode gre remote 192.0.2.1 local 192.0.2.10 dev eth1
+ifconfig gre0 inet 192.0.2.4 netmask 255.255.255.0 up
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 0 > /proc/sys/net/ipv4/conf/default/rp_filter
 echo 0 > /proc/sys/net/ipv4/conf/all/rp_filter
@@ -80,9 +80,9 @@ echo 0 > /proc/sys/net/ipv4/conf/lo/rp_filter
 echo 0 > /proc/sys/net/ipv4/conf/gre0/rp_filter
 
 iptables -F -t nat
-iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 80 -j DNAT --to-destination 192.168.1.10:3128
-iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 8000 -j DNAT --to-destination 192.168.1.10:8000
-iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 2080 -j DNAT --to-destination 192.168.1.10:2080
+iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 80 -j DNAT --to-destination 192.0.2.10:3128
+iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 8000 -j DNAT --to-destination 192.0.2.10:8000
+iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 2080 -j DNAT --to-destination 192.0.2.10:2080
 
 }}}
 
