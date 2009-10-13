@@ -1,10 +1,5 @@
 #language en
 
-## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-
-## if you want to have a table of comments remove the heading hashes from the next line
-## [[TableOfContents]]
-
 = Configuring multiple interception ports using WCCPv2 =
 
 By AdrianChadd
@@ -19,7 +14,7 @@ The Squid WCCPv2 implementation can intercept more than TCP port 80. The currren
 
 There are a few caveats:
 
- * Squid will have to be configured to listen on each port - the wccp2 service configuration only tells WCCPv2 what to do, not Squid;
+ * Squid will have to be configured to listen on each port - the SquidConf:wccp2_service configuration only tells WCCPv2 what to do, not Squid;
  * WCCPv2 (as far as I know) can't be told to redirect random dynamic TCP sessions, only "fixed" service ports - so it can't intercept and cache the FTP data streams;
  * You could use Squid to advertise services which are handled by "other" software running on the server (for example, if you had a !RealServer proxy which functioned you could use Squid to cache the web traffic and announce the !RealMedia port interception and !RealMedia to proxy.)
 
@@ -47,7 +42,7 @@ interface FastEthernet0/1
 
 === Squid configuration ===
 
-This configuration covers the interception part - this Squid sits behind a NATted interface that is WCCPv2 intercepted. The Squid server sits on two network interfaces: an external interface with real a IP address that squid binds to with tcp_outgoing_address, and the internal 192.0.2.0/24 WCCPv2 intercept + NAT'ted address.
+This configuration covers the interception part - this Squid sits behind a NATted interface that is WCCPv2 intercepted. The Squid server sits on two network interfaces: an external interface with real a IP address that squid binds to with SquidConf:tcp_outgoing_address, and the internal 192.0.2.0/24 WCCPv2 intercept + NAT'ted address.
 
 {{{
 wccp2_service dynamic 80                                                                                                                 
