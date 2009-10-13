@@ -14,9 +14,7 @@ ACLs (see next question).
 Browsers send the user's authentication credentials in the
 ''Authorization'' request header.
 
-If Squid gets a request and the ''http_access'' rule list
-gets to a ''proxy_auth'' ACL or an external ACL with ''%LOGIN'' parameter, Squid looks for the ''Authorization'' header.  If the header is present, Squid decodes it and extracts
-a username and password.
+If Squid gets a request and the ''SquidConf:http_access'' rule list gets to a ''proxy_auth'' ACL or an ''external'' ACL (SquidConf:external_acl_type) with ''%LOGIN'' parameter, Squid looks for the ''Authorization'' header.  If the header is present, Squid decodes it and extracts a username and password.
 
 If the header is missing, Squid returns an HTTP reply with status 407 (Proxy Authentication Required).
 The user agent (browser) receives the 407 reply and then attempts to locate the users credentials. Sometimes this means a background lookup, sometimes a popup prompt for the user to enter a name and password.  The name and password are encoded, and sent in the ''Authorization'' header for subsequent
@@ -24,8 +22,7 @@ requests to the proxy.
 
 
 ''NOTE'': The name and password are encoded using "base64"
-(See section 11.1 of
-[[ftp://ftp.isi.edu/in-notes/rfc2616.txt|RFC 2616]]).  However, base64 is a binary-to-text encoding only,
+(See section 11.1 of RFC RFC:2616).  However, base64 is a binary-to-text encoding only,
 it does NOT encrypt the information it encodes.  This means that
 the username and password are essentially "cleartext" between
 the browser and the proxy.  Therefore, you probably should not use
@@ -56,7 +53,7 @@ These include:
 
 In addition Squid also supports the NTLM, Negotiate and Digest authentication schemes which
 provide more secure authentication methods, in that where the password is not
-exchanged in plain text over the wire. Each scheme have their own set of helpers and auth_param
+exchanged in plain text over the wire. Each scheme have their own set of helpers and SquidConf:auth_param
 settings. Notice that helpers for different authentication schemes use different protocols to talk with squid, so they can't be mixed.
 
 For information on how to set up NTLM authentication see [[ConfigExamples/Authenticate/Ntlm|NTLM config examples]].
@@ -70,7 +67,7 @@ or supply your own.
 
 
 You tell Squid which authentication program to use with the
-''auth_param'' option in squid.conf.  You specify
+''SquidConf:auth_param'' option in squid.conf.  You specify
 the name of the program, plus any command line options if
 necessary.  For example:
 {{{
@@ -142,7 +139,7 @@ http_access deny all
 
 But there is a trick which can force the user to authenticate with a different account in
 certain situations. This happens if you deny access with an authentication related ACL last
-in the http_access deny statement. Example configuration:
+in the SquidConf:http_access deny statement. Example configuration:
 
 {{{
 acl my_auth proxy_auth REQUIRED
@@ -153,9 +150,9 @@ http_access allow my_auth
 http_access deny all
 }}}
 
-In this case if the user requests ''www.google.com'' then first second ''http_access''
+In this case if the user requests ''www.google.com'' then first second ''SquidConf:http_access''
 line matches and triggers re-authentication unless the user is one of the listed users.
-Remember: it's always the last ACL on a ''http_access'' line that "matches". If the
+Remember: it's always the last ACL on a ''SquidConf:http_access'' line that "matches". If the
 matching ACL deals with authentication a re-authentication is triggered. If you didn't
 want that you would need to switch the order of ACLs so that you get
 {{{http_access deny !google_users google}}}.
@@ -173,10 +170,10 @@ http_access deny !ldapgroup-allowed
 http_access allow all
 }}}
 
-The second ''http_access'' line would force the user to re-authenticate time
+The second ''SquidConf:http_access'' line would force the user to re-authenticate time
 and again if he/she is not member of the PROXY_ALLOWED group. This is perhaps
 not what you want. You rather wanted to deny access to non-members. So you
-need to rewrite this ''http_access'' line so that an ACL matches that has nothing
+need to rewrite this ''SquidConf:http_access'' line so that an ACL matches that has nothing
 to do with authentication. This is the correct example:
 
 {{{
@@ -186,7 +183,7 @@ http_access deny !ldapgroup-allowed all
 http_access allow all
 }}}
 
-This way the ''http_access'' line still matches. But it's the ''all'' ACL
+This way the ''SquidConf:http_access'' line still matches. But it's the ''all'' ACL
 which is now last in the line. Since ''all'' is a static ACL (that always matches)
 and has nothing to do with authentication you will find that the access is just
 denied.
@@ -202,7 +199,7 @@ one hour by default.  That means (in the worst case) its possible
 for someone to keep using your cache up to an hour after he
 has been removed from the authentication database.
 
-You can control the expiration time with the ''auth_param basic credentialsttl'' configuration option.
+You can control the expiration time with the ''SquidConf:auth_param basic credentialsttl'' configuration option.
 
 
 Note: This has nothing to do with how often the user needs to re-authenticate
@@ -248,9 +245,9 @@ Commonly deployed user-agents support at least one and up to four different auth
  1. NTLM
  1. Negotiate
 
-Those schemes are explained in detail elsewhere (see ../ProxyAuthentication, NegotiateAuthentication and ../TroubleShooting). You __can__ enable more than one at any given moment, just configure the relevant ''auth_param'' sections for each different scheme you want to offer to the browsers.
+Those schemes are explained in detail elsewhere (see [[SquidFaq/ProxyAuthentication]], [[Features/NegotiateAuthentication]] and [[SquidFaq/TroubleShooting]]). You __can__ enable more than one at any given moment, just configure the relevant ''SquidConf:auth_param'' sections for each different scheme you want to offer to the browsers.
 
-|| /!\ ||Due to a '''bug''' in common User-Agents (most notably Microsoft Internet Explorer) the __order__ the auth-schemes are configured __is__ relevant. [[http://www.ietf.org/rfc/rfc2617.txt|RFC 2617]], chapter 4.6, states: ''A user agent MUST choose to use the strongest auth-scheme it understands''. Microsoft Internet Explorer instead chooses the __first__ authe-scheme (in the order they are offered) it understands||
+|| /!\ ||Due to a '''bug''' in common User-Agents (most notably Microsoft Internet Explorer) the __order__ the auth-schemes are configured __is__ relevant. RFC RFC:2617, chapter 4.6, states: ''A user agent MUST choose to use the strongest auth-scheme it understands''. Microsoft Internet Explorer instead chooses the __first__ authe-scheme (in the order they are offered) it understands||
 
 In other words, you '''SHOULD''' use this order for the ''auth_params'' directives:
  1. negotiate
