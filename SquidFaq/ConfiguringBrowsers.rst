@@ -63,7 +63,7 @@ by Hume Smith
 Select ''Proxy Servers...'' from the ''Preferences'' menu.  Check each
 protocol that your Squid server supports (by default, HTTP, FTP, and
 Gopher) and enter the Squid server's address as hostname:port (e.g.
-mycache.example.com:3128 or 123.45.67.89:3128).  Click on ''Okay'' to accept the
+mycache.example.com:3128 or 192.0.2.2:3128).  Click on ''Okay'' to accept the
 setup.
 
 Notes:
@@ -141,10 +141,10 @@ Create a standard Netscape ''auto proxy'' config file.  The sample provided abov
 Store the resultant file in the document root directory of a handy web server as ''wpad.dat'' (Not ''proxy.pac'' as you may have previously done.) Andrei Ivanov notes that you should be able to use an HTTP redirect if you want to store the wpad.dat file somewhere else.  You can probably even redirect ''wpad.dat'' to ''proxy.pac'':
 
 {{{
-Redirect /wpad.dat http://racoon.riga.lv/proxy.pac
+Redirect /wpad.dat http://example.com/proxy.pac
 }}}
 
-If you do nothing more, a URL like http://www.your.domain.name/wpad.dat
+If you do nothing more, a URL like http://www.example.com/wpad.dat
 should bring up the script text in your browser window.
 
 Insert the following entry into your web server ''mime.types''
@@ -160,16 +160,16 @@ Under ''Tools'', ''Internet Options'', ''Connections'', ''Settings'' '''or''' ''
 Settings'', set '''ONLY''' ''Use Automatic Configuration Script''
 to be the URL for where your new ''wpad.dat'' file can be found.
 
-i.e.  http://www.your.domain.name/wpad.dat.
+i.e.  http://www.example.com/wpad.dat.
 
 Test that that all works as per your script and network. There's no point continuing until this works ...
 
 === Automatic WPAD with DNS ===
 
 Create/install/implement a DNS record so that
-wpad.your.domain.name resolves to the host above where
+wpad.example.com resolves to the host above where
 you have a functioning auto config script running. You should
-now be able to use http://wpad.your.domain.name/wpad.dat
+now be able to use http://wpad.example.com/wpad.dat
 as the Auto Config Script location in step 5 above.
 
 And finally, go back to the setup screen detailed in 5 above,
@@ -182,12 +182,12 @@ One final question might be "Which domain name does the client
 (IE5) use for the wpad... lookup?" It uses the hostname from
 the control panel setting.  It starts the search by adding the
 hostname ''wpad'' to current fully-qualified domain name.  For
-instance, a client in ''a.b.Microsoft.com'' would search for a WPAD
-server at ''wpad.a.b.microsoft.com''. If it could not locate one,
+instance, a client in ''a.b.example.com'' would search for a WPAD
+server at ''wpad.a.b.example.com''. If it could not locate one,
 it would remove the bottom-most domain and try again; for
-instance, it would try ''wpad.b.microsoft.com'' next. IE 5 would
+instance, it would try ''wpad.b.example.com'' next. IE 5 would
 stop searching when it found a WPAD server or reached the
-third-level domain, ''wpad.microsoft.com''.
+bottom-level domain, '''wpad'''.
 
 === Automatic WPAD with DHCP ===
 
@@ -242,8 +242,8 @@ proxy-script. I created some extra redundancy by hosting the script on
 two web servers (actually Apache web servers on the proxy servers
 themselves) and adding the following records to my primary nameserver:
 {{{
-proxy   IN      A       10.0.0.1 ; IP address of proxy1
-        IN      A       10.0.0.2 ; IP address of proxy2
+proxy   IN      A       192.0.2.1 ; IP address of proxy1
+        IN      A       192.0.2.2 ; IP address of proxy2
 }}}
 
 The clients just refer to 'http://proxy/proxy.pac'.  This script looks like this:
@@ -266,21 +266,28 @@ of caching proxies.
 
 == How do I tell Squid to use a specific username for FTP urls? ==
 
+There are several ways the login can be done with FTP through Squid.
+
+SquidConf:ftp_user directive will accept the username or username:password values to be used by default on '''all''' FTP login requests. It will be overridden by any other available login credentials.
+
+The strongest credentials that override all others are credentials added to the URL itself.
+
 Insert your username in the host part of the URL, for example:
 {{{
-ftp://joecool@ftp.foo.org/
+ftp://joecool@ftp.example.com/
 }}}
 
-Squid and the browser should then prompt you for your account password.
+Squid (from 2.6 through to 3.0) will then use a default password.
 
 Alternatively, you can specify both your username and password in the URL itself:
 {{{
-ftp://joecool:secret@ftp.foo.org/
+ftp://joecool:secret@ftp.example.com/
 }}}
-
 However, we certainly do not recommend this, as it could be very
 easy for someone to see or grab your password.
 
+
+Starting with [[Squid-3.1]], the above will be tried then regular HTTP Basic authentication will be used to recover new credentials. If login is required and none given a regular website login popup box will appear asking for the credentials to be entered.
 
 == IE 5.0x crops trailing slashes from FTP URL's ==
 
@@ -298,7 +305,7 @@ an older version of Squid or another vendors software which displayed
 directory listings with broken icons and you wanted your own local version
 of squid to generate proper FTP directory listings instead.
 The workaround for this is to add a double slash to any directory listing
-in which the slash was important, or else upgrade to IE 5.5.  (Or use Firefox if you cannot upgrade your IE)
+in which the slash was important, or else upgrade IE to at least 5.5.  (Or use Firefox if you cannot upgrade your IE)
 
 == IE 6.0 SP1 fails when using authentication ==
 
@@ -312,6 +319,8 @@ This only happens immediately after you authenticate.
 
 This is not a Squid error or bug.   Microsoft broke the Basic
 Authentication when they put out IE6 SP1.
+
+ /!\ this appears to be fixed again in later service packs and IE 7+
 
 There is a knowledgebase article
 (
