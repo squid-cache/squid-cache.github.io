@@ -17,6 +17,7 @@
 
 <<TableOfContents>>
 
+ /!\ Redirectors are now called URL re-writers to reflect what they actually do. Which is to alter the URL being handled.
 
 == What is a redirector? ==
 
@@ -63,7 +64,7 @@ while (<>) {
 }
 }}}
 
-== How do I make in concurrent? ==
+== How do I make it concurrent? ==
 
 Concurrency is handled very simply. Squid labels each request sent to your program with an ID number. All you have to do is make your program send that ID back with the result.
 
@@ -91,7 +92,7 @@ the above example uses 10 concurrent requests, you may need more depending on yo
 
 === Can I use something other than perl? ===
 
-Almost any external script can be used to perform a redirect. See ConfigExamples/PhpRedirectors for hints on writing complex redirectors using php.
+Almost any external script can be used to perform a redirect. See [[ConfigExamples/PhpRedirectors]] for hints on writing complex redirectors using PHP.
 
 == Can I use the redirector to return HTTP redirect messages? ==
 
@@ -122,7 +123,12 @@ while (<>) {
 Please see sections 10.3.2 and 10.3.3 of [[ftp://ftp.isi.edu/in-notes/rfc2068.txt|RFC 2068]]
 for an explanation of the 301 and 302 HTTP reply codes.
 
-== FATAL: All redirectors have exited! ==
+== Redirections by origin servers ==
+
+Redirectors only act on ''client'' requests; if you wish to modify server-generated redirections (the HTTP ''Location'' header) you have to use a SquidConf:location_rewrite helper
+
+== Troubleshooting ==
+=== FATAL: All redirectors have exited! ===
 
 A redirector process must exit (stop running) only when its
 ''stdin'' is closed.  If you see
@@ -157,8 +163,5 @@ acl foo ident REQUIRED
 http_access allow foo
 }}}
 
-== Redirections by origin servers ==
-
-Redirectors only act on ''client'' requests; if you wish to modify server-generated redirections (the HTTP ''Location'' header) you have to use a {{{location_rewrite}}} helper
 
 -----
