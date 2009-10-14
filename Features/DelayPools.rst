@@ -16,7 +16,7 @@
 == Delay Pools ==
 by [[mailto:david@luyer.net|David Luyer]].
 
-To enable delay pools features in Squid configure with ''--enable-delay-pools'' before compilation.
+To enable delay pools features in Squid configure with '''--enable-delay-pools''' before compilation.
 
 ==== Terminology for this FAQ entry: ====
  pool:: a collection of bucket groups as appropriate to a given class
@@ -27,7 +27,7 @@ To enable delay pools features in Squid configure with ''--enable-delay-pools'' 
  class 2:: a class 2 delay pool contains one unified bucket and 255 buckets, one for each host on an 8-bit network (IPv4 class C)
  class 3:: contains 255 buckets for the subnets in a 16-bit network, and individual buckets for every host on these networks (IPv4 class B )
  class 4:: as class 3 but in addition have per authenticated user buckets, one per user.
- class 5:: custom class based on tag values returned by external acl helpers in http_access. One bucket per used tag value.
+ class 5:: custom class based on tag values returned by SquidConf:external_acl_type helpers in SquidConf:http_access. One bucket per used tag value.
 
 Delay pools allows you to limit traffic for clients or client groups, with various features:
 
@@ -52,15 +52,14 @@ delay_class 1 1
 delay_access 1 allow all
 delay_parameters 1 64000/64000          # 512 kbits == 64 kbytes per second
 }}}
-'''For an explanation of these tags please see the configuration file.'''
 
 The 1 second buffer (max = restore = 64kbytes/sec) is because a limit is requested, and no responsiveness to a burst is requested. If you want it to be able to respond to a burst, increase the aggregate_max to a larger value, and traffic bursts will be handled.  It is recommended that the maximum is at least twice the restore value - if there is only a single object being downloaded, sometimes the download rate will fall below the requested throughput as the bucket is not empty when it comes to be replenished.
 
 === How to limit a single connection to 128 Kbps? ===
-You can not limit a single HTTP request's connection speed.  You ''can'' limit individual hosts to some bandwidth rate.  To limit a specific host, define an ''acl'' for that host and use the example above.  To limit a group of hosts, then you must use a delay pool of class 2 or 3.  For example:
+You can not limit a single HTTP request's connection speed.  You ''can'' limit individual hosts to some bandwidth rate.  To limit a specific host, define an ''SquidConf:acl'' for that host and use the example above.  To limit a group of hosts, then you must use a delay pool of class 2 or 3.  For example:
 
 {{{
-acl only128kusers src 192.168.1.0/255.255.192.0
+acl only128kusers src 192.168.1.0/24
 delay_pools 1
 delay_class 1 3
 delay_access 1 allow only128kusers
@@ -87,11 +86,11 @@ The relevant parts of my configuration file are (IP addresses, etc, all changed)
 # Local network definitions, domains a.net, b.net
 acl LOCAL-NET dstdomain a.net b.net
 # Local network; nets 64 - 127.  Also nearby network class A, 10.
-acl LOCAL-IP dst 192.168.64.0/255.255.192.0 10.0.0.0/8
+acl LOCAL-IP dst 192.168.64.0/18 10.0.0.0/8
 # Virtual i/f used for slow access
 acl virtual_slowcache myip 192.168.100.13
 # All permitted slow access, nets 96 - 127
-acl slownets src 192.168.96.0/255.255.224.0
+acl slownets src 192.168.96.0/19
 # Special 'fast' slow access, net 123
 acl fast_slow src 192.168.123.0/24
 # User hosts
@@ -123,11 +122,11 @@ The same code is also used by a some of departments using class 2 delay pools to
 === Where else can I find out about delay pools? ===
 This is also pretty well documented in the configuration file, with examples. Squid install with a squid.conf.documented or squid.conf.default file. If you no longer have a documented config file the latest version is provided on the squid-cache.org website.
 
- * http://www.squid-cache.org/Doc/config/delay_parameters/
- * http://www.squid-cache.org/Doc/config/delay_pools/
- * http://www.squid-cache.org/Doc/config/delay_class/
- * http://www.squid-cache.org/Doc/config/delay_access/
- * http://www.squid-cache.org/Doc/config/external_acl_type/
+ * SquidConf:delay_parameters
+ * SquidConf:delay_pools
+ * SquidConf:delay_class
+ * SquidConf:delay_access
+ * SquidConf:external_acl_type
 
 ----
  . CategoryFeature
