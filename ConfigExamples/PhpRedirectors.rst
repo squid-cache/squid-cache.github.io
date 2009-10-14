@@ -26,10 +26,10 @@ url_rewrite_program /etc/squid/redirect.php
 === Related config options ===
  * SquidConf:url_rewrite_program
  * SquidConf:url_rewrite_access
- * Squidconf:url_rewrite_bypass
- * Squidconf:url_rewrite_children
- * Squidconf:url_rewrite_concurrency
- * Squidconf:url_rewrite_host_header
+ * SquidConf:url_rewrite_bypass
+ * SquidConf:url_rewrite_children
+ * SquidConf:url_rewrite_concurrency
+ * SquidConf:url_rewrite_host_header
 
 == PHP Redirect (Simple) ==
 {{{
