@@ -19,7 +19,7 @@ There are some other limitations of this WCCP support, but this feature has been
 You can find more information about configuring this and how the PIX handles WCCP at http://www.cisco.com/en/US/customer/products/ps6120/products_configuration_guide_chapter09186a0080636f31.html#wp1094445
 
 ## start feature include
-=== Cisco PIX ===
+== Cisco PIX ==
 Cisco PIX is very easy to configure.  The configuration format is almost identical to a cisco router, which is hardly surprising given many of the features are common to both.  Like cisco router's, PIX supports the GRE encapsulation method of traffic redirection.
 
 Merely put this in your global config:
@@ -32,5 +32,8 @@ There is no interface specific configuration required.
 
 ## end feature include
 
+= Troubleshooting =
+## start troubleshoot
+## end troubleshoot
 ----
 CategoryConfigExample
