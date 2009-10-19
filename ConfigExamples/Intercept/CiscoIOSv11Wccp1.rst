@@ -10,9 +10,10 @@
 
 <<TableOfContents>>
 
-== Outline ==
+## == Outline ==
 
-=== Cisco IOS Version 11.x ===
+## start feature include
+== Cisco IOS 11.x router ==
 
 For very old versions of IOS you will need this config:
 
@@ -27,7 +28,7 @@ ip wccp web-cache redirect
 CTRL Z
 copy running-config startup-config
 }}}
-
+## end feature include
 
 ----
 CategoryConfigExample
