@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/Intercept/CiscoIOSv11Wccp
 ##master-page:CategoryTemplate
 #format wiki
 #language en
