@@ -43,7 +43,7 @@ interface FastEthernet0/0.2
 = Troubleshooting =
 
 ## start troubelshoot
-== IOS 12.4 (6)-(9) T droppign packets ==
+== IOS 12.4 (6)-(9) T dropping packets ==
  In this release of IOS software that I am running (12.4(6)T2 and 12.4(9)T) you MUST NOT have '''ip inspect fw-rules''' in on the same interface as your '''ip wccp web-cache redirect''' statement.
 
 I opened a TAC case on this as it is clearly a bug and regression from past behaviour where WCCP did work fine with IP inspection configured on the same interface.  This turned out to be confirmed as a bug in IOS, which is documented as [[http://www.cisco.com/cgi-bin/Support/Bugtool/onebug.pl?bugid=CSCse55959|CSCse55959]].
