@@ -53,3 +53,7 @@ wccp2_service standard 0 password=foo
  * ready to go
 
 p.s.: you should deny other forwardings with iptables
+
+## = Troubleshooting =
+## start troubleshoot
+##end troubleshoot
