@@ -42,7 +42,7 @@ interface FastEthernet0/0.2
 
 = Troubleshooting =
 
-## start troubelshoot
+## start troubleshoot
 == IOS 12.4 (6)-(9) T dropping packets ==
  In this release of IOS software that I am running (12.4(6)T2 and 12.4(9)T) you MUST NOT have '''ip inspect fw-rules''' in on the same interface as your '''ip wccp web-cache redirect''' statement.
 
