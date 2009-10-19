@@ -16,7 +16,7 @@ This was done on a Cisco 3640 running c3640-is-mz.122-23f.bin; its acting as a N
 
 This configuration passes web traffic (port 80 only) over WCCPv2 to another box for handling. It is expected the that the box will contain squid or other proxy for processing the traffic.
 
-## start feature
+## start feature include
 == Cisco 3640 router ==
 
 {{{
@@ -44,6 +44,11 @@ interface FastEthernet2/0.1
  ip wccp web-cache redirect in
  ip nat inside
 }}}
-## end feature
+## end feature include
+
+= Troubleshooting =
+## start troubleshoot
+## end troubleshoot
+
 ----
 CategoryConfigExample
