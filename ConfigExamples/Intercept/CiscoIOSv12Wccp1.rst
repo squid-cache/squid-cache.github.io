@@ -11,7 +11,8 @@
 
 == Outline ==
 
-===== IOS Version 12.x =====
+## start feature include
+== Cisco IOS 12.x router ==
 
  /!\ Some of the early versions of 12.x do not have the 'ip wccp version' command. You will need to upgrade your IOS version to use V1.0.
 
@@ -37,9 +38,13 @@ ip wccp web-cache redirect-list
 
  (!) WCCP is smart enough that it will automatically bypass your cache from the redirection process, ensuring that your cache does not become redirected back to itself.
 
+## end feature include
+
+
 == Troubleshooting ==
 
-Some people report problems with WCCP and IOS 12.x.
+## start troubleshoot
+Some people report problems with WCCPv1 and IOS 12.x.
 
 === Redirection not working properly ===
 
@@ -47,5 +52,6 @@ Try turning off CEF and disabling the route-cache on the interface.  WCCP has a 
 
 IOS firewall inspection can also cause problems with WCCP and is worth disabling if you experience problems.
 
+## end troubleshoot
 ----
 CategoryConfigExample
