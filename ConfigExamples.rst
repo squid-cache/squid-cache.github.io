@@ -33,6 +33,11 @@ A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ w
 
 === Interception ===
 [[ConfigExamples/Intercept|Overview and explanation]]
+
+[[Features/Wccp| WCCP v1 overview]]
+
+[[Features/Wccp| WCCP v2 overview]]
+
 <<FullSearch(title:regex:^ConfigExamples/Intercept/.*$)>>
 
 === Reverse Proxy (Acceleration) ===
