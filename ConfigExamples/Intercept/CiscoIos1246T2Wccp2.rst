@@ -16,7 +16,8 @@ This configuration passes web traffic (port 80 only) over WCCPv2 to another box 
 
 The router runs cisco IOS 12.4(6)T2 ADVSECURITY, and I have a sub-interface on my !FastEthernet port as the switch-router link is a trunk
 
-== Cisco router ==
+## start feature include
+== Cisco IOS 12.4(6) T2 router ==
 
 {{{
 !
@@ -37,7 +38,9 @@ interface FastEthernet0/0.2
 !
 }}}
 
- '''Note:'''  in this release of IOS software that I am running (12.4(6)T2 and 12.4(9)T) you MUST NOT have ip inspect fw-rules in on the same interface as your ip wccp web-cache redirect statement.  I opened a TAC case on this as it is clearly a bug and regression from past behaviour where WCCP did work fine with IP inspection configured on the same interface.  This turned out to be confirmed as a bug in IOS, which is documented as [[http://www.cisco.com/cgi-bin/Support/Bugtool/onebug.pl?bugid=CSCse55959|CSCse55959]].  The cause of this is TCP fragments of traffic being dropped by the ip inspection process - fragments which should not even be inspected in the first place. This bug does not occur on the PIX which works fine with the same network design and configuration.  If you would like this bug fixed, please open a cisco TAC case referencing this bug report and encourage cisco to fix it.
+ '''Note:'''  in this release of IOS software that I am running (12.4(6)T2 and 12.4(9)T) you MUST NOT have ip inspect fw-rules in on the same interface as your '''ip wccp web-cache redirect''' statement.  I opened a TAC case on this as it is clearly a bug and regression from past behaviour where WCCP did work fine with IP inspection configured on the same interface.  This turned out to be confirmed as a bug in IOS, which is documented as [[http://www.cisco.com/cgi-bin/Support/Bugtool/onebug.pl?bugid=CSCse55959|CSCse55959]].  The cause of this is TCP fragments of traffic being dropped by the ip inspection process - fragments which should not even be inspected in the first place. This bug does not occur on the PIX which works fine with the same network design and configuration.  If you would like this bug fixed, please open a cisco TAC case referencing this bug report and encourage cisco to fix it.
+
+## end feature include
 
 ----
 CategoryConfigExample
