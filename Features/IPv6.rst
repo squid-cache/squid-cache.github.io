@@ -174,9 +174,10 @@ As yet there is no IPv6 equivalent for Squid to use.
 
 === ARP (MAC address ACLs) ===
 
-ARP does not exist in IPv6. Proper IPV6 auto-configuration of networks can provide an equivalent in the IPv6 address itself.
+ARP does not exist in IPv6. It has been replaced by a protocol called NDP (Neighbour Discovery Protocol) Proper IPv6 auto-configuration of networks can provide an equivalent in the IPv6 address itself.
 
-However we are still pondering a way to do this securely and reliably.
+Work is underway to test out some possible solutions for link-local addressing.
+However we are still pondering a way to do this securely and reliably for global IPv6 addressing.
 
 === RADIUS authentication ===
 
