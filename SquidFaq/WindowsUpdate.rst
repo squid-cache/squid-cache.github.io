@@ -6,15 +6,15 @@
 
 Windows Update apparently uses HTTP Range-Offsets' (AKA file partial ranges) to grab pieces of the Microsoft Update archive in parallel or using a random-access algorithm trying to reduce the web traffic. Some versions of Squid do not handle or store Ranges very well yet.
 
-The work-around used by many cache maintainers has been to set the '''range_offset -1'''. Meaning that squid is configured to always pull the entire file from the start when a range is requested.
+The work-around used by many cache maintainers has been to set the '''SquidConf:range_offset_limit -1'''. Meaning that squid is configured to always pull the entire file from the start when a range is requested.
 
  {i} Compounding the problem and ironically causing some slowdowns is the fact that some of the Microsoft servers may be telling your Squid not to store the archive file. This means that Squid will pull the entire archive every time it needs any small piece.
 
-You will need to test your squid config with and without the range_offset bypass and see which provides the best results for you.
+You will need to test your squid config with and without the SquidConf:range_offset_limit bypass and see which provides the best results for you.
 
 Another symptoms which occasionally appear when attempting to force caching of windows updates is service packs.
 
- {i} If the quick_abort_* settings are set to abort a download incomplete and a client closes with almost but not quite enough of the service pack downloaded. That clients following requests will often timeout waiting for Squid to re-download the whole object from the start. Which naturally causes the problem to repeat on following restart attempts.
+ {i} If the SquidConf:quick_abort_min, SquidConf:quick_abort_max, SquidConf:quick_abort_pct settings are set to abort a download incomplete and a client closes with almost but not quite enough of the service pack downloaded. That clients following requests will often timeout waiting for Squid to re-download the whole object from the start. Which naturally causes the problem to repeat on following restart attempts.
 
 
 == How do I stop Squid popping up the Authentication box for Windows Update? ==
@@ -43,7 +43,7 @@ http_access allow CONNECT wuCONNECT localnet
 http_access allow windowsupdate localnet
 }}}
 
-The above config is also useful for other automatic update sites such as Anti-Virus vendors, just add their domains to the acl.
+The above config is also useful for other automatic update sites such as Anti-Virus vendors, just add their domains to the SquidConf:acl.
 
 || {i} || If you have squid listening on a localhost port with other software in front (ie dansGuardian). You will probably need to add permission for '''localhost''' address so the front-end service can relay the requests. ||
 
