@@ -36,7 +36,7 @@ A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ w
 
 [[Features/Wccp| WCCP v1 overview]]
 
-[[Features/Wccp| WCCP v2 overview]]
+[[Features/Wccp2| WCCP v2 overview]]
 
 <<FullSearch(title:regex:^ConfigExamples/Intercept/.*$)>>
 
