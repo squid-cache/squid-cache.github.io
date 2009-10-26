@@ -6,7 +6,7 @@ Very important passage from the Cisco-Manual:
 
 == Squid configuration ==
 {{{
-http_port 3128 transparent
+http_port 3129 transparent
 wccp2_router $IP-OF-ASA 
 wccp2_forwarding_method 1 
 wccp2_return_method 1
@@ -34,26 +34,30 @@ wccp2_service standard 0 password=foo
 {{{
  echo 1 >/proc/sys/net/ipv4/ip_forward
 
- iptables -t nat -A PREROUTING -i wccp0 -p tcp --dport 80 -j REDIRECT --to-port 3128
+ iptables -t nat -A PREROUTING -i wccp0 -p tcp --dport 80 -j REDIRECT --to-port 3129
 }}}
 
 ## start feature include
 
 == Cisco ASA ==
 
+Bypass the Squid box from re-capture
 {{{
- access-list wccp_redirect extended deny ip host 10.1.2.30 any
-
+ access-list wccp_redirect extended deny ip host $SQUID-IP any
+}}}
+... while capturing the local /24 network defined by "workstations".
+{{{
  access-list wccp_redirect extended permit tcp workstations 255.255.255.0 any eq www
+}}}
 
+Intercept everything not prevented by the bypass list:
+{{{
  wccp web-cache redirect-list wccp_redirect password foo
 
  wccp interface internal web-cache redirect in 
 }}}
 
 ## end feature include
-
- * ready to go
 
 p.s.: you should deny other forwardings with iptables
 
