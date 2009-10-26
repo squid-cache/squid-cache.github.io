@@ -41,11 +41,14 @@ wccp2_service standard 0 password=foo
 
 == Cisco ASA ==
 
- /!\ The following has suffered from severe wrap problems. Is anyone able to assist with fixing?
 {{{
  access-list wccp_redirect extended deny ip host 10.1.2.30 any
 
- access-list wccp_redirect extended permit tcp workstations 255.255.255.0 any eq www  wccp web-cache redirect-list wccp_redirect password foo wccp interface internal web-cache redirect in 
+ access-list wccp_redirect extended permit tcp workstations 255.255.255.0 any eq www
+
+ wccp web-cache redirect-list wccp_redirect password foo
+
+ wccp interface internal web-cache redirect in 
 }}}
 
 ## end feature include
