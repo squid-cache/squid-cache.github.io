@@ -105,11 +105,15 @@ Do the above steps for iptables on a router device. Then follow with these addit
  {i} $CLIENT_IFACE and $INET_IFACE need to be replaced with the eth* NIC interface names facing the clients or Internet.
 
  {i} Mind the line wrap. The following is two command lines.
-{{{
-ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 -j REDIRECT --redirect-target DROP
 
-ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv4 --ip-proto tcp --ip-sport 80 -j REDIRECT --redirect-target DROP
+## AYJ: IIRC the initial tester and about two others have found the following to be needed:
+##      more recently two people report that target needs to be ACCEPT
+{{{
+ ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 -j redirect --redirect-target ACCEPT
+
+ ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv4 --ip-proto tcp --ip-sport 80 -j redirect --redirect-target ACCEPT
 }}}
+ Early testers indicated that DROP was needed as the target. However several people since have found ACCEPT was needed. If the above fails for you try both. It may be ebtables version related.
 
  /!\ The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc)
 
