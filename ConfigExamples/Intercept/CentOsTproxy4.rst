@@ -35,6 +35,15 @@ cd /usr/src/linux
 }}}
 
 
+=== Routing Configuration ===
+
+As per the [[Features/Tproxy4|TPROXYv4]] regular configuration:
+{{{
+ip rule add fwmark 1 lookup 100
+
+ip route add local 0.0.0.0/0 dev lo table 100
+}}}
+
 === Building iptables ===
 || {i} || iptables 1.4.3 is now released and has support integrated. http://www.netfilter.org/projects/iptables/index.html ||
 
