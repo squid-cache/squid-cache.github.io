@@ -106,14 +106,20 @@ Do the above steps for iptables on a router device. Then follow with these addit
 
  {i} Mind the line wrap. The following is two command lines.
 
-## AYJ: IIRC the initial tester and about two others have found the following to be needed:
-##      more recently two people report that target needs to be ACCEPT
+## AYJ: The initial testers, kernel people, and ab few others say that the rule target needs to be DROP. More recently two people report that target needs to be ACCEPT. Not sure where that is coming from.
 {{{
- ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 -j redirect --redirect-target ACCEPT
+ ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 -j redirect --redirect-target DROP
 
- ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv4 --ip-proto tcp --ip-sport 80 -j redirect --redirect-target ACCEPT
+ ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv4 --ip-proto tcp --ip-sport 80 -j redirect --redirect-target DROP
+
+ cd /proc/sys/net/bridge/
+ for i in *
+ do
+   echo 0 > $i
+ done
+ unset i
 }}}
- Early testers indicated that DROP was needed as the target. However several people since have found ACCEPT was needed. If the above fails for you try both. It may be ebtables version related.
+ Early testers and the kernel people write that DROP is needed as the target. However several people since have found ACCEPT was needed. If the above fails for you try both. It may be ebtables version related.
 
  /!\ The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc)
 
