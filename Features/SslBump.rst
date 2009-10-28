@@ -14,7 +14,7 @@
 Squid-in-the-middle decryption and encryption of straight '''CONNECT''' and transparently redirected SSL traffic, using configurable client- and server-side certificates. While decrypted, the traffic can be inspected using ICAP.
 
 
- /! \ By default, most user agents will warn end-users about a possible man-in-the-middle attack.
+ /!\ By default, most user agents will warn end-users about a possible man-in-the-middle attack.
 
 
 == Squid Configuration ==
