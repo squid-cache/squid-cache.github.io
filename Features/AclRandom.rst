@@ -1,25 +1,36 @@
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
-##
-## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted no
 
 = Feature: Acl type "Random" =
 
-## Move this down into the details documentation when feature is complete.
- * '''Goal''': Implement an ACL type which would match randomly with a given probablilty.
- * '''Status''': ''Not started''
-## Remove this entry once the feature has been merged into trunk.
-##  it will then be auto-listed in the RoadMap completed features for its Version
- * '''ETA''': ''unknown''
+ * '''Goal''': Implement an ACL type which would match randomly with a given probability.
+ * '''Status''': testing.
+ * '''ETA''': Nov 2009
  * '''Version''': 3.2
  * '''Priority''': 
- * '''Developer''': 
+ * '''Developer''': AmosJeffries
  * '''More''': Bug Bug:1239
 
 
 = Details =
+
+Implementation underway.
+
+The ACL name "random" will accept a single value in one of three formats:
+
+ * A:B - matching randomly an average A requests for every B non-matches. May not be zero.
+
+ * A/B - matching randomly an average of A requests out of total B requests. May not be zero.
+
+ * 0.NNNN - matching randomly any given request with .NNNN probability.
+   Range is between zero to one, excluding zero and one themselves.
+
+All three of these matches are proportional. The first two formats are provided for ease of configuration. They are converted to a decimal threshold as shown in in the third format.
+
+Every tested match a new random number is generated and checked against the stored value. If the random number generated is within the threshold range of possibility the ACL will match.
+
 
 Brett writes:
 {{{
