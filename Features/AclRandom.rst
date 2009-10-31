@@ -16,7 +16,7 @@
 
 = Details =
 
-Implementation underway.
+Implementation done and testing underway.
 
 The ACL name "random" will accept a single value in one of three formats:
 
@@ -27,9 +27,9 @@ The ACL name "random" will accept a single value in one of three formats:
  * 0.NNNN - matching randomly any given request with .NNNN probability.
    Range is between zero to one, excluding zero and one themselves.
 
-All three of these matches are proportional. The first two formats are provided for ease of configuration. They are converted to a decimal threshold as shown in in the third format.
+All three of these matches are proportional. The first two formats are provided for ease of configuration. They are converted to a decimal threshold as shown in the third format.
 
-Every tested match a new random number is generated and checked against the stored value. If the random number generated is within the threshold range of possibility the ACL will match.
+Every test, a new random number is generated and checked against the stored value. If the random number is within the threshold range of possibility the ACL will match.
 
 
 Brett writes:
