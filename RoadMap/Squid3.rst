@@ -83,6 +83,9 @@ Basic new features in 3.2:
  * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
  * Helpers:
   * New helpers to demo url_rewrite_program programs.
+ * EUI (MAC address) logging and external ACL handling
+ * Dynamic URL generation for SquidConf:deny_info redirects
+ * Multi-Lingual FTP directory listings
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
 
