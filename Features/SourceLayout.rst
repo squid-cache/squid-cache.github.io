@@ -26,7 +26,7 @@ Key:
  * {1} AlexRousskov doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' || '''To-do''' ||
-|| {2} || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets ||
+|| :\ || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets || {2} convert helpers to C++ and link to libcompat <<BR>> ** migrate remaining pieces of config.h and squid.h into compat<<BR>> ** migrate portability code from include/lib ||
 || :\ || ''acl/'' || Access Controls || ACL* external_acl.* || Add Acl namespace and rename classes? ||
 || (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
