@@ -38,8 +38,8 @@ Key:
 ||  || ''shaping/'' || Traffic shaping and delay pools || *[Dd]elay.* *[Pp]ool*.* ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || (./) || ''adaptation/ecap/'' || eCAP support || - ||
-|| :\ || ''esi/'' || ESI support || ESI* || Add Esi namespace, rename classes ||
-|| {2} || ''eui/'' || EUI-48 / MAC / ARP operations || pieces from acl/Arp.cc ||
+|| :/ || ''esi/'' || ESI support || ESI* || Add Esi namespace, rename classes ||
+|| (./) || ''eui/'' || EUI-48 / MAC / ARP operations || pieces from acl/Arp.cc ||
 || :\ || ''fs/'' || file system-specific cache store support? || fs/* || Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
@@ -48,13 +48,9 @@ Key:
 || :\ || ''ip/'' || IP Protocol || Ip* Qos* || Add Ip Namespace and rename classes ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* (later: logdaemon) ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
+|| {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 
-
-...
-The following shuffling is linked to major code re-writes and will be held back to 3.2.
-
-|| {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
 
 == Non-Squid Bundled Source code ==
 
@@ -62,11 +58,12 @@ This section is used to edit and finalize the grouping of source files important
 
 || '''Directory''' || || '''Content Type''' ||
 ||<-2> helpers/ || Helper applications which may be run by configuration. ||
-|| || basic_auth/ || auth_param basic ||
-|| || digest_auth/ || auth_param digest ||
-|| || external_acl/ || external_acl_type ||
-|| || negotiate_auth/ || auth_param negotiate ||
-|| || ntlm_auth/ || auth_param ntlm ||
+|| || basic_auth/ || SquidConf:auth_param basic ||
+|| || digest_auth/ || SquidConf:auth_param digest ||
+|| || external_acl/ || SquidConf:external_acl_type ||
+|| || negotiate_auth/ || SquidConf:auth_param negotiate ||
+|| || ntlm_auth/ || SquidConf:auth_param ntlm ||
+|| || url_rewrite/ || URL re-writers (SquidConf:url_rewrite_program) ||
 ||<-2> modules/ || Extension modules which may be linked by configuration. ||
 || || ecap/ || eCAP ||
 ||<-2> tools/ || Administration tools ||
