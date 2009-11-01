@@ -3,26 +3,22 @@
 #language en
 #faqlisted no
 
-= Feature: Acl type "Random" =
+= Feature: ACL type "Random" =
 
  * '''Goal''': Implement an ACL type which would match randomly with a given probability.
- * '''Status''': testing.
- * '''ETA''': Nov 2009
+ * '''Status''': complete.
  * '''Version''': 3.2
- * '''Priority''': 
  * '''Developer''': AmosJeffries
  * '''More''': Bug Bug:1239
 
 
 = Details =
 
-Implementation done and testing underway.
+The ACL of type "random" will accept a single value in one of three formats:
 
-The ACL name "random" will accept a single value in one of three formats:
+ * A:B - matching randomly an average A requests for every B non-matches. A and B may not be zero.
 
- * A:B - matching randomly an average A requests for every B non-matches. May not be zero.
-
- * A/B - matching randomly an average of A requests out of total B requests. May not be zero.
+ * A/B - matching randomly an average of A requests out of total B requests. A and B may not be zero.
 
  * 0.NNNN - matching randomly any given request with .NNNN probability.
    Range is between zero to one, excluding zero and one themselves.
@@ -31,33 +27,19 @@ All three of these matches are proportional. The first two formats are provided 
 
 Every test, a new random number is generated and checked against the stored value. If the random number is within the threshold range of possibility the ACL will match.
 
+ {i} To debug this ACL use SquidConf:debug_options 28,3 and watch for lines beginning with "ACL Random".
 
-Brett writes:
-{{{
-I am helping some folks with a Squid cache and would like to request the
-addition of a simple feature.
+= Use Cases =
+== Uplink Load Balancing ==
+When used within SquidConf:tcp_outgoing_addr or SqudiConf:tcp_outgoing_tos selection this ACL permits load to be roughly split between multiple links based on their relative capacity.
 
-What I need is an ACL type called "random" which would be of the form
+This requires some additional configuration at the operating system level to ensure that the address or TOS values assigned are routed out the appropriate uplink. Its no use doing this in Squid if all traffic ends up going out the default anyway.
 
-acl aclname random .666666
+== Log sampling of traffic ==
+When used in SquidConf:access_log directives this ACL permits a small random proportion of requests to be logged. Rather than all traffic or some only matching fixed criteria.
 
-Where the ACL will be matched with the specified probability. This type of ACL
-is commonly found in firewalls, and allows for all sorts of interesting
-applications, including simple load balancing, traffic sampling, fault
-simulation, etc. For example, when used in conjunction with
-tcp_outgoing_address, it would allow requests to be distributed among multiple
-links in proportion to their capacities. (I've seen some people asking for such
-load balancing on the Squid mailing lists; this would allow it without a
-requirement to implement a complex new feature. And one could do much more with
-this ACL as well.)
-
-It is already possible to simulate this sort of ACL (in fact, I've tried it),
-but using an external "helper" program is incredibly inefficient. It would be
-far faster and more efficient if a simple "random" ACL were coded right in.
-
-It seems to me that this would be trivial to implement -- maybe an hour or so --
-for a developer who is already familiar with the source.
-}}}
+== Others? ==
+Other use cases may be possible. If you know of one not already covered here we are interested to know what it is.
 
 ----
 CategoryFeature
