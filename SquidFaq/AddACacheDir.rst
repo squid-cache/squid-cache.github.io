@@ -14,24 +14,27 @@ Squid will handle the changes semi-automatically, but there are still a few oper
 
 Assuming your disk is attached, your OS recognizes it and the disk is formatted:
 
- 1. Ensure the effective_squid_user has write capability on the mount point
- 2. Add a cache_dir directive to squid.conf referencing the new mount point
+ 1. Ensure the SquidConf:cache_effective_user has write capability on the mount point
+ 2. Add a SquidConf:cache_dir directive to squid.conf referencing the new mount point
  3. Stop squid
- 4. Run squid -z (as root or as the effective_squid_user)
+ 4. Run {{{squid -z}}} (as root or as the SquidConf:cache_effective_user)
  5. Start squid
 
 == Downtime reduction hack ==
 
-''by Amos Jeffries''
-
-Disclaimer: This hack is theoretical, still needing confirmation of success. There is a slight chance the squid -z will abort early if it discovers another running squid instance.
+''by AmosJeffries and HenrikNordstrom''
 
 NP: this does not apply to large caches as there is no touching of the existing cache_dir anyway.
 
- 1. Ensure the effective_squid_user has write capability on the mount point
- 2. Add a cache_dir directive to squid.conf referencing the new mount point
- 3. Run squid -z -f ./squid.conf (as root or as the effective_squid_user)
- 4. Reconfigure the running squid (-k reconfigure)
+ 1. Ensure the SquidConf:cache_effective_user has write capability on the mount point
+ 2. Temporarily change squid.conf to use another SquidConf:pid_filename. {{{squid -z}}} will abort early if it discovers another running squid instance
+ 3. Add a SquidConf:cache_dir directive to squid.conf referencing the new mount point
+ 4. Temporarily: comment out the existing SquidConf:cache_dir entries
+ 5. Run {{{squid -z -f ./squid.conf}}} (as root or as the SquidConf:cache_effective_user)
+ 6. Undo the temporary changes to SquidConf:pid_filename and pre-existing SquidConf:cache_dir
+ 7. Reconfigure the running squid with {{{squid -k reconfigure}}}
+
+ {i} While the -z with existing ufs/aufs/diskd is harmless it's a destructive operation with for example coss SquidConf:cache_dirs so commenting them out is important.
 
 ##end
 -----
