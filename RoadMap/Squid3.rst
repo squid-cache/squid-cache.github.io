@@ -52,6 +52,9 @@ From 3.1.0.11:
  * [[Features/AdaptationLog|ICAP and eCAP Logging]]
  * [[Features/AdaptationChain|ICAP Service Sets and Chains]]
 
+From 3.1.0.15:
+ * ICY (SHOUTcast) streaming protocol support
+
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
 
