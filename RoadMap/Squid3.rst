@@ -109,7 +109,7 @@ Features under development:
 ## * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
 
 ## some we will need to manually add to this list...
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" -regex:"ETA...:.unknown" regex:"Developer...:....*")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*")>>
 
 
 Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
