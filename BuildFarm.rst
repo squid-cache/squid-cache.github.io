@@ -39,9 +39,11 @@ Since the test nodes are doing more than just building Squid from a prepared tar
  * CppUnit
  * OpenSSL development library (libssl-dev)
  * Optional extras for better testing:
-  * libcap
+  * libcap (version 2.09+)
   * po2html
   * po4a
+  * libxml2
+  * expat / libexpat
 
 '''Squid-2 Testing:'''
  * cvs
