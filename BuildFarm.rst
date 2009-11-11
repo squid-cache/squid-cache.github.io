@@ -17,8 +17,8 @@ The currently-planned farm consists of:
 || [[http://www.openbsd.org/|OpenBSD]] || || vobsd.squid-cache.org || {OK} ||
 || [[http://www.freebsd.org/|FreeBSD-x32]] || 6.4 || squid-cache.org || {OK} ||
 || [[http://www.freebsd.org/|FreeBSD-x64]] || 7.2 || diablo.squid-cache.org || {OK} ||
-|| [[http://opensolaris.org/|OpenSolaris-x64]] || || || Volunteers sought ||
-|| [[http://opensolaris.org/|OpenSolaris-sparc]] || || || Volunteers sought ||
+|| [[http://opensolaris.org/|OpenSolaris-x64]] || || osol-x86 || {OK} Thanks to the [[http://opensolaris.org|opensolaris.org]] project for donating a test zone ||
+|| [[http://opensolaris.org/|OpenSolaris-sparc]] || || osol-sparc || {OK} Thanks to the [[http://opensolaris.org|opensolaris.org]] project for donating a test zone ||
 || [[http://www.microsoft.com/windows/default.aspx|MS Windows]] || || || Need license for OS & dev-tools ||
 || [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || || || Volunteers sought ||
 
