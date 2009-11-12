@@ -1,3 +1,4 @@
+## page was renamed from KnowledgBase/Debian
 ##master-page:KnowledgeBaseTemplate
 #format wiki
 #language en
