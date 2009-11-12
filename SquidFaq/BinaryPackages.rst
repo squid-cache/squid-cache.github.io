@@ -53,6 +53,10 @@ Maintainers: https://admin.fedoraproject.org/pkgdb/packages/name/squid
 === FreeBSD ===
 Binaries for Alpha and Intel platforms, from the FreeBSD ports collection. http://www.freebsd.org/cgi/ports.cgi?query=^squid-&stype=name
 
+{{{
+ yum install squid
+}}}
+
 === Gentoo ===
 '''Maintainer:''' Alin Năstac
 
