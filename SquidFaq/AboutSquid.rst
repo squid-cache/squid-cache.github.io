@@ -60,11 +60,11 @@ is known to work on at least the following platforms:
   * NetBSD
   * NeXTStep
   * OpenBSD
-  * SunOS/Solaris
+  * SunOS
 
 '''Linux:'''
   * CentOS
-  * Debian
+  * [[KnowledgeBase/Debian|Debian]]
   * Fedora Core
   * Gentoo
   * RedHat Enterprise Linux
@@ -86,6 +86,7 @@ is known to work on at least the following platforms:
 
 '''Other:'''
   * OS/2
+  * Solaris
 
 
 If you encounter any platform-specific problems, please let us know by registering an entry in our [[http://bugs.squid-cache.org/|bug database]].
