@@ -15,39 +15,22 @@ plan to use for caching.
 
 == How do I install Squid? ==
 
-=== on Debian / Ubuntu ===
+From [[SquidFaq/BinaryPackages|Binary Packages]] if available for your operating system.
 
-'''Squid-2''':
-{{{
-apt-get install squid
-}}}
+Or from Source Code.
 
-'''Squid-3''':
-{{{
-apt-get install squid3
-}}}
-
-=== on FreeBSD ===
-{{{
-yum install squid
-}}}
-
-=== from Source Code ===
-After
-../CompilingSquid, you can install it
-with this simple command:
+After [[SquidFaq/CompilingSquid]], you can install it with this simple command:
 {{{
 % make install
 }}}
 
-If you have enabled ICMP or the [[../OperatingSquid|pinger]]
-then you will also want to type
+If you have enabled ICMP or the [[SqudidFaq/OperatingSquid|pinger]] then you will also want to type
 {{{
 % su
 # make install-pinger
 }}}
 
-After installing, you will want to read ../ConfiguringSquid to edit and customize Squid to run the way you want it to. 
+After installing, you will want to read [[SquidFaq/ConfiguringSquid]] to edit and customize Squid to run the way you want it to. 
 
 
 == How do I start Squid? ==
