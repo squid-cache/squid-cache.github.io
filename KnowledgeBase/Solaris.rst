@@ -18,7 +18,7 @@ Configuration files will then be stored in {{{/etc/squid}}}, user-accessible exe
 
 In order to successfully build squid on Solaris, a complete build-chain has to be available.
 
-=== Squid-3.x ===
+==== Squid-3.x ====
 
 In order to successfully build squid, a few GNU-related packages need to be available. Unfortunately, not all of the software is available on a stock Solaris install.
 
@@ -47,7 +47,7 @@ to
 }}}
 Cleaner fixes will be developed as soon as they can reasonably be found.
 
-=== Squid-2.x and older ===
+==== Squid-2.x and older ====
 
 The following error occurs on Solaris systems using gcc when the Solaris C
 compiler is not installed:
