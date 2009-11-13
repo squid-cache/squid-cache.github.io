@@ -228,10 +228,11 @@ From Squid 3.1 the log directory and PID file location are also configurable. Th
 }}}
 
 
-=== FreeBSD, NetBSD, OpenBSD ===
+=== NetBSD, OpenBSD ===
 
-Squid is developed on FreeBSD. The general build instructions above should be all you need.
+see FreeBSD.
 
+<<Include(KnowledgeBase/FreeBSD,"FreeBSD",3,from="^== Building Squid on FreeBSD ==$", to="^== ")>>
 
 === RedHat Enterprise Linux ===
 
