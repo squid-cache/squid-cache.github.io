@@ -73,6 +73,10 @@ cd squid-2.6.STABLE14
 zcat /tmp/squid-2.6.STABLE13-STABLE14.diff.gz | patch -p1
 }}}
 
+ {i} Squid-2 patches require the '''-p1''' option.
+
+ {i} Squid-3 patches require the '''-p0''' option.
+
 After the patch has been applied, you must rebuild Squid from the
 very beginning, i.e.:
 {{{
@@ -314,28 +318,7 @@ Now, '''don't forget to set EMXOPT before running squid each time'''. I
 recommend using the -Y and -N options.
 
 
-=== Solaris ===
-
-Many squid are running well on Solaris. There is just one known problem encountered when building.
-
-The following error occurs on Solaris systems using gcc when the Solaris C
-compiler is not installed:
-{{{
-/usr/bin/rm -f libmiscutil.a
-/usr/bin/false r libmiscutil.a rfc1123.o rfc1738.o util.o ...
-make[1]: *** [libmiscutil.a] Error 255
-make[1]: Leaving directory `/tmp/squid-1.1.11/lib'
-make: *** [all] Error 1
-}}}
-
-Note on the second line the ''/usr/bin/false''.   This is supposed
-to be a path to the ''ar'' program.  If ''configure'' cannot find ''ar''
-on your system, then it substitues ''false''.
-
-To fix this you either need to:
-
-  * Add ''/usr/ccs/bin'' to your PATH.  This is where the ''ar'' command should be.  You need to install SUNWbtool if ''ar'' is not there.  Otherwise,
-  * Install the '''binutils''' package from [[ftp://ftp.gnu.org/gnu/binutils|the GNU FTP site]]. This package includes programs such as ''ar'', ''as'', and ''ld''.
+<<Include(KnowledgeBase/Solaris,"Solaris",3,from="^== Building Squid on Solaris ==$", to="^== ")>>
 
 
 === Other Platforms ===
@@ -361,34 +344,6 @@ Probably you have bind 8.x installed.
 
 '''UPDATE:''' That version of bind is now officially obsolete and known to be vulnerable to a critical infrastructure flaw. It should be upgraded to bind 9.x or replaced as soon as possible.
 
-## by Kevin Sartorelli (<<MailTo(SarKev AT topnz DOT ac DOT nz)>>)
-## and Andreas Doering (<<MailTo([doering AT usf DOT uni-kassel DOT de)>>).
-## 
-## Probably you've recently installed bind 8.x.  There is a mismatch between
-## the header files and DNS library that Squid has found.  There are a couple
-## of things you can try.
-## 
-## First, try adding ''-lbind'' to ''XTRA_LIBS''  in ''src/Makefile''.
-## If ''-lresolv'' is already there, remove it.
-## 
-## If that doesn't seem to work, edit your ''arpa/inet.h'' file and comment out the following:
-## 
-## {{{
-## #define inet_addr               __inet_addr
-## #define inet_aton               __inet_aton
-## #define inet_lnaof              __inet_lnaof
-## #define inet_makeaddr           __inet_makeaddr
-## #define inet_neta               __inet_neta
-## #define inet_netof              __inet_netof
-## #define inet_network            __inet_network
-## #define inet_net_ntop           __inet_net_ntop
-## #define inet_net_pton           __inet_net_pton
-## #define inet_ntoa               __inet_ntoa
-## #define inet_pton               __inet_pton
-## #define inet_ntop               __inet_ntop
-## #define inet_nsap_addr          __inet_nsap_addr
-## #define inet_nsap_ntoa          __inet_nsap_ntoa
-## }}}
 
 ##end
 ----
