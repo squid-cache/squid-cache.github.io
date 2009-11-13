@@ -54,7 +54,7 @@ is known to work on at least the following platforms:
 '''BSD:'''
   * BSDI
   * DragonflyBSD
-  * FreeBSD
+  * [[KnowledgeBase/FreeBSD|FreeBSD]]
   * GNU/kFreeBSD
   * Mac OS/X
   * NetBSD
