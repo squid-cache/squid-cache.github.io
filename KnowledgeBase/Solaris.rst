@@ -8,31 +8,31 @@
 
 == Pre-Built Binary Packages ==
 
-Squid 2 is distributed as part of the standard Solaris packages repository. To install it, simply use (as root)
+Squid-2 is distributed as part of the standard Solaris packages repository. To install it, simply use (as root)
 {{{
-pkg install SUNWsquid
+ pkg install SUNWsquid
 }}}
 Configuration files will then be stored in {{{/etc/squid}}}, user-accessible executables such as squidclient in {{{/usr/bin}}}, while the main squid executable will be in {{{/usr/squid/sbin}}}.
 
 == Building Squid on Solaris ==
 
-In order to successfully build squid on solaris, a complete build-chain has to be available. In order to set up a build-farm host, further support tools are needed.
+In order to successfully build squid on Solaris, a complete build-chain has to be available.
 
-|| /!\ || This article refers to Squid 3. Squid 2 may have slightly different requirements ||
+=== Squid-3.x ===
 
 In order to successfully build squid, a few GNU-related packages need to be available. Unfortunately, not all of the software is available on a stock Solaris install.
 
 What you need is:
 {{{
-pkg install SUNWgnu-coreutils SUNWgtar SUNWgm4 SUNWgmake SUNWlxml  SUNWgsed
+ pkg install SUNWgnu-coreutils SUNWgtar SUNWgm4 SUNWgmake SUNWlxml  SUNWgsed
 }}}
 and of course a compiler. You can choose between
 {{{
-pkg install SUNWgcc
+ pkg install SUNWgcc
 }}}
 and 
 {{{
-pkg install sunstudioexpress SUNWbtool
+ pkg install sunstudioexpress SUNWbtool
 }}}
 
 Unfortunately the {{{/usr/include/kerberosv5/com_err.h}}} system-include file sports a #pragma directive which is not compatible with gcc. A possible fix is to change the line 
@@ -46,6 +46,27 @@ to
 #endif
 }}}
 Cleaner fixes will be developed as soon as they can reasonably be found.
+
+=== Squid-2.x and older ===
+
+The following error occurs on Solaris systems using gcc when the Solaris C
+compiler is not installed:
+{{{
+/usr/bin/rm -f libmiscutil.a
+/usr/bin/false r libmiscutil.a rfc1123.o rfc1738.o util.o ...
+make[1]: *** [libmiscutil.a] Error 255
+make[1]: Leaving directory `/tmp/squid-1.1.11/lib'
+make: *** [all] Error 1
+}}}
+
+Note on the second line the ''/usr/bin/false''.   This is supposed
+to be a path to the ''ar'' program.  If ''configure'' cannot find ''ar''
+on your system, then it substitutes ''false''.
+
+To fix this you either need to:
+
+  * Add ''/usr/ccs/bin'' to your PATH.  This is where the ''ar'' command should be.  You need to install SUNWbtool if ''ar'' is not there.  Otherwise,
+  * Install the '''binutils''' package from [[ftp://ftp.gnu.org/gnu/binutils|the GNU FTP site]]. This package includes programs such as ''ar'', ''as'', and ''ld''.
 
 
 == Building from VCS ==
