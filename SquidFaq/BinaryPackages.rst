@@ -49,13 +49,7 @@ Binary RPMs for Fedora are available via the Fedora download/update servers for 
 Maintainers: https://admin.fedoraproject.org/pkgdb/packages/name/squid
 
 
-
-=== FreeBSD ===
-Binaries for Alpha and Intel platforms, from the FreeBSD ports collection. http://www.freebsd.org/cgi/ports.cgi?query=^squid-&stype=name
-
-{{{
- yum install squid
-}}}
+<<Include(KnowledgeBase/FreeBSD,"FreeBSD",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 
 === Gentoo ===
 '''Maintainer:''' Alin Năstac
