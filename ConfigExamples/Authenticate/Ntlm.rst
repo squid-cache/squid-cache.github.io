@@ -112,7 +112,7 @@ gpasswd -a proxy winbindd_priv
 
  /!\ Remove the cache_effective_group setting in squid.conf, if present.  This setting causes squid to ignore the auxiliary winbindd_priv group membership.
 
- {i} the default user Squid is bundled as ''nobody''' though some distribution packages are built with '''squid''' or '''proxy''' or other similar low-access user.
+ {i} the default user Squid is bundled as '''nobody''' though some distribution packages are built with '''squid''' or '''proxy''' or other similar low-access user.
 
 == Squid Configuration ==
 
