@@ -57,7 +57,7 @@ This is currently being done by AmosJeffries with the assistance of the BuildFar
 ## AIX: anyone?
 ## Slackware: anyone?
 
-  If you know of other package maintainers not listed above please bring them to my attention. I want the to be a part of this project, to gain from their experience and skills.
+  If you know of other package maintainers not listed above please bring them to my attention. I want them to be a part of this project, to gain from their experience and skills.
 
 === Stuff Waiting: ===
 
