@@ -4,9 +4,17 @@
 
 == C++ source formatting guidelines ==
 
- * 4-space indentation, no tabs
  * We have an ''astyle'' wrapper that formats the code without breaking it.
  * If you have astyle version 1.22 or later please format your changes with ~/scripts/formater.pl
+ * This formatter is run regularly over the entire code to enforce certain checkable guidelines.
+
+ENFORCED:
+ * 4-space indentation, no tabs
+ * no trailing whitespace on '''any''' line
+ * one space between '''if''' and its parameter '''()''' brackets
+ * construct open braces '''{''' begin on the same line as their construct (if, while)
+
+NP: The formatter is known to enforce some weird indentation at times. Notably after #if ... #endif directives. If you find these, please ignore for now. They will be corrected in a later version of the formatter.
 
 == Mandatory coding rules ==
 
