@@ -141,6 +141,11 @@ Squid uses autoconf defined macros to eliminate experimental or optional compone
 ENFORCED:
  * MUST be used inside .h to wrap relevant code.
 
+== Makefile substitution variables ==
+
+ENFORCED:
+ * Makefile.am must use the $(FOO) form for autoconf variables passed with AC_SUBST(FOO).
+
 == File naming ==
 
   * .h files should only declare one class or a collection of simple, closely related classes.
