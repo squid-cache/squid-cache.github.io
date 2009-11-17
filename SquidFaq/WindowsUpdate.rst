@@ -2,11 +2,27 @@
 <<TableOfContents>>
 
 ##begin
+== How do I make Windows Updates cache? ==
+
+Windows Update generally (but not always) uses HTTP Range-Offsets' (AKA file partial ranges) to grab pieces of the Microsoft Update archive in parallel or using a random-access algorithm trying to reduce the web traffic. Some versions of Squid do not handle or store Ranges very well yet.
+
+A mix of configuration options are required to force caching of range requests. Particularly when large objects are involved.
+
+ * '''SquidConf:range_offset_limit'''. Use '''-1''' To always pull the entire file from the start when a range is requested.
+ * '''SquidConf:maximum_object_size'''. Default value is a bit small. It needs to be somewhere 100MB or higher to cope with the IE updates.
+ * '''SquidConf:quick_abort_min'''. May need to be altered to allow the full object to download when the client software disconnects. Some Squid releases let range_offset_limit override properly, some have weird behavior when combined.
+
+{{{
+range_offset_limit -1
+maximum_object_size 200 MB
+quick_abort_min -1
+}}}
+
+ {i} Due to the problem below we do not recommend service packs be handled specially.
+
 == Why does it go so slowly through Squid? ==
 
-Windows Update apparently uses HTTP Range-Offsets' (AKA file partial ranges) to grab pieces of the Microsoft Update archive in parallel or using a random-access algorithm trying to reduce the web traffic. Some versions of Squid do not handle or store Ranges very well yet.
-
-The work-around used by many cache maintainers has been to set the '''SquidConf:range_offset_limit -1'''. Meaning that squid is configured to always pull the entire file from the start when a range is requested.
+The work-around used by many cache maintainers has been to set the above config and force Squid to fetch the whole object when a range request goes through.
 
  {i} Compounding the problem and ironically causing some slowdowns is the fact that some of the Microsoft servers may be telling your Squid not to store the archive file. This means that Squid will pull the entire archive every time it needs any small piece.
 
