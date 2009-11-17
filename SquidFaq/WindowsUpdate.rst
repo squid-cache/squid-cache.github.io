@@ -18,7 +18,7 @@ maximum_object_size 200 MB
 quick_abort_min -1
 }}}
 
- {i} Due to the problem below we do not recommend service packs be handled specially.
+ {i} Due to the problem below we recommend service packs be handled specially.
 
 == Why does it go so slowly through Squid? ==
 
