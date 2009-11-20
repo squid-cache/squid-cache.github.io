@@ -40,5 +40,7 @@ It would be useful to refactor and comment it, dividing it in sections, with thi
  1. structures
  1. other stuff
 
+RobertCollins suggests to also include making use of [[https://edge.launchpad.net/pandora-build|Pandora Build]], a set of cross-project and cross-system configuration resources.
+
 ----
 CategoryFeature
