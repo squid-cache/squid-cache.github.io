@@ -38,7 +38,7 @@ Key:
 ||  || ''shaping/'' || Traffic shaping and delay pools || *[Dd]elay.* *[Pp]ool*.* ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || (./) || ''adaptation/ecap/'' || eCAP support || - ||
-|| :/ || ''esi/'' || ESI support || ESI* || Add Esi namespace, rename classes ||
+|| :\ || ''esi/'' || ESI support || ESI* || Add Esi namespace, rename classes ||
 || (./) || ''eui/'' || EUI-48 / MAC / ARP operations || pieces from acl/Arp.cc ||
 || :\ || ''fs/'' || file system-specific cache store support? || fs/* || Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
@@ -46,7 +46,7 @@ Key:
 || :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* || C++ convert net_db*, Add Icmp namespace and rename classes ||
 || :\ || ''ident/'' || Ident support || ident.* || Make remote connection handling into an AsyncJob||
 || :\ || ''ip/'' || IP Protocol || Ip* Qos* || Add Ip Namespace and rename classes ||
-|| {2} || ''logs/'' || Logging components || Log* access_log.* (later: logdaemon) ||
+|| {2} || ''logs/'' || Logging components || Log* access_log.* *log.cc ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
@@ -61,6 +61,7 @@ This section is used to edit and finalize the grouping of source files important
 || || basic_auth/ || SquidConf:auth_param basic ||
 || || digest_auth/ || SquidConf:auth_param digest ||
 || || external_acl/ || SquidConf:external_acl_type ||
+|| || log_daemon/ || SquidConf:logfile_daemon ||
 || || negotiate_auth/ || SquidConf:auth_param negotiate ||
 || || ntlm_auth/ || SquidConf:auth_param ntlm ||
 || || url_rewrite/ || URL re-writers (SquidConf:url_rewrite_program) ||
