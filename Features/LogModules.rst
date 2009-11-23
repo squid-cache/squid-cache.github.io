@@ -2,30 +2,26 @@
 #format wiki
 #language en
 
-= Feature: Log Daemon for Squid3 =
+= Feature: Log Daemon for Squid-3 =
 
- * '''Goal''': Finish porting Squid2 Log Daemon to Squid3.
+ * '''Goal''': Finish porting Squid-2 Log Daemon to Squid3.
 
- * '''Status''': Testing and Polishing
+ * '''Status''': completed. seeking additional daemon helpers to bundle with Squid.
 
- * '''ETA''': unknown
-
- * '''Version''': 3.1
+ * '''Version''': 3.2
 
  * '''Developer''': AdrianChadd (Squid-2), AmosJeffries (Squid-3 port)
 
  * '''Daemons''':
-   * syslog : built-in
+   * syslog : built-in where available.
+   * file system : bundled with relevant release.
+   * UDP receiver : none currently known to be available in the public domain.
    * MySQL : http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html
 
 
 == Squid3 status details ==
 
- * From AdrianChadd's email to squid-dev: The squid-2 stuff has been committed. The squid-3 stuff is a bit out of date but is a direct port from the squid-2 stuff, albeit wrapped up in a basic class interface. I'll wait until after Squid-3 is released and stable before committing it in time for Squid-3.1. Testing is obviously needed.
-
- * Port updated with patches found by Squid-2 usage testing. Structure revised for C++ objects in an API interface with module Instantiations. Testing is underway to see if it works to a usable standard.
-
- * Will need to be re-worked a bit to fit in with and build on the SourceLayout changes to logging.
+ * feature merged to 3.HEAD (for 3.2 release).
 
 == Squid2 information ==
 
