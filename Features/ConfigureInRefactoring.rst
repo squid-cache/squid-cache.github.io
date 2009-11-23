@@ -42,5 +42,14 @@ It would be useful to refactor and comment it, dividing it in sections, with thi
 
 RobertCollins suggests to also include making use of [[https://edge.launchpad.net/pandora-build|Pandora Build]], a set of cross-project and cross-system configuration resources.
 
+
+'''Case notes'''
+
+In order to further modularize configure.in it would be useful to split some helper definition files out of configure.in itself, to an included modular file. A name for such file is to be defined, at the moment it's named {{{squidinclude.m4}}}, to be included from {{{configure.in}}} (and not from {{{aclocal.m4}}}, because in this case 
+the inclusion would happen too soon).
+
+As a first attempt I've successfully extracted the AC_TEST_CHECKFORHUGEOBJECTS call, which is now much cleaner and well layered. It includes compiler detection, caching and a generic infrastructure for compiler arguments detection.
+
+
 ----
 CategoryFeature
