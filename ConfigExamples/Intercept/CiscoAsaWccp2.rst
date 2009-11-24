@@ -45,6 +45,8 @@ Bypass the Squid box from re-capture
 {{{
  access-list wccp_redirect extended deny ip host $SQUID-IP any
 }}}
+Note: This shouldn't be required, because the asa would build this rule itself, when adding the squid box.
+
 ... while capturing the local /24 network defined by "workstations".
 {{{
  access-list wccp_redirect extended permit tcp workstations 255.255.255.0 any eq www
