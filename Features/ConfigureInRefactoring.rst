@@ -68,6 +68,9 @@ Variable names can fall in different categories:
  1. Variables to be substituted in Makefile.am's etc.: {{{ALL_UPPERCASE}}} (and try to avoid clashes ;) )
 
 
+== Other stuff to be fixed ==
+
+Trunk currently fails to build with linking errors if CFLAGS and CXXFLAGS are set as configure argument. The reason for this will have to be found and fixed.
 
 ----
 CategoryFeature
