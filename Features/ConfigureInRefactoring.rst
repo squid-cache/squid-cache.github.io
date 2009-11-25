@@ -65,9 +65,6 @@ Variable names can fall in different categories:
   :: whatever the user-visible option (enable/disable), these variables should not be in the negative. default-handling is to be handled as part of the option processing.
  1. Variables to be substituted in Makefile.am's etc.: {{{ALL_UPPERCASE}}} (and try to avoid clashes ;) )
 
-== Custom macros ==
-
-
 
 
 ----
