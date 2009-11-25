@@ -24,7 +24,7 @@
 
  * '''Developer''': FrancescoChemolli
 
- * '''More''': 
+ * '''More''':  https://code.launchpad.net/~kinkie/squid/autoconf-refactor
 
 
 = Details =
