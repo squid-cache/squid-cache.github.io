@@ -34,6 +34,7 @@ It would be useful to refactor and comment it, dividing it in sections, with thi
 
  1. auxiliary software available on the host system (including cc)
  1. system-dependent variations and parameters on said software
+ 1. configure arguments handling
  1. available libraries
  1. available headers
  1. available types
@@ -42,13 +43,31 @@ It would be useful to refactor and comment it, dividing it in sections, with thi
 
 RobertCollins suggests to also include making use of [[https://edge.launchpad.net/pandora-build|Pandora Build]], a set of cross-project and cross-system configuration resources.
 
+== Overview ==
+In order to further modularize configure.in it would be useful to split some helper definition files out of configure.in itself, to an included set modular files.
+Those file will be defined as {{{acinclude/*.m4}}}, and included from configure.in AFTER autoconf's initialization.
 
-'''Case notes'''
+== Namespaces and naming conventions ==
 
-In order to further modularize configure.in it would be useful to split some helper definition files out of configure.in itself, to an included modular file. A name for such file is to be defined, at the moment it's named {{{squidinclude.m4}}}, to be included from {{{configure.in}}} (and not from {{{aclocal.m4}}}, because in this case 
-the inclusion would happen too soon).
+Custom macros will have as their name structured as {{{SQUID_<COMPONENT>_<ACTION>_<OBJECTIVE>}}} where
+ . COMPONENT is the target component to be checked (e.g. CC, CXX, OS ...)
+ . ACTION can be one of: 
+   1. CHECK
+     :: test whether something is present or working. The expected result to be deposited in a variable is "yes" or "no
+   1. GUESS
+     :: try to determine a parameter or path. The expected result is a multiple-selection value, with "none" used as a "can't find/determine" output. The possible output values MUST be documented in the macro header.
+ . OBJECTIVE is a variable string, detailing the purpose of the test
 
-As a first attempt I've successfully extracted the AC_TEST_CHECKFORHUGEOBJECTS call, which is now much cleaner and well layered. It includes compiler detection, caching and a generic infrastructure for compiler arguments detection.
+Variable names can fall in different categories:
+ 1. Test output variables: {{{$squid_[cv_]test_objective_in_lowercase}}}
+ 1. Variables holding configure options: {{{$squid_opt_optionname}}}
+  :: they are multi-valued, containing "yes" (want, build fail if can't build), "no" (absolutely don't want) or "auto"(yes if available, detect)
+  :: whatever the user-visible option (enable/disable), these variables should not be in the negative. default-handling is to be handled as part of the option processing.
+ 1. Variables to be substituted in Makefile.am's etc.: {{{ALL_UPPERCASE}}} (and try to avoid clashes ;) )
+
+== Custom macros ==
+
+
 
 
 ----
