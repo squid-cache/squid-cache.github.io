@@ -43,6 +43,8 @@ It would be useful to refactor and comment it, dividing it in sections, with thi
 
 RobertCollins suggests to also include making use of [[https://edge.launchpad.net/pandora-build|Pandora Build]], a set of cross-project and cross-system configuration resources.
 
+AmosJeffries has investigated Pandora and found most of the tools very python and ruby centric. There are few macros provided we can use without some makeover to make them portable enough to use on the systems Squid builds on.
+
 == Overview ==
 In order to further modularize configure.in it would be useful to split some helper definition files out of configure.in itself, to an included set modular files.
 Those file will be defined as {{{acinclude/*.m4}}}, and included from configure.in AFTER autoconf's initialization.
