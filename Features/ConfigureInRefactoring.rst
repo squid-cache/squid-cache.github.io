@@ -12,7 +12,7 @@
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': configure.in has grown in time into a big messy bundle, making it very hard to act on it in a sensible manner. It needs to be reduced to something sane again.
 
- * '''Status''': ''Not started''
+ * '''Status''': ''Started''
 
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
