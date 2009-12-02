@@ -20,9 +20,9 @@ Details on how to do that are covered in:
 
 Create and ACL for checking the group access:
 {{{
-external_acl_type NT_Group %LOGIN /usr/local/squid/libexec/wbinfo_group.pl
+external_acl_type testForNTGroup %LOGIN /usr/local/squid/libexec/wbinfo_group.pl
 
-acl group1 external NT_Group group1
+acl group1 external testForNTGroup someGroupName
 }}}
 
 and to use the ACL as you would any other authentication ACL
