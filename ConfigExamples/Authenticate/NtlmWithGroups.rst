@@ -22,12 +22,12 @@ Create and ACL for checking the group access:
 {{{
 external_acl_type testForNTGroup %LOGIN /usr/local/squid/libexec/wbinfo_group.pl
 
-acl group1 external testForNTGroup someGroupName
+acl inGroupX external testForNTGroup someGroupNameX
 }}}
 
 and to use the ACL as you would any other authentication ACL
 {{{
-http_access allow group1
+http_access allow inGroupX
 }}}
 
 
