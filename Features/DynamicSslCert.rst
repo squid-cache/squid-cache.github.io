@@ -39,12 +39,12 @@ To avoid mismatch (B), the !DynamicSslCert feature concentrates on generating si
 Here is the quick guide of how to make Dynamic SSL Certificate Generation feature work with your Squid installation. This simple document does not include all possible configurations.
 
 
-=== Compile Squid ===
+=== Build Squid ===
 
 Add SSL Bump and certificate generation options when building Squid. Dynamic generation of SSL certificates is not enabled by default:
 
  {{{
-./configure --prefix=/usr/local/squid --enable-ssl --enable-ssl-crtd
+./configure --enable-ssl --enable-ssl-crtd ...
 make all
 make install
  }}}
