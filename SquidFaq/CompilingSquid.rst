@@ -166,29 +166,8 @@ You may need to upgrade your gcc installation to a more recent version. Check yo
 }}}
 If it is earlier than 2.7.2, you might consider upgrading. Gcc 2.7.2 is very old and not widely supported.
 
-=== Cygwin (Windows) ===
-
-In order to compile Squid, you need to have Cygwin fully installed.
-
- /!\ WCCP is not available on Windows so the following configure options are needed to disable them:
-{{{
-  --disable-wccp
-  --disable-wccpv2
-}}}
-
-|| {i} ||Squid will by default, install into ''/usr/local/squid''. If you wish to install somewhere else, see the ''--prefix'' option for configure.||
-
-Now, add a new Cygwin user - see the Cygwin user guide - and map it to SYSTEM, or create a new NT user, and a matching Cygwin user and they become the squid runas users.
-
-Read the squid FAQ on permissions if you are using CYGWIN=ntsec.
-
-After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
-
-Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. You may need to check permissions here.
-
-
-<<Include(KnowledgeBase/Debian,,from="^==\ Compiling\ ==$",to="^\=\=\ ")>>
-
+<<Include(KnowledgeBase/Windows,"Cygwin (Windows)",3,from="^==\ Compiling\ with\ Cygwin\ ==$",to="^==\ ")>>
+<<Include(KnowledgeBase/Debian,"Debian",3,from="^==\ Compiling\ ==$",to="^==\ ")>>
 
 === NetBSD, OpenBSD ===
 
@@ -211,39 +190,7 @@ The following ./configure options install Squid into the RedHat structure proper
 
 || /!\ || SELinux on RHEL 5 does not give the proper context to the default SNMP port (3401) (as of selinux-policy-2.4.6-106.el5) .  The command "semanage port -a -t http_cache_port_t -p udp 3401" takes care of this problem (via http://tanso.net/selinux/squid/).||
 
-
-=== MinGW (Windows) ===
-
-In order to compile squid using the MinGW environment, the packages MSYS, MinGW and msysDTK must be installed. Some additional libraries and tools must be downloaded separately:
-
- * OpenSSL: [[http://www.slproweb.com/products/Win32OpenSSL.html|Shining Light Productions Win32 OpenSSL]]
- * libcrypt: [[http://sourceforge.net/projects/mingwrep/|MinGW packages repository]]
- * db-1.85: [[http://tiny-cobol.sourceforge.net/download.php|TinyCOBOL download area]]
- * uudecode: [[http://unxutils.sourceforge.net/|Native Win32 ports of some GNU utilities]]
-
- {i} 3.0+ releases do not require uudecode.
-
-Unpack the source archive as usual and run configure.
-
-The following are the recommended minimal options for Windows:
-{{{
---prefix=c:/squid
---disable-wccp
---disable-wccpv2
---enable-win32-service
---enable-default-hostsfile=none
-}}}
-
-Then run make and install as usual.
-
-Squid will install into ''c:\squid''. If you wish to install somewhere else, change the ''--prefix'' option for configure.
-
-After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
-
-Now, to run Squid as a Windows system service, run ''squid -n'', this will create a service named "Squid" with automatic startup. To start it run ''net start squid'' from command line prompt or use the Services Administrative Applet.
-
-Always check the provided release notes for any version specific detail.
-
+<<Include(KnowledgeBase/Windows,"MinGW (Windows)",3,from="^==\ Compiling\ with\ MinGW\ ==$",to="^==\ ")>>
 
 === OS/2 ===
 
