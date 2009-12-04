@@ -9,38 +9,9 @@ The squid core team members do not have the resources to make pre-compiled binar
 == How do I install a binary for ... ==
 Most operating system distributions provide packages in the formats appropriate for direct install on those systems. Please thank them.
 
-=== Debian ===
-Packages available for Squid on multiple architectures.
 
-'''Maintainer:''' Luigi Gangitano
+<<Include(KnowledgeBase/Debian,"Debian",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 
-==== Squid-3.1 ====
-Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3;dist=unstable
-
- /!\ This package is currently only available for download from the '''experimental''' repositories. http://packages.debian.org/experimental/squid3
-
-Install Procedure:
-
-{{{
- apt-get install squid3
-}}}
-
-==== Squid-3.0 ====
-Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3;dist=unstable
-
-Install Procedure:
-
-{{{
- apt-get install squid3
-}}}
-==== Squid-2.7 ====
-Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid;dist=unstable
-
-Install Procedure:
-
-{{{
- apt-get install squid
-}}}
 === Fedora ===
 http://download.fedora.redhat.com/pub/fedora/linux/
 
@@ -144,10 +115,9 @@ Install Procedure:
 {{{
  apt-get install squid3
 }}}
-=== Windows ===
-Native port maintained by Guido Serassio of [[http://www.acmeconsulting.it/|Acme Consulting S.r.l.]]
 
- . '''Squid-2.6, Squid-2.7, Squid-3.0:''' Binaries for Windows NT/2000/XP/2003 are at http://squid.acmeconsulting.it/
+
+<<Include(KnowledgeBase/Windows,"Windows",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 
 ##end
 ----
