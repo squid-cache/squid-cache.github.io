@@ -60,6 +60,7 @@ abuse_detected = 0, request_sent = 0, front_end_https = 0, originpeer = 0}) at
 http.c:1195
 ...
 }}}
+if you find the trace contains a lot of lines with '''??''' and mentions no symbols found. It is usually useless and you will need to run a version of Squid where the debug symbols have not been removed.
  * Threads and Linux
   . On Linux, threaded applications do not generate core dumps.  When you use the aufs cache_dir type, it uses threads and you can't get a coredump.
  * It did leave a coredump file, you just can't find it.
