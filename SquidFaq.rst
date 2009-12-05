@@ -28,14 +28,16 @@
 
 ===== Troubleshooting =====
  * /TroubleShooting gives a few hints on what to do when squid fails or misbehaves
+ * KnowledgeBase: Covers how things are supposed to work and what to look out for.
+  * Includes specific help guides for supported operating systems.
+ * ConfigExamples: Gives detailed configurations in case you have missed something
  * /SystemWeirdnesses shows how to expect some operating-system-dependent unexpected behaviors
  * /ToomanyMisses: why more than just a few TCP_SWAPFAIL_MISS
  * /WindowsUpdate: configuring squid to pass Windows Update
  * [[/AddACacheDir]]: hints on how to increase a cache's capacity
  * /ClearingTheCache: how to wipe your entire disk cache in one easy step
  * [[/RAID]]: Why Squid and RAID play nasty together and what to do about it.
- * [[KnowledgeBase]]: Covers how things are supposed to work and what to look out for
- * [[ConfigExamples]]: Gives detailed configurations in case you have missed something
+ * /BugReporting: if all else fails, how to report bugs to the Squid team.
 
 ==== Performance Tuning ====
  * /SystemSpecificOptimizations has a few OS-specific tips for performance tuning
