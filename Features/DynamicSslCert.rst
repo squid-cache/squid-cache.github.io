@@ -6,9 +6,9 @@
 
  * '''Goal''': Reduce the number of "certificate mismatch" browser warnings when impersonating a site using the [[Features/SslBump|SslBump]] feature
 
- * '''Status''': primary development phases completed; waiting for sponsor payment to release the code
+ * '''Status''': primary development phases completed; working on trunk submission
 
- * '''ETA''': Unknown
+ * '''ETA''': January 2010
 
  * '''Version''': v3.2
 
@@ -16,7 +16,9 @@
 
  * '''Developer''': AlexRousskov, Andrew Balabohin
 
- * '''More''': Requires [[Features/SslBump|SslBump]], development [[https://code.launchpad.net/~rousskov/squid/DynamicSslCert|branch]]
+ * '''More''': Requires [[Features/SslBump|SslBump]]
+
+## , development [[https://code.launchpad.net/~rousskov/squid/DynamicSslCert|branch]]
 
 = Details =
 
