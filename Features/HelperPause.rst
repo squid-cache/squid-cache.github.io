@@ -30,5 +30,14 @@ A yet another alternative is to convert redirectors to use *CAP-like internal AP
 
 Please discuss these issues before starting development.
 
+
+=== UPDATE: This issue has been further complicated. ===
+
+There was a 'busy' state in the stateful helpers previously to indicate a similar waiting. This was found to accumulate far too many helpers at periods and block up the total load Squid could handle. It has now been dropped from 3.1 to resolve those issues.
+
+=== UPDATE: There is now an alternative to pausing ===
+
+The on-demand starting of new helpers from 3.2 can be leveraged to do this in a far simpler design. By having helpers simply stop running when their config becomes old. Squid will start new helpers as load requires and helpers only need load config on startup.
+
 ----
 CategoryFeature CategoryWish
