@@ -26,5 +26,9 @@ e.g. {{{ squid -c 'http_port 80 vhost defaultsite=foo' -c 'debug_options ALL,2' 
 We'd need to define what's the best behaviour on reconfigure and how to obtain it.
 Please discuss :)
 
+
+== Update: ==
+AmosJeffries: The SquidConf:include directive was created for this purpose (see [[Features/ConfigIncludes]]). A miniature config file containing just the local instance settings and a SquidConf:include can be passed to the new Squid instance using a single -f option.
+
 ----
 CategoryFeature
