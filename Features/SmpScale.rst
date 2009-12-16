@@ -23,7 +23,38 @@ We need to isolate CPU-intensive Squid functionality into mostly independent log
 
 The implementation speed will depend on funding available for this project.
 
+== Architecture ==
+
+The project developers have been through a long discussion process and agreed that a multi-layered SMP approach will be the best way to implement SMP within Squid.
+
+=== 1. Top Layer: master instance with multiple children ===
+
+Administrators needing to run Squid on large scale SMP systems are already manually configuring multiple instances of Squid to run in parallel. We feel this is justification to say the approach is feasible. Some work needs to be done to make these configurations far simpler and more automated.
+
+A mixture of features already added and some few new ones can be adapted to result in a Squid where administrators configure and run one instance that spawns multiple others to reach nearly full potential of the available hardware.
+
+Initially these instances may share nothing of their running data and storage caches. Over time as the lower layers are developed there may become some interactions between instances for efficient caching and handling.
+
+=== 2. Mid Layer: threaded processes ===
+
+The mid-layer of the final SMP architecture is to be a process handling a mixture of operations in multiple threads. The existing binary needs a lot of work done to identify what portions are suitable for becoming individual threads and cleanup of the code for that to be implemented.
+
+Some components may be isolated to become individual application processes.
+
+This portion of the development is known to be very large and is expected to occur gradually over many releases. Work on this began with early Squid-2 releases and is ongoing.
+
+The interfaces for helper processes handling disk deletions, ICMP, authentication and URL re-writing are part of this layer.
+
+=== 3. Lowest Layer: multiple event and signal driven threads ===
+
+At the lowest layer within each thread of operations the current design of non-blocking events is to be retained. This has proven to be of great efficiency in scaling already.
+
+Work on this is joint with work on the mid-layer. Identifying groups of events which can be run as a thread with minimal interaction with other threads. The approach of having each thread pull data in and run many segments of events on it is preferable to starting and stopping threads frequently.
+
+Currently existing pathways of processing need to be audited and some may need alterations to reduce resource interactions.
+
 == Progress and Dependencies ==
+
  This constitutes how the Squid-3 maintainer sees the current work flowing towards SMP support. There are likely to be problems and unexpected things encountered at every turn.
 
  http://www.squid-cache.org/Devel/papers/threading-notes.txt while old still contains a good and valid analysis of the SMP problems inside Squid which must be hurdled.
