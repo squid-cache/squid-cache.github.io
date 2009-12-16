@@ -68,7 +68,7 @@ http://www.squid-cache.org/Versions/v3/3.1/
 = Squid 3.2 (HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will probably not happen sooner than June 2009 or February 2010, depending on who you ask.
+The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will probably not happen during February 2010.
 
 The intention is to remove the backlog of feature parity between 2.7 and 3.2 (listed as regressions in 3.1 http://www.squid-cache.org/Versions/v3/3.1/RELEASENOTES.html#s7) and concentrate on further performance and HTTP/1.1 improvements.
 
@@ -84,8 +84,8 @@ Basic new features in 3.2:
   * Fully transparent credential pass-thru
   * Kerberos login (proxy to proxy)
  * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
- * Helpers:
-  * New helpers to demo url_rewrite_program programs.
+ * New helpers to demo url_rewrite_program programs.
+ * Helpers started on-demand instead of delaying startup and reconfigure process.
  * EUI (MAC address) logging and external ACL handling
  * Dynamic URL generation for SquidConf:deny_info redirects
  * Multi-Lingual FTP directory listings
