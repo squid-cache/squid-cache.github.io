@@ -27,6 +27,7 @@
  * ESI processor: Assembling web pages. (cannot be used with other modes)
 
 ===== Troubleshooting =====
+ * /OrderIsImportant. The most common mistake ever made is to overlook this. Even experts do it.
  * /TroubleShooting gives a few hints on what to do when squid fails or misbehaves
  * KnowledgeBase: Covers how things are supposed to work and what to look out for.
   * Includes specific help guides for supported operating systems.
