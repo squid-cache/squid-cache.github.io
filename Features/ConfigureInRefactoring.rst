@@ -67,6 +67,36 @@ Variable names can fall in different categories:
   :: whatever the user-visible option (enable/disable), these variables should not be in the negative. default-handling is to be handled as part of the option processing.
  1. Variables to be substituted in Makefile.am's etc.: {{{ALL_UPPERCASE}}} (and try to avoid clashes ;) )
 
+== Documentation for extra macros and available variables ==
+
+=== Variables defined at the beginning of the process ===
+ $squid_host_os :: a simplified version of {{{$host_os}}}, it only contains the operating system name, ''without'' the version number. In general, the most known values are: ''linux-gnu'', ''solaris'', ''mingw'', ''cygwin'', ''irix''
+ $squid_host_os_version :: the version number extracted from {{{$host_os}}}. On MS-Windows it MAY be ''32'', but it should in general be ignored.
+
+=== Extra available Macros ===
+ SQUID_STATE_SAVE(state_name_prefix([,extra_vars_list]) :: checkpoints all relevant autoconf status variables (CFLAGS, LDFLAGS, etc.) in preparation of invasive checks. ''state_name_prefix'' must be suitable as a shell variable name. Extra variables to be saved may be specified, as a whitespace_separated variable names list.
+ SQUID_STATE_COMMIT(state_name_prefix) :: commits the changes saved since the last call to SQUID_STATE_SAVE, and deletes the associated temporary storage variables.
+ SQUID_STATE_ROLLBACK(state_name_prefix) :: reverts the autoconf state changes since the last call to SQUID_STATE_SAVE with the same prefix, and frees temporary storage. It is not necessary to specify the extra variables passed when saving state, they are retained automatically.
+ SQUID_LOOK_FOR_MODULES(base_dir,var_name) :: fills in {{{$var_name}}} with the whitespace-separated list of the subdirs of base_dir containing modules.
+ SQUID_CLEANUP_MODULES_LIST(var_name) :: removes duplicates from the modules list contained in {{{$var_name}}}. Modifies the variable in place.
+ SQUID_CHECK_EXISTING_MODULES(base_dir,var_name) :: checks that all modules in the whitespace-separated list of modules {{{$var_name}}} are actually modules contained in the base directory {{{base_dir}}}. Aborts configuration in case of error. For each module, also sets the variable {{{$var_name_modulename}}} to 'yes'.
+{{{
+Example:
+iomodules="disk net"
+modules_basedir="$srcdir/src/io_mods"
+SQUID_CHECK_EXISTING_MODULES($modules_basedir,[iomodules])
+
+will:
+1. check that $srcdir/src/io_mods/disk and $srcdir/src/io_mods/net
+   exist and are directories, abort if they're not
+2. set iomodules_disk and iomodules_net to "yes"
+}}}
+ SQUID_TOLOWER_VAR_CONTENTS(varname) :: lowercases $varname's contents
+ SQUID_TOUPPER_VAR_CONTENTS(varname) :: uppercases $varname's contents
+ SQUID_CC_CHECK_ARGUMENT(varname,flag) :: tests whether the compiler can handle the supplied flag. Sets {{{$varname}}} to either "yes" or "no"
+ SQUID_CXX_CHECK_ARG_FHUGEOBJECTS :: checks that the c++ compiler can handle the -fhuge-objects flag
+ SQUID_CC_GUESS_VARIANT :: checks what compiler the user is using. See the function definition for the list of detected compilers
+ SQUID_CC_GUESS_OPTIONS :: guesses the options accepted by the compiler to activat certain behaviours; sets ''$squid_cv_cc_option_werror'', ''$squid_cv_cc_option_wall'', ''$squid_cv_cc_option_optimize'', ''$squid_cv_cc_arg_pipe'' (variable names are gcc-inspired)
 
 == Other stuff to be fixed ==
 
