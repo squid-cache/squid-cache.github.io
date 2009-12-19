@@ -154,6 +154,16 @@ It allows to use pre-defined templates to facilitate deployment. Templates for s
 
 The OpenNMS site has a [[http://www.opennms.org/wiki/Squid_Data_Collection|complete tutorial]].
 
+= Future Work =
+
+The SNMP agent built into squid is very limited, as it is mostly SNMPv1. It should be improved, and hopefully OO-ified. ref Bug Bug:1300
+
+Would it be possible to use some external library, possibly in c++? e.g.
+ * [[http://www.agentpp.com/snmp_pp3_x/snmp_pp3_x.html|SNMP++]]
+ :: need to check if license is compatibile with GPL
+
+Many statistics and details inside squid are missing from the reports. They need to be added to the tree.
+
 -----
 Back to the SquidFaq
 
