@@ -19,10 +19,12 @@ Several people have volunteered their time to check and confirm translations to 
 || Bulgarian || bg || Evgeni Gechev ||
 || German || de || Constantin Rack and  Robert Förster ||
 || English || en, en-au, en-gb, en-us, en-nz || AmosJeffries (Squid Project) ||
+|| French || fr || Oliver W. ||
 || Persian || fa || Mohsen Saeedi (Fedora Project) ||
 || Italian || it || FrancescoChemolli (Squid Project) ||
 || Dutch (Nederland) || nl || Rene Wijninga ||
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
+|| Slovak || sk || ''Helix'' ||
 || Swedish || sv || HenrikNordstrom (Squid Project) ||
 ## || Turkish || tr || Umut Çinar ||
 || Others || || '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
