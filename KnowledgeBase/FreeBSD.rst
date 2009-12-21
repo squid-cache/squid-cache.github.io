@@ -57,11 +57,11 @@ Each port will prompt for configuration information for your Squid installation.
 [ ] SQUID_DELAY_POOLS    Enable delay pools
 [X] SQUID_SNMP           Enable SNMP support
 [ ] SQUID_SSL            Enable SSL support for reverse proxies
-[ ] SQUID_PINGER         Install the icmp helper               
-[ ] SQUID_DNS_HELPER     Use the old 'dnsserver' helper        
-[X] SQUID_HTCP           Enable HTCP support                   
-[ ] SQUID_VIA_DB         Enable forward/via database           
-[ ] SQUID_CACHE_DIGESTS  Enable cache digests                  
+[ ] SQUID_PINGER         Install the icmp helper
+[ ] SQUID_DNS_HELPER     Use the old 'dnsserver' helper
+[X] SQUID_HTCP           Enable HTCP support
+[ ] SQUID_VIA_DB         Enable forward/via database
+[ ] SQUID_CACHE_DIGESTS  Enable cache digests
 [X] SQUID_WCCP           Enable Web Cache Coordination Prot. v1
 [ ] SQUID_WCCPV2         Enable Web Cache Coordination Prot. v2
 }}}
@@ -69,7 +69,7 @@ Each port will prompt for configuration information for your Squid installation.
 == Standard Locations ==
 
 The FreeBSD packages and ports install squid in the following locations:
- * Binaries (squid, squidclient, RunAccel, RunCache etc):
+ * Binaries (squid, squidclient, the runaccel and runcache scripts etc):
 {{{
  /usr/local/sbin
 }}}
