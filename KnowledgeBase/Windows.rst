@@ -50,7 +50,7 @@ squid -O cmdline [-n service-name]
 
 If multiple service command line options must be specified, use quote. The '''-n''' switch is needed only when a non default service name is in use.
 
-Don't use the "Start parameters" in the Windows 2000/XP/2003 Service applet: they are specific to Windows services functionality and Squid is not designed for understand they.
+Don't use the "Start parameters" in the Windows 2000/XP/2003 Service applet: they are specific to Windows services functionality and Squid is not able to interpret and use them.
 
 In the following example the command line of the "squidsvc" Squid service is set to "-D -u 3130":
 
