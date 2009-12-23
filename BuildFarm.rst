@@ -12,7 +12,7 @@ The currently-planned farm consists of:
 || [[http://www.centos.org/|CentOS-x64]] || 5.3 || eu.squid-cache.org || {OK} ||
 || [[http://www.centos.org/|CentOS-x32]] || || || ||
 || [[http://www.ubuntu.com/|Ubuntu-x32]] || || || ||
-|| [[http://www.ubuntu.com/|Ubuntu-ARM]] || || || ||
+|| [[http://www.debian.org/|Debian-ARM]] || lenny || varm-deb.squid-cache.org || Being tested (QEMU-based) ||
 || [[http://www.debian.org/|Debian-x32]] || sid || rio.treenetnz.com || {OK} Sponsored. ||
 || [[http://www.openbsd.org/|OpenBSD]] || || vobsd.squid-cache.org || {OK} ||
 || [[http://www.freebsd.org/|FreeBSD-x32]] || 6.4 || squid-cache.org || {OK} ||
