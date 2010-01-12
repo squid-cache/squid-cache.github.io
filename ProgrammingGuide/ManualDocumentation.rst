@@ -33,10 +33,12 @@ The document overview is as follows. Introductory header markup as shown followe
 }}}
 
 === .SH NAME ===
-Three lines of content only.
+Three lines of content.
  1. name of file being documented. Marked not for translation.
  2. a hyphen. Marked not for translation.
  3. A one-line description of the file. Suitable for use in a title.
+
+If a version number is relevant state it in a separate paragraph below the name details.
 
 For example:
 {{{
@@ -45,10 +47,14 @@ For example:
 .if !'po4a'hide' .B squid
 .if !'po4a'hide' \-
 HTTP Web Proxy caching server.
+.PP
+Version 1.0
 }}}
 documents
 {{{
 squid - HTTP Web Proxy caching server.
+
+Version 1.0
 }}}
 
 === .SH SYNOPSIS ===
@@ -97,7 +103,7 @@ negative caching of failed requests.
 }}}
 
 === .SH OPTIONS ===
-A fully documented list of available command line options.
+A fully documented list of available command line options. The table column offset of the description text is 12 characters, set on the first '''.TP''' tag.
 
 The option switch and any accepted variable names are marked not for translation.
 
@@ -107,7 +113,7 @@ For example:
 {{{
 .
 .SH OPTIONS
-.if !'po4a'hide' .TP 2
+.if !'po4a'hide' .TP 12
 .if !'po4a'hide' .B \-d
 Write debug info to stderr.
 .TP
@@ -190,7 +196,17 @@ Squid
 .B example.binary
 and this manual is Copyright 2010
 .if !'po4a'hide' .I Authors Name <author@email.contact>
-distributed under the GNU Public License version 2 or later (GPL2+).
+.PP
+Distributed under the GNU Public License version 2 or later (GPL2+).
+}}}
+
+If no exact copyright details are known use the following snippet:
+{{{
+.
+.SH COPYRIGHT
+This program and documentation is copyright to the authors named above.
+.PP
+Distributed under the GNU Public License version 2 or later (GPL2+).
 }}}
 
 === .SH QUESTIONS ===
@@ -253,6 +269,8 @@ This is a template only. Alter it according to the requirements detailed above t
 .if !'po4a'hide' .B binary.name
 .if !'po4a'hide' \-
 Description goes here
+..PP
+Version 1.0
 .
 .SH SYNOPSIS
 .if !'po4a'hide' .B binary.name
@@ -263,7 +281,7 @@ Description goes here
 is an installed binary. The long description goes here
 .
 .SH OPTIONS
-.if !'po4a'hide' .TP 2
+.if !'po4a'hide' .TP 12
 .if !'po4a'hide' .B \-d
 Write debug info to stderr.
 .if !'po4a'hide' .B \-h
@@ -288,11 +306,9 @@ This manual was written by
 .if !'po4a'hide' .I Authors Name <author@email.contact>
 .
 .SH COPYRIGHT
-Squid
-.B example.binary
-and this manual is Copyright 2010
-.if !'po4a'hide' .I Authors Name <author@email.contact>
-distributed under the GNU Public License version 2 or later (GPL2+).
+This program and documentation is copyright to the authors named above.
+.PP
+Distributed under the GNU Public License version 2 or later (GPL2+).
 .
 .SH QUESTIONS
 Questions on the usage of this program can be sent to the
@@ -310,7 +326,7 @@ Report ideas for new improvements to the
 .if !'po4a'hide' <squid-dev@squid-cache.org>
 .
 .SH SEE ALSO
-.if !'po4a'hide' .B squid "(8) "
+.if !'po4a'hide' .BR squid "(8) "
 .br
 The Squid FAQ wiki
 .if !'po4a'hide' http://wiki.squid-cache.org/SquidFaq
@@ -324,64 +340,64 @@ The Squid Configuration Manual
 Some work is underway to bring existing manual pages into matching these standard style of markup.
 However there are a number of installed files which have no manual at all.
 
-|| '''Installed file''' || '''Current State:''' ||
-|| ~/access.log || {X} Missing. Relevant? ||
-|| ~/cache.log || {X} Missing. Relevant? ||
-|| ~/netdb.state || {X} Missing. ||
-|| ~/store.log || {X} Missing. Relevant? ||
-|| ~/swap.state || {X} Missing. Convert wiki page info ||
-|| errors/errpages.css || {X} Missing ||
-|| helpers/basic_auth/DB/basic_db_auth || Needs review of the perl/pod output. ||
-|| helpers/basic_auth/getpwnam/basic_getpwnam_auth || Needs review ||
-|| helpers/basic_auth/LDAP/basic_ldap_auth || Needs review ||
-|| helpers/basic_auth/MSNT/msnt_auth || {X} Missing. Convert README.html ||
-|| helpers/basic_auth/MSNT/msntauth.conf || {X} Missing. ||
-|| helpers/basic_auth/MSNT/msntauth.conf.default || {X} Missing. ||
-|| helpers/basic_auth/MSNT-multi-domain/basic_msnt_multi_domain_auth.pl || {X} Missing. Convert intro text with pod2man ||
-|| helpers/basic_auth/NCSA/basic_ncsa_auth || Needs review ||
-|| helpers/basic_auth/NIS/basic_nis_auth || {X} Missing. ||
-|| helpers/basic_auth/PAM/basic_pam_auth || Needs review ||
-|| helpers/basic_auth/POP3/basic_pop3_auth.pl || {X} Missing. ||
-|| helpers/basic_auth/SASL/basic_sasl_auth || {X} Missing. Convert README ||
-|| helpers/basic_auth/SASL/basic_sasl_auth.pam || {X} Missing. ||
-|| helpers/basic_auth/SASL/basic_sasl_auth.conf || {X} Missing. ||
-|| helpers/basic_auth/SMB/basic_smb_auth || {X} Missing. ||
-|| helpers/basic_auth/SMB/basic_smb_auth.sh || {X} Missing. ||
-|| helpers/basic_auth/SSPI/basic_sspi_auth || {X} Missing. Convert readme.txt ||
-|| helpers/basic_auth/RADIUS/basic_radius_auth || Needs review ||
-|| helpers/digest_auth/eDirectory/digest_edir_auth || {X} Missing. ||
-|| helpers/digest_auth/ldap/digest_ldap_auth || {X} Missing. ||
-|| helpers/digest_auth/password/digest_pw_auth || {X} Missing. ||
-|| helpers/external_acl/ip_user/ip_user_check || {X} Missing. Convert example config files and README ||
-|| helpers/external_acl/ldap_group/squid_ldap_group || Needs review ||
-|| helpers/external_acl/mswin_ad_group/mswin_check_ad_group || {X} Missing. Convert readme.txt ||
-|| helpers/external_acl/mswin_lm_group/mswin_check_lm_group || {X} Missing. Convert readme.txt ||
-|| helpers/external_acl/session/squid_session || Needs review ||
-|| helpers/external_acl/unix_group/squid_unix_group || Needs review ||
-|| helpers/external_acl/wbinfo_group/wbinfo_group.pl || Needs review. Possibly merge to script and convert with pod2man ||
-|| helpers/log_daemon/file/log_file_daemon || {X} Missing. ||
-|| helpers/negotiate_auth/kerberos/negotiate_kerberos_auth || {X} Missing. Convert README ||
-|| helpers/negotiate_auth/kerberos/negotiate_kerberos_auth_test || {X} Missing. Convert README ||
-|| helpers/negotiate_auth/mswin_sspi/mswin_negotiate_auth || {X} Missing. Convert readme.txt ||
-|| helpers/ntlm_auth/fakeauth/fakeauth_auth || {X} Missing. Convert wiki NTLM fake auth page. ||
-|| helpers/ntlm_auth/mswin_sspi/mswin_ntlm_auth || {X} Missing. Convert readme.txt ||
-|| helpers/ntlm_auth/no_check/no_check.pl || {X} Missing. Convert README.no_check_ntlm_auth ||
-|| helpers/ntlm_auth/smb_lm/ntlm_smb_lm_auth || {X} Missing ||
-|| helpers/url_rewrite/url_fake_rewrite || {X} Missing ||
-|| helpers/url_rewrite/url_fake_rewrite.sh || {X} Missing ||
-|| src/dnsserver || {X} Missing ||
-|| src/mime.conf || {X} Missing ||
-|| src/mime.conf.default || {X} Missing. Symlink to mime.conf manual? ||
-|| src/squid || Needs review. Also, move from doc/squid.8.in to src/ next to relevant binary ||
-|| src/squid.conf || {X} Missing. Convert squid.conf.documented ||
-|| src/squid.conf.default || {X} Missing. Symlink to squid.conf manual? ||
-|| src/squid.conf.documented || {X} Missing ||
-|| src/unlinkd || {X} Missing ||
-|| src/DiskIO/DiskDaemon/diskd || {X} Missing ||
-|| src/icmp/pinger || {X} Missing ||
-|| tools/cachemgr.cgi || Needs review. ||
-|| tools/squidclient || (squidclient.1) Needs review. ||
-|| tools/helper-mux.pl || {X} Missing. Convert helper-mux.README to *.pl intro text for pod2man generation. ||
+|| '''Installed file''' || '''man(x)''' || '''Current State:''' ||
+|| ~/access.log || {X} || Missing. Relevant? ||
+|| ~/cache.log || {X} || Missing. Relevant? ||
+|| ~/netdb.state || {X} || Missing. ||
+|| ~/store.log || {X} || Missing. Relevant? ||
+|| ~/swap.state || {X} || Missing. Convert wiki page info ||
+|| errors/errpages.css || {X} || Missing ||
+|| helpers/basic_auth/DB/basic_db_auth || || Needs review of the perl/pod output. ||
+|| helpers/basic_auth/getpwnam/basic_getpwnam_auth || 8 || (./) Done. ||
+|| helpers/basic_auth/LDAP/basic_ldap_auth || 8 || (./) Done. ||
+|| helpers/basic_auth/MSNT/msnt_auth || {X} || Missing. Convert README.html ||
+|| helpers/basic_auth/MSNT/msntauth.conf || {X} || Missing. ||
+|| helpers/basic_auth/MSNT/msntauth.conf.default || {X} || Missing. ||
+|| helpers/basic_auth/MSNT-multi-domain/basic_msnt_multi_domain_auth.pl || {X} || Missing. Convert intro text with pod2man ||
+|| helpers/basic_auth/NCSA/basic_ncsa_auth || 8 || (./) Done. ||
+|| helpers/basic_auth/NIS/basic_nis_auth || {X} || Missing. ||
+|| helpers/basic_auth/PAM/basic_pam_auth || || Needs review ||
+|| helpers/basic_auth/POP3/basic_pop3_auth.pl || {X} || Missing. ||
+|| helpers/basic_auth/SASL/basic_sasl_auth || {X} || Missing. Convert README ||
+|| helpers/basic_auth/SASL/basic_sasl_auth.pam || {X} || Missing. ||
+|| helpers/basic_auth/SASL/basic_sasl_auth.conf || {X} || Missing. ||
+|| helpers/basic_auth/SMB/basic_smb_auth || {X} || Missing. ||
+|| helpers/basic_auth/SMB/basic_smb_auth.sh || {X} || Missing. ||
+|| helpers/basic_auth/SSPI/basic_sspi_auth || {X} || Missing. Convert readme.txt ||
+|| helpers/basic_auth/RADIUS/basic_radius_auth || 8 || (./) Done. ||
+|| helpers/digest_auth/eDirectory/digest_edir_auth || {X} || Missing. ||
+|| helpers/digest_auth/ldap/digest_ldap_auth || {X} || Missing. ||
+|| helpers/digest_auth/password/digest_pw_auth || {X} || Missing. ||
+|| helpers/external_acl/ip_user/ip_user_check || {X} || Missing. Convert example config files and README ||
+|| helpers/external_acl/ldap_group/squid_ldap_group || 8 || (./) Done. ||
+|| helpers/external_acl/mswin_ad_group/mswin_check_ad_group || {X} || Missing. Convert readme.txt ||
+|| helpers/external_acl/mswin_lm_group/mswin_check_lm_group || {X} || Missing. Convert readme.txt ||
+|| helpers/external_acl/session/squid_session || 8 || (./) Done. ||
+|| helpers/external_acl/unix_group/squid_unix_group || 8 || (./) Done. ||
+|| helpers/external_acl/wbinfo_group/wbinfo_group.pl || {X} || Missing. ||
+|| helpers/log_daemon/file/log_file_daemon || {X} || Missing. ||
+|| helpers/negotiate_auth/kerberos/negotiate_kerberos_auth || {X} || Missing. Convert README ||
+|| helpers/negotiate_auth/kerberos/negotiate_kerberos_auth_test || {X} || Missing. Convert README ||
+|| helpers/negotiate_auth/mswin_sspi/mswin_negotiate_auth || {X} || Missing. Convert readme.txt ||
+|| helpers/ntlm_auth/fakeauth/fakeauth_auth || {X} || Missing. Convert wiki NTLM fake auth page. ||
+|| helpers/ntlm_auth/mswin_sspi/mswin_ntlm_auth || {X} || Missing. Convert readme.txt ||
+|| helpers/ntlm_auth/no_check/no_check.pl || {X} || Missing. Convert README.no_check_ntlm_auth ||
+|| helpers/ntlm_auth/smb_lm/ntlm_smb_lm_auth || {X} || Missing ||
+|| helpers/url_rewrite/url_fake_rewrite || {X} || Missing ||
+|| helpers/url_rewrite/url_fake_rewrite.sh || {X} || Missing ||
+|| src/dnsserver || {X} || Missing ||
+|| src/mime.conf || {X} || Missing ||
+|| src/mime.conf.default || {X} || Missing. Symlink to mime.conf manual? ||
+|| src/squid || 8 || (./) Done. ||
+|| src/squid.conf || {X} || Missing. Convert squid.conf.documented ||
+|| src/squid.conf.default || {X} || Missing. Symlink to squid.conf manual? ||
+|| src/squid.conf.documented || {X} || Missing ||
+|| src/unlinkd || {X} || Missing ||
+|| src/DiskIO/DiskDaemon/diskd || {X} || Missing ||
+|| src/icmp/pinger || {X} || Missing ||
+|| tools/cachemgr.cgi || 8 || (./) Done. ||
+|| tools/squidclient || 1 || (./) Done. ||
+|| tools/helper-mux.pl || {X} || Missing. Convert helper-mux.README to *.pl intro text for pod2man generation. ||
 
 ----
  Discuss this page using the "Discussion" link in the main menu
