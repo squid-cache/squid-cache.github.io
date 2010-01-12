@@ -197,7 +197,7 @@ Squid
 and this manual is Copyright 2010
 .if !'po4a'hide' .I Authors Name <author@email.contact>
 .PP
-Distributed under the GNU Public License version 2 or later (GPL2+).
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPL2+).
 }}}
 
 If no exact copyright details are known use the following snippet:
@@ -206,7 +206,7 @@ If no exact copyright details are known use the following snippet:
 .SH COPYRIGHT
 This program and documentation is copyright to the authors named above.
 .PP
-Distributed under the GNU Public License version 2 or later (GPL2+).
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPL2+).
 }}}
 
 === .SH QUESTIONS ===
@@ -308,7 +308,7 @@ This manual was written by
 .SH COPYRIGHT
 This program and documentation is copyright to the authors named above.
 .PP
-Distributed under the GNU Public License version 2 or later (GPL2+).
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPL2+).
 .
 .SH QUESTIONS
 Questions on the usage of this program can be sent to the
