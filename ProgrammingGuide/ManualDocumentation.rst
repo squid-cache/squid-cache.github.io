@@ -337,7 +337,7 @@ The Squid Configuration Manual
 
 == TODO ==
 
-Some work is underway to bring existing manual pages into matching these standard style of markup.
+Some work is underway to bring existing texts into matching these standard style of markup.
 However there are a number of installed files which have no manual at all.
 
 || '''Installed file''' || '''man(x)''' || '''Current State:''' ||
@@ -356,7 +356,7 @@ However there are a number of installed files which have no manual at all.
 || helpers/basic_auth/MSNT-multi-domain/basic_msnt_multi_domain_auth.pl || {X} || Missing. Convert intro text with pod2man ||
 || helpers/basic_auth/NCSA/basic_ncsa_auth || 8 || (./) Done. ||
 || helpers/basic_auth/NIS/basic_nis_auth || {X} || Missing. ||
-|| helpers/basic_auth/PAM/basic_pam_auth || || Needs review ||
+|| helpers/basic_auth/PAM/basic_pam_auth || 8 || (./) Done. ||
 || helpers/basic_auth/POP3/basic_pop3_auth.pl || {X} || Missing. ||
 || helpers/basic_auth/SASL/basic_sasl_auth || {X} || Missing. Convert README ||
 || helpers/basic_auth/SASL/basic_sasl_auth.pam || {X} || Missing. ||
