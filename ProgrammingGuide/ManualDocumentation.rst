@@ -359,6 +359,7 @@ However there are a number of installed files which have no manual at all.
 || helpers/external_acl/session/squid_session || Needs review ||
 || helpers/external_acl/unix_group/squid_unix_group || Needs review ||
 || helpers/external_acl/wbinfo_group/wbinfo_group.pl || Needs review. Possibly merge to script and convert with pod2man ||
+|| helpers/log_daemon/file/log_file_daemon || {X} Missing. ||
 || helpers/negotiate_auth/kerberos/negotiate_kerberos_auth || {X} Missing. Convert README ||
 || helpers/negotiate_auth/kerberos/negotiate_kerberos_auth_test || {X} Missing. Convert README ||
 || helpers/negotiate_auth/mswin_sspi/mswin_negotiate_auth || {X} Missing. Convert readme.txt ||
