@@ -245,7 +245,7 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 || *.1.5.1.3.13 || cachePeerIgnored || Counter32 || 3.1+ ||How many times this peer was ignored||
 || *.1.5.1.3.14 || cachePeerKeepAlSent || Counter32 || 3.1+ ||Number of keepalives sent||
 || *.1.5.1.3.15 || cachePeerKeepAlRecv || Counter32 || 3.1+ ||Number of keepalives received||
-||<-5> '''Client Table''' ||
+||<-5> '''Client Table (Squid-2)''' ||
 || *.1.5.2.1.1 || cacheClientAddr || IP Address || 2.x-3.0 ||The client's IP address||
 || *.1.5.2.1.2 || cacheClientHttpRequests || Counter32 || 2.x-3.0 ||Number of HTTP requests received from client||
 || *.1.5.2.1.3 || cacheClientHttpKb || Counter32 || 2.x-3.0 ||Amount of total HTTP traffic to this client||
@@ -255,22 +255,17 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 || *.1.5.2.1.7 || cacheClientIcpKb || Counter32 || 2.x-3.0 ||Amount of total ICP traffic to this client (child)||
 || *.1.5.2.1.8 || cacheClientIcpHits || Counter32 || 2.x-3.0 ||Number of hits in response to this client's ICP requests||
 || *.1.5.2.1.9 || cacheClientIcpHitKb || Counter32 || 2.x-3.0 ||Amount of ICP hit traffic in KB||
-## 
-## The new Squid-3 client table indexing is still being decided.
-##  Until that is sorted out and actually coded, keep this unpublished
-##
-##||<-5> '''Client Table''' ||
-##|| *.1.5.2.2.1 || MESH_CTBL_INDEX || || 3.1+ || ||
-##|| *.1.5.2.2.2 || MESH_CTBL_ADDR_TYPE || || 3.1+ || ||
-##|| *.1.5.2.2.3 || MESH_CTBL_ADDR || || 3.1+ || ||
-##|| *.1.5.2.2.4 || MESH_CTBL_HTREQ || || 3.1+ || ||
-##|| *.1.5.2.2.5 || MESH_CTBL_HTBYTES || || 3.1+ || ||
-##|| *.1.5.2.2.6 || MESH_CTBL_HTHITS || || 3.1+ || ||
-##|| *.1.5.2.2.7 || MESH_CTBL_HTHITBYTES || || 3.1+ || ||
-##|| *.1.5.2.2.8 || MESH_CTBL_ICPREQ || || 3.1+ || ||
-##|| *.1.5.2.2.9 || MESH_CTBL_ICPBYTES || || 3.1+ || ||
-##|| *.1.5.2.2.10 || MESH_CTBL_ICPHITS || || 3.1+ || ||
-##|| *.1.5.2.2.11 || MESH_CTBL_ICPHITBYTES || || 3.1+ || ||
+||<-5> '''Client Table (Squid-3)''' ||
+|| *.1.5.2.2.1 || cacheClientAddrType || INTEGER || 3.1+ || IP version :: 1 = IPv4, 2 = IPv6 ||
+|| *.1.5.2.1.2 || cacheClientAddr || IP Address || 3.1+ ||The client's IP address||
+|| *.1.5.2.1.3 || cacheClientHttpRequests || Counter32 || 3.1+ ||Number of HTTP requests received from client||
+|| *.1.5.2.1.4 || cacheClientHttpKb || Counter32 || 3.1+ ||Amount of total HTTP traffic to this client||
+|| *.1.5.2.1.5 || cacheClientHttpHits || Counter32 || 3.1+ ||Number of hits in response to this client's HTTP requests||
+|| *.1.5.2.1.6 || cacheClientHTTPHitKb || Counter32 || 3.1+ ||Amount of HTTP hit traffic in KB||
+|| *.1.5.2.1.7 || cacheClientIcpRequests || Counter32 || 3.1+ ||Number of ICP requests received from client||
+|| *.1.5.2.1.8 || cacheClientIcpKb || Counter32 || 3.1+ ||Amount of total ICP traffic to this client (child)||
+|| *.1.5.2.1.9 || cacheClientIcpHits || Counter32 || 3.1+ ||Number of hits in response to this client's ICP requests||
+|| *.1.5.2.1.10 || cacheClientIcpHitKb || Counter32 || 3.1+ ||Amount of ICP hit traffic in KB||
 
 = FAQ =
 
