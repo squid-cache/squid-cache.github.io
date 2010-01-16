@@ -18,7 +18,7 @@ Configuration file to Include:
 {{{
 # Skype
 
-acl numeric_IPs url_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9af]+)?:([0-9af:]+)?:([0-9af+)?\])):443
+acl numeric_IPs url_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9af]+)?:([0-9af:]+)?:([0-9af]+)?\])):443
 acl Skype_UA browser ^skype^
 
 http_access deny numeric_IPS
