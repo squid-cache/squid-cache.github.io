@@ -31,36 +31,46 @@ We do this mainly so we can acknowledge your contribution in the official TRANSL
 If you don't want to be acknowledged, thats fine, just let the translation maintainer know. That is presently AmosJeffries
 
  . ''' How-To '''
- * Visit http://translate.treenet.co.nz/register.html
+ * Visit http://translate.treenet.co.nz/accounts/register/
 
 === Public Suggestions ===
 Being open source we want anybody to contribute. Once you have registered, choose the language(s) you know and want to help with.
 
  . ''' How-To '''
- * [[http://translate.treenet.co.nz/login.html|Log in]]
+ * [[http://translate.treenet.co.nz/accounts/login/|Log in]]
  * Visit the '''My account''' page.
- * Click on '''[[http://translate.treenet.co.nz/home/options.html|Change Options]]'''
+ * Click on '''[[http://translate.treenet.co.nz/accounts/edit/|Settings]]'''
  * Make sure the '''Squid 3''' project is highlighted under '''My Projects'''.
  * Highlight any languages you want to help with in the '''My Languages''' box.
  * Click '''Save changes''' button at the bottom of the page.
 
-Now you can send in a suggestion to add or correct translations.
+
+Now you can send in a suggestion for missing translations.
 
  . ''' How-To '''
- * [[http://translate.treenet.co.nz/login.html|Log in]] (if you haven't already)
+ * [[http://translate.treenet.co.nz/accounts/login/|Log in]] (if you haven't already)
+ * Visit [[http://translate.treenet.co.nz/projects/squid/]]
+ * Either, Click on the link saying how many words are untranslated.
+
+At this point you can see whats there. You are normally taken straight to the first missing text.
+
+
+You can also send in alterations to existing texts.
+
+ . ''' How-To '''
+ * [[http://translate.treenet.co.nz/accounts/login/|Log in]] (if you haven't already)
  * Visit [[http://translate.treenet.co.nz/projects/squid/]]
  * Click on the name of your language.
- * Click on '''Show Editing Functions''' just under the language name.
- * Click on '''View Untranslated''' which comes up in the '''dark grey box'''
+ * Click on the '''Translate''' tab.
+ * Click on '''Translate All''' which comes up.
  * You may want to make a shortcut of the page here so you can come back easily.
 
-At this point you can see whats there. You are normally taken straight to the first missing text. But you can also send in alterations:
+At this point you can see whats there. You are normally taken straight to the first text.
 
- * Locate the text entry to be fixed.
- * Hold the mouse over the text and wait.
- * Click on the little '''Edit''' link which appear to one side.
+ * Navigate around the using the '''Next''' and '''Previous''' links to move up or down the list of translation texts.
+ * Click on the number in the first column to select an entry for editing.
 
-But don't expect any suggestions to be included in the sources or even visible until its been checked. All you have done at this point is add a new piece of text to the list of things to be processed.
+Don't expect any suggestions to be included in the sources or even visible until its been checked. All you have done at this point is add a new piece of text to the list of things to be processed into Squid.
 
 See [[Translations/Guidelines|Translation Guidelines]] for what sort of things are needed to get your suggestion accepted.
 
@@ -85,11 +95,13 @@ The notice emails contain helpful links which go direct to the page where the ne
 New suggestions are likely to come in at some point. They need to be checked
 
  . ''' How-To '''
- * [[http://translate.treenet.co.nz/login.html|Log in]] (if you haven't already)
+ * [[http://translate.treenet.co.nz/accounts/login/|Log in]] (if you haven't already)
  * Visit [[http://translate.treenet.co.nz/projects/squid/]]
  * Click on the name of your language.
- * Click on '''Show Editing Functions''' just under the language name.
+ * Click on the '''Translate''' tab.
  * Click on '''Review Suggestions''' which comes up.
+
+## NP: Pootle has changed. I'm not sure the above is correct. It might be on the "Review" toolkit panel now.
 
 Each phrase with suggestions will come up with all current details about that text. Changes from existing translation are highlighted to quickly see what the issue is.
 
@@ -101,7 +113,7 @@ Each is listed with two buttons:
 ==== Adding New Translations ====
 Translators are also encouraged to make sure there are no untranslated entries in the language.
 
-The '''Editing Functions''' also contains a link to '''Show Untranslated'''.
+The '''Translate''' tab also contains a link to '''Show Untranslated'''.
 
 This provides a form same as the public suggestions. But since the translators are expected to know what they are writing. Allows direct entry of new text straight into the system.
 
