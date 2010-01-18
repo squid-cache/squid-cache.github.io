@@ -12,9 +12,9 @@ This page covers the details involved with translating a specific piece of text.
 == HTML Tags ==
 
 The translation of Squid is currently just a translation of the various HTML pages produced by Squid.
-This means; the error pages seen when things go wrong, most of the FTP pages dealing with file transfers (not directory listings yet).
+This means; the error pages seen when things go wrong, most of the FTP pages dealing with file transfers and directory listings.
 
-The text shown for translation may contain HTML markup. You should be careful to leave these codes in the translation. You should not be translating the text in a way that makes them removable.
+The text shown for translation may contain HTML markup. You should be careful to leave these codes in the translation unchanged. You should not be translating the text in a way that makes them removable.
 
 == Protocol Terminology ==
 
