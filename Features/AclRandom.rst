@@ -31,12 +31,55 @@ Every test, a new random number is generated and checked against the stored valu
 
 = Use Cases =
 == Uplink Load Balancing ==
-When used within SquidConf:tcp_outgoing_addr or SqudiConf:tcp_outgoing_tos selection this ACL permits load to be roughly split between multiple links based on their relative capacity.
+When used within SquidConf:tcp_outgoing_address or SquidConf:tcp_outgoing_tos selection this ACL permits load to be roughly split between multiple links based on their relative capacity.
 
-This requires some additional configuration at the operating system level to ensure that the address or TOS values assigned are routed out the appropriate uplink. Its no use doing this in Squid if all traffic ends up going out the default anyway.
+This requires some additional configuration at the operating system level to ensure that the address or TOS values assigned are routed out the appropriate uplink. It is no use doing this in Squid if all traffic ends up going out the default anyway.
+
+ * ''' Example 1:''' Split two uplinks roughly 50% of traffic each:
+{{{
+acl fiftyPercent random .5
+
+# a random 50% go here
+tcp_outgoing_address 192.0.2.1 fiftyPercent
+
+# the rest go here
+tcp_outgoing_address 192.0.2.2
+
+# NP: operating system required to route packets from 192.0.2.1 and 192.0.2.2 out separate uplinks.
+}}}
+
+
+ * '''Example 2:''' Split traffic one third to each of three peers.
+{{{
+acl third random 1/3
+
+# 30% traffic goes here
+cache_peer_access peerOne allow third
+cache_peer_access peerOne deny all
+
+# 30% traffic goes here
+cache_peer_access peerTwo allow third
+cache_peer_access peerTwo deny all
+
+# remaining traffic goes here
+cache_peer_access peerOne allow all
+}}}
+
 
 == Log sampling of traffic ==
 When used in SquidConf:access_log directives this ACL permits a small random proportion of requests to be logged. Rather than all traffic or some only matching fixed criteria.
+
+ * '''Example 1:''' Log one line randomly out of every 100 requests.
+{{{
+# log 1, skip 99
+acl logSmallSample random 1:99
+
+# small log 1 of every 100 requests...
+access_log /var/log/squid/access-sample.log squid logSmallSample
+
+# old style complete log
+access_log /var/log/squid/access.log squid
+}}}
 
 == Others? ==
 Other use cases may be possible. If you know of one not already covered here we are interested to know what it is.
