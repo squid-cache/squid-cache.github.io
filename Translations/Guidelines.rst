@@ -66,8 +66,6 @@ To ensure compatibility with Squid-2 which does not natively perform the same CS
 
 = Submissions Outside the System =
 
-Due to a bug in the way Pootle handles uploads. .po files created outside the web Pootle system we use cannot be uploaded reliably. Please send them via email to the translation maintainer instead.
-
 If you are truly against using the existing translation toolkit system we run. You have the option of locating the '''dictionary.pot''' file in the squid source code. Translating it and sending it to the translation maintainer. (AmosJeffries at present).
 
  /!\ Please note submissions are only considered for new languages or ones without a translator at the time of submission.
