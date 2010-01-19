@@ -29,7 +29,7 @@ The HTTP protocol extensions used to negotiate this is documented in Internet Dr
 
 This feature has been implemented for the Squid-2 branch starting with [[Squid-2.6]] by HenrikNordström during the CodeSprintOct2005 code sprint in Torino.
 
-This feature has been implemented for the Squid-2 branch starting with [[Squid 3.1]] by ChristosTsantilas
+This feature has been implemented for the Squid-3 branch starting with [[Squid-3.1]] by ChristosTsantilas
 
  {i} NOTE: This feature does not exist in [[Squid-3.0]].
 
