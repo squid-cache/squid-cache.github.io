@@ -14,7 +14,7 @@ This configuration covers the basic Reverse Proxy (Accelerator) config. More adv
 
 see the [[SquidFaq/ReverseProxy|FAQ Reverse Proxy]] page for detailed overview of what Reverse-Proxy and HTTP Acceleration are.
 
-|| {i} || The accel option to SquidConf:http_port is optional and should only be specified for 2.6.STABLE8 and later. In all versions Squid-2.6 and later specifying one of defaultsite or vhost is sufficient. ||
+|| {i} || The accel option to SquidConf:http_port should only be specified for 2.6.STABLE8 and later. ||
 
 || /!\ || Accelerator mode in Squid-2.5 worked quite differently, and upgrade to 2.6 or later is strongly recommended if you still use Squid-2.5. ||
 
