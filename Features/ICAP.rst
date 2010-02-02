@@ -1,7 +1,8 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-#faqlisted yes #completed yes
+#faqlisted yes
+#completed yes
 
 = Feature: ICAP (Internet Content Adaptation Protocol) =
  * '''Status''': Completed.
@@ -50,30 +51,30 @@ The following example instructs [[Squid-3.1]] to talk to two ICAP services, one 
 {{{
 icap_enable on
 
-icap_service service_req reqmod_precache 1 icap://127.0.0.1:1344/request
+icap_service service_req reqmod_precache bypass=1 icap://127.0.0.1:1344/request
 adaptation_access service_req allow all
 
-icap_service service_resp respmod_precache 0 icap://127.0.0.1:1344/response
+icap_service service_resp respmod_precache bypass=0 icap://127.0.0.1:1344/response
 adaptation_access service_resp allow all
 }}}
 
- * [[http://www.squid-cache.org/Doc/config/adaptation_access|adaptation_access]]
- * [[http://www.squid-cache.org/Doc/config/adaptation_service_set|adaptation_service_set]]
+ * SquidConf:adaptation_access
+ * SquidConf:adaptation_service_set
 
- * [[http://www.squid-cache.org/Doc/config/icap_client_username_encode|icap_client_username_encode]]
- * [[http://www.squid-cache.org/Doc/config/icap_client_username_header|icap_client_username_header]]
- * [[http://www.squid-cache.org/Doc/config/icap_connect_timeout|icap_connect_timeout]]
- * [[http://www.squid-cache.org/Doc/config/icap_default_options_ttl|icap_default_options_ttl]]
- * [[http://www.squid-cache.org/Doc/config/icap_enable|icap_enable]]
- * [[http://www.squid-cache.org/Doc/config/icap_io_timeout|icap_io_timeout]]
- * [[http://www.squid-cache.org/Doc/config/icap_persistent_connections|icap_persistent_connections]]
- * [[http://www.squid-cache.org/Doc/config/icap_preview_enable|icap_preview_enable]]
- * [[http://www.squid-cache.org/Doc/config/icap_preview_size|icap_preview_size]]
- * [[http://www.squid-cache.org/Doc/config/icap_send_client_ip|icap_send_client_ip]]
- * [[http://www.squid-cache.org/Doc/config/icap_send_client_username|icap_send_client_username]]
- * [[http://www.squid-cache.org/Doc/config/icap_service|icap_service]]
- * [[http://www.squid-cache.org/Doc/config/icap_service_failure_limit|icap_service_failure_limit]]
- * [[http://www.squid-cache.org/Doc/config/icap_service_revival_delay|icap_service_revival_delay]]
+ * SquidConf:icap_client_username_encode
+ * SquidConf:icap_client_username_header
+ * SquidConf:icap_connect_timeout
+ * SquidConf:icap_default_options_ttl
+ * SquidConf:icap_enable
+ * SquidConf:icap_io_timeout
+ * SquidConf:icap_persistent_connections
+ * SquidConf:icap_preview_enable
+ * SquidConf:icap_preview_size
+ * SquidConf:icap_send_client_ip
+ * SquidConf:icap_send_client_username
+ * SquidConf:icap_service
+ * SquidConf:icap_service_failure_limit
+ * SquidConf:icap_service_revival_delay
 
 === Squid 3.0 ===
 ## Pulled from release notes as-is.
@@ -92,22 +93,22 @@ icap_access class_resp allow all
 }}}
 There are other options which can control various aspects of ICAP. See their configuration guide entries for more details:
 
- * [[http://www.squid-cache.org/Doc/config/icap_access|icap_access]] 
- * [[http://www.squid-cache.org/Doc/config/icap_class|icap_class]]
- * [[http://www.squid-cache.org/Doc/config/icap_client_username_encode|icap_client_username_encode]]
- * [[http://www.squid-cache.org/Doc/config/icap_client_username_header|icap_client_username_header]]
- * [[http://www.squid-cache.org/Doc/config/icap_connect_timeout|icap_connect_timeout]]
- * [[http://www.squid-cache.org/Doc/config/icap_default_options_ttl|icap_default_options_ttl]]
- * [[http://www.squid-cache.org/Doc/config/icap_enable|icap_enable]]
- * [[http://www.squid-cache.org/Doc/config/icap_io_timeout|icap_io_timeout]]
- * [[http://www.squid-cache.org/Doc/config/icap_persistent_connections|icap_persistent_connections]]
- * [[http://www.squid-cache.org/Doc/config/icap_preview_enable|icap_preview_enable]]
- * [[http://www.squid-cache.org/Doc/config/icap_preview_size|icap_preview_size]]
- * [[http://www.squid-cache.org/Doc/config/icap_send_client_ip|icap_send_client_ip]]
- * [[http://www.squid-cache.org/Doc/config/icap_send_client_username|icap_send_client_username]]
- * [[http://www.squid-cache.org/Doc/config/icap_service|icap_service]]
- * [[http://www.squid-cache.org/Doc/config/icap_service_failure_limit|icap_service_failure_limit]]
- * [[http://www.squid-cache.org/Doc/config/icap_service_revival_delay|icap_service_revival_delay]]
+ * SquidConf:icap_access
+ * SquidConf:icap_class
+ * SquidConf:icap_client_username_encode
+ * SquidConf:icap_client_username_header
+ * SquidConf:icap_connect_timeout
+ * SquidConf:icap_default_options_ttl
+ * SquidConf:icap_enable
+ * SquidConf:icap_io_timeout
+ * SquidConf:icap_persistent_connections
+ * SquidConf:icap_preview_enable
+ * SquidConf:icap_preview_size
+ * SquidConf:icap_send_client_ip
+ * SquidConf:icap_send_client_username
+ * SquidConf:icap_service
+ * SquidConf:icap_service_failure_limit
+ * SquidConf:icap_service_revival_delay
 
 ----
  CategoryFeature
