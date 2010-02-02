@@ -16,14 +16,17 @@
 Several people have volunteered their time to check and confirm translations to keep their language(s) updated.
 
 ||<-2> '''Language''' || '''Translations verified by:''' ||
+|| Afrikaans || af || Friedel Wolff ||
 || Bulgarian || bg || Evgeni Gechev ||
 || German || de || Constantin Rack and  Robert Förster ||
 || English || en, en-au, en-gb, en-us, en-nz || AmosJeffries (Squid Project) ||
-|| French || fr || Oliver W. ||
 || Persian || fa || Mohsen Saeedi (Fedora Project) ||
+|| French || fr || Oliver W. ||
 || Italian || it || FrancescoChemolli (Squid Project) ||
 || Dutch (Nederland) || nl || Rene Wijninga ||
+|| Malay || ms || ''tepung'' ||
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
+|| Romanian || ro || Arthur Titeica ||
 || Slovak || sk || ''Helix'' ||
 || Swedish || sv || HenrikNordstrom (Squid Project) ||
 ## || Turkish || tr || Umut Çinar ||
