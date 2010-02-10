@@ -32,6 +32,8 @@ WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. 
  || libcap-dev or libcap2-dev || any ||
  || libcap or libcap2 || any ||
 
+ {X} Kernel 2.6.32 is known to have a TPROXY problem. Until those are resolved, please use 2.6.30 or 2.6.31 for production machines, they seem to work properly.
+
  {i} NP: the links above are an arbitrary sample from the expected working versions, and may be old in some cases. The web directories where the files sit allow you to browse to newer versions if you like.
 
  {i} '''libcap''' or '''libcap2''' are needed at run time. To build you need the developer versions (*-dev) to compile with Squid. Any current version should do since these are old requirements unchanged since TPROXY version 2.
