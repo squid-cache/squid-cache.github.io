@@ -24,7 +24,7 @@ To complete this work is needed in the following areas:
 
 === Checklist ===
 
-The full current state of Squid: [[attachment:HTTP-1.1-Checklist_2009-09-12.ods]]
+The full current state of Squid: [[attachment:HTTP-1.1-Checklist_2010-02-10.ods]]
 
 This document starts with several columns titled '''AUDIT''' for the audited versions where exact HTTP/1.1 support has been determined by a Sponsor. Includes an overall percentage of support then detailing which requirements are supported and which broken.
 
