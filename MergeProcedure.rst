@@ -19,15 +19,14 @@ Other developers are often able to provide projects for anyone just wanting to c
 === Code Style ===
 Squid-2 and Squid-3 use different coding styles.
 
+'''Squid-3''':
+ * Formatting is presently enforced automatically post-commit.
+ * Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
+
 '''Squid-2''':
  * Properly indented with a style similar to the rest of the code.
  * Any C code will be indented by GNU indent 1.9.1 (exact version, no other GNU indent version) with the options:
  * {{{indent -br -ce -i4 -ci4 -l80 -nlp -npcs -npsl -d0 -sc -di0 -psl}}}.
-
-'''Squid-3''':
- * Formatting is presently handled by the maintainer post-commit.
- * Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
-
 
 === Submission Format ===
 
