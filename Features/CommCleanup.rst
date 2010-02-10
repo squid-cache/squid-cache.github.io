@@ -26,5 +26,10 @@ We need thin and clean comm layer that makes sense to developers. Clear interact
 
 At present the only distinction between comm and regular code is its residence in comm.cc and com.h
 
+'''Update 2010-Feb:'''
+ * The comm code handling inbound client connections (accept / listeners) has now been cleaned up and isolated in a comm library with a small, clear and documented API.
+
+ * The inbound SSL layer still needs some attention to combine it behind the comm listener interface away from the higher levels of code. This can perhapse be done as part of the upgrade enabling SSL to use multiple system libraries other than OpenSSL.
+
 ----
 CategoryFeature CategoryWish
