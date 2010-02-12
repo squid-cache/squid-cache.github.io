@@ -7,7 +7,6 @@
  * '''Status''': Planning. Being worked on very, very slowly in various feature advances.
  * '''ETA''': unknown
  * '''Version''': 3.2 & 2.x
- * '''Developer''': [[Henrik_Nordström]], others welcome
 
 <<TableOfContents>>
 
@@ -24,18 +23,11 @@ To complete this work is needed in the following areas:
 
 === Checklist ===
 
-The full current state of Squid: [[attachment:HTTP-1.1-Checklist_2010-02-12.ods]]
+Current Squid compliance with RFC 2616 MUST-level requirements: [[attachment:HTTP-1.1-Checklist_2010-02-12.ods]]
 
-This document starts with several columns titled '''AUDIT''' for the audited versions where exact HTTP/1.1 support has been determined by a Sponsor. Includes an overall percentage of support then detailing which requirements are supported and which broken.
+The linked document contains the results of automated Co-Advisor HTTP/1.1 compliance tests for several Squid versions. Each test consists of almost 700 individual test cases, targeting various MUSTs in RFC 2616. For each Squid3 version, we executed several tests. The tests were identical from HTTP point of view. If a given test case showed different results during those tests, the exact test case outcome could not be determined. Such outcomes are marked with a letter 'U'. All other markings correspond to stable results. Some test cases fail due to lack of an HTTP/1.1 feature support in Squid, incompatibility with the test suite, a test suite bug, or other reasons. Such test cases are marked with question marks. The remaining test case outcomes are successes and violations. Only successful outcomes count towards the "test cases passed" percentage.
 
-Following that are columns titled '''GUESS''' for the next version which has not been audited fully yet.
-The support percentage here assumes that:
- 1. no regressions have been made over the previous audited release in the version chain.
- 2. new additions which are expected to raise HTTP/1.1 support will actually pass the standard requirements.
-
-A future audit will determine the accuracy of these expectations.
-
-The tests are on vanilla Squid with no special alterations made during build.  The 2.7 test appears to have been done with the configurable HTTP/1.1 advertisement to Servers turned on, which is not available in Squid 3.x.
+The tests are on vanilla Squid with no special alterations made during build.  The 2.7 test appears to have been done with the configurable HTTP/1.1 advertisement to Servers turned on, which is not available in Squid 3.x yet.
 
 == Forwarding path ==
 
