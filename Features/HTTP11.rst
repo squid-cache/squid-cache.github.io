@@ -2,8 +2,8 @@
 #format wiki
 #language en
 ## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-= Feature: HTTP/1.1 support? =
- * '''Goal''': HTTP/1.1 proxy support.
+= Feature: HTTP/1.1 support =
+ * '''Goal''': Conditional HTTP/1.1 (RFC 2616) compliance
  * '''Status''': Planning. Being worked on very, very slowly in various feature advances.
  * '''ETA''': unknown
  * '''Version''': 3.2 & 2.x
