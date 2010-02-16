@@ -10,12 +10,12 @@ This article is aimed at the network/system administrator who wishes to configur
 WPAD has found use in ISP and Enterprise networks to integrate web proxies into the network without resorting to transparent network interception or enforcing configuration through technologies such as Windows Active Directory Group Policy.
 
 == WPAD Articles ==
- * (Placeholder) covers the motivation behind WPAD and how it attempts to solve the issue;
- * (Placeholder) covers how User Agents can detect the existance of the proxy authentication file via DHCP
+## * (Placeholder) covers the motivation behind WPAD and how it attempts to solve the issue;
+## * (Placeholder) covers how User Agents can detect the existance of the proxy authentication file via DHCP
  * [[SquidFaq/ConfiguringBrowsers#head-5aa28de5e8308087a925cb7ef54ca070a16564d4|Fully Automatically Configuring Browsers for WPAD]] faq article
  * [[SquidFaq/ConfiguringBrowsers#head-8623ffc5e6a381ccfe77f17bbe29fa87c3cf9734|Fully Automatically Configuring Browsers for WPAD with DHCP]] faq article
  * [[Technology/WPAD/DNS|WPAD DNS]] covers how User Agents can detect the existance of the proxy autoconfiguration file via DNS "Well Known Aliases"
- * (Placeholder) covers some example WPAD configurations
+## * (Placeholder) covers some example WPAD configurations
 == Other Articles and Information on WPAD ==
  * http://homepages.tesco.net/J.deBoynePollard/FGA/web-browser-auto-proxy-configuration.html
  * http://www.wlug.org.nz/WPAD
