@@ -313,7 +313,7 @@ When the transition is completed, that limit may be removed. In fact with the mo
 
 
 We know that the squid.conf is order-specific. Some components make use of that guarantee, some do not care. This is a detail of the upper layer parse implementation. The lower design does (and only) needs to guarantee that lines are passed to the component in the order they were configured and component is notified when configuration is complete. see above about sync/async again.
-The added bonus in this case is the pre-config call to allow such things as shadow TheConfig to be created and setup. Which does not yet exist at all in Squid.
+The added bonus in this case is the pre-config call to allow such things as shadow !TheConfig to be created and setup. Which does not yet exist at all in Squid.
 
 
 What I'm reading you're saying:  that we should code squid to handle every possible option and disallow plugin components from doing their own parse? to be handed a pre-filled object (which squid should not even know the field format of!) when reconfigure is needed.
@@ -329,12 +329,12 @@ I also took a look at breaking the line down into generic tokens and passing the
 The last bit in your sketch is about a possible way to implement reconfiguration, I think. Again, I would not force that way on all modules. I would just give them the new or "future" Module::Config object and let them figure out how to handle the transition. The arguments are very similar to the "one registered line at a time only" objections above.
 }}}
 
-... so we instead force squid to know in advance of loading any third-party module exactly what format its TheConfig class/structure has? create a new one, Parse into it, and pass it back to the component? in order to _save_ complexity? I don't believe I have to mention any of the problems associated with that to you.
+... so we instead force squid to know in advance of loading any third-party module exactly what format its !TheConfig class/structure has? create a new one, Parse into it, and pass it back to the component? in order to _save_ complexity? I don't believe I have to mention any of the problems associated with that to you.
 
 
 IMO thats _way_ more complexity and trouble than simply passing squid.conf buffers to the component. You could I suppose go the way of having pre-configure method/function return a void* that gets passed back.
 
-BUT. since we can only be doing reconfigure or not doing reconfigure. IMO again we should leave the TheConfig handling and details to the component if it even needs them.
+BUT. since we can only be doing reconfigure or not doing reconfigure. IMO again we should leave the !TheConfig handling and details to the component if it even needs them.
 
 
 Consider the third-party black-box component Widget dynamically loaded last configure time.  In order to parse the widget_magic lines which part of the upper layer (squid) and lower-layer (component library) whats the minimum transfer of information and call complexity we can do?
@@ -354,9 +354,9 @@ Consider the third-party black-box component Widget dynamically loaded last conf
 I feel it is critical to separate parsing from [re]configuration. We should not even attempt to [re]configure Squid if parsing fails. Parsing produces Module::Config objects, that have no effect other than memory use. Most common errors are detected at this stage. If everything is OK, all modules are asked to [re]configure themselves using these Config objects. We can even go further and have three reconfiguration steps:
 }}}
 
-at east we agree on that much. As you re-state my model with an additional validation step, but no pre-setup for the component to create its 'empty' TheConfig for us :)
+at east we agree on that much. As you re-state my model with an additional validation step, but no pre-setup for the component to create its 'empty' !TheConfig for us :)
 
-Validation IMO should happen at the point of parsing. It's either a valid parse or not, and the state produced should be expected to work. If you like a separate meta-validate after everything is parsed into the new TheConfig set to check dependencies etc, fine. I think it will turn out to be very small, but it may be useful.
+Validation IMO should happen at the point of parsing. It's either a valid parse or not, and the state produced should be expected to work. If you like a separate meta-validate after everything is parsed into the new !TheConfig set to check dependencies etc, fine. I think it will turn out to be very small, but it may be useful.
 
 
 -- AmosJeffries <<DateTime(2009-04-29T17:46:56+1200)>>
