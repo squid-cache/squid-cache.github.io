@@ -10,7 +10,7 @@
 
 == Outline ==
 
-This example covers the blocking of YouTube.com videos. Which is actually very easy.
+This example covers the blocking of !YouTube.com videos. Which is actually very easy.
 
 Caching them is much harder, for information on that see [[ConfigExamples/DynamicContent/YouTube]]
 
