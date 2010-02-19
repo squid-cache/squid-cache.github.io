@@ -55,8 +55,8 @@ This TODO list is no longer accurate. For more updated Squid plans see:
  * Calculate Content-Length for multipart range replies (AR)
 
  * Efficient public peer access control *without ACLs*
-	Bill Wichers <billw@unix0.waveform.net>
-	Dave Zarzycki <zarzycki@ricochet.net>
+	Bill Wichers <<MailTo(billw@unix0.waveform.net)>>
+	Dave Zarzycki <<MailTo(zarzycki@ricochet.net)>>
 	# distant_peer_deny (icmp rtt) (hops)
 	#    If the ICP client is farther than "z" hops away,
 	#    or if more than y% of pings to the client exceed
@@ -72,7 +72,7 @@ This TODO list is no longer accurate. For more updated Squid plans see:
 	stoplist_pattern, refresh_pattern, ...  (DW)
 
  * Refresh based on content types.  This means we'll need an enum of
-	known content types added to StoreEntry.  Unknown types will lose.
+	known content types added to !StoreEntry.  Unknown types will lose.
 
  * Write binary headers as metadata?
  * HTML-escape special characters in errorConvert().
