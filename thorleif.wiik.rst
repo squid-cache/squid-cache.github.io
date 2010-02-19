@@ -2,7 +2,7 @@
 #format wiki
 == Thorleif Wiik ==
 
-Email: [[thorleif.wiik(you AT SPAMFREE example gmail com)]]
+Email: <<MailTo(thorleif.wiik@gmail.com)>>
 
 http://www.wiik.de
 
