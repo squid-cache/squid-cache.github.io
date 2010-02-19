@@ -20,7 +20,7 @@ Plans for the string API are intended to allow improved access at all current us
 
 '''Goal''': To implement a zero-copy data pathway from network/disk read to network/disk write within Squid.
 
-Safer access, means with a coded non-char* access to raw data buffers which we can store in state objects and be sure the pointers are not going to die underneath the callee code. The present SquidString/String implementation is limited by:
+Safer access, means with a coded non-char* access to raw data buffers which we can store in state objects and be sure the pointers are not going to die underneath the callee code. The present !SquidString/String implementation is limited by:
  * max-size of 65536 bytes. This was made evident by earlier attempts at using it universally for char* replacement.
  * direct access to a self-controlled char* buffer. No existing ability for non-local buffer sharing.
  * existing usage within squid strictly assuming the above two limits are always true.
@@ -30,7 +30,7 @@ General concepts and discussion in /StringNg, will be merged here once better sk
 
 == Plan ==
 
-Implementing a single semi-generic referenced-String class that acts as both a parent-buffer and a child-string (see below) simultaneously is easy enough. Once created we can slowly migrate usage of it around Squid. If done carefully with a char* and SquidString  in/out conversion we can insert them seamlessly at any point in the code with no loss of performance, but an overall gain in places where two can reference each other.
+Implementing a single semi-generic referenced-String class that acts as both a parent-buffer and a child-string (see below) simultaneously is easy enough. Once created we can slowly migrate usage of it around Squid. If done carefully with a char* and !SquidString  in/out conversion we can insert them seamlessly at any point in the code with no loss of performance, but an overall gain in places where two can reference each other.
 
   {i} Can you rewrite the above as a sequence of specific steps? This is a big and important project that will affect other code. Let's try to be clear about the steps. This will also help you describe the current status later.
 
@@ -76,7 +76,7 @@ NP: a generically-written buffer may be a string itself referencing another larg
 
   {i} This needs clarification. Please define the primary roles of the buffer and string classes. For example, the string is responsible for maintaining information about an area of a buffer (buffer, offset, size) and read/write locks, while the buffer is responsible for everything else (memory management, duplication, insertion, search, comparison, etc.). This high-level role separation should probably be discussed before the class-specific sections.
 
-The sub-note is about; that there may in fact be no need for two such classes. The memory-manager may be completely capable of handling allocations, leaving 'parent' and 'child' layers of the model a single class type capable of referring to other objects of its own type. This still needs investigation of the different use and behavior of the current !MemBuf, char*, and SquidString.
+The sub-note is about; that there may in fact be no need for two such classes. The memory-manager may be completely capable of handling allocations, leaving 'parent' and 'child' layers of the model a single class type capable of referring to other objects of its own type. This still needs investigation of the different use and behavior of the current !MemBuf, char*, and !SquidString.
 
 
 === JIT Strings ===
