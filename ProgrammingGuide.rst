@@ -2,22 +2,8 @@
 
 = Squid Programming Guide =
 
- * /IntroductionAndConventions
- * /SquidComponents
- * /ExternalPrograms
- * /RequestFlow
- * /ClientStreams
- * /DelayPools
- * /StorageManager
- * /IpCache
- * /ServerProtocols
- * /AuthenticationFramework
- * /CbData
- * /RefCount
- * /HttpHeaders
- * /FileFormats
- * /LeakFinder
- * /MemPools
- * /DoxygenDocumentation
+Chapter index:
+<<Navigation(children,1)>>
+
 
 A detailed index of covered topics is [[/FullIndex|available]].
