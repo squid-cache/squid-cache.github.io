@@ -183,7 +183,7 @@ alternatively if that fails try:
 bzr send -oYourFeatureName.merge
 }}}
 
-Then manually email the file '''YourFeatureName.merge''' as an attachment to squid-dev mailing list.
+Then manually email the file '''!YourFeatureName.merge''' as an attachment to squid-dev mailing list.
 
 
 It's also possible to cherrypick what to send using the -r option. See {{{bzr help revisionspec}}} for details
