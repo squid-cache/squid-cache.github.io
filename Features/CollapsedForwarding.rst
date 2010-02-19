@@ -73,7 +73,7 @@ This option decreases latency on collapsed forwarding by initiating a revalidati
 This effect is achieved by the following primary changes
 
  1. On cache misses the new object is made immediately public, allowing new requests to attach to the pending request. If the object is later found to be private then the attached requests will all detach and initiate new requests.
- 2. On cache revalidations entry->mem_obj->ims_entry is set to the StoreEntry of the IMS query, allowing additional requests to optionally attach to the same backend IMS query.
+ 2. On cache revalidations entry->mem_obj->ims_entry is set to the !StoreEntry of the IMS query, allowing additional requests to optionally attach to the same backend IMS query.
  3. To avoid objects which for one or another reason gets stuck and does not receive a reply in a timely fashion entry->mem_obj->refresh_timestamp is used to avoid objects which has been pending for IMS reply more than 30 seconds.
  4. The optional refresh_stale_window also uses the same refresh_timestamp field to keep track of if a revalidation has been initiated or not. 
 
