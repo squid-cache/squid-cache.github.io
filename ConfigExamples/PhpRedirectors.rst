@@ -10,7 +10,7 @@
 <<TableOfContents>>
 
 == Why PHP? ==
-When looking at the documentation for squid I was relieved to find the page regarding [[/Features/Redirectors|redirecting]] urls. However, when I finally got there I was disappointed to see that it was in [[http://perl.org|perl]]. Not knocking perl, I know it is a more clean language than PHP, but I have little knowledge of the language, which limited my ability to edit and manipulate the redirect as I have done here.
+When looking at the documentation for squid I was relieved to find the page regarding [[Features/Redirectors|redirecting]] urls. However, when I finally got there I was disappointed to see that it was in [[http://perl.org|perl]]. Not knocking perl, I know it is a more clean language than PHP, but I have little knowledge of the language, which limited my ability to edit and manipulate the redirect as I have done here.
 
 == Getting Started ==
 It should be noted that your redirect should be executable.
