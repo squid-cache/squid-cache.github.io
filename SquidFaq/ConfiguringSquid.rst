@@ -267,9 +267,9 @@ Current squid releases provide a mix of header control directives and capability
 
 For details see the documentation in squid.conf.default or squid.conf.documented for your specific version of squid.
 
-http:/www.squid-cache.org/Versions/v2/HEAD/cfgman/
-http:/www.squid-cache.org/Versions/v3/HEAD/cfgman/
 
+http://www.squid-cache.org/Versions/v2/HEAD/cfgman/ , 
+http://www.squid-cache.org/Versions/v3/HEAD/cfgman/ ,
 References: [[http://www.iks-jena.de/mitarb/lutz/anon/web.en.html|Anonymous WWW]]
 
 == Can I make Squid go direct for some sites? ==
