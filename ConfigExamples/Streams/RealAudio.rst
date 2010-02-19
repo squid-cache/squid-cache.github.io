@@ -64,7 +64,7 @@ http_access deny POST RealAudio_mime
 
 === to cache the media stream ... ===
 
-POST are not cacheable by default. To enable caching of RealAudio POST:
+POST are not cacheable by default. To enable caching of !RealAudio POST:
 {{{
 cache allow POST RealAudio_mime
 }}}
