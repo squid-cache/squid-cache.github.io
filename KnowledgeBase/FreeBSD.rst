@@ -6,6 +6,8 @@
 
 = Squid on FreeBSD =
 
+<<TableOfContents>>
+
 == Pre-Built Binary Packages ==
 Binaries for Alpha and Intel platforms, from the FreeBSD ports collection.
 http://www.freebsd.org/cgi/ports.cgi?query=^squid-&stype=name
@@ -24,7 +26,7 @@ There are (December 2009) three different Squid packages to choose from:
  pkg_add -r squid31
 }}}
 
-== Building Squid on FreeBSD ==
+== Compiling ==
 
 Squid is developed on FreeBSD. The [[SquidFaq/CompilingSquid|general build instructions]] should be all you need.
 
