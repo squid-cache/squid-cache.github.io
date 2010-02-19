@@ -37,7 +37,7 @@ Squid knows about the following types of ACL elements:
  * '''ident''': string matching on the user's name
  * '''ident_regex''': regular expression pattern matching on the user's name
  * '''proxy_auth''': user authentication via external processes
- * '''proxy_auth_regex''': user authentication via external processes
+ * '''proxy_auth_regex''': regular expression pattern matching on user authentication via external processes
  * '''snmp_community''': SNMP community string matching
  * '''maxconn''': a limit on the maximum number of connections from a single client IP address
  * '''max_user_ip''': a limit on the maximum number of IP addresses one user can login from
@@ -49,7 +49,7 @@ Squid knows about the following types of ACL elements:
  * '''user_cert''': match against attributes in a user SSL certificate
  * '''ca_cert''': match against attributes a users issuing CA SSL certificate
  * '''ext_user''': match on user= field returned by external acl helper defined by external_acl_type
- * '''ext_user''': regular expression pattern matching on user= field returned by external acl helper defined by external_acl_type
+ * '''ext_user_regex''': regular expression pattern matching on user= field returned by external acl helper defined by external_acl_type
 
 '''Notes''':
 
