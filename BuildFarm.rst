@@ -36,7 +36,7 @@ Since the test nodes are doing more than just building Squid from a prepared tar
 
 '''Squid-3 Testing:'''
  * Bazaar
- * CppUnit
+ * !CppUnit
  * OpenSSL development library (libssl-dev)
  * Optional extras for better testing:
   * libcap (version 2.09+)
