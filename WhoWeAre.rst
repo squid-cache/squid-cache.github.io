@@ -13,7 +13,7 @@
  * Christos Tsantilas is 
  * [[DougDixon|Doug Dixon]]
  * [[FrancescoChemolli|Francesco Chemolli]] works mainly on documentation and maintains the wiki, but also chimes in with patches every now and then.
- * [[StevenWilton|Steven Wilton]] is bringing the [[SquidFaq/CyclicObjectStorageSystem|COSS]] storage engine to maturity
+ * [[StevenWilton|Steven Wilton]] is bringing the [[Features/CyclicObjectStorageSystem|COSS]] storage engine to maturity
 
 = Other Contributors =
  * Countless independent [[http://www.squid-cache.org/CONTRIBUTORS.txt|Contributors]].
