@@ -612,7 +612,7 @@ router#
 If none of these steps yield any useful clues, post the vital information including the versions of your router, proxy, operating system, your traffic redirection rules, debugging output and any other things you have tried to the squid-users mailing list.
 
 ==== Why can't I use authentication together with interception proxying? ====
-Interception Proxying works by having an active agent (the proxy) where there should be none. The browser is not expecting it to be there, and it's for all effects and purposes being cheated or, at best, confused.  As an user of that browser, I would ''require'' it not to give away any credentials to an unexpected party, wouldn't you agree? Especially so when the user-agent can do so without notifying the user, like Microsoft browsers can do when the proxy offers any of the Microsoft-designed authentication schemes such as NTLM (see [[../ProxyAuthentication]] and NegotiateAuthentication).
+Interception Proxying works by having an active agent (the proxy) where there should be none. The browser is not expecting it to be there, and it's for all effects and purposes being cheated or, at best, confused.  As an user of that browser, I would ''require'' it not to give away any credentials to an unexpected party, wouldn't you agree? Especially so when the user-agent can do so without notifying the user, like Microsoft browsers can do when the proxy offers any of the Microsoft-designed authentication schemes such as NTLM (see [[../ProxyAuthentication]] and [[Features/NegotiateAuthentication]]).
 
 In other words, it's not a squid bug, but a '''browser security''' feature.
 
