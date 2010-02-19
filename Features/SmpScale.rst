@@ -72,7 +72,7 @@ We have broken the SMP requirements of Squid into a series of smaller work units
 
  3. Finally those resulting jobs made into SMP threads that can utilize one of many CPUs.  Code checked for thread safety and efficient resource handling.  Recalling that a ''Job'' requires its ''Calls'' to happen in sequence.
 
-  * Probably wrong but it seems that ''AsyncCalls'' may float between CPU as long as they retain the sequential nature.  ''AsyncJobs'' may be run fully parallel interleaved, perhapse with some locking where one Job depends on another.
+  * Probably wrong but it seems that ''!AsyncCalls'' may float between CPU as long as they retain the sequential nature.  ''!AsyncJobs'' may be run fully parallel interleaved, perhapse with some locking where one Job depends on another.
 
 
 Some other features are aimed at reducing the blocker problems for SMP. Not exactly forward steps along the SMP capability pathway, but required to make those steps possible.
