@@ -65,9 +65,9 @@ is known to work on at least the following platforms:
 '''Linux:'''
   * CentOS
   * [[KnowledgeBase/Debian|Debian]]
-  * Fedora Core
+  * [[KnowledgeBase/Fedora|Fedora Core]]
   * Gentoo
-  * RedHat Enterprise Linux
+  * [[KnowledgeBase/RedHat|RedHat Enterprise Linux]]
   * Ubuntu
 
 '''Unix:'''
@@ -86,7 +86,7 @@ is known to work on at least the following platforms:
 
 '''Other:'''
   * OS/2
-  * Solaris
+  * [[KnowledgeBase/Solaris|Solaris]]
 
 
 If you encounter any platform-specific problems, please let us know by registering an entry in our [[http://bugs.squid-cache.org/|bug database]].
