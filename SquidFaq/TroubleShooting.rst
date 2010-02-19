@@ -317,7 +317,7 @@ This could be a permission problem.  Does the Squid userid have permission to ex
 ##}}}
 
 == Sending bug reports to the Squid team ==
-see [[SquidFaq/BugReports]]
+see [[SquidFaq/BugReporting]]
 
 == FATAL: ipcache_init: DNS name lookup tests failed ==
 
