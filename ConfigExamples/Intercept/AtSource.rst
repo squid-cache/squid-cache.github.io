@@ -16,7 +16,7 @@
 This configuration is to use NAT to Intercept web requests transparently inside a Linux machine without any kind of client application configuration or proxy support.
 It is extremely intrusive and not applicable unless full control is had over the client machine (ie rogue application server).
 
-'''NP:''' This configuration is given for use '''on a single client box'''. We have had no successful reports of people using DNAT at the gateway machine to direct traffic at a separate squid box. We have had several good reports about [[Intercept/IptablesPolicyRoute]] for those setups.
+'''NP:''' This configuration is given for use '''on a single client box'''. We have had no successful reports of people using DNAT at the gateway machine to direct traffic at a separate squid box. We have had several good reports about [[../IptablesPolicyRoute]] for those setups.
 
 
 == iptables configuration ==
