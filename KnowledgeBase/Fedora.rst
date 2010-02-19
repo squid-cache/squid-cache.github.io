@@ -26,9 +26,9 @@ Maintainers: https://admin.fedoraproject.org/pkgdb/packages/name/squid
 ## apt-get install squid3
 ##}}}
 
-## == Compiling ==
+== Compiling ==
 ##
-## == ==
+== ==
 
 ----
 CategoryKnowledgeBase
