@@ -10,7 +10,7 @@ Participants:
 
 Primary goal:
 
-  * Port NegotiateAuthentication support from the negotiate-2.5 branch to Squid-3.
+  * Port [[Features/NegotiateAuthentication]] support from the negotiate-2.5 branch to Squid-3.
 
 Secondary goals:
 
@@ -19,7 +19,7 @@ Secondary goals:
 
 Accomplishments:
 
-  * NegotiateAuthentication fully merged to HEAD
+  * [[Features/NegotiateAuthentication]] fully merged to HEAD
   * [[Squid-2.6]] development cycle started
   * [[Features/ConnPin|Connection Pinning]] implemented in Squid-2.
 
