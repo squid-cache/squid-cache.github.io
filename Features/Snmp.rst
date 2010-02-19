@@ -232,8 +232,8 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 ||<-5> '''Peer Servers Table (Squid-3.1)''' ||
 || *.1.5.1.3.1 || cachePeerIndex || INTEGER || 3.1+ ||A unique value, greater than zero for each SquidConf:cache_peer instance in the managed system.||
 || *.1.5.1.3.2 || cachePeerName || STRING || 3.1+ ||The FQDN name or internal alias for the peer cache||
-|| *.1.5.1.3.3 || cachePeerAddressType || InetAddressType || 3.1+ ||The type of Internet address by which the peer cache is reachable.||
-|| *.1.5.1.3.4 || cachePeerAddress || InetAddress || 3.1+ ||The Internet address for the peer cache.  The type of this address is determined by the value of the cachePeerAddressType object.||
+|| *.1.5.1.3.3 || cachePeerAddressType || !InetAddressType || 3.1+ ||The type of Internet address by which the peer cache is reachable.||
+|| *.1.5.1.3.4 || cachePeerAddress || !InetAddress || 3.1+ ||The Internet address for the peer cache.  The type of this address is determined by the value of the cachePeerAddressType object.||
 || *.1.5.1.3.5 || cachePeerPortHttp || INTEGER || 3.1+ ||The port the peer listens for HTTP requests||
 || *.1.5.1.3.6 || cachePeerPortIcp || INTEGER || 3.1+ ||The port the peer listens for ICP requests should be 0 if not configured to send ICP requests||
 || *.1.5.1.3.7 || cachePeerType || INTEGER || 3.1+ ||Peer Type||
