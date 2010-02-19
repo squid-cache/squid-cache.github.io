@@ -117,7 +117,6 @@ Some options which are used often include:
                         [/usr/local/squid]
 --enable-dlmalloc[=LIB] Compile & use the malloc package by Doug Lea
 --enable-gnuregex       Compile GNUregex
---enable-splaytree      Use SPLAY trees to store ACL lists
 --enable-xmalloc-debug  Do some simple malloc debugging
 --enable-xmalloc-debug-trace
                         Detailed trace of memory allocations
@@ -126,13 +125,11 @@ Some options which are used often include:
 --enable-async-io       Do ASYNC disk I/O using threads
 --enable-icmp           Enable ICMP pinging
 --enable-delay-pools    Enable delay pools to limit bandwith usage
---enable-mem-gen-trace  Do trace of memory stuff
 --enable-useragent-log  Enable logging of User-Agent header
 --enable-kill-parent-hack
                         Kill parent on shutdown
 --enable-cachemgr-hostname[=hostname]
                         Make cachemgr.cgi default to this host
---enable-arp-acl        Enable use of ARP ACL lists (ether address)
 --enable-htpc           Enable HTCP protocol
 --enable-forw-via-db    Enable Forw/Via database
 --enable-cache-digests  Use Cache Digests
@@ -166,30 +163,10 @@ You may need to upgrade your gcc installation to a more recent version. Check yo
 }}}
 If it is earlier than 2.7.2, you might consider upgrading. Gcc 2.7.2 is very old and not widely supported.
 
-<<Include(KnowledgeBase/Windows,"Cygwin (Windows)",3,from="^==\ Compiling\ with\ Cygwin\ ==$",to="^==\ ")>>
-<<Include(KnowledgeBase/Debian,"Debian",3,from="^==\ Compiling\ ==$",to="^==\ ")>>
-
-=== NetBSD, OpenBSD ===
-
-see FreeBSD.
-
-<<Include(KnowledgeBase/FreeBSD,"FreeBSD",3,from="^== Building Squid on FreeBSD ==$", to="^== ")>>
-
-=== RedHat Enterprise Linux ===
-
-The following ./configure options install Squid into the RedHat structure properly:
-{{{
-  --prefix=/usr
-  --includedir=/usr/include
-  --datadir=/usr/share
-  --bindir=/usr/sbin
-  --libexecdir=/usr/lib/squid
-  --localstatedir=/var
-  --sysconfdir=/etc/squid
-}}}
-
-|| /!\ || SELinux on RHEL 5 does not give the proper context to the default SNMP port (3401) (as of selinux-policy-2.4.6-106.el5) .  The command "semanage port -a -t http_cache_port_t -p udp 3401" takes care of this problem (via http://tanso.net/selinux/squid/).||
-
+<<Include(KnowledgeBase/Windows,"Cygwin (Windows)",3,from="^== Compiling with Cygwin ==$",to="^==\ ")>>
+<<Include(KnowledgeBase/Debian,"Debian, Ubuntu",3,from="^== Compiling ==$",to="^==\ ")>>
+<<Include(KnowledgeBase/Fedora,"Fedora",3,from="^== Compiling ==$", to="^== ")>>
+<<Include(KnowledgeBase/FreeBSD,"FreeBSD, NetBSD, OpenBSD",3,from="^== Compiling ==$", to="^== ")>>
 <<Include(KnowledgeBase/Windows,"MinGW (Windows)",3,from="^==\ Compiling\ with\ MinGW\ ==$",to="^==\ ")>>
 
 === OS/2 ===
@@ -228,19 +205,17 @@ Now, '''don't forget to set EMXOPT before running squid each time'''. I
 recommend using the -Y and -N options.
 
 
-<<Include(KnowledgeBase/Solaris,"Solaris",3,from="^== Building Squid on Solaris ==$", to="^== ")>>
+<<Include(KnowledgeBase/RedHat,"RedHat, RHEL",3,from="^== Compiling ==$", to="^== ")>>
+<<Include(KnowledgeBase/Solaris,"Solaris",3,from="^== Compiling ==$", to="^== ")>>
 
-== Ubuntu ==
-
-see Debian.
 
 === Other Platforms ===
 
 Please let us know of other platforms you have built squid. Whether successful or not.
 
-Please check the page of platforms on which Squid is known to compile.
-Your problem might be listed there together with a solution.  If it isn't listed there, mail
-us what you are trying, your Squid version, and the problems you encounter.
+Please check the [[SquidFaq/AboutSquid#What_Operating_Systems_does_Squid_support.3F|page of platforms]] on which Squid is known to compile. 
+
+If you have a problem not listed above with a solution, mail us at '''squid-dev''' what you are trying, your Squid version, and the problems you encounter.
 
 
 == I see a lot warnings while compiling Squid. ==
