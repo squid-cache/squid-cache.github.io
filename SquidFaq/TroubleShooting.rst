@@ -362,7 +362,7 @@ Either
  {i} Maybe you are running in the HTTP Accelerator mode and there is already a HTTP server running on port 80?  If you're really stuck, install the way cool [[ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/|lsof]] utility to show you which process has your port in use.
 
 == FATAL: All redirectors have exited! ==
-This is explained in ../SquidRedirectors.
+This is explained in Features/Redirectors.
 
 == FATAL: Cannot open /usr/local/squid/logs/access.log: (13) Permission denied ==
 In Unix, things like ''processes'' and ''files'' have an ''owner''. For Squid, the process owner and file owner should be the same.  If they are not the same, you may get messages like "permission denied."
