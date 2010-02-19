@@ -272,7 +272,7 @@ Many users have found improved performance and memory utilization when linking S
 === GNU malloc ===
 To make Squid use GNU malloc follow these simple steps:
 
- . - Download the GNU malloc source, available from one of [[[http://www.gnu.org/order/ftp.html|The]].   - Compile it
+ . - Download the GNU malloc source, available from one of [[http://www.gnu.org/order/ftp.html|The GNU mirrors]].   - Compile it
 
 {{{
 % gzip -dc malloc.tar.gz | tar xf -
