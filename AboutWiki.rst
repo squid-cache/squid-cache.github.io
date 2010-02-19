@@ -10,7 +10,6 @@ A Wiki is a collaborative site, anyone can contribute and share:
  * Search for page titles or text within pages using the search box at the top of any page
  * See HelpForBeginners to get you going, HelpContents for all help pages.
 
-To learn more about what a WikiWikiWeb is, read about MoinMoin:WhyWikiWorks and the MoinMoin:WikiNature. Also, consult the M
-oinMoin:WikiWikiWebFaq.
+To learn more about what a WikiWikiWeb is, read about MoinMoin:WhyWikiWorks and the MoinMoin:WikiNature. Also, consult the MoinMoin:WikiWikiWebFaq.
 
 This wiki is powered by MoinMoin.
