@@ -11,15 +11,7 @@ Most operating system distributions provide packages in the formats appropriate 
 
 
 <<Include(KnowledgeBase/Debian,"Debian",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
-
-=== Fedora ===
-http://download.fedora.redhat.com/pub/fedora/linux/
-
-Binary RPMs for Fedora are available via the Fedora download/update servers for all active Fedora versions like most other free software.
-
-Maintainers: https://admin.fedoraproject.org/pkgdb/packages/name/squid
-
-
+<<Include(KnowledgeBase/Fedora,"Fedora",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/FreeBSD,"FreeBSD",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 
 === Gentoo ===
@@ -59,33 +51,9 @@ Binaries for all NetBSD platforms, from the NetBSD packages collection.
 ==== Squid-2.7 ====
  . ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid27/README.html
 
-=== RedHat Enterprise Linux (RHEL) ===
-Jiri Skala @ RedHat maintains experimental squid packages for Red Hat Enterprise Linux 4 and 5. These packages are unofficial and are not supported by Red Hat. They are intended for RHEL users who would like to try newer squid packages.
+<<Include(KnowledgeBase/RedHat,"RedHat Enterprise Linux (RHEL)",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
+<<Include(KnowledgeBase/Solaris,"Solaris",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 
-==== Squid-3.0 ====
- * '''Maintainer:''' Jiri Skala @ RedHat
- * '''Download:''' http://people.redhat.com/jskala/squid/
-
-==== Squid-2.7 ====
- * '''Maintainer:''' Jiri Skala @ RedHat
- * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-2.7.STABLE6-1.el5
- * '''RHEL 4 Download:''' http://people.redhat.com/jskala/squid/squid-2.7.STABLE6-1.el4
-
-==== Squid-2.6 ====
- * '''Maintainer:''' Jiri Skala @ RedHat
- * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-2.6.STABLE22-1.el5
- * '''RHEL 4 Download:''' http://people.redhat.com/jskala/squid/squid-2.6.STABLE22-1.el4
-
-==== Squid-2.5 ====
- . (YET TO BE WRITTEN)
-
-=== Solaris ===
-http://www.sunfreeware.com/ hosts binary Squid packages for SPARC/Solaris 2.5-10 and x86/Solaris 8-10.
-
-==== Squid-2.7 ====
-{{{
- pkg-get -i squid
-}}}
 === Ubuntu ===
 Packages available for Squid on multiple architectures.
 
