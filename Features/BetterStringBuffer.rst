@@ -76,7 +76,7 @@ NP: a generically-written buffer may be a string itself referencing another larg
 
   {i} This needs clarification. Please define the primary roles of the buffer and string classes. For example, the string is responsible for maintaining information about an area of a buffer (buffer, offset, size) and read/write locks, while the buffer is responsible for everything else (memory management, duplication, insertion, search, comparison, etc.). This high-level role separation should probably be discussed before the class-specific sections.
 
-The sub-note is about; that there may in fact be no need for two such classes. The memory-manager may be completely capable of handling allocations, leaving 'parent' and 'child' layers of the model a single class type capable of referring to other objects of its own type. This still needs investigation of the different use and behavior of the current MemBuf, char*, and SquidString.
+The sub-note is about; that there may in fact be no need for two such classes. The memory-manager may be completely capable of handling allocations, leaving 'parent' and 'child' layers of the model a single class type capable of referring to other objects of its own type. This still needs investigation of the different use and behavior of the current !MemBuf, char*, and SquidString.
 
 
 === JIT Strings ===
