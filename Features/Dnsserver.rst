@@ -52,7 +52,7 @@ Note that in some versions, Squid limits ''dns_children'' to 32.  To increase it
 
  (!) Use the internal DNS resolver now built into Squid. It is not limited to single request-response blocking.
 
-First, find out if you have enough ''dnsserver'' processes running by looking at the ../CacheManager ''dns'' output.  Ideally, you should see that the first ''dnsserver'' handles a lot of requests, the second one less than the first, etc.  The last ''dnsserver'' should have serviced relatively few requests.  If there is not an obvious decreasing trend, then you need to increase the number of ''dns_children'' in the configuration file.  If the last ''dnsserver'' has zero requests, then you definately have enough.
+First, find out if you have enough ''dnsserver'' processes running by looking at the SquidFaq/CacheManager ''dns'' output.  Ideally, you should see that the first ''dnsserver'' handles a lot of requests, the second one less than the first, etc.  The last ''dnsserver'' should have serviced relatively few requests.  If there is not an obvious decreasing trend, then you need to increase the number of ''dns_children'' in the configuration file.  If the last ''dnsserver'' has zero requests, then you definately have enough.
 
 Another factor which affects the DNS service time is the proximity of your DNS resolver.  Normally we do not recommend running Squid and Resolver on the same host.  Instead you should try use a DNS resolver on a different host, but on the same LAN. If your DNS traffic must pass through one or more routers, this could be causing unnecessary delays.
 
