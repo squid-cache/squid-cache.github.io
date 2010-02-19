@@ -1,1 +1,1 @@
-##REDIRECT Features/Snmp
+#redirect Features/Snmp
