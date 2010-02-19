@@ -24,7 +24,7 @@ acl youtube_domains dstdomain .youtube.com .googlevideo.com .ytimg.com
 http_access deny youtube_domains
 }}}
 
-Other sites than YouTube also host this kind of content. See the Flash Video section of [[ConfigExamples/Streams/Other]] for general flash media patterns withut neeing to block specific websites.
+Other sites than !YouTube also host this kind of content. See the Flash Video section of [[ConfigExamples/Streams/Other]] for general flash media patterns withut neeing to block specific websites.
 
 ----
 CategoryConfigExample
