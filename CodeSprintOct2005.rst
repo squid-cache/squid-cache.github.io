@@ -25,5 +25,5 @@ Accomplishments:
 
 Failures:
 
-  * We did not manage to get Samba-4 running for the Negotiate tests. Instead a [[NegotiateAuthentication|Windows host was used to verify the authentication exchanges]].
+  * We did not manage to get Samba-4 running for the Negotiate tests. Instead a [[Features/NegotiateAuthentication|Windows host was used to verify the authentication exchanges]].
   * UPDATE: using latest Samba-4 snapshot (04-Nov-2005) Negotiate support now seems to work.
