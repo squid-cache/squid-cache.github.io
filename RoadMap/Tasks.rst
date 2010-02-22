@@ -25,7 +25,7 @@ Some of the more urgent smaller tasks inside these big ones have been broken out
 
  * Removing useless includes.
   1. Pick a system .h listed in compat/types.h and drop all other places with #include by src/* and includes/* files.
-  2. going through each .h file and minimizing the other .h it includes, using class pre-defines where possible. (This is being done during SourceLayout somewhat so contact squid-dev before attempting).
+  2. going through each .h file and minimizing the other .h it includes, using class pre-defines where possible. (This is being done during Features/SourceLayout somewhat so contact squid-dev before attempting).
 
  * Check external Copyrights are up-to-date in CREDITS
   1. Go through the helper/* files and check ~/CREDITS contains one copy of each copyright for any files with header-copyright present.
