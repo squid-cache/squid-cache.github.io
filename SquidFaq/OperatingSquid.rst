@@ -121,7 +121,7 @@ squid -k shutdown
 }}}
  4. Once Squid exits, you may immediately start it up again.
 
-Since you deleted the old '''cache_dir''' from squid.conf, Squid won't try to access that directory.  If you use the RunCache script, Squid should start up again automatically.
+Since you deleted the old '''cache_dir''' from squid.conf, Squid won't try to access that directory.  If you use the !RunCache script, Squid should start up again automatically.
 
 Now Squid is no longer using the cache directory that you removed from the config file.  You can verify this by checking "Store Directory" information with the cache manager.  From the command line, type: {{{
 squidclient mgr:storedir
