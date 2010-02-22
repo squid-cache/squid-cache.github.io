@@ -36,7 +36,7 @@ Implementing a single semi-generic referenced-String class that acts as both a p
 
 Steps:
  * discuss the design below until its clear what the best implementation is for Squid.
-    JIT, RefCount, const String, others?
+    JIT, !RefCount, const String, others?
  * Create a class to implement it.
  * Insert the class at request read handler and incrementally push down the request pathway
  * Insert the class at reply read handler and incrementally push down the network reply pathway
