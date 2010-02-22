@@ -12,7 +12,7 @@
   * Follow the coding style of the rest of the code. 
   * Submit diffs with {{{diff -Nur old new}}}. It is a good idea to review the diff before submission to ensure it contains your changes and no unrelated/accidental changes. 
   * Squid uses automake, so any makefile changes must be done in Makefile.am, NOT Makefile.in. 
-  * On any changes to Makefile.am files or configure.in, run ./bootstrap.sh to regenerate automake/autoconf derived files (see also SourceBootstrap)
+  * On any changes to Makefile.am files or configure.in, run ./bootstrap.sh to regenerate automake/autoconf derived files (see also ProgrammingGuide/Bootstrap)
   * Consider hosting your development at devel.squid-cache.org until ready to be merged into the main sources 
 
 
