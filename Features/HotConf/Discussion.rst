@@ -395,7 +395,7 @@ For now I will concentrate on your design for the config objects and point out w
 }}}
 
 You make 3 design choices above.
- * ''Module::Config existence''. I agree and am coding with you in SourceLayout for this.
+ * ''Module::Config existence''. I agree and am coding with you in Features/SourceLayout for this.
  * ''Module::Config inheriting from a base class''. May be useful if the API methods are to be virtual. The only use I see for this is the cachemgr config 'dump' display. I could go either way here.
  * ''Module::Config being integrated into a Squid::Config''. This worries me. A _lot_ of the current dependency loops in Squid are directly caused by the existence of struct !SquidConfig. I was under the impression that the cleanup work was dropping such dependency. We need to clarify this further.
 
