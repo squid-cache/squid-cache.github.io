@@ -391,13 +391,13 @@ Yes I think we are definitely talking to different things. I will try harder to 
 For now I will concentrate on your design for the config objects and point out where I disagree instead of comparing:
 
 {{{
- a. Each module has its own Config class (i.e., Module::Config), inherited from some common base !ModuleConfig class. Only module M users know the details of M::Config. Others just know it is an instance of the base !ModuleConfig class, with a few common methods for reporting and such. Configs from all modules are collected into one !SquidConfig class, but that is not important in most cases. The exact shape of that !SquidConfig class is not important for now.
+ a. Each module has its own Config class (i.e., Module::Config), inherited from some common base ModuleConfig class. Only module M users know the details of M::Config. Others just know it is an instance of the base ModuleConfig class, with a few common methods for reporting and such. Configs from all modules are collected into one SquidConfig class, but that is not important in most cases. The exact shape of that SquidConfig class is not important for now.
 }}}
 
 You make 3 design choices above.
  * ''Module::Config existence''. I agree and am coding with you in SourceLayout for this.
  * ''Module::Config inheriting from a base class''. May be useful if the API methods are to be virtual. The only use I see for this is the cachemgr config 'dump' display. I could go either way here.
- * ''Module::Config being integrated into a Squid::Config''. This worries me. A _lot_ of the current dependency loops in Squid are directly caused by the existence of struct SquidConfig. I was under the impression that the cleanup work was dropping such dependency. We need to clarify this further.
+ * ''Module::Config being integrated into a Squid::Config''. This worries me. A _lot_ of the current dependency loops in Squid are directly caused by the existence of struct !SquidConfig. I was under the impression that the cleanup work was dropping such dependency. We need to clarify this further.
 
 
 {{{
