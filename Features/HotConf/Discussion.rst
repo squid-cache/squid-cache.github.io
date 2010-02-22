@@ -41,7 +41,7 @@ NP: I envision startup to be just a special case of reconfigure. where defaults 
 
 My model is one where the object with API methods is either inherited or templated from a master/shared object which provides the basic tokenizing methods. Similar to Robs earlier attempt at a parser, but without the call nesting going outside the currently parsing object. (yes, I must make exception for ACL list already since they are tacked on the end of many things, but after much browsing of the config I see no others)
 
-The parser is tightly wound with hot-conf since hot-conf is a desirable and planned effect of the parsing design. Not the other way around. This is needed to RefCount the objects shared between old conf and new conf. Parser controls and uses both current and future dumb::Config to determine what goes into future (a !RefCounted clone of the current or a new allocation). Indeed Parser controls whether there is a future object or if its editing current on the spot (think err directory locations, size limits, and other state-agnostic settings).
+The parser is tightly wound with hot-conf since hot-conf is a desirable and planned effect of the parsing design. Not the other way around. This is needed to !RefCount the objects shared between old conf and new conf. Parser controls and uses both current and future dumb::Config to determine what goes into future (a !RefCounted clone of the current or a new allocation). Indeed Parser controls whether there is a future object or if its editing current on the spot (think err directory locations, size limits, and other state-agnostic settings).
 
 -- AmosJeffries <<DateTime(2009-04-10T01:58:00-1200)>>
 
