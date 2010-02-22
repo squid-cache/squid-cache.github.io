@@ -23,7 +23,7 @@ The future aims of the project developers is to provide a single release with al
 ## these macros are done to include the exact same text into a 3.0 page when its created.
 === Split Choice ===
 
-As it stands, users will still need to make a choice between [[Squid-3.0]] and [[Squid-2.7]] when moving away from [[Squid-2.5]] and [[Squid-2.6]]. This decision needs to be made on the basis of their feature needs.
+As it stands, users will still need to make a choice between [[Squid-3.0]] and [[Squid-2.7]] when moving away from Squid-2.5 and [[Squid-2.6]]. This decision needs to be made on the basis of their feature needs.
 
 The only help we can provide for this is to point out that:
  * [[Squid-3.0]] has been largely sponsored by the Web-Filtering user community. With features aimed at adapting and altering content in transit.
