@@ -9,7 +9,7 @@ The Squid project has now moved to Bazaar as its configuration management tool (
 
 To interactively browse the repository you can use [[http://www.squid-cache.org/bzrview/|BzrView]], the development trunk is at http://www.squid-cache.org/bzrview/squid3/trunk/changes.
 
-|| {i} || In order to use the CVS sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in SourceBootstrap.||
+|| {i} || In order to use the CVS sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in ProgrammingGuide/Bootstrap.||
 
  '''Squid-2:'''
 || /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb]].||
@@ -85,8 +85,7 @@ see [[CvsInstructions]]
 
 === Getting the sources via tarball ===
 
-As a more lightweight alternative you can use rsync; the latest sources are available at address 
-{{{http://squid-cache.org/Versions/v3/HEAD/}}}
+As a more lightweight alternative you can use rsync; the latest sources are available at address http://squid-cache.org/Versions/v3/HEAD/
 
 === Getting the sources via rsync ===
 As a more lightweight alternative to the tarballs you can use rsync; the latest sources are available at address {{{rsync://squid-cache.org/source/<version>}}}
