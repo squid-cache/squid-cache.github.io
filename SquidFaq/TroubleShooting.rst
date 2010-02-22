@@ -11,7 +11,7 @@ If your Squid version is older than 2.6 is is very outdated. Many of the issues 
 Your first point of troubleshooting should be to test with a newer ''supported'' release and resolve any remaining issues with that install.
 
 Current releases can be retrieved from http://www.squid-cache.org/Versions or your operating system distributor.
- /!\ RHEL users will need to use an [[http://www.squid-cache.org/Download/binaries.dyn|unofficial package]] or build their own. Due to RedHat update policies.
+ /!\ RHEL users will need to use an [[http://www.squid-cache.org/Download/binaries.dyn|unofficial package]] or build their own. Due to !RedHat update policies.
 
 == Why am I getting "Proxy Access Denied?" ==
 You may need to set up the ''http_access'' option to allow requests from your IP addresses.    Please see ../SquidAcl for information about that.
