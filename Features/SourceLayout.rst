@@ -48,7 +48,7 @@ Key:
 || :\ || ''ip/'' || IP Protocol || Ip* Qos* || Add Ip Namespace and rename classes ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* *log.cc ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
-|| {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* RedirectInternal.* ||
+|| {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 
 
