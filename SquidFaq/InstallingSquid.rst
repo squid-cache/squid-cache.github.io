@@ -24,7 +24,7 @@ After [[SquidFaq/CompilingSquid]], you can install it with this simple command:
 % make install
 }}}
 
-If you have enabled ICMP or the [[SqudidFaq/OperatingSquid|pinger]] then you will also want to type
+If you have enabled ICMP or the [[SquidFaq/OperatingSquid|pinger]] then you will also want to type
 {{{
 % su
 # make install-pinger
