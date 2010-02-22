@@ -3,7 +3,9 @@
 
 == Current Features ==
 
-For the currently configurable features see the SquidFaq
+For the currently configurable features see the SquidFaq.
+
+Old smaller features are referenced in the WishList. Please do not use it anymore.
 
 == Future ==
 Here is an ''auto-generated'' list of features that are not yet completed or started.
