@@ -59,7 +59,7 @@ The ''arp'' ACL requires the special configure option --enable-arp-acl.  Further
 
 The SNMP ACL element and access list require the --enable-snmp configure option.
 
-Some ACL elements can cause processing delays.  For example, use of ''src_domain'' and ''srcdom_regex'' require a reverse DNS lookup on the client's IP address.  This lookup adds some delay to the request.
+Some ACL elements can cause processing delays.  For example, use of ''srcdomain'' and ''srcdom_regex'' require a reverse DNS lookup on the client's IP address.  This lookup adds some delay to the request.
 
 Each ACL element is assigned a unique ''name''.  A named ACL element consists of a ''list of values''. When checking for a match, the multiple values use OR logic.  In other words, an ACL element is ''matched'' when any one of its values is a match.
 
@@ -82,6 +82,14 @@ There are a number of different access lists:
  * SquidConf:snmp_access: Controls SNMP client access to the cache.
  * SquidConf:broken_posts: Defines requests for which squid appends an extra CRLF after POST message bodies as required by some broken origin servers.
  * SquidConf:cache_peer_access: Controls which requests can be forwarded to a given neighbor (SquidConf:cache_peer).
+ * SquidConf:htcp_access: Controls which remote machines are able to make HTCP requests.
+ * SquidConf:htcp_clr_access: Controls which remote machines are able to make HTCP CLR requests.
+ * SquidConf:request_header_access: Controls which request headers are removed when violating HTTP protocol.
+ * SquidConf:reply_header_access: Controls which reply headers are removed from delivery to the client when violating HTTP protocol.
+ * SquidConf:delay_access: Controls which requests are handled by what [[Features/DelayPools|delay pool]]
+ * SquidConf:icap_access: (replaced by SquidConf:adaptation_access in [[Squid-3.1]]) What requests may be sent to a particular ICAP server.
+ * SquidConf:adaptation_access: What requests may be sent to a particular ICAP or eCAP filter service.
+ * SquidConf:log_access: Controls which requests are logged. This is global and overrides specific file access lists appended to SquidConf:access_log directives.
 
 '''Notes''':
 
