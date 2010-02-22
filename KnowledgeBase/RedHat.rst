@@ -9,19 +9,19 @@
 == Pre-Built Binary Packages ==
 
 ## '''Maintainer:''' 
-Jiri Skala @ RedHat maintains experimental squid packages for Red Hat Enterprise Linux 4 and 5. These packages are unofficial and are not supported by Red Hat. They are intended for RHEL users who would like to try newer squid packages.
+Jiri Skala @ !RedHat maintains experimental squid packages for Red Hat Enterprise Linux 4 and 5. These packages are unofficial and are not supported by Red Hat. They are intended for RHEL users who would like to try newer squid packages.
 
 === Squid-3.0 ===
- * '''Maintainer:''' Jiri Skala @ RedHat
+ * '''Maintainer:''' Jiri Skala @ !RedHat
  * '''Download:''' http://people.redhat.com/jskala/squid/
 
 === Squid-2.7 ===
- * '''Maintainer:''' Jiri Skala @ RedHat
+ * '''Maintainer:''' Jiri Skala @ !RedHat
  * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-2.7.STABLE6-1.el5
  * '''RHEL 4 Download:''' http://people.redhat.com/jskala/squid/squid-2.7.STABLE6-1.el4
 
 === Squid-2.6 ===
- * '''Maintainer:''' Jiri Skala @ RedHat
+ * '''Maintainer:''' Jiri Skala @ !RedHat
  * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-2.6.STABLE22-1.el5
  * '''RHEL 4 Download:''' http://people.redhat.com/jskala/squid/squid-2.6.STABLE22-1.el4
 
@@ -37,7 +37,7 @@ Jiri Skala @ RedHat maintains experimental squid packages for Red Hat Enterprise
 
 == Compiling ==
 
-The following ./configure options install Squid into the RedHat structure properly:
+The following ./configure options install Squid into the !RedHat structure properly:
 {{{
   --prefix=/usr
   --includedir=/usr/include
