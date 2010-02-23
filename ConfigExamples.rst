@@ -27,6 +27,9 @@ A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ w
 
 == Current configuration examples ==
 
+Categories:
+<<Navigation(children,1)>>
+
 === Authentication ===
 [[Features/Authentication|Overview and explanation]]
 <<FullSearch(title:regex:^ConfigExamples/Authenticate/.*$)>>
