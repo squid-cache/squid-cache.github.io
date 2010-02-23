@@ -170,9 +170,9 @@ http_access deny all
 Note that SquidConf:ident_lookup_access only permits/denies whether a machine is tested for its Ident. This does not directly alter access to the users request.
 
 == Is there a way to do ident lookups only for a certain host and compare the result with a userlist in squid.conf? ==
-You can use the ''SquidConf:ident_access'' directive to control for which hosts Squid will issue [[ftp://ftp.isi.edu/in-notes/rfc931.txt|ident lookup]] requests.
+You can use the ''SquidConf:ident_lookup_access'' directive to control for which hosts Squid will issue [[ftp://ftp.isi.edu/in-notes/rfc931.txt|ident lookup]] requests.
 
-Additionally, if you use a ''ident'' ACL in squid conf, then Squid will make sure an ident lookup is performed while evaluating the acl even if ''SquidConf:ident_access'' does not indicate ident lookups should be performed.
+Additionally, if you use a ''ident'' ACL in squid.conf, then Squid will make sure an ident lookup is performed while evaluating the acl even if ''SquidConf:ident_lookup_access'' does not indicate ident lookups should be performed earlier.
 
 However, Squid does not wait for the lookup to complete unless the ACL rules require it.  Consider this configuration:
 
@@ -191,7 +191,7 @@ Another option is to use proxy-authentication.    In this scheme, you assign use
 In Squid this authentication is handled via external processes.  For information on how to configure this, please see [[SquidFaq/ProxyAuthentication]].
 
 == Do you have a CGI program which lets users change their own proxy passwords? ==
-[[mailto:orso@brturbo.com|Pedro L Orso]] has adapted the Apache's ''htpasswd'' into a CGI program called  [/htpasswd/chpasswd-cgi.tar.gz chpasswd.cgi].
+[[mailto:orso@brturbo.com|Pedro L Orso]] has adapted the Apache's ''htpasswd'' into a CGI program called  [[http://www.squid-cache.org/htpasswd/|chpasswd.cgi]].
 
 == Common Mistakes ==
 === And/Or logic ===
@@ -346,7 +346,7 @@ On the other hand, if the list contains origin server hostnames, simply change '
 == Does anyone have a ban list of porn sites and such? ==
  * The [[http://www.squidguard.org/blacklists.html|SquidGuard]] redirector folks have links to some lists.
  * Bill Stearns maintains the [[http://www.stearns.org/sa-blacklist/|sa-blacklist]] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
- * The [[http://www.rambris.com/fredrik/sleezeball/|SleezeBall site]] has a list of patterns that you can download.
+ * The [[http://freshmeat.net/projects/sleezeball/|SleezeBall site]] has a list of patterns that you can download.
 
 == Squid doesn't match my subdomains ==
 If you are using Squid-2.4 or later then keep in mind that dstdomain acls uses different syntax for exact host matches and entire domain matches. ''www.example.com'' matches the '''exact host''' ''www.example.com'', while ''.example.com'' matches the '''entire domain''' example.com (including example.com alone)
@@ -370,10 +370,10 @@ For example, if you said that ''co.us'' is LESS than ''fff.co.us'', then the Spl
 
 similarly, if you said that ''co.us'' is GREATER than ''fff.co.us'', then the Splay tree searching algorithm might never discover ''co.us'' as a match for ''bbb.co.us''.
 
-The bottom line is that you can't have one entry that is a subdomain of another.  Squid-2.2 will warn you if it detects this condition.
+The bottom line is that you can't have one entry that is a subdomain of another.  Squid will warn you if it detects this condition.
 
 == Why does Squid deny some port numbers? ==
-It is dangerous to allow Squid to connect to certain port numbers. For example, it has been demonstrated that someone can use Squid as an SMTP (email) relay.  As I'm sure you know, SMTP relays are one of the ways that spammers are able to flood our mailboxes. To prevent mail relaying, Squid denies requests when the URL port number is 25.  Other ports should be blocked as well, as a precaution.
+It is dangerous to allow Squid to connect to certain port numbers. For example, it has been demonstrated that someone can use Squid as an SMTP (email) relay.  As I'm sure you know, SMTP relays are one of the ways that spammers are able to flood our mailboxes. To prevent mail relaying, Squid denies requests when the URL port number is 25.  Other ports should be blocked as well, as a precaution against other less common attacks.
 
 There are two ways to filter by port number: either allow specific ports, or deny specific ports.  By default, Squid does the first.  This is the ACL entry that comes in the default ''squid.conf'':
 
@@ -381,12 +381,12 @@ There are two ways to filter by port number: either allow specific ports, or den
 acl Safe_ports port 80 21 443 563 70 210 1025-65535
 http_access deny !Safe_ports
 }}}
-The above configuration denies requests when the URL port number is not in the list.  The list allows connections to the standard ports for HTTP, FTP, Gopher, SSL, WAIS, and all non-priveleged ports.
+The above configuration denies requests when the URL port number is not in the list.  The list allows connections to the standard ports for HTTP, FTP, Gopher, SSL, WAIS, and all non-privileged ports.
 
 Another approach is to deny dangerous ports.  The dangerous port list should look something like:
 
 {{{
-acl Dangerous_ports 7 9 19 22 23 25 53 109 110 119
+acl Dangerous_ports port 7 9 19 22 23 25 53 109 110 119
 http_access deny Dangerous_ports
 }}}
 ...and probably many others.
