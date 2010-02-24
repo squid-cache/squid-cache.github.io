@@ -41,8 +41,8 @@ http_access allow http port_80 whitelist
 http_access allow CONNECT port_443 whitelist
 
 # rules allowing authenticated users
-http_access allow http port_80 REQUIRED
-http_access allow CONNECT port_443 REQUIRED
+http_access allow http port_80 authenticated_users
+http_access allow CONNECT port_443 authenticated_users
 
 # catch-all rule
 http_access deny all
