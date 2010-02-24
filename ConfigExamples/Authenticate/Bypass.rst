@@ -106,6 +106,7 @@ acl SitesGroupB dstdomain "/etc/squid/sites.b.txt"
 acl http proto http
 acl port_80 port 80
 acl port_443 port 443
+acl CONNECT method CONNECT
 acl authenticated_users proxy_auth REQUIRED
 
 # rules allowing non-authenticated users
