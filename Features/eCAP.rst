@@ -39,6 +39,14 @@ adaptation_access reqFilter allow all
 
 ICAP and eCAP services can co-exist. ACLs control which service gets to process the HTTP message.
 
+== License Issues ==
+
+Note: This is not a legally binding opinion. It is offered as a fair-use guideline for the expected practice. If you have any doubts regarding the licensing please contact your lawyer.
+
+Squid is licensed under the GPLv2+, which brings up the question of licensing for its addon and plug-in helpers.
+
+eCAP modules in particular fall well inside the boundary of code loaded and run internally. As such any modules require a GPLv2+ compatible license in order to distribute.
+http://www.fsf.org/licensing/licenses/gpl-faq.html#GPLAndPlugins
 
 == Modules available for Squid 3.1 and later ==
 
