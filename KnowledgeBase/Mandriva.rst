@@ -11,7 +11,6 @@
 ## Feel free to edit within each section as needed to make the content flow easily for beginners.
 ##
 
-
 = Squid on Mandrivia =
 
 <<TableOfContents>>
