@@ -28,17 +28,9 @@ Most operating system distributions provide packages in the formats appropriate 
 {{{
  emerge squid
 }}}
-=== Mandrivia, Mandrake ===
-==== Squid-3.0 ====
- * '''Packager:''' Oden Eriksson
- * '''Download:''' http://www.rpmfind.net//linux/RPM/mandriva/2009.1/i586/media/main/release/squid-3.0-14mdv2009.1.i586.html
 
-==== Squid-2.7 ====
-Install Procedure:
+<<Include(KnowledgeBase/Mandrivia,"Mandrivia",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 
-{{{
- urpmi squid
-}}}
 === NetBSD ===
 Binaries for all NetBSD platforms, from the NetBSD packages collection.
 
