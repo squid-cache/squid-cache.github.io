@@ -1,3 +1,4 @@
+## page was renamed from KnowledgBase/Mandrivia
 ##master-page:CategoryTemplate
 ##master-date:Unknown-Date
 #format wiki
