@@ -2,8 +2,6 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-
-
 = Fully Transparent Interception with Squid-2, TPROXYv2 and WCCP =
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
@@ -12,18 +10,17 @@
 == Outline ==
 This is a work in progress (read: a place for Adrian to jot down TPROXY documentation notes as he's coming up with the authoritative documentation.)
 
- {i} The following documentation applies to Squid-2 WCCPv2 support and TPROXYv2 support running on a Linux box. If you have a newer version of the exact configuration options may differ.
+ . {i} The following documentation applies to Squid-2 WCCPv2 support and TPROXYv2 support running on a Linux box. If you have a newer version of the exact configuration options may differ.
 
-|| /!\ || Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [[Features/Tproxy4]]) ||
+|| /!\ ||Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [[Features/Tproxy4]]) ||
 
- {i} The configuration for Squid-3.1 is very different than the following documentation.
 
+ . {i} The configuration for Squid-3.1 is very different than the following documentation.
 
 == Usage ==
 (stuff from emails from Steve Wilton)
 
 The kernel and iptables need to be patched with the tproxy patches (and the tproxy include file needs to be placed in /usr/include/linux/netfilter_ipv4/ip_tproxy.h or include/netfilter_ipv4/ip_tproxy.h in the squid src tree).
-
 
 TThe iptables rule needs to use the TPROXY target (instead of the REDIRECT target) to redirect the port 80 traffic to the proxy.  Ie:
 
@@ -58,7 +55,7 @@ interface GigabitEthernet0/3.100
  ip wccp 90 redirect out
 
 interface GigabitEthernet0/3.101
- description Sialup customers
+ description Dialup customers
  encapsulation dot1Q 502
  ip address x.x.x.x y.y.y.y
  ip wccp 80 redirect in
@@ -151,4 +148,4 @@ Now,  I will try tuning-up my box & squid.conf tommorow
  * A useful script to test: http://devel.squid-cache.org/cgi-bin/test
 
 ----
- CategoryConfigExample
+ . CategoryConfigExample
