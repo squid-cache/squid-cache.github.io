@@ -6,6 +6,8 @@
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
+
+
 == Outline ==
 
 The default configuration of squid prevents the caching of [[ConfigExamples/DynamicContent|dynamic content]] and youtube.com specifically implement several 'features' that prevent their flash videos being effectivly distributed by caches.
@@ -71,5 +73,8 @@ refresh_pattern -i (/cgi-bin/|\?)   0   0%      0
 refresh_pattern .                   0   0%   4320
 }}}
 
+
+== Discussion ==
+<<Include(/Discussion)>>
 ----
 CategoryConfigExample
