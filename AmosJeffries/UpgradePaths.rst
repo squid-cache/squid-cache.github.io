@@ -1,3 +1,4 @@
+## page was renamed from WikiSandBox/UpgradePaths
 #language en
 
 = Upgrade Paths =
