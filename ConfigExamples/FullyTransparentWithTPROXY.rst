@@ -37,12 +37,12 @@ wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 p
 }}}
 It is highly recommended that the above definitions be used for the two wccp services, otherwise things will break if you have more than 1 cache (specifically, you will have problems when the a web server's name resolves to multiple ip addresses).
 
-The http port that you are redirecting to must have the transparent and tproxy options enabled as follows (modify the port as appropriate):
+The SquidConf:http_port that you are redirecting to must have the transparent and tproxy options enabled as follows (modify the port as appropriate):
 
 {{{
 http_port 80 transparent tproxy
 }}}
-There _must_ be a tcp_outgoing address defined.  This will need to be valid to satisfy any non-tproxied connections.
+There _must_ be a SquidConf:tcp_outgoing address defined.  This will need to be valid to satisfy any non-tproxied connections.
 
 On the router, you need to make sure that all traffic going to/from the customer will be processed by _both_ wccp rules.  The way we have implemented this is to apply wccp service 80 to all traffic coming in from a customer-facing interface, and wccp service 90 applied to all traffic going out a customer-facing interface.  We have also applied the wccp "exclude-in" rule to all traffic coming in from the proxy-facing interface.  Ie:
 
@@ -67,7 +67,7 @@ interface GigabitEthernet0/3.102
  ip address x.x.x.x y.y.y.y
  ip wccp redirect exclude in
 }}}
-It's higly recommended to turn httpd_accel_no_pmtu_disc on in the squid conf.
+It's highly recommended to turn SquidConf:httpd_accel_no_pmtu_disc on in the squid conf.
 
 If you have some clients who set their proxy, it is recommended to use a separate port in squid for transparent/tproxy requests compared to clients with proxies set.
 
@@ -82,7 +82,7 @@ I would like to add the following to my previous list of requirements for tproxy
  * You must make sure rp_filter is disabled in the kernel
  * You must make sure ip_forwarding is enabled in the kernel
 
-Can you please check that you've enabled ip_forwarding in your kernel.  If that doesn't work, I don't know if the "vhost vport=80" is required in the http_port line in the squid config (we don't have these options enabled on our proxies).
+Can you please check that you've enabled ip_forwarding in your kernel.  If that doesn't work, I don't know if the "vhost vport=80" is required in the SquidConf:http_port line in the squid config (we don't have these options enabled on our proxies).
 
 I use the ip_wccp module to make the kernel handle the GRE packets correctly (which works slightly differently from the ip_gre module).  Do you have a GRE tunnel set up in linux?  If so, what command are you running to set it up?  I don't have an example to give you here, but I'm sure other people are using the ip_gre module with wccp to handle the GRE packets, and should be able to help.
 
@@ -123,16 +123,16 @@ wccp2_forwarding_method 1
 wccp2_return_method 1
 wccp2_service dynamic 80
 wccp2_service dynamic 90
-wccp2_service_info 80 protocol=tcp flags=dst_ip_hash priority=240 ports=80
-wccp2_service_info 90 protocol=tcp flags=src_ip_hash,ports_source priority=240 ports=80
+wccp2_service_info 80 protocol=tcp flags=src_ip_hash priority=240 ports=80
+wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 ports=80
 }}}
  * router config (cisco):
 
 {{{
 ip wccp 80
 ip wccp 90
-int fasteth0 -->ip wccp 80 redirect out (gateway to internet)
-int fasteth1 -->ip wccp 90 redirect out (my client gateway)
+int fasteth0 -->ip wccp 90 redirect out (gateway to internet)
+int fasteth1 -->ip wccp 80 redirect out (my client gateway)
 int fasteth3 -->ip wccp redirect exclude in  (squid-box attached here)
 }}}
 check-up access.log --> yes it is increments log check-up my pc by opening whatismyipaddress.com --> yes it is my pc's ip
