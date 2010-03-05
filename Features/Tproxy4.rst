@@ -30,13 +30,13 @@ WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. 
  || iptables 1.4.3      || [[http://www.netfilter.org/projects/iptables/files/iptables-1.4.3.tar.bz2|1.4.3 release]] || [[http://www.netfilter.org/projects/iptables/downloads.html|Offical releases page]] ||
  || Squid 3.1           || [[http://www.squid-cache.org/Versions/v3/3.1/squid-3.1.0.14.tar.bz2|3.1.0.14 release]] || [[http://www.squid-cache.org/Versions/|Official releases page]] ||
  || libcap-dev or libcap2-dev || any ||
- || libcap or libcap2 || any ||
+ || libcap 2.09 or later || any ||
 
  {X} Kernel 2.6.32 is known to have a TPROXY problem. Until those are resolved, please use 2.6.30 or 2.6.31 for production machines, they seem to work properly.
 
  {i} NP: the links above are an arbitrary sample from the expected working versions, and may be old in some cases. The web directories where the files sit allow you to browse to newer versions if you like.
 
- {i} '''libcap''' or '''libcap2''' are needed at run time. To build you need the developer versions (*-dev) to compile with Squid. Any current version should do since these are old requirements unchanged since TPROXY version 2.
+ {i} '''libcap2''' is needed at run time. To build you need the developer versions (*-dev) to compile with Squid.
 
 === IPv6 Support ===
 
@@ -63,22 +63,20 @@ http_port 3129 tproxy
 
  * NP: The Balabit document still refers to using options ''tproxy transparent''. '''Do not do this'''. It was only needed short-term for a bug which is now fixed.
 
-== Linux Kernel 2.6.28 Configuration ==
+== Linux Kernel Configuration ==
 
  /!\ Requires kernel built with the configuration options:
 {{{
-NF_CONNTRACK
-NETFILTER_TPROXY
-NETFILTER_XT_MATCH_SOCKET
-NETFILTER_XT_TARGET_TPROXY
+NF_CONNTRACK=m
+NETFILTER_TPROXY=m
+NETFILTER_XT_MATCH_SOCKET=m
+NETFILTER_XT_TARGET_TPROXY=m
 }}}
-
- * NP: can anyone provide a clean step-by-step how-to for setting those?
 
 So far we have this:
  https://lists.balabit.hu/pipermail/tproxy/2008-June/000853.html
 
-== iptables 1.4.3 Configuration ==
+== iptables Configuration ==
 
 === iptables on a Router device ===
 Setup a chain ''DIVERT'' to mark packets
@@ -121,7 +119,6 @@ Do the above steps for iptables on a router device. Then follow with these addit
  done
  unset i
 }}}
- Early testers and the kernel people write that DROP is needed as the target. However several people since have found ACCEPT was needed. If the above fails for you try both. It may be ebtables version related.
 
  /!\ The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc)
 
@@ -160,8 +157,8 @@ wccp2_router $ROUTERIP
 wccp2_forwarding_method gre
 wccp2_return_method gre
 wccp2_service dynamic 80
-wccp2_service dynamic 90
 wccp2_service_info 80 protocol=tcp flags=dst_ip_hash priority=240 ports=80
+wccp2_service dynamic 90
 wccp2_service_info 90 protocol=tcp flags=src_ip_hash,ports_source priority=240 ports=80
 }}}
 
@@ -182,7 +179,7 @@ interface GigabitEthernet0/3.100
  ip wccp 90 redirect out
 
 interface GigabitEthernet0/3.101
- description Sialup customers
+ description Dialup customers
  encapsulation dot1Q 502
  ip address x.x.x.x y.y.y.y
  ip wccp 80 redirect in
@@ -215,7 +212,7 @@ Could be a few things. Check cache.log for messages like those listed here in Tr
 == Stopping full transparency: Error enabling needed capabilities. ==
 
 Something went wrong while setting advanced privileges. What exactly, we don't know at this point.
-Unfortunately its not logged anywhere either. Perhaps your syslog will have details recorded by the OS.
+Unfortunately its not logged anywhere either. Perhaps your syslog or /var/log/messages log will have details recorded by the OS.
 
 == Stopping full transparency: Missing needed capability support. ==
 
@@ -252,11 +249,40 @@ This is usually seen when the network design prevents packets coming back to Squ
 
 If your network topology uses a squid box sitting the '''inside''' the router which passes packets to Squid. Then you will need to explicitly add some additional configuration.
 
-The WCCPv2 example is provided for people using Cisco boxes.  For others we can't point to exact routing configuration since it will depend on your router. But you will need to figure out some rule(s) which identify the Squid outbound traffic. Dedicated router interface, service groups, TOS set by Squid SquidConf:tcp_outgoing_tos, and MAC source have all been found to be useful under specific situations. '''IP address rules are the one thing guaranteed to fail'''.
+The WCCPv2 example is provided for people using Cisco boxes.  For others we can't point to exact routing configuration since it will depend on your router. But you will need to figure out some rule(s) which identify the Squid outbound traffic. Dedicated router interface, service groups, TOS set by Squid SquidConf:tcp_outgoing_tos, and MAC source have all been found to be useful under specific situations. '''IP address rules are the one thing guaranteed to fail.'''
 
- {i} I should not really need to say it; but these exception rules '''MUST''' be placed before any of the capture TPROXY/DIVERT rules.
+ {i} We should not really need to say it; but these exception rules '''MUST''' be placed before any of the capture TPROXY/DIVERT rules.
 
- {i} Note that WCCP/WCCPv2 device rules usually documented are automatically identifying and permit the proxy traffic outbound. These tend to use IP address which '''no longer works when TPROXYv4 spoofing is used'''. Use the above config without changes unless you are very certain about what you are doing. Newer devices ''may'' be using interface characteristics, but don't assume so without good testing.
+=== Wccp2 dst_ip_hash packet loops ===
+
+ ''by Michael Bowe''
+
+Referring to the SquidConf:wccps_service_info settings detailed above.
+
+First method:
+ * dst_ip_hash on 80
+ * src_ip_hash on 90
+Ties a particular web server to a particular cache
+
+Second method:
+ * src_ip_hash on 80
+ * dst_ip_hash on 90
+Ties a particular client to a particular cache
+
+When using TPROXY the second method must be used. The problem with the first method is this sequence of events which starts to occur:
+
+Say a client wants to access http://some-large-site, their PC resolves the address and gets x.x.x.1
+
+ 1. GET request goes off to the network, Cisco sees it and hashes the dst_ip. 
+ 2. Hash for this IP points to cache-A
+ 3. Router sends the request to cache-A.
+
+This cache takes the GET and does another DNS lookup of that host. This time it resolves to x.x.x.2
+
+ 1. Cache sends request off to the !Internet
+ 2. Reply comes back from x.x.x.2, and arrives at the Cisco.
+ 3. Cisco does hash on src_ip and this happens to map to cache-B
+ 4. Reply arrives at cache-B and it doesn’t know anything about it. Trouble! {X}
 
 = References =
 
