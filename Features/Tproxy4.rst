@@ -151,15 +151,15 @@ set net.ipv4.forwarding = 1
 
 === squid.conf ===
 
-It is highly recommended that these definitions be used for the two wccp services, otherwise things will break if you have more than 1 cache (specifically, you will have problems when the a web server's name resolves to multiple ip addresses).
+It is highly recommended that these definitions be used for the two wccp services, otherwise things will break if you have more than one cache (specifically, you will have problems when the a web server's name resolves to multiple ip addresses).
 {{{
 wccp2_router $ROUTERIP
 wccp2_forwarding_method gre
 wccp2_return_method gre
 wccp2_service dynamic 80
-wccp2_service_info 80 protocol=tcp flags=dst_ip_hash priority=240 ports=80
+wccp2_service_info 80 protocol=tcp flags=src_ip_hash priority=240 ports=80
 wccp2_service dynamic 90
-wccp2_service_info 90 protocol=tcp flags=src_ip_hash,ports_source priority=240 ports=80
+wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 ports=80
 }}}
 
 === Router config ===
