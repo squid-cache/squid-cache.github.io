@@ -120,6 +120,30 @@ This way the ''SquidConf:http_access'' line still matches. But it's the ''all'' 
 
 See also: http://www.squid-cache.org/mail-archive/squid-users/200511/0339.html
 
+== How do I prevent Login Popups? ==
+
+The login dialog box which pops up asking for username and password is a feature of your web browser. It only happens when the web browser has no working credentials it can hand to Squid when challenged for login.
+
+Squid will only challenge for credentials when they are not sent and required:
+{{{
+acl mustLogin proxy_auth REQUIRED
+}}}
+this might cause a login popup. However modern browsers have a built-in password manager or access to the operating system credentials where they can locate a first attempt. This is commonly called single-sign-on.
+
+If the browser is unable to find any initial details you WILL get the login popup. Regardless of what we do in Squid.
+
+To prevent incorrect login details being re-challenged after sign-on has failed all you have to do is prevent the login ACL being the last on the authentication line.
+
+For example, this normal configuration will cause a login re-challenge until working details are presented:
+{{{
+http_access deny mustLogin
+}}}
+
+This '''all hack''' will present a plain access denied page without challenging for different credentials:
+{{{
+http_access deny mustLogin all
+}}}
+
 == Does Squid cache authentication lookups? ==
 It depends on the authentication scheme; Squid does some caching when it can. Successful Basic authentication lookups are cached for one hour by default.  That means (in the worst case) its possible for someone to keep using your cache up to an hour after he has been removed from the authentication database.
 
