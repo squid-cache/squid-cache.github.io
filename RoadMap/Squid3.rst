@@ -55,6 +55,9 @@ From 3.1.0.11:
 From 3.1.0.15:
  * ICY (SHOUTcast) streaming protocol support
 
+From 3.1.0.18:
+ * HTTP/1.1 support on connections to web servers and peers.
+
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
 
@@ -86,9 +89,11 @@ Basic new features in 3.2:
  * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
  * New helpers to demo url_rewrite_program programs.
  * Helpers started on-demand instead of delaying startup and reconfigure process.
+ * Helper Multiplexer
  * EUI (MAC address) logging and external ACL handling
  * Dynamic URL generation for SquidConf:deny_info redirects
  * Multi-Lingual FTP directory listings
+ * Surrogate 1.0 protocol support
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
 
