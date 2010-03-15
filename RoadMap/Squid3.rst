@@ -30,8 +30,8 @@ The features have been set and large code changes are reserved for later version
 
 Additions are limited to:
  * Security fixes
- * Stability fixes
- * small optimizations
+## * Stability fixes
+## * small optimizations
 
 Basic new features in 3.1
 
@@ -64,8 +64,6 @@ From 3.1.0.18:
 Packages of squid 3.1 source code are available at
 http://www.squid-cache.org/Versions/v3/3.1/
 
-== Remaining 3.1 TODO ==
-
  * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
 
 = Squid 3.2 (HEAD) =
@@ -80,6 +78,7 @@ The intention is to remove the backlog of feature parity between 2.7 and 3.2 (li
 Features Ported from 2.7:
 
  * Unique Sequence numbering for access.log lines.
+ * [[Features/LogDaemon]]
 
 Basic new features in 3.2:
 
@@ -103,14 +102,13 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 
 = TODO =
 
-These are the feature we are trying to work on at present. New features may be requested, suggested, or added to the plan at any time. Those which are completed and merged will be in the next formal branch after their merge date.
+These are the features we are trying to work on at present. New features may be requested, suggested, or added to the plan at any time. Those which are completed and merged will be in the next formal branch after their merge date.
 
 
 ##  * [:Features/FEATURE_ID_HERE] <<Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")>>
 
 Features under development:
 ## * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
-## * [[Features/LogDaemon]] <<Include(Features/LogDaemon,,,from="ETA.*:",to="$")>>
 ## * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
 
 ## some we will need to manually add to this list...
