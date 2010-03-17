@@ -47,7 +47,8 @@ Please leave these in the translated message as they are important for accurate 
 
 I have found that in most messages where they mix with text, the code usually represents a singular noun. (IP Address, URL,or Hostnames)
 
-A reference of the available tags if you need to know what one means to translate it properly is available in the [[http://wiki.squid-cache.org/Features/CustomErrors|Custom Errors Feature]]
+A reference of the available tags, if you need to know what one means to translate it properly.
+Can be found at [[http://wiki.squid-cache.org/Features/CustomErrors|Custom Errors Feature]]
 
 == Language Dialects ==
 
@@ -66,7 +67,7 @@ To ensure compatibility with Squid-2 which does not natively perform the same CS
 
 = Submissions Outside the System =
 
-If you are truly against using the existing translation toolkit system we run. You have the option of locating the '''dictionary.pot''' file in the squid source code. Translating it and sending it to the translation maintainer. (AmosJeffries at present).
+If you are truly against using the existing translation toolkit system we run. You have the option of locating the '''errpages.pot''' file in the squid source code. Translating it and sending it to the translation maintainer. (AmosJeffries at present).
 
  /!\ Please note submissions are only considered for new languages or ones without a translator at the time of submission.
 
