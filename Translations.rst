@@ -34,6 +34,28 @@ Several people have volunteered their time to check and confirm translations to 
 
 == How can I contribute? ==
 
+=== Donate Live server statistics ===
+
+The following configuration will cause Squid to log the languages passing through your proxy. In an anonymous way such that it is safe to be shared without breaking anyones privacy.
+
+{{{
+logformat languagelog %{Accept-Language}>h
+access_log /var/log/squid/languages.log languagelog
+}}}
+
+The file generated is quite huge with a lot of duplicated information. Sorting and compacting it before sending it in can save you and us a lot of bandwidth. Also, over time this information
+
+What I do is a weekly run of this:
+{{{
+sort -u languages.log.* >temp.log
+rm languages.log.*
+mv temp.log languages.log.compacted
+}}}
+
+The relatively small '''languages.log.compacted''' file can then be sent at any time to the Squid project to help us identify what code aliases we need to supply for each language.
+
+ {i} reverse-proxy operators may also find this info useful for identifying the languages their users would prefer the website texts to be shown in.
+
 === Suggest a translation fix ===
   How we do translations and how you can join in is detailed at [[Translations/Basics]]
 
