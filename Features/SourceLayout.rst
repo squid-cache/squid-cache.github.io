@@ -6,7 +6,7 @@
 
  * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean.
  * '''Status''': In progress
- * '''ETA''': 31 Dec 2009
+ * '''ETA''': 31 Dec 2010
  * '''Priority''': 1
  * '''Version''': 3.1, 3.2
  * '''Developer''': AlexRousskov and AmosJeffries
@@ -29,26 +29,26 @@ Key:
 || :\ || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets || {2} convert helpers to C++ and link to libcompat <<BR>> ** migrate remaining pieces of config.h and squid.h into compat<<BR>> ** migrate portability code from include/lib ||
 || :\ || ''acl/'' || Access Controls || ACL* external_acl.* || Add Acl namespace and rename classes? ||
 || (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
+|| (./) || ''adaptation/ecap/'' || eCAP support || - ||
+|| (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 || :\ || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
 || {1} || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
 ||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
-||  || ''shaping/'' || Traffic shaping and delay pools || *[Dd]elay.* *[Pp]ool*.* ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
-|| (./) || ''adaptation/ecap/'' || eCAP support || - ||
 || :\ || ''esi/'' || ESI support || ESI* || Add Esi namespace, rename classes ||
 || (./) || ''eui/'' || EUI-48 / MAC / ARP operations || pieces from acl/Arp.cc ||
 || :\ || ''fs/'' || file system-specific cache store support? || fs/* || Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
-|| (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
 || :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* || C++ convert net_db*, Add Icmp namespace and rename classes ||
 || :\ || ''ident/'' || Ident support || ident.* || Make remote connection handling into an !AsyncJob||
 || :\ || ''ip/'' || IP Protocol || Ip* Qos* || Add Ip Namespace and rename classes ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* *log.cc ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
+||  || ''shaping/'' || Traffic shaping and delay pools || *[Dd]elay.* *[Pp]ool*.* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
 ||  || ''time/'' || time and date handling tools || time.* squidTime.* ||
 
