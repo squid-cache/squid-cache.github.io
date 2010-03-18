@@ -85,6 +85,14 @@ If you know the solution or can improve the proposed one, please write to squid-
 || Should we form a generic mini-cache object type to combine the shared portions of fqdncache, ipcache, idns queue, netdb, ident-cache, maybe others not yet found? || Probably, that will be a separate feature event though. ||
 || What to do with all the mixed test* and stub_* files during this restructure? || AYJ: I'm sticking them in the same folder as the code, and prefixing with test* and stub* as needed. ||
 
+== Dependency Issues: ==
+
+ * Cache manager '''storeAppendPrintf''' - just about every component uses this old function to dump it's stats to the cache manager output. It depends on !StoreEntry which pulls in the entire store component tree.  We need to make it use something something smaller.
+  * An earlier attempt was made to use !StoreEntryStream, but that still pulls in StoreEntry.
+  * !MemBuf is looking like a good all-purpose buffer we can have the components dump their text into. Which is then dumped into a !StoreEntry by the cache manager
+
+ * '''debugs()''' macro handling still has a small circular dependency with libsquid/libbase files and file IO.
+
 === Other: ===
 '''Explicit initialization vs self-initialization'''
 {{{
