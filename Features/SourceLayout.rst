@@ -50,7 +50,7 @@ Key:
 ||  || ''mem/'' || Basic Memory management || mem* ||
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
-
+||  || ''time/'' || time and date handling tools || time.* squidTime.* ||
 
 == Non-Squid Bundled Source code ==
 
