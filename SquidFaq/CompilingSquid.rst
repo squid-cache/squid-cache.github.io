@@ -56,9 +56,15 @@ must be purchased separately.
 If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems.  It is also well tested with Squid.  If your OS does not come with GCC you may download it from [[ftp://ftp.gnu.org/gnu/gcc|the GNU FTP site]].
 In addition to gcc, you may also want or need to install the ''binutils'' package.
 
+[[Squid-3.0]] and later will need a C++ capable compiler.
+
 === What else do I need to compile Squid? ===
 
+You will need the automake toolset for compiling from Makefiles.
+
 You will need [[http://www.perl.com/|Perl]] installed on your system.
+
+Each feature you choose to enable may also require additional libraries or tools to build.
 
 === How do I apply a patch or a diff? ===
 
@@ -103,6 +109,8 @@ change the default, you could do:
 % ./configure --prefix=/some/other/directory/squid
 }}}
 
+Some OS require files to be installed in certain locations. See the OS specific instructions below for ./configure options required to make those installations happen correctly.
+
 Type
 {{{
 % ./configure --help
@@ -123,8 +131,8 @@ Some options which are used often include:
 --enable-xmalloc-statistics
                         Show malloc statistics in status page
 --enable-async-io       Do ASYNC disk I/O using threads
---enable-icmp           Enable ICMP pinging
---enable-delay-pools    Enable delay pools to limit bandwith usage
+--enable-icmp           Enable ICMP pinging and network measurement
+--enable-delay-pools    Enable delay pools to limit bandwidth usage
 --enable-useragent-log  Enable logging of User-Agent header
 --enable-kill-parent-hack
                         Kill parent on shutdown
