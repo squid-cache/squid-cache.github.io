@@ -12,15 +12,14 @@
 
 To control which web servers (cache_peer) gets which requests the '''cache_peer_access''' or '''cache_peer_domain''' directives is used. These directives limit which requests may be sent to a given peer.
 
-Example mapping different host names to different peers:
+For example the websites are hosted like this on two servers:
 
-{{{
-www.example.com		-> server 1
-example.com		-> server 1
-download.example.com 	-> server 2
-*.example.net		-> server 2
-example.net		-> server 2
-}}}
+ * www.example.com hosted on server1
+ * example.com hosted on server1
+
+ * download.example.com hosted on server2
+ * *.example.net hosted on server2
+ * example.net hosted on server2
 
 == Squid Configuration ==
 
@@ -53,11 +52,11 @@ cache_peer_access server_2 allow sites_server_2
 
 It's also possible to route requests based on other criteria than the host name by using other acl types, such as urlpath_regex.
 
-Example mapping requests based on the URL-path:
-{{{
-/foo            ->      server2
-the rest        ->      server1
-}}}
+
+For our example here the websites /foo directory alone is hosted on a second server:
+
+ * example.com is hosted on server1
+ * example.com/foo is hosted on server2
 
 {{{
 acl foo urlpath_regex ^/foo
