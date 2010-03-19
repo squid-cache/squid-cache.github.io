@@ -197,7 +197,7 @@ Squid
 and this manual is Copyright 2010
 .if !'po4a'hide' .I Authors Name <author@email.contact>
 .PP
-Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPL2+).
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
 }}}
 
 If no exact copyright details are known use the following snippet:
@@ -206,7 +206,7 @@ If no exact copyright details are known use the following snippet:
 .SH COPYRIGHT
 This program and documentation is copyright to the authors named above.
 .PP
-Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPL2+).
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
 }}}
 
 === .SH QUESTIONS ===
@@ -316,6 +316,9 @@ Questions on the usage of this program can be sent to the
 .if !'po4a'hide' <squid-users@squid-cache.org>
 .
 .SH REPORTING BUGS
+Bug reports need to be made in English.
+See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you need to include with your bug report.
+.PP
 Report bugs or bug fixes using http://bugs.squid-cache.org/
 .PP
 Report serious security bugs to
