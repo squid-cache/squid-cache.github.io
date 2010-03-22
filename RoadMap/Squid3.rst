@@ -35,14 +35,14 @@ Additions are limited to:
 
 Basic new features in 3.1
 
- * [[../../Features/ConnPin|Connection Pinning (for NTLM Auth Passthrough)]]
- * [[../../Features/IPv6|Full Native IPv6]]
- * [[../../Features/QualityOfService|Quality of Service (QoS) Flow support]]
- * [[../../Features/RemoveNullStore|Native Memory Cache]]
- * [[../../Features/SslBump|SSL Bump (for HTTPS Filtering and Adaptation)]]
- * [[../../Features/Tproxy4|TProxy v4.1+ support]]
- * [[../../Features/eCAP|eCAP Adaptation Module support]]
- * [[../../Translations|Error Page Localization]]
+ * [[Features/ConnPin|Connection Pinning (for NTLM Auth Passthrough)]]
+ * [[Features/IPv6|Full Native IPv6]]
+ * [[Features/QualityOfService|Quality of Service (QoS) Flow support]]
+ * [[Features/RemoveNullStore|Native Memory Cache]]
+ * [[Features/SslBump|SSL Bump (for HTTPS Filtering and Adaptation)]]
+ * [[Features/Tproxy4|TProxy v4.1+ support]]
+ * [[Features/eCAP|eCAP Adaptation Module support]]
+ * [[Translations|Error Page Localization]]
  * Follow X-Forwarded-For support
  * X-Forwarded-For options extended (truncate, delete, transparent)
  * Peer-Name ACL
@@ -56,7 +56,7 @@ From 3.1.0.15:
  * ICY (SHOUTcast) streaming protocol support
 
 From 3.1.0.18:
- * HTTP/1.1 support on connections to web servers and peers.
+ * [[Features/Http11|HTTP/1.1 support on connections to web servers and peers.]]
 
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
@@ -69,7 +69,7 @@ http://www.squid-cache.org/Versions/v3/3.1/
 = Squid 3.2 (HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will probably not happen during February 2010.
+The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will probably now happen during April 2010.
 
 The intention is to remove the backlog of feature parity between 2.7 and 3.2 (listed as regressions in 3.1 http://www.squid-cache.org/Versions/v3/3.1/RELEASENOTES.html#s7) and concentrate on further performance and HTTP/1.1 improvements.
 
@@ -159,7 +159,7 @@ More ideas are available [[Features/Other|elsewhere]].
 Certain features are no longer relevant as the code improves and are planned for removal. Due to the possibility they are being used we list them here along with the release version they are expected to disappear. Warnings should also be present in the code where possible.
 
 || ''' Version''' || '''Feature''' || '''Why''' ||
-|| 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[../../Translations|langpack]] ||
+|| 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[Translations|langpack]] ||
 || 3.1 || libcap 1.x || libcap-2.06+ is required for simpler code and proper API usage. ||
 || 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
 || 3.2+ || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
