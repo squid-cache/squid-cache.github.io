@@ -100,7 +100,9 @@ will:
 
 == Other stuff to be fixed ==
 
-Trunk currently fails to build with linking errors if CFLAGS and CXXFLAGS are set as configure argument. The reason for this will have to be found and fixed.
+ 1. Trunk currently fails to build with linking errors if CFLAGS and CXXFLAGS are set as configure argument. The reason for this will have to be found and fixed.
+ 1. Helper modules require, in order to be built, that a helper-specific testlet be passed successfully. Those testlets are shell scripts which perform autoconf-like functions, but without the infrastructure. As a result, they lack flexibility and effectiveness in reporting the reasons for failure. They need to be reworked to be configure.in scripts to gain those advantages.
+
 
 ----
 CategoryFeature
