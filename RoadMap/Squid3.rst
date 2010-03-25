@@ -109,7 +109,8 @@ These are the features we are trying to work on at present. New features may be 
 
 Features under development:
 ## * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
-## * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
+ * [[Features/SmpScale]] <<Include(Features/SmpScale,,,from="ETA.*:",to="$")>>
+ * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
 
 ## some we will need to manually add to this list...
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*")>>
