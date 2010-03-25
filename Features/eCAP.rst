@@ -41,12 +41,15 @@ ICAP and eCAP services can co-exist. ACLs control which service gets to process 
 
 == License Issues ==
 
-Note: This is not a legally binding opinion. It is offered as a fair-use guideline for the expected practice. If you have any doubts regarding the licensing please contact your lawyer.
+Note: These are not legally binding opinions. If you have any doubts regarding the licensing please contact your lawyer.
 
-Squid is licensed under the GPLv2+, which brings up the question of licensing for its addon and plug-in helpers.
+Squid is licensed under the GPLv2+, which brings up the question of licensing for distributed Squid plugins. There are several, conflicting views regarding eCAP adapter licensing requirements, including:
 
-eCAP modules in particular fall well inside the boundary of code loaded and run internally. As such any modules require a GPLv2+ compatible license in order to distribute.
-http://www.fsf.org/licensing/licenses/gpl-faq.html#GPLAndPlugins
+ * eCAP is not a Squid-specific API. Compliant eCAP adapters should work in any eCAP-compliant host application. They are not "Squid plugins" just like libc is not a Squid plugin. Thus, eCAP adapter distribution is not subject to Squid licensing restrictions.
+
+ * Communication with eCAP adapters is limited to invoking the "main" functions of the adapter and waiting for them to return. FSF considers this a borderline case: http://www.gnu.org/licenses/gpl-faq.html#GPLAndPlugins
+
+ * eCAP modules fall well inside the boundary of code loaded and run internally. As such any modules require a GPLv2+ compatible license in order to distribute: http://www.fsf.org/licensing/licenses/gpl-faq.html#GPLAndPlugins
 
 == Modules available for Squid 3.1 and later ==
 
