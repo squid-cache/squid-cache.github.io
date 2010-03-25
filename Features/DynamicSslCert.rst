@@ -8,7 +8,7 @@
 
  * '''Status''': primary development phases completed; working on trunk submission
 
- * '''ETA''': January 2010
+ * '''ETA''': April 2010
 
  * '''Version''': v3.2
 
