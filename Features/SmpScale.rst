@@ -6,15 +6,15 @@
 
  * '''Goal''': Approach linear scale in non-disk throughput with the increase of the number of processors or cores.
 
- * '''Status''': Not started
+ * '''Status''': In progress
 
- * '''ETA''': 10-18 months
+ * '''ETA''': May 2010
 
  * '''Version''': Squid 3.2
 
- * '''Developer''':
+ * '''Developer''': AlexRousskov
 
- * '''More''':
+ * '''More''': [[https://code.launchpad.net/~rousskov/squid/smp|branch]]
 
 
 SMP scalability can significantly reduce Squid costs and administration complexity in high-performance environments.
