@@ -1,20 +1,20 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
+
 = Feature: HTTP/1.1 support =
  * '''Goal''': Conditional HTTP/1.1 (RFC 2616) compliance
- * '''Status''': Planning. Being worked on very, very slowly in various feature advances.
+ * '''Status''': 65% complete. Being worked on very, very slowly in various feature advances.
  * '''ETA''': unknown
- * '''Version''': 3.2 & 2.x
+ * '''Version''': 3.1 & 3.2
 
 <<TableOfContents>>
 
 == Details ==
 
-We still are HTTP/1.0, not 1.1. There is many reasons to this but lets begin with the major ones
+We still are partially HTTP/1.0 internally, not 1.1. There is many reasons to this but lets begin with the major ones
 
- * Internal forwarding path do not handle 1XX messages very well
+ * Internal forwarding path do not handle 1XX messages very well. This has been resolved by stripping 1xx responses and rejecting 1xx requests according to RFC 2616 requirements.
  * Chunked encoding missing (patch available).
 
 To complete this work is needed in the following areas:
@@ -39,7 +39,7 @@ This is likely to touch the store API as today all messages go via the store, ev
 
 == Request/Reply Upgrade path ==
 
- NP: if this already exists then it needs to be documented properly and the related bugs / upgrade_http0.9 portage issues closed off.
+ NP: if this already exists then it needs to be documented properly and the related closed off.
 
 RFC2616 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
 
@@ -54,7 +54,7 @@ Requirements to consider:
 
 HTTP/1.1 requires support for chunked encoding in both parsers and composers. This applies to both responses and requests.
 
-There is preliminary patches available for both Squid-3 and Squid-2 adding at least response chunked decoding. '''Now integrated in 3.1 and 2.7'''
+Both Squid-3 and Squid-2 contain at least response chunked decoding. The chunked encoding portion is not yet completed.
 
 == Related minor tasks ==
 
