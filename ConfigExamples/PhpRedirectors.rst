@@ -47,7 +47,7 @@ while ( $input = fgets(STDIN) ) {
   $output = $temp[0] . "\n";
 
   // Check the URL and rewrite it if it matches foo.example.com
-  if ( strpos($temp[0], "foo.example.com") ) {
+  if ( strpos($temp[0], "foo.example.com") !== false ) {
     $output = "302:http://www.example.com/\n";
   }
   echo $output;
@@ -78,7 +78,7 @@ while ( $input = fgets(STDIN) ) {
   // Check the requesting IP Address.
   if ( $ip == "192.0.2.101" ) {
     // Check the URL and rewrite it if it matches foo.example.com
-    if ( strpos($temp[0], "foo.example.com") ) {
+    if ( strpos($temp[0], "foo.example.com") !== false ) {
       $output = "302:http://www.example.com/\n";
     }
   }
@@ -110,7 +110,7 @@ while ( $input = fgets(STDIN) ) {
   // If it is Monday - Friday and 8:00 - 17:00 (5:00 PM)
   if ( $hour >= 8 && $hour <= 16 && $day <= 5 ) {
     // Check the URL and rewrite it if it matches foo.example.com
-    if ( strpos($temp[0], "foo.example.com") ) {
+    if ( strpos($temp[0], "foo.example.com") !== false ) {
       $output = "302:http://www.example.com/\n";
     }
   }
@@ -143,15 +143,15 @@ while ( $input = fgets(STDIN) ) {
   $day = date('N');
 
   if ($hour >= 8 && $hour <= 16 && $day <= 5) {
-    if ( strpos($temp[0], "foo.example.com") ) {
+    if ( strpos($temp[0], "foo.example.com") !== false ) {
       $output = "302:http://www.example.com/\n";
-    } elseif ( strpos($temp[0], "bar.example.com") ) {
+    } elseif ( strpos($temp[0], "bar.example.com") !== false) {
       $output = "302:http://www.example.com/\n";
     }
   }
-  if ( strpos($temp[0], "bad.example.com") ) {
+  if ( strpos($temp[0], "bad.example.com") !== false ) {
     $output = "302:http://www.example.com/\n";
-  } elseif ( $ip == "192.0.2.101" && strpos($temp[0], "example.com") ) {
+  } elseif ( $ip == "192.0.2.101" && (strpos($temp[0], "example.com") !== false) ) {
     $output = "302:http://example.com/\n";
   }
 
