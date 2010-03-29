@@ -4,7 +4,7 @@
 
 This wiki is dedicated to hosting [[http://www.squid-cache.org/|Squid Web Cache]] documentation, including the [[SquidFaq|FAQ]], KnowledgeBase articles, ConfigExamples, and the development RoadMap.
 
-To contribute to this Wiki, please register by using the Login link and then email the <<MailTo(kinkie AT squid-cache DOT org,wiki administrator)>> to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox.
+|| To contribute to this Wiki, please register by using the Login link and then email the <<MailTo(kinkie AT squid-cache DOT org,wiki administrator)>> to be granted write access. Wiki editing is restricted to registered users to avoid wiki-spam. If you are new to this wiki, the SyntaxReference may be handy. You can also practice wiki editing in the WikiSandBox. ||
 
 
 == Starting points ==
