@@ -25,18 +25,18 @@ Features which have not reached completion or have failed the audit, are automat
 
 = Squid 3.1 =
 
-Now in '''RELEASE CANDIDATE''' cycle.
+Now in '''STABLE''' cycle.
 The features have been set and large code changes are reserved for later versions.
 
 Additions are limited to:
  * Security fixes
-## * Stability fixes
-## * small optimizations
+ * Stability fixes
+ * small optimizations
 
-Basic new features in 3.1
+Basic new features in 3.1:
 
  * [[Features/ConnPin|Connection Pinning (for NTLM Auth Passthrough)]]
- * [[Features/IPv6|Full Native IPv6]]
+ * [[Features/IPv6|Native IPv6]]
  * [[Features/QualityOfService|Quality of Service (QoS) Flow support]]
  * [[Features/RemoveNullStore|Native Memory Cache]]
  * [[Features/SslBump|SSL Bump (for HTTPS Filtering and Adaptation)]]
@@ -47,15 +47,9 @@ Basic new features in 3.1
  * X-Forwarded-For options extended (truncate, delete, transparent)
  * Peer-Name ACL
  * Reply headers to external ACL.
-
-From 3.1.0.11:
  * [[Features/AdaptationLog|ICAP and eCAP Logging]]
  * [[Features/AdaptationChain|ICAP Service Sets and Chains]]
-
-From 3.1.0.15:
  * ICY (SHOUTcast) streaming protocol support
-
-From 3.1.0.18:
  * [[Features/Http11|HTTP/1.1 support on connections to web servers and peers.]]
 
 ## Developer-only relevant features
