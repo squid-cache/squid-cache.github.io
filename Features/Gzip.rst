@@ -6,7 +6,7 @@
 
  * '''Goal''': To make Squid capable of compressing or decompressing objects in transit.
 
- * '''Status''': Done. eCAP module available.
+ * '''Status''': completed. eCAP module available.
 
  * '''Version''': 3.1
 
