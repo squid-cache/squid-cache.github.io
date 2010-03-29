@@ -7,7 +7,7 @@
 
  * '''Goal''': Support multiple ICAP and eCAP services applied to a single master transaction, at a single vectoring point
 
- * '''Status''': Done
+ * '''Status''': completed
 
  * '''Version''': 3.1
 
