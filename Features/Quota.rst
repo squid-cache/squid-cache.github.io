@@ -11,7 +11,7 @@
 
  * '''ETA''': ''unknown''
 
- * '''Version''': Squid 3?
+ * '''Version''': Squid 3.2 or 3.3
 
  * '''Developer''': 
 
@@ -25,6 +25,9 @@
 Squid needs better interface to control quotas. The existing approaches to quota control require the use of external ACLs or redirectors. The external helpers need to process access.log to calculate the bandwidth usage and are only contacted at the start of the request. Due to these limitations, users may go significantly over their quota before Squid reacts.
 
 Also, external helpers cannot do traffic shaping (i.e., slowing down the transfer instead of denying the request). It is not yet clear whether a single interface should serve both purposes.
+
+'''Update:'''
+ With TCP logging a helper can be written to account log information live and maintain any external accounting or traffic needed to maintain quota limits. An internal accounting pool is still needed per client to maintain limits on active requests.
 
 ----
 CategoryFeature CategoryWish
