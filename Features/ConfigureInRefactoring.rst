@@ -103,6 +103,13 @@ will:
  1. Trunk currently fails to build with linking errors if CFLAGS and CXXFLAGS are set as configure argument. The reason for this will have to be found and fixed.
  1. Helper modules require, in order to be built, that a helper-specific testlet be passed successfully. Those testlets are shell scripts which perform autoconf-like functions, but without the infrastructure. As a result, they lack flexibility and effectiveness in reporting the reasons for failure. They need to be reworked to be configure.in scripts to gain those advantages.
 
+== Other random thoughts ==
+On March 31st 2010, [[http://www.catb.org/~esr/|Eric S. Raymond]] [[http://esr.ibiblio.org/?p=1877|ranted]] against autotools. This sparked an interesting debate over cross-platform build tools. During the discussion, some alternatives to autotools were mentioned:
+ . [[http://www.scons.org/|SCons]] seemed to get the most positive comments
+ . [[http://code.google.com/p/gyp/|gyp]]
+ . [[http://www.cmake.org/|cmake]] is the most entrenched alternative
+
+Squid's configure.in is very complex. Once refactored, it would be interesting to see if any of the alternatives offers substantial benefits, and possibly port over to it.
 
 ----
 CategoryFeature
