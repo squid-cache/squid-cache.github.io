@@ -3,10 +3,10 @@
 #language en
 
 = Feature: HTTP/1.1 support =
- * '''Goal''': Conditional HTTP/1.1 (RFC 2616) compliance
- * '''Status''': 65% complete. Being worked on very, very slowly in various feature advances.
- * '''ETA''': unknown
- * '''Version''': 3.1 & 3.2
+ * '''Goal''': HTTP/1.1 (RFC 2616) compliance
+ * '''Status''': 65%+ compliant. Being worked on very, very slowly in various feature advances.
+ * '''ETA''': April 2010
+ * '''Version''': 3.1
 
 <<TableOfContents>>
 
@@ -39,11 +39,13 @@ This is likely to touch the store API as today all messages go via the store, ev
 
 == Request/Reply Upgrade path ==
 
- NP: if this already exists then it needs to be documented properly and the related closed off.
-
 RFC2616 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
 
-So we must design the upgrade to 1.1 carefully to allow deeper control than a simple upgrade/don't upgrade switch. I'd suggest a generic ''upgrade_http'' option which takes a version number, allow/deny, and a list of ACLs. Plus two new ACLs to test for the request HTTP version and reply HTTP version.
+ * NP: ICY protocol seems to be the main breakage. So ICY support has been implemented natively in Squid-3 to fix this.
+
+We may require a generic ''upgrade_http'' option which takes a version number, allow/deny, and a list of ACLs. Plus two new ACLs to test for the request HTTP version and reply HTTP version.
+
+ * NP: The Measurement Factory have patches for these options. They will be merged to Squid only if real need is demonstrated.
 
 Requirements to consider:
  * ACL controls to halt the upgrade at a certain level (ie permit upgrade 0.9 to 1.0, but not 0.9->1.1).
@@ -63,16 +65,22 @@ Additionally work should also be done in the following
  * Cleanups to comply better with the RFCs. (see the Checklist)
  * Implement cache invalidation requirements.
 
+== Range Requests ==
+
+Squid is unable to store range requests and is currently limited to converting the request into a full request or passing it on unaltered to the backend server.
+
+ * We need to implement storage to allow for partial range storage.
+ * There are also a handful of bugs in the existing range handling which need to be resolved.
+
 == Older notes ==
 
 Copied from [[Features/Other]]:
 
-Some thought will need to be put into the following areas:
+Some thought will need to be put into the following area:
 
  * HTTP entity types
- * HTTP range requests
 
-Discussion: What is meant by These? Please expand and move up.
+Discussion: What is meant by this? Please expand and move up.
 
 ----
 CategoryFeature
