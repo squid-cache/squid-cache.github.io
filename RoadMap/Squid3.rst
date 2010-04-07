@@ -86,7 +86,7 @@ Basic new features in 3.2:
  * EUI (MAC address) logging and external ACL handling
  * Dynamic URL generation for SquidConf:deny_info redirects
  * Multi-Lingual FTP directory listings
- * Surrogate 1.0 protocol support
+ * [[Features/Surrogate|Surrogate 1.0]] protocol support
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
 
