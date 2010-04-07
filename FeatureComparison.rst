@@ -24,10 +24,11 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 |||||||||||||| '''Accepted Input Protocols''' ||
 || HTTP 0.9       || Y || Y || Y || Y || Y || Y ||
 || HTTP 1.0       || Y || Y || Y || Y || Y || Y ||
-|| HTTP 1.1       || - || X || Y || Bs16+ || B || B || most 1.1 handled cleanly. Expect-100 is broken in 3.x ||
+|| HTTP 1.1       || - || X || Y || Bs16+ || Y || Y || most 1.1 handled cleanly. ||
 || HTTPS          || - || Y || Y || Y || Y || Y ||
 || ICP (v2)       || - || Y || Y || Y || Y || Y ||
 || ICP (v3)       || - || Y || Y || Y || Y || Y ||
+|| ICY-over-HTTP  || - || - || X || - || Y || Y ||
 |||||||||||||| '''URI Protocols handled''' ||
 || HTTP 1.0       || Y || Y || Y || Y || Y || Y ||
 || [[../Features/HTTP11|HTTP 1.1]] || - || - || X || - || - || - ||
@@ -42,6 +43,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 || ICAP           || - || - || - || X || Y || Y || 2.6: Patch available has major bugs ||
 || eCAP           || - || - || - || - || Y || Y ||
 || IPv6           || - ||Ps13|| -|| - || Y || Y ||
+|| Surrogate 1.0  || - || - || - || X || Y || Y || Requires ESI for use in 3.0 ||
 || Wais           || Y || Y || Y || Y || Y || Y ||
 |||||||||||||| '''Storage Filesystems''' ||
 || AUFS           || - || Y || Y || Y || Y || Y ||
