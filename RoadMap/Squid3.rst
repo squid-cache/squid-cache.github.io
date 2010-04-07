@@ -50,7 +50,7 @@ Basic new features in 3.1:
  * [[Features/AdaptationLog|ICAP and eCAP Logging]]
  * [[Features/AdaptationChain|ICAP Service Sets and Chains]]
  * ICY (SHOUTcast) streaming protocol support
- * [[Features/Http11|HTTP/1.1 support on connections to web servers and peers.]]
+ * [[Features/HTTP11|HTTP/1.1 support on connections to web servers and peers.]]
 
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
@@ -82,7 +82,7 @@ Basic new features in 3.2:
  * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
  * New helpers to demo url_rewrite_program programs.
  * Helpers started on-demand instead of delaying startup and reconfigure process.
- * Helper Multiplexer
+ * [[Features/HelperMultiplexer|Helper Multiplexer]]
  * EUI (MAC address) logging and external ACL handling
  * Dynamic URL generation for SquidConf:deny_info redirects
  * Multi-Lingual FTP directory listings
