@@ -29,6 +29,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 || ICP (v2)       || - || Y || Y || Y || Y || Y ||
 || ICP (v3)       || - || Y || Y || Y || Y || Y ||
 || ICY-over-HTTP  || - || - || X || - || Y || Y ||
+|| SNMPv1         || - || Y || Y || Y || Y || Y ||
 |||||||||||||| '''URI Protocols handled''' ||
 || HTTP 1.0       || Y || Y || Y || Y || Y || Y ||
 || [[../Features/HTTP11|HTTP 1.1]] || - || - || X || - || - || - ||
