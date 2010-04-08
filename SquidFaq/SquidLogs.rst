@@ -188,7 +188,7 @@ The following codes are no longer available in Squid-2:
 '''UDP_RELOADING''' See: UDP_MISS_NOFETCH.
 
 === HTTP status codes ===
-These are taken from RFC:2616 and verified for Squid. Squid uses almost all codes except 307 (Temporary Redirect), and 416 (Request Range Not Satisfiable). Extra codes include 000 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for RFC:2518 (WebDAV). Yes, there are really two entries for status code 424:
+These are taken from RFC RFC:2616 and verified for Squid. Squid uses almost all codes except 307 (Temporary Redirect), and 416 (Request Range Not Satisfiable). Extra codes include 000 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for RFC RFC:2518 (WebDAV). Yes, there are really two entries for status code 424:
 
 {{{
  000 Used mostly with UDP traffic.
