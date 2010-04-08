@@ -1,1 +1,1 @@
-#REDIRECT [[Features/MultiCast]]
+#REDIRECT [[/Features/MultiCast]]
