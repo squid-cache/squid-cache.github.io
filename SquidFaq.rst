@@ -51,7 +51,6 @@
  * /CacheManager explains how to use the Cache Manager to profile how squid is working
  * /SquidAcl (or Authorization): controlling squid's powerful access control features
  * /ContentAdaptation how to analyze, capture, block, replace, or modify the messages being proxied
- * /MultiCast explains how to set squid ICP up in a multicast environment
  * /CacheDigests or ICP on steroids
  * /MiscFeatures: Squid 2.X miscellaneous features
 
