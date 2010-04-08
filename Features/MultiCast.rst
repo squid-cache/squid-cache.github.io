@@ -1,3 +1,4 @@
+## page was renamed from SquidFaq/MultiCast
 #language en
 <<TableOfContents>>
 
