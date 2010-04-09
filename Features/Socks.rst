@@ -9,7 +9,7 @@
 
  * '''Status''': Testing. Code available.
 
- * '''ETA''': Dec 2009
+ * '''ETA''': June 2010
 
  * '''Version''': 3.2
 
@@ -46,19 +46,19 @@ With knowledge of how upstream peering works it follows that the connect() calls
 I'm not certain at this point if a new socks_port config option is called for to open the socks port. Easy enough to add if needed.
 A socks_outbound <port> option may also be needed for outbound SOCKS bindings.
 
-A new COMM_SOCKSBIND flag will be needed to the comm_open*() calls for the listener binding, outbound maybe a config setting for cache_peer acting on the bind() choice directly.
+A new COMM_SOCKSBIND flag will be needed to the comm_open*() calls for the listener binding, outbound maybe a config setting for SquidConf:cache_peer acting on the bind() choice directly.
 
 ----
 
-I've had a bit of time too short to do anything much and created a branch that is supposed to do listening port and SOCKS peers. It builds and listens on an http_port as far as I can tell now.
-Bazaar Branch available on launchpad at https://code.launchpad.net/~squid3/squid/socks for anyone keen on testing.
+I've had a bit of time too short to do anything much and created a branch that is supposed to do listening port and SOCKS peers. It builds and listens on an SquidConf:http_port as far as I can tell now.
+Bazaar Branch available on launchpad at https://code.launchpad.net/~yadi/squid/socks for anyone keen on testing.
 
 I'd particularly like some info on real-world situations where Squid needs to interact with SOCKS.
 So far I only know of certain apps sending HTTP but can be configured only with SOCKS proxy (not HTTP proxy) as a relay. Weird but true.
 
 ----
 
-Extra additions: there seems to also be a system configuration setting and config file(s) for setting a parent SOCKSv5 proxy. It may be useful to pull this is as a possible automatic cache_peer entry.
+Extra additions: there seems to also be a system configuration setting and config file(s) for setting a parent SOCKSv5 proxy. It may be useful to pull this in as a possible automatic SquidConf:cache_peer entry.
 
 ----
 CategoryFeature
