@@ -364,7 +364,7 @@ However there are a number of installed files which have no manual at all.
 || helpers/basic_auth/NIS/basic_nis_auth || {X} || Missing. ||
 || helpers/basic_auth/PAM/basic_pam_auth || 8 || (./) Done. ||
 || helpers/basic_auth/POP3/basic_pop3_auth.pl || {X} || Missing. ||
-|| helpers/basic_auth/SASL/basic_sasl_auth || {X} || Missing. Convert README ||
+|| helpers/basic_auth/SASL/basic_sasl_auth || 8 || (./) Done. ||
 || helpers/basic_auth/SASL/basic_sasl_auth.pam || {X} || Missing. ||
 || helpers/basic_auth/SASL/basic_sasl_auth.conf || {X} || Missing. ||
 || helpers/basic_auth/SMB/basic_smb_auth || {X} || Missing. ||
