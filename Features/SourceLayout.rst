@@ -44,7 +44,7 @@ Key:
 ||  || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* || C++ convert net_db*, Add Icmp namespace and rename classes ||
 || :\ || ''ident/'' || Ident support || ident.* || Make remote connection handling into an !AsyncJob||
-|| :\ || ''ip/'' || IP Protocol || Ip* Qos* || Add Ip Namespace and rename classes ||
+|| (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* *log.cc ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
