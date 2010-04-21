@@ -23,3 +23,4 @@ For pointers on how to, see
  * script/import/irclog.py
  * General syntax: moin [options] import irclog [irclog-options]
  * http://moinmo.in/HelpOnMoinCommand
+ * [http://linux.thai.net/~thep/datrie/datrie.html|Double-Array Trie] implementation 
