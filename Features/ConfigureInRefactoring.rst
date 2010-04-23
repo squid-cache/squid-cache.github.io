@@ -49,6 +49,15 @@ AmosJeffries has investigated Pandora and found most of the tools very python an
 In order to further modularize configure.in it would be useful to split some helper definition files out of configure.in itself, to an included set modular files.
 Those file will be defined as {{{acinclude/*.m4}}}, and included from configure.in AFTER autoconf's initialization.
 
+== Changes to configure process and parameters ==
+Authentication was simplified, and now it is based on (hopefully clearer) configure options:
+ . --disable-auth
+   global switch. Disables authentication support altogether
+ . --enable-auth-''scheme''
+   enables auth scheme ''scheme'' (all are enabled by default). Without arguments, will also build all helpers that can be built on the build-hosts. Otherwise a space-separated or comma-separated list of helpers can be supplied, or the special value {{{none}}} which means to enable the scheme but build no helpers. Force-enabling any auth-scheme when the global support is off will cause a configure-time error.
+
+Interception proxying has been changed to auto-enabled-if-available for those platforms which are known to work.
+
 == Namespaces and naming conventions ==
 
 Custom macros will have as their name structured as {{{SQUID_<COMPONENT>_<ACTION>_<OBJECTIVE>}}} where
