@@ -219,27 +219,29 @@ Do you think that'd be enough?
 
 Diff file below..
 {{{
---- src/client_side.c	2008-10-30 07:37:56 +0800
-+++ src/client_side.c	2008-11-05 23:44:55 +0800
-@@ -2399,6 +2399,18 @@
+Index: src/client_side.c
+===================================================================
+--- src/client_side.c	(revision 134)
++++ src/client_side.c	(working copy)
+@@ -2408,6 +2408,17 @@
  		is_modified = 0;
  	}
      }
 +	/* bug fix for 302 moved_temporarily loop bug when using storeurl*/
-+	if (mem->reply->sline.status == HTTP_MOVED_TEMPORARILY) {
-+	const char *cloc = httpHeaderGetStr(&e->mem_obj->reply->header, HDR_LOCATION);
-+	if (!strcmp(http->uri,cloc)) {
-+	    debug(33, 1) ("Loop Detected: %s Redirect to: %s\n",
-+		http->uri,cloc);
-+	    http->log_type = LOG_TCP_MISS;
-+	    clientProcessMiss(http);
-+		return;
-+	} 
++	if (mem->reply->sline.status >= 300 && mem->reply->sline.status < 400) {
++	if (httpHeaderHas(&e->mem_obj->reply->header, HDR_LOCATION))
++	if (!strcmp(http->uri,httpHeaderGetStr(&e->mem_obj->reply->header, HDR_LOCATION))) {
++		debug(33, 2) ("clientCacheHit: Redirect Loop Detected: %s\n",http->uri);
++		http->log_type = LOG_TCP_MISS;
++		clientProcessMiss(http);
++			return;
++	}
 +	}
 +	/* bug fix end here*/
      stale = refreshCheckHTTPStale(e, r);
      debug(33, 2) ("clientCacheHit: refreshCheckHTTPStale returned %d\n", stale);
      if (stale == 0) {
+
 }}}
 '''Squid version:''' squid-2.HEAD-20081105 also works on 2.7 series
 
