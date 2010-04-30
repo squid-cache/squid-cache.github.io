@@ -14,7 +14,7 @@ Use simplified ngroff syntax. see http://www.fnal.gov/docs/products/ups/Referenc
 
 Some additional markup is added for integration with '''po4a''' translation automation. see http://po4a.alioth.debian.org/man/man3pm/Locale::Po4a::Man.3pm.php for details on specific markup and limits imposed by those tools.
 
-Each '''.SN''' section is preceded by an ''empty'' line. In ngroff syntax that is a line containing only a dot (.) as demonstrated below between the '''.TH''' line and the first '''.SN''' line.
+Each '''.SH''' section is preceded by an ''empty'' line. In ngroff syntax that is a line containing only a dot (.) as demonstrated below between the '''.TH''' line and the first '''.SH''' line.
 
 The document overview is as follows. Introductory header markup as shown followed by any applicable sections. Which are detailed in more depth below.
 {{{
@@ -43,7 +43,7 @@ If a version number is relevant state it in a separate paragraph below the name 
 For example:
 {{{
 .
-.SN NAME
+.SH NAME
 .if !'po4a'hide' .B squid
 .if !'po4a'hide' \-
 HTTP Web Proxy caching server.
@@ -268,11 +268,11 @@ This is a template only. Alter it according to the requirements detailed above t
 {{{
 .if !'po4a'hide' .TH binary.name 8
 .
-.SN NAME
+.SH NAME
 .if !'po4a'hide' .B binary.name
 .if !'po4a'hide' \-
 Description goes here
-..PP
+.PP
 Version 1.0
 .
 .SH SYNOPSIS
@@ -296,7 +296,6 @@ Display the binary help and command line syntax info using stderr.
 .
 .SH AUTHOR
 This program was written by
-.if !'po4a'hide' .I Authors Name <author@email.contact>
 .if !'po4a'hide' .I Authors Name <author@email.contact>
 .if !'po4a'hide' .I Authors Name <author@email.contact>
 .PP
