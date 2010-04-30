@@ -373,7 +373,7 @@ However there are a number of installed files which have no manual at all.
 || helpers/basic_auth/RADIUS/basic_radius_auth || 8 || (./) Done. ||
 || helpers/digest_auth/eDirectory/digest_edir_auth || {X} || Missing. ||
 || helpers/digest_auth/ldap/digest_ldap_auth || {X} || Missing. ||
-|| helpers/digest_auth/password/digest_pw_auth || {X} || Missing. ||
+|| helpers/digest_auth/file/digest_file_auth || 8 || (./) Done. ||
 || helpers/external_acl/ip_user/ip_user_check || {X} || Missing. Convert example config files and README ||
 || helpers/external_acl/ldap_group/squid_ldap_group || 8 || (./) Done. ||
 || helpers/external_acl/mswin_ad_group/mswin_check_ad_group || {X} || Missing. Convert readme.txt ||
