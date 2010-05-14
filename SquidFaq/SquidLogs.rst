@@ -356,7 +356,7 @@ This will disrupt service, but at least you will have your swap log back. Altern
 % squid -k rotate
 }}}
 
-By default the ''swap.state'' file is stored in the top-level of each ''cache_dir''.  You can move the logs to a different location with the ''cache_swap_log'' option.
+By default the ''swap.state'' file is stored in the top-level of each ''cache_dir''.  You can move the logs to a different location with the ''cache_swap_state'' option.
 
 The file is a binary format that includes MD5 checksums, and ''!StoreEntry'' fields. Please see the Programmers' Guide for information on the contents and format of that file.
 
