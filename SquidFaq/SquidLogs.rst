@@ -384,7 +384,7 @@ For example, use this cron entry to rotate the logs at midnight:
 
 To disable ''access.log'':
 {{{
-cache_access_log none
+access_log none
 }}}
 
 To disable ''store.log'':
