@@ -101,6 +101,8 @@ net ads keytab ADD HTTP
 
 unset KRB5_KTNAME
 }}}
+ * /!\ Do not use this method if you run winbindd or other samba services as samba will reset the machine password every x days and thereby makes the keytab invalid !!
+
 OR with MIT/Heimdal kdamin tool
 
 == Squid Configuration File ==
@@ -138,4 +140,7 @@ On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ or __k
 __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KDC_ERR_PREAUTH_REQUIRED is not an error, but an informational message to the client)
 
 ----
- CategoryConfigExample
+
+ . CategoryConfigExample
+----
+CategoryConfigExample
