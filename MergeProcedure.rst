@@ -20,25 +20,24 @@ Other developers are often able to provide projects for anyone just wanting to c
 Squid-2 and Squid-3 use different coding styles.
 
 '''Squid-3''':
+
  * Formatting is presently enforced automatically post-commit.
  * Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
 
 '''Squid-2''':
+
  * Properly indented with a style similar to the rest of the code.
  * Any C code will be indented by GNU indent 1.9.1 (exact version, no other GNU indent version) with the options:
  * {{{indent -br -ce -i4 -ci4 -l80 -nlp -npcs -npsl -d0 -sc -di0 -psl}}}.
 
 === Submission Format ===
-
 Submissions are emailed to squid-dev for merging, one submission per post. The submission email must contain:
 
  * '''Subject''': The name of the new feature or a brief change description, prefixed with [MERGE] or [PATCH].
  * '''Main body''': A full description of the new feature or change. The description guides those reading your code. Its verbatim copy is usually used as the commit message if your submission is accepted.
  * '''Attachment''': A bzr [MERGE] bundle or a manual [PATCH] in a unified diff format.
 
-
 === Merging Steps for Squid3 ===
-
  1. Check that you have added release notes, if any are needed: '''doc/release-notes/release-3.X.sgml'''. Don't worry about the HTML or TXT files, they are automatically built by the maintainer.
 
  1. If applicable, check that you have added the feature sponsor to the SPONSORS file.
@@ -56,7 +55,6 @@ Submissions are emailed to squid-dev for merging, one submission per post. The s
 Submissions are normally merged on the next maintenance cycle after acceptance (usually weekends).
 
 ==== Squid3 Voting ====
-
 The first matching rule wins. A submission is automatically counted as one positive vote from the submitter.
 
  1. One negative vote by a core developer blocks the merge until resolved.
@@ -68,26 +66,24 @@ The first matching rule wins. A submission is automatically counted as one posit
  1. Submissions older than 10 days without negative votes are accepted.
 
 ==== Squid3 Exceptions ====
-
  1. Core developers may commit any changes immediately.
 
  1. Within 10 days of the commit, core developers may remove any submission without prior notice or discussion. A post-factum notice (and discussion) are still expected on squid-dev.
 
-
-
 === Merging Steps for Squid2 ===
-
  1. The merge should be well tested, isolated, documented and cleaned up etc.
 
  1. The merge should only contain a specific change and not multiple unrelated changes. Unrelated changes should be broken up into separate commits each following their own path in this procedure.
 
- 1. (a) Larger or otherwise intrusive changes is sent to squid-dev for review. Ok for commit if there is a positive core response or no negative responses from anyone in a week. (b) Smaller changes or changes you do not expect someone to say no on may be committed immediately.
+ 1. Larger or otherwise intrusive changes is sent to squid-dev for review. Ok for commit if there is a positive response from another core member, or no negative responses from anyone in a week.
+
+ 1. Smaller changes or changes you do not expect someone to say no on may be committed immediately.
 
  1. If a change is later found to cause trouble and not obviously trivial to fix then it will be thrown out, waiting for someone to make a proper fix.
 
 Please try to not commit unfinished stuff needing more work to actually work the way intended. HEAD is not meant for development, that's supposed to done on branches..
 
-If a follow up change (bugfix etc) is committed directly related to an earlier change please refer to the subject (first line) of the previous in the commit message.
+If a follow up change (bugfix etc) is committed related to an earlier change please refer to the subject (first line) of the previous change in the commit message.
 
 If you suspect that there will be a series of incremental commits relating to a specific feature or reorganisation then make the subject line easy to connect together by starting the title line with a short featurename:  (i.e. "rproxy: header fixes")
 
