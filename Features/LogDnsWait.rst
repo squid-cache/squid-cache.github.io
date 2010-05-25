@@ -11,15 +11,11 @@
 
  * '''Status''': In progress
 
- * '''ETA''': May 2009
-
- * '''Version''': 3.1, 3.2
-
- * '''Priority''': 1
+ * '''Version''': 3.2
 
  * '''Developer''': AlexRousskov
 
- * '''More''': 
+## * '''More''': 
 
 = Overview =
 
