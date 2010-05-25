@@ -97,24 +97,43 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 
 These are the features we are trying to work on at present. New features may be requested, suggested, or added to the plan at any time. Those which are completed and merged will be in the next formal branch after their merge date.
 
-Features under development:
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*")>>
+=== Under Development ===
 
+(Priority 1)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*1")>>
+
+(Priority 2)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*2")>>
+
+(Priority 1)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*3")>>
+
+(Priority 4)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*4")>>
+
+(Others)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
+
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3" regex:"ETA...:.unknown")>>
+
+=== Developer Needed ===
 
 Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
 
 (Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"ETA...:.unknown" regex:"Priority...:.*1")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*1")>>
  * Store URL re-write port from 2.7
  * monitor* port from 2.6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2185
 (Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"ETA...:.unknown" regex:"Priority...:.*2")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*2")>>
  * Variant Invalidation
 (Priority 3)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"ETA...:.unknown" regex:"Priority...:.*3")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*3")>>
+(Priority 4)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*4")>>
 
 (Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3" regex:"ETA...:.unknown" -regex:"Priority...:.[123]")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
 
  There is also a list of [[RoadMap/Tasks|Tasks]] which anyone can help with.
 
