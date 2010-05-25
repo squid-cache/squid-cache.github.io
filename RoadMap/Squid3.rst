@@ -82,7 +82,6 @@ Basic new features in 3.2:
  * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
  * New helpers to demo url_rewrite_program programs.
  * Helpers started on-demand instead of delaying startup and reconfigure process.
- * [[Features/HelperMultiplexer|Helper Multiplexer]]
  * EUI (MAC address) logging and external ACL handling
  * Dynamic URL generation for SquidConf:deny_info redirects
  * Multi-Lingual FTP directory listings
@@ -98,16 +97,8 @@ http://www.squid-cache.org/Versions/v3/HEAD/
 
 These are the features we are trying to work on at present. New features may be requested, suggested, or added to the plan at any time. Those which are completed and merged will be in the next formal branch after their merge date.
 
-
-##  * [:Features/FEATURE_ID_HERE] <<Include(Features/FEATURE_ID_HERE,,,from="ETA.*:",to="$")>>
-
 Features under development:
-## * [[Features/InternalRedirectors]] <<Include(Features/InternalRedirectors,,,from="ETA.*:",to="$")>>
- * [[Features/SmpScale]] <<Include(Features/SmpScale,,,from="ETA.*:",to="$")>>
- * [[Features/DynamicSslCert]] <<Include(Features/DynamicSslCert,,,from="ETA.*:",to="$")>>
-
-## some we will need to manually add to this list...
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*")>>
 
 
 Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
