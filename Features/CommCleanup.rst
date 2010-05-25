@@ -6,15 +6,15 @@
 
  * '''Goal''': Improve code quality and maintainability. 
 
- * '''Status''': not started; waiting for Squid v3.1 work to wind down
+ * '''Status''': started
 
  * '''ETA''': unknown
 
  * '''Version''': Squid 3.2
 
- * '''Developer''': 
+ * '''Developer''': AmosJeffries
 
- * '''More''':
+ * '''More''': [[https://code.launchpad.net/~yadi/squid/cleanup-comm|branch]]
 
 == Details ==
 
@@ -26,10 +26,23 @@ We need thin and clean comm layer that makes sense to developers. Clear interact
 
 At present the only distinction between comm and regular code is its residence in comm.cc and com.h
 
-'''Update 2010-Feb:'''
+=== Progress ===
+
  * The comm code handling inbound client connections (accept / listeners) has now been cleaned up and isolated in a comm library with a small, clear and documented API.
 
- * The inbound SSL layer still needs some attention to combine it behind the comm listener interface away from the higher levels of code. This can perhapse be done as part of the upgrade enabling SSL to use multiple system libraries other than OpenSSL.
+ * The outbound connection setup for server connections (socket opening / connect / bind) has now been cleaned up and isolated in the comm library with a small clear and documented API. Currently undergoing audit and testing.
+
+=== TODO ===
+
+ * The inbound SSL layer still needs some attention to combine it behind the comm listener interface away from the higher levels of code. This can perhaps be done as part of the upgrade enabling SSL to use multiple system libraries other than OpenSSL.
+
+ * The outbound SSL layer still needs some attention to combine it behind the comm connector interface away from the higher levels of code. This can perhaps be done as part of the upgrade enabling SSL to use multiple system libraries other than OpenSSL.
+
+ * The socket reading operations need an API polished up.
+
+ * The socket writing operations need an API polished up.
+
+ * FD handling throughout the code needs to be polished up to pass Connection objects instead of raw FD.
 
 ----
 CategoryFeature CategoryWish
