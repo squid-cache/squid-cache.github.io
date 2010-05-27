@@ -26,12 +26,12 @@ While squid is normally distributed in source form. Some dedicated people are do
  * [[KnowledgeBase/Fink|Fink]]: Benjamin Reed
  * [[KnowledgeBase/FreeBSD|FreeBSD]]: Thomas-Martin Seck
  * [[KnowledgeBase/Gentoo|Gentoo]]: Alin Nasta
- * [[KnowledgeBase/Fedora|Fedora]]: Henri Nordström
+ * [[KnowledgeBase/Fedora|Fedora]]: [[Henrik_Nordström]]
  * [[KnowledgeBase/RedHat|RHEL]]: Jiri Skala
  * [[KnowledgeBase/Mandrivia|Mandrivia]]: Luis Daniel Lucio Quiroz
  * [[KnowledgeBase/NetBSD|NetBSD]]: Takahiro Kambe
  * [[KnowledgeBase/Solaris|Solaris]]: Steven M. Christensen
- * [[KnowledgeBase/Windows|Windows]]: Guido Serassio
+ * [[KnowledgeBase/Windows|Windows]]: [[GuidoSerassio|Guido Serassio]]
  * [[KnowledgeBase/Ubuntu|Ubuntu]]: Luigi Gangitano
 
 ## SuSE: who?
