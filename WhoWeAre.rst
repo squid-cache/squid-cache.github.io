@@ -20,13 +20,14 @@
  * Countless independent [[http://www.squid-cache.org/CONTRIBUTORS.txt|Contributors]].
 
 = Package Maintainers =
-
 While squid is normally distributed in source form. Some dedicated people are donating their time to packaging Squid in other popular formats for easy use.
 
  * [[KnowledgeBase/Debian|Debian]]: Luigi Gangitano
  * [[KnowledgeBase/Fink|Fink]]: Benjamin Reed
  * [[KnowledgeBase/FreeBSD|FreeBSD]]: Thomas-Martin Seck
- * [[KnowledgeBase/Gentoo|Gentoo]]: Alin Nastac
+ * [[KnowledgeBase/Gentoo|Gentoo]]: Alin Nasta
+ * [[KnowledgeBase/Fedora|Fedora]]: Henri Nordström
+ * [[KnowledgeBase/RedHat|RHEL]]: Jiri Skala
  * [[KnowledgeBase/Mandrivia|Mandrivia]]: Luis Daniel Lucio Quiroz
  * [[KnowledgeBase/NetBSD|NetBSD]]: Takahiro Kambe
  * [[KnowledgeBase/Solaris|Solaris]]: Steven M. Christensen
@@ -36,9 +37,7 @@ While squid is normally distributed in source form. Some dedicated people are do
 ## SuSE: who?
 ## IRIX: anyone?
 ## Darwin: who? (mww@macports.org)
-## Fedora: Henrik? others?
 ## OpenBSD: who?
-## RHEL: who?
 ## NextStep: anyone?
 ## UNIX: anyone?
 ## AIX: anyone?
