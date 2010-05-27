@@ -10,9 +10,10 @@
  * [[http://wessels.squid-cache.org/|Duane Wessels]], Chief Procrastinator
 
 = Certified Developers =
- * Christos Tsantilas is 
+ * [[ChristosTsantilas|Christos Tsantilas]] works mainly with ICAP and fixes some bugs.
  * [[DougDixon|Doug Dixon]]
  * [[FrancescoChemolli|Francesco Chemolli]] works mainly on documentation and maintains the wiki, but also chimes in with patches every now and then.
+ * [[MarkusMoeller|Markus Moeller]] wrote and supports the Kerberos features in Squid
  * [[StevenWilton|Steven Wilton]] is bringing the [[Features/CyclicObjectStorageSystem|COSS]] storage engine to maturity
 
 = Other Contributors =
@@ -22,17 +23,17 @@
 
 While squid is normally distributed in source form. Some dedicated people are donating their time to packaging Squid in other popular formats for easy use.
 
- * Debian: Luigi Gangitano
- * Fink: Benjamin Reed
- * FreeBSD: Thomas-Martin Seck
- * Gentoo: Alin Nastac
- * NetBSD: Takahiro Kambe
- * Solaris: Steven M. Christensen
- * Windows: Guido Serassio
-## * Ubuntu: see Debian
+ * [[KnowledgeBase/Debian|Debian]]: Luigi Gangitano
+ * [[KnowledgeBase/Fink|Fink]]: Benjamin Reed
+ * [[KnowledgeBase/FreeBSD|FreeBSD]]: Thomas-Martin Seck
+ * [[KnowledgeBase/Gentoo|Gentoo]]: Alin Nastac
+ * [[KnowledgeBase/Mandrivia|Mandrivia]]: Luis Daniel Lucio Quiroz
+ * [[KnowledgeBase/NetBSD|NetBSD]]: Takahiro Kambe
+ * [[KnowledgeBase/Solaris|Solaris]]: Steven M. Christensen
+ * [[KnowledgeBase/Windows|Windows]]: Guido Serassio
+ * [[KnowledgeBase/Ubuntu|Ubuntu]]: Luigi Gangitano
 
 ## SuSE: who?
-## Mandrivia: anyone?
 ## IRIX: anyone?
 ## Darwin: who? (mww@macports.org)
 ## Fedora: Henrik? others?
