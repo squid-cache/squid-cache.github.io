@@ -11,7 +11,7 @@ Binary RPMs for Fedora are available via the Fedora download/update servers for 
 
 Package information: https://admin.fedoraproject.org/pkgdb/acls/name/squid
 
-Bug Reports: https://admin.fedoraproject.org/pkgdb/acls/bugs/squid?_csrf_token=26fb73aab6b067a2ff7b49071ad6eddec9b2b7d7
+Bug Reports: https://admin.fedoraproject.org/pkgdb/acls/bugs/squid
 
 Install Procedure:
 {{{
