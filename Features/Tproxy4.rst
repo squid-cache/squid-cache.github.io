@@ -66,6 +66,25 @@ So far we have this:
 
  . https://lists.balabit.hu/pipermail/tproxy/2008-June/000853.html
 
+== Routing configuration ==
+The routing features in your kernel also need to be configured to enable correct handling of the intercepted packets. Both arriving and leaving your system.
+
+{{{
+ip rule add fwmark 1 lookup 100
+ip route add local 0.0.0.0/0 dev lo table 100
+}}}
+On each boot startup set:
+
+{{{
+echo 0 > /proc/sys/net/ipv4/conf/lo/rp_filter
+echo 1 > /proc/sys/net/ipv4/ip_forward
+}}}
+Or configure '''/etc/sysctl.conf''':
+
+{{{
+set net.ipv4.forwarding = 1
+}}}
+
 == iptables Configuration ==
 === iptables on a Router device ===
 Setup a chain ''DIVERT'' to mark packets
@@ -86,13 +105,11 @@ Mark all other (new) packets and use ''TPROXY'' to pass into Squid:
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
 === ebtables on a Bridging device ===
- . /!\ WARNING: the following config has been recommended. People who reported issues using TPROXY + Bridging went silent after seeing this. We _assume_ that it fixed the problem. But nobody has yet confirmed it.
 
-Do the above steps for iptables on a router device. Then follow with these additional steps:
+You need to follow all the steps for setting up the Squid box as a router device. These bridging rules are additional steps to move packets from bridging mode to routing mode:
 
  . {i} $CLIENT_IFACE and $INET_IFACE need to be replaced with the eth* NIC interface names facing the clients or Internet. {i} Mind the line wrap. The following is two command lines.
 
-## AYJ: The initial testers, kernel people, and ab few others say that the rule target needs to be DROP. More recently two people report that target needs to be ACCEPT. Not sure where that is coming from.
 {{{
  ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 -j redirect --redirect-target DROP
 
@@ -105,26 +122,9 @@ Do the above steps for iptables on a router device. Then follow with these addit
  done
  unset i
 }}}
- . /!\ The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc) {i} An alternative to assigning interfaces with IP addresses you may also configure the squid.conf SquidConf:tcp_outgoing_address, and SquidConf:udp_outgoing_address for minimal DNS and peer requests to use explicitly. Note that SquidConf:tcp_outgoing_address will never be used on DIRECT requests received with TPROXY.
+ . /!\ The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc)
+ . {i} An alternative to assigning interfaces with IP addresses you may also configure the squid.conf SquidConf:tcp_outgoing_address, and SquidConf:udp_outgoing_address for minimal DNS and peer requests to use explicitly. Note that SquidConf:tcp_outgoing_address will never be used on requests received with TPROXY.
 
-== Routing configuration ==
-The routing features in your kernel also need to be configured to enable correct handling of the intercepted packets. Both arriving and leaving your system.
-
-{{{
-ip rule add fwmark 1 lookup 100
-ip route add local 0.0.0.0/0 dev lo table 100
-}}}
-On each boot startup set:
-
-{{{
-echo 0 > /proc/sys/net/ipv4/conf/lo/rp_filter
-echo 1 > /proc/sys/net/ipv4/ip_forward
-}}}
-Or configure '''/etc/sysctl.conf''':
-
-{{{
-set net.ipv4.forwarding = 1
-}}}
 == WCCP Configuration (only if you use WCCP) ==
  . ''by Steve Wilton'' {i} $ROUTERIP needs to be replaced with the IP Squid uses to contact the WCCP router.
 
