@@ -5,25 +5,25 @@ Running multiple instances of Squid on a system is not hard, but it requires the
 <<TableOfContents>>
 
 == Relevant squid.conf directives ==
- * {{{visible_hostname}}}
+ * SquidConf:visible_hostname
   you may want to keep this unique for troubleshooting purposes
- * {{{unique_hostname}}}
-  if you don't change the {{{visible_hostname}}} and want your caches to cooperate, at least change this setting to properly detect forwarding loops
- * {{{http_port}}}
+ * SquidConf:unique_hostname
+  if you don't change the SquidConf:visible_hostname and want your caches to cooperate, at least change this setting to properly detect forwarding loops
+ * SquidConf:http_port
   either the various squids run on different ports, or on different IP addresses. In the latter case the syntax to be used is {{{1.2.3.4:3128}}} and {{{1.2.3.5:3128}}}
- * {{{icp_port}}}, {{{snmp_port}}}
+ * SquidConf:icp_port, SquidConf:snmp_port
   same as with http_port. If you don need ICP and SNMP, just disable them by setting them to 0.
- * {{{access_log}}}, {{{cache_log}}}
+ * SquidConf:access_log, SquidConf:cache_log
   you want to have different logfiles for you different squid instances. Squid '''might''' even work when all log to the same files, but the result would probably be a garbled mess
- * {{{pid_filename}}}
+ * SquidConf:pid_filename
   this file '''must''' be changed. It is used by squid to detect a running instance and to send various internal messages (i.e. {{{squid -k reconfigure}}})
- * {{{cache_dir}}}
+ * SquidConf:cache_dir
   make sure that no overlapping cache_dirs exist. Squids do not coordinate when accessing them, and shuffling stuff around each others' playground is a '''bad thing ^TM^'''
- * {{{include}}}
-  to reduce duplication mistakes break shared pieces of config (ACL definitions etc) out into separate files which get '''include'''ed into each of the multiple squid.conf at the right places.
+ * SquidConf:include
+  to reduce duplication mistakes break shared pieces of config (ACL definitions etc) out into separate files which SquidConf:include pulls into each of the multiple squid.conf at the right places.
 
 == Tips ==
-The easiest way I found to manage multiple squids runnning on one single box was to:
+The easiest way I found to manage multiple squids running on one single box was to:
 
  * create a configuration file per instance 
  * write a small shell script (named {{{squid-}}}''something'') per instance, containing:
