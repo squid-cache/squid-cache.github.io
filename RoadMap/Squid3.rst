@@ -63,7 +63,7 @@ http://www.squid-cache.org/Versions/v3/3.1/
 = Squid 3.2 (HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will probably now happen during April 2010.
+The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will happen 30th July 2010.
 
 The intention is to remove the backlog of feature parity between 2.7 and 3.2 (listed as regressions in 3.1 http://www.squid-cache.org/Versions/v3/3.1/RELEASENOTES.html#s7) and concentrate on further performance and HTTP/1.1 improvements.
 
