@@ -93,7 +93,7 @@ Basic new features in 3.2:
 Development snapshots of Squid source code are available at
 http://www.squid-cache.org/Versions/v3/HEAD/
 
-= TODO =
+== TODO ==
 
 These are the features we are trying to work on at present. New features may be requested, suggested, or added to the plan at any time. Those which are completed and merged will be in the next formal branch after their merge date.
 
