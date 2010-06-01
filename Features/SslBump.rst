@@ -1,11 +1,11 @@
 ##master-page:FeatureTemplate
 #format wiki
 #language en
+#faqlisted yes
 
 = Feature: Squid-in-the-middle SSL Bump =
 
  * '''Goal''': Enable ICAP inspection of SSL traffic.
- * '''Status''': completed
  * '''Version''': 3.1
  * '''Developer''': AlexRousskov
 
