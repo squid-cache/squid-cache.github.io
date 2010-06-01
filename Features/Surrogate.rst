@@ -5,8 +5,7 @@
 
 = Feature: Surrogate Protocol =
 
- * '''Goal''': 
- * '''Status''': Done.
+ * '''Goal''': Support this protocol extension to provide selected surrogates with alternative caching settings.
  * '''Version''': 3.0
  * '''Developer''': RobertCollins
  * '''More''': http://www.esi.org/architecture_spec_1.0.html
