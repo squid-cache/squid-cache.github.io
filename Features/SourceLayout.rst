@@ -32,9 +32,9 @@ Key:
 || (./) || ''adaptation/ecap/'' || eCAP support || - ||
 || (./) || ''adaptation/icap/'' || ICAP support || ICAP/ICAP* ||
 ||  || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-|| :\ || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
-|| {1} || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
-||  || ''comm/'' || I/O subsystem || Comm*, comm*  ||
+|| {2} || ''auth/'' || Authentication support || auth/* || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
+|| :\ || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
+|| {2} || ''comm/'' || I/O subsystem || Comm*, comm*  ||
 ||  || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
