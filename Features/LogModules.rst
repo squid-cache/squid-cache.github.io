@@ -1,33 +1,102 @@
 ##master-page:FeatureTemplate
 #format wiki
 #language en
+#faqlisted yes
 
-= Feature: Log Daemon for Squid-3 =
+= Feature: Log Daemon for Squid =
 
- * '''Goal''': Finish porting Squid-2 Log Daemon to Squid3.
+ * '''Goal''': Logging plugin interface for Squid
 
- * '''Status''': completed. seeking additional daemon helpers to bundle with Squid.
+ * '''Status''': seeking additional daemon helpers to bundle with Squid.
 
- * '''Version''': 3.2
+ * '''Version''': 2.7, 3.2
 
  * '''Developer''': AdrianChadd (Squid-2), AmosJeffries (Squid-3 port)
 
- * '''Daemons''':
-   * syslog : built-in where available.
-   * file system : bundled with relevant release.
-   * UDP receiver : none currently known to be available in the public domain.
-   * MySQL : http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html
+<<TableOfContents>>
 
+== Plug-in Modules ==
 
-== Squid3 status details ==
+Logging modules are API built into Squid which pass logging information out to helpers in several different formats.
 
- * feature merged to 3.HEAD (for 3.2 release).
+General SquidConf:access_log format:
+{{{
+access_log module:parameters [logformat] [acls]
+}}}
 
-== Squid2 information ==
+ . '''module''': One of the plugin modules Squid can use to record the log data.
 
-AdrianChadd written some code to push logfile writing into an external process, freeing up the main squid process from the potentially blocking stdio writes.
+ . '''parameters''': Parameters to configure the plugin module. Content and format is specific to to each logging module.
 
-The code has the cute side-effect of allowing people to finally write plugins to easily throw squid logs into an external program - eg mysql logging, or something to log over TCP to a central logging server, etc.
+ . '''logformat''': The access.log format to be used. See SquidConf:logformat for more details.
+
+ . '''acls''': A list of ACL names, if all the named ACLs match a request it will be logged to this log.
+
+=== Module: Standard I/O ===
+
+This is a module uses the traditional I/O method of Squid writing its logs directly to the file system.
+
+Configuration '''module:parameters''' to be used by SquidConf:access_log:
+{{{
+stdio:/var/log/squid/access.log
+}}}
+
+ . {i} Used for backwards compatibility with old squid.conf. It is recommended that you upgrade to the '''daemon''' module with the basic file helper for better performance.
+
+=== Module: Daemon ===
+
+This is a module runs a helper daemon to offload the log storage processing from Squid.
+
+The helper daemon program is configured with the SquidConf:logfile_daemon directive.
+{{{
+logfile_daemon /path/to/helper.binary
+}}}
+
+Configuration '''module:parameters''' to be used by SquidConf:access_log:
+{{{
+daemon:/var/log/squid/access.log
+}}}
+
+==== Daemon Helpers Available ====
+
+ * '''log_file_daemon''' : Log directly to the local file system. Bundled with Squid.
+
+ * MySQL : http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html
+
+=== Module: System Log ===
+
+This is a module using the syslog() API to send log data to any system logging daemons which accept records in that binary format.
+
+Configuration '''module:parameters''' to be used by SquidConf:access_log:
+{{{
+syslog:facility.priority
+}}}
+
+ . ''facility'' and ''priority'' fields are intentionally formatted the same as syslog.conf entries. See your syslog configuration documentation for possible values.
+
+ . {i} syslog uses UDP which may drop packets when the network is under load or congested.
+
+=== Module: UDP Receiver ===
+
+This is a module using UDP protocol to send log lines to an external daemon or central logging server.
+
+Configuration '''module:parameters''' to be used by SquidConf:access_log:
+{{{
+udp://host:port
+}}}
+
+ . {i} being UDP this module may drop packets when the network is under load or congested.
+
+=== Module: TCP Receiver ===
+
+This is a module using TCP protocol to send log lines to an external daemon or central logging server.
+
+Configuration '''module:parameters''' to be used by SquidConf:access_log:
+{{{
+tcp://host:port
+}}}
+
+ . {i} Available from [[Squid-3.2]]
 
 ----
 CategoryFeature
