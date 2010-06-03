@@ -59,7 +59,7 @@ daemon:/var/log/squid/access.log
 
 ==== Daemon Helpers Available ====
 
- * '''log_file_daemon''' : Log directly to the local file system. Bundled with Squid.
+ * '''log_file_daemon''' : Log directly to the local file system.
 
  * MySQL : http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html
 
