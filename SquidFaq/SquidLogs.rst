@@ -171,7 +171,14 @@ The following result codes were taken from a Squid-2, compare with the ''log_typ
 
 '''UDP_MISS_NOFETCH''' During "-Y" startup, or during frequent failures, a cache in hit only mode will return either UDP_HIT or this code. Neighbours will thus only fetch hits.
 
-'''NONE''' Seen with errors and cachemgr requests.
+'''NONE''' Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes.
+
+The following code suffixes are specific to Squid3:
+
+'''_ABORTED''' suffix means that the connection with HTTP ''client'' was closed or otherwise failed prematurely. This includes half-closed client sockets when ''half_closed_clients'' in squid.conf is off.
+
+'''_TIMEDOUT''' suffix means that the transaction timed out while writing the response to the HTTP ''client'' (i.e., the client was not reading or stopped reading Squid's response).
+
 
 The following codes are no longer available in Squid-2:
 
