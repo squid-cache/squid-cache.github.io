@@ -5,7 +5,7 @@
 Squid's access control scheme is relatively comprehensive and difficult for some people to understand.  There are two different components: ''ACL elements'', and ''access lists''.  An access list consists of an ''allow'' or ''deny'' action followed by a number of ACL elements.
 
 == ACL elements ==
-|| {i} || The information here is current for version 3.1 see SquidConf:acl for current configuration guide. ||
+|| {i} ||The information here is current for version 3.1 see SquidConf:acl for current configuration guide. ||
 
 
 Squid knows about the following types of ACL elements:
@@ -101,7 +101,7 @@ Access list rules are checked in the order they are written.  List searching ter
 
 If a rule has multiple ACL elements, it uses AND logic.  In other words, ''all'' ACL elements of the rule must be a match in order for the rule to be a match.  This means that it is possible to write a rule that can never be matched.  For example, a port number can never be equal to both 80 AND 8000 at the same time.
 
-To summarize the ACL logics can be described as:
+To summarize the ACL logics can be described as: (note: AND/OR below is just for illustartion, not part of the syntax)
 
 {{{
 http_access allow|deny acl AND acl AND ...
@@ -166,7 +166,6 @@ acl friends ident kim lisa frank joe
 http_access allow friends
 http_access deny all
 }}}
-
 Note that SquidConf:ident_lookup_access only permits/denies whether a machine is tested for its Ident. This does not directly alter access to the users request.
 
 == Is there a way to do ident lookups only for a certain host and compare the result with a userlist in squid.conf? ==
@@ -188,7 +187,7 @@ Requests coming from 10.0.0.1 will be allowed immediately because there are no u
 === Using Proxy Authentication ===
 Another option is to use proxy-authentication.    In this scheme, you assign usernames and passwords to individuals.  When they first use the proxy they are asked to authenticate themselves by entering their username and password.
 
-In Squid this authentication is handled via external processes.  For information on how to configure this, please see [[SquidFaq/ProxyAuthentication]].
+In Squid this authentication is handled via external processes.  For information on how to configure this, please see SquidFaq/ProxyAuthentication.
 
 == Do you have a CGI program which lets users change their own proxy passwords? ==
 [[mailto:orso@brturbo.com|Pedro L Orso]] has adapted the Apache's ''htpasswd'' into a CGI program called  [[http://www.squid-cache.org/htpasswd/|chpasswd.cgi]].
@@ -282,7 +281,7 @@ Then restart or reconfigure squid as above.
 
 From now on, your ''cache.log'' should contain detailed traces of all access list processing. Be warned that this can be quite some lines per request.
 
-See also [[SquidFaq/TroubleShooting]].
+See also SquidFaq/TroubleShooting.
 
 == Proxy-authentication and neighbor caches ==
 ''' The problem '''
@@ -311,7 +310,6 @@ http_access allow proxy-B
 http_access allow user_passwords
 http_access deny all
 }}}
-
 Squid-2.5 allows two exceptions to this rule, by defining the appropriate SquidConf:cache_peer options:
 
 {{{
@@ -319,6 +317,8 @@ cache_peer parent.foo.com parent login=PASS
 }}}
 This will forward the user's credentials '''as-is''' to the parent proxy which will be thus able to authenticate again.
 || <!> ||This will '''only''' work with the ''Basic'' authentication scheme. If any other scheme is enabled, it will fail ||
+
+
 
 
 {{{
@@ -352,7 +352,9 @@ On the other hand, if the list contains origin server hostnames, simply change '
 If you are using Squid-2.4 or later then keep in mind that dstdomain acls uses different syntax for exact host matches and entire domain matches. ''www.example.com'' matches the '''exact host''' ''www.example.com'', while ''.example.com'' matches the '''entire domain''' example.com (including example.com alone)
 
 There is also subtle issues if your dstdomain ACLs contains matches for both an exact host in a domain and the whole domain where both are in the same domain (i.e. both ''www.example.com'' and ''.example.com''). Depending on how your data is ordered this may cause only the most specific of these (e.g. ''www.example.com'') to be used.
-|| {i} || Squid-2.4 and later will warn you when this kind of configuration is used. If your Squid does not warn you while reading the configuration file you do not have the problem described below. Also the configuration here uses the dstdomain syntax of Squid-2.1 or earlier.. (Squid-2.2 and later needs to have domains prefixed by a dot) ||
+|| {i} ||Squid-2.4 and later will warn you when this kind of configuration is used. If your Squid does not warn you while reading the configuration file you do not have the problem described below. Also the configuration here uses the dstdomain syntax of Squid-2.1 or earlier.. (Squid-2.2 and later needs to have domains prefixed by a dot) ||
+
+
 
 
 There is a subtle problem with domain-name based access controls when a single ACL element has an entry that is a subdomain of another entry.  For example, consider this list:
@@ -444,6 +446,9 @@ Then, of course, you'll have to rewrite your ''SquidConf:http_access'' lines as 
 Yes, for some operating systes.  Squid calls these "ARP ACLs" and they are supported on Linux, Solaris, and probably BSD variants.
 || /!\ ||MAC address is only available for clients that are on the same subnet.  If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router. ||
 
+
+
+
 To use ARP (MAC) access controls, you first need to compile in the optional code.  Do this with the ''--enable-arp-acl'' configure option:
 
 {{{
@@ -486,7 +491,7 @@ acl yuck dstdomain .foo.com
 http_access deny yuck
 }}}
 == I want to customize, or make my own error messages. ==
-You can customize the existing error messages as described in ''Customizable Error Messages'' in [[SquidFaq/MiscFeatures]]. You can also create new error messages and use these in conjunction with the ''SquidConf:deny_info'' option.
+You can customize the existing error messages as described in ''Customizable Error Messages'' in SquidFaq/MiscFeatures. You can also create new error messages and use these in conjunction with the ''SquidConf:deny_info'' option.
 
 For example, lets say you want your users to see a special message when they request something that matches your pornography list. First, create a file named ERR_NO_PORNO in the ''/usr/local/squid/etc/errors'' directory.  That file might contain something like this:
 
