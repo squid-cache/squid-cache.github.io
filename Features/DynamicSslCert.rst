@@ -6,9 +6,9 @@
 
  * '''Goal''': Reduce the number of "certificate mismatch" browser warnings when impersonating a site using the [[Features/SslBump|SslBump]] feature
 
- * '''Status''': primary development phases completed; working on trunk submission
+ * '''Status''': v3.1 patch passed preliminary squid-dev review; needs a trunk port
 
- * '''ETA''': April 2010
+ * '''ETA''': July 2010
 
  * '''Version''': v3.2
 
@@ -16,7 +16,7 @@
 
  * '''Developer''': AlexRousskov, Andrew Balabohin
 
- * '''More''': Requires [[Features/SslBump|SslBump]]
+ * '''More''': Squid v3.1 (r9820) [[http://www.squid-cache.org/mail-archive/squid-dev/201003/0201.html|implementation]]; requires [[Features/SslBump|SslBump]]
 
 ## , development [[https://code.launchpad.net/~rousskov/squid/DynamicSslCert|branch]]
 
@@ -194,6 +194,8 @@ Now you can start Squid, modify users' browsers settings to use the proxy (if ne
 '''Phase 4''': Support disk caching of generated certificates. The disk cache is maintained by the helper processes generating the certificates.
 
 '''Phase 5''': Sync with current Squid code and release.
+
+The above phases have been completed, and the corresponding Squid v3.1 patch passed a preliminary squid-dev review. We need to port the code to trunk and commit in time for v3.2 branching.
 
 ----
 CategoryFeature
