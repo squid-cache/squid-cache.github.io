@@ -7,24 +7,24 @@ The logs are a valuable source of information about Squid workloads and performa
 
 There are a few basic points common to all log files. The time stamps logged into the log files are usually UTC seconds unless stated otherwise. The initial time stamp usually contains a millisecond extension.
 
-== squid.out ==
+=== squid.out ===
 If you run your Squid from the ''!RunCache'' script, a file ''squid.out'' contains the Squid startup times, and also all fatal errors, e.g. as produced by an ''assert()'' failure. If you are not using ''!RunCache'', you will not see such a file.
 
  /!\ RunCache has been obsoleted since [[Squid-2.6]]. Modern Squid run as daemons usually log this output to the system syslog facility or if run manually to stdout for the account which operates the master daemon process.
 
-== cache.log ==
+=== cache.log ===
 The ''cache.log'' file contains the debug and error messages that Squid generates. If you start your Squid using the ''-s'' command line option, a copy of certain messages will go into your syslog facilities. It is a matter of personal preferences to use a separate file for the squid log data.
 
 From the area of automatic log file analysis, the ''cache.log'' file does not have much to offer. You will usually look into this file for automated error reports, when programming Squid, testing new features, or searching for reasons of a perceived misbehavior, etc.
 
-== useragent.log ==
+=== useragent.log ===
 The user agent log file is only maintained, if
 
  * you configured the compile time ''--enable-useragent-log'' option, and
  * you pointed the ''useragent_log'' configuration option to a file.
 From the user agent log file you are able to find out about distribution of browsers of your clients. Using this option in conjunction with a loaded production squid might not be the best of all ideas.
 
-== store.log ==
+=== store.log ===
 The ''store.log'' file covers the objects currently kept on disk or removed ones. As a kind of transaction log it is usually used for debugging purposes. A definitive statement, whether an object resides on your disks is only possible after analyzing the ''complete'' log file. The release (deletion) of an object may be logged at a later time than the swap out (save to disk).
 
 The ''store.log'' file may be of interest to log file analysis which looks into the objects on your disks and the time they spend there, or how many times a hot object was accessed. The latter may be covered by another log file, too. With knowledge of the ''cache_dir'' configuration option, this log file allows for a URL to filename mapping without recursing your cache disks. However, the Squid developers recommend to treat ''store.log'' primarily as a debug file, and so should you, unless you know what you are doing.
@@ -56,12 +56,12 @@ The print format for a store log entry (one line) consists of thirteen space-sep
  1. '''key''' The key to the object, usually the URL.
     The '''datehdr''', '''lastmod''', and '''expires''' values are all expressed in UTC seconds. The actual values are parsed from the HTTP reply headers. An unparsable header is represented by a value of -1, and a missing header is represented by a value of -2.
 
-== access.log ==
+=== access.log ===
 Most log file analysis program are based on the entries in ''access.log''.
 
 [[Squid-2.7]] and [[Squid-3.2]] allow the administrators to configure their [[Features/LogFormat|logfile format]] and [[Features/LogModules|log output method]] with great flexibility. Previous versions offered a much more limited functionality.
 
-=== Squid result codes ===
+==== Squid result codes ====
 The '''TCP_''' codes refer to requests on the HTTP port (usually 3128). The '''UDP_''' codes refer to requests on the ICP port (usually 3130). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged.
 
 The following result codes were taken from a Squid-2, compare with the ''log_type'' enum in ''src/enums.h'':
@@ -129,7 +129,7 @@ The following codes are no longer available in Squid-2:
 
 '''UDP_RELOADING''' See: UDP_MISS_NOFETCH.
 
-=== HTTP status codes ===
+==== HTTP status codes ====
 These are taken from RFC RFC:2616 and verified for Squid. Squid uses almost all codes except 307 (Temporary Redirect), and 416 (Request Range Not Satisfiable). Extra codes include 000 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for RFC RFC:2518 (WebDAV). Yes, there are really two entries for status code 424:
 
 {{{
@@ -183,7 +183,7 @@ These are taken from RFC RFC:2616 and verified for Squid. Squid uses almost all 
  600 Squid header parsing error
 }}}
 
-=== Request methods ===
+==== Request methods ====
 Squid recognizes several request methods as defined in [[ftp://ftp.isi.edu/in-notes/rfc2616.txt|RFC 2616]]. Newer versions of Squid (2.2.STABLE5 and above) also recognize [[ftp://ftp.isi.edu/in-notes/rfc2518.txt|RFC 2518]] "HTTP Extensions for Distributed Authoring -- WEBDAV" extensions.
 
 {{{
@@ -208,7 +208,7 @@ Squid recognizes several request methods as defined in [[ftp://ftp.isi.edu/in-no
  UNLOCK    rfc2518    never      unlock an object.
 }}}
 
-=== Hierarchy Codes ===
+==== Hierarchy Codes ====
 The following hierarchy codes are used with Squid-2:
 
 '''NONE''' For TCP HIT, TCP failures, cachemgr requests and all UDP requests, there is no hierarchy information.
@@ -269,7 +269,7 @@ FIREWALL_IP_DIRECT    No special logging for hosts inside the firewall.
 LOCAL_IP_DIRECT       No special logging for local networks.
 }}}
 
-== swap.state ==
+=== swap.state ===
 
 This file has a rather unfortunate history which has led to it often being called the ''swap log''.  It is in fact a '''journal of the cache index''' with a record of every cache object written to disk. It is read when Squid starts up to "reload" the cache quickly.
 
