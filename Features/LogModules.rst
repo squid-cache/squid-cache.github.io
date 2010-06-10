@@ -1,3 +1,4 @@
+## page was renamed from Features/LogDaemon
 ##master-page:FeatureTemplate
 #format wiki
 #language en
