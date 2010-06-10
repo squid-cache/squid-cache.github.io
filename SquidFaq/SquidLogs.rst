@@ -10,8 +10,10 @@ There are a few basic points common to all log files. The time stamps logged int
 == squid.out ==
 If you run your Squid from the ''!RunCache'' script, a file ''squid.out'' contains the Squid startup times, and also all fatal errors, e.g. as produced by an ''assert()'' failure. If you are not using ''!RunCache'', you will not see such a file.
 
+ /!\ RunCache has been obsoleted since [[Squid-2.6]]. Modern Squid run as daemons usually log this output to the system syslog facility or if run manually to stdout for the account which operates the master daemon process.
+
 == cache.log ==
-The ''cache.log'' file contains the debug and error messages that Squid generates. If you start your Squid using the default ''!RunCache'' script, or start it with the ''-s'' command line option, a copy of certain messages will go into your syslog facilities. It is a matter of personal preferences to use a separate file for the squid log data.
+The ''cache.log'' file contains the debug and error messages that Squid generates. If you start your Squid using the ''-s'' command line option, a copy of certain messages will go into your syslog facilities. It is a matter of personal preferences to use a separate file for the squid log data.
 
 From the area of automatic log file analysis, the ''cache.log'' file does not have much to offer. You will usually look into this file for automated error reports, when programming Squid, testing new features, or searching for reasons of a perceived misbehavior, etc.
 
@@ -54,77 +56,10 @@ The print format for a store log entry (one line) consists of thirteen space-sep
  1. '''key''' The key to the object, usually the URL.
     The '''datehdr''', '''lastmod''', and '''expires''' values are all expressed in UTC seconds. The actual values are parsed from the HTTP reply headers. An unparsable header is represented by a value of -1, and a missing header is represented by a value of -2.
 
-
 == access.log ==
 Most log file analysis program are based on the entries in ''access.log''.
 
-Squid allows the administrators to configure their logfile format with great flexibility previous version offered a much more limited functionality.
-
-Previous versions allow to log accesses either in native logformat (default) or using the [[http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format|http common logfile format]] (CLF). The latter is enabled by specifying the ''emulate_httpd_log'' option in squid.conf.
-
-
-=== The common log file format ===
-The [[http://www.w3.org/Daemon/User/Config/Logging.html#common-logfile-format|Common Logfile Format]] is used by numerous HTTP servers. This format consists of the following seven fields:
-
-{{{
-remotehost rfc931 authuser [date] "method URL" status bytes
-}}}
-It is parsable by a variety of tools. The common format contains different information than the native log file format. The HTTP version is logged, which is not logged in native log file format.
-
-=== The native log file format ===
-##The native format is different for different major versions of Squid.
-##
-## For Squid-1.0 it is:
-## {{{
-## time elapsed remotehost code/status/peerstatus bytes method URL
-## }}}
-## For Squid-1.1, the information from the ''hierarchy.log'' was moved into ''access.log''.
-
-The format is:
-{{{
-time elapsed remotehost code/status bytes method URL rfc931 peerstatus/peerhost type
-}}}
-##For Squid-2 the columns stay the same, though the content within may change a little.
-
-The native log file format logs more and different information than the common log file format: the request duration, some timeout information, the next upstream server address, and the content type.
-
-There exist tools, which convert one file format into the other. Please mind that even though the log formats share most information, both formats contain information which is not part of the other format, and thus this part of the information is lost when converting. Especially converting back and forth is not possible without loss.
-
-''squid2common.pl'' is a conversion utility, which converts any of the squid log file formats into the old CERN proxy style output. There exist tools to analyse, evaluate and graph results from that format.
-
-== access.log native format in detail ==
-We recommend that you use Squid's native log format due to its greater amount of information made available for later analysis. The print format line for native ''access.log'' entries looks like this:
-
-{{{
-"%9d.%03d %6d %s %s/%03d %d %s %s %s %s%s/%s %s"
-}}}
-Therefore, an ''access.log'' entry usually consists of (at least) 10 columns separated by one ore more spaces:
-
- 1. '''time''' A Unix timestamp as UTC seconds with a millisecond resolution. You can convert Unix timestamps into something more human readable using this short perl script:
-   {{{
-#! /usr/bin/perl -p
-s/^\d+\.\d+/localtime $&/e;
-   }}}
- 1. '''duration''' The elapsed time considers how many milliseconds the transaction busied the cache. It differs in interpretation between TCP and UDP:
-  * For HTTP this is basically the time from having received the request to when Squid finishes sending the last byte of the response.
-  * For ICP, this is the time between scheduling a reply and actually sending it.
-    Please note that the entries are logged ''after'' the reply finished being sent, ''not'' during the lifetime of the transaction.
- 1. '''client address''' The IP address of the requesting instance, the client IP address. The ''client_netmask'' configuration option can distort the clients for data protection reasons, but it makes analysis more difficult. Often it is better to use one of the log file anonymizers. Also, the ''log_fqdn'' configuration option may log the fully qualified domain name of the client instead of the dotted quad. The use of that option is discouraged due to its performance impact.
- 1. '''result codes''' This column is made up of two entries separated by a slash. This column encodes the transaction result:
-    The cache result of the request contains information on the kind of request, how it was satisfied, or in what way it failed. Please refer to [[#squid_result_codes|Squid result codes]] for valid symbolic result codes.
-    Several codes from older versions are no longer available, were renamed, or split. Especially the ''ERR_'' codes do not seem to appear in the log file any more. Also refer to [[#squid_result_codes|Squid result codes]] for details on the codes no longer available.
-    The status part contains the HTTP result codes with some Squid specific extensions. Squid uses a subset of the RFC defined error codes for HTTP. Refer to section [[#http_status_codes|status codes]] for details of the status codes recognized.
- 1. '''bytes''' The size is the amount of data delivered to the client. Mind that this does not constitute the net object size, as headers are also counted. Also, failed requests may deliver an error page, the size of which is also logged here.
- 1. '''request method''' The request method to obtain an object. Please refer to section [[#request-methods|request-methods]] for available methods. If you turned off ''log_icp_queries'' in your configuration, you will not see (and thus unable to analyze) ICP exchanges. The ''PURGE'' method is only available, if you have an ACL for "method purge" enabled in your configuration file.
- 1. '''URL''' This column contains the URL requested. Please note that the log file may contain whitespace for the URI. The default configuration for ''uri_whitespace'' denies or truncates whitespace, though.
- 1. '''rfc931''' The eighth column may contain the ident lookups for the requesting client. Since ident lookups have performance impact, the default configuration turns ''ident_loookups'' off. If turned off, or no ident information is available, a "-" will be logged.
- 1. '''hierarchy code''' The hierarchy information consists of three items:
-   * Any hierarchy tag may be prefixed with ''TIMEOUT_'', if the timeout occurs waiting for all ICP replies to return from the neighbours. The timeout is either dynamic, if the ''icp_query_timeout'' was not set, or the time configured there has run up.
-   * A code that explains how the request was handled, e.g. by forwarding it to a peer, or going straight to the source. Refer to [[#hierarchy_codes|Hierarchy Codes]] for details on hierarchy codes and removed hierarchy codes.
-   * The IP address or hostname where the request (if a miss) was forwarded. For requests sent to origin servers, this is the origin server's IP address. For requests sent to a neighbor cache, this is the neighbor's hostname. NOTE: older versions of Squid would put the origin server hostname here.
- 1. '''type''' The content type of the object as seen in the HTTP reply header. Please note that ICP exchanges usually don't have any content type, and thus are logged "-". Also, some weird replies have content types ":" or even empty ones.
-
-There may be two more columns in the ''access.log'', if the (debug) option ''log_mime_headers'' is enabled In this case, the HTTP request headers are logged between a "{{{[" and a "}}}]", and the HTTP reply headers are also logged between "{{{[" and "}}}]". All control characters like CR and LF are URL-escaped, but spaces are ''not'' escaped! Parsers should watch out for this.
+[[Squid-2.7]] and [[Squid-3.2]] allow the administrators to configure their [[Features/LogFormat|logfile format]] and [[Features/LogModules|log output method]] with great flexibility. Previous versions offered a much more limited functionality.
 
 === Squid result codes ===
 The '''TCP_''' codes refer to requests on the HTTP port (usually 3128). The '''UDP_''' codes refer to requests on the ICP port (usually 3130). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged.
@@ -334,21 +269,9 @@ FIREWALL_IP_DIRECT    No special logging for hosts inside the firewall.
 LOCAL_IP_DIRECT       No special logging for local networks.
 }}}
 
-== sending access.log to syslog ==
-
-[[Squid-2.6|Squid 2.6]] allows to send access.log contents to a local syslog server by specifying {{{syslog}}} as a file path, for example as in:
-{{{
-access_log syslog: squid
-}}}
-
-
-== customizable access.log ==
-
-[[Squid-2.6|Squid 2.6]] and later versions feature a [[Features/LogFormat|customizable access.log format]].
-
 == swap.state ==
 
-This file has a rather unfortunate history which has led to it often being called the ''swap log''.  It is in fact a journal of the cache index with a record of every cache object written to disk. It is read when Squid starts up to "reload" the cache quickly.
+This file has a rather unfortunate history which has led to it often being called the ''swap log''.  It is in fact a '''journal of the cache index''' with a record of every cache object written to disk. It is read when Squid starts up to "reload" the cache quickly.
 
 If you remove this file when squid is '''NOT''' running, you will effectively wipe out your cache index of contents. Squid can rebuild it from the original files, but that procedure can take a long time as every file in the cache must be fully scanned for meta data.
 
@@ -368,13 +291,13 @@ By default the ''swap.state'' file is stored in the top-level of each ''cache_di
 The file is a binary format that includes MD5 checksums, and ''!StoreEntry'' fields. Please see the Programmers' Guide for information on the contents and format of that file.
 
 == Which log files can I delete safely? ==
-You should never delete ''access.log'', ''store.log'', ''cache.log'', or ''swap.state'' while Squid is running. With Unix, you can delete a file when a process has the file opened.  However, the filesystem space is not reclaimed until the process closes the file.
+You should never delete ''access.log'', ''store.log'', or ''cache.log'' while Squid is running. With Unix, you can delete a file when a process has the file opened.  However, the filesystem space is not reclaimed until the process closes the file.
 
 If you accidentally delete ''swap.state'' while Squid is running, you can recover it by following the instructions in the previous questions.  If you delete the others while Squid is running, you can not recover them.
 
-The correct way to maintain your log files is with Squid's "rotate" feature.  You should rotate your log files at least once per day. The current log files are closed and then renamed with numeric extensions (.0, .1, etc).  If you want to, you can write your own scripts to archive or remove the old log files.  If not, Squid will only keep up to ''logfile_rotate'' versions of each log file. The logfile rotation procedure also writes a clean ''swap.state'' file, but it does not leave numbered versions of the old files.
+The correct way to maintain your log files is with Squid's "rotate" feature.  You should rotate your log files at least once per day. The current log files are closed and then renamed with numeric extensions (.0, .1, etc).  If you want to, you can write your own scripts to archive or remove the old log files.  If not, Squid will only keep up to SquidConf:logfile_rotate versions of each log file. The logfile rotation procedure also writes a clean ''swap.state'' file, but it does not leave numbered versions of the old files.
 
-If you set ''logfile_rotate'' to 0, Squid simply closes and then re-opens the logs.  This allows third-party logfile management systems, such as ''newsyslog'', to maintain the log files.
+If you set SquidConf:logfile_rotate to 0, Squid simply closes and then re-opens the logs.  This allows third-party logfile management systems, such as ''newsyslog'', to maintain the log files.
 
 To rotate Squid's logs, simple use this command:
 
@@ -405,8 +328,8 @@ cache_log /dev/null
 }}}
 
 || <!> ||It is a bad idea to disable the ''cache.log'' because this file contains many important status and debugging messages.  However, if you really want to, you can ||
-|| /!\ ||If /dev/null is specified to any of the above log files, ''logfile rotate'' must also be set to ''0'' or else risk Squid rotating away /dev/null making it a plain log file ||
-|| {i} ||Instead of disabling the log files, it is advisable to use a smaller value for ''logfile_rotate'' and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system ||
+|| /!\ ||If /dev/null is specified to any of the above log files, SquidConf:logfile rotate MUST also be set to ''0'' or else risk Squid rotating away /dev/null making it a plain log file ||
+|| {i} ||Instead of disabling the log files, it is advisable to use a smaller value for SquidConf:logfile_rotate and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system ||
 
 == What is the maximum size of access.log? ==
 Squid does not impose a size limit on its log files.  Some operating systems have a maximum file size limit, however.  If a Squid log file exceeds the operating system's size limit, Squid receives a write error and shuts down.  You should regularly rotate Squid's log files so that they do not become very large.
@@ -421,15 +344,20 @@ You need to ''rotate'' your log files with a cron job.  For example:
 0 0 * * * /usr/local/squid/bin/squid -k rotate
 }}}
 
+When logging debug information into cache.log it can easily become extremely large and when a long access.log traffic history is required (ie by law in some countries) storing large cache.log for that time is not reasonable.
+From [[Squid-3.2]] cache.log can be rotated with an individual cap set by SquidConf:debug_options {{rotate=N}}} option to store fewer of these large files in the .0 to .N series of backups. The default is to store the same number as with access.log and set in the SquidConf:logfile_rotate directive.
+
 == I want to use another tool to maintain the log files. ==
-If you set ''logfile_rotate'' to 0, Squid simply closes and then re-opens the logs.  This allows third-party logfile management systems, such as [[http://www.weird.com/~woods/projects/newsyslog.html|newsyslog]] or ''logrotate'', to maintain the log files.
+If you set SquidConf:logfile_rotate to 0, Squid simply closes and then re-opens the logs.  This allows third-party logfile management systems, such as [[http://www.weird.com/~woods/projects/newsyslog.html|newsyslog]] or ''logrotate'', to maintain the log files.
+
+[[Squid-2.7]] and [[Squid-3.2]] and later also provide modular logging outputs which provide flexibility for sending log data to alternative logging systems.
 
 == Managing log files ==
 The preferred log file for analysis is the ''access.log'' file in native format. For long term evaluations, the log file should be obtained at regular intervals. Squid offers an easy to use API for rotating log files, in order that they may be moved (or removed) without disturbing the cache operations in progress. The procedures were described above.
 
-Depending on the disk space allocated for log file storage, it is recommended to set up a cron job which rotates the log files every 24, 12, or 8 hour. You will need to set your ''logfile_rotate'' to a sufficiently large number. During a time of some idleness, you can safely transfer the log files to your analysis host in one burst.
+Depending on the disk space allocated for log file storage, it is recommended to set up a cron job which rotates the log files every 24, 12, or 8 hour. You will need to set your SquidConf:logfile_rotate to a sufficiently large number. During a time of some idleness, you can safely transfer the log files to your analysis host in one burst.
 
-Before transport, the log files can be compressed during off-peak time. On the analysis host, the log file are concatinated into one file, so one file for 24 hours is the yield. Also note that with ''log_icp_queries'' enabled, you might have around 1 GB of uncompressed log information per day and busy cache. Look into you cache manager info page to make an educated guess on the size of your log files.
+Before transport, the log files can be compressed during off-peak time. On the analysis host, the log file are concatenated into one file, so one file for 24 hours is the yield. Also note that with SquidConf:log_icp_queries enabled, you might have around 1 GB of uncompressed log information per day and busy cache. Look into you cache manager info page to make an educated guess on the size of your log files.
 
 The EU project [[http://www.desire.org/|DESIRE]] developed some [[http://www.uninett.no/prosjekt/desire/arneberg/statistics.html|some basic rules]] to obey when handling and processing log files:
 
@@ -441,6 +369,7 @@ The EU project [[http://www.desire.org/|DESIRE]] developed some [[http://www.uni
   * The hosts using your cache.
   * The elapsed time for HTTP requests - this is the latency the user sees. Usually, you will want to make a distinction for HITs and MISSes and overall times. Also, medians are preferred over averages.
   * The requests handled per interval (e.g. second, minute or hour).
+
 == Why do I get ERR_NO_CLIENTS_BIG_OBJ messages so often? ==
 This message means that the requested object was in "Delete Behind" mode and the user aborted the transfer.  An object will go into "Delete Behind" mode if
 
@@ -476,16 +405,20 @@ Several people have asked for this, usually to feed the log into some kind of ex
 The answer is No. Well, yes, sorta. Using a pipe directly opens up a whole load of possible problems.
 || /!\ ||Logging is very important to Squid. In fact, it is so important that it will shut itself down if it can't write to its logfiles. ||
 
-There are several alternative available which are much safer to setup and use.
+There are several alternatives which are much safer to setup and use.
 The basic capabilities present are :
 
+since [[Squid-2.6]]:
  * logging to system syslog
 
-since Squid-2.7:
+since [[Squid-2.7]]:
  * logging to an external service via UDP packets
- * logging through IPC to a custom local daemon.
+ * logging through IPC to a custom local daemon
 
-See [[../../Features/LogDaemon|LogDaemon feature]] for technical details on setting up a daemon.
+since [[Squid-3.2]]:
+ * logging to an external service via TCP streams
+
+See the [[Features/LogModules|Log Modules feature]] for technical details on setting up a daemon or other output modules.
 
 
 ##end
