@@ -55,7 +55,7 @@ remotehost rfc931 authuser [date] "method URL" status bytes
 It is parsable by a variety of tools. The common format contains different information than the native log file format. The HTTP version is logged, which is not logged in native log file format.
 
 
-# TODO: other log formats (referer, useragent, etc) should be built-in instead of custom directives.
+## TODO: other log formats (referer, useragent, etc) should be built-in instead of custom directives.
 
 = Squid native access.log format in detail =
 We recommend that you use Squid's native log format due to its greater amount of information made available for later analysis. The print format line for native ''access.log'' entries looks like this:
