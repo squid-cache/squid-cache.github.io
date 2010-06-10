@@ -3,7 +3,7 @@
 #language en
 #faqlisted yes
 
-= Feature: Log Daemon for Squid =
+= Feature: Log Modules for Squid =
 
  * '''Goal''': Logging plugin interface for Squid
 
