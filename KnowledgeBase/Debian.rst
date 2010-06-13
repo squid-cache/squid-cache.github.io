@@ -16,8 +16,6 @@ Packages available for Squid on multiple architectures.
 ==== Squid-3.1 ====
 Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3;dist=unstable
 
- /!\ This package is currently only available for download from the '''experimental''' repositories. http://packages.debian.org/experimental/squid3
-
 Install Procedure:
 
 {{{
