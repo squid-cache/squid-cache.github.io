@@ -159,7 +159,7 @@ NAT simply does not exist in IPv6. By Design.
 
 Given that transparency/interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do transparency and interception that way.
 
-[[Features/Tproxy4|TPROXY v4]] is capable of IPv6. '''Kernel and iptables patches for IPv6 TPROXY are now available. Contact Balabit.''' You will also need the very latest 3.1 beta code, which will now permit tproxy ports to listen on IPv6 ... if your system has been patched.
+[[Features/Tproxy4|TPROXY v4]] is capable of IPv6. '''Kernel and iptables patches for IPv6 TPROXY are now available. Contact Balabit.''' You will also need [Squid-3.1]], which will now permit tproxy ports to listen on IPv6 ... if your system has been patched.
 
 === Delay Pools ===
 
@@ -176,8 +176,9 @@ As yet there is no IPv6 equivalent for Squid to use.
 
 ARP does not exist in IPv6. It has been replaced by a protocol called NDP (Neighbour Discovery Protocol) Proper IPv6 auto-configuration of networks can provide an equivalent in the IPv6 address itself.
 
-Work is underway to test out some possible solutions for link-local addressing.
-However we are still pondering a way to do this securely and reliably for global IPv6 addressing.
+From [[Squid-3.2]] support for handling EUI-64 exists in SquidConf:acl, SquidConf:logformat and SquidConf:external_acl_type. It currently still requires IPv6 SLAAC (the IPv6 automatically configured client address) to supply the EUI information.
+
+Security problems already well-known with using MAC addresses and ARP are equally present in EUI handling for both EUI-48 (MAC) and EUI-64 (IPv6).
 
 === RADIUS authentication ===
 
