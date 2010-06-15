@@ -63,9 +63,9 @@ This list describes the tags which Squid will insert into the messages:
 
  %i:: client IP address
 
- %I:: server IP address
+ %I:: server IP address (NP: upper case '''i''')
 
- %l:: Local site CSS stylesheet. (Squid-3.1 and later only.)
+ %l:: Local site CSS stylesheet. (Squid-3.1 and later) (NP: lower case '''L''')
 
  %L:: contents of '''err_html_text''' config option
 
