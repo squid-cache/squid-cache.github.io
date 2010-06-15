@@ -9,12 +9,15 @@
  * '''Status''': First implementation completed.
  * '''Version''': 3.2
  * '''Developer''': FrancescoChemolli
-## * '''More''': https://code.launchpad.net/~kinkie/squid/helper-mux
+ * '''More''': ftp://ftp.squid-cache.org/pub/squid/contrib/helper-mux/
 
 = Details =
 
 Squid 3.0+ supports a multi-slot variant of the helper protocol, which allows to run multiple concurrent requests over a single helper.
+
 Few helpers - if any - support that protocol though. Aim of this Feature is to have a middleware object - probably written in PERL - which talks the multi-slot protocol to Squid and runs a farm of helpers talking the single-slot variant of the protocol to them.
+
+{i} NP: The helper is bundled with [[Squid-3.2]], however it works with earlier releases which are capable of the multi-slot / concurrent protocol.
 
 === Progress ===
 What's currently done:
