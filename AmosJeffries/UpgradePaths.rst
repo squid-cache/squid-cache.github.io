@@ -15,11 +15,11 @@ This page lists each helper and a BNF of its version upgrade paths. Assuming the
 || <:( || IIRC, double check ||
 || >:> || Perfect. ||
 
-When this graph shows that ALL binaries including 'squid' have a path leading to the same D we have completed the feature portage.
+When this graph shows that ALL 2.x binaries including 'squid' have all their paths leading clearly to the 3.x we will have completed the feature portage.
 
 || '''Binary''' || '''Portage Pathway''' ||
-||<|2> sbin/squid   || 2.5 > 3.0 > 3.1 || >:> ||
-|| 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || X-( so many features. performance tweaks ||
+||<|2> sbin/squid   || 2.5 > 3.0 > 3.1 > 3.2 || >:> ||
+|| 2.5 > 2.6 > (2.7 | 3.1 > 3.2) || X-( some few features. performance tweaks ||
 || bin/squidclient  || 2.5 > (2.6 | 3.0) > 2.7 > 3.1 || >:> ||
 || bin/cachemgr.cgi || 2.5 > (2.6 > 2.7 | 3.0 ) > 3.1 || >:> ||
 || libexec/pinger   || 2.5 > 2.6 > 2.7 > 3.0 > 3.1 || >:> /!\ strictly matches sbin/squid ||
