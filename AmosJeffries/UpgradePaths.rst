@@ -19,97 +19,56 @@ When this graph shows that ALL binaries including 'squid' have a path leading to
 
 || '''Binary''' || '''Portage Pathway''' ||
 ||<|2> sbin/squid   || 2.5 > 3.0 > 3.1 || >:> ||
-|| 2.5 > 2.6 > (2.7 | 3.1) || X-( so many features. performance tweaks ||
-|| bin/squidclient  || 2.5 > (2.6 | 3.0) > 2.7 > 3.1 || >:>||
-|| bin/cachemgr.cgi || 2.5 > (2.6 > 2.7 | 3.0 ) > 3.1 || <:( ||
+|| 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || X-( so many features. performance tweaks ||
+|| bin/squidclient  || 2.5 > (2.6 | 3.0) > 2.7 > 3.1 || >:> ||
+|| bin/cachemgr.cgi || 2.5 > (2.6 > 2.7 | 3.0 ) > 3.1 || >:> ||
 || libexec/pinger   || 2.5 > 2.6 > 2.7 > 3.0 > 3.1 || >:> /!\ strictly matches sbin/squid ||
 || libexec/squid_kerb_auth || 2.5 > 2.6 > (2.7|3.0) > 3.1 || >:> ||
 || errors/* || 2.5 > 2.6 > 2.7 > 3.0 > 3.1 || >:> ||
 || icons/* || 2.5 > 2.6 > 2.7 > 3.0 > 3.1 || >:> ||
 
-|| libexec/diskd ||
-|| libexec/unlinkd ||
+|| libexec/diskd   || 2.5 > 2.6 > 2.7 > 3.0 > 3.1 || >:> /!\ strictly matches sbin/squid ||
+|| libexec/unlinkd || 2.5 > 2.6 > 2.7 > 3.0 > 3.1 || >:> /!\ strictly matches sbin/squid ||
 
+|| helpers/basic_auth/DB || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/getpwnam || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/LDAP || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || <:( ||
+|| helpers/basic_auth/MSNT || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/mswin_sspi || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/multi-domain-NTLM || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/NCSA || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/PAM || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/POP3 || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/SASL || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/SMB || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/squid_radius_auth || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/basic_auth/YP || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
 
-./helpers:
-Makefile.am
-./helpers/basic_auth:
-Makefile.am
-./helpers/basic_auth/DB:
-Makefile.am
-./helpers/basic_auth/getpwnam:
-Makefile.am
-./helpers/basic_auth/LDAP:
-Makefile.am
-./helpers/basic_auth/MSNT:
-Makefile.am
-./helpers/basic_auth/mswin_sspi:
-Makefile.am
-./helpers/basic_auth/multi-domain-NTLM:
-Makefile.am
-./helpers/basic_auth/NCSA:
-Makefile.am
-./helpers/basic_auth/PAM:
-Makefile.am
-./helpers/basic_auth/POP3:
-Makefile.am
-./helpers/basic_auth/SASL:
-Makefile.am
-./helpers/basic_auth/SMB:
-Makefile.am
-./helpers/basic_auth/squid_radius_auth:
-Makefile.am
-./helpers/basic_auth/YP:
-Makefile.am
-./helpers/digest_auth:
-Makefile.am
-./helpers/digest_auth/eDirectory:
-Makefile.am
-./helpers/digest_auth/ldap:
-Makefile.am
-./helpers/digest_auth/password:
-Makefile.am
-./helpers/external_acl:
-Makefile.am
-./helpers/external_acl/ip_user:
-Makefile.am
-./helpers/external_acl/ldap_group:
-Makefile.am
-./helpers/external_acl/mswin_ad_group:
-Makefile.am
-./helpers/external_acl/mswin_lm_group:
-Makefile.am
-./helpers/external_acl/session:
-Makefile.am
-./helpers/external_acl/unix_group:
-Makefile.am
-./helpers/external_acl/wbinfo_group:
-Makefile.am
-./helpers/negotiate_auth:
-Makefile.am
-./helpers/negotiate_auth/mswin_sspi:
-Makefile.am
-./helpers/ntlm_auth:
-Makefile.am
-./helpers/ntlm_auth/fakeauth:
-Makefile.am
-./helpers/ntlm_auth/mswin_sspi:
-Makefile.am
-./helpers/ntlm_auth/no_check:
-Makefile.am
-./helpers/ntlm_auth/smb_lm:
-Makefile.am
-./helpers/ntlm_auth/smb_lm/smbval:
-Makefile.am
+|| helpers/digest_auth/eDirectory || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || <:( ||
+|| helpers/digest_auth/ldap || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || <:( ||
+|| helpers/digest_auth/password || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
 
+|| helpers/external_acl/ip_user || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/external_acl/ldap_group || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || <:( ||
+|| helpers/external_acl/mswin_ad_group || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/external_acl/mswin_lm_group || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/external_acl/session || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/external_acl/unix_group || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/external_acl/wbinfo_group || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+
+|| helpers/negotiate_auth/mswin_sspi || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+
+|| helpers/ntlm_auth/fakeauth || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/ntlm_auth/mswin_sspi || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/ntlm_auth/no_check || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/ntlm_auth/smb_lm || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
+|| helpers/ntlm_auth/smb_lm/smbval || 2.5 > 2.6 > (2.7 | 3.1) > 3.2 || >:> ||
 
 Stuff still to check...
 
 || ./contrib/Makefile.am installed files ||
 || ./src/fs/Makefile.am installed files ||
 || ./src/auth/Makefile.am installed files ||
-|| ./helper/*/*/Makefile.am installed files ||
-
 
 ./contrib:
         squid.options \
@@ -119,15 +78,6 @@ Stuff still to check...
         rredir.pl \
         user-agents.pl \
         url-normalizer.pl \
-        nextstep/Makefile \
-        nextstep/Makefile.real \
-        nextstep/README \
-        nextstep/Squid.pkg.README \
-        nextstep/info.in \
-        nextstep/makepkg \
-        nextstep/post_install \
-        nextstep/pre_install
-
 
 
 ## TODO the rest. all the helpers...  fs module components. all the feature components.
