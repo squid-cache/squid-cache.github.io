@@ -284,7 +284,10 @@ semodule -i squidtproxy.pp
 setsebool -P squid_connect_any true
 }}}
 = References =
-Older config how-to from before the kernel and iptables bundles were available... http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
+
+ * Older config how-to from before the kernel and iptables bundles were available... http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
+
+ * Shorewall Firewall Configuration http://www1.shorewall.net/Shorewall_Squid_Usage.html#TPROXY
 
 ----
 CategoryFeature
