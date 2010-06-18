@@ -79,12 +79,13 @@ Starting Winbind services:                                 [  OK  ]
 }}}
 If Winbind wasn't running before this it can't shutdown, but authconfig will start it and enable it to start at boot.
 
-The default permissions for '''/var/cache/samba/winbindd_privileged''' in RHEL/CentOS are 750 root:wbpriv which doesn't allow the user Squid runs under to access the socket. Make sure squid.conf does not have a '''cache_effective_group''' defined and add wbpriv as a supplementary group to the user Squid runs under:
+The default permissions for '''/var/cache/samba/winbindd_privileged''' in RHEL/CentOS 5.4 were 750 root:squid (which worked by default) but are now 750 root:wbpriv in 5.5 which doesn't allow the user Squid runs under to access the socket. Make sure squid.conf does not have a '''cache_effective_group''' defined and add wbpriv as a supplementary group to the user Squid runs under:
+
 {{{
 # usermod -a -G wbpriv squid
 }}}
-
 You can test Active Directory Group and User enumeration by viewing the output of wbinfo:
+
 {{{
 # wbinfo -{u|g}
 }}}
