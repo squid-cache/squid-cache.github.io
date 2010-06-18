@@ -254,6 +254,7 @@ For example:
 .SH SEE ALSO
 .if !'po4a'hide' .B squid "(8), "
 .if !'po4a'hide' .B cachemgr.cgi "(8), "
+.if !'po4a'hide' .BR GPL "(7), "
 .br
 The Squid FAQ wiki
 .if !'po4a'hide' http://wiki.squid-cache.org/SquidFaq
@@ -331,7 +332,8 @@ Report ideas for new improvements to the
 .if !'po4a'hide' <squid-dev@squid-cache.org>
 .
 .SH SEE ALSO
-.if !'po4a'hide' .BR squid "(8) "
+.if !'po4a'hide' .BR squid "(8), "
+.if !'po4a'hide' .BR GPL "(7), "
 .br
 The Squid FAQ wiki
 .if !'po4a'hide' http://wiki.squid-cache.org/SquidFaq
