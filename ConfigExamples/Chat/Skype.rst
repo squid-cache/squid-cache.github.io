@@ -26,6 +26,12 @@ http_access deny Skype_UA
 
 }}}
 
+ /!\ Recent releases of Skype have been evading the above restriction by not sending their User-Agent headers and using domain names. The following can be used to catch those installs, but be aware it will likely also catch other agents.
+{{{
+acl validUserAgent browser \S+
+http_access deny !validUserAgent
+}}}
+
 === Permitting ===
 
  /!\ This needs to be done before any restrictive CONNECT http_access controls.
