@@ -604,7 +604,7 @@ Knowing the behaviour of an ACL type is relevant because not all ACL matching di
 The following are '''SLOW''' access clauses:
 
  * SquidConf:http_access
- * SquidConf:http_access2
+ * SquidConf:adapted_http_access (2.x call this SquidConf:http_access2)
  * SquidConf:http_reply_access
  * SquidConf:url_rewrite_access
  * SquidConf:storeurl_access
