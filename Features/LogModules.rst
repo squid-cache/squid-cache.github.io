@@ -64,6 +64,19 @@ daemon:/var/log/squid/access.log
 
  * MySQL : http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html
 
+==== Daemon Message Protocol ====
+Squid sends a number of commands to the log daemon. These are sent in the first byte of each input line:
+
+ || L<data>\n || logfile data ||
+ || R\n || rotate file ||
+ || T\n || truncate file ||
+ || O\n || re-open file ||
+ || F\n || flush file ||
+ || r<n>\n || set rotate count to <n> ||
+ || b<n>\n || 1 = buffer output, 0 = don't buffer output ||
+
+No responses is expected. Any response that may be desired should occur on stderr to be viewed through cache.log.
+
 === Module: System Log ===
 
 This is a module using the syslog() API to send log data to any system logging daemons which accept records in that binary format.
