@@ -85,7 +85,7 @@ see [[CvsInstructions]]
 
 === Getting the sources via tarball ===
 
-As a more lightweight alternative you can use rsync; the latest sources are available at address http://squid-cache.org/Versions/v3/HEAD/
+As a more lightweight alternative you can use rsync; the latest sources are available at address http://squid-cache.org/Versions/v3/3.HEAD/
 
 === Getting the sources via rsync ===
 As a more lightweight alternative to the tarballs you can use rsync; the latest sources are available at address {{{rsync://squid-cache.org/source/<version>}}}
