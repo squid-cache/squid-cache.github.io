@@ -43,7 +43,7 @@ logformat languagelog %{Accept-Language}>h
 access_log /var/log/squid/languages.log languagelog
 }}}
 
-The file generated is quite huge with a lot of duplicated information. Sorting and compacting it before sending it in can save you and us a lot of bandwidth. Also, over time this information
+The file generated is quite huge with a lot of duplicated information. Sorting and compacting it before sending it in can save you and us a lot of bandwidth. Also, over time this information will reduce down to the finite set of actual users languages.
 
 What I do is a weekly run of this:
 {{{
