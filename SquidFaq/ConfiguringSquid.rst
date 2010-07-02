@@ -59,7 +59,7 @@ From 2.6 the Squid developers also provide a set of Configuration Guides online.
 including guides for the current development test releases
 
  * [[http://www.squid-cache.org/Versions/v2/HEAD/cfgman/|Squid 2-HEAD]] Configuration Guide
- * [[http://www.squid-cache.org/Versions/v3/HEAD/cfgman/|Squid 3-HEAD]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v3/3.HEAD/cfgman/|Squid 3-HEAD]] Configuration Guide
 
 From 3.1 a lot of configuration cleanups have been done to make things easier.
 
@@ -269,7 +269,7 @@ For details see the documentation in squid.conf.default or squid.conf.documented
 
 
 http://www.squid-cache.org/Versions/v2/HEAD/cfgman/ , 
-http://www.squid-cache.org/Versions/v3/HEAD/cfgman/ ,
+http://www.squid-cache.org/Versions/v3/3.HEAD/cfgman/ ,
 References: [[http://www.iks-jena.de/mitarb/lutz/anon/web.en.html|Anonymous WWW]]
 
 == Can I make Squid go direct for some sites? ==
