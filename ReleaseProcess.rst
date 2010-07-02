@@ -50,7 +50,7 @@ AmosJeffries makes a Beta release for Squid-3 at soonest available time after on
 
 == Development Release ==
 
-All Squid Releases made from [[http://www.squid-cache.org/Version/v3/HEAD/|3.HEAD]] and [[http://www.squid-cache.org/Version/v2/HEAD/|2.HEAD]] are development releases.
+All Squid Releases made from [[http://www.squid-cache.org/Version/v3/3.HEAD/|3.HEAD]] and [[http://www.squid-cache.org/Version/v2/HEAD/|2.HEAD]] are development releases.
 
 These releases are meant for Squid users who are already familiar with Squid.
 You should expect to find numerous bugs and problems with the development releases.
