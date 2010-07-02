@@ -59,7 +59,7 @@ squid -O "-u 3130" -n squidsvc
 
 3.7 Using cache manager on Windows:
 
-On Windows, cache manager ('''[[http://www.squid-cache.org/Versions/v3/HEAD/manuals/cachemgr.cgi|cachemgr.cgi]]''') can be used with Microsoft IIS or Apache.
+On Windows, cache manager ('''[[http://www.squid-cache.org/Versions/v3/3.HEAD/manuals/cachemgr.cgi|cachemgr.cgi]]''') can be used with Microsoft IIS or Apache.
 Some specific configuration could be needed:
 
  * IIS 6 (Windows 2003):
