@@ -19,7 +19,7 @@ To minimize noise and the number of half-baked abandoned features, two Feature s
 
 There are no longer any freezing points in the 3.x Roadmap.  Instead, Point Releases are now made at regular intervals as determined by; a reasonable time since last point release, or a large number of features being added.
 
-All features must pass an auditing process for commit to HEAD, and any feature which has passed that process at time of release will be included in that release.
+All features must pass an auditing process for commit to 3.HEAD, and any feature which has passed that process at time of release will be included in that release.
 
 Features which have not reached completion or have failed the audit, are automatically delayed to the next Squid release. Which should not be an unreasonable delay given the new fast-track release plan.
 
@@ -60,7 +60,7 @@ http://www.squid-cache.org/Versions/v3/3.1/
 
  * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
 
-= Squid 3.2 (HEAD) =
+= Squid 3.2 (3.HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
 The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will happen 30th July 2010.
