@@ -9,12 +9,14 @@
 
 <<TableOfContents>>
 
+ /!\ {i} [[Squid-3.2]] has now had experimental multi-process SMP support merged. It is designed to operate with a similar but different configuration to these while reducing much of the complexity of process instance management.
+
 == Outline ==
 
-Squid does not yet scale very well to Multi-CPU or Multi-Core systems. Some of its features do help, such as for example [[Features/DiskDaemon|DiskDaemon]], or [[Features/CyclicObjectStorageSystem|COSS]], or the ability to delegate parts of the request processing to external helpers such as [[SquidFaq/ProxyAuthentication|Authenticators]] or [[SquidFaq/RelatedSoftware|other auxiliary software]].
+Squid-3.1 and older do not scale very well to Multi-CPU or Multi-Core systems. Some of its features do help, such as for example [[Features/DiskDaemon|DiskDaemon]], or [[Features/CyclicObjectStorageSystem|COSS]], or the ability to delegate parts of the request processing to external helpers such as [[SquidFaq/ProxyAuthentication|Authenticators]] or [[SquidFaq/RelatedSoftware|other auxiliary software]].
 Still Squid remains to this day very bound to a single processing core model. There are plans to eventually make Squid able to effectively use multicore systems, but something may be done already, by using a fine-tuned MultipleInstances setup.
 
-|| /!\ Notice || This setup has been designed with a recent version of squid in mind. It has been tested with Squid 3.1, but it should work with 3.0 and 2.7 as-is as well. 2.6 and earlier can be coaxed to work, but it will be harder to setup and maintain. ||
+|| /!\ Notice || This setup has been designed with a recent version of Squid in mind. It has been tested with [[Squid-3.1]], but it should work with [Squid-3.0]] and [Squid-2.7]] as-is as well. [Squid-2.6]] and earlier can be coaxed to work, but it will be harder to setup and maintain. ||
 
 It is also geared at '''expert system-administrators'''. MultipleInstances is not easy to manage and run, and system integration depends on the specific details of the operating system distribution of choice.
 
