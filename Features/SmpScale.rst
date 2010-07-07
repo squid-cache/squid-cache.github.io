@@ -6,7 +6,7 @@
 
  * '''Goal''': Approach linear scale in non-disk throughput with the increase of the number of processors or cores.
 
- * '''Status''': In progress
+ * '''Status''': In progress.
 
  * '''ETA''': May 2010
 
@@ -31,13 +31,13 @@ The project developers have been through a long discussion process and agreed th
 
 Administrators needing to run Squid on large scale SMP systems are already manually configuring multiple instances of Squid to run in parallel. We feel this is justification to say the approach is feasible. Some work needs to be done to make these configurations far simpler and more automated.
 
-Current configurations:
- [[ConfigExamples/MultiCpuSystem]]
- [[ConfigExamples/ExtremeCarpFrontend]]
+Current configurations for [[Squid-3.1]] and older:
+ . [[ConfigExamples/MultiCpuSystem]]
+ . [[ConfigExamples/ExtremeCarpFrontend]]
 
-A mixture of features already added and some few new ones can be adapted to result in a Squid where administrators configure and run one instance that spawns multiple others to reach nearly full potential of the available hardware.
+[[Squid-3.2]] contains support for SquidConf:workers. A mixture of features already added and some few new ones has been adapted to result in a Squid where administrators configure and run one instance that spawns multiple worker processes to reach nearly full potential of the available hardware.
 
-Initially these instances may share nothing of their running data and storage caches. Over time as the lower layers are developed there may become some interactions between instances for efficient caching and handling.
+Initially these instances share nothing of their running data and storage caches. Over time as the lower layers are developed there may become some interactions between instances for efficient caching and handling.
 
 === 2. Mid Layer: threaded processes ===
 
