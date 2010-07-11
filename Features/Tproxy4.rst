@@ -73,6 +73,8 @@ The routing features in your kernel also need to be configured to enable correct
 ip rule add fwmark 1 lookup 100
 ip route add local 0.0.0.0/0 dev lo table 100
 }}}
+ /!\ Systems with strict localhost interface security boundaries require each interface to have a "table 100" entry for looking up packets via that device .
+
 On each boot startup set:
 
 {{{
