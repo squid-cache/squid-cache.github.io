@@ -73,7 +73,7 @@ The routing features in your kernel also need to be configured to enable correct
 ip rule add fwmark 1 lookup 100
 ip route add local 0.0.0.0/0 dev lo table 100
 }}}
- /!\ Systems with strict localhost interface security boundaries require each interface to have a "table 100" entry for looking up packets via that device .
+ . /!\ Systems with strict localhost interface security boundaries require each interface to have a "table 100" entry for looking up packets via that device .
 
 On each boot startup set:
 
@@ -86,7 +86,6 @@ Or configure '''/etc/sysctl.conf''':
 {{{
 set net.ipv4.forwarding = 1
 }}}
-
 == iptables Configuration ==
 === iptables on a Router device ===
 Setup a chain ''DIVERT'' to mark packets
@@ -107,7 +106,6 @@ Mark all other (new) packets and use ''TPROXY'' to pass into Squid:
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
 === ebtables on a Bridging device ===
-
 You need to follow all the steps for setting up the Squid box as a router device. These bridging rules are additional steps to move packets from bridging mode to routing mode:
 
  . {i} $CLIENT_IFACE and $INET_IFACE need to be replaced with the eth* NIC interface names facing the clients or Internet. {i} Mind the line wrap. The following is two command lines.
@@ -126,6 +124,15 @@ You need to follow all the steps for setting up the Squid box as a router device
 }}}
  . /!\ The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc)
  . {i} An alternative to assigning interfaces with IP addresses you may also configure the squid.conf SquidConf:tcp_outgoing_address, and SquidConf:udp_outgoing_address for minimal DNS and peer requests to use explicitly. Note that SquidConf:tcp_outgoing_address will never be used on requests received with TPROXY.
+
+== SELINUX Policy tuning ==
+On Linux versions with selinux enabled you also need to tune the selinux policy to allow Squid to use TPROXY. By default the SELINUX policy for Squid denies some of the operations needed for TPROXY. You can tune the policy to allow this by setting a couple selinux booleans:
+
+{{{
+setsebool squid_connect_any=yes
+setsebool squid_use_tproxy=yes
+}}}
+If your version of the selinux policy is missing any of these then see the troubleshooting section for alternative approaches.
 
 == WCCP Configuration (only if you use WCCP) ==
  . ''by Steve Wilton'' {i} $ROUTERIP needs to be replaced with the IP Squid uses to contact the WCCP router.
@@ -286,7 +293,6 @@ semodule -i squidtproxy.pp
 setsebool -P squid_connect_any true
 }}}
 = References =
-
  * Older config how-to from before the kernel and iptables bundles were available... http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS
 
  * Shorewall Firewall Configuration http://www1.shorewall.net/Shorewall_Squid_Usage.html#TPROXY
