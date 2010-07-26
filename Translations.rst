@@ -69,7 +69,7 @@ We really need people familiar enough with each language listed above to verify 
 
 Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Versions/langpack/|langpack]] tarballs, but the auto-negotiate and CSS features are not planned for back-porting.
 
-Any existing Squid which have been configured with ''error_directory'' in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
+Any existing Squid which have been configured with SquidConf:error_directory in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
 
  /!\ Squid older than 3.1 without an explicit error_directory entry have a default one. This may need overriding to use the new files.
 
@@ -87,8 +87,8 @@ Any existing Squid which have been configured with ''error_directory'' in their 
 [[Squid-3.1]] admin just need to follow these steps:
 
  * Check that your preferred default language is available for auto-translated pages. The ones installed can be seen in your squid error directory as a bunch of folders named after their ISO codes: (en, en-gb, etc.).
- * Add ''error_default_language'' option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
- * Remove ''error_directory'' from squid.conf
+ * Add SquidConf:error_default_language option to squid.conf with the code/folder-name for the language. This will provide a suitable default language if none can be negotiated with the browser.
+ * Remove SquidConf:error_directory from squid.conf
  * Optional: download newest translations and languages [[http://www.squid-cache.org/Versions/langpack/|package]]
  * Make any CSS changes you need to /etc/squid/errorpage.css for display.
 
@@ -105,7 +105,7 @@ Install that package and update your squid.conf settings as above. Noting that t
 == Troubleshooting ==
 === Now I keep getting: "Unable to load default error language files. Reset to backups." ===
 
-The language code you have entered in squid.conf for ''error_default_language'' does not match any of the currently installed error page translations.
+The language code you have entered in squid.conf for SquidConf:error_default_language does not match any of the currently installed error page translations.
 
 Check that you spelled it correctly, it must match the ISO codes used for one of the sub-directory names in your squid errors directory.
 
@@ -115,7 +115,9 @@ Check that you spelled it correctly, it must match the ISO codes used for one of
 
 Yes Squid can still present them. Even while presenting localized copies of the basic error pages.
 
-Your custom templates should for now go into the '''templates/''' directory when using the localization. They will need unique names, so as not to clash with the default pages.
+Create a new directory next to the installed '''templates/''' and language coded directories. This is essentially a fake language. Your custom pages go in there and specify the fake language name of your folder in the SquidConf:error_default_language directive.
+
+Note: Custom errors need unique names, so as not to clash with the default pages. If there is a clash the provided translations will override custom pages for many users.
 
 ----
 CategoryFeature
