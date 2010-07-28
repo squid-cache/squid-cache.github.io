@@ -7,23 +7,33 @@ Squid uses a lot of memory for performance reasons.  It takes much, much longer 
 
 A small amount of metadata for each cached object is kept in memory. This is the ''!StoreEntry'' data structure.  This is 56-bytes on 32-bit architectures and 88-bytes on 64-bit architectures.  In addition, there is a 16-byte cache key (MD5 checksum) associated with each ''!StoreEntry''.  This means there are 72 or 104 bytes of metadata in memory for every object in your cache.  A cache with 1,000,000 objects therefore requires 72MB of memory for ''metadata only''. In practice it requires much more than that.
 
-Other uses of memory by Squid include:
+Uses of memory by Squid include:
+|| reason  || parameter  || explanation ||
+|| Disk buffers for reading and writing || - || - ||
+|| Network I/O buffers || - || D ||
+|| IP Cache contents || ipcache_size || DNS ||
+|| FQDN Cache contents || fqdncache_size || DNS ||
+|| Netdb ICMP measurement database || - || N ||
+|| Per-request state information, including full request and reply headers || - || D ||
+|| Miscellaneous statistics collection || - || D ||
+|| Index of on-disk cache (metadata, kept in memory) || cache_dir || I ||
+|| In-memory cache with "hot objects" || cache_mem || M ||
 
- * Disk buffers for reading and writing
- * Network I/O buffers
- * IP Cache contents
- * FQDN Cache contents
- * Netdb ICMP measurement database
- * Per-request state information, including full request and reply headers
- * Miscellaneous statistics collection.
- * "Hot objects" which are kept entirely in memory.
+Explanation of letters:
+||<:> . || explanation ||
+||<:> D || dynamic; more memory is used if more users visit more websites ||
+||<:> I || 10 MB of memory per 1 GB on disk for 32-bit Squid<<BR>>14 MB of memory per 1 GB on disk for 64-bit Squid ||
+||<:> N || not used often ||
+||<:> M || rule of thumb: cache_mem is usually one third of the total memory consumption ||
+||<:> DNS || not recommended to change.  Only increase for very large caches or if there is a slow DNS server ||
+
 
 == How can I tell how much memory my Squid process is using? ==
 One way is to simply look at ''ps'' output on your system. For BSD-ish systems, you probably want to use the ''-u'' option and look at the ''VSZ'' and ''RSS'' fields:
 
 {{{
 wessels ~ 236% ps -axuhm
-USER       PID %CPU %MEM   VSZ  RSS  TT  STAT STARTED       TIME COMMAND
+USER       PID %CPU %MEM   VSZ  RSS     TT  STAT STARTED       TIME COMMAND
 squid     9631  4.6 26.4 141204 137852  ??  S    10:13PM   78:22.80 squid -NCYs
 }}}
 For SYSV-ish, you probably want to use the ''-l'' option. When interpreting the ''ps'' output, be sure to check your ''ps'' manual page.  It may not be obvious if the reported numbers are kbytes, or pages (usually 4 kb).
