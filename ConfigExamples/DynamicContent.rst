@@ -8,7 +8,7 @@
 
 == Outline ==
 
-The default configuration of squid prevents the caching of dynamic content (pages with ? in the URI), like so:
+The obsolete default configuration of squid prevents the caching of dynamic content (pages with ? in the URI), like so:
 {{{
 hierarchy_stoplist cgi-bin ?
 acl QUERY urlpath_regex cgi-bin \?
