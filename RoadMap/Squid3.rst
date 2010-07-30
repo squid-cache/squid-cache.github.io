@@ -60,38 +60,50 @@ http://www.squid-cache.org/Versions/v3/3.1/
 
  * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
 
-= Squid 3.2 (3.HEAD) =
+= Squid 3.2 =
 
-Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.2 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.2 which will happen 30th July 2010.
+Now in '''RELEASE CANDIDATE''' cycle.
+The Squid 3.2 release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
 
-The intention is to remove the backlog of feature parity between 2.7 and 3.2 (listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6) and concentrate on further performance and HTTP/1.1 improvements.
+Additions are limited to:
+ * Polish of existing features
+ * Porting of Squid-2.7 feature regressions
+ * Stability fixes
+ * Bug fixes
 
-== Done ==
-
-Features Ported from 2.7:
+Features Ported from 2.7 in this release:
 
  * Unique Sequence numbering for access.log lines.
  * [[Features/LogDaemon]]
 
 Basic new features in 3.2:
 
- * Login to SquidConf:cache_peer:
-  * Fully transparent credential pass-thru
-  * Kerberos login (proxy to proxy)
+ * Fully transparent credential pass-thru to SquidConf:cache_peer
+ * Kerberos login to SquidConf:cache_peer
  * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
  * New helpers to demo SquidConf:url_rewrite_program programs.
  * Helpers started on-demand instead of delaying startup and reconfigure process.
  * EUI (MAC address) logging and external ACL handling
  * Dynamic URL generation for SquidConf:deny_info redirects
  * Multi-Lingual FTP directory listings
+ * Multi-Lingual proxy configuration splash pages for captive portals
  * [[Features/Surrogate|Surrogate 1.0]] protocol support
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
 
 
-Development snapshots of Squid source code are available at
-http://www.squid-cache.org/Versions/v3/3.HEAD/
+Packages of squid 3.2 source code are available at
+http://www.squid-cache.org/Versions/v3/3.2/
+
+ * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
+
+
+= Squid 3.3 (3.HEAD) =
+
+Now in '''DEVELOPMENT''' cycle.
+The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3 which is expected to happen 30th February 2011.
+
+The intention is to surpass Squid-2.7, improve the upgrade path and concentrate on further performance improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
 
 == TODO ==
 
@@ -118,7 +130,7 @@ These are the features we are trying to work on at present. New features may be 
 
 === Developer Needed ===
 
-Features considered high-priority for including with 3.2, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.3 if not completed by initial 3.2 release:
+Features considered high-priority for including, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.4 if not completed by initial 3.3 release:
 
 (Priority 1)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*1")>>
@@ -152,12 +164,14 @@ More ideas are available [[Features/Other|elsewhere]].
 
 ## Some items got stuck in the wrong version or not marked properly with complete status.
 
-## There should be no 3.0 to 3.1 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
+## There should be no 3.0 to 3.2 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
 
 ## (3.0)
 ## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.0" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
 ## (3.1)
 ## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.1" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+ * Feature marked 3.2 which did not make it:
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.2" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
 
 = Schedule for Future Removals =
 
