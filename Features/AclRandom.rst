@@ -53,7 +53,7 @@ tcp_outgoing_address 192.0.2.2
 {{{
 acl third random 1/3
 
-# 30% traffic goes here
+# 33% traffic goes here
 cache_peer_access peerOne allow third
 cache_peer_access peerOne deny all
 
@@ -64,6 +64,27 @@ cache_peer_access peerTwo deny all
 # remaining traffic goes here
 cache_peer_access peerOne allow all
 }}}
+
+
+ * '''Example 3:''' Split traffic one third to each of two peers and direct.
+{{{
+acl third random 1/3
+acl half random 1/2
+
+# 33% traffic goes direct
+always_direct allow third
+
+# 33% traffic goes here (half of what did not go direct already)
+cache_peer_access peerOne deny half
+cache_peer_access peerOne allow all
+
+# remaining traffic goes here
+cache_peer_access peerTwo allow all
+
+# NP: if both peers are down DIRECT will be used as a backup.
+}}}
+
+
 
 
 == Log sampling of traffic ==
