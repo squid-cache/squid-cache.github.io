@@ -12,11 +12,11 @@
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': configure.in has grown in time into a big messy bundle, making it very hard to act on it in a sensible manner. It needs to be reduced to something sane again.
 
- * '''Status''': ''Started''
+ * '''Status''': ''Complete'', will be merged to trunk as soon as trunk is stable enough to receive a large patch (<<Date(2010-08-09T23:51:48Z)>>), then merged to 3.2
 
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
- * '''ETA''': 1 week
+ * '''ETA''': 
 
  * '''Version''': 3.2
 
@@ -103,14 +103,19 @@ will:
  SQUID_TOLOWER_VAR_CONTENTS(varname) :: lowercases $varname's contents
  SQUID_TOUPPER_VAR_CONTENTS(varname) :: uppercases $varname's contents
  SQUID_CC_CHECK_ARGUMENT(varname,flag) :: tests whether the compiler can handle the supplied flag. Sets {{{$varname}}} to either "yes" or "no"
- SQUID_CXX_CHECK_ARG_FHUGEOBJECTS :: checks that the c++ compiler can handle the -fhuge-objects flag
- SQUID_CC_GUESS_VARIANT :: checks what compiler the user is using. See the function definition for the list of detected compilers
- SQUID_CC_GUESS_OPTIONS :: guesses the options accepted by the compiler to activat certain behaviours; sets ''$squid_cv_cc_option_werror'', ''$squid_cv_cc_option_wall'', ''$squid_cv_cc_option_optimize'', ''$squid_cv_cc_arg_pipe'' (variable names are gcc-inspired)
+ SQUID_DEFINE_BOOL(define_name,$shell_variable,define_comment) :: define a C(++) preprocessor macro {{{define_name}}} with comment {{{define_comment}}} using the expansion of {{{$shell_variable}}} to assign a value: it will be set to 0 if the variable expands to an empty string, 0 , false, or no; 1 if it expands to true, yes or 1; will abort in all other cases.
+ SQUID_YESNO($variable) :: aborts unless the variable expansion is either "yes" or "no". It is mostly useful as an input validator for the AC_ARG_ENABLE and AC_ARG_WITH macros.
 
-== Other stuff to be fixed ==
+There more specific tests, checks and guesses performed by specific macros; their definitions have been moved to the {{{acinclude/}}} directory off the source tree root (and have to be explicitly included at the beginning of configure.in). All of them are documented in purpose and side effects; the source is the most comprehensive documentation for them
+
+== Other stuff to be improved ==
 
  1. Trunk currently fails to build with linking errors if CFLAGS and CXXFLAGS are set as configure argument. The reason for this will have to be found and fixed.
- 1. Helper modules require, in order to be built, that a helper-specific testlet be passed successfully. Those testlets are shell scripts which perform autoconf-like functions, but without the infrastructure. As a result, they lack flexibility and effectiveness in reporting the reasons for failure. They need to be reworked to be configure.in scripts to gain those advantages.
+ 1. Helper modules require, in order to be built, that a helper-specific testlet be passed successfully. Those testlets are shell scripts which perform autoconf-like functions, but without the infrastructure. As a result, they lack flexibility and effectiveness in reporting the reasons for failure. They should be reworked to be configure.in scripts to gain those advantages.
+ 1. AC_CONDITIONAL macors should use in a more uniform manner ENABLE_FOO
+ 1. the complication setting $ECAP_LIBS to ecap/libecap.la  can be replaced by the automake "if USE_ECAP" conditional to build and link the ecap subdir library in src/adaptation/Makefile.am instead of configure.
+ 1. same for $ICAP_LIBS
+ 1. wrapping of the auth libraries build+link in the ENABLE_AUTH_*
 
 == Other random thoughts ==
 On March 31st 2010, [[http://www.catb.org/~esr/|Eric S. Raymond]] [[http://esr.ibiblio.org/?p=1877|ranted]] against autotools. This sparked an interesting debate over cross-platform build tools. During the discussion, some alternatives to autotools were mentioned:
