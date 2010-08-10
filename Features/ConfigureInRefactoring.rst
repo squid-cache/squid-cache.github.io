@@ -12,11 +12,11 @@
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': configure.in has grown in time into a big messy bundle, making it very hard to act on it in a sensible manner. It needs to be reduced to something sane again.
 
- * '''Status''': ''Complete'', will be merged to trunk as soon as trunk is stable enough to receive a large patch (<<Date(2010-08-09T23:51:48Z)>>), then merged to 3.2
+ * '''Status''': ''Complete'', merged to trunk on <<Date(2010-08-10T07:21:51Z)>>, then merged to 3.2
 
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
- * '''ETA''': 
+ * '''ETA''': <<Date(2010-08-10T07:21:51Z)>>
 
  * '''Version''': 3.2
 
