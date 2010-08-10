@@ -17,16 +17,30 @@ Most operating system distributions provide packages in the formats appropriate 
 === Gentoo ===
 '''Maintainer:''' Alin Năstac
 
-==== Squid-3.1 ====
- . {i} The [[Squid-3.1]] package is currently hard-masked due to the upstream beta status.
-
-==== Squid-3.0 ====
-{{{
- emerge squid3
-}}}
-==== Squid-2.7 ====
+Install Procedure (for the latest version in your selected portage tree):
 {{{
  emerge squid
+}}}
+
+==== Squid-3.1 ====
+Install Procedure:
+{{{
+ emerge =squid-3.1*
+}}}
+==== Squid-3.0 ====
+Install Procedure:
+{{{
+ emerge =squid-3.0*
+}}}
+==== Squid-2.7 ====
+Install Procedure:
+{{{
+ emerge =squid-2.7*
+}}}
+==== Version Notice ====
+If you try and install a version not available in portage, such as 2.5, you will see the following notice:
+{{{
+emerge: there are no ebuilds to satisfy "=net-proxy/squid-2.5*".
 }}}
 
 <<Include(KnowledgeBase/Mandrivia,"Mandrivia",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
