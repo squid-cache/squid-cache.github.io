@@ -37,7 +37,7 @@ http_access deny !validUserAgent
  /!\ This needs to be done before any restrictive CONNECT http_access controls.
 
 {{{
-acl numeric_IPs dstdom_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9af]+)?:([0-9af:]+)?:([0-9af+)?\])):443
+acl numeric_IPs dstdom_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9af]+)?:([0-9af:]+)?:([0-9af]+)?\])):443
 acl Skype_UA browser ^skype^
 
 http_access allow CONNECT localnet numeric_IPS Skype_UA
