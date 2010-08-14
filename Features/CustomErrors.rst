@@ -31,9 +31,53 @@ For older Squid you can select the language with the configure option ''--enable
 
 If needed, you can make a copy and re-write the error message template files in any version.
 
-== Codes for embeding into remote ''deny_info'' URLs ==
+== Codes for embedding into remote ''deny_info'' URLs ==
 
- %s:: URL requested by client
+'''[[Squid-2.1]] and later only provide this code:'''
+
+ %s:: Absolute URL requested by client
+
+'''[[Squid-3.2]] adds URL templating codes:'''
+
+ %a:: User identity
+
+ %d:: seconds elapsed since request received (not yet implemented)
+
+ %e:: errno
+
+ %E:: strerror()
+
+ %h:: Squid public hostname
+
+ %H:: server host name
+
+ %i:: client IP address
+
+ %I:: server IP address (NP: upper case '''i''')
+
+ %M:: Request Method
+
+ %o:: Message returned by external ACL helper
+
+ %p:: URL port \#
+
+ %P:: Protocol
+
+ %R:: URL path requested.
+
+ %S:: Squid version signature.
+
+ %s:: Absolute URL requested by client
+
+ %t:: local time
+
+ %T:: UTC
+
+ %U:: Absolute URL without password. Uses * instead of path for CONNECT requests.
+
+ %u:: Absolute URL with password. May be missing path on CONNECT requests.
+
+ %w:: cachemgr email address
 
 == Codes for embedding into custom ERR_* templates ==
 
@@ -93,9 +137,13 @@ This list describes the tags which Squid will insert into the messages:
 
  %u:: URL with password. (Squid-2.5 and later only.)
 
+ %W:: Extended error page data URL-encoded for mailto links.
+
  %w:: cachemgr email address
 
  %z:: DNS server error message
+
+ %Z:: Error message
 
 ----
 CategoryFeature
