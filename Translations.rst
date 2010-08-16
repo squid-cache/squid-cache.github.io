@@ -19,7 +19,7 @@ Several people have volunteered their time to check and confirm translations to 
 || Afrikaans || af || Friedel Wolff ||
 || Bulgarian || bg || Evgeni Gechev ||
 || German || de || Constantin Rack and  Robert Förster ||
-|| English || en, en-au, en-gb, en-us, en-nz || AmosJeffries (Squid Project) ||
+|| English || en || AmosJeffries (Squid Project) ||
 || Persian || fa || Mohsen Saeedi (Fedora Project) ||
 || French || fr || Oliver W. ||
 || Armenian || hy || Arthur Tumanyan ||
