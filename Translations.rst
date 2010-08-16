@@ -22,6 +22,7 @@ Several people have volunteered their time to check and confirm translations to 
 || English || en, en-au, en-gb, en-us, en-nz || AmosJeffries (Squid Project) ||
 || Persian || fa || Mohsen Saeedi (Fedora Project) ||
 || French || fr || Oliver W. ||
+|| Armenian || hy || Arthur Tumanyan ||
 || Italian || it || FrancescoChemolli (Squid Project) ||
 || Dutch (Nederland) || nl || Rene Wijninga ||
 || Malay || ms || ''tepung'' ||
