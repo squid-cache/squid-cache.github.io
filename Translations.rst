@@ -32,7 +32,7 @@ Several people have volunteered their time to check and confirm translations to 
 || Serbin (Latin) || sr-latn || ''batailic'' ||
 || Swedish || sv || HenrikNordstrom (Squid Project) ||
 ## || Turkish || tr || Umut Çinar ||
-|| Vietnamese || vt || ''Clytie'' ||
+|| Vietnamese || vi || ''Clytie'' ||
 || Others || || '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
 
 == How can I contribute? ==
