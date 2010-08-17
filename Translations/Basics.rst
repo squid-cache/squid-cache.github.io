@@ -123,8 +123,8 @@ Supporting the translators is the translation maintainer. Presently AmosJeffries
 Like any software package maintenance position this position has a few tasks:
 
  * Finding new translators for languages which need one.
- * Checking the special codes and markup needed by Squid are not changed or dropped in translation.
- * Committing the changes to Squid-3 HEAD for public release in the [[http://www.squid-cache.org/Versions/langpack/|Language Package]].
+## * Checking the special codes and markup needed by Squid are not changed or dropped in translation.
+## * Committing the changes to Squid-3 HEAD for public release in the [[http://www.squid-cache.org/Versions/langpack/|Language Package]].
  * Contact point about any issues or changes to the system.
 
 ----
