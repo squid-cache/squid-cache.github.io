@@ -106,6 +106,13 @@ The error pages bundle is available as a package '''squid-langpack''' starting w
 Install that package and update your squid.conf settings as above. Noting that the error page files are now installed under '''/usr/share/squid-langpack'''
 
 == Troubleshooting ==
+=== WARNING: Error Pages Missing Language: ===
+
+This just means that your installed Squid does not have the named language code in its installed error page templates. Check the latest [[http://www.squid-cache.org/Versions/langpack/|language package]] to see if its been made available since your version was released.
+
+If its is not available please consider contributing towards the translation. Details 
+are at the top of this page.
+
 === Now I keep getting: "Unable to load default error language files. Reset to backups." ===
 
 The language code you have entered in squid.conf for SquidConf:error_default_language does not match any of the currently installed error page translations.
