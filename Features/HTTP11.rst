@@ -4,7 +4,7 @@
 
 = Feature: HTTP/1.1 support =
  * '''Goal''': HTTP/1.1 (RFC 2616) compliance
- * '''Status''': 65%+ compliant. Being worked on very, very slowly in various feature advances.
+ * '''Status''': 70%+ compliant. Being worked on very, very slowly in various feature advances.
  * '''ETA''': April 2010
  * '''Version''': 3.1
 
