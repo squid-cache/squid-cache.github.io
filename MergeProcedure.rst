@@ -20,9 +20,9 @@ Other developers are often able to provide projects for anyone just wanting to c
 Squid-2 and Squid-3 use different coding styles.
 
 '''Squid-3''':
-
+ * Squid3CodingGuidelines lists the fine details of syntax required.
  * Formatting is presently enforced automatically post-commit.
- * Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
+## * Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
 
 '''Squid-2''':
 
