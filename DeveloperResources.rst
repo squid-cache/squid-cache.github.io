@@ -29,7 +29,9 @@ During the life of the Squid project, a number of [[http://www.squid-cache.org/D
 == Contributing (Code developer) ==
 If you wish to become a developer the first step is to sign up to the squid-dev mailing list. This is done by first posting an introduction of yourself to <<MailTo( squid-dev AT squid-cache DOT org)>> , then send a subscription request to <<MailTo(squid-dev-subscribe AT squid-cache DOT org)>>. Please note that all messages must be sent in plain-text only (no HTML email). A read-only [[http://www.squid-cache.org/mail-archive/squid-dev/|archive]] is available to everyone.
 
-If you wish to contribute squid there are certain guidelines you need to follow in your coding style. They are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The [[http://squid.treenet.co.nz/Doc/Code/|Programming Guide]] offers some (but certainly not enough) information on the Squid internals. SquidInternals offers some more-or-less (mostly less) organized snippets.
+If you wish to contribute to Squid there are certain guidelines and processes you need to follow in your coding style working with the team. MergeProcedure outlines the process of patch development from planning to code release.
+
+Particular details of coding style are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The [[http://squid.treenet.co.nz/Doc/Code/|Programming Guide]] offers some (but certainly not enough) information on the Squid-3 internals. SquidInternals offers some more-or-less (mostly less) organized snippets.
 
 If you are looking for a new project to work on check the feature wish list at [[RoadMap/Squid3]] or query the bugzilla database for [[http://bugs.squid-cache.org/buglist.cgi?component=feature&cmdtype=doit|enhancement requests]].
 
