@@ -62,6 +62,7 @@ Beta packages are being provided through major distribution repositories. See pa
  || Windows   || Guido Serassio     || critical bzr VCS issues ||
 
 ## TODO:
+## Slackware: ? David Somero <dsomero@hotmail.com> http://slackbuilds.org/repository/13.1/network/squid/
 ## Solaris: Steven M. Christensen <sunfreeware_at_gmail.com>,
 ## SuSE: who?
 ## IRIX: anyone?
@@ -72,7 +73,6 @@ Beta packages are being provided through major distribution repositories. See pa
 ## NextStep: anyone?
 ## UNIX: anyone?
 ## AIX: anyone?
-## Slackware: anyone?
 
   If you know of other package maintainers not listed above please bring them to my attention. I want them to be a part of this project, to gain from their experience and skills.
 
@@ -87,11 +87,11 @@ Beta packages are being provided through major distribution repositories. See pa
 == Current Packages ==
 
 Beta testing:
- || Debian   || '''Experimental''' repository ||
- || FreeBSD   || squid31 package. ||
- || Gentoo   || Hard Masked 3.1 beta package ||
- || NetBSD   || squid31 package. ||
- || Ubuntu   || https://launchpad.net/~yadi/+archive/ppa ||
+## || Debian   || '''Experimental''' repository ||
+## || FreeBSD   || squid31 package. ||
+## || Gentoo   || Hard Masked 3.1 beta package ||
+## || NetBSD   || squid31 package. ||
+ || Ubuntu   || https://launchpad.net/~yadi/+archive/ppa (Maverick) ||
 
 == Build-your-own package ==
 
