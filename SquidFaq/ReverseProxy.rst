@@ -27,9 +27,9 @@ Several configurations are possible. The [[ConfigExamples]] section details seve
 <<FullSearchCached(title:regex:^ConfigExamples/Reverse/.*$)>>
 
 == Running the web server on the same server ==
-While not generally recommended it is possible to run both the accelerator and the backend web server on the same host. To do this you need to make them listen on different IP addresses. Usually the loopback address (127.0.0.1) is used for the web server.
+While not generally recommended it is possible to run both the accelerator and the backend web server on the same host. To do this you need to make them listen on different IP addresses. Usually the loopback address (127.0.0.1 or ::1) is used for the web server.
 
-In Squid this is done by specifying the IP address in http_port, and using 127.0.0.1 as address to the web server
+In Squid this is done by specifying the public IP address in SquidConf:http_port, and using loopback address for the web server
 
 {{{
 http_port the.public.ip.address:80 accel defaultsite=your.main.website
@@ -44,29 +44,39 @@ BindAddress 127.0.0.1
 Other web servers uses similar directives specifying the address where it should listen for requests. See the manual to your web server for details.
 
 == Load balancing of backend servers ==
-To load balance requests among a set of backend servers allow requests to be forwarded to more than one cache_peer, and use one of the load balancing options in the cache_peer lines. I.e. the round-robin option.
+To load balance requests among a set of backend servers allow requests to be forwarded to more than one SquidConf:cache_peer, and use one of the load balancing options in the SquidConf:cache_peer lines. I.e. the round-robin option.
 
 {{{
 cache_peer ip.of.server1 parent 80 0 no-query originserver round-robin
 cache_peer ip.of.server2 parent 80 0 no-query originserver round-robin
 }}}
-Other load balancing methods is also available. See squid.conf.default for the full the description of the cache_peer directive options.
+Other load balancing methods is also available. See squid.conf.default for the full the description of the SquidConf:cache_peer directive options.
 
-== When using an httpd-accelerator, the port number or host name for redirects or CGI-generated content is wrong ==
+== Common Problems ==
+=== When using an httpd-accelerator, the port number or host name for redirects or CGI-generated content is wrong ===
 This happens if the port or domain name of the accelerated content is different from what the client requested.  When your httpd issues a redirect message (e.g. 302 Moved Temporarily) or generates absolute URLs, it only knows the port it's configured on and uses this to build the URL.  Then, when the client requests the redirected URL, it bypasses the accelerator.
 
-To fix this make sure that defaultsite is the site name requested by clients, and that the port number of http_port and the backent web server is the same. You may also need to configure the official site name on the web server.
+To fix this make sure that defaultsite is the site name requested by clients, and that the port number of SquidConf:http_port and the backent web server is the same. You may also need to configure the official site name on the web server.
 
 Alternatively you can also use the location_rewrite helper interface to Squid to fixup redirects on the way out to the client, but this only works for the Location header, not URLs dynamically embedded in the returned content.
 
-== Access to password protected content fails via the reverse proxy ==
-If the content on the web servers is password protected then you need to tell the proxy to trust your web server with authentication credentials. This is done via the login= option to cache_peer. Normally you would use login=PASS to have the login information forwarded. The other alternatives is meant to be used when it's the reverse proxy which processes the authentication as such but you like to have information about the authenticated account forwarded to the backend web server.
+=== Access to password protected content fails via the reverse proxy ===
+If the content on the web servers is password protected then you need to tell the proxy to trust your web server with authentication credentials. This is done via the login= option to SquidConf:cache_peer. Normally you would use login=PASS to have the login information forwarded. The other alternatives is meant to be used when it's the reverse proxy which processes the authentication as such but you like to have information about the authenticated account forwarded to the backend web server.
 
 {{{
 cache_peer ip.of.server parent 80 0 no-query originserver login=PASS
 }}}
 
 || {i} || To pass details back as given '''login=PASS''' is an exact string. ||
+
+=== Visitor requests can force fetching new objects from the back-end server ===
+Client requests can contain ''Cache-Control:'' settings specifying no-cache, must-revalidate, or low max-age which cause Squid to revalidate or fetch new content from the backend web server rather earlier than needed. This raises load on the delivery system which can lead to bandwidth problems and rising costs.
+
+In [[Squid-3.1]] and later the SquidConf:http_port '''ignore-cc''' options is available on accel ports. This option informs Squid to ignore the visitors control headers and depend solely on the headers provided by backend servers.
+
+{{{
+http_port 80 accel ignore-cc
+}}}
 
 -----
  . Back to the SquidFaq
