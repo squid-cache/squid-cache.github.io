@@ -55,6 +55,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 ||NTLM Authentication ||Y ||Y ||Y ||Y ||Y ||Y ||Y||For full NTLMv2 we rely on Samba ||
 ||Negotiate Authentication ||- ||Y ||Y ||Y ||Y ||Y ||Y||aka Kerberos ||
 ||||||||||||||<style="text-align: center;">'''Efficiency aids''' ||
+||[[Features/SmpScale|SMP Scalability]] ||- ||- ||- ||- ||- ||X ||X||
 ||[[Features/CollapsedForwarding|Collapsed Forwarding]] ||- ||Y ||Y ||- ||- ||- ||-||
 ||[[Features/StaleIfError|stale-if-error]] ||- ||- ||Y ||- ||- ||- ||-||
 ||[[Features/StaleWhileRevalidate|stale-while-revalidate]] ||- ||- ||Y ||- ||- ||- ||-||
