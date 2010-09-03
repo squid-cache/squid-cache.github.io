@@ -89,6 +89,8 @@ Basic new features in 3.2:
  * Multi-Lingual proxy configuration splash pages for captive portals
  * [[Features/Surrogate|Surrogate 1.0]] protocol support
  * [[Features/SmpScale|SMP]] Scaling worker processes
+ * New helper to lookup Kerberos/NTLM group via LDAP
+ * ''Purge'' tool to manage UFS/AUFS/DiskD caches bundled
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
 
