@@ -54,6 +54,7 @@ The software is designed to operate on any modern system, and is known to work o
  * [[KnowledgeBase/Fedora|Fedora]]
  * Gentoo
  * [[KnowledgeBase/RedHat|RedHat Enterprise Linux]]
+ * [[KnowledgeBase/Suse|SuSE]]
  * Ubuntu
 
 '''Unix:'''
