@@ -84,7 +84,13 @@ From Squid 3.1 the log directory and PID file location are also configurable. Th
  /!\ A workaround if you are unable to patch and forced to build an ancient Squid release, is to symlink the /var/logs directory to /var/log before installing your new Squid.
 
 
-== ==
+== Troubleshooting ==
+
+The '''squid3-dbg''' packages provides debug symbols needed for bug reporting if the bug is crash related. See the [[SquidFaq/BugReporting|Bug Reporting FAQ]] for what details to include in a report.
+
+{{{
+ apt-get install squid3-dbg
+}}}
 
 ----
 CategoryKnowledgeBase
