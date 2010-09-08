@@ -2,8 +2,6 @@
 #format wiki
 #language en
 
-## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-
 = Configuring a Cisco 3640 with WCCPv2 Interception =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
@@ -45,6 +43,8 @@ interface FastEthernet2/0.1
  ip nat inside
 }}}
 ## end feature include
+
+<<Include(^Features/Wccp2$,,, from="^##.start.Squid.WCCPv2.config", to="^##.end.Squid.WCCPv2.config",sort=ascending)>>
 
 = Troubleshooting =
 ## start troubleshoot
