@@ -32,6 +32,8 @@ There is no interface specific configuration required.
 
 ## end feature include
 
+<<Include(^Features/Wccp2$,,, from="^##.start.Squid.WCCPv2.config", to="^##.end.Squid.WCCPv2.config",sort=ascending)>>
+
 = Troubleshooting =
 ## start troubleshoot
 ## end troubleshoot
