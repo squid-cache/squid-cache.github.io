@@ -1,9 +1,7 @@
 = Cisco ASA and Squid with WCCP2 =
 Very important passage from the Cisco-Manual:
 
-"The only topology that the security appliance supports is when client and cache engine are behind the same interface of the security appliance and the cache engine can directly  communicate with the client without going through the security appliance."
-
-<<Include(^Features/Wccp2$,,, from="^##.start.Squid.WCCPv2.config", to="^##.end.Squid.WCCPv2.config",sort=ascending)>>
+ {X} "The only topology that the security appliance supports is when client and cache engine are behind the same interface of the security appliance and the cache engine can directly  communicate with the client without going through the security appliance."
 
 ## start feature include
 == Cisco ASA ==
@@ -28,6 +26,8 @@ Intercept everything not prevented by the bypass list:
 }}}
 ## end feature include
 p.s.: you should deny other forwardings with iptables
+
+<<Include(^Features/Wccp2$,,, from="^##.start.Squid.WCCPv2.config", to="^##.end.Squid.WCCPv2.config",sort=ascending)>>
 
 ## = Troubleshooting =
 ## start troubleshoot
