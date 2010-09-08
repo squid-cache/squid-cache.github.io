@@ -76,8 +76,9 @@ wccp2_service standard 0 password=foo
 {{{
 modprobe ip_gre
 ip tunnel add wccp0 mode gre remote $ASA-EXT-IP local $SQUID-IP dev eth0
-}}}
+
 ifconfig wccp0 $SQUID-IP netmask 255.255.255.255 up
+}}}
 
  * disable rp_filter, or the packets will be silently discarded
 
