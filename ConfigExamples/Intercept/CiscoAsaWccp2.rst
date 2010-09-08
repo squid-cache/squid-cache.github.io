@@ -1,5 +1,10 @@
 = Cisco ASA and Squid with WCCP2 =
-Very important passage from the Cisco-Manual:
+
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
+
+<<TableOfContents>>
+
+== Very important passage from the Cisco-Manual ==
 
  {X} "The only topology that the security appliance supports is when client and cache engine are behind the same interface of the security appliance and the cache engine can directly  communicate with the client without going through the security appliance."
 
