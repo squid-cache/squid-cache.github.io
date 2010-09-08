@@ -40,6 +40,8 @@ interface FastEthernet0/0.2
 
 ## end feature include
 
+<<Include(^Features/Wccp2$,,, from="^##.start.Squid.WCCPv2.config", to="^##.end.Squid.WCCPv2.config",sort=ascending)>>
+
 = Troubleshooting =
 
 ## start troubleshoot
