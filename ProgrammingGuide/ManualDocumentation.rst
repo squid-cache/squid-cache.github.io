@@ -4,7 +4,7 @@
 <<TableOfContents>>
 
 = man(8) documentation guidelines and standards =
-This is a '''proposal''' for a standard manual page documentation format and template. The aim is to allow documentation writers to focus on documentation and not on specific format and semantics, and to help integrate new texts with translation string automation.
+This is a guide for a standard manual page documentation format and template. The aim is to allow documentation writers to focus on documentation and not on specific format and semantics, and to help integrate new texts with translation string automation.
 
 == Entities to be documented ==
 All application binary, scripts, and configuration files installed on end server systems are to be documented with a manual page.
