@@ -23,7 +23,6 @@ http://www.sunfreeware.com/ also hosts binary Squid packages for SPARC/Solaris 2
  pkg-get -i squid
 }}}
 
-
 == Compiling ==
 
 In order to successfully build squid on Solaris, a complete build-chain has to be available.
@@ -109,6 +108,30 @@ and CPPunit to be installed from source: you can find it at [[http://sourceforge
 ...
 And then you go on building the usual way :)
 
+== Troubleshooting ==
+
+=== Your cache is running out of filedescriptors ===
+Solaris 9 and 10 support "unlimited" number of open files without patching. But you still need to take some actions as the kernel defaults to only allow processes to use up to 256 with a cap of 1024 filedescriptors, and Squid picks up the limit at build time.
+
+ * Before configuring Squid run {{{ ulimit -HSn $N}}} where $N is the number of filedescriptors you need to support).
+{{{
+ulimit -HSn $N
+./configure ...
+make install
+}}}
+
+ {i} Be sure to run {{{make clean}}} before ./configure if you have already run ./configure as the script might otherwise have cached the prior result.
+
+Make sure your script for starting Squid contains the above ulimit command to raise the filedescriptor limit while Squid is running.
+{{{
+ulimit -HSn $N
+squid
+}}}
+
+You may also need to allow a larger port span for outgoing connections. This is set in /proc/sys/net/ipv4/. For example:
+{{{
+echo 1024 32768 > /proc/sys/net/ipv4/ip_local_port_range
+}}}
 
 ----
 CategoryKnowledgeBase
