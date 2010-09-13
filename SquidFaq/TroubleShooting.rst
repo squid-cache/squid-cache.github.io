@@ -6,12 +6,14 @@
 
 == Starting Point ==
 
-If your Squid version is older than 2.6 is is very outdated. Many of the issues experienced in those versions are now fixed in 2.6 and later.
+If your Squid version is older than 2.6 it is very outdated. Many of the issues experienced in those versions are now fixed in 2.6 and later.
 
 Your first point of troubleshooting should be to test with a newer ''supported'' release and resolve any remaining issues with that install.
 
-Current releases can be retrieved from http://www.squid-cache.org/Versions or your operating system distributor.
- /!\ RHEL users will need to use an [[http://www.squid-cache.org/Download/binaries.dyn|unofficial package]] or build their own. Due to !RedHat update policies.
+Current releases can be retrieved from http://www.squid-cache.org/Versions or your operating system distributor. Hos to do this is outlined in the system-specific help pages.
+
+Additional problems and resolutions for your specific system may be found in the system-specific help troubleshooting
+<<FullSearch(title:KnowledgeBase/ regex:C{1}ategoryDistributionInfo regex:"Troubleshooting")>>
 
 == Why am I getting "Proxy Access Denied?" ==
 You may need to set up the ''http_access'' option to allow requests from your IP addresses.    Please see ../SquidAcl for information about that.
@@ -49,19 +51,6 @@ Alternatively you can
 If running things as root is not an option then get your sysadmin to install a the needed ulimit command in /etc/inittscript (see man initscript), install a patched kernel where INR_OPEN in include/linux/fs.h is changed to at least the amount you need or have them install a small suid program which sets the limit (see link below).
 
 More information can be found from Henriks [[http://squid.sourceforge.net/hno/linux-lfd.html|How to get many filedescriptors on Linux 2.2.X and later]] page.
-
-=== Solaris ===
-
- >:> This information is outdated, and may no longer be relevant.
-
-Add the following to your ''/etc/system'' file and reboot to increase your maximum file descriptors per process:
-
-{{{
-set rlim_fd_max = 4096
-}}}
-Next you should re-run the ''configure'' script in the top directory so that it finds the new value. If it does not find the new limit, then you might try editing  ''include/autoconf.h'' and setting ''#define DEFAULT_FD_SETSIZE'' by hand.  Note that ''include/autoconf.h'' is created from ''autoconf.h.in'' every time you run configure.  Thus, if you edit it by hand, you might lose your changes later on.
-
-Jens-S. Voeckler advises that you should NOT change the default soft limit (''rlim_fd_cur'') to anything larger than 256.  It will break other programs, such as the license manager needed for the SUN workshop compiler.  Jens-S. also says that it should be safe to raise the limit for the Squid process as high as 16,384 except that there may be problems duruing reconfigure or logrotate if all of the lower 256 filedescriptors are in use at the time or rotate/reconfigure.
 
 === FreeBSD ===
 
