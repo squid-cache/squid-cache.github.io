@@ -17,20 +17,8 @@
 
 == Pre-Built Binary Packages ==
 
-## Details briefly covering critical information for user contact and problem reporting...
-##
-##  '''Maintainer:''' Your Name goes here. Email too if you want direct contacts.
-##  ''Bug Reporting:'''  link to bug reporting system interface (AND how-to if they need one).
-
-
-## List of sections named per major release.
-## Repeat the following with sub-section for each distributed release package.
-## Named by version of Squid it packages.
-## Numerically highest to lowest only those currently available in the distro.
-
-=== Squid-X.Y ===
-
 '''Maintainer:''' Alin Năsta
+##  ''Bug Reporting:'''  link to bug reporting system interface (AND how-to if they need one).
 
 Install Procedure (for the latest version in your selected portage tree):
 {{{
