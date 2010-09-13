@@ -93,4 +93,4 @@ The '''squid3-dbg''' packages provides debug symbols needed for bug reporting if
 }}}
 
 ----
-CategoryKnowledgeBase
+CategoryKnowledgeBase CategoryDistributionInfo
