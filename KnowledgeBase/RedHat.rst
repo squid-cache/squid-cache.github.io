@@ -53,4 +53,4 @@ The following ./configure options install Squid into the !RedHat structure prope
 == Troubleshooting ==
 
 ----
-CategoryKnowledgeBase
+CategoryKnowledgeBase CategoryDistributionInfo
