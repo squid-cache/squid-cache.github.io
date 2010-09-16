@@ -354,7 +354,7 @@ However there are a number of installed files which have no manual at all.
 || ~/store.log || {X} || Missing. Relevant? ||
 || ~/swap.state || {X} || Missing. Convert wiki page info ||
 || errors/errpages.css || {X} || Missing ||
-|| helpers/basic_auth/DB/basic_db_auth || || Needs review of the perl/pod output. ||
+|| helpers/basic_auth/DB/basic_db_auth || 8 || Needs review of the perl/pod output. ||
 || helpers/basic_auth/getpwnam/basic_getpwnam_auth || 8 || (./) Done. ||
 || helpers/basic_auth/LDAP/basic_ldap_auth || 8 || (./) Done. ||
 || helpers/basic_auth/MSNT/msnt_auth || {X} || Missing. Convert README.html ||
@@ -365,31 +365,31 @@ However there are a number of installed files which have no manual at all.
 || helpers/basic_auth/NIS/basic_nis_auth || {X} || Missing. ||
 || helpers/basic_auth/PAM/basic_pam_auth || 8 || (./) Done. ||
 || helpers/basic_auth/POP3/basic_pop3_auth.pl || {X} || Missing. ||
+|| helpers/basic_auth/RADIUS/basic_radius_auth || 8 || (./) Done. ||
 || helpers/basic_auth/SASL/basic_sasl_auth || 8 || (./) Done. ||
 || helpers/basic_auth/SASL/basic_sasl_auth.pam || {X} || Missing. ||
 || helpers/basic_auth/SASL/basic_sasl_auth.conf || {X} || Missing. ||
 || helpers/basic_auth/SMB/basic_smb_auth || {X} || Missing. ||
 || helpers/basic_auth/SMB/basic_smb_auth.sh || {X} || Missing. ||
-|| helpers/basic_auth/SSPI/basic_sspi_auth || {X} || Missing. Convert readme.txt ||
-|| helpers/basic_auth/RADIUS/basic_radius_auth || 8 || (./) Done. ||
+|| helpers/basic_auth/SSPI/basic_sspi_auth.exe || 8 || (./) Done. ||
 || helpers/digest_auth/eDirectory/digest_edir_auth || {X} || Missing. ||
-|| helpers/digest_auth/ldap/digest_ldap_auth || {X} || Missing. ||
+|| helpers/digest_auth/LDAP/digest_ldap_auth || {X} || Missing. ||
 || helpers/digest_auth/file/digest_file_auth || 8 || (./) Done. ||
-|| helpers/external_acl/ip_user/ip_user_check || {X} || Missing. Convert example config files and README ||
-|| helpers/external_acl/ldap_group/squid_ldap_group || 8 || (./) Done. ||
-|| helpers/external_acl/mswin_ad_group/mswin_check_ad_group || {X} || Missing. Convert readme.txt ||
-|| helpers/external_acl/mswin_lm_group/mswin_check_lm_group || {X} || Missing. Convert readme.txt ||
-|| helpers/external_acl/session/squid_session || 8 || (./) Done. ||
-|| helpers/external_acl/unix_group/squid_unix_group || 8 || (./) Done. ||
-|| helpers/external_acl/wbinfo_group/wbinfo_group.pl || {X} || Missing. ||
+|| helpers/external_acl/AD_group/ext_ad_group_acl || 8 || (./) Done. ||
+|| helpers/external_acl/file_userip/ext_file_userip_acl || 8 || (./) Done. ||
+|| helpers/external_acl/kerberos_ldap_group/ext_kerberos_ldap_group_acl || 8 || (./) Done. ||
+|| helpers/external_acl/LDAP_group/ext_ldap_group_acl || 8 || (./) Done. ||
+|| helpers/external_acl/LM_group/ext_lm_group_acl || 8 || (./) Done. ||
+|| helpers/external_acl/session/ext_session_acl || 8 || (./) Done. ||
+|| helpers/external_acl/unix_group/ext_unix_group_acl || 8 || (./) Done. ||
+|| helpers/external_acl/wbinfo_group/ext_wbinfo_group_acl || 8 || (./) Done. ||
 || helpers/log_daemon/file/log_file_daemon || {X} || Missing. ||
-|| helpers/negotiate_auth/kerberos/negotiate_kerberos_auth || {X} || Missing. Convert README ||
+|| helpers/negotiate_auth/kerberos/negotiate_kerberos_auth || 8 || (./) Done. ||
 || helpers/negotiate_auth/kerberos/negotiate_kerberos_auth_test || {X} || Missing. Convert README ||
-|| helpers/negotiate_auth/mswin_sspi/mswin_negotiate_auth || {X} || Missing. Convert readme.txt ||
-|| helpers/ntlm_auth/fakeauth/fakeauth_auth || {X} || Missing. Convert wiki NTLM fake auth page. ||
-|| helpers/ntlm_auth/mswin_sspi/mswin_ntlm_auth || {X} || Missing. Convert readme.txt ||
-|| helpers/ntlm_auth/no_check/no_check.pl || {X} || Missing. Convert README.no_check_ntlm_auth ||
+|| helpers/negotiate_auth/SSPI/negotiate_sspi_auth.exe || {X} || Missing. Convert readme.txt ||
+|| helpers/ntlm_auth/fake/ntlm_fake_auth || {X} || Missing. Convert wiki NTLM fake auth page. ||
 || helpers/ntlm_auth/smb_lm/ntlm_smb_lm_auth || {X} || Missing ||
+|| helpers/ntlm_auth/SSPI/ntlm_sspi_auth.exe || 8 || (./) Done. ||
 || helpers/url_rewrite/url_fake_rewrite || {X} || Missing ||
 || helpers/url_rewrite/url_fake_rewrite.sh || {X} || Missing ||
 || src/dnsserver || {X} || Missing ||
