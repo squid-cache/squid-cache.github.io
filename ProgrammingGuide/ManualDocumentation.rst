@@ -103,11 +103,11 @@ negative caching of failed requests.
 }}}
 
 === .SH OPTIONS ===
-A fully documented list of available command line options. The table column offset of the description text is 12 characters, set on the first '''.TP''' tag.
+A fully documented list of available command line options. With an empty line between each. The table column offset of the description text is 12 characters, set on the first '''.TP''' tag.
 
-The option switch and any accepted variable names are marked not for translation.
+The option switch and any accepted variable names are marked not for translation (unlike in synopsis).
 
-The option description is open for translation.
+The option description is open for translation. Any repetition of the variable name is highlighted in bold.
 
 For example:
 {{{
@@ -116,7 +116,8 @@ For example:
 .if !'po4a'hide' .TP 12
 .if !'po4a'hide' .B \-d
 Write debug info to stderr.
-.TP
+.
+.if !'po4a'hide' .TP
 .if !'po4a'hide' .B "\-f config\-file"
 Use configuration file
 .B config\-file
@@ -129,6 +130,10 @@ Configuration files have their syntax covered under '''.SH DESCRIPTION'''
 
 This section should cover snippets of config. Usually from squid.conf. Actual config snippets are to be marked not for translation.
 
+For a multi-line configuration block use '''.br''' (lower case is important) to split the lines legibly.
+
+ /!\ Any word which ''begins'' with a dash / hyphen must be slash-escaped.
+
 For example, URL re-writers would have something like this:
 {{{
 .
@@ -137,13 +142,15 @@ For example, URL re-writers would have something like this:
 .B squid.conf
 like so:
 .if !'po4a'hide' .RS
-.if !'po4a'hide' url_rewrite_program /usr/bin/squid/example.binary
+.if !'po4a'hide' .B url_rewrite_program /usr/bin/squid/example.binary
 .if !'po4a'hide' .RE
 .PP Command line options sent to a helper script or binary are added to
 .B squid.conf
 following the helper binary name. Like so:
 .if !'po4a'hide' .RS
-.if !'po4a'hide' url_rewrite_program /usr/bin/squid/example.binary -d
+.if !'po4a'hide' .B url_rewrite_program /usr/bin/squid/example.binary \-d
+.if !'po4a'hide' .br
+.if !'po4a'hide' .B url_rewrite_access ...
 .if !'po4a'hide' .RE
 }}}
 
@@ -288,6 +295,8 @@ is an installed binary. The long description goes here
 .if !'po4a'hide' .TP 12
 .if !'po4a'hide' .B \-d
 Write debug info to stderr.
+.
+.if !'po4a'hide' .TP
 .if !'po4a'hide' .B \-h
 Display the binary help and command line syntax info using stderr.
 .
