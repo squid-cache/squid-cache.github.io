@@ -131,6 +131,7 @@ gdb> backtrace
 
 If possible, you might keep the coredump file around for a day or two.  It is often helpful if we can ask you to send additional debugger output, such as the contents of some variables. But please note that a core file is only useful if paired with the exact same binary as generated the corefile. If you recompile Squid then any coredumps from previous versions will be useless unless you have saved the corresponding Squid binaries, and any attempts to analyze such coredumps will most certainly give misleading information about the cause to the crash.
 
+== Using gdb debugger on Squid ==
 If you CANNOT get Squid to leave a core file for you then one of the following approaches can be used
 
 First alternative is to start Squid under the contol of GDB
@@ -147,6 +148,8 @@ run -DNYCd3
 backtrace
 quit
 }}}
+
+== Using gdb debugger on a live proxy (with minimal downtime) ==
 The drawback from the above is that it isn't really suitable to run on a production system as Squid then won't restart automatically if it crashes. The good news is that it is fully possible to automate the process above to automatically get the stack trace and then restart Squid. Here is a short automated script that should work:
 
 {{{
