@@ -138,6 +138,10 @@ First alternative is to start Squid under the contol of GDB
 {{{
 % gdb /path/to/squid
 handle SIGPIPE pass nostop noprint
+handle SIGTERM pass nostop noprint
+handle SIGUSR1 pass nostop noprint
+handle SIGSEGV stop
+handle SIGABRT stop
 run -DNYCd3
 [wait for crash]
 backtrace
@@ -150,6 +154,10 @@ The drawback from the above is that it isn't really suitable to run on a product
 trap "rm -f $$.gdb" 0
 cat <<EOF >$$.gdb
 handle SIGPIPE pass nostop noprint
+handle SIGTERM pass nostop noprint
+handle SIGUSR1 pass nostop noprint
+handle SIGSEGV stop
+handle SIGABRT stop
 run -DNYCd3
 backtrace
 quit
