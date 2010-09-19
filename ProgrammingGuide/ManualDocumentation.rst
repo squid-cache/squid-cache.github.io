@@ -25,6 +25,7 @@ The document overview is as follows. Introductory header markup as shown followe
 .SH DESCRIPTION
 .SH OPTIONS
 .SH CONFIGURATION
+.SH KNOWN ISSUES
 .SH AUTHOR
 .SH COPYRIGHT
 .SH QUESTIONS
@@ -153,6 +154,11 @@ following the helper binary name. Like so:
 .if !'po4a'hide' .B url_rewrite_access ...
 .if !'po4a'hide' .RE
 }}}
+
+=== .SH KNOWN ISSUES ===
+Optional section specific to application binaries and maybe helper scripts.
+
+Simple set of '''.PP''' paragraphs outlining the problems which are known with using the program or script.
 
 === .SH AUTHOR ===
 A list of relevant paragraphs specific to the authorship style of the documented program, script or file.
@@ -299,6 +305,10 @@ Write debug info to stderr.
 .if !'po4a'hide' .TP
 .if !'po4a'hide' .B \-h
 Display the binary help and command line syntax info using stderr.
+.
+.SH KNOWN ISSUES
+.PP
+Optional test goes here. If there is nothing major remove the whole section.
 .
 .SH CONFIGURATION
 .PP See FAQ wiki page for examples of how to write configuration snippets.
