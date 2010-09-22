@@ -13,21 +13,21 @@ Jiri Skala @ !RedHat maintains experimental squid packages for Red Hat Enterpris
 
 ==== Squid-3.1 ====
  * '''Maintainer:''' Jiri Skala @ !RedHat
- * '''Download:''' http://people.redhat.com/jskala/squid/
+ * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/
 
 ==== Squid-3.0 ====
  * '''Maintainer:''' Jiri Skala @ !RedHat
- * '''Download:''' http://people.redhat.com/jskala/squid/
+ * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-3.0.STABLE25-1.el5
 
 ==== Squid-2.7 ====
  * '''Maintainer:''' Jiri Skala @ !RedHat
- * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-2.7.STABLE6-1.el5
- * '''RHEL 4 Download:''' http://people.redhat.com/jskala/squid/squid-2.7.STABLE6-1.el4
+ * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-2.7.STABLE9-1.el5
+ * '''RHEL 4 Download:''' http://people.redhat.com/jskala/squid/squid-2.7.STABLE9-1.el4
 
 ==== Squid-2.6 ====
  * '''Maintainer:''' Jiri Skala @ !RedHat
- * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-2.6.STABLE22-1.el5
- * '''RHEL 4 Download:''' http://people.redhat.com/jskala/squid/squid-2.6.STABLE22-1.el4
+ * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-2.6.STABLE23-1.el5
+ * '''RHEL 4 Download:''' http://people.redhat.com/jskala/squid/squid-2.6.STABLE23-1.el4
 
 ## ==== Squid-2.5 ====
 ## . (YET TO BE WRITTEN)
@@ -52,9 +52,15 @@ The following ./configure options install Squid into the !RedHat structure prope
   --sysconfdir=/etc/squid
 }}}
 
-|| /!\ || SELinux on RHEL 5 does not give the proper context to the default SNMP port (3401) (as of selinux-policy-2.4.6-106.el5) .  The command "semanage port -a -t http_cache_port_t -p udp 3401" takes care of this problem (via http://tanso.net/selinux/squid/).||
-
 == Troubleshooting ==
+
+ /!\ SELinux on RHEL 5 does not give the proper context to the default SNMP port (3401) as of selinux-policy-2.4.6-106.el5
+
+The command to takes care of this problem is:
+{{{
+semanage port -a -t http_cache_port_t -p udp 3401
+}}}
+(via http://tanso.net/selinux/squid/)
 
 ----
 CategoryKnowledgeBase CategoryDistributionInfo
