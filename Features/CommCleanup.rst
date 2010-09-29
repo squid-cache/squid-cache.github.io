@@ -16,6 +16,13 @@
 
  * '''More''': [[https://code.launchpad.net/~yadi/squid/cleanup-comm|branch]]
 
+ * '''Bugs''':
+  . http://bugs.squid-cache.org/show_bug.cgi?id=2460
+  . http://bugs.squid-cache.org/show_bug.cgi?id=2755
+  . http://bugs.squid-cache.org/show_bug.cgi?id=3036
+  . http://bugs.squid-cache.org/show_bug.cgi?id=3050
+  . http://bugs.squid-cache.org/show_bug.cgi?id=3070
+
 == Details ==
 
 We need to cleanup and modulize the Comm Layer code.
@@ -32,6 +39,8 @@ At present the only distinction between comm and regular code is its residence i
 
  * The outbound connection setup for server connections (socket opening / connect / bind) has now been cleaned up and isolated in the comm library with a small clear and documented API. Currently undergoing audit and testing.
 
+ * FD handling throughout the code has been polished up to pass Connection objects instead of raw FD. Currently undergoing testing and audit.
+
 === TODO ===
 
  * The inbound SSL layer still needs some attention to combine it behind the comm listener interface away from the higher levels of code. This can perhaps be done as part of the upgrade enabling SSL to use multiple system libraries other than OpenSSL.
@@ -41,8 +50,6 @@ At present the only distinction between comm and regular code is its residence i
  * The socket reading operations need an API polished up.
 
  * The socket writing operations need an API polished up.
-
- * FD handling throughout the code needs to be polished up to pass Connection objects instead of raw FD.
 
 ----
 CategoryFeature CategoryWish
