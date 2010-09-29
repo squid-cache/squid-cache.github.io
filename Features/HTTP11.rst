@@ -5,16 +5,15 @@
 = Feature: HTTP/1.1 support =
  * '''Goal''': HTTP/1.1 (RFC 2616) compliance
  * '''Status''': 70%+ compliant. Being worked on very, very slowly in various feature advances.
- * '''ETA''': April 2010
- * '''Version''': 3.1
+ * '''Version''': 3.1, 3.2
 
 <<TableOfContents>>
 
 == Details ==
 
-We still are partially HTTP/1.0 internally, not 1.1. There is many reasons to this but lets begin with the major ones
+We still are partially HTTP/1.0 internally, not 1.1. There is many reasons to this but lets begin with the major ones.
 
- * Internal forwarding path do not handle 1XX messages very well. This has been resolved by stripping 1xx responses and rejecting 1xx requests according to RFC 2616 requirements.
+ * Internal forwarding path do not handle 1XX messages very well. This has been worked around in [[Squid-2.7]] and [[Squid-3.1]] by stripping 1xx responses and rejecting 1xx requests according to RFC 2616 requirements.
  * Chunked encoding missing (patch available).
 
 To complete this work is needed in the following areas:
@@ -27,7 +26,7 @@ Current Squid compliance with RFC 2616 MUST-level requirements: [[attachment:HTT
 
 The linked document contains the results of automated Co-Advisor HTTP/1.1 compliance tests for several Squid versions. Each test consists of almost 700 individual test cases, targeting various MUSTs in RFC 2616. For each Squid3 version, we executed several tests. The tests were identical from HTTP point of view. If a given test case showed different results during those tests, the exact test case outcome could not be determined. Such outcomes are marked with a letter 'U'. All other markings correspond to stable results. Some test cases fail due to lack of an HTTP/1.1 feature support in Squid, incompatibility with the test suite, a test suite bug, or other reasons. Such test cases are marked with question marks. The remaining test case outcomes are successes and violations. Only successful outcomes count towards the "test cases passed" percentage.
 
-The tests are on vanilla Squid with no special alterations made during build.  The 2.7 test appears to have been done with the configurable HTTP/1.1 advertisement to Servers turned on, which is not available in Squid 3.x yet.
+The tests are on vanilla Squid with no special alterations made during build.  The 2.7 test appears to have been done with the configurable HTTP/1.1 advertisement to Servers turned on.
 
 == Forwarding path ==
 
@@ -41,7 +40,7 @@ This is likely to touch the store API as today all messages go via the store, ev
 
 RFC2616 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
 
- * NP: ICY protocol seems to be the main breakage. So ICY support has been implemented natively in Squid-3 to fix this.
+ * NP: ICY protocol seems to be the main breakage. So ICY support has been implemented natively from [[Squid-3.1]] to fix this.
 
 We may require a generic ''upgrade_http'' option which takes a version number, allow/deny, and a list of ACLs. Plus two new ACLs to test for the request HTTP version and reply HTTP version.
 
