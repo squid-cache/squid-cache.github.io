@@ -9,16 +9,11 @@
 
 <<TableOfContents>>
 
-== Details ==
+== Summary ==
 
-We still are partially HTTP/1.0 internally, not 1.1. There is many reasons to this but lets begin with the major ones.
+Squid trunk claims HTTP/1.1 support. Squid v3.1 claims HTTP/1.1 support but only in sent requests (from Squid to servers). Earlier Squid versions do not claim HTTP/1.1 support by default because they cannot fully handle Expect:100-continue, 1xx responses, and/or chunked messages. 
 
- * Internal forwarding path do not handle 1XX messages very well. This has been worked around in [[Squid-2.7]] and [[Squid-3.1]] by stripping 1xx responses and rejecting 1xx requests according to RFC 2616 requirements.
- * Chunked encoding missing (patch available).
-
-To complete this work is needed in the following areas:
- * Store API and data flow, to enable forwarding of 1xx responses. And maybe to give some thought on how to proxy transfer encodings (i.e. gzip) without having to recode.
- * Protocol parsing & composing for transfer encoding (at minimum chunked).
+Co-Advisor tests no longer detect RFC 2616 MUST-level violations in Squid trunk when it comes to requirements unrelated to caching. Many caching-related requirements are still violated. The "compliance percentage" in the project header is essentially a marketing gimmick (i.e., meaningless or misleading but technically correct information). We are actively working on fixing all known violations detected by Co-Advisor.
 
 === Checklist ===
 
