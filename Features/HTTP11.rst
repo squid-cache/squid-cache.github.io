@@ -4,7 +4,7 @@
 
 = Feature: HTTP/1.1 support =
  * '''Goal''': HTTP/1.1 (RFC 2616) compliance
- * '''Status''': 70%+ compliant. Being worked on very, very slowly in various feature advances.
+ * '''Status''': 80% compliant and counting.
  * '''Version''': 3.1, 3.2
 
 <<TableOfContents>>
@@ -22,7 +22,7 @@ To complete this work is needed in the following areas:
 
 === Checklist ===
 
-Current Squid compliance with RFC 2616 MUST-level requirements: [[attachment:HTTP-1.1-Checklist_2010-04-14.ods]]
+Current Squid compliance with RFC 2616 MUST-level requirements: [[attachment:HTTP-1.1-Checklist_2010-10-01.ods]]
 
 The linked document contains the results of automated Co-Advisor HTTP/1.1 compliance tests for several Squid versions. Each test consists of almost 700 individual test cases, targeting various MUSTs in RFC 2616. For each Squid3 version, we executed several tests. The tests were identical from HTTP point of view. If a given test case showed different results during those tests, the exact test case outcome could not be determined. Such outcomes are marked with a letter 'U'. All other markings correspond to stable results. Some test cases fail due to lack of an HTTP/1.1 feature support in Squid, incompatibility with the test suite, a test suite bug, or other reasons. Such test cases are marked with question marks. The remaining test case outcomes are successes and violations. Only successful outcomes count towards the "test cases passed" percentage.
 
