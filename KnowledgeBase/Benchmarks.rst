@@ -63,6 +63,33 @@ AND it is doing NTLM AUTH against the internal W2k3-ADS-domain
 }}}
 
 == Squid 2.7 ==
+=== STABLE 7 ===
+|| CPU || Intel Xeon 2GHz (dual quad-core) ||
+|| RAM || 16 GB ||
+|| HDD || 4x 136 GB ||
+|| OS  || Linux ||
+|| Users || N/A (Reverse Proxy) ||
+|| RPS || 990 ||
+|| Hit Ratio || Request 93.2%-94.6% , Byte 91.4%-91.9% ||
+|| CPU Usage || 16% ||
+Full Details: http://www.squid-cache.org/mail-archive/squid-users/201002/0838.html
+{{{
+Submitted by: Markus Meyer - 2010-02-25
+
+We have to handle mostly very, very small files which is
+a real pain. So COSS was my white knight to handle this.
+
+Although we don't use CARP we made sure that the proxies always get the
+same requests. We have at our prime time about 40 MBit/s outgoing
+traffic which makes about 1000 requests per second.
+
+Also I should mention that we use a standard Debian kernel with no
+tuning in any kernel parameters except the following two:
+  net.ipv4.tcp_max_syn_backlog = 4096
+  vm.swappiness = 0
+}}}
+
+
 === STABLE 4 ===
 || Dual-Core ||
 || CPU || Core 2 Duo 2.33 GHz ||
