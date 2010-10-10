@@ -262,7 +262,9 @@ contains a lot of good information about hash-based proxy auto-configuration
 scripts.  With these you can distribute the load between a number
 of caching proxies.
 
+== Where can I find more information about PAC? ==
 
+There is a community website explaining PAC features and functions at http://findproxyforurl.com/.
 
 == How do I tell Squid to use a specific username for FTP urls? ==
 
