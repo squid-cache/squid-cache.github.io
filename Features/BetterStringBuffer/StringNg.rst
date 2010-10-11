@@ -43,16 +43,18 @@ Thread safety is currently out of scope.
 === Prototype ===
 Currently being carried out as a feature-branch of HEAD at [[https://code.launchpad.net/~kinkie/squid/|lp:~kinkie/squid/stringng]]. A few users have been converted as well, starting with the replacement of !SquidString.
 
+== Merge Strategy ==
+ 1. merge !MemBlob and related classes
+ 1. merge SBuf and related classes (exceptions)
+ 1. merge !SBufTokenizer
+ 1. merge !SBufList
+ 1. merge users
+
+
 === Step-by-step diagram of MemBuf-emulation functionalities ===
 || /!\ || Note: this diagram is out-of-date. SBufs no longer point to a char* inside the SBufStore address space, but carry an {offset,length} relative to the head of the SBufStore. ||
 {{attachment:KBuf-work-diagram.png}}
 
-== Merge Strategy ==
-1. merge !MemBlob and related classes
-1. merge SBuf and related classes (exceptions)
-1. merge !SBufTokenizer
-1. merge !SBufList
-1. merge users
 
 == Dead code repository ==
 [[attachment:sbuf-mempool-failed-integration.patch]] contains an attempt at mempool integration.
