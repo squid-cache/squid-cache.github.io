@@ -62,6 +62,23 @@ AND it is doing web-content filtering with SquidGuard 1.3
 AND it is doing NTLM AUTH against the internal W2k3-ADS-domain
 }}}
 
+== Unknown Release ==
+
+|| CPU ||  Intel Xeon 4x 2.8GHz ||
+|| RAM || 12 GB ||
+|| HDD || ||
+|| OS  || ||
+|| Users || ||
+|| RPS || 1500-2500 ||
+|| Hit Ratio || ||
+|| CPU Usage || ||
+
+{{{
+Submitted by: Krzysztof Dajka. 2010-05-24
+
+Running squid3.0 on Dell R300 servers. On production servers getting max 1500hits/s. With 2500hits/s I have seen that some in access.log, in elapsed column that some requests were closed after 6 seconds and average was something like ~300ms.
+}}}
+
 == Squid 2.7 ==
 === STABLE 7 ===
 || CPU || Intel Xeon 2GHz (dual quad-core) ||
