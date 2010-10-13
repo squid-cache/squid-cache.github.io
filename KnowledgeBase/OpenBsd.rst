@@ -4,7 +4,7 @@
 #format wiki
 #language en
 
-= Squid on OpenBSD=
+= Squid on OpenBSD =
 
 <<TableOfContents>>
 
