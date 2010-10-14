@@ -47,6 +47,7 @@ Key:
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* *log.cc ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
+|| :\ || ''mgr/'' || Cache Manager || CacheManager.h, cache_manager.cc || Move CacheManager.h, cache_manager.cc, and test cases to mgr/ ||
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
 ||  || ''shaping/'' || Traffic shaping and delay pools || *[Dd]elay.* *[Pp]ool*.* ||
 ||  || ''store/'' || generic (fs-agnostic) disk and memory cache support? || Store* store* ||
