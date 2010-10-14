@@ -45,6 +45,7 @@ Key:
 || :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.* || C++ convert net_db*, Add Icmp namespace and rename classes ||
 || :\ || ''ident/'' || Ident support || ident.* || Make remote connection handling into an !AsyncJob||
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
+|| :\ || ''ipc/'' || inter-process communication || ipc.* ipc_win32.* || Move files, add Icp namespace to them, and adjust global names ||
 || {2} || ''logs/'' || Logging components || Log* access_log.* *log.cc ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 || :\ || ''mgr/'' || Cache Manager || CacheManager.h, cache_manager.cc || Move CacheManager.h, cache_manager.cc, and test cases to mgr/ ||
