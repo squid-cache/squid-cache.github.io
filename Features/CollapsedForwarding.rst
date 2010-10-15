@@ -16,7 +16,7 @@
 
  * '''Developer''': HenrikNordstrom.
 
- * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=1614
+ * '''More''': http://bugs.squid-cache.org/show_bug.cgi?id=1614
 
 <<TableOfContents>>
 
