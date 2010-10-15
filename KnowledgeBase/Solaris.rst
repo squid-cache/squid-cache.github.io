@@ -110,6 +110,17 @@ And then you go on building the usual way :)
 
 == Troubleshooting ==
 
+=== 64-bit Solaris 9 with Squid 3.1 suddenly thinks local IP is :: or zero ===
+When compiled 64-bit the {{%>a}}} and {{{%>p}}} SquidConf:logformat directives log '''::''' and '''0''' respectively, and the DNS source filter starts rejecting DNS responses as it thinks their src IP is '''::'''.
+
+ {i} This happens because Solaris 9 wrongly defined part of the universal IP address information structure '''struct addrinfo'''. We rely on this part for receiving remote IPs.
+
+Fixes for this problem include:
+ * Changing to Solaris 10
+ * Using a 32-bit operating system build of Solaris 9
+
+Reference: http://bugs.squid-cache.org/show_bug.cgi?id=3057
+
 === Your cache is running out of filedescriptors ===
 Solaris 9 and 10 support "unlimited" number of open files without patching. But you still need to take some actions as the kernel defaults to only allow processes to use up to 256 with a cap of 1024 filedescriptors, and Squid picks up the limit at build time.
 
