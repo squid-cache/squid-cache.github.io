@@ -68,4 +68,4 @@ It's also useful to profile the connection and request limits. Here are some too
 
  * [[http://www.web-polygraph.org/|WebPolygraph]]
  * [[http://httpd.apache.org/docs/current/programs/ab.html|ApacheBench]]
- * [[http://sourceforge.net/projects/spizd/|SPITZD]]
+ * [[http://sourceforge.net/projects/spizd/|SPIZD]]
