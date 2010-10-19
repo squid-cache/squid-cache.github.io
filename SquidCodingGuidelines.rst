@@ -1,11 +1,15 @@
 #language en
 
+<<TableOfContents>>
+
  {i} details labeled ENFORCED are checked and forced by source testing mechanisms.
 
-== C++ source formatting guidelines ==
+= C++ Guidelines =
+
+== Source formatting guidelines ==
 
  * We have an ''astyle'' wrapper that formats the code without breaking it.
- * If you have astyle version 1.22 or later please format your changes with ~/scripts/formater.pl
+ * If you have astyle version 1.23 please format your changes with ~/scripts/formater.pl
  * This formatter is run regularly over the entire code to enforce certain checkable guidelines.
 
 ENFORCED:
@@ -138,37 +142,11 @@ The verb ''is'' may be omitted, especially if the result cannot be confused with
       bool empty() const; // XXX: may look like a "become empty" command
 }}}
 
-== Component Macros ==
-
-Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
-
- * name should start with USE_
- * should be tested with #if and #if !  rather than #ifdef or #ifndef
- * should be wrapped around all code related solely to a component; including compiler directives and #include statements
-
-ENFORCED:
- * MUST be used inside .h to wrap relevant code.
-
-== Makefile substitution variables ==
-
-ENFORCED:
- * Makefile.am must use the $(FOO) form for autoconf variables passed with AC_SUBST(FOO).
-
-== File naming ==
-
-  * .h files should only declare one class or a collection of simple, closely related classes.
-  * No two file names that differ only in capitalization
-  * For new group of files, follow [[Features/SourceLayout]]
-
-ENFORCED:
-
-  * .h files MUST be parseable as a single translation unit <<BR>> (ie it includes it's dependent headers / forward declares classes as needed).
-
 == File #include guidelines ==
 
 '''.cc'''
   * include either config.h or squid.h as their first include
-   * config.h - minimal dependency include
+   * config.h - minimal dependency include. Intended for use outside of src/. This contains very little beyond the portability requirements.
    * squid.h - full squid dependency tree include (globals, protos, types, defines, everything is in here)
 
 '''.h''' and '''.cci'''
@@ -194,13 +172,97 @@ Preferred include layout:
 #include "local.h"
 
 // System includes alphabetically sorted
-#ifdef HAVE_ACCESS_H
+#if HAVE_ACCESS_H
 #include <access.h>
 #endif
-#ifdef HAVE_STDLIB_H
+#if HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
 
+}}}
+
+= Component Macros in C++ =
+
+Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
+
+ * name in C++ code should start with USE_
+ * should be tested with #if and #if !  rather than #ifdef or #ifndef
+ * should be wrapped around all code related solely to a component; including compiler directives and #include statements
+
+ENFORCED:
+ * MUST be used inside .h to wrap relevant code.
+
+
+= Automake Syntax Guidelines =
+
+== Makefile substitution variables ==
+
+ENFORCED:
+ * Makefile.am must use the $(DEFAULT_FOO) form for autoconf variables passed with AC_SUBST(DEFAULT_FOO).
+
+=== File naming ===
+
+  * .h files should only declare one class or a collection of simple, closely related classes.
+  * No two file names that differ only in capitalization
+  * For new group of files, follow [[Features/SourceLayout]]
+
+ENFORCED:
+
+  * .h files MUST be parseable as a single translation unit <<BR>> (ie it includes it's dependent headers / forward declares classes as needed).
+
+= Component Macros in Automake =
+
+Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
+
+ * name for variables passed to automake code should start with ENABLE_
+
+Example usage:
+{{{
+if ENABLE_FOO
+FOO_SRC=foo.h foo.cc
+FOO_LIBS=foo.la
+else
+FOO_SRC=
+FOO_LIBS=
+endif
+
+squid_SOURCES= $(FOO_SRC) ...
+LDADD = $(FOO_LIBS)
+}}}
+
+= Autoconf Syntax Guidelines =
+
+The current standard for both '''--enable''' and '''--with''' flags is:
+ * '''yes''' means force-enable, fail the build if not possible.
+ * '''no''' means force-disable,
+ * '''auto''' means try to enable, disable if some required part is not available.
+
+For '''--with''' flags, everything else is usually considered as a path to be used. Though in some cases is a global constant.
+
+For '''--enable''' flags, may contain a list of the components modular pieces to be enabled. In which case:
+ * being listed means force-enable
+ * being omitted means force-disable
+
+
+= Component Macros in Autoconf =
+
+Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
+
+ * name for variables passed to automake code should start with ENABLE_
+ * name for build/no-build variables passed to C++ code should start with USE_
+ * name for variables passed to either automake or C++ containing default values should start with DEFAULT_
+
+ /!\ In the event of a clash or potential clash with system variables tack SQUID_ after the above prefix. ie ENABLE_SQUID_ or USE_SQUID_
+
+{{{
+# For --enable-foo / --disable-foo
+
+AC_CONDITIONAL([ENABLE_FOO],[test "x${enable_foo:=yes}" = "xyes"])
+
+SQUID_DEFINE_BOOL(USE_FOO,${enable_foo:=no},[Whether to enable foo.])
+
+DEFAULT_FOO_MAGIC="magic"
+AC_SUBST(DEFAULT_FOO_MAGIC)
 }}}
 
 == C source guidelines ==
