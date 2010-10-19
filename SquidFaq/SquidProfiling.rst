@@ -37,8 +37,8 @@ Squid will start suffering if you run out of any of your server resources. There
  * You just plain run out of CPU. This is where all of your resources are low save your kernel and user CPU usage. This may be because you're still using poll() or select() for your network IO which just don't scale under modern loads.
  * Some crappy hardware (such as slow IDE disks and really cheap network cards) aren't that great at shoveling data around and require a lot of hand-holding by the CPU. If you see your interrupt/IOWAIT times up then it might be due to your hardware choices. I've seen this sort of thing happen with desktop-grade hardware pretending to be a server - eg the Sun "Desktop" hardware running Linux and using SATA disks. Lots of disk IO == Lots of time spent in IOWAIT.
  * Some hardware allows you to "tune" how much overhead it imposes on the system. Gigabit network cards are a good example of this. You trade off a few ms of latency versus a high interrupt load, but this doesn't matter on a server which is constantly handling packets. Take a look at your hardware documentation and see whats available.
- * Linux servers spending a lot of time in IOWAIT can also be because you're overloading your disks with IO. See what your disk IO looks like in vmstat. You could look at moving to the aufs/diskd cache_dir if you're using UFS. COSS also can drastically drop IOWAIT times under heavy disk loads.
- * You're swapping! This happens quite often when people wind up cache_mem and don't watch how much RAM Squid is actually using. Watch the output of "vmstat" and see how much free memory is available. If you see your server paging memory in and out of disk then you're in trouble. Either decrease cache_mem or add more physical RAM.
+ * Linux servers spending a lot of time in IOWAIT can also be because you're overloading your disks with IO. See what your disk IO looks like in vmstat. You could look at moving to the aufs/diskd SquidConf:cache_dir if you're using UFS. COSS also can drastically drop IOWAIT times under heavy disk loads.
+ * You're swapping! This happens quite often when people wind up SquidConf:cache_mem and don't watch how much RAM Squid is actually using. Watch the output of "vmstat" and see how much free memory is available. If you see your server paging memory in and out of disk then you're in trouble. Either decrease SquidConf:cache_mem or add more physical RAM.
 
 ==== How can I see what Squid is actually doing? ====
 
@@ -61,3 +61,11 @@ Here's how I use oprofile:
 Just remember:
  * Make sure you've got the debugging libraries and library symbols installed - under Ubuntu thats 'libc6-dbg'.
  * Don't try using it under timer interrupt mode, it'll suffer similar accuracy issues to gprof and other timer-based profilers.
+
+== Load Testing Tools ==
+
+It's also useful to profile the connection and request limits. Here are some tools for testing behaviour at various request and connection loads.
+
+ * [[http://www.web-polygraph.org/|WebPolygraph]]
+ * [[http://httpd.apache.org/docs/current/programs/ab.html|ApacheBench]]
+ * [[http://sourceforge.net/projects/spizd/|SPITZD]]
