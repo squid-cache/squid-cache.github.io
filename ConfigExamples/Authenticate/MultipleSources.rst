@@ -26,12 +26,12 @@ ip-address along with the authentication information.  However, I'd
 like to do it cleanly without modifying squid.
 
 I created a custom authenticator that always returns "OK" and linked it 
-to the external acl.
+to the external acl. {i} Squid-3.2 bundles one called '''basic_fake_auth'''
 
 == Squid Configuration ==
 
 {{{
-auth_param basic program /usr/local/bin/my-auth.pl
+auth_param basic program /usr/local/bin/basic_fake_auth
 
 external_acl_type myAclType %SRC %LOGIN %{Proxy-Authorization} /usr/local/bin/my-acl.pl
 
@@ -42,17 +42,6 @@ http_access allow MyAcl
 
  * {i} myAclType's dependence on '''%LOGIN''' is required for triggering authentication and, thus, setting '''%{Proxy-Authorization}'''.
 
-
-=== my-auth.pl ===
-{{{
-#!/usr/bin/perl -Wl
-
-$|=1;
-
-while (<>) {
-        print "OK\n";
-}
-}}}
 
 === my-acl.pl ===
 {{{
