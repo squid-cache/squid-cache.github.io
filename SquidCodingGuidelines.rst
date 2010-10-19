@@ -181,7 +181,7 @@ Preferred include layout:
 
 }}}
 
-= Component Macros in C++ =
+== Component Macros in C++ ==
 
 Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
 
@@ -200,7 +200,7 @@ ENFORCED:
 ENFORCED:
  * Makefile.am must use the $(DEFAULT_FOO) form for autoconf variables passed with AC_SUBST(DEFAULT_FOO).
 
-=== File naming ===
+== File naming ==
 
   * .h files should only declare one class or a collection of simple, closely related classes.
   * No two file names that differ only in capitalization
@@ -210,7 +210,7 @@ ENFORCED:
 
   * .h files MUST be parseable as a single translation unit <<BR>> (ie it includes it's dependent headers / forward declares classes as needed).
 
-= Component Macros in Automake =
+== Component Macros in Automake ==
 
 Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
 
@@ -244,7 +244,7 @@ For '''--enable''' flags, may contain a list of the components modular pieces to
  * being omitted means force-disable
 
 
-= Component Macros in Autoconf =
+== Component Macros in Autoconf ==
 
 Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
 
@@ -265,5 +265,9 @@ DEFAULT_FOO_MAGIC="magic"
 AC_SUBST(DEFAULT_FOO_MAGIC)
 }}}
 
-== C source guidelines ==
+= C source guidelines =
+
+The only remaining C sources are in third-party code. Follow their standard from surrounding code.
+  /!\ Remember to update the third-party changelog.
+
 As per Squid2CodingGuidelines.
