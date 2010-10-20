@@ -243,6 +243,8 @@ For '''--enable''' flags, may contain a list of the components modular pieces to
  * being listed means force-enable
  * being omitted means force-disable
 
+For further details on autoconf macros and conventions, also see [[Features/ConfigureInRefactoring]]
+
 
 == Component Macros in Autoconf ==
 
