@@ -4,6 +4,7 @@
 In order to clean up the quality of code entering Squid, the core developers have arranged these simple requirements and procedure for submissions.
 
 <<TableOfContents>>
+ * Back to DeveloperResources.
 
 === Pre-Code ===
 Before spending time coding, its best to discover whether or not the code is needed or useful.
@@ -22,7 +23,7 @@ Squid-2 and Squid-3 use different coding styles.
 '''Squid-3''':
  * Squid3CodingGuidelines lists the fine details of syntax required.
  * Formatting is presently enforced automatically post-commit.
-## * Self-checks may be done using '''astyle 1.22''' and the '''scripts/srcformat.sh''' script.
+  * Self-checks may be done using the '''scripts/source-maintenance.sh''' script (requires '''astyle 1.23''' for full checks).
 
 '''Squid-2''':
 
@@ -42,13 +43,13 @@ Submissions are emailed to squid-dev for merging, one submission per post. The s
 
  1. If applicable, check that you have added the feature sponsor to the SPONSORS file.
 
- 1. Bring your development branch up to date as described in: [[http://wiki.squid-cache.org/Squid3VCS#head-9006c046b5c83dde25ebaaf96152eac43964b556|Squid3VCS]]
+ 1. Bring your development branch up to date as described in: [[Squid3VCS#bring_a_branch_up_to_date_with_it.27s_ancestor|Squid3VCS]]
 
  1. Run a full build test: '''./test-builds.sh'''.
 
  1. Fix ALL issues with your code uncovered by that testing. If you are certain a problem is with the trunk code, discuss it on squid-dev.
 
- 1. When your code passes testing, [[http://wiki.squid-cache.org/Squid3VCS#head-15b44894cf04d464f2392ebcd20bce9f514f3657|Submit a merge bundle]] or patch for auditing. see above.
+ 1. When your code passes testing, [[Squid3VCS#Submit_a_patch_for_inclusion_in_the_main_tree_or_discussion|Submit a merge bundle]] or patch for auditing. see above.
 
  1. Read reviews and address feedback, if any. This step may require re-coding and resubmitting your work or defending your choices until your submission is accepted (i.e., gets a passing vote, see below).
 
@@ -85,7 +86,7 @@ Please try to not commit unfinished stuff needing more work to actually work the
 
 If a follow up change (bugfix etc) is committed related to an earlier change please refer to the subject (first line) of the previous change in the commit message.
 
-If you suspect that there will be a series of incremental commits relating to a specific feature or reorganisation then make the subject line easy to connect together by starting the title line with a short featurename:  (i.e. "rproxy: header fixes")
+If you suspect that there will be a series of incremental commits relating to a specific feature or reorganization then make the subject line easy to connect together by starting the title line with a short feature name:  (i.e. "rproxy: header fixes")
 
 Add to the above the parts of the Squid-3 procedure you think makes sense. Use of common sense is the main rule of conduct.
 
