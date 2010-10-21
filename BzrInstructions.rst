@@ -1,10 +1,12 @@
 <<TableOfContents>>
 
+ Back to DeveloperResources
+
 = Overview =
 For squid 3.x we are migrating the development trunk and web code browsers to [[http://bazaar-vcs.org/|Bazaar]].
 
 = Bazaar =
-Bazaar is a distributed VCS written in python. It offers both drop-in CVS replacement workflow (use checkouts to work on code), and full distributed workflow (every copy is a new branch), up to the user to work as they want.
+Bazaar is a distributed VCS written in python. It offers both drop-in CVS replacement work flow (use checkouts to work on code), and full distributed work flow (every copy is a new branch), up to the user to work as they want.
 
 = Installation =
 Bazaar is available in most O/S's these days: http://bazaar-vcs.org/Download.
@@ -31,23 +33,18 @@ http://bzr.squid-cache.org/bzr/squid3/trunk
 }}}
 Also mirrors are available at:
 
- * https://code.launchpad.net/~squid/squid/squid3-trunk
+ * https://code.launchpad.net/~squid/squid/3-trunk
+ * https://code.launchpad.net/~squid/squid/3.2
  * https://code.launchpad.net/~squid/squid/3.1
- * https://code.launchpad.net/~squid/squid/SQUID_3_0
- * Other developer code branches: https://code.launchpad.net/squid/
+ * https://code.launchpad.net/~squid/squid/3.0
+ * Other developer code branches: https://code.launchpad.net/squid
 
 = Web view =
-Web view:
-||3.1 ||http://bzr.squid-cache.org/bzrview/squid3/SQUID_3_1 ||
-||3.0 ||http://bzr.squid-cache.org/bzrview/squid3/SQUID_3_0 ||
 
-
-
-
-RSS feed:
-
- * http://bzr.squid-cache.org/bzrview//squid3/SQUID_3_1/atom
- * http://bzr.squid-cache.org/bzrview//squid3/SQUID_3_0/atom
+ * http://bazaar.launchpad.net/~squid/squid/3-trunk/files
+ * http://bazaar.launchpad.net/~squid/squid/3.2/files
+ * http://bazaar.launchpad.net/~squid/squid/3.1/files
+ * http://bazaar.launchpad.net/~squid/squid/3.0/files
 
 = Recipes =
 == Let bzr know who you are ==
@@ -74,18 +71,19 @@ This enables bzr commit --fixes squid:<bugnumber> to mark bugs as fixed
 == Setup a mirror/development environment ==
 The following sections will describe how to set up your local repository for Squid development. Two options are shown, differing in where the local repository is:
 
-plain: The bazaar repostitory is in the root of your Squid source tree.
+ plain method :: The bazaar repository is in the root of your Squid source tree.
 
-cbranch: The local bazaar repository is somewhere else in your filesystem, separate from where you do development. Easier to back up and branches are persistent in the repository even if you should happen to delete a whole source tree intentionally or by accident. Which means you can easily recover a branch after you have deleted the source tree.
+ cbranch method :: The local bazaar repository is somewhere else in your filesystem, separate from where you do development. Easier to back up and branches are persistent in the repository even if you should happen to delete a whole source tree intentionally or by accident. Which means you can easily recover a branch after you have deleted the source tree.
 
 == Create local repository ==
-Plain method
 
+ plain method::
 {{{
 cd source
 bzr init-repo --1.14 squid
 }}}
-cbranch method
+
+ cbranch method::
 
 {{{
 # create a local repository to store branches in
@@ -102,9 +100,9 @@ public_branch = http://bzr.squid-cache.org/bzr/squid3/trunk/
 EOF
 }}}
 == Checkout an existing branch ==
-After your setup is done its time to checkout the first branch you are  going to work on directly, or create a child branch for. In most cases  this will be the '''trunk''' branch.
+After your setup is done its time to checkout the first branch you are going to work on directly, or create a child branch for. In most cases this will be the '''trunk''' branch.
 
-plain method
+ plain method::
 
 {{{
 cd source/squid
@@ -113,7 +111,8 @@ bzr branch --bind bzr+ssh://bzr.squid-cache.org/bzr/squid3/trunk
 # Anonymous access:
 bzr branch --bind http://bzr.squid-cache.org/bzr/squid3/trunk
 }}}
-cbranch method:
+
+ cbranch method::
 
 {{{
 cd ~/source/squid
@@ -132,13 +131,14 @@ First follow the instructions above to setup a development environment
 
 Now, in the below example, replace SOURCE with the branch you want your new branch based on, and NAME with the name you want your new branch to have in the following:
 
-plain method:
+ plain method::
 
 {{{
 cd ~/source/squid
 bzr branch trunk NAME
 }}}
-cbranch method:
+
+ cbranch method::
 
 {{{
 cd ~/source/squid
@@ -312,10 +312,10 @@ bzr help revisionspec
 == Helper scripts ==
 While bzr provides simple operation access. So did CVS in most cases. The problem is, mistakes are easier too. We need to provide some recipes as easy to use scripts.
 
+ * cleaning up a branch or patch for auditing
+  * '''./scripts/source-maintenance.sh'''
  * testing a branch before submission
   * '''./test-builds.sh''' in squid source. Runs configure and build permutation tests.
- * cleaning up a branch or patch for auditing
-  * '''./scripts/srcformat.sh''' *** provided you have the right astyle version not to alter '''all''' the code.
 
 ## Not needed... bzr does these very nicely itself.
 ## * submitting a patch for consideration
