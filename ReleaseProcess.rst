@@ -4,6 +4,7 @@
 
 = Release Types =
 <<TableOfContents>>
+ * Back to DeveloperResources.
 
 == Stable Release ==
 
@@ -29,8 +30,7 @@ AmosJeffries makes a new Stable release for Squid-3 at soonest available time af
 
 == Beta Release / Candidate Release ==
 
-Meant for people who want to test the next release before it is ready for production
-use.These releases are suitable for making upgrade plans and similar activities. We do not recommend running a beta release in sensitive production environments.
+Meant for people who want to test the next release before it is completely problem-free. These releases are suitable for making upgrade plans and similar activities. We do recommend running some good testing before use in any production environments.
 
 Releases begin when all features intended for a release are merged into the code. Some polishing may follow during testing. But generally speaking the controls and interface is expected not to change.
 
@@ -40,13 +40,9 @@ Releases begin when all features intended for a release are merged into the code
 
 HenrikNordstrom Beta release practices for Squid-2 yet to be documented.
 
-AmosJeffries makes a Beta release for Squid-3 at soonest available time after one of the following conditions are met since the previous release:
-
- * At least one new critical, or blocker bug is fixed.
-  * or, ~10 or more less important bugs have been fixed.
-  * or, 1000 lines or more have been changed in the code.
- * 8-16 weeks have passed and changes have been made to the code.
-  * {i} exceptions are made for security vulnerabilities or similar serious bugs.
+AmosJeffries makes a Beta release for Squid-3 monthly at or shortly after the end of each month. Out of cycle release are made to:
+ * fix security vulnerabilities or similar serious bugs
+ * delay a cycle release if there is a known critical problem
 
 == Development Release ==
 
@@ -60,7 +56,7 @@ We do not recommend running a development release on your production cache.
 
 Development releases are made automatically on a daily basis.
 
-Squid-3 releases are made after running build tests. The packaged code is now expected to '''always''' build cleanly. If you find an error in this please report it.
+Squid-3 releases are made after running build tests. The packaged code is expected to '''always''' build cleanly. If you find an error in this please report it. Our BuildFarm cacthes a lot of problems, but still is missing some operating systems and compilers.
 
 
 = General Release Process Guidelines =
