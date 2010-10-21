@@ -71,18 +71,24 @@ Additions are limited to:
  * Stability fixes
  * Bug fixes
 
+Exceptions have been made for the following projects (and why):
+ * StringNG - performance boost
+ * SMP shared cache - resource usage reduction
+ * CommCleanup - fixes regression: connectivity issues on MacOSX and OpenBSD
+
 Features Ported from 2.7 in this release:
 
- * Unique Sequence numbering for access.log lines.
+ * Unique Sequence numbering for access.log lines
  * [[Features/LogDaemon]]
+ * Solaris /dev/poll support
 
 Basic new features in 3.2:
 
  * Fully transparent credential pass-thru to SquidConf:cache_peer
  * Kerberos login to SquidConf:cache_peer
  * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
- * New helpers to demo SquidConf:url_rewrite_program programs.
- * Helpers started on-demand instead of delaying startup and reconfigure process.
+ * New helpers to demo SquidConf:url_rewrite_program programs
+ * Helpers started on-demand instead of delaying startup and reconfigure process
  * EUI (MAC address) logging and external ACL handling
  * Dynamic URL generation for SquidConf:deny_info redirects
  * Multi-Lingual FTP directory listings
