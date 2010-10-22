@@ -28,12 +28,16 @@ WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. 
  ||libcap 2.09 or later ||any ||
 
 
- {X} Kernel 2.6.32 is known to have a TPROXY problem. Until those are resolved, please use 2.6.30 or 2.6.31 for production machines, they seem to work properly. {i} NP: the links above are an arbitrary sample from the expected working versions, and may be old in some cases. The web directories where the files sit allow you to browse to newer versions if you like. {i} '''libcap2''' is needed at run time. To build you need the developer versions (*-dev) to compile with Squid.
+ * {X} Kernel 2.6.32 is known to have a TPROXY problem. Until those are resolved, please use 2.6.30 or 2.6.31 for production machines, they seem to work properly.
+
+ * {i} NP: the links above are an arbitrary sample from the expected working versions, and may be old in some cases. The web directories where the files sit allow you to browse to newer versions if you like.
+
+ * {i} '''libcap2''' is needed at run time. To build you need the developer versions (*-dev) to compile with Squid.
 
 === IPv6 Support ===
-There is now some support available from Balabit for patched kernels and iptables to perform TPROXY with IPv6 protocol.
+There is now some support scheduled to be available with kernel 2.6.37-rc1 to perform TPROXY with IPv6 protocol.
 
-[[Squid-3.2]] (HEAD) has been adjusted to use IPv6 on SquidConf:http_port set with the '''tproxy''' option when kernel support is available.
+[[Squid-3.2]] has been adjusted to auto-detect this and allow IPv6 on SquidConf:http_port set with the '''tproxy''' option when kernel support is available.
 
 == Squid Configuration ==
 Configure build options
