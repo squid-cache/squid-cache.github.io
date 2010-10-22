@@ -58,7 +58,7 @@ Basic new features in 3.1:
 Packages of squid 3.1 source code are available at
 http://www.squid-cache.org/Versions/v3/3.1/
 
- * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
 
 = Squid 3.2 =
 
@@ -104,7 +104,7 @@ Basic new features in 3.2:
 Packages of squid 3.2 source code are available at
 http://www.squid-cache.org/Versions/v3/3.2/
 
- * [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
 
 
 = Squid 3.3 (3.HEAD) =
@@ -144,7 +144,7 @@ Features considered high-priority for including, but not yet with a dedicated de
 (Priority 1)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*1")>>
  * Store URL re-write port from 2.7
- * monitor* port from 2.6. http://www.squid-cache.org/bugs/show_bug.cgi?id=2185
+ * monitor* port from 2.6. Bug:2185
 (Priority 2)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*2")>>
  * Variant Invalidation
