@@ -6,7 +6,7 @@
 = Feature: ACL type "Random" =
 
  * '''Goal''': Implement an ACL type which would match randomly with a given probability.
- * '''Status''': complete.
+ * '''Status''': done
  * '''Version''': 3.2
  * '''Developer''': AmosJeffries
  * '''More''': Bug Bug:1239
