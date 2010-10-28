@@ -1,12 +1,13 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
+##faqlisted yes
 
 = Feature: Gzip compression / decompression in Squid =
 
  * '''Goal''': To make Squid capable of compressing or decompressing objects in transit.
 
- * '''Status''': completed. eCAP module available.
+ * '''Status''': done via an eCAP module
 
  * '''Version''': 3.1
 
