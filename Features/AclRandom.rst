@@ -1,12 +1,12 @@
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
-#faqlisted no
+#faqlisted yes
 
 = Feature: ACL type "Random" =
 
  * '''Goal''': Implement an ACL type which would match randomly with a given probability.
- * '''Status''': done
+ * '''Status''': complete
  * '''Version''': 3.2
  * '''Developer''': AmosJeffries
  * '''More''': Bug Bug:1239
