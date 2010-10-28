@@ -9,7 +9,7 @@
 
  * '''Goal''': configure.in has grown in time into a big messy bundle, making it very hard to act on it in a sensible manner. It needs to be reduced to something sane again.
 
- * '''Status''': ''Complete''
+ * '''Status''': done
 
  * '''Version''': 3.2
 
