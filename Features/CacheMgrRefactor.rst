@@ -5,7 +5,7 @@
 
  * '''Goal''': complete the migration of the Cache Manager to c++
 
- * '''Status''': completed
+ * '''Status''': done
 
  * '''ETA''': July 2008
 
