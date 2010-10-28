@@ -1,6 +1,7 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
+##faqlisted yes
 
 = Feature: Source Code Testing =
 
@@ -8,11 +9,11 @@
 
  * '''Status''': Stage 1-3 completed, Stage 4 being tested.
 
- * '''ETA''': underway.
+ * '''ETA''': done
 
  * '''Version''': 3.1
 
- * '''Developer''': AmosJeffries, AlexRousskov, everyone
+ * '''Developer''': AmosJeffries, AlexRousskov, FrancescoChemolli, everyone
 
 == Details ==
 
