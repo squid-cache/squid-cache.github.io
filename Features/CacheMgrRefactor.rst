@@ -1,12 +1,12 @@
 #format wiki
 #language en
-##faqlisted yes
+##faqlisted no
 
 = Feature: Cache Manager Refactoring =
 
  * '''Goal''': complete the migration of the Cache Manager to c++
 
- * '''Status''': done
+ * '''Status''': complete
 
  * '''ETA''': July 2008
 
