@@ -5,7 +5,7 @@
 = Feature: Adaptation logging =
 
  * '''Goal''': Log ICAP and eCAP transaction details
- * '''Status''': completed. Merged with 3.1
+ * '''Status''': done. Merged with 3.1
  * '''Version''': 3.1
  * '''Developer''': AlexRousskov, Christos Tsantilas
  * '''More''': [[https://code.launchpad.net/~rousskov/squid/3p0-plus|v3.0 branch]]
