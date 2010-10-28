@@ -6,7 +6,7 @@
 
  * '''Goal''': Allow Squid to use custom helpers to hijack and redirect web requests on demand to another location.
 
- * '''Status''': Done.
+ * '''Status''': completed
 
  * '''Version''': Squid 2.5+
 
