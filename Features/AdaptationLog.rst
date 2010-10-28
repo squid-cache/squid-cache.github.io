@@ -1,6 +1,7 @@
 ##master-page:FeatureTemplate
 #format wiki
 #language en
+##faqlisted yes
 
 = Feature: Adaptation logging =
 
