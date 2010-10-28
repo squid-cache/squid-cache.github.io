@@ -3,7 +3,7 @@
 #language en
 ##
 ## Change to 'yes' for a listing under Features in the Squid FAQ.
-#faqlisted no
+#faqlisted yes
 
 = Feature: Refactor configure.in =
 
