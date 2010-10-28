@@ -1,13 +1,13 @@
 ##master-page:FeatureTemplate
 #format wiki
 #language en
-##faqlisted yes
+##faqlisted no
 
 = Feature: Native support for asynchronous calls =
 
  * '''Goal''': Simplify code, improve debugging, improve ICAP performance, and prevent crashes from single transaction errors.
  * '''Version''': 3.1
- * '''Status''': done
+ * '''Status''': complete
  * '''Developer''': AlexRousskov
  * '''More''': [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1912|bug1912]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2093|bug2093]], and item 1 in [[http://www.squid-cache.org/mail-archive/squid-dev/200707/0109.html|email109]]
 
