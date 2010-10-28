@@ -1,12 +1,12 @@
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
-#faqlisted no
+#faqlisted yes
 
 = Feature: EDNS support =
 
  * '''Goal''': For DNS efficiency Squid should include an EDNS OPT record (RFC2671) in it's queries enabling large packets (MTU size) over UDP.
- * '''Status''': completed.
+ * '''Status''': done
  * '''Version''': 3.2
  * '''Developer''': AmosJeffries
  * '''More''': Bug:2785
