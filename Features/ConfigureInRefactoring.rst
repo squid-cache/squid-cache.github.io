@@ -3,13 +3,13 @@
 #language en
 ##
 ## Change to 'yes' for a listing under Features in the Squid FAQ.
-#faqlisted yes
+#faqlisted no
 
 = Feature: Refactor configure.in =
 
  * '''Goal''': configure.in has grown in time into a big messy bundle, making it very hard to act on it in a sensible manner. It needs to be reduced to something sane again.
 
- * '''Status''': done
+ * '''Status''': complete
 
  * '''Version''': 3.2
 
