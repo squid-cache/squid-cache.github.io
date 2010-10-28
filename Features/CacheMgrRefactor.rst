@@ -1,5 +1,6 @@
 #format wiki
 #language en
+##faqlisted yes
 
 = Feature: Cache Manager Refactoring =
 
