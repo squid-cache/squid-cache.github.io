@@ -13,7 +13,7 @@ Here is an ''auto-generated'' list of features that have been implemented.
 == Future ==
 Here is an ''auto-generated'' list of features that are not yet completed or started.
 
-A timeline of feature integration is listed on the [[/RoadMap/Squid3|Squid-3 RoadMap]]
+A timeline of feature integration is listed on the [[RoadMap/Squid3|Squid-3 RoadMap]]
 
 ## User-features not yet "completed" and added to the FAQ. and developer-only features.
 <<FullSearchCached(case:title:Features/ category:CategoryFeature -regex:Status.*done -regex:"Status.*Obsolete" -regex:faqlisted.yes)>>
