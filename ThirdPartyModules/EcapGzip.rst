@@ -6,12 +6,12 @@
 
 || Author || ConstantinRack ||
 || Date Added || <<Date(2009-01-07T16:33:54+0100)>> ||
-|| Summary || Adding HTTP compression support to SQUID ||
+|| Summary || compression of text/html misses using HTTP gzip encoding ||
 || Status || Working, but not tested in production ||
 || License || GPL ||
 || Squid Version || 3.1 ||
 || Interface || '''eCAP''' ||
-|| Distribution URL || [[http://www.vigos.com/products/eCAP/]] ||
+|| Distribution URL || [[http://code.google.com/p/squid-ecap-gzip/]] ||
 
 
 
