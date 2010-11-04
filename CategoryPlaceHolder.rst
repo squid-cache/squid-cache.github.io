@@ -7,7 +7,7 @@ The pages belonging to this category are empty placeholder pages, to keep the wi
 
 '''List of pages in this category:'''
 
-<<FullSearch(title:regex:^CategoryPlaceHolder)>>
+<<FullSearch(CategoryPlaceHolder)>>
 
 ----
 CategoryCategory
