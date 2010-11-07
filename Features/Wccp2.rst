@@ -65,7 +65,7 @@ wccp2_service standard 0 password=foo
 
  * [[Squid-3.1]] and later accept text names for the tunneling methods
 {{{
-http_port 3129 transparent
+http_port 3129 intercept
 wccp2_router $IP-OF-ROUTER
 wccp2_forwarding_method gre
 wccp2_return_method gre
