@@ -9,9 +9,9 @@
 
  * '''Status''': Testing. Code available.
 
- * '''ETA''': July 2010
+ * '''ETA''': unknown
 
- * '''Version''': 3.2
+ * '''Version''': 3.3
 
  * '''Priority''': 2
 
@@ -52,7 +52,7 @@ A new COMM_SOCKSBIND flag will be needed to the comm layer calls for the listene
 
 ----
 
-I've had a bit of time too short to do anything much and created a branch that is supposed to do listening port and SOCKS peers. It builds and listens on an SquidConf:http_port as far as I can tell now.
+I've had a bit of time too short to do anything much and created a branch that is supposed to do listening port and SOCKS peers. It builds and listens on an SquidConf:http_port as far as I can tell now. squidclient has also been adapted to use SOCKS socket operations.
 Bazaar Branch available on launchpad at https://code.launchpad.net/~yadi/squid/socks for anyone keen on testing.
 
 Situations:
