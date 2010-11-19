@@ -6,13 +6,9 @@
 
  * '''Goal''': Reduce the number of "certificate mismatch" browser warnings when impersonating a site using the [[Features/SslBump|SslBump]] feature
 
- * '''Status''': v3.1 patch passed preliminary squid-dev review; needs a trunk port
+ * '''Status''': complete
 
- * '''ETA''': July 2010
-
- * '''Version''': v3.2
-
- * '''Priority''': 2
+ * '''Version''': 3.2
 
  * '''Developer''': AlexRousskov, Andrew Balabohin
 
