@@ -6,7 +6,7 @@
 
  * '''Goal''': Approach linear scale in non-disk throughput with the increase of the number of processors or cores.
 
- * '''Status''': In progress.
+ * '''Status''': In progress; ready for deployment in some environments
 
  * '''ETA''': May 2010
 
@@ -14,30 +14,50 @@
 
  * '''Developer''': AlexRousskov
 
- * '''More''': [[https://code.launchpad.net/~rousskov/squid/smp|branch]]
+
+== Current Status ==
+
+[[Squid-3.2]] supports basic SMP scale using SquidConf:workers. Administrators can configure and run one Squid that spawns multiple worker processes to utilize all available CPU cores.
+
+A worker accepts new HTTP requests and handles each accepted request until its completion. Workers can share http_ports but they do not pass transactions to each other. A worker has all capabilities of a single non-SMP Squid, but workers may be configured differently (e.g., serve different http_ports). The cpu_affinity_map option allows to dedicate a CPU core for each worker.
+
+By default, Squid workers share configuration, cache manager statistics, listening ports, and log files. Memory and disk cache sharing as well as SNMP stats sharing are being worked on. Eventually, log daemons, authentication helpers, and other services may be shared as well.
 
 
-SMP scalability can significantly reduce Squid costs and administration complexity in high-performance environments.
+=== Why processes? Aren't threads better? ===
 
-We need to isolate CPU-intensive Squid functionality into mostly independent logical threads, tasks, or jobs, so that each core or CPU can get its thread(s), spreading the overall load. The best architecture to implement this has not been decided yet.
+Several reasons determined the choice of processes versus threads for workers:
 
-The implementation speed will depend on funding available for this project.
+ * Threading Squid code in its current shape would take too long because most of the code is thread-unsafe, including virtually all base classes. Users need SMP scale now and cannot wait for a ground-up rewrite of Squid.
+ * Threads offer faster context switching, but in a typical SMP Squid deployment with each worker bound to a dedicated core, context switching overheads are not that important.
+ * Both processes and threads have synchronization and sharing mechanisms sufficient for an SMP-scalable implementation.
 
-== Architecture ==
+In summary, we used processes instead of threads because they allowed us to deliver similar SMP performance within reasonable time frame. Using threads was deemed not practical.
 
-The project developers have been through a long discussion process and agreed that a multi-layered SMP approach will be the best way to implement SMP within Squid.
 
-=== 1. Top Layer: master instance with multiple children ===
+=== Who decides which worker gets the request? ===
 
-Administrators needing to run Squid on large scale SMP systems are already manually configuring multiple instances of Squid to run in parallel. We feel this is justification to say the approach is feasible. Some work needs to be done to make these configurations far simpler and more automated.
+All workers that share SquidConf:http_port listen on the same IP address and TCP port. The operating system protects the shared listening socket with a lock and decides which worker gets the new HTTP connection waiting to be accepted. Once the incoming connection is accepted by the worker, it stays with the worker.
 
-Current configurations for [[Squid-3.1]] and older:
+A common alternative to the current design is a dedicated process that accepts incoming connections and gives them to one of the worker threads. Such user-level scheduling comes with performance overheads, and we wanted to avoid them in the initial implementation. A dedicated accepting process, perhaps with some additional HTTP-aware scheduling logic may be added later, if needed.
+
+Initial tests of the current implementation show that when workers are bound to dedicated CPU cores, some workers consistently receive less traffic than others. It is not currently clear whether the uneven load is caused by kernel scheduling bias, insufficient load, and/or other factors. We are investigating the causes.
+
+
+=== Older Squids ===
+
+[[Squid-3.1]] and older allow administrators to configure and start multiple isolated Squid instances. This labor-intensive setup allows a crude form of SMP scale in the environments where port and cache sharing are not important. Sample configurations for [[Squid-3.1]] and older are available:
  . [[ConfigExamples/MultiCpuSystem]]
  . [[ConfigExamples/ExtremeCarpFrontend]]
 
-[[Squid-3.2]] contains support for SquidConf:workers. A mixture of features already added and some few new ones has been adapted to result in a Squid where administrators configure and run one instance that spawns multiple worker processes to reach nearly full potential of the available hardware.
 
-Initially these instances share nothing of their running data and storage caches. Over time as the lower layers are developed there may become some interactions between instances for efficient caching and handling.
+== SMP architecture layers ==
+
+After a long discussion, project developers have agreed that different design choices are likely at different Squid architecture layers. This section attempts to document these SMP-relevant layers. However, it is not clear whether there is an agreement regarding many details beyond the basics of the top and bottom layers.
+
+=== 1. Top Layer: workers ===
+
+Multiple Squid worker processes and/or threads. Each worker is responsible for a subset of transactions, with little interaction between workers except for caching. There is a master process or thread for worker coordination.
 
 === 2. Mid Layer: threaded processes ===
 
@@ -59,7 +79,8 @@ Currently existing pathways of processing need to be audited and some may need a
 
 == Progress and Dependencies ==
 
- This constitutes how the Squid-3 maintainer sees the current work flowing towards SMP support. There are likely to be problems and unexpected things encountered at every turn.
+This constitutes how the Squid-3 maintainer sees the current work flowing towards SMP support. There are likely to be problems and unexpected things encountered at every turn,
+starting with the disagreements on this view itself.
 
  http://www.squid-cache.org/Devel/papers/threading-notes.txt while old still contains a good and valid analysis of the SMP problems inside Squid which must be hurdled.
 
