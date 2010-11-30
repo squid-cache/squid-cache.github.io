@@ -48,9 +48,19 @@ In summary, we used processes instead of threads because they allowed us to deli
 
 All workers that share SquidConf:http_port listen on the same IP address and TCP port. The operating system protects the shared listening socket with a lock and decides which worker gets the new HTTP connection waiting to be accepted. Once the incoming connection is accepted by the worker, it stays with the worker.
 
-A common alternative to the current design is a dedicated process that accepts incoming connections and gives them to one of the worker threads. Such user-level scheduling comes with performance overheads, and we wanted to avoid them in the initial implementation. A dedicated accepting process, perhaps with some additional HTTP-aware scheduling logic may be added later, if needed.
+Initial tests of the current implementation show that some workers consistently receive less traffic than others when the total load can be handled by fewer cores. It is not currently clear whether the uneven load is caused by kernel scheduling bias, insufficient load, and/or other factors. We are investigating the causes.
 
-Initial tests of the current implementation show that when workers are bound to dedicated CPU cores, some workers consistently receive less traffic than others. It is not currently clear whether the uneven load is caused by kernel scheduling bias, insufficient load, and/or other factors. We are investigating the causes.
+
+=== Why is there no dedicated process accepting requests? ===
+
+A common alternative to the current design is a dedicated process that accepts incoming connections and gives them to one of the worker threads. We have considered and rejected this approach for the initial implementation for the following reasons:
+
+ * User-level scheduling and connection passing come with performance overheads. We wanted to avoid such overheads in the initial implementation so that Squid v3.2 does not become slower than earlier releases.
+ * Since most users are not expected to treat workers differently, the OS kernel already has all the information necessary to balance the load, including low-level hardware information not available to Squid. Duplicating and/or competing with kernel CPU scheduling algorithms and tuning parameters seemed unwise in this general case.
+ * The accepting process itself may become a bottleneck. We could support multiple accepting processes, but then the user will be facing a complex task of optimizing the number of accepting processes and the number of workers given limited number of CPU cores. Even now, without accepting processes, such optimization is complex. Since each worker is fully capable of accepting connections itself, the added complexity seemed unnecessary in the general case.
+ * If workers are configured differently, they would require either different accepting processes or some sorts of routing maps, complicating configuration and performance optimization.
+
+A dedicated accepting process (with some additional HTTP-aware scheduling logic) may be added later, if needed.
 
 
 === Older Squids ===
