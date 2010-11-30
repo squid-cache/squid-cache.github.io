@@ -21,7 +21,6 @@
 
 A worker accepts new HTTP requests and handles each accepted request until its completion. Workers can share http_ports but they do not pass transactions to each other. A worker has all capabilities of a single non-SMP Squid, but workers may be configured differently (e.g., serve different http_ports). The cpu_affinity_map option allows to dedicate a CPU core for each worker.
 
-By default, Squid workers share configuration, cache manager statistics, listening ports, and log files. Memory and disk cache sharing as well as SNMP stats sharing are being worked on. Eventually, log daemons, authentication helpers, and other services may be shared as well.
 
 === How are workers coordinated? ===
 
@@ -33,6 +32,27 @@ A special Coordinator process starts workers and coordinates their activities wh
  * concatenate and/or aggregate worker statistics for the Cache Manager responses.
 
 Coordinator does not participate in regular transaction handling and does not decide which worker gets to handle the incoming connection or request. The Coordinator process is usually idle.
+
+=== What can workers share? ===
+
+Using Coordinator and common configuration files, Squid workers can receive identical configuration information and synchronize some of their activities. By default, Squid workers share the following:
+
+ * Squid executable,
+ * general configuration,
+ * listening ports,
+ * logs,
+ * cache manager statistics.
+
+Conditional configuration and worker-dependent macros can be used to limit sharing. For example, each worker can be given a dedicated http_port to listen on.
+
+Currently, Squid workers do not share and do not synchronize other resources or services, including:
+
+ * object caches (memory and disk) -- there is an active project to allow such sharing;
+ * DNS caches (ipcache and fqdncache);
+ * SNMP stats -- there is an active project to allow such sharing;
+ * helper processes and daemons.
+
+Currently, all shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads. Future versions will share large volumes of information (e.g., a disk cache) without copying.
 
 
 === Why processes? Aren't threads better? ===
