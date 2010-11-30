@@ -15,7 +15,7 @@
  * '''Developer''': AlexRousskov
 
 
-== Current Status ==
+== Current Status and Architecture ==
 
 [[Squid-3.2]] supports basic SMP scale using SquidConf:workers. Administrators can configure and run one Squid that spawns multiple worker processes to utilize all available CPU cores.
 
@@ -23,12 +23,14 @@ A worker accepts new HTTP requests and handles each accepted request until its c
 
 By default, Squid workers share configuration, cache manager statistics, listening ports, and log files. Memory and disk cache sharing as well as SNMP stats sharing are being worked on. Eventually, log daemons, authentication helpers, and other services may be shared as well.
 
+=== How are workers coordinated? ===
+
 A special Coordinator process starts workers and coordinates their activities when needed. Here are some of the Coordinator responsibilities:
 
  * restart failed worker processes;
  * allow workers to share listening sockets;
  * broadcasts reconfiguration and shutdown commands to workers;
- * aggregate certain worker statistics for the Cache Manager responses.
+ * concatenate and/or aggregate worker statistics for the Cache Manager responses.
 
 Coordinator does not participate in regular transaction handling and does not decide which worker gets to handle the incoming connection or request. The Coordinator process is usually idle.
 
