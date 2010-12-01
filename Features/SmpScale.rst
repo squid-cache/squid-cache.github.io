@@ -144,20 +144,25 @@ Some other features are aimed at reducing the blocker problems for SMP. Not exac
  * [[Features/ClientSideCleanup]]
  * Forwarding API also needs work, but has no tracker feature yet.
 
-== Thread / Resource Safety ==
 
-All resources shared between calls and clients will need to have appropriate locking mechanisms added.  
+== Sharing of Resources and Services ==
 
-These include, but may not be limited to:
- * hash_link
- * dlink_list
- * ipcache, fqdncache  (or maybe a better merged version)
- * storage (see above)
- * FD / fde handling
- * statistic counters
+To safely share a resource or service among workers, that resource or service must be either rewritten in a sharing-safe way or all its uses must be globally locked. The former is often difficult, and the latter is often inefficient. Moreover, due to numerous inter-dependencies, it is often impossible to rewrite just one given resource/service algorithm (because all underlying code must be sharing-safe) or globally lock it (because that would lead to deadlocks).
+
+Resources and services that are currently isolated but may benefit from sharing include:
+ * ipcache and fqdncache  (may benefit from merging so that only one DNS cache needs to be shared)
+ * caching storage (see above)
+ * statistics (current cache manager implementation shares worker stats from the admin point of view)
  * memory manager
  * configuration objects
- * others?
+
+Low-level components that may need to be rewritten in a sharing-safe way or replaced include:
+ * hash_link
+ * dlink_list
+ * FD / fde handling
+ * memory buffers
+ * String
+ * any function, method, or class with static variables.
 
 One possibility often spoken of is to replace one or more of the low-level components with a public implementation having better thread-safe implementation (usually referring to the linked-list and hash algorithms).  Deep testing will be needed however to check for suitable speedy and efficient versions.
 
