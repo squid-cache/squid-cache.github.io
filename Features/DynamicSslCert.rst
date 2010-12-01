@@ -177,21 +177,15 @@ Now you can start Squid, modify users' browsers settings to use the proxy (if ne
 
 
 
-== Implementation details ==
+== Limitations ==
 
-'''Phase 1''': Generate certificates in the main Squid process, using blocking OpenSSL shell scripts. No certificate caching. Other than performance, the end-user-visible functionality should be complete by the end of this Phase.
+=== No dynamically generated certificates for intercepted connections ===
 
-'''Phase 2''': Support RAM caching of generated certificates. One should be able to judge certificate "hit" performance by the end of Phase 2.
+While [[Features/SslBump|SslBump]] itself works fine in transparent redirection environments (e.g. those using WCCP or iptables), dynamic certificate generation does not: To generate the certificate dynamically, Squid must know the server domain name. That information is not available at the time the HTTPS client TCP connection is intercepted and bumped. Currently, you cannot use dynamic certificate generation feature for transparent connections.
 
-'''Phase 3a''': Support fast generation of certificates using OpenSSL libraries.
+We believe it is technically possible to implement dynamic certificate generation for transparent connections. Doing so requires turning Squid transaction handling steps upside down, so that the secure connection with the server is established ''before'' the secure connection with the client. The implementation will be difficult, but it will allow Squid to get the server name from the server certificate and use that to generate a fake server certificate to give to the client. Quality patches or sponsorships welcomed.
 
-'''Phase 3b''': Move certificate generation to a separate helper process. Use a pool of helpers as necessary.  One should be able to judge certificate "miss" performance by the end of Phase 3.
-
-'''Phase 4''': Support disk caching of generated certificates. The disk cache is maintained by the helper processes generating the certificates.
-
-'''Phase 5''': Sync with current Squid code and release.
-
-The above phases have been completed, and the corresponding Squid v3.1 patch passed a preliminary squid-dev review. We need to port the code to trunk and commit in time for v3.2 branching.
+While this limitation is significant, it does not render the feature useless, of course. Many corporate deployments do not intercept connections but need to generate certificates.
 
 ----
 CategoryFeature
