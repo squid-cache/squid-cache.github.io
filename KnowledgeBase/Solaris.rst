@@ -111,12 +111,13 @@ And then you go on building the usual way :)
 == Troubleshooting ==
 
 === 64-bit Solaris 9 with Squid 3.1 suddenly thinks local IP is :: or zero ===
-When compiled 64-bit the {{%>a}}} and {{{%>p}}} SquidConf:logformat directives log '''::''' and '''0''' respectively, and the DNS source filter starts rejecting DNS responses as it thinks their src IP is '''::'''.
+When compiled 64-bit the {{{ %>a }}} and {{{ %>p }}} SquidConf:logformat directives log '''::''' and '''0''' respectively, and the DNS source filter starts rejecting DNS responses as it thinks their src IP is '''::'''.
 
  {i} This happens because Solaris 9 wrongly defined part of the universal IP address information structure '''struct addrinfo'''. We rely on this part for receiving remote IPs.
 
 Fixes for this problem include:
  * Changing to Solaris 10
+ * Upgrading to a Squid-3.1.9 bug fix snapshot.
  * Using a 32-bit operating system build of Solaris 9
 
 Reference: http://bugs.squid-cache.org/show_bug.cgi?id=3057
