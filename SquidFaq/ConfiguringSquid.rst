@@ -76,12 +76,14 @@ refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
 refresh_pattern .		0	20%	4320
 
 acl manager proto cache_object
-acl localhost src 127.0.0.1/32
-acl to_localhost dst 127.0.0.0/8
+acl localhost src 127.0.0.1/32 ::1
+acl to_localhost dst 127.0.0.0/8 ::1
 
 acl localnet src 10.0.0.0/8	# RFC 1918 possible internal network
 acl localnet src 172.16.0.0/12	# RFC 1918 possible internal network
 acl localnet src 192.168.0.0/16	# RFC 1918 possible internal network
+acl localnet src fc00::/7       # RFC 4193 local private network range
+acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
 
 acl SSL_ports port 443
 acl Safe_ports port 80		# http
