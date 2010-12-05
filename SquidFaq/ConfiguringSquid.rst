@@ -77,7 +77,7 @@ refresh_pattern .		0	20%	4320
 
 acl manager proto cache_object
 acl localhost src 127.0.0.1/32 ::1
-acl to_localhost dst 127.0.0.0/8 ::1
+acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 
 acl localnet src 10.0.0.0/8	# RFC 1918 possible internal network
 acl localnet src 172.16.0.0/12	# RFC 1918 possible internal network
