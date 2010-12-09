@@ -12,7 +12,7 @@
 
  * '''Status''': Started; currently in phase0
 
- * '''ETA''': June 2009
+ * '''ETA''': February 2011
 
  * '''Version''': 3.2
 
@@ -22,47 +22,11 @@
 
  * '''More''':
 
- * '''Related Bugs''':
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=7
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=410
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=424
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=457
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=498
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=537
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=761
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1284
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1581
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1791
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1830
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1926
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1927
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=1944
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2013
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2140
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2155
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2160
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2259
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2313
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2316
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2336
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2359
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2409
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2428
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2472
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2487
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2488
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2532
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2543
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2551
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2558
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2570
-  * http://www.squid-cache.org/bugs/show_bug.cgi?id=2649
+ * '''Related Bugs''': [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|7]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=410|410]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=424|424]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=457|457]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=498|498]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=537|537]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=761|761]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1284|1284]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1581|1581]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1791|1791]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1830|1830]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1926|1926]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1927|1927]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1944|1944]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2013|2013]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2140|2140]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2155|2155]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2160|2160]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2259|2259]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2313|2313]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2316|2316]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2336|2336]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2359|2359]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2409|2409]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2428|2428]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2472|2472]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2487|2487]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2488|2488]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2532|2532]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2543|2543]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2551|2551]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2558|2558]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2570|2570]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2649|2649]].
 
 == Scope ==
 
 Large, busy sites need a disk storage scheme that approaches hardware limits on modern systems with 8+GB of RAM, 4+ CPU cores, and 4+ dedicated, 75+GB 10+K RPM disks. We need to create such store using the lessons learned from COSS (write seek optimization) and diskd (SMP scalability) while testing and implementing new optimization techniques. We do not want to wait for the rest of Squid to be perfected as slow disk operation is the primary bottleneck in busy caching Squid deployments today.
-
-Current Squid RAM usage for caching is inefficient. This needs to be fixed to reduce disk load and, more importantly, to give disk store more optimization room by making many disk I/Os less urgent. It is not yet clear whether RAM caching work should be done as a separate Feature so we are covering it here, for now.
 
 
 == Design choices ==
