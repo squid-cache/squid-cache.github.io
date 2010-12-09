@@ -53,23 +53,15 @@ Since Squid v3.1 has been closed for new features for a while, there are current
 
 == Design choices ==
 
-Several design decisions need to be made and tested in the beginning of the project:
+The project needs to answer several key design questions. The table below provides the questions and our current decisions.
 
- * Do we limit the cached object size like COSS does? The limit is an administrative pain and forces many sites to configure multiple disk stores. We want to use dedicated disks and do not want a "secondary" limitless store to screw with our I/Os. Yet, a small size limit simplifies the data placement scheme. It would be nice to integrate support for large files into one store without making data placement complex.
-
- * Do we want to guarantee 100% store-ability and 100% retrieve-ability? We can probably optimize more if we can skip some new objects or overwrite old ones as long as the memory cache handles hot spots.
-
- * Do we want 100% disk space utilization? We can optimize more if we are allowed to leave holes. How large can those holes be relative to the total disk size? With disk storage prices decreasing, it may be appropriate to waste a "little" storage if we can gain a "lot" of performance.
-
- * Do we rely on OS buffers? OS-level disk I/O optimizations often go wrong under high proxy load. Will bypassing OS buffers and doing raw disk I/O help us approach hardware limits?
-
- * Do we need a complete, reliable in-memory cache index? Should we make the index smaller and perhaps less reliable to free RAM for the memory cache? Can we use hashing to find object location on disk without an index?
-
- * What parts of Rock Store should be replaceable/configurable? For example, is it worth designing so that solid state disks can be efficiently supported by the same store architecture?
-
- * Will per-cache_dir limit remain at 17M objects? Can we optimize knowing that busy caches will reach that limit?
-
-How do we test our ideas?
+||Do we limit the cached object size like COSS does? The limit is an administrative pain and forces many sites to configure multiple disk stores. We want to use dedicated disks and do not want a "secondary" limitless store to screw with our I/Os. Yet, a small size limit simplifies the data placement scheme. It would be nice to integrate support for large files into one store without making data placement complex.||Yes, we limit the object size initially because it is simple and the current code sponsors do not have to cache large files. Later implementations may catalog and link individual storage blocks to support files of arbitrary length||
+||Do we want to guarantee 100% store-ability and 100% retrieve-ability? We can probably optimize more if we can skip some new objects or overwrite old ones as long as the memory cache handles hot spots.||SMP implementation assumes unreliable storage (e.g., Rock daemons may die) but does not take advantage of it. Future optimizations may skip or reorder I/O requests||
+||Do we want 100% disk space utilization? We can optimize more if we are allowed to leave holes. How large can those holes be relative to the total disk size? With disk storage prices decreasing, it may be appropriate to waste a "little" storage if we can gain a "lot" of performance.||Current implementation does not optimize by deliberately creating holes in on-disk storage.||
+||Do we rely on OS buffers? OS-level disk I/O optimizations often go wrong under high proxy load. Will bypassing OS buffers and doing raw disk I/O help us approach hardware limits?||Current implementation uses OS buffers for simplicity. Future optimizations are likely to use raw, unbuffered disk I/O.||
+||Do we need a complete, reliable in-memory cache index? Should we make the index smaller and perhaps less reliable to free RAM for the memory cache? Can we use hashing to find object location on disk without an index?||SMP implementation has a complete but not reliable in-memory cache index. Availability of a previously indexed object is verified on every hit check because other workers or Rock daemons may have removed the unused cached object.||
+||What parts of Rock Store should be replaceable/configurable? For example, is it worth designing so that solid state disks can be efficiently supported by the same store architecture?||Current configuration is limited to the block size and the concurrent I/Os limit, but it will surely become more complex in the future. We did not have a chance to play with solid state disks, but the overall design should accommodate them well. Future code will probably have an option to optimize either seek latency or the number of same-spot writes.||
+||Will per-cache_dir limit remain at 17M objects? Can we optimize knowing that busy caches will reach that limit?||Current code continues to rely on the 17M limit in some data structures.||
 
 ----
 CategoryFeature
