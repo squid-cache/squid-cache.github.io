@@ -57,7 +57,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 ||||||||||||||<style="text-align: center;">'''Efficiency aids''' ||
 ||[[Features/SmpScale|SMP Scalability]] ||- ||- ||- ||- ||- ||X ||X||
 ||[[Features/CollapsedForwarding|Collapsed Forwarding]] ||- ||Y ||Y ||- ||- ||- ||-||
-||[[Features/StaleIfError|stale-if-error]] ||- ||- ||Y ||- ||- ||- ||-||
+||stale-if-error ||- ||- ||Y ||- ||- ||Y ||Y||
 ||[[Features/StaleWhileRevalidate|stale-while-revalidate]] ||- ||- ||Y ||- ||- ||- ||-||
 ||||||||||||||<style="text-align: center;">'''Authorization Sources''' ||
 ||RADIUS Authorization ||- ||Ys17 ||Y ||Y ||Y ||Y ||Y||
