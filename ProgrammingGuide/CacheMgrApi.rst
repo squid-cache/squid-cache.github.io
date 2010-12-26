@@ -5,7 +5,7 @@
 /!\ This page is a work in progress. It reflects the discoveries by FrancescoChemolli as it tries to implement the new cachemgr framework. It may contain inaccurate informations.
 
 <<TableOfContents>>
-= Cache Manager API =
+== Cache Manager API ==
 This document details how to implement a multi-cpu cache manager action for Squid 3.2+, following the API framework implemented by AlexRousskov.
 
 == Overview  ==
@@ -61,10 +61,26 @@ The data member is used to accumulate data across squid instances. Execution flo
  1. the Coordinator process uses the Action's {{{add()}}} method to merge in information from all workers. The Action argument is really a polymorphic reference to the !MyModuleMgrAction, and it can safely be dynamic_cast to the right type
  1. once data is accumulated, the {{{dump()}}} method is called to print out the information.
 
-The minimal code for a concrete Action is thus generally: (to be completed)
+{{{pack()}}} and {{{unpack()}}} can rely on the generic infrastructure available through the IPC libraries, and so they in general will probably look like this:
 {{{
+void
+MyModuleMgrAction::pack(Ipc::TypedMsgHdr& msg) const
+{
+    msg.setType(Ipc::mtCacheMgrResponse);
+    msg.putPod(data);
+}
 
+void
+MyModuleMgrAction::unpack(const Ipc::TypedMsgHdr& msg)
+{
+    msg.checkType(Ipc::mtCacheMgrResponse);
+    msg.getPod(data);
+}
 }}}
+
+== Registration ==
+
+XXX TODO
 
 ----
 Discuss this page using the "Discussion" link in the main menu
