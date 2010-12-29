@@ -42,6 +42,23 @@ There is no good fixed benchmark test yet to measure by so comparisons are not s
 
 = Records =
 
+== Squid 3.1 ==
+=== 3.1.10 ===
+
+|| CPU || Intel(R) Xeon(R) CPU L5310  @ 1.60GHz (dual core) ||
+|| RAM || 8 GB ||
+|| HDD || 1 x 400G SAS ||
+|| OS  || Red Hat Enterprise Linux AS release 4 32-bit ||
+|| Users || 54 ||
+|| RPS || 615 ||
+|| Hit Ratio || Hit Ratio  Request 41.7%-42.8% , Byte 49.8.7%-46.9% ||
+|| CPU Usage || 31.69% ||
+
+{{{
+Submitted by: Jack Quinlin <<Date(2010-12-29T13:17:11Z)>>
+}}}
+
+
 == Squid 3.0 ==
 
 === STABLE 5 ===
