@@ -55,7 +55,7 @@ There is no good fixed benchmark test yet to measure by so comparisons are not s
 || CPU Usage || 31.69% ||
 
 {{{
-Submitted by: Jack Quinlin <<Date(2010-12-29T13:17:11Z)>>
+Submitted by: Jack Quinlin 2010-12-29
 }}}
 
 
