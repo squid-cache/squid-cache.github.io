@@ -28,6 +28,7 @@ While writing yet another ICAP server from scratch is always a possibility, the 
  * [[http://spicer.measurement-factory.com/|Traffic Spicer]] (C++)
  * [[http://icap-server.sourceforge.net|ICAP-Server]] (Python)
  * [[http://www.poesia-filter.org/|POESIA]] (Java)
+ * [[http://greasyspoon.sourceforge.net/|GreasySpoon]] (Java and Javascript)
  * original [[http://www.icap-forum.org/documents/other/icap-server10.zip|reference implementation]] by Network Appliance.
 
 The above list is not comprehensive and is not meant as an endorsement. Any ICAP server will have unique set of pros and cons in the context of your adaptation project.
