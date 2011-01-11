@@ -13,8 +13,8 @@ Packages available for Squid on multiple architectures.
 
 '''Maintainer:''' Luigi Gangitano
 
-==== Squid-3.1 ====
-Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3;dist=unstable
+==== Squid-3.1 / Squid-3.0 ====
+Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3
 
 Install Procedure:
 
@@ -22,14 +22,6 @@ Install Procedure:
  apt-get install squid3
 }}}
 
-==== Squid-3.0 ====
-Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3;dist=unstable
-
-Install Procedure:
-
-{{{
- apt-get install squid3
-}}}
 ==== Squid-2.7 ====
 Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid;dist=unstable
 
