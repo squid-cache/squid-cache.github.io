@@ -26,7 +26,7 @@ Key:
  * {1} AlexRousskov doing now.
 
 ||  || '''Group''' || '''Definition''' || '''Files''' || '''To-do''' ||
-|| :\ || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets || {2} convert helpers to C++ and link to libcompat <<BR>> ** migrate remaining pieces of config.h and squid.h into compat<<BR>> ** migrate portability code from include/lib ||
+|| :\ || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || various include/* lib/* and snippets || ** migrate remaining pieces of config.h and squid.h into compat ||
 || :\ || ''acl/'' || Access Controls || ACL* external_acl.* || Add Acl namespace and rename classes? ||
 || (./) || ''adaptation/'' || code common to eCAP and ICAP  || ICAP/ICAP* ||
 || (./) || ''adaptation/ecap/'' || eCAP support || - ||
@@ -46,7 +46,7 @@ Key:
 || :\ || ''ident/'' || Ident support || ident.* || Make remote connection handling into an !AsyncJob||
 || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
 || :\ || ''ipc/'' || inter-process communication || ipc.* ipc_win32.* || Move files, add Icp namespace to them, and adjust global names ||
-|| {2} || ''logs/'' || Logging components || Log* access_log.* *log.cc ||
+|| {2} || ''logs/'' || Logging components || Log* access_log.* *log.cc || namespace for Custom log formats and tokenizer ||
 ||  || ''mem/'' || Basic Memory management || mem* ||
 || :\ || ''mgr/'' || Cache Manager || CacheManager.h, cache_manager.cc || Move CacheManager.h, cache_manager.cc, and test cases to mgr/ ||
 || {2} || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
