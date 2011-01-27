@@ -20,7 +20,7 @@ The ACL of type "random" will accept a single value in one of three formats:
 
  * A/B - matching randomly an average of A requests out of total B requests. A and B may not be zero.
 
- * 0.NNNN - matching randomly any given request with .NNNN probability.
+ * 0.NNNN - matching randomly any given request with 0.NNNN probability.
    Range is between zero to one, excluding zero and one themselves.
 
 All three of these matches are proportional. The first two formats are provided for ease of configuration. They are converted to a decimal threshold as shown in the third format.
@@ -37,7 +37,7 @@ This requires some additional configuration at the operating system level to ens
 
  * ''' Example 1:''' Split two uplinks roughly 50% of traffic each:
 {{{
-acl fiftyPercent random .5
+acl fiftyPercent random 0.5
 
 # a random 50% go here
 tcp_outgoing_address 192.0.2.1 fiftyPercent
