@@ -13,7 +13,7 @@
 
 == Outline ==
 
-Squid can be easily used to provide SSL acceleration services for Outlook Web Access. It can also speak SSL to the backend Exchange server. Later versions of Squid-2.6 support all the methods used by WebDAV by default. Please consider upgrading to the latest Squid-2.6 STABLE release before attempting this.
+Squid can be easily used to provide SSL acceleration services for Outlook Web Access. It can also speak SSL to the backend Exchange server. Later versions of Squid-2.6 support all the methods used by WebDAV by default. Please consider upgrading to at least the latest Squid-2.6 STABLE release before attempting this.
 
 == Setup ==
 
@@ -27,7 +27,7 @@ The example situation involves a single Outlook Web Access server and a single S
 
 <<Include(ConfigExamples/Reverse/BasicAccelerator, , from="^## begin locationwarning", to="^## end locationwarning")>>
 
-Please note that the https_port and cache_peer lines may wrap in your browser!
+Please note that the SquidConf:https_port and SquidConf:cache_peer lines may wrap in your browser!
 
 {{{
 https_port ip_of_squid:443 cert=/path/to/certificate/ defaultsite=owa_domain_name
@@ -45,13 +45,13 @@ miss_access allow OWA
 miss_access deny all
 }}}
 
-If the connection to the OWA server requires SSL then the cache_peer line should be changed appropriately:
+If the connection to the OWA server requires SSL then the SquidConf:cache_peer line should be changed appropriately:
 
 {{{
-cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/certificate name=owaServer
+cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/client-certificate name=owaServer
 }}}
 
- (!) an apparent bug in Squid-3.1 means that https_port may also need to use the '''connection-auth=off''' option for now.
+ (!) an apparent bug in Squid-3.1 means that SquidConf:https_port may also need to use the '''connection-auth=off''' option for now.
 
 == See also ==
 
