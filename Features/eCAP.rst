@@ -26,9 +26,7 @@ ecap_service eReqmod reqmod_precache 0 ecap://e-cap.org/ecap/services/sample/min
 ecap_service eRespmod respmod_precache 0 ecap://e-cap.org/ecap/services/sample/minimal
 }}}
 
-Among all dynamically loaded services, only the services matching ''ecap_service'' configuration are enabled by Squid.
-
-Now you can setup ACLs to direct traffic to the configured services.
+Among all dynamically loaded services, only the services matching ''ecap_service'' configuration are enabled by Squid. However, enabling an adaptation service is not enough. You need to direct messages to the service(s) using adaptation_access directives:
 
 {{{
 adaptation_service_set reqFilter eReqmod
