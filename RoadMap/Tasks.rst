@@ -40,7 +40,6 @@ Check with squid-dev to see if its already done.
  * Migrate Feature requests from bugzilla to wiki pages. (FrancescoChemolli, mostly done. Needs second round after Apr 20th, 2009)
 
  * Fix kqueue bugs once and for all (ie, delete events for closed FDs)
- * Implement /dev/poll support for Solaris 7/8/9/10 network IO
 
  * Language and Translation
   1. Verify or Update one of the non-modified [[Translations|translated Squid error pages]].
@@ -49,7 +48,7 @@ Check with squid-dev to see if its already done.
 
  * Cleanup Squid component macros that enable/disable components:
   1. make all the naming convention USE_* (with USE_SQUID_* for those which may clash with OS defines).
-  2. make all have the same #if...#endif syntax (currently a mix of #if and #ifdef)
+  2. make all have the same #if...#endif syntax (currently a mix of #if and #ifdef and defined(_SQUID_*_) )
 
  * Fix Squid-3 MD5 layer:
   1. migrate MD5 code to libcompat
