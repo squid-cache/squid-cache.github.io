@@ -344,13 +344,25 @@ The OpenNMS site has a [[http://www.opennms.org/wiki/Squid_Data_Collection|compl
 
 = Future Work =
 
-The SNMP agent built into squid is very limited, as it is mostly SNMPv1. It should be improved, and hopefully OO-ified. ref Bug Bug:1300
+The SNMP agent built into squid is very limited, as it is SNMP v2c cross-compatible with v1 in places.
 
-Would it be possible to use some external library, possibly in c++? e.g.
- * [[http://www.agentpp.com/snmp_pp3_x/snmp_pp3_x.html|SNMP++]]
- :: need to check if license is compatibile with GPL
+ 1. The bundled library needs replacing.
+  * net-snmp v5.4 is now widely available. [[http://www.net-snmp.org/|net-snmp]]
+  * this should resolve 64-bit integer issues just with the update
+  * this may also resolve bulk OID requests without other special changes
 
-Many statistics and details inside squid are missing from the reports. They need to be added to the tree.
+ 2. Many statistics and details inside Squid need to be added to the tree.
+  * synchronising with the cachemgr available data
+  * possibly leading to a shared cachemgr/SNMP internal PDU fetch from SMP workers
+
+ 3. Live configuration changess may be done by SNMP agents.
+  * toggle directives and scalar values being the primary ones
+  * possibly also toggle options on certain directives
+  * requires the library support of SET operations
+
+ 4. auto-generating the MIB file needs to be done at some point.
+  * managing the MIB contents is non-trivial already and will only get harder as more OID are added
+  * a process of building the MIB file either in daily maintenance or bundling process would be very helpful long-term
 
 -----
 Back to the SquidFaq
