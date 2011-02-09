@@ -62,7 +62,7 @@ daemon:/var/log/squid/access.log
 
  * '''log_file_daemon''' : Log directly to the local file system.
 
- * MySQL : http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html
+ * '''log_db_daemon''' : Log directly to an SQL database. MySQL backend default. http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html or http://sourceforge.net/projects/logmysqldaemon/
 
 ==== Daemon Message Protocol ====
 Squid sends a number of commands to the log daemon. These are sent in the first byte of each input line:
