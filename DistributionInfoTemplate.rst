@@ -29,7 +29,8 @@
 ## Named by version of Squid it packages.
 ## Numerically highest to lowest only those currently available in the distro.
 
-=== Squid-X.Y ===
+## 4  = indents required for BinaryPackages page include
+==== Squid-?.? ====
 
 ## If there are any release or package specifics (ie special maintainer, different bug reporting)
 ## those details need to be replicated here
