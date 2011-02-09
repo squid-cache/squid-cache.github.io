@@ -17,6 +17,7 @@ Most operating system distributions provide packages in the formats appropriate 
 <<Include(KnowledgeBase/NetBSD,"NetBSD",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/RedHat,"RedHat Enterprise Linux (RHEL)",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/Solaris,"Solaris",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
+<<Include(KnowledgeBase/SLES,"SLES",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/Ubuntu,"Ubuntu",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/Windows,"Windows",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 
