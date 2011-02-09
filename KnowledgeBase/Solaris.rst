@@ -18,7 +18,7 @@ Configuration files will then be stored in {{{/etc/squid}}}, user-accessible exe
 
 
 http://www.sunfreeware.com/ also hosts binary Squid packages for SPARC/Solaris 2.5-10 and x86/Solaris 8-10.
-=== Squid-2.7 ===
+==== Squid-2.7 ====
 {{{
  pkg-get -i squid
 }}}
