@@ -31,6 +31,10 @@ The order of SquidConf:auth_param '''program''' directives determines how Squid 
 
 SquidConf:acl '''proxy_auth''' and SquidConf:external_acl_type using '''%LOGIN''' must be defined after SquidConf:auth_param. Squid will warn about authentication being used but not setup here.
 
+SquidConf:external_acl_type using '''%LOGIN''' will trigger authentication challenges if those credentials are not present. The placement of these tests affects which rules around them require authentication.
+
+Similarly SquidConf:acl testing authentication placement left-to-right on their line determins whether the test bypasses, fails or triggers an auth challenges.
+
 == Access Controls ==
 
 SquidConf:acl definition lines must be specified before any point at which they are mentioned for use.
