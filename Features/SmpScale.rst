@@ -68,9 +68,46 @@ In summary, we used processes instead of threads because they allowed us to deli
 
 === Who decides which worker gets the request? ===
 
-All workers that share SquidConf:http_port listen on the same IP address and TCP port. The operating system protects the shared listening socket with a lock and decides which worker gets the new HTTP connection waiting to be accepted. Once the incoming connection is accepted by the worker, it stays with the worker.
+All workers that share SquidConf:http_port listen on the same IP address and TCP port. The operating system protects the shared listening socket with a lock and decides which worker gets the new HTTP connection waiting to be accepted. Once the incoming connection is accepted by the worker, it stays with that worker.
 
-Initial tests of the current implementation show that some workers consistently receive less traffic than others when the total load can be handled by fewer cores. It is not currently clear whether the uneven load is caused by kernel scheduling bias, insufficient load, and/or other factors. We are investigating the causes.
+=== Will similar workers receive similar amount of work? ===
+
+We expected the operating system to balance the load across multiple workers by appropriately allocating the next incoming connection request to the least loaded worker/core. Worker statistics from lab tests and initial deployments proved us wrong. Here are, for example, cumulative CPU times of several identical workers handling moderate load for a while:
+
+||'''cumulative CPU'''||<|2>'''Worker'''||
+||''' utilization (minutes)'''||
+||<)>20||(squid-3)||
+||<)>16||(squid-4)||
+||<)>13||(squid-2)||
+||<)>8||(squid-1)||
+
+The table shows a significant skew in worker load: squid-3 worker spent 20 minutes handling traffic while squid-1 worked for only 8 minutes. The imbalance does not improve with running time, as busiest workers remain the busiest.
+
+While we do not know whether such imbalance results in worse response time for busier workers, it is rather undesirable from general system balance point of view.
+
+After many days of experimenting with Squid, studying Linux TCP stack sources, and discussing the problem with other developers, we have eventually zeroed in on a relatively compact workaround with low overhead. It turns out that the first worker to be awaken to accept the new client connection is usually the worker that was the last to register its listening descriptor with epoll(2). This dependency is rather strange because the epoll sets are ''not'' shared among Squid workers; it must work on a listening socket level (those sockets ''are'' shared). Special thanks to HenrikNordström for a stimulating discussion that supplied the last missing piece of the puzzle.
+
+The exact kernel TCP stack code responsible for this scheduling behavior is currently unknown to us and has proved difficult to find even for expert Linux kernel developers. Eventually, we may locate it and come up with a kernel module or patch to better balance listener selection in Squid environments.
+
+However, we already have enough information for addressing the problem at Squid level. We have developed a patch that, once in a few seconds, instructs one Squid worker to delete and then immediately insert its listening descriptors from/into the epoll(2) set. Such epoll operations are relatively cheap. The patch makes sure that workers take turns at tickling their listening descriptors this way, so that only one worker becomes most active in any given tickling interval.
+
+The change results in reasonable load distribution across workers. Here is an instant snapshot showing current CPU core utilization by each worker in addition to the total CPU time accumulated by that worker.
+
+||||'''CPU utilization'''||<|3>'''Worker'''||
+||'''now'''||'''cumulative'''||
+||'''(%)'''||'''(minutes)'''||
+||<)>41||<)>2826||(squid-3)||
+||<)>23||<)>2589||(squid-2)||
+||<)>9||<)>2345||(squid-4)||
+||<)>7||<)>2303||(squid-5)||
+||<)>9||<)>2221||(squid-6)||
+||<)>11||<)>2107||(squid-1)||
+
+The instant CPU utilization (the rightmost column) is not balanced, as expected. An administrator monitoring that column would see how the group of most active workers changes every few seconds, with new busiest workers leaving and oldest worker in the group becoming mostly idle.
+
+The cumulative CPU time distribution (the middle column) is much more even now. Despite having to deal with seven workers, Squid shows only a 25% difference between historically most and least active worker, compared to a 60% difference among four workers without the patch. Better distribution may be possible by tuning the patch parameters such as the tickling interval or increasing worker load so that each worker is less likely to miss its chance to tickle its epoll(2) set.
+
+We are working on making the patch compatible with non-epoll environments and will propose it for Squid v3.2 integration.
 
 
 === Why is there no dedicated process accepting requests? ===
