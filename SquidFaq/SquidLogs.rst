@@ -130,61 +130,73 @@ The following codes are no longer available in Squid-2:
 '''UDP_RELOADING''' See: UDP_MISS_NOFETCH.
 
 ==== HTTP status codes ====
-These are taken from RFC RFC:2616 and verified for Squid. Squid uses almost all codes except 307 (Temporary Redirect), and 416 (Request Range Not Satisfiable). Extra codes include 000 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for RFC RFC:2518 (WebDAV). Yes, there are really two entries for status code 424:
+These are taken from RFC RFC:1945 (HTTP/1.0), RFC:2616 (HTTP/1.1) and verified for Squid. Squid uses almost all codes except 416 (Request Range Not Satisfiable). Extra codes used in the Squid logs (but not live traffic) include 000 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for RFC RFC:2518 and RFC:4918 (WebDAV). Yes, there are really two entries for status code 424:
 
-{{{
- 000 Used mostly with UDP traffic.
- 100 Continue
- 101 Switching Protocols
-*102 Processing
- 200 OK
- 201 Created
- 202 Accepted
- 203 Non-Authoritative Information
- 204 No Content
- 205 Reset Content
- 206 Partial Content
-*207 Multi Status
- 300 Multiple Choices
- 301 Moved Permanently
- 302 Moved Temporarily
- 303 See Other
- 304 Not Modified
- 305 Use Proxy
-[307 Temporary Redirect]
- 400 Bad Request
- 401 Unauthorized
- 402 Payment Required
- 403 Forbidden
- 404 Not Found
- 405 Method Not Allowed
- 406 Not Acceptable
- 407 Proxy Authentication Required
- 408 Request Timeout
- 409 Conflict
- 410 Gone
- 411 Length Required
- 412 Precondition Failed
- 413 Request Entity Too Large
- 414 Request URI Too Large
- 415 Unsupported Media Type
-[416 Request Range Not Satisfiable]
- 417 Expectation Failed
-*424 Locked
-*424 Failed Dependency
-*433 Unprocessable Entity
- 500 Internal Server Error
- 501 Not Implemented
- 502 Bad Gateway
- 503 Service Unavailable
- 504 Gateway Timeout
- 505 HTTP Version Not Supported
-*507 Insufficient Storage
- 600 Squid header parsing error
-}}}
+|| '''Status''' || '''Description''' || ''' RFC(s)''' ||
+|| 000 || Used mostly with UDP traffic. || N/A ||
+|| || '''Informational''' ||
+|| 100 || Continue || RFC:2616||
+|| 101 || Switching Protocols || RFC:2616 ||
+|| 102 || Processing || RFC:2518 ||
+|| || '''Successful Transaction''' ||
+|| 200 || OK || RFC:1945, RFC:2616 ||
+|| 201 || Created || RFC:1945, RFC:2616 ||
+|| 202 || Accepted || RFC:1945, RFC:2616 ||
+|| 203 || Non-Authoritative Information || RFC:2616 ||
+|| 204 || No Content || RFC:1945, RFC:2616, RFC:4918 ||
+|| 205 || Reset Content || RFC:2616 ||
+|| 206 || Partial Content || RFC:2616 ||
+|| 207 || Multi Status || RFC:2518, RFC:4918 ||
+|| || '''Redirection''' ||
+|| 300 || Multiple Choices || RFC:1945, RFC:2616, RFC:4918 ||
+|| 301 || Moved Permanently || RFC:1945, RFC:2616, RFC:4918 ||
+|| 302 || Moved Temporarily || RFC:1945, RFC:2616, RFC:4918 ||
+|| 303 || See Other || RFC:2616, RFC:4918 ||
+|| 304 || Not Modified || RFC:1945, RFC:2616 ||
+|| 305 || Use Proxy || RFC:2616, RFC:4918 ||
+|| 307 || Temporary Redirect || RFC:2616, RFC:4918 ||
+|| || '''Client Error''' ||
+|| 400 || Bad Request || RFC:1945, RFC:2616, RFC:4918 ||
+|| 401 || Unauthorized || RFC:1945, RFC:2616 ||
+|| 402 || Payment Required || RFC:2616 ||
+|| 403 || Forbidden || RFC:1945, RFC:2616, RFC:4918 ||
+|| 404 || Not Found || RFC:1945, RFC:2616 ||
+|| 405 || Method Not Allowed || RFC:2616 ||
+|| 406 || Not Acceptable || RFC:2616 ||
+|| 407 || Proxy Authentication Required || RFC:2616 ||
+|| 408 || Request Timeout || RFC:2616 ||
+|| 409 || Conflict || RFC:2616, RFC:4918 ||
+|| 410 || Gone || RFC:2616 ||
+|| 411 || Length Required || RFC:2616 ||
+|| 412 || Precondition Failed || RFC:2616, RFC:4918 ||
+|| 413 || Request Entity Too Large || RFC:2616 ||
+|| 414 || Request URI Too Large || RFC:2616, RFC:4918 ||
+|| 415 || Unsupported Media Type || RFC:2616 ||
+|| 416 || Request Range Not Satisfiable || RFC:2616 ||
+|| 417 || Expectation Failed || RFC:2616 ||
+|| 422 || Unprocessable Entity || RFC:2518, RFC:4918 ||
+##|| 423 || Locked || RFC:2518 ||
+|| 424 || Locked || (broken WebDAV implementations??) ||
+|| 424 || Failed Dependency || RFC:2518, RFC:4918 ||
+|| 433 || Unprocessable Entity || ||
+|| || '''Server Errors''' ||
+|| 500 || Internal Server Error || RFC:1945, RFC:2616 ||
+|| 501 || Not Implemented || RFC:1945, RFC:2616 ||
+|| 502 || Bad Gateway || RFC:1945, RFC:2616 ||
+|| 503 || Service Unavailable || RFC:1945, RFC:2616 ||
+|| 504 || Gateway Timeout || RFC:2616 ||
+|| 505 || HTTP Version Not Supported || RFC:2616 ||
+|| 507 || Insufficient Storage || RFC:2518, RFC:4918 ||
+|| ||
+|| || Broken Server Software ||
+|| 600 || Squid: header parsing error || ||
+|| 601 || Squid: header size overflow detected while parsing || ||
+|| 601 || roundcube: software configuration error || ||
+|| 603 || roundcube: invalid authorization || ||
+
 
 ==== Request methods ====
-Squid recognizes several request methods as defined in [[ftp://ftp.isi.edu/in-notes/rfc2616.txt|RFC 2616]]. Newer versions of Squid (2.2.STABLE5 and above) also recognize [[ftp://ftp.isi.edu/in-notes/rfc2518.txt|RFC 2518]] "HTTP Extensions for Distributed Authoring -- WEBDAV" extensions.
+Squid recognizes several request methods as defined in RFC RFC:2616 and RFC RFC:2518 "HTTP Extensions for Distributed Authoring -- WEBDAV" extensions.
 
 {{{
  method    defined    cachabil.  meaning
