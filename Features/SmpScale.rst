@@ -74,8 +74,8 @@ All workers that share SquidConf:http_port listen on the same IP address and TCP
 
 We expected the operating system to balance the load across multiple workers by appropriately allocating the next incoming connection request to the least loaded worker/core. Worker statistics from lab tests and initial deployments proved us wrong. Here are, for example, cumulative CPU times of several identical workers handling moderate load for a while:
 
-||'''cumulative CPU'''||<|2>'''Worker'''||
-||''' utilization (minutes)'''||
+||'''Cumulative CPU'''||<|2>'''Worker'''||
+||''' Utilization (minutes)'''||
 ||<)>20||(squid-3)||
 ||<)>16||(squid-4)||
 ||<)>13||(squid-2)||
@@ -93,7 +93,7 @@ However, we already have enough information for addressing the problem at Squid 
 
 The change results in reasonable load distribution across workers. Here is an instant snapshot showing current CPU core utilization by each worker in addition to the total CPU time accumulated by that worker.
 
-||||'''CPU utilization'''||<|3>'''Worker'''||
+||||'''CPU Utilization'''||<|3>'''Worker'''||
 ||'''now'''||'''cumulative'''||
 ||'''(%)'''||'''(minutes)'''||
 ||<)>41||<)>2826||(squid-3)||
