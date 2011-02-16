@@ -44,7 +44,7 @@ and
  pkg install sunstudioexpress SUNWbtool
 }}}
 
-Unfortunately the {{{/usr/include/kerberosv5/com_err.h}}} system-include file sports a #pragma directive which is not compatible with gcc. A possible fix is to change the line 
+ {X} Unfortunately the {{{/usr/include/kerberosv5/com_err.h}}} system-include file sports a #pragma directive which is not compatible with gcc. A possible fix is to change the line 
 {{{
 #pragma ident   "%Z%%M% %I%     %E% SMI"
 }}}
@@ -55,6 +55,15 @@ to
 #endif
 }}}
 Cleaner fixes will be developed as soon as they can reasonably be found.
+
+==== 3.1 -enable-ipf-transparent support ====
+## http://bugs.squid-cache.org/show_bug.cgi?id=2960
+{X} Unfortunately the {{{/usr/include/inet/mib2.h}}} header required for IPF interception support clashes with [[Squid-3.1]] class definitions. This has been fixed in the 3.2 series.
+
+For 3.1 to build you may need to run this class rename command in the top Squid sources directory:
+{{{
+find . -type f -print | xargs perl -i -p -e 's/\b(IpAddress\b[^.])/Squid$1/g
+}}}
 
 === Squid-2.x and older ===
 
@@ -103,7 +112,6 @@ and CPPunit to be installed from source: you can find it at [[http://sourceforge
 {{{
 #include <ieeefp.h>
 }}}
-
 
 ...
 And then you go on building the usual way :)
