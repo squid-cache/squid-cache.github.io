@@ -19,7 +19,7 @@
 
  * '''Developer''': 
 
- * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=1631
+ * '''More''': Bug:1631
 
 
 ## Details
