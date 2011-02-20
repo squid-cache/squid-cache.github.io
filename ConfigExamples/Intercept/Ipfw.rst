@@ -29,17 +29,19 @@ http_port 3129 intercept
 }}}
 
 == rc.firewall.local Configuration ==
-
-You will need to replace some value in the following example:
- * IFACE - interface where client requests are coming from
- * SQUIDIP - the IP squid will be listening on for intercepted requests (can be 127.0.0.1)
-
 {{{
+# Interface where client requests are coming from
+IFACE=eth0
+
+# The IP Squid is listening on for requests. localhost is safest.
+SQUIDIP=127.0.0.1
+
+# Path to ipfw command
 IPFW=/sbin/ipfw
 
 ${IPFW} -f flush
 ${IPFW} add 60000 permit ip from any to any
-${IPFW} add 100 fwd SQUIDIP,3129 tcp from any to any 80 recv IFACE
+${IPFW} add 100 fwd ${SQUIDIP},3129 tcp from any to any 80 recv ${IFACE}
 }}}
 
 == Testing ==
