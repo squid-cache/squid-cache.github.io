@@ -39,7 +39,7 @@ IPFW=/sbin/ipfw
 
 ${IPFW} -f flush
 ${IPFW} add 60000 permit ip from any to any
-${IPFW} add 100 fwd SQUIDIP,3128 tcp from any to any 80 recv IFACE
+${IPFW} add 100 fwd SQUIDIP,3129 tcp from any to any 80 recv IFACE
 }}}
 
 == Testing ==
