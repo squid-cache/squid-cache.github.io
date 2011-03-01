@@ -1,6 +1,7 @@
 #language en
 
 <<TableOfContents>>
+ * [[http://www.parashift.com/c++-faq-lite/const-correctness.html#faq-18.5|const-correctness help]]
  * Back to DeveloperResources.
 
 <<BR>>
@@ -8,7 +9,6 @@
  {i} details labeled ENFORCED are checked and forced by source testing mechanisms.
 
 = C++ Guidelines =
-
 == Source formatting guidelines ==
 
  * We have an ''astyle'' wrapper that formats the code without breaking it.
@@ -153,8 +153,7 @@ The verb ''is'' may be omitted, especially if the result cannot be confused with
    * squid.h - full squid dependency tree include (globals, protos, types, defines, everything is in here)
 
 '''.h''' and '''.cci'''
- * prefer config.h over squid.h
- * must include config.h before any component USE_ macros
+ * DO NOT include either config.h or squid.h
 
 '''all'''
  * place internal header includes above system includes
@@ -168,13 +167,13 @@ The verb ''is'' may be omitted, especially if the result cannot be confused with
 Preferred include layout:
 {{{
 // required first include
-#include "squid.h"
+#include "config.h"
 
 // local source files alphabetically sorted
 #include "cutom.h"
 #include "local.h"
 
-// System includes alphabetically sorted
+// System includes alphabetically sorted and wrapped
 #if HAVE_ACCESS_H
 #include <access.h>
 #endif
