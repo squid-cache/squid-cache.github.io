@@ -108,7 +108,7 @@ Running squid3.0 on Dell R300 servers. On production servers getting max 1500hit
 || CPU Usage || 29.86% ||
 
 {{{
-Submitted by: Quin Guin - 2010-12-02
+Submitted by: Quin Guin. 2010-12-02.
 
 We handle mostly mobile HTTP traffic so small files.
 }}}
@@ -124,7 +124,7 @@ We handle mostly mobile HTTP traffic so small files.
 || CPU Usage || 16% ||
 Full Details: http://www.squid-cache.org/mail-archive/squid-users/201002/0838.html
 {{{
-Submitted by: Markus Meyer - 2010-02-25
+Submitted by: Markus Meyer. 2010-02-25.
 
 We have to handle mostly very, very small files which is
 a real pain. So COSS was my white knight to handle this.
@@ -139,6 +139,25 @@ tuning in any kernel parameters except the following two:
   vm.swappiness = 0
 }}}
 
+=== STABLE 6 ===
+
+|| CPU || Quad-Core Intel(R) Xeon(R) CPU L5420 @ 2.50GHz ||
+|| RAM || 8 GB ||
+|| HDD || 3x SAS Fujitsu 147Gb 15K ||
+|| OS  || RHEL4 AS U7 64bit – 2.6.9-78.0.13.ELsmp ||
+|| Users || 57 ||
+|| RPS || 166.95 ||
+|| Hit Ratio || Request 51.7%-51.3% ||
+|| CPU Usage || 7.18% ||
+
+{{{
+Submitted by: Quin Guin. 2009-04-07.
+
+We handle mostly mobile HTTP traffic so small files.
+
+CPU Usage, 5 minute avg:    4.33%
+CPU Usage, 60 minute avg:    3.97%
+}}}
 
 === STABLE 4 ===
 || Dual-Core ||
@@ -148,13 +167,45 @@ tuning in any kernel parameters except the following two:
 || OS  || ||
 || Users || ~2300 ||
 || RPS || 280 ||
-|| Request Hit Ratio || 41.7-43.8% ||
+|| Hit Ratio || Request 41.7-43.8% ||
 {{{
 Submitted by: Nyamul Hassan. 2008-11-18.
 Squid is doing a close to default configuration with ICP with peers and Collapsed Forwarding off.
 }}}
 
 == Squid 2.6  ==
+=== STABLE 21 ===
+
+|| CPU || Quad-Core Intel(R) Xeon(R) CPU L5420 @ 2.50GHz ||
+|| RAM || 8 GB ||
+|| HDD || 3x SATA,147Gb,7200K ||
+|| OS  || RHEL4 AS U6 64bit – 2.6.9-67.ELsmp ||
+|| Users || 15 ||
+|| RPS || 262.3 ||
+|| Hit Ratio || Request 74.2%-73.7% ||
+|| CPU Usage || 7.90% ||
+{{{
+Submitted by: Quin Guin. 2009-04-07.
+
+We handle mostly mobile HTTP traffic so small files.
+
+CPU Usage, 5 minute avg:    10.45%
+CPU Usage, 60 minute avg:    10.21%
+}}}
+
+
+|| CPU || Quad core Intel(R) Xeon(R) CPU E5430 @ 2.66GHz ||
+|| RAM || 12 GB ||
+|| HDD || 136GB on 3-disk RAID5, plus 30GB on 2-disk RAID1 ||
+|| OS  || 64-bit RHEL5.3 ||
+|| Users || ~4000 ||
+|| RPS || 62 ||
+|| Hit Ratio || Request 72%, Byte 60% ||
+|| CPU Usage || 2% (0.3% IOwait) ||
+{{{
+Submitted by: Jan-Frode Myklebust. 2009-04-06.
+}}}
+
 === STABLE 18 ===
 
 || CPU || Dual Core Intel(R) Xeon(R) CPU  3050  @ 2.13GHz ||
@@ -163,8 +214,7 @@ Squid is doing a close to default configuration with ICP with peers and Collapse
 || OS  || 32-Bit Ubuntu GNU/Linux (Hardy) ||
 || Users || ~3000 ||
 || RPS || 130 ||
-|| Hit Ratio || 35% - 40% ||
-|| Byte Hit Ratio || ~13% ||
+|| Hit Ratio || Request 35% - 40%, Byte ~13% ||
 || CPU Usage ||  ||
 
 {{{
