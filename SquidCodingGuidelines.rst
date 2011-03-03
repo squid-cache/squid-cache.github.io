@@ -13,7 +13,7 @@
 
  * We have an ''astyle'' wrapper that formats the code without breaking it.
  * If you have astyle version 1.23 please format your changes with ~/scripts/formater.pl
- * This formatter is run regularly over the entire code to enforce certain checkable guidelines.
+ * This formatter is run regularly over the entire code to enforce certain checkable guidelines but it helps reduce trouble if your code matches those guidelines when submitted.
 
 ENFORCED:
  * 4-space indentation, no tabs
