@@ -15,9 +15,9 @@ by ''Joseph Spadavecchia''
 We have a requirement to use different authentication mechanisms 
 based on the subnet/ip-address of the client.
 
-For example;
- A client from one subnet would authenticate against NTLM.
- While a client from another subnet would authenticate against an LDAP server.
+The use case:
+ * A client from subnet A would authenticate with Basic auth against an AD server.
+ * A client from subnet B would authenticate with Basic auth against an LDAP server.
 
 To date this is normally done by running multiple instances of squid; 
 but we have the requirement to do it with a single instance.  One way 
@@ -53,16 +53,21 @@ use MIME::Base64;
 $|=1;
 
 while (<>) {
-        ($ip,$user,$auth) = split();
-        $auth = uri_unescape($auth);
-        ($type,$authData) = split(/ /, $auth);
-        $authString = decode_base64($authData);
-        ($username,$password) = split(/:/, $authString);
-       
-        print my_awsome_auth($ip, $username, $password);
+    ($ip,$user,$auth) = split();
+
+    # Retrieve the password from the authentication header
+    $auth = uri_unescape($auth);
+    ($type,$authData) = split(/ /, $auth);
+    $authString = decode_base64($authData);
+    ($username,$password) = split(/:/, $authString);
+
+    # do the authentication and pass results back to Squid.
+    print my_awsome_auth($ip, $username, $password);
 }
+
 }}}
 
+ /!\ Add your own version of ''my_awsome_auth()'' to do the authentication actions you need.
 
 ----
 CategoryConfigExample
