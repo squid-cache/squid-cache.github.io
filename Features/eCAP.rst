@@ -21,12 +21,12 @@ Enable eCAP support, configure Squid to load an adapter module, and specify whic
 
 {{{
 ecap_enable on
-loadable_modules  /usr/local/lib/ecap_adapter_minimal.so
+loadable_modules /usr/local/lib/ecap_adapter_minimal.so
 ecap_service eReqmod reqmod_precache 0 ecap://e-cap.org/ecap/services/sample/minimal
 ecap_service eRespmod respmod_precache 0 ecap://e-cap.org/ecap/services/sample/minimal
 }}}
 
-Among all dynamically loaded services, only the services matching ''ecap_service'' configuration are enabled by Squid. However, enabling an adaptation service is not enough. You need to direct messages to the service(s) using adaptation_access directives:
+Among all dynamically loaded services, only the services matching SquidConf:ecap_service configuration are enabled by Squid. However, enabling an adaptation service is not enough. You need to direct messages to the service(s) using SquidConf:adaptation_access directives:
 
 {{{
 adaptation_service_set reqFilter eReqmod
@@ -40,9 +40,9 @@ ICAP and eCAP services can co-exist. ACLs control which service gets to process 
 
 == Supported eCAP versions ==
 
-Squid v3.1 and v3.2 support libecap v0.0.3 but will try to build with any libecap version installed. Builds with incompatible versions will probably fail, but be careful.
+[[Squid-3.1]] and [[Squid-3.2]] support libecap v0.0.3 but will try to build with any libecap version installed. Builds with incompatible versions will probably fail, but be careful.
 
-Squid v3.2 will support libecap v0.2.0 (at least) and will have a configure-time libecap version check in the nearest future.
+[[Squid-3.2]] will support libecap v0.2.0 (at least) and will have a configure-time libecap version check in the nearest future.
 
 Eventually, Squid may also check (at runtime) that the loaded adapter was built with a compatible libecap version, but that check will not be possible until libecap API supports it.
 
