@@ -38,6 +38,15 @@ adaptation_access reqFilter allow all
 
 ICAP and eCAP services can co-exist. ACLs control which service gets to process the HTTP message.
 
+== Supported eCAP versions ==
+
+Squid v3.1 and v3.2 support libecap v0.0.3 but will try to build with any libecap version installed. Builds with incompatible versions will probably fail, but be careful.
+
+Squid v3.2 will support libecap v0.2.0 (at least) and will have a configure-time libecap version check in the nearest future.
+
+Eventually, Squid may also check (at runtime) that the loaded adapter was built with a compatible libecap version, but that check will not be possible until libecap API supports it.
+
+
 == License Issues ==
 
 Note: These are not legally binding opinions. If you have any doubts regarding the licensing please contact your lawyer.
