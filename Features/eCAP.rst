@@ -44,6 +44,8 @@ ICAP and eCAP services can co-exist. ACLs control which service gets to process 
 
 [[Squid-3.2]] will support libecap v0.2.0 (at least) and will have a configure-time libecap version check in the nearest future.
 
+Squid trunk supports libecap v0.2.0 (at least) and has a configure-time libecap version check as of Bazaar revision 11271 (daily snapshot squid-3.HEAD-20110310).
+
 Eventually, Squid may also check (at runtime) that the loaded adapter was built with a compatible libecap version, but that check will not be possible until libecap API supports it.
 
 
