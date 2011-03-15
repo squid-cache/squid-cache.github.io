@@ -7,9 +7,9 @@
  '''Squid-3:'''
 The Squid project has now moved to Bazaar as its configuration management tool (see [[Squid3VCS]]).
 
-To interactively browse the repository you can use [[http://www.squid-cache.org/bzrview/|BzrView]], the development trunk is at http://www.squid-cache.org/bzrview/squid3/trunk/changes.
+To interactively browse the repository you can use [[https://code.launchpad.net/squid|LaunchPad]], the development trunk is at http://bazaar.launchpad.net/~squid/squid/3-trunk/files.
 
-|| {i} || In order to use the CVS sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in ProgrammingGuide/Bootstrap.||
+|| {i} || In order to use the repository sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in ProgrammingGuide/Bootstrap.||
 
  '''Squid-2:'''
 || /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb]].||
@@ -35,7 +35,7 @@ Particular details of coding style are explained in Squid2CodingGuidelines and S
 
 If you are looking for a new project to work on check the feature wish list at [[RoadMap/Squid3]] or query the bugzilla database for [[http://bugs.squid-cache.org/buglist.cgi?component=feature&cmdtype=doit|enhancement requests]].
 
-Squid is HTTP/1.0 due to the lack of certain features. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still.
+Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still. There are also optional behaviours in the spec not in the checklist which should be added.
 
 === Required Tools ===
 
@@ -44,7 +44,7 @@ Squid is HTTP/1.0 due to the lack of certain features. We have a [[Features/HTTP
 
 === Required Build Tools ===
 
- * autoconf 2.61 or later
+ * autoconf 2.64 or later
  * automake 1.10 or later
  * libtool
  * libltdl-dev
@@ -60,14 +60,7 @@ We are currently setting up a BuildFarm. Additions to it are welcome.
 
 If you are looking to test the latest release of Squid for your own use you will need to grab yourself a copy of the sources from Bazaar, CVS, rsync, or one of the daily snapshot tarballs.
 
-To test a specific project branch you will need to:
-
- '''Squid-3''':
- * Pull the branch code directly from bzr  https://code.launchpad.net/squid
-
- '''Squid-2''':
- * either pull the daily snapshot and apply the branch patch available at http://devel.squid-cache.org/projects.html
-
+To test a specific project branch you will need to pull the branch code directly from bzr  https://code.launchpad.net/squid
 
 === Getting the sources via Bazaar (bzr) ===
 
