@@ -47,15 +47,15 @@ The experimental code CVS repository and server is kindly hosted by [[http://sou
 
 The Squid Development projects CVS server and can be reached both anonymously using pserver, online on the web, and using ssh (registered developers only).
 
-==== SSH (requires a registered SourceForge account) ====
-
-{{{
-  export CVS_RSH=ssh
-
-  cvs -dYOURUSERID@cvs.devel.squid-cache.org:/cvsroot/squid co -rBRANCHNAME -kk -d squid-BRANCHNAME squid3
-}}}
-
- (watch out for the line wrapping)
+## ==== SSH (requires a registered SourceForge account) ====
+## 
+## {{{
+##  export CVS_RSH=ssh
+##
+##  cvs -dYOURUSERID@cvs.devel.squid-cache.org:/cvsroot/squid co -rBRANCHNAME -kk -d squid-BRANCHNAME squid3
+## }}}
+##
+## (watch out for the line wrapping)
 
 ==== Web ====
 http://squid.cvs.sourceforge.net/squid/squid3/
