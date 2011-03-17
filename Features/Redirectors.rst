@@ -4,11 +4,11 @@
 
 = Feature: Redirection Helpers =
 
- * '''Goal''': Allow Squid to use custom helpers to hijack and redirect web requests on demand to another location.
+ * '''Goal''': Allow Squid to use custom helpers to redirect and/or hijack web requests on demand to another location.
 
  * '''Status''': completed
 
- * '''Version''': Squid 2.5+
+ * '''Version''': 2.5+
 
 ## * '''Developer''': unknown
 
@@ -17,17 +17,21 @@
 
 <<TableOfContents>>
 
- /!\ Redirectors are now called URL re-writers to reflect what they actually do. Which is to alter the URL being handled.
+ /!\ Some ''redirectors'' are properly called URL re-writers to reflect what they actually do. Which is to alter the URL being handled. Thanks to a long legacy in both Squid and other software (looking at Apache) there are many re-writers and few real redirectors.
 
-== What is a redirector? ==
+== What is a redirector? or re-writer? ==
 
-Squid has the ability to rewrite requested URLs.  Implemented as an external process, Squid can be configured to pass every incoming URL through a helper process that returns either a new URL, or a blank line to indicate no change.
+Squid has the ability to alter requested URLs.  Implemented as an external process, Squid can be configured to pass every incoming URL through a helper process that returns either a new URL, or a blank line to indicate no change.
 
-The ''redirector'' program is '''__NOT__''' a standard part of the Squid package.  However, some examples are provided below, and in the "contrib/" directory of the source distribution.  Since everyone has different needs, it is up to the individual administrators to write their own implementation.
+'''Redirection''' is a defined feature of HTTP where a status code between 300 and 399 is sent to the requesting client along with an alternative URL. A '''redirector''' helper in Squid uses this feature of HTTP to ''bounce'' or re-direct the client browsers to alternative URLs. You may be familiar with '''302''' responses to POST requests or between domains such as www.example.com and example.com.
+
+A '''re-writer''' does not use this feature of HTTP, but merely mangles the URL into a new form. Sometimes this is needed, usually not. HTTP defines many features which this breaks.
+
+The helper program is '''__NOT__''' a standard part of the Squid package.  However, some examples are provided below, and in the "helpers/url_rewrite/" directory of the source distribution.  Since everyone has different needs, it is up to the individual administrators to write their own implementation.
 
 == Why use a redirector? ==
 
-A redirector allows the administrator to control the locations to which his users go.  Using this in conjunction with interception proxies allows simple but effective porn control.
+A redirector allows the administrator to control the locations to which his users go.  Using this in conjunction with interception proxies allows simple but effective control.
 
 == How does it work? ==
 
