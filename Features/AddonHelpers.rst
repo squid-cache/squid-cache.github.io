@@ -50,9 +50,9 @@ Squid-2.7 (only):
 Squid-2.7 and Squid-3.1+ support:
  * Logging
   * (SquidConf:logfile_daemon)
-  * Specific feature details at [Features/LogModules]]
+  * Specific feature details at [[Features/LogModules]]
 
-Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] which differ from helper scripts in many ways.
+Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/ICAP|ICAP services]] which differ from helper scripts in many ways.
 
 == Helper protocols ==
 
@@ -64,6 +64,7 @@ Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] which differ fro
 
 === URL manipulation ===
 
+## start urlhelper protocol
 Input line received from Squid:
 {{{
 [channel-ID] URL client ident method key-pairs
@@ -88,8 +89,11 @@ Some of the key=value pairs:
 || myport=... || Squid receiving port ||
 || myip=... || Squid receiving address ||
 
+## start urlhelper protocol
+
 ==== HTTP Redirection ====
 
+## start redirector protocol
 Redirection can be performed by helpers on the SquidConf:url_rewrite_program interface. Lines performing either redirect or re-write can be produced by the same helpers on a per-request basis. Redirect is preferred since re-writing URLs introduces a large number of problems into the client HTTP experience.
 
 The input line received from Squid is detailed by the section above.
@@ -114,8 +118,11 @@ Result line sent back to Squid:
 
  {i} The '''status''' and '''URL''' are separated by a colon (''':''') as shown above instead of whitespace.
 
+## start redirector protocol
+
 ==== URL Re-Writing (Mangling) ====
 
+## start urlrewrite protocol
 URL re-writing can be performed by helpers on the SquidConf:url_rewrite_program, SquidConf:storeurl_rewrite_program and SquidConf:location_rewrite_program interfaces.
 
 WARNING: when used on the url_rewrite_program interface re-writing URLs introduces a large number of problems into the client HTTP experience. Some of these problems can be mitigated with a paired helper running on the SquidConf:location_rewrite_program interface de-mangling the server redirection URLs.
@@ -131,10 +138,13 @@ Result line sent back to Squid:
  URL::
   The URL to be used instead of the one sent by the client. If no action is required leave the URL field blank. The URL sent must be an absolute URL. ie starting with http:// or ftp:// etc.
 
+## end urlrewrite protocol
+
 === Authenticator ===
 
 ==== Basic Scheme ====
 
+## start basicauth protocol
 Input line received from Squid:
 {{{
 [channel-ID] username password
@@ -161,9 +171,11 @@ Result line sent back to Squid:
  result::
   One of the result codes: '''OK''' to indicate valid credentials, or '''ERR''' to indicate invalid credentials.
 
+## end basicauth protocol
 
 ==== Digest Scheme ====
 
+## start digestauth protocol
 Input line received from Squid:
 {{{
 [channel-ID] "username":"realm"
@@ -193,8 +205,11 @@ Result line sent back to Squid:
   The result '''ERR''' to indicate invalid credentials.<<BR>>
   On successful authentication '''result''' is the digest HA1 value to be used.
 
+## end digestauth protocol
 
 ==== Negotiate and NTLM Scheme ====
+
+## start negotiateauth protocol
  {i} These authenticator schemes do not support concurrency due to the statefulness of NTLM.
 
  YR::
@@ -219,9 +234,11 @@ Result line sent back to Squid:
  LD username::
   This helper-to-Squid response is similar to BH, except that Squid allows the user's request. Like '''AF''', it returns the '''username'''. To use this feature, you must compile Squid with the --enable-ntlm-fail-open option.
 
+## end negotiateauth protocol
 
 === Access Control (ACL) ===
 
+## start externalacl protocol
 This interface has a very flexible field layout. The administrator may configure any number or order of details from the relevant HTTP request or reply to be sent to the helper.
 
 Input line received from Squid:
@@ -259,6 +276,7 @@ Some of the key=value pairs:
 || message= || Message describing the reason. Available as %o in error pages ||
 || tag= || Apply a tag to a request (for both '''ERR''' and '''OK''' results). Only sets a tag, does not alter existing tags. ||
 || log= || String to be logged in access.log. Available as '''%ea''' in SquidConf:logformat specifications ||
+## end externalacl protocol
 
 === Logging ===
 ## start logdaemon protocol
