@@ -64,18 +64,7 @@ daemon:/var/log/squid/access.log
 
  * '''log_db_daemon''' : Log directly to an SQL database. MySQL backend default. http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html or http://sourceforge.net/projects/logmysqldaemon/
 
-==== Daemon Message Protocol ====
-Squid sends a number of commands to the log daemon. These are sent in the first byte of each input line:
-
- || L<data>\n || logfile data ||
- || R\n || rotate file ||
- || T\n || truncate file ||
- || O\n || re-open file ||
- || F\n || flush file ||
- || r<n>\n || set rotate count to <n> ||
- || b<n>\n || 1 = buffer output, 0 = don't buffer output ||
-
-No responses is expected. Any response that may be desired should occur on stderr to be viewed through cache.log.
+<<Include(Features/AddonHelpers,"Daemon Message Protocol",3,from="^## start logdaemon protocol$", to="^## end logdaemon protocol$")>>
 
 === Module: System Log ===
 
