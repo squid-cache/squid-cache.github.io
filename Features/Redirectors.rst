@@ -21,7 +21,7 @@
 
 == What is a redirector? ==
 
-Squid has the ability to rewrite requested URLs.  Implemented as an external process, Squid can be configured to pass every incoming URL through a ''redirector'' process that returns either a new URL, or a blank line to indicate no change.
+Squid has the ability to rewrite requested URLs.  Implemented as an external process, Squid can be configured to pass every incoming URL through a helper process that returns either a new URL, or a blank line to indicate no change.
 
 The ''redirector'' program is '''__NOT__''' a standard part of the Squid package.  However, some examples are provided below, and in the "contrib/" directory of the source distribution.  Since everyone has different needs, it is up to the individual administrators to write their own implementation.
 
@@ -31,101 +31,81 @@ A redirector allows the administrator to control the locations to which his user
 
 == How does it work? ==
 
-The redirector program must read URLs (one per line) on standard input,
-and write rewritten URLs or blank lines on standard output.  Note that
-the redirector program can not use buffered I/O.  Squid writes
+The helper program must read URLs (one per line) on standard input,
+and write rewritten URLs or blank lines on standard output. Squid writes
 additional information after the URL which a redirector can use to make
-a decision.  The input line consists of four fields followed by a series of optional extension values:
-{{{
-URL ip/fqdn ident method key-pairs
-}}}
+a decision.
 
-Some of the key=value pairs:
-|| myport=... || Squid receiving port ||
-|| myip=... || Squid receiving address ||
+<<Include(Features/AddonHelpers,,3,from="^## start urlhelper protocol$", to="^## end urlhelper protocol$")>>
 
+=== Using an HTTP redirector ===
 
-== Do you have any examples? ==
+The ''redirector'' feature of HTTP is a "301", "307" or "302" redirect message
+to the client specifying an alternative URL to work with.
 
-A simple very fast redirector called 
-[[http://squirm.foote.com.au/|SQUIRM]] is a good place to
-start, it uses the regex lib to allow pattern matching.
-
-Also see [[http://ivs.cs.uni-magdeburg.de/~elkner/webtools/jesred/|jesred]].
-
-The following Perl script may also be used as a template for writing
-your own redirector:
+For example; the following script might be used to redirect external clients to a secure Web server for internal documents:
 {{{
 #!/usr/bin/perl
 $|=1;
 while (<>) {
-    s@http://fromhost.com@http://tohost.org@;
-    print;
-}
-}}}
-
-== How do I make it concurrent? ==
-
-Concurrency is handled very simply. Squid labels each request sent to your program with an ID number. All you have to do is make your program send that ID back with the result.
-
-When it comes to concurrency vs children. More concurrency is often better than more children helpers.
-
-The input line now consists of five fields followed by a series of optional extension values:
-{{{
-ID URL ip/fqdn ident method key-pairs
-}}}
-
-Your output lines should contain:
-{{{
-ID URL
-}}}
-or for a 'null-result' which was previously just an empty line:
-{{{
-ID \n
-}}}
-
-The squid.conf file needs to be adapted slightly to contain this:
-{{{
-url_rewrite_concurrency 10
-}}}
-the above example uses 10 concurrent requests, you may need more depending on your Squid load.
-
-=== Can I use something other than perl? ===
-
-Almost any external script can be used to perform a redirect. See [[ConfigExamples/PhpRedirectors]] for hints on writing complex redirectors using PHP.
-
-== Can I use the redirector to return HTTP redirect messages? ==
-
-Normally, the ''redirector'' feature is used to rewrite requested URLs.
-Squid then transparently requests the new URL.  However, in some situations,
-it may be desirable to return an HTTP "301" or "302" redirect message
-to the client.
-
-Simply modify your redirector program to prepend either "301:" or "302:"
-before the new URL.  For example, the following script might be used
-to direct external clients to a secure Web server for internal documents:
-{{{#!perl
-#!/usr/bin/perl
-$|=1;
-while (<>) {
+    chomp;
     @X = split;
-    $url = $X[0];
-    if ($url =~ /^http:\/\/internal\.foo\.com/) {
+    $url = $X[1];
+    if ($url =~ /^http:\/\/internal\.example\.com/) {
         $url =~ s/^http/https/;
         $url =~ s/internal/secure/;
-        print "302:$url\n";
+        print $X[0]." 302:$url\n";
     } else {
-        print "$url\n";
+        print $X[0]." $url\n";
     }
 }
 }}}
 
-Please see sections 10.3.2 and 10.3.3 of [[ftp://ftp.isi.edu/in-notes/rfc2068.txt|RFC 2068]]
-for an explanation of the 301 and 302 HTTP reply codes.
+
+<<Include(Features/AddonHelpers,,3,from="^## start redirector protocol$", to="^## end redirector protocol$")>>
+
+=== Using a re-writer to mangle the URL as it passes ===
+
+Normally, the ''redirector'' feature is used to inform the client of alternate URLs. However, in some situations, it may be required to rewrite requested URLs. Squid then transparently requesting the new URL from the web server. This can cause many problems at both the client and server ends so should be avoided in favor of true redirection whenever possible.
+
+A simple very fast rewriter called 
+[[http://squirm.foote.com.au/|SQUIRM]] is a good place to
+start, it uses the regex lib to allow pattern matching.
+
+An even faster and slightly more featured rewriter based on SQUIRM is [[http://ivs.cs.uni-magdeburg.de/~elkner/webtools/jesred/|jesred]].
+
+The following Perl script may also be used as a template for writing
+your own URL re-writer:
+{{{
+#!/usr/bin/perl
+$|=1;
+while (<>) {
+    chomp;
+    @X = split;
+    $url = $X[1];
+    if ($url =~ /^http:\/\/internal\.example\.com/) {
+        print $X[0]." http://www.example.com/\n";
+    } else {
+        print $X[0]." \n";
+    }
+}
+}}}
+
+<<Include(Features/AddonHelpers,,3,from="^## start urlrewrite protocol$", to="^## end urlrewrite protocol$")>>
 
 == Redirections by origin servers ==
 
-Redirectors only act on ''client'' requests; if you wish to modify server-generated redirections (the HTTP ''Location'' header) you have to use a SquidConf:location_rewrite helper
+Problem:
+  You are using a re-writer to mangle the URL seen by the internal web service. These are not to be shown publicly. But the web server keeps redirecting clients to these internal URLs anyway.
+
+
+The usual URL re-writer interface only acts on ''client requests''. If you wish to modify server-generated redirections (the HTTP ''Location'' header) you have to use a SquidConf:location_rewrite helper.
+
+The server doing this is very likely also to be using these private URLs in things like cookies or embeded page content. There is nothing Squid can do about those. And worse they may not be reported by your visitors in any way indicating it is the re-writer. A browser-specific '''my login won't work''' is just one popular example of the cookie side-effect.
+
+=== Can I use something other than perl? ===
+
+Almost any external script can be used to perform a redirect. See [[ConfigExamples/PhpRedirectors]] for hints on writing complex redirectors using PHP.
 
 == Troubleshooting ==
 === FATAL: All redirectors have exited! ===
@@ -139,9 +119,21 @@ squid with a big input list, taken from your ''access.log'' perhaps.
 Also, check for coredump files from the redirector program (see
 [[SquidFaq/TroubleShooting]] to define where).
 
-== Redirector interface is broken re IDENT values ==
+=== unexpected reply on channel ... ===
 
-''I added a redirctor consisting of''
+Your Squid is configured to use concurrency but the helper is either no supporting it or sending back broken replies.
+
+If the channel mentioned contains '''-1''' the helper does not support concurrency.
+
+If the channel mentioned is from a redirector and has a large number ending in 301, 302 etc. The helper does not support concurrency.
+
+NP: URL re-writers that do not support concurrency simply fail to do any re-writing.
+
+SOLUTION: Configure concurrency to '''1''' for that helper.
+
+=== Redirector interface is broken re IDENT values ===
+
+''I added a redirector consisting of''
 {{{
 #! /bin/sh
 /usr/bin/tee /tmp/squid.log
