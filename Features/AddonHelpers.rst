@@ -89,7 +89,7 @@ Some of the key=value pairs:
 || myport=... || Squid receiving port ||
 || myip=... || Squid receiving address ||
 
-## start urlhelper protocol
+## end urlhelper protocol
 
 ==== HTTP Redirection ====
 
@@ -118,7 +118,7 @@ Result line sent back to Squid:
 
  {i} The '''status''' and '''URL''' are separated by a colon (''':''') as shown above instead of whitespace.
 
-## start redirector protocol
+## end redirector protocol
 
 ==== URL Re-Writing (Mangling) ====
 
