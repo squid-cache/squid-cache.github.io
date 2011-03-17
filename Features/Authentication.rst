@@ -156,28 +156,23 @@ In the basic scheme passwords is exchanged in plain text. In the other schemes o
 
 Squid stores cleartext passwords in its basic authentication memory cache.
 
-Squid writes cleartext usernames and passwords when talking to the external basic authentication processes.  Note, however, that this interprocess communication occurs over TCP connections bound to the loopback interface or private UNIX pipes.  Thus, its not possible for processes on other commuters or local users without root privileges to "snoop" on the authentication traffic.
+Squid writes cleartext usernames and passwords when talking to the external basic authentication processes.  Note, however, that this interprocess communication occurs over TCP connections bound to the loopback interface or private UNIX pipes.  Thus, its not possible for processes on other computers or local users without root privileges to "snoop" on the authentication traffic.
 
 Each authentication program must select its own scheme for persistent storage of passwords and usernames.
 
 For the digest scheme Squid never sees the actual password, but the backend helper needs either plaintext passwords or Digest specific hashes of the same.
 
-In the ntlm or Negotiate schemes Squid also never sees the actual password. Usually this is connected to a Windows realm or Kerberos realm and how these authentication services stores the password is outside of this document but usually it's not in plain text.
+In the NTLM or Negotiate schemes Squid also never sees the actual password. Usually this is connected to a Windows realm or Kerberos realm and how these authentication services stores the password is outside of this document but usually it's not in plain text.
+
+In side-band authentication, using the SquidConf:external_acl_type directive. There is a ''password='' value which is possibly transfered to Squid from the helper. This value is entirely '''optional''' and may in fact have no relation to a real password so we cannot be certain what risks are actually involved. When received it is generally treated by Squid as a cleartext Basic authentication password and it may be passed a such to peer proxies or services.
 
 == Can I use different authentication mechanisms together? ==
 Yes, with limitations.
 
-Commonly deployed user-agents support at least one and up to four different authentication protocols (also called ''schemes''):
+Commonly deployed user-agents support at least one and up to four different authentication protocols (also called ''schemes'').
 
- 1. Basic
- 1. Digest
- 1. NTLM
- 1. Negotiate
-
-Those schemes are explained in detail elsewhere (see SquidFaq/ProxyAuthentication, [[Features/NegotiateAuthentication]] and SquidFaq/TroubleShooting). You __can__ enable more than one at any given moment, just configure the relevant ''SquidConf:auth_param'' sections for each different scheme you want to offer to the browsers.
+Those schemes are explained in detail elsewhere (see [[Features/NegotiateAuthentication]] and SquidFaq/TroubleShooting). You __can__ enable more than one at any given moment, just configure the relevant ''SquidConf:auth_param'' sections for each different scheme you want to offer to the browsers.
 || /!\ ||Due to a '''bug''' in common User-Agents (most notably Microsoft Internet Explorer) the __order__ the auth-schemes are configured __is__ relevant. RFC RFC:2617, chapter 4.6, states: ''A user agent MUST choose to use the strongest auth-scheme it understands''. Microsoft Internet Explorer instead chooses the __first__ authe-scheme (in the order they are offered) it understands ||
-
-
 
 
 In other words, you '''SHOULD''' use this order for the ''auth_params'' directives:
@@ -207,6 +202,12 @@ Generally speaking the answer is no, at least not from within Squid.   Unix's PA
 
 == Authentication in interception and transparent modes ==
 Simply said, it's not possible to authenticate users using proxy authentication schemes when running in interception or transparent modes. See SquidFaq/InterceptionProxy for details on why.
+
+== Can I write my own authenticator? ==
+
+Squid has a large range of versatile helpers to integrate with a very large number of popular authentication backends. Including custom-built corporate databases. Take a look through the bundled helpers manuals and online search engines. You will likely find someone has already done the hard work.
+
+However, you may still find the need to write your own one for some system which has not been dreamed of yet. The protocol(s) Squid uses to communicate with its authentication helpers are very simple and documented in detail on the [[Features/AddonHelpers]] page.
 
 == Other Resources ==
  * [[http://www.papercut.com/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory|Configuring Squid Proxy To Authenticate With Active Directory]]
