@@ -10,12 +10,13 @@
 
  * '''Status''': Complete.
 
- * '''Version''': 2.6, 3.0
+ * '''Version''': 2.6+
 
  * '''Developer''': GuidoSerassio, HenrikNordstrom, RobertCollins, FrancescoChemolli
 
  * '''More''': http://squid.acmeconsulting.it/
 
+<<TableOfContents>>
 
 = Details =
 
@@ -38,12 +39,25 @@ Negotiate is a wrapper protocol around GSSAPI, which in turn is a wrapper around
 
 The real significance is that supporting it allows support of transparent Kerberos authentication to a MS Windows domain. It is significantly more secure than NTLM and also poses much less burden on the Domain Controller.
 
+== How does it work in Squid? ==
+
+Negotiate is at the one time both very simple and somewhat complex. Squids part has been kept intentionally minor and simple to improve the overall system security.
+
+The authentication helper is left to perform all of the risky security encryption and validation processes. Squid may contact it initially for a challenge token and blindly relay this to the client. Any credentials or tokens presented by the client are passed untouched to the helper.
+
+The protocol lines used to do this are described below. This same protocol is used to contact both NTLM and Negotiate authentication helpers. This allows Squid to support both Negotiate/Kerberos and Negotiate/NTLM flavours through the one protocol configuration.
+ {i} This double support does lead to some administrative confusion when the helper does not support the same flavour as the client browser.
+
+<<Include(Features/AddonHelpers,,3,from="^## start negotiateauth protocol$", to="^## end negotiateauth protocol$")>>
+
 == Squid native Windows build with NEGOTIATE support ==
 
 A native Windows build of Squid with Negotiate support. Binary package and source archive are available on http://squid.acmeconsulting.it/.
 
 
 == What do I need to do to support NEGOTIATE on Squid? ==
+
+ (X) This section appears to be extremely outdated. There have been Negotiate/Kerberos helpers for Unix, Linux, BSD and their derived systems for quite some time now.
 
 Just like any other security protocol, support for Negotiate in Squid is made up by two parts: code within Squid to talk to the client and one or more authentication helpers which perform the grunt work. Of course the protocol needs to be enabled in the configuration file for everything to work.
 
