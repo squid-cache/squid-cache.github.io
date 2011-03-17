@@ -50,6 +50,7 @@ Squid-2.7 (only):
 Squid-2.7 and Squid-3.1+ support:
  * Logging
   * (SquidConf:logfile_daemon)
+  * Specific feature details at [Features/LogModules]]
 
 Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] which differ from helper scripts in many ways.
 
@@ -259,6 +260,20 @@ Some of the key=value pairs:
 || tag= || Apply a tag to a request (for both '''ERR''' and '''OK''' results). Only sets a tag, does not alter existing tags. ||
 || log= || String to be logged in access.log. Available as '''%ea''' in SquidConf:logformat specifications ||
 
+=== Logging ===
+## start logdaemon protocol
+Squid sends a number of commands to the log daemon. These are sent in the first byte of each input line:
+
+ || L<data>\n || logfile data ||
+ || R\n || rotate file ||
+ || T\n || truncate file ||
+ || O\n || re-open file ||
+ || F\n || flush file ||
+ || r<n>\n || set rotate count to <n> ||
+ || b<n>\n || 1 = buffer output, 0 = don't buffer output ||
+
+No response is expected. Any response that may be desired should occur on stderr to be viewed through cache.log.
+## end logdaemon protocol
 
 ----
 CategoryFeature
