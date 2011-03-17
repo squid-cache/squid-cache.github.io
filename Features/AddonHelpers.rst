@@ -127,6 +127,8 @@ URL re-writing can be performed by helpers on the SquidConf:url_rewrite_program,
 
 WARNING: when used on the url_rewrite_program interface re-writing URLs introduces a large number of problems into the client HTTP experience. Some of these problems can be mitigated with a paired helper running on the SquidConf:location_rewrite_program interface de-mangling the server redirection URLs.
 
+## start urlrewrite onlyprotocol
+
 Result line sent back to Squid:
 {{{
 [channel-ID] URL
