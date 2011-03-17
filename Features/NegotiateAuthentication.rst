@@ -23,19 +23,20 @@ There are four major flavours of authentication available in the HTTP world at t
  * [[WikiPedia:BasicAuthenticationScheme|Basic]] - been around since the very beginning
  * WikiPedia:NTLM - Microsoft's first attempt at single-sign-on
  * [[WikiPedia:DigestAccessAuthentication|Digest]] - w3c's attempt at having a secure authentication system
- * [[WikiPedia:SPNEGO|Negotiate (aka SPNEGO)]] - Microsoft's second attempt at single-sign-on. Maybe, as it often happens to them, they'll get it right by version 3.0
+ * [[WikiPedia:SPNEGO|Negotiate (aka SPNEGO)]] - Microsoft's second attempt at single-sign-on.
 
-There are reports of a [[WikiPedia:KerberosProtocol|Kerberos]] authentication scheme being seen in the wild (ISA Server 2004). If you see it, shoot on sight. Microsoft recommends to use Negotiate instead.
 
-Squid supports Basic, NTLM (v1 and v2), Digest, and from Squid-2.6 Negotiate.
+ /!\ There are reports of a [[WikiPedia:KerberosProtocol|Kerberos]] authentication scheme being seen in the wild (ISA Server 2004). If you see it, shoot on sight. The ''official'' version of Kerberos displays in HTTP as '''Negotiate''' scheme. Its formal name when discussed is '''Negotiate/Kerberos''' to differentiate from Negotiate/NTLM and other GSSAPI versions.
 
-Currently only WikiPedia:Firefox 1.5, WikiPedia:SeaMonkey 1.0 and latest beta of [[WikiPedia:InternetExplorer|Internet Explorer]] 7 are known to supporting Negotiate authentication with Squid and ISA server 2004
+Squid supports Basic, NTLM (SMB LM, v1 and v2), Digest, and from Squid-2.6 Negotiate.
+
+Currently only WikiPedia:Firefox 1.5, WikiPedia:SeaMonkey 1.0 and [[WikiPedia:InternetExplorer|Internet Explorer]] 7+ are known to support Negotiate authentication with Squid and ISA server 2004
 
 == So what is this "NEGOTIATE" thing anyways? ==
 
 Negotiate is a wrapper protocol around GSSAPI, which in turn is a wrapper around either Kerberos or NTLM. Why a wrapper of a wrapper? No one outside Microsoft knows at this time. GSSAPI would have been more than enough.
 
-The real significance is that supporting it allows to support transparent Kerberos authentication to a MS Windows domain. It is significantly more secure than NTLM and also poses much less burden on the Domain Controller.
+The real significance is that supporting it allows support of transparent Kerberos authentication to a MS Windows domain. It is significantly more secure than NTLM and also poses much less burden on the Domain Controller.
 
 == Squid native Windows build with NEGOTIATE support ==
 
@@ -46,7 +47,7 @@ A native Windows build of Squid with Negotiate support. Binary package and sourc
 
 Just like any other security protocol, support for Negotiate in Squid is made up by two parts: code within Squid to talk to the client and one or more authentication helpers which perform the grunt work. Of course the protocol needs to be enabled in the configuration file for everything to work.
 
-The production-level helper will be Samba4's ntlm_auth on Unix-like systems, and win32_negotiate_auth.exe on windows. Unfortunately Samba 4 is not quite there yet.
+The production-level helper on Unix-like systems will be Samba4's ntlm_auth or squid_kerb_auth by Markus Moeller, and win32_negotiate_auth.exe on windows. Unfortunately Samba 4 is not quite there yet (Note: statment made in 2005, is it still relevant?).
 
 If you want to test the UNIX side of things out, there actually is a way to access the win32 helper from a Unix box, and that is by performing an "authorized man-in-the-middle attack", as follows:
 
