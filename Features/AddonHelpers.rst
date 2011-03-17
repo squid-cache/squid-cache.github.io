@@ -67,7 +67,7 @@ Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/I
 ## start urlhelper protocol
 Input line received from Squid:
 {{{
-[channel-ID] URL client ident method key-pairs
+[channel-ID] URL ip/fqdn ident method key-pairs
 }}}
 
  channel-ID::
@@ -76,8 +76,11 @@ Input line received from Squid:
  URL::
   The URL received from the client. In Squid with ICAP support, this is the URL after ICAP REQMOD has taken place.
 
- client::
-  This is the IP address of the client. Squid releases prior to 3.1 might send the FQDN rDNS of the client instead.
+ ip::
+  This is the IP address of the client. Followed by a slash ('''/''') as shown above.
+
+ fqdn::
+  The FQDN rDNS of the client, if any is known. Squid does not normally perform lookup unless needed by logging or ACLs. Squid does not wait for any results unless ACLs are configured to wait. If none is available '''-''' will be sent to the helper instead.
 
  ident::
   The IDENT protocol username (if known) of the client machine. Squid will not wait for IDENT username to become known unless there are ACL which depend on it. So at the time re-writers are run the IDENT username may not yet be known. If none is available '''-''' will be sent to the helper instead.
