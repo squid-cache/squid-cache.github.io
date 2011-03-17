@@ -67,7 +67,7 @@ Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/I
 ## start urlhelper protocol
 Input line received from Squid:
 {{{
-[channel-ID] URL ip/fqdn ident method key-pairs
+[channel-ID] URL ip/fqdn ident method [urlgroup] key-pairs
 }}}
 
  channel-ID::
@@ -88,7 +88,11 @@ Input line received from Squid:
  method::
   The HTTP request method. URL alterations and particularly redirection are only possible on certain methods, and some such as POST and CONNECT require special care.
 
-Some of the key=value pairs:
+ urlgroup::
+  Squid-2 will send this field with the URL-grouping tag which can be configured on SquidConf:http_port. Squid-3.x will not send this field.
+
+ key-pairs::
+  Some of the key=value pairs:
 || myport=... || Squid receiving port ||
 || myip=... || Squid receiving address ||
 
