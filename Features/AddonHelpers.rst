@@ -104,12 +104,14 @@ Result line sent back to Squid:
   When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
 
  status::
-   The HTTP 301, 302 or 307 status code followed by a colon (''':'''). Please see section 10.3 of RFC RFC:2616 for an explanation of the HTTP redirect codes and which request methods they may be sent on.
+   The HTTP 301, 302 or 307 status code. Please see section 10.3 of RFC RFC:2616 for an explanation of the HTTP redirect codes and which request methods they may be sent on.
 
  URL::
   The URL to be used instead of the one sent by the client. This must be an absolute URL. ie starting with http:// or ftp:// etc.
 
  {i} If no action is required leave status:URL area blank.
+
+ {i} The '''status''' and '''URL''' are separated by a colon (''':''') as shown above instead of whitespace.
 
 ==== URL Re-Writing (Mangling) ====
 
@@ -138,13 +140,14 @@ Input line received from Squid:
 }}}
 
  channel-ID::
-  This is the concurrency channel number. When concurrency is turned off ('''concurrency=1''') in SquidConf:external_acl_type this field and the following space will be completely missing.
+  This is the concurrency channel number. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
 
  username::
-  The username field sent by the client in HTTP headers. May be empty. The number of whitespace delimiter characters is important.
+  The username field sent by the client in HTTP headers. It may be empty or missing.
 
  password::
-  The password value sent by the client in HTTP headers. May be empty. The number of whitespace delimiter characters is important.
+  The password value sent by the client in HTTP headers. May be empty or missing.
+
 
 Result line sent back to Squid:
 {{{
@@ -160,9 +163,35 @@ Result line sent back to Squid:
 
 ==== Digest Scheme ====
 
-'''TODO: document'''.
 Input line received from Squid:
+{{{
+[channel-ID] "username":"realm"
+}}}
+
+ channel-ID::
+  This is the concurrency channel number. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
+
+ username::
+  The username field sent by the client in HTTP headers. Sent as a "double-quoted" string. May be empty. It may be configured to use UTF-8 bytes instead of the ISO-8859-1 received.
+
+ realm::
+  The digest auth realm string configured in squid.conf. Sent as a "double-quoted" string.
+
+{i} The '''username''' and '''realm''' strings are both double quoted ('''"''') and separated by a colon (''':''') as shown above.
+
+
 Result line sent back to Squid:
+{{{
+[channel-ID] result
+}}}
+
+ channel-ID::
+  When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
+
+ result::
+  The result '''ERR''' to indicate invalid credentials.<<BR>>
+  On successful authentication '''result''' is the digest HA1 value to be used.
+
 
 ==== Negotiate and NTLM Scheme ====
  {i} These authenticator schemes do not support concurrency due to the statefulness of NTLM.
