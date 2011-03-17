@@ -1,1 +1,1 @@
-redirect:Features/AddonHelpers
+#REDIRECT Features/AddonHelpers
