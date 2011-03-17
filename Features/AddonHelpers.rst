@@ -1,0 +1,235 @@
+##master-page:Features/FeatureTemplate
+#format wiki
+#language en
+#faqlisted yes
+
+= Feature: Add-On Helpers for Request Manipulation =
+
+ * '''Goal''': Support simple customization of request handling for local requirements.
+
+ * '''Status''': Completed. 2.5
+
+ * '''Version''': 2.5
+
+## * '''Developer''': unknown
+
+ * '''More''': <<BR>>
+  (NTLM) http://squid.sourceforge.net/ntlm/squid_helper_protocol.html <<BR>>
+  (Digest auth)  [[KnowledgeBase/LdapBackedDigestAuthentication]] <<BR>>
+  (Kerberos auth) [[ConfigExamples/Authenticate/Kerberos]]
+
+<<TableOfContents>>
+
+== Details ==
+
+Every network and installation have their own criteria for operation. The squid developers and community do not have the time or inclination to write code for every minor situation. Instead we provide ways to easily extend various operations with local add-on scripts or programs we call helpers.
+
+Helpers can be written in any language you like. They can be executable programs or interpreted scripts.
+
+The interface with Squid is very simple. The helper is passed a limited amount of information on stdin to perform their expected task. The result is passed back to squid via stdout. With any errors or debugging traces sent back on stderr.
+
+== Squid operations which provide a helper interface ==
+
+Squid-2.6 and later all support:
+ * URL manipulation: re-writing and redirection
+  * (SquidConf:url_rewrite_program, SquidConf:url_rewrite_access)
+  * Specific feature details at [[Features/Redirectors]]
+ * ACL logic tests
+  * (SquidConf:external_acl_type)
+ * Authentication
+  * (SquidConf:auth_param)
+  * Specific feature details at [[Features/Authentication]] [[Features/NegotiateAuthentication]]
+
+Squid-2.7 (only):
+ * HTTP Server redirection replies
+  * (SquidConf:location_rewrite_program, SquidConf:location_rewrite_access)
+ * Cache object de-duplication
+  * (SquidConf:storeurl_rewrite_program, SquidConf:storeurl_rewrite_access)
+  * Specific feature details at [[Features/StoreUrlRewrite]]
+
+Squid-2.7 and Squid-3.1+ support:
+ * Logging
+  * (SquidConf:logfile_daemon)
+
+Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] which differ from helper scripts in many ways.
+
+== Helper protocols ==
+
+{i} Squid-2.6 and later all support concurrency, however the bundled helpers and many third-party commercial helpers do not. This is changing, the use of concurrency is encouraged to improve performance. The relevant squid.conf concurrency setting must match the helper concurrency support. The [[Features/HelperMultiplexer|helper multiplexer]] wrapper can be used to add concurrency benefits to most non-concurrent helpers.
+
+ /!\ '''WARNING:''' For every line sent by Squid exactly one line is expected back. Some script language such as perl and python need to be careful about the number of newlines in their output.
+
+ /!\ Note that the helper programs other than logging can not use buffered I/O.
+
+=== URL manipulation ===
+
+Input line received from Squid:
+{{{
+[channel-ID] URL client ident method key-pairs
+}}}
+
+ channel-ID::
+  This is the concurrency channel number. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
+
+ URL::
+  The URL received from the client. In Squid with ICAP support, this is the URL after ICAP REQMOD has taken place.
+
+ client::
+  This is the IP address of the client. Squid releases prior to 3.1 might send the FQDN rDNS of the client instead.
+
+ ident::
+  The IDENT protocol username (if known) of the client machine. Squid will not wait for IDENT username to become known unless there are ACL which depend on it. So at the time re-writers are run the IDENT username may not yet be known. If none is available '''-''' will be sent to the helper instead.
+
+ method::
+  The HTTP request method. URL alterations and particularly redirection are only possible on certain methods, and some such as POST and CONNECT require special care.
+
+Some of the key=value pairs:
+|| myport=... || Squid receiving port ||
+|| myip=... || Squid receiving address ||
+
+==== HTTP Redirection ====
+
+Redirection can be performed by helpers on the SquidConf:url_rewrite_program interface. Lines performing either redirect or re-write can be produced by the same helpers on a per-request basis. Redirect is preferred since re-writing URLs introduces a large number of problems into the client HTTP experience.
+
+The input line received from Squid is detailed by the section above.
+
+Redirectors send a slightly different format of line back to Squid. 
+
+Result line sent back to Squid:
+{{{
+[channel-ID] status:URL
+}}}
+
+ channel-ID::
+  When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
+
+ status::
+   The HTTP 301, 302 or 307 status code followed by a colon (''':'''). Please see section 10.3 of RFC RFC:2616 for an explanation of the HTTP redirect codes and which request methods they may be sent on.
+
+ URL::
+  The URL to be used instead of the one sent by the client. This must be an absolute URL. ie starting with http:// or ftp:// etc.
+
+ {i} If no action is required leave status:URL area blank.
+
+==== URL Re-Writing (Mangling) ====
+
+URL re-writing can be performed by helpers on the SquidConf:url_rewrite_program, SquidConf:storeurl_rewrite_program and SquidConf:location_rewrite_program interfaces.
+
+WARNING: when used on the url_rewrite_program interface re-writing URLs introduces a large number of problems into the client HTTP experience. Some of these problems can be mitigated with a paired helper running on the SquidConf:location_rewrite_program interface de-mangling the server redirection URLs.
+
+Result line sent back to Squid:
+{{{
+[channel-ID] URL
+}}}
+
+ channel-ID::
+  When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
+
+ URL::
+  The URL to be used instead of the one sent by the client. If no action is required leave the URL field blank. The URL sent must be an absolute URL. ie starting with http:// or ftp:// etc.
+
+=== Authenticator ===
+
+==== Basic Scheme ====
+
+Input line received from Squid:
+{{{
+[channel-ID] username password
+}}}
+
+ channel-ID::
+  This is the concurrency channel number. When concurrency is turned off ('''concurrency=1''') in SquidConf:external_acl_type this field and the following space will be completely missing.
+
+ username::
+  The username field sent by the client in HTTP headers. May be empty. The number of whitespace delimiter characters is important.
+
+ password::
+  The password value sent by the client in HTTP headers. May be empty. The number of whitespace delimiter characters is important.
+
+Result line sent back to Squid:
+{{{
+[channel-ID] result
+}}}
+
+ channel-ID::
+  When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
+
+ result::
+  One of the result codes: '''OK''' to indicate valid credentials, or '''ERR''' to indicate invalid credentials.
+
+
+==== Digest Scheme ====
+
+'''TODO: document'''.
+Input line received from Squid:
+Result line sent back to Squid:
+
+==== Negotiate and NTLM Scheme ====
+ {i} These authenticator schemes do not support concurrency due to the statefulness of NTLM.
+
+ YR::
+  Squid sends this to a helper when it needs a new challenge token. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the SquidConf:auth_param max_challenge_lifetime and max_challenge_uses parameters. The helper should respond with a '''TT''' message.
+
+ TT challenge::
+  Helper sends this message back to Squid and includes a challenge token. It is sent in response to a '''YR''' request. The challenge is base64-encoded, as defined by RFC RFC:2045.
+
+
+ KK credentials::
+  Squid sends this to a helper when it wants to authenticate a user's credentials. The helper responds with either '''AF''', '''NA''', '''BH''', or '''LD'''. The credentials are an encoded blob exactly as received in the HTTP headers.
+
+ AF username::
+  The helper sends this message back to Squid when the user's authentication credentials are valid. The helper sends the '''username''' with this message because Squid doesn't try to decode the HTTP Authorization header. The '''username''' given here is what gets used by Squid for this client request.
+
+ NA reason::
+  The helper sends this message back to Squid when the user's credentials are invalid. It also includes a '''reason''' string that Squid can display on an error page.
+
+ BH reason::
+  The helper sends this message back to Squid when the validation procedure fails. This might happen, for example, when the helper process is unable to communicate with a Windows NT domain controller. Squid rejects the user's request.
+
+ LD username::
+  This helper-to-Squid response is similar to BH, except that Squid allows the user's request. Like '''AF''', it returns the '''username'''. To use this feature, you must compile Squid with the --enable-ntlm-fail-open option.
+
+
+=== Access Control (ACL) ===
+
+This interface has a very flexible field layout. The administrator may configure any number or order of details from the relevant HTTP request or reply to be sent to the helper.
+
+Input line received from Squid:
+{{{
+[channel-ID] format-options [acl-value [acl-value ...]]
+}}}
+
+ channel-ID::
+  This is the concurrency channel number. When concurrency is turned off ('''concurrency=1''') in SquidConf:external_acl_type this field and the following space will be completely missing.
+
+ format-options::
+  This is the flexible series of tokens configured as the '''FORMAT''' area of SquidConf::external_acl_type. The tokens are space-delimited and exactly match the order of '''%''' tokens in the configured '''FORMAT'''. By default in current releases these tokens are also URL-encoded according to RFC RFC:1738 to protect against whitespace and binary data problems.
+
+ acl-value::
+  Some ACL tests such as group name comparisons pass their test values to the external helper following the admin configured FORMAT. Depending on the ACL these may be sent one value at a time, as a list of values, or nothing may be sent. By default in current releases these tokens are also URL-encoded according to RFC RFC:1738 to protect against whitespace and binary data problems.
+
+
+Result line sent back to Squid:
+{{{
+[channel-ID] result key-pairs
+}}}
+
+ channel-ID::
+  When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
+
+ result::
+  One of the result codes '''OK''' or '''ERR''' to indicate a pass/fail result of this ACL test. The configured usage of the external ACL in squid.conf determines what this result means.
+
+ key-pairs::
+  Some optional details returned to Squid. These have the format '''key=value'''. see SquidConf:external_acl_type for the full list supported by your Squid.
+
+Some of the key=value pairs:
+|| user= || The users name (login) ||
+|| password= || The users password (for login= SquidConf:cache_peer option) ||
+|| message= || Message describing the reason. Available as %o in error pages ||
+|| tag= || Apply a tag to a request (for both '''ERR''' and '''OK''' results). Only sets a tag, does not alter existing tags. ||
+|| log= || String to be logged in access.log. Available as '''%ea''' in SquidConf:logformat specifications ||
+
+
+----
+CategoryFeature
