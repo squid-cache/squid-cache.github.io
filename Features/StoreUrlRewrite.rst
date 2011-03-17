@@ -2,17 +2,13 @@
 #format wiki
 #language en
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-
 = Feature: Store URL Rewriting? =
 
  * '''Goal''': Separate out the URL used for storage lookups from the URL used for forwarding. This allows for multiple destination URLs to reference the same backend content and cut back on duplicated content, both for forward proxies (think "google maps") and CDN type reverse proxies.
 
  * '''Status''': ''Completed''.
 
- * '''ETA''':
-
- * '''Version''': Squid-2.HEAD; Squid-2.7
+ * '''Version''': 2.7
 
  * '''Developer''': AdrianChadd.
 
@@ -20,6 +16,7 @@
 
  * '''Sponsored by''': Xenion Communications - [[http://www.xenion.com.au/]]
 
+<<TableOfContents>>
 
 == Details ==
 
@@ -34,7 +31,7 @@ The current changes to Squid-2.HEAD implement the functionality through a number
  * The "store_url" URLs are used for the store key lookup and storage
  * A new meta type has been added - STORE_META_STOREURL - which means the on-disk object format has slightly changed. There's no big deal here - Squid may warn about an unknown meta data type if you rollback to another squid version after trying this feature but it won't affect the operation of your cache.
 
-== To Use ==
+== Squid Configuration ==
 
 First, you need to determine which URLs to send to the store url rewriter.
 
@@ -60,11 +57,35 @@ Then you need to configure a rewriter helper.
 storeurl_rewrite_program /Users/adrian/work/squid/run/local/store_url_rewrite
 }}}
 
-Then you need a helper. Here's what I've been using:
+
+Then, to cache the content in Google Maps/etc, you need to change the defaults so content with "?"'s in the URL aren't automatically made uncachable. Search your configuration and remove these two lines:
 
 {{{
-$| = 1;
+#We recommend you to use the following two lines.
+acl QUERY urlpath_regex cgi-bin \?
+cache deny QUERY 
+}}}
 
+Make sure you check your configuration file for cache and no_cache directives; you need to disable
+them and use refresh_patterns where applicable to tell Squid what to not cache!
+
+Then, add these refresh patterns at the '''bottom''' of your SquidConf:refresh_pattern section.
+
+{{{
+refresh_pattern -i (/cgi-bin/|\?)   0       0%      0
+refresh_pattern .                   0       20%     4320
+}}}
+
+These rules make sure that you don't try caching cgi-bin and ? URLs unless expiry information is explictly given. Make sure you don't add the rules after a "refresh_pattern ." line; refresh_pattern entries are evaluated in order and the first match is used! The last entry must be the "." entry!
+
+
+== Storage URL re-writing Helper ==
+
+Here's what I've been using:
+
+{{{
+#!/usr/local/sbin/perl
+$| = 1;
 while (<>) {
         chomp;
         # print STDERR $_ . "\n";
@@ -83,31 +104,22 @@ while (<>) {
 }
 }}}
 
-Finally, to cache the content in Google Maps/etc, you need to change the defaults so content with "?"'s in the URL aren't automatically made uncachable. Search your configuration and remove these two lines:
+A simple very fast rewriter called [[http://squirm.foote.com.au/|SQUIRM]] is also good to check out, it uses the regex lib to allow pattern matching.
 
-{{{
-#We recommend you to use the following two lines.
-acl QUERY urlpath_regex cgi-bin \?
-cache deny QUERY 
-}}}
+An even faster and slightly more featured rewriter is [[http://ivs.cs.uni-magdeburg.de/~elkner/webtools/jesred/|jesred]].
 
-and replace it with:
+== How do I make my own? ==
 
-{{{
-cache allow all
-}}}
+The helper program must read URLs (one per line) on standard input,
+and write rewritten URLs or blank lines on standard output. Squid writes
+additional information after the URL which a redirector can use to make
+a decision.
 
-Make sure you check your configuration file for cache and no_cache directives; you need to disable
-them and use refresh_patterns where applicable to tell Squid what to not cache!
+<<Include(Features/AddonHelpers,,3,from="^## start urlhelper protocol$", to="^## end urlhelper protocol$")>>
 
-Then, add these refresh patterns at the '''bottom''' of your refresh_pattern section.
+<<Include(Features/AddonHelpers,,3,from="^## start urlrewrite onlyprotocol$", to="^## end urlrewrite protocol$")>>
 
-{{{
-refresh_pattern -i (/cgi-bin/|\?)   0       0%      0
-refresh_pattern .                   0       20%     4320
-}}}
-
-These rules make sure that you don't try caching cgi-bin and ? URLs unless expiry information is explictly given. Make sure you don't add the rules after a "refresh_pattern ." line; refresh_pattern entries are evaluated in order and the first match is used! The last entry must be the "." entry!
+== Testing ==
 
 Finally, restart Squid-2.HEAD and browse google maps; check your access.log and store.log to make sure URLs are being cached! Check store.log to make sure that the google maps/earth images are being stored in the cache (SWAPOUT) and not just RELEASEd immediately.
 
