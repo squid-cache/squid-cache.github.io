@@ -38,9 +38,9 @@ Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for 
 
 For Squid-3 we operate the development trunk and web code browsers on [[http://bazaar-vcs.org/|Bazaar]]. If you prefer other VCS tools read-only mirrors are available via several other systems listed below.
 
-=== Required Tools ===
+=== Repository Tools ===
 
- * '''Squid-3''': [[Squid3VCS|Bazaar]]
+ * '''Squid-3''': [[BzrInstructions|Bazaar]]
  * '''Squid-2''': [[CvsInstructions|CVS]]
 
 === Required Build Tools ===
