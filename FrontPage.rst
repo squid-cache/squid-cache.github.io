@@ -39,17 +39,17 @@ If you experience problems with the site or the contents, please see ReportingWi
 
 == Developers corner ==
 
-DeveloperResources section has instructions for [[Squid3VCS|Bazaar]] and [[CvsInstructions|CVS]] access, coding guidelines, and other useful documentation.
+DeveloperResources section has instructions for [[BzrInstructions|Bazaar]] and [[CvsInstructions|CVS]] access, coding guidelines, and other useful documentation.
 
 Every now and then we try to organize some [[MeetUps|events, developer meetups or code sprints]]. In the MeetUps page you'll find schedules, notes and other event-related documentation.
 
 == Related resources ==
 
  * The main Squid [[http://www.squid-cache.org/|site]].
- * The Squid development [[http://devel.squid-cache.org|site]].
- * The Bugzilla [[http://www.squid-cache.org/bugs/index.cgi|database]].
+ * The Bugzilla [[http://bugs.squid-cache.org/index.cgi|database]].
  * The Squijj refresh_pattern analysis [[http://www.mnot.net/squij/|program]].
  * The Calamaris log file analysis [[http://freshmeat.net/projects/calamaris/|tool]].
  * Visolve's  configuration manuals for [[http://squid.visolve.com/squid/configuration_manual_30.htm|Squid 3.0]] and [[http://www.visolve.com/squid/squid26/contents.php|Squid 2.6]]
  * Martin Stransky's Squid [[http://people.redhat.com/stransky/squid/|page]]. Martin maintains the official Red Hat package.
  * Other [[ExternalLinks|external links]]
+ * The Squid development [[http://devel.squid-cache.org|site] (obsolete)].
