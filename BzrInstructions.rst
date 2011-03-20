@@ -1,12 +1,9 @@
+= Bazaar =
+Bazaar is a distributed VCS written in python. It offers both drop-in CVS replacement work flow (use checkouts to work on code), and full distributed work flow (every copy is a new branch), up to the user to work as they want.
+
 <<TableOfContents>>
 
  Back to DeveloperResources
-
-= Overview =
-For squid 3.x we are migrating the development trunk and web code browsers to [[http://bazaar-vcs.org/|Bazaar]].
-
-= Bazaar =
-Bazaar is a distributed VCS written in python. It offers both drop-in CVS replacement work flow (use checkouts to work on code), and full distributed work flow (every copy is a new branch), up to the user to work as they want.
 
 = Installation =
 Bazaar is available in most O/S's these days: http://bazaar-vcs.org/Download.
@@ -31,13 +28,17 @@ For anonymous access/mirroring/etc:
 {{{
 http://bzr.squid-cache.org/bzr/squid3/trunk
 }}}
+
+== Repository Mirrors ==
 Also mirrors are available at:
 
  * https://code.launchpad.net/~squid/squid/3-trunk
  * https://code.launchpad.net/~squid/squid/3.2
  * https://code.launchpad.net/~squid/squid/3.1
  * https://code.launchpad.net/~squid/squid/3.0
- * Other developer code branches: https://code.launchpad.net/squid
+
+== Repository Developer branches ==
+ * https://code.launchpad.net/squid
 
 = Web view =
 
