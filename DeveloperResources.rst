@@ -5,9 +5,7 @@
 == The Bleeding Edge ==
 
  '''Squid-3:'''
-The Squid project has now moved to Bazaar as its configuration management tool (see [[Squid3VCS]]).
-
-To interactively browse the repository you can use [[https://code.launchpad.net/squid|LaunchPad]], the development trunk is at http://bazaar.launchpad.net/~squid/squid/3-trunk/files.
+The Squid project has moved to Bazaar as its configuration management tool. See [[BzrInstructions]]) for details about using thse tools and the web viewers available.
 
 || {i} || In order to use the repository sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in ProgrammingGuide/Bootstrap.||
 
@@ -37,6 +35,9 @@ If you are looking for a new project to work on check the feature wish list at [
 
 Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still. There are also optional behaviours in the spec not in the checklist which should be added.
 
+
+For Squid-3 we operate the development trunk and web code browsers on [[http://bazaar-vcs.org/|Bazaar]]. If you prefer other VCS tools read-only mirrors are available via several other systems listed below.
+
 === Required Tools ===
 
  * '''Squid-3''': [[Squid3VCS|Bazaar]]
@@ -60,20 +61,16 @@ We are currently setting up a BuildFarm. Additions to it are welcome.
 
 If you are looking to test the latest release of Squid for your own use you will need to grab yourself a copy of the sources from Bazaar, CVS, rsync, or one of the daily snapshot tarballs.
 
-To test a specific project branch you will need to pull the branch code directly from bzr  https://code.launchpad.net/squid
+To test a specific project branch you will need to pull the branch code directly from bzr https://code.launchpad.net/squid
+
+ {i} Note that repository checkouts fro Squid-3 require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
 
 === Getting the sources via Bazaar (bzr) ===
 
-'''Squid-3''':
-
-see [[Squid3VCS]]
-
- {i} Note that Bazaar checkouts require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
-
+see [[BzrInstructions]]
 
 === Getting the sources via CVS ===
 
-'''Squid-2''':
 see [[CvsInstructions]]
 
  {i} NP: This is primarily for Squid-2 sources. Squid-3 uses Bazaar. Though sourceforge mirror does retain a CVS mirror of Squid-3 for read-only access.
@@ -88,13 +85,14 @@ To use this feature you may use
 {{{
 $ rsync rsync://squid-cache.org/source
 (sample output)
-drwxr-xr-x         512 2008/04/06 17:28:57 .
-drwxr-xr-x        1024 2008/04/06 17:22:10 squid-2.6
-drwxr-xr-x        1024 2008/04/06 17:22:20 squid-2.7
-drwxr-xr-x        1024 2008/04/06 17:21:55 squid-2
-drwxr-xr-x        1024 2008/04/06 17:22:58 squid-3.0
-drwxr-xr-x        1024 2008/04/06 17:22:58 squid-3.1
-drwxr-xr-x        1024 2008/04/06 17:56:42 squid-3
+drwxr-xr-x         512 2011/03/20 19:14:28 .
+drwxr-xr-x        1024 2009/09/17 14:13:26 squid-2.6
+drwxr-xr-x        1024 2011/03/20 19:14:06 squid-2.7
+drwxr-xr-x        1024 2010/07/02 13:10:53 squid-2
+drwxr-xr-x        1024 2010/07/02 13:17:48 squid-3.0
+drwxr-xr-x        1024 2011/03/20 19:14:21 squid-3.1
+drwxr-xr-x        1024 2011/03/20 19:14:26 squid-3.2
+drwxr-xr-x        1024 2011/03/20 19:14:13 squid-3
 }}}
 After you've selected the version you wish to download you can:
 {{{
