@@ -4,6 +4,8 @@ Running multiple instances of Squid on a system is not hard, but it requires the
 
 <<TableOfContents>>
 
+ /!\ This page covers the details relevant to [[Squid-3.1]] and older installations. [[Squid-3.2]] has basic [[Features/SmpScale|SMP scaling support]] available by default which resolves many of these problems.
+
 == Relevant squid.conf directives ==
  * SquidConf:visible_hostname
   you may want to keep this unique for troubleshooting purposes
