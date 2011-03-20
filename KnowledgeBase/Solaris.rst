@@ -89,11 +89,14 @@ To fix this you either need to:
 
 == Building from VCS ==
 
-If you wish to build from the [[Squid3VCS]] you also need the relevant VCS system, which can either be (for squid-2)
+If you wish to build from the repository you also need the relevant VCS system, which can either be:
+ * CVS (see [[CvsInstructions]] for Squid-3 or Squid-2 repository details)
 {{{
 pkg install SUNWcvs
 }}}
-or (for squid-3), you need to manually download bzr from [[http://bazaar-vcs.org/]] and install it. It's simple, and its prerequisites (python) are present in the base setup.
+
+ * Bazaar (see [[BzrInstructions]] for Squid-3 repository details.
+  You need to manually download bzr from [[http://bazaar-vcs.org/]] and install it. It's simple, and its prerequisites (python) are present in the base setup.
 
 == Build-Farm ==
 
