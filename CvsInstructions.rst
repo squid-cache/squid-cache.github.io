@@ -2,15 +2,17 @@
 
 <<TableOfContents>>
 
-== Next-Generation Source Control solution ==
-/!\ a wide consensus has been reached towards replacing CVS with another more modern Version Control solution. Please see [[Squid3VCS]].
+== Installation ==
+
+/!\ a wide consensus has been reached towards replacing CVS with another more modern Version Control solution. If you do not already have a VCS please see [[BzrInstructions]].
 
 
-== CVS access to current Squid source ==
 ## If you need to get CVS, start at [[http://www.cvshome.org/|CVSHome]].
 
 ## If you need to learn about CVS, read this great
 ## [[http://www.network-theory.co.uk/docs/cvsmanual/|reference manual]].
+
+== Repository Location ==
 
 To checkout the current source tree from our CVS server:
 {{{
@@ -37,15 +39,36 @@ To update your source tree later, type:
   % cvs update
 }}}
 
-== Browsing the CVS sources ==
+=== Repository Mirrors ===
+
+{{{
+  cvs -d:pserver:anonymous@cvs.devel.squid-cache.org:/cvsroot/squid login
+}}}
+ ...blank password, just press enter...
+{{{
+  cvs -d:pserver:anonymous@cvs.devel.squid-cache.org:/cvsroot/squid co -rHEAD -d squid-HEAD squid3
+}}}
+
+ {i} Squid-3 STABLE branches are not mirrored in CVS.
+
+## All development in this repository takes place on branches with automatic change tracking from the master version.
+
+/!\  Note: If you are looking for the main Squid sources please see [[BzrInstructions]] and use the Bazaar instead. 
+
+
+== Web View ==
 To view the CVS history online and browse the current sources use the [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb interface]].
 
-== Access to CVS developer branches (obsolete) ==
+[[http://sourceforge.net/|SourceForge]] mirror web view  http://squid.cvs.sourceforge.net/squid/squid3/
+
+== Repository developer branches (obsolete) ==
+
 Many works in progress are hosted in our public [[http://devel.squid-cache.org/CVS.html|developer CVS]] repository. Some further information for developers and testers is on the developer site at http://devel.squid-cache.org/
 
 The experimental code CVS repository and server is kindly hosted by [[http://sourceforge.net/|SourceForge]]
 
-The Squid Development projects CVS server and can be reached both anonymously using pserver, online on the web, and using ssh (registered developers only).
+The Squid Development projects CVS server and can be reached both anonymously using pserver and online on the web.
+## , and using ssh (registered developers only).
 
 ## ==== SSH (requires a registered SourceForge account) ====
 ## 
@@ -58,20 +81,6 @@ The Squid Development projects CVS server and can be reached both anonymously us
 ## (watch out for the line wrapping)
 
 ==== Web ====
-http://squid.cvs.sourceforge.net/squid/squid3/
-
-==== Anonymous pserver ====
-{{{
-  cvs -d:pserver:anonymous@cvs.devel.squid-cache.org:/cvsroot/squid login
-}}}
- ...blank password, just press enter...
-{{{
-  cvs -d:pserver:anonymous@cvs.devel.squid-cache.org:/cvsroot/squid co -rBRANCHNAME -d squid-BRANCHNAME squid3
-}}}
-
-All development in this repository takes place on branches with automatic change tracking from the master version using the scripts described below.
-
-Note: If you are looking for the main Squid sources please see [[Squid3VCS]] and use the Bazaar instead. 
 
 
 == Access to older Squid version ==
