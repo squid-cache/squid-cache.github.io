@@ -43,13 +43,13 @@ Submissions are emailed to squid-dev for merging, one submission per post. The s
 
  1. If applicable, check that you have added the feature sponsor to the SPONSORS file.
 
- 1. Bring your development branch up to date as described in: [[Squid3VCS#bring_a_branch_up_to_date_with_it.27s_ancestor|Squid3VCS]]
+ 1. Bring your development branch up to date as described in: [[BzrInstructions#bring_a_branch_up_to_date_with_it.27s_ancestor|BzrInstructions]]
 
  1. Run a full build test: '''./test-builds.sh'''.
 
  1. Fix ALL issues with your code uncovered by that testing. If you are certain a problem is with the trunk code, discuss it on squid-dev.
 
- 1. When your code passes testing, [[Squid3VCS#Submit_a_patch_for_inclusion_in_the_main_tree_or_discussion|Submit a merge bundle]] or patch for auditing. see above.
+ 1. When your code passes testing, [[BzrInstructions#Submit_a_patch_for_inclusion_in_the_main_tree_or_discussion|Submit a merge bundle]] or patch for auditing. see above.
 
  1. Read reviews and address feedback, if any. This step may require re-coding and resubmitting your work or defending your choices until your submission is accepted (i.e., gets a passing vote, see below).
 
