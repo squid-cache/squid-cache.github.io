@@ -1,3 +1,4 @@
+## page was renamed from Squid3VCS
 = Bazaar =
 Bazaar is a distributed VCS written in python. It offers both drop-in CVS replacement work flow (use checkouts to work on code), and full distributed work flow (every copy is a new branch), up to the user to work as they want.
 
