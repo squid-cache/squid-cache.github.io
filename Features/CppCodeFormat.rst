@@ -14,11 +14,11 @@
 
 Squid-2 code has a specific format which is enforced on CVS commit.
 
-This project adds a similar format to Squid-3 code. Starting with 3.1. To format the source correctly you require '''astyle version 1.22''' and an '''md5sum''' (binary or script equivalent).
+This project adds a similar format to Squid-3 code. Starting with 3.1. To format the source correctly you require '''astyle version 1.23''' and an '''md5sum''' (binary or script equivalent).
 
 === When to format. ===
 
- (!) If you don't have the astyle 1.23 and md5sum tools to do a format correctly. Particularly the right version of astyle. We would rather you didn't do a format yourself. The formatter script will check and omit the format step i you do not have the right version.
+ (!) If you don't have the astyle 1.23 and md5sum tools to do a format correctly. Particularly the right version of astyle. We would rather you didn't do a format yourself. The formatter script will check and omit the format step if you do not have the right version.
 
 That said. if you do have the right tools. You should reformat before sending a [PATCH] or [MERGE] request to squid-dev for auditing. Or before committing code. A global reformat is repeated every so often on trunk. But it saves everybody trouble and keeps bundlebuggy happy if patches have the right format to start with.
 
