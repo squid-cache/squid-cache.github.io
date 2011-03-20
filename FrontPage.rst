@@ -13,7 +13,7 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
 
  * WhySquid ?
  * [[SquidFaq|FAQ]]
- * Development RoadMap
+ * Development [[RoadMap/Squid3|Road Map]]
  * [[ConfigExamples|Configuration examples]], or tips on how to address specific scenarios
  * A detailed description of many squid [[Features]], including specific documentation about them
  * Wiki [[SiteNavigation|navigation]]
