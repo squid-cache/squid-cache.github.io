@@ -1,1 +1,1 @@
-REDIRECT BzrInstructions
+#REDIRECT BzrInstructions
