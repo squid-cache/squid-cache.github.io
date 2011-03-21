@@ -250,6 +250,12 @@ The WCCPv2 example is provided for people using Cisco boxes.  For others we can'
 
  . {i} We should not really need to say it; but these exception rules '''MUST''' be placed before any of the capture TPROXY/DIVERT rules.
 
+=== Timeouts with Squid running as a bridge or multiple-NIC ===
+
+When using the bridge configuration or when multi-homing the system care needs to be taken that the '''default''' route is correct and will route packets to the Internet. Ideally there is only one default route, but for a bridge with routing enabled or for multi-homed systems there may be multiple.
+
+ /!\ There has been one confirmed case of the default route being set ''automatically'' by the OS to the dead-end route/NIC used only for administering the bridge.
+
 === Wccp2 dst_ip_hash packet loops ===
  . ''by Michael Bowe''
 
