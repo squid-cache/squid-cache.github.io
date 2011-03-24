@@ -48,7 +48,6 @@
 ==== Features ====
  * /SquidLogs: writing and most important '''reading''' the various squid log files
  * /SquidMemory describes how squid uses RAM and how to optimize its usage
- * /CacheManager explains how to use the Cache Manager to profile how squid is working
  * /SquidAcl (or Authorization): controlling squid's powerful access control features
  * /ContentAdaptation how to analyze, capture, block, replace, or modify the messages being proxied
  * /CacheDigests or ICP on steroids
