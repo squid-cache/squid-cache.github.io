@@ -324,7 +324,7 @@ The N column is the number of hostnames which the cache has translations for. Wi
 
 The rest of the line lists all the IP addresses that have been associated with that hostname entry. In [[Squid-3.1]] and later lines starting with empty spaces are a continuation of the previous entry when it has multiple IP addresses.
 
- The IP address entries are marked individually as '''-OK''. Unless they are known to result in failed connect, when they get marked as '''-BAD'''.
+ The IP address entries are marked individually as '''-OK'''. Unless they are known to result in failed connect, when they get marked as '''-BAD'''.
 
 === fqdncache report ===
 ==== How is it different from the ipcache? ====
