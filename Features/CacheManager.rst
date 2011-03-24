@@ -1,5 +1,11 @@
 ## page was renamed from SquidFaq/CacheManager
+##master-page:Features/FeatureTemplate
+#format wiki
 #language en
+#faqlisted yes
+
+= Feature: Squid Cache Manager =
+
 <<TableOfContents>>
 
 ##begin
