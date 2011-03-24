@@ -1,3 +1,4 @@
+## page was renamed from SquidFaq/CacheManager
 #language en
 <<TableOfContents>>
 
