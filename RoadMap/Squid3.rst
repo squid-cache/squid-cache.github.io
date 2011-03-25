@@ -81,6 +81,7 @@ Features Ported from 2.7 in this release:
 
  * Unique Sequence numbering for access.log lines
  * [[Features/LogDaemon]]
+ * {{{Cache-Control: stale-if-error}}}  handling and other staleness limits.
 
 Basic new features in 3.2:
 
@@ -110,7 +111,7 @@ http://www.squid-cache.org/Versions/v3/3.2/
 = Squid 3.3 (3.HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3 which is expected to happen 30th June 2011.
+The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3.
 
 The intention is to surpass Squid-2.7, improve the upgrade path and concentrate on further performance improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
 
