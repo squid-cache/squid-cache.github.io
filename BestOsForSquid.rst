@@ -56,3 +56,5 @@ In case you didn't read the previous paragraph, please do! In case you ''still''
   * ZFS 
     Use ZFS, if you want really high performance for your Squid Cache. ZFS is included in Solaris beginning with Solaris 10. Release 6/06. Use "noatime" as mount option.
     More Infos about ZFS: http://www.sun.com/software/solaris/zfs_learning_center.jsp
+
+----
