@@ -40,7 +40,7 @@ ICAP and eCAP services can co-exist. ACLs control which service gets to process 
 
 == Supported eCAP versions ==
 
-[[Squid-3.1]] and [[Squid-3.2]] support libecap v0.0.3 but will try to build with any libecap version installed. Builds with incompatible versions will probably fail, but be careful.
+[[Squid-3.1]] and [[Squid-3.2]] support libecap v0.0.3 only, but will try to build with any libecap version installed. Builds with incompatible versions should fail, but be careful: Check that you are building with libecap v0.0.3 and not the latest library version.
 
 [[Squid-3.2]] will support libecap v0.2.0 (at least) and will have a configure-time libecap version check in the nearest future.
 
