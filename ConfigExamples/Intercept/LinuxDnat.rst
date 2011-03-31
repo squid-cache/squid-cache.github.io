@@ -29,6 +29,11 @@ iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination SQUIDIP
 iptables -t nat -A POSTROUTING -j MASQUERADE
 }}}
 
+Due to the NAT security vulnerabilities it is also a '''very good idea''' to block external access to the internal receiving port. This has to be done in the '''mangle''' part of iptables before NAT happens so that intercepted traffic does not get dropped.
+{{{
+iptables -t mangle -A INPUT -p tcp --dport 3129 -j DROP
+}}}
+
 == /etc/sysctl.conf Configuration ==
 
 {{{
