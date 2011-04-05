@@ -51,5 +51,6 @@ Every now and then we try to organize some [[MeetUps|events, developer meetups o
  * The Calamaris log file analysis [[http://freshmeat.net/projects/calamaris/|tool]].
  * Visolve's  configuration manuals for [[http://squid.visolve.com/squid/configuration_manual_30.htm|Squid 3.0]] and [[http://www.visolve.com/squid/squid26/contents.php|Squid 2.6]]
  * Martin Stransky's Squid [[http://people.redhat.com/stransky/squid/|page]]. Martin maintains the official Red Hat package.
+ * The book [[https://www.packtpub.com/squid-proxy-server-3-1-beginners-guide/book|Squid Proxy Server 3.1: Beginner's Guide]] by Kulbir Saini
  * Other [[ExternalLinks|external links]]
- * The Squid development [[http://devel.squid-cache.org|site] (obsolete)].
+ * The Squid development [[http://devel.squid-cache.org|site]] (obsolete).
