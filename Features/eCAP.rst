@@ -38,6 +38,10 @@ adaptation_access reqFilter allow all
 
 ICAP and eCAP services can co-exist. ACLs control which service gets to process the HTTP message.
 
+=== Optional eCAP features ===
+
+Squid supports sending client IP address to the adapter via the ''libecap::metaClientIp'' transaction option. Please see eCAP [[https://answers.launchpad.net/ecap/+faq/1516|FAQ]] for details and do not forget to enable SquidConf:adaptation_send_client_ip in squid.conf.
+
 == Supported eCAP versions ==
 
 [[Squid-3.1]] supports libecap v0.0.3 only, but will try to build with any libecap version installed. Builds with incompatible versions should fail, but be careful: Check that you are building with libecap v0.0.3 and not the latest library version. The same applies to [[Squid-3.2]] releases prior to v3.2.0.6.
