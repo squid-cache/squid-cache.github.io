@@ -44,7 +44,7 @@ In the top portion where you set skip on your internal interfaces, remove those 
 #set skip on $wi_if
 
 # redirect only IPv4 web traffic to squid 
-rdr pass inet proto tcp from 192.168.231.0/24 to any port 80 -> 192.168.231.1 port 3128
+rdr pass inet proto tcp from 192.168.231.0/24 to any port 80 -> 192.168.231.1 port 3129
 
 block in
 pass in quick on $int_if
