@@ -71,8 +71,8 @@ A pointer:
 #set skip on $int_if << These lines commented out 
 #set skip on $wi_if
 
-# NAT only IPv4 web traffic into squid 
-match out inet proto tcp from 192.168.231.0/24 to any port 80 nat-to 192.168.231.1 port 3129
+# redirect only IPv4 web traffic into squid 
+match in inet proto tcp from 192.168.231.0/24 to any port 80 rdr-to 192.168.231.1 port 3129
 
 block in
 pass in quick on $int_if
