@@ -13,11 +13,13 @@ by Chris Benech
 
 == Outline ==
 
-I am using OpenBSD 4.1, MP kernel and Squid 2.6 or later.
+This configuration example details how to integrate the PF firewall NAT component with Squid for interception of port 80 traffic.
+
+It was written for OpenBSD 4.1 or later, MP kernel and Squid 2.6 or later
 
 == Squid Configuration ==
 
-First, compile and install Squid. It requires the following options:
+First, compile and install Squid. It may require the following options:
 {{{
 ./configure --with-pthreads --enable-pf-transparent
 }}}
@@ -39,12 +41,14 @@ In pf.conf, the following changes need to be made.
 
 In the top portion where you set skip on your internal interfaces, remove those lines. They tell the pf filter not to do any processing on packets coming in on an internal interface.
 
+=== OpenBSD 4.1 to 4.6 ===
+
 {{{
 #set skip on $int_if << These lines commented out 
 #set skip on $wi_if
 
-# redirect only IPv4 web traffic to squid 
-rdr pass inet proto tcp from 192.168.231.0/24 to any port 80 -> 192.168.231.1 port 3128
+# redirect only IPv4 web traffic into squid 
+rdr pass inet proto tcp from 192.168.231.0/24 to any port 80 -> 192.168.231.1 port 3129
 
 block in
 pass in quick on $int_if
@@ -53,9 +57,31 @@ pass out keep state
 
 }}}
 
-Some pointers:
+A pointer:
 
  * Use '''rdr pass''' instead of '''rdr on ...'''  part of the way that pf evaluates packets, it would drop through and be allowed as is instead of redirected if you don't use '''rdr pass'''.
+
+ * also see the troubleshooting section below.
+
+=== OpenBSD 4.7 and later ===
+
+ || /!\ NOTE || This example has not yet been tested. Use with care and please report any errors or improvements. ||
+
+{{{
+#set skip on $int_if << These lines commented out 
+#set skip on $wi_if
+
+# NAT only IPv4 web traffic into squid 
+match out inet proto tcp from 192.168.231.0/24 to any port 80 nat-to 192.168.231.1 port 3129
+
+block in
+pass in quick on $int_if
+pass in quick on $wi_if
+pass out keep state
+
+}}}
+
+== Troubleshooting ==
 
  * If it seems to be ignoring your changes and no redirection is happening, make sure you removed the set '''skip on''' lines.
 
