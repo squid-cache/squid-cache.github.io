@@ -12,6 +12,11 @@
  * '''Developer''': AlexRousskov
  * '''More''': [[http://www.e-cap.org/|eCAP info]], [[http://wiki.squid-cache.org/SquidFaq/ContentAdaptation#head-b3e83ccdb647537404a70d9c17c87463524a470b|context]], [[http://devel.squid-cache.org/projects.html#eCAP|code]], [[http://www.squid-cache.org/Versions/v3/3.1| Squid 3.1 Packages]]
 
+== Module Plug-ins Available ==
+
+ || '''Plugin'''  || '''Website''' || '''Squid Version''' ||
+ || gzip compression || http://code.google.com/p/squid-ecap-gzip/ || 3.1 ||
+ || ClamAV scanner   || http://www.e-cap.org/Downloads || 3.2.0.6 or later ||
 
 == Configuration ==
 
@@ -62,11 +67,6 @@ Squid is licensed under the GPLv2+, which brings up the question of licensing fo
  * Communication with eCAP adapters is limited to invoking the "main" functions of the adapter and waiting for them to return. FSF considers this a borderline case: http://www.gnu.org/licenses/gpl-faq.html#GPLAndPlugins
 
  * eCAP modules fall well inside the boundary of code loaded and run internally. As such any modules require a GPLv2+ compatible license in order to distribute: http://www.fsf.org/licensing/licenses/gpl-faq.html#GPLAndPlugins
-
-== Modules available for Squid 3.1 and later ==
-
- * gzip compression http://code.google.com/p/squid-ecap-gzip/
-
 
 ----
 CategoryFeature
