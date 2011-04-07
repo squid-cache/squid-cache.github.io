@@ -8,7 +8,7 @@
 
  * '''Goal''':  Improve Squid3 content adaptation performance by 20+%, remove the need for an ICAP server
  * '''Version''': 3.1
- * '''Status''': Ready for initial testing; code in Squid 3.1 and later
+ * '''Status''': Ready for testing; code in Squid 3.1 and later
  * '''Developer''': AlexRousskov
  * '''More''': [[http://www.e-cap.org/|eCAP info]], [[http://wiki.squid-cache.org/SquidFaq/ContentAdaptation#head-b3e83ccdb647537404a70d9c17c87463524a470b|context]], [[http://devel.squid-cache.org/projects.html#eCAP|code]], [[http://www.squid-cache.org/Versions/v3/3.1| Squid 3.1 Packages]]
 
