@@ -18,6 +18,9 @@
  || gzip compression || http://code.google.com/p/squid-ecap-gzip/ || 3.1 ||
  || ClamAV scanner   || http://www.e-cap.org/Downloads || 3.2.0.6 or later ||
 
+Disclaimer: The Squid Project does not distribute, support, or endorse these eCAP adapters. Please contact adapter developers with any adapter-specific feedback.
+
+
 == Configuration ==
 
 Install ''libecap'' and build Squid with the --enable-ecap ''configure'' option. Install an adapter module. The library and sample adapters are available from the eCAP [[http://www.e-cap.org/|site]].
