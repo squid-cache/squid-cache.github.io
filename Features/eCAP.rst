@@ -12,9 +12,9 @@
  * '''Developer''': AlexRousskov
  * '''More''': [[http://www.e-cap.org/|eCAP info]], [[http://wiki.squid-cache.org/SquidFaq/ContentAdaptation#head-b3e83ccdb647537404a70d9c17c87463524a470b|context]], [[http://devel.squid-cache.org/projects.html#eCAP|code]], [[http://www.squid-cache.org/Versions/v3/3.1| Squid 3.1 Packages]]
 
-== Module Plug-ins Available ==
+== Adapters Available ==
 
- || '''Plugin'''  || '''Website''' || '''Squid Version''' ||
+ || '''Adapter'''  || '''Website''' || '''Squid Version''' ||
  || gzip compression || http://code.google.com/p/squid-ecap-gzip/ || 3.1 ||
  || ClamAV scanner   || http://www.e-cap.org/Downloads || 3.2.0.6 or later ||
 
