@@ -93,7 +93,7 @@ Recent versions of PF provide the {{{getsockname()}}} interface to retrieve NAT 
 
 Build Squid with these configure options:
 {{{
---enable-ipfw-transparent --disable-pf-transparent
+--disable-pf-transparent
 }}}
 
 == Testing ==
