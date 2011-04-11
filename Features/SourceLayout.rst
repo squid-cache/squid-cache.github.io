@@ -4,11 +4,11 @@
 
 = Feature: Source layout improvements =
 
- * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean.
+ * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean. Fix dependency tree.
  * '''Status''': In progress
- * '''ETA''': 31 Dec 2010
+ * '''ETA''': Ongoing
  * '''Priority''': 1
- * '''Version''': 3.1, 3.2
+ * '''Version''': 3.2
  * '''Developer''': AlexRousskov and AmosJeffries
  * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html|email07121]] [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html|email07506]]
 
@@ -49,7 +49,7 @@ Key:
 || <:( || <:( || <:( || :\ || ''ipc/'' || inter-process communication || ipc.* ipc_win32.*, Move files, add Icp namespace to them, and adjust global names ||
 || <:( || <:( || <:( || {2} || ''log/'' || Logging components || namespace for Custom log formats and tokenizer. classify ||
 || <:( || <:( || <:( ||  || ''mem/'' || Basic Memory management || mem* ||
-|| <:( || <:( || <:( || :\ || ''mgr/'' || Cache Manager || CacheManager.h, cache_manager.cc, Move CacheManager.h, cache_manager.cc, and test cases ||
+|| <:( || <:( || <:( || :\ || ''mgr/'' || Cache Manager || Move in CacheManager.h, cache_manager.cc, and test cases ||
 || <:( || <:( || <:( || || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
 || <:( || <:( || <:( || :\ || ''repl/heap/'' || HEAP Replacement Policy algorithms ||
 || <:( || <:( || <:( || :\ || ''repl/lru/'' || Cache Replacement Policy algorithms ||
