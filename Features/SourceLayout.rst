@@ -22,9 +22,9 @@ Key:
  * <:( in a sad state of affairs.
  * (./) Done.
  * :\ Improved, but needs more work. Nobody is working on this now. See the To-do column for details.
- * {2} AmosJeffries doing now.
-## * {3} AdrianChadd doing now.
  * {1} AlexRousskov doing now.
+ * {2} AmosJeffries doing now.
+## * {3} you? doing now.
 
 || '''Unit''' <<BR>> '''Tests''' || '''Stub''' || '''Namespace''' || '''Polish''' || '''Group''' || '''Definition''' || '''Files and To-do''' ||
 || :\ || - || - || :\ || ''~/compat/'' || Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. || ** migrate remaining pieces of config.h and squid.h into compat ||
@@ -33,7 +33,7 @@ Key:
 || <:( || <:( || <:( || (./) || ''adaptation/ecap/'' || eCAP support ||
 || <:( || <:( || <:( || (./) || ''adaptation/icap/'' || ICAP support ||
 || <:( || <:( || (./) || (./) || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-|| <:( || <:( || <:( || {2} || ''auth/'' || Authentication support || Add Auth namespace, rename classes, add Makefiles for subdirs. ||
+|| <:( || <:( || <:( || {2} || ''auth/'' || Authentication support || rename classes into Auth namespace. ||
 || <:( || <:( || <:( || :\ || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
 || <:( || <:( || :\ || {2} || ''comm/'' || I/O subsystem ||
 || <:( || <:( || <:( || || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
