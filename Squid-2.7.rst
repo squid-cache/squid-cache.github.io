@@ -1,6 +1,7 @@
 #language en
 
 === Squid-2.7 ===
+This is the last Squid-2 "stable" release. No new features are planned at this time for inclusion into Squid-2.7.
 
 During 2006 and 2007 AdrianChadd continued to develop the Squid-2 branch post- [[Squid-2.6]] to meet performance, scalability and functionality demands in high-performance environments. Additional patches and features continued to be provided by interested users as well.
 
