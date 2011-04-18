@@ -6,7 +6,23 @@ During 2006 and 2007 AdrianChadd continued to develop the Squid-2 branch post- [
 
 Unfortunately most of them were not ported to [[Squid-3.0]] which compounded the problem begun with [[Squid-2.6]]. These features developed specifically for high-performance needs were found to be large enough to gather for an additional [[Squid-2.7]] release in parallel with the maturing [[Squid-3.0]].
 
-<<Include(RoadMap/Squid2, ,1,from="^##content27",to="^##endcontent27")>>
+(ported to 3.1)
+
+ * Removal of the dummy "null" store type and useless default cache_dir.
+ * Include configuration file support
+ * HTTP/1.1 compliant requests to servers
+
+(ported to 3.2)
+
+ * HTTP/1.1 compliant replies to clients
+ * Modular logging work - including external logging daemon support, UDP logging support
+
+(not yet ported to Squid-3)
+
+ * Fixing (or at least working around) [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|Bug #7]]
+ * Further transparent interception improvements from Steven Wilton
+ * "store rewrite" stuff from Adrian Chadd - rewrite URLs when used for object storage and lookup; useful for caching sites with dynamic URLs with static content (eg Windows Updates, !YouTube, Google Maps, etc) as well as some CDN-like uses.
+
 
 Packages of squid 2.7 source code are available at http://www.squid-cache.org/Versions/v2/2.7/
 
