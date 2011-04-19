@@ -27,6 +27,8 @@ and reconfigure ...
 squid -k reconfigure
 }}}
 
+ /!\ '''reconfigure''' does not work on COSS directory changes. Use the tricks below and a full restart instead. This is due to COSS using partition/disk level mapping instead of 'normal' human accessible files and directories.
+
 == Changing the Cache Levels ==
 
 Altering the cache_dir L1 and L2 sizes has not been tested with the above altering. It is still recommended to manually delete the cache directory and rebuild after altering the configuration.
