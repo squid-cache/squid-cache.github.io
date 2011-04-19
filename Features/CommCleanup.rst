@@ -10,6 +10,8 @@
 
  * '''ETA''': unknown
 
+ * '''Priority''': 1
+
  * '''Version''': Squid 3.2
 
  * '''Developer''': AmosJeffries
