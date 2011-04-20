@@ -21,10 +21,12 @@ Each configuration action is detailed with its reason and effect so if you find 
 
 Some private modifications of squid have apparently achieved youtube.com caching. However, there is presently no simple solution available to the general public.
 
-To cache youtube.com files, you will need to enable caching of [[ConfigExamples/DynamicContent|dynamic content]] and some other measures, which technically break the HTTP standards.
+To cache youtube.com files you will need to enable caching of [[ConfigExamples/DynamicContent|dynamic content]]. Along with some other measures which technically break the HTTP standards.
 
 ***SECURITY NOTE:***
-Some of the required configuration (quick_abort_min + large maximum_object_size) requires collapsed-forwarding feature to protect from high bandwidth consumption and possible cache DDoS attacks. [[Squid-3.0]] does not have that feature at this time. [[Squid-2.7]] is recommended for use with these settings.
+Some of the required configuration (quick_abort_min + large maximum_object_size) requires collapsed-forwarding feature to protect from high bandwidth consumption and possible cache DDoS attacks. Squid-3 do not have that feature at this time. [[Squid-2.7]] is recommended for use with these settings.
+
+If you require Squid-3 for features this functionality can be achieved by configuring a [[Squid-2.7]] proxy as a SquidConf:cache_peer dedicated to caching and serving the media content.
 
 == Missing Pieces ==
 
@@ -69,6 +71,7 @@ cache allow youtube
 
 
 # kept to demonstrate that the refresh_patterns involved above go before this.
+# You may be missing the CGI pattern, it will need to be added if so.
 refresh_pattern -i (/cgi-bin/|\?)   0   0%      0
 refresh_pattern .                   0   0%   4320
 }}}
