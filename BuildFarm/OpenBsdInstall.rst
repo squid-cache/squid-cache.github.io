@@ -5,7 +5,7 @@
 ## Installation guide for OpenBSD in the build farm
 
 ## if you want to have a table of comments remove the heading hashes from the next line
-[[TableOfContents]]
+## <<TableOfContents>>
 
 == System Setup ==
 As of April 2011, the squid build farm main node runs the [[http://www.linux-kvm.org|KVM]] virtualization hypervisor.
