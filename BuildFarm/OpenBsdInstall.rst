@@ -15,10 +15,11 @@ Build instructions:
  1. Apply a [[http://scie.nti.st/2009/10/4/running-openbsd-4-5-in-kvm-on-ubuntu-linux-9-04|workaround]] to disable mpbios and properly support OpenBSD on KVM.
  1. create jenkins user {{{useradd -m jenkins; passwd jenkins}}}
  1. set PKG_PATH in /root/.profile (e.g. to {{{ftp://mirror.switch.ch/pub/OpenBSD/`uname -r`/packages/`machine -a`}}}
- 1. add packages: {{{pkg_add jre bzr cppunit libxml ccache autoconf automake libtool}}}
+ 1. add packages: {{{pkg_add jre bzr cppunit libxml ccache autoconf-2.61p3 automake-1.9.6p4 libtool}}}
  1. create jenkins user: {{{useradd -m jenkins; passwd jenkins}}}
 
-
+== Build instructions ==
+ * make sure to set up the environment variables {{{AUTOMAKE_VERSION=1.9}}} and {{{AUTOCONF_VERSION=2.61}}}
 ----
 Discuss this page using the "Discussion" link in the main menu
 
