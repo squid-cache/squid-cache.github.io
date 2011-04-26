@@ -37,7 +37,7 @@ Implement ICAP Max-Connections feature to limit the number of connection opened 
  * Wait: wait (in a FIFO queue) for an ICAP connection slot
  * Force: proceed, ignoring the Max-Connections limit
 
-The configuration is done using SquidConf:icap_service on_overload=block|bypass|wait|force parameter. 
+The configuration is done using SquidConf:icap_service on-overload=block|bypass|wait|force parameter. 
 
 Currently, Squid ignores the Max-Connections limit, essentially implementing the Force behaviour. The Wait option becomes the new default behaviour for essential services and Bypass option becomes the new behaviour for optional services.
 
