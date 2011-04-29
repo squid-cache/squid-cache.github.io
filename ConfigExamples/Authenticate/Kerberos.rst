@@ -23,10 +23,7 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 ## == Usage ==
 ## Tell about some cases where this configuration would be good.
 == Pre-requisites for Active Directory integration ==
- 1. Install msktutil package from http://dag.wieers.com/rpm/packages/msktutil/ or from http://download.systemimager.org/~finley/msktutil/ (msktutil_0.3.16-7 required for 2008 Domain Controller)
-
-OR
-
+ 1. Install msktutil package from http://fuhm.net/software/msktutil/.
  1. Install samba
 
 == krb5.conf Configuration ==
@@ -140,7 +137,8 @@ On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ or __k
 __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KDC_ERR_PREAUTH_REQUIRED is not an error, but an informational message to the client)
 
 == Further references ==
- * A nice HOWTO is available at [[http://klaubert.wordpress.com/2008/01/09/squid-kerberos-authentication-and-ldap-authorization-in-active-directory/]]
+ * A nice HOWTO is available at http://klaubert.wordpress.com/2008/01/09/squid-kerberos-authentication-and-ldap-authorization-in-active-directory/
 
 ----
+
 CategoryConfigExample
