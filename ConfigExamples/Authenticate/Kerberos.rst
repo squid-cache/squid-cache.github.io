@@ -23,10 +23,11 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 ## == Usage ==
 ## Tell about some cases where this configuration would be good.
 == Pre-requisites for Active Directory integration ==
- 1. Install msktutil package from http://fuhm.net/software/msktutil/.
-  . or
+   Install msktutil package from http://fuhm.net/software/msktutil/.
 
- 1. Install samba
+        or
+
+   Install Samba
 
 == krb5.conf Configuration ==
  * /!\ In IE the proxy must be specified as FQDN not as an IP-address
