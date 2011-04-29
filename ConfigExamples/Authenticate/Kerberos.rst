@@ -24,6 +24,9 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 ## Tell about some cases where this configuration would be good.
 == Pre-requisites for Active Directory integration ==
  1. Install msktutil package from http://fuhm.net/software/msktutil/.
+
+    or
+
  1. Install samba
 
 == krb5.conf Configuration ==
@@ -81,7 +84,7 @@ msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab
  * /!\ beware the wrap! above 'mskutil' options are meant to be on one line.
  * /!\ beware the <computer-name> has Windows Netbios limitations of 15 characters.
  * /!\ msktutil requires cyrus-sasl-gssapi ldap plugin to authenticate to AD ldap.
- * /!\ because of a bug in msktutil the <computer-name> must be lowercase
+ * /!\ because of a bug in msktutil 0.3.16 the <computer-name> must be lowercase
 
 OR with Samba
 
@@ -140,5 +143,4 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
  * A nice HOWTO is available at http://klaubert.wordpress.com/2008/01/09/squid-kerberos-authentication-and-ldap-authorization-in-active-directory/
 
 ----
-
 CategoryConfigExample
