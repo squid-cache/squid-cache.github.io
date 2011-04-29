@@ -23,11 +23,11 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 ## == Usage ==
 ## Tell about some cases where this configuration would be good.
 == Pre-requisites for Active Directory integration ==
-   Install msktutil package from http://fuhm.net/software/msktutil/.
+ Install msktutil package from http://fuhm.net/software/msktutil/.
 
-        or
+    or
 
-   Install Samba
+ Install Samba
 
 == krb5.conf Configuration ==
  * /!\ In IE the proxy must be specified as FQDN not as an IP-address
@@ -143,5 +143,4 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
  * A nice HOWTO is available at http://klaubert.wordpress.com/2008/01/09/squid-kerberos-authentication-and-ldap-authorization-in-active-directory/
 
 ----
-
 CategoryConfigExample
