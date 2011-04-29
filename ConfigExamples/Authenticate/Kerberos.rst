@@ -24,8 +24,7 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 ## Tell about some cases where this configuration would be good.
 == Pre-requisites for Active Directory integration ==
  1. Install msktutil package from http://fuhm.net/software/msktutil/.
-
-    or
+  . or
 
  1. Install samba
 
@@ -135,7 +134,7 @@ KRB5RCACHETYPE=none
 export KRB5RCACHETYPE
 }}}
 == Troubleshooting Tools ==
-On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ or __klist__ from Microsoft resource kit to list and purge keys.
+On Windows clients (e.g. IE or Firefox on XP, 2003, etc) use __kerbtray__ or __klist__ from Microsoft resource kit to list and purge tickets.
 
 __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KDC_ERR_PREAUTH_REQUIRED is not an error, but an informational message to the client)
 
@@ -143,4 +142,5 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
  * A nice HOWTO is available at http://klaubert.wordpress.com/2008/01/09/squid-kerberos-authentication-and-ldap-authorization-in-active-directory/
 
 ----
+
 CategoryConfigExample
