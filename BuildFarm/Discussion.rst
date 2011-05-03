@@ -12,10 +12,10 @@ See [[../|Discussed Page]]
 ## }}}
 
 Wishlist for BuildFarm:
- . have it properly interact with libvirt to start/stop slaves (FrancescoChemolli)
+ 1. have it properly interact with libvirt to start/stop slaves (FrancescoChemolli)
    currently hard-stops rather than freezing.
- . develop matrix parametrized builds available (e.g. to test icc on centos) (AmosJeffries)
- . make OpenBSD nodes work
+ 1. develop matrix parametrized builds available (e.g. to test icc on centos) (AmosJeffries)
+ 1. make OpenBSD nodes work
 
 ##----
 ##<<Anchor(C1)>>
