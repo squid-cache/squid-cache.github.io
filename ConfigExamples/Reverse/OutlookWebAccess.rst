@@ -53,6 +53,20 @@ cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl ss
 
  (!) an apparent bug in Squid-3.1 means that SquidConf:https_port may also need to use the '''connection-auth=off''' option for now.
 
+== Troubleshooting ==
+=== OWA works but ActiveSync fails ===
+
+Windows Phone says '''"Connection error. Try again later."''' and current status shows {{{"Unable to connect. Retrying."}}}
+## private: NokiaE70/3.00(50)MailforExchange
+
+PROBLEM: 
+  The device sending '''Expect: 100-continue''' HTTP/1.1 headers, but being unable to retry correctly when presented with the '''417''' response.
+
+SOLUTION:
+  [[Squid-2.7]] and [[Squid-3.1]] offer the SquidConf:ignore_expect_100 directive to skip the 417 and wait for the client to resume. There are potential DoS side effects to its use, please avoid unless you must.
+
+  [[Squid-3.2]] supports the HTTP/1.1 feature these clients depend on. This problem will not occur there.
+
 == See also ==
 
  * [[http://support.microsoft.com/?scid=kb%3Ben-us%3B327800&x=17&y=16]] - "How to configure SSL Offloading for Outlook Web Access in Exchange 2000 Server and in Exchange Server 2003"
