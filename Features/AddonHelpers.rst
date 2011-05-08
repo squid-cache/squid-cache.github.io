@@ -221,15 +221,19 @@ Result line sent back to Squid:
 ## start negotiateauth protocol
  {i} These authenticator schemes do not support concurrency due to the statefulness of NTLM.
 
+Input line received from Squid:
+
  YR::
   Squid sends this to a helper when it needs a new challenge token. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the SquidConf:auth_param max_challenge_lifetime and max_challenge_uses parameters. The helper should respond with a '''TT''' message.
 
- TT challenge::
-  Helper sends this message back to Squid and includes a challenge token. It is sent in response to a '''YR''' request. The challenge is base64-encoded, as defined by RFC RFC:2045.
-
-
  KK credentials::
   Squid sends this to a helper when it wants to authenticate a user's credentials. The helper responds with either '''AF''', '''NA''', '''BH''', or '''LD'''. The credentials are an encoded blob exactly as received in the HTTP headers.
+
+
+Result line sent back to Squid:
+
+ TT challenge::
+  Helper sends this message back to Squid and includes a challenge token. It is sent in response to a '''YR''' request. The challenge is base64-encoded, as defined by RFC RFC:2045.
 
  AF username::
   The helper sends this message back to Squid when the user's authentication credentials are valid. The helper sends the '''username''' with this message because Squid doesn't try to decode the HTTP Authorization header. The '''username''' given here is what gets used by Squid for this client request.
