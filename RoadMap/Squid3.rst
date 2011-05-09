@@ -123,9 +123,25 @@ http://www.squid-cache.org/Versions/v3/3.2/
 = Squid 3.3 (3.HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3.
+The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3 in 2012.
 
-The intention is to surpass Squid-2.7, improve the upgrade path and concentrate on further performance improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
+##Additions are limited to:
+## * Polish of existing features
+## * Porting of Squid-2.7 feature regressions
+## * Stability fixes
+## * Bug fixes
+
+Basic new features in 3.3:
+
+ * New helper to log access.log to an SQL Database
+ * New helper to quota session access time
+
+## The intention is to surpass Squid-2.7, improve the upgrade path and concentrate on further performance improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
+
+Packages of squid 3.3 source code are available at
+http://www.squid-cache.org/Versions/v3/3.HEAD/
+
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
 
 == TODO ==
 
@@ -134,19 +150,19 @@ These are the features we are trying to work on at present. New features may be 
 === Under Development ===
 
 (Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*1")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.3" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*1")>>
 
 (Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*2")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.3" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*2")>>
 
-(Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*3")>>
+(Priority 3)
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.3" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*3")>>
 
 (Priority 4)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*4")>>
 
 (Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.3" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3" regex:"ETA...:.unknown")>>
 
@@ -195,7 +211,7 @@ More ideas are available [[Features/Other|elsewhere]].
  * Feature marked 3.2 which did not make it:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.2" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
 
-= Schedule for Future Removals =
+= Schedule for Feature Removals =
 
 Certain features are no longer relevant as the code improves and are planned for removal. Due to the possibility they are being used we list them here along with the release version they are expected to disappear. Warnings should also be present in the code where possible.
 
