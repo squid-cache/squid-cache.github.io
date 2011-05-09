@@ -52,6 +52,7 @@ Basic new features in 3.1:
  * ICY (SHOUTcast) streaming protocol support
  * [[Features/HTTP11|HTTP/1.1 support on connections to web servers and peers.]]
  * Solaris /dev/poll support (from 3.1.9)
+ * [[Features/DynamicSslCert| HTTPS man-in-middle certificate generation]] (from 3.1.13)
 
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
@@ -87,19 +88,30 @@ Basic new features in 3.2:
 
  * Fully transparent credential pass-thru to SquidConf:cache_peer
  * Kerberos login to SquidConf:cache_peer
+ * [[Features/HTTP11| Full HTTP/1.1 Support]]
  * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
- * New helpers to demo SquidConf:url_rewrite_program programs
- * Helpers started on-demand instead of delaying startup and reconfigure process
- * EUI (MAC address) logging and external ACL handling
  * Dynamic URL generation for SquidConf:deny_info redirects
  * Multi-Lingual FTP directory listings
  * Multi-Lingual proxy configuration splash pages for captive portals
  * [[Features/Surrogate|Surrogate 1.0]] protocol support
  * [[Features/SmpScale|SMP]] Scaling worker processes
- * New helper to lookup Kerberos/NTLM group via LDAP
+ * Helpers started on-demand instead of delaying startup and reconfigure process
+ * [[Features/HelperMultiplexer| Multiplexer to add concurrency support for older helpers]]
+ * New helpers to demo SquidConf:url_rewrite_program programs
+ * New helper to lookup Kerberos or NTLM group via LDAP
+ * New helper to de-mux Negotiate/NTLM and Negotiate/Kerberos authentication
  * ''Purge'' tool to manage UFS/AUFS/DiskD caches bundled
+ * EUI (MAC address) logging and external ACL handling
+ * [[Features/AclRandom]]
+ * [[Features/EDNS]]
+ * [[Features/LogDnsWait]]
+ * [[Features/LogModules]]
 
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
+## Developer-only relevant features
+## * [[Features/ConfigureInRefactoring]]
+
+## All targeted features.
+## <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
 
 
 Packages of squid 3.2 source code are available at
