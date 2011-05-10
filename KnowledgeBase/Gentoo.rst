@@ -18,7 +18,8 @@
 == Pre-Built Binary Packages ==
 
 '''Maintainer:''' Alin Năsta
-##  ''Bug Reporting:'''  link to bug reporting system interface (AND how-to if they need one).
+
+'''Bug Reporting:''' http://bugs.gentoo.org/buglist.cgi?quicksearch=squid-
 
 Install Procedure (for the latest version in your selected portage tree):
 {{{
@@ -29,11 +30,6 @@ Install Procedure (for the latest version in your selected portage tree):
 Install Procedure:
 {{{
  emerge =squid-3.1*
-}}}
-==== Squid-3.0 ====
-Install Procedure:
-{{{
- emerge =squid-3.0*
 }}}
 ==== Squid-2.7 ====
 Install Procedure:
@@ -60,4 +56,4 @@ emerge: there are no ebuilds to satisfy "=net-proxy/squid-2.5*".
 ## Followed by a description of what it means and the solution if known.
 
 ----
-CategoryKnowledgeBase CategoryDistributionInfo
+CategoryKnowledgeBase SquidFaq/BinaryPackages
