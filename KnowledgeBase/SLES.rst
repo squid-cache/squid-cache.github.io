@@ -11,7 +11,6 @@
 ## Feel free to edit within each section as needed to make the content flow easily for beginners.
 ##
 
-
 = Squid on Novell SUSE Linux =
 
 <<TableOfContents>>
@@ -19,31 +18,15 @@
 == Pre-Built Binary Packages ==
 
  /!\ Seeking information:
-  * who builds the SLES packages?
-  * where can SLES people locate the very latest ones?
-  * what exactly are those latest available on SLES? both official and semi-official
-  * where do SLES people send their bug reports about the SLES packaged version?
+  * what exactly are the available versions on SLES? both official and semi-official
 
-## Details briefly covering critical information for user contact and problem reporting...
-##
-##  '''Maintainer:''' Your Name goes here. Email too if you want direct contacts.
-##  ''Bug Reporting:'''  link to bug reporting system interface (AND how-to if they need one).
+'''Maintainer:''' unknown
 
+==== Squid-2.7 ====
 
-## List of sections named per major release.
-## Repeat the following with sub-section for each distributed release package.
-## Named by version of Squid it packages.
-## Numerically highest to lowest only those currently available in the distro.
-
-==== Squid-?.? ====
-
-## If there are any release or package specifics (ie special maintainer, different bug reporting)
-## those details need to be replicated here
+'''Bug Reporting:'''  https://bugzilla.novell.com/buglist.cgi?quicksearch=squid
 
 Install Procedure:
-
- /!\ Seeking information. Help?
-
 ## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
 ##{{{
 ##...
