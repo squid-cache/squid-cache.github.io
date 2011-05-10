@@ -9,6 +9,7 @@ The squid core team members do not have the resources to make pre-compiled binar
 == How do I install a binary for ... ==
 Most operating system distributions provide packages in the formats appropriate for direct install on those systems. Please thank them.
 
+<<Include(KnowledgeBase/CentOS,"CentOS",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/Debian,"Debian",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/Fedora,"Fedora",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/Fink,"Fink",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
