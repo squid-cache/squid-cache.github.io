@@ -61,4 +61,4 @@ Install Procedure:
 ## Followed by a description of what it means and the solution if known.
 
 ----
-CategoryKnowledgeBase CategoryDistributionInfo
+CategoryKnowledgeBase SquidFaq/BinaryPackages
