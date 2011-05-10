@@ -13,6 +13,8 @@ Package information: https://admin.fedoraproject.org/pkgdb/acls/name/squid
 
 Bug Reports: https://admin.fedoraproject.org/pkgdb/acls/bugs/squid
 
+==== Squid-3.1 ====
+
 Install Procedure:
 {{{
 yum install squid
