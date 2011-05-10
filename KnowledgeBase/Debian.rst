@@ -17,23 +17,21 @@ Packages available for Squid on multiple architectures.
 Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3
 
 Install Procedure:
-
 {{{
- apt-get install squid3
+ aptitude install squid3
 }}}
 
 ==== Squid-2.7 ====
-Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid;dist=unstable
+Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid
 
 Install Procedure:
-
 {{{
- apt-get install squid
+ aptitude install squid
 }}}
 
 == Compiling ==
 
-From 2.6 STABLE 14 Squid should compile easily on this platform.
+From 2.6.STABLE14 Squid should compile easily on this platform.
 
  /!\ There is just one known problem. The Linux system layout differs markedly from the Squid defaults. The following ./configure options are needed to install Squid into the Linux structure properly:
 {{{
@@ -81,7 +79,7 @@ From Squid 3.1 the log directory and PID file location are also configurable. Th
 The '''squid3-dbg''' packages provides debug symbols needed for bug reporting if the bug is crash related. See the [[SquidFaq/BugReporting|Bug Reporting FAQ]] for what details to include in a report.
 
 {{{
- apt-get install squid3-dbg
+ aptitude install squid3-dbg
 }}}
 
 ----
