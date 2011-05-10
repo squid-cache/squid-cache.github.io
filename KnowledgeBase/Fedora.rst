@@ -29,4 +29,4 @@ cvs -d :pserver:anonymous@cvs.fedoraproject.org:/cvs/pkgs/ co squid
 then do a "make local" in the version you want to recompile.
 
 ----
-CategoryKnowledgeBase
+CategoryKnowledgeBase SquidFaq/BinaryPackages
