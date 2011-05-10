@@ -17,18 +17,24 @@ http://www.freebsd.org/cgi/ports.cgi?query=^squid-&stype=name
 There are (December 2009) three different Squid packages to choose from:
 
 ==== Squid-3.1 ====
+Bug Reports: http://www.freebsd.org/cgi/query-pr-summary.cgi?text=squid31
+
 Install Procedure:
 {{{
  pkg_add -r squid31
 }}}
 
 ==== Squid-3.0 ====
+Bug Reports: http://www.freebsd.org/cgi/query-pr-summary.cgi?text=squid30
+
 Install Procedure:
 {{{
  pkg_add -r squid30
 }}}
 
 ==== Squid-2.7 ====
+Bug Reports: http://www.freebsd.org/cgi/query-pr-summary.cgi?text=squid
+
 Install Procedure:
 {{{
  pkg_add -r squid
@@ -107,4 +113,4 @@ FreeBSD contains additional security settings to prevent users sending fatal or 
 Unfortunately this catches Squid in the middle. Since the administrative process of Squid normally runs as root and the child worker process runs as some other non-privileged user (by default: '''nobody'''). The '''root''' administrative process is unable to send signals such as ''shutdown'' or ''reconfigure'' to its own child.
 
 ----
-CategoryKnowledgeBase CategoryDistributionInfo
+CategoryKnowledgeBase SquidFaq/BinaryPackages
