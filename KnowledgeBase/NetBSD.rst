@@ -47,4 +47,4 @@ Binaries for all NetBSD platforms, from the NetBSD packages collection.
 ## Followed by a description of what it means and the solution if known.
 
 ----
-CategoryKnowledgeBase CategoryDistributionInfo
+CategoryKnowledgeBase SquidFaq/BinaryPackages
