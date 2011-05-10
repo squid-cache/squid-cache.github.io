@@ -12,18 +12,26 @@
 Binaries for Alpha and Intel platforms, from the FreeBSD ports collection.
 http://www.freebsd.org/cgi/ports.cgi?query=^squid-&stype=name
 
+'''Maintainer:''' Thomas-Martin Seck
+
 There are (December 2009) three different Squid packages to choose from:
- * squid - the Squid 2.x tree, specifically 2.7;
+
+==== Squid-3.1 ====
+Install Procedure:
 {{{
- pkg_add -r squid
+ pkg_add -r squid31
 }}}
- * squid30 - the Squid 3.0 tree;
+
+==== Squid-3.0 ====
+Install Procedure:
 {{{
  pkg_add -r squid30
 }}}
- * squid31 - the Squid 3.1 tree.
+
+==== Squid-2.7 ====
+Install Procedure:
 {{{
- pkg_add -r squid31
+ pkg_add -r squid
 }}}
 
 == Compiling ==
@@ -32,19 +40,21 @@ Squid is developed on FreeBSD. The [[SquidFaq/CompilingSquid|general build instr
 
 However, if you wish to integrate patching of Squid with patching of your other FreeBSD packages, it might be easiest to install Squid from the Ports collection. There are three ports, matching the three packages for the current Squid releases:
 
- * squid - the Squid 2.x tree, specifically 2.7;
+ * squid31 - the Squid 3.1 tree.
 {{{
- cd /usr/ports/www/squid
+ cd /usr/ports/www/squid31
  make install clean
 }}}
+
  * squid30 - the Squid 3.0 tree;
 {{{
  cd /usr/ports/www/squid30
  make install clean
 }}}
- * squid31 - the Squid 3.1 tree.
+
+ * squid - the Squid 2.7 tree;
 {{{
- cd /usr/ports/www/squid31
+ cd /usr/ports/www/squid
  make install clean
 }}}
 
@@ -97,4 +107,4 @@ FreeBSD contains additional security settings to prevent users sending fatal or 
 Unfortunately this catches Squid in the middle. Since the administrative process of Squid normally runs as root and the child worker process runs as some other non-privileged user (by default: '''nobody'''). The '''root''' administrative process is unable to send signals such as ''shutdown'' or ''reconfigure'' to its own child.
 
 ----
-CategoryKnowledgeBase
+CategoryKnowledgeBase CategoryDistributionInfo
