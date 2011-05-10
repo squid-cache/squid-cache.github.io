@@ -18,38 +18,31 @@
 
 == Pre-Built Binary Packages ==
 
-## Details briefly covering critical information for user contact and problem reporting...
-##
-
 '''Packager:''' Oden Eriksson
+
 '''Maintainer:''' Luis Daniel Lucio Quiroz
+
 '''Bug Reporting:''' https://qa.mandriva.com/buglist.cgi?quicksearch=squid
-
-
-## List of sections named per major release.
-## Repeat the following with sub-section for each distributed release package.
-## Named by version of Squid it packages.
-## Numerically highest to lowest only those currently available in the distro.
 
 ==== Squid-3.1 ====
 
  /!\ experimental packages. Not yet in official distribution.
 
 '''Maintainer:''' Luis Daniel Lucio Quiroz
+
 '''Download:''' http://kenobi.mandriva.com/~dlucio/
 
 Install Procedure:
-
 {{{
  (unknown)
 }}}
 
 ==== Squid-3.0 ====
 '''Maintainer:''' Luis Daniel Lucio Quiroz
+
 '''Download:''' http://www.rpmfind.net//linux/RPM/mandriva/2009.1/i586/media/main/release/squid-3.0-14mdv2009.1.i586.html
 
 Install Procedure:
-
 {{{
  (unknown)
 }}}
@@ -57,7 +50,6 @@ Install Procedure:
 ==== Squid-2.7 ====
 
 Install Procedure:
-
 {{{
  urpmi squid
 }}}
@@ -76,4 +68,4 @@ Install Procedure:
 ## Followed by a description of what it means and the solution if known.
 
 ----
-CategoryKnowledgeBase CategoryDistributionInfo
+CategoryKnowledgeBase SquidFaq/BinaryPackages
