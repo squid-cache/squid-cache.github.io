@@ -63,4 +63,4 @@ semanage port -a -t http_cache_port_t -p udp 3401
 (via http://tanso.net/selinux/squid/)
 
 ----
-CategoryKnowledgeBase CategoryDistributionInfo
+CategoryKnowledgeBase SquidFaq/BinaryPackages
