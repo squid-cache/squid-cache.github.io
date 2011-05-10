@@ -22,23 +22,25 @@
 = Package Maintainers =
 While squid is normally distributed in source form. Some dedicated people are donating their time to packaging Squid in other popular formats for easy use.
 
+##<<FullSearch(title:KnowledgeBase/ regex:C{1}ategoryDistributionInfo regex:"...Maintainer:...")>>
+
  * [[KnowledgeBase/Debian|Debian]]: Luigi Gangitano
+ * [[KnowledgeBase/Fedora|Fedora]]: [[Henrik_Nordström]]
  * [[KnowledgeBase/Fink|Fink]]: Benjamin Reed
  * [[KnowledgeBase/FreeBSD|FreeBSD]]: Thomas-Martin Seck
  * [[KnowledgeBase/Gentoo|Gentoo]]: Alin Nasta
- * [[KnowledgeBase/Fedora|Fedora]]: [[Henrik_Nordström]]
- * [[KnowledgeBase/RedHat|RHEL]]: Jiri Skala
  * [[KnowledgeBase/Mandrivia|Mandrivia]]: Luis Daniel Lucio Quiroz
  * [[KnowledgeBase/NetBSD|NetBSD]]: Takahiro Kambe
+ * [[KnowledgeBase/RedHat|RHEL]]: Jiri Skala
  * [[KnowledgeBase/Solaris|Solaris]]: Steven M. Christensen
- * [[KnowledgeBase/Windows|Windows]]: [[GuidoSerassio|Guido Serassio]]
  * [[KnowledgeBase/Ubuntu|Ubuntu]]: Luigi Gangitano
+ * [[KnowledgeBase/Windows|Windows]]: [[GuidoSerassio|Guido Serassio]]
 
-## SuSE: who?
+## OpenSuSE or SuSE: who?
 ## IRIX: anyone?
 ## Darwin: who? (mww@macports.org)
-## OpenBSD: who?
-## NextStep: anyone?
+## OpenBSD: who? "brad0" on IRC
+## NextStep: anyone? obsolete.
 ## UNIX: anyone?
 ## AIX: anyone?
 ## Slackware: anyone?
