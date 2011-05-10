@@ -18,11 +18,11 @@
 
 == Pre-Built Binary Packages ==
 
-## Details briefly covering critical information for user contact and problem reporting...
-##
-##  '''Maintainer:''' Your Name goes here. Email too if you want direct contacts.
-##  ''Bug Reporting:'''  link to bug reporting system interface (AND how-to if they need one).
 Binaries for all NetBSD platforms, from the NetBSD packages collection.
+
+'''Maintainer:''' Takahiro Kambe
+
+'''Bug Reporting:''' http://www.netbsd.org/support/query-pr.html
 
 ==== Squid-3.1 ====
  . ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid31/README.html
