@@ -23,7 +23,7 @@ DAG and RPMforge repositories appear to no longer contain any files. Other sourc
 
 '''Maintainer:''' unknown
 
-'''Bug Reporting:''' http://bugs.centos.org/my_view_page.php
+'''Bug Reporting:''' http://bugs.centos.org/search.php?category=squid&sortby=last_updated&hide_status_id=-2
 
 
 ## 4  = indents required for BinaryPackages page include
