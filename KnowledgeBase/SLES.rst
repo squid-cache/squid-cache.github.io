@@ -79,4 +79,4 @@ zypper install openldap2-devel
 
 
 ----
-CategoryKnowledgeBase CategoryDistributionInfo
+CategoryKnowledgeBase SquidFaq/BinaryPackages
