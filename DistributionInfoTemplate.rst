@@ -35,9 +35,9 @@
 ## If there are any release or package specifics (ie special maintainer, different bug reporting)
 ## those details need to be replicated here
 
-Install Procedure:
-
 ## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
+
+Install Procedure:
 {{{
 ...
 }}}
@@ -56,4 +56,4 @@ Install Procedure:
 ## Followed by a description of what it means and the solution if known.
 
 ----
-CategoryKnowledgeBase CategoryDistributionInfo
+CategoryKnowledgeBase SquidFaq/BinaryPackages
