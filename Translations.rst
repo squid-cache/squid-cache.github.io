@@ -29,6 +29,7 @@ Several people have volunteered their time to check and confirm translations to 
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
 || Romanian || ro || Arthur Titeica ||
 || Slovak || sk || ''Helix'' ||
+||Slovenian || sl || Aleksa Šušulić ||
 || Serbin (Latin) || sr-latn || ''batailic'' ||
 || Swedish || sv || HenrikNordstrom (Squid Project) ||
 ## || Turkish || tr || Umut Çinar ||
