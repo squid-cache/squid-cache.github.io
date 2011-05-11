@@ -17,6 +17,8 @@ Build instructions:
  1. set PKG_PATH in /root/.profile (e.g. to {{{ftp://mirror.switch.ch/pub/OpenBSD/`uname -r`/packages/`machine -a`}}}
  1. add packages: {{{pkg_add jre bzr cppunit libxml ccache autoconf-2.61p3 automake-1.9.6p4 libtool}}}
  1. create jenkins user: {{{useradd -m jenkins; passwd jenkins}}}
+ 1. enable power management (for automatic system shutdown)
+    in {{{/etc/rc.conf.local}}} set {{{apmd_flags=""}}}
 
 == Build instructions ==
  * make sure to set up the environment variables {{{AUTOMAKE_VERSION=1.9}}} and {{{AUTOCONF_VERSION=2.61}}}
