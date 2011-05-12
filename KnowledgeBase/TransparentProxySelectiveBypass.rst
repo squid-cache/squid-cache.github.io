@@ -39,4 +39,4 @@ As a side effect, all sites served from the same IP address as www.example.com, 
 
 
 ----
- CategoryKnowledgeBase [[SquidFaq/Troubleshooting]]
+ CategoryKnowledgeBase SquidFaq/TroubleShooting
