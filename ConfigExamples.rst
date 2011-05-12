@@ -43,6 +43,9 @@ Categories:
 
 <<FullSearch(title:regex:^ConfigExamples/Intercept/.*$)>>
 
+=== Captive Portal features ===
+<<FullSearch(title:regex:^ConfigExamples/Portal/.*$)>>
+
 === Reverse Proxy (Acceleration) ===
 <<FullSearch(title:regex:^ConfigExamples/Reverse/.*$)>>
 
@@ -53,9 +56,13 @@ Categories:
 === Multimedia and Data Stream filtering ===
 <<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
 
-=== General ===
-<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse -regex:ConfigExamples/Strange )>>
+=== High Performance service ===
+<<FullSearch(title:regex:^ConfigExamples/Extreme.*$)>>
 
+see also [[Features/Wccp2| WCCP v2 overview]] for high-availability service.
+
+=== General ===
+<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse -regex:ConfigExamples/Strange -regex:ConfigExamples/Extreme -regex:ConfigExamples/Portal )>>
 
 === Strange and Weird configurations ===
 ##start_WEIRD_INTRO
