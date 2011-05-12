@@ -12,8 +12,12 @@ Your first point of troubleshooting should be to test with a newer ''supported''
 
 Current releases can be retrieved from http://www.squid-cache.org/Versions or your operating system distributor. Hos to do this is outlined in the system-specific help pages.
 
-Additional problems and resolutions for your specific system may be found in the system-specific help troubleshooting
-<<FullSearch(title:KnowledgeBase/ regex:C{1}ategoryDistributionInfo regex:"Troubleshooting")>>
+Additional problems and resolutions for your specific system may be found in the system-specific help troubleshooting:
+<<FullSearch(title:KnowledgeBase/ regex:"SquidFaq/BinaryPackages" regex:"Troubleshooting")>>
+
+Some common situations have their own detailed explanations and workarounds:
+<<FullSearch(title:KnowledgeBase/ regex:C{1}ategoryKnowledgeBase regex:"SquidFaq/Troubleshooting")>>
+
 
 == Why am I getting "Proxy Access Denied?" ==
 You may need to set up the ''http_access'' option to allow requests from your IP addresses.    Please see ../SquidAcl for information about that.
@@ -256,9 +260,6 @@ Squid 2.6+ and 3.1+ also support the kind of infrastructure that's needed to pro
 As NTLM authentication backends go, the real work is usually done by [[http://www.samba.org/|Samba]] on squid's behalf. That being the case, Squid supports any authentication backend supported by Samba, including Samba itself and MS Windows 3.51 and onwards Domain Controllers.
 
 NTLM for HTTP is, however, an horrible example of an authentication protocol, and we recommend to avoid using it in favour of saner and standard-sanctioned alternatives such as Digest.
-
-== "Hotmail" complains about: Intrusion Logged. Access denied. ==
-Hotmail is proxy-unfriendly and requires all requests to come from the same IP address.
 
 == My Squid becomes very slow after it has been running for some time. ==
 This is most likely because Squid is using more memory than it should be for your system.  When the Squid process becomes large, it experiences a lot of paging.  This will very rapidly degrade the performance of Squid. Memory usage is a complicated problem.  There are a number of things to consider.
