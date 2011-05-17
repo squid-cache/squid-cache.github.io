@@ -10,9 +10,21 @@
 
 == Pre-Built Binary Packages ==
 
-The [[http://www.openbsd.org|OpenBSD]] packages collection supports squid. OpenBSD 4.7 sports squid 2.7STABLE7 as a package; you can use {{{pkg_add}}} to install it.
-Furthermore, the ports collection offers squid 2.7STABLE7. To build it, 
-{{{cd /usr/ports/www/squid ; make install}}}
+The [[http://www.openbsd.org|OpenBSD]] packages collection supports squid.
+
+==== Squid-2.7 ====
+OpenBSD 4.7 sports squid 2.7STABLE7 as a package and in the ports collection.
+
+Binary Install Procedure:
+{{{
+pkg_add squid
+}}}
+
+Ports Collection Install Procedure:
+{{{
+cd /usr/ports/www/squid
+make install
+}}}
 
 == Compiling ==
 To build squid, no particular method should be needed. See SquidFaq/CompilingSquid for detailed instructions.
@@ -21,6 +33,7 @@ If you plan to do development on squid, some caution is needed: apparently somet
 CFLAGS='-O0 -Wall -g' CXXFLAGS="$CFLAGS" ./test-builds.sh
 }}}
 
+== Troubleshooting ==
 
 ----
-CategoryKnowledgeBase
+CategoryKnowledgeBase SquidFaq/BinaryPackages
