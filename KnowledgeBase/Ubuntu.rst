@@ -49,6 +49,10 @@ Install Procedure:
 
 == Compiling ==
 
+## same as Debian for now (but no patches mentioned)
+<<Include(KnowledgeBase/Debian,"(see Debian)",3,from="^== Compiling ==$", to="^## end basic compile")>>
+
+
 ## Describe the configure options and command line needed to build and install Squid
 
 ## Followed by any special patching needed.
