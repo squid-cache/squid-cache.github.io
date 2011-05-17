@@ -40,22 +40,23 @@ The software is designed to operate on any modern system, and is known to work o
  * BSDI
  * DragonflyBSD
  * [[KnowledgeBase/FreeBSD|FreeBSD]]
- * GNU/kFreeBSD
- * Mac OS/X
- * NetBSD
+ * [[KnowledgeBase/Debian|GNU/kFreeBSD (via Debian Project)]]
+ * [[KnowledgeBase/Fink|Mac OS/X (via Fink Project)]]
+ * [[KnowledgeBase/NetBSD|NetBSD]]
  * NeXTStep
- * OpenBSD
+ * [[KnowledgeBase/OpenBsd|OpenBSD]]
  * SunOS
 
 '''Linux:'''
 
- * CentOS
+ * [[KnowledgeBase/CentOS|CentOS]]
  * [[KnowledgeBase/Debian|Debian]]
  * [[KnowledgeBase/Fedora|Fedora]]
- * Gentoo
+ * [[KnowledgeBase/Gentoo|Gentoo]]
+ * [[KnowledgeBase/OpenSUSE|OpenSUSE]]
  * [[KnowledgeBase/RedHat|RedHat Enterprise Linux]]
- * [[KnowledgeBase/Suse|SuSE]]
- * Ubuntu
+ * [[KnowledgeBase/SLES|Novelle SuSE / SLES]]
+ * [[KnowledgeBase/Ubuntu|Ubuntu]]
 
 '''Unix:'''
 
