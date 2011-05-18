@@ -1,25 +1,156 @@
 ##master-page:FeatureTemplate
 #format wiki
 #language en
+#faqlisted yes
 
 = Feature: Load Balancing =
 
  * '''Goal''': Load balance origin servers or peers.
 
- * '''Status''': not started
+ * '''Status''': incomplete.
 
- * '''ETA''': unknown
+## * '''ETA''': unknown
 
- * '''Version''':
+ * '''Version''': 2.6
 
- * '''Developer''':
+## * '''Developer''':
 
- * '''More''':
+## * '''More''':
 
+<<TableOfContents>>
+
+== Wish List ==
 Support for squid to act as a load balancer is almost there, but some features are not well integrated or missing.
 
- * Parent selection can now be done with ACLs, it would be nice to bundle a redirector doing that.
+ * Parent selection can now be done with ACLs.
  * Session affinity can currently be done using the client IP addresses. To have that done as a cookie, it is now responsibility of the backend application to set that cookie. It would be nice to have an external authenticator in charge of that.
+ * Squid does accounting of all traffic going to a peer. It would be nice to have a byte-based balancing algorithm or two.
+
+== Peer Selection Algorithms ==
+
+When building a hierarchy of peers into a load balanced, high performance or high availability / failure tolerant layering there are a number of algorithms Squid makes available.
+
+The following algorithms are listed in order of preference. Squid will try to find an available peer using each of these algorithms in turn. If there are no available peers configured for that algorithm it will skip to the next.
+
+In absence of any configuration the peers selected will be:
+ first ICP responding sibling, followed by '''default''' '''first-up''' parent then '''default''' SquidConf:cache_peer.
+
+=== HTCP : Hyper Text Caching Protocol ===
+
+|| '''Log Code''' || UDP_*, SIBLING_HIT, PARENT_HIT ||
+|| '''Options''' || no-query || Disable HTCP queries to this peer. ||
+||  || htcp || Enable HTCP queries to this peer (instead of ICP). ||
+||  || htcp= || Enable HTCP queries to this peer (instead of ICP). ||
+
+This is a UDP based fetch-response protocol used to discover if a '''sibling''' peer has an object from the same URL already stored. see RFC RFC:2756 for details on this protocol.
+
+This protocol sends whole HTTP headers to the peer for response decision making. It should be preferred over ICP selection wherever possible, but can cause a larger background traffic overhead.
+
+
+=== ICP : Internet Cache Protocol ===
+
+|| '''Log Code''' || UDP_*, SIBLING_HIT, PARENT_HIT ||
+|| '''Options''' || no-query || Disable ICP queries to this peer. ||
+
+This is a UDP based fetch-response protocol used to discover if a '''sibling''' peer has an object from the same URL already stored. see RFC RFC:2186 for details on this protocol.
+
+It suffers from some limitations due to only requesting the URL. Modern HTTP concept of ''variants'' is not included (one URL with a gzipped variant, a deflate variant, a sdch variant, a plain-text variant, etc). A lot of websites also provide many variants based on other visitor details. So there is a risk of false positives and sub-optimal routing selection in the modern www. see HTCP below for the fix.
+
+
+=== Default Parent ===
+
+|| '''Log entry''' || DEFAULT_PARENT ||
+|| '''Options''' || default ||
+
+If a peer is marked as ''default'' and is available it will be preferred over all other selection algorithms. Only one peer may be marked as the default.
+
+ {i} In older versions of Squid if all other selection algorithms have failed to produce an available peer the SquidConf:cache_peer entry marked as '''default''' will be selected any tried anyway. Current releases only select it once and skip if unavailable.
+
+
+=== Username Hash ===
+
+|| '''Log entry''' || CARP ||
+|| '''Options''' || userhash || Use login based hash algorithm with this peer ||
+
+Peers marked for ''userhash'' are bundled into a group and a hash is used to load balance based on login username such that each user always goes through the same peer. There is some flexibility, when peers become unavailable or return to availability the hash is adjusted to cope with the change.
+
+This algorithm is primarily needed to make predictable paths through clusters or hierarchies. It is particularly useful for ISP clusters having to cope with websites linking the IP and user login together as sessions (such as [[KnowledgeBase/Hotmail|Hotmail]]). These sessions break when passing through regular HTTP stateless clusters which split up the transaction stream for load balancing.
+
+
+=== Source IP Hash ===
+
+|| '''Log entry''' || sourcehash ||
+|| '''Options''' || sourcehashp || Use IP-based hash algorithm with this peer ||
+
+Peers marked for ''sourcehash'' are bundled into a group and a hash is used to load balance based on IP address such that each user always goes through the same peer.
+
+Almost identical to ''userhash'' this version can be used when login is not available.
+
+
+=== CARP : Cache Array Routing Protocol ===
+
+|| '''Log entry''' || CARP ||
+|| '''Options''' || carp || Use CARP hash algorithm with this peer||
+
+Peers marked for CARP are bundled into a group and a hash is used to load balance URLs such that each URL always goes to the same peer. There is some flexibility, when peers become unavailable or return to availability the hash is adjusted to cope with the change.
+
+This algorithm is one of the preferred methods of object de-duplication in cache clusters and load balancing for multi-instance installations of [[Squid-3.1]] and older (it is outdated in this purpose by SMP support in [[Squid-3.2]]). The efficient alternatives are multicast ICP or HTCP.
+
+
+=== Round-Robin ===
+
+|| '''Log entry''' || ROUNDROBIN_PARENT ||
+|| '''Options''' || weight=N || Un-balance the connections to pick this peer N times each cycle. ||
+
+The classical load distribution algorithm. It operates like a circle selecting the first peer, then the second, then the third, etc until all peers have been used then selects the first again and repeats the sequence. Can be modified with '''weight=''' option to un-balance the connections.
+
+There are some fundamental details which you need to be aware of, outlined below ''by Grant Taylor''
+## with some adaptations for Squid, the original was a TCP explanation.
+
+In (basic) theory, yes. will alternate between the peers thus hypothetically equalizing the load on the connections.
+
+The thing that this does '''not''' take in to account is what type of traffic a given connection is nor how long lived and active it is.
+
+Let's say that I have the following (new) connections in the following sequence.
+
+  1.  Simple HEAD request.
+  2.  HTTP download of kernel source.
+  3.  Simple image GET request, closed immediately.
+  4.  CONNECT tunnel.
+
+You will find that connections #1 and #3 are sent to peer-A and that connections #2 and #4 are sent to peer-B.  So what you end up with is two very ''light'' connections on peer-A and two ''much heavier'' connections on peer-B.
+
+The connections did end up "load balanced" (in a manner of speaking), or "distributed" (is probably a better way to describe it) across the multiple peers.  However, if you look at the utilization of the two or the physical connections they represent, you will find that one is way under utilized and the other is probably saturated.
+
+So, you do end up distributing the connections, but not necessarily load balancing.
+
+
+=== Weighted Round-Robin ===
+
+|| '''Log entry''' || ROUNDROBIN_PARENT ||
+|| '''Options''' || weight=N || Un-balance the connections to pick this peer N times each cycle. ||
+
+Simple adaptation on the classical ''round-robin'' algorithm. This one uses measurements of the TCP latency to each peer (RTT lag) to modify the weight of each peer.
+
+The classical load distribution algorithm. It operates like a circle selecting the first peer, then the second, then the third, etc until all peers have been used then selects the first again and repeats the sequence. Can be modified with '''weight=''' option to un-balance the connections, this is in addition to the RTT weight.
+
+It works best for load balancing in an ISP or CDN where the peers are remote with sizable RTT. When the peers are close or available on high-speed links with very low latency (such as a typical reverse-proxy or small CDN) the RTT weighting becomes nearly useless.
+
+There is one potential benefit on high-speed networks. To provide early detection of peer overload. Squid peers will stop responding fast when overloaded. The lag weighting can reduce the load to that peer before connections start getting completely dropped or timing out (too) badly.
+
+
+=== First-Up Parent ===
+
+|| '''Log entry''' || FIRST_UP_PARENT ||
+|| '''Options''' || (none) ||
+
+Select the first squid.conf listed SquidConf:cache_peer '''parent''' entry which is marked as ALIVE and available.
+
+This algorithm is the default used for '''parent''' peers. There is currently no explicit configuration option to turn it on/off.
+
+## === Any-Old Parent ===
+
+## Duplicate of First-Up. Seems to be useless.
 
 ----
 CategoryFeature | CategoryWish
