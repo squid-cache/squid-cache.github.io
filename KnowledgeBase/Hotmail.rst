@@ -34,6 +34,8 @@ To force all client requests to go to a consistent IP address you must disable d
 
 To force all client requests to go to Hotmail with consistent IPs. You can do one of a few things:
 
+ * Proxy clusters can use the '''usernamehash''' or '''sourcehash''' SquidConf:cache_peer algorithms to limit the HTTP request flow without hindering load balancing too much.
+
  * Recent Squid releases with TPROXYv4 support are able to spoof the client IP on their contacts. This spoofing gets around the website security system by allowing it access to the client IP. Effectively making it believe the proxy is not there. This can be complex to debug if things go wrong and requires modern systems from the kernel up.
 
  * Older Squid releases can use SquidConf:tcp_outgoing_address directive Forcing all outgoing requests to Hotmail to use a fixed Squid outbound IP. This risks the old well-known problem that Hotmail ''Single-Sign-On'' is linked to the IP address as well and all clients visiting through the proxy may get to see each others email boxes.
