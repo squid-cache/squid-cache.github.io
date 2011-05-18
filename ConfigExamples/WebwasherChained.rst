@@ -1,3 +1,4 @@
+## page was renamed from ConfigExamples/Webwasher
 ## page was renamed from ConfigExamples/SquidAndWebwasher
 #language en
 = Configuring Squid and Webwasher in a proxy chain =
