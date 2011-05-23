@@ -32,7 +32,7 @@ Also WCCP is merely a way of getting packets to a proxy box, receiving the packe
 
 This means no one config tutorial can be used for a generic config. Instead we are forced to provide snippets of config and stitch them together as appropriate for every network combination.
 
-Here is a diagram. These snippets implement the *red* communication channel:
+Here is a diagram. These snippets implement the '''red''' communication channel:
 {{attachment:wccp_proxy_flows.png}}
  ''Image copyright Cisco.''
 
