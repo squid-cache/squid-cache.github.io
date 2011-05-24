@@ -41,9 +41,11 @@ If you see the ''Too many open files'' error message, you are most likely runnin
 
 Linux kernel 2.2.12 and later supports "unlimited" number of open files without patching. So does most of glibc-2.1.1 and later (all areas touched by Squid is safe from what I can tell, even more so in later glibc releases). But you still need to take some actions as the kernel defaults to only allow processes to use up to 1024 filedescriptors, and Squid picks up the limit at build time.
 
- * Before configuring Squid run "''ulimit -HSn ####''" (where #### is the number of filedescriptors you need to support). Be sure to run "make clean" before configure if you have already run configure as the script might otherwise have cached the prior result.
+ * Before configuring Squid run "''ulimit -HS -n ####''" (where #### is the number of filedescriptors you need to support). Be sure to run "make clean" before configure if you have already run configure as the script might otherwise have cached the prior result.
  * Configure, build and install Squid as usual
  * Make sure your script for starting Squid contains the above ''ulimit'' command to raise the filedescriptor limit. You may also need to allow a larger port span for outgoing connections (set in /proc/sys/net/ipv4/, like in "''echo 1024 32768 > /proc/sys/net/ipv4/ip_local_port_range''")
+
+ /!\ NOTE that the '''-n''' option is separate from the '''-HS''' options. ulimit will fail on some systems if you try to combine them.
 
 Alternatively you can
 
