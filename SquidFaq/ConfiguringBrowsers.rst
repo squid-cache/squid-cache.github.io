@@ -3,6 +3,7 @@
 <<TableOfContents>>
 
 ##begin
+
 == Communication between browsers and Squid ==
 
 Most web browsers available today support proxying and are easily configured
@@ -11,6 +12,38 @@ such as lists of domains or URL patterns that shouldn't be fetched through
 the proxy, or !JavaScript automatic proxy configuration.
 
 There are three ways to configure browsers to use Squid.  The first method involves manually configuring the proxy in each browser.  Alternatively, a proxy.pac file can be manually entered into each browser so that it will download the proxy settings (partial auto configuration), and lastly all modern browsers can also and indeed are configured by default to fully automatically configure themselves if the network is configured to support this.
+
+
+== Recommended network configuration ==
+
+For best use of the proxy we recommend a multiple-layers approach. The following are the layers we recommend, in order of preference.
+
+We are aware that many networks only implement layer 3 and 4 of this design due to administrators familiarity with NAT, confusion about the benefits, and historic problems with the upper two layers.
+
+ 1. [[#Fully_Automatically_Configuring_Browsers_for_WPAD|Web Proxy Automatic Detection]] ('''WPAD''') (aka '''transparent configuration''')
+  * Browsers set to auto-detect the proxy for whatever network they are plugged into. This is particularly useful for mobile users.
+  * The big problem with this layer is that there is no formal RFC standard to follow, so browsers implement and two separate DNS and DHCP systems to setup.
+  * requires the PAC to be implemented.
+
+ 2. [[#Partially_Automatic_Configuration|Proxy auto-configuration]] ('''PAC''') (aka ''transparent proxy'')
+  * As a backup to per-machine configuration.
+  * Some systems support PAC file to be explicitly set in the machine-wide environment.
+
+ 3. Machine-wide Configuration
+  . Using a system-wide environment variable '''http_proxy''' (or GUI configuration which sets it). Most operating systems support this. Windows is the exception, however the IE settings are used in an equivalent way.
+  * A lot of software supports it. Only set once per machine.
+  * Some systems allow this to be pushed out across the network (Windows uses a Domain Policy)
+
+ 4. [[ConfigExamples/Intercept|NAT or TPROXY interception]]. (aka ''transparent proxy'')
+  * Client software does not need to be touched.
+  * security takes several major reductions (several whole families of vulnerability are created, proxy authentication disappears)
+  * System resources and connection reliability take several major reductions
+
+ 5. [[#Manual_Browser_Configuration|Manual Configuration]].
+  . Nothing beats an explicit manual configuration for ''it works'' excitement. However doing it for each and every piece of software on a machine is quite a hassle. Doing it for a whole network is unrealistic outside of highly paranoid systems. It is mentioned here simply as an option.
+
+ * For completeness sake: the best underlying secure systems back several of these layers up with a complete firewall ban on web traffic. This prevents users and machines bypassing the proxy control points.
+
 
 == Manual Browser Configuration ==
 
