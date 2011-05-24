@@ -136,9 +136,9 @@ Reference: http://bugs.squid-cache.org/show_bug.cgi?id=3057
 === Your cache is running out of filedescriptors ===
 Solaris 9 and 10 support "unlimited" number of open files without patching. But you still need to take some actions as the kernel defaults to only allow processes to use up to 256 with a cap of 1024 filedescriptors, and Squid picks up the limit at build time.
 
- * Before configuring Squid run {{{ ulimit -HSn $N}}} where $N is the number of filedescriptors you need to support).
+ * Before configuring Squid run {{{ ulimit -HS -n $N}}} where $N is the number of filedescriptors you need to support).
 {{{
-ulimit -HSn $N
+ulimit -HS -n $N
 ./configure ...
 make install
 }}}
@@ -147,7 +147,7 @@ make install
 
 Make sure your script for starting Squid contains the above ulimit command to raise the filedescriptor limit while Squid is running.
 {{{
-ulimit -HSn $N
+ulimit -HS -n $N
 squid
 }}}
 
