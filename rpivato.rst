@@ -3,11 +3,13 @@
 
 == Rafael Pivato ==
 
-As a network administrator I use Squid as the key point to give Internet access to my users.
+As a network administrator I used Squid as the key point to give Internet access to my users.
 
-I am here to learn more about this software and contribute whenever possible to this wiki.
+My current work here will be helping the community with my best providing nice and clean documentation in this Wiki.
 
-Email: <<MailTo(rpivato AT SPAMFREE gmail DOT com)>>
+During this process I expect to learn even more about Squid-Cache to provide higher quality consultancy services.
+
+Email: <<MailTo(rafael AT SPAMFREE pivato DOT info)>>
 
 === To Do ===
 
