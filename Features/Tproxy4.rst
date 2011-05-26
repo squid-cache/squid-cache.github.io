@@ -23,7 +23,7 @@ WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. 
 
 == Minimum Requirements (IPv6 and IPv4) ==
  ||Linux Kernel 2.6.37 || [[http://www.kernel.org/|Official releases page]] ||
- ||iptables 1.4.10 || [[http://www.netfilter.org/projects/iptables/downloads.html|Offical releases page]] ||
+ ||iptables 1.4.10 || [[http://www.netfilter.org/projects/iptables/downloads.html|Official releases page]] ||
  ||Squid 3.1 ||[[http://www.squid-cache.org/Versions/|Official releases page]] ||
  ||libcap-dev or libcap2-dev ||any ||
  ||libcap 2.09 or later ||any ||
@@ -37,7 +37,7 @@ WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. 
 
 == Minimum Requirements (IPv4 only) ==
  ||Linux Kernel 2.6.28 || [[http://www.kernel.org/|Official releases page]] ||
- ||iptables 1.4.3 || [[http://www.netfilter.org/projects/iptables/downloads.html|Offical releases page]] ||
+ ||iptables 1.4.3 || [[http://www.netfilter.org/projects/iptables/downloads.html|Official releases page]] ||
  ||Squid 3.1 || [[http://www.squid-cache.org/Versions/|Official releases page]] ||
  ||libcap-dev or libcap2-dev ||any ||
  ||libcap 2.09 or later ||any ||
