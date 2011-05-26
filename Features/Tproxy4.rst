@@ -20,38 +20,36 @@ This feature was Sponsored by Balabit and developed by Laszlo Attilla Toth and A
 
 WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. It has not changed significantly since older TPROXY.
 
-== Minimum Requirements (IPv4) ==
- ||Linux Kernel 2.6.28 ||[[http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.28.3.tar.bz2|2.6.28.3 release]] ||[[http://www.kernel.org/|Official releases page]] ||
- ||iptables 1.4.3 ||[[http://www.netfilter.org/projects/iptables/files/iptables-1.4.3.tar.bz2|1.4.3 release]] ||[[http://www.netfilter.org/projects/iptables/downloads.html|Offical releases page]] ||
- ||Squid 3.1 ||[[http://www.squid-cache.org/Versions/v3/3.1/|3.1 series]] ||[[http://www.squid-cache.org/Versions/|Official releases page]] ||
+
+== Minimum Requirements (IPv6 and IPv4) ==
+ ||Linux Kernel 2.6.37 || [[http://www.kernel.org/|Official releases page]] ||
+ ||iptables 1.4.10 || [[http://www.netfilter.org/projects/iptables/downloads.html|Offical releases page]] ||
+ ||Squid 3.1 ||[[http://www.squid-cache.org/Versions/|Official releases page]] ||
  ||libcap-dev or libcap2-dev ||any ||
  ||libcap 2.09 or later ||any ||
 
- * {i} NP: the links above are an arbitrary sample from the expected working versions, and may be old in some cases. The web directories where the files sit allow you to browse to newer versions if you like.
+## * [[Squid-3.1]] has been adjusted to auto-detect and allow IPv6 on SquidConf:http_port set with the '''tproxy''' option when kernel support is available.
+
+## * {i} iptables VCS checkout is still needed. Patches on top of that (which may change) can be found at 
+## http://thread.gmane.org/gmane.comp.security.firewalls.netfilter.devel/35935
 
  * {i} '''libcap2''' is needed at run time. To build you need the developer versions (*-dev) to compile with Squid.
 
- * TPROXYv4 support was added in a useable 2.6.28. however several Kernels have various known bugs:
-  * {X} older than 2.6.28 are known to supply IPs wrongly to Squid and other client programs.
-  * 2.6.28 to 2.6.36 are known to have ICMP and TIME_WAIT issues (fixed in iptables 1.4.10).
+== Minimum Requirements (IPv4 only) ==
+ ||Linux Kernel 2.6.28 || [[http://www.kernel.org/|Official releases page]] ||
+ ||iptables 1.4.3 || [[http://www.netfilter.org/projects/iptables/downloads.html|Offical releases page]] ||
+ ||Squid 3.1 || [[http://www.squid-cache.org/Versions/|Official releases page]] ||
+ ||libcap-dev or libcap2-dev ||any ||
+ ||libcap 2.09 or later ||any ||
+
+ * {i} NP: the versions above are a minimum from the expected working versions. Newer versions are better than older.
+
+ * {i} '''libcap2''' is needed at run time. To build you need the developer versions (*-dev) to compile with Squid.
+
+ * TPROXYv4 support reached a usable form in 2.6.28. However several Kernels have various known bugs:
+  * {X} older than 2.6.28 are known to supply IPs wrongly to Squid and other client programs. Avoid!
+  * 2.6.28 to 2.6.36 are known to have ICMP and TIME_WAIT issues.
   * 2.6.32 to 2.6.34 have bridging issues on some systems. Please use 2.6.30 or 2.6.31 for production machines, they seem to work properly.
-
-
-== Minimum Requirements (IPv6) ==
- ||Linux Kernel 2.6.37-rc1 || (package not yet available) || [[http://www.kernel.org/|Official releases page]] ||
- ||iptables 1.4.10 || (package not yet available) ||[[http://www.netfilter.org/projects/iptables/downloads.html|Offical releases page]] ||
- ||Squid 3.1 ||[[http://www.squid-cache.org/Versions/v3/3.1/|3.1 series]] ||[[http://www.squid-cache.org/Versions/|Official releases page]] ||
- ||libcap-dev or libcap2-dev ||any ||
- ||libcap 2.09 or later ||any ||
-
- * [[Squid-3.1]] has been adjusted to auto-detect and allow IPv6 on SquidConf:http_port set with the '''tproxy''' option when kernel support is available.
-
- * {i} kernel packages are not yet available. A VCS checkout of the kernel code is currently required to build from.
-
- * {i} iptables VCS checkout is still needed. Patches on top of that (which may change) can be found at 
-http://thread.gmane.org/gmane.comp.security.firewalls.netfilter.devel/35935
-
- * {i} '''libcap2''' is needed at run time. To build you need the developer versions (*-dev) to compile with Squid.
 
 == Squid Configuration ==
 Configure build options
