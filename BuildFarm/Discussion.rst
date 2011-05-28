@@ -14,8 +14,11 @@ See [[../|Discussed Page]]
 Wishlist for BuildFarm:
  1. have it properly interact with libvirt to start/stop slaves (FrancescoChemolli)
    currently hard-stops rather than freezing.
+ 1. add build using ksh shell to detect bashism bugs
+ 1. setup Windows VisualStudio testing
+ 1. faster ARM slave
  1. develop matrix parametrized builds available (e.g. to test icc on centos) (AmosJeffries)
- 1. make OpenBSD nodes work
+ 1. find a way  to embed the Hudson "traffic-light" and "weather" results live into this and other wiki pages.
 
 ##----
 ##<<Anchor(C1)>>
