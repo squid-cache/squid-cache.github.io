@@ -18,8 +18,8 @@ The currently-planned farm consists of:
 || [[http://www.openbsd.org/|OpenBSD]] || 4.8 || obsd-48-x86 || {OK} [[/OpenBsdInstall|Installation guide]] ||
 || [[http://www.freebsd.org/|FreeBSD-x32]] || 6.4 || squid-cache.org || {OK} ||
 || [[http://www.freebsd.org/|FreeBSD-x64]] || 7.2 || diablo.squid-cache.org || {OK} ||
-|| [[http://www.microsoft.com/windows/default.aspx|MS Windows]] MinGW || || || Need license for OS & dev-tools ||
-|| [[http://www.microsoft.com/windows/default.aspx|MS Windows]] Visual || || || Need setting up. Sponsored. ||
+|| [[http://www.microsoft.com/windows/default.aspx|MS Windows]] MinGW || || || Sponsored. ||
+|| [[http://www.microsoft.com/windows/default.aspx|MS Windows]] Visual || || || Sponsored. Need setting up. ||
 
 '''Volunteer Help Sought:'''
 || [[http://opensolaris.org/|OpenSolaris-x64]] || Volunteers sought since Oracle dismissed the Opensolaris public build farm ||
