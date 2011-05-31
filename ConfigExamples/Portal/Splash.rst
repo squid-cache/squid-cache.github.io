@@ -36,7 +36,7 @@ http_access deny !new_users
 
 This is just the snippet of config which causes the splash page and session to be enacted. Rules which permit the visitor use of the proxy are expected to be placed as appropriate below them. The basic default safety nets should as always be above them.
 
- {i} The session helper has undergone a name change to [[http://www.squid-cache.org/Versions/v3/3.2/manuals/ext_session_acl|ext_session_acl]] in [[Squid-3.2]].
+ {i} The session helper has undergone a name change to [[http://www.squid-cache.org/Versions/v3/3.2/manuals/ext_session_acl.html|ext_session_acl]] in [[Squid-3.2]].
 
 == Configuration tweaks ==
 
