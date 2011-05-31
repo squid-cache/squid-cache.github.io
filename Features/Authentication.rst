@@ -232,3 +232,6 @@ However, you may still find the need to write your own one for some system which
 
 -----
 Back to the SquidFaq
+
+----
+CategoryFeature
