@@ -10,7 +10,7 @@
 
 == Outline ==
 
-The default configuration of squid prevents the caching of [[ConfigExamples/DynamicContent|dynamic content]] and youtube.com specifically implement several 'features' that prevent their flash videos being effectively distributed by caches.
+The default configuration of squid older than 3.1 prevents the caching of [[ConfigExamples/DynamicContent|dynamic content]] and youtube.com specifically implement several 'features' that prevent their flash videos being effectively distributed by caches.
 
 This page details the publicly available tactics used to overcome at least some of this and allow caching of a lot of youtube.com content. Be advised this demonstrated configuration has a mixed success rate, it works for some but others have reported it strangely not working at all.
 
@@ -18,7 +18,7 @@ Each configuration action is detailed with its reason and effect so if you find 
 
 
 == Partial Solution Using php enabled webserver  ==
-==== 1/6/11 ==== 
+==== 1/6/11 ====
 With some luck and dodgy coding, I have managed to get youtube caching working.
 My method requires a mostly normal squid setup, with a url rewriter script which rewrites any requests destined for youtube to use a special caching proxy php script
 ie, http://www.youtube.com/watch?v=avaSdC0QOUM becomes http://10.13.37.25/per.php?url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DavaSdC0QOUM%0A
