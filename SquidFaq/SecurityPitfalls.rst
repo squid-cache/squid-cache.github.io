@@ -91,7 +91,7 @@ If it is not present in web requests the middleware proxy is identified as the t
 
 The configuration controls provided by Squid are intended for Accelerator setups.
 
-== Safe_Ports and SSL_Ports ACL ==
+== The Safe_Ports and SSL_Ports ACL ==
 
 These ACL controls are listed in a very specific way in the default squid.conf to protect Squid against
 Security issues such as those outlines for SMTP above.
@@ -102,7 +102,7 @@ Security issues such as those outlines for SMTP above.
 
 '''Notes:'''
 
- (!) They should be left as the top access control lines in any standard forward-proxy configuration.
+ (!) They should be left as the '''top''' access control lines in any standard forward-proxy configuration.
 
  {i} Only Reverse-Proxy configurations need to go above them.
 
@@ -111,8 +111,28 @@ Default usage:
 http_access deny !Safe_ports
 http_access deny CONNECT !SSL_Ports
 ...
-# Other http_access controls
+# Place your own access controls here. Between them.
+...
+http_access deny all
 }}}
+
+=== The manager ACLs ===
+
+These ACLs control access to the Squid cache manager. The manager can do a lot of powerful things. Including shutting down your Squid, or displaying the configuration file, or displaying the current logged in users, or displaying your network layout.
+
+As you can imaging, allowing random internet visitors to see these details is not a good thing. For this reason the '''very top''' access control in Squid limits manager access on only be available to the special localhost IP.
+
+{{{
+acl manger proto cache_obj
+http_access allow manager localhost
+http_access deny manager
+}}}
+
+ /!\ placing any kind of major '''allow''' privilege before this ACL breaks it.
+
+ {!} only reverse-proxy configuration may go above it.
+
+Feel free to change the '''localhost''' part to something even more secure or specific to allow only you network management access. But beware that changes keep regular visitors out.
 
 -----
 Back to the SquidFaq
