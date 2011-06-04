@@ -116,7 +116,7 @@ http_access deny CONNECT !SSL_Ports
 http_access deny all
 }}}
 
-=== The manager ACLs ===
+== The manager ACLs ==
 
 These ACLs control access to the Squid cache manager. The manager can do a lot of powerful things. Including shutting down your Squid, or displaying the configuration file, or displaying the current logged in users, or displaying your network layout.
 
