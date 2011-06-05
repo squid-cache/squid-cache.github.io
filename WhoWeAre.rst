@@ -19,7 +19,7 @@
 = Other Contributors =
  * Countless independent [[http://www.squid-cache.org/CONTRIBUTORS.txt|Contributors]].
 
-= Package Maintainers =
+= Binary Package Maintainers =
 While squid is normally distributed in source form. Some dedicated people are donating their time to packaging Squid in other popular formats for easy use.
 
 ##<<FullSearch(title:KnowledgeBase/ regex:C{1}ategoryDistributionInfo regex:"...Maintainer:...")>>
