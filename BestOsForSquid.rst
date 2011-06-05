@@ -19,6 +19,10 @@ While this is probably true for those outfits who desire to obtain the highest p
 === What about Unices? ===
 Generally speaking, any modern Unix or Unix-like operating system will offer similarly good performance. A technically sensible administrator will choose the best tool for the job, which means whatever OS she is most comfortable with.
 
+For reference we maintain an incomplete list of OS where Squid is known to be popular. Where possible there are also OS pages here in the wiki with extra information.
+<<Include(SquidFaq/AboutSquid,"Popular OS",3,from="^## supported OS list$", to="^## end supported OS list$")>>
+
+=== Tuning for More ===
 What matters the most to obtain the most out of any setup is to properly tune a few parameters. In priority order:
 
  * amount of physical memory available
@@ -32,9 +36,9 @@ What matters the most to obtain the most out of any setup is to properly tune a 
    always leave about 20% of free space on the filesystems containing your cache_dirs: generally FS performance degrades dramatically if used space exceeds 80%
  * on OSes which offer multiple choices, type of filesystem (except for a few really bad choices)
 
-On systems with syncronous directory updates (Solaris, some BSD versions)
+On systems with synchronous directory updates (Solaris, some BSD versions)
 
- * mount option to enable asyncronous directory updates, or preferably a filesystem meta journal on a separate device taking the heat of directory updates.
+ * mount option to enable asynchronous directory updates, or preferably a filesystem meta journal on a separate device taking the heat of directory updates.
 
 === But I want to use foofs for my cache_dirs, it will perform best! ===
 In case you didn't read the previous paragraph, please do! In case you ''still'' believe it makes much of a difference, here's some tips:
