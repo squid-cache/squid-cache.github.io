@@ -19,13 +19,15 @@ To Intercept web requests transparently without any kind of client configuration
 
 == iptables configuration ==
 
- /!\ Replace '''SQUIDIP''' with the public IP(s) which squid may use for its listening port and outbound connections. Repeat each iptables line one per squid outbound IP.
+ /!\ Replace '''$SQUIDIP''' with the public IP(s) which squid may use for its listening port and outbound connections. Repeat each iptables line one per squid outbound IP.
 
-Without the first line here being first, your setup may encounter problems with forwarding loops.
+Without the first iptables line here being first, your setup may encounter problems with forwarding loops.
 
 {{{
-iptables -t nat -A PREROUTING -s SQUIDIP -p tcp --dport 80 -j ACCEPT
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination SQUIDIP:3129
+SQUIDIP= # your proxy IP
+
+iptables -t nat -A PREROUTING -s $SQUIDIP -p tcp --dport 80 -j ACCEPT
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $SQUIDIP:3129
 iptables -t nat -A POSTROUTING -j MASQUERADE
 }}}
 
