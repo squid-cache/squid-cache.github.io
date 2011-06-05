@@ -1,4 +1,8 @@
 #language en
+
+The Squid project, originally funded by a NSF grant, is now run entirely by volunteers.
+There are a few key individuals who keep the project running.
+
 = Squid Core Team =
  * [[Henrik_Nordström]], Squid Hacker Extraordinaire and [[RoadMap/Squid2|Squid-2.x]] release manager.
  * [[AmosJeffries|Amos Jeffries]] IPv6 guru, [[Translations]] coordinator, and [[RoadMap/Squid3|Squid-3.x]] release manager.
