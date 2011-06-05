@@ -22,10 +22,10 @@ Harris' Lament says, "All the good ones are taken."
 We needed to distinguish this new version from the Harvest cache software.  Squid was the code name for initial development, and it stuck.
 
 == What is the latest version of Squid? ==
-This is best answered by the [[http://www.squid-cache.org/Versions/|the Squid Versions page]] where you can also download the sources for releases and versions.
+This is best answered by the [[http://www.squid-cache.org/Versions/|the Squid Versions page]] where you can also download the sources.
 
 == Who is responsible for Squid? ==
-Squid is the result of efforts by numerous individuals from the Internet community.  The core team and main contributors list is at WhoWeAre; a list of our excellent contributors can be seen in [[http://www.squid-cache.org/CONTRIBUTORS|the CONTRIBUTORS file]].
+Squid is the result of efforts by numerous individuals from the Internet community.  The core team and main contributors list is at WhoWeAre; a list of our excellent contributors can be seen in [[http://www.squid-cache.org/CONTRIBUTORS.txt|the CONTRIBUTORS file]].
 
 == Where can I get Squid? ==
 You can download Squid via FTP from one of the many worldwide [[http://www.squid-cache.org/mirrors.html|mirror sites]] or [[ftp://ftp.squid-cache.org/pub/|the primary FTP site]].
@@ -35,6 +35,7 @@ Many sushi bars also have Squid.
 == What Operating Systems does Squid support? ==
 The software is designed to operate on any modern system, and is known to work on at least the following platforms:
 
+## supported OS list
 '''BSD:'''
 
  * BSDI
@@ -78,6 +79,8 @@ The software is designed to operate on any modern system, and is known to work o
 
  * OS/2
  * [[KnowledgeBase/Solaris|Solaris]]
+
+## end supported OS list
 
 If you encounter any platform-specific problems, please let us know by registering an entry in our [[http://bugs.squid-cache.org/|bug database]]. If you're curious about what is the best OS to run Squid, see BestOsForSquid.
 
@@ -140,7 +143,7 @@ Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], licensed 
 == How to add a new Squid feature, enhance, of fix something? ==
 Adding new features, enhancing, or fixing Squid behavior usually requires source code modifications. Several options are generally available to those who need Squid development:
 
- * '''Wait''' for somebody to do it: Waiting is free but may take forever. If you want to use this option, make sure you file a [[http://bugs.squid-cache.org/|bugzilla report]] describing the bug or enhancement so that others know what you need. Posting feature requests to a [[http://www.squid-cache.org/Support/mailing-lists.dyn|mailing list]] is often useful because it can generate interest and discussion, but without a bugzilla record, your request may be overlooked or forgotten.
+ * '''Wait''' for somebody to do it: Waiting is free but may take forever. If you want to use this option, make sure you file a [[http://bugs.squid-cache.org/|bugzilla report]] describing the bug or enhancement so that others know what you need. Posting feature requests to a [[http://www.squid-cache.org/Support/mailing-lists.html|mailing list]] is often useful because it can generate interest and discussion, but without a bugzilla record, your request may be overlooked or forgotten.
 
  * '''Do''' it yourself: Enhancing Squid and working with other developers can be a very rewarding experience. However, this option requires understanding and modifying the source code, which is getting better, but it is still very complex, often ugly, and lacking documentation. These obstacles affect the required development effort. In most cases, you would want your changes to be incorporated into the official Squid sources for long-term support. To get the code committed, one needs to cooperate with other developers. It is a good idea to describe the changes you are going to work on before diving into development. Development-related discussions happen on squid-dev [[http://www.squid-cache.org/Support/mailing-lists.dyn|mailing list]]. Documenting upcoming changes as a [[http://bugs.squid-cache.org/|bugzilla entry]] or a wiki [[CategoryFeature|feature page]] helps attract contributors or sponsors.
 
