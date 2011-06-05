@@ -28,7 +28,7 @@ This is best answered by the [[http://www.squid-cache.org/Versions/|the Squid Ve
 Squid is the result of efforts by numerous individuals from the Internet community.  The core team and main contributors list is at WhoWeAre; a list of our excellent contributors can be seen in [[http://www.squid-cache.org/CONTRIBUTORS.txt|the CONTRIBUTORS file]].
 
 == Where can I get Squid? ==
-You can download Squid via FTP from one of the many worldwide [[http://www.squid-cache.org/mirrors.html|mirror sites]] or [[ftp://ftp.squid-cache.org/pub/|the primary FTP site]].
+You can download Squid via FTP or HTTP from one of the many worldwide [[http://www.squid-cache.org/Download/mirrors.html|mirror sites]] or [[ftp://ftp.squid-cache.org/pub/|the primary FTP site]].
 
 Many sushi bars also have Squid.
 
@@ -87,23 +87,9 @@ If you encounter any platform-specific problems, please let us know by registeri
 If you would like your favorite OS to join the list above, please try to build the latest Squid on it and send any feedback to the squid-dev mailing list.
 
 == What Squid mailing lists are available? ==
- * <<MailTo(squid-users AT squid-cache DOT org)>> hosts general discussions about the Squid cache software. subscribe via <<MailTo(squid-users-subscribe AT squid-cache DOT org)>>. Previous messages are available for browsing at [[http://www.squid-cache.org/mail-archive/squid-users/|the Squid Users Archive]], and also at [[http://marc.theaimsgroup.com/?l=squid-users&r=1&w=2|theaimsgroup.com]] and [[http://squid.markmail.org/|MarkMail]].
+That question is best answered by the official mailing lists page at http://www.squid-cache.org/Support/mailing-lists.html
 
- * squid-users-digest: digested (daily) version of above.  Subscribe via <<MailTo(squid-users-digest-subscribe AT squid-cache DOT org)>>.
-
- * <<MailTo(squid-announce AT squid-cache DOT org)>> is a receive-only list for announcements of new versions and any major security issues. Subscribe via <<MailTo(squid-announce-subscribe AT squid-cache DOT org)>>.
-
- * <<MailTo(squid-bugs AT squid-cache DOT org)>> is meant for sending us bug reports. Bug reports received here are given priority over those mentioned on squid-users. Security related bugs should always be sent to this mailing list instead of Bugzilla.
-
- * <<MailTo(squid AT squid-cache DOT org)>>: A closed list for sending us feed-back and ideas.
-
- * <<MailTo(squid-faq AT squid-cache DOT org)>>: A closed list for sending us feed-back, updates, and additions to the Squid FAQ. Bugzilla Website section can also be used.
-
- * <<MailTo(squid-dev AT squid-cache DOT org)>>: An open list for developer discussions about Squid code.
-
- * <<MailTo(noc AT squid-cache DOT org)>>: An (open? closed?) list for notices and discussion about the software and machines behind the Squid Project services.
-
-== I can't figure out how to unsubscribe from your mailing list. ==
+=== I can't figure out how to unsubscribe from your mailing list. ===
 All of our mailing lists have "-subscribe" and "-unsubscribe" addresses that you must use for subscribe and unsubscribe requests.  To unsubscribe from the squid-users list, you send a message to <<MailTo(squid-users-unsubscribe AT squid-cache DOT org)>>.
 
 == What other Squid-related documentation is available? ==
@@ -121,22 +107,12 @@ All of our mailing lists have "-subscribe" and "-unsubscribe" addresses that you
  * [[ftp://ftp.isi.edu/in-notes/rfc2187.txt|RFC 2187]] ICPv2 -- Application
  * [[ftp://ftp.isi.edu/in-notes/rfc1016.txt|RFC 1016]]
 
-== Does Squid support SSL/HTTPS/TLS? ==
-Squid-2.5 and later can terminate SSL connections.  This is perhaps only useful in a surrogate (http accelerator) configuration.  You must run configure with ''--enable-ssl''.  See ''SquidConf:https_port'' in squid.conf for more information.
-
-Squid also supports these encrypted protocols by "tunneling" traffic between clients and servers.  In this case, Squid can relay the encrypted bits between a client and a server.
-
-Normally, when your browser comes across an ''https'' URL, it does one of two things:
-
- . - The browser opens an SSL connection directly to the origin server.
- - The browser tunnels the request through Squid with the ''CONNECT'' request method.
-
-The ''CONNECT'' method is a way to tunnel any kind of connection through an HTTP proxy.  The proxy doesn't understand or interpret the contents.  It just passes bytes back and forth between the client and server. For the gory details on tunnelling and the CONNECT method, please see [[ftp://ftp.isi.edu/in-notes/rfc2817.txt|RFC 2817]] and [[http://www.web-cache.com/Writings/Internet-Drafts/draft-luotonen-web-proxy-tunneling-01.txt|Tunneling TCP based protocols through Web proxy servers]] (expired).
-
 == What's the legal status of Squid? ==
-Squid as a whole is copyrighted by the University of California San Diego. Squid uses some [[http://www.squid-cache.org/Doc/FAQ/squid-credits.txt|code developed by others]]. Individual features may be copyrighted by their contributors or sponsors.
+Squid as a whole is copyrighted by the University of California San Diego. Squid uses some code developed by others. Individual features may be copyrighted by their contributors or sponsors.
 
 Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], licensed under the terms of the [[http://www.gnu.org/copyleft/gpl.html|GNU General Public License]].
+
+The individual author copyrights vary between Squid release series as features are added and removed. The best source of this information is the CREDITS.txt file distributed with your particular versions source code. The latest copy for each series can also be found on the source download pages.
 
 <<Anchor(HowToAddOrFix)>>
 
@@ -145,14 +121,14 @@ Adding new features, enhancing, or fixing Squid behavior usually requires source
 
  * '''Wait''' for somebody to do it: Waiting is free but may take forever. If you want to use this option, make sure you file a [[http://bugs.squid-cache.org/|bugzilla report]] describing the bug or enhancement so that others know what you need. Posting feature requests to a [[http://www.squid-cache.org/Support/mailing-lists.html|mailing list]] is often useful because it can generate interest and discussion, but without a bugzilla record, your request may be overlooked or forgotten.
 
- * '''Do''' it yourself: Enhancing Squid and working with other developers can be a very rewarding experience. However, this option requires understanding and modifying the source code, which is getting better, but it is still very complex, often ugly, and lacking documentation. These obstacles affect the required development effort. In most cases, you would want your changes to be incorporated into the official Squid sources for long-term support. To get the code committed, one needs to cooperate with other developers. It is a good idea to describe the changes you are going to work on before diving into development. Development-related discussions happen on squid-dev [[http://www.squid-cache.org/Support/mailing-lists.dyn|mailing list]]. Documenting upcoming changes as a [[http://bugs.squid-cache.org/|bugzilla entry]] or a wiki [[CategoryFeature|feature page]] helps attract contributors or sponsors.
+ * '''Do''' it yourself: Enhancing Squid and working with other developers can be a very rewarding experience. However, this option requires understanding and modifying the source code, which is getting better, but it is still very complex, often ugly, and lacking documentation. These obstacles affect the required development effort. In most cases, you would want your changes to be incorporated into the official Squid sources for long-term support. To get the code committed, one needs to cooperate with other developers. It is a good idea to describe the changes you are going to work on before diving into development. Development-related discussions happen on [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev mailing list]]. Documenting upcoming changes as a [[http://bugs.squid-cache.org/|bugzilla entry]] or a wiki [[CategoryFeature|feature page]] helps attract contributors or sponsors.
 
- * '''Pay''' somebody to do it: Many [[http://www.squid-cache.org/Support/services.dyn|companies]] offer commercial Squid development services. When selecting the developer, discuss how they plan to integrate the changes with the official Squid sources and consider the company past contributions to the Squid project.
+ * '''Pay''' somebody to do it: Many [[http://www.squid-cache.org/Support/services.html|companies]] offer commercial Squid development services. When selecting the developer, discuss how they plan to integrate the changes with the official Squid sources and consider the company past contributions to the Squid project.
 
 The best development option depends on many factors. Here is some project dynamics information that may help you pick the right one: Most Squid features and maintenance is done by individual contributors, working alone or in small development/consulting shops. In the early years (1990-2000), these developers were able to work on Squid using their free time, research grants, or similarly broad-scope financial support. Requested features were often added on-demand because many folks could work on them. Most recent (2006-2008) contributions, especially large features, are the result of paid development contracts, reflecting both the maturity of software and the lack of "free" time among active Squid developers.
 
 == Can I pay someone for Squid support? ==
-Yes.  Please see [[http://www.squid-cache.org/Support/services.dyn|Squid Support Services]]. You can also [[http://www.squid-cache.org/Support/thankyou.dyn|donate]] money or equipment to members of the squid core team.
+Yes.  Please see [[http://www.squid-cache.org/Support/services.html|Squid Support Services]]. You can also [[http://www.squid-cache.org/Intro/helping.html|donate]] money or equipment to the Squid project.
 
 == Squid FAQ contributors ==
 The following people have made contributions to this document:
