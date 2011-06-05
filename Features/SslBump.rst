@@ -7,7 +7,7 @@
 
  * '''Goal''': Enable ICAP inspection of SSL traffic.
  * '''Version''': 3.1
- * '''Developer''': AlexRousskov
+ * '''Developer''': AlexRousskov, Christos Tsantilas
 
 == Details ==
 
