@@ -21,10 +21,7 @@ IPv6 is available in ALL current operating systems. Most now provide it enabled 
 '''IPv6 support''' is enabled by default in [[Squid-3.1]]. If you are using a packaged version of 3.1 without it, please contact the package maintainer about enabling it.
 
 
-'''Windows XP''', '''OpenBSD''' and '''MacOS X''' have some major known issues and will need to '''--disable-ipv6''' for now.
-## {{{
-## ./configure --with-ipv6-split-stack
-## }}}
+'''Windows XP''', '''OpenBSD''' and '''MacOS X''' have some big known issues with outgoing connections that prevent them going to IPv6 websites. Squid there will happily accept IPv6 clients, but will only go to IPv4 websites.
 
 When squid is built you will be able to start Squid and see some IPv6 operations. The most active will be DNS as IPv6 addresses are looked up for each website, and IPv6 addresses in the cachemgr reports and logs.
 
@@ -46,13 +43,13 @@ The only points of possible interest for some will be:
 
  * DNS works best and fastest through the internal resolver built into squid. Check that your configure options do not disable it.
 
- * IPv6 links still commonly have some tunnel lag. Squid can benefit most from a fast link, so test the various tunnel methods and brokers available for speed. This is a good idea in general for your IPv6 experience.
+ * IPv6 links still may have some tunnel lag. Squid can benefit most from a fast link, so test the various tunnel methods and brokers available for speed. This is a good idea in general for your IPv6 experience. Go with native routing as soon as your upstream can supply it.
 
  * A single listening port '''SquidConf:http_port 3128''' is less resource hungry than one for each IPv4 and IPv6. Also, its fully compatible with IPv6 auto-configuration.
 
- * Splitting the listening ports on input mode however (standard, tproxy, intercept, accel) is better than mixing two modes on one port.
+ * Splitting the listening ports on input mode (standard, tproxy, intercept, accel) is better than mixing two modes on one port. The most current Squid now require this splitting.
 
- * Squid can already cope with bad or inaccessible IPs. This can be improved by tuning the SquidConf:connect_timeout down to a few seconds.
+ * Squid can already cope with bad or inaccessible IPs. This can be improved by tuning the SquidConf:connect_timeout and SquidConf:dns_timeout down to a few seconds.
 
 == Trouble Shooting IPv6 ==
 === Squid builds with IPv6 but it won't listen for IPv6 requests. ===
@@ -64,9 +61,7 @@ Each of the port lines in squid.conf (SquidConf:http_port, SquidConf:icp_port, S
 When these lines contain an IPv4 address or a hostname with only IPv4 addresses squid will only open on those IPv4 you configured. You can add new port lines for IPv6 using [ipv6]:port, add AAAA records to the hostname in DNS, or use only a port.
 
 When only a port is set it should be opening for IPv6 access as well as IPv4. The one exception to default IPv6-listening are port lines where 'transparent', 'intercept' or 'tproxy' options are set. NAT-interception (commonly called transparent proxy) cannot be done in IPv6 so squid will only listen on IPv4 for that type of traffic.
-
-## Again Windows XP users are unique, the geeks out there will notice two ports opening for separate IPv4 and IPv6 access with each plain-port squid.conf line. The effect is the same as with more modern systems.
-
+TPROXYv4 support in the kernel varies. Squid will detect the capabilities and open the appropriate type of port for your kernel.
 
 '''Your squid may be configured with restrictive ACL.'''
 
@@ -78,16 +73,22 @@ acl localhost src 127.0.0.1 ::1
 
 '''Your Operating System may be configured to prevent Dual-Stack sockets.'''
 
-Dual-Stack is easiest achieved by a method known as v4-mapping. Where all IPv4 addresses map into a special part of IPv6 space for a socket connection. Squid makes use of this feature of IPv6. It is expected to enable this capability on the sockets it uses, but may be failing, check your cache.log for warnings or errors about 'V6ONLY'.
+Since version 3.1.6 Squid will detect the type of TCP stack your kernel has and open one or two sockets as needed by stack capabilities it finds.
 
+Dual-Stack is easiest achieved by a method known as v4-mapping. Where all IPv4 addresses map into a special part of IPv6 space for a socket connection. Squid makes use of this feature of IPv6 when found. It is expected to enable this capability on the sockets it uses.
 
-=== Squid listens on IPv6 but says 'Access Denied' or similar. ===
+If you have manually "disabled IPv6" using one of the many blog tutorials that advise simply forcing this socket feature off (as opposed to properly turning off IPv6) your TCP stack will be claiming IPv6 capabilities it cannot deliver. Check your cache.log for warnings or errors about 'V6ONLY'.
+
+=== Squid listens on IPv6 but says 'Access Denied' or 'Cannot Forward' or similar. ===
 '''Your squid may be configured to only connect out through specific IPv4.'''
 
 A number of networks are known to need SquidConf:tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit of ACL magic possible with SquidConf:tcp_outgoing_address which will get around this problem for DIRECT requests.
 
 {{{
 acl to_ipv6 dst ipv6
+
+# Magic entry. Place first in your config. This makes sure Squid has the IP available.
+http_access deny to_ipv6 !all
 
 tcp_outgoing_address 10.255.0.1 !to_ipv6
 tcp_outgoing_address dead:beef::1 to_ipv6
@@ -149,17 +150,17 @@ acl to_ipv6 dst ipv6
 ## Well, nothing that we know of yet.
 
 Sadly, OpenBSD, Mac OSX and Windows XP require what is called the ''split-stack'' form of IPv6. Which means sockets opened for IPv6 cannot be used for IPv4. There are currently some issues inside Squid with the handling of socket descriptors which are stalling progress on IPv6 for those OS.
-
+ UPDATE: These issues are now resolved.
 
 Also, a few features can't be used with IPv6 addresses. IPv4 traffic going through Squid is unaffected by this. Particularly traffic from IPv4 clients. However they need to be noted.
 
-=== Transparent Proxy ===
+=== NAT Interception Proxy (aka "Transparent") ===
 
 NAT simply does not exist in IPv6. By Design.
 
-Given that transparency/interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do transparency and interception that way.
+Given that interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do interception that way.
 
-[[Features/Tproxy4|TPROXY v4]] is capable of IPv6. '''Kernel and iptables patches for IPv6 TPROXY are now available. Contact Balabit.''' You will also need [Squid-3.1]], which will now permit tproxy ports to listen on IPv6 ... if your system has been patched.
+[[Features/Tproxy4|TPROXY v4]] is capable of IPv6. Kernel and iptables releases containing IPv6 TPROXYv4 are now readily available.
 
 === Delay Pools ===
 
