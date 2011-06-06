@@ -8,6 +8,8 @@ I joined the Squid development community in January 2007 intending to just compl
 
 I run a Web Development and Hosting business [[http://www.treenet.co.nz]]; Treehouse Networks Ltd. in New Zealand.  We provide customers from around the world with a content delivery network (CDN) built with Squid.  We also have a side business operating public wireless access portals built around Squid.
 
+A few bits and pieces about Squid including PayPal donations to me can be found at [[http://www.treenet.co.nz/projects/squid/]]
+
 Here is an ''auto-generated'' list of my current public Squid projects:
 
 Completed and available:
