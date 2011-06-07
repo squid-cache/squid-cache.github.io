@@ -40,6 +40,9 @@ Check with squid-dev to see if its already done.
  * Migrate Feature requests from bugzilla to wiki pages. (FrancescoChemolli, mostly done. Needs second round after Apr 20th, 2009)
 
  * Fix kqueue bugs once and for all (ie, delete events for closed FDs)
+  . http://bugs.squid-cache.org/show_bug.cgi?id=1991
+  . http://bugs.squid-cache.org/show_bug.cgi?id=2816
+  . 
 
  * Language and Translation
   1. Verify or Update one of the non-modified [[Translations|translated Squid error pages]].
@@ -56,12 +59,12 @@ Check with squid-dev to see if its already done.
   3. ensure correct failover to squid code when such are missing
   4. port --without-system-md5 configure option to force the above
 
- * SMP preparation
-  1. remove all uses of LOCAL_ARRAY() macro
-
  * Helper and Tool Manuals
   1. Write a manual man(8) page for a helpers/ program that does not have one.
   2. Update the existing README.txt and other help docs into proper manuals.
+  3. Benchmark documentation.
+    . How fast can each helper run?
+    . For helpers with multiple backends (ie DB), how do they compare?
 
 ----
 CategoryWish
