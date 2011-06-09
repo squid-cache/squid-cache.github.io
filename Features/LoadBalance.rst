@@ -101,6 +101,7 @@ This algorithm is one of the preferred methods of object de-duplication in cache
 
 || '''Log entry''' || ROUNDROBIN_PARENT ||
 || '''Options''' || weight=N || Un-balance the connections to pick this peer N times each cycle. ||
+|| || basetime=T|| Fine tune the RTT distance bias. ||
 
 The classical load distribution algorithm. It operates like a circle selecting the first peer, then the second, then the third, etc until all peers have been used then selects the first again and repeats the sequence. Can be modified with '''weight=''' option to un-balance the connections.
 
@@ -109,7 +110,8 @@ There are some fundamental details which you need to be aware of, outlined below
 
 In (basic) theory, yes. will alternate between the peers thus hypothetically equalizing the load on the connections.
 
-The thing that this does '''not''' take in to account is what type of traffic a given connection is nor how long lived and active it is.
+==== Bias: Connection-based ====
+The main noticeable bias is that this does '''not''' take in to account is what type of traffic a given connection is nor how long lived and active it is.
 
 Let's say that I have the following (new) connections in the following sequence.
 
@@ -129,6 +131,7 @@ So, you do end up distributing the connections, but not necessarily load balanci
 
 || '''Log entry''' || ROUNDROBIN_PARENT ||
 || '''Options''' || weight=N || Un-balance the connections to pick this peer N times each cycle. ||
+|| || basetime=T|| Fine tune the RTT distance bias. ||
 
 Simple adaptation on the classical ''round-robin'' algorithm. This one uses measurements of the TCP latency to each peer (RTT lag) to modify the weight of each peer.
 
@@ -138,6 +141,10 @@ It works best for load balancing in an ISP or CDN where the peers are remote wit
 
 There is one potential benefit on high-speed networks. To provide early detection of peer overload. Squid peers will stop responding fast when overloaded. The lag weighting can reduce the load to that peer before connections start getting completely dropped or timing out (too) badly.
 
+Consider peer A has a 5ms response RTT and peer B is on a neighbouring network with 10ms RTT. There is a 1:2 bias towards using peer A.
+
+If you want to reduce or increase this bias you can configure the ''basetime=T'' option on SquidConf:cache_peer. It takes the number of milliseconds to be subtracted from RTT before the calculation is made.
+ /!\ Don't forget that basetime=T is a fixed value, and RTT lag can vary with network conditions. So this is just a bias, not a "fix" for distance problems.
 
 === First-Up Parent ===
 
