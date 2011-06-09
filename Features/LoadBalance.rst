@@ -69,7 +69,7 @@ If a peer is marked as ''default'' and is available it will be preferred over al
 
 === Username Hash ===
 
-|| '''Log entry''' || CARP ||
+|| '''Log entry''' || USERHASH_PARENT ||
 || '''Options''' || userhash || Use login based hash algorithm with this peer ||
 
 Peers marked for ''userhash'' are bundled into a group and a hash is used to load balance based on login username such that each user always goes through the same peer. There is some flexibility, when peers become unavailable or return to availability the hash is adjusted to cope with the change.
@@ -79,7 +79,7 @@ This algorithm is primarily needed to make predictable paths through clusters or
 
 === Source IP Hash ===
 
-|| '''Log entry''' || sourcehash ||
+|| '''Log entry''' || SOURCEHASH_PARENT ||
 || '''Options''' || sourcehashp || Use IP-based hash algorithm with this peer ||
 
 Peers marked for ''sourcehash'' are bundled into a group and a hash is used to load balance based on IP address such that each user always goes through the same peer.
