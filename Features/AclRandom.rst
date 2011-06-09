@@ -52,13 +52,14 @@ tcp_outgoing_address 192.0.2.2
  * '''Example 2:''' Split traffic one third to each of three peers.
 {{{
 acl third random 1/3
+acl half random 1/2
 
 # 33% traffic goes here
 cache_peer_access peerOne allow third
 cache_peer_access peerOne deny all
 
-# 30% traffic goes here
-cache_peer_access peerTwo allow third
+# 33% traffic goes here
+cache_peer_access peerTwo allow half
 cache_peer_access peerTwo deny all
 
 # remaining traffic goes here
