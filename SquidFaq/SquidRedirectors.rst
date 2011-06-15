@@ -1,1 +1,1 @@
-#REDIRECT /Features/Redirectors
+#REDIRECT [[Features/Redirectors]]
