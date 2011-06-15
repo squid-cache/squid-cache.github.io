@@ -1,1 +1,1 @@
-#redirect Features/Redirectors
+#REDIRECT Features/Redirectors
