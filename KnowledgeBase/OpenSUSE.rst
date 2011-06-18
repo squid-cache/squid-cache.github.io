@@ -20,16 +20,15 @@
 
 ## Details briefly covering critical information for user contact and problem reporting...
 ##
-'''Maintainer:''' unknown
+'''Maintainer:''' appears to be Christian Wittmer
 
 '''Bug Reporting:''' https://bugzilla.novell.com/buglist.cgi?quicksearch=squid
 
 ==== Squid-3.1 ====
 
+https://build.opensuse.org/package/show?package=squid3&project=server%3Aproxy
+
 Install Procedure:
-
- /!\ Seeking information. Help?
-
 ## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
 ##{{{
 ##...
@@ -37,14 +36,17 @@ Install Procedure:
 
 ==== Squid-2.7 ====
 
+https://build.opensuse.org/package/show?package=squid&project=server%3Aproxy
+
 Install Procedure:
-{{{
-...
-}}}
+## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
+##{{{
+##...
+##}}}
 
 == Compiling ==
 
- /!\ There is just one known problem. The Linux system layout differs markedly from the Squid defaults. The following ./configure options are needed to install Squid into the Linux structure properly: 
+ /!\ There is just one known problem. The Linux system layout differs markedly from the Squid defaults. The following ./configure options are needed to install Squid into the OpenSUSE structure properly: 
 
 {{{
  --prefix=/usr
@@ -54,7 +56,15 @@ Install Procedure:
  --localstatedir=/var
  --libexecdir=/usr/sbin
  --datadir=/usr/share/squid
+ --sharedstatedir=/var/squid
+ --with-logdir=/var/log/squid
+ --with-swapdir=/var/cache/squid
+ --with-pidfile=/var/run/squid.pid
 }}}
+
+## mandir and --libdir are also mentioned in the OpenSUSE .spec file.
+## hard to tell where %{_mandir} and %{_libdir} are defined as though.
+
 
 == Troubleshooting ==
 
