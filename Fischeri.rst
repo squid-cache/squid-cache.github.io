@@ -64,7 +64,7 @@ Beta packages are being provided through major distribution repositories. See pa
 ## TODO:
 ## Slackware: ? David Somero <dsomero@hotmail.com> http://slackbuilds.org/repository/13.1/network/squid/
 ## Solaris: Steven M. Christensen <sunfreeware_at_gmail.com>,
-## SuSE: who?
+## SuSE: who? (chris@computersalat.de in SLE_10 squid changelog)
 ## IRIX: anyone?
 ## Darwin: who? (mww@macports.org)
 ## Fink: (squid-unified) Benjamin Reed (rangerrick@befunk.com)
