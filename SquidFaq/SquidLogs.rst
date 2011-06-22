@@ -263,6 +263,10 @@ The following hierarchy codes are used with Squid-2:
 
 '''CARP''' The peer was selected by CARP.
 
+'''PINNED''' The server connection was pinned by NTLM or Negotiate authentication requirements.
+
+'''ORIGINAL_DST''' The server connection was limited to the client provided destination IP. This only occurs on interception proxies when Host security is enabled.
+
 '''ANY_PARENT''' part of ''src/peer_select.c:hier_strings[]''.
 
 '''INVALID CODE''' part of ''src/peer_select.c:hier_strings[]''.
