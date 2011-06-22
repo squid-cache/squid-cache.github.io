@@ -134,7 +134,7 @@ Additional configuration options (see below) can be added to squid.conf to tune 
 
 
  {{{
-sslcrtd_program /usr/local/squid/libexec/ssl_crtd -s /usr/local/squid/var/ssl_db -M 4MB
+sslcrtd_program /usr/local/squid/libexec/ssl_crtd -s /usr/local/squid/var/lib/ssl_db -M 4MB
 sslcrtd_children 5
  }}}
 
@@ -152,7 +152,7 @@ Prepare directory for caching certificates:
 
 
  {{{
-/usr/local/squid/libexec/ssl_crtd -c -s /usr/local/squid/var/ssl_db
+/usr/local/squid/libexec/ssl_crtd -c -s /usr/local/squid/var/lib/ssl_db
  }}}
 
 
@@ -165,7 +165,7 @@ After the SSL DB is initialized, make the directory writable for the squid user 
 
 
  {{{
-chown -R nobody /usr/local/squid/var/ssl_db
+chown -R nobody /usr/local/squid/var/lib/ssl_db
  }}}
 
 
