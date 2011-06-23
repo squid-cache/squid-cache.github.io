@@ -76,7 +76,6 @@ Additions are limited to:
 Exceptions have been made for the following projects (and why):
  * StringNG - performance boost
  * SMP shared cache - resource usage reduction
- * CommCleanup - fixes regression: connectivity issues on MacOSX and OpenBSD
 
 Features Ported from 2.7 in this release:
 
@@ -106,9 +105,11 @@ Basic new features in 3.2:
  * [[Features/EDNS]]
  * [[Features/LogDnsWait]]
  * [[Features/LogModules]]
+ * IPv6 support for TCP split-stack
 
 ## Developer-only relevant features
 ## * [[Features/ConfigureInRefactoring]]
+## * [[Features/CommCleanup]]
 
 ## All targeted features.
 ## <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
