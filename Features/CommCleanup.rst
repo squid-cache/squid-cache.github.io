@@ -6,11 +6,7 @@
 
  * '''Goal''': Improve code quality and maintainability. 
 
- * '''Status''': started
-
- * '''ETA''': unknown
-
- * '''Priority''': 1
+ * '''Status''': completed. debugging underway.
 
  * '''Version''': Squid 3.2
 
@@ -19,10 +15,8 @@
  * '''More''': [[https://code.launchpad.net/~yadi/squid/cleanup-comm|branch]]
 
  * '''Bugs''':
-  . http://bugs.squid-cache.org/show_bug.cgi?id=2460
-  . http://bugs.squid-cache.org/show_bug.cgi?id=2755
-  . http://bugs.squid-cache.org/show_bug.cgi?id=3036
-  . http://bugs.squid-cache.org/show_bug.cgi?id=3050
+##  . http://bugs.squid-cache.org/show_bug.cgi?id=2755
+##  . http://bugs.squid-cache.org/show_bug.cgi?id=3050
   . http://bugs.squid-cache.org/show_bug.cgi?id=3070
 
 == Details ==
@@ -39,9 +33,17 @@ At present the only distinction between comm and regular code is its residence i
 
  * The comm code handling inbound client connections (accept / listeners) has now been cleaned up and isolated in a comm library with a small, clear and documented API.
 
- * The outbound connection setup for server connections (socket opening / connect / bind) has now been cleaned up and isolated in the comm library with a small clear and documented API. Currently undergoing audit and testing.
+Currently testing in 3.2:
 
- * FD handling throughout the code has been polished up to pass Connection objects instead of raw FD. Currently undergoing testing and audit.
+ * The outbound connection setup for server connections (socket opening / connect / bind) has now been cleaned up and isolated in the comm library with a small clear and documented API.
+
+ * FD handling throughout the code has been polished up to pass Connection objects instead of raw FD fro TCP connections.
+
+ * DNS lookups have been extracted from comm layer TCP setup. The components needing a new connection are responsible for generating a Comm::Connection template with at minimum the destination IP in it.
+
+ * CONNECT tunnel method retries. Are possible up until some bytes get transferred.
+
+ * Persistent connections pooled by destination IP:port. Retrieval out of the pool is filtered on required local endpoint IP (if any) to support transparent interception and SquidConf:tcp_outgoing_address which require a fixed local address.
 
 === TODO ===
 
