@@ -52,6 +52,9 @@ Squid-2.7 and Squid-3.1+ support:
   * (SquidConf:logfile_daemon)
   * Specific feature details at [[Features/LogModules]]
 
+Squid-3.1+ support:
+ * SSL certificate generation (3.1.12.1 and later).
+
 Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/ICAP|ICAP services]] which differ from helper scripts in many ways.
 
 == Helper protocols ==
@@ -93,8 +96,8 @@ Input line received from Squid:
 
  key-pairs::
   Some of the key=value pairs:
-|| myport=... || Squid receiving port ||
-|| myip=... || Squid receiving address ||
+  || myport=... || Squid receiving port ||
+  || myip=... || Squid receiving address ||
 
 ## end urlhelper protocol
 
@@ -283,12 +286,12 @@ Result line sent back to Squid:
  key-pairs::
   Some optional details returned to Squid. These have the format '''key=value'''. see SquidConf:external_acl_type for the full list supported by your Squid.
 
-Some of the key=value pairs:
-|| user= || The users name (login) ||
-|| password= || The users password (for login= SquidConf:cache_peer option) ||
-|| message= || Message describing the reason. Available as %o in error pages ||
-|| tag= || Apply a tag to a request (for both '''ERR''' and '''OK''' results). Only sets a tag, does not alter existing tags. ||
-|| log= || String to be logged in access.log. Available as '''%ea''' in SquidConf:logformat specifications ||
+  Some of the key=value pairs:
+  || user= || The users name (login) ||
+  || password= || The users password (for login= SquidConf:cache_peer option) ||
+  || message= || Message describing the reason. Available as %o in error pages ||
+  || tag= || Apply a tag to a request (for both '''ERR''' and '''OK''' results). Only sets a tag, does not alter existing tags. ||
+  || log= || String to be logged in access.log. Available as '''%ea''' in SquidConf:logformat specifications ||
 ## end externalacl protocol
 
 === Logging ===
@@ -306,5 +309,67 @@ Squid sends a number of commands to the log daemon. These are sent in the first 
 No response is expected. Any response that may be desired should occur on stderr to be viewed through cache.log.
 ## end logdaemon protocol
 
+=== SSL certificate generation ===
+
+## start sslcrtd protocol
+This interface has a fixed field layout.
+
+Input ''line'' received from Squid:
+{{{
+request size key-pair [body]
+}}}
+
+ /!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
+
+ request::
+  The type of action being requested. Presently the code '''new_certificate''' is the only request made.
+
+ size::
+  Total size of the following request bytes taken by the '''key-pair''' parameters and '''body'''.
+
+ key-pair::
+  Parameters determining the 
+
+  Some of the key=value pairs:
+  || host= || FQDN host name of the domain needing a certificate. ||
+
+body::
+ An optional CA certificate and private RSA key to sign with. If this body field is omitted the generated certificate will be self-signed.
+ The content of this field is ASCII-armoured PEM format.
+{{{
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+-----BEGIN RSA PRIVATE KEY-----
+...
+-----END RSA PRIVATE KEY-----
+}}}
+
+Result line sent back to Squid:
+{{{
+result size [key-pair] body
+}}}
+
+ result::
+  The result code '''OK''' indicates a certificate is ready. Errors are not reported as results. The helper will display an error message and abort if any error or unexpected event is detected.
+
+ size::
+  Total size of the following request bytes taken by the '''body'''.
+
+ key-pair::
+  Optional key=value parameters.
+
+  Some of the key=value pairs:
+  || host= || FQDN host name of the domain this certificate is for. ||
+
+ body::
+  The generated CA certificate. The content of this field is ASCII-armoured PEM format.
+{{{
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+}}}
+
+## start sslcrtd protocol
 ----
 CategoryFeature
