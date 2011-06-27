@@ -18,7 +18,7 @@ The client or server has sent Squid a header which does not comply with the HTTP
 Set SquidConf:relaxed_header_parser to '''warn''' (or '''off''') for more detailed diagnostics of the problem.
 
 
-For example {1}; This broken server (or script) is sending two replies. But it fails to send the reply separator between them. So Squid believe the start of the second is just another header in the first:
+For example {1} ; This broken server (or script) is sending two replies. But it fails to send the reply separator between them. So Squid believe the start of the second is just another header in the first:
 {{{
 2005/04/13 22:44:17| WARNING: unparseable HTTP header field {HTTP/1.0 200 OK}
 2005/04/13 22:44:17| in {Server: .
