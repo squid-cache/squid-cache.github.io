@@ -80,7 +80,7 @@ This algorithm is primarily needed to make predictable paths through clusters or
 === Source IP Hash ===
 
 || '''Log entry''' || SOURCEHASH_PARENT ||
-|| '''Options''' || sourcehashp || Use IP-based hash algorithm with this peer ||
+|| '''Options''' || sourcehash || Use IP-based hash algorithm with this peer ||
 
 Peers marked for ''sourcehash'' are bundled into a group and a hash is used to load balance based on IP address such that each user always goes through the same peer.
 
