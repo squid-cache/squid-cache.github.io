@@ -41,6 +41,21 @@ There is no good fixed benchmark test yet to measure by so comparisons are not s
 ##
 
 = Records =
+== Squid 3.2 ==
+=== 3.2.0.9 ===
+|| CPU || Quad Core Q6600 @2.4 GHz ||
+|| RAM || 8 GB ||
+|| HDD || 80GB Intel X25-M SSD ||
+|| OS  || RHEL 6.0 x64 ||
+|| Users || ''unknown'' ||
+|| RPS || 670 ||
+|| Hit Ratio || 0% ||
+|| CPU Usage || 95.40% ||
+{{{
+Submitted by: Jenny Lee 2011-07-03
+
+Client database is disabled. Proxy-only, no caching done. 5 to 20 parents. Squid doing content routing. conntrack_max and hashsize increased to 200K, ephemeral ports 64K. tcp_tw_recycle on.
+}}}
 
 == Squid 3.1 ==
 === 3.1.10 ===
