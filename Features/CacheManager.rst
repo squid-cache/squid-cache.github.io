@@ -20,6 +20,8 @@ Squid packages come with two tools for accessing the cache manager:
 
 The cache manager is accessed with standard HTTP requests using a special cache_object:// URL scheme. Which allows other tools and scripts to easily be written for any special use you may have.
 
+The cache manager has been extended in [[Squid-3.2]] to allow access from the http:// and https:// URL schemes. This opens the cache manager reports directly to the web browser if permitted by SquidConf:http_access security controls.
+
 == Cache manager CGI configuration ==
 That depends on which web server you're using.  Below you will find instructions for configuring the CERN and Apache servers to permit ''cachemgr.cgi'' usage.
 || {i} ||''EDITOR'S NOTE: readers are encouraged to submit instructions for configuration of cachemgr.cgi on other web server platforms, such as Netscape.'' ||
@@ -158,18 +160,25 @@ In squidclient version 3.2.* use the proxy login options '''-u''' and '''w''' to
 === default ===
 The default cache manager access configuration in ''squid.conf'' is:
 {{{
-acl manager proto cache_object
+acl manager url_regex -i ^cache_object:// /squid-internal-mgr/
 acl localhost src 127.0.0.1 ::1
 
 http_access allow manager localhost
 http_access deny manager
 }}}
-The first ACL is the most important as the cache manager program interrogates squid using a special '''cache_object''' protocol. Try it yourself by doing:
+ {i} This default has been updated to accommodate changes in [[Squid-3.2]].
 
+The first ACL is the most important as the cache manager program interrogates squid using a special '''cache_object''' protocol. Try it yourself by doing:
 {{{
 telnet mycache.example.com 3128
 GET cache_object://mycache.example.com/info HTTP/1.0
 }}}
+or for [[Squid-3.2]] typing this into your browser address bar:
+{{{
+http://mycache.example.com:3128/squid-internal-mgr/info
+}}}
+ /!\ NOTE: the above tests assume you have correctly configured your proxy machine with a working FQDN for its publicly SquidConf:visible_hostname.
+
 The default ACLs say that if the request is for a cache_object://, and it isn't the local host, then deny access; otherwise allow access.
 
 In fact, only allowing localhost access means that on the initial ''cachemgr.cgi'' form you can only specify the cache host as localhost.
@@ -179,7 +188,7 @@ The default ACLs assume that your web server is on the same machine as squid. Re
 
 To allow a remote administrator (ie cachemgr.cgi) adjust the access controls to include the remote IPs:
 {{{
-acl manager proto cache_object
+acl manager url_regex -i ^cache_object:// /squid-internal-mgr/
 acl localhost src 127.0.0.1 ::1
 acl managerAdmin src 192.0.2.1
 
