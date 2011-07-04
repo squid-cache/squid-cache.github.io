@@ -203,7 +203,7 @@ More ideas are available [[Features/Other|elsewhere]].
 
 ## Some items got stuck in the wrong version or not marked properly with complete status.
 
-## There should be no 3.0 to 3.2 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were penciled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
+## There should be no 3.0 to 3.2 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were pencilled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
 
 ## (3.0)
 ## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.0" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
@@ -220,5 +220,7 @@ Certain features are no longer relevant as the code improves and are planned for
 || 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[Translations|langpack]] ||
 || 3.1 || libcap 1.x || libcap-2.06+ is required for simpler code and proper API usage. ||
 || 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
-|| 3.2+ || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
 || 3.2 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
+|| 3.2+ || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
+|| 3.3 || cachemgr_passwd || Security is better controlled by login SquidConf:acl in the SquidConf:http_access configuration ||
+|| 3.3 || cachemgr.cgi || Merger of report functionality into the main squid process obsoletes it as a stand-alone application. ||
