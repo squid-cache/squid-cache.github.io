@@ -2,7 +2,7 @@ The '''Cache Manager CGI''' is a tool that provides basic management capabilitie
 
 The communication with the Squid server is made up using the [[CacheObjectProtocol|Cache Object Protocol]], that provides access to the underlying [[CacheManager|Cache Manager]].
 
-More information is currently available at SquidFaq/CacheManager.
+More information is currently available at [[Features/CacheManager]].
 
 == See also ==
 
@@ -10,4 +10,4 @@ More information is currently available at SquidFaq/CacheManager.
  * CacheManagerObject
  * CacheObjectProtocol
  * CacheObjectScheme
- * SquidFaq/CacheManager
+ * [[Features/CacheManager]]
