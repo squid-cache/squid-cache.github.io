@@ -123,8 +123,8 @@ These ACLs control access to the Squid cache manager. The manager can do a lot o
 As you can imaging, allowing random internet visitors to see these details is not a good thing. For this reason the '''very top''' access control in Squid limits manager access on only be available to the special localhost IP.
 
 {{{
-acl manger proto cache_obj
-http_access allow manager localhost
+acl manger url_regex -i ^cache_object:// /squid-internal-mgr/
+http_access allow localhost manager
 http_access deny manager
 }}}
 
