@@ -50,14 +50,19 @@ The software is designed to operate on any modern system, and is known to work o
 
 '''Linux:'''
 
+ * Arch
  * [[KnowledgeBase/CentOS|CentOS]]
  * [[KnowledgeBase/Debian|Debian]]
  * [[KnowledgeBase/Fedora|Fedora]]
  * [[KnowledgeBase/Gentoo|Gentoo]]
+ * Mageia
+ * Mandrivia
  * [[KnowledgeBase/OpenSUSE|OpenSUSE]]
  * [[KnowledgeBase/RedHat|RedHat Enterprise Linux]]
+ * [[KnowledgeBase/Slackware|Slackware]]
  * [[KnowledgeBase/SLES|Novelle SuSE / SLES]]
  * [[KnowledgeBase/Ubuntu|Ubuntu]]
+ * ZenWalk
 
 '''Unix:'''
 
