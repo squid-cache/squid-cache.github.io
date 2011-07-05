@@ -18,7 +18,7 @@
 
 == Pre-Built Binary Packages ==
 
-There are no official Slackware distributed packages of Squid. Packages are instead built and supplied by volunteers from the slackware user community.
+There are apparently no official Slackware distributed packages of Squid. Packages are instead built and supplied by volunteers from the slackware user community.
 
 ## Details briefly covering critical information for user contact and problem reporting...
 ##
@@ -34,21 +34,32 @@ There are no official Slackware distributed packages of Squid. Packages are inst
 ## 4  = indents required for BinaryPackages page include
 ==== Squid-3.2 ====
 
-Package provided by Helmut Hullen
-
-http://helmut.hullen.de/filebox/Linux/slackware/n/squid-3.2.0.7-i486-1hln.txz
+Unofficial package provided by Helmut Hullen:
+ . http://helmut.hullen.de/filebox/Linux/slackware/n/squid-3.2.0.7-i486-1hln.txz
 
 ==== Squid-3.1 ====
 
-Package provided by Helmut Hullen
+'''Maintainer:''' David Somero
 
-http://helmut.hullen.de/filebox/Linux/slackware/n/squid-3.1.14-i486-1hln.txz
+'''Source''': !SlackBuilds
 
-## If there are any release or package specifics (ie special maintainer, different bug reporting)
-## those details need to be replicated here
+ http://slackbuilds.org/repository/13.37/network/squid/
 
 ## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
+##Install Procedure:
+##{{{
+##...
+##}}}
 
+==== Squid-3.x ====
+
+'''Maintainer:''' David Somero
+
+'''Bug Reporting:''' http://slackbuilds.org/howto/
+
+ http://slackbuilds.org/result/?search=squid&sv=
+
+## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
 ##Install Procedure:
 ##{{{
 ##...
