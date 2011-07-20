@@ -87,22 +87,38 @@ The routing features in your kernel also need to be configured to enable correct
 
 {{{
 ip rule add fwmark 1 lookup 100
-ip -f inet route add local 0.0.0.0/0 dev lo table 100
 ip -f inet route add local 0.0.0.0/0 dev eth0 table 100
 }}}
- . /!\ Systems with strict localhost interface security boundaries require each interface to have a "table 100" entry for looking up packets via that device . '''lo''' and '''eth0''' are shown above, change to match your TPROXY interface(s).
+
+Every OS has different security and limitations around what you can do here.
+ . /!\ some systems require that '''lo''' is the interface TPROXY uses.
+ . /!\ some systems require that an '''ethN''' is the interface TPROXY uses.
+ . /!\ some systems require that each receiving interface have its own unique table. You will see a rejected route when a second {{{ip -f inet route ad}}} is run for the table. Knowing how to erase the custom route entry between tests is useful.
+
+Knowing how to erase the custom route entry between tests is useful when debugging why TPROXY looses packets between the TPROXY rule and Squid port.
 
 On each boot startup set:
-
 {{{
-echo 0 > /proc/sys/net/ipv4/conf/lo/rp_filter
+echo 0 > /proc/sys/net/ipv4/conf/eth0/rp_filter
 echo 1 > /proc/sys/net/ipv4/ip_forward
 }}}
 Or configure '''/etc/sysctl.conf''':
-
 {{{
-set net.ipv4.forwarding = 1
+net.ipv4.forwarding = 1
+net.ipv4.conf.default.rp_filter=1
+net.ipv4.conf.all.rp_filter=1
 }}}
+ . /!\ your OS also may require the keyword '''set''' before each of those sysctl.conf lines.
+
+=== Some routing problems to be aware of ===
+ * /!\ Systems with strict localhost interface security boundaries require each interface to have a separate "table" entry for looking up packets via that device.
+  . {X} in this situation the tables often cannot use the same number. When experimenting finding out how to erase the route table is useful.
+  . '''eth0''' is shown above, change to match your TPROXY interface(s).
+
+ * {X} the particular device needed differs between OS. eth0 seems to be the least troublesome. Although '''dev lo''' may be the only one that works.
+
+ * /!\ your OS may require the keyword '''set''' before each sysctl.conf line.
+
 == iptables Configuration ==
 === iptables on a Router device ===
 Setup a chain ''DIVERT'' to mark packets
