@@ -93,9 +93,7 @@ ip -f inet route add local 0.0.0.0/0 dev eth0 table 100
 Every OS has different security and limitations around what you can do here.
  . /!\ some systems require that '''lo''' is the interface TPROXY uses.
  . /!\ some systems require that an '''ethN''' is the interface TPROXY uses.
- . /!\ some systems require that each receiving interface have its own unique table. You will see a rejected route when a second {{{ip -f inet route ad}}} is run for the table. Knowing how to erase the custom route entry between tests is useful.
-
-Knowing how to erase the custom route entry between tests is useful when debugging why TPROXY looses packets between the TPROXY rule and Squid port.
+ . /!\ some systems require that each receiving interface have its own unique table. You will see a rejected route when a second {{{ip -f inet route}}} is added to the table. Knowing how to erase the custom route entry between tests is useful.
 
 On each boot startup set:
 {{{
