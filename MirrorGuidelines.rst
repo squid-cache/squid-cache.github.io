@@ -7,12 +7,13 @@ Please ensure all mirrors use '''rsync''' to replicate their content.
 
 == Informing us about the mirror ==
 
-Please send '''noc at squid-cache.org''' an email informing us about your mirror if you are mirroring the FTP server or HTTP website. We will register it for automatic scanning and list it with our official download sources so long as it remains an accurate copy.
+Please send '''info at squid-cache.org''' an email informing us about your mirror if you are mirroring the FTP server or HTTP website. We will register it for automatic scanning and list it with our official download sources so long as it remains an accurate copy.
 
 This email needs to include:
  * The URL you are providing for mirror
-  . For FTP the ftp:// and if available the http:// alternative as well.
-  . For website the FQDN for the mirror server
+  . For FTP package mirrors the ftp:// URL and whether you provide an http:// alternative URL as well.
+  . For HTTP package mirrors the http:// URL.
+  . For website mirrors the FQDN for the mirror server or proxy
  * contact person and email - they will be notified of any problems found by the scan.
  * country where the mirror is sited
  * name of organization to be credited with sponsorship
@@ -65,10 +66,10 @@ cache_peer_access eu.squid-cache.org deny all
 
 == Mirrors for ftp.squid-cache.org ==
 
-FTP is split into two sections. An archive containing the full history of package releases and a volatile area only containing the most current supported packages.
+Package archive is split into two sections. An archive containing the full history of package releases and a volatile area only containing the most current supported packages.
 
  * You may mirror either or both
- * If mirroring both please use the same base /ftp-path
+ * If mirroring both please use the same base /path
 
  * Mirrors must be updated at minimum of daily
  * Mirrors must be updated at maximum of 3-hourly
@@ -77,12 +78,12 @@ Mirrors which are public but restricted (ie to a certain country) are still wort
 
 === Latest release bundles ===
 {{{
-rsync -avz --delete-after master.squid-cache.org::ftp-files  /ftp-path/squid
+rsync -avz --delete-after master.squid-cache.org::ftp-files  /path/squid
 }}}
 
 === Package Archive ===
 {{{
-rsync -avz --delete-after master.squid-cache.org::archive  /ftp-path/archive
+rsync -avz --delete-after master.squid-cache.org::archive  /path/archive
 }}}
 
 
