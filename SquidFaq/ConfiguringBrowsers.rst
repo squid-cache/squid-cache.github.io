@@ -134,7 +134,7 @@ Here is a sample auto configuration file from Oskar Pearson (link to save at the
 Microsoft Internet Explorer, versions 4.0 and above, supports !JavaScript automatic proxy configuration in a Netscape-compatible way. Just select '''Options''' from the '''View''' menu. Click on the '''Advanced''' tab.  In the lower left-hand corner, click on the '''Automatic Configuration''' button.  Fill in the URL for your !JavaScript file in the dialog box it presents you.  Then exit MSIE and restart it for the changes to take effect.  MSIE will reload the !JavaScript file every time
 it starts.
 
-== Fully Automatically Configuring Browsers for WPAD ==
+== Fully Automatic Configuration ==
 
 by Mark Reynolds
 
