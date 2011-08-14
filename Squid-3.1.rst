@@ -2,7 +2,7 @@
 
 = Squid 3.1 =
 
-Now in '''STABLE''' cycle.
+Currently in '''STABLE''' cycle.
 The features have been set and large code changes are reserved for later versions.
 
 Additions are limited to:
@@ -28,14 +28,24 @@ Basic new features in 3.1:
  * [[Features/AdaptationChain|ICAP Service Sets and Chains]]
  * ICY (SHOUTcast) streaming protocol support
  * [[Features/HTTP11|HTTP/1.1 support on connections to web servers and peers.]]
- * Solaris /dev/poll support (from 3.1.9)
- * [[Features/DynamicSslCert| HTTPS man-in-middle certificate generation]] (from 3.1.13)
+
+From 3.1.9
+
+ * Solaris /dev/poll support
+
+From 3.1.13
+
+ * [[Features/DynamicSslCert| HTTPS man-in-middle certificate generation]]
 
 ## Developer-only relevant features
 ## * Features/NativeAsyncCalls
 
 Packages of squid 3.1 source code are available at
 http://www.squid-cache.org/Versions/v3/3.1/
+
+=== Security Advisories ===
+
+See our [[http://www.squid-cache.org/Advisories/|Advisories]] list.
 
 === Open Bugs ===
  * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
