@@ -2,8 +2,8 @@
 
 === Squid 3.0 ===
 
-Currently in '''STABLE''' cycle.
-The features have largely been set and large code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
+Currently in '''STABLE / DEPRECATED''' cycle.
+The features have been set and code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
 
 Basic new features in 3.0
 
