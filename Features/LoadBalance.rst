@@ -62,9 +62,18 @@ It suffers from some limitations due to only requesting the URL. Modern HTTP con
 || '''Log entry''' || DEFAULT_PARENT ||
 || '''Options''' || default ||
 
-If a peer is marked as ''default'' and is available it will be preferred over all other selection algorithms. Only one peer may be marked as the default.
+If a peer is marked as ''default'' it is always considered for use as a fallback source. Although if DEAD or blocked by ACL requirements it may be skipped. Only one peer may be marked as the default.
 
- {i} In older versions of Squid if all other selection algorithms have failed to produce an available peer the SquidConf:cache_peer entry marked as '''default''' will be selected any tried anyway. Current releases only select it once and skip if unavailable.
+ {X} Despite the documentation stating this since squid-2.6; in squid older than 3.1.15 a default peer will in fact be preferred over all other selection algorithms. This has been corrected in 3.1.15 so that default is a last-resort choice matching the documentation.
+
+=== Source IP Hash ===
+
+|| '''Log entry''' || SOURCEHASH_PARENT ||
+|| '''Options''' || sourcehash || Use IP-based hash algorithm with this peer ||
+
+Peers marked for ''sourcehash'' are bundled into a group and a hash is used to load balance based on IP address such that each user always goes through the same peer.
+
+Almost identical to ''userhash'' this version can be used when login is not available.
 
 
 === Username Hash ===
@@ -76,16 +85,7 @@ Peers marked for ''userhash'' are bundled into a group and a hash is used to loa
 
 This algorithm is primarily needed to make predictable paths through clusters or hierarchies. It is particularly useful for ISP clusters having to cope with websites linking the IP and user login together as sessions (such as [[KnowledgeBase/Hotmail|Hotmail]]). These sessions break when passing through regular HTTP stateless clusters which split up the transaction stream for load balancing.
 
-
-=== Source IP Hash ===
-
-|| '''Log entry''' || SOURCEHASH_PARENT ||
-|| '''Options''' || sourcehash || Use IP-based hash algorithm with this peer ||
-
-Peers marked for ''sourcehash'' are bundled into a group and a hash is used to load balance based on IP address such that each user always goes through the same peer.
-
-Almost identical to ''userhash'' this version can be used when login is not available.
-
+ {i} In Squid older than 3.1.15 this is selected higher priority than Source IP hash. They are mutually exclusive algorithms, so this should not be an issue.
 
 === CARP : Cache Array Routing Protocol ===
 
