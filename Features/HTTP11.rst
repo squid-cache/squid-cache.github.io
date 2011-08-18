@@ -29,7 +29,9 @@ The forwarding path needs to be cleaned up to better separate HTTP messages and 
 
 This is likely to touch the store API as today all messages go via the store, even if just an interim 1xx response.
 
- * Temporary step for Squid-3: catch expect-100 on requests and send back the correct error to cause a retry when client sends Expect-100 in a request. Until such time as Squid can support expect-100.
+ * Temporary step for [[Squid-3.1]]: catch expect-100 on requests and send back the correct error to cause a retry when client sends Expect-100 in a request. Until such time as Squid can support expect-100.
+
+UPDATE: 1xx forwarding has been implemented in [[Squid-3.2]]. The forwarding path still needs further work to make this efficient.
 
 == Request/Reply Upgrade path ==
 
@@ -50,7 +52,7 @@ Requirements to consider:
 
 HTTP/1.1 requires support for chunked encoding in both parsers and composers. This applies to both responses and requests.
 
-Both Squid-3 and Squid-2 contain at least response chunked decoding. The chunked encoding portion is not yet completed.
+Both Squid-3 and Squid-2 contain at least response chunked decoding. The chunked encoding portion is available from [[Squid-3.2]] on all traffic except CONNECT requests.
 
 == Related minor tasks ==
 
@@ -58,6 +60,8 @@ Additionally work should also be done in the following
 
  * Cleanups to comply better with the RFCs. (see the Checklist)
  * Implement cache invalidation requirements.
+  . If-None-Match header creation on revalidation requests
+  . Support correct caching and revalidation of no-cache on responses
 
 == Range Requests ==
 
