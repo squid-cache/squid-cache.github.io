@@ -49,7 +49,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:2518 || HTTP Extensions for Distributed Authoring -- WEBDAV || (./) || [[Squid-3.1|3.1+]] ||
 ## || RFC:2535 || DNS Security Extensions || {X} ||
 ## NOTE: changes affect RFC 3226 compliance.
-|| RFC:2616 || Hypertext Transfer Protocol -- HTTP/1.1 || almost || see [[/Feature/HTTP11]] ||
+|| RFC:2616 || Hypertext Transfer Protocol -- HTTP/1.1 || almost || see [[Features/HTTP11]] ||
 || RFC:2617 || HTTP/1.1 Basic and Digest authentication ||  ||
 || RFC:2756 || Hyper Text Caching Protocol (HTCP/0.0) || (./) ||
 || RFC:2817 || Upgrading to TLS Within HTTP/1.1 || {X} ||
