@@ -16,6 +16,7 @@
 
 ## * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
 
+ <<TableOfContents>>
 
 = Details =
 
@@ -31,9 +32,9 @@ For older Squid you can select the language with the configure option ''--enable
 
 If needed, you can make a copy and re-write the error message template files in any version.
 
-== Codes for embedding into remote ''deny_info'' URLs ==
+== deny_info URL codes for embedding ==
 
-'''[[Squid-2.1]] to [[Squid-3.1]] only provide this code:'''
+'''Squid-2.1 to [[Squid-3.1]] only provide this code:'''
 
  %s:: Absolute URL requested by client
 
@@ -79,7 +80,7 @@ If needed, you can make a copy and re-write the error message template files in 
 
 ## %w:: cachemgr email address
 
-== Codes for embedding into custom ERR_* templates ==
+== ERR_* template codes for embedding ==
 
 This list describes the tags which Squid will insert into the messages:
 
@@ -145,7 +146,7 @@ This list describes the tags which Squid will insert into the messages:
 
  %z:: DNS server error message
 
- %Z:: Error message
+ %Z:: Message generated during the process which failed. May be ASCII-formatted. Use within HTML PRE tags.
 
 ----
 CategoryFeature
