@@ -59,16 +59,18 @@ add this to squid.conf
 #  The keyword for all youtube video files are "get_video?", "videodownload?" and "videoplayback" plus the id,
 acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback.*id)
 }}}
-and also this if you have cache deny QUERY line. if not just ignore it.
 
-{{{
-#add this line before cache deny
-acl QUERY2 urlpath_regex get_video\? videoplayback\? videodownload\?
-cache allow QUERY2
-#cache deny url that has cgi-bin and ? this is the default earlier than squid 2.7 version
-acl QUERY urlpath_regex cgi-bin \?
-cache deny QUERY
-}}}
+[ UPDATE: if you still have cache deny QUERY line. Go do this: [[ConfigExamples/DynamicContent]] ]
+## and also this if you have cache deny QUERY line. if not just ignore it.
+
+## {{{
+## #add this line before cache deny
+## acl QUERY2 urlpath_regex get_video\? videoplayback\? videodownload\?
+## cache allow QUERY2
+## #cache deny url that has cgi-bin and ? this is the default earlier than squid 2.7 version
+## acl QUERY urlpath_regex cgi-bin \?
+## cache deny QUERY
+## }}}
 and the storeurl feature
 
 {{{
