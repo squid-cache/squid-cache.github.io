@@ -49,7 +49,7 @@ WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. 
  * TPROXYv4 support reached a usable form in 2.6.28. However several Kernels have various known bugs:
   * {X} older than 2.6.28 are known to supply IPs wrongly to Squid and other client programs. Avoid!
   * 2.6.28 to 2.6.36 are known to have ICMP and TIME_WAIT issues.
-  * 2.6.32 to 2.6.34 have bridging issues on some systems. Please use 2.6.30 or 2.6.31 for production machines, they seem to work properly.
+  * 2.6.32 to 2.6.34 have bridging issues on some systems.
 
 == Squid Configuration ==
 Configure build options
@@ -107,6 +107,8 @@ net.ipv4.conf.default.rp_filter=1
 net.ipv4.conf.all.rp_filter=1
 }}}
  . /!\ your OS also may require the keyword '''set''' before each of those sysctl.conf lines.
+ . /!\ There seems to be some confusion over the rp_filter rules. You may need '''
+net.ipv4.conf.eth0.rp_filter=0''' as well
 
 === Some routing problems to be aware of ===
  * /!\ Systems with strict localhost interface security boundaries require each interface to have a separate "table" entry for looking up packets via that device.
@@ -136,14 +138,17 @@ Mark all other (new) packets and use ''TPROXY'' to pass into Squid:
 {{{
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
+
 === ebtables on a Bridging device ===
 You need to follow all the steps for setting up the Squid box as a router device. These bridging rules are additional steps to move packets from bridging mode to routing mode:
 
  . {i} $CLIENT_IFACE and $INET_IFACE need to be replaced with the eth* NIC interface names facing the clients or Internet. {i} Mind the line wrap. The following is two command lines.
 
 {{{
+ ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv6 --ip-proto tcp --ip-dport 80 -j redirect --redirect-target DROP
  ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 -j redirect --redirect-target DROP
 
+ ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv6 --ip-proto tcp --ip-sport 80 -j redirect --redirect-target DROP
  ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv4 --ip-proto tcp --ip-sport 80 -j redirect --redirect-target DROP
 
  cd /proc/sys/net/bridge/
@@ -155,6 +160,15 @@ You need to follow all the steps for setting up the Squid box as a router device
 }}}
  . /!\ The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc)
  . {i} An alternative to assigning interfaces with IP addresses you may also configure the squid.conf SquidConf:tcp_outgoing_address, and SquidConf:udp_outgoing_address for minimal DNS and peer requests to use explicitly. Note that SquidConf:tcp_outgoing_address will never be used on requests received with TPROXY.
+
+=== Bypassing TPROXY intercept ===
+
+As always, bypassing the firewall rules is always an option. They need to go first, naturally.
+
+ * Bridges need to place the bypass in ebtables BROUTE before the DROP rules.
+ * Routers need to place the bypass in iptables PREROUTING before the DIVERT chain.
+
+If you do not understand how to do that or what to write in the bypass rules, please locate any beginners guide on iptables or ebtables and read up on how to operate them.
 
 == SELINUX Policy tuning ==
 On Linux versions with selinux enabled you also need to tune the selinux policy to allow Squid to use TPROXY. By default the SELINUX policy for Squid denies some of the operations needed for TPROXY. You can tune the policy to allow this by setting a couple selinux booleans:
