@@ -33,14 +33,15 @@ Key:
 || <:( || <:( || <:( || (./) || ''adaptation/ecap/'' || eCAP support ||
 || <:( || <:( || <:( || (./) || ''adaptation/icap/'' || ICAP support ||
 || <:( || <:( || (./) || (./) || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-|| <:( || <:( || <:( || {2} || ''auth/'' || Authentication support || rename classes into Auth namespace. ||
+|| <:( || <:( || <:( || :\ {2} || ''auth/'' || Authentication support || rename classes into Auth namespace. ||
 || <:( || <:( || <:( || :\ || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
-|| <:( || <:( || :\ || {2} || ''comm/'' || I/O subsystem ||
+|| <:( || <:( || :\ || :\ {2} || ''comm/'' || I/O subsystem ||
 || <:( || <:( || <:( || || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 || <:( || <:( || <:( ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 || <:( || <:( || <:( ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || <:( || <:( || <:( || :\ || ''esi/'' || ESI support || ESI*, Add Esi namespace, rename classes ||
 || <:( || <:( || <:( || (./) || ''eui/'' || EUI-48 / MAC / ARP operations ||
+|| <:( || <:( || (./) || :\ {2} || ''format/'' || Custom formatting ||
 || <:( || <:( || <:( || :\ || ''fs/'' || file system-specific cache store support? || fs/*, Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 || <:( || <:( || <:( || || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || <:( || <:( || <:( || :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
