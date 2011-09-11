@@ -4,21 +4,21 @@
 
 == The Bleeding Edge ==
 
- '''Squid-3:'''
-The Squid project has moved to Bazaar as its configuration management tool. See [[BzrInstructions]]) for details about using thse tools and the web viewers available.
+## '''Squid-3:'''
+The Squid project has moved to Bazaar as its configuration management tool. See [[BzrInstructions]]) for details about using these tools and the web viewers available.
 
-|| {i} || In order to use the repository sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in ProgrammingGuide/Bootstrap.||
+|| {i} || In order to use the repository sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in [[ProgrammingGuide/Bootstrap]].||
 
- '''Squid-2:'''
-|| /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb]].||
+## '''Squid-2:'''
+## || /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb]].||
 
 == Developer Projects ==
 
  '''Squid-3:'''
 https://code.launchpad.net/squid provide space for Squid developers to publish and associate their code with the squid project.
 
- '''Squid-2:'''
-To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
+## '''Squid-2:''' (obsolete)
+##To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
 
 
 During the life of the Squid project, a number of [[http://www.squid-cache.org/Devel/papers/|papers]] have been published.
@@ -41,7 +41,7 @@ For Squid-3 we operate the development trunk and web code browsers on [[http://b
 === Repository Tools ===
 
  * '''Squid-3''': [[BzrInstructions|Bazaar]]
- * '''Squid-2''': [[CvsInstructions|CVS]]
+ * '''Squid-2''': (obsolete) [[CvsInstructions|CVS]]
 
 === Required Build Tools ===
 
@@ -63,7 +63,7 @@ If you are looking to test the latest release of Squid for your own use you will
 
 To test a specific project branch you will need to pull the branch code directly from bzr https://code.launchpad.net/squid
 
- {i} Note that repository checkouts fro Squid-3 require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
+ {i} Note that repository checkouts for Squid-3 require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
 
 === Getting the sources via Bazaar (bzr) ===
 
@@ -100,11 +100,12 @@ rsync -avz rsync://squid-cache.org/source/<version> .
 }}}
 
 == Project organization ==
-ReleaseProcess describes the process and criteria used by the Squid Developers when making new Squid releases.
+
+MergeProcedure explains how to get your feature or improvement accepted into squid.
+
+ReleaseProcess describes the process and criteria used by the Squid Developers when making new Squid releases from the accepted changes.
 
 WhoWeAre explains who the people working on the Squid project are.
-
-MergeProcedure explains how to get your feature or improvement accepted into squid
 
 == Code Sprints ==
 
