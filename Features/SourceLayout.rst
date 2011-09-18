@@ -38,7 +38,7 @@ Key:
 || <:( || <:( || :\ || :\ {2} || ''comm/'' || I/O subsystem ||
 || <:( || <:( || <:( || || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 || <:( || <:( || <:( ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
-|| <:( || <:( || <:( ||  || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
+|| <:( || <:( || {2} || :\ || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || <:( || <:( || <:( || :\ || ''esi/'' || ESI support || ESI*, Add Esi namespace, rename classes ||
 || <:( || <:( || <:( || (./) || ''eui/'' || EUI-48 / MAC / ARP operations ||
 || <:( || <:( || (./) || :\ {2} || ''format/'' || Custom formatting ||
