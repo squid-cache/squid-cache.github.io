@@ -266,7 +266,7 @@ Input line received from Squid:
   This is the concurrency channel number. When concurrency is turned off ('''concurrency=1''') in SquidConf:external_acl_type this field and the following space will be completely missing.
 
  format-options::
-  This is the flexible series of tokens configured as the '''FORMAT''' area of SquidConf::external_acl_type. The tokens are space-delimited and exactly match the order of '''%''' tokens in the configured '''FORMAT'''. By default in current releases these tokens are also URL-encoded according to RFC RFC:1738 to protect against whitespace and binary data problems.
+  This is the flexible series of tokens configured as the '''FORMAT''' area of SquidConf:external_acl_type. The tokens are space-delimited and exactly match the order of '''%''' tokens in the configured '''FORMAT'''. By default in current releases these tokens are also URL-encoded according to RFC RFC:1738 to protect against whitespace and binary data problems.
 
  acl-value::
   Some ACL tests such as group name comparisons pass their test values to the external helper following the admin configured FORMAT. Depending on the ACL these may be sent one value at a time, as a list of values, or nothing may be sent. By default in current releases these tokens are also URL-encoded according to RFC RFC:1738 to protect against whitespace and binary data problems.
