@@ -144,6 +144,8 @@ This list describes the tags which Squid will insert into the messages:
 
  %w:: cachemgr email address
 
+ %x:: Application-level error name or identifier (e.g., X509_V_ERR_UNABLE_TO_GET_CRL). Currently only supported for SSL certificate validation errors. See also: system-level error code/detail (%e/%E) and application-level error detail (%D).
+
  %z:: DNS server error message
 
  %Z:: Message generated during the process which failed. May be ASCII-formatted. Use within HTML PRE tags.
