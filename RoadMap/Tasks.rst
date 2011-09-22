@@ -7,12 +7,9 @@ This page accumulates the tasks which need to be done in Squid but are too minor
 
 Feel free to jump in and try any of these tasks. Most can be done in small steps. Any contributions are welcome.
 
-=== Large Incremental Tasks:  ===
+=== Incremental Tasks:  ===
 
-These are large when looked at in full, but any small incremental part you can do is a lot of help.
-Check with squid-dev mailing list to see what we are up to and how you can assist the move forward on these.
-
-Some of the more urgent smaller tasks inside these big ones have been broken out.
+Tasks in this section need to be done in a rough order to make the changes easy. These may look large in full, but any small incremental part you can do is a lot of help. Check with squid-dev mailing list to see what we are up to and how you can assist the move forward on these.
 
  * Document the source code with Doxygen format
   1. src/Store.* and related
@@ -40,7 +37,7 @@ Some of the more urgent smaller tasks inside these big ones have been broken out
 
 === Small Tasks ===
 
-Small, but nagging. These might be done already if this page is not updated regularly.
+Small, but nagging annoyances. These might be done already if this page is not updated regularly.
 Check with squid-dev to see if its already done.
 
  * Migrate Feature requests from bugzilla to wiki pages. (FrancescoChemolli, mostly done. Needs second round after Apr 20th, 2009)
@@ -57,7 +54,6 @@ Check with squid-dev to see if its already done.
 
  * Cleanup Squid component macros that enable/disable components:
   1. make all the naming convention USE_* (with USE_SQUID_* for those which may clash with OS defines).
-  2. make all have the same #if...#endif syntax (currently a mix of #if and #ifdef and defined(_SQUID_*_) )
 
  * Fix Squid-3 MD5 layer:
   1. migrate MD5 code to libcompat
@@ -66,7 +62,7 @@ Check with squid-dev to see if its already done.
   4. port --without-system-md5 configure option to force the above
 
  * Helper and Tool Manuals
-  1. Write a manual man(8) page for a helpers/ program that does not have one.
+  1. Write a manual/man(8) page for a helpers/ program that does not have one.
   2. Update the existing README.txt and other help docs into proper manuals.
   3. Benchmark documentation.
     . How fast can each helper run?
