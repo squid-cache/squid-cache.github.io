@@ -10,13 +10,9 @@
 
  * '''Goal''': Disk cache performance within 80% of modern hardware limits.
 
- * '''Status''': Started; unofficially available for v3.1; SMP version is being worked on for v3.2
-
- * '''ETA''': February 2011
+ * '''Status''': merged to 3.HEAD; unofficially available for v3.1 as well
 
  * '''Version''': 3.2
-
- * '''Priority''': 1
 
  * '''Developer''': AlexRousskov
 
