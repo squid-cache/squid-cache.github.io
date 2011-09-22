@@ -34,14 +34,13 @@ Additions are limited to:
  * Stability fixes
  * Bug fixes
 
-Exceptions have been made for the following projects (and why):
- * StringNG - performance boost
- * SMP shared cache - resource usage reduction
+##Exceptions have been made for the following projects (and why):
+## * StringNG - performance boost
 
 Features Ported from 2.7 in this release:
 
  * Unique Sequence numbering for access.log lines
- * [[Features/LogDaemon]]
+ * [[Features/LogModules]] (including log daemon module)
  * {{{Cache-Control: stale-if-error}}}  handling and other staleness limits.
 
 Basic new features in 3.2:
@@ -55,6 +54,7 @@ Basic new features in 3.2:
  * Multi-Lingual proxy configuration splash pages for captive portals
  * [[Features/Surrogate|Surrogate 1.0]] protocol support
  * [[Features/SmpScale|SMP]] Scaling worker processes
+ * [[Features/RockStore| ''rock'' ]] SMP shared memory cache with disk backing
  * Helpers started on-demand instead of delaying startup and reconfigure process
  * [[Features/HelperMultiplexer| Multiplexer to add concurrency support for older helpers]]
  * New helpers to demo SquidConf:url_rewrite_program programs
@@ -65,7 +65,6 @@ Basic new features in 3.2:
  * [[Features/AclRandom]]
  * [[Features/EDNS]]
  * [[Features/LogDnsWait]]
- * [[Features/LogModules]]
  * IPv6 support for TCP split-stack
 
 ## Developer-only relevant features
