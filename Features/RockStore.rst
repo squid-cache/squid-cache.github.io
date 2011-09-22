@@ -22,40 +22,43 @@
 
 == Scope ==
 
-Large, busy sites need a disk storage scheme that approaches hardware limits on modern systems with 8+GB of RAM, 4+ CPU cores, and 4+ dedicated, 75+GB 10+K RPM disks. We need to create such store using the lessons learned from COSS (write seek optimization) and diskd (SMP scalability) while testing and implementing new optimization techniques. We do not want to wait for the rest of Squid to be perfected as slow disk operation is the primary bottleneck in busy caching Squid deployments today.
+Large, busy sites need a disk storage scheme that approaches hardware limits on modern systems with 8+GB of RAM, 4+ CPU cores, and 4+ dedicated, 75+GB 10+K RPM disks. Rock Store is meant to provide such storage using the lessons learned from COSS (write seek optimization) and diskd (SMP scalability) while testing and implementing new optimization techniques.
 
 == Current Status ==
 
 === SMP Squid ===
 
-Our goal is to submit Rock store implementation for v3.2 inclusion. This project has two primary components: porting of existing v3.1-based Rock store code to v3.2 and making that code SMP-scalable. The current design consists of the following components:
+Rock store implementation has been committed to trunk for eventual v3.2 inclusion. It has received some lab and limited deployment testing. It needs more work to perform well in a variety of environments, but appears to be usable in some of them.
 
- * '''Rock memory cache''': Shared memory cache storage used by Squid workers and Rock daemons.
- * Rock daemons: one process per cache_dir responsible for low-level blocking I/O. One Rock daemon is meant to be used for each physical disk dedicated to the disk cache. Rock daemon code is based on the Rock store implementation for Squid v3.1 (see below). Conceptually, Rock daemons are similar to ''diskd'' processes.
- * '''Squid workers''' that request hits from Rock daemons and copy loaded hits from Rock memory cache to local memory storage. Similarly, the workers will store cachable misses in the Rock memory cache and inform Rock daemons that the objects are ready for writing to disk. In the initial implementation, workers will disable local memory caches to avoid synchronization problems.
- * '''Lockless shared memory queues''' that connect Squid workers and Rock daemons. The queues deliver I/O requests from workers to daemons and "ready/fail" confirmations from daemons to workers. The actual object data is not queued but is shared using Rock memory cache.
+The current design consists of the following major components:
 
-If Rock daemons are not configured, Squid workers will just share a Rock memory cache.
+ * '''Shared memory cache''': Shared memory storage used by Squid workers to keep "hot" cached objects. When shared memory cache is in use, local worker cache is disabled to the extent possible.
+ * '''Shared I/O pages''': Shared memory storage used by Squid workers and Rock "diskers" to exchange object data being swapped in or out.
+ * '''Rock diskers''': one process per cache_dir responsible for low-level blocking I/O. One disker (or one Rock cache_dir) is meant to be used for each physical disk dedicated to the Squid disk cache. Conceptually, Rock diskers are similar to ''diskd'' processes.
+ * '''Squid workers''': Regular Squid SMP workers. The Rock Store code resident in workers communicates with diskers.
+ * '''Lockless shared memory queues''': Atomic non-blocking queues that connect workers and diskers. The queues deliver I/O requests from workers to diskers and "ready/fail" confirmations from diskers to workers. The actual object data is not queued but is exchanged using shared I/O pages.
 
-Future implementations may allow Squid workers to use local memory caches for already copied hits (with appropriate synchronization to prevent stale hits) and eventually remove the copying step itself (which would require changing low-level memory cache structures in Squid and will be difficult).
+If Rock diskers are not used, Squid workers can just share a memory cache.
+
+Future implementations may eventually remove copying between shared I/O pages and shared memory cache, but that would require changing low-level memory cache structures in Squid and will be difficult.
 
 
 === Squid v3.1 ===
 
 Unofficial, third-party [[https://code.launchpad.net/~rousskov/squid/3p1-rock|branch]] based on Squid v3.1 implements some of the Rock store design ideas. Similar to COSS, it is optimized for limited-size files. The implementation is using mmap(2) and related system calls in an attempt to take advantage of OS I/O buffers. It is being used in production at a few busy Squid3 deployments, but it has not received wide testing due to its unofficial status. YMMV. The branch is being synchronized with the official releases but there may be significant delays. The branch code is not supported by Squid Project.
 
-Since Squid v3.1 has been closed for new features for a while, there are currently no plans to integrate that unofficial code into official releases. We are focusing on avoiding this unofficial status in v3.2 instead.
+Since Squid v3.1 has been closed for new features for a while, there are currently no plans to integrate that unofficial code into official releases.
 
 
 == Design choices ==
 
-The project needs to answer several key design questions. The table below provides the questions and our current decisions.
+The project has to answer several key design questions. The table below provides the questions and our current decisions.
 
 ||Do we limit the cached object size like COSS does? The limit is an administrative pain and forces many sites to configure multiple disk stores. We want to use dedicated disks and do not want a "secondary" limitless store to screw with our I/Os. Yet, a small size limit simplifies the data placement scheme. It would be nice to integrate support for large files into one store without making data placement complex.||Yes, we limit the object size initially because it is simple and the current code sponsors do not have to cache large files. Later implementations may catalog and link individual storage blocks to support files of arbitrary length||
-||Do we want to guarantee 100% store-ability and 100% retrieve-ability? We can probably optimize more if we can skip some new objects or overwrite old ones as long as the memory cache handles hot spots.||SMP implementation assumes unreliable storage (e.g., Rock daemons may die) but does not take advantage of it. Future optimizations may skip or reorder I/O requests||
+||Do we want to guarantee 100% store-ability and 100% retrieve-ability? We can probably optimize more if we can skip some new objects or overwrite old ones as long as the memory cache handles hot spots.||SMP implementation assumes unreliable storage (e.g., diskers may die or become blocked) but does not take advantage of it. Future optimizations may skip or reorder I/O requests||
 ||Do we want 100% disk space utilization? We can optimize more if we are allowed to leave holes. How large can those holes be relative to the total disk size? With disk storage prices decreasing, it may be appropriate to waste a "little" storage if we can gain a "lot" of performance.||Current implementation does not optimize by deliberately creating holes in on-disk storage.||
 ||Do we rely on OS buffers? OS-level disk I/O optimizations often go wrong under high proxy load. Will bypassing OS buffers and doing raw disk I/O help us approach hardware limits?||Current implementation uses OS buffers for simplicity. Future optimizations are likely to use raw, unbuffered disk I/O.||
-||Do we need a complete, reliable in-memory cache index? Should we make the index smaller and perhaps less reliable to free RAM for the memory cache? Can we use hashing to find object location on disk without an index?||SMP implementation has a complete but not reliable in-memory cache index. Availability of a previously indexed object is verified on every hit check because other workers or Rock daemons may have removed the unused cached object.||
+||Do we need a complete, reliable in-memory cache index? Should we make the index smaller and perhaps less reliable to free RAM for the memory cache? Can we use hashing to find object location on disk without an index?||SMP implementation keeps one index for the shared memory cache and one index for each of the configured Rock Store cache_dirs. These indexes are shared among workers.||
 ||What parts of Rock Store should be replaceable/configurable? For example, is it worth designing so that solid state disks can be efficiently supported by the same store architecture?||Current configuration is limited to the block size and the concurrent I/Os limit, but it will surely become more complex in the future. We did not have a chance to play with solid state disks, but the overall design should accommodate them well. Future code will probably have an option to optimize either seek latency or the number of same-spot writes.||
 ||Will per-cache_dir limit remain at 17M objects? Can we optimize knowing that busy caches will reach that limit?||Current code continues to rely on the 17M limit in some data structures.||
 
