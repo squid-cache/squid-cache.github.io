@@ -56,6 +56,13 @@ From Squid 3.1 the log directory and PID file location are also configurable. Th
 
 {X} older Squid have problems with the default log directory. Remember they are only defaults. Altering  squid.conf you can point the logs at the right path anyway without either the workaround or the patching.
 
+As always, additional libraries may be required to support the features you want to build. The default package dependencies can be installed using:
+{{{
+aptitude build-dep squid3
+}}}
+This requires only that your sources.list contain the '''deb-src''' repository to pull the source package information. Features which are not supported by the distribution package will need investigation to discover the dependency package and install it.
+ {i} The usual one requested is ''libssl-dev'' for SSL support.
+
 ## end basic compile (leave this mark for Ubuntu page to include all the above)
 
  /!\ Older Squid needs the following patch to be applied since the /var/logs/ directory for logs has no configure option. This exact patch requires ./bootstrap.sh to be run again. If that is not possible the same line change can be manually made in src/Makefile.in as well.
