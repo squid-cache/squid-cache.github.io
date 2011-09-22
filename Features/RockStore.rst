@@ -10,7 +10,7 @@
 
  * '''Goal''': Disk cache performance within 80% of modern hardware limits.
 
- * '''Status''': merged to 3.HEAD; unofficially available for v3.1 as well
+ * '''Status''': completed.
 
  * '''Version''': 3.2
 
