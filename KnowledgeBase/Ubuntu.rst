@@ -28,7 +28,7 @@ Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid3
 Install Procedure:
 
 {{{
- apt-get install squid3
+ aptitude install squid3
 }}}
 ==== Squid-3.0 ====
 Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid3
@@ -36,7 +36,7 @@ Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid3
 Install Procedure:
 
 {{{
- apt-get install squid3
+ aptitude install squid3
 }}}
 ==== Squid-2.7 ====
 Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid
@@ -44,7 +44,7 @@ Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid
 Install Procedure:
 
 {{{
- apt-get install squid
+ aptitude install squid
 }}}
 
 == Compiling ==
