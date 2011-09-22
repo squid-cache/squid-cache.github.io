@@ -19,6 +19,12 @@ Some of the more urgent smaller tasks inside these big ones have been broken out
   2. src/comm.* and related
   3. src/DelayPools.* and related
 
+ * Migration to the STUB.h framework
+  1. update existing stub_ files to use src/tests/STUB.h
+  2. create a src/tests/stub_libX.cc for each convenience library API using src/tests/STUB.h
+  3. find unit tests which can be linked to the stub instead of the library and update the makefiles
+  4. find unit tests with unnecessary linkages and remove (mostly in src/Makefile.am)
+
  * Add unit tests for each class, API method and function already in existence to improve code quality and speedup future testing.
   1. src/acl/*
   2. src/ip/*
