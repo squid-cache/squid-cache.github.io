@@ -28,26 +28,13 @@ WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. 
  ||libcap-dev or libcap2-dev ||any ||
  ||libcap 2.09 or later ||any ||
 
-## * [[Squid-3.1]] has been adjusted to auto-detect and allow IPv6 on SquidConf:http_port set with the '''tproxy''' option when kernel support is available.
-
-## * {i} iptables VCS checkout is still needed. Patches on top of that (which may change) can be found at 
-## http://thread.gmane.org/gmane.comp.security.firewalls.netfilter.devel/35935
-
  * {i} '''libcap2''' is needed at run time. To build you need the developer versions (*-dev) to compile with Squid.
 
-== Minimum Requirements (IPv4 only) ==
- ||Linux Kernel 2.6.28 || [[http://www.kernel.org/|Official releases page]] ||
- ||iptables 1.4.3 || [[http://www.netfilter.org/projects/iptables/downloads.html|Official releases page]] ||
- ||Squid 3.1 || [[http://www.squid-cache.org/Versions/|Official releases page]] ||
- ||libcap-dev or libcap2-dev ||any ||
- ||libcap 2.09 or later ||any ||
-
- * {i} NP: the versions above are a minimum from the expected working versions. Newer versions are better than older.
-
- * {i} '''libcap2''' is needed at run time. To build you need the developer versions (*-dev) to compile with Squid.
+ * {i} NP: the versions above are a minimum from the expected working versions for the below config.
 
  * TPROXYv4 support reached a usable form in 2.6.28. However several Kernels have various known bugs:
   * {X} older than 2.6.28 are known to supply IPs wrongly to Squid and other client programs. Avoid!
+  * 2.6.28 to 2.6.32 have different rp_filter configuration. The rp_filter settings (0 or 1) for these kernels will silently block TPROXY if used on newer kernels.
   * 2.6.28 to 2.6.36 are known to have ICMP and TIME_WAIT issues.
   * 2.6.32 to 2.6.34 have bridging issues on some systems.
 
@@ -93,22 +80,25 @@ ip -f inet route add local 0.0.0.0/0 dev eth0 table 100
 Every OS has different security and limitations around what you can do here.
  . /!\ some systems require that '''lo''' is the interface TPROXY uses.
  . /!\ some systems require that an '''ethN''' is the interface TPROXY uses.
- . /!\ some systems require that each receiving interface have its own unique table. You will see a rejected route when a second {{{ip -f inet route}}} is added to the table. Knowing how to erase the custom route entry between tests is useful.
+ . /!\ some systems require that each receiving interface have its own unique table.
+ . /!\ Some OS block multiple interfaces being linked to the table. You will see a rejected route when a second {{{ip -f inet route}}} is added to the table. Knowing how to erase the custom route entry between tests is useful.
 
 On each boot startup set:
 {{{
-echo 0 > /proc/sys/net/ipv4/conf/eth0/rp_filter
 echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 2 > /proc/sys/net/ipv4/conf/default/rp_filter
+echo 2 > /proc/sys/net/ipv4/conf/all/rp_filter
+echo 0 > /proc/sys/net/ipv4/conf/eth0/rp_filter
 }}}
 Or configure '''/etc/sysctl.conf''':
 {{{
 net.ipv4.forwarding = 1
-net.ipv4.conf.default.rp_filter=1
-net.ipv4.conf.all.rp_filter=1
+net.ipv4.conf.default.rp_filter = 2
+net.ipv4.conf.all.rp_filter = 2
+net.ipv4.conf.eth0.rp_filter = 0
 }}}
  . /!\ your OS also may require the keyword '''set''' before each of those sysctl.conf lines.
- . /!\ There seems to be some confusion over the rp_filter rules. You may need '''
-net.ipv4.conf.eth0.rp_filter=0''' as well
+
 
 === Some routing problems to be aware of ===
  * /!\ Systems with strict localhost interface security boundaries require each interface to have a separate "table" entry for looking up packets via that device.
