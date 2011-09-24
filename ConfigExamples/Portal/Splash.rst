@@ -49,7 +49,7 @@ http_access deny !existing_users
 }}}
 This is just the snippet of config which causes the splash page and session to be enacted. Rules which permit the visitor use of the proxy are expected to be placed as appropriate below them. The basic default safety nets should as always be above them.
 
- . {i} For more information please see [[http://www.squid-cache.org/Versions/v3/3.2/manuals/ext_session_acl.html|ext_session_acl]].
+ . {i} For more information please see [[http://www.squid-cache.org/Versions/v3/3.2/manuals/ext_session_acl.html|ext_session_acl]], [[http://www.squid-cache.org/Doc/config/external_acl_type/|external_acl_type]], [[http://www.squid-cache.org/Doc/config/acl/|acl]], [[http://www.squid-cache.org/Doc/config/deny_info/|deny_info]], [[http://www.squid-cache.org/Doc/config/http_access/|http_access]]
 
 == Configuration tweaks ==
  * As mentioned the above configuration emulated web browser sessions. This behaviour is most common for portals, but may not be exactly as desired. To perform other behaviours a custom external ACL helper is needed.
