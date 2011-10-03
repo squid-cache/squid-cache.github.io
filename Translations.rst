@@ -21,7 +21,7 @@ Several people have volunteered their time to check and confirm translations to 
 || German || de || Constantin Rack and  Robert Förster ||
 || English || en || AmosJeffries (Squid Project) ||
 || Persian || fa || Mohsen Saeedi (Fedora Project) ||
-|| French || fr || Oliver W. ||
+|| French || fr || Bernard Charrier ||
 || Armenian || hy || Arthur Tumanyan ||
 || Italian || it || FrancescoChemolli (Squid Project) ||
 || Dutch (Nederland) || nl || Rene Wijninga ||
