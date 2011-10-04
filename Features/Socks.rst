@@ -55,6 +55,14 @@ A new COMM_SOCKSBIND flag will be needed to the comm layer calls for the listene
 I've had a bit of time too short to do anything much and created a branch that is supposed to do listening port and SOCKS peers. It builds and listens on an SquidConf:http_port as far as I can tell now. squidclient has also been adapted to use SOCKS socket operations.
 Bazaar Branch available on launchpad at https://code.launchpad.net/~yadi/squid/socks for anyone keen on testing.
 
+Outstanding Problem:
+ This branch seems not to perform SOCKS. Even when SOCK libraries are linked and SOCKS binding and connection calls are used. It is most likely my lack of SOCKS programming and debugging knowledge. The branch built and appeared to run fine as a regular proxy.
+ * There seems to be no difference between traffic arriving on a SOCKS_listen() bound port and on a regular listen() bound port. Both regular and SOCKS traffic was tried. Both ports accepted both types of traffic!
+ * There seems to be no SOCKS operations on the outbound cache_peer links, even when talking to a SOCKS server, over a SSH SOCKS tunnel and using SOCKS_connect()+SOCKS_bind() to make the outgoing connection. Possibly errors at the tunnel or server configuration, looking for someone more expert to test that properly.
+
+So currently work is blocked. Using the API via -D= compiler options still apparently works, writing the code to use an if() statement fails. Ideas?
+
+
 Situations:
  * Certain apps sending HTTP but can be configured only with SOCKS proxy (not HTTP proxy) as a relay. Weird but true.
 
