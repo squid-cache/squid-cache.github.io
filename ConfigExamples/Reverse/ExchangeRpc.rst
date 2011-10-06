@@ -31,7 +31,7 @@ The example situation involves a single Outlook Web Access server and a single S
 
 {{{
 # Publish the RPCoHTTP service via SSL
-https_port ip_of_squid:443 cert=/path/to/clientcertificate defaultsite=rpc_domain_name
+https_port ip_of_squid:443 accel cert=/path/to/clientcertificate defaultsite=rpc_domain_name
 
 cache_peer ip_of_exchange_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/certificate name=exchangeServer
 
