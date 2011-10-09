@@ -27,7 +27,7 @@ Prior to Squid 3.2:
 
 {{{
 # mind the wrap. this is one line:
-external_acl_type splash_page ttl=60 concurrency=10 %SRC /usr/local/sbin/squid/squid_session -t 7200 -b /var/lib/squid/session.db
+external_acl_type splash_page ttl=60 concurrency=100 %SRC /usr/local/sbin/squid/squid_session -t 7200 -b /var/lib/squid/session.db
 
 acl existing_users external splash_page
 
@@ -39,7 +39,7 @@ Squid 3.2 and later (session helper renamed):
 
 {{{
 # mind the wrap. this is one line:
-external_acl_type splash_page ttl=60 concurrency=10 %SRC /usr/local/sbin/squid/ext_session_acl -t 7200 -b /var/lib/squid/session.db
+external_acl_type splash_page ttl=60 concurrency=100 %SRC /usr/local/sbin/squid/ext_session_acl -t 7200 -b /var/lib/squid/session.db
 
 acl existing_users external splash_page
 
@@ -77,7 +77,7 @@ http_access allow clicked_login_url session_login
 http_access deny session_day !session_is_active
 
 # Deny page to display
-deny_info http://nelsonwr.wardroom/announce.php?url=%u session_day session_is_active
+deny_info http://example.com/splash.html session_is_active
 }}}
 == Configuration tweaks ==
  * This is just the snippet of config which causes the  splash page and session to be enacted. Rules which permit the visitor  use of the proxy are expected to be placed as appropriate below them.  The basic default safety nets should as always be above them.
