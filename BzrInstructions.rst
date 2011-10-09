@@ -3,7 +3,7 @@ Bazaar is a distributed VCS written in python. It offers both drop-in CVS replac
 
 <<TableOfContents>>
 
- Back to DeveloperResources
+ . Back to DeveloperResources
 
 = Installation =
 Bazaar is available in most O/S's these days: http://bazaar-vcs.org/Download.
@@ -28,7 +28,6 @@ For anonymous access/mirroring/etc:
 {{{
 http://bzr.squid-cache.org/bzr/squid3/trunk
 }}}
-
 == Repository Mirrors ==
 Also mirrors are available at:
 
@@ -41,7 +40,6 @@ Also mirrors are available at:
  * https://code.launchpad.net/squid
 
 = Web view =
-
  * http://bazaar.launchpad.net/~squid/squid/3-trunk/files
  * http://bazaar.launchpad.net/~squid/squid/3.2/files
  * http://bazaar.launchpad.net/~squid/squid/3.1/files
@@ -73,18 +71,16 @@ This enables bzr commit --fixes squid:<bugnumber> to mark bugs as fixed
 The following sections will describe how to set up your local repository for Squid development. Two options are shown, differing in where the local repository is:
 
  plain method :: The bazaar repository is in the root of your Squid source tree.
-
  cbranch method :: The local bazaar repository is somewhere else in your filesystem, separate from where you do development. Easier to back up and branches are persistent in the repository even if you should happen to delete a whole source tree intentionally or by accident. Which means you can easily recover a branch after you have deleted the source tree.
 
 == Create local repository ==
+ plain method:: <<BR>>
 
- plain method::
 {{{
 cd source
 bzr init-repo --1.14 squid
 }}}
-
- cbranch method::
+ cbranch method:: <<BR>>
 
 {{{
 # create a local repository to store branches in
@@ -103,7 +99,7 @@ EOF
 == Checkout an existing branch ==
 After your setup is done its time to checkout the first branch you are going to work on directly, or create a child branch for. In most cases this will be the '''trunk''' branch.
 
- plain method::
+ plain method:: <<BR>>
 
 {{{
 cd source/squid
@@ -112,8 +108,7 @@ bzr branch --bind bzr+ssh://bzr.squid-cache.org/bzr/squid3/trunk
 # Anonymous access:
 bzr branch --bind http://bzr.squid-cache.org/bzr/squid3/trunk
 }}}
-
- cbranch method::
+ cbranch method:: <<BR>>
 
 {{{
 cd ~/source/squid
@@ -132,14 +127,13 @@ First follow the instructions above to setup a development environment
 
 Now, in the below example, replace SOURCE with the branch you want your new branch based on, and NAME with the name you want your new branch to have in the following:
 
- plain method::
+ plain method:: <<BR>>
 
 {{{
 cd ~/source/squid
 bzr branch trunk NAME
 }}}
-
- cbranch method::
+ cbranch method:: <<BR>>
 
 {{{
 cd ~/source/squid
@@ -164,7 +158,7 @@ to update the shared copy in the future all you need to run is
 {{{
 bzr push
 }}}
-== bring a branch up to date with it's ancestor ==
+== bring a branch up to date with its ancestor ==
 First update your copy of the ancestor;
 
 {{{
@@ -210,18 +204,21 @@ Verify the contents of your branch
 {{{
 bzr diff -r submit: | less
 }}}
-If it looks fine then generate a diff bundle and mail it to squid-dev
+If it looks fine then generate a diff bundle:
+
+{{{
+bzr diff -r submit: > your-patch-name.diff
+}}}
+Edit the file, add a preamble to the beginning of it stating its purpose, and email to the squid-dev mailing list (squid-dev@squid-cache.org).
+
+You can use the following commands to email the patch directly, but they skip the step of adding a preamble.
 
 {{{
 bzr send --mail-to=squid-dev@squid-cache.org
 }}}
-alternatively if that fails try:
-
 {{{
 bzr send -oYourFeatureName.merge
 }}}
-Then manually email the file '''!YourFeatureName.merge''' as an attachment to squid-dev mailing list.
-
 It's also possible to cherrypick what to send using the -r option. See {{{bzr help revisionspec}}} for details
 
 == Commit directly to trunk ==
