@@ -38,16 +38,17 @@ The only points of possible interest for some will be:
  * SquidConf:external_acl_type flags 'ipv4' or 'ipv6'
  * SquidConf:tcp_outgoing_address magic ACL's
  * CIDR is required - that brand spanking new concept (from 1993).
+ * '''localhost''' has two IP addresses.
 
 == Fine Tuning IPv6 Performance ==
 
  * DNS works best and fastest through the internal resolver built into squid. Check that your configure options do not disable it.
 
- * IPv6 links still may have some tunnel lag. Squid can benefit most from a fast link, so test the various tunnel methods and brokers available for speed. This is a good idea in general for your IPv6 experience. Go with native routing as soon as your upstream can supply it.
+ * IPv6 links still may have some tunnel lag. Squid can benefit most from a fast link, so test the various tunnel methods and brokers available for speed. This is a good idea in general for your IPv6 experience. Go with native routing as soon as your upstream can supply it. Squid-3.1.16 and later provide SquidConf:dns_v4_first directive to avoid the worst cases of tunnel lag. Enable this only if you have to.
 
- * A single listening port '''SquidConf:http_port 3128''' is less resource hungry than one for each IPv4 and IPv6. Also, its fully compatible with IPv6 auto-configuration.
+ * A single listening port '''SquidConf:http_port 3128''' is less resource hungry than one for each IPv4 and IPv6. Also, its fully compatible with IPv6 auto-configuration and link-local addressed peers.
 
- * Splitting the listening ports on input mode (standard, tproxy, intercept, accel) is better than mixing two modes on one port. The most current Squid now require this splitting.
+ * Splitting the listening ports on input mode (standard, tproxy, intercept, accel, ssl-bump) is better than mixing two modes on one port. The most current Squid now require this splitting.
 
  * Squid can already cope with bad or inaccessible IPs. This can be improved by tuning the SquidConf:connect_timeout and SquidConf:dns_timeout down to a few seconds.
 
@@ -58,14 +59,14 @@ The only points of possible interest for some will be:
 
 Each of the port lines in squid.conf (SquidConf:http_port, SquidConf:icp_port, SquidConf:snmp_port, SquidConf:https_port maybe others) can take either a port, hostname:port, or ip:port combo.
 
-When these lines contain an IPv4 address or a hostname with only IPv4 addresses squid will only open on those IPv4 you configured. You can add new port lines for IPv6 using [ipv6]:port, add AAAA records to the hostname in DNS, or use only a port.
+When these lines contain an IPv4 address or a hostname with only IPv4 addresses Squid will only open on those IPv4 you configured. You can add new port lines for IPv6 using [ipv6]:port, add AAAA records to the hostname in DNS, or use only a port.
 
 When only a port is set it should be opening for IPv6 access as well as IPv4. The one exception to default IPv6-listening are port lines where 'transparent', 'intercept' or 'tproxy' options are set. NAT-interception (commonly called transparent proxy) cannot be done in IPv6 so squid will only listen on IPv4 for that type of traffic.
 TPROXYv4 support in the kernel varies. Squid will detect the capabilities and open the appropriate type of port for your kernel.
 
 '''Your squid may be configured with restrictive ACL.'''
 
-A good squid configuration will allow only the traffic it has to and deny any other. If you are testing IPv6 using a pre-existing config you may need to update your ACL lines to include the IPv6 addresses or network ranges which should be allowed.
+A good Squid configuration will allow only the traffic it has to and deny any other. If you are testing IPv6 using an existing config you may need to update your ACL lines to include the IPv6 addresses or network ranges which should be allowed.
 src, dst, and other ACL which accept IPv4 addresses or netmasks will also accept IPv6 addresses and CIDR masks now. For example the old ACL to match traffic from localhost is now:
 {{{
 acl localhost src 127.0.0.1 ::1
@@ -83,6 +84,8 @@ If you have manually "disabled IPv6" using one of the many blog tutorials that a
 '''Your squid may be configured to only connect out through specific IPv4.'''
 
 A number of networks are known to need SquidConf:tcp_outgoing_address (or various other *_outgoing_address) in their squid.conf. These can force squid to request the website over an IPv4 link when it should be trying an IPv6 link instead. There is a little bit of ACL magic possible with SquidConf:tcp_outgoing_address which will get around this problem for DIRECT requests.
+
+ {i} This is only needed for Squid-3.1 series. Later Squid do this automatically when selecting the outgoing connection properties.
 
 {{{
 acl to_ipv6 dst ipv6
@@ -112,7 +115,7 @@ Please don't do these. Particularly in immortal online documents. I would not ev
 
 === Defining IPv6 as 2000::/3 ===
  * It's not true.
- * Squid does it better with ACL magic moniker '''ipv6''' meaning the currently routed IPv6 space.
+ * Squid provides an ACL magic moniker '''ipv6''' meaning the currently routed IPv6 space.
 {{{
 acl globalIPv6 src ipv6
 }}}
@@ -127,7 +130,7 @@ acl globalIPv6 src ipv6
 
 
 == How do I make squid use IPv6 to its helpers? ==
-With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. By default to work with older setups, helpers are still connected over IPv4. You can add '''ipv6''' option to use IPv6.
+With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. Squid prefers to use unix pipes to helpers and these are ignored. But on some networks TCP sockets are required. To work with older setups, helpers are still connected over IPv4 by default. You can add '''ipv6''' option to use IPv6.
 {{{
 external_acl_type hi ipv6 %DST /etc/squid/hello_world.sh
 }}}
@@ -143,7 +146,23 @@ A new ACL tag '''ipv6''' has been added to match only IPv6 public space.
 Example creation in squid.conf:
 {{{
 acl to_ipv6 dst ipv6
+acl from_ipv6 src ipv6
 }}}
+
+== Why can't I connect to my localhost peers? ==
+
+In modern IPv6-enabled systems the special '''localhost''' name has at least two IP addresses. IPv4 (127.0.0.1) and IPv6 (::1).
+
+If your peers are IPv4-only peers Squid will be unable to open connections to them on IPv6. The result is a series of "TCP connection to localhost/* failed" and ending with a "DEAD" peer.
+
+This config for example has been known to display this problem:
+{{{
+cache_peer localhost parent 3128 0
+}}}
+
+The solution is to configure 127.0.0.1 as the peer address instead of localhost until you can IPv6-enable the peers.
+
+ ''Thanks to Artemis Braja for bringing this problem to light''
 
 == So what gets broken by IPv6? ==
 
