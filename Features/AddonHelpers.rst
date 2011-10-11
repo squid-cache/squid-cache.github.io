@@ -370,6 +370,6 @@ result size [key-pair] body
 -----END CERTIFICATE-----
 }}}
 
-## start sslcrtd protocol
+## end sslcrtd protocol
 ----
 CategoryFeature
