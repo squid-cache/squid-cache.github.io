@@ -96,6 +96,7 @@ Basic new features in 3.3:
 
  * New helper to log access.log to an SQL Database
  * New helper to quota session access time
+ * SslBump improvements
 
 ## The intention is to surpass Squid-2.7, improve the upgrade path and concentrate on further performance improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
 
