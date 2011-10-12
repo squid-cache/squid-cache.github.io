@@ -6,7 +6,7 @@
 = Feature: HTTPS (HTTP Secure or HTTP over SSL/TLS) =
 
  * '''Version''': 2.5
-## * '''More''': 
+ * '''More''': RFC RFC:2817
 
 <<TableOfContents>>
 
@@ -20,7 +20,7 @@ Squid interaction with these two traffic types is discussed below.
 
 = CONNECT tunnel =
 
-The ''CONNECT'' method is a way to tunnel any kind of connection through an HTTP proxy. By default, the proxy establishes a TCP connection to the specified server, responds with an HTTP 200 (Connection Established) response, and then shovels packets back and forth between the client and the server, without understanding or interpreting the tunnelled traffic. For the gory details on tunnelling and the CONNECT method, please see [[ftp://ftp.isi.edu/in-notes/rfc2817.txt|RFC 2817]] and the expired [[http://www.web-cache.com/Writings/Internet-Drafts/draft-luotonen-web-proxy-tunneling-01.txt|Tunneling TCP based protocols through Web proxy servers]] draft.
+The ''CONNECT'' method is a way to tunnel any kind of connection through an HTTP proxy. By default, the proxy establishes a TCP connection to the specified server, responds with an HTTP 200 (Connection Established) response, and then shovels packets back and forth between the client and the server, without understanding or interpreting the tunnelled traffic. For the gory details on tunnelling and the CONNECT method, please see RFC RFC:2817 and the expired [[http://www.web-cache.com/Writings/Internet-Drafts/draft-luotonen-web-proxy-tunneling-01.txt|Tunneling TCP based protocols through Web proxy servers]] draft.
 
 == CONNECT tunnel through Squid ==
 
@@ -80,7 +80,7 @@ Currently, Squid-to-client traffic on intercepted direct HTTPS connections canno
 From the browser point of view, intercepted messages are not sent to a proxy. Thus, general interception limitations, such as inability to authenticate requests, apply to bumped intercepted transactions as well.
 
 
-= Secure browser-Squid connection =
+= Encrypted browser-Squid connection =
 
 While HTTPS design efforts were focused on end-to-end communication, it would also be nice to be able to encrypt the browser-to-proxy connection (without creating a CONNECT tunnel that blocks Squid from accessing and caching content). This would allow, for example, a secure use of remote proxies located across a possibly hostile network.
 
