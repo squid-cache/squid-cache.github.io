@@ -14,7 +14,7 @@
  * '''Version''': 3.3
  * '''Priority''': 1
  * '''Developer''': AlexRousskov
- * '''More''': requires [[Features/SslBump|SslBump]] and pointless without [[Features/DynamicSslCert|Dynamic Certificate Generation]]
+ * '''More''': requires [[Features/SslBump|SslBump]], enables [[Features/MimicSslServerCert|server certificate mimicking]], and pointless without [[Features/DynamicSslCert|Dynamic Certificate Generation]]
 
 
 = Motivation =
@@ -23,7 +23,7 @@
 
 The above scheme fails when SSL connections are intercepted because intercepted connections start with an SSL handshake and not an HTTP CONNECT request. Thus, Squid does not receive the origin server host name from the client. Squid knows the destination IP address of the intercepted connection, but an IP address is not usable for SSL certificate generation. This makes it impossible to generate a matching server certificate. Without such a certificate, Squid cannot impersonate the server.
 
-Another problem with the current "bump-'''client'''-first" approach is that whenever the server sends a partially defective or an outright invalid SSL certificate, it is too late to propagate that problem to the client and let the client deal with it. This is unfortunate both because the final decision should be, ideally, done by the user, not Squid and because browsers already have rather sophisticated tools for warning the user about the problem, examining invalid certificates, ignoring problems, caching user decision, etc. (and we do not really want to duplicate that). While this project will not forward certificate problems to the client, it is a required step towards supporting that frequently requested functionality in the future.
+Another problem with the current "bump-'''client'''-first" approach is that whenever the server sends a partially defective or an outright invalid SSL certificate, it is too late to propagate that problem to the client and let the client deal with it. This is unfortunate both because the final decision should be, ideally, done by the user, not Squid and because browsers already have rather sophisticated tools for warning the user about the problem, examining invalid certificates, ignoring problems, caching user decision, etc. (and we do not really want to duplicate that). While this project will not forward certificate problems to the client, it is a required step towards supporting that frequently requested functionality in the [[Features/MimicSslServerCert|future]].
 
 
 = Implementation overview =
