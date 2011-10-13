@@ -26,7 +26,7 @@ Large, busy sites need a disk storage scheme that approaches hardware limits on 
 
 === SMP Squid ===
 
-Rock store implementation has been committed to trunk for eventual v3.2 inclusion. It has received some lab and limited deployment testing. It needs more work to perform well in a variety of environments, but appears to be usable in some of them.
+Rock store is available in Squid version 3.2.0.13. It has received some lab and limited deployment testing. It needs more work to perform well in a variety of environments, but appears to be usable in some of them.
 
 The current design consists of the following major components:
 
