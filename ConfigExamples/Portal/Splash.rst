@@ -74,7 +74,7 @@ acl clicked_login_url url_regex -i a-url-that-must-match$
 http_access allow clicked_login_url session_login
 
 # If we get here, URL not present, so renew session or deny request.
-http_access deny session_day !session_is_active
+http_access deny !session_is_active
 
 # Deny page to display
 deny_info http://example.com/splash.html session_is_active
