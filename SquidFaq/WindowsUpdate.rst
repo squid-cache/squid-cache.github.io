@@ -97,70 +97,57 @@ c:\> proxycfg -u
 # Set proxy to Internet Explorer settings.
 }}}
 == AN ALTERNATIVE IDEA ==
- .
- . An idea that was floating around the internet a few weeks ago suggested that you use a refresh_pattern regexp config to do your WU caching. I decided to test this idea out in my squid proxy, along with one or 2 other ideas (the other ideas failed
- . hopelessly but the WU caching worked like a charm.)
- .
- . The idea basically suggested this:
- .
- . {{{
-refresh_pattern microsoft.com/.*\.(cab|exe|msi|msu|msf|msu|asf|wmv|wma|dat|deb|rpm|mp3|mp4|m4a|mpg|deb|rpm|tar|gz|tgz|bz2|zip) 4320 80\% 43200 reload-into-ims
-}}}
- .
- . The original idea seemed to work in theory, yet in practicality it was pretty useless - the updates expired after 30 minutes, there was download inconsistencies, and a whole array of issues. So looking at the documentation for
- . refresh_pattern, there was an extra clause that could be added to make your Squid system cache regular expressions instead of just expressions. This is how it changed:
- .
- . {{{
-refresh_pattern -i microsoft.com/.*\.(cab|exe|msi|msu|msf|msu|asf|wmv|wma|dat|deb|rpm|mp3|mp4|m4a|mpg|deb|rpm|tar|gz|tgz|bz2|zip) 4320 80\% 43200 reload-into-ims
-refresh_pattern -i windowsupdate.com/.*\.(cab|exe|msi|msu|msf|msu|asf|wmv|wma|dat|deb|rpm|mp3|mp4|m4a|mpg|deb|rpm|tar|gz|tgz|bz2|zip) 4320 80\% 43200 reload-into-ims
-}}}
- .
- .
- . Now all that this line tells us to do is cache all .cab, .exe, .msu, .msu, .msf, .asf, .wma,..... to .zip from microsoft.com, and the lifetime of the object in the cache is 4320 seconds (aka 3 days) to 43200 seconds (aka 30 days). Each of the downloaded objects are added to the cache, and then whenever there is a request for the object's file, the file will be reloaded from the cache.
 
- . Unfortunately this one also has issue. You need to keep the original Squid settings to do with refresh_pattern, ie -
+An idea that was floating around the Internet a few weeks ago suggested that you use a SquidConf:refresh_pattern regexp config to do your WU caching. I decided to test this idea out in my squid proxy, along with one or 2 other ideas (the other ideas failed hopelessly but the WU caching worked like a charm.)
 
- . {{{
+The idea basically suggested this:
+
+{{{
+refresh_pattern microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+}}}
+
+The original idea seemed to work in theory, yet in practicality it was pretty useless - the updates expired after 30 minutes, there was download inconsistencies, and a whole array of issues. So looking at the documentation for SquidConf:refresh_pattern, there was an extra clause that could be added to make your Squid system cache regular expressions instead of just expressions. This is how it changed:
+
+{{{
+refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+}}}
+
+Now all that this line tells us to do is cache all .cab, .exe, .msu, .msu, .msf, .asf, .wma,..... to .zip from microsoft.com, and the lifetime of the object in the cache is 4320 minutes (aka 3 days) to 43200 minutes (aka 30 days). Each of the downloaded objects are added to the cache, and then whenever there is a request for the object's file arrives indicating the cache copy must not be used it gets converted to an if-modified-since check instead of a new copy reload request.
+
+Unfortunately this one also has issue. You need to keep the original Squid settings to do with SquidConf:refresh_pattern, ie -
+
+{{{
 # Add one of these lines for each of the websites you want to cache.
-}}}
 
- . {{{
-refresh_pattern -i microsoft.com/.*\.(cab|exe|msi|msu|msf|msu|asf|wmv|wma|dat|deb|rpm|mp3|mp4|m4a|mpg|deb|rpm|tar|gz|tgz|bz2|zip) 4320 80\% 43200 reload-into-ims
-}}}
+refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
- . {{{
-refresh_pattern -i windowsupdate.com/.*\.(cab|exe|msi|msu|msf|msu|asf|wmv|wma|dat|deb|rpm|mp3|mp4|m4a|mpg|deb|rpm|tar|gz|tgz|bz2|zip) 4320 80\% 43200 reload-into-ims
-}}}
+refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
- . {{{
-refresh_pattern -i my.windowsupdate.website.com/.*\.(cab|exe|msi|msu|msf|msu|asf|wmv|wma|dat|deb|rpm|mp3|mp4|m4a|mpg|deb|rpm|tar|gz|tgz|bz2|zip) 4320 80\% 43200 reload-into-ims
-}}}
+refresh_pattern -i my.windowsupdate.website.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
- . {{{
+
 # DONT MODIFY THESE LINES
-}}}
-
- . {{{
 refresh_pattern \^ftp:           1440    20%     10080
-}}}
-
- . {{{
 refresh_pattern \^gopher:        1440    0%      1440
+refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
+refresh_pattern .               0       20%     4320
 }}}
 
- . {{{
-refresh_pattern -i (/cgi-bin/|\?) 0     0%      0refresh_pattern .               0       20%     4320
-}}}
+This should limit the system from downloading windows updates a trillion times a minute. It'll hand out the Windows updates, and will keep them stored in the squid3 cache.
 
- . . This should limit the system from downloading windows updates a trillion times a minute. It'll hand out the Windows updates, and will keep them stored in the squid3 cache.
- .
- . I also recommend a 30 to 60Gb cache_dir size allocation, which will let you download tonnes of windows updates and other stuff and then you won't really have any major issues with cache storage or cache allocation or any other issues to do with the cache. .  .
- .
- . One big thing is to make sure that the Squid proxy is NOT transparent in any way other than WPAD. WPAD is awesome, so is transparency, but transparency doesn't allow for caching of any kind, because the proxy is 'invisible' to the clients (hence it's Squid3.x name, 'intercept' for interception).  .  . The steps listed above are best for setting a proxy, although a more direct approach is better. Setting the Internet Explorer's Proxy setting to the ip and port of your Squid proxy is probably best, as it'll show your system that there is an external proxy system that COULD be a WSUS server (we just want the system to assume this, and then we're set for windows updates ;D ).
- .
- . If you have authentication on your Squid proxy, then set this line up to allow for the WU to access Microsoft's services without a username and password: .
+I also recommend a 30 to 60Gb SquidConf:cache_dir size allocation, which will let you download tonnes of windows updates and other stuff and then you won't really have any major issues with cache storage or cache allocation or any other issues to do with the cache. .  .
+
+One big thing is to make sure that the Squid proxy is NOT transparent in any way other than WPAD. WPAD is awesome, so is transparency, but transparency doesn't allow for caching of any kind, because the proxy is 'invisible' to the clients (hence it's Squid3.x name, 'intercept' for interception).
+
+The steps listed above are best for setting a proxy, although a more direct approach is better. Setting the Internet Explorer's Proxy setting to the ip and port of your Squid proxy is probably best, as it'll show your system that there is an external proxy system that COULD be a WSUS server (we just want the system to assume this, and then we're set for windows updates ;D ).
+
+If you have authentication on your Squid proxy, then set this line up to allow for the WU to access Microsoft's services without a username and password:
+
+
  . (yip, its the same as above) .
- . {{{
+
+{{{
 acl WU dstdomain windowsupdate.microsoft.com
 acl WU dstdomain .update.microsoft.com
 acl WU dstdomain download.windowsupdate.com
@@ -185,7 +172,10 @@ http_access allow CONNECT WU localnet
 http_access allow WU localnet
 http_reply_access allow WU localnet
 }}}
- . This should make your network run pretty smoothly ;) . ##end
+
+ . This should make your network run pretty smoothly ;)
+
+##end
 
 ----
 Back to the SquidFaq
