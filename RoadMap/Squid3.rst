@@ -34,6 +34,10 @@ Additions are limited to:
  * Stability fixes
  * Bug fixes
 
+ . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
+
+
+
 ##Exceptions have been made for the following projects (and why):
 ## * StringNG - performance boost
 
@@ -78,8 +82,6 @@ Basic new features in 3.2:
 Packages of squid 3.2 source code are available at
 http://www.squid-cache.org/Versions/v3/3.2/
 
- * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
-
 
 = Squid 3.3 (3.HEAD) =
 
@@ -92,6 +94,9 @@ The set of new Squid 3.3 features and release timeline is determined by submissi
 ## * Stability fixes
 ## * Bug fixes
 
+## bugs down to major (all earlier releases and 'unknowns')
+## . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
+
 Basic new features in 3.3:
 
  * New helper to log access.log to an SQL Database
@@ -103,7 +108,8 @@ Basic new features in 3.3:
 Packages of squid 3.3 source code are available at
 http://www.squid-cache.org/Versions/v3/3.HEAD/
 
- * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit|Bug Zapping]]
+## bugs down to normal status
+## * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
 
 == TODO ==
 
