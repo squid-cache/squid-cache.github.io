@@ -63,9 +63,12 @@ url_rewrite_access allow youtube
 cache deny youtube
 }}}
 
+ . {i} '''/usr/bin/php''' may not be the correct path or name for PHP on your system. Be sure to check and update this following example as needed.
+ . {X} also take care to remove the space between ''# !''. It is there to avoid a wiki bug.
+
 phpredir.php:
 {{{
-#!/usr/bin/php
+# !/usr/bin/php
 <?php
 
 while ( $input = fgets(STDIN) ) {
