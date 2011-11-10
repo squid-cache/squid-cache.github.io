@@ -60,7 +60,7 @@ while (<>) {
         $url =~ s/internal/secure/;
         print $X[0]." 302:$url\n";
     } else {
-        print $X[0]." $url\n";
+        print $X[0]." \n";
     }
 }
 }}}
