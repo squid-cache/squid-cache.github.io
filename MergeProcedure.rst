@@ -32,11 +32,12 @@ Squid-2 and Squid-3 use different coding styles.
  * {{{indent -br -ce -i4 -ci4 -l80 -nlp -npcs -npsl -d0 -sc -di0 -psl}}}.
 
 === Submission Format ===
-Submissions are emailed to squid-dev for merging, one submission per post. The submission email must contain:
+Submissions are emailed to '''squid-dev''' for merging, one submission per post. The submission email must contain:
 
  * '''Subject''': The name of the new feature or a brief change description, prefixed with [MERGE] or [PATCH].
  * '''Main body''': A full description of the new feature or change. The description guides those reading your code. Its verbatim copy is usually used as the commit message if your submission is accepted.
  * '''Attachment''': A bzr [MERGE] bundle or a manual [PATCH] in a unified diff format.
+
 
 === Merging Steps for Squid3 ===
  1. Check that you have added release notes, if any are needed: '''doc/release-notes/release-3.X.sgml'''. Don't worry about the HTML or TXT files, they are automatically built by the maintainer.
