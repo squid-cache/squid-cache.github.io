@@ -43,6 +43,32 @@ If Rock diskers are not used, Squid workers can just share a memory cache.
 
 Future implementations may eventually remove copying between shared I/O pages and shared memory cache, but that would require changing low-level memory cache structures in Squid and will be difficult.
 
+== Performance Tuning ==
+
+Rock diskers work as fast as they can. If they are slower than swap load created by Squid workers, then the disk queues will grow, leading to overflow and timeout warnings:
+
+  {{{
+2011/11/15 09:39:36 kid1| Worker I/O push queue overflow: ipcIo1.5225w4
+2011/11/15 09:39:42 kid1| WARNING: abandoning 217 I/Os after at least 7.00s timeout
+2011/11/15 09:39:42 kid2| WARNING: communication with disker may be too slow or disrupted for about 7.00s; rescued ...
+}}}
+
+Similar problems are likely when your OS file system caches a lot of disk write requests in RAM and then goes into a writing frenzy, often blocking all processes doing I/O, including Squid diskers. These problems can be either avoided or minimized by carefully tuning the file system parameters to prevent excessive aggregation of write requests. Often, file system tuning alone is not sufficient and your disks continue to lag behind workers.
+
+When your disks cannot keep up with the offered load, you should add ''max-swap-rate'' and ''swap-timeout'' options to your Rock cache_dir lines. In most cases, you need both of those options or none. The first option tells Squid to pace Rock cache_dir traffic (artificially delaying I/Os as necessary to prevent traffic jams) and the second one tells Squid when it should avoid disk I/O because it would take "too long".
+
+The best values depend on your load, hardware, and hit delay tolerance so it is impossible to give a single formula for all cases, but there is an algorithm you may use as a starting point:
+
+ 1. Set max-swap-rate to limit the average number of I/O per second. If you use a dedicated ordinary modern disk, use 200/sec. Use 300/sec rate if your disk is very fast and have better-than-average seek times. Use 100/sec rate if your disk is not so sharp.
+ 1. Set swap-timeout to limit the I/O wait time. The lower the timeout, the fewer disk hits you will have, as fewer objects will be stored and loaded from the disk. On the other hand, excessively high values may make hits slower than misses. Keep in mind that the configured timeout is compared to the expected swap wait time, including queuing delays. It is ''not'' the time it takes your disk to perform a single I/O (if everything is balanced, an average single I/O will take ''1/max-swap-rate'' seconds). If you do not know where to start, start with 300 milliseconds.
+ 1. Try the configured values but ''do not be fooled'' by initial excellent performance. In many environments, you will get excellent results until the OS starts writing cached I/O requests to disk. Use ''iostat'' or a similar performance monitoring tool to observe that writes ''are'' being written to disk. Use ''iostat'' or a similar tool to measure disk load, usually reported as "utilization" percentage. Archive your measurements.
+ 1. If your measured disk utilization often exceeds 90%, lower max-swap-rate. If hits feel too slow, lower swap-timeout. If Squid warns about queue overflows lower one and/or the other. You can use extreme values such as max-swap-rate=1/sec to check that the problem can be solved using this approach. Repeat testing after every change.
+ 1. If your measured disk utilization is never above 80%, increase max-swap-rate. If you can live with slower hits, increase swap-timeout. You can remove limit(s) completely to check that they are needed at all. Repeat testing after every change.
+
+As always, it is usually a bad idea to change more than one thing at a time: Patience is a virtue. Ideally, you should build a mathematical model that explains why your disk performance is what it is, given your disk parameters, cache_dir settings, and offered load. An accurate model removes the need for blind experimentation.
+
+The above procedure works in some, but not all cases. YMMV.
+
 
 == Limitations ==
 
