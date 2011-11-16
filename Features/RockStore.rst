@@ -55,7 +55,7 @@ Rock diskers work as fast as they can. If they are slower than swap load created
 
 Similar problems are likely when your OS file system caches a lot of disk write requests in RAM and then goes into a writing frenzy, often blocking all processes doing I/O, including Squid diskers. These problems can be either avoided or minimized by carefully tuning the file system parameters to prevent excessive aggregation of write requests. Often, file system tuning alone is not sufficient and your disks continue to lag behind workers.
 
-When your disks cannot keep up with the offered load, you should add ''max-swap-rate'' and ''swap-timeout'' options to your Rock cache_dir lines. In most cases, you need both of those options or none. The first option tells Squid to pace Rock cache_dir traffic (artificially delaying I/Os as necessary to prevent traffic jams) and the second one tells Squid when it should avoid disk I/O because it would take "too long".
+When your disks cannot keep up with the offered load, you should add ''max-swap-rate'' and ''swap-timeout'' options to your Rock SquidConf:cache_dir lines. In most cases, you need both of those options or none. The first option tells Squid to pace Rock cache_dir traffic (artificially delaying I/Os as necessary to prevent traffic jams) and the second one tells Squid when it should avoid disk I/O because it would take "too long".
 
 The best values depend on your load, hardware, and hit delay tolerance so it is impossible to give a single formula for all cases, but there is an algorithm you may use as a starting point:
 
