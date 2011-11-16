@@ -24,9 +24,12 @@ Large, busy sites need a disk storage scheme that approaches hardware limits on 
 
 == Current Status ==
 
-=== SMP Squid ===
+ * '''SMP Squid''': Rock store is available since Squid version 3.2.0.13. It has received some lab and limited deployment testing. It needs more work to perform well in a variety of environments, but appears to be usable in some of them. Unless noted otherwise, this page discusses official SMP implementation of Rock Store.
 
-Rock store is available in Squid version 3.2.0.13. It has received some lab and limited deployment testing. It needs more work to perform well in a variety of environments, but appears to be usable in some of them.
+ * '''Squid v3.1''': Unofficial, third-party [[https://code.launchpad.net/~rousskov/squid/3p1-rock|branch]] based on Squid v3.1 implements some of the Rock store design ideas. Similar to COSS, it is optimized for limited-size files. The implementation is using mmap(2) and related system calls in an attempt to take advantage of OS I/O buffers. It is being used in production at a few busy Squid3 deployments, but it has not received wide testing due to its unofficial status. YMMV. The branch is being synchronized with the official releases but there may be significant delays. The branch code is not supported by Squid Project. Since Squid v3.1 has been closed for new features for a while, there are currently no plans to integrate that unofficial code into official releases.
+
+
+== Architecture ==
 
 The current design consists of the following major components:
 
@@ -41,16 +44,22 @@ If Rock diskers are not used, Squid workers can just share a memory cache.
 Future implementations may eventually remove copying between shared I/O pages and shared memory cache, but that would require changing low-level memory cache structures in Squid and will be difficult.
 
 
-=== Squid v3.1 ===
+== Limitations ==
 
-Unofficial, third-party [[https://code.launchpad.net/~rousskov/squid/3p1-rock|branch]] based on Squid v3.1 implements some of the Rock store design ideas. Similar to COSS, it is optimized for limited-size files. The implementation is using mmap(2) and related system calls in an attempt to take advantage of OS I/O buffers. It is being used in production at a few busy Squid3 deployments, but it has not received wide testing due to its unofficial status. YMMV. The branch is being synchronized with the official releases but there may be significant delays. The branch code is not supported by Squid Project.
+ * Objects larger than 32,000 bytes cannot be cached when cache_dirs are shared among workers. Rock Store itself supports arbitrary slot sizes, but disker processes use IPC I/O (rather than Blocking I/O) which relies on shared memory pages, which are currently hard-coded to be 32KB in size. You can manually raise the shared page size to 64KB or even more by modifying Ipc::Mem::PageSize(), but you will waste more RAM by doing so. To efficiently support shared caching of larger objects, we need to teach Rock Store to read and write slots in chunks smaller than the slot size.
 
-Since Squid v3.1 has been closed for new features for a while, there are currently no plans to integrate that unofficial code into official releases.
+ * Caching of huge objects is slow and wastes disk space and RAM. Since Rock Store uses fixed-size slots, larger slot sizes lead to more space waste. Since Rock Store uses slot-size I/O, larger slot sizes delay I/O completion. We need to add support for storing large objects using a chain of Rock slots and/or add shared caching support for UFS cache_dirs.
+
+ * You must use round-robin cache_dir selection. We will eventually add load-based selection support.
+
+ * There is no way to force Blocking I/O use if IPC I/O is supported and multiple workers are used. Fortunately, it is not necessary in most cases because you want to share cache_dirs among workers, which requires IPC I/O.
+
+ * It is difficult to restrict a cache_dir to a given worker. Fortunately, in most cases, it is not necessary.
 
 
-== Design choices ==
+== Appendix: Design choices ==
 
-The project has to answer several key design questions. The table below provides the questions and our current decisions.
+The project had to answer several key design questions. The table below provides the questions and our decisions. This information is preserved as a historical reference and may be outdated.
 
 ||Do we limit the cached object size like COSS does? The limit is an administrative pain and forces many sites to configure multiple disk stores. We want to use dedicated disks and do not want a "secondary" limitless store to screw with our I/Os. Yet, a small size limit simplifies the data placement scheme. It would be nice to integrate support for large files into one store without making data placement complex.||Yes, we limit the object size initially because it is simple and the current code sponsors do not have to cache large files. Later implementations may catalog and link individual storage blocks to support files of arbitrary length||
 ||Do we want to guarantee 100% store-ability and 100% retrieve-ability? We can probably optimize more if we can skip some new objects or overwrite old ones as long as the memory cache handles hot spots.||SMP implementation assumes unreliable storage (e.g., diskers may die or become blocked) but does not take advantage of it. Future optimizations may skip or reorder I/O requests||
