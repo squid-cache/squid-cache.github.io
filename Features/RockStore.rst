@@ -65,7 +65,9 @@ The best values depend on your load, hardware, and hit delay tolerance so it is 
  1. If your measured disk utilization often exceeds 90%, lower max-swap-rate. If hits feel too slow, lower swap-timeout. If Squid warns about queue overflows lower one and/or the other. You can use extreme values such as max-swap-rate=1/sec to check that the problem can be solved using this approach. Repeat testing after every change.
  1. If your measured disk utilization is never above 80%, increase max-swap-rate. If you can live with slower hits, increase swap-timeout. You can remove limit(s) completely to check that they are needed at all. Repeat testing after every change.
 
-As always, it is usually a bad idea to change more than one thing at a time: Patience is a virtue. Ideally, you should build a mathematical model that explains why your disk performance is what it is, given your disk parameters, cache_dir settings, and offered load. An accurate model removes the need for blind experimentation.
+As always, it is usually a bad idea to change more than one thing at a time: Patience is a virtue. Unfortunately, most Rock cache_dir parameters are not reconfigurable without stopping Squid, which makes one-at-a-time changes painful, especially in a live deployment environment. Consider benchmarking and tuning Squid in a realistic lab setting first.
+
+Ideally, you should build a mathematical model that explains why your disk performance is what it is, given your disk parameters, cache_dir settings, and offered load. An accurate model removes the need for blind experimentation.
 
 The above procedure works in some, but not all cases. YMMV.
 
@@ -77,6 +79,8 @@ The above procedure works in some, but not all cases. YMMV.
  * Caching of huge objects is slow and wastes disk space and RAM. Since Rock Store uses fixed-size slots, larger slot sizes lead to more space waste. Since Rock Store uses slot-size I/O, larger slot sizes delay I/O completion. We need to add support for storing large objects using a chain of Rock slots and/or add shared caching support for UFS cache_dirs.
 
  * You must use round-robin cache_dir selection. We will eventually add load-based selection support.
+
+ * Most cache_dir parameters are not reconfigurable without stopping Squid. This makes performance tuning difficult, especially if you use live users as guinea pigs.
 
  * There is no way to force Blocking I/O use if IPC I/O is supported and multiple workers are used. Fortunately, it is not necessary in most cases because you want to share cache_dirs among workers, which requires IPC I/O.
 
