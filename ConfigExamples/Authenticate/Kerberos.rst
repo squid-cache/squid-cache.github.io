@@ -153,10 +153,19 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
  * Request a URL from squid
   * Send GET or PUT or any other request via Squid
   * Squid (if setup correctly) replies with Proxy-Authenticate: Negotiate
+   . {{attachment:Squid-3.jpeg}}
 
-         {{attachment:Squid-3.jpeg}}
+ * Desktop attempts to get a Service ticket HTTP/<squid-fqdn> from KDC as user userid@DOMAIN.COM
+ {{attachment:Squid-2.jpeg}}
 
- * Desktop attempts to get a Service ticket HTTP/<squid-fqdn> from KDC as user userid@DOMAIN.COM <<BR>>
+ * Desktop replies
+
+  * With Proxy-Authenticate: Negotiate <base64 encoded Kerberos token> if previous step was successful
+
+  * With Proxy-Authenticate: Negotiate <base64 encoded NTLM token> if previous step was not successful<<BR>>
+
+
+ * l<<BR>>
 
 ----
 
