@@ -169,15 +169,15 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
  1. . If squid_kerb_ldap is used the following steps are happening
 
  1. Squid "login" to Windows Active Directory or Unix kdc as user <HTTP/<fqdn-squid>@DOMAIN.COM> {{attachment:Squid-4.jpeg}}
- 1. Squid determines ldap server from DNS by looking at SRV records
-
-<<BR>> {{attachment:Squid-7.jpeg}}
-
+ 1. Squid determines ldap server from DNS by looking at SRV records<<BR>><<BR>> {{attachment:Squid-7.jpeg}}
  1. Squid connects to ldap server<<BR>><<BR>> {{attachment:Squid-6.jpeg}}
- 1. If Kerberos authentication is supported by the ldap server Squid will request a service ticket <ldap/<ldap-server-fqdn> as user <HTTP/<squid-fqdn>@DOMAIN.COM><<BR>>
- 1. {{attachment:Squid-5.jpeg}}
- 1.
+ 1. If Kerberos authentication is supported by the ldap server Squid will request a service ticket <ldap/<ldap-server-fqdn> as user <HTTP/<squid-fqdn>@DOMAIN.COM>
+ {{attachment:Squid-5.jpeg}}
+ 1. Squid sends LDAP search requests and receives replies using Kerberos authentication to the ldap server.
+{{attachment:Squid-6.jpeg}}
 
 ----
+
+
 
 CategoryConfigExample
