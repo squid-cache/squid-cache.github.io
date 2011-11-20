@@ -148,8 +148,11 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
   * Unix PC using kinit or pam to Windows Active Directory
   * Windows PC to Unix Key Distribution Centre (KDC)
   * Unix PC to using kinit or pam to Unix Key Distribution Centre (KDC)
-  *
- * <<BR>>
+
+ {{attachment:Squid-1.jpeg}}
+
+ * Request a URL from squid
+ *
 
 ----
 
