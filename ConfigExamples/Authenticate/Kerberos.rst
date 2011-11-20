@@ -143,30 +143,36 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
  * A nice HOWTO is available at http://klaubert.wordpress.com/2008/01/09/squid-kerberos-authentication-and-ldap-authorization-in-active-directory/
 
 == Step by Step Overview ==
- 1. Login to Desktop which will create an AS Request/AS Reply exchange
-  * Windows PC to Windows Active Directory as user <userid> selecting Netbios domainname DOMAIN
-  * Unix PC using kinit or pam to Windows Active Directory as user < userid@DOMAIN.COM >
-  * Windows PC to Unix Key Distribution Centre (KDC) as <userid> selecting Netbios domainname DOMAIN
-  * Unix PC using kinit or pam to Unix Key Distribution Centre (KDC) as user < userid@DOMAIN.COM >
- {{attachment:Squid-1.jpeg}}
+ 1. User login to Desktop
+  * From Windows PC to Windows Active Directory as user <userid> selecting Netbios domainname DOMAIN
+  * From Unix PC using kinit or pam to Windows Active Directory as user <userid@DOMAIN.COM>
+  * From Windows PC to Unix Key Distribution Centre (KDC) as <userid> selecting Netbios domainname DOMAIN
+  * From Unix PC using kinit or pam to Unix Key Distribution Centre (KDC) as user <userid@DOMAIN.COM>
+  * Any of the above will create an AS Request/AS Reply exchange
+  <<BR>> {{attachment:Squid-1.jpeg}}
 
- 1. Request a URL from squid
+ 1. User requests URL from squid
   * Send GET or PUT or any other request via Squid
   * Squid (if setup correctly) replies with Proxy-Authenticate: Negotiate
    . {{attachment:Squid-3.jpeg}}
 
- 1. Desktop attempts to get a Service ticket HTTP/<squid-fqdn> from KDC as user userid@DOMAIN.COM {{attachment:Squid-2.jpeg}}
+ 1. Desktop attempts to get a Service ticket HTTP/<squid-fqdn> from KDC as user <userid@DOMAIN.COM>
+ {{attachment:Squid-2.jpeg}}
 
  1. Desktop replies
-  * With Proxy-Authenticate: Negotiate <base64 encoded Kerberos token> if previous step 3) was successful
+  * With Proxy-Authenticate: Negotiate <base64 encoded Kerberos token> if previous step 3. was successful
 
-  * With Proxy-Authenticate: Negotiate <base64 encoded NTLM token> if previous step 3) was not successful (not further discussed here. See NTLM documentation)
+  * With Proxy-Authenticate: Negotiate <base64 encoded NTLM token> if previous step 3. was not successful (not further discussed here. See NTLM documentation)
 
-  * Squid verifies Kerberos ticket with help of keytab and replies
+  * Squid verifies Kerberos ticket with help of keytab and replies after checking any additional access control settings<<BR>>The ticket contains the the user detail <userid@DOMAIN.COM> and squid can do authorisation decision based on it.<<BR>>
+   1. {{attachment:Squid-8.jpeg}}
+   1.
 
-         {{attachment:Squid-8.jpeg}}
+ 1. Step 2. and 4. continue until the Kerberos cache with the received AS and TGS replies expires after about 8 hours (This depends on your kdc settings and/or your kinit options) and step 1. and 3 need to be done again which is usually transparent on Windows but may require a new kinit on Unix.<<BR>>
 
+    If squid_kerb_ldap is used the following steps are happening
 
+ 1. Squid "login" to Windows Active Directory or Unix kdc as user <HTTP/<fqdn-squid>@DOMAIN.COM>
 
 ----
 
