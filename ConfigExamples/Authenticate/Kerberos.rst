@@ -171,7 +171,9 @@ If squid_kerb_ldap is used the following steps are happening
  1. Squid connects to ldap server
  {{attachment:Squid-6.jpeg}} <<BR>>
  1. If Kerberos authentication is supported by the ldap server Squid will request a service ticket <ldap/<ldap-server-fqdn> as user <HTTP/<squid-fqdn>@DOMAIN.COM>
- {{attachment:Squid-5.jpeg}} <<BR>>
+
+{{attachment:Squid-5.jpeg}}
+<<BR>>
  1. Squid sends LDAP search requests and receives replies using Kerberos authentication to the ldap server
 
 {{attachment:Squid-6.jpeg}}
