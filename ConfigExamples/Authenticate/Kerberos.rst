@@ -150,7 +150,13 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
   * Unix PC to using kinit or pam to Unix Key Distribution Centre (KDC)
  {{attachment:Squid-1.jpeg}}
 
- * Request a URL from squid<<BR>>
+ * Request a URL from squid
+
+  * Send GET or PUT or any other request via Squid
+  * Squid (if setup correctly) replies with Proxy-Authenticate: Negotiate
+
+{{attachment:Squid-3.jpeg}}
+
  *
 
 ----
