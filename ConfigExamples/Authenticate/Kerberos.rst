@@ -166,18 +166,18 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
 
   * Squid verifies Kerberos ticket with help of keytab and replies after checking any additional access control settings<<BR>>The ticket contains the the user detail < userid@DOMAIN.COM > and squid can do authorisation decision based on it.<<BR>> {{attachment:Squid-8.jpeg}}
  1. Step 2. and 4. continue until the Kerberos cache with the received AS and TGS replies expires after about 8 hours (This depends on your kdc settings and/or your kinit options) and step 1. and 3 need to be done again which is usually transparent on Windows but may require a new kinit on Unix.<<BR>>
- 1. . If squid_kerb_ldap is used the following steps are happening
+
+If squid_kerb_ldap is used the following steps are happening
+
 
  1. Squid "login" to Windows Active Directory or Unix kdc as user <HTTP/<fqdn-squid>@DOMAIN.COM> {{attachment:Squid-4.jpeg}}
  1. Squid determines ldap server from DNS by looking at SRV records<<BR>><<BR>> {{attachment:Squid-7.jpeg}}
  1. Squid connects to ldap server<<BR>><<BR>> {{attachment:Squid-6.jpeg}}
- 1. If Kerberos authentication is supported by the ldap server Squid will request a service ticket <ldap/<ldap-server-fqdn> as user <HTTP/<squid-fqdn>@DOMAIN.COM>
- {{attachment:Squid-5.jpeg}}
+ 1. If Kerberos authentication is supported by the ldap server Squid will request a service ticket <ldap/<ldap-server-fqdn> as user <HTTP/<squid-fqdn>@DOMAIN.COM> {{attachment:Squid-5.jpeg}}
  1. Squid sends LDAP search requests and receives replies using Kerberos authentication to the ldap server.
+
 {{attachment:Squid-6.jpeg}}
 
 ----
-
-
 
 CategoryConfigExample
