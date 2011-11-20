@@ -25,7 +25,7 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 == Pre-requisites for Active Directory integration ==
 Install msktutil package from http://fuhm.net/software/msktutil/.
 
- or
+ . or
 
 Install Samba
 
@@ -141,6 +141,15 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
 
 == Further references ==
  * A nice HOWTO is available at http://klaubert.wordpress.com/2008/01/09/squid-kerberos-authentication-and-ldap-authorization-in-active-directory/
+
+== Step by Step Overview ==
+ * Login to Desktop
+  * Windows PC to Windows Active Directory
+  * Unix PC using kinit or pam to Windows Active Directory
+  * Windows PC to Unix Key Distribution Centre (KDC)
+  * Unix PC to using kinit or pam to Unix Key Distribution Centre (KDC)
+  *
+ * <<BR>>
 
 ----
 
