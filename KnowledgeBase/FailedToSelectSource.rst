@@ -58,4 +58,4 @@ If the problem is being logged by your own Squid. You must fix it.
 ##'''Thanks'''
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
-CategoryKnowledgeBase
+CategoryKnowledgeBase CategoryErrorMessages
