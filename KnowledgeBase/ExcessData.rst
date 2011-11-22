@@ -46,4 +46,4 @@ NP: if you track it down to some other cause not mentioned above, we would like 
 ## '''Thanks'''
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
-CategoryKnowledgeBase CategoryLogMessages
+CategoryKnowledgeBase CategoryErrorMessages
