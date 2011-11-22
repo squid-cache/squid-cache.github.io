@@ -37,4 +37,4 @@ This warning is most often seen with NTLM authenticators. Due to the nature of N
 ##'''Thanks'''
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
-CategoryKnowledgeBase
+CategoryKnowledgeBase CategoryErrorMessages
