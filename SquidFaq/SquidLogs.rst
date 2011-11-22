@@ -7,54 +7,38 @@ The logs are a valuable source of information about Squid workloads and performa
 
 There are a few basic points common to all log files. The time stamps logged into the log files are usually UTC seconds unless stated otherwise. The initial time stamp usually contains a millisecond extension.
 
-=== squid.out ===
-If you run your Squid from the ''!RunCache'' script, a file ''squid.out'' contains the Squid startup times, and also all fatal errors, e.g. as produced by an ''assert()'' failure. If you are not using ''!RunCache'', you will not see such a file.
-
- /!\ RunCache has been obsoleted since [[Squid-2.6]]. Modern Squid run as daemons usually log this output to the system syslog facility or if run manually to stdout for the account which operates the master daemon process.
-
 === cache.log ===
 The ''cache.log'' file contains the debug and error messages that Squid generates. If you start your Squid using the ''-s'' command line option, a copy of certain messages will go into your syslog facilities. It is a matter of personal preferences to use a separate file for the squid log data.
 
 From the area of automatic log file analysis, the ''cache.log'' file does not have much to offer. You will usually look into this file for automated error reports, when programming Squid, testing new features, or searching for reasons of a perceived misbehavior, etc.
 
-=== useragent.log ===
-The user agent log file is only maintained, if
+==== Squid Error Messages ====
 
- * you configured the compile time ''--enable-useragent-log'' option, and
- * you pointed the ''useragent_log'' configuration option to a file.
-From the user agent log file you are able to find out about distribution of browsers of your clients. Using this option in conjunction with a loaded production squid might not be the best of all ideas.
+Error messages come in several forms. Debug traces are not logged at level 0 or level 1. These levels are reserved for important and critical administrative messages.
 
-=== store.log ===
-The ''store.log'' file covers the objects currently kept on disk or removed ones. As a kind of transaction log it is usually used for debugging purposes. A definitive statement, whether an object resides on your disks is only possible after analyzing the ''complete'' log file. The release (deletion) of an object may be logged at a later time than the swap out (save to disk).
+ * '''FATAL''' messages indicate a problem which has killed the Squid process. Affecting all current client traffic being supplied by that Squid instance.
+  * Obviously if these occur when starting or configuring a Squid component it '''must''' be resolved before you can run Squid.
 
-The ''store.log'' file may be of interest to log file analysis which looks into the objects on your disks and the time they spend there, or how many times a hot object was accessed. The latter may be covered by another log file, too. With knowledge of the ''cache_dir'' configuration option, this log file allows for a URL to filename mapping without recursing your cache disks. However, the Squid developers recommend to treat ''store.log'' primarily as a debug file, and so should you, unless you know what you are doing.
+ * '''ERROR''' messages indicate a serious problem which has broken an individual client transaction and may have some effect on other clients indirectly. But has not completely aborted all traffic service.
+  * These can also occur when starting or configuring Squid components. In which case any service actions which that component would have supplied will not happen until it is resolved and Squid reconfigured.
+  * NOTE: Some log level 0 error messages inherited from older Squid versions exist without any prioritization tag.
 
-The print format for a store log entry (one line) consists of thirteen space-separated columns, compare with the ''storeLog()'' function in file ''src/store_log.c'':
+ * '''WARNING''' messages indicate problems which might be causing problems to the client, but Squid is capable of working around automatically. These usually only display at log level 1 and higher.
+  * NOTE: Some log level 1 warning messages inherited from older Squid versions exist without any prioritization tag.
 
-{{{
-9ld.%03d %-7s %02d %08X %s %4d %9ld %9ld %9ld %s %ld/%ld %s %s
-}}}
- 1. '''time''' The timestamp when the line was logged in UTC with a millisecond fraction.
- 1. '''action''' The action the object was sumitted to, compare with ''src/store_log.c'':
-   * '''CREATE''' Seems to be unused.
-   * '''RELEASE''' The object was removed from the cache (see also '''file number''' below).
-   * '''SWAPOUT''' The object was saved to disk.
-   * '''SWAPIN''' The object existed on disk and was read into memory.
- 1. '''dir number''' The cache_dir number this object was stored into, starting at 0 for your first cache_dir line.
- 1. '''file number''' The file number for the object storage file. Please note that the path to this file is calculated according to your ''cache_dir'' configuration. A file number of ''FFFFFFFF'' indicates "memory only" objects. Any action code for such a file number refers to an object which existed only in memory, not on disk.  For instance, if a ''RELEASE'' code was logged with file number ''FFFFFFFF'', the object existed only in memory, and was released from memory.
- 1. '''hash''' The hash value used to index the object in the cache. Squid currently uses MD5 for the hash value.
- 1. '''status''' The HTTP reply status code.
- 1. '''datehdr''' The value of the HTTP ''Date'' reply header.
- 1. '''lastmod''' The value of the HTTP ''Last-Modified'' reply header.
- 1. '''expires''' The value of the HTTP "Expires: " reply header.
- 1. '''type''' The HTTP ''Content-Type'' major value, or "unknown" if it cannot be determined.
- 1. '''sizes''' This column consists of two slash separated fields:
-   * The advertised content length from the HTTP ''Content-Length'' reply header.
-   * The size actually read.
-     If the advertised (or expected) length is missing, it will be set to zero. If the advertised length is not zero, but not equal to the real length, the object will be realeased from the cache.
- 1. '''method''' The request method for the object, e.g. ''GET''.
- 1. '''key''' The key to the object, usually the URL.
-    The '''datehdr''', '''lastmod''', and '''expires''' values are all expressed in UTC seconds. The actual values are parsed from the HTTP reply headers. An unparsable header is represented by a value of -1, and a missing header is represented by a value of -2.
+ * '''SECURITY ERROR''' messages indicate problems processing a client request with the security controls which Squid has been configured with. Some impossible condition is required to pass the security test.
+  * This is commonly seen when testing whether to accept a client '''request''' based on some '''reply''' detail which will only be available in the future.
+
+ * '''SECURITY ALERT''' messages indicate security attack problems being detected. This is only for problems which are unambiguous. 'Attacks' signatures which can appear in normal traffic are logged as regular WARNING.
+  * A complete solution to these usually requires fixing the client, which may not be possible.
+  * Administrative workarounds (extra firewall rules etc) can assist Squid in reducing the damage to network performance.
+  * Attack notices may seem rather critical, but occur at level 1 since in all cases Squid also has some workaround it can perform.
+
+ * '''SECURITY NOTICE''' messages can appear during startup and reconfigure to indicate security related problems with the configuration file setting. These are accompanied by hints for better configuration where possible, and an indication of what Squid is going to do instead of the configured action.
+
+
+Some of the more frequently questioned messages and what they mean are outlined in the KnowledgeBase:
+ <<FullSearch(ErrorMessages -title:CategoryErrorMessages -title:FrontPage)>>
 
 === access.log ===
 Most log file analysis program are based on the entries in ''access.log''.
@@ -285,6 +269,38 @@ FIREWALL_IP_DIRECT    No special logging for hosts inside the firewall.
 LOCAL_IP_DIRECT       No special logging for local networks.
 }}}
 
+=== store.log ===
+This file covers the objects currently kept on disk or removed ones. As a kind of transaction log (or journal) it is usually used for debugging purposes. A definitive statement, whether an object resides on your disks is only possible after analyzing the ''complete'' log file. The release (deletion) of an object may be logged at a later time than the swap out (save to disk).
+
+The ''store.log'' file may be of interest to log file analysis which looks into the objects on your disks and the time they spend there, or how many times a hot object was accessed. The latter may be covered by another log file, too. With knowledge of the ''cache_dir'' configuration option, this log file allows for a URL to filename mapping without recursing your cache disks. However, the Squid developers recommend to treat ''store.log'' primarily as a debug file, and so should you, unless you know what you are doing.
+
+The print format for a store log entry (one line) consists of thirteen space-separated columns, compare with the ''storeLog()'' function in file ''src/store_log.c'':
+
+{{{
+9ld.%03d %-7s %02d %08X %s %4d %9ld %9ld %9ld %s %ld/%ld %s %s
+}}}
+ 1. '''time''' The timestamp when the line was logged in UTC with a millisecond fraction.
+ 1. '''action''' The action the object was sumitted to, compare with ''src/store_log.c'':
+   * '''CREATE''' Seems to be unused.
+   * '''RELEASE''' The object was removed from the cache (see also '''file number''' below).
+   * '''SWAPOUT''' The object was saved to disk.
+   * '''SWAPIN''' The object existed on disk and was read into memory.
+ 1. '''dir number''' The cache_dir number this object was stored into, starting at 0 for your first cache_dir line.
+ 1. '''file number''' The file number for the object storage file. Please note that the path to this file is calculated according to your ''cache_dir'' configuration. A file number of ''FFFFFFFF'' indicates "memory only" objects. Any action code for such a file number refers to an object which existed only in memory, not on disk.  For instance, if a ''RELEASE'' code was logged with file number ''FFFFFFFF'', the object existed only in memory, and was released from memory.
+ 1. '''hash''' The hash value used to index the object in the cache. Squid currently uses MD5 for the hash value.
+ 1. '''status''' The HTTP reply status code.
+ 1. '''datehdr''' The value of the HTTP ''Date'' reply header.
+ 1. '''lastmod''' The value of the HTTP ''Last-Modified'' reply header.
+ 1. '''expires''' The value of the HTTP "Expires: " reply header.
+ 1. '''type''' The HTTP ''Content-Type'' major value, or "unknown" if it cannot be determined.
+ 1. '''sizes''' This column consists of two slash separated fields:
+   * The advertised content length from the HTTP ''Content-Length'' reply header.
+   * The size actually read.
+     If the advertised (or expected) length is missing, it will be set to zero. If the advertised length is not zero, but not equal to the real length, the object will be released from the cache.
+ 1. '''method''' The request method for the object, e.g. ''GET''.
+ 1. '''key''' The key to the object, usually the URL.
+    The '''datehdr''', '''lastmod''', and '''expires''' values are all expressed in UTC seconds. The actual values are parsed from the HTTP reply headers. An unparsable header is represented by a value of -1, and a missing header is represented by a value of -2.
+
 === swap.state ===
 
 This file has a rather unfortunate history which has led to it often being called the ''swap log''.  It is in fact a '''journal of the cache index''' with a record of every cache object written to disk. It is read when Squid starts up to "reload" the cache quickly.
@@ -305,6 +321,22 @@ This will disrupt service, but at least you will have your swap log back. Altern
 By default the ''swap.state'' file is stored in the top-level of each ''cache_dir''.  You can move the logs to a different location with the ''cache_swap_state'' option.
 
 The file is a binary format that includes MD5 checksums, and ''!StoreEntry'' fields. Please see the Programmers' Guide for information on the contents and format of that file.
+
+=== squid.out ===
+If you run your Squid from the ''!RunCache'' script, a file ''squid.out'' contains the Squid startup times, and also all fatal errors, e.g. as produced by an ''assert()'' failure. If you are not using ''!RunCache'', you will not see such a file.
+
+ /!\ RunCache has been obsoleted since [[Squid-2.6]]. Modern Squid run as daemons usually log this output to the system syslog facility or if run manually to stdout for the account which operates the master daemon process.
+
+=== useragent.log ===
+
+  /!\ Starting from [[Squid-3.2]] this log has become one of the default [[#access.log|access.log]] formats and is always available for use. It is no longer a special separate log file.
+
+The user agent log file is only maintained, if
+
+ * you configured the compile time ''--enable-useragent-log'' option, and
+ * you pointed the ''useragent_log'' configuration option to a file.
+From the user agent log file you are able to find out about distribution of browsers of your clients. Using this option in conjunction with a loaded production squid might not be the best of all ideas.
+
 
 == Which log files can I delete safely? ==
 You should never delete ''access.log'', ''store.log'', or ''cache.log'' while Squid is running. With Unix, you can delete a file when a process has the file opened.  However, the filesystem space is not reclaimed until the process closes the file.
