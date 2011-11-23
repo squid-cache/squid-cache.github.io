@@ -87,4 +87,4 @@ rd/c0d8 2.99 11.97 27.93 48 112
 ##'''Thanks'''
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
-CategoryKnowledgeBase CategoryLogMessages
+CategoryKnowledgeBase CategoryErrorMessages
