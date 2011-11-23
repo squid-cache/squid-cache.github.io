@@ -10,7 +10,7 @@ If your Squid version is older than 2.6 it is very outdated. Many of the issues 
 
 Your first point of troubleshooting should be to test with a newer ''supported'' release and resolve any remaining issues with that install.
 
-Current releases can be retrieved from http://www.squid-cache.org/Versions or your operating system distributor. Hos to do this is outlined in the system-specific help pages.
+Current releases can be retrieved from http://www.squid-cache.org/Versions or your operating system distributor. How to do this is outlined in the system-specific help pages.
 
 Additional problems and resolutions for your specific system may be found in the system-specific help troubleshooting:
 <<FullSearch(title:KnowledgeBase/ regex:"SquidFaq/BinaryPackages" regex:"Troubleshooting")>>
@@ -682,24 +682,24 @@ Here are some things you can try to reduce the occurance of the Zero Sized Reply
  * Disable any advanced TCP features on the Squid system.  Disable ECN on Linux with ''echo 0 > /proc/sys/net/ipv4/tcp_ecn/''.
  * (!) Upgrade to Squid-2.6 or later to work around a Host header related bug in Cisco PIX HTTP inspection. The Cisco PIX firewall wrongly assumes the Host header can be found in the first packet of the request.
 
-If this error causes serious problems for you and the above does not help, Squid developers would be happy to help you uncover the problem.  However, we will require high-quality debugging information from you, such as ''tcpdump'' '' output, server IP addresses, operating system versions, and ''access.log'' entries with full HTTP headers.
+If this error causes serious problems for you and the above does not help, Squid developers would be happy to help you uncover the problem.  However, we will require high-quality debugging information from you, such as ''tcpdump'' output, server IP addresses, operating system versions, and ''access.log'' entries with full HTTP headers.
 
 If you want to make Squid give the Zero Sized error on demand, you can use [[attachment:zerosized_reply.c|a short C program]].  Simply compile and start the program on a system that doesn't already have a server running on port 80.  Then try to connect to this fake server through Squid.
 
 == Why do I get "The request or reply is too large" errors? ==
 by Grzegorz Janoszka
 
-This error message appears when you try downloading large file using GET or uploading it using POST/PUT. There are three parameters to look for:
+This error message appears when you try downloading large file using GET or uploading it using POST/PUT. There are several parameters to look for:
 
- * request_body_max_size
- * reply_body_max_size
+ * SquidConf:request_body_max_size
+ * SquidConf:reply_body_max_size
 
 These two are set to 0 by default, which means no limits at all. They should not be limited unless you really know how that affects your squid behavior. Or at all in standard proxy.
 
- * request_header_max_size
- * request_header_max_size
+ * SquidConf:request_header_max_size
+ * SquidConf:reply_header_max_size
 
-These two default to 64kB starting from 3.1. Earlier versions of Squid had defaults as low as 2 kB.
+These two default to 64kB starting from [[Squid-3.1]]. Earlier versions of Squid had defaults as low as 2 kB.
 In some rather rare circumstances even 64kB is too low, so you can increase this value.
 
 
