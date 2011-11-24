@@ -7,26 +7,36 @@ The Squid project supports a big number of OSes (SquidFaq/AboutSquid has the sho
 
 FrancescoChemolli is leading this effort.
 
-The currently-planned farm consists of:
-|| OS || Ver || system-name || Status ||
-|| [[http://www.centos.org/|CentOS-x64]] || 5.3 || eu.squid-cache.org || {OK} ||
-|| [[http://www.centos.org/|CentOS-x32]] || || || ||
-|| [[http://www.ubuntu.com/|Ubuntu-x64]] || natty || || {OK} ||
-|| [[http://www.debian.org/|Debian-ARM]] || lenny || varm-deb.squid-cache.org || Being tested (QEMU-based) ||
-|| [[http://www.debian.org/|Debian-x32]] || sid || rio.treenetnz.com || {OK} Sponsored. ||
-|| [[http://www.openbsd.org/|OpenBSD]] || || vobsd.squid-cache.org || {OK} ||
-|| [[http://www.openbsd.org/|OpenBSD]] || 4.8 || obsd-48-x86 || {OK} [[/OpenBsdInstall|Installation guide]] ||
-|| [[http://www.freebsd.org/|FreeBSD-x32]] || 6.4 || squid-cache.org || {OK} ||
-|| [[http://www.freebsd.org/|FreeBSD-x64]] || 7.2 || diablo.squid-cache.org || {OK} ||
-|| [[http://www.microsoft.com/windows/default.aspx|MS Windows]] MinGW || || || Sponsored. ||
-|| [[http://www.microsoft.com/windows/default.aspx|MS Windows]] Visual || || || Sponsored. Need setting up. ||
+The currently maintained farm consists of:
+|| OS || Arch || Ver || system-name || Status ||
+||<|3> [[http://www.centos.org/|CentOS]] ||
+|| x64 || 5.3 || eu.squid-cache.org || {OK} ||
+|| x32 || || || ||
+||<|2> [[http://www.ubuntu.com/|Ubuntu]] ||
+|| x64 || 11.04 (natty) || natty.squid-cache.org || {OK} ||
+||<|4> [[http://www.debian.org/|Debian]] ||
+##|| ARM || 5.0 (lenny) || varm-deb.squid-cache.org || Being tested (QEMU-based) ||
+|| ARM || 6.0 (squeeze) || sheeva-debian-squeeze || {OK} Sponsored. ||
+|| x32 || sid || rio.treenet || {OK} Sponsored. ||
+|| x64 || sid || debian-unstable-x64 || {OK} ||
+||<|3> [[http://www.openbsd.org/|OpenBSD]] ||
+##|| || vobsd.squid-cache.org || {OK} ||
+|| x32 || 4.9 || obsd-49-x86 || {OK} [[/OpenBsdInstall|Installation guide]] ||
+|| x64 || 4.8 || obsd-48-x64 || {OK} [[/OpenBsdInstall|Installation guide]] ||
+||<|3> [[http://www.freebsd.org/|FreeBSD]] ||
+|| x32 || 6.4 || west.squid-cache.org || {OK} ||
+|| x64 || 7.2 || diablo.squid-cache.org || {OK} ||
+||<|4> [[http://www.microsoft.com/windows/default.aspx|MS Windows]] ||
+|| MinGW x32 || 5.2 (2003 Server) || mswin || Sponsored. ||
+|| MinGW x64 || 6.1 (7 Server) || mswin7 || Sponsored. ||
+|| Visual || || || Sponsored. Need setting up. ||
 
 '''Volunteer Help Sought:'''
 || [[http://opensolaris.org/|OpenSolaris-x64]] || Volunteers sought since Oracle dismissed the Opensolaris public build farm ||
 || [[http://opensolaris.org/|OpenSolaris-sparc]] || Volunteers sought since Oracle dismissed the Opensolaris public build farm ||
 || [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || Volunteers sought ||
 || [[http://www.microsoft.com/windows/default.aspx|MS Windows]] Cygwin || Needed ||
-|| AIX || || || Volunteers sought, PPC hardware sought ||
+|| AIX || Volunteers sought, PPC hardware sought ||
 
 Donations of disk space and CPU time on non-x86 systems are welcome and encouraged.
 
