@@ -5,9 +5,9 @@
 == The Bleeding Edge ==
 
 ## '''Squid-3:'''
-The Squid project has moved to Bazaar as its configuration management tool. See [[BzrInstructions]]) for details about using these tools and the web viewers available.
+The Squid project has moved to Bazaar as its configuration management tool. See [[BzrInstructions]] for details about using these tools and the web viewers available.
 
-|| {i} || In order to use the repository sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in [[ProgrammingGuide/Bootstrap]].||
+##|| {i} || In order to use the repository sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in [[ProgrammingGuide/Bootstrap]].||
 
 ## '''Squid-2:'''
 ## || /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb]].||
@@ -15,7 +15,7 @@ The Squid project has moved to Bazaar as its configuration management tool. See 
 == Developer Projects ==
 
  '''Squid-3:'''
-https://code.launchpad.net/squid provide space for Squid developers to publish and associate their code with the squid project.
+https://code.launchpad.net/squid provide space for Squid developers to publish and associate their code with the Squid project.
 
 ## '''Squid-2:''' (obsolete)
 ##To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
@@ -29,9 +29,9 @@ If you wish to become a developer the first step is to sign up to the squid-dev 
 
 If you wish to contribute to Squid there are certain guidelines and processes you need to follow in your coding style working with the team. MergeProcedure outlines the process of patch development from planning to code release.
 
-Particular details of coding style are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The [[http://squid.treenet.co.nz/Doc/Code/|Programming Guide]] offers some (but certainly not enough) information on the Squid-3 internals. SquidInternals offers some more-or-less (mostly less) organized snippets.
+Particular details of coding style are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The [[http://www.squid-cache.org/Doc/code/|Programming Guide]] offers some (but certainly not enough) information on the Squid-3 internals. SquidInternals offers some more-or-less (mostly less) organized snippets.
 
-If you are looking for a new project to work on check the feature wish list at [[RoadMap/Squid3]] or query the bugzilla database for [[http://bugs.squid-cache.org/buglist.cgi?component=feature&cmdtype=doit|enhancement requests]].
+If you are looking for a new project to work on check the feature wish list at [[RoadMap/Squid3]] or query the bugzilla database for [[http://bugs.squid-cache.org/buglist.cgi?component=feature&cmdtype=doit|enhancement requests]] or otehr bugs mentioning your feature of interest.
 
 Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still. There are also optional behaviours in the spec not in the checklist which should be added.
 
@@ -53,6 +53,11 @@ For Squid-3 we operate the development trunk and web code browsers on [[http://b
 
 Depending on what features you wish to develop there may be other library and tool requirements.
 
+When working from the repository code the '''bootstrap.sh''' script is required initially to run a number of autotools to prepare ./configure and related magic. This needs repeating after any changes to the Makefile.am or configure.ac scripts, including changes received from the repository updates.
+
+|| {i} || bootstrap.sh sometimes fails. Several known problems and solutions are described in [[ProgrammingGuide/Bootstrap]].||
+
+
 == Contributing (Testing) ==
 
 
@@ -69,18 +74,39 @@ To test a specific project branch you will need to pull the branch code directly
 
 see [[BzrInstructions]]
 
+ /!\ When working from this repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools|above]] for the required tools and usage.
+
+
 === Getting the sources via CVS ===
 
 see [[CvsInstructions]]
 
  {i} NP: This is primarily for Squid-2 sources. Squid-3 uses Bazaar. Though sourceforge mirror does retain a CVS mirror of Squid-3 for read-only access.
 
+
+ /!\ Be aware this mirror has a fairly long delay for change updates and also does not use the revision numbers from Bazaar which the developers can often mention by number.
+
+
+ /!\ When working from the Squid-3 repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools|above]] for the required tools and usage.
+
 === Getting the sources via tarball ===
 
-As a more lightweight alternative you can use rsync; the latest sources are available at address http://squid-cache.org/Versions/v3/3.HEAD/
+The latest sources are available at address http://squid-cache.org/Versions/v3/3.HEAD/ with a series of previous daily snapshots of the code for testing regressions and other special circumstances.
+
+ {i} The daily tarballs displayed are listed by date created and the Bazaar revision number included in that tarball. Gaps are expected in the list when there were no new revisions comitted that day, or when the revision failed to compile on our tarball creation machine.
+
+ /!\ Daily tarballs contain the fully bootstrapped tool chain ready to build. But be aware that some changes may appear with incomplete or missing documentation.
+
+As a more lightweight alternative you can use rsync to fetch the latest tarball content.
+
 
 === Getting the sources via rsync ===
 As a more lightweight alternative to the tarballs you can use rsync; the latest sources are available at address {{{rsync://squid-cache.org/source/<version>}}}
+
+The rsync source mirrors the latest published sources tarball.
+
+/!\ The rsync sources contain the fully bootstrapped tool chain ready to build. But be aware that some changes may appear with incomplete or missing documentation.
+
 To use this feature you may use
 {{{
 $ rsync rsync://squid-cache.org/source
