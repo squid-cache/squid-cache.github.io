@@ -6,7 +6,7 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## <<TableOfContents>>
 
-The '''bootstrap.sh''' script runs a number of autotools to prepare ./configure and related magic.
+The '''bootstrap.sh''' script runs a number of autotools to prepare ./configure and related magic. See [[DeveloperResources]] for the tools required by this script.
 
 It doesn't always work.  Here are some errors and solutions:
 
