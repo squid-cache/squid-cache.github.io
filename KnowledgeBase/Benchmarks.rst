@@ -277,7 +277,7 @@ http://www.mnot.net/blog/2006/08/21/caching_performance
 The Measurement Factory benchmarked Squid 2.4, in particular IO systems in 2000
 http://polygraph.ircache.net/Results/bakeoff-2/
 
-Bryan Migliorisi posted some analysis of [[Squid-2.6]] speeds under pressure on September 8th, 2009 at http://deserialized.com/reverse-proxy-performance-varnish-vs-squid-part-2/
+Bryan Migliorisi posted some analysis of [[Squid-2.6]] speeds under pressure on September 8th, 2009 at unfortunately a dynamic website that disappeared on us.
 
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
