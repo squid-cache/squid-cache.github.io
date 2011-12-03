@@ -160,26 +160,26 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
   * With Proxy-Authenticate: Negotiate <base64 encoded Kerberos token> if previous step 3. was successful
 
   * With Proxy-Authenticate: Negotiate <base64 encoded NTLM token> if previous step 3. was not successful (not further discussed here. See NTLM documentation)
+
 {{attachment:Squid-9.jpeg}}
 
  1. Squid verifies Kerberos ticket with help of keytab and replies after checking any additional access control settings<<BR>>The ticket contains the the user detail < userid@DOMAIN.COM > and squid can do authorisation decision based on it.<<BR>>
+
 {{attachment:Squid-10.jpeg}}
+
  1. Step 2., 4. and 5. continue until the Kerberos cache with the received AS and TGS replies expires after about 8 hours (This depends on your kdc settings and/or your kinit options) and step 1. and 3 need to be done again which is usually transparent on Windows but may require a new kinit on Unix.<<BR>>
 
 If squid_kerb_ldap is used the following steps are happening
 
- 1. Squid "login" to Windows Active Directory or Unix kdc as user <HTTP/<fqdn-squid>@DOMAIN.COM> {{attachment:Squid-4.jpeg}}
+ 1. Squid "login" to Windows Active Directory or Unix kdc as user <HTTP/<fqdn-squid>@DOMAIN.COM>. This requires Active Directory to have an attribute userPrincipalname set to <HTTP/<fqdn-squid>@DOMAIN.COM> for the associated acount. This is usaully done by using m
+ <<BR>> {{attachment:Squid-4.jpeg}}
  1. Squid determines ldap server from DNS by looking at SRV records<<BR>><<BR>> {{attachment:Squid-7.jpeg}} <<BR>>
  1. Squid connects to ldap server
  {{attachment:Squid-6.jpeg}} <<BR>>
  1. If Kerberos authentication is supported by the ldap server Squid will request a service ticket <ldap/<ldap-server-fqdn> as user <HTTP/<squid-fqdn>@DOMAIN.COM>
-
-{{attachment:Squid-5.jpeg}}
-
- 1. Squid sends LDAP search requests and receives replies using Kerberos authentication to the ldap server
- {{attachment:Squid-6.jpeg}}
- 1.
+ <<BR>><<BR>> {{attachment:Squid-5.jpeg}} <<BR>>
+ 1.  Squid sends LDAP search requests and receives replies using Kerberos authentication to the ldap server
+ <<BR>> {{attachment:Squid-6.jpeg}} <<BR>>
 
 ----
-
 CategoryConfigExample
