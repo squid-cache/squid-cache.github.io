@@ -1,6 +1,7 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
+#faqlisted yes
 
 = Dynamic SSL Certificate Generation =
 
