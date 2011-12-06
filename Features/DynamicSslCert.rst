@@ -150,29 +150,23 @@ More information about the configuration options above can be found in {{{/usr/l
 
 Prepare directory for caching certificates:
 
-
-
  {{{
 /usr/local/squid/libexec/ssl_crtd -c -s /usr/local/squid/var/lib/ssl_db
  }}}
-
 
 
 The above command initializes the SSL database for storing cached certificates. More information about the ssl_ctrld program can be found in {{{/usr/local/squid/libexec/ssl_crtd -h}}} output.
 
 If you run a multi-Squid environment with several certificates caching locations, you may also need to use the '-n' option when initializing ssl_db. The option sets the initial database serial number, which is incremented and used in each new certificate. To avoid serial number overlapping among instances, the initial serial may need to be set manually.
 
-After the SSL DB is initialized, make the directory writable for the squid user such as 'nobody':
+  /!\ NOTE: whenever you change the signing CA be sure to erase and re-initialize the certificate database. It contains signed certificates and clients may experience connectivity problems when the signing CA no longer matches your configured CA.
 
+
+After the SSL DB is initialized, make the directory writable for the squid user such as 'nobody':
 
  {{{
 chown -R nobody /usr/local/squid/var/lib/ssl_db
  }}}
-
-
-
-
-
 
 Now you can start Squid, modify users' browsers settings to use the proxy (if needed), and make sure that the signing certificate is correctly imported into the browsers. If everything was done correctly, Squid should process HTTPS sites without any warnings.
 
