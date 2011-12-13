@@ -30,15 +30,18 @@ To avoid this vulnerability Squid has resolved the domain name the client was su
   * and the reason for the alert. In this case it is '''"local IP does not match any domain IP"'''. With SquidConf:host_verify_strict enabled there are other checks that can alert.
  * The second and third lines are self explanatory.
 
+
 '''Fix'''
 
- * use [[SquidFaq/ConfiguringBrowsers#Fully_Automatic_Configuration|WPAD/PAC]] to transparently configure the client browsers instead of intercepting.
+ * use [[SquidFaq/ConfiguringBrowsers#Fully_Automatic_Configuration|WPAD/PAC]] to automatically configure the client agents instead of intercepting traffic.
 
   . OR
 
  * configure the browsers manually
 
  When the browser is aware of the proxy it sends a differently formatted HTTP request which avoids both the security vulnerability and checks which are displaying the alert.
+
+You may also determine from the details mentioned in the alert that the client has being hijacked or infected. In this case the proper fix may involve other actions to remove the infection which we will not cover here.
 
 
 '''Workaround'''
