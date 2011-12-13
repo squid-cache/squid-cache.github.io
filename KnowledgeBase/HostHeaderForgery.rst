@@ -20,26 +20,33 @@ SECURITY ALERT: on URL: ...
 
 This is an alert generated as part of a new security feature added in [[Squid-3.2]] to protect the network against hijacking by malicious web scripts.
 
-As outlined in advisory [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|SQUID-2011:1]] these scripts are able to bypass browser security measures ando spread infections through the network. They do so by forging the ''Host:'' headers on HTTP traffic going through an interception proxy.
+As outlined in advisory [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|SQUID-2011:1]] these scripts are able to bypass browser security measures and spread infections through the network. They do so by forging the ''Host:'' headers on HTTP traffic going through an interception proxy.
 
 To avoid this vulnerability Squid has resolved the domain name the client was supposedly contacting and determined that the IP the HTTP request was going to does not belong to that domain name.
 
  * The first line of the three cites:
   * the '''local=''' (packet destination IP) address of the domain the client was connecting to,
   * the '''remote=''' (packet source IP) address of the client making the connection,
-  * and the reason for the alert. In this case it is '''"local IP does not match any domain IP"'''. With SquidConf:host_verify_strict enabled there are other checks that can alert.
+  * and the reason for the alert.
+   . In this case it is '''"local IP does not match any domain IP"'''.
+   . With SquidConf:host_verify_strict enabled there are other checks that can alert.
  * The second and third lines are self explanatory.
 
 
 '''Fix'''
 
- * use [[SquidFaq/ConfiguringBrowsers#Fully_Automatic_Configuration|WPAD/PAC]] to automatically configure the client agents instead of intercepting traffic.
+ * use the [[SquidFaq/ConfiguringBrowsers#Fully_Automatic_Configuration|WPAD/PAC]] protocol to '''automatically configure''' the browser agents instead of intercepting traffic.
+
+  . OR
+
+ * use an Active Directory(R) GPO to '''automatically configure''' the browser agents instead of intercepting traffic.
 
   . OR
 
  * configure the browsers manually
 
- When the browser is aware of the proxy it sends a differently formatted HTTP request which avoids both the security vulnerability and checks which are displaying the alert.
+
+ . {i} all of these methods make the client browser agent aware of the proxy. This causes the browser to send a differently formatted HTTP request which avoids both the security vulnerability and checks which are displaying the alert.
 
 You may also determine from the details mentioned in the alert that the client has being hijacked or infected. In this case the proper fix may involve other actions to remove the infection which we will not cover here.
 
