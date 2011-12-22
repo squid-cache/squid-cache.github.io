@@ -94,7 +94,7 @@ The Chrome browser is able to connect to proxies over SSL connections if configu
 
 More details at http://dev.chromium.org/developers/design-documents/secure-web-proxy
 
-== Firefox
+== Firefox ==
 
 There are bugs open for many years against this browser. If you have any interest, please assist browser teams with getting this to happen.
 
