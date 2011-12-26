@@ -23,6 +23,8 @@ Don't forget to add the redirect program to your squid configuration.
 url_rewrite_program /etc/squid/redirect.php
 }}}
 
+Note: PHP 5.3 introduced a problem where the script would terminate after a period of 60 seconds. The directive 'default_socket_timeout' setting in php.ini is directly responsible. (Setting 'default_socket_timeout' to 0 does NOT make the time out indefinite. Using the php directive ini_set() with-in the script does not appear to alter this configuration value.)
+
 === Related config options ===
  * SquidConf:url_rewrite_program
  * SquidConf:url_rewrite_access
