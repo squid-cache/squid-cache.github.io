@@ -23,7 +23,7 @@ Don't forget to add the redirect program to your squid configuration.
 url_rewrite_program /etc/squid/redirect.php
 }}}
 
-Note: PHP 5.3 introduced a problem where the script would terminate after a period of 60 seconds. The directive 'default_socket_timeout' setting in php.ini is directly responsible. (Setting 'default_socket_timeout' to 0 does NOT make the time out indefinite. Using the php directive ini_set() with-in the script does not appear to alter this configuration value.)
+Note: PHP directive 'stream_set_timeout' is set to 24 hours here, otherwise the script would terminate every 60 seconds (php.ini default) which could cause your proxy service to be inaccessible frequently as squid re-starts the processes.
 
 === Related config options ===
  * SquidConf:url_rewrite_program
@@ -40,6 +40,9 @@ Note: PHP 5.3 introduced a problem where the script would terminate after a peri
 <?php
 
 $temp = array();
+
+// Extend stream timeout to 24 hours
+stream_set_timeout(STDIN, 86400);
 
 while ( $input = fgets(STDIN) ) {
   // Split the output (space delimited) from squid into an array.
@@ -66,6 +69,9 @@ I am fully aware that this is much more code than the perl example. Where this c
 <?php
 
 $temp = array();
+
+// Extend stream timeout to 24 hours
+stream_set_timeout(STDIN, 86400);
 
 while ( $input = fgets(STDIN) ) {
   // Split the output (space delimited) from squid into an array.
@@ -98,6 +104,9 @@ This redirect takes the requesting IP Address into consideration. It does not ta
 
 $temp = array();
 
+// Extend stream timeout to 24 hours
+stream_set_timeout(STDIN, 86400);
+
 while ( $input = fgets(STDIN) ) {
   // Split the output (space delimited) from squid into an array.
   $temp = split(' ', $input);
@@ -129,6 +138,9 @@ This will perform the redirect but only during a work week and during work hours
 <?php
 
 $temp = array();
+
+// Extend stream timeout to 24 hours
+stream_set_timeout(STDIN, 86400);
 
 while ( $input = fgets(STDIN) ) {
   // Split the output (space delimited) from squid into an array.
