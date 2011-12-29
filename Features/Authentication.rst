@@ -7,7 +7,7 @@
 
 == Details ==
 
-There are four major flavours of authentication available in the HTTP world at this moment (October 2005):
+There are four major flavours of authentication available in the HTTP world at this moment:
  * [[WikiPedia:BasicAuthenticationScheme|Basic]] - been around since the very beginning
  * WikiPedia:NTLM - Microsoft's first attempt at single-sign-on for LAN environments
  * [[WikiPedia:DigestAccessAuthentication|Digest]] - w3c's attempt at having a secure authentication system
