@@ -5,21 +5,34 @@
 = Proxy Authentication =
 <<TableOfContents>>
 
+== Details ==
+
+There are four major flavours of authentication available in the HTTP world at this moment (October 2005):
+ * [[WikiPedia:BasicAuthenticationScheme|Basic]] - been around since the very beginning
+ * WikiPedia:NTLM - Microsoft's first attempt at single-sign-on for LAN environments
+ * [[WikiPedia:DigestAccessAuthentication|Digest]] - w3c's attempt at having a secure authentication system
+ * [[WikiPedia:SPNEGO|Negotiate (aka SPNEGO)]] - Microsoft's second attempt at single-sign-on.
+
+## * Bearer - IETF attempt at single-sign-on
+
+[[Squid-2.6]] and later support Basic, NTLM (SMB LM, v1 and v2), Digest, and [[Features/NegotiateAuthentication|Negotiate]].
+
+## Currently only WikiPedia:Firefox 1.5, WikiPedia:SeaMonkey 1.0 and [[WikiPedia:InternetExplorer|Internet Explorer]] 7+ are known to support Negotiate authentication with Squid and ISA server 2004
+
 == How does Proxy Authentication work in Squid? ==
 Users will be authenticated if squid is configured to use ''proxy_auth'' ACLs (see next question).
 
-Browsers send the user's authentication credentials in the ''Authorization'' request header.
+Browsers send the user's authentication credentials in the HTTP ''Authorization:'' request header.
 
-If Squid gets a request and the ''SquidConf:http_access'' rule list gets to a ''proxy_auth'' ACL or an ''external'' ACL (SquidConf:external_acl_type) with ''%LOGIN'' parameter, Squid looks for the ''Authorization'' header.  If the header is present, Squid decodes it and extracts a username and password.
+If Squid gets a request and the SquidConf:http_access rule list gets to a ''proxy_auth'' ACL or an ''external'' ACL (SquidConf:external_acl_type) with ''%LOGIN'' parameter, Squid looks for the ''Authorization:'' header.  If the header is present, Squid decodes it and extracts a user credentials.
 
 If the header is missing, Squid returns an HTTP reply with status 407 (Proxy Authentication Required). The user agent (browser) receives the 407 reply and then attempts to locate the users credentials. Sometimes this means a background lookup, sometimes a popup prompt for the user to enter a name and password.  The name and password are encoded, and sent in the ''Authorization'' header for subsequent requests to the proxy.
 
 ''NOTE'': The name and password are encoded using "base64" (See section 11.1 of RFC RFC:2616).  However, base64 is a binary-to-text encoding only, it does NOT encrypt the information it encodes.  This means that the username and password are essentially "cleartext" between the browser and the proxy.  Therefore, you probably should not use the same username and password that you would use for your account login.
 
-Authentication is actually performed outside of main Squid process. When Squid starts, it spawns a number of authentication subprocesses. These processes read usernames and passwords on stdin, and reply with "OK" or "ERR" on stdout.  This technique allows you to use a number of different authentication protocols (named "schemes" in this context). When multiple authentication schemes are offered by the server (Squid in this case), it is up to the User-Agent to choose one and authenticate using it. By RFC it should choose the safest one it can handle; in practice usually Microsoft Internet Explorer chooses the first one it's been offered that it can handle, and Mozilla browsers are bug-compatible with the Microsoft system in this field.
+Authentication is actually performed outside of main Squid process. When Squid starts, it spawns a number of authentication subprocesses. These processes read user credentials on stdin, and reply with "OK" or "ERR" on stdout.  This technique allows you to use a number of different authentication protocols (named "schemes" in this context). When multiple authentication schemes are offered by the server (Squid in this case), it is up to the User-Agent to choose one and authenticate using it. By RFC it should choose the safest one it can handle; in practice usually Microsoft Internet Explorer chooses the first one it's been offered that it can handle, and Mozilla browsers are bug-compatible with the Microsoft system in this field.
 
-
-In addition to Basic authentication Squid also supports the NTLM, Negotiate and Digest authentication schemes which provide more secure authentication methods, in that where the password is not exchanged in plain text over the wire. Each scheme have their own set of helpers and SquidConf:auth_param settings. Notice that helpers for different authentication schemes use different protocols to talk with squid, so they can't be mixed.
+In addition to the well known Basic authentication Squid also supports the NTLM, Negotiate and Digest authentication schemes which provide more secure authentication methods, in that where the password is not exchanged in plain text over the wire. Each scheme have their own set of helpers and SquidConf:auth_param settings. Notice that helpers for different authentication schemes use different protocols to talk with squid, so they can't be mixed.
 
 For information on how to set up NTLM authentication see [[ConfigExamples/Authenticate/Ntlm|NTLM config examples]].
 
@@ -43,7 +56,7 @@ These include:
 
 Documentation for each of these helpers can be found at http://www.squid-cache.org/Doc/man/. Due to its simplicity Basic authentication has by far the most helpers, but the other schemes also have several helpers available.
 
-In order to authenticate users, you need to compile and install one of the supplied authentication helpers, one of [[http://www.squid-cache.org/related-software.html#auth|the others]], or supply your own.
+In order to authenticate users, you need to compile and install one of the supplied authentication helpers, one of [[http://www.squid-cache.org/Misc/related-software.html#authenticators|the others]], or supply your own.
 
 You tell Squid which authentication helper program to use with the SquidConf:auth_param directive in squid.conf. Specify the name of the program, plus any command line options if necessary. For example:
 {{{
@@ -181,7 +194,7 @@ Yes, with limitations.
 
 Commonly deployed user-agents support at least one and up to four different authentication protocols (also called ''schemes'').
 
-Those schemes are explained in detail elsewhere (see [[Features/NegotiateAuthentication]] and SquidFaq/TroubleShooting). You __can__ enable more than one at any given moment, just configure the relevant ''SquidConf:auth_param'' sections for each different scheme you want to offer to the browsers.
+Those schemes are explained in detail elsewhere (see [[Features/NegotiateAuthentication]] and SquidFaq/TroubleShooting). You __can__ enable more than one at any given moment, just configure the relevant SquidConf:auth_param sections for each different scheme you want to offer to the browsers.
 || /!\ ||Due to a '''bug''' in common User-Agents (most notably Microsoft Internet Explorer) the __order__ the auth-schemes are configured __is__ relevant. RFC RFC:2617, chapter 4.6, states: ''A user agent MUST choose to use the strongest auth-scheme it understands''. Microsoft Internet Explorer instead chooses the __first__ authe-scheme (in the order they are offered) it understands ||
 
 
