@@ -371,5 +371,31 @@ result size [key-pair] body
 }}}
 
 ## end sslcrtd protocol
+
+
+=== Cache file eraser ===
+
+## start unlinkd protocol
+The unlink() function used to erase files is a blocking call and can slow Squid down. This interface is used to pass file erase instructions to a helper program specified by SquidConf:unlinkd_program.
+
+This interface has a fixed field layout. As of [[Squid-3.2]] this interface does not support concurrency. It requires Squid to be built with '''--enable-unlinkd''' and only cache storage types which use disk files (UFS, AUFS, diskd) use this interface.
+
+Input line received from Squid:
+{{{
+path
+}}}
+
+ path::
+  The file to be erased.
+
+Result line sent back to Squid:
+{{{
+result
+}}}
+
+ result::
+  The result code '''OK''' indicates the file has been removed from cache. '''ERR''' indicates some problem occured during the removal. The helper is responsible for sending any error message details to stderr.
+
+## end unlinkd protocol
 ----
 CategoryFeature
