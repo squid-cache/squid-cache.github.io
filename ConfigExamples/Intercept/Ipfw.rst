@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Intercepting traffic with IPFW on FreeBSD =
+= Intercepting traffic with IPFW =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
@@ -68,6 +68,19 @@ Cache-Control: no-cache
 }}}
 
 From there on out, just set your browsers up normally with no proxy server, and you should see the cache fill up and your browsing speed up.
+
+== Troubleshooting ==
+
+=== On MacOS X 10.6 traffic does not show up in Squid ===
+
+''by Jeffrey j Donovan''
+
+You need to edit:
+{{{
+sysctl -w net.inet.ip.scopedroute=0
+}}}
+Previous MacOS X set this to 0 by default. On MacOS X 10.6 it now defaults to 1. Disable this and Squid gets the traffic.
+
 
 ----
 CategoryConfigExample
