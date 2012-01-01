@@ -1,1 +1,1 @@
-#REDIRECT /ConfigExamples/Intercept/Ipfw
+#REDIRECT Ipfw
