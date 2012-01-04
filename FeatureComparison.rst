@@ -20,6 +20,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 == Feature Comparisons ==
 ||'''Feature''' ||'''2.5''' ||'''2.6''' ||'''2.7''' ||'''3.0''' ||'''3.1''' ||'''3.2''' ||<style="font-weight: bold;">3.HEAD|| ||
 ||||||||||||||<style="text-align: center;">'''Accepted Input Protocols''' ||
+||HTCP ||Y ||Y ||Y ||Y ||Y ||Y ||Y||
 ||HTTP 0.9 ||Y ||Y ||Y ||Y ||Y ||Y ||Y||
 ||HTTP 1.0 ||Y ||Y ||Y ||Y ||Y ||Y ||Y||
 ||HTTP 1.1 ||- ||X ||Y ||Bs16+ ||Y ||Y ||Y||
@@ -49,6 +50,7 @@ This pages hope to be authoritative. If you know of any errors or missing featur
 ||DiskD ||Y ||Y ||Y ||Y ||Y ||Y ||Y||
 ||UFS ||Y ||Y ||Y ||Y ||Y ||Y ||Y||
 ||COSS ||- ||Y ||Y ||B ||B ||B ||B||
+||rock ||- ||- ||- ||- ||- ||Y ||Y||
 ||||||||||||||<style="text-align: center;">'''Authentication Schemes''' ||
 ||Basic Authentication ||Y ||Y ||Y ||Y ||Y ||Y ||Y||
 ||Digest Authentication ||Y ||Y ||Y ||Y ||Y ||Y ||Y||
