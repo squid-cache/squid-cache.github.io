@@ -30,7 +30,7 @@ The example situation involves a single Outlook Web Access server and a single S
 Please note that the SquidConf:https_port and SquidConf:cache_peer lines may wrap in your browser!
 
 {{{
-https_port ip_of_squid:443 cert=/path/to/certificate/ defaultsite=owa_domain_name
+https_port ip_of_squid:443 accel cert=/path/to/certificate/ defaultsite=owa_domain_name
 
 cache_peer ip_of_owa_server parent 80 0 no-query originserver login=PASS front-end-https=on name=owaServer
 
