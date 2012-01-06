@@ -48,18 +48,16 @@ deny_info http://example.com/splash.html existing_users
 http_access deny !existing_users
 }}}
 == Squid Configuration File - Active Mode ==
-You may find that when using the example above that the splash page is not always displayed to users. That is because other processes on the user's computer (such as automatic security updates) can reset the session counter, so it is that process rather than the user's browsing which receives the splash screen.
+You may find that when using the example above that  the splash page is not always displayed to users. That is because other  processes on the user's computer (such as automatic security updates)  can reset the session counter, so it is that process rather than the  user's browsing which receives the splash screen.
 
-The following configuration example adds in a url_regex rule to force the user to browse to a particular website before the session is reset. The example is for Squid 3.2 and later, but can be adapted for earlier versions.
-
-It should be noted that synchronisation problems with v1.85 of the Berkeley DB can cause this method to fail, because of the multiple processes accessing the database. A newer implementation of the database is used with v1.2 or later of the session helper, which is recommended if using the method below.
+The  following configuration example adds in a url_regex rule to force the  user to browse to a particular website before the session is reset. The  example is for Squid 3.2 and later, but can be adapted for earlier  versions.
 
 {{{
-# Set up the "LOGIN" helper. Mind the wrap - this is one line:
-external_acl_type session_login_def concurrency=100 ttl=3 %SRC /usr/lib/squid3/ext_session_acl -a -T 10800 -b /var/lib/squid/session.db
+# Set up the session helper in active mode. Mind the wrap - this is one line:
+external_acl_type session concurrency=100 ttl=3 %SRC /usr/lib/squid3/ext_session_acl -a -T 10800 -b /var/lib/squid/session.db
 
 # Pass the LOGIN command to the session helper with this ACL
-acl session_login external session_login_def LOGIN
+acl session_login external session LOGIN
 
 # Set up the normal session helper. Mind the wrap - this is one line:
 external_acl_type session_active_def concurrency=100 ttl=3 %SRC /usr/lib/squid3/ext_session_acl -a -T 10800 -b /var/lib/squid/session/
