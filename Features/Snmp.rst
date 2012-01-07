@@ -126,10 +126,10 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 || *.1.3.1.13.0 || cacheCurrentFileDescrMax || Gauge32 || 2.6+ ||Highest file descriptors in use||
 ||<-5> '''Per-Protocol Statistics''' ||
 || *.1.3.2.1.1.0 || cacheProtoClientHttpRequests || Counter32 || 2.0+ ||Number of HTTP requests received||
-|| *.1.3.2.1.2.0 || cacheHttpHits || Counter32 || 2.0+ ||Number of HTTP Hits||
-|| *.1.3.2.1.3.0 || cacheHttpErrors || Counter32 || 2.0+ ||Number of HTTP Errors||
-|| *.1.3.2.1.4.0 || cacheHttpInKb || Counter32 || 2.0+ ||Number of HTTP KB's received||
-|| *.1.3.2.1.5.0 || cacheHttpOutKb || Counter32 || 2.0+ ||Number of HTTP KB's transmitted||
+|| *.1.3.2.1.2.0 || cacheHttpHits || Counter32 || 2.0+ ||Number of HTTP Hits sent to clients from cache||
+|| *.1.3.2.1.3.0 || cacheHttpErrors || Counter32 || 2.0+ ||Number of HTTP Errors sent to clients||
+|| *.1.3.2.1.4.0 || cacheHttpInKb || Counter32 || 2.0+ ||Number of HTTP KB's received from clients||
+|| *.1.3.2.1.5.0 || cacheHttpOutKb || Counter32 || 2.0+ ||Number of HTTP KB's sent to clients||
 || *.1.3.2.1.6.0 || cacheIcpPktsSent || Counter32 || 2.0+ ||Number of ICP messages sent||
 || *.1.3.2.1.7.0 || cacheIcpPktsRecv || Counter32 || 2.0+ ||Number of ICP messages received||
 || *.1.3.2.1.8.0 || cacheIcpKbSent || Counter32 || 2.0+ ||Number of ICP KB's transmitted||
