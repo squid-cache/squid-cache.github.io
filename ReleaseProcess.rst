@@ -16,9 +16,9 @@ Please check the '''Pending Bugs''' page for your particular release.
 
 '''Snapshots''' made from Stable branches are beta releases for the next Stable release from that branch.
 
- <!> If you have any problems with a release, please write to our ''squid-bugs@squid-cache.org'' or ''squid-dev@squid-cache.org'' lists. DO NOT write to squid-users with code-related problems.
+ <!> If you have any problems with a release, please write to our ''squid-bugs@squid-cache.org'' or ''squid-dev@squid-cache.org'' lists. '''DO NOT''' write to squid-users with code-related problems.
 
-HenrikNordstrom Stable release practices for Squid-2 yet to be documented.
+## HenrikNordstrom Stable release practices for Squid-2 yet to be documented.
 
 AmosJeffries makes a new Stable release for Squid-3 at soonest available time after the following conditions are met since the previous release:
 
@@ -38,7 +38,7 @@ Releases begin when all features intended for a release are merged into the code
 
  <!> If you have any problems with a release, please write to our ''squid-bugs@squid-cache.org'' or ''squid-dev@squid-cache.org'' lists. DO NOT write to squid-users with code-related beta release problems.
 
-HenrikNordstrom Beta release practices for Squid-2 yet to be documented.
+## HenrikNordstrom Beta release practices for Squid-2 yet to be documented.
 
 AmosJeffries makes a Beta release for Squid-3 monthly at or shortly after the end of each month. Out of cycle release are made to:
  * fix security vulnerabilities or similar serious bugs
