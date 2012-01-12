@@ -26,7 +26,6 @@ The real significance is that supporting it allows support of transparent Kerber
 
 See [[Features/Authentication]] for details on other schemes supported by Squid and how authentication in general works.
 
-
 == How does it work in Squid? ==
 
 Negotiate is at the one time both very simple and somewhat complex. Squids part has been kept intentionally minor and simple to improve the overall system security.
@@ -38,6 +37,7 @@ The protocol lines used to do this are described below. This same protocol is us
 
 <<Include(Features/AddonHelpers,,3,from="^## start negotiateauth protocol$", to="^## end negotiateauth protocol$")>>
 
+
 == Squid native Windows build with NEGOTIATE support ==
 
 A native Windows build of Squid with Negotiate support. Binary package and source archive are available on http://squid.acmeconsulting.it/.
@@ -45,12 +45,43 @@ A native Windows build of Squid with Negotiate support. Binary package and sourc
 
 == What do I need to do to support NEGOTIATE on Squid? ==
 
- {X} This section appears to be extremely outdated. There have been Negotiate/Kerberos helpers for Unix, Linux, BSD and their derived systems for quite some time now.
+Just like any other security protocol, support for Negotiate in Squid is made up by two parts:
+ 1. code within Squid to talk to the client.
+  * [[Squid-2.6]] or later built with {{{--enable-auth="negotiate"}}} 
+  * [[Squid-3.2]] or later built with {{{--enable-auth-negotiate}}}
 
-Just like any other security protocol, support for Negotiate in Squid is made up by two parts: code within Squid to talk to the client and one or more authentication helpers which perform the grunt work. Of course the protocol needs to be enabled in the configuration file for everything to work.
+ 2. one or more authentication helpers which perform the grunt work.
+  * ntlm_auth from Samba 4 with the {{{--helper-protocol=gss-spnego}}} parameter
+  * negotiate_wrapper or squid_kerb_auth by Markus Moeller
+  * win32_negotiate_auth.exe on windows
 
-The production-level helper on Unix-like systems will be Samba4's ntlm_auth or squid_kerb_auth by Markus Moeller, and win32_negotiate_auth.exe on windows. Unfortunately Samba 4 is not quite there yet (Note: statment made in 2005, is it still relevant?).
+Of course the protocol needs to be enabled in the configuration file for everything to work.
+{{{
+auth_param negotiate program /usr/sbin/squid_kerb_auth
+}}}
+ {i} All other negotiate parameters are optional. see SquidConf:auth_param NEGOTIATE section for more details.
 
+== Testing ==
+
+=== Testing Squid ===
+
+Send any URL with a GET or any other request via Squid.
+{{{
+squidclient http://example.com/
+}}}
+
+Squid when setup correctly replies with ''Proxy-Authenticate: Negotiate'' like shown:
+{{{
+HTTP/1.1 407 Proxy Authentication Required
+Server: squid/3.2.0.14
+Mime-Version: 1.0
+Date: Thu, 12 Jan 2012 03:41:33 GMT
+Proxy-Authenticate: Negotiate
+...
+}}}
+
+
+=== Testing the win32 helper from Unix ===
 If you want to test the UNIX side of things out, there actually is a way to access the win32 helper from a Unix box, and that is by performing an "authorized man-in-the-middle attack", as follows:
 
  * You need to have an sshd running on the windows box (not a small feat by itself, but it's outside the scope of this document - see http://www.cygwin.com/ for details). Notice that it '''has''' to be running as the SYSTEM account.
@@ -66,6 +97,18 @@ If you want to test the UNIX side of things out, there actually is a way to acce
   {{{
    auth_param negotiate ssh system@netbiosname.domain "win32_negotiate_auth.exe"
 }}}
+
+== Troubleshooting ==
+
+=== Token type errors ===
+
+The token first presented by the client is used by helpers to identify which flavour is being used:
+ * '''type 1 token''' - NTLM
+ * '''type 2 token''' - Kerberos
+
+You may see warnings or errors mentioning either of these token types with Negotiate authentication. Particularly common are problems with type 1 when configured with Kerberos helpers.
+
+The issue is a mismatch between the client and helper capabilities. The ''negotiate_wrapper'' helper is currently the only helper known which can handle both types at once.
 
 ----
 CategoryFeature
