@@ -42,6 +42,23 @@ There is no good fixed benchmark test yet to measure by so comparisons are not s
 
 = Records =
 == Squid 3.2 ==
+=== 3.2.0.14 ===
+|| CPU || ''unknown'' ||
+|| RAM || ''unknown'' ||
+|| HDD || ''unknown'' ||
+|| OS  || CentOS 5.7 x64 ||
+|| Users || ''unknown'' ||
+|| RPS || 956 ||
+|| Hit Ratio || ''unknown'' ||
+|| CPU Usage || ''unknown'' ||
+{{{
+Submitted by: Squid BuildFarm 2012-01-18
+
+This is achieved using laboratory tests with Web Polygraph for raw request throughput with no SMP workers engaged.
+
+This is published as a theoretical median for high performance. Faster/newer hardware will reach higher throughput at peak and most networks will not reach this rate in real production traffic.
+}}}
+
 === 3.2.0.9 ===
 || CPU || Quad Core Q6600 @2.4 GHz ||
 || RAM || 8 GB ||
