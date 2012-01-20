@@ -17,6 +17,8 @@ To Intercept web requests transparently without any kind of client configuration
 
 '''NP:''' This configuration is given for use '''on the squid box'''. We have had no successful reports of people using DNAT at the gateway machine to direct traffic at a separate squid box. We have had several good reports about ../IptablesPolicyRoute for those setups.
 
+{{attachment:squid-DNAT-device.png}}
+
 == iptables configuration ==
 
  /!\ Replace '''$SQUIDIP''' with the public IP(s) which squid may use for its listening port and outbound connections. Repeat each iptables line one per squid outbound IP.
