@@ -17,6 +17,8 @@ To Intercept web requests transparently without any kind of client configuration
 
 '''NOTE:''' If squid is not running on the gateway router See ../IptablesPolicyRoute for additional configuration needed.
 
+{{attachment:squid-NAT-device-REDIRECT.png}}
+
 == iptables configuration ==
 
 Replace SQUIDIP with the public IP(s) which squid may use for its outbound connections.
