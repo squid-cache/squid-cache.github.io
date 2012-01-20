@@ -13,7 +13,6 @@
 
 This example outlines how to configure a Linux router to policy route traffic (web in this instance) towards a Squid proxy. Various users are using embedded Linux devices (such as OpenWRT) as gateways and wish to implement transparent caching.
 
-This is a work in progress and needs to be verified as working.
 
 == Usage ==
 
