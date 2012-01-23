@@ -17,6 +17,14 @@
 
 = Details =
 
+Proxy and Cache Hierarchies are built out of two basic peering linkages. '''parent''' links (shown as green) and '''sibling''' links (show as blue).
+
+{{attachment:Peering_Basics.png}}
+
+These two simple connections can be combined in any number of complex '''hierarchies'''. For example this cluster of 6 sibling caches with a gateway proxy load balancing between them.
+
+{{attachment:Cluster_1x6.png}}
+
 
 == How do I configure Squid forward all requests to another proxy? ==
 
