@@ -20,22 +20,25 @@ This project adds a similar format to Squid-3 code. Starting with 3.1. To format
 
  (!) If you don't have the astyle 1.23 and md5sum tools to do a format correctly. Particularly the right version of astyle. We would rather you didn't do a format yourself. The formatter script will check and omit the format step if you do not have the right version.
 
-That said. if you do have the right tools. You should reformat before sending a [PATCH] or [MERGE] request to squid-dev for auditing. Or before committing code. A global reformat is repeated every so often on trunk. But it saves everybody trouble and keeps bundlebuggy happy if patches have the right format to start with.
+That said. If you do have the right tools. You should reformat before sending a [PATCH] or [MERGE] request to squid-dev for auditing. Or before committing code. A global reformat is repeated regularly on trunk. But it saves everybody trouble and keeps bundlebuggy happy if patches have the right format to start with.
 
 === Doing a Reformat ===
-Given the right tools to use. The ~/scripts/source-maintenance.sh script can be run over a checkout of the Squid-3 code to format it correctly.
+Given the right tools to use. The '''scripts/source-maintenance.sh''' script can be run over a checkout of the Squid-3 code to format it correctly.
 
-=== Limiting the reformat area ===
-The source maintenance script is recursive from the current working directory down into its sub-directories. If run normally from the top level of a source checkout it will format the entire squid code.
+This tool does other code checks and rebuilds several compiler system files as it goes so should always be run from the sources top directory.
 
-To speed things up and limit the files checked, simply run it from the sub-directory where you have made changes. It does not go up levels, only down. Though beware of changes that it will make to the documentation areas (namely debug sections listing).
 
-For example:
-{{{
-cd ~/squid-3/src
-~/squid-3/scripts/source-maintenance.sh
-}}}
-will only format the src/* area of the checkout.
+## === Limiting the reformat area ===
+## The source maintenance script is recursive from the current working directory down into its sub-directories. If run normally from the top level of a source checkout it will format the entire squid code.
+##
+## To speed things up and limit the files checked, simply run it from the sub-directory where you have made changes. It does not go up levels, only down. Though beware of changes that it will make to the documentation areas (namely debug sections listing).
+##
+## For example:
+## {{{
+## cd ~/squid-3/src
+## ~/squid-3/scripts/source-maintenance.sh
+## }}}
+## will only format the src/* area of the checkout.
 
 === Handling Errors ===
 
