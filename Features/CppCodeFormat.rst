@@ -20,7 +20,7 @@ This project adds a similar format to Squid-3 code. Starting with 3.1. To format
 
  (!) If you don't have the astyle 1.23 and md5sum tools to do a format correctly. Particularly the right version of astyle. We would rather you didn't do a format yourself. The formatter script will check and omit the format step if you do not have the right version.
 
-That said. If you do have the right tools. You should reformat before sending a [PATCH] or [MERGE] request to squid-dev for auditing. Or before committing code. A global reformat is repeated regularly on trunk. But it saves everybody trouble and keeps bundlebuggy happy if patches have the right format to start with.
+That said. If you do have the right tools. You should reformat before sending a [PATCH] or [MERGE] request to squid-dev for auditing. Or before committing code. A global reformat is repeated regularly on trunk. But it saves everybody trouble and keeps bundlebuggy happy if patches have the right format to start with. On the other hand, if you just delete the condition of a large  if-statement or loop and then reformat, it becomes very difficult for some of the reviewers (and, later, bug chasing developers) to see that you did not change anything else (or changed something correctly) inside that former if-statement or loop. Your patch will also be more likely to cause conflicts with other pending patches. Make the decision based on tools availability and the formatting impact on the overall clarity/compatibility of your changes.
 
 === Doing a Reformat ===
 Given the right tools to use. The '''scripts/source-maintenance.sh''' script can be run over a checkout of the Squid-3 code to format it correctly.
