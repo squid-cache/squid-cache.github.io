@@ -1,3 +1,4 @@
+## page was renamed from Features/CacheManager/CgiTool
 = Cache manager CGI Tool =
 
 == Cache manager CGI tool configuration ==
