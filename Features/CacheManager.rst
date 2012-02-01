@@ -14,147 +14,19 @@ Chapter contributed by ''Jonathan Larmour''
 == What is the cache manager? ==
 The cache manager is a component of Squid which provides management controls and reports displaying statistics about the ''squid'' process as it runs.
 
+Reports are generated at the time of request, so data included is presented live. Although due to processing delays some of the larger reports cannot exactly be considered real-time information. For example the all cache objects report may omit some objects which entered the cache during processing of the report.
+
+== Ways to access the manager reports ==
+
 Squid packages come with two tools for accessing the cache manager:
- * '''cachemgr.cgi''' is a CGI utility for online browsing of the manager reports. It can be configured to interface with multiple proxies so provides a convenient way to manage proxies and view statistics without logging into each server.
- * '''squidclient''' is a command line utility for performing web requests. It also has a special ability to send cache manager requests to Squid proxies.
+
+ * [[ManagerCgiTool|cachemgr.cgi]] is a CGI utility for online browsing of the manager reports. It can be configured to interface with multiple proxies so provides a convenient way to manage proxies and view statistics without logging into each server.
+
+ * [[SquidClientTool|squidclient]] is a command line utility for performing web requests. It also has a special ability to send cache manager requests to Squid proxies.
 
 The cache manager is accessed with standard HTTP requests using a special cache_object:// URL scheme. Which allows other tools and scripts to easily be written for any special use you may have.
 
 The cache manager has been extended in [[Squid-3.2]] to allow access from the http:// and https:// URL schemes. This opens the cache manager reports directly to the web browser if permitted by SquidConf:http_access security controls.
-
-== Cache manager CGI configuration ==
-That depends on which web server you're using.  Below you will find instructions for configuring the CERN and Apache servers to permit ''cachemgr.cgi'' usage.
-|| {i} ||''EDITOR'S NOTE: readers are encouraged to submit instructions for configuration of cachemgr.cgi on other web server platforms, such as Netscape.'' ||
-
-
-After you edit the server configuration files, you will probably need to either restart your web server or or send it a SIGHUP signal to tell it to re-read its configuration files.
-
-When you're done configuring your web server, you'll connect to the cache manager with a web browser, using a URL such as:
-
-''http://www.example.com/Squid/cgi-bin/cachemgr.cgi''
-
-=== for CERN httpd 3.0 ===
-First, you should ensure that only specified workstations can access the cache manager.  That is done in your CERN ''httpd.conf'', not in ''squid.conf''.
-
-{{{
-Protection MGR-PROT {
-         Mask    @(workstation.example.com)
-}
-}}}
-Wildcards are acceptable, IP addresses are acceptable, and others can be added with a comma-separated list of IP addresses. There are many more ways of protection.  Your server documentation has details.
-
-You also need to add:
-
-{{{
-Protect         /Squid/*        MGR-PROT
-Exec            /Squid/cgi-bin/*.cgi    /usr/local/squid/bin/*.cgi
-}}}
-This marks the script as executable to those in MGR-PROT.
-
-=== for Apache 1.x ===
-First, make sure the cgi-bin directory you're using is listed with a Script''''''Alias in your Apache ''httpd.conf'' file like this:
-
-{{{
-ScriptAlias /Squid/cgi-bin/ /usr/local/squid/cgi-bin/
-}}}
- (X) '''SECURITY NOTE:''' It's probably a '''bad''' idea to Script''''''Alias the entire ''/usr/local/squid/bin/'' directory where all the Squid executables live.
-
-Next, you should ensure that only specified workstations can access the cache manager.  That is done in your Apache ''httpd.conf'', not in ''squid.conf''.  At the bottom of ''httpd.conf'' file, insert:
-
-{{{
-<Location /Squid/cgi-bin/cachemgr.cgi>
-order allow,deny
-allow from workstation.example.com
-</Location>
-}}}
-You can have more than one allow line, and you can allow domains or networks.
-
-Alternately, ''cachemgr.cgi'' can be password-protected.  You'd add the following to ''httpd.conf'':
-
-{{{
-<Location /Squid/cgi-bin/cachemgr.cgi>
-AuthUserFile /path/to/password/file
-AuthGroupFile /dev/null
-AuthName User/Password Required
-AuthType Basic
-require user cachemanager
-</Location>
-}}}
-Consult the Apache documentation for information on using ''htpasswd'' to set a password for this "user."
-
-=== for Apache 2.x ===
-
-First, make sure the cgi-bin directory you're using is listed with a Script''''''Alias in your Apache config.
-In the Apache config there is a sub-directory ''/etc/apache2/conf.d'' for application specific settings (unrelated to any specific site). Create a file ''conf.d/squid'' containing this:
-
-{{{
-ScriptAlias /Squid/cgi-bin/cachemgr.cgi /usr/local/squid/cgi-bin/cachemgr.cgi
-
-<Location /Squid/cgi-bin/cachemgr.cgi>
-order allow,deny
-allow from workstation.example.com
-</Location>
-}}}
- (X) '''SECURITY NOTE:'''  It's possible but a '''bad''' idea to Script''''''Alias the entire ''/usr/local/squid/bin/'' directory where all the Squid executables live.
-
-You should ensure that only specified workstations can access the cache manager.  That is done in your Apache ''conf.d/squid'' <Location> settings, not in ''squid.conf''.
-
-You can have more than one allow line, and you can allow domains or networks.
-
-Alternately, ''cachemgr.cgi'' can be password-protected.  You'd add the following to ''conf.d/squid'':
-
-{{{
-<Location /Squid/cgi-bin/cachemgr.cgi>
-AuthUserFile /path/to/password/file
-AuthGroupFile /dev/null
-AuthName User/Password Required
-AuthType Basic
-require user cachemanager
-</Location>
-}}}
-Consult the Apache 2.0 documentation for information on using ''htpasswd'' to set a password for this "user."
-
-To further protect the cache-manager on public systems you should consider creating a whole new <!VirtualHost> segment in the Apache configuration for the squid manager. This is done by creating a file in the Apache configuration sub-directory ''.../apache2/sites-enabled/'' usually with the domain name of the new site, see the Apache 2.0 documentation for further details for your system.
-
-=== Roxen 2.0 and later ===
-by FrancescoChemolli
-
-Notice: this is '''not''' how things would get best done with Roxen, but this what you need to do go adhere to the example. Also, knowledge of basic Roxen configuration is required.
-
-This is what's required to start up a fresh Virtual Server, only serving the cache manager. If you already have some Virtual Server you wish to use to host the Cache Manager, just add a new CGI support module to it.
-
-Create a new virtual server, and set it to host http://www.example.com/. Add to it at least the following modules:
-
- * Content Types
- * CGI scripting support
-In the ''CGI scripting support'' module, section ''Settings'', change the following settings:
-
- * CGI-bin path: set to /Squid/cgi-bin/
- * Handle *.cgi: set to ''no''
- * Run user scripts as owner: set to ''no''
- * Search path: set to the directory containing the cachemgr.cgi file
-In section ''Security'', set ''Patterns'' to:
-
-{{{
-allow ip=192.0.2.1
-}}}
-where 192.0.2.1 is the IP address for workstation.example.com
-
-Save the configuration, and you're done.
-
-== Cache manager access from squidclient ==
-A simple way to test the access to the cache manager is:
-{{{
-squidclient mgr:info
-}}}
- {i} If you are using a port other than ''3128'' on your Squid you will need to use the '''-p''' option to specify it.
-See {{{squidclient -h}}} for more options.
-
-To send a manager password (more on that below) there are two ways depending on your Squid version.
-
-With squidclient version 3.1.* and older you add '''@''' then the password to the URL. So that it looks like this {{{mgr:info@admin}}}.
-
-In squidclient version 3.2.* use the proxy login options '''-u''' and '''w''' to pass your admin login to the cache manger.
 
 == Cache manager Access Control in squid.conf ==
 === default ===
@@ -166,9 +38,9 @@ acl localhost src 127.0.0.1 ::1
 http_access allow manager localhost
 http_access deny manager
 }}}
- {i} This default has been updated to accommodate changes in [[Squid-3.2]].
+ {i} This default has been updated to accommodate changes in [[Squid-3.2]]. For older squid the squid.conf entries may appear different.
 
-The first ACL is the most important as the cache manager program interrogates squid using a special '''cache_object''' protocol. Try it yourself by doing:
+The first ACL is the most important as the cache manager program interrogates squid using a special '''cache_object://''' protocol. Try it yourself by doing:
 {{{
 telnet mycache.example.com 3128
 GET cache_object://mycache.example.com/info HTTP/1.0
@@ -184,7 +56,7 @@ The default ACLs say that if the request is for a cache_object://, and it isn't 
 In fact, only allowing localhost access means that on the initial ''cachemgr.cgi'' form you can only specify the cache host as localhost.
 
 === Remote Administration ===
-The default ACLs assume that your web server is on the same machine as squid. Remember that the connection from the cache manager CGI program to squid originates at the ''web server'', not the browser. So if your web server lives somewhere else, you should make sure that IP address of the web server that has cachemgr.cgi installed on it has access. 
+The default ACLs assume that your web server is on the same machine as squid. Remember that the connection from the cache manager CGI program to squid originates at the ''web server'', not the browser. So if your web server lives somewhere else, you should make sure that IP address of the web server that has cachemgr.cgi installed on it has access.
 
 To allow a remote administrator (ie cachemgr.cgi) adjust the access controls to include the remote IPs:
 {{{
@@ -233,6 +105,14 @@ For example:
 }}}
 Then copy ''cachemgr.cgi'' to your HTTP server's ''cgi-bin'' directory.
 
+
+== Available Reports ==
+
+This is a (incomplete) list of reports available from the Squid manager. Depending on which components are built in (or not) to a particular Squid the avaialble reports will vary. See the '''menu''' report for the authoritative list of reports available from your proxy.
+
+<<FullSearch(title:Features/CacheManager/* -regex:Feature..Squid.Cache.Manager)>>
+
+
 == Understanding the manager reports ==
 === What's the difference between Squid TCP connections and Squid UDP connections? ===
 Browsers and caches use TCP connections to retrieve web objects from web servers or caches.  UDP connections are used when another cache using you as a sibling or parent wants to find out if you have an object in your cache that it's looking for.  The UDP connections are ICP or HTCP queries.
@@ -257,111 +137,6 @@ If ''squid'' is much smaller than this field, run for cover! Something is very w
 
 === What does AVG RTT mean? ===
 '''Average Round Trip Time'''. This is how long on average after an ICP ping is sent that a reply is received.
-
-=== menu report ===
-
-This is an index of all the actions which can be performed by this Squid.
-
-This report is the only reliable indication of what reports and actions are available from a particular Squid since they vary between versions and some depend on which particular components are built into that Squid.
-
-The menu lists:
- * the report or action name
- * a short description about what it is
- * whether or not it is
-  * public - available to anyone with manager access,
-  * protected - available but requires a password,
-  * hidden - not available due to configuration.
-
-=== utilization report ===
-The utilization report details statistics about the amount and type of traffic through the Squid.
-
-First shown are the statistics for several time periods, as detailed in the section headers. These range from previous 5 minutes up to several days. They show the KB/second throughput rates for each traffic type.
-
-Finally the total statistics since Squid was started. This is an ''all time'' report with absolute counts in bytes, KB, or seconds.
-
-==== What is server.other? ====
-Other is a default category to track objects which don't fall into one of the defined categories.
-
-==== What is the Max/Current/Min KB? ====
-These refer to the size all the objects of this type have grown to/currently are/shrunk to.
-
-=== What is the I/O section about? ===
-These are histograms on the number of bytes read from the network per read(2) call.  Somewhat useful for determining maximum buffer sizes.
-
-=== objects report ===
-This report is a copy of the cache index. It can range from very large to '''extremely''' large depending on the size of your cache. You should check the '''info''' report to see how many Store''''''Entries (aka stored objects) you have before requesting this report.
-
-|| <!> ||This will download to your browser a list of every URL in the cache and statistics about it. It can be very, very large.  ''Sometimes it will be larger than the amount of available memory in your client!'' You probably don't need this information anyway. ||
-
-=== vm_objects report ===
-VM Objects are the objects which are in Virtual Memory. These are objects which are currently being retrieved and those which were kept in memory for fast access (accelerator mode).
-
-This may also include objects which are stored in the RAM cache (SquidConf:cache_mem) with no disk copy.
-
- <!> This is usually much smaller report than the full ''objects'' report. But can still be very , very large.
-
-=== ipcache report ===
-==== What's the difference between a hit, a negative hit and a miss? ====
-A HIT means that the document was found in the cache. A MISS, that it wasn't found in the cache. A negative hit means that it was found in the cache, but the record indicated that it doesn't exist.
-
-==== What do the IP cache contents mean anyway? ====
-The hostname is the name that was requested to be resolved.
-
-For example:
-{{{
-IP Cache Contents:
-
- Hostname                      Flags lstref    TTL  N [IP-Number]
- gorn.cc.fh-lippe.de               C       0  21581 1 193.16.112.73-OK
- lagrange.uni-paderborn.de         C       6  21594 1 131.234.128.245-OK
- www.altavista.digital.com         C      10  21299 4 204.123.2.75-OK
- example.com                       H      15    -1 1 
-}}}
-
-For the Flags column:
-
- * '''C''' means positively cached.
- * '''N''' means negatively cached.
- * '''P''' means the request is pending being dispatched.
- * '''D''' means the request has been dispatched and we're waiting for an answer.
- * '''H''' means it is an entry loaded from the system ''hosts'' file.
- * '''L''' means it is a locked entry because it represents a parent or sibling.
-
-The TTL column represents "Time To Live" (i.e., how long the cache entry is valid). This is given by the DNS system when each IP is retrieved. It may be negative if the entry has already expired, in which case the next request to need it will perform new DNS lookups to fetch new IPs.
-
-The N column is the number of hostnames which the cache has translations for. With '''(b)''' the number of ''bad'' IPs, one which have found to be unusable or not able to connect.
-
-The rest of the line lists all the IP addresses that have been associated with that hostname entry. In [[Squid-3.1]] and later lines starting with empty spaces are a continuation of the previous entry when it has multiple IP addresses.
-
- The IP address entries are marked individually as '''-OK'''. Unless they are known to result in failed connect, when they get marked as '''-BAD'''.
-
-=== fqdncache report ===
-==== How is it different from the ipcache? ====
-IPCache contains data for the Hostname to IP-Number mapping, and FQDNCache does it the other way round.  
-
-{{{
-FQDN Cache Contents:
-
-Address                    Flags    TTL Cnt Hostnames
-130.149.17.15                    C -45570 1 andele.cs.tu-berlin.de
-194.77.122.18                    C -58133 1 komet.teuto.de
-206.155.117.51                   N -73747 0
-}}}
-
-For the Flags column:
-
- * '''C''' means positively cached.
- * '''N''' means negatively cached.
- * '''P''' means the request is pending being dispatched.
- * '''D''' means the request has been dispatched and we're waiting for an answer.
- * '''H''' means it is an entry loaded from the system ''hosts'' file.
- * '''L''' means it is a locked entry because it represents a parent or sibling.
-
-The '''TTL''' column represents "Time To Live" (i.e., how long the cache entry is valid). This is given by the DNS system when each FQDN is retrieved. It may be negative if the entry has already expired, in which case the next request to need it will perform new DNS lookups to fetch new records.
-
-The '''Cnt''' column is the number of hostnames which the cache has translations for.
-
-The rest of the line lists all the hostnames that have been associated with that IP.
 
 === What does "Page faults with physical i/o: 4897" mean? ===
 This question was asked on the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-users|''squid-users'' mailing list]], to which there were three excellent replies.
