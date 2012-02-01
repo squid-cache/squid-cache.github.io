@@ -1,9 +1,10 @@
-## page was renamed from Features/CacheManager/CgiTool
-= Cache manager CGI Tool =
+= Squid Manager CGI Tool =
+
+This tool is a CGI utility for online browsing of the Squid manager reports. It can be configured to interface with multiple proxies so provides a convenient way to manage proxies and view statistics without logging into each server.
 
 == Cache manager CGI tool configuration ==
 That depends on which web server you're using.  Below you will find instructions for configuring the CERN and Apache servers to permit ''cachemgr.cgi'' usage.
-|| {i} ||''EDITOR'S NOTE: readers are encouraged to submit instructions for configuration of cachemgr.cgi on other web server platforms, such as Netscape.'' ||
+## || {i} ||''EDITOR'S NOTE: readers are encouraged to submit instructions for configuration of cachemgr.cgi on other web server platforms, such as Netscape.'' ||
 
 
 After you edit the server configuration files, you will probably need to either restart your web server or or send it a SIGHUP signal to tell it to re-read its configuration files.
