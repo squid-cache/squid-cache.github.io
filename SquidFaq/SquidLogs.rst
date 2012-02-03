@@ -46,72 +46,45 @@ Most log file analysis program are based on the entries in ''access.log''.
 [[Squid-2.7]] and [[Squid-3.2]] allow the administrators to configure their [[Features/LogFormat|logfile format]] and [[Features/LogModules|log output method]] with great flexibility. Previous versions offered a much more limited functionality.
 
 ==== Squid result codes ====
-The '''TCP_''' codes refer to requests on the HTTP port (usually 3128). The '''UDP_''' codes refer to requests on the ICP port (usually 3130). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged.
 
-The following result codes were taken from a Squid-2, compare with the ''log_type'' enum in ''src/enums.h'':
+The Squid result code is composed of several tags (separated by underscore characters) which describe the response sent to the client.
 
-'''TCP_HIT''' A valid copy of the requested object was in the cache.
-
-'''TCP_MISS''' The requested object was not in the cache.
-
-'''TCP_REFRESH_HIT''' The requested object was cached but ''STALE''. The IMS query for the object resulted in "304 not modified".
-
-'''TCP_REFRESH_FAIL_HIT''' The requested object was cached but ''STALE''. The IMS query failed and the stale object was delivered.
-
-'''TCP_REFRESH_MISS''' The requested object was cached but ''STALE''. The IMS query returned the new content.
-
-'''TCP_CLIENT_REFRESH_MISS''' The client issued a "no-cache" pragma, or some analogous cache control command along with the request. Thus, the cache has to refetch the object.
-
-'''TCP_IMS_HIT''' The client issued an IMS request for an object which was in the cache and fresh.
-
-'''TCP_SWAPFAIL_MISS''' The object was believed to be in the cache, but could not be accessed.
-
-'''TCP_NEGATIVE_HIT''' Request for a negatively cached object, e.g. "404 not found", for which the cache believes to know that it is inaccessible. Also refer to the explainations for ''negative_ttl'' in your ''squid.conf'' file.
-
-'''TCP_MEM_HIT''' A valid copy of the requested object was in the cache ''and'' it was in memory, thus avoiding disk accesses.
-
-'''TCP_DENIED''' Access was denied for this request.
-
-'''TCP_OFFLINE_HIT''' The requested object was retrieved from the cache during offline mode. The offline mode never validates any object, see ''offline_mode'' in ''squid.conf'' file.
-
-'''TCP_STALE_HIT''' The object was cached and served stale. This is usually caused by stale-while-revalidate or stale-if-error.
-
-'''TCP_ASYNC_HIT''' A background request (e.g., one started by stale-while-revalidate) resulted in a refresh hit.
-
-'''TCP_ASYNC_MISS''' A background request (e.g., one started by stale-while-revalidate) resulted in a miss; i.e., the cached object (if any) was updated).
-
-'''UDP_HIT''' A valid copy of the requested object was in the cache.
-
-'''UDP_MISS''' The requested object is not in this cache.
-
-'''UDP_DENIED''' Access was denied for this request.
-
-'''UDP_INVALID''' An invalid request was received.
-
-'''UDP_MISS_NOFETCH''' During "-Y" startup, or during frequent failures, a cache in hit only mode will return either UDP_HIT or this code. Neighbours will thus only fetch hits.
-
-'''NONE''' Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes.
-
-The following code suffixes are specific to Squid3:
-
-'''_ABORTED''' suffix means that the connection with HTTP ''client'' was closed or otherwise failed prematurely. This includes half-closed client sockets when ''half_closed_clients'' in squid.conf is off.
-
-'''_TIMEDOUT''' suffix means that the transaction timed out while writing the response to the HTTP ''client'' (i.e., the client was not reading or stopped reading Squid's response).
+ * One of these tags always exists to describe how it was delivered:
+ || '''TCP''' || Requests on the HTTP port (usually 3128). The '''UDP_''' codes refer to requests on the ICP port (usually 3130). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged. ||
+ || '''UDP''' || Requests on the ICP port (usually 3130) or HTCP port (usually 4128). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged. ||
+ || '''NONE''' || No response at all was delivered. Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes. ||
 
 
-The following codes are no longer available in Squid-2:
+ * These tags are optional and describe why the particular handling was performed or where the request came from:
+ || '''CLIENT''' || The client request placed limits affecting the response. Usually seen with client issued a "no-cache", or analogous cache control command along with the request. Thus, the cache has to validate the object. ||
+ || '''IMS''' || The client sent a revalidation (conditional) request. ||
+ || '''ASYNC''' || The request was generated internally by Squid. Usually this is background fetches for cache information exchanges, background revalidation from ''stale-while-revalidate'' cache controls, or ESI sub-objects being loaded. ||
+ || '''SWAPFAIL''' || The object was believed to be in the cache, but could not be accessed. A new copy was requested from the server. ||
+ || '''REFRESH''' || A revalidation (conditional) request was sent to the server. ||
 
-'''ERR_'''* Errors are now contained in the status code.
 
-'''TCP_CLIENT_REFRESH''' See: TCP_CLIENT_REFRESH_MISS.
+ * These tags are optional and describe what type of object was produced:
+ || '''NEGATIVE''' || Only seen on '''HIT''' responses. Indicating the response was a cached error response. e.g. "404 not found" ||
+ || '''STALE''' || The object was cached and served stale. This is usually caused by ''stale-while-revalidate'' or ''stale-if-error'' cache controls. ||
+ || '''OFFLINE''' || The requested object was retrieved from the cache during SquidConf:offline_mode. The offline mode never validates any object. ||
+ || '''INVALID''' || An invalid request was received. An error response was delivered indicating what the problem was. ||
+ || '''FAIL''' || Only seen on '''REFRESH''' to indicate the revalidation request failed. The response object may be the server provided network error or the stale object which was being revalidated depending on ''stale-if-error'' cache control. ||
+ || '''MODIFIED''' || Only seen on '''REFRESH''' responses to indicate revalidation produced a new modified object. ||
+ || '''UNMODIFIED''' || Only seen on '''REFRESH''' responses to indicate revalidation produced a 304 (Not Modified) status. Which was relayed to the client. ||
 
-'''TCP_SWAPFAIL''' See: TCP_SWAPFAIL_MISS.
 
-'''TCP_IMS_MISS''' Deleted, now replaced with TCP_IMS_HIT.
+ * These tags are optional and describe whether the response was loaded from cache, network, or otherwise:
+ || '''HIT''' || The response object delivered was the local cache object. ||
+ || '''MEM''' || Additional tag indicating the response object came from memory cache, avoiding disk accesses. Only seen on '''HIT''' responses. ||
+ || '''MISS''' || The response object delivered was the network response object. ||
+ || '''DENIED''' || The request was denied by access controls. ||
+ || '''NOFETCH''' || A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either '''UDP_HIT''' or '''UDP_MISS_NOFETCH'''. Neighbours will thus only fetch hits. ||
 
-'''UDP_HIT_OBJ''' Refers to an old version that would send cache hits in ICP replies.  No longer implemented.
 
-'''UDP_RELOADING''' See: UDP_MISS_NOFETCH.
+ * These tags are optional and describe some error conditions which occured during response delivery (if any):
+ || '''ABORTED''' || The response was not completed due to the connection being aborted (usually by the client). ||
+ || '''TIMEOUT''' || The response was not completed due to a connection timeout. ||
+
 
 ==== HTTP status codes ====
 These are taken from RFC RFC:1945 (HTTP/1.0), RFC:2616 (HTTP/1.1) and verified for Squid. Squid uses almost all codes except 416 (Request Range Not Satisfiable). Extra codes used in the Squid logs (but not live traffic) include 000 for a result code being unavailable, and 600 to signal an invalid header, a proxy error. Also, some definitions were added as for RFC RFC:2518 and RFC:4918 (WebDAV). Yes, there are really two entries for status code 424:
