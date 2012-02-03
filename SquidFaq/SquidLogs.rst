@@ -52,7 +52,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  * One of these tags always exists to describe how it was delivered:
  || '''TCP''' || Requests on the HTTP port (usually 3128). The '''UDP_''' codes refer to requests on the ICP port (usually 3130). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged. ||
  || '''UDP''' || Requests on the ICP port (usually 3130) or HTCP port (usually 4128). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged. ||
- || '''NONE''' || No response at all was delivered. Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes. ||
+ || '''NONE''' || Squid delivered an unusual response or no response at all. Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes. Also seen with responses to CONNECT requests. ||
 
 
  * These tags are optional and describe why the particular handling was performed or where the request came from:
