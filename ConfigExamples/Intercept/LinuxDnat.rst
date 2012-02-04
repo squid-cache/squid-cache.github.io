@@ -13,15 +13,19 @@
 
 == Outline ==
 
-To Intercept web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
+To Intercept IPv4 web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
 
 '''NOTE:''' This configuration is given for use '''on the squid box'''. This is required to perform intercept accurately and securely. To intercept from a gateway machine and direct traffic at a separate squid box use [[ConfigExamples/Intercept/IptablesPolicyRoute|policy routing]].
+
+'''NOTE:''' DNAT is only available for IPv4 traffic. For IPv6 interception use [[Features/Tproxy4|TPROXY version 4]]
 
  . {{attachment:squid-DNAT-device.png}}
 
 == iptables configuration ==
 
 Replace '''SQUIDIP''' with the public IP which squid may use for its listening port and outbound connections. Replace '''SQUIDPORT''' with the port in squid.conf set with '''intercept''' flag.
+
+Due to the NAT security vulnerabilities it is also a '''very good idea''' to block external access to the internal receiving port. This has to be done in the '''mangle''' part of iptables before DNAT happens so that intercepted traffic does not get dropped.
 
 Without the first iptables line here being first, your setup may encounter problems with forwarding loops.
 
@@ -38,8 +42,6 @@ iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $SQUIDI
 iptables -t nat -A POSTROUTING -j MASQUERADE
 iptables -t mangle -A PREROUTING -p tcp --dport $SQUIDPORT -j DROP
 }}}
-
-Due to the NAT security vulnerabilities it is also a '''very good idea''' to block external access to the internal receiving port. This has to be done in the '''mangle''' part of iptables before DNAT happens so that intercepted traffic does not get dropped.
 
 == /etc/sysctl.conf Configuration ==
 
