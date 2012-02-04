@@ -15,28 +15,31 @@
 
 To Intercept web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
 
-'''NP:''' This configuration is given for use '''on the squid box'''. We have had no successful reports of people using DNAT at the gateway machine to direct traffic at a separate squid box. We have had several good reports about ../IptablesPolicyRoute for those setups.
+'''NOTE:''' This configuration is given for use '''on the squid box'''. This is required to perform intercept accurately and securely. To intercept from a gateway machine and direct traffic at a separate squid box use [[ConfigExamples/Intercept/IptablesPolicyRoute|policy routing]].
 
-{{attachment:squid-DNAT-device.png}}
+ . {{attachment:squid-DNAT-device.png}}
 
 == iptables configuration ==
 
- /!\ Replace '''$SQUIDIP''' with the public IP(s) which squid may use for its listening port and outbound connections. Repeat each iptables line one per squid outbound IP.
+Replace '''SQUIDIP''' with the public IP which squid may use for its listening port and outbound connections. Replace '''SQUIDPORT''' with the port in squid.conf set with '''intercept''' flag.
 
 Without the first iptables line here being first, your setup may encounter problems with forwarding loops.
 
 {{{
-SQUIDIP= # your proxy IP
+# your proxy IP
+SQUIDIP=192.168.0.2
+
+# your proxy listening port
+SQUIDPORT=3129
+
 
 iptables -t nat -A PREROUTING -s $SQUIDIP -p tcp --dport 80 -j ACCEPT
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $SQUIDIP:3129
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $SQUIDIP:$SQUIDPORT
 iptables -t nat -A POSTROUTING -j MASQUERADE
+iptables -t mangle -A PREROUTING -p tcp --dport $SQUIDPORT -j DROP
 }}}
 
 Due to the NAT security vulnerabilities it is also a '''very good idea''' to block external access to the internal receiving port. This has to be done in the '''mangle''' part of iptables before DNAT happens so that intercepted traffic does not get dropped.
-{{{
-iptables -t mangle -A PREROUTING -p tcp --dport 3129 -j DROP
-}}}
 
 == /etc/sysctl.conf Configuration ==
 
