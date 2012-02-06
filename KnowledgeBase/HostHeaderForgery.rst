@@ -74,6 +74,13 @@ This is optional and may not be possible, but is useful when it works:
   . [[Squid-3.2]] will attempt to use EDNS to get larger packets with all IPs of these domains. This reduces Squids chance of loosing the IP the client is connecting to.
 
 
+'''Alternative Causes'''
+
+ * Interception performed at the DNS layer by the use of ''dnsmasq'' tool or other DNS trickery altering the IP destination the clients receive for a domain lookup.
+
+In these cases Squid-3.2 hijacking protection will pass the traffic through to the clients destination IP address '''without''' redirecting to any specific other IP. Additional Destination-NAT configuration is required to identify the packets and ensure they are delivered to the correct site regardless of any other details.
+
+
 ## '''Thanks'''
 ##please use [[MailTo(address AT domain DOT tld)]] for mail addresses; this will help hide them from spambots
 ----
