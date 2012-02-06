@@ -55,6 +55,7 @@ From 2.6 the Squid developers also provide a set of Configuration Guides online.
  * [[http://www.squid-cache.org/Versions/v2/2.7/cfgman/|Squid 2.7]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/3.0/cfgman/|Squid 3.0]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/3.1/cfgman/|Squid 3.1]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v3/3.2/cfgman/|Squid 3.2]] Configuration Guide
 
 including guides for the current development test releases
 
@@ -63,19 +64,19 @@ including guides for the current development test releases
 
 From 3.1 a lot of configuration cleanups have been done to make things easier.
 
- /!\ This minimal configuration does not work with versions earlier than 3.1 which are missing special cleanup done to the code.
+ || /!\ || This minimal configuration does not work with versions earlier than 3.1 which are missing special cleanup done to the code. ||
 
+ * '''Squid-3.1 default config:'''
 {{{
 http_port 3128
-
-hierarchy_stoplist cgi-bin ?
 
 refresh_pattern ^ftp:		1440	20%	10080
 refresh_pattern ^gopher:	1440	0%	1440
 refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
 refresh_pattern .		0	20%	4320
 
-acl manager proto cache_object
+acl manager url_regex -i ^cache_object:// +i ^https?://[^/]+/squid-internal-mgr/
+
 acl localhost src 127.0.0.1/32 ::1
 acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 
@@ -107,6 +108,45 @@ http_access allow localnet
 http_access deny all
 }}}
 
+
+From 3.2 further configuration cleanups have been done to make things easier and safer. The manager, localhost, and to_localhost ACL definitions are now built-in.
+
+ * '''Squid-3.2 default config:'''
+{{{
+http_port 3128
+
+refresh_pattern ^ftp:		1440	20%	10080
+refresh_pattern ^gopher:	1440	0%	1440
+refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
+refresh_pattern .		0	20%	4320
+
+acl localnet src 10.0.0.0/8	# RFC 1918 possible internal network
+acl localnet src 172.16.0.0/12	# RFC 1918 possible internal network
+acl localnet src 192.168.0.0/16	# RFC 1918 possible internal network
+acl localnet src fc00::/7       # RFC 4193 local private network range
+acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
+
+acl SSL_ports port 443
+acl Safe_ports port 80		# http
+acl Safe_ports port 21		# ftp
+acl Safe_ports port 443		# https
+acl Safe_ports port 70		# gopher
+acl Safe_ports port 210		# wais
+acl Safe_ports port 1025-65535	# unregistered ports
+acl Safe_ports port 280		# http-mgmt
+acl Safe_ports port 488		# gss-http
+acl Safe_ports port 591		# filemaker
+acl Safe_ports port 777		# multiling http
+acl CONNECT method CONNECT
+
+http_access allow manager localhost
+http_access deny manager
+http_access deny !Safe_ports
+http_access deny CONNECT !SSL_ports
+http_access allow localhost
+http_access allow localnet
+http_access deny all
+}}}
 
 == How do I configure Squid to work behind a firewall? ==
 If you are behind a firewall then you can't make direct connections to the outside world, so you '''must''' use a parent cache. Normally Squid tries to be smart and only uses cache peers when it makes sense from a perspective of global hit ratio, and thus you need to tell Squid when it can not go direct and must use a parent proxy even if it knows the request will be a cache miss.
