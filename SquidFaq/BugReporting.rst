@@ -177,6 +177,26 @@ Other options if the above cannot be done is to:
 
  {i} these approaches do not by far provide as much details as using gdb.
 
+
+== Attaching gdb debugger to and already running Squid ==
+
+First locate the PID number for the particular Squid worker you are wanting to debug.
+
+{{{
+% gdb /path/to/squid
+handle SIGPIPE pass nostop noprint
+handle SIGTERM pass nostop noprint
+handle SIGUSR1 pass nostop noprint
+handle SIGSEGV stop
+handle SIGABRT stop
+
+attach [worker PID]
+[wait for crash]
+backtrace
+detach
+quit
+}}}
+
 = Debugging Squid =
 If you believe you have found a non-fatal bug (such as incorrect HTTP processing) please send us a section of your cache.log with debugging to demonstrate the problem.  The cache.log file can become very large, so alternatively, you may want to copy it to an FTP or HTTP server where we can download it.
 
