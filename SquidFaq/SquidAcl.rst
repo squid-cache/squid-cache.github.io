@@ -206,7 +206,7 @@ acl ME src 10.0.0.1
 acl YOU src 10.0.0.2
 http_access allow ME YOU
 }}}
-In order for the request to be allowed, it must match the "ME" SquidConf:acl AND the "YOU" SquidConf:acl. This is impossible because any IP address could only match one or the other.  This should instead be rewritten as:
+In order for the request to be allowed, it must match the "ME" SquidConf:acl '''AND''' the "YOU" SquidConf:acl. This is impossible because any IP address could only match one or the other.  This should instead be rewritten as:
 
 {{{
 acl ME src 10.0.0.1
@@ -223,13 +223,13 @@ http_access allow US
 === allow/deny mixups ===
 ''I have read through my squid.conf numerous times, spoken to my neighbors, read the FAQ and Squid Docs and cannot for the life of me work out why the following will not work.''
 
-''I can successfully access '''cachemgr.cgi''' from our web server machine here, but I would like to use MRTG to monitor various aspects of our proxy. When I try to use '''squidclient''' or GET cache_object from the machine the proxy is running on, I always get access denied.''
+''I can successfully access '''cachemgr.cgi''' from our web server machine here, but I would like to use MRTG to monitor various aspects of our proxy. When I try to use [[SquidClientTool|squidclient]] or GET cache_object from the machine the proxy is running on, I always get access denied.''
 
 {{{
 acl manager proto cache_object
-acl localhost src 127.0.0.1/255.255.255.255
-acl server    src 1.2.3.4/255.255.255.255
-acl ourhosts  src 1.2.0.0/255.255.0.0
+acl localhost src 127.0.0.1
+acl server    src 1.2.3.4
+acl ourhosts  src 1.2.0.0/24
 http_access deny manager !localhost !server
 http_access allow ourhosts
 http_access deny all
@@ -239,7 +239,12 @@ The intent here is to allow cache manager requests from the ''localhost'' and ''
 {{{
 http_access deny manager !localhost !server
 }}}
-The problem here is that for allowable requests, this access rule is not matched.  For example, if the source IP address is ''localhost'', then "!localhost" is ''false'' and the access rule is not matched, so Squid continues checking the other rules.  Cache manager requests from the ''server'' address work because ''server'' is a subset of ''ourhosts'' and the second access rule will match and allow the request.  Also note that this means any cache manager request from ''ourhosts'' would be allowed.
+The problem here is that for allowable requests, this access rule is not matched.  For example,
+ * if the source IP address is ''localhost'', then "!localhost" is ''false'' and the access rule is not matched, so Squid continues checking the other rules.
+ * if the source IP address is ''server'', then "!server is ''false'' and the access rule is not matched, so Squid continues checking the other rules.
+
+Cache manager requests from the ''server'' address work because ''server'' is a subset of '''ourhosts''' and the second access rule will match and allow the request.
+ /!\ Also note that this means any cache manager request from ''ourhosts'' would be allowed.
 
 To implement the desired policy correctly, the access rules should be rewritten as
 
