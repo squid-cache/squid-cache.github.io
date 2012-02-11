@@ -107,11 +107,12 @@ If a user is authenticated at the proxy you cannot "log out" and re-authenticate
 
 {{{
 acl my_auth proxy_auth REQUIRED
-http_access allow my_auth
 http_access deny !my_auth
+http_access allow my_auth
 http_access deny all
 }}}
-But there is a trick which can force the user to authenticate with a different account in certain situations. This happens if you deny access with an authentication related ACL last in the SquidConf:http_access deny statement. Example configuration:
+
+There is a trick which can force the user to authenticate with a different account in certain situations. This happens if you deny access with an authentication related ACL '''last''' in the SquidConf:http_access deny statement. Example configuration:
 
 {{{
 acl my_auth proxy_auth REQUIRED
@@ -121,27 +122,12 @@ http_access deny google !google_users
 http_access allow my_auth
 http_access deny all
 }}}
-In this case if the user requests ''www.google.com'' then first second ''SquidConf:http_access'' line matches and triggers re-authentication unless the user is one of the listed users. Remember: it's always the last ACL on a ''SquidConf:http_access'' line that "matches". If the matching ACL deals with authentication a re-authentication is triggered. If you didn't want that you would need to switch the order of ACLs so that you get {{{http_access deny !google_users google}}}.
+In this case if the user requests ''www.google.com'' then the first SquidConf:http_access line matches and triggers re-authentication unless the user is one of the listed users.
 
-You might also run into an '''authentication loop''' if you are not careful. Assume that you use LDAP group lookups and want to deny access based on an LDAP group (e.g. only members of a certain LDAP group are allowed to reach certain web sites). In this case you may trigger re-authentication although you don't intend to. This config is likely wrong for you:
+Remember: it is the last ACL on a SquidConf:http_access line that determines whether authentication is performed. If the ACL deals with authentication a new challenge is triggered. If you didn't want that you would need to switch the order of ACLs so that you get {{{http_access deny !google_users google}}} or to use the loop prevention method outlned below.
 
-{{{
-acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
 
-http_access deny !ldapgroup-allowed
-http_access allow all
-}}}
-The second ''SquidConf:http_access'' line would force the user to re-authenticate time and again if he/she is not member of the PROXY_ALLOWED group. This is perhaps not what you want. You rather wanted to deny access to non-members. So you need to rewrite this ''SquidConf:http_access'' line so that an ACL matches that has nothing to do with authentication. This is the correct example:
-
-{{{
-acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
-
-http_access deny !ldapgroup-allowed all
-http_access allow all
-}}}
-This way the ''SquidConf:http_access'' line still matches. But it's the ''all'' ACL which is now last in the line. Since ''all'' is a static ACL (that always matches) and has nothing to do with authentication you will find that the access is just denied.
-
-See also: http://www.squid-cache.org/mail-archive/squid-users/200511/0339.html
+But you might also run into a loop of constant authentication challenges if you are not careful.
 
 == How do I prevent Login Popups? ==
 
@@ -166,6 +152,35 @@ This '''all hack''' will present a plain access denied page without challenging 
 {{{
 http_access deny mustLogin all
 }}}
+
+
+== How do I prevent Authentication Loops? ==
+
+Another more subtle version os the above login looping happens when the loop is triggered by a group check rather than a username check.
+
+Assume that you use LDAP group lookups and want to deny access based on an LDAP group (e.g. only members of a certain LDAP group are allowed to reach certain web sites). In this case you may trigger re-authentication although you don't intend to. This config is likely wrong for you:
+
+{{{
+acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
+
+http_access deny !ldapgroup-allowed
+http_access allow all
+}}}
+The SquidConf:http_access deny line would force the user to re-authenticate time and again if he/she is not member of the PROXY_ALLOWED group. This is perhaps not what you want. You rather wanted to deny access to non-members.
+
+
+You need to rewrite this SquidConf:http_access line so that an ACL matches that has nothing to do with authentication. This is the correct example:
+
+{{{
+acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
+
+http_access deny !ldapgroup-allowed all
+http_access allow all
+}}}
+This way the SquidConf:http_access line still matches. But it's the ''all'' ACL which is now last in the line. Since ''all'' is a static ACL (that always matches) and has nothing to do with authentication you will find that the access is just denied.
+
+See also: http://www.squid-cache.org/mail-archive/squid-users/200511/0339.html
+
 
 == Does Squid cache authentication lookups? ==
 It depends on the authentication scheme; Squid does some caching when it can. Successful Basic authentication lookups are cached for one hour by default.  That means (in the worst case) its possible for someone to keep using your cache up to an hour after he has been removed from the authentication database.
