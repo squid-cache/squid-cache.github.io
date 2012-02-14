@@ -89,23 +89,22 @@ refresh_pattern (get_video\?|videoplayback\?|videodownload\?) 5259487 99999999% 
 Storeurl script(where concurrency is > 0) or the storeurl.pl above. concurrency 10 is faster than children 10.
 
 {{{
-#your perl location in here, mine is #!/bin/perl
+#your perl location in here, mine is #!/usr/bin/perl
 $|=1;
 while (<>) {
     @X = split;
-    $x = $X[0];
-    $_ = $X[1];
-    if (m/^http:\/\/([0-9.]{4}|.*\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(itag=22).*?\&(id=[a-zA-Z0-9]*)/) {
-        print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $2 . "&" . $3 . "\n";
-    # youtube Normal screen always HD itag 35, Normal screen never HD itag 34, itag=18 <--normal?
-    } elsif (m/^http:\/\/([0-9.]{4}|.*\.youtube\.com|.*\.googlevideo\.com|.*\.video\.google\.com).*?\&(itag=[0-9]*).*?\&(id=[a-zA-Z0-9]*)/) {
-        print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/" . $2 . "&" . $3 . "\n";
-
+    $x = $X[0] . " ";
+if ($X[1] =~ /(youtube|google).*videoplayback\?/){
+        @itag = m/[&?](itag=[0-9]*)/;
+        @id = m/[&?](id=[^\&]*)/;
+        @range = m/(&range=[^\&\s]*)/;
+        print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/@id&@itag@range\n";
     } else {
-        print $x . $_ . "\n";
+        print $x . $X[1] . "\n";
     }
 }
 }}}
+[UPDATE: &range suppose to be partial contents... you may redirect them without "&range=xxx-xxx" to cache the whole content]
 ==== The bug ====
 It happens when the redirect content has no Cache-Control:no-cache header
 
