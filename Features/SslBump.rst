@@ -17,6 +17,8 @@ Squid-in-the-middle decryption and encryption of straight '''CONNECT''' and tran
  /!\ By default, most user agents will warn end-users about a possible man-in-the-middle attack.
 
 
+{X} WARNING: {X} HTTPS was designed to give users an expectation of privacy and security. Decrypting HTTPS tunnels without user consent or knowledge may violate ethical norms and may be illegal in your jurisdiction. Squid decryption features described here and elsewhere are designed for deployment with user consent or, at the very least, in environments where decryption without consent is legal. These features also illustrate why users should be careful with trusting HTTPS connections and why the weakest link in the chain of HTTPS protections is rather fragile. Decrypting HTTPS tunnels constitutes a man-in-the-middle attack from the overall network security point of view. Attack tools are an equivalent of an atomic bomb in real world: Make sure you understand what you are doing and that your decision makers have enough information to make wise choices. 
+
 == Squid Configuration ==
 
 Here is a sample squid.conf excerpt with SSL Bump-related options:
