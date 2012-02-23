@@ -8,9 +8,9 @@ The Squid Project is not currently a financial concern. It is run by volunteers 
 
 == Installation / Configuration Support ==
 
- '''Free User Support''' for any current stable release and perhapse for one or two slightly older releases is provided by volunteers on the '''squid-users''' mailing list.
+ '''Free User Support''' for any current stable release and perhapse for one or two slightly older releases is provided by volunteers on the '''squid-users''' mailing list or IRC channel '''#squid''' on irc.freenode.net
 
- '''Paid User Support''' for any release can be purchased from a team developer or Squid support provider. These are listed at http://www.squid-cache.org/Support/services.dyn
+ '''Paid User Support''' for any release can be purchased from a team developer or Squid support provider. These are listed at http://www.squid-cache.org/Support/services.html
 
 == Technical Support ==
 
@@ -21,7 +21,7 @@ For current release code (experimental, release candidate beta, or stable releas
 === Paid Technical Support ===
 
 For any release can be purchased from a team developer or Squid support provider.
-These are listed at http://www.squid-cache.org/Support/services.dyn
+These are listed at http://www.squid-cache.org/Support/services.html
 
 == Security Advisories ==
 
@@ -39,3 +39,5 @@ Such as http://www.squid-cache.org/Versions/
 
 Are provided for many Operating Systems via their native binary package installation systems.
 See your OS distribution help for assistance on how to use that.
+
+The ones we know about are detailed at [[SquidFaq/BinaryPackages]]
