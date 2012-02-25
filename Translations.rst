@@ -23,13 +23,14 @@ Several people have volunteered their time to check and confirm translations to 
 || Persian || fa || Mohsen Saeedi (Fedora Project) ||
 || French || fr || Bernard Charrier ||
 || Armenian || hy || Arthur Tumanyan ||
+|| Hungarian || hu || Gergely Kiss ||
 || Italian || it || FrancescoChemolli (Squid Project) ||
 || Dutch (Nederland) || nl || Rene Wijninga ||
 || Malay || ms || ''tepung'' ||
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
 || Romanian || ro || Arthur Titeica ||
 || Slovak || sk || ''Helix'' ||
-||Slovenian || sl || Aleksa Šušulić ||
+|| Slovenian || sl || Aleksa Šušulić ||
 || Serbian (Latin) || sr-latn || ''batailic'' ||
 || Swedish || sv || HenrikNordstrom (Squid Project) ||
 ## || Turkish || tr || Umut Çinar ||
