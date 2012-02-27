@@ -40,7 +40,7 @@ A [[Features/BumpSslServerFirst|bump-server-first]] support is required to get t
 This section documents how each fake certificate property is generated. The "true" adjective is applied to describe a property of the SSL certificate received from the origin server. The "intended" adjective describes a property of the request or connection received from the client (including intercepted connections).
 
 ||'''x509 certificate property'''||'''After successful bumping'''||'''After failed bumping'''||
-||Common Name (CN)||True CN by default. Can be overwritten using sslproxy_cert_adapt setCommonName.||Intended host name or, if not available, intended IP address (XXX: check).||
+||Common Name (CN)||True CN by default. Can be overwritten using sslproxy_cert_adapt setCommonName.||Intended host name if available and true CN otherwise. If true CN is not available, then XXX.||
 ||Alias||True alias, if any.||None.||
 ||Subject||True subject by default. The CN part can be overwritten (see CN).||Contains CN only (see CN).||
 ||Subject Alternative Names (subjectAltName)||True names, if any, by default. None if using sslproxy_cert_adapt setCommonName (browsers reject certificates where alternative names are not related to CN).||None.||
