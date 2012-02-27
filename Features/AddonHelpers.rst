@@ -39,6 +39,8 @@ Squid-2.6 and later all support:
  * Authentication
   * (SquidConf:auth_param)
   * Specific feature details at [[Features/Authentication]] [[Features/NegotiateAuthentication]]
+ * cache file eraser
+  * SquidConf:unlinkd_program
 
 Squid-2.7 (only):
  * HTTP Server redirection replies
