@@ -54,7 +54,7 @@ The  following configuration example adds in a url_regex rule to force the  user
 
 {{{
 # Set up the session helper in active mode. Mind the wrap - this is one line:
-external_acl_type session concurrency=100 ttl=3 %SRC /usr/lib/squid3/ext_session_acl -a -T 10800 -b /var/lib/squid/session.db
+external_acl_type session concurrency=100 ttl=3 %SRC /usr/lib/squid3/ext_session_acl -a -T 10800 -b /var/lib/squid/session/
 
 # Pass the LOGIN command to the session helper with this ACL
 acl session_login external session LOGIN
