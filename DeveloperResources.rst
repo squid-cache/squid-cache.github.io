@@ -25,15 +25,39 @@ During the life of the Squid project, a number of [[http://www.squid-cache.org/D
 
 
 == Contributing (Code developer) ==
-If you wish to become a developer the first step is to sign up to the squid-dev mailing list. This is done by first posting an introduction of yourself to <<MailTo( squid-dev AT squid-cache DOT org)>> , then send a subscription request to <<MailTo(squid-dev-subscribe AT squid-cache DOT org)>>. Please note that all messages must be sent in plain-text only (no HTML email). A read-only [[http://www.squid-cache.org/mail-archive/squid-dev/|archive]] is available to everyone.
 
-If you wish to contribute to Squid there are certain guidelines and processes you need to follow in your coding style working with the team. MergeProcedure outlines the process of patch development from planning to code release.
+ * '''Signing Up''' to become a developer the first step is to join the  [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]].
+   1. Send a message to: <<MailTo( squid-dev AT squid-cache DOT org)>> introducing yourself and what areas of Squid your are interested to help with the development of.
+   2. then send a message to: <<MailTo(squid-dev-subscribe AT squid-cache DOT org)>> to request to be subscribed. Subscription requests is only accepted if you have first introduced yourself to the other developers.
 
-Particular details of coding style are explained in Squid2CodingGuidelines and Squid3CodingGuidelines. The [[http://www.squid-cache.org/Doc/code/|Programming Guide]] offers some (but certainly not enough) information on the Squid-3 internals. SquidInternals offers some more-or-less (mostly less) organized snippets.
+  || Please note that all messages must be sent in plain-text only (no HTML email).<<BR>>A read-only [[http://www.squid-cache.org/mail-archive/squid-dev/|archive]] is available to everyone. ||
 
-If you are looking for a new project to work on check the feature wish list at [[RoadMap/Squid3]] or query the bugzilla database for [[http://bugs.squid-cache.org/buglist.cgi?component=feature&cmdtype=doit|enhancement requests]] or otehr bugs mentioning your feature of interest.
 
-Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still. There are also optional behaviours in the spec not in the checklist which should be added.
+If you wish to contribute to Squid there are certain guidelines and processes you need to follow in your coding style working with the team. 
+
+ * ''' MergeProcedure ''' outlines the process of patch development from planning to code release.
+
+ * ''' Squid3CodingGuidelines ''' outlines particular details of coding style you need to write changes in.
+  . Squid2CodingGuidelines contains the style details for Squid-2.
+
+
+There is a lot of code and wading through it at the beginning can seem difficult to start.
+
+ * '''[[http://www.squid-cache.org/Doc/code/|Programming Guide]]''' auto-generated code documentation offers some (but certainly not enough) information on the Squid-3 internals with browseable links to the latest version of the code.
+
+ * ''' SquidInternals ''' lso offers some more-or-less (mostly less) organized snippets.
+   . /!\ one of the TODO tasks is to clean all this up. If you are interested contact the squid-dev mailing list.
+
+
+Finding things to do
+
+ * ''' [[http://bugs.squid-cache.org/|Bugzilla ]] ''' database contains a number of problems needing to be investigated and fixed.
+
+ * ''' [[RoadMap/Squid3]] ''' lists the feature wishes and plans for future releases.
+
+ * ''' [[RoadMap/Tasks]] ''' lists some general cleanup tasks that need to be done. These can be good introductory tasks.
+
+ * Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still. There are also optional behaviours in the spec not in the checklist which should be added.
 
 
 For Squid-3 we operate the development trunk and web code browsers on [[http://bazaar-vcs.org/|Bazaar]]. If you prefer other VCS tools read-only mirrors are available via several other systems listed below.
@@ -60,7 +84,6 @@ When working from the repository code the '''bootstrap.sh''' script is required 
 
 == Contributing (Testing) ==
 
-
 We are currently setting up a BuildFarm. Additions to it are welcome.
 
 
@@ -69,6 +92,8 @@ If you are looking to test the latest release of Squid for your own use you will
 To test a specific project branch you will need to pull the branch code directly from bzr https://code.launchpad.net/squid
 
  {i} Note that repository checkouts for Squid-3 require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
+
+Joining the  [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]] is useful if you want to get into a lot of testing or discussion with the developers. This is optional, anyone can post to that mailing list, and reports can also be made through bugzilla. For stable series testing Bugzilla reports are encouraged.
 
 === Getting the sources via Bazaar (bzr) ===
 
