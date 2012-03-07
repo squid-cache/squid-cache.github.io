@@ -23,7 +23,7 @@ The following documentation applies to squid_kerb_auth on Unix/Linux systems, on
 ## == Usage ==
 ## Tell about some cases where this configuration would be good.
 == Pre-requisites for Active Directory integration ==
-Install msktutil package from http://fuhm.net/software/msktutil/.
+Install msktutil package from http://fuhm.net/software/msktutil/ or https://code.google.com/p/msktutil/.
 
  . or
 
