@@ -40,7 +40,7 @@ A [[Features/BumpSslServerFirst|bump-server-first]] support is required to get t
 This section documents how each fake certificate property is generated. The "true" adjective is applied to describe a property of the SSL certificate received from the origin server. The "intended" adjective describes a property of the request or connection received from the client (including intercepted connections).
 
 ||'''x509 certificate property'''||'''After successful bumping'''||'''After failed bumping'''||
-||Common Name (CN)||True CN by default. Can be overwritten using sslproxy_cert_adapt setCommonName.||Intended host name if available and true CN otherwise. If true CN is not available, then XXX.||
+||Common Name (CN)||True CN by default. Can be overwritten using sslproxy_cert_adapt setCommonName.||If the intended host name is available, then use it, subject to CN length controls discussed separately below. Otherwise, if true CN is available, then use that. If neither the intended host name nor true CN is available, then the certificate will have no CN (and no Subject).||
 ||Alias||True alias, if any.||None.||
 ||Subject||True subject by default. The CN part can be overwritten (see CN).||Contains CN only (see CN).||
 ||Subject Alternative Names (subjectAltName)||True names, if any, by default. None if using sslproxy_cert_adapt setCommonName (browsers reject certificates where alternative names are not related to CN).||None.||
@@ -64,6 +64,20 @@ Furthermore, when Squid encounters an error, it uses a trusted certificate with 
 Squid closes the client connection after serving the error so that no requests are sent to the broken server.
 
 It is important to understand that Squid can be configured to ignore or tolerate certain SSL connection establishment errors using squid.conf:sslproxy_cert_error. If the error is allowed, Squid forgets about the error, mimics true broken certificate properties, and continues to talk to the server. Otherwise, Squid does not mimic and terminates the server connection as discussed above. Thus, if you want users to see broken certificate properties instead of Squid error pages, you must tell Squid to ignore the error.
+
+=== Long domain names ===
+
+Section A.1 of RFC 5280 limits a Common Name field of an SSL certificate to 64 characters. As far as we know, that implies that secure sites with longer names must use wildcard certificates. And since wildcards cannot be applied to TLDs (e.g., browsers reject a ''*.com'' wildcard), there can be no secure site with a long second-level domain label.
+
+If Squid receives a valid true certificate, Squid does not try to enforce CN length limit and simply mimics true certificate fields as described in the table above. However, when Squid fails to connect to the origin server or fails to receive a usable true certificate, Squid has to generate a minimal fake certificate from scratch and has to deal with long domain names of the sites a user intended to visit. To shorten the name, Squid tries to replace the lower level domain label(s) with a wild card until the CN length no longer exceeds the 64 character limit. If that replacement results in a TLD wildcard such as ''*.com'' or, worse, in a bare ''*'' wildcard, then Squid produces a certificate with no CN at all. Such certificates are usually rejected by browsers with various, often misleading, errors. For example,
+
+||'''Long domain name in the request'''||'''Certificate CN for serving errors'''||Comments||
+||llanfairpwllgwyngyllgogerychwyrndrobwyll-llantysiliogogogoch.com||llanfairpwllgwyngyllgogerychwyrndrobwyll-llantysiliogogogoch.com||This domain name is exactly 64 characters long so it is within the CN limits.||
+||'''www.'''llanfairpwllgwyngyllgogerychwyrndrobwyll-llantysiliogogogoch.com||none||Squid refuses to generate a *.com wildcard and replacing just "www" with "*" would exceed the 64 character limit by 2 characters.||
+||this-long-domain-exceeds-64-chars-but-should-not-crash-ssl-crtd.'''example.'''com||*.example.com||Browsers will accept this wildcard and show Squid error page.||
+||'''www.'''this-long-domain-exceeds-64-chars-but-should-not-crash-ssl-crtd.'''example.'''com||*.example.com||Browsers will refuse this wildcard because they apparently do not allow a wildcard to replace more than one domain label.||
+
+Hopefully, excessively long domains are rare for secure sites. TODO: Find a public secure site with a long domain name that actually works.
 
 
 = Limitations =
