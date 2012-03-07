@@ -71,7 +71,7 @@ Section A.1 of RFC 5280 limits a Common Name field of an SSL certificate to 64 c
 
 If Squid receives a valid true certificate, Squid does not try to enforce CN length limit and simply mimics true certificate fields as described in the table above. However, when Squid fails to connect to the origin server or fails to receive a usable true certificate, Squid has to generate a minimal fake certificate from scratch and has to deal with long domain names of the sites a user intended to visit. To shorten the name, Squid tries to replace the lower level domain label(s) with a wild card until the CN length no longer exceeds the 64 character limit. If that replacement results in a TLD wildcard such as ''*.com'' or, worse, in a bare ''*'' wildcard, then Squid produces a certificate with no CN at all. Such certificates are usually rejected by browsers with various, often misleading, errors. For example,
 
-||'''Long domain name in the request'''||'''Certificate CN for serving errors'''||Comments||
+||'''Long domain name in the request'''||'''Certificate CN for serving Squid errors'''||'''Comments'''||
 ||llanfairpwllgwyngyllgogerychwyrndrobwyll-llantysiliogogogoch.com||llanfairpwllgwyngyllgogerychwyrndrobwyll-llantysiliogogogoch.com||This domain name is exactly 64 characters long so it is within the CN limits.||
 ||'''www.'''llanfairpwllgwyngyllgogerychwyrndrobwyll-llantysiliogogogoch.com||none||Squid refuses to generate a *.com wildcard and replacing just "www" with "*" would exceed the 64 character limit by 2 characters.||
 ||this-long-domain-exceeds-64-chars-but-should-not-crash-ssl-crtd.'''example.'''com||*.example.com||Browsers will accept this wildcard and show Squid error page.||
