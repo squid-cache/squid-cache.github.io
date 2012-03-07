@@ -74,19 +74,13 @@ The following sections will describe how to set up your local repository for Squ
  cbranch method :: The local bazaar repository is somewhere else in your filesystem, separate from where you do development. Easier to back up and branches are persistent in the repository even if you should happen to delete a whole source tree intentionally or by accident. Which means you can easily recover a branch after you have deleted the source tree.
 
 == Create local repository ==
- plain method:: <<BR>>
-
-{{{
-cd source
-bzr init-repo --1.14 squid
-}}}
- cbranch method:: <<BR>>
-
 {{{
 # create a local repository to store branches in
 bzr init-repo --1.14 --no-trees ~/squid-repo
+
 # Create a place where to keep working trees
 mkdir -p ~/source/squid
+
 # Configure ~/.bazaar/locations.conf mapping the working trees to your repository
 cat >> ~/.bazaar/locations.conf << EOF
 [/home/USER/source/squid]
@@ -99,42 +93,30 @@ EOF
 == Checkout an existing branch ==
 After your setup is done its time to checkout the first branch you are going to work on directly, or create a child branch for. In most cases this will be the '''trunk''' branch.
 
- plain method:: <<BR>>
-
 {{{
-cd source/squid
-# If you have developer access to trunk:
-bzr branch --bind bzr+ssh://bzr.squid-cache.org/bzr/squid3/trunk
-# Anonymous access:
-bzr branch --bind http://bzr.squid-cache.org/bzr/squid3/trunk
+cd ~/source/squid
+bzr cbranch --lightweight http://bzr.squid-cache.org/bzr/squid3/trunk trunk
+
+# bind the local copy of trunk to the official copy
+# so that it can be used to commit merges to trunk and activate the 'update' command
+cd trunk
+bzr bind http://bzr.squid-cache.org/bzr/squid3/trunk
 }}}
- cbranch method:: <<BR>>
+
+or
 
 {{{
 cd ~/source/squid
-# If you have commit access to trunk:
-export TRUNKURL=bzr+ssh://bzr.squid-cache.org/bzr/squid3/trunk
-# otherwise:
-export TRUNKURL=http://bzr.squid-cache.org/bzr/squid3/trunk
-bzr cbranch --lightweight $TRUNKURL trunk
-#
-# bind the local copy of trunk to the official copy so that it can be used to commit merges to trunk and activate the 'update' command
-cd trunk
-bzr bind $TRUNKURL
+bzr checkout http://bzr.squid-cache.org/bzr/squid3/trunk trunk
 }}}
+
+
+ . {i} If you have commit access to trunk use ''' bzr+ssh://USERNAME@bzr.squid-cache.org/bzr/squid3/trunk ''' instead of http://...
+
 == Make a new child branch to hack on ==
 First follow the instructions above to setup a development environment
 
 Now, in the below example, replace SOURCE with the branch you want your new branch based on, and NAME with the name you want your new branch to have in the following:
-
- plain method:: <<BR>>
-
-{{{
-cd ~/source/squid
-bzr branch trunk NAME
-}}}
- cbranch method:: <<BR>>
-
 {{{
 cd ~/source/squid
 bzr cbranch --lightweight ~/squid-repo/trunk NAME
