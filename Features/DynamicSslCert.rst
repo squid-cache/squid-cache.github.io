@@ -16,7 +16,7 @@
 
 ## , development [[https://code.launchpad.net/~rousskov/squid/DynamicSslCert|branch]]
 = Details =
-This page describes dynamic SSL certificate generation feature for  [[Features/SslBump|SslBump]] environments.  [[Features/SslBump|SslBump]] is a feature of Squid to intercept HTTPS-based connections for purposes of virus scanning and content filtering.
+This page describes dynamic SSL certificate generation feature for [[Features/SslBump|SslBump]] environments.
 
 == Motivation ==
 [[Features/SslBump|SslBump]] users know how many certificate warnings a single complex site (using dedicated image, style, and/or advertisement servers for embedded content) can generate. The warnings are legitimate and are caused by Squid-provided site certificate. Two things may be wrong with that certificate:
