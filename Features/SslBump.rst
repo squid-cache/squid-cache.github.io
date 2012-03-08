@@ -8,6 +8,7 @@
  * '''Goal''': Enable ICAP inspection of SSL traffic.
  * '''Version''': 3.1
  * '''Developer''': AlexRousskov, Christos Tsantilas
+ * '''More''': See also [[Features/DynamicSslCert|dynamic SSL certificate generation]] and [[Features/MimicSslServerCert|origin server certificate mimicking]] features.
 
 == Details ==
 
