@@ -13,7 +13,8 @@ Jiri Skala @ !RedHat maintains experimental squid packages for Red Hat Enterpris
 
 ==== Squid-3.1 ====
  * '''Maintainer:''' Jiri Skala @ !RedHat
- * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/
+ * '''RHEL 5 Download:''' http://people.redhat.com/jskala/squid/squid-3.1.8-1.el5
+ * '''RHEL 6 Download:''' http://people.redhat.com/jskala/squid/
 
 ==== Squid-3.0 ====
  * '''Maintainer:''' Jiri Skala @ !RedHat
