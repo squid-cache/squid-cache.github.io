@@ -10,7 +10,7 @@
 
 == Squid Configuration File ==
 
-Configuration file to Include:
+Configuration file to include.
 
  /!\ Since FTP uses numeric IPs the Skype ACL must be exact including the port.
 
@@ -19,7 +19,7 @@ Configuration file to Include:
 # Skype
 
 acl numeric_IPs dstdom_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9af]+)?:([0-9af:]+)?:([0-9af]+)?\])):443
-acl Skype_UA browser ^skype^
+acl Skype_UA browser ^skype
 
 http_access deny numeric_IPS
 http_access deny Skype_UA
@@ -38,7 +38,7 @@ http_access deny !validUserAgent
 
 {{{
 acl numeric_IPs dstdom_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9af]+)?:([0-9af:]+)?:([0-9af]+)?\])):443
-acl Skype_UA browser ^skype^
+acl Skype_UA browser ^skype
 
 http_access allow CONNECT localnet numeric_IPS Skype_UA
 }}}
