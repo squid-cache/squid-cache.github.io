@@ -8,7 +8,7 @@
  * '''Status''': In progress
  * '''ETA''': Ongoing
  * '''Priority''': 1
- * '''Version''': 3.2
+ * '''Version''': 3.3
  * '''Developer''': AlexRousskov and AmosJeffries
  * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html|email07121]] [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html|email07506]]
 
@@ -83,9 +83,9 @@ This section is used to edit and finalize the grouping of source files important
 If you know the solution or can improve the proposed one, please write to squid-dev mailing list.
 
 || '''Problem''' || '''Proposed solution''' ||
-||Where to put OS-compatibilities wrappers that are currently located in squid/lib and squid/include?||squid/compat/lib squid/compat/include||
-||Where to put 3rd party libraries that are currently located in squid/lib and squid/include?|| /squid/import/libFoo/||
-||Can we remove Foo prefix from FOO/Foo''''''Something.h file names? The prefix carries no additional information and is probably not required for modern compilers, especially in C++ world.||File name should match the primary class declared or defined in that file. Directory name should match the namespace used by classes in that directory. We should move from PROTOFoo to PROTO::Foo classes. '''Some systemic problems have been found cleaning filenames like this with compiler include methods.'''||
+||Where to put OS-compatibilities wrappers that are currently located in squid/lib and squid/include?|| '''squid/compat/''' but due to auto-conf limitations the code must still be in '''.c''' files.||
+||Where to put 3rd party libraries that are currently located in squid/lib and squid/include?|| '''squid/import/libFoo/''' ||
+||Can we remove Foo prefix from FOO/Foo''''''Something.h file names? The prefix carries no additional information and is probably not required for modern compilers, especially in C++ world.|| File name should match the primary class declared or defined in that file. Directory name should match the namespace used by classes in that directory. We should move from PROTOFoo to PROTO::Foo classes. <<br>> '''Some systemic problems have been found cleaning filenames like this with compiler include methods. <<br>> Ensure that there is no squid/src/Foo.h or squid/include/Foo.h file before using a foo/Foo.h'''||
 ||Should client- and server- side files be separated?||yes||
 ||Should directory names use just_small, !CamelCase, or CAPS letters? || lower_case ||
 ||Should class and file names use just_small, !CamelCase, or CAPS letters? || !CamelCaseHttpAcronymsIncluded ||
@@ -100,6 +100,9 @@ If you know the solution or can improve the proposed one, please write to squid-
   * !MemBuf is looking like a good all-purpose buffer we can have the components dump their text into. Which is then dumped into a !StoreEntry by the cache manager
 
  * '''debugs()''' macro handling still has a small circular dependency with libsquid/libbase files and file IO.
+
+ * automake can generate library dependency links for us from foo_LDADD. But most of the makefiles are using foo_DEPENDENCIES which disables that functionality. We should change to using EXTRA_foo_DEPENDENCIES instead and remove any objects duplicated with the foo_LDADD.
+
 
 === Other: ===
 '''Explicit initialization vs self-initialization'''
