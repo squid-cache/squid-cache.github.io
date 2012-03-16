@@ -33,8 +33,8 @@ Key:
 || <:( || <:( || <:( || (./) || ''adaptation/ecap/'' || eCAP support ||
 || <:( || <:( || <:( || (./) || ''adaptation/icap/'' || ICAP support ||
 || <:( || <:( || (./) || (./) || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
-|| <:( || <:( || <:( || :\ {2} || ''auth/'' || Authentication support || rename classes into Auth namespace. ||
-|| <:( || <:( || <:( || :\ || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
+|| <:( || <:( || :\ || :\ || ''auth/'' || Authentication support || rename classes into Auth namespace. ||
+|| <:( || <:( || {X} || :\ || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
 || <:( || <:( || :\ || :\ {2} || ''comm/'' || I/O subsystem ||
 || <:( || <:( || <:( || || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 || <:( || <:( || <:( ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
@@ -50,7 +50,7 @@ Key:
 || <:( || <:( || <:( || :\ || ''ipc/'' || inter-process communication || ipc.* ipc_win32.*, Move files, add Icp namespace to them, and adjust global names ||
 || <:( || <:( || <:( || {2} || ''log/'' || Logging components || namespace for Custom log formats and tokenizer. classify ||
 || <:( || <:( || <:( ||  || ''mem/'' || Basic Memory management || mem* ||
-|| <:( || <:( || <:( || :\ || ''mgr/'' || Cache Manager || Move in CacheManager.h, cache_manager.cc, and test cases ||
+|| <:( || {2} || <:( || :\ || ''mgr/'' || Cache Manager || Move in CacheManager.h, cache_manager.cc, and test cases ||
 || <:( || <:( || <:( || || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
 || <:( || <:( || <:( || :\ || ''repl/heap/'' || HEAP Replacement Policy algorithms ||
 || <:( || <:( || <:( || :\ || ''repl/lru/'' || Cache Replacement Policy algorithms ||
