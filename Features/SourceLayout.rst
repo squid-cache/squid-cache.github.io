@@ -85,13 +85,13 @@ If you know the solution or can improve the proposed one, please write to squid-
 || '''Problem''' || '''Proposed solution''' ||
 ||Where to put OS-compatibilities wrappers that are currently located in squid/lib and squid/include?|| '''squid/compat/''' but due to auto-conf limitations the code must still be in '''.c''' files.||
 ||Where to put 3rd party libraries that are currently located in squid/lib and squid/include?|| '''squid/import/libFoo/''' ||
-||Can we remove Foo prefix from FOO/Foo''''''Something.h file names? The prefix carries no additional information and is probably not required for modern compilers, especially in C++ world.|| File name should match the primary class declared or defined in that file. Directory name should match the namespace used by classes in that directory. We should move from PROTOFoo to PROTO::Foo classes. <<br>> '''Some systemic problems have been found cleaning filenames like this with compiler include methods. <<br>> Ensure that there is no squid/src/Foo.h or squid/include/Foo.h file before using a foo/Foo.h'''||
+||Can we remove Foo prefix from FOO/Foo''''''Something.h file names? The prefix carries no additional information and is probably not required for modern compilers, especially in C++ world.|| '''Yes, Carefully''' <<BR>> File name should match the primary class declared or defined in that file. Directory name should match the (''lowercased'') namespace used by classes in that directory. We should move from PROTOFoo to PROTO::Foo classes. <<BR>> <<BR>> Ensure that there is no squid/src/Foo.h or squid/include/Foo.h file before using a foo/Foo.h. Some systemic problems have been found cleaning filenames like this with compiler include methods. ||
 ||Should client- and server- side files be separated?||yes||
 ||Should directory names use just_small, !CamelCase, or CAPS letters? || lower_case ||
 ||Should class and file names use just_small, !CamelCase, or CAPS letters? || !CamelCaseHttpAcronymsIncluded ||
 || Should we use squid/src/squid/ root for most sources to include header files as <squid/group/file.h>? This may be required for installed headers and 3rd party code using those headers. It is not clear whether Squid will have installed headers in the foreseeable future. The Feature/eCAP work will determine that. || no ||
 || Should we form a generic mini-cache object type to combine the shared portions of fqdncache, ipcache, idns queue, netdb, ident-cache, maybe others not yet found? || Probably, that will be a separate feature event though. ||
-|| What to do with all the mixed test* and stub_* files during this restructure? || AYJ: I'm sticking them in the same folder as the code, and prefixing with test* and stub* as needed. ||
+|| What to do with all the mixed test* and stub_* files during this restructure? || AYJ: I'm sticking them in the same folder as the code, and prefixing with test* and stub* as needed. Some whose dependencies have not been cleaned up must remain in squid/src/tests/ ||
 
 == Dependency Issues: ==
 
