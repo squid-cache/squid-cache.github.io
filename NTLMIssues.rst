@@ -16,3 +16,8 @@ Long answer: in order to implement this you need to have access to a database co
 
 Due to the way NTLM authentication over HTTP has been designed by Microsoft, each new TCP connection needs to be denied twice to perform the authentication handshake. Then as long as it's kept alive it won't need any further authentication. Yes, it breaks protocol layering. Yes, it breaks HTTP's statelessness. And yes, it wastes lots of bandwidth (two ~2kb denies for an average-sized 16k object means a whopping 20% overhead in a bad-but-not-unreasonable scenario).
 For the gory details of how auth is performed, see [[KnowledgeBase/NTLMAuthGoryDetails]]
+
+== Multi-Hop ==
+
+The Squid mechanisms for adding Proxy-Authentication: headers on client requests sent upstream does not support the NTLM handshake for login to the next-hop proxy using NTLM.
+ {i} Microsoft has officially deprecated NTLM in faviour of Kerberos. [[Squid-3.2]] does support Kerberos (Negotiate) login to upstream proxies.
