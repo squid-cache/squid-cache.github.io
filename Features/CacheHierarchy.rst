@@ -28,7 +28,7 @@ These two simple connections can be combined in any number of complex '''hierarc
 
 == How do I configure Squid forward all requests to another proxy? ==
 
-First, you need to give Squid a parent cache.  Second, you need to tell Squid it can not connect directly to origin servers.  This is done with three configuration file lines:
+First, you need to give Squid a parent cache.  Second, you need to tell Squid it can not connect directly to origin servers.  This is done with these configuration file lines:
 
 {{{
 cache_peer parentcache.foo.com parent 3128 0 no-query default
@@ -41,8 +41,11 @@ In case you want to be able to use direct connections when all the parents go do
 {{{
 cache_peer parentcache.foo.com parent 3128 0 no-query
 prefer_direct off
+nonhierarchical_direct off
 }}}
-The default behavior of Squid in the absence of positive ICP, HTCP, etc replies is to connect to the origin server instead of using parents. The ''prefer_direct off'' directive tells Squid to try parents first.
+The default behavior of Squid in the absence of positive ICP, HTCP, etc replies is to connect to the origin server instead of using parents. The SquidConf:prefer_direct '''off''' directive tells Squid to try parents first.
+
+Certain types of requests cannot be cached or are served faster going direct, and Squid is optimized to send them over direct connections by default. The SquidConf:nonhierarchical_direct '''off''' directive tells Squid to send these requests via the parent anyway.
 
 
 == How do I join a cache hierarchy? ==
