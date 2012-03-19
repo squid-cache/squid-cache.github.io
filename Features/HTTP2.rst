@@ -26,17 +26,23 @@
 
  * '''More''':
   * http://www.chromium.org/spdy/spdy-proxy-examples
-  * 
 
 = Details =
 
 SPDY is an experimental protocol for framing HTTP requests in a multiplexed fashion over SSL connections. Avoiding the pipeline issues which HTTP has with its dependency on stateful "\r\n" frame boundaries.
+
+ '''NOTE:''' SPDY has several blocker issues correlating with HTTP and Squid features. The blocker problems are marked with {X} .
 
 == SPDY from client to Squid ==
 
 To implement a SPDY receiving port (spdy_port?) in Squid we need to:
  * adjust the client socket read/write processes to all operate through the !ConnStateData connection manager. Avoiding direct reads or writes to the client socket (mostly done as of 3.2 but there are a few exceptions, ie tunnel and ssl-bump).
  * adjust the !ConnStateData connection manager to decapsulate SPDY frames and manage multiple client pipeline contexts in parallel. At present there is only one active context and an idle pipeline queue.
+
+ * {X} implement mandatory transport layer gzip.
+  * implement compression attack security measures.
+
+ * {X} implement mandatory TLS for systems where OpenSSL is not available.
 
  * {X} figure out what happens to a SPDY connection when it encapsulates an HTTP-level "Connection: close" and has other SPDY requests incomplete.
 
@@ -49,6 +55,11 @@ To implement a SPDY server gateway in Squid we need to:
  * duplicate the HTTP server connection manager
   * update the new version to encapsulate/decapsulate with SPDY on nread/write
   * update the new manager to handle multiple parallel data pipelines.
+
+ * {X} implement mandatory transport layer gzip.
+  * implement compression attack security measures.
+
+ * {X} implement mandatory TLS for systems where OpenSSL is not available.
 
  * {X} figure out what happens to a SPDY connection when we need to send an HTTP-level "Connection: close" and has other SPDY requests incomplete.
 
