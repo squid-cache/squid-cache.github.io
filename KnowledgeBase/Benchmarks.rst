@@ -129,6 +129,22 @@ Running squid3.0 on Dell R300 servers. On production servers getting max 1500hit
 }}}
 
 == Squid 2.7 ==
+=== unspecified ===
+|| CPU || 2x Intel Xeon 5400 (quad-core)  ||
+|| RAM || 24 GB ||
+|| HDD || unspecified ||
+|| OS  || Red Hat Linux 5 64bit with some tuning ||
+|| Users || unspecified ||
+|| Network Interfaces || 2x Gigabit Ethernet with bonding ||
+|| RPS || ~2000 connections/second ||
+|| Throughput || ~980 MBit/second ||
+|| Hit Ratio || unspecified, expected high (static content) ||
+|| CPU Usage || unspecified ||
+
+{{{
+Submitted by: Gareth Coffey. 2012-03-20
+}}}
+
 === STABLE 9 ===
 || CPU || Intel Xeon 2GHz (dual quad-core)  ||
 || RAM || 8 GB ||
