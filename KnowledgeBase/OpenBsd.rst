@@ -15,6 +15,8 @@ The [[http://www.openbsd.org|OpenBSD]] packages collection supports squid.
 ==== Squid-2.7 ====
 OpenBSD 4.7 sports squid 2.7STABLE7 as a package and in the ports collection.
 
+OpenBSD 4.8 and later sport squid 2.7STABLE9 as a package and in the ports collection.
+
 Binary Install Procedure:
 {{{
 pkg_add squid
@@ -34,6 +36,10 @@ CFLAGS='-O0 -Wall -g' CXXFLAGS="$CFLAGS" ./test-builds.sh
 }}}
 
 == Troubleshooting ==
+
+=== NAT lookup failures ===
+
+Due to deep changes in PF with OpenBSD 4.6 the ioctl() interface used by Squid to access NAT table entries was broken (intentionally removed?) for several OpenBSD releases. We are not quite certain when the ioctl() was fixed again but it apparently works as of OpenBSD 5.0.
 
 ----
 CategoryKnowledgeBase SquidFaq/BinaryPackages
