@@ -132,14 +132,14 @@ Running squid3.0 on Dell R300 servers. On production servers getting max 1500hit
 === unspecified ===
 || CPU || 2x Intel Xeon 5400 (quad-core)  ||
 || RAM || 24 GB ||
-|| HDD || unspecified ||
+|| HDD || 2x72Gb SAS (HW RAID-1) ||
 || OS  || Red Hat Linux 5 64bit with some tuning ||
 || Users || unspecified ||
 || Network Interfaces || 2x Gigabit Ethernet with bonding ||
 || RPS || ~2000 connections/second ||
 || Throughput || ~980 MBit/second ||
 || Hit Ratio || unspecified, expected high (static content) ||
-|| CPU Usage || unspecified ||
+|| CPU Usage || < 25% ||
 
 {{{
 Submitted by: Gareth Coffey. 2012-03-20
