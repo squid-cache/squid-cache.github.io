@@ -74,14 +74,15 @@ The routing features in your kernel also need to be configured to enable correct
 
 {{{
 ip rule add fwmark 1 lookup 100
-ip -f inet route add local 0.0.0.0/0 dev eth0 table 100
+ip -f inet route add local default dev eth0 table 100
+ip -f inet6 route add local default dev eth0 table 100
 }}}
 
 Every OS has different security and limitations around what you can do here.
  . /!\ some systems require that '''lo''' is the interface TPROXY uses.
  . /!\ some systems require that an '''ethN''' is the interface TPROXY uses.
  . /!\ some systems require that each receiving interface have its own unique table.
- . /!\ Some OS block multiple interfaces being linked to the table. You will see a rejected route when a second {{{ip -f inet route}}} is added to the table. Knowing how to erase the custom route entry between tests is useful.
+ . /!\ Some OS block multiple interfaces being linked to the table. You will see a rejected route when a second {{{ip -f inet route}}} is added to the table. To erase the custom route entry repeat the rule with '''del''' instead of '''add''.
 
 On each boot startup set:
 {{{
@@ -111,6 +112,8 @@ net.ipv4.conf.eth0.rp_filter = 0
 
 == iptables Configuration ==
 === iptables on a Router device ===
+ {i} For IPv6 use ip6tables instead of iptables. The rules remain identical.
+
 Setup a chain ''DIVERT'' to mark packets
 
 {{{
@@ -121,12 +124,12 @@ iptables -t mangle -A DIVERT -j ACCEPT
 Use ''DIVERT'' to prevent existing connections going through TPROXY twice:
 
 {{{
-iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
+iptables  -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
 }}}
 Mark all other (new) packets and use ''TPROXY'' to pass into Squid:
 
 {{{
-iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
+iptables  -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
 }}}
 
 === ebtables on a Bridging device ===
