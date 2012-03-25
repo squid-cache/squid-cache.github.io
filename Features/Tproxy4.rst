@@ -82,7 +82,7 @@ Every OS has different security and limitations around what you can do here.
  . /!\ some systems require that '''lo''' is the interface TPROXY uses.
  . /!\ some systems require that an '''ethN''' is the interface TPROXY uses.
  . /!\ some systems require that each receiving interface have its own unique table.
- . /!\ Some OS block multiple interfaces being linked to the table. You will see a rejected route when a second {{{ip -f inet route}}} is added to the table. To erase the custom route entry repeat the rule with '''del''' instead of '''add''.
+ . /!\ Some OS block multiple interfaces being linked to the table. You will see a rejected route when a second {{{ip -f inet route}}} is added to the table. To erase the custom route entry repeat the rule with '''del''' instead of '''add'''.
 
 On each boot startup set:
 {{{
