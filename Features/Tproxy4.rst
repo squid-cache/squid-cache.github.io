@@ -73,8 +73,12 @@ So far we have this:
 The routing features in your kernel also need to be configured to enable correct handling of the intercepted packets. Both arriving and leaving your system.
 
 {{{
-ip rule add fwmark 1 lookup 100
+# IPv4-only
+ip -f inet rule add fwmark 1 lookup 100
 ip -f inet route add local default dev eth0 table 100
+
+# IPv6-only
+ip -f inet6 rule add fwmark 1 lookup 100
 ip -f inet6 route add local default dev eth0 table 100
 }}}
 
