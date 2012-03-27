@@ -2,11 +2,9 @@
 #format wiki
 #language en
 ##
-#faqlisted no
+#faqlisted yes
 
 = Feature: Rock Store =
-
-## Move this down into the details documentation when feature is complete.
 
  * '''Goal''': Disk cache performance within 80% of modern hardware limits.
 
