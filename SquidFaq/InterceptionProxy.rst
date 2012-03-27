@@ -13,7 +13,7 @@ There are some good reasons why you may want to use this technique:
 However there are also significant disadvantages for this strategy, as outlined by Mark Elsen:
 
  * Intercepting HTTP breaks TCP/IP standards because user agents think they are talking directly to the origin server.
- * Requires IPv4 with NAT.
+ * Requires IPv4 with NAT on most operating systems.
  * It causes path-MTU (PMTUD) to fail, possibly making some remote sites inaccessible.  This is not usually a problem if your client machines are connected via Ethernet or DSL PPPoATM where the MTU of all links between the cache and client is 1500 or more.  If your clients are connecting via DSL PPPoE then this is likely to be a problem as PPPoE links often have a reduced MTU (1472 is very common).
  * On older IE versions before version 6, the ctrl-reload function did not work as expected.
  * Proxy authentication does not work, and IP based authentication conceptually fails because the users are all seen to come from the Interception Cache's own IP address.
