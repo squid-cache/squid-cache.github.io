@@ -23,7 +23,7 @@ The first [[Features/SslBump|SslBump]] implementation works well for HTTP CONNEC
 
 The above scheme fails when SSL connections are intercepted because intercepted connections start with an SSL handshake and not an HTTP CONNECT request. Thus, Squid does not receive the origin server host name from the client. Squid knows the destination IP address of the intercepted connection, but an IP address is not usable for SSL certificate generation. This makes it impossible to generate a matching server certificate. Without such a certificate, Squid cannot impersonate the server.
 
-A very similar failure happens when certain browsers send CONNECT requests that use an IP address instead of a host name to specify the tunnel destination.
+A very similar failure happens when certain clients (e.g., Rekonq browser v0.7.x) send CONNECT requests that use an IP address instead of a host name to specify the tunnel destination.
 
 Another problem with the current "bump-'''client'''-first" approach is that whenever the server sends a partially defective or an outright invalid SSL certificate, it is too late to propagate that problem to the client and let the client deal with it. This is unfortunate both because the final decision should be, ideally, done by the user, not Squid and because browsers already have rather sophisticated tools for warning the user about the problem, examining invalid certificates, ignoring problems, caching user decision, etc. (and we do not really want to duplicate that). While this project will not forward certificate problems to the client, it is a required step towards supporting that frequently requested functionality in the [[Features/MimicSslServerCert|future]].
 
@@ -69,6 +69,7 @@ It can be argued that the same bump-server­-first scheme should be used for HTT
  1. When Squid knows valid server certificate details, it can generate its fake server certificate with those details. With the current scheme, all those details are lost. In general, browsers do not care about those details but there may be HTTP clients (or even human users) that require or could benefit from knowing them.
  1. When a server sends a ''bad'' certificate, Squid may be able to replicate that brokenness in its own fake certificate, giving the HTTP client control whether to ignore the problem or terminate the transaction. Currently, it is difficult to support similar dynamic, user­-directed opt out; Squid itself has to decide what to do when the server certificate cannot be validated.
  1. When a server asks for a ''client certificate'', Squid may be able to ask the client and then forward the client certificate to the server. Such client certificate handling may not be possible with the current scheme because it would have to be done after the SSL handshake.
+ 1. Some clients (e.g., Rekonq browser v0.7.x) do not send host names in CONNECT requests. Such clients require bump-server­-first even in forward proxying mode.
 
 The code being tested uses bump-server-first for CONNECT requests, but that one-for-all decision is debatable, and the choice may become configurable using a squid.conf ACL (further complicating the already rather convoluted code). Feedback is welcome.
 
