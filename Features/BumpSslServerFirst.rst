@@ -47,7 +47,7 @@ For intercepted connections:
 For bumped CONNECT requests:
 
  1. When Squid makes the connection to the server to peek the certificate, there is only CONNECT HTTP request. That request may have a server name but some browsers CONNECT using IP address instead (e.g., Konqueror).  ACLs using source and destination IP addresses/ports should work during this stage.
- 2. After Squid receives the server certificate, the server name becomes available (from the CN field of the certificate) even if it was not available before. ACLs using server domain name should now work. XXX: Check what Squid does when HTTP request Host does not match CONNECT host name and document here.
+ 2. After Squid receives the server certificate, the server name becomes available (from the CN field of the certificate) even if it was not available before. ACLs using server domain name should now work. TODO: Squid does not check whether the CONNECT host name matches the subsequent embedded HTTP request Host value. Correctly adding such checks is difficult because one of the two names may be a location/CDN-specific IP address and because the tunnel ends may be designed to use multiple host names (e.g., the server end of the tunnel could be a proxy).
  3. After Squid receives the first bumped HTTP request, all HTTP request-specific ACLs should be available. For each request, Squid verifies that the requested host matches the certificate CN retrieved earlier. A SQUID_X509_V_ERR_DOMAIN_MISMATCH error is triggered and the connection with the client is terminated if there is no match.
 
 Please note that sslproxy_cert_error ACLs always check the true server certificate and not the generated fake one.
