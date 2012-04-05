@@ -41,18 +41,21 @@ Using Coordinator and common configuration files, Squid workers can receive iden
  * general configuration,
  * listening ports,
  * logs,
+ * memory object cache (in most environments),
+ * disk object cache (with Rock Store only),
  * cache manager statistics.
 
 Conditional configuration and worker-dependent macros can be used to limit sharing. For example, each worker can be given a dedicated http_port to listen on.
 
 Currently, Squid workers do not share and do not synchronize other resources or services, including:
 
- * object caches (memory and disk) -- there is an active project to allow such sharing;
+ * memory object cache (in some environments),
+ * disk object cache (except for Rock Store),
  * DNS caches (ipcache and fqdncache);
  * SNMP stats -- there is an active project to allow such sharing;
  * helper processes and daemons.
 
-Currently, all shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads. Future versions will share large volumes of information (e.g., a disk cache) without copying.
+Cache indexes are shared without copying. Other shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads. 
 
 
 === Why processes? Aren't threads better? ===
@@ -188,7 +191,7 @@ To safely share a resource or service among workers, that resource or service mu
 
 Resources and services that are currently isolated but may benefit from sharing include:
  * ipcache and fqdncache  (may benefit from merging so that only one DNS cache needs to be shared)
- * caching storage (see above)
+ * ufs-based caching storage (see above)
  * statistics (current cache manager implementation shares worker stats from the admin point of view)
  * memory manager
  * configuration objects
