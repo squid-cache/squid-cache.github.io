@@ -40,7 +40,7 @@ A [[Features/BumpSslServerFirst|bump-server-first]] support is required to get t
 This section documents how each fake certificate property is generated. The "true" adjective is applied to describe a property of the SSL certificate received from the origin server. The "intended" adjective describes a property of the request or connection received from the client (including intercepted connections).
 
 ||'''x509 certificate property'''||'''After successful bumping'''||'''After failed bumping'''||
-||Common Name (CN)||True CN by default. Can be overwritten using sslproxy_cert_adapt setCommonName.||If the intended host name is available, then use it, subject to CN length controls discussed separately below. Otherwise, if true CN is available, then use that. If neither the intended host name nor true CN is available, then the certificate will have no CN (and no Subject).||
+||Common Name (CN)||True CN by default. Can be overwritten using sslproxy_cert_adapt setCommonName.||If the CONNECT address is available, then use it, subject to CN length controls discussed separately below. Otherwise, if true CN is available, then use that. If this is an intercepted connection and no true CN is available, then the certificate will have no CN (and no Subject).||
 ||Alias||True alias, if any.||None.||
 ||Subject||True subject by default. The CN part can be overwritten (see CN).||Contains CN only (see CN).||
 ||Subject Alternative Names (subjectAltName)||True names, if any, by default. None if using sslproxy_cert_adapt setCommonName (browsers reject certificates where alternative names are not related to CN).||None.||
@@ -80,7 +80,24 @@ If Squid receives a valid true certificate, Squid does not try to enforce CN len
 Hopefully, excessively long domains are rare for secure sites. TODO: Find a public secure site with a long domain name that actually works.
 
 
+== URLs with IP addresses ==
+
+A user may type SSL server IP address in the address bar. Some browsers (e.g., Rekonq browser v0.7.x) send IP addresses in CONNECT requests even when the user typed a host name in the address bar. Currently, Squid cannot distinguish the two cases and assumes that an IP address in the CONNECT request implies that the user typed that address in the address bar. Besides assuming user input, Squid overall behavior here is meant to mimic what would happen if Squid was not in the loop. Here are a few cases when the user enters something like https://74.125.65.99/ instead of https://www.google.com/:
+
+
+||'''Squid configuration'''||'''Browser displays'''||'''Comments'''||
+||No !SslBump||Browser's internal "Server's certificate does not match the URL" error.||This is because the server certificate does not use an IP address for CN.||
+||!SslBump with default squid.conf||Squid's SQUID_X509_V_ERR_DOMAIN_MISMATCH error page, served with CN set to the IP address from the CONNECT request.||This matches no-!SslBump behavior. However, see "Always IP" below the table.||
+||sslproxy_cert_error allow all||Browser's internal "Server's certificate does not match the URL" error.||This is correct behavior because Squid was told to ignore errors and was not told to adapt the origin server CN. The origin server set CN to www.google.com or equivalent while the browser was expecting an IP address.||
+||sslproxy_cert_error allow all<<BR>>sslproxy_cert_adapt setCommonName ssl::certDomainMismatch||Google page without an error.||Because Squid sets fake certificate CN to the IP address from the CONNECT request. However, see "Always IP" below.||
+||sslproxy_cert_error allow all<<BR>>sslproxy_cert_adapt setCommonName{74.125.65.99} ssl::certDomainMismatch||Google page without an error.||Squid sets fake certificate CN to the IP address from the CONNECT request. However, see "Always IP" below.||
+
+'''Always IP''': Configurations with this comment may not work with browsers that always use IP addresses in CONNECT requests because their second request Host header will not match the CN IP. There is nothing Squid can do here until we learn how to detect CONNECT requests from such browsers.
+
+
 = Limitations =
+
+Some browsers (e.g., Rekonq browser v0.7.x) send IP addresses in CONNECT requests even when the user typed a host name in the address bar. Squid cannot handle both such browsers ''and'' URLs with IP addresses instead of host names because Squid cannot distinguish one case from another. There is nothing we can do about it until somebody contributes code to reliably detect CONNECT requests from those "unusual" browsers.
 
 SQUID_X509_V_ERR_DOMAIN_MISMATCH errors are not checked until the first encrypted request arrives from the client. It is impossible to check for those errors earlier when dealing with intercepted connections or when talking to a browser that does not use domain names in CONNECT requests. It is possible to check for such errors when dealing with CONNECT requests that contain intended domain name information, but Squid does not.
 
