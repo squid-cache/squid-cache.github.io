@@ -40,7 +40,7 @@ Bumped connection goes through several stages. Each stage affects what informati
 
 For intercepted connections:
 
- 1. When Squid makes the connection to the server to peek the certificate, there is no HTTP request and no server name. ACLs using source and destination IP addresses/ports should work during this stage. XXX: We still need to modify DestinationIP.cc acl to use FilledChecklist::dst_addr member when possible instead of trying to resolve the name in the Host header.
+ 1. When Squid makes the connection to the server to peek the certificate, there is no HTTP request and no server name. ACLs using source and destination IP addresses/ports should work during this stage.
  2. After Squid receives the server certificate, the actual server name becomes available (from the CN field of the certificate). Squid starts using that name when reporting certificate details on error pages if needed, but does not assume that the future request will be directed to the same server. Thus, destination domain ACLs will not work at this stage.
  3. After Squid receives the first HTTP request, all HTTP request-specific ACLs should be available. For each request, Squid verifies that the requested host matches the certificate CN retrieved earlier. A SQUID_X509_V_ERR_DOMAIN_MISMATCH error is triggered and the connection with the client is terminated if there is no match.
 
