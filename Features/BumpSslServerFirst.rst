@@ -62,14 +62,14 @@ Without bumping, a client opens a secure connection to the origin server and sen
  3. When reopening a server connection, Squid verifies that the server SSL certificate has not changed much. If server certificate has changed, Squid responds with a SQUID_X509_V_ERR_DOMAIN_MISMATCH error which was added during this project. This feature minimizes the probability that another an attacker can inject itself into the post-Squid message stream after Squid already sent a fake server certificate to the client and the client approved that fake certificate.
  
 
-== What about CONNECT requests? ==
+== Why bump the server first when dealing with CONNECT requests? ==
 
-It can be argued that the same bump-server­-first scheme should be used for HTTP CONNECT requests as well because it offers a few advantages:
+Bumping server first is essentially required for handling intercepted HTTPS connections but the same scheme should be used for most HTTP CONNECT requests because it offers a few advantages compared to the old bump-client-first approach:
 
- 1. When Squid knows valid server certificate details, it can generate its fake server certificate with those details. With the current scheme, all those details are lost. In general, browsers do not care about those details but there may be HTTP clients (or even human users) that require or could benefit from knowing them.
- 1. When a server sends a ''bad'' certificate, Squid may be able to replicate that brokenness in its own fake certificate, giving the HTTP client control whether to ignore the problem or terminate the transaction. Currently, it is difficult to support similar dynamic, user­-directed opt out; Squid itself has to decide what to do when the server certificate cannot be validated.
- 1. When a server asks for a ''client certificate'', Squid may be able to ask the client and then forward the client certificate to the server. Such client certificate handling may not be possible with the current scheme because it would have to be done after the SSL handshake.
- 1. Some clients (e.g., Rekonq browser v0.7.x) do not send host names in CONNECT requests. Such clients require bump-server­-first even in forward proxying mode.
+ 1. When Squid knows valid server certificate details, it can generate its fake server certificate with those details. With the bump-client-first scheme, all those details are lost. In general, browsers do not care about those details but there may be HTTP clients (or even human users) that require or could benefit from knowing them.
+ 1. When a server sends a ''bad'' certificate, Squid may be able to replicate that brokenness in its own fake certificate, giving the HTTP client control whether to ignore the problem or terminate the transaction. With bump-client-furst, it is difficult to support similar dynamic, user­-directed opt out; Squid itself has to decide what to do when the server certificate cannot be validated.
+ 1. When a server asks for a ''client certificate'', Squid may be able to ask the client and then forward the client certificate to the server. Such client certificate handling may not be possible with the bump-client-first scheme because it would have to be done after the SSL handshake.
+ 1. Some clients (e.g., Rekonq browser v0.7.x) do not send host names in CONNECT requests. Such clients require bump-server­-first even in forward proxying mode. Unfortunately, there are other problems with fully supporting such clients (i.e., Squid does not know whether the IP address in the CONNECT request is what the user have typed into the address bar) so not all features will work well for them until more specialized detection code is added.
 
 The code being tested uses bump-server-first for CONNECT requests, but that one-for-all decision is debatable, and the choice may become configurable using a squid.conf ACL (further complicating the already rather convoluted code). Feedback is welcome.
 
