@@ -27,7 +27,7 @@ Here is a sample squid.conf excerpt with SSL Bump-related options:
 === Enabling SSL Bump ===
 Example of how to configure the HTTP port to bump CONNECT requests
 {{{
-http_port 3128 ssl-bump cert=/usr/local/squid3/etc/CA-priv+pub.pem
+http_port 3128 ssl-bump cert=/usr/local/squid3/etc/site_priv+pub.pem
 
 # Bumped requests have relative URLs so Squid has to use reverse proxy
 # or accelerator code. By default, that code denies direct forwarding.
