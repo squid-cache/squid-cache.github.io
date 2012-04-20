@@ -54,13 +54,13 @@ cd ssl_cert
 Create self-signed certificate (you will be asked to provide information that will be incorporated into your certificate):
 
  . {{{
-openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 -keyout www.sample.com.pem  -out www.sample.com.pem
+openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 -keyout myCA.pem  -out myCA.pem
 }}}
 
 Create a DER-encoded version of the certificate to import into users' browsers:
 
  . {{{
-openssl x509 -in www.sample.com.pem -outform DER -out www.sample.com.der
+openssl x509 -in myCA.pem -outform DER -out myCA.der
 }}}
 
 The result file should be imported into the 'Authorities' section of users' browsers.
@@ -81,7 +81,7 @@ In theory, you must either import your root certificate into browsers or instruc
 Open {{{/usr/local/squid/etc/squid.conf}}} for editing, find 'http_port' option and add certificate-related options. For example:
 
  . {{{
-http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/ssl_cert/www.sample.com.pem
+http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/ssl_cert/myCA.pem
 }}}
 
 Also add the following lines to enable SSL bumping:
