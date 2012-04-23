@@ -97,7 +97,7 @@ while (<>) {
 if ($X[1] =~ /(youtube|google).*videoplayback\?/){
         @itag = m/[&?](itag=[0-9]*)/;
         @id = m/[&?](id=[^\&]*)/;
-        @range = m/(&range=[^\&\s]*)/;
+        @range = m/[&?](range=[^\&\s]*)/;
         print $x . "http://video-srv.youtube.com.SQUIDINTERNAL/@id&@itag@range\n";
     } else {
         print $x . $X[1] . "\n";
