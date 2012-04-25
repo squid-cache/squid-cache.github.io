@@ -53,6 +53,8 @@ You may also determine from the details mentioned in the alert that the client h
 
 '''Workaround'''
 
+  . {i} As of May 2012, [[Squid-3.2]] will pass traffic which fails these validation checks to the same origin as intended by the client. But will disable caching, route error recovery and peer routing in order to do so safely. The intention in future is to support those features safely for this traffic.
+
 There really are no workarounds. Only fixes. Although there may be some things configured in the network which are causing the alert to happen when it should not.
 
 The below details are mandatory configuration for NAT intercept or TPROXY proxies. Some of them appeared previously to be optional due to old Squid bugs which have now been fixed.
@@ -65,7 +67,6 @@ The below details are mandatory configuration for NAT intercept or TPROXY proxie
 
  * ensure that your DNS servers are obeying the IP rotation TTL for that domain name
   . Certain CDN networks load balance by rotating a set of IPs in and out of service with each TTL cycle. Storing the website IPs longer than the TTL permits is a violation of DNS system protocol which produces incorrect DNS responses periodically. This alert is just one of the more visible side effects that violation causes.
-
 
 This is optional and may not be possible, but is useful when it works:
 
