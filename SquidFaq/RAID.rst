@@ -73,6 +73,11 @@ Summary:
  * performance: quite good.
  * reliability: good, the system can afford to fail one physical disk per logical volume
 
+=== RAID10 ===
+
+Any chain is only as good as its weakest link. In this case the weak point is the inclusion or RAID-0 operations. See above.
+
+
 === Software RAID5 ===
 RAID 5 uses one disk for parity data per logical volume; parity blocks are dispersed among the physical disks for better reliability. One logical volume can generally be made of 2+1 to 7+1 physical disks.
 
