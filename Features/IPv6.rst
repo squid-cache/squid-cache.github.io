@@ -179,7 +179,9 @@ NAT simply does not exist in IPv6. By Design.
 
 Given that interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do interception that way.
 
-[[Features/Tproxy4|TPROXY v4]] is capable of IPv6. Kernel and iptables releases containing IPv6 TPROXYv4 are now readily available.
+Linux [[Features/Tproxy4|TPROXY v4]] is capable of IPv6. Kernel and iptables releases containing IPv6 TPROXYv4 are now readily available.
+
+BSD '''divert''' sockets provide equivalent functionality for recent OpenBSD and derivative systems. As of March 2012 work is underway to get support for these sockets working.
 
 === Delay Pools ===
 
