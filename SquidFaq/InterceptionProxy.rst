@@ -9,7 +9,7 @@ Interception Caching goes under many names - Interception Caching, Transparent P
 There are some good reasons why you may want to use this technique:
 
  * There is no client configuration required.  This is the most popular reason for investigating this option.
- * You can implement better and more reliable strategies to maintain client access in case of your cache infrastructure going out of service.
+
 However there are also significant disadvantages for this strategy, as outlined by Mark Elsen:
 
  * Intercepting HTTP breaks TCP/IP standards because user agents think they are talking directly to the origin server.
@@ -18,10 +18,14 @@ However there are also significant disadvantages for this strategy, as outlined 
  * On older IE versions before version 6, the ctrl-reload function did not work as expected.
  * Proxy authentication does not work, and IP based authentication conceptually fails because the users are all seen to come from the Interception Cache's own IP address.
  * You can't use IDENT lookups (which are inherently very insecure anyway)
+ * ARP relay breaks at the proxy machine.
  * Interception Caching only supports the HTTP protocol, not gopher, SSL, or FTP.  You cannot setup a redirection-rule to the proxy server for other protocols other than HTTP since it will not know how to deal with it.
  * Intercepting Caches are incompatible with IP filtering designed to prevent address spoofing.
  * Clients are still expected to have full Internet DNS resolving capabilities; in certain intranet/firewalling setups, this is not always wanted.
  * Related to above: suppose the users browser connects to a site which is down. However, due to the transparent proxying, it gets a connected state to the interceptor.   The end user may get wrong error messages or a hung browser, for seemingly unknown reasons to them.
+ * WebSockets connectivity does not work.
+ * protocol tunnelling over port 80 breaks.
+
 If you feel that the advantages outweigh the disadvantages in your network, you may choose to continue reading and look at implementing Interception Caching.
 
 == Requirements and methods for Interception Caching ==
