@@ -32,7 +32,7 @@ http_port 80 accel defaultsite=your.main.website.name no-vhost
 
  * '''accel''' tells Squid to handle requests coming in this port as if it was a Web Server
  * '''defaultsite=X''' tells Squid to assume the domain ''X'' is wanted.
- * '''no-vhost''' for [[Squid-3.2]] or later disables HTTP/1.1 [[VirtualHosting|domain based virtual hosting]] support. Omit this option for older Squid versions.
+ * '''no-vhost''' for [[Squid-3.2]] or later disables HTTP/1.1 [[ConfigExamples/Reverse/VirtualHosting|domain based virtual hosting]] support. Omit this option for older Squid versions.
 
 ## shared with VirtualHosting
 
