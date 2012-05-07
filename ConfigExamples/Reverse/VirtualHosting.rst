@@ -2,18 +2,20 @@
 #format wiki
 #language en
 
-= Reverse Proxy with Domain Based Virtual Host Support =
+= Reverse Proxy with HTTP/1.1 Domain Based Virtual Host Support =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 <<TableOfContents>>
 
-==  Squid Configuration ==
+ || {i} NOTE: || This configuration is for [[Squid-3.1]] and older which are HTTP/1.0 proxies. <<BR>> [[Squid-3.2]] has virtual hosting support enabled by default as part of HTTP/1.1. ||
 
+
+==  Squid Configuration ==
 
 <<Include(ConfigExamples/Reverse/BasicAccelerator, , from="^## begin locationwarning", to="^## end locationwarning")>>
 
-If you are using Squid has an accelerator for a domain based virtual host system then you need to additionally specify the '''vhost''' option to http_port
+If you are using [[Squid-3.1]] or older has an accelerator for a domain based virtual host system then you need to additionally specify the '''vhost''' option to SquidConf:http_port
 
 {{{
 http_port 80 accel defaultsite=your.main.website.name vhost
