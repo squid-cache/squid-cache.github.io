@@ -27,11 +27,12 @@ see the [[SquidFaq/ReverseProxy|FAQ Reverse Proxy]] page for detailed overview o
 First, you have to tell Squid to listen on port 80 (usually), so set the '''SquidConf:http_port''' option with the defaultsite option telling Squid it's an accelerator for this site:
 
 {{{
-http_port 80 accel defaultsite=your.main.website.name
+http_port 80 accel defaultsite=your.main.website.name no-vhost
 }}}
 
  * '''accel''' tells Squid to handle requests coming in this port as if it was a Web Server
- * '''defaultsite=X''' tells Squid to assume the domain ''X'' was wanted when broken clients fail to send a Host: header properly.
+ * '''defaultsite=X''' tells Squid to assume the domain ''X'' is wanted.
+ * '''no-vhost''' for [[Squid-3.2]] or later disables HTTP/1.1 [[VirtualHosting|domain based virtual hosting]] support. Omit this option for older Squid versions.
 
 ## shared with VirtualHosting
 
