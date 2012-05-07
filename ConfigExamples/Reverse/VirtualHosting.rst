@@ -21,6 +21,11 @@ If you are using [[Squid-3.1]] or older has an accelerator for a domain based vi
 http_port 80 accel defaultsite=your.main.website.name vhost
 }}}
 
+ * '''accel''' tells Squid to handle requests coming in this port as if it was a Web Server
+ * '''defaultsite=X''' tells Squid to assume the domain ''X'' is wanted.
+ * '''vhost''' for [[Squid-3.1]] or older enables HTTP/1.1 domain based virtual hosting support. Omit this option for [[Squid-3.2]] or later versions.
+
+
 When both defaultsite and vhost is specified, defaultsite specifies the domain name old HTTP/1.0 clients not sending a Host header should be sent to. Squid will run fine if you only use vhost, but there is still some software out there not sending Host headers so it's recommended to specify defaultsite as well. If defaultsite is not specified those clients will get an "Invalid request" error.
 
 <<Include(ConfigExamples/Reverse/BasicAccelerator, , from="^## shared with VirtualHosting", to="^----")>>
