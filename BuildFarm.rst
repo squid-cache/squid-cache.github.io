@@ -10,17 +10,19 @@ FrancescoChemolli is leading this effort.
 The currently maintained farm consists of:
 || OS || Arch || Ver || system-name || Status ||
 ||<|3> [[http://www.centos.org/|CentOS]] ||
-|| x64 || 5.3 || eu.squid-cache.org || {OK} ||
+|| x64 || 5.8 || eu.squid-cache.org || {OK} ||
 || x32 || || || ||
 ||<|2> [[http://www.ubuntu.com/|Ubuntu]] ||
-|| x64 || 11.04 (natty) || natty.squid-cache.org || {OK} ||
+|| x64 || 12.04 (precise) || precise.squid-cache.org || {OK} ||
+||<|2> [[http://opensuse.org/|OpenSUSE]] ||
+|| x64 || 12.1 || opensuse-x64 || {OK} ||
+||<|2> [[http://mandriva.com/|Mandriva]] ||
+|| x32 || 2011.0 || mandriva-x86 || {OK} ||
 ||<|4> [[http://www.debian.org/|Debian]] ||
-##|| ARM || 5.0 (lenny) || varm-deb.squid-cache.org || Being tested (QEMU-based) ||
 || ARM || 6.0 (squeeze) || sheeva-debian-squeeze || {OK} Sponsored. ||
 || x32 || sid || rio.treenet || {OK} Sponsored. ||
 || x64 || sid || debian-unstable-x64 || {OK} ||
 ||<|3> [[http://www.openbsd.org/|OpenBSD]] ||
-##|| || vobsd.squid-cache.org || {OK} ||
 || x32 || 4.9 || obsd-49-x86 || {OK} [[/OpenBsdInstall|Installation guide]] ||
 || x64 || 4.8 || obsd-48-x64 || {OK} [[/OpenBsdInstall|Installation guide]] ||
 ||<|3> [[http://www.freebsd.org/|FreeBSD]] ||
