@@ -178,6 +178,9 @@ Squid recognizes several request methods as defined in RFC RFC:2616 and RFC RFC:
  UNLOCK    rfc2518    never      unlock an object.
 }}}
 
+Note that since Squid 3.1, methods not listed here (such as PATCH) are supported "out of the box."
+
+
 ==== Hierarchy Codes ====
 The following hierarchy codes are used with Squid-2:
 
