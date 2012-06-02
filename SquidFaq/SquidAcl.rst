@@ -240,11 +240,13 @@ The intent here is to allow cache manager requests from the ''localhost'' and ''
 http_access deny manager !localhost !server
 }}}
 The problem here is that for allowable requests, this access rule is not matched.  For example,
+
  * if the source IP address is ''localhost'', then "!localhost" is ''false'' and the access rule is not matched, so Squid continues checking the other rules.
  * if the source IP address is ''server'', then "!server is ''false'' and the access rule is not matched, so Squid continues checking the other rules.
 
 Cache manager requests from the ''server'' address work because ''server'' is a subset of '''ourhosts''' and the second access rule will match and allow the request.
- /!\ Also note that this means any cache manager request from ''ourhosts'' would be allowed.
+
+ . /!\ Also note that this means any cache manager request from ''ourhosts'' would be allowed.
 
 To implement the desired policy correctly, the access rules should be rewritten as
 
@@ -338,7 +340,7 @@ http_access allow GOOD
 http_access deny all
 }}}
 == How can I block access to porn sites? ==
-Often, the hardest part about using Squid to deny pornography is coming up with the list of sites that should be blocked.  You may want to maintain such a list yourself, or get one from somewhere else (see below).
+Often, the hardest part about using Squid to deny pornography is coming up with the list of sites that should be blocked.  You may want to maintain such a list yourself, or get one from somewhere else (see below).  Note that once you start blocking web content, users will try to use web proxies to circumvent the porn filter, hence you will also need to block all web proxies (visit http://www.proxy.org if you do not know what a web proxy is).
 
 The ACL syntax for using such a list depends on its contents. If the list contains regular expressions, use this:
 
@@ -350,8 +352,11 @@ On the other hand, if the list contains origin server hostnames, simply change '
 
 == Does anyone have a ban list of porn sites and such? ==
  * The [[http://www.squidguard.org/blacklists.html|SquidGuard]] redirector folks have links to some lists.
+ * The maintainer of the free [[http://www.urlfilterdb.com/|ufdbGuard]] redirector has a commercial URL database.
  * Bill Stearns maintains the [[http://www.stearns.org/sa-blacklist/|sa-blacklist]] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
  * The [[http://freshmeat.net/projects/sleezeball/|SleezeBall site]] has a list of patterns that you can download.
+
+Note that once you start blocking web content, users will try to use web proxies to circumvent the filtering, hence you will also need to block all web proxies.
 
 == Squid doesn't match my subdomains ==
 If you are using Squid-2.4 or later then keep in mind that dstdomain acls uses different syntax for exact host matches and entire domain matches. ''www.example.com'' matches the '''exact host''' ''www.example.com'', while ''.example.com'' matches the '''entire domain''' example.com (including example.com alone)
