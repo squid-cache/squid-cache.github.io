@@ -10,7 +10,7 @@
 
 == Upcoming Meeting ==
 
- * Date: '''Yet to be decided'''.
+ * Date: '''07:00 2012-06-15 UTC'''.
 
  * Location: IRC
 
