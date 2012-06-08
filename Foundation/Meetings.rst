@@ -8,7 +8,7 @@
 
 ## [[TableOfContents]]
 
-= Upcoming Meeting =
+== Upcoming Meeting ==
 
  * Date: '''Yet to be decided'''.
 
