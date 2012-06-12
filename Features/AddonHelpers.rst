@@ -276,7 +276,7 @@ Input line received from Squid:
 
 Result line sent back to Squid:
 {{{
-[channel-ID] result key-pairs
+[channel-ID] result [key-pairs]
 }}}
 
  channel-ID::
