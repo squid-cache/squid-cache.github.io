@@ -56,7 +56,7 @@ If you haven't all the necessary packages installed, fetch them:
 {{{
 root@squidbox:~# apt-get install ebtables bridge-utils
 }}}
-Let's assume that the machine is in the 10.9.0.0/16 subnet, and let's choose to assign the  IP address 10.9.1.3 to it.  The LAN is a 10.0.0.0/8 network accessed (downstream through eth0) via the router 10.9.2.2,  while a router or firewall 10.9.1.1 is   the gateway providing access (upstream through eth1) to the Internet.  The DNS server has IP 10.13.13.13.
+Let's assume that the machine is in the 10.9.0.0/16 subnet, and let's choose to assign the  IP address 10.9.1.9 to it.  The LAN is a 10.0.0.0/8 network accessed (downstream through eth0) via the router 10.9.2.2,  while a router or firewall 10.9.1.1 is   the gateway providing access (upstream through eth1) to the Internet.  The DNS server has IP 10.13.13.13.
 
 We are going now to list all the commands necessary to configure the network on the machine.  You can enter these commands at the shell prompt, but to make all changes permanent (i.e. after a reboot) you must also put them in `/etc/rc.local` .
 
@@ -68,7 +68,7 @@ ifconfig eth1 0.0.0.0 promisc up
 /usr/sbin/brctl addbr br0
 /usr/sbin/brctl addif br0 eth0
 /usr/sbin/brctl addif br0 eth1
-ifconfig br0 10.9.1.3 netmask 255.255.0.0 up
+ifconfig br0 10.9.1.9 netmask 255.255.0.0 up
 }}}
 We define routing tables and DNS:
 
@@ -199,7 +199,7 @@ To reload the Squid configuration after a change, run
 root@squidbox:~# squid -k reconfigure
 }}}
 == Setting outgoing IPs ==
-The upstream gateway sees all HTTP requests from the LAN as coming from an unique IP: the Squid's address, in our case 10.9.1.3.
+The upstream gateway sees all HTTP requests from the LAN as coming from an unique IP: the Squid's address, in our case 10.9.1.9.
 
 You might want to be able to differentiate between clients, perhaps in order to apply different policies, or for monitoring purposes. For instance, let's assume the LAN contains three subnets:
 
@@ -231,9 +231,9 @@ acl admin_net src 10.6.0.0/20
 tcp_outgoing_address 10.9.1.4 it_net
 tcp_outgoing_address 10.9.1.5 rd_net
 tcp_outgoing_address 10.9.1.6 admin_net
-tcp_outgoing_address 10.9.1.3
+tcp_outgoing_address 10.9.1.9
 }}}
-The last line specifies the default outgoing address, 10.9.1.3.  This is the address assigned to clients not belonging to any of the three subnets.
+The last line specifies the default outgoing address, 10.9.1.9.  This is the address assigned to clients not belonging to any of the three subnets.
 
 Restart network services and Squid for the changes to take place.
 
