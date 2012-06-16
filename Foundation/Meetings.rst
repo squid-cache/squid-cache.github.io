@@ -23,6 +23,7 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Selection of meeting officials
  1. Agenda bashing.
  1. Last meeting minutes approval.
+ 1. Review of action points from last meeting.
  1. Sysadmin pilot status.
  1. Foundation response to the IRS request for information.
  1. IRCache proposal.
