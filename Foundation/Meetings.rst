@@ -47,7 +47,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Action Points ==
 
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
-|| #4 || HenrikNordstrom || set up a invite-only board mailinglist ||
+|| #4 || HenrikNordstrom || set up a invite-only board mailinglist || done ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
 || #4 || AmosJeffries || create a wiki table with actions || done ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || not done ||
