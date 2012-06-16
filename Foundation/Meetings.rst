@@ -37,8 +37,8 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ||'''ID'''||'''Date'''||'''Location'''||'''Minutes'''||
 ||#4||2012-06-16||IRC||TBD||
-||#3||TBD||IRC||TBD||
-||#2||TBD||IRC||TBD||
+||#3||2012-05-17||IRC||TBD||
+||#2||2012-03-20||TBD||IRC||TBD||
 ||#1||TBD||IRC||TBD||
 
 ----
