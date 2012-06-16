@@ -37,13 +37,17 @@ Most of the Board discussions can be open to the public and your constructive pa
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
 || #4 || AlexRousskov || check on bank fees reversal || not done ||
 || #4 || AmosJeffries || create a wiki table with actions || done ||
+|| #4 || HenrikNordstrom || set up a invite-only board mailinglist ||
+|| #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
+|| #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || not done ||
+|| #4 || AmosJeffries || minutes for meeting #3 written and circulated || not done ||
+|| #4 || AmosJeffries || minutes for meeting #4 written and circulated || not done ||
 || ||
 || #3 || HenrikNordstrom || draft agenda ||done ||
 || #3 || AmosJeffries || donation page text || not done ||
 || #3 || AmosJeffries || bring up immediate needs for 3.2 on squid-dev || not done ||
 || #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
 || #3 || AlexRousskov || convince bank to stop their fees for low account || done ||
-|| #3 || AmosJeffries || publication of meeting minutes || not done ||
 || ||
 || #2 || HenrikNordstrom || sysadmin discussions with Pieter De Wit || not done ||
 || #2 || HenrikNordstrom , AmosJeffries || other (end-of-year) documents || not done ||
