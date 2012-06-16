@@ -17,7 +17,7 @@ Most of the Board discussions can be open to the public and your constructive pa
  * Location: IRC
 
 
-=== Draft Agenda ===
+==== Draft Agenda ====
 
  1. Opening of the meeting
  1. Selection of meeting officials
@@ -32,6 +32,20 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Next meeting scheduling.
  1. Open floor.
 
+== Action Points ==
+
+|| '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
+|| #4 || AlexRousskov || check on bank fees reversal || done ||
+|| #4 || AmosJeffries || create a wiki table with actions || done ||
+|| ||
+|| #3 || HenrikNordstrom || draft agenda ||done ||
+|| #3 || AmosJeffries || donation page text || not done ||
+|| #3 || AmosJeffries || bring up immediate needs for 3.2 on squid-dev || not done ||
+|| #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
+|| #3 || AlexRousskov || convince bank to stop their fees for low account || done ||
+|| ||
+|| #2 || HenrikNordstrom || sysadmin discussions with Pieter De Wit || not done ||
+|| #2 || HenrikNordstrom , AmosJeffries || other (end-of-year) documents || not done ||
 
 == Past Meetings ==
 
