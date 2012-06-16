@@ -28,7 +28,7 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Foundation response to the IRS request for information.
  1. IRCache proposal.
  1. Board email alias setup.
- 1. Publicatin of Board meeting minutes.
+ 1. Publication of Board meeting minutes.
  1. Next meeting scheduling.
  1. Open floor.
 
@@ -43,6 +43,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #3 || AmosJeffries || bring up immediate needs for 3.2 on squid-dev || not done ||
 || #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
 || #3 || AlexRousskov || convince bank to stop their fees for low account || done ||
+|| #3 || AmosJeffries || publication of meeting minutes || not done ||
 || ||
 || #2 || HenrikNordstrom || sysadmin discussions with Pieter De Wit || not done ||
 || #2 || HenrikNordstrom , AmosJeffries || other (end-of-year) documents || not done ||
