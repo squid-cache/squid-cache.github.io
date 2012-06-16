@@ -35,7 +35,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Action Points ==
 
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
-|| #4 || AlexRousskov || check on bank fees reversal || done ||
+|| #4 || AlexRousskov || check on bank fees reversal || not done ||
 || #4 || AmosJeffries || create a wiki table with actions || done ||
 || ||
 || #3 || HenrikNordstrom || draft agenda ||done ||
