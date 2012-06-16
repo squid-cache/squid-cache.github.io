@@ -12,7 +12,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Upcoming Meeting ==
 
- * Date: '''07:00 2012-06-15 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''07:00 2012-06-16 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
@@ -33,6 +33,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Past Meetings ==
 
 ||'''ID'''||'''Date'''||'''Location'''||'''Minutes'''||
+||#4||2012-06-16||IRC||TBD||
 ||#3||TBD||IRC||TBD||
 ||#2||TBD||IRC||TBD||
 ||#1||TBD||IRC||TBD||
