@@ -9,7 +9,7 @@
 
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': Allow [[Features/SslBump|bumping]] of intercepted SSL connections. Prep for mimicking server certificates details.
- * '''Status''': in progress; beta testing
+ * '''Status''': in progress; submitted for Squid Project review
  * '''ETA''': February 2012
  * '''Version''': 3.3
  * '''Priority''': 1
