@@ -94,6 +94,17 @@ A user may type SSL server IP address in the address bar. Some browsers (e.g., R
 
 '''Always IP''': Configurations with this comment may not work with browsers that always use IP addresses in CONNECT requests because their second request Host header will not match the CN IP. There is nothing Squid can do here until we learn how to detect CONNECT requests from such browsers.
 
+=== IPv6 ===
+
+IPv6 addresses in Request URIs are handled as discussed above. The only IPv6-related caveat is that Squid strips surrounding square brackets when it has to form a certificate CN field based on the IP address. Browsers such as Firefox, Chromium, and Safari prefer bare IPv6 addresses in CNs even if the URL has a bracketed IPv6 address. These browsers generate confusing errors when they see bracketed CNs. For example:
+
+{{{
+  You attempted to reach [2001:470:1:18::120], but instead you actually reached
+  a server identifying itself as [2001:470:1:18::120]. Chromium can say for sure
+  that you reached [2001:470:1:18::120], but cannot verify that that is the same
+  site as [2001:470:1:18::120] which you intended to reach.
+}}}
+
 
 = Limitations =
 
