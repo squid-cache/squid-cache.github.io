@@ -48,7 +48,7 @@ This section documents how each fake certificate property is generated. The "tru
 ||Issuer||||The subject of the signing certificate (see Signer).||
 ||Serial Number||||A positive 20-byte SHA1 hash of signing certificate and fake certificate properties. Browsers reject certificates that have the same Issuer, same serial number, but different CNs. Since Squid has to use the same Issuer for nearly all CNs, we must ensure that serial numbers are virtually never the same if CNs differ, even when generated on independent Squids.||
 ||Validity dates||True dates by default. If a true validity date is missing or if sslproxy_cert_adapt setValidAfter and setValidBefore is active, then the signing certificate validity date is used.||Squid trusted certificate validity dates.||
-||Version||||Set by OpenSSL (usually to 1?)||
+||Version||Version 3 when the subjectAltName extension is mimicked (per RFC 5280). Otherwise, OpenSSL sets the version (usually to 1?)||Set by OpenSSL (usually to 1?)||
 ||Other||||Not mimicked or set (see Limitations).||
 
 
