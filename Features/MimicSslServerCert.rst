@@ -8,7 +8,7 @@
 = Feature: Mimic original SSL server certificate when bumping traffic =
 
  * '''Goal''': Pass original SSL server certificate information to the user. Allow the user to make an informed decision on whether to trust the server certificate.
- * '''Status''': In progress; beta testing
+ * '''Status''': in progress; submitted for Squid Project review
  * '''ETA''': March 2012
  * '''Version''': 3.3
  * '''Priority''': 2
