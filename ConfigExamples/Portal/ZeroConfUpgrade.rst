@@ -22,10 +22,11 @@ This example contains the configuration needed in Squid to catch browsers using 
 The squid [[http://www.squid-cache.org/Versions/langpack|langpack]] bundle of error pages contains two template files called ''ERR_AGENT_WPAD'' and ''ERR_AGENT_CONFIGURE'' with instructions for the most popular browsers and a generic instruction for less popular ones. As with all our bundled pages these come translated in many languages for easier user reading.
 
 
- /!\ When using ERR_AGENT_CONFIGURE with Squid older than [[Squid-3.2]] you will have to edit the file and change the %b to the squid port you want the users configuring. This can be done with:
+ /!\ When using ERR_AGENT_CONFIGURE with Squid older than [[Squid-3.1|Squid-3.1.20]] you will have to edit the file and change the %b to the squid port you want the users configuring. This can be done with:
 {{{
  sed --in-place s/%b/3128/ ERR_AGENT_CONFIGURE
 }}}
+ {i} [[Squid-3.1|3.1.20]] will fill out the %b value with port 3128. Use the above replacement to use another port.<<BR>>
  {i} [[Squid-3.2]] will fill out the %b value with the proxies first ''normal'' (forward-proxy) listening port.
 
 == Squid Configuration File ==
