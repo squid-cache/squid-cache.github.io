@@ -139,13 +139,16 @@ iptables  -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/
 === ebtables on a Bridging device ===
 You need to follow all the steps for setting up the Squid box as a router device. These bridging rules are additional steps to move packets from bridging mode to routing mode:
 
- . {i} $CLIENT_IFACE and $INET_IFACE need to be replaced with the eth* NIC interface names facing the clients or Internet. {i} Mind the line wrap. The following is two command lines.
+ . {i} $CLIENT_IFACE and $INET_IFACE need to be replaced with the eth* NIC interface names facing the clients or Internet.
+ . {i} Mind the line wrap. The following is four ebtables command lines.
 
 {{{
- ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv6 --ip-proto tcp --ip-dport 80 -j redirect --redirect-target DROP
+ ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv6 --ip6-proto tcp --ip6-dport 80 -j redirect --redirect-target DROP
+
  ebtables -t broute -A BROUTING -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 -j redirect --redirect-target DROP
 
- ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv6 --ip-proto tcp --ip-sport 80 -j redirect --redirect-target DROP
+ ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv6 --ip6-proto tcp --ip6-sport 80 -j redirect --redirect-target DROP
+
  ebtables -t broute -A BROUTING -i $INET_IFACE -p ipv4 --ip-proto tcp --ip-sport 80 -j redirect --redirect-target DROP
 
  cd /proc/sys/net/bridge/
