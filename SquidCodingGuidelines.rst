@@ -20,6 +20,7 @@ ENFORCED:
  * no trailing whitespace on '''any''' line
  * one space between '''if''' and its parameter '''()''' brackets
  * construct open braces '''{''' begin on the same line as their construct (if, while)
+ * assignment within a conditional requires double-'''(''' braces.
 
 NP: The formatter is known to enforce some weird indentation at times. Notably after #if ... #endif directives. If you find these, please ignore for now. They will be corrected in a later version of the formatter.
 
@@ -148,10 +149,16 @@ The verb ''is'' may be omitted, especially if the result cannot be confused with
 
 == File #include guidelines ==
 
-'''.cc'''
-  * include either config.h or squid.h as their first include
-   * config.h - minimal dependency include. Intended for use outside of src/. This contains very little beyond the portability requirements.
-   * squid.h - full squid dependency tree include (globals, protos, types, defines, everything is in here)
+'''.cc''':
+
+ . '''Squid-3.2 and above:'''
+   * include squid.h as their first include file. It is the minimal dependency include containing very little beyond the portability requirements.
+   . NOTE: the full squid dependency tree include (globals, protos, types, defines, everything) has been renamed to squid_old.h and may be used as an '''extra''' include file only if necessary (prefer omitting it).
+
+ . '''Squid-3.1 and below (only):'''
+   * include either config.h or squid.h as their first include
+    * config.h - minimal dependency include. Intended for use outside of src/. This contains very little beyond the portability requirements.
+    * squid.h - the full squid dependency tree include (globals, protos, types, defines, everything is in here).
 
 '''.h''' and '''.cci'''
  * DO NOT include either config.h or squid.h
@@ -168,7 +175,7 @@ The verb ''is'' may be omitted, especially if the result cannot be confused with
 Preferred include layout:
 {{{
 // required first include
-#include "config.h"
+#include "squid.h"
 
 // local source files alphabetically sorted
 #include "cutom.h"
