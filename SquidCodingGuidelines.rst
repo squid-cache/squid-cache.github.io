@@ -20,7 +20,7 @@ ENFORCED:
  * no trailing whitespace on '''any''' line
  * one space between '''if''' and its parameter '''()''' brackets
  * construct open braces '''{''' begin on the same line as their construct (if, while)
- * assignment within a conditional requires double-'''(''' braces.
+ * within a conditional, assignment must be surrounded with '''(''' braces: {{{if ((a = b))...}}}<<BR>>but a local variable declaration and initialization must not be: {{{if (T a = b)...}}}.
 
 NP: The formatter is known to enforce some weird indentation at times. Notably after #if ... #endif directives. If you find these, please ignore for now. They will be corrected in a later version of the formatter.
 
