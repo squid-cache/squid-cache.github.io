@@ -130,9 +130,9 @@ acl globalIPv6 src ipv6
 
 
 == How do I make squid use IPv6 to its helpers? ==
-With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. Squid prefers to use unix pipes to helpers and these are ignored. But on some networks TCP sockets are required. To work with older setups, helpers are still connected over IPv4 by default. You can add '''ipv6''' option to use IPv6.
+With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. Squid prefers to use unix pipes to helpers and these are ignored. But on some networks TCP sockets are required. Squid will connect over IPv6 by default, but for older helpers which can only accept IPv4 you may need to be explicit.
 {{{
-external_acl_type hi ipv6 %DST /etc/squid/hello_world.sh
+external_acl_type hi ipv4 %DST /etc/squid/hello_world.sh
 }}}
 
 == How do I block IPv6 traffic? ==
