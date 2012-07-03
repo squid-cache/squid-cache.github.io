@@ -41,7 +41,7 @@ NP: The formatter is known to enforce some weird indentation at times. Notably a
   * Use bool for boolean types.
   * Avoid macros.
   * Do not start names with an underscore
-  * pefer prefix form for increment and decrement operators to postfix (e.g. {{{++c}}} insted of {{{c++}}})
+  * pefer prefix form for increment and decrement operators to postfix (e.g. {{{++c}}} instead of {{{c++}}})
 
 === Word capitalization example ===
 
