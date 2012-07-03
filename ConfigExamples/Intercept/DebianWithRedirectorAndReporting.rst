@@ -2,47 +2,50 @@
 #format wiki
 #language en
 = Interceptor Squid on Debian with Redirectors and Reporting =
-This document (based on [[http://freecode.com/articles/configuring-a-transparent-proxywebcache-in-a-bridge-using-squid-and-ebtables|this article]] with  some updates and additions)  explains how to put into production a transparent Squid web proxy on a Linux Debian system. Since the proxy is transparent, LAN users are able to surf the web without having to set manually the proxy address in their browser.
+This document (based on [[http://freecode.com/articles/configuring-a-transparent-proxywebcache-in-a-bridge-using-squid-and-ebtables|this article]] with  some updates and additions)  explains how to put into production a Bridge device running a Squid interception web proxy on a Linux Debian 6 system. Since the proxy is performing transparent interception, LAN users are able to surf the web without having to set manually the proxy address in their browser.
 
 This document also details how to set up a few useful features such as web filtering (via Squirm) and usage monitoring (via SARG).
 
 First of all, you need a Linux box with two network interfaces that we'll set up as a bridge.   We'll assume that eth0 is connected downstream to the LAN, while eth1 provides upstream access to the Internet.
 
 == Getting Squid ==
-If you have the latest OS release (Debian 6, squeeze), then Squid is already available as a precompiled binary with all the necessary flags,  and all you have to do is install the squid3 package:
+If you have the Debian 6 OS release, then Squid is already available as a precompiled binary with all the necessary flags, and all you have to do is install the squid3 package:
 
 {{{
-root@squidbox:~# apt-get update
-root@squidbox:~# apt-get install squid3
+aptitude update
+aptitude install squid3
 }}}
-If you still have Debian 5 (lenny) 32-bit, then to get most of the features you'll need to compile Squid with the appropriate flags. [[http://www.squid-cache.org/Versions/|Download the source code]] and untar the archive.  Then issue the commands:
 
-{{{
-root@squidbox:~# declare -x CPPFLAGS="-I../libltdl"
-root@squidbox:~# ./configure --enable-linux-netfilter --with-filedescriptors=65536 --with-large-files \
---prefix=/usr --localstatedir=/var --libexecdir=${prefix}/lib/squid --srcdir=. --datadir=${prefix}/share/squid --sysconfdir=/etc/squid
-root@squidbox:~# make
-root@squidbox:~# make install
-}}}
-The `--enable-linux-netfilter` flag enables the Transparent Proxy support.
-
-The `--with-filedescriptors=65536` flag allocates enough filedescriptors for the cache.
-
-The `--with-large-files` flag ensures that the proxy can download files larger than 2 Gb. While the Squid binaries for Debian 6 or  for the 64-bit Debian versions are already precompiled with this flag, the binaries for Debian 5 32-bit aren't, hence the need to compile from source.
-
-The other flags are fixes for Debian, as it is the first `declare` instruction.
-
-Then, create a startup script `/etc/init.d/squid` which is composed of these two lines:
-
-{{{
-ulimit -n 65536
-/usr/sbin/squid -N -d 1 &
-}}}
-and make a symbolic link to it so it will be called at boot:
-
-{{{
-root@squidbox:~# ln -s /etc/init.d/squid /etc/rc2.d/S20squid
-}}}
+## NP: the rest of this is workaround for problems in an expired OS version.
+## 
+## If you still have Debian 5 (lenny) 32-bit, then to get most of the features you'll need to compile Squid with the appropriate flags. [[http://www.squid-cache.org/Versions/|Download the source code]] and untar the archive.  Then issue the commands:
+## 
+## {{{
+## root@squidbox:~# declare -x CPPFLAGS="-I../libltdl"
+## root@squidbox:~# ./configure --enable-linux-netfilter --with-filedescriptors=65536 --with-large-files \
+## --prefix=/usr --localstatedir=/var --libexecdir=${prefix}/lib/squid --srcdir=. --datadir=${prefix}/share/squid --sysconfdir=/etc/squid
+## root@squidbox:~# make
+## root@squidbox:~# make install
+## }}}
+## The `--enable-linux-netfilter` flag enables the Transparent Proxy support.
+## 
+## The `--with-filedescriptors=65536` flag allocates enough filedescriptors for the cache.
+## 
+## The `--with-large-files` flag ensures that the proxy can download files larger than 2 Gb. While the Squid binaries for Debian 6 or  for the 64-bit Debian versions are already precompiled with this flag, the binaries for Debian 5 32-bit aren't, hence the need to compile from source.
+## 
+## The other flags are fixes for Debian, as it is the first `declare` instruction.
+## 
+## Then, create a startup script `/etc/init.d/squid` which is composed of these two lines:
+## 
+## {{{
+## ulimit -n 65536
+## /usr/sbin/squid -N -d 1 &
+## }}}
+## and make a symbolic link to it so it will be called at boot:
+## 
+## {{{
+## root@squidbox:~# ln -s /etc/init.d/squid /etc/rc2.d/S20squid
+## }}}
 It is also a good idea to let Squid run as a standalone daemon.  You can therefore disable avahi as it's not needed in a server:
 
 {{{
@@ -54,7 +57,7 @@ For the rest of this document we'll assume that the paths of the Squid executabl
 If you haven't all the necessary packages installed, fetch them:
 
 {{{
-root@squidbox:~# apt-get install ebtables bridge-utils
+aptitude install ebtables bridge-utils
 }}}
 Let's assume that the machine is in the 10.9.0.0/16 subnet, and let's choose to assign the  IP address 10.9.1.9 to it.  The LAN is a 10.0.0.0/8 network accessed (downstream through eth0) via the router 10.9.2.2,  while a router or firewall 10.9.1.1 is   the gateway providing access (upstream through eth1) to the Internet.  The DNS server has IP 10.13.13.13.
 
@@ -159,28 +162,11 @@ refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
 refresh_pattern .               0       20%     4320
 }}}
 == Running Squid ==
-After editing the configuration file, launch a command
-
+After editing the configuration file, start squid
 {{{
-root@squidbox:~# squid -z
+/etc/init.d/squid3 start
 }}}
-to create the cache directories. This needs to be done just once.
 
-Also, add in `/etc/crontab` the following line:
-
-{{{
-2 0 * * *   root   /usr/sbin/squid -k rotate
-}}}
-This schedules the rotation of Squid logfiles two minutes after midnight, each night.  Remember to restart the cron daemon afterwards:
-
-{{{
-root@squidbox:~# /etc/init.d/cron restart
-}}}
-Now you can launch Squid manually:
-
-{{{
-root@squidbox:~# /etc/init.d/squid
-}}}
 Once the Squid has started, you should be able to browse the web from the LAN. Note that it is the Squid that provides HTTP connection to the outside.   If the Squid process crashes or is stopped, LAN clients won't be able to browse the web.
 
 To see in realtime the requests served by Squid, use the command
