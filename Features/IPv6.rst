@@ -21,7 +21,7 @@ IPv6 is available in ALL current operating systems. Most now provide it enabled 
 '''IPv6 support''' is enabled by default in [[Squid-3.1]]. If you are using a packaged version of 3.1 without it, please contact the package maintainer about enabling it.
 
 
-'''Windows XP''', '''OpenBSD''' and '''MacOS X''' have some big known issues with outgoing connections that prevent them going to IPv6 websites. Squid there will happily accept IPv6 clients, but will only go to IPv4 websites.
+'''Windows XP''', '''OpenBSD''' and '''MacOS X''' have some big known issues with outgoing connections that prevent them going to IPv6 websites. Squid there will happily accept IPv6 clients, but will only go to IPv4 websites. These issues are shared with any other operating system configured with split-stack IPv6 support or non-mapping dual-stack IPv6 support. This has partially been resolved in the latest 3.1 series.
 
 When squid is built you will be able to start Squid and see some IPv6 operations. The most active will be DNS as IPv6 addresses are looked up for each website, and IPv6 addresses in the cachemgr reports and logs.
 
