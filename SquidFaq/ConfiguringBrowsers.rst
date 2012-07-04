@@ -36,7 +36,7 @@ We are aware that many networks only implement layer 3 and 4 of this design due 
 
  4. [[ConfigExamples/Intercept|NAT or TPROXY interception]]. (aka ''transparent proxy'')
   * Client software does not need to be touched.
-  * security takes several major reductions (several whole families of vulnerability are created, proxy authentication disappears)
+  * security takes several major reductions (several whole families of vulnerability are created, proxy authentication disappears, peering abilities disappear)
   * System resources and connection reliability take several major reductions
 
  5. [[#Manual_Browser_Configuration|Manual Configuration]].
