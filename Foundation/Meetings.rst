@@ -26,6 +26,11 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Next meeting scheduling.
  1. Open floor:
 
+ * Sponsorship program:
+  * public acknowledgements
+  * significant contributions other than cash or code
+  * contribution style (accumulated or individual tansaction)
+
 
 ==== Agenda of Last Meeting ====
 
@@ -58,8 +63,8 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #4 || anyone || email confirmation regarding meeting 2 days in advance || not done ||
 || ||
 || #3 || HenrikNordstrom || draft agenda ||done ||
-|| #3 || AmosJeffries || donation page text || not done ||
-|| #3 || AmosJeffries || bring up immediate needs for 3.2 on squid-dev || not done ||
+|| #3 || AmosJeffries || donation page text || done. awaiting board action signoff for publishing. ||
+|| #3 || AmosJeffries || bring up immediate needs for 3.2 on squid-dev || done ||
 || #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
 || #3 || AlexRousskov || convince bank to stop their fees for low account || done ||
 || ||
