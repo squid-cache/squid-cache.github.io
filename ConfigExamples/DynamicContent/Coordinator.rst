@@ -566,7 +566,7 @@ end
 def rewriter(request)
 		case request
 
-		when /^http:\/\/.*\.squid\.internal\/.*/
+		when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.squid\.internal\/.*/
 		   url = $cache.geturl(request) 
  		   if url != nil
 		      return url 
@@ -574,7 +574,7 @@ def rewriter(request)
 		      return ""
 		  return ""
 		    end
-		when /^http:\/\/.*\.dl\.sourceforge\.net\/.*/
+		when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.dl\.sourceforge\.net\/.*/
 		  vid = $cache.sfdlid(request)
 		  $cache.setvid(request, "http://dl.sourceforge.net.squid.internal/" + vid) if vid != nil
 		  url = "http://dl.sourceforge.net.squid.internal/" + vid if vid != nil
@@ -584,12 +584,12 @@ def rewriter(request)
 		  $cache.setvid(request, "http://vimeo.squid.internal/" + vid) if vid != nil
 		  url = "http://vimeo.squid.internal/" + vid if vid != nil
 		  return url
-		when /^http:\/\/.*\.c\.youtube\.com\/videoplayback\?.*id\=.*/
+		when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.c\.youtube\.com\/videoplayback\?.*id\=.*/
 		  vid = $cache.ytvid(request)
           $cache.setvid(request, "http://youtube.squid.internal/" + vid) if vid != nil
           url = "http://youtube.squid.internal/" + vid if vid != nil
           return url
-		when /^http:\/\/.*\.ytimg\.com\.*/
+		when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.ytimg\.com\.*/
 		   vid = $cache.ytimg(request)
            $cache.setvid(request, "http://ytimg.squid.internal/" + vid) if vid != nil
            url = "http://ytimg.squid.internal/" + vid if vid != nil
