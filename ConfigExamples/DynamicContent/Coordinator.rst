@@ -486,7 +486,7 @@ class Cache
 
 
         def sfdlid(url)
-                        m = url.match(/http:\/\/.*\/(.*)/)
+                        m = url.match(/^http:\/\/.*\.dl\.sourceforge\.net\/(.*)/)
                         if m[1]
                                 return m[1]
                         else
@@ -559,25 +559,6 @@ class Cache
 
 end
 
-
-
-$cache = Cache.new
-
-
-def read_requests
-	#ID  <SP> URL <SP> client_ip "/" fqdn <SP> user <SP> method [<SP> kvpairs]<NL>
-	#or	
-	#URL <SP> client_ip "/" fqdn <SP> user <SP> method [<SP> kvpairs]<NL>
-	STDIN.each_line do |ln|
-		#r = SquidRequest.new
-		request = ln.split
-		(STDOUT << "#{yield request}\n").flush
-	end
-end
-
-
-
-
 def rewriter(request)
 		case request
 
@@ -608,7 +589,7 @@ def rewriter(request)
 		   vid = $cache.ytimg(request)
            $cache.setvid(request, "http://ytimg.squid.internal/" + vid) if vid != nil
            url = "http://ytimg.squid.internal/" + vid if vid != nil
-           return url		 			 
+           return url			 			 
 		when /^quit.*/
 		  exit 0
 		else
@@ -621,20 +602,24 @@ def log(msg)
 end
 
 def main
-	Syslog.open('coordinator.rb', Syslog::LOG_PID)
+
+	Syslog.open('cordinator.rb', Syslog::LOG_PID)
 	log("Started")
 
-	read_requests do |request|
-		if request[1] != nil
-			#log("original url [#{request}].")
+	#read_requests do |request|
+	while request = gets.split
+		if request[1] != nil 
+			log("original request [#{request.join(" ")}].") if $debug
 			url = request[0] +" " + rewriter(request[1])
-			#log("modified url [#{url}].")
-			url
+			log("modified response [#{url}].") if $debug
+			puts url
 		else
-			request[0]
+			puts request[0]
 		end
 	end
 end
-
+$debug = false
+$cache = Cache.new
+STDOUT.sync = true
 main
 }}}
