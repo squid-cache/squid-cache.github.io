@@ -83,7 +83,7 @@ These rules make sure that you don't try caching cgi-bin and ? URLs unless expir
 
 Here's what I've been using:
 
-{{{
+{{{#!highlight perl
 #!/usr/local/sbin/perl
 $| = 1;
 while (<>) {
