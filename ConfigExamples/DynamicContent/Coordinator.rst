@@ -429,7 +429,7 @@ notice to setup local IP address to the server in the config file.
 i have used IP 127.0.0.2 to allow very intense stress tests with a lot of open port.
 
 
-=== Alternative To ICAP server ===
+=== Alternative To ICAP server Using url_rewrite ===
 the same logic i implemented using ICAP can be used using the url_rewrite mechanizm.
 
 i wrote a specific url rewriter with the db\cache server redis as backend.
