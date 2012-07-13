@@ -218,7 +218,7 @@ Amos Jeffries: That effort continues in a number of ways (headers Content-MD5, D
 
 
 ==== Store URL Rewrite ====
-sIn [[Squid-2.7]] the SquidConf:store_url_rewrite interface was integrated to solve a resource De-Duplication case.
+In [[Squid-2.7]] the SquidConf:store_url_rewrite interface was integrated to solve a resource De-Duplication case.
 an example is sourceforge and it can implemented for youtube and others.
 {{{#!highlight ruby
 def main
