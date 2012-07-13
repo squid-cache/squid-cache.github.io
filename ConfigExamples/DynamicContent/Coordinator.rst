@@ -223,12 +223,16 @@ an example is sourceforge and it can implemented for youtube and others.
 {{{#!highlight ruby
 def main
   while request = gets.split
-	case request[0]
-	  when /^http:\/\/.*\.dl\.sourceforge\.net\/.*/
-            puts "http://dl.sourceforge.net.squid.internal/" +  request[0].match(/.*\.dl\.sourceforge\.net\/(.*)/)[1]
-	  else
-	    puts ""
-	end
+     if request[0] && request[1]
+        case request[1]
+          when /^http:\/\/.*\.dl\.sourceforge\.net\/.*/
+            puts request[0] + "http://dl.sourceforge.net.squid.internal/" +  request[0].match(/.*\.dl\.sourceforge\.net\/(.*)/)[1]
+          else
+            puts request[0] + ""
+        end
+     else
+        puts ""
+     end
    end
 
 end
@@ -608,13 +612,13 @@ def main
 
 	#read_requests do |request|
 	while request = gets.split
-		if request[1] != nil 
+		if request[0] && request[1]
 			log("original request [#{request.join(" ")}].") if $debug
 			url = request[0] +" " + rewriter(request[1])
 			log("modified response [#{url}].") if $debug
 			puts url
 		else
-			puts request[0]
+			puts ""
 		end
 	end
 end
