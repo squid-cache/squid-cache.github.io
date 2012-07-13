@@ -241,7 +241,7 @@ end
 STDOUT.sync = true
 main
 }}}
-this helper works with concurrency which in any case is better then plain rewritten without concurrency.
+this helper works with concurrency which in any case is better then plain rewritter without concurrency.
 
 the performance of this helper is about 2.6 sec for 100,000 requests.
 what means about 2,000,000 requests per minute.
