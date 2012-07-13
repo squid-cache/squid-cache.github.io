@@ -106,7 +106,7 @@ while (<>) {
 
 A simple very fast rewriter called [[http://squirm.foote.com.au/|SQUIRM]] is also good to check out, it uses the regex lib to allow pattern matching.
 
-An even faster and slightly more featured rewriter is [[http://ivs.cs.uni-magdeburg.de/~elkner/webtools/jesred/|jesred]].
+An even faster and slightly more featured rewriter is [[http://www.linofee.org/~jel/webtools/jesred/|jesred]].
 
 == How do I make my own? ==
 
