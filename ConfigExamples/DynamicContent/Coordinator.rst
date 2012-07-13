@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Caching Dynamic Content with Icap =
+= Caching Dynamic Content using a Coordinator =
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 This page is an ongoing development. Not least because it must keep up with youtube.com alterations. If you start to experience problems with any of these configs please first check back here for updated config.
 
@@ -171,8 +171,7 @@ and ruby example to demonstrate code for that:
 {{{
 #!highlight ruby
 url = "http://iweb.dl.sourceforge.net/project/assp/ASSP%20Installation/README.txt"
-key = "http://dl.sourceforge.net.squid.internal/" + url.match(/.*\.dl\.sourceforge\.net\/(.*)/)[1]
-}}}
+key = "http://dl.sourceforge.net.squid.internal/" + url.match(/.*\.dl\.sourceforge\.net\/(.*)/)[1]}}}
 
 A similar scenario is with AV updates that will use more then one domain or will use IP address as a redundancy case that no dns available.
 
