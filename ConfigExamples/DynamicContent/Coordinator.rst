@@ -486,7 +486,7 @@ class Cache
 
 
         def sfdlid(url)
-                        m = url.match(/http:\/\/.*\/(.*)/)[1]
+                        m = url.match(/http:\/\/.*\/(.*)/)
                         if m[1]
                                 return m[1]
                         else
