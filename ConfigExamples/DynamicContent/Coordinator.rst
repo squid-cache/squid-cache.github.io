@@ -625,7 +625,7 @@ def main
 	log("Started")
 
 	read_requests do |request|
-		if request[1] != nil && (request[4].downcase == "get" )
+		if request[1] != nil
 			#log("original url [#{request}].")
 			url = request[0] +" " + rewriter(request[1])
 			#log("modified url [#{url}].")
