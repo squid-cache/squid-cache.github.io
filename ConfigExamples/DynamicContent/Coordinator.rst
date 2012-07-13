@@ -222,8 +222,7 @@ sIn [[Squid-2.7]] the SquidConf:store_url_rewrite interface was integrated to so
 an example is sourceforge and it can implemented for youtube and others.
 {{{#!highlight ruby
 def main
-  while true 
-	request = gets.split
+  while request = gets.split
 	case request[0]
 	  when /^http:\/\/.*\.dl\.sourceforge\.net\/.*/
             puts "http://dl.sourceforge.net.squid.internal/" +  request[0].match(/.*\.dl\.sourceforge\.net\/(.*)/)[1]
@@ -233,6 +232,7 @@ def main
    end
 
 end
+STDOUT.sync = true
 main
 }}}
 
