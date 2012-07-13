@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Caching Dynamic Content using a Coordinator =
+= Caching Dynamic Content using Adaptation =
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 This page is an ongoing development. Not least because it must keep up with youtube.com alterations. If you start to experience problems with any of these configs please first check back here for updated config.
 
