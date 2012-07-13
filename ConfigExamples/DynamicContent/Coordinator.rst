@@ -221,12 +221,14 @@ Amos Jeffries: That effort continues in a number of ways (headers Content-MD5, D
 In [[Squid-2.7]] the SquidConf:store_url_rewrite interface was integrated to solve a resource De-Duplication case.
 an example is sourceforge and it can implemented for youtube and others.
 {{{#!highlight ruby
+#!/usr/bin/ruby
 def main
-  while request = gets.split
-     if request[0] && request[1]
+  while request = gets
+        request = request.split
+     if request[0]
         case request[1]
-          when /^http:\/\/.*\.dl\.sourceforge\.net\/.*/
-            puts request[0] + "http://dl.sourceforge.net.squid.internal/" +  request[0].match(/.*\.dl\.sourceforge\.net\/(.*)/)[1]
+          when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.dl\.sourceforge\.net\/.*/
+            puts request[0] + "http://dl.sourceforge.net.squid.internal/" +  request[1].match(/^http:\/\/[a-zA-Z0-9\-\_\.]+\.dl\.sourceforge\.net\/(.*)/)[1]
           else
             puts request[0] + ""
         end
