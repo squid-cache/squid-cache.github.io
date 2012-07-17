@@ -9,7 +9,43 @@ by ''Eliezer Croitoru''
 
 <<TableOfContents>>
 
+== What is WCCP? ==
+WCCP stands for [[http://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|"Web Cache Communication Protocol"]]
+
+What is good about WCCP?
+WCCP allows separation of duties between the network and the application and there for Auto redundency.
+
+the router has couple junctions that it can intercept on routing level dynamicly packets.
+on every interface\vlan there is a "IN" and "OUT".
+IN stands for incoming packets and OUT stands for OUTGOING packets.
+the WCCP daemon on the cisco router gets information about the Cache supplier and service.
+then on the cisco router we can define ACLs to apply the service on besides the Cache settings supplied by the cache.
+
+the Cache supplier can interact in two ways with cisco devices:
+GRE tunnel and Layer 2 SWITCHING forwarding.
+when used with a GRE tunnel all the traffic that comes and goes to the client are transfered to the proxy on the GRE tunnel instead
+
+the cisco router forwards packets to "hijack" encapsulated in the gre tunnel to the proxy.
+(the proxy should know what to do with these packets.)
+ the proxy do what ever it wants with the session.
+
+on regular intercept\nat proxy the request will be requested from the origin server using it's own ip on the regular interface.
+so the acls that will be neede to apply on the cisco are:
+"capture only these specific ip and ports"
+but on tproxy mode since the IP of the client is spoofed if we will apllly these same ACLs we will end up with an endless loop.
+so instead of applying regulare WCCP ACLs we are applying another ACL built in WCCP and this is the EXLUDE.
+
+the EXCLUDE applies only on Interface (or vlan interface) so we need to separte the traffic of the clients and the proxy.
+in our case we use another interface.
+on the router we use interface f1/0 for clients, f1/0 for the proxy and  f0/0 to the internet.
+
+we apply the intercepting acls in the f0/0 interface so any port 80 destination will be intercepted.
+
+
+
+
 == Outline ==
+
 Steps to config squid in TPROXY mode with WCCP v2.
 These steps are for setting [[Squid-3.1]] with [[Features/Tproxy4|TPROXYv4]], IP spoofing and Cisco WCCP. 
 
@@ -17,6 +53,8 @@ they apply to Ubuntu 12.04 LTS manually and not with automatic network setup of 
 since i have seen it is not explained in a User Friendly way until now i decided to write it down.
 
 it is based on [[http://bloggik.net/index.php/articles/networks/18-cisco/38-squid-tproxy-wccp|this guy which his name i dont know Russian tutorial]]
+
+
 
 == Basic assumptions on you ==
 You know the difference between TPROXY and intercept mode of squid.
@@ -28,7 +66,8 @@ you do know what a GRE tunnel is.
 == Toplogy ==
 Topology at: [[http://www1.ngtech.co.il/squid/wccp2.svg|svg]] 
 
-{{attachment:wccp2.png}}
+{{attachment:wccp2_f.png}}
+
 == Steps ==
 Requirements on ubuntu:
 basic ubuntu server ships with iptunnel iprourte2 and all iptables modules needed for the task.
@@ -103,6 +142,28 @@ wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 p
 
 }}}
 
+=== Cisco ios settings ===
+{{{
+conf t
+
+ip access-list extended wccp
+ permit ip 10.80.3.0 0.0.0.255 any
+ip access-list extended wccp_to_inside
+ permit ip any 10.80.3.0 0.0.0.255
+exit
+ip wccp version 2
+ip wccp web-cache
+ip wccp 80 redirect-list wccp
+ip wccp 90 redirect-list wccp_to_inside
+
+interface FastEthernet0/0
+ ip wccp 80 redirect out
+ ip wccp 90 redirect in
+
+interface FastEthernet0/1
+ ip wccp redirect exclude in
+}}}
+
 
 === Preparation ===
 we will prepare the Cisco before anything else:
@@ -118,15 +179,15 @@ permit ip any host 10.26.9.171
 permit ip any 10.26.5.0 0.0.0.255
 permit ip any 10.26.7.0 0.0.0.255
 exit
-Обратите внимание, оба листа очень похожи, но первый список определяет запросы от каких пользователей будут перенаправляться на Squid, а второй список определяет ответы из внешнего мира для каких пользователей будут так же перенаправляться на Squid.
-Далее включаем wccp:
+???????? ????????, ??? ????? ????? ??????, ?? ?????? ?????? ?????????? ??????? ?? ????? ????????????? ????? ???????????????? ?? Squid, ? ?????? ?????? ?????????? ?????? ?? ???????? ???? ??? ????? ????????????? ????? ??? ?? ???????????????? ?? Squid.
+????? ???????? wccp:
 ip wccp 80 redirect-list wccp
 ip wccp 90 redirect-list wccp_to_inside
-Теперь нужно включить перенаправление на нужных интерфейсах. В нашем случае (см. рисунок выше) на интерфейсе f0/2:
+?????? ????? ???????? ??????????????? ?? ?????? ???????????. ? ????? ?????? (??. ??????? ????) ?? ?????????? f0/2:
 interface f0/2
 ip wccp 80 redirect out
 ip wccp 90 redirect in
-а на интерфейсе f0/1:
+? ?? ?????????? f0/1:
 interface f0/1
 ip wccp redirect exclude in
 
