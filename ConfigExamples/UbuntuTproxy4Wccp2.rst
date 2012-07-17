@@ -25,9 +25,13 @@ you do know basic Networking and cisco cli basics.
 
 you do know what a GRE tunnel is.
 
+== Toplogy ==
+Topology at: [[http://www1.ngtech.co.il/squid/wccp2.svg|svg]] 
+{{http://www1.ngtech.co.il/squid/wccp2.png}}
 == Steps ==
 Requirements on ubuntu:
 basic ubuntu server ships with iptunnel iprourte2 and all iptables modules needed for the task.
+
 
 {{{
 #!highlight bash
