@@ -23,13 +23,14 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Agenda bashing.
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
+ 1. Sysadmin pilot status.
+ 1. Sponsorship program:
+  a. public acknowledgements
+  a. significant contributions other than cash or code
+  a. contribution style (accumulated or individual tansaction)
+ 1. IRCache proposal v2.
  1. Next meeting scheduling.
  1. Open floor:
-
- * Sponsorship program:
-  * public acknowledgements
-  * significant contributions other than cash or code
-  * contribution style (accumulated or individual tansaction)
 
 
 ==== Agenda of Last Meeting ====
