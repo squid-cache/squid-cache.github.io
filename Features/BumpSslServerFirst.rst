@@ -13,7 +13,7 @@
  * '''ETA''': February 2012
  * '''Version''': 3.3
  * '''Priority''': 1
- * '''Developer''': AlexRousskov
+ * '''Developer''': AlexRousskov and Christos Tsantilas
  * '''More''': requires [[Features/SslBump|SslBump]], enables [[Features/MimicSslServerCert|server certificate mimicking]], and pointless without [[Features/DynamicSslCert|Dynamic Certificate Generation]]
 
 
