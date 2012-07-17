@@ -60,7 +60,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #4 || AmosJeffries || minutes for meeting #4 written and circulated || not done ||
 || #4 || AlexRousskov || check on bank fees reversal || done ||
 || #4 || AlexRousskov || receive "royalties" donation from Packt Publishing || done ||
-|| #4 || anyone || email confirmation regarding meeting 2 days in advance || not done ||
+|| #4 || anyone || email confirmation regarding meeting 2 days in advance || in progress ||
 || ||
 || #3 || HenrikNordstrom || draft agenda ||done ||
 || #3 || AmosJeffries || donation page text || done. awaiting board action signoff for publishing. ||
