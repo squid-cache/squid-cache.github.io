@@ -12,7 +12,7 @@
  * '''ETA''': March 2012
  * '''Version''': 3.3
  * '''Priority''': 2
- * '''Developer''': AlexRousskov
+ * '''Developer''': AlexRousskov and Christos Tsantilas
  * '''More''': requires [[Features/BumpSslServerFirst|bump-server-first]] and benefits from [[Features/DynamicSslCert|Dynamic Certificate Generation]]
 
 
