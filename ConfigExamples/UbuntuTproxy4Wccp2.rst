@@ -105,6 +105,32 @@ wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 p
 
 
 === Preparation ===
+we will prepare the Cisco before anything else:
+conf t
+ip access-list extended wccp
+permit ip host 10.26.9.171 any
+permit ip 10.26.5.0 0.0.0.255 any
+permit ip 10.26.7.0 0.0.0.255 any
+...
+exit
+ip access-list extended wccp_to_inside
+permit ip any host 10.26.9.171
+permit ip any 10.26.5.0 0.0.0.255
+permit ip any 10.26.7.0 0.0.0.255
+exit
+Обратите внимание, оба листа очень похожи, но первый список определяет запросы от каких пользователей будут перенаправляться на Squid, а второй список определяет ответы из внешнего мира для каких пользователей будут так же перенаправляться на Squid.
+Далее включаем wccp:
+ip wccp 80 redirect-list wccp
+ip wccp 90 redirect-list wccp_to_inside
+Теперь нужно включить перенаправление на нужных интерфейсах. В нашем случае (см. рисунок выше) на интерфейсе f0/2:
+interface f0/2
+ip wccp 80 redirect out
+ip wccp 90 redirect in
+а на интерфейсе f0/1:
+interface f0/1
+ip wccp redirect exclude in
+
+
 
 
 === Routing Configuration ===
