@@ -41,9 +41,6 @@ on the router we use interface f1/0 for clients, f1/0 for the proxy and  f0/0 to
 
 we apply the intercepting acls in the f0/0 interface so any port 80 destination will be intercepted.
 
-
-
-
 == Outline ==
 
 Steps to config squid in TPROXY mode with WCCP v2.
@@ -63,14 +60,14 @@ you do know basic Networking and cisco cli basics.
 
 you do know what a GRE tunnel is.
 
+
 == Toplogy ==
-Topology at: [[http://www1.ngtech.co.il/squid/wccp2.svg|svg]] 
+{{attachment:wccp2_vlan.png}}
 
-{{attachment:wccp2_f.png}}
 
-== Steps ==
+== Linux and Squid Configuration ==
 Requirements on ubuntu:
-basic ubuntu server ships with iptunnel iprourte2 and all iptables modules needed for the task.
+Basic ubuntu server ships with iptunnel iprourte2 and all iptables modules needed for the task.
 
 
 {{{
@@ -112,9 +109,6 @@ iptables -t mangle -A DIVERT -j MARK --set-mark 1
 iptables -t mangle -A DIVERT -j ACCEPT
 iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
 iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 3129
-
-
-
 }}}
 
 add into squid.conf the next lines:
@@ -142,7 +136,7 @@ wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 p
 
 }}}
 
-=== Cisco ios settings ===
+== Cisco settings ==
 {{{
 conf t
 
@@ -165,86 +159,11 @@ interface FastEthernet0/1
 }}}
 
 
-=== Preparation ===
-we will prepare the Cisco before anything else:
-conf t
-ip access-list extended wccp
-permit ip host 10.26.9.171 any
-permit ip 10.26.5.0 0.0.0.255 any
-permit ip 10.26.7.0 0.0.0.255 any
-...
-exit
-ip access-list extended wccp_to_inside
-permit ip any host 10.26.9.171
-permit ip any 10.26.5.0 0.0.0.255
-permit ip any 10.26.7.0 0.0.0.255
-exit
-???????? ????????, ??? ????? ????? ??????, ?? ?????? ?????? ?????????? ??????? ?? ????? ????????????? ????? ???????????????? ?? Squid, ? ?????? ?????? ?????????? ?????? ?? ???????? ???? ??? ????? ????????????? ????? ??? ?? ???????????????? ?? Squid.
-????? ???????? wccp:
-ip wccp 80 redirect-list wccp
-ip wccp 90 redirect-list wccp_to_inside
-?????? ????? ???????? ??????????????? ?? ?????? ???????????. ? ????? ?????? (??. ??????? ????) ?? ?????????? f0/2:
-interface f0/2
-ip wccp 80 redirect out
-ip wccp 90 redirect in
-? ?? ?????????? f0/1:
-interface f0/1
-ip wccp redirect exclude in
-
-
-
-
-=== Routing Configuration ===
-
-As per the [[Features/Tproxy4|TPROXYv4]] regular configuration:
+== Building Squid ==
+On customed built of squid you must include:
 {{{
-ip rule add fwmark 1 lookup 100
-ip route add local 0.0.0.0/0 dev lo table 100
+--enable-linux-netfilter --enable-wccpv2
 }}}
-
-=== iptables ===
-
-=== WCCP Configuration ===
-
- * WCCP related iptables rules need to be created next...this and further steps are only needed if L4 WCCPv2 is used with a router, and not L2 WCCP with a switch.
-
-{{{
-iptables -A INPUT -i gre0 -j ACCEPT
-
-iptables -A INPUT -p gre -j ACCEPT
-}}}
- * For the WCCP udp traffic that is not in a gre tunnel:
-
-{{{
-iptables -A RH-Firewall-1-INPUT -s 10.48.33.2/32 -p udp -m udp --dport 2048 -j ACCEPT
-}}}
-|| {i} '''note:''' || When running '''iptables''' commands, you my find that you have no firewall rules at all. In this case you will need to create an input chain to add some of the rules to. I created a chain called '''LocalFW''' instead (see below) and added the final WCCP rule to that chain. The other rules stay as they are. To do this, learn iptables...or something *LIKE* what is listed below: ||
-
-
-{{{
-iptables -t filter -NLocalFW
-iptables -A FORWARD -j LocalFW
-iptables -A INPUT -j LocalFW
-iptables -A LocalFW -i lo -j ACCEPT
-iptables -A LocalFW -p icmp -m icmp --icmp-type any -j ACCEPT
-}}}
-=== Building Squid ===
-After preparing the kernel and iptables as above.
-
- * Build [[http://www.squid-cache.org/Versions/v3/3.1/|Squid 3.1 source]] as noted in the Squid readme and tproxy readme, enabling netfilter with:
-
-{{{
---enable-linux-netfilter
-}}}
-|| /!\ || --enable-linux-tproxy was phased out because tproxy has been more tightly integrated with iptables/netfilter and Squid. ||
-
-
- * Configure squid as noted in the squid and tproxy readmes.
-
-{{{
-http_port 3129 tproxy
-}}}
-|| /!\ || A special http_port line is recommended since tproxy mode for Squid can interfere with non-tproxy requests on the same port. ||
 
 
 ----
