@@ -56,7 +56,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #4 || HenrikNordstrom || set up a invite-only board mailinglist || done ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
 || #4 || AmosJeffries || create a wiki table with actions || done ||
-|| #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || not done ||
+|| #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #3 written and circulated || not done ||
 || #4 || AmosJeffries || minutes for meeting #4 written and circulated || not done ||
 || #4 || AlexRousskov || check on bank fees reversal || done ||
@@ -71,6 +71,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || ||
 || #2 || HenrikNordstrom || sysadmin discussions with Pieter De Wit || not done ||
 || #2 || HenrikNordstrom , AmosJeffries || other (end-of-year) documents || not done ||
+|| #2 || HenrikNordstrom , AmosJeffries || document process for Board meetings || not done ||
 
 == Past Meetings ==
 
