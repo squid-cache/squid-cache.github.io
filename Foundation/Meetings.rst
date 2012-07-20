@@ -12,7 +12,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Upcoming Meeting ==
 
- * Date: Postponed, was set for '''07:00 2012-07-19 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''07:00 2012-07-21 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
