@@ -178,6 +178,7 @@ On customed built of squid you must include:
 --enable-linux-netfilter --enable-wccpv2
 }}}
 
-
+{{{
 ----
  . CategoryConfigExample
+}}}
