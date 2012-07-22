@@ -87,7 +87,7 @@ http://www.squid-cache.org/Versions/v3/3.2/
 = Squid 3.3 (3.HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3 in 2012.
+The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3 in late 2012.
 
 ##Additions are limited to:
 ## * Polish of existing features
@@ -102,11 +102,13 @@ Basic new features in 3.3:
 
  * New helper to log access.log to an SQL Database
  * New helper to quota session access time
- * SslBump improvements
+ * [[Features/BumpSslServerFirst]]
+ * [[Features/MimicSslServerCert]]
+ * New directive to add custom HTTP headers - SquidConf:add_request_header
 
 ## The intention is to surpass Squid-2.7, improve the upgrade path and concentrate on further performance improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
 
-Packages of squid 3.3 source code are available at
+Packages of what will become squid 3.3 source code are available at
 http://www.squid-cache.org/Versions/v3/3.HEAD/
 
 ## bugs down to normal status
