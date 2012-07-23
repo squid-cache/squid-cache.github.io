@@ -7,12 +7,9 @@
 
 = Feature: SslBump using Bump-Server-First method =
 
-## Move this down into the details documentation when feature is complete.
  * '''Goal''': Allow [[Features/SslBump|bumping]] of intercepted SSL connections. Prep for mimicking server certificates details.
- * '''Status''': in progress; submitted for Squid Project review
- * '''ETA''': February 2012
+ * '''Status''': complete
  * '''Version''': 3.3
- * '''Priority''': 1
  * '''Developer''': AlexRousskov and Christos Tsantilas
  * '''More''': requires [[Features/SslBump|SslBump]], enables [[Features/MimicSslServerCert|server certificate mimicking]], and pointless without [[Features/DynamicSslCert|Dynamic Certificate Generation]]
 
