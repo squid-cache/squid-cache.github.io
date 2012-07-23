@@ -8,10 +8,8 @@
 = Feature: Mimic original SSL server certificate when bumping traffic =
 
  * '''Goal''': Pass original SSL server certificate information to the user. Allow the user to make an informed decision on whether to trust the server certificate.
- * '''Status''': in progress; submitted for Squid Project review
- * '''ETA''': March 2012
+ * '''Status''': completed
  * '''Version''': 3.3
- * '''Priority''': 2
  * '''Developer''': AlexRousskov and Christos Tsantilas
  * '''More''': requires [[Features/BumpSslServerFirst|bump-server-first]] and benefits from [[Features/DynamicSslCert|Dynamic Certificate Generation]]
 
