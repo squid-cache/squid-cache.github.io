@@ -33,13 +33,13 @@ The specific client who received the bad response is unfortunately left to handl
 
 '''Workaround'''
 
-There is no generally usable workaround for this problem. Fixes for this are very specific to your installation and which if the above problems is causing it.
+There is no generally usable workaround for this problem. Fixes for this are very specific to your installation and which of the above problems is causing it.
 
 Some of the options include:
  * ACLs blocking access to the problem website
  * Bypassing the proxy for that specific site (unsafe if it really is an attack).
  * Tracking down which of the causes is occurring and reporting the problem.
- * Software upgrades for the relevant middleware might help in the cases labelled {1}.
+ * In the cases labelled {1} software upgrades for the relevant middleware might help.
 
 NP: if you track it down to some other cause not mentioned above, we would like to know so this article gets updated.
 
