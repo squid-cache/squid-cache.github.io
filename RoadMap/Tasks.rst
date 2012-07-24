@@ -38,8 +38,15 @@ Tasks in this section need to be done in a rough order to make the changes easy.
 
  * Check external Copyrights are up-to-date in CREDITS
   1. Go through the helper/* files and check ~/CREDITS contains one copy of each copyright for any files with header-copyright present.
-  2. do the above for each lib/* and lib/libTrie file 
-  3. highlight any non-GPLv2 compatible copyrights found to squid-dev.
+  1. Go through the lib/* files and check ~/CREDITS contains one copy of each copyright for any files with header-copyright present.
+  1. highlight any non-GPLv2 compatible copyrights found to squid-dev.
+
+ * Normalize the debug level 0 and 1 messages
+  1. Convert all {{{debugs(*, 0, ...}}} lines to use DBG_CRITICAL
+  1. Convert all {{{debugs(*, 1, ...}}} lines to use DBG_IMPORTANT
+  1. Convert all {{{opt_parse_cfg_only?0:n}}} code to using DBG_PARSE_NOTE(n)
+  1. verify all DBG_CRITICAL output conforms to the labeling criterion in [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]]
+  1. verify all DBG_CRITICAL and DBG_IMPORTANT output has a KnowledgeBase page describing it (as per [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]])
 
 === Small Tasks ===
 
