@@ -12,7 +12,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Upcoming Meeting ==
 
- * Date: '''07:00 2012-07-24 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''07:00 2012-07-26 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
@@ -57,7 +57,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
 || #4 || AmosJeffries || create a wiki table with actions || done ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
-|| #4 || AmosJeffries || minutes for meeting #3 written and circulated || not done ||
+|| #4 || AmosJeffries || minutes for meeting #3 written and circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #4 written and circulated || not done ||
 || #4 || AlexRousskov || check on bank fees reversal || done ||
 || #4 || AlexRousskov || receive "royalties" donation from Packt Publishing || done ||
