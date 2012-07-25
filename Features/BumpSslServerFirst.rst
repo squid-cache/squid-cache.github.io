@@ -71,6 +71,14 @@ Bumping server first is essentially required for handling intercepted HTTPS conn
 The code being tested uses bump-server-first for CONNECT requests, but that one-for-all decision is debatable, and the choice may become configurable using a squid.conf ACL (further complicating the already rather convoluted code). Feedback is welcome.
 
 
+== Why not just use Server Name Indication (SNI) instead? ==
+
+Instead of bumping the server first, it is possible to get the intended server name during SSL or TLS handshake using a [[http://en.wikipedia.org/wiki/Server_Name_Indication|SNI]] feature. We have not taken that shortcut because:
+
+ * There is no SNI support in Internet Explorer running on Windows XP.
+ * It is not possible to mimic the server certificate so that the user can (a) decide whether to ignore any certificate problems and (b) cache that decision (see [[Features/MimicSslServerCert|server certificate mimicking]]).
+
+
 = Limitations =
 
 This project will not support forwarding of SSL Server Name Indication (SNI) information to the origin server and will make such support a little more difficult. However, SNI forwarding has its own ''serious'' challenges (beyond the scope of this document) that far outweigh the added forwarding difficulties.
