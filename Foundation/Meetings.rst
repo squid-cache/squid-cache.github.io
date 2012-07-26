@@ -12,7 +12,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Upcoming Meeting ==
 
- * Date: '''07:00 2012-07-26 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''07:00 2012-08-20 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
@@ -24,11 +24,6 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
  1. Sysadmin pilot status.
- 1. Sponsorship program:
-  a. public acknowledgements
-  a. significant contributions other than cash or code
-  a. contribution style (accumulated or individual tansaction)
- 1. IRCache proposal v2.
  1. Next meeting scheduling.
  1. Open floor:
 
@@ -50,6 +45,7 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. IRCache proposal v2.
  1. Next meeting scheduling.
  1. Open floor:
+  a. [[Squid-3.2]] stable release timetable
 
 == Action Points ==
 
@@ -63,6 +59,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #5 || AmosJeffries || document on sponsorhip page that non-monetary is possible by contacting the board. || not done ||
 || #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || not done ||
 || #5 || AmosJeffries || review SPONSORS to order it as reverse cronological with active sponsors at top. || not done ||
+|| #5 || AmosJeffries || finalize [[squid-3.2]] for stable release || not done ||
 || ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
