@@ -69,7 +69,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #3 || AmosJeffries || donation page text || done. awaiting board action signoff for publishing. ||
 || #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
 || ||
-|| #2 || HenrikNordstrom || sysadmin discussions with Pieter De Wit || not done ||
+|| #2 || HenrikNordstrom || sysadmin discussions with candidate || not done ||
 || #2 || HenrikNordstrom , AmosJeffries || other (end-of-year) documents || not done ||
 || #2 || HenrikNordstrom , AmosJeffries || document process for Board meetings || not done ||
 
