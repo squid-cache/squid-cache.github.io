@@ -35,7 +35,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ==== Agenda of Last Meeting ====
 
-'''Meeting #4.'''
+'''Meeting #5.'''
 
  1. Opening of the meeting
  1. Selection of meeting officials
@@ -43,21 +43,31 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
  1. Sysadmin pilot status.
- 1. Foundation response to the IRS request for information.
- 1. IRCache proposal.
- 1. Board email alias setup.
- 1. Publication of Board meeting minutes.
+ 1. Sponsorship program:
+  a. public acknowledgements
+  a. significant contributions other than cash or code
+  a. contribution style (accumulated or individual tansaction)
+ 1. IRCache proposal v2.
  1. Next meeting scheduling.
- 1. Open floor.
+ 1. Open floor:
 
 == Action Points ==
 
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
+|| - || anyone || email confirmation regarding meeting 2 days in advance || not done ||
+|| ||
+|| #5 || everyone || move pending sysadmin tasks to bugzilla || not done ||
+|| #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
+|| #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
+|| #5 || HenrikNordstrom || use WhoWeAre for documenting who is who in the sysadmin team. || not done ||
+|| #5 || AmosJeffries || document on sponsorhip page that non-monetary is possible by contacting the board. || not done ||
+|| #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || not done ||
+|| #5 || AmosJeffries || review SPONSORS to order it as reverse cronological with active sponsors at top. || not done ||
+|| ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #3 written and circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #4 written and circulated || not done ||
-|| #4 || anyone || email confirmation regarding meeting 2 days in advance || in progress ||
 || ||
 || #3 || AmosJeffries || donation page text || done. awaiting board action signoff for publishing. ||
 || #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
