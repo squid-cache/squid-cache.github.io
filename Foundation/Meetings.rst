@@ -53,21 +53,14 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Action Points ==
 
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
-|| #4 || HenrikNordstrom || set up a invite-only board mailinglist || done ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
-|| #4 || AmosJeffries || create a wiki table with actions || done ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #3 written and circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #4 written and circulated || not done ||
-|| #4 || AlexRousskov || check on bank fees reversal || done ||
-|| #4 || AlexRousskov || receive "royalties" donation from Packt Publishing || done ||
 || #4 || anyone || email confirmation regarding meeting 2 days in advance || in progress ||
 || ||
-|| #3 || HenrikNordstrom || draft agenda ||done ||
 || #3 || AmosJeffries || donation page text || done. awaiting board action signoff for publishing. ||
-|| #3 || AmosJeffries || bring up immediate needs for 3.2 on squid-dev || done ||
 || #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
-|| #3 || AlexRousskov || convince bank to stop their fees for low account || done ||
 || ||
 || #2 || HenrikNordstrom || sysadmin discussions with Pieter De Wit || not done ||
 || #2 || HenrikNordstrom , AmosJeffries || other (end-of-year) documents || not done ||
