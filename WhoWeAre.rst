@@ -20,6 +20,26 @@ There are a few key individuals who keep the project running.
  * [[MarkusMoeller|Markus Moeller]] wrote and supports the Kerberos features in Squid
  * [[StevenWilton|Steven Wilton]] is bringing the [[Features/CyclicObjectStorageSystem|COSS]] storage engine to maturity
 
+= Squid Project Sysadmin Team =
+
+ * [[Henrik_Nordström]]
+  . '''system admin''': master, east, west
+  . '''service admin ''': bzr, bugzilla, mysql, rsync, www
+  . '''mail admin''': qmail, ezmlm
+
+ * [[AmosJeffries|Amos Jeffries]]
+  . '''service admin''': bugzilla, bzr, mysql, rsync, jenkins, website
+  . '''mail admin''': archives
+
+ * [[FrancescoChemolli|Francesco Chemolli]]
+  . '''system admin''': eu, [[BuildFarm|build farm]] VMs
+  . '''service admin ''': wiki, jenkins
+
+## * [[http://wessels.squid-cache.org/|Duane Wessels]]
+##  . '''system admin''': master, west
+##  . administrator for: dns, bugzilla
+
+
 = Other Contributors =
  * Countless independent [[http://www.squid-cache.org/CONTRIBUTORS.txt|Contributors]].
 
