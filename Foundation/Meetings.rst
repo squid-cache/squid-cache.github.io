@@ -55,11 +55,11 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #5 || everyone || move pending sysadmin tasks to bugzilla || not done ||
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
 || #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
-|| #5 || HenrikNordstrom || use WhoWeAre for documenting who is who in the sysadmin team. || not done ||
+|| #5 || HenrikNordstrom || use WhoWeAre for documenting who is who in the sysadmin team. || started ||
 || #5 || AmosJeffries || document on sponsorhip page that non-monetary is possible by contacting the board. || not done ||
 || #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || not done ||
 || #5 || AmosJeffries || review SPONSORS to order it as reverse cronological with active sponsors at top. || not done ||
-|| #5 || AmosJeffries || finalize [[squid-3.2]] for stable release || not done ||
+|| #5 || AmosJeffries || finalize [[squid-3.2]] for stable release || in progress ||
 || ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
