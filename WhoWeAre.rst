@@ -22,9 +22,11 @@ There are a few key individuals who keep the project running.
 
 = Squid Project Sysadmin Team =
 
+ {i} To contact the sysadmin about any problems please report via Bugzilla under [[http://bugs.squid-cache.org/enter_bug.cgi?product=Web%20Servers|Web Servers]].
+
  * [[Henrik_Nordström]]
   . '''system admin''': master, east, west
-  . '''service admin ''': bzr, bugzilla, mysql, rsync, www
+  . '''service admin''': bzr, bugzilla, mysql, rsync, www
   . '''mail admin''': qmail, ezmlm
 
  * [[AmosJeffries|Amos Jeffries]]
@@ -33,11 +35,11 @@ There are a few key individuals who keep the project running.
 
  * [[FrancescoChemolli|Francesco Chemolli]]
   . '''system admin''': eu, [[BuildFarm|build farm]] VMs
-  . '''service admin ''': wiki, jenkins
+  . '''service admin''': wiki, jenkins
 
-## * [[http://wessels.squid-cache.org/|Duane Wessels]]
-##  . '''system admin''': master, west
-##  . administrator for: dns, bugzilla
+ * [[http://wessels.squid-cache.org/|Duane Wessels]]
+  . '''system admin''': master, west
+  . '''service admin''': dns, bugzilla
 
 
 = Other Contributors =
