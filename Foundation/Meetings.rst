@@ -52,7 +52,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
 || - || anyone || email confirmation regarding meeting 2 days in advance || not done ||
 || ||
-|| #5 || everyone || move pending sysadmin tasks to bugzilla || not done ||
+|| #5 || everyone || move pending sysadmin tasks to bugzilla || in progress ||
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
 || #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
 || #5 || HenrikNordstrom || use WhoWeAre for documenting who is who in the sysadmin team. || started ||
