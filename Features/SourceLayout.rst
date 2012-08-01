@@ -92,7 +92,7 @@ If you know the solution or can improve the proposed one, please write to squid-
 ||Should class and file names use just_small, !CamelCase, or CAPS letters? || !CamelCaseHttpAcronymsIncluded ||
 || Should we use squid/src/squid/ root for most sources to include header files as <squid/group/file.h>? This may be required for installed headers and 3rd party code using those headers. It is not clear whether Squid will have installed headers in the foreseeable future. The Feature/eCAP work will determine that. || no ||
 || Should we form a generic mini-cache object type to combine the shared portions of fqdncache, ipcache, idns queue, netdb, ident-cache, maybe others not yet found? || Probably, that will be a separate feature event though. ||
-|| What to do with all the mixed test* and stub_* files during this restructure? || AYJ: I'm sticking them in the same folder as the code, and prefixing with test* and stub* as needed. Some whose dependencies have not been cleaned up must remain in squid/src/tests/ ||
+|| What to do with all the mixed test* and stub_* files during this restructure? || Sticking them in the same folder as the code was a bad idea due to dependency linkages and dist order. '''For now sick them in tests/ folder'''. TODO: We should probably split the stubs into a stubs/ folder and remove the file prefixes. ||
 
 == Dependency Issues: ==
 
