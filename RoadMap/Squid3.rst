@@ -23,15 +23,27 @@ All features must pass an auditing process for commit to 3.HEAD, and any feature
 
 Features which have not reached completion or have failed the audit, are automatically delayed to the next Squid release. Which should not be an unreasonable delay given the new fast-track release plan.
 
+
+## Now in '''DEVELOPMENT''' cycle.
+## The set of new Squid 3.X features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.X in -Month- -Year-.
+
+## Now in '''RELEASE CANDIDATE''' cycle.
+## The Squid 3.X release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+
+## Now in '''RELEASE FREEZE''' cycle.
+## The Squid 3.2.0.19 package is proposed for becoming the first stable 3.2 release. No new beta releases will occur unless a new critical bug is found in this package.
+
 = Squid 3.2 =
 
-Now in '''RELEASE CANDIDATE''' cycle.
-The Squid 3.2 release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+Now in '''RELEASE FREEZE''' cycle.
+The Squid 3.2.0.19 package is proposed for becoming the first stable 3.2 release. No new beta releases will occur unless a new critical bug is found in this package.
+
 
 Additions are limited to:
- * Polish of existing features
- * Porting of Squid-2.7 feature regressions
- * Stability fixes
+ * Documentation updates
+## * Polish of existing features
+## * Porting of Squid-2.7 feature regressions
+## * Stability fixes
  * Bug fixes
 
  . <:( [[http://bugs.squid-cache.org/buglist.cgi?bug_id_type=anyexact&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&chfieldto=Now&product=Squid&query_format=advanced&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&order=version%20DESC%2Cbug_severity%2Cbug_id| Major or higher Bugs currently affecting this release]].
