@@ -38,47 +38,47 @@ If needed, you can make a copy and re-write the error message template files in 
 
  %s:: Absolute URL requested by client
 
-## '''[[Squid-3.2]] adds URL templating codes:'''
+'''[[Squid-3.2]] adds URL templating codes:'''
 
-## %a:: User identity
+ %a:: User identity
 
-## %d:: seconds elapsed since request received (not yet implemented)
+ %d:: seconds elapsed since request received (not yet implemented)
 
-## %e:: errno
+ %e:: errno
 
-## %E:: strerror()
+ %E:: strerror()
 
-## %h:: Squid public hostname
+ %h:: Squid public hostname
 
-## %H:: server host name
+ %H:: server host name
 
-## %i:: client IP address
+ %i:: client IP address
 
-## %I:: server IP address (NP: upper case '''i''')
+ %I:: server IP address (NP: upper case '''i''')
 
-## %M:: Request Method
+ %M:: Request Method
 
-## %o:: Message returned by external ACL helper
+ %o:: Message returned by external ACL helper
 
-## %p:: URL port \#
+ %p:: URL port \#
 
-## %P:: Protocol
+ %P:: Protocol
 
-## %R:: URL path requested.
+ %R:: URL path requested.
 
-## %S:: Squid version signature.
+ %S:: Squid version signature.
 
-## %s:: Absolute URL requested by client
+ %s:: Absolute URL requested by client
 
-## %t:: local time
+ %t:: local time
 
-## %T:: UTC
+ %T:: UTC
 
-## %U:: Absolute URL without password. Uses * instead of path for CONNECT requests.
+ %U:: Absolute URL without password. Uses * instead of path for CONNECT requests.
 
-## %u:: Absolute URL with password. May be missing path on CONNECT requests.
+ %u:: Absolute URL with password. May be missing path on CONNECT requests.
 
-## %w:: cachemgr email address
+ %w:: cachemgr email address
 
 == ERR_* template codes for embedding ==
 
