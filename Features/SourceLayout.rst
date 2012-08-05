@@ -25,6 +25,7 @@ Key:
  * :\ Improved, but needs more work. Nobody is working on this now. See the To-do column for details.
  * {1} AlexRousskov doing now.
  * {2} AmosJeffries doing now.
+ * {3} FrancescoChemolli doing now.
 ## * {3} you? doing now.
 
 || '''Unit''' <<BR>> '''Tests''' || '''Stub''' || '''Namespace''' || '''Polish''' || '''Group''' || '''Definition''' || '''Files and To-do''' ||
@@ -44,6 +45,7 @@ Key:
 || <:( || <:( || <:( || (./) || ''eui/'' || EUI-48 / MAC / ARP operations ||
 || <:( || <:( || (./) || :\ {2} || ''format/'' || Custom formatting ||
 || <:( || <:( || <:( || :\ || ''fs/'' || file system-specific cache store support? || fs/*, Add Fs namespace, rename classes, add Makefiles for subdirs. ||
+|| <:( || <:( || {3} || :\ || ''fs/ufs'' || Ufs cache_dir || FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
 || <:( || <:( || <:( || {2} || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || <:( || <:( || <:( || :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
 || <:( || <:( || <:( || :\ || ''ident/'' || IDENT support || ident.* Make remote connection handling into an !AsyncJob||
