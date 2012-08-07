@@ -44,14 +44,12 @@ Tasks in this section need to be done in a rough order to make the changes easy.
  * Normalize the debug level 0 and 1 messages
   1. Convert all {{{opt_parse_cfg_only?0:n}}} code to using DBG_PARSE_NOTE(n)
   1. verify all DBG_CRITICAL output conforms to the labeling criterion in [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]]
-  1. verify all DBG_CRITICAL and DBG_IMPORTANT output has a KnowledgeBase page describing it (as per [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]])
+  1. verify all DBG_CRITICAL and DBG_IMPORTANT output has a KnowledgeBase page describing it (as per [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]]) or a Feature page troubleshooting entry.
 
 === Small Tasks ===
 
 Small, but nagging annoyances. These might be done already if this page is not updated regularly.
 Check with squid-dev to see if its already done.
-
- * Migrate Feature requests from bugzilla to wiki pages. (FrancescoChemolli, mostly done. Needs second round after Apr 20th, 2009)
 
  * Fix kqueue bugs once and for all (ie, delete events for closed FDs)
   . http://bugs.squid-cache.org/show_bug.cgi?id=1991
@@ -74,7 +72,7 @@ Check with squid-dev to see if its already done.
 
  * Helper and Tool Manuals
   1. Write a manual/man(8) page for a helpers/ program that does not have one.
-  2. Update the existing README.txt and other help docs into proper manuals.
+  2. Update the existing README.txt and other helper docs into proper manuals ([[ProgrammingGuide/ManualDocumentation#TODO|todo list]])
   3. Benchmark documentation.
     . How fast can each helper run?
     . For helpers with multiple backends (ie DB), how do they compare?
