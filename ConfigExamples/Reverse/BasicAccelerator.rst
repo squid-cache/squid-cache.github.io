@@ -39,7 +39,7 @@ http_port 80 accel defaultsite=your.main.website.name no-vhost
 Next, you need to tell Squid where to find the real web server:
 
 {{{
-cache_peer ip.of.webserver parent 80 0 no-query originserver name=myAccel
+cache_peer backend.webserver.ip.or.dnsname parent 80 0 no-query originserver name=myAccel
 }}}
 
 And finally you need to set up access controls to allow access to your site without pushing other web requests to your web server.
