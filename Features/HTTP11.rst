@@ -11,7 +11,7 @@
 
 == Summary ==
 
-Squid trunk claims HTTP/1.1 support. Squid v3.1 claims HTTP/1.1 support but only in sent requests (from Squid to servers). Earlier Squid versions do not claim HTTP/1.1 support by default because they cannot fully handle Expect:100-continue, 1xx responses, and/or chunked messages. 
+Squid-3.2 claims HTTP/1.1 support. Squid v3.1 claims HTTP/1.1 support but only in sent requests (from Squid to servers). Earlier Squid versions do not claim HTTP/1.1 support by default because they cannot fully handle Expect:100-continue, 1xx responses, and/or chunked messages. 
 
 Co-Advisor tests no longer detect RFC 2616 MUST-level violations in Squid trunk when it comes to requirements unrelated to caching. Many caching-related requirements are still violated. The "compliance percentage" in the project header is essentially a marketing gimmick (i.e., meaningless or misleading but technically correct information). We are actively working on fixing all known violations detected by Co-Advisor.
 
@@ -38,6 +38,9 @@ UPDATE: 1xx forwarding has been implemented in [[Squid-3.2]]. The forwarding pat
 RFC2616 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
 
  * NP: ICY protocol seems to be the main breakage. So ICY support has been implemented natively from [[Squid-3.1]] to fix this.
+
+ * NP: Sharepoint and several other MS products break with authentication loops when different HTTP/1.x versions are advertised on server and client side (as seen with [[Squid-3.1]]).
+
 
 We may require a generic ''upgrade_http'' option which takes a version number, allow/deny, and a list of ACLs. Plus two new ACLs to test for the request HTTP version and reply HTTP version.
 
