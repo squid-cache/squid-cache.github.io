@@ -26,75 +26,29 @@ Features which have not reached completion or have failed the audit, are automat
 
 ## Now in '''DEVELOPMENT''' cycle.
 ## The set of new Squid 3.X features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.X in -Month- -Year-.
+## 
 
 ## Now in '''RELEASE CANDIDATE''' cycle.
 ## The Squid 3.X release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+## 
+## Additions are limited to:
+##  * Documentation updates
+##  * Polish of existing features
+##  * Porting of Squid-2.7 feature regressions
+##  * Stability fixes
+##  * Security fixes
+##  * Bug fixes
 
 ## Now in '''RELEASE FREEZE''' cycle.
 ## The Squid 3.2.0.19 package is proposed for becoming the first stable 3.2 release. No new beta releases will occur unless a new critical bug is found in this package.
+## 
+## Additions are limited to:
+##  * Documentation updates
+##  * Stability fixes
+##  * Security fixes
+##  * Critical Bug fixes
 
-= Squid 3.2 =
-
-Now in '''RELEASE FREEZE''' cycle.
-The Squid 3.2.0.19 package is proposed for becoming the first stable 3.2 release. No new beta releases will occur unless a new critical bug is found in this package.
-
-
-Additions are limited to:
- * Documentation updates
-## * Polish of existing features
-## * Porting of Squid-2.7 feature regressions
-## * Stability fixes
- * Bug fixes
-
- . <:( [[http://bugs.squid-cache.org/buglist.cgi?bug_id_type=anyexact&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&chfieldto=Now&product=Squid&query_format=advanced&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&order=version%20DESC%2Cbug_severity%2Cbug_id| Major or higher Bugs currently affecting this release]].
-  * Bugs against any older version can be closed if found fixed in 3.2.
-  * Bugs inherited from older versions are not necessarily blockers on 3.2 stable.
-
-
-##Exceptions have been made for the following projects (and why):
-## * StringNG - performance boost
-
-Features Ported from 2.7 in this release:
-
- * Unique Sequence numbering for access.log lines
- * [[Features/LogModules]] (including log daemon module)
- * {{{Cache-Control: stale-if-error}}}  handling and other staleness limits.
-
-Basic new features in 3.2:
-
- * Fully transparent credential pass-thru to SquidConf:cache_peer
- * Kerberos login to SquidConf:cache_peer
- * [[Features/HTTP11| Full HTTP/1.1 Support]]
- * [[Features/Tproxy4|TProxy v4.1+ support for IPv6]]
- * Dynamic URL generation for SquidConf:deny_info redirects
- * Multi-Lingual FTP directory listings
- * Multi-Lingual proxy configuration splash pages for captive portals
- * [[Features/Surrogate|Surrogate 1.0]] protocol support
- * [[Features/SmpScale|SMP]] Scaling worker processes
- * [[Features/RockStore| ''rock'' ]] SMP shared memory cache with disk backing
- * Helpers started on-demand instead of delaying startup and reconfigure process
- * [[Features/HelperMultiplexer| Multiplexer to add concurrency support for older helpers]]
- * New helpers to demo SquidConf:url_rewrite_program programs
- * New helper to lookup Kerberos or NTLM group via LDAP
- * New helper to de-mux Negotiate/NTLM and Negotiate/Kerberos authentication
- * ''Purge'' tool to manage UFS/AUFS/DiskD caches bundled
- * EUI (MAC address) logging and external ACL handling
- * [[Features/AclRandom]]
- * [[Features/EDNS]]
- * [[Features/LogDnsWait]]
- * IPv6 support for TCP split-stack
-
-## Developer-only relevant features
-## * [[Features/ConfigureInRefactoring]]
-## * [[Features/CommCleanup]]
-
-## All targeted features.
-## <<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:C{1}ategoryWish regex:"Version...:.*3.2" -regex:"ETA...:")>>
-
-
-Packages of squid 3.2 source code are available at
-http://www.squid-cache.org/Versions/v3/3.2/
-
+## STABLE cycle split off into a searate page
 
 = Squid 3.3 (3.HEAD) =
 
@@ -124,7 +78,7 @@ Packages of what will become squid 3.3 source code are available at
 http://www.squid-cache.org/Versions/v3/3.HEAD/
 
 ## bugs down to normal status
-## * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
 
 == TODO ==
 
@@ -200,7 +154,7 @@ Certain features are no longer relevant as the code improves and are planned for
 
 || ''' Version''' || '''Feature''' || '''Why''' ||
 || 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[Translations|langpack]] ||
-|| 3.1 || libcap 1.x || libcap-2.06+ is required for simpler code and proper API usage. ||
+|| 3.1 || libcap 1.x || libcap-2.09+ is required for simpler code and proper API usage. ||
 || 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
 || 3.2 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
 || 3.2+ || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
