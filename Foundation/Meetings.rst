@@ -50,7 +50,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Action Points ==
 
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
-|| - || anyone || email confirmation regarding meeting 2 days in advance || not done ||
+|| - || anyone || email confirmation regarding meeting 2 days in advance || in progress ||
 || ||
 || #5 || everyone || move pending sysadmin tasks to bugzilla || in progress ||
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
