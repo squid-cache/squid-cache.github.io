@@ -18,11 +18,12 @@
 ENFORCED:
  * 4-space indentation, no tabs
  * no trailing whitespace on '''any''' line
+ * no sets of multiple empty lines. One is enough to separate things.
  * one space between '''if''' and its parameter '''()''' brackets
  * construct open braces '''{''' begin on the same line as their construct (if, while)
  * within a conditional, assignment must be surrounded with '''(''' braces: {{{if ((a = b))...}}}<<BR>>but a local variable declaration and initialization must not be: {{{if (T a = b)...}}}.
 
-NP: The formatter is known to enforce some weird indentation at times. Notably after #if ... #endif directives. If you find these, please ignore for now. They will be corrected in a later version of the formatter.
+NP: The formater is known to enforce some weird indentation at times. Notably after #if ... #endif directives. If you find these, please ignore for now. They will be corrected in a later version of the formater.
 
 == Mandatory coding rules ==
 
@@ -153,7 +154,6 @@ The verb ''is'' may be omitted, especially if the result cannot be confused with
 
  . '''Squid-3.2 and above:'''
    * include squid.h as their first include file. It is the minimal dependency include containing very little beyond the portability requirements.
-   . NOTE: the full squid dependency tree include (globals, protos, types, defines, everything) has been renamed to squid_old.h and may be used as an '''extra''' include file only if necessary (prefer omitting it).
 
  . '''Squid-3.1 and below (only):'''
    * include either config.h or squid.h as their first include
@@ -166,7 +166,7 @@ The verb ''is'' may be omitted, especially if the result cannot be confused with
 '''all'''
  * place internal header includes above system includes
  * reference internal includes by their full internal path (may exclude src/ from path)
- * sort internal includes alphabetically
+ * sort internal includes alphabetically (ENFORCED)
  * minimal system includes
  * wrap system includes in autoconf HAVE_FILE_H protection macros
  * sort system includes alphabetically
