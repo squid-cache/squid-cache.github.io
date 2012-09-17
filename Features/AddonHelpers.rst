@@ -232,7 +232,7 @@ Input line received from Squid:
   Squid sends this to a helper when it needs a new challenge token. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the SquidConf:auth_param max_challenge_lifetime and max_challenge_uses parameters. The helper should respond with a '''TT''' message.
 
  KK credentials::
-  Squid sends this to a helper when it wants to authenticate a user's credentials. The helper responds with either '''AF''', '''NA''', '''BH''', or '''LD'''. The credentials are an encoded blob exactly as received in the HTTP headers.
+  Squid sends this to a helper when it wants to authenticate a user's credentials. The helper responds with either '''AF''', '''NA''', or '''BH'''. The credentials are an encoded blob exactly as received in the HTTP headers.
 
 
 Result line sent back to Squid:
@@ -248,9 +248,6 @@ Result line sent back to Squid:
 
  BH reason::
   The helper sends this message back to Squid when the validation procedure fails. This might happen, for example, when the helper process is unable to communicate with a Windows NT domain controller. Squid rejects the user's request.
-
- LD username::
-  This helper-to-Squid response is similar to BH, except that Squid allows the user's request. Like '''AF''', it returns the '''username'''. To use this feature, you must compile Squid with the --enable-ntlm-fail-open option.
 
 ## end negotiateauth protocol
 
