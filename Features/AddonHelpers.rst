@@ -57,6 +57,9 @@ Squid-2.7 and Squid-3.1+ support:
 Squid-3.1+ support:
  * SSL certificate generation (3.1.12.1 and later).
 
+Proposed:
+ * SSL certificate generation
+
 Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/ICAP|ICAP services]] which differ from helper scripts in many ways.
 
 == Helper protocols ==
@@ -371,6 +374,42 @@ result size [key-pair] body
 
 ## end sslcrtd protocol
 
+=== SSL server certificate validator ===
+
+## start sslcrtvd protocol
+This interface is similar to the SSL certificate generation interface.
+
+Input ''line'' received from Squid:
+{{{
+request size [body]
+}}}
+
+ /!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
+
+ request::
+  The type of action being requested. Presently the code '''cert_validate''' is the only request made.
+
+ size::
+  Total size of the following request bytes taken by the '''key=pair''' parameters and '''body'''.
+
+ body::
+  Consist of key=value pairs. The supported key=value pairs are:
+  || host || FQDN host name or the domain ||
+  || errors || A comma separated list of the detected openSSL certificate validation errors ||
+  || cert_'''''ID''''' || Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are||
+
+Example request:
+{{{
+cert_validate 1519 host=dmz.example-domain.com
+errors=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
+cert_0=-----BEGIN CERTIFICATE-----
+MIID+DCCA2GgAwIBAgIJAIDcHRUxB2O4MA0GCSqGSIb3DQEBBAUAMIGvMQswCQYD
+...
+YpVJGt5CJuNfCcB/
+-----END CERTIFICATE-----
+}}}
+
+## end sslcrtvd protocol
 
 === Cache file eraser ===
 
