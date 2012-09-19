@@ -409,6 +409,34 @@ YpVJGt5CJuNfCcB/
 -----END CERTIFICATE-----
 }}}
 
+Result line sent back to Squid:
+{{{
+result size body
+}}}
+
+ result::
+  The result code '''OK''' indicates that the certificate validation is successful. The result code '''ERROR''' indicates that an error occurred.
+ size::
+  Total size of the following request bytes taken by the '''body'''
+ body::
+  Consist of key=value pairs. The supported key=value pairs are:
+  || cert_'''''ID''''' || A certificate send from helper to squid. The '''ID''' is an index number for this certificate ||
+  || error_name_'''''ID''''' || The openSSL error name for the error '''ID''' ||
+  || error_reason_'''''ID'''''|| A reason for the error '''ID'''||
+  || error_cert_'''''ID''''' || The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper||
+
+Example response message:
+{{{
+OK 1444 cert_10=-----BEGIN CERTIFICATE-----
+MIIDojCCAoqgAwIBAgIQE4Y1TR0/BvLB+WUF1ZAcYjANBgkqhkiG9w0BAQUFADBr
+...
+398znM/jra6O1I7mT1GvFpLgXPYHDw==
+-----END CERTIFICATE-----
+error_name_0=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
+error_reason_0=Checked by Cert Validator
+error_cert_0=cert_10
+}}}
+
 ## end sslcrtvd protocol
 
 === Cache file eraser ===
