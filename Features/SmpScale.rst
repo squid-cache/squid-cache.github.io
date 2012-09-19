@@ -8,8 +8,6 @@
 
  * '''Status''': In progress; ready for deployment in some environments
 
- * '''ETA''': May 2010
-
  * '''Version''': Squid 3.2
 
  * '''Developer''': AlexRousskov
@@ -206,6 +204,29 @@ Low-level components that may need to be rewritten in a sharing-safe way or repl
  * any function, method, or class with static variables.
 
 One possibility often spoken of is to replace one or more of the low-level components with a public implementation having better thread-safe implementation (usually referring to the linked-list and hash algorithms).  Deep testing will be needed however to check for suitable speedy and efficient versions.
+
+== Troubleshooting ==
+
+=== Ipc::Mem::Segment::create failed to shm_open(/squid-squid-page-pool.shm): (13) Permission denied ===
+
+On Linux the page pool should "just work". However it is still dependent on the SHM device mapping being initialized.
+
+Add the following line to your '''/etc/fstab file''':
+{{{
+shm        /dev/shm    tmpfs    nodev,nosuid,noexec    0    0
+}}}
+
+After that use (as root):
+{{{
+mount shm
+}}}
+
+=== Cannot bind socket FD NN to [::]: (13) Permission denied ===
+
+ {i} Also may display as '''Cannot bind socket FD NN to 0.0.0.0: (13) Permission denied''' if you disabled IPv6.
+
+Check the permisssions on '''/var/run/squid''' where Squid registers its PID files and IPC channel sockets. That area requires ownership by the Squid user.
+
 
 ----
 CategoryFeature CategoryWish
