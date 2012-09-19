@@ -321,7 +321,7 @@ Input ''line'' received from Squid:
 request size key-pair [body]
 }}}
 
- /!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
+/!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
 
  request::
   The type of action being requested. Presently the code '''new_certificate''' is the only request made.
@@ -335,17 +335,17 @@ request size key-pair [body]
   Some of the key=value pairs:
   || host= || FQDN host name of the domain needing a certificate. ||
 
-body::
- An optional CA certificate and private RSA key to sign with. If this body field is omitted the generated certificate will be self-signed.
- The content of this field is ASCII-armoured PEM format.
-{{{
+ body::
+  An optional CA certificate and private RSA key to sign with. If this body field is omitted the generated certificate will be self-signed.
+  The content of this field is ASCII-armoured PEM format.
+  {{{
 -----BEGIN CERTIFICATE-----
 ...
 -----END CERTIFICATE-----
 -----BEGIN RSA PRIVATE KEY-----
 ...
 -----END RSA PRIVATE KEY-----
-}}}
+  }}}
 
 Result line sent back to Squid:
 {{{
@@ -366,11 +366,11 @@ result size [key-pair] body
 
  body::
   The generated CA certificate. The content of this field is ASCII-armoured PEM format.
-{{{
+  {{{
 -----BEGIN CERTIFICATE-----
 ...
 -----END CERTIFICATE-----
-}}}
+  }}}
 
 ## end sslcrtd protocol
 
@@ -384,7 +384,7 @@ Input ''line'' received from Squid:
 request size [body]
 }}}
 
- /!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
+/!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
 
  request::
   The type of action being requested. Presently the code '''cert_validate''' is the only request made.
