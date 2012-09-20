@@ -58,7 +58,7 @@ Squid-3.1+ support:
  * SSL certificate generation (3.1.12.1 and later).
 
 Proposed:
- * SSL certificate generation
+ * SSL certificate validation
 
 Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/ICAP|ICAP services]] which differ from helper scripts in many ways.
 
@@ -381,7 +381,7 @@ This interface is similar to the SSL certificate generation interface.
 
 Input ''line'' received from Squid:
 {{{
-request size [body]
+request size [key-pair]
 }}}
 
 /!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
@@ -390,10 +390,10 @@ request size [body]
   The type of action being requested. Presently the code '''cert_validate''' is the only request made.
 
  size::
-  Total size of the following request bytes taken by the '''key=pair''' parameters and '''body'''.
+  Total size of the following request bytes taken by the '''key=pair''' parameters.
 
- body::
-  Consist of key=value pairs. The supported key=value pairs are:
+ key-pair::
+  The supported key=value pairs are:
   || host || FQDN host name or the domain ||
   || errors || A comma separated list of the detected openSSL certificate validation errors ||
   || cert_'''''ID''''' || Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are||
@@ -411,15 +411,17 @@ YpVJGt5CJuNfCcB/
 
 Result line sent back to Squid:
 {{{
-result size body
+result size key-pair
 }}}
 
  result::
-  The result code '''OK''' indicates that the certificate validation is successful. The result code '''ERROR''' indicates that an error occurred.
+  The result code '''OK''' indicates that the certificate validation is successful. The result code '''BH''' indicates that an error occurred.
+
  size::
-  Total size of the following request bytes taken by the '''body'''
- body::
-  Consist of key=value pairs. The supported key=value pairs are:
+  Total size of the following response bytes taken by the '''key=pair''' parameters.
+
+ key-pair::
+  The supported key=value pairs are:
   || cert_'''''ID''''' || A certificate send from helper to squid. The '''ID''' is an index number for this certificate ||
   || error_name_'''''ID''''' || The openSSL error name for the error '''ID''' ||
   || error_reason_'''''ID'''''|| A reason for the error '''ID'''||
