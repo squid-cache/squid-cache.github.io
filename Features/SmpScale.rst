@@ -13,6 +13,9 @@
  * '''Developer''': AlexRousskov
 
 
+<<TableOfContents()>>
+
+
 == Current Status and Architecture ==
 
 [[Squid-3.2]] supports basic SMP scale using SquidConf:workers. Administrators can configure and run one Squid that spawns multiple worker processes to utilize all available CPU cores.
