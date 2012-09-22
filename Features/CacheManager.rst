@@ -113,6 +113,43 @@ This is a (incomplete) list of reports available from the Squid manager. Dependi
 <<FullSearch(title:Features/CacheManager/* -regex:Feature..Squid.Cache.Manager)>>
 
 
+== SMP considerations ==
+
+When Squid is running in SMP mode, Cache Manager should provide a "whole Squid" view (subject to optional SMP worker and process scope restrictions not discussed here). In most important cases, it does, but there are exceptions. This section details the level of SMP support on a per-report basis.
+
+To understand how to interpret SMP Cache Manager responses, it is useful to understand how they are computed. A Cache Manager query is received by an OS-selected worker, just like any other HTTP request. The receiving worker forwards the query to the Coordinator process (via IPC). Coordinator sends the same query to each kid process (including the original query recipient and Coordinator itself), via IPC, one by one, and aggregates kids responses. Kid K receiving Coordinator request can:
+
+ * send stats to Coordinator (to be aggregated and displayed by Coordinator);
+ * send some info to the requesting HTTP client directly, inside a `"by kidK { ... }"` blob;
+ * both: first send a `"by KidK"` blob to the client and then send the aggregatable part of the information to Coordinator.
+
+The following table details SMP support for each Cache Manager object or report. Unless noted otherwise, an aggregated statistics is either a sum, arithmetic mean, minimum, or maximum across all kids, as appropriate to represent the "whole Squid" view. If the "appropriate" choice is not clear for any of the documented objects, please either update the table to clarify or file a documentation bug report.
+
+||'''Name'''||'''Component'''||'''Aggregated?'''||'''Comments'''||
+||<(>menu||all||yes||The mgr:menu request ''is'' sent to Coordinator, "broadcasted" to kids, etc. This is suboptimal, of course.||
+||<(|3>info||Number of clients accessing cache||yes, but poorly||Coordinator sums up the number of clients reported by each kid, which is usually wrong because most active clients will use more than one worker, leading to exaggerated values. Note that even without SMP, this statistics is exaggerated because the count goes down when Squid cleans up the internal client table and not when the last client connection closes. SMP amplifies that effect.||
+||UP Time||yes||The maximum uptime across all kids is reported.||
+||other||yes|| ||
+||<(>server_list||all||no, but can be||If you work on aggregating these stats, please keep in mind that kids may have a different set of peers. The to-Coordinator responses should include, for each peer, a peer name and not just its "index".||
+||<(>mem||all||no, but can be||If you work on aggregating these stats, please keep in mind that kids may have a different set of memory pools. The to-Coordinator responses should include, for each pool, a pool name and not just its "index". Full stats may exceed typical UDS message size limits (16KB). If overflows are likely, it may be a good idea to create response messages so that overflowing items are not included (in the current sort order). Another alternative is to split mgr:mem into mgr:mem (with various aggregated totals) and mgr:pools (with non-aggregated per-pool details).||
+||<(|2>counters||sample_time||yes||The latest (maximum) sample time across all kids is reported.||
+||other||yes||  ||
+||<(>refresh||all||no, but can be||  ||
+||<(|2>idns||queue||no and should not be||The kids should probably report their own queues, especially since DNS query IDs are kid-specific.||
+||other||no, but can be||If you work on aggregating these stats, please keep in mind that kids may have a different set of name servers. The to-Coordinator responses should include, for each name server, a server address and not just its "index".||
+||<(>histograms||all||no, but can be||If you work on aggregating these stats, please keep typical UDS message size limits (16KB) in mind.||
+||<(|4>5min||sample_start_time||yes||The earliest (minimum) sample time across all kids is reported.||
+||sample_end_time||yes||The latest (maximum) sample time across all kids is reported.||
+||*median*||yes, approximately||The arithmetic mean over kids medians is reported. This is not a true median. True median reporting is possible but would require adding code to exchange and aggregate raw histograms.||
+||other||yes|| ||
+||<(>60min||all||yes||See 5min rows for component details.||
+||<(>utilization||all||no, but can be||If you work on aggregating these stats, please reuse or mimic mgr:5min/60min aggregation code.||
+||<(>other||all||varies||TBD. In general, statistics inside `"by kidK {...}"` blobs are ''not'' aggregated while all others are.||
+
+
+While all of the above information was verified at some point, the sheer number of Cache Manager objects (and their components) as well as ongoing Squid changes virtually guarantee some bugs and discrepancies. You should test statistics you rely on (e.g., in a controlled lab environment) and file bugs reports as appropriate.
+
+
 == Understanding the manager reports ==
 === What's the difference between Squid TCP connections and Squid UDP connections? ===
 Browsers and caches use TCP connections to retrieve web objects from web servers or caches.  UDP connections are used when another cache using you as a sibling or parent wants to find out if you have an object in your cache that it's looking for.  The UDP connections are ICP or HTCP queries.
