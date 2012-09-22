@@ -44,7 +44,7 @@ Using Coordinator and common configuration files, Squid workers can receive iden
  * logs,
  * memory object cache (in most environments),
  * disk object cache (with Rock Store only),
- * cache manager statistics.
+ * cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
 
 Conditional configuration and worker-dependent macros can be used to limit sharing. For example, each worker can be given a dedicated http_port to listen on.
 
