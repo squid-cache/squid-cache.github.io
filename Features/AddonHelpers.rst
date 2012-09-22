@@ -243,11 +243,13 @@ Result line sent back to Squid:
  TT challenge::
   Helper sends this message back to Squid and includes a challenge token. It is sent in response to a '''YR''' request. The challenge is base64-encoded, as defined by RFC RFC:2045.
 
- AF username::
+ AF [token] username::
   The helper sends this message back to Squid when the user's authentication credentials are valid. The helper sends the '''username''' with this message because Squid doesn't try to decode the HTTP Authorization header. The '''username''' given here is what gets used by Squid for this client request.
+  {i} NOTE: NTLM authenticator interface does not support a token field. Negotiate authenticator interface requires it.
 
- NA reason::
+ NA [token] reason::
   The helper sends this message back to Squid when the user's credentials are invalid. It also includes a '''reason''' string that Squid can display on an error page.
+  {i} NOTE: NTLM authenticator interface does not support a token field. Negotiate authenticator interface requires it.
 
  BH reason::
   The helper sends this message back to Squid when the validation procedure fails. This might happen, for example, when the helper process is unable to communicate with a Windows NT domain controller. Squid rejects the user's request.
