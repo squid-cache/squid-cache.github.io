@@ -76,7 +76,7 @@ The following sections will describe how to set up your local repository for Squ
 == Create local repository ==
 {{{
 # create a local repository to store branches in
-bzr init-repo --1.14 --no-trees ~/squid-repo
+bzr init-repo --2a --no-trees ~/squid-repo
 
 # Create a place where to keep working trees
 mkdir -p ~/source/squid
@@ -90,6 +90,16 @@ cbranch_target:policy = appendpath
 public_branch = http://bzr.squid-cache.org/bzr/squid3/trunk/
 EOF
 }}}
+
+=== Upgrade an old local repository ===
+Squid-3 repositories have been upgraded to '''2a''' format in September 2012. When using a local repository or branch checkout from prior to that period you may encounter repository format errors when using bzr.
+
+The following upgrade procedures are recommended:
+{{{
+# upgrade the local repository format (takes approx 30-90 minutes)
+bzr upgrade --2a
+}}}
+
 == Checkout an existing branch ==
 After your setup is done its time to checkout the first branch you are going to work on directly, or create a child branch for. In most cases this will be the '''trunk''' branch.
 
