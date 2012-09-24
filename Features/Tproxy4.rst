@@ -91,19 +91,20 @@ Every OS has different security and limitations around what you can do here.
 On each boot startup set:
 {{{
 echo 1 > /proc/sys/net/ipv4/ip_forward
-echo 2 > /proc/sys/net/ipv4/conf/default/rp_filter
-echo 2 > /proc/sys/net/ipv4/conf/all/rp_filter
+echo 0 > /proc/sys/net/ipv4/conf/default/rp_filter
+echo 0 > /proc/sys/net/ipv4/conf/all/rp_filter
 echo 0 > /proc/sys/net/ipv4/conf/eth0/rp_filter
 }}}
 Or configure '''/etc/sysctl.conf''':
 {{{
-net.ipv4.forwarding = 1
-net.ipv4.conf.default.rp_filter = 2
-net.ipv4.conf.all.rp_filter = 2
+net.ipv4.ip_forward = 1
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.all.rp_filter = 0
 net.ipv4.conf.eth0.rp_filter = 0
 }}}
  . /!\ your OS also may require the keyword '''set''' before each of those sysctl.conf lines.
 
+ . /!\ since we are removing the RP filter on 'default' and 'all' sysctl you may want to set it to 1 or 2 individually on all devices '''not''' using TPROXY.
 
 === Some routing problems to be aware of ===
  * /!\ Systems with strict localhost interface security boundaries require each interface to have a separate "table" entry for looking up packets via that device.
