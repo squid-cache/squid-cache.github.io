@@ -68,7 +68,7 @@
 
 === Discontinued products ===
 == Squid-based commercial products ==
-See "[[http://www.squid-cache.org/Support/products.dyn|Squid based products]]" on the main site.
+See "[[http://www.squid-cache.org/Support/products.html|Squid based products]]" on the main site.
 
 === Discontinued products ===
 == Anonymizers ==
