@@ -1,6 +1,6 @@
 #language en
 
-= Squid 3.1 =
+= Squid 3.2 =
 
 Currently in '''STABLE''' cycle.
 The features have been set and large code changes are reserved for later versions.
