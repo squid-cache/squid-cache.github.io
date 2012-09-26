@@ -7,6 +7,7 @@ Memory management is a thorny issue in Squid. Its single-process nature makes it
 
 = leakFinder =
 
+ || /!\ || Leak Finder is known to crash [[Squid-3.3]] and older when AUFS or threading is used. Please use valgrind (below) if you need to debug in those components. ||
 
 ''src/leakfinder.c'' contains some routines useful for debugging
 and finding memory leaks.  It is not enabled by default.  To enable
