@@ -33,6 +33,8 @@ SPDY is an experimental protocol for framing HTTP requests in a multiplexed fash
 
  '''NOTE:''' SPDY has several blocker issues correlating with HTTP and Squid features. The blocker problems are marked with {X} .
 
+ ''' {X} UPDATE 2012-09-27: Due to lack of interest in this project and the SPDY protocol being put forward as a proposal to HTTP/2 it is now very unlikely that Squid will support SPDY specifically. The Squid developers are contributing and participating in HTTP/2 protocol design. It is very much more likely that Squid will support HTTP/2 formally and only support desired SPDY features which are IEFT approved and placed in the HTTP/2 specification.
+
 == SPDY from client to Squid ==
 
 To implement a SPDY receiving port (spdy_port?) in Squid we need to:
@@ -40,7 +42,7 @@ To implement a SPDY receiving port (spdy_port?) in Squid we need to:
  * adjust the !ConnStateData connection manager to decapsulate SPDY frames and manage multiple client pipeline contexts in parallel. At present there is only one active context and an idle pipeline queue.
 
  * {X} implement mandatory transport layer gzip.
-  * implement compression attack security measures.
+  * implement compression attack security measures. see CRIME attack.
 
  * {X} implement mandatory TLS for systems where OpenSSL is not available.
 
@@ -53,7 +55,7 @@ To implement a SPDY receiving port (spdy_port?) in Squid we need to:
 To implement a SPDY server gateway in Squid we need to:
  * add a spdy connection pool, similar to idle pconn pool, but without timeout closures. To hold the connections which are actively in use but can be shared with more server requests.
  * duplicate the HTTP server connection manager
-  * update the new version to encapsulate/decapsulate with SPDY on nread/write
+  * update the new version to encapsulate/decapsulate with SPDY on read/write
   * update the new manager to handle multiple parallel data pipelines.
 
  * {X} implement mandatory transport layer gzip.
