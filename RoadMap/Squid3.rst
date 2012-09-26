@@ -48,34 +48,11 @@ Features which have not reached completion or have failed the audit, are automat
 ##  * Security fixes
 ##  * Critical Bug fixes
 
-## STABLE cycle split off into a searate page
+## STABLE cycle split off into a separate page
 
-= Squid 3.3 (3.HEAD) =
+<<Include(Squid-3.3)>>
 
-Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3 in September 2012.
-
-##Additions are limited to:
-## * Polish of existing features
-## * Porting of Squid-2.7 feature regressions
-## * Stability fixes
-## * Bug fixes
-
-## bugs down to major (all earlier releases and 'unknowns')
- . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
-
-Basic new features in 3.3:
-
- * New helper to log access.log to an SQL Database
- * New helper to quota session access time
- * [[Features/BumpSslServerFirst]]
- * [[Features/MimicSslServerCert]]
- * New directive SquidConf:add_request_header for custom HTTP headers
-
-## The intention is to surpass Squid-2.7, improve the upgrade path and concentrate on further performance improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
-
-Packages of what will become squid 3.3 source code are available at
-http://www.squid-cache.org/Versions/v3/3.HEAD/
+== Bug Zapping ==
 
 ## bugs down to normal status
  * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
