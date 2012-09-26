@@ -1,1 +1,1 @@
-#redirect RoadMap/squid3
+#redirect /RoadMap/Squid3
