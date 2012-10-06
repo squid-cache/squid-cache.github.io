@@ -22,7 +22,7 @@ Basic new features in 3.3:
  * New helper to quota session access time
  * [[Features/BumpSslServerFirst]]
  * [[Features/MimicSslServerCert]]
- * New directive SquidConf:add_request_header for custom HTTP headers
+ * New directive SquidConf:request_header_add for custom HTTP headers
 
 
 The intention with this series is to improve the upgrade path and concentrate on further portability improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.3/RELEASENOTES.html#s6
