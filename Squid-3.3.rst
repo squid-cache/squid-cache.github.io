@@ -1,15 +1,17 @@
 #language en
 
-= Squid 3.3 (3.HEAD) =
+= Squid 3.3 =
 
-Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.3 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.3 in October 2012.
+Now in '''RELEASE CANDIDATE''' cycle.
+The Squid 3.3 release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
 
-##Additions are limited to:
-## * Polish of existing features
-## * Porting of Squid-2.7 feature regressions
-## * Stability fixes
-## * Bug fixes
+Additions are limited to:
+ * Documentation updates
+ * Polish of existing features
+ * Porting of Squid-2.7 feature regressions
+ * Stability fixes
+ * Security fixes
+ * Bug fixes
 
 ## bugs down to major (all earlier releases and 'unknowns')
  . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
@@ -23,10 +25,10 @@ Basic new features in 3.3:
  * New directive SquidConf:add_request_header for custom HTTP headers
 
 
-The intention with this series is to improve the upgrade path and concentrate on further portability improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
+The intention with this series is to improve the upgrade path and concentrate on further portability improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.3/RELEASENOTES.html#s6
 
-Packages of what will become squid 3.3 source code are available at
-http://www.squid-cache.org/Versions/v3/3.HEAD/
+Packages of squid 3.3 source code are available at
+http://www.squid-cache.org/Versions/v3/3.3/
 
 === Security Advisories ===
 
