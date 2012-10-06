@@ -48,9 +48,21 @@ Features which have not reached completion or have failed the audit, are automat
 ##  * Security fixes
 ##  * Critical Bug fixes
 
-## STABLE cycle split off into a separate page
+## Currently in '''STABLE''' cycle.
+## The features have been set and large code changes are reserved for later versions.
+##
+## Additions are limited to:
+## * Security fixes
+## * Stability fixes
+## * small optimizations
+
+## Currently in '''STABLE / DEPRECATED''' cycle.
+## The features have been set and code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
+
 
 <<Include(Squid-3.3)>>
+
+<<Include(Squid-3.4)>>
 
 == Bug Zapping ==
 
