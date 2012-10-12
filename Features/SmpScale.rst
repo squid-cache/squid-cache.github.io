@@ -230,6 +230,16 @@ mount shm
 
 Check the permisssions on '''/var/run/squid''' where Squid registers its PID files and IPC channel sockets. That area requires ownership by the Squid user.
 
+=== write failure (40) Message too long ===
+
+Squid workers exchange Unix Domain Sockets (UDS) messages (not to be confused with UDP messages or System V IPC messages). These messages should be smaller than 16KB in size, but even that creates problems in some environments because of very low default UDS message size and buffer size limits.
+
+Usually, the limits can be adjusted using sysctl but exact control names are not documented and vary from one OS to another. Here is one known variant with recommended ''minimum'' settings (please add more if you know them!):
+
+{{{
+net.local.dgram.recvspace: 262144
+net.local.dgram.maxdgram: 16384
+}}}
 
 ----
 CategoryFeature CategoryWish
