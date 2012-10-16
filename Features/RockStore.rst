@@ -14,7 +14,7 @@
 
  * '''Developer''': AlexRousskov
 
- * '''More''': unofficial v3.1 [[https://code.launchpad.net/~rousskov/squid/3p1-rock|implementation]]
+ * '''More''': unofficial v3.1 [[https://code.launchpad.net/~rousskov/squid/3p1-rock|implementation]] and future large responses [[Features/LargeRockStore|support]].
 
 == Scope ==
 
