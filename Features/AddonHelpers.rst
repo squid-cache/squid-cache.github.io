@@ -24,9 +24,32 @@
 
 Every network and installation have their own criteria for operation. The squid developers and community do not have the time or inclination to write code for every minor situation. Instead we provide ways to easily extend various operations with local add-on scripts or programs we call helpers.
 
+=== What language are helper meant to be written in? ===
 Helpers can be written in any language you like. They can be executable programs or interpreted scripts.
 
-The interface with Squid is very simple. The helper is passed a limited amount of information on stdin to perform their expected task. The result is passed back to squid via stdout. With any errors or debugging traces sent back on stderr.
+The helpers bundled with Squid are currently written in Bash shell script, awk script, perl script, and C++. There are also frameworks available for helpers built in Python or Ruby.
+
+=== How do the helpers communicate with Squid? ===
+The interface with Squid is very simple. The helper is passed a limited amount of information on stdin to perform their expected task. The result is passed back to Squid via stdout. With any errors or debugging traces sent back on stderr.
+
+See the particular interface protocols below for details about the line syntax the helper is expected to receive and send on each interface.
+
+=== Why is my helper not starting up with Squid? ===
+Squid-3.2 and newer support dynamic helper initialization. That means the helper is only started if it needs to be. If Squid is configured with startup=N value greater than 0 you can expect that many of your helper to be started when Squid starts. But this is not necessarily a desirable thing for Squid needing fast startup or restart times.
+
+With startup=0 configured the first HTTP request through Squid is expected to start at least one instance for most of the helpers. But if for example an external ACL is configured and is only tested on rare occasions its helper will not be started until that rare occasion happens for the first time.
+
+=== What happens when Squid shuts down or reconfigures? ===
+When shutting down, reconfiguring, or in other times Squid needs to shutdown a helper. Squid schedules a shutdown of the helper, which will happen when all the in-progress lookups are completed.
+
+Shutting down or restarting are limited by the SquidConf:shutdown_timeout which may cause Squid to abort earlier than receiving all the responses. If this happens the client connections are also being terminated just as abruptly as the helper - so the lost helper responses are not an issue.
+
+=== Can I write a helper that talks to Squid on more than one interface? ===
+You can. In a way.
+
+Squid runs the configured helper for each interface as a separate child process. Your helper can be written to detect other running instances of itself and communicate between them, effectively sharing memory and/or state outside of Squid regardless of the interface Squid is using to run each instance.
+
+NP: Just keep in mind that the number of instances (children) running on each interface is configurable and could be anything form zero to many hundreds. So do not make any assumptions about which interface another instance is running on.
 
 == Squid operations which provide a helper interface ==
 
