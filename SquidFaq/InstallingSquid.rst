@@ -190,7 +190,7 @@ Stop:
 {{{
 /usr/local/squid/sbin/squid -k shutdown
 n=120
-while /usr/local/squid/sbin/squid -k check && [ $n -gt 120 ]; do
+while /usr/local/squid/sbin/squid -k check && [ $n -gt 0 ]; do
     sleep 1
     echo -n .
     n=`expr $n - 1`
