@@ -7,7 +7,7 @@
 
  * '''Goal''': To provide a comprehensive whitebox code testing environment for Squid-3
 
- * '''Status''': Stage 1-3 completed, Stage 4 being tested.
+ * '''Status''': Completed
 
  * '''ETA''': done
 
@@ -35,8 +35,8 @@ This testing involves a number of changes to both the codebase and current devel
 || 1 || '''DONE''' || 3.0+ Automated build-testing of releases ||
 || 2 || '''DONE''' || 3.1+ Automated dependency testing of code ||
 || 3 || '''DONE''' || 3.0+ Daily automated test ||
-|| 4 || '''STARTED''' || Test scheduling on multiple OS see [[BuildFarm]] ||
-
+|| 4 || '''DONE''' || Test scheduling on multiple OS see [[BuildFarm]] ||
+|| 5 || '''IN PROGRESS''' || Automated defect tracking see [[CoverityTesting]] ||
 
 * '''NP''': All stages of this system implementation may involve ongoing improvements. The status here is merely an indication that the stage actions have been implemented and begun to be used.
 
