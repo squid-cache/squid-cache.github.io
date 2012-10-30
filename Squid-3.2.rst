@@ -15,6 +15,7 @@ Features Ported from 2.7 in this release:
  * Unique Sequence numbering for access.log lines
  * [[Features/LogModules]] (including log daemon module)
  * {{{Cache-Control: stale-if-error}}}  handling and other staleness limits.
+ * SquidConf:acl urllogin type (available from 3.2.4)
 
 Basic new features in 3.2:
 
