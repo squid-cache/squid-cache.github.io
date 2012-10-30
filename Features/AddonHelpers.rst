@@ -422,7 +422,6 @@ result size [key-pair] body
  result::
   One of the result codes:
   || OK || Success. A certificate is ready ||
-  || ERR || unused ||
   || BH || Failure. The helper encountered a problem. ||
   . {i} the '''OK''' and '''BH''' result codes are only accepted by [[Squid-3.3]] and newer.<<BR>>
   . /!\ The helper will display an error message and abort if any error or unexpected event is detected.
@@ -489,7 +488,6 @@ result size key-pair
  result::
   One of the result codes:
   || OK || Success. Certificate validated. ||
-  || ERR || unused ||
   || BH || Failure. The helper encountered a problem. ||
 
  size::
@@ -539,10 +537,7 @@ result
  result::
   One of the result codes:
   || OK || Success. The file has been removed from cache. ||
-  || ERR || Deprecated by Squid-3.3. Alias for '''BH''' response in Squid-3.2 and older. ||
   || BH || Failure. The helper encountered a problem. ||
-  . {i} the '''BH''' result code is only accepted by [[Squid-3.3]] and newer.<<BR>>
-
 
 ## end unlinkd protocol
 ----
