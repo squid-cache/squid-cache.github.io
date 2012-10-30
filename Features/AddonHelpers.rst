@@ -140,21 +140,26 @@ Redirectors send a slightly different format of line back to Squid.
 
 Result line sent back to Squid:
 {{{
-[channel-ID] status:URL
+[channel-ID] [result] status:URL
 }}}
 
  channel-ID::
   When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
+
+ result::
+  One of the result codes:
+  || OK || Success. A new URL is presented. ||
+  || ERR || Success. No redirect for this URL. ||
+  || BH || Failure. The helper encountered a problem. ||
+  . {i} the result field is only accepted by [[Squid-3.3]] and newer.
 
  status::
    The HTTP 301, 302 or 307 status code. Please see section 10.3 of RFC RFC:2616 for an explanation of the HTTP redirect codes and which request methods they may be sent on.
 
  URL::
   The URL to be used instead of the one sent by the client. This must be an absolute URL. ie starting with http:// or ftp:// etc.
-
- {i} If no action is required leave status:URL area blank.
-
- {i} The '''status''' and '''URL''' are separated by a colon (''':''') as shown above instead of whitespace.
+ . {i} If no action is required leave status:URL area blank.
+ . {i} The '''status''' and '''URL''' are separated by a colon (''':''') as shown above instead of whitespace.
 
 ## end redirector protocol
 
@@ -169,11 +174,18 @@ WARNING: when used on the url_rewrite_program interface re-writing URLs introduc
 
 Result line sent back to Squid:
 {{{
-[channel-ID] URL
+[channel-ID] [result] [URL]
 }}}
 
  channel-ID::
   When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
+
+ result::
+  One of the result codes:
+  || OK || Success. A new URL is presented ||
+  || ERR || Success. No change for this URL. ||
+  || BH || Failure. The helper encountered a problem. ||
+  . {i} the result field is only accepted by [[Squid-3.3]] and newer.
 
  URL::
   The URL to be used instead of the one sent by the client. If no action is required leave the URL field blank. The URL sent must be an absolute URL. ie starting with http:// or ftp:// etc.
@@ -209,7 +221,11 @@ Result line sent back to Squid:
   When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
 
  result::
-  One of the result codes: '''OK''' to indicate valid credentials, or '''ERR''' to indicate invalid credentials.
+  One of the result codes:
+  || OK || Success. Valid credentials. ||
+  || ERR || Success. Invalid credentials. ||
+  || BH || Failure. The helper encountered a problem. ||
+  . {i} the '''BH''' result code is only accepted by [[Squid-3.3]] and newer.
 
 ## end basicauth protocol
 
@@ -235,15 +251,22 @@ Input line received from Squid:
 
 Result line sent back to Squid:
 {{{
-[channel-ID] result
+[channel-ID] [result] [hash]
 }}}
 
  channel-ID::
   When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
 
  result::
-  The result '''ERR''' to indicate invalid credentials.<<BR>>
-  On successful authentication '''result''' is the digest HA1 value to be used.
+  One of the result codes:
+  || OK || Success. Valid credentials. Digest HA1 value is presented. ||
+  || ERR || Success. Invalid credentials. ||
+  || BH || Failure. The helper encountered a problem. ||
+  . {i} the '''OK''' and '''BH''' result codes are only accepted by [[Squid-3.3]] and newer.<<BR>>
+  . {i} for [[Squid-3.2]] and older the '''OK''' result is not sent, but hash field is.
+
+ hash::
+  The digest HA1 value to be used. This field is only accepted on '''OK''' responses.
 
 ## end digestauth protocol
 
@@ -253,29 +276,43 @@ Result line sent back to Squid:
  {i} These authenticator schemes do not support concurrency due to the statefulness of NTLM.
 
 Input line received from Squid:
+{{{
+ request [credentials]
+}}}
 
- YR::
-  Squid sends this to a helper when it needs a new challenge token. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the SquidConf:auth_param max_challenge_lifetime and max_challenge_uses parameters. The helper should respond with a '''TT''' message.
+ request::
+  One of the request codes:
+  || YR || A new challenge token is needed. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the SquidConf:auth_param max_challenge_lifetime and max_challenge_uses parameters. The helper should respond with a '''TT''' message. ||
+  || KK || Authenticate a user's credentials. The helper responds with either '''OK''', '''ERR''', '''AF''', '''NA''', or '''BH'''. ||
 
- KK credentials::
-  Squid sends this to a helper when it wants to authenticate a user's credentials. The helper responds with either '''AF''', '''NA''', or '''BH'''. The credentials are an encoded blob exactly as received in the HTTP headers.
+ credentials::
+  An encoded blob exactly as received in the HTTP headers. This field is only sent on '''KK''' requests.
 
 
 Result line sent back to Squid:
+{{{
+ result [token] [label] [message]
+}}}
 
- TT challenge::
-  Helper sends this message back to Squid and includes a challenge token. It is sent in response to a '''YR''' request. The challenge is base64-encoded, as defined by RFC RFC:2045.
+ result::
+  One of the result codes:
+  || TT || Success. A new challenge '''token''' value is presented. ||
+  || AF || Success. Valid credentials. ||
+  || NA || Success. Invalid credentials. ||
+  || OK || Success. reserved for future use. ||
+  || ERR || Success. reserved for future use. ||
+  || BH || Failure. The helper encountered a problem. ||
+  . {i} the '''OK''' and '''ERR''' result codes are only accepted by [[Squid-3.3]] and newer.
 
- AF [token] username::
-  The helper sends this message back to Squid when the user's authentication credentials are valid. The helper sends the '''username''' with this message because Squid doesn't try to decode the HTTP Authorization header. The '''username''' given here is what gets used by Squid for this client request.
-  {i} NOTE: NTLM authenticator interface does not support a token field. Negotiate authenticator interface requires it.
+ token::
+  A new challenge '''token''' value is presented. The token is base64-encoded, as defined by RFC RFC:2045.
+  {i} NOTE: NTLM authenticator interface does not support a '''token''' field. Negotiate authenticator interface requires it on '''TT''', '''AF''' and '''NA''' responses.
 
- NA [token] reason::
-  The helper sends this message back to Squid when the user's credentials are invalid. It also includes a '''reason''' string that Squid can display on an error page.
-  {i} NOTE: NTLM authenticator interface does not support a token field. Negotiate authenticator interface requires it.
+ label::
+  The label given here is what gets used by Squid for this client request '''"username"'''. This field is only accepted on '''AF''' responses.
 
- BH reason::
-  The helper sends this message back to Squid when the validation procedure fails. This might happen, for example, when the helper process is unable to communicate with a Windows NT domain controller. Squid rejects the user's request.
+ message::
+  A message string that Squid can display on an error page. This field is only accepted on '''NA''' and '''BH''' responses.
 
 ## end negotiateauth protocol
 
@@ -308,7 +345,12 @@ Result line sent back to Squid:
   When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
 
  result::
-  One of the result codes '''OK''' or '''ERR''' to indicate a pass/fail result of this ACL test. The configured usage of the external ACL in squid.conf determines what this result means.
+  One of the result codes:
+  || OK || Success. ACL test matches. ||
+  || ERR || Success. ACL test fails to match. ||
+  || BH || Failure. The helper encountered a problem. ||
+  .The configured usage of the external ACL in squid.conf determines what this result means.<<BR>>
+  . {i} the '''OK''' and '''BH''' result codes are only accepted by [[Squid-3.3]] and newer.
 
  key-pairs::
   Some optional details returned to Squid. These have the format '''key=value'''. see SquidConf:external_acl_type for the full list supported by your Squid.
@@ -378,7 +420,12 @@ result size [key-pair] body
 }}}
 
  result::
-  The result code '''OK''' indicates a certificate is ready. Errors are not reported as results. The helper will display an error message and abort if any error or unexpected event is detected.
+  One of the result codes:
+  || OK || Success. A certificate is ready ||
+  || ERR || unused ||
+  || BH || Failure. The helper encountered a problem. ||
+  . {i} the '''OK''' and '''BH''' result codes are only accepted by [[Squid-3.3]] and newer.<<BR>>
+  . /!\ The helper will display an error message and abort if any error or unexpected event is detected.
 
  size::
   Total size of the following request bytes taken by the '''body'''.
@@ -440,7 +487,10 @@ result size key-pair
 }}}
 
  result::
-  The result code '''OK''' indicates that the certificate validation is successful. The result code '''BH''' indicates that an error occurred.
+  One of the result codes:
+  || OK || Success. Certificate validated. ||
+  || ERR || unused ||
+  || BH || Failure. The helper encountered a problem. ||
 
  size::
   Total size of the following response bytes taken by the '''key=pair''' parameters.
@@ -487,7 +537,12 @@ result
 }}}
 
  result::
-  The result code '''OK''' indicates the file has been removed from cache. '''ERR''' indicates some problem occured during the removal. The helper is responsible for sending any error message details to stderr.
+  One of the result codes:
+  || OK || Success. The file has been removed from cache. ||
+  || ERR || Deprecated by Squid-3.3. Alias for '''BH''' response in Squid-3.2 and older. ||
+  || BH || Failure. The helper encountered a problem. ||
+  . {i} the '''BH''' result code is only accepted by [[Squid-3.3]] and newer.<<BR>>
+
 
 ## end unlinkd protocol
 ----
