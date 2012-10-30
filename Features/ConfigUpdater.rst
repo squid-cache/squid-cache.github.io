@@ -68,9 +68,11 @@ http_access deny all
 === Solutions ===
 Stuff done in [[Squid-3.2]]:
 
- * obsolete directives are kept in {{{cf.data.pre}}} with the type '''obsolete''' and the documentation comments are printed as upgrade instructions on how to handle the directives (remove or change).
+ * obsolete directives are kept in {{{cf.data.pre}}} with the type '''obsolete'''. The documentation comments are printed as upgrade instructions on how to handle the directives (remove or change).
 
- * alias directive which are obsolete but syntax kept are detected and a deprecation message is printed out instructing that the config be changed to the new name.
+ * alias directives are detected. A deprecation message is printed out instructing that the config be changed to the new name.
+
+ * directives for components missing from the build are ignored. A message indicating the missing component or build requirements is logged.
 
 ----
 CategoryFeature
