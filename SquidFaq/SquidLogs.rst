@@ -71,7 +71,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  || '''FAIL''' || Only seen on '''REFRESH''' to indicate the revalidation request failed. The response object may be the server provided network error or the stale object which was being revalidated depending on ''stale-if-error'' cache control. ||
  || '''MODIFIED''' || Only seen on '''REFRESH''' responses to indicate revalidation produced a new modified object. ||
  || '''UNMODIFIED''' || Only seen on '''REFRESH''' responses to indicate revalidation produced a 304 (Not Modified) status. Which was relayed to the client. ||
- || '''REDIRECT''' || Squid generated an HTTP redirect response to this request. Only seen on Squid built with -DLOG_TCP_REDIRECTS compiler flag. ||
+ || '''REDIRECT''' || Squid generated an HTTP redirect response to this request. Only on [[Squid-3.2]]+ or Squid built with -DLOG_TCP_REDIRECTS compiler flag. ||
 
 
  * These tags are optional and describe whether the response was loaded from cache, network, or otherwise:
