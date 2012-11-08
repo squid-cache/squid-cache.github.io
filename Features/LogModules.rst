@@ -100,6 +100,7 @@ tcp://host:port
 }}}
 
  . {i} Available from [[Squid-3.2]]
+ . {i} [[http://www.balabit.com/network-security/syslog-ng|Syslog-ng]] can receive these logs directly.
 
 ----
 CategoryFeature
