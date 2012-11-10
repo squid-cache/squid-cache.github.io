@@ -291,7 +291,7 @@ Input line received from Squid:
 
 Result line sent back to Squid:
 {{{
- result [token] [label] [message]
+ result [token label] [message]
 }}}
 
  result::
@@ -305,7 +305,7 @@ Result line sent back to Squid:
   . {i} the '''OK''' and '''ERR''' result codes are only accepted by [[Squid-3.3]] and newer.
 
  token::
-  A new challenge '''token''' value is presented. The token is base64-encoded, as defined by RFC RFC:2045.
+  A new challenge '''token''' value is presented. The token is base64-encoded, as defined by RFC RFC:2045.<<BR>>
   {i} NOTE: NTLM authenticator interface does not support a '''token''' field. Negotiate authenticator interface requires it on '''TT''', '''AF''' and '''NA''' responses.
 
  label::
@@ -350,7 +350,7 @@ Result line sent back to Squid:
   || ERR || Success. ACL test fails to match. ||
   || BH || Failure. The helper encountered a problem. ||
   .The configured usage of the external ACL in squid.conf determines what this result means.<<BR>>
-  . {i} the '''OK''' and '''BH''' result codes are only accepted by [[Squid-3.3]] and newer.
+  . {i} the '''BH''' result code is only accepted by [[Squid-3.3]] and newer.
 
  key-pairs::
   Some optional details returned to Squid. These have the format '''key=value'''. see SquidConf:external_acl_type for the full list supported by your Squid.
