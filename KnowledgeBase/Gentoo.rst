@@ -26,6 +26,11 @@ Install Procedure (for the latest version in your selected portage tree):
  emerge squid
 }}}
 
+==== Squid-3.2 ====
+Install Procedure:
+{{{
+ emerge =squid-3.2*
+}}}
 ==== Squid-3.1 ====
 Install Procedure:
 {{{
