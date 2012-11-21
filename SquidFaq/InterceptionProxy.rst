@@ -4,11 +4,20 @@ Or, ''How can I make my users' browsers use my cache without configuring the bro
 <<TableOfContents>>
 
 == Concepts of Interception Caching ==
-Interception Caching goes under many names - Interception Caching, Transparent Proxying and Cache Redirection.   Interception Caching is the process by which HTTP connections coming from remote clients are redirected to a cache server, without their knowledge or explicit configuration.
+Interception Caching goes under many names - Interception Caching, Transparent Proxying, URL rewriting, [[Features/SslBump|SSL-Bump]] and Cache Redirection.   Interception Caching is the process by which HTTP connections coming from remote clients are redirected to a cache server, without their knowledge or explicit configuration.
 
 There are some good reasons why you may want to use this technique:
 
- * There is no client configuration required.  This is the most popular reason for investigating this option.
+ * There is no client configuration required.
+  . This is the most popular reason for investigating HTTP intercept - there are many client software who fail to implement HTTP proxy support.
+
+ * There is no client SSL proxy connection required.
+  . This is the most popular reason for investigating HTTPS intercept - there are very few clients which support SSL proxy connections.
+
+ * The server may be using URL-based virtual hosting.
+  . This is the only known reason to need URL-rewrite form of intercept - there are two popular CMS systems which depend on this form of URL manipulation to operate. When the public URL {{http://example.com/}} is presented by the web server as {{http://other.server/example.com/}} a re-writer is needed to 'fix' the broken web server system.
+  . /!\ Note that all other known uses of re-write can be avoided with better alternatives!
+
 
 However there are also significant disadvantages for this strategy, as outlined by Mark Elsen:
 
@@ -25,6 +34,8 @@ However there are also significant disadvantages for this strategy, as outlined 
  * Related to above: suppose the users browser connects to a site which is down. However, due to the transparent proxying, it gets a connected state to the interceptor.   The end user may get wrong error messages or a hung browser, for seemingly unknown reasons to them.
  * WebSockets connectivity does not work.
  * protocol tunnelling over port 80 breaks.
+ * URL-rewriting and SSL-Bump forms of interception are usually not compatible. SSL-Bump generates a fake server certificate to match what the server presents. If URL-rewrite alters what sever is being contacted the client will receive wrong certificates. OR, attempting to re-write a HTTPS URL to http::// - the server will not present any SSL certificate. Both of these will result in user visible errors.
+
 
 If you feel that the advantages outweigh the disadvantages in your network, you may choose to continue reading and look at implementing Interception Caching.
 
