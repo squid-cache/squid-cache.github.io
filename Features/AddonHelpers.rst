@@ -465,7 +465,7 @@ request size [key-pair]
 
  key-pair::
   The supported key=value pairs are:
-  || host || FQDN host name or the domain ||
+  || domain || FQDN host name or the domain ||
   || errors || A comma separated list of the detected openSSL certificate validation errors ||
   || cert_'''''ID''''' || Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are||
 
