@@ -13,7 +13,7 @@ Jiri Skala @ !RedHat maintains experimental squid packages for Red Hat Enterpris
 
 ==== Squid-3.2 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on RHEL.
- * '''RHEL 6 Download:''' http://www1.ngtech.co.il/rpm/
+ * '''RHEL 6 Download:''' http://repo.ngtech.co.il/
 
 ==== Squid-3.1 ====
  * '''Maintainer:''' Jiri Skala @ !RedHat
