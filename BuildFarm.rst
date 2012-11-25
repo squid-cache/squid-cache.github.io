@@ -34,6 +34,8 @@ The currently maintained farm consists of:
 || Visual || || || Sponsored. Need setting up. ||
 
 '''Volunteer Help Sought:'''
+|| [[http://openindiana.org/|OpenIndiana-x64]] || Volunteers sought, for node donation or aid setting up a VM||
+|| [[http://openindiana.org/|OpenIndiana-sparc]] || Volunteers sought, for node donation||
 || [[http://opensolaris.org/|OpenSolaris-x64]] || Volunteers sought since Oracle dismissed the Opensolaris public build farm ||
 || [[http://opensolaris.org/|OpenSolaris-sparc]] || Volunteers sought since Oracle dismissed the Opensolaris public build farm ||
 || [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || Volunteers sought ||
