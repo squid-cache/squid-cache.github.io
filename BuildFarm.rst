@@ -56,6 +56,11 @@ Since the test nodes are doing more than just building Squid from a prepared tar
 
 '''Squid-3 Testing:'''
  * Bazaar
+ * At least one C/C++ compiler: g++, clang++, and whatever the regular one for the OS is.
+ * autoconf
+ * automake / make
+ * libtool (including libltdl-dev)
+ * ed (scriptable command line editor)
  * !CppUnit
  * OpenSSL development library (libssl-dev)
  * Optional extras for better testing:
