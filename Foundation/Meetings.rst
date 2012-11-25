@@ -12,7 +12,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Upcoming Meeting ==
 
- * Date: '''07:00 2012-08-20 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''07:00 2012-11-29 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
@@ -23,8 +23,11 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Agenda bashing.
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
- 1. Sysadmin pilot status.
+ 1. Review of minutes publication format.
  1. Review Donate page website update.
+ 1. Review Donate PayPal page website update.
+ 1. Review of outstanding Board announcements.
+ 1. Sysadmin pilot status.
  1. Next meeting scheduling.
  1. Open floor:
 
