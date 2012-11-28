@@ -98,7 +98,7 @@ Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/I
 ## start urlhelper protocol
 Input line received from Squid:
 {{{
-[channel-ID] URL ip/fqdn ident method [urlgroup] key-pairs
+[channel-ID] URL ip/fqdn ident method [urlgroup] kv-pair
 }}}
 
  channel-ID::
@@ -122,10 +122,11 @@ Input line received from Squid:
  urlgroup::
   Squid-2 will send this field with the URL-grouping tag which can be configured on SquidConf:http_port. Squid-3.x will not send this field.
 
- key-pairs::
-  Some of the key=value pairs:
-  || myport=... || Squid receiving port ||
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface:
   || myip=... || Squid receiving address ||
+  || myport=... || Squid receiving port ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
 
 ## end urlhelper protocol
 
@@ -140,7 +141,7 @@ Redirectors send a slightly different format of line back to Squid.
 
 Result line sent back to Squid:
 {{{
-[channel-ID] [result] status:URL
+[channel-ID] [result] [kv-pairs] [status:URL]
 }}}
 
  channel-ID::
@@ -149,9 +150,21 @@ Result line sent back to Squid:
  result::
   One of the result codes:
   || OK || Success. A new URL is presented. ||
-  || ERR || Success. No redirect for this URL. ||
+  || ERR || Success. No action for this URL. ||
   || BH || Failure. The helper encountered a problem. ||
-  . {i} the result field is only accepted by [[Squid-3.3]] and newer.
+  . {i} the result field is only accepted by [[Squid-3.4]] and newer.
+
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface for HTTP redirection:
+  || message=... || reserved ||
+  || status=... || reserved ||
+## HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308 ||
+  || tag=... || reserved ||
+  || ttl=... || reserved ||
+  || url=... || reserved ||
+## redirect the client to given URL ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+  . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
 
  status::
    The HTTP 301, 302 or 307 status code. Please see section 10.3 of RFC RFC:2616 for an explanation of the HTTP redirect codes and which request methods they may be sent on.
@@ -174,7 +187,7 @@ WARNING: when used on the url_rewrite_program interface re-writing URLs introduc
 
 Result line sent back to Squid:
 {{{
-[channel-ID] [result] [URL]
+[channel-ID] [result] [kv-pair] [URL]
 }}}
 
  channel-ID::
@@ -185,7 +198,18 @@ Result line sent back to Squid:
   || OK || Success. A new URL is presented ||
   || ERR || Success. No change for this URL. ||
   || BH || Failure. The helper encountered a problem. ||
-  . {i} the result field is only accepted by [[Squid-3.3]] and newer.
+  . {i} the result field is only accepted by [[Squid-3.4]] and newer.
+
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface for URL re-writing:
+  || message=... || reserved ||
+  || rewrite-url=... || reserved ||
+## re-write the transaction to the given URL. ||
+  || tag=... || reserved ||
+  || ttl=... || reserved ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+  . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
+##  . {i} if the '''url=''' kv-pair for HTTP redirection is present re-write operation will not be performed.
 
  URL::
   The URL to be used instead of the one sent by the client. If no action is required leave the URL field blank. The URL sent must be an absolute URL. ie starting with http:// or ftp:// etc.
@@ -214,7 +238,7 @@ Input line received from Squid:
 
 Result line sent back to Squid:
 {{{
-[channel-ID] result
+[channel-ID] result [kv-pair]
 }}}
 
  channel-ID::
@@ -225,7 +249,17 @@ Result line sent back to Squid:
   || OK || Success. Valid credentials. ||
   || ERR || Success. Invalid credentials. ||
   || BH || Failure. The helper encountered a problem. ||
-  . {i} the '''BH''' result code is only accepted by [[Squid-3.3]] and newer.
+  . {i} the '''BH''' result code is only accepted by [[Squid-3.4]] and newer.
+
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface:
+  || group=... || reserved ||
+  || message=... || A message string that Squid can display on an error page. ||
+  || tag=... || reserved ||
+  || ttl=... || reserved ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+  . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
+
 
 ## end basicauth protocol
 
@@ -251,7 +285,7 @@ Input line received from Squid:
 
 Result line sent back to Squid:
 {{{
-[channel-ID] [result] [hash]
+[channel-ID] [result] [kv-pair] [hash]
 }}}
 
  channel-ID::
@@ -262,11 +296,22 @@ Result line sent back to Squid:
   || OK || Success. Valid credentials. Digest HA1 value is presented. ||
   || ERR || Success. Invalid credentials. ||
   || BH || Failure. The helper encountered a problem. ||
-  . {i} the '''OK''' and '''BH''' result codes are only accepted by [[Squid-3.3]] and newer.<<BR>>
-  . {i} for [[Squid-3.2]] and older the '''OK''' result is not sent, but hash field is.
+  . {i} the '''OK''' and '''BH''' result codes are only accepted by [[Squid-3.4]] and newer.<<BR>>
+  . {i} for [[Squid-3.3]] and older the '''OK''' result is not sent, but hash field is.
+
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface:
+  || group=... || reserved ||
+  || ha1=... || The digest HA1 value to be used. This field is only used on '''OK''' responses. ||
+  || message=... || A message string that Squid can display on an error page. ||
+  || tag=... || reserved ||
+  || ttl=... || reserved ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+  . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
 
  hash::
-  The digest HA1 value to be used. This field is only accepted on '''OK''' responses.
+  The digest HA1 value to be used. This field is only accepted on '''OK''' responses.<<BR>>
+  /!\ This field is deprecated on Squid-3.4 and newer, use the '''ha1''' kv-pair instead.
 
 ## end digestauth protocol
 
@@ -291,28 +336,41 @@ Input line received from Squid:
 
 Result line sent back to Squid:
 {{{
- result [token label] [message]
+ result [token label] [kv-pair] [message]
 }}}
 
  result::
   One of the result codes:
   || TT || Success. A new challenge '''token''' value is presented. ||
-  || AF || Success. Valid credentials. ||
-  || NA || Success. Invalid credentials. ||
-  || OK || Success. reserved for future use. ||
-  || ERR || Success. reserved for future use. ||
+  || AF || Success. Valid credentials. Deprecated by '''OK''' result from Squid-3.4 onwards. ||
+  || NA || Success. Invalid credentials. Deprecated by '''ERR''' result from Squid-3.4 onwards. ||
+  || OK || Success. Valid Credentials. ||
+  || ERR || Success. Invalid credentials. ||
   || BH || Failure. The helper encountered a problem. ||
-  . {i} the '''OK''' and '''ERR''' result codes are only accepted by [[Squid-3.3]] and newer.
+  . {i} the '''OK''' and '''ERR''' result codes are only accepted by [[Squid-3.4]] and newer.
 
  token::
   A new challenge '''token''' value is presented. The token is base64-encoded, as defined by RFC RFC:2045.<<BR>>
-  {i} NOTE: NTLM authenticator interface does not support a '''token''' field. Negotiate authenticator interface requires it on '''TT''', '''AF''' and '''NA''' responses.
+  {i} NOTE: NTLM authenticator interface on Squid-3.3 and older does not support a '''token''' field. Negotiate authenticator interface requires it on '''TT''', '''AF''' and '''NA''' responses.<<BR>>
+  {i} This field must not be sent on '''OK''', '''ERR''' and '''BH'' responses.
 
  label::
-  The label given here is what gets used by Squid for this client request '''"username"'''. This field is only accepted on '''AF''' responses.
+  The label given here is what gets used by Squid for this client request '''"username"'''. This field is only accepted on '''AF''' responses. It must not be sent on any other result code response.
+
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface:
+  || group=... || reserved ||
+  || message=... || A message string that Squid can display on an error page. ||
+  || tag=... || reserved ||
+  || token=... || The base64-encoded, as defined by RFC RFC:2045, token to be used. This field is only used on '''OK''' responses. ||
+  || ttl=... || reserved ||
+  || user=... || The label to be used by Squid for this client request as '''"username"'''. With Negotiate and NTLM protocols it typically has the format NAME@DOMAIN or NAME\\DOMAIN respectively. ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+  . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.<<BR>>
+  . /!\ This field is only accepted on '''OK''', '''ERR''' and '''BH''' responses and must not be sent on other responses.
 
  message::
-  A message string that Squid can display on an error page. This field is only accepted on '''NA''' and '''BH''' responses.
+  A message string that Squid can display on an error page. This field is only accepted on '''NA''' and '''BH''' responses. From Squid-3.4 this field is deprecated by the '''message='' kv-pair on '''BH''' responses.
 
 ## end negotiateauth protocol
 
@@ -338,7 +396,7 @@ Input line received from Squid:
 
 Result line sent back to Squid:
 {{{
-[channel-ID] result [key-pairs]
+[channel-ID] result [kv-pair]
 }}}
 
  channel-ID::
@@ -350,17 +408,21 @@ Result line sent back to Squid:
   || ERR || Success. ACL test fails to match. ||
   || BH || Failure. The helper encountered a problem. ||
   .The configured usage of the external ACL in squid.conf determines what this result means.<<BR>>
-  . {i} the '''BH''' result code is only accepted by [[Squid-3.3]] and newer.
+  . {i} the '''BH''' result code is only accepted by [[Squid-3.4]] and newer.
 
- key-pairs::
-  Some optional details returned to Squid. These have the format '''key=value'''. see SquidConf:external_acl_type for the full list supported by your Squid.
+ kv-pair::
+  One or more key=value pairs. see SquidConf:external_acl_type for the full list supported by your Squid.
 
-  Some of the key=value pairs:
-  || user= || The users name (login) ||
-  || password= || The users password (for login= SquidConf:cache_peer option) ||
-  || message= || Message describing the reason. Available as %o in error pages ||
-  || tag= || Apply a tag to a request (for both '''ERR''' and '''OK''' results). Only sets a tag, does not alter existing tags. ||
-  || log= || String to be logged in access.log. Available as '''%ea''' in SquidConf:logformat specifications ||
+  The key names reserved on this interface:
+  || group=... || reserved ||
+  || log=... || String to be logged in access.log. Available as '''%ea''' in SquidConf:logformat specifications ||
+  || message=... || Message describing the reason. Available as %o in error pages ||
+  || password=... || The users password (for login= SquidConf:cache_peer option) ||
+  || tag=... || Apply a tag to a request (for both '''ERR''' and '''OK''' results). Only sets a tag, does not alter existing tags. ||
+  || ttl=... || reserved ||
+  || user=... || The users name (login) ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+
 ## end externalacl protocol
 
 === Logging ===
@@ -385,7 +447,7 @@ This interface has a fixed field layout.
 
 Input ''line'' received from Squid:
 {{{
-request size key-pair [body]
+request size kv-pair [body]
 }}}
 
 /!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
@@ -396,10 +458,8 @@ request size key-pair [body]
  size::
   Total size of the following request bytes taken by the '''key-pair''' parameters and '''body'''.
 
- key-pair::
-  Parameters determining the 
-
-  Some of the key=value pairs:
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface:
   || host= || FQDN host name of the domain needing a certificate. ||
 
  body::
@@ -519,7 +579,7 @@ error_cert_0=cert_10
 ## start unlinkd protocol
 The unlink() function used to erase files is a blocking call and can slow Squid down. This interface is used to pass file erase instructions to a helper program specified by SquidConf:unlinkd_program.
 
-This interface has a fixed field layout. As of [[Squid-3.2]] this interface does not support concurrency. It requires Squid to be built with '''--enable-unlinkd''' and only cache storage types which use disk files (UFS, AUFS, diskd) use this interface.
+This interface has a fixed field layout. As of [[Squid-3.3]] this interface does not support concurrency. It requires Squid to be built with '''--enable-unlinkd''' and only cache storage types which use disk files (UFS, AUFS, diskd) use this interface.
 
 Input line received from Squid:
 {{{
@@ -531,13 +591,19 @@ path
 
 Result line sent back to Squid:
 {{{
-result
+result [kv-pair]
 }}}
 
  result::
   One of the result codes:
   || OK || Success. The file has been removed from cache. ||
   || BH || Failure. The helper encountered a problem. ||
+
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface:
+  || message=... || reserved ||
+  || tag=... || reserved ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
 
 ## end unlinkd protocol
 ----
