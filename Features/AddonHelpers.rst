@@ -352,7 +352,7 @@ Result line sent back to Squid:
  token::
   A new challenge '''token''' value is presented. The token is base64-encoded, as defined by RFC RFC:2045.<<BR>>
   {i} NOTE: NTLM authenticator interface on Squid-3.3 and older does not support a '''token''' field. Negotiate authenticator interface requires it on '''TT''', '''AF''' and '''NA''' responses.<<BR>>
-  {i} This field must not be sent on '''OK''', '''ERR''' and '''BH'' responses.
+  {i} This field must not be sent on '''OK''', '''ERR''' and '''BH''' responses.
 
  label::
   The label given here is what gets used by Squid for this client request '''"username"'''. This field is only accepted on '''AF''' responses. It must not be sent on any other result code response.
