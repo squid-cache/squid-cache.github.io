@@ -370,7 +370,7 @@ Result line sent back to Squid:
   . /!\ This field is only accepted on '''OK''', '''ERR''' and '''BH''' responses and must not be sent on other responses.
 
  message::
-  A message string that Squid can display on an error page. This field is only accepted on '''NA''' and '''BH''' responses. From Squid-3.4 this field is deprecated by the '''message='' kv-pair on '''BH''' responses.
+  A message string that Squid can display on an error page. This field is only accepted on '''NA''' and '''BH''' responses. From Squid-3.4 this field is deprecated by the '''message=''' kv-pair on '''BH''' responses.
 
 ## end negotiateauth protocol
 
