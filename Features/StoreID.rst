@@ -1,4 +1,3 @@
-Describe Features/StoreID here.
 ##master-page:CategoryTemplate
 #format wiki
 #language en
