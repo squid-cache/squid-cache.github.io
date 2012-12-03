@@ -14,7 +14,7 @@
 
  * '''More''': 
 
- * '''Sponsored by''': Eliezer Croitoru - [[http://www1.ngtech.co.il/]]
+ * '''Sponsored by''': [[Eliezer Croitoru]] - [[http://www1.ngtech.co.il/|NgTech]]
 
 <<TableOfContents>>
 ----
