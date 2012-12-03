@@ -11,7 +11,7 @@ Describe Features/StoreID here.
 
  * '''Version''': 3.3
 
- * '''Developer''': Eliezer Croitoru.
+ * '''Developer''': [[Eliezer Croitoru]]
 
  * '''More''': 
 
