@@ -35,7 +35,7 @@ The new feature will work in a different way by default and will make squid to a
 This includes refresh_pattern.
 This would allow the admin more flexibility in the way he will be able use the helper.
 
-This feature Will allow later to implement Metalink support into squid.
+This feature Will allow later to implement [[http://www.metalinker.org/|Metalink]] support into squid.
 
 == Squid Configuration ==
 Will come later
