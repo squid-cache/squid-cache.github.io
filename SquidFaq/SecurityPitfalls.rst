@@ -120,7 +120,7 @@ http_access deny all
 
 These ACLs control access to the Squid cache manager. The manager can do a lot of powerful things. Including shutting down your Squid, or displaying the configuration file, or displaying the current logged in users, or displaying your network layout.
 
-As you can imaging, allowing random internet visitors to see these details is not a good thing. For this reason the '''very top''' access control in Squid limits manager access on only be available to the special localhost IP.
+As you can imagine, allowing random internet visitors to see these details is not a good thing. For this reason the '''very top''' access control in Squid limits manager access on only be available to the special localhost IP.
 
 {{{
 acl manger url_regex -i ^cache_object:// /squid-internal-mgr/
