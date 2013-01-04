@@ -11,7 +11,7 @@ The currently maintained farm consists of:
 || OS || Arch || Ver || system-name || Status ||
 ||<|3> [[http://www.centos.org/|CentOS]] ||
 || x64 || 5.8 || eu.squid-cache.org || {OK} ||
-|| x32 || || || ||
+|| x64 || 6.3 || || {OK} [[/CentosInstall|Installation guide]] ||
 ||<|2> [[http://www.ubuntu.com/|Ubuntu]] ||
 || x64 || 12.04 (precise) || precise.squid-cache.org || {OK} ||
 ||<|2> [[http://opensuse.org/|OpenSUSE]] ||
