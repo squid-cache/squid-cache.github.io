@@ -44,7 +44,7 @@ Using Coordinator and common configuration files, Squid workers can receive iden
  * logs,
  * memory object cache (in most environments),
  * disk object cache (with Rock Store only),
- * cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
+ * insecure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
 
 Conditional configuration and worker-dependent macros can be used to limit sharing. For example, each worker can be given a dedicated http_port to listen on.
 
@@ -56,6 +56,7 @@ Currently, Squid workers do not share and do not synchronize other resources or 
  * SNMP stats -- there is an active project to allow such sharing;
  * helper processes and daemons.
  * SSL session cache
+ * secure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
 
 Cache indexes are shared without copying. Other shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads. 
 
