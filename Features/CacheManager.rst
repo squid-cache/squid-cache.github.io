@@ -149,6 +149,16 @@ The following table details SMP support for each Cache Manager object or report.
 
 While all of the above information was verified at some point, the sheer number of Cache Manager objects (and their components) as well as ongoing Squid changes virtually guarantee some bugs and discrepancies. You should test statistics you rely on (e.g., in a controlled lab environment) and file bugs reports as appropriate.
 
+=== Secure SMP reports ===
+
+When Squid is running in SMP mode, only _insecure_ Cache Manager requests (i.e., those received on http_port) are currently supported.
+
+What would happen if you try to send a Cache Manager query to a secure https_port? The Squid worker receiving the management request on an secure connection does not send the response back. Instead, Coordinator and/or other processes send Cache Manager responses directly to the secure client using raw TCP socket descriptor they receive from the secure worker. Since those Squid processes do not know that the connection is supposed to be encrypted and do not have access to the encryption state, they send plain data, confusing the client which expects an encrypted stream.
+
+To support secure Cache Manager requests (i.e., those received on https_port), we may have to restrict writing the Cache Manager response to the secure worker, but that is difficult because we still want to support large (non-aggregatable) Cache Manager responses where each worker should produce its own response stream. The secure worker would probably have to receive and forward those streams to the client somehow.
+
+As a workaround, one could create a secure tunnel (using secure TCP tunneling programs such as ssh or stunnel) to a Squid http_port assigned to a loopback address and send all Cache Manager requests securely through that tunnel. Squid will not have to deal with encryption then and SMP cache manager queries will work. This workaround is secure only where unencrypted loopback traffic is considered secure, of course.
+
 
 == Understanding the manager reports ==
 === What's the difference between Squid TCP connections and Squid UDP connections? ===
