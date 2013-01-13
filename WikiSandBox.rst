@@ -8,11 +8,6 @@
 You may want to open HelpOnEditing in a new window or tab while you edit.
 
 ----
-
-NewAccount test
-<<Action(newaccount)>>
-----
-
 <<Anchor(formatting)>>
 == Formatting ==
 ''italic'' '''bold''' {{{typewriter}}}
