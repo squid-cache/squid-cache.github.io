@@ -6,6 +6,7 @@
 #format wiki
 #language en
 
+Create new user: <<Action(newaccount)>>
 <<SystemAdmin>>
 
 ----
