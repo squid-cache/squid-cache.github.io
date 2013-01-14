@@ -9,7 +9,8 @@ In order to request a new account, please write to <<MailTo(kinkie AT squid-cach
 Creating a personal account is needed to subscribe for page change notifications and to write to the wiki; everything else can be accessed as anonymous users.
 
 We are looking forward to lift these restrictions as more antispam features will be added to the wiki engine.
-
+----
+For wiki admins: you can use the <<Action(newaccount)>> action, and an online [[https://www.random.org/passwords/?num=1&len=8&format=html&rnd=new|random password generator]]. Please use !CamelCase usernames if possible.
 ----
 Discuss this page using the "Discussion" link in the main menu
 
