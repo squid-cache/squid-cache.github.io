@@ -102,5 +102,11 @@ tcp://host:port
  . {i} Available from [[Squid-3.2]]
  . {i} [[http://www.balabit.com/network-security/syslog-ng|Syslog-ng]] can receive these logs directly.
 
+== Third-party modules ==
+
+=== Blooper ===
+Squid user '''paranormal''' has written ''blooper'', a ruby logfile_daemon which can log to a SQL database.
+Soruces are available on github at https://github.com/paranormal/blooper
+
 ----
 CategoryFeature
