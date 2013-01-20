@@ -9,13 +9,9 @@
 
  * '''Goal''': Allow external code to perform SSL/TLS server certificates checks that go beyond OpenSSL validation.
 
- * '''Status''': In progress
+ * '''Status''': completed.
 
- * '''ETA''': October 2012
-
- * '''Version''': v3.3
-
- * '''Priority''': 1
+ * '''Version''': v3.4
 
  * '''Developer''': AlexRousskov
 
