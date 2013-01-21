@@ -65,8 +65,8 @@ daemon:/var/log/squid/access.log
  * '''log_db_daemon''' : Log directly to an SQL database. MySQL backend default. http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html or http://sourceforge.net/projects/logmysqldaemon/
 
  * '''blooper''' : 
-  . Squid user '''paranormal''' has written ''blooper'', a ruby logfile_daemon which can log to a SQL database.
-  . Soruces are available on github at https://github.com/paranormal/blooper
+  . ''blooper'' is a ruby logfile_daemon which can log to any SQL database (Postgres being the main target for it).
+  . Sources are available on github at https://github.com/paranormal/blooper
 
 
 <<Include(Features/AddonHelpers,"Daemon Message Protocol",3,from="^## start logdaemon protocol$", to="^## end logdaemon protocol$")>>
