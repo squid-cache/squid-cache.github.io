@@ -9,7 +9,7 @@
 = Feature: Large Rock Store =
 
  * '''Goal''': Support caching of large (i.e, larger than db slot size) responses in Rock Store.
- * '''Status''': In progress
+ * '''Status''': In progress; initial implementation completed, beta-testing and polishing
  * '''ETA''': December 2012
  * '''Version''': v3.4
  * '''Priority''': 1
