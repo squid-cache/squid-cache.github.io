@@ -32,6 +32,10 @@ The helpers bundled with Squid are currently written in Bash shell script, awk s
 === How do the helpers communicate with Squid? ===
 The interface with Squid is very simple. The helper is passed a limited amount of information on stdin to perform their expected task. The result is passed back to Squid via stdout. With any errors or debugging traces sent back on stderr.
 
+ * The helper is expected to wait for input before responding. Early responses or unexpected lines arriving to Squid on stdin will result in the helper being shut down with errors. If that happens often Squid may terminate as well.
+
+ * The helper is expected to handle multiple lookups by Squid. It is a terrible drag on HTTP speed to be constantly re-starting helpers. If that happens often enough Squid may terminate as well.
+
 See the particular interface protocols below for details about the line syntax the helper is expected to receive and send on each interface.
 
 === Why is my helper not starting up with Squid? ===
