@@ -5,7 +5,7 @@
 = Feature: HTTP/1.1 support =
  * '''Goal''': HTTP/1.1 (RFC 2616) compliance
  * '''Status''': 90% compliant and counting.
- * '''Version''': 3.1, 3.2
+ * '''Version''': 3.2
 
 <<TableOfContents>>
 
