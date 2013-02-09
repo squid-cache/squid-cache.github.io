@@ -7,7 +7,7 @@
 
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': To allow users to define their own log content.
-
+ * '''Status''': complete.
  * '''Version''': 2.6 and later
 
 <<TableOfContents>>
