@@ -3,7 +3,7 @@
 = Squid 3.4 (3.HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.4 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.4 expected to be in March 2013.
+The set of new Squid 3.4 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.4.
 
 ##Additions are limited to:
 ## * Polish of existing features
@@ -16,8 +16,10 @@ The set of new Squid 3.4 features and release timeline is determined by submissi
 
 Basic new features in 3.4:
 
-## * New helper to quota session access time
-## * [[Features/BumpSslServerFirst]]
+ * [[Features/SslServerCertValidator|SSL server certificate validator]]
+ * New server_ssl_cert_fingerprint SquidConf:acl type
+ * No-lookup DNS ACLs
+ * SquidConf:note directive for annotating transactions
 
 
 The intention with this series is to improve the upgrade path and concentrate on further portability improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
