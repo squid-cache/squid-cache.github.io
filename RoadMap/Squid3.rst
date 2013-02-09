@@ -54,20 +54,17 @@ Features which have not reached completion or have failed the audit, are automat
 ## Additions are limited to:
 ## * Security fixes
 ## * Stability fixes
-## * small optimizations
+## * Bug fixes
 
 ## Currently in '''STABLE / DEPRECATED''' cycle.
 ## The features have been set and code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
-
-
-<<Include(Squid-3.3)>>
 
 <<Include(Squid-3.4)>>
 
 == Bug Zapping ==
 
 ## bugs down to normal status
- * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
 
 == TODO ==
 
@@ -136,6 +133,8 @@ More ideas are available [[Features/Other|elsewhere]].
 ## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.1" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
  * Feature marked 3.2 which did not make it:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.2" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+ * Feature marked 3.3 which did not make it:
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.3" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
 
 = Schedule for Feature Removals =
 
