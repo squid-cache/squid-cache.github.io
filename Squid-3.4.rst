@@ -3,7 +3,7 @@
 = Squid 3.4 (3.HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.4 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.4 in March 2013.
+The set of new Squid 3.4 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.4 expected to be in March 2013.
 
 ##Additions are limited to:
 ## * Polish of existing features
@@ -12,7 +12,7 @@ The set of new Squid 3.4 features and release timeline is determined by submissi
 ## * Bug fixes
 
 ## bugs down to major (all earlier releases and 'unknowns')
- . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
+ . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
 
 Basic new features in 3.4:
 
