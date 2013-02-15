@@ -17,7 +17,7 @@
 
 == Pre-Built Binary Packages ==
 
-'''Maintainer:''' Alin Năsta
+'''Maintainer:''' Eray Aslan
 
 '''Bug Reporting:''' http://bugs.gentoo.org/buglist.cgi?quicksearch=squid-
 
