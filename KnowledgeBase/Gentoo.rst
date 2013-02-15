@@ -41,11 +41,6 @@ Install Procedure:
 {{{
  emerge =squid-3.1*
 }}}
-==== Squid-2.7 ====
-Install Procedure:
-{{{
- emerge =squid-2.7*
-}}}
 ==== Version Notice ====
 If you try and install a version not available in portage, such as 2.5, you will see the following notice:
 {{{
