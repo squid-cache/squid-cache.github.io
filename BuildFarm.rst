@@ -41,10 +41,11 @@ The currently maintained farm consists of:
 || [[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X || Volunteers sought ||
 || [[http://www.microsoft.com/windows/default.aspx|MS Windows]] Cygwin || Needed ||
 || AIX || Volunteers sought, PPC hardware sought ||
+|| [[http://gentoo.org/|Gentoo]] || Volunteers sought, for node donation or VM setup||
 
 Donations of disk space and CPU time on non-x86 systems are welcome and encouraged.
 
-The actual testing will be coordinated by [[https://hudson.dev.java.net/|Hudson]]. [[http://build.squid-cache.org/|Our instance]] 
+The actual testing will be coordinated by [[http://jenkins-ci.org/|Jenkins]]. [[http://build.squid-cache.org/|Our instance]] 
 
 == Slave Node software requirements ==
 Since the test nodes are doing more than just building Squid from a prepared tarball there are additional development tools required:
