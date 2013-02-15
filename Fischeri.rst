@@ -32,7 +32,7 @@ Being Squid alpha code they have their future release version number (ie 10.1 ) 
 
 For compatibility and upgrading with distributions so far this code when bundled needs to also contain the word '''fischeri''' as part of their bundle name followed by the data of packaging.
 
-How the names are formed depends on the packaging system used. The Debian/Ubuntu system so far used for testing the concept build them naming like:  3.2.0.0-1~fischeri20100201-N   where the trailing N may be an iterative build number if problems are found on initial build.
+How the names are formed depends on the packaging system used. The Debian/Ubuntu system so far used for testing the concept build them naming like:  3..0.0-1~fischeri20100201-N   where the trailing N may be an iterative build number if problems are found on initial build.
 
 == Beta Release packages ==
 
@@ -54,7 +54,7 @@ Beta packages are being provided through major distribution repositories. See pa
  || '''OS'''  || '''Maintainer'''   || '''Results of discussion''' ||
  || Debian    || Luigi Gangitano    || Issues with Debian QA policy vs developers knowledge levels. ||
  || FreeBSD   || Thomas-Martin Seck || {OK} (pending further work) ||
- || Gentoo    || Alin Nastac        || Gentoo packaging system incompatible. ||
+ || Gentoo    || Eray Aslan         || Gentoo packaging system incompatible. ||
  || Mandrivia || Luis Daniel Lucio Quiroz || ||
  || NetBSD    || Takahiro Kambe (3.0)<<BR>>Matthias Scheler (3.1) || ||
  || OpenBSD   || Brad Smith         || ||
