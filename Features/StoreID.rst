@@ -67,7 +67,6 @@ def rewriter(request)
 case request
   when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.dl\.sourceforge\.net\/.*/
 	  vid = $cache.sfdlid(request)
-	  $cache.setvid(request, "http://dl.sourceforge.net.squid.internal/" + vid) if vid != nil
 	  url = "http://dl.sourceforge.net.squid.internal/" + vid if vid != nil
 	  return url	
   when /^quit.*/
