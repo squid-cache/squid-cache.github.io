@@ -47,9 +47,6 @@ Will come later
 # encoding: utf-8
 
 require "rubygems"
-require "open-uri"
-require 'timeout'
-
 require 'syslog'
 
 class Cache
