@@ -170,6 +170,23 @@ $cache = Cache.new
 STDOUT.sync = true
 main
 }}}
+
+== Helper Input\Output Example ==
+{{{
+#./new_helper.rb
+http://freefr.dl.sourceforge.net/project/vlc/2.0.5/win32/vlc-2.0.5-win32.exe
+OK store-id=http://dl.sourceforge.net.squid.internal/project/vlc/2.0.5/win32/vlc-2.0.5-win32.exe
+http://www.google.com/
+ERR
+quit
+#tail /var/log/messages
+Feb 17 17:32:07 www1 new_helper.rb[21352]: Started
+Feb 17 17:32:08 www1 new_helper.rb[21352]: Original request [http://freefr.dl.sourceforge.net/project/vlc/2.0.5/win32/vlc-2.0.5-win32.exe].
+Feb 17 17:32:08 www1 new_helper.rb[21352]: modified response [OK store-id=http://dl.sourceforge.net.squid.internal/project/vlc/2.0.5/win32/vlc-2.0.5-win32.exe].
+Feb 17 17:32:39 www1 new_helper.rb[21352]: Original request [http://www.google.com/].
+Feb 17 17:32:39 www1 new_helper.rb[21352]: modified response [ERR].
+Feb 17 17:32:51 www1 new_helper.rb[21352]: Original request [quit].
+}}}
 == Admin urls CDN\Pattern DB ==
 If it will be possible I hope a small DB can be maintained in squid wiki or else where on common CDN that can be used by squid admins.
 Patterns such for sourceforge CDN network or linux distributions Repositories mirror.
