@@ -40,7 +40,7 @@ This feature Will allow later to implement [[http://www.metalinker.org/|Metalink
 == Squid Configuration ==
 Will come later
 
-== Helper ==
+== Helper Example ==
 {{{
 #!highlight ruby
 #!/usr/bin/ruby
@@ -171,7 +171,7 @@ STDOUT.sync = true
 main
 }}}
 
-== Helper Input\Output Example ==
+=== Helper Input\Output Example ===
 {{{
 #./new_helper.rb
 http://freefr.dl.sourceforge.net/project/vlc/2.0.5/win32/vlc-2.0.5-win32.exe
