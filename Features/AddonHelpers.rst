@@ -267,6 +267,48 @@ Result line sent back to Squid:
 
 ## end basicauth protocol
 
+==== Bearer Scheme ====
+
+  . {i} the '''Bearer''' authentication scheme is proposed to be supported by [[Squid-3.4]] and newer.
+
+## start bearerauth protocol
+Input line received from Squid:
+{{{
+channel-ID b64token
+}}}
+
+ channel-ID::
+  This is the concurrency channel number.
+
+ b64token::
+  The opaque credentials token field sent by the client in HTTP headers.
+
+
+Result line sent back to Squid:
+{{{
+channel-ID result [kv-pair]
+}}}
+
+ channel-ID::
+  The concurrency '''channel-ID''' as received. It must be sent back to Squid unchanged as the first entry on the line.
+
+ result::
+  One of the result codes:
+  || OK || Success. Valid credentials. ||
+  || ERR || Success. Invalid credentials. ||
+  || BH || Failure. The helper encountered a problem. ||
+
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface:
+  || group=... || reserved ||
+  || message=... || A message string that Squid can display on an error page. ||
+  || tag=... || reserved ||
+  || ttl=... || reserved ||
+  || user=... || reserved ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+
+## end bearerauth protocol
+
 ==== Digest Scheme ====
 
 ## start digestauth protocol
