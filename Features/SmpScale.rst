@@ -229,7 +229,7 @@ mount shm
 
  {i} Also may display as '''Cannot bind socket FD NN to 0.0.0.0: (13) Permission denied''' if you disabled IPv6.
 
-Check the permissions on '''/var/run/squid''' (or whatever you set ./configure --localstatedir to) where Squid registers its IPC channel sockets (Unix Domain Sockets or UDS). That directory requires ownership by the Squid user.
+Check the permissions on '''/var/run/squid''' (or whatever your ''localstatedir'' is; see the --localstatedir ./configure option) where Squid registers its IPC channel sockets (Unix Domain Sockets or UDS). The ''localstatedir'' directory requires ownership by the Squid user for SMP Squid to work.
 
 
 === write failure (40) Message too long ===
