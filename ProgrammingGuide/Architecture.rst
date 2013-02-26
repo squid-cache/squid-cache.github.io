@@ -21,7 +21,7 @@ At the broad level Squid consists of four generic processing areas;
 
  * there is also a set of components performing extra support tasks; security (authentication and access control), DNS client, IDENT client, and WHOIS client.
 
-## TODO embed image.
+  {{attachment:BroadOverview.png}}
 
 == General Overview ==
 
