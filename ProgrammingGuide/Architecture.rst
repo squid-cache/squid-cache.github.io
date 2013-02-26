@@ -4,7 +4,7 @@
 
 = Squid Architecture =
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Broad Overview ==
 
