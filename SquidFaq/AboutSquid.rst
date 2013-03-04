@@ -66,11 +66,14 @@ The software is designed to operate on any modern system, and is known to work o
 
 '''Unix:'''
 
- * OSF/Digital Unix/Tru64
- * IRIX
- * SCO Unix
  * AIX
  * HP-UX
+ * IRIX
+ * SCO Unix
+ * [[KnowledgeBase/Solaris|Solaris]]
+ * OpenIndiana
+ * Onmios
+ * OSF/Digital Unix/Tru64
 
 '''[[KnowledgeBase/Windows|Windows]]:''' (Cygwin and MinGW)
 
@@ -83,7 +86,6 @@ The software is designed to operate on any modern system, and is known to work o
 '''Other:'''
 
  * OS/2
- * [[KnowledgeBase/Solaris|Solaris]]
 
 ## end supported OS list
 
