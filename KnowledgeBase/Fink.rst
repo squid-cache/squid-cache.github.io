@@ -59,6 +59,32 @@ apt-get install squid-unified
 
 ## Describe the configure options and command line needed to build and install Squid
 
+## by Adam W. Dace.
+
+Squid compiles on Mac OS X.  However, there are some steps required before following the general build instructions.
+
+ * '''Install Xcode'''
+  1. From Mac OS X, run the "AppStore" application.
+  2. Locate "Xcode", Apple's development environment.
+  3. Install "Xcode".
+
+ * '''Install Command-Line Tools'''
+  1. Launch "Xcode".
+  2. Open "Xcode | Preferences".
+  3. Bring up the "Downloads" tab.
+  4. Under "Components" click the "Install" button for "Command Line Tools".
+  5. Quit Xcode.
+
+ * '''Verify Command-Line Tools'''
+  1. Launch "Terminal", usually located in the "Utilities" folder under "Applications".
+  2. Run "gcc --version".  Manually verify this produces sane output.
+
+From this point, the [[SquidFaq/CompilingSquid#How_do_I_compile_Squid.3F|general build instructions]] should be all you need.
+
+
+ . /!\ It is worth noting this platform doesn't support EUI. The --enable-eui ./configure will cause build errors.
+
+
 ## Followed by any special patching needed.
 ## Please inform upstream so we can simplify this to a configure option and obsolete the patching
 
