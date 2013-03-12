@@ -37,8 +37,8 @@ Each FTP command, whether understood by Squid or not, is mapped to an HTTP reque
 
 ||'''HTTP Request property'''||'''Mapping algorithm'''||
 ||Request method||"PUT" for FTP STOR. Otherwise GET?||
-||Request URI||{{{ftp://host/}}}||
-||Request protocol and version||HTTP/1.1 (so that ICAP services do not fail on FTP/x.y)||
+||Request URI||{{{ftp://host/}}} (for now; see Future Enhancement)||
+||Request protocol and version||HTTP/1.1 (That is what these wrapper messages are to Squid core. Also, some ICAP services may fail on FTP/x.y)||
 ||Host header||FTP server name followed by non-standard port if any||
 ||FTP-Command||FTP command name||
 ||FTP-Arguments||FTP command arguments (i.e., everything after the FTP command name and before CRLF). Not present if CRLF follows command name. Present but empty of SP CRLF follow command name.||
@@ -136,7 +136,7 @@ Note that Squid does not map FTP status codes to HTTP status codes in HTTP wrapp
 
 = Future enhancements =
 
-One very useful but difficult to support feature is tracking of FTP location across CD and similar commands. Such tracking would allow simple access controls based on request URIs. While primitive tracking is not very difficult to support, FTP directory ''links'' make proper support very tricky (and impossible in some cases): In FTP, "foo/bar/.." path (i.e., a sequence of "CD foo", "CD bar", and "CD .." commands) may result in current location different than "foo" (i.e., the "PWD" command will not print "foo"). Eventually, Squid will probably track the URI using one or more algorithms, but this project does not include such support or the decision which URI tracking algorithm to implement.
+One very useful but difficult to support feature is tracking of FTP current or requested directory across CD and similar commands. Such tracking would allow simple access controls based on request URIs. While primitive tracking is not very difficult to support, FTP directory ''links'' make proper support very tricky (and impossible in some cases): In FTP, "foo/bar/.." path (i.e., a sequence of "CD foo", "CD bar", and "CD .." commands) may result in current location different than "foo" (i.e., the "PWD" command will not print "foo"). Eventually, Squid will probably track the URI using one or more algorithms, but this project does not include such support or the decision which URI tracking algorithm to implement.
 
 ----
 CategoryFeature
