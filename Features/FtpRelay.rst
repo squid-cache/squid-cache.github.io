@@ -44,7 +44,7 @@ Each FTP command, whether understood by Squid or not, is mapped to an HTTP reque
 ||FTP-Command||FTP command name||
 ||FTP-Arguments||FTP command arguments (i.e., everything after the FTP command name and before CRLF). Not present if CRLF follows command name. Present but empty of SP CRLF follow command name.||
 ##||X-Master-Xact||an ever-increasing positive integer; incremented once for every new accepted FTP connection||
-##||User-Agent||"!SquidFtp"?||
+##||User-Agent||the value of the visible_appname_string global||
 
 == FTP reply to HTTP response mapping ==
 
