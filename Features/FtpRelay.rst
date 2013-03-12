@@ -50,7 +50,7 @@ Each FTP command, whether understood by Squid or not, is mapped to an HTTP reque
 
 
 ||'''HTTP Response property'''||'''Mapping algorithm'''||
-||Response status code and reason phrase||200 OK for any grokked FTP server response; 1xx for "spontaneous replies"; 500 Error otherwise||
+||Response status code and reason phrase||100 Continue for any grokked FTP 1xx response; 200 OK for any other grokked FTP server response; 500 Server Error otherwise||
 ||Request protocol and version||HTTP/1.1 (so that ICAP services do not fail on FTP/x.y)||
 ||Date||FTP reply start date||
 ||Cache-Control||"private" (Squid cannot cache these until we track Request URIs)||
@@ -110,7 +110,7 @@ RETR test.gz
 
                                                                                150 File status okay; about to open data...
 
-                                  HTTP/1.1 200 OK
+                                  HTTP/1.1 100 Continue
                                   Date: ...
                                   Cache-Control: private
                                   FTP-Status: 150
