@@ -70,13 +70,13 @@ Initial support for eCAP is available in [[RoadMap/Squid3|Squid 3.1]]. You can f
 <<Anchor(secACLs)>>
 == Squid.conf ACLs ==
 
-Simple HTTP request header adaptation is possible without writing any code. Squid supports a few configuration options that allow the administrator to delete or replace specified HTTP headers: ''request_header_access'', ''reply_header_access'', and ''header_replace''.
+Simple HTTP request header adaptation is possible without writing any code. Squid supports a few configuration options that allow the administrator to add, delete, or replace specified HTTP request headers: SquidConf:request_header_add, SquidConf:request_header_access, and SquidConf:request_header_replace. Similar directives available for adapting response headers.
 
  '''Pros''': Fast, integrated, adaptation-focused API, no Squid modifications.
 
  '''Cons''': Limited to simple header adaptations, dependent on Squid installation.
 
-Header modification via Squid ACLs is limited to deleting a header or replacing a matching header with a constant string. Moreover, it is not possible to replace a response header because the ''header_replace'' option only works with HTTP requests.
+The extent of header manipulation support depends on Squid version: Some versions do not allow adding new headers and some do not allow replacing old response headers, for example.
 
 
 <<Anchor(secCodeHacks)>>
