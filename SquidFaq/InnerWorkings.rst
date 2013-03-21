@@ -6,7 +6,7 @@
 An Internet Object is a file, document or response to a query for an Internet service such as FTP, HTTP, or gopher.  A client requests an Internet object from a caching proxy; if the object is not already cached, the proxy server fetches the object (either from the host specified in the URL or from a parent or sibling cache) and delivers it to the client.
 
 == What is the ICP protocol? ==
-ICP is a protocol used for communication among squid caches. The ICP protocol is defined in two Internet RFC's. [[http://www.ircache.net/Cache/ICP/rfc2186.txt|RFC 2186]] describes the protocol itself, while [[http://www.ircache.net/Cache/ICP/rfc2187.txt|RFC 2187]] describes the application of ICP to hierarchical Web caching.
+ICP is a protocol used for communication among squid caches. The ICP protocol is defined in two Internet RFC's. RFC RFC:2186 describes the protocol itself, while RFC RFC:2187 describes the application of ICP to hierarchical Web caching.
 
 ICP is primarily used within a cache hierarchy to locate specific objects in sibling caches.  If a squid cache does not have a requested document, it sends an ICP query to its siblings, and the siblings respond with ICP replies indicating a "HIT" or a "MISS." The cache then uses the replies to choose from which cache to resolve its own MISS.
 
@@ -25,11 +25,11 @@ In addition to the parent-child relationships, squid supports the notion of sibl
   1. Fetch the object from the source
 The algorithm is somewhat more complicated when firewalls are involved.
 
-The ''single_parent_bypass'' directive can be used to skip the ICP queries if the only appropriate sibling is a parent cache (i.e., if there's only one place you'd fetch the object from, why bother querying?)
+The SquidConf:cache_peer '''no-query''' option can be used to skip the ICP queries if the only appropriate source is a parent cache (i.e., if there's only one place you'd fetch the object from, why bother querying?)
 
 == What features are Squid developers currently working on? ==
 
-The features and areas we work on are aways changing. See the [[../../RoadMap|Squid Road Maps]] for more details on current activities.
+The features and areas we work on are always changing. See the [[RoadMap|Squid Road Maps]] for more details on current activities.
 
 == Tell me more about Internet traffic workloads ==
 Workload can be characterized as the burden a client or group of clients imposes on a system.  Understanding the nature of workloads is important to the managing system capacity.
@@ -54,9 +54,11 @@ The LRU expiration age is a dynamically-calculated value.  Any objects which hav
 
 As your cache becomes more busy, the LRU age becomes lower so that more objects will be removed to make room for the new ones.  Ideally, your cache will have an LRU age value in the range of at least 3 days.  If the LRU age is lower than 3 days, then your cache is probably not big enough to handle the volume of requests it receives.  By adding more disk space you could increase your cache hit ratio.
 
-The configuration parameter ''reference_age'' places an upper limit on your cache's LRU expiration age.
+## 2013-03-22: Dead parameter? no reference anywhere in the config documents today anyway
+## The configuration parameter ''reference_age'' places an upper limit on your cache's LRU expiration age.
 
 == What is "Failure Ratio at 1.01; Going into hit-only-mode for 5 minutes"? ==
+## TODO move this to a KnowledgeBase error messages article.
 Consider a pair of caches named A and B.  It may be the case that A can reach B, and vice-versa, but B has poor reachability to the rest of the Internet. In this case, we would like B to recognize that it has poor reachability and somehow convey this fact to its neighbor caches.
 
 Squid will track the ratio of failed-to-successful requests over short time periods.  A failed request is one which is logged as ERR_DNS_FAIL, ERR_CONNECT_FAIL, or ERR_READ_ERROR.  When the failed-to-successful ratio exceeds 1.0, then Squid will return ICP_MISS_NOFETCH instead of ICP_MISS to neighbors. Note, Squid will still return ICP_HIT for cache hits.
@@ -178,7 +180,7 @@ The refresh algorithm used in Squid-2 looks like this:
 == What exactly is a ''deferred read''? ==
 The cachemanager I/O page lists ''deferred reads'' for various server-side protocols.
 
-Sometimes reading on the server-side gets ahead of writing to the client-side.  Especially if your cache is on a fast network and your clients are connected at modem speeds.  Squid-1.1 will read up to 256k (per request) ahead before it starts to defer the server-side reads.
+Sometimes reading on the server-side gets ahead of writing to the client-side.  Especially if your cache is on a fast network and your clients are connected at modem speeds.  Squid will read up to SquidConf:read_ahead_gap bytes (default of 16 KB) ahead of the client before it starts to defer the server-side reads.
 
 == Why is my cache's inbound traffic equal to the outbound traffic? ==
 ''I've been monitoring the traffic on my cache's ethernet adapter an found a behavior I can't explain: the inbound traffic is equal to the outbound traffic. The differences are negligible. The hit ratio reports 40%. Shouldn't the outbound be at least 40% greater than the inbound?''
@@ -203,9 +205,9 @@ Also, if you're talking about a 40% hit rate in terms of object requests/counts 
 To determine whether a given object may be cached, Squid takes many things into consideration.  The current algorithm (for Squid-2) goes something like this:
 
  * Responses with ''Cache-Control: Private'' are NOT cachable.
- * Responses with ''Cache-Control: No-Cache'' are NOT cachable.
+ * Responses with ''Cache-Control: No-Cache'' are NOT cachable by Squid older than [[Squid-3.2]].
  * Responses with ''Cache-Control: No-Store'' are NOT cachable.
- * Responses for requests with an ''Authorization'' header are cachable ONLY if the reponse includes ''Cache-Control: Public''.
+ * Responses for requests with an ''Authorization'' header are cachable ONLY if the reponse includes ''Cache-Control: Public'' or some other special parameters controling revalidation.
  * The following HTTP status codes are cachable:
   * 200 OK
   * 203 Non-Authoritative Information
@@ -240,7 +242,7 @@ All other HTTP status codes are NOT cachable, including:
 == What does ''keep-alive ratio'' mean? ==
 The ''keep-alive ratio'' shows up in the ''server_list'' cache manager page.
 
-This is a mechanism to try detecting neighbor caches which might not be able to deal with persistent connections.  Every time we send a ''proxy-connection: keep-alive'' request header to a neighbor, we count how many times the neighbor sent us a ''proxy-connection: keep-alive'' reply header.  Thus, the ''keep-alive ratio'' is the ratio of these two counters.
+This is a mechanism to try detecting neighbor caches which might not be able to deal with persistent connections.  Every time we send a ''Connection: keep-alive'' request header to a neighbor, we count how many times the neighbor sent us a ''Connection: keep-alive'' reply header.  Thus, the ''keep-alive ratio'' is the ratio of these two counters.
 
 If the ratio stays above 0.5, then we continue to assume the neighbor properly implements persistent connections.  Otherwise, we will stop sending the keep-alive request header to that neighbor.
 
@@ -264,7 +266,7 @@ Every time an object is accessed, it gets moved to the top of a list.  Over time
 
 The Squid cache uses the notions of ''private'' and ''public'' cache keys.  An object can start out as being private, but may later be changed to public status.  Private objects are associated with only a single client whereas a public object may be sent to multiple clients at the same time.  In other words, public objects can be located by any cache client.  Private keys can only be located by a single client--the one who requested it.
 
-Objects are changed from private to public after all of the HTTP reply headers have been received and parsed.  In some cases, the reply headers will indicate the object should not be made public. For example, if the ''no-cache'' Cache-Control directive is used.
+Objects are changed from private to public after all of the HTTP reply headers have been received and parsed.  In some cases, the reply headers will indicate the object should not be made public. For example, if the ''private'' Cache-Control directive is used.
 
 == What is FORW_VIA_DB for? ==
 We use it to collect data for  [[http://www.ircache.net/Cache/Plankton/|Plankton]].
@@ -281,8 +283,10 @@ It means Squid sent a DNS query to one IP address, but the response  came back f
 
 There are a number of reasons why this would happen:
 
- . -Your DNS name server just works this way, either because its been configured to, or because its stupid and doesn't know any better.
- -You have a weird broadcast address, like 0.0.0.0, in your ''/etc/resolv.conf'' file. -Somebody is trying to send spoofed DNS responses to your cache.
+ 1. Your DNS name server just works this way, either because its been configured to, or because its stupid and doesn't know any better.
+ 2. You have a weird broadcast address, like 0.0.0.0, in your ''/etc/resolv.conf'' file.
+ 3. Somebody is trying to send spoofed DNS responses to your cache.
+
 If you recognize the IP address in the warning as one of your name server hosts, then its probably numbers (1) or (2).
 
 You can make these warnings stop, and allow responses from "unknown" name servers by setting this configuration option:
@@ -290,7 +294,7 @@ You can make these warnings stop, and allow responses from "unknown" name server
 ignore_unknown_nameservers off
 }}}
 
-/!\ WARNING: this opens your Squid up to many possible security breaches. You should prefer to configure your set of possible nameserver IPs correctly.
+ /!\ WARNING: this opens your Squid up to many possible security breaches. You should prefer to configure your set of possible nameserver IPs correctly.
 
 == How does Squid distribute cache files among the available directories? ==
 ''Note: The information here is current for version 2.2.''
@@ -331,13 +335,13 @@ TCP allows connections to be in a "half-closed" state.   This is accomplished wi
 If Squid tries to read a connection, and ''read()'' returns 0, and Squid knows that the client doesn't have the whole response yet, Squid puts marks the filedescriptor as half-closed. Most likely the client has aborted the request and the connection is really closed.  However, there is a slight chance that the client is using the ''shutdown()'' call, and that it can still read the response.
 
 To disable half-closed connections, simply put this in squid.conf:
-
 {{{
-        half_closed_clients off
+half_closed_clients off
 }}}
+
 Then, Squid will always close its side of the connection instead of marking it as half-closed.
 
-  '''NP:''' from Squid-3.0 the default is now OFF.
+  '''NP:''' from [[Squid-3.0]] the default is now OFF.
 
 
 == What does --enable-heap-replacement do? ==
@@ -351,7 +355,7 @@ Squid has traditionally used an LRU replacement algorithm. However with Squid ve
 }}}
 Currently, the heap replacement code supports two additional algorithms: LFUDA, and GDS.
 
-Then, in ''squid.conf'', you can select different policies with the ''cache_replacement_policy'' option.  See the ''squid.conf'' comments for details.
+Then, in ''squid.conf'', you can select different policies with the SquidConf:cache_replacement_policy directive.
 
 The LFUDA and GDS replacement code was contributed by John Dilley and others from Hewlett-Packard.  Their work is described in these papers:
 
@@ -364,27 +368,22 @@ The LFUDA and GDS replacement code was contributed by John Dilley and others fro
 == Why is actual filesystem space used greater than what Squid thinks? ==
 If you compare ''df'' output and cachemgr ''storedir'' output, you will notice that actual disk usage is greater than what Squid reports.  This may be due to a number of reasons:
 
- * Squid doesn't keep track of the size of the ''swap.state''
-file, which normally resides on each ''cache_dir''.
-
+ * Squid doesn't keep track of the size of the ''swap.state'' file, which normally resides on each SquidConf:cache_dir.
  * Directory entries and take up filesystem space.
  * Other applications might be using the same disk partition.
- * Your filesystem block size might be larger than what Squid
-thinks.  When calculating total disk usage, Squid rounds file sizes up to a whole number of 1024 byte blocks.  If your filesystem uses larger blocks, then some "wasted" space is not accounted.
+
+ * Your filesystem block size might be larger than what Squid thinks.  When calculating total disk usage, Squid rounds file sizes up to a whole number of 1024 byte blocks.  If your filesystem uses larger blocks, then some "wasted" space is not accounted.
 
  * Your cache has suffered some minor corruption and some objects have gotten lost without being removed from the swap.state file.  Over time, Squid will detect this and automatically fix it.
 
 == How do ''positive_dns_ttl'' and ''negative_dns_ttl'' work? ==
-''positive_dns_ttl'' is how long Squid caches a successful DNS lookup. Similarly, ''negative_dns_ttl'' is how long Squid caches a failed DNS lookup.
+SquidConf:positive_dns_ttl is how long Squid caches a successful DNS lookup. Similarly, SquidConf:negative_dns_ttl is how long Squid caches a failed DNS lookup.
 
-''positive_dns_ttl'' is not always used.  It is NOT used in the following cases:
+SquidConf:positive_dns_ttl is not always used.  It is NOT used in the following cases:
 
- * Squid-2.3 and later versions with internal DNS lookups.  Internal
-lookups are the default for Squid-2.3 and later.
-
- * If you applied the "DNS TTL" for BIND as described in ../CompilingSquid.
- * If you are using FreeBSD, then it already has the DNS TTL patch
-built in.
+ * Squid-2.3 and later versions with internal DNS lookups. Internal lookups are the default for Squid-2.3 and later.
+ * If you applied the "DNS TTL" for BIND as described in CompilingSquid.
+ * If you are using FreeBSD, then it already has the DNS TTL patch built in.
 
 Let's say you have the following settings:
 
@@ -404,7 +403,7 @@ If you have the DNS TTL patch, or are using internal lookups, then each hostname
 }}}
 The TTL field shows how how many seconds until the entry expires. Negative values mean the entry is already expired, and will be refreshed upon next use.
 
-The ''negative_dns_ttl'' specifies how long to cache failed DNS lookups. When Squid fails to resolve a hostname, you can be pretty sure that it is a real failure, and you are not likely to get a successful answer within a short time period.  Squid retries its lookups  many times before declaring a lookup has failed. If you like, you can set ''negative_dns_ttl'' to zero.
+The SquidConf:negative_dns_ttl directive specifies how long to cache failed DNS lookups. When Squid fails to resolve a hostname, you can be pretty sure that it is a real failure, and you are not likely to get a successful answer within a short time period.  Squid retries its lookups many times before declaring a lookup has failed. If you like, you can set SquidConf:negative_dns_ttl to zero.
 
 == What does ''swapin MD5 mismatch'' mean? ==
 It means that Squid opened up a disk file to serve a cache hit, but it found that the stored object doesn't match what the user's request. Squid stores the MD5 digest of the URL at the start of each disk file. When the file is opened, Squid checks that the disk file MD5 matches the MD5 of the URL requested by the user.  If they don't match, the warning is printed and Squid forwards the request to the origin server.
@@ -416,12 +415,12 @@ Each of Squid's disk cache files has a metadata section at the beginning. This h
 
 This warning means that Squid couln't unpack the meta data.  This is non-fatal bug, from which Squid can recover.  Perhaps the meta data was just missing, or perhaps the file got corrupted.
 
-You do not need to worry about this warning.  It means that Squid is  double-checking that the disk file matches what Squid thinks should be there, and the check failed.  Squid recorvers and generates a cache miss in this case.
+You do not need to worry about this warning.  It means that Squid is double-checking that the disk file matches what Squid thinks should be there, and the check failed.  Squid recovers and generates a cache miss in this case.
 
 == Why doesn't Squid make ''ident'' lookups in interception mode? ==
-Its a side-effect of the way interception proxying works.
+It is a side-effect of the way interception proxying works.
 
-When Squid is configured for interception proxying, the operating system pretends that it is the origin server.  That means that the "local" socket address for intercepted TCP connections is really the origin server's IP address.  If you run ''netstat -n'' on your interception proxy, you'll see a lot of  foreign IP addresses in the ''Local Address'' column.
+When Squid is configured for interception proxying, the operating system pretends that it is the origin server.  That means that the "local" socket address for intercepted TCP connections is really the origin server's IP address.  If you run ''netstat -n'' on your interception proxy, you'll see a lot of foreign IP addresses in the ''Local Address'' column.
 
 When Squid wants to make an ident query, it creates a new TCP socket and ''binds'' the local endpoint to the same IP address as the local end of the client's TCP connection.  Since the local address isn't really local (its some far away origin server's IP address), the ''bind()'' system call fails.  Squid handles this as a failed ident lookup.
 
@@ -432,7 +431,7 @@ Because thats just how ident works.   Please read  [[ftp://ftp.isi.edu/in-notes/
 == What are FTP passive connections? ==
 by Colin Campbell
 
-Ftp uses two data streams, one for passing commands around, the other for moving data. The command channel is handled by the ftpd listening on port 21.
+FTP uses two data streams, one for passing commands around, the other for moving data. The command channel is handled by the ftpd listening on port 21.
 
 The data channel varies depending on whether you ask for passive ftp or not. When you request data in a non-passive environment, you client tells the server "I am listening on <ip-address> <port>." The server then connects FROM port 20 to the ip address and port specified by your client. This requires your "security device" to permit any host outside from port 20 to any host inside on any port > 1023. Somewhat of a hole.
 
