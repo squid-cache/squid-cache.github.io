@@ -56,13 +56,22 @@ Categories:
 === Multimedia and Data Stream filtering ===
 <<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
 
+=== SMP (Symmetric Multiprocessing) configurations ===
+
+## The warning below is Included in the template ConfigExampleTemplate and possibly in some other pages. Please, do not remove the enclosing comments.
+## smpwarning begin
+ /!\ Squid SMP support is an ongoing series of improviements in [[Squid-3.2]] and later. The configuration here may not be exactly up to date. Or may require you install a newer release.
+## smpwarning end
+
+<<FullSearch(title:regex:^ConfigExamples/Smp.*$)>>
+
 === High Performance service ===
 <<FullSearch(title:regex:^ConfigExamples/Extreme.*$)>>
 
 see also [[Features/Wccp2| WCCP v2 overview]] for high-availability service.
 
 === General ===
-<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse -regex:ConfigExamples/Strange -regex:ConfigExamples/Extreme -regex:ConfigExamples/Portal )>>
+<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse -regex:ConfigExamples/Strange -regex:ConfigExamples/Extreme -regex:ConfigExamples/Portal -regex:ConfigExamples/Smp )>>
 
 === Strange and Weird configurations ===
 ##start_WEIRD_INTRO
