@@ -35,16 +35,16 @@ Should anyone put this in production, be encouraged to share the results to help
 
 == Squid Configuration File ==
 
-There are 3 configuration files to be used. You can click below each file on its filename to download it, no need to copy and paste. {X} The .txt extension an artifact, please remove it.
+There are 3 configuration files to be used. You can click below each file on its filename to download it.
 
 === squid.conf ===
-{{attachment:squid.conf.txt}}
+{{attachment:squid.conf}}
 
 === frontend.conf ===
-{{attachment:frontend.conf.txt}}
+{{attachment:frontend.conf}}
 
 === backend.conf ===
-{{attachment:backend.conf.txt}}
+{{attachment:backend.conf}}
 
 
 ----
