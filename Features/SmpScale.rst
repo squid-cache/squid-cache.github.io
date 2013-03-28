@@ -46,9 +46,12 @@ Using Coordinator and common configuration files, Squid workers can receive iden
  * disk object cache (with Rock Store only),
  * insecure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
 
+Cache indexes are shared without copying. Other shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads.
+
 Conditional configuration and worker-dependent macros can be used to limit sharing. For example, each worker can be given a dedicated http_port to listen on.
 
-Currently, Squid workers do not share and do not synchronize other resources or services, including:
+
+Currently, Squid workers do not share and do not synchronize other resources and services, including (but not limited to):
 
  * memory object cache (in some environments),
  * disk object cache (except for Rock Store),
@@ -56,10 +59,10 @@ Currently, Squid workers do not share and do not synchronize other resources or 
  * SNMP stats (there is an active project to allow such sharing),
  * helper processes and daemons,
  * delay pools,
- * SSL session cache,
+ * SSL session cache (there is an active project to allow session sharing among workers),
  * secure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
 
-Cache indexes are shared without copying. Other shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads.
+Some SMP-unaware features continue to work in SMP mode (e.g., DNS responses are going to be cached by individual workers), but their performance suffers from the lack of synchronization and they require more resources due to duplication of information (e.g., each worker may independently resolve and cache the IP of the same domain name). Some SMP-unaware features break badly (e.g., ufs-based cache_dirs become corrupted) unless squid.conf conditionals are used to prevent such breakage. Some SMP-unaware features will appear to work but will do so incorrectly (e.g., delay pools will limit bandwidth on per-worker basis, without sharing traffic information among workers and without dividing bandwidth limits among workers).
 
 
 === Why processes? Aren't threads better? ===
