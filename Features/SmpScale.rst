@@ -55,10 +55,11 @@ Currently, Squid workers do not share and do not synchronize other resources or 
  * DNS caches (ipcache and fqdncache),
  * SNMP stats (there is an active project to allow such sharing),
  * helper processes and daemons,
+ * delay pools,
  * SSL session cache,
  * secure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
 
-Cache indexes are shared without copying. Other shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads. 
+Cache indexes are shared without copying. Other shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads.
 
 
 === Why processes? Aren't threads better? ===
