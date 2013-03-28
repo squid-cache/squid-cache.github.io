@@ -58,6 +58,7 @@ Currently, Squid workers do not share and do not synchronize other resources and
  * DNS caches (ipcache and fqdncache),
  * SNMP stats (there is an active project to allow such sharing),
  * helper processes and daemons,
+ * stateful HTTP authentication (e.g., digest authentication; see bug [[http://bugs.squid-cache.org/show_bug.cgi?id=3517|3517]]),
  * delay pools,
  * SSL session cache (there is an active project to allow session sharing among workers),
  * secure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
