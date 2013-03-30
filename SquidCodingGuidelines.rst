@@ -56,8 +56,8 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
     void clear();
 
   private:
-    static ClassStats TheStats;
-    int theInternalState;
+    static ClassStats TheStats_;
+    int theInternalState_;
   };
 
   extern void ReportUsage(ostream &os);
