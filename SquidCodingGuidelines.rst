@@ -68,25 +68,25 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
 {{{
   class Foo{
   public:
-    static methods
+    static Methods
     member methods
 
-    static variables
+    static Variables
     member variables
 
   protected:
-    static methods
+    static Methods
     member methods
 
-    static variables
+    static Variables
     member variables
 
   private:
-    static methods
+    static Methods
     member methods
 
-    static variables
-    member variables
+    static Variables_
+    member variables_
   };
 }}}
 
@@ -94,50 +94,56 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
 
 Pick one of the applicable styles described below and stick to it. For old classes, try to pick the style which is closer to the style being used.
 
-Explicit accessors:
-{{{
+ 1. '''Accessors'''
+  . Explicit '''set''', '''get''', '''has''' :
+   . {{{
       void setMember(const Member &);
       const Member &getMember() const; // may also return a copy
       Member &getMember();
       bool hasMember() const;
 }}}
 
-Compact accessors:
-{{{
+  . '''OR''' Compact:
+   . {{{
       void member(const Member &);
       const Member &member() const; // may also return a copy
       Member &member();
       bool hasMember() const;
 }}}
 
-Private data members using underscore suffix (may look C-ish)
-{{{
+ 2. '''Private data members'''
+  * use underscore suffix (may look C-ish)
+   . {{{
       int counter_;
       int next_;
       bool clean_;
       bool sawHeader_;
 }}}
 
-Private data members using the/verb prefix (may clash with method names)
-{{{
-      int theCounter;
-      int theNext;
-      bool isClean;
-      bool sawHeader;
+  * '''MAY''' also use the/verb prefix
+   . {{{
+      int theCounter_;
+      int theNext_;
+      bool isClean_;
+      bool sawHeader_;
 }}}
 
-State checks prefixed with an appropriate verb. Avoid negative words because double negation in if-statements will be confusing; let the caller negate when needed.
-{{{
+ 3. '''State checks'''
+  * prefixed with an appropriate verb: '''is''', '''has/have''', '''can''' 
+   . {{{
       bool canVerb() const;
       bool hasNoun() const;
       bool haveNoun() const; // if class name is plural
       bool isAdjective() const; // but see below
+}}}
 
+  * '''Avoid''' negative words because double negation in if-statements will be confusing; let the caller negate when needed.
+   . {{{
       bool notAdjective() const; // XXX: avoid due to !notAdjective()
 }}}
 
-The verb ''is'' may be omitted, especially if the result cannot be confused with a command (the confusion happens if the adjective after ''is'' can be interpreted as a verb):
-{{{
+  * The verb '''is''' may be omitted, especially if the result cannot be confused with a command (the confusion happens if the adjective after ''is'' can be interpreted as a verb):
+   . {{{
       bool isAtEnd() const; // OK, but excessive
       bool atEnd() const; // OK, no confusion
 
