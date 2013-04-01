@@ -12,7 +12,7 @@
  * '''Version''': 3.5
  * '''Developer''': AlexRousskov and Christos Tsantilas
  * '''Priority''': 2
- * '''More''': 
+ * '''More''': unofficial development [[https://code.launchpad.net/~measurement-factory/squid/peek-and-splice|branch]].
 
 
 = Motivation =
