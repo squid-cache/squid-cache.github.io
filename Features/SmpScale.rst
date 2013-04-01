@@ -114,7 +114,7 @@ The change results in reasonable load distribution across workers. Here is an in
 ||<)>9||<)>2221||(squid-6)||
 ||<)>11||<)>2107||(squid-1)||
 
-The instant CPU utilization (the rightmost column) is not balanced, as expected. An administrator monitoring that column would see how the group of most active workers changes every few seconds, with new busiest workers leaving and oldest worker in the group becoming mostly idle.
+The instant CPU utilization (the leftmost column) is not balanced, as expected. An administrator monitoring that column would see how the group of most active workers changes every few seconds, with new busiest workers leaving and oldest worker in the group becoming mostly idle.
 
 The cumulative CPU time distribution (the middle column) is much more even now. Despite having to deal with seven workers, Squid shows only a 25% difference between historically most and least active worker, compared to a 60% difference among four workers without the patch. Better distribution may be possible by tuning the patch parameters such as the tickling interval or increasing worker load so that each worker is less likely to miss its chance to tickle its epoll(2) set.
 
