@@ -13,31 +13,43 @@ by Chris Benech
 
 == Outline ==
 
-This configuration example details how to integrate the PF firewall NAT component with Squid for interception of port 80 traffic.
+The Packet Filter (PF) firewall in OpenBSD 4.7 and later offers traffic interception using several very simple methods.
 
-It was written for OpenBSD 4.1 or later, MP kernel and Squid 2.6 or later
+This configuration example details how to integrate the PF firewall with Squid for interception of port 80 traffic using either NAT-like interception and [[Features/Tproxyv4||TPROXY-like]] interception.
+
+More on configuring Squid for OpenBSD can be found in the OpenBSD ports README file:
+ http://www.openbsd.org/cgi-bin/cvsweb/ports/www/squid/pkg/README-main?rev=1.1;content-type=text%2Fplain
 
 == Squid Configuration ==
 
-You will need to configure squid to know the IP is being intercepted like so:
+=== Fully Transparent Proxy (TPROXY) ===
+  /!\ This configuration requires [[Squid-3.3|Squid-3.3.4]] or later.
+
+Squid requires the following build option:
 {{{
-http_port 3129 transparent
+--enable-pf-transparent
 }}}
 
- /!\ In Squid 3.1+ the ''transparent'' option has been split. Use ''''intercept''' to catch PF packets.
+Use the '''tproxy''' traffic mode flag to instruct Squid that it is receiving intercepted traffic and to spoof the client IP on outgoing connections:
+{{{
+http_port 3129 tproxy
+}}}
+
+=== NAT Interception proxy ===
+  /!\ This configuration requires [[Squid-3.2]] or later.
+
+ . /!\ integration support is undergoing testing and QA, so this configuration '''will''' be changing soon. Please check back next time you need to build this support with Squid.
+
+ {i} Support for this is not yet integrated with the --enable-pf-transparent build option. However the IPFW NAT component of Squid is compatible with PF. For now you can build Squid with these configure options:
+{{{
+--disable-pf-transparent --enable-ipfw-transparent
+}}}
+
+Use the '''intercept''' traffic mode flag to instruct Squid that it is receiving intercepted traffic and to use its own IP on outgoing connections (emulating NAT):
 {{{
 http_port 3129 intercept
 }}}
 
- /!\ OpenBSD 4.6 and older require the following options.
-{{{
-./configure --with-pthreads --enable-pf-transparent
-}}}
-
- /!\ OpenBSD 4.7 and later may require the following options.
-{{{
-./configure --with-pthreads
-}}}
 
 == pf.conf Configuration ==
 
@@ -51,11 +63,11 @@ set skip on $wi_if
 
 === OpenBSD 4.7 and later ===
 
- || /!\ NOTE || This example has not yet been tested. Use with care and please report any errors or improvements. ||
+ || /!\ NOTE || This example is for IPv4-only. Squid can accept IPv6 traffic as well. A tested configuration for that is still needed. ||
 
+On the machine running Squid, add a firewall rule similar to this:
 {{{
-# redirect only IPv4 web traffic into squid 
-match in inet proto tcp from 192.168.231.0/24 to any port 80 divert-to 192.168.231.1 port 3129
+pass in quick log inet proto tcp to port 80 divert-to 127.0.0.1 port 3129
 
 block in
 pass in quick on $int_if
@@ -64,6 +76,8 @@ pass out keep state
 }}}
 
 === OpenBSD 4.1 to 4.6 ===
+
+ {X} NOTE: OpenBSD older than 4.7 require [[Squid-3.2]] or older built with '''--enable-pf-transparent''' and only support the NAT interception method.
 
 {{{
 # redirect only IPv4 web traffic into squid 
@@ -93,7 +107,7 @@ Recent versions of PF provide the {{{getsockname()}}} interface to retrieve NAT 
 
 Build Squid with these configure options:
 {{{
---disable-pf-transparent
+--disable-pf-transparent --enable-ipfw-transparent
 }}}
 
 == Testing ==
