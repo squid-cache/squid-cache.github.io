@@ -15,7 +15,7 @@ by Chris Benech
 
 The Packet Filter (PF) firewall in OpenBSD 4.7 and later offers traffic interception using several very simple methods.
 
-This configuration example details how to integrate the PF firewall with Squid for interception of port 80 traffic using either NAT-like interception and [[Features/Tproxyv4||TPROXY-like]] interception.
+This configuration example details how to integrate the PF firewall with Squid for interception of port 80 traffic using either NAT-like interception and [[Features/Tproxy4|TPROXY-like]] interception.
 
 More on configuring Squid for OpenBSD can be found in the OpenBSD ports README file:
  http://www.openbsd.org/cgi-bin/cvsweb/ports/www/squid/pkg/README-main?rev=1.1;content-type=text%2Fplain
