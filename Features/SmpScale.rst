@@ -44,7 +44,8 @@ Using Coordinator and common configuration files, Squid workers can receive iden
  * logs,
  * memory object cache (in most environments),
  * disk object cache (with Rock Store only),
- * insecure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
+ * insecure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]),
+ * SNMP statistics.
 
 Cache indexes are shared without copying. Other shared information is usually small in terms of RAM use and is essentially copied to avoid locking and associated performance overheads.
 
@@ -56,7 +57,6 @@ Currently, Squid workers do not share and do not synchronize other resources and
  * memory object cache (in some environments),
  * disk object cache (except for Rock Store),
  * DNS caches (ipcache and fqdncache),
- * SNMP stats (there is an active project to allow such sharing),
  * helper processes and daemons,
  * stateful HTTP authentication (e.g., digest authentication; see bug [[http://bugs.squid-cache.org/show_bug.cgi?id=3517|3517]]),
  * delay pools,
