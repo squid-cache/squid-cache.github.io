@@ -66,27 +66,27 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
 == Class declaration layout ==
 
 {{{
-  class Foo{
+  class Foo {
   public:
-    static Methods
-    member methods
+    all public static methods
+    all public member methods
 
-    static Variables
-    member variables
+    all public static variables
+    all public member variables
 
   protected:
-    static Methods
-    member methods
+    all protected static methods
+    all protected member methods
 
-    static Variables
-    member variables
+    all protected static variables
+    all protected member variables
 
   private:
-    static Methods
-    member methods
+    all private static methods
+    all private member methods
 
-    static Variables_
-    member variables_
+    all private static variables
+    all private member variables
   };
 }}}
 
