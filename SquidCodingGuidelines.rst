@@ -56,8 +56,8 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
     void clear();
 
   private:
-    static ClassStats TheStats_;
-    int theInternalState_;
+    static ClassStats Stats_;
+    int internalState_;
   };
 
   extern void ReportUsage(ostream &os);
@@ -111,19 +111,20 @@ Pick one of the applicable styles described below and stick to it. For old class
       bool hasMember() const;
 }}}
 
- 2. '''Private data members'''
-  * use underscore suffix (may look C-ish)
+ 2. '''Data members'''
+  * For public data members, do not use underscore suffix. Use verb prefixes for boolean members.
+   . {{{
+      int counter;
+      int next;
+      bool isClean;
+      bool sawHeader;
+}}}
+
+
+  * For protected and private data members: May use underscore suffix to emphasize that the data member is not public and must use underscore suffix if the data member name would otherwise clash with a method name. Use verb prefixes for boolean members.
    . {{{
       int counter_;
       int next_;
-      bool clean_;
-      bool sawHeader_;
-}}}
-
-  * '''MAY''' also use the/verb prefix
-   . {{{
-      int theCounter_;
-      int theNext_;
       bool isClean_;
       bool sawHeader_;
 }}}
