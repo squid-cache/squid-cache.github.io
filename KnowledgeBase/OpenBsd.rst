@@ -25,6 +25,7 @@ make install
 }}}
 
 On older versions of OpenBSD, the above commands will build squid 2.7STABLE9.
+
 ==== Squid-2.7 ====
 On recent versions of OpenBSD, the following will build squid 2.7STABLE9 for ports, create a package and install it:
 
@@ -32,14 +33,19 @@ On recent versions of OpenBSD, the following will build squid 2.7STABLE9 for por
 cd /usr/ports/www/squid27
 make install
 }}}
+
 == Compiling ==
-To build squid, no particular method should be needed. See SquidFaq/CompilingSquid for detailed instructions. If you plan to do development on squid, some caution is needed: apparently something in the mix of sources and libraries trips a bug in gcc when building parts of the test-suite with optimizations. Building with optimizations explicitly turned off will allow to compile fine. In other words you'll need to:
+To build squid for standard use, no particular method should be needed. See SquidFaq/CompilingSquid for detailed instructions. If you plan to do development on squid, some caution is needed: apparently something in the mix of sources and libraries trips a bug in gcc when building parts of the test-suite with optimizations. Building with optimizations explicitly turned off will allow to compile fine. In other words you'll need to:
 
 {{{
 CFLAGS='-O0 -Wall -g' CXXFLAGS="$CFLAGS" ./test-builds.sh
 }}}
+
+If using squid as a transparent proxy on OpenBSD, there are two methods of looking up the original destination address. --enable-pf-transparent is the traditional method, which uses an ioctl() against /dev/pf to request the information from PF (requiring privileged access to the device node). For this method, use "rdr-to" (formerly "rdr") PF rules to pass the traffic to squid. As of OpenBSD 4.4 it is also possible to use --enable-ipfw-transparent which uses the simpler getsockname() interface. This method uses "divert-to" rules in PF. More information is available in the [[http://www.openbsd.org/cgi-bin/cvsweb/ports/www/squid/pkg/README-main?content-type=text%2Fplain|package's README file]].
+
 == Troubleshooting ==
+
 === NAT lookup failures ===
-The traditional method of looking up NAT translations, as supported by squid's --enable-pf-transparent option, requires privileged access to perform ioctl() on /dev/pf. To use this, you must ensure the user running squid has write access to /dev/pf. Additionally, this method requires that squid be built against correct kernel headers. Certain changes to PF will require that squid is recompiled.
+If using --enable-pf-transparent, ensure that the userid running squid has write access to /dev/pf, and that squid was built against correct kernel headers; some changes to PF will require that squid is recompiled.
 
 CategoryKnowledgeBase SquidFaq/BinaryPackages
