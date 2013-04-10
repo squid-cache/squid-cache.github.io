@@ -36,14 +36,14 @@ http_port 3129 tproxy
 }}}
 
 === NAT Interception proxy ===
-  /!\ This configuration requires [[Squid-3.2]] or later.
+  /!\ integration support is undergoing testing and QA, so this configuration '''will''' be changing soon. Please check back next time you need to build this support with Squid.
 
- . /!\ integration support is undergoing testing and QA, so this configuration '''will''' be changing soon. Please check back next time you need to build this support with Squid.
-
- {i} Support for this is not yet integrated with the --enable-pf-transparent build option. However the IPFW NAT component of Squid is compatible with PF. For now you can build Squid with these configure options:
+ {i} Support for this is not yet integrated with the --enable-pf-transparent build option. However the IPFW NAT component of Squid is compatible with PF. For [[Squid-3.2]] you can build Squid with these configure options:
 {{{
 --disable-pf-transparent --enable-ipfw-transparent
 }}}
+
+For [[Squid-2.7]], the default build with no particular configuration options uses the IPFW compatible method.
 
 The squid packages and port for OpenBSD 5.0 and newer are built using this method.
 
