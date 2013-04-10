@@ -107,7 +107,6 @@ A pointer:
 
 This occurs if you are using --enable-pf-transparent and do not have write access to /dev/pf. It is recommended that you change to the {{{getsockname()}}} interface using "divert-to" pf rules with the following configure options:
 
-Build Squid with these configure options:
 {{{
 --disable-pf-transparent --enable-ipfw-transparent
 }}}
