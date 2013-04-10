@@ -13,7 +13,7 @@ by Chris Benech
 
 == Outline ==
 
-The Packet Filter (PF) firewall in OpenBSD 4.7 and later offers traffic interception using several very simple methods.
+The Packet Filter (PF) firewall in OpenBSD 4.4 and later offers traffic interception using several very simple methods.
 
 This configuration example details how to integrate the PF firewall with Squid for interception of port 80 traffic using either NAT-like interception and [[Features/Tproxy4|TPROXY-like]] interception.
 
@@ -45,6 +45,8 @@ http_port 3129 tproxy
 --disable-pf-transparent --enable-ipfw-transparent
 }}}
 
+The squid packages and port for OpenBSD 5.0 and newer are built using this method.
+
 Use the '''intercept''' traffic mode flag to instruct Squid that it is receiving intercepted traffic and to use its own IP on outgoing connections (emulating NAT):
 {{{
 http_port 3129 intercept
@@ -61,7 +63,7 @@ set skip on $int_if
 set skip on $wi_if
 }}}
 
-=== OpenBSD 4.7 and later ===
+=== OpenBSD 4.4 and later ===
 
  || /!\ NOTE || This example is for IPv4-only. Squid can accept IPv6 traffic as well. A tested configuration for that is still needed. ||
 
@@ -75,9 +77,9 @@ pass in quick on $wi_if
 pass out keep state
 }}}
 
-=== OpenBSD 4.1 to 4.6 ===
+=== OpenBSD 4.1 to 4.3 ===
 
- {X} NOTE: OpenBSD older than 4.7 require [[Squid-3.2]] or older built with '''--enable-pf-transparent''' and only support the NAT interception method.
+ {X} NOTE: OpenBSD older than 4.4 requires [[Squid-3.2]] or older built with '''--enable-pf-transparent''' and only supports the NAT interception method.
 
 {{{
 # redirect only IPv4 web traffic into squid 
@@ -103,12 +105,14 @@ A pointer:
 
 === PfInterception: PF open failed: (13) Permission denied ===
 
-Recent versions of PF provide the {{{getsockname()}}} interface to retrieve NAT details.
+This occurs if you are using --enable-pf-transparent and do not have write access to /dev/pf. It is recommended that you change to the {{{getsockname()}}} interface using "divert-to" pf rules with the following configure options:
 
 Build Squid with these configure options:
 {{{
 --disable-pf-transparent --enable-ipfw-transparent
 }}}
+
+If you must use --enable-pf-transparent, change permissions on /dev/pf to allow write access to the userid running squid.
 
 == Testing ==
 
