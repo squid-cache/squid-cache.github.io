@@ -30,7 +30,7 @@
  * [[http://munin.projects.linpro.no/|Munin]] is a very flexible platform for collecting long-term performance data
  * [[http://www.cacti.net/|Cacti]] is especially suited for collecting SNMP-basd data
  * [[http://oss.oetiker.ch/rrdtool|RRDtool]] is the grandparent of F/OSS performance monitoring solutions
-
+ * [[http://samm.kiev.ua/sqstat/|SqStat]] is an alternate frontend using the cache manager interface to collect and display real-time data.
 
 == Logfile Analysis ==
 
