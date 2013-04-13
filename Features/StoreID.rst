@@ -38,8 +38,24 @@ This would allow the admin more flexibility in the way he will be able use the h
 This feature Will allow later to implement [[http://www.metalinker.org/|Metalink]] support into squid.
 
 == Squid Configuration ==
-Will come later
+A small example for StoreID refresh pattern
+{{{
+refresh_pattern ^http://(youtube|ytimg|vimeo|[a-zA-Z0-9\-]+)\.squid\.internal/.*  10080 80%  79900 override-lastmod override-expire override-lastmod ignore-no-cache ignore-private ignore-reload ignore-must-revalidate ignore-private
 
+acl rewritedoms dstdomain .dailymotion.com .video-http.media-imdb.com .c.youtube.com av.vimeo.com .dl.sourceforge.net .ytimg.com .vid.ec.dmcdn.net .videoslasher.com
+store_id_program /usr/local/squid/bin/new_format.rb
+store_id_children 40 startup=10 idle=5 concurrency=0
+store_id_access allow rewritedoms !banned_methods
+store_id_access deny all
+}}}
+An example for input and output of the helper:
+{{{
+root# /usr/local/squid/bin/new_format.rb
+
+ERR
+http://i2.ytimg.com/vi/95b1zk3qhSM/hqdefault.jpg
+OK store-id=http://ytimg.squid.internal/vi/95b1zk3qhSM/hqdefault.jpg
+}}}
 == Helper Example ==
 {{{
 #!highlight ruby
