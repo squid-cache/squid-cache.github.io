@@ -76,7 +76,7 @@ http_access deny all
 }}}
 The REQUIRED term means that any already authenticated user will match the ACL named ''foo''.
 
- . /!\ Not that '''allow''' will NOT trigger the 407 authentication denial to fetch new auth details if the user is not correctly logged in already. Some browsers will send ''anonymous'' auth details by default.
+ . /!\ Note that '''allow''' will NOT trigger the 407 authentication denial to fetch new auth details if the user is not correctly logged in already. Some browsers will send ''anonymous'' auth details by default.
 
 A slightly better way to do this and ensure the browser auth gets validated is:
 
@@ -137,7 +137,7 @@ Squid will only challenge for credentials when they are not sent and required:
 {{{
 acl mustLogin proxy_auth REQUIRED
 }}}
-this might cause a login popup. However modern browsers have a built-in password manager or access to the operating system credentials where they can locate a first attempt. This is commonly called single-sign-on.
+this might cause a login popup. However modern browsers have a built-in password manager or access to the operating system credentials where they can locate a first attempt. This is commonly called single-sign-on. It is worth noting that despite popular advertising would indicate, single-sign-on does work with any HTTP authentication mechanism since it is a client browser feature not a HTTP or proxy feature.
 
 If the browser is unable to find any initial details you WILL get the login popup. Regardless of what we do in Squid.
 
@@ -156,7 +156,7 @@ http_access deny mustLogin all
 
 == How do I prevent Authentication Loops? ==
 
-Another more subtle version os the above login looping happens when the loop is triggered by a group check rather than a username check.
+Another more subtle version of the above login looping happens when the loop is triggered by a group check rather than a username check.
 
 Assume that you use LDAP group lookups and want to deny access based on an LDAP group (e.g. only members of a certain LDAP group are allowed to reach certain web sites). In this case you may trigger re-authentication although you don't intend to. This config is likely wrong for you:
 
@@ -183,14 +183,17 @@ See also: http://www.squid-cache.org/mail-archive/squid-users/200511/0339.html
 
 
 == Does Squid cache authentication lookups? ==
-It depends on the authentication scheme; Squid does some caching when it can. Successful Basic authentication lookups are cached for one hour by default.  That means (in the worst case) its possible for someone to keep using your cache up to an hour after he has been removed from the authentication database.
+It depends on the authentication scheme; Squid does some caching when it can.
 
-You can control the expiration time with the ''SquidConf:auth_param basic credentialsttl'' configuration option.
+  {i} Note: Caching credentials has nothing to do with how often the user needs to re-authenticate himself. It is the browser who maintains the session, and re-authentication is a business between the user and his browser, not the browser and Squid. The browser authenticates on behalf of the user on every request sent to Squid. What the Squid parameters control is only how often Squid will ask the defined helper if the password is still valid.
 
-Note: This has nothing to do with how often the user needs to re-authenticate himself. It is the browser who maintains the session, and re-authentication is a business between the user and his browser, not the browser and Squid. The browser authenticates on behalf of the user on every request sent to Squid. What this parameter controls is only how often Squid will ask the defined helper if the password is still valid.
+
+ * Successful Basic authentication results are cached for one hour by default. That means (in the worst case) its possible for someone to keep using your cache up to an hour after he has been removed from the authentication database. You can control the expiration time with the ''SquidConf:auth_param basic credentialsttl'' configuration option.
+
+ * Successful NTLM and Negtiate authenticatio results are tied to the client TCP connection state and each new request is validated against the stored credentials token.
 
 == Are passwords stored in clear text or encrypted? ==
-In the basic scheme passwords is exchanged in plain text. In the other schemes only cryptographic hashes of the password is exchanges.
+In the basic scheme passwords is exchanged in plain text. In the other schemes only cryptographic hashes of the password is exchanged.
 
 Squid stores cleartext passwords in its basic authentication memory cache.
 
@@ -210,7 +213,11 @@ Yes, with limitations.
 Commonly deployed user-agents support at least one and up to four different authentication protocols (also called ''schemes'').
 
 Those schemes are explained in detail elsewhere (see [[Features/NegotiateAuthentication]] and SquidFaq/TroubleShooting). You __can__ enable more than one at any given moment, just configure the relevant SquidConf:auth_param sections for each different scheme you want to offer to the browsers.
-|| /!\ ||Due to a '''bug''' in common User-Agents (most notably Microsoft Internet Explorer) the __order__ the auth-schemes are configured __is__ relevant. RFC RFC:2617, chapter 4.6, states: ''A user agent MUST choose to use the strongest auth-scheme it understands''. Microsoft Internet Explorer instead chooses the __first__ authe-scheme (in the order they are offered) it understands ||
+
+RFC RFC:2617, chapter 4.6, states: ''A user agent MUST choose to use the strongest auth-scheme it understands''. Of course definition of ''strongest'' may vary
+
+
+|| /!\ || Due to a '''bug''' in common User-Agents (most notably some Microsoft Internet Explorer and Firefox versions) the __order__ the auth-schemes are configured __is__ relevant. Early versions of MSIE instead chooses the __first__ auth-scheme (in the order they are offered) it understands. ||
 
 
 In other words, you '''SHOULD''' use this order for the ''auth_params'' directives:
