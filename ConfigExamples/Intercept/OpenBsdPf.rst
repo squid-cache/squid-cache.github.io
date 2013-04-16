@@ -5,7 +5,7 @@
 
 = Intercepting traffic with PF on OpenBSD =
 
-by Chris Benech
+by Chris Benech and Amos Jeffries
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
@@ -69,16 +69,23 @@ set skip on $wi_if
 
 === OpenBSD 4.4 and later ===
 
- || /!\ NOTE || This example is for IPv4-only. Squid can accept IPv6 traffic as well. A tested configuration for that is still needed. ||
+On the machine running Squid, add a firewall rule similar to these...
 
-On the machine running Squid, add a firewall rule similar to this:
+For IPv6 traffic interception:
 {{{
-pass in quick log inet proto tcp to port 80 divert-to 127.0.0.1 port 3129
+pass in quick inet6 proto tcp from 2001:DB8::/32 to port www divert-to ::1 port 3129
+pass out quick inet6 from 2001:DB8::/32 divert-reply
+}}}
 
-block in
-pass in quick on $int_if
-pass in quick on $wi_if
-pass out keep state
+For IPv4 traffic interception:
+{{{
+pass in quick on inet proto tcp from 192.0.2.0/24 to port www divert-to 127.0.0.1 port 3129
+pass out quick inet from 192.0.2.0/24 divert-reply
+}}}
+
+'''IMPORTANT:''' The divert-reply rules are needed to receive replies for sockets that are bound to addresses not local to the machine. If there is no divert-reply rule, cache.log will show a line similar to:
+  {{{
+2013/04/16 14:28:37 kid1|  FD 12, 127.0.0.1 [Stopped, reason:Listener socket closed job49]: (53) Software caused connection abort
 }}}
 
 === OpenBSD 4.1 to 4.3 ===
