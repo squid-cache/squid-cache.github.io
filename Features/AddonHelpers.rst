@@ -84,6 +84,11 @@ Squid-2.7 and Squid-3.1+ support:
 Squid-3.1+ support:
  * SSL certificate generation (3.1.12.1 and later).
 
+Squid-3.4+ support:
+ * Cache object de-duplication
+  * (SquidConf:store_id_program, SquidConf:store_id_access, SquidConf:store_id_children, SquidConf:store_id_bypass)
+  * Specific feature details at [[Features/StoreID]]
+
 Proposed:
  * SSL certificate validation
 
@@ -219,6 +224,41 @@ Result line sent back to Squid:
   The URL to be used instead of the one sent by the client. If no action is required leave the URL field blank. The URL sent must be an absolute URL. ie starting with http:// or ftp:// etc.
 
 ## end urlrewrite protocol
+
+==== Store ID de-duplication ====
+
+## start storeid protocol
+URL to Store-ID mapping can be performed by helpers on the SquidConf:storeid_rewrite_program interface.
+
+WARNING: care must be taken that the URLs de-duplicated onto one shared ID are actually duplicates. Clients needing to revalidate will cause the cached object to be sourced from either of the duplicate locations. If they are not real duplicates this can randomly cause major issues with the client experience.
+
+ {i} This interface will also accept responses in the syntax delivered by [[Features/StoreUrlRewrite|Store URL-rewrite]] feature helpers written for [[Squid-2.7]]. However thst syntax is deprecated and such helpers should be upgraded as soon as possible to use this Store-ID syntax.
+
+## start storeid onlyprotocol
+
+Result line sent back to Squid:
+{{{
+[channel-ID] result kv-pair
+}}}
+
+ channel-ID::
+  When a concurrency '''channel-ID''' is received it must be sent back to Squid unchanged as the first entry on the line.
+
+ result::
+  One of the result codes:
+  || OK || Success. A new storage ID is presented for this URL. ||
+  || ERR || Success. No change for this URL. ||
+  || BH || Failure. The helper encountered a problem. ||
+
+ kv-pair::
+  One or more key=value pairs. The key names reserved on this interface for URL re-writing:
+  || message=... || reserved ||
+  || store-id=... || set the cache storage ID for this URL. ||
+  || tag=... || reserved ||
+  || ttl=... || reserved ||
+  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+
+## end storeid protocol
 
 === Authenticator ===
 
