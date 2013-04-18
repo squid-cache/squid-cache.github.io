@@ -40,9 +40,10 @@ This feature Will allow later to implement [[http://www.metalinker.org/|Metalink
 == Squid Configuration ==
 A small example for StoreID refresh pattern
 {{{
-refresh_pattern ^http://(youtube|ytimg|vimeo|[a-zA-Z0-9\-]+)\.squid\.internal/.*  10080 80%  79900 override-lastmod override-expire override-lastmod ignore-no-cache ignore-private ignore-reload ignore-must-revalidate ignore-private
+refresh_pattern ^http://(youtube|ytimg|vimeo|[a-zA-Z0-9\-]+)\.squid\.internal/.*  10080 80%  79900 override-lastmod override-expire ignore-reload ignore-must-revalidate ignore-private
 
 acl rewritedoms dstdomain .dailymotion.com .video-http.media-imdb.com .c.youtube.com av.vimeo.com .dl.sourceforge.net .ytimg.com .vid.ec.dmcdn.net .videoslasher.com
+
 store_id_program /usr/local/squid/bin/new_format.rb
 store_id_children 40 startup=10 idle=5 concurrency=0
 store_id_access allow rewritedoms !banned_methods
@@ -210,13 +211,12 @@ Patterns such for sourceforge CDN network or linux distributions Repositories mi
 == How do I make my own? ==
 
 The helper program must read URLs (one per line) on standard input,
-and write rewritten URLs or blank lines on standard output. Squid writes
-additional information after the URL which a redirector can use to make
-a decision.
+and write new unique identifiers (ID) or ERR lines on standard output. Squid writes
+additional information after the URL which a helper can use to make a decision.
 
 <<Include(Features/AddonHelpers,,3,from="^## start urlhelper protocol$", to="^## end urlhelper protocol$")>>
 
-<<Include(Features/AddonHelpers,,3,from="^## start urlrewrite onlyprotocol$", to="^## end urlrewrite protocol$")>>
+<<Include(Features/AddonHelpers,,3,from="^## start storeid onlyprotocol$", to="^## end storeid protocol$")>>
 
 ----
 CategoryFeature
