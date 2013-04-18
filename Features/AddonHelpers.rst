@@ -232,8 +232,6 @@ URL to Store-ID mapping can be performed by helpers on the SquidConf:storeid_rew
 
 WARNING: care must be taken that the URLs de-duplicated onto one shared ID are actually duplicates. Clients needing to revalidate will cause the cached object to be sourced from either of the duplicate locations. If they are not real duplicates this can randomly cause major issues with the client experience.
 
- {i} This interface will also accept responses in the syntax delivered by [[Features/StoreUrlRewrite|Store URL-rewrite]] feature helpers written for [[Squid-2.7]]. However thst syntax is deprecated and such helpers should be upgraded as soon as possible to use this Store-ID syntax.
-
 ## start storeid onlyprotocol
 
 Result line sent back to Squid:
@@ -257,6 +255,8 @@ Result line sent back to Squid:
   || tag=... || reserved ||
   || ttl=... || reserved ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+
+ {i} This interface will also accept responses in the syntax delivered by [[Features/StoreUrlRewrite|Store URL-rewrite]] feature helpers written for [[Squid-2.7]]. However thst syntax is deprecated and such helpers should be upgraded as soon as possible to use this Store-ID syntax.
 
 ## end storeid protocol
 
