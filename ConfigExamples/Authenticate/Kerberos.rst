@@ -150,16 +150,16 @@ __Wireshark__ traffic on port 88 (Kerberos) to identify Kerberos errors. (KRB5KD
   * From Unix PC using kinit or pam to Unix Key Distribution Centre (KDC) as user userid@DOMAIN.COM
   * Any of the above will create an AS Request/AS Reply exchange<<BR>><<BR>> <<BR>> {{attachment:Squid-1.jpeg}}
 
- 1. User requests URL from squid
+ 1. User requests URL from Squid
   * Send GET or PUT or any other request via Squid
   * Squid (if setup correctly) replies with Proxy-Authenticate: Negotiate
    . {{attachment:Squid-3.jpeg}}
 
  1. Desktop attempts to get a Service ticket HTTP/<squid-fqdn> from KDC as user < userid@DOMAIN.COM > {{attachment:Squid-2.jpeg}}
- 1. Desktop replies<<BR>>
-  * With Proxy-Authenticate: Negotiate <base64 encoded Kerberos token> if previous step 3. was successful
+ 1. Desktop sends request to Squid
+  * With Proxy-Authentication: Negotiate <base64 encoded Kerberos token> if previous step 3. was successful
 
-  * With Proxy-Authenticate: Negotiate <base64 encoded NTLM token> if previous step 3. was not successful (not further discussed here. See NTLM documentation)
+  * With Proxy-Authentication: Negotiate <base64 encoded NTLM token> if previous step 3. was not successful (not further discussed here. See NTLM documentation)
    <<BR>> {{attachment:Squid-9.jpeg}} <<BR>>
  1. Squid verifies Kerberos ticket with help of keytab and replies after checking any additional access control settings<<BR>>The ticket contains the the user detail < userid@DOMAIN.COM > and squid can do authorisation decision based on it {{attachment:Squid-10.jpeg}} <<BR>><<BR>>
  1. Step 2., 4. and 5. continue until the Kerberos cache with the received AS and TGS replies expires after about 8 hours (This depends on your kdc settings and/or your kinit options) and step 1. and 3 need to be done again which is usually transparent on Windows but may require a new kinit on Unix.<<BR>>
