@@ -14,7 +14,7 @@
  * '''Version''': v3.4
  * '''Priority''': 2
  * '''Developer''': AlexRousskov and Dmitry Kurochkin 
- * '''More''': squid-dev discussions in [[http://www.squid-cache.org/mail-archive/squid-dev/201208/0178.html|August]] and [[http://www.squid-cache.org/mail-archive/squid-dev/201209/0021.html|September]] 2012
+ * '''More''': lp [[https://code.launchpad.net/~measurement-factory/squid/ftp-gw|branch]]; squid-dev discussions in [[http://www.squid-cache.org/mail-archive/squid-dev/201208/0178.html|August]] and [[http://www.squid-cache.org/mail-archive/squid-dev/201209/0021.html|September]] 2012
 
 
 = Functionality =
