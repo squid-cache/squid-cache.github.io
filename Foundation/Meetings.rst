@@ -12,7 +12,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Upcoming Meeting ==
 
- * Date: '''05:00 2013-04-27 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2013-05-26 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
@@ -24,7 +24,6 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Agenda approval.
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
- 1. Review of minutes publication format.
 
  1. Next meeting scheduling.
  1. Open floor:
@@ -39,22 +38,19 @@ Most of the Board discussions can be open to the public and your constructive pa
  3. Agenda bashing.
  4. Agenda approval.
  5. Last meeting minutes approval.
-
  6. Review of action points from last meeting.
- 7. Review of minutes publication format.
-
+ 7. Review of minutes publication and format.
  8. Review Donate page website update.
  9. Review Donate PayPal page website update.
  10. Closing 2012 books, filing a tax return.
  11. Review of outstanding Board announcements.
  12. Sysadmin pilot status.
  13. Election of new Directors.
- 14. Squid support services revamp.
+ 14. Squid support services page revamp.
  15. Sponsorship program revamp.
-
  16. Next meeting scheduling.
  17. Open floor:
-
+  * copyright for distribution of SN.png
 
 == Action Points ==
 
