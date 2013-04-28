@@ -57,6 +57,13 @@ Most of the Board discussions can be open to the public and your constructive pa
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
 || - || anyone || email confirmation regarding meeting 2 days in advance || in progress ||
 || ||
+|| #6 || AmosJeffries, AlexRousskov || split services page in two pages, one with active entries who have earned service points, and one secondary page with the stale entries who have not earned any service points in last year || not done ||
+|| #6 || ?? || try to expand webmaster group with more people that can help in keeping structure and maintainability of our web pages and wiki || not done ||
+|| #6 || AmosJeffries || draft a public announcement that the board is looking for one additional Foundation director and briefly what the expectations and duties are || not done ||
+|| #6 || AmosJeffries || announce early to core@ that we are looking to expand the board of directors with one more position || done ||
+|| #6 || HenrikNordstrom || invite & train at least one more sysadmin starting immediately || not done ||
+|| #6 || AlexRousskov || draft Foundation existence and non-profit announcement for review in core@ || not done ||
+|| #6 || HenrikNordstrom, AmosJeffries || write a public board report on the business of the Foundation covering the last two years || not done ||
 || #6 || HenrikNordstrom || document pending sysadmin tasks in bugzilla || not done ||
 || ||
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
