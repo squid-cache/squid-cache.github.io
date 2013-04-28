@@ -25,37 +25,34 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Review of action points from last meeting.
  1. Review of minutes publication format.
 
- 1. Review Donate page website update.
- 1. Review Donate PayPal page website update.
- 1. Review of outstanding Board announcements.
- 1. Sysadmin pilot status.
- 1. Election of new Directors.
- 1. Closing 2012 books, filing a tax return.
- 1. Squid support services revamp.
- 1. Sponsorship program revamp.
-
  1. Next meeting scheduling.
  1. Open floor:
 
 
 ==== Agenda of Last Meeting ====
 
-'''Meeting #5.'''
+'''Meeting #6.'''
 
  1. Opening of the meeting
  1. Selection of meeting officials
+
  1. Agenda bashing.
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
+ 1. Review of minutes publication format.
+
+ 1. Review Donate page website update.
+ 1. Review Donate PayPal page website update.
+ 1. Closing 2012 books, filing a tax return.
+ 1. Review of outstanding Board announcements.
  1. Sysadmin pilot status.
- 1. Sponsorship program:
-  a. public acknowledgements
-  a. significant contributions other than cash or code
-  a. contribution style (accumulated or individual transaction)
- 1. IRCache proposal v2.
+ 1. Election of new Directors.
+ 1. Squid support services revamp.
+ 1. Sponsorship program revamp.
+
  1. Next meeting scheduling.
  1. Open floor:
-  a. [[Squid-3.2]] stable release timetable
+
 
 == Action Points ==
 
