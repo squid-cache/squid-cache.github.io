@@ -21,6 +21,7 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing.
+ 1. Agenda approval.
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
  1. Review of minutes publication format.
@@ -34,24 +35,25 @@ Most of the Board discussions can be open to the public and your constructive pa
 '''Meeting #6.'''
 
  1. Opening of the meeting
- 1. Selection of meeting officials
+ 2. Selection of meeting officials
+ 3. Agenda bashing.
+ 4. Agenda approval.
+ 5. Last meeting minutes approval.
 
- 1. Agenda bashing.
- 1. Last meeting minutes approval.
- 1. Review of action points from last meeting.
- 1. Review of minutes publication format.
+ 6. Review of action points from last meeting.
+ 7. Review of minutes publication format.
 
- 1. Review Donate page website update.
- 1. Review Donate PayPal page website update.
- 1. Closing 2012 books, filing a tax return.
- 1. Review of outstanding Board announcements.
- 1. Sysadmin pilot status.
- 1. Election of new Directors.
- 1. Squid support services revamp.
- 1. Sponsorship program revamp.
+ 8. Review Donate page website update.
+ 9. Review Donate PayPal page website update.
+ 10. Closing 2012 books, filing a tax return.
+ 11. Review of outstanding Board announcements.
+ 12. Sysadmin pilot status.
+ 13. Election of new Directors.
+ 14. Squid support services revamp.
+ 15. Sponsorship program revamp.
 
- 1. Next meeting scheduling.
- 1. Open floor:
+ 16. Next meeting scheduling.
+ 17. Open floor:
 
 
 == Action Points ==
@@ -59,14 +61,12 @@ Most of the Board discussions can be open to the public and your constructive pa
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
 || - || anyone || email confirmation regarding meeting 2 days in advance || in progress ||
 || ||
-|| #5 || everyone || move pending sysadmin tasks to bugzilla || in progress ||
+|| #6 || HenrikNordstrom || document pending sysadmin tasks in bugzilla || not done ||
+|| ||
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
 || #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
-|| #5 || HenrikNordstrom || use WhoWeAre for documenting who is who in the sysadmin team. || started ||
 || #5 || AmosJeffries || document on sponsorship page that non-monetary is possible by contacting the board. || not done ||
 || #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || not done ||
-|| #5 || AmosJeffries || review SPONSORS to order it as reverse cronological with active sponsors at top. || done ||
-|| #5 || AmosJeffries || finalize [[squid-3.2]] for stable release || done ||
 || ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
@@ -77,8 +77,6 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
 || ||
 || #2 || HenrikNordstrom || sysadmin discussions with candidate || not done ||
-|| #2 || HenrikNordstrom , AmosJeffries || other (end-of-year) documents || not done ||
-|| #2 || HenrikNordstrom , AmosJeffries || document process for Board meetings || not done ||
 
 == Past Meetings ==
 
