@@ -22,15 +22,20 @@ We need thin and clean HTTP server code that makes sense to developers. Clear in
 
 Affected client_side* classes may be renamed to reflect the fact that they implement an HTTP server. This code communicates with Squid clients and, hence, has been called ''client side''.
 
-=== Progress ==
+=== Progress ===
 
 Done:
- * Separated TCP connection setup code into Comm::TcpAcceptor
+ * Comm::TcpAcceptor separated out
+  - class to handle the Comm level operations of accept() and following socket state lookups
  * Defined the scope and purpose for ConnStateData
+  - class to manage a client TCP connection.
+  - reading HTTP/1.1 frames (request headers block, body blocks)
+  - writing HTTP/1.1 frames (response headers block, 1xx headers block, body blocks)
+  - generate Http{arser, ClientSocketContext and other AsyncJobs to operate on teh above frames types as needed
 
 In Progress:
  * Create a master transaction state object for relaying data easily
- * Refactor ConnStateData
+ * Refactor ConnStateData to meet the above criteria
 
 Future steps:
  * Define the scope and purpose for ClientSocketContext
