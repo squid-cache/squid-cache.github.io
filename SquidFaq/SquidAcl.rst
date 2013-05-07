@@ -351,6 +351,7 @@ http_access deny PornSites
 On the other hand, if the list contains origin server hostnames, simply change ''url_regex'' to ''dstdomain'' in this example.
 
 == Does anyone have a ban list of porn sites and such? ==
+ * The [[http://www.squidblacklist.org/]] site contains a number of free blacklists designed specifically for use in Squid.
  * The [[http://www.squidguard.org/blacklists.html|SquidGuard]] redirector folks have links to some lists.
  * The maintainer of the free [[http://www.urlfilterdb.com/|ufdbGuard]] redirector has a commercial URL database.
  * Bill Stearns maintains the [[http://www.stearns.org/sa-blacklist/|sa-blacklist]] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
