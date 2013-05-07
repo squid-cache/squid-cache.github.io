@@ -10,7 +10,7 @@ Creating a personal account is needed to subscribe for page change notifications
 
 We are looking forward to lift these restrictions as more antispam features will be added to the wiki engine.
 ----
-For wiki admins: you can use the <<Action(newaccount)>> action, and an online [[https://www.random.org/passwords/?num=1&len=8&format=html&rnd=new|random password generator]]. Please use !CamelCase usernames if possible.
+For wiki admins: you can use the <<Action(newaccount)>> action, and an online [[https://www.random.org/passwords/?num=1&len=8&format=html&rnd=new|random password generator]]. Please use !CamelCase usernames if possible. After the account is created you probably want to add the user to the SquidWikiEditorsGroup as well.
 ----
 Discuss this page using the "Discussion" link in the main menu
 
