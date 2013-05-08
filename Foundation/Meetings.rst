@@ -25,6 +25,10 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
 
+ 1. Squid merchandising
+ 1. IRCache progress
+ 1. sysadmin progress
+
  1. Next meeting scheduling.
  1. Open floor:
 
@@ -65,25 +69,25 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #6 || AlexRousskov || draft Foundation existence and non-profit announcement for review in core@ || not done ||
 || #6 || HenrikNordstrom, AmosJeffries || write a public board report on the business of the Foundation covering the last two years || not done ||
 || #6 || HenrikNordstrom || document pending sysadmin tasks in bugzilla || not done ||
+|| #6 || AmosJeffries || minutes for meeting #6 written and circulated || done ||
 || ||
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
 || #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
 || #5 || AmosJeffries || document on sponsorship page that non-monetary is possible by contacting the board. || not done ||
 || #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || not done ||
+|| #5 || AmosJeffries || minutes for meeting #5 written and circulated || not done ||
 || ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #3 written and circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #4 written and circulated || not done ||
 || ||
-|| #3 || AmosJeffries || donation page text || done. awaiting board action signoff for publishing. ||
 || #3 || AmosJeffries || Copyright discussion on squid-core || not done ||
-|| ||
-|| #2 || HenrikNordstrom || sysadmin discussions with candidate || not done ||
 
 == Past Meetings ==
 
 ||'''ID'''||'''Date'''||'''Location'''||'''Minutes'''||
+||#6||2013-04-28||IRC||TBD||
 ||#5||2012-07-26||IRC||TBD||
 ||#4||2012-06-16||IRC||TBD||
 ||#3||2012-05-17||IRC||TBD||
