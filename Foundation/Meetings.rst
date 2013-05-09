@@ -74,7 +74,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
 || #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
 || #5 || AmosJeffries || document on sponsorship page that non-monetary is possible by contacting the board. || not done ||
-|| #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || not done ||
+|| #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || done ||
 || #5 || AmosJeffries || minutes for meeting #5 written and circulated || not done ||
 || ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
