@@ -25,6 +25,7 @@ Basic new features in 3.4:
  * No-lookup DNS ACLs
  * SquidConf:note directive for annotating transactions
  * Support OK/ERR/BH response codes and kv-pair options from any helper
+ * SquidConf:spoof_client_ip directive for managing TPROXY spoofing
 
 
 The intention with this series is to improve the upgrade path and concentrate on further portability improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
