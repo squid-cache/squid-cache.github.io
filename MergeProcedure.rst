@@ -25,9 +25,9 @@ Other developers are often able to provide projects for anyone just wanting to c
 === Submission Format ===
 Submissions are emailed to '''squid-dev''' for merging, one submission per post. The submission email must contain:
 
- * '''Subject''': The name of the new feature or a brief change description, prefixed with [MERGE] or [PATCH].
+ * '''Subject''': The name of the new feature or a brief change description, prefixed with [PATCH].
  * '''Main body''': A full description of the new feature or change. The description guides those reading your code. Its verbatim copy is usually used as the commit message if your submission is accepted.
- * '''Attachment''': A bzr [MERGE] bundle or a manual [PATCH] in a unified diff format.
+ * '''Attachment''': A bzr merge bundle or a manual patch in a unified diff format.
 
 === Suitability for Merge ===
 Please try to not commit unfinished stuff needing more code to actually work the way intended. HEAD is meant for sharing working code updates with earlybird testers. Development is supposed to done on branches before merging.
