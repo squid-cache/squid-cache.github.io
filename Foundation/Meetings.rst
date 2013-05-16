@@ -66,14 +66,14 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #6 || AmosJeffries || draft a public announcement that the board is looking for one additional Foundation director and briefly what the expectations and duties are || not done ||
 || #6 || AmosJeffries || announce early to core@ that we are looking to expand the board of directors with one more position || done ||
 || #6 || HenrikNordstrom || invite & train at least one more sysadmin starting immediately || not done ||
-|| #6 || AlexRousskov || draft Foundation existence and non-profit announcement for review in core@ || not done ||
+|| #6 || AlexRousskov || draft Foundation existence and non-profit announcement for review in core@ || done ||
 || #6 || HenrikNordstrom, AmosJeffries || write a public board report on the business of the Foundation covering the last two years || not done ||
 || #6 || HenrikNordstrom || document pending sysadmin tasks in bugzilla || not done ||
 || #6 || AmosJeffries || minutes for meeting #6 written and circulated || done ||
 || ||
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
 || #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
-|| #5 || AmosJeffries || document on sponsorship page that non-monetary is possible by contacting the board. || not done ||
+|| #5 || AmosJeffries || document on sponsorship page that non-monetary is possible by contacting the board. || done ||
 || #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || done ||
 || #5 || AmosJeffries || minutes for meeting #5 written and circulated || not done ||
 || ||
