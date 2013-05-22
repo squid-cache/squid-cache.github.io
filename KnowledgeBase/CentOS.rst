@@ -27,6 +27,36 @@ DAG and RPMforge repositories appear to no longer contain any files. Other sourc
 
 
 ## 4  = indents required for BinaryPackages page include
+==== Squid-3.3 ====
+
+ * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
+
+{{{
+[squid]
+name=Squid repo for CentOS Linux 6 - $basearch
+baseurl=http://www1.ngtech.co.il/rpm/centos/6/$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=0
+}}}
+
+or
+
+{{{
+[squid]
+name=Squid repo for CentOS Linux 6 - $basearch
+baseurl=http://www2.ngtech.co.il/rpm/centos/6/$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=0
+}}}
+
+Install Procedure:
+{{{
+yum update
+yum install squid
+}}}
+
 ==== Squid-2.6 ====
 
 Install Procedure:
