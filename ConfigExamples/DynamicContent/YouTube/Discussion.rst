@@ -26,6 +26,8 @@ http://www.youtube.com/watch?v=gGJvDEDN9mE
 
 http://freevideolectures.com/Course/2712/Human-Computer-Interaction-Seminar-2009-2010/9
 
+http://www1.ngtech.co.il/squid/How%20Dynamic%20Content%20Affects%20the%20Way%20People%20Find%20Online.mp4
+
 -- [[Eliezer Croitoru]] <<DateTime(2013-05-23T09:07:44+0200)>>
 
 ----
