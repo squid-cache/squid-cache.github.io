@@ -19,6 +19,7 @@ See [[Features/StoreID]]
 
 -- AdrianChadd <<DateTime(2008-09-11T16:17:06+0800)>>
 
+ . <<Anchor(C2)>>
 A way to show you what Dynamic Content is really 
 
 http://www.youtube.com/watch?v=gGJvDEDN9mE
