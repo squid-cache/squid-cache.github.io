@@ -17,6 +17,10 @@ See [[Features/StoreUrlRewrite]]
 
 -- AdrianChadd <<DateTime(2008-09-11T16:17:06+0800)>>
 
+A way to show you what Dynamic Content is really http://freevideolectures.com/Course/2712/Human-Computer-Interaction-Seminar-2009-2010/9
+
+-- [[Eliezer Croitoru]] <<DateTime>>
+
 ----
 ===== Knowing what to cache =====
 My example is my favorite band;
