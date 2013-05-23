@@ -4,6 +4,8 @@
 #language en
 See [[Features/StoreUrlRewrite]]
 
+See [[Features/StoreID]]
+
 ## Please begin your contribution with "----" and an anchor for C# (incrementing the number for each comment) and end it with "-- AdrianChadd <<DateTime(2008-09-11T16:17:06+0800)>>"
 ## this will help for references. Append to discussion at the bottom of the page.
 ## You can quote using
