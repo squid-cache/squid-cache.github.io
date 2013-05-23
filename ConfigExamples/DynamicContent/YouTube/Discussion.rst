@@ -19,7 +19,7 @@ See [[Features/StoreUrlRewrite]]
 
 A way to show you what Dynamic Content is really http://freevideolectures.com/Course/2712/Human-Computer-Interaction-Seminar-2009-2010/9
 
--- [[Eliezer Croitoru]] <<DateTime>>
+-- [[Eliezer Croitoru]] <<DateTime(2013-05-23T09:07:44+0200)>>
 
 ----
 ===== Knowing what to cache =====
