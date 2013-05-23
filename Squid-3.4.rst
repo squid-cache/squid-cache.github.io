@@ -28,7 +28,7 @@ Basic new features in 3.4:
  * SquidConf:spoof_client_ip directive for managing TPROXY spoofing
 
 
-The intention with this series is to improve the upgrade path and concentrate on further portability improvements. Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
+The intention with this series is to improve portability and stability. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
 
 Packages of what will become squid 3.4 source code are available at
 http://www.squid-cache.org/Versions/v3/3.HEAD/
