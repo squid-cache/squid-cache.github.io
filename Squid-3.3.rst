@@ -16,6 +16,10 @@ Additions are limited to:
 ## bugs down to major (all earlier releases and 'unknowns')
 ## . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&product=Website&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
 
+Features ported from 2.7 in this release:
+
+ * external acl %ACL and %DATA tags (from 3.3.5)
+
 Basic new features in 3.3:
 
  * New helper to log access.log to an SQL Database
