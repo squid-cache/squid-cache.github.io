@@ -16,7 +16,7 @@ The set of new Squid 3.4 features and release timeline is determined by submissi
 
 Features ported from 2.7 in this release:
 
- * StoreId - a redesign of the store-URL rewrite feature from 2.7.
+ * [[Features/StoreID|Store ID]] - a redesign of the store-URL rewrite feature from 2.7.
 
 Basic new features in 3.4:
 
