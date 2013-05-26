@@ -12,7 +12,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Upcoming Meeting ==
 
- * Date: '''05:00 2013-05-26 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2013-06-29 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
@@ -24,41 +24,38 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
 
- 1. Squid merchandising
- 1. IRCache progress
- 1. sysadmin progress
-
  1. Next meeting scheduling.
  1. Open floor:
 
 
 ==== Agenda of Last Meeting ====
 
-'''Meeting #6.'''
+'''Meeting #7.'''
 
- 1. Opening of the meeting
- 2. Selection of meeting officials
- 3. Agenda bashing.
- 4. Agenda approval.
- 5. Last meeting minutes approval.
- 6. Review of action points from last meeting.
- 7. Review of minutes publication and format.
- 8. Review Donate page website update.
- 9. Review Donate PayPal page website update.
- 10. Closing 2012 books, filing a tax return.
- 11. Review of outstanding Board announcements.
- 12. Sysadmin pilot status.
- 13. Election of new Directors.
- 14. Squid support services page revamp.
- 15. Sponsorship program revamp.
- 16. Next meeting scheduling.
- 17. Open floor:
-  * copyright for distribution of SN.png
+ 1. Opening of the meeting.
+ 1. Selection of meeting officials.
+ 1. Agenda bashing.
+ 1. Agenda approval.
+ 1. Last meeting minutes approval.
+ 1. Review of action points from last meeting.
+ 1. Squid merchandising
+ 1. IRCache progress
+ 1. sysadmin progress
+ 1. Next meeting scheduling.
+ 1. Open floor:
+  * Reported Squid GPL license violation
+
 
 == Action Points ==
 
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
-|| - || anyone || email confirmation regarding meeting 2 days in advance || in progress ||
+|| - || anyone || email confirmation regarding meeting 2 days in advance || not done ||
+|| ||
+|| #7 || HenrikNordstrom || Send Foundation announce to squid-announce, squid-users, and blog post || not done ||
+|| #7 || HenrikNordstrom || discuss the Foundation merchandise shop status with ex-developer to have it moved to the Foundation. || not done ||
+|| #7 || HenrikNordstrom || post to board@ about sysadmin progress by 2013-06-02. || not done ||
+|| #7 || AmosJeffries || publish meeting #6 minutes || done ||
+|| #7 || AmosJeffries || contact the company accused of GPL violations to learn more about their Squid-based product distribution. || not done ||
 || ||
 || #6 || AmosJeffries, AlexRousskov || split services page in two pages, one with active entries who have earned service points, and one secondary page with the stale entries who have not earned any service points in last year || not done ||
 || #6 || ?? || try to expand webmaster group with more people that can help in keeping structure and maintainability of our web pages and wiki || not done ||
@@ -81,7 +78,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Past Meetings ==
 
 ||'''ID'''||'''Date'''||'''Location'''||'''Minutes'''||
-||#6||2013-04-28||IRC||TBD||
+||#6||2013-04-28||IRC||http://www.squid-cache.org/Foundation/archive/2013/2013-05-29_board-meeting-6.html||
 ||#5||2012-07-26||IRC||TBD||
 ||#4||2012-06-16||IRC||TBD||
 ||#3||2012-05-17||IRC||TBD||
