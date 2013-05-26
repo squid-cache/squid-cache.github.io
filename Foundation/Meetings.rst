@@ -18,10 +18,9 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ==== Draft Agenda ====
 
- 1. Opening of the meeting
- 1. Selection of meeting officials
- 1. Agenda bashing.
- 1. Agenda approval.
+ 1. Opening of the meeting.
+ 1. Selection of meeting officials.
+ 1. Agenda bashing and approval.
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
 
@@ -63,18 +62,13 @@ Most of the Board discussions can be open to the public and your constructive pa
 || ||
 || #6 || AmosJeffries, AlexRousskov || split services page in two pages, one with active entries who have earned service points, and one secondary page with the stale entries who have not earned any service points in last year || not done ||
 || #6 || ?? || try to expand webmaster group with more people that can help in keeping structure and maintainability of our web pages and wiki || not done ||
-|| #6 || AmosJeffries || draft a public announcement that the board is looking for one additional Foundation director and briefly what the expectations and duties are || not done ||
-|| #6 || AmosJeffries || announce early to core@ that we are looking to expand the board of directors with one more position || done ||
+|| #6 || AmosJeffries || draft a public announcement that the board is looking for one additional Foundation director and briefly what the expectations and duties are || in progress ||
 || #6 || HenrikNordstrom || invite & train at least one more sysadmin starting immediately || not done ||
-|| #6 || AlexRousskov || draft Foundation existence and non-profit announcement for review in core@ || done ||
 || #6 || HenrikNordstrom, AmosJeffries || write a public board report on the business of the Foundation covering the last two years || not done ||
 || #6 || HenrikNordstrom || document pending sysadmin tasks in bugzilla || not done ||
-|| #6 || AmosJeffries || minutes for meeting #6 written and circulated || done ||
 || ||
 || #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
 || #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
-|| #5 || AmosJeffries || document on sponsorship page that non-monetary is possible by contacting the board. || done ||
-|| #5 || AmosJeffries || document on sponsorship page that official sponsorship levels have to be requested. || done ||
 || #5 || AmosJeffries || minutes for meeting #5 written and circulated || not done ||
 || ||
 || #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
