@@ -21,12 +21,16 @@ Features ported from 2.7 in this release:
 Basic new features in 3.4:
 
  * [[Features/SslServerCertValidator|SSL server certificate validator]]
- * New server_ssl_cert_fingerprint SquidConf:acl type
- * No-lookup DNS ACLs
  * SquidConf:note directive for annotating transactions
- * Support OK/ERR/BH response codes and kv-pair options from any helper
+ * [[Features/Tproxy4|TPROXY]] Support for BSD systems
  * SquidConf:spoof_client_ip directive for managing TPROXY spoofing
-
+ * Various Access Control updates:
+  * '''server_ssl_cert_fingerprint''' type to match certificate fingerprints
+  * '''note''' type to match annotations for a transaction.
+  * '''all-of''' and '''any-of''' types for complex configurations.
+  * No-lookup DNS for certain SquidConf:acl types.
+ * Support OK/ERR/BH response codes and kv-pair options from any helper
+ * Improved pipeline queue configuration.
 
 The intention with this series is to improve portability and stability. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s6
 
