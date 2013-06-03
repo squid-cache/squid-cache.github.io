@@ -1,12 +1,20 @@
 #language en
+
+= Access Controls in Squid =
+
 <<TableOfContents>>
 
 ##begin
+== The Basics: How the parts fit together ==
 Squid's access control scheme is relatively comprehensive and difficult for some people to understand.  There are two different components: ''ACL elements'', and ''access lists''.  An access list consists of an ''allow'' or ''deny'' action followed by a number of ACL elements.
 
-== ACL elements ==
-|| {i} ||The information here is current for version 3.1 see SquidConf:acl for current configuration guide. ||
+When loading the configuration file Squid processes all the SquidConf:acl lines (directives) into memory as tests which can be performed against any request transaction. Types of tests are outlined in the next section ''ACL Elements''. By themselves these tests do nothing. For example; the word "Sunday" matches a day of the week, but does not indicate which day of the week you are reading this.
 
+To process a transaction another type of line is used. As each processing action needs to take place a check in run to test what action or limitations are to occur for the transaction. The types of checks are outlined in the next section ''Access Lists'' followed by details of how the checks operate.
+
+
+== ACL elements ==
+|| {i} ||The information here is current for version 3.1 see SquidConf:acl for the latest configuration guide list of available types. ||
 
 Squid knows about the following types of ACL elements:
 
