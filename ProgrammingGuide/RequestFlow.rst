@@ -3,11 +3,24 @@
 
 = Flow of a Typical Request =
 
- * A client connection is accepted by the ''client-side socket support'' and parsed, or is directly created via ''clientBeginRequest''.
+''NOTE: this information is a work in progress. Numbered entries have been updated for Squid-3, others
 
- * The access controls are checked.  The client-side-request builds an ACL state data structure and registers a callback function for notification when access control checking is completed.
+ 1. A client connection is accepted by the ''Comm::TcpAcceptor'', passed to ''client-side socket support'' and parsed,
+  * or an internal Squid request is directly created via ''clientBeginRequest''.
 
- * After the access controls have been verified, the request may be redirected. 
+ 1. if the traffic was intercepted, the Host: header validation is performed.
+
+ 1. The SquidConf:http_access controls are checked. The client-side-request builds an ACL state data structure and registers a callback function for notification when access control checking is completed.
+  * authentication may be performed
+  * deny_info redirection may be performed
+
+ 1. ICAP REQMOD adaptation takes place.
+  * an ICAP response may be produced with any HTTP status.
+
+ 1. URL-rewrite adaptation takes place.
+  * an HTTP redirect may take place using 3xx HTTP status codes.
+
+'' the following information is outdated and seems to apply to Squid-2''
 
  * The client-side-request is forwarded up the client stream to ''!GetMoreData'' which looks for the requested object in the cache, and or Vary: versions of the same. If is a cache hit, then the client-side registers its interest in the  ''!StoreEntry''. Otherwise, Squid needs to forward the request, perhaps with an If-Modified-Since header.
 
@@ -34,7 +47,7 @@
 
 
 At the core of Squid is the {{{select(2)}}} system call.
-Squid uses {{{select()}}} or {{{poll(2)}}} or {{{kqueue}}} or {{{epoll}}}to process I/O on all open file descriptors.  Hereafter we'll only use ''select'' to refer generically to either system call.
+Squid uses {{{select()}}} or {{{poll(2)}}} or {{{kqueue}}} or {{{epoll}}} or {{/dev/poll}} to process I/O on all open file descriptors.  Hereafter we'll only use ''select'' to refer generically to either system call.
 
 
 The {{{select()}}} and {{{poll()}}} system calls work by
