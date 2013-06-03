@@ -14,10 +14,10 @@ Install Procedure:
 {{{
 pkg_add squid
 }}}
-For 5.3 or -current snapshots, on most machine architectures you will be offered a choice of 3.2 or 2.7STABLE9.
+For 5.3, on most machine architectures you will be offered a choice of 3.2 or 2.7STABLE9. For -current, 3.3 replaces 3.2.
 
-==== Squid-3.2 ====
-On recent versions of OpenBSD, the following will build Squid 3.2 from ports, create a package and install it:
+==== Squid-3.2/3.3 ====
+On OpenBSD 5.3, the following will build Squid 3.2 from ports, create a package and install it:
 
 {{{
 cd /usr/ports/www/squid
@@ -25,9 +25,10 @@ make install
 }}}
 
 On older versions of OpenBSD, the above commands will build squid 2.7STABLE9.
+On -current (or 5.4+ when released), the above commands will build squid 3.3.
 
 ==== Squid-2.7 ====
-On recent versions of OpenBSD, the following will build squid 2.7STABLE9 for ports, create a package and install it:
+On OpenBSD 5.3+, the following will build squid 2.7STABLE9 for ports, create a package and install it:
 
 {{{
 cd /usr/ports/www/squid27
