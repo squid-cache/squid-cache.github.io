@@ -612,18 +612,20 @@ request size [key-pair]
  key-pair::
   The supported key=value pairs are:
   || domain || FQDN host name or the domain ||
-  || errors || A comma separated list of the detected openSSL certificate validation errors ||
   || cert_'''''ID''''' || Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are||
+  || error_name_'''''ID''''' || The openSSL certificate validation error. The ID is an index number for this error ||
+  || error_name_'''''ID''''' || The ID of the certificate which caused error_name_ID ||
 
 Example request:
 {{{
 cert_validate 1519 host=dmz.example-domain.com
-errors=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
 cert_0=-----BEGIN CERTIFICATE-----
 MIID+DCCA2GgAwIBAgIJAIDcHRUxB2O4MA0GCSqGSIb3DQEBBAUAMIGvMQswCQYD
 ...
 YpVJGt5CJuNfCcB/
 -----END CERTIFICATE-----
+error_name_0=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
+error_cert_0=cert0
 }}}
 
 Result line sent back to Squid:
