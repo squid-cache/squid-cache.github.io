@@ -30,18 +30,17 @@ This causes many issues which are visible:
  * request denials when ACLs being checked disappear.
 
 Related Bug reports:
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=219
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=498
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=513
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=537
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1545
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1946
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=2110
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=2460
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=2549
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=2570
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=2586
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=2626
+ * Bug:219
+ * Bug:513
+ * Bug:537
+ * Bug:1545
+ * Bug:1946
+ * Bug:2110
+ * Bug:2460
+ * Bug:2570
+  . A workaround is in use for memory-only caches, but this keeps resurfacing. Lately rock type dirs with SMP diskers is causing it again.
+  . We need to obsolete SquidConf:wccp2_rebuild_wait.
+ * Bug:2626
 
 == State up to Squid-3.1 ==
 
