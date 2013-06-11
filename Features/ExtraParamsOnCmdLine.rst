@@ -19,7 +19,7 @@
  * '''More''': Bug Bug:2549
 
 = Details =
-There is a request by Stanislav Sukholet to support specifying the http_port on the command-line, to better help parametrize system startup scripts. HenrikNordström suggests that there are multiple extra arguments to the http_port configuration directive, and that they all must be supported. FrancescoChemolli suggests that it may be possible to design a repeatable switch which takes a squid.conf configuration directive as argument. Prepending those lines to the actual squid.conf would give the needed flexibility without compromising complexity.
+There is a request by Stanislav Sukholet to support specifying the SquidConf:http_port SquidConf:icp_port on the command-line, to better help parametrize system startup scripts. HenrikNordström suggests that there are multiple extra arguments to the SqudiConf:http_port configuration directive, and that they all must be supported. FrancescoChemolli suggests that it may be possible to design a repeatable switch which takes a squid.conf configuration directive as argument. Prepending those lines to the actual squid.conf would give the needed flexibility without compromising complexity.
 
 e.g. {{{ squid -c 'http_port 80 vhost defaultsite=foo' -c 'debug_options ALL,2' -f /etc/squid/squid.conf.custom }}}
 
