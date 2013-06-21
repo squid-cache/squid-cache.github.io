@@ -135,7 +135,7 @@ Adding new features, enhancing, or fixing Squid behavior usually requires source
 The best development option depends on many factors. Here is some project dynamics information that may help you pick the right one: Most Squid features and maintenance is done by individual contributors, working alone or in small development/consulting shops. In the early years (1990-2000), these developers were able to work on Squid using their free time, research grants, or similarly broad-scope financial support. Requested features were often added on-demand because many folks could work on them. Most recent (2006-2008) contributions, especially large features, are the result of paid development contracts, reflecting both the maturity of software and the lack of "free" time among active Squid developers.
 
 == Can I pay someone for Squid support? ==
-Yes.  Please see [[http://www.squid-cache.org/Support/services.html|Squid Support Services]]. You can also [[http://www.squid-cache.org/Intro/helping.html|donate]] money or equipment to the Squid project.
+Yes.  Please see [[http://www.squid-cache.org/Support/services.html|Squid Support Services]]. You can also [[http://www.squid-cache.org/Foundation/donate.html|donate]] money or equipment to the Squid project.
 
 == Squid FAQ contributors ==
 The following people have made contributions to this document:
