@@ -159,10 +159,6 @@ authenticators. IE will use ntlm and everything else basic:
 {{{
 auth_param ntlm program /usr/local/bin/ntlm_auth --helper-protocol=squid-2.5-ntlmssp
 auth_param ntlm children 30
-auth_param ntlm max_challenge_reuses 0
-auth_param ntlm max_challenge_lifetime 2 minutes
-# ntlm_auth from Samba 3 supports NTLM NEGOTIATE packet
-auth_param ntlm use_ntlm_negotiate on
 
 # warning: basic authentication sends passwords plaintext
 # a network sniffer can and will discover passwords
