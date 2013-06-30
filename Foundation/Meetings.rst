@@ -59,18 +59,18 @@ Most of the Board discussions can be open to the public and your constructive pa
 || #7 || AmosJeffries || publish meeting #6 minutes || done ||
 || #7 || AmosJeffries || contact the company accused of GPL violations to learn more about their Squid-based product distribution. || not done ||
 || ||
-|| #6 || AmosJeffries, AlexRousskov || split services page in two pages, one with active entries who have earned service points, and one secondary page with the stale entries who have not earned any service points in last year || not done ||
+|| #6 || AmosJeffries, AlexRousskov || split services page in two pages, one with active entries who have earned service points, and one secondary page with the stale entries who have not earned any service points in last year || done ||
 || #6 || ?? || try to expand webmaster group with more people that can help in keeping structure and maintainability of our web pages and wiki || not done ||
 || #6 || AmosJeffries || draft a public announcement that the board is looking for one additional Foundation director and briefly what the expectations and duties are || in progress ||
-|| #6 || HenrikNordstrom || invite & train at least one more sysadmin starting immediately || not done ||
+|| #6 || HenrikNordstrom || invite & train at least one more sysadmin starting immediately || done ||
 || #6 || HenrikNordstrom, AmosJeffries || write a public board report on the business of the Foundation covering the last two years || not done ||
 || #6 || HenrikNordstrom || document pending sysadmin tasks in bugzilla || not done ||
 || ||
-|| #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || not done ||
+|| #5 || HenrikNordstrom || expand noc@ with everyone related to sysadmin. || in progress ||
 || #5 || HenrikNordstrom || set up mail list for contacting mirrors. || not done ||
 || #5 || AmosJeffries || minutes for meeting #5 written and circulated || not done ||
 || ||
-|| #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || not done ||
+|| #4 || HenrikNordstrom || minutes for meeting #1 written and circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #2 updated and re-circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #3 written and circulated || in progress ||
 || #4 || AmosJeffries || minutes for meeting #4 written and circulated || not done ||
@@ -80,6 +80,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Past Meetings ==
 
 ||'''ID'''||'''Date'''||'''Location'''||'''Minutes'''||
+||#7||2013-05-26||IRC||TBD||
 ||#6||2013-04-28||IRC||http://www.squid-cache.org/Foundation/archive/2013/2013-04-28_board-meeting-6.html||
 ||#5||2012-07-26||IRC||TBD||
 ||#4||2012-06-16||IRC||TBD||
