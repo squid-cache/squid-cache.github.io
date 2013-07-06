@@ -19,26 +19,6 @@ If people are interested in partially or fully funding any given Squid project t
 <<TableOfContents(2)>>
 
 
-== Logfile helpers ==
-
-=== Contacts ===
-
-Adrian Chadd
-
-=== Description ===
-
-The ability to write logfile contents (specifically the access log, but extended to any type of log file) to arbitrary destinations. The most popular are:
-
- * Write to a UDP/TCP socket for central logging;
- * Write to a database (MySQL)
- * Write more efficiently to disk (ie, not using the potentially blocking method Squid currently uses)
-
-=== Progress ===
-
-Prototyping was done using Squid-2 - check the devel site for patches. Work wasn't merged into the [[Squid-2.6]] or Squid-2 tree. Adrian has slated for this work to appear sometime in Squid-3. Tim Starling from the Wikipedia project has contributed some test patches for UDP logging.
-
-Its been implemented in squid-2.HEAD. Patches exist for Squid-3 which will be included after Squid-3 has been released.
-
 == HTTP File Helper ==
 
 === Contacts ===
