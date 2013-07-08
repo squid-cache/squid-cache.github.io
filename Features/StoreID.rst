@@ -6,7 +6,7 @@
 
  * '''Goal''': Allow the admin to decide on specific store ID per one or more urls. This allows also to prevent duplications of the same content. It works both for forward proxies and CDN type reverse proxies.
 
- * '''Status''': 75% works and counting.
+ * '''Status''': 80% works and counting.
 
  * '''Version''': 3.4
 
@@ -207,6 +207,10 @@ Feb 17 17:32:51 www1 new_helper.rb[21352]: Original request [quit].
 == Admin urls CDN\Pattern DB ==
 If it will be possible I hope a small DB can be maintained in squid wiki or else where on common CDN that can be used by squid admins.
 Patterns such for sourceforge CDN network or linux distributions Repositories mirror.
+=== A start towards a more stable DB ===
+Since the feature by itself was designed and now there is only a need to allow basic and advanced usage we can move on towards a DB of CDNs.
+
+In this [[http://squid-web-proxy-cache.1019090.n4.nabble.com/store-id-pl-doesnt-cache-youtube-tp4660861p4660945.html|POST"Fwd: [squid-users] store-id.pl doesnt cache youtube " ]] at the squid users list Alan design a simple substitute DB pattern and helper which can be used in order to load a new DB of patterns without knowledge of the code of the helper internals.
 
 == How do I make my own? ==
 
