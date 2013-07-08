@@ -188,6 +188,9 @@ STDOUT.sync = true
 main
 }}}
 
+=== Updated helper ===
+There is a newer [[StoreID/Helper]] which has more url patterns in it in a way you can learn url patterns.
+
 === Helper Input\Output Example ===
 {{{
 #./new_helper.rb
@@ -206,11 +209,48 @@ Feb 17 17:32:51 www1 new_helper.rb[21352]: Original request [quit].
 }}}
 == Admin urls CDN\Pattern DB ==
 If it will be possible I hope a small DB can be maintained in squid wiki or else where on common CDN that can be used by squid admins.
+
 Patterns such for sourceforge CDN network or linux distributions Repositories mirror.
+
 === A start towards a more stable DB ===
 Since the feature by itself was designed and now there is only a need to allow basic and advanced usage we can move on towards a DB of CDNs.
 
-In this [[http://squid-web-proxy-cache.1019090.n4.nabble.com/store-id-pl-doesnt-cache-youtube-tp4660861p4660945.html|POST"Fwd: [squid-users] store-id.pl doesnt cache youtube " ]] at the squid users list Alan design a simple substitute DB pattern and helper which can be used in order to load a new DB of patterns without knowledge of the code of the helper internals.
+In this [[http://squid-web-proxy-cache.1019090.n4.nabble.com/store-id-pl-doesnt-cache-youtube-tp4660861p4660945.html|POST:"Fwd: [squid-users] store-id.pl doesnt cache youtube " ]] at the squid users list Alan design a simple substitute DB pattern and helper which can be used in order to load a new DB of patterns without knowledge of the code of the helper internals.
+The DB is [[http://wiki.squid-cache.org/Features/StoreID/DB|HERE]]
+
+=== A small Helper by Alan that uses a DB ===
+{{{
+#!highlight perl
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my %url;
+
+# read config file
+open CONF, $ARGV[0] or die "Error opening $ARGV[0]: $!";
+while (<CONF>) {
+	chomp;
+	next if /^\s*#?$/;
+	my @l = split("\t");
+	$url{qr/$l[0]/} = $l[$#l];
+}
+close CONF;
+
+# read urls from squid and do the replacement
+URL: while (<STDIN>) {
+	chomp;
+	last if /^(exit|quit|x|q)$/;
+	
+	foreach my $re (keys %url) {
+		if (/$re/) {
+			print "OK store-id=",eval($url{$re})->(),"\n";
+			next URL;
+		}
+	}
+	print "ERR\n";
+}
+}}}
 
 == How do I make my own? ==
 
