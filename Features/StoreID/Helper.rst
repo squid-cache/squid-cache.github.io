@@ -275,34 +275,31 @@ def rewriter(request)
                   vid = $cache.vsvid(request)
                   $cache.setvid(request, "http://videoslasher.squid.internal/" + vid) if vid != nil
                   url = "http://videoslasher.squid.internal/" + vid if vid != nil
+                  return url  
+		when /http:\/\/(pd-vdp-cdn[\d]+-nap.terra.com)\/(terratv\/[0-9]+\.mp4)?.*/
+		  url = "http://terratv.squid.internal/" + $2 if $2
                   return url
-                when /http:\/\/(.*torrage\.com|.*zoink\.it|.*torrage\.ws|.*torcache\.net)\/(torrent\/[A-Z0-9]+\.torrent)/
-                  url = "http://torrentcache.squid.internal/" + $2 if $2
+		when /http:\/\/(i|vid)[\d]+\.photobucket\.com\/(.*)\.(mp4|jpg)/  
+		  url = "http://photobucket.squid.internal/" + $2 + ".jpg" if $3 == "jpg"
+		  url = "http://photobucket.squid.internal/" + $2 + ".mp4" if $3 == "mp4"
                   return url
-                when /http:\/\/(ca\.isohunt\.com)\/download\/[\d]+\/([a-z0-9]+)\.torrent/
-                  url = "http://torrentcache.squid.internal/torrent/" + $2.upcase + ".torrent" if $2
-                  return url
-                when /http:\/\/(pd-vdp-cdn[\d]+-nap.terra.com)\/(terratv\/[0-9]+\.mp4)?.*/
-                  url = "http://terratv.squid.internal/" + $2 if $2
-                  return url
-                when /http:\/\/(dl[\d]+\.torrentreactor\.net)\/download.php\?id=([\d]+).*/
-                  url = "http://torrentreactor.squid.internal/" + $2 + ".torrent"if $2
-                  return url
-                when /http:\/\/(i|vid)[\d]+\.photobucket\.com\/(.*)\.(mp4|jpg)/
-                  url = "http://photobucket.squid.internal/" + $2 + ".jpg" if $3 == "jpg"
-                  url = "http://photobucket.squid.internal/" + $2 + ".mp4" if $3 == "mp4"
-                  return url
-                when /http:\/\/(khm|mt)[\d]+\.google\.[a-z\.]+\/(.*)\&s\=[a-zA-Z]+/
-                  url = "http://googlemapskhm.squid.internal/" + $2 if $1 == "khm"
+		when /http:\/\/(khm|mt)[\d]+\.google\.[a-z\.]+\/(.*)\&s\=[a-zA-Z]+/
+ 		  url = "http://googlemapskhm.squid.internal/" + $2 if $1 == "khm"
                   url = "http://googlemapsmt.squid.internal/" + $2 if $1 == "mt"
-                  return url
+		  return url
                 when /http:\/\/([\-a-z0-9\.]+)\.c\.android\.clients\.google\.com\/(market\/GetBinary\/[\/0-9a-z\.\-]+)\?.*/
-                  url = "http://androidmarket.squid.internal/" + $2 if $2
-                  return url
-                when /http:\/\/download\.oracle\.com\/(otn\-pub[a-zA-Z0-9\-\/\.]+)\?.*/
-                  url = "http://oracleotn.squid.internal/" + $1 if $1
-                  return url
-                when /^quit.*/
+		  url = "http://androidmarket.squid.internal/" + $2 if $2
+		  return url
+		when /http:\/\/download\.oracle\.com\/(otn\-pub[a-zA-Z0-9\-\/\.]+)\?.*/
+		  url = "http://oracleotn.squid.internal/" + $1 if $1
+		  return url
+		when /http:\/\/image\.slidesharecdn\.com\/(.*\.jpg)\?[0-9]+/
+		  url = "http://slidesharecdn.squid.internal/" + $1 if $1 
+		  return url
+		when /http:\/\/cdn\.slidesharecdn\.com\/(.*jpg)\?[0-9]+/
+		   url = "http://slidesharecdn.squid.internal/" + $1 if $1
+		   return url
+		when /^quit.*/
                   exit 0
                 else
                  return ""
