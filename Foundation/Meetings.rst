@@ -33,6 +33,19 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ==== Agenda of Last Meeting ====
 
+''' Meeting #8.'''
+
+ 1. Opening of the meeting.
+ 1. Selection of meeting officials.
+ 1. Agenda bashing and approval.
+ 1. Last meeting minutes approval.
+
+ 1. Review of action points from last meeting.
+ 1. Sysadmin progress
+ 1. 2011 Foundation Board Report
+ 1. Next meeting scheduling.
+ 1. Open floor:
+
 '''Meeting #7.'''
 
  1. Opening of the meeting.
@@ -53,6 +66,8 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
 || - || anyone || email confirmation regarding meeting 2 days in advance || not done ||
+|| ||
+|| #8 || AmosJeffries || minutes for meeting #7 published || not done ||
 || ||
 || #7 || HenrikNordstrom || Send Foundation announce to squid-announce, squid-users, and blog post || not done ||
 || #7 || HenrikNordstrom || discuss the Foundation merchandise shop status with ex-developer to have it moved to the Foundation. || not done ||
