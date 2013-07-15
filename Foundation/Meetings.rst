@@ -12,7 +12,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Upcoming Meeting ==
 
- * Date: '''05:00 2013-06-29 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2013-07-15 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
@@ -25,6 +25,7 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Review of action points from last meeting.
 
  1. Sysadmin progress
+ 1. 2011 Foundation Board Report
 
  1. Next meeting scheduling.
  1. Open floor:
