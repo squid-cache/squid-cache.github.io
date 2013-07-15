@@ -46,22 +46,6 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Next meeting scheduling.
  1. Open floor:
 
-'''Meeting #7.'''
-
- 1. Opening of the meeting.
- 1. Selection of meeting officials.
- 1. Agenda bashing.
- 1. Agenda approval.
- 1. Last meeting minutes approval.
- 1. Review of action points from last meeting.
- 1. Squid merchandising
- 1. IRCache progress
- 1. sysadmin progress
- 1. Next meeting scheduling.
- 1. Open floor:
-  * Reported Squid GPL license violation
-
-
 == Action Points ==
 
 || '''Meeting''' || '''Assigned''' || '''Action''' || '''status''' ||
