@@ -14,6 +14,17 @@ On Windows 2000 and later the service is configured to use the Windows Service R
 
  {i} The original development code name of the 2.5 project port was SquidNT, but after the 2.6.STABLE4 release, this project was complete. So when speaking about Squid on Windows, people should always refer to Squid, instead to the old SquidNT name.   
 
+=== Known Limitations ===
+
+ * Squid features not operational:
+  * DISKD: still needs to be ported
+  * Transparent Proxy: missing Windows non commercial interception driver
+  * SMP support: Windows equivalent of UDS sockets has not been implemented
+
+ * Some code sections can make blocking calls.
+ * Some external helpers may not work.
+ * File Descriptors number hard-limited to 2048 when building with MinGW.
+
 == Pre-Built Binary Packages ==
 
 GuidoSerassio of [[http://www.acmeconsulting.it/|Acme Consulting S.r.l.]] maintains the official [[http://squid.acmeconsulting.it/|native Windows port]] of Squid (built using the Microsoft toolchain) and is actively working on having the needed changes integrated into the standard Squid distribution. His effort is partially based on earlier Windows NT port by Romeo Anghelache.
@@ -25,14 +36,14 @@ GuidoSerassio of [[http://www.acmeconsulting.it/|Acme Consulting S.r.l.]] mainta
 === Service ===
 Some new command line options were added for the Windows service support:
 
- * '''-n''' switch to specify the Windows Service Name. Multiple Squid service instances are allowed. "Squid" is the default when the switch is not used. All service control operations use this switch to identify the destination instance being targeted.
+ * '''-n''' switch to specify the Windows Service Name. Multiple Squid service instances are allowed. '''Squid''' is the default when the switch is not used. All service control operations use this switch to identify the destination instance being targeted.
 
- * '''-i''' switch to install the Windows service. It's possible to use -f switch at the same time to specify a different squid.conf file for the Squid Service that will be stored on the Windows Registry. To install the service, the syntax is:
+ * '''-i''' switch to install the Windows service. It's possible to use '''-f''' switch at the same time to specify a different squid.conf file for the Squid Service that will be stored on the Windows Registry. To install the service, the syntax is:
 {{{
 squid -i [-f file] [-n service-name]
 }}}
 
- * '''-r''' switch will uninstall the Windows service. Use the appropriate -n switch to determine which service instance is being removed. To uninstall the service, the syntax is:
+ * '''-r''' switch will uninstall the Windows service. Use the appropriate '''-n''' switch to determine which service instance is being removed. To uninstall the service, the syntax is:
 {{{
 squid -r [-n service-name]
 }}}
@@ -50,16 +61,16 @@ squid -O cmdline [-n service-name]
 
 If multiple service command line options must be specified, use quote. The '''-n''' switch is needed only when a non default service name is in use.
 
-Don't use the "Start parameters" in the Windows 2000/XP/2003 Service applet: they are specific to Windows services functionality and Squid is not able to interpret and use them.
+ {X} Don't use the "Start parameters" in the Windows 2000/XP/2003 Service applet. They are specific to Windows services functionality and Squid is not able to interpret and use them.
 
 In the following example the command line of the "squidsvc" Squid service is set to "-D -u 3130":
-
+{{{
 squid -O "-u 3130" -n squidsvc
+}}}
 
+=== Cache Manager CGI on Windows ===
 
-3.7 Using cache manager on Windows:
-
-On Windows, cache manager ('''[[http://www.squid-cache.org/Versions/v3/3.HEAD/manuals/cachemgr.cgi|cachemgr.cgi]]''') can be used with Microsoft IIS or Apache.
+On Windows, [[Features/CacheManager|cache manager]] can be used with Microsoft IIS or Apache.
 Some specific configuration could be needed:
 
  * IIS 6 (Windows 2003):
@@ -79,21 +90,20 @@ ScriptAlias /squid/cgi-bin/ "c:/squid/libexec/"
 </Location>
 }}}
 
-== PSAPI.DLL (Process Status Helper) Considerations ==
+=== Configuration Guides ===
 
-The process status helper functions make it easier for you to obtain information about processes and device drivers running on Microsoft® Windows NT®/Windows® 2000. These functions are available in PSAPI.DLL, which is distributed in the Microsoft® Platform Software Development Kit (SDK). The same information is generally available through the performance data in the registry, but it is more difficult to get to it. PSAPI.DLL is freely redistributable.
+ * [[SquidFaq/WindowsUpdate|Windows Update]]
+ * [[ConfigExamples/Authenticate/WindowsActiveDirectory|Active Directory Authentication]]
+ * [[ConfigExamples/Authenticate/Kerberos|Kerberos Authentication]]
+ * [[ConfigExamples/Authenticate/Ntlm|NTLM Authentication]] ([[ConfigExamples/Authenticate/NtlmWithGroups| with Groups]])
 
-PSAPI.DLL is available only on Windows NT, 2000, XP and 2003. The implementation in Squid is aware of this, and try to use it only on the right platform.
+These and many other general manuals in the ConfigExamples section.
 
-On Windows NT PSAPI.DLL can be found as component of many applications, if you need it, you can find it on Windows NT Resource KIT. If you have problem, it can be downloaded from here: http://download.microsoft.com/download/platformsdk/Redist/4.0.1371.1/NT4/EN-US/psinst.EXE
-
-On Windows 2000 and later it is available installing the Windows Support Tools, located on the Support\Tools folder of the installation Windows CD-ROM.
-
-== Registry DNS lookup ==
+=== Registry DNS lookup ===
 
 On Windows platforms, if no value is specified in the SquidConf:dns_nameservers option in squid.conf or in the /etc/resolv.conf file, the list of DNS name servers are taken from the Windows registry, both static and dynamic DHCP configurations are supported.
 
-== Compatibility Notes ==
+=== Compatibility Notes ===
 
  * It's recommended to use '/' char in Squid paths instead of '\'
  * Paths with spaces (like 'C:\Programs Files\Squid) are NOT supported by Squid
@@ -113,17 +123,7 @@ url_rewrite_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd
  * "Start parameters" in the Windows 2000/XP/2003 Service applet cannot be used
  * On Windows Vista and later, User Account Control (UAC) must be disabled before running service installation
 
-=== Known Limitations ===
-
- * Squid features not operational:
-  * DISKD: still needs to be ported
-  * Transparent Proxy: missing Windows non commercial interception driver
-
- * Some code sections can make blocking calls.
- * Some external helpers may not work.
- * File Descriptors number hard-limited to 2048 when building with MinGW.
-
-== Building Squid on Windows ==
+== Compiling ==
 
 When running configure, --disable-wccp and --disable-wccpv2 options should always specified to avoid compile errors.
 
@@ -156,7 +156,18 @@ Now, add a new Cygwin user - see the Cygwin user guide - and map it to SYSTEM, o
 
 Read the squid FAQ on permissions if you are using CYGWIN=ntsec.
 
-After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
+When that has completed run:
+{{{
+squid -z
+}}}
+
+If that succeeds, try:
+{{{
+squid -N -D -d1
+}}}
+
+Squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
+
 
 Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. You may need to check permissions here.
 
@@ -191,21 +202,23 @@ Then run make and install as usual.
 
 Squid will install into ''c:\squid''. If you wish to install somewhere else, change the ''--prefix'' option for configure.
 
-After run ''squid -z''. If that succeeds, try ''squid -N -D -d1'', squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
+When that has completed run:
+{{{
+squid -z
+}}}
+
+If that succeeds, try:
+{{{
+squid -N -D -d1
+}}}
+ * squid should start. Check that there are no errors. If everything looks good, try browsing through squid.
+
 
 Now, to run Squid as a Windows system service, run ''squid -n'', this will create a service named "Squid" with automatic startup. To start it run ''net start squid'' from command line prompt or use the Services Administrative Applet.
 
 Always check the provided release notes for any version specific detail.
 
-
-== Configuration Guides ==
-
- * [[SquidFaq/WindowsUpdate|Windows Update]]
- * [[ConfigExamples/Authenticate/WindowsActiveDirectory|Active Directory Authentication]]
- * [[ConfigExamples/Authenticate/Kerberos|Kerberos Authentication]]
- * [[ConfigExamples/Authenticate/Ntlm|NTLM Authentication]] ([[ConfigExamples/Authenticate/NtlmWithGroups| with Groups]])
-
-These and many other general manuals in the ConfigExamples section.
+= Troubleshooting =
 
 ----
 CategoryKnowledgeBase
