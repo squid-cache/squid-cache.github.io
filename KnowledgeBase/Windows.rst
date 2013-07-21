@@ -138,7 +138,7 @@ When running configure, --disable-wccp and --disable-wccpv2 options should alway
  * --enable-coss-aio-ops: On Windows Posix AIO is not available
  * --with-large-files: No suitable build environment is available on both Cygwin and MinGW, but --enable-large-files works fine
 
-== Compiling with Cygwin ==
+=== Compiling with Cygwin ===
 
 In order to compile Squid, you need to have Cygwin fully installed.
 
@@ -171,7 +171,7 @@ Squid should start. Check that there are no errors. If everything looks good, tr
 
 Now, configure ''cygrunsrv'' to run Squid as a service as the chosen username. You may need to check permissions here.
 
-== Compiling with MinGW ==
+=== Compiling with MinGW ===
 
 In order to compile squid using the MinGW environment, the packages MSYS, MinGW and msysDTK must be installed. Some additional libraries and tools must be downloaded separately:
 
@@ -218,7 +218,7 @@ Now, to run Squid as a Windows system service, run ''squid -n'', this will creat
 
 Always check the provided release notes for any version specific detail.
 
-= Troubleshooting =
+== Troubleshooting ==
 
 ----
 CategoryKnowledgeBase
