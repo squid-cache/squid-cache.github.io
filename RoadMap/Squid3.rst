@@ -29,7 +29,7 @@ Features which have not reached completion or have failed the audit, are automat
 ## 
 
 ## Now in '''RELEASE CANDIDATE''' cycle.
-## The Squid 3.X release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+## The release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
 ## 
 ## Additions are limited to:
 ##  * Documentation updates
@@ -60,11 +60,12 @@ Features which have not reached completion or have failed the audit, are automat
 ## The features have been set and code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
 
 <<Include(Squid-3.4)>>
+<<Include(Squid-3.5)>>
 
 == Bug Zapping ==
 
 ## bugs down to normal status
- * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&target_milestone=3.0&target_milestone=3.1&target_milestone=3.2&target_milestone=3.3&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
 
 == TODO ==
 
@@ -91,11 +92,10 @@ These are the features we are trying to work on at present. New features may be 
 
 === Developer Needed ===
 
-Features considered high-priority for including, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.4 if not completed by initial 3.3 release:
+Features considered high-priority for including, but not yet with a dedicated developer to achieve that goal. Incomplete items will be bumped to 3.6 if not completed by initial 3.5 release:
 
 (Priority 1)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*1")>>
- * Store URL re-write port from 2.7
  * monitor* port from 2.6. Bug:2185
 (Priority 2)
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*2")>>
@@ -125,26 +125,29 @@ More ideas are available [[Features/Other|elsewhere]].
 
 ## Some items got stuck in the wrong version or not marked properly with complete status.
 
-## There should be no 3.0 to 3.2 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were pencilled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
+## There should be no 3.0 to 3.4 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were pencilled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
 
-## (3.0)
-## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.0" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
-## (3.1)
-## <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.1" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+## * Feature marked 3.0 which did not make it:
+##<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.0" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+ * Feature marked 3.1 which did not make it:
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.1" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
  * Feature marked 3.2 which did not make it:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.2" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
  * Feature marked 3.3 which did not make it:
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.3" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+## * Feature marked 3.4 which did not make it:
+##<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.4" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
 
 = Schedule for Feature Removals =
 
 Certain features are no longer relevant as the code improves and are planned for removal. Due to the possibility they are being used we list them here along with the release version they are expected to disappear. Warnings should also be present in the code where possible.
 
 || ''' Version''' || '''Feature''' || '''Why''' ||
-|| 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[Translations|langpack]] ||
-|| 3.1 || libcap 1.x || libcap-2.09+ is required for simpler code and proper API usage. ||
+##|| 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[Translations|langpack]] ||
+##|| 3.1 || libcap 1.x || libcap-2.09+ is required for simpler code and proper API usage. ||
 || 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
 || 3.2 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
 || 3.2+ || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
-|| 3.3 || cachemgr_passwd || Security is better controlled by login SquidConf:acl in the SquidConf:http_access configuration ||
-|| 3.3 || cachemgr.cgi || Merger of report functionality into the main squid process obsoletes it as a stand-alone application. ||
+|| 3.5 || dnsserver and DNS external helper API || Internal DNS client now appears to satisfy all use-cases. ||
+##|| 3.3 || cachemgr_passwd || Security is better controlled by login SquidConf:acl in the SquidConf:http_access configuration ||
+##|| 3.3 || cachemgr.cgi || Merger of report functionality into the main squid process obsoletes it as a stand-alone application. ||
