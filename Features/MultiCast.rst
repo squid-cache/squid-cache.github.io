@@ -7,7 +7,7 @@
 
  * '''Goal''': Bandwidth and delay reduction using multicast to optimize cluster traffic.
 
- * '''Status''': Completed.
+ * '''Status''': completed.
 
  * '''Version''': 2.x
 
