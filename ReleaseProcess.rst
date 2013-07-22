@@ -2,10 +2,10 @@
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 ## if you want to have a table of comments remove the heading hashes from the next line
 
-= Release Types =
 <<TableOfContents>>
  * Back to DeveloperResources.
 
+= Release Types =
 == Stable Release ==
 
 Meant for production caches.
@@ -17,8 +17,6 @@ Please check the '''Pending Bugs''' page for your particular release.
 '''Snapshots''' made from Stable branches are beta releases for the next Stable release from that branch.
 
  <!> If you have any problems with a release, please write to our ''squid-bugs@squid-cache.org'' or ''squid-dev@squid-cache.org'' lists. '''DO NOT''' write to squid-users with code-related problems.
-
-## HenrikNordstrom Stable release practices for Squid-2 yet to be documented.
 
 AmosJeffries makes a new Stable release for Squid-3 at soonest available time after the following conditions are met since the previous release:
 
@@ -38,25 +36,24 @@ Releases begin when all features intended for a release are merged into the code
 
  <!> If you have any problems with a release, please write to our ''squid-bugs@squid-cache.org'' or ''squid-dev@squid-cache.org'' lists. DO NOT write to squid-users with code-related beta release problems.
 
-## HenrikNordstrom Beta release practices for Squid-2 yet to be documented.
-
 AmosJeffries makes a Beta release for Squid-3 monthly at or shortly after the end of each month. Out of cycle release are made to:
  * fix security vulnerabilities or similar serious bugs
  * delay a cycle release if there is a known critical problem
 
 == Development Release ==
 
-All Squid Releases made from [[http://www.squid-cache.org/Version/v3/3.HEAD/|3.HEAD]] and [[http://www.squid-cache.org/Version/v2/HEAD/|2.HEAD]] are development releases.
+All Squid Releases made from [[http://www.squid-cache.org/Version/v3/3.HEAD/|3.HEAD]] are development releases.
 
 These releases are meant for Squid users who are already familiar with Squid.
-You should expect to find numerous bugs and problems with the development releases.
-We do not recommend running a development release on your production cache.
+You should expect to find bugs and problems with the development releases.
+We do not recommend running a development release on your production cache without a local QA process.
 
- <!> If you have any problems with a release, please write to our ''squid-bugs@squid-cache.org'' or ''squid-dev@squid-cache.org'' lists. DO NOT write to squid-users with code-related or development release problems.
+ <!> If you have any problems with a release, please write to our ''squid-bugs@squid-cache.org'' or ''squid-dev@squid-cache.org'' lists.
+  . '''DO NOT''' write to squid-users with code-related or development release problems.
 
 Development releases are made automatically on a daily basis.
 
-Squid-3 releases are made after running build tests. The packaged code is expected to '''always''' build cleanly. If you find an error in this please report it. Our BuildFarm cacthes a lot of problems, but still is missing some operating systems and compilers.
+Squid-3 releases are made after running build tests. The packaged code is expected to '''always''' build cleanly. If you find an error in this please report it. Our BuildFarm catches a lot of problems, but still is missing some operating systems and compilers.
 
 
 = General Release Process Guidelines =
@@ -65,28 +62,30 @@ Squid-3 releases are made after running build tests. The packaged code is expect
 
 This process used by the Squid Developers as a guideline in how and when new Squid-3 releases are made:
 
- 1. Finalize the list of to-be-included features.
- 1. Feature branch is created for the code. New Features are not accepted for this branch.
- 1. When the user visible features are believed to work, start releasing X.Y.0.1 and announce to squid-users and squid-announce as '''beta'''.
-  1. At this point basic Release Notes should exists, and !ChangeLog will reflect any changes done, small as large. (I.E. overlapping requests may not be in at this point, but it's not user visible - so doesn't delay announce of the branch)
-   * These releases is to get some early adopters providing feedback and portability verification
-  1. Repeat as necessary when there is significant progress.
- 1. When no major bugs exist, release a final X.Y.0.* and announce to squid-users and squid-announce.
-  1. At this point, Release Notes should be complete.
- 1. Give final X.Y.0.Z release a fortnight for bugs, and when we go for a fortnight with no new bugs, release X.Y.1.
- 1. From X.Y.1 any changes should have a corresponding bugzilla entry, and be documented with description and patch on the bugs/patches page of the release.
- 1. When needed and there has been at least a fortnight from the last large modification and at least one week from the last non-cosmetic patch release the next patchlevel version. Repeat as necessary.
+ 1. When the user visible features are believed to work.
+  * Finalize the list of to-be-included features.
 
-## == Squid-2 ==
-## 
-## '''Information below is apparently current for Squid-2 to late 2007'''
-## 
-## This process used by the Squid Developers as a guideline in how and when new Squid releases are released:
-## 
-##  1. Finalize the list of to-be-included features. Features outside this list is not accepted for HEAD from this point
-##  1. When most of the to-be-included user visible features exists and is believed to work, start releasing X.Y.-''timestamp'' snapshots and announce to squid-users. Repeat as necessary when there is significant progress. At this point basic Release Notes should exists, and !ChangeLog will reflect any changes done, small as large. (I.E. overlapping requests may not be in at this point, but it's not user visible - so doesn't delay announce of the branch)
-##  1. When no giant bugs are found for a fortnight, release X.Y.0.1 and announce to squid-users. (At this point, Release Notes should be complete, these releases is to get some early adopters providing feedback and portability verification)
-##  1. Give each .0.Z release a fortnight for bugs, and when we go for a fortnight with no new bugs, release X.Y.1.
-##  1. From .1 any changes should have a corresponding bugzilla entry, and be documented with description and patch on the bugs/patches page of the release.
-##  1. When needed and there has been at least a fortnight from the last large modification and at least one week from the last non-cosmetic patch release the next patchlevel version. Repeat as necessary.
-## 
+ 2. Feature branch is created for the code.
+  * New Features are not accepted for this branch.
+  * Basic Release Notes should exists,
+  * !ChangeLog will reflect any changes done, small as large.
+
+ 3. Release X.Y.0.1 and announce to squid-users and squid-announce as '''beta'''.
+  * These releases is to get some early adopters providing feedback and portability verification
+  * Repeat as necessary when there is significant progress, following beta release cycle.
+
+ 4. When no '''major''' bugs exist,
+  * Release Notes should be complete.
+  * Give final X.Y.0.Z release a 10-14 day for bugs
+  * If major bugs are found, return to step 3.
+
+ 5. When no new '''major''' bugs have been found in previous X.Y.0.* after 14 days.
+  * Release X.Y.1 and announce to squid-users and squid-announce.
+  * Repeat as necessary when there is significant progress, following stable release cycle.
+
+
+EXTRA NOTES:
+
+ * Non-working features should never be commited to HEAD.
+
+ * From X.Y.1 any changes should have a corresponding bugzilla entry, and be documented with description and patch on the bugs/patches page of the release.
