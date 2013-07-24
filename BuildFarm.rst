@@ -12,6 +12,8 @@ The currently maintained farm consists of:
 ||<|3> [[http://www.centos.org/|CentOS]] ||
 || x64 || 5.8 || eu.squid-cache.org || {OK} ||
 || x64 || 6.3 || || {OK} [[/CentosInstall|Installation guide]] ||
+||<|2> [[http://fedoraproject.org/|Fedora]] ||
+|| x64 || 19 || rs-fedora-19.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||<|2> [[http://www.ubuntu.com/|Ubuntu]] ||
 || x64 || 12.04 (precise) || precise.squid-cache.org || {OK} ||
 ||<|2> [[http://opensuse.org/|OpenSUSE]] ||
