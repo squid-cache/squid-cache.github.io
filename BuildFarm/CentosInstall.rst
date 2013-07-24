@@ -10,7 +10,7 @@
 == System Setup ==
 On top of the default system install, run
 {{{
-root% yum install libxml2 expat-devel openssl-devel libcap cvs sharutils ccache libtool-ltdl-devel cppunit cppunit-devel bzr autoconf automake libtool clang
+root% yum install libxml2 expat-devel openssl-devel libcap ccache libtool-ltdl-devel cppunit cppunit-devel bzr autoconf automake libtool clang gcc-c++ perl-Pod-MinimumVersion bzip2
 root% useradd -m -G ccache jenkins
 }}}
 set up permissions to the jenkins user, and that's it.
