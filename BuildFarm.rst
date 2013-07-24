@@ -16,8 +16,9 @@ The currently maintained farm consists of:
 || x64 || 19 || rs-fedora-19.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||<|2> [[http://www.ubuntu.com/|Ubuntu]] ||
 || x64 || 12.04 (precise) || precise.squid-cache.org || {OK} ||
-||<|2> [[http://opensuse.org/|OpenSUSE]] ||
+||<|3> [[http://opensuse.org/|OpenSUSE]] ||
 || x64 || 12.1 || opensuse-x64 || {OK} ||
+|| x64 || 12.3 || rs-suse-12.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||<|2> [[http://mandriva.com/|Mandriva]] ||
 || x32 || 2011.0 || mandriva-x86 || {OK} ||
 ||<|4> [[http://www.debian.org/|Debian]] ||
