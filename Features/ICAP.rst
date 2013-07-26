@@ -15,9 +15,7 @@
 == Background ==
 Internet Content Adaptation Protocol (RFC [[http://www.rfc-editor.org/rfc/rfc3507.txt|3507]], subject to [[http://www.measurement-factory.com/std/icap/|errata]]) specifies how an HTTP proxy (an ICAP client) can outsource content adaptation to an external ICAP server. Most popular proxies, including Squid, support ICAP. If your adaptation algorithm resides in an ICAP server, it will be able to work in a variety of environments and will not depend on a single proxy project or vendor. No proxy code modifications are necessary for most content adaptations using ICAP.
 
- '''Pros''': Proxy-independent, adaptation-focused API, no Squid modifications, supports remote adaptation servers, scalable. 
-
- '''Cons''': Communication delays, protocol functionality limitations, needs a stand-alone ICAP server process or box.
+ . '''Pros''': Proxy-independent, adaptation-focused API, no Squid modifications, supports remote adaptation servers, scalable. '''Cons''': Communication delays, protocol functionality limitations, needs a stand-alone ICAP server process or box.
 
 One proxy may access many ICAP servers, and one ICAP server may be accessed by many proxies. An ICAP server may reside on the same physical machine as Squid or run on a remote host. Depending on configuration and context, some ICAP failures can be bypassed, making them invisible to proxy end-users.
 
@@ -37,6 +35,13 @@ More information about ICAP is available on the ICAP [[http://www.icap-forum.org
 
 == Squid Details ==
 [[Squid-3.0]] and later come with integrated ICAP support. Pre-cache REQMOD and RESPMOD vectoring points are supported, including request satisfaction. Squid-2 has limited ICAP support via a set of poorly maintained and very buggy patches. It is worth noting that the Squid developers no longer officially support the Squid-2 ICAP work.
+
+Squid supports receiving 204 (no modification) responses from ICAP servers. This is typically used when the server wants to perform no modifications on a HTTP message. It is useful to save bandwidth by preventing the server from sending the HTTP message back to Squid as it was received. There are two situations however where Squid will not accept a 204 response:
+
+ * The size of the payload is greater than 64kb.
+ * The size of the payload cannot be (easily) ascertained.
+
+The reason for this is simple: If the server is to respond to Squid with a 204, Squid needs to maintain a copy of the original HTTP message in memory. These two basic requirements are a basic optimisation to limit Squid's memory usage in supporting 204s.
 
 == Squid Configuration ==
  . (!) ICAP server configuration should be detailed in the server documentation. Squid is expected to work with any of them. {i} The configuration of Squid-3 underwent a change between [[Squid-3.0]] and [[Squid-3.1]]
