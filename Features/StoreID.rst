@@ -4,9 +4,9 @@
 
 = Feature: Store ID =
 
- * '''Goal''': Allow the admin to decide on specific store ID per one or more urls. This allows also to prevent duplications of the same content. It works both for forward proxies and CDN type reverse proxies.
+## * '''Goal''': Allow the admin to decide on specific store ID per one or more urls. This allows also to prevent duplications of the same content.
 
- * '''Status''': 80% works and counting.
+ * '''Status''': completed.
 
  * '''Version''': 3.4
 
@@ -20,22 +20,39 @@
 
 == Details ==
 
-The feature allows the proxy admin to specify a StoreID for each object\request.
+The feature allows the proxy admin to specify a StoreID for each object\request using a helper program.
+It can be used to help prevent object duplication in cases such as known CDN URL patterns.
 
-As a side effect it can be used to help prevent Objects Duplication in cases such as known CDN url patterns.
+This feature is a port of the [[Squid-2.7]] Store-URL feature, however it does work in a slightly different way and will make [[Squid-3.4]] or later to apply all store\cache related work to be against the StoreID and not the request URL. This includes SquidConf:refresh_pattern. This allows more flexibility in the way admin will be able use the helper.
 
-== Developers info ==
+This feature will allow us later to implement [[http://www.metalinker.org/|Metalink]] support into squid.
+
+=== Known Issues ===
+
+* Using StoreID on two URLs assumes that the resources presented by each are '''exact''' duplicates. Down to their metadata information used by HTTP conditional and revalidation requests.
+  . {X} care must be taken when using StoreID helper that the URLs are indeed precise duplicates or the end result may be a ''reduced'' HIT-ratio and bad proxy performance rather than improved caching.
+
+  . For example; HTTP ETag header values are only guaranteed to be unique per-URL and if a CDN uses different ETag from each server then conditional requests involving ETag will MISS or REFRESH more often despite the content object/file being identical. Possibly causing a larger bandwidth consumption than if StoreID was not present at all.
 
 
-== Background ==
+* ICP and HTCP support is missing.
+  . URL queries received from SquidConf:cache_peer siblings are not passed through StoreID helper. So the resulting store/cache lookup will MISS on URLs normally alterd by StoreID.
 
-The old feature [[Features/StoreUrlRewrite]] was written and wasn't ported to newer versions of squid since no one knew how it was done.
 
-The new feature will work in a different way by default and will make squid to apply all store\cache related work to be against the StoreID and not the request URL.
-This includes refresh_pattern.
-This would allow the admin more flexibility in the way he will be able use the helper.
+== Available Helpers ==
 
-This feature Will allow later to implement [[http://www.metalinker.org/|Metalink]] support into squid.
+ {i} Any local helper designed for [[Squid-2.7]] is expected to work as-is with [[Squid-3.4]]. However upgrading the return syntax is advised for better performance and forward-compatibility with future Squid versions
+
+* 
+
+* Eliezer Croitoru has designed !Ruby helpers, one such example is included below.
+
+* '''storeid_file_rewrite''' by Alan Mizrahi is a simple substitute DB pattern helper which is packaged with [[Squid-3.4]]. It can be used to load a [[http://wiki.squid-cache.org/Features/StoreID/DB|DB of patterns]] without needing to edit the code of the helper internals.
+
+=== A CDN Pattern Database ===
+Since the feature by itself was designed and now there is only a need to allow basic and advanced usage we can move on towards a database of CDNs which can be shared by various helper designs.
+
+[[http://wiki.squid-cache.org/Features/StoreID/DB|The DB of patterns]] provides de-duplication for content such as SourceForge CDN network or Linux distributions repository mirrors. Contributions are welcome.
 
 == Squid Configuration ==
 A small example for StoreID refresh pattern
@@ -57,7 +74,14 @@ ERR
 http://i2.ytimg.com/vi/95b1zk3qhSM/hqdefault.jpg
 OK store-id=http://ytimg.squid.internal/vi/95b1zk3qhSM/hqdefault.jpg
 }}}
-== Helper Example ==
+
+== Developers info ==
+
+=== Helper Example ===
+ /!\ This helper is an example. It is provided without any warranty or guarantees and is not recommended for production use.
+
+There is a newer [[Features/StoreID/Helper|StoreID helper]] which has more URL patterns in it in a way you can learn URL patterns.
+
 {{{
 #!highlight ruby
 #!/usr/bin/ruby
@@ -188,9 +212,6 @@ STDOUT.sync = true
 main
 }}}
 
-=== Updated helper ===
-There is a newer [[StoreID/Helper]] which has more url patterns in it in a way you can learn url patterns.
-
 === Helper Input\Output Example ===
 {{{
 #./new_helper.rb
@@ -207,55 +228,11 @@ Feb 17 17:32:39 www1 new_helper.rb[21352]: Original request [http://www.google.c
 Feb 17 17:32:39 www1 new_helper.rb[21352]: modified response [ERR].
 Feb 17 17:32:51 www1 new_helper.rb[21352]: Original request [quit].
 }}}
-== Admin urls CDN\Pattern DB ==
-If it will be possible I hope a small DB can be maintained in squid wiki or else where on common CDN that can be used by squid admins.
 
-Patterns such for sourceforge CDN network or linux distributions Repositories mirror.
-
-=== A start towards a more stable DB ===
-Since the feature by itself was designed and now there is only a need to allow basic and advanced usage we can move on towards a DB of CDNs.
-
-In this [[http://squid-web-proxy-cache.1019090.n4.nabble.com/store-id-pl-doesnt-cache-youtube-tp4660861p4660945.html|POST:"Fwd: [squid-users] store-id.pl doesnt cache youtube " ]] at the squid users list Alan design a simple substitute DB pattern and helper which can be used in order to load a new DB of patterns without knowledge of the code of the helper internals.
-The DB is [[http://wiki.squid-cache.org/Features/StoreID/DB|HERE]]
-
-=== A small Helper by Alan that uses a DB ===
-{{{
-#!highlight perl
-#!/usr/bin/perl
-use strict;
-use warnings;
-
-my %url;
-
-# read config file
-open CONF, $ARGV[0] or die "Error opening $ARGV[0]: $!";
-while (<CONF>) {
-	chomp;
-	next if /^\s*#?$/;
-	my @l = split("\t");
-	$url{qr/$l[0]/} = $l[$#l];
-}
-close CONF;
-
-# read urls from squid and do the replacement
-URL: while (<STDIN>) {
-	chomp;
-	last if /^(exit|quit|x|q)$/;
-	
-	foreach my $re (keys %url) {
-		if (/$re/) {
-			print "OK store-id=",eval($url{$re})->(),"\n";
-			next URL;
-		}
-	}
-	print "ERR\n";
-}
-}}}
-
-== How do I make my own? ==
+== How do I make my own helper? ==
 
 The helper program must read URLs (one per line) on standard input,
-and write new unique identifiers (ID) or ERR lines on standard output. Squid writes
+and write OK with a unique identifier (ID) or ERR/BH lines on standard output. Squid writes
 additional information after the URL which a helper can use to make a decision.
 
 <<Include(Features/AddonHelpers,,3,from="^## start urlhelper protocol$", to="^## end urlhelper protocol$")>>
