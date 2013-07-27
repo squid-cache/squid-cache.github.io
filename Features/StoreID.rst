@@ -4,7 +4,7 @@
 
 = Feature: Store ID =
 
-## * '''Goal''': Allow the admin to decide on specific store ID per one or more urls. This allows also to prevent duplications of the same content.
+ * '''Goal''': Allow the admin to decide on specific store ID per one or more urls. This allows also to prevent duplications of the same content.
 
  * '''Status''': completed.
 
@@ -29,25 +29,25 @@ This feature will allow us later to implement [[http://www.metalinker.org/|Metal
 
 === Known Issues ===
 
-* Using StoreID on two URLs assumes that the resources presented by each are '''exact''' duplicates. Down to their metadata information used by HTTP conditional and revalidation requests.
+ * Using StoreID on two URLs assumes that the resources presented by each are '''exact''' duplicates. Down to their metadata information used by HTTP conditional and revalidation requests.
   . {X} care must be taken when using StoreID helper that the URLs are indeed precise duplicates or the end result may be a ''reduced'' HIT-ratio and bad proxy performance rather than improved caching.
 
   . For example; HTTP ETag header values are only guaranteed to be unique per-URL and if a CDN uses different ETag from each server then conditional requests involving ETag will MISS or REFRESH more often despite the content object/file being identical. Possibly causing a larger bandwidth consumption than if StoreID was not present at all.
 
 
-* ICP and HTCP support is missing.
+ * ICP and HTCP support is missing.
   . URL queries received from SquidConf:cache_peer siblings are not passed through StoreID helper. So the resulting store/cache lookup will MISS on URLs normally alterd by StoreID.
 
 
 == Available Helpers ==
 
- {i} Any local helper designed for [[Squid-2.7]] is expected to work as-is with [[Squid-3.4]]. However upgrading the return syntax is advised for better performance and forward-compatibility with future Squid versions
+ * Eliezer Croitoru has designed several !Ruby helpers, including the [[Features/StoreID/Helper|example helper]] here.
 
-* 
+ * '''storeid_file_rewrite''' by Alan Mizrahi is a simple helper which is packaged with [[Squid-3.4]]. It can be used to load a [[http://wiki.squid-cache.org/Features/StoreID/DB|database of patterns]] without needing to edit the code of the helper internals.
 
-* Eliezer Croitoru has designed !Ruby helpers, one such example is included below.
+ * {i} Any helper previously designed for the [[Squid-2.7]] StoreURL feature is expected to work with [[Squid-3.4]]. However upgrading the response syntax sent back to Squid is advised for better performance and forward-compatibility with future Squid versions.
 
-* '''storeid_file_rewrite''' by Alan Mizrahi is a simple substitute DB pattern helper which is packaged with [[Squid-3.4]]. It can be used to load a [[http://wiki.squid-cache.org/Features/StoreID/DB|DB of patterns]] without needing to edit the code of the helper internals.
+ * {i} Older URL-rewriter programs such as SQUIRM and Jesred will also work using the above backward-compatibility support. However newer URL-rewrite helpers designed for the [[Squid-3.4]] response syntax '''WILL NOT''' work on the Store-ID interface unless they have specific Store-ID interface support.
 
 === A CDN Pattern Database ===
 Since the feature by itself was designed and now there is only a need to allow basic and advanced usage we can move on towards a database of CDNs which can be shared by various helper designs.
