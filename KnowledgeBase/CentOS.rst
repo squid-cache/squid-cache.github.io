@@ -34,6 +34,7 @@ DAG and RPMforge repositories appear to no longer contain any files. Other sourc
 {{{
 [squid]
 name=Squid repo for CentOS Linux 6 - $basearch
+#IL mirror
 baseurl=http://www1.ngtech.co.il/rpm/centos/6/$basearch
 failovermethod=priority
 enabled=1
@@ -45,7 +46,8 @@ or
 {{{
 [squid]
 name=Squid repo for CentOS Linux 6 - $basearch
-baseurl=http://www2.ngtech.co.il/rpm/centos/6/$basearch
+$AUS mirror
+baseurl=http://repo.ngtech.co.il/rpm/centos/6/$basearch
 failovermethod=priority
 enabled=1
 gpgcheck=0
