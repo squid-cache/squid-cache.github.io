@@ -6,9 +6,9 @@
 
  * '''Goal''': Separate out the URL used for storage lookups from the URL used for forwarding. This allows for multiple destination URLs to reference the same backend content and cut back on duplicated content, both for forward proxies (think "google maps") and CDN type reverse proxies.
 
- * '''Status''': ''Completed''.
+ * '''Status''': deprecated. see [[Features/StoreID|StoreID]]
 
- * '''Version''': 2.7
+ * '''Version''': 2.7 (only)
 
  * '''Developer''': AdrianChadd.
 
