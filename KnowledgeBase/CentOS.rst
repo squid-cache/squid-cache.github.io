@@ -46,7 +46,7 @@ or
 {{{
 [squid]
 name=Squid repo for CentOS Linux 6 - $basearch
-$AUS mirror
+#AUS mirror
 baseurl=http://repo.ngtech.co.il/rpm/centos/6/$basearch
 failovermethod=priority
 enabled=1
