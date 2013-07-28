@@ -58,6 +58,19 @@ Install Procedure:
 ## Followed by any special patching needed.
 ## Please inform upstream so we can simplify this to a configure option and obsolete the patching
 
+
+=== Compile on A basic Ubuntu Server ===
+@Eliezer
+
+Squid can be built on a basic Ubuntu basic Server and it seems like an enterprise OS to me.
+The only dependencies are "build-essential" and "libltdl-dev" for squid to run as a forward proxy.
+{{{
+sudo apt-get install build-essential libltdl-dev
+}}}
+For more then just forward proxy like ssl-bump or tproxy We need a bit more testing.
+
+Latest squid 3.3.8 builds and runs on ubuntu server 13.04.
+
 == Troubleshooting ==
 
 ## Series of errors that may be seen. Only if unique to this OS.
