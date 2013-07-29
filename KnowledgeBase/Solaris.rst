@@ -44,7 +44,18 @@ and
  pkg install sunstudioexpress SUNWbtool
 }}}
 
- {X} Unfortunately the {{{/usr/include/kerberosv5/com_err.h}}} system-include file sports a #pragma directive which is not compatible with gcc. A possible fix is to change the line 
+==== com_err.h: warning: ignoring #pragma ident ====
+This problem occurs with certain kerberos library headers distributed with Solaris 10. It has been fixed in later release of the kerberos library.
+
+{X} Unfortunately the {{{/usr/include/kerberosv5/com_err.h}}} system-include file sports a #pragma directive which is not compatible with gcc.
+
+There are several options available:
+
+ 1. Upgrading your library to a working version is the recommended best option.
+
+ 2. Applying a patch distributed with Squid ( {{{contrib/solaris/solaris-krb5-include.patch}}} ) which updates the krb5.h header to match the one found in later working krb5 library releases.
+
+ 3. Editing com_err.h directly to change the line 
 {{{
 #pragma ident   "%Z%%M% %I%     %E% SMI"
 }}}
@@ -54,7 +65,7 @@ to
 #pragma ident   "%Z%%M% %I%     %E% SMI"
 #endif
 }}}
-Cleaner fixes will be developed as soon as they can reasonably be found.
+
 
 ==== 3.1 -enable-ipf-transparent support ====
 ## http://bugs.squid-cache.org/show_bug.cgi?id=2960
