@@ -1,4 +1,3 @@
-## page was renamed from Features/SPDY
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
@@ -6,63 +5,68 @@
 ## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted no
 
-= Feature: Support SPDY transport for HTTP =
+= Feature: HTTP/2.0 support =
 
-## Move this down into the details documentation when feature is complete.
- * '''Goal''': Support SPDY data framing of HTTP requests.
+ * '''Goal''': HTTP/2.0 compliance.
 
 ## use "completed" for completed projects
- * '''Status''': ''Not started''
+ * '''Status''': Design groundwork underway.
 
-## Remove this entry once the feature has been merged into trunk.
-##  it will then be auto-listed in the RoadMap completed features for its Version
- * '''ETA''': ''unknown''
+ * '''ETA''': initial support in 3.5 series.
 
- * '''Version''': 3.3
+ * '''Version''': 3.5
 
-## How important on a scale of 0 to 5 is this for the developer working on it?
- * '''Priority''': 0
-
-## * '''Developer''': Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
+ * '''Developer''': AmosJeffries
 
  * '''More''':
-  * http://www.chromium.org/spdy/spdy-proxy-examples
+  * http://trac.tools.ietf.org/wg/httpbis/trac/wiki#HTTP2.0Deliverables
+##  * http://www.chromium.org/spdy/spdy-proxy-examples
 
 = Details =
 
-SPDY is an experimental protocol for framing HTTP requests in a multiplexed fashion over SSL connections. Avoiding the pipeline issues which HTTP has with its dependency on stateful "\r\n" frame boundaries.
+HTTP/2 is being designed loosly based on the SPDY experimental protocol for framing HTTP requests in a multiplexed fashion over SSL connections. Avoiding the pipeline issues which HTTP has with its dependency on stateful "\r\n" frame boundaries.
 
- '''NOTE:''' SPDY has several blocker issues correlating with HTTP and Squid features. The blocker problems are marked with {X} .
+Squid will support HTTP/2 formally and only support desired SPDY features which are IEFT approved and placed in the HTTP/2 specification.
 
- ''' {X} UPDATE 2012-09-27: Due to lack of interest in this project and the SPDY protocol being put forward as a proposal to HTTP/2 it is now very unlikely that Squid will support SPDY specifically. The Squid developers are contributing and participating in HTTP/2 protocol design. It is very much more likely that Squid will support HTTP/2 formally and only support desired SPDY features which are IEFT approved and placed in the HTTP/2 specification.
+ '''NOTE:''' SPDY has several blocker issues correlating with HTTP and Squid features. The blocker problems which are carried over into the HTTP/2 specification are marked with an {X} .
 
-== SPDY from client to Squid ==
+== Traffic from client to Squid ==
 
-To implement a SPDY receiving port (spdy_port?) in Squid we need to:
- * adjust the client socket read/write processes to all operate through the !ConnStateData connection manager. Avoiding direct reads or writes to the client socket (mostly done as of 3.2 but there are a few exceptions, ie tunnel and ssl-bump).
- * adjust the !ConnStateData connection manager to decapsulate SPDY frames and manage multiple client pipeline contexts in parallel. At present there is only one active context and an idle pipeline queue.
+To implement a HTTP/2 receiving port in Squid we need to:
 
- * {X} implement mandatory transport layer gzip.
-  * implement compression attack security measures. see CRIME attack.
+ * duplicate the HTTP client connection manager (!ConnStateData, !ClientSocketContext, !ClientHttpRequest class triplet)
+  * update the new version to decapsulate/encapsulate with HTTP/2 framing on read/write
+  * update the new manager to handle multiple parallel data pipeline channels ("streams" in the HTTP/2 grammar). At present there is only one active context and an idle pipeline queue.
+
+ * avoiding direct reads or writes to the client socket
+  * mostly done as of 3.2 but there are a few exceptions, ie tunnel and ssl-bump.
+  * Bug Bug:3371 interferes with our ability to detect and relay HTTP/2 transparently using its magic "PRI * HTTP/2.0" connection header.
+
+ * {X} implement mandatory transport layer compression / decompression.
 
  * {X} implement mandatory TLS for systems where OpenSSL is not available.
+  * Including ALPN and possibly also NPN TLS extension support.
 
- * {X} figure out what happens to a SPDY connection when it encapsulates an HTTP-level "Connection: close" and has other SPDY requests incomplete.
+ * {X} figure out what happens to a TCP connection when it encapsulates an HTTP-level "Connection: close" and has other SPDY requests incomplete.
 
- * {X} figure out what happens to a SPDY connection when a response splitting attack is encapsulated and has other SPDY requests incomplete.
+ * {X} figure out what happens to a TCP connection when a response splitting attack is encapsulated and has other pipelined requests incomplete. Adjust the security handling code appropriately.
+  * With the trivial frame design this attack may no longer be possible.
 
-== SPDY from Squid to servers ==
+== Traffic from Squid to servers ==
 
-To implement a SPDY server gateway in Squid we need to:
- * add a spdy connection pool, similar to idle pconn pool, but without timeout closures. To hold the connections which are actively in use but can be shared with more server requests.
+To implement a server gateway in Squid we need to:
+ * add a new HTTP/2.0 server connection pool similar but different to the HTTP/1.1 idle pconn pool
+  * but without timeout closures on the pool (timeout is relative to last use, not pooling time).
+  * holding the connections which are actively in use but can be shared with more server requests.
+
  * duplicate the HTTP server connection manager
-  * update the new version to encapsulate/decapsulate with SPDY on read/write
+  * update the new version to encapsulate/decapsulate with HTTP/2 framing on read/write
   * update the new manager to handle multiple parallel data pipelines.
 
- * {X} implement mandatory transport layer gzip.
-  * implement compression attack security measures.
+ * {X} implement mandatory transport layer compression / decompression.
 
  * {X} implement mandatory TLS for systems where OpenSSL is not available.
+  * Including ALPN and possibly also NPN TLS extension support.
 
  * {X} figure out what happens to a SPDY connection when we need to send an HTTP-level "Connection: close" and has other SPDY requests incomplete.
 
