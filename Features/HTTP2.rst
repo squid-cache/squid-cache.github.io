@@ -26,6 +26,13 @@
 
 HTTP/2 is being designed loosly based on the SPDY experimental protocol for framing HTTP requests in a multiplexed fashion over SSL connections. Avoiding the pipeline issues which HTTP has with its dependency on stateful "\r\n" frame boundaries.
 
+HTTP/2 has some major differences however:
+ * HTTP/2.0 contains a magic connection prefix for automated protcol switching with HTTP/1.1 and HTTP/1.0
+ * Frame layout has been significantly optimized for HTTP messaging outside web browser usages.
+ * TLS is optional
+ * Compression algorithms have been rewoven specifically for HTTP performance and to avoid security vulnerabilities in gzip compression as used in SPDY.
+ * Several frame types and flow control semantics from SPDY have been dropped or optimized away.
+
 Squid will support HTTP/2 formally and only support desired SPDY features which are IEFT approved and placed in the HTTP/2 specification.
 
  '''NOTE:''' SPDY has several blocker issues correlating with HTTP and Squid features. The blocker problems which are carried over into the HTTP/2 specification are marked with an {X} .
@@ -43,6 +50,8 @@ To implement a HTTP/2 receiving port in Squid we need to:
   * Bug Bug:3371 interferes with our ability to detect and relay HTTP/2 transparently using its magic "PRI * HTTP/2.0" connection header.
 
  * {X} implement mandatory transport layer compression / decompression.
+
+ * implement HTTP/2 header parser and packer routines
 
  * {X} implement mandatory TLS for systems where OpenSSL is not available.
   * Including ALPN and possibly also NPN TLS extension support.
@@ -64,6 +73,8 @@ To implement a server gateway in Squid we need to:
   * update the new manager to handle multiple parallel data pipelines.
 
  * {X} implement mandatory transport layer compression / decompression.
+
+ * implement HTTP/2 header parser and packer routines
 
  * {X} implement mandatory TLS for systems where OpenSSL is not available.
   * Including ALPN and possibly also NPN TLS extension support.
