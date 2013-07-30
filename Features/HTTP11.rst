@@ -6,6 +6,9 @@
  * '''Goal''': HTTP/1.1 (RFC 2616) compliance
  * '''Status''': 90% compliant and counting.
  * '''Version''': 3.2
+ * '''More''': <<BR>>
+  . RFC RFC:2616 HTTP protocol specification
+  . http://trac.tools.ietf.org/wg/httpbis/trac/wiki#HTTP1.1Deliverables - IETF HTTPbis Working Group updates to RFC RFC:2616
 
 <<TableOfContents>>
 
