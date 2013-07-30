@@ -1,3 +1,4 @@
+## page was renamed from Features/SPDY
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
