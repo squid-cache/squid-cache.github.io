@@ -178,9 +178,9 @@ In order to compile squid using the MinGW environment, the packages MSYS, MinGW 
  * OpenSSL: [[http://www.slproweb.com/products/Win32OpenSSL.html|Shining Light Productions Win32 OpenSSL]]
  * libcrypt: [[http://sourceforge.net/projects/mingwrep/|MinGW packages repository]]
  * db-1.85: [[http://tiny-cobol.sourceforge.net/download.php|TinyCOBOL download area]]
+  . {i} 3.2+ releases require a newer 4.6 or later version of libdb
  * uudecode: [[http://unxutils.sourceforge.net/|Native Win32 ports of some GNU utilities]]
-
- {i} 3.0+ releases do not require uudecode.
+  . {i} 3.0+ releases do not require uudecode.
 
 Before building Squid with SSL support, some operations are needed (in the following example OpenSSL is installed in C:\OpenSSL and MinGW in C:\MinGW):
  * Copy C:\OpenSSL\lib\MinGW content to C:\MinGW\lib
