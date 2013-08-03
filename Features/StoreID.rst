@@ -54,6 +54,17 @@ Since the feature by itself was designed and now there is only a need to allow b
 
 [[http://wiki.squid-cache.org/Features/StoreID/DB|The DB of patterns]] provides de-duplication for content such as SourceForge CDN network or Linux distributions repository mirrors. Contributions are welcome.
 
+=== Do we want to cache youtube videos? ===
+Rather then a question of "is is possible to be done?" the real question is "do we really want to cache youtube videos?"
+
+The answer to that from my point of view is: In most places YOUTUBE videos will be quite close by their CDN network.
+
+If you are in a place that YOUTUBE cdn networks or akamai is there already the you can try to consider caching youtube videos.
+
+It is possible to cache youtube videos and content but since youtube videos are not a "small" files that should be cached it can cause sometimes bad performance due to bad fine tuning of squid by targeting this sole purpose.
+
+Since A cache proxy server admin should consider couple aspects he\she should consider the true overhead of doing it.
+  
 == Squid Configuration ==
 A small example for StoreID refresh pattern
 {{{
