@@ -28,9 +28,10 @@ The currently maintained farm consists of:
 ||<|3> [[http://www.openbsd.org/|OpenBSD]] ||
 || x32 || 4.9 || obsd-49-x86 || {OK} [[/OpenBsdInstall|Installation guide]] ||
 || x64 || 4.8 || obsd-48-x64 || {OK} [[/OpenBsdInstall|Installation guide]] ||
-||<|3> [[http://www.freebsd.org/|FreeBSD]] ||
-|| x32 || 6.4 || west.squid-cache.org || {OK} ||
-|| x64 || 7.2 || diablo.squid-cache.org || {OK} ||
+||<|4> [[http://www.freebsd.org/|FreeBSD]] ||
+|| x32 || 6.4 || west.squid-cache.org || {OK} [[/FreeBsdInstall|Installation guide]] ||
+|| x64 || 7.2 || diablo.squid-cache.org || {OK} [[/FreeBsdInstall|Installation guide]] ||
+|| x64 || 9.1 || rs-fbsd-91.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] [[/FreeBsdInstall|Installation guide]] ||
 ||<|4> [[http://www.microsoft.com/windows/default.aspx|MS Windows]] ||
 || MinGW x32 || 5.2 (2003 Server) || mswin || Sponsored. ||
 || MinGW x64 || 6.1 (7 Server) || mswin7 || Sponsored. ||
