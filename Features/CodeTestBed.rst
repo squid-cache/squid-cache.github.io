@@ -36,7 +36,7 @@ This testing involves a number of changes to both the codebase and current devel
 || 2 || '''DONE''' || 3.1+ Automated dependency testing of code ||
 || 3 || '''DONE''' || 3.0+ Daily automated test ||
 || 4 || '''DONE''' || Test scheduling on multiple OS see [[BuildFarm]] ||
-|| 5 || '''IN PROGRESS''' || Automated defect tracking see [[CoverityTesting]] ||
+|| 5 || '''DONE''' || Automated defect tracking see [[CoverityTesting]] ||
 
 * '''NP''': All stages of this system implementation may involve ongoing improvements. The status here is merely an indication that the stage actions have been implemented and begun to be used.
 
@@ -64,7 +64,7 @@ They are split into a set of layers which get run sequentially during testing. E
 || 02 || layer-02-maximus.opts || 1 || Defines everything which may be enabled to ON. ||
 || 03 || layer-03-fail-*.opts || || Failure testing. Individual options or combos which are expected to Fail. ||
 || 04 || layer-04-maybe-*.opts || || Failure testing. Individual options or combos which might fail but also may succeed. ie eCAP with/without library installed ||
-|| 05 || layer-05-nodeps-*.opts || 1 || Test plug-in-play components when all plugins are missing. ||
+|| 05 || layer-05-nodeps-*.opts || 2 || Test plug-in-play components when all plugins are missing. ||
 || 06+ || ''undecided'' || || This provides ALL the components which may be enabled, AND do not depend on other components in squid. An example of this would be ident ||
 
 
