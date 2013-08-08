@@ -12,7 +12,7 @@ On top of the default system install, run
 {{{
 # for RHEL/CentOS 6
 root% rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-root% yum install libxml2 expat-devel openssl-devel libcap ccache libtool-ltdl-devel cppunit cppunit-devel bzr autoconf automake libtool clang gcc-c++ perl-Pod-MinimumVersion bzip2 ed
+root% yum install libxml2 expat-devel openssl-devel libcap ccache libtool-ltdl-devel cppunit cppunit-devel bzr autoconf automake libtool clang gcc-c++ perl-Pod-MinimumVersion bzip2 ed make
 root% useradd -m -G ccache jenkins
 }}}
 set up permissions to the jenkins user, and that's it.
