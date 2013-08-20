@@ -2,11 +2,15 @@
 #format wiki
 #language en
  * kinkie
+ * AmosJeffries
+ * Amos Jeffries
  * AdrianChadd
+ * PavelKazlenka
  * Henrik Nordström
  * RobertCollins
  * StevenWilton
  * DougDixon
+ * AlexRousskov
  * ReubenFarrelly
  * GuidoSerassio
  * wessels
@@ -18,12 +22,9 @@
  * ChristophHaas
  * DanielNardin
  * ScottPascoe
- * AmosJeffries
- * Amos Jeffries
  * askar
  * KevinKadow
  * Traef06
- * AlexRousskov
  * EdmundoValle
  * AngelaWilliams
  * MattDoran
@@ -72,10 +73,8 @@
  * DanieleRaffo
  * Eliezer Croitoru
  * ChristosTsantilas
- * DmitryKurochkin
  * AdamWanninger
  * ErayAslan
  * StuartHenderson
  * HasanenAlbana
  * NathanHoad
- * PavelKazlenka
