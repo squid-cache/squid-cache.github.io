@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2013-08-24 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2013-08-31 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
@@ -53,7 +53,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#8 ||?? ||define the contents of service status renewal mail send to contacts for each service listing ||not done ||
 ||#8 ||?? ||mail service listing contacts to verify their service listing accuracy ||not done ||
 || ||
-||#7 ||HenrikNordstrom ||Send Foundation announce to squid-announce, squid-users, and blog post || done 2013-07-17 ||
+||#7 ||HenrikNordstrom ||Send Foundation announce to squid-announce, squid-users, and blog post ||done 2013-07-17 ||
 ||#7 ||HenrikNordstrom ||discuss the Foundation merchandise shop status with ex-developer to have it moved to the Foundation. ||in progress ||
 ||#7 ||AmosJeffries ||contact the company accused of GPL violations to learn more about their Squid-based product distribution. ||not done ||
 || ||
