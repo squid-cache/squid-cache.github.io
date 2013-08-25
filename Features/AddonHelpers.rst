@@ -102,6 +102,21 @@ Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/I
 
  /!\ Note that the helper programs other than logging can not use buffered I/O.
 
+=== Key-Value pairs format ===
+
+{i} Relevant to Squid-3.4 and later
+
+The interface for all helpers has been extended to support arbitrary lists of key=value pairs, with the syntax {{{ key=value }}}.
+Some keys have special meaning to Squid, as documented here.
+All messages from squid are URL-escaped (the {{{ rfc1738_unescape }}} from rfc1738.h can be used to decode them.
+For responses, the safe way is to either URL-escape, or to enclose the value in double_quotes ("); any double-quotes or backslashes (\) in the value need to be prefixed by a backslash, \r and \n are replaced respectively by CR and LF
+
+Some example key values:
+{{{
+		user=John%20Smith
+		user="John Smith"
+		user="J. \"Bob\" Smith"
+}}}
 === URL manipulation ===
 
 ## start urlhelper protocol
