@@ -61,8 +61,8 @@ Currently, Squid workers do not share and do not synchronize other resources and
  * stateful HTTP authentication (e.g., digest authentication; see bug [[http://bugs.squid-cache.org/show_bug.cgi?id=3517|3517]]),
  * delay pools,
  * SSL session cache (there is an active project to allow session sharing among workers),
- * secure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]).
- * ICP/HTCP (if multiple workers share the same ICP/HTCP port, an ICP/HTCP response may not go the worker that sent the request, causing timeouts at the requesting worker)
+ * secure cache manager statistics (detailed [[Features/CacheManager#SMP_considerations|elsewhere]]),
+ * ICP/HTCP (works with a caveat: If multiple workers share the same ICP/HTCP port, an ICP/HTCP response may not go the worker that sent the request, causing timeouts at the requesting worker; use a dedicated ICP/HTCP port as a [[http://www.squid-cache.org/mail-archive/squid-users/201308/0358.html|workaround]]).
 
 Some SMP-unaware features continue to work in SMP mode (e.g., DNS responses are going to be cached by individual workers), but their performance suffers from the lack of synchronization and they require more resources due to duplication of information (e.g., each worker may independently resolve and cache the IP of the same domain name). Some SMP-unaware features break badly (e.g., ufs-based cache_dirs become corrupted) unless squid.conf conditionals are used to prevent such breakage. Some SMP-unaware features will appear to work but will do so incorrectly (e.g., delay pools will limit bandwidth on per-worker basis, without sharing traffic information among workers and without dividing bandwidth limits among workers).
 
