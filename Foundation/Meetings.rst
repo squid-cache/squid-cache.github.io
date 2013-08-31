@@ -48,7 +48,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#8 ||AmosJeffries ||minutes for meeting #8 written and circulated ||not done ||
 ||#8 ||AmosJeffries ||draw up and circulate initial Foundation history documents ||not done ||
 ||#8 ||AmosJeffries ||finalize board call directorship position announcement by 2013-08-01 ||not done ||
-||#8 ||AlexRousskov ||minutes for meeting #3 proofreading ||not done ||
+||#8 ||AlexRousskov ||minutes for meeting #3 proofreading ||done ||
 ||#8 ||AlexRousskov, AmosJeffries ||draft "why being a director is cool" paragraph or two ||not done ||
 ||#8 ||?? ||define the contents of service status renewal mail send to contacts for each service listing ||not done ||
 ||#8 ||?? ||mail service listing contacts to verify their service listing accuracy ||not done ||
