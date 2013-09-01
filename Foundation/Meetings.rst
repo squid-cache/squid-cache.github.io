@@ -11,12 +11,14 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  * Location: IRC
 
-==== Draft Agenda ====
+==== Draft Agenda - Meeting #9 ====
  1. Opening of the meeting.
  1. Selection of meeting officials.
  1. Agenda bashing and approval.
  1. Last meeting minutes approval.
  1. Review of action points from last meeting.
+
+  . Initial service listing points allocations.
 
  1. Next meeting scheduling.
  1. Open floor:
@@ -45,13 +47,13 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#8 ||AmosJeffries ||minutes for meeting #7 published ||done ||
 ||#8 ||AmosJeffries ||minutes for meeting #1 published ||done ||
 ||#8 ||AmosJeffries ||meeting minutes #2, correct ACTION meeting number in 5. and then publish. ||done ||
-||#8 ||AmosJeffries ||minutes for meeting #8 written and circulated ||not done ||
+||#8 ||AmosJeffries ||minutes for meeting #8 written and circulated ||done ||
 ||#8 ||AmosJeffries ||draw up and circulate initial Foundation history documents ||not done ||
 ||#8 ||AmosJeffries ||finalize board call directorship position announcement by 2013-08-01 ||not done ||
 ||#8 ||AlexRousskov ||minutes for meeting #3 proofreading ||done ||
-||#8 ||AlexRousskov, AmosJeffries ||draft "why being a director is cool" paragraph or two ||not done ||
+||#8 ||AlexRousskov, AmosJeffries ||draft "why being a director is cool" paragraph or two ||done ||
 ||#8 ||?? ||define the contents of service status renewal mail send to contacts for each service listing ||not done ||
-||#8 ||?? ||mail service listing contacts to verify their service listing accuracy ||not done ||
+||#8 ||?? ||mail service listing contacts to verify their service listing accuracy ||in progress ||
 || ||
 ||#7 ||HenrikNordstrom ||Send Foundation announce to squid-announce, squid-users, and blog post ||done 2013-07-17 ||
 ||#7 ||HenrikNordstrom ||discuss the Foundation merchandise shop status with ex-developer to have it moved to the Foundation. ||in progress ||
