@@ -12,30 +12,20 @@ Most of the Board discussions can be open to the public and your constructive pa
  * Location: IRC
 
 ==== Draft Agenda - Meeting #9 ====
+## 1. Last meeting minutes approval. (after Agenda bashing normally)
  1. Opening of the meeting.
  1. Selection of meeting officials.
  1. Agenda bashing and approval.
- 1. Last meeting minutes approval.
  1. Review of action points from last meeting.
 
-  . Initial service listing points allocations.
+ 1. Initial service listing points allocations.
 
  1. Next meeting scheduling.
  1. Open floor:
 
 ==== Agenda of Last Meeting ====
-''' Meeting #8.'''
+''' Meeting #9.'''
 
- 1. Opening of the meeting.
- 1. Selection of meeting officials.
- 1. Agenda bashing and approval.
- 1. Last meeting minutes approval.
- 1. Review of action points from last meeting.
- 1. Sysadmin progress
- 1. 2011 Foundation Board Report
- 1. Next meeting scheduling.
- 1. Open floor:
-  . WhoWeAre developer certifications
 
 == Action Points ==
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' ||
