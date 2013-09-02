@@ -59,6 +59,16 @@ yum update
 yum install squid
 }}}
 
+==== Squid 3.3 on OpenSUSE BUILD SYSTEM ====
+'''Eliezer:''' a nice build from a friend that is hosted on SUSE servers.
+
+at: http://software.opensuse.org/download.html?project=home%3Aairties%3Aserver&package=squid3
+{{{
+cd /etc/yum.repos.d/
+wget http://download.opensuse.org/repositories/home:airties:server/CentOS_CentOS-6/home:airties:server.repo
+yum install squid3
+}}}
+
 ==== Squid-2.6 ====
 
 Install Procedure:
