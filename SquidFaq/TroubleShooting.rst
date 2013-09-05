@@ -36,6 +36,8 @@ If you see the ''Too many open files'' error message, you are most likely runnin
 || {i} (!) || Squid 3.x provide a ./configure option --with-filedescriptors=N ||
 
 
+ {X} Even with Squid built to support large numbers of FD and the system configuration default set to permit large numbers to be used. The ulimit or equivalent tools can change those limits under Squid at any time. Before reporting this as a problem or bug please carefully check your startup scripts and any tools used to run or manage Squid to discover if they are setting a low FD limit.
+
 
 === Linux ===
 
