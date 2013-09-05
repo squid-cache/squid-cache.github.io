@@ -270,15 +270,41 @@ object will not have changed, so the result is TCP_IMS_HIT.  Squid will
 only return TCP_IMS_MISS if some other client causes a newer version of
 the object to be pulled into the cache.
 
-== Why can't I run Squid as root? ==
+== Why do I need to run Squid as root? why can't I just use cache_effective_user root? ==
 
-by Dave J Woolley
+ ''by Antony Stone and Dave J Woolley''
 
-If someone were to discover a buffer overrun bug in Squid and it runs as
-a user other than root, they can only corrupt the files writeable to
-that user, but if it runs a root, they can take over the whole machine.
+|| Why run the parent squid process as root and the child as user proxy? Is that normal? Is it best practice? Should I chmod or chown cache and other directories? ||
+
+It is completely normal for a great many applications providing network 
+services, and yes, it is best practice.  In fact some will not '''allow''' you to 
+run them as root, without an unprivileged user to run the main process as.
 This applies to all programs that don't absolutely need root status, not
 just squid.
+
+The reasoning is simple:
+
+ 1. You need root privileges to do certain things when you start an application 
+(such as bind to a network socket, open a log file, perhaps read a configuration 
+file), therefore it starts as root.
+
+ 2. Any application might contain bugs which lead to security vulnerabilities, 
+which can be remotely exploited through the network connection, and until the 
+bugs are fixed, you at least want to minimise the risk presented by them.
+
+ 3. Therefore as soon as you've done all the things involved in (1) above, you 
+drop the privilege level of the application, and/or spawn a child process with 
+reduced privilege, so that it still runs and does everything you need, but if 
+a vulnerability is exploited, it no longer has root privilege and therefore 
+cannot cause as much damage as it might have done.
+
+
+Squid does this with SquidConf:cache_effective_user. The coordinator (daemon manager) process must be run as 'root' in order to setup the administrative details and will downgrade its privileges to the SquidConf:cache_effective_user account before running any of the more risky network operations.
+
+If the SquidConf:cache_effective_group is configured Squid will drop additional group privileges and run as only the user:group specified.
+
+The '''-N''' command line option makes Squid run without spawning low-privileged child processes for safe networking. When this option is used Squid main process will drop its privileges down to the SquidConf:cache_effective_user account but will try to retain some means of regaining root privileges for reconfiguration. Some components which rely on the more dangerous root privieges will not be able to be altered with just a reconfigure but will need a full restart.
+
 
 == Can you tell me a good way to upgrade Squid with minimal downtime? ==
 
