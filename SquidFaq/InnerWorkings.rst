@@ -437,6 +437,57 @@ The data channel varies depending on whether you ask for passive ftp or not. Whe
 
 In passive mode, when you request a data transfer, the server tells the client "I am listening on <ip address> <port>." Your client then connects to the server on that IP and port and data flows.
 
+
+== When does Squid re-forward a client request? ==
+When Squid forwards an HTTP request to the next hop (either a SquidConf:cache_peer or an origin server), things may go wrong. In some cases, Squid decides to re-forward the request. This section documents the associated Squid decision logic. Notes in `{curly braces}` are meant to help developers to correlate these comments with Squid sources. Non-developers should ignore those notes.
+
+'''Warning''': Squid uses two somewhat different methods for making re-forwarding decisions. `{FwdState::checkRetry}` and `{FwdState::reforward}`. Unfortunately, there are many different cases when at least one of those methods might be called and method decision may be affected by the calling sequence (i.e. the transaction state). The logic documented below does not match the reality in some corner cases. If you find a serious discrepancy with the real life use case that you care about, please file a documentation bug report.
+
+Squid does '''not''' try to re-forward a request if at least one of the following conditions is true:
+
+ * Squid is shutting down, although this is ignored by `{FwdState::reforward}`, one of the two decision making methods.
+
+ * The number of forwarding attempts exceeded SquidConf:forward_max_tries. For example, if you set SquidConf:forward_max_tries to 1 (one), then no requests will be re-forwarded.
+
+ * Squid successfully received a complete response. See below regarding the meaning of "received" in this context. `{!FwdState.self}`
+
+ * The process of storing the response body (for the purpose of caching it or just for forwarding it to the client) was aborted. This may happen for numerous reasons usually dealing with some difficult-to-recover-from error conditions, possibly not even related to communication with the next hop. See below regarding the meaning of "received" in this context. `{EBIT_TEST(e->flags, ENTRY_ABORTED)}` and `{entry->store_status != STORE_PENDING}`.
+
+ * Squid has not received the end of HTTP response headers but already generated some kind of internal error response. Note that if the response goes through a RESPMOD adaptation service, then "received" here means "received after adaptation" and not "received from the next HTTP hop".  `{entry->store_status != STORE_PENDING}` and `{!entry->isEmpty}` in `{FwdState::checkRetry}`?
+
+ * Squid discovers that the origin server speaks an unsupported protocol. `{flags.dont_retry}` set in `{FwdState::dispatch}`.
+
+ * Squid detects a persistent connection race on a ''pinned'' connection. That is, Squid detects a pinned connection closure after sending [a part of] the request and before receiving anything from the server. Pinned connections are used for connection-based authentication and bumped SSL traffic. `{flags.dont_retry}` set in `{FwdState::fail}`.
+
+ * The producer of the request body (either the client or a precache REQMOD adaptation service) has aborted. `{flags.dont_retry}` set in `{ServerStateData::handleRequestBodyProducerAborted}`.
+
+ * HTTP response header size sent by the next hop exceeds SquidConf:reply_header_max_size. `{flags.dont_retry}` set in `{HttpStateData::continueAfterParsingHeader}`.
+
+ * The received response body size exceeds SquidConf:reply_body_max_size configuration. Currently, this condition may only occur if precache RESPMOD adaptation is enabled for the response.  `{flags.dont_retry}` set in `{ServerStateData::sendBodyIsTooLargeError}`.
+
+ * A precache RESPMOD adaptation service has aborted. `{flags.dont_retry}` set in `{ServerStateData::handleAdaptationAborted}`.
+
+ * A precache RESPMOD adaptation service has blocked the response. `{flags.dont_retry}` set in `{ServerStateData::handleAdaptationBlocked}`.
+
+ * Squid FTP code has started STOR data transfer to the origin server.`{flags.dont_retry}` set in `{FtpStateData::readStor}`.
+
+ * Squid has consumed some of the ''request'' body while trying to send the request to the next hop. This may happen if the request body is larger that the maximum Squid request buffer size: Squid has to consume at least some of the request body bytes in order to receive (and forward) more body bytes. There may be other cases when Squid nibbles at the request body. `{request->bodyNibbled}`.
+
+ * Squid has successfully established a connection but did not receive HTTP response headers and the request is not "Safe" or "Idempotent" as defined in RFC 2619 Section 9.1. `{flags.connected_okay && !checkRetriable}`.
+
+ * Squid has no alternative destinations to try. Please note that alternative destinations may include multiple next hop IP addresses and multiple peers.
+
+ * SquidConf:retry_on_error is ''off'' and the received HTTP response status code is 403 (Forbidden), 500 (Internal Server Error), 501 (Not Implemented) or 503 (Service not available).
+
+ * The received HTTP response status code is ''not'' one of the following codes: 403 (Forbidden), 500 (Internal Server Error), 501 (Not Implemented), 502 (Bad Gateway), 503 (Service not available), and 504 (Gateway Timeout).
+
+
+In other cases, Squid tries to re-forward the request. If the failure was caused by a persistent connection race, Squid retries using the same destination address. Otherwise, Squid goes to next origin server or peer address in the list of alternative destinations.
+
+Please note that this section covers ''forwarding'' retries only. A transaction may fail before Squid tries to forward the request (e.g., an HTTP request itself may be malformed or denied by Squid) or after Squid is done receiving the response (e.g., the response may be denied by Squid).
+
+This analysis is based primarily on `{FwdState::checkRetry}`, `{FwdState::reforward}`, and related forwarding source code. This text is based on Squid trunk revision 12993 dated 2013-08-29. Hard-coded logic may have changed since then.
+
 -----
 ##end
 Back to the SquidFaq
