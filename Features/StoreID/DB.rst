@@ -260,4 +260,9 @@ If you understand the design and have a clue a about a pattern just add it and n
 ^http:\/\/ubuntureleases\.xfree\.com\.ar\/releases\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/mirror\.edatel\.net\.co\/ubuntu-releases\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/cl\.releases\.ubuntu\.com\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
+#dailymotion new cache friendly video patterns
+^http:\/\/proxy\-[0-9]+\.dailymotion\.com/(.*)                  http://vid.dmcdn.net.squid.internal/$1
+^http:\/\/vid[0-9]+\.ak\.dmcdn\.net/(.*)                        http://vid.dmcdn.net.squid.internal/$1
+^http:\/\/s[0-9]+\.dmcdn\.net/(.*)                              http://pic.dmcdn.net.squid.internal/$1
+^http:\/\/static[0-9]+\.dmcdn\.net/(.*)                         http://static.dmcdn.net.squid.internal/$1
 }}}
