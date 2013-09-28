@@ -363,8 +363,9 @@ The Squid Configuration Manual
 
 == TODO ==
 
-Some work is underway to bring existing texts into matching these standard style of markup.
-However there are a number of installed files which have no manual at all.
+
+The Manual best practice is to provide a man(x) page for each file installed on a server system. Squid installs a number of files of various types as listed below. Some work is underway to bring existing texts into matching these standard style of markup. However there are a number of installed files which have no manual at all.
+
 
 || '''Installed file''' || '''man(x)''' || '''Current State:''' ||
 || ~/access.log || {X} || Missing. Relevant? ||
@@ -406,18 +407,21 @@ However there are a number of installed files which have no manual at all.
 || helpers/negotiate_auth/kerberos/negotiate_kerberos_auth || 8 || (./) Done. ||
 || helpers/negotiate_auth/kerberos/negotiate_kerberos_auth_test || {X} || Missing. Convert README ||
 || helpers/negotiate_auth/SSPI/negotiate_sspi_auth.exe || {X} || Missing. Convert readme.txt ||
+|| helpers/negotiate_auth/wrapper/negotiate_wrapper || {X} || Missing. ||
 || helpers/ntlm_auth/fake/ntlm_fake_auth || {X} || Missing. Convert wiki NTLM fake auth page. ||
 || helpers/ntlm_auth/smb_lm/ntlm_smb_lm_auth || {X} || Missing ||
 || helpers/ntlm_auth/SSPI/ntlm_sspi_auth.exe || 8 || (./) Done. ||
+|| helpers/ssl/cert_valid.pl || {X} || Missing. Convert intro text with pod2man ||
 || helpers/url_rewrite/url_fake_rewrite || {X} || Missing ||
 || helpers/url_rewrite/url_fake_rewrite.sh || {X} || Missing ||
 || src/dnsserver || {X} || Missing ||
 || src/mime.conf || {X} || Missing ||
 || src/mime.conf.default || {X} || Missing. Symlink to mime.conf manual? ||
+|| src/recv-announce || {X} || Missing. ||
 || src/squid || 8 || (./) Done. ||
 || src/squid.conf || {X} || Missing. Convert squid.conf.documented ||
-|| src/squid.conf.default || {X} || Missing. Symlink to squid.conf manual? ||
-|| src/squid.conf.documented || {X} || Missing ||
+|| src/squid.conf.default || N/A || http://www.squid-cache.org/Doc/config/ instead  ||
+|| src/squid.conf.documented || N/A || http://www.squid-cache.org/Doc/config/ instead ||
 || src/unlinkd || {X} || Missing ||
 || src/DiskIO/DiskDaemon/diskd || {X} || Missing ||
 || src/icmp/pinger || {X} || Missing ||
