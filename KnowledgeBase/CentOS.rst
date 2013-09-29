@@ -84,6 +84,9 @@ yum install -y perl gcc autoconf automake make sudo wget
 
 # and some extra packages
 yum install libxml2-devel libcap-devel
+
+# to bootstrap and build from bzr needs also the packages
+yum install libtool-ltdl-devel
 }}}
 
 The following ./configure options install Squid into the CentOS structure properly: 
