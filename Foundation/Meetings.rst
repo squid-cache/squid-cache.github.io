@@ -7,11 +7,11 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2013-09-01 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2013-10-05 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC
 
-==== Draft Agenda - Meeting #10 ====
+==== Draft Agenda - Meeting #11 ====
  1. Opening of the meeting.
  1. Selection of meeting officials.
  1. Agenda bashing and approval.
