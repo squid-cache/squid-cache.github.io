@@ -145,10 +145,10 @@ Certain features are no longer relevant as the code improves and are planned for
 || ''' Version''' || '''Feature''' || '''Why''' ||
 ##|| 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[Translations|langpack]] ||
 ##|| 3.1 || libcap 1.x || libcap-2.09+ is required for simpler code and proper API usage. ||
-|| 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
-|| 3.2 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
-|| 3.2+ || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
+##|| 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
+##|| 3.2 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
 || 3.5 || dnsserver and DNS external helper API || Internal DNS client now appears to satisfy all use-cases. ||
 || 3.5 || COSS storage type || Superceded by ROCK storage type ||
+|| TBD || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
 ##|| 3.3 || cachemgr_passwd || Security is better controlled by login SquidConf:acl in the SquidConf:http_access configuration ||
 ##|| 3.3 || cachemgr.cgi || Merger of report functionality into the main squid process obsoletes it as a stand-alone application. ||
