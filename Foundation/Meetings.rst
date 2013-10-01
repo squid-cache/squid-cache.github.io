@@ -11,14 +11,16 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  * Location: IRC
 
-==== Draft Agenda - Meeting #11 ====
- 1. Opening of the meeting.
- 1. Selection of meeting officials.
- 1. Agenda bashing and approval.
- 1. Last meeting minutes approval.
- 1. Review of action points from last meeting.
+==== Draft Agenda - Meeting #10 ====
+ 1. Opening of the meeting
+ 1. Selection of meeting officials
+ 1. Agenda bashing and approval
+ 1. Last meeting minutes approval
+ 1. Review of action points from last meeting
 
- 1. Next meeting scheduling.
+ 1. Director applications review
+
+ 1. Next meeting scheduling
  1. Open floor:
 
 
@@ -38,8 +40,13 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' || '''ETA''' ||
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || 2013-10-03 ||
 || ||
-||#9 ||HenrikNordstrom ||new sysadmin announcement to be drafted by hno and circulated on squid-board list for review. ||not done || ||
-||#9 ||HenrikNordstrom ||investigate project changeset statistics error (may pass to sysadmin)||not done ||
+||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
+||#9 ||HenrikNordstrom ||update and circulate draft of service status renewal mail     ||not done || 2013-09-01 ||
+||#9 ||HenrikNordstrom ||organize creation of the new shop ||not done ||
+||#9 ||AlexRousskov ||proofread meeting #8 minutes ||not done ||
+||#9 ||AmosJeffries ||inform Henrik who the new webmaster-in-training is ||not done ||
+||#9 ||AmosJeffries ||publish minutes of meeting #3 ||done ||
+||#4 ||AmosJeffries ||minutes for meeting #9 written and circulated ||done ||
 || ||
 ||#8 ||HenrikNordstrom ||send public announcement about new sysadmin staff ||not done ||
 ||#8 ||AmosJeffries ||draw up and circulate initial Foundation history documents ||not done ||
@@ -70,7 +77,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#6 ||2013-04-28 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-04-28_board-meeting-6.html ||
 ||#5 ||2012-07-26 ||IRC ||TBD ||
 ||#4 ||2012-06-16 ||IRC ||TBD ||
-||#3 ||2012-05-17 ||IRC ||TBD ||
+||#3 ||2012-05-17 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-05-17_board-meeting-3.html ||
 ||#2 ||2012-03-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-03-20_board-meeting-2.html ||
 ||#1 ||2012-02-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-02-20_board-meeting-1.html ||
 
