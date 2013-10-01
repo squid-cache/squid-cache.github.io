@@ -68,6 +68,8 @@ Squid-2.6 and later all support:
   * Specific feature details at [[Features/Authentication]] [[Features/NegotiateAuthentication]]
  * cache file eraser
   * SquidConf:unlinkd_program
+ * DNS lookup (removed in Squid-3.5)
+  * SquidConf:dns_program
 
 Squid-2.7 (only):
  * HTTP Server redirection replies
@@ -88,9 +90,9 @@ Squid-3.4+ support:
  * Cache object de-duplication
   * (SquidConf:store_id_program, SquidConf:store_id_access, SquidConf:store_id_children, SquidConf:store_id_bypass)
   * Specific feature details at [[Features/StoreID]]
-
-Proposed:
  * SSL certificate validation
+  * (SquidConf:sslcrtvalidator_program, SquidConf:sslcrtvalidator_children)
+  * Specific feature details at [[Features/SslServerCertValidator]]
 
 Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/ICAP|ICAP services]] which differ from helper scripts in many ways.
 
@@ -324,7 +326,7 @@ Result line sent back to Squid:
 
 ==== Bearer Scheme ====
 
-  . {i} the '''Bearer''' authentication scheme is proposed to be supported by [[Squid-3.4]] and newer.
+  . {i} the '''Bearer''' authentication scheme is '''proposed''' to be supported by [[Squid-3.4]] and newer. But not yet implemented.
 
 ## start bearerauth protocol
 Input line received from Squid:
