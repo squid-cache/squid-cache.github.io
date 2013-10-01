@@ -44,7 +44,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
 ||#9 ||HenrikNordstrom ||update and circulate draft of service status renewal mail     ||not done || 2013-09-01 ||
 ||#9 ||HenrikNordstrom ||organize creation of the new shop ||not done ||
-||#9 ||AlexRousskov ||proofread meeting #8 minutes ||not done ||
+||#9 ||AlexRousskov ||proofread meeting #8 minutes ||done ||
 ||#9 ||AmosJeffries ||inform Henrik who the new webmaster-in-training is ||not done ||
 ||#9 ||AmosJeffries ||publish minutes of meeting #3 ||done ||
 ||#4 ||AmosJeffries ||minutes for meeting #9 written and circulated ||done ||
@@ -67,7 +67,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#4 ||AmosJeffries ||minutes for meeting #4 written and circulated ||not done ||
 || ||
 ||#3 ||AmosJeffries ||Copyright discussion on squid-core ||in progress ||
-||#3 ||AlexRousskov ||propose a new copyright boilerplate and associated scripts ||not done ||
+||#3 ||AlexRousskov ||propose a new copyright boilerplate and associated scripts ||in progress || 2013-10-04 ||
 
 
 == Past Meetings ==
