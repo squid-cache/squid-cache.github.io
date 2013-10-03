@@ -9,7 +9,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Upcoming Meeting ==
  * Date: '''05:00 2013-10-05 UTC''' (if this date is in the past, then this section is stale)
 
- * Location: IRC
+ * Location: IRC.
 
 ==== Draft Agenda - Meeting #10 ====
  1. Opening of the meeting
@@ -42,17 +42,17 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || 2013-10-03 ||
 || ||
 ||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
-||#9 ||HenrikNordstrom ||update and circulate draft of service status renewal mail     ||not done || 2013-09-01 ||
+||#9 ||HenrikNordstrom ||update and circulate draft of service status renewal mail ||not done || 2013-09-01 ||
 ||#9 ||HenrikNordstrom ||organize creation of the new shop ||not done ||
 ||#9 ||AlexRousskov ||proofread meeting #8 minutes ||done ||
-||#9 ||AmosJeffries ||inform Henrik who the new webmaster-in-training is ||not done ||
+||#9 ||AmosJeffries ||inform Henrik who the new webmaster-in-training is ||not done || 2013-10-05 ||
 ||#9 ||AmosJeffries ||publish minutes of meeting #3 ||done ||
-||#4 ||AmosJeffries ||minutes for meeting #9 written and circulated ||done ||
+||#9 ||AmosJeffries ||minutes for meeting #9 written and circulated ||done ||
 || ||
 ||#8 ||HenrikNordstrom ||send public announcement about new sysadmin staff ||not done ||
 ||#8 ||AmosJeffries ||draw up and circulate initial Foundation history documents ||not done ||
-||#8 ||AmosJeffries ||finalize board call directorship position announcement by 2013-09-02 ||not done ||
-||#8 ||HenrikNordstrom ||define the contents of service status renewal mail send to contacts for each service listing ||in progress ||
+||#8 ||AmosJeffries ||finalize board call directorship position announcement ||done || 2013-09-02 ||
+||#8 ||HenrikNordstrom ||define the contents of service status renewal mail send to contacts for each service listing ||done ||
 ||#8 ||HenrikNordstrom ||mail service listing contacts to verify their service listing accuracy ||in progress ||
 || ||
 ||#7 ||HenrikNordstrom ||discuss the Foundation merchandise shop status with owner to have it moved to the Foundation. ||in progress ||
