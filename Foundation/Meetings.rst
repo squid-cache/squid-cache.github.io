@@ -69,7 +69,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#4 ||AmosJeffries ||minutes for meeting #4 written and circulated ||not done ||
 || ||
 ||#3 ||AmosJeffries ||Copyright discussion on squid-core ||in progress ||
-||#3 ||AlexRousskov ||propose a new copyright boilerplate and associated scripts ||in progress || 2013-10-04 ||
+||#3 ||AlexRousskov ||propose a new copyright boilerplate and associated scripts ||done||
 
 
 == Past Meetings ==
