@@ -44,8 +44,10 @@ Thread safety is currently out of scope.
 Currently being carried out as a feature-branch of HEAD at [[https://code.launchpad.net/~kinkie/squid/|lp:~kinkie/squid/stringng]]. A few users have been converted as well, starting with the replacement of !SquidString.
 
 == Merge Strategy ==
- 1. merge !MemBlob and related classes
- 1. merge SBuf and related classes (exceptions)
+ 1. ./ merge !MemBlob and related classes
+ 1. ./ merge SBuf and related classes (exceptions)
+ 1. merge !SBufExtras
+ 1. replace !SquidString
  1. merge !SBufTokenizer
  1. merge !SBufList
  1. merge users
