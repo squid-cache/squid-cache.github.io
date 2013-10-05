@@ -22,6 +22,7 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Review of action points from last meeting
 
  1. Copyright framework
+ 1. Sysadmin next task
 
  1. Next meeting scheduling
  1. Open floor:
@@ -41,7 +42,8 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Action Points ==
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' || '''ETA''' ||
-||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || 2013-10-03 ||
+||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
+||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || done || ||
 || ||
 ||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
 ||#9 ||HenrikNordstrom ||update and circulate draft of service status renewal mail ||not done || 2013-09-01 ||
@@ -53,20 +55,20 @@ Most of the Board discussions can be open to the public and your constructive pa
 || ||
 ||#8 ||HenrikNordstrom ||send public announcement about new sysadmin staff ||not done ||
 ||#8 ||AmosJeffries ||draw up and circulate initial Foundation history documents ||not done ||
-||#8 ||AmosJeffries ||finalize board call directorship position announcement ||done || 2013-09-02 ||
+||#8 ||AmosJeffries ||finalize board call directorship position announcement ||done || ||
 ||#8 ||HenrikNordstrom ||define the contents of service status renewal mail send to contacts for each service listing ||done ||
 ||#8 ||HenrikNordstrom ||mail service listing contacts to verify their service listing accuracy ||in progress ||
 || ||
 ||#7 ||HenrikNordstrom ||discuss the Foundation merchandise shop status with owner to have it moved to the Foundation. ||in progress ||
 ||#7 ||AmosJeffries ||contact the company accused of GPL violations to learn more about their Squid-based product distribution. ||not done ||
 || ||
-||#6 ||AmosJeffries ||try to expand webmaster group with more people that can help in keeping structure and maintainability of our web pages and wiki ||not done ||
+||#6 ||AmosJeffries ||try to expand webmaster group with more people that can help in keeping structure and maintainability of our web pages and wiki ||in progress ||
 ||#6 ||HenrikNordstrom ||document pending sysadmin tasks in bugzilla ||not done ||
 || ||
 ||#5 ||HenrikNordstrom ||set up mail list for contacting mirrors. ||not done ||
 ||#5 ||AmosJeffries ||minutes for meeting #5 written and circulated ||not done ||
 || ||
-||#4 ||AmosJeffries ||minutes for meeting #4 written and circulated ||not done ||
+||#4 ||AmosJeffries ||minutes for meeting #4 written and circulated ||in progress ||
 || ||
 ||#3 ||AmosJeffries ||Copyright discussion on squid-core ||in progress ||
 ||#3 ||AlexRousskov ||propose a new copyright boilerplate and associated scripts ||done||
