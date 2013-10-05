@@ -27,6 +27,49 @@ DAG and RPMforge repositories appear to no longer contain any files. Other sourc
 
 
 ## 4  = indents required for BinaryPackages page include
+
+==== Squid-3.4 -Beta ====
+ * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
+
+'''Eliezer''': As of 3.4.0.2 I release the Beta release of squid RPM for two CPU classes OS, i686 and x86_64.
+
+There are couple issues that needs to be fixed since there was some data loss in the transition from old server to another.
+
+- The init.d script
+
+- package requires sections which is not perfected yet to support ssl-bump.
+
+- src rpm is at: http://www1.ngtech.co.il/rpm/centos/6/x86_64/SRPM
+
+{{{
+[squid]
+name=Squid repo for CentOS Linux 6 - $basearch
+#IL mirror
+baseurl=http://www1.ngtech.co.il/rpm/centos/6/$basearch/beta
+failovermethod=priority
+enabled=1
+gpgcheck=0
+}}}
+
+or
+
+{{{
+[squid]
+name=Squid repo for CentOS Linux 6 - $basearch
+#AUS mirror
+baseurl=http://repo.ngtech.co.il/rpm/centos/6/$basearch/beta
+failovermethod=priority
+enabled=1
+gpgcheck=0
+}}}
+
+Install Procedure:
+{{{
+yum update
+yum install squid
+}}}
+
+
 ==== Squid-3.3 ====
 
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
