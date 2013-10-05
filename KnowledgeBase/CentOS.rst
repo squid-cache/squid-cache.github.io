@@ -76,6 +76,23 @@ Install Procedure:
 yum install squid
 }}}
 
+
+== Potentially missing OS resources (libs\software) ==
+There are couple dependencies that CentOS might need but cannot be installed by "yum install" yet..
+
+One of the dependencies I have seen are:
+
+"Crypt::X509" which is a perl module that is not in the basic repos of centos.
+
+In order to install it use cpan.
+{{{
+# cpan
+> install Crypt::X509
+}}}
+The above is not included in squid RPM but might be in other repos which I do not support.
+
+
+* troubleshooting SSL: first install the libs the see what happens.
 == Compiling ==
 
 {{{
