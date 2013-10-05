@@ -92,7 +92,7 @@ In order to install it use cpan.
 The above is not included in squid RPM but might be in other repos which I do not support.
 
 
-* troubleshooting SSL: first install the libs the see what happens.
+'''troubleshooting SSL''': first install the libs the see what happens.
 == Compiling ==
 
 {{{
