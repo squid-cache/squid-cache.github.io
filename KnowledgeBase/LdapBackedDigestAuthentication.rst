@@ -28,17 +28,14 @@ The base needs to hold an attribute containing a pair, realm and H(A1) separated
 
 '''Installing and testing the helper'''
 
-'''1. '''Get the Squid 3 or Squid 2 HEAD sources, compile the digest_ldap_auth helper and put it together with the others squid helpers.
+'''1. '''Get the [[http://www.squid-cache.org/Versions/|Squid sources]], compile the digest_ldap_auth helper and put it together with the others squid helpers.
 
 Here I will not discuss much on how to compile Squid or solve dependency problems.
 
 {{{
-wget http://www.squid-cache.org/Versions/v2/HEAD/squid-2.HEAD-20070801.tar.gz
-tar -zxvf squid-2.HEAD-20070801.tar.gz
-cd squid-2.HEAD-20070801
-./configure --disable-ident-lookups --enable-auth=digest --enable-digest-auth-helpers=ldap
+./configure --enable-auth-digest=LDAP
 make
-cp ./helpers/digest_auth/ldap/digest_ldap_auth /usr/lib/squid
+cp ./helpers/digest_auth/LDAP/digest_ldap_auth /usr/lib/squid
 ../}}}
 Put it where YOUR distro holds the helpers (or wherever you want).
 
@@ -102,7 +99,6 @@ searchbase 'uid=usuario1, ou=Users,dc=minharede,dc=lan'
 password: 6f9e1772bc8ed55bfe157071e169bf19
 6f9e1772bc8ed55bfe157071e169bf19
 }}}
-''' '''
 
 '''8.''' Configure Squid to use the LDAP digest helper.
 
