@@ -102,8 +102,7 @@ yum update
 yum install squid
 }}}
 
-==== Squid 3.3 on OpenSUSE BUILD SYSTEM ====
-'''Eliezer:''' a nice build from a friend that is hosted on SUSE servers.
+ {i} '''Eliezer:''' a nice build from a friend that is hosted on SUSE servers.
 
 at: http://software.opensuse.org/download.html?project=home%3Aairties%3Aserver&package=squid3
 {{{
