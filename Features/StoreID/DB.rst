@@ -2,6 +2,14 @@ A basic structure as an example for StoreID url DB "Many to One".
 
 This DB design is from Alan at [[http://squid-web-proxy-cache.1019090.n4.nabble.com/store-id-pl-doesnt-cache-youtube-tp4660861p4660945.html|POST:"Fwd: [squid-users] store-id.pl doesnt cache youtube " ]]
 
+# a small tooltip command to cleanup the DB: 
+{{{
+cat dbfile | sed -r -e 's/\s+/\t/g' |sed '/^\#/d' >cleaned_db_file
+}}}
+
+The pattern syntax explained:
+The pattern is 3\ parts long which is composed of of a "pattern-regx(url should not contain spaces) - space storeID based on the pattern regex - end of line"
+
 If you understand the design and have a clue a about a pattern just add it and notice that there is a way to know what you have done...
 {{{
 #source forge mirrors
@@ -265,4 +273,6 @@ If you understand the design and have a clue a about a pattern just add it and n
 ^http:\/\/vid[0-9]+\.ak\.dmcdn\.net/(.*)                        http://vid.dmcdn.net.squid.internal/$1
 ^http:\/\/s[0-9]+\.dmcdn\.net/(.*)                              http://pic.dmcdn.net.squid.internal/$1
 ^http:\/\/static[0-9]+\.dmcdn\.net/(.*)                         http://static.dmcdn.net.squid.internal/$1
+#ngtech repo pattern
+^http:\/\/(www1|repo)\.ngtech\.co\.il\/rpm/(.*) http://repo.ngtech.co.il.squid.internal/rpm/$2
 }}}
