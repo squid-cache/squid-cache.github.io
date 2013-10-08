@@ -41,6 +41,9 @@ There are a few key individuals who keep the project running.
   . '''system admin''': master, west
   . '''service admin''': dns, bugzilla
 
+ * [[NathanHoad|Nathan Hoad]]
+  . '''service admin''': wiki
+
 
 = Other Contributors =
  * Countless independent [[http://www.squid-cache.org/CONTRIBUTORS.txt|Contributors]].
