@@ -7,57 +7,50 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2013-10-08 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2013-11-03 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC.
 
-==== Draft Agenda - Meeting #10 ====
+==== Draft Agenda - Meeting #11 ====
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
-
- 1. Director applications review
-
  1. Review of action points from last meeting
-
- 1. Copyright framework
- 1. Sysadmin next task
 
  1. Next meeting scheduling
  1. Open floor:
 
 
 ==== Agenda of Last Meeting ====
-''' Meeting #9.'''
+''' Meeting #10.'''
 
- 1. Opening of the meeting.
- 1. Selection of meeting officials.
- 1. Agenda bashing and approval.
- 1. Review of action points from last meeting.
- 1. Initial service listing points allocations.
- 1. Next meeting scheduling.
+ 1. Opening of the meeting
+ 1. Selection of meeting officials
+ 1. Agenda bashing and approval
+ 1. Last meeting minutes approval
+ 1. Director applications review
+ 1. Review of action points from last meeting
+ 1. Copyright framework
+ 1. Sysadmin next task
+ 1. Next meeting scheduling
  1. Open floor:
-  * adding treasurers report as standard agenda item
+  * no items discussed.
 
 == Action Points ==
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' || '''ETA''' ||
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
-||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || done || ||
+||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
 ||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
 ||#9 ||HenrikNordstrom ||update and circulate draft of service status renewal mail ||not done || 2013-09-01 ||
 ||#9 ||HenrikNordstrom ||organize creation of the new shop ||not done ||
-||#9 ||AlexRousskov ||proofread meeting #8 minutes ||done ||
 ||#9 ||AmosJeffries ||inform Henrik who the new webmaster-in-training is ||not done || 2013-10-05 ||
-||#9 ||AmosJeffries ||publish minutes of meeting #3 ||done ||
-||#9 ||AmosJeffries ||minutes for meeting #9 written and circulated ||done ||
 || ||
 ||#8 ||HenrikNordstrom ||send public announcement about new sysadmin staff ||not done ||
 ||#8 ||AmosJeffries ||draw up and circulate initial Foundation history documents ||not done ||
-||#8 ||AmosJeffries ||finalize board call directorship position announcement ||done || ||
-||#8 ||HenrikNordstrom ||define the contents of service status renewal mail send to contacts for each service listing ||done ||
-||#8 ||HenrikNordstrom ||mail service listing contacts to verify their service listing accuracy ||in progress ||
+||#8 ||HenrikNordstrom ||send service status renewal mail to contacts for each service listing ||not done ||
+||#8 ||HenrikNordstrom ||mail service listing contacts to verify their service listing accuracy ||not done ||
 || ||
 ||#7 ||HenrikNordstrom ||discuss the Foundation merchandise shop status with owner to have it moved to the Foundation. ||in progress ||
 ||#7 ||AmosJeffries ||contact the company accused of GPL violations to learn more about their Squid-based product distribution. ||not done ||
@@ -71,11 +64,11 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#4 ||AmosJeffries ||minutes for meeting #4 written and circulated ||in progress ||
 || ||
 ||#3 ||AmosJeffries ||Copyright discussion on squid-core ||in progress ||
-||#3 ||AlexRousskov ||propose a new copyright boilerplate and associated scripts ||done||
 
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
+||#10 ||2013-10-08 ||IRC ||TBD ||
 ||#9 ||2013-09-01 ||IRC ||TBD ||
 ||#8 ||2013-07-15 ||IRC ||TBD ||
 ||#7 ||2013-05-26 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-05-26_board-meeting-7.html ||
