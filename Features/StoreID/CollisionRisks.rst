@@ -12,7 +12,7 @@ I would like to describe some of the risks that comes with maintaining a cache.
 
 The basics of information security are Confidentiality, Integrity, and Availability.
 
-===  Confidentiality ===
+==  Confidentiality ==
 Since HTTP we are talking about, there is a real issue with reading and sharing URLs and other info.
 
 I remember that there was a professor that could tell what OS and what OS specific version the TCP packets on a tcpdump came from.
@@ -21,13 +21,13 @@ So a far more detailed information can be extracted using a proxy access.log or 
 
 It requires the cache administratr to be a person that can be trusted with all this information. 
 
-=== Integrity ===
+== Integrity ==
 While operating a cache there is a very attempting way of altering data or over-caching data.
 
 The above can violate the integrity of the response to the client request.
 
 
-=== Availability ===
+== Availability ==
 A cache do allow over availability which should not impact anyone of the users.
 
 The whole purpose of a caching proxy is to allow the above and the cache admin should make sure the cache is bringing availability and not the opposite.
@@ -38,13 +38,13 @@ To allow you understand the meaning of the above I would describe a scenario.
 
 These issues are major problems for end users and businesses trading on the Internet. Some can even endanger lives. They are caused by bad proxy configuration, yet the proxy administrator will very rarely ever be told about the problem. Since the proxy is making it appear to be a broken website - the website administrator will face all the complaints.
 
-=== ISP ===
+== ISP ==
 
 A user tries to write a small article while the page loads up and after reading two pages long the date that the professor told this poor user to read was not the date of the delivered article.
 
 A very fast F5 or SHIFT-F5 or CTRL-F5 changes the page contents and the poor user understand that the page was updated two weeks ago (the professor talked about the latest released paper.. ).
 
-=== Medical Facilities (hospital) ===
+== Medical Facilities (hospital) ==
 
 A Doctor reads some small notice pages from the local intranet server and gives a full medical prescription to their client.
 
@@ -52,29 +52,29 @@ The Doctor doesn't know about the latest news since the cached page was not up t
 
 The Client cannot buy the drug since there is a big gap between production and marker demand. 
 
-=== Police, Army and National Security ===
+== Police, Army and National Security ==
 
 
 
-=== Parenthood ===
+== Parenthood ==
 Pictures that parents do not want shown their child shows up on a clean site since there is a problem with the StoreID algorithm pattern matching the clean site and an alternative porn site parody of it.
 
 
-=== Bank\Trade ===
+== Bank\Trade ==
 A bank account page that is not up-to-date will make the poor users buy something he can't really pay for.
 
 Administrator choosing to ignore caching rules on images causes wrong captcha picture to be delivered to users. Entering the embeded text in the captcha login does not work properly. Blocking users from accessing their banking accounts or making online purchases.
 
 
-== Cache in other levels ==
+= Cache in other levels =
 
-=== CPU ===
+== CPU ==
 A CPU cache memory can effect many results of calculations.
 
 AWe are doing lots of work on a computers that has lots of cache and if the cache will break down from any reason you won't like the computer that much.
 I imagine that the CPU cache helps me a lot when writing a small scripts or reading emails.
 
-== Conclusion ==
+= Conclusion =
 
 There is a risk in maintaining a cache and there are benefits.
 
