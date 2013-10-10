@@ -43,6 +43,9 @@ Tasks in this section need to be done in a rough order to make the changes easy.
   1. verify all DBG_CRITICAL output conforms to the labeling criterion in [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]]
   1. verify all DBG_CRITICAL and DBG_IMPORTANT output has a KnowledgeBase page describing it (as per [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]]) or a Feature page troubleshooting entry.
 
+ * Improve stats collection and reporting APIs
+    {{{StatHist}}} has a bigger than needed API, showing its age and heritage. Stats collection and stats reporting should be disassociated, in order to allow unit tests to only include the former while only using stubs of the latter.
+
 === Small Tasks ===
 
 Small, but nagging annoyances. These might be done already if this page is not updated regularly.
