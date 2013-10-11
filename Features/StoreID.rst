@@ -4,7 +4,7 @@
 
 = Feature: Store ID =
 
- * '''Goal''': Allow the admin to decide on specific store ID per one or more urls. This allows also to prevent duplications of the same content.
+ * '''Goal''': Reduce cache misses when identical content is accessed using different URLs.
 
  * '''Status''': completed.
 
@@ -20,8 +20,9 @@
 
 == Details ==
 
-The feature allows the proxy admin to specify a StoreID for each object\request using a helper program.
-It can be used to help prevent object duplication in cases such as known CDN URL patterns.
+"Store ID" is another name for the Squid cache key. By default, store IDs are computed by Squid so that different URLs are mapped to different store IDs. This feature allows the proxy admin to specify a custom store ID calculation algorithm via a helper program. It is usually used to assign the same store ID to transactions with different request URLs. Such mapping may reduce misses (i.e., increase hit ratio) when dealing with CDN URLs and similar cases where different URLs are known to point to essentially the same content.
+
+Store ID violates HTTP and causes havoc if URLs pointing to different content are incorrectly mapped to the same Store ID. A Squid admin lacks control over URL-to-content mapping used by external CDNs and content providers. Even if the initial reverse engineering of their URL space is successful, maintaining the Store ID helper correctness is usually difficult because of sudden external mapping changes.
 
 This feature is a port of the [[Squid-2.7]] Store-URL feature, however it does work in a slightly different way and will make [[Squid-3.4]] or later to apply all store\cache related work to be against the StoreID and not the request URL. This includes SquidConf:refresh_pattern. This allows more flexibility in the way admin will be able use the helper.
 
@@ -34,6 +35,7 @@ This feature will allow us later to implement [[http://www.metalinker.org/|Metal
 
   . For example; HTTP ETag header values are only guaranteed to be unique per-URL and if a CDN uses different ETag from each server then conditional requests involving ETag will MISS or REFRESH more often despite the content object/file being identical. Possibly causing a larger bandwidth consumption than if StoreID was not present at all.
 
+ * StoreID causes HTTP redirect loops if Squid is not configured to avoid caching redirection responses (HTTP allows caching of some redirection responses). If both the request URL and the corresponding redirect response Location URL are mapped to the same Store ID, the ''redirected'' request will hit on the cached redirection response, creating a loop. See Squid bug [[http://bugs.squid-cache.org/show_bug.cgi?id=3937|3937]].
 
  * ICP and HTCP support is missing.
   . URL queries received from SquidConf:cache_peer siblings are not passed through StoreID helper. So the resulting store/cache lookup will MISS on URLs normally alterd by StoreID.
