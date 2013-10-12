@@ -275,7 +275,6 @@ If you understand the design and have a clue about a pattern just add it and not
 ^http:\/\/static[0-9]+\.dmcdn\.net/(.*)                         http://static.dmcdn.net.squid.internal/$1
 #ngtech repo pattern
 ^http:\/\/(www1|repo)\.ngtech\.co\.il\/rpm/(.*) http://repo.ngtech.co.il.squid.internal/rpm/$2
-}}}
 # jQuery patterns - excluding alpha, beta rc releases - map to official jQuery CDN
 [^\?]*\/jquery\-([0-9]+\.[0-9]+\.[0-9]+)\.js                                 http://code.jquery.com/jquery-$1.js
 [^\?]*\/jquery\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.js                            http://code.jquery.com/jquery-$1.min.js
@@ -299,3 +298,4 @@ If you understand the design and have a clue about a pattern just add it and not
 [^\?]*\/qunit\-([0-9]+\.[0-9]+\.[0-9]+)\.(js|css)                            http://code.jquery.com/qunit/qunit-$1.$2
 [^\?]*\/qunit\/([0-9]+\.[0-9]+\.[0-9]+)\/qunit\.min\.js                      http://code.jquery.com/qunit/qunit-$1.js
 #
+}}}
