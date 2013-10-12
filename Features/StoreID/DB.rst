@@ -8,9 +8,9 @@ cat dbfile | sed -r -e 's/\s+/\t/g' |sed '/^\#/d' >cleaned_db_file
 }}}
 
 The pattern syntax explained:
-The pattern is 3\ parts long which is composed of of a "pattern-regx(url should not contain spaces) - space storeID based on the pattern regex - end of line"
+The pattern is 3\ parts long which is composed of "pattern-regx(url should not contain spaces) - space storeID based on the pattern regex - end of line"
 
-If you understand the design and have a clue a about a pattern just add it and notice that there is a way to know what you have done...
+If you understand the design and have a clue about a pattern just add it and notice that there is a way to know what you have done...
 {{{
 #source forge mirrors
 ^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                    http://dl.sourceforge.net.squid.internal/$1
@@ -276,3 +276,26 @@ If you understand the design and have a clue a about a pattern just add it and n
 #ngtech repo pattern
 ^http:\/\/(www1|repo)\.ngtech\.co\.il\/rpm/(.*) http://repo.ngtech.co.il.squid.internal/rpm/$2
 }}}
+# jQuery patterns - excluding alpha, beta rc releases - map to official jQuery CDN
+[^\?]*\/jquery\-([0-9]+\.[0-9]+\.[0-9]+)\.js                                 http://code.jquery.com/jquery-$1.js
+[^\?]*\/jquery\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.js                            http://code.jquery.com/jquery-$1.min.js
+[^\?]*\/jquery\/([0-9]+\.[0-9]+\.[0-9]+)\/jquery\.min\.js                    http://code.jquery.com/jquery-$1.min.js
+[^\?]*\/jquery\-migrate\-([0-9]+\.[0-9]+\.[0-9]+)\.js                        http://code.jquery.com/jquery-migrate-$1.js
+[^\?]*\/jquery\-migrate\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.js                   http://code.jquery.com/jquery-migrate-$1.min.js
+[^\?]*\/jquery\-migrate\/([0-9]+\.[0-9]+\.[0-9]+)/jquery\-migrate\.min\.js   http://code.jquery.com/jquery-migrate-$1.min.js
+[^\?]*\/(ui)\/([0-9]+\.[0-9]+\.[0-9]+)\/jquery\-ui\.js                       http://code.jquery.com/$1/$2/jquery-$1.js
+[^\?]*\/(ui)\/([0-9]+\.[0-9]+\.[0-9]+)\/jquery\-ui\.min\.js                  http://code.jquery.com/$1/$2/jquery-$1.min.js
+[^\?]*\/jquery\.?ui\/([0-9]+\.[0-9]+\.[0-9]+)\/jquery\-ui\.js                http://code.jquery.com/ui/$2/jquery-ui.js
+[^\?]*\/jquery\.?ui\/([0-9]+\.[0-9]+\.[0-9]+)\/jquery\-ui\.min\.js           http://code.jquery.com/ui/$2/jquery-ui.min.js
+[^\?]*\/jquery\.(mobile)\-([0-9]+\.[0-9]+\.[0-9]+)\.js                       http://code.jquery.com/$1/$2/jquery.$1-$2.js
+[^\?]*\/jquery\-(mobile)\/([0-9]+\.[0-9]+\.[0-9]+)/jquery\.mobile\.min\.js   http://code.jquery.com/$1/$2/jquery.$1-$2.js
+[^\?]*\/jquery\.(mobile)\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.(js|css)            http://code.jquery.com/$1/$2/jquery.$1-$2.min.$3
+[^\?]*\/(mobile)\/([0-9\.]+)\/jquery\.(mobile\.structure)\-[0-9\.]+min\.css  http://code.jquery.com/$1/$2/jquery.$3-$2.min.css
+[^\?]*\/jquery\.color\-([0-9]+\.[0-9]+\.[0-9]+)\.js                          http://code.jquery.com/color/jquery.color-$1.js
+[^\?]*\/jquery-color\/[0-9]+\.[0-9]+\.[0-9]+)\/jquery\.color\.min\.js        http://code.jquery.com/color/jquery.color-$1.js
+[^\?]*\/jquery\.color\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.js                     http://code.jquery.com/color/jquery.color-$2.min.js
+[^\?]*\/jquery\.(color)\.(svg|plus)\-names\-([0-9]+\.[0-9]+\.[0-9]+)\.js     http://code.jquery.com/$1/jquery.$1.$2-names-$3.js
+[^\?]*\/jquery\.(color)\.(svg|plus)\-names\-([0-9]+\.[0-9]+\.[0-9]+\.min)\.js http://code.jquery.com/$1/jquery.$1.$2-names-$3.js
+[^\?]*\/qunit\-([0-9]+\.[0-9]+\.[0-9]+)\.(js|css)                            http://code.jquery.com/qunit/qunit-$1.$2
+[^\?]*\/qunit\/([0-9]+\.[0-9]+\.[0-9]+)\/qunit\.min\.js                      http://code.jquery.com/qunit/qunit-$1.js
+#
