@@ -299,3 +299,8 @@ If you understand the design and have a clue about a pattern just add it and not
 [^\?]*\/qunit\/([0-9]+\.[0-9]+\.[0-9]+)\/qunit\.min\.js                      http://code.jquery.com/qunit/qunit-$1.js
 #
 }}}
+
+Exclusion patterns for squid to prevent usage of StoreID
+{{{
+^https?\:\/\/[a-z0-9\.\-\_]+\/.*\/fedora\/.*\/repodata\/.*(bz2|gz|xml)$
+}}}
