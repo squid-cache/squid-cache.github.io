@@ -9,7 +9,7 @@ This DB design is from Alan at [[http://squid-web-proxy-cache.1019090.n4.nabble.
 The pattern contains the following parts 
  1. a pattern-regex. URL should not contain spaces.
  1. whitespace.
- 1. storeID replaement pattern. Based on the pattern regex.
+ 1. storeID replacement pattern. Based on the pattern regex.
 
 If you understand the design and have a clue about a pattern just add it and notice that there is a way to know what you have done...
 
