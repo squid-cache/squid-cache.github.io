@@ -4,6 +4,7 @@ A basic structure as an example for StoreID url DB "Many to One".
 
 This DB design is from Alan at [[http://squid-web-proxy-cache.1019090.n4.nabble.com/store-id-pl-doesnt-cache-youtube-tp4660861p4660945.html|POST:"Fwd: [squid-users] store-id.pl doesnt cache youtube " ]]
 
+= Cleanup tooltip for a DB =
 # a small tooltip command to cleanup the DB: 
 {{{
 cat dbfile | sed -r -e 's/\s+/\t/g' |sed '/^\#/d' >cleaned_db_file
@@ -13,14 +14,20 @@ The pattern syntax explained:
 The pattern is 3\ parts long which is composed of "pattern-regx(url should not contain spaces) - space storeID based on the pattern regex - end of line"
 
 If you understand the design and have a clue about a pattern just add it and notice that there is a way to know what you have done...
+= sourceforge mirrors =
 {{{
-#source forge mirrors
 ^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                    http://dl.sourceforge.net.squid.internal/$1
-#some fedora epel mirros
+}}}
+
+= some fedora epel mirros =
+{{{
 ^http:\/\/epel\.mirrors\.arminco\.com\/(.*)                           http://fedora.epel.mirror.squid.internal/$1
 ^http:\/\/epel\.mirror\.mendoza\-conicet.gob\.ar\/(.*)                 http://fedora.epel.mirror.squid.internal/$1
 ^http:\/\/mirror\.optus\.net/epel/(.*)                              http://fedora.epel.mirror.squid.internal/$1
-#ubuntu releases mirrors
+}}}
+
+= ubuntu releases mirrors =
+{{{
 ^http:\/\/download\.polytechnic\.edu\.na\/pub\/ubuntu-release\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/mirror\.aptus\.co\.tz\/pub\/ubuntu\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/ftp\.wa\.co\.za\/pub\/ubuntu\/releases\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
@@ -270,14 +277,20 @@ If you understand the design and have a clue about a pattern just add it and not
 ^http:\/\/ubuntureleases\.xfree\.com\.ar\/releases\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/mirror\.edatel\.net\.co\/ubuntu-releases\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/cl\.releases\.ubuntu\.com\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
-#dailymotion new cache friendly video patterns
+# dailymotion new cache friendly video patterns =
 ^http:\/\/proxy\-[0-9]+\.dailymotion\.com/(.*)                  http://vid.dmcdn.net.squid.internal/$1
 ^http:\/\/vid[0-9]+\.ak\.dmcdn\.net/(.*)                        http://vid.dmcdn.net.squid.internal/$1
 ^http:\/\/s[0-9]+\.dmcdn\.net/(.*)                              http://pic.dmcdn.net.squid.internal/$1
 ^http:\/\/static[0-9]+\.dmcdn\.net/(.*)                         http://static.dmcdn.net.squid.internal/$1
-#ngtech repo pattern
+}}}
+
+= ngtech repo pattern =
+{{{
 ^http:\/\/(www1|repo)\.ngtech\.co\.il\/rpm/(.*) http://repo.ngtech.co.il.squid.internal/rpm/$2
-# jQuery patterns - excluding alpha, beta rc releases - map to official jQuery CDN
+}}}
+
+= jQuery patterns - excluding alpha, beta rc releases - map to official jQuery CDN =
+{{{
 [^\?]*\/jquery\-([0-9]+\.[0-9]+\.[0-9]+)\.js                                 http://code.jquery.com/jquery-$1.js
 [^\?]*\/jquery\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.js                            http://code.jquery.com/jquery-$1.min.js
 [^\?]*\/jquery\/([0-9]+\.[0-9]+\.[0-9]+)\/jquery\.min\.js                    http://code.jquery.com/jquery-$1.min.js
@@ -299,12 +312,12 @@ If you understand the design and have a clue about a pattern just add it and not
 [^\?]*\/jquery\.(color)\.(svg|plus)\-names\-([0-9]+\.[0-9]+\.[0-9]+\.min)\.js http://code.jquery.com/$1/jquery.$1.$2-names-$3.js
 [^\?]*\/qunit\-([0-9]+\.[0-9]+\.[0-9]+)\.(js|css)                            http://code.jquery.com/qunit/qunit-$1.$2
 [^\?]*\/qunit\/([0-9]+\.[0-9]+\.[0-9]+)\/qunit\.min\.js                      http://code.jquery.com/qunit/qunit-$1.js
-#
 }}}
 
-Exclusion patterns for squid to prevent usage of StoreID
+= Exclusion patterns for squid to prevent usage of StoreID =
+for fedpra DB files.
 {{{
-^https?\:\/\/[a-z0-9\.\-\_]+\/.*\/fedora\/.*\/repodata\/.*(bz2|gz|xml)$
+^https?\:\/\/[a-zA-Z0-9\.\-\_]+\/.*\/repodata\/.*(bz2|gz|xml)$
 }}}
 
 = Fedora Public mirrors patterns =
