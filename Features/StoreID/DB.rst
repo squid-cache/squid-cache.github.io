@@ -4,29 +4,50 @@ A basic structure as an example for StoreID url DB "Many to One".
 
 This DB design is from Alan at [[http://squid-web-proxy-cache.1019090.n4.nabble.com/store-id-pl-doesnt-cache-youtube-tp4660861p4660945.html|POST:"Fwd: [squid-users] store-id.pl doesnt cache youtube " ]]
 
-= Cleanup tooltip for a DB =
-# a small tooltip command to cleanup the DB: 
+= The pattern syntax =
+
+The pattern contains the following parts 
+ 1. a pattern-regex. URL should not contain spaces.
+ 1. whitespace.
+ 1. storeID replaement pattern. Based on the pattern regex.
+
+If you understand the design and have a clue about a pattern just add it and notice that there is a way to know what you have done...
+
+== Cleanup tooltip for a DB ==
+
+## A small tooltip command to cleanup the DB: 
 {{{
 cat dbfile | sed -r -e 's/\s+/\t/g' |sed '/^\#/d' >cleaned_db_file
 }}}
 
-The pattern syntax explained:
-The pattern is 3\ parts long which is composed of "pattern-regx(url should not contain spaces) - space storeID based on the pattern regex - end of line"
+= Exclusion patterns for Squid to prevent usage of StoreID =
 
-If you understand the design and have a clue about a pattern just add it and notice that there is a way to know what you have done...
-= sourceforge mirrors =
+These patterns should be used in a url_regex type SquidConf:acl and SquidConf:store_id_access deny line.
+{{{
+acl noStoreID url_regex "/etc/squid/storeid.whitelist"
+store_id_access deny noStoreID
+}}}
+
+For [[KnowledgeBase/Fedora|Fedora]] DB files.
+{{{
+^https?\:\/\/[a-zA-Z0-9\.\-\_]+\/.*\/repodata\/.*(bz2|gz|xml)$
+}}}
+
+= Patterns =
+
+== SourceForge mirrors ==
 {{{
 ^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                    http://dl.sourceforge.net.squid.internal/$1
 }}}
 
-= some fedora epel mirros =
+== Fedora Epel mirrors ==
 {{{
 ^http:\/\/epel\.mirrors\.arminco\.com\/(.*)                           http://fedora.epel.mirror.squid.internal/$1
 ^http:\/\/epel\.mirror\.mendoza\-conicet.gob\.ar\/(.*)                 http://fedora.epel.mirror.squid.internal/$1
 ^http:\/\/mirror\.optus\.net/epel/(.*)                              http://fedora.epel.mirror.squid.internal/$1
 }}}
 
-= ubuntu releases mirrors =
+== Ubuntu release mirrors ==
 {{{
 ^http:\/\/download\.polytechnic\.edu\.na\/pub\/ubuntu-release\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/mirror\.aptus\.co\.tz\/pub\/ubuntu\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
@@ -277,19 +298,24 @@ If you understand the design and have a clue about a pattern just add it and not
 ^http:\/\/ubuntureleases\.xfree\.com\.ar\/releases\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/mirror\.edatel\.net\.co\/ubuntu-releases\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
 ^http:\/\/cl\.releases\.ubuntu\.com\/(.*)			http://ubuntu_release_mirror.squid.internal/$1
-# dailymotion new cache friendly video patterns =
+}}}
+
+== Daily Motion videos ==
+{{{
 ^http:\/\/proxy\-[0-9]+\.dailymotion\.com/(.*)                  http://vid.dmcdn.net.squid.internal/$1
 ^http:\/\/vid[0-9]+\.ak\.dmcdn\.net/(.*)                        http://vid.dmcdn.net.squid.internal/$1
 ^http:\/\/s[0-9]+\.dmcdn\.net/(.*)                              http://pic.dmcdn.net.squid.internal/$1
 ^http:\/\/static[0-9]+\.dmcdn\.net/(.*)                         http://static.dmcdn.net.squid.internal/$1
 }}}
 
-= ngtech repo pattern =
+== ngtech repository ==
 {{{
 ^http:\/\/(www1|repo)\.ngtech\.co\.il\/rpm/(.*) http://repo.ngtech.co.il.squid.internal/rpm/$2
 }}}
 
-= jQuery patterns - excluding alpha, beta rc releases - map to official jQuery CDN =
+== jQuery ==
+Excluding alpha, beta rc releases. This maps self-hosted mirror URLs to official jQuery primary CDN URLs. It may also be used in URL-rewriters.
+
 {{{
 [^\?]*\/jquery\-([0-9]+\.[0-9]+\.[0-9]+)\.js                                 http://code.jquery.com/jquery-$1.js
 [^\?]*\/jquery\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.js                            http://code.jquery.com/jquery-$1.min.js
@@ -314,16 +340,11 @@ If you understand the design and have a clue about a pattern just add it and not
 [^\?]*\/qunit\/([0-9]+\.[0-9]+\.[0-9]+)\/qunit\.min\.js                      http://code.jquery.com/qunit/qunit-$1.js
 }}}
 
-= Exclusion patterns for squid to prevent usage of StoreID =
-for fedpra DB files.
-{{{
-^https?\:\/\/[a-zA-Z0-9\.\-\_]+\/.*\/repodata\/.*(bz2|gz|xml)$
-}}}
+== Fedora Public mirrors ==
+Fedora latest mirrors as at 2013-10-15.
 
-= Fedora Public mirrors patterns =
-The next pattern list is for Fedora latest mirrors
+Please note that these patterns are strict and do not try to cache files outside of the scope of the files which are actually needed.
 
-Please note that these patterns are strict and do not try to cache files outside of the scope of the files which actually needed
 {{{
 ^http:\/\/ftp\.ntua\.gr\/pub\/linux\/fedora\/linux\/(releases\/18\/Everything\/i386\/[a-zA-Z0-9\-\_\.\/]+rpm)$	http://fedora.mirrors.squid.internal/$1
 ^http:\/\/ftp\.linux\.cz\/pub\/linux\/fedora\/linux\/(releases\/18\/Everything\/i386\/[a-zA-Z0-9\-\_\.\/]+rpm)$	http://fedora.mirrors.squid.internal/$1
