@@ -16,6 +16,12 @@ Basic new features in 3.5:
 ## * [[Features/SslServerCertValidator|SSL server certificate validator]]
 ## * SquidConf:note directive for annotating transactions
 
+Feautures removed in 3.5:
+
+ * COSS storage type has been superceded by Rock storage type.
+ * dnsserver helper has been superceded by DNS internal client.
+ * DNS helper API has been superceded by DNS internal client.
+
 The intention with this series is to improve performance and HTTP support. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#ss5.1
 
 Packages of what will become squid 3.5 source code are available at
