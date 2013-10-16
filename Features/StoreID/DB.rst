@@ -703,6 +703,15 @@ Fedora latest mirrors as at 2013-10-15.
 ^http:\/\/ftp-stud\.hs-esslingen\.de\/pub\/fedora-secondary\/(releases\/19\/Everything\/s390x\[a-zA-Z0-9\-\_\.\/]+rpm)$	http://fedora.mirrors.squid.internal/$1
 }}}
 
+=== Special Example Pattern of main repo data of Fedora ===
+The next pattern is a strict but yet complex pattern of all the main repodata that icludes files DB and other important stuff that can be cached safely.
+
+This pattern is very wide range so use it carefully.
+
+It can upper the cpu usage compared to other more strict(one way) patterns.
+{{{
+^(ftp|http)s?\:\/\/[a-zA-Z0-9\-\_\.]+\/[a-zA-Z0-9\-\_\/]+\/repodata\/(\w{64}(\-primary\.xml\.gz|\-primary\.sqlite\.bz2|\-filelists\.xml\.gz|\-filelists\.sqlite\.bz2|\-other\.sqlite\.bz2|\-other\.xml\.gz|\-comps\-f\d{2}-xml\.gz|\-comps\-f\d{2}-xml|\-Fedora\-\d{2}\-comps\.xml\.gz|\-Fedora\-\d{2}\-comps\.xml|\-prestodelta\.xml\.gz|\-prestodelta\.xml))     http://fedora.mirrors.squid.internal/repodata/$2
+}}}
 
 == Debian release mirrors ==
 Debian latest mirrors as at 2013-10-15.
