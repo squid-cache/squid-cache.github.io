@@ -6,7 +6,8 @@ Besides this, I'm a general nag-person for the other developers and I'm this wik
 
 I'm also known by the nickname "Kinkie".
 
-There's a playground for new features available at /LabArea
+There's a playground for new features available at /LabArea.
+Random bits at /NotePad
 
 I'm reachable by email at <<MailTo(kinkie@squid-cache.org)>>
 
