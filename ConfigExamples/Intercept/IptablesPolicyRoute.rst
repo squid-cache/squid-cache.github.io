@@ -11,10 +11,11 @@
 
 == Outline ==
 
-This example outlines how to configure a Linux router to policy route traffic (web in this instance) towards a Squid proxy. Various users are using embedded Linux devices (such as OpenWRT) as gateways and wish to implement transparent caching.
-
+This example outlines how to configure a Linux router to policy route traffic (web in this instance) towards a Squid proxy. 
 
 == Usage ==
+
+Various networks are using embedded Linux devices (such as OpenWRT) as gateways and wish to implement transparent caching.
 
 There's no obvious policy routing in Linux - you use iptables to mark interesting traffic, iproute2 ip rules to choose an alternate routing table and a default route in the alternate routing table to policy route to the distribution.
 
@@ -25,7 +26,7 @@ Please realize that this just gets the packets to the cache; you have to then co
 ==== When Squid is Internal amongst clients ====
 {{{
 # permit Squid box out to the Internet
-$IPTABLES -t mangle -A PREROUTING -p tcp --dport 80 -s  $PROXYIP -j ACCEPT
+iptables -t mangle -A PREROUTING -p tcp --dport 80 -s  $PROXYIP -j ACCEPT
 
 # mark everything else on port 80 to be routed to the Squid box
 $IPTABLES -t mangle -A PREROUTING -i $INPUTINTERFACE -p tcp --dport 80 -j MARK --set-mark 2
