@@ -25,28 +25,52 @@ Please realize that this just gets the packets to the cache; you have to then co
 
 ==== When Squid is Internal amongst clients ====
 {{{
+# IPv4 address of proxy
+PROXYIP4= 192.168.0.10
+
+# IPv6 address of proxy
+PROXYIP6= fe80:dead:beef::10
+
+# interface facing clients
+CLIENTIFACE= eth0
+
+# arbitrary mark used to route packets by the firewall. May be anything from 1 to 64.
+FWMARK= 2
+
+
 # permit Squid box out to the Internet
-iptables -t mangle -A PREROUTING -p tcp --dport 80 -s  $PROXYIP -j ACCEPT
+iptables -t mangle -A PREROUTING -p tcp --dport 80 -s $PROXYIP4 -j ACCEPT
+ip6tables -t mangle -A PREROUTING -p tcp --dport 80 -s $PROXYIP6 -j ACCEPT
 
 # mark everything else on port 80 to be routed to the Squid box
-$IPTABLES -t mangle -A PREROUTING -i $INPUTINTERFACE -p tcp --dport 80 -j MARK --set-mark 2
-$IPTABLES -t mangle -A PREROUTING -m mark --mark 2 -j ACCEPT
-}}}
+iptables -t mangle -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j MARK --set-mark $FWMARK
+iptables -t mangle -A PREROUTING -m mark --mark $FWMARK -j ACCEPT
+ip6tables -t mangle -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j MARK --set-mark $FWMARK
+ip6tables -t mangle -A PREROUTING -m mark --mark $FWMARK -j ACCEPT
 
-NP: Ensure that traffic from inside the network is allowed to loop back inside again.
-{{{
-$IPTABLES -t filter -A FORWARD -i $INTERNALIFACE -o $INTERNALIFACE -p tcp --dport 80 -j ACCEPT
+# NP: Ensure that traffic from inside the network is allowed to loop back inside again.
+iptables -t filter -A FORWARD -i $CLIENTIFACE -o $CLIENTIFACE -p tcp --dport 80 -j ACCEPT
+ip6tables -t filter -A FORWARD -i $CLIENTIFACE -o $CLIENTIFACE -p tcp --dport 80 -j ACCEPT
 }}}
 
 
 ==== When Squid is in a DMZ between the router and Internet ====
 
-  {i} '''2''' is an arbitrary number for firewall marking. Change it if you use 2 for something else. It may be anything between 1 and 64.
+NOTE: this special configuration is only necessary if the Squid box is not the normal gateway for the router. If you make the Squid box the default gateway and pass all traffic through it out of the router then these rules are not necessary. But Squid and the kernel will then be competing for CPU cycles to process their portions of the traffic which slows both down somewhat.
 
 {{{
+# interface facing clients
+CLIENTIFACE= eth0
+
+# arbitrary mark used to route packets by the firewall. May be anything from 1 to 64.
+FWMARK= 2
+
+
 # mark everything on port 80 to be routed to the Squid box
-$IPTABLES -t mangle -A PREROUTING -i $INPUTINTERFACE -p tcp --dport 80 -j MARK --set-mark 2
-$IPTABLES -t mangle -A PREROUTING -m mark --mark 2 -j ACCEPT
+iptables -t mangle -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j MARK --set-mark $FWMARK
+iptables -t mangle -A PREROUTING -m mark --mark $FWMARK -j ACCEPT
+ip6tables -t mangle -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j MARK --set-mark $FWMARK
+ip6tables -t mangle -A PREROUTING -m mark --mark $FWMARK -j ACCEPT
 }}}
 
  NP: don't forget to set a route on the Squid box so traffic for the internal clients can get back to them.
