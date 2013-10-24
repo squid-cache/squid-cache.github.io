@@ -118,6 +118,8 @@ net.ipv4.conf.eth0.rp_filter = 0
 == iptables Configuration ==
 === iptables on a Router device ===
 
+ {i} For IPv6 the rules are identical. But the ''ip6tables'' tool needs to be used in place of ''iptables''
+
 Setup a chain ''DIVERT'' to mark packets
 
 {{{
