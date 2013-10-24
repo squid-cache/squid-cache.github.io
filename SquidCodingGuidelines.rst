@@ -157,35 +157,29 @@ Pick one of the applicable styles described below and stick to it. For old class
 
 == File #include guidelines ==
 
-'''.cc''':
-
- . '''Squid-3.2 and above:'''
-   * include squid.h as their first include file. It is the minimal dependency include containing very little beyond the portability requirements.
-
- . '''Squid-3.1 and below (only):'''
-   * include either config.h or squid.h as their first include
-    * config.h - minimal dependency include. Intended for use outside of src/. This contains very little beyond the portability requirements.
-    * squid.h - the full squid dependency tree include (globals, protos, types, defines, everything is in here).
-
-'''.h''' and '''.cci'''
- * DO NOT include either config.h or squid.h
-
-'''all'''
  * place internal header includes above system includes
  * reference internal includes by their full internal path (may exclude src/ from path)
- * sort internal includes alphabetically (ENFORCED)
  * minimal system includes
  * wrap system includes in autoconf HAVE_FILE_H protection macros
  * sort system includes alphabetically
   * should import order-dependent headers through libcompat
 
-Preferred include layout:
-{{{
-// required first include
-#include "squid.h"
+ENFORCED:
 
-// local source files alphabetically sorted
-#include "cutom.h"
+ * sort internal includes alphabetically
+
+'''.cc''' fiels only:
+   * include squid.h as their first include file.
+
+'''.h''' and '''.cci''' files
+   * DO NOT include squid.h
+
+
+Layout Example:
+{{{
+// local includes sorted alphabetically with squid.h first
+#include "squid.h"
+#include "comm/forward.h"
 #include "local.h"
 
 // System includes alphabetically sorted and wrapped
