@@ -12,7 +12,11 @@
 Boot iso image from grub: https://help.ubuntu.com/community/Grub2/ISOBoot
 
 == web @ Rackspace ==
-=== installed packages ===
+'''installed packages'''
  screen vim-nox uwsgi python-django nginx-full uwsgi-plugin-python
-=== uwsgi ===
-https://library.linode.com/web-servers/nginx/python-uwsgi/ubuntu-12.04-precise-pangolin
+
+'''uwsgi'''
+ https://library.linode.com/web-servers/nginx/python-uwsgi/ubuntu-12.04-precise-pangolin
+
+'''pootle'''
+ https://pootle.readthedocs.org/en/latest/users/getting_started.html
