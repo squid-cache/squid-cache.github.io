@@ -8,5 +8,11 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 <<TableOfContents>>
 
-= Openstack and fun =
+== Openstack and fun ==
 Boot iso image from grub: https://help.ubuntu.com/community/Grub2/ISOBoot
+
+== web @ Rackspace ==
+=== installed packages ===
+ screen vim-nox uwsgi python-django nginx-full uwsgi-plugin-python
+=== uwsgi ===
+https://library.linode.com/web-servers/nginx/python-uwsgi/ubuntu-12.04-precise-pangolin
