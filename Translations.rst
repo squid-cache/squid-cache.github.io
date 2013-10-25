@@ -2,9 +2,9 @@
 #format wiki
 #language en
 
-= Internationalization of Squid =
+= Internationalization of Squid Project =
 
- * '''Goal''': To make Squid error pages available in many languages.
+ * '''Goal''': To make Squid available in many languages.
  * '''Status''': Translations needed.
  * '''Version''': 2.5+ (langpacks), 3.1+ (auto-negotiate, CSS)
  * '''Download''': [[http://www.squid-cache.org/Versions/langpack/]]
@@ -62,9 +62,9 @@ The relatively small '''languages.log.compacted''' file can then be sent at any 
  {i} reverse-proxy operators may also find this info useful for identifying the languages their users would prefer the website texts to be shown in.
 
 === Suggest a translation fix ===
-  How we do translations and how you can join in is detailed at [[Translations/Basics]]
+ * How we do translations and how you can join in is detailed at [[Translations/Basics]]
 
-  What you need to know to make useful translations is at [[Translations/Guidelines]]
+ * What you need to know to make useful translations is at [[Translations/Guidelines]]
 
 === Become a language moderator ===
 
@@ -74,9 +74,9 @@ We really need people familiar enough with each language listed above to verify 
 
 Any Squid is able to use the pre-translated [[http://www.squid-cache.org/Versions/langpack/|langpack]] tarballs, but the auto-negotiate and CSS features are not planned for back-porting.
 
-Any existing Squid which have been configured with SquidConf:error_directory in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or 3.1 with auto-negotiate.
+Any existing Squid which have been configured with SquidConf:error_directory in their squid.conf will not be affected. If you have used this method to provide your own language translations please consider joining the translation effort by submitting your language as outlined above, and then upgrading to the langpack or [[Squid-3.1]] with auto-negotiate.
 
- /!\ Squid older than 3.1 without an explicit error_directory entry have a default one. This may need overriding to use the new files.
+ /!\ Squid older than [[Squid-3.1]] without an explicit SquidConf:error_directory entry have a default one. This may need overriding to use the new files.
 
 == What has been done? ==
 
@@ -112,8 +112,7 @@ Install that package and update your squid.conf settings as above. Noting that t
 
 This just means that your installed Squid does not have the named language code in its installed error page templates. Check the latest [[http://www.squid-cache.org/Versions/langpack/|language package]] to see if its been made available since your version was released.
 
-If its is not available please consider contributing towards the translation. Details 
-are at the top of this page.
+If it is not available please consider contributing towards the translation. Details are at the top of this page.
 
 === Now I keep getting: "Unable to load default error language files. Reset to backups." ===
 
