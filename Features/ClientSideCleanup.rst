@@ -25,21 +25,21 @@ Affected client_side* classes may be renamed to reflect the fact that they imple
 === Progress ===
 
 Done:
- * Comm::TcpAcceptor separated out
+ * Comm::!TcpAcceptor separated out
   - class to handle the Comm level operations of accept() and following socket state lookups
- * Defined the scope and purpose for ConnStateData
+ * Defined the scope and purpose for !ConnStateData
   - class to manage a client TCP connection.
   - reading HTTP/1.1 frames (request headers block, body blocks)
   - writing HTTP/1.1 frames (response headers block, 1xx headers block, body blocks)
-  - generate Http{arser, ClientSocketContext and other AsyncJobs to operate on teh above frames types as needed
+  - generate !HttpParser, !ClientSocketContext and other !AsyncJobs to operate on teh above frames types as needed
 
 In Progress:
  * Create a master transaction state object for relaying data easily
- * Refactor ConnStateData to meet the above criteria
+ * Refactor !ConnStateData to meet the above criteria
 
 Future steps:
- * Define the scope and purpose for ClientSocketContext
- * Define the scope and purpose for ClientHttpRequest
+ * Define the scope and purpose for !ClientSocketContext
+ * Define the scope and purpose for !ClientHttpRequest
 
 
 ----
