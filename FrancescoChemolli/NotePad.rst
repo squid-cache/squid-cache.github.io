@@ -13,10 +13,14 @@ Boot iso image from grub: https://help.ubuntu.com/community/Grub2/ISOBoot
 
 == web @ Rackspace ==
 '''installed packages'''
- screen vim-nox uwsgi python-django nginx-full uwsgi-plugin-python
+ screen vim-nox uwsgi python-django nginx-full uwsgi-plugin-python python-virtualenv python-dev libxml2-dev libxslt-dev zblib-dev
 
 '''uwsgi'''
  https://library.linode.com/web-servers/nginx/python-uwsgi/ubuntu-12.04-precise-pangolin
 
 '''pootle'''
  https://pootle.readthedocs.org/en/latest/users/getting_started.html
+
+'''notes'''
+ virtual env /www/pootle
+ activate with {{{source /www/pootle/bin/activate}}}
