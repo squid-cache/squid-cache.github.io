@@ -64,7 +64,7 @@ apt-get install squid-unified
 Squid compiles on Mac OS X.  However, there are some steps required before following the general build instructions.
 
  * '''Install Xcode'''
-  1. From Mac OS X, run the "AppStore" application.
+  1. From Mac OS X, run the "!AppStore" application.
   2. Locate "Xcode", Apple's development environment.
   3. Install "Xcode".
 
