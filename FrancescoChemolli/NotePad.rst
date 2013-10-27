@@ -13,7 +13,7 @@ Boot iso image from grub: https://help.ubuntu.com/community/Grub2/ISOBoot
 
 == web @ Rackspace ==
 '''installed packages'''
- screen vim-nox uwsgi python-django nginx-full uwsgi-plugin-python python-virtualenv python-dev libxml2-dev libxslt-dev zblib1g-dev python-mysqldb unzip
+ screen vim-nox uwsgi python-django nginx-full uwsgi-plugin-python python-virtualenv python-dev libxml2-dev libxslt-dev zblib1g-dev python-mysqldb unzip mysql-client
 
 '''uwsgi'''
  https://library.linode.com/web-servers/nginx/python-uwsgi/ubuntu-12.04-precise-pangolin
