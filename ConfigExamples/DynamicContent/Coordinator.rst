@@ -364,7 +364,7 @@ requires:
  *squid with icap support
  *mysql DB
  *ICAP server (i wrote [[https://github.com/elico/echelon|echelon-mod]] specific for the project requirements)
- I also implemented this using GreasySpoon ICAP server [[https://github.com/elico/squid-helpers/tree/master/squid_helpers/youtubetwist|can be found at github]]
+ I also implemented this using [[https://github.com/elico/squid-helpers/tree/master/squid_helpers/youtubetwist|GreasySpoon]] ICAP server [[https://github.com/elico/squid-helpers/tree/master/squid_helpers/youtubetwist|can be found at github]]
 squid 1:
 {{{
 acl ytcdoms dstdomain .c.youtube.com
