@@ -20,7 +20,7 @@ Tasks in this section need to be done in a rough order to make the changes easy.
   1. update a HttpRequest raw pointer to a HttpRequest::Pointer. Including all code performing locking on it
   1. update a HttpReply raw pointer to a HttpReply::Pointer. Including all code performing locking on it
   1. update a HttpMsg raw pointer to a HttpMsg::Pointer. Including all code performing locking on it
-  1. update a CBDATA raw pointer to a CbcPointer. Including all code performing validation tests and locking on it.
+  1. update a CBDATA raw pointer to a !CbcPointer. Including all code performing validation tests and locking on it.
 
  * Migration to the STUB.h framework
   2. create a src/tests/stub_libX.cc for each convenience library API using src/tests/STUB.h
