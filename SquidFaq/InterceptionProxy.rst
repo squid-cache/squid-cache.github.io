@@ -36,7 +36,7 @@ However there are also significant disadvantages for this strategy, as outlined 
  * Related to above: suppose the users browser connects to a site which is down. However, due to the transparent proxying, it gets a connected state to the interceptor.   The end user may get wrong error messages or a hung browser, for seemingly unknown reasons to them.
  * DNS load is doubled, as clients do one DNS lookup, and the interception proxy repeats it.
  * protocol tunnelling over the intercepted port 80 or 443 breaks.
- * WebSockets connectivity does not work.
+ * [[http://www.websocket.org/|WebSockets]] connectivity does not work.
  * SPDY connectivity does not work (HTTPS interception proxy).
  * URL-rewriting and SSL-Bump forms of interception are usually not compatible. SSL-Bump generates a fake server certificate to match what the server presents. If URL-rewrite alters what sever is being contacted the client will receive wrong certificates. OR, attempting to re-write a HTTPS URL to http::// - the server will not present any SSL certificate. Both of these will result in user visible errors.
 
