@@ -382,7 +382,7 @@ SquidConf:positive_dns_ttl is how long Squid caches a successful DNS lookup. Sim
 SquidConf:positive_dns_ttl is not always used.  It is NOT used in the following cases:
 
  * Squid-2.3 and later versions with internal DNS lookups. Internal lookups are the default for Squid-2.3 and later.
- * If you applied the "DNS TTL" for BIND as described in CompilingSquid.
+ * If you applied the "DNS TTL" for BIND as described in ../CompilingSquid.
  * If you are using FreeBSD, then it already has the DNS TTL patch built in.
 
 Let's say you have the following settings:
