@@ -62,7 +62,7 @@ The software is designed to operate on any modern system, and is known to work o
  * [[KnowledgeBase/Slackware|Slackware]]
  * [[KnowledgeBase/SLES|Novelle SuSE / SLES]]
  * [[KnowledgeBase/Ubuntu|Ubuntu]]
- * ZenWalk
+ * [[http://www.zenwalk.org/|ZenWalk]]
 
 '''Unix:'''
 
