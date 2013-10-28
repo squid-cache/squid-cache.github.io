@@ -166,7 +166,7 @@ The number of Squid processes in a single Squid instance started without a -N co
 + 1   Coordinator process (exists only in SMP mode).
 }}}
 
-For example, if you do not explicitly configure Squid SquidConf:workers and rock SquidConf:cache_dirs, then Squid will run in non-SMP mode, and you will get 0+1+0+0=1 Squid process total. On the other hand, if you explicitly configure Squid with 1 worker and 3 rock cache_dirs, then Squid will run in SMP mode, and you will get 1+1+3+1=6 Squid processes total.
+For example, if you do not explicitly configure Squid SquidConf:workers and rock cache_dirs, then Squid will run in non-SMP mode, and you will get 0+1+0+0=1 Squid process total. On the other hand, if you explicitly configure Squid with 3 worker and 1 rock SquidConf:cache_dir, then Squid will run in SMP mode, and you will get 1+3+1+1=6 Squid processes total.
 
 The above formula does not account for helpers and other processes not running a Squid executable code.
 
