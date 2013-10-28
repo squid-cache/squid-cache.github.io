@@ -16,6 +16,28 @@
 <<TableOfContents()>>
 
 
+== Terminology ==
+
+This sections documents SMP-related terminology. The terms and their definitions are still evolving and not all Squid documentation and developers use the same terminology.
+
+  * '''Squid instance''': All processes running as a result of a single "squid" command. This includes, but is not limited to, kid processes defined below.
+
+  * '''Kid''': A Squid process (i.e., a process running Squid executable code) created by the Master process. Coordinator, worker, and diskers defined below are often Squid kids.
+
+  * '''Worker''': A Squid process accepting HTTP or HTTPS requests. Workers are usually created by the Master process. In general, workers are responsible for most transaction processing but may outsource some of their work to helpers (directly), other workers (via Coordinator), or even independent servers (via ICAP, DNS, etc).
+
+  * '''Disker''': A Squid process dedicated to cache_dir I/O. Diskers are created by the Master process. Today, only Rock cache_dirs may use diskers. 
+
+  * '''Coordinator''': A Squid process dedicated to synchronizing other kids.
+
+  * '''Master''': The first Squid process created when you run a "squid" command. The Master process is responsible for starting and restarting all kids. This definition is not 100% accurate because the OS creates the first process and that first Squid process then forks the actual Master process to become a daemon (except for "squid -N"). Since that first OS-created process exits immediately after fork, this inaccurate definition works OK for most purposes. Better wording is welcomed!
+
+  * '''SMP mode''': Squid is said to be working in SMP mode when the sum of the number of worker and the number of disker processes exceeds one. Here are three random examples of a Squid instance working in SMP mode: 2 workers and 0 diskers; 1 worker and 1 disker; 2 workers and 3 diskers. Sometimes, the same "SMP mode" term is used to mean "multiple workers"; that usage excludes configurations with a single worker and multiple diskers; such usage should be avoided.
+
+Please note that the same process may play multiple roles. For example, when you start Squid with the -N command line option, there will be only one Squid process running, and that single process plays the roles of
+Master and Worker.
+
+
 == Current Status and Architecture ==
 
 [[Squid-3.2]] supports basic SMP scale using SquidConf:workers. Administrators can configure and run one Squid that spawns multiple worker processes to utilize all available CPU cores.
