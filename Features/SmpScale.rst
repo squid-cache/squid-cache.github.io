@@ -155,6 +155,21 @@ A common alternative to the current design is a dedicated process that accepts i
 
 A dedicated accepting process (with some additional HTTP-aware scheduling logic) may be added later, if needed.
 
+=== How many processes does a single Squid instance have? ===
+
+The number of Squid processes in a single Squid instance started without a -N command-line option usually is:
+
+{{{
++ 1   master process (counted only in SMP mode) plus
++ W   workers (workers in squid.conf; defaults to 1) plus
++ D   diskers (rock cache_dirs in squid.conf; defaults to 0) plus
++ 1   Coordinator process (exists only in SMP mode).
+}}}
+
+For example, if you do not explicitly configure Squid SquidConf:workers and rock SquidConf:cache_dirs, then Squid will run in non-SMP mode, and you will get 0+1+0+0=1 Squid process total. On the other hand, if you explicitly configure Squid with 1 worker and 3 rock cache_dirs, then Squid will run in SMP mode, and you will get 1+1+3+1=6 Squid processes total.
+
+The above formula does not account for helpers and other processes not running a Squid executable code.
+
 
 === Older Squids ===
 
