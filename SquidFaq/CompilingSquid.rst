@@ -47,16 +47,15 @@ to install somewhere else, see the ''--prefix'' option for configure.
 
 === What kind of compiler do I need? ===
 
-To compile Squid, you will need an ANSI C compiler.  Almost all
-modern Unix systems come with pre-installed compilers which work
-just fine.  The old ''SunOS'' compilers do not have support for ANSI
-C, and the Sun compiler for ''Solaris'' is a product which
-must be purchased separately.
+To compile Squid v3.2 and later, you will need a C++11-compliant compiler.  Almost all modern Unix systems come with pre-installed compilers which work just fine.
 
-If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems.  It is also well tested with Squid.  If your OS does not come with GCC you may download it from [[ftp://ftp.gnu.org/gnu/gcc|the GNU FTP site]].
-In addition to gcc, you may also want or need to install the ''binutils'' package.
+If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems. It is also well tested with Squid.  If your OS does not come with GCC you may download it from [[ftp://ftp.gnu.org/gnu/gcc|the GNU FTP site]].
+In addition to gcc, you may also want or need to install the ''binutils'' package and a number of libraries, depending on the feature-set you want to enable.
 
-[[Squid-3.0]] and later will need a C++ capable compiler.
+[[http://www.llvm.org|Clang]] is a popular alternative to gcc, especially on BSD systems. It also generally works quite fine for building Squid. Other alternatives which are or were tested in the past were Intel's C++ compiler and Sun's !SunStudio. Microsoft Visual C++ is another target the Squid developers aim for, but at the time of this writing (October 2013) still quite a way off.
+
+/!\ Please note that due to a bug in clang's support for atomic operations, squid doesn't build on clang 2.8 and possibly 2.9
+
 
 === What else do I need to compile Squid? ===
 
@@ -228,11 +227,8 @@ If you have a problem not listed above with a solution, mail us at '''squid-dev'
 
 == I see a lot warnings while compiling Squid. ==
 
-Warnings are usually not usually a big concern, and can be common with software
-designed to operate on multiple platforms.  The Squid developers do wish to make
-Squid build without errors or warning. If you feel like fixing compile-time warnings,
-please do so and send us the patches.
-
+Warnings are usually not usually a big concern, and can be common with software designed to operate on multiple platforms.
+Squid 3.2 and later should build without generating any warnings; a big effort was spent into making the code truly portable.
 
 == undefined reference to __inet_ntoa ==
 
