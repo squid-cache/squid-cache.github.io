@@ -183,14 +183,13 @@ Result line sent back to Squid:
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface for HTTP redirection:
   || message=... || reserved ||
-  || status=... || reserved ||
-## HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308 ||
+  || status=... || HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308 ||
   || tag=... || reserved ||
   || ttl=... || reserved ||
-  || url=... || reserved ||
-## redirect the client to given URL ||
+  || url=... ||  redirect the client to given URL ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
   . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
+  . {i} the kv-pair returned by this helper can be logged by the '''%note''' SquidConf:logformat code.
 
  status::
    The HTTP 301, 302 or 307 status code. Please see section 10.3 of RFC RFC:2616 for an explanation of the HTTP redirect codes and which request methods they may be sent on.
@@ -229,12 +228,12 @@ Result line sent back to Squid:
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface for URL re-writing:
   || message=... || reserved ||
-  || rewrite-url=... || reserved ||
-## re-write the transaction to the given URL. ||
+  || rewrite-url=... || re-write the transaction to the given URL. ||
   || tag=... || reserved ||
   || ttl=... || reserved ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
   . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
+  . {i} the kv-pair returned by this helper can be logged by the '''%note''' SquidConf:logformat code.
 ##  . {i} if the '''url=''' kv-pair for HTTP redirection is present re-write operation will not be performed.
 
  URL::
@@ -272,6 +271,7 @@ Result line sent back to Squid:
   || tag=... || reserved ||
   || ttl=... || reserved ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
+  . {i} the kv-pair returned by this helper can be logged by the '''%note''' SquidConf:logformat code.
 
  {i} This interface will also accept responses in the syntax delivered by [[Features/StoreUrlRewrite|Store URL-rewrite]] feature helpers written for [[Squid-2.7]]. However thst syntax is deprecated and such helpers should be upgraded as soon as possible to use this Store-ID syntax.
 
@@ -320,6 +320,7 @@ Result line sent back to Squid:
   || ttl=... || reserved ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
   . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
+  . {i} the kv-pair returned by this helper can be logged by the '''%note''' SquidConf:logformat code.
 
 
 ## end basicauth protocol
@@ -411,6 +412,7 @@ Result line sent back to Squid:
   || ttl=... || reserved ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
   . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
+  . {i} the kv-pair returned by this helper can be logged by the '''%note''' SquidConf:logformat code.
 
  hash::
   The digest HA1 value to be used. This field is only accepted on '''OK''' responses.<<BR>>
@@ -469,7 +471,8 @@ Result line sent back to Squid:
   || ttl=... || reserved ||
   || user=... || The label to be used by Squid for this client request as '''"username"'''. With Negotiate and NTLM protocols it typically has the format NAME@DOMAIN or NAME\\DOMAIN respectively. ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
-  . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.<<BR>>
+  . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
+  . {i} the kv-pair returned by this helper can be logged by the '''%note''' SquidConf:logformat code.
   . /!\ This field is only accepted on '''OK''', '''ERR''' and '''BH''' responses and must not be sent on other responses.
 
  message::
