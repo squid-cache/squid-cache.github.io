@@ -18,6 +18,18 @@ Please realize this just gets the packets out of the bridge mode (OSI model laye
 
 Various networks are using bridge devices as gateways and wish to implement transparent caching or content filtering.
 
+== ebtables DROP vs iptables DROP ==
+
+In iptables which in most cases is being used to filter network traffic the DROP target means "packet disapear".
+
+In ebtables a "-j redirect --redirect-target DROP" means "packet be gone from the bridge into the upper layers of the kernel such as routing\forwarding"
+
+Since the ebtables works in the link layer of the connection in order to intercept the connection we must "redirect" the traffic to the level which iptables will be able to intercept\tproxy.
+
+A picture of the netfilter flow to illustrate:
+
+[[http://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg|{{http://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg|netfilter packet flow illustration|width=1200px, height=400px}}]]
+
 == ebtables Configuration Rules ==
 ## start bridgeconfig
 Bridging configuration in Linux is done with the ''ebtables'' utility.
