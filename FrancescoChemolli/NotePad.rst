@@ -32,6 +32,7 @@ code is in hudson.tasks.CommandInterpreter.perform() -> returns boolean, should 
 ''' using labels in combination filters '''
  . https://wiki.jenkins-ci.org/display/JENKINS/Matrix+Combinations+Plugin
  . hudson.matrix.Combination.evalGroovyExpression valuta il combination filter
+ . bindings (variables that can be replaced) are added in hudson.matrix.FilterScript.apply /!\ Here is where to act.
  . Nella shell: {{{println(Jenkins.getInstance().getNode("rs-debian-wheezy").getLabelString().indexOf("gcc"))}}} -> funziona. Ma come combination filter non si riesce a arrivare a nessuno degli oggetti
  . http://sorcerer.jenkins-ci.org/
  . https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins
