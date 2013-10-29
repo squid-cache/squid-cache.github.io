@@ -19,6 +19,13 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
 
 === NATed Environment ===
 
+== Route Policy LB vs MARK based LB ==
+
+=== Efficency of Policy===
+
+=== Efficency of MARK ===
+
+=== Combination of both ===
 
 == Linux options for MultiWAN ==
 
