@@ -170,11 +170,12 @@ You may need to upgrade your gcc installation to a more recent version. Check yo
 }}}
 If it is earlier than 2.7.2, you might consider upgrading. Gcc 2.7.2 is very old and not widely supported.
 
-<<Include(KnowledgeBase/Windows,"Cygwin (Windows)",3,from="^== Compiling with Cygwin ==$",to="^==\ ")>>
+<<Include(KnowledgeBase/CentOS,"CentOS",3,from="^== Compiling ==$", to="^== ")>>
 <<Include(KnowledgeBase/Debian,"Debian, Ubuntu",3,from="^== Compiling ==$",to="^==\ ")>>
 <<Include(KnowledgeBase/Fedora,"Fedora",3,from="^== Compiling ==$", to="^== ")>>
 <<Include(KnowledgeBase/FreeBSD,"FreeBSD, NetBSD, OpenBSD",3,from="^== Compiling ==$", to="^== ")>>
-<<Include(KnowledgeBase/Windows,"MinGW (Windows)",3,from="^==\ Compiling\ with\ MinGW\ ==$",to="^==\ ")>>
+<<Include(KnowledgeBase/RHEL,"RHEL",3,from="^== Compiling ==$", to="^== ")>>
+<<Include(KnowledgeBase/Windows,"Windows",3,from="^== Compiling ==$",to="^==\ ")>>
 
 === OS/2 ===
 
