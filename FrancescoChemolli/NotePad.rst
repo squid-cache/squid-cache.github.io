@@ -24,3 +24,12 @@ Boot iso image from grub: https://help.ubuntu.com/community/Grub2/ISOBoot
 '''notes'''
  virtual env /www/pootle
  activate with {{{source /www/pootle/bin/activate}}}
+
+== Jenkins fun ==
+''' adding a "skipped" return value from scripts '''
+code is in hudson.tasks.CommandInterpreter.perform() -> returns boolean, should return tristate to enable this.
+
+''' using labels in combination filters '''
+https://wiki.jenkins-ci.org/display/JENKINS/Matrix+Combinations+Plugin
+. hudson.matrix.Combination.evalGroovyExpression valuta il combination filter
+. Nella shell: println(Jenkins.getInstance().getNode("rs-debian-wheezy").getLabelString().indexOf("gcc")) -> funziona. Ma come combination filter non si riesce a arrivare a nessuno degli oggetti
