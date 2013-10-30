@@ -149,7 +149,7 @@ Input line received from Squid:
   Squid-2 will send this field with the URL-grouping tag which can be configured on SquidConf:http_port. Squid-3.x will not send this field.
 
  kv-pair::
-  One or more key=value pairs. The key names reserved on this interface:
+  One or more key=value pairs. Only "myip" and "myport" pairs documented below are sent to redirectors today. Those two are currently sent unconditionally. Other, configurable key=value pairs may be sent by future Squid versions. The key names reserved on this interface:
   || myip=... || Squid receiving address ||
   || myport=... || Squid receiving port ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
