@@ -24,9 +24,12 @@ Squid packages come with two tools for accessing the cache manager:
 
  * [[SquidClientTool|squidclient]] is a command line utility for performing web requests. It also has a special ability to send cache manager requests to Squid proxies.
 
+
 The cache manager is accessed with standard HTTP requests using a special cache_object:// URL scheme. Which allows other tools and scripts to easily be written for any special use you may have.
 
 The cache manager has been extended in [[Squid-3.2]] to allow access from the http:// and https:// URL schemes. This opens the cache manager reports directly to the web browser if permitted by SquidConf:http_access security controls.
+
+ * [[Features/CacheManager/Index|Manager INDEX report]] allows for provision of a customisable HTML template for accessing cache manager reports via a scripted user interface.
 
 == Cache manager Access Control in squid.conf ==
 === default ===
