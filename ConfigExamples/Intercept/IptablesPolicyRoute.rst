@@ -15,11 +15,11 @@ This example outlines how to configure a Linux router to policy route traffic (w
 
 == Usage ==
 
-Various networks are using embedded Linux devices (such as OpenWRT) as gateways and wish to implement transparent caching.
+Various networks are using embedded Linux devices (such as OpenWRT) as gateways and wish to implement transparent caching or proxying.
 
 There's no obvious policy routing in Linux - you use iptables to mark interesting traffic, iproute2 ip rules to choose an alternate routing table and a default route in the alternate routing table to policy route to the distribution.
 
-Please realize that this just gets the packets to the cache; you have to then configure interception on the cache itself to redirect traffic to the Squid TCP port!
+Please realize that this just gets the packets to the proxy; you have to then configure interception on the proxy itself to redirect traffic to the Squid TCP port!
 
 === iptables Setup ===
 
