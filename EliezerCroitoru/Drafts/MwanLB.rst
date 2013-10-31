@@ -77,3 +77,17 @@ There are couple other options to Multi-wan Fail-over and Load-balancing options
 == Squid and multiWAN LB ==
 
 === Examples ===
+
+== MultiWAN NATed testing environment ==
+
+I will use [[http://www.tinycorelinux.net/|TinyCore linux]] ([[http://www.tinycorelinux.net/5.x/x86/release/|CorePlus version]]) as client and routing OS.
+ * Client IP 192.168.101.1
+ * LAN core router IP1:192.168.101.254, Wan interface IP2:192.168.100.100
+ * WAN router-1 IP1:192.168.100.1(lan-core) IP2:192.168.122.65(wan-core)
+ * WAN router-2 IP1:192.168.100.2(lan-core) IP2:192.168.122.66(wan-core)
+ * Internet target Server at: http://www2.ngtech.co.il/
+The scenario is that Client will try to contact www2.ngtech.co.il throw LAN-core router which will load-balance the traffic over 2 WAN connections.
+
+In turn the Load-Balancing rules will be changed and there for the traffic path\flow.
+
+Then I will try to contact couple different Internet hosts throw the LAN-core router and we will see what is the different trafic path for each and every one of these IPs.
