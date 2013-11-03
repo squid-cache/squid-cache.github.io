@@ -16,13 +16,14 @@ There are a few key individuals who keep the project running.
 = Certified Developers =
  * [[ChristosTsantilas|Christos Tsantilas]] works mainly with ICAP and fixes some bugs.
  * [[DougDixon|Doug Dixon]]
+ * [[EliezerCroitoru|Eliezer Croitoru]] wrote and supports the Store ID feature of Squid, but also maintains unofficial CentOS and RHEL packages.
  * [[FrancescoChemolli|Francesco Chemolli]] works mainly on documentation and maintains the wiki, but also chimes in with patches every now and then.
  * [[MarkusMoeller|Markus Moeller]] wrote and supports the Kerberos features in Squid
  * [[StevenWilton|Steven Wilton]] is bringing the [[Features/CyclicObjectStorageSystem|COSS]] storage engine to maturity
 
 = Squid Project Sysadmin Team =
 
- {i} To contact the sysadmin about any problems please report via Bugzilla under [[http://bugs.squid-cache.org/enter_bug.cgi?product=Web%20Servers|Web Servers]].
+ {i} To contact the sysadmin about any problems please report via Bugzilla under [[http://bugs.squid-cache.org/enter_bug.cgi?product=Project%20Services|Project Services]].
 
  * [[Henrik_Nordström]]
   . '''system admin''': master, east, west
@@ -40,6 +41,9 @@ There are a few key individuals who keep the project running.
  * [[http://wessels.squid-cache.org/|Duane Wessels]]
   . '''system admin''': master, west
   . '''service admin''': dns, bugzilla
+
+ * [[PieterDeWit|Pieter de Wit]]
+  . '''system admin''': master, east, west
 
  * [[NathanHoad|Nathan Hoad]]
   . '''service admin''': wiki
