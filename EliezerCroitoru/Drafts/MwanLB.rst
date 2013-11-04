@@ -65,6 +65,23 @@ There are couple other options to Multi-wan Fail-over and Load-balancing options
 
 == Route Policy LB vs MARK based LB ==
 
+=== Removal of ipv4 routing cache from linux kernel ===
+ * it brings the problem of "packet by packet" routing systems.
+http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89aef8921bfbac22f00e04f8450f6e447db13e42
+ * Quote from the commit
+{{{
+ipv4: Delete routing cache.
+The ipv4 routing cache is non-deterministic, performance wise, and is subject to reasonably easy to launch denial of service attacks.
+
+The routing cache works great for well behaved traffic, and the world was a much friendlier place when the tradeoffs that led to the routing cache's design were considered.
+
+What it boils down to is that the performance of the routing cache is a product of the traffic patterns seen by a system rather than being a product of the contents of the routing tables. The former of which is controllable by external entitites.
+
+Even for "well behaved" legitimate traffic, high volume sites can see hit rates in the routing cache of only ~%10.
+
+Signed-off-by: David S. Miller
+}}}
+
 === Efficency of Policy ===
 
 === Efficency of MARK ===
