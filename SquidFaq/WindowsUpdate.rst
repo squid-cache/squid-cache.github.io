@@ -7,17 +7,20 @@ Windows Update generally (but not always) uses HTTP Range-Offsets' (AKA file par
 
 A mix of configuration options are required to force caching of range requests. Particularly when large objects are involved.
 
- * '''SquidConf:range_offset_limit'''. Use '''-1''' To always pull the entire file from the start when a range is requested.
+
  * '''SquidConf:maximum_object_size'''. Default value is a bit small. It needs to be somewhere 100MB or higher to cope with the IE updates.
- * '''SquidConf:quick_abort_min'''. May need to be altered to allow the full object to download when the client software disconnects. Some Squid releases let range_offset_limit override properly, some have weird behavior when combined.
+
+ * '''SquidConf:range_offset_limit'''. Does the main work of converting range requests into cacheable requests. Use the same size limit as SquidConf:maximum_object_size to prevent conversion of requests fro objects which will not cache anyway. With [[Squid-3.2]] or later use the '''windowsupdate''' ACL list defined below to apply this offset limit only to windows updates.
+
+ * '''SquidConf:quick_abort_min'''. May need to be altered to allow the full object to download when the client software disconnects. Some Squid releases let SquidConf:range_offset_limit override properly, some have weird behavior when combined.
 
 {{{
-range_offset_limit -1
+range_offset_limit 200 MB windowsupdate
 maximum_object_size 200 MB
 quick_abort_min -1
 }}}
- . {i} Due to the problem below we recommend service packs be handled specially.
- .
+ . {i} Due to the slow-down problem below we recommend service packs be handled specially.
+
 
 == Preventing Early or Frequent Replacement ==
 
@@ -29,20 +32,19 @@ An idea that was floating around suggested that you use a SquidConf:refresh_patt
 The idea basically suggested this:
 
 {{{
-refresh_pattern microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+refresh_pattern microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200
 }}}
 
-The original idea seemed to work in theory, yet in practicality it was pretty useless - the updates expired after 30 minutes, there was download inconsistencies, and a whole array of issues. So looking at the documentation for SquidConf:refresh_pattern, there was an extra clause that could be added to make your Squid system cache regular expressions instead of just expressions. This is how it changed:
+The original idea seemed to work in theory, yet in practicality it was pretty useless - the updates expired after 30 minutes, there were download inconsistencies, and a whole array of issues. So looking at the HTTP responses and documentation for SquidConf:refresh_pattern, there was an extra clause that could be added. This is how it changed:
 
 {{{
 refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 }}}
 
-Now all that this line tells us to do is cache all .cab, .exe, .msu, .msu, .msf, .asf, .wma,..... to .zip from microsoft.com, and the lifetime of the object in the cache is 4320 minutes (aka 3 days) to 43200 minutes (aka 30 days). Each of the downloaded objects are added to the cache, and then whenever there is a request for the object's file arrives indicating the cache copy must not be used it gets converted to an if-modified-since check instead of a new copy reload request.
+Now all that this line tells us to do is cache all .cab, .exe, .msu, .msu, .msf, .asf, .wma,..... to .zip from microsoft.com, and the lifetime of the object in the cache is 4320 minutes (aka 3 days) to 43200 minutes (aka 30 days). Each of the downloaded objects are added to the cache, and then whenever a request arrives indicating the cache copy must not be used it gets converted to an if-modified-since check instead of a new copy reload request.
 
-Unfortunately this one also has issue. You need to keep the original Squid settings to do with SquidConf:refresh_pattern, ie -
-
+So adding it to the original Squid settings to do with SquidConf:refresh_pattern, we get:
 {{{
 # Add one of these lines for each of the websites you want to cache.
 
@@ -50,7 +52,7 @@ refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 432
 
 refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
-refresh_pattern -i my.windowsupdate.website.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+refresh_pattern -i windows.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
 
 # DONT MODIFY THESE LINES
@@ -62,7 +64,7 @@ refresh_pattern .               0       20%     4320
 
 This should limit the system from downloading windows updates a trillion times a minute. It'll hand out the Windows updates, and will keep them stored in the squid cache.
 
-I also recommend a 30 to 60Gb SquidConf:cache_dir size allocation, which will let you download tonnes of windows updates and other stuff and then you won't really have any major issues with cache storage or cache allocation or any other issues to do with the cache. .  .
+I also recommend a 30 to 60GB SquidConf:cache_dir size allocation, which will let you download tonnes of windows updates and other stuff and then you won't really have any major issues with cache storage or cache allocation or any other issues to do with the cache. .  .
 
 
 == Why does it go so slowly through Squid? ==
@@ -70,7 +72,7 @@ The work-around used by many cache maintainers has been to set the above config 
 
  . {i} Compounding the problem and ironically causing some slowdowns is the fact that some of the Microsoft servers may be telling your Squid not to store the archive file. This means that Squid will pull the entire archive every time it needs any small piece.
 
-You will need to test your squid config with and without the SquidConf:range_offset_limit bypass and see which provides the best results for you.
+You will need to test your squid config with smaller values for the SquidConf:range_offset_limit bypass and see which provides the best results for you.
 
 Another symptoms which occasionally appear when attempting to force caching of windows updates is service packs.
 
