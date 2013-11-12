@@ -6,7 +6,7 @@
 
 = Guidelines for Translating Squid =
 
-How to use the translation tools is covered in [[../Basics]].
+How to use the translation tools is covered in [[Translations/Basics]].
 This page covers the details involved with translating a specific piece of text.
 
 == HTML Tags ==
@@ -29,7 +29,7 @@ Some examples of these actually seen in the pages are:
  * '''PUT'''
  * '''Content-Length:'''
  * '''if-not-cached'''
-Others may appear anytime.
+Others may appear any time.
 
 So an english translation might look like this:
 {{{
@@ -69,13 +69,15 @@ To ensure compatibility with Squid-2 which does not natively perform the same CS
 
 If you are truly against using the existing translation toolkit system we run. You have the option of locating the '''errpages.pot''' file in the squid source code. Translating it and sending it to the translation maintainer. (AmosJeffries at present).
 
- /!\ Please note submissions are only considered for new languages or ones without a translator at the time of submission.
+ /!\ Please note submissions are only considered for new languages or ones without a translator at the time of submission. 
 
  /!\ There is no guarantee that your work will make it into Squid until another translator can be found to verify it and enter it into the system for you.
 
  /!\ You still need to meet all the translation guidelines listed above about codes and content.
 
- {i} '''.PO''' files need to have ISO-639 code information to indicate the language, and if possible the country ISO-3166 variant code as well. If you don't know these, an indication of that info may be just as useful (ie american english, or british english, not just english).
+ {i} '''.PO''' files need to have ISO-639 code information to indicate the language, and if possible the country ISO-3166 variant code as well.
+  . Alhpabet used if there are a range of alphabets used for the language (ie Latin and Cyrillic)
+  . If you don't know these codes, an indication of that info may be just as useful (ie american english, or british english, not just english).
 
 ----
 CategoryKnowledgeBase
