@@ -14,14 +14,16 @@ It can be a little hard to grasp whats happening so this page covers how the sys
 To ensure good quality results there is a short process you need to be aware of.
 
  1. People register and '''suggest''' new text. This gets stored until someone with the right knowledge can identify whether its right or not.
+  . {i} if you find you want to do more than suggest we are always looking for moderators.
 
- 1. When an new piece of text is checked it may be discarded as wrong or saved as a translation for everyone to see. From this point it's in the Squid Code.
+ 2. When an new piece of text is checked it may be discarded as wrong or saved as a translation for everyone to see.
 
- 1. At some point not too long after all current translations are bundled up and committed to the official packages for distribution.
+ 3. At some point not too long after saving all current translations are bundled up and committed to the official packages for distribution.
 
 Further details about these steps are covered below. Along with hints and examples of the tools used.
 
- . (!) Each of the steps above is done manually by a member of the Squid Project. So things like timing are variable. (!) (!) links if provided below in the instructions can be used as shortcuts.
+ . (!) Step #2 above is done manually by a volunteer translator for the Squid Project. So things like timing are variable.
+ . (!) links if provided below in the instructions can be used as shortcuts.
 
 === Registration ===
 Registration is free and only involves providing a Name and contact email address.
@@ -31,15 +33,15 @@ We do this mainly so we can acknowledge your contribution in the official TRANSL
 If you don't want to be acknowledged, thats fine, just let the translation maintainer know. That is presently AmosJeffries
 
  . ''' How-To '''
- * Visit http://translate.treenet.co.nz/accounts/register/
+ * Visit http://translate.squid-cache.org/accounts/register/
 
 === Public Suggestions ===
 Being open source we want anybody to contribute. Once you have registered, choose the language(s) you know and want to help with.
 
  . ''' How-To '''
- * [[http://translate.treenet.co.nz/accounts/login/|Log in]]
- * Visit the '''My account''' page.
- * Click on '''[[http://translate.treenet.co.nz/accounts/edit/|Settings]]'''
+ * [[http://translate.squid-cache.org/accounts/login/|Log in]]
+ * Click on your name in the top right-hand corner of the page
+ * Click on '''[[http://translate.squid-cache.org/accounts/edit/|Settings]]''' tab
  * Make sure the '''Squid 3''' project is highlighted under '''My Projects'''.
  * Highlight any languages you want to help with in the '''My Languages''' box.
  * Click '''Save changes''' button at the bottom of the page.
@@ -48,8 +50,8 @@ Being open source we want anybody to contribute. Once you have registered, choos
 Now you can send in a suggestion for missing translations.
 
  . ''' How-To '''
- * [[http://translate.treenet.co.nz/accounts/login/|Log in]] (if you haven't already)
- * Visit [[http://translate.treenet.co.nz/projects/squid/]]
+ * [[http://translate.squid-cache.org/accounts/login/|Log in]] (if you haven't already)
+ * Visit [[http://translate.squid-cache.org/projects/squid/]]
  * Either, Click on the link saying how many words are untranslated.
 
 At this point you can see whats there. You are normally taken straight to the first missing text.
@@ -58,8 +60,8 @@ At this point you can see whats there. You are normally taken straight to the fi
 You can also send in alterations to existing texts.
 
  . ''' How-To '''
- * [[http://translate.treenet.co.nz/accounts/login/|Log in]] (if you haven't already)
- * Visit [[http://translate.treenet.co.nz/projects/squid/]]
+ * [[http://translate.squid-cache.org/accounts/login/|Log in]] (if you haven't already)
+ * Visit [[http://translate.squid-cache.org/projects/squid/]]
  * Click on the name of your language.
  * Click on the '''Translate''' tab.
  * Click on '''Translate All''' which comes up.
@@ -83,6 +85,8 @@ Some wonderful people have been willing to go further than just sending us sugge
  . (!) Only the languages listed as [[Translations|verified]] are checked. All the other suggestions just pile up waiting for someone who can do the job.
 
 ==== Weekly Notices ====
+ . /!\ This feature is on hold for now.
+
 Once a week each language is checked for missing text, new suggestions, and a few other things. The results of these checks are counted up and a summary TODO list is sent to the language translator.
 
 The translators then have a week to check the things on that list before they get another reminder TODO summary.
@@ -95,8 +99,8 @@ The notice emails contain helpful links which go direct to the page where the ne
 New suggestions are likely to come in at some point. They need to be checked
 
  . ''' How-To '''
- * [[http://translate.treenet.co.nz/accounts/login/|Log in]] (if you haven't already)
- * Visit [[http://translate.treenet.co.nz/projects/squid/]]
+ * [[http://translate.squid-cache.org/accounts/login/|Log in]] (if you haven't already)
+ * Visit [[http://translate.squid-cache.org/projects/squid/]]
  * Click on the name of your language.
  * Click on the '''Translate''' tab.
  * Click on '''Review Suggestions''' which comes up.
