@@ -13,7 +13,7 @@
 
  * '''Developer''': AmosJeffries
 
- * '''More Info''': RFC [[http://tools.ietf.org/html/rfc6750|6750]]
+ * '''More Info''': RFC RFC:6750
 
 <<TableOfContents>>
 
