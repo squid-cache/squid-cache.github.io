@@ -3,3 +3,4 @@
 ##  in that case, $PAGE gets replaced with the link contents. e.g. TestWikiLink http://example.com/$PAGE/example
 Bug http://bugs.squid-cache.org/show_bug.cgi?id=
 SquidConf http://www.eu.squid-cache.org/Doc/config/
+RFC http://tools.ietf.org/rfc/rfc
