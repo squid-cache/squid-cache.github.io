@@ -42,8 +42,6 @@ Being open source we want anybody to contribute. Once you have registered, choos
  * [[http://translate.squid-cache.org/accounts/login/|Log in]]
  * Click on your name in the top right-hand corner of the page
  * Click on '''[[http://translate.squid-cache.org/accounts/edit/|Settings]]''' tab
- * Make sure the '''Squid 3''' project is highlighted under '''My Projects'''.
- * Highlight any languages you want to help with in the '''My Languages''' box.
  * Click '''Save changes''' button at the bottom of the page.
 
 
