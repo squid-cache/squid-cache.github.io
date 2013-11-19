@@ -10,7 +10,9 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
 
  * '''Status''': 10%
 
- * '''Writer''': [[Eliezer Croitoru]]
+ * '''State''': DRAFT
+
+ * '''Writer''': [[EliezerCroitoru]]
 
  * '''More''': 
 
@@ -59,7 +61,41 @@ And for those that knows how to read apache logs you will see the next lines in 
 There are couple other options to Multi-wan Fail-over and Load-balancing options in the level of switching and routing which you should know that do exist and I am not covering due to the complexity of there setups.
 
 
-== What is MultiWAN and MultiPATH ==
+== What is MultiWAN and MultiPATH? ==
+
+The internet which is based on IP networks is a very big and dynamic system.
+
+While it's software can be kind of “subnetted” to allow an administrative way of managing all these networks Static network topology still makes things easy.
+
+Since this network is so big wide and dynamic there is a need to allow couple “options” to make it possible for infrastructure to be relocated or “copied”.
+
+The big need of re-location of an IP network can be real in a case of floods, power-outage, human-error or even a simple temperature drop\rise.
+
+Since humans has a very long history in the world it can be assumed that no matter how hard the cement and steel will be still there is a need to plan migrations.
+
+For this specific option to be effective and efficient there was a way to take the Static IP topology and using software to remove any “hardening”  of this network topology structure.
+
+The administrative force of the Internet divided the Internet into AS(Autonomous System) which allows the admin to look at the network in a level above all these weird numbering scheme that Routers use.
+
+It then allows the administrative force of the internet to develop a way to use IP in a less static way that it used to be when it was implememnted in one room.
+
+Today these softwares allow for an AS which is basically a human force that has a subnet at hands, to define where through this subnet will be accessed in the IP level.
+
+Most users of the internet are probably just a bunch of nice guys that do not need an AS but they do get access to the Internet through a company or orginzation that do apply to the basic requirments which certify it to own an AS.
+
+The basic requirements for owning or managing a subnet(or AS) are a well trained and\or certified network operators and engineers.
+
+It can seem like a very simple task for some but since it means becomming a part of a very wide network which is being changed every single moment it is a very complex task.
+
+A MultiWAN is not like any literal understanding of the “multi” word which is “doubles” this or that.
+
+The meaning of a Multi in this area is “Two ways to get access to this same WAN network”.
+
+Once this concept is understood we can clarify that a MultiWAN can also be a MultiPATH which means that the same IP network\subnet can be accessed throw two different ways\roads.
+
+The main terms that are being used by network and system administrators and engineers about this and related subjects are “multi-homed” and\or “multi-wan” network in the relation to a specific AS which relates to some subnets.
+
+The more literal way of defining a network that can access or can be accessed through two different “cables” to\from the Internet is MultiPATH network.
 
 === NATed Environment ===
 
@@ -104,8 +140,8 @@ I will use [[http://www.tinycorelinux.net/|TinyCore linux]] ([[http://www.tinyco
  * WAN router-1 IP1:192.168.100.1(lan-core) IP2:192.168.122.65(wan-core)
  * WAN router-2 IP1:192.168.100.2(lan-core) IP2:192.168.122.66(wan-core)
  * Internet target Server at: http://www2.ngtech.co.il/
-The scenario is that Client will try to contact www2.ngtech.co.il throw LAN-core router which will load-balance the traffic over 2 WAN connections.
+The scenario is that Client will try to contact www2.ngtech.co.il through LAN-core router which will load-balance the traffic over 2 WAN connections.
 
 In turn the Load-Balancing rules will be changed and there for the traffic path\flow.
 
-Then I will try to contact couple different Internet hosts throw the LAN-core router and we will see what is the different trafic path for each and every one of these IPs.
+Then I will try to contact couple different Internet hosts through the LAN-core router and we will see what is the different trafic path for each and every one of these IPs.
