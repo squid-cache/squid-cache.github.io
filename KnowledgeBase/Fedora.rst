@@ -5,15 +5,24 @@
 <<TableOfContents>>
 
 == Pre-Built Binary Packages ==
-http://download.fedoraproject.org/pub/fedora/linux/
-
 Binary RPMs for Fedora are available via the Fedora download/update servers for all active Fedora versions like most other free software.
 
-Package information: https://admin.fedoraproject.org/pkgdb/acls/name/squid
+Package information: https://apps.fedoraproject.org/packages/squid
 
-Bug Reports: https://admin.fedoraproject.org/pkgdb/acls/bugs/squid
+Bug Reports: https://apps.fedoraproject.org/packages/squid/bugs
 
-==== Squid-3.1 ====
+==== Squid-3.3 ====
+
+Available on Fedora 20 - 21.
+
+Install Procedure:
+{{{
+yum install squid
+}}}
+
+==== Squid-3.2 ====
+
+Available on Fedora 18 - 19.
 
 Install Procedure:
 {{{
