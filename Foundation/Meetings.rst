@@ -52,7 +52,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#10 ||AlexRousskov ||prepare a written consent document reflecting voting and approval of Francesco Chemolli approved as Squid Software Foundation board member ||done || ||
 ||#10 ||AmosJeffries ||review and sign the written consent document reflecting election of Francesco Chemolli||not done || ||
 ||#10 ||HenrikNordstrom ||review and sign the written consent document reflecting election of Francesco Chemolli||not done || ||
-||#10 ||FrancescoChemolli ||review the written consent document reflecting election of Francesco Chemolli||not done || ||
+||#10 ||FrancescoChemolli ||review the written consent document reflecting election of Francesco Chemolli||done || ||
 || ||
 ||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
 ||#9 ||HenrikNordstrom ||update and circulate draft of service status renewal mail ||not done || 2013-09-01 ||
