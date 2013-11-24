@@ -76,7 +76,7 @@ The SquidConf:cache_mem parameter '''does NOT''' specify the maximum size of the
 
 See also [[#how-much-ram|How much memory do I need in my Squid server?]].
 
-== How do I analyze memory usage from the cache manger output? ==
+== How do I analyze memory usage from the cache manager output? ==
 ''Note: This information is specific to Squid-1.1 versions''
 
 Look at your ''cachemgr.cgi'' ''Cache Information'' page.  For example:
