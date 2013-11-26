@@ -35,52 +35,67 @@ HTTP/2 has some major differences however:
 
 Squid will support HTTP/2 formally and only support desired SPDY features which are IEFT approved and placed in the HTTP/2 specification.
 
- '''NOTE:''' SPDY has several blocker issues correlating with HTTP and Squid features. The blocker problems which are carried over into the HTTP/2 specification are marked with an {X} .
-
 == Traffic from client to Squid ==
 
 To implement a HTTP/2 receiving port in Squid we need to:
 
  * duplicate the HTTP client connection manager (!ConnStateData, !ClientSocketContext, !ClientHttpRequest class triplet)
   * update the new version to decapsulate/encapsulate with HTTP/2 framing on read/write
-  * update the new manager to handle multiple parallel data pipeline channels ("streams" in the HTTP/2 grammar). At present there is only one active context and an idle pipeline queue.
+  * update the new manager to handle multiple parallel data pipeline channels ("streams" in the HTTP/2 grammar). At present there is only one active context and an idle pipeline queue. HTTP/2 requires a minimum of 100 in parallel.
 
  * avoiding direct reads or writes to the client socket
   * mostly done as of 3.2 but there are a few exceptions, ie tunnel and ssl-bump.
-  * Bug Bug:3371 interferes with our ability to detect and relay HTTP/2 transparently using its magic "PRI * HTTP/2.0" connection header.
-
- * {X} implement mandatory transport layer compression / decompression.
 
  * implement HTTP/2 header parser and packer routines
 
- * {X} implement mandatory TLS for systems where OpenSSL is not available.
-  * Including ALPN and possibly also NPN TLS extension support.
+ * implement the HTTP/2 compression (HPACK) algorithms:
+  * string-literal encoder
+  * Huffman encoder/decoder
 
- * {X} figure out what happens to a TCP connection when it encapsulates an HTTP-level "Connection: close" and has other SPDY requests incomplete.
+ * implement Upgrade header support:
+  * for HTTP/2.0
+  * for TLS/*
 
- * {X} figure out what happens to a TCP connection when a response splitting attack is encapsulated and has other pipelined requests incomplete. Adjust the security handling code appropriately.
-  * With the trivial frame design this attack may no longer be possible.
+ * implement TLS for systems where OpenSSL is not available.
+  * Including ALPN extension support
+  * Possibly also NPN extension support
+  * {X} this is only required because browser manufacturers refuse once again to implement proxy support for HTTP/2 over port 80 or 3128.
+
+=== Progress ===
+
+'''Completed:'''
+ * Detection of the HTTP/2 connection header magic octets in port 80 intercepted traffic
+ * Solve Bug Bug:3371 interference with our ability to detect and relay HTTP/2 transparently
+ * Implement branching points for HTTP/2 frame parser
+
+'''Underway:'''
+ * Parsing HTTP/2 request
 
 == Traffic from Squid to servers ==
 
 To implement a server gateway in Squid we need to:
+
  * add a new HTTP/2.0 server connection pool similar but different to the HTTP/1.1 idle pconn pool
-  * but without timeout closures on the pool (timeout is relative to last use, not pooling time).
+  * without timeout closures on the pool (timeout is relative to last use, not pooling time).
   * holding the connections which are actively in use but can be shared with more server requests.
+  * pooling at the level of stateful connection manager object (HttpStteData presently) not stateless TCP connection details (Comm::Connection)
 
  * duplicate the HTTP server connection manager
   * update the new version to encapsulate/decapsulate with HTTP/2 framing on read/write
   * update the new manager to handle multiple parallel data pipelines.
 
- * {X} implement mandatory transport layer compression / decompression.
+ * implement mandatory transport layer compression / decompression.
+   * shared with receiving socket code, but different state tables
 
  * implement HTTP/2 header parser and packer routines
+  * shared with receiving socket code
 
- * {X} implement mandatory TLS for systems where OpenSSL is not available.
-  * Including ALPN and possibly also NPN TLS extension support.
+ * implement TLS for systems where OpenSSL is not available.
+  * including ALPN extension support
 
- * {X} figure out what happens to a SPDY connection when we need to send an HTTP-level "Connection: close" and has other SPDY requests incomplete.
+=== Progress ===
 
+ '''None yet.'''
 
 ----
 CategoryFeature
