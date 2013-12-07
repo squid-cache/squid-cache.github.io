@@ -7,10 +7,10 @@
 = Feature: Faster HTTP parser =
 
  * '''Goal''':  Improve non-caching Squid3 performance by 20+%
- * '''Version''': 3.2 or later
- * '''Status''': not started
+ * '''Version''': 3.5 or later
+ * '''Status''': started
  * '''ETA''': unknown
- * '''Developer''': 
+ * '''Developer''': AmosJeffries
  * '''More''': TODO: link to Squid2 parser work here.
 
 Avoid parsing the same HTTP header several times. Possibly implement incremental header parsing.
@@ -23,14 +23,16 @@ After initial analysis of the ''request'' parsing systems in Squid-3 the parser 
  1. parse request line (now single-pass, was three passes)
   . discard prior parse information !!
  2. char* loop scan for end of header chunk
- 3. sscanf re- scan and sanity check request line (incomplete, partially duplicates step 2.)
+ 3. sscanf re- scan and sanity check request line
+  . incomplete, partially duplicates step 2.
  4. strcmp parse out request method,url,version
+  . duplicates step 1
  5. strcmp / scanf / char* loops for parsing URL
  6. char* loop scan for end of each header line
  7. strcmp scan for : delimiter on header name and generate header objects
  8. strListGet scan for parse of header content options
 
-early stages of ''reply'' parsing have yet to be detailed. The parse sequences join at header line parsing, with some crossover at sanity checks.
+early stages of ''reply'' parsing have yet to be detailed. The parse sequences join at header line parsing (step 6), with some crossover at sanity checks (step 3).
 
 ----
 CategoryFeature | CategoryWish
