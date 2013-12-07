@@ -33,6 +33,7 @@ Basic new features in 3.4:
   * No-lookup DNS for certain SquidConf:acl types.
  * Support OK/ERR/BH response codes and kv-pair options from any helper
  * Improved pipeline queue configuration.
+ * Multicast DNS
 
 The intention with this series is to improve portability and stability. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.4/RELEASENOTES.html#ss5.1
 
