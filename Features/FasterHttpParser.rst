@@ -32,8 +32,8 @@ After initial analysis of the ''request'' parsing systems in Squid-3 the parser 
  7. strcmp scan for : delimiter on header name and generate header objects
  8. strListGet scan for parse of header content options
 
-early stages of ''reply'' parsing have yet to be detailed. The parse sequences join at header line parsing (step 6), with some crossover at sanity checks (step 3).
 
+The parse sequences join at header line parsing (step 6), with some crossover at sanity checks (step 3).
 ''response'' parsing is as follows:
 
  1. processReplyHeader calls HttpMsg::parse
