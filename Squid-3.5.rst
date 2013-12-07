@@ -13,8 +13,8 @@ The set of new Squid 3.5 features and release timeline is determined by submissi
 
 Basic new features in 3.5:
 
-## * [[Features/SslServerCertValidator|SSL server certificate validator]]
-## * SquidConf:note directive for annotating transactions
+ * eCAP version 1.0 support
+ * Authentication helper query extensions
 
 Feautures removed in 3.5:
 
