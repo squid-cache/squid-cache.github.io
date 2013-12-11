@@ -2,16 +2,35 @@
 
 = Squid 3.4 =
 
+
+---- /!\ '''Edit conflict - other version:''' ----
 Currently in '''STABLE''' cycle.
 The features have been set and large code changes are reserved for later versions.
 
 Additions are limited to:
  * Security fixes
  * Stability fixes
+
+---- /!\ '''Edit conflict - your version:''' ----
+Currently in '''STABLE''' cycle.
+The features have been set and large code changes are reserved for later versions.
+
+Additions are limited to:
+ * Security fixes
+ * Stability fixes
+
+---- /!\ '''End of edit conflict''' ----
  * Bug fixes
 
 ## bugs down to major (all earlier releases and 'unknowns')
+
+---- /!\ '''Edit conflict - other version:''' ----
  . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs new in 3.4 ]]
+
+---- /!\ '''Edit conflict - your version:''' ----
+ . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Major bugs still in 3.4 ]]
+
+---- /!\ '''End of edit conflict''' ----
 
 Features ported from 2.7 in this release:
 
