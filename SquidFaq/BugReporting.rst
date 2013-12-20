@@ -24,12 +24,13 @@ Please note that:
 == crashes and core dumps ==
 There are two conditions under which squid will exit abnormally and generate a coredump.  First, a SIGSEGV or SIGBUS signal will cause Squid to exit and dump core.  Second, many functions include consistency checks.  If one of those checks fail, Squid calls abort() to generate a core dump.
 
-If you have a core dump file then use gdb to extract a stack trace from the core as follows:
+If you have a core dump file, then use gdb to extract a stack trace from the core using a "bt full" command (if supported) or a "backtrace" command (can be typed as "bt" and is always supported, but gives less information):
 
 {{{
 % gdb /usr/local/squid/sbin/squid core
 gdb> backtrace
 }}}
+
 Many people report that Squid doesn't leave a coredump anywhere.  This may be due to one of the following reasons:
 
  * Resource Limits
