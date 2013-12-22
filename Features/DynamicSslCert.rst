@@ -41,7 +41,8 @@ make install
 }}}
 
 === Create Self-Signed Root CA Certificate ===
-This certificate will be used by Squid to generate dynamic certificates for proxied sites. For all practical purposes, this certificate becomes a [[http://en.wikipedia.org/wiki/Root_certificate|Root certificate]] and you become a Root CA. If your certificate is compromised, any user trusting (knowingly or otherwise) your Root certificate may not be able to detect man-in-the-middle attacks orchestrated by others.
+This certificate will be used by Squid to generate dynamic certificates for proxied sites. For all practical purposes, this certificate becomes a [[http://en.wikipedia.org/wiki/Root_certificate|Root certificate]] and you become a Root CA.
+ . {X} If your certificate is compromised, any user trusting (knowingly or otherwise) your Root certificate may not be able to detect man-in-the-middle attacks orchestrated by others.
 
 Create directory to store the certificate (the exact location is not important):
 
