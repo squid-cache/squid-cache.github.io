@@ -48,7 +48,7 @@ Every now and then we try to organize some [[MeetUps|events, developer meetups o
  * The Bugzilla [[http://bugs.squid-cache.org/index.cgi|database]].
  * The Squijj refresh_pattern analysis [[http://www.mnot.net/squij/|program]].
  * The Calamaris log file analysis [[http://freshmeat.net/projects/calamaris/|tool]].
- * Visolve's  configuration manuals for [[http://squid.visolve.com/squid/configuration_manual_30.htm|Squid 3.0]] and [[http://www.visolve.com/squid/squid26/contents.php|Squid 2.6]]
+ * Visolve's  configuration manuals for [[http://www.visolve.com/squid/squid30/contents.php|Squid 3.0]] and [[http://www.visolve.com/squid/squid27/contents_27.php|Squid 2.7]]
  * Martin Stransky's Squid [[http://people.redhat.com/stransky/squid/|page]]. Martin maintains the official Red Hat package.
  * The book [[https://www.packtpub.com/squid-proxy-server-3-1-beginners-guide/book|Squid Proxy Server 3.1: Beginner's Guide]] by Kulbir Saini
  * Other [[ExternalLinks|external links]]
