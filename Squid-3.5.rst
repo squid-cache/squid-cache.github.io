@@ -9,16 +9,22 @@ The set of new Squid 3.5 features and release timeline is determined by submissi
 ## bugs down to major (all earlier releases and 'unknowns')
  . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
 
-## Features ported from 2.7 in this release:
+Features ported from 2.7 in this release:
+
+ * [[http://www.squid-cache.org/Doc/config/collapsed_forwarding/|Collapsed Forwarding]]
 
 Basic new features in 3.5:
 
  * eCAP version 1.0 support
- * Authentication helper query extensions
+ * Authentication helper query extensions (see SquidConf:auth_param)
+ * Caching large (>32KB) objects in [[Features/LargeRockStore|Rock storage]]
+ * Extended cache HIT/MISS decision control (see SquidConf:send_hit, SquidConf:store_miss)
+ * Logging of transaction start time (see SquidConf:logformat)
+ * Adaptation service performed ACL test
 
-Feautures removed in 3.5:
+Features removed in 3.5:
 
- * COSS storage type has been superceded by Rock storage type.
+ * COSS storage type has been superceded by [[Features/LargeRockStore|Rock]] storage type.
  * dnsserver helper has been superceded by DNS internal client.
  * DNS helper API has been superceded by DNS internal client.
 
