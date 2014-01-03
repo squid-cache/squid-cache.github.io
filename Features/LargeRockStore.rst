@@ -9,13 +9,10 @@
 = Feature: Large Rock Store =
 
  * '''Goal''': Support caching of large (i.e, larger than db slot size) responses in Rock Store.
- * '''Status''': In progress; initial implementation completed, beta-testing and polishing
- * '''ETA''': November 2013
- * '''Version''': v3.5
- * '''Priority''': 1
+ * '''Status''': completed.
+ * '''Version''': 3.5
  * '''Developer''': AlexRousskov and Dmitry Kurochkin
- * '''More''': Based on [[Features/RockStore|Rock Store]] feature. Unofficially available as a Launchpad [[https://code.launchpad.net/~measurement-factory/squid/large-rock|branch]]. However, beta testers should use the unofficial Collapsed Forwarding [[https://code.launchpad.net/~measurement-factory/squid/collapsed-fwd|branch]] which contains related important fixes and improvements.
-
+ * '''More''': Based on [[Features/RockStore|Rock Store]] feature.
 
 = Definitions =
 
