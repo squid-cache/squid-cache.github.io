@@ -20,6 +20,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  1. MacOs node for the build farm
  1. Next steps for the boilerplate/(C) project
+ 1. Copyright for example helper code
 
  1. Next meeting scheduling
  1. Open floor:
@@ -50,7 +51,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#10 ||AmosJeffries ||format page out of agreed support point formula and present for board@ review ||not done || ||
 ||#10 ||AmosJeffries ||followup with sysadmin on possible next tasks ||in progress || ||
 ||#10 ||AlexRousskov ||prepare a written consent document reflecting voting and approval of Francesco Chemolli approved as Squid Software Foundation board member ||done || ||
-||#10 ||AmosJeffries ||review and sign the written consent document reflecting election of Francesco Chemolli||not done || ||
+||#10 ||AmosJeffries ||review and sign the written consent document reflecting election of Francesco Chemolli||done || 2014-01-06||
 ||#10 ||HenrikNordstrom ||review and sign the written consent document reflecting election of Francesco Chemolli||not done || ||
 ||#10 ||FrancescoChemolli ||review the written consent document reflecting election of Francesco Chemolli||done || ||
 || ||
