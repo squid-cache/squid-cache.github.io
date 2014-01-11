@@ -1,7 +1,7 @@
 ##master-page:SquidTemplate
 #format wiki
 #language en
-#acl SquidWikiAdminGroup:read,write,revert,admin All:read
+#acl SquidWikiAdminGroup:read,write,revert,admin All:
 
 ## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 
