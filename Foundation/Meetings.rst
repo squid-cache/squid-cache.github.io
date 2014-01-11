@@ -11,7 +11,20 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  * Location: IRC.
 
-==== Draft Agenda - Meeting #11 ====
+==== Draft Agenda - Meeting #12 ====
+ 1. Opening of the meeting
+ 1. Selection of meeting officials
+ 1. Agenda bashing and approval
+ 1. Last meeting minutes approval
+ 1. Review of action points from last meeting
+
+ 1. Next meeting scheduling
+ 1. Open floor:
+  * third-party access to Coverity scan Squid results
+
+==== Agenda of Last Meeting ====
+''' Meeting #11.'''
+
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
@@ -26,25 +39,12 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Open floor:
   * third-party access to Coverity scan Squid results
 
-==== Agenda of Last Meeting ====
-''' Meeting #11.'''
-
- 1. Opening of the meeting
- 1. Selection of meeting officials
- 1. Agenda bashing and approval
- 1. Last meeting minutes approval
- 1. Director applications review
- 1. Review of action points from last meeting
- 1. Copyright framework
- 1. Sysadmin next task
- 1. Next meeting scheduling
- 1. Open floor:
-  * no items discussed.
-
 == Action Points ==
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' || '''ETA''' ||
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
+|| ||
+||#11 ||AmosJeffries ||followup with sysadmin on possible next tasks ||in progress || ||
 || ||
 ||#10 ||AmosJeffries ||publish meeting #9 minutes with addition of reference to support points formula URL ||  || 2014-01-11 ||
 ||#10 ||AmosJeffries ||format page out of agreed support point formula and present for board@ review ||not done || ||
