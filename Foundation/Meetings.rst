@@ -73,7 +73,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
-||#10 ||2013-10-08 ||IRC || TBD ||
+||#11 ||2014-01-11 ||IRC || TBD ||
 ||#10 ||2013-10-08 ||IRC || TBD ||
 ||#9 ||2013-09-01 ||IRC || awaiting publication ||
 ||#8 ||2013-07-15 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-07-15_board-meeting-8.html ||
