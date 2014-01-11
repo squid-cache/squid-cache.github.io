@@ -74,13 +74,13 @@ Most of the Board discussions can be open to the public and your constructive pa
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
 ||#11 ||2014-01-11 ||IRC || TBD ||
-||#10 ||2013-10-08 ||IRC || TBD ||
-||#9 ||2013-09-01 ||IRC || awaiting publication ||
+||#10 ||2013-10-08 ||IRC ||draft circulated  ||
+||#9 ||2013-09-01 ||IRC ||awaiting final approval ||
 ||#8 ||2013-07-15 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-07-15_board-meeting-8.html ||
 ||#7 ||2013-05-26 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-05-26_board-meeting-7.html ||
 ||#6 ||2013-04-28 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-04-28_board-meeting-6.html ||
 ||#5 ||2012-07-26 ||IRC || TBD ||
-||#4 ||2012-06-16 ||IRC || draft circulated ||
+||#4 ||2012-06-16 ||IRC ||draft circulated ||
 ||#3 ||2012-05-17 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-05-17_board-meeting-3.html ||
 ||#2 ||2012-03-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-03-20_board-meeting-2.html ||
 ||#1 ||2012-02-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-02-20_board-meeting-1.html ||
