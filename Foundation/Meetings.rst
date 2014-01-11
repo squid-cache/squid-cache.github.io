@@ -80,7 +80,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||#7 ||2013-05-26 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-05-26_board-meeting-7.html ||
 ||#6 ||2013-04-28 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-04-28_board-meeting-6.html ||
 ||#5 ||2012-07-26 ||IRC || TBD ||
-||#4 ||2012-06-16 ||IRC || being written ||
+||#4 ||2012-06-16 ||IRC || draft circulated ||
 ||#3 ||2012-05-17 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-05-17_board-meeting-3.html ||
 ||#2 ||2012-03-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-03-20_board-meeting-2.html ||
 ||#1 ||2012-02-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-02-20_board-meeting-1.html ||
