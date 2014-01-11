@@ -44,7 +44,10 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#11 ||AmosJeffries ||followup with sysadmin on possible next tasks ||in progress || ||
+||#11 ||HenrikNordstrom ||followup on Nathan H. webmaster account access ||done ||2014-01-11 ||
+||#11 ||AmosJeffries || instruct kinkie on database operation || || ||
+||#11 ||FrancescoChemolli ||work with sysadmin to mail service listing email when it is approved and monitor responses/bounces || || ||
+||#11 ||FrancescoChemolli ||make Coverity scan reports public readable if possible || || ||
 || ||
 ||#10 ||AmosJeffries ||publish meeting #9 minutes with addition of reference to support points formula URL ||  || 2014-01-11 ||
 ||#10 ||AmosJeffries ||format page out of agreed support point formula and present for board@ review ||not done || ||
