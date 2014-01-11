@@ -18,16 +18,18 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval
  1. Review of action points from last meeting
 
- 1. MacOs node for the build farm
+ 1. Action points reassignment
+ 1. MacOS node for the build farm
  1. Next steps for the boilerplate/(C) project
  1. Copyright for example helper code
+ 1. Treasurers Report
+ 1. end of year documents for 2013
 
  1. Next meeting scheduling
  1. Open floor:
 
-
 ==== Agenda of Last Meeting ====
-''' Meeting #10.'''
+''' Meeting #11.'''
 
  1. Opening of the meeting
  1. Selection of meeting officials
@@ -46,7 +48,6 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#10 ||AmosJeffries ||publish meeting #8 minutes || done || 2013-11-03 ||
 ||#10 ||AmosJeffries ||publish meeting #9 minutes with addition of reference to support points formula URL ||waiting on URL || ||
 ||#10 ||AmosJeffries ||format page out of agreed support point formula and present for board@ review ||not done || ||
 ||#10 ||AmosJeffries ||followup with sysadmin on possible next tasks ||in progress || ||
