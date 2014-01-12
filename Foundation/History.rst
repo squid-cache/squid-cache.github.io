@@ -3,7 +3,7 @@
 #language en
 #acl SquidWikiAdminGroup:read,write,revert,admin -All:read
 
-= Squid Software Foundation Activities=
+= Squid Software Foundation Activities =
 
  ''' DRAFT '''
 
