@@ -45,8 +45,8 @@ Most of the Board discussions can be open to the public and your constructive pa
 || ||
 ||#11 ||HenrikNordstrom ||followup on Nathan H. webmaster account access ||done ||2014-01-11 ||
 ||#11 ||AmosJeffries || instruct kinkie on database operation || || ||
-||#5 ||AmosJeffries ||minutes for meeting #11 written and circulated ||not done ||
-||#5 ||AmosJeffries ||minutes for meeting #10 written and circulated ||in progress ||
+||#11 ||AmosJeffries ||minutes for meeting #11 written and circulated ||not done ||
+||#11 ||AmosJeffries ||minutes for meeting #10 written and circulated ||in progress ||
 ||#11 ||FrancescoChemolli ||work with sysadmin to mail service listing email when it is approved and monitor responses/bounces || || ||
 ||#11 ||FrancescoChemolli ||make Coverity scan reports public readable if possible || || ||
 || ||
