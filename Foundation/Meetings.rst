@@ -20,7 +20,6 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  1. Next meeting scheduling
  1. Open floor:
-  * third-party access to Coverity scan Squid results
 
 ==== Agenda of Last Meeting ====
 ''' Meeting #11.'''
