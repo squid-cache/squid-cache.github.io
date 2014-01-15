@@ -74,19 +74,19 @@ These are the features we are trying to work on at present. New features may be 
 === Under Development ===
 
 (Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.3" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*1")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*1")>>
 
 (Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.3" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*2")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*2")>>
 
 (Priority 3)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.3" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*3")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*3")>>
 
 (Priority 4)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.2" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*4")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*4")>>
 
 (Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.3" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3" regex:"ETA...:.unknown")>>
 
@@ -129,14 +129,10 @@ More ideas are available [[Features/Other|elsewhere]].
 
 ## * Feature marked 3.0 which did not make it:
 ##<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.0" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
- * Feature marked 3.1 which did not make it:
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.1" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
- * Feature marked 3.2 which did not make it:
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.2" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
- * Feature marked 3.3 which did not make it:
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.3" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
-## * Feature marked 3.4 which did not make it:
-##<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.4" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+ * Feature(s) marked 3.1 that did not make it:<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.1" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+ * Feature(s) marked 3.2 that did not make it:<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.2" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+ * Feature(s) marked 3.3 that did not make it:<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.3" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
+ * All feature(s) marked 3.4 made it.
 
 = Schedule for Feature Removals =
 
