@@ -37,26 +37,29 @@ Key:
 || <:( || <:( || (./) || (./) || ''anyp/'' || Protocol-independent protocol primitives || url* urn* !ProtoPort* ||
 || <:( || <:( || :\ || :\ || ''auth/'' || Authentication support || rename classes into Auth namespace. ||
 || <:( || <:( || {X} || :\ || ''base/'' || Commonly used code without a better place to go. || Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
+|| <:( || <:( || <:( || {1} {2} || ''clients/'' || Protocol clients and gateway components for connecting to upstream servers || ftp.*, http.*, gopher.* ||
 || <:( || <:( || :\ || :\ || ''comm/'' || I/O subsystem ||
 || <:( || <:( || <:( || || ''config/'' || squid.conf parsing and management || cache_cf.* cf.* cf_* Parser.* ||
 || <:( || <:( || <:( ||  || ''debug/'' || Debug core utilities || debug.cc Debug.h ||
 || <:( || <:( || <:( || :\ || ''dns/'' || DNS components (Internal, dnsserver, caches) || dns*, ipcache.* fqdncache.* ||
 || <:( || <:( || <:( || :\ || ''esi/'' || ESI support || ESI*, Add Esi namespace, rename classes ||
 || <:( || <:( || <:( || (./) || ''eui/'' || EUI-48 / MAC / ARP operations ||
-|| <:( || <:( || (./) || :\ {2} || ''format/'' || Custom formatting ||
+|| <:( || <:( || (./) || :\ || ''format/'' || Custom formatting ||
 || <:( || <:( || <:( || :\ || ''fs/'' || file system-specific cache store support? || fs/*, Add Fs namespace, rename classes, add Makefiles for subdirs. ||
 || (./) || <:( || {3} || :\ || ''fs/ufs'' || Ufs cache_dir || FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
+|| <:( || <:( || <:( || {1} || ''ftp/'' || FTP primitives shared by client, server, and ICAP sides || ||
 || <:( || <:( || <:( || {2} || ''http/'' || HTTP primitives shared by client, server, and ICAP sides || Http* ||
 || <:( || <:( || <:( || :\ || ''icmp/'' || ICMP support and Network measurement || Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
 || <:( || <:( || <:( || :\ || ''ident/'' || IDENT support || ident.* Make remote connection handling into an !AsyncJob||
 || <:( || <:( || (./) || (./) || ''ip/'' || IP Protocol || Ip* Qos* ||
 || <:( || <:( || <:( || :\ || ''ipc/'' || inter-process communication || ipc.* ipc_win32.*, Move files, add Icp namespace to them, and adjust global names ||
-|| <:( || <:( || <:( || {2} || ''log/'' || Logging components || namespace for Custom log formats and tokenizer. classify ||
+|| <:( || <:( || <:( || :\ || ''log/'' || Logging components || namespace for Custom log formats and tokenizer. classify ||
 || <:( || <:( || <:( || || ''mem/'' || Basic Memory management || mem* ||
 || <:( || <:( || <:( || :\ || ''mgr/'' || Cache Manager || Move in CacheManager.h, cache_manager.cc, and test cases ||
 || <:( || <:( || <:( || || ''redirect/'' || URL alteration (redirectors, URL-rewrite, URL maps) || redirect.* !RedirectInternal.* ||
 || <:( || <:( || <:( || :\ || ''repl/heap/'' || HEAP Replacement Policy algorithms ||
 || <:( || <:( || <:( || :\ || ''repl/lru/'' || Cache Replacement Policy algorithms ||
+|| <:( || <:( || <:( || {1} {2} || ''servers/'' || Listening Server components for receiving connections || client_side* ||
 || <:( || <:( || <:( || :\ || ''snmp/'' || SNMP components || snmp_*, move core and agent code. restructure for extensibility. ||
 || <:( || <:( || <:( || :\ || ''ssl/'' || SSL components || ssl_* ssl.cc ||
 || <:( || <:( || <:( ||  || ''shaping/'' || Traffic shaping and delay pools || *[Dd]elay.* *[Pp]ool*.* ||
