@@ -41,6 +41,24 @@ There is no good fixed benchmark test yet to measure by so comparisons are not s
 ##
 
 = Records =
+== Squid trunk revno 13251 ==
+|| CPU || 4-core Intel Xeon E5-2670 @ 2.60GHz, paravirtualized (Xen) ||
+|| RAM || 4 Gb ||
+|| HDD || SSD ||
+|| OS  || Ubuntu Saucy ||
+|| Users || 1 user in a controlled test environment ||
+|| RPS || 39715 ||
+|| Hit Ratio || 100% ||
+|| CPU Usage || 3 cores at 100% ||
+|| Bandwidth || 313 Mbit/sec sustained ||
+
+This number was taken in a '''controlled test environment'''. It has nothing to do with the numbers someone would get in a production environment; it's just an estimate of how fast squid can be.
+Squid was configured to do no logging, no access control, and apachebench was used to hammer squid asking 10M times for a static, cacheable, 600-bytes long document. Of the 4 cores, 3 were running a multi-worker squid, one was running ab over the loopback interface.
+
+{{{
+Submitted by: FrancescoChemolli <<Date(2014-01-30T15:24:37Z)>>
+}}}
+
 == Squid 3.2 ==
 === 3.2.0.14 ===
 || CPU || ''unknown'' ||
