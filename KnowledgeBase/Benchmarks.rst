@@ -56,7 +56,7 @@ This number was taken in a '''controlled test environment'''. It has nothing to 
 Squid was configured to do no logging, no access control, and apachebench was used to hammer squid asking 10M times for a static, cacheable, 600-bytes long document. Of the 4 cores, 3 were running a multi-worker squid, one was running ab over the loopback interface.
 
 {{{
-Submitted by: FrancescoChemolli <<Date(2014-01-30T15:24:37Z)>>
+Submitted by: FrancescoChemolli 2014-01-30
 }}}
 
 == Squid 3.2 ==
