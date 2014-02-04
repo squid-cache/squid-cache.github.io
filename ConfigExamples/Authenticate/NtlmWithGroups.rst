@@ -10,17 +10,19 @@
 
 == Outline ==
 
-To perform group-based access controls you need to already have NTLM authentication configured and working on a per-user basis.
+To perform group-based access controls you need to already have NTLM or Negotiate authentication configured and working on a per-user basis.
 
 Details on how to do that are covered in:
- * [[ConfigExamples/Authenticate/Ntlm]]
- * [[ConfigExamples/Authenticate/WindowsActiveDirectory]]
+ * [[ConfigExamples/Authenticate/Ntlm]] for NTLM (only)
+ * [[ConfigExamples/Authenticate/WindowsActiveDirectory]] for Negotiate (NTLM and/or Kerberos)
+
+The example below uses winbind for group lookps. There are several other helpers bundled with Squid that perform group lookups.<<BR>>Look for '''group''' check type in the ''Access Control'' section of the [[http://www.squid-cache.org/Doc/man/|helpers index]].
 
 == Squid Configuration File ==
 
 Create and ACL for checking the group access:
 {{{
-external_acl_type testForNTGroup %LOGIN /usr/local/squid/libexec/wbinfo_group.pl
+external_acl_type testForNTGroup %LOGIN /usr/local/squid/libexec/ext_wbinfo_group_acl.pl
 
 acl inGroupX external testForNTGroup someGroupNameX
 }}}
