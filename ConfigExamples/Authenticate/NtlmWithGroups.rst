@@ -1,1 +1,1 @@
-#REDIRECT ConfigExamples/Authenticate/Groups
+#REDIRECT /ConfigExamples/Authenticate/Groups
