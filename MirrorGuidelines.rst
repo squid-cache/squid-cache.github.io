@@ -105,6 +105,7 @@ rsync -avz --delete-after master.squid-cache.org::source/squid-3  /source-path
 Production and Beta version code can be found in the numbered series sub-directories for their version.
 For example:
 {{{
+rsync -avz --delete-after master.squid-cache.org::source/squid-3.4  /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.3  /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.2  /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.1  /source-path
