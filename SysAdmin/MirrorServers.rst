@@ -1,6 +1,6 @@
 #format wiki
 #language en
-#acl SquidWikiAdminGroup:read,write,delete,revert
+#acl SquidWikiAdminGroup:read,write,delete,revert -All:read
 
 = WWW Mirror Servers Administration =
 
