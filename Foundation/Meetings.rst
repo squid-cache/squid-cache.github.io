@@ -18,6 +18,9 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval
  1. Review of action points from last meeting
 
+ 1. Nabble
+## have been allowing unsubscribed posts to "squid-users" without delivering for some time.
+
  1. Next meeting scheduling
  1. Open floor:
 
