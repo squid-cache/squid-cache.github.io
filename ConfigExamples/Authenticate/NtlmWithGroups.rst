@@ -16,7 +16,7 @@ Details on how to do that are covered in:
  * [[ConfigExamples/Authenticate/Ntlm]] for NTLM (only)
  * [[ConfigExamples/Authenticate/WindowsActiveDirectory]] for Negotiate (NTLM and/or Kerberos)
 
-The example below uses winbind for group lookps. There are several other helpers bundled with Squid that perform group lookups.<<BR>>Look for '''group''' check type in the ''Access Control'' section of the [[http://www.squid-cache.org/Doc/man/|helpers index]].
+The example below uses winbind for group lookps. There are several other helpers bundled with Squid that perform group lookups.<<BR>>Look for '''group''' check type in the '''Access Control''' section of the [[http://www.squid-cache.org/Doc/man/|helpers index]].
 
 == Squid Configuration File ==
 
