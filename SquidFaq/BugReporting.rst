@@ -35,6 +35,8 @@ Many people report that Squid doesn't leave a coredump anywhere.  This may be du
 
  * Resource Limits
   . The shell has limits on the size of a coredump file.  You may need to increase the limit using ulimit or a similar command (see below)
+ * Write Permissions
+  . The system user account for Squid (i.e. proxy, nobody, etc) needs write permissions to [[#Coredump_Location|coredump destination directory]]
  * sysctl options
   . On FreeBSD, you won't get a coredump from programs that call setuid() and/or setgid() (like Squid sometimes does) unless you enable this option:
 
