@@ -16,8 +16,7 @@ Squid-2 is distributed as part of the standard Solaris packages repository. To i
 }}}
 Configuration files will then be stored in {{{/etc/squid}}}, user-accessible executables such as squidclient in {{{/usr/bin}}}, while the main squid executable will be in {{{/usr/squid/sbin}}}.
 
-
-http://www.sunfreeware.com/ also hosts binary Squid packages for SPARC/Solaris 2.5-10 and x86/Solaris 8-10.
+http://www.opencsw.org/packages/squid/ also hosts binary Squid packages.
 ==== Squid-2.7 ====
 {{{
  pkg-get -i squid
