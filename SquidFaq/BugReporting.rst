@@ -146,7 +146,7 @@ handle SIGTERM pass nostop noprint
 handle SIGUSR1 pass nostop noprint
 handle SIGSEGV stop
 handle SIGABRT stop
-run -DNYCd3
+run -DNYCX
 [wait for crash]
 backtrace
 quit
