@@ -49,7 +49,7 @@ See our [[http://www.squid-cache.org/Advisories/|Advisories]] list.
 
 === Squid-3.1 default config ===
 
-#start defaultconfig
+##start defaultconfig
 
 From 3.1 a lot of configuration cleanups have been done to make things easier.
 
@@ -96,4 +96,4 @@ http_access allow localnet
 http_access deny all
 }}}
 
-#end defaultconfig
+##end defaultconfig
