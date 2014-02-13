@@ -64,8 +64,8 @@ including guides for the current development test releases
 ## * [[http://www.squid-cache.org/Versions/v2/HEAD/cfgman/|Squid 2-HEAD]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/3.HEAD/cfgman/|Squid 3-HEAD]] Configuration Guide
 
-<<Include([[Squid-3.1]], "Squid-3.1 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
-<<Include([[Squid-3.2]], "Squid-3.2 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
+<<Include(Squid-3.1, "Squid-3.1 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
+<<Include(Squid-3.2, "Squid-3.2 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
 
 == How do I configure Squid to work behind a firewall? ==
 If you are behind a firewall then you can't make direct connections to the outside world, so you '''must''' use a parent cache. Normally Squid tries to be smart and only uses cache peers when it makes sense from a perspective of global hit ratio, and thus you need to tell Squid when it can not go direct and must use a parent proxy even if it knows the request will be a cache miss.
