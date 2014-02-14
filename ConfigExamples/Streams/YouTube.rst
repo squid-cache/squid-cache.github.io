@@ -17,14 +17,19 @@ Caching them is much harder, for information on that see [[ConfigExamples/Dynami
 == Squid Configuration File ==
 Add this to squid.conf before the part where you allow people access to the Internet.
 
+ . {X} As of Feb 2014 Google are using one subdomain of youtube.om for authenticating '''all''' googel service, including Docs and Gmail. If you were intending to block only YouTube access this needs to be whitelisted from the denial.
+
 {{{
 ## The videos come from several domains
 acl youtube_domains dstdomain .youtube.com .googlevideo.com .ytimg.com
 
-http_access deny youtube_domains
+## G* services authentication domain
+acl gLogin dstdomain accounts.youtube.com
+
+http_access deny youtube_domains !gLogin
 }}}
 
-Other sites than !YouTube also host this kind of content. See the Flash Video section of [[ConfigExamples/Streams/Other]] for general flash media patterns withut neeing to block specific websites.
+Other sites than !YouTube also host this kind of content. See the Flash Video section of [[ConfigExamples/Streams/Other]] for general flash media patterns withut needing to block specific websites.
 
 ----
 CategoryConfigExample
