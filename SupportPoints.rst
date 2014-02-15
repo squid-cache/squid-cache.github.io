@@ -46,6 +46,9 @@ The first few Self-Assessments should probably be shared among
 submitters to allow for at least one round of adjustments before they
 are published and applied.
 
+== Conflict of Interest Disclosure ==
+
+Very few people can drive these changes, and all of them are conflicted in one way or the other, so we must approach this as a "foxes guarding foxes" project where inherit conflicts of interests are acknowledged and channeled for common good rather than avoided.
 
 == Support Points Calculation ==
 
@@ -75,6 +78,6 @@ Bonuses for volunteers performing specific, regular project duties:
 Needless to say that all of the above are rather arbitrary constants and functions. It would be silly to suggest that five squid-users emails are always equivalent to a single commit or even that all squid-dev emails are about the same. However, we need some way to map project contribution to a single number, and the above does just that. The only other alternative is to use monetary donations alone, and that seems even worse!
 
 
-== Conflict of Interest Disclosure ==
+== Organizations Support Points ==
 
-Very few people can drive these changes, and all of them are conflicted in one way or the other, so we must approach this as a "foxes guarding foxes" project where inherit conflicts of interests are acknowledged and channeled for common good rather than avoided.
+<<FullSearch(title:SupportPoints/ )>>
