@@ -50,7 +50,8 @@ At this point there are none on record. We are looking for information and possi
 ## || RFC:2535 || DNS Security Extensions || {X} ||
 ## NOTE: changes affect RFC 3226 compliance.
 || RFC:2616 || Hypertext Transfer Protocol -- HTTP/1.1 || almost || see [[Features/HTTP11]] ||
-|| RFC:2617 || HTTP/1.1 Basic and Digest authentication ||  ||
+|| RFC:2617 || HTTP/1.1 Basic and Digest authentication || {X} || Missing support for several Digest features ||
+|| RFC:2660 || The Secure HyperText Transfer Protocol (Secure-HTTP/1.4) || {X} ||
 || RFC:2756 || Hyper Text Caching Protocol (HTCP/0.0) || (./) ||
 || RFC:2817 || Upgrading to TLS Within HTTP/1.1 || {X} ||
 || RFC:2818 || HTTP Over TLS || (./) ||
@@ -62,13 +63,14 @@ At this point there are none on record. We are looking for information and possi
 || RFC:3225 || Indicating Resolver Support of DNSSEC || (./) || {i} no-support conditional compliance. ||
 || RFC:3310 || Hypertext Transfer Protocol (HTTP) Digest Authentication<<BR>>Using Authentication and Key Agreement (AKA) ||  ||
 || RFC:3493 || Basic Socket Interface Extensions for IPv6 || (./) ||
-|| RFC:3507 || Internet Content Adaptation Protocol (ICAP) || ||
+|| RFC:3507 || Internet Content Adaptation Protocol (ICAP) || || client only ||
 || RFC:3513 || Internet Protocol Version 6 (IPv6) Addressing Architecture || (./) ||
 || RFC:3596 || DNS Extensions to Support IP Version 6 || (./) ||
 || RFC:3875 || The Common Gateway Interface (CGI) Version 1.1 || ||
 || RFC:3986 || Uniform Resource Identifier (URI): Generic Syntax || {X} || still RFC:1738 compliant ||
 || RFC:4001 || Textual Conventions for Internet Network Addresses || (./) ||
 || RFC:4559 || SPNEGO-based Kerberos and NTLM HTTP Authentication<<BR>>in Microsoft Windows || ||
+|| RFC:6762 || Multicast DNS || (./) || client only ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
