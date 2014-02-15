@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2014-02-15 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2014-03-15 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC.
 
@@ -19,7 +19,6 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Review of action points from last meeting
 
  1. Nabble
- 1. Mirror servers auto-notification
 
  1. Next meeting scheduling
  1. Open floor:
@@ -51,14 +50,14 @@ Most of the Board discussions can be open to the public and your constructive pa
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
 ||#11 ||HenrikNordstrom ||followup on Nathan H. webmaster account access ||done ||2014-01-11 ||
-||#11 ||AmosJeffries || instruct kinkie on database operation || || ||
-||#11 ||AmosJeffries ||minutes for meeting #11 written and circulated ||not done ||
+||#11 ||AmosJeffries || instruct kinkie on database operation || done || SysAdmin/MirrorServers ||
+||#11 ||AmosJeffries ||minutes for meeting #11 written and circulated ||in progress ||
 ||#11 ||AmosJeffries ||minutes for meeting #10 written and circulated ||in progress ||
 ||#11 ||FrancescoChemolli ||work with sysadmin to mail service listing email when it is approved and monitor responses/bounces || || ||
-||#11 ||FrancescoChemolli ||make Coverity scan reports public readable if possible || || ||
+||#11 ||FrancescoChemolli ||make Coverity scan reports public readable if possible ||not possible. ||2014-02-15 ||
 || ||
 ||#10 ||AmosJeffries ||publish meeting #9 minutes with addition of reference to support points formula URL ||  || 2014-01-11 ||
-||#10 ||AmosJeffries ||format page out of agreed support point formula and present for board@ review ||not done || ||
+||#10 ||AmosJeffries ||format page out of agreed support point formula and present for board@ review ||done || SupportPoints ||
 ||#10 ||AmosJeffries ||followup with sysadmin on possible next tasks ||in progress || ||
 || ||
 ||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
@@ -81,8 +80,8 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
-||#11 ||2014-01-11 ||IRC || TBD ||
-||#10 ||2013-10-08 ||IRC ||draft circulated  ||
+||#11 ||2014-01-11 ||IRC ||draft circulated ||
+||#10 ||2013-10-08 ||IRC ||draft circulated ||
 ||#9 ||2013-09-01 ||IRC ||awaiting final approval ||
 ||#8 ||2013-07-15 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-07-15_board-meeting-8.html ||
 ||#7 ||2013-05-26 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-05-26_board-meeting-7.html ||
