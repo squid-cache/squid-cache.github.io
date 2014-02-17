@@ -18,6 +18,15 @@ root% useradd -m -G ccache jenkins
 }}}
 set up permissions to the jenkins user, and that's it.
 
+# for rpm build
+{{{
+yum install redhat-rpm-config rpm-build rpm-devel
+useradd rpm
+mkdir /home/rpm/rpmbuild
+cd /home/rpm/rpmbuild
+mkdir BUILD RPMS SOURCES SPECS SRPMS
+chown rpm. -r /home/rpm/rpmbuild
+}}}
 ----
 Discuss this page using the "Discussion" link in the main menu
 
