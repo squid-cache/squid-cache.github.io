@@ -25,7 +25,7 @@ useradd rpm
 mkdir /home/rpm/rpmbuild
 cd /home/rpm/rpmbuild
 mkdir BUILD RPMS SOURCES SPECS SRPMS
-chown rpm. -r /home/rpm/rpmbuild
+chown rpm. -R /home/rpm/rpmbuild
 }}}
 ----
 Discuss this page using the "Discussion" link in the main menu
