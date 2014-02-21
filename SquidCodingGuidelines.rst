@@ -157,18 +157,35 @@ Pick one of the applicable styles described below and stick to it. For old class
 
 == File #include guidelines ==
 
- * place internal header includes above system includes
- * reference internal includes by their full internal path (may exclude src/ from path)
- * minimal system includes
- * wrap system includes in autoconf HAVE_FILE_H protection macros
- * sort system includes alphabetically
-  * should import order-dependent headers through libcompat
+ 1. minimal system includes
+
+ 2. custom headers provided by Squid:
+   * place internal header includes above system includes
+   * omit wrappers
+   * always include with ""
+   * ENFORCED: sort alphabetically
+   * use full path (only src/ prefix may be omitted)
+
+ 3. system C headers (with a .h suffix):
+  * always include with <>
+  * '''mandatory''' HAVE_FOO_H wrapper
+  * avoid where C++ alternative is available
+  * sort alphabetically
+   * should import order-dependent headers through libcompat
+
+ 4. system C++ headers (without any extension suffix):
+  * always include with <>
+  * '''omit''' any HAVE_ wrapper
+  * sort alphabetically
+  * if the file is not portable, do not use it
+   . NP: this includes C++11 specific headers for now, which are not portable to older OS and compilers.
+
 
 ENFORCED:
 
  * sort internal includes alphabetically
 
-'''.cc''' fiels only:
+'''.cc''' files only:
    * include squid.h as their first include file.
 
 '''.h''' and '''.cci''' files
