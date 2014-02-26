@@ -65,7 +65,7 @@ We recommend that you use Squid's native log format due to its greater amount of
 }}}
 Therefore, an ''access.log'' entry usually consists of (at least) 10 columns separated by one ore more spaces:
 
- 1. '''time''' A Unix timestamp as UTC seconds with a millisecond resolution. You can convert Unix timestamps into something more human readable using this short perl script:
+ 1. '''time''' A Unix timestamp as UTC seconds with a millisecond resolution. This is the time when Squid started to log the transaction, which normally happens at the end of a transaction lifecycle, after the entire request was received from and the entire response was sent to the HTTP client. To get the approximate transaction start time, subtract transaction duration (the second field) from this field, minding the different time units of those two fields.<<BR>>You can convert Unix timestamps into something more human readable using this short perl script:
    {{{
 #! /usr/bin/perl -p
 s/^\d+\.\d+/localtime $&/e;
