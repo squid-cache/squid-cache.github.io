@@ -85,7 +85,7 @@ s/^\d+\.\d+/localtime $&/e;
  1. '''rfc931''' The eighth column may contain the ident lookups for the requesting client. Since ident lookups have performance impact, the default configuration turns ''ident_loookups'' off. If turned off, or no ident information is available, a "-" will be logged.
  1. '''hierarchy code''' The hierarchy information consists of three items:
    * Any hierarchy tag may be prefixed with ''TIMEOUT_'', if the timeout occurs waiting for all ICP replies to return from the neighbours. The timeout is either dynamic, if the ''icp_query_timeout'' was not set, or the time configured there has run up.
-   * A code that explains how the request was handled, e.g. by forwarding it to a peer, or going straight to the source. Refer to [[#hierarchy_codes|Hierarchy Codes]] for details on hierarchy codes and removed hierarchy codes.
+   * A code that explains how the request was handled, e.g. by forwarding it to a peer, or going straight to the source. Refer to [[SquidFaq/SquidLogs#Hierarchy_Codes|Hierarchy Codes]] for details on hierarchy codes and removed hierarchy codes.
    * The IP address or hostname where the request (if a miss) was forwarded. For requests sent to origin servers, this is the origin server's IP address. For requests sent to a neighbor cache, this is the neighbor's hostname. NOTE: older versions of Squid would put the origin server hostname here.
  1. '''type''' The content type of the object as seen in the HTTP reply header. Please note that ICP exchanges usually don't have any content type, and thus are logged "-". Also, some weird replies have content types ":" or even empty ones.
 
