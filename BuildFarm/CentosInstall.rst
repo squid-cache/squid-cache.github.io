@@ -15,6 +15,7 @@ root% rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.no
 root% yum install libxml2 expat-devel openssl-devel libcap ccache libtool-ltdl-devel cppunit cppunit-devel bzr autoconf automake libtool gcc-c++ perl-Pod-MinimumVersion bzip2 ed make openldap-devel  pam-devel db4-devel  libxml2-devel libcap-devel screen vim nettle-devel
 root% useradd -m -G ccache jenkins
 # need to install llvm/clang by hand, as the supplied version is too ancient.
+# nettle is available for centos-5 but as of 2014-03 not for centos-6. Download and build from http://www.lysator.liu.se/~nisse/archive/
 }}}
 set up permissions to the jenkins user, and that's it.
 
