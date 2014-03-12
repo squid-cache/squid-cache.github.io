@@ -41,6 +41,41 @@ If Rock diskers are not used, Squid workers can just share a memory cache.
 
 Future implementations may eventually remove copying between shared I/O pages and shared memory cache, but that would require changing low-level memory cache structures in Squid and will be difficult.
 
+== Cache log messages ==
+
+This section details some of the cache.log messages related to Rock storage.
+
+
+=== Worker I/O push queue overflow: ipcIo1.5225w4 ===
+
+A worker either tried to store a MISS or load a HIT but could not because the queue of I/O requests to disker was full. User-visible effects depend on the timing and direction of the problem:
+
+ * Error storing the first MISS slot: No visible effect to the end user, but the response will not be cached.
+ * Error storing subsequent MISS slots (Large Rock only): No visible effect to the end user, but the response will not be cached.
+ * Error loading the first HIT slot: The disk HIT will be converted into a cache MISS.
+ * Error loading subsequent HIT slots (Large Rock only): Truncated response.
+
+If these warnings persist, then you are overloading your disks, decreasing hit ratio, and increasing the probability of hitting a bug in rarely used error recovery code. You should tune your Squid to avoid these warnings.
+
+Besides overload, another possible cause of these warnings is a disker process death. It is not clear whether Squid can recover from that nicely today, even if Squid master process restarts the disker.
+
+
+=== WARNING: abandoning N I/Os after at least 7.00s timeout ===
+
+A worker discovered that N of its I/O requests timed out (for no response) while waiting in the disker queue. User-visible effects depend on the timing and direction of the problem. All "Worker I/O push queue overflow" warning effects apply here, in addition to the following concerns:
+
+ * Timeout storing the first MISS slot: Increased memory usage or even a delayed (temporary stalled) MISS transaction?
+ * Timeout storing subsequent MISS slots (Large Rock only): Same as the first MISS slot.
+ * Error loading the first HIT slot: A delayed before MISS conversion.
+ * Error loading subsequent HIT slots (Large Rock only): A delayed before response truncation.
+
+Besides overload, another possible cause of these warnings is a disker process death. It is not clear whether Squid can recover from that nicely today, even if Squid master process restarts the disker.
+
+=== WARNING: communication with disker may be too slow or disrupted for about 7.00s; rescued N ... ===
+
+A worker unexpectedly discovered that its N I/O requests were ready to proceed but were waiting for a "check the results queue!" notification from the disker which never came. The rescued I/O requests will now proceed as normal, but they were stalled for a while, which may affect end users, especially on HITs. Moreover, if the disker notification was lost due to persistent overload conditions or disker death, this temporary recovery would not help in the long run.
+
+
 == Performance Tuning ==
 
 Rock diskers work as fast as they can. If they are slower than swap load created by Squid workers, then the disk queues will grow, leading to overflow and timeout warnings:
