@@ -78,6 +78,12 @@ A worker unexpectedly discovered that its N I/O requests were ready to proceed b
 
 == Performance Tuning ==
 
+Rock store is being developed for high-performance disk caching environments. This affects the various trafe-offs the authors have been making:
+
+ * If you want your Squid to handle high loads while using a disk cache, you should consider using Rock store. However, Rock store does not work well at high loads without tuning. This section contains some tuning advice that is meant to help you tune your Rock cache, but the tuning process is complex and requires some understanding of file system behavior (not to mention experimentation).
+ * If you do not care much about performance and do not need SMP disk caching, then you probably want to use a ufs cache storage instead. Using a ufs cache allows you to avoid the overheads associated with performance tuning that you do not really need.
+ * If you do not care much about performance but need SMP disk caching, there is currently no good option for you. Such cases ought to be rare since SMP usually implies that performance is important.
+
 Rock diskers work as fast as they can. If they are slower than swap load created by Squid workers, then the disk queues will grow, leading to overflow and timeout warnings:
 
   {{{
