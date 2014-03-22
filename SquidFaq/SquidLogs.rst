@@ -61,6 +61,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  || '''ASYNC''' || The request was generated internally by Squid. Usually this is background fetches for cache information exchanges, background revalidation from ''stale-while-revalidate'' cache controls, or ESI sub-objects being loaded. ||
  || '''SWAPFAIL''' || The object was believed to be in the cache, but could not be accessed. A new copy was requested from the server. ||
  || '''REFRESH''' || A revalidation (conditional) request was sent to the server. ||
+ || '''SHARED''' || This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED.||
 
 
  * These tags are optional and describe what type of object was produced:
@@ -80,6 +81,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  || '''MISS''' || The response object delivered was the network response object. ||
  || '''DENIED''' || The request was denied by access controls. ||
  || '''NOFETCH''' || A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either '''UDP_HIT''' or '''UDP_MISS_NOFETCH'''. Neighbours will thus only fetch hits. ||
+ || '''TUNNEL''' || A binary tunnel was established for this transaction. ||
 
 
  * These tags are optional and describe some error conditions which occured during response delivery (if any):
