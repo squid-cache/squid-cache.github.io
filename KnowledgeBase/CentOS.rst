@@ -28,10 +28,10 @@ DAG and RPMforge repositories appear to no longer contain any files. Other sourc
 
 ## 4  = indents required for BinaryPackages page include
 
-==== Squid-3.4 -Beta ====
+==== Squid-3.4 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
 
-'''Eliezer''': As of 3.4.0.2 I release the Beta release of squid RPM for two CPU classes OS, i686 and x86_64.
+'''Eliezer''': As of 3.4.0.2 I release the squid RPM for two CPU classes OS, i686 and x86_64.
 
 There are couple issues that needs to be fixed since there was some data loss in the transition from old server to another.
 
