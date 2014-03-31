@@ -10,7 +10,7 @@
 == System Setup ==
 On top of the default system install, run
 {{{
-root% aptitude install g++ java7-runtime-headless libxml2-dev libexpat-dev libssl-dev libcap-dev ccache libltdl-dev libcppunit-dev bzr autoconf automake libtool clang make nettle-dev
+root% aptitude install g++ java7-runtime-headless libxml2-dev libexpat-dev libssl-dev libcap-dev ccache libltdl-dev libcppunit-dev bzr autoconf automake libtool clang make nettle-dev pkg-config
 root% useradd -m jenkins
 }}}
 set up permissions to the jenkins user, and that's it.
