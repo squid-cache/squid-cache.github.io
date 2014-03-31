@@ -14,7 +14,7 @@
 == FreeBSD 10 ==
  1. create jenkins user {{{ adduser }}}
  1. pkg update
- 1. pkg install openjdk bzr cppunit libxml2 ccache autoconf automake libtool m4 nettle
+ 1. pkg install openjdk bzr cppunit libxml2 ccache autoconf automake libtool m4 nettle pkgconf
  1. (optional) pkg install vim-lite bash
 
 ----
