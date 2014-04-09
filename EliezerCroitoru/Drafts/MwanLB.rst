@@ -97,6 +97,8 @@ The main terms that are being used by network and system administrators and engi
 
 The more literal way of defining a network that can access or can be accessed through two different “cables” to\from the Internet is MultiPATH network.
 
+=== Reverse Path ===
+
 === NATed Environment ===
 
 == Route Policy LB vs MARK based LB ==
