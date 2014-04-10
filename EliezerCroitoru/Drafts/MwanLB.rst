@@ -97,7 +97,21 @@ The main terms that are being used by network and system administrators and engi
 
 The more literal way of defining a network that can access or can be accessed through two different “cables” to\from the Internet is MultiPATH network.
 
-=== Reverse Path ===
+=== Reverse Path Filtering ===
+
+For a network with two wan interfaces\ports\connections there is a need to filter traffic which do not belong to the path.
+
+There are for example two connections which accepts traffic for a subnet of the internal ip class but needs to block non internal traffic.
+
+Since the sole purpose of a router is to forward packets from one side to the other it can be exploited or can cause some load and troubles in some networks.
+
+A company with 8.8.8.0/24 subnet will not want to allow 1.1.1.0/24 subnet destinated traffic to get into their internal network since it doesn't belongs there.
+
+Reverse Path filtering can detect a traffic which is not routable locally and block it from loading the network infrastructure or damage security.
+
+The Linux kernel have 3 options using this filter: none, strict, loose.
+
+It is recommended to filter traffic in any case just for security purpose.
 
 === NATed Environment ===
 
