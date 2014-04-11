@@ -11,7 +11,7 @@ A mix of configuration options are required to force caching of range requests. 
  * '''SquidConf:maximum_object_size'''. Default value is a bit small. It needs to be somewhere 100MB or higher to cope with the IE updates.
   . '''UPDATE:''' Windows 8.1 upgrade pack requires up to 5GB objects to be cached. It will however, cache nicely provided the size limit is set high enough.
 
- * '''SquidConf:range_offset_limit'''. Does the main work of converting range requests into cacheable requests. Use the same size limit as SquidConf:maximum_object_size to prevent conversion of requests fro objects which will not cache anyway. With [[Squid-3.2]] or later use the '''windowsupdate''' ACL list defined below to apply this offset limit only to windows updates.
+ * '''SquidConf:range_offset_limit'''. Does the main work of converting range requests into cacheable requests. Use the same size limit as SquidConf:maximum_object_size to prevent conversion of requests for objects which will not cache anyway. With [[Squid-3.2]] or later use the '''windowsupdate''' ACL list defined below to apply this offset limit only to windows updates.
 
  * '''SquidConf:quick_abort_min'''. May need to be altered to allow the full object to download when the client software disconnects. Some Squid releases let SquidConf:range_offset_limit override properly, some have weird behavior when combined.
 
