@@ -21,7 +21,7 @@ maximum_object_size 200 MB
 quick_abort_min -1
 }}}
  . {i} Due to the slow-down problem below we recommend service packs be handled specially:
-  . Extend the maximum cached object size to the required size, then run a full download on a single machine, then run on a second machine to verify teh cache is being used. Only after this verification succeeds open updating to all other machines through the proxy.
+  . Extend the maximum cached object size to the required size, then run a full download on a single machine, then run on a second machine to verify the cache is being used. Only after this verification succeeds open updating to all other machines through the proxy.
 
 
 == Preventing Early or Frequent Replacement ==
