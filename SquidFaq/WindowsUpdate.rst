@@ -9,6 +9,7 @@ A mix of configuration options are required to force caching of range requests. 
 
 
  * '''SquidConf:maximum_object_size'''. Default value is a bit small. It needs to be somewhere 100MB or higher to cope with the IE updates.
+  . '''UPDATE:''' Windows 8.1 upgrade pack requires up to 5GB objects to be cached. It will however, cache nicely provided the size limit is set high enough.
 
  * '''SquidConf:range_offset_limit'''. Does the main work of converting range requests into cacheable requests. Use the same size limit as SquidConf:maximum_object_size to prevent conversion of requests fro objects which will not cache anyway. With [[Squid-3.2]] or later use the '''windowsupdate''' ACL list defined below to apply this offset limit only to windows updates.
 
@@ -19,7 +20,8 @@ range_offset_limit 200 MB windowsupdate
 maximum_object_size 200 MB
 quick_abort_min -1
 }}}
- . {i} Due to the slow-down problem below we recommend service packs be handled specially.
+ . {i} Due to the slow-down problem below we recommend service packs be handled specially:
+  . Extend the maximum cached object size to the required size, then run a full download on a single machine, then run on a second machine to verify teh cache is being used. Only after this verification succeeds open updating to all other machines through the proxy.
 
 
 == Preventing Early or Frequent Replacement ==
@@ -38,21 +40,21 @@ refresh_pattern microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 8
 The original idea seemed to work in theory, yet in practicality it was pretty useless - the updates expired after 30 minutes, there were download inconsistencies, and a whole array of issues. So looking at the HTTP responses and documentation for SquidConf:refresh_pattern, there was an extra clause that could be added. This is how it changed:
 
 {{{
-refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
-refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 }}}
 
-Now all that this line tells us to do is cache all .cab, .exe, .msu, .msu, .msf, .asf, .wma,..... to .zip from microsoft.com, and the lifetime of the object in the cache is 4320 minutes (aka 3 days) to 43200 minutes (aka 30 days). Each of the downloaded objects are added to the cache, and then whenever a request arrives indicating the cache copy must not be used it gets converted to an if-modified-since check instead of a new copy reload request.
+Now all that this line tells us to do is cache all .cab, .exe, .msu, .msu, .msf, .asf, .psf, .wma,..... to .zip from microsoft.com, and the lifetime of the object in the cache is 4320 minutes (aka 3 days) to 43200 minutes (aka 30 days). Each of the downloaded objects are added to the cache, and then whenever a request arrives indicating the cache copy must not be used it gets converted to an if-modified-since check instead of a new copy reload request.
 
 So adding it to the original Squid settings to do with SquidConf:refresh_pattern, we get:
 {{{
 # Add one of these lines for each of the websites you want to cache.
 
-refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
-refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
-refresh_pattern -i windows.com/.*\.(cab|exe|ms[i|u|f]|asf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
+refresh_pattern -i windows.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
 
 # DONT MODIFY THESE LINES
