@@ -38,7 +38,7 @@ There are several actions that Squid can do while handling an SSL connection. Se
 ||'''peek'''||step1, step2||Receive client (step1) or server (step2) certificate while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection. This action is the focus of this project.||
 ||'''stare'''||step1, step2||Receive client (step1) or server (step2) certificate while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection. Currently, we are not aware of any work being done to support this action.||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
-||'''err'''||step1, step2, step3||Bump the client connection and return an error page. Close the server connection. This action is not supported yet, but we hope to add support for it in the foreseeable future.||
+||'''err'''||step1, step2, step3||Bump the client connection and return an error page. Close the server connection. The name of the Squid error page will probably be hard-coded, at least in the initial implementation. This action is not supported yet, but we hope to add support for it in the foreseeable future.||
 ||||||Older actions mentioned here for completeness sake:||
 ||'''client-first'''||step1||Ancient-style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.||
 ||'''server-first'''||step1||Old-style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.||
@@ -70,12 +70,14 @@ Squid configuration has to balance the desire to gain more information (by delay
 
 == Examples ==
 
-All of the examples below:
+=== Avoid bumping banking traffic  ===
+
+All of the examples in this section:
  * splice bank traffic,
  * bump non-bank traffic, and
  * peek as deep as possible while satisfying other objectives stated in the comments below.
 
-These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below.
+These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below. The examples assume that the serverIsBank ACL mismatches when Squid does not yet know a server name.
 
 {{{
 # Do no harm:
@@ -100,6 +102,18 @@ ssl_bump bump all
 # Terminate all strange connections.
 ssl_bump splice serverIsBank
 ssl_bump bump haveServerName
+ssl_bump peek all
+ssl_bump terminate all
+}}}
+
+=== Validate server certificates without bumping  ===
+
+This example does not bump any server traffic at all. Here, Squid validates the SSL server certificate and then either splices the connections (if the certificate was valid) or serves a secure error to the bumped client (if the certificate failed validation). If Squid cannot obtain the server certificate at all, both client and server connections are closed. This example assumes that the validServerCertificate ACL mismatches when Squid does not yet have a server certificate.
+
+{{{
+# Protect clients. Never bump servers.
+ssl_bump splice validServerCertificate
+ssl_bump err haveServerCertificate
 ssl_bump peek all
 ssl_bump terminate all
 }}}
