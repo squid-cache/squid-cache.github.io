@@ -8,21 +8,102 @@
 = Feature: SSL Peek and Splice =
 
  * '''Goal''': Make bumping decisions after the origin server name is known, especially when intercepting SSL. Avoid bumping non-SSL traffic.
- * '''Status''': stalled due to lack of sponsor interest; see below for details
+ * '''Status''': in progress
+ * '''ETA''': June 2014
  * '''Version''': 3.5
  * '''Developer''': AlexRousskov and Christos Tsantilas
- * '''Priority''': 2
+ * '''Priority''': 1
  * '''More''': unofficial development [[https://code.launchpad.net/~measurement-factory/squid/peek-and-splice|branch]].
 
 
 = Motivation =
 
-Many SslBump deployments try to minimize potential damage by ''not'' bumping sites unless the local policy demands it. Without this feature, the decision is made based on very limited information: A typical HTTP CONNECT request does not contain many details and intercepted TCP connections reveal nothing but IP addresses and port numbers. Peek and Splice gives admins a way to make bumping decision later in the SSL handshake process, when client SNI and the SSL server certificate are available (or when it becomes clear that we are not dealing with an SSL connection at all!).
+Many !SslBump deployments try to minimize potential damage by ''not'' bumping sites unless the local policy demands it. Without this feature, the decision is made based on very limited information: A typical HTTP CONNECT request does not contain many details and intercepted TCP connections reveal nothing but IP addresses and port numbers. Peek and Splice gives admins a way to make bumping decision later in the SSL handshake process, when client SNI and the SSL server certificate are available (or when it becomes clear that we are not dealing with an SSL connection at all!).
 
 
 = Implementation overview =
 
 Peek and Splice peeks at the SSL client Hello message and SNI info (if any), sends identical or a similar (to the extent possible) Hello message to the SSL server, and then peeks at the SSL server Hello message. The decision to splice or bump can be made at any of those stages (but what Squid does at stage N affects its ability to splice or bump at stage N+1!). If the decision is ''not'' to bump, the two TCP connections are spliced at TCP level, with Squid shoveling TCP bytes back and forth without any decryption.
+
+= Configuration =
+
+== Actions ==
+
+There are several actions that Squid can do while handling an SSL connection. See your Squid documentation for a list of actions it actually supports. Supported actions can be specified in the ssl_bump directive in squid.conf. Some actions are not possible during certain processing steps. During a given processing step, Squid ''ignores'' ssl_bump lines with impossible actions. This helps us keep configuration sane. Processing steps are discussed further below.
+
+
+||'''Action'''||'''Applicable processing steps'''||'''Description'''||
+||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection.||
+||'''bump'''||step1, step2, and sometimes step3||Establish a secure connection with the server and, using a mimicked server certificate, with the client||
+||'''peek'''||step1, step2||Receive client (step1) or server (step2) certificate while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection. This action is the focus of this project.||
+||'''stare'''||step1, step2||Receive client (step1) or server (step2) certificate while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection. Currently, we are not aware of any work being done to support this action.||
+||'''terminate'''||step1, step2, step3||Close client and server connections.||
+||'''err'''||step1, step2, step3||Bump the client connection and return an error page. Close the server connection. This action is not supported yet, but we hope to add support for it in the foreseeable future.||
+||||||Older actions mentioned here for completeness sake:||
+||'''client-first'''||step1||Ancient-style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.||
+||'''server-first'''||step1||Old-style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.||
+||'''none'''||step1||Same as "splice" but does not support peeking and should not be used in configurations that use those steps.||
+
+All actions except peek and stare correspond to ''final'' decisions: Once an ssl_bump directive with a final action matches, no further ssl_bump evaluations will take place, regardless of the current processing step.
+
+
+== Processing steps ==
+
+Bumping Squid goes through several TCP and SSL "handshaking" steps. Peeking steps give Squid more information about the client or server but often limit the actions that Squid may perform in the future.
+
+||'''step1'''||Get TCP-level and CONNECT info. Evaluate ssl_bump and perform the first matching action (splice, bump, peek, stare, terminate, or err). This is the only step that is always performed.||
+||'''step2'''||Get SSL Client Hello info. Evaluate ssl_bump and perform the first matching action (splice, bump, peek, stare, terminate, or err). Peeking usually prevents future bumping. Staring usually prevents future splicing.||
+||'''step3'''||Get SSL Server Hello info. Evaluate ssl_bump and perform the first matching action (splice, bump, terminate, or err). In most cases, the only remaining choice at this step is whether to terminate the connection. The splicing or bumping decision is usually dictated by either peeking or staring at the previous step.||
+
+
+Squid configuration has to balance the desire to gain more information (by delaying the final action) with the requirement to perform a certain final action (which sometimes cannot be delayed any further).
+
+
+== New ACLs? ==
+
+'''!ServerName''': We may have to add a new dstdomain-like ACL to match the server name obtained by various means during !SslBmp steps: From CONNECT request URI, to client SNI, to SSL server certificate CN. Without such a universal ACL, it may be difficult to write rules such as serverIsBank and haveServerName in the examples below because each !SslBump step has access to an increasing number of names but has to evaluate the same set of ssl_bump ACLs. We will not add a yet another ACL if real-world use cases can be solved using existing ACLs. However, this approach is likely to hit Squid [[http://bugs.squid-cache.org/show_bug.cgi?id=4034|bug 4034]].
+
+'''!AtStep''': Squid works hard to simplify configuration by considering '''all''' ssl_bump rules during each bumping step. In some special cases, the admin may want to restrict certain rules to specific steps. This would be possible by adding !AtStep ACL that would match "!SslBump1", "!SslBump2", and "!SslBump3" or similar constants.
+
+'''!PeekingAllowsBumping''' and '''!StaringAllowsSplicing''': During step2, peeking usually precludes future bumping and staring usually precludes splicing. In the future, Squid may support ACLs that can tell whether the current transaction matches those "usual" conditions. For now, our focus is on least-invasive peeking (and not bumping) cases.
+
+
+== Examples ==
+
+All of the examples below:
+ * splice bank traffic,
+ * bump non-bank traffic, and
+ * peek as deep as possible while satisfying other objectives stated in the comments below.
+
+These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below.
+
+{{{
+# Do no harm:
+# Splice indeterminate traffic.
+ssl_bump splice serverIsBank
+ssl_bump bump haveServerName
+ssl_bump peek all
+ssl_bump splice all
+}}}
+
+{{{
+# Trust, but verify:
+# Bump if in doubt.
+ssl_bump splice serverIsBank
+ssl_bump bump haveServerName
+ssl_bump peek all
+ssl_bump bump all
+}}}
+
+{{{
+# Better safe than sorry:
+# Terminate all strange connections.
+ssl_bump splice serverIsBank
+ssl_bump bump haveServerName
+ssl_bump peek all
+ssl_bump terminate all
+}}}
+
 
 = Current status =
 
@@ -35,7 +116,6 @@ The missing pieces are:
  * Getting the code ready for production use. We need to remove a lot of shortcuts and simplifications in the existing code.
  * More testing, documentation, and submission for the official review.
 
-
 == Mimicked SSL client Hello properties ==
 
 This section documents SSL client Hello message fields generated by Squid. Please note that for splicing to work, the client Hello message must be sent "as is", without any modifications at all. On the other hand, sending the client Hello message "as is" precludes Squid from eventually bumping the connection in most real-world use cases. Thus, the decision whether to mimic the client Hello or send it "as is" is critical to Squid's ability to splice or bump the connection after the Hello message has been sent.
@@ -47,8 +127,8 @@ This section documents SSL client Hello message fields generated by Squid. Pleas
 ||Ciphers list||yes|| ||
 ||Random bytes||yes|| ||
 ||Compression||partially||Compression request flag is mimicked. If compression is requested by the client, then the compression algorithm in the mimicked message is set by Squid OpenSSL (instead of being copied from the client message). This may be OK because the only widely used algorithm is deflate. It is possible that OpenSSL does not support other compression algorithms.||
-||TLS extensions||no||We will probably need to mimic at least some of these for splicing TLS connections to work.||
-||other||no||There are probably other fields. We should probably mimic some of them. However, blindly forwarding everything is probably a bad idea because it is likely to lead to SSL negotiation failures during bumping.||
+||TLS extensions||sometimes||We will probably need to mimic at least some of these for splicing TLS connections to work.||
+||other||sometimes||There are probably other fields. We should probably mimic some of them. However, blindly forwarding everything is probably a bad idea because it is likely to lead to SSL negotiation failures during bumping.||
 
 = Limitations =
 
