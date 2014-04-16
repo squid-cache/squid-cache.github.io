@@ -37,6 +37,7 @@ There are several actions that Squid can do while handling an SSL connection. Se
 ||'''bump'''||step1, step2, and sometimes step3||Establish a secure connection with the server and, using a mimicked server certificate, with the client||
 ||'''peek'''||step1, step2||Receive client (step1) or server (step2) certificate while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection. This action is the focus of this project.||
 ||'''stare'''||step1, step2||Receive client (step1) or server (step2) certificate while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection. Currently, we are not aware of any work being done to support this action.||
+||'''reconnect'''||step3||Bump the SSL exchange by closing the server connection and establishing a new server connection without mimicking [some properties of] the SSL client Hello. This action allows Squid to use stronger ciphers or newer SSL version towards the server regardless of client support for those features. It also allows communication when client and server use incompatible configurations (each still compatible with Squid). On the other hand, it creates short-lived payload-free connections to servers and doubles the total number of connection to servers, which wastes resources and may trigger various server-side alarms.||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
 ||'''err'''||step1, step2, step3||Bump the client connection and return an error page. Close the server connection. The name of the Squid error page will probably be hard-coded, at least in the initial implementation. This action is not supported yet, but we hope to add support for it in the foreseeable future.||
 ||||||Older actions mentioned here for completeness sake:||
@@ -53,7 +54,7 @@ Bumping Squid goes through several TCP and SSL "handshaking" steps. Peeking step
 
 ||'''step1'''||Get TCP-level and CONNECT info. Evaluate ssl_bump and perform the first matching action (splice, bump, peek, stare, terminate, or err). This is the only step that is always performed.||
 ||'''step2'''||Get SSL Client Hello info. Evaluate ssl_bump and perform the first matching action (splice, bump, peek, stare, terminate, or err). Peeking usually prevents future bumping. Staring usually prevents future splicing.||
-||'''step3'''||Get SSL Server Hello info. Evaluate ssl_bump and perform the first matching action (splice, bump, terminate, or err). In most cases, the only remaining choice at this step is whether to terminate the connection. The splicing or bumping decision is usually dictated by either peeking or staring at the previous step.||
+||'''step3'''||Get SSL Server Hello info. Evaluate ssl_bump and perform the first matching action (splice, bump, reconnect, terminate, or err). In most cases, the only remaining choice at this step is whether to terminate the connection. The splicing or bumping decision is usually dictated by either peeking or staring at the previous step.||
 
 
 Squid configuration has to balance the desire to gain more information (by delaying the final action) with the requirement to perform a certain final action (which sometimes cannot be delayed any further).
