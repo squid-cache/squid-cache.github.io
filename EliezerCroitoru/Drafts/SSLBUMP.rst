@@ -32,18 +32,18 @@ cat myCA.der
 
 echo "initializing ssl_crtd_db"
 $SSLCRTD -c -s /usr/local/squid/var/lib/ssl_db
+
 echo "changing ownership for ssl_db"
 chown -R nobody /usr/local/squid/var/lib/ssl_db
-BUMPSETTINGS<<EOF
-https_port 13128 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=16MB  cert=/usr/local/squid/ssl_cert/myCA.pem
+
+echo "adding settings into squid.conf"
+
+echo "https_port 13128 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=16MB  cert=/usr/local/squid/ssl_cert/myCA.pem
 sslcrtd_program $SSLCRTD -s /usr/local/squid/var/lib/ssl_db -M 16MB
 sslcrtd_children 10
 ssl_bump server-first all
 #sslproxy_cert_error allow all
-#sslproxy_flags DONT_VERIFY_PEER
-EOF
-
-echo $BUMPSETTINGS >> $SQUIDCONF
+#sslproxy_flags DONT_VERIFY_PEER" >> $SQUIDCONF
 }}}
 
 
