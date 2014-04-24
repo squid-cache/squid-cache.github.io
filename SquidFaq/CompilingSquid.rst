@@ -50,11 +50,11 @@ to install somewhere else, see the ''--prefix'' option for configure.
 To compile Squid v3.2 and later, you will need a C++11-compliant compiler.  Almost all modern Unix systems come with pre-installed compilers which work just fine.
 
 If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems. It is also well tested with Squid.  If your OS does not come with GCC you may download it from [[ftp://ftp.gnu.org/gnu/gcc|the GNU FTP site]].
-In addition to gcc, you may also want or need to install the ''binutils'' package and a number of libraries, depending on the feature-set you want to enable.
+In addition to '''gcc''' and '''g++''', you may also want or need to install the '''binutils''' package and a number of libraries, depending on the feature-set you want to enable.
 
-[[http://www.llvm.org|Clang]] is a popular alternative to gcc, especially on BSD systems. It also generally works quite fine for building Squid. Other alternatives which are or were tested in the past were Intel's C++ compiler and Sun's !SunStudio. Microsoft Visual C++ is another target the Squid developers aim for, but at the time of this writing (October 2013) still quite a way off.
+[[http://www.llvm.org|Clang]] is a popular alternative to gcc, especially on BSD systems. It also generally works quite fine for building Squid. Other alternatives which are or were tested in the past were Intel's C++ compiler and Sun's !SunStudio. Microsoft Visual C++ is another target the Squid developers aim for, but at the time of this writing (April 2014) still quite a way off.
 
-/!\ Please note that due to a bug in clang's support for atomic operations, squid doesn't build on clang 2.8 and possibly 2.9
+/!\ Please note that due to a bug in clang's support for atomic operations, squid doesn't build on clang older than 3.2.
 
 
 === What else do I need to compile Squid? ===
@@ -64,6 +64,14 @@ You will need the automake toolset for compiling from Makefiles.
 You will need [[http://www.perl.com/|Perl]] installed on your system.
 
 Each feature you choose to enable may also require additional libraries or tools to build.
+
+=== How do I cross-compile Squid ? ===
+
+Use the ./configure option '''--host''' to specify the cross-compilation tuplet for the machine which Squid will be installed on. The [[http://www.gnu.org/software/automake/manual/html_node/Cross_002dCompilation.html|autotools manual]] has some simple documentation for this and other cross-configuration options - in particular what they mean is a very useful detail to know.
+
+
+Additionally, Squid is created using several custom tools which are themselves created during the build process. This requires a C++ compiler to generate binaries which can run on the build platform. The '''HOSTCXX=''' parameter needs to be provided with the name or path to this compiler.
+
 
 === How do I apply a patch or a diff? ===
 
