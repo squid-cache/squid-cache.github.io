@@ -59,16 +59,6 @@ refresh_stale_hit interval (default 0)
 }}}
 This option decreases latency on collapsed forwarding by initiating a revalidation request some time before the object becomes stale. This avoid having more than one client wait for the revalidation to finish.
 
-== Internal Design ==
-This effect is achieved by the following primary changes
-
- 1. On cache misses the new object is made immediately public, allowing new requests to attach to the pending request. If the object is later found to be private then the attached requests will all detach and initiate new requests.
- 1. On cache revalidations entry->mem_obj->ims_entry is set to the !StoreEntry of the IMS query, allowing additional requests to optionally attach to the same backend IMS query.
- 1. To avoid objects which for one or another reason gets stuck and does not receive a reply in a timely fashion entry->mem_obj->refresh_timestamp is used to avoid objects which has been pending for IMS reply more than 30 seconds.
- 1. The optional refresh_stale_window also uses the same refresh_timestamp field to keep track of if a revalidation has been initiated or not.
-
-The stale_hit effect uses the same mechanism by disregarding that the object is stale if there is already a cache revalidation running (ims_entry set).
-
 == Known issues and shortcomings ==
  * The 30 second window should be tuneable; see Bug Bug:2504.
  * At least in the 2.6 implementation, non-successful responses are not collapsed, leading to the potential for overwhelming the back-end server; see Bug Bug:1918.
