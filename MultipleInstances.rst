@@ -15,7 +15,7 @@ When using a non-default service name to run squid all other command line option
 
 The configuration directives outlined below still require unique values to be configured even when service name is being used.
 
-The macro '''${service_name}''' is added to squid.conf processing. It expands to the service name.
+The macro '''${service_name}''' is added to squid.conf processing. It expands to the service name of the process parsing the config file.
 
 == Relevant squid.conf directives ==
  * SquidConf:visible_hostname
