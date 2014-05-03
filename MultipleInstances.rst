@@ -4,7 +4,18 @@ Running multiple instances of Squid on a system is not hard, but it requires the
 
 <<TableOfContents>>
 
- /!\ This page covers the details relevant to [[Squid-3.1]] and older installations. [[Squid-3.2]] has basic [[Features/SmpScale|SMP scaling support]] available by default which resolves many of these problems.
+== SMP enabled Squid ==
+ /!\ [[Squid-3.2]] to [[Squid-3.4]] contain [[Features/SmpScale|SMP scaling support]] implemented in such a way that only one squid instance could be run on a single machine when SMP was enabled. Multiple instances can be run without SMP support.
+
+[[Squid-3.5]] provides the '''-n''' command line option to configure a unique service name for each Squid instance started. Each set of SMP-aware processes will interact only with other processes using the same service name. A service name is always present, the default service name is ''squid'' is used when the '''-n''' option is absent from the command line.
+
+ . {i} A service name may only contain ASCI alphanumeric values (a-z, A-Z, 0-9).
+
+When using a non-default service name to run squid all other command line options require use of the '''-n''' service name to target the service being controlled. This includes the '''-z''' option as some cache types require SMP-aware processing.
+
+The configuration directives outlined below still require unique values to be configured even when service name is being used.
+
+The macro '''${service_name}''' is added to squid.conf processing. It expands to the service name.
 
 == Relevant squid.conf directives ==
  * SquidConf:visible_hostname
@@ -14,13 +25,13 @@ Running multiple instances of Squid on a system is not hard, but it requires the
  * SquidConf:http_port
   either the various squids run on different ports, or on different IP addresses. In the latter case the syntax to be used is {{{1.2.3.4:3128}}} and {{{1.2.3.5:3128}}}
  * SquidConf:icp_port, SquidConf:snmp_port
-  same as with http_port. If you don need ICP and SNMP, just disable them by setting them to 0.
+  same as with http_port. If you do not need ICP and SNMP, just disable them by setting them to 0.
  * SquidConf:access_log, SquidConf:cache_log
-  you want to have different logfiles for you different squid instances. Squid '''might''' even work when all log to the same files, but the result would probably be a garbled mess
+  you want to have different logfiles for you different squid instances. Squid '''might''' even work when all log to the same files, but the result would probably be a garbled mess.
  * SquidConf:pid_filename
   this file '''must''' be changed. It is used by squid to detect a running instance and to send various internal messages (i.e. {{{squid -k reconfigure}}})
  * SquidConf:cache_dir
-  make sure that no overlapping cache_dirs exist. Squids do not coordinate when accessing them, and shuffling stuff around each others' playground is a '''bad thing ^TM^'''
+  make sure that no overlapping directories exist. Squids do not coordinate when accessing them, and shuffling stuff around each others' playground is a '''bad thing ^TM^'''
  * SquidConf:include
   to reduce duplication mistakes break shared pieces of config (ACL definitions etc) out into separate files which SquidConf:include pulls into each of the multiple squid.conf at the right places.
 
