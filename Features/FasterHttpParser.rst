@@ -10,6 +10,7 @@
  * '''Version''': 3.5 or later
  * '''Status''': started
  * '''ETA''': unknown
+ * '''Priority''': 1
  * '''Developer''': AmosJeffries
  * '''More''': TODO: link to Squid2 parser work here.
 
