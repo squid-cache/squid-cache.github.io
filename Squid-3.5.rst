@@ -21,6 +21,9 @@ Basic new features in 3.5:
  * Extended cache HIT/MISS decision control (see SquidConf:send_hit, SquidConf:store_miss)
  * Logging of transaction start time (see SquidConf:logformat)
  * Adaptation service performed ACL test
+ * Support named services
+ * Upgraded squidclient tool
+ * Helper support for concurrency channels (storeid_file_rewrite)
 
 Features removed in 3.5:
 
