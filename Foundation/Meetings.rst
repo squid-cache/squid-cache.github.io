@@ -19,9 +19,16 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Review of action points from last meeting
 
  1. Nabble
+ 1. Ways to improve development efficiency
 
  1. Next meeting scheduling
  1. Open floor:
+
+
+Notes:
+
+ * Ways to improve development efficiency: Proposed changes posted for squid-dev review often result in long, painful, discussions that drastically increase overall change "cost", discourage new development, and encourage reviewless commits (of occasionally broken or low-quality code). Is there anything we can do to improve the process without sacrificing the quality of the accepted changes?
+
 
 ## NOTES:
 ##  - Nabble: have been allowing unsubscribed posts to "squid-users" without delivering for some time
