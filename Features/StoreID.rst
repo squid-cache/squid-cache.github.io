@@ -88,6 +88,8 @@ http://i2.ytimg.com/vi/95b1zk3qhSM/hqdefault.jpg
 OK store-id=http://ytimg.squid.internal/vi/95b1zk3qhSM/hqdefault.jpg
 }}}
 
+ {i} from [[Squid-3.5]] this helper can support any value for the concurrency setting.
+
 == Developers info ==
 
 === Helper Example ===
