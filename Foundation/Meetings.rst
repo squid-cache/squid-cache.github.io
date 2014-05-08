@@ -20,6 +20,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  1. Nabble
  1. Ways to improve development efficiency
+ 1. Better Board to-do list tracking
 
  1. Next meeting scheduling
  1. Open floor:
@@ -28,6 +29,8 @@ Most of the Board discussions can be open to the public and your constructive pa
 Notes:
 
  * Ways to improve development efficiency: Proposed changes posted for squid-dev review often result in long, painful, discussions that drastically increase overall change "cost", discourage new development, and encourage reviewless commits (of occasionally broken or low-quality code). Is there anything we can do to improve the process without sacrificing the quality of the accepted changes?
+
+ * Better Board to-do list tracking: Board members may be missing discussion items that have not been converted to published action points, delaying progress on important projects in-between formal meetings. Should we consider a better way to track to-dos than the mailing list (bugzilla, a private wiki page, Basecamp, etc.)?
 
 
 ## NOTES:
