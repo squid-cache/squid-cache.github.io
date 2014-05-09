@@ -23,7 +23,7 @@ Basic new features in 3.5:
  * Adaptation service performed ACL test
  * Support named services
  * Upgraded squidclient tool
- * Helper support for concurrency channels (storeid_file_rewrite)
+ * Helper support for concurrency channels (Digest Authentication, StoreID, URL-rewrite)
 
 Features removed in 3.5:
 
