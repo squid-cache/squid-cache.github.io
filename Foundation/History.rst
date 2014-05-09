@@ -10,7 +10,14 @@
 <<TableOfContents>>
 
 == 2014 ==
-## TODO: add items from meeting #11 minutes under 2014
+The Board of Directors held 2 meetings in 2014.
+
+ * The Foundation has continued to implement the technical process for updating the copyright license of the Squid Project sources and related code.
+ * The Foundation has continued to seek permission from relevant license holders to amend and clarify licenses of the Squid Project sources and related code.
+ * The Foundation has continued to collect donation "royalties" from Squid book sales.
+ * The Foundation has begun documenting Squid Project administration procedures (SysAdmin/MirrorServers)
+
+## TODO: add items from meeting #12 minutes under 2014 (after minutes publication)
 
 == 2013 ==
 The Board of Directors held 5 meetings in 2013.
@@ -22,8 +29,7 @@ The Board of Directors held 5 meetings in 2013.
  * The Foundation has implemented the technical process for updating the copyright license of the Squid Project sources and related code. A lot of effort has taken place to produce a reliable solution and permission from relevant license holders to amend and clarify licenses.
  * The Foundation has redesigned the process for Squid software support services. A lot of collective effort has gone into designing a transparent and open procedure.
  * The Foundation has been transferred copyright to the Squid Artwork by Measurement Factory.
-
-## TODO: add items from meeting #9 and #10 minutes
+ * The Foundation has continued to collect donation "royalties" from Squid book sales.
 
 == 2012 ==
 The Board of Directors held 5 meetings in 2012.
@@ -33,8 +39,10 @@ The Board of Directors held 5 meetings in 2012.
  * The Foundation has followed up on its filing for tax exempt status with the IRS.
  * The Foundation has begun the process of creating and asserting a uniform copyright license over the Squid Project source code. A lot of collaborative discussion with major Squid Project contributors and existing copyright holders has taken place.
  * The Foundation has negotiated an application for assuming management of the IRCache Project.
+ * The Foundation has created essential procedures for transparency of Board activities.
+ * The Foundation has collected donation "royalties" from Squid book sales.
 
-## TODO: add items from meeting #4 and #5 minutes
+## TODO: add items from meeting #5 minutes (after publication)
 
 == 2011 ==
 The Squid Software Foundation was incorporated in 2011 by Alex Rousskov.
@@ -44,6 +52,5 @@ The Squid Software Foundation was incorporated in 2011 by Alex Rousskov.
  * The Foundation has filed for tax exempt status with the IRS. A lot of collective effort went into submitting a high quality application.
  * The Foundation has opened bank and !PayPal accounts to facilitate future donations, including small online donations collected through the Foundation web site.
  * The Foundation attracted initial sponsorships that covered 2011 organizational expenses.
-
  * The Foundation Board elected Henrik Nordstrom as Director, President
  * The Foundation Board elected Amos Jeffries as Director, Vice President and Secretary
