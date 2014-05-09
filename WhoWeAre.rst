@@ -6,20 +6,24 @@ There are a few key individuals who keep the project running.
 = Squid Core Team =
  * [[Henrik_Nordström]], Squid Hacker Extraordinaire and [[RoadMap/Squid2|Squid-2.x]] release manager.
  * [[AmosJeffries|Amos Jeffries]] IPv6 guru, [[Translations]] coordinator, and [[RoadMap/Squid3|Squid-3.x]] release manager.
-
-## * [[http://www.squid-cache.org/~adrian/|Adrian Chadd]], Squid-2 developer, performance/scalability stuff.
  * [[http://www.squid-cache.org/~robertc/|Robert Collins]] was the main driver of the initial Squid-3 C++ migration effort.
  * [[GuidoSerassio|Guido Serassio]] leads the [[http://squid.acmeconsulting.it/|Squid for Windows]] effort
  * [[AlexRousskov|Alex Rousskov]] manages various Squid-3 projects.
  * [[http://wessels.squid-cache.org/|Duane Wessels]], Chief Procrastinator
 
 = Certified Developers =
- * [[ChristosTsantilas|Christos Tsantilas]] works mainly with ICAP and fixes some bugs.
- * [[DougDixon|Doug Dixon]]
- * [[EliezerCroitoru|Eliezer Croitoru]] wrote and supports the Store ID feature of Squid, but also maintains unofficial CentOS and RHEL packages.
+Developers who have contributed some significant feature to Squid
+
+'''Squid-3''':
+ * [[ChristosTsantilas|Christos Tsantilas]] works mainly with ICAP and HTTPS and fixes some bugs.
+ * [[DougDixon|Doug Dixon]] assisted with the early development of Squid-3.0
+ * [[EliezerCroitoru|Eliezer Croitoru]] wrote and supports the [[Features/StoreID|Store ID]] and helpers, but also maintains unofficial CentOS and RHEL packages.
  * [[FrancescoChemolli|Francesco Chemolli]] works mainly on documentation and maintains the wiki, but also chimes in with patches every now and then.
- * [[MarkusMoeller|Markus Moeller]] wrote and supports the Kerberos features in Squid
- * [[StevenWilton|Steven Wilton]] is bringing the [[Features/CyclicObjectStorageSystem|COSS]] storage engine to maturity
+ * [[MarkusMoeller|Markus Moeller]] wrote and supports the Kerberos features
+
+'''Squid-2''':
+ * [[http://www.squid-cache.org/~adrian/|Adrian Chadd]], Squid-2 developer, performance/scalability stuff.
+ * [[StevenWilton|Steven Wilton]] brought the [[Features/CyclicObjectStorageSystem|COSS]] storage engine in Squid-2 to maturity
 
 = Squid Project Sysadmin Team =
 
@@ -31,12 +35,12 @@ There are a few key individuals who keep the project running.
   . '''mail admin''': qmail, ezmlm
 
  * [[AmosJeffries|Amos Jeffries]]
-  . '''service admin''': bugzilla, bzr, mysql, rsync, jenkins, website
+  . '''service admin''': bugzilla, bzr, mysql, rsync, jenkins, website, pootle
   . '''mail admin''': archives
 
  * [[FrancescoChemolli|Francesco Chemolli]]
   . '''system admin''': eu, [[BuildFarm|build farm]] VMs
-  . '''service admin''': wiki, jenkins
+  . '''service admin''': wiki, jenkins, pootle
 
  * [[http://wessels.squid-cache.org/|Duane Wessels]]
   . '''system admin''': master, west
