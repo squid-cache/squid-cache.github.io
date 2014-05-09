@@ -7,20 +7,20 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2014-05-09 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2014-06-06 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC.
 
-==== Draft Agenda - Meeting #12 ====
+==== Draft Agenda - Meeting #13 ====
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
 
+ 1. Syasadmin progress
  1. Nabble
  1. Ways to improve development efficiency
- 1. Better Board to-do list tracking
 
  1. Next meeting scheduling
  1. Open floor:
@@ -28,46 +28,51 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 Notes:
 
- * Ways to improve development efficiency: Proposed changes posted for squid-dev review often result in long, painful, discussions that drastically increase overall change "cost", discourage new development, and encourage reviewless commits (of occasionally broken or low-quality code). Is there anything we can do to improve the process without sacrificing the quality of the accepted changes?
+ * Nabble: This forum copy of squid-users is causing some serious issues.
+  . Posts which use certain quotation methods have elided details when they are delivered. Causing annoying and needless traffic re-questioning for details.
+  . Members subscribed to Nabble but not Squid-users have been allowed to post to the forum without the message being accepted by our mailserver. Many queries and help responses are getting "lost".
+  . Nabble members are offered the ability to erase all record of their posts to a forum. This causes the illusion that they can erase squid-users content mistakenly posted. Combined with the incomplete mesage delivery problem means whole sections of threads can be permanently lost.
+  . Is there any way we can identify who is in control of the forum and get better settings applied?
 
- * Better Board to-do list tracking: Board members may be missing discussion items that have not been converted to published action points, delaying progress on important projects in-between formal meetings. Should we consider a better way to track to-dos than the mailing list (bugzilla, a private wiki page, Basecamp, etc.)?
+ * Ways to improve development efficiency: Proposed changes posted for squid-dev review often result in long, painful, discussions that drastically increase overall change "cost", discourage new development, and encourage reviewless commits (of occasionally broken or low-quality code). Is there anything we can do to improve the process without sacrificing the quality of the accepted changes?
 
 
 ## NOTES:
-##  - Nabble: have been allowing unsubscribed posts to "squid-users" without delivering for some time
 ##  - Mirrors: whether to update and resume using email-broken.pl notification in Foundation name. Currently From:Duane...
 
 ==== Agenda of Last Meeting ====
-''' Meeting #11.'''
+''' Meeting #12.'''
 
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
- 1. MacOS node for the build farm
- 1. Next steps for the boilerplate/(C) project
- 1. Copyright for example helper code
- 1. Treasurers Report
- 1. end of year documents for 2013
+ 1. Nabble
+ 1. Ways to improve development efficiency
+ 1. Better Board to-do list tracking
  1. Next meeting scheduling
  1. Open floor:
-  * third-party access to Coverity scan Squid results
+
 
 == Action Points ==
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' || '''ETA''' ||
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#11 ||HenrikNordstrom ||followup on Nathan H. webmaster account access ||done ||2014-01-11 ||
-||#11 ||AmosJeffries || instruct kinkie on database operation || done || SysAdmin/MirrorServers ||
-||#11 ||AmosJeffries ||minutes for meeting #11 written and circulated ||in progress ||
-||#11 ||AmosJeffries ||minutes for meeting #10 written and circulated ||in progress ||
-||#11 ||FrancescoChemolli ||work with sysadmin to mail service listing email when it is approved and monitor responses/bounces || || ||
-||#11 ||FrancescoChemolli ||make Coverity scan reports public readable if possible ||not possible. ||2014-02-15 ||
+||#12 || all ||review initial Foundation history documents ||not done || [[Foundation/History]] ||
+||#12 ||AmosJeffries ||publish minutes for meeting #4 ||done || 2014-05-09 ||
+||#12 ||AmosJeffries ||publish minutes for meeting #9 ||done || 2014-05-09 ||
+||#12 ||AmosJeffries ||publish minutes for meeting #10 ||done || 2014-05-09 ||
+||#12 ||AmosJeffries ||publish minutes for meeting #11 ||done || 2014-05-09 ||
+||#12 ||AlexRousskov ||review support points document ||not done || SupportPoints ||
+||#12 ||AlexRousskov ||prepare initial support points self-assesment ||not done || SupportPoints/Template ||
+||#12 ||AlexRousskov ||support Amos in tracking down nabble contacts ||not done || ||
+||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan ||not done || ||
+||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag ||not done || ||
 || ||
-||#10 ||AmosJeffries ||publish meeting #9 minutes with addition of reference to support points formula URL ||  || 2014-01-11 ||
-||#10 ||AmosJeffries ||format page out of agreed support point formula and present for board@ review ||done || SupportPoints ||
+||#11 ||FrancescoChemolli ||work with sysadmin to mail service listing email when it is approved and monitor responses/bounces ||waiting for message texts || ||
+|| ||
 ||#10 ||AmosJeffries ||followup with sysadmin on possible next tasks ||in progress || ||
 || ||
 ||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
@@ -75,29 +80,27 @@ Notes:
 ||#9 ||HenrikNordstrom ||organize creation of the new shop ||not done ||
 || ||
 ||#8 ||HenrikNordstrom ||send public announcement about new sysadmin staff ||not done ||
-||#8 ||AmosJeffries ||draw up and circulate initial Foundation history documents ||in progress ||
 ||#8 ||HenrikNordstrom ||send service status renewal mail to contacts for each service listing ||not done ||
-||#8 ||HenrikNordstrom ||mail service listing contacts to verify their service listing accuracy ||not done ||
+||#8 ||sysadmin ||mail service listing contacts to verify their service listing accuracy || reassigned to sysadmin ||
 || ||
 ||#7 ||HenrikNordstrom ||discuss the Foundation merchandise shop status with owner to have it moved to the Foundation. ||in progress ||
 ||#7 ||AmosJeffries ||contact the company accused of GPL violations to learn more about their Squid-based product distribution. ||not done ||
 || ||
 ||#5 ||sysadmin||set up mail list for contacting mirrors. || reassigned to sysadmin ||
 ||#5 ||AmosJeffries ||minutes for meeting #5 written and circulated ||not done ||
-|| ||
-||#4 ||AmosJeffries ||minutes for meeting #4 written and circulated ||in progress ||
 
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
-||#11 ||2014-01-11 ||IRC ||draft circulated ||
-||#10 ||2013-10-08 ||IRC ||draft circulated ||
-||#9 ||2013-09-01 ||IRC ||awaiting final approval ||
+||#12 ||2014-05-09 ||IRC ||draft circulated ||
+||#11 ||2014-01-11 ||IRC ||http://www.squid-cache.org/Foundation/archive/2014/2014-01-11_board-meeting-11.html ||
+||#10 ||2013-10-08 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-10-08_board-meeting-10.html ||
+||#9 ||2013-09-01 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-09-01_board-meeting-9.html ||
 ||#8 ||2013-07-15 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-07-15_board-meeting-8.html ||
 ||#7 ||2013-05-26 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-05-26_board-meeting-7.html ||
 ||#6 ||2013-04-28 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-04-28_board-meeting-6.html ||
 ||#5 ||2012-07-26 ||IRC ||being written ||
-||#4 ||2012-06-16 ||IRC ||draft circulated ||
+||#4 ||2012-06-16 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-06-16_board-meeting-4.html ||
 ||#3 ||2012-05-17 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-05-17_board-meeting-3.html ||
 ||#2 ||2012-03-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-03-20_board-meeting-2.html ||
 ||#1 ||2012-02-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-02-20_board-meeting-1.html ||
