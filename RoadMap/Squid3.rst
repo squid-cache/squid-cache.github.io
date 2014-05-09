@@ -61,6 +61,7 @@ Features which have not reached completion or have failed the audit, are automat
 
 <<Include(Squid-3.4)>>
 <<Include(Squid-3.5)>>
+<<Include(Squid-3.6)>>
 
 == Bug Zapping ==
 
