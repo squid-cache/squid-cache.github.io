@@ -3,7 +3,7 @@
 = Squid 3.5 (3.HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.5 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.5 expecetd to be in 2014.
+The set of new Squid 3.5 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.5 expected to be in 2014.
 
 
 ## bugs down to major (all earlier releases and 'unknowns')
