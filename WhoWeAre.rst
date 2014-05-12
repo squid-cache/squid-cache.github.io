@@ -3,11 +3,21 @@
 The Squid project, originally funded by a NSF grant, is now run entirely by volunteers.
 There are a few key individuals who keep the project running.
 
+= The Squid Software Foundation Directors =
+[[http://foundation.squid-cache.org/|The Squid Software Foundation]] is a US registered non-profit (501(c)(3) tax-exempt) providing the infrastructure and support framework for Squid developers and users.
+
+ * [[Henrik_Nordström]] - President
+ * [[FrancescoChemolli|Francesco Chemolli]] - Vice President
+ * [[AmosJeffries|Amos Jeffries]] - Secretary
+ * [[AlexRousskov|Alex Rousskov]] - Treasurer
+
 = Squid Core Team =
+Emeritus developers who provided oversight of the Squid Project before [[http://foundation.squid-cache.org/|The Squid Software Foundation]].
+
  * [[Henrik_Nordström]], Squid Hacker Extraordinaire and [[RoadMap/Squid2|Squid-2.x]] release manager.
  * [[AmosJeffries|Amos Jeffries]] IPv6 guru, [[Translations]] coordinator, and [[RoadMap/Squid3|Squid-3.x]] release manager.
  * [[http://www.squid-cache.org/~robertc/|Robert Collins]] was the main driver of the initial Squid-3 C++ migration effort.
- * [[GuidoSerassio|Guido Serassio]] leads the [[http://squid.acmeconsulting.it/|Squid for Windows]] effort
+ * [[GuidoSerassio|Guido Serassio]] lead the [[http://squid.acmeconsulting.it/|Squid for Windows]] effort
  * [[AlexRousskov|Alex Rousskov]] manages various Squid-3 projects.
  * [[http://wessels.squid-cache.org/|Duane Wessels]], Chief Procrastinator
 
