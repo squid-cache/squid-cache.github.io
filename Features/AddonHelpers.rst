@@ -332,7 +332,7 @@ Result line sent back to Squid:
 
 ==== Bearer Scheme ====
 
-  . {i} the '''Bearer''' authentication scheme is '''proposed''' to be supported by [[Squid-3.4]] and newer. But not yet implemented.
+  . {i} the '''Bearer''' authentication scheme is '''proposed''' to be supported by [[Squid-3.4]] and newer. But not yet accepted into trunk.
 
 ## start bearerauth protocol
 Input line received from Squid:
@@ -366,8 +366,8 @@ channel-ID result [kv-pair]
   || group=... || reserved ||
   || message=... || A message string that Squid can display on an error page. ||
   || tag=... || reserved ||
-  || ttl=... || reserved ||
-  || user=... || reserved ||
+  || ttl=... || The duration for which this result may be used.<<BR>>If not provided 0 is assumed and the token treated as a nonce. ||
+  || user=... || The label to be used by Squid for this client request as '''"username"'''. ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
 
 ## end bearerauth protocol
