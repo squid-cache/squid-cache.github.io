@@ -81,7 +81,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  || '''MISS''' || The response object delivered was the network response object. ||
  || '''DENIED''' || The request was denied by access controls. ||
  || '''NOFETCH''' || A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either '''UDP_HIT''' or '''UDP_MISS_NOFETCH'''. Neighbours will thus only fetch hits. ||
- || '''TUNNEL''' || A binary tunnel was established for this transaction. ||
+ || '''TUNNEL''' || A binary tunnel was established for this transaction. Only on [[Squid-3.5]]+ ||
 
 
  * These tags are optional and describe some error conditions which occured during response delivery (if any):
