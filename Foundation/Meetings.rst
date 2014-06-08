@@ -15,7 +15,6 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
-
  1. Sysadmin progress
 
  1. Last meeting minutes approval
