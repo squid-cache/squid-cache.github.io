@@ -72,6 +72,6 @@ Bonuses for volunteers performing specific, regular project duties:
  /!\ Logarithm base is 2. Log parameters below 1 are treated as 1 (and result in zero log value). The logarithm is applied to encourage balanced contributions and discourage attempts to game the system by "cheaply" inflating one of the sum elements.
 
 
-== Notes ==
+== Expected Changes ==
 
-We expect that the general structure of Support Points calculation will to be stable in the future. However the specifics will probably require some fine-tuning. We hope that this scheme reflects service provider contribution but understand that exact measurements and comparisons are not possible in this problem domain.
+We expect the general structure of Support Points calculation to remain stable. However, the specifics will probably require some fine-tuning. We hope that this scheme reflects service provider contribution but understand that exact measurements and comparisons are not possible in this problem domain.
