@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2014-06-06 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2014-06-08 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC.
 
@@ -87,7 +87,7 @@ Notes:
 ||#7 ||AmosJeffries ||contact the company accused of GPL violations to learn more about their Squid-based product distribution. ||not done ||
 || ||
 ||#5 ||sysadmin||set up mail list for contacting mirrors. || reassigned to sysadmin ||
-||#5 ||AmosJeffries ||minutes for meeting #5 written and circulated ||not done ||
+||#5 ||AmosJeffries ||minutes for meeting #5 written and circulated ||draft circulated ||2014-05-10 ||
 
 
 == Past Meetings ==
@@ -99,7 +99,7 @@ Notes:
 ||#8 ||2013-07-15 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-07-15_board-meeting-8.html ||
 ||#7 ||2013-05-26 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-05-26_board-meeting-7.html ||
 ||#6 ||2013-04-28 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-04-28_board-meeting-6.html ||
-||#5 ||2012-07-26 ||IRC ||being written ||
+||#5 ||2012-07-26 ||IRC ||draft circulated ||
 ||#4 ||2012-06-16 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-06-16_board-meeting-4.html ||
 ||#3 ||2012-05-17 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-05-17_board-meeting-3.html ||
 ||#2 ||2012-03-20 ||IRC ||http://www.squid-cache.org/Foundation/archive/2012/2012-03-20_board-meeting-2.html ||
