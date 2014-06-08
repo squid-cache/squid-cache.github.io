@@ -65,8 +65,8 @@ Notes:
 ||#12 ||AmosJeffries ||publish minutes for meeting #9 ||done || 2014-05-09 ||
 ||#12 ||AmosJeffries ||publish minutes for meeting #10 ||done || 2014-05-09 ||
 ||#12 ||AmosJeffries ||publish minutes for meeting #11 ||done || 2014-05-09 ||
-||#12 ||AlexRousskov ||review support points document ||not done || SupportPoints ||
-||#12 ||AlexRousskov ||prepare initial support points self-assesment ||not done || SupportPoints/Template ||
+||#12 ||AlexRousskov ||review support points document ||done || SupportPoints ||
+||#12 ||AlexRousskov ||prepare initial support points self-assesment ||in progress || 2014-07-31 ||
 ||#12 ||AlexRousskov ||support Amos in tracking down nabble contacts ||not done || ||
 ||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan ||not done || ||
 ||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag ||not done || ||
