@@ -1,13 +1,9 @@
 ##master-page:SquidTemplate
 #format wiki
 #language en
-#acl SquidWikiAdminGroup:read,write,revert,admin -All:read
-
-  '''DRAFT'''
+#acl SquidWikiAdminGroup:read,write,revert,admin All:read
 
 <<TableOfContents>>
-
-  '''DRAFT'''
 
 = Support Points =
 
