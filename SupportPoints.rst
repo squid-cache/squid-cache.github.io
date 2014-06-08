@@ -14,30 +14,26 @@
 Supporting Squid users is one of the primary functions of the Squid Project.
 Commercial support has serious potential to help both Squid users and the Squid Project.
 
-## I would like to redesign the current Squid Support Services page and the
-##corresponding listing procedures:
-
-The goals are:
+The Squid Project is redesigning the current Squid Support Services [[http://www.squid-cache.org/Support/services.html|page]] and the corresponding service listing procedures with the following goals in mind:
 
   * Encourage Squid Project contributions from service providers.
   * Reward service providers that contribute back to the Squid Project.
   * Significantly improve [[http://www.squid-cache.org/Support/services.html]] quality and usability.
   * Rely on a "foxes guarding foxes" system. Minimize Project overheads.
 
-Specifics are detailed in the sections below.
+The key idea is to assign every service listing zero or more Support Points and to list services in the decreasing order of their Support Points. Other listing orders may be supported as well, but the default is going to be based on Support Points. Support Points calculation and listing procedures are detailed in the sections below.
 
 
-== Support Points Self-Assessment ==
+== Support Points Reporting Procedure: Self-Assessment ==
 
-For all but the most simple/unfair Support Points calculation methods,
-Squid Project does not have the resources to accurately compute Support
+The Squid Project does not have the resources to accurately compute Support
 Points for all service provider listings. If a service provider wants to
-associate some Points with their listing, they must report their points
+associate some Points with their listing, they must report their Points
 along with appropriate calculation/justification. That report is called
 Self-Assessment.
 
-Squid Project folks reviewing new entries before adding them to the
-database will review Self-Assessments as well and may verify any
+Squid Project folks reviewing new service entries before adding them to the
+database will review Self-Assessments and may verify any
 submitted number. Accepted Self-Assessments become public (linked from
 the Points number in the support table) so that other service providers
 can evaluate and, if needed, challenge them.
