@@ -16,7 +16,6 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Sysadmin progress
-
  1. Last meeting minutes approval
  1. Review of action points from last meeting
 
@@ -60,12 +59,7 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#12 || all ||review initial Foundation history documents ||not done || [[Foundation/History]] ||
-||#12 ||AmosJeffries ||publish minutes for meeting #4 ||done || 2014-05-09 ||
-||#12 ||AmosJeffries ||publish minutes for meeting #9 ||done || 2014-05-09 ||
-||#12 ||AmosJeffries ||publish minutes for meeting #10 ||done || 2014-05-09 ||
-||#12 ||AmosJeffries ||publish minutes for meeting #11 ||done || 2014-05-09 ||
-||#12 ||AlexRousskov ||review support points document ||done || SupportPoints ||
+||#12 || all ||review initial Foundation history documents ||in progress || [[Foundation/History]] ||
 ||#12 ||AlexRousskov ||prepare initial support points self-assesment ||in progress || 2014-07-31 ||
 ||#12 ||AlexRousskov ||support Amos in tracking down nabble contacts ||not done || ||
 ||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan ||not done || ||
@@ -87,7 +81,7 @@ Notes:
 ||#7 ||AmosJeffries ||contact the company accused of GPL violations to learn more about their Squid-based product distribution. ||not done ||
 || ||
 ||#5 ||sysadmin||set up mail list for contacting mirrors. || reassigned to sysadmin ||
-||#5 ||AmosJeffries ||minutes for meeting #5 written and circulated ||draft circulated ||2014-05-10 ||
+||#5 ||AmosJeffries ||minutes for meeting #5 written and circulated ||approved for publication ||2014-05-10 ||
 
 
 == Past Meetings ==
