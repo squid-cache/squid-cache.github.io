@@ -67,7 +67,7 @@ Bonuses for volunteers performing specific, regular project duties:
 
  /!\ Donations may include monetary donations to the Foundation and non-monetary contributions with clear monetary value regularly used by the Project, such as payments for Squid Project hosting services or testing software.
 
- /!\ All numbers are calculated for the past year (starting approximately 365 days from the calculation date) and remain fresh for one year (but may be occasionally updated before they become stale). Counting from about 30 days in the past.
+ /!\ All numbers are calculated for the past year (starting approximately 395 days from the calculation date) and remain fresh for one year since submission (but may be occasionally updated before they become stale). Activities during the last 30 days should be excluded to minimize submission duels and rushed submissions relying on potentially unsettled issues.
 
  /!\ Logarithm base is 2. Log parameters below 1 are treated as 1 (and result in zero log value). The logarithm is applied to encourage balanced contributions and discourage attempts to game the system by "cheaply" inflating one of the sum elements.
 
