@@ -71,4 +71,7 @@ Bonuses for volunteers performing specific, regular project duties:
 
  /!\ Logarithm base is 2. Log parameters below 1 are treated as 1 (and result in zero log value). The logarithm is applied to encourage balanced contributions and discourage attempts to game the system by "cheaply" inflating one of the sum elements.
 
-Needless to say that all of the above are rather arbitrary constants and functions. It would be silly to suggest that five squid-users emails are always equivalent to a single commit or even that all squid-dev emails are about the same. However, we need some way to map project contribution to a single number, and the above does just that. The only other alternative is to use monetary donations alone, and that seems even worse!
+
+== Notes ==
+
+We expect that the general structure of Support Points calculation will to be stable in the future. However the specifics will probably require some fine-tuning. We hope that this scheme reflects service provider contribution but understand that exact measurements and comparisons are not possible in this problem domain.
