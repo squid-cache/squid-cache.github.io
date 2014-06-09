@@ -21,7 +21,7 @@ Each library depended on by Squid should have an '''AC_WITH()''' macro defined t
 * When the library is absent API feature tests, hacks and workarounds for the library should not be searched for. This reduces the time ./configure spends performing useless operations.
 
 
-== AC_ARG_WITH() ==
+== Piece 1: AC_ARG_WITH() ==
 
 Use this autoconf provided macro to setup path locations and with_* variables for the library.
 
@@ -44,7 +44,7 @@ case "$with_foo" in
 AH_TEMPLATE(USE_FOO,[Foo support is available])
 }}}
 
-== Library existence tests ==
+== Piece 2: Library need check ==
 
 {{{
 if test "x$with_foo" != "xno"; then
@@ -52,7 +52,7 @@ if test "x$with_foo" != "xno"; then
   LIBS="$LIBS $LIBFOO_PATH"
 }}}
 
-Library existence and feature tests all go here in the custom state protected area. They are defined using the pkg-config tool with backup detection logics.
+'''Piece #3 and #4 goes in here'''
 
 {{{
   SQUID_STATE_ROLLBACK(squid_foo_state)
@@ -75,7 +75,7 @@ AC_SUBST(FOOLIB)
 
  * Note the absence of AC_CONDITIONAL to setup ENABLE_FOO. If a major feature requires library foo then it should base its determination on the setting in {{{$with_foo}}} only '''after''' these library tests have been performed and set $with_foo to one of yes/no.
 
-== pkg-config ==
+== Piece 3: pkg-config and file detections ==
 
 Prefer the use of pkg-config to locate library parameters. When provided by the library author they are updated automatically if the build parameters change, and can also do library version detection more accurately.
 
@@ -98,10 +98,16 @@ An example of how to use PKG_CHECK_MODULES:
     ## by testing for a 1.0.0+ function which we use
     AC_CHECK_LIB(foo,foo_10_function,[LIBFOO_LIBS="-lfoo"])
   ])
+}}}
 
+== Piece 4: header detection ==
+
+Check for the library header includes separately.
+
+This is required as a side effect of the Squid requiremet for HAVE_FOO_H wrapper definitions. The pkg-config tool does not check for them automatically and it makes no sense to do them twice for both its success and failure actions.
+
+{{{
   if test "x$LIBFOO_LIBS" != "x" ; then
-    # check for headers to setup the required HAVE_FOO_H wrappers
-    # but only if the library is found to exist
     AC_CHECK_HEADERS(foo.h)
   fi
 }}}
@@ -109,5 +115,6 @@ An example of how to use PKG_CHECK_MODULES:
 == Makefile.am ==
 
 Each binary that uses library Foo should include {{{ $(FOOLIB) }}} in its LDADD declaration '''following''' the libcompat.la entry and will be linked when relevant.
+ {i} for ease of maintenance these FOOLIB LDADD entries should be alphabetical.
 
 ----
