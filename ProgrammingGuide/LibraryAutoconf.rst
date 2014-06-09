@@ -6,7 +6,7 @@
 
 ''This page is a work in progress. The autoconf template documented here is still evolving and when stable will be turned into a macro.''
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 == Overview of Behaviour ==
 
