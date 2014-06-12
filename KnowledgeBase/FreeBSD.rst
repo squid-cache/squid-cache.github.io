@@ -46,13 +46,13 @@ Squid is developed on FreeBSD. The [[SquidFaq/CompilingSquid|general build instr
 
 However, if you wish to integrate patching of Squid with patching of your other FreeBSD packages, it might be easiest to install Squid from the Ports collection. There are three ports, matching the three packages for the current Squid releases:
 
- * squid31 - the Squid 3.3 tree.
+ * squid33 - the Squid 3.3 tree.
 {{{
  cd /usr/ports/www/squid33
  make install clean
 }}}
 
- * squid30 - the Squid 3.2 tree;
+ * squid32 - the Squid 3.2 tree;
 {{{
  cd /usr/ports/www/squid32
  make install clean
