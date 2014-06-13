@@ -11,13 +11,20 @@
 ## '''Maintainer:''' 
 Jiri Skala @ !RedHat maintains experimental squid packages for Red Hat Enterprise Linux 4 and 5. These packages are unofficial and are not supported by Red Hat. They are intended for RHEL users who would like to try newer squid packages.
 
+==== Squid-3.4 ====
+ * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on RHEL.
+ * '''RHEL 6 Download:''' http://www1.ngtech.co.il/rpm/centos
+ * '''Latest Version:''' 3.4.5
+
 ==== Squid-3.3 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on RHEL.
- * '''RHEL 6 Download:''' http://repo.ngtech.co.il/rpm/
+ * '''RHEL 6 Download:''' http://www1.ngtech.co.il/rpm/centos
+ * '''Latest Version:''' 3.3.12
 
 ==== Squid-3.2 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on RHEL.
- * '''RHEL 6 Download:''' http://repo.ngtech.co.il/rpm/
+ * '''RHEL 6 Download:''' http://www1.ngtech.co.il/rpm/centos
+ * '''Latest Version:''' 3.2.8 - and '''out of maintanence''' due to newer stable versions.
 
 ==== Squid-3.1 ====
  * '''Maintainer:''' Jiri Skala @ !RedHat
