@@ -97,5 +97,26 @@ sslproxy_cert_error deny all
 }}}
 
 
+== Memory usage ==
+
+Warning: Unlike the rest of this page at the time of writing, this section applies to Squid v3.3 and possibly later code capable of [[Features/DynamicSslCert|dynamic SSL certificate generation]] and [[Features/MimicSslServerCert|origin server certificate mimicking]]. The current section text is intended primarily for developers and early adopters facing excessive memory consumption in certain !SslBump environments. These notes may be relocated elsewhere if a better location is found.
+
+Current documentation is specific to bump-server-first configurations.
+
+=== Squid talking to SSL clients ===
+
+If generate-host-certificates is "on" (which it is by default for ssl-bump http*_ports), then Squid uses one SSL context (SSL_CTX) per true SSL server certificate (see !ConnStateData::getSslContextStart). That SSL context is configured with the fake certificate for the corresponding SSL server. That fake certificate comes either from the ssl_crtd helper or is generated at hoc by Squid. Fake certificates (or, to be precise, their contexts) may be cached in a Squid context cache. The cache key includes subject name, common name (CN), valid after, valid before, and other true certificate properties. An SSL  context storing a full certificate chain may consume a few MBs of RAM. Since Squid usually talks to lots of servers, the total certificate cache capacity may have to exceed several GBs to avoid capacity misses. Please see dynamic_cert_mem_cache_size and Squid [[http://bugs.squid-cache.org/show_bug.cgi?id=4005|bug 4005]] on why the configured cache limit does not currently work as intended. Squid does not empty its context cache during reconfiguration (although contexts for no-longer-used or no-longer-caching ports are deleted in recent Squids).
+
+If generate-host-certificates is "off", then Squid uses one SSL context (SSL_CTX) per http[s]_port for all transactions on that port, regardless of their destination (see !PortCfg::staticSslContext). That SSL context is configured using http[s]_port options. This is done before Squid starts (or resumes) handling traffic so no server certificate mimicking is possible with this context. The context is recreated during reconfiguration. At the time of writing, there are several bugs (with pending http*_port leak patches) that may prevent this cleanup in some Squids.
+
+
+=== Squid talking to SSL servers ===
+
+When talking to SSL origin servers, Squid uses one SSL context for all servers (or one SSL_CTX per peer if a cache_peer is used; see Config.ssl_client.sslContext and !FwdState::initiateSSL()). That SSL context is configured using various sslproxy_* directives (or cache_peer ssl* options) in squid.conf.
+
+OpenSSL will automatically load and cache (inside the SSL context) certificates and CRLs necessary to validate true server certificates received by Squid. A single CRL may consume a few MBs. Since Squid usually talks to lots of servers, the total internal OpenSSL cache size may exceed several GBs. OpenSSL does not limit its internal cache size, and there are no knobs to do so using OpenSSL API.
+
+The SSL context used for talking directly to SSL servers is freed and recreated on reconfigure. In theory, that should clear the internal OpenSSL certificate and CRL cache when the last SSL connection using the old context is gone. At the time of writing, there are several bugs (with pending patches) that may prevent this cleanup in some Squids.
+
 ----
 CategoryFeature
