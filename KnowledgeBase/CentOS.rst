@@ -51,18 +51,6 @@ enabled=1
 gpgcheck=0
 }}}
 
-or
-
-{{{
-[squid]
-name=Squid repo for CentOS Linux 6 - $basearch
-#AUS mirror
-baseurl=http://repo.ngtech.co.il/rpm/centos/6/$basearch/beta
-failovermethod=priority
-enabled=1
-gpgcheck=0
-}}}
-
 Install Procedure:
 {{{
 yum update
@@ -79,18 +67,6 @@ yum install squid
 name=Squid repo for CentOS Linux 6 - $basearch
 #IL mirror
 baseurl=http://www1.ngtech.co.il/rpm/centos/6/$basearch
-failovermethod=priority
-enabled=1
-gpgcheck=0
-}}}
-
-or
-
-{{{
-[squid]
-name=Squid repo for CentOS Linux 6 - $basearch
-#AUS mirror
-baseurl=http://repo.ngtech.co.il/rpm/centos/6/$basearch
 failovermethod=priority
 enabled=1
 gpgcheck=0
