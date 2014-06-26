@@ -3,12 +3,16 @@
 #language en
 
 = Feature: HTTP/1.1 support =
- * '''Goal''': HTTP/1.1 (RFC 2616) compliance
+ * '''Goal''': HTTP/1.1 RFC compliance
  * '''Status''': 90% compliant and counting.
  * '''Version''': 3.2
  * '''More''': <<BR>>
-  . RFC RFC:2616 HTTP protocol specification
-  . http://trac.tools.ietf.org/wg/httpbis/trac/wiki#HTTP1.1Deliverables - IETF HTTPbis Working Group updates to RFC RFC:2616
+  . RFC RFC:7230 HTTP/1.1: Message Syntax and Routing
+  . RFC RFC:7231 HTTP/1.1: Semantics and Content
+  . RFC RFC:7232 HTTP/1.1: Conditional Requests
+  . RFC RFC:7233 HTTP/1.1: Range Requests
+  . RFC RFC:7234 HTTP/1.1: Caching
+  . RFC RFC:7235 HTTP/1.1: Authentication
 
 <<TableOfContents>>
 
@@ -16,13 +20,13 @@
 
 Squid-3.2 claims HTTP/1.1 support. Squid v3.1 claims HTTP/1.1 support but only in sent requests (from Squid to servers). Earlier Squid versions do not claim HTTP/1.1 support by default because they cannot fully handle Expect:100-continue, 1xx responses, and/or chunked messages. 
 
-Co-Advisor tests no longer detect RFC 2616 MUST-level violations in Squid trunk when it comes to requirements unrelated to caching. Many caching-related requirements are still violated. The "compliance percentage" in the project header is essentially a marketing gimmick (i.e., meaningless or misleading but technically correct information). We are actively working on fixing all known violations detected by Co-Advisor.
+Co-Advisor tests no longer detect RFC MUST-level violations in Squid trunk when it comes to requirements unrelated to caching. Many caching-related requirements are still violated. The "compliance percentage" in the project header is essentially a marketing gimmick (i.e., meaningless or misleading but technically correct information). We are actively working on fixing all known violations detected by Co-Advisor.
 
 === Checklist ===
 
-Current Squid compliance with RFC 2616 MUST-level requirements: [[attachment:HTTP-1.1-Checklist_2013-08-21.ods]]
+Current Squid compliance with RFC MUST-level requirements: [[attachment:HTTP-1.1-Checklist_2013-08-21.ods]]
 
-The linked document contains the results of automated Co-Advisor HTTP/1.1 compliance tests for several Squid versions. Each test consists of almost 700 individual test cases, targeting various MUSTs in RFC 2616. For each Squid3 version, we executed several tests. The tests were identical from HTTP point of view. If a given test case showed different results during those tests, the exact test case outcome could not be determined. Such outcomes are marked with a letter 'U'. All other markings correspond to stable results. Some test cases fail due to lack of an HTTP/1.1 feature support in Squid, incompatibility with the test suite, a test suite bug, or other reasons. Such test cases are marked with question marks. The remaining test case outcomes are successes and violations. Only successful outcomes count towards the "test cases passed" percentage.
+The linked document contains the results of automated Co-Advisor HTTP/1.1 compliance tests for several Squid versions. Each test consists of almost 700 individual test cases, targeting various MUSTs in RFC 2616 and 7230-7235. For each Squid-3 version, we executed several tests. The tests were identical from HTTP point of view. If a given test case showed different results during those tests, the exact test case outcome could not be determined. Such outcomes are marked with a letter 'U'. All other markings correspond to stable results. Some test cases fail due to lack of an HTTP/1.1 feature support in Squid, incompatibility with the test suite, a test suite bug, or other reasons. Such test cases are marked with question marks. The remaining test case outcomes are successes and violations. Only successful outcomes count towards the "test cases passed" percentage.
 
 The tests are on vanilla Squid with no special alterations made during build.  The 2.7 test appears to have been done with the configurable HTTP/1.1 advertisement to Servers turned on.
 
@@ -38,7 +42,7 @@ UPDATE: 1xx forwarding has been implemented in [[Squid-3.2]]. The forwarding pat
 
 == Request/Reply Upgrade path ==
 
-RFC2616 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
+RFC RFC:2616 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
 
  * NP: ICY protocol seems to be the main breakage. So ICY support has been implemented natively from [[Squid-3.1]] to fix this.
 
