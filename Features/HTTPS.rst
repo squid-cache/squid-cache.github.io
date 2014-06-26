@@ -101,6 +101,7 @@ There are bugs open for many years against this browser. If you have any interes
  * Connecting to a proxy over SSL: https://bugzilla.mozilla.org/show_bug.cgi?id=378637
  * Using a client certificate authentication to a proxy: https://bugzilla.mozilla.org/show_bug.cgi?id=209312
 
+ . /!\ UPDATE: Firefox 30 and later are gaining TLS proxy support in preparation for HTTP/2. Further info on how to configure or work with it is required.
 
 ----
 CategoryFeature
