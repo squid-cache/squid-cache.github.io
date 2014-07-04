@@ -11,10 +11,6 @@
 
  * '''Version''': 1.2
 
-## * '''Developer''': Who is responsible for this feature? 
-
-## * '''More''': 
-
 = Details =
 
 Proxy and Cache Hierarchies are built out of two basic peering linkages. '''parent''' links (shown as green) and '''sibling''' links (show as blue).
@@ -46,6 +42,8 @@ nonhierarchical_direct off
 The default behavior of Squid in the absence of positive ICP, HTCP, etc replies is to connect to the origin server instead of using parents. The SquidConf:prefer_direct '''off''' directive tells Squid to try parents first.
 
 Certain types of requests cannot be cached or are served faster going direct, and Squid is optimized to send them over direct connections by default. The SquidConf:nonhierarchical_direct '''off''' directive tells Squid to send these requests via the parent anyway.
+
+ . /!\ The SquidConf:hierarchy_stoplist directive is another which will cause traffic to go DIRECT instead of to a peer. It should be removed completely from [[Squid-3.2]] and later configurations if present.
 
 
 == How do I join a cache hierarchy? ==
