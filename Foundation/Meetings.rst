@@ -30,7 +30,7 @@ Notes:
 ##  . Is there any way we can identify who is in control of the forum and get better settings applied?
 ##  . NP: Hugo contacted
 
- * Ways to improve development efficiency: Proposed changes posted for squid-dev review often result in long, painful, discussions that drastically increase overall change "cost", discourage new development, and encourage reviewless commits (of occasionally broken or low-quality code). Is there anything we can do to improve the process without sacrificing the quality of the accepted changes?
+## * Ways to improve development efficiency: Proposed changes posted for squid-dev review often result in long, painful, discussions that drastically increase overall change "cost", discourage new development, and encourage reviewless commits (of occasionally broken or low-quality code). Is there anything we can do to improve the process without sacrificing the quality of the accepted changes?
 
 
 ## NOTES:
@@ -57,7 +57,7 @@ Notes:
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
 ||#12 || all ||review initial Foundation history documents ||in progress || [[Foundation/History]] ||
-||#12 ||AlexRousskov ||prepare initial support points self-assesment ||in progress || 2014-07-31 ||
+||#12 ||AlexRousskov ||prepare initial support points self-assesment ||done || 2014-07-31 ||
 ||#12 ||AlexRousskov ||support Amos in tracking down nabble contacts ||done ||2014-06-08 ||
 ||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan ||not done || ||
 ||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag ||not done || ||
