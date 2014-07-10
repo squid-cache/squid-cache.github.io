@@ -19,11 +19,14 @@ On Windows 2000 and later the service is configured to use the Windows Service R
  * Squid features not operational:
   * DISKD: still needs to be ported
   * Transparent Proxy: missing Windows non commercial interception driver
+  * WCCP: these features have not been ported. Without transparent proxy support there is no need or use.
   * SMP support: Windows equivalent of UDS sockets has not been implemented
 
  * Some code sections can make blocking calls.
  * Some external helpers may not work.
  * File Descriptors number hard-limited to 2048 when building with MinGW.
+
+ * Squid-3.x of all formal releases have major build issues.
 
 == Pre-Built Binary Packages ==
 
@@ -217,6 +220,39 @@ squid -N -D -d1
 Now, to run Squid as a Windows system service, run ''squid -n'', this will create a service named "Squid" with automatic startup. To start it run ''net start squid'' from command line prompt or use the Services Administrative Applet.
 
 Always check the provided release notes for any version specific detail.
+
+== Squid-3 porting efforts ==
+
+Squid series 3 has major build issues on all Windows compiler systems. Below is a summary of the known status for producing a useful Squid 3.x for Windows.
+
+The TODO list fro Windows
+
+=== MinGW ===
+Sponsorship from iCelero produced a working [[Squid-3.2]] and [[Squid-3.3]]. Unfortunately the product and sponsorship dropped before the final stages of this work could be cleaned up for GPL release.
+
+As of [[Squid-3.4]] the latest confirmed detail is that:
+ * (./) ./configure script has been updated such that special options are no longer required.
+ * there remain some significant build errors in the SSPI helpers
+ * missing shared socket support available in Vista and later. Necessary for SMP workers.
+ * missing full Windows OIO support. Alternative to Unix AIO disk I/O functionality.
+ * {X} those executables which do now build, still appear not to execute and produce no identifiable reason for the failure.
+
+AmosJeffries is attempting to achieve a cross-compiled build utilizing Mingw64 build environment on Debian, with occasional native MinGW environment builds for confirmation of changes. As this is spare-time work progress is slow.
+
+There also appears to be some work done by Joe Pelaez Jorge (https://code.launchpad.net/~joelpelaez/squid/win32).
+
+
+=== Cygwin ===
+There have been unconfirmed reports from some users of building up to [[Squid-3.3]] successfully and producing a usable executable.
+
+As of [[Squid-3.4]] the latest confirmed details is that there are significant build errors (bug Bug:4037). Assistance fixing this bugs issues is welcome, note that many of the build issues known are shared with MinGW and may be fixed as that work continues (or made worse).
+
+
+=== Visual Studio ===
+Almost no work on this environment has been done since [[Squid-2.7]].
+
+Entirely new .solution and .project build files need to be generated. Ideally these would mirror the on-Windows style of convenience libraries assembled to produce a number of different binaries.
+
 
 == Troubleshooting ==
 
