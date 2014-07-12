@@ -187,11 +187,12 @@ Result line sent back to Squid:
 
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface for HTTP redirection:
+  || clt_conn_tag=... || Tag the client TCP connection ([[Squid-3.5]]) ||
   || message=... || reserved ||
   || status=... || HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308 ||
   || tag=... || reserved ||
   || ttl=... || reserved ||
-  || url=... ||  redirect the client to given URL ||
+  || url=... || redirect the client to given URL ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
   . {i} the kv-pair field is only accepted by [[Squid-3.4]] and newer.
   . {i} the kv-pair returned by this helper can be logged by the '''%note''' SquidConf:logformat code.
@@ -232,6 +233,7 @@ Result line sent back to Squid:
 
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface for URL re-writing:
+  || clt_conn_tag=... || Tag the client TCP connection ([[Squid-3.5]]) ||
   || message=... || reserved ||
   || rewrite-url=... || re-write the transaction to the given URL. ||
   || tag=... || reserved ||
@@ -271,6 +273,7 @@ Result line sent back to Squid:
 
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface for URL re-writing:
+  || clt_conn_tag=... || Tag the client TCP connection ([[Squid-3.5]]) ||
   || message=... || reserved ||
   || store-id=... || set the cache storage ID for this URL. ||
   || tag=... || reserved ||
@@ -319,6 +322,7 @@ Result line sent back to Squid:
 
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface:
+  || clt_conn_tag=... || Tag the client TCP connection ([[Squid-3.5]]) ||
   || group=... || reserved ||
   || message=... || A message string that Squid can display on an error page. ||
   || tag=... || reserved ||
@@ -363,6 +367,7 @@ channel-ID result [kv-pair]
 
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface:
+  || clt_conn_tag=... || Tag the client TCP connection ([[Squid-3.5]]) ||
   || group=... || reserved ||
   || message=... || A message string that Squid can display on an error page. ||
   || tag=... || reserved ||
@@ -410,6 +415,7 @@ Result line sent back to Squid:
 
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface:
+  || clt_conn_tag=... || Tag the client TCP connection ([[Squid-3.5]]) ||
   || group=... || reserved ||
   || ha1=... || The digest HA1 value to be used. This field is only used on '''OK''' responses. ||
   || message=... || A message string that Squid can display on an error page. ||
@@ -469,6 +475,7 @@ Result line sent back to Squid:
 
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface:
+  || clt_conn_tag=... || Tag the client TCP connection ([[Squid-3.5]]) ||
   || group=... || reserved ||
   || message=... || A message string that Squid can display on an error page. ||
   || tag=... || reserved ||
@@ -525,6 +532,7 @@ Result line sent back to Squid:
   One or more key=value pairs. see SquidConf:external_acl_type for the full list supported by your Squid.
 
   The key names reserved on this interface:
+  || clt_conn_tag=... || Tag the client TCP connection ([[Squid-3.5]]) ||
   || group=... || reserved ||
   || log=... || String to be logged in access.log. Available as '''%ea''' in SquidConf:logformat specifications ||
   || message=... || Message describing the reason. Available as %o in error pages ||
@@ -714,6 +722,7 @@ result [kv-pair]
 
  kv-pair::
   One or more key=value pairs. The key names reserved on this interface:
+  || clt_conn_tag=... || reserved ||
   || message=... || reserved ||
   || tag=... || reserved ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
