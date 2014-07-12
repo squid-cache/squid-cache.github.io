@@ -11,7 +11,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  * Location: IRC / Skype TBD.
 
-==== Draft Agenda - Meeting #14 ====
+==== Draft Agenda - Meeting #15 ====
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
@@ -37,18 +37,15 @@ Notes:
 ##  - Mirrors: whether to update and resume using email-broken.pl notification in Foundation name. Currently From:Duane...
 
 ==== Agenda of Last Meeting ====
-''' Meeting #13.'''
 
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
- 1. Sysadmin progress
  1. Last meeting minutes approval
  1. Review of action points from last meeting
- 1. Nabble
- 1. Ways to improve development efficiency
  1. Next meeting scheduling
  1. Open floor:
+   . Embedding Nabble forum on squid-cache.org
 
 
 == Action Points ==
@@ -56,9 +53,13 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#12 || all ||review initial Foundation history documents ||in progress || [[Foundation/History]] ||
-||#12 ||AlexRousskov ||prepare initial support points self-assesment ||done || 2014-07-31 ||
-||#12 ||AlexRousskov ||support Amos in tracking down nabble contacts ||done ||2014-06-08 ||
+||#13 ||AmosJeffries ||publish minutes of meeting #5 || done || ||
+||#13 ||AmosJeffries ||publish minutes of meeting #12 || done || ||
+||#13 ||AmosJeffries ||Contact Nabble to get administrative control, if needed. ||done || ||
+||#12 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
+||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
+||#13 ||- ||Make sure that posts via Nabble gets accepted on mailing list, enabling discussion to flow. ||not done || ||
+|| ||
 ||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan ||not done || ||
 ||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag ||not done || ||
 || ||
@@ -82,7 +83,8 @@ Notes:
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
-||#13 ||2014-06-08 ||IRC || not done ||
+||#14 ||2014-07-12 ||IRC || not done ||
+||#13 ||2014-06-08 ||IRC || circulated ||
 ||#12 ||2014-05-09 ||IRC and Skype||http://www.squid-cache.org/Foundation/archive/2014/2014-05-09_board-meeting-12.html ||
 ||#11 ||2014-01-11 ||IRC ||http://www.squid-cache.org/Foundation/archive/2014/2014-01-11_board-meeting-11.html ||
 ||#10 ||2013-10-08 ||IRC ||http://www.squid-cache.org/Foundation/archive/2013/2013-10-08_board-meeting-10.html ||
