@@ -8,8 +8,8 @@
 = Feature: SSL Peek and Splice =
 
  * '''Goal''': Make bumping decisions after the origin server name is known, especially when intercepting SSL. Avoid bumping non-SSL traffic.
- * '''Status''': in progress
- * '''ETA''': June 2014
+ * '''Status''': in progress; initial implementation of key actions completed, polishing for the official submission
+ * '''ETA''': August 2014
  * '''Version''': 3.5
  * '''Developer''': AlexRousskov and Christos Tsantilas
  * '''Priority''': 1
