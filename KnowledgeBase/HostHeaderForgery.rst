@@ -61,7 +61,7 @@ The below details are mandatory configuration for NAT intercept or TPROXY proxie
 
  * ensure that NAT is performed on the same box as Squid.
   . Squid '''MUST''' have access to the NAT systems records of what the original destination IP was. Without that information all traffic will get a 409 HTTP error and log this alert.
-  . When operating Squid on a different machine to your router use '''Policy Routing''' protocol to deliver traffic to squid. Do not perform destination NAT (DNAT, REDIRECT, Port Forwarding) on the router machine before the traffic hits Squid.
+  . When operating Squid on a different machine to your router use '''Policy Routing''' or a tunnel to deliver traffic to squid. Do not perform destination NAT (DNAT, REDIRECT, Port Forwarding) on the router machine before the traffic hits Squid.
 
  * ensure that the DNS servers Squid uses are the same as those used by the client(s).
   . Certain popular CDN hosting networks use load balancing systems to determine which website IPs to return in the DNS query response. These are based on the querying DNS resolvers IP. If Squid and the client are using different resolvers there is an increased chance of different results being given. Which can lead to this alert.
