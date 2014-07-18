@@ -23,7 +23,12 @@ It is extremely intrusive and not applicable unless full control is had over the
 
  /!\ Replace '''SQUIDIP''' with the public IP which squid may use for its listening port and outbound connections.
 
+
+ {i} You may also need to replace "squid" UID with the SquidConf:cache_effective_user account Squid runs as. This may be using a built-in default of "nobody", "squid", or "proxy" depending on your operating system.
+
 {{{
+iptables -t nat -A OUTPUT --match owner --uid-owner squid -p tcp --dport 80 -j ACCEPT
+
 iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination SQUIDIP:3129
 }}}
 
