@@ -85,6 +85,8 @@ pass out quick inet from 192.0.2.0/24 divert-reply
 2013/04/16 14:28:37 kid1|  FD 12, 127.0.0.1 [Stopped, reason:Listener socket closed job49]: (53) Software caused connection abort
 }}}
 
+ . {X} PF offers a '''rdr-to''' option. However this not supported with any Squid. Use '''divert-to''' instead.
+
 === OpenBSD 4.1 to 4.3 ===
  . {X} NOTE: OpenBSD older than 4.4 requires [[Squid-3.2]] or older built with '''--enable-pf-transparent''' and only supports the NAT interception method.
 
