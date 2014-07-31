@@ -30,55 +30,58 @@ The linked document contains the results of automated Co-Advisor HTTP/1.1 compli
 
 The tests are on vanilla Squid with no special alterations made during build.  The 2.7 test appears to have been done with the configurable HTTP/1.1 advertisement to Servers turned on.
 
-== Forwarding path ==
+== Compliance ==
 
-The forwarding path needs to be cleaned up to better separate HTTP messages and actual content, allowing for proper forwarding of 1xx responses.
+The following compliance notes apply to [[Squid-3.2]] and later. Older Squid did not even conditionally comply with HTTP/1.1.
 
-This is likely to touch the store API as today all messages go via the store, even if just an interim 1xx response.
+=== Message Syntax and Routing ===
+Specification Document: RFC RFC:7230
 
- * Temporary step for [[Squid-3.1]]: catch expect-100 on requests and send back the correct error to cause a retry when client sends Expect-100 in a request. Until such time as Squid can support expect-100.
+ 1. HTTP/1.1 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
 
-UPDATE: 1xx forwarding has been implemented in [[Squid-3.2]]. The forwarding path still needs further work to make this efficient.
+  * NP: ICY protocol seems to be the main breakage. So ICY support has been implemented natively to fix this.
 
-== Request/Reply Upgrade path ==
+  * NP: Sharepoint and several other MS products break with authentication loops when different HTTP/1.x versions are advertised on server and client side (as seen with [[Squid-3.1]]). This is resolved with [[Squid-3.2]] advertising HTTP/1.1 in both sides.
 
-RFC RFC:2616 requires that we upgrade to our highest supported version. This has been found problematic with certain broken clients and servers.
+ 2. The forwarding path needs to be cleaned up to better separate HTTP messages and actual content, allowing for proper forwarding of 1xx responses. 1xx forwarding has been implemented in [[Squid-3.2]] but the forwarding path still needs further work to make this efficient.
 
- * NP: ICY protocol seems to be the main breakage. So ICY support has been implemented natively from [[Squid-3.1]] to fix this.
+  * This is likely to touch the store API as today all messages go via the store, even if just an interim 1xx response.
 
- * NP: Sharepoint and several other MS products break with authentication loops when different HTTP/1.x versions are advertised on server and client side (as seen with [[Squid-3.1]]).
+ 3. HTTP/1.1 requires support for chunked encoding in both parsers and composers. This applies to both responses and requests.
+  * Both Squid-3 and Squid-2 contain at least response chunked decoding. The chunked encoding portion is available from [[Squid-3.2]] on all traffic except CONNECT requests.
+  * Squid is missing support for chunked encoding trailers.
+  * Squid is missing support for deflate and gzip transfer encodings.
+  * Squid is missing support for HTTP message Trailers.
+
+=== Semantics and Content ===
+Specification Document: RFC RFC:7231
+
+=== Conditional Requests ===
+Specification Document: RFC RFC:7232
+
+ * Squid is missing support for '''If-Unmodified-Since''' validation.
+
+ * Missing '''If-None-Match''' header creation on revalidation requests
+
+=== Range Requests ===
+Specification Document: RFC RFC:7233
+
+ * Squid is unable to store range requests and is currently limited to converting the request into a full request or passing it on unaltered to the backend server.
+
+  * We need to implement storage to allow for partial range storage.
+
+  * There are also a handful of bugs in the existing range handling which need to be resolved.
 
 
-We may require a generic ''upgrade_http'' option which takes a version number, allow/deny, and a list of ACLs. Plus two new ACLs to test for the request HTTP version and reply HTTP version.
+=== Caching ===
+Specification Document: RFC RFC:7234
 
- * NP: The Measurement Factory have patches for these options. They will be merged to Squid only if real need is demonstrated.
+ * Many caching-related requirements are still violated. see Co-Advisor checklist.
 
-Requirements to consider:
- * ACL controls to halt the upgrade at a certain level (ie permit upgrade 0.9 to 1.0, but not 0.9->1.1).
- * separate upgrade 0.9 -> 1.0 from 1.0->1.1 tasks.
- * reply pathway stepping stones similar to handle reply downgrade in mirror to the upgrades made.
 
-== Transfer encoding ==
+=== Authentication ===
+Specification Document: RFC RFC:7235
 
-HTTP/1.1 requires support for chunked encoding in both parsers and composers. This applies to both responses and requests.
-
-Both Squid-3 and Squid-2 contain at least response chunked decoding. The chunked encoding portion is available from [[Squid-3.2]] on all traffic except CONNECT requests.
-
-== Related minor tasks ==
-
-Additionally work should also be done in the following
-
- * Cleanups to comply better with the RFCs. (see the Checklist)
- * Implement cache invalidation requirements.
-  . If-None-Match header creation on revalidation requests
-  . Support correct caching and revalidation of no-cache on responses
-
-== Range Requests ==
-
-Squid is unable to store range requests and is currently limited to converting the request into a full request or passing it on unaltered to the backend server.
-
- * We need to implement storage to allow for partial range storage.
- * There are also a handful of bugs in the existing range handling which need to be resolved.
 
 == Older notes ==
 
@@ -89,6 +92,10 @@ Some thought will need to be put into the following area:
  * HTTP entity types
 
 Discussion: What is meant by this? Please expand and move up.
+
+Additionally work should also be done in the following
+
+ * Cleanups to comply better with the RFCs. (see the Checklist)
 
 ----
 CategoryFeature
