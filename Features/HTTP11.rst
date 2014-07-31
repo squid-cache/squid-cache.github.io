@@ -8,11 +8,15 @@
  * '''Version''': 3.2
  * '''More''': <<BR>>
   . RFC RFC:7230 HTTP/1.1: Message Syntax and Routing
+   . RFC RFC:2817 Upgrading to TLS Within HTTP/1.1
   . RFC RFC:7231 HTTP/1.1: Semantics and Content
+   . RFC RFC:7238 Status Code 308 (Permanent Redirect)
   . RFC RFC:7232 HTTP/1.1: Conditional Requests
   . RFC RFC:7233 HTTP/1.1: Range Requests
   . RFC RFC:7234 HTTP/1.1: Caching
   . RFC RFC:7235 HTTP/1.1: Authentication
+   . RFC RFC:2617 Basic and Digest Access Authentication
+   . RFC RFC:4559 SPNEGO-based Kerberos and NTLM HTTP Authentication
 
 <<TableOfContents>>
 
@@ -43,18 +47,31 @@ Specification Document: RFC RFC:7230
 
   * NP: Sharepoint and several other MS products break with authentication loops when different HTTP/1.x versions are advertised on server and client side (as seen with [[Squid-3.1]]). This is resolved with [[Squid-3.2]] advertising HTTP/1.1 in both sides.
 
- 2. The forwarding path needs to be cleaned up to better separate HTTP messages and actual content, allowing for proper forwarding of 1xx responses. 1xx forwarding has been implemented in [[Squid-3.2]] but the forwarding path still needs further work to make this efficient.
-
-  * This is likely to touch the store API as today all messages go via the store, even if just an interim 1xx response.
-
- 3. HTTP/1.1 requires support for chunked encoding in both parsers and composers. This applies to both responses and requests.
+ 2. HTTP/1.1 requires support for chunked encoding in both parsers and composers. This applies to both responses and requests.
   * Both Squid-3 and Squid-2 contain at least response chunked decoding. The chunked encoding portion is available from [[Squid-3.2]] on all traffic except CONNECT requests.
   * Squid is missing support for chunked encoding trailers.
   * Squid is missing support for deflate and gzip transfer encodings.
   * Squid is missing support for HTTP message Trailers.
 
+
+Specification Document: RFC RFC:2817
+
+ 1. Squid is conditionally compliant with this feature. Always ignores the header content and ensures '''Upgrade''' header is dropped safely.
+
+ 2. Squid with [[Features/SslBump|ssl-bump]] feature enabled will attempt to upgrade CONNECT requests to TLS regardless of the presence of Upgrade headers.
+
+
 === Semantics and Content ===
 Specification Document: RFC RFC:7231
+
+ 1. The forwarding path needs to be cleaned up to better separate HTTP messages and actual content, allowing for proper forwarding of 1xx responses. 1xx forwarding has been implemented in [[Squid-3.2]] but the forwarding path still needs further work to make this efficient.
+
+  * This is likely to touch the store API as today all messages go via the store, even if just an interim 1xx response.
+
+Specification Document: RFC RFC:7238
+
+ * Squid is fully compliant with this specification.
+
 
 === Conditional Requests ===
 Specification Document: RFC RFC:7232
@@ -81,6 +98,23 @@ Specification Document: RFC RFC:7234
 
 === Authentication ===
 Specification Document: RFC RFC:7235
+
+Specification Document: RFC RFC:2617
+
+ * Squid fully supports Basic authentication.
+
+ * There are outstanding bugs in minimal Digest authentication behaviour.
+
+ * Squid is missing support for Digest auth-int authentication mode.
+
+
+Specification Document: RFC RFC:4559
+
+ * Squid fully supports Negotiate/Kerberos authentication.
+  - Squid will additionally generate '''Connection:Proxy-Support''' header to enforce semantics when chained.
+  - Squid additionally supports Negotiate for Proxy-Auth.
+
+ * There are outstanding bugs in the NTLM and Negotiate/NTLM implementation.
 
 
 == Older notes ==
