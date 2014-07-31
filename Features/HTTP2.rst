@@ -12,13 +12,14 @@
 ## use "completed" for completed projects
  * '''Status''': Design groundwork underway.
 
- * '''ETA''': initial support in 3.5 series.
+ * '''ETA''': initial support in 3.6 series.
 
- * '''Version''': 3.5
+ * '''Version''': 3.x
 
  * '''Developer''': AmosJeffries
 
  * '''More''':
+  * http://tools.ietf.org/html/draft-ietf-httpbis-http2
   * http://trac.tools.ietf.org/wg/httpbis/trac/wiki#HTTP2.0Deliverables
 ##  * http://www.chromium.org/spdy/spdy-proxy-examples
 
@@ -27,7 +28,7 @@
 HTTP/2 is being designed loosly based on the SPDY experimental protocol for framing HTTP requests in a multiplexed fashion over SSL connections. Avoiding the pipeline issues which HTTP has with its dependency on stateful "\r\n" frame boundaries.
 
 HTTP/2 has some major differences however:
- * HTTP/2.0 contains a magic connection prefix for automated protcol switching with HTTP/1.1 and HTTP/1.0
+ * HTTP/2.0 contains a magic connection prefix for automated protocol switching with HTTP/1.1 and HTTP/1.0
  * Frame layout has been significantly optimized for HTTP messaging outside web browser usages.
  * TLS is optional
  * Compression algorithms have been rewoven specifically for HTTP performance and to avoid security vulnerabilities in gzip compression as used in SPDY.
@@ -78,7 +79,7 @@ To implement a server gateway in Squid we need to:
  * add a new HTTP/2.0 server connection pool similar but different to the HTTP/1.1 idle pconn pool
   * without timeout closures on the pool (timeout is relative to last use, not pooling time).
   * holding the connections which are actively in use but can be shared with more server requests.
-  * pooling at the level of stateful connection manager object (HttpStteData presently) not stateless TCP connection details (Comm::Connection)
+  * pooling at the level of stateful connection manager object (HttpStateData presently) not stateless TCP connection details (Comm::Connection)
 
  * duplicate the HTTP server connection manager
   * update the new version to encapsulate/decapsulate with HTTP/2 framing on read/write
