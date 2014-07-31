@@ -99,6 +99,10 @@ Squid-3.4+ support:
   * (SquidConf:sslcrtvalidator_program, SquidConf:sslcrtvalidator_children)
   * Specific feature details at [[Features/SslServerCertValidator]]
 
+squid-3.5+ support:
+ * flexible key-extras extensions to helper lookup request lines
+
+
 Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/ICAP|ICAP services]] which differ from helper scripts in many ways.
 
 == Helper protocols ==
@@ -129,7 +133,7 @@ Some example key values:
 ## start urlhelper protocol
 Input line received from Squid:
 {{{
-[channel-ID] URL ip/fqdn ident method [urlgroup] kv-pair
+[channel-ID] URL [key-extras]
 }}}
 
  channel-ID::
@@ -137,6 +141,12 @@ Input line received from Squid:
 
  URL::
   The URL received from the client. In Squid with ICAP support, this is the URL after ICAP REQMOD has taken place.
+
+ key-extras::
+   Starting with [{Squid-3.5]] additional parameters passed to the helper which may be configured with SquidConf:url_rewrite_extras. For backward compatibility the default key-extras for URL helpers matches the format fields sent by [[Squid-3.4]] and older in this field position:
+  {{{
+ ip/fqdn ident method [urlgroup] kv-pair
+  }}}
 
  ip::
   This is the IP address of the client. Followed by a slash ('''/''') as shown above.
@@ -154,10 +164,9 @@ Input line received from Squid:
   Squid-2 will send this field with the URL-grouping tag which can be configured on SquidConf:http_port. Squid-3.x will not send this field.
 
  kv-pair::
-  One or more key=value pairs. Only "myip" and "myport" pairs documented below are sent to redirectors today. Those two are currently sent unconditionally. Other, configurable key=value pairs may be sent by future Squid versions. The key names reserved on this interface:
+  One or more key=value pairs. Only "myip" and "myport" pairs documented below were ever defined and are sent unconditionally by [[Squid-3.4]] and older:
   || myip=... || Squid receiving address ||
   || myport=... || Squid receiving port ||
-  || *_=... || Key names ending in (_) are reserved for local administrators use. ||
 
 ## end urlhelper protocol
 
@@ -292,7 +301,7 @@ Result line sent back to Squid:
 ## start basicauth protocol
 Input line received from Squid:
 {{{
-[channel-ID] username password
+[channel-ID] username password [key-extras]
 }}}
 
  channel-ID::
@@ -303,6 +312,9 @@ Input line received from Squid:
 
  password::
   The password value sent by the client in HTTP headers. May be empty or missing.
+
+ key-extras::
+   Additional parameters passed to the helper which may be configured with SquidConf:auth_param ''key_extras'' parameter. Only available in [[Squid-3.5]] and later.
 
 
 Result line sent back to Squid:
@@ -341,7 +353,7 @@ Result line sent back to Squid:
 ## start bearerauth protocol
 Input line received from Squid:
 {{{
-channel-ID b64token
+channel-ID b64token [key-extras]
 }}}
 
  channel-ID::
@@ -349,6 +361,9 @@ channel-ID b64token
 
  b64token::
   The opaque credentials token field sent by the client in HTTP headers.
+
+ key-extras::
+   Additional parameters passed to the helper which may be configured with SquidConf:auth_param ''key_extras'' parameter. Only available in [[Squid-3.5]] and later.
 
 
 Result line sent back to Squid:
@@ -371,7 +386,7 @@ channel-ID result [kv-pair]
   || group=... || reserved ||
   || message=... || A message string that Squid can display on an error page. ||
   || tag=... || reserved ||
-  || ttl=... || The duration for which this result may be used.<<BR>>If not provided 0 is assumed and the token treated as a nonce. ||
+  || ttl=... || The duration for which this result may be used.<<BR>>If not provided the token treated as already stale (a nonce). ||
   || user=... || The label to be used by Squid for this client request as '''"username"'''. ||
   || *_=... || Key names ending in (_) are reserved for local administrators use. ||
 
@@ -382,7 +397,7 @@ channel-ID result [kv-pair]
 ## start digestauth protocol
 Input line received from Squid:
 {{{
-[channel-ID] "username":"realm"
+[channel-ID] "username":"realm" [key-extras]
 }}}
 
  channel-ID::
@@ -395,6 +410,9 @@ Input line received from Squid:
   The digest auth realm string configured in squid.conf. Sent as a "double-quoted" string.
 
 {i} The '''username''' and '''realm''' strings are both double quoted ('''"''') and separated by a colon (''':''') as shown above.
+
+ key-extras::
+   Additional parameters passed to the helper which may be configured with SquidConf:auth_param ''key_extras'' parameter. Only available in [[Squid-3.5]] and later.
 
 
 Result line sent back to Squid:
@@ -438,7 +456,7 @@ Result line sent back to Squid:
 
 Input line received from Squid:
 {{{
- request [credentials]
+ request [credentials] [key-extras]
 }}}
 
  request::
@@ -448,6 +466,9 @@ Input line received from Squid:
 
  credentials::
   An encoded blob exactly as received in the HTTP headers. This field is only sent on '''KK''' requests.
+
+ key-extras::
+   Additional parameters passed to the helper which may be configured with SquidConf:auth_param ''key_extras'' parameter. Only available in [[Squid-3.5]] and later.
 
 
 Result line sent back to Squid:
@@ -488,7 +509,7 @@ Result line sent back to Squid:
   . /!\ This field is only accepted on '''OK''', '''ERR''' and '''BH''' responses and must not be sent on other responses.
 
  message::
-  A message string that Squid can display on an error page. This field is only accepted on '''NA''' and '''BH''' responses. From Squid-3.4 this field is deprecated by the '''message=''' kv-pair on '''BH''' responses.
+  A message string that Squid can display on an error page. This field is only accepted on '''NA''' and '''BH''' responses. From [[Squid-3.4]] this field is deprecated by the '''message=''' kv-pair on '''BH''' responses.
 
 ## end negotiateauth protocol
 
