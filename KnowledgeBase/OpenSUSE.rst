@@ -24,25 +24,19 @@
 
 '''Bug Reporting:''' https://bugzilla.novell.com/buglist.cgi?quicksearch=squid
 
-==== Squid-3.1 ====
+'''Latest Package:''' https://build.opensuse.org/package/show/server:proxy/squid
 
-https://build.opensuse.org/package/show?package=squid3&project=server%3Aproxy
+==== Squid-3.3 ====
 
-Install Procedure:
-## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
-##{{{
-##...
-##}}}
-
-==== Squid-2.7 ====
-
-https://build.opensuse.org/package/show?package=squid&project=server%3Aproxy
+https://build.opensuse.org/package/show?package=squid_33&project=server%3Aproxy
 
 Install Procedure:
 ## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
 ##{{{
 ##...
 ##}}}
+
+## Packages also exist for older versions, but the latest is always back-ported, so we dont need to advertise.
 
 == Compiling ==
 
