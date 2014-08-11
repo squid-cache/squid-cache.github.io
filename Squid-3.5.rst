@@ -24,7 +24,7 @@ Basic new features in 3.5:
  * Support named services
  * Upgraded squidclient tool
  * Helper support for concurrency channels (Digest Authentication, StoreID, URL-rewrite)
- * FTP protocol relay
+ * [[Features/FtpRelay|Native FTP protocol relay]]
 
 Features removed in 3.5:
 
