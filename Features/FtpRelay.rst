@@ -10,10 +10,8 @@
 = Feature: Native FTP proxying =
 
  * '''Goal''': Apply existing access control and content adaptation features to native FTP (port 21) traffic. Build framework for future caching of native FTP responses.
- * '''Status''': ''In progress''; initial production testing, preparing for the official review
- * '''ETA''': November 2013
- * '''Version''': v3.5
- * '''Priority''': 1
+ * '''Status''': completed.
+ * '''Version''': 3.5
  * '''Developer''': AlexRousskov and Dmitry Kurochkin 
  * '''More''': lp [[https://code.launchpad.net/~measurement-factory/squid/ftp-gw|branch]]; squid-dev discussions in [[http://www.squid-cache.org/mail-archive/squid-dev/201208/0178.html|August]] and [[http://www.squid-cache.org/mail-archive/squid-dev/201209/0021.html|September]] 2012
 
