@@ -1,3 +1,4 @@
+## page was renamed from Features/FtpGateway
 ## page was renamed from Features/NativeFtp
 ##master-page:Features/FeatureTemplate
 #format wiki
