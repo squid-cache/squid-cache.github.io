@@ -35,7 +35,7 @@ Key:
 || <:( || <:( || (./) || (./) ||''anyp/'' ||Protocol-independent protocol primitives ||url* urn* !ProtoPort* ||
 || <:( || (./) || :\ || :\ ||''auth/'' ||Authentication support ||rename classes into Auth namespace. ||
 || <:( || <:( || {X} || :\ ||''base/'' ||Commonly used code without a better place to go. ||Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
-|| <:( || <:( || <:( || {1} {2} ||''clients/'' ||Protocol clients and gateway components for connecting to upstream servers ||ftp.*, http.*, gopher.* ||
+|| <:( || <:( || <:( || :\ ||''clients/'' ||Protocol clients and gateway components for connecting to upstream servers ||ftp.*, http.*, gopher.* ||
 || <:( || (./) || :\ || :\ ||''comm/'' ||I/O subsystem ||
 || <:( || <:( || <:( || ||''config/'' ||squid.conf parsing and management ||cache_cf.* cf.* cf_* Parser.* ||
 || <:( || <:( || <:( || ||''debug/'' ||Debug core utilities ||debug.cc Debug.h ||
@@ -43,10 +43,13 @@ Key:
 || <:( || <:( || <:( || :\ ||''esi/'' ||ESI support ||ESI*, Add Esi namespace, rename classes ||
 || <:( || (./) || (./) || (./) ||''eui/'' ||EUI-48 / MAC / ARP operations ||
 || <:( || (./) || (./) || :\ ||''format/'' ||Custom formatting ||
-|| <:( || <:( || <:( || :\ ||''fs/'' ||file system-specific cache store support? ||fs/*, Add Fs namespace, rename classes, add Makefiles for subdirs. ||
-|| (./) || <:( || {3} || :\ ||''fs/ufs'' ||Ufs cache_dir ||FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
-|| <:( || <:( || <:( || {1} ||''ftp/'' ||FTP primitives shared by client, server, and ICAP sides || ||
-|| <:( || <:( || <:( || {2} ||''http/'' ||HTTP primitives shared by client, server, and ICAP sides ||Http* ||
+|| :\ || <:( || (./) || :\ ||''fs/'' ||file system-specific cache store support? ||fs/*, Add Fs namespace, rename classes, add Makefiles for subdirs. ||
+|| <:( || - || - || - ||''fs/aufs'' ||AUFS cache_dir ||FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
+|| <:( || - || - || - ||''fs/diskd'' ||DiskD cache_dir ||FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
+|| (./) || <:( || (./) || :\ ||''fs/ufs'' ||Ufs cache_dir || TODO: rename classes ||
+|| (./) || <:( || (./) || :\ ||''fs/rock'' ||Rock cache_dir || TODO: rename classes ||
+|| <:( || <:( || (./) || :\ ||''ftp/'' ||FTP primitives shared by client, server, and ICAP sides || ||
+|| <:( || <:( || (./) || {2} ||''http/'' ||HTTP primitives shared by client, server, and ICAP sides ||Http* ||
 || <:( || (./) || <:( || :\ ||''icmp/'' ||ICMP support and Network measurement ||Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
 || <:( || <:( || <:( || :\ ||''ident/'' ||IDENT support ||ident.* Make remote connection handling into an !AsyncJob ||
 || <:( || <:( || (./) || (./) ||''ip/'' ||IP Protocol ||Ip* Qos* ||
@@ -57,12 +60,12 @@ Key:
 || <:( || <:( || <:( || ||''redirect/'' ||URL alteration (redirectors, URL-rewrite, URL maps) ||redirect.* !RedirectInternal.* ||
 || <:( || <:( || <:( || :\ ||''repl/heap/'' ||HEAP Replacement Policy algorithms ||
 || <:( || <:( || <:( || :\ ||''repl/lru/'' ||Cache Replacement Policy algorithms ||
-|| <:( || <:( || <:( || {1} {2} ||''servers/'' ||Listening Server components for receiving connections ||client_side* ||
+|| <:( || <:( || <:( || :\ ||''servers/'' ||Listening Server components for receiving connections ||client_side* ||
 || <:( || <:( || <:( || :\ ||''snmp/'' ||SNMP components ||snmp_*, move core and agent code. restructure for extensibility. ||
 || <:( || (./) || <:( || :\ ||''ssl/'' ||SSL components ||ssl_* ssl.cc ||
-|| <:( || <:( || <:( || ||''shaping/'' ||Traffic shaping and delay pools ||*[Dd]elay.* *[Pp]ool*.* ||
-|| <:( || <:( || <:( || ||''store/'' ||generic (fs-agnostic) disk and memory cache support? ||Store* store* ||
-|| <:( || <:( || <:( || ||''time/'' ||time and date handling tools ||time.* squidTime.* ||
+|| <:( || <:( || <:( || <:( ||''shaping/'' ||Traffic shaping and delay pools ||*[Dd]elay.* *[Pp]ool*.* ||
+|| <:( || <:( || <:( || <:( ||''store/'' ||generic (fs-agnostic) disk and memory cache support? ||Store* store* ||
+|| <:( || <:( || <:( || <:( ||''time/'' ||time and date handling tools ||time.* squidTime.* ||
 
 
 == Non-Squid Bundled Source code ==
@@ -75,6 +78,7 @@ This section is used to edit and finalize the grouping of source files important
 || ||log_daemon/ ||SquidConf:logfile_daemon ||
 || ||negotiate_auth/ ||SquidConf:auth_param negotiate ||
 || ||ntlm_auth/ ||SquidConf:auth_param ntlm ||
+|| ||store_id/ ||Store-ID re-writers (SquidConf:store_id_program) ||
 || ||url_rewrite/ ||URL re-writers (SquidConf:url_rewrite_program) ||
 ||||modules/ ||Extension modules which may be linked by configuration. ||
 || ||ecap/ ||eCAP ||
@@ -94,7 +98,7 @@ If you know the solution or can improve the proposed one, please write to squid-
 ||Should class and file names use just_small, !CamelCase, or CAPS letters? ||!CamelCaseHttpAcronymsIncluded ||
 ||Should we use squid/src/squid/ root for most sources to include header files as <squid/group/file.h>? This may be required for installed headers and 3rd party code using those headers. It is not clear whether Squid will have installed headers in the foreseeable future. The Feature/eCAP work will determine that. ||no ||
 ||Should we form a generic mini-cache object type to combine the shared portions of fqdncache, ipcache, idns queue, netdb, ident-cache, maybe others not yet found? ||Probably, that will be a separate feature event though. ||
-||What to do with all the mixed test* and stub_* files during this restructure? ||Sticking them in the same folder as the code was a bad idea due to dependency linkages and dist order. '''For now sick them in tests/ folder'''. TODO: We should probably split the stubs into a stubs/ folder and remove the file prefixes. ||
+||What to do with all the mixed test* and stub_* files during this restructure? ||Stub files placed next to the .cc file they can replace with an extension of .stub.cc and no file prefix.<<BR>> test files go in test-suite directory. ||
 
 
 
@@ -102,7 +106,7 @@ If you know the solution or can improve the proposed one, please write to squid-
 == Dependency Issues: ==
  * Cache manager '''storeAppendPrintf''' - just about every component uses this old function to dump it's stats to the cache manager output. It depends on !StoreEntry which pulls in the entire store component tree.  We need to make it use something something smaller.
   * An earlier attempt was made to use !StoreEntryStream, but that still pulls in StoreEntry.
-  * !MemBuf is looking like a good all-purpose buffer we can have the components dump their text into. Which is then dumped into a !StoreEntry by the cache manager
+  * !MemBuf is looking like a good all-purpose buffer we can have the components dump their text into. Which is then dumped into a !StoreEntry by the cache manager. TODO: this probably shoudl be switched to SBuf or SBufList now.
 
  * '''debugs()''' macro handling still has a small circular dependency with libsquid/libbase files and file IO.
 
