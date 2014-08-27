@@ -18,6 +18,7 @@ Describe EliezerCroitoru/SessionHelper here.
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
 
 require "moneta"
+require "memcached"
 
 active_login = true
 $debug = false
@@ -25,9 +26,9 @@ $minutes = 30
 
 class Db
 
-  def initialize(db_file)
+  def initialize()
     begin
-      @db =  Moneta.new(:TokyoTyrant, server: "localhost:1978")
+      @db =  Moneta.new(:Memcached, server: "localhost:11211")
     rescue =>e
       puts "printing backtrace"
       puts e.inspect
@@ -52,6 +53,10 @@ class Db
     @db[ip] = Time.now.to_i
   end
 
+  def logout(ip)
+    @db.delete(ip) 
+  end
+
   def gettime(ip_address)
     result = @db[ip_address]
     if result
@@ -61,7 +66,7 @@ class Db
   end
 end
 
-$database = Db.new(db_file)
+$database = Db.new()
 if !$database.writable?
   puts "database is not writable exiting.."
   exit 1
@@ -71,9 +76,12 @@ STDOUT.sync = true
 while line = STDIN.gets
   id , ip , login = line.chomp.split
   STDERR.puts "request details: {id=> \" #{id}\", ip=> \"#{ip}\", login=> \"#{login == "LOGIN"}\"}" if $debug
-  if login
+  if login && login == "LOGIN"
     $database.login(ip)
     STDOUT.puts "#{id} OK message=\"Welcome\""
+  elsif login && login == "LOGOUT"
+    $database.logout(ip)
+    STDOUT.puts "#{id} OK message=\"ByeBye\""
   else
     current = $database.gettime(ip)
     calc = (Time.now- current).to_i
