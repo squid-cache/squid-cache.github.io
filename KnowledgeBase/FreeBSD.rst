@@ -10,7 +10,7 @@
 
 == Pre-Built Binary Packages ==
 Binaries for Alpha and Intel platforms, from the FreeBSD ports collection.
-http://www.freebsd.org/cgi/ports.cgi?query=^squid-&stype=name
+http://www.freebsd.org/cgi/ports.cgi?query=^squid&stype=name
 
 '''Maintainer:''' Thomas-Martin Seck
 
