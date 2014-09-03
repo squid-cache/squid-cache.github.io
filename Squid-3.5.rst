@@ -25,6 +25,7 @@ Basic new features in 3.5:
  * Upgraded squidclient tool
  * Helper support for concurrency channels (Digest Authentication, StoreID, URL-rewrite)
  * [[Features/FtpRelay|Native FTP protocol relay]]
+ * Initial support for [[http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt|PROXY protocol]]
 
 Features removed in 3.5:
 
