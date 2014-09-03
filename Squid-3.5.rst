@@ -33,10 +33,10 @@ Features removed in 3.5:
  * dnsserver helper has been superceded by DNS internal client.
  * DNS helper API has been superceded by DNS internal client.
 
-The intention with this series is to improve performance and HTTP support. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#ss5.1
+The intention with this series is to improve performance and HTTP support. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.5/RELEASENOTES.html#ss5.1
 
 Packages of what will become squid 3.5 source code are available at
-http://www.squid-cache.org/Versions/v3/3.HEAD/
+http://www.squid-cache.org/Versions/v3/3.5/
 
 === Security Advisories ===
 
