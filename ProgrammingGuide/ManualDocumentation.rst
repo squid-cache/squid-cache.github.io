@@ -205,6 +205,13 @@ For example:
 {{{
 .
 .SH COPYRIGHT
+.PP
+ * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+ *
+ * Squid software is distributed under GPLv2+ license and includes
+ * contributions from numerous individuals and organizations.
+ * Please see the COPYING and CONTRIBUTORS files for details.
+.PP
 Squid
 .B example.binary
 and this manual is Copyright 2010
@@ -217,6 +224,13 @@ If no exact copyright details are known use the following snippet:
 {{{
 .
 .SH COPYRIGHT
+.PP
+ * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+ *
+ * Squid software is distributed under GPLv2+ license and includes
+ * contributions from numerous individuals and organizations.
+ * Please see the COPYING and CONTRIBUTORS files for details.
+.PP
 This program and documentation is copyright to the authors named above.
 .PP
 Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
@@ -328,6 +342,13 @@ This manual was written by
 .if !'po4a'hide' .I Authors Name <author@email.contact>
 .
 .SH COPYRIGHT
+.PP
+ * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+ *
+ * Squid software is distributed under GPLv2+ license and includes
+ * contributions from numerous individuals and organizations.
+ * Please see the COPYING and CONTRIBUTORS files for details.
+.PP
 This program and documentation is copyright to the authors named above.
 .PP
 Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
