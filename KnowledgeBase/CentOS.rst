@@ -45,7 +45,7 @@ There are couple issues that needs to be fixed since there was some data loss in
 [squid]
 name=Squid repo for CentOS Linux 6 - $basearch
 #IL mirror
-baseurl=http://www1.ngtech.co.il/rpm/centos/6/$basearch/beta
+baseurl=http://www1.ngtech.co.il/rpm/centos/6/$basearch
 failovermethod=priority
 enabled=1
 gpgcheck=0
