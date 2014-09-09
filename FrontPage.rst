@@ -4,7 +4,7 @@
 '''Main server down'''
 
 The Squid main server, hosting the [[http://www.squid-cache.org|Website]] and mailing lists is currently unavailable due to a Power Supply and hard disk failure. The Sysadmin team is working as hard as possible to recover it.<<BR>>
-In the meantime you can find the website at address http://www2.us.squid-cache.org/ (or any other mirror).<<BR>>
+In the meantime you can find the website at address http://www2.us.squid-cache.org/ (or [[http://www2.us.squid-cache.org/Download/http-mirrors.html|any other mirror]]).<<BR>>
 Mailing lists and public repository access are not yet available. [[http://www2.us.squid-cache.org/Foundation/donate.html|Donations]] towards the purchase of a new server are greatly appreciated and will allow us to buy better hardware.
 }}}
 
