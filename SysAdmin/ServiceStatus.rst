@@ -18,7 +18,7 @@ Required:
 }}}
 
 
-= Services TODO =
+= Services TODO (by priority) =
 
  * mail and mailing lists
   . high priority: bugs@, info@, noc@, squid-announce, squid-users, cvs, squid-dev
