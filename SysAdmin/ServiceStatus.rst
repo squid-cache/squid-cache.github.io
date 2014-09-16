@@ -21,11 +21,15 @@ Required:
 = Services TODO =
 
  * mail and mailing lists
+  . high priority: bugs@, info@, noc@, squid-announce, squid-users, cvs, squid-dev
+  . lower priority: board/squid-board, personal addresses
 
  * FTP
   . ftp://ftp.squid-cache.org
 
  * mysql
+  . mysql down may cause database pages to generate with no content (ie mirror and sponsor lists)
+  . see http://master.squid-cache.org/Download/http-mirrors.html
 
  * rsync
   . mirror access for static.squid-cache.org/public_html/
@@ -44,7 +48,6 @@ Required:
   . master.squid-cache.org working, update scripts running.
   . static.squid-cache.org generator script running
   . not mirroring to east, so www content displayed varies between east/west requests.
-  . mysql down may cause database pages to generate with no content (ie mirror and sponsor lists)
 
 = Services OKAY =
 
