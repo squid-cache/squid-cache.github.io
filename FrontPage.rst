@@ -7,7 +7,8 @@ The Squid main server, hosting the [[http://www.squid-cache.org|Website]] and ma
 In the meantime you can find the website at address http://www2.us.squid-cache.org/ (or [[http://www2.us.squid-cache.org/Download/http-mirrors.html|any other mirror]]).<<BR>>
 Mailing lists and public repository access are not yet available. [[http://www2.us.squid-cache.org/Foundation/donate.html|Donations]] towards the purchase of a new server are greatly appreciated and will allow us to buy better hardware.
 
-UPDATE 2014-09-09: The main [[http://www.squid-cache.org|Website]] service has been resumed.
+UPDATE 2014-09-09: The main [[http://www.squid-cache.org|Website]] service has been resumed. Mirror updates with new content however may still take some time.
+UPDATE 2014-09-14: The bzr repository services have been resumed.
 
 }}}
 
