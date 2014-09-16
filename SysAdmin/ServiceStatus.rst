@@ -27,13 +27,12 @@ Required:
 
  * mysql
 
- * www
-  . mirror static.squid-cache.org/public_html/ to east server (rsync)
-
  * rsync
   . mirror access for static.squid-cache.org/public_html/
   . mirror access for ftp.squid-cache.org/pub/
-  . access to daily snapshot sources
+
+ * www
+  . check mirror of static.squid-cache.org/public_html/ to east server works okay
 
 = Services Partial =
 
@@ -71,6 +70,6 @@ These are mostly squidadm scripts not yet updated to run with in the new layout.
  * CVS repository mirror
  * mail archive generator
  * FTP and www data sync
- * rsync snapshot access
+ * rsync daily snapshot access
  * mirror validation
  * source maintenance / coding guidelines enforcement
