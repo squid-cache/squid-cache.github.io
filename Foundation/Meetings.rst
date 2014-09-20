@@ -19,8 +19,9 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Review of action points from last meeting
 
  6. Replacement server
- 7. Timeline for support points / support services publication
+ 7. mailing list software
  8. Lessons to learn from the server disaster.
+ 9. Timeline for support points / support services publication
 
  1. Next meeting scheduling
  1. Open floor:
