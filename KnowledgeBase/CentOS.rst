@@ -25,7 +25,7 @@ DAG and RPMforge repositories appear to no longer contain any files. Other sourc
 
 '''Bug Reporting:''' http://bugs.centos.org/search.php?category=squid&sortby=last_updated&hide_status_id=-2
 
-
+'''Eliezer''': 20/Sep/2014 - I have not tested yet the CentOS 7 build and the file on the server is not for public usage.
 ## 4  = indents required for BinaryPackages page include
 
 ==== Squid-3.4 ====
