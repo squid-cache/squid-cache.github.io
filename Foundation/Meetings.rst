@@ -7,21 +7,16 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2014-09-20 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2014-10-18 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
-==== Draft Agenda - Meeting #15 ====
+==== Draft Agenda - Meeting #16 ====
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
-
- 6. Replacement server
- 7. mailing list software
- 8. Lessons to learn from the server disaster.
- 9. Timeline for support points / support services publication
 
  1. Next meeting scheduling
  1. Open floor:
@@ -48,10 +43,13 @@ Notes:
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
+ 6. Replacement server
+ 7. Mailing list software
+ 8. Lessons to learn from the server disaster.
+ 9. Timeline for support points / support services publication
  1. Next meeting scheduling
  1. Open floor:
-   . Embedding Nabble forum on squid-cache.org
-
+  . no items presented.
 
 == Action Points ==
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' || '''ETA''' ||
