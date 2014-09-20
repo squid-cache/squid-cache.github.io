@@ -39,7 +39,7 @@ There are couple issues that needs to be fixed since there was some data loss in
 
 - package requires sections which is not perfected yet to support ssl-bump.
 
-- src rpm is at: http://www1.ngtech.co.il/rpm/centos/6/x86_64/SRPM
+- src rpm is at: http://www1.ngtech.co.il/rpm/centos/6/SRPMS/
 
 {{{
 [squid]
