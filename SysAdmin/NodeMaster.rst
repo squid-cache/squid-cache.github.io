@@ -19,7 +19,7 @@ This page describes the setup of the '''master''' vm at Rackspace, meant to host
 === bzr ===
 
  * packages: aptitude install bzr ssh apache2 rsync
- * repository root: /srv/bzr.squid-cache.org/squid3/
+ * repository root: /srv/bzr/squid3/
   . also has a symlink to make SSH and HTTP have access identical paths: {{{ ln -s /srv/bzr /bzr }}}
 
 (to be confirmed if source maintenance performed here)
