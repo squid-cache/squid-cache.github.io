@@ -143,7 +143,7 @@ Input line received from Squid:
   The URL received from the client. In Squid with ICAP support, this is the URL after ICAP REQMOD has taken place.
 
  key-extras::
-   Starting with [{Squid-3.5]] additional parameters passed to the helper which may be configured with SquidConf:url_rewrite_extras. For backward compatibility the default key-extras for URL helpers matches the format fields sent by [[Squid-3.4]] and older in this field position:
+   Starting with [[Squid-3.5]] additional parameters passed to the helper which may be configured with SquidConf:url_rewrite_extras. For backward compatibility the default key-extras for URL helpers matches the format fields sent by [[Squid-3.4]] and older in this field position:
   {{{
  ip/fqdn ident method [urlgroup] kv-pair
   }}}
