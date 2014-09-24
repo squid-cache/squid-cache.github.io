@@ -49,11 +49,12 @@ Key:
 || (./) || <:( || (./) || :\ ||''fs/ufs'' ||Ufs cache_dir || TODO: rename classes ||
 || (./) || <:( || (./) || :\ ||''fs/rock'' ||Rock cache_dir || TODO: rename classes ||
 || <:( || <:( || (./) || :\ ||''ftp/'' ||FTP primitives shared by client, server, and ICAP sides || ||
+|| <:( || <:( || (./) || :\ ||''helper/'' || [[Features/AddonHelpers]] protocol primitives || migrate helper.* ||
 || <:( || <:( || (./) || {2} ||''http/'' ||HTTP primitives shared by client, server, and ICAP sides ||Http* ||
 || <:( || (./) || <:( || :\ ||''icmp/'' ||ICMP support and Network measurement ||Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
 || <:( || <:( || <:( || :\ ||''ident/'' ||IDENT support ||ident.* Make remote connection handling into an !AsyncJob ||
 || <:( || <:( || (./) || (./) ||''ip/'' ||IP Protocol ||Ip* Qos* ||
-|| <:( || <:( || <:( || :\ ||''ipc/'' ||inter-process communication ||ipc.* ipc_win32.*, Move files, add Icp namespace to them, and adjust global names ||
+|| <:( || <:( || <:( || :\ ||''ipc/'' ||inter-process communication ||ipc.* ipc_win32.*, Move files, add Ipc namespace to them, and adjust global names ||
 || <:( || <:( || <:( || :\ ||''log/'' ||Logging components ||namespace for Custom log formats and tokenizer. classify ||
 || <:( || <:( || <:( || ||''mem/'' ||Basic Memory management ||mem* ||
 || <:( || (./) || <:( || :\ ||''mgr/'' ||Cache Manager ||Move in CacheManager.h, cache_manager.cc, and test cases ||
