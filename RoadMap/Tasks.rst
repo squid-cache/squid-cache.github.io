@@ -34,11 +34,6 @@ Tasks in this section need to be done in a rough order to make the changes easy.
  * Removing useless includes.
   2. going through each .h file and minimizing the other .h it includes, using class pre-defines where possible. (This is being done during Features/SourceLayout somewhat so contact squid-dev before attempting).
 
- * Check external Copyrights are up-to-date in CREDITS
-  1. Go through the helper/* files and check ~/CREDITS contains one copy of each copyright for any files with header-copyright present.
-  1. Go through the lib/* files and check ~/CREDITS contains one copy of each copyright for any files with header-copyright present.
-  1. highlight any non-GPLv2 compatible copyrights found to squid-dev.
-
  * Normalize the debug level 0 and 1 messages
   1. verify all DBG_CRITICAL output conforms to the labeling criterion in [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]]
   1. verify all DBG_CRITICAL and DBG_IMPORTANT output has a KnowledgeBase page describing it (as per [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]]) or a Feature page troubleshooting entry.
@@ -63,13 +58,6 @@ Check with squid-dev to see if its already done.
 
  * Cleanup Squid component macros that enable/disable components:
   1. make all the naming convention USE_* (with USE_SQUID_* for those which may clash with OS defines).
-
- * Fix Squid-3 MD5 usage and layering:
-  1. ensure correct use of system libraries when such can be found
-  1. ensure correct failover to squid code when such are missing
-  1. port --without-system-md5 configure option to force the above
-  1. add configure option to prevent Squid crypto substitute code building and require FIPS compliant crypto library
-  1. add support for MD5 from libraries other than OpenSSL
 
  * Helper and Tool Manuals
   1. Write a manual/man(8) page for a helpers/ program that does not have one.
