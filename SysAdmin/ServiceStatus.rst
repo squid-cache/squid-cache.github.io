@@ -40,6 +40,9 @@ Required:
 
 = Services Partial =
 
+ * mail and mailing lists
+  . noc@lists working. not everybody re-subscribed yet.
+
  * DNS
   . zone responding
   . zone file version control not working again yet. Updates frozen.
