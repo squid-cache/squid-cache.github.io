@@ -230,17 +230,41 @@ The TODO list fro Windows
 === MinGW ===
 Sponsorship from iCelero produced a working [[Squid-3.2]] and [[Squid-3.3]]. Unfortunately the product and sponsorship dropped before the final stages of this work could be cleaned up for GPL release.
 
-As of [[Squid-3.4]] the latest confirmed detail is that:
+As of [[Squid-3.5]] the latest confirmed detail is that:
  * (./) ./configure script has been updated such that special options are no longer required.
- * there remain some significant build errors in the SSPI helpers
  * missing shared socket support available in Vista and later. Necessary for SMP workers.
- * missing full Windows OIO support. Alternative to Unix AIO disk I/O functionality.
  * {X} those executables which do now build, still appear not to execute and produce no identifiable reason for the failure.
 
 AmosJeffries is attempting to achieve a cross-compiled build utilizing Mingw64 build environment on Debian, with occasional native MinGW environment builds for confirmation of changes. As this is spare-time work progress is slow.
+{{{
+# Debian Packages Required:
+#
+# g++
+#       provides GCC base compiler. GCC 4.9.1 or later required.
+#
+# mingw-w64
+#       provides GCC cross-compiler. GCC 4.9.1 or later required.
+#
+# mingw-w64-tools
+#       provides pkg-config and other build-time tools used by autoconf
+#
+
+./configure \
+        --host=i686-w64-mingw32 \
+        CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        BUILDCXX="g++" \
+        BUILDCXXFLAGS="-DFOO" \
+        --enable-build-info="Windows (MinGW cross-build)"
+}}}
 
 There also appears to be some work done by Joe Pelaez Jorge (https://code.launchpad.net/~joelpelaez/squid/win32).
 
+Once a successful build is achieved there are additional wishlist items that also need to be sorted out:
+
+ * Separate Windows AIOPS logics from Unix AIO logics. The two are currently mashed together where they should be in separate conditionally built library modules.
+ * Windows OIO support. Alternative to Unix AIO and AIOPS disk I/O functionality.
+ * Building an installer
 
 === Cygwin ===
 There have been unconfirmed reports from some users of building up to [[Squid-3.3]] successfully and producing a usable executable.
@@ -251,8 +275,7 @@ As of [[Squid-3.4]] the latest confirmed details is that there are significant b
 === Visual Studio ===
 Almost no work on this environment has been done since [[Squid-2.7]].
 
-Entirely new .solution and .project build files need to be generated. Ideally these would mirror the on-Windows style of convenience libraries assembled to produce a number of different binaries.
-
+Entirely new .solution and .project build files need to be generated. Ideally these would mirror the on-Windows style of convenience libraries assembled to produce a number of different binaries. Experiments along those lines have some nice results, but issues with BZR on Windows are causing trouble. The Squid developers are discussing moving to git, which will hopefully resolve the main issue there.
 
 == Troubleshooting ==
 
