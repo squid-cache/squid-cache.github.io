@@ -193,11 +193,19 @@ Before building Squid with SSL support, some operations are needed (in the follo
 Unpack the source archive as usual and run configure.
 
 The following are the recommended minimal options for Windows:
+
+'''Squid-2''' :
 {{{
 --prefix=c:/squid
 --disable-wccp
 --disable-wccpv2
 --enable-win32-service
+--enable-default-hostsfile=none
+}}}
+
+'''Squid-3''' : (requires [[Squid-3.5]] or later, see porting efforts section below)
+{{{
+--prefix=c:/squid
 --enable-default-hostsfile=none
 }}}
 
@@ -225,17 +233,17 @@ Always check the provided release notes for any version specific detail.
 
 Squid series 3 has major build issues on all Windows compiler systems. Below is a summary of the known status for producing a useful Squid 3.x for Windows.
 
-The TODO list fro Windows
+The TODO list for Windows
 
 === MinGW ===
 Sponsorship from iCelero produced a working [[Squid-3.2]] and [[Squid-3.3]]. Unfortunately the product and sponsorship dropped before the final stages of this work could be cleaned up for GPL release.
 
-As of [[Squid-3.5]] the latest confirmed detail is that:
- * (./) ./configure script has been updated such that special options are no longer required.
+As of [[Squid-3.5]] :
+ * the default feature set builds without extra special ./configure options.
+ * {X} built binaries appear not to execute and produce no identifiable reason for the failure.
  * missing shared socket support available in Vista and later. Necessary for SMP workers.
- * {X} those executables which do now build, still appear not to execute and produce no identifiable reason for the failure.
 
-AmosJeffries is attempting to achieve a cross-compiled build utilizing Mingw64 build environment on Debian, with occasional native MinGW environment builds for confirmation of changes. As this is spare-time work progress is slow.
+AmosJeffries is cross-compiling with Mingw-w64 build environment on Debian, with occasional native MinGW environment builds for confirmation of changes. As this is spare-time work progress is slow.
 {{{
 # Debian Packages Required:
 #
@@ -260,7 +268,7 @@ AmosJeffries is attempting to achieve a cross-compiled build utilizing Mingw64 b
 
 There also appears to be some work done by Joe Pelaez Jorge (https://code.launchpad.net/~joelpelaez/squid/win32).
 
-Once a successful build is achieved there are additional wishlist items that also need to be sorted out:
+There are additional wishlist items that also need to be sorted out:
 
  * Separate Windows AIOPS logics from Unix AIO logics. The two are currently mashed together where they should be in separate conditionally built library modules.
  * Windows OIO support. Alternative to Unix AIO and AIOPS disk I/O functionality.
