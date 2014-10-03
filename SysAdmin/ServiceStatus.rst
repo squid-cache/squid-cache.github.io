@@ -11,18 +11,17 @@ Example:
 rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/content/Versions/v3/3.HEAD/changesets/squid-3-13555.patch.merged": Operation not permitted (1)
 }}}
 
- * using CVS to commit master.squid-cache.org website changes to site version control fails due to cvs not being installed.
-Required:
-{{{
- aptitude install cvs
-}}}
 
+'''BUGS FIXED:'''
+ * using CVS to commit master.squid-cache.org website changes to site version control fails due to cvs not being installed.
 
 = Services TODO (by priority) =
 
- * mail and mailing lists
-  . high priority: bugs@, info@, noc@, squid-announce, squid-users, cvs, squid-dev
-  . lower priority: board/squid-board, personal addresses
+ * mail{X} and mailing lists(./)
+  . high priority (virtual) mailboxes: bugs@, info@
+  . high priority lists: noc@ (./), squid-announce (./), squid-users (./), cvs (list created, but empty), squid-dev (./)
+  . lower priority: board/squid-board (./), personal addresses (kinkie (./), amos, hno, rousskov, pieter, duane, adri)
+  . remove now-unused mailing lists: squid-core, squid-faq, squid-vendors (?)
 
  * FTP
   . ftp://ftp.squid-cache.org
@@ -79,3 +78,9 @@ These are mostly squidadm scripts not yet updated to run with in the new layout.
  * rsync daily snapshot access
  * mirror validation
  * source maintenance / coding guidelines enforcement
+
+= Best practices for sysadmins =
+(temporary accumulation spot, will be moved to own location when complete)
+ * Server-specific services configurations are in /srv, referenced from system locations via bind mounts or symlinks
+ * Directories containing changed configuration files must contain a directory named RCS; touched config files must be checked in when stable with {{{ci -l file ...}}}
+ * all admins must belong to the group {{{sudo}}} and only use that mechanism to gain root
