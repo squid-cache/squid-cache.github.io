@@ -240,7 +240,7 @@ Sponsorship from iCelero produced a working [[Squid-3.2]] and [[Squid-3.3]]. Unf
 
 As of [[Squid-3.5]] :
  * the default feature set builds without extra special ./configure options.
- * {X} built binaries appear not to execute and produce no identifiable reason for the failure.
+ * {X} built binaries appear not to execute, just dying with error code 127.
  * missing shared socket support available in Vista and later. Necessary for SMP workers.
 
 AmosJeffries is cross-compiling with Mingw-w64 build environment on Debian, with occasional native MinGW environment builds for confirmation of changes. As this is spare-time work progress is slow.
