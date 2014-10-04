@@ -31,8 +31,8 @@ rsync pull 3.3 code snapshots from BuildFarm failed
 
  * mail{X} and mailing lists(./)
   . high priority (virtual) mailboxes: bugs@, info@
-  . high priority lists: noc@ (./), squid-announce (./), squid-users (./), cvs (list created, but empty), squid-dev (./)
-  . lower priority: board/squid-board (./), personal addresses (kinkie (./), amos, hno, rousskov, pieter, duane, adri, robertc)
+  . high priority lists: noc@ (./) , squid-announce (./) , squid-users (./) , cvs (list created, but empty), squid-dev (./)
+  . lower priority: board/squid-board (./) , personal addresses (kinkie (./) , amos, hno, rousskov, pieter, duane, adri, robertc)
   . remove now-unused mailing lists: squid-core, squid-faq, squid-vendors (?)
 
  * FTP
