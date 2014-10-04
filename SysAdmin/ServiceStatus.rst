@@ -10,7 +10,6 @@ Example:
 {{{
 rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/content/Versions/v3/3.HEAD/changesets/squid-3-13555.patch.merged": Operation not permitted (1)
 }}}
- * using CVS to commit west.squid-cache.org website changes to site version control fails due to cvs not being installed on west.
 
 
 '''BUGS FIXED:'''
@@ -24,17 +23,23 @@ rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/conte
   . remove now-unused mailing lists: squid-core, squid-faq, squid-vendors (?)
 
  * FTP
-  . ftp://ftp.squid-cache.org
+  . ftp://ftp.squid-cache.org/ running on east only.
+  . need master FTP configured
+  . need east and west mirrors pulling from master
 
  * mysql
+  . user accounts: squidadm
   . mysql down may cause database pages to generate with no content (ie mirror and sponsor lists)
   . see http://master.squid-cache.org/Download/http-mirrors.html
+  . TODO: setup mysql-server on west, then sqldump the mirrors and web_pages databases for re-import to new mysl server.
 
  * rsync
-  . mirror access for static.squid-cache.org/public_html/
+  . mirror access for /srv/www/static.squid-cache.org/public_html/
   . mirror access for ftp.squid-cache.org/pub/
 
  * www
+  . master.squid-cache.org / dynamic.squid-cache.org running on master (with temp alias master.make.squid-cache.org)
+   * but DNS still pointing to west.
   . check mirror of static.squid-cache.org/public_html/ to east works okay
   . implement same mirror to eu
   . send mail notification of commits to noc@
@@ -46,18 +51,27 @@ rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/conte
   . port old ML archives over? What tool do we use for archives? Keep in mind occasional privacy requests
   . fix marc.info, mail-archive.org etc references
 
-= Services Partial =
+ * cvs
+  . for use version controlling master.squid-cache.org content. Current errors:
+{{{
+cvs status: in directory .:
+cvs status: ignoring CVS/Root because it specifies a non-existent repository /server/cvs-server/squid
+cvs status: No CVSROOT specified!  Please use the `-d' option
+cvs [status aborted]: or set the CVSROOT environment variable.
+}}}
 
- * mail and mailing lists
-  . noc@lists working. not everybody re-subscribed yet.
+  . on west: using CVS to commit master.squid-cache.org website changes to site version control fails due to cvs not being installed.
+
+
+= Services Partial =
 
  * DNS
   . zone responding
   . zone file version control not working again yet. Updates frozen.
 
  * www
-  . master.squid-cache.org working, update scripts running.
-  . static.squid-cache.org generator script running
+  . master.squid-cache.org working (on west).
+  . static.squid-cache.org generator script running (on west) but not working fully.
   . not mirroring to east, so www content displayed varies between east/west requests.
 
 = Services OKAY =
