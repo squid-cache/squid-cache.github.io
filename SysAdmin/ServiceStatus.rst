@@ -5,12 +5,25 @@
 
 '''BUGS TO FIX:'''
 
- * bin/mk-static.sh displays numerous permission errors when building static.squid-cache.org.
-Example:
+ * /!\ AYJ: I think we are ready for DNS to point master.squid-cache.org at new/final master server.
+
+ * on master bin/mk-static.sh displays permission errors accessing build farm nodes to pull resources. Permission to master needs allocating, west access can be revoked:
 {{{
-rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/content/Versions/v3/3.HEAD/changesets/squid-3-13555.patch.merged": Operation not permitted (1)
+@ERROR: access denied to squiddox from lists.squid-cache.org (104.130.201.120)
+rsync pull code Documentation from BuildFarm failed
+@ERROR: access denied to snapshots-head from lists.squid-cache.org (104.130.201.120)
+rsync pull 3.HEAD code snapshots from BuildFarm failed
+@ERROR: access denied to snapshots-latest from lists.squid-cache.org (104.130.201.120)
+rsync pull 3.4 code snapshots from BuildFarm failed
+@ERROR: access denied to snapshots-old from lists.squid-cache.org (104.130.201.120)
+rsync pull 3.3 code snapshots from BuildFarm failed
 }}}
 
+ * bin/mk-static.sh copies CVS directories from dynamic to static site copies. (old bug) requires rsync cmd line voodoo to fix.
+
+ * ssh using squidadm account from master to west requires password.
+ . Making it difficult to copy recovery data from west to master.
+ . also breaks www generator on master which uses bzr+ssh://squidadm@bzr.squid-cache.org/ for repo access.
 
 '''BUGS FIXED:'''
 
@@ -38,11 +51,12 @@ rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/conte
   . mirror access for ftp.squid-cache.org/pub/
 
  * www
-  . master.squid-cache.org / dynamic.squid-cache.org running on master (with temp alias master.make.squid-cache.org)
-   * but DNS still pointing to west.
+  . dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
+  . static.squid-cache.org running on master (as www.* and static.*)
   . check mirror of static.squid-cache.org/public_html/ to east works okay
   . implement same mirror to eu
-  . send mail notification of commits to noc@
+  . implement same mirror to west ??
+  . send mail notification of dynamic.* commits to noc@
 
  * Authentication server
   . have a central authentication server or at least a pubkey distribution mechanism
@@ -71,7 +85,7 @@ cvs [status aborted]: or set the CVSROOT environment variable.
 
  * www
   . master.squid-cache.org working (on west).
-  . static.squid-cache.org generator script running (on west) but not working fully.
+  . static.squid-cache.org generator script running (on master) requires mysql databases
   . not mirroring to east, so www content displayed varies between east/west requests.
 
 = Services OKAY =
