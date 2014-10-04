@@ -31,7 +31,8 @@ This page describes the setup of the '''master''' vm at Rackspace, meant to host
 
 === www hidden master ===
 
- * packages: aptitude install apache2 perl php5 php5-mysql
+ * packages: aptitude install apache2 perl php5 php5-mysql bzr
+  . NP: bzr is used by www generator scripts accessing http://bzr.squid-cache.org/
 
  * apache mod_rewrite: {{{ a2enmod rewrite }}}
 
