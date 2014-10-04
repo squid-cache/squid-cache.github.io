@@ -39,6 +39,9 @@ rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/conte
   . implement same mirror to eu
   . send mail notification of commits to noc@
 
+ * Authentication server
+  . have a central authentication server or at least a pubkey distribution mechanism
+
  * mailing lists (less urgent issues)
   . port old ML archives over? What tool do we use for archives? Keep in mind occasional privacy requests
   . fix marc.info, mail-archive.org etc references
