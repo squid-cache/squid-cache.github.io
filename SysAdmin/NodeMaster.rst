@@ -7,7 +7,7 @@ This page describes the setup of the '''master''' vm at Rackspace, meant to host
 
 == setup ==
  * dns name (temporay): master.make.squid-cache.org
- * Pieter and Kinkie have root (more to be added)
+ * Pieter, Amos and Kinkie have root (more to be added)
  * 3 filesystems (so far): / is a 40gb SSD, /home is a 20GB LVM-backed SSD (volume is /dev/fastdata/lv01); /srv is 100Gb (/dev/data/lv01)
 
 === Best Practices ===
@@ -31,7 +31,14 @@ This page describes the setup of the '''master''' vm at Rackspace, meant to host
 
 === www hidden master ===
 
- * packages: aptitude install apache2 mysql perl php5 php-mysql
+ * packages: aptitude install apache2 perl php5 php5-mysql
+
+ * apache mod_rewrite: {{{ a2enmod rewrite }}}
+
+ * dynamic site data:  /srv/www/master.squid-cache.org/public_html/
+
+ * static site data: /srv/www/static.squid-cache.org/public_html/
+  . TODO: read-only rsync access to static site data from mirrors
 
  1. Q: are we still going to use CVS for www version control?
 
