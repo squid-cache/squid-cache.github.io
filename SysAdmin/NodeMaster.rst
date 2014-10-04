@@ -10,9 +10,13 @@ This page describes the setup of the '''master''' vm at Rackspace, meant to host
  * Pieter and Kinkie have root (more to be added)
  * 3 filesystems (so far): / is a 40gb SSD, /home is a 20GB LVM-backed SSD (volume is /dev/fastdata/lv01); /srv is 100Gb (/dev/data/lv01)
 
-
- * Best Practice: alway use '''aptitude''' to install, upgrade, remove or purge packages.
+=== Best Practices ===
+ * alway use '''aptitude''' to install, upgrade, remove or purge packages.
   . apt-get does not retain sufficient records to auto-remove package dependencies if they get obsolete. This lack can be worked around by using '''deborphan''', but is cumbersome.
+
+ * install hardening packages to provide early warning if programs containign known security vulnerabilities are installed.
+ . see https://launchpad.net/ubuntu/+source/harden for what packages are available and do.
+ . minimum install ({{{ aptitude install harden }}})
 
 == services ==
 
