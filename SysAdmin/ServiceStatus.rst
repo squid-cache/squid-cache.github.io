@@ -93,3 +93,4 @@ These are mostly squidadm scripts not yet updated to run with in the new layout.
  * Server-specific services configurations are in /srv, referenced from system locations via bind mounts or symlinks
  * Directories containing changed configuration files must contain a directory named RCS; touched config files must be checked in when stable with {{{ci -l file ...}}}
  * all admins must belong to the group {{{sudo}}} and only use that mechanism to gain root
+ * watch out for log rotation! When creating new log files, make sure to add a service-specific log rotation directive in /etc/logrotate.d
