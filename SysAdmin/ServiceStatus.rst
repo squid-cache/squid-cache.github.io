@@ -10,17 +10,17 @@ Example:
 {{{
 rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/content/Versions/v3/3.HEAD/changesets/squid-3-13555.patch.merged": Operation not permitted (1)
 }}}
+ * using CVS to commit west.squid-cache.org website changes to site version control fails due to cvs not being installed on west.
 
 
 '''BUGS FIXED:'''
- * using CVS to commit master.squid-cache.org website changes to site version control fails due to cvs not being installed.
 
 = Services TODO (by priority) =
 
  * mail{X} and mailing lists(./)
   . high priority (virtual) mailboxes: bugs@, info@
   . high priority lists: noc@ (./), squid-announce (./), squid-users (./), cvs (list created, but empty), squid-dev (./)
-  . lower priority: board/squid-board (./), personal addresses (kinkie (./), amos, hno, rousskov, pieter, duane, adri)
+  . lower priority: board/squid-board (./), personal addresses (kinkie (./), amos, hno, rousskov, pieter, duane, adri, robertc)
   . remove now-unused mailing lists: squid-core, squid-faq, squid-vendors (?)
 
  * FTP
@@ -35,7 +35,13 @@ rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/conte
   . mirror access for ftp.squid-cache.org/pub/
 
  * www
-  . check mirror of static.squid-cache.org/public_html/ to east server works okay
+  . check mirror of static.squid-cache.org/public_html/ to east works okay
+  . implement same mirror to eu
+  . send mail notification of commits to noc@
+
+ * mailing lists (less urgent issues)
+  . port old ML archives over? What tool do we use for archives? Keep in mind occasional privacy requests
+  . fix marc.info, mail-archive.org etc references
 
 = Services Partial =
 
@@ -53,7 +59,7 @@ rsync: failed to set times on "/srv/www/static.squid-cache.org/public_html/conte
 
 = Services OKAY =
 
- * BZR repository
+ * BZR repository (still running on west)
   . SSH access
   . HTTP access
   . mirrors updating
