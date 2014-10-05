@@ -47,8 +47,10 @@ rsync pull 3.3 code snapshots from BuildFarm failed
   . TODO: setup mysql-server on west, then sqldump the mirrors and web_pages databases for re-import to new mysl server.
 
  * rsync
-  . mirror access for /srv/www/static.squid-cache.org/public_html/
-  . mirror access for ftp.squid-cache.org/pub/
+  * config file: /etc/defaults/rsync - set to enable rsync
+  * config file: /etc/rsyncd.conf - configure all shares. services not yet configured are commented out
+  . (./) mirror access for /srv/www/static.squid-cache.org/public_html/content
+  . mirror access for ftp://ftp.squid-cache.org/pub/
 
  * www
   . dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
