@@ -29,6 +29,16 @@ rsync pull 3.3 code snapshots from BuildFarm failed
 
 = Services TODO (by priority) =
 
+ * DNS
+  * hidden master: bind9 (./)
+   . config files: /srv/bind (./)
+   . version control: RCS (./)
+   . split internal (Rackspace) vs public internet views (./)
+   . check notifies are going to public masters
+  * public masters:
+   . see bind/configs/named.conf.local and zones/squid-cache.org-public for lists.
+   . TODO: check AXFR updates are working from hidden master
+
  * mail{X} and mailing lists(./)
   . high priority (virtual) mailboxes: bugs@, info@
   . high priority lists: noc@ (./) , squid-announce (./) , squid-users (./) , cvs (list created, but empty), squid-dev (./)
@@ -80,10 +90,6 @@ cvs [status aborted]: or set the CVSROOT environment variable.
 
 
 = Services Partial =
-
- * DNS
-  . zone responding
-  . zone file version control not working again yet. Updates frozen.
 
  * www
   . master.squid-cache.org working (on west).
