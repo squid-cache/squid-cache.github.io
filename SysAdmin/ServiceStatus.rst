@@ -53,9 +53,8 @@ rsync pull 3.3 code snapshots from BuildFarm failed
 
  * mysql
   . user accounts: squidadm
-  . mysql down may cause database pages to generate with no content (ie mirror and sponsor lists)
-  . see http://master.squid-cache.org/Download/http-mirrors.html
-  . TODO: setup mysql-server on west, then sqldump the mirrors and web_pages databases for re-import to new mysl server.
+  . credentials: /home/squidadm/.my.cnf for user account command line login
+  . credentials: /srv/www/master.squid-cache.org/public_html/cgi/dblink.inc for PHP page access.
 
  * rsync
   * config file: /etc/defaults/rsync - set to enable rsync
@@ -64,12 +63,12 @@ rsync pull 3.3 code snapshots from BuildFarm failed
   . mirror access for ftp://ftp.squid-cache.org/pub/
 
  * www
-  . dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
-  . static.squid-cache.org running on master (as www.* and static.*)
+  . (./) dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
+  . (./) static.squid-cache.org running on master (as www.* and static.*)
   . check mirror of static.squid-cache.org/public_html/ to east works okay
   . implement same mirror to eu
   . implement same mirror to west ??
-  . send mail notification of dynamic.* commits to noc@
+  . send mail notification of dynamic.* CVS commits to noc@
 
  * Authentication server
   . have a central authentication server or at least a pubkey distribution mechanism
