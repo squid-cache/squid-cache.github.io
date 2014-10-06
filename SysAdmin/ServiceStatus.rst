@@ -7,18 +7,6 @@
 
  * /!\ AYJ: I think we are ready for DNS to point master.squid-cache.org at new/final master server.
 
- * on master bin/mk-static.sh displays permission errors accessing build farm nodes to pull resources. Permission to master needs allocating, west access can be revoked:
-{{{
-@ERROR: access denied to squiddox from lists.squid-cache.org (104.130.201.120)
-rsync pull code Documentation from BuildFarm failed
-@ERROR: access denied to snapshots-head from lists.squid-cache.org (104.130.201.120)
-rsync pull 3.HEAD code snapshots from BuildFarm failed
-@ERROR: access denied to snapshots-latest from lists.squid-cache.org (104.130.201.120)
-rsync pull 3.4 code snapshots from BuildFarm failed
-@ERROR: access denied to snapshots-old from lists.squid-cache.org (104.130.201.120)
-rsync pull 3.3 code snapshots from BuildFarm failed
-}}}
-
  * bin/mk-static.sh copies CVS directories from dynamic to static site copies. (old bug) requires rsync cmd line voodoo to fix.
 
  * ssh using squidadm account from master to west requires password.
@@ -57,6 +45,7 @@ rsync pull 3.3 code snapshots from BuildFarm failed
   . credentials: /srv/www/master.squid-cache.org/public_html/cgi/dblink.inc for PHP page access.
 
  * rsync
+  * user account: rsync (--home /nonexistent --no-create-home --shell /bin/false --disabled-login)
   * config file: /etc/defaults/rsync - set to enable rsync
   * config file: /etc/rsyncd.conf - configure all shares. services not yet configured are commented out
   . (./) mirror access for /srv/www/static.squid-cache.org/public_html/content
@@ -85,8 +74,6 @@ cvs status: ignoring CVS/Root because it specifies a non-existent repository /se
 cvs status: No CVSROOT specified!  Please use the `-d' option
 cvs [status aborted]: or set the CVSROOT environment variable.
 }}}
-
-  . on west: using CVS to commit master.squid-cache.org website changes to site version control fails due to cvs not being installed.
 
 
 = Services Partial =
