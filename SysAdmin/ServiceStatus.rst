@@ -40,8 +40,9 @@ rsync pull 3.3 code snapshots from BuildFarm failed
    . TODO: check AXFR updates are working from hidden master
 
  * mail{X} and mailing lists(./)
-  . high priority (virtual) mailboxes: bugs@, info@
-  . high priority lists: noc@ (./) , squid-announce (./) , squid-users (./) , cvs (list created, but empty), squid-dev (./)
+  . high priority (virtual) mailboxes: bugs@ (forwarded to list of same name), squid-bugs@ (forwarded to list of same name), info@
+  . special lists with NO ARCHIVE: squid-bugs@ (list created, but?), noc@ (./) , cvs (list created, but empty)
+  . high priority lists: squid-announce (./) , squid-users (./) , squid-dev (./)
   . lower priority: board/squid-board (./) , personal addresses (kinkie (./) , amos, hno, rousskov, pieter, duane, adri, robertc)
   . remove now-unused mailing lists: squid-core, squid-faq, squid-vendors (?)
 
