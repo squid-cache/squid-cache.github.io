@@ -36,13 +36,15 @@
   . remove now-unused mailing lists: squid-core, squid-faq, squid-vendors (?)
 
  * FTP
-  * data files: /srv/ftp/pub/
-  * data file ownership: squidadm:www-data (same as with www service)
+  * install: aptitude install pure-ftpd
+   . {X} have installed, but its requiring logins. need to configure anonymous-only access
+  * user account: ftpuser ( --home /srv/ftp/ --disabled-login )
+  * (./) data files: /srv/ftp/pub
+  * (./) data file ownership: squidadm:www-data (same as with www service)
   * mirrors of ftp.squid-cache.org on: master, west (./) , east ( :/ ), eu
    . ftp://ftp.squid-cache.org/ running on east only, but updated data files not mirrored to it.
-  . need master FTP configured
 
- * rsync
+ * rsync (./)
   * user account: rsync (--home /nonexistent --no-create-home --shell /bin/false --disabled-login)
   * config file: /etc/defaults/rsync - set to enable rsync
   * config file: /etc/rsyncd.conf - configure all shares. services not yet configured are commented out
@@ -51,9 +53,11 @@
   * (./) mirror access for /src/ftp/pub/archive (ftp://ftp.squid-cache.org/pub/archive)
 
  * www
-  . (./) dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
-  . (./) static.squid-cache.org running on master (as www.* and static.*)
-  . mirrors of static.squid-cache.org on: master (./) , west (./) , east, eu
+  * Perl modules required: HTTP::Lite
+   . install with {{{ cpan install ... }}}
+  * (./) dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
+  * (./) static.squid-cache.org running on master (as www.* and static.*)
+  . mirrors of static.squid-cache.org on: master (./) , west (./) , east (outdated)
   . send mail notification of dynamic.* CVS commits to noc@
 
  * Authentication server
