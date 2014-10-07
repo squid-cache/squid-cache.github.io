@@ -9,9 +9,10 @@
 
  * bin/mk-static.sh copies CVS directories from dynamic to static site copies. (old bug) requires rsync cmd line voodoo to fix.
 
- * ssh using squidadm account from master to west requires password.
- . Making it difficult to copy recovery data from west to master.
- . also breaks www generator on master which uses bzr+ssh://squidadm@bzr.squid-cache.org/ for repo access.
+ * rsync run on west to mirror data, has permissions errors reading from master.
+ . seems to be 
+ . tried: chmod/chown in the bin/mk-static script - squidadm does not have rights to force files
+ . tried: chmod 755 on directories, seems to like but that is nasty access permission.
 
 '''BUGS FIXED:'''
 
@@ -39,24 +40,19 @@
   . need master FTP configured
   . need east and west mirrors pulling from master
 
- * mysql
-  . user accounts: squidadm
-  . credentials: /home/squidadm/.my.cnf for user account command line login
-  . credentials: /srv/www/master.squid-cache.org/public_html/cgi/dblink.inc for PHP page access.
-
  * rsync
   * user account: rsync (--home /nonexistent --no-create-home --shell /bin/false --disabled-login)
   * config file: /etc/defaults/rsync - set to enable rsync
   * config file: /etc/rsyncd.conf - configure all shares. services not yet configured are commented out
-  . (./) mirror access for /srv/www/static.squid-cache.org/public_html/content
+  . /!\ mirror access for /srv/www/static.squid-cache.org/public_html/content
   . mirror access for ftp://ftp.squid-cache.org/pub/
 
  * www
   . (./) dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
   . (./) static.squid-cache.org running on master (as www.* and static.*)
-  . check mirror of static.squid-cache.org/public_html/ to east works okay
+  . check mirror of static.squid-cache.org/public_html/ to west works okay
   . implement same mirror to eu
-  . implement same mirror to west ??
+  . implement same mirror to east
   . send mail notification of dynamic.* CVS commits to noc@
 
  * Authentication server
@@ -84,6 +80,12 @@ cvs [status aborted]: or set the CVSROOT environment variable.
   . not mirroring to east, so www content displayed varies between east/west requests.
 
 = Services OKAY =
+
+ * mysql (./)
+  . running on clouddb
+  . user accounts: squidadm
+  . credentials: /home/squidadm/.my.cnf for user command line login
+  . credentials: /srv/www/master.squid-cache.org/public_html/cgi/dblink.inc for PHP page access.
 
  * BZR repository (still running on west)
   . SSH access
