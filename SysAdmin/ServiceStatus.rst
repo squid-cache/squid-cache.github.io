@@ -10,7 +10,8 @@
  * bin/mk-static.sh copies CVS directories from dynamic to static site copies. (old bug) requires rsync cmd line voodoo to fix.
 
  * rsync run on west to mirror data, has permissions errors reading from master.
- . seems to be 
+  * "rsync: change_dir "/" (in http-files) failed: Permission denied (13)"
+ . seems to be permission on master to rsync user account.
  . tried: chmod/chown in the bin/mk-static script - squidadm does not have rights to force files
  . tried: chmod 755 on directories, seems to like but that is nasty access permission.
 
