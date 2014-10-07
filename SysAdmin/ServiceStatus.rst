@@ -36,16 +36,19 @@
   . remove now-unused mailing lists: squid-core, squid-faq, squid-vendors (?)
 
  * FTP
-  . ftp://ftp.squid-cache.org/ running on east only.
+  * data files: /srv/ftp/pub/
+  * data file ownership: squidadm:www-data (same as with www service)
+  * mirrors of ftp.squid-cache.org on: master, west (./) , east ( :/ ), eu
+   . ftp://ftp.squid-cache.org/ running on east only, but updated data files not mirrored to it.
   . need master FTP configured
-  . need east and west mirrors pulling from master
 
  * rsync
   * user account: rsync (--home /nonexistent --no-create-home --shell /bin/false --disabled-login)
   * config file: /etc/defaults/rsync - set to enable rsync
   * config file: /etc/rsyncd.conf - configure all shares. services not yet configured are commented out
   * (./) mirror access for /srv/www/static.squid-cache.org/public_html/content ( /!\ see bugs above)
-  . mirror access for ftp://ftp.squid-cache.org/pub/
+  * (./) mirror access for /src/ftp/pub/squid (ftp://ftp.squid-cache.org/pub/squid)
+  * (./) mirror access for /src/ftp/pub/archive (ftp://ftp.squid-cache.org/pub/archive)
 
  * www
   . (./) dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
