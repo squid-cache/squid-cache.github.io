@@ -12,8 +12,7 @@
  * rsync run on west to mirror data, has permissions errors reading from master.
   * "rsync: change_dir "/" (in http-files) failed: Permission denied (13)"
  . seems to be permission on master to rsync user account.
- . tried: chmod/chown in the bin/mk-static script - squidadm does not have rights to force files
- . tried: chmod 755 on directories, seems to like but that is nasty access permission.
+ . works fully only if we set rsync daemon to group www-data, chown the files squidadm:www-data and set chmod 775 on all directories.
 
 '''BUGS FIXED:'''
 
@@ -45,15 +44,13 @@
   * user account: rsync (--home /nonexistent --no-create-home --shell /bin/false --disabled-login)
   * config file: /etc/defaults/rsync - set to enable rsync
   * config file: /etc/rsyncd.conf - configure all shares. services not yet configured are commented out
-  . /!\ mirror access for /srv/www/static.squid-cache.org/public_html/content
+  * (./) mirror access for /srv/www/static.squid-cache.org/public_html/content ( /!\ see bugs above)
   . mirror access for ftp://ftp.squid-cache.org/pub/
 
  * www
   . (./) dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
   . (./) static.squid-cache.org running on master (as www.* and static.*)
-  . check mirror of static.squid-cache.org/public_html/ to west works okay
-  . implement same mirror to eu
-  . implement same mirror to east
+  . mirrors of static.squid-cache.org on: master (./) , west (./) , east, eu
   . send mail notification of dynamic.* CVS commits to noc@
 
  * Authentication server
