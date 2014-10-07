@@ -4,8 +4,8 @@
 
 
 '''BUGS TO FIX:'''
-
- * /!\ AYJ: I think we are ready for DNS to point master.squid-cache.org at new/final master server.
+ 
+ * DNS service on east is still set to slave from west.
 
  * bin/mk-static.sh copies CVS directories from dynamic to static site copies. (old bug) requires rsync cmd line voodoo to fix.
 
@@ -17,16 +17,6 @@
 '''BUGS FIXED:'''
 
 = Services TODO (by priority) =
-
- * DNS
-  * hidden master: bind9 (./)
-   . config files: /srv/bind (./)
-   . version control: RCS (./)
-   . split internal (Rackspace) vs public internet views (./)
-   . check notifies are going to public masters
-  * public masters:
-   . see bind/configs/named.conf.local and zones/squid-cache.org-public for lists.
-   . TODO: check AXFR updates are working from hidden master
 
  * mail{X} and mailing lists(./)
   . high priority (virtual) mailboxes: bugs@ (forwarded to list of same name), squid-bugs@ (forwarded to list of same name), info@
@@ -86,6 +76,15 @@ cvs [status aborted]: or set the CVSROOT environment variable.
 
 = Services OKAY =
 
+ * DNS (./)
+  * running on: master (VM)
+  * hidden master: bind9
+   . config files: /srv/bind
+   . version control: RCS
+   . split internal (Rackspace) vs public internet views
+  * public masters:
+   . see bind/configs/named.conf.local and zones/squid-cache.org-public for lists.
+
  * mysql (./)
   . running on clouddb
   . user accounts: squidadm
@@ -110,10 +109,9 @@ cvs [status aborted]: or set the CVSROOT environment variable.
 
 These are mostly squidadm scripts not yet updated to run with in the new layout.
 
- * DNS zone updates
  * CVS repository mirror
  * mail archive generator
- * FTP and www data sync
+ * FTP data sync
  * rsync daily snapshot access
  * mirror validation
  * source maintenance / coding guidelines enforcement
