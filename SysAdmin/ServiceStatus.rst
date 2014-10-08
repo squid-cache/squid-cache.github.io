@@ -44,8 +44,7 @@
   * (./) mirror access for /src/rsync (snapshots and releases)
 
  * www
-  * Perl modules required: HTTP::Lite
-   . install with {{{ cpan install ... }}}
+  * install: aptitude install libhttp-lite-perl
   * (./) dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
   * (./) static.squid-cache.org running on master (as www.* and static.*)
   . mirrors of static.squid-cache.org on: master (./) , west (./) , east (outdated)
