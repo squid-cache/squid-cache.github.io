@@ -666,6 +666,8 @@ request size [key-pair]
  key-pair::
   The supported key=value pairs are:
   || domain || FQDN host name or the domain ||
+  || proto_version || The SSL/TLS version ||
+  || cipher || The SSL/TLS cipher being used ||
   || cert_'''''ID''''' || Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are||
   || error_name_'''''ID''''' || The openSSL certificate validation error. The ID is an index number for this error ||
   || error_name_'''''ID''''' || The ID of the certificate which caused error_name_ID ||
