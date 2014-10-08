@@ -45,7 +45,7 @@
 
  * www
   * install: aptitude install libhttp-lite-perl
-  * (./) dynamic / master.squid-cache.org running on master (as http://master.make.squid-cache.org/)
+  * (./) dynamic / master.squid-cache.org running on master
   * (./) static.squid-cache.org running on master (as www.* and static.*)
   . mirrors of static.squid-cache.org on: master (./) , west (./) , east (outdated)
   . send mail notification of dynamic.* CVS commits to noc@
@@ -70,9 +70,9 @@ cvs [status aborted]: or set the CVSROOT environment variable.
 = Services Partial =
 
  * www
-  . master.squid-cache.org working (on west).
-  . static.squid-cache.org generator script running (on master) requires mysql databases
-  . not mirroring to east, so www content displayed varies between east/west requests.
+  . master.squid-cache.org working
+  . static.squid-cache.org generator script running
+  . not mirroring to east, so www content displayed varies between east/west/master requests.
 
 = Services OKAY =
 
@@ -91,10 +91,12 @@ cvs [status aborted]: or set the CVSROOT environment variable.
   . credentials: /home/squidadm/.my.cnf for user command line login
   . credentials: /srv/www/master.squid-cache.org/public_html/cgi/dblink.inc for PHP page access.
 
- * BZR repository (still running on west)
-  . SSH access
-  . HTTP access
-  . mirrors updating
+ * BZR repository (./)
+  * running on: master (as bzr.squid-cache.org)
+  * SSH access
+   . committers are group '''squid'''
+  * HTTP access
+  * rsync access
 
  * Bugzilla
   . runs on east
