@@ -41,6 +41,7 @@
   * (./) mirror access for /srv/www/static.squid-cache.org/public_html/content ( /!\ see bugs above)
   * (./) mirror access for /src/ftp/pub/squid (ftp://ftp.squid-cache.org/pub/squid)
   * (./) mirror access for /src/ftp/pub/archive (ftp://ftp.squid-cache.org/pub/archive)
+  * (./) mirror access for /src/rsync (snapshots and releases)
 
  * www
   * Perl modules required: HTTP::Lite
@@ -112,7 +113,6 @@ These are mostly squidadm scripts not yet updated to run with in the new layout.
  * CVS repository mirror
  * mail archive generator
  * FTP data sync
- * rsync daily snapshot access
  * mirror validation
  * source maintenance / coding guidelines enforcement
 
