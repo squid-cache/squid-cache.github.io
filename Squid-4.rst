@@ -1,8 +1,8 @@
 #language en
 
-= Squid 3.6 (FUTURE) =
+= Squid 3.6 (3.HEAD) =
 
-##Now in '''DEVELOPMENT''' cycle.
+Now in '''DEVELOPMENT''' cycle.
 The set of new Squid 3.6 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.6 expected to be in 2015.
 
  . {X} This series of Squid is expected to require a C++11 capable compiler. The currently known compilers which meet this criteria and build Squid reliably are GCC 4.8+, Clang 3.3+, and Intel CC 12.0+
