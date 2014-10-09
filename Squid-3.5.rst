@@ -1,6 +1,6 @@
 #language en
 
-= Squid 3.5 (3.HEAD) =
+= Squid 3.5 =
 
 
 Now in '''RELEASE CANDIDATE''' cycle.
