@@ -2,8 +2,17 @@
 
 = Squid 3.5 (3.HEAD) =
 
-Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.5 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.5 expected to be in 2014.
+
+Now in '''RELEASE CANDIDATE''' cycle.
+The release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+ 
+Additions are limited to:
+ * Documentation updates
+ * Polish of existing features
+ * Porting of Squid-2.7 feature regressions
+ * Stability fixes
+ * Security fixes
+ * Bug fixes
 
 
 ## bugs down to major (all earlier releases and 'unknowns')
