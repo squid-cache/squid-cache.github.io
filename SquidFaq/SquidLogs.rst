@@ -54,7 +54,6 @@ The Squid result code is composed of several tags (separated by underscore chara
  || '''UDP''' || Requests on the ICP port (usually 3130) or HTCP port (usually 4128). If ICP logging was disabled using the ''log_icp_queries'' option, no ICP replies will be logged. ||
  || '''NONE''' || Squid delivered an unusual response or no response at all. Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes. Also seen with responses to CONNECT requests. ||
 
-
  * These tags are optional and describe why the particular handling was performed or where the request came from:
  || '''CLIENT''' || The client request placed limits affecting the response. Usually seen with client issued a "no-cache", or analogous cache control command along with the request. Thus, the cache has to validate the object. ||
  || '''IMS''' || The client sent a revalidation (conditional) request. ||
@@ -62,7 +61,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  || '''SWAPFAIL''' || The object was believed to be in the cache, but could not be accessed. A new copy was requested from the server. ||
  || '''REFRESH''' || A revalidation (conditional) request was sent to the server. ||
  || '''SHARED''' || This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED.||
-
+ || '''REPLY''' || The HTTP reply from server or peer. Usually seen on '''DENIED''' due to SquidConf:http_reply_access ACLs preventing delivery of servers response object to the client. ||
 
  * These tags are optional and describe what type of object was produced:
  || '''NEGATIVE''' || Only seen on '''HIT''' responses. Indicating the response was a cached error response. e.g. "404 not found" ||
