@@ -30,9 +30,36 @@ On Windows 2000 and later the service is configured to use the Windows Service R
 
 == Pre-Built Binary Packages ==
 
-GuidoSerassio of [[http://www.acmeconsulting.it/|Acme Consulting S.r.l.]] maintains the official [[http://squid.acmeconsulting.it/|native Windows port]] of Squid (built using the Microsoft toolchain) and is actively working on having the needed changes integrated into the standard Squid distribution. His effort is partially based on earlier Windows NT port by Romeo Anghelache.
+Packages available for Squid on multiple environments.
 
- . '''Squid-2.6, Squid-2.7, Squid-3.0:''' Binaries for Windows NT/2000/XP/2003 are at http://squid.acmeconsulting.it/
+== Squid-3.3 ==
+
+## Maintainer: unknown
+
+Bug Reporting: see https://cygwin.com/problems.html
+
+Binary packages for the Cygwin environment on Windows are at:
+ * 32-bit: https://cygwin.com/packages/x86/squid/
+ * 64-bit: https://cygwin.com/packages/x86_64/squid/
+
+== Squid-3.0 ==
+
+Maintainer: GuidoSerassio of [[http://www.acmeconsulting.it/|Acme Consulting S.r.l.]] 
+
+Bug Reports: http://bugs.squid-cache.org/
+
+ . {X} '''NOTE:''' this package is experimental and known to contain major bugs.
+
+Binary packages built using the Microsoft toolchain for Windows NT/2000/XP/2003 are at http://squid.acmeconsulting.it/
+
+== Squid-2.7 / Squid-2.6 ==
+
+Maintainer: GuidoSerassio of [[http://www.acmeconsulting.it/|Acme Consulting S.r.l.]] 
+
+Bug Reports: http://bugs.squid-cache.org/
+
+Binary packages built using the Microsoft toolchain for Windows NT/2000/XP/2003 are at http://squid.acmeconsulting.it/
+
 
 == Installing Squid ==
 
@@ -275,7 +302,9 @@ There are additional wishlist items that also need to be sorted out:
  * Building an installer
 
 === Cygwin ===
-There have been unconfirmed reports from some users of building up to [[Squid-3.3]] successfully and producing a usable executable.
+
+Packages http://sourceware.mirrors.tds.net/pub/sourceware.org/cygwin/x86/release/squid/
+There have been unconfirmed reports from some users of building up to [[Squid-3.3]] successfully and producing a usable executable. Cygwin project provide version 3.3.3 packages.
 
 As of [[Squid-3.4]] the latest confirmed details is that there are significant build errors (bug Bug:4037). Assistance fixing this bugs issues is welcome, note that many of the build issues known are shared with MinGW and may be fixed as that work continues (or made worse).
 
@@ -283,7 +312,7 @@ As of [[Squid-3.4]] the latest confirmed details is that there are significant b
 === Visual Studio ===
 Almost no work on this environment has been done since [[Squid-2.7]].
 
-Entirely new .solution and .project build files need to be generated. Ideally these would mirror the on-Windows style of convenience libraries assembled to produce a number of different binaries. Experiments along those lines have some nice results, but issues with BZR on Windows are causing trouble. The Squid developers are discussing moving to git, which will hopefully resolve the main issue there.
+Entirely new .sln, .sdf and .vcxproj build files need to be generated. Ideally these would mirror the on-Windows style of convenience libraries assembled to produce a number of different binaries. Experiments along those lines have some nice results, but issues with BZR on Windows are causing trouble. The Squid developers are discussing moving to git, which will hopefully resolve the main issue there.
 
 == Troubleshooting ==
 
