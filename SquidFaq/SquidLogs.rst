@@ -227,7 +227,7 @@ The following hierarchy codes are used with Squid-2:
 
 '''PINNED''' The server connection was pinned by NTLM or Negotiate authentication requirements.
 
-'''ORIGINAL_DST''' The server connection was limited to the client provided destination IP. This occurs on interception proxies when Host security is enabled, or SquidConf:client_passthru transparency is enabled.
+'''ORIGINAL_DST''' The server connection was limited to the client provided destination IP. This occurs on interception proxies when Host security is enabled, or SquidConf:client_dst_passthru transparency is enabled.
 
 '''ANY_PARENT''' part of ''src/peer_select.c:hier_strings[]''.
 
