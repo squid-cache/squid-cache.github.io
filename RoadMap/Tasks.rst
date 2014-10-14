@@ -57,7 +57,7 @@ Check with squid-dev to see if its already done.
   3. log the language dialect(s) going through your Squid (logformat languages %{Accept-Language} ) and help supply the translations team (via squid-dev)
 
  * Cleanup Squid component macros that enable/disable components:
-  1. make all the naming convention USE_* (with USE_SQUID_* for those which may clash with OS defines).
+  1. .convention for Makefile.am conditionals is ENABLE_* (currenty some have incorrect USE_* maro names)
 
  * Helper and Tool Manuals
   1. Write a manual/man(8) page for a helpers/ program that does not have one.
