@@ -117,19 +117,5 @@ Specification Document: RFC RFC:4559
  * There are outstanding bugs in the NTLM and Negotiate/NTLM implementation.
 
 
-== Older notes ==
-
-Copied from [[Features/Other]]:
-
-Some thought will need to be put into the following area:
-
- * HTTP entity types
-
-Discussion: What is meant by this? Please expand and move up.
-
-Additionally work should also be done in the following
-
- * Cleanups to comply better with the RFCs. (see the Checklist)
-
 ----
 CategoryFeature
