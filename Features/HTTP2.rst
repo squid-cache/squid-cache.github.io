@@ -20,7 +20,7 @@
 
  * '''More''':
   * http://tools.ietf.org/html/draft-ietf-httpbis-http2
-  * http://trac.tools.ietf.org/wg/httpbis/trac/wiki#HTTP2.0Deliverables
+  * http://http2.github.io/
 ##  * http://www.chromium.org/spdy/spdy-proxy-examples
 
 = Details =
@@ -60,13 +60,15 @@ To implement a HTTP/2 receiving port in Squid we need to:
  * implement TLS for systems where OpenSSL is not available.
   * Including ALPN extension support
   * Possibly also NPN extension support
-  * {X} this is only required because browser manufacturers refuse once again to implement proxy support for HTTP/2 over port 80 or 3128.
+  * {X} this is only required because browser manufacturers refuse once again to implement proxy support for HTTP/2 over port 80 or 3128. Notable exception being MSIE which is being friendly to proxies.
 
 === Progress ===
 
-'''Completed:'''
- * Detection of the HTTP/2 connection header magic octets in port 80 intercepted traffic
+'''Completed: (in Squid-3 trunk)'''
  * Solve Bug Bug:3371 interference with our ability to detect and relay HTTP/2 transparently
+
+'''Completed: (in http2 branch)'''
+ * Detection of the HTTP/2 connection header magic octets in port 80 intercepted traffic
  * Implement branching points for HTTP/2 frame parser
 
 '''Underway:'''
