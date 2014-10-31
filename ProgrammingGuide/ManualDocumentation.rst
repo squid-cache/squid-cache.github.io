@@ -34,7 +34,7 @@ The document overview is as follows. Introductory header markup as shown followe
 }}}
 
 === .SH NAME ===
-Three lines of content.
+One initial line of content.
  1. name of file being documented. Marked not for translation.
  2. a hyphen. Marked not for translation.
  3. A one-line description of the file. Suitable for use in a title.
@@ -45,9 +45,7 @@ For example:
 {{{
 .
 .SH NAME
-.if !'po4a'hide' .B squid
-.if !'po4a'hide' \-
-HTTP Web Proxy caching server.
+squid \- HTTP Web Proxy caching server.
 .PP
 Version 1.0
 }}}
