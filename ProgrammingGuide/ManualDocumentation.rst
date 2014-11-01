@@ -393,7 +393,7 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || ~/store.log || {X} || Missing. Relevant? ||
 || ~/swap.state || {X} || Missing. Convert wiki page info ||
 || errors/errpages.css || {X} || Missing ||
-|| helpers/basic_auth/DB/basic_db_auth || 8 || Needs review of the perl/pod output. ||
+|| helpers/basic_auth/DB/basic_db_auth || 8 || :( Needs review of the perl/pod output. ||
 || helpers/basic_auth/getpwnam/basic_getpwnam_auth || 8 || (./) Done. ||
 || helpers/basic_auth/LDAP/basic_ldap_auth || 8 || (./) Done. ||
 || helpers/basic_auth/MSNT/msnt_auth || {X} || Missing. Convert README.html ||
@@ -447,7 +447,7 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || tools/cachemgr.cgi || 8 || (./) Done. ||
 || tools/purge/ || 1 || (./) Done. ||
 || tools/squidclient/ || 1 || (./) Done. ||
-|| tools/helper-mux.pl || {X} || Missing. Convert helper-mux.README to *.pl intro text for pod2man generation. ||
+|| tools/helper-mux.pl || 8 || :( Needs review of the perl/pod output. ||
 
 ----
  Discuss this page using the "Discussion" link in the main menu
