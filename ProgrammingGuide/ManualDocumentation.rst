@@ -445,7 +445,8 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || src/DiskIO/DiskDaemon/diskd || {X} || Missing ||
 || src/icmp/pinger || {X} || Missing ||
 || tools/cachemgr.cgi || 8 || (./) Done. ||
-|| tools/squidclient || 1 || (./) Done. ||
+|| tools/purge/ || 1 || (./) Done. ||
+|| tools/squidclient/ || 1 || (./) Done. ||
 || tools/helper-mux.pl || {X} || Missing. Convert helper-mux.README to *.pl intro text for pod2man generation. ||
 
 ----
