@@ -71,7 +71,7 @@ Administrator choosing to ignore caching rules on images causes wrong captcha pi
 == CPU ==
 A CPU cache memory can effect many results of calculations.
 
-AWe are doing lots of work on a computers that has lots of cache and if the cache will break down from any reason you won't like the computer that much.
+We are doing lots of work on a computers that has lots of cache and if the cache will break down from any reason you won't like the computer that much.
 I imagine that the CPU cache helps me a lot when writing a small scripts or reading emails.
 
 = Conclusion =
