@@ -29,9 +29,8 @@ To terminate a mirror stop the updates and erase all public content. Please also
  * Mirrors must be updated at minimum of daily
  * Mirrors must be updated at maximum of hourly
  * Mirrors must remove content not in the master rsync directory
-
- * Mirrors must provide a publicly accessible domain name. The project administrators will assign a squid-cache.org which is CNAME aliased to that domain for public use after registration.
- * The mirror must accept requests for both its own FQDN and the assigned one.
+ * Mirrors must provide a publicly accessible server FQDN.
+ * The mirror must accept requests for both its own FQDN and www.squid-cache.org.
 
 The website pages and content can be fetched from here:
 {{{
@@ -105,6 +104,7 @@ rsync -avz --delete-after master.squid-cache.org::source/squid-3  /source-path
 Production and Beta version code can be found in the numbered series sub-directories for their version.
 For example:
 {{{
+rsync -avz --delete-after master.squid-cache.org::source/squid-3.5  /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.4  /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.3  /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.2  /source-path
