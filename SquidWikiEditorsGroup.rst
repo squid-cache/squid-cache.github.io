@@ -86,3 +86,4 @@
  * OlleJonsson
  * NikiGorchilov
  * NyamulHassan
+ * ChristopherSchirner
