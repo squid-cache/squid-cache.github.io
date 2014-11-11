@@ -6,6 +6,7 @@
 Original work By Adrian Chadd
 
 Updated by James Robertson 19.01.2012
+Updated by Christopher Schirner 11.11.2014
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
@@ -120,6 +121,16 @@ Depending on your Domain Controller's OS Version uncomment the relevant Windows 
 [domain_realm]
     .example.local = EXAMPLE.LOCAL
     example.local = EXAMPLE.LOCAL
+}}}
+
+'''Important notice:''' One should use "Windows 2008 with AES" if available. This is not just important for security reasons, but you might also experience problems when using the DNS name of the squid server instead of the IP address.
+
+Example error messages regarding this issue may look like this:
+
+{{{
+negotiate_kerberos_auth: ERROR: gss_accept_sec_context() failed: Unspecified GSS failure.  Minor code may provide more information.
+ERROR: Negotiate Authentication validating user. Error returned 'BH gss_accept_sec_context() failed: Unspecified GSS failure.  Minor code may provide more information.'
+negotiate_wrapper: Return 'BH gss_accept_sec_context() failed: Unspecified GSS failure.  Minor code may provide more information.'
 }}}
 
 === Install Squid 3 ===
