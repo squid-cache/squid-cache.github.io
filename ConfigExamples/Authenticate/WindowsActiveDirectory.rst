@@ -128,9 +128,7 @@ Depending on your Domain Controller's OS Version uncomment the relevant Windows 
 Example error messages regarding this issue may look like this:
 
 {{{
-negotiate_kerberos_auth: ERROR: gss_accept_sec_context() failed: Unspecified GSS failure.  Minor code may provide more information.
 ERROR: Negotiate Authentication validating user. Error returned 'BH gss_accept_sec_context() failed: Unspecified GSS failure.  Minor code may provide more information.'
-negotiate_wrapper: Return 'BH gss_accept_sec_context() failed: Unspecified GSS failure.  Minor code may provide more information.'
 }}}
 
 === Install Squid 3 ===
