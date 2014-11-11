@@ -6,6 +6,7 @@
 Original work By Adrian Chadd
 
 Updated by James Robertson 19.01.2012
+
 Updated by Christopher Schirner 11.11.2014
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
