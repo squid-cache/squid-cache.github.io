@@ -17,8 +17,7 @@ Describe EliezerCroitoru/SessionHelper here.
 #
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
 
-require "moneta"
-require "memcached"
+require "dalli"
 
 active_login = true
 $debug = false
@@ -28,7 +27,7 @@ class Db
 
   def initialize()
     begin
-      @db =  Moneta.new(:Memcached, server: "localhost:11211")
+       @db = Dalli::Client.new('localhost:11211')
     rescue =>e
       puts "printing backtrace"
       puts e.inspect
@@ -38,7 +37,7 @@ class Db
 
   def writable?()
     begin
-      @db["8.8.8.8"] = Time.now.to_i
+      @db.set("8.8.8.8", Time.now.to_i)
       @db.delete("8.8.8.8")
     rescue => e
       puts "printing backtrace"
@@ -50,15 +49,15 @@ class Db
   end
 
   def login(ip)
-    @db[ip] = Time.now.to_i
+    @db.set(ip,Time.now.to_i)
   end
 
   def logout(ip)
-    @db.delete(ip) 
+    @db.delete(ip)
   end
 
   def gettime(ip_address)
-    result = @db[ip_address]
+    result = @db.get(ip_address)
     if result
       return Time.at(result)
     end
