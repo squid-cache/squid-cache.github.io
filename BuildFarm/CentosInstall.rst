@@ -27,6 +27,7 @@ mkdir /home/rpm/rpmbuild
 cd /home/rpm/rpmbuild
 mkdir BUILD RPMS SOURCES SPECS SRPMS
 chown rpm. -R /home/rpm/rpmbuild
+su - rpm
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 }}}
 [[http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment|CentOS RPM build envirnment guide]]
