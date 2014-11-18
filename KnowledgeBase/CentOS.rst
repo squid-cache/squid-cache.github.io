@@ -28,18 +28,63 @@ DAG and RPMforge repositories appear to no longer contain any files. Other sourc
 '''Eliezer''': 20/Sep/2014 - I have not tested yet the CentOS 7 build and the file on the server is not for public usage.
 ## 4  = indents required for BinaryPackages page include
 
+==== Squid-3.5 beta ====
+ * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
+
+The RPMs was separated into three files:
+
+- squid-VERSION.rpm
+
+- squid-helpers-VERSION.rpm
+
+- squid-debuginfo-VERSION.rpm
+
+The core squid rpm will provide the basic squid forward, intercept and tproxy modes while also allowing ssl-bump.
+The helpers package contains all sorts of other helpers which are bundled with squid sources but are not essential for a basic and simple proxy.
+
+- src rpm files are at: http://www1.ngtech.co.il/rpm/centos/6/SRPMS/
+
+{{{
+[squid]
+name=Squid beta repo for CentOS Linux 6 - $basearch
+#IL mirror
+baseurl=http://www1.ngtech.co.il/repo/centos/6/beta/$basearch/
+failovermethod=priority
+enabled=1
+gpgcheck=0
+}}}
+
+Install Procedure:
+{{{
+yum update
+yum install squid
+}}}
+
+
 ==== Squid-3.4 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
 
 '''Eliezer''': As of 3.4.0.2 I release the squid RPM for two CPU classes OS, i686 and x86_64.
 
+Since somewhere in the 3.4 tree there was a change in the way the squid was packaged by me.
+
+The RPMs was separated into three files:
+
+- squid-VERSION.rpm
+
+- squid-helpers-VERSION.rpm
+
+- squid-debuginfo-VERSION.rpm
+
+The core squid rpm will provide the basic squid forward, intercept and tproxy modes while also allowing ssl-bump.
+The helpers package contains all sorts of other helpers which are bundled with squid sources but are not essential for a basic and simple proxy.
+
 There are couple issues that needs to be fixed since there was some data loss in the transition from old server to another.
+ 
 
-- The init.d script
+- The init.d script, I am working on it in my spare time.
 
-- package requires sections which is not perfected yet to support ssl-bump.
-
-- src rpm is at: http://www1.ngtech.co.il/rpm/centos/6/SRPMS/
+- src rpm files are at: http://www1.ngtech.co.il/rpm/centos/6/SRPMS/
 
 {{{
 [squid]
