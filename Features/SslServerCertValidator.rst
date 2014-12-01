@@ -24,9 +24,6 @@ Awaken by !DigiNotar CA [[http://blog.mozilla.org/security/2011/08/29/fraudulent
 
 Various protocols and other validation approaches are floating around: CRLs, OCSP, SCVP, DNSSEC DANE, SSL Notaries, etc. There is no apparent winner at the moment so we are in a stage of local experimentation through trial-and-error. We have seriously considered implementing one of the above mentioned approaches in Squid, but it looks like it would be better to add support for a general validation helper instead, so that admins can experiment with different approaches.
 
-
-<<Include(Features/AddonHelpers,,3,from="^## start sslcrtvd protocol$", to="^## end sslcrtvd protocol$")>>
-
 = Implementation sketch =
 
 The helper will be optionally consulted after an internal OpenSSL validation we do now, regardless of that validation results. The helper will receive:
@@ -45,6 +42,10 @@ If the helper decides to honor an OpenSSL error or report another validation err
 The returned information mimics what the internal OpenSSL-based validation code collects now. Returned errors, if any, will be fed to SquidConf:sslproxy_cert_error, triggering the existing SSL error processing code.
 
 Helper responses will be cached to reduce validation performance burden (indexed by validation query parameters).
+
+== Helper communication protocol ==
+
+<<Include(Features/AddonHelpers,,3,from="^## start sslcrtvd protocol$", to="^## end sslcrtvd protocol$")>>
 
 == Design decision points ==
 
