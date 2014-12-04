@@ -161,3 +161,8 @@ The scenario is that Client will try to contact www2.ngtech.co.il through LAN-co
 In turn the Load-Balancing rules will be changed and there for the traffic path\flow.
 
 Then I will try to contact couple different Internet hosts through the LAN-core router and we will see what is the different trafic path for each and every one of these IPs.
+
+= Links =
+{{{
+dia icons - http://gnomediaicons.sourceforge.net/download.html
+}}}
