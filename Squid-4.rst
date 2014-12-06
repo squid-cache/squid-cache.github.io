@@ -16,7 +16,9 @@ The set of new Squid 3.6 features and release timeline is determined by submissi
 
 Basic new features in 3.6:
 
- * 
+ * sub-millisecond transaction logging
+ * RFC RFC:6176 compliance (SSLv2 support removal)
+ * ext_kerberos_ldap_group_acl -n option to disable automated SASL/GSSAPI
 
 
 The intention with this series is to improve performance using C++11 features. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#ss5.1
