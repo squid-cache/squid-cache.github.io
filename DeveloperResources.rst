@@ -38,8 +38,9 @@ If you wish to contribute to Squid there are certain guidelines and processes yo
  * ''' MergeProcedure ''' outlines the process of patch development from planning to code release.
 
  * ''' Squid3CodingGuidelines ''' outlines particular details of coding style you need to write changes in.
-  . Squid2CodingGuidelines contains the style details for Squid-2.
+##  . Squid2CodingGuidelines contains the style details for Squid-2.
 
+ * ''' [[ProgrammingGuide/ManualDocumentation]] ''' outlines particular details of manual page writing.
 
 There is a lot of code and wading through it at the beginning can seem difficult to start.
 
