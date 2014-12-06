@@ -56,7 +56,7 @@ Key:
 || <:( || <:( || (./) || (./) ||''ip/'' ||IP Protocol ||Ip* Qos* ||
 || <:( || <:( || <:( || :\ ||''ipc/'' ||inter-process communication ||ipc.* ipc_win32.*, Move files, add Ipc namespace to them, and adjust global names ||
 || <:( || <:( || <:( || :\ ||''log/'' ||Logging components ||namespace for Custom log formats and tokenizer. classify ||
-|| <:( || <:( || <:( || ||''mem/'' ||Basic Memory management ||mem* ||
+|| <:( || (./) || (./) || :\ ||''mem/'' ||Basic Memory management || class renaming, documentation, unit tests ||
 || <:( || (./) || <:( || :\ ||''mgr/'' ||Cache Manager ||Move in CacheManager.h, cache_manager.cc, and test cases ||
 || <:( || <:( || <:( || ||''redirect/'' ||URL alteration (redirectors, URL-rewrite, URL maps) ||redirect.* !RedirectInternal.* ||
 || <:( || <:( || <:( || :\ ||''repl/heap/'' ||HEAP Replacement Policy algorithms ||
