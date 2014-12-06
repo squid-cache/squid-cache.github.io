@@ -100,7 +100,7 @@ If you know the solution or can improve the proposed one, please write to squid-
 ||Should we use squid/src/squid/ root for most sources to include header files as <squid/group/file.h>? This may be required for installed headers and 3rd party code using those headers. It is not clear whether Squid will have installed headers in the foreseeable future. The Feature/eCAP work will determine that. ||no ||
 ||Should we form a generic mini-cache object type to combine the shared portions of fqdncache, ipcache, idns queue, netdb, ident-cache, maybe others not yet found? ||Probably, that will be a separate feature event though. ||
 ||What to do with all the mixed test* and stub_* files during this restructure? ||Stub files placed next to the .cc file they can replace with an extension of .stub.cc and no file prefix.<<BR>> test files go in test-suite directory. ||
-
+|| What to do with third-party integration scripts and files? || Place in application-specific subdirectories off tools/ ||
 
 
 
