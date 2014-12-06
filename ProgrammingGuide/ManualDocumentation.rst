@@ -387,9 +387,10 @@ The Squid Configuration Manual
 Perl code can be documented inline using pod2man syntax rather than have a separate .8 file.
 
 This is a template only. Alter it according to the requirements detailed above to document an installed file.
- . {X} it has not yet had much testing, so also may change in future.
 
 {{{
+#!@PERL@
+
 =pod
 
 =head1 NAME
@@ -400,21 +401,21 @@ Version 1.0
 
 =head1 SYNOPSIS
 
- binary.name [\-dh]
+ binary.name [options]
 
 =head1 DESCRIPTION
 
- binary.name is an installed binary. The long description goes here.
+ B<binary.name> is an installed binary. The long description goes here.
 
 =head1 OPTIONS
 
 =over 12
 
-=item B<-d>
+=item B<--debug>
 
 Write debug info to stderr.
 
-=item B<-h>
+=item B<--help>
 
 Display the binary help and command line syntax info using stderr.
 
@@ -433,12 +434,12 @@ Or just write what you want to say, then mark it up according to the wiki styles
 =head1 AUTHOR
 
 This program was written by
-Authors Name <author@email.contact>
-Authors Name <author@email.contact>
+I<Authors Name <author@email.contact>> ,
+I<Authors Name <author@email.contact>>
 
-Based on prior work in older.source by Authors Name <author@email.contact>
+Based on prior work in B<older.source> by I<Authors Name <author@email.contact>>
 
-This manual was written by Authors Name <author@email.contact>
+This manual was written by I<Authors Name <author@email.contact>>
 
 =head1 COPYRIGHT
 
@@ -454,7 +455,7 @@ Distributed under the GNU General Public License (GNU GPL) version 2 or later (G
 
 =head1 QUESTIONS
 
-Questions on the usage of this program can be sent to the Squid Users mailing list <squid-users@squid-cache.org>
+Questions on the usage of this program can be sent to the I<Squid Users mailing list <squid-users@squid-cache.org>>
 
 =head1 REPORTING BUGS
 
@@ -463,9 +464,9 @@ See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you ne
 
 Report bugs or bug fixes using http://bugs.squid-cache.org/
 
-Report serious security bugs to Squid Bugs <squid-bugs@squid-cache.org>
+Report serious security bugs to I<Squid Bugs <squid-bugs@squid-cache.org>>
 
-Report ideas for new improvements to the Squid Developers mailing list <squid-dev@squid-cache.org>
+Report ideas for new improvements to the I<Squid Developers mailing list <squid-dev@squid-cache.org>>
 
 =head1 SEE ALSO
 
@@ -474,7 +475,10 @@ squid (8), GPL (7),
 The Squid FAQ wiki http://wiki.squid-cache.org/SquidFaq
 
 The Squid Configuration Manual http://www.squid-cache.org/Doc/config/
+
 =cut
+
+# the script code follows
 }}}
 
 == TODO ==
@@ -527,8 +531,9 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || helpers/ntlm_auth/smb_lm/ntlm_smb_lm_auth || {X} || Missing ||
 || helpers/ntlm_auth/SSPI/ntlm_sspi_auth.exe || 8 || (./) Done. ||
 || helpers/ssl/cert_valid.pl || {X} || Missing. Convert intro text with pod2man ||
-|| helpers/url_rewrite/url_fake_rewrite || {X} || Missing ||
-|| helpers/url_rewrite/url_fake_rewrite.sh || {X} || Missing ||
+|| helpers/url_rewrite/fake/url_fake_rewrite || {X} || Missing ||
+|| helpers/url_rewrite/fake/url_fake_rewrite.sh || {X} || Missing ||
+|| helpers/url_rewrite/LFS/url_lfs_rewrite || 8 || (./) Done. ||
 || src/dnsserver || {X} || Missing ||
 || src/mime.conf || {X} || Missing ||
 || src/mime.conf.default || {X} || Missing. Symlink to mime.conf manual? ||
