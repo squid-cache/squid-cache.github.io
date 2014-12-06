@@ -288,7 +288,9 @@ The Squid Configuration Manual
 .if !'po4a'hide' http://www.squid-cache.org/Doc/config/
 }}}
 
-== Template manual page ==
+== Templates ==
+
+=== name.8 file ===
 This is a template only. Alter it according to the requirements detailed above to document an installed file.
 
 {{{
@@ -380,8 +382,102 @@ The Squid Configuration Manual
 .if !'po4a'hide' http://www.squid-cache.org/Doc/config/
 }}}
 
-== TODO ==
+=== name.pl.in file ===
 
+Perl code can be documented inline using pod2man syntax rather than have a separate .8 file.
+
+This is a template only. Alter it according to the requirements detailed above to document an installed file.
+ . {X} it has not yet had much testing, so also may change in future.
+
+{{{
+=pod
+
+=head1 NAME
+
+binary.name - Brief Description goes here
+
+Version 1.0
+
+=head1 SYNOPSIS
+
+ binary.name [\-dh]
+
+=head1 DESCRIPTION
+
+ binary.name is an installed binary. The long description goes here.
+
+=head1 OPTIONS
+
+=over 12
+
+=item B<-d>
+
+Write debug info to stderr.
+
+=item B<-h>
+
+Display the binary help and command line syntax info using stderr.
+
+=back
+
+=head1 KNOWN ISSUES
+
+Optional test goes here. If there is nothing major remove the whole section.
+
+=head1 CONFIGURATION
+
+See FAQ wiki page for examples of how to write configuration snippets.
+
+Or just write what you want to say, then mark it up according to the wiki styles.
+
+=head1 AUTHOR
+
+This program was written by
+Authors Name <author@email.contact>
+Authors Name <author@email.contact>
+
+Based on prior work in older.source by Authors Name <author@email.contact>
+
+This manual was written by Authors Name <author@email.contact>
+
+=head1 COPYRIGHT
+
+ * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+ *
+ * Squid software is distributed under GPLv2+ license and includes
+ * contributions from numerous individuals and organizations.
+ * Please see the COPYING and CONTRIBUTORS files for details.
+
+This program and documentation is copyright to the authors named above.
+
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+
+=head1 QUESTIONS
+
+Questions on the usage of this program can be sent to the Squid Users mailing list <squid-users@squid-cache.org>
+
+=head1 REPORTING BUGS
+
+Bug reports need to be made in English.
+See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you need to include with your bug report.
+
+Report bugs or bug fixes using http://bugs.squid-cache.org/
+
+Report serious security bugs to Squid Bugs <squid-bugs@squid-cache.org>
+
+Report ideas for new improvements to the Squid Developers mailing list <squid-dev@squid-cache.org>
+
+=head1 SEE ALSO
+
+squid (8), GPL (7),
+
+The Squid FAQ wiki http://wiki.squid-cache.org/SquidFaq
+
+The Squid Configuration Manual http://www.squid-cache.org/Doc/config/
+=cut
+}}}
+
+== TODO ==
 
 The Manual best practice is to provide a man(x) page for each file installed on a server system. Squid installs a number of files of various types as listed below. Some work is underway to bring existing texts into matching these standard style of markup. However there are a number of installed files which have no manual at all.
 
