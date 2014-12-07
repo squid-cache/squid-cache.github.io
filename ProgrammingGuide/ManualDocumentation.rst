@@ -389,7 +389,11 @@ Perl code can be documented inline using pod2man syntax rather than have a separ
 This is a template only. Alter it according to the requirements detailed above to document an installed file.
 
 {{{
-#!@PERL@
+ #!@PERL@
+
+use strict;
+use Pod::Usage;
+use Getopt::Long;
 
 =pod
 
@@ -493,17 +497,17 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || ~/store.log || {X} || Missing. Relevant? ||
 || ~/swap.state || {X} || Missing. Convert wiki page info ||
 || errors/errpages.css || {X} || Missing ||
-|| helpers/basic_auth/DB/basic_db_auth || 8 || :( Needs review of the perl/pod output. ||
+|| helpers/basic_auth/DB/basic_db_auth || 8 || (./) Done. ||
 || helpers/basic_auth/getpwnam/basic_getpwnam_auth || 8 || (./) Done. ||
 || helpers/basic_auth/LDAP/basic_ldap_auth || 8 || (./) Done. ||
 || helpers/basic_auth/MSNT/msnt_auth || {X} || Missing. Convert README.html ||
 || helpers/basic_auth/MSNT/msntauth.conf || {X} || Missing. ||
 || helpers/basic_auth/MSNT/msntauth.conf.default || {X} || Missing. ||
-|| helpers/basic_auth/MSNT-multi-domain/basic_msnt_multi_domain_auth.pl || {X} || Missing. Convert intro text with pod2man ||
+|| helpers/basic_auth/MSNT-multi-domain/basic_msnt_multi_domain_auth || 8 || (./) Done. ||
 || helpers/basic_auth/NCSA/basic_ncsa_auth || 8 || (./) Done. ||
 || helpers/basic_auth/NIS/basic_nis_auth || {X} || Missing. ||
 || helpers/basic_auth/PAM/basic_pam_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/POP3/basic_pop3_auth.pl || {X} || Missing. ||
+|| helpers/basic_auth/POP3/basic_pop3_auth || 8 || (./) Done. ||
 || helpers/basic_auth/RADIUS/basic_radius_auth || 8 || (./) Done. ||
 || helpers/basic_auth/SASL/basic_sasl_auth || 8 || (./) Done. ||
 || helpers/basic_auth/SASL/basic_sasl_auth.pam || {X} || Missing. ||
@@ -514,15 +518,18 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || helpers/digest_auth/eDirectory/digest_edir_auth || {X} || Missing. ||
 || helpers/digest_auth/LDAP/digest_ldap_auth || {X} || Missing. ||
 || helpers/digest_auth/file/digest_file_auth || 8 || (./) Done. ||
+|| helpers/external_acl/delayer/ext_delayer_acl|| 8 || (./) Done. ||
 || helpers/external_acl/AD_group/ext_ad_group_acl || 8 || (./) Done. ||
 || helpers/external_acl/file_userip/ext_file_userip_acl || 8 || (./) Done. ||
 || helpers/external_acl/kerberos_ldap_group/ext_kerberos_ldap_group_acl || 8 || (./) Done. ||
 || helpers/external_acl/LDAP_group/ext_ldap_group_acl || 8 || (./) Done. ||
 || helpers/external_acl/LM_group/ext_lm_group_acl || 8 || (./) Done. ||
 || helpers/external_acl/session/ext_session_acl || 8 || (./) Done. ||
+|| helpers/external_acl/SQL_session/ext_sql_session_acl || 8 || (./) Done. ||
 || helpers/external_acl/unix_group/ext_unix_group_acl || 8 || (./) Done. ||
 || helpers/external_acl/wbinfo_group/ext_wbinfo_group_acl || 8 || (./) Done. ||
 || helpers/log_daemon/file/log_file_daemon || {X} || Missing. ||
+|| helpers/log_daemon/DB/log_db_daemon || 8 || Check pod2man syntax ||
 || helpers/negotiate_auth/kerberos/negotiate_kerberos_auth || 8 || (./) Done. ||
 || helpers/negotiate_auth/kerberos/negotiate_kerberos_auth_test || {X} || Missing. Convert README ||
 || helpers/negotiate_auth/SSPI/negotiate_sspi_auth.exe || {X} || Missing. Convert readme.txt ||
@@ -531,6 +538,7 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || helpers/ntlm_auth/smb_lm/ntlm_smb_lm_auth || {X} || Missing ||
 || helpers/ntlm_auth/SSPI/ntlm_sspi_auth.exe || 8 || (./) Done. ||
 || helpers/ssl/cert_valid.pl || {X} || Missing. Convert intro text with pod2man ||
+|| helpers/storeid_rewrite/file/storeid_file_rewrite || 8 || (./) Done. ||
 || helpers/url_rewrite/fake/url_fake_rewrite || {X} || Missing ||
 || helpers/url_rewrite/fake/url_fake_rewrite.sh || {X} || Missing ||
 || helpers/url_rewrite/LFS/url_lfs_rewrite || 8 || (./) Done. ||
