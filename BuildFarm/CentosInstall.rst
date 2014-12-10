@@ -10,10 +10,15 @@
 == System Setup ==
 On top of the default system install, run
 {{{
-# for RHEL/CentOS 6
+# next step is only needed for RHEL/CentOS 6. Watch out for the version. Not needed for fedora
 root% rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-root% yum install libxml2 expat-devel openssl-devel libcap ccache libtool-ltdl-devel cppunit cppunit-devel bzr autoconf automake libtool gcc-c++ perl-Pod-MinimumVersion bzip2 ed make openldap-devel  pam-devel db4-devel  libxml2-devel libcap-devel screen vim nettle-devel
+
+root% yum install libxml2 expat-devel openssl-devel libcap ccache libtool-ltdl-devel cppunit cppunit-devel bzr autoconf automake libtool gcc-c++ perl-Pod-MinimumVersion bzip2 ed make openldap-devel  pam-devel db4-devel  libxml2-devel libcap-devel screen vim nettle-devel redhat-lsb-core
 root% useradd -m -G ccache jenkins
+
+#java. Select the right version and install it
+root% yum search headless
+
 # need to install llvm/clang by hand, as the supplied version is too ancient.
 # nettle is available for centos-5 but as of 2014-03 not for centos-6. Download and build from http://www.lysator.liu.se/~nisse/archive/
 }}}
