@@ -6,6 +6,8 @@ The Squid project supports a big number of OSes (SquidFaq/AboutSquid has the sho
 
 FrancescoChemolli is leading this effort.
 
+'''note''': this information is mostly outdated. As of <<Date(2014-12-17T20:17:21Z)>> the build farm consists mostly of [[http://www.docker.com|Docker]]-based containers running on top of VM donated by [[http://www.rackspace.com|RackSpace]]
+
 The currently maintained farm consists of:
 ||OS ||Arch ||Ver ||system-name ||Status ||
 ||<style="text-align:center" |3>[[http://www.centos.org/|CentOS]] ||
@@ -42,17 +44,11 @@ The currently maintained farm consists of:
 
 
 '''Volunteer Help Sought:'''
-||[[http://openindiana.org/|OpenIndiana-x64]] ||Volunteers sought, for node donation or aid setting up a VM ||
-||[[http://openindiana.org/|OpenIndiana-sparc]] ||Volunteers sought, for node donation ||
-||[[http://opensolaris.org/|OpenSolaris-x64]] ||Volunteers sought since Oracle dismissed the Opensolaris public build farm ||
-||[[http://opensolaris.org/|OpenSolaris-sparc]] ||Volunteers sought since Oracle dismissed the Opensolaris public build farm ||
+
+|| 32-bit systems running Linux flavors || Volunteers sought ||
 ||[[http://www.opensource.apple.com/projects/darwin/6.0/release.html|Darwin]] and/or MacOS X ||Volunteers sought ||
 ||[[http://www.microsoft.com/windows/default.aspx|MS Windows]] Cygwin ||Needed ||
 ||AIX ||Volunteers sought, PPC hardware sought ||
-||[[http://gentoo.org/|Gentoo]] ||Volunteers sought, for node donation or VM setup ||
-
-
-
 
 Donations of disk space and CPU time on non-x86 systems are welcome and encouraged.
 
@@ -82,11 +78,6 @@ Since the test nodes are doing more than just building Squid from a prepared tar
   * po4a
   * libxml2
   * expat / libexpat
-
-'''Squid-2 Testing:'''
-
- * cvs
- * sharutils (or any other source of uudecode)
 
 == Registering a slave machine (as the machine owner) ==
  * Send an email to {{{noc at squid dash cache dot org}}} containing the following details:
