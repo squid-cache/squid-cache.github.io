@@ -17,8 +17,8 @@ The currently maintained farm consists of:
 ||x64 ||19 ||rs-fedora-19.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||<style="text-align:center" |4>[[http://www.ubuntu.com/|Ubuntu]] ||
 ||x64 ||12.04 (precise) ||rs-ubuntu-precise.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
-||x64 ||13.04 (raring) ||rs-ubuntu-raring.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
-||x64 ||13.10 (saucy) ||rs-ubuntu-saucy.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
+||x64 ||14.04 (trusty) ||rs-ubuntu-trusty.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
+||x64 ||14.10 (utopic) ||rs-ubuntu-utopic.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||<style="text-align:center" |3>[[http://opensuse.org/|OpenSUSE]] ||
 ||x64 ||12.1 ||opensuse-x64 || {OK} ||
 ||x64 ||12.3 ||rs-suse-12.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
@@ -27,12 +27,10 @@ The currently maintained farm consists of:
 ||<style="text-align:center" |6>[[http://www.debian.org/|Debian]] ||
 ||ARM ||6.0 (squeeze) ||sheeva-debian-squeeze || {OK} ||
 ||x64 ||wheezy ||rs-debian-wheezy.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
-||x32 ||sid ||rio.treenet || {OK} Sponsored by [[http://www.treenet.co.nz|TreeHouse Netowrks]] ltd. ||
 ||x64 ||sid ||rs-debian-unstable.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||x32 ||sid ||rs-debian-unstable-x86.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||[[http://www.openbsd.org/|OpenBSD]] || x64 ||4.8 ||obsd-48-x64 || {OK} [[BuildFarm/OpenBsdInstall|Installation guide]] ||
 ||<style="text-align:center" |4>[[http://www.freebsd.org/|FreeBSD]] ||
-||x32 ||6.4 ||west.squid-cache.org || {OK} [[BuildFarm/FreeBsdInstall|Installation guide]] ||
 ||x64 ||9.1 ||rs-fbsd-91.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]]; [[BuildFarm/FreeBsdInstall|Installation guide]] ||
 ||<style="text-align:center" |4>[[http://www.microsoft.com/windows/default.aspx|MS Windows]] ||
 ||MinGW x32 ||5.2 (2003 Server) ||mswin ||Sponsored. ||
