@@ -13,6 +13,7 @@ Web site is assembled on master; creation process (in reverse order):
    * rsyncs nondynamic files from /srv/www/master.squid-cache.org to /srv/www./static.squid-cache.org
    * runs php on the {{{*.dyn}}} files to turn them into HTML and rsyncs those to {{/srv/www/static.squid-cache.org
 
+{{{
 [08/11/14 15:11:36] Amos Jeffries: separate to that we have the mirror and URL checking scripts which scans the DB entries. The results of those scans affect the content results of some *.dyn scripts when they are next run through PHP by mk-static
 [08/11/14 15:13:18] Amos Jeffries: separately we also have the changesets update script,
 [08/11/14 15:13:24] Amos Jeffries: which for each version of Squid checks that the per-version patches are up to date and producing static *.html in /srv/www/master.*/Versions/v3/*/changesets/*.html
@@ -27,3 +28,4 @@ Web site is assembled on master; creation process (in reverse order):
 [08/11/14 15:24:32] Amos Jeffries: oh, looking at k-static now I see CentOS6 is the node doing the snapshot building. we are going to have to update that CentOS6 can no longer build trunk after the ParserNG updates.
 [08/11/14 15:25:13] Amos Jeffries: (I had to use C++11 initializer lists for the code reduction on unit-tests)
 [08/11/14 15:27:42] Amos Jeffries: just updated the mk-static to do the master->static rsync copy last of all its actions. and to exclude CVS directories.
+}}}
