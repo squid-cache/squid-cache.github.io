@@ -14,15 +14,17 @@ This email needs to include:
   . For FTP package mirrors the ftp:// URL and whether you provide an http:// alternative URL as well.
   . For HTTP package mirrors the http:// URL.
   . For website mirrors the FQDN for the mirror server or proxy
- * contact person and email - they will be notified of any problems found by the scan.
+ * contact person and email
+  . they will be notified of any problems with this server found by the automated testing.
+  . optional: this same email address should also be subscribed to the [[http://lists.squid-cache.org/listinfo/squid-mirrors|squid-mirrors mailing list]].
  * country where the mirror is sited
  * name of organization to be credited with sponsorship
  * optional: a URL for the organization
  * optional: a note about the mirror or sponsor
 
-Registered mirrors are tested for accuracy regularly. Mirrors are removed from the public listings immediately if any problems are detected, and re-added automatically when resolved. If the issues remains after several months the mirror is automatically de-registered and scanning will cease at that time.
+Registered mirrors are tested for accuracy regularly. Mirrors are removed from the public listings immediately if any problems are detected, and re-added automatically a short period after the issue is resolved. If the issues remains after several months the mirror is automatically de-registered and scanning will cease at that time.
 
-To terminate a mirror stop the updates and erase all public content. Please also notify the above contact to get scanning stopped early.
+To terminate a mirror stop the updates and erase all public content from the Squid Project. Please also notify the above contact to get scanning stopped early.
 
 == Mirrors for www.squid-cache.org ==
 
@@ -36,6 +38,7 @@ The website pages and content can be fetched from here:
 {{{
 rsync -avz --delete-after master.squid-cache.org::http-files  /www/path
 }}}
+
 
 === Squid reverse-proxies ===
 Alternatively a Squid reverse-proxy can be supplied relaying requests to our master servers. Please indicate this in your contact email.
