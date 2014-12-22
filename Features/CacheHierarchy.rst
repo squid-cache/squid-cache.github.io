@@ -24,7 +24,7 @@ These two simple connections can be combined in any number of complex '''hierarc
 
 == How do I configure Squid forward all requests to another proxy? ==
 
-First, you need to give Squid a parent cache.  Second, you need to tell Squid it can not connect directly to origin servers.  This is done with these configuration file lines:
+First, you need to give Squid a parent cache witheth SquidConf:cache_peer directive.  Second, you need to tell Squid it can not connect directly to origin servers with SquidConf:never_direct.  This is done with these configuration file lines:
 
 {{{
 cache_peer parentcache.foo.com parent 3128 0 no-query default
