@@ -500,10 +500,6 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || helpers/basic_auth/DB/basic_db_auth || 8 || (./) Done. ||
 || helpers/basic_auth/getpwnam/basic_getpwnam_auth || 8 || (./) Done. ||
 || helpers/basic_auth/LDAP/basic_ldap_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/MSNT/msnt_auth || {X} || Missing. Convert README.html ||
-|| helpers/basic_auth/MSNT/msntauth.conf || {X} || Missing. ||
-|| helpers/basic_auth/MSNT/msntauth.conf.default || {X} || Missing. ||
-|| helpers/basic_auth/MSNT-multi-domain/basic_msnt_multi_domain_auth || 8 || (./) Done. ||
 || helpers/basic_auth/NCSA/basic_ncsa_auth || 8 || (./) Done. ||
 || helpers/basic_auth/NIS/basic_nis_auth || {X} || Missing. ||
 || helpers/basic_auth/PAM/basic_pam_auth || 8 || (./) Done. ||
@@ -514,6 +510,7 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || helpers/basic_auth/SASL/basic_sasl_auth.conf || {X} || Missing. ||
 || helpers/basic_auth/SMB/basic_smb_auth || {X} || Missing. ||
 || helpers/basic_auth/SMB/basic_smb_auth.sh || {X} || Missing. ||
+|| helpers/basic_auth/SMB_LM/basic_smb_lm_auth || {X} || Missing. Convert README.html ||
 || helpers/basic_auth/SSPI/basic_sspi_auth.exe || 8 || (./) Done. ||
 || helpers/digest_auth/eDirectory/digest_edir_auth || {X} || Missing. ||
 || helpers/digest_auth/LDAP/digest_ldap_auth || {X} || Missing. ||
