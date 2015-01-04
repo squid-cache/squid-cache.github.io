@@ -32,7 +32,7 @@ The helpers bundled with Squid are currently written in Bash shell script, awk s
  /!\ There are several languages which encounter difficulties though:
  || Perl, Python || Certain methods of writing output to stdout automatically append newline characters. Care must be taken that only one set of newlines are output with the response. ||
  || PHP || Various versions of the Zend 5.x engine have bugs related to I/O and execution timeouts. Others have bugs in configuration settings used to control these timeouts. In general it is best to avoid PHP entirely unless one wants to spend a great deal of time testing and finding workaround for these issues. Some of these bugs do not have solutions. ||
- || Go || read() operation seems to have some form of timeout on threads which returns socket-closed signals. Causing a multi-threaded concurrent helper to exit if its least-used thread times out. There is no known workaround or solution for this. {i} As of Go version 1.12.1 the issue appears to be resolved. ||
+ || Go || read() operation seems to have some form of timeout on threads which returns socket-closed signals. Causing a multi-threaded concurrent helper to exit if its least-used thread times out. There is no known workaround or solution for this. <<BR>> {i} As of Go version 1.12.1 the issue appears to be resolved. ||
 
 === How do the helpers communicate with Squid? ===
 The interface with Squid is very simple. The helper is passed a limited amount of information on stdin to perform their expected task. The result is passed back to Squid via stdout. With any errors or debugging traces sent back on stderr.
