@@ -51,9 +51,12 @@ This page describes the setup of the '''master''' vm at Rackspace, meant to host
 
 === mailman ===
 
-(to be confirmed if to be hosted here)
-
  * packages: aptitude install mailman
+
+=== wiki ===
+
+{{{/srv/www/wiki.squid-cache.org}}}
+Auxiliary cron jobs in {{{/etc/cron.daily}}} and logrotate in {{{/etc/logrotate.d}}}
 
 
 ----
