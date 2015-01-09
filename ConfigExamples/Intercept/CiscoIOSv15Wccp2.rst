@@ -14,7 +14,7 @@
 
 This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over WCCPv2 to proxy box for handling. It is expected the that the box will contain squid 3 for processing the traffic.
 
-The router runs Cisco IOS Software, Version 15.4(3)M, with SECURITYK9 and DATAK9 packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example.
+The router runs Cisco IOS Software, Version 15.4(3)M, with SECURITYK9 and DATAK9 technology packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example.
 
 Router has both router/switch functionality, so we can use both GRE/L2 redirection methods.
 ## start feature include
@@ -52,7 +52,7 @@ access-list 121 deny   ip any any
 !
 !
 }}}
-Note: ip wccp web-cache cah redirect only HTTP (port 80), so to redirect HTTPS we create another dynamic wccp-service 70 (number in range 0-254, it does not matter, but remember it to specify in squid config). 
+Note: ip wccp web-cache cah redirect only HTTP (port 80), so to redirect HTTPS we create another dynamic wccp-service 70 (number in range 0-254, it does not matter, but remember it to specify in squid config). Also remember, SECURITYK9/DATAK9 technology packs need to activate only in case HTTPS interception. They are not used for only HTTP redirection.
 
 ## end feature include
 ----
