@@ -5,7 +5,7 @@
 
 Email: <<MailTo(yvoinov AT SPAMFREE gmail DOT com)>>
 
-For many years I was the system/database/security administrator. I'm experienced with Squid over 10 years, Solaris and *NIX systems, Oracle RDBMS and Cisco, cluster systems. Have OCP/OCE, SCSA/SCNA/SCSECA and other credentials. Expert in shell scripting.
+For many years I was the system/database/security administrator. I'm experienced with Squid over 10 years; Solaris and *NIX systems, Oracle RDBMS and Cisco, cluster systems over 20 years. Have OCP/OCE, SCSA/SCNA/SCSECA and other credentials. Expert in shell scripting. Understand C/C++.
 
 ----
 CategoryHomepage
