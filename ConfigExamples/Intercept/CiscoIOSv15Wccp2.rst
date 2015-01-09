@@ -52,6 +52,7 @@ access-list 121 deny   ip any any
 !
 !
 }}}
+Note: ip wccp web-cache cah redirect only HTTP (port 80), so to redirect HTTPS we create another dynamic wccp-service 70 (number in range 0-254, it does not matter, but remember it to specify in squid config). 
 
 ## end feature include
 ----
