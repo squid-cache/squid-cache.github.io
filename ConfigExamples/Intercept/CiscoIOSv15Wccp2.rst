@@ -16,6 +16,7 @@ This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over WCCPv2 
 
 The router runs Cisco IOS Software, Version 15.4(3)M, with SECURITYK9 and DATAK9 packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example.
 
+Router has both router/switch functionality, so we can use both GRE/L2 redirection methods.
 ## start feature include
 == Cisco IOS 15.4(3)M router ==
 {{{
