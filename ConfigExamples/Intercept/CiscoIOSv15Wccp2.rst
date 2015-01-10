@@ -14,7 +14,7 @@
 
 This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over WCCPv2 to proxy box for handling. It is expected the that the box will contain squid 3 for processing the traffic.
 
-The router runs Cisco IOS Software, Version 15.4(3)M, with SECURITYK9 and DATAK9 technology packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example.
+The router runs Cisco IOS Software, Version 15.4(3)M, with SECURITYK9 and DATAK9 technology packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example. WCCPv2 configured on router 2911.
 
 {{attachment:Network_scheme.png | Network scheme}}
 
