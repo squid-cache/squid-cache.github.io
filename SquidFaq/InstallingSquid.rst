@@ -360,7 +360,7 @@ If your system is very I/O bound, you will want to have both your OS and log dir
 
 see Section on [[../RAID|RAID]]
 
-== Is it okay to usr ZFS for Squid? ==
+== Is it okay to use ZFS on Squid? ==
 
 Yes. Running Squid on native ZFS-supporting systems, like Solaris or OpenIndiana is well-known practice.
 
