@@ -226,8 +226,10 @@ ln -s /usr/local/squid/supervise squid
 }}}
 Squid should start within 5 seconds.
 
-=== from SMF (new Solaris/OpenIndiana) ===
-You need to create service manifest in XML format like this:
+=== from SMF ===
+On new Solaris (10 and above) inittab/sysvinit is deprecated and is recommended to use new SMF (Service Management Facility).
+
+To do that you need to create service manifest in XML format like this:
 {{{
 <?xml version="1.0"?>
 <!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
