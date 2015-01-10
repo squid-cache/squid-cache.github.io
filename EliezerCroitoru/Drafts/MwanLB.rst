@@ -115,6 +115,8 @@ It is recommended to filter traffic in any case just for security purpose.
 
 === NATed Environment ===
 
+== LoadBalancing general algorithms  ==
+
 == Route Policy LB vs MARK based LB ==
 
 === Removal of ipv4 routing cache from linux kernel ===
