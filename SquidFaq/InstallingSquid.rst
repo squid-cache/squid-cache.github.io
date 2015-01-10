@@ -131,7 +131,7 @@ If you want to run Squid from your termainal and prevent it from backgrounding a
 === from inittab ===
 
 On systems which have an ''/etc/inittab'' file (Digital Unix,
-Solaris, IRIX, HP-UX, Linux), you can add a line like this:
+old Solaris, IRIX, HP-UX, Linux), you can add a line like this:
 {{{
 sq:3:respawn:/usr/local/squid/sbin/squid.sh < /dev/null >> /tmp/squid.log 2>&1
 }}}
@@ -225,6 +225,123 @@ cd /service
 ln -s /usr/local/squid/supervise squid
 }}}
 Squid should start within 5 seconds.
+
+=== from SMF (new Solaris/OpenIndiana) ===
+You need to create service manifest in XML format like this:
+{{{
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+<!--   Manifest-file for Squid
+-->
+<service_bundle type='manifest' name='Squid'>
+
+<service
+        name='network/squid'
+        type='service'
+        version='1'>
+
+        <create_default_instance enabled='false' />
+
+        <single_instance />
+
+        <dependency name='fs-local'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri
+                        value='svc:/system/filesystem/local' />
+        </dependency>
+
+        <dependency name='net-loopback'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/network/loopback' />
+        </dependency>
+
+        <dependency name='net-physical'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/network/physical' />
+        </dependency>
+
+        <dependency name='utmp'
+                grouping='require_all'
+                restart_on='none'
+                type='service'>
+                <service_fmri value='svc:/system/utmp' />
+        </dependency>
+
+        <dependency name='squid_config_data'
+                grouping='require_all'
+                restart_on='refresh'
+                type='path'>
+                <service_fmri value='file://localhost/usr/local/squid/etc/squid.conf' />
+        </dependency>
+
+        <exec_method
+                type='method'
+                name='start'
+                exec='/lib/svc/method/init.squid %m'
+                timeout_seconds='60'/>
+
+        <exec_method
+                type='method'
+                name='stop'
+                exec='/lib/svc/method/init.squid %m'
+                timeout_seconds='60' />
+
+        <exec_method
+                type='method'
+                name='refresh'
+                exec='/lib/svc/method/init.squid %m'
+                timeout_seconds='60' />
+
+        <exec_method
+                type='method'
+                name='restart'
+                exec='/lib/svc/method/init.squid %m'
+                timeout_seconds='60' />
+
+        <property_group name='startd'
+                type='framework'>
+                <!-- sub-process core dumps shouldn't restart session -->
+                <propval name='ignore_error'
+                    type='astring' value='core,signal' />
+        </property_group>
+
+        <property_group name='general' type='framework'>
+                <!-- to start stop squid -->
+                <propval name='action_authorization' type='astring'
+                        value='solaris.smf.manage' />
+        </property_group>
+
+        <stability value='Unstable' />
+
+        <template>
+                <common_name>
+                        <loctext xml:lang='C'>
+                        Squid proxy server
+                        </loctext>
+                </common_name>
+                <documentation>
+                        <manpage title='squid' section='8' manpath='/usr/local/squid/share/man/man8' />
+                </documentation>
+        </template>
+
+</service>
+
+</service_bundle>
+}}}
+then put this file in  /var/svc/manifest/network directory and execute command
+{{{
+svccfg import /var/svc/manifest/network/squid.xml
+}}}
+as root. Then create init-like script (named service method) with command-line arguments start|stop|refresh|restart, put it into /lib/svc/method, and execute command 
+{{{
+svcadm enable squid
+}}}
 
 == How do I tell if Squid is running? ==
 
