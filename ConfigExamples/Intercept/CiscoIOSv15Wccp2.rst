@@ -52,7 +52,7 @@ access-list 121 deny   ip any any
 !
 !
 }}}
-Note: ip wccp web-cache can redirect only HTTP (port 80), so to redirect HTTPS we create another dynamic wccp-service 70 (number in range 1-254, it does not matter, but remember it to specify in squid config). Also remember, SECURITYK9/DATAK9 technology packs need to activate only in case HTTPS interception. They are not used for only HTTP redirection.
+'''Note:''' ip wccp web-cache can redirect only HTTP (port 80), so to redirect HTTPS we create another dynamic wccp-service 70 (number in range 1-254, it does not matter, but remember it to specify in squid config). Also remember, SECURITYK9/DATAK9 technology packs need to activate only in case HTTPS interception. They are not used for only HTTP redirection.
 
 Also beware, when proxy is stopped - all HTTP/HTTPS traffic bypass it and passthrough default route to next hop.
 
@@ -71,7 +71,7 @@ wccp2_service standard 0
 wccp2_service dynamic 70
 wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=240 ports=443
 }}}
-Note: This example uses L2 redirecting (for OSes without native GRE support). Beware, wccp2_rebuild_wait sends "Here I am" message to router when proxy is ready to serve requests, without cache rebuilding complere. Also, both - router and proxy - uses port 2048 to communicate with WCCP. So, this port must be open in firewalls.
+'''Note:''' This example uses L2 redirecting (for OSes without native GRE support). Beware, wccp2_rebuild_wait sends "Here I am" message to router when proxy is ready to serve requests, without cache rebuilding complere. Also, both - router and proxy - uses port 2048 to communicate with WCCP. So, this port must be open in firewalls.
 ## end feature include
 
 == Conclusion ==
