@@ -57,5 +57,21 @@ Note: ip wccp web-cache can redirect only HTTP (port 80), so to redirect HTTPS w
 Also beware, when proxy is stopped - all HTTP/HTTPS traffic bypass it and passthrough default route to next hop.
 
 ## end feature include
+
+## start feature include
+== Squid 3.x WCCPv2 configuration ==
+{{{
+# WCCPv2 parameters
+wccp2_router 192.168.200.2
+wccp2_forwarding_method l2
+wccp2_return_method l2
+wccp2_service standard 0
+wccp2_rebuild_wait off
+wccp2_service standard 0
+wccp2_service dynamic 70
+wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=240 ports=443
+}}}
+Note 1: This example uses L2 redirecting (for OSes without native GRE support). Beware, wccp2_rebuild_wait sends "Here I am" message to router when proxy is ready to serve requests, without cache rebuilding complere. Also, both - router and proxy - uses port 2048 to communicate with WCCP. So, this port must be open in firewalls.
+## end feature include
 ----
 CategoryConfigExample CategoryConfigExample
