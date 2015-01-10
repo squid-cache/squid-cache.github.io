@@ -59,7 +59,7 @@ Also beware, when proxy is stopped - all HTTP/HTTPS traffic bypass it and passth
 ## end feature include
 
 ## start feature include
-== Squid 3.x WCCPv2 configuration ==
+== Squid 3.x HTTP/HTTPS WCCPv2 configuration ==
 {{{
 # WCCPv2 parameters
 wccp2_router 192.168.200.2
