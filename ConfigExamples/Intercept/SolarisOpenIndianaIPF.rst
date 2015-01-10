@@ -38,7 +38,7 @@ Squid must be configured with ipf-transparent option:
 ./configure '--enable-ipf-transparent'
 }}}
 
-'''Note:''' You don't need any authentification options, because of no auth in transparent interception mode. Also, be sure your Squid is '''really''' built with Interceptor module (see [[http://bugs.squid-cache.org/show_bug.cgi?id=3754|bug 3754]]). 
+'''Note:''' You don't need any authentification options, because of no auth in transparent interception mode. Also, be sure your Squid is '''really''' built with Intercept module (see [[http://bugs.squid-cache.org/show_bug.cgi?id=3754|bug 3754]]). 
 
 == Configure IPFilter ==
 
