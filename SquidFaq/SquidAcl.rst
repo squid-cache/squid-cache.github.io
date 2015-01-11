@@ -364,6 +364,7 @@ On the other hand, if the list contains origin server hostnames, simply change '
  * The maintainer of the free [[http://www.urlfilterdb.com/|ufdbGuard]] redirector has a commercial URL database.
  * Bill Stearns maintains the [[http://www.stearns.org/sa-blacklist/|sa-blacklist]] of known spammers. By blocking the spammer web sites in squid, users can no longer use up bandwidth downloading spam images and html. Even more importantly, they can no longer send out requests for things like scripts and gifs that have a unique identifer attached, showing that they opened the email and making their addresses more valuable to the spammer.
  * The [[http://freshmeat.net/projects/sleezeball/|SleezeBall site]] has a list of patterns that you can download.
+ * The [[http://www.shallalist.de/Downloads/shallalist.tar.gz|Shalla Secure Services]] provide a nice downloadable blacklist on free basis with many categories.
 
 Note that once you start blocking web content, users will try to use web proxies to circumvent the filtering, hence you will also need to block all web proxies.
 
