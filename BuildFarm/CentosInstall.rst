@@ -35,7 +35,8 @@ chown rpm. -R /home/rpm/rpmbuild
 su - rpm
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 }}}
-[[http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment|CentOS RPM build envirnment guide]]
+ * [[http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment|CentOS RPM build envirnment guide]]
+ * [[http://www.g-loaded.eu/2009/04/24/manually-prepare-the-rpm-building-environment/|nice example for multiCPU rpm building environment(-j X)]]
 
 
 ----
