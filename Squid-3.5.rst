@@ -2,21 +2,18 @@
 
 = Squid 3.5 =
 
+Currently in '''STABLE''' cycle.
+The features have been set and large code changes are reserved for later versions.
 
-Now in '''RELEASE CANDIDATE''' cycle.
-The release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
- 
-Additions are limited to:
- * Documentation updates
- * Polish of existing features
- * Porting of Squid-2.7 feature regressions
- * Stability fixes
+ Additions are limited to:
  * Security fixes
+ * Stability fixes
  * Bug fixes
+ * Documentation updates
 
 
 ## bugs down to major (all earlier releases and 'unknowns')
- . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
+## . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
 
 Features ported from 2.7 in this release:
 
