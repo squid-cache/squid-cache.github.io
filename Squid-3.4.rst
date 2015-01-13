@@ -2,14 +2,11 @@
 
 = Squid 3.4 =
 
-Currently in '''STABLE''' cycle.
-The features have been set and large code changes are reserved for later versions.
+Currently in '''STABLE / DEPRECATED''' cycle.
+The features have been set and code changes are reserved for later versions.
 
-Additions are limited to:
- * Security fixes
- * Stability fixes
+Additions are limited to '''Security and Bug fixes'''
 
- * Bug fixes
 
 ## bugs down to major (all earlier releases and 'unknowns')
 
