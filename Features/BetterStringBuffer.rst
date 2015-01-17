@@ -5,9 +5,9 @@
 = Feature: Better String memory usage =
 
  * '''Goal''':  Improve the usage of short strings to use best-practice, efficient, pointer-safe APIs.
- * '''Status''': Pre-merge review
- * '''ETA''': sometime in 2010
- * '''Version''': 3.3
+ * '''Status''': general code conversion underway
+ * '''ETA''': unknown
+ * '''Version''': 3.3+
  * '''Developer''': AmosJeffries, FrancescoChemolli
  * '''Feature Branch''': https://code.launchpad.net/~kinkie/squid/stringng
 
