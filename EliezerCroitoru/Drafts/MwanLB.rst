@@ -176,3 +176,4 @@ Then I will try to contact couple different Internet hosts through the LAN-core 
 dia icons - http://gnomediaicons.sourceforge.net/download.html
 }}}
  * [[https://devcentral.f5.com/articles/intro-to-load-balancing-for-developers-ndash-the-algorithms|F5 introduction to LB]]
+ * [[https://github.com/ktsaou/firehol/wiki/Link-Balancer|FireHOL LoadBalancing Feature]]
