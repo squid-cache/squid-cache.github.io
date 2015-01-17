@@ -2,8 +2,6 @@
 #format wiki
 #language en
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-
 = Feature: Faster HTTP parser =
 
  * '''Goal''':  Improve non-caching Squid3 performance by 20+%
@@ -11,12 +9,44 @@
  * '''Status''': started
  * '''ETA''': 2016
  * '''Priority''': 1
- * '''Developer''': AmosJeffries
+ * '''Developer''': AmosJeffries and FrancescoChemolli
+ * '''Feature Branch''': lp:~squid/squid/parser-ng (old: lp:~kinkie/squid/http-parser-ng)
 
 = Details =
-Avoid parsing the same HTTP header several times. Possibly implement incremental header parsing.
 
-See ../StringNgHttpParser
+Avoid parsing the same HTTP header several times. Implement incremental header parsing.
+
+One of the main expected gains from this and [[Features/BetterStringBuffer/StringNg|StringNg]] is increased clarity and performance in HTTP parsing. The (as of [[Squid-3.1]]) implementation of the HTTP parser (below "baseline situation") is a bit byzantine and also benefits from a makeover. The code shows that attempts have been made in the pasts but have not been completed.
+
+== Code Architecture ==
+
+Parsing handled by an {{{Http::Parser}}} child class which has an SBuf buffer and virtual {{{parse}}} method which splits the buffer content into message segments for followup processing.
+
+Parsing of mime header block is (for now) handled as char* strings by {{{HttpMsg}} objects in turn using {{{HttpHeader}}} objects outside the {{{Parser}}} hierarchy. This object and all the logics it uses need to be refactored to operate on the SBuf presented by Http::One::Parser method {{mimeHeaders}}}
+
+The {{{HttpMsg}} hierarchy objects are currently overloaded with two purposes;
+ 1. as general purpose HTTP message state storage objects
+ 2. as HTTP and ICAP response message parsing objects
+
+=== going forward ===
+
+ * Http::One::RequestParser has a {{{parseRequestFirstLine}}} method that needs to be refactored to use Parser::Tokenizer API for incremental processing of values out of the SBuf buffer.
+
+ * add Http::One::ResponseParser for HTTP/1 reply parse
+
+ * add ICY response parser
+
+ * add HTTP/2 frame parser
+
+ * add ICAP response parser
+
+ * use the parsed ICAP response to interpret how the ICAP payload segments need to be parsed instead of attempting (badly) to auto-detect by throwing the {{{HttpMsg}}} parser at it.
+
+ * code using the {{{HttpMsg}} parser needs to be refactored to use the Http::Parser API instead and the duplicate parser removed from Squid.
+
+ * rewrite the request-line parse method using {{{SBuf}}} and {{{Tokenizer}}}
+
+ * the {{{HttpHeader}}} parsing logics need to be converted to SBuf and Tokenizer API. Possibly run by the new {{{Parser}}} child classes.
 
 === current state ===
 
@@ -42,6 +72,8 @@ No changes yet in mainstream response parsing.
 
 === the baseline situation ===
 
+ . ''Saved for comparison.''
+
 Initial analysis of the ''request'' parsing systems in Squid-3 showed the parser stack to be as follows:
 
 /!\ the entire stack is asynchronous with a full reset to step 1 after read operation where the message was incompletely received.
@@ -55,9 +87,9 @@ Initial analysis of the ''request'' parsing systems in Squid-3 showed the parser
    . discard prior parse information !!
  5. char* loop scan for end of header chunk (headersEnd)
  6. sscanf re- scan and sanity check request line (HttpRequest::sanityCheck)
-   . incomplete, duplicates step 1 and 2, partially duplicates step 4.
+   . incomplete, duplicates step 2 and 3, partially duplicates step 5.
  7. strcmp parse out request method,url,version (HttpRequest::parseFirstLine)
-   . duplicates step 2 and 3
+   . duplicates step 3 and 4
  8. strcmp / scanf / char* loops for parsing URL (urlParse)
  9. char* loop scan for end of each header line (headersEnd)
  10. strcmp scan for : delimiter on header name and generate header objects
@@ -89,6 +121,8 @@ The parse sequences join at header line parsing (step 6), with some crossover at
 
  iii. char* loop scan for end of header chunk (headersEnd)
    . because we seem not to have scanned enough times in stage i
+
+TODO: document the ICAP response parsing sequence. Despite visible efforts to make it simple that is even worse than HTTP response parsing due to its need to run the whole of the response AND request parsing chains above on payloads to auto-detect which will succeed.
 
 ----
 CategoryFeature | CategoryWish
