@@ -9,7 +9,7 @@
  * '''Goal''':  Improve non-caching Squid3 performance by 20+%
  * '''Version''': 3.6 or later
  * '''Status''': started
- * '''ETA''': unknown
+ * '''ETA''': 2016
  * '''Priority''': 1
  * '''Developer''': AmosJeffries
 
