@@ -117,6 +117,10 @@ It is recommended to filter traffic in any case just for security purpose.
 
 == LoadBalancing general algorithms  ==
 
+=== Round Robin ===
+
+=== Weighed Round Robin === 
+
 == Route Policy LB vs MARK based LB ==
 
 === Removal of ipv4 routing cache from linux kernel ===
@@ -141,6 +145,8 @@ Signed-off-by: David S. Miller
 === Efficency of MARK ===
 
 === Combination of both ===
+
+=== CONNMARK and\vs MARK ===
 
 == Linux options for MultiWAN ==
 
