@@ -119,7 +119,7 @@ It is recommended to filter traffic in any case just for security purpose.
 
 === Round Robin ===
 
-=== Weighed Round Robin === 
+=== Weighted Round Robin ===
 
 == Route Policy LB vs MARK based LB ==
 
