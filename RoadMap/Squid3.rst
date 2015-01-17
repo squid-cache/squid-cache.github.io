@@ -74,19 +74,19 @@ These are the features we are trying to work on at present. New features may be 
 === Under Development ===
 
 (Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*1")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.6" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*1")>>
 
 (Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*2")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.6" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*2")>>
 
 (Priority 3)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*3")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.6" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*3")>>
 
 (Priority 4)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*4")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.6" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*4")>>
 
 (Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.5" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3.6" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
 
 <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3" regex:"ETA...:.unknown")>>
 
