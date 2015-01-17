@@ -3,7 +3,7 @@
 = Squid 3.6 (3.HEAD) =
 
 Now in '''DEVELOPMENT''' cycle.
-The set of new Squid 3.6 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.6 expected to be in 2015.
+The set of new Squid 3.6 features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.6 expected to be in mid or late 2015.
 
  . {X} This series of Squid is expected to require a C++11 capable compiler. The currently known compilers which meet this criteria and build Squid reliably are GCC 4.8+, Clang 3.3+, and Intel CC 12.0+
 
@@ -16,9 +16,31 @@ The set of new Squid 3.6 features and release timeline is determined by submissi
 
 Basic new features in 3.6:
 
- * sub-millisecond transaction logging
+ . Major UI changes:
  * RFC RFC:6176 compliance (SSLv2 support removal)
+ * Configurable helper queue size, with consistent defaults and better overflow handling
+ * Add url_lfs_rewrite: a URL-rewriter based on local file existence
+ * SquidConf:on_unsupported_protocol directive to allow Non-HTTP bypass
+
+ . Minor UI changes:
+ * basic_msnt_multi_domain_auth: Superceeded by basic_smb_lm_auth
+ * Sub-millisecond transaction logging
  * ext_kerberos_ldap_group_acl -n option to disable automated SASL/GSSAPI
+ * negotiate_kerberos_auth outputs group= kv-pair for use in note ACL
+ * Adaptation support for Expect:100-continue in HTTP messages
+ * SquidConf:url_rewrite_timeout directive
+ * Update localnet ACL default definition for RFC RFC:6890 compliance
+ * Persistent connection timeouts SquidConf:request_start_timeout and SquidConf:pconn_lifetime
+
+ . Developer Interest changes:
+
+ * C++11
+ * New helper concurrency channel-ID assignment algorithm
+ * Simplify MEMPROXY_CLASS_* macros
+ * Simplify CBDATA API and rename CBDATA_CLASS
+ * HTTP Parser structural redesign
+ * Base64 crypto API replacement
+ * Enable long (--foo) command line parameters on squid binary
 
 
 The intention with this series is to improve performance using C++11 features. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#ss5.1
