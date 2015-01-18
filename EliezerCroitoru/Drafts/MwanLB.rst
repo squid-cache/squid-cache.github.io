@@ -179,3 +179,4 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * [[https://github.com/ktsaou/firehol/wiki/Link-Balancer|FireHOL LoadBalancing Feature]]
  * [[http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/Algorithms-d1e4367.html|RackSpace About LB algorithms]]
  * [[https://github.com/darkhelmet/balance/blob/master/backends/round_robin.go|GoLang simple RoundRobin implementation]] 
+ * [[http://www.sysresccd.org/Sysresccd-Networking-EN-Iptables-and-netfilter-load-balancing-using-connmark|Esxample of load balancing with iptables]]
