@@ -152,6 +152,93 @@ Signed-off-by: David S. Miller
 
 === NFQUEUE to mark flowing connection ===
 === Examples ===
+ * An example for a RoundRobin LB between 3 iptables marks using NFQUEUE mark_verdict
+{{{
+#!highlight python
+#!/usr/bin/env python
+import time
+from daemon import runner
+import nfqueue, socket
+from scapy.all import *
+
+queue = deque([1, 2, 3])
+
+def get_queue():
+    global queue
+    l = queue.popleft()
+    queue.append(l)
+    return l
+
+#Set the callback for received packets:
+def cb(i,payload):
+    data = payload.get_data()
+    p = IP(data)
+    mark = get_queue()
+    payload.set_verdict_mark(nfqueue.NF_REPEAT, mark) #4 = nfqueue.NF_REPEAT
+
+class App():
+    def __init__(self):
+        self.stdin_path = '/dev/null'
+        self.stdout_path = '/dev/tty'
+        self.stderr_path = '/dev/tty'
+        self.pidfile_path =  '/tmp/marker_que0.pid'
+        self.pidfile_timeout = 5
+    def run(self):
+		q = nfqueue.queue()
+		q.set_callback(cb)
+		q.open()
+		q.create_queue(0)
+		try:
+			q.try_run()
+		except KeyboardInterrupt, e:
+			print "interruption"
+
+		q.unbind(socket.AF_INET)
+		q.close()
+		
+app = App()
+daemon_runner = runner.DaemonRunner(app)
+daemon_runner.do_action()
+}}}
+
+* Example NFQUEUE(0) iptables rules that shows how a connection is being marked by the python helper and then a log target is counting the packets.
+{{{
+#!highlight bash
+#!/usr/bin/env bash
+IPTABLES="/sbin/iptables"
+
+$IPTABLES -t mangle -F PREROUTING
+$IPTABLES -t mangle -A PREROUTING ! -p tcp -j ACCEPT
+$IPTABLES -t mangle -A PREROUTING -p tcp  -m mark --mark 0 -m state --state ESTABLISHED,RELATED -j CONNMARK --restore-mark
+$IPTABLES -t mangle -A PREROUTING -p tcp -m state --state NEW -m mark ! --mark 0 -j CONNMARK --save-mark
+
+$IPTABLES -t mangle -A PREROUTING  -m mark --mark 0 -m conntrack --ctstate NEW -j NFQUEUE --queue-num 0
+
+$IPTABLES -t mangle -A PREROUTING  -m connmark --mark 0x1 -j LOG --log-prefix "post, connmark 1: "
+$IPTABLES -t mangle -A PREROUTING  -m connmark --mark 0x2 -j LOG --log-prefix "post, connmark 2: "
+$IPTABLES -t mangle -A PREROUTING  -m connmark --mark 0x3 -j LOG --log-prefix "post, connmark 3: "
+
+$IPTABLES -t mangle -A PREROUTING -m mark --mark 1 -j LOG --log-prefix "post, mark 1: "
+$IPTABLES -t mangle -A PREROUTING -m mark --mark 2 -j LOG --log-prefix "post, mark 2: "
+$IPTABLES -t mangle -A PREROUTING -m mark --mark 3 -j LOG --log-prefix "post, mark 3: "
+}}}
+
+ * An example output of iptables statistics of a running nfqueue marking setup.
+{{{
+$ sudo iptables -t mangle -L PREROUTING -nv
+Chain PREROUTING (policy ACCEPT 909 packets, 54107 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+   68 17255 ACCEPT    !tcp  --  *      *       0.0.0.0/0            0.0.0.0/0
+  885 52647 CONNMARK   tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            mark match 0x0 state RELATED,ESTABLISHED CONNMARK restore
+   25  1500 CONNMARK   tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            state NEW mark match ! 0x0 CONNMARK save
+   25  1500 NFQUEUE    all  --  *      *       0.0.0.0/0            0.0.0.0/0            mark match 0x0 ctstate NEW NFQUEUE num 0
+   52  2912 LOG        all  --  *      *       0.0.0.0/0            0.0.0.0/0            connmark match  0x1 LOG flags 0 level 4 prefix "post, connmark 1: "
+   48  2695 LOG        all  --  *      *       0.0.0.0/0            0.0.0.0/0            connmark match  0x2 LOG flags 0 level 4 prefix "post, connmark 2: "
+  707 41028 LOG        all  --  *      *       0.0.0.0/0            0.0.0.0/0            connmark match  0x3 LOG flags 0 level 4 prefix "post, connmark 3: "
+   52  2912 LOG        all  --  *      *       0.0.0.0/0            0.0.0.0/0            mark match 0x1 LOG flags 0 level 4 prefix "post, mark 1: "
+   48  2695 LOG        all  --  *      *       0.0.0.0/0            0.0.0.0/0            mark match 0x2 LOG flags 0 level 4 prefix "post, mark 2: "
+  707 41028 LOG        all  --  *      *       0.0.0.0/0            0.0.0.0/0            mark match 0x3 LOG flags 0 level 4 prefix "post, mark 3: "
+}}}
 
 == Squid and multiWAN LB ==
 
