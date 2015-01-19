@@ -99,19 +99,26 @@ The more literal way of defining a network that can access or can be accessed th
 
 === Reverse Path Filtering ===
 
-For a network with two wan interfaces\ports\connections there is a need to filter traffic which do not belong to the path.
+I have asked myself couple times "What is Reverse Path Filtering?" and there is a literal answer and a technical one.<<BR>>
+For us the technical description would fit.<<BR>>
+The next details requires some basic networking knowledge:<<BR>>
+Assuming that a router should not just pass\forward any packet flows into it reverse path filtering comes to help.
+The idea is to block traffic that should not be there based on the already known network settings.<<BR>>
+The Linux kernel have 3 options using this filter: none, strict, loose.<<BR>>
+Related or not it is recommended to filter traffic in any case just for security purpose.<<BR>>
 
-There are for example two connections which accepts traffic for a subnet of the internal ip class but needs to block non internal traffic.<<BR>>
+A networking real world example would be a simple router that has two network connections and which doesn't posses a routing daemon.
+It has two\three or more networks\subnets that are passing throw it and the network interfaces of the device are:<<BR>>
+ * eth0 - 192.168.0.254/24
+ * eth1 - 192.168.1.254/24
+ * eth2 - 192.168.2.254/24
+ * lo0  - 127.0.0.1/8
+A basic logic would be that this router should not pass\forward traffic from networks it doesn't know about such as 7.7.7.0/24.<<BR>>
+If we would add some more routes such as "7.7.7.0/24 via 192.168.0.100" it would be reasonable to receive traffic from 7.7.7.0/24 network on the interface eth0 but not on eth1. So the filter can be applied on eth1 and any packet flowing into this interface with a source address inside the network 7.7.7.0/24 will be dropped.
 
-Since the sole purpose of a router is to forward packets from one side to the other it can be exploited or can cause some load and troubles in some networks.
-
-A company with 8.8.8.0/24 subnet will not want to allow 1.1.1.0/24 subnet destinated traffic to get into their internal network since it doesn't belongs there.
-
-Reverse Path filtering can detect a traffic which is not routable locally and block it from loading the network infrastructure or damage security.
-
-The Linux kernel have 3 options using this filter: none, strict, loose.
-
-It is recommended to filter traffic in any case just for security purpose.
+The usage of Reverse Path filtering suits only some cases while in many others it will cause major issues.<<BR>>
+The basic recommendation is that you better firewall your network or\and in some cases as an alternative to a firewall rules is to throw traffic from a whole subnet into a black-hope.<<BR>>
+ * In cases of Internet Exchange Point unauthorized router peering there are places around the world which the only way to handle these bandits is using FIREWALL or ROUTING rules and as much as I and others are good Admins there are out-there some who do not ask for permission to throw packets at a router and see what happens so beware.
 
 === NATed Environment ===
 
