@@ -101,7 +101,7 @@ The more literal way of defining a network that can access or can be accessed th
 
 For a network with two wan interfaces\ports\connections there is a need to filter traffic which do not belong to the path.
 
-There are for example two connections which accepts traffic for a subnet of the internal ip class but needs to block non internal traffic.
+There are for example two connections which accepts traffic for a subnet of the internal ip class but needs to block non internal traffic.<<BR>>
 
 Since the sole purpose of a router is to forward packets from one side to the other it can be exploited or can cause some load and troubles in some networks.
 
