@@ -12,90 +12,63 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
 
  * '''State''': DRAFT
 
- * '''Writer''': [[EliezerCroitoru]]
+ * '''Writer''': [[EliezerCroitoru|Eliezer Croitoru]]
 
  * '''More''': 
 
 <<TableOfContents>>
 
-- Introduction to Multi-wan load balancing.
+- Introduction to Multi-WAN load balancing.
 
-There are couple uses to Multi-wan which differ by nature.
-
-A Multi-wan connection can be there to solve one of two problems:
+There are couple uses for Multiple WAN connections which differ by nature.<<BR>>
+MultiWAN can be there to solve one of two network problems:
  * High network traffic load
  * Network failures
 
-The way this Multi-wan solutions is being implemented differ from one network environment to another.
-
-It's not only about the technical nature but also the purpose of this solution and it's stability.
-
-In a case we are talking about a small house small office or a small school they will probably will not have ASN under their hands.
-
-The above means that there is no need and probably it is not an option to use BGP as routing protocol.
-
-It's also means that they will probably will use NATED environment in the access to the Internet.
-
-There are side effects when implementing Multi-wan on a NATED environment while there are others on other topologies.
+The way MultiWAN solutions are being implemented differ from one network environment to another. It's not only about the technical nature but also the purpose of a solution and it's stability. In a case we are talking about a small house, a small office or a small school they will probably will not have ASN under their hands. And it means that there is no need and probably it is not an option to use BGP as routing protocol.<<BR>>
+It's also means that in the mentioned cases the connection will use some kind of NAT to access to the Internet.<<BR>>
+There are pros and cons when implementing MultiWAN behind couple NAT routers.
 
 Couple things to know about are:
  * Two connections from the same network can have different SRC-IP at the same second.
  * Network failure on one port can cause weird side effect on speed and network behavior.
 
-An illustration of a Multi-wan connection:
+An illustration of a MultiWAN connected network:
 
 {{http://www1.ngtech.co.il/squid/LB1.png}}
 
-In the avobe scenario client 192.168.1.1 will try to access 7.7.7.7 http service and when accessing the service the linux router will use IP 5.5.5.5 as outgoing IP for the connection.
-
-When the client 192.168.1.2 will try to access the same service it is not guaranteed that the same IP will be used when accessing the same service 7.7.7.7
-
-It means that two clients from the same network can get access to the same service using different SRC ip address.
-
+In the above scenario client 192.168.1.1 will try to access 7.7.7.7 HTTP service and when accessing the service the linux router will use the IP address 5.5.5.5.<<BR>>
+When the client 192.168.1.2 will try to access the same service it is not guaranteed that the same IP will be used when accessing the same service on 7.7.7.7.<<BR>>
+It means that two clients from the same network can get access to the same service using different SRC ip address.<<BR>>
 And for those that knows how to read apache logs you will see the next lines in the access.log of the apache service:
 {{{
 5.5.5.5 - - [31/Oct/2013:09:17:24 +0200] "GET /robots.txt HTTP/1.1" 404 291 "-" "Mozilla/5.0 (compatible)"
 6.6.6.6 - - [31/Oct/2013:09:17:25 +0200] "GET /robots.txt HTTP/1.1" 404 291 "-" "Mozilla/5.0 (compatible)"
 }}}
 
-There are couple other options to Multi-wan Fail-over and Load-balancing options in the level of switching and routing which you should know that do exist and I am not covering due to the complexity of there setups.
-
+There are couple other options to run and operate MultiWAN Fail-over and Load-balancing But due to the complexity of these setups I will not cover them for now.
 
 == What is MultiWAN and MultiPATH? ==
 
-The internet which is based on IP networks is a very big and dynamic system.
+The internet which is based on IP networks is a very big and dynamic system.<<BR>>
+While it's software can be kind of “subnetted” to allow an administrative way of managing all these networks Static network topology still makes things easy.<<BR>>
+Since this network is so big wide and dynamic there is a need to allow couple “options” to make it possible for infrastructure to be relocated or “copied”.<<BR>>
+The big need of re-location of an IP network can be real in a case of floods, power-outage, human-error or even a simple temperature drop\rise.<<BR>>
+Since humans has a very long history in the world it can be assumed that no matter how hard the cement and steel will be still there is a need to plan migrations.<<BR>>
+For this specific option to be effective and efficient there was a way to take the Static IP topology and using software to remove any “hardening”  of this network topology structure.<<BR>>
+The administrative force of the Internet divided the Internet into AS(Autonomous System) which allows the admin to look at the network in a level above all these weird numbering scheme that Routers use.<<BR>>
+It then allows the administrative force of the internet to develop a way to use IP in a less static way that it used to be when it was implemented in one room.
 
-While it's software can be kind of “subnetted” to allow an administrative way of managing all these networks Static network topology still makes things easy.
+Today these software's allow for an AS, which is basically a human force that has a subnet at hands, to define where through this subnet will be accessed in the IP level.<<BR>>
+Most users of the internet are probably just a bunch of nice guys that do not need an AS but they do get access to the Internet through a company or organization that do apply to the basic requirements which certify it to own an AS.<<BR>>
+The basic requirements for owning or managing a subnet(or AS) are a well trained and\or certified network operators and engineers.<<BR>>
+It can seem like a very simple task for some but since it means becoming a part of a very wide network which is being changed every single moment it is a very complex task.<<BR>>
 
-Since this network is so big wide and dynamic there is a need to allow couple “options” to make it possible for infrastructure to be relocated or “copied”.
-
-The big need of re-location of an IP network can be real in a case of floods, power-outage, human-error or even a simple temperature drop\rise.
-
-Since humans has a very long history in the world it can be assumed that no matter how hard the cement and steel will be still there is a need to plan migrations.
-
-For this specific option to be effective and efficient there was a way to take the Static IP topology and using software to remove any “hardening”  of this network topology structure.
-
-The administrative force of the Internet divided the Internet into AS(Autonomous System) which allows the admin to look at the network in a level above all these weird numbering scheme that Routers use.
-
-It then allows the administrative force of the internet to develop a way to use IP in a less static way that it used to be when it was implememnted in one room.
-
-Today these softwares allow for an AS which is basically a human force that has a subnet at hands, to define where through this subnet will be accessed in the IP level.
-
-Most users of the internet are probably just a bunch of nice guys that do not need an AS but they do get access to the Internet through a company or orginzation that do apply to the basic requirments which certify it to own an AS.
-
-The basic requirements for owning or managing a subnet(or AS) are a well trained and\or certified network operators and engineers.
-
-It can seem like a very simple task for some but since it means becomming a part of a very wide network which is being changed every single moment it is a very complex task.
-
-A MultiWAN is not like any literal understanding of the “multi” word which is “doubles” this or that.
-
-The meaning of a Multi in this area is “Two ways to get access to this same WAN network”.
-
-Once this concept is understood we can clarify that a MultiWAN can also be a MultiPATH which means that the same IP network\subnet can be accessed throw two different ways\roads.
-
-The main terms that are being used by network and system administrators and engineers about this and related subjects are “multi-homed” and\or “multi-wan” network in the relation to a specific AS which relates to some subnets.
-
-The more literal way of defining a network that can access or can be accessed through two different “cables” to\from the Internet is MultiPATH network.
+A MultiWAN is not like any literal understanding of the "multi" word which is "doubles" this or that.<<BR>>
+The meaning of a Multi in this area is “Two ways to get access to this same WAN network”.<<BR>>
+Once this concept is understood we can clarify that a MultiWAN can also be a MultiPATH which means that the same IP network\subnet can be accessed throw two different ways\roads.<<BR>>
+The main terms that are being used by network and system administrators and engineers about this and related subjects are "MultiHomed" and\or "MultiWAN" network in the relation to a specific AS which relates to some subnets.<<BR>>
+A MultiPATH  is the more literal way of defining a network that can access or can be accessed through two different "cables" to or from the Internet.
 
 === Reverse Path Filtering ===
 
@@ -116,7 +89,7 @@ It has two\three or more networks\subnets that are passing throw it and the netw
 A basic logic would be that this router should not pass\forward traffic from networks it doesn't know about such as 7.7.7.0/24.<<BR>>
 If we would add some more routes such as "7.7.7.0/24 via 192.168.0.100" it would be reasonable to receive traffic from 7.7.7.0/24 network on the interface eth0 but not on eth1. So the filter can be applied on eth1 and any packet flowing into this interface with a source address inside the network 7.7.7.0/24 will be dropped.
 
-The usage of Reverse Path filtering suits only some cases while in many others it will cause major issues.<<BR>>
+The usage of Reverse Path filtering suits only some cases while in many others it will cause major operations issues.<<BR>>
 The basic recommendation is that you better firewall your network or\and in some cases as an alternative to a firewall rules is to throw traffic from a whole subnet into a black-hope.<<BR>>
  * In cases of Internet Exchange Point unauthorized router peering there are places around the world which the only way to handle these bandits is using FIREWALL or ROUTING rules and as much as I and others are good Admins there are out-there some who do not ask for permission to throw packets at a router and see what happens so beware.
 
