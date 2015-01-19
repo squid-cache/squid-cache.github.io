@@ -93,6 +93,24 @@ The usage of Reverse Path filtering suits only some cases while in many others i
 The basic recommendation is that you better firewall your network or\and in some cases as an alternative to a firewall rules is to throw traffic from a whole subnet into a black-hope.<<BR>>
  * In cases of Internet Exchange Point unauthorized router peering there are places around the world which the only way to handle these bandits is using FIREWALL or ROUTING rules and as much as I and others are good Admins there are out-there some who do not ask for permission to throw packets at a router and see what happens so beware.
 
+==== Set Reverse Path Filter machine globally script ====
+{{{
+#!highlight bash
+#!/bin/bash
+if [[ -z "$1" ]] || [[ "$1" != "0" ]] && [[ "$1" != "1" ]] && [[ "$1" != "2" ]]
+then
+   echo "empty or wrong value"
+   exit 1
+fi
+
+echo "setting rp_filter globally for => \"$1\""
+for i in `ls /proc/sys/net/ipv4/conf/*/rp_filter`;
+do
+    echo $i
+    echo "$1" >$i
+done
+}}}
+
 === NATed Environment ===
 
 == LoadBalancing general algorithms  ==
