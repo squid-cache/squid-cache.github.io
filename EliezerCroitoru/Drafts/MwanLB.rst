@@ -101,6 +101,8 @@ The basic recommendation is that you better firewall your network or\and in some
 
 === Weighted Round Robin ===
 
+=== Packet By Packet Load Balancing VS Connection based ===
+
 == Route Policy LB vs MARK based LB ==
 
 === Removal of ipv4 routing cache from linux kernel ===
