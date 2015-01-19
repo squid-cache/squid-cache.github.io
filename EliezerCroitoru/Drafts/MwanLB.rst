@@ -101,6 +101,48 @@ The basic recommendation is that you better firewall your network or\and in some
 
 === Weighted Round Robin ===
 
+=== Least Connections ===
+ * csv file with established connections per MARK\PATH 
+{{{
+200, 1
+100, 2
+300, 3
+}}}
+ * A simple selection between multiple marks using least used.
+{{{
+#!highlight python
+#!/usr/bin/env python
+import csv
+i = 0
+selection_least = -1
+selected = -1
+with open('marks_stats.csv', 'rb') as csvfile:
+        statsreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        for row in statsreader:
+                i = i + 1
+                if selection_least == -1:
+                        selection_least = int(row[0])
+                        selected = i
+                        print("Least used is: " + str(selected) )
+                        continue
+                if int(row[0]) < selection_least:
+                        selection_least = int(row[0])
+                        selected = i
+                        print("Least used is: " + str(selected) )
+print(selected)
+}}}
+ * A bash script that writes the current established connections into a CSV file(from 3)
+{{{
+#!highlight bash
+#!/usr/bin/env bash
+ONE=`conntrack -L 2>/dev/null|grep "mark=1 "|grep ESTABLISHED |wc -l`
+TWO=`conntrack -L 2>/dev/null|grep "mark=2 "|grep ESTABLISHED |wc -l`
+THREE=`conntrack -L 2>/dev/null|grep "mark=3 "|grep ESTABLISHED |wc -l`
+echo "$ONE,1" > marks_stats.csv
+echo "$TWO,2" >> marks_stats.csv
+echo "$THREE,3" >> marks_stats.csv
+}}}
+
 === Packet By Packet Load Balancing VS Connection based ===
 
 == Route Policy LB vs MARK based LB ==
