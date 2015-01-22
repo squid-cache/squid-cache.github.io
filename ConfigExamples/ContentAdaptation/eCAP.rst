@@ -38,6 +38,7 @@ Then rebuild your Squid with --enable-ecap configure option. To do that you may 
 {{{
 ./configure '--enable-ecap' 'PKG_CONFIG_PATH=/usr/local/lib/pkgconfig'
 }}}
+PKG_CONFIG_PATH pointed to libecap pkgconfig file.
 
 == Patch and build squid-ecap-gzip ==
 
