@@ -43,6 +43,16 @@ Categories:
 
 <<FullSearch(title:regex:^ConfigExamples/Intercept/.*$)>>
 
+
+=== Content Adaptation features ===
+[[SquidFaq/ContentAdaptation|Overview and explanation]]
+
+[[Features/ICAP | ICAP overview]]
+
+[[Features/eCAP | eCAP overview]]
+
+<<FullSearch(title:regex:^ConfigExamples/ContentAdaptation/.*$)>>
+
 === Captive Portal features ===
 <<FullSearch(title:regex:^ConfigExamples/Portal/.*$)>>
 
@@ -71,7 +81,7 @@ Categories:
 see also [[Features/Wccp2| WCCP v2 overview]] for high-availability service.
 
 === General ===
-<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Intercept -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/Streams -regex:ConfigExamples/Reverse -regex:ConfigExamples/Strange -regex:ConfigExamples/Extreme -regex:ConfigExamples/Portal -regex:ConfigExamples/Smp )>>
+<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/ContentAdaptation -regex:ConfigExamples/Extreme -regex:ConfigExamples/Intercept -regex:ConfigExamples/Reverse -regex:ConfigExamples/Smp -regex:ConfigExamples/Strange -regex:ConfigExamples/Streams -regex:ConfigExamples/Portal )>>
 
 === Strange and Weird configurations ===
 ##start_WEIRD_INTRO
