@@ -97,11 +97,20 @@ The basic recommendation is that you better firewall your network or\and in some
 {{{
 #!highlight bash
 #!/bin/bash
-if [[ -z "$1" ]] || [[ "$1" != "0" ]] && [[ "$1" != "1" ]] && [[ "$1" != "2" ]]
+if [ -z "$1" ];
 then
-   echo "empty or wrong value"
+        echo "empty value";
+        exit 1
+else
+        echo "is set to '$1'";
+fi
+
+if [ "$1" != "0" ] && [ "$1" != "1" ] && [ "$1" != "2" ];
+then
+   echo "wrong value"
    exit 1
 fi
+
 
 echo "setting rp_filter globally for => \"$1\""
 for i in `ls /proc/sys/net/ipv4/conf/*/rp_filter`;
