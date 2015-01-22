@@ -34,7 +34,10 @@ gmake
 gmake install-strip
 }}}
 
-Then rebuild your Squid with --enable-ecap configure option.
+Then rebuild your Squid with --enable-ecap configure option. To do that you may need to add PKG_CONFIG_PATH to your configure options:
+{{{
+./configure '--enable-ecap' 'PKG_CONFIG_PATH=/usr/local/lib/pkgconfig'
+}}}
 
 == Patch and build squid-ecap-gzip ==
 
