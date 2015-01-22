@@ -288,6 +288,11 @@ Chain PREROUTING (policy ACCEPT 909 packets, 54107 bytes)
 
 == MultiWAN NATed testing environment ==
 
+After implementing the same lab with different OS I have decided to use Ubuntu instead of TinyCore linux. And the main Reason for that is that TinyCore linux is a great OS but I am feeling like missing some tools with it.(It's not you it's me..)
+
+Indeed Ubuntu gives more tools but TinyCore helped me with the basics of iptables marking and RoundRobin basics.
+
+=== First LAB - TinyCore ===
 I will use [[http://www.tinycorelinux.net/|TinyCore linux]] ([[http://www.tinycorelinux.net/5.x/x86/release/|CorePlus version]]) as client and routing OS.
  * Client IP 192.168.101.1
  * LAN core router IP1:192.168.101.254, Wan interface IP2:192.168.100.100
@@ -299,6 +304,16 @@ The scenario is that Client will try to contact www2.ngtech.co.il through LAN-co
 In turn the Load-Balancing rules will be changed and there for the traffic path\flow.
 
 Then I will try to contact couple different Internet hosts through the LAN-core router and we will see what is the different trafic path for each and every one of these IPs.
+
+=== Second LAB - Ubuntu ===
+Machines:
+ * Client1 IP 192.168.12.1
+ * Client2 IP 192.168.12.2
+ * LAN core router IP1:192.168.12.254, Wan interface IP2:192.168.13.254
+ * WAN router-1 IP1:192.168.13.2(lan-side) IP2:7.7.7.2(wan-side)
+ * WAN router-2 IP1:192.168.13.3(lan-side) IP2:7.7.7.3(wan-side)
+ * WAN router-3 IP1:192.168.13.4(lan-side) IP2:7.7.7.4(wan-side)
+ * WebServer IP:7.7.7.7(wan)
 
 = Links =
 {{{
