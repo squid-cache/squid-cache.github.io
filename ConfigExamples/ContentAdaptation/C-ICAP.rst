@@ -151,7 +151,7 @@ whitelist .*\.cdn.mozilla.net
 whitelist .*\.googlevideo.com
 whitelist .*\.youtube.com
 }}}
-and finally restart c-icap server.
+and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory. '''Note:''' You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize C-ICAP templates according to your needs.
 
 == Squid Configuration File ==
 
@@ -175,5 +175,9 @@ icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav
 adaptation_access service_avi_resp allow all
 
 }}}
+
+== Testing ==
+
+Point your client machine behind proxy to [[http://www.eicar.org/download/eicar_com.zip|EICAR]] test virus and make sure you're get redirected to warning page.
 
 For really big installations you can place all checking infrastructure components on separate nodes - i.e. proxy, c-icap server, ClamAV. That's all, folks! ;)
