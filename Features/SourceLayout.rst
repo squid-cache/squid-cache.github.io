@@ -33,10 +33,14 @@ Key:
 || <:( || <:( || <:( || (./) ||''adaptation/ecap/'' ||eCAP support ||
 || <:( || <:( || <:( || (./) ||''adaptation/icap/'' ||ICAP support ||
 || <:( || <:( || (./) || (./) ||''anyp/'' ||Protocol-independent protocol primitives ||url* urn* !ProtoPort* ||
-|| <:( || (./) || :\ || :\ ||''auth/'' ||Authentication support ||rename classes into Auth namespace. ||
+|| <:( || (./) || (./) || :\ ||''auth/'' ||Authentication schemes || ||
+|| <:( || (./) || (./) || :\ ||''auth/basic/'' || Basic Authentication || ||
+|| <:( || (./) || (./) || :\ ||''auth/digest/'' || Digest Authentication || ||
+|| <:( || (./) || (./) || :\ ||''auth/negotiate/'' || Negotiate Authentication || ||
+|| <:( || (./) || (./) || :\ ||''auth/ntlm/'' || NTLM Authentication || ||
 || <:( || <:( || {X} || :\ ||''base/'' ||Commonly used code without a better place to go. ||Async*?  wordlist.* dlink.* hash.* string.* !SquidString.* ||
 || <:( || <:( || <:( || :\ ||''clients/'' ||Protocol clients and gateway components for connecting to upstream servers ||ftp.*, http.*, gopher.* ||
-|| <:( || (./) || :\ || :\ ||''comm/'' ||I/O subsystem ||
+|| <:( || (./) || (./) || :\ ||''comm/'' ||I/O subsystem ||
 || <:( || <:( || <:( || ||''config/'' ||squid.conf parsing and management ||cache_cf.* cf.* cf_* Parser.* ||
 || <:( || <:( || <:( || ||''debug/'' ||Debug core utilities ||debug.cc Debug.h ||
 || <:( || <:( || <:( || :\ ||''dns/'' ||DNS components (Internal, dnsserver, caches) ||dns*, ipcache.* fqdncache.* ||
@@ -50,7 +54,9 @@ Key:
 || (./) || <:( || (./) || :\ ||''fs/rock'' ||Rock cache_dir || TODO: rename classes ||
 || <:( || <:( || (./) || :\ ||''ftp/'' ||FTP primitives shared by client, server, and ICAP sides || ||
 || <:( || <:( || (./) || :\ ||''helper/'' || [[Features/AddonHelpers]] protocol primitives || migrate helper.* ||
-|| <:( || <:( || (./) || {2} ||''http/'' ||HTTP primitives shared by client, server, and ICAP sides ||Http* ||
+|| <:( || <:( || (./) || {2} ||''http/'' || HTTP primitives shared by client, server, and ICAP sides ||Http* ||
+|| :\ || <:( || (./) || {2} ||''http/one/'' || HTTP/1 primitives shared by client, server, and ICAP sides || ||
+|| <:( || <:( || (./) || {2} ||''http/two/'' || HTTP/2 primitives shared by client, server, and ICAP sides || ||
 || <:( || (./) || <:( || :\ ||''icmp/'' ||ICMP support and Network measurement ||Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
 || <:( || <:( || <:( || :\ ||''ident/'' ||IDENT support ||ident.* Make remote connection handling into an !AsyncJob ||
 || <:( || <:( || (./) || (./) ||''ip/'' ||IP Protocol ||Ip* Qos* ||
