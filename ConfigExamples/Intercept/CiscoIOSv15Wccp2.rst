@@ -78,6 +78,6 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 
 == Conclusion ==
 
-This configuration example used on Cisco 2911 with Squid 3.4.10. As you can see, you can configure your environment for different ports interception.
+This configuration example used on Cisco 2911 with Squid 3.4.x. As you can see, you can configure your environment for different ports interception.
 ----
 CategoryConfigExample CategoryConfigExample
