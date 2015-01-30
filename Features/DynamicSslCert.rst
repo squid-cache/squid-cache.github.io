@@ -40,15 +40,19 @@ make all
 make install
 }}}
 
+## tlscacert begin
 === Create Self-Signed Root CA Certificate ===
+
 This certificate will be used by Squid to generate dynamic certificates for proxied sites. For all practical purposes, this certificate becomes a [[http://en.wikipedia.org/wiki/Root_certificate|Root certificate]] and you become a Root CA.
  . {X} If your certificate is compromised, any user trusting (knowingly or otherwise) your Root certificate may not be able to detect man-in-the-middle attacks orchestrated by others.
 
 Create directory to store the certificate (the exact location is not important):
 
  . {{{
-cd /usr/local/squid
+cd /etc/squid
 mkdir ssl_cert
+chown squid:squid
+chmod 400 ssl_cert
 cd ssl_cert
 }}}
 
@@ -64,7 +68,7 @@ Create a DER-encoded version of the certificate to import into users' browsers:
 openssl x509 -in myCA.pem -outform DER -out myCA.der
 }}}
 
-The result file should be imported into the 'Authorities' section of users' browsers.
+The result file ('''myCA.der''') should be imported into the 'Authorities' section of users' browsers.
 
 For example, in !FireFox:
 
@@ -76,13 +80,16 @@ For example, in !FireFox:
 
  1. Press the 'Import' button, select the .der file that was created previously and pres 'OK'
 
+## tlscacert end
+
 In theory, you must either import your root certificate into browsers or instruct users on how to do that. Unfortunately, it is apparently a [[https://www.computerworld.com/s/article/9224082/Trustwave_admits_issuing_man_in_the_middle_digital_certificate_Mozilla_debates_punishment|common practice]] among well-known Root CAs to issue ''subordinate'' root certificates. If you have obtained such a subordinate root certificate from a Root CA already trusted by your users, you do not need to import your certificate into browsers. However, going down this path may result in [[https://bugzilla.mozilla.org/show_bug.cgi?id=724929|removal of the well-known Root CA certificate]] from browsers around the world. Such a removal will make your local !SslBump-based infrastructure inoperable until you import your certificate, but that may only be the beginning of your troubles. Will the affected Root CA go after ''you'' to recoup their world-wide damages? What will your users do when they learn that you have been decrypting their traffic without their consent?
 
+
 === Configure Squid ===
-Open {{{/usr/local/squid/etc/squid.conf}}} for editing, find 'http_port' option and add certificate-related options. For example:
+Open squid.conf for editing, find SquidConf:http_port option and add certificate-related options. For example:
 
  . {{{
-http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/ssl_cert/myCA.pem
+http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/etc/squid/ssl_cert/myCA.pem
 }}}
 
 Also add the following lines to enable SSL bumping:
