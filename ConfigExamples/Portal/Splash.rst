@@ -17,7 +17,7 @@ As of version 1.1 of the session helper, it is possible to use the "-T" option i
 == HTTP Status 511 ==
 Captive portal splash pages can confuse client software when it appears on intercepted traffic responses. The client software can confuse the splash page as a response from the intended origin server.
 
-RFC:6585 defines an extension HTTP status code ('''511''') passing the information back to the client software that the response is NOT from the origin and things may change in future (ie after any splash page login has been performed). [[Squid-3.2]] and later can be configured to send this extension status code and a template splash page with the SquidConf:deny_info directive.
+RFC RFC:6585 defines an extension HTTP status code ('''511''') passing the information back to the client software that the response is NOT from the origin and things may change in future (ie after any splash page login has been performed). [[Squid-3.2]] and later can be configured to send this extension status code and a template splash page with the SquidConf:deny_info directive.
 
  || {i} NOTE || Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the SquidConf:deny_info directive. ||
 
@@ -30,7 +30,7 @@ NOTE: in the examples below:
  * The session is checked once every 60 seconds at most. This means that the splash screen will be shown to the user for 60 seconds, during which time they will not be able to browse any other websites.
  * A session database file is required. Create an empty file "/var/lib/squid/session.db" and ensure it is writeable to by the Squid user
 
-Prior to Squid 3.2:
+[[Squid-3.1]] and older:
 
 {{{
 # mind the wrap. this is one line:
@@ -43,7 +43,7 @@ deny_info http://example.com/splash.html existing_users
 http_access deny !existing_users
 }}}
 
-Squid 3.2 and later (session helper renamed and 511 status code with splash template):
+[[Squid-3.2]] and later (session helper renamed and 511 status code with splash template):
 
 {{{
 # mind the wrap. this is one line:
@@ -60,7 +60,7 @@ deny_info 511:/etc/squid/splash.html existing_users
 == Squid Configuration File - Active Mode ==
 You may find that when using the example above that the splash page is not always displayed to users. That is because other processes on the user's computer (such as automatic security updates) can reset the session counter, so it is that process rather than the user's browsing which receives the splash screen.
 
-The following configuration example adds in a url_regex rule to force the  user to browse to a particular website before the session is reset. This example is for Squid 3.2 and later, but can be adapted for earlier versions.
+The following configuration example adds in a url_regex rule to force the  user to browse to a particular website before the session is reset. This example is for [[Squid-3.2]] and later, but can be adapted for earlier versions.
 
 {{{
 # Set up the session helper in active mode. Mind the wrap - this is one line:
