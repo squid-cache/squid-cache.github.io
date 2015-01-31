@@ -24,10 +24,10 @@ RFC:6585 defines an extension HTTP status code ('''511''') passing the informati
 == Squid Configuration File - Simple Example ==
 NOTE: in the examples below:
 
+ * It is assumed that the Squid helpers are installed in /usr/local/sbin/squid. Change this as required for your installation.
+ * It is assumed that the URL being redirected to is accessible without going through the proxy. A bypass allow access control may need to be added before this configuration.
  * The session overall timeout is 7200 seconds. Once this length of time has passed, the splash screen will be shown again to the user. If you want a fixed timeout, use the "-T" option instead (available in version 1.1 of the session helper).
  * The session is checked once every 60 seconds at most. This means that the splash screen will be shown to the user for 60 seconds, during which time they will not be able to browse any other websites.
- * The ACL is called "splash_page". This can be changed as required.
- * It is assumed that the Squid helpers are installed in /usr/local/sbin/squid. Change this as required for your installation.
  * A session database file is required. Create an empty file "/var/lib/squid/session.db" and ensure it is writeable to by the Squid user
 
 Prior to Squid 3.2:
