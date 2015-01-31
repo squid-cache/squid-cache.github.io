@@ -52,7 +52,7 @@ Create directory to store the certificate (the exact location is not important):
 cd /etc/squid
 mkdir ssl_cert
 chown squid:squid
-chmod 400 ssl_cert
+chmod 600 ssl_cert
 cd ssl_cert
 }}}
 
