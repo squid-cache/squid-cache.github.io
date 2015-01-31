@@ -58,11 +58,20 @@ cd ssl_cert
 
 Create self-signed certificate (you will be asked to provide information that will be incorporated into your certificate):
 
+ * using OpenSSL:
  . {{{
 openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 -keyout myCA.pem  -out myCA.pem
 }}}
 
-Create a DER-encoded version of the certificate to import into users' browsers:
+ * using GnuTLS certtool:
+
+ . {{{
+certtool --generate-privkey --outfile ca-key.pem
+
+certtool --generate-self-signed --load-privkey ca-key.pem --outfile myCA.pem
+}}}
+
+=== Create a DER-encoded certificate to import into users' browsers ===
 
  . {{{
 openssl x509 -in myCA.pem -outform DER -out myCA.der
@@ -80,10 +89,10 @@ For example, in !FireFox:
 
  1. Press the 'Import' button, select the .der file that was created previously and pres 'OK'
 
-## tlscacert end
 
 In theory, you must either import your root certificate into browsers or instruct users on how to do that. Unfortunately, it is apparently a [[https://www.computerworld.com/s/article/9224082/Trustwave_admits_issuing_man_in_the_middle_digital_certificate_Mozilla_debates_punishment|common practice]] among well-known Root CAs to issue ''subordinate'' root certificates. If you have obtained such a subordinate root certificate from a Root CA already trusted by your users, you do not need to import your certificate into browsers. However, going down this path may result in [[https://bugzilla.mozilla.org/show_bug.cgi?id=724929|removal of the well-known Root CA certificate]] from browsers around the world. Such a removal will make your local !SslBump-based infrastructure inoperable until you import your certificate, but that may only be the beginning of your troubles. Will the affected Root CA go after ''you'' to recoup their world-wide damages? What will your users do when they learn that you have been decrypting their traffic without their consent?
 
+## tlscacert end
 
 === Configure Squid ===
 Open squid.conf for editing, find SquidConf:http_port option and add certificate-related options. For example:
