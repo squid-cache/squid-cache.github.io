@@ -8,9 +8,9 @@
 
 This document outlines the timeline for Squid-2.
 
-|| today || Squid-2.x is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7141]], [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7142]], [[http://www.squid-cache.org/Advisories/SQUID-2014_3.txt|CVE-2014-6270]], [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] and any other recently discovered issues. ||
-|| Aug 2012 || the Squid-2.7 series became '''OBSOLETE''' with the release of [[Squid-3.2]] features ||
-|| Aug 2011 || Henrik announced end of Squid-2.x support and '''DEPRECATED''' Squid-2.7 ||
+|| today ||<style="background-color: #CC0022;"> Squid-2.x is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7141]], [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7142]], [[http://www.squid-cache.org/Advisories/SQUID-2014_3.txt|CVE-2014-6270]], [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] and any other recently discovered issues. ||
+|| Aug 2012 ||<style="background-color: orange;"> the Squid-2.7 series became '''OBSOLETE''' with the release of [[Squid-3.2]] features ||
+|| Aug 2011 ||<style="background-color: yellow;"> Henrik announced end of Squid-2.x support and '''DEPRECATED''' Squid-2.7 ||
 || May 2008 || the active Squid developers are now concentrating all new features and developments at Squid-3. If Squid-3 does not meet your requirements please contact squid-dev about the missing features. The list [[http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#s5|to be ported]] is quite small and shrinking. ||
 
 == Release Map ==
