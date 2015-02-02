@@ -15,7 +15,7 @@ There are a few key individuals who keep the project running.
 Emeritus developers who provided oversight of the Squid Project before [[http://foundation.squid-cache.org/|The Squid Software Foundation]].
 
  * [[Henrik_Nordström]], Squid Hacker Extraordinaire and [[RoadMap/Squid2|Squid-2.x]] release manager.
- * [[AmosJeffries|Amos Jeffries]] IPv6 guru, [[Translations]] coordinator, and [[RoadMap/Squid3|Squid-3.x]] release manager.
+ * [[AmosJeffries|Amos Jeffries]] HTTP/2 and IPv6 guru, [[Translations]] coordinator, and [[RoadMap/Squid3|Squid-3.x]] release manager.
  * [[http://www.squid-cache.org/~robertc/|Robert Collins]] was the main driver of the initial Squid-3 C++ migration effort.
  * [[GuidoSerassio|Guido Serassio]] lead the [[http://squid.acmeconsulting.it/|Squid for Windows]] effort
  * [[AlexRousskov|Alex Rousskov]] manages various Squid-3 projects.
@@ -25,7 +25,7 @@ Emeritus developers who provided oversight of the Squid Project before [[http://
 Developers who have contributed some significant feature to Squid
 
 '''Squid-3''':
- * [[ChristosTsantilas|Christos Tsantilas]] works mainly with ICAP and HTTPS and fixes some bugs.
+ * [[ChristosTsantilas|Christos Tsantilas]] works mainly with ICAP, SSL-Bump, HTTPS and fixes some bugs.
  * [[DougDixon|Doug Dixon]] assisted with the early development of Squid-3.0
  * [[EliezerCroitoru|Eliezer Croitoru]] wrote and supports the [[Features/StoreID|Store ID]] and helpers, but also maintains unofficial CentOS and RHEL packages.
  * [[FrancescoChemolli|Francesco Chemolli]] works mainly on documentation and maintains the wiki, but also chimes in with patches every now and then.
@@ -46,14 +46,14 @@ Developers who have contributed some significant feature to Squid
 
  * [[AmosJeffries|Amos Jeffries]]
   . '''service admin''': bugzilla, bzr, mysql, rsync, jenkins, website, pootle
-  . '''mail admin''': archives
+  . '''mail admin''': moderator
 
  * [[FrancescoChemolli|Francesco Chemolli]]
-  . '''system admin''': eu, [[BuildFarm|build farm]] VMs
+  . '''system admin''': master, eu, east, west, [[BuildFarm|build farm]] VMs
   . '''service admin''': wiki, jenkins, pootle
 
  * [[http://wessels.squid-cache.org/|Duane Wessels]]
-  . '''system admin''': master, west
+  . '''system admin''': west
   . '''service admin''': dns, bugzilla
 
  * [[PieterDeWit|Pieter de Wit]]
