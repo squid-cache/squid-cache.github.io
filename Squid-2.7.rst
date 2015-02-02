@@ -2,7 +2,7 @@
 
 === Squid-2.7 ===
 
-|| today ||<style="background-color: #CC0022;"> Squid-2.x is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7141]], [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7142]], [[http://www.squid-cache.org/Advisories/SQUID-2014_3.txt|CVE-2014-6270]], [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] ''' and any other recently discovered issues. ||
+|| today ||<style="background-color: #CC0022;"> Squid-2.x is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7141]], [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7142]], [[http://www.squid-cache.org/Advisories/SQUID-2014_3.txt|CVE-2014-6270]], [[http://www.squid-cache.org/Advisories/SQUID-2012_1.txt|CVE-2012-5643]], [[http://www.squid-cache.org/Advisories/SQUID-2012_1.txt|CVE-2013-0189]], [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] ''' and any other recently discovered issues. ||
 || Aug 2012 ||<style="background-color: orange;"> the Squid-2.7 series became '''OBSOLETE''' with the release of [[Squid-3.2]] features ||
 || Aug 2011 ||<style="background-color: yellow;"> Henrik announced end of Squid-2.x support and '''DEPRECATED''' Squid-2.7 ||
 
