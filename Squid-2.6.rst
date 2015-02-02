@@ -2,6 +2,12 @@
 
 === Squid-2.6 ===
 
+|| today ||<style="background-color: #CC0022;"> Squid-2.6 is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7141]], [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7142]], [[http://www.squid-cache.org/Advisories/SQUID-2014_3.txt|CVE-2014-6270]], [[http://www.squid-cache.org/Advisories/SQUID-2012_1.txt|CVE-2012-5643]], [[http://www.squid-cache.org/Advisories/SQUID-2012_1.txt|CVE-2013-0189]], [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] ''' and any other recently discovered issues. ||
+## || month year ||<style="background-color: orange;"> the Squid-2.6 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-3.x]] ||
+|| Aug 2012 ||<style="background-color: orange;"> the Squid-2.6 series became '''OBSOLETE''' with the release of [[Squid-3.2]] features ||
+|| May 2008 ||<style="background-color: yellow;"> the Squid-2.6 series became '''DEPRECATED''' with the release of [[Squid-2.7]] series ||
+|| Jul 2006 || Released for production use. ||
+
 During the sprint it was recognised that it would be beneficial to collect all of the available completed Squid-2.5 based works into a Squid-2.6 release while we work on getting [[Squid-3.0]] ready.
 
 There is very a large list of completed features developed for Squid-2.5 over the years and then ported and merged to Squid-3, but in reality production environments are all running the Squid-2.5 versions with different amounts of extra patches today. Not surprising given the fact that Squid-2.5 has been feature frozen for 3 years now.
