@@ -18,7 +18,7 @@ We now provide an the Authoritative Configuration Manual for each version of squ
 
 ## For Squid-2.7 the Manual is at http://www.squid-cache.org/Versions/v2/2.7/cfgman/
 
-For Squid-3.0 the Manual is at http://www.squid-cache.org/Versions/v3/3.0/cfgman/
+## For Squid-3.0 the Manual is at http://www.squid-cache.org/Versions/v3/3.0/cfgman/
 
 For Squid-3.1 the Manual is at http://www.squid-cache.org/Versions/v3/3.1/cfgman/
 
