@@ -14,14 +14,21 @@ This is a collection of example Squid Configurations intended to demonstrate the
 == Online Manuals ==
 We now provide an the Authoritative Configuration Manual for each version of squid. These manuals are built daily and directly from the squid source code to provide the most up to date information on squid options.
 
-For Squid-2.6 the Manual is at http://www.squid-cache.org/Versions/v2/2.6/cfgman/
+## For Squid-2.6 the Manual is at http://www.squid-cache.org/Versions/v2/2.6/cfgman/
 
-For Squid-2.7 the Manual is at http://www.squid-cache.org/Versions/v2/2.7/cfgman/
+## For Squid-2.7 the Manual is at http://www.squid-cache.org/Versions/v2/2.7/cfgman/
 
 For Squid-3.0 the Manual is at http://www.squid-cache.org/Versions/v3/3.0/cfgman/
 
 For Squid-3.1 the Manual is at http://www.squid-cache.org/Versions/v3/3.1/cfgman/
 
+For Squid-3.2 the Manual is at http://www.squid-cache.org/Versions/v3/3.2/cfgman/
+
+For Squid-3.3 the Manual is at http://www.squid-cache.org/Versions/v3/3.3/cfgman/
+
+For Squid-3.4 the Manual is at http://www.squid-cache.org/Versions/v3/3.4/cfgman/
+
+For Squid-3.5 the Manual is at http://www.squid-cache.org/Versions/v3/3.5/cfgman/
 
 A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ with details on each option supported in Squid, and what differences can be encountered between major Squid releases.
 
