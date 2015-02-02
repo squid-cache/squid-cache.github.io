@@ -4,7 +4,7 @@
 
 ## adjust the box text as necessary for major milestones.
 ## || month year ||<style="background-color: #CC0022;"> Squid-3.6 is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] ''' and any other recently discovered issues. ||
-## || month year ||<style="background-color: orange;"> the Squid-3.6 series became '''OBSOLETE'''. There is no longer support offered and major distributors have moved on to newer releases. ||
+## || month year ||<style="background-color: orange;"> the Squid-3.6 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-3.x]] ||
 ## || month year ||<style="background-color: yellow;"> Squid-3.6 series became '''DEPRECATED''' with the release of  [[Squid-3.7]] series ||
 ## || month year ||<style="background-color: #82FF42;"> Released for production use. ||
 || today ||<style="background-color: #4282FE;"> Now in '''DEVELOPMENT''' cycle. ||
