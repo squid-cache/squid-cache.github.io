@@ -2,7 +2,11 @@
 
 = Squid 3.2 =
 
-Currently in '''STABLE''' cycle.
+|| today ||<style="background-color: #CC0022;"> Squid-3.2 is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7141]], [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7142]], [[http://www.squid-cache.org/Advisories/SQUID-2014_3.txt|CVE-2014-6270]], [[http://www.squid-cache.org/Advisories/SQUID-2014_2.txt|CVE-2014-3609]], and [[http://www.squid-cache.org/Advisories/SQUID-2014_1.txt|CVE-2014-0128]] ''' and any other recently discovered issues. ||
+## || month year ||<style="background-color: orange;"> the Squid-3.2 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-3.x]] ||
+|| Feb 2013 ||<style="background-color: yellow;"> the Squid-3.2 series became '''DEPRECATED''' with the release of [[Squid-3.3]] series ||
+|| Aug 2012 || Released for production use. ||
+
 The features have been set and large code changes are reserved for later versions.
 
 Additions are limited to:
