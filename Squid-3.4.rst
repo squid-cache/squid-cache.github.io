@@ -2,7 +2,12 @@
 
 = Squid 3.4 =
 
-Currently in '''STABLE / DEPRECATED''' cycle.
+## adjust the box text as necessary for major milestones.
+## || month year ||<style="background-color: orange;"> the Squid-3.4 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-3.x]] ||
+|| Jan 2015 ||<style="background-color: yellow;"> Squid-3.4 series became '''DEPRECATED''' with the release of  [[Squid-3.5]] series ||
+|| Sep 2014 ||<style="background-color: #CC0022;"> Squid-3.4.7 and older are '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7141]], [[http://www.squid-cache.org/Advisories/SQUID-2014_4.txt|CVE-2014-7142]], and [[http://www.squid-cache.org/Advisories/SQUID-2014_3.txt|CVE-2014-6270]] ''' ||
+|| Dec 2013 || Released for production use. ||
+
 The features have been set and code changes are reserved for later versions.
 
 Additions are limited to '''Security and Bug fixes'''
