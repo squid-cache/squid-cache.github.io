@@ -50,8 +50,8 @@ The client devices also need to be configured to trust the CA certificate when v
 '''Note:''' Most of all CA's providers moving to more secure (in their opinion) authentication / encryption algorythms. So, you can create cache CA accomplish with they requirements and reduce SSL warnings/errors in cache.log:
 
 {{{
-openssl genrsa -out rootCA.key 2048
-openssl req -x509 -sha256 -new -nodes -config /usr/local/openssl/openssl.cfg -key rootCA.key -days 10950 -out rootCA.crt
+openssl genrsa -out myCA.key 2048
+openssl req -x509 -sha256 -new -nodes -config /usr/local/openssl/openssl.cfg -key myCA.key -days 10950 -out myCA.crt
 }}}
 
 You can also specify some required additional CA's attributes in openssl.cfg:
