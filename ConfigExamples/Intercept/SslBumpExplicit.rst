@@ -132,7 +132,7 @@ sslproxy_flags DONT_VERIFY_PEER
 
 '''BEWARE!''' It can reduce SSL/TLS errors in cache.log, but '''this is NOT SECURE!''' With this options your cache will ignore most of server certificates errors and connect your users with them. Use this options at your own risk and '''only for debug purposes!'''
 
-'''Note:''' sslproxy_cert_error access control can be used to refine server's cert error and control access to it. Use it with caution.
+'''Note:''' sslproxy_cert_error can be used to refine server's cert error and control access to it. Use it with caution.
  
 To increase security the good idea to set this option:
 
