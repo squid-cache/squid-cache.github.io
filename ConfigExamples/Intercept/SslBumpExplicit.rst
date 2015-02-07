@@ -108,5 +108,17 @@ http_port 3128 ssl-bump \
 Otherwise your cache can't validate server's connections.
 
 '''Note:''' OpenSSL CA's bundle is derived from Mozilla's bundle and is '''NOT COMPLETE'''. In details: most intermediate certificates is not included. For example, Symantec CA's, some DigiCert CA's etc. Adding them is your responsibility. Also beware, when your use OpenSSL, you need to make c_rehash utility before Squid can be use added certificates. Beware - you can't grab any CA's your seen. Check it before use!
+
+== Create and initialize SSL certificates cache directory ==
+
+Finally your need to create and initialize SSL certificates cache directory and set permissions to access Squid:
+
+{{{
+mkdir -p /var/lib/ssl_db
+/usr/local/squid/libexec/ssl_crtd -c -s /var/lib/ssl_db
+chown squid:squid -R /var/lib/ssl_db
+}}}
+
+You cache will store mimicked certificates in this directory.
 ----
 CategoryConfigExample
