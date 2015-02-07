@@ -120,5 +120,16 @@ chown squid:squid -R /var/lib/ssl_db
 }}}
 
 You cache will store mimicked certificates in this directory.
+
+== Troubleshooting ==
+
+In some cases you may need to add some options in your Squid configuration:
+
+{{{
+sslproxy_cert_error allow all
+sslproxy_flags DONT_VERIFY_PEER
+}}}
+
+'''BEWARE!''' It can reduce SSL/TLS errors in cache.log, but '''this is NOT SECURE!''' With this options your cache will ignore most of server certificates errors and connect your users with them. Use this options at your own risk and '''only for debug purposes!'''
 ----
 CategoryConfigExample
