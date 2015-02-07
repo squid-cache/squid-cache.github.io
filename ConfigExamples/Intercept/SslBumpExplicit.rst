@@ -87,5 +87,24 @@ ssl_bump peek step1
 ssl_bump bump all
 }}}
 
+'''Note:''' In most cases you will need to specify the path to the public key of the root CA's or root CA's bundle file. I.e:
+
+{{{
+http_port 3128 ssl-bump \
+  cert=/etc/squid/ssl_cert/myCA.pem \
+  generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
+  capath=/usr/local/openssl/certs
+}}}
+
+or
+
+{{{
+http_port 3128 ssl-bump \
+  cert=/etc/squid/ssl_cert/myCA.pem \
+  generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
+  cafile=/usr/local/openssl/cabundle.file
+}}}
+
+'''Note:''' OpenSSL CA's bundle is derived from Mozilla's bundle and is not complete. In details: most intermediate certificates is not included. For example, Symantec CA's, some DigiCert CA's etc. Adding them is your responsibility. Also beware, when your use OpenSSL, you need to make c_rehash utility before Squid can be use added certificates. Beware - you can't grab any CA's your seen. Check it before use!
 ----
 CategoryConfigExample
