@@ -131,5 +131,13 @@ sslproxy_flags DONT_VERIFY_PEER
 }}}
 
 '''BEWARE!''' It can reduce SSL/TLS errors in cache.log, but '''this is NOT SECURE!''' With this options your cache will ignore most of server certificates errors and connect your users with them. Use this options at your own risk and '''only for debug purposes!'''
+
+To increase security the good idea to set this option:
+
+{{{
+sslproxy_options NO_SSLv2 NO_SSLv3 SINGLE_DH_USE
+}}}
+
+As a result, you can got more errors in your cache.log. So, you must investigate every case separately and correct in on demand.
 ----
 CategoryConfigExample
