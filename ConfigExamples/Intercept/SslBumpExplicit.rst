@@ -105,6 +105,8 @@ http_port 3128 ssl-bump \
   cafile=/usr/local/openssl/cabundle.file
 }}}
 
+Or your cache can't validate server's connections.
+
 '''Note:''' OpenSSL CA's bundle is derived from Mozilla's bundle and is not complete. In details: most intermediate certificates is not included. For example, Symantec CA's, some DigiCert CA's etc. Adding them is your responsibility. Also beware, when your use OpenSSL, you need to make c_rehash utility before Squid can be use added certificates. Beware - you can't grab any CA's your seen. Check it before use!
 ----
 CategoryConfigExample
