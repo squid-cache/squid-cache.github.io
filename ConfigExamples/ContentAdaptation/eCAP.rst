@@ -75,7 +75,7 @@ Also you can add next lines to your squid.conf:
 {{{
 
 request_header_access Accept-Encoding deny all
-request_header_replace Accept-Encoding gzip,identity
+request_header_replace Accept-Encoding gzip,deflate
 
 }}}
 
