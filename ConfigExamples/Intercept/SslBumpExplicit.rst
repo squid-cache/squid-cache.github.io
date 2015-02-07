@@ -51,7 +51,7 @@ The client devices also need to be configured to trust the CA certificate when v
 
 {{{
 openssl genrsa -out myCA.key 2048
-openssl req -x509 -sha256 -new -nodes -config /usr/local/openssl/openssl.cfg -key myCA.key -days 10950 -out myCA.crt
+openssl req -x509 -sha256 -new -nodes -config /usr/local/openssl/openssl.cfg -key myCA.key -days 10950 -out myCA.pem
 }}}
 
 You can also specify some required additional CA's attributes in openssl.cfg:
