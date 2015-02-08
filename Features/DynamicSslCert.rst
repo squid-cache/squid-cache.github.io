@@ -72,7 +72,7 @@ certtool --generate-self-signed --load-privkey ca-key.pem --outfile myCA.pem
 }}}
 
 
-You can also specify some required additional CA's attributes in openssl.cfg to reduce the questsions:
+You can also specify some required additional CA's attributes in openssl.cfg to reduce the questions:
 {{{
 [ v3_req ]
 basicConstraints = CA:FALSE
