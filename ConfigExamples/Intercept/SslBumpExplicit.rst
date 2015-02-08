@@ -70,7 +70,7 @@ ssl_bump peek step1
 ssl_bump bump all
 }}}
 
-'''Note:''' In most cases you will need to specify the path to the public key of the root CA's or root CA's bundle file. I.e:
+'''Note:''' In most cases you will need to specify the path to the public keys of the root CA's or root CA's bundle file. I.e:
 
 {{{
 sslproxy_capath /etc/opt/csw/ssl/certs  
