@@ -91,7 +91,8 @@ To support compression not only text/html, but also all text/* (i.e. text/javasc
 --- adapter_gzip.cc 2011-02-13 17:42:20.000000000 +0300
 +++ ../../adapter_gzip.cc 2012-02-26 03:37:26.000000000 +0400
 @@ -353,17 +353,19 @@
- * At this time, only responses with "text/html" content-type are allowed to be compressed.
+ -* At this time, only responses with "text/html" content-type are allowed to be compressed.
+ +* At this time, only responses with "text/*" content-type are allowed to be compressed.
  */
  static const libecap::Name contentTypeName("Content-Type");
  -
