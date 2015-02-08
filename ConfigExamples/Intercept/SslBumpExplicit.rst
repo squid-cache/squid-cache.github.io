@@ -73,19 +73,13 @@ ssl_bump bump all
 '''Note:''' In most cases you will need to specify the path to the public key of the root CA's or root CA's bundle file. I.e:
 
 {{{
-http_port 3128 ssl-bump \
-  cert=/etc/squid/ssl_cert/myCA.pem \
-  generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
-  capath=/usr/local/openssl/certs
+sslproxy_capath /etc/opt/csw/ssl/certs  
 }}}
 
 or
 
 {{{
-http_port 3128 ssl-bump \
-  cert=/etc/squid/ssl_cert/myCA.pem \
-  generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
-  cafile=/usr/local/openssl/cabundle.file
+sslproxy_cafile /usr/local/openssl/cabundle.file
 }}}
 
 Otherwise your cache can't validate server's connections.
