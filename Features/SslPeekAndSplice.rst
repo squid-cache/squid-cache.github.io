@@ -27,23 +27,23 @@ Peek and Splice peeks at the SSL client Hello message and SNI info (if any), sen
 
 == Actions ==
 
-There are several actions that Squid can do while handling an SSL connection. See your Squid documentation for a list of actions it actually supports. Supported actions can be specified in the ssl_bump directive in squid.conf. Some actions are not possible during certain processing steps. During a given processing step, Squid ''ignores'' ssl_bump lines with impossible actions. This helps us keep configuration sane. Processing steps are discussed further below.
+There are several actions that Squid can do while handling an SSL connection. See your Squid documentation for a list of actions it actually supports. Supported actions can be specified in the SquidConf:ssl_bump directive in squid.conf. Some actions are not possible during certain processing steps. During a given processing step, Squid ''ignores'' SquidConf:ssl_bump lines with impossible actions. This helps us keep configuration sane. Processing steps are discussed further below.
 
 
 ||'''Action'''||'''Applicable processing steps'''||'''Description'''||
 ||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection.||
 ||'''bump'''||step1, step2, and sometimes step3||Establish a secure connection with the server and, using a mimicked server certificate, with the client||
-||'''peek'''||step1, step2||Receive client (step1) or server (step2) certificate while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection (see Limitations). This action is the focus of this project.||
-||'''stare'''||step1, step2||Receive client (step1) or server (step2) certificate while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection. Currently, we are not aware of any work being done to support this action.||
+||'''peek'''||step1, step2||Receive SNI and client certificate (step1), or server certificate (step2) while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection (see Limitations). This action is the focus of this project.||
+||'''stare'''||step1, step2||Receive SNI and client certificate (step1), or server certificate (step2) while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection. Currently, we are not aware of any work being done to support this action.||
 ||'''reconnect'''||step3||Bump the SSL exchange by closing the server connection and establishing a new server connection without mimicking [some properties of] the SSL client Hello. This action allows Squid to use stronger ciphers or newer SSL version towards the server regardless of client support for those features. It also allows communication when client and server use incompatible configurations (each still compatible with Squid). On the other hand, it creates short-lived payload-free connections to servers and doubles the total number of connection to servers, which wastes resources and may trigger various server-side alarms.||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
 ||'''err'''||step1, step2, step3||Bump the client connection and return an error page. Close the server connection. The name of the Squid error page will probably be hard-coded, at least in the initial implementation. This action is not supported yet, but we hope to add support for it in the foreseeable future.||
 ||||||Older actions mentioned here for completeness sake:||
 ||'''client-first'''||step1||Ancient-style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.||
-||'''server-first'''||step1||Old-style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.||
+||'''server-first'''||step1||Old-style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.<<BR>>When used for intercepted traffic SNI is not available and the server raw-IP will be used in certificates. ||
 ||'''none'''||step1||Same as "splice" but does not support peeking and should not be used in configurations that use those steps.||
 
-All actions except peek and stare correspond to ''final'' decisions: Once an ssl_bump directive with a final action matches, no further ssl_bump evaluations will take place, regardless of the current processing step.
+All actions except peek and stare correspond to ''final'' decisions: Once an SquidConf:ssl_bump directive with a final action matches, no further SquidConf:ssl_bump evaluations will take place, regardless of the current processing step.
 
 
 == Processing steps ==
@@ -60,9 +60,9 @@ Squid configuration has to balance the desire to gain more information (by delay
 
 == New ACLs? ==
 
-'''!ServerName''': We may have to add a new dstdomain-like ACL to match the server name obtained by various means during !SslBmp steps: From CONNECT request URI, to client SNI, to SSL server certificate CN. Without such a universal ACL, it may be difficult to write rules such as serverIsBank and haveServerName in the examples below because each !SslBump step has access to an increasing number of names but has to evaluate the same set of ssl_bump ACLs. We will not add a yet another ACL if real-world use cases can be solved using existing ACLs. However, this approach is likely to hit Squid [[http://bugs.squid-cache.org/show_bug.cgi?id=4034|bug 4034]].
+'''!ServerName''': We may have to add a new dstdomain-like ACL to match the server name obtained by various means during !SslBmp steps: From CONNECT request URI, to client SNI, to SSL server certificate CN. Without such a universal ACL, it may be difficult to write rules such as serverIsBank and haveServerName in the examples below because each !SslBump step has access to an increasing number of names but has to evaluate the same set of ssl_bump ACLs. We will not add a yet another ACL if real-world use cases can be solved using existing ACLs. However, this approach is likely to hit Squid bug BUG:4034.
 
-'''!AtStep''': Squid works hard to simplify configuration by considering '''all''' ssl_bump rules during each bumping step. In some special cases, the admin may want to restrict certain rules to specific steps. This would be possible by adding !AtStep ACL that would match "!SslBump1", "!SslBump2", and "!SslBump3" or similar constants.
+'''!AtStep''': Squid works hard to simplify configuration by considering '''all''' SquidConf:ssl_bump rules during each bumping step. In some special cases, the admin may want to restrict certain rules to specific steps. This would be possible by adding !AtStep ACL that would match "!SslBump1", "!SslBump2", and "!SslBump3" or similar constants.
 
 '''!PeekingAllowsBumping''' and '''!StaringAllowsSplicing''': During step2, peeking usually precludes future bumping and staring usually precludes splicing. In the future, Squid may support ACLs that can tell whether the current transaction matches those "usual" conditions. For now, our focus is on least-invasive peeking (and not bumping) cases.
 
@@ -119,6 +119,8 @@ ssl_bump terminate all
 
 
 = Current status =
+
+ ''' This section is out of date'''
 
 The branch code is not usable "as is", but does contain a lot of critical knowledge that took us several months to discover. We have uncovered many SSL and OpenSSL limitations in the project area and were able to work around some of them. We now understand how things can work and have mostly working code for various stages of Peek and Splice.
 
