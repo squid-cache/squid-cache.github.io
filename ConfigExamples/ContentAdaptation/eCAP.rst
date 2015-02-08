@@ -111,13 +111,4 @@ if(adapted->header().hasAny(contentTypeName)) {
  this->requirements.responseContentTypeOk = true;
  }
  }
-@@ -390,9 +392,9 @@
- adapted->header().removeAny(libecap::headerContentLength);// Add informational response header
- - static const libecap::Name name("X-Ecap");
- - const libecap::Header::Value value = libecap::Area::FromTempString("VIGOS eCAP GZIP Adapter");
- - adapted->header().add(name, value);
- + // static const libecap::Name name("X-Ecap");
- + // const libecap::Header::Value value = libecap::Area::FromTempString("VIGOS eCAP GZIP Adapter");
- + // adapted->header().add(name, value);// Add "Vary: Accept-Encoding"; response header if Content-Type is "text/html";
- if(requirements.responseContentTypeOk) {
 }}}
