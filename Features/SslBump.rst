@@ -6,11 +6,13 @@
 = Feature: Squid-in-the-middle SSL Bump =
 
  * '''Goal''': Enable ICAP inspection of SSL traffic.
- * '''Version''': 3.1
+ * '''Version''': 3.1 to 3.4.
  * '''Developer''': AlexRousskov, Christos Tsantilas
  * '''More''': See also [[Features/DynamicSslCert|dynamic SSL certificate generation]] and [[Features/MimicSslServerCert|origin server certificate mimicking]] features.
 
 == Details ==
+
+ ||<style="background-color: #CC0022;"> '''This feature was replaced in Squid-3.5 by [[Features/SslPeekAndSplice|peek-n-splice]] ''' ||
 
 Squid-in-the-middle decryption and encryption of straight '''CONNECT''' and transparently redirected SSL traffic, using configurable CA certificates. While decrypted, the traffic can be analyzed, blocked, or adapted using regular Squid features such as [[Features/ICAP|ICAP]] and [[Features/eCAP|eCAP]].
 
