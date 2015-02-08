@@ -82,3 +82,42 @@ request_header_replace Accept-Encoding gzip,deflate
 to normalize Accept-Encoding to reduce vary and set gzip support first.
 
 Finally, restart your Squid and enjoy.
+
+== Support compression all text/* content types ==
+
+To support compression not only text/html, but also all text/* (i.e. text/javascript, text/plain, text/xml, text/css) types you must patch squid-ecap-gzip with this one:
+
+{{{
+--- adapter_gzip.cc 2011-02-13 17:42:20.000000000 +0300
++++ ../../adapter_gzip.cc 2012-02-26 03:37:26.000000000 +0400
+@@ -353,17 +353,19 @@
+ * At this time, only responses with "text/html" content-type are allowed to be compressed.
+ */
+ static const libecap::Name contentTypeName("Content-Type");
+ -
+ +
+ // Set default value
+ this->requirements.responseContentTypeOk = false;
+if(adapted->header().hasAny(contentTypeName)) {
+ const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
+ -
+ + std::string contentTypeType; // store contenttype substr
+ +
+ if(contentType.size > 0) {
+ std::string contentTypeString = contentType.toString(); // expensive
+ + contentTypeType = contentTypeString.substr(0,4);
+ - if(strstr(contentTypeString.c_str(),"text/html")) {
+ + if(strstr(contentTypeType.c_str(),"text")) {
+ this->requirements.responseContentTypeOk = true;
+ }
+ }
+@@ -390,9 +392,9 @@
+ adapted->header().removeAny(libecap::headerContentLength);// Add informational response header
+ - static const libecap::Name name("X-Ecap");
+ - const libecap::Header::Value value = libecap::Area::FromTempString("VIGOS eCAP GZIP Adapter");
+ - adapted->header().add(name, value);
+ + // static const libecap::Name name("X-Ecap");
+ + // const libecap::Header::Value value = libecap::Area::FromTempString("VIGOS eCAP GZIP Adapter");
+ + // adapted->header().add(name, value);// Add "Vary: Accept-Encoding"; response header if Content-Type is "text/html";
+ if(requirements.responseContentTypeOk) {
+}}}
