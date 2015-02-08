@@ -60,7 +60,7 @@ Create self-signed certificate (you will be asked to provide information that wi
 
  * using OpenSSL:
  . {{{
-openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 -keyout myCA.pem  -out myCA.pem
+openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -keyout myCA.pem  -out myCA.pem
 }}}
 
  * using GnuTLS certtool:
@@ -69,6 +69,16 @@ openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 -keyout myCA.pem  -out 
 certtool --generate-privkey --outfile ca-key.pem
 
 certtool --generate-self-signed --load-privkey ca-key.pem --outfile myCA.pem
+}}}
+
+
+You can also specify some required additional CA's attributes in openssl.cfg to reduce the questsions:
+{{{
+[ v3_req ]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+[ v3_ca ]
+keyUsage = cRLSign, keyCertSign
 }}}
 
 === Create a DER-encoded certificate to import into users' browsers ===
