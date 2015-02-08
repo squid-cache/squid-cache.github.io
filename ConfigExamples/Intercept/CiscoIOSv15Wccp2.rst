@@ -45,7 +45,7 @@ access-list 120 remark all others bypass WCCP
 access-list 120 deny   ip any any
 !
 access-list 121 remark ACL for HTTPS WCCP
-access-list 121 remark Squid proxies bypass
+access-list 121 remark Squid proxies bypass WCCP
 access-list 121 deny   ip host 192.168.200.3 any
 access-list 121 remark LAN clients proxy port 443
 access-list 121 permit tcp 192.168.0.0 0.0.255.255 any eq 443
