@@ -18,8 +18,8 @@
 
 == Pre-Built Binary Packages ==
 
-Squid 2.6 apparently bundles with CentOS. However there is apparently no publicly available information about where to find the packages or who is bundling them.
-DAG and RPMforge repositories appear to no longer contain any files. Other sources imply that CentOS is an alias for RHEL (we know otherwise). Although, yes, the RHEL packages should work on CentOS.
+Squid bundles with CentOS. However there is apparently no publicly available information about where to find the packages or who is bundling them.
+EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other sources imply that CentOS is an alias for RHEL (we know otherwise). Although, yes, the RHEL packages should work on CentOS.
 
 '''Maintainer:''' unknown
 
@@ -28,10 +28,12 @@ DAG and RPMforge repositories appear to no longer contain any files. Other sourc
 '''Eliezer''': 25/Jan/2015 - I have started building CentOS 7 RPMs but it is still on the testing phase so consider that when trying to use the Seven RPMs.
 
 '''Eliezer''': 20/Sep/2014 - I have not tested yet the CentOS 7 build and the file on the server is not for public usage.
+
+
 ## 4  = indents required for BinaryPackages page include
 
-==== Squid-3.5 beta ====
- * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
+==== Squid-3.5 ====
+ * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6
 
 The RPMs was separated into three files:
 
@@ -64,29 +66,23 @@ yum install squid
 
 
 ==== Squid-3.4 ====
- * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
+ * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6
 
 '''Eliezer''': As of 3.4.0.2 I release the squid RPM for two CPU classes OS, i686 and x86_64.
 
 Since somewhere in the 3.4 tree there was a change in the way the squid was packaged by me.
 
 The RPMs was separated into three files:
-
-- squid-VERSION.rpm
-
-- squid-helpers-VERSION.rpm
-
-- squid-debuginfo-VERSION.rpm
+ * squid-VERSION.rpm
+ * squid-helpers-VERSION.rpm
+ * squid-debuginfo-VERSION.rpm
 
 The core squid rpm will provide the basic squid forward, intercept and tproxy modes while also allowing ssl-bump.
 The helpers package contains all sorts of other helpers which are bundled with squid sources but are not essential for a basic and simple proxy.
 
 There are couple issues that needs to be fixed since there was some data loss in the transition from old server to another.
- 
-
-- The init.d script, I am working on it in my spare time.
-
-- src rpm files are at: http://www1.ngtech.co.il/rpm/centos/6/SRPMS/
+ * The init.d script, I am working on it in my spare time.
+ * src rpm files are at: http://www1.ngtech.co.il/rpm/centos/6/SRPMS/
 
 {{{
 [squid]
@@ -107,7 +103,16 @@ yum install squid
 
 ==== Squid-3.3 ====
 
- * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS
+ * Official package bundled with CentOS 7
+
+Install Procedure:
+{{{
+yum update
+yum install squid
+}}}
+
+
+ * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6
 
 {{{
 [squid]
@@ -119,12 +124,6 @@ enabled=1
 gpgcheck=0
 }}}
 
-Install Procedure:
-{{{
-yum update
-yum install squid
-}}}
-
  {i} '''Eliezer:''' a nice build from a friend that is hosted on SUSE servers.
 
 at: http://software.opensuse.org/download.html?project=home%3Aairties%3Aserver&package=squid3
@@ -134,10 +133,13 @@ wget http://download.opensuse.org/repositories/home:airties:server/CentOS_CentOS
 yum install squid3
 }}}
 
-==== Squid-2.6 ====
+==== Squid-3.1 ====
+
+ * Official package bundled with CentOS 6.6
 
 Install Procedure:
 {{{
+yum update
 yum install squid
 }}}
 
