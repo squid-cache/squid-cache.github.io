@@ -69,11 +69,8 @@ external_acl_type session concurrency=100 ttl=3 %SRC /usr/lib/squid3/ext_session
 # Pass the LOGIN command to the session helper with this ACL
 acl session_login external session LOGIN
 
-# Set up the normal session helper. Mind the wrap - this is one line:
-external_acl_type session_active_def concurrency=100 ttl=3 %SRC /usr/lib/squid3/ext_session_acl -a -T 10800 -b /var/lib/squid/session/
-
 # Normal session ACL as per simple example
-acl session_is_active external session_active_def
+acl session_is_active external session
 
 # ACL to match URL
 acl clicked_login_url url_regex -i a-url-that-must-match$
