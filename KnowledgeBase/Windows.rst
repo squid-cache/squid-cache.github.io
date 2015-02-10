@@ -155,30 +155,24 @@ url_rewrite_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd
 
 == Compiling ==
 
-When running configure, --disable-wccp and --disable-wccpv2 options should always specified to avoid compile errors.
+ . These instructions apply to building '''Squid-3.x'''. Squid-2 package are available for download. See the 
 
 '''New configure options:'''
  * --enable-win32-service
 
 '''Updated configure options:'''
- * --enable-arp-acl
  * --enable-default-hostsfile
 
 '''Unsupported configure options:'''
- * --enable-coss-aio-ops: On Windows Posix AIO is not available
  * --with-large-files: No suitable build environment is available on both Cygwin and MinGW, but --enable-large-files works fine
 
 === Compiling with Cygwin ===
 
+ . '''This section needs re-writing. Is has very little in compiling Squid and much about installation.'''
+
 In order to compile Squid, you need to have Cygwin fully installed.
 
 The usage of the Cygwin environment is very similar to other Unix/Linux environments, and -devel version of libraries must be installed.
-
- /!\ WCCP is not available on Windows so the following configure options are needed to disable them:
-{{{
-  --disable-wccp
-  --disable-wccpv2
-}}}
 
 || {i} ||Squid will by default, install into ''/usr/local/squid''. If you wish to install somewhere else, see the ''--prefix'' option for configure.||
 
@@ -209,8 +203,6 @@ In order to compile squid using the MinGW environment, the packages MSYS, MinGW 
  * libcrypt: [[http://sourceforge.net/projects/mingwrep/|MinGW packages repository]]
  * db-1.85: [[http://tiny-cobol.sourceforge.net/download.php|TinyCOBOL download area]]
   . {i} 3.2+ releases require a newer 4.6 or later version of libdb
- * uudecode: [[http://unxutils.sourceforge.net/|Native Win32 ports of some GNU utilities]]
-  . {i} 3.0+ releases do not require uudecode.
 
 Before building Squid with SSL support, some operations are needed (in the following example OpenSSL is installed in C:\OpenSSL and MinGW in C:\MinGW):
  * Copy C:\OpenSSL\lib\MinGW content to C:\MinGW\lib
@@ -221,14 +213,6 @@ Unpack the source archive as usual and run configure.
 
 The following are the recommended minimal options for Windows:
 
-'''Squid-2''' :
-{{{
---prefix=c:/squid
---disable-wccp
---disable-wccpv2
---enable-win32-service
---enable-default-hostsfile=none
-}}}
 
 '''Squid-3''' : (requires [[Squid-3.5]] or later, see porting efforts section below)
 {{{
@@ -258,18 +242,30 @@ Always check the provided release notes for any version specific detail.
 
 == Squid-3 porting efforts ==
 
-Squid series 3 has major build issues on all Windows compiler systems. Below is a summary of the known status for producing a useful Squid 3.x for Windows.
+Squid series 3 has major build issues on all Windows compiler systems. Below is a summary of the known status for producing a useful Squid 3.x for Windows. In a rough order of completeness as of the last page update.
 
-The TODO list for Windows
+The TODO list for Windows has additional wishlist items that also need to be sorted out:
 
-=== MinGW ===
-Sponsorship from iCelero produced a working [[Squid-3.2]] and [[Squid-3.3]]. Unfortunately the product and sponsorship dropped before the final stages of this work could be cleaned up for GPL release.
+ * Separate Windows AIOPS logics from Unix AIO logics. The two are currently mashed together where they should be in separate conditionally built library modules.
+ * Windows OIO support. Alternative to Unix AIO and AIOPS disk I/O functionality.
+ * Building an installer
+
+=== Cygwin ===
+
+Cygwin has working builds and available [[Squid-3.3]] packages. see above for details.
+
+[[http://www.diladele.com/|Diladele]] have sponsored development for [[Squid-3.5]] and apparently have a usable package, though have not yet published it. They are also working on a Windows Installer package.
+
+
+=== MinGW-w64 ===
 
 As of [[Squid-3.5]] :
  * the default feature set builds without extra special ./configure options.
  * missing shared socket support available in Vista and later. Necessary for SMP workers.
 
-AmosJeffries is cross-compiling with Mingw-w64 build environment on Debian, with occasional native MinGW environment builds for confirmation of changes. As this is spare-time work progress is slow.
+AmosJeffries is cross-compiling with Mingw-w64 build environment on Debian, with occasional native MinGW-w64 environment builds for confirmation of changes. As this is spare-time work progress is slow.
+
+ '''The cross-compiling:'''
 {{{
 # Debian Packages Required:
 #
@@ -292,20 +288,48 @@ AmosJeffries is cross-compiling with Mingw-w64 build environment on Debian, with
         --enable-build-info="Windows (MinGW cross-build)"
 }}}
 
+ * This builds.
+ * The squidclinet tool operates well, other helpers and tools are yet untested but expected to be fine.
+ * The main Squid binary still lacks SMP support and will only operate with the '''-N''' command line option.
+
+
+ '''The native build:'''
+{{{
+# Packages Required:
+#
+# mingw-w64 from sourceforge
+#       provides GCC cross-compiler. GCC 4.9.1 or later required.
+#
+
+sh ./configure \
+        CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        --enable-build-info="Windows (MinGW-w64)"
+}}}
+
+
+=== MinGW32 ===
+
+Sponsorship from iCelero produced a working [[Squid-3.2]] and [[Squid-3.3]]. Unfortunately the product and sponsorship dropped before the final stages of this work could be cleaned up for GPL release.
+
+As of [[Squid-3.5]] :
+ * the default feature set builds without extra special ./configure options.
+ * missing shared socket support available in Vista and later. Necessary for SMP workers.
+
+AmosJeffries is compiling with native MinGW environment. As this is spare-time work progress is slow.
+{{{
+
+./configure \
+        CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        --enable-build-info="Windows (MinGW32)"
+}}}
+
+ * This builds for [[Squid-3.5]] but not later code. A newer GCC version than supplied with MingW32 is required.
+ * The main Squid binary still lacks SMP support and will only operate with the '''-N''' command line option.
+
+
 There also appears to be some work done by Joe Pelaez Jorge (https://code.launchpad.net/~joelpelaez/squid/win32).
-
-There are additional wishlist items that also need to be sorted out:
-
- * Separate Windows AIOPS logics from Unix AIO logics. The two are currently mashed together where they should be in separate conditionally built library modules.
- * Windows OIO support. Alternative to Unix AIO and AIOPS disk I/O functionality.
- * Building an installer
-
-=== Cygwin ===
-
-Packages http://sourceware.mirrors.tds.net/pub/sourceware.org/cygwin/x86/release/squid/
-There have been unconfirmed reports from some users of building up to [[Squid-3.3]] successfully and producing a usable executable. Cygwin project provide version 3.3.3 packages.
-
-As of [[Squid-3.4]] the latest confirmed details is that there are significant build errors (bug Bug:4037). Assistance fixing this bugs issues is welcome, note that many of the build issues known are shared with MinGW and may be fixed as that work continues (or made worse).
 
 
 === Visual Studio ===
