@@ -294,13 +294,10 @@ AmosJeffries is cross-compiling with Mingw-w64 build environment on Debian, with
 
 
  '''The native build:'''
-{{{
-# Packages Required:
-#
-# mingw-w64 from sourceforge
-#       provides GCC cross-compiler. GCC 4.9.1 or later required.
-#
 
+Requires the latest packages from http://sourceforge.net/projects/mingw-w64/ with GCC 4.9 series compiler.
+
+{{{
 sh ./configure \
         CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
         CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
