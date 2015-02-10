@@ -58,7 +58,9 @@ Edit squid.conf so that authentication against MySQL db works
 
 {{{
 
-auth_param basic program /usr/local/squid/libexec/squid_db_auth --user someuser --password xxxx --plaintext --persist
+auth_param basic program /usr/local/squid/libexec/squid_db_auth \
+    --user someuser --password xxxx --plaintext --persist
+
 auth_param basic children 5
 auth_param basic realm Web-Proxy
 auth_param basic credentialsttl 1 minute
@@ -72,9 +74,25 @@ http_access deny all
 
 }}}
 
-== Testing the squid_db_auth helper ==
 
-It good idea to test the squid_db_auth helper from command line to make sure it authenticating with mysql before trying from browser.
+By default the helper connects to a MySQL database running on the local host. It can also be made to contact a remote server using the {{{--dsn}}} argument.
+
+The Data Source Name ( {{{--dsn}}} ) parameter is the option string passed to the Perl DBI module for locating the database to use.
+
+It takes the syntax:
+  . "DSN:" driver ":" params
+
+The params bit depends on what database driver (type) is. The ''' "mysql" ''' driver uses semi-colon separated key=value pairs. So you can write something like:
+{{{
+
+auth_param basic program /usr/local/squid/libexec/squid_db_auth \
+    --dsn "DSN:mysql:host=example.com;port=3306;database=squid" \
+    --user someuser --password xxxx --plaintext --persist
+}}}
+
+== Testing the helper ==
+
+It good idea to test the {{{squid_db_auth}}} helper from command line to make sure it authenticating with mysql before trying from browser.
 
 {{{
 
@@ -82,7 +100,7 @@ It good idea to test the squid_db_auth helper from command line to make sure it 
 
 }}}
 
-Type the user/password on the same line separated with space, on successful authentication it will give "OK" otherwise "ERR login failure"
+Type the username and password on the same line separated with space, on successful authentication it will give "OK" otherwise "ERR login failure"
 
 ----
 CategoryConfigExample
