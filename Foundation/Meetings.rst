@@ -18,6 +18,11 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval
  1. Review of action points from last meeting
 
+  1. Directorship Elections
+  1. Support Points
+  1. Squid 4.0 proposal
+  1. Packt
+
  1. Next meeting scheduling
  1. Open floor:
 
