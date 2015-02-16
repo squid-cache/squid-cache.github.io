@@ -32,6 +32,14 @@ There are apparently no official Slackware distributed packages of Squid. Packag
 ## Numerically highest to lowest only those currently available in the distro.
 
 ## 4  = indents required for BinaryPackages page include
+==== Squid-3.4 ====
+
+'''Maintainer:''' David Somero
+
+'''Source''': !SlackBuilds
+
+ . http://slackbuilds.org/repository/14.1/network/squid/  (3.4.10 on SlackWare 14.1)
+
 ==== Squid-3.3 ====
 
 Unofficial package provided by Helmut Hullen can be found in:
@@ -43,8 +51,8 @@ Unofficial package provided by Helmut Hullen can be found in:
 
 '''Source''': !SlackBuilds
 
- http://slackbuilds.org/repository/14.0/network/squid/  (3.1.20 on SlackWare 14.0)
- http://slackbuilds.org/repository/13.37/network/squid/ (3.1.12 on Slackware 13.37)
+ . http://slackbuilds.org/repository/14.0/network/squid/  (3.1.20 on SlackWare 14.0)
+ . http://slackbuilds.org/repository/13.37/network/squid/ (3.1.12 on Slackware 13.37)
 
 ## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
 ##Install Procedure:
