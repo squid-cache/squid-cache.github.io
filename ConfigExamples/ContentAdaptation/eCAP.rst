@@ -24,7 +24,7 @@ We are uses two different libraries for different branches of Squid.
 [[http://www.measurement-factory.com/tmp/ecap/libecap-0.2.0.tar.gz|0.2.0]] for Squid 3.4.x or
 [[http://www.measurement-factory.com/tmp/ecap/libecap-1.0.0.tar.gz|1.0.0]] for Squid 3.5.x
 
-Build and install library accordinly you Squid 32 or 64 bit versions:
+Build and install library accordingly you Squid 32 or 64 bit versions:
 {{{
 ## 32 bit
 ./configure 'CXXFLAGS=-O2 -m32 -pipe' 'CFLAGS=-O2 -m32 -pipe'
