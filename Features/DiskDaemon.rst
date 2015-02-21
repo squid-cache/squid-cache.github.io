@@ -239,7 +239,7 @@ set msgsys:msginfo_msgtql=2048
 Of course, you must reboot whenever you modify ''/etc/system''
 before changes take effect.
 
-'''Note:''' Starting with Solaris 10 8/11 release all of them parameters deprecated or remove. New Solaris IPC model is using.
+'''Note:''' Starting with Solaris 10 8/11 release all of them parameters deprecated or remove. New Solaris IPC model is using. See [[http://docs.oracle.com/cd/E23823_01/html/817-0404/index.html|Solaris Tunable Parameters Reference]]
 == How do I configure shared memory? ==
 
 
