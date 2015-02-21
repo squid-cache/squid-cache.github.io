@@ -371,7 +371,7 @@ set shmsys:shminfo_shmmni=32
 set shmsys:shminfo_shmseg=16
 }}}
 
-'''Note:''' Parameter ''shmmni'' is obsolete starting from Solaris 10 release 8/11, parameter ''shmseg'' is removed from Solaris 10 to release 8/11 and not exists now. Consult [[http://docs.oracle.com/cd/E23823_01/html/817-0404/idx-16.html|actual reference]] '''before''' change system parameters!
+'''Note:''' Parameter ''shmmni'' is obsolete starting from Solaris 10 release 8/11, parameter ''shmseg'' is removed from Solaris 10 to release 8/11 and not exists now. Consult [[http://docs.oracle.com/cd/E23823_01/html/817-0404/idx-16.html|actual reference]] '''before''' change system parameters! Also beware - ''shmmax'' in actual Solaris releases is 8,388,608 by default and appears good enough. You should not change it without good performance reasons. See [[http://docs.oracle.com/cd/E23823_01/html/817-0404/appendixa-6.html#indexterm-272|reference]] for details.
 == Sometimes shared memory and message queues aren't released when Squid exits. ==
 
 
