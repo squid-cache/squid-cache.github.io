@@ -54,7 +54,12 @@ The Client cannot buy the drug since there is a big gap between production and m
 
 == Police, Army and National Security ==
 
+Police might be able to use squid as a forensic evidence tool that will help to catch pedophiles, arms dealers, drug smugglers and many other things which might exist out-there.
+ * Squid in it's current form might not be able to prove things unless it is being used by a Squid Master.
+ * There are couple things which needs to be tuned in squid in order to make it acceptable in court as an Electronic Forensic assisting tool.
+ * If you are looking for a solution without modifying squid, you can run an ICAP service which can help to shed more light in many cases then squid debug output.([[http://www.squid-cache.org/Misc/icap.html|GreasySpoon]], [[http://c-icap.sourceforge.net/|c-icap]], [[https://github.com/netom/pyicap|pyicap]])
 
+Army and National Security can use squid to assist realtime applications take the HIT when there is a need for spreading public alerts or to be gateway to soldiers assisting devices and services.
 
 == Parenthood ==
 Pictures that parents do not want shown their child shows up on a clean site since there is a problem with the StoreID algorithm pattern matching the clean site and an alternative porn site parody of it.
