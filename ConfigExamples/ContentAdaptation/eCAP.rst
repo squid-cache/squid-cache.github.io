@@ -28,10 +28,10 @@ We are uses two different libraries for different branches of Squid.
 
 Build and install library accordingly your Squid 32-bit or 64-bit versions:
 {{{
-## 32-bit
+## 32-bit GCC
 ./configure 'CXXFLAGS=-O2 -m32 -pipe' 'CFLAGS=-O2 -m32 -pipe'
 
-## 64-bit
+## 64-bit GCC
 ./configure 'CXXFLAGS=-O2 -m64 -pipe' 'CFLAGS=-O2 -m64 -pipe'
 
 gmake
@@ -50,9 +50,9 @@ To build [[https://code.google.com/p/squid-ecap-gzip/downloads/detail?name=squid
 
 Then build squid-ecap-gzip:
 {{{
-## 32 bit
+## 32 bit GCC
 ./configure 'CXXFLAGS=-O2 -m32 -pipe' 'CFLAGS=-O2 -m32 -pipe' 'LDFLAGS=-L/usr/local/lib'
-## 64 bit
+## 64 bit GCC
 ./configure 'CXXFLAGS=-O2 -m64 -pipe' 'CFLAGS=-O2 -m64 -pipe' 'LDFLAGS=-L/usr/local/lib'
 gmake
 gmake install-strip
@@ -131,9 +131,9 @@ First you need to download eCAP ClamAV adapter from [[http://e-cap.org/Downloads
 Then you need to compile and install adapter:
 
 {{{
-## 32 bit
+## 32 bit GCC
 ./configure 'CXXFLAGS=-O3 -m32 -mtune=core2 -pipe' 'CFLAGS=-O3 -m32 -mtune=core2 -pipe' 'LDFLAGS=-L/usr/local/lib' PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CPPFLAGS=-I/usr/local/clamav/include 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
-## 64 bit
+## 64 bit GCC
 ./configure 'CXXFLAGS=-O3 -m64 -mtune=core2 -pipe' 'CFLAGS=-O3 -m64 -mtune=core2 -pipe' 'LDFLAGS=-L/usr/local/lib' PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CPPFLAGS=-I/usr/local/clamav/include 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib/amd64'
 gmake
 gmake install-strip
