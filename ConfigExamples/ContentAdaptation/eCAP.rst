@@ -119,3 +119,7 @@ if(adapted->header().hasAny(contentTypeName)) {
 }}}
 
 == Using eCAP for antivirus checking with Squid 3.x ==
+
+=== Outline ===
+
+Using eCAP for antivirus checking, like C-ICAP, may be more effective. You avoiding intermediate service (C-ICAP), and, therefore, can do antivirus checking more quickly. This is reduces total Squid installation latency.
