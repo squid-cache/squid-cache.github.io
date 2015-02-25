@@ -153,4 +153,4 @@ acl HTTP_STATUS_OK http_status 200
 adaptation_access clamav_service allow HTTP_STATUS_OK
 }}}
 
-'''Note:''' As you can see, you can easy to combine both modules with one Squid config. ;)
+'''Note:''' As you can see, you can easy to combine both modules (GZip and ClamAV) with one Squid config. ;)
