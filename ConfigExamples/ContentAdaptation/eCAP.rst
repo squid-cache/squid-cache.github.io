@@ -132,9 +132,9 @@ Then you need to compile and install adapter:
 
 {{{
 ## 32 bit GCC
-./configure 'CXXFLAGS=-O3 -m32 -mtune=core2 -pipe' 'CFLAGS=-O3 -m32 -mtune=core2 -pipe' 'LDFLAGS=-L/usr/local/lib' PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CPPFLAGS=-I/usr/local/clamav/include 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
+./configure 'CXXFLAGS=-O3 -m32 -pipe' 'CFLAGS=-O3 -m32 -pipe' 'LDFLAGS=-L/usr/local/lib' PKG_CONFIG_PATH=/usr/local/lib/pkgconfig 'CPPFLAGS=-I/usr/local/clamav/include -I/usr/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
 ## 64 bit GCC
-./configure 'CXXFLAGS=-O3 -m64 -mtune=core2 -pipe' 'CFLAGS=-O3 -m64 -mtune=core2 -pipe' 'LDFLAGS=-L/usr/local/lib' PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CPPFLAGS=-I/usr/local/clamav/include 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib/amd64'
+./configure 'CXXFLAGS=-O3 -m64 -pipe' 'CFLAGS=-O3 -m64 -pipe' 'LDFLAGS=-L/usr/local/lib' PKG_CONFIG_PATH=/usr/local/lib/pkgconfig 'CPPFLAGS=-I/usr/local/clamav/include -I/usr/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib/amd64'
 gmake
 gmake install-strip
 }}}
