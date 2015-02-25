@@ -122,7 +122,7 @@ if(adapted->header().hasAny(contentTypeName)) {
 
 === Outline ===
 
-Using eCAP for antivirus checking, like C-ICAP, may be more effective. You avoiding usage intermediate service (C-ICAP), and, therefore, can do antivirus checking more quickly. This is reduces total Squid installation latency.
+Using eCAP for antivirus checking, like C-ICAP, may be more effective. You avoiding usage intermediate service (C-ICAP), and, therefore, can do antivirus checking more quickly (Clamav daemon still required! ;)). This is reduces total Squid installation latency.
 
 === Build eCAP ClamAV adapter ===
 
