@@ -69,8 +69,8 @@ Paste the configuration file like this:
 ecap_enable on
 ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass=off
 loadable_modules /usr/local/lib/ecap_adapter_gzip.so
-acl GZIP_HTTP_STATUS http_status 200
-adaptation_access gzip_service allow GZIP_HTTP_STATUS
+acl HTTP_STATUS_OK http_status 200
+adaptation_access gzip_service allow HTTP_STATUS_OK
 
 }}}
 
@@ -123,3 +123,34 @@ if(adapted->header().hasAny(contentTypeName)) {
 === Outline ===
 
 Using eCAP for antivirus checking, like C-ICAP, may be more effective. You avoiding intermediate service (C-ICAP), and, therefore, can do antivirus checking more quickly. This is reduces total Squid installation latency.
+
+=== Build eCAP ClamAV adapter ===
+
+First you need to download eCAP ClamAV adapter from [[http://e-cap.org/Downloads|here]].
+
+Then you need to compile and install adapter:
+
+{{{
+## 32 bit
+./configure 'CXXFLAGS=-O3 -m32 -mtune=core2 -pipe' 'CFLAGS=-O3 -m32 -mtune=core2 -pipe' 'LDFLAGS=-L/usr/local/lib' PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CPPFLAGS=-I/usr/local/clamav/include 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
+## 64 bit
+./configure 'CXXFLAGS=-O3 -m64 -mtune=core2 -pipe' 'CFLAGS=-O3 -m64 -mtune=core2 -pipe' 'LDFLAGS=-L/usr/local/lib' PKG_CONFIG_PATH=/usr/local/lib/pkgconfig CPPFLAGS=-I/usr/local/clamav/include 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib/amd64'
+gmake
+gmake install-strip
+}}}
+
+'''Note:''' To use adapter with 64-bit Squid, you need also to compile ClamAV and libecap also with 64 bit. Also use appropriate adapter version for interoperability with your Squid version and used libecap.
+
+=== Squid Configuration File ===
+
+Paste the configuration file like this:
+
+{{{
+ecap_enable on
+ecap_service clamav_service respmod_precache ecap://e-cap.org/ecap_clamav bypass=off
+loadable_modules /usr/local/lib/ecap_clamav_adapter.so
+acl HTTP_STATUS_OK http_status 200
+adaptation_access clamav_service allow HTTP_STATUS_OK
+}}}
+
+'''Note:''' As you can see, you can easy to combine both modules with one Squid config. ;)
