@@ -141,7 +141,7 @@ gmake install-strip
 
 '''Note:''' To use adapter with 64-bit Squid, you need also to compile ClamAV and libecap also with 64 bit. Also use appropriate adapter version for interoperability with your Squid version and used libecap.
 
-'''Note:''' On sonme platforms (i.e. in Solaris) you must add #include <unistd.h> to src/Gadgets.h to avoid compilation error due to lack of unlink subroutine.
+'''Note:''' On some platforms (i.e. in Solaris) you must add #include <unistd.h> to src/Gadgets.h to avoid compilation error due to lack of unlink subroutine.
 
 === Squid Configuration File ===
 
