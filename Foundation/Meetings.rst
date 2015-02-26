@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2014-10-18 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''06:00 2015-03-06 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
@@ -20,11 +20,15 @@ Most of the Board discussions can be open to the public and your constructive pa
 
   1. Directorship Elections
   1. Support Points
+    * followup on meeting 15 minutes item 10.
   1. Squid 4.0 proposal
   1. Packt
+  1. west re-evaluation
+    * followup on meeting 15 minutes item 7.
 
  1. Next meeting scheduling
  1. Open floor:
+  1. Coverity request
 
 Notes:
 
@@ -61,6 +65,9 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
+||#15 ||AmosJeffries ||publish minutes of meeting 13 || not done || ||
+||#15 ||AmosJeffries ||publish minutes of meeting 14 with requested clarification || not done || ||
+
 ||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || not done || ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
