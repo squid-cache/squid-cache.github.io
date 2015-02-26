@@ -345,6 +345,8 @@ as root. Then create init-like script (named service method) with command-line a
 svcadm enable squid
 }}}
 
+You can get complete Squid SMF scripts with all needful to run it on Solaris here: [[attachment:squid_smf23.tar.gz]]
+
 == How do I tell if Squid is running? ==
 
 You can use the ''squidclient'' program:
