@@ -67,8 +67,8 @@ Paste the configuration file like this:
 {{{
 
 ecap_enable on
-ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass=off
 loadable_modules /usr/local/lib/ecap_adapter_gzip.so
+ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass=off
 acl HTTP_STATUS_OK http_status 200
 adaptation_access gzip_service allow HTTP_STATUS_OK
 
@@ -149,10 +149,11 @@ Paste the configuration file like this:
 
 {{{
 ecap_enable on
-ecap_service clamav_service respmod_precache ecap://e-cap.org/ecap_clamav bypass=off
 loadable_modules /usr/local/lib/ecap_clamav_adapter.so
-acl HTTP_STATUS_OK http_status 200
-adaptation_access clamav_service allow HTTP_STATUS_OK
+ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off
+ecap_service clamav_service_resp respmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=RESPMOD bypass=on
+adaptation_access clamav_service_req allow HTTP_STATUS_OK
+adaptation_access clamav_service_resp allow all
 }}}
 
 '''Note:''' As you can see, you can easy to combine both modules (GZip and ClamAV) with one Squid config. ;)
