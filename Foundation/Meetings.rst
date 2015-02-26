@@ -67,7 +67,6 @@ Notes:
 || ||
 ||#15 ||AmosJeffries ||publish minutes of meeting 13 || not done || ||
 ||#15 ||AmosJeffries ||publish minutes of meeting 14 with requested clarification || not done || ||
-
 ||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || not done || ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
@@ -96,6 +95,7 @@ Notes:
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
+||#15 ||2014-09-20 ||IRC || circulated ||
 ||#14 ||2014-07-12 ||IRC || circulated ||
 ||#13 ||2014-06-08 ||IRC || circulated ||
 ||#12 ||2014-05-09 ||IRC and Skype||http://www.squid-cache.org/Foundation/archive/2014/2014-05-09_board-meeting-12.html ||
