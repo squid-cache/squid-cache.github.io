@@ -190,6 +190,7 @@ To fix this run:
 {{{
 # coreadm -e global-setid
 # coreadm -e proc-setid
+# coreadm -u
 # coreadm
      global core file pattern: /var/core/core.%f.%p
      global core file content: default
