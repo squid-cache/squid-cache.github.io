@@ -122,7 +122,7 @@ if(adapted->header().hasAny(contentTypeName)) {
 
 === Outline ===
 
-Using eCAP for antivirus checking, like C-ICAP, may be more effective. You avoiding usage intermediate service (C-ICAP. ClamAV daemon still required! ;) ), and, therefore, can do antivirus checking more quickly. This is reduces total Squid installation latency.
+Using eCAP for antivirus checking, like C-ICAP, may be more effective. You avoiding usage intermediate services (C-ICAP and clamd itself, module uses libclamav), and, therefore, can do antivirus checking more quickly. This is reduces total Squid installation latency.
 
 === Build eCAP ClamAV adapter ===
 
@@ -159,4 +159,4 @@ adaptation_access clamav_service_resp allow all
 
 }}}
 
-'''Note:''' As you can see, you can easy to combine both modules (GZip and ClamAV) with one Squid config. ;)
+{X} '''Note:''' On some setups you may need to create symbolic link in $prefix//clamav/share to DatabaseDirectory path, specified in clamd.conf.
