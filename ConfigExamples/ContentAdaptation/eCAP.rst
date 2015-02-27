@@ -156,8 +156,8 @@ acl bypass_scan_types rep_mime_type -i ^text/
 acl bypass_scan_types rep_mime_type -i ^application/x-javascript
 acl bypass_scan_types rep_mime_type -i ^application/x-shockwave-flash
 acl bypass_scan_types rep_mime_type -i ^image/
-acl bypass_scan_types rep_mime_type -i video
-acl bypass_scan_types rep_mime_type -i audio
+acl bypass_scan_types rep_mime_type -i ^video
+acl bypass_scan_types rep_mime_type -i ^audio
 acl bypass_scan_types rep_mime_type -i ^.*application\/x-mms-framed.*$
 
 loadable_modules /usr/local/lib/ecap_clamav_adapter.so
@@ -188,8 +188,8 @@ acl bypass_scan_types rep_mime_type -i ^text/
 acl bypass_scan_types rep_mime_type -i ^application/x-javascript
 acl bypass_scan_types rep_mime_type -i ^application/x-shockwave-flash
 acl bypass_scan_types rep_mime_type -i ^image/
-acl bypass_scan_types rep_mime_type -i video
-acl bypass_scan_types rep_mime_type -i audio
+acl bypass_scan_types rep_mime_type -i ^video
+acl bypass_scan_types rep_mime_type -i ^audio
 acl bypass_scan_types rep_mime_type -i ^.*application\/x-mms-framed.*$
 
 loadable_modules /usr/local/lib/ecap_clamav_adapter.so
