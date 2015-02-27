@@ -178,7 +178,7 @@ This is due to semi-hardcoded db path in libclamav. Otherwise adaptation module 
 
 == Co-existing both services in one setup ==
 
-Both services can be co-exists in one squid instance:
+Both services can co-exists in one squid instance:
 
 {{{
 ecap_enable on
