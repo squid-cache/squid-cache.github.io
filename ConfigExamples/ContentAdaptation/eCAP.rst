@@ -156,9 +156,9 @@ acl bypass_scan_types rep_mime_type -i ^text/
 acl bypass_scan_types rep_mime_type -i ^application/x-javascript
 acl bypass_scan_types rep_mime_type -i ^application/x-shockwave-flash
 acl bypass_scan_types rep_mime_type -i ^image/
-acl bypass_scan_types rep_mime_type -i ^video
-acl bypass_scan_types rep_mime_type -i ^audio
-acl bypass_scan_types rep_mime_type -i ^.*application/x-mms-framed.*$
+acl bypass_scan_types rep_mime_type -i ^video/
+acl bypass_scan_types rep_mime_type -i ^audio/
+acl bypass_scan_types rep_mime_type -i ^.*application\/x-mms-framed.*$
 
 loadable_modules /usr/local/lib/ecap_clamav_adapter.so
 ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off
@@ -188,9 +188,9 @@ acl bypass_scan_types rep_mime_type -i ^text/
 acl bypass_scan_types rep_mime_type -i ^application/x-javascript
 acl bypass_scan_types rep_mime_type -i ^application/x-shockwave-flash
 acl bypass_scan_types rep_mime_type -i ^image/
-acl bypass_scan_types rep_mime_type -i ^video
-acl bypass_scan_types rep_mime_type -i ^audio
-acl bypass_scan_types rep_mime_type -i ^.*application/x-mms-framed.*$
+acl bypass_scan_types rep_mime_type -i ^video/
+acl bypass_scan_types rep_mime_type -i ^audio/
+acl bypass_scan_types rep_mime_type -i ^.*application\/x-mms-framed.*$
 
 loadable_modules /usr/local/lib/ecap_clamav_adapter.so
 ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off
