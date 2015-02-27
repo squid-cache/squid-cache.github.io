@@ -166,3 +166,24 @@ ln -s /var/lib/clamav /usr/local/clamav/share/clamav
 }}}
 
 This is due to semi-hardcoded db path in libclamav. Otherwise adaptation module will be crash Squid itself in current releases.
+
+== Co-existing both services in one setup ==
+
+Both services can be co-exists in one squid instance:
+
+{{{
+ecap_enable on
+
+loadable_modules /usr/local/lib/ecap_clamav_adapter.so
+ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off
+ecap_service clamav_service_resp respmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=RESPMOD bypass=on
+adaptation_access clamav_service_req allow all
+adaptation_access clamav_service_resp allow all
+
+acl HTTP_STATUS_OK http_status 200
+loadable_modules /usr/local/lib/ecap_adapter_gzip.so
+ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass=off
+adaptation_access gzip_service allow HTTP_STATUS_OK
+}}}
+
+{X} '''BEWARE:''' Order is important! eCAP ClamAV adapter must be preceded by Vigos adapter!
