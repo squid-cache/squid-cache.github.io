@@ -151,10 +151,19 @@ Paste the configuration file like this:
 
 ecap_enable on
 
+# Bypass scan mime-types
+acl bypass_scan_types rep_mime_type -i ^text/
+acl bypass_scan_types rep_mime_type -i ^application/x-javascript
+acl bypass_scan_types rep_mime_type -i ^application/x-shockwave-flash
+acl bypass_scan_types rep_mime_type -i ^image/
+acl bypass_scan_types rep_mime_type -i video
+acl bypass_scan_types rep_mime_type -i audio
+acl bypass_scan_types rep_mime_type -i ^.*application\/x-mms-framed.*$
+
 loadable_modules /usr/local/lib/ecap_clamav_adapter.so
 ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off
 ecap_service clamav_service_resp respmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=RESPMOD bypass=on
-adaptation_access clamav_service_req allow all
+adaptation_access clamav_service_req allow !bypass_scan_types all
 adaptation_access clamav_service_resp allow all
 
 }}}
@@ -174,10 +183,19 @@ Both services can be co-exists in one squid instance:
 {{{
 ecap_enable on
 
+# Bypass scan mime-types
+acl bypass_scan_types rep_mime_type -i ^text/
+acl bypass_scan_types rep_mime_type -i ^application/x-javascript
+acl bypass_scan_types rep_mime_type -i ^application/x-shockwave-flash
+acl bypass_scan_types rep_mime_type -i ^image/
+acl bypass_scan_types rep_mime_type -i video
+acl bypass_scan_types rep_mime_type -i audio
+acl bypass_scan_types rep_mime_type -i ^.*application\/x-mms-framed.*$
+
 loadable_modules /usr/local/lib/ecap_clamav_adapter.so
 ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off
 ecap_service clamav_service_resp respmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=RESPMOD bypass=on
-adaptation_access clamav_service_req allow all
+adaptation_access clamav_service_req allow !bypass_scan_types all
 adaptation_access clamav_service_resp allow all
 
 acl HTTP_STATUS_OK http_status 200
