@@ -166,5 +166,42 @@ You may also need to allow a larger port span for outgoing connections. This is 
 echo 1024 32768 > /proc/sys/net/ipv4/ip_local_port_range
 }}}
 
+=== Squid 3.x cannot produce core dumps on Solaris 10 and above ===
+
+If squid user has ulimit -c unlimited, squid runs from root but can't produce core dumps, check this:
+
+{{{
+# coreadm
+     global core file pattern: /var/core/core.%f.%p
+     global core file content: default
+       init core file pattern: /var/core/core.%f.%p
+       init core file content: default
+            global core dumps: enabled
+       per-process core dumps: enabled
+      global setid core dumps: disabled
+ per-process setid core dumps: disabled
+     global core dump logging: enabled
+}}}
+
+On some setups setid dumps disabled due to some reasons.
+
+To fix this run:
+
+{{{
+# coreadm -e global-setid
+# coreadm -e proc-setid
+# coreadm
+     global core file pattern: /var/core/core.%f.%p
+     global core file content: default
+       init core file pattern: /var/core/core.%f.%p
+       init core file content: default
+            global core dumps: enabled
+       per-process core dumps: enabled
+      global setid core dumps: enabled
+ per-process setid core dumps: enabled
+     global core dump logging: enabled
+}}}
+
+{X} '''Note:''' Don't edit /etc/coreadm.conf manually. Use commands above!
 ----
 CategoryKnowledgeBase
