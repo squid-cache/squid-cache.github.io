@@ -26,6 +26,29 @@ First of all, you need to build Squid with c-icap client. To do that with 3.4.x,
 }}}
 For version 3.5.x you do not have to specify this option, it enabled by default.
 
+== Squid Configuration File ==
+
+Paste the configuration file like this:
+
+{{{
+
+# -------------------------------------
+# Adaptation parameters
+# -------------------------------------
+icap_enable on
+icap_send_client_ip on
+icap_send_client_username on
+icap_client_username_encode off
+icap_client_username_header X-Authenticated-User
+icap_preview_enable on
+icap_preview_size 1024
+icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=off
+adaptation_access service_avi_req allow all
+icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=on
+adaptation_access service_avi_resp allow all
+
+}}}
+
 == Building C-ICAP server ==
 
 Download last c-icap sources from [[http://c-icap.sourceforge.net/|here]]. For antivirus checking you not needed BerkeleyDB support. Then configure as shown below and make.
@@ -64,11 +87,13 @@ Service echo srv_echo.so
 
 Edit paths if necessary and start c-icap server. Add startup script to your OS.
 
-== Build, configuring and run ClamAV daemon ==
+== Antivirus checking with ClamAV daemon and Squidclamav ==
+
+=== Build, configuring and run ClamAV daemon ===
 
 ClamAV including in many repositories and can be got from them. When configuring clamd, be very conservative with options. Defaults is good starting point. I do not recommend using [[https://developers.google.com/safe-browsing/|SafeBrowsing]] due to performance and memory issues and DetectPUA due to much false-positives. Also take care about antivirus databases updates - it will occurs often enough. I use 24 times per day. '''Note:''' ClamAV daemon (clamd) is memory consumption service, it uses about 200-300 megabytes in minimal configuration. So, you can put it on separate node with fast network interconnect with your proxy.
 
-== Build and configuring squidclamav ==
+=== Build and configuring squidclamav ===
 
 Installing [[http://squidclamav.darold.net/|SquidClamav]] requires that you already have installed the c-icap as explained above. You must provide the installation path of c-icap to the configure command as follow, compile and then install:
 
@@ -153,30 +178,13 @@ whitelist .*\.youtube.com
 }}}
 and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory. '''Note:''' You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize C-ICAP templates according to your needs.
 
-== Squid Configuration File ==
+== Antivirus checking with C-ICAP virus checking module ==
 
-Paste the configuration file like this:
+Like eCAP, you can perform antivirus checking with libclamav. This not requires daemon and fries up to 500 Mbytes (average) required to run clamd.
 
-{{{
+[[http://sourceforge.net/projects/c-icap/files/c-icap-modules/|I-CAP modules provides]] provides two submodules: using ClamAV daemon, and using libclamav only.
 
-# -------------------------------------
-# Adaptation parameters
-# -------------------------------------
-icap_enable on
-icap_send_client_ip on
-icap_send_client_username on
-icap_client_username_encode off
-icap_client_username_header X-Authenticated-User
-icap_preview_enable on
-icap_preview_size 1024
-icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=off
-adaptation_access service_avi_req allow all
-icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=on
-adaptation_access service_avi_resp allow all
-
-}}}
-
-== Testing ==
+== Testing your installation ==
 
 Point your client machine behind proxy to [[http://www.eicar.org/download/eicar_com.zip|EICAR]] test virus and make sure you're get redirected to warning page.
 
