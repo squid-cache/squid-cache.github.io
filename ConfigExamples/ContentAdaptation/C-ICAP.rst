@@ -87,7 +87,7 @@ Service echo srv_echo.so
 
 Edit paths if necessary and start c-icap server. Add startup script to your OS.
 
-== Antivirus checking with ClamAV daemon and Squidclamav ==
+== Antivirus checking with C-ICAP, ClamAV daemon and Squidclamav ==
 
 === Build, configuring and run ClamAV daemon ===
 
@@ -178,7 +178,7 @@ whitelist .*\.youtube.com
 }}}
 and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory. '''Note:''' You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize C-ICAP templates according to your needs.
 
-== Antivirus checking with C-ICAP virus checking module ==
+== Antivirus checking with C-ICAP and virus checking module ==
 
 Like eCAP, you can perform antivirus checking with libclamav. This not requires daemon and fries up to 500 Mbytes (average) required to run clamd.
 
