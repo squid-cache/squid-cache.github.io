@@ -16,7 +16,7 @@ For Squid 3.x we can use I-CAP for content filtering (like squidGuard) or antivi
 
 == Usage ==
 
-This will be useful as for the transparent and non-transparent proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency.
+This will be useful as for the transparent and non-transparent proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency. You can install all components in different tiers and interconnect them using TCP/IP.
 
 == Building Squid with C-ICAP support ==
 
@@ -88,6 +88,8 @@ Service echo srv_echo.so
 Edit paths if necessary and start c-icap server. Add startup script to your OS.
 
 == Antivirus checking with C-ICAP, ClamAV daemon and Squidclamav ==
+
+Of course, this installation requires more resources, especially when installing on single host. But also provides more flexibility and - in some cases - more scalability.
 
 === Build, configuring and run ClamAV daemon ===
 
@@ -180,7 +182,7 @@ and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where x
 
 == Antivirus checking with C-ICAP and virus checking module ==
 
-Like eCAP, you can perform antivirus checking with libclamav. This not requires daemon and fries up to 500 Mbytes (average) required to run clamd.
+Like eCAP, you can perform antivirus checking with libclamav. This not requires daemon and fries up to 500 Mbytes (average) required to run clamd. This useful for single-tier setups.
 
 [[http://sourceforge.net/projects/c-icap/files/c-icap-modules/|I-CAP modules provides]] provides two submodules: using ClamAV daemon, and using libclamav only.
 
