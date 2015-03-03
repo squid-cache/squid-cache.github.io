@@ -186,6 +186,23 @@ Like eCAP, you can perform antivirus checking with libclamav. This not requires 
 
 [[http://sourceforge.net/projects/c-icap/files/c-icap-modules/|I-CAP modules provides]] provides two submodules: using ClamAV daemon, and using libclamav only.
 
+=== Build C-ICAP modules ===
+
+[[http://sourceforge.net/projects/c-icap/files/c-icap-modules/|Download last modules]], then configuring and build according your ClamAV and C-ICAP build types (32 or 64 bit):
+
+{{{
+# 32 bit GCC
+./configure 'CFLAGS=-O3 -m32 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
+
+# 64 bit GCC
+./configure 'CFLAGS=-O3 -m64 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib/amd64'
+
+gmake
+gmake install-strip
+}}}
+
+'''Note:''' To build submodule clamav_mod (uses libclamav) you can require patch your C-ICAP installation with last fixes. It uses OpenSSL headers dependency and you can have problems with modules build. This can be workarounded if your system has older OpenSSL version (i.e. 0.9.8). To do that just add old OpenSSL headers path to CPPFLAGS variable.
+
 == Testing your installation ==
 
 Point your client machine behind proxy to [[http://www.eicar.org/download/eicar_com.zip|EICAR]] test virus and make sure you're get redirected to warning page.
