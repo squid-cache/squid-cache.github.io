@@ -16,7 +16,7 @@ For Squid 3.x we can use I-CAP for content filtering (like squidGuard) or antivi
 
 == Usage ==
 
-This will be useful as for the transparent and non-transparent proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency. You can install all components in different tiers and interconnect them using TCP/IP.
+This will be useful as for the transparent and non-transparent proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency.
 
 == Building Squid with C-ICAP support ==
 
@@ -71,7 +71,7 @@ Of course, this installation requires more resources, especially when installing
 
 === Build, configuring and run ClamAV daemon ===
 
-ClamAV including in many repositories and can be got from them. When configuring clamd, be very conservative with options. Defaults is good starting point. I do not recommend using [[https://developers.google.com/safe-browsing/|SafeBrowsing]] due to performance and memory issues and DetectPUA due to much false-positives. Also take care about antivirus databases updates - it will occurs often enough. I use 24 times per day. '''Note:''' ClamAV daemon (clamd) is memory consumption service, it uses about 200-300 megabytes in minimal configuration. So, you can put it on separate node with fast network interconnect with your proxy.
+ClamAV including in many repositories and can be got from them. When configuring clamd, be very conservative with options. Defaults is good starting point. I do not recommend using [[https://developers.google.com/safe-browsing/|SafeBrowsing]] due to performance and memory issues and DetectPUA due to much false-positives. Also take care about antivirus databases updates - it will occurs often enough. I use 24 times per day. '''Note:''' ClamAV daemon (clamd) is memory consumption service, it uses about 200-300 megabytes in minimal configuration (mainly used to store AV database in memory), it can be higher during deep scans of big archives. So, you can put it on separate node with fast network interconnect with your proxy (this option is valid only when using squidclamav).
 
 === Build and configuring squidclamav ===
 
@@ -253,10 +253,18 @@ icap_service service_avi_resp respmod_precache icap://localhost:1344/virus_scan 
 adaptation_access service_avi_resp allow all
 }}}
 
-'''Note:''' Against squidclamav, you must bypass whitelisted sites with Squid ACL's and adaptation_access directives. Also you can customize virus_scan module templates to your language etc.
+'''Note:''' Against squidclamav, you must bypass whitelisted sites with Squid ACL's and adaptation_access directives. Also you can customize virus_scan module templates to your language etc. Also beware: without clamd you will have the same 300-500 megabytes of loaded AV database to one of c-icap process with libclamav. ;) The 
 
 == Testing your installation ==
 
 Point your client machine behind proxy to [[http://www.eicar.org/download/eicar_com.zip|EICAR]] test virus and make sure you're get redirected to warning page.
 
 For really big installations you can place all checking infrastructure components on separate nodes - i.e. proxy, c-icap server, ClamAV. That's all, folks! ;)
+
+== Performance and tuning ==
+
+In practice, configuration with clamd and squidclamav is fastest. In fact, squidclamav using INSTREAM to perform AV checks, which is the best way.  You may need only adjust the amount of the workers of C-ICAP service according to your loads. You will have only two bottlenecks - the interaction your proxy server with C-ICAP and interaction C-ICAP with antivirus service. You need to reduce latency of this interactions to minimum as possible.
+
+In some cases, placing all services to single host is not a good idea. High-loaded setups must be separated between tiers.
+
+'''Note:''' C-ICAP workers produces high CPU load during scanning in all cases. You must minimize scanning as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
