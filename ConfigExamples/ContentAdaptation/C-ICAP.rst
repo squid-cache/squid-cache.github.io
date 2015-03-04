@@ -26,28 +26,6 @@ First of all, you need to build Squid with c-icap client. To do that with 3.4.x,
 }}}
 For version 3.5.x you do not have to specify this option, it enabled by default.
 
-== Squid Configuration File ==
-
-Paste the configuration file like this:
-
-{{{
-
-# -------------------------------------
-# Adaptation parameters
-# -------------------------------------
-icap_enable on
-icap_send_client_ip on
-icap_send_client_username on
-icap_client_username_encode off
-icap_client_username_header X-Authenticated-User
-icap_preview_enable on
-icap_preview_size 1024
-icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=off
-adaptation_access service_avi_req allow all
-icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=on
-adaptation_access service_avi_resp allow all
-
-}}}
 
 == Building C-ICAP server ==
 
@@ -180,6 +158,29 @@ whitelist .*\.youtube.com
 }}}
 and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory. '''Note:''' You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize C-ICAP templates according to your needs.
 
+=== Squid Configuration File ===
+
+Paste the configuration file like this:
+
+{{{
+
+# -------------------------------------
+# Adaptation parameters
+# -------------------------------------
+icap_enable on
+icap_send_client_ip on
+icap_send_client_username on
+icap_client_username_encode off
+icap_client_username_header X-Authenticated-User
+icap_preview_enable on
+icap_preview_size 1024
+icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=off
+adaptation_access service_avi_req allow all
+icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=on
+adaptation_access service_avi_resp allow all
+
+}}}
+
 == Antivirus checking with C-ICAP and virus checking module ==
 
 Like eCAP, you can perform antivirus checking with libclamav. This not requires daemon and fries up to 500 Mbytes (average) required to run clamd. This can be useful for single-tier setups.
@@ -239,6 +240,26 @@ Include virus_scan.conf
 }}}
 
 Finally restart c-icap service to accept changes.
+
+=== Squid Configuration File ===
+
+Paste the configuration file like this:
+
+{{{
+icap_enable on
+icap_send_client_ip on
+icap_send_client_username on
+icap_client_username_encode off
+icap_client_username_header X-Authenticated-User
+icap_preview_enable on
+icap_preview_size 1024
+icap_service service_avi_req reqmod_precache icap://localhost:1344/virus_scan bypass=off
+adaptation_access service_avi_req allow all
+icap_service service_avi_resp respmod_precache icap://localhost:1344/virus_scan bypass=on
+adaptation_access service_avi_resp allow all
+}}}
+
+'''Note:''' Against squidclamav, you must bypass whitelisted sites with Squid ACL's and adaptation_access directives. Also you can customize virus_scan module templates to your language etc.
 
 == Testing your installation ==
 
