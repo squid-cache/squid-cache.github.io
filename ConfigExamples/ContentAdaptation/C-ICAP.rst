@@ -247,12 +247,6 @@ Paste the configuration file like this:
 
 {{{
 icap_enable on
-icap_send_client_ip on
-icap_send_client_username on
-icap_client_username_encode off
-icap_client_username_header X-Authenticated-User
-icap_preview_enable on
-icap_preview_size 1024
 icap_service service_avi_req reqmod_precache icap://localhost:1344/virus_scan bypass=off
 adaptation_access service_avi_req allow all
 icap_service service_avi_resp respmod_precache icap://localhost:1344/virus_scan bypass=on
