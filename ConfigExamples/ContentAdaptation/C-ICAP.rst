@@ -12,7 +12,7 @@
 
 == Outline ==
 
-For Squid 3.x we can use I-CAP for content filtering (like squidGuard) or antivirus checking. This config example describes check for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for both squid 3.4.x and 3.5.x with last configuration changes.
+For Squid 3.x we can use I-CAP for content filtering (like squidGuard) or antivirus checking. This config example describes check for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for modern Squid releases (at least 3.4.10) with last configuration changes.
 
 == Usage ==
 
@@ -265,6 +265,6 @@ For really big installations you can place all checking infrastructure component
 
 In practice, configuration with clamd and squidclamav is fastest. In fact, squidclamav using INSTREAM to perform AV checks, which is the best way.  You may need only adjust the amount of the workers of C-ICAP service according to your loads. You will have only two bottlenecks - the interaction your proxy server with C-ICAP and interaction C-ICAP with antivirus service. You need to reduce latency of this interactions to minimum as possible.
 
-In some cases, placing all services to single host is not a good idea. High-loaded setups must be separated between tiers.
+In some cases, placing all services to single host is not a good idea. High-loaded setups must be separated between tiers. Avoid overload - especially in the case of installation services on a single host. Reduce memory consumption as possible. Do not set high clamd system limits - this increases latency and memory consumption and can lead to a system crash during peak hours.
 
 '''Note:''' C-ICAP workers produces high CPU load during scanning in all cases. You must minimize scanning as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
