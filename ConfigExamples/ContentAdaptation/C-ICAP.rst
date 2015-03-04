@@ -182,7 +182,7 @@ and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where x
 
 == Antivirus checking with C-ICAP and virus checking module ==
 
-Like eCAP, you can perform antivirus checking with libclamav. This not requires daemon and fries up to 500 Mbytes (average) required to run clamd. This useful for single-tier setups.
+Like eCAP, you can perform antivirus checking with libclamav. This not requires daemon and fries up to 500 Mbytes (average) required to run clamd. This can be useful for single-tier setups.
 
 [[http://sourceforge.net/projects/c-icap/files/c-icap-modules/|I-CAP modules provides]] provides two submodules: using ClamAV daemon, and using libclamav only.
 
@@ -202,6 +202,43 @@ gmake install-strip
 }}}
 
 '''Note:''' To build submodule clamav_mod (uses libclamav) you can require patch your C-ICAP installation with last fixes. It uses OpenSSL headers dependency and you can have problems with modules build. This can be workarounded if your system has older OpenSSL version (i.e. 0.9.8). To do that just add old OpenSSL headers path to CPPFLAGS variable.
+
+=== Configuring C-ICAP modules ===
+
+Add non-default parameters into clamav_mod.conf:
+
+{{{
+clamav_mod.TmpDir /var/tmp
+clamav_mod.MaxFilesInArchive 1000
+clamav_mod.MaxScanSize 50M
+clamav_mod.HeuristicScanPrecedence on
+clamav_mod.OLE2BlockMacros on
+}}}
+
+Add non-default parameters into virus_scan.conf:
+
+{{{
+virus_scan.ScanFileTypes TEXT DATA EXECUTABLE ARCHIVE DOCUMENT
+virus_scan.SendPercentData 5
+virus_scan.PassOnError on
+virus_scan.MaxObjectSize  50M
+virus_scan.DefaultEngine clamav
+Include clamav_mod.conf
+}}}
+
+Add following line at the end of c-icap.conf:
+
+{{{
+Include virus_scan.conf
+}}}
+
+'''Note:''' You also must create symbolic link in ClamAV installation directory pointed to ClamAV antivirus database directory, configured for daemon in clamd.conf, for example:
+
+{{{
+# ln -s /var/lib/clamav /usr/local/clamav/share/clamav
+}}}
+
+Finally restart c-icap service to accept changes.
 
 == Testing your installation ==
 
