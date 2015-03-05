@@ -26,6 +26,7 @@ Most of the Board discussions can be open to the public and your constructive pa
   1. west re-evaluation
     * followup on meeting 15 minutes item 7.
 
+ 1. Domain ownership transfer
  1. Next meeting scheduling
  1. Open floor:
   1. Coverity request
