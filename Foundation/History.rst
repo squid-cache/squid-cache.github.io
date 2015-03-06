@@ -9,13 +9,19 @@
 
 <<TableOfContents>>
 
+== 2015 (so far) ==
+
+ * The Board of Directors held 1 meetings so far in 2015.
+
+## TODO: add items from meeting #16 minutes under 2014 (after minutes publication)
+
 == 2014 ==
-The Board of Directors held 2 meetings in 2014.
 
  * Continued to implement the technical process for updating the copyright license of the Squid Project sources and related code.
  * Continued to seek permission from relevant license holders to amend and clarify licenses of the Squid Project sources and related code.
  * Continued to collect donation "royalties" from Squid book sales.
  * Begun documenting Squid Project administration procedures (SysAdmin/MirrorServers)
+ * The Board of Directors held 5 meetings in 2014.
 
 ## TODO: add items from meeting #12 minutes under 2014
 ## TODO: add items from meeting #13 minutes under 2014
@@ -23,33 +29,33 @@ The Board of Directors held 2 meetings in 2014.
 ## TODO: add items from meeting #15 minutes under 2014 (after minutes publication)
 
 == 2013 ==
-The Board of Directors held 5 meetings in 2013.
 
- * Continued to review and improve transparency of Board activities.
- * Redesigned the process for small Donations and begun collecting funding through the Foundation web site.
  * Located and employed a volunteer System Administrator to manage the Foundation services and hardware.
- * Board elected Francesco Chemolli as Director, Vice President.
+ * Redesigned the process for small Donations and begun collecting funding through the Foundation web site.
  * Implemented the technical process for updating the copyright license of the Squid Project sources and related code. A lot of effort has taken place to produce a reliable solution and permission from relevant license holders to amend and clarify licenses.
  * Redesigned the process for Squid software support services. A lot of collective effort has gone into designing a transparent and open procedure.
- * Been transferred copyright to the Squid Artwork by Measurement Factory.
+ * Transferred Squid Artwork copyright from The Measurement Factory to Foundation.
+ * Continued to review and improve transparency of Board activities.
  * Continued to collect donation "royalties" from Squid book sales.
+ * Board elected Francesco Chemolli as Director, Vice President.
+ * The Board of Directors held 5 meetings in 2013.
 
 == 2012 ==
-The Board of Directors held 5 meetings in 2012.
 
- * Board elected Alex Rousskov as Director, Treasurer.
- * Created essential organizational procedures for the Board of Directors.
- * Followed up on its filing for tax exempt status with the IRS.
+ * Created essential procedures for transparency of Board activities.
  * Begun the process of creating and asserting a uniform copyright license over the Squid Project source code. A lot of collaborative discussion with major Squid Project contributors and existing copyright holders has taken place.
  * Negotiated an application for assuming management of the IRCache Project.
- * Created essential procedures for transparency of Board activities.
+ * Created essential organizational procedures for the Board of Directors.
  * Collected donation "royalties" from Squid book sales.
+ * Followed up on its filing for tax exempt status with the IRS.
+ * Board elected Alex Rousskov as Director, Treasurer.
+ * The Board of Directors held 5 meetings in 2012.
 
-## TODO: add items from meeting #5 minutes (after publication)
+## TODO: add items from meeting #5 minutes
 
 == 2011 ==
-The Squid Software Foundation was incorporated in 2011 by Alex Rousskov.
 
+ * The Squid Software Foundation was incorporated in 2011 by Alex Rousskov.
  * Created essential organizational documents (including a Conflict of Interest policy) and incorporated in the state of Colorado.
  * Found legal and accounting professionals to assist with current Foundation needs.
  * Filed for tax exempt status with the IRS. A lot of collective effort went into submitting a high quality application.
