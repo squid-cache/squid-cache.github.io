@@ -12,19 +12,21 @@ Most of the Board discussions can be open to the public and your constructive pa
  * Location: IRC / Skype TBD.
 
 ==== Draft Agenda - Meeting #16 ====
+
  1. Opening of the meeting
+ 1. Directorship Elections
  1. Selection of meeting officials
  1. Agenda bashing and approval
+
  1. Last meeting minutes approval
  1. Review of action points from last meeting
 
-  1. Directorship Elections
-  1. Support Points
-    * followup on meeting 15 minutes item 10.
-  1. Squid 4.0 proposal
-  1. Packt
-  1. west re-evaluation
-    * followup on meeting 15 minutes item 7.
+ 1. Support Points
+   * followup on meeting 15 minutes item 10.
+ 1. Squid 4.0 proposal
+ 1. Packt
+ 1. west re-evaluation
+   * followup on meeting 15 minutes item 7.
 
  1. Domain ownership transfer
  1. Next meeting scheduling
