@@ -91,7 +91,7 @@ Notes:
 ||#7 ||HenrikNordstrom ||discuss the Foundation merchandise shop status with owner to have it moved to the Foundation. ||in progress ||
 ||#7 ||AmosJeffries ||contact the company accused of GPL violations to learn more about their Squid-based product distribution. ||not done ||
 || ||
-||#5 ||sysadmin||set up mail list for contacting mirrors. || reassigned to sysadmin ||
+||#5 ||sysadmin||set up mail list for contacting mirrors. || done ||
 
 
 == Past Meetings ==
