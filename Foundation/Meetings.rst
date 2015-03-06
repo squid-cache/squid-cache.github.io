@@ -66,9 +66,9 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#15 ||AmosJeffries ||publish minutes of meeting 13 || not done || ||
-||#15 ||AmosJeffries ||publish minutes of meeting 14 with requested clarification || not done || ||
-||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || not done || ||
+||#15 ||AmosJeffries ||publish minutes of meeting 13 || done || 2015-03-06 ||
+||#15 ||AmosJeffries ||publish minutes of meeting 14 with requested clarification || done || 2015-03-06 ||
+||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || not done || 2015-03-08 ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
 ||#13 ||- ||Make sure that posts via Nabble gets accepted on mailing list, enabling discussion to flow. ||not done || ||
