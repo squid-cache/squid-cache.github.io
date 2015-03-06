@@ -17,7 +17,10 @@ The Board of Directors held 2 meetings in 2014.
  * Continued to collect donation "royalties" from Squid book sales.
  * Begun documenting Squid Project administration procedures (SysAdmin/MirrorServers)
 
-## TODO: add items from meeting #12 minutes under 2014 (after minutes publication)
+## TODO: add items from meeting #12 minutes under 2014
+## TODO: add items from meeting #13 minutes under 2014
+## TODO: add items from meeting #14 minutes under 2014
+## TODO: add items from meeting #15 minutes under 2014 (after minutes publication)
 
 == 2013 ==
 The Board of Directors held 5 meetings in 2013.
