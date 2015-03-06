@@ -7,75 +7,56 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''06:00 2015-03-06 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2015-04-17 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
-==== Draft Agenda - Meeting #16 ====
+==== Draft Agenda - Meeting #17 ====
+
+ 1. Opening of the meeting
+ 1. Selection of meeting officials
+ 1. Agenda bashing and approval
+ 1. Last meeting minutes approval
+ 1. Review of action points from last meeting
+
+ 1. Next meeting scheduling
+ 1. Open floor:
+
+
+Notes:
+
+
+==== Agenda of Last Meeting ====
 
  1. Opening of the meeting
  1. Directorship Elections
  1. Selection of meeting officials
  1. Agenda bashing and approval
-
  1. Last meeting minutes approval
  1. Review of action points from last meeting
-
  1. Support Points
-   * followup on meeting 15 minutes item 10.
  1. Squid 4.0 proposal
- 1. Packt
- 1. west re-evaluation
-   * followup on meeting 15 minutes item 7.
-
+ 1. Packt Publishing
+ 1. Server west re-evaluation
  1. Domain ownership transfer
  1. Next meeting scheduling
  1. Open floor:
   1. Coverity request
+  1. mention about JPCERT CVE-2015-0881
+  1. kinkie invited to hold a speech on Squid
 
-Notes:
-
-## * Nabble: This forum copy of squid-users is causing some serious issues.
-##  . Posts which use certain quotation methods have elided details when they are delivered. Causing annoying and needless traffic re-questioning for details.
-##  . Members subscribed to Nabble but not Squid-users have been allowed to post to the forum without the message being accepted by our mailserver. Many queries and help responses are getting "lost".
-##  . Nabble members are offered the ability to erase all record of their posts to a forum. This causes the illusion that they can erase squid-users content mistakenly posted. Combined with the incomplete mesage delivery problem means whole sections of threads can be permanently lost.
-##  . Is there any way we can identify who is in control of the forum and get better settings applied?
-##  . NP: Hugo contacted
-
-## * Ways to improve development efficiency: Proposed changes posted for squid-dev review often result in long, painful, discussions that drastically increase overall change "cost", discourage new development, and encourage reviewless commits (of occasionally broken or low-quality code). Is there anything we can do to improve the process without sacrificing the quality of the accepted changes?
-
-
-## NOTES:
-##  - Mirrors: whether to update and resume using email-broken.pl notification in Foundation name. Currently From:Duane...
-
-==== Agenda of Last Meeting ====
-
- 1. Opening of the meeting
- 1. Selection of meeting officials
- 1. Agenda bashing and approval
- 1. Last meeting minutes approval
- 1. Review of action points from last meeting
- 6. Replacement server
- 7. Mailing list software
- 8. Lessons to learn from the server disaster.
- 9. Timeline for support points / support services publication
- 1. Next meeting scheduling
- 1. Open floor:
-  . no items presented.
 
 == Action Points ==
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' || '''ETA''' ||
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#15 ||AmosJeffries ||publish minutes of meeting 13 || done || 2015-03-06 ||
-||#15 ||AmosJeffries ||publish minutes of meeting 14 with requested clarification || done || 2015-03-06 ||
 ||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || not done || 2015-03-08 ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
 ||#13 ||- ||Make sure that posts via Nabble gets accepted on mailing list, enabling discussion to flow. ||not done || ||
 || ||
-||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan ||not done || ||
+||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan || not done || ||
 ||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag ||not done || ||
 || ||
 ||#11 ||FrancescoChemolli ||work with sysadmin to mail service listing email when it is approved and monitor responses/bounces ||waiting for message texts || ||
@@ -83,7 +64,6 @@ Notes:
 ||#10 ||AmosJeffries ||followup with sysadmin on possible next tasks ||in progress || ||
 || ||
 ||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
-||#9 ||HenrikNordstrom ||update and circulate draft of service status renewal mail ||not done || 2013-09-01 ||
 ||#9 ||HenrikNordstrom ||organize creation of the new shop ||not done ||
 || ||
 ||#8 ||HenrikNordstrom ||send public announcement about new sysadmin staff ||not done ||
@@ -93,11 +73,11 @@ Notes:
 ||#7 ||HenrikNordstrom ||discuss the Foundation merchandise shop status with owner to have it moved to the Foundation. ||in progress ||
 ||#7 ||AmosJeffries ||contact the company accused of GPL violations to learn more about their Squid-based product distribution. ||not done ||
 || ||
-||#5 ||sysadmin||set up mail list for contacting mirrors. || done ||
 
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
+||#16 ||2015-03-06 ||IRC || not yet written ||
 ||#15 ||2014-09-20 ||IRC || circulated ||
 ||#14 ||2014-07-12 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-07-12_board-meeting-14.html ||
 ||#13 ||2014-06-08 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-06-08_board-meeting-13.html ||
