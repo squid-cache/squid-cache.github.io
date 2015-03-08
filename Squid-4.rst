@@ -27,9 +27,11 @@ Basic new features in 3.6:
   * Configurable helper queue size, with consistent defaults and better overflow handling
   * Add url_lfs_rewrite: a URL-rewriter based on local file existence
   * SquidConf:on_unsupported_protocol directive to allow Non-HTTP bypass
+  * Removal of SquidConf:refresh_pattern ignore-auth option
+  * Remove SquidConf:cache_peer_domain directive
+  * basic_msnt_multi_domain_auth: Superceeded by basic_smb_lm_auth
 
  * '''Minor UI changes:'''
-  * basic_msnt_multi_domain_auth: Superceeded by basic_smb_lm_auth
   * Sub-millisecond transaction logging
   * ext_kerberos_ldap_group_acl -n option to disable automated SASL/GSSAPI
   * negotiate_kerberos_auth outputs group= kv-pair for use in note ACL
@@ -37,6 +39,8 @@ Basic new features in 3.6:
   * SquidConf:url_rewrite_timeout directive
   * Update localnet ACL default definition for RFC RFC:6890 compliance
   * Persistent connection timeouts SquidConf:request_start_timeout and SquidConf:pconn_lifetime
+  * Per-rule SquidConf:refresh_pattern matching statistics in cachemgr report
+  * Non-HTTP traffic bypass
 
  * '''Developer Interest changes:'''
   * C++11
@@ -46,6 +50,7 @@ Basic new features in 3.6:
   * HTTP Parser structural redesign
   * Base64 crypto API replacement
   * Enable long (--foo) command line parameters on squid binary
+  * Implemented selective debugs() output for unit tests
 
 
 The intention with this series is to improve performance using C++11 features. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v3/3.HEAD/RELEASENOTES.html#ss5.1
