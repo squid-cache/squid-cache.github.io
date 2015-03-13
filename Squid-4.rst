@@ -1,3 +1,4 @@
+## page was renamed from Squid-3.6
 #language en
 
 = Squid 4 (was 3.HEAD) =
