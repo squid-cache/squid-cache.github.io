@@ -3,7 +3,7 @@
 #language en
 
 ### XXX: how to make a title without affecting ToC?
-~+ '''Squid 3 Roadmap''' +~
+~+ '''Squid Roadmap''' +~
 
 <<TableOfContents>>
 
@@ -60,7 +60,7 @@ Features which have not reached completion or have failed the audit, are automat
 ## Currently in '''STABLE / DEPRECATED''' cycle.
 ## The features have been set and code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
 
-<<Include(Squid-3.6)>>
+<<Include(Squid-4)>>
 
 == Bug Zapping ==
 
@@ -145,7 +145,7 @@ Certain features are no longer relevant as the code improves and are planned for
 ##|| 3.2 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
 || 3.5 || dnsserver and DNS external helper API || Internal DNS client now appears to satisfy all use-cases. ||
 || 3.5 || COSS storage type || Superceded by ROCK storage type ||
-|| 3.6 || SSLv2 support || Obsolete and very broken security ||
+|| 4.0 || SSLv2 support || Obsolete and very broken security ||
 || TBD || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
 ##|| 3.3 || cachemgr_passwd || Security is better controlled by login SquidConf:acl in the SquidConf:http_access configuration ||
 ##|| 3.3 || cachemgr.cgi || Merger of report functionality into the main squid process obsoletes it as a stand-alone application. ||
