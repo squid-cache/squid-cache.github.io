@@ -12,7 +12,7 @@
 
 The set of new Squid features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching expected to be in mid or late 2015.
 
- . {X} This series of Squid requires a C++11 capable compiler. The currently known compilers which meet this criteria and build Squid reliably are GCC 4.8+, Clang 3.3+, and Intel CC 12.0+
+ . {X} This series of Squid requires a C++11 capable compiler. The currently known compilers which meet this criteria and build Squid reliably are GCC 4.9+, Clang 3.5+, and Intel CC 12.0+
 
 ## bugs down to major (all earlier releases and 'unknowns')
  . <:( [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&target_milestone=---&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| Bugs currently blocking this release ]]
