@@ -14,7 +14,7 @@ The Squid project has moved to Bazaar as its configuration management tool. See 
 
 == Developer Projects ==
 
- '''Squid-3:'''
+## '''Squid-3:'''
 https://code.launchpad.net/squid provide space for Squid developers to publish and associate their code with the Squid project.
 
 ## '''Squid-2:''' (obsolete)
@@ -27,10 +27,10 @@ During the life of the Squid project, a number of [[http://www.squid-cache.org/D
 == Contributing (Code developer) ==
 
  * '''Signing Up''' to become a developer the first step is to join the  [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]].
-   1. Send a message to: <<MailTo( squid-dev AT squid-cache DOT org)>> introducing yourself and what areas of Squid your are interested to help with the development of.
-   2. then send a message to: <<MailTo(squid-dev-subscribe AT squid-cache DOT org)>> to request to be subscribed. Subscription requests is only accepted if you have first introduced yourself to the other developers.
+   1. Send a message to {{squid-dev}} introducing yourself and what areas of Squid you are interested to help with the development of.
+Subscription requests are only accepted if you have first introduced yourself to the other developers.
 
-  || Please note that all messages must be sent in plain-text only (no HTML email).<<BR>>A read-only [[http://www.squid-cache.org/mail-archive/squid-dev/|archive]] is available to everyone. ||
+  || Please note that all messages must be sent in plain-text only (no HTML email).<<BR>>A read-only [[http://lists.squid-cache.org/pipermail/squid-dev/|archive]] (and [[http://www.squid-cache.org/mail-archive/squid-dev/|pre-Sept 2014 archive]]) are available to everyone. ||
 
 
 If you wish to contribute to Squid there are certain guidelines and processes you need to follow in your coding style working with the team. 
@@ -44,9 +44,9 @@ If you wish to contribute to Squid there are certain guidelines and processes yo
 
 There is a lot of code and wading through it at the beginning can seem difficult to start.
 
- * '''[[http://www.squid-cache.org/Doc/code/|Programming Guide]]''' auto-generated code documentation offers some (but certainly not enough) information on the Squid-3 internals with browseable links to the latest version of the code.
+ * '''[[http://www.squid-cache.org/Doc/code/|Programming Guide]]''' auto-generated code documentation offers some (but certainly not enough) information on the Squid internals with browseable links to the latest version of the code.
 
- * ''' SquidInternals ''' lso offers some more-or-less (mostly less) organized snippets.
+ * ''' SquidInternals ''' also offers some more-or-less (mostly less) organized snippets.
    . /!\ one of the TODO tasks is to clean all this up. If you are interested contact the squid-dev mailing list.
 
 
@@ -66,13 +66,13 @@ For Squid-3 we operate the development trunk and web code browsers on [[http://b
 === Repository Tools ===
 
  * '''Squid-3''': [[BzrInstructions|Bazaar]]
- * '''Squid-2''': (obsolete) [[CvsInstructions|CVS]]
+## * '''Squid-2''': (obsolete) [[CvsInstructions|CVS]]
 
 === Required Build Tools ===
 
  * autoconf 2.64 or later
  * automake 1.10 or later
- * libtool
+ * libtool 2.6 or later
  * libltdl-dev
  * [[http://cppunit.sourceforge.net/cppunit-wiki|CppUnit]] for unit testing.
 
@@ -85,16 +85,16 @@ When working from the repository code the '''bootstrap.sh''' script is required 
 
 == Contributing (Testing) ==
 
-We are currently setting up a BuildFarm. Additions to it are welcome.
+We ru nconstant integratino testing with a BuildFarm. Additions to it are welcome.
 
 
-If you are looking to test the latest release of Squid for your own use you will need to grab yourself a copy of the sources from Bazaar, CVS, rsync, or one of the daily snapshot tarballs.
+If you are looking to test the latest release of Squid for your own use you will need to grab yourself a copy of the sources from Bazaar, rsync, or one of the daily snapshot tarballs.
 
 To test a specific project branch you will need to pull the branch code directly from bzr https://code.launchpad.net/squid
 
- {i} Note that repository checkouts for Squid-3 require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
+ {i} Note that repository checkouts for Squid require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
 
-Joining the  [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]] is useful if you want to get into a lot of testing or discussion with the developers. This is optional, anyone can post to that mailing list, and reports can also be made through bugzilla. For stable series testing Bugzilla reports are encouraged.
+Joining the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]] is useful if you want to get into a lot of testing or discussion with the developers. This is optional, anyone can post to that mailing list, and reports can also be made through bugzilla. For stable series testing Bugzilla reports are encouraged.
 
 === Getting the sources via Bazaar (bzr) ===
 
@@ -102,22 +102,24 @@ see [[BzrInstructions]]
 
  /!\ When working from this repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools|above]] for the required tools and usage.
 
-
-=== Getting the sources via CVS ===
-
-see [[CvsInstructions]]
-
- {i} NP: This is primarily for Squid-2 sources. Squid-3 uses Bazaar. Though sourceforge mirror does retain a CVS mirror of Squid-3 for read-only access.
-
-
- /!\ Be aware this mirror has a fairly long delay for change updates and also does not use the revision numbers from Bazaar which the developers can often mention by number.
-
-
- /!\ When working from the Squid-3 repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools|above]] for the required tools and usage.
+## CVS MIRROR IS NOT WORKING
+##
+## === Getting the sources via CVS ===
+##
+## see [[CvsInstructions]]
+##
+##  {i} NP: This is primarily for Squid-2 sources. Squid-3 uses Bazaar. Though sourceforge mirror does retain a CVS mirror of Squid-3 for read-only access.
+##
+##
+## /!\ Be aware this mirror has a fairly long delay for change updates and also does not use the revision numbers from Bazaar which the developers can often mention by number.
+##
+##
+## /!\ When working from the Squid-3 repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools|above]] for the required tools and usage.
+##
 
 === Getting the sources via tarball ===
 
-The latest sources are available at address http://squid-cache.org/Versions/v3/3.HEAD/ with a series of previous daily snapshots of the code for testing regressions and other special circumstances.
+The latest sources are available at address [[http://squid-cache.org/Versions/]] with a series of previous daily snapshots of the code for testing regressions and other special circumstances.
 
  {i} The daily tarballs displayed are listed by date created and the Bazaar revision number included in that tarball. Gaps are expected in the list when there were no new revisions comitted that day, or when the revision failed to compile on our tarball creation machine.
 
@@ -144,7 +146,10 @@ drwxr-xr-x        1024 2010/07/02 13:10:53 squid-2
 drwxr-xr-x        1024 2010/07/02 13:17:48 squid-3.0
 drwxr-xr-x        1024 2011/03/20 19:14:21 squid-3.1
 drwxr-xr-x        1024 2011/03/20 19:14:26 squid-3.2
-drwxr-xr-x        1024 2011/03/20 19:14:13 squid-3
+drwxr-xr-x        1024 2011/03/20 19:14:26 squid-3.3
+drwxr-xr-x        1024 2011/03/20 19:14:26 squid-3.4
+drwxr-xr-x        1024 2011/03/20 19:14:26 squid-3.5
+drwxr-xr-x        1024 2011/03/20 19:14:13 squid-4
 }}}
 After you've selected the version you wish to download you can:
 {{{
