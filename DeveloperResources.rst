@@ -27,7 +27,7 @@ During the life of the Squid project, a number of [[http://www.squid-cache.org/D
 == Contributing (Code developer) ==
 
  * '''Signing Up''' to become a developer the first step is to join the  [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]].
-   1. Send a message to {{squid-dev}} introducing yourself and what areas of Squid you are interested to help with the development of.
+   1. Send a message to {{{squid-dev}}} introducing yourself and what areas of Squid you are interested to help with the development of.
 Subscription requests are only accepted if you have first introduced yourself to the other developers.
 
   || Please note that all messages must be sent in plain-text only (no HTML email).<<BR>>A read-only [[http://lists.squid-cache.org/pipermail/squid-dev/|archive]] (and [[http://www.squid-cache.org/mail-archive/squid-dev/|pre-Sept 2014 archive]]) are available to everyone. ||
