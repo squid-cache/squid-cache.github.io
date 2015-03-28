@@ -254,7 +254,7 @@ One possibility often spoken of is to replace one or more of the low-level compo
 
 == Troubleshooting ==
 
-=== Ipc::Mem::Segment::create failed to shm_open(/squid-squid-page-pool.shm): (13) Permission denied ===
+=== Ipc::Mem::Segment::create failed to shm_open(...): (13) Permission denied ===
 
 On Linux the page pool should "just work". However it is still dependent on the SHM device mapping being initialized.
 
@@ -267,6 +267,10 @@ After that use (as root):
 {{{
 mount shm
 }}}
+
+=== Ipc::Mem::Segment::create failed to shm_open(...): (2) No such file or directory ===
+
+see above.
 
 === Cannot bind socket FD NN to [::]: (13) Permission denied ===
 
