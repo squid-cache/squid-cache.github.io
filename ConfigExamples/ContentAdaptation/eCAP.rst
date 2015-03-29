@@ -14,7 +14,7 @@
 
 === Outline ===
 
-Since Squid does not support runtime content compression with GZip, we will be used existing eCAP support and [[https://code.google.com/p/squid-ecap-gzip/|GZip eCAP module]].
+Since Squid does not support runtime content compression with GZip, we will be used existing eCAP support and [[https://github.com/c-rack/squid-ecap-gzip|GZip eCAP module]].
 
 === Usage ===
 
