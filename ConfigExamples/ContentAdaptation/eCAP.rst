@@ -94,7 +94,7 @@ Finally, restart your Squid and enjoy.
 
 === Support compression all text/* content types ===
 
-To support compression not only text/html, but also all text/* (i.e. text/javascript, text/plain, text/xml, text/css) types you must patch squid-ecap-gzip with this one:
+To support compression not only text/html, but also all text/* (i.e. text/javascript, text/plain, text/xml, text/css) types you must patch squid-ecap-gzip with [[attachment:squid-ecap-gzip_all_text_compressed.patch|this one]]:
 
 {{{
 --- adapter_gzip.cc 2011-02-13 17:42:20.000000000 +0300
