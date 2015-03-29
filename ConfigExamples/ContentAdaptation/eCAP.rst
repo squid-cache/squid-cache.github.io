@@ -78,8 +78,13 @@ Also you can add next lines to your squid.conf:
 
 {{{
 
+# Normalize Accept-Encoding to reduce vary
+# and support compression via eCAP
 request_header_access Accept-Encoding deny all
 request_header_replace Accept-Encoding gzip,deflate
+# Strip User-Agent from Vary
+request_header_access Vary deny all
+request_header_replace Vary Accept-Encoding
 
 }}}
 
