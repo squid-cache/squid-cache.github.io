@@ -46,7 +46,7 @@ PKG_CONFIG_PATH pointed to libecap pkgconfig file.
 
 === Patch and build squid-ecap-gzip ===
 
-To build [[https://code.google.com/p/squid-ecap-gzip/downloads/detail?name=squid-ecap-gzip-1.3.0.tar.gz|squid-ecap-gzip]] with corresponding eCAP library, you need apply patch for [[https://squid-ecap-gzip.googlecode.com/issues/attachment?aid=60000000&name=squid-ecap-gzip_up_to_libecap-0.2.0.patch&token=ABZ6GAdPljhiRhlNsGxSZ-rFjr-zwWm83A%3A1421948630264|0.2.0]] or [[https://squid-ecap-gzip.googlecode.com/issues/attachment?aid=90001000&name=squid-ecap-gzip_up_to_libecap-1.0.0.patch&token=ABZ6GAfyRnqsm_kI_ig0T7-n-ApPMziQaw%3A1421948771042|1.0.0]] first.
+To build [[https://github.com/c-rack/squid-ecap-gzip|squid-ecap-gzip]] with corresponding eCAP library, you need apply patch for [[https://squid-ecap-gzip.googlecode.com/issues/attachment?aid=60000000&name=squid-ecap-gzip_up_to_libecap-0.2.0.patch&token=ABZ6GAdPljhiRhlNsGxSZ-rFjr-zwWm83A%3A1421948630264|0.2.0]] or [[https://squid-ecap-gzip.googlecode.com/issues/attachment?aid=90001000&name=squid-ecap-gzip_up_to_libecap-1.0.0.patch&token=ABZ6GAfyRnqsm_kI_ig0T7-n-ApPMziQaw%3A1421948771042|1.0.0]] first.
 
 Then build squid-ecap-gzip:
 {{{
