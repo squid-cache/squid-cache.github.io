@@ -18,7 +18,7 @@
 
 Squid behaviour is governed by a great many International standards and requirements. Below is a list of the standards to which Squid is expected to obey and an indication of whether we believe it does.
 
-  * This list was updated 2011-08-25. Details are believed to be accurate for the current release 3.1.14 or later.
+  * This list was updated 2015-04-08. Details are believed to be accurate for the current release 3.5.3 or later.
 
  {i} this list is known to be incomplete. If you are aware of anything important which has been omitted please [[http://bugs.squid-cache.org/|report it]] as a website bug.
 
@@ -49,7 +49,6 @@ At this point there are none on record. We are looking for information and possi
 || RFC:2518 || HTTP Extensions for Distributed Authoring -- WEBDAV || (./) || [[Squid-3.1|3.1+]] ||
 ## || RFC:2535 || DNS Security Extensions || {X} ||
 ## NOTE: changes affect RFC 3226 compliance.
-|| RFC:2616 || Hypertext Transfer Protocol -- HTTP/1.1 || almost || see [[Features/HTTP11]] ||
 || RFC:2617 || HTTP/1.1 Basic and Digest authentication || {X} || Missing support for several Digest features ||
 || RFC:2660 || The Secure HyperText Transfer Protocol (Secure-HTTP/1.4) || {X} ||
 || RFC:2756 || Hyper Text Caching Protocol (HTCP/0.0) || (./) ||
@@ -70,7 +69,16 @@ At this point there are none on record. We are looking for information and possi
 || RFC:3986 || Uniform Resource Identifier (URI): Generic Syntax || {X} || still RFC:1738 compliant ||
 || RFC:4001 || Textual Conventions for Internet Network Addresses || (./) ||
 || RFC:4559 || SPNEGO-based Kerberos and NTLM HTTP Authentication<<BR>>in Microsoft Windows || ||
+|| RFC:6585 || Additional HTTP Status Codes || (./) ||
 || RFC:6762 || Multicast DNS || (./) || client only ||
+|| RFC:7230 || Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing || almost || see [[Features/HTTP11]] ||
+|| RFC:7231 || Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content || almost || see [[Features/HTTP11]] ||
+|| RFC:7232 || Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests || almost || see [[Features/HTTP11]] ||
+|| RFC:7233 || Hypertext Transfer Protocol (HTTP/1.1): Range Requests || (./) || conditional, see [[Features/HTTP11]] ||
+|| RFC:7234 || Hypertext Transfer Protocol (HTTP/1.1): Caching || (./) || conditional, see [[Features/HTTP11]] ||
+|| RFC:7235 || Hypertext Transfer Protocol (HTTP/1.1): Authentication || (./) ||
+|| RFC:7239 || Forwarded HTTP Extension || {X} ||
+|| RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
