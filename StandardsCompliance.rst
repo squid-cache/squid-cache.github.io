@@ -85,6 +85,8 @@ At this point there are none on record. We are looking for information and possi
 || draft-wilson-wccp-v2-12-oct-2001.txt || WCCP 2.0 || almost ||
 || draft-vinod-carp-v1-03.txt || Microsoft CARP peering algorithm ||  ||
 || draft-ietf-radext-digest-auth-06.txt || RADIUS Extension for Digest Authentication ||  ||
+|| draft-ietf-httpbis-header-compression-12.txt || HPACK - Header Compression for HTTP/2 || {X} ||
+|| draft-ietf-httpbis-http2-17.txt || Hypertext Transfer Protocol version 2 || (./) || {i} no-support conditional compliance. ||
 
 ## Not directly for us.
 ## || draft-cooper-webi-wpad-00.txt || WPAD protocol ||
