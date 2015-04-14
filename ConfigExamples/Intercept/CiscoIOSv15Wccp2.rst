@@ -53,7 +53,6 @@ ip access-list extended WCCP_HTTPS
  permit tcp 192.168.0.0 0.0.255.255 any eq 443
  remark all others bypass WCCP
  deny   ip any any
-
 !
 !
 }}}
