@@ -89,7 +89,7 @@ Notes:
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
 ||#16 ||2015-03-06 ||IRC || circulated ||
-||#15 ||2014-09-20 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-09-20_board_meeting-15.html ||
+||#15 ||2014-09-20 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-09-20_board-meeting-15.html ||
 ||#14 ||2014-07-12 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-07-12_board-meeting-14.html ||
 ||#13 ||2014-06-08 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-06-08_board-meeting-13.html ||
 ||#12 ||2014-05-09 ||IRC and Skype||http://www.squid-cache.org/Foundation/archive/2014/2014-05-09_board-meeting-12.html ||
