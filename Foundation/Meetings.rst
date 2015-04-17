@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2015-04-17 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2015-05-08 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
@@ -21,6 +21,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  1. Use of Spamhaus XBL as primary mail filter
  1. Automated functionality testing
+ 1. IRCache Server
 
  1. Next meeting scheduling
  1. Open floor:
