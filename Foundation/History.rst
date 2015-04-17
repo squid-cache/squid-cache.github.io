@@ -11,22 +11,24 @@
 
 == 2015 (so far) ==
 
+ * Board elected Henrik Nordstrom as Director, President for a second term.
+ * Board elected Alex Rousskov as Director, Treasurer for a second term.
+ * Board elected Amos Jeffries as Director, Secretary for a second term.
  * The Board of Directors held 1 meetings so far in 2015.
 
-## TODO: add items from meeting #16 minutes under 2014 (after minutes publication)
+## TODO: add items from meeting #16 minutes under 2015 (after minutes publication)
 
 == 2014 ==
 
+ * Transferred Nabble Forum administration from Nabble sysadmin to Squid Project sysadmin.
+ * Approved Nabble as an official interface to the Squid Project mailing lists.
+ * Administered the migration of Squid Project services from aging hardware onto Virtual Machines
  * Continued to implement the technical process for updating the copyright license of the Squid Project sources and related code.
  * Continued to seek permission from relevant license holders to amend and clarify licenses of the Squid Project sources and related code.
  * Continued to collect donation "royalties" from Squid book sales.
+ * Created this history document for public summary of Foundation activity
  * Begun documenting Squid Project administration procedures (SysAdmin/MirrorServers)
  * The Board of Directors held 5 meetings in 2014.
-
-## TODO: add items from meeting #12 minutes under 2014
-## TODO: add items from meeting #13 minutes under 2014
-## TODO: add items from meeting #14 minutes under 2014
-## TODO: add items from meeting #15 minutes under 2014 (after minutes publication)
 
 == 2013 ==
 
@@ -42,16 +44,14 @@
 
 == 2012 ==
 
- * Created essential procedures for transparency of Board activities.
  * Begun the process of creating and asserting a uniform copyright license over the Squid Project source code. A lot of collaborative discussion with major Squid Project contributors and existing copyright holders has taken place.
  * Negotiated an application for assuming management of the IRCache Project.
+ * Created essential procedures for transparency of Board activities.
  * Created essential organizational procedures for the Board of Directors.
  * Collected donation "royalties" from Squid book sales.
  * Followed up on its filing for tax exempt status with the IRS.
  * Board elected Alex Rousskov as Director, Treasurer.
  * The Board of Directors held 5 meetings in 2012.
-
-## TODO: add items from meeting #5 minutes
 
 == 2011 ==
 
