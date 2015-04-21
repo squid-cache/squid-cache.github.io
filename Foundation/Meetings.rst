@@ -62,7 +62,7 @@ Notes:
 ||#16 || HenrikNordstrom || create a Foundation account to host .org and probably a few other domains at the registrar of his choice. Foundation to pay for the transfers and prepay for hosting.|| not done ||
 ||#16 || sysadmin || verify that there is no services left that depends on west, then Alex to take down the hardware etc.|| not done ||
 ||#16 ||UNASSIGNED || no upgrade/replacement planned for west hardware. Plan for decommission.|| not done ||
-||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || not done || 2015-03-08 ||
+||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || done || 2015-05-08 ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
 ||#13 ||- ||Make sure that posts via Nabble gets accepted on mailing list, enabling discussion to flow. ||not done || ||
