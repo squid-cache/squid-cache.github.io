@@ -62,7 +62,8 @@ The software is designed to operate on any modern system, and is known to work o
  * [[KnowledgeBase/Slackware|Slackware]]
  * [[KnowledgeBase/SLES|Novelle SuSE / SLES]]
  * [[KnowledgeBase/Ubuntu|Ubuntu]]
- * [[http://www.zenwalk.org/|ZenWalk]]
+ * !ZenWalk
+## http://www.zenwalk.org/
 
 '''Unix:'''
 
@@ -71,9 +72,10 @@ The software is designed to operate on any modern system, and is known to work o
  * IRIX
  * SCO Unix
  * [[KnowledgeBase/Solaris|Solaris]]
- * OpenIndiana
- * Onmios
+ * OmniOS
+ * !OpenIndiana
  * OSF/Digital Unix/Tru64
+## OmniOS http://omnios.omniti.com/
 
 '''[[KnowledgeBase/Windows|Windows]]:''' (Cygwin and MinGW)
 
