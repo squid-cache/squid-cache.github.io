@@ -78,7 +78,7 @@ While squid is normally distributed in source form. Some dedicated people are do
  * [[KnowledgeBase/Gentoo|Gentoo]]: Eray Aslan
  * [[KnowledgeBase/Mandrivia|Mandrivia]]: Luis Daniel Lucio Quiroz
  * [[KnowledgeBase/NetBSD|NetBSD]]: Takahiro Kambe
- * [[KnowledgeBase/RedHat|RHEL]]: Jiri Skala
+ * [[KnowledgeBase/RedHat|Red Hat Enterprise Linux]]: Lubos Uhliarik
  * [[KnowledgeBase/Solaris|Solaris]]: Steven M. Christensen
  * [[KnowledgeBase/Ubuntu|Ubuntu]]: Luigi Gangitano
  * [[KnowledgeBase/Windows|Windows]]: [[GuidoSerassio|Guido Serassio]]
