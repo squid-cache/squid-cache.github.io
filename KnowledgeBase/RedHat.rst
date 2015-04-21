@@ -9,10 +9,9 @@
 == Pre-Built Binary Packages ==
 
 ## '''Maintainer:''' 
-Eliezer Croitoru maintains squid packages for Red Hat Enterprise Linux 6. These packages are unofficial and are not supported by Red Hat. They are intended for RHEL users who would like to try newer squid packages.
+Eliezer Croitoru maintains squid packages for Red Hat Enterprise Linux. These packages are unofficial and are not supported by Red Hat. They are intended for RHEL users who would like to try newer squid packages than the version Red Hat supplies.
 
-Unofficial packages for Red Hat Enterprise Linux 4 and 5 by Jiri Skala appear to no longer be available.
-
+Lubos Uhliarik is the maintainer of the Red Hat official packages as of <<Date(2015-04-21T12:48:56Z)>>.
 
 ==== Squid-3.5 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on RHEL.
