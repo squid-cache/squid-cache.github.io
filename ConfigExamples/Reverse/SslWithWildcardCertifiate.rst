@@ -39,7 +39,7 @@ You will need to:
 <<Include(ConfigExamples/Reverse/BasicAccelerator, , from="^## begin locationwarning", to="^## end locationwarning")>>
 
 {{{
-https_port 443 defaultsite=mywebsite.mydomain.com \
+https_port 443 accel defaultsite=mywebsite.mydomain.com \
   cert=/path/to/wildcardPublicKeyCert.pem \
   key=/path/to/wildcardPrivateKeyCert.pem
 
