@@ -37,7 +37,7 @@ First, make sure the cgi-bin directory you're using is listed with a Script'''''
 {{{
 ScriptAlias /Squid/cgi-bin/ /usr/local/squid/cgi-bin/
 }}}
- (X) '''SECURITY NOTE:''' It's probably a '''bad''' idea to Script''''''Alias the entire ''/usr/local/squid/bin/'' directory where all the Squid executables live.
+ {X} '''SECURITY NOTE:''' It's probably a '''bad''' idea to !ScriptAlias the entire ''/usr/local/squid/bin/'' directory where all the Squid executables live.
 
 Next, you should ensure that only specified workstations can access the cache manager.  That is done in your Apache ''httpd.conf'', not in ''squid.conf''.  At the bottom of ''httpd.conf'' file, insert:
 
@@ -75,7 +75,7 @@ order allow,deny
 allow from workstation.example.com
 </Location>
 }}}
- (X) '''SECURITY NOTE:'''  It's possible but a '''bad''' idea to Script''''''Alias the entire ''/usr/local/squid/bin/'' directory where all the Squid executables live.
+ {X} '''SECURITY NOTE:'''  It's possible but a '''bad''' idea to !ScriptAlias the entire ''/usr/local/squid/bin/'' directory where all the Squid executables live.
 
 You should ensure that only specified workstations can access the cache manager.  That is done in your Apache ''conf.d/squid'' <Location> settings, not in ''squid.conf''.
 
