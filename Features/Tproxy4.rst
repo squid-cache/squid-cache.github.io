@@ -38,6 +38,8 @@ WCCPv2 configuration is derived from testing by Steven Wilton and Adrian Chadd. 
   * 2.6.28 to 2.6.36 are known to have ICMP and TIME_WAIT issues.
   * 2.6.32 to 2.6.34 have bridging issues on some systems.
 
+ * {i} [[Squid-3.4]] also supports TPROXY on BSD systems with PF firewall using '''divert-to''' rules in place of the Linux iptables rules.
+
 == Squid Configuration ==
 Configure build options
 
