@@ -1,10 +1,12 @@
 ##master-page:KnowledgeBaseTemplate
 ##Page-Creation-Date:03.05.2015
-##Page-Original-Author:Yuri Voinov
+##Page-Original-Author:YuriVoinov
 #format wiki
 #language en
 
 = Block QUIC protocol =
+
+''by YuriVoinov''
 
 '''Synopsis'''
 
