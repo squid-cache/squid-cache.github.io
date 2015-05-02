@@ -10,7 +10,7 @@
 
 '''Synopsis'''
 
-Force clients to use HTTP/HTTPS against QUIC.
+Force proxy clients to use HTTP/HTTPS against QUIC.
 
 '''Symptoms'''
 
@@ -20,7 +20,7 @@ You cannot see any YouTube/Google connections via access.log on proxy. Also outg
 
 Starting from 2015, some sites (i.e., Google and YouTube) offer connection via QUIC protocol. Google Chrome support it in latest versions, so connections bypass Squid and cannot be proxied or cached.
 
-QUIC uses UDP protocol over 80 and 443 port. This is abuses Squid (current versions does not support QUIC) and permits clients to bypass transparent proxies. Also suggests, that forwarding proxies can also be bypassed.
+QUIC uses UDP protocol over 80 and 443 port. This is often abuses Squid (current versions does not support QUIC) and permits clients to bypass transparent proxies. Also suggests, that forwarding proxies can also be bypassed.
 
 '''Workaround'''
 
