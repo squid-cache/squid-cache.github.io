@@ -22,7 +22,7 @@ QUIC uses UDP protocol over 80 and 443 port. This is often abuses Squid (current
 
 '''Workaround'''
 
-To completely block using QUIC by clients, you must simple block UDP on ports 80 and 443 with bith directions (in and out). This can be done via NAT/Firewall on transparent proxy, or on external network equipement.
+To completely block using QUIC by clients, you must simple block UDP on ports 80 and 443 with both directions (in and out). This can be done via NAT/Firewall on transparent proxy, or on external network equipement.
 
 Example for IPFilter on Solaris/OpenIndiana:
 
