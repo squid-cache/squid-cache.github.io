@@ -6,8 +6,6 @@
 
 = Block QUIC protocol =
 
- ''by YuriVoinov''
-
 '''Synopsis'''
 
 Force proxy clients to use HTTP/HTTPS against QUIC.
