@@ -70,6 +70,13 @@ iptables -A FORWARD -p tcp -m tcp --dport 80 -m state --state RELATED,ESTABLISHE
 iptables -A FORWARD -p tcp -m tcp --dport 443 -m state --state RELATED,ESTABLISHED -j DROP
 }}}
 
+Also you may need to block Alternate-Protocol header in server response:
+
+{{{
+# Disable alternate protocols
+reply_header_access Alternate-Protocol deny all
+}}}
+
 '''Thanks'''
 
 Thanks to Luis Miguel Silva (for Linux solution), Antony Stone and Amos Jeffries for idea. ;)
