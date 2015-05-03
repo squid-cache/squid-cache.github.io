@@ -36,8 +36,8 @@ block in all head 100
 pass in on net0 head 200
 
 # Block alternate protocols
-block return-icmp-as-dest(port-unr) in quick fastroute proto udp from any to any port=3128 keep state group 100
-block return-icmp-as-dest(port-unr) in quick fastroute proto udp from any to any port=3129 keep state group 100
+block return-icmp-as-dest(port-unr) in quick proto udp from any to any port=3128 keep state group 100
+block return-icmp-as-dest(port-unr) in quick proto udp from any to any port=3129 keep state group 100
 
 # Restrict access to proxy only from localnet (forwarding)
 pass in quick proto tcp from 192.168.0.0/16 to proxy_host_name port=3127 flags S keep state keep frag group 200
