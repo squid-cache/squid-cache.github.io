@@ -51,8 +51,8 @@ Example for Cisco iOS with route-map redirection:
 {{{
 ip access-list extended block-ports
  remark Block alternate protocols
- deny udp any any established eq 80
- deny udp any any established eq 443
+ deny udp any any eq 80
+ deny udp any any eq 443
 !
 route-map redirect_proxy permit 30
  match ip address block-ports
