@@ -36,8 +36,8 @@ block in all head 100
 pass in on net0 head 200
 
 # Block alternate protocols
-block in quick fastroute proto udp from any to any port=3128 group 100
-block in quick fastroute proto udp from any to any port=3129 group 100
+block return-icmp-as-dest(port-unr) in quick fastroute proto udp from any to any port=3128 keep state group 100
+block return-icmp-as-dest(port-unr) in quick fastroute proto udp from any to any port=3129 keep state group 100
 
 # Restrict access to proxy only from localnet (forwarding)
 pass in quick proto tcp from 192.168.0.0/16 to proxy_host_name port=3127 flags S keep state keep frag group 200
@@ -51,8 +51,8 @@ Example for Cisco iOS with route-map redirection:
 {{{
 ip access-list extended block-ports
  remark Block alternate protocols
- deny udp any any eq 80
- deny udp any any eq 443
+ deny udp any any established eq 80
+ deny udp any any established eq 443
 !
 route-map redirect_proxy permit 30
  match ip address block-ports
