@@ -56,7 +56,7 @@ ip access-list extended WCCP_HTTPS
 !
 !
 }}}
-'''Note:''' ip wccp web-cache can redirect only HTTP (port 80), so to redirect HTTPS we create another dynamic wccp-service 70 (number in range 1-254, it does not matter, but remember it to specify in squid config). Also remember, SECURITYK9/DATAK9 technology packs need to activate only in case HTTPS interception. They are not used for only HTTP redirection.
+'''Note:''' ip wccp web-cache can redirect only HTTP (port 80), so to redirect HTTPS we create another dynamic wccp-service 70 (in Cisco WCCP documentation this number dedicated to HTTPS. In general, number in range 1-254, it does not matter, but remember it to specify in squid config). Also remember, SECURITYK9/DATAK9 technology packs need to activate only in case HTTPS interception. They are not used for only HTTP redirection.
 
 Also beware, when proxy is stopped - all HTTP/HTTPS traffic bypass it and passthrough default route to next hop.
 
