@@ -6,7 +6,7 @@ The Squid project supports a big number of OSes (SquidFaq/AboutSquid has the sho
 
 FrancescoChemolli is leading this effort.
 
-'''note''': this information is mostly outdated. As of <<Date(2014-12-17T20:17:21Z)>> the build farm consists mostly of [[http://www.docker.com|Docker]]-based containers running on top of VM donated by [[http://www.rackspace.com|RackSpace]]. Project sysadmins can find documentation on the farm at /DockerBuildFarm.
+'''note''': this information is mostly outdated. As of <<Date(2014-12-17T20:17:21Z)>> the build farm consists mostly of [[http://www.docker.com|Docker]]-based containers running on top of VM donated by [[http://www.rackspace.com|RackSpace]]. Project sysadmins can find documentation at /SystemAdministration and on the Docker farm at /DockerBuildFarm.
 
 The currently maintained farm consists of:
 ||OS ||Arch ||Ver ||system-name ||Status ||
