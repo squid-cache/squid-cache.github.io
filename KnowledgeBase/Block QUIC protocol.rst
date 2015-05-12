@@ -61,6 +61,8 @@ route-map redirect_proxy permit 40
 !
 }}}
 
+'''Note:''' For Cisco WCCP you must deny UDP 80/443 port on Proxy. So, you also need explicit redirect UDP with WCCP onto proxy box.
+
 iptables:
 {{{
 iptables -A FORWARD -i net0 -p udp -m udp --dport 80 -j REJECT --reject-with icmp-port-unreachable
