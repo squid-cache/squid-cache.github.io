@@ -12,14 +12,17 @@
 ## use "completed" for completed projects
  * '''Status''': Design groundwork underway.
 
- * '''ETA''': initial support in 3.6 series.
+ * '''ETA''': initial support in 4.0 series.
 
- * '''Version''': 3.x
+ * '''Version''': 4.x
 
  * '''Developer''': AmosJeffries
 
  * '''More''':
+  * RFC RFC:7540
+  * RFC RFC:7541
   * http://tools.ietf.org/html/draft-ietf-httpbis-http2
+  * http://bugs.squid-cache.org/show_bug.cgi?id=4248
   * http://http2.github.io/
 ##  * http://www.chromium.org/spdy/spdy-proxy-examples
 
@@ -54,7 +57,7 @@ To implement a HTTP/2 receiving port in Squid we need to:
   * Huffman encoder/decoder
 
  * implement Upgrade header support:
-  * for HTTP/2.0
+  * for HTTP/2.0 and HTTP/2 labels
   * for TLS/*
 
  * implement TLS for systems where OpenSSL is not available.
