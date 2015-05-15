@@ -121,7 +121,7 @@ All of our mailing lists have "-subscribe" and "-unsubscribe" addresses that you
  * [[ftp://ftp.isi.edu/in-notes/rfc1016.txt|RFC 1016]]
 
 == What's the legal status of Squid? ==
-Squid is copyrighted by The Squid Software Foundation and contributors. Squid copyright holders are listed in the |CONTRIBUTORS file.
+Squid is copyrighted by The Squid Software Foundation and contributors. Squid copyright holders are listed in the CONTRIBUTORS file.
 
 Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], distributed under the terms of the [[http://www.gnu.org/copyleft/gpl.html|GNU General Public License]], version 2. Squid includes various software components distributed under several GPLv2-compatible open source licenses listed in the CREDITS file.
 
