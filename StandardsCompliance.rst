@@ -79,7 +79,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7235 || Hypertext Transfer Protocol (HTTP/1.1): Authentication || (./) ||
 || RFC:7239 || Forwarded HTTP Extension || {X} ||
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
-|| RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || {X} || complies with the HTTP/1.x compatibility parts ||
+|| RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. ||
 || RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} ||
 
 === IETF Drafts ===
