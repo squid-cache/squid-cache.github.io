@@ -32,7 +32,7 @@ At this point there are none on record. We are looking for information and possi
 == IEFT RFC standards ==
 
 || '''RFC''' || '''Name''' || '''Status''' ||
-|| RFC:959  || FILE TRANSFER PROTOCOL (FTP) || (./) || client only ||
+|| RFC:959  || FILE TRANSFER PROTOCOL (FTP) || (./) ||
 || RFC:1035 || DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION || (./) || client only ||
 || RFC:1157 || A Simple Network Management Protocol (SNMP) || ||
 || RFC:1738 || Uniform Resource Locators (URL) || (./) ||
@@ -62,7 +62,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:3225 || Indicating Resolver Support of DNSSEC || (./) || {i} no-support conditional compliance. ||
 || RFC:3310 || Hypertext Transfer Protocol (HTTP) Digest Authentication<<BR>>Using Authentication and Key Agreement (AKA) ||  ||
 || RFC:3493 || Basic Socket Interface Extensions for IPv6 || (./) ||
-|| RFC:3507 || Internet Content Adaptation Protocol (ICAP) || || client only ||
+|| RFC:3507 || Internet Content Adaptation Protocol (ICAP) || || client only, PRECACHE vectors only ||
 || RFC:3513 || Internet Protocol Version 6 (IPv6) Addressing Architecture || (./) ||
 || RFC:3596 || DNS Extensions to Support IP Version 6 || (./) ||
 || RFC:3875 || The Common Gateway Interface (CGI) Version 1.1 || ||
@@ -79,8 +79,8 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7235 || Hypertext Transfer Protocol (HTTP/1.1): Authentication || (./) ||
 || RFC:7239 || Forwarded HTTP Extension || {X} ||
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
-|| RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. ||
-|| RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} ||
+|| RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. see [[Features/HTTP2]] ||
+|| RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} || see [[Features/HTTP2]] ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
