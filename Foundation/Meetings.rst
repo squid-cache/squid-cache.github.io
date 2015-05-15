@@ -7,21 +7,17 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2015-05-15 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2015-06-26 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
-==== Draft Agenda - Meeting #17 ====
+==== Draft Agenda - Meeting #18 ====
 
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
-
- 1. Use of Spamhaus XBL as primary mail filter
- 1. Automated functionality testing
- 1. IRCache Server
 
  1. Next meeting scheduling
  1. Open floor:
@@ -33,21 +29,16 @@ Notes:
 ==== Agenda of Last Meeting ====
 
  1. Opening of the meeting
- 1. Directorship Elections
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
- 1. Support Points
- 1. Squid 4.0 proposal
- 1. Packt Publishing
- 1. Server west re-evaluation
- 1. Domain ownership transfer
+ 1. Use of Spamhaus XBL as primary mail filter
+ 1. Automated functionality testing
+ 1. IRCache Server
  1. Next meeting scheduling
  1. Open floor:
-  1. Coverity request
-  1. mention about JPCERT CVE-2015-0881
-  1. kinkie invited to hold a speech on Squid
+  1. copyright texts in [[SquidFaq/AboutSquid]]
 
 
 == Action Points ==
@@ -55,14 +46,16 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#16 || AmosJeffries ||publish meeting notes #15 based on draft #2 with minor corrections mentioned in mail by Alex Rousskov. || done ||
+||#17 || AmosJeffries ||publish meeting notes #16 || not done ||
+|| ||
 ||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. ||
 ||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
 ||#16 || HenrikNordstrom || create a Foundation account to host .org and probably a few other domains at the registrar of his choice. Foundation to pay for the transfers and prepay for hosting.|| not done ||
 ||#16 || sysadmin || verify that there is no services left that depends on west, then Alex to take down the hardware etc.|| not done ||
-||#16 ||UNASSIGNED || no upgrade/replacement planned for west hardware. Plan for decommission.|| not done ||
-||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || done || 2015-05-08 ||
+|| ||
+||#14 ||AmosJeffries ||apply comments from Alex on foundation history document and then publish the document || in progress done || 2015-05-20 ||
+|| ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
 ||#13 ||- ||Make sure that posts via Nabble gets accepted on mailing list, enabling discussion to flow. ||not done || ||
@@ -88,6 +81,7 @@ Notes:
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
+||#17 ||2015-05-15 ||IRC || not done ||
 ||#16 ||2015-03-06 ||IRC || circulated ||
 ||#15 ||2014-09-20 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-09-20_board-meeting-15.html ||
 ||#14 ||2014-07-12 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-07-12_board-meeting-14.html ||
