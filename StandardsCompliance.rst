@@ -79,14 +79,14 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7235 || Hypertext Transfer Protocol (HTTP/1.1): Authentication || (./) ||
 || RFC:7239 || Forwarded HTTP Extension || {X} ||
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
+|| RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || {X} || complies with the HTTP/1.x compatibility parts ||
+|| RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
 || draft-wilson-wccp-v2-12-oct-2001.txt || WCCP 2.0 || almost ||
 || draft-vinod-carp-v1-03.txt || Microsoft CARP peering algorithm ||  ||
 || draft-ietf-radext-digest-auth-06.txt || RADIUS Extension for Digest Authentication ||  ||
-|| draft-ietf-httpbis-header-compression-12.txt || HPACK - Header Compression for HTTP/2 || {X} ||
-|| draft-ietf-httpbis-http2-17.txt || Hypertext Transfer Protocol version 2 || (./) || {i} no-support conditional compliance. ||
 
 ## Not directly for us.
 ## || draft-cooper-webi-wpad-00.txt || WPAD protocol ||
