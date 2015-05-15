@@ -25,7 +25,11 @@ We needed to distinguish this new version from the Harvest cache software.  Squi
 This is best answered by the [[http://www.squid-cache.org/Versions/|the Squid Versions page]] where you can also download the sources.
 
 == Who is responsible for Squid? ==
-Squid is the result of efforts by numerous individuals from the Internet community.  The core team and main contributors list is at WhoWeAre; a list of our excellent contributors can be seen in [[http://www.squid-cache.org/CONTRIBUTORS.txt|the CONTRIBUTORS file]].
+
+Squid is the result of efforts by numerous individuals from the Internet community.
+ * The Squid Software Foundation provides representation and oversight of the Squid Project.
+ * The core team and main contributors list is at WhoWeAre.
+ * A list of our many excellent code contributors can be seen in the CONTRIBUTORS file within each copy of published sources.
 
 == Where can I get Squid? ==
 You can download Squid via FTP or HTTP from one of the many worldwide [[http://www.squid-cache.org/Download/mirrors.html|mirror sites]] or [[ftp://ftp.squid-cache.org/pub/|the primary FTP site]].
@@ -56,7 +60,7 @@ The software is designed to operate on any modern system, and is known to work o
  * [[KnowledgeBase/Fedora|Fedora]]
  * [[KnowledgeBase/Gentoo|Gentoo]]
  * Mageia
- * Mandrivia
+ * Mandriva
  * [[KnowledgeBase/OpenSUSE|OpenSUSE]]
  * [[KnowledgeBase/RedHat|RedHat Enterprise Linux]]
  * [[KnowledgeBase/Slackware|Slackware]]
@@ -117,11 +121,11 @@ All of our mailing lists have "-subscribe" and "-unsubscribe" addresses that you
  * [[ftp://ftp.isi.edu/in-notes/rfc1016.txt|RFC 1016]]
 
 == What's the legal status of Squid? ==
-Squid as a whole is copyrighted by the University of California San Diego. Squid uses some code developed by others. Individual features may be copyrighted by their contributors or sponsors.
+Squid is copyrighted by The Squid Software Foundation and contributors. Squid copyright holders are listed in the |CONTRIBUTORS file.
 
-Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], licensed under the terms of the [[http://www.gnu.org/copyleft/gpl.html|GNU General Public License]].
+Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], distributed under the terms of the [[http://www.gnu.org/copyleft/gpl.html|GNU General Public License]], version 2. Squid includes various software components distributed under several GPLv2-compatible open source licenses listed in the CREDITS file.
 
-The individual author copyrights vary between Squid release series as features are added and removed. The best source of this information is the CREDITS.txt file distributed with your particular versions source code. The latest copy for each series can also be found on the source download pages.
+Squid contributors and components change with Squid software. The appropriate CONTRIBUTORS and CREDITS files can be found in the corresponding Squid sources, available for [[http://www.squid-cache.org/Versions/|download]].
 
 <<Anchor(HowToAddOrFix)>>
 
