@@ -72,6 +72,7 @@ ip access-list extended WCCP_HTTP
  deny   ip host 192.168.200.3 any
  remark LAN clients proxy port 80
  permit tcp 192.168.0.0 0.0.255.255 any eq www
+ remark Alternate protocol workaround
  permit udp 192.168.0.0 0.0.255.255 any eq 80
  remark all others bypass WCCP
  deny   ip any any
@@ -83,6 +84,7 @@ ip access-list extended WCCP_HTTPS
  deny   ip host 192.168.200.3 any
  remark LAN clients proxy port 443
  permit tcp 192.168.0.0 0.0.255.255 any eq 443
+ remark Alternate protocol workaround
  permit udp 192.168.0.0 0.0.255.255 any eq 443
  remark all others bypass WCCP
  deny   ip any any
