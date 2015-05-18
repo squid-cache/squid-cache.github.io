@@ -26,6 +26,12 @@ To completely block using QUIC by clients, you must simple block UDP on ports 80
 
 Example for IPFilter on Solaris/OpenIndiana:
 
+ipnat.conf:
+{{{
+rdr aggr1 0.0.0.0/0 port 80 -> 0/32 port 3128 tcp
+rdr aggr1 0.0.0.0/0 port 443 -> 0/32 port 3129 tcp
+}}}
+
 ipf.conf:
 {{{
 # Group 100 - Blocked networks & packets on any interface
