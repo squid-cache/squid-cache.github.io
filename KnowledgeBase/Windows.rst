@@ -36,7 +36,7 @@ Packages available for Squid on multiple environments.
 
 Maintainer: Rafael Akchurin, [[http://www.diladele.com/|Diladele B.V.]]
 
-Bug Reporting: https://github.com/diladele/squid3-windows/issues
+Bug Reporting: (about the installer only) https://github.com/diladele/squid3-windows/issues
 
 ## Binary packages for the Cygwin environment on Windows are at:
 
