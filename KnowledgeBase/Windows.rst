@@ -32,6 +32,18 @@ On Windows 2000 and later the service is configured to use the Windows Service R
 
 Packages available for Squid on multiple environments.
 
+==== Squid-3.5 ====
+
+Maintainer: Rafael Akchurin, [[http://www.diladele.com/|Diladele B.V.]]
+
+Bug Reporting: https://github.com/diladele/squid3-windows/issues
+
+## Binary packages for the Cygwin environment on Windows are at:
+
+MSI installer packages for Windows are at:
+ * 64-bit: http://squid.diladele.com/
+
+
 ==== Squid-3.3 ====
 
 ## Maintainer: unknown
@@ -252,9 +264,7 @@ The TODO list for Windows has additional wishlist items that also need to be sor
 
 === Cygwin ===
 
-Cygwin has working builds and available [[Squid-3.3]] packages. see above for details.
-
-[[http://www.diladele.com/|Diladele]] have sponsored development for [[Squid-3.5]] and apparently have a usable package, though have not yet published it. They are also working on a Windows Installer package.
+Cygwin has working builds and available packages sponsored by [[http://www.diladele.com/|Diladele]].
 
 
 === MinGW-w64 ===
