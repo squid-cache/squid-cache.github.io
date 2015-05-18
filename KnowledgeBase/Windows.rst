@@ -54,17 +54,8 @@ Binary packages for the Cygwin environment on Windows are at:
  * 32-bit: https://cygwin.com/packages/x86/squid/
  * 64-bit: https://cygwin.com/packages/x86_64/squid/
 
-==== Squid-3.0 ====
 
-Maintainer: GuidoSerassio of [[http://www.acmeconsulting.it/|Acme Consulting S.r.l.]] 
-
-Bug Reports: http://bugs.squid-cache.org/
-
- . {X} '''NOTE:''' this package is experimental and known to contain major bugs.
-
-Binary packages built using the Microsoft toolchain for Windows NT/2000/XP/2003 are at http://squid.acmeconsulting.it/
-
-==== Squid-2.7 / Squid-2.6 ====
+==== Squid-2.7 ====
 
 Maintainer: GuidoSerassio of [[http://www.acmeconsulting.it/|Acme Consulting S.r.l.]] 
 
