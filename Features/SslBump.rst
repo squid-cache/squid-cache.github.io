@@ -12,7 +12,7 @@
 
 == Details ==
 
- ||<style="background-color: #CC0022;"> '''This feature was replaced in Squid-3.5 by [[Features/SslPeekAndSplice|peek-n-splice]] ''' ||
+ ||<style="background-color: #CC0022;color:yellow;"> '''This feature was replaced in Squid-3.5 by [[Features/SslPeekAndSplice|peek-n-splice]] ''' ||
 
 Squid-in-the-middle decryption and encryption of straight '''CONNECT''' and transparently redirected SSL traffic, using configurable CA certificates. While decrypted, the traffic can be analyzed, blocked, or adapted using regular Squid features such as [[Features/ICAP|ICAP]] and [[Features/eCAP|eCAP]].
 
