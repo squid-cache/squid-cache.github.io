@@ -40,6 +40,8 @@ make all
 make install
 }}}
 
+ . /!\ NOTE: [[Squid-3.5]] requries '''--with-openssl''' instead of --enable-ssl
+
 ## tlscacert begin
 === Create Self-Signed Root CA Certificate ===
 
@@ -105,23 +107,18 @@ In theory, you must either import your root certificate into browsers or instruc
 ## tlscacert end
 
 === Configure Squid ===
+
 Open squid.conf for editing, find SquidConf:http_port option and add certificate-related options. For example:
 
  . {{{
 http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/etc/squid/ssl_cert/myCA.pem
 }}}
 
-Also add the following lines to enable SSL bumping:
 
- . {{{
-always_direct allow all
-ssl_bump allow all
-# the following two options are unsafe and not always necessary:
-sslproxy_cert_error allow all
-sslproxy_flags DONT_VERIFY_PEER
-}}}
+You will also need to add SquidConf:ssl_bump rules enabling HTTPS decryption.
+see [[Features/SslPeekAndSplice|peek-n-splice]] for newer [[Squid-3.5] or later details.
+see [[Features/SslBump|SSL-Bump]] for older [[Squid-3.3]] or [[Squid-3.4]] details.
 
-Configure access permissions according to your requirements: in the above configuration, the 'allow all' rules are given only as an example.
 
 Additional configuration options (see below) can be added to squid.conf to tune the certificate helper configuration, but they are not required. If omitted, default values will be used.
 
@@ -130,11 +127,7 @@ sslcrtd_program /usr/local/squid/libexec/ssl_crtd -s /usr/local/squid/var/lib/ss
 sslcrtd_children 5
 }}}
 
-Default disk cache size is 4MB ('-M 4MB' above), which in general will be enough to store ~1000 certificates,
-
- . if Squid is used in busy environments this may need to be increased, as well as the number of 'sslcrtd_children'.
-
-More information about the configuration options above can be found in {{{/usr/local/squid/etc/squid.conf.documented}}} or equivalent
+SquidConf:sslcrtd_program default disk cache size is 4MB ('-M 4MB' above), which in general will be enough to store ~1000 certificates. If Squid is used in busy environments this may need to be increased, as well as the number of SquidConf:sslcrtd_children.
 
 Prepare directory for caching certificates:
 
@@ -157,6 +150,9 @@ chown -R nobody /usr/local/squid/var/lib/ssl_db
 Now you can start Squid, modify users' browsers settings to use the proxy (if needed), and make sure that the signing certificate is correctly imported into the browsers. If everything was done correctly, Squid should process HTTPS sites without any warnings.
 
 == Limitations ==
+
+ ||<style="background-color: #CC0022;color:yellow;"> '''This section is outdated. The below limitations were resolved in [[Squid-3.5]] by [[Features/SslPeekAndSplice|peek-n-splice]] ''' ||
+
 === No dynamically generated certificates for intercepted connections ===
 While [[Features/SslBump|SslBump]] itself works fine in transparent redirection environments (e.g. those using WCCP or iptables), dynamic certificate generation does not: To generate the certificate dynamically, Squid must know the server domain name. That information is not available at the time the HTTPS client TCP connection is intercepted and bumped. Currently, you cannot use dynamic certificate generation for transparent connections until [[Features/BumpSslServerFirst|bump-server-first]] is supported.
 
