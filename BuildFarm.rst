@@ -24,13 +24,13 @@ The currently maintained farm consists of:
 ||x64 ||12.3 ||rs-suse-12.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||<style="text-align:center" |2>[[http://mandriva.com/|Mandriva]] ||
 ||x32 ||2011.0 ||mandriva-x86 || {OK} ||
-||<style="text-align:center" |6>[[http://www.debian.org/|Debian]] ||
+||<style="text-align:center" |5>[[http://www.debian.org/|Debian]] ||
 ||ARM ||6.0 (squeeze) ||sheeva-debian-squeeze || {OK} ||
 ||x64 ||wheezy ||rs-debian-wheezy.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||x64 ||sid ||rs-debian-unstable.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||x32 ||sid ||rs-debian-unstable-x86.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||[[http://www.openbsd.org/|OpenBSD]] || x64 ||4.8 ||obsd-48-x64 || {OK} [[BuildFarm/OpenBsdInstall|Installation guide]] ||
-||<style="text-align:center" |4>[[http://www.freebsd.org/|FreeBSD]] ||
+||<style="text-align:center" |2>[[http://www.freebsd.org/|FreeBSD]] ||
 ||x64 ||9.1 ||rs-fbsd-91.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]]; [[BuildFarm/FreeBsdInstall|Installation guide]] ||
 ||<style="text-align:center" |4>[[http://www.microsoft.com/windows/default.aspx|MS Windows]] ||
 ||MinGW x32 ||5.2 (2003 Server) ||mswin ||Sponsored. ||
