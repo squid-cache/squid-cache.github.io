@@ -21,17 +21,15 @@
  * '''More''':
   * RFC RFC:7540
   * RFC RFC:7541
-  * http://tools.ietf.org/html/draft-ietf-httpbis-http2
-  * http://bugs.squid-cache.org/show_bug.cgi?id=4248
+  * Bug Bug:4248
   * http://http2.github.io/
-##  * http://www.chromium.org/spdy/spdy-proxy-examples
 
 = Details =
 
-HTTP/2 is being designed loosly based on the SPDY experimental protocol for framing HTTP requests in a multiplexed fashion over SSL connections. Avoiding the pipeline issues which HTTP has with its dependency on stateful "\r\n" frame boundaries.
+HTTP/2 was designed loosly based on the SPDY experimental protocol for framing HTTP requests in a multiplexed fashion over SSL connections. Avoiding the pipeline issues which HTTP has with its dependency on stateful "\r\n" frame boundaries.
 
 HTTP/2 has some major differences however:
- * HTTP/2.0 contains a magic connection prefix for automated protocol switching with HTTP/1.1 and HTTP/1.0
+ * HTTP/2 contains a magic connection prefix for automated protocol switching with HTTP/1.1 and HTTP/1.0
  * Frame layout has been significantly optimized for HTTP messaging outside web browser usages.
  * TLS is optional
  * Compression algorithms have been rewoven specifically for HTTP performance and to avoid security vulnerabilities in gzip compression as used in SPDY.
@@ -57,7 +55,7 @@ To implement a HTTP/2 receiving port in Squid we need to:
   * Huffman encoder/decoder
 
  * implement Upgrade header support:
-  * for HTTP/2.0 and HTTP/2 labels
+  * for h2c label
   * for TLS/*
 
  * implement TLS for systems where OpenSSL is not available.
@@ -67,7 +65,7 @@ To implement a HTTP/2 receiving port in Squid we need to:
 
 === Progress ===
 
-'''Completed: (in Squid-3 trunk)'''
+'''Completed: (in Squid-3)'''
  * Solve Bug Bug:3371 interference with our ability to detect and relay HTTP/2 transparently
 
 '''Completed: (in http2 branch)'''
