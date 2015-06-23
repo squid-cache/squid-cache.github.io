@@ -203,6 +203,8 @@ Signed-off-by: David S. Miller
 
 === NFQUEUE to mark flowing connection ===
 === Examples ===
+
+==== Round Robin mark selection ====
  * An example for a RoundRobin LB between 3 iptables marks using NFQUEUE mark_verdict
 {{{
 #!highlight python
@@ -252,6 +254,56 @@ daemon_runner = runner.DaemonRunner(app)
 daemon_runner.do_action()
 }}}
 
+==== Least Connections selection algorithm example ====
+
+{{{
+#!highlight python
+#!/usr/bin/env python
+import time
+import sys
+import commands
+import os
+#from daemon import runner
+import nfqueue, socket
+from scapy.all import *
+
+queue = deque([1, 2, 3])
+
+def get_queue():
+    
+    mark = 1
+    res1 =  commands.getstatusoutput('conntrack -L 2>/dev/null|grep mark=1|grep ESTABLISHED |wc -l')
+    res2 =  commands.getstatusoutput('conntrack -L 2>/dev/null|grep mark=2|grep ESTABLISHED |wc -l')
+    res3 =  commands.getstatusoutput('conntrack -L 2>/dev/null|grep mark=3|grep ESTABLISHED |wc -l')
+    if not int(res1[1]) < int(res2[1]) or not int(res1[1]) < int(res3[1]):
+        mark = 1
+    if not int(res2[1]) < int(res1[1]) or not int(res2[1]) < int(res3[1]):
+        mark = 2
+    if not int(res3[1]) < int(res2[1]) or not int(res3[1]) < int(res1[1]):
+        mark = 3
+    return mark
+
+#Set the callback for received packets:
+def cb(i,payload):
+    data = payload.get_data()
+    p = IP(data)
+    mark = get_queue()
+    payload.set_verdict_mark(nfqueue.NF_REPEAT, mark) #4 = nfqueue.NF_REPEAT
+
+q = nfqueue.queue()
+q.set_callback(cb)
+q.open()
+q.create_queue(0)
+try:
+  q.try_run()
+except KeyboardInterrupt, e:
+  print "interruption"
+
+q.unbind(socket.AF_INET)
+q.close()
+}}} 
+
+==== iptables rules example ====
 * Example NFQUEUE(0) iptables rules that shows how a connection is being marked by the python helper and then a log target is counting the packets.
 {{{
 #!highlight bash
@@ -274,6 +326,7 @@ $IPTABLES -t mangle -A PREROUTING -m mark --mark 2 -j LOG --log-prefix "post, ma
 $IPTABLES -t mangle -A PREROUTING -m mark --mark 3 -j LOG --log-prefix "post, mark 3: "
 }}}
 
+==== example statistics of iptables  with marks ====
  * An example output of iptables statistics of a running nfqueue marking setup.
 {{{
 $ sudo iptables -t mangle -L PREROUTING -nv
