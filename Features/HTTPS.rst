@@ -58,6 +58,7 @@ When a browser creates a direct secure connection with an origin server, there a
 == Direct SSL/TLS connection to a reverse proxy ==
 
 Squid-2.5 and later can terminate TLS or SSL connections. You must have built with ''--enable-ssl''. See SquidConf:https_port for more information.
+Squid-3.5 and later autodetect the availability of ssl librarioes (GnuTLS or openss) and enable the functionality if available. If openssl is installed in a nonstandard location you may need to use the ''with-openssl=PATH'' configure option. See ''configure --help'' for details
 
 This is perhaps most useful in a surrogate (aka, http accelerator, reverse proxy) configuration. Simply configure Squid with a normal [[ConfigExamples#Reverse_Proxy_.28Acceleration.29|reverse proxy]] configuration using port 443 and SSL certificate details on an SquidConf:https_port line.
 
