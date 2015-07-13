@@ -80,7 +80,7 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 
 == QUIC/SPDY protocol blocking ==
 
-Note: In most modern installation you may want (and you must) to block alternate protocols: SPDY and/or QUIC.
+Note: In most modern installations you may want (and you must) to block alternate protocols: SPDY and/or QUIC.
 
 To do that, please use '''[[http://wiki.squid-cache.org/KnowledgeBase/Block%20QUIC%20protocol|this instructions]]'''.
 
