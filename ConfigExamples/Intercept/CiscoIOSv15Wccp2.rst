@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Configuring a Cisco IOS 15.5(1)T with WCCPv2 Interception =
+= Configuring a Cisco IOS 15.5(2)T1 with WCCPv2 Interception =
 
  ''by YuriVoinov''
 
@@ -20,7 +20,7 @@ The router runs Cisco IOS Software, Version 15.5(1)T, with SECURITYK9 and DATAK9
 
 Router has both router/switch functionality, so we can use both GRE/L2 redirection methods.
 ## start feature include
-== Cisco IOS 15.5(1)T router ==
+== Cisco IOS 15.5(2)T1 router ==
 {{{
 !
 ip cef
@@ -88,6 +88,6 @@ To do that, please use '''[[http://wiki.squid-cache.org/KnowledgeBase/Block%20QU
 
 This configuration example used on Cisco 2911 with Squid 3.x. As you can see, you can configure your environment for different ports interception.
 
-/!\ /!\ /!\ This configuration was initially tested and fully operated on Cisco iOS versions 15.4(1)T and 15.4(3)M. {OK} {OK} {OK}
+/!\ /!\ /!\ This configuration was initially tested and fully operated on Cisco iOS versions 15.4(1)T, 15.4(3)M and 15.5(1)T. {OK} {OK} {OK}
 ----
 CategoryConfigExample
