@@ -78,10 +78,16 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 '''Note:''' This example uses L2 redirecting (for OSes without native GRE support). Beware, wccp2_rebuild_wait sends "Here I am" message to router when proxy is ready to serve requests, without cache rebuilding complere. Also, both - router and proxy - uses port 2048 to communicate with WCCP. So, this port must be open in firewalls.
 ## end feature include
 
+== QUIC/SPDY protocol blocking ==
+
+Note: In most modern installation you may want (and you must) to block alternate protocols: SPDY and/or QUIC.
+
+To do that, please use '''[[http://wiki.squid-cache.org/KnowledgeBase/Block%20QUIC%20protocol|this instructions]]'''.
+
 == Conclusion ==
 
 This configuration example used on Cisco 2911 with Squid 3.x. As you can see, you can configure your environment for different ports interception.
 
 /!\ /!\ /!\ This configuration was initially tested and fully operated on Cisco iOS versions 15.4(1)T and 15.4(3)M. {OK} {OK} {OK}
 ----
-CategoryConfigExample CategoryConfigExample
+CategoryConfigExample
