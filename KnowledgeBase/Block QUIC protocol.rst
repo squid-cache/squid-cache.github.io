@@ -96,6 +96,32 @@ ip access-list extended WCCP_HTTPS
  deny   ip any any
 }}}
 
+In some cases you may want to block QUIC on front router:
+{{{
+interface GigabitEthernet0/0
+! External interface
+ ip access-group WAN_IN in
+!
+ip access-list extended WAN_IN
+ deny   udp any any eq 80
+ deny   udp any any eq 443
+ permit ip any any
+}}}
+
+Also, in sone cases, you may want to block SPDY protocol on front router using NBAR:
+{{{
+class-map match-any alternate
+ match protocol spdy
+!
+policy-map Net_Limit
+ class alternate
+  drop
+!
+interface GigabitEthernet0/0
+ ip nbar protocol-discovery
+ service-policy output Net_Limit
+}}}
+
 iptables:
 {{{
 iptables -A FORWARD -i net0 -p udp -m udp --dport 80 -j REJECT --reject-with icmp-port-unreachable
