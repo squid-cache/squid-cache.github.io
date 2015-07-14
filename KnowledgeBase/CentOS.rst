@@ -33,7 +33,7 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 ## 4  = indents required for BinaryPackages page include
 
 ==== Squid-3.5 ====
- * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6
+ * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6 and 7
 
 The RPMs was separated into three files:
 
