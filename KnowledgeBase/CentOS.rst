@@ -46,14 +46,14 @@ The RPMs was separated into three files:
 The core squid rpm will provide the basic squid forward, intercept and tproxy modes while also allowing ssl-bump.
 The helpers package contains all sorts of other helpers which are bundled with squid sources but are not essential for a basic and simple proxy.
 
-- src rpm files are at: http://www1.ngtech.co.il/rpm/centos/6/SRPMS/
-- binary RPMs can be found in the architecture specific folders at http://www1.ngtech.co.il/rpm/centos/6/
+- src rpm files are at: http://www1.ngtech.co.il/rpm/centos/7/SRPMS/
+- binary RPMs can be found in the architecture specific folders at http://www1.ngtech.co.il/rpm/centos/ $releasever/
 
 {{{
 [squid]
-name=Squid beta repo for CentOS Linux 6 - $basearch
+name=Squid repo for CentOS Linux - $basearch
 #IL mirror
-baseurl=http://www1.ngtech.co.il/repo/centos/6/beta/$basearch/
+baseurl=http://www1.ngtech.co.il/repo/centos/$releasever/$basearch/
 failovermethod=priority
 enabled=1
 gpgcheck=0
