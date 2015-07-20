@@ -487,6 +487,8 @@ Yes. Running Squid on native ZFS-supporting systems, like Solaris or [[http://op
 
 In general, just set up ZFS mirror (usually the best with separate controllers for each spindle) and set recordsize 4k. Also it can better for disk IO performance to change primarycache=metadata and secondarycache=none, and  atime=none on cache_dir filesystems. On system level the good idea is limiting ZFS ARC size to 1/8-1/4 of RAM by setting zfs:zfs_arc_max.
 
+ZFS works perfectly both diskd and aufs Squid storeIO modules (best choise depending your box architecture).
+
 ##end
 ----
 Back to the SquidFaq
