@@ -211,7 +211,7 @@ On some setups this problem is critical. Regardless of the Squid's memory parame
 
 This issue is caused by a broken system memory allocator. When using a system which does not release the memory used by the cache.
 
-Good news: From release 8/11 Solaris contains new improved multi-threaded memory allocator library (both 32 and 64 bit), which optimized for performance, heap fragmentation and memory consumption.
+Good news: From release 8/11 Solaris contains new improved multi-threaded memory allocator library '''''libmtmalloc.so''''' (both 32 and 64 bit), which optimized for performance, heap fragmentation and memory consumption.
 
 You can use it to solve memory problem by at least three different ways.
 
