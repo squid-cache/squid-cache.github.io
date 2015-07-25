@@ -209,6 +209,27 @@ To fix this run:
 
 On some setups this problem is critical. Regardless of the Squid's memory parameter or operating system memory settings Squid process under load increases indefinitely, resulting in swapping and catastrophic degradation of performance. In general, this leads to the inability to use Squid on this platform.
 
+This issue is caused by a broken system memory allocator. When using a system which does not release the memory used by the cache.
+
+Good news: From release 8/11 Solaris contains new improved multi-threaded memory allocator library (both 32 and 64 bit), which optimized for performance, heap fragmentation and memory consumption.
+
+You can use it to solve memory problem by at least three different ways.
+
+'''First''': Globally preload. Whole system will use it.
+
+Att this lines to /etc/profile:
+
+{{{
+# Preload mtmalloc library
+LD_PRELOAD=libmtmalloc.so
+export LD_PRELOAD
+LD_PRELOAD_64=libmtmalloc.so
+export LD_PRELOAD_64
+}}}
+
+{X} '''Note:''' Some 32-bit applications from userland will be crash with this library. For example, vi editor from coreutils. You are warned!
+
+
 
 ----
 CategoryKnowledgeBase
