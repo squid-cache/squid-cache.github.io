@@ -217,7 +217,7 @@ You can use it to solve memory problem by at least three different ways.
 
 '''First''': Globally preload. Whole system will use it.
 
-Att this lines to /etc/profile:
+Add this lines to /etc/profile:
 
 {{{
 # Preload mtmalloc library
