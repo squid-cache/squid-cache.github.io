@@ -204,5 +204,11 @@ To fix this run:
 }}}
 
 {X} '''Note:''' Don't edit /etc/coreadm.conf manually. Use commands above!
+
+=== Squid process memory grows unlimited on Solaris 10 and above ===
+
+On some setups this problem is critical. Regardless of the Squid's memory parameter or operating system memory settings Squid process under load increases indefinitely, resulting in swapping and catastrophic degradation of performance. In general, this leads to the inability to use Squid on this platform.
+
+
 ----
 CategoryKnowledgeBase
