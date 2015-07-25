@@ -242,5 +242,15 @@ I.e., as in example below:
 }}}
 
 This solution is preferable. It's completely solves memory problem and increases Squid performance, especially with aufs.
+
+'''Note''': Be sure you are add /usr/lib and /usr/lib/64 in system trusted linker path. To do that first run something like:
+
+{{{
+crle -c /var/ld/ld.config -l /lib:/usr/lib:/usr/local/lib:/opt/csw/lib:/usr/sfw/lib
+crle -64 -c /var/ld/64/ld.config -l /lib/64:/usr/lib/64:/opt/csw/lib/64:/usr/sfw/lib/64
+}}}
+
+{X} Don't use LD_LIBRARY_PATH! Use crle command instead!
+
 ----
 CategoryKnowledgeBase
