@@ -229,7 +229,18 @@ export LD_PRELOAD_64
 
 {X} '''Note:''' Some 32-bit applications from userland will be crash with this library. For example, vi editor from coreutils. You are warned!
 
+'''Second''': To refine previous problem you can add this variables to separate user profile wrom which squid will be starts or to startup script.
 
+'''Third''': The best way is link this memory library directly to Squid executables.
 
+To do that just add -lmtmalloc to the end CXXFLAGS and CFLAGS options lists in Squid's ./configure command.
+
+I.e., as in example below:
+
+{{{
+./configure '--prefix=/usr/local/squid' '--enable-translation' '--enable-external-acl-helpers=none' '--enable-icap-client' '--enable-ecap' '--enable-ipf-transparent' '--enable-storeio=ufs,aufs,diskd' '--enable-removal-policies=lru,heap' '--enable-devpoll' '--disable-wccp' '--enable-wccpv2' '--enable-http-violations' '--enable-follow-x-forwarded-for' '--enable-arp-acl' '--enable-htcp' '--enable-cache-digests' '--with-dl' '--enable-auth-negotiate=none' '--disable-auth-digest' '--disable-auth-ntlm' '--disable-url-rewrite-helpers' '--enable-storeid-rewrite-helpers=file' '--enable-log-daemon-helpers=file' '--enable-ssl' '--enable-ssl-crtd' '--enable-zph-qos' '--disable-snmp' '--enable-inline' '--with-build-environment=POSIX_V6_LP64_OFF64' 'CFLAGS=-O3 -m64 -mtune=core2 -pipe -lmtmalloc' 'CXXFLAGS=-O3 -m64 -mtune=core2 -pipe -lmtmalloc' 'CPPFLAGS=-I/opt/csw/include' 'LDFLAGS=-fPIE -pie -Wl,-z,now' 'PKG_CONFIG_PATH=/usr/local/lib/pkgconfig' --enable-build-info="Intercept/WCCPv2/SSL/CRTD/AUFS/DISKD/eCAP/64/GCC/mtmalloc Production"
+}}}
+
+This solution is preferable. It's completely solves memory problem and increases Squid performance, especially with aufs.
 ----
 CategoryKnowledgeBase
