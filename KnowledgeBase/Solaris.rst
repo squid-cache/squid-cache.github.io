@@ -229,7 +229,7 @@ export LD_PRELOAD_64
 
 {X} '''Note:''' Some 32-bit applications from userland will be crash with this library. For example, vi editor from coreutils. You are warned!
 
-'''Second''': To refine previous problem you can add this variables to separate user profile wrom which squid will be starts or to startup script.
+'''Second''': To refine previous problem you can add this variables to separate user profile from which squid will be starts or to startup script.
 
 '''Third''': The best way is link this memory library directly to Squid executables.
 
