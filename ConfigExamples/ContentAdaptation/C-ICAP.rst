@@ -268,3 +268,5 @@ In practice, configuration with clamd and squidclamav is fastest. In fact, squid
 In some cases, placing all services to single host is not a good idea. High-loaded setups must be separated between tiers. Avoid overload - especially in the case of installation services on a single host. Reduce memory consumption as possible. Do not set high clamd system limits - this increases latency and memory consumption and can lead to a system crash during peak hours.
 
 '''Note:''' C-ICAP workers produces high CPU load during scanning in all cases. You must minimize scanning as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
+
+'''Note:''' On some Solaris setups you can get performance gain by using libmtmalloc for c-icap processes. Just add -lmtmalloc to CFLAGS and CXXFLAGS when configuring. This also can reduce memory lock contention on multi-core CPU boxes.
