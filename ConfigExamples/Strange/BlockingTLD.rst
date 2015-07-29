@@ -25,7 +25,7 @@ Paste the configuration file like this:
 {{{
 
 # Block top level domains
-acl block_tld dstdom_regex .tv .xxx
+acl block_tld dstdom_regex \.tv \.xxx
 http_access deny block_tld
 deny_info TCP_RESET block_tld
 
