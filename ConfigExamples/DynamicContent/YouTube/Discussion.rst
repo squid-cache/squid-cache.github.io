@@ -30,6 +30,10 @@ http://www1.ngtech.co.il/squid/How%20Dynamic%20Content%20Affects%20the%20Way%20P
 
 -- [[Eliezer Croitoru]] <<DateTime(2013-05-23T09:07:44+0200)>>
 
+Guys, this information is outdated years ago. YT now uses HTML5 with cache-unfriendly URL schemes. Who knows anything new? I have some ideas, but this is too complex problem to solve it myself. Will work together?
+
+-- [[YuriVoinov]] <<DateTime(2015-08-02T06:24:00+0300)>>
+
 ----
 ===== Knowing what to cache =====
 My example is my favorite band;
