@@ -254,7 +254,7 @@ crle -64 -c /var/ld/64/ld.config -l /lib/64:/usr/lib/64:/opt/csw/lib/64:/usr/sfw
 
 === Squid process memory grows unlimited with interception proxy ===
 
-The common place - Squid grows unlimited in interception mode on Solaris 10 and above with IPFilter. This also accomplish Squid session aborts (high TCP_MISS_ABORTED in access.log) periodically. Squid/OS restarts troubleshoot this, but temporary.
+The common place - Squid grows unlimited in interception mode on Solaris 10 and above with IPFilter. This also accomplish Squid session aborts (high TCP_MISS_ABORTED in access.log) periodically. Squid/OS/IPFilter restarts fix this, but temporary.
 
 This problem occurs due to conservative IPFilter settings, especially with ''keep state'' option. 
 
