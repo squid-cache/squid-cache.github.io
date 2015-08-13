@@ -252,5 +252,85 @@ crle -64 -c /var/ld/64/ld.config -l /lib/64:/usr/lib/64:/opt/csw/lib/64:/usr/sfw
 
 {X} Don't use LD_LIBRARY_PATH! Use crle command instead!
 
+=== Squid process memory grows unlimited with interception proxy ===
+
+The common place - Squid grows unlimited in interception mode on Solaris 10 and above with IPFilter. This also accomplish Squid session aborts (high TCP_MISS_ABORTED in access.log) periodically. Squid/OS restarts troubleshoot this, but temporary.
+
+This problem occurs due to conservative IPFilter settings, especially with ''keep state'' option. 
+
+The default settings is too low for excessive Squid's sessions:
+
+{{{
+# ipf -T list | grep fr_state
+fr_statemax     min 0x1 max 0x7fffffff  current 50000
+fr_statesize    min 0x1 max 0x7fffffff  current 5737
+fr_state_lock   min 0   max 0x1 current 0
+fr_state_maxbucket      min 0x1 max 0x7fffffff  current 26
+fr_state_maxbucket_reset        min 0   max 0x1 current 1
+}}}
+
+This leads to overflow firewall state tables and, following, to memory overflow, and, also, to randonly client sessions abort.
+
+To fix this you can either tune-up IPFilter timings, or, more simple, increase states tables.
+
+To do that you need (on running system):
+
+First, disable IPFilter:
+
+{{{
+# svcadm disable ipfilter
+}}}
+
+Second, tune up settings above to be reasonable big:
+
+{{{
+# ipf -T fr_statemax=150000,fr_statesize=50000
+}}}
+
+Third, enable IPFilter again:
+
+{{{
+# svcadm enable ipfilter
+}}}
+
+And fourth, set this values to be permanent across reboot:
+
+{{{
+# vi /usr/kernel/drv/ipf.conf
+}}}
+
+/usr/kernel/drv/ipf.conf contents must be:
+
+{{{
+#
+#
+#name="ipf" parent="pseudo" instance=0;
+name="ipf" parent="pseudo" instance=0 fr_statemax=150000 fr_statesize=50000;
+}}}
+
+Finally, run:
+
+{{{
+devfsadm -i ipf
+}}}
+
+to update ipf driver settings.
+
+Then restart your Squid. The problem is gone.
+
+You can check your settings big enough by using memory monitor tools and command:
+
+{{{
+# ipfstat | grep lost
+fragment state(in):     kept 0  lost 0  not fragmented 0
+fragment state(out):    kept 0  lost 0  not fragmented 0
+packet state(in):       kept 39767      lost 0
+packet state(out):      kept 39403      lost 0
+}}}
+
+'''lost''' values must be zero all time.
+
+'''Note''': Be sure your TCP stack settings is not changed with ECN (''tcp_ecn_permitted'' parameter) and WScale (''tcp_wscale_always'' parameter). Also you can want to set ''ip_path_mtu_discovery'' to enabled (if your network environment use PMTUD).
+
 ----
 CategoryKnowledgeBase
