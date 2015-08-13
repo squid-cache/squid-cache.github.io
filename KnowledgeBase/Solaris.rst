@@ -284,8 +284,10 @@ First, disable IPFilter:
 Second, tune up settings above to be reasonable big:
 
 {{{
-# ipf -T fr_statemax=150000,fr_statesize=50000
+# ipf -T fr_statemax=105000,fr_statesize=150001
 }}}
+
+'''Note''': ''fr_statesize'' must be prime number, ''fr_statemax'' must be ~70% of ''fr_statesize''.
 
 Third, enable IPFilter again:
 
@@ -305,7 +307,7 @@ And fourth, set this values to be permanent across reboot:
 #
 #
 #name="ipf" parent="pseudo" instance=0;
-name="ipf" parent="pseudo" instance=0 fr_statemax=150000 fr_statesize=50000;
+name="ipf" parent="pseudo" instance=0 fr_statemax=105000 fr_statesize=150001;
 }}}
 
 Finally, run:
