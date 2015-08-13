@@ -311,7 +311,7 @@ name="ipf" parent="pseudo" instance=0 fr_statemax=150000 fr_statesize=50000;
 Finally, run:
 
 {{{
-devfsadm -i ipf
+# devfsadm -i ipf
 }}}
 
 to update ipf driver settings.
