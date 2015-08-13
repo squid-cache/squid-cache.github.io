@@ -330,7 +330,7 @@ packet state(out):      kept 39403      lost 0
 
 '''lost''' values must be zero all time.
 
-'''Note''': Be sure your TCP stack settings is not changed with ECN (''tcp_ecn_permitted'' parameter) and WScale (''tcp_wscale_always'' parameter). Also you can want to set ''ip_path_mtu_discovery'' to enabled (if your network environment use PMTUD).
+'''Note''': Be sure your TCP stack settings is not changed with ECN (''tcp_ecn_permitted'' parameter) and WScale (''tcp_wscale_always'' parameter). Also you can want to set ''ip_path_mtu_discovery'' to enabled (if your network environment uses PMTUD). This will minimize interruptions sessions, especially YouTube.
 
 ----
 CategoryKnowledgeBase
