@@ -332,6 +332,29 @@ packet state(out):      kept 39403      lost 0
 
 '''lost''' values must be zero all time.
 
+'''Note''': In some cases you may want to tune timing settings of IPFilter:
+
+{{{
+fr_tcpidletimeout=7200
+fr_tcpclosewait=120
+fr_tcplastack=120
+fr_tcptimeout=240
+fr_tcpclosed=60
+fr_tcphalfclosed=300
+fr_udptimeout=90
+fr_icmptimeout=35
+}}}
+
+as described above (simple add this parameters to statemax and statesize).
+
+Also you may want to adjust NAT table if we are enough buckets and decrease NAT/RDR rules table:
+
+{{{
+ipf_nattable_sz = 150001
+ipf_natrules_sz = 127
+ipf_rdrrules_sz = 127
+}}}
+
 '''Note''': Be sure your TCP stack settings is not changed with ECN (''tcp_ecn_permitted'' parameter) and WScale (''tcp_wscale_always'' parameter). Also you can want to set ''ip_path_mtu_discovery'' to enabled (if your network environment uses PMTUD). This will minimize interruptions sessions, especially YouTube.
 
 ----
