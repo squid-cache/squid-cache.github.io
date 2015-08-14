@@ -34,7 +34,7 @@ Several actions are possible when a proxy handles an SSL connection. See the Squ
 ||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection.||
 ||'''bump'''||step1, step2, and sometimes step3||Establish a secure connection with the server and, using a mimicked server certificate, with the client||
 ||'''peek'''||step1, step2||Receive SNI and client certificate (step1), or server certificate (step2) while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection (see Limitations). This action is the focus of this project.||
-||'''stare'''||step1, step2||Receive SNI and client certificate (step1), or server certificate (step2) while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection. Currently, we are not aware of any work being done to support this action.||
+||'''stare'''||step1, step2||Receive SNI and client certificate (step1), or server certificate (step2) while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection.||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
 ||||||Older actions mentioned here for completeness sake:||
 ||'''client-first'''||step1||Ancient-style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.||
