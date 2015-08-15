@@ -30,17 +30,19 @@ http://www1.ngtech.co.il/squid/How%20Dynamic%20Content%20Affects%20the%20Way%20P
 
 -- [[Eliezer Croitoru]] <<DateTime(2013-05-23T09:07:44+0200)>>
 
-Guys, this information is outdated years ago. YT now uses HTML5 with cache-unfriendly URL schemes. Who knows anything new? I have some ideas, but this is too complex problem to solve it myself. Will work together?
+Guys, this information is outdated years ago. YT now uses HTML5 with cache-unfriendly URL schemes. Who knows anything new? I have some ideas, but this is too complex problem to solve it myself. Will work harder?
 
 -- [[YuriVoinov]] <<DateTime(2015-08-02T06:24:00+0300)>>
+
+===== Knowing what to cache =====
+
+----
+
 Look at this examples:
 
 http://r5---sn-35153iuxa-unxe.googlevideo.com/videoplayback?fexp=9406000%2C9407051%2C9407155%2C9408211%2C9408710%2C9409069%2C9412774%2C9413139%2C9415365%2C9415485%2C9415943%2C9416023%2C9416126%2C9417124%2C9417707%2C9418059%2C9418153%2C9418493&dur=59.960&sparams=clen%2Cdur%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Csource%2Cupn%2Cexpire&expire=1439682732&mime=video%2Fmp4&itag=133&sver=3&clen=1839270&ipbits=0&source=youtube&upn=frjLRrUbi30&gir=yes&lmt=1390059363089578&initcwndbps=1195000&ms=au&id=o-AFtTXtXwRjwha7q4BIYCS_f8XSmhujqIPz6WRCWmx_EV&mv=m&pl=24&mt=1439661107&signature=0BA3264E0527BDDC776638FF63E24FD4F2AD1372.A0C4A1C8494FE45D67DE46ED7E1539171D2E8EAD&keepalive=yes&ip=178.88.163.102&key=yt5&mn=sn-35153iuxa-unxe&mm=31&cpn=-XIWTPF1Iu3UkqEX&alr=yes&ratebypass=yes&c=WEB&cver=html5&range=0-65535
 
 http://r5---sn-35153iuxa-unxe.googlevideo.com/videoplayback?fexp=9406000%2C9407051%2C9407155%2C9408211%2C9408710%2C9409069%2C9412774%2C9413139%2C9415365%2C9415485%2C9415943%2C9416023%2C9416126%2C9417124%2C9417707%2C9418059%2C9418153%2C9418493&dur=59.960&sparams=clen%2Cdur%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Csource%2Cupn%2Cexpire&expire=1439683037&mime=video%2Fmp4&itag=133&sver=3&clen=1839270&ipbits=0&source=youtube&upn=a2jh61YtqHM&gir=yes&lmt=1390059363089578&initcwndbps=1218750&ms=au&id=o-AHbHLu8KLwkKVRnFxBUAFqCsWdaoHdR8MbT7zYKmxOGA&mv=m&pl=24&mt=1439661351&signature=6B28C1212CF8B05876CD15FD4DF6CBF342A15986.682D57B2BDF46853531FF277AD0931B5C15745FA&keepalive=yes&ip=178.88.163.102&key=yt5&mn=sn-35153iuxa-unxe&mm=31&cpn=HacivF1pjo2272wc&alr=yes&ratebypass=yes&c=WEB&cver=html5&range=0-65535
-
-http://r5---sn-35153iuxa-unxe.googlevideo.com/videoplayback?fexp=9406000%2C9407051%2C9407155%2C9408211%2C9408710%2C9409069%2C9412774%2C9413139%2C9415365%2C9415485%2C9415943%2C9416023%2C9416126%2C9417124%2C9417707%2C9418059%2C9418153%2C9418493&gir=yes&signature=41F0496F6DBB93BA28E400DDE34DD8FFBED7F0DD.2FD4617ACAEEA54BD0CD861B9F90004E138C5E36&key=yt5&source=youtube&dur=59.960&lmt=1390059363089578&ipbits=0&initcwndbps=1242500&sparams=clen%2Cdur%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Csource%2Cupn%2Cexpire&mime=video%2Fmp4&clen=1839270&mm=31&mn=sn-35153iuxa-unxe&id=o-AH6CmrOWCS_0P24T8mJj7gZEVORevZt-YjqvBsADOESF&keepalive=yes&ip=178.88.163.102&pl=24&mt=1439661593&mv=m&ms=au&upn
-=Fy6CRmQZBDs&expire=1439683325&sver=3&itag=133&cpn=qDCDeMU1hVGGZ22x&alr=yes&ratebypass=yes&c=WEB&cver=html5&range=0-65535
 
 http://r5---sn-35153iuxa-unxe.googlevideo.com/videoplayback?mn=sn-35153iuxa-unxe&mm=31&source=youtube&gir=yes&ip=178.88.163.102&ms=au&id=o-AI2bwmp_Mpl28tzIDWg_j0aTozbjYeIPlGDTWSn0-gHM&pl=24&mv=m&mt=1439661712&dur=59.960&mime=video%2Fmp4&itag=133&upn=nS9JOknbYiQ&keepalive=yes&ipbits=0&sver=3&signature=2042566511E016C1C380EC6EAB0C9839378A12B6.24BB86B78C3F30CC2D4245906FEF84696164DA0E&fexp=9406000%2C9407051%2C9407155%2C9408211%2C9408710%2C9409069%2C9412774%2C9413139%2C9415365%2C9415485%2C9415943%2C9416023%2C9416126%2C9417124%2C9417707%2C9418059%2C9418153%2C9418493&initcwndbps=1242500&key=yt5&expire=1439683425&clen=1839270&lmt=1390059363089578&sparams=clen%2Cdur%2Cgir%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Ckeepalive%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Csource%2Cupn%2Cexpire&cpn=y4z2lMWMr1g0zeGX&alr=yes&ratebypass=yes&c=WEB&cver=html5&range=0-65535
 
@@ -56,11 +58,6 @@ This is the same 5 sec video piece, got during day.
 '''Note''': All video ID's is unique. But this is the same clip!
 
 Question: Does anybody seen permanent part of all URL's?
-
-----
-===== Knowing what to cache =====
-
-----
 
 -- [[YuriVoinov]] <<DateTime(2015-08-16T04:17:00+0300)>>
 
