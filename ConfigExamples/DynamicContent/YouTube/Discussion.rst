@@ -57,7 +57,7 @@ This is the same 5 sec video piece, got during day.
 
 '''Note''': All video ID's is unique. But this is the same clip!
 
-Question: Does anybody seen permanent part of all URL's?
+'''Question''': Does anybody seen permanent part of all URL's?
 
 -- [[YuriVoinov]] <<DateTime(2015-08-16T04:17:00+0300)>>
 
