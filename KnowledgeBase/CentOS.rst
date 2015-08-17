@@ -25,6 +25,8 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 '''Bug Reporting:''' http://bugs.centos.org/search.php?category=squid&sortby=last_updated&hide_status_id=-2
 
+'''Eliezer''': 18/Aug/2015 - I have started tested CentOS 7 RPMs for squid 3.5.7 on a small scale and it seems to be stable enough for 200-300 users as a forward proxy and basic features.
+
 '''Eliezer''': 25/Jan/2015 - I have started building CentOS 7 RPMs but it is still on the testing phase so consider that when trying to use the Seven RPMs.
 
 '''Eliezer''': 20/Sep/2014 - I have not tested yet the CentOS 7 build and the file on the server is not for public usage.
