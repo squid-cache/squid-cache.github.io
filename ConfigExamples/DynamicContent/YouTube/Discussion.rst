@@ -55,9 +55,13 @@ http://r5---sn-35153iuxa-5a5s.googlevideo.com/videoplayback?ip=178.88.163.102&sv
 
 This is the same 5 sec video piece, got during day. 
 
-'''Note''': All video ID's is unique. But this is the same clip!
+'''Note''': All video ID's is unique. But this is the same clip.
 
 '''Question''': Does anybody seen permanent part of all URL's?
+
+'''Answer''': No. Google CDN generates unique ID for streaming servers (googlevideo) on JSON starting clip page. This ID is unchanged during watch, but changes in next runs. Also, audio and video now delivers separately, with independent streams. This ID decodes by HTML5 JS-based player, which is delivers to client browser at session starts. Player changes, like crypto algo, every week or two. So, most of all all YT caching solution on market are fake. They can't REALLY caching YT.
+
+In theory, there is possible to write special store ID rewrite helper for YT. All we need - associate external video ID in youtube/watch/v='''abcdefg''' with temporary session streams ID for following googlevideo gets and save it in cache with replaced real ID. Just extract generated ID from JSON starting page structure and replace backend servers ID before storing files.
 
 -- [[YuriVoinov]] <<DateTime(2015-08-16T04:17:00+0300)>>
 
