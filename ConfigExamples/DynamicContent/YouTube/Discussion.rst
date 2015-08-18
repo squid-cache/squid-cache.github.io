@@ -63,6 +63,8 @@ This is the same 5 sec video piece, got during day.
 
 In theory, there is possible to write special store ID rewrite helper for YT. All we need - associate external video ID in youtube/watch/v='''abcdefg''' with temporary session streams ID for following googlevideo gets and save it in cache with replaced real ID. Just extract generated ID from JSON starting page structure and replace backend servers ID before storing files.
 
+In practice, best solution for today I found is NOT caching googlevideo.com domain, NOT caching youtube.com/watch/v= pages (try and see ;) why). The only solution is caching images/css/js from YT with store ID. If Google return static video ID, we can cache YT video again. But now it is impossible by any way.
+
 -- [[YuriVoinov]] <<DateTime(2015-08-16T04:17:00+0300)>>
 
 My example is my favorite band;
