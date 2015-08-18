@@ -27,11 +27,6 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 '''Eliezer''': 18/Aug/2015 - I have tested CentOS 7 RPMs for squid 3.5.7 on a small scale and it seems to be stable enough for 200-300 users as a forward proxy and basic features.
 
-'''Eliezer''': 25/Jan/2015 - I have started building CentOS 7 RPMs but it is still on the testing phase so consider that when trying to use the Seven RPMs.
-
-'''Eliezer''': 20/Sep/2014 - I have not tested yet the CentOS 7 build and the file on the server is not for public usage.
-
-
 ## 4  = indents required for BinaryPackages page include
 
 ==== Squid-3.5 ====
@@ -39,17 +34,16 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 The RPMs was separated into three files:
 
-- squid-VERSION.rpm
-
-- squid-helpers-VERSION.rpm
-
-- squid-debuginfo-VERSION.rpm
+ * squid-VERSION.rpm
+ * squid-helpers-VERSION.rpm
+ * squid-debuginfo-VERSION.rpm
 
 The core squid rpm will provide the basic squid forward, intercept and tproxy modes while also allowing ssl-bump.
 The helpers package contains all sorts of other helpers which are bundled with squid sources but are not essential for a basic and simple proxy.
 
-- src rpm files are at: http://www1.ngtech.co.il/rpm/centos/7/SRPMS/
-- binary RPMs can be found in the architecture specific folders at http://www1.ngtech.co.il/rpm/centos/ $releasever/
+ * Since 3.5.7-2 I disabled pinger by default to allow a smooth startup on s selinux enabled system.
+ * src rpm files are at: http://www1.ngtech.co.il/rpm/centos/$releasever/SRPMS/
+ * binary RPMs can be found in the architecture specific folders at http://www1.ngtech.co.il/rpm/centos/ $releasever/
 
 {{{
 [squid]
@@ -70,21 +64,20 @@ yum install squid
 
 ==== Squid-3.4 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6
+ * '''Eliezer''': As of 3.4.0.2 I am releasing the squid RPMs for two CPU classes OS, i686 and x86_64.
 
-'''Eliezer''': As of 3.4.0.2 I release the squid RPM for two CPU classes OS, i686 and x86_64.
-
-Since somewhere in the 3.4 tree there was a change in the way the squid was packaged by me.
+ * Since somewhere in the 3.4 tree there was a change in the way the squid was packaged by me:
 
 The RPMs was separated into three files:
  * squid-VERSION.rpm
  * squid-helpers-VERSION.rpm
  * squid-debuginfo-VERSION.rpm
 
-The core squid rpm will provide the basic squid forward, intercept and tproxy modes while also allowing ssl-bump.
+The core squid rpm will provides the basic squid forward, intercept and tproxy modes while also allowing ssl-bump.
 The helpers package contains all sorts of other helpers which are bundled with squid sources but are not essential for a basic and simple proxy.
 
-There are couple issues that needs to be fixed since there was some data loss in the transition from old server to another.
- * The init.d script, I am working on it in my spare time.
+There are couple issues that needs to be fixed since there was some data loss in the transition from my old server to another.
+ * The init.d script, I am have been working on it in my spare time.
  * src rpm files are at: http://www1.ngtech.co.il/rpm/centos/6/SRPMS/
 
 {{{
@@ -154,15 +147,13 @@ One of the dependencies I have seen are:
 
 "Crypt::X509" which is a perl module that is not in the basic repos of centos.
 
-In order to install it use cpan.
+In order to install it use cpan or EPEL repositories.
 {{{
 # cpan
 > install Crypt::X509
 }}}
-The above is not included in squid RPM but might be in other repos which I do not support.
 
-
-'''troubleshooting SSL''': first install the libs the see what happens.
+'''troubleshooting SSL''': first install the libs then see what happens.
 == Compiling ==
 
 {{{
