@@ -30,13 +30,9 @@ http://www1.ngtech.co.il/squid/How%20Dynamic%20Content%20Affects%20the%20Way%20P
 
 -- [[Eliezer Croitoru]] <<DateTime(2013-05-23T09:07:44+0200)>>
 
-Guys, this information is outdated years ago. YT now uses HTML5 with cache-unfriendly URL schemes. Who knows anything new? I have some ideas, but this is too complex problem to solve it myself. Will work harder?
-
--- [[YuriVoinov]] <<DateTime(2015-08-02T06:24:00+0300)>>
-
-===== Knowing what to cache =====
-
+===== Caching YT is impossible now =====
 ----
+Here is explanation, why.
 
 Look at this examples:
 
@@ -66,6 +62,8 @@ In theory, there is possible to write special store ID rewrite helper for YT. Al
 In practice, best solution for today I found is NOT caching googlevideo.com domain, NOT caching youtube.com/watch/v= pages (try and see ;) why). The only solution is caching images/css/js from YT with store ID. If Google return static video ID, we can cache YT video again. But now it is impossible by any way.
 
 -- [[YuriVoinov]] <<DateTime(2015-08-16T04:17:00+0300)>>
+
+===== Knowing what to cache =====
 
 My example is my favorite band;
 
