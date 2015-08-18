@@ -19,9 +19,9 @@
 Many !SslBump deployments try to minimize potential damage by ''not'' bumping sites unless the local policy demands it. Without this feature, the decision is made based on very limited information: A typical HTTP CONNECT request does not contain many details and intercepted TCP connections reveal nothing but IP addresses and port numbers. Peek and Splice gives admins a way to make bumping decision later in the SSL handshake process, when client SNI and the SSL server certificate are available (or when it becomes clear that we are not dealing with an SSL connection at all!).
 
 
-= Implementation overview =
+= Overview =
 
-Peek and Splice peeks at the SSL client Hello message and SNI info (if any), sends identical or a similar (to the extent possible) Hello message to the SSL server, and then peeks at the SSL server Hello message. The decision to splice or bump can be made at any of those stages (but what Squid does at stage N affects its ability to splice or bump at stage N+1!). If the decision is ''not'' to bump, the two TCP connections are spliced at TCP level, with Squid shoveling TCP bytes back and forth without any decryption.
+The Peek and Splice feature looks at the SSL client Hello message and SNI info (if any), sends identical or a similar (to the extent possible) Hello message to the SSL server, and then looks at the SSL server Hello message. The final decision to splice, bump, or terminate the connection can be made at any of those steps (but what Squid does at step N affects its ability to splice or bump at step N+1!). Please see the first table below for definitions of the two "looking at" actions (i.e., peek and stare) as well as various final actions (e.g., "bump", "splice", "terminate", etc.).
 
 = Configuration =
 
