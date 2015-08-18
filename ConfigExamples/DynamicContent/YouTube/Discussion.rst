@@ -30,7 +30,7 @@ http://www1.ngtech.co.il/squid/How%20Dynamic%20Content%20Affects%20the%20Way%20P
 
 -- [[Eliezer Croitoru]] <<DateTime(2013-05-23T09:07:44+0200)>>
 
-===== Caching YT is impossible now =====
+===== Caching YT is impossible with Squid only now =====
 ----
 Here is explanation, why.
 
