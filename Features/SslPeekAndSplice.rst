@@ -104,7 +104,20 @@ ssl_bump terminate all
 }}}
 
 
+=== Peek at SNI and Bump ===
 
+SNI is obtained during step #1. Peeking during step #1 does _not_ preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
+
+{{{
+acl step1 at_step SslBump1
+ssl_bump peek step1
+ssl_bump bump haveServerName !serverIsBank
+ssl_bump splice all
+}}}
+
+Please note that making decisions based on step #1 info alone gives you no knowledge about the SSL server point of view. All your decisions will be based on what the SSL _client_ has told you. This is often not a problem because, in most cases, if the client lies (e.g., sends "bank.example.com" SNI to a "non-bank.example.com" server), the SSL server will refuse to establish the [bumped or spliced at step #2] connection with Squid. However, if the client supplied no SNI information at all (e.g., you are dealing with IE on Windows XP), then your ACLs may not have enough information to go on, especially for intercepted connections.
+
+If you also peek at step #2, you will know the server certificate, but you will no longer be able to bump the connection in most cases (see Limitations below).
 
 
 = Mimicking SSL client Hello properties when staring =
