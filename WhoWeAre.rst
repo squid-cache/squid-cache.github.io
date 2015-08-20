@@ -72,7 +72,7 @@ While squid is normally distributed in source form. Some dedicated people are do
 ##<<FullSearch(title:KnowledgeBase/ regex:C{1}ategoryDistributionInfo regex:"...Maintainer:...")>>
 
  * [[KnowledgeBase/Debian|Debian]]: Luigi Gangitano
- * [[KnowledgeBase/Fedora|Fedora]]: [[Henrik_Nordström]]
+ * [[KnowledgeBase/Fedora|Fedora]]: [[Henrik_Nordström]], Lubos Uhliarik
  * [[KnowledgeBase/Fink|Fink]]: Benjamin Reed
  * [[KnowledgeBase/FreeBSD|FreeBSD]]: Thomas-Martin Seck
  * [[KnowledgeBase/Gentoo|Gentoo]]: Eray Aslan
@@ -83,7 +83,7 @@ While squid is normally distributed in source form. Some dedicated people are do
  * [[KnowledgeBase/Ubuntu|Ubuntu]]: Luigi Gangitano
  * [[KnowledgeBase/Windows|Windows]]: [[GuidoSerassio|Guido Serassio]]
 
-## OpenSuSE or SuSE: who?
+## OpenSuSE or SuSE: who? Linda W. ?
 ## IRIX: anyone?
 ## Darwin: who? (mww@macports.org)
 ## OpenBSD: who? "brad0" on IRC
@@ -91,3 +91,4 @@ While squid is normally distributed in source form. Some dedicated people are do
 ## UNIX: anyone?
 ## AIX: anyone?
 ## Slackware: anyone?
+## OpenIndiana: who?
