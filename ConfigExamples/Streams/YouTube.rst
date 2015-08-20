@@ -31,5 +31,14 @@ http_access deny youtube_domains !gLogin
 
 Other sites than !YouTube also host this kind of content. See the Flash Video section of [[ConfigExamples/Streams/Other]] for general flash media patterns withut needing to block specific websites.
 
+To block not all YT, but some clips, use focused acl rule:
+
+{{{
+# Block YT clips
+acl yt_clips url_regex .youtube\.com\/watch\?v=lr_m3GW5Cws
+http_access deny yt_clips
+}}}
+
+You also can specify clips list as file.
 ----
 CategoryConfigExample
