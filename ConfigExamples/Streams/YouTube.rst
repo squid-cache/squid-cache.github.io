@@ -12,7 +12,7 @@
 
 This example covers the blocking of all !YouTube.com videos. Which is actually very easy.
 
-Caching them is much harder, for information on that see [[ConfigExamples/DynamicContent/YouTube]]
+Caching them is now impossible, for information on that see [[ConfigExamples/DynamicContent/YouTube/Discussion]]
 
 == Squid Configuration File ==
 Add this to squid.conf before the part where you allow people access to the Internet.
