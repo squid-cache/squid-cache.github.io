@@ -17,7 +17,7 @@ Caching them is now impossible, for information on that see [[ConfigExamples/Dyn
 == Squid Configuration File ==
 Add this to squid.conf before the part where you allow people access to the Internet.
 
- . {X} As of Feb 2014 Google are using one subdomain of youtube.com for authenticating '''all''' google services, including Docs and Gmail. If you were intending to block only YouTube access this needs to be whitelisted from the denial.
+ . {X} As of Feb 2014 Google are using one subdomain of youtube.com for authenticating '''all''' google services, including Docs and Gmail. If you were intending to block only !YouTube access this needs to be whitelisted from the denial.
 
 {{{
 ## The videos come from several domains
