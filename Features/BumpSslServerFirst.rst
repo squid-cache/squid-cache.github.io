@@ -16,6 +16,9 @@
 
 = Motivation =
 
+ ||<style="background-color: #CC0022;color:yellow;"> '''This feature was replaced in Squid-3.5 by [[Features/SslPeekAndSplice|peek-n-splice]] ''' ||
+
+
 The first [[Features/SslBump|SslBump]] implementation works well for HTTP CONNECT requests naming the host that Squid must establish a TCP tunnel with. Such requests are sent by some browsers when they are explicitly configured to use a proxy. When dealing with such requests in !SslBump mode, Squid can use the supplied host name to [[Features/DynamicSslCert|dynamically generate]] a server certificate and then impersonate the named server. This allows Squid to get the real HTTP request from the client (e.g., HTTP GET or POST), decrypt it, and, eventually, connect to the real server and forward the request.
 
 The above scheme fails when SSL connections are intercepted because intercepted connections start with an SSL handshake and not an HTTP CONNECT request. Thus, Squid does not receive the origin server host name from the client. Squid knows the destination IP address of the intercepted connection, but an IP address is not usable for SSL certificate generation. This makes it impossible to generate a matching server certificate. Without such a certificate, Squid cannot impersonate the server.
