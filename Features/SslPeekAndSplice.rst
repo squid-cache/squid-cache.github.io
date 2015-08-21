@@ -91,13 +91,16 @@ All actions except peek and stare correspond to ''final'' decisions: Once an Squ
 
 == Configuration Examples ==
 
-'''IMPORTANT:'''
+'''IMPORTANT :'''
 
  . /!\ At no point during SquidConf:ssl_bump processing will '''dstdomain''' ACL work. That ACL relies on HTTP message details that are not yet decrypted. An '''ssl::server_name''' SquidConf:acl type is provided instead that uses CONNECT, SNI, or server certificate Subject name (whichever is available).
 
  . {i} Selecting an action only to happen at a particular step can be done using an '''at_step''' type SquidConf:acl.
 
- [ the remainder of this document is outdated ]
+
+Some how-to tutorials are available for common policies:
+
+<<FullSearch(title:regex:^ConfigExamples/Intercept/SslBump.*$)>>
 
 === Avoid bumping banking traffic  ===
 
@@ -172,13 +175,13 @@ Please note that for splicing to work at a future step, the client Hello message
 
 == Peeking at the server often precludes bumping ==
 
-To peek at the server certificate, Squid must forward the entire client Hello intact. If that client Hello or the server response contains any SSL/TLS extensions that Squid does not support or understand (many do!), then Squid cannot reliably bump the connection because the other two sides of that bumped communication may start using those extensions, confusing Squid's OpenSSL in unpredictable ways. Possible solutions or workarounds (all deficient in various ways):
+To peek at the server certificate, Squid must forward the entire client Hello intact. If that client Hello or the server response contains any TLS extensions that Squid does not support or understand (many do!), then Squid cannot reliably bump the connection because the other two sides of that bumped communication may start using those extensions, confusing Squid's OpenSSL in unpredictable ways. Possible solutions or workarounds (all deficient in various ways):
 
  a. If bumping is more valuable/important than splicing in your environment, you should "stare" instead of peeking. Staring usually precludes future splicing, of course. Pick your poison.
 
  a. We could add an ACL that will tell you whether those extensions and other complications are present in Client Hello. This is doable, but if that ACL usually evaluates to "yes", do we really want to do all this extra development and then complicate Squid configurations?
 
- a. We could teach Squid to understand more SSL extensions. This may require significant low-level work (because we would have to do what OpenSSL cannot do for us). This approach may eventually cover many popular cases, but will never cover everything and will require ongoing additions, of course.
+ a. We could teach Squid to understand more TLS extensions. This may require significant low-level work (because we would have to do what OpenSSL cannot do for us). This approach may eventually cover many popular cases, but will never cover everything and will require ongoing additions, of course.
 
  a. Squid could ignore the client and/or server extensions and try to bump anyway. The exact results cannot be predicted, but will often be a total transaction failure, possibly with user-visible browser warnings.
 
