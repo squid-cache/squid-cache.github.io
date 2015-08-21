@@ -46,7 +46,7 @@ Features which have not reached completion or have failed the audit, are automat
 ##  * Documentation updates
 ##  * Stability fixes
 ##  * Security fixes
-##  * Critical Bug fixes
+##  * Critical or Blocker Bug fixes
 
 ## Currently in '''STABLE''' cycle.
 ## The features have been set and large code changes are reserved for later versions.
@@ -146,6 +146,7 @@ Certain features are no longer relevant as the code improves and are planned for
 || 3.5 || dnsserver and DNS external helper API || Internal DNS client now appears to satisfy all use-cases. ||
 || 3.5 || COSS storage type || Superceded by ROCK storage type ||
 || 4.0 || SSLv2 support || Obsolete and very broken security ||
+|| TBD || SSLv3 support || Obsolete and very broken security. But still widely used so no firm ETA, maybe Squid-5 or Squid-6. ||
 || TBD || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
 ##|| 3.3 || cachemgr_passwd || Security is better controlled by login SquidConf:acl in the SquidConf:http_access configuration ||
 ##|| 3.3 || cachemgr.cgi || Merger of report functionality into the main squid process obsoletes it as a stand-alone application. ||
