@@ -322,6 +322,50 @@ http://www.squid-cache.org/mail-archive/squid-users/200501/0374.html
 
 = Other Benchmarking =
 
+== SquidBlocker 2015 ==
+The test is for one proxy which runs a url filtering DB helper.
+The helper runs http queries against one reverse proxy which RoundRobin load balance to three backend DB servers.
+The squid settings:
+{{{
+workers 2
+visible_hostname proxy2
+
+external_acl_type filter_url ipv4 children-max=20 children-startup=10 children-idle=5 concurrency=50 ttl=3 %URI %METHOD %un /usr/bin/sblocker_client -http=http://filterdb:8082/sb/01
+acl filter_url_acl external filter_url
+deny_info http://ngtech.co.il/block_page/?url=%u&domain=%H filter_url_acl
+
+acl localnet src 192.168.0.0/16
+
+http_access deny !filter_url_acl
+http_access allow localnet filter_url_acl
+access_log none
+}}}
+
+Environent topology at: http://ngtech.co.il/squidblocker/topology1.png
+{{http://ngtech.co.il/squidblocker/topology1.png|SquidBlocker test lab|width=750}} 
+
+|| CPU || 4-core Intel(R) Xeon(R) CPU E5420 @ 2.50GHz, virtualized (KVM) ||
+|| RAM || 2 Gb ||
+|| HDD || SSD ||
+|| OS  || CentOS 7 64bit ||
+|| Users || 1 user in a controlled test environment ||
+|| RPS For a cached object || 4955 ||
+|| Hit Ratio || 100% ||
+|| RPS For a blocked url || 9551 ||
+|| CPU Usage || 2 cores, 1 at 100% ||
+|| Bandwidth || unknown ||
+
+
+This number was taken in a '''controlled test environment'''. It has nothing to do with the numbers someone would get in a production environment; it's just an estimate of how fast squid can be.
+Squid was configured to do no logging and apachebench was used to hammer squid asking 250K times for a blocked url (leading to a 403 response with a location header) or with a cacheable, 16KB long document. Of the 4 cores, 2 were running a multi-worker squid.
+The apache benchmark was run from another host and from the same host with similar results.
+
+{{{
+Submitted by: Eliezer Croitoru 2015-08-25
+}}}
+
+== Older ==
+
 Mark Nottingham benchmarked Squid 2.5 vs 2.6 in late 2006:
 http://www.mnot.net/blog/2006/08/21/caching_performance
 
