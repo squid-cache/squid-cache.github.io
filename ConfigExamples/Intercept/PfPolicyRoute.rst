@@ -53,7 +53,7 @@ dumpdev="AUTO"
 }}}
 
 == FreeBSD Virtio net drivers issue ==
-From an unknown reason the FreeBSD virtio net drivers creates invalid packets while using route-to.
+From an unknown reason the FreeBSD virtio net drivers creates invalid packets while being routed.
 To prevent this corruption to happen there is a need to disable two interfaces options:
  * rxcsum
  * txcsum
@@ -105,3 +105,7 @@ Additional settings for a router mode:
 sysctl -w net.inet6.ip6.forwarding=1 # 1=Permit forwarding (routing) of IPv6 packets
 sysctl -w net.inet.ip.forwarding=1 # 1=Permit forwarding (routing) of IPv4 packets
 }}}
+
+== OpenBSD Virtio net drivers issue ==
+Similar to FreeBSD there is an issue in OpenBSD with the virtio drivers which causes packets to get corrupted.
+ /!\ I will try to contact the OpenBSD mailing list to see if something could be done.
