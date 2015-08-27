@@ -1,3 +1,4 @@
+## page was renamed from Squid3CodingGuidelines
 #language en
 
 <<TableOfContents>>
