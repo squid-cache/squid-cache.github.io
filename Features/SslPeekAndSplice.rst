@@ -48,7 +48,7 @@ Note that for intercepted HTTPS traffic there is no "domain name" available at t
 
 
 '''Step 2:'''
- i. Get TLS clientHello info.
+ i. Get TLS clientHello info, including SNI where available.
  i. Evaluate SquidConf:ssl_bump and perform the first matching action (splice, bump, peek, stare, or terminate).
   - Peeking usually prevents future bumping.
   - Staring usually prevents future splicing.
@@ -141,7 +141,7 @@ ssl_bump terminate all
 
 === Peek at SNI and Bump ===
 
-SNI is obtained during step #1. Peeking during step #1 does _not_ preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
+SNI is obtained by peeking during step #1. Peeking during step #1 does _not_ preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
 
 {{{
 acl step1 at_step SslBump1
