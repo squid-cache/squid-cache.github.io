@@ -109,3 +109,4 @@ sysctl -w net.inet.ip.forwarding=1 # 1=Permit forwarding (routing) of IPv4 packe
 == OpenBSD Virtio net drivers issue ==
 Similar to FreeBSD there is an issue in OpenBSD with the virtio drivers which causes packets to get corrupted.
  /!\ I will try to contact the OpenBSD mailing list to see if something could be done.
+ * I have contacted someone on the IRC channel and after testing latest(27/08/2015) current(5.8) it seems that the issue got resolved and the packets are not malformed anymore.
