@@ -50,7 +50,39 @@ dhcpd_withumasl="022"
 
 # Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
 dumpdev="AUTO"
+}}}
 
+== FreeBSD Virtio net drivers issue ==
+From an unknown reason the FreeBSD virtio net drivers creates invalid packets while using route-to.
+To prevent this corruption to happen there is a need to disable two interfaces options:
+ * rxcsum
+ * txcsum
+
+I wrote a small startup script to disable these options for vtnet(virtio) devices.
+{{{
+#!highlight bash
+#!/bin/sh
+
+. /etc/rc.subr
+
+name="vtnet"
+rcvar=vtnet_enable
+start_cmd="${name}_start"
+stop_cmd=":"
+
+vtnet_start()
+{
+        echo "VTNET started."
+        ifconfig |grep "^vtnet"|awk '{print $1}'|sed s/\://g |xargs -n1 |       while read INTERFACE
+        do
+                ifconfig $INTERFACE -rxcsum
+                ifconfig $INTERFACE -txcsum
+        done
+
+}
+
+load_rc_config $name
+run_rc_command "$1"
 }}}
 
 = A Similar config on OpenBSD =
