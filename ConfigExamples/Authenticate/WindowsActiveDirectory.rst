@@ -17,6 +17,8 @@ Updated by Christopher Schirner 11.11.2014
 
 This wiki page covers setup of a Squid proxy which will seamlessly integrate with Active Directory using Kerberos, NTLM and basic authentication for clients not authenticated via Kerberos or NTLM.
 
+ . /!\ This configuration example appears to have been written for an Ubuntu installation and incompletely munged for someones idea of general use. File paths and account user/group names will depend on your operatig system.
+
 If you are running Debian or would like more verbose instructions including access groups [[http://wiki.bitbinary.com/index.php/Active_Directory_Integrated_Squid_Proxy|this link|target="_blank"]] may be of interest.
 
 === Example Environment ===
@@ -279,6 +281,8 @@ Set Permissions so the proxy user account can read `/var/run/samba/winbindd_priv
 gpasswd -a proxy winbindd_priv
 }}}
 
+ . {X} on Debian an Ubuntu systems there may also be a ''/var/lib/samba/winbindd_privileged'' directory created by the winbind and ntlm_auth tools with root ownership. The group of that folder needs to be changed to match the /var/run/samba/winbindd_privileged location.
+
 append the following to cron to regularly change the computer account password - Wiki note: Need to research if Samba does this automatically.
 
 {{{
@@ -333,7 +337,7 @@ Study and update the following text carefully, replacing the example content wit
 ### /etc/squid3/squid.conf Configuration File ####
 
 ### negotiate kerberos and ntlm authentication
-auth_param negotiate program /usr/local/bin/negotiate_wrapper -d --ntlm /usr/bin/ntlm_auth --diagnostics --helper-protocol=squid-2.5-ntlmssp --domain=EXAMPLE --kerberos /usr/lib/squid3/squid_kerb_auth -d -s GSS_C_NO_NAME
+auth_param negotiate program /usr/local/bin/negotiate_wrapper -d --ntlm /usr/bin/ntlm_auth --diagnostics --helper-protocol=squid-2.5-ntlmssp --domain=EXAMPLE --kerberos /usr/local/bin/squid_kerb_auth -d -s GSS_C_NO_NAME
 auth_param negotiate children 10
 auth_param negotiate keep_alive off
 
@@ -343,7 +347,7 @@ auth_param ntlm children 10
 auth_param ntlm keep_alive off
 
 ### provide basic authentication via ldap for clients not authenticated via kerberos/ntlm
-auth_param basic program /usr/lib/squid3/squid_ldap_auth -R -b "dc=example,dc=local" -D squid@example.local -W /etc/squid3/ldappass.txt -f sAMAccountName=%s -h dc1.example.local
+auth_param basic program /usr/local/bin/squid_ldap_auth -R -b "dc=example,dc=local" -D squid@example.local -W /etc/squid3/ldappass.txt -f sAMAccountName=%s -h dc1.example.local
 auth_param basic children 10
 auth_param basic realm Internet Proxy
 auth_param basic credentialsttl 1 minute
