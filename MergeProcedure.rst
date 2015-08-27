@@ -18,7 +18,7 @@ We would like everyone to discuss their plans in the [[http://www.squid-cache.or
 Other developers are often able to provide projects for anyone just wanting to contribute.
 
 === Code Style ===
- * Squid3CodingGuidelines lists the fine details of syntax required.
+ * SquidCodingGuidelines lists the fine details of syntax required.
  * Formatting is presently enforced automatically post-commit.
   * Self-checks may be done using the '''scripts/source-maintenance.sh''' script (requires '''astyle 1.23''' for full checks).
 
