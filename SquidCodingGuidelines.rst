@@ -29,7 +29,13 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
 == Mandatory coding rules ==
 
   * Document, at least briefly, every new type, class, member, or global. Doxygen format is appreciated.
-  * The Big Three: Every class that has one of (Destructor, copy constructor, assignment operator) must have all three. This includes base and derived classes.
+  * The Big Five (Three plus Two)
+   * Big Three: copy constructor, destructor, and assignment operator
+   * Move methods: move constructor and move assignment operator
+    1. If the class works well without any of the Big3 methods, do not define any of the Big3 methods.
+    1. If you have to define one of Big3, declare all of Big3.
+    1. If class has a non-default destructor, you may decide to define one of the Move methods. If you define one Move method, declare the other Move method as well.
+    1. use {{{= default}}} declaration whenever possible if it is sufficientm and {{{=delete}}} declaration when method is prohibited.
   * Naming conventions as covered in [[Features/SourceLayout]] are to be used.
 
 == Suggested coding rules ==
