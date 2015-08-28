@@ -17,3 +17,5 @@ http://forums.juniper.net/t5/SRX-Services-Gateway/port-80-redirection-on-srx650-
 http://serverfault.com/questions/442385/how-to-route-all-network-traffic-for-vlan-through-a-proxy-server-on-srx
 
 https://forum.ivorde.com/squid-http-s-transparent-proxy-with-juniper-srx-part-3-t14191.html
+
+This seems like a very straight forward one: http://aranetworks.com/support/document_center/download/151
