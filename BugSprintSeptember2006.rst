@@ -4,17 +4,17 @@ We're hitting this [[http://www.squid-cache.org/bugs/buglist.cgi?query_format=ad
 
 We started with 42, and have addressed:
 
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=772
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=897
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=975
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1402
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1493
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1567
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1568
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1598
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1642
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1716
- * http://www.squid-cache.org/bugs/show_bug.cgi?id=1750
+ * Bug:772
+ * Bug:897
+ * Bug:975
+ * Bug:1402
+ * Bug:1493
+ * Bug:1567
+ * Bug:1568
+ * Bug:1598
+ * Bug:1642
+ * Bug:1716
+ * Bug:1750
  * http://www.squid-cache.org/Versions/v3/3.0/changesets/10427.patch
 Other useful bug views:
 
