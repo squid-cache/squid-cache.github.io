@@ -114,8 +114,10 @@ sslproxy_flags DONT_VERIFY_PEER
 To increase security the good idea to set this option:
 
 {{{
-sslproxy_options NO_SSLv2 NO_SSLv3 SINGLE_DH_USE
+sslproxy_options NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
 }}}
+
+'''NOTE:''' SSL options must be , or : separated, not spaces!
 
 As a result, you can got more errors in your cache.log. So, you must investigate every case separately and correct it on demand.
 ----
