@@ -122,5 +122,28 @@ sslproxy_options NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
 '''NOTE 2:''' NO_SSLv2 is outdated in latest releases. Supporting SSLv2 completely removed from code.
 
 As a result, you can got more errors in your cache.log. So, you must investigate every case separately and correct it on demand.
+
+== Hardening ==
+
+It is important to increase invisible for you part of bumped connection - from proxy to server.
+
+By default, you are use default set of ciphers. And never check your ssl connection from outside.
+
+To achieve this, you can use [[https://www.ssllabs.com/ssltest/viewMyClient.html|this link]] for example.
+
+Most often you can see usage of export/weak ciphers.
+
+To do hardening, you can set Mozilla-provided cipher list:
+
+{{{
+sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
+}}}
+
+In combine with sslproxy_options above you can increase outgoing SSL connection's security.
+
+A good result should look like this:
+
+
+
 ----
 CategoryConfigExample
