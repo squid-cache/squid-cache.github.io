@@ -145,5 +145,9 @@ A good result should look like this:
 
 {{attachment:ssl_client_online_check.png  | Test SSL after change cipher's suite}}
 
+This looks like more better for outgoing SSL connections.
+
+'''Note:''' Your browser shows connection security info from proxy to client. But it is important for your to know security level from proxy to server connection. Don't forget about ciphers.
+
 ----
 CategoryConfigExample
