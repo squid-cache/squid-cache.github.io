@@ -129,21 +129,21 @@ It is important to increase invisible for you part of bumped connection - from p
 
 By default, you are use default set of ciphers. And never check your ssl connection from outside.
 
-To achieve this, you can use [[https://www.ssllabs.com/ssltest/viewMyClient.html|this link]] for example.
+To achieve this, you can use [[https://www.ssllabs.com/ssltest/viewMyClient.html|this link]] for example. Just point browser from client behing your proxy to this URL.
 
 Most often you can see usage of export/weak ciphers.
 
-To do hardening, you can set Mozilla-provided cipher list:
+To do hardening, you can set Mozilla-provided cipher list (this is one line):
 
 {{{
 sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 }}}
 
-In combine with sslproxy_options above you can increase outgoing SSL connection's security.
+In combination with sslproxy_options above you can increase outgoing SSL connection's security.
 
 A good result should look like this:
 
-
+{{attachment:ssl_client_online_check.png  | Test SSL after change cipher's suite}}
 
 ----
 CategoryConfigExample
