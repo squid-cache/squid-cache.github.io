@@ -13,11 +13,11 @@
  * '''Version''': 3.2
  * '''Developer''': AlexRousskov
  * '''Priority''': 3
- * '''More''': patches for [[http://www.squid-cache.org/bugs/show_bug.cgi?id=410|bug 410]]
+ * '''More''': patches for [[Bug:410|bug 410]]
 
 == Details ==
 
-The following description applies to all supported store types and Squid versions. Current [[http://www.squid-cache.org/bugs/attachment.cgi?bugid=410&action=viewall|patches]] implement optional bypass of COSS cache_dir failures for Squid2 only. Please see the patch preamble for technical notes and the bug [[http://www.squid-cache.org/bugs/show_bug.cgi?id=410|report]] for discussion.
+The following description applies to all supported store types and Squid versions. Current [[http://bugs.squid-cache.org/attachment.cgi?bugid=410&action=viewall|patches]] implement optional bypass of COSS cache_dir failures for Squid2 only. Please see the patch preamble for technical notes and the bug [[Bug:410|report]] for discussion.
 
 Adding bypass=1 option to cache_dir allows Squid to bypass errors related to that cache store.  A bypassed cache_dir does not store misses and does not load hits.  Its state may be corrupted, requiring a dirty rebuild.  However, Squid should keep running, using the remaining cache directories (if any). Once triggered, cache_dir bypass lasts until Squid is stopped. Squid never starts in a bypass mode.
 
