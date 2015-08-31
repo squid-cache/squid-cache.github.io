@@ -22,7 +22,7 @@
 
  * '''Developer''': FrancescoChemolli
 
- * '''More''': Migrated from [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1868|Bug 1868]].
+ * '''More''': Migrated from bug Bug:1868.
 
 
 = Details =
