@@ -16,7 +16,7 @@
 
  * '''Developer''': Gonzalo Arana (2.x), AmosJeffries (3.x)
 
- * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=1208
+ * '''More''': bug Bug:1208
 
 
 == Details ==
