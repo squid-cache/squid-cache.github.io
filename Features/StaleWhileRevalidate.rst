@@ -18,7 +18,7 @@
 
  * '''Developer''': AlexRousskov
 
- * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=2256
+ * '''More''': [[Bug:2256|Bug 2256]]
 
 ## Details
 ##
