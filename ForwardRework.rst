@@ -24,7 +24,7 @@ And protocols we have a client implementation of:
  * GOPHER
  * FTP
 
-Theres a [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1763|patch]] to break out the server implementations - HTTPS, HTTP, ICP, HTCP. This possibly needs more work to be really polished, and is slated for 3.1.
+Theres a [[Bug:1763|patch]] to break out the server implementations - HTTPS, HTTP, ICP, HTCP. This possibly needs more work to be really polished, and is slated for 3.1.
 
 Some work has been done on breaking out the protocols we can have in a request into a single clean set of classes, making it modular, but its not finished - and probably cant be until the protocols we implement clients of, and the connection between having a request object and actually handing it off to an external server, are decoupled.
 
