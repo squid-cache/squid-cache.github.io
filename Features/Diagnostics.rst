@@ -19,7 +19,7 @@
 
  * '''Developer''': 
 
- * '''More''': http://www.squid-cache.org/bugs/show_bug.cgi?id=2334
+ * '''More''': bug Bug:2334
 
 = Details =
 
