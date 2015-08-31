@@ -22,7 +22,7 @@
 
  * '''Developer''': 
 
- * '''More''': Imported from [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2185|Bug 2185]]
+ * '''More''': Imported from [[Bug:2185|Bug 2185]]
 
 
 = Details =
