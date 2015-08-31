@@ -29,7 +29,7 @@ Unfortunately most of them were not ported to [[Squid-3.0]] which compounded the
 
 (ported to Squid-3.5)
 
- * Fixing (or at least working around) [[http://www.squid-cache.org/bugs/show_bug.cgi?id=7|Bug #7]]
+ * Fixing (or at least working around) [[Bug:7|Bug #7]]
  * Further transparent interception improvements from Steven Wilton
 
 Packages of squid 2.7 source code are available at http://www.squid-cache.org/Versions/v2/2.7/
