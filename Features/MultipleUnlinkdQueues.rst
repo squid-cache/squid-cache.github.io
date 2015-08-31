@@ -20,7 +20,7 @@
 
  * '''Developer''': 
 
- * '''More''': Imported from Bugzilla [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1580|Bug 1580]]
+ * '''More''': Imported from Bugzilla [[Bug:1580|Bug 1580]]
 
 = Details =
 
