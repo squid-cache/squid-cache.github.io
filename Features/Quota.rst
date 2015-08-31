@@ -18,7 +18,7 @@
  * '''More''': [[http://www.squid-cache.org/mail-archive/squid-dev/200902/0138.html|squid-dev thread]]
 
  * '''Related Bugs''':
-   http://www.squid-cache.org/bugs/show_bug.cgi?id=1849 (policy helper feature)
+   Bug:1849 (policy helper feature)
 
 == Description ==
 
