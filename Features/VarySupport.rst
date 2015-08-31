@@ -17,8 +17,7 @@
  * '''Developer''': 
 
  * '''More''': 
-http://www.squid-cache.org/bugs/show_bug.cgi?id=1647
-http://www.squid-cache.org/bugs/show_bug.cgi?id=1631
+  bug Bug:1647, bug Bug:1631
 
 
 ## Details
