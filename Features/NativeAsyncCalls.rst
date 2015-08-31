@@ -9,7 +9,7 @@
  * '''Version''': 3.1
  * '''Status''': complete
  * '''Developer''': AlexRousskov
- * '''More''': [[http://www.squid-cache.org/bugs/show_bug.cgi?id=1912|bug1912]], [[http://www.squid-cache.org/bugs/show_bug.cgi?id=2093|bug2093]], and item 1 in [[http://www.squid-cache.org/mail-archive/squid-dev/200707/0109.html|email109]]
+ * '''More''': [[Bug:1912|bug1912]], [[Bug:2093|bug2093]], and item 1 in [[http://www.squid-cache.org/mail-archive/squid-dev/200707/0109.html|email109]]
 
 <<TableOfContents>>
 
