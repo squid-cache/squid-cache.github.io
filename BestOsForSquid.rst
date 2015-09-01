@@ -25,15 +25,19 @@ For reference we maintain an incomplete list of OS where Squid is known to be po
 What matters the most to obtain the most out of any setup is to properly tune a few parameters. In priority order:
 
  * amount of physical memory available
-   the more the better, squid performance will suffer badly if parts of it are swapped out of core memory
+  . the more the better, squid performance will suffer badly if parts of it are swapped out of core memory
+ * CPU speed and core count
+  . few faster cores are better than many slow cores. SMP Squid can currently operate most efficiently with 4-8 cores of 3GHz or more. multi-tenant installations are better for machinery with very many cores.
+  . only the physical cores are useful, hyper-threaded "cores" can actually be worse.
  * Number of harddrives used for cache and their architecture
-   squid disk access patterns hit particularly hard RAID systems - especially RAID4/5. Since the data are not by definition valuable, it is recommended to run the cache_dirs on JBOD <<FootNote(just a bunch of disks, in other words NO RAID)>> (see [[SquidFaq/RAID]])
-   of course the disk type matters: SCSI performs better than ATA, 15kRPM is better than 5.4kRPM, etc.
+  . squid disk access patterns hit particularly hard RAID systems - especially RAID4/5. Since the data are not by definition valuable, it is recommended to run the cache_dirs on JBOD <<FootNote(just a bunch of disks, in other words NO RAID)>> (see [[SquidFaq/RAID]])
+  . of course the disk type matters: SCSI performs better than ATA, 15kRPM is better than 5.4kRPM, etc.
  * noatime mount option
-   atime is just useless for cache data - squid does its own timestamping, mounting the filesystem with the noatime option just saves a whole lot of writes to the disks
+  . atime is just useless for cache data - squid does its own timestamping, mounting the filesystem with the noatime option just saves a whole lot of writes to the disks
  * amount of space used
-   always leave about 20% of free space on the filesystems containing your cache_dirs: generally FS performance degrades dramatically if used space exceeds 80%
- * on OSes which offer multiple choices, type of filesystem (except for a few really bad choices)
+  . always leave about 20% of free space on the filesystems containing your cache_dirs: generally FS performance degrades dramatically if used space exceeds 80%
+ * type of filesystem
+  . only applies on OSes which offer multiple choices (except for a few really bad choices of FS). see below.
 
 On systems with synchronous directory updates (Solaris, some BSD versions)
 
@@ -47,7 +51,7 @@ In case you didn't read the previous paragraph, please do! In case you ''still''
   * ext4
     no data. we are looking for some ext4 experienced users to send tuning details in (if any!).
   * ext3
-    another fine blend, the defaults filesystem creation parameters are just good for squid - watch out for the number of inodes - squid cached objects are usually about 12-16kb in size, make sure you have enough.
+    another fine blend, the defaults filesystem creation parameters are just good for squid - watch out for the number of inodes - squid cached objects are usually about 12-16kb in size, make sure you have enough. Consider using a ''rock'' SquidConf:cache_dir if you run into inode problems.
   * ext2
     well, ext2 is a venerable good filesystem. But do you really want to wait for hours while your FS is being checked?
   * everything else
@@ -55,9 +59,10 @@ In case you didn't read the previous paragraph, please do! In case you ''still''
 
  * Solaris
   * UFS 
-    UFS is the old Solaris File System, which good and stable. Use "noatime" as mount option.
+   . the old Solaris File System, which good and stable. Use "noatime" as mount option.
   * ZFS 
-    Use ZFS, if you want really high performance for your Squid Cache. ZFS is included in Solaris beginning with Solaris 10. Release 6/06. Use "noatime" as mount option.
-    More Infos about ZFS: http://www.sun.com/software/solaris/zfs_learning_center.jsp
+   . if you want really high performance for your Squid Cache, and dont mind bug Bug:2313.
+   . ZFS is included in Solaris beginning with Solaris 10. Release 6/06. Use "noatime" as mount option.
+   . more about ZFS: http://www.sun.com/software/solaris/zfs_learning_center.jsp
 
 ----
