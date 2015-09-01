@@ -153,7 +153,7 @@ This looks like more better for outgoing SSL connections.
 
 To force Squid use modern DH exchanges/ciphers you must (depending of your openssl build) create DH params file and specify it with http(s)_port.
 
-To do that forst create DH params file:
+To do that first create DH params file:
 
 {{{
 # openssl dhparam -outform PEM -out dhparam.pem 2048
