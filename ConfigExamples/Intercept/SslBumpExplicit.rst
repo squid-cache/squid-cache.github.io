@@ -162,7 +162,12 @@ To do that forst create DH params file:
 Then add dhparams= option to your bumped port specification:
 
 {{{
-http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/etc/squid/rootCA.crt key=/etc/squid/rootCA.key options=NO_SSLv3 dhparams=/etc/squid/dhparam.pem
+#	   dhparams=	File containing DH parameters for temporary/ephemeral
+#			DH key exchanges. See OpenSSL documentation for details
+#			on how to create this file.
+#			WARNING: EDH ciphers will be silently disabled if this
+#				 option is not set.
+https_port 3129 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA.crt key=/usr/local/squid/etc/rootCA.key options=NO_SSLv3 dhparams=/usr/local/squid/etc/dhparam.pem
 }}}
 
 and restart squid.
