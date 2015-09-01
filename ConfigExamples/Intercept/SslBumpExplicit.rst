@@ -149,5 +149,23 @@ This looks like more better for outgoing SSL connections.
 
 '''Note:''' Your browser shows connection security info from proxy to client. But it is important for your to know security level from proxy to server connection. Don't forget about ciphers.
 
+=== Modern DH/ciphers usage ===
+
+To force Squid use modern DH exchanges/ciphers you must (depending of your openssl build) create DH params file and specify it with http(s)_port.
+
+To do that forst create DH params file:
+
+{{{
+# openssl dhparam -outform PEM -out dhparam.pem 2048
+}}}
+
+Then add dhparams= option to your bumped port specification:
+
+{{{
+http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/etc/squid/rootCA.crt key=/etc/squid/rootCA.key options=NO_SSLv3 dhparams=/etc/squid/dhparam.pem
+}}}
+
+and restart squid.
+
 ----
 CategoryConfigExample
