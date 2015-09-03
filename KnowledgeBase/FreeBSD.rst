@@ -100,6 +100,12 @@ The FreeBSD packages and ports install squid in the following locations:
  /usr/local/etc/rc.d/squid [fast|force|one](start|stop|restart|rcvar|reload|status|poll)
 }}}
 
+== Tuning ==
+There are many values that can be tuned and you should take a look at this link:
+ * https://pleiades.ucsc.edu/hyades/FreeBSD_Network_Tuning
+
+Using tuning above the needed or system matching values can cause things to not work.
+
 == Troubleshooting ==
 
 === ERROR: Could not send signal N to process NN: (3) No such process ===
