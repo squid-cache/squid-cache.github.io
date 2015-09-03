@@ -61,6 +61,15 @@ If running things as root is not an option then get your sysadmin to install a t
 More information can be found from Henriks [[http://squid.sourceforge.net/hno/linux-lfd.html|How to get many filedescriptors on Linux 2.2.X and later]] page.
 
 === FreeBSD ===
+==== 2015 ====
+[[Eliezer Croitoru]]:
+
+* Referencing to [[https://www.freebsd.org/doc/handbook/configtuning-kernel-limits.html|Tuning Kernel Limits]] of the FreeBSD based on Adrian Chad [[http://adrianchadd.blogspot.co.il/2013/08/why-oh-why-am-i-seeing-rst-frames-from.html|article]].
+ * The docs describes that the basic "server accept" socket is bounded to a queue of 128 connections.
+ * You would probably see something like "connection reset by peer" and you will need to increase the ''kern.ipc.somaxconn'' to 2048 to match something useful for production network of about 300 users. 
+ * In a case you have a loaded server you would need to increase it past the 16384 limit.
+
+==== older then 2015 ====
 
  >:> This information is outdated, and may no longer be relevant.
 
