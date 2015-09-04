@@ -58,9 +58,13 @@ DebugLevel 0
 ModulesDir /usr/local/lib/c_icap
 ServicesDir /usr/local/lib/c_icap
 LoadMagicFile /usr/local/etc/c-icap.magic
+
+acl local_squid src 127.0.0.1/255.255.255.255
+acl squid_requests type REQMOD RESPMOD
+icap_access allow local_squid squid_requests
+
 ServerLog /var/log/i-cap_server.log
 AccessLog /var/log/i-cap_access.log
-Service echo srv_echo.so
 }}}
 
 Edit paths if necessary and start c-icap server. Add startup script to your OS.
