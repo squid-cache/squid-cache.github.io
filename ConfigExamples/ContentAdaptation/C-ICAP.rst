@@ -62,6 +62,7 @@ LoadMagicFile /usr/local/etc/c-icap.magic
 acl local_squid src 127.0.0.1/255.255.255.255
 acl squid_requests type REQMOD RESPMOD
 icap_access allow local_squid squid_requests
+icap_access deny all
 
 ServerLog /var/log/i-cap_server.log
 AccessLog /var/log/i-cap_access.log
