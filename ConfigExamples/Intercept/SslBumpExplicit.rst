@@ -149,6 +149,12 @@ This looks like more better for outgoing SSL connections.
 
 '''Note:''' Your browser shows connection security info from proxy to client. But it is important for your to know security level from proxy to server connection. Don't forget about ciphers.
 
+'''Note:''' Some HTTPS sites will prevents to open with this ciphers (i.e., java.com, for example). So, to make it work you can add HIGH cipher suite to this cipher's list. Remember, this makes your configuration a bit weak, but more compatible. Your cipher's row will look like this:
+
+{{{
+sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:HIGH:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
+}}}
+
 === Modern DH/ciphers usage ===
 
 To force Squid use modern DH exchanges/ciphers you must (depending of your openssl build) create DH params file and specify it with http(s)_port.
