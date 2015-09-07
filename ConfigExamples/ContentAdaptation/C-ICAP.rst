@@ -96,42 +96,94 @@ this will install the squidclamav.so library into the c-icap modules/services re
 {{{
 Service squidclamav squidclamav.so
 }}}
+
 Then adjust squidclamav.conf as follows:
+
 {{{
 maxsize 5000000
 
-# When a virus is found then redirect the user to this URL. Specify proxy web port
-# which listen all redirects.
-redirect http://<proxyFQDN>:8080/cgi-bin/clwarn.cgi.en_EN
-
-#squidguard /usr/local/bin/squidGuard
+# When a virus is found then redirect the user to this URL
+redirect http://<You_proxy_FQDN>:8080/cgi-bin/clwarn.cgi
 
 # Path to the clamd socket, use clamd_local if you use Unix socket or if clamd
 # is listening on an Inet socket, comment clamd_local and set the clamd_ip and
 # clamd_port to the corresponding value.
 clamd_local /tmp/clamd.socket
-#clamd_ip 192.168.1.5,127.0.0.1
+#clamd_ip 127.0.0.1
 #clamd_port 3310
 
 # Set the timeout for clamd connection. Default is 1 second, this is a good
 # value but if you have slow service you can increase up to 3.
-timeout 1
+timeout 3
+
+# Force SquidClamav to log all virus detection or squiguard block redirection
+# to the c-icap log file.
 logredir 1
+
+# Enable / disable DNS lookup of client ip address. Default is enabled '1' to
+# preserve backward compatibility but you must desactivate this feature if you
+# don't use trustclient with hostname in the regexp or if you don't have a DNS
+# on your network. Disabling it will also speed up squidclamav.
 dnslookup 0
+
+# Enable / Disable Clamav Safe Browsing feature. You must have enabled the
+# corresponding behavior in clamd by enabling SafeBrowsing into freshclam.conf
+# Enabling it will first make a safe browsing request to clamd and then the
+# virus scan request.
 safebrowsing 0
 
+#
+# Here is some defaut regex pattern to have a high speed proxy on system
+# with low resources.
+#
+abort \.google\.*
+abort \.youtube\.com
+abort \.ytimg\.com
+abort \.yimg\.com
+
+abort \.download\.windowsupdate\.com
+abort \.download\.microsoft\.com
+abort \.update\.microsoft\.com
+
+abort \.apple\.com
+abort \.java\.com
+abort \.oracle\.com
+abort \.adobe\.com
+abort \.nvidia\.com
+abort \.intel\.com
+abort \.amd\.com
+abort \.ibm\.com
+abort \.hp\.com
+abort \.dell\.com
+
+abort \.squid-cache\.org
+abort \.dnscrypt\.org
+abort \.urlfilterdb\.com
+abort \.unbound\.net
+abort \.darold\.net
+abort \.torproject\.org
+abort \.shallalist\.de
+
 # Do not scan images
-abort ^.*\.(jp(e?g|e|2)|gif|png|tiff?|bmp|ico)(\?.*|$)
+abort ^.*\.(jp(e?g|e|2)|gif|png|bmp|ico|svg|web(p|m))(\?.*)?$
 abortcontent ^image\/.*$
 
 # Do not scan text files
-abort ^.*\.((m?|x?|s?)htm(l?)|css|js|xml|php|json)(\?.*|$)
+abort ^.*\.((cs|d?|m?|p?|r?|s?|w?|x?|z?)h?t?m?(l?)|php(3?|5?)|(c|x|j)ss|js(t?|px?)|rss|atom|vr(t|ml)|json)(\?.*)?$
 abortcontent ^text\/.*$
 abortcontent ^application\/x-javascript$
 
-# Do not scan streamed videos
+# Do not scan fonts
+abort ^.*\.(ttf|eot|woff2?)(\?.*)?$
+
+# Do not scan (streamed) videos and audios
+abort ^.*\.(flv|f4f|mp(3|4))(\?.*)?$
 abortcontent ^video\/x-flv$
 abortcontent ^video\/mp4$
+abortcontent ^audio\/mp4$
+abortcontent ^video\/webm$
+abortcontent ^audio\/webm$
+abortcontent ^video\/MP2T$
 
 # Do not scan flash files
 abort ^.*\.swf$
@@ -141,26 +193,21 @@ abortcontent ^application\/x-shockwave-flash$
 abortcontent ^.*application\/x-mms-framed.*$
 
 # White list some sites
-whitelist .*\.clamav.net
-whitelist .*\.avast.com
-whitelist .*\.symantec.com
-whitelist .*\.symantecliveupdate.com
-whitelist .*\.kaspersky.*
-whitelist .*\.drweb.com
-whitelist .*\.mcafee.com
-whitelist .*\.estnod32.ru
-whitelist .*\.fsecure.com
-whitelist .*\.sophos.com
-whitelist .*\.avg.com
-
-whitelist .*\.download.windowsupdate.com
-whitelist .*\.download.microsoft.com
-whitelist .*\.update.microsoft.com
-
-whitelist .*\.cdn.mozilla.net
-whitelist .*\.googlevideo.com
-whitelist .*\.youtube.com
+whitelist \.clamav.net
+whitelist \.avast.com
+whitelist \.symantec.com
+whitelist \.symantecliveupdate.com
+whitelist \.kaspersky.*
+whitelist \.drweb.com
+whitelist \.mcafee.com
+whitelist \.fsecure.com
+whitelist \.esetnod32.ru
+whitelist \.eset.*
+whitelist \.sophos.com
+whitelist \.avg.com
+# See also 'trustuser' and 'trustclient' configuration directives
 }}}
+
 and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory. '''Note:''' You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize C-ICAP templates according to your needs.
 
 === Squid Configuration File ===
