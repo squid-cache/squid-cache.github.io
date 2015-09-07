@@ -15,7 +15,7 @@ Packages available for Squid on multiple architectures.
 
 
 ==== Squid-3.5 ====
-Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3
+Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid
 
  . {i} Debian Stretch or newer
 
