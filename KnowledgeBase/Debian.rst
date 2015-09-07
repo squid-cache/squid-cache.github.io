@@ -13,8 +13,21 @@ Packages available for Squid on multiple architectures.
 
 '''Maintainer:''' Luigi Gangitano
 
-==== Squid-3.3 / Squid-3.1 / Squid-3.0 ====
+
+==== Squid-3.5 ====
 Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3
+
+ . {i} Debian Stretch or newer
+
+Install Procedure:
+{{{
+ aptitude install squid
+}}}
+
+==== Squid-3.4 / Squid-3.1 ====
+Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3
+
+ . {i} Debian Jesse or older.
 
 Install Procedure:
 {{{
@@ -23,6 +36,8 @@ Install Procedure:
 
 ==== Squid-2.7 ====
 Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid
+
+ . {i} Debian Jesse or older.
 
 Install Procedure:
 {{{
@@ -46,23 +61,31 @@ Many versions of Ubuntu and Debian are routinely build-tested and unit-tested as
 }}}
 Plus, of course, any custom configuraiton options you may need.
 
-{X} Remember these are only defaults. Altering squid.conf you can point the logs at the right path anyway without either the workaround or the patching.
+ . {X} For Debian '''squid''' package the above ''squid3'' labels should have the '''3''' removed.
+
+ . {X} For Ubuntu Trusty and later '''squid3''' package the above ''squid3'' labels should have the '''3''' removed.
+
+ . {X} Remember these are only defaults. Altering squid.conf you can point the logs at the right path anyway without either the workaround or the patching.
 
 As always, additional libraries may be required to support the features you want to build. The default package dependencies can be installed using:
 {{{
 aptitude build-dep squid
 }}}
 This requires only that your sources.list contain the '''deb-src''' repository to pull the source package information. Features which are not supported by the distribution package will need investigation to discover the dependency package and install it.
- {i} The usual one requested is ''libssl-dev'' for SSL support.
+ {i} The usual one requested is ''libssl-dev'' for TLS/SSL support.
 
 ## end basic compile (leave this mark for Ubuntu page to include all the above)
 
 == Troubleshooting ==
 
-The '''squid3-dbg''' packages provides debug symbols needed for bug reporting if the bug is crash related. See the [[SquidFaq/BugReporting|Bug Reporting FAQ]] for what details to include in a report.
+The '''squid3-dbg''' and '''squid-dbg''' packages provides debug symbols needed for bug reporting if the bug is crash related. See the [[SquidFaq/BugReporting|Bug Reporting FAQ]] for what details to include in a report.
+
+Install the one matching your main Squid packages name (''squid'' or ''squid3'')
 
 {{{
  aptitude install squid3-dbg
+
+ aptitude install squid-dbg
 }}}
 
 ----
