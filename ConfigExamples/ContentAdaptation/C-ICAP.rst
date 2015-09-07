@@ -103,7 +103,7 @@ Then adjust squidclamav.conf as follows:
 maxsize 5000000
 
 # When a virus is found then redirect the user to this URL
-redirect http://<You_proxy_FQDN>:8080/cgi-bin/clwarn.cgi
+redirect http://<You_proxy_FQDN>:8080/cgi-bin/clwarn.cgi.xx_XX
 
 # Path to the clamd socket, use clamd_local if you use Unix socket or if clamd
 # is listening on an Inet socket, comment clamd_local and set the clamd_ip and
