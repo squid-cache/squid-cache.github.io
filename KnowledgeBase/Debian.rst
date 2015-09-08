@@ -76,7 +76,7 @@ This requires only that your sources.list contain the '''deb-src''' repository t
 
 === Init Script ===
 
-The init.d script is part of the official Debain/Ubuntu packaging. It does not come with Squid diretly. So you will need to download a copy from [[https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc]] to /etc/init.d/squid
+The init.d script is part of the official Debain/Ubuntu packaging. It does not come with Squid directly. So you will need to download a copy from [[https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc]] to /etc/init.d/squid
 
 ## end basic compile (leave this mark for Ubuntu page to include all the above)
 
