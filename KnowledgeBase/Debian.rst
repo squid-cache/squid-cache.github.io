@@ -59,7 +59,7 @@ Many versions of Ubuntu and Debian are routinely build-tested and unit-tested as
 --with-logdir=/var/log/squid3 \
 --with-pidfile=/var/run/squid3.pid
 }}}
-Plus, of course, any custom configuraiton options you may need.
+Plus, of course, any custom configuration options you may need.
 
  . {X} For Debian '''squid''' package the above ''squid3'' labels should have the '''3''' removed.
 
@@ -73,6 +73,10 @@ aptitude build-dep squid
 }}}
 This requires only that your sources.list contain the '''deb-src''' repository to pull the source package information. Features which are not supported by the distribution package will need investigation to discover the dependency package and install it.
  {i} The usual one requested is ''libssl-dev'' for TLS/SSL support.
+
+=== Init Script ===
+
+The init.d script is part of the official Debain/Ubuntu packaging. It does not come with Squid diretly. So you will need to download a copy from [[https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc]] to /etc/init.d/squid
 
 ## end basic compile (leave this mark for Ubuntu page to include all the above)
 
