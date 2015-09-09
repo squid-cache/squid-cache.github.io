@@ -52,18 +52,16 @@ Many versions of Ubuntu and Debian are routinely build-tested and unit-tested as
 {{{
 --prefix=/usr \
 --localstatedir=/var \
---libexecdir=${prefix}/lib/squid3 \
---datadir=${prefix}/share/squid3 \
---sysconfdir=/etc/squid3 \
+--libexecdir=${prefix}/lib/squid \
+--datadir=${prefix}/share/squid \
+--sysconfdir=/etc/squid \
 --with-default-user=proxy \
---with-logdir=/var/log/squid3 \
---with-pidfile=/var/run/squid3.pid
+--with-logdir=/var/log/squid \
+--with-pidfile=/var/run/squid.pid
 }}}
 Plus, of course, any custom configuration options you may need.
 
- . {X} For Debian Stretch (8) '''squid''' package the above ''squid3'' labels should have the '''3''' removed.
-
- . {X} For Ubuntu Precise (12.04) and later '''squid3''' package the above ''squid3'' labels should have the '''3''' removed.
+ . {X} For Debian Jesse (8), Ubuntu Oneiric (11.10), or older '''squid3''' packages; the above ''squid'' labels should have a '''3''' appended.
 
  . {X} Remember these are only defaults. Altering squid.conf you can point the logs at the right path anyway without either the workaround or the patching.
 
@@ -82,14 +80,14 @@ The init.d script is part of the official Debain/Ubuntu packaging. It does not c
 
 == Troubleshooting ==
 
-The '''squid3-dbg''' and '''squid-dbg''' packages provides debug symbols needed for bug reporting if the bug is crash related. See the [[SquidFaq/BugReporting|Bug Reporting FAQ]] for what details to include in a report.
+The '''squid-dbg''' (or '''squid3-dbg''') packages provides debug symbols needed for bug reporting if the bug is crash related. See the [[SquidFaq/BugReporting|Bug Reporting FAQ]] for what details to include in a report.
 
 Install the one matching your main Squid packages name (''squid'' or ''squid3'')
 
 {{{
- aptitude install squid3-dbg
-
  aptitude install squid-dbg
+
+ aptitude install squid3-dbg
 }}}
 
 ----
