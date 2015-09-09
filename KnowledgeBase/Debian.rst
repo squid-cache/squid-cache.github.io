@@ -61,9 +61,9 @@ Many versions of Ubuntu and Debian are routinely build-tested and unit-tested as
 }}}
 Plus, of course, any custom configuration options you may need.
 
- . {X} For Debian '''squid''' package the above ''squid3'' labels should have the '''3''' removed.
+ . {X} For Debian Stretch (8) '''squid''' package the above ''squid3'' labels should have the '''3''' removed.
 
- . {X} For Ubuntu Trusty and later '''squid3''' package the above ''squid3'' labels should have the '''3''' removed.
+ . {X} For Ubuntu Precise (12.04) and later '''squid3''' package the above ''squid3'' labels should have the '''3''' removed.
 
  . {X} Remember these are only defaults. Altering squid.conf you can point the logs at the right path anyway without either the workaround or the patching.
 
