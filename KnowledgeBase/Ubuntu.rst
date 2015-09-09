@@ -22,29 +22,26 @@ Packages available for Squid on multiple architectures.
 
  . '''Maintainer:''' Luigi Gangitano
 
-==== Squid-3.1 ====
+==== Squid-3.3 ====
 Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid3
 
-Install Procedure:
-
-{{{
- aptitude install squid3
-}}}
-==== Squid-3.0 ====
-Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid3
-
-Install Procedure:
-
-{{{
- aptitude install squid3
-}}}
-==== Squid-2.7 ====
-Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid
+ . {i} Ubuntu 12.04 (Precise) or newer.
 
 Install Procedure:
 
 {{{
  aptitude install squid
+}}}
+
+==== Squid-3.1 ====
+Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid3
+
+ . {i} Ubuntu 11.10 (Oneiric) or older.
+
+Install Procedure:
+
+{{{
+ aptitude install squid3
 }}}
 
 == Compiling ==
