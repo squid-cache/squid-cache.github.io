@@ -59,9 +59,9 @@ ModulesDir /usr/local/lib/c_icap
 ServicesDir /usr/local/lib/c_icap
 LoadMagicFile /usr/local/etc/c-icap.magic
 
-acl local_squid src 127.0.0.1/255.255.255.255
-acl squid_requests type REQMOD RESPMOD
-icap_access allow local_squid squid_requests
+acl localhost src 127.0.0.1/255.255.255.255
+acl ALLREQUESTS type REQMOD RESPMOD OPTIONS
+icap_access allow localhost ALLREQUESTS
 icap_access deny all
 
 ServerLog /var/log/i-cap_server.log
@@ -222,7 +222,6 @@ Paste the configuration file like this:
 icap_enable on
 icap_send_client_ip on
 icap_send_client_username on
-icap_client_username_encode off
 icap_client_username_header X-Authenticated-User
 icap_preview_enable on
 icap_preview_size 1024
