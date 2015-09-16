@@ -119,7 +119,7 @@ sslproxy_options NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
 
 '''NOTE 1:''' SSL options must be , or : separated, not spaces!
 
-'''NOTE 2:''' NO_SSLv2 is outdated in latest releases. Supporting SSLv2 completely removed from code.
+'''NOTE 2:''' NO_SSLv2 is outdated in latest releases. SSLv2 support completely removed from code.
 
 As a result, you can got more errors in your cache.log. So, you must investigate every case separately and correct it on demand.
 
