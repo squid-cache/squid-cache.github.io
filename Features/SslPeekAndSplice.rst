@@ -71,7 +71,7 @@ Several actions are possible when a proxy handles a TLS connection. See the Squi
 
 ||'''Action'''||'''Applicable processing steps'''||'''Description'''||
 ||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection.||
-||'''bump'''||step1, step2, and sometimes step3||Establish a secure connection with the server and, using a mimicked server certificate, with the client||
+||'''bump'''||step1, step2, and sometimes step3||Establish a secure connection with the server and, using a mimicked server certificate, with the client. However, this is not what actually happens right now at step1. See [[http://bugs.squid-cache.org/show_bug.cgi?id=4327|bug 4327]]||
 ||'''peek'''||step1, step2||Receive SNI and client certificate (step1), or server certificate (step2) while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection (see Limitations).||
 ||'''stare'''||step1, step2||Receive SNI and client certificate (step1), or server certificate (step2) while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection.||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
