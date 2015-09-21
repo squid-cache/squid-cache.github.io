@@ -2,17 +2,15 @@
 #format wiki
 #language en
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-
 = Feature: ETAG and Vary Support incomplete in 3.x =
 
  * '''Goal''': ETAg/Vary experiments need porting over from 2.6
 
- * '''Status''': Not started
+ * '''Status''': not started
 
  * '''ETA''': unknown
 
- * '''Version''': Squid 3
+ * '''Version''': 
 
  * '''Developer''': 
 
