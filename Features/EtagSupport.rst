@@ -2,9 +2,7 @@
 #format wiki
 #language en
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-
-= Feature: ETag and Vary support need porting from 2.6? =
+= Feature: ETag and Vary support need porting from 2.6 =
 
  * '''Goal''': ETag support needs porting from 2.6 to 3.x. The 2.6 experiments have taught design lessons that need to be applied in 3.x
 
@@ -15,7 +13,7 @@
 
  * '''ETA''': unknown
 
- * '''Version''': 3
+ * '''Version''': 
 
  * '''Developer''': 
 
