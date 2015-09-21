@@ -8,11 +8,11 @@
 
  * '''Goal''': To provide an internal URL-rewrite mechanism which can be used with ACL to replace simple redirectors.
 
- * '''Status''': Merged with 2-HEAD. Port to 3.1 underway
+ * '''Status''': Merged with 2-HEAD. Port to 3.1 stalled
 
- * '''ETA''': 3.1 +45 days
+ * '''ETA''': unknown
 
- * '''Version''': 3.2
+ * '''Version''': 
 
  * '''Developer''': Gonzalo Arana (2.x), AmosJeffries (3.x)
 
@@ -21,7 +21,7 @@
 
 == Details ==
 
-Any explicit external URL-rewiter helper via '''url_rewrite_program''' overrides internal redirectors and the external helper is used instead.
+Any explicit external URL-rewiter helper via SquidConf:url_rewrite_program overrides internal redirectors and the external helper is used instead.
 
 === Squid 2.x ===
 || {i} || The format for 3.x differs from 2.x in the directives it provides. This description covers the 2.x version in detail. ||
@@ -53,9 +53,9 @@ url_map_access acl [acl [acl ...]]
 url_map dsturl acl [acl [acl ...]]
 }}}
 
-'''url_map_access''' controls whether url_maps are processed at all for a request. By default are checked against url_maps. If specified only requests matching '''url_map_access''' ACL are further processed against each url_map.
+'''url_map_access''' controls whether url_maps are processed at all for a request. By default are checked against SquidConf:url_map list. If specified, only requests matching SquidConf:url_map_access ACL are further processed against each SquidConf:url_map.
 
-'''url_map''' directives are processed in the order configured.
+SquidConf:url_map directives are processed in the order configured.
 
 '''dsturl''' specifies the resulting URL when all acls are matched. If '''dsturl''' is "-" the re-write does nothing. It may start with a status code sent directly to user. And contain format codes preceeded by '''%'''.
 
