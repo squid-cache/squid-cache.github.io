@@ -1,14 +1,20 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
+
 = Feature: Squid Appliance =
  * '''Goal''': Provide a quick/trivial and complete install of OS + Squid with sane default options from a bootable CD, in a way that is easily updateable.
+
  * '''Status''': Not Started.
- * '''ETA''': Unknown.
- * '''Version''': 2 or 3. Ideally either from single CD.
- * '''Developer''':
+
+ * '''ETA''': unknown
+
+ * '''Version''': 
+
+ * '''Developer''': 
+
  * '''More''': Quick mailing list discussion. http://www.squid-cache.org/mail-archive/squid-users/200803/0206.html
+
 == Details ==
 There area number of features and design ideas that I think, if implemented, would make this a very useful project.  This would be a way to get a system up and running with Squid extremely quickly with good performance, but without a lot of technical knowledge.  Tweaking manually would offer better performance.  People seeking the best possible performance or more advanced configurations (like reverse proxies) should be looking at building their setup manually.
 
