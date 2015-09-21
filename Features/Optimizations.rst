@@ -5,9 +5,8 @@
 = Feature: Optimizations =
 
  * '''Goal''': Waste less CPU
- * '''Status''': ''In Progress''
+ * '''Status''': in progress
  * '''ETA''': unknown
- * '''Version''': Squid 2.7+ and Squid 3.1+
  * '''Developer''': AdrianChadd, AmosJeffries, everyone
  * '''More''': Current work at http://devel.squid-cache.org/changesets/squid/s27_adri.html
 
