@@ -11,9 +11,7 @@
 
  * '''ETA''': unknown
 
- * '''Version''': 3.3
-
- * '''Priority''': 2
+ * '''Version''': 
 
  * '''Developer''': AmosJeffries
 
