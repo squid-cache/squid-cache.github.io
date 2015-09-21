@@ -5,7 +5,6 @@
 #faqlisted yes
 
 = Feature: TPROXY version 4.1+ Support =
- * '''Goal''': Support current TPROXYv4.1+ with full IPv4 and IPv6 transparent interception of HTTP.
 
  * '''Version''': 3.1
 
@@ -14,6 +13,10 @@
  * '''More''': http://www.balabit.com/downloads/files/tproxy/README.txt
 
 <<TableOfContents>>
+
+== Details ==
+
+Support TPROXY v4.1 with full IPv4 and IPv6 transparent interception of HTTP.
 
 == Sponsor ==
 This feature was Sponsored by Balabit and developed by Laszlo Attilla Toth and AmosJeffries. Production tested and debugged with the help of Krisztian Kovacs and Nicholas Ritter.
