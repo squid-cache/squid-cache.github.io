@@ -26,13 +26,14 @@ Tasks in this section need to be done in a rough order to make the changes easy.
   2. create a src/tests/stub_libX.cc for each convenience library API using src/tests/STUB.h
   3. find unit tests which can be linked to the stub instead of the library and update the makefiles
   4. find unit tests with unnecessary linkages and remove (mostly in src/Makefile.am)
+  . {i} This is being tracked in [[Features/SourceLayout]].
 
  * Add unit tests for each class, API method and function already in existence to improve code quality and speedup future testing.
   1. src/acl/*
   2. src/ip/*
 
  * Removing useless includes.
-  2. going through each .h file and minimizing the other .h it includes, using class pre-defines where possible. (This is being done during Features/SourceLayout somewhat so contact squid-dev before attempting).
+  2. going through each .h file and minimizing the other .h it includes, using class pre-defines where possible. (This is being done during [[Features/SourceLayout]] somewhat so contact squid-dev before attempting).
 
  * Normalize the debug level 0 and 1 messages
   1. verify all DBG_CRITICAL output conforms to the labeling criterion in [[SquidFaq/SquidLogs#Squid_Error_Messages|the FAQ]]
