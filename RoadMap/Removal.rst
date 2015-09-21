@@ -24,6 +24,7 @@ Certain features are no longer relevant as the code improves and are planned for
 || 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
 || 3.2 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
 || 3.1 || libcap 1.x || libcap-2.09+ is required for simpler code and proper API usage. ||
+|| 3.1 || cache_dir null || Default for cache_dir has been changed to not using a disk cache. ||
 ##|||| ||
 ##|| TBD || cachemgr_passwd || Security is better controlled by login SquidConf:acl in the SquidConf:http_access configuration ||
 ##|| TBD|| cachemgr.cgi || Merger of report functionality into the main squid process obsoletes it as a stand-alone application. ||
