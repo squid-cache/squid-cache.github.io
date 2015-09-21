@@ -9,15 +9,13 @@
 
  * '''Goal''': A Request-type ACL which matches against the action name of a cache manager request.
 
- * '''Status''': ''Not Started''
+ * '''Status''': not started
 
- * '''ETA''': ''unknown''
+ * '''ETA''': unknown
 
- * '''Version''': 3.2
+ * '''Version''':
 
- * '''Priority''': 1
-
- * '''Developer''': Amos Jeffries
+ * '''Developer''': AmosJeffries
 
 ## * '''More''': 
 
