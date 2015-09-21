@@ -7,9 +7,9 @@ Certain features are no longer relevant as the code improves and are planned for
 ##|||| '''Deprecated in 4.0''' ||
 |||| ||
 |||| '''Deprecated in 3.5''' ||
-|| TBD || [[Features/BumpSslServerFirst|ssl_bump server-first]] || superceeded by [[Features/SslPeekAndSplice|peek-n-splice]] ||
+|| TBD || [[Features/BumpSslServerFirst|ssl_bump server-first]] || Obsolete and broken security. Superceeded by [[Features/SslPeekAndSplice|peek-n-splice]] ||
 || TBD || SSLv3 support || Obsolete and very broken security. But still widely used so no firm ETA. ||
-|| 4.0 || SSLv2 support || Obsolete and very broken security ||
+|| 4.0 || SSLv2 support || RFC RFC:6176 compliance. ||
 |||| ||
 |||| '''Deprecated in 3.4''' ||
 || 3.5 || COSS storage type || Superceded by ROCK storage type ||
