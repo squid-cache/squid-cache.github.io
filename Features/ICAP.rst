@@ -4,7 +4,7 @@
 #faqlisted yes #completed yes
 
 = Feature: ICAP (Internet Content Adaptation Protocol) =
- * '''Status''': Completed.
+ * '''Status''': completed
 
  * '''Version''': 3.0
 
