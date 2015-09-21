@@ -92,7 +92,7 @@ icap_service service_resp respmod_precache 0 icap://127.0.0.1:1344/response
 icap_class class_resp service_resp
 icap_access class_resp allow all
 }}}
-There are other options which can control various aspects of ICAP. See their configuration guide entries for more details:
+There are other options which can control various aspects of ICAP:
 
  * SquidConf:icap_access
  * SquidConf:icap_class
