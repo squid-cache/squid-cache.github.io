@@ -10,7 +10,7 @@
 
  * '''ETA''': unknown
 
- * '''Version''': 3.2
+ * '''Version''':
 
  * '''Developer''': AlexeyVeselovsky
 
@@ -23,6 +23,14 @@ Squid has many ACL types. Many of those types apply to HTTP request or response 
 
 However, if we stuff ICAP headers into ACL objects and apply existing ACL code to those ICAP headers, then the user will not be able to write ACLs that look at HTTP headers inside the ICAP transaction. If we do the opposite and stuff HTTP headers into ACL objects, then the user will not be able to make decisions based on ICAP headers.
 
+We should not duplicate the existing acltype support, of course. The code should somehow provide the ACL with the right headers, depending on the scope.
+
+Non-ICAP options would have HTTP scope as the default. ICAP options may require an explicit scope to avoid confusions.
+
+Ideally, the design should allow for addition of other namespaces in the future, but this is not critical.
+
+= Configuration =
+
 Lets assume that the ACL object can store both ICAP and HTTP messages at the same time. The user can specify which message the ACL should apply to using a namespace or scope technique. For example, given a generic rep_status_code ACL type (currently called http_status), the user should be able to say:
 
 {{{
@@ -33,11 +41,12 @@ Lets assume that the ACL object can store both ICAP and HTTP messages at the sam
   icap_retry deny all
 }}}
 
-We should not duplicate the existing acltype support, of course. The code should somehow provide the ACL with the right headers, depending on the scope.
 
-Non-ICAP options would have HTTP scope as the default. ICAP options may require an explicit scope to avoid confusions.
-
-Ideally, the design should allow for addition of other namespaces in the future, but this is not critical.
-
+= Troubleshooting =
+No currently known issues.
+## 
+## Document each known problem users may encounter and how to solve it.
+## use a wiki sub-section for each issue so we can link from the FAQ
+## troubleshooting page
 ----
 CategoryFeature
