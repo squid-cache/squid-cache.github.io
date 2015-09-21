@@ -2,8 +2,6 @@
 #format wiki
 #language en
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-
 = Feature: No in-memory central index =
 
  * '''Goal''': Allow store to grow unbounded by memory
@@ -12,13 +10,11 @@
 
  * '''ETA''': unknown
 
- * '''Version''': What Squid version(s) will get this feature?
+ * '''Version''': 
 
  * '''Developer''':
-## Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
 
- * '''More''':
-## Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
+## * '''More''':
 
 == Details ==
 
