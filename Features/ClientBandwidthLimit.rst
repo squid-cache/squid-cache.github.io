@@ -1,8 +1,6 @@
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
-##
-## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted yes
 
 = Feature: Client Bandwidth Limits =
@@ -11,16 +9,9 @@
 
  * '''Status''': complete
 
- * '''ETA''': October 2010
-
  * '''Version''': 3.2
 
- * '''Priority''': 1
-
  * '''Developer''': AlexRousskov, ChristosTsantilas
-
- * '''More''':
-
 
 = Use case =
 
