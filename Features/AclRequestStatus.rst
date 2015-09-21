@@ -1,11 +1,7 @@
 ##master-page:Features/FeatureTemplate
 #format wiki
 #language en
-##
-## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted no
-
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
 
 = Feature: Request Status ACL =
 
@@ -16,11 +12,9 @@
 
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
- * '''ETA''': ''unknown''
+ * '''ETA''': unknown
 
- * '''Version''': 3.2
-
- * '''Priority''': 
+ * '''Version''': 
 
  * '''Developer''': Gonzalo Arana
 
