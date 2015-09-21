@@ -5,17 +5,17 @@
 ## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted no
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
 = Feature: Automatic cache_dir sizing =
+
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': Allow squid to automatically define the best cache_dir and cache_mem sizing, based on available disk space and core memory availability
+
  * '''Status''': ''Not started''
 
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
- * '''ETA''': ''unknown''
- * '''Version''': 3.2
- * '''Priority''':
+ * '''ETA''': unknown
+ * '''Version''':
  * '''Developer''':
  * '''More''': From [[http://bugs.squid-cache.org/show_bug.cgi?id=498|Bug 498]]
 
