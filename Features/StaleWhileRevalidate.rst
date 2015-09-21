@@ -2,21 +2,17 @@
 #format wiki
 #language en
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-
 = Feature: stale-while-revalidate =
 
  * '''Goal''': Port from 2.7
 
- * '''Status''': Not started
+ * '''Status''': not started
 
  * '''ETA''': unknown
 
- * '''Version''': 3.2
+ * '''Version''': 
 
- * '''Priority''': 1
-
- * '''Developer''': AlexRousskov
+ * '''Developer''':
 
  * '''More''': [[Bug:2256|Bug 2256]]
 
