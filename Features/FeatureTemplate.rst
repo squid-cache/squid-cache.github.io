@@ -12,7 +12,7 @@
  * '''Goal''': What must this feature accomplish? Try to use specific, testable goals so that it is clear whether the goal was satisfied. Goals using unquantified words such as "improve", "better", or "faster" are often not testable. Do not specify ''how'' you will accomplish the goal (use the Details section below for that).
 
 ## use "completed" for completed projects, or remove entirely
- * '''Status''': What is the current status?
+ * '''Status''': not started; What is the current status?
 ## Standard choices are ''not started'', ''in progress'', and ''completed''.
 ## You can specify details after a semicolon (e.g., the reason why the development has not started yet or the first release version).
 
