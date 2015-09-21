@@ -7,13 +7,11 @@
 
  * '''Goal''': To remove the many issues squid currently displays due to reconfigure via a full component shutdown/restart cycle.
 
- * '''Status''': Not started
+ * '''Status''': underway;
 
  * '''ETA''': unknown
 
- * '''Version''': 3.2 and later
-
- * '''Priority''': 2
+ * '''Version''': 
 
  * '''Developer''': AmosJeffries
 
