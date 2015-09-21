@@ -15,7 +15,7 @@
 
  * '''Version''':
 
- * '''Developer''': AmosJeffries
+ * '''Developer''':
 
 ## * '''More''': 
 
