@@ -4,20 +4,19 @@
 #faqlisted no
 
 
-= Feature: squid.conf Migration Scripts =
+= Feature: squid.conf migration =
 
- * '''Goal''': To create a script or system easing the upgrade path for squid.conf between squid versions.
+ * '''Goal''': To easing the upgrade path for squid.conf between squid versions.
 
  * '''Status''': started
 
- * '''ETA''': unknown. this is an ongoing project
+ * '''ETA''': unknown
 
- * '''Version''': 3.2
+ * '''Version''': 
 
  * '''Developer''': AmosJeffries
 
- * '''More''': contact AmosJeffries or squid-dev mailing list if you are interested in working on this.
-
+## * '''More''':
 
 = Details =
 
@@ -36,7 +35,7 @@ This project will have the side effect of also replacing all the obscure '''Bung
  * might be done best as a built-in parser processing path. However the current parsers (plural!) and configure startup/restart/reload/shutdown pathways all need to be re-worked properly before this can be built-in. see [[Features/HotConf]] for details on that work.
 
  * some options are supported, but not by the current set of ./configure options. The parser #if-#endif need to be re-worked to provide instructions about when directive to re-build squid with to get the option.
-  . NP: this *is* already done for ''directives'' but not for sub-options where the directive is parsed (ie  '' SquidConf:http_port ... sslcacert=/foo '' still comes up as bungled config).
+  . NP: this is already done for ''directives'' but not for sub-options where the directive is parsed (ie  '' SquidConf:http_port ... sslcacert=/foo '' still comes up as bungled config).
 
 == Malformed Config Logic ==
 Some common mistakes users have trouble with are caused by wrong config being "accepted" by Squid but not having the effect they expected. Having the parser detect these cases and warn about them would be good.
