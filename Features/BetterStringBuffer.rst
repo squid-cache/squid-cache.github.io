@@ -7,9 +7,8 @@
  * '''Goal''':  Improve the usage of short strings to use best-practice, efficient, pointer-safe APIs.
  * '''Status''': general code conversion underway
  * '''ETA''': unknown
- * '''Version''': 3.3+
  * '''Developer''': AmosJeffries, FrancescoChemolli
- * '''Feature Branch''': https://code.launchpad.net/~kinkie/squid/stringng
+ * '''More''': https://code.launchpad.net/~kinkie/squid/stringng
 
 == Details ==
 Improve the usage of memory-pooled strings and the string API. The code is presently not using best-practice or pointer-safety with regards to short strings. Nor is it using them widely in place of un-pooled character arrays where it could provide greater memory management easily.
