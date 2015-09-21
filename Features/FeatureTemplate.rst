@@ -9,10 +9,9 @@
 
 = Feature: What do you want others to call this feature? =
 
-## Remove when feature is completed and fully merged
  * '''Goal''': What must this feature accomplish? Try to use specific, testable goals so that it is clear whether the goal was satisfied. Goals using unquantified words such as "improve", "better", or "faster" are often not testable. Do not specify ''how'' you will accomplish the goal (use the Details section below for that).
 
-## use "completed" for completed projects
+## use "completed" for completed projects, or remove entirely
  * '''Status''': What is the current status?
 ## Standard choices are ''not started'', ''in progress'', and ''completed''.
 ## You can specify details after a semicolon (e.g., the reason why the development has not started yet or the first release version).
@@ -24,8 +23,10 @@
 ## use "undecided" 
  * '''Version''': undecided. What Squid version(s) will get this feature?
 
-## use when the feature is 
-## * '''Developer''': Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
+## use when the feature is not yet publicly available
+## leave empty if nobody is working on it, we use this to decide between Underway and Wishlist features
+ * '''Developer''':
+## Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
 
  * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
 
