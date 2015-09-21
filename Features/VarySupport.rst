@@ -1,3 +1,4 @@
+## page was renamed from Features/ETagVarySupport
 ##master-page:CategoryTemplate
 #format wiki
 #language en
