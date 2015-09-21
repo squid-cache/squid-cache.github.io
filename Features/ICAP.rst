@@ -1,7 +1,7 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-#faqlisted yes #completed yes
+#faqlisted yes
 
 = Feature: ICAP (Internet Content Adaptation Protocol) =
  * '''Status''': completed
