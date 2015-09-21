@@ -2,9 +2,9 @@
 #format wiki
 #language en
 
-= Feature: ETag and Vary Support incomplete in 3.x =
+= Feature: Vary Support incomplete in 3.x =
 
- * '''Goal''': ETag/Vary experiments need porting over from 2.6
+ * '''Goal''': Vary experiments need porting over from 2.6
 
  * '''Status''': not started
 
@@ -15,7 +15,7 @@
  * '''Developer''': 
 
  * '''More''': 
-  bug Bug:1647, bug Bug:1631
+  bug Bug:1647, see also [[Features/EtagSupport]]
 
 
 ## Details
