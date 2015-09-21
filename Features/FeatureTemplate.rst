@@ -12,16 +12,15 @@
  * '''Goal''': What must this feature accomplish? Try to use specific, testable goals so that it is clear whether the goal was satisfied. Goals using unquantified words such as "improve", "better", or "faster" are often not testable. Do not specify ''how'' you will accomplish the goal (use the Details section below for that).
 
 ## use "completed" for completed projects, or remove entirely
- * '''Status''': not started; What is the current status?
-## Standard choices are ''not started'', ''in progress'', and ''completed''.
+ * '''Status''': not started; What is the current status? standard choices are ''not started'', ''in progress'', and ''completed''.
 ## You can specify details after a semicolon (e.g., the reason why the development has not started yet or the first release version).
 
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
  * '''ETA''': unknown. What is the estimated time of completion? Use either number of calendar days for not started features. Use an absolute date for started and completed features. Use ''unknown'' if unknown.
 
-## use "undecided" 
- * '''Version''': undecided. What Squid version(s) will get this feature?
+## leave empty if the feature is not completed and merged yet
+ * '''Version''': What Squid version(s) will get this feature?
 
 ## use when the feature is not yet publicly available
 ## leave empty if nobody is working on it, we use this to decide between Underway and Wishlist features
