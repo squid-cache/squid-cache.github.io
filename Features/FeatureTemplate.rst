@@ -16,16 +16,14 @@
 ## You can specify details after a semicolon (e.g., the reason why the development has not started yet or the first release version).
 
 ## Remove this entry once the feature has been merged into trunk.
-##  it will then be auto-listed in the RoadMap completed features for its Version
  * '''ETA''': unknown. What is the estimated time of completion? Use either number of calendar days for not started features. Use an absolute date for started and completed features. Use ''unknown'' if unknown.
 
 ## leave empty if the feature is not completed and merged yet
  * '''Version''': What Squid version(s) will get this feature?
 
-## use when the feature is not yet publicly available
+## Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
 ## leave empty if nobody is working on it, we use this to decide between Underway and Wishlist features
  * '''Developer''':
-## Who is responsible for this feature? Use wiki names for developers who have a home page on this wiki.
 
  * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
 
