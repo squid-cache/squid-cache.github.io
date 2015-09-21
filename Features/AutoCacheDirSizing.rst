@@ -10,13 +10,16 @@
 ## Move this down into the details documentation when feature is complete.
  * '''Goal''': Allow squid to automatically define the best cache_dir and cache_mem sizing, based on available disk space and core memory availability
 
- * '''Status''': ''Not started''
+ * '''Status''': not started
 
 ## Remove this entry once the feature has been merged into trunk.
 ##  it will then be auto-listed in the RoadMap completed features for its Version
  * '''ETA''': unknown
+
  * '''Version''':
+
  * '''Developer''':
+
  * '''More''': From [[http://bugs.squid-cache.org/show_bug.cgi?id=498|Bug 498]]
 
 = Details =
