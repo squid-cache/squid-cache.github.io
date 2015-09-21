@@ -104,4 +104,4 @@ Old Squid-2 wishlist:
 
 More ideas are available [[Features/Other|elsewhere]].
 
----
+----
