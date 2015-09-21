@@ -7,17 +7,19 @@
 
 <<TableOfContents>>
 
+ . see also the [[RoadMap/Removal|Schedule for Feature Removals]]
+
 = Roadmap rules =
 
 To minimize noise and the number of half-baked abandoned features, two Feature sets are established for Squid development projects: The TODO List and The Wish List.
 
   TODO list:: TODO list features determine the release focus and timeline. Each feature must document their desired effect and estimated development time. Each feature must have at least one known active developer behind it willing to prioritize the feature and be ready to spend the time to fully develop the proposed feature (i.e., write, test, document, commit, and provide initial support).
 
-  Priorities:: Each developer needs to prioritize the features they are dedicated to completing with a rating estimating on the order they will complete the feature. This makes the priority public, so another developer may join and push the feature faster if needed.
+##  Priorities:: Each developer needs to prioritize the features they are dedicated to completing with a rating estimating on the order they will complete the feature. This makes the priority public, so another developer may join and push the feature faster if needed.
 
   Wish List:: The Wish List accumulates features that do not meet the strict TODO List criteria. Many of these features can be implemented if there is enough demand or a sponsor. Some may get implemented outside of the official process, submitted as patches, and accepted into the release.
 
-There are no freezing points in the RoadMap.  Instead, the development version gets branched whenevr a reasonabel number of features have been added. One branch gets renumbered and use as ongoing development. The other for Point Releases made at regular intervals with bug fixes.
+There are no freezing points in the RoadMap.  Instead, the development version gets branched whenever a reasonable number of features have been added. One branch gets renumbered and use as ongoing development. The other for Point Releases made at regular intervals with bug fixes.
 
 All features must pass an auditing process for commit, and any feature which has passed that review process at time of branching will be included in that serie of piint releases.
 
@@ -62,91 +64,44 @@ Features which have not reached completion or have failed the audit, are automat
 
 <<Include(Squid-4)>>
 
-== Bug Zapping ==
-
-## bugs down to normal status
- * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&bugidtype=include&order=bugs.bug_severity%2Cbugs.bug_id&chfieldto=Now&cmdtype=doit| General Bug Zapping ]]
-
-== TODO ==
+= TODO =
 
 These are the features we are trying to work on at present. New features may be requested, suggested, or added to the plan at any time. Those which are completed and merged will be in the next formal branch after their merge date.
 
-=== Under Development ===
+= Bug Zapping =
 
-(Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*4" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*1")>>
+## bugs down to major status (inclusive)
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bugidtype=include&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&list_id=917&order=version DESC%2Cbug_severity%2Cbug_id| Serious Bugs ]]
 
-(Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*4" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*2")>>
+## bugs with major and normal status
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=major&bug_severity=normal&bugidtype=include&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&list_id=917&order=version DESC%2Cbug_severity%2Cbug_id| General Bug Zapping ]]
 
-(Priority 3)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*4" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*3")>>
+## bugs with minor and trivial status
+ * [[http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=minor&bug_severity=trivial&bugidtype=include&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&list_id=917&order=version DESC%2Cbug_severity%2Cbug_id| Minor Bugs ]]
 
-(Priority 4)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*4" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:.*4")>>
+== Features Under Development ==
 
-(Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*4" regex:"ETA...:" -regex:"ETA...:.unknown" -regex:"Status...:.complete" regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
+Features currently being worked on have a Goal, an ETA, and a Developer is listed; but Status is not "completed":
+ . <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Goal...:" regex:"ETA...:" regex:"Developer...:.*[a-zA-Z]+" -regex:"Status...:.complete")>>
 
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*[34]" regex:"ETA...:.unknown")>>
-
-=== Developer Needed ===
-
-Features considered high-priority for including, but not yet with a dedicated developer to achieve that goal. Incomplete items will be delayed if not completed by initial branching:
-
-(Priority 1)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*1")>>
- * monitor* port from 2.6. Bug:2185
-(Priority 2)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*2")>>
- * Variant Invalidation
-(Priority 3)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*3")>>
-(Priority 4)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:.*4")>>
-
-(Others)
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3" -regex:"Developer...:....*" regex:"Priority...:" -regex:"Priority...:.[1234]")>>
-
- There is also a list of [[RoadMap/Tasks|Tasks]] which anyone can help with.
+Some feature work saying completed but still having an ETA:
+<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"ETA...:" regex:"Status...:.complete")>>
 
 = Wish List =
 
-Wishlist consists of features which have been suggested or requested but do not yet have a developer or any contributor willing to see the feature completed and support it.
+Wishlist consists of features which have been suggested or requested but do not yet have a Developer or any contributor listed as willing to see the feature completed and support it.
 
 Please contact squid-dev and discuss these if you with to take on development of one.
 
-## That means any feature without a named developer....
-<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:"Developer...:.*[a-zA-Z]+")>>
+a Goal, an ETA, and a Developer is listed; but Status is not "completed":
+ . <<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Goal...:" regex:"ETA...:" regex:"Developer...:" -regex:"Developer...:.*[a-zA-Z]+" -regex:"Status...:.complete" -regex:"Feature documentation template")>>
 
-##<<FullSearch(title:Features/ regex:C{1}ategoryFeature -regex:"Developer...:.*[a-zA-Z]+" regex:"Version...:.*3")>>
+Some beginner [[RoadMap/Tasks|Tasks]] which anyone can help with.
+
+Old Squid-2 wishlist:
+
+ * Variant Invalidation
 
 More ideas are available [[Features/Other|elsewhere]].
 
-## Some items got stuck in the wrong version or not marked properly with complete status.
-
-## There should be no 3.0 to 3.5 wishes after the feature set has been frozen. The wishes below (if any) need to be updated because they were pencilled in but still do not have an ETA or other attributes required to be on the TODO or Completed lists.
-
-## * Feature marked 3.0 made it.
- * Feature(s) marked 3.1 that did not make it:<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.1" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
- * Feature(s) marked 3.2 that did not make it:<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.2" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
- * Feature(s) marked 3.3 that did not make it:<<FullSearch(title:Features/ regex:C{1}ategoryFeature regex:"Version...:.*3" regex:"Version...:.*3\.3" regex:"ETA...:.unknown" -regex:"Status...:.complete")>>
- * Feature(s) marked 3.4 made it.
- * Feature(s) marked 3.5 made it.
-
-= Schedule for Feature Removals =
-
-Certain features are no longer relevant as the code improves and are planned for removal. Due to the possibility they are being used we list them here along with the release version they are expected to disappear. Warnings should also be present in the code where possible.
-
-|| ''' Version''' || '''Feature''' || '''Why''' ||
-##|| 3.1 || error_directory files with named languages || Superseded by ISO-639 translations in [[Translations|langpack]] ||
-##|| 3.1 || libcap 1.x || libcap-2.09+ is required for simpler code and proper API usage. ||
-##|| 3.2 || Multiple languages per error page. || Superseded by auto-negotiation in 3.1+ ||
-##|| 3.2 || TPROXYv2 Support || TPROXYv4 available from 3.1 and native Linux kernels ||
-|| 3.5 || dnsserver and DNS external helper API || Internal DNS client now appears to satisfy all use-cases. ||
-|| 3.5 || COSS storage type || Superceded by ROCK storage type ||
-|| 4.0 || SSLv2 support || Obsolete and very broken security ||
-|| TBD || SSLv3 support || Obsolete and very broken security. But still widely used so no firm ETA, maybe Squid-5 or Squid-6. ||
-|| TBD || Netmask Support in ACL || CIDR or RFC-compliant netmasks are now required by 3.1. Netmask support full removal after 3.1 release. ||
-##|| 3.3 || cachemgr_passwd || Security is better controlled by login SquidConf:acl in the SquidConf:http_access configuration ||
-##|| 3.3 || cachemgr.cgi || Merger of report functionality into the main squid process obsoletes it as a stand-alone application. ||
+---
