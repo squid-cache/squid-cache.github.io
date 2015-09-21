@@ -7,17 +7,15 @@
 
  * '''Goal''': add simple webserving capabilities for generic content
 
- * '''Status''': ''Not started''
+ * '''Status''': not started
 
-## Remove this entry once the feature has been merged into trunk.
-##  it will then be auto-listed in the RoadMap completed features for its Version
  * '''ETA''': unknown
 
  * '''Version''': 
 
  * '''Developer''': 
 
- * '''More''': Imported from [Bug:1059|Bug 1059]]
+ * '''More''': Imported from bug Bug:1059
 
 = Details =
 
