@@ -2,17 +2,14 @@
 #format wiki
 #language en
 
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-
 = Feature: Cache Directory Failure Bypass =
 
  * '''Goal''': Make various cache store directory errors not fatal
 
  * '''Status''': Stalled; patches for Squid2 COSS available, no Squid3 sponsor yet
  * '''ETA''': unknown
- * '''Version''': 3.2
+ * '''Version''': 
  * '''Developer''': AlexRousskov
- * '''Priority''': 3
  * '''More''': patches for [[Bug:410|bug 410]]
 
 == Details ==
