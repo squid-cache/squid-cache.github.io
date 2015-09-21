@@ -1,24 +1,20 @@
 ##master-page:CategoryTemplate
 #format wiki
 #language en
-## This is a Feature documentation template. Remove this comment and replace  placeholder questions with the actual information about the feature.
-= Feature: DNS-based origin server location =
- * '''Goal''': Make use of informations available in DNS to locate the origin server for a given website. The needed information can be found in SRV records, where available.
- * '''Status''': In progress; a working redirector-based proof-of-concept is available. It can be improved upon, with the aim of mimicking Squid's internal processes.
+
+= Feature: SRV based origin server location =
+
+ * '''Goal''': Make use of DNS SRV records to locate the origin server for a given website.
+
+ * '''Status''': in progress; a working redirector-based proof-of-concept is available. It can be improved upon, with the aim of mimicking Squid's internal processes.
+
  * '''ETA''': unknown
- * '''ETA''': A few days for the POC. Work needed to get into Squid body is unknown.
- * '''Version''': 3.x
- * '''Priority''': 3
+ * '''Version''': 
  * '''Proof of Concept''': FrancescoChemolli
  * '''Developer''':
  * '''More''':
-## Details
-##
-## Any other details you can document? This section is optional.
-## If you have multiple sections and ToC, please place them here,
-## leaving the above summary information in the page "header".
 
-== Proof Of Concept Code ==
+= Proof Of Concept Code =
 <<AttachList>>
 
 Configuration snippet:
@@ -32,7 +28,7 @@ url_rewrite_host_header off
 Some tuneables are in the redirector script itself.
 
 
-== Details ==
+= Details =
 [[http://en.wikipedia.org/wiki/SRV_record|DNS SRV records]], defined in [[http://www.ietf.org/rfc/rfc2782.txt|RFC 2782]] can help attain some level of high availability and load balancing in a very straightforward manner. Their query structure includes a naming convention to locate a certain well-known network service, and their reply structure includes two different fields to indicate the level of priority a certain pointer of a set has.
 
 For example a query: {{{ _http._tcp.www.kinkie.it. SRV }}} Might return results similar to those:
