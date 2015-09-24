@@ -54,18 +54,18 @@ Finding things to do
 
  * ''' [[http://bugs.squid-cache.org/|Bugzilla ]] ''' database contains a number of problems needing to be investigated and fixed.
 
- * ''' [[RoadMap/Squid3]] ''' lists the feature wishes and plans for future releases.
+ * ''' [[RoadMap]] ''' lists the feature wishes and plans for future releases.
 
  * ''' [[RoadMap/Tasks]] ''' lists some general cleanup tasks that need to be done. These can be good introductory tasks.
 
  * Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still. There are also optional behaviours in the spec not in the checklist which should be added.
 
 
-For Squid-3 we operate the development trunk and web code browsers on [[http://bazaar-vcs.org/|Bazaar]]. If you prefer other VCS tools read-only mirrors are available via several other systems listed below.
+For Squid we operate the development trunk and web code browsers on [[http://bazaar-vcs.org/|Bazaar]]. If you prefer other VCS tools read-only mirrors are available via several other systems listed below.
 
 === Repository Tools ===
 
- * '''Squid-3''': [[BzrInstructions|Bazaar]]
+ * [[BzrInstructions|Bazaar]]
 ## * '''Squid-2''': (obsolete) [[CvsInstructions|CVS]]
 
 === Required Build Tools ===
@@ -85,7 +85,7 @@ When working from the repository code the '''bootstrap.sh''' script is required 
 
 == Contributing (Testing) ==
 
-We ru nconstant integratino testing with a BuildFarm. Additions to it are welcome.
+We run constant integration testing with a BuildFarm. Additions to it are welcome.
 
 
 If you are looking to test the latest release of Squid for your own use you will need to grab yourself a copy of the sources from Bazaar, rsync, or one of the daily snapshot tarballs.
@@ -119,7 +119,7 @@ see [[BzrInstructions]]
 
 === Getting the sources via tarball ===
 
-The latest sources are available at address [[http://squid-cache.org/Versions/]] with a series of previous daily snapshots of the code for testing regressions and other special circumstances.
+The latest sources are available at address [[http://www.squid-cache.org/Versions/]] with a series of previous daily snapshots of the code for testing regressions and other special circumstances.
 
  {i} The daily tarballs displayed are listed by date created and the Bazaar revision number included in that tarball. Gaps are expected in the list when there were no new revisions comitted that day, or when the revision failed to compile on our tarball creation machine.
 
