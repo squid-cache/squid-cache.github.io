@@ -1,3 +1,4 @@
+## page was renamed from StoreClientInternals
 #language en
 
  . {i} This documentation was written for Squid-2.6
