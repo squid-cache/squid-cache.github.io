@@ -46,9 +46,6 @@ There is a lot of code and wading through it at the beginning can seem difficult
 
  * '''[[http://www.squid-cache.org/Doc/code/|Programming Guide]]''' auto-generated code documentation offers some (but certainly not enough) information on the Squid internals with browseable links to the latest version of the code.
 
- * ''' SquidInternals ''' also offers some more-or-less (mostly less) organized snippets.
-   . /!\ one of the TODO tasks is to clean all this up. If you are interested contact the squid-dev mailing list.
-
 
 Finding things to do
 
