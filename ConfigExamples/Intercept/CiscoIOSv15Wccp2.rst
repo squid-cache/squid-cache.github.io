@@ -69,7 +69,6 @@ Also beware, when proxy is stopped - all HTTP/HTTPS traffic bypass it and passth
 wccp2_router 192.168.200.2
 wccp2_forwarding_method l2
 wccp2_return_method l2
-wccp2_service standard 0
 wccp2_rebuild_wait off
 wccp2_service standard 0
 wccp2_service dynamic 70
