@@ -27,7 +27,7 @@ Features which have not reached completion or have failed the audit, are automat
 
 
 ## Now in '''DEVELOPMENT''' cycle.
-## The set of new Squid 3.X features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching of 3.X in -Month- -Year-.
+## The set of new features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching in -Month- -Year-.
 ## 
 
 ## Now in '''RELEASE CANDIDATE''' cycle.
@@ -62,6 +62,7 @@ Features which have not reached completion or have failed the audit, are automat
 ## Currently in '''STABLE / DEPRECATED''' cycle.
 ## The features have been set and code changes are reserved for later versions. Additions are limited to '''Security and Bug fixes'''
 
+<<Include(Squid-5)>>
 <<Include(Squid-4)>>
 
 = TODO =
