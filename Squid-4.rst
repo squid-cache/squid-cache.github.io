@@ -1,7 +1,6 @@
-## page was renamed from Squid-3.6
 #language en
 
-= Squid 4 (was 3.HEAD) =
+= Squid 4 =
 
 ## adjust the box text as necessary for major milestones.
 ## || month year ||<style="background-color: #CC0022;"> Squid-3 is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] ''' and any other recently discovered issues. ||
