@@ -78,6 +78,14 @@ Of course, this installation requires more resources, especially when installing
 
 ClamAV including in many repositories and can be got from them. When configuring clamd, be very conservative with options. Defaults is good starting point. I do not recommend using [[https://developers.google.com/safe-browsing/|SafeBrowsing]] due to performance and memory issues and DetectPUA due to much false-positives. Also take care about antivirus databases updates - it will occurs often enough. I use 24 times per day. '''Note:''' ClamAV daemon (clamd) is memory consumption service, it uses about 200-300 megabytes in minimal configuration (mainly used to store AV database in memory), it can be higher during deep scans of big archives. So, you can put it on separate node with fast network interconnect with your proxy (this option is valid only when using squidclamav).
 
+'''Note:''' It is important to set StreamMaxLength parameter in clamd.conf to the same value as maxsize in squidclamav.conf.
+
+I.e., uncomment and adjust in clamd.conf:
+
+{{{
+StreamMaxLength 5M
+}}}
+
 === Build and configuring squidclamav ===
 
 Installing [[http://squidclamav.darold.net/|SquidClamav]] requires that you already have installed the c-icap as explained above. You must provide the installation path of c-icap to the configure command as follow, compile and then install:
