@@ -8,9 +8,18 @@
 ## || month year ||<style="background-color: orange;"> the Squid-4 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-5]] ||
 ## || month year ||<style="background-color: yellow;"> Squid-4 series became '''DEPRECATED''' with the release of  [[Squid-5]] series ||
 ## || month year ||<style="background-color: #82FF42;"> Released for production use. ||
-|| today ||<style="background-color: #4282FE;"> Now in '''DEVELOPMENT''' cycle. ||
+|| today ||<style="background-color: #4282FE;"> Now in '''RELEASE CANDIDATE''' cycle. ||
 
-The set of new Squid features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time until the branching expected to be in mid or late 2015.
+The release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+ 
+Additions are limited to:
+ * Documentation updates
+ * Polish of existing features
+ * Porting of Squid-2.7 feature regressions
+ * Stability fixes
+ * Security fixes
+ * Bug fixes
+
 
  . {X} This series of Squid requires a C++11 capable compiler. The currently known compilers which meet this criteria and build Squid-4 reliably are GCC 4.9+ and Clang 3.5+
 
@@ -22,23 +31,26 @@ Basic new features in 4.0:
 
  *  '''Major UI changes:'''
   * RFC RFC:6176 compliance (SSLv2 support removal)
-  * Configurable helper queue size, with consistent defaults and better overflow handling
+  * Support Elliptic Curve ciphers in TLS
+  * Secure ICAP service connections
   * Add url_lfs_rewrite: a URL-rewriter based on local file existence
   * SquidConf:on_unsupported_protocol directive to allow Non-HTTP bypass
-  * Removal of SquidConf:refresh_pattern ignore-auth option
+  * Removal of SquidConf:refresh_pattern ignore-auth and ignore-must-revalidate options
   * Remove SquidConf:cache_peer_domain directive
   * basic_msnt_multi_domain_auth: Superceeded by basic_smb_lm_auth
+  * Update SquidConf:external_acl_type directive to take logformat codes in its format parameter
+  * Non-HTTP traffic bypass
 
  * '''Minor UI changes:'''
   * Sub-millisecond transaction logging
   * ext_kerberos_ldap_group_acl -n option to disable automated SASL/GSSAPI
   * negotiate_kerberos_auth outputs group= kv-pair for use in note ACL
   * Adaptation support for Expect:100-continue in HTTP messages
-  * SquidConf:url_rewrite_timeout directive
+  * Add SquidConf:url_rewrite_timeout directive
   * Update localnet ACL default definition for RFC RFC:6890 compliance
   * Persistent connection timeouts SquidConf:request_start_timeout and SquidConf:pconn_lifetime
   * Per-rule SquidConf:refresh_pattern matching statistics in cachemgr report
-  * Non-HTTP traffic bypass
+  * Configurable helper queue size, with consistent defaults and better overflow handling
 
  * '''Developer Interest changes:'''
   * C++11
@@ -49,12 +61,12 @@ Basic new features in 4.0:
   * Base64 crypto API replacement
   * Enable long (--foo) command line parameters on squid binary
   * Implemented selective debugs() output for unit tests
+  * Improved SMP support
 
 
-The intention with this series is to improve performance using C++11 features. Some remaining Squid-2.7 missing features are listed as regressions in http://www.squid-cache.org/Versions/v4/RELEASENOTES.html#ss5.1
+The intention with this series is to improve performance using C++11 features. Some remaining [[Squid-2.7]] missing features are listed as regressions in http://www.squid-cache.org/Versions/v4/RELEASENOTES.html#ss5.1
 
-Packages of what will become Squid-4 source code are available at
-http://www.squid-cache.org/Versions/v4/
+Packages of what will become Squid-4 source code are available at [[http://www.squid-cache.org/Versions/v4/]]
 
 === Security Advisories ===
 
