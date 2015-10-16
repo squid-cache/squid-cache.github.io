@@ -195,5 +195,7 @@ During SSL session resumption, there is no server certificate for Squid to exami
 
 More limitations are TBD.
 
+= TroubleShooting =
+
 ----
 CategoryFeature
