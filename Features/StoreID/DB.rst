@@ -40,7 +40,12 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 
 == SourceForge mirrors ==
 {{{
-^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                    http://dl.sourceforge.net.squid.internal/$1
+^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                http://dl.sourceforge.net.squid.internal/$1
+}}}
+
+== Flickr static image files ==
+{{{
+^https?:\/\/c[\d]+\.staticflickr\.com\/(.*\.jpg) http://staticflickr.images.squid.internal/$1
 }}}
 
 == Fedora Epel mirrors ==
