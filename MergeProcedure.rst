@@ -30,7 +30,7 @@ Submissions are emailed to '''squid-dev''' for merging, one submission per post.
  * '''Attachment''': A bzr merge bundle or a manual patch in a unified diff format.
 
 === Suitability for Merge ===
-Please try to not commit unfinished stuff needing more code to actually work the way intended. HEAD is meant for sharing working code updates with earlybird testers. Development is supposed to done on branches before merging.
+Please try to not commit unfinished stuff needing more code to actually work the way intended. trunk is meant for sharing working code updates with earlybird testers. Development is supposed to be done on branches before merging.
 
 If a follow up change (bugfix etc) is committed related to an earlier change please refer to the subject (first line) of the previous change in the commit message.
 
@@ -38,8 +38,8 @@ If you suspect that there will be a series of incremental commits relating to a 
 
 Add to the below merging procedure any additional testing/documentation steps you think makes sense. Use of common sense is the main rule of conduct.
 
-=== Merging Steps for Squid3 ===
- 1. Check that you have added release notes, if any are needed: '''doc/release-notes/release-3.X.sgml'''. Don't worry about the HTML or TXT files, they are automatically built by the maintainer. Only the SGML files need updating.
+=== Audit and Merging Steps ===
+ 1. Check that you have added release notes, if any are needed: '''doc/release-notes/release-X.sgml'''. Don't worry about the HTML or TXT files, they are automatically built by the maintainer. Only the SGML files need updating.
 
  1. If applicable, check that you have added the feature sponsor to the SPONSORS file.
 
@@ -47,7 +47,7 @@ Add to the below merging procedure any additional testing/documentation steps yo
 
  1. Bring your development branch up to date as described in: [[BzrInstructions#bring_a_branch_up_to_date_with_it.27s_ancestor|BzrInstructions]]
 
- 1. Run a full build test: '''./test-builds.sh'''. Or use the build farm [[http://build.squid-cache.org/job/3.ALPHA-BRANCH-matrix/|branch matrix]] build farm (requires an account).
+ 1. Run a full build test: '''./test-builds.sh'''. Or use the build farm [[http://build.squid-cache.org/job/anybranch-wholefarm-matrix/|branch matrix]] build farm (requires an account).
 
  1. Fix ALL issues with your code uncovered by that testing. If you are certain a problem is with the trunk code, discuss it on squid-dev.
 
@@ -57,7 +57,7 @@ Add to the below merging procedure any additional testing/documentation steps yo
 
 Submissions are normally merged on the next maintenance cycle after acceptance (usually weekends).
 
-==== Squid3 Voting ====
+==== Voting ====
 The first matching rule wins. A submission is automatically counted as one positive vote from the submitter.
 
  {i} Any developer may vote.
@@ -70,7 +70,7 @@ The first matching rule wins. A submission is automatically counted as one posit
 
  1. Submissions older than 10 days without negative votes are accepted.
 
-==== Squid3 Exceptions ====
+==== Exceptions ====
  1. Core developers may commit any changes immediately.
 
  1. Within 10 days of the commit, core developers may remove any submission without prior notice or discussion. A post-factum notice (and discussion) are still expected on squid-dev.
