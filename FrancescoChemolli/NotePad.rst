@@ -36,3 +36,5 @@ code is in hudson.tasks.CommandInterpreter.perform() -> returns boolean, should 
  . Nella shell: {{{println(Jenkins.getInstance().getNode("rs-debian-wheezy").getLabelString().indexOf("gcc"))}}} -> funziona. Ma come combination filter non si riesce a arrivare a nessuno degli oggetti
  . http://sorcerer.jenkins-ci.org/
  . https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins
+
+== test ==
