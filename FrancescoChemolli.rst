@@ -15,6 +15,3 @@ I'm reachable by email at <<MailTo(kinkie@squid-cache.org)>>
  * [[http://tokyocabinet.sourceforge.net/|Tokyo Cabinet]]
    seems to be an interesting on-disk associative-array database (a la dbm, ndbm, gdbm, qdbm), it claims to be very fast. Might it be useful to store data or metadata?
  * [[http://linux.thai.net/~thep/datrie/datrie.html|Double-Array Trie]] implementation 
-
-== test ==
-test
