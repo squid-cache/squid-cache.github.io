@@ -97,8 +97,8 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 
   {i} All Squid OID begin with '''1.3.6.1.4.1.3495'''
 || '''OID''' || '''Name''' || '''Type''' || '''Squid''' || '''Description''' ||
-|| *.1.1.1.0 || cacheSysVMsize || Integer32 || 2.0+ ||Storage Mem size in KB||
-|| *.1.1.2.0 || cacheSysStorage || Integer32 || 2.0+ ||Storage Swap size in KB||
+|| *.1.1.1.0 || cacheSysVMsize || Integer32 || 2.0+ ||Amount of SquidConf:cache_mem storage space used, in KB.||
+|| *.1.1.2.0 || cacheSysStorage || Integer32 || 2.0+ ||Amount of SquidConf:cache_dir storage space used, in KB.||
 || *.1.1.3.0 || cacheUptime || Timeticks || 2.0+ ||The Uptime of the cache in timeticks||
 || *.1.2.1.0 || cacheAdmin || STRING || 2.0+ ||Cache Administrator E-Mail address||
 || *.1.2.2.0 || cacheSoftware || STRING || 2.0+ || Cache Software Name. Constant '''squid''' ||
@@ -144,25 +144,25 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 || *.1.3.2.2.1.1.1 || cacheMedianTime.1 || Integer32 || 2.0+ ||<|3> The value used to index the table 1/5/60 ||
 || *.1.3.2.2.1.1.5 || cacheMedianTime.5 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.1.60 || cacheMedianTime.60 || Integer32 || 2.0+ ||
-|| *.1.3.2.2.1.2.1 || cacheHttpAllSvcTime.1 || Integer32 || 2.0+ ||<|3> HTTP all service time ||
+|| *.1.3.2.2.1.2.1 || cacheHttpAllSvcTime.1 || Integer32 || 2.0+ ||<|3> HTTP all service time, in milliseconds.||
 || *.1.3.2.2.1.2.5 || cacheHttpAllSvcTime.5 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.2.60 || cacheHttpAllSvcTime.60 || Integer32 || 2.0+ ||
-|| *.1.3.2.2.1.3.1 || cacheHttpMissSvcTime.1 || Integer32 || 2.0+ ||<|3> HTTP miss service time ||
+|| *.1.3.2.2.1.3.1 || cacheHttpMissSvcTime.1 || Integer32 || 2.0+ ||<|3> HTTP miss service time, in milliseconds.||
 || *.1.3.2.2.1.3.5 || cacheHttpMissSvcTime.5 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.3.60 || cacheHttpMissSvcTime.60 || Integer32 || 2.0+ ||
-|| *.1.3.2.2.1.4.1 || cacheHttpNmSvcTime.1 || Integer32 || 2.0+ ||<|3> HTTP hit not-modified service time||
+|| *.1.3.2.2.1.4.1 || cacheHttpNmSvcTime.1 || Integer32 || 2.0+ ||<|3> HTTP hit not-modified service time, in milliseconds.||
 || *.1.3.2.2.1.4.5 || cacheHttpNmSvcTime.5 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.4.60 || cacheHttpNmSvcTime.60 || Integer32 || 2.0+ ||
-|| *.1.3.2.2.1.5.1 || cacheHttpHitSvcTime.1 || Integer32 || 2.0+ ||<|3> HTTP hit service time||
+|| *.1.3.2.2.1.5.1 || cacheHttpHitSvcTime.1 || Integer32 || 2.0+ ||<|3> HTTP hit service time, in milliseconds.||
 || *.1.3.2.2.1.5.5 || cacheHttpHitSvcTime.5 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.5.60 || cacheHttpHitSvcTime.60 || Integer32 || 2.0+ ||
-|| *.1.3.2.2.1.6.1 || cacheIcpQuerySvcTime.1 || Integer32 || 2.0+ ||<|3> ICP query service time||
+|| *.1.3.2.2.1.6.1 || cacheIcpQuerySvcTime.1 || Integer32 || 2.0+ ||<|3> ICP query service time, in milliseconds.||
 || *.1.3.2.2.1.6.5 || cacheIcpQuerySvcTime.5 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.6.60 || cacheIcpQuerySvcTime.60 || Integer32 || 2.0+ ||
-|| *.1.3.2.2.1.7.1 || cacheIcpReplySvcTime.1 || Integer32 || 2.0+ ||<|3> ICP reply service time||
+|| *.1.3.2.2.1.7.1 || cacheIcpReplySvcTime.1 || Integer32 || 2.0+ ||<|3> ICP reply service time, in milliseconds.||
 || *.1.3.2.2.1.7.5 || cacheIcpReplySvcTime.5 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.7.60 || cacheIcpReplySvcTime.60 || Integer32 || 2.0+ ||
-|| *.1.3.2.2.1.8.1 || cacheDnsSvcTime.1 || Integer32 || 2.0+ ||<|3> DNS service time||
+|| *.1.3.2.2.1.8.1 || cacheDnsSvcTime.1 || Integer32 || 2.0+ ||<|3> DNS service time, in milliseconds.||
 || *.1.3.2.2.1.8.5 || cacheDnsSvcTime.5 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.8.60 || cacheDnsSvcTime.60 || Integer32 || 2.0+ ||
 || *.1.3.2.2.1.9.1 || cacheRequestHitRatio.1 || Integer32 || 2.2+ ||<|3> Request Hit Ratios||
@@ -171,7 +171,7 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 || *.1.3.2.2.1.10.1 || cacheRequestByteRatio.1 || Integer32 || 2.2+ ||<|3> Byte Hit Ratios||
 || *.1.3.2.2.1.10.5 || cacheRequestByteRatio.5 || Integer32 || 2.2+ ||
 || *.1.3.2.2.1.10.60 || cacheRequestByteRatio.60 || Integer32 || 2.2+ ||
-|| *.1.3.2.2.1.11.1 || cacheHttpNhSvcTime.1 || Integer32 || 2.6+ ||<|3> HTTP refresh hit service time||
+|| *.1.3.2.2.1.11.1 || cacheHttpNhSvcTime.1 || Integer32 || 2.6+ ||<|3> HTTP refresh hit service time, in milliseconds.||
 || *.1.3.2.2.1.11.5 || cacheHttpNhSvcTime.5 || Integer32 || 2.6+ ||
 || *.1.3.2.2.1.11.60 || cacheHttpNhSvcTime.60 || Integer32 || 2.6+ ||
 ||<-5> '''IP Address Cache Statistics ''' ||
