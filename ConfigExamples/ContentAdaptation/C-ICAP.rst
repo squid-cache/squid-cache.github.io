@@ -312,7 +312,7 @@ icap_service service_avi_resp respmod_precache icap://localhost:1344/virus_scan 
 adaptation_access service_avi_resp allow all
 }}}
 
-'''Note:''' Against squidclamav, you must bypass whitelisted sites with Squid ACL's and adaptation_access directives. Also you can customize virus_scan module templates to your language etc. Also beware: without clamd you will have the same 300-500 megabytes of loaded AV database to one of c-icap process with libclamav. ;) The 
+'''Note:''' Against squidclamav, you must bypass whitelisted sites with Squid ACL's and adaptation_access directives. Also you can customize virus_scan module templates to your language etc. Also beware: without clamd you will have the same 300-500 megabytes of loaded AV database to one of c-icap process with libclamav. ;)
 
 == Testing your installation ==
 
