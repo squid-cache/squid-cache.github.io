@@ -107,9 +107,6 @@ http_access allow windowsupdate localnet
 The above config is also useful for other automatic update sites such as Anti-Virus vendors, just add their domains to the SquidConf:acl.
 || {i} ||If you have squid listening on a localhost port with other software in front (ie dansGuardian). You will probably need to add permission for '''localhost''' address so the front-end service can relay the requests. ||
 
-
-
-
 {{{
 ...
 http_access allow CONNECT wuCONNECT localnet
@@ -147,11 +144,11 @@ c:\> proxycfg -u
 # Set proxy to Internet Explorer settings.
 }}}
 
-== Squid with SSL Bump and Windows Updates ==
+== Squid with SSL-Bump and Windows Updates ==
 
 In modern setups with Squid, Windows Update cannot be check updates with error "WindowsUpdate_80072F8F" or similar.
 
-WU now uses it's own pinned SSL certificate and must be spliced to work. When you use sniffer, you can see many IP's with relatively big subnetworks. This leads to problems with a SQUID 3.4 and causes serious problems when using Squid 3.5 or above.
+WU now uses its own pinned SSL certificate and must be spliced to work. When you use sniffer, you can see many IP's with relatively big subnetworks. This leads to problems with a [[Squid-3.4]] and causes serious problems when using [[Squid-3.5]] or above.
 
 To use splicing, you need to know the names of the servers, however, a recursive DNS query does not give a result.
 
@@ -185,7 +182,7 @@ ssl_bump bump all
 
 and you do not need to know all the IP authorization server for updates.
 
-'''WARNING:''' Some updates cannot be cached due to splice above. Beware!
+ . /!\ '''WARNING:''' Some updates cannot be cached due to splice above. Beware!
  
 ##end
 
