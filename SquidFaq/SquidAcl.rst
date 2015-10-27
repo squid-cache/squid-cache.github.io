@@ -61,9 +61,9 @@ Squid knows about the following types of ACL elements:
 
 '''Notes''':
 
-Not all of the ACL elements can be used with all types of access lists (described below).  For example, ''snmp_community'' is only meaningful when used with ''SquidConf:snmp_access''.  The ''src_as'' and ''dst_as'' types are only used in ''SquidConf:cache_peer_access'' access lists.
+Not all of the ACL elements can be used with all types of access lists (described below).  For example, ''snmp_community'' is only meaningful when used with SquidConf:snmp_access.  The ''src_as'' and ''dst_as'' types are only used in SquidConf:cache_peer_access lines.
 
-The ''arp'' ACL requires the special configure option --enable-arp-acl.  Furthermore, the ARP ACL code is not portable to all operating systems.  It works on Linux, Solaris, and some *BSD variants.
+The ''arp'' ACL requires the special configure option --enable-arp-acl in Squid-3.1 and older, for newer Squid versions EUI-48 (aka MAC address) support is enabled by default.  Furthermore, the ARP / EUI-48 code is not portable to all operating systems.  It works on Linux, Solaris, and some *BSD variants.
 
 The SNMP ACL element and access list require the --enable-snmp configure option.
 
@@ -463,14 +463,14 @@ acl restricted2 src 10.85.0.0/16
 Then, of course, you'll have to rewrite your ''SquidConf:http_access'' lines as well.
 
 == Can I set up ACL's based on MAC address rather than IP? ==
-Yes, for some operating systes.  Squid calls these "ARP ACLs" and they are supported on Linux, Solaris, and probably BSD variants.
+Yes, for some operating systes. The ACL type is named ''arp'' after the ARP protocol used in IPv4 to fetch the EUI-48 / MAC address. This ACL is supported on Linux, Solaris, and probably BSD variants.
+
 || /!\ ||MAC address is only available for clients that are on the same subnet.  If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router. ||
 
 
+For [[Squid-3.1]] and older to use ARP (MAC) access controls, you first need to compile in the optional code.
 
-
-To use ARP (MAC) access controls, you first need to compile in the optional code.  Do this with the ''--enable-arp-acl'' configure option:
-
+Do this with the ''--enable-arp-acl'' configure option:
 {{{
 % ./configure --enable-arp-acl ...
 % make clean
@@ -478,8 +478,9 @@ To use ARP (MAC) access controls, you first need to compile in the optional code
 }}}
 If ''src/acl.c'' doesn't compile, then ARP ACLs are probably not supported on your system.
 
-If everything compiles, then you can add some ARP ACL lines to your ''squid.conf'':
+For [[Squid-3.2]] and newer the EUI support is enabled by default whenever it can be used.
 
+Add some ''arp'' ACL lines to your squid.conf:
 {{{
 acl M1 arp 01:02:03:04:05:06
 acl M2 arp 11:12:13:14:15:16
@@ -487,6 +488,9 @@ http_access allow M1
 http_access allow M2
 http_access deny all
 }}}
+
+Run '''squid -k parse''' to confirm that the ARP / EUI supprot is available and the ACLs are going to work.
+
 == Can I limit the number of connections from a client? ==
 Yes, use the ''maxconn'' ACL type in conjunction with ''SquidConf:http_access deny''. For example:
 
