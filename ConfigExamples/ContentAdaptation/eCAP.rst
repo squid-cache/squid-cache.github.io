@@ -2,9 +2,9 @@
 #format wiki
 #language en
 
-= Using eCAP with Squid 3.x =
+= Using eCAP with Squid 3.x/4.x =
 
-== Using eCAP for GZip support with Squid 3.x ==
+== Using eCAP for GZip support with Squid 3.x/4.x ==
 
  ''by YuriVoinov''
 
