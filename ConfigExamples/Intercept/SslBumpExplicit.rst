@@ -70,28 +70,28 @@ ssl_bump peek step1
 ssl_bump bump all
 }}}
 
-'''Note:''' In most cases you will need to specify the path to the public keys of the root CA's or root CA's bundle file. I.e:
 
-{{{
-sslproxy_capath /etc/opt/csw/ssl/certs  
-}}}
+In some cases you may need to specify custom root CA to be added to the library default "Global Trusted CA" set. This is done by 
 
-or
-
+ . [[Squid-3.5]] and older:
 {{{
 sslproxy_cafile /usr/local/openssl/cabundle.file
 }}}
 
+ . [[Squid-4]] and newer:
+{{{
+tls_outgoing_options cafile=/usr/local/openssl/cabundle.file
+}}}
+
 Otherwise your cache can't validate server's connections.
 
-'''Note:''' OpenSSL CA's bundle is derived from Mozilla's bundle and is '''NOT COMPLETE'''. In details: most intermediate certificates is not included. For example, [[http://www.symantec.com/ssl-certificates/|Symantec]] CA's, some [[https://www.digicert.com/|DigiCert]] CA's etc. Adding them is your responsibility. Also beware, when your use OpenSSL, you need to make c_rehash utility before Squid can be use added certificates. Beware - you can't grab any CA's your seen. Check it before use!
+ . {i} Note: OpenSSL CA's bundle is derived from Mozilla's bundle and is '''NOT COMPLETE'''. Specicfically most intermediate certificates are not included. For example, [[http://www.symantec.com/ssl-certificates/|Symantec]] CA's, some [[https://www.digicert.com/|DigiCert]] CA's etc. Adding them is your responsibility. Also beware, when your use OpenSSL, you need to make c_rehash utility before Squid can be use added certificates. Beware - you can't grab any CA's your seen. Check it before use!
 
 == Create and initialize SSL certificates cache directory ==
 
 Finally your need to create and initialize SSL certificates cache directory and set permissions to access Squid:
 
 {{{
-mkdir -p /var/lib/ssl_db
 /usr/local/squid/libexec/ssl_crtd -c -s /var/lib/ssl_db
 chown squid:squid -R /var/lib/ssl_db
 }}}
@@ -100,28 +100,32 @@ You cache will store mimicked certificates in this directory.
 
 == Troubleshooting ==
 
-In some cases you may need to add some options in your Squid configuration:
+For [[Squid-3.1]] in some cases you may need to add some options in your Squid configuration:
 
 {{{
 sslproxy_cert_error allow all
 sslproxy_flags DONT_VERIFY_PEER
 }}}
 
-'''BEWARE!''' It can reduce SSL/TLS errors in cache.log, but '''this is NOT SECURE!''' With this options your cache will ignore most of server certificates errors and connect your users with them. Use this options at your own risk and '''only for debug purposes!'''
+ . /!\ '''BEWARE!''' It can reduce SSL/TLS errors in cache.log, but '''this is NOT SECURE!''' With this options your cache will ignore all server certificates errors and connect your users with them. Use this options at your own risk and '''only for debug purposes!'''
 
-'''Note:''' sslproxy_cert_error can be used to refine server's cert error and control access to it. Use it with caution.
+ . {i} Note: sslproxy_cert_error can be used to refine server's cert error and control access to it. Use it with caution.
  
 To increase security the good idea to set this option:
 
 {{{
+# for Squid-3.5 and older
 sslproxy_options NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
+
+# for Squid-4 and newer
+tls_outgoing_options options=NO_SSLv3,SINGLE_DH_USE
 }}}
 
-'''NOTE 1:''' SSL options must be , or : separated, not spaces!
+ . /!\ SSL options must be comma (,) or colon (:) separated, not spaces!
 
-'''NOTE 2:''' NO_SSLv2 is outdated in latest releases. SSLv2 support completely removed from code.
+ . {i} NO_SSLv2 is outdated in latest releases. SSLv2 support completely removed from code.
 
-As a result, you can got more errors in your cache.log. So, you must investigate every case separately and correct it on demand.
+As a result, you can got more errors in your cache.log. So, you must investigate every case separately and correct it as needed.
 
 == Hardening ==
 
@@ -139,17 +143,17 @@ To do hardening, you can set Mozilla-provided cipher list (this is one line):
 sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 }}}
 
-In combination with sslproxy_options above you can increase outgoing SSL connection's security.
+In combination with SquidConfig:sslproxy_options or SquidConfig:tls_outgoing_options above you can increase the outgoing TLS connection's security.
 
 A good result should look like this:
 
-{{attachment:ssl_client_online_check.png  | Test SSL after change cipher's suite}}
+{{attachment:ssl_client_online_check.png  | Test TLS after change cipher's suite}}
 
 This looks like more better for outgoing SSL connections.
 
-'''Note:''' Your browser shows connection security info from proxy to client. But it is important for your to know security level from proxy to server connection. Don't forget about ciphers.
+ . {i} Note: Your browser shows connection security info from proxy to client. But it is important for you to know the security level from proxy to server connection. Don't forget about ciphers.
 
-'''Note:''' Some HTTPS sites will prevents to open with this ciphers (i.e., java.com, for example). So, to make it work you can add HIGH cipher suite to this cipher's list. Remember, this makes your configuration a bit weak, but more compatible. Your cipher's row will look like this:
+ . {i} Note: Some HTTPS sites will prevent connections with the above ciphers. So, to make it work you can add HIGH cipher suite to this cipher's list. Remember, this makes your configuration a bit weak, but more compatible. Your cipher's row will look like this:
 
 {{{
 sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:HIGH:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
@@ -157,7 +161,7 @@ sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+EC
 
 === Modern DH/ciphers usage ===
 
-To force Squid use modern DH exchanges/ciphers you must (depending of your openssl build) create DH params file and specify it with http(s)_port.
+To enable Squid to use modern DH exchanges/ciphers you must (depending of your openssl build) create DH params file and specify it with http(s)_port.
 
 To do that first create DH params file:
 
