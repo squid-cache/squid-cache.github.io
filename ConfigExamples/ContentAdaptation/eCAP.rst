@@ -24,7 +24,7 @@ This configuration is very useful to reduce external Internet traffic from proxy
 
 We are uses two different libraries for different branches of Squid.
 [[http://www.measurement-factory.com/tmp/ecap/libecap-0.2.0.tar.gz|0.2.0]] for Squid 3.4.x or
-[[http://www.measurement-factory.com/tmp/ecap/libecap-1.0.0.tar.gz|1.0.0]] for Squid 3.5.x
+[[http://www.measurement-factory.com/tmp/ecap/libecap-1.0.0.tar.gz|1.0.0]]/[[http://www.measurement-factory.com/tmp/ecap/libecap-1.0.1.tar.gz|1.0.1]] for Squid 3.5.x/4.x.x
 
 Build and install library accordingly your Squid 32-bit or 64-bit versions:
 {{{
@@ -47,6 +47,8 @@ PKG_CONFIG_PATH pointed to libecap pkgconfig file.
 === Patch and build squid-ecap-gzip ===
 
 To build [[https://github.com/c-rack/squid-ecap-gzip|squid-ecap-gzip]] with corresponding eCAP library, you need apply patch for [[attachment:squid-ecap-gzip_up_to_libecap-0.2.0.patch|0.2.0]] or [[attachment:squid-ecap-gzip_up_to_libecap-1.0.0.patch|1.0.0]] first.
+
+'''Note:''' Patch 1.0.0 appropriate also when using libecap 1.0.1.
 
 Then build squid-ecap-gzip:
 {{{
