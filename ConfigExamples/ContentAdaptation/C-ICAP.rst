@@ -329,3 +329,7 @@ In some cases, placing all services to single host is not a good idea. High-load
 '''Note:''' C-ICAP workers produces high CPU load during scanning in all cases. You must minimize scanning as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
 
 '''Note:''' On some Solaris setups you can get performance gain by using libmtmalloc for c-icap processes. Just add -lmtmalloc to CFLAGS and CXXFLAGS when configuring. This also can reduce memory lock contention on multi-core CPU boxes. This solution can also reduce memory consumption problem for clamd.
+
+== Troubleshooting ==
+
+'''Note:''' When your upgrade your C-ICAP server, you also must (in most cases) rebuild squidclamav from sources (it is recommended) to aviod possible API incompatibility.
