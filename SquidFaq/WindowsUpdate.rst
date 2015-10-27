@@ -157,9 +157,11 @@ To use splicing, you need to know the names of the servers, however, a recursive
 
 To pass WU check through Squid splice, you only need to splice three MS servers:
 
+{{{
 fe1.update.microsoft.com.akadns.net
 fe2.update.microsoft.com.akadns.net
 fe2.update.microsoft.com
+}}}
 
 For use in real setups, write file url.nobump:
 
