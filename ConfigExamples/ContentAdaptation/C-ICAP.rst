@@ -12,7 +12,7 @@
 
 == Outline ==
 
-For Squid 3.x we can use I-CAP for content filtering (like squidGuard) or antivirus checking. This config example describes check for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for modern Squid releases (at least 3.4.10) with last configuration changes.
+For Squid 3.x/4.x we can use I-CAP for content filtering (like squidGuard) or antivirus checking. This config example describes check for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for modern Squid releases (at least 3.4.10) with last configuration changes.
 
 == Usage ==
 
@@ -24,7 +24,7 @@ First of all, you need to build Squid with c-icap client. To do that with 3.4.x,
 {{{
 ./configure '--enable-icap-client'
 }}}
-For version 3.5.x you do not have to specify this option, it enabled by default.
+For version 3.5.x/4.x.x you do not have to specify this option, it enabled by default.
 
 
 == Building C-ICAP server ==
