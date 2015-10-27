@@ -147,6 +147,44 @@ c:\> proxycfg -u
 # Set proxy to Internet Explorer settings.
 }}}
 
+== Squid with SSL Bump and Windows Updates ==
+
+In modern setups with Squid, Windows Update cannot be check updates with error "WindowsUpdate_80072F8F" or similar.
+
+WU now uses it's own pinned SSL certificate and must be spliced to work. When you use sniffer, you can see many IP's with relatively big subnetworks. This leads to problems with a SQUID 3.4 and causes serious problems when using Squid 3.5 or above.
+
+To use splicing, you need to know the names of the servers, however, a recursive DNS query does not give a result.
+
+To pass WU check through Squid splice, you only need to splice three MS servers:
+
+fe1.update.microsoft.com.akadns.net
+fe2.update.microsoft.com.akadns.net
+fe2.update.microsoft.com
+
+For use in real setups, write file url.nobump:
+
+{{{
+# WU (Squid 3.5.x and above with SSL Bump)
+# Only this three sites must be spliced.
+fe1\.update\.microsoft\.com\.akadns\.net
+fe2\.update\.microsoft\.com\.akadns\.net
+fe2\.update\.microsoft\.com
+}}}
+
+Just add this file as Squid ACL as follows:
+
+{{{
+acl DiscoverSNIHost at_step SslBump1
+ssl_bump peek DiscoverSNIHost
+acl NoSSLIntercept ssl::server_name_regex -i "/usr/local/squid/etc/url.nobump"
+ssl_bump splice NoSSLIntercept
+ssl_bump bump all
+}}}
+
+and you do not need to know all the IP authorization server for updates.
+
+'''WARNING:''' Some updates cannot be cached due to splice above. Beware!
+ 
 ##end
 
 ----
