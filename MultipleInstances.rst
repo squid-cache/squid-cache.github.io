@@ -5,7 +5,8 @@ Running multiple instances of Squid on a system is not hard, but it requires the
 <<TableOfContents>>
 
 == SMP enabled Squid ==
- /!\ [[Squid-3.2]] to [[Squid-3.4]] contain [[Features/SmpScale|SMP scaling support]] implemented in such a way that only one squid instance could be run on a single machine when SMP was enabled. Multiple instances can be run without SMP support.
+
+/!\ [[Squid-3.2]] to [[Squid-3.4]] contain [[Features/SmpScale|SMP scaling support]] implemented in such a way that only one squid instance could be run on a single machine when SMP was enabled. Multiple instances can '''only''' be run without SMP support.
 
 [[Squid-3.5]] provides the '''-n''' command line option to configure a unique service name for each Squid instance started. Each set of SMP-aware processes will interact only with other processes using the same service name. A service name is always present, the default service name is ''squid'' is used when the '''-n''' option is absent from the command line.
 
@@ -19,17 +20,19 @@ The macro '''${service_name}''' is added to squid.conf processing. It expands to
 
 == Relevant squid.conf directives ==
  * SquidConf:visible_hostname
-  you may want to keep this unique for troubleshooting purposes
+  you may want to keep this unique for troubleshooting purposes.
  * SquidConf:unique_hostname
   if you don't change the SquidConf:visible_hostname and want your caches to cooperate, at least change this setting to properly detect forwarding loops
  * SquidConf:http_port
-  either the various squids run on different ports, or on different IP addresses. In the latter case the syntax to be used is {{{1.2.3.4:3128}}} and {{{1.2.3.5:3128}}}
+  either the various squids run on different ports, or on different IP addresses. In the latter case the syntax to be used is {{{192.0.2.1:3128}}} and {{{192.0.2.2:3128}}}. A domain name can be used instead of IP address, but take care that the domain(s) used by each instance esolve to different IPs.
  * SquidConf:icp_port, SquidConf:snmp_port
-  same as with http_port. If you do not need ICP and SNMP, just disable them by setting them to 0.
+  same as with http_port. If you do not need ICP and SNMP, remove from the config file.
  * SquidConf:access_log, SquidConf:cache_log
   you want to have different logfiles for you different squid instances. Squid '''might''' even work when all log to the same files, but the result would probably be a garbled mess.
  * SquidConf:pid_filename
-  this file '''must''' be changed. It is used by squid to detect a running instance and to send various internal messages (i.e. {{{squid -k reconfigure}}})
+  this file '''must''' be different for each instance. It is used by squid to detect a running instance and to send various internal messages (i.e. {{{squid -k reconfigure}}}).
+   . [[Squid-4]] and later the default uses '''${service_name}''' making it no longer necessary to configure.
+   . [[Squid-3.5]] and older must explicitly set this option to a unique file per instance.
  * SquidConf:cache_dir
   make sure that no overlapping directories exist. Squids do not coordinate when accessing them, and shuffling stuff around each others' playground is a '''bad thing ^TM^'''
  * SquidConf:include
