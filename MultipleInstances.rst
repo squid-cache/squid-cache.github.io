@@ -24,7 +24,7 @@ The macro '''${service_name}''' is added to squid.conf processing. It expands to
  * SquidConf:unique_hostname
   if you don't change the SquidConf:visible_hostname and want your caches to cooperate, at least change this setting to properly detect forwarding loops
  * SquidConf:http_port
-  either the various squids run on different ports, or on different IP addresses. In the latter case the syntax to be used is {{{192.0.2.1:3128}}} and {{{192.0.2.2:3128}}}. A domain name can be used instead of IP address, but take care that the domain(s) used by each instance esolve to different IPs.
+  either the various squids run on different ports, or on different IP addresses. In the latter case the syntax to be used is {{{192.0.2.1:3128}}} and {{{192.0.2.2:3128}}}. A domain name can be used instead of IP address, but take care that the domain(s) used by each instance resolve to different IPs.
  * SquidConf:icp_port, SquidConf:snmp_port
   same as with http_port. If you do not need ICP and SNMP, remove from the config file.
  * SquidConf:access_log, SquidConf:cache_log
