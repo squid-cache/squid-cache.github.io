@@ -156,7 +156,11 @@ To pass WU check through Squid splice, you only need to splice next MS servers:
 
 {{{
 .update.microsoft.com
-.update.microsoft.com.akadns.net 
+statsfe2.update.microsoft.com.akadns.net 
+sls.update.microsoft.com.akadns.net 
+fe1.update.microsoft.com.akadns.net
+fe2.update.microsoft.com.akadns.net
+fe2.update.microsoft.com
 }}}
 
 For use in real setups, write file url.nobump:
@@ -165,7 +169,11 @@ For use in real setups, write file url.nobump:
 # WU (Squid 3.5.x and above with SSL Bump)
 # Only this sites must be spliced.
 .update\.microsoft\.com
-.update\.microsoft\.com\.akadns\.net 
+statsfe2\.update\.microsoft\.com\.akadns\.net 
+sls\.update\.microsoft\.com\.akadns\.net 
+fe1\.update\.microsoft\.com\.akadns\.net
+fe2\.update\.microsoft\.com\.akadns\.net
+fe2\.update\.microsoft\.com
 }}}
 
 Just add this file as Squid ACL as follows:
