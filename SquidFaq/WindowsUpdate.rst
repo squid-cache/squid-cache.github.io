@@ -144,7 +144,29 @@ c:\> proxycfg -u
 # Set proxy to Internet Explorer settings.
 }}}
 
+=== Windows proxy configuration for Metro applications/Windows Updates with netsh ===
+by Yuri Voinov
+
+'''NOTE:''' In modern Windows proxycfg is obsolete. Use netsh instead:
+
+Syntax:
+
+{{{
+netsh winhttp set proxy ProxyName:80 "<local>"
+}}}
+
+{{{
+C:\> netsh winhttp set proxy 192.168.1.100:3128 "localhost;192.168.1.100"
+}}}
+
+To reset proxy settings for WinHTTP use next command:
+
+{{{
+C:\> netsh winhttp reset proxy
+}}}
+
 == Squid with SSL-Bump and Windows Updates ==
+by Yuri Voinov
 
 In modern setups with Squid, Windows Update cannot be check updates with error "WindowsUpdate_80072F8F" or similar.
 
