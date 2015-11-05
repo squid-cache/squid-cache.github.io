@@ -152,22 +152,20 @@ WU now uses its own pinned SSL certificate and must be spliced to work. When you
 
 To use splicing, you need to know the names of the servers, however, a recursive DNS query does not give a result.
 
-To pass WU check through Squid splice, you only need to splice three MS servers:
+To pass WU check through Squid splice, you only need to splice next MS servers:
 
 {{{
-fe1.update.microsoft.com.akadns.net
-fe2.update.microsoft.com.akadns.net
-fe2.update.microsoft.com
+.update.microsoft.com
+.update.microsoft.com.akadns.net 
 }}}
 
 For use in real setups, write file url.nobump:
 
 {{{
 # WU (Squid 3.5.x and above with SSL Bump)
-# Only this three sites must be spliced.
-fe1\.update\.microsoft\.com\.akadns\.net
-fe2\.update\.microsoft\.com\.akadns\.net
-fe2\.update\.microsoft\.com
+# Only this sites must be spliced.
+.update\.microsoft\.com
+.update\.microsoft\.com\.akadns\.net 
 }}}
 
 Just add this file as Squid ACL as follows:
