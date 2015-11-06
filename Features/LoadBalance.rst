@@ -26,6 +26,68 @@ Support for squid to act as a load balancer is almost there, but some features a
  * Session affinity can currently be done using the client IP addresses. To have that done as a cookie, it is now responsibility of the backend application to set that cookie. It would be nice to have an external authenticator in charge of that.
  * Squid does accounting of all traffic going to a peer. It would be nice to have a byte-based balancing algorithm or two.
 
+== Overall peer selection logic  ==
+
+To forward a request, Squid builds a list of unique destinations to try. These destinations may include peers (SquidConf:cache_peer) and origin servers. The destinations are then used as needed in the order they were added to the list. Usually, the very first destination in the list serves the request, but various failures may necessitate contacting other destinations. This section describes how the destination list is constructed.
+
+ /!\ This section currently assumes that there are '''no''' pinned connections, ICP/HTCP queries, netdb databases, and Cache Digests to deal with. If your Squid uses those features, the destination list may ''start'' with peers selected by algorithms other than those listed in this section! Additional documentation covering these important use cases is welcomed.
+
+First of all, Squid decides whether to go direct, selecting from the following four possible answers:
+  * Go direct.
+  * Go through a peer.
+  * Prefer going direct (but peer if needed).
+  * Prefer peering (but go direct if needed).
+
+This decision to go direct or use peering is based on the combination of SquidConf:always_direct, SquidConf:never_direct, and various transaction properties/restrictions. If those initial checks are inconclusive, Squid uses SquidConf:prefer_direct to pick from the last two possible options (prefer direct or prefer peering). The decision affects which peer selection algorithms are used to add destinations to the list, as detailed below.
+
+=== Go direct ===
+
+If Squid decides to go direct, it adds the origin server to the destination list.
+
+=== Go through a peer ===
+
+If Squid decides to peer with another proxy, it builds the destination list using the following three steps:
+
+ 1. Add the "best" peer to use, if any.
+ 2. Add All Alive Parents, if any.
+ 3. Add Default Parent, if any.
+
+The "best" peer in step #1 is the very first peer found by the following ordered sequence of peer-selection algorithms:
+
+ * Source IP Hash
+ * Username Hash
+ * CARP
+ * Round Robin
+ * Weighted Round Robin
+ * First-Up Parent
+ * Default Parent
+
+The Default Parent algorithm at the end of step #1 sequence is the same as the algorithm executed at step #3, but Default Parent in step #1 may never get a chance to run if another step #1 algorithm finds the "best" peer...
+
+Each of the above peer-selection algorithms (including All Alive Parents in step #2) checks each candidate peer against the following ''disqualifying'' conditions before adding the candidate to the destination list:
+
+  * The peer has an ''originserver'' type and the request is a CONNECT for a non-peer port.
+  * SquidConf:cache_peer_access denies access to the peer.
+
+Peers that meet at least one of the above disqualifying conditions are not added to the destination list.
+
+
+=== Prefer going direct ===
+
+Squid builds the destination list using the following two steps:
+
+ 1. Add the origin server to the destination list.
+ 1. If the request is "hierarchical" or SquidConf:nonhierarchical_direct is off, then Squid follows the three steps described in the "Going through a peer" subsection above. Otherwise, this step does nothing.
+
+
+=== Prefer peering ===
+
+Squid builds the destination list using the following two steps:
+
+ 1. If the request is "hierarchical" or SquidConf:nonhierarchical_direct is off, then Squid follows the three steps described in the "Going through a peer" subsection above. Otherwise, this step does nothing.
+ 1. Add the origin server to the destination list.
+
+
 == Peer Selection Algorithms ==
 
 When building a hierarchy of peers into a load balanced, high performance or high availability / failure tolerant layering there are a number of algorithms Squid makes available.
@@ -158,6 +220,8 @@ This algorithm is the default used for '''parent''' peers. There is currently no
 ## === Any-Old Parent ===
 
 ## Duplicate of First-Up. Seems to be useless.
+
+
 
 ----
 CategoryFeature | CategoryWish
