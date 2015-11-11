@@ -30,6 +30,12 @@ println result.toString()
 
 In https://github.com/jenkinsci/matrix-project-plugin/blob/master/src/main/java/hudson/matrix/FilterScript.java <<BR>>
 Need to add binding for slaves accessor in apply at about line 88.
+
+=== possible alternate approach ===
+define a parameter plugin which sets a parameter as the node name, or NODE_NAME env variable
+
+
+
 ----
 Discuss this page using the "Discussion" link in the main menu
 
