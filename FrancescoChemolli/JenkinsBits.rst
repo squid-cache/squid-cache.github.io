@@ -32,7 +32,10 @@ In https://github.com/jenkinsci/matrix-project-plugin/blob/master/src/main/java/
 Need to add binding for slaves accessor in apply at about line 88.
 
 === possible alternate approach ===
-define a parameter plugin which sets a parameter as the node name, or NODE_NAME env variable
+define a parameter plugin which sets a parameter as the node name, or NODE_NAME env variable. <<BR>>
+See for instance https://wiki.jenkins-ci.org/display/JENKINS/Global+Variable+String+Parameter+Plugin
+
+
 
 
 
