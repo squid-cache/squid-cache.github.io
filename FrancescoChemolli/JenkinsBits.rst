@@ -7,14 +7,14 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 [[TableOfContents]]
 
-===Accessing Slaves===
+=== Accessing Slaves ===
 {{{
 for (String slave: Jenkins.instance.getSlaves()) {
     println slave;
 }
 }}}
 
-===Filtering slaves by label substring===
+=== iltering slaves by label substring ===
 {{{
 def result = []
 for (Slave slave: Jenkins.instance.getSlaves()) {
@@ -26,7 +26,7 @@ for (Slave slave: Jenkins.instance.getSlaves()) {
 println result.toString()
 }}}
 
-===Code for filtering===
+=== Code for filtering ===
 
 In https://github.com/jenkinsci/matrix-project-plugin/blob/master/src/main/java/hudson/matrix/FilterScript.java <<BR>>
 Need to add binding for slaves accessor in apply at about line 88.
