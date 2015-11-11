@@ -12,23 +12,11 @@ The Squid project has moved to Bazaar as its configuration management tool. See 
 ## '''Squid-2:'''
 ## || /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb]].||
 
-== Developer Projects ==
-
-## '''Squid-3:'''
-https://code.launchpad.net/squid provide space for Squid developers to publish and associate their code with the Squid project.
-
-## '''Squid-2:''' (obsolete)
-##To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
-
-
-During the life of the Squid project, a number of [[http://www.squid-cache.org/Devel/papers/|papers]] have been published.
-
-
 == Contributing (Code developer) ==
 
  * '''Signing Up''' to become a developer the first step is to join the  [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]].
    1. Send a message to {{{squid-dev}}} introducing yourself and what areas of Squid you are interested to help with the development of.
-Subscription requests are only accepted if you have first introduced yourself to the other developers.
+Please first introduced yourself to the other developers.
 
   || Please note that all messages must be sent in plain-text only (no HTML email).<<BR>>A read-only [[http://lists.squid-cache.org/pipermail/squid-dev/|archive]] (and [[http://www.squid-cache.org/mail-archive/squid-dev/|pre-Sept 2014 archive]]) are available to everyone. ||
 
@@ -65,12 +53,22 @@ For Squid we operate the development trunk and web code browsers on [[http://baz
  * [[BzrInstructions|Bazaar]]
 ## * '''Squid-2''': (obsolete) [[CvsInstructions|CVS]]
 
+
+## '''Squid-3:'''
+ * https://code.launchpad.net/squid provide space for Squid developers to publish and associate their code with the Squid project.
+
+## '''Squid-2:''' (obsolete)
+##To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
+
+During the life of the Squid project, a number of [[http://www.squid-cache.org/Devel/papers/|papers]] have been published.
+
 === Required Build Tools ===
 
  * autoconf 2.64 or later
  * automake 1.10 or later
  * libtool 2.6 or later
  * libltdl-dev
+ * awk
  * [[http://cppunit.sourceforge.net/cppunit-wiki|CppUnit]] for unit testing.
 
 Depending on what features you wish to develop there may be other library and tool requirements.
