@@ -24,7 +24,9 @@ for (Slave slave: Jenkins.instance.getSlaves()) {
 }
 println result.toString()
 }}}
-
+'''Code for filtering'''
+In https://github.com/jenkinsci/matrix-project-plugin/blob/master/src/main/java/hudson/matrix/FilterScript.java
+Need to add binding for slaves accessor in apply at about line 88.
 ----
 Discuss this page using the "Discussion" link in the main menu
 
