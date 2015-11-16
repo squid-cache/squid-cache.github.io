@@ -114,6 +114,8 @@ gpasswd -a proxy winbindd_priv
 
  {i} the default user Squid is bundled as '''nobody''' though some distribution packages are built with '''squid''' or '''proxy''' or other similar low-access user.
 
+ . {X} on Debian an Ubuntu systems there may also be a ''/var/lib/samba/winbindd_privileged'' directory created by the winbind and ntlm_auth tools with root ownership. The group of that folder needs to be changed to match the /var/run/samba/winbindd_privileged location.
+
 == Squid Configuration ==
 
 As Samba-3.x has it's own authentication helper there is no need to build
