@@ -60,7 +60,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  || '''ASYNC''' || The request was generated internally by Squid. Usually this is background fetches for cache information exchanges, background revalidation from ''stale-while-revalidate'' cache controls, or ESI sub-objects being loaded. ||
  || '''SWAPFAIL''' || The object was believed to be in the cache, but could not be accessed. A new copy was requested from the server. ||
  || '''REFRESH''' || A revalidation (conditional) request was sent to the server. ||
- || '''SHARED''' || This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED.||
+ || '''SHARED''' || This tag is not supported yet. This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED.||
  || '''REPLY''' || The HTTP reply from server or peer. Usually seen on '''DENIED''' due to SquidConf:http_reply_access ACLs preventing delivery of servers response object to the client. ||
 
  * These tags are optional and describe what type of object was produced:
