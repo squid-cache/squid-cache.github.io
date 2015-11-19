@@ -22,16 +22,14 @@ So a far more detailed information can be extracted using a proxy access.log or 
 It requires the cache administratr to be a person that can be trusted with all this information. 
 
 == Integrity ==
-While operating a cache there is a very attempting way of altering data or over-caching data.
+While operating a cache there is a very tempting way to alter data or over-cache it.
 
 The above can violate the integrity of the response to the client request.
-
 
 == Availability ==
 A cache do allow over availability which should not impact anyone of the users.
 
 The whole purpose of a caching proxy is to allow the above and the cache admin should make sure the cache is bringing availability and not the opposite.
-
 
 = Several real world examples =
 To allow you understand the meaning of the above I would describe a scenario.
@@ -66,14 +64,12 @@ Police might be able to use squid as a forensic evidence tool that will help to 
 Army and National Security can use squid to assist realtime applications take the HIT when there is a need for spreading public alerts or to be gateway to soldiers assisting devices and services.
 
 == Parenthood ==
-Pictures that parents do not want shown their child shows up on a clean site since there is a problem with the StoreID algorithm pattern matching the clean site and an alternative porn site parody of it.
-
+Pictures that parents do not want shown their child shows up on a clean site since there is a problem with the StoreID algorithm pattern matching the clean site with another porn site pattern.
 
 == Bank\Trade ==
 A bank account page that is not up-to-date will make the poor users buy something he can't really pay for.
 
-Administrator choosing to ignore caching rules on images causes wrong captcha picture to be delivered to users. Entering the embeded text in the captcha login does not work properly. Blocking users from accessing their banking accounts or making online purchases.
-
+Administrators choosing to ignore caching rules on images causes wrong captcha picture to be delivered to users. Entering the embedded text in the captcha login does not work properly. Blocking users from accessing their banking accounts or making online purchases.
 
 = Cache in other levels =
 
@@ -87,11 +83,9 @@ I imagine that the CPU cache helps me a lot when writing a small scripts or read
 
 There is a risk in maintaining a cache and there are benefits.
 
-We are human and we have the right to do a mistake two or more but we try our best.
+We are humans and we have the right to do a mistake two or more but we are obligated to do our best.
 
-When using SquidConf:refresh_pattern or SquidConf:url_rewrite_program or SquidConf:store_id_program or ICAP or any other helper sit.. eat a good meal, drink a good drink.
-
-Then when you are full of power sit on whatever you are supposed to do in order to make it the best you can.
+When configuring SquidConf:refresh_pattern , SquidConf:url_rewrite_program , SquidConf:store_id_program , ICAP service\client or any other feature sit.. eat a good meal, drink a good drink. Then when you are full with power sit on whatever you are supposed to do in order to make it the best you can.
 
 = How all the above is even related to Squid? =
 
