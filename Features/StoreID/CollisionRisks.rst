@@ -44,13 +44,17 @@ A user tries to write a small article while the page loads up and after reading 
 
 A very fast F5 or SHIFT-F5 or CTRL-F5 changes the page contents and the poor user understand that the page was updated two weeks ago (the professor talked about the latest released paper.. ).
 
-== Medical Facilities (hospital) ==
+== Medical Facilities ==
 
-A Doctor reads some small notice pages from the local intranet server and gives a full medical prescription to their client.
+When life at stake an MD or another assisting force can get some information faster and by that squid is a direct life saving assisting tool.
 
-The Doctor doesn't know about the latest news since the cached page was not up to date.
+'''This is the place to alert cache admins to be carefulness with cache settings since they can harm almost directly a patient and others.'''
 
-The Client cannot buy the drug since there is a big gap between production and marker demand. 
+Examples for cases which was seen in the past when a cache was configured wrongly in a medical facility:
+
+ * The Doctor couldn't know about the latest news in a specific area since the cached page was not up to date.
+ * The patient cannot buy the drug since there is a big gap between production and market demand and the inventory meter was wrong.
+ * X-ray\CT\MRI and other scan results that was transferred over the Internet or Intranet was over-cached and resulted a situation which the wrong and old file was downloaded and caused a false diagnose.
 
 == Police, Army and National Security ==
 
