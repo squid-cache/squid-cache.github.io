@@ -125,7 +125,7 @@ if(adapted->header().hasAny(contentTypeName)) {
  }
 }}}
 
-== Using eCAP for antivirus checking with Squid 3.x ==
+== Using eCAP for antivirus checking with Squid 3.x/4.x ==
 
 === Outline ===
 
