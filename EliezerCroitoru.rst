@@ -35,6 +35,10 @@ I am recommending for who ever reads this page to also take a peek at [[ConfigEx
 
 This is also the place to say thanks for all the great guidance from [[AmosJeffries|Amos Jeffris]], [[AlexRousskov|Alex Rousskov]] the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-users|squid users community]] and all these "people" who helped and helps me everyday to continue and do my daily routines which makes me happier and thank god every moment.
 
+= 2015_04 =
+I have released [[http://www1.ngtech.co.il/wpe/?page_id=135|SquidBlocker]] which can be an alternative to SquidGuard.
+If you are already here take a peek at [[http://www1.ngtech.co.il/squidblocker/|SquidBlocker page]] just to understand a bit more about the different algorithms and ideas. 
+
 
 ----
 CategoryHomepage
