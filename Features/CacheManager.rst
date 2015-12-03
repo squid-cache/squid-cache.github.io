@@ -35,10 +35,7 @@ The cache manager has been extended in [[Squid-3.2]] to allow access from the ht
 === default ===
 The default cache manager access configuration in ''squid.conf'' is:
 {{{
-acl manager url_regex -i ^cache_object:// /squid-internal-mgr/
-acl localhost src 127.0.0.1 ::1
-
-http_access allow manager localhost
+http_access allow localhost manager
 http_access deny manager
 }}}
  {i} This default has been updated to accommodate changes in [[Squid-3.2]]. For older squid the squid.conf entries may appear different.
@@ -52,7 +49,7 @@ or for [[Squid-3.2]] typing this into your browser address bar:
 {{{
 http://mycache.example.com:3128/squid-internal-mgr/info
 }}}
- /!\ NOTE: the above tests assume you have correctly configured your proxy machine with a working FQDN for its publicly SquidConf:visible_hostname.
+ /!\ NOTE: the above tests assume you have correctly configured your proxy machine with a working FQDN ''mycache.example.com'' for its publicly SquidConf:visible_hostname.
 
 The default ACLs say that if the request is for a cache_object://, and it isn't the local host, then deny access; otherwise allow access.
 
@@ -63,12 +60,10 @@ The default ACLs assume that your web server is on the same machine as squid. Re
 
 To allow a remote administrator (ie cachemgr.cgi) adjust the access controls to include the remote IPs:
 {{{
-acl manager url_regex -i ^cache_object:// /squid-internal-mgr/
-acl localhost src 127.0.0.1 ::1
 acl managerAdmin src 192.0.2.1
 
-http_access allow manager localhost
-http_access allow manager managerAdmin
+http_access allow localhost manager
+http_access allow managerAdmin manager
 http_access deny manager
 }}}
 Where 192.0.2.1 is the IP address of your web server with cachemgr.cgi or the administrators workstation.
@@ -81,7 +76,9 @@ miss_access allow manager
 
  /!\ Check the ordering and placement. The default rules are placed first. This is to prevent any more complex or wider permissions you have for general access from blocking manager access with ''Access Denied'' error page or allowing general users to access the manager.
 
- /!\ Always be sure to run ''squid -k reconfigure'' any time you change the ''squid.conf'' file. {i} Once cache manager is configured with a password you can also run the '''reconfigure''' action request remotely.
+ . /!\ Always be sure to run ''squid -k reconfigure'' any time you change the ''squid.conf'' file.
+
+ . {i} Once cache manager is configured with a password you can also run the '''reconfigure''' action request remotely.
 
 == Why does it say I need a password and a URL? ==
 A password is required to perform administrative actions such as shutdown or reconfigure the cache. For security there is no default password set, which means that these command actions are not available until you set one for them.
