@@ -18,7 +18,7 @@ Configuration file to include.
 {{{
 # Skype
 
-acl numeric_IPs dstdom_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9af]+)?:([0-9af:]+)?:([0-9af]+)?\])):443
+acl numeric_IPs dstdom_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9a-f]+)?:([0-9a-f:]+)?:([0-9a-f]+|0-9\.]+)?\])):443
 acl Skype_UA browser ^skype
 
 http_access deny numeric_IPS
