@@ -380,7 +380,7 @@ There is also subtle issues if your dstdomain ACLs contains matches for both an 
 There is a subtle problem with domain-name based access controls when a single ACL element has an entry that is a subdomain of another entry.  For example, consider this list:
 
 {{{
-acl FOO dstdomain boulder.co.us vail.co.us co.us
+acl FOO dstdomain boulder.co.us vail.co.us .co.us
 }}}
 In the first place, the above list is simply wrong because the first two (''boulder.co.us'' and ''vail.co.us'') are unnecessary.  Any domain name that matches one of the first two will also match the last one (''co.us'').  Ok, but why does this happen?
 
