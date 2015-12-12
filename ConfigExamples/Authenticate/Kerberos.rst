@@ -16,9 +16,11 @@ For Squid-2.7 and later two helpers are bundled with the Squid sources:
  * '''squid_kerb_auth''' for Unix/Linux systems
  * '''mswin_negotiate_auth.exe''' for Windows systems
 
+For Squid-3.2 and later the Unix/Linux helper is called '''negotiate_kerberos_auth'''.
+
 Earlier Squid require squid_kerb_auth from https://sourceforge.net/project/showfiles.php?group_id=196348
 
-The following documentation applies to squid_kerb_auth on Unix/Linux systems, on Windows mswin_negotiate_auth.exe doesn't need any kind of configuration, it works just out of the box.
+The following documentation applies to the helper Unix/Linux systems. The Windows helper doesnot need any kind of configuration, it works just out of the box.
 
 ## == Usage ==
 ## Tell about some cases where this configuration would be good.
