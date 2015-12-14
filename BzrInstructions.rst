@@ -31,19 +31,25 @@ http://bzr.squid-cache.org/bzr/squid3/trunk
 == Repository Mirrors ==
 Also mirrors are available at:
 
- * https://code.launchpad.net/~squid/squid/3-trunk
+ * https://code.launchpad.net/~squid/squid/trunk
+ * https://code.launchpad.net/~squid/squid/3.5
+ * https://code.launchpad.net/~squid/squid/3.4
+ * https://code.launchpad.net/~squid/squid/3.3
  * https://code.launchpad.net/~squid/squid/3.2
  * https://code.launchpad.net/~squid/squid/3.1
- * https://code.launchpad.net/~squid/squid/3.0
+## * https://code.launchpad.net/~squid/squid/3.0
 
 == Repository Developer branches ==
  * https://code.launchpad.net/squid
 
 = Web view =
- * http://bazaar.launchpad.net/~squid/squid/3-trunk/files
+ * http://bazaar.launchpad.net/~squid/squid/trunk/files
+ * http://bazaar.launchpad.net/~squid/squid/3.5/files
+ * http://bazaar.launchpad.net/~squid/squid/3.4/files
+ * http://bazaar.launchpad.net/~squid/squid/3.3/files
  * http://bazaar.launchpad.net/~squid/squid/3.2/files
  * http://bazaar.launchpad.net/~squid/squid/3.1/files
- * http://bazaar.launchpad.net/~squid/squid/3.0/files
+## * http://bazaar.launchpad.net/~squid/squid/3.0/files
 
 = Recipes =
 == Let bzr know who you are ==
