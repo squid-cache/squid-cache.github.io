@@ -20,6 +20,8 @@ against an NT domain controller.
 The winbind authenticators have been used successfully under Linux, FreeBSD, Solaris and Tru64.
 
 
+Before you get started have a read and think about the issues discussed in [[http://blogs.technet.com/b/authentication/archive/2006/04/07/ntlm-s-time-has-passed.aspx]].
+
 
 == Supported Samba Releases ==
 
