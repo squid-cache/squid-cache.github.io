@@ -187,9 +187,10 @@ It depends on the authentication scheme; Squid does some caching when it can.
   {i} Note: Caching credentials has nothing to do with how often the user needs to re-authenticate himself. It is the browser who maintains the session, and re-authentication is a business between the user and his browser, not the browser and Squid. The browser authenticates on behalf of the user on every request sent to Squid. What the Squid parameters control is only how often Squid will ask the defined helper if the password is still valid.
 
 
- * Successful Basic authentication results are cached for one hour by default. That means (in the worst case) its possible for someone to keep using your cache up to an hour after he has been removed from the authentication database. You can control the expiration time with the ''SquidConf:auth_param basic credentialsttl'' configuration option.
+ * Successful Basic authentication results are cached for one hour by default. That means (in the worst case) it is possible for someone to keep using your cache up to an hour after they have been removed from the authentication database. You can control the expiration time with the ''SquidConf:auth_param basic credentialsttl'' configuration option.
 
- * Successful NTLM and Negtiate authenticatio results are tied to the client TCP connection state and each new request is validated against the stored credentials token.
+ * Successful NTLM and Negtiate authentication results are tied to the client TCP connection state and each new request is validated against the stored credentials token. Credentials are thus "cached" only for as long as that TCP connection persists, each new TCP connection requires an entirely different authentication.
+
 
 == Are passwords stored in clear text or encrypted? ==
 In the basic scheme passwords is exchanged in plain text. In the other schemes only cryptographic hashes of the password is exchanged.
