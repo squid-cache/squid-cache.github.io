@@ -61,8 +61,7 @@ Each of the port lines in squid.conf (SquidConf:http_port, SquidConf:icp_port, S
 
 When these lines contain an IPv4 address or a hostname with only IPv4 addresses Squid will only open on those IPv4 you configured. You can add new port lines for IPv6 using [ipv6]:port, add AAAA records to the hostname in DNS, or use only a port.
 
-When only a port is set it should be opening for IPv6 access as well as IPv4. The one exception to default IPv6-listening are port lines where 'transparent', 'intercept' or 'tproxy' options are set. NAT-interception (commonly called transparent proxy) cannot be done in IPv6 so squid will only listen on IPv4 for that type of traffic.
-TPROXYv4 support in the kernel varies. Squid will detect the capabilities and open the appropriate type of port for your kernel.
+When only a port is set it should be opening for IPv6 access as well as IPv4. The one exception to default IPv6-listening are port lines where 'transparent', 'intercept' or 'tproxy' options are set. NAT-interception (commonly called transparent proxy) support for IPv6 varies, as does TPROXYv4 support in the kernel. Squid will detect the capabilities and open the appropriate type of port for your kernel - which may be IPv4-only.
 
 '''Your squid may be configured with restrictive ACL.'''
 
@@ -175,24 +174,29 @@ Also, a few features can't be used with IPv6 addresses. IPv4 traffic going throu
 
 === NAT Interception Proxy (aka "Transparent") ===
 
-NAT simply does not exist in IPv6. By Design.
+IPv6 was originally designed to work without NAT. That all changed around 2010 with the introduction of NAT66 and NPT66.
 
-Given that interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do interception that way.
+## Given that interception is actually a feature gained by secretly twisting NAT routes inside out and back on themselves. It's quite logical that a protocol without NAT cannot do interception that way.
 
-Linux [[Features/Tproxy4|TPROXY v4]] is capable of IPv6. Kernel and iptables releases containing IPv6 TPROXYv4 are now readily available.
+ * Linux [[Features/Tproxy4|TPROXY v4]] is capable of IPv6. Kernel and iptables releases containing IPv6 TPROXYv4 are now readily available.
 
-BSD '''divert''' sockets provide equivalent functionality for recent OpenBSD and derivative systems. As of March 2012 work is underway to get support for these sockets working.
+ * Linux versions had IPv6 NAT capability added late in the 3.x series. It should be stable enough to use in Linux 4.0+, YMMV though.
+
+ * BSD '''divert''' sockets provide TPROXY equivalent functionality for recent OpenBSD and derivative systems. Support for ''tproxy'' mode on BSD was added to Squid-3.4.
+
+ * BSD '''redirect''' sockets provide NAT66 functionality for recent OpenBSD and derivative systems. But are not supported by Squid due to kernel API issues.
 
 === Delay Pools ===
 
 Squid delay pools are still linked to class-B and class-C networking (from pre-1995 Internet design). Until that gets modernized the address-based pool classes can't apply to IPv6 address sizes.
 
-The one pool that should still work is the Squid-3 username based pool.
+The pools that should still work are the Squid-3 username based pool, or tag based pool.
 
 === WCCP (v1 and v2) ===
 
 WCCP is a Cisco protocol designed very closely around IPv4.
-As yet there is no IPv6 equivalent for Squid to use.
+
+WCCP draft specifications have been updated to define IPv6 support. But Squid has not been updated to use the new syntax.
 
 === ARP (MAC address ACLs) ===
 
