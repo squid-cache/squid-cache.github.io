@@ -306,13 +306,6 @@ To do that you need to create service manifest in XML format like this:
                 exec='/lib/svc/method/init.squid %m'
                 timeout_seconds='60' />
 
-        <property_group name='startd'
-                type='framework'>
-                <!-- sub-process core dumps shouldn't restart session -->
-                <propval name='ignore_error'
-                    type='astring' value='core,signal' />
-        </property_group>
-
         <property_group name='general' type='framework'>
                 <!-- to start stop squid -->
                 <propval name='action_authorization' type='astring'
