@@ -4,6 +4,8 @@
 
 ## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
 
+ ''by YuriVoinov''
+
 = Telegram Messenger =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
