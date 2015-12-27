@@ -44,6 +44,6 @@ http_access deny Telegram
 
 This affects Telegram clients uses HTTP proxy settings.
 
-'''NOTE:''' Telegram is really difficult to block. It can use 80 port with own tunnelling, SOCKS4/5, Tor, etc. AFAIK, Tor is impossible to completely block in any way.
+'''NOTE:''' Telegram is really difficult to block. It can use 80 port with own tunnelling, SOCKS4/5, Tor, etc. AFAIK, Tor is impossible to completely block in any way if you can't block Tor's SOCKS entry point and/or any SOCKS proxies.
 ----
 CategoryConfigExample
