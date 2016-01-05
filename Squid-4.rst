@@ -30,7 +30,6 @@ Basic new features in 4.0:
 
  *  '''Major UI changes:'''
   * RFC RFC:6176 compliance (SSLv2 support removal)
-  * Support Elliptic Curve ciphers in TLS
   * Secure ICAP service connections
   * Add url_lfs_rewrite: a URL-rewriter based on local file existence
   * SquidConf:on_unsupported_protocol directive to allow Non-HTTP bypass
