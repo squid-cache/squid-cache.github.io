@@ -39,6 +39,10 @@ Basic new features in 3.5:
  * Initial support for [[http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt|PROXY protocol]]
  * Basic authentication MSNT helper changes
 
+Added in 3.5.13:
+
+  * Support Elliptic Curve ciphers in TLS
+
 Features removed in 3.5:
 
  * COSS storage type has been superceded by [[Features/LargeRockStore|Rock]] storage type.
