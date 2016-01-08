@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Configuring a Cisco IOS 15.5(2)T1 with WCCPv2 Interception =
+= Configuring a Cisco IOS 15.5(3)M with WCCPv2 Interception =
 
  ''by YuriVoinov''
 
@@ -12,15 +12,15 @@
 
 == Outline ==
 
-This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over WCCPv2 to proxy box for handling. It is expected the that the box will contain squid 3.x for processing the traffic.
+This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over WCCPv2 to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
 
-The router runs Cisco IOS Software, Version 15.5(2)T1, with SECURITYK9 and DATAK9 technology packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example. WCCPv2 configured on router 2911.
+The router runs Cisco IOS Software, Version 15.5(3)M, with SECURITYK9 and DATAK9 technology packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example. WCCPv2 configured on router 2911.
 
 {{attachment:Network_scheme.png | Network scheme}}
 
 Router has both router/switch functionality, so we can use both GRE/L2 redirection methods.
 ## start feature include
-== Cisco IOS 15.5(2)T1 router ==
+== Cisco IOS 15.5(3)M router ==
 {{{
 !
 ip cef
@@ -87,6 +87,6 @@ To do that, please use '''[[http://wiki.squid-cache.org/KnowledgeBase/Block%20QU
 
 This configuration example used on Cisco 2911 with Squid 3.x. As you can see, you can configure your environment for different ports interception.
 
-/!\ /!\ /!\ This configuration was initially tested and fully operated on Cisco iOS versions 15.4(1)T, 15.4(3)M and 15.5(1)T. {OK} {OK} {OK}
+/!\ /!\ /!\ This configuration was tested and fully operated on Cisco iOS versions 15.4(1)T, 15.4(3)M, 15.5(1)T and 15.5(2)T1. {OK} {OK} {OK}
 ----
 CategoryConfigExample
