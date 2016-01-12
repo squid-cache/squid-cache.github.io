@@ -270,7 +270,7 @@ Add non-default parameters into clamav_mod.conf:
 {{{
 clamav_mod.TmpDir /var/tmp
 clamav_mod.MaxFilesInArchive 1000
-clamav_mod.MaxScanSize 50M
+clamav_mod.MaxScanSize 5M
 clamav_mod.HeuristicScanPrecedence on
 clamav_mod.OLE2BlockMacros on
 }}}
@@ -281,7 +281,7 @@ Add non-default parameters into virus_scan.conf:
 virus_scan.ScanFileTypes TEXT DATA EXECUTABLE ARCHIVE DOCUMENT
 virus_scan.SendPercentData 5
 virus_scan.PassOnError on
-virus_scan.MaxObjectSize  50M
+virus_scan.MaxObjectSize  5M
 virus_scan.DefaultEngine clamav
 Include clamav_mod.conf
 }}}
