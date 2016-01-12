@@ -146,6 +146,7 @@ safebrowsing 0
 #
 abort \.google\.*
 abort \.youtube\.com
+abort \.googlevideo\.com
 abort \.ytimg\.com
 abort \.yimg\.com
 
@@ -186,12 +187,8 @@ abort ^.*\.(ttf|eot|woff2?)(\?.*)?$
 
 # Do not scan (streamed) videos and audios
 abort ^.*\.(flv|f4f|mp(3|4))(\?.*)?$
-abortcontent ^video\/x-flv$
-abortcontent ^video\/mp4$
-abortcontent ^audio\/mp4$
-abortcontent ^video\/webm$
-abortcontent ^audio\/webm$
-abortcontent ^video\/MP2T$
+abortcontent ^video\/.*$
+abortcontent ^audio\/.*$
 
 # Do not scan flash files
 abort ^.*\.swf$
