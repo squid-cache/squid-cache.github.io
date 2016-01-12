@@ -201,18 +201,18 @@ abortcontent ^application\/x-shockwave-flash$
 abortcontent ^.*application\/x-mms-framed.*$
 
 # White list some sites
-whitelist \.clamav.net
-whitelist \.avast.com
-whitelist \.symantec.com
-whitelist \.symantecliveupdate.com
-whitelist \.kaspersky.*
-whitelist \.drweb.com
-whitelist \.mcafee.com
-whitelist \.fsecure.com
-whitelist \.esetnod32.ru
-whitelist \.eset.*
-whitelist \.sophos.com
-whitelist \.avg.com
+whitelist \.clamav\.net
+whitelist \.avast\.com
+whitelist \.symantec\.com
+whitelist \.symantecliveupdate\.com
+whitelist \.kaspersky\.*
+whitelist \.drweb\.*
+whitelist \.mcafee\.com
+whitelist \.fsecure\.com
+whitelist \.esetnod32\.ru
+whitelist \.eset\.*
+whitelist \.sophos\.com
+whitelist \.avg\.com
 # See also 'trustuser' and 'trustclient' configuration directives
 }}}
 
