@@ -166,7 +166,7 @@ You may also need to allow a larger port span for outgoing connections. This is 
 echo 1024 32768 > /proc/sys/net/ipv4/ip_local_port_range
 }}}
 
-=== Squid 3.x cannot produce core dumps on Solaris 10 and above ===
+=== Squid cannot produce core dumps on Solaris 10 and above ===
 
 If squid user has ulimit -c unlimited, squid runs from root but can't produce core dumps, check this:
 
