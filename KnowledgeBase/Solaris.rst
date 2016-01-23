@@ -367,14 +367,14 @@ To build Squid 3.5.x and 4.x.x more stable under this OS, you must know:
 
 Starting with Solaris 10 operating system contains '''pthreads''' library as wrapper over system libthreads. 
 
-'''Note:''' Solaris native threads library is incompatible with POSIX threading library. As by as Squid uses pthreads by default, you will experience sporadically dies problems, especially when using ''aufs''.
+'''Note:''' Solaris native threads library is incompatible with POSIX threading library. As by as Squid uses pthreads by default, you will experience sporadically dies problems, especially when using ''aufs''. So, may be better to continue use diskd on this OS.
 
-So, to troubleshoot this issue and increase Squid's stability, you need to configure Squid '''without''' POSIX threads support, and - replace it with system native libthreads.
+So, to troubleshoot this issue and increase Squid's stability, you need to stop using POSIX threads, and - replace it with system native libthreads. Also note: Solaris libthreads is dependent from system libpthreads library.
 
-To do that you need add ''-lthread'' to CFLAGS, CXXFLAGS and LIBS and turn off POSIX threads support:
+To do that you need add ''-lthread'' and ''-lpthread'' to CFLAGS, CXXFLAGS and LIBS:
 
 {{{
-./configure 'CFLAGS=-march=native -pipe -lthread' 'CXXFLAGS=-march=native -pipe -lthread' 'LDFLAGS=-m64' 'LIBS=-lthread' --without-pthreads
+./configure 'CFLAGS=-march=native -pipe -lthread -lpthread' 'CXXFLAGS=-march=native -pipe -lthread -lpthread' 'LDFLAGS=-m64' 'LIBS=-lthread -lpthread'
 }}}
 
 Also you can combine Solaris native threading library with multithreading navive memory allocator to increase performance and reduce contention (example):
@@ -382,7 +382,7 @@ Also you can combine Solaris native threading library with multithreading navive
 {{{
 ### -lmtmalloc is Solaris-specific tune.
 ### -lthread is Solaris threading library
-./configure '--prefix=/usr/local/squid' '--enable-translation' '--enable-external-acl-helpers=none' '--enable-icap-client' '--enable-ecap' '--enable-ipf-transparent' '--enable-storeio=ufs,aufs,diskd,rock' '--enable-removal-policies=lru,heap' '--enable-devpoll' '--disable-wccp' '--enable-wccpv2' '--enable-http-violations' '--enable-follow-x-forwarded-for' '--enable-arp-acl' '--enable-htcp' '--enable-cache-digests' '--enable-auth-negotiate=none' '--disable-auth-digest' '--disable-auth-ntlm' '--disable-url-rewrite-helpers' '--enable-storeid-rewrite-helpers=file' '--enable-log-daemon-helpers=file' '--with-openssl' '--enable-ssl-crtd' '--enable-zph-qos' '--disable-snmp' '--enable-inline' '--with-build-environment=POSIX_V6_LP64_OFF64' 'CFLAGS=-march=native -O3 -m64 -pipe -lmtmalloc -lthread' 'CXXFLAGS=-march=native -O3 -m64 -pipe -lmtmalloc -lthread' 'LIBOPENSSL_CFLAGS=-I/opt/csw/include/openssl' 'CPPFLAGS=-I/opt/csw/include' 'LDFLAGS=-m64' 'LIBS=-lmtmalloc -lthread' 'PKG_CONFIG_PATH=/usr/local/lib/pkgconfig' '--disable-strict-error-checking' --enable-build-info="Intercept/WCCPv2/SSL/CRTD/(A)UFS/DISKD/ROCK/eCAP/64/GCC/mtmalloc Production" --without-pthreads
+./configure '--prefix=/usr/local/squid' '--enable-translation' '--enable-external-acl-helpers=none' '--enable-icap-client' '--enable-ecap' '--enable-ipf-transparent' '--enable-storeio=ufs,aufs,diskd,rock' '--enable-removal-policies=lru,heap' '--enable-devpoll' '--disable-wccp' '--enable-wccpv2' '--enable-http-violations' '--enable-follow-x-forwarded-for' '--enable-arp-acl' '--enable-htcp' '--enable-cache-digests' '--enable-auth-negotiate=none' '--disable-auth-digest' '--disable-auth-ntlm' '--disable-url-rewrite-helpers' '--enable-storeid-rewrite-helpers=file' '--enable-log-daemon-helpers=file' '--with-openssl' '--enable-ssl-crtd' '--enable-zph-qos' '--disable-snmp' '--enable-inline' '--with-build-environment=POSIX_V6_LP64_OFF64' 'CFLAGS=-march=native -O3 -m64 -pipe -lmtmalloc -lthread -lpthread' 'CXXFLAGS=-march=native -O3 -m64 -pipe -lmtmalloc -lthread -lpthread' 'LIBOPENSSL_CFLAGS=-I/opt/csw/include/openssl' 'CPPFLAGS=-I/opt/csw/include' 'LDFLAGS=-m64' 'LIBS=-lmtmalloc -lthread -lpthread' 'PKG_CONFIG_PATH=/usr/local/lib/pkgconfig' '--disable-strict-error-checking' --enable-build-info="Intercept/WCCPv2/SSL/CRTD/(A)UFS/DISKD/ROCK/eCAP/64/GCC/mtmalloc Production"
 }}}
 
 After configuration, run gmake && gmake install-strip as usual and restart your Squid.
