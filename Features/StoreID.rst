@@ -76,7 +76,9 @@ The above url will be unique on each download request and there for cannot be pr
 
 These days there are many sites that uses a POST request to fetch the unique download url\token. If we will inspect the full request and response using ICAP or eCAP we could easily know to what ID we can tie the token based urls that are embedded in the POST response.
 
-Currently the eCAP and ICAP services do not support the option to send a StoreID as a part of the request and response processing. An ICAP service can use a memory only DB such as memcached or redis or others to store the StoreID for specific requests url that will later be fetched by the StoreID helper that will set them.
+In theory, an ID computed by an eCAP service can already be passed to Squid via eCAP annotations (a.k.a. meta headers) and then passed to the storeID helper via SquidConf:store_id_extras. Currently, ICAP services do not support the option to send a StoreID as a part of the request and response processing. 
+
+An adaptation service can use a memory only DB such as memcached or redis or others to store the StoreID for specific requests url that will later be fetched by the StoreID helper that will set them.
 
 The above ICAP + StoreID helper idea works in production with more then one site for quite some time but it has some overheads and I would rate this kind of a setup as an Expert only.
 
