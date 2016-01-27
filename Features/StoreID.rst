@@ -70,7 +70,7 @@ Since A cache proxy server admin should consider couple aspects he\she should co
 === Url only based StoreID compared to deep inspection based StoreID ===
 There are couple ways to determine an object StoreID. Currently squid StoreID helper interface allows only to determine the StoreID based on the request url which is very limiting since not all urls contains static identification data.
 
-Once great example would be a token based access control downloads, the user never gets a url which can be related to some unique ID of the file\object what so ever in the request but instead gets a url with a random or encrypted token which will result in the download of the file. For example:
+One great example would be a token based access control downloads, the user never gets a url which can be related to some unique ID of the file\object what so ever in the request but instead gets a url with a random or encrypted token which will result in the download of the file. For example:
  - http://ngtech.co.il/token-based-files/some-randomblob/xyz/yer/?couple=random&request=properties
 The above url will be unique on each download request and there for cannot be predicted using the urls only. In order to to predict this url and tie it to some StoreID there is a need for some Deep HTTP Content Inspection.
 
