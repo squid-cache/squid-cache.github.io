@@ -19,9 +19,6 @@
 
  * '''Version''': 2.7, 3.2
 
- * '''Priority''': 5
-## How important on a scale of 0 to 5 is this for the developer working on it?
-
  * '''Developer''':AmosJeffries, HenrikNordstrom
 
  * '''More''':
