@@ -5,7 +5,6 @@
  * '''Goal''': Ease code navigation. Reduce recompilation time. Fix distclean. Fix dependency tree.
  * '''Status''': In progress
  * '''ETA''': Ongoing
- * '''Priority''': 1
  * '''Version''': 3.3
  * '''Developer''': AlexRousskov and AmosJeffries
  * '''More''': [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html|email07121]] [[http://www.mail-archive.com/squid-dev@squid-cache.org/msg07506.html|email07506]]
@@ -67,31 +66,29 @@ Key:
 || <:( || <:( || <:( || ||''redirect/'' ||URL alteration (redirectors, URL-rewrite, URL maps) ||redirect.* !RedirectInternal.* ||
 || <:( || <:( || <:( || :\ ||''repl/heap/'' ||HEAP Replacement Policy algorithms ||
 || <:( || <:( || <:( || :\ ||''repl/lru/'' ||Cache Replacement Policy algorithms ||
+|| <:( || <:( || (./) || (./) ||''security/'' || Transport Layer Security components ||
 || <:( || <:( || <:( || :\ ||''servers/'' ||Listening Server components for receiving connections ||client_side* ||
 || <:( || <:( || <:( || :\ ||''snmp/'' ||SNMP components ||snmp_*, move core and agent code. restructure for extensibility. ||
-|| <:( || (./) || <:( || :\ ||''ssl/'' ||SSL components ||ssl_* ssl.cc ||
+|| <:( || (./) || <:( || :\ ||''ssl/'' || OpenSSL components ||ssl_* ssl.cc ||
 || <:( || <:( || <:( || <:( ||''shaping/'' ||Traffic shaping and delay pools ||*[Dd]elay.* *[Pp]ool*.* ||
 || <:( || <:( || <:( || <:( ||''store/'' ||generic (fs-agnostic) disk and memory cache support? ||Store* store* ||
 || <:( || <:( || <:( || <:( ||''time/'' ||time and date handling tools ||time.* squidTime.* ||
 
 
-== Non-Squid Bundled Source code ==
-This section is used to edit and finalize the grouping of source files important for users but not integral to build and run Squid. These sources are generally contributed by third parties and vetted by the Squid Developers for bundling.
-||'''Directory''' || ||'''Content Type''' ||
-||||helpers/ ||Helper applications which may be run by configuration. ||
-|| ||basic_auth/ ||SquidConf:auth_param basic ||
-|| ||digest_auth/ ||SquidConf:auth_param digest ||
-|| ||external_acl/ ||SquidConf:external_acl_type ||
-|| ||log_daemon/ ||SquidConf:logfile_daemon ||
-|| ||negotiate_auth/ ||SquidConf:auth_param negotiate ||
-|| ||ntlm_auth/ ||SquidConf:auth_param ntlm ||
-|| ||store_id/ ||Store-ID re-writers (SquidConf:store_id_program) ||
-|| ||url_rewrite/ ||URL re-writers (SquidConf:url_rewrite_program) ||
-||||modules/ ||Extension modules which may be linked by configuration. ||
-|| ||ecap/ ||eCAP ||
-||||tools/ ||Administration tools ||
+== Bundled Add-On Source code ==
+This section is used to edit and finalize the grouping of source files important for users but not integral to build Squid. These sources are generally contributed by third parties and vetted by the Squid Developers for bundling.
 
-
+||'''Directory Path''' ||'''Content Type''' ||
+|| src/adaptation/ecap/modules/* || (PROPOSED) eCAP extension modules which may be linked by configuration.||
+|| src/auth/basic/*/ || SquidConf:auth_param basic helpers ||
+|| src/auth/digest/*/ || SquidConf:auth_param digest helpers ||
+|| src/auth/negotiate/*/ || SquidConf:auth_param negotiate helpers ||
+|| src/auth/ntlm/*/ || SquidConf:auth_param ntlm helpers ||
+|| src/acl/external/* || SquidConf:external_acl_type helpers ||
+|| src/http/url_rewriters/* || HTTP message URL re-writers (SquidConf:url_rewrite_program) ||
+|| src/log/*/ || SquidConf:logfile_daemon helpers ||
+|| src/store/id_rewriters/* || Store-ID re-writers (SquidConf:store_id_program) ||
+|| tools/ ||Administration tools ||
 
 
 == Problems ==
