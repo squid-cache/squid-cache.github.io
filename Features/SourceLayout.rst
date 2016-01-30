@@ -85,14 +85,14 @@ This section is used to edit and finalize the grouping of source files important
 || src/auth/negotiate/*/ || SquidConf:auth_param negotiate helpers ||
 || src/auth/ntlm/*/ || SquidConf:auth_param ntlm helpers ||
 || src/acl/external/* || SquidConf:external_acl_type helpers ||
-|| src/fs/diskd/* || SquidConfig:diskd_program Disk I/O helpers ||
-|| src/fs/unlink/* || (PROPOSED) SquidConfig:unlinkd_program helpers ||
+|| src/fs/diskd/* || SquidConf:diskd_program Disk I/O helpers ||
+|| src/fs/unlink/* || (PROPOSED) SquidConf:unlinkd_program helpers ||
 || src/http/url_rewriters/* || HTTP message URL re-writers (SquidConf:url_rewrite_program) ||
-|| src/icmp/* || SquidConfig:pinger_program helpers ||
+|| src/icmp/* || SquidConf:pinger_program helpers ||
 || src/log/*/ || SquidConf:logfile_daemon helpers ||
-|| src/security/cert_validators/* || SquidConfig:sslcrtvalidator_program helpers ||
-|| src/security/cert_generators/* || (PROPOSED) SquidConfig:sslcrtd_program helpers ||
-|| src/security/cert_password/* || (PROPOSED) SquidConfig:sslpassword_program helpers ||
+|| src/security/cert_validators/* || SquidConf:sslcrtvalidator_program helpers ||
+|| src/security/cert_generators/* || (PROPOSED) SquidConf:sslcrtd_program helpers ||
+|| src/security/cert_password/* || (PROPOSED) SquidConf:sslpassword_program helpers ||
 || src/store/id_rewriters/* || Store-ID re-writers (SquidConf:store_id_program) ||
 || tools/ ||Administration tools ||
 
