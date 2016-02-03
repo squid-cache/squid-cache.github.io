@@ -7,14 +7,15 @@
 
 == Details ==
 
-There are five major flavours of authentication available in the HTTP world at this moment:
+There are six major flavours of authentication available in the HTTP world at this moment:
  * [[WikiPedia:BasicAuthenticationScheme|Basic]] - been around since the very beginning
  * WikiPedia:NTLM - Microsoft's first attempt at single-sign-on for LAN environments
  * [[WikiPedia:DigestAccessAuthentication|Digest]] - w3c's attempt at having a secure authentication system
  * [[WikiPedia:SPNEGO|Negotiate (aka SPNEGO)]] - Microsoft's second attempt at single-sign-on.
  * [[WikiPedia:OAuth|OAuth]] - IETF attempt at single-sign-on
+ * [[WikiPedia:OAuth#OAuth_2.0|OAuth 2.0 (aka Bearer)]] - IETF second attempt at single-sign-on
 
-[[Squid-2.6]] and later support Basic, NTLM (SMB LM, v1 and v2), Digest, and [[Features/NegotiateAuthentication|Negotiate]].
+[[Squid-2.6]] and later support Basic, NTLM (SMB LM, v1 and v2), Digest, and [[Features/NegotiateAuthentication|Negotiate]] (Kerberos and/or NTLM flavours).
 
 ## Currently only WikiPedia:Firefox 1.5, WikiPedia:SeaMonkey 1.0 and [[WikiPedia:InternetExplorer|Internet Explorer]] 7+ are known to support Negotiate authentication with Squid and ISA server 2004
 
