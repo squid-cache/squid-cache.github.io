@@ -244,6 +244,10 @@ ENFORCED:
   * No two file names that differ only in capitalization
   * For new group of files, follow [[Features/SourceLayout]]
 
+  * convenience libraries should be named for the subdirectory they are within
+   . for example; foo/libfoo.la or foo/libfoosomething.la
+  * conveniece library names must contain only alphanumeric characters 0-9 a-z, avoid upper case or punctuation
+
 ENFORCED:
 
   * .h files MUST be parseable as a single translation unit <<BR>> (ie it includes it's dependent headers / forward declares classes as needed).
