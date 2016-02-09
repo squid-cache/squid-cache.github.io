@@ -56,4 +56,4 @@ The Internet world is like the streets and should be treated with the same level
 
 Be aware that if the certificate of the site has an issue it might be a result of an attack.
 
-I am only one honest developer which do not intend to harm but it possible that others are not as honest as the I or the Squid project team.
+I am only one honest developer which do not intend to harm but it possible that others are not as honest as I or the Squid project team.
