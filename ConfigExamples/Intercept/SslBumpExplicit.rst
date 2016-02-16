@@ -114,6 +114,9 @@ sslproxy_flags DONT_VERIFY_PEER
 To increase security the good idea to set this option:
 
 {{{
+# SINGLE_DH_USE is 3.5 before squid-3.5.12-20151222-r13967
+# SINGLE_ECDH_USE is AFTER squid-3.5.12-20151222-r13967
+
 # for Squid-3.5 and older
 sslproxy_options NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
 
