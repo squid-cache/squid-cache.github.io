@@ -185,5 +185,7 @@ https_port 3129 intercept ssl-bump generate-host-certificates=on dynamic_cert_me
 
 and restart squid.
 
+'''Note:''' Careful, this config snippet can not meet your setup. Just an example!
+
 ----
 CategoryConfigExample
