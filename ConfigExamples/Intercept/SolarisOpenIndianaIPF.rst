@@ -94,6 +94,8 @@ pass in quick proto tcp/udp from 192.168.0.0/16 to proxyhost port=53 keep state 
 pass in quick on aggr1 proto udp from 192.168.0.0/16 to proxyhost port=ntp keep state group 200
 # Permit access to SSH
 pass in quick proto tcp from any to proxyhost port=2222 flags S keep state keep frag group 200
+# Restrict access to proxy by WCCP from DMZ only
+pass in quick on aggr1 proto udp from 192.168.200.0/24 to proxyhost port=2048 keep state keep frags group 200
 # Restrict access to proxy only from localnet (forwarding)
 pass in quick proto tcp from 192.168.0.0/16 to proxyhost port=3127 flags S keep state keep frag group 200
 # Restrict access to proxy only from localnet (interception)
