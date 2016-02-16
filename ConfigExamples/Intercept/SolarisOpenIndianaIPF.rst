@@ -24,6 +24,8 @@ We need to intercept incoming HTTP/HTTPS traffic on Solaris/OpenIndiana box with
 # mv /etc/hostname.bge0 /etc/hostname.aggr1
 }}}
 
+'''Note:''' Using LACP for aggregated links required adequate configuration managed switch on other side, if used.
+
 == Usage ==
 
 This configuration useful with transparent interception proxy in DMZ, with zero client configuration.
