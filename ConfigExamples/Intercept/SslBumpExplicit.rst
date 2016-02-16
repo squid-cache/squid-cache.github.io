@@ -118,7 +118,7 @@ To increase security the good idea to set this option:
 sslproxy_options NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
 
 # for Squid-4 and newer
-tls_outgoing_options options=NO_SSLv3,SINGLE_DH_USE
+tls_outgoing_options options=NO_SSLv3,SINGLE_ECDH_USE
 }}}
 
  . /!\ SSL options must be comma (,) or colon (:) separated, not spaces!
