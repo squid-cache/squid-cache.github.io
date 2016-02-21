@@ -29,6 +29,7 @@ Several people have volunteered their time to check and confirm translations to 
 || Malay || ms || ''tepung'' ||
 || Portuguese (Brazil) || pt-br || Aecio F. Neto ||
 || Romanian || ro || Arthur Titeica ||
+|| Russian | ru || Yuri Voinov ||
 || Slovak || sk || ''Helix'' ||
 || Slovenian || sl || Aleksa Šušulić ||
 || Serbian (Latin) || sr-latn || ''batailic'' ||
