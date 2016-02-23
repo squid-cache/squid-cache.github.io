@@ -170,6 +170,24 @@ For example, if you do not explicitly configure Squid SquidConf:workers and rock
 
 The above formula does not account for helpers and other processes not running a Squid executable code.
 
+=== How to configure SMP Squid for top performance? ===
+
+If you have beefy hardware, want to optimize performance, and are ready to spend non-trivial amounts of time/labor/money doing that, then consider the following SMP rules of thumb:
+
+  1. If you want to cache, use the largest SquidConf:cache_mem your system can handle safely. Please note that Squid will not tell you when you over-allocate but may crash. If you do not want to cache, then set cache_mem to zero, prohibit caching using the SquidConf:cache directive, and ignore rule #3 below.
+
+  2. One or two CPU core reserved for the OS, depending on network usage levels. Use OS CPU affinity configuration for network interrupts to restrict NIC interrupts to these "OS-only" core(s).
+
+  3. One Rock SquidConf:cache_dir per physical disk spindle with no other cache_dirs. No RAID. Diskers may be able to use virtual CPU cores. Tuning Rock is tricky. See the Performance Tuning recommendations at the Rock Store [[Features/RockStore|feature page]]. Please note that compared to other cache_dir types, Rock cache_dirs are currently slower to load during Squid startup and may have other problems incompatible with your deployment needs. You may, of course, use other cache_dir types instead of Rock. These ''SMP'' rules use Rock because other cache_dirs are not SMP-aware.
+
+  4. One SMP [[SquidConf:workers|worker]] per remaining non-virtual CPU cores. Be wary of heavily loading multiple ''virtual'' CPU cores that share the same physical CPU core -- such virtual cores can usually accomplish less useful work than one heavily loaded physical CPU core because multiple virtual cores waste resources on competing for access to their single physical core, which is the only place where useful work happens. Virtual cores often work best for semi-idle background tasks, not busy workers with their near-real-time constraints.
+
+  5. Use [[SquidConf:cpu_affinity_map|CPU affinity]] for each Squid kid process (diskers and workers). Prohibit kernel from moving kids from one CPU core to another. Without your help, the general-purpose OS kernel will most likely ''not'' load-balance your Squid server well.
+
+  6. Watch individual CPU core utilization (not just the average or total across all cores!). Adjust the number of workers, the number of diskers, and CPU affinity maps to achieve balance while leaving a healthy overload safety margin.
+
+'''Disclaimer:''' YMMV. The above general rules may not apply to your environment. Following them is unlikely to be ''sufficient'' to achieve top-notch performance, especially without understanding of the underlying issues. Achieving top Squid performance on a given hardware requires a lot of work. Do not bother with this if your Squid already works OK.
+
 
 === Older Squids ===
 
