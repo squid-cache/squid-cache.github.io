@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2015-07-31 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2016-02-29 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
@@ -58,7 +58,7 @@ Notes:
 || ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
-||#13 ||- ||Make sure that posts via Nabble gets accepted on mailing list, enabling discussion to flow. ||not done || ||
+||#13 ||- ||Make sure that posts via Nabble gets accepted on mailing list, enabling discussion to flow. || Nabble has nag screen reminder - done || ||
 || ||
 ||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan || not done || ||
 ||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag ||not done || ||
