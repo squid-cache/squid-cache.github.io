@@ -51,7 +51,7 @@ Notes:
 || ||
 ||#17 || AmosJeffries ||publish meeting notes #16 || done ||
 ||#17 || AmosJeffries ||update AboutSquid page with proposed text by Alex || done ||
-||#17 || AlexRousskov ||submit initial draft on the functionality testing project for Board review. || not done ||
+||#17 || AlexRousskov ||submit initial draft on the functionality testing project for Board review. || done ||
 || ||
 ||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. ||
 ||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.||
