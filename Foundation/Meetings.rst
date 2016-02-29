@@ -7,22 +7,17 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2016-02-29 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''14:00 2016-04-14 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
-==== Draft Agenda - Meeting #18 ====
+==== Draft Agenda - Meeting #19 ====
 
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
-
- 1. Directorships
- 1. Support Points - unblocking progress
- 1. Building a QA Team
- 1. Assertion handling [[http://lists.squid-cache.org/pipermail/squid-users/2016-February/009376.html|options]]
 
  1. Next meeting scheduling
  1. Open floor:
@@ -33,17 +28,19 @@ Notes:
 
 ==== Agenda of Last Meeting ====
 
+
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
- 1. Use of Spamhaus XBL as primary mail filter
- 1. Automated functionality testing
- 1. IRCache Server
+ 1. Directorships
+ 1. Support Points - unblocking progress
+ 1. Building a QA Team
+ 1. Assertion handling [[http://lists.squid-cache.org/pipermail/squid-users/2016-February/009376.html|options]]
  1. Next meeting scheduling
  1. Open floor:
-  1. copyright texts in [[SquidFaq/AboutSquid]]
+
 
 
 == Action Points ==
@@ -52,7 +49,7 @@ Notes:
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
 ||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. || partial - see [[CoverityTesting]] ||
-||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.||
+||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.|| circulated draft ||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
 ||#16 || HenrikNordstrom || create a Foundation account to host .org and probably a few other domains at the registrar of his choice. Foundation to pay for the transfers and prepay for hosting.|| not done ||
 ||#16 || sysadmin || verify that there is no services left that depends on west, then Alex to take down the hardware etc.|| not done ||
