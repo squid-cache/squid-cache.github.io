@@ -19,6 +19,8 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval
  1. Review of action points from last meeting
 
+ 1. Directorships
+ 1. Support Points - unblocking progress
  1. Building a QA Team
  1. Assertion handling [[http://lists.squid-cache.org/pipermail/squid-users/2016-February/009376.html|options]]
 
