@@ -51,10 +51,6 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#17 || AmosJeffries ||publish meeting notes #16 || done ||
-||#17 || AmosJeffries ||update AboutSquid page with proposed text by Alex || done ||
-||#17 || AlexRousskov ||submit initial draft on the functionality testing project for Board review. || done ||
-|| ||
 ||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. || partial - see [[CoverityTesting]] ||
 ||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
@@ -63,7 +59,6 @@ Notes:
 || ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
-||#13 ||- ||Make sure that posts via Nabble gets accepted on mailing list, enabling discussion to flow. || Nabble has nag screen reminder - done || ||
 || ||
 ||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan || not done || ||
 ||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag ||not done || ||
@@ -72,10 +67,8 @@ Notes:
 || ||
 ||#10 ||AmosJeffries ||followup with sysadmin on possible next tasks ||in progress || ||
 || ||
-||#9 ||HenrikNordstrom ||draft and circulate new sysadmin announcement for board@ review ||not done || ||
 ||#9 ||HenrikNordstrom ||organize creation of the new shop ||not done ||
 || ||
-||#8 ||HenrikNordstrom ||send public announcement about new sysadmin staff ||not done ||
 ||#8 ||HenrikNordstrom ||send service status renewal mail to contacts for each service listing ||not done ||
 ||#8 ||sysadmin ||mail service listing contacts to verify their service listing accuracy ||waiting for message texts ||
 || ||
