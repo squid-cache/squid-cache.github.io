@@ -55,7 +55,7 @@ Notes:
 ||#17 || AmosJeffries ||update AboutSquid page with proposed text by Alex || done ||
 ||#17 || AlexRousskov ||submit initial draft on the functionality testing project for Board review. || done ||
 || ||
-||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. ||
+||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. || partial - see [[CoverityTesting]] ||
 ||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
 ||#16 || HenrikNordstrom || create a Foundation account to host .org and probably a few other domains at the registrar of his choice. Foundation to pay for the transfers and prepay for hosting.|| not done ||
