@@ -5,6 +5,8 @@
 
 = Squid Software Foundation Activities =
 
+== 2016 (so far) ==
+
 == 2015 (so far) ==
 
  * Arranged for moderated public access to Coverity Scan testing results of Squid code.
