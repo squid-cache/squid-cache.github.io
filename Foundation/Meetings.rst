@@ -11,6 +11,8 @@ Most of the Board discussions can be open to the public and your constructive pa
 
  * Location: IRC / Skype TBD.
 
+ * vCalendar File(testing): [[attachment:SquidBoard-14042016.vcs]]
+
 ==== Draft Agenda - Meeting #19 ====
 
  1. Opening of the meeting
