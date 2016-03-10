@@ -44,11 +44,11 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 }}}
 
 
-== JDK+JRE query terms stripping pattern ==
+== JDK+JRE+updates query terms stripping pattern ==
 
 {{{
 ^https?\:\/\/download\.oracle\.com\/((otn\-pub|otn)\/[\d\w]+\/[\d\w]+\/[\w\d\-]+\/[\w\d\-]+\.(exe|dmg|rpm|msi|tar\.(gz|Z)))\?                   http://java.oracle.otn.ngtech.suqid.internal/$1
-^https?\:\/\/([\d\w\-]+)\.oracle\.com\/(([\d\w]+)\/[\d\w]+\/[\d\w]+\/([\d\w\-]+)\/[\d\w\-]+\.(dmg|msi|exe|tar\.(gz|Z)))\?                    http://java.oracle.download.ngtech.suqid.internal/$2
+^https?\:\/\/([\d\w\-]+)\.oracle\.com\/(([\d\w]+)\/[\d\w]+\/[\d\w]+\/([\d\w\-]+)\/([\d\w]+\/)?[\d\w\-\.\_]+\.(dmg|msi|exe|tar\.gz|tar\.Z))\?                    http://java.oracle.download.ngtech.suqid.internal/$2
 }}}
 
 == Flickr static image files ==
