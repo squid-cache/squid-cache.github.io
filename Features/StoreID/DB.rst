@@ -43,6 +43,14 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 ^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                http://dl.sourceforge.net.squid.internal/$1
 }}}
 
+
+== JDK+JRE query terms stripping pattern ==
+
+{{{
+https?\:\/\/download\.oracle\.com\/(otn\-pub\/java\/(jre|jdk)\/[\w\d\-]+\/[\w\d\-]+\.(exe|dmg|rpm|msi|tar\.(gz|Z)))\?                   http://java.oracle.otn-pub.ngtech.suqid.internal/$1
+https?\:\/\/([\d\w\-]+)\.oracle\.com\/((ESD[\d]+)\/JSCDL\/(jdk|jre)\/([\d\w\-]+)\/[\d\w\-]+\.(dmg|msi|exe|tar\.(gz|Z)))\?                    http://java.oracle.download.ngtech.suqid.internal/$2
+}}}
+
 == Flickr static image files ==
 {{{
 ^https?:\/\/c[\d]+\.staticflickr\.com\/(.*\.jpg) http://staticflickr.images.squid.internal/$1
