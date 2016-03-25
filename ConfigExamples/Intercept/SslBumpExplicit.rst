@@ -172,7 +172,9 @@ To do that first create DH params file:
 # openssl dhparam -outform PEM -out dhparam.pem 2048
 }}}
 
-Then add dhparams= option to your bumped port specification:
+Then add '''dhparams=''' or '''tls-dh=''' option to your bumped port specification (depending Squid's version):
+
+Squid 3.x:
 
 {{{
 #	   dhparams=	File containing DH parameters for temporary/ephemeral
@@ -180,7 +182,22 @@ Then add dhparams= option to your bumped port specification:
 #			on how to create this file.
 #			WARNING: EDH ciphers will be silently disabled if this
 #				 option is not set.
-https_port 3129 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA.crt key=/usr/local/squid/etc/rootCA.key options=NO_SSLv3 dhparams=/usr/local/squid/etc/dhparam.pem
+https_port 3127 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA.crt key=/usr/local/squid/etc/rootCA.key options=NO_SSLv3 dhparams=/usr/local/squid/etc/dhparam.pem
+}}}
+
+Squid 4.x:
+
+{{{
+#	   tls-dh=[curve:]file
+#			File containing DH parameters for temporary/ephemeral DH key
+#			exchanges, optionally prefixed by a curve for ephemeral ECDH
+#			key exchanges.
+#			See OpenSSL documentation for details on how to create the
+#			DH parameter file. Supported curves for ECDH can be listed
+#			using the "openssl ecparam -list_curves" command.
+#			WARNING: EDH and EECDH ciphers will be silently disabled if
+#				 this option is not set.
+https_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA.crt key=/usr/local/squid/etc/rootCA.key options=SINGLE_ECDH_USE tls-dh=/usr/local/squid/etc/dhparam.pem
 }}}
 
 and restart squid.
