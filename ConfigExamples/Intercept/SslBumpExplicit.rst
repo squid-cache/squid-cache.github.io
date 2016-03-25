@@ -202,7 +202,7 @@ https_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_si
 
 and restart squid.
 
-'''Note:''' Careful, this config snippet can not meet your setup. Just an example!
+'''Note:''' Careful, this config snippets can not meet your setup. Just an example!
 
 ----
 CategoryConfigExample
