@@ -162,9 +162,9 @@ This looks like more better for outgoing SSL connections.
 sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:HIGH:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 }}}
 
-=== Modern DH/ciphers usage ===
+=== Modern DH/EDH ciphers usage ===
 
-To enable Squid to use modern DH exchanges/ciphers you must (depending of your openssl build) create DH params file and specify it with http(s)_port.
+To enable Squid to use modern DH/EDH exchanges/ciphers you must (depending of your openssl build) create DH params file and specify it with http(s)_port.
 
 To do that first create DH params file:
 
