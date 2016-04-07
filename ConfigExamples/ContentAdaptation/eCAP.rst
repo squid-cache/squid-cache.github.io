@@ -227,4 +227,4 @@ ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass
 adaptation_access gzip_service allow HTTP_STATUS_OK
 }}}
 
-{X} '''BEWARE:''' Order is important! eCAP ClamAV adapter must be preceded by Vigos adapter!
+{X} '''BEWARE:''' Order is important! eCAP ClamAV adapter should precede Vigos adapter!
