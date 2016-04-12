@@ -121,7 +121,7 @@ To increase security the good idea to set this option:
 sslproxy_options NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
 
 # for Squid-4 and newer
-tls_outgoing_options options=NO_SSLv3,SINGLE_ECDH_USE
+tls_outgoing_options options=NO_SSLv3,SINGLE_DH_USE,SINGLE_ECDH_USE
 }}}
 
  . /!\ SSL options must be comma (,) or colon (:) separated, not spaces!
@@ -162,7 +162,7 @@ This looks like more better for outgoing SSL connections.
 sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:HIGH:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 }}}
 
- . {i} Note: Used ciphers als depending your SSL/TLS library. In some cases will be enough to specify:
+ . {i} Note: Ciphers are used also depending from your SSL/TLS library. In some cases will be enough to specify:
 
 {{{
 sslproxy_cipher HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
@@ -174,7 +174,7 @@ or
 tls_outgoing_options cipher=HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 }}}
 
- . {i} Note: Don't forget, that sslproxy_cipher/tls_outgoing_options effective for external (i.e., from Squid to Web) connections. For internal (i.e., from Squid to LAN) connections you need to specify cipher in http_port/https_port.
+ . {i} Note: Don't forget, that sslproxy_cipher/tls_outgoing_options effective for external (i.e., from Squid to Web) connections. For internal (i.e., from Squid to LAN) connections you also need to specify cipher in http_port/https_port.
 
 === Modern DH/EDH ciphers usage ===
 
@@ -211,7 +211,7 @@ Squid 4.x:
 #			using the "openssl ecparam -list_curves" command.
 #			WARNING: EDH and EECDH ciphers will be silently disabled if
 #				 this option is not set.
-https_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA.crt key=/usr/local/squid/etc/rootCA.key options=SINGLE_ECDH_USE tls-dh=/usr/local/squid/etc/dhparam.pem
+https_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA.crt key=/usr/local/squid/etc/rootCA.key options=SINGLE_DH_USE,SINGLE_ECDH_USE tls-dh=/usr/local/squid/etc/dhparam.pem
 }}}
 
 and restart squid.
