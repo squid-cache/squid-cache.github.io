@@ -76,9 +76,11 @@ Of course, this installation requires more resources, especially when installing
 
 === Build, configuring and run ClamAV daemon ===
 
-ClamAV including in many repositories and can be got from them. When configuring clamd, be very conservative with options. Defaults is good starting point. I do not recommend using [[https://developers.google.com/safe-browsing/|SafeBrowsing]] due to performance and memory issues and DetectPUA due to much false-positives. Also take care about antivirus databases updates - it will occurs often enough. I use 24 times per day. '''Note:''' ClamAV daemon (clamd) is memory consumption service, it uses about 200-300 megabytes in minimal configuration (mainly used to store AV database in memory), it can be higher during deep scans of big archives. So, you can put it on separate node with fast network interconnect with your proxy (this option is valid only when using squidclamav).
+ClamAV including in many repositories and can be got from them. When configuring clamd, be very conservative with options. Defaults is good starting point. I do not recommend using [[https://developers.google.com/safe-browsing/|SafeBrowsing]] due to performance and memory issues and DetectPUA due to much false-positives. Also take care about antivirus databases updates - it will occurs often enough. I use 24 times per day.
 
-'''Note:''' It is important to set StreamMaxLength parameter in clamd.conf to the same value as maxsize in squidclamav.conf.
+  . {i} Note: ClamAV daemon (clamd) is memory consumption service, it uses about 200-300 megabytes in minimal configuration (mainly used to store AV database in memory), it can be higher during deep scans of big archives. So, you can put it on separate node with fast network interconnect with your proxy (this option is valid only when using squidclamav).
+
+ . {i} Note: It is important to set StreamMaxLength parameter in clamd.conf to the same value as maxsize in squidclamav.conf.
 
 I.e., uncomment and adjust in clamd.conf:
 
@@ -213,7 +215,9 @@ whitelist \.avg\.com
 # See also 'trustuser' and 'trustclient' configuration directives
 }}}
 
-and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory. '''Note:''' You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize C-ICAP templates according to your needs.
+and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory.  
+
+ . {i} Note: You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize C-ICAP templates according to your needs.
 
 === Squid Configuration File ===
 
@@ -258,7 +262,7 @@ gmake
 gmake install-strip
 }}}
 
-'''Note:''' To build submodule clamav_mod (uses libclamav) you can require patch your C-ICAP installation with last fixes. It uses OpenSSL headers dependency and you can have problems with modules build. This can be workarounded if your system has older OpenSSL version (i.e. 0.9.8). To do that just add old OpenSSL headers path to CPPFLAGS variable.
+ . {i} Note: To build submodule clamav_mod (uses libclamav) you can require patch your C-ICAP installation with last fixes. It uses OpenSSL headers dependency and you can have problems with modules build. This can be workarounded if your system has older OpenSSL version (i.e. 0.9.8). To do that just add old OpenSSL headers path to CPPFLAGS variable.
 
 === Configuring C-ICAP modules ===
 
@@ -289,7 +293,7 @@ Add following line at the end of c-icap.conf:
 Include virus_scan.conf
 }}}
 
-'''Note:''' You also must create symbolic link in ClamAV installation directory pointed to ClamAV antivirus database directory, configured for daemon in clamd.conf, for example:
+ . {i} Note: You also must create symbolic link in ClamAV installation directory pointed to ClamAV antivirus database directory, configured for daemon in clamd.conf, for example:
 
 {{{
 # ln -s /var/lib/clamav /usr/local/clamav/share/clamav
@@ -309,7 +313,7 @@ icap_service service_avi_resp respmod_precache icap://localhost:1344/virus_scan 
 adaptation_access service_avi_resp allow all
 }}}
 
-'''Note:''' Against squidclamav, you must bypass whitelisted sites with Squid ACL's and adaptation_access directives. Also you can customize virus_scan module templates to your language etc. Also beware: without clamd you will have the same 300-500 megabytes of loaded AV database to one of c-icap process with libclamav. ;)
+ . {i} Note: Against squidclamav, you must bypass whitelisted sites with Squid ACL's and adaptation_access directives. Also you can customize virus_scan module templates to your language etc. Also beware: without clamd you will have the same 300-500 megabytes of loaded AV database to one of c-icap process with libclamav. ;)
 
 == Testing your installation ==
 
@@ -323,10 +327,10 @@ In practice, configuration with clamd and squidclamav is fastest. In fact, squid
 
 In some cases, placing all services to single host is not a good idea. High-loaded setups must be separated between tiers. Avoid overload - especially in the case of installation services on a single host. Reduce memory consumption as possible. Do not set high clamd system limits - this increases latency and memory consumption and can lead to a system crash during peak hours.
 
-'''Note:''' C-ICAP workers produces high CPU load during scanning in all cases. You must minimize scanning as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
+ . {i} Note: C-ICAP workers produces high CPU load during scanning in all cases. You must minimize scanning as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
 
-'''Note:''' On some Solaris setups you can get performance gain by using libmtmalloc for c-icap processes. Just add -lmtmalloc to CFLAGS and CXXFLAGS when configuring. This also can reduce memory lock contention on multi-core CPU boxes. This solution can also reduce memory consumption problem for clamd.
+ . {i} Note: On some Solaris setups you can get performance gain by using libmtmalloc for c-icap processes. Just add -lmtmalloc to CFLAGS and CXXFLAGS when configuring. This also can reduce memory lock contention on multi-core CPU boxes. This solution can also reduce memory consumption problem for clamd.
 
 == Troubleshooting ==
 
-'''Note:''' When your upgrade your C-ICAP server, you also must (in most cases) rebuild squidclamav from sources (it is recommended) to aviod possible API incompatibility.
+ . {i} Note:  When your upgrade your C-ICAP server, you also must (in most cases) rebuild squidclamav from sources (it is recommended) to aviod possible API incompatibility.
