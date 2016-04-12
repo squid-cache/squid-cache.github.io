@@ -48,7 +48,7 @@ PKG_CONFIG_PATH pointed to libecap pkgconfig file.
 
 To build [[https://github.com/c-rack/squid-ecap-gzip|squid-ecap-gzip]] with corresponding eCAP library, you need apply patch for [[attachment:squid-ecap-gzip_up_to_libecap-0.2.0.patch|0.2.0]] or [[attachment:squid-ecap-gzip_up_to_libecap-1.0.0.patch|1.0.0]] first.
 
-'''Note:''' Patch 1.0.0 appropriate also when using libecap 1.0.1.
+ . {i} Note: Patch 1.0.0 appropriate also when using libecap 1.0.1.
 
 Then build squid-ecap-gzip:
 {{{
@@ -60,7 +60,7 @@ gmake
 gmake install-strip
 }}}
 
-'''Note:''' It is important to choose identical 32 or 64 bit (like your Squid) build mode for eCAP library and squid-gzip-ecap.
+ . {i} Note: It is important to choose identical 32 or 64 bit (like your Squid) build mode for eCAP library and squid-gzip-ecap.
 
 === Squid Configuration File ===
 
@@ -146,9 +146,9 @@ gmake
 gmake install-strip
 }}}
 
-'''Note:''' To use adapter with 64-bit Squid, you need also to compile ClamAV and libecap also with 64 bit. Also use appropriate adapter version for interoperability with your Squid version and used libecap.
+ . {i} Note: To use adapter with 64-bit Squid, you need also to compile ClamAV and libecap also with 64 bit. Also use appropriate adapter version for interoperability with your Squid version and used libecap.
 
-'''Note:''' On some platforms (i.e. Solaris) you may need to add #include <unistd.h> to src/Gadgets.h to avoid compilation error due to lack of unlink subroutine.
+ . {i} Note: On some platforms (i.e. Solaris) you may need to add #include <unistd.h> to src/Gadgets.h to avoid compilation error due to lack of unlink subroutine.
 
 === Squid Configuration File ===
 
@@ -183,7 +183,7 @@ adaptation_access clamav_service_resp allow !bypass_scan_types_rep all
 
 }}}
 
-{X} '''Note:''' On some setups you may need to create symbolic link in $prefix/clamav/share to '''DatabaseDirectory''' path, specified in clamd.conf. I.e, for example:
+ . {X} Note: On some setups you may need to create symbolic link in $prefix/clamav/share to '''DatabaseDirectory''' path, specified in clamd.conf. I.e, for example:
 
 {{{
 ln -s /var/lib/clamav /usr/local/clamav/share/clamav
