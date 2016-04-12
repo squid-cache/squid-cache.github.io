@@ -162,6 +162,20 @@ This looks like more better for outgoing SSL connections.
 sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:HIGH:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 }}}
 
+ . {i} Note: Used ciphers als depending your SSL/TLS library. In some cases will be enough to specify:
+
+{{{
+sslproxy_cipher HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
+}}}
+
+or
+
+{{{
+tls_outgoing_options cipher=HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
+}}}
+
+ . {i} Note: Don't forget, that sslproxy_cipher/tls_outgoing_options effective for external (i.e., from Squid to Web) connections. For internal (i.e., from Squid to LAN) connections you need to specify cipher in http_port/https_port.
+
 === Modern DH/EDH ciphers usage ===
 
 To enable Squid to use modern DH/EDH exchanges/ciphers you must (depending of your openssl build) create DH params file and specify it with http(s)_port.
@@ -202,7 +216,12 @@ https_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_si
 
 and restart squid.
 
-'''Note:''' Careful, these config snippets may not work in your proxy. They are just examples!
+ . {i} Note: Careful, these config snippets may not work in your proxy. They are just examples!
+ . {i} Note: In some cases you can specify curve in tls-dh option:
+
+{{{
+tls-dh=prime256v1:/usr/local/squid/etc/dhparam.pem
+}}}
 
 ----
 CategoryConfigExample
