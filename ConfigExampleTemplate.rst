@@ -28,9 +28,7 @@ Paste the configuration file like this:
 
 {{{
 
-acl all src 0.0.0.0/0.0.0.0
-acl manager proto cache_object
-acl localhost src 127.0.0.1/255.255.255.255
+acl localhost src 127.0.0.1
 http_access deny all
 
 }}}
