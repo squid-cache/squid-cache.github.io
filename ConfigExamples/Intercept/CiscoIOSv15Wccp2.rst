@@ -19,6 +19,9 @@ The router runs Cisco IOS Software, Version 15.5(3)M, with SECURITYK9 and DATAK9
 {{attachment:Network_scheme.png | Network scheme}}
 
 Router has both router/switch functionality, so we can use both GRE/L2 redirection methods.
+
+ . {i} Note: Beware - you must have NAT configuted on your squid's box, and you must have squid built with OS-specific NAT support.
+
 ## start feature include
 == Cisco IOS 15.5(3)M router ==
 {{{
@@ -74,6 +77,8 @@ wccp2_service standard 0
 wccp2_service dynamic 70
 wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=240 ports=443
 }}}
+
+ . {i} Note: Squid must be built with WCCPv2 support.
  . {i} Note: This example uses L2 redirecting (for OSes without native GRE support). Beware, wccp2_rebuild_wait sends "Here I am" message to router when proxy is ready to serve requests, without cache rebuilding complere. Also, both - router and proxy - uses port 2048 to communicate with WCCP. So, this port must be open in firewalls.
 ## end feature include
 
