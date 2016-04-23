@@ -234,9 +234,10 @@ and add this one to your bumped port's configuration:
 cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
 }}}
 
-3DES-RC4 pair required to connect to WU and - Skype assets site.
+3DES and RC4 required to connect to WU and - '''attention!''' -  Skype assets site.
 
  . /!\ '''WARNING:''' Some updates cannot be cached due to splice above. Beware!
+ . /!\ '''WARNING:''' Adding 3DES and, especially, RC4, produces potentially weak ciphers via client and WU/Skype and some other sites. Be careful!
  
 ##end
 
