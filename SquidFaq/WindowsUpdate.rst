@@ -147,7 +147,7 @@ c:\> proxycfg -u
 === Windows proxy configuration for Metro applications/Windows Updates with netsh ===
 by Yuri Voinov
 
-'''NOTE:''' In modern Windows proxycfg is obsolete. Use netsh instead:
+ . {i} '''NOTE:''' In modern Windows proxycfg is obsolete. Use netsh instead:
 
 Syntax:
 
@@ -177,12 +177,9 @@ To use splicing, you need to know the names of the servers, however, a recursive
 To pass WU check through Squid splice, you only need to splice next MS servers:
 
 {{{
-.update.microsoft.com
-statsfe2.update.microsoft.com.akadns.net 
-sls.update.microsoft.com.akadns.net 
-fe1.update.microsoft.com.akadns.net
-fe2.update.microsoft.com.akadns.net
-fe2.update.microsoft.com
+update.microsoft.com
+update.microsoft.com.akadns.net 
+
 }}}
 
 For use in real setups, write file url.nobump:
@@ -190,25 +187,54 @@ For use in real setups, write file url.nobump:
 {{{
 # WU (Squid 3.5.x and above with SSL Bump)
 # Only this sites must be spliced.
-.update\.microsoft\.com
-statsfe2\.update\.microsoft\.com\.akadns\.net 
-sls\.update\.microsoft\.com\.akadns\.net 
-fe1\.update\.microsoft\.com\.akadns\.net
-fe2\.update\.microsoft\.com\.akadns\.net
-fe2\.update\.microsoft\.com
+update\.microsoft\.com
+update\.microsoft\.com\.akadns\.net 
+
 }}}
 
 Just add this file as Squid ACL as follows:
 
 {{{
 acl DiscoverSNIHost at_step SslBump1
-ssl_bump peek DiscoverSNIHost
 acl NoSSLIntercept ssl::server_name_regex -i "/usr/local/squid/etc/url.nobump"
 ssl_bump splice NoSSLIntercept
+ssl_bump peek DiscoverSNIHost
 ssl_bump bump all
 }}}
 
 and you do not need to know all the IP authorization server for updates.
+
+ . {i} '''NOTE:''' In some countries WU can product SQUID_X509_V_ERR_DOMAIN_MISMATCH error via Akamai. To do WU, you can require to add this into your Squid's config:
+
+{{{
+acl BrokenButTrustedServers dstdomain "/usr/local/squid/etc/dstdom.broken"
+acl DomainMismatch ssl_error SQUID_X509_V_ERR_DOMAIN_MISMATCH
+sslproxy_cert_error allow BrokenButTrustedServers DomainMismatch
+sslproxy_cert_error deny all
+}}}
+
+and add this to '''dstdom.broken''':
+
+{{{
+download.microsoft.com
+update.microsoft.com
+update.microsoft.com.akadns.net
+update.microsoft.com.nsatc.net
+}}}
+
+ . {i} '''NOTE:''' Depending your Squid's configuration, you may need to change your Squid's cipher configuration to this one:
+
+{{{
+sslproxy_cipher HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
+}}}
+
+and add this one to your bumped port's configuration:
+
+{{{
+cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
+}}}
+
+3DES-RC4 pair required to connect to WU and - Skype assets site.
 
  . /!\ '''WARNING:''' Some updates cannot be cached due to splice above. Beware!
  
