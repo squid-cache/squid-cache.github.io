@@ -240,10 +240,10 @@ Then, you must prepare public keys file which contains concatenated root CA1 + i
 And, finally, you must change bumped port settings like this example (for Squid 3.5.x):
 
 {{{
-http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA2.crt key=/usr/local/squid/etc/rootCA2.key cafile=/usr/local/squid/etc/rootCA12.crt options=SINGLE_ECDH_USE tls-dh=prime256v1:/usr/local/squid/etc/dhparam.pem cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
+http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA2.crt key=/usr/local/squid/etc/rootCA2.key '''cafile=/usr/local/squid/etc/rootCA12.crt''' options=SINGLE_ECDH_USE tls-dh=prime256v1:/usr/local/squid/etc/dhparam.pem cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
 }}}
 
-I.e., intermediate CA2 keypair uses for signing mimicked certificates, and public keys file with concatenated public keys specified in '''cafile=''' port option.
+I.e., intermediate CA2 keypair uses for signing mimicked certificates, and public keys file '''rootCA12.crt''' with concatenated public keys specified in '''cafile=''' port option.
 
 After this, restart your squid.
 
