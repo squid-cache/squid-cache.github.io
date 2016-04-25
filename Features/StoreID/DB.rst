@@ -318,10 +318,10 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 
 == Daily Motion videos ==
 {{{
-^http:\/\/proxy\-[0-9]+\.dailymotion\.com/(.*)                  http://vid.dmcdn.net.squid.internal/$1
-^http:\/\/vid[0-9]+\.ak\.dmcdn\.net/(.*)                        http://vid.dmcdn.net.squid.internal/$1
-^http:\/\/s[0-9]+\.dmcdn\.net/(.*)                              http://pic.dmcdn.net.squid.internal/$1
-^http:\/\/static[0-9]+\.dmcdn\.net/(.*)                         http://static.dmcdn.net.squid.internal/$1
+^http:\/\/proxy\-[0-9]+\.dailymotion\.com\/(.*)                  http://vid.dmcdn.net.squid.internal/$1
+^http:\/\/vid[0-9]+\.ak\.dmcdn\.net\/(.*)                        http://vid.dmcdn.net.squid.internal/$1
+^http:\/\/s[0-9]+\.dmcdn\.net\/(.*)                              http://pic.dmcdn.net.squid.internal/$1
+^http:\/\/static[0-9]+\.dmcdn\.net\/(.*)                         http://static.dmcdn.net.squid.internal/$1
 }}}
 
 == ngtech repository ==
@@ -348,7 +348,7 @@ Excluding alpha, beta rc releases. This maps self-hosted mirror URLs to official
 [^\?]*\/jquery\.(mobile)\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.(js|css)            http://code.jquery.com/$1/$2/jquery.$1-$2.min.$3
 [^\?]*\/(mobile)\/([0-9\.]+)\/jquery\.(mobile\.structure)\-[0-9\.]+min\.css  http://code.jquery.com/$1/$2/jquery.$3-$2.min.css
 [^\?]*\/jquery\.color\-([0-9]+\.[0-9]+\.[0-9]+)\.js                          http://code.jquery.com/color/jquery.color-$1.js
-[^\?]*\/jquery-color\/[0-9]+\.[0-9]+\.[0-9]+)\/jquery\.color\.min\.js        http://code.jquery.com/color/jquery.color-$1.js
+[^\?]*\/jquery-color\/([0-9]+\.[0-9]+\.[0-9]+)\/jquery\.color\.min\.js        http://code.jquery.com/color/jquery.color-$1.js
 [^\?]*\/jquery\.color\-([0-9]+\.[0-9]+\.[0-9]+)\.min\.js                     http://code.jquery.com/color/jquery.color-$2.min.js
 [^\?]*\/jquery\.(color)\.(svg|plus)\-names\-([0-9]+\.[0-9]+\.[0-9]+)\.js     http://code.jquery.com/$1/jquery.$1.$2-names-$3.js
 [^\?]*\/jquery\.(color)\.(svg|plus)\-names\-([0-9]+\.[0-9]+\.[0-9]+\.min)\.js http://code.jquery.com/$1/jquery.$1.$2-names-$3.js
