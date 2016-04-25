@@ -225,35 +225,5 @@ and restart squid.
 tls-dh=prime256v1:/usr/local/squid/etc/dhparam.pem
 }}}
 
-== Advanced configurations ==
-
- ''by YuriVoinov''
-
-=== Subordinated proxy CA ===
-
-You can use subordinated proxy CA. In this case, for security reasons, you first create '''root CA1''' with CRL URL encoded in CA1, places this CRL onto URL available for your clients. Then, uses this CA1 for sign secondary intermediate CA2, which will be uses on proxy for signing mimicked certificates.
-
-After this you can install primary CA1 public key onto clients.
-
-Then, you must prepare public keys file which contains concatenated root CA1 + intermediate CA2 in PEM format, named, for example, rootCA12.crt.
-
-And, finally, you must change bumped port settings like this example (for Squid 3.5.x):
-
-{{{
-http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA2.crt key=/usr/local/squid/etc/rootCA2.key cafile=/usr/local/squid/etc/rootCA12.crt options=SINGLE_ECDH_USE tls-dh=prime256v1:/usr/local/squid/etc/dhparam.pem cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
-}}}
-
-I.e., intermediate CA2 keypair uses for signing mimicked certificates, and public keys file '''rootCA12.crt''' with concatenated public keys specified in '''cafile=''' port option. You need to add this to bumped port specification:
-
-{{{
-cafile=/usr/local/squid/etc/rootCA12.crt
-}}}
-
-After this, restart your squid.
-
-Now you squid can send intermediate CA2 public key with root CA1 to client and you do not need to install intermediate CA2 to clients.
-
-In case if the intermediate certificate CA2 is compromised, you can simple revoke intermediate CA2 with primary CA1 and sign new intermediate CA2 without disturb your clients.
-
 ----
 CategoryConfigExample
