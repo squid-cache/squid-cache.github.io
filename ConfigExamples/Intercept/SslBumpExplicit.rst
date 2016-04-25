@@ -249,7 +249,7 @@ After this, restart your squid.
 
 Now you squid can send intermediate CA2 public key with root CA1 to client and you do not need to install intermediate CA2 to clients.
 
-In case of emergency, you can simple revoke intermediate CA2 with primary CA1 and sign new intermediate CA2 without disturb your clients.
+In case if the intermediate certificate CA2 is compromised, you can simple revoke intermediate CA2 with primary CA1 and sign new intermediate CA2 without disturb your clients.
 
 ----
 CategoryConfigExample
