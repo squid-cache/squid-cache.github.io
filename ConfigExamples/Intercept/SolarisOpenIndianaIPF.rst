@@ -47,8 +47,8 @@ Squid must be configured with ipf-transparent option:
 You need to edit /etc/ipt/ipnat.conf as follows:
 
 {{{
-rdr aggr1 0.0.0.0/0 port 80 -> 0/32 port 3128
-rdr aggr1 0.0.0.0/0 port 443 -> 0/32 port 3129
+rdr aggr1 0.0.0.0/0 port 80 -> 0/32 port 3126
+rdr aggr1 0.0.0.0/0 port 443 -> 0/32 port 3127
 }}}
 
 In case of proxy placed in DMZ, will be good to configure IPFilter as closed firewall by edit /etc/ipt/ipf.conf as follows:
@@ -96,12 +96,12 @@ pass in quick on aggr1 proto udp from 192.168.0.0/16 to proxyhost port=ntp keep 
 pass in quick proto tcp from any to proxyhost port=2222 flags S keep state keep frag group 200
 # Restrict access to proxy by WCCP from DMZ only
 pass in quick on aggr1 proto udp from 192.168.200.0/24 to proxyhost port=2048 keep state keep frags group 200
-# Restrict access to proxy only from localnet (forwarding)
-pass in quick proto tcp from 192.168.0.0/16 to proxyhost port=3127 flags S keep state keep frag group 200
 # Restrict access to proxy only from localnet (interception)
-pass in quick proto tcp from 192.168.0.0/16 to proxyhost port=3128 flags S keep state keep frag group 200
+pass in quick proto tcp from 192.168.0.0/16 to proxyhost port=3126 flags S keep state keep frag group 200
 # Restrict access to proxy only from localnet (HTTPS interception)
-pass in quick proto tcp from 192.168.0.0/16 to proxyhost port=3129 flags S keep state keep frag group 200
+pass in quick proto tcp from 192.168.0.0/16 to proxyhost port=3127 flags S keep state keep frag group 200
+# Restrict access to proxy only from localnet (forwarding)
+pass in quick proto tcp from 192.168.0.0/16 to proxyhost port=3128 flags S keep state keep frag group 200
 # Restrict access to ICP only from localnet
 pass in quick proto tcp from 192.168.0.0/16 to proxyhost port=3130 flags S keep state keep frag group 200
 # Restrict access to HTCP only from localnet
@@ -128,11 +128,11 @@ Paste the configuration file like this:
 
 {{{
 
-http_port 3127
-http_port 3128 intercept
+http_port 3126 intercept
 
-https_port 3129 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA.crt key=/usr/local/squid/etc/rootCA.key capath=/etc/opt/csw/ssl/certs
+https_port 3127 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/usr/local/squid/etc/rootCA.crt key=/usr/local/squid/etc/rootCA.key capath=/etc/opt/csw/ssl/certs
 
+http_port 3128
 }}}
 
 == Finally you need to enable/restart IPFilter and Squid proxy ==
