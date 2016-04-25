@@ -6,7 +6,7 @@
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
- ''by Jok Thuauand Yuri Voinov''
+ ''by Jok Thuau and Yuri Voinov''
 
 <<TableOfContents>>
 
