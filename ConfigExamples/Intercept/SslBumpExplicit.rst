@@ -132,6 +132,8 @@ As a result, you can got more errors in your cache.log. So, you must investigate
 
 == Hardening ==
 
+ ''by YuriVoinov''
+
 It is important to increase invisible for you part of bumped connection - from proxy to server.
 
 By default, you are use default set of ciphers. And never check your ssl connection from outside.
@@ -223,11 +225,11 @@ and restart squid.
 tls-dh=prime256v1:/usr/local/squid/etc/dhparam.pem
 }}}
 
-=== Advanced configurations ===
+== Advanced configurations ==
 
  ''by YuriVoinov''
 
-==== Subordinated proxy CA ====
+=== Subordinated proxy CA ===
 
 You can use subordinated proxy CA. In this case, for security reasons, you first create '''root CA1''' with CRL URL encoded in CA1, places this CRL onto URL available for your clients. Then, uses this CA1 for sign secondary intermediate CA2, which will be uses on proxy for signing mimicked certificates.
 
