@@ -79,7 +79,7 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 }}}
 
  . {i} Note: Squid must be built with WCCPv2 support.
- . {i} Note: This example uses L2 redirecting (for OSes without native GRE support). Beware, wccp2_rebuild_wait sends "Here I am" message to router when proxy is ready to serve requests, without cache rebuilding complere. Also, both - router and proxy - uses port 2048 to communicate with WCCP. So, this port must be open in firewalls.
+ . {i} Note: This example uses L2 redirecting (for OSes without native GRE support). Beware, wccp2_rebuild_wait sends "Here I am" message to router when proxy is ready to serve requests, without cache rebuilding complere. Also, both - router and proxy - uses port 2048/udp to communicate with WCCP. So, this port must be open in firewalls.
  . {i} Note: If your choose GRE for communication with router and proxy, remember: you must have configured GRE on your proxy box!
 
 ## end feature include
