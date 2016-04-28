@@ -86,8 +86,10 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 
 == Setup verification ==
 
-To verify setup up and running execute next command on WCCP-enabled router:
+To verify setup up and running execute next commands on WCCP-enabled router:
 
+ {{attachment:Check_WCCP_1.png | Check WCCP HTTP/HTTPS}}
+ {{attachment:Check_WCCP_2.png | Check WCCP HTTP/HTTPS}}
  {{attachment:Check_WCCP_up_and_running.png | Check WCCP up and running}}
 
 == QUIC/SPDY protocol blocking ==
