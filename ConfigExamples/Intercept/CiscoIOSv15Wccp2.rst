@@ -90,6 +90,7 @@ To verify setup up and running execute next commands on WCCP-enabled router:
 
  {{attachment:Check_WCCP_1.png | Check WCCP HTTP/HTTPS}}
  {{attachment:Check_WCCP_2.png | Check WCCP HTTP/HTTPS}}
+ {{attachment:Check_WCCP_3.png | Check WCCP Interfaces/summary}}
  {{attachment:Check_WCCP_up_and_running.png | Check WCCP up and running}}
 
 == QUIC/SPDY protocol blocking ==
