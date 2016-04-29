@@ -101,7 +101,7 @@ To verify setup up and running execute next commands on WCCP-enabled router:
 
 This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you can see, you can configure your environment for different ports interception.
 
- . {i} Note: WCCP has HA option. I.e., you can specify several proxy boxes to redirect traffic in case of failure single proxy.
+ . {i} Note: WCCP has HA option. I.e., you can set up several proxy boxes to redirect traffic in case of failure single proxy with multicast group.
  . {i} Note: '''Performance''' is more better than route-map, WCCP uses less CPU on Cisco's devices. So, WCCP is preferrable against route-map.
  . {i} Note: This configuration was tested and fully operated on Cisco iOS versions 15.4(1)T, 15.4(3)M, 15.5(1)T, 15.5(2)T1, 15.5(3)M and 15.5(3)M2. {OK} {OK} {OK}
 ----
