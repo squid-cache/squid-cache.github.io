@@ -60,6 +60,10 @@ Categories:
 
 <<FullSearch(title:regex:^ConfigExamples/ContentAdaptation/.*$)>>
 
+=== Caching ===
+
+<<FullSearch(title:regex:^ConfigExamples/Caching/.*$)>>
+
 === Captive Portal features ===
 <<FullSearch(title:regex:^ConfigExamples/Portal/.*$)>>
 
