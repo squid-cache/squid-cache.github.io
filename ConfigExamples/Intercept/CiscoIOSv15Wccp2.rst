@@ -84,6 +84,41 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 
 ## end feature include
 
+=== Security ===
+
+In case of paranoia, you can enforce authentification between proxy(proxies) and router. To do that you need to setup WCCP services on router using passwords:
+
+{{{
+ip wccp web-cache redirect-list WCCP_HTTP password 0 foo123
+ip wccp 70 redirect-list WCCP_HTTPS password 0 bar456
+}}}
+
+If your router has service password-encryption enabled (to do that you need to apply next command in router global configuration):
+
+{{{
+service password-encryption
+}}}
+
+after defining your WCCP services on router, passwords will be encrypted:
+
+{{{
+ip wccp web-cache redirect-list WCCP_HTTP password 7 0600002E1D1C5A
+ip wccp 70 redirect-list WCCP_HTTPS password 7 121B0405465E5A
+}}}
+
+Then change WCCP service definitions in squid.conf:
+
+{{{
+#	MD5 service authentication can be enabled by adding
+#	"password=<password>" to the end of this service declaration.
+wccp2_service standard 0 password=foo123
+wccp2_service dynamic 70 password=bar456
+}}}
+
+Then restart squid and check redirection is working.
+
+ . {i} Note: Beware your squid.conf contains '''any''' passwords in plain-text! Protect it as by as protect proxy box from unauthorized access!
+
 == Setup verification ==
 
 To verify setup up and running execute next commands on WCCP-enabled router:
