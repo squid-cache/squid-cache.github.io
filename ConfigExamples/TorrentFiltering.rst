@@ -78,7 +78,7 @@ interface GigabitEthernet0/0
 !
 }}}
 
-You need to have NBAR2 protocol pack to do this. To do this you need to have subscription for Cisco's service and router which is support DPI.And ISR G2 router (like 2901 or the similar). And you can use Squid to enforce deny download .torrent files via HTTP/HTTPS. Both of these methods permit you to block torrents almost completely.
+You need to have NBAR2 protocol pack to do this. To do this you need to have subscription for Cisco's service and router which is support DPI, like ISR G2 router (2901 or the similar). And you can use Squid to enforce deny download .torrent files via HTTP/HTTPS. Both of these methods permit you to block torrents almost completely.
 
 ----
 CategoryConfigExample
