@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-''by Yuri Voinov''
+''by YuriVoinov''
 
 = Introduction =
 
