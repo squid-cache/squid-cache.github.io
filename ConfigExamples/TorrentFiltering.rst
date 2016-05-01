@@ -16,7 +16,7 @@ Torrent filtering is a diffucult problem. which can't be solved easily. To diffi
 
 == Usage ==
 
-You can also enforce this task uses NBAR protocol discovery (DPI functionality) in your router (29xx Cisco sefies or similar). Only Squid can't completely block torrents your wish.
+You can also enforce this task uses NBAR protocol discovery (DPI functionality) in your router (29xx Cisco series or similar). Only Squid can't completely block torrents your wish.
 
 
 == Squid Configuration File ==
