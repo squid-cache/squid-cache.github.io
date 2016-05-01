@@ -77,6 +77,7 @@ Categories:
 <<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
 
 === Torrent Filtering ===
+ /!\ Torrent filtering is not simple task and can't be done using Squid's only.
 [[ConfigExamples/TorrentFiltering|Overview and explanation]]
 <<FullSearch(title:regex:^ConfigExamples/TorrentFiltering/.*$)>>
 
