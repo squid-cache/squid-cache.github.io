@@ -77,6 +77,11 @@ Categories:
 === Multimedia and Data Stream filtering ===
 <<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
 
+
+=== Torrent Filtering ===
+
+<<FullSearch(title:regex:^ConfigExamples/TorrentFiltering/.*$)>>
+
 === SMP (Symmetric Multiprocessing) configurations ===
 
 ## The warning below is Included in the template ConfigExampleTemplate and possibly in some other pages. Please, do not remove the enclosing comments.
