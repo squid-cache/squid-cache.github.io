@@ -77,8 +77,8 @@ Categories:
 <<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
 
 === Torrent Filtering ===
- /!\ Torrent filtering is not simple task and can't be done using Squid's only.
-[[ConfigExamples/TorrentFiltering|Overview and explanation]]
+ /!\ Torrent filtering is not simple task and can't be done using Squid's only. You must also use active network equipment and some experience.
+[[ConfigExamples/TorrentFiltering|ConfigExamples/TorrentFiltering]]
 <<FullSearch(title:regex:^ConfigExamples/TorrentFiltering/.*$)>>
 
 === SMP (Symmetric Multiprocessing) configurations ===
