@@ -4,6 +4,8 @@
 
 = Caching AV updates =
 
+by ''YuriVoinov''
+
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 <<TableOfContents>>
