@@ -2,6 +2,8 @@
 #format wiki
 #language en
 
+''by Yuri Voinov''
+
 = Introduction =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
