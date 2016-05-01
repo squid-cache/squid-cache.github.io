@@ -77,6 +77,7 @@ Categories:
 <<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
 
 === Torrent Filtering ===
+[[ConfigExamples/TorrentFiltering|Overview and explanation]]
 <<FullSearch(title:regex:^ConfigExamples/TorrentFiltering/.*$)>>
 
 === SMP (Symmetric Multiprocessing) configurations ===
