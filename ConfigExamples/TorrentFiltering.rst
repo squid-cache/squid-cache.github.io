@@ -74,6 +74,7 @@ policy-map Net_Limit
 !
 interface GigabitEthernet0/0
 ! This is external router interface
+ ip nbar protocol-discovery
  service-policy output Net_Limit
 !
 }}}
