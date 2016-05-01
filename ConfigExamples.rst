@@ -61,7 +61,7 @@ Categories:
 <<FullSearch(title:regex:^ConfigExamples/ContentAdaptation/.*$)>>
 
 === Caching ===
-[[ConfigExamples/AVCaching||Overview and explanation]]
+[[Caching/CachingAVUpdates||Overview and explanation]]
 <<FullSearch(title:regex:^ConfigExamples/Caching/.*$)>>
 
 === Captive Portal features ===
