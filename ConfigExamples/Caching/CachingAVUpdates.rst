@@ -12,7 +12,7 @@ by ''YuriVoinov''
 
 == Outline ==
 
-Most common task is caching AV (antivirus) updates.
+One of most common task is caching AV (antivirus) updates.
 
 == Usage ==
 
