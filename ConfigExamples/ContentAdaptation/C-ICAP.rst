@@ -60,7 +60,7 @@ ServicesDir /usr/local/lib/c_icap
 LoadMagicFile /usr/local/etc/c-icap.magic
 
 acl localhost src 127.0.0.1/255.255.255.255
-acl ALLREQUESTS type REQMOD RESPMOD OPTIONS
+acl ALLREQUESTS type REQMOD RESPMOD
 icap_access allow localhost ALLREQUESTS
 icap_access deny all
 
@@ -69,6 +69,8 @@ AccessLog /var/log/i-cap_access.log
 }}}
 
 Edit paths if necessary and start c-icap server. Add startup script to your OS.
+
+ . {i} Note: Method OPTIONS is excluding from scanning in latest squidclamav release (starting from squidclamav version 6.14). So, permit access for it not required.
 
 == Antivirus checking with C-ICAP, ClamAV daemon and Squidclamav ==
 
