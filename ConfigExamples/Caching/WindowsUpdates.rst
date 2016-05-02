@@ -31,6 +31,7 @@ refresh_pattern -i deploy.akamaitechnologies.com/.*\.(cab|exe|ms[i|u|f|p]|[ap]sf
 
 }}}
 
-
+= Windows 10 and above notes =
+[[SquidFaq/WindowsUpdate#Microsoft_technical_articles_related_to_proxy_issues_and_windows_updates|SquidFaq/WindowsUpdate]]
 ----
 CategoryConfigExample
