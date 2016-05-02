@@ -34,7 +34,7 @@ Download latest c-icap sources from [[http://c-icap.sourceforge.net/download.htm
 # 32 bit
 ./configure 'CXXFLAGS=-O2 -m32 -pipe' 'CFLAGS=-O2 -m32-pipe' --enable-large-files --without-bdb --prefix=/usr/local
 # 64 bit
-./configure 'CXXFLAGS=-O2 -m64 -pipe' 'CFLAGS=-O2 -m64 -pipe' --enable-large-files --without-bdb --prefix=/usr/local
+./configure 'CXXFLAGS=-O2 -m64 -pipe' 'CFLAGS=-O2 -m64 -pipe' --without-bdb --prefix=/usr/local
 make/gmake
 make/gmake install-strip
 }}}
