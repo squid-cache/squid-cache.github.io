@@ -29,7 +29,7 @@ For version 3.5.x/4.x.x you do not have to specify this option, it enabled by de
 
 == Building C-ICAP server ==
 
-Download last c-icap sources from [[http://c-icap.sourceforge.net/|here]]. For antivirus checking you not needed BerkeleyDB support. Then configure as shown below and make.
+Download latest c-icap sources from [[http://c-icap.sourceforge.net/download.html|here]]. (Changelog is [[https://sourceforge.net/p/c-icap/news|here]]). For antivirus checking you not needed BerkeleyDB support. Then configure as shown below and make.
 {{{
 # 32 bit
 ./configure 'CXXFLAGS=-O2 -m32 -pipe' 'CFLAGS=-O2 -m32-pipe' --enable-large-files --without-bdb --prefix=/usr/local
