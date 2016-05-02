@@ -70,7 +70,7 @@ AccessLog /var/log/i-cap_access.log
 
 Edit paths if necessary and start c-icap server. Add startup script to your OS.
 
- . {i} Note: Method OPTIONS is excluding from scanning in latest squidclamav release (starting from squidclamav version 6.14). So, permit access for it not required.
+ . {i} Note: [[http://squidclamav.darold.net/news.html|Method OPTIONS is excluding from scanning]] in latest squidclamav release (starting from squidclamav version 6.14). So, permit access for it not required.
 
 == Antivirus checking with C-ICAP, ClamAV daemon and Squidclamav ==
 
