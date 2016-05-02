@@ -16,7 +16,7 @@ For Squid 3.x/4.x we can use I-CAP for content filtering (like squidGuard) or an
 
 == Usage ==
 
-This will be useful as for the transparent and non-transparent proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency.
+This will be useful both for transparent and forwarding proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency.
 
 == Building Squid with C-ICAP support ==
 
