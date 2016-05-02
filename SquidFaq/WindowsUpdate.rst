@@ -241,5 +241,8 @@ cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
  
 ##end
 
+=== Microsoft technical articles related to proxy issues and windows updates ===
+https://support.microsoft.com/en-us/kb/3084568
+
 ----
 Back to the SquidFaq
