@@ -12,7 +12,7 @@ by ''YuriVoinov''
 
 == Outline ==
 
-Windows Updates is one of mos common task for caching.
+Windows Updates is one of most common task for caching.
 == Usage ==
 
 The Alternative is using WU server. When it's impossible for some reasons your can use Squid to cache this.
