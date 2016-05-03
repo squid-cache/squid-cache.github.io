@@ -12,20 +12,11 @@
 
 == Outline ==
 
-For Squid 3.x/4.x we can use I-CAP for content filtering (like squidGuard) or antivirus checking. This config example describes check for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for modern Squid releases (at least 3.4.10) with last configuration changes.
+For [[Squid-3.0]] and later we can use I-CAP for content filtering or antivirus checking. This config example describes how to scan for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It is a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for [[Squid-3.4]] releases (at least 3.4.10) with last configuration changes.
 
 == Usage ==
 
-This will be useful both for transparent and forwarding proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency.
-
-== Building Squid with C-ICAP support ==
-
-First of all, you need to build Squid with c-icap client. To do that with 3.4.x, you need to specify --enable-icap-client:
-{{{
-./configure '--enable-icap-client'
-}}}
-For version 3.5.x/4.x.x you do not have to specify this option, it enabled by default.
-
+This will be useful both for interception and explicit proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency.
 
 == Building C-ICAP server ==
 
@@ -223,8 +214,9 @@ and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where x
 
 === Squid Configuration File ===
 
-Paste the configuration file like this:
+ . {i} [[Squid-3.4]] needs to be built with the '''--enable-icap-client''' option. Newer releases have this enabled by default.
 
+Paste the configuration file like this:
 {{{
 
 # -------------------------------------
@@ -240,7 +232,6 @@ icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav b
 adaptation_access service_avi_req allow all
 icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=on
 adaptation_access service_avi_resp allow all
-
 }}}
 
 == Antivirus checking with C-ICAP and virus checking module ==
@@ -304,6 +295,8 @@ Include virus_scan.conf
 Finally restart c-icap service to accept changes.
 
 === Squid Configuration File ===
+
+ . {i} [[Squid-3.4]] needs to be built with the '''--enable-icap-client''' option. Newer releases have this enabled by default.
 
 Paste the configuration file like this:
 
