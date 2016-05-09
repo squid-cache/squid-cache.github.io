@@ -24,8 +24,10 @@ You can also enforce this task uses [[http://www.cisco.com/c/en/us/td/docs/ios-x
 Paste this to your squid.conf file. Then reconfigure squid.
 
 {{{
+# Block torrent files
 acl TorrentFiles rep_mime_type -i mime-type application/x-bittorrent
 http_reply_access deny TorrentFiles
+deny_info TCP_RESET TorrentFiles
 }}}
 
 == Cisco router configuration ==
