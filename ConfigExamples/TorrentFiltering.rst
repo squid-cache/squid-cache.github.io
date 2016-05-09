@@ -25,7 +25,7 @@ Paste this to your squid.conf file. Then reconfigure squid.
 
 {{{
 acl TorrentFiles rep_mime_type -i mime-type application/x-bittorrent
-http_access deny TorrentFiles
+http_reply_access deny TorrentFiles
 }}}
 
 == Cisco router configuration ==
