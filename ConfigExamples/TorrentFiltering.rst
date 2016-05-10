@@ -30,9 +30,11 @@ http_reply_access deny TorrentFiles
 deny_info TCP_RESET TorrentFiles
 }}}
 
+This preventing downloading .torrent files by users via browsers.
+
 == Cisco router configuration ==
 
-You can enforce blocking torrents with Cisco router like this:
+You can effectively enforce blocking torrents with Cisco router like this:
 
 {{{
 !
@@ -80,6 +82,8 @@ interface GigabitEthernet0/0
  service-policy output Net_Limit
 !
 }}}
+
+This configuration, depending which P2P protocol you are specified, completely terminates all torrent sessions on border router/firewall.
 
  /!\ You need to have actual NBAR2 protocol pack to do this. To do this you need to have subscription for Cisco's service and router which is support DPI, like ISR-G2 router (2901 or the similar). And you can use Squid to enforce deny download .torrent files via HTTP/HTTPS. Both of these methods permit you to block torrents almost completely.
 
