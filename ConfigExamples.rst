@@ -95,7 +95,7 @@ Categories:
 see also [[Features/Wccp2| WCCP v2 overview]] for high-availability service.
 
 === General ===
-<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/ContentAdaptation -regex:ConfigExamples/Extreme -regex:ConfigExamples/Intercept -regex:ConfigExamples/Reverse -regex:ConfigExamples/Smp -regex:ConfigExamples/Strange -regex:ConfigExamples/Streams -regex:ConfigExamples/Portal )>>
+<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/ContentAdaptation -regex:ConfigExamples/Extreme -regex:ConfigExamples/Caching -regex:ConfigExamples/Intercept -regex:ConfigExamples/Reverse -regex:ConfigExamples/Smp -regex:ConfigExamples/Strange -regex:ConfigExamples/Streams -regex:ConfigExamples/Portal )>>
 
 === Strange and Weird configurations ===
 ##start_WEIRD_INTRO
