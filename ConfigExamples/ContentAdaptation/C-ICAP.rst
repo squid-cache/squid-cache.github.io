@@ -331,3 +331,4 @@ In some cases, placing all services to single host is not a good idea. High-load
 == Troubleshooting ==
 
  . {i} Note:  When your upgrade your C-ICAP server, you also must (in most cases) rebuild squidclamav from sources (it is recommended) to aviod possible API incompatibility.
+ . {i} Note: In case of c-icap permanently restarts, increase DebugLevel in c-icap.conf and check ServerLog first. Beware, DebugLevel 0 is production value, which can mask any problems during tune up.
