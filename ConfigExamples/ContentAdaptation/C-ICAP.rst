@@ -51,8 +51,8 @@ ServicesDir /usr/local/lib/c_icap
 LoadMagicFile /usr/local/etc/c-icap.magic
 
 acl localhost src 127.0.0.1/255.255.255.255
-acl ALLREQUESTS type REQMOD RESPMOD
-icap_access allow localhost ALLREQUESTS
+acl PERMIT_REQUESTS type REQMOD RESPMOD
+icap_access allow localhost PERMIT_REQUESTS
 icap_access deny all
 
 ServerLog /var/log/i-cap_server.log
@@ -62,6 +62,8 @@ AccessLog /var/log/i-cap_access.log
 Edit paths if necessary and start c-icap server. Add startup script to your OS.
 
  . {i} Note: [[http://squidclamav.darold.net/news.html|Method OPTIONS is excluding from scanning]] in latest squidclamav release (starting from squidclamav version 6.14). So, permit access for it not required.
+ . {i} Note: TmpDir usually set to /var/tmp (this is default). Be '''very''' careful when change it. TmpDir uses for temp files when oblect in memory greater than MaxMemObject. And this temp files (CI_TMP_XXXX) remains in TmpDir when processing complete. Schedule housekeeping for TmpDir otherwise free space on /var filesystem can run out on high loaded servers.
+ . {i} Note: In some cases you can increase MaxMemObject to increase performance at the cost of some increase in consumption of RAM. Sometimes it is advisable to set this parameter to the maximum value of the logical IO unit for your OS.
 
 == Antivirus checking with C-ICAP, ClamAV daemon and Squidclamav ==
 
