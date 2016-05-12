@@ -265,7 +265,7 @@ icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav
 adaptation_access service_avi_resp allow all
 }}}
 
- . {i} Note: Some platforms experienced difficults with native resolving localhost to 127.0.0.1. If you have troubles with connectivity to ICAP service, just replace '''localhost''' above to '''127.0.0.1'''.
+ . {i} Note: Some platforms experiences difficults with native resolving localhost to 127.0.0.1. If you have troubles with connectivity to ICAP service, just replace '''localhost''' above to '''127.0.0.1'''.
 
 == Antivirus checking with C-ICAP and virus checking module ==
 
