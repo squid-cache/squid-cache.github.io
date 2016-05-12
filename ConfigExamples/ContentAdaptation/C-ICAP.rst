@@ -141,46 +141,30 @@ safebrowsing 0
 # Here is some defaut regex pattern to have a high speed proxy on system
 # with low resources.
 #
+# Abort AV scan, but not chained program
 abort \.google\.*
 abort \.youtube\.com
 abort \.googlevideo\.com
 abort \.ytimg\.com
 abort \.yimg\.com
 
-abort \.download\.windowsupdate\.com
-abort \.download\.microsoft\.com
-abort \.update\.microsoft\.com
-
-abort \.apple\.com
-abort \.java\.com
-abort \.oracle\.com
-abort \.adobe\.com
-abort \.nvidia\.com
-abort \.intel\.com
-abort \.amd\.com
-abort \.ibm\.com
-abort \.hp\.com
-abort \.dell\.com
-
-abort \.squid-cache\.org
-abort \.dnscrypt\.org
-abort \.urlfilterdb\.com
-abort \.unbound\.net
-abort \.darold\.net
-abort \.torproject\.org
-abort \.shallalist\.de
-
 # Do not scan images
-abort ^.*\.(jp(e?g|e|2)|gif|png|bmp|ico|svg|web(p|m))(\?.*)?$
+abort ^.*\.([j|J][p|P][?:[e|E]?[g|G]|gif|png|bmp|ico|svg|web[p|m])(\?.*)?$
 abortcontent ^image\/.*$
 
 # Do not scan text files
-abort ^.*\.((cs|d?|m?|p?|r?|s?|w?|x?|z?)h?t?m?(l?)|php(3?|5?)|(c|x|j)ss|js(t?|px?)|rss|atom|vr(t|ml)|json)(\?.*)?$
+abort ^.*\.((cs|d?|m?|p?|r?|s?|w?|x?|z?)h?t?m?(l?)|php[3|5]?|rss|atom|vr(t|ml)|(c|x|j)s[s|t|px]?)(\?.*)?$
 abortcontent ^text\/.*$
 abortcontent ^application\/x-javascript$
+abortcontent ^application\/javascript$
+abortcontent ^application\/json$
 
 # Do not scan fonts
 abort ^.*\.(ttf|eot|woff2?)(\?.*)?$
+abortcontent ^font\/.*$
+abortcontent ^application\/x-woff$
+abortcontent ^application\/font-woff2?$
+abortcontent ^application\/x-font-ttf$
 
 # Do not scan (streamed) videos and audios
 abort ^.*\.(flv|f4f|mp(3|4))(\?.*)?$
