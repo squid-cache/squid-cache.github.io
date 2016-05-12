@@ -186,6 +186,7 @@ abort ^.*\.(ttf|eot|woff2?)(\?.*)?$
 abort ^.*\.(flv|f4f|mp(3|4))(\?.*)?$
 abortcontent ^video\/.*$
 abortcontent ^audio\/.*$
+abortcontent ^application\/mp4$
 
 # Do not scan flash files
 abort ^.*\.swf$
@@ -195,19 +196,63 @@ abortcontent ^application\/x-shockwave-flash$
 abortcontent ^.*application\/x-mms-framed.*$
 
 # White list some sites
-whitelist \.clamav\.net
-whitelist \.avast\.com
+# Abort both AV and chained program
+whitelist clamav\.net
+whitelist securiteinfo\.com
+whitelist sanesecurity\.com
+whitelist clamav\.bofhland\.org
+whitelist threatcenter\.crdf\.fr
+whitelist \.avast\.*
+whitelist \.gdatasoftware\.com
+whitelist \.emsisoft\.*
+whitelist \.chilisecurity\.*
+whitelist pcpitstop\.com
+whitelist \.unthreat\.com
+whitelist \.preventon\.com
+whitelist lavasoft\.com
+whitelist \.norton\.com
 whitelist \.symantec\.com
 whitelist \.symantecliveupdate\.com
 whitelist \.kaspersky\.*
 whitelist \.drweb\.*
 whitelist \.mcafee\.com
 whitelist \.fsecure\.com
-whitelist \.esetnod32\.ru
+whitelist \.f-secure\.com
+whitelist \.esetnod32\.*
 whitelist \.eset\.*
+whitelist \.escanav\.com
+whitelist \.360totalsecurity\.com
+whitelist \.bitdefender\.com
+whitelist pckeeper\.com
+whitelist \.mysecuritycenter\.com
+whitelist \.avira\.com
+whitelist \.pandasecurity\.com
+whitelist \.vipreantivirus\.com
+whitelist \.quickheal\.com
+whitelist \.trustport\.*
+whitelist \.trustport-ru\.*
 whitelist \.sophos\.com
+whitelist \.spamfighter\.com
+whitelist \.webroot\.com
+whitelist \.k7computing\.com
+whitelist \.charityantivirus\.com
 whitelist \.avg\.com
+whitelist \.trendmicro\.*
+whitelist \.zonealarm\.com
+whitelist \.comodo\.com
+#
+whitelist update\.microsoft\.com
+whitelist update\.microsoft\.com\.akadns\.net 
+whitelist download\.windowsupdate\.com
+whitelist download\.microsoft\.com
+whitelist update\.microsoft\.com
+#
+whitelist \.oracle\.com
+#
+whitelist \.shallalist\.de
+whitelist opencsw\.org
 # See also 'trustuser' and 'trustclient' configuration directives
+#
 }}}
 
 and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory.  
