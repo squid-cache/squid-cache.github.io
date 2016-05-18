@@ -53,6 +53,10 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 ^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                http://dl.sourceforge.net.squid.internal/$1
 }}}
 
+== Google Chrome installer ==
+{{{
+^https?:\/\/(.*?).gvt[0-9]\.com\/(.*?)\.*(zip|exe|msi)($|\?)	http://google-installer.squidinternal/$2.$3
+}}}
 
 == JDK+JRE+updates query terms stripping pattern ==
 
