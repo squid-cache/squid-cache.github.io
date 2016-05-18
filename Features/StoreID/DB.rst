@@ -38,6 +38,16 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 
 * Caching is not mirroring which gives much more then just plain transfer speedup.
 
+== Aimp media player ==
+{{{
+^https?:\/\/aimp.su\/(.*?)\/([0-9].*?)\/(.*?)\.*(zip|exe|msi)($|\?)		http://aimp.su.squidinternal/$3.$4
+}}}
+
+== VideoLAN mirrors ==
+{{{
+^https?:\/\/.*\/vlc\/.*\/(vlc.*\.(zip|exe|msi))			http://videolan.org.squidinternal/$1
+}}}
+
 == SourceForge mirrors ==
 {{{
 ^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                http://dl.sourceforge.net.squid.internal/$1
