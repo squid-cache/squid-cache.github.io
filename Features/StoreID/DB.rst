@@ -48,6 +48,9 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 ^https?:\/\/.*\/vlc\/.*\/(vlc.*\.(zip|exe|msi))			http://videolan.org.squidinternal/$1
 }}}
 
+== LibreOffice mirrors ==
+^https?:\/\/(.+?)\/libreoffice\/.*\/(LibreOffice.*\.(zip|exe|msi))$	http://libreoffice.org.squidinternal/$2
+
 == SourceForge mirrors ==
 {{{
 ^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                http://dl.sourceforge.net.squid.internal/$1
