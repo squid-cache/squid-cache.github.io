@@ -21,6 +21,7 @@ The router runs Cisco IOS Software, Version 15.5(3)M, with SECURITYK9 and DATAK9
 Router has both router/switch functionality, so we can use both GRE/L2 redirection methods.
 
  . {i} Note: Beware - you must have NAT configuted on your squid's box, and you must have squid built with OS-specific NAT support.
+ . {i} Note: When using managed switch in DMZ, be sure proxy box port in the same VLAN/has the same encapsulation as router port with WCCP activated. Otherwise router can't do WCCP handshake with proxy.
 
 ## start feature include
 == Cisco IOS 15.5(3)M router ==
