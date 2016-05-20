@@ -49,7 +49,9 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 }}}
 
 == LibreOffice mirrors ==
+{{{
 ^https?:\/\/(.+?)\/libreoffice\/.*\/(LibreOffice.*\.(zip|exe|msi))$	http://libreoffice.org.squidinternal/$2
+}}}
 
 == SourceForge mirrors ==
 {{{
