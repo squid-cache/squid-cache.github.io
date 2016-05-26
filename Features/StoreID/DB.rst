@@ -45,7 +45,7 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 
 == VideoLAN mirrors ==
 {{{
-^https?:\/\/.*\/vlc\/.*\/(vlc.*\.(zip|exe|msi))			http://videolan.org.squidinternal/$1
+[^\?]\/vlc\/.*\/(vlc.*\.exe)		http://videolan.org.squidinternal/$1
 }}}
 
 == LibreOffice mirrors ==
