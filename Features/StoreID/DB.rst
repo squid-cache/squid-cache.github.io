@@ -50,7 +50,7 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 
 == LibreOffice mirrors ==
 {{{
-[^\?]\/libreoffice\/.*\/(LibreOffice.*msi)	http://libreoffice.org.squidinternal/$2
+[^\?]\/libreoffice\/.*\/(LibreOffice.*msi)	http://libreoffice.org.squidinternal/$1
 }}}
 
 == SourceForge mirrors ==
