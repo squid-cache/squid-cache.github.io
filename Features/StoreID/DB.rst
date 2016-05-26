@@ -40,7 +40,7 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 
 == Aimp media player ==
 {{{
-^https?:\/\/aimp.su\/(.*?)\/([0-9].*?)\/(.*?)\.*(zip|exe|msi)($|\?)		http://aimp.su.squidinternal/$3.$4
+^https?:\/\/aimp.su\/(.*?)\/([0-9].*?)\/(.*?)\.*(zip|exe|msi)		http://aimp.su.squidinternal/$3.$4
 }}}
 
 == VideoLAN mirrors ==
@@ -50,7 +50,7 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 
 == LibreOffice mirrors ==
 {{{
-^https?:\/\/(.+?)\/libreoffice\/.*\/(LibreOffice.*\.(zip|exe|msi))$	http://libreoffice.org.squidinternal/$2
+[^\?]\/libreoffice\/.*\/(LibreOffice.*msi)	http://libreoffice.org.squidinternal/$2
 }}}
 
 == SourceForge mirrors ==
@@ -60,7 +60,7 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 
 == Google Chrome installer ==
 {{{
-^https?:\/\/(.*?).gvt[0-9]\.com\/(.*?)\.*(zip|exe|msi)($|\?)	http://google-installer.squidinternal/$2.$3
+^https?:\/\/(.*?).gvt[0-9]\.com\/(.*?)\.*(zip|exe|msi)	     http://google-installer.squidinternal/$2.$3
 }}}
 
 == JDK+JRE+updates query terms stripping pattern ==
