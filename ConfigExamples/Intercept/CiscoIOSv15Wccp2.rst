@@ -40,6 +40,8 @@ interface GigabitEthernet0/1
  ip wccp 70 redirect out
 !
 !
+ip route 0.0.0.0 0.0.0.0 192.168.200.1
+!
 ip access-list extended WCCP_ACCESS
  remark ACL for HTTP/HTTPS
  remark Squid proxies bypass WCCP
