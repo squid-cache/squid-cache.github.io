@@ -97,8 +97,8 @@ service password-encryption
 after defining your WCCP services on router, passwords will be encrypted:
 
 {{{
-ip wccp web-cache redirect-list WCCP_HTTP password 7 0600002E1D1C5A
-ip wccp 70 redirect-list WCCP_HTTPS password 7 121B0405465E5A
+ip wccp web-cache redirect-list WCCP_ACCESS password 7 0600002E1D1C5A
+ip wccp 70 redirect-list WCCP_ACCESS password 7 121B0405465E5A
 }}}
 
 Then change WCCP service definitions in squid.conf:
