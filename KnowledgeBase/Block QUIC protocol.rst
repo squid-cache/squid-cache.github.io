@@ -74,10 +74,9 @@ ip access-list extended WCCP_ACCESS
  remark ACL for HTTP/HTTPS
  remark Squid proxies bypass WCCP
  deny   ip host 192.168.200.3 any
- remark Alternate protocol workaround
- permit udp 192.168.0.0 0.0.255.255 any eq www 443
  remark LAN clients proxy port 80/443
  permit tcp 192.168.0.0 0.0.255.255 any eq www 443
+ remark Alternate protocol workaround
  permit udp 192.168.0.0 0.0.255.255 any eq 80 443
  remark all others bypass WCCP
  deny   ip any any
