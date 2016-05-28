@@ -28,8 +28,8 @@ Router has both router/switch functionality, so we can use both GRE/L2 redirecti
 {{{
 !
 ip cef
-ip wccp web-cache redirect-list WCCP_HTTP
-ip wccp 70 redirect-list WCCP_HTTPS
+ip wccp web-cache redirect-list WCCP_ACCESS
+ip wccp 70 redirect-list WCCP_ACCESS
 no ipv6 cef
 !
 !
@@ -40,21 +40,12 @@ interface GigabitEthernet0/1
  ip wccp 70 redirect out
 !
 !
-ip access-list extended WCCP_HTTP
- remark ACL for HTTP WCCP
+ip access-list extended WCCP_ACCESS
+ remark ACL for HTTP/HTTPS
  remark Squid proxies bypass WCCP
  deny   ip host 192.168.200.3 any
- remark LAN clients proxy port 80
- permit tcp 192.168.0.0 0.0.255.255 any eq www
- remark all others bypass WCCP
- deny   ip any any
-!
-ip access-list extended WCCP_HTTPS
- remark ACL for HTTPS WCCP
- remark Squid proxies bypass WCCP
- deny   ip host 192.168.200.3 any
- remark LAN clients proxy port 443
- permit tcp 192.168.0.0 0.0.255.255 any eq 443
+ remark LAN clients proxy port 80/443
+ permit tcp 192.168.0.0 0.0.255.255 any eq www 443
  remark all others bypass WCCP
  deny   ip any any
 !
