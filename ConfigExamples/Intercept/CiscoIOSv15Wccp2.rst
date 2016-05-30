@@ -81,7 +81,7 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 
 === Security ===
 
-In case of paranoia, you can enforce authentification between proxy(proxies) and router. To do that you need to setup WCCP services on router using passwords:
+To avoid denial-of-service attacks, you can enforce authentification between proxy(proxies) and router. To do that you need to setup WCCP services on router using passwords:
 
 {{{
 ip wccp web-cache redirect-list WCCP_ACCESS password 0 foo123
