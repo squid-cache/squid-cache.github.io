@@ -94,7 +94,7 @@ to normalize Accept-Encoding to reduce vary and set gzip support first.
 
 Finally, restart your Squid and enjoy.
 
-=== Support compression all text/* content types ===
+=== Support compression all text/* or extended text content types ===
 
 To support compression not only text/html, but also all text/* (i.e. text/javascript, text/plain, text/xml, text/css) types you must patch squid-ecap-gzip with [[attachment:squid-ecap-gzip_all_text_compressed.patch|this one]]:
 
