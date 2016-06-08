@@ -238,11 +238,10 @@ cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
 
  . /!\ '''WARNING:''' Some updates cannot be cached due to splice above. Beware!
  . /!\ '''WARNING:''' Adding 3DES and, especially, RC4, produces potentially weak ciphers via client and WU/Skype and some other sites. Be careful!
- 
-##end
 
 === Microsoft technical articles related to proxy issues and windows updates ===
 https://support.microsoft.com/en-us/kb/3084568
 
+##end
 ----
 Back to the SquidFaq
