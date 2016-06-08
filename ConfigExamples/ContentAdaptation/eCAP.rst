@@ -125,7 +125,7 @@ if(adapted->header().hasAny(contentTypeName)) {
  }
 }}}
 
- . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types.patch|another patch]]:
+ . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1.patch|another patch]]:
 
 {{{
 --- src/adapter_gzip.cc		Wed Jun  8 21:21:10 2016
@@ -135,7 +135,7 @@ if(adapted->header().hasAny(contentTypeName)) {
  	/**
  	 * Checks the Content-Type response header.
 -	 * At this time, only responses with "text/*" content-type are allowed to be compressed.
-+	 * text/*,application/xml|x-javascript|javascript|x-protobuf types supported
++	 * text/*,application/xml|x-javascript|javascript|x-protobuffer types supported
  	 */
  	static const libecap::Name contentTypeName("Content-Type");
  	
@@ -151,14 +151,13 @@ if(adapted->header().hasAny(contentTypeName)) {
 +					{this->requirements.responseContentTypeOk = true;}
 +			} else if((strstr(contentTypeType.c_str(),"appl"))||(contentType.size >=22 && contentType.size <= 25)) {
 +                                contentTypeType = contentTypeString.substr(12,10);
-+				// application/javascript, application/x-javascript, x-protobuffer
++				// application/javascript|x-javascript|x-protobuffer
 +                                  if((strstr(contentTypeType.c_str(),"x-javascri"))||(strstr(contentTypeType.c_str(),"javascript"))||(strstr(contentTypeType.c_str(),"x-protobuf")))
 +					{this->requirements.responseContentTypeOk = true;}
 +                        }
  		}
  	}
  
-
 }}}
 
 == Using eCAP for antivirus checking with Squid 3.x/4.x ==
