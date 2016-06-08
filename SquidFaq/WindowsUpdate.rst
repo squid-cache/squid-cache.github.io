@@ -116,7 +116,7 @@ http_access allow windowsupdate localhost
 }}}
 == Squid problems with Windows Update v5 ==
 === AKA, Why does Internet Explorer work but the background automatic updates fail? ===
-By Janno de Wit
+ ''by Janno de Wit''
 
 There seems to be some problems with Microsoft Windows to access the Windows Update website. This is especially a problem when you block all traffic by a firewall and force your users to go through a proxy.
 
@@ -124,12 +124,15 @@ Symptom: Windows Update gives error codes like 0x80072EFD and cannot update, aut
 
 Cause: In earlier Windows-versions Windows Update takes the proxy-settings from Internet Explorer. Since XP SP2 this is not sure. At my machine I ran Windows XP SP1 without Windows Update problems. When I upgraded to SP2 Windows Update started to give errors when searching updates etc.
 
-The problem was that WU did not go through the proxy and tries to establish direct HTTP connections to Update-servers. Even when I set the proxy in IE again, it didn't help . It isn't Squid's problem that Windows Update doesn't work, but it is in Windows itself. The solution is to use the 'proxycfg' tool shipped with Windows XP. With this tool you can set the proxy for WinHTTP.
+The problem was that WU did not go through the proxy and tries to establish direct HTTP connections to Update-servers. Even when I set the proxy in IE again, it didn't help . It isn't Squid's problem that Windows Update doesn't work, but it is in Windows itself. The solution is to use the 'proxycfg' or 'netsh' tool shipped with Windows. With this tool you can set the proxy for WinHTTP.
 
  . {i} Similar issues are found with other Microsoft products in the same Windows versions. The commands below often fix all Microsoft proxy issues at once.
 
-Commands:
+=== Proxy configuration with proxycfg ===
 
+ . {i} In Windows Vista, Server 2008 and later proxycfg is obsolete. Use netsh instead.
+
+Commands:
 {{{
 C:\> proxycfg
 # gives information about the current connection type. Note: 'Direct Connection' does not force WU to bypass proxy
@@ -140,17 +143,14 @@ C:\> proxycfg -d
 C:\> proxycfg -p wu-proxy.lan:8080
 # Set Proxy to use with Windows Update to wu-proxy.lan, port 8080
 
-c:\> proxycfg -u
+C:\> proxycfg -u
 # Set proxy to Internet Explorer settings.
 }}}
 
-=== Windows proxy configuration for Metro applications/Windows Updates with netsh ===
-by Yuri Voinov
-
- . {i} '''NOTE:''' In modern Windows proxycfg is obsolete. Use netsh instead:
+=== Proxy configuration with netsh ===
+ ''by Yuri Voinov''
 
 Syntax:
-
 {{{
 netsh winhttp set proxy ProxyName:80 "<local>"
 }}}
@@ -159,14 +159,13 @@ netsh winhttp set proxy ProxyName:80 "<local>"
 C:\> netsh winhttp set proxy 192.168.1.100:3128 "localhost;192.168.1.100"
 }}}
 
-To reset proxy settings for WinHTTP use next command:
-
+To reset proxy settings for WinHTTP use:
 {{{
 C:\> netsh winhttp reset proxy
 }}}
 
 == Squid with SSL-Bump and Windows Updates ==
-by Yuri Voinov
+ ''by Yuri Voinov''
 
 In modern setups with Squid, Windows Update cannot be check updates with error "WindowsUpdate_80072F8F" or similar.
 
@@ -239,7 +238,7 @@ cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
  . /!\ '''WARNING:''' Some updates cannot be cached due to splice above. Beware!
  . /!\ '''WARNING:''' Adding 3DES and, especially, RC4, produces potentially weak ciphers via client and WU/Skype and some other sites. Be careful!
 
-=== Microsoft technical articles related to proxy issues and windows updates ===
+== Microsoft technical articles related to proxy issues and windows updates ==
 https://support.microsoft.com/en-us/kb/3084568
 
 ##end
