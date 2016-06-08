@@ -99,8 +99,8 @@ Finally, restart your Squid and enjoy.
 To support compression not only text/html, but also all text/* (i.e. text/javascript, text/plain, text/xml, text/css) types you must patch squid-ecap-gzip with [[attachment:squid-ecap-gzip_all_text_compressed.patch|this one]]:
 
 {{{
---- adapter_gzip.cc 2011-02-13 17:42:20.000000000 +0300
-+++ ../../adapter_gzip.cc 2012-02-26 03:37:26.000000000 +0400
+--- src/adapter_gzip.cc 2011-02-13 17:42:20.000000000 +0300
++++ src/adapter_gzip.cc 2012-02-26 03:37:26.000000000 +0400
 @@ -353,17 +353,19 @@
  -* At this time, only responses with "text/html" content-type are allowed to be compressed.
  +* At this time, only responses with "text/*" content-type are allowed to be compressed.
@@ -123,6 +123,42 @@ if(adapted->header().hasAny(contentTypeName)) {
  this->requirements.responseContentTypeOk = true;
  }
  }
+}}}
+
+ . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply another patch:
+
+{{{
+--- src/adapter_gzip.cc		Wed Jun  8 21:21:10 2016
++++ src/adapter_gzip.cc		Wed Jun  8 22:38:26 2016
+@@ -367,7 +367,7 @@
+ 
+ 	/**
+ 	 * Checks the Content-Type response header.
+-	 * At this time, only responses with "text/*" content-type are allowed to be compressed.
++	 * text/*,application/xml|x-javascript|javascript|x-protobuf types supported
+ 	 */
+ 	static const libecap::Name contentTypeName("Content-Type");
+ 	
+@@ -384,7 +384,17 @@
+ 			contentTypeType = contentTypeString.substr(0,4);
+ 			if(strstr(contentTypeType.c_str(),"text")) {
+ 				this->requirements.responseContentTypeOk = true;
+-			}
++			} else if((strstr(contentTypeType.c_str(),"appl"))||(contentType.size >=15)) {
++				contentTypeType = contentTypeString.substr(12,3);
++				//  application/xml
++                                  if(strstr(contentTypeType.c_str(),"xml"))
++					{this->requirements.responseContentTypeOk = true;}
++			} else if((strstr(contentTypeType.c_str(),"appl"))||(contentType.size >=22 && contentType.size <= 25)) {
++                                contentTypeType = contentTypeString.substr(12,10);
++				// application/javascript, application/x-javascript, x-protobuffer
++                                  if((strstr(contentTypeType.c_str(),"x-javascri"))||(strstr(contentTypeType.c_str(),"javascript"))||(strstr(contentTypeType.c_str(),"x-protobuf")))
++					{this->requirements.responseContentTypeOk = true;}
++                        }
+ 		}
+ 	}
+ 
+
 }}}
 
 == Using eCAP for antivirus checking with Squid 3.x/4.x ==
