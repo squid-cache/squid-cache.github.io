@@ -141,8 +141,8 @@ if(adapted->header().hasAny(contentTypeName)) {
  	if(adapted->header().hasAny(contentTypeName)) {
  		const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
 +
-+		std::string contentTypeType; // store contenttype substr
-+		std::string contentTypeType2; // store contenttype substr 2
++		std::string contentTypeType; // store contenttype str
++		std::string contentTypeType2; // store contenttype substr
  		
  		if(contentType.size > 0) {
  			std::string contentTypeString = contentType.toString(); // expensive
