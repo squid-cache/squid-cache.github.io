@@ -125,39 +125,58 @@ if(adapted->header().hasAny(contentTypeName)) {
  }
 }}}
 
- . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1.patch|another patch]]:
+ . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_2.patch|another patch]]:
 
 {{{
 --- src/adapter_gzip.cc		Wed Jun  8 21:21:10 2016
 +++ src/adapter_gzip.cc		Wed Jun  8 22:38:26 2016
-@@ -367,7 +367,7 @@
+@@ -367,7 +367,8 @@
  
  	/**
  	 * Checks the Content-Type response header.
--	 * At this time, only responses with "text/*" content-type are allowed to be compressed.
-+	 * text/*,application/xml|x-javascript|javascript|x-protobuffer types supported
+-	 * At this time, only responses with "text/html" content-type are allowed to be compressed.
++	 * Added more real text types
++	 * Modified by Y.Voinov (c) 2016
  	 */
  	static const libecap::Name contentTypeName("Content-Type");
  	
-@@ -384,7 +384,17 @@
- 			contentTypeType = contentTypeString.substr(0,4);
- 			if(strstr(contentTypeType.c_str(),"text")) {
+@@ -376,14 +377,32 @@
+ 
+ 	if(adapted->header().hasAny(contentTypeName)) {
+ 		const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
++
++		std::string contentTypeType; // store contenttype substr
++		std::string contentTypeType2; // store contenttype substr 2
+ 		
+ 		if(contentType.size > 0) {
+ 			std::string contentTypeString = contentType.toString(); // expensive
+-			
+-			if(strstr(contentTypeString.c_str(),"text/html")) {
++			contentTypeType2 = contentTypeString.substr(0,4);			
++			if(strstr(contentTypeType2.c_str(),"text")) {
  				this->requirements.responseContentTypeOk = true;
--			}
-+			} else if((strstr(contentTypeType.c_str(),"appl"))||(contentType.size >=15)) {
-+				contentTypeType = contentTypeString.substr(12,3);
-+				//  application/xml
-+                                  if(strstr(contentTypeType.c_str(),"xml"))
-+					{this->requirements.responseContentTypeOk = true;}
-+			} else if((strstr(contentTypeType.c_str(),"appl"))||(contentType.size >=22 && contentType.size <= 25)) {
-+                                contentTypeType = contentTypeString.substr(12,10);
-+				// application/javascript|x-javascript|x-protobuffer
-+                                  if((strstr(contentTypeType.c_str(),"x-javascri"))||(strstr(contentTypeType.c_str(),"javascript"))||(strstr(contentTypeType.c_str(),"x-protobuf")))
-+					{this->requirements.responseContentTypeOk = true;}
-+                        }
- 		}
+ 			}
+-		}
++			else if(contentTypeType.c_str() == "application/xml") {
++				this->requirements.responseContentTypeOk = true; 
++			}
++			else if(contentTypeType.c_str() == "application/javascript") {
++				this->requirements.responseContentTypeOk = true;
++			}
++			else if(contentTypeType.c_str() == "application/x-javascript") {
++				this->requirements.responseContentTypeOk = true;
++			}
++			else if(contentTypeType.c_str() == "application/x-protobuffer") {
++				this->requirements.responseContentTypeOk = true;
++			}
++			else {
++				this->requirements.responseContentTypeOk = false;
++			     }
++			}
  	}
  
+ 	/**
+
 }}}
 
 == Using eCAP for antivirus checking with Squid 3.x/4.x ==
