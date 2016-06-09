@@ -80,7 +80,7 @@ Also you can add next lines to your squid.conf:
 
 {{{
 
-# Normalize Accept-Encoding to support compression via eCAP
+# Replace Accept-Encoding to support compression via eCAP
 request_header_access Accept-Encoding deny all
 request_header_replace Accept-Encoding gzip;q=1.0, identity; q=0.5, *;q=0
 
