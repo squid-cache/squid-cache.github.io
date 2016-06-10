@@ -11,9 +11,18 @@ Package information: https://apps.fedoraproject.org/packages/squid
 
 Bug Reports: https://apps.fedoraproject.org/packages/squid/bugs
 
+==== Squid-3.5 ====
+
+Available on Fedora 22 - 25.
+
+Install Procedure:
+{{{
+yum install squid
+}}}
+
 ==== Squid-3.4 ====
 
-Available on Fedora 21 - 22.
+Available on Fedora 21.
 
 Install Procedure:
 {{{
