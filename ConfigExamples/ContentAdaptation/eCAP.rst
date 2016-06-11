@@ -124,8 +124,8 @@ if(adapted->header().hasAny(contentTypeName)) {
  . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_2.patch|another patch]]:
 
 {{{
---- src/adapter_gzip.cc		Wed Jun  8 21:21:10 2016
-+++ src/adapter_gzip.cc		Wed Jun  8 22:38:26 2016
+--- src/adapter_gzip.cc	Sun Jun 12 02:10:41 2016
++++ src/adapter_gzip.cc	Sun Jun 12 02:14:33 2016
 @@ -367,7 +367,8 @@
  
  	/**
@@ -136,7 +136,7 @@ if(adapted->header().hasAny(contentTypeName)) {
  	 */
  	static const libecap::Name contentTypeName("Content-Type");
  	
-@@ -376,14 +377,32 @@
+@@ -376,14 +377,33 @@
  
  	if(adapted->header().hasAny(contentTypeName)) {
  		const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
@@ -146,7 +146,7 @@ if(adapted->header().hasAny(contentTypeName)) {
  		
  		if(contentType.size > 0) {
  			std::string contentTypeString = contentType.toString(); // expensive
--			
+ 			
 -			if(strstr(contentTypeString.c_str(),"text/html")) {
 +			contentTypeType2 = contentTypeString.substr(0,4);			
 +			if(strstr(contentTypeType2.c_str(),"text")) {
@@ -172,7 +172,6 @@ if(adapted->header().hasAny(contentTypeName)) {
  	}
  
  	/**
-
 }}}
 
 == Using eCAP for antivirus checking with Squid 3.x/4.x ==
