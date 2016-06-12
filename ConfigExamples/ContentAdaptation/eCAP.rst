@@ -121,22 +121,20 @@ if(adapted->header().hasAny(contentTypeName)) {
  }
 }}}
 
- . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_latest.patch|another patch]] against previous:
+ . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_3.patch|another patch]] against previous:
 
 {{{
---- src/adapter_gzip.cc	Sun Jun 12 02:10:41 2016
-+++ src/adapter_gzip.cc	Sun Jun 12 02:14:33 2016
-@@ -367,7 +367,8 @@
+--- src/adapter_gzip.cc		Sun Jun 12 20:32:35 2016
++++ src/adapter_gzip.cc		Sun Jun 12 20:34:01 2016
+@@ -367,7 +367,6 @@
  
  	/**
  	 * Checks the Content-Type response header.
 -	 * At this time, only responses with "text/html" content-type are allowed to be compressed.
-+	 * Added more real text types
-+	 * Modified by Y.Voinov (c) 2016
  	 */
  	static const libecap::Name contentTypeName("Content-Type");
  	
-@@ -376,14 +377,33 @@
+@@ -376,13 +375,29 @@
  
  	if(adapted->header().hasAny(contentTypeName)) {
  		const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
@@ -152,26 +150,30 @@ if(adapted->header().hasAny(contentTypeName)) {
 +			if(strstr(contentTypeType2.c_str(),"text")) {
  				this->requirements.responseContentTypeOk = true;
  			}
--		}
-+			else if(contentTypeType.c_str() == "application/xml") {
++			else if(strstr(contentTypeType.c_str(),"application/xml")) {
 +				this->requirements.responseContentTypeOk = true; 
 +			}
-+			else if(contentTypeType.c_str() == "application/javascript") {
++			else if(strstr(contentTypeType.c_str(),"application/javascript")) {
 +				this->requirements.responseContentTypeOk = true;
 +			}
-+			else if(contentTypeType.c_str() == "application/x-javascript") {
++			else if(strstr(contentTypeType.c_str(),"application/x-javascript")) {
 +				this->requirements.responseContentTypeOk = true;
 +			}
-+			else if(contentTypeType.c_str() == "application/x-protobuffer") {
++			else if(strstr(contentTypeType.c_str(),"application/x-protobuffer")) {
 +				this->requirements.responseContentTypeOk = true;
 +			}
-+			else {
-+				this->requirements.responseContentTypeOk = false;
-+			     }
-+			}
+ 		}
  	}
  
- 	/**
+@@ -410,7 +425,7 @@
+ 	adapted->header().add(name, value);
+ 	
+ 
+-	// Add "Vary: Accept-Encoding" response header if Content-Type is "text/html"
++	// Add "Vary: Accept-Encoding" response header if Content-Type is supported type
+ 	if(requirements.responseContentTypeOk) {
+ 		static const libecap::Name varyName("Vary");
+ 		const libecap::Header::Value varyValue = libecap::Area::FromTempString("Accept-Encoding");
 
 }}}
 
