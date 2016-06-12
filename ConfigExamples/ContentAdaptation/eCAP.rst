@@ -177,6 +177,8 @@ if(adapted->header().hasAny(contentTypeName)) {
 
 }}}
 
+This patch is added to [[https://github.com/c-rack/squid-ecap-gzip|squid-ecap-gzip on GitHub]].
+
 == Using eCAP for antivirus checking with Squid 3.x/4.x ==
 
 === Outline ===
