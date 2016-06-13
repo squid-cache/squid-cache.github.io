@@ -12,7 +12,7 @@
 
 == Outline ==
 
-For [[Squid-3.5]] and later we can use I-CAP for content filtering or antivirus checking. This config example describes how to scan for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It is a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for [[Squid-3.4]] releases and above with last configuration changes.
+For [[Squid-3.0]] and later we can use I-CAP for content filtering or antivirus checking. This config example describes how to scan for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It is a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for [[Squid-3.4]] releases and above with last configuration changes.
 
 == Usage ==
 
