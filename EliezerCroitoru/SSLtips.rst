@@ -37,3 +37,10 @@ from PKCS#12 file (.pfx .p12) to PEM
 {{{
 openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes
 }}}
+
+== Fetch X509v3 Subject Alternative Names and couple other properties ==
+{{{
+echo ""|openssl s_client -connect www.whitehouse.gov:443|openssl x509 -text -noout \
+  -certopt no_subject,no_header,no_version,no_serial,no_signame,no_validity,no_subject,no_issuer,no_pubkey,no_sigdump,no_aux \
+  | awk '/X509v3 Subject Alternative Name/','/X509v3 Basic Constraints/'
+}}}
