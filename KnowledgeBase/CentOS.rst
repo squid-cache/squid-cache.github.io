@@ -25,13 +25,13 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 '''Bug Reporting:''' http://bugs.centos.org/search.php?category=squid&sortby=last_updated&hide_status_id=-2
 
-'''Eliezer''': 18/Aug/2015 - I have tested CentOS 7 RPMs for squid 3.5.7 on a small scale and it seems to be stable enough for 200-300 users as a forward proxy and basic features.
+'''Eliezer''': 14/Jun/2016 - I have tested CentOS 7 RPMs for squid 3.5.19 on a small scale and it seems to be stable enough for 200-300 users as a forward proxy and basic features.
 
 ## 4  = indents required for BinaryPackages page include
 
 ==== Squid Beta release ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 7.
- * '''Current Beta:''' 4.0.1-2 based on the latest daily snapshot.
+ * '''Current Beta:''' 4.0.11-1 based on the latest release.
 The RPMs was separated into three files:
 
  * squid-VERSION.rpm
@@ -41,7 +41,7 @@ The RPMs was separated into three files:
 The core squid rpm will provide the basic squid forward, intercept and tproxy modes while also allowing ssl-bump.
 The helpers package contains all sorts of other helpers which are bundled with squid sources but are not essential for a basic and simple proxy.
 
- * pinger is disabled by default to allow a smooth startup on selinux enabled system.
+ * pinger is now disabled by default to allow a smooth startup on selinux enabled system.
  * src rpm files are at: http://www1.ngtech.co.il/repo/centos/7/beta/SRPMS/
  * binary RPMs can be found in the architecture specific folders at http://www1.ngtech.co.il/repo/centos/7/beta/x86_64/
 
@@ -64,6 +64,7 @@ yum install squid
 
 ==== Squid-3.5 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6 and 7
+ * '''Current:''' 3.5.19-1 based on the latest release.
 
 The RPMs was separated into three files:
 
@@ -76,7 +77,7 @@ The helpers package contains all sorts of other helpers which are bundled with s
 
  * Since 3.5.7-2 I disabled pinger by default to allow a smooth startup on selinux enabled system.
  * src rpm files are at: http://www1.ngtech.co.il/repo/centos/$releasever/SRPMS/
- * binary RPMs can be found in the architecture specific folders at http://www1.ngtech.co.il/repo/centos/ $releasever/
+ * binary RPMs can be found in the architecture specific folders at http://www1.ngtech.co.il/repo/centos/$releasever/
 
 {{{
 [squid]
