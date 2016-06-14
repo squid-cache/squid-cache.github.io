@@ -58,6 +58,11 @@ For [[KnowledgeBase/Fedora|Fedora]] DB files.
 ^http:\/\/[^\.]+\.dl\.sourceforge\.net\/(.*)                http://dl.sourceforge.net.squid.internal/$1
 }}}
 
+== LibreSSL/OpenSSH OpenBSD mirrors ==
+{{{
+OpenBSD\/(LibreSSL|OpenSSH)\/.*((libressl|openssh)-.*gz)	http://openbsd.org.squidinternal/$2
+}}}
+
 == Google Chrome installer ==
 {{{
 ^https?:\/\/(.*?).gvt[0-9]\.com\/(.*?)\.*(zip|exe|msi)	     http://google-installer.squidinternal/$2.$3
