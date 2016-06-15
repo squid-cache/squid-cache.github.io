@@ -208,7 +208,7 @@ wccp2_assignment_method mask
 
 This configuration example used on Cisco 3750G-16TD-S aggregation swith with Squid 3.x/4.x. As you can see, you can configure your environment for different ports interception.
 
- . {i} Note: This configuration was tested and fully operated on Cisco iOS version 15.0(2)SE9T. {OK} {OK} {OK}
+ . {i} Note: This configuration was tested and fully operated on Cisco iOS version 15.0(2)SE9. {OK} {OK} {OK}
 
 ----
 CategoryConfigExample
