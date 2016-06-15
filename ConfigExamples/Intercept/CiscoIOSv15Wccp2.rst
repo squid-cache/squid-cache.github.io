@@ -16,7 +16,7 @@
 
 This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
 
-The router runs Cisco IOS Software, Version 15.5(3)M2, with SECURITYK9 and DATAK9 technology packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example. WCCPv2 configured on router 2911.
+The routers runs Cisco IOS Software, Version 15.5(3)M2, with SECURITYK9 and DATAK9 technology packs activated and have two physical interfaces - GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP 192.168.200.3 in this example. WCCPv2 configured on router 2911.
 
 {{attachment:Network_scheme.png | Network scheme}}
 
@@ -146,7 +146,7 @@ This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you can see
 
 This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
 
-The switch runs Cisco IOS Software, Version 15.0(2)SE9, with IPSERVICEK9 technology pack and has sixteen physical interfaces. Proxy has IP 192.168.201.11 in this example. WCCPv2 uses L2 redirection with assignment method '''mask'''.
+In this example uses Cisco 3750G-16TD-S aggregation swith as WCCP router. The switch runs Cisco IOS Software, Version 15.0(2)SE9, with IPSERVICEK9 technology pack and has sixteen physical interfaces. Proxy has IP 192.168.201.11 in this example. WCCPv2 uses L2 redirection with assignment method '''mask'''. Switch only support WCCP "IN" redirection.
 
 ----
 CategoryConfigExample
