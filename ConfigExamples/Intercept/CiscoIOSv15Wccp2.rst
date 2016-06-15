@@ -148,5 +148,58 @@ This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https
 
 In this example uses Cisco 3750G-16TD-S aggregation swith as WCCP router. The switch runs Cisco IOS Software, Version 15.0(2)SE9, with IPSERVICEK9 technology pack and has sixteen physical interfaces and one 10 Gbps optical interface (can be use as trunk). Proxy has IP 192.168.201.11 in this example. WCCPv2 uses L2 redirection with assignment method '''mask'''. Switch only support WCCP "IN" redirection.
 
+ {{attachment:Network_scheme2.png | Network scheme 2}}
+
+=== Cisco IOS 15.0(2)SE9 switch ===
+
+{{{
+ip routing
+ 
+ip wccp source-interface Vlan201
+ip wccp web-cache redirect-list WCCP_ACCESS
+ip wccp 70 redirect-list WCCP_ACCESS
+
+interface GigabitEthernet1/0/15
+ no switchport
+ ip address 192.168.200.4 255.255.255.0
+
+interface Vlan201
+ ip address 192.168.201.1 255.255.255.0
+ ip wccp web-cache redirect in
+ ip wccp 70 redirect in
+
+ip route 0.0.0.0 0.0.0.0 192.168.200.1
+
+ip access-list extended WCCP_ACCESS
+ remark ACL for HTTP/HTTPS
+ remark Squid proxies bypass WCCP
+ deny   ip host 192.168.201.10 any
+ deny   ip host 192.168.201.11 any
+ remark LAN clients proxy port 80/443
+ permit tcp 192.168.201.0 0.0.0.255 any eq www 443
+ permit tcp 172.16.0.0 0.15.255.255 any eq www 443
+ remark all others bypass WCCP
+ deny   ip any any
+}}}
+
+ . {i} Note: "WCCP is supported only on the SDM templates that support PBR: access, routing, and dual IPv4/v6 routing." (from Cisco documentation)
+
+=== Squid HTTP/HTTPS WCCPv2 configuration ===
+
+{{{
+# -------------------------------------
+# WCCPv2 parameters
+# -------------------------------------
+wccp2_router 192.168.201.1
+wccp2_forwarding_method l2
+wccp2_return_method l2
+wccp2_rebuild_wait off
+wccp2_service standard 0
+wccp2_service dynamic 70
+wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=240 ports=443
+# Cisco Routers uses hash (default), switches - mask
+wccp2_assignment_method mask
+}}}
+
 ----
 CategoryConfigExample
