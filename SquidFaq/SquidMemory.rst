@@ -29,6 +29,8 @@ Explanation of letters:
 
  * SquidConf:read_ahead_gap only caps the window of data read from a server and not yet delivered to the client. There are at least two buffers (client-to-server and server-to-client directions) and an additional one for each ICAP service the current transaction is going through.
 
+There is also memory used indirectly: the Operating System has buffers for TCP connections and file system I/O.
+
 == How can I tell how much memory my Squid process is using? ==
 One way is to simply look at ''ps'' output on your system. For BSD-ish systems, you probably want to use the ''-u'' option and look at the ''VSZ'' and ''RSS'' fields:
 
