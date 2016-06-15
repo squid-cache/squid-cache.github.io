@@ -2,7 +2,9 @@
 #format wiki
 #language en
 
-= Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 Interception =
+= Variant I: Routed DMZ =
+
+== Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using ISR G2 router ==
 
  ''by YuriVoinov''
 
@@ -10,7 +12,7 @@
 
 <<TableOfContents>>
 
-== Outline ==
+=== Outline ===
 
 This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
 
@@ -24,7 +26,7 @@ Router has both router/switch functionality, so we can use both GRE/L2 redirecti
  . {i} Note: When using managed switch in DMZ, be sure proxy box port in the same VLAN/has the same encapsulation as router port with WCCP activated. Otherwise router can't do WCCP handshake with proxy.
 
 ## start feature include
-== Cisco IOS 15.5(3)M2 router ==
+=== Cisco IOS 15.5(3)M2 router ===
 {{{
 !
 ip cef
@@ -60,7 +62,7 @@ Also beware, when proxy is stopped - all HTTP/HTTPS traffic bypass it and passth
 ## end feature include
 
 ## start feature include
-== Squid HTTP/HTTPS WCCPv2 configuration ==
+=== Squid HTTP/HTTPS WCCPv2 configuration ===
 {{{
 # WCCPv2 parameters
 wccp2_router 192.168.200.2
@@ -79,7 +81,7 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 
 ## end feature include
 
-=== Security ===
+==== Security ====
 
 To avoid denial-of-service attacks, you can enforce authentification between proxy(proxies) and router. To do that you need to setup WCCP services on router using passwords:
 
@@ -114,7 +116,7 @@ Then restart squid and check redirection is working.
 
  . {i} Note: Beware your squid.conf contains '''any''' passwords in plain-text! Protect it as by as protect proxy box from unauthorized access!
 
-== Setup verification ==
+=== Setup verification ===
 
 To verify setup up and running execute next commands on WCCP-enabled router:
 
@@ -123,15 +125,26 @@ To verify setup up and running execute next commands on WCCP-enabled router:
  {{attachment:Check_WCCP_3.png | Check WCCP Interfaces/summary}}
  {{attachment:Check_WCCP_up_and_running.png | Check WCCP up and running}}
 
-== QUIC/SPDY protocol blocking ==
+=== QUIC/SPDY protocol blocking ===
 
  . {i} Note: In most modern installations you may want (and you must) to block alternate protocols: SPDY and/or QUIC. To do that, please use '''[[http://wiki.squid-cache.org/KnowledgeBase/Block%20QUIC%20protocol|this instructions]]'''.
 
-== Conclusion ==
+=== Conclusion ===
 
 This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you can see, you can configure your environment for different ports interception.
 
  . {i} Note: '''Performance''' is more better against route-map, WCCP uses less CPU on Cisco's devices. So, WCCP is preferrable against route-map.
  . {i} Note: This configuration was tested and fully operated on Cisco iOS versions 15.4(1)T, 15.4(3)M, 15.5(1)T, 15.5(2)T1, 15.5(3)M, 15.5(3)M2 and 15.6(2)T. {OK} {OK} {OK}
+
+= Variant II: Switch L3 =
+
+== Configuring a Cisco IOS 15.0(2)SE9 with WCCPv2 using aggregation switch ==
+
+=== Outline ===
+
+This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
+
+The switch runs Cisco IOS Software, Version 15.0(2)SE9, with IPSERVICEK9 technology pack sixteen physical interfaces. Proxy has IP 192.168.201.11 in this example. WCCPv2 uses L2 redirection with assignment method '''mask'''.
+
 ----
 CategoryConfigExample
