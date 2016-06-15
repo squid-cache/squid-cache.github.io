@@ -201,5 +201,7 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 wccp2_assignment_method mask
 }}}
 
+ . {i} Note: As usual, it's expected your Squid already configured with HTTP and HTTPS ports.
+
 ----
 CategoryConfigExample
