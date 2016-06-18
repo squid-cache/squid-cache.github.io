@@ -179,6 +179,33 @@ if(adapted->header().hasAny(contentTypeName)) {
 
 This patch is added to [[https://github.com/c-rack/squid-ecap-gzip|squid-ecap-gzip on GitHub]].
 
+ . {X} Note: To prevent possible memory leaking during adapter running, you can also use [[attachment:gzip_ecap_vb_stop_on_done_v1.patch|this patch]]:
+
+{{{
+--- src/adapter_gzip.cc		Wed Jun  8 21:21:10 2016
++++ src/adapter_gzip.cc		Sat Jun 18 22:32:09 2016
+@@ -548,7 +548,7 @@
+ 	
+ 
+ 	Must(receivingVb == opOn);
+-	receivingVb = opComplete;
++	stopVb();
+ 	if (sendingAb == opOn) {
+ 		hostx->noteAbContentDone(atEnd);
+ 		sendingAb = opComplete;
+@@ -611,7 +611,7 @@
+ // if the host does not know that already
+ void Adapter::Xaction::stopVb() {
+ 	if (receivingVb == opOn) {
+-		hostx->vbStopMaking();
++		hostx->vbStopMaking(); // we will not call vbContent() any more
+ 		receivingVb = opComplete;
+ 	} else {
+ 		// we already got the entire body or refused it earlier
+}}}
+
+This patch is based on original Alex Rousskov patch from [[https://answers.launchpad.net/ecap/+question/295319|here]].
+
 == Using eCAP for antivirus checking with Squid 3.x/4.x ==
 
 === Outline ===
