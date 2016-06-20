@@ -121,33 +121,13 @@ if(adapted->header().hasAny(contentTypeName)) {
  }
 }}}
 
- . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_5.patch|another patch]] against previous:
+ . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_4.patch|another patch]] after previous:
 
 {{{
---- src/adapter_gzip.cc		Sun Jun 19 04:35:16 2016
-+++ src/adapter_gzip.cc		Tue Jun 21 02:49:33 2016
-@@ -350,7 +350,6 @@
- 
- 	/**
- 	 * Checks the Content-Type response header.
--	 * At this time, only responses with "text/html" content-type are allowed to be compressed.
- 	 */
- 	static const libecap::Name contentTypeName("Content-Type");
- 	
-@@ -359,13 +358,27 @@
- 
- 	if(adapted->header().hasAny(contentTypeName)) {
- 		const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
--		
-+
-+		std::string contentTypeType; // store contenttype substr		
-+
- 		if(contentType.size > 0) {
- 			std::string contentTypeString = contentType.toString(); // expensive
--			
--			if(strstr(contentTypeString.c_str(),"text/html")) {
-+		        contentTypeType = contentTypeString.substr(0,4);			
-+			if(strstr(contentTypeType.c_str(),"text")) {
+--- src/adapter_gzip.cc		Sun Jun 19 04:34:01 2016
++++ src/adapter_gzip.cc		Tue Jun 21 02:31:31 2016
+@@ -385,6 +385,18 @@
+ 			if(strstr(contentTypeType.c_str(),"text")) {
  				this->requirements.responseContentTypeOk = true;
  			}
 +			else if(strstr(contentTypeString.c_str(),"application/xml")) {
@@ -165,14 +145,10 @@ if(adapted->header().hasAny(contentTypeName)) {
  		}
  	}
  
-@@ -392,9 +405,10 @@
- 	// Add informational response header	
- 	static const libecap::Name name("X-Ecap");
- 	const libecap::Header::Value value = libecap::Area::FromTempString("VIGOS eCAP GZIP Adapter");
--	adapted->header().add(name, value);
-+	//adapted->header().add(name, value);// Add "Vary: Accept-Encoding"; response header if Content-Type is supported type
-+
+@@ -412,7 +424,7 @@
+ 	adapted->header().add(name, value);
  	
+ 
 -	// Add "Vary: Accept-Encoding" response header if Content-Type is "text/html"
 +	// Add "Vary: Accept-Encoding" response header if Content-Type is supported type
  	if(requirements.responseContentTypeOk) {
