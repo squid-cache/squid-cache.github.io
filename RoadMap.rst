@@ -104,6 +104,6 @@ Old Squid-2 wishlist:
 
  * Variant Invalidation
 
-More ideas are available [[Features/Other|elsewhere]].
+More ideas are available [[WishList|elsewhere]].
 
 ----
