@@ -121,17 +121,37 @@ if(adapted->header().hasAny(contentTypeName)) {
  }
 }}}
 
- . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_4.patch|another patch]] after previous:
+ . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_6.patch|another patch]] after previous:
 
 {{{
---- src/adapter_gzip.cc		Sun Jun 19 04:34:01 2016
-+++ src/adapter_gzip.cc		Tue Jun 21 02:31:31 2016
-@@ -385,6 +385,18 @@
- 			if(strstr(contentTypeType.c_str(),"text")) {
+--- src/adapter_gzip.cc		Tue Jun 21 03:20:48 2016
++++ src/adapter_gzip.cc		Tue Jun 21 03:24:34 2016
+@@ -367,7 +367,6 @@
+ 
+ 	/**
+ 	 * Checks the Content-Type response header.
+-	 * At this time, only responses with "text/html" content-type are allowed to be compressed.
+ 	 */
+ 	static const libecap::Name contentTypeName("Content-Type");
+ 	
+@@ -376,13 +375,27 @@
+ 
+ 	if(adapted->header().hasAny(contentTypeName)) {
+ 		const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
+-		
++
++		std::string contentTypeType; // store contenttype substr		
++
+ 		if(contentType.size > 0) {
+ 			std::string contentTypeString = contentType.toString(); // expensive
+-			
+-			if(strstr(contentTypeString.c_str(),"text/html")) {
++			contentTypeType = contentTypeString.substr(0,4);			
++			if(strstr(contentTypeType.c_str(),"text")) {
  				this->requirements.responseContentTypeOk = true;
  			}
 +			else if(strstr(contentTypeString.c_str(),"application/xml")) {
-+				this->requirements.responseContentTypeOk = true; 
++				this->requirements.responseContentTypeOk = true;
 +			}
 +			else if(strstr(contentTypeString.c_str(),"application/javascript")) {
 +				this->requirements.responseContentTypeOk = true;
@@ -145,7 +165,7 @@ if(adapted->header().hasAny(contentTypeName)) {
  		}
  	}
  
-@@ -412,7 +424,7 @@
+@@ -410,7 +423,7 @@
  	adapted->header().add(name, value);
  	
  
@@ -154,6 +174,7 @@ if(adapted->header().hasAny(contentTypeName)) {
  	if(requirements.responseContentTypeOk) {
  		static const libecap::Name varyName("Vary");
  		const libecap::Header::Value varyValue = libecap::Area::FromTempString("Accept-Encoding");
+
 }}}
 
  . {X} Note: To prevent possible memory leaking during adapter running, you can also use [[attachment:gzip_ecap_vb_stop_on_done_v1.patch|this patch]]:
