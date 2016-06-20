@@ -121,7 +121,7 @@ if(adapted->header().hasAny(contentTypeName)) {
  }
 }}}
 
- . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_6.patch|another patch]] after previous:
+ . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_6.patch|another patch]] against previous:
 
 {{{
 --- src/adapter_gzip.cc		Tue Jun 21 03:20:48 2016
