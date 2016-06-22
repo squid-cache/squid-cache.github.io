@@ -387,25 +387,5 @@ Also you can combine Solaris native threading library with multithreading navive
 
 After configuration, run gmake && gmake install-strip as usual and restart your Squid.
 
-=== DON'T USE /dev/poll for squid 3.5.x and 4.x on Solaris 10 ===
-
-DON'T USE /dev/poll for squid 3.5.x and 4.x on Solaris 10. Never. Don't do it.
-
-/dev/poll leads terrible unstable Squid's setup, which will dies every day on regular basis, in combination with multi-threading.
-
-'''Note:''' In Solaris 10 '''select''' is wrapper over '''poll''' and '''poll''' is wrapper over event ports. '''/dev/poll''' is Solaris 7 specific realization, which is not designed to use with multi-threading apps.
-
-Also, in Squid '''/dev/poll''' support is buggy, this is beta from Adrian Chadd, intended for old Solaris'es.
-
-So, use '''poll''', Luke!
-
-To proper configure Squid 3.5.x and 4.x on Solaris 10 just configure it with:
-
-{{{
-'--disable-devpoll'
-}}}
-
-option.
-
 ----
 CategoryKnowledgeBase
