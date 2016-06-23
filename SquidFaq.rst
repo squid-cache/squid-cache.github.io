@@ -20,11 +20,11 @@
  * /OperatingSquid: how to perform various tasks on squid and its cache
 
 ==== Modes ====
- * Forward Proxy is the basic mode, upon which everything else is built.
+ * Explicit Proxy (or Forward Proxy) is the basic mode, upon which everything else is built.
  * /InterceptionProxy or how to run a proxy without your users knowing (mostly)
  * /ReverseProxy or Accelerator-mode: running Squid to improve a webserver pool's performance
  * ''Offline'' or aggressive mode: serving up stale data with minimal network usage
- * ESI processor: Assembling web pages. (cannot be used with other modes)
+ * ESI processor (or ESI surrogate): Assembling web pages. This is a sub-type of accelerator mode which since [[Squid-3.3]] is enabled automatically and cannot be used with other modes.
 
 ===== Troubleshooting =====
  * /OrderIsImportant. The most common mistake ever made is to overlook this. Even experts do it.
