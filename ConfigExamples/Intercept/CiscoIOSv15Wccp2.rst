@@ -142,6 +142,8 @@ This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you can see
 
 == Configuring a Cisco IOS 15.0(2)SE9 with WCCPv2 using aggregation switch ==
 
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
+
 === Outline ===
 
 This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
@@ -217,6 +219,8 @@ This configuration example used on Cisco 3750 aggregation switch with Squid 3.x/
  ''by YuriVoinov'' and Svyatoslav Voinov
 
 == Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using switched ISR G2 router with convergent switch board ==
+
+<<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 === Outline ===
 
