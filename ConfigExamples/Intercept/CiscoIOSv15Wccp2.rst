@@ -138,9 +138,9 @@ This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you can see
 
 = Variant II: Switch L3 as WCCPv2 router =
 
-== Configuring a Cisco IOS 15.0(2)SE9 with WCCPv2 using aggregation switch ==
-
  ''by YuriVoinov'' and Svyatoslav Voinov
+
+== Configuring a Cisco IOS 15.0(2)SE9 with WCCPv2 using aggregation switch ==
 
 === Outline ===
 
@@ -212,7 +212,9 @@ This configuration example used on Cisco 3750 aggregation switch with Squid 3.x/
  . {i} Note: This configuration was tested and fully operated on Cisco iOS version 15.0(2)SE9 on appropriate switch (see next note). {OK} {OK} {OK}
  . {i} Note: Be '''VERY CAREFUL''': Cisco 3750 series has much submodels, not at all compatible with iOS 15.x. Partially, C3750G-16TD-S can run iOS 12.2(55)SE series only. Read [[http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/15-0_2_se/release/notes/OL25301.html|Cisco Release Notes]] first when choose iOS release. Quote from: " Not all Catalyst 3750 and 3560 switches can run this release. These models are not supported in Cisco IOS Release 12.2(58)SE1 and later: WS-C3560-24TS, WS-C3560-24PS. WS-C3560-48PS, WS-C3560-48TS, WS-C3750-24PS, WS-C3750-24TS, WS-C3750-48PS, WS-C3750-48TS, WS-3750G-24T, WS-C3750G-12S, WS-C3750G-24TS, WS-C3750G-16TD. For ongoing maintenance rebuilds for these models, use Cisco IOS Release 12.2(55)SE and later (SE1, SE2, and so on)." Also note, WCCP on this series of switches are supported starting from 12.2(37)SE iOS.
 
-= Variant III: Switched ISR G2 router witch WCCPv2 =
+= Variant III: Switched ISR G2 router with WCCPv2 =
+
+ ''by YuriVoinov'' and Svyatoslav Voinov
 
 === Outline ===
 
