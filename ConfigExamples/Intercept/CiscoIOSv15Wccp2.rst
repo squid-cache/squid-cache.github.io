@@ -4,9 +4,9 @@
 
 = Variant I: Routed DMZ witch WCCPv2 =
 
-== Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using ISR G2 router ==
-
  ''by YuriVoinov''
+
+== Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using ISR G2 router ==
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
