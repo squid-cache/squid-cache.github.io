@@ -146,7 +146,7 @@ This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you can see
 
 This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
 
-In this example uses Cisco 3750G-16TD-S aggregation switch in L3 mode as WCCPv2 router. The switch runs Cisco IOS Software, Version 15.0(2)SE9, with IPSERVICEK9 technology pack and has sixteen physical 1 Gbps interfaces and one 10 Gbps optical interface (can be use as trunk). Proxy has IP's 192.168.201.10 and 192.168.201.11 in this example. WCCPv2 uses L2 redirection with assignment method '''mask'''. Switch only support WCCP "IN" redirection.
+In this example uses Cisco 3750 aggregation switch in L3 mode as WCCPv2 router. The switch runs Cisco IOS Software, Version 15.0(2)SE9, with IPSERVICEK9 technology pack and has sixteen physical 1 Gbps interfaces and one 10 Gbps optical interface (can be use as trunk). Proxy has IP's 192.168.201.10 and 192.168.201.11 in this example. WCCPv2 uses L2 redirection with assignment method '''mask'''. Switch only support WCCP "IN" redirection.
 
  {{attachment:Network_scheme2.png | Network scheme 2}}
 
@@ -206,9 +206,10 @@ wccp2_assignment_method mask
 
 === Conclusion ===
 
-This configuration example used on Cisco 3750G-16TD-S aggregation switch with Squid 3.x/4.x. As you can see, you can configure your environment for different ports interception.
+This configuration example used on Cisco 3750 aggregation switch with Squid 3.x/4.x. As you can see, you can configure your environment for different ports interception.
 
- . {i} Note: This configuration was tested and fully operated on Cisco iOS version 15.0(2)SE9. {OK} {OK} {OK}
+ . {i} Note: This configuration was tested and fully operated on Cisco iOS version 15.0(2)SE9 on appropriate switch (see next note). {OK} {OK} {OK}
+ . {i} Note: Be '''VERY CAREFUL''': Cisco 3750 series has much submodels, not at all compatible with iOS 15.x. Partially, C3750G-16TD-S can run iOS 12.2(55)SE series only. Read [[http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/15-0_2_se/release/notes/OL25301.html|Cisco Release Notes]] first when choose iOS release. Quote from: " Not all Catalyst 3750 and 3560 switches can run this release. These models are not supported in Cisco IOS Release 12.2(58)SE1 and later: WS-C3560-24TS, WS-C3560-24PS. WS-C3560-48PS, WS-C3560-48TS, WS-C3750-24PS, WS-C3750-24TS, WS-C3750-48PS, WS-C3750-48TS, WS-3750G-24T, WS-C3750G-12S, WS-C3750G-24TS, WS-C3750G-16TD. For ongoing maintenance rebuilds for these models, use Cisco IOS Release 12.2(55)SE and later (SE1, SE2, and so on)." Also note, WCCP on this series of switches are support from 12.2(37)SE iOS.
 
 ----
 CategoryConfigExample
