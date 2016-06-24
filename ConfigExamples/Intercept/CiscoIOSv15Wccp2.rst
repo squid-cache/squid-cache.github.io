@@ -212,7 +212,13 @@ This configuration example used on Cisco 3750 aggregation switch with Squid 3.x/
  . {i} Note: This configuration was tested and fully operated on Cisco iOS version 15.0(2)SE9 on appropriate switch (see next note). {OK} {OK} {OK}
  . {i} Note: Be '''VERY CAREFUL''': Cisco 3750 series has much submodels, not at all compatible with iOS 15.x. Partially, C3750G-16TD-S can run iOS 12.2(55)SE series only. Read [[http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/15-0_2_se/release/notes/OL25301.html|Cisco Release Notes]] first when choose iOS release. Quote from: " Not all Catalyst 3750 and 3560 switches can run this release. These models are not supported in Cisco IOS Release 12.2(58)SE1 and later: WS-C3560-24TS, WS-C3560-24PS. WS-C3560-48PS, WS-C3560-48TS, WS-C3750-24PS, WS-C3750-24TS, WS-C3750-48PS, WS-C3750-48TS, WS-3750G-24T, WS-C3750G-12S, WS-C3750G-24TS, WS-C3750G-16TD. For ongoing maintenance rebuilds for these models, use Cisco IOS Release 12.2(55)SE and later (SE1, SE2, and so on)." Also note, WCCP on this series of switches are supported starting from 12.2(37)SE iOS.
 
-= Variant III: Switches ISR G2 router witch WCCPv2 =
+= Variant III: Switched ISR G2 router witch WCCPv2 =
+
+=== Outline ===
+
+This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
+
+The routers runs Cisco IOS Software, Version 15.5(3)M2, with SECURITYK9 and DATAK9 technology packs activated. Router contains convergent switch board with two 1 Gbps ports. WCCPv2 configured on router 2911.
 
 ----
 CategoryConfigExample
