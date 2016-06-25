@@ -421,7 +421,7 @@ High end Cisco switches support Layer 2 WCCPv2, which means that instead of a GR
 
 Cisco switches known to be able to do WCCPv2 include the Catalyst 3550 (very basic WCCP only), Catalyst 4500-SUP2 and above, and all models of the 6000/6500.
 
-Note that the Catalyst 2900, 3560, 3750 and 4000 early Supervisors do NOT support WCCP (at all).
+Note that the Catalyst 2900, 3560, 3750 and 4000 early Supervisors do NOT support WCCP (depending from iOS version).
 
 Layer 2 WCCP is a WCCPv2 feature and does not exist in cisco's WCCPv1 implementation.
 
