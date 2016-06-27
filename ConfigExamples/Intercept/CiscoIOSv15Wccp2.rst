@@ -71,7 +71,7 @@ wccp2_return_method l2
 wccp2_rebuild_wait off
 wccp2_service standard 0
 wccp2_service dynamic 70
-wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=240 ports=443
+wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=231 ports=443
 }}}
 
  . {i} Note: Squid must be built with WCCPv2 support.
@@ -196,7 +196,7 @@ wccp2_return_method l2
 wccp2_rebuild_wait off
 wccp2_service standard 0
 wccp2_service dynamic 70
-wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=240 ports=443
+wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=231 ports=443
 # Cisco Routers uses hash (default), switches - mask
 wccp2_assignment_method mask
 }}}
