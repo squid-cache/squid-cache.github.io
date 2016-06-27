@@ -176,8 +176,7 @@ ip access-list extended WCCP_ACCESS
  deny   ip host 192.168.201.10 any
  deny   ip host 192.168.201.11 any
  remark LAN clients proxy port 80/443
- permit tcp 192.168.201.0 0.0.0.255 any eq www 443
- permit tcp 172.16.0.0 0.15.255.255 any eq www 443
+ permit tcp 192.168.0.0 0.0.255.255 any eq www 443
  remark all others bypass WCCP
  deny   ip any any
 }}}
