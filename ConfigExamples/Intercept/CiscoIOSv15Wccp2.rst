@@ -317,5 +317,9 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 wccp2_assignment_method hash
 }}}
 
+=== Conclusion ===
+
+This configuration example uses switched ISR-G2 2911 router as central insfrastructure device. You can define as many client vlans as you need using access switches downstream infrastructure, on frontal port require to configure closed firewall with NAT.
+
 ----
 CategoryConfigExample
