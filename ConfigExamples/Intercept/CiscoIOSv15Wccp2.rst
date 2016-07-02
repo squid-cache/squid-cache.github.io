@@ -144,7 +144,7 @@ This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you can see
 
 === Outline ===
 
-This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
+This configuration passes HTTP/HTTPS traffic (both port 80 and 443) from swith L3 over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
 
 In this example uses Cisco 3750 aggregation switch in L3 mode as WCCPv2 router. The switch runs Cisco IOS Software, Version 15.0(2)SE9, with IPSERVICEK9 technology pack and has physical 1 Gbps interfaces. Proxy has IP's 192.168.201.10 and 192.168.201.11 in this example. WCCPv2 uses L2 redirection with assignment method '''mask'''. Switch only support WCCP "IN" redirection.
 
