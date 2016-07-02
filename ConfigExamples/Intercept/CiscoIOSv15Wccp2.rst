@@ -198,6 +198,8 @@ wccp2_service dynamic 70
 wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=231 ports=443
 # Cisco Routers uses hash (default), switches - mask
 wccp2_assignment_method mask
+
+balance_on_multiple_ip on
 }}}
 
  . {i} Note: As usual, it's expected your Squid already configured with HTTP and HTTPS ports.
