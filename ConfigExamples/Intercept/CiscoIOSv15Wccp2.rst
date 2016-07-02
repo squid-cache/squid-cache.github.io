@@ -202,6 +202,9 @@ wccp2_assignment_method mask
 
  . {i} Note: As usual, it's expected your Squid already configured with HTTP and HTTPS ports.
 
+==== Security ====
+
+ . {i} Note: When using authenticated WCCP, like previous example, please note, Cisco equipement has passwork length limit (no more than 8 symbols on routers and most switches) and password strength limit - you can use only letters and numbers. Also was discovered additional password length limit on switches like 3750 with some old iOS, in this cases you'll be forced to reduce password length to 6-7 symbols.
 
 === Conclusion ===
 
