@@ -224,5 +224,7 @@ This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https
 
 The routers runs Cisco IOS Software, Version 15.5(3)M2, with SECURITYK9 and DATAK9 technology packs activated. Router contains convergent switch board with four 1 Gbps ports. WCCPv2 configured on router 2911.
 
+ {{attachment:Network_scheme3.png | Network scheme 3}}
+
 ----
 CategoryConfigExample
