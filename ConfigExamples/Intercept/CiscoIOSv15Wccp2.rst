@@ -320,6 +320,10 @@ wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_al
 wccp2_assignment_method hash
 }}}
 
+==== Security ====
+
+ . {i} Note: You can use authenticated WCCP like first example.
+
 === Conclusion ===
 
 This configuration example uses switched ISR-G2 2911 router as central insfrastructure device. You can define as many client vlans as you required using access switches downstream infrastructure, on port Gi0/1 need to configure closed firewall with NAT due to security reasons.
