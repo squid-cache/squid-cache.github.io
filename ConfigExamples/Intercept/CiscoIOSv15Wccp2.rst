@@ -222,7 +222,7 @@ This configuration example used on Cisco 3750 aggregation switch with Squid 3.x/
 
 This configuration passes HTTP/HTTPS traffic (both port 80 and 443) over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
 
-The routers runs Cisco IOS Software, Version 15.5(3)M2, with SECURITYK9 and DATAK9 technology packs activated. Router contains convergent switch board with four 1 Gbps ports. WCCPv2 configured on router 2911.
+The routers runs Cisco IOS Software, Version 15.5(3)M2, with SECURITYK9 and DATAK9 technology packs activated. Router contains convergent switch board with four 100 Mbits or 1 Gbps ports. WCCPv2 configured on router 2911.
 
  {{attachment:Network_scheme3.png | Network scheme 3}}
 
