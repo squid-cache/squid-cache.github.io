@@ -332,7 +332,7 @@ This configuration example uses switched ISR-G2 2911 router as central insfrastr
 
 === Outline ===
 
-This configuration passes HTTP/HTTPS traffic (both port 80 and 443) from VRF-enabled router over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
+This configuration passes HTTP/HTTPS traffic (both port 80 and 443) from [[https://en.wikipedia.org/wiki/Virtual_routing_and_forwarding|VRF]]-enabled router over [[https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol|WCCPv2]] to proxy box for handling. It is expected the that the box will contain squid 3.x/4.x for processing the traffic.
 
 
 ----
