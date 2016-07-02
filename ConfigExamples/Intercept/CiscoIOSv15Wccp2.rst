@@ -319,7 +319,7 @@ wccp2_assignment_method hash
 
 === Conclusion ===
 
-This configuration example uses switched ISR-G2 2911 router as central insfrastructure device. You can define as many client vlans as you need using access switches downstream infrastructure, on port Gi0/1 need to configure closed firewall with NAT.
+This configuration example uses switched ISR-G2 2911 router as central insfrastructure device. You can define as many client vlans as you required using access switches downstream infrastructure, on port Gi0/1 need to configure closed firewall with NAT due to security reasons.
 
 ----
 CategoryConfigExample
