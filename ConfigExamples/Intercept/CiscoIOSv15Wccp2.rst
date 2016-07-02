@@ -228,5 +228,94 @@ The routers runs Cisco IOS Software, Version 15.5(3)M2, with SECURITYK9 and DATA
 
 === Cisco IOS 15.5(3)M2 router ===
 
+{{{
+!
+ip dhcp pool 100
+ network 192.168.100.0 255.255.255.0
+ default-router 192.168.100.1 
+ dns-server 192.168.100.1 
+ lease 30
+!
+ip dhcp pool 101
+ network 192.168.101.0 255.255.255.0
+ default-router 192.168.101.1 
+ dns-server 192.168.101.1 
+ lease 30
+!
+!
+ip cef
+ip wccp source-interface Vlan201
+no ipv6 cef
+!
+!
+interface FastEthernet0/0/0
+ switchport access vlan 201
+ no ip address
+!
+interface FastEthernet0/0/1
+ switchport access vlan 201
+ no ip address
+!
+interface FastEthernet0/0/2
+ switchport mode trunk
+ no ip address
+!         
+interface FastEthernet0/0/3
+ switchport access vlan 100
+ no ip address
+!
+!
+interface Vlan100
+ ip address 192.168.100.1 255.255.255.0
+ ip wccp web-cache redirect in
+ ip wccp 70 redirect in
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Vlan101
+ ip address 192.168.101.1 255.255.255.0
+ ip wccp web-cache redirect in
+ ip wccp 70 redirect in
+ ip nat inside
+ ip virtual-reassembly in
+!         
+interface Vlan201
+ ip address 192.168.201.1 255.255.255.0
+ ip wccp web-cache redirect in
+ ip wccp 70 redirect in
+ ip nat inside
+ ip virtual-reassembly in
+!
+ip nat inside source list NAT interface GigabitEthernet0/1 overload
+ip route 0.0.0.0 0.0.0.0 GigabitEthernet0/1 EXTERNAL_ISP_IP
+!
+ip access-list extended WCCP_ACCESS
+ remark ACL for HTTP/HTTPS
+ remark Squid proxies bypass WCCP
+ deny   ip host 192.168.201.10 any
+ remark LAN clients proxy port 80/443
+ permit tcp 192.168.0.0 0.0.255.255 any eq www 443
+!
+}}}
+
+ . {i} Note: Whenever clients and proxy connected via switch module, router uses '''hash''' assignment method itself.
+
+=== Squid HTTP/HTTPS WCCPv2 configuration ===
+
+{{{
+# -------------------------------------
+# WCCPv2 parameters
+# -------------------------------------
+wccp2_router 192.168.201.1
+wccp2_forwarding_method l2
+wccp2_return_method l2
+wccp2_rebuild_wait off
+wccp2_service standard 0
+wccp2_service dynamic 70
+wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=231 ports=443
+# Cisco Routers uses hash (default), switches - mask
+wccp2_assignment_method hash
+}}}
+
 ----
 CategoryConfigExample
