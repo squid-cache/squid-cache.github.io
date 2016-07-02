@@ -226,5 +226,7 @@ The routers runs Cisco IOS Software, Version 15.5(3)M2, with SECURITYK9 and DATA
 
  {{attachment:Network_scheme3.png | Network scheme 3}}
 
+=== Cisco IOS 15.5(3)M2 router ===
+
 ----
 CategoryConfigExample
