@@ -116,4 +116,4 @@ refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
 refresh_pattern .               0       20%     4320
 }}}
 
-#end defaultconfig
+##end defaultconfig
