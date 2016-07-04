@@ -16,7 +16,7 @@
 
 == How do I configure Squid without re-compiling it? ==
 
-The ''squid.conf'' file. By default, this file is located at ''/usr/local/squid/etc/squid.conf''.
+The '''squid.conf''' file. By default, this file is located at ''/etc/squid/squid.conf'' or maybe ''/usr/local/squid/etc/squid.conf''.
 
 Also, a QUICKSTART guide has been included with the source distribution. Please see the directory where you unpacked the source archive.
 
@@ -58,18 +58,20 @@ From 2.6 the Squid developers also provide a set of Configuration Guides online.
  * [[http://www.squid-cache.org/Versions/v3/3.2/cfgman/|Squid 3.2]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/3.3/cfgman/|Squid 3.3]] Configuration Guide
  * [[http://www.squid-cache.org/Versions/v3/3.4/cfgman/|Squid 3.4]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v3/3.5/cfgman/|Squid 3.5]] Configuration Guide
 
 including guides for the current development test releases
 
-## * [[http://www.squid-cache.org/Versions/v2/HEAD/cfgman/|Squid 2-HEAD]] Configuration Guide
- * [[http://www.squid-cache.org/Versions/v3/3.HEAD/cfgman/|Squid 3-HEAD]] Configuration Guide
+ * [[http://www.squid-cache.org/Versions/v4/cfgman/|Squid 4]] Configuration Guide
 
 <<Include(Squid-3.1, "Squid-3.1 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
 <<Include(Squid-3.2, "Squid-3.2 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
 <<Include(Squid-3.3, "Squid-3.3 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
+<<Include(Squid-3.3, "Squid-3.3 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
+<<Include(Squid-3.5, "Squid-3.5 default config", 3, from="##start.defaultconfig", to="##end.defaultconfig")>>
 
 == How do I configure Squid to work behind a firewall? ==
-If you are behind a firewall then you can't make direct connections to the outside world, so you '''must''' use a parent cache. Normally Squid tries to be smart and only uses cache peers when it makes sense from a perspective of global hit ratio, and thus you need to tell Squid when it can not go direct and must use a parent proxy even if it knows the request will be a cache miss.
+If you are behind a firewall which can't make direct connections to the outside world, you '''must''' use a parent cache. Normally Squid tries to be smart and only uses cache peers when it makes sense from a perspective of global hit ratio, and thus you need to tell Squid when it can not go direct and must use a parent proxy even if it knows the request will be a cache miss.
 
 You can use the ''never_direct'' access list in ''squid.conf'' to specify which requests must be forwarded to your parent cache outside the firewall, and the ''always_direct'' access list to specify which requests must not be forwarded.  For example, if Squid must connect directly to all servers that end with ''mydomain.com'', but must use the parent for all others, you would write:
 
