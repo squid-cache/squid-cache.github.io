@@ -82,13 +82,15 @@ Also you can add next lines to your squid.conf:
 
 # Replace Accept-Encoding to support compression via eCAP
 request_header_access Accept-Encoding deny all
-request_header_replace Accept-Encoding gzip;q=1.0, identity; q=0.5, *;q=0
+request_header_replace Accept-Encoding gzip
 
 }}}
 
 to adapt Accept-Encoding to set gzip support first.
 
 Finally, restart your Squid and enjoy.
+
+ . {X} Note: Don't specify Accept-Encoding in request_header_replace like this: '''gzip;q=1.0, identity; q=0.5, *;q=0'''. This is correct, but Yahoo experienced known problems with this encoding specifications. Also note - identity is default and you do not required to specify it.
 
 === Support compression all text/* or extended text content types ===
 
