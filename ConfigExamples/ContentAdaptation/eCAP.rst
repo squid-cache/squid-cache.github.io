@@ -179,6 +179,20 @@ if(adapted->header().hasAny(contentTypeName)) {
 
 }}}
 
+After applying this patch has the meaning to change access to adapter as follows:
+
+{{{
+ecap_enable on
+acl HTTP_STATUS_OK http_status 200
+loadable_modules /usr/local/lib/ecap_adapter_gzip.so
+ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass=off
+acl allowedmime rep_mime_type -i (text\/|javascript|xml|application\/x-protobuffer)
+adaptation_access gzip_service allow allowedmime
+adaptation_access gzip_service allow HTTP_STATUS_OK
+}}}
+
+to prevent adapter overloading with unsupported types.
+
  . {X} Note: To prevent possible memory leaking during adapter running, you can also use [[attachment:gzip_ecap_vb_stop_on_done_v1.patch|this patch]]:
 
 {{{
