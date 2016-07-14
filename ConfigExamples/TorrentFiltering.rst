@@ -16,7 +16,7 @@ Torrent filtering is a diffucult problem. which can't be solved easily. To diffi
 
 == Usage ==
 
-You can also enforce this task uses [[http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos_nbar/configuration/xe-3s/qos-nbar-xe-3s-book/nbar-protocl-discvry.html|NBAR protocol discovery]] (DPI functionality) in your router (29xx Cisco series or similar). Only Squid can't completely block torrents your wish.
+You can also enforce this task uses [[http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos_nbar/configuration/xe-3s/qos-nbar-xe-3s-book/nbar-protocl-discvry.html|NBAR protocol discovery]] (DPI functionality) in your router (ISR G-2 and above 29xx Cisco series or similar). Only Squid can't completely block torrents your wish.
 
 
 == Squid Configuration File ==
