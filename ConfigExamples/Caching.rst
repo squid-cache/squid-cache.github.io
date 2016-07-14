@@ -15,7 +15,5 @@ Caching content is one of important task for HTTP proxy. This objective can be a
 
 <<FullSearch(title:regex:^ConfigExamples/Caching/WindowsUpdates)>>
 
-All others caching solutions is your own know-how. Try it! Hard luck! ;)
-
 ----
 CategoryConfigExample
