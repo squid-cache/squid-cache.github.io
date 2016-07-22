@@ -205,19 +205,29 @@ If you believe you have found a non-fatal bug (such as incorrect HTTP processing
 
 Once you have the debugging captured to ''cache.log'', take a look at it yourself and see if you can make sense of the behavior which you see.  If not, please feel free to send your debugging output to the ''squid-users'' or ''squid-bugs'' mailing lists.
 
-== Full Debug Output ==
-It is very simple to enable full debugging on a running squid process.
+== Detailed Debug Output ==
 
+It is easy to get level-7 debugging on a running squid process:
 {{{
 squid -k debug
 }}}
-This causes every debug() statement in the source code to write a line in the ''cache.log'' file. You also use the same command to restore Squid to normal debugging level.
 
-cache.log has to be opened after Squid is already running, so to debug the very first and very last operations Squid does on startup/shutdown you will need to use the '''-X''' option when starting Squid:
-{{{
-squid -X
-}}}
-This will dump the initial details to either stdout for your immediate viewing or to one of the system logs (usually syslog or daemon.log).
+The above command sends the running Squid version a signal which causes many (but not all) debug() statements in the source code to write to the ''cache.log'' file or equivalent. Repeating the same command restores the previous debugging level.
+
+To debug what happens before "squid -k debug" starts working, see the '''-X''' command line option discussed below.
+
+
+== Full Debug Output ==
+
+To enable full or level-9 debugging (i.e., to force every debugging statement in Squid to emit some output when reached), you have two options:
+
+ 1. Set debug_options in squid.conf to ALL,9. Doing so will debug what happens after the configuration file is parsed. This is sufficient to triage most runtime problems.
+ 1. Start Squid with the '''-X''' command line option. Doing so will debug what happens both before and after debug_options in the configuration file are parsed.
+
+When started with -X (or -d) command-line option, before Squid opens cache.log or starts sending debugging to a logging daemon, Squid writes debugging lines to the standard error stream (stderr). When not started with those command-line options, very little or no debugging is produced until after Squid parses the configuration file and starts honoring the settings configured there.
+
+Unfortunately, it is impossible enable full debugging on a running Squid process, but "squid -k debug" discussed above will enable level-7 debugging.
+
 
 == Debug Sections ==
 To enable selective debugging (e.g. for one source file only), you need to edit '''squid.conf''' and add to the '''debug_options''' line. Every Squid source file is assigned a debugging '''section'''. The debugging section assignments can be found by looking at the top of individual source files, by reading the file ''debug-sections.txt'', or looking at [[KnowledgeBase/DebugSections]].
