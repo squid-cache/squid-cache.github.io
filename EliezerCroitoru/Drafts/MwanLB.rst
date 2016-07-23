@@ -8,7 +8,7 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
 
  * '''Goal''': Understanding linux Load-Balancing routing.
 
- * '''Status''': 10%
+ * '''Status''': 11%
 
  * '''State''': DRAFT
 
@@ -389,3 +389,9 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * [[http://www.slashroot.in/linux-kernel-rpfilter-settings-reverse-path-filtering|An article about reverse path filtering]]
  * [[http://www.pc-freak.net/blog/web-application-server-load-balancer-general-types-description-kind-load-balancer/|Web Application Load Balancer types and when to use what kind of Load Balancer]]
  * http://pdfs.loadbalancer.org/Web_Proxy_Deployment_Guide_Sophos.pdf
+ * http://marc.info/?l=netfilter&m=121300947219385
+ * https://github.com/glanf/dockerfiles/blob/master/load_balancer/loadbalancer.py
+ * http://1hdb.cn/index.php?&id=29060
+ * http://www.tana.it/sw/ipqbdb/
+ * http://samag.ru/uploads/artfiles/1355728538source12(121).txt
+ * http://bazaar.launchpad.net/~oubiwann/txloadbalancer/1.0.1/view/head:/txlb/schedulers.py#L147
