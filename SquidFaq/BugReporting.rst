@@ -214,7 +214,7 @@ Unfortunately, it is not yet possible to debug a single transaction, but the fol
  1. Enable detailed (level-7) or full (level-9) debugging. See the sections below for details.
  1. Start Squid if necessary.
  1. Run "tail -f cache.log > partial-cache.log". This will start appending new debugging to the ''partial-cache.log'' file.
- 1. Reproduce the failing transaction, using a single request if possible. Please note that reloading a page in a browser often sends dozens or even hundreds of requests to Squid. Ideally, use wget, curl, or another "single-request" tool when possible.
+ 1. Reproduce the failing transaction, using a single request if possible. Please note that reloading a page in a browser often sends dozens or even hundreds of requests to Squid. Ideally, use [[SquidClientTool|squidclient]], wget, curl, or another "single-request" tool when possible.
  1. Kill the "tail" command above.
  1. Share the resulting partial-cache.log, compressing it if needed. Please note that it may contain sensitive information such as passwords.
 
