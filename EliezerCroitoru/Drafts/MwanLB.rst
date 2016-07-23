@@ -396,3 +396,4 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * http://samag.ru/uploads/artfiles/1355728538source12(121).txt
  * http://bazaar.launchpad.net/~oubiwann/txloadbalancer/1.0.1/view/head:/txlb/schedulers.py#L147
  * https://brooker.co.za/blog/2012/01/17/two-random.html
+ * https://gist.github.com/fqrouter/5151855
