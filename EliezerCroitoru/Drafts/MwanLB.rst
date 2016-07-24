@@ -8,7 +8,7 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
 
  * '''Goal''': Understanding linux Load-Balancing routing.
 
- * '''Status''': 11%
+ * '''Status''': 12%
 
  * '''State''': DRAFT
 
@@ -204,7 +204,7 @@ Signed-off-by: David S. Miller
 === NFQUEUE to mark flowing connection ===
 === Examples ===
 
-==== Round Robin mark selection ====
+==== Round Robin mark selection - Python example ====
  * An example for a RoundRobin LB between 3 iptables marks using NFQUEUE mark_verdict
 {{{
 #!highlight python
@@ -254,6 +254,86 @@ daemon_runner = runner.DaemonRunner(app)
 daemon_runner.do_action()
 }}}
 
+
+==== Round Robin mark selection - GoLang example ====
+
+{{{
+#!highlight go
+package main
+/*
+license note
+Copyright (c) 2016, Eliezer Croitoru
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+package main
+
+import (
+	"fmt"
+	"os"
+	"os/signal"
+	"flag"
+	"sync/atomic"
+	"github.com/elico/go-nfqueue"
+)
+var marksMax uint64
+var logpkt bool
+var logmark bool
+var queueNum int
+
+func main() {
+        flag.BoolVar(&logpkt, "log-packet", false, "Log the packet to stdout (works with log-mark option only)")
+        flag.BoolVar(&logmark, "log-mark", false, "Log the mark selection to stdout")
+
+        flag.Uint64Var(&marksMax, "high-mark", uint64(3), "The number of the highest queue number")
+				flag.IntVar(&queueNum, "queue-num", 0, "The NFQUEQUE number")
+
+        flag.Parse()
+	var (
+		q = nfqueue.NewNFQueue(uint16(queueNum))
+	)
+	defer q.Destroy()
+
+	fmt.Println("The queue is active, add an iptables rule to use it, for example: ")
+	fmt.Println("\tiptables -t mangle -I PREROUTING 1 [-i eth0] -m conntrack --ctstate NEW -j NFQUEUE --queue-num", queueNum)
+
+	sig := make(chan os.Signal, 1)
+	signal.Notify(sig, os.Interrupt, os.Kill)
+	packets := q.Process()
+	counter := uint64(1)
+
+LOOP:
+	for {
+		select {
+		case pkt := <-packets:
+			val := (atomic.AddUint64(&counter, 1) % marksMax) + 1
+			if val == uint64(0) {
+				val++
+			}
+			if logmark {
+				if logpkt {
+					fmt.Println("The selected Mark =>", val, "For packet =>", pkt)
+				} else {
+					fmt.Println("The selected Mark =>", val)
+				}
+			}
+			pkt.RepeatMark(uint32(val))
+		case <-sig:
+			break LOOP
+		}
+
+	}
+	fmt.Println("Exiting, remember to remove the iptables rule :")
+	fmt.Println("\tiptables -D INPUT -m conntrack --ctstate NEW -j NFQUEUE --queue-num", queueNum)
+}
+}}}
+
 ==== Least Connections selection algorithm example ====
 
 {{{
@@ -301,7 +381,8 @@ except KeyboardInterrupt, e:
 
 q.unbind(socket.AF_INET)
 q.close()
-}}} 
+}}}
+
 
 ==== iptables rules example ====
 * Example NFQUEUE(0) iptables rules that shows how a connection is being marked by the python helper and then a log target is counting the packets.
@@ -376,6 +457,23 @@ Machines:
  * WAN router-2 IP1:192.168.13.3(lan-side) IP2:7.7.7.3(wan-side)
  * WAN router-3 IP1:192.168.13.4(lan-side) IP2:7.7.7.4(wan-side)
  * WebServer IP:7.7.7.7(wan)
+
+= Load Balancing - out of the box =
+As a Computer Science novice one of the important tasks in the real world would be to maintain balance between many worlds.<<BR>>
+From one hand the Computer Science is tempting and gives lots of power while on the other side of these machines there are Billions of lives around the clock in the past, present and future.<<BR>>
+From my side of the picture I know that the machine is simple but this was granted to me as a gift from my parents and ancestors.<<BR>>
+However it's very easy for my generation to operate the "Thinking Machine" while for former generations which had no electricity and pumped water the issue was to get\understand a sentence right.<<BR>>
+Thankfully we were embedded with all this wisdom to help us operate our "Thinking Machine" better then the old generation could. With this in mind it is very important to understand that Load Balancing is an art.<<BR>>
+These words are here to help but sometimes these are forgotten with the stream of life:<<BR>>
+We have the power of Thousands and Millions on our shoulders!!<<BR>>
+We can embrace the power of Millions and utilize them for one of the couple hats: White, Black or Red.<<BR>>
+The White is the hat which reflects only good Intention and while the Black and the Red are mixed and the Black is sourced probably from bad Intention but it's root source is good.<<BR>>
+Specifically the Red one would use both powers for good and this is the preferred one.<<BR>>
+Another hat which deserves mentioning is the Blue which is mainly granted for these who have done bad deeds but with good Intention while assuming that this is the right thing to do.<<BR>>
+ * '''The above mentioned hats are not connected to the RedHat corporation in any way and is merely a reflection of these colors features by some spiritual concepts.'''
+My suggestion is to Load the Balance with any of the hats you get in life.<<BR>>
+For example: Don't do\use drugs unless you have help in analyzing their influence from a licensed personnel.<<BR>>
+The above was designed to help you or others to recognize the complexity and nature of the Literal subject and to give an example on the subject for these who talks the "Computer Language".
 
 = Links =
 {{{
