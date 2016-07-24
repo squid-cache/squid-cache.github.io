@@ -207,7 +207,6 @@ Once you have the debugging captured to ''cache.log'', take a look at it yoursel
 
 
 == Debugging a single transaction ==
-<<Anchor(debug-single)>>
 
 Unfortunately, it is not yet possible to debug a single transaction, but the following procedure minimizes logging noise and may help developers to pinpoint the problem:
 
@@ -220,8 +219,7 @@ Unfortunately, it is not yet possible to debug a single transaction, but the fol
  1. Share the resulting partial-cache.log, compressing it if needed. Please note that it may contain sensitive information such as passwords.
 
 
-== Detailed Debugging Output ==
-<<Anchor(debug-detailed)>>
+== Detailed Debug Output ==
 
 It is easy to get level-7 debugging on a running squid process:
 {{{
@@ -233,9 +231,7 @@ The above command sends the running Squid version a signal which causes many (bu
 To debug what happens before "squid -k debug" starts working, see the '''-X''' command line option discussed below.
 
 
-== Full Debugging Output ==
-<<Anchor(debug-full)>>
-<<Anchor(Full_Debugging_Output)>>
+== Full Debug Output ==
 
 To enable full or level-9 debugging (i.e., to force every debugging statement in Squid to emit some output when reached), you have two options:
 
