@@ -21,7 +21,7 @@ Please note that:
  * If you are running an older version of Squid the first response will be to ask you to upgrade unless the developer who looks at your bug report immediately can identify that the bug also exists in the current versions.
  * It should also be noted that any patches provided by the Squid developer team will be to the current STABLE version even if you run an older version.
 
-== Crashes and core dumps ==
+== crashes and core dumps ==
 There are two conditions under which squid will exit abnormally and generate a coredump.  First, a SIGSEGV or SIGBUS signal will cause Squid to exit and dump core.  Second, many functions include consistency checks.  If one of those checks fail, Squid calls abort() to generate a core dump.
 
 If you have a core dump file, then use gdb to extract a stack trace from the core using a "bt full" command (if supported) or a "backtrace" command (can be typed as "bt" and is always supported, but gives less information):
@@ -68,7 +68,7 @@ if you find the trace contains a lot of lines with '''??''' and mentions no symb
   . On Linux, threaded applications do not generate core dumps.  When you use the aufs cache_dir type, it uses threads and you can't get a coredump.
  * It did leave a coredump file, you just can't find it.
 
-== Resource limits ==
+== Resource Limits ==
 These limits can usually be changed in shell scripts.  The command to change the resource limits is usually either ''ulimit'' or ''limits''.  Sometimes it is a shell-builtin function, and sometimes it is a regular program.  Also note that you can set resource limits in the ''/etc/login.conf'' file on FreeBSD and maybe other systems.
 
 To change the coredumpsize limit you might use a command like:
@@ -77,7 +77,7 @@ To change the coredumpsize limit you might use a command like:
 limits coredump unlimited
 }}}
 
-== Debugging symbols ==
+== Debugging Symbols ==
 To see if your Squid binary has debugging symbols, use this command:
 
 {{{
@@ -104,7 +104,7 @@ There are no debugging symbols if you see this instead:
 }}}
 Debugging symbols may have been removed by your install program.  If you look at the squid binary from the source directory, then it might have the debugging symbols.
 
-== Coredump location ==
+== Coredump Location ==
 The core dump file will be left in one of the following locations:
 
  1. The ''coredump_dir'' directory, if you set that option.
@@ -206,7 +206,8 @@ If you believe you have found a non-fatal bug (such as incorrect HTTP processing
 Once you have the debugging captured to ''cache.log'', take a look at it yourself and see if you can make sense of the behavior which you see.  If not, please feel free to send your debugging output to the ''squid-users'' or ''squid-bugs'' mailing lists.
 
 
-== Debuging a single transaction ==
+== Debugging a single transaction ==
+<<Anchor(debug-single)>>
 
 Unfortunately, it is not yet possible to debug a single transaction, but the following procedure minimizes logging noise and may help developers to pinpoint the problem:
 
@@ -219,7 +220,8 @@ Unfortunately, it is not yet possible to debug a single transaction, but the fol
  1. Share the resulting partial-cache.log, compressing it if needed. Please note that it may contain sensitive information such as passwords.
 
 
-== Detailed debugging output ==
+== Detailed Debugging Output ==
+<<Anchor(debug-detailed)>>
 
 It is easy to get level-7 debugging on a running squid process:
 {{{
@@ -231,7 +233,9 @@ The above command sends the running Squid version a signal which causes many (bu
 To debug what happens before "squid -k debug" starts working, see the '''-X''' command line option discussed below.
 
 
-== Full debugging output ==
+== Full Debugging Output ==
+<<Anchor(debug-full)>>
+<<Anchor(Full_Debugging_Output)>>
 
 To enable full or level-9 debugging (i.e., to force every debugging statement in Squid to emit some output when reached), you have two options:
 
@@ -243,10 +247,10 @@ When started with -X (or -d) command-line option, before Squid opens cache.log o
 Unfortunately, it is impossible enable full debugging on a running Squid process, but "squid -k debug" discussed above will enable level-7 debugging.
 
 
-== Debug sections ==
+== Debug Sections ==
 To enable selective debugging (e.g. for one source file only), you need to edit '''squid.conf''' and add to the '''debug_options''' line. Every Squid source file is assigned a debugging '''section'''. The debugging section assignments can be found by looking at the top of individual source files, by reading the file ''debug-sections.txt'', or looking at [[KnowledgeBase/DebugSections]].
 
-== Debug levels ==
+== Debug Levels ==
 You also specify the debugging ''level'' to control the amount of debugging.  Higher levels result in more debugging messages. For example, to enable full debugging of Access Control functions, you would use:
 
 {{{
