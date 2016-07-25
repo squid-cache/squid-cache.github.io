@@ -85,6 +85,8 @@ A password is required to perform administrative actions such as shutdown or rec
 
 You can set the SquidConf:cachemgr_passwd directive with a specific password for one or more of the manager actions and/or access to the reports. This directive allows you to set different password for each report or group them so that multiple administrators can get different access.
 
+Squid will use Basic Authentication for retrieving the password to access reports. If SquidConf:auth_param is configured that helper will be used to verify the username and password are correct. Otherwise username will be ignored and the password compared against SquidConf:cachemgr_passwd for the report being accessed.
+
 The URL is required to refresh an object (i.e., retrieve it from its original source again).
 
 These details are by default optional to access most reports in the cache manager.
