@@ -126,7 +126,7 @@ func init() {
 	flagsMap["api-httpv"] = *http_version
 	flagsMap["tlscert"] = *tlsCert
 	flagsMap["skiptls"] = *dontVerifyTls
-	flagsMap["skiptls"] = *useOsTls
+	flagsMap["ostls"] = *useOsTls
 
 	if *debug {
 		fmt.Fprintln(os.Stderr, "ERRlog: Config Variables:")
