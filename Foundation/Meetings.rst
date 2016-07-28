@@ -58,7 +58,7 @@ Notes:
 ||#17 || FrancescoChemolli || drive the process for seeking and electing a new board member, starting with the announcement. || not done ||
 ||#17 || FrancescoChemolli || send Support Points public announcement|| not done ||
 ||#17 || AmosJeffries || provide Francesco with service listing contacts || not done ||
-||#17 || AlexRousskov || polish the proposed duties+powers of QA and send draft Lead position announcement to board@ for final review || not done ||
+||#17 || AlexRousskov || polish the proposed duties+powers of QA and send draft Lead position announcement to board@ for final review || done ||
 ||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. || partial - see [[CoverityTesting]] ||
 ||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.|| circulated draft ||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
