@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''14:00 2016-04-14 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2016-07-29 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
@@ -20,6 +20,9 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
+
+ 1. HTTP/2 meeting feedback
+ 1. Mirrors
 
  1. Next meeting scheduling
  1. Open floor:
@@ -50,6 +53,12 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
+||#17 || AmosJeffries || publish meeting notes #17 || not done ||
+||#17 || FrancescoChemolli || investigate extending the number of content-serving nodes for main site|| not done ||
+||#17 || FrancescoChemolli || drive the process for seeking and electing a new board member, starting with the announcement. || not done ||
+||#17 || FrancescoChemolli || send Support Points public announcement|| not done ||
+||#17 || AmosJeffries || provide Francesco with service listing contacts || not done ||
+||#17 || AlexRousskov || polish the proposed duties+powers of QA and send draft Lead position announcement to board@ for final review || not done ||
 ||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. || partial - see [[CoverityTesting]] ||
 ||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.|| circulated draft ||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
@@ -78,6 +87,7 @@ Notes:
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
+||#18 ||2016-02-29 ||IRC || TBD ||
 ||#17 ||2015-05-15 ||IRC || circulated ||
 ||#16 ||2015-03-06 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-05-15_board-meeting-16.html  ||
 ||#15 ||2014-09-20 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-09-20_board-meeting-15.html ||
