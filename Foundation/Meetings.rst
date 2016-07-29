@@ -53,7 +53,7 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#17 || AmosJeffries || publish meeting notes #17 || not done ||
+||#17 || AmosJeffries || publish meeting notes #17 || done ||
 ||#17 || FrancescoChemolli || investigate extending the number of content-serving nodes for main site|| not done ||
 ||#17 || FrancescoChemolli || drive the process for seeking and electing a new board member, starting with the announcement. || not done ||
 ||#17 || FrancescoChemolli || send Support Points public announcement|| not done ||
@@ -87,9 +87,9 @@ Notes:
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
-||#18 ||2016-02-29 ||IRC || TBD ||
-||#17 ||2015-05-15 ||IRC || circulated ||
-||#16 ||2015-03-06 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-05-15_board-meeting-16.html  ||
+||#18 ||2016-02-29 ||IRC || circulated ||
+||#17 ||2015-05-15 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-05-15_board-meeting-17.html ||
+||#16 ||2015-03-06 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-03-06_board-meeting-16.html  ||
 ||#15 ||2014-09-20 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-09-20_board-meeting-15.html ||
 ||#14 ||2014-07-12 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-07-12_board-meeting-14.html ||
 ||#13 ||2014-06-08 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-06-08_board-meeting-13.html ||
