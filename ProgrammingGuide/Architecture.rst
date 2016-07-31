@@ -8,7 +8,7 @@
 
 == Broad Overview ==
 
-Squid is operating at layers 4-7 on the [[http://wikipedia.org/wiki/OSI_model|OSI data model]]. So unlike most networking applications there is no relationship between packets (a layer 3 concept) and the traffic received by Squid. Instead of packets HTTP operates on a '''message''' basis (called segments in the OSI model definitions), where an HTTP request and response can each be loosely considered equivelent to one "packet" in a transport architecture. Just like IP packets HTTP messages are stateless and the delivery is entirely optional for process. See the RFC RFC:2616 texts for a better description on HTTP specifics and how it operates.
+Squid is operating at layers 4-7 on the [[http://wikipedia.org/wiki/OSI_model|OSI data model]]. So unlike most networking applications there is no relationship between packets (a layer 3 concept) and the traffic received by Squid. Instead of packets HTTP operates on a '''message''' basis (called segments in the OSI model definitions), where an HTTP request and response can each be loosely considered equivelent to one "packet" in a transport architecture. Just like IP packets HTTP messages are stateless and the delivery is entirely optional for process. See the RFC RFC:7230 texts for a better description on HTTP specifics and how it operates.
 
 
 At the broad level Squid consists of four generic processing areas;
@@ -34,6 +34,19 @@ At the broad level Squid consists of four generic processing areas;
 ## TODO data processing diagram with color-coded for display of AsyncJob vs Event callback coverage.
 
 == Transaction Processing ==
+
+A '''master transaction''' (class !MasterXaction) applies to a TCP connection from a client.
+
+NOTE: Long-term plan is for it to accumulate details of (almost) everything which occurs over that connection, and in particular the connection-based state. But much of the code doing that has yet to be designed and implemented. As of this writing the master transaction is begun when a TCP connection is accepted and passed to the Server class designated to handle that connections processing needs.
+
+A '''stream transaction''' (HTTP request and reply pair) begins when an HTTP request arrives on the connection. The details from its !MasterXaction are copied into a !AccessLogEntry which accumulate the details about the stream and eventually winds up in access.log.
+
+An '''ICAP transaction''' (class Adaptation::Icap::Xaction), or several, may occur for a stream if ICAP adaptation is configured to happen.
+## TODO document where the ICAP xaction details are recorded
+
+A '''helper transaction''' (class Helper::Xaction) may occur for each plugin helper which squid.conf settings may cause to be used by the stream transaction.
+
+=== HTTP Request ===
 ##begin calloutseq
 
 The following sequence of checks and adjustments is applied to most HTTP requests. This sequence starts after Squid parses the request header and ends before Squid starts satisfying the request from the cache or origin server. The checks are listed here in the order of their execution:
@@ -60,6 +73,14 @@ Internal Squid requests may cause even more confusion. For example, when [[Featu
 Your Squid directives and helpers must be prepared to deal with multiple [CONNECT] requests per connection.
 
 ##end calloutseq
+
+## TODO forwarding destination selection
+
+## TODO HTTP response callback processing sequence
+
+## TODO non-TCP transactions?
+
+## TODO non-HTTP stream transactions?
 
 ----
 Discuss this page using the "Discussion" link in the main menu
