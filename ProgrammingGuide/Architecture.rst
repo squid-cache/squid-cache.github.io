@@ -33,6 +33,33 @@ At the broad level Squid consists of four generic processing areas;
 
 ## TODO data processing diagram with color-coded for display of AsyncJob vs Event callback coverage.
 
+== Transaction Processing ==
+##begin calloutseq
+
+The following sequence of checks and adjustments is applied to most HTTP requests. This sequence starts after Squid parses the request header and ends before Squid starts satisfying the request from the cache or origin server. The checks are listed here in the order of their execution:
+
+ 1. Host header forgery checks
+ 1. SquidConf:http_access directive
+ 1. ICAP/eCAP [[SquidFaq/ContentAdaptation|adaptation]]
+ 1. [[SquidConf:url_rewrite_program|redirector]]
+ 1. SquidConf:adapted_http_access directive
+ 1. SquidConf:store_id directive
+ 1. clientInterpretRequestHeaders()
+ 1. SquidConf:cache directive
+ 1. ToS marking
+ 1. nf marking
+ 1. SquidConf:ssl_bump directive
+ 1. callout sequence error handling
+
+A failed check may prevent subsequent checks from running.
+
+A typical HTTP transaction (i.e., a pair of HTTP request and response messages) goes through the above sequence once. However, multiple transactions may participate in processing of a single "web page download", confusing Squid admins. While all experienced Squid admins know that a single web page may contain dozens and sometimes hundreds of resources, each triggering an HTTP transaction, those multiple transactions may happen even when requesting a single resource and even when using simple command-line tools like curl or wget.
+
+Internal Squid requests may cause even more confusion. For example, when [[Features/HTTPS#Bumping_direct_SSL.2FTLS_connections|SslBump]] is in use, Squid may create several fake CONNECT transactions for a given TLS connection, and each CONNECT may go through the above motions. If you use !SslBump for intercepted port 443 traffic, then shortly after a new connection is accepted by Squid, !SslBump creates a fake CONNECT request with TCP level information, and that CONNECT request goes through the above sequence (matching step !SslBump1 ACL if any). If an "ssl_bump peek" or "ssl_bump stare" rule matches during that first !SslBump step, then !SslBump code gets SNI and creates a second fake CONNECT request that goes through the same sequence again.
+
+Your Squid directives and helpers must be prepared to deal with multiple [CONNECT] requests per connection.
+
+##end calloutseq
 
 ----
 Discuss this page using the "Discussion" link in the main menu
