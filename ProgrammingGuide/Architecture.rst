@@ -13,7 +13,7 @@ Squid is operating at layers 4-7 on the [[http://wikipedia.org/wiki/OSI_model|OS
 
 At the broad level Squid consists of four generic processing areas;
 
- * a client-side which implements HTTP, HTTPS, ICP and HTCP protocols to communicate with clients, and
+ * a client-side which implements HTTP, HTTPS, FTP, ICP and HTCP protocols to communicate with clients, and
 
  * a server-side which implements HTTP, HTTPS, FTP, Gopher and WAIS to communicate with web servers, and
 
