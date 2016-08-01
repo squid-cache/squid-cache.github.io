@@ -35,9 +35,7 @@ At the broad level Squid consists of four generic processing areas;
 
 == Transaction Processing ==
 
-A '''master transaction''' (class !MasterXaction) applies to a TCP connection from a client.
-
-NOTE: Long-term plan is for it to accumulate details of (almost) everything which occurs over that connection, and in particular the connection-based state. But much of the code doing that has yet to be designed and implemented. As of this writing the master transaction is begun when a TCP connection is accepted and passed to the Server class designated to handle that connections processing needs.
+A '''master transaction''' (class !MasterXaction) manages information shared among the HTTP or FTP request and all related protocol messages (such as the corresponding HTTP/FTP/Gopher/etc. protocol response and control messages) as well as ICAP, eCAP, and helper transactions caused by protocol messages. Much of the code necessary to collect and share this information has yet to be developed.
 
 A '''stream transaction''' (HTTP request and reply pair) begins when an HTTP request arrives on the connection. The details from its !MasterXaction are copied into a !AccessLogEntry which accumulate the details about the stream and eventually winds up in access.log.
 
