@@ -37,9 +37,9 @@ At the broad level Squid consists of four generic processing areas;
 
 A '''master transaction''' (class !MasterXaction) manages information shared among the HTTP or FTP request and all related protocol messages (such as the corresponding HTTP/FTP/Gopher/etc. protocol response and control messages) as well as ICAP, eCAP, and helper transactions caused by protocol messages. Much of the code necessary to collect and share this information has yet to be developed.
 
-A '''stream transaction''' (HTTP request and reply pair) begins when an HTTP request arrives on the connection. The details from its !MasterXaction are copied into a !AccessLogEntry which accumulate the details about the stream and eventually winds up in access.log.
+A '''stream transaction''' is an HTTP or FTP request with the corresponding final protocol reply. It begins around the time (XXX: define precisely) when the protocol request arrives on the connection. The details from its !MasterXaction are copied into a !AccessLogEntry which accumulate the details about the stream and eventually winds up in access.log.
 
-An '''ICAP transaction''' (class Adaptation::Icap::Xaction), or several, may occur for a stream if ICAP adaptation is configured to happen.
+An '''ICAP transaction''' (class Adaptation::Icap::Xaction) is an ICAP request with the corresponding final ICAP response. Many ICAP transactions may occur for a single Master Transaction and, IIRC, ICAP OPTIONS revalidation transactions occur without a Master Transaction.
 ## TODO document where the ICAP xaction details are recorded
 
 A '''helper transaction''' (class Helper::Xaction) may occur for each plugin helper which squid.conf settings may cause to be used by the stream transaction.
