@@ -46,7 +46,7 @@ iptables -t nat -A PREROUTING -p tcp -m statistic --mode random \
 
 # 3/4 chance of trying this rule * 0.33 chance of matching = 0.25
 iptables -t nat -A PREROUTING -p tcp -m statistic --mode random \
-         --probability 0.33 -m tcp --dport 3128 -j REDIRECT --to-ports 3130
+         --probability 0.25 -m tcp --dport 3128 -j REDIRECT --to-ports 3130
 
 # 2/4 chance of trying this rule * 0.5 chance of matching = 0.25
 iptables -t nat -A PREROUTING -p tcp -m statistic --mode random \
