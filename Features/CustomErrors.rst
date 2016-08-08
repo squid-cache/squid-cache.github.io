@@ -150,5 +150,16 @@ This list describes the tags which Squid will insert into the messages:
 
  %Z:: Message generated during the process which failed. May be ASCII-formatted. Use within HTML PRE tags.
 
+
+= Troubleshooting =
+
+== Custom error pages not displayed for HTTPS ==
+
+HTTPS uses HTTP CONNECT messages to relay through a proxy. Due to browser behaviour handling these CONNECT messages (described in [[https://bugzilla.mozilla.org/show_bug.cgi?id=479880]]) any custom error page produced by the proxy is ignored and a generic browser page displayed instead.
+
+Usually this browser page mentions connection faulure or other such irrelevant details.
+
+In fact any response other than '''200 OK''' is completely dropped by the browser and the same browser template page displayed. This can lead to some very weird authentication problems when using HTTPS through an authenticated proxy as well for authentication schemes where the 407 message body has relevance.
+
 ----
 CategoryFeature
