@@ -62,7 +62,7 @@ Create self-signed certificate (you will be asked to provide information that wi
 
  * using OpenSSL:
  . {{{
-openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -keyout myCA.pem  -out myCA.pem
+openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -extensions v3_ca -keyout myCA.pem  -out myCA.pem
 }}}
 
  * using GnuTLS certtool:
