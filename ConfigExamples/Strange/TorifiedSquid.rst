@@ -26,7 +26,7 @@ Remember that you are taking full responsibility by doing this.
 
 == Overview ==
 
-The idea of this configuration firstly was described in 2011 [[here|https://habrahabr.ru/sandbox/38914/]]. However, original configuration was excessive in some places, and it has a serious drawback - it worked incorrectly with HTTPS traffic. After some experiments, correct configuration has been created, which is more than two years of successfully operating in a productive server with Squid 3.5. This configuration can also be used with Squid 4.0.
+The idea of this configuration firstly was described in 2011 [[https://habrahabr.ru/sandbox/38914/|here]]. However, original configuration was excessive in some places, and it has a serious drawback - it worked incorrectly with HTTPS traffic. After some experiments, correct configuration has been created, which is more than two years of successfully operating in a productive server with Squid 3.5. This configuration can also be used with Squid 4.0.
 
 == Squid Configuration File ==
 
