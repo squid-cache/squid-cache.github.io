@@ -30,7 +30,7 @@ The idea of this configuration firstly was described in 2011 [[https://habrahabr
 
  . {i} Note: We are required to use Privoxy as intermediate proxy, because of Tor is SOCKS, not HTTP proxy, and cannot be directly chained with Squid.
 
-== Building Tor ==
+=== Building Tor ===
 
 Download Tor from [[https://torproject.org|here]], unpack and build:
 
@@ -43,7 +43,7 @@ gmake
 gmake install-strip
 }}}
 
-== Configuring and run Tor ==
+=== Configuring and run Tor ===
 
 Edit torrc as follows:
 
@@ -64,7 +64,7 @@ I recommend using a configuration with bridges, the most difficult for an extern
 
 When finished, run Tor and check tor.log for errors.
 
-== Building Privoxy ==
+=== Building Privoxy ===
 
 In simplest case, we will use cascading Privoxy directly on Squid's box. Let's build them. Download Privoxy from [[http://privoxy.org|here]], then unpack and build:
 
@@ -87,7 +87,7 @@ gmake
 gmake install-strip
 }}}
 
-== Configuring and run Privoxy ==
+=== Configuring and run Privoxy ===
 
 It is enough to add this into Privoxy config:
 
@@ -105,12 +105,56 @@ Now, you can run Privoxy.
 Paste the configuration file like this:
 
 {{{
+# Tor acl
+acl tor_url dstdom_regex -i "/usr/local/squid/etc/url.tor"
 
-acl localhost src 127.0.0.1
-http_access deny all
+# SSL bump rules
+acl DiscoverSNIHost at_step SslBump1
+acl NoSSLIntercept ssl::server_name_regex -i "/usr/local/squid/etc/url.nobump"
+acl NoSSLIntercept ssl::server_name_regex -i "/usr/local/squid/etc/url.tor"
+ssl_bump splice NoSSLIntercept
+ssl_bump peek DiscoverSNIHost
+ssl_bump bump all
 
+# Privoxy+Tor access rules
+never_direct allow tor_url
+
+# Local Privoxy is cache parent
+cache_peer 127.0.0.1 parent 8118 0 no-query no-digest default
+
+cache_peer_access 127.0.0.1 allow tor_url
+cache_peer_access 127.0.0.1 deny all
+
+access_log daemon:/data/cache/log/access.log buffer-size=256KB logformat=squid !tor_url
 }}}
 
+Adapt config snippet to your configuration.
+
+url.tor contains what you need to tunnel:
+
+{{{
+torproject.*
+archive\.org.*
+#livejournal\.com.*
+#wordpress\.com.*
+#youtube.*
+#ytimg.*
+#googlevideo.*
+#google.*
+#googleapis.*
+#googleusercontent.*
+#gstatic.*
+#gmodules.*
+#blogger.*
+#blogspot.*
+#facebook.*
+#fb.*
+#telegram.*
+}}}
+
+ . {i} Note: In some cases better to do not log Tor tunnel accesses. Also, pay attention, you must make splice for Tor tunneled connections, because of Squid can't re-crypt peer connections yet. It is recommended to use this configuration in bump-enabled setups.
+
+ . {i} Note: url.tor and url.nobump is different lists.
 
 ----
 CategoryConfigExample
