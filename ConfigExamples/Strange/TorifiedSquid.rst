@@ -6,21 +6,27 @@
 
 = Torified Squid =
 
+ ''by YuriVoinov''
+
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 <<TableOfContents>>
 
 == Outline ==
 
-Write some introduction here.
+This configuration passes selected by ACL HTTP/HTTPS traffic (both port 80 and 443) into cascaded Privoxy and, then, into Tor tunnel. 
 
 == Usage ==
 
-Tell about some cases where this configuration would be good.
+This configuration useful in case ISP blocks some resources which is required to your users. 
 
-== More ==
+== LEGAL NOTICE ==
+Beware, this configuration may be illegal in some countries. Doing this, you can break the law. 
+Remember that you are taking full responsibility by doing this.
 
-Create more sections as you wish.
+== Overview ==
+
+The idea of this configuration firstly was described in 2011 [[here|https://habrahabr.ru/sandbox/38914/]]. However, original configuration was excessive in some places, and it has a serious drawback - it worked incorrectly with HTTPS traffic. After some experiments, correct configuration has been created, which is more than two years of successfully operating in a productive server with Squid 3.5. This configuration can also be used with Squid 4.0.
 
 == Squid Configuration File ==
 
