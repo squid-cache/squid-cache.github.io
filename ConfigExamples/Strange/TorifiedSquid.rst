@@ -20,7 +20,7 @@ This configuration passes selected by ACL HTTP/HTTPS traffic (both port 80 and 4
 
 This configuration useful in case ISP blocks some resources which is required to your users. 
 
-== LEGAL NOTICE ==
+=== LEGAL NOTICE ===
 /!\ /!\ /!\ Beware, this configuration may be illegal in some countries. Doing this, you can break the law. 
 Remember that you are taking full responsibility by doing this.
 
