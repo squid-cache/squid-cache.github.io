@@ -134,7 +134,7 @@ To verify setup up and running execute next commands on WCCP-enabled router:
 This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you can see, you can configure your environment for different ports interception.
 
  . {i} Note: '''Performance''' is more better against PBR (route-map), WCCP uses less CPU on Cisco's devices. So, WCCP is preferrable against route-map. Also note, l2 redirection has hardware support and less overhead, than gre, which has only software processing (on CPU).
- . {i} Note: This configuration was tested and fully operated on Cisco iOS versions 15.4(1)T, 15.4(3)M, 15.5(1)T, 15.5(2)T1, 15.5(3)M, 15.5(3)M2 and 15.6(2)T. {OK} {OK} {OK}
+ . {i} Note: This configuration was tested and fully operated on Cisco iOS versions 15.4(1)T, 15.4(3)M, 15.5(1)T, 15.5(2)T1, 15.5(3)M, 15.5(3)M2, 15.6(2)T, 15.6(2)T1, 15.6(3)M. {OK} {OK} {OK}
 
 = Variant II: Switch L3 as WCCPv2 router =
 
