@@ -157,5 +157,10 @@ archive\.org$
 
  . {i} Note: url.tor and url.nobump are different lists.
 
+== Performance considerations ==
+
+Tor-tunneled HTTP connections has better performance, because of caching. However, HTTPS connections still limited by Tor performance, because of splice required. Note this.
+
+
 ----
 CategoryConfigExample
