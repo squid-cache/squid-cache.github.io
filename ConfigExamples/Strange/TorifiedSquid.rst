@@ -26,7 +26,7 @@ Remember that you are taking full responsibility by doing this.
 
 == Overview ==
 
-The idea of this configuration firstly was described in 2011 [[https://habrahabr.ru/sandbox/38914/|here]]. However, original configuration was excessive in some places, and it has a serious drawback - it worked incorrectly with HTTPS traffic. After some experiments, correct configuration has been created, which is more than two years of successfully operating in a productive server with Squid 3.5. This configuration can also be used with Squid 4.0.
+The idea of this configuration firstly was described in 2011 [[https://habrahabr.ru/sandbox/38914/|here]]. However, original configuration was excessive in some places, and it has a serious drawback - it worked incorrectly with HTTPS traffic. After some experiments, correct configuration has been created, which is more than two years of successfully operating in a productive server with [[Squid-3.5]]. This configuration can also be used with [[Squid-4]].
 
  . {i} Note: We are required to use Privoxy as intermediate proxy, because of Tor is SOCKS, not HTTP proxy, and cannot be directly chained with Squid.
 
@@ -105,13 +105,13 @@ Now, you can run Privoxy.
 Paste the configuration file like this:
 
 {{{
-# Tor acl
-acl tor_url dstdom_regex -i "/usr/local/squid/etc/url.tor"
+# Domains to be handled by Tor
+acl tor_url dstdom_regex -i "/etc/squid/url.tor"
 
 # SSL bump rules
 acl DiscoverSNIHost at_step SslBump1
-acl NoSSLIntercept ssl::server_name_regex -i "/usr/local/squid/etc/url.nobump"
-acl NoSSLIntercept ssl::server_name_regex -i "/usr/local/squid/etc/url.tor"
+acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/url.nobump"
+acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/url.tor"
 ssl_bump splice NoSSLIntercept
 ssl_bump peek DiscoverSNIHost
 ssl_bump bump all
@@ -120,23 +120,22 @@ ssl_bump bump all
 never_direct allow tor_url
 
 # Local Privoxy is cache parent
-cache_peer 127.0.0.1 parent 8118 0 no-query no-digest default
+cache_peer 127.0.0.1 parent 8118 0 no-query no-digest name=privoxy
 
-cache_peer_access 127.0.0.1 allow tor_url
-cache_peer_access 127.0.0.1 deny all
+cache_peer_access privoxy allow tor_url
+cache_peer_access privoxy deny all
 
-access_log daemon:/data/cache/log/access.log buffer-size=256KB logformat=squid !tor_url
+access_log daemon:/var/log/squid/access.log logformat=squid !tor_url
 }}}
 
 Adapt config snippet to your configuration.
 
-url.tor contains what you need to tunnel:
-
+/etc/squid/url.tor contains what you need to tunnel:
 {{{
 torproject.*
-archive\.org.*
-#livejournal\.com.*
-#wordpress\.com.*
+archive\.org$
+#livejournal\.com$
+#wordpress\.com$
 #youtube.*
 #ytimg.*
 #googlevideo.*
@@ -152,9 +151,11 @@ archive\.org.*
 #telegram.*
 }}}
 
- . {i} Note: In some cases better to do not log Tor tunnel accesses. Also, pay attention, you must make splice for Tor tunneled connections, because of Squid can't re-crypt peer connections yet. It is recommended to use this configuration in bump-enabled setups.
+ . {i} Note: In some cases it is better to not log Tor tunnel accesses.
 
- . {i} Note: url.tor and url.nobump is different lists.
+ . {i} Note: Currently you must '''splice''' Tor tunneled connections, because of Squid can't re-crypt peer connections yet. It is recommended to use this configuration in bump-enabled setups.
+
+ . {i} Note: url.tor and url.nobump are different lists.
 
 ----
 CategoryConfigExample
