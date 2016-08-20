@@ -42,7 +42,7 @@ http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_siz
    cafile=/etc/squid/rootCA12.pem
 }}}
 
- . /!\ Squid 4.x has opened bug Bug:4504, which not breaks functionality, but prohibit production use without workaround. To workaround just add '''debug_options ALL,1 83,0''' to squid.conf and reconfigure.
+ . /!\ Squid 4.x has opened bug Bug:4504 (closed in latest snapshots), which not breaks functionality, but prohibit production use without workaround. To workaround just add '''debug_options ALL,1 83,0''' to squid.conf and reconfigure.
 
 ----
 CategoryConfigExample
