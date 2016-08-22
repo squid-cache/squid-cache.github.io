@@ -40,7 +40,7 @@ Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking step
 
 '''Step 1:'''
  i. Get TCP-level and CONNECT info.
- i. Evaluate SquidConf:ssl_bump and perform the first matching action (none, splice, bump, peek, stare, or terminate).
+ i. Evaluate SquidConf:ssl_bump and perform the first matching action (splice, bump, peek, stare, or terminate).
 
 Step 1 is the only step that is always performed. The CONNECT details being worked with are logged in access.log.
 
