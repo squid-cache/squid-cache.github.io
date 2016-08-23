@@ -7,14 +7,18 @@
 
 = Feature: SSL Peek and Splice =
 
- * '''Goal''': Make bumping decisions after the origin server name is known, especially when intercepting SSL. Avoid bumping non-SSL traffic.
+ * '''Goal''': Make bumping decisions after the origin server name is known, especially when transparently intercepting SSL.  Avoid bumping non-SSL traffic.
  * '''Status''': completed.
  * '''Version''': 3.5
  * '''Developer''': AlexRousskov and Christos Tsantilas
 ## * '''More''': unofficial development [[https://code.launchpad.net/~measurement-factory/squid/peek-and-splice|branch]].
 
 
-= Motivation =
+= Introduction =
+
+TLS Peek and Splice is a term used for new modes of ssl-bump and was introduced in Squid version 3.5.
+
+Older versions of Squid used server-first and client-first ssl-bump modes which did not work well in all circumstances which Peek and Splice resolves.
 
 Many !SslBump deployments try to minimize potential damage by ''not'' bumping sites unless the local policy demands it. Without this feature, the decision is made based on very limited information:
 
@@ -39,24 +43,24 @@ Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking step
 
 
 '''Step 1:'''
- i. Get TCP-level and CONNECT info.
- i. Evaluate SquidConf:ssl_bump and perform the first matching action (splice, bump, peek, stare, or terminate).
+ i. Get TCP-level and IP CONNECT info.
+ i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, peek, stare, or terminate) in the next step.
 
 Step 1 is the only step that is always performed. The CONNECT details being worked with are logged in access.log.
 
-Note that for intercepted HTTPS traffic there is no "domain name" available at this point. The log entry will contain only IP:port.
+Note that for intercepted HTTPS traffic there is no "domain name" available at this point. The log entry will contain only the IP:port.
 
 
 '''Step 2:'''
  i. Get TLS clientHello info, including SNI where available.
- i. Evaluate SquidConf:ssl_bump and perform the first matching action (splice, bump, peek, stare, or terminate).
+ i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, peek, stare, or terminate) in the next step.
   - Peeking usually prevents future bumping.
   - Staring usually prevents future splicing.
 
 
 '''Step 3:'''
  i. Get TLS serverHello info.
- i. Evaluate SquidConf:ssl_bump and perform the first matching action (splice, bump, or terminate).
+ i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, or terminate) for the connection.
 
 In most cases, the only remaining choice at step 3 is whether to terminate the connection. The splicing or bumping decision is usually dictated by either peeking or staring at the previous step.
 
@@ -76,12 +80,14 @@ Several actions are possible when a proxy handles a TLS connection. See the Squi
 ||'''stare'''||step1, step2||Receive client SNI (step1), or server certificate (step2) while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection.||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
 
-||||||Deprecated actions mentioned here for completeness sake:||
+The actions splice, bump and terminate are final actions and prevent further processing of SquidConf:ssl_bump directives for the current connection.  The actions peek and stare define what Squid does in the next step.  
+
+||||||<#FFD0D0>pre-3.5 actions mentioned here for completeness sake:  ''do not use these with Squid 3.5 and newer''||
 ||'''client-first'''||step1||Ancient [[Squid-3.1]] style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.||
 ||'''server-first'''||step1||Old [[Squid-3.3]] style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.<<BR>>When used for intercepted traffic SNI is not available and the server raw-IP will be used in certificates. ||
 ||'''none'''||step1||Same as "splice" but does not support peeking and should not be used in configurations that use those steps.||
 
-All actions except peek and stare correspond to ''final'' decisions: Once an SquidConf:ssl_bump directive with a final action matches, no further SquidConf:ssl_bump evaluations will take place, regardless of the current processing step.
+
 
 
 ## == New ACLs? ==
