@@ -5,9 +5,9 @@
 ## Change to 'yes' for a listing under Features in the Squid FAQ.
 #faqlisted no
 
-= Feature: SSL Peek and Splice =
+= Feature: TLS Peek and Splice =
 
- * '''Goal''': Make bumping decisions after the origin server name is known, especially when transparently intercepting SSL.  Avoid bumping non-SSL traffic.
+ * '''Goal''': Make bumping decisions after the origin server name is known, especially when transparently intercepting TLS/SSL.  Avoid bumping non-TSL traffic.
  * '''Status''': completed.
  * '''Version''': 3.5
  * '''Developer''': AlexRousskov and Christos Tsantilas
@@ -16,11 +16,13 @@
 
 = Introduction =
 
-TLS Peek and Splice is a term used for new modes of ssl-bump and was introduced in Squid version 3.5.
+TLS Peek and Splice is a term used for new modes of ssl-bump and was introduced in Squid version 3.5.  Older versions of Squid used server-first and client-first ssl-bump modes which did not work well in all circumstances which Peek and Splice resolves.
 
-Older versions of Squid used server-first and client-first ssl-bump modes which did not work well in all circumstances which Peek and Splice resolves.
+Squid can ''bump'' HTTPS connections, meaning that it can proxy the HTTPS connection and mimics a HTTPS server to the client and mimics a HTTPS client to the server.  Server certificates signed by a Certificate Authority (CA) prevents bumping since an HTTPS client can detect Squid's mimicking and complain to the end user.  Therefore, clients must trust the CA certificate that Squid uses while bumping and include this certificate in the list of trusted CA certificates.
 
-Many !SslBump deployments try to minimize potential damage by ''not'' bumping sites unless the local policy demands it. Without this feature, the decision is made based on very limited information:
+HTTPS is encrypted HTTP where TLS or the almost obsolete SSL is the encrypting layer around HTTP.  In the following text ''TLS'' may be read as ''TLS or SSL''.
+
+Many !SslBump deployments try to minimize potential damage by ''not'' bumping sites unless the local policy demands it.  Without this feature, the decision is made based on very limited information:
 
  * A typical HTTP CONNECT request does not contain many details, and
 
@@ -74,10 +76,10 @@ Several actions are possible when a proxy handles a TLS connection. See the Squi
 
 
 ||'''Action'''||'''Applicable processing steps'''||'''Description'''||
-||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection.||
-||'''bump'''||step1, step2, and sometimes step3||Establish a secure connection with the server and, using a mimicked server certificate, with the client. However, this is not what actually happens right now at step1. See [[http://bugs.squid-cache.org/show_bug.cgi?id=4327|bug 4327]]||
-||'''peek'''||step1, step2||Receive client SNI (step1), or server certificate (step2) while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection (see Limitations).||
-||'''stare'''||step1, step2||Receive client SNI (step1), or server certificate (step2) while preserving the possibility of bumping the connection. Staring at the server certificate usually precludes future splicing of the connection.||
+||'''peek'''||step1, step2||Continue processing: for step1 this means that client SNI will be received; for step2 this means that the server certificate will be received while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection (see Limitations).||
+||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection. The client and the server exchange data as if there is no proxy in between.||
+||'''stare'''||step1, step2||Continue processing: Receive client SNI and server certificate while preserving the possibility of bumping the connection.  Staring at the server certificate usually precludes future splicing of the connection.||
+||'''bump'''||step1, step2, and sometimes step3||Establish a TLS connection with the server using the SNI of the client and, establish a TLS connection with the client using a mimicked server certificate.  '''However''', this is not what actually happens right now at step1. See [[http://bugs.squid-cache.org/show_bug.cgi?id=4327|bug 4327]]||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
 
 The actions splice, bump and terminate are final actions and prevent further processing of SquidConf:ssl_bump directives for the current connection.  The actions peek and stare define what Squid does in the next step.  
@@ -87,7 +89,7 @@ The actions splice, bump and terminate are final actions and prevent further pro
 ||'''server-first'''||step1||Old [[Squid-3.3]] style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.<<BR>>When used for intercepted traffic SNI is not available and the server raw-IP will be used in certificates. ||
 ||'''none'''||step1||Same as "splice" but does not support peeking and should not be used in configurations that use those steps.||
 
-
+Squid 4.0 has a new SquidConf:on_unsupported_protocol directive that defines the behavior of Squid when during the TLS handshake it becomes clear that the connection uses an other protocol.
 
 
 ## == New ACLs? ==
@@ -156,24 +158,23 @@ ssl_bump bump haveServerName !serverIsBank
 ssl_bump splice all
 }}}
 
-Please note that making decisions based on step #1 info alone gives you no knowledge about the SSL server point of view. All your decisions will be based on what the SSL _client_ has told you. This is often not a problem because, in most cases, if the client lies (e.g., sends "bank.example.com" SNI to a "non-bank.example.com" server), the SSL server will refuse to establish the [bumped or spliced at step #2] connection with Squid. However, if the client supplied no SNI information at all (e.g., you are dealing with IE on Windows XP), then your ACLs may not have enough information to go on, especially for intercepted connections.
+Please note that making decisions based on step #1 info alone gives you no knowledge about the TLS server point of view. All your decisions will be based on what the TLS _client_ has told you. This is often not a problem because, in most cases, if the client lies (e.g., sends "bank.example.com" SNI to a "non-bank.example.com" server), the TLS server will refuse to establish the [bumped or spliced at step #2] connection with Squid. However, if the client supplied no SNI information at all (e.g., you are dealing with IE on Windows XP), then your ACLs may not have enough information to go on, especially for intercepted connections.
 
 If you also peek at step #2, you will know the server certificate, but you will no longer be able to bump the connection in most cases (see Limitations below).
 
 
-= Mimicking SSL client Hello properties when staring =
+= Mimicking TLS client Hello properties when staring =
 
-This section documents SSL client Hello message fields generated by the ssl_bump stare action. The information in this section is incomplete and somewhat stale.
+This section documents TLS client Hello message fields generated by the ssl_bump stare action. The information in this section is incomplete and somewhat stale.
 
-||'''SSL client Hello field'''||'''Forwarded?'''||'''Comments'''||
-||SSL Version||yes||SSL v3 and above (i.e. TLS) only.||
+||'''TLS clientHello field'''||'''Forwarded?'''||'''Comments'''||
+||TLS/SSL Version||yes||SSL v3 and above (i.e. TLS) only.||
 ||Ciphers list||yes|| ||
-||Server name||yes|| ||
-||Ciphers list||yes|| ||
+||Server name||yes||using the TLS extension SNI.  SNI stands for Server Name Indication||
 ||Random bytes||yes|| ||
 ||Compression||partially||Compression request flag is mimicked. If compression is requested by the client, then the compression algorithm in the mimicked message is set by Squid OpenSSL (instead of being copied from the client message). This may be OK because the only widely used algorithm is deflate. It is possible that OpenSSL does not support other compression algorithms.||
-||TLS extensions||sometimes||We will probably need to mimic at least some of these for splicing TLS connections to work.||
-||other||sometimes||There are probably other fields. We should probably mimic some of them. However, blindly forwarding everything is probably a bad idea because it is likely to lead to SSL negotiation failures during bumping.||
+||Other TLS extensions||sometimes||We will probably need to mimic at least some of these for splicing TLS connections to work.||
+||other||sometimes||There are probably other fields. We should probably mimic some of them. However, blindly forwarding everything is probably a bad idea because it is likely to lead to TLS negotiation failures during bumping.||
 
 Please note that for splicing to work at a future step, the client Hello message must be sent "as is", without any modifications at all. On the other hand, sending the client Hello message "as is" precludes Squid from eventually bumping the connection in most real-world use cases. Thus, the decision whether to mimic the client Hello (as staring does) or send it "as is" (as peeking does) is critical to Squid's ability to splice or bump the connection after the Hello message has been sent.
 
@@ -194,9 +195,9 @@ To peek at the server certificate, Squid must forward the entire client Hello in
  a. We could teach Squid to abandon the current server connection and then bump a newly open one. This is something we do not want to do as it is likely to create an even worse operational problems with Squids being auto-blocked for opening and closing connections in vein.
 
 
-== SSL session resumption ==
+== TLS session resumption ==
 
-During SSL session resumption, there is no server certificate for Squid to examine. The initial implementation does not try to find the implied server certificate by caching session information, but even with such a cache (indexed by the session ticket), there is no guarantee that the certificate will be found in the Squid cache. Moreover, session caching itself may require bumping to learn the session ticket (SSL [[https://tools.ietf.org/html/rfc5077#section-3.3|NewSessionTicket]] message comes after the initial handshake)! The admin has to decide whether sessions missing server certificates are going to be spliced with little or no information available about the server.
+During TLS session resumption, there is no server certificate for Squid to examine. The initial implementation does not try to find the implied server certificate by caching session information, but even with such a cache (indexed by the session ticket), there is no guarantee that the certificate will be found in the Squid cache. Moreover, session caching itself may require bumping to learn the session ticket (TLS [[https://tools.ietf.org/html/rfc5077#section-3.3|NewSessionTicket]] message comes after the initial handshake)! The admin has to decide whether sessions missing server certificates are going to be spliced with little or no information available about the server.
 
 
 More limitations are TBD.
