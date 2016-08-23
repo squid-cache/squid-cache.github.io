@@ -16,7 +16,7 @@
 
 = Introduction =
 
-TLS Peek and Splice is a term used for new modes of ssl-bump and was introduced in Squid version 3.5.  Older versions of Squid used server-first and client-first ssl-bump modes which did not work well in all circumstances which Peek and Splice resolves.
+TLS Peek and Splice is a term used for new modes of ssl-bump and was introduced in [[Squid-3.5]].  Older versions of Squid used server-first and client-first ssl-bump modes which did not work well in all circumstances which Peek and Splice resolves.
 
 Squid can ''bump'' HTTPS connections, meaning that it can proxy the HTTPS connection and mimics a HTTPS server to the client and mimics a HTTPS client to the server.  Server certificates signed by a Certificate Authority (CA) prevents bumping since an HTTPS client can detect Squid's mimicking and complain to the end user.  Therefore, clients must trust the CA certificate that Squid uses while bumping and include this certificate in the list of trusted CA certificates.
 
@@ -79,17 +79,17 @@ Several actions are possible when a proxy handles a TLS connection. See the Squi
 ||'''peek'''||step1, step2||Continue processing: for step1 this means that client SNI will be received; for step2 this means that the server certificate will be received while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection (see Limitations).||
 ||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection. The client and the server exchange data as if there is no proxy in between.||
 ||'''stare'''||step1, step2||Continue processing: Receive client SNI and server certificate while preserving the possibility of bumping the connection.  Staring at the server certificate usually precludes future splicing of the connection.||
-||'''bump'''||step1, step2, and sometimes step3||Establish a TLS connection with the server using the SNI of the client and, establish a TLS connection with the client using a mimicked server certificate.  '''However''', this is not what actually happens right now at step1. See [[http://bugs.squid-cache.org/show_bug.cgi?id=4327|bug 4327]]||
+||'''bump'''||step1, step2, and sometimes step3||Establish a TLS connection with the server using the SNI of the client and, establish a TLS connection with the client using a mimicked server certificate.  '''However''', this is not what actually happens right now at step1. See bug Bug:4327 ||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
 
 The actions splice, bump and terminate are final actions and prevent further processing of SquidConf:ssl_bump directives for the current connection.  The actions peek and stare define what Squid does in the next step.  
 
-||||||<#FFD0D0>pre-3.5 actions mentioned here for completeness sake:  ''do not use these with Squid 3.5 and newer''||
+||||||<#FFD0D0>pre-3.5 actions mentioned here for completeness sake:  ''do not use these with [[Squid-3.5]] and newer''||
 ||'''client-first'''||step1||Ancient [[Squid-3.1]] style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.||
 ||'''server-first'''||step1||Old [[Squid-3.3]] style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.<<BR>>When used for intercepted traffic SNI is not available and the server raw-IP will be used in certificates. ||
 ||'''none'''||step1||Same as "splice" but does not support peeking and should not be used in configurations that use those steps.||
 
-Squid 4.0 has a new SquidConf:on_unsupported_protocol directive that defines the behavior of Squid when during the TLS handshake it becomes clear that the connection uses an other protocol.
+[[Squid-4]] has a new SquidConf:on_unsupported_protocol directive that defines the behavior of Squid when during the TLS handshake it becomes clear that the connection uses an other protocol.
 
 
 ## == New ACLs? ==
