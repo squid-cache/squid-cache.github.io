@@ -48,7 +48,7 @@ Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking step
 '''Step 1:'''
  i. Get TCP-level info from the client. In forward proxy environments, parse the CONNECT request. In interception environments, create a fake CONNECT request using TCP-level info.
  i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the CONNECT request mentioned above.
- i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
+ i. Evaluate all SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
 
 Step 1 is the only step that is always performed.
 
@@ -60,7 +60,7 @@ Note that for intercepted HTTPS traffic there is no "domain name" available at t
 '''Step 2:'''
  i. Get TLS Client Hello info from the client, including SNI where available. Adjust the CONNECT request from step1 to reflect SNI.
  i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the adjusted CONNECT request mentioned above.
- i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
+ i. Evaluate again all SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
   * Peeking at this step usually makes bumping at step 3 impossible.
   * Staring at this step usually makes splicing at step 3 impossible.
 
@@ -72,7 +72,7 @@ The adjusted CONNECT request is logged in access.log during this step if this st
 '''Step 3:'''
  i. Get TLS Server Hello info from the server, including the server certificate.
  i. Validate the TLS server certificate.
- i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, or terminate) for the connection.
+ i. Evaluate again all SquidConf:ssl_bump rules and perform the first matching action (splice, bump, or terminate) for the connection.
 
 Step 3 is only performed if a peek or stare rule matched during the previous step.
 
