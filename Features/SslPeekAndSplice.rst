@@ -40,7 +40,9 @@ Please see the [[#Actions|actions table]] below for definitions of the two "look
 
 == Processing steps ==
 
-Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking steps give Squid more information about the client or server but often limit the actions that Squid may perform in the future.
+Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking steps give Squid more information about the client or server but often limit the actions that Squid may perform in the future. The image shows a simplified data flow and related events between a TLS client and a TLS server.
+
+{{attachment:Squid-TLS-handshake.png|TLS handshake}}
 
 
 '''Step 1:'''
