@@ -100,7 +100,9 @@ Actions splice, bump, and terminate are final actions: They prevent further proc
 ||'''server-first'''||step1||Old [[Squid-3.3]] style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.<<BR>>When used for intercepted traffic SNI is not available and the server raw-IP will be used in certificates. ||
 ||'''none'''||step1||Same as "splice" but does not support peeking and should not be used in configurations that use those steps.||
 
-[[Squid-4]] has a new SquidConf:on_unsupported_protocol directive that defines the behavior of Squid when during the TLS handshake it becomes clear that the connection uses an other protocol.
+== See Also ==
+
+If [[Squid-4]] or later fails to parse an expected TLS client Hello message, Squid consults SquidConf:on_unsupported_protocol directive.
 
 
 ## == New ACLs? ==
