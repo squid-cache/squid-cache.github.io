@@ -44,27 +44,29 @@ Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking step
 
 
 '''Step 1:'''
- i. Get TCP-level and IP CONNECT info.
- i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, peek, stare, or terminate) in the next step.
+ i. Get TCP-level and, in forward proxy environments, CONNECT info.
+ i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
 
 Step 1 is the only step that is always performed. The CONNECT details being worked with are logged in access.log.
 
-Note that for intercepted HTTPS traffic there is no "domain name" available at this point. The log entry will contain only the IP:port.
+Note that for intercepted HTTPS traffic there is no "domain name" available at this point. The log entry will contain only the destination IP address and port.
 
 
 '''Step 2:'''
  i. Get TLS clientHello info, including SNI where available.
- i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, peek, stare, or terminate) in the next step.
-  - Peeking usually prevents future bumping.
-  - Staring usually prevents future splicing.
+ i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
+  - Peeking at this step usually makes bumping at step 3 impossible.
+  - Staring at this step usually makes splicing at step 3 impossible.
 
+Step 2 is only performed if a peek or stare rule matched during the previous step.
 
 '''Step 3:'''
  i. Get TLS serverHello info.
  i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, or terminate) for the connection.
 
-In most cases, the only remaining choice at step 3 is whether to terminate the connection. The splicing or bumping decision is usually dictated by either peeking or staring at the previous step.
+Step 3 is only performed if a peek or stare rule matched during the previous step.
 
+In most cases, the only meaningful choice at step 3 is whether to terminate the connection. The splicing or bumping decision is usually dictated by either peeking or staring at the previous step.
 
 Squid configuration has to balance the desire to gain more information (by delaying the final action) with the requirement to perform a certain final action (which sometimes cannot be delayed any further).
 
