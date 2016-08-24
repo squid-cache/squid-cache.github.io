@@ -40,13 +40,13 @@ Please see the [[#Actions|actions table]] below for definitions of the two "look
 
 == Processing steps ==
 
-Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking steps give Squid more information about the client or server but often limit the actions that Squid may perform in the future. The image shows a simplified data flow and related events between a TLS client and a TLS server (XXX: which is rather misleading because the marked three steps do not actually happen on the same TLS connection -- they happen across two connections).
+Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking steps give Squid more information about the client or server but often limit the actions that Squid may perform in the future. The image shows a simplified data flow and related events between a TLS client and a TLS server.  Note that with a bumping proxy between the client and the server ''__the flow is duplicated__'' where the first flow is between client and proxy and the second flow between proxy and server. 
 
-{{attachment:Squid-TLS-handshake.png|TLS handshake}}
+{{attachment:TLS-handshake.png|TLS handshake between client and server}}
 
 
 '''Step 1:'''
- i. Get TCP-level info. In forward proxy environments, parse the CONNECT request. In interception environments, create a fake CONNECT request using TCP-level info.
+ i. Get TCP-level info from the client. In forward proxy environments, parse the CONNECT request. In interception environments, create a fake CONNECT request using TCP-level info.
  i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the CONNECT request mentioned above.
  i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
 
@@ -58,7 +58,7 @@ Note that for intercepted HTTPS traffic there is no "domain name" available at t
 
 
 '''Step 2:'''
- i. Get TLS Client Hello info, including SNI where available. Adjust the CONNECT request from step1 to reflect SNI.
+ i. Get TLS Client Hello info from the client, including SNI where available. Adjust the CONNECT request from step1 to reflect SNI.
  i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the adjusted CONNECT request mentioned above.
  i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
   * Peeking at this step usually makes bumping at step 3 impossible.
@@ -70,7 +70,7 @@ The adjusted CONNECT request is logged in access.log during this step if this st
 
 
 '''Step 3:'''
- i. Get TLS Server Hello info, including the server certificate.
+ i. Get TLS Server Hello info from the server, including the server certificate.
  i. Validate the TLS server certificate.
  i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, or terminate) for the connection.
 
