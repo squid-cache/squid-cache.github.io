@@ -61,8 +61,8 @@ Note that for intercepted HTTPS traffic there is no "domain name" available at t
  i. Get TLS Client Hello info, including SNI where available. Adjust the CONNECT request from step1 to reflect SNI.
  i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the adjusted CONNECT request mentioned above.
  i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
-  - Peeking at this step usually makes bumping at step 3 impossible.
-  - Staring at this step usually makes splicing at step 3 impossible.
+  * Peeking at this step usually makes bumping at step 3 impossible.
+  * Staring at this step usually makes splicing at step 3 impossible.
 
 Step 2 is only performed if a peek or stare rule matched during the previous step.
 
