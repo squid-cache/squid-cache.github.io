@@ -32,7 +32,7 @@ In most cases, this page uses ''TLS'' to mean ''TLS or SSL''.
 
 = Overview =
 
-The Peek and Splice feature looks at the TLS clientHello message and SNI info (if any), sends identical or a similar (to the extent possible) clientHello message to the server, and then looks at the TLS serverHello message.
+The Peek and Splice feature looks at the TLS Client Hello message and SNI info (if any), sends an identical or similar (to the extent possible) Client Hello message to the server, and then looks at the TLS Server Hello message.
 
 The final decision to splice, bump, or terminate the connection can be made at any of those steps (but what Squid does at step N affects its ability to splice or bump at step N+1!).
 
@@ -56,7 +56,7 @@ Note that for intercepted HTTPS traffic there is no "domain name" available at t
 
 
 '''Step 2:'''
- i. Get TLS client Hello info, including SNI where available. Adjust the CONNECT request from step1 to reflect SNI.
+ i. Get TLS Client Hello info, including SNI where available. Adjust the CONNECT request from step1 to reflect SNI.
  i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the adjusted CONNECT request mentioned above.
  i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
   - Peeking at this step usually makes bumping at step 3 impossible.
@@ -68,7 +68,7 @@ The adjusted CONNECT request is logged in access.log during this step if this st
 
 
 '''Step 3:'''
- i. Get TLS server Hello info, including the server certificate.
+ i. Get TLS Server Hello info, including the server certificate.
  i. Validate the TLS server certificate.
  i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, or terminate) for the connection.
 
@@ -87,22 +87,22 @@ Several actions are possible when a proxy handles a TLS connection. See the Squi
 
 
 ||'''Action'''||'''Applicable processing steps'''||'''Description'''||
-||'''peek'''||step1, step2||When a peek rule matches during step1, Squid proceeds to step2 where it parses the TLS client Hello and extracts SNI (if any). When a peek rule matches during step 2, Squid proceeds to step3 where it parses the TLS server Hello and extracts server certificate while preserving the possibility of splicing the client and server connections; peeking at the server certificate usually precludes future bumping (see Limitations).||
+||'''peek'''||step1, step2||When a peek rule matches during step1, Squid proceeds to step2 where it parses the TLS Client Hello and extracts SNI (if any). When a peek rule matches during step 2, Squid proceeds to step3 where it parses the TLS Server Hello and extracts server certificate while preserving the possibility of splicing the client and server connections; peeking at the server certificate usually precludes future bumping (see Limitations).||
 ||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection. The client and the server exchange data as if there is no proxy in between.||
-||'''stare'''||step1, step2||When a stare rule matches during step1, Squid proceeds to step2 where it parses the TLS client Hello and extracts SNI (if any). When a stare rule matches during step2, Squid proceeds to step3 where it parses the TLS server Hello and extracts server certificate while preserving the possibility of bumping the client and server connections; staring at the server certificate usually precludes future splicing (see Limitations).||
+||'''stare'''||step1, step2||When a stare rule matches during step1, Squid proceeds to step2 where it parses the TLS Client Hello and extracts SNI (if any). When a stare rule matches during step2, Squid proceeds to step3 where it parses the TLS Server Hello and extracts server certificate while preserving the possibility of bumping the client and server connections; staring at the server certificate usually precludes future splicing (see Limitations).||
 ||'''bump'''||step1, step2, and sometimes step3||Establish a TLS connection with the server (using client SNI, if any) and establish a TLS connection with the client (using a mimicked server certificate).  '''However''', this is not what actually happens right now if a bump rule matches during step1. See bug Bug:4327 ||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
 
 Actions splice, bump, and terminate are final actions: They prevent further processing of the SquidConf:ssl_bump rules. Actions peek and stare allow Squid to proceed to the next !SslBump step.
 
-||||||<#FFD0D0>pre-3.5 actions mentioned here for completeness sake:  ''do not use these with [[Squid-3.5]] and newer''||
+||||||<#FFD0D0>pre-3.5 actions are listed below for completeness sake only; ''do not use these with [[Squid-3.5]] and newer''||
 ||'''client-first'''||step1||Ancient [[Squid-3.1]] style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.||
 ||'''server-first'''||step1||Old [[Squid-3.3]] style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.<<BR>>When used for intercepted traffic SNI is not available and the server raw-IP will be used in certificates. ||
 ||'''none'''||step1||Same as "splice" but does not support peeking and should not be used in configurations that use those steps.||
 
 == See Also ==
 
-If [[Squid-4]] or later fails to parse an expected TLS client Hello message, Squid consults SquidConf:on_unsupported_protocol directive.
+If [[Squid-4]] or later fails to parse an expected TLS Client Hello message, Squid consults SquidConf:on_unsupported_protocol directive.
 
 
 ## == New ACLs? ==
@@ -176,11 +176,11 @@ Please note that making decisions based on step #1 info alone gives you no knowl
 If you also peek at step #2, you will know the server certificate, but you will no longer be able to bump the connection in most cases (see Limitations below).
 
 
-= Mimicking TLS client Hello properties when staring =
+= Mimicking TLS Client Hello properties when staring =
 
-This section documents TLS client Hello message fields generated by the ssl_bump stare action. The information in this section is incomplete and somewhat stale.
+This section documents TLS Client Hello message fields generated by the ssl_bump stare action. The information in this section is incomplete and somewhat stale.
 
-||'''TLS clientHello field'''||'''Forwarded?'''||'''Comments'''||
+||'''TLS Client Hello field'''||'''Forwarded?'''||'''Comments'''||
 ||TLS/SSL Version||yes||SSL v3 and above (i.e. TLS) only.||
 ||Ciphers list||yes|| ||
 ||Server name||yes||using the TLS extension SNI.  SNI stands for Server Name Indication||
@@ -189,13 +189,13 @@ This section documents TLS client Hello message fields generated by the ssl_bump
 ||Other TLS extensions||sometimes||We will probably need to mimic at least some of these for splicing TLS connections to work.||
 ||other||sometimes||There are probably other fields. We should probably mimic some of them. However, blindly forwarding everything is probably a bad idea because it is likely to lead to TLS negotiation failures during bumping.||
 
-Please note that for splicing to work at a future step, the client Hello message must be sent "as is", without any modifications at all. On the other hand, sending the client Hello message "as is" precludes Squid from eventually bumping the connection in most real-world use cases. Thus, the decision whether to mimic the client Hello (as staring does) or send it "as is" (as peeking does) is critical to Squid's ability to splice or bump the connection after the Hello message has been sent.
+Please note that for splicing to work at a future step, the Client Hello message must be sent "as is", without any modifications at all. On the other hand, sending the Client Hello message "as is" precludes Squid from eventually bumping the connection in most real-world use cases. Thus, the decision whether to mimic the Client Hello (as staring does) or send it "as is" (as peeking does) is critical to Squid's ability to splice or bump the connection after the Hello message has been sent.
 
 = Limitations =
 
 == Peeking at the server often precludes bumping ==
 
-To peek at the server certificate, Squid must forward the entire client Hello intact. If that client Hello or the server response contains any TLS extensions that Squid does not support or understand (many do!), then Squid cannot reliably bump the connection because the other two sides of that bumped communication may start using those extensions, confusing Squid's OpenSSL in unpredictable ways. Possible solutions or workarounds (all deficient in various ways):
+To peek at the server certificate, Squid must forward the entire Client Hello intact. If that Client Hello or the server response contains any TLS extensions that Squid does not support or understand (many do!), then Squid cannot reliably bump the connection because the other two sides of that bumped communication may start using those extensions, confusing Squid's OpenSSL in unpredictable ways. Possible solutions or workarounds (all deficient in various ways):
 
  a. If bumping is more valuable/important than splicing in your environment, you should "stare" instead of peeking. Staring usually precludes future splicing, of course. Pick your poison.
 
