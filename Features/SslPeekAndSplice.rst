@@ -44,27 +44,37 @@ Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking step
 
 
 '''Step 1:'''
- i. Get TCP-level and, in forward proxy environments, CONNECT info.
+ i. Get TCP-level info. In forward proxy environments, parse the CONNECT request. In interception environments, create a fake CONNECT request using TCP-level info.
+ i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the CONNECT request mentioned above.
  i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
 
-Step 1 is the only step that is always performed. The CONNECT details being worked with are logged in access.log.
+Step 1 is the only step that is always performed.
 
-Note that for intercepted HTTPS traffic there is no "domain name" available at this point. The log entry will contain only the destination IP address and port.
+The CONNECT request is logged in access.log.
+
+Note that for intercepted HTTPS traffic there is no "domain name" available at this point. The log entry will contain only the destination IP address and port. The same is true for some real CONNECT requests in a forward proxy environments.
 
 
 '''Step 2:'''
- i. Get TLS clientHello info, including SNI where available.
+ i. Get TLS client Hello info, including SNI where available. Adjust the CONNECT request from step1 to reflect SNI.
+ i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the adjusted CONNECT request mentioned above.
  i. Evaluate SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
   - Peeking at this step usually makes bumping at step 3 impossible.
   - Staring at this step usually makes splicing at step 3 impossible.
 
 Step 2 is only performed if a peek or stare rule matched during the previous step.
 
+The adjusted CONNECT request is logged in access.log during this step if this step is final (i.e., there is no step 3). However, when splicing, the adjusted CONNECT becomes attached to the resulting tunnel and is not logged until that tunnel is closed.
+
+
 '''Step 3:'''
- i. Get TLS serverHello info.
+ i. Get TLS server Hello info, including the server certificate.
+ i. Validate the TLS server certificate.
  i. Evaluate SquidConf:ssl_bump directives and perform the first matching action (splice, bump, or terminate) for the connection.
 
 Step 3 is only performed if a peek or stare rule matched during the previous step.
+
+The adjusted CONNECT request from the previous step is always logged in access.log during this step (if Squid gets to this step, of course). However, when splicing, the adjusted CONNECT becomes attached to the resulting tunnel and is not logged until that tunnel is closed.
 
 In most cases, the only meaningful choice at step 3 is whether to terminate the connection. The splicing or bumping decision is usually dictated by either peeking or staring at the previous step.
 
@@ -77,13 +87,13 @@ Several actions are possible when a proxy handles a TLS connection. See the Squi
 
 
 ||'''Action'''||'''Applicable processing steps'''||'''Description'''||
-||'''peek'''||step1, step2||Continue processing: for step1 this means that client SNI will be received; for step2 this means that the server certificate will be received while preserving the possibility of splicing the connection. Peeking at the server certificate usually precludes future bumping of the connection (see Limitations).||
+||'''peek'''||step1, step2||When a peek rule matches during step1, Squid proceeds to step2 where it parses the TLS client Hello and extracts SNI (if any). When a peek rule matches during step 2, Squid proceeds to step3 where it parses the TLS server Hello and extracts server certificate while preserving the possibility of splicing the client and server connections; peeking at the server certificate usually precludes future bumping (see Limitations).||
 ||'''splice'''||step1, step2, and sometimes step3||Become a TCP tunnel without decoding the connection. The client and the server exchange data as if there is no proxy in between.||
-||'''stare'''||step1, step2||Continue processing: Receive client SNI and server certificate while preserving the possibility of bumping the connection.  Staring at the server certificate usually precludes future splicing of the connection.||
-||'''bump'''||step1, step2, and sometimes step3||Establish a TLS connection with the server using the SNI of the client and, establish a TLS connection with the client using a mimicked server certificate.  '''However''', this is not what actually happens right now at step1. See bug Bug:4327 ||
+||'''stare'''||step1, step2||When a stare rule matches during step1, Squid proceeds to step2 where it parses the TLS client Hello and extracts SNI (if any). When a stare rule matches during step2, Squid proceeds to step3 where it parses the TLS server Hello and extracts server certificate while preserving the possibility of bumping the client and server connections; staring at the server certificate usually precludes future splicing (see Limitations).||
+||'''bump'''||step1, step2, and sometimes step3||Establish a TLS connection with the server (using client SNI, if any) and establish a TLS connection with the client (using a mimicked server certificate).  '''However''', this is not what actually happens right now if a bump rule matches during step1. See bug Bug:4327 ||
 ||'''terminate'''||step1, step2, step3||Close client and server connections.||
 
-The actions splice, bump and terminate are final actions and prevent further processing of SquidConf:ssl_bump directives for the current connection.  The actions peek and stare define what Squid does in the next step.  
+Actions splice, bump, and terminate are final actions: They prevent further processing of the SquidConf:ssl_bump rules. Actions peek and stare allow Squid to proceed to the next !SslBump step.
 
 ||||||<#FFD0D0>pre-3.5 actions mentioned here for completeness sake:  ''do not use these with [[Squid-3.5]] and newer''||
 ||'''client-first'''||step1||Ancient [[Squid-3.1]] style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.||
