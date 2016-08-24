@@ -7,28 +7,27 @@
 
 = Feature: TLS Peek and Splice =
 
- * '''Goal''': Make bumping decisions after the origin server name is known, especially when transparently intercepting TLS/SSL.  Avoid bumping non-TSL traffic.
+ * '''Goal''': Make bumping decisions after the origin server name is known, especially when transparently intercepting TLS/SSL.  Avoid bumping non-TLS traffic.
  * '''Status''': completed.
  * '''Version''': 3.5
  * '''Developer''': AlexRousskov and Christos Tsantilas
 ## * '''More''': unofficial development [[https://code.launchpad.net/~measurement-factory/squid/peek-and-splice|branch]].
 
 
-= Introduction =
+= Motivation =
 
-TLS Peek and Splice is a term used for new modes of ssl-bump and was introduced in [[Squid-3.5]].  Older versions of Squid used server-first and client-first ssl-bump modes which did not work well in all circumstances which Peek and Splice resolves.
-
-Squid can ''bump'' HTTPS connections, meaning that it can proxy the HTTPS connection and mimics a HTTPS server to the client and mimics a HTTPS client to the server.  Server certificates signed by a Certificate Authority (CA) prevents bumping since an HTTPS client can detect Squid's mimicking and complain to the end user.  Therefore, clients must trust the CA certificate that Squid uses while bumping and include this certificate in the list of trusted CA certificates.
-
-HTTPS is encrypted HTTP where TLS or the almost obsolete SSL is the encrypting layer around HTTP.  In the following text ''TLS'' may be read as ''TLS or SSL''.
-
-Many !SslBump deployments try to minimize potential damage by ''not'' bumping sites unless the local policy demands it.  Without this feature, the decision is made based on very limited information:
+"Peek and Splice" is a collection of new [[Features/SslBump|SslBump]] actions and related features introduced in [[Squid-3.5]].  Older Squids used server-first and client-first actions that did not work well many cases. Many !SslBump deployments try to minimize potential damage by ''not'' bumping sites unless the local policy demands it. Before the new actions became available, the decision to bump was made based on very limited information:
 
  * A typical HTTP CONNECT request does not contain many details, and
 
  * intercepted TCP connections reveal nothing but IP addresses and port numbers.
 
-Peek and Splice gives admin a way to make bumping decisions later in the TLS handshake process, when client SNI and the server certificate are available. Or when it becomes clear that we are not dealing with a TLS connection at all!.
+Peek and Splice gives admin a way to make bumping decisions later in the TLS handshake process, when client SNI and the server certificate are available. Or when it becomes clear that we are not dealing with a TLS connection at all!
+
+
+= Terminology =
+
+In most cases, this page uses ''TLS'' to mean ''TLS or SSL''.
 
 
 = Overview =
