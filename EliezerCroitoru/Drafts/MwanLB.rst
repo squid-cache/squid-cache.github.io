@@ -496,3 +496,4 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * https://brooker.co.za/blog/2012/01/17/two-random.html
  * https://gist.github.com/fqrouter/5151855
  * https://github.com/mdentonSkyport/nradix
+ * [[https://www.inlab.de/load-balancer/description.html|BalanceNG : About/Features]]
