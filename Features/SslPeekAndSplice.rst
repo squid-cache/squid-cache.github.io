@@ -161,7 +161,7 @@ ssl_bump splice all
 # Trust, but verify:
 # Bump if in doubt.
 ssl_bump splice serverIsBank
-ssl_bump bump monitoredSites  # this is redundant since there is "ssl_bump bump all"
+ssl_bump bump monitoredSites  # this is redundant since there is "ssl_bump bump all" (XXX: Not really redundant. The two rules have rather different results: This rule may match before bumping becomes impossible while "bump all" below is unlikely to work at all because it is located after "peek all".)
 ssl_bump peek all
 ssl_bump bump all
 }}}
