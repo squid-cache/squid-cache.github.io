@@ -165,7 +165,7 @@ ssl_bump bump all
 
 === Peek at SNI and Bump ===
 
-SNI is obtained by parsing TLS ClientHello during step #2 (which is instructed by ''ssl_bump peek step1''). Parsing TLS ClientHello does _not_ preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
+SNI is obtained by parsing TLS Client Hello during step #2 (which is instructed by ''ssl_bump peek step1''). Parsing TLS Client Hello does _not_ preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
 
 {{{
 acl step1 at_step SslBump1
