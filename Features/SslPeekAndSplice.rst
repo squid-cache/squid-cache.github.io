@@ -132,13 +132,24 @@ All of the examples in this section:
  * bump non-bank traffic, and
  * peek as deep as possible while satisfying other objectives stated in the comments below.
 
-These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below. The examples assume that the serverIsBank ACL mismatches when Squid does not yet know a server name.
+These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below. 
+
+{{{
+# common acls for the next 3 examples :
+acl serverIsBank ssl::server_name .paypal.com
+acl serverIsBank ssl::server_name .abnamro.nl
+acl serverIsBank ssl::server_name .abnamro.com
+# extend serverIsBank for all banks that are used by all users
+
+acl monitoredSites ssl::server_name .example.com
+acl monitoredSites ssl::server_name .bar.foo.com
+}}}
 
 {{{
 # Do no harm:
 # Splice indeterminate traffic.
 ssl_bump splice serverIsBank
-ssl_bump bump haveServerName
+ssl_bump bump monitoredSites
 ssl_bump peek all
 ssl_bump splice all
 }}}
@@ -147,29 +158,19 @@ ssl_bump splice all
 # Trust, but verify:
 # Bump if in doubt.
 ssl_bump splice serverIsBank
-ssl_bump bump haveServerName
+ssl_bump bump monitoredSites  # this is redundant since there is "ssl_bump bump all"
 ssl_bump peek all
 ssl_bump bump all
 }}}
 
-{{{
-# Better safe than sorry:
-# Terminate all strange connections.
-ssl_bump splice serverIsBank
-ssl_bump bump haveServerName
-ssl_bump peek all
-ssl_bump terminate all
-}}}
-
-
 === Peek at SNI and Bump ===
 
-SNI is obtained by peeking during step #1. Peeking during step #1 does _not_ preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
+SNI is obtained by parsing TLS ClientHello during step #2 (which is instructed by ''ssl_bump peek step1''). Parsing TLS ClientHello does _not_ preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
 
 {{{
 acl step1 at_step SslBump1
 ssl_bump peek step1
-ssl_bump bump haveServerName !serverIsBank
+ssl_bump bump monitoredSites !serverIsBank
 ssl_bump splice all
 }}}
 
