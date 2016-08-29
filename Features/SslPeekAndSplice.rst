@@ -144,8 +144,8 @@ acl serverIsBank ssl::server_name .bank1.example.com
 acl serverIsBank ssl::server_name .bank2.example.net
 # extend serverIsBank for all banks that are used by all users
 
-acl monitoredSites ssl::server_name .example.com
-acl monitoredSites ssl::server_name .example.org
+acl monitoredSites ssl::server_name .foo.example.com
+acl monitoredSites ssl::server_name .bar.example.org
 }}}
 
 {{{
