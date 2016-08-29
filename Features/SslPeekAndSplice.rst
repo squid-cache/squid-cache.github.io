@@ -127,22 +127,25 @@ Some how-to tutorials are available for common policies:
 
 === Avoid bumping banking traffic  ===
 
+
 All of the examples in this section:
  * splice bank traffic,
  * bump non-bank traffic, and
  * peek as deep as possible while satisfying other objectives stated in the comments below.
 
-These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below. 
+These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below.
+
+XXX: This section is currently broken: The examples below do not match the text that describes them above.
+
 
 {{{
 # common acls for the next three examples:
-acl serverIsBank ssl::server_name .paypal.com
-acl serverIsBank ssl::server_name .abnamro.nl
-acl serverIsBank ssl::server_name .abnamro.com
+acl serverIsBank ssl::server_name .bank1.example.com
+acl serverIsBank ssl::server_name .bank2.example.net
 # extend serverIsBank for all banks that are used by all users
 
 acl monitoredSites ssl::server_name .example.com
-acl monitoredSites ssl::server_name .bar.foo.com
+acl monitoredSites ssl::server_name .example.org
 }}}
 
 {{{
