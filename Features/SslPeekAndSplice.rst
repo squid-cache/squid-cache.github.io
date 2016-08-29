@@ -135,7 +135,7 @@ All of the examples in this section:
 These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below. 
 
 {{{
-# common acls for the next 3 examples :
+# common acls for the next three examples:
 acl serverIsBank ssl::server_name .paypal.com
 acl serverIsBank ssl::server_name .abnamro.nl
 acl serverIsBank ssl::server_name .abnamro.com
