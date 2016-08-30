@@ -177,7 +177,7 @@ ssl_bump bump monitoredSites !serverIsBank
 ssl_bump splice all
 }}}
 
-Please note that making decisions based on step #1 info alone gives you no knowledge about the TLS server point of view. All your decisions will be based on what the TLS _client_ has told you. This is often not a problem because, in most cases, if the client lies (e.g., sends "bank.example.com" SNI to a "non-bank.example.com" server), the TLS server will refuse to establish the [bumped or spliced at step #2] connection with Squid. However, if the client supplied no SNI information at all (e.g., you are dealing with IE on Windows XP), then your ACLs may not have enough information to go on, especially for intercepted connections.
+Please note that making decisions based on steps #1 and #2 info alone gives you no knowledge about the TLS server point of view. All your decisions will be based on what the TLS _client_ has told you. This is often not a problem because, in most cases, if the client lies (e.g., sends "bank.example.com" SNI to a "non-bank.example.com" server), the TLS server will refuse to establish the [bumped or spliced at step #2] connection with Squid. However, not all servers will do that and it is trivial to setup a malicious forwarding TLS server that will not. Also, if the client supplied no SNI information at all (e.g., you are dealing with IE on Windows XP), then your ACLs may not have enough information to go on during those first two steps, especially for intercepted connections.
 
 If you also peek at step #2, you will know the server certificate, but you will no longer be able to bump the connection in most cases (see Limitations below).
 
