@@ -359,6 +359,9 @@ In some cases, placing all services to single host is not a good idea. High-load
 
  . {i} Note: On some Solaris setups you can get performance gain by using libmtmalloc for c-icap processes. Just add -lmtmalloc to CFLAGS and CXXFLAGS when configuring. This also can reduce memory lock contention on multi-core CPU boxes. This solution can also reduce memory consumption problem for clamd.
 
+ . {i} Note: CLAMD with custom databases (SecuriteInfo, etc.) uses 700 megabytes of RAM and above. Better in this case using separate server connected by TCP.
+
+
 == Troubleshooting ==
 
  . {i} Note:  When your upgrade your C-ICAP server, you also must (in most cases) rebuild squidclamav from sources (it is recommended) to aviod possible API incompatibility.
