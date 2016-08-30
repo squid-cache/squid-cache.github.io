@@ -168,7 +168,7 @@ ssl_bump bump all
 
 === Peek at SNI and Bump ===
 
-SNI is obtained by parsing TLS Client Hello during step #2 (which is instructed by ''ssl_bump peek step1''). Parsing TLS Client Hello does _not_ preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
+SNI is obtained by parsing TLS Client Hello during step #2 (which is instructed by ''ssl_bump peek step1''). Parsing TLS Client Hello does ''not'' preclude future bumping. If you want to get SNI and bump, then peek at step #1 and bump at the next step (i.e., step #2):
 
 {{{
 acl step1 at_step SslBump1
@@ -177,7 +177,7 @@ ssl_bump bump monitoredSites !serverIsBank
 ssl_bump splice all
 }}}
 
-Please note that making decisions based on steps #1 and #2 info alone gives you no knowledge about the TLS server point of view. All your decisions will be based on what the TLS _client_ has told you. This is often not a problem because, in most cases, if the client lies (e.g., sends "bank.example.com" SNI to a "non-bank.example.com" server), the TLS server will refuse to establish the [bumped or spliced at step #2] connection with Squid. However, not all servers will do that and it is trivial to setup a malicious forwarding TLS server that will not. Also, if the client supplied no SNI information at all (e.g., you are dealing with IE on Windows XP), then your ACLs may not have enough information to go on during those first two steps, especially for intercepted connections.
+Please note that making decisions based on steps #1 and #2 info alone gives you no knowledge about the TLS server point of view. All your decisions will be based on what the TLS ''client'' has told you. This is often not a problem because, in most cases, if the client lies (e.g., sends "bank.example.com" SNI to a "non-bank.example.com" server), the TLS server will refuse to establish the [bumped or spliced at step #2] connection with Squid. However, not all servers will do that and it is trivial to setup a malicious forwarding TLS server that will not. Also, if the client supplied no SNI information at all (e.g., you are dealing with IE on Windows XP), then your ACLs may not have enough information to go on during those first two steps, especially for intercepted connections.
 
 If you also peek at step #2, you will know the server certificate, but you will no longer be able to bump the connection in most cases (see Limitations below).
 
