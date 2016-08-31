@@ -135,7 +135,7 @@ All of the examples in this section:
 
 These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below.
 
-XXX: This section is currently broken: The examples below do not match the text that describes them above.
+/!\ This section is currently broken: The examples below do not match the text that describes them above.
 
 
 {{{
