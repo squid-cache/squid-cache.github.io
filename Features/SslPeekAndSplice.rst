@@ -125,21 +125,8 @@ Some how-to tutorials are available for common policies:
 
 <<FullSearch(title:regex:^ConfigExamples/Intercept/SslBump.*$)>>
 
-=== Avoid bumping banking traffic  ===
-
-
-All of the examples in this section:
- * splice bank traffic,
- * bump non-bank traffic, and
- * peek as deep as possible while satisfying other objectives stated in the comments below.
-
-These examples differ only in how they treat traffic that cannot be classified as either "bank" or "not bank" because Squid cannot infer a server name while satisfying other objectives stated in the comments below.
-
-/!\ This section is currently broken: The examples below do not match the text that describes them above.
-
-
 {{{
-# common acls for the next three examples:
+# common acls for the following examples:
 acl serverIsBank ssl::server_name .bank1.example.com
 acl serverIsBank ssl::server_name .bank2.example.net
 # extend serverIsBank for all banks that are used by all users
@@ -148,23 +135,29 @@ acl monitoredSites ssl::server_name .foo.example.com
 acl monitoredSites ssl::server_name .bar.example.org
 }}}
 
+=== Basic Splicing and Bumping ===
+
+Only observe and do not interfere.  Useful for logging purposes since the SNI is peeked at and can be logged.
 {{{
-# Do no harm:
-# Splice indeterminate traffic.
-ssl_bump splice serverIsBank
-ssl_bump bump monitoredSites
-ssl_bump peek all
 ssl_bump splice all
+ssl_bump peek all
 }}}
 
+Only bump a set of sites.
 {{{
-# Trust, but verify:
-# Bump if in doubt.
-ssl_bump splice serverIsBank
 ssl_bump bump monitoredSites
+ssl_bump splice all
 ssl_bump peek all
-ssl_bump bump all
 }}}
+
+=== Bump All Sites Except Banks  ===
+
+{{{
+ssl_bump splice serverIsBank
+ssl_bump bump all
+ssl_bump peek all
+}}}
+
 
 === Peek at SNI and Bump ===
 
