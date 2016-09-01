@@ -137,25 +137,35 @@ acl monitoredSites ssl::server_name .bar.example.org
 
 === Basic Splicing and Bumping ===
 
-Only observe and do not interfere.  Useful for logging purposes since the SNI is peeked at and can be logged.
+Only observe TCP/TLS metadata. Do not look at HTTP information. Modify nothing. Useful for logging purposes since the SNI and server certificates are peeked at and can be logged.
+
+/!\ Depending on other settings, Squid may terminate connections if it cannot validate client SNI (Host header forgery detection) or the server certificate.
+
 {{{
-ssl_bump splice all
 ssl_bump peek all
+ssl_bump splice all
 }}}
 
 Only bump a set of sites.
+
+/!\ Usually does not work for requests without SNI that go to monitoredSites -- they will not be bumped.
+
 {{{
 ssl_bump bump monitoredSites
-ssl_bump splice all
 ssl_bump peek all
+ssl_bump splice all
 }}}
 
-=== Bump All Sites Except Banks  ===
+Bump All Sites Except Banks
+
+/!\ Usually does not work for requests that go to non-banks -- they will not be bumped.
+
+/!\ Depending on other settings, Squid may terminate connections to banks if Squid cannot validate client SNI (Host header forgery detection) or the server certificate. 
 
 {{{
 ssl_bump splice serverIsBank
-ssl_bump bump all
 ssl_bump peek all
+ssl_bump bump all
 }}}
 
 
