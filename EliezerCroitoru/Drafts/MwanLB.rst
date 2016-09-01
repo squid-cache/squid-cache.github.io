@@ -16,6 +16,8 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
 
  * '''More''': 
 
+ * '''Side Effects''': A Squid Instances LoadBalancer(Tproxy to Proxy Protocol)
+
 <<TableOfContents>>
 
 - Introduction to Multi-WAN load balancing.
