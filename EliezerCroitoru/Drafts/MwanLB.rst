@@ -499,3 +499,4 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * https://gist.github.com/fqrouter/5151855
  * https://github.com/mdentonSkyport/nradix
  * [[https://www.inlab.de/load-balancer/description.html|BalanceNG : About/Features]]
+ * [[https://blog.khax.net/2009/11/28/multi-gateway-routing-with-iptables-and-iproute2/|LinuxRouting example ]]
