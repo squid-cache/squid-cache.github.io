@@ -476,7 +476,7 @@ Machines:
  * LAN core router(Alpine) IP1:192.168.90.254, Wan interface IP2:192.168.10.117
  * WAN router-1(OpenSUSE) IP1:192.168.10.254(pppoe dsl connection)
  * WAN router-2(CentOS) IP1:192.168.10.188(pptp vpn over the 192.168.10.254 to the Internet)
- * WebServer http://myip.net
+ * WebServer http://myip.net.il
 
 = Load Balancing - out of the box =
 As a Computer Science novice one of the important tasks in the real world would be to maintain balance between many worlds.<<BR>>
