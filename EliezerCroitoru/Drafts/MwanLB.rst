@@ -460,6 +460,24 @@ Machines:
  * WAN router-3 IP1:192.168.13.4(lan-side) IP2:7.7.7.4(wan-side)
  * WebServer IP:7.7.7.7(wan)
 
+=== Third LAB - OpenSUSE+ZeroShell ===
+Machines:
+ * Windows Client1 IP 192.168.90.1
+ * Linux Client2 IP 192.168.90.2
+ * LAN core router(ZeroShell) IP1:192.168.90.254, Wan interface IP2:192.168.10.117
+ * WAN router-1(OpenSUSE) IP1:192.168.10.254(pppoe dsl connection)
+ * WAN router-2(CentOS) IP1:192.168.10.188(pptp vpn over the 192.168.10.254 to the Internet)
+ * WebServer http://myip.net.il
+
+=== Fourth LAB - OpenSUSE+Alpine ===
+Machines:
+ * Windows Client1 IP 192.168.90.1
+ * Linux Client2 IP 192.168.90.2
+ * LAN core router(Alpine) IP1:192.168.90.254, Wan interface IP2:192.168.10.117
+ * WAN router-1(OpenSUSE) IP1:192.168.10.254(pppoe dsl connection)
+ * WAN router-2(CentOS) IP1:192.168.10.188(pptp vpn over the 192.168.10.254 to the Internet)
+ * WebServer http://myip.net
+
 = Load Balancing - out of the box =
 As a Computer Science novice one of the important tasks in the real world would be to maintain balance between many worlds.<<BR>>
 From one hand the Computer Science is tempting and gives lots of power while on the other side of these machines there are Billions of lives around the clock in the past, present and future.<<BR>>
