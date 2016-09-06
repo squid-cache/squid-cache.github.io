@@ -14,7 +14,7 @@
 
 == Outline ==
 
-Adobe products make up a significant portion of users and traffic offices throughout the world. Therefore, the question of caching these downloads confronts every administrator caching proxy. Unfortunately, Adobe's own reasons, has taken a number of steps, very difficult not only caching, but simply downloading their products through Squid. We consider here a few workaround ways, showing how it is possible to provide downloading of the products of this company in principle.
+Significant portion of users and offices uses Adobe products throughout the world. Therefore, the question of caching these downloads confronts every administrator caching proxy. Unfortunately, Adobe's own reasons, has taken a number of steps, very difficult not only caching, but simply downloading their products through Squid. We consider here a few workaround ways, showing how it is possible to provide downloading of the products of this company in principle.
 
 == Usage ==
 
