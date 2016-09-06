@@ -22,19 +22,42 @@ These configuration examples are used to download Adobe products via a proxy ser
 
 == More ==
 
-Create more sections as you wish.
+Since an increasing number of Web sites, for various reasons - as a reasonable and not too intelligent, passes under HTTPS, and Adobe in this case is no exception, most of the downloads carried out in a tunnel. Moreover, modern Web downloaders from Adobe uses [[https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning|]]SSL pinning. Thus, only the downloader loading itself can be cached. In addition, at the present time (September 2016) only the updates downloaded Adobe products via the web, using HTTP protocol and can be (do not know how long will this possibility) cached using Squid. The bad news, but it is something for which all that are actively fighting.
 
 == Squid Configuration File ==
 
-Paste the configuration file like this:
+To make it possible, in principle, download Adobe products through a proxy, paste the configuration file like this:
 
 {{{
 
-acl localhost src 127.0.0.1
-http_access deny all
+# SSL bump rules
+acl DiscoverSNIHost at_step SslBump1
+acl NoSSLIntercept ssl::server_name_regex -i "/usr/local/squid/etc/acl.url.nobump"
+ssl_bump peek DiscoverSNIHost
+ssl_bump splice NoSSLIntercept
+ssl_bump bump all
 
 }}}
 
+Paste to /usr/local/squid/etc/acl.url.nobump next sites:
+
+{{{
+# Adobe updates (web installation)
+# This requires to splice due to SSL-pinned web-downloader
+get\.adobe\.com
+platformdl\.adobe\.com
+fpdownload\.adobe\.com
+ardownload[0-9]\.adobe\.com
+}}}
+
+Please note, this sites is required to download Adobe Flash and Adobe Acrobat Reader - the most common Adobe products.
+
+To ensure that caching updates, and Web downloader themselves, also add the following lines to the configuration:
+
+{{{
+# Other setups and updates
+refresh_pattern -i \.(zip|[g|b]z2?|exe|ms[i|p]|cvd|cdiff|mar)$	43200	100%	129600	reload-into-ims
+}}}
 
 ----
 CategoryConfigExample
