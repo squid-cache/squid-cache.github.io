@@ -6,6 +6,8 @@
 
 = Caching Adobe Products and Updates =
 
+ ''by YuriVoinov''
+
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 <<TableOfContents>>
