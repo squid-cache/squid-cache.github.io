@@ -22,7 +22,7 @@ These configuration examples are used to download Adobe products via a proxy ser
 
 == More ==
 
-Since an increasing number of Web sites, for various reasons - as a reasonable and not too intelligent, passes under HTTPS, and Adobe in this case is no exception, most of the downloads carried out in a tunnel. Moreover, modern Web downloaders from Adobe uses [[https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning|]]SSL pinning. Thus, only the downloader loading itself can be cached. In addition, at the present time (September 2016) only the updates downloaded Adobe products via the web, using HTTP protocol and can be (do not know how long will this possibility) cached using Squid. The bad news, but it is something for which all that are actively fighting.
+Since an increasing number of Web sites, for various reasons - as a reasonable and not too intelligent, passes under HTTPS, and Adobe in this case is no exception, most of the downloads carried out in a tunnel. Moreover, modern Web downloaders from Adobe uses [[https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning|SSL pinning]]. Thus, only the downloader loading itself can be cached. In addition, at the present time (September 2016) only the updates downloaded Adobe products via the web, using HTTP protocol and can be (do not know how long will this possibility) cached using Squid. The bad news, but it is something for which all that are actively fighting.
 
 == Squid Configuration File ==
 
