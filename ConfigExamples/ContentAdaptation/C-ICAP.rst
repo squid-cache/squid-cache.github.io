@@ -353,22 +353,48 @@ For really big installations you can place all checking infrastructure component
 
 In case of paranoia, you can also enable DNSBL URL checking support to your C-ICAP-compatible setup.
 
-To do this you only requires:
+To do this you requires to download and install [[https://sourceforge.net/projects/c-icap/files/c-icap-modules/0.4.x/|c-icap modules]]:
 
-add this to your c-icap.conf file:
+{{{
+# 32 bit GCC
+./configure 'CFLAGS=-O3 -m32 -pipe' 'CPPFLAGS=-I/usr/sfw/include -I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
+
+# 64 bit GCC
+./configure 'CFLAGS=-O3 -m64 -pipe' 'CPPFLAGS=-I/usr/sfw/include -I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
+
+gmake
+gmake install-strip
+}}}
+
+then add this to your c-icap.conf file:
 
 {{{
 Module common dnsbl_tables.so
+Include srv_url_check.conf
+}}}
+
+srv_url_check.conf contents:
+
+{{{
+Service url_check_module srv_url_check.so
+
+url_check.LookupTableDB blackuribl domain dnsbl:black.uribl.com
+
+url_check.Profile default block blackuribl
+url_check.Profile default pass ALL
 }}}
 
 and add this to your squid.conf:
 
 {{{
 # DNSBL service
-# Requires to enable "Module common dnsbl_tables.so" in c-icap.conf
-icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/url_check bypass=on
+# Requires to enable "Module common dnsbl_tables.so" in c-icap.conf,
+# and install and configure c-icap modules!
+icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/srv_url_check bypass=on
 adaptation_access service_dnsbl_req allow all
 }}}
+
+Finally you must restart c-icap service and restart your squid. That's basically all.
 
  . {i} Note: Add DNSBL ICAP service '''before''' ClamAV antivirus service.
 
