@@ -357,10 +357,10 @@ To do this you requires to download and install [[https://sourceforge.net/projec
 
 {{{
 # 32 bit GCC
-./configure 'CFLAGS=-O3 -m32 -pipe' 'CPPFLAGS=-I/usr/sfw/include -I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
+./configure 'CFLAGS=-O3 -m32 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
 
 # 64 bit GCC
-./configure 'CFLAGS=-O3 -m64 -pipe' 'CPPFLAGS=-I/usr/sfw/include -I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
+./configure 'CFLAGS=-O3 -m64 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
 
 gmake
 gmake install-strip
