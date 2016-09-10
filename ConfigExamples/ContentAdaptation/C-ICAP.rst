@@ -349,6 +349,28 @@ Point your client machine behind proxy to [[http://www.eicar.org/download/eicar_
 
 For really big installations you can place all checking infrastructure components on separate nodes - i.e. proxy, c-icap server, ClamAV. That's all, folks! ;)
 
+== DNSBL filtering support ==
+
+In case of paranoja, you can also enable DNSBL URL checking support to your C-ICAP-compatible setup.
+
+To do this you only requires:
+
+add this to your c-icap.conf file:
+
+{{{
+Module common dnsbl_tables.so
+}}}
+
+and add this to your squid.conf:
+
+{{{
+# DNSBL service
+# Requires to enable "Module common dnsbl_tables.so" in c-icap.conf
+icap_service service_req reqmod_precachу icap://localhost:1344/url_check bypass=on
+}}}
+
+ . {i} Note: Add DNSBL ICAP service '''before''' ClamAV antivirus service.
+
 == Performance and tuning ==
 
 In practice, configuration with clamd and squidclamav is fastest. In fact, squidclamav using INSTREAM to perform AV checks, which is the best way.  You may need only adjust the amount of the workers of C-ICAP service according to your loads. You will have only two bottlenecks - the interaction your proxy server with C-ICAP and interaction C-ICAP with antivirus service. You need to reduce latency of this interactions to minimum as possible.
