@@ -373,7 +373,7 @@ Module common dnsbl_tables.so
 Include srv_url_check.conf
 }}}
 
-srv_url_check.conf contents:
+Adjust srv_url_check.conf as follows:
 
 {{{
 Service url_check_module srv_url_check.so
