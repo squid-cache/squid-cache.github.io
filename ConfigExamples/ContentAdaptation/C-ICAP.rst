@@ -366,7 +366,8 @@ and add this to your squid.conf:
 {{{
 # DNSBL service
 # Requires to enable "Module common dnsbl_tables.so" in c-icap.conf
-icap_service service_req reqmod_precache icap://localhost:1344/url_check bypass=on
+icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/url_check bypass=on
+adaptation_access service_dnsbl_req allow all
 }}}
 
  . {i} Note: Add DNSBL ICAP service '''before''' ClamAV antivirus service.
