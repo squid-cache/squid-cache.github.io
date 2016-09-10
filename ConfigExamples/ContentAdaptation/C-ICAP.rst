@@ -173,7 +173,7 @@ abortcontent ^audio\/.*$
 abortcontent ^application\/mp4$
 
 # Do not scan flash files
-abort ^.*\.swf$
+abort ^.*\.swfx?$
 abortcontent ^application\/x-shockwave-flash$
 
 # Do not scan sequence of framed Microsoft Media Server (MMS) data packets
