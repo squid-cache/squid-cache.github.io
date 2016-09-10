@@ -38,7 +38,8 @@ You can effectively enforce blocking torrents with Cisco router like this:
 
 {{{
 !
-ip nbar protocol-pack flash0:pp-adv-isrg2-155-3.M1-23-15.0.0.pack
+!ip nbar protocol-pack flash0:pp-adv-isrg2-155-3.M1-23-15.0.0.pack
+ip nbar protocol-pack flash0:/pp-adv-isrg2-155-3.M2-23-22.0.0.pack 
 !
 class-map match-any torrent
  match protocol bittorrent
