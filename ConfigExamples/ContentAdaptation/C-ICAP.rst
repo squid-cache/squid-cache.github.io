@@ -351,7 +351,7 @@ For really big installations you can place all checking infrastructure component
 
 == DNSBL filtering support ==
 
-In case of paranoja, you can also enable DNSBL URL checking support to your C-ICAP-compatible setup.
+In case of paranoia, you can also enable DNSBL URL checking support to your C-ICAP-compatible setup.
 
 To do this you only requires:
 
