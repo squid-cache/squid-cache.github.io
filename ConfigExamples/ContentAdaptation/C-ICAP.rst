@@ -397,6 +397,30 @@ adaptation_access service_dnsbl_req allow all
 Finally you must restart c-icap service and restart your squid. That's basically all.
 
  . {i} Note: Add DNSBL ICAP service '''before''' ClamAV antivirus service.
+
+When using squidclamav AV service, can be better to create adaptation chain on requests, like this:
+
+{{{
+icap_enable on
+icap_send_client_ip on
+icap_send_client_username on
+icap_client_username_header X-Client-Username
+icap_preview_enable on
+icap_preview_size 1024
+icap_service_failure_limit -1
+# DNSBL service
+# Requires to enable "Module common dnsbl_tables.so" in c-icap.conf
+icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/url_check bypass=on
+# ClamAV service
+icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=on
+
+adaptation_service_chain svcRequest service_dnsbl_req service_avi_req
+adaptation_access svcRequest allow all
+
+icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=off
+adaptation_access service_avi_resp allow all
+}}}
+
  . {i} Note: When using DNSBL, it is recommended to set up DNS cache on C-ICAP host due to performance reasons.
 
 == Performance and tuning ==
