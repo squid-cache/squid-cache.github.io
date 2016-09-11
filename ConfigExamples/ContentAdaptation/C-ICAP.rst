@@ -259,9 +259,9 @@ icap_send_client_username on
 icap_client_username_header X-Authenticated-User
 icap_preview_enable on
 icap_preview_size 1024
-icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=off
+icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=on
 adaptation_access service_avi_req allow all
-icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=on
+icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=off
 adaptation_access service_avi_resp allow all
 }}}
 
@@ -390,7 +390,7 @@ and add this to your squid.conf:
 # DNSBL service
 # Requires to enable "Module common dnsbl_tables.so" in c-icap.conf,
 # and install and configure c-icap modules!
-icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/srv_url_check bypass=on
+icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/url_check bypass=on
 adaptation_access service_dnsbl_req allow all
 }}}
 
