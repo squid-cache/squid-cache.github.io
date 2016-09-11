@@ -282,7 +282,7 @@ Like eCAP, you can perform antivirus checking with libclamav. This not requires 
 ./configure 'CFLAGS=-O3 -m32 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
 
 # 64 bit GCC
-./configure 'CFLAGS=-O3 -m64 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib/amd64'
+./configure 'CFLAGS=-O3 -m64 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib/'
 
 gmake
 gmake install-strip
@@ -376,7 +376,7 @@ Include srv_url_check.conf
 Adjust srv_url_check.conf as follows:
 
 {{{
-Service url_check_module srv_url_check.so
+Service url_check srv_url_check.so
 
 url_check.LookupTableDB blackuribl domain dnsbl:black.uribl.com
 
@@ -397,6 +397,7 @@ adaptation_access service_dnsbl_req allow all
 Finally you must restart c-icap service and restart your squid. That's basically all.
 
  . {i} Note: Add DNSBL ICAP service '''before''' ClamAV antivirus service.
+ . {i} Note: When using DNSBL, it is recommended to set up DNS cache on C-ICAP host due to performance reasons.
 
 == Performance and tuning ==
 
