@@ -410,14 +410,14 @@ icap_preview_size 1024
 icap_service_failure_limit -1
 # DNSBL service
 # Requires to enable "Module common dnsbl_tables.so" in c-icap.conf
-icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/url_check bypass=on
+icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/url_check bypass=on routing=on
 # ClamAV service
 icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=on
 
 adaptation_service_chain svcRequest service_dnsbl_req service_avi_req
 adaptation_access svcRequest allow all
 
-icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=off
+icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav
 adaptation_access service_avi_resp allow all
 }}}
 
