@@ -14,6 +14,8 @@
  * '''Developer''': AlexRousskov and Dmitry Kurochkin
  * '''More''': Based on [[Features/RockStore|Rock Store]] feature.
 
+<<TableOfContents>>
+
 = Definitions =
 
  * Small: fits in one db slot (in Small Rock, the slot size is the same as max-size and all cached entries are small).
@@ -104,6 +106,29 @@ Several alternative design options have been considered and either rejected or p
  1. We could group db slot pointers into inodes, indirect-nodes, and doubly-indirect-nodes like traditional file systems do. This would allow us to search for a particular offset within an entry much faster, without scanning the entry chain, one map item at a time. This optimization should be considered when the hashing algorithm stabilizes (as it will affect whether we need pointers from slots to entries when finding a victim to purge).
  1. In configurations where most cached entries are larger than one slot, it is possible to save RAM and map I/O by splitting the map into two: a “next slot” map (version number plus just one or two 4-byte pointers per slot) and an inode map (one larger item per cached entry with all the entry metadata). This optimization should be considered when the map structure and hashing algorithm stabilizes, especially if there are cases where there is at least an order of magnitude  a difference between the number of db slots and the number of cached entries (in a full db).
 
+
+== Slow cache index build ==
+
+Rock caches usually build their in-RAM index slower than UFS caches do:
+
+{{{
+Rock: 2016/09/13 00:25:34|   Took 1498.42 seconds (3972.24 objects/sec).
+UFS:  2016/09/13 00:00:51|   Took 5.71 seconds (533481.90 objects/sec).
+}}}
+
+Longer index build times are a side effect of design decision #1 discussed above. There are several important wrinkles here:
+
+ 1. Squid start itself is not slow. Cache index build is slow.
+
+ 1. Squid can serve requests, including cache hits while it builds rock index, but indexing does affect overall Squid performance and hit ratios.
+
+ 1. Avoid comparing loading a "few" UFS entries (from the clean swap state) with scanning all available cache slots for rock. The biggest difference is observed for a virtually empty UFS cache that was in use for a short time (small swap.state). Rock focus is on Squid running for a long time with a full cache (the common and intended use case).
+
+ 1. We are essentially comparing a from-scratch index build for rock with a clean index loading for UFS. If you remove all swap state files, UFS indexing time will probably be worse than that of rock. If you leave dirty swap state files, then UFS indexing may slow down significantly; this happens after Squid crashes, for example. Rock indexing does not depend on the previous Squid state.
+
+ 1. Rock indexing code can and probably [[SquidFaq/AboutSquid#How_to_add_a_new_Squid_feature.2C_enhance.2C_of_fix_something.3F|will be]] optimized in various ways, of course. Many trade offs are involved, and some optimizations may hurt runtime performance. For example, there is a trade-off between
+  * maintaining a disk index (i.e., swap state files) at runtime (and then saving a clean index at shutdown) like UFS stores do and
+  * building an index from scratch by scanning the entire cache at start like rock stores do.
 
 ----
 CategoryFeature
