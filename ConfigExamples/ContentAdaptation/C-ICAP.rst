@@ -440,3 +440,9 @@ In some cases, placing all services to single host is not a good idea. High-load
 
  . {i} Note:  When your upgrade your C-ICAP server, you also must (in most cases) rebuild squidclamav from sources (it is recommended) to aviod possible API incompatibility.
  . {i} Note: In case of c-icap permanently restarts, increase DebugLevel in c-icap.conf and check ServerLog first. Beware, DebugLevel 0 is production value, which can mask any problems during tune up.
+
+=== C-ICAP/eCAP co-existance ===
+
+When you requires both C-ICAP and eCAP using in one Squid's instance, you must remember: order is important. I.e., ecap services configuration must be preceded icap configuration in squid.conf.
+
+ . {i} Note: Because of after icap calls no more adaptation executes. And further no ecap calls can be do and silently ignores. The only way to change this behaviour - to use the adaptation chains.
