@@ -54,8 +54,8 @@ Notes:
 ||#18 || FrancescoChemolli || drive the process for seeking and electing a new board member, starting with the announcement. || not done ||
 ||#18 || FrancescoChemolli || send Support Points public announcement|| not done ||
 ||#18 || AmosJeffries || provide Francesco with service listing contacts || not done ||
-||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. || partial - see [[CoverityTesting]] ||
-||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.|| circulated draft ||
+||#16 || FrancescoChemolli || update wiki text regarding Coverity access to request candidates to introduce themselves to Henrik when requesting and to motivate their request, much like what's done on the wiki now for accepting new editors. || Done. See [[CoverityTesting]] ||
+||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.|| second draft sent ||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
 ||#16 || HenrikNordstrom || create a Foundation account to host .org and probably a few other domains at the registrar of his choice. Foundation to pay for the transfers and prepay for hosting.|| not done ||
 ||#16 || sysadmin || verify that there is no services left that depends on west, then Alex to take down the hardware etc.|| not done ||
@@ -63,8 +63,8 @@ Notes:
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
 || ||
-||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan || not done || ||
-||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag ||not done || ||
+||#12 ||FrancescoChemolli ||post squid-dev message to invite developers to join Coverity Scan || done || ||
+||#12 ||FrancescoChemolli ||circulate proposal on shorter review cycle for small patches and warning flag || not done || ||
 || ||
 ||#11 ||FrancescoChemolli ||work with sysadmin to mail service listing email when it is approved and monitor responses/bounces ||waiting for message texts || ||
 || ||
