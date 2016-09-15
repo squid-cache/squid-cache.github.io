@@ -443,6 +443,8 @@ In some cases, placing all services to single host is not a good idea. High-load
 
 === C-ICAP/eCAP co-existance ===
 
+/!\ This section is wrong or misleading. To apply multiple adaptation services to the same transaction at the same vectoring point, one must use SquidConf:adaptation_service_chain. Adaptation order is often important from adaptation logic or performance point of view, but Squid supports any order of chained services. Squid adaptation chaining code does not even know the difference between ICAP and eCAP! For example, an SquidConf:adaptation_service_chain containing an ICAP service followed by an eCAP service, followed by another ICAP service is supported.
+
 When you requires both C-ICAP and eCAP using in one Squid's instance, you must remember: order is important. I.e., ecap services configuration must be preceded icap configuration in squid.conf.
 
  . {i} Note: Because of after icap calls no more adaptation executes. And further no ecap calls can be do and silently ignores. The only way to change this behaviour - to use the adaptation chains.
