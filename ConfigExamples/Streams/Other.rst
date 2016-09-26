@@ -52,5 +52,6 @@ http_reply_access deny media
 
 }}}
 
+ /!\ For you, should not come as a surprise that many popular video services using incorrect mime-types to counteract blocking by proxy operators. For example, porn sites that utilize text mime-types for video. Accordingly, not only can you use the above method to block videos from such sites. Besides, is not uncommon incorrect mime-encoding due to incorrect configuration of a number of sites.
 ----
 CategoryConfigExample
