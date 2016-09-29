@@ -61,8 +61,9 @@ In case you didn't read the previous paragraph, please do! In case you ''still''
   * UFS 
    . the old Solaris File System, which good and stable. Use "noatime" as mount option.
   * ZFS 
-   . if you want really high performance for your Squid Cache, and dont mind bug Bug:2313.
+   . if you want really high performance for your Squid Cache, and dont mind bug Bug:2313 (which is not related to ZFS on Solaris).
    . ZFS is included in Solaris beginning with Solaris 10. Release 6/06. Use "noatime" as mount option.
+   . Set logbias property for ZFS to "throughput" when zfs fs for cache created on hardware RAID level 5 and above to avoid much TCP_SWAPFAIL_MISS.
    . more about ZFS: http://www.sun.com/software/solaris/zfs_learning_center.jsp
 
 ----
