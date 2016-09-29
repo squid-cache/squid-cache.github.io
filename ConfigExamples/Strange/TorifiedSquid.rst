@@ -133,9 +133,9 @@ Adapt config snippet to your configuration.
 /etc/squid/url.tor contains what you need to tunnel:
 {{{
 torproject.*
-archive\.org$
-#livejournal\.com$
-#wordpress\.com$
+archive\.org
+#livejournal\.com
+#wordpress\.com
 #youtube.*
 #ytimg.*
 #googlevideo.*
