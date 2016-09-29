@@ -378,11 +378,17 @@ Adjust srv_url_check.conf as follows:
 {{{
 Service url_check srv_url_check.so
 
+url_check.LookupTableDB whitelist domain hash:/usr/local/etc/domain.whitelist "Whitelist"
 url_check.LookupTableDB blackuribl domain dnsbl:black.uribl.com
 
+url_check.Profile default pass whitelist
 url_check.Profile default block blackuribl
 url_check.Profile default pass ALL
+
+url_check.DefaultAction pass AddXHeader "X-Next-Services"
 }}}
+
+ . {i} Note: Using whitelist is good idea for performance reasons. It is plain text file with 2nd level domain names. All hostnames beyong this domains will be pass. Also setup DNS cache is also great idea to improve performance.
 
 and add this to your squid.conf:
 
