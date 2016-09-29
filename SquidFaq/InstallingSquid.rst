@@ -478,9 +478,9 @@ see Section on [[../RAID|RAID]]
 
 Yes. Running Squid on native ZFS-supporting systems, like Solaris or [[http://openindiana.org|OpenIndiana]] is well-known practice.
 
-In general, just set up ZFS mirror (usually the best with separate controllers for each spindle) and set recordsize 4-16k (depending your cache prefferable cache_replacement_policy). Also it can better for disk IO performance to change primarycache=metadata and secondarycache=none, and  atime=none on cache_dir filesystems. On system level the good idea is limiting ZFS ARC size to 1/8-1/4 of RAM by setting zfs:zfs_arc_max.
+In general, just set up ZFS mirror (usually the best with separate controllers for each spindle) and set recordsize 4-64k (depending your cache prefferable cache_replacement_policy). Also it can better for disk IO performance to change primarycache=metadata and secondarycache=none, and  atime=none on cache_dir filesystems. Consider to correctly set '''logbias''' property for zfs fs which Squid's cache stores. Default value for this property is ''latency'', which is appropriate for software ZFS raid/mirror. When ZFS created over hardware RAID5/10, set this property to ''throughput'' to avoid much TCP_SWAPFAIL_MISS. On system level the good idea is limiting ZFS ARC size to 1/8-1/4 of RAM by setting zfs:zfs_arc_max.
 
-ZFS works perfectly both diskd and aufs Squid storeIO modules (best choise depending your box architecture).
+ZFS works perfectly both diskd and aufs Squid storeIO modules (best choise depending your box/storage architecture).
 
 ##end
 ----
