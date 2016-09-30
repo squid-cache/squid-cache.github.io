@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-= Using C-ICAP for proxy content antivirus checking on-the-fly =
+= Using c-icap for proxy content antivirus checking on-the-fly =
 
  ''by YuriVoinov''
 
@@ -12,15 +12,15 @@
 
 == Outline ==
 
-For [[Squid-3.0]] and later we can use I-CAP for content filtering or antivirus checking. This config example describes how to scan for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It is a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for [[Squid-3.4]] releases and above with last configuration changes.
+For [[Squid-3.0]] and later we can use ICAP for content filtering or antivirus checking. This config example describes how to scan for viruses on-the-fly using [[http://squidclamav.darold.net/|squidclamav]] antivirus module in combination with [[http://www.clamav.net/index.html|ClamAV antivirus]] service. It is a bit different with [[http://squidclamav.darold.net/config.html|recommended squidclamav configuration]] and adapted for [[Squid-3.4]] releases and above with latest configuration changes.
 
 == Usage ==
 
 This will be useful both for interception and explicit proxies. With proper ClamAV configuration verification brings almost no noticeable delay and performed with acceptable latency.
 
-== Building C-ICAP server ==
+== Building c-icap server ==
 
-Download latest c-icap sources from [[http://c-icap.sourceforge.net/download.html|here]]. (Changelog is [[https://sourceforge.net/p/c-icap/news|here]]). For antivirus checking you not needed BerkeleyDB support. Then configure as shown below and make.
+Download latest c-icap sources from [[http://c-icap.sourceforge.net/download.html|here]]. (Changelog is [[https://sourceforge.net/p/c-icap/news|here]]). For antivirus checking you do not need BerkeleyDB support. Then configure as shown below and make.
 {{{
 # 32 bit
 ./configure 'CXXFLAGS=-O2 -m32 -pipe' 'CFLAGS=-O2 -m32-pipe' --enable-large-files --without-bdb --prefix=/usr/local
@@ -30,7 +30,7 @@ make/gmake
 make/gmake install-strip
 }}}
 
-== Configuring and run C-ICAP server ==
+== Configuring and run c-icap server ==
 
 Edit c-icap.conf as follows:
 {{{
@@ -62,10 +62,10 @@ AccessLog /var/log/i-cap_access.log
 Edit paths if necessary and start c-icap server. Add startup script to your OS.
 
  . {i} Note: [[http://squidclamav.darold.net/news.html|Method OPTIONS is excluding from scanning]] in latest squidclamav release (starting from squidclamav version 6.14). So, permit access for it not required.
- . {i} Note: TmpDir usually set to /var/tmp (this is default). Be '''very''' careful when change it. TmpDir uses for temp files when oblect in memory greater than MaxMemObject. And this temp files (CI_TMP_XXXX) remains in TmpDir when processing complete. Schedule housekeeping for TmpDir otherwise free space on /var filesystem can ran out on high loaded servers.
- . {i} Note: In some cases you can increase MaxMemObject to increase performance at the cost of some increase in consumption of RAM. Sometimes it is advisable to set this parameter to the maximum value of the logical IO unit for your OS.
+ . {i} Note: !TmpDir usually set to /var/tmp (this is default). Be '''very''' careful when change it. !TmpDir uses for temp files when oblect in memory greater than !MaxMemObject. And this temp files (CI_TMP_XXXX) remains in !TmpDir when processing complete. Schedule housekeeping for !TmpDir otherwise free space on /var filesystem can ran out on high loaded servers.
+ . {i} Note: In some cases you can increase !MaxMemObject to increase performance at the cost of some increase in consumption of RAM. Sometimes it is advisable to set this parameter to the maximum value of the logical IO unit for your OS.
 
-== Antivirus checking with C-ICAP, ClamAV daemon and Squidclamav ==
+== Antivirus checking with c-icap, ClamAV daemon and Squidclamav ==
 
 Of course, this installation requires more resources, especially when installing on single host. But also provides more flexibility and - in some cases - more scalability.
 
@@ -75,7 +75,7 @@ ClamAV including in many repositories and can be got from them. When configuring
 
   . {i} Note: ClamAV daemon (clamd) is memory consumption service, it uses about 200-300 megabytes in minimal configuration (mainly used to store AV database in memory), it can be higher during deep scans of big archives. So, you can put it on separate node with fast network interconnect with your proxy (this option is valid only when using squidclamav).
 
- . {i} Note: It is important to set StreamMaxLength parameter in clamd.conf to the same value as maxsize in squidclamav.conf.
+ . {i} Note: It is important to set !StreamMaxLength parameter in clamd.conf to the same value as maxsize in squidclamav.conf.
 
 I.e., uncomment and adjust in clamd.conf:
 
@@ -241,15 +241,14 @@ whitelist opencsw\.org
 
 and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory.  
 
- . {i} Note: You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize C-ICAP templates according to your needs.
+ . {i} Note: You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize c-icap templates according to your needs.
 
 === Squid Configuration File ===
 
- . {i} [[Squid-3.4]] needs to be built with the '''--enable-icap-client''' option. Newer releases have this enabled by default.
+ . {i} [[Squid-3.4]] and older need to be built with the '''--enable-icap-client''' option. Newer releases have this enabled by default.
 
 Paste the configuration file like this:
 {{{
-
 # -------------------------------------
 # Adaptation parameters
 # -------------------------------------
@@ -265,17 +264,17 @@ icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav
 adaptation_access service_avi_resp allow all
 }}}
 
- . {i} Note: Some platforms experiences difficults with native resolving localhost to 127.0.0.1. If you have troubles with connectivity to ICAP service, just replace '''localhost''' above to '''127.0.0.1'''.
+ . {i} IPv6-enabled operating systems may resolve localhost to the dual-stack enabled ::1 address. If you have troubles with connectivity to IPv4-only ICAP services, just replace '''localhost''' above with '''127.0.0.1'''.
 
-== Antivirus checking with C-ICAP and virus checking module ==
+== Antivirus checking with c-icap and virus checking module ==
 
 Like eCAP, you can perform antivirus checking with libclamav. This not requires daemon and fries up to 500 Mbytes (average) required to run clamd. This can be useful for single-tier setups.
 
 [[http://sourceforge.net/projects/c-icap/files/c-icap-modules/|I-CAP modules provides]] provides two submodules: using ClamAV daemon, and using libclamav only.
 
-=== Build C-ICAP modules ===
+=== Build c-icap modules ===
 
-[[http://sourceforge.net/projects/c-icap/files/c-icap-modules/|Download last modules]], then configuring and build according your ClamAV and C-ICAP build types (32 or 64 bit):
+[[http://sourceforge.net/projects/c-icap/files/c-icap-modules/|Download last modules]], then configuring and build according your ClamAV and c-icap build types (32 or 64 bit):
 
 {{{
 # 32 bit GCC
@@ -288,9 +287,9 @@ gmake
 gmake install-strip
 }}}
 
- . {i} Note: To build submodule clamav_mod (uses libclamav) you can require patch your C-ICAP installation with last fixes. It uses OpenSSL headers dependency and you can have problems with modules build. This can be workarounded if your system has older OpenSSL version (i.e. 0.9.8). To do that just add old OpenSSL headers path to CPPFLAGS variable.
+ . {i} To build submodule clamav_mod (uses libclamav) you can require patch your c-icap installation with last fixes. It uses OpenSSL headers dependency and you can have problems with modules build. This can be workarounded if your system has an older OpenSSL version (i.e. 0.9.8). To do that just add old OpenSSL headers path to CPPFLAGS variable.
 
-=== Configuring C-ICAP modules ===
+=== Configuring c-icap modules ===
 
 Add non-default parameters into clamav_mod.conf:
 
@@ -341,7 +340,9 @@ icap_service service_avi_resp respmod_precache icap://localhost:1344/virus_scan 
 adaptation_access service_avi_resp allow all
 }}}
 
- . {i} Note: Against squidclamav, you must bypass whitelisted sites with Squid ACL's and adaptation_access directives. Also you can customize virus_scan module templates to your language etc. Also beware: without clamd you will have the same 300-500 megabytes of loaded AV database to one of c-icap process with libclamav. ;)
+ . {i} When using squidclamav, you must bypass whitelisted sites with Squid ACL's and SquidConf:adaptation_access directives. Also you can customize virus_scan module templates to your language etc.
+
+ . {X} Also beware: without clamd you will have the same 300-500 megabytes of loaded AV database to one of c-icap process with libclamav. ;)
 
 == Testing your installation ==
 
@@ -351,7 +352,7 @@ For really big installations you can place all checking infrastructure component
 
 == DNSBL filtering support ==
 
-In case of paranoia, you can also enable DNSBL URL checking support to your C-ICAP-compatible setup.
+In case of paranoia, you can also enable DNSBL URL checking support to your c-icap compatible setup.
 
 To do this you requires to download and install [[https://sourceforge.net/projects/c-icap/files/c-icap-modules/0.4.x/|c-icap modules]]:
 
@@ -427,30 +428,33 @@ icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav
 adaptation_access service_avi_resp allow all
 }}}
 
- . {i} Note: When using DNSBL, it is recommended to set up DNS cache on C-ICAP host due to performance reasons.
+ . {i} When using DNSBL, it is recommended to set up a DNS cache on the c-icap host for performance.
 
 == Performance and tuning ==
 
-In practice, configuration with clamd and squidclamav is fastest. In fact, squidclamav using INSTREAM to perform AV checks, which is the best way.  You may need only adjust the amount of the workers of C-ICAP service according to your loads. You will have only two bottlenecks - the interaction your proxy server with C-ICAP and interaction C-ICAP with antivirus service. You need to reduce latency of this interactions to minimum as possible.
+In practice, configuration with clamd and squidclamav is fastest. In fact, squidclamav using INSTREAM to perform AV checks is the best way. You may need only adjust the amount of the workers in the c-icap service according to your load. You will have only two bottlenecks - the interaction of your proxy server with c-icap and interaction of c-icap with antivirus service. You need to reduce latency of these interactions to the minimum possible.
 
-In some cases, placing all services to single host is not a good idea. High-loaded setups must be separated between tiers. Avoid overload - especially in the case of installation services on a single host. Reduce memory consumption as possible. Do not set high clamd system limits - this increases latency and memory consumption and can lead to a system crash during peak hours.
+In some cases, placing all services on a single host is not a good idea. High-load setups must be separated between tiers.
+ * Avoid overload - especially in the case of all services installed on a single host.
+ * Reduce memory consumption as possible. Do not set high clamd system limits - these increases latency and memory consumption and can lead to a system crash during peak hours.
 
- . {i} Note: C-ICAP workers produces high CPU load during scanning in all cases. You must minimize scanning as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
+ . {i} c-icap workers produces high CPU load during scanning in all cases. You must minimize scanning as much as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
 
- . {i} Note: On some Solaris setups you can get performance gain by using libmtmalloc for c-icap processes. Just add -lmtmalloc to CFLAGS and CXXFLAGS when configuring. This also can reduce memory lock contention on multi-core CPU boxes. This solution can also reduce memory consumption problem for clamd.
+ . {i} On some Solaris setups you can get performance gain by using libmtmalloc for c-icap processes. Just add ''-lmtmalloc'' to CFLAGS and CXXFLAGS when configuring. This also can reduce memory lock contention on multi-core CPU boxes. This solution can also reduce the memory consumption problem for clamd.
 
- . {i} Note: Clamd with custom databases ([[https://www.securiteinfo.com/|SecuriteInfo]], etc.) uses 700 megabytes of RAM and above. Better in this case using separate server connected by TCP.
+ . {i} Clamd with custom databases ([[https://www.securiteinfo.com/|SecuriteInfo]], etc.) uses 700 megabytes of RAM and above. Better in this case to use separate servers.
 
 
 == Troubleshooting ==
 
- . {i} Note:  When your upgrade your C-ICAP server, you also must (in most cases) rebuild squidclamav from sources (it is recommended) to aviod possible API incompatibility.
- . {i} Note: In case of c-icap permanently restarts, increase DebugLevel in c-icap.conf and check ServerLog first. Beware, DebugLevel 0 is production value, which can mask any problems during tune up.
+ . {i} When upgrading c-icap server, you also need (in most cases) to rebuild squidclamav to aviod possible API incompatibility.
 
-=== C-ICAP/eCAP co-existance ===
+ . {i} In case of c-icap permanently restarts, increase !DebugLevel in c-icap.conf and check !ServerLog first. Beware, !DebugLevel 0 is production value, which can mask any problems during tune up.
+
+=== c-icap/eCAP co-existance ===
 
 To apply multiple adaptation services to the same transaction at the same vectoring point, one must use SquidConf:adaptation_service_chain. Adaptation order is often important from adaptation logic or performance point of view, but Squid supports any order of chained services. Squid adaptation chaining code does not even know the difference between ICAP and eCAP! For example, an SquidConf:adaptation_service_chain containing an ICAP service followed by an eCAP service, followed by another ICAP service is supported.
 
-When you requires both C-ICAP and eCAP using in one Squid's instance, you must remember: order of adaptations and/or adaptation_access ACL's is important. Adaptation logic, on the one hand, defines in adaptation services, on the other hand, in adaptation_access directives. In some cases, adaptation actions chain can be mutually exclusive. So, be careful with adaptation configuration. Thoroughly test adaptation logic.
+When you require both c-icap and eCAP in one Squid's instance, you must remember: order of adaptation service/chain definitions and SquidConf:adaptation_access ACL's is important. Adaptation logic defines in adaptation service default order of preference, in SquidConf:adaptation_access directives define which services or chains are able to be used for the transaction being considered. In some cases, adaptation actions chain can be mutually exclusive. So, be careful with adaptation configuration. Thoroughly test adaptation logic.
 
- . {i} Note: The simplest case is to chain adaptations with the same access scheme. When access scheme is different for chained adaptations, use adaptation_access in correct sequence to achieve required adaptation goals. 
+ . {i} Note: The simplest case is to chain adaptations with the same access scheme. When access scheme is different for chained adaptations, use SquidConf:adaptation_access in correct sequence to achieve required adaptation goals. 
