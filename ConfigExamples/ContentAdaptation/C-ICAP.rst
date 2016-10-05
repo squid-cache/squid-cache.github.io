@@ -251,7 +251,7 @@ whitelist /usr/local/etc/squidclamav_whitelist
 
 }}}
 
-where squidclamav_whitelist contaions:
+where squidclamav_whitelist contains:
 
 {{{
 
