@@ -241,6 +241,29 @@ whitelist opencsw\.org
 
 and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX (where xx_XX matches your language) into your web server cgi-bin directory.  
 
+As whitelist can be big enough, to reduce maintenance and simplify administration you can create separate file contains whitelist regex's and configure squidclamav as follows:
+
+{{{
+
+# White list some sites
+# Abort both AV and chained program
+whitelist /usr/local/etc/squidclamav_whitelist
+
+}}}
+
+where squidclamav_whitelist contaions:
+
+{{{
+
+clamav\.net
+securiteinfo\.com
+sanesecurity\.com
+clamav\.bofhland\.org
+threatcenter\.crdf\.fr
+...
+
+}}}
+
  . {i} Note: You may want to use I-CAP templates for redirection, against squidclamav redirection. In this case you must customize c-icap templates according to your needs.
 
 === Squid Configuration File ===
