@@ -4,7 +4,7 @@
 
 ''by YuriVoinov''
 
-= Signal messenger =
+= Signal Messenger =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
