@@ -16,6 +16,24 @@
 
 Telegram uses own protocol, MProto, which can be utilize TCP/SOCKS/HTTP over own tunneling. Ergo, there is too difficult to completely block Telegram. To do that, you must use complex configuration: you need to block TCP/HTTP/SOCKS channel.
 
+== How to pass Telegram ==
+
+In case of you require to '''pass''' Telegram, keep in mind, starting from version 0.10.11 (for tdesktop) Telegram client uses pinned SSL connection during bootstrap connection to 149.154.164.0/22. So, SSL Bump-aware proxy must me configured to splice initial connection Telegram to server:
+
+{{{
+
+# SSL bump rules
+acl DiscoverSNIHost at_step SslBump1
+# Splice Telegram bootstrap
+acl NoSSLIntercept ssl::server_name_regex 149\.154\.164\.
+ssl_bump peek DiscoverSNIHost
+ssl_bump bump !NoSSLIntercept all
+ssl_bump splice all
+
+}}}
+
+It also can be uses as block tool for Telegram - just remove Telegram net from splice ACL.
+
 == Some details ==
 
 You may want to block Telegram if you live in censorship-friendly country. To do that you need to block SOCKS protocol (by any way) in your network, and ban Telegram access point with 149.154.164.0/22 network.
