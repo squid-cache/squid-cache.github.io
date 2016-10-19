@@ -38,7 +38,7 @@ acl SSL_ports port 4433 8443 # Signal Messenger
 
 With the above your regular access permissions for any given client are applied to Signal. Just the same as if it were performing HTTPS connections.
 
- . {X} Note that port 80 is still too unsafe to allow generic CONNECT to happen on it.
+ . {X} Note that port 80 is still too unsafe to allow generic CONNECT to happen on it. However, Signal client often can't connect without permission CONNECT to port 80 at textsecure-service-ca.whispersystems.org. You are warned.
 
 
 If your proxy is configured to use [[Features/SslPeekAndSplice]], also add this to configuration:
