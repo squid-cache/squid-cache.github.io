@@ -458,8 +458,10 @@ adaptation_access service_avi_resp allow all
 In practice, configuration with clamd and squidclamav is fastest. In fact, squidclamav using INSTREAM to perform AV checks is the best way. You may need only adjust the amount of the workers in the c-icap service according to your load. You will have only two bottlenecks - the interaction of your proxy server with c-icap and interaction of c-icap with antivirus service. You need to reduce latency of these interactions to the minimum possible.
 
 In some cases, placing all services on a single host is not a good idea. High-load setups must be separated between tiers.
+ * Do not do extra work - use white lists where possible.
  * Avoid overload - especially in the case of all services installed on a single host.
  * Reduce memory consumption as possible. Do not set high clamd system limits - these increases latency and memory consumption and can lead to a system crash during peak hours.
+ * Use chains to adapt and customize the sequence correctly, and make correct access - so as not to overload the individual stages of unnecessary work.
 
  . {i} c-icap workers produces high CPU load during scanning in all cases. You must minimize scanning as much as possible. Do not scan all data types. Do not scan trusted sites. And do not try to scan Youtube videos, of course. :)
 
