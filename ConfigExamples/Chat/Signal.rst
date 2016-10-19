@@ -52,7 +52,7 @@ ssl_bump splice NoSSLIntercept
 # other SSL-bump rules ...
 }}}
 
-On the other hand, to '''prevent access to the Internet for Signal'''. Removing the above configuration is sufficient.
+On the other hand, to '''prevent access to the Internet for Signal''' removing the above configuration is sufficient.
 
 ----
 CategoryConfigExample
