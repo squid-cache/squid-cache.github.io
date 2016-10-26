@@ -22,6 +22,8 @@ This is an alert generated as part of a new security feature added in [[Squid-3.
 
 As outlined in advisory [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|SQUID-2011:1]] these scripts are able to bypass browser security measures and spread infections through the network. They do so by forging the ''Host:'' headers on HTTP traffic going through an interception proxy.
 
+  . {i} When port 443 is intercepted the client SNI value used in a generated CONNECT request can have this check perfomed. If that SNI name does not resolve to the destination server IP(s) this message will be output and TLS halted.
+
 To avoid this vulnerability Squid has resolved the domain name the client was supposedly contacting and determined that the IP the HTTP request was going to does not belong to that domain name.
 
  * The first line of the three cites:
@@ -66,8 +68,12 @@ The below details are mandatory configuration for NAT intercept or TPROXY proxie
  * ensure that the DNS servers Squid uses are the same as those used by the client(s).
   . Certain popular CDN hosting networks use load balancing systems to determine which website IPs to return in the DNS query response. These are based on the querying DNS resolvers IP. If Squid and the client are using different resolvers there is an increased chance of different results being given. Which can lead to this alert.
 
- * ensure that your DNS servers are obeying the IP rotation TTL for that domain name
+ * ensure that your DNS servers are obeying the IP rotation TTL for that domain name.
   . Certain CDN networks load balance by rotating a set of IPs in and out of service with each TTL cycle. Storing the website IPs longer than the TTL permits is a violation of DNS system protocol which produces incorrect DNS responses periodically. This alert is just one of the more visible side effects that violation causes.
+
+ * ensure that the commercial 8.8.8.8 service is not being used directly.
+  . This service is known to be particularly bad with rotation of lookup results on each query - much faster than even the TTL for the zones it is serving.
+  . If you really need to use this service at all a local DNS resolver should be setup that uses it as upstream forwarder. The local network machines can use that local resolver to access DNS.
 
 This is optional and may not be possible, but is useful when it works:
 
@@ -80,7 +86,7 @@ This is optional and may not be possible, but is useful when it works:
 
  * Interception performed at the DNS layer by the use of ''dnsmasq'' tool or other DNS trickery altering the IP destination the clients receive for a domain lookup.
 
-In these cases Squid-3.2 hijacking protection will pass the traffic through to the clients destination IP address '''without''' redirecting to any specific other IP. Additional Destination-NAT configuration is required to identify the packets and ensure they are delivered to the correct site regardless of any other details.
+In these cases [[Squid-3.2]] hijacking protection will pass the traffic through to the clients destination IP address '''without''' redirecting to any specific other IP. Additional Destination-NAT configuration is required to identify the packets and ensure they are delivered to the correct site regardless of any other details.
 
 
 ## '''Thanks'''
