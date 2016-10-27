@@ -10,7 +10,7 @@ To partially address these systemic problems, the Squid Software Foundation plan
 
 Before a regular QA Engineer position is filled, we offer the following pilot projects. These pilots will help the Project to select the most suitable candidate. They also provide a good illustration of the kind of challenges a Project QA Engineer will face.
 
-Application is open to anybody interested in doing the pilots and continuing working with the Squid Project afterwards. The Project plans to offer pilot(s) to one or more applicants. There is no guarantee that any or all pilots will be eventually offered, but it is certainly our intention to complete all these projects.
+Application is open to anybody interested in doing the pilots and continuing working with the Squid Project afterwards. The Project plans to offer pilot(s) to one or more applicants. There is no guarantee that any or all pilots will be eventually offered, but it is our intention to complete all these projects and then fill the QA Engineer position.
 
 Please see the [[#Q_and_A|Q&A]] section for more info.
 
@@ -18,10 +18,12 @@ Please see the [[#Q_and_A|Q&A]] section for more info.
 
 == Application ==
 
-||Due date:||2016-11-06 noon UTC||
-||Preconditions:||desire and skills to complete the pilots and continue working with the Project after that||
+||Due date:||2016-11-13 noon UTC||
+||Preconditions:||desire and skills to complete the pilots and to continue working with the Project after that||
 
-To apply, please review the descriptions of all three pilots and the [[#Q_and_A|Q&A]] section first. On your free-form application:
+Please review the descriptions of all three pilots and the [[#Q_and_A|Q&A]] section before applying.
+
+To apply, on your free-form application:
 
  1. list any relevant skills and accomplishments,
  1. propose the overall architecture for Pilot-1 and justify your design,
@@ -31,8 +33,6 @@ To apply, please review the descriptions of all three pilots and the [[#Q_and_A|
 Please email your complete application to <<MailTo(info@squid-cache.org)>> with ''QA pilots application'' as the exact email subject.
 
 Applications received after the due date may be ignored. We hope to offer Pilot-1 to one of the applicants within three weeks after the due date.
-
-If you would like to recommend somebody else, please show them this page and encourage them to apply!
 
 
 == Pilot-1 ==
@@ -44,17 +44,17 @@ If you would like to recommend somebody else, please show them this page and enc
 
 Currently, all accepted Squid code changes are first committed to Squid bzr repository. Jenkins notices a new commit and performs several build tests. If a build test fails, an email is sent to the squid-dev mailing list with the failure details. Humans usually notice the email report and fix the problem, but that may take a few days or even weeks. Meanwhile, the broken commit remains in Squid trunk, often blocking other work or tempting folks to commit untested code.
 
-We would like to re-arrange this scheme so that all accepted Squid code changes are queued ''before'' they are committed and the build tests are performed against the queued changes. If a change passes the build test, it is automatically committed. If a change fails the build test, it is removed from the queue. A change removal may have a cascading effect on other queued changes, of course, but that ought to be rare and is acceptable.
+We would like to rearrange this scheme so that all accepted Squid code changes are queued ''before'' they are committed, and the build tests are performed against the queued rather than committed changes. If a change passes the build test, it is automatically committed. If a change fails the build test, it is removed from the queue. A change removal may have a cascading effect on other queued changes, of course, but that ought to be rare and is acceptable.
 
-You may propose to migrate Squid from bzr to git and/or from Jenkins to another CI system. However, since any migration is a pain, you would need to convince the Project that the migration is worth it _and_ provide the Project with enough information to make an informed decision (without forcing decision makers to study all the alternatives). Your proposal may require Pilot-1 duration and cost adjustments. However, proposals requiring significant cost increases are unlikely to be accepted.
+You may propose to migrate Squid from bzr to git and/or from Jenkins to another CI system. However, since any migration is a pain, you would need to convince the Project that the migration is worth it ''and'' provide the Project with enough information to make an informed decision (without forcing decision makers to study the alternatives themselves). Your proposal may require Pilot-1 duration and cost adjustments. However, proposals requiring significant cost increases are unlikely to be accepted.
 
 Some build tests may use unreliable machines or experimental configurations. There should be a way to exclude them from disqualifying pending changes. They should still run and report failures but those failures should have no effect on automated commits.
 
 It should still be possible to commit changes without going though the build validation process, but that functionality will be used in emergencies or similar extraordinary situations only. Even seemingly trivial changes are expected to go through the validation process.
 
-Normally, accepted changes will be queued in FIFO order. However, it would be nice if core developers could reorder queued changes if necessary. That functionality is ''not'' required for Pilot-1 though.
+Normally, accepted changes will be queued in FIFO order. However, it would be nice if core developers could reorder queued changes when necessary. That functionality is ''not'' required for Pilot-1 though.
 
-Supporting a similar system for multiple Squid branches (trunk, v3.5, v3.4, etc.) is a plus but not a hard requirement for Pilot-1 which focuses on trunk.
+Supporting a similar system for multiple Squid branches (trunk, v4.0, v3.5, etc.) is a plus but not a hard requirement for Pilot-1 which focuses on trunk.
 
 Eventually, the same validate-before-commit principle will apply to other admission and testing activities, including:
 
@@ -65,12 +65,12 @@ Eventually, the same validate-before-commit principle will apply to other admiss
  1. code quality tests (using Coverity test cases)
  1. black-box functionality tests (using Daft test cases)
 
-Keeping these plans in mind may be important for Pilot-1 (to avoid changing the overall architecture multiple times), but implementing them is ''outside'' Pilot-1 scope.
+Keeping these plans in mind is important for Pilot-1 (to avoid proposing an architecture that cannot accommodate those plans well), but implementing the corresponding features is ''outside'' Pilot-1 scope.
 
 == Pilot-2 ==
 
 ||Goal:||Protect Squid trunk from HTTP compliance regressions||
-||Duration:||3 weeks||
+||Duration:||4 weeks||
 ||Cost:||$800||
 ||Preconditions:||Successful Pilot-1 completion and Project invitation||
 
@@ -86,7 +86,7 @@ It should be possible for core developers to ignore a given Co-Advisor test resu
 == Pilot-3 ==
 
 ||Goal:||Protect Squid trunk from performance regressions||
-||Duration:||5 weeks||
+||Duration:||6 weeks||
 ||Cost:||$1'200||
 ||Preconditions:||Successful Pilot-2 completion and Project invitation||
 
@@ -119,10 +119,22 @@ Measurement Factory will provide the initial set of 3-5 Polygraph workloads for 
       1. 10+ hours/week availability. Full-time engagement might eventually be possible.
       1. Squid experience is a plus. C++ and/or Javascript knowledge is a plus. This is not a development position, but auditing Squid failures and writing/fixing test cases require development skills.
 
+ 1. May I propose non-free and/or closed-source solutions?
+
+   Yes, you may. With all other factors being equal, the Project would prefer a free open-source solution. The Squid Foundation does not currently have enough funds to spend more than ~$100/month on infrastructure payments and currently spends zero. Many commercial services do offer free (as in beer) access to open-source projects but it is your responsibility to carefully research the limits of such offerings because they may not include great features advertised as otherwise available.
+
  1. What are the payment terms and procedure?
 
-   All prices are listed in US Dollars. The Project can pay via US bank checks, PayPal, or bank wire transfer (subject to various US banking regulations). The payment will be made within 30 calendar days of the successful pilot completion. Contractors in the US will need to fill out W-9s and will receive 1099s as required by law.
+   All prices are listed in US Dollars. The Project can pay via US bank checks, !PayPal, or bank wire transfer (subject to various US banking regulations). The payment will be made within 30 calendar days of the successful pilot completion. Contractors in the US will need to fill out W-9s and will receive 1099s as required by law.
 
  1. Who determines whether a pilot was successful?
 
    The Project will determine whether a pilot was successful. If there is no consensus on squid-dev, the Squid Software Foundation board will make that decision.
+
+ 1. I emailed my application. Now what?
+
+   You should receive an automated response that your email was sent to the mailing list moderator. No later than a week after the application deadline, you will receive a confirmation that your application has been received and is being reviewed. No later than three weeks after the application deadline, you will receive another email with the Project decision. If you do not hear from us within these periods, please do send another email to troubleshoot. However, sending re-confirmation emails earlier than necessary may decrease your acceptance chances.
+
+ 1. How can I recommend somebody else to do the pilots?
+
+   Please show them this page and encourage them to apply! Unfortunately, we may not have enough time to review recommendations and then solicit applications from the recommended folks. It is best if they apply themselves.
