@@ -48,7 +48,7 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#20 || AlexRousskov || adjust QA Engineer announcement to replace hourly rate position with a paid pilot project.|| not done ||
+||#20 || AlexRousskov || adjust QA Engineer announcement to replace hourly rate position with a paid pilot project.|| done ||
 ||#20 || AmosJeffries || remove DNS entries for west. || done ||
 ||#20 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
 || ||
