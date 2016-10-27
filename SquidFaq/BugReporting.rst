@@ -297,12 +297,12 @@ where '''$proxy_port''' and '''$proxy_ip''' are values used by user agents (e.g.
 tcpdump -s 0 -i eth0 -w /tmp/squid-to-client100.pcap port 3128 and host 192.168.1.1 and host 192.168.1.100
 }}}
 
-Please note, that the capture would include all traffic to proxy server from the client. So try to limit the amount of active sessions on the client while capturing the traffic.
+Please note, that the capture would include all traffic to proxy server from the client. So try to limit the amount of active HTTP sessions on the client while capturing the traffic.
 
 
 == Collecting packets leading to Squid's crash ==
 
-Sometimes Squid may crash due to the processing of unexpected/periodic transactions options, so we have to capture the problem traffic for analysis. To do so you have an option to capture the traffic for long time until you encounter a crash. As packet dump can easily become very large for that operation, so it is better to enable dump file rotation. For example:
+Sometimes Squid may crash due to the processing of packets to/from known destination, so we have to capture the problem traffic for analysis. To do so you have an option to capture the traffic for long time until you encounter a crash. As packet dump can easily become very large for that operation, so it is better to enable dump file rotation. For example:
 {{{
 tcpdump -s 0 -i eth0 -G 300 -w /tmp/squid-to-client100-%Y-%m-%d_%H:%M:%S.pcap port 3128 and host 192.168.1.1 and host 192.168.1.100
 }}}
