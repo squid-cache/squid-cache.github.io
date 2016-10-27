@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2016-10-07 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2016-10-28 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
@@ -48,6 +48,13 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
+||#20 || AlexRousskov || adjust QA Engineer announcement to replace hourly rate position with a paid pilot project.|| not done ||
+||#20 || AmosJeffries || remove DNS entries for west. || done ||
+||#20 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
+|| ||
+||#19 || FrancescoChemolli || oversee a VM mirror being created to replace east.|| done ||
+||#19 || AmosJeffries || publish minutes from meeting #19 || done ||
+|| ||
 ||#18 || FrancescoChemolli || drive the process for seeking and electing a new board member, starting with the announcement. || not done ||
 ||#18 || FrancescoChemolli || send Support Points public announcement|| not done ||
 ||#18 || AmosJeffries || provide Francesco with service listing contacts || not done ||
@@ -78,9 +85,11 @@ Notes:
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
-||#18 ||2016-02-29 ||IRC || circulated ||
+||#20 ||2016-09-16 ||IRC || circulated ||
+||#19 ||2016-07-29 ||IRC || circulated ||
+||#18 ||2016-02-29 ||IRC || http://www.squid-cache.org/Foundation/archive/2016/2016-02-29_board-meeting-18.html ||
 ||#17 ||2015-05-15 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-05-15_board-meeting-17.html ||
-||#16 ||2015-03-06 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-03-06_board-meeting-16.html  ||
+||#16 ||2015-03-06 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-03-06_board-meeting-16.html ||
 ||#15 ||2014-09-20 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-09-20_board-meeting-15.html ||
 ||#14 ||2014-07-12 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-07-12_board-meeting-14.html ||
 ||#13 ||2014-06-08 ||IRC || http://www.squid-cache.org/Foundation/archive/2014/2014-06-08_board-meeting-13.html ||
