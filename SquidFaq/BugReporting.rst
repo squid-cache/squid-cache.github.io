@@ -308,7 +308,7 @@ tcpdump -s 0 -i eth0 -G 300 -w /tmp/squid-to-client100-%Y-%m-%d_%H:%M:%S.pcap po
 }}}
 where '''-G''' specifies rotation interval in seconds, and the flexible string like '''%Y-%m-%d_%H:%M:%S''' in filename exposes to date (man strftime) when the rotation occurred.
 
-In above example, tcpdump will rotate the dump file every 5 minutes. Once you have found that Squid crashed and got exact time of the failure, you can easily find interesting 5-minutes part of the packet dump. The target directory for the dumps should be big enough to accommodate continuous capture. If tcpdump drops its privileges to ordinary user (usually tcpdump), the user should has write access to target directory.
+In above example, tcpdump will rotate the dump file every 5 minutes. Once you have found that Squid crashed and got exact time of the failure, you can easily find interesting 5-minutes part of the packet dump. The target directory for the dumps should be big enough to accommodate continuous capture. If tcpdump drops its privileges to ordinary user (usually tcpdump), the user should have write access to target directory.
 
 If you have size-limited capture storage, you can use rotating buffer option of tcpdump. It allows to reserve fixed storage size for captures. For example:
 {{{
