@@ -255,6 +255,69 @@ debug_options 28,9
 Then you have to restart or reconfigure Squid.
 
 
+= Capturing packets =
+Sometimes, after inspecting coredump traces and debug output, developers may ask you to collect packets on both sides of Squid (Squid-to-origin and Squid-to-client). You can use powerful tool '''tcpdump''' to accomplish the operation. Below are presented some common examples and methods.
+
+
+== Collecting packets on intercepting proxy ==
+In standard/common configuration, intercepting proxy has two network interfaces. One facing the Internet and second one facing the local network. So, to capture Squid-to-origin transactions you have to attach tcpdump to WAN interface and consequently to LAN interface for Squid-to-client transactions. You have to be in tcpdump group or be a root user to capture traffic on network interfaces.
+
+Syntax:
+
+{{{
+tcpdump -s 0 -i $nic -w /path/to/dump.pcap port $port and host $origin_ip [and host $client_ip]
+}}}
+where '''$nic''' is WAN or LAN network interface, '''$port''' is intercepted port, '''$origin_ip''' is origin server IP, '''$client_ip''' is client IP in local network. The section 'and host $client_ip' applicable only for Squid-to-client transactions on NAT proxies. TProxy interception proxies can use the section for both transaction types. The argument '''-s 0''' required to instruct tcpdump to save full packet, '''-w''' specifies dump location.
+
+For example, to capture Squid-to-origin transaction on NAT proxy:
+{{{
+tcpdump -s 0 -i eth1 -w /tmp/squid-to-example.com.pcap port 80 and host 10.11.12.13
+}}}
+
+To capture Squid-to-origin transaction on TProxy proxy:
+{{{
+tcpdump -s 0 -i eth1 -w /tmp/squid-to-example.com.pcap port 80 and host 10.11.12.13 and host 172.16.1.100
+}}}
+
+To capture Squid-to-client transaction:
+{{{
+tcpdump -s 0 -i eth0 -w /tmp/squid-to-client100.pcap port 80 and host 10.11.12.13 and host 192.168.1.100
+}}}
+
+To limit amount of collected traffic, immediately after you started both tcpdump instances, initiate the problem HTTP request. After you have got desired result, immediately stop both tcpdump instances.
+
+
+== Collecting packets on explicit proxy ==
+The main difference between the methods is that Squid-to-client communication is explicit between Squid's IP/proxy port and client IP. So the syntax is:
+{{{
+tcpdump -s 0 -i $nic -w /path/to/dump.pcap port $proxy_port and host $proxy_ip and host $client_ip
+}}}
+where '''$proxy_port''' and '''$proxy_ip''' are values used by user agents (e.g. browsers) to access Squid. For example:
+{{{
+tcpdump -s 0 -i eth0 -w /tmp/squid-to-client100.pcap port 3128 and host 192.168.1.1 and host 192.168.1.100
+}}}
+
+Please note, that the capture would include all traffic to proxy server from the client. So try to limit the amount of active sessions on the client while capturing the traffic.
+
+
+== Collecting packets leading to Squid's crash ==
+
+Sometimes Squid may crash due to the processing of unexpected/periodic transactions options, so we have to capture the problem traffic for analysis. To do so you have an option to capture the traffic for long time until you encounter a crash. As packet dump can easily become very large for that operation, so it is better to enable dump file rotation. For example:
+{{{
+tcpdump -s 0 -i eth0 -G 300 -w /tmp/squid-to-client100-%Y-%m-%d_%H:%M:%S.pcap port 3128 and host 192.168.1.1 and host 192.168.1.100
+}}}
+where '''-G''' specifies rotation interval in seconds, and the flexible string like '''%Y-%m-%d_%H:%M:%S''' in filename exposes to date (man strftime) when the rotation occurred.
+
+In above example, tcpdump will rotate the dump file every 5 minutes. Once you have found that Squid crashed and got exact time of the failure, you can easily find interesting 5-minutes part of the packet dump. The target directory for the dumps should be big enough to accommodate continuous capture. If tcpdump drops its privileges to ordinary user (usually tcpdump), the user should has write access to target directory.
+
+If you have size-limited capture storage, you can use rotating buffer option of tcpdump. It allows to reserve fixed storage size for captures. For example:
+{{{
+tcpdump -s 0 -i eth1 -w /tmp/squid-to-example.com.pcap -W 10 -C 100 port 80 and host 10.11.12.13
+}}}
+where '''-W''' specifies maximum number of dump files and '''-C''' specifies maximum size in (MB) for a dump file.
+
+In the above example, tcpdump will rotate a dump file and append suffix to the filename when it reaches 100MB. It will overwrite the oldest dump file when it reaches configured maximum number of the files. In this configuration the maximum capture storage size will be 1GB. The drawback of the method, is that you have to periodically monitor for Squid's activity and stop the capture as soon as possible when you detect an assertion. Otherwise, the interesting file dump would be overwritten.
+
 -----
 ##end
 Back to the SquidFaq
