@@ -6,10 +6,8 @@
 #format wiki
 #language en
  * kinkie
- * AdrianChadd
+ * FrancescoChemolli
  * Henrik Nordström
- * RobertCollins
- * GuidoSerassio
  * wessels
  * Amos Jeffries
  * AlexRousskov
