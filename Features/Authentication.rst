@@ -190,7 +190,7 @@ It depends on the authentication scheme; Squid does some caching when it can.
 
  * Successful Basic authentication results are cached for one hour by default. That means (in the worst case) it is possible for someone to keep using your cache up to an hour after they have been removed from the authentication database. You can control the expiration time with the ''SquidConf:auth_param basic credentialsttl'' configuration option.
 
- * Successful NTLM and Negtiate authentication results are tied to the client TCP connection state and each new request is validated against the stored credentials token. Credentials are thus "cached" only for as long as that TCP connection persists, each new TCP connection requires an entirely different authentication.
+ * Successful NTLM and Negotiate authentication results are tied to the client TCP connection state and each new request is validated against the stored credentials token. Credentials are thus "cached" only for as long as that TCP connection persists, each new TCP connection requires an entirely different authentication.
 
 
 == Are passwords stored in clear text or encrypted? ==
