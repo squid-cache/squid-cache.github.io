@@ -8,7 +8,7 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
 
  * '''Goal''': Understanding linux Load-Balancing routing.
 
- * '''Status''': 15%
+ * '''Status''': 16%
 
  * '''State''': DRAFT
 
@@ -521,3 +521,4 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * [[http://www.pmoghadam.com/homepage/HTML/Round-robin-load-balancing-NAT.html|Iptables style round robin connection load balancing]]
  * [[https://www.citrix.com/blogs/2010/09/04/load-balancing-hash-method/|Citrix load balancing using a hash]]
  * [[https://www.webair.com/community/simple-stateful-load-balancer-with-iptables-and-nat/|Simple Stateful Load Balancer with iptables and NAT]]
+ * [[http://wiki.bluecrow.net/index.php/Mikrotik_Connection_Tracking|Mikrotik Connection Tracking - and load balancing]]
