@@ -23,12 +23,12 @@ Basic new features in 5.0:
 ## * '''Minor UI changes:'''
 ##  *
 
-## * '''Developer Interest changes:'''
-##  *
+ * '''Developer Interest changes:'''
+  * [[https://datatracker.ietf.org/doc/draft-rousskov-icap-trailers/|ICAP Trailers]]
 
 ## The intention with this series is to improve performance using C++11 features. Some remaining [[Squid-2.7]] missing features are listed as regressions in http://www.squid-cache.org/Versions/v5/RELEASENOTES.html#ss5.1
 
-## Packages of what will become Squid-5 source code are available at [[http://www.squid-cache.org/Versions/v5/]]
+Packages of what will become Squid-5 source code are available at [[http://www.squid-cache.org/Versions/v5/]]
 
 === Security Advisories ===
 
