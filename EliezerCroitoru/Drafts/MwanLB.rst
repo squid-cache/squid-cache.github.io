@@ -8,7 +8,7 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
 
  * '''Goal''': Understanding linux Load-Balancing routing.
 
- * '''Status''': 16%
+ * '''Status''': 20%
 
  * '''State''': DRAFT
 
@@ -522,3 +522,5 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * [[https://www.citrix.com/blogs/2010/09/04/load-balancing-hash-method/|Citrix load balancing using a hash]]
  * [[https://www.webair.com/community/simple-stateful-load-balancer-with-iptables-and-nat/|Simple Stateful Load Balancer with iptables and NAT]]
  * [[http://wiki.bluecrow.net/index.php/Mikrotik_Connection_Tracking|Mikrotik Connection Tracking - and load balancing]]
+ * [[https://kb.juniper.net/InfoCenter/index?page=content&id=KB17223&actp=search|Juniper Policy Based Routing example(Filter Based Forwarding)]]
+ * [[https://splash.riverbed.com/thread/6791|Juniper SRX Filter based forwarding aka PBR]]
