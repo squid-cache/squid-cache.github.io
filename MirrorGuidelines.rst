@@ -28,17 +28,26 @@ To terminate a mirror stop the updates and erase all public content from the Squ
 
 == Mirrors for www.squid-cache.org ==
 
- * Mirrors must be updated at minimum of daily
- * Mirrors must be updated at maximum of hourly
- * Mirrors must remove content not in the master rsync directory
+Both IPv4 and/or IPv6 mirrors are accepted.
+
+HTTPS mirrors are not working yet, if you want to provide one please contact '''info at squid-cache.org''' to discuss it.
+
+ * Mirrors updates should happen every 1-2 hours,
+  * no more than once per hour please.
+  * no less than once per day.
+
+ * Mirrors must remove content not in the master rsync directory.
+
  * Mirrors must provide a publicly accessible server FQDN.
- * The mirror must accept requests for both its own FQDN and www.squid-cache.org.
+
+ * The mirror must accept requests for www.squid-cache.org.
 
 The website pages and content can be fetched from here:
 {{{
 rsync -avz --delete-after master.squid-cache.org::http-files  /www/path
 }}}
 
+ . {i} We have deprecated the use of country-specific mirror domains. If you have previously been assigned a mirror domain such as www1.us.squid-cache.org. Please change that to hosting just the www.squid-cache.org domain and contact '''info at squid-cache.org''' about the change.
 
 === Squid reverse-proxies ===
 Alternatively a Squid reverse-proxy can be supplied relaying requests to our master servers. Please indicate this in your contact email.
@@ -89,15 +98,11 @@ This code has passed simple quality checks to verify that trivial build problems
 rsync -avz --delete-after master.squid-cache.org::source /source-path
 }}}
 
-Development code can be found in the version sub-directories.
-{{{
-rsync -avz --delete-after master.squid-cache.org::source/squid-2  /source-path
-rsync -avz --delete-after master.squid-cache.org::source/squid-3  /source-path
-}}}
-
-Production and Beta version code can be found in the numbered series sub-directories for their version.
+Version specific code can be found in the numbered series sub-directories for their version.
 For example:
 {{{
+rsync -avz --delete-after master.squid-cache.org::source/squid-5    /source-path
+rsync -avz --delete-after master.squid-cache.org::source/squid-4    /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.5  /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.4  /source-path
 rsync -avz --delete-after master.squid-cache.org::source/squid-3.3  /source-path
