@@ -50,20 +50,11 @@ The squid.conf snippet required is here:
 http_port 80 accel vhost defaultsite=www.squid-cache.org
 
 cache_peer master.squid-cache.org parent 80 0 originserver
-cache_peer east.squid-cache.org parent 80 0 originserver
-cache_peer west.squid-cache.org parent 80 0 originserver
-cache_peer eu.squid-cache.org parent 80 0 originserver
 
 acl squidcache dstdomain .squid-cache.org
 http_access allow squidcache
 cache_peer_access master.squid-cache.org allow squidcache
 cache_peer_access master.squid-cache.org deny all
-cache_peer_access east.squid-cache.org allow squidcache
-cache_peer_access east.squid-cache.org deny all
-cache_peer_access west.squid-cache.org allow squidcache
-cache_peer_access west.squid-cache.org deny all
-cache_peer_access eu.squid-cache.org allow squidcache
-cache_peer_access eu.squid-cache.org deny all
 }}}
 
 == Mirrors for ftp.squid-cache.org ==
