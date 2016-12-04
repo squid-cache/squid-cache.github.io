@@ -527,3 +527,4 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * [[http://www.juniper.net/documentation/en_US/junos16.1/topics/example/firewall-filter-option-filter-based-forwarding-example.html|Junos® OS for EX9200 Switches, Release 16.1 Example: Configuring Filter-Based Forwarding on the Source Address]]
  * [[https://help.ubnt.com/hc/en-us/articles/204962204-EdgeMAX-Policy-based-routing-for-transparent-proxy|EdgeMAX - Policy-based routing for transparent proxy (can be used to load balance by routing policy)]]
  * [[https://github.com/xsank/EasyProxy/tree/master/src/proxy/schedule|Scheduling algorithms implementation examples in GoLang(ip hash, random)]]
+ * [[https://www.dd-wrt.com/wiki/index.php/Policy_Based_Routing|Example for Policy Based Routing in dd-wrt routers]]
