@@ -37,4 +37,14 @@ code is in hudson.tasks.CommandInterpreter.perform() -> returns boolean, should 
  . http://sorcerer.jenkins-ci.org/
  . https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins
 
+=== Gated commits ===
+Jenkins plugins:
+ * https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin
+
+Other tools
+ * http://verigreen.io/
+
+Docs:
+ * https://www.cloudbees.com/blog/dont-phunk-my-stable-branch-jenkins-pre-tested-commits-stop-breaking-stable-branches
+ * http://stackoverflow.com/questions/12484424/gated-check-ins-pre-tested-commits-for-git
 == test ==
