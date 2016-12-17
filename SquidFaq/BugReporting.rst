@@ -77,6 +77,10 @@ To change the coredumpsize limit you might use a command like:
 limits coredump unlimited
 }}}
 
+If Squid binary is started by RHEL6/CentOS6 init script, you may need to set variable ''DAEMON_COREFILE_LIMIT="unlimited"'' in the init script or the script's configuration file (usually /etc/sysconfig/squid).
+
+For systemd units the equivalent option is ''LimitCORE=infinity''.
+
 == Debugging Symbols ==
 To see if your Squid binary has debugging symbols, use this command:
 
@@ -133,6 +137,39 @@ gdb> backtrace
 }}}
 
 If possible, you might keep the coredump file around for a day or two.  It is often helpful if we can ask you to send additional debugger output, such as the contents of some variables. But please note that a core file is only useful if paired with the exact same binary as generated the corefile. If you recompile Squid then any coredumps from previous versions will be useless unless you have saved the corresponding Squid binaries, and any attempts to analyze such coredumps will most certainly give misleading information about the cause to the crash.
+
+In some environments, coredump is handled by dedicated utility for management purposes. For example, in RHEL6/CentOS6 environment it may be ''abrtd'' with '' 
+abrt-addon-ccpp'' (man abrtd, man abrt-install-ccpp-hook). In systemd environments it is ''systemd-coredump'' (man systemd-coredump). You can check it by reading ''/proc/sys/kernel/core_pattern'' (man core):
+
+{{{
+# cat /proc/sys/kernel/core_pattern 
+|/usr/libexec/abrt-hook-ccpp %s %c %p %u %g %t e
+}}}
+
+The core_pattern for systemd-coredump:
+
+{{{
+# cat /proc/sys/kernel/core_pattern 
+|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %e
+}}}
+
+Therefore, you should be familiar with the handlers to control coredump generation and location. Or you can disable the handler and use usual methods to handle coredumps if a server is dedicated for Squid. For example, you can use following methods to disable aforementioned handlers:
+
+{{{
+# chkconfig abrt-ccpp off
+# service abrt-ccpp stop
+# cat /proc/sys/kernel/core_pattern 
+core
+}}}
+
+To disable systemd-coredump:
+
+{{{
+# echo kernel.core_pattern=core > /etc/sysctl.d/50-coredump.conf
+# /usr/lib/systemd/systemd-sysctl --prefix kernel.core_pattern
+# cat /proc/sys/kernel/core_pattern 
+core
+}}}
 
 == Using gdb debugger on Squid ==
 If you CANNOT get Squid to leave a core file for you then one of the following approaches can be used
