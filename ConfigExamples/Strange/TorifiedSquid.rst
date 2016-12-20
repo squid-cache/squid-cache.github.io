@@ -112,8 +112,8 @@ acl tor_url dstdom_regex -i "/etc/squid/url.tor"
 acl DiscoverSNIHost at_step SslBump1
 acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/url.nobump"
 acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/url.tor"
-ssl_bump splice NoSSLIntercept
 ssl_bump peek DiscoverSNIHost
+ssl_bump splice NoSSLIntercept
 ssl_bump bump all
 
 # Privoxy+Tor access rules
