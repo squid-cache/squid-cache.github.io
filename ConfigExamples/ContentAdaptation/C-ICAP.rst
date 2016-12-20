@@ -149,31 +149,31 @@ abort \.ytimg\.com
 abort \.yimg\.com
 
 # Do not scan images
-abort ^.*\.([j|J][p|P][?:[e|E]?[g|G]|gif|png|bmp|ico|svg|web[p|m])(\?.*)?$
+abort ^.*\.([j|J][p|P][?:[e|E]?[g|G]|gif|png|bmp|ico|svg|web[p|m])
 abortcontent ^image\/.*$
 
 # Do not scan text files
-abort ^.*\.((cs|d?|m?|p?|r?|s?|w?|x?|z?)h?t?m?(l?)|php[3|5]?|rss|atom|vr(t|ml)|(c|x|j)s[s|t|px]?)(\?.*)?$
+abort ^.*\.((cs|d?|m?|p?|r?|s?|w?|x?|z?)h?t?m?(l?)|php[3|5]?|rss|atom|vr(t|ml)|(c|x|j)s[s|t|px]?)
 abortcontent ^text\/.*$
 abortcontent ^application\/x-javascript$
 abortcontent ^application\/javascript$
 abortcontent ^application\/json$
 
 # Do not scan fonts
-abort ^.*\.(ttf|eot|woff2?)(\?.*)?$
+abort ^.*\.(ttf|eot|woff2?)
 abortcontent ^font\/.*$
 abortcontent ^application\/x-woff$
 abortcontent ^application\/font-woff2?$
 abortcontent ^application\/x-font-ttf$
 
 # Do not scan (streamed) videos and audios
-abort ^.*\.(flv|f4f|mp(3|4))(\?.*)?$
+abort ^.*\.(flv|f4f|mp(3|4))
 abortcontent ^video\/.*$
 abortcontent ^audio\/.*$
 abortcontent ^application\/mp4$
 
 # Do not scan flash files
-abort ^.*\.swfx?$
+abort ^.*\.swfx?
 abortcontent ^application\/x-shockwave-flash$
 
 # Do not scan sequence of framed Microsoft Media Server (MMS) data packets
