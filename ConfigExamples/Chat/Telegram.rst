@@ -27,8 +27,8 @@ acl DiscoverSNIHost at_step SslBump1
 # Splice Telegram bootstrap
 acl NoSSLIntercept ssl::server_name_regex 149\.154\.164\.
 ssl_bump peek DiscoverSNIHost
-ssl_bump bump !NoSSLIntercept all
-ssl_bump splice all
+ssl_bump splice NoSSLIntercept
+ssl_bump bump all
 
 }}}
 
