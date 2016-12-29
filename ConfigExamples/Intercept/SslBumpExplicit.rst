@@ -13,7 +13,7 @@ HTTPS interception has ethical and legal issues which you need to be aware of.
  * some countries do not limit what can be done within the home environment,
  * some countries permit employment or contract law to overrule privacy,
  * some countries require government registration for all decryption services,
- * some countries it is a outright capital offence with severe penalties
+ * some countries it is an outright capital offence with severe penalties
 
  . DO Seek legal advice before using this configuration, even at home.
 
@@ -70,7 +70,7 @@ ssl_bump peek step1
 ssl_bump bump all
 }}}
 
-
+=== Alternative trust roots ===
 In some cases you may need to specify custom root CA to be added to the library default "Global Trusted CA" set. This is done by 
 
  . [[Squid-3.5]] and older:
@@ -83,20 +83,36 @@ sslproxy_cafile /usr/local/openssl/cabundle.file
 tls_outgoing_options cafile=/usr/local/openssl/cabundle.file
 }}}
 
-Otherwise your cache can't validate server's connections.
+ . {i} Note: OpenSSL CA's bundle is derived from Mozilla's bundle and is '''NOT COMPLETE'''. Specifically most intermediate certificates are not included (see below). Adding extra root CA in this way is your responsibility. Also beware, when you use OpenSSL, you need to make c_rehash utility before Squid can use the added certificates. Beware - you can't grab any CA's you see. Check it before use!
 
- . {i} Note: OpenSSL CA's bundle is derived from Mozilla's bundle and is '''NOT COMPLETE'''. Specicfically most intermediate certificates are not included. For example, [[http://www.symantec.com/ssl-certificates/|Symantec]] CA's, some [[https://www.digicert.com/|DigiCert]] CA's etc. Adding them is your responsibility. Also beware, when your use OpenSSL, you need to make c_rehash utility before Squid can be use added certificates. Beware - you can't grab any CA's your seen. Check it before use!
 
-== Create and initialize SSL certificates cache directory ==
+=== Missing intermediate certificates ===
+Some global root servers use an intermediate certificate to sign, and sometimes servers do not deliver all the intermediate certificates in the chain up to their root CA.
 
-Finally your need to create and initialize SSL certificates cache directory and set permissions to access Squid:
+[[Squid-4]] is capable of downloading missing intermediate CA certificates, like popular browsers do.
+
+For [[Squid-3.5]] the SquidConf:sslproxy_foreign_intermediate_certs directive can be used to load intermediate CA certificates from a file:
+{{{
+sslproxy_foreign_intermediate_certs /etc/squid/extra-intermediate-CA.pem
+}}}
+
+Older versions of Squid cannot handle intermediate CA certificates very well. You may be able to find various hacks for certain situations around, but it is highly recommended to upgrade to at least the latest [[Squid-3.5]]] version when dealing with HTTPS / TLS traffic.
+
+
+== Create and initialize TLS certificates cache directory ==
+
+Finally you need to create and initialize TLS certificates cache directory and set permissions to allow access by Squid.
+
+The crtd helper will store mimicked certificates in this directory. The squid low-privilege account needs permission to both read and write there.
 
 {{{
 /usr/local/squid/libexec/ssl_crtd -c -s /var/lib/ssl_db
 chown squid:squid -R /var/lib/ssl_db
 }}}
 
-You cache will store mimicked certificates in this directory.
+ . /!\ The low-privilege account varies by OS and may not be 'squid' in your system.
+
+ . /!\ also, be aware that SELinux and AppArmour permissions may need to be updated to allow the Squdi helper to use this directory.
 
 == Troubleshooting ==
 
@@ -107,11 +123,13 @@ sslproxy_cert_error allow all
 sslproxy_flags DONT_VERIFY_PEER
 }}}
 
- . /!\ '''BEWARE!''' It can reduce SSL/TLS errors in cache.log, but '''this is NOT SECURE!''' With this options your cache will ignore all server certificates errors and connect your users with them. Use this options at your own risk and '''only for debug purposes!'''
+ . /!\ '''BEWARE!''' It can reduce SSL/TLS errors in cache.log, but '''this is NOT SECURE!''' With these options your cache will ignore all server certificates errors and connect your users with them. Use these options at your own risk.
 
- . {i} Note: sslproxy_cert_error can be used to refine server's cert error and control access to it. Use it with caution.
+ . {i} Note that '''DONT_VERIFY_PEER''' is not good even for debugging. Since it will most probably hide the error you are trying to identify and fix.
+
+ . {i} Note: SquidConf:sslproxy_cert_error can be used to refine server's cert error and control access to it. Use it with caution.
  
-To increase security the good idea to set this option:
+To increase security the good idea to set these options:
 
 {{{
 # SINGLE_DH_USE is 3.5 before squid-3.5.12-20151222-r13967
@@ -126,9 +144,9 @@ tls_outgoing_options options=NO_SSLv3,SINGLE_DH_USE,SINGLE_ECDH_USE
 
  . /!\ SSL options must be comma (,) or colon (:) separated, not spaces!
 
- . {i} NO_SSLv2 is outdated in latest releases. SSLv2 support completely removed from code.
+ . {i} NO_SSLv2 is relevant only for Squid-3.x. SSLv2 support has been completely removed from [[Squid-4]].
 
-As a result, you can got more errors in your cache.log. So, you must investigate every case separately and correct it as needed.
+As a result, you can get more errors in your cache.log. So, you must investigate every case separately and correct it as needed.
 
 == Hardening ==
 
