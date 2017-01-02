@@ -36,6 +36,29 @@ define a parameter plugin which sets a parameter as the node name, or NODE_NAME 
 See for instance https://wiki.jenkins-ci.org/display/JENKINS/Global+Variable+String+Parameter+Plugin
 
 
+== pipelines ==
+attempt 1:
+{{{
+stage "test-build"
+node('farm') {
+    // clean workspace
+    step([$class: 'WsCleanup'])
+    // setup env..
+    // copy the deployment unit from another Job
+    step ([$class: 'CopyArtifact',
+          projectName: '5-prepare-tarball',
+          filter: 'squid-*-r*.tar.gz']);
+    step ([$class: 'CopyArtifact',
+          projectName: '5-prepare-tarball',
+          filter: 'test-suite-r*.tar.gz']);
+    sh "tar xfz squid-*-r*.tar.gz"
+    squiddir = sh(returnStdout: true, script: 'ls squid-* | grep -v gz$').trim()
+    dir(squiddir) {
+        sh 'tar xfz ../test-suite-r*.tar.gz'
+        sh './test-builds.sh --verbose --aggressively-use-config-cache'
+    }
+}
+}}}
 
 
 
