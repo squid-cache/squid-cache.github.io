@@ -20,14 +20,16 @@ In case if the intermediate certificate CA2 being compromised, you can simply re
 
 == CA certificate preparation ==
 
- 1. Create a '''root CA1''' with CRL URL encoded in CA1. This CRL URL needs to be reachable by your clients.
+ 1. Create a '''root CA''' with CRL URL encoded in CA1. This CRL URL needs to be reachable by your clients.
 
  2. Use the CA1 to sign an intermediate CA2, which will be used on the proxy for signing mimicked certificates.
+   . For example in the config below we call this private key ''signingCA.key''.
 
  3. install primary CA1 public key onto clients.
+   . For example in the config below we call this public key (cert) ''signingCA.crt''.
 
  4. prepare a public keys file which contains concatenated intermediate CA2 followed by root CA1 in PEM format.
-   . For example in the config below we call this ''rootCA12.pem''.
+   . For example in the config below we call this ''chain.pem''.
 
 Now Squid can send the intermediate CA2 public key with root CA1 to client and does not need to install intermediate CA2 to clients.
 
@@ -37,12 +39,10 @@ Paste the configuration file like this:
 
 {{{
 http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
-   cert=/etc/squid/rootCA2.crt \
-   key=/etc/squid/rootCA2.key \
-   cafile=/etc/squid/rootCA12.pem
+   cert=/etc/squid/signingCA.crt \
+   key=/etc/squid/signingCA.key \
+   cafile=/etc/squid/chain.pem
 }}}
-
- . /!\ Squid 4.x has opened bug Bug:4504 (closed in latest snapshots), which not breaks functionality, but prohibit production use without workaround. To workaround just add '''debug_options ALL,1 83,0''' to squid.conf and reconfigure.
 
 ----
 CategoryConfigExample
