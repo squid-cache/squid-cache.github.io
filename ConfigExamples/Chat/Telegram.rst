@@ -25,7 +25,7 @@ In case of you require to '''pass''' Telegram, keep in mind, starting from versi
 # SSL bump rules
 acl DiscoverSNIHost at_step SslBump1
 # Splice Telegram bootstrap
-acl NoSSLIntercept ssl::server_name_regex 149\.154\.164\.
+acl NoSSLIntercept ssl::server_name_regex 149\.154\.16[4-7]\. 149\.154\.17[2-5]\.
 ssl_bump peek DiscoverSNIHost
 ssl_bump splice NoSSLIntercept
 ssl_bump bump all
@@ -45,6 +45,7 @@ The simplest way to block Telegram is use Cisco and write ACL:
 {{{
  remark Ban Telegram
  deny   ip any 149.154.164.0 255.255.252.0
+ deny   ip any 149.154.172.0 255.255.252.0
 }}}
 
 This prevents Telegram clients to authenticate, and, then fails to connect.
@@ -56,6 +57,7 @@ Paste the configuration file like this:
 {{{
 
 acl Telegram dst 149.154.164.0/22
+acl Telegram dst 149.154.172.0/22
 http_access deny Telegram
 
 }}}
