@@ -36,7 +36,7 @@ It also can be uses as block tool for Telegram - just remove Telegram net from s
 
 == Some details ==
 
-You may want to block Telegram if you live in censorship-friendly country. To do that you need to block SOCKS protocol (by any way) in your network, and ban Telegram access point with 149.154.164.0/22 network.
+You may want to block Telegram if you live in censorship-friendly country. To do that you need to block SOCKS protocol (by any way) in your network, and ban Telegram access point with 149.154.164.0/22 and 149.154.172.0/22 networks.
 
 == More ==
 
