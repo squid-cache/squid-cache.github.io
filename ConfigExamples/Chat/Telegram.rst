@@ -18,7 +18,7 @@ Telegram uses own protocol, MProto, which can be utilize TCP/SOCKS/HTTP over own
 
 == How to pass Telegram ==
 
-In case of you require to '''pass''' Telegram, keep in mind, starting from version 0.10.11 (for tdesktop) Telegram client uses pinned SSL connection during bootstrap connection to 149.154.164.0/22. So, SSL Bump-aware proxy must me configured to splice initial connection Telegram to server:
+In case of you require to '''pass''' Telegram, keep in mind, starting from version 0.10.11 (for tdesktop) Telegram client uses pinned SSL connection during bootstrap connection to 149.154.164.0/22, 149.154.172.0/22. So, SSL Bump-aware proxy must me configured to splice initial connection Telegram to server:
 
 {{{
 
