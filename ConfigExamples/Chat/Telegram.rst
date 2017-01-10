@@ -2,8 +2,6 @@
 #format wiki
 #language en
 
-## This is a template for helping with new configuration examples. Remove this comment and add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-
 ''by YuriVoinov''
 
 = Telegram Messenger =
@@ -12,33 +10,33 @@
 
 <<TableOfContents>>
 
-== How to block Telegram ==
-
-Telegram uses own protocol, MProto, which can be utilize TCP/SOCKS/HTTP over own tunneling. Ergo, there is too difficult to completely block Telegram. To do that, you must use complex configuration: you need to block TCP/HTTP/SOCKS channel.
-
 == How to pass Telegram ==
 
-In case of you require to '''pass''' Telegram, keep in mind, starting from version 0.10.11 (for tdesktop) Telegram client uses pinned SSL connection during bootstrap connection to 149.154.164.0/22, 149.154.172.0/22. So, SSL Bump-aware proxy must me configured to splice initial connection Telegram to server:
+Starting from version 0.10.11 (for tdesktop) Telegram client uses a pinned TLS connection during bootstrap connection to 149.154.164.0/22 or 149.154.172.0/22. So [[Features/SslPeekAndSplice|SSL-Bump]] proxy must be configured to splice initial connection from Telegram to server:
 
 {{{
-
-# SSL bump rules
+# SSL-bump rules
 acl DiscoverSNIHost at_step SslBump1
 # Splice Telegram bootstrap
 acl NoSSLIntercept ssl::server_name_regex 149\.154\.16[4-7]\. 149\.154\.17[2-5]\.
 ssl_bump peek DiscoverSNIHost
 ssl_bump splice NoSSLIntercept
 ssl_bump bump all
-
 }}}
 
-It also can be uses as block tool for Telegram - just remove Telegram net from splice ACL.
+It also can be used as a block tool for Telegram - just remove Telegram net from splice ACL.
 
-== Some details ==
+== How to block Telegram ==
 
-You may want to block Telegram if you live in censorship-friendly country. To do that you need to block SOCKS protocol (by any way) in your network, and ban Telegram access point with 149.154.164.0/22 and 149.154.172.0/22 networks.
+Telegram uses own protocol (MProto) which can utilize TCP, SOCKS, or HTTP tunneling. To block Telegram you must use a complex configuration blocking all of those channels.
 
-== More ==
+'''NOTE:''' Telegram is really difficult to block. It can use 80 port with own tunnelling, SOCKS4/5, Tor, etc. AFAIK, Tor is impossible to completely block in any way if you can't block Tor's SOCKS entry point and/or any SOCKS proxies.
+
+=== SOCKS ===
+
+To block Telegram you need to block SOCKS protocol (by any way) in your network, and ban Telegram access point with 149.154.164.0/22 and 149.154.172.0/22 networks.
+
+=== TCP ===
 
 The simplest way to block Telegram is use Cisco and write ACL:
 
@@ -48,22 +46,19 @@ The simplest way to block Telegram is use Cisco and write ACL:
  deny   ip any 149.154.172.0 255.255.252.0
 }}}
 
-This prevents Telegram clients to authenticate, and, then fails to connect.
+This prevents Telegram clients from authenticating so it fails to connect.
 
-== Squid Configuration File ==
+=== Squid Configuration File ===
 
 Paste the configuration file like this:
 
 {{{
-
 acl Telegram dst 149.154.164.0/22
 acl Telegram dst 149.154.172.0/22
 http_access deny Telegram
-
 }}}
 
-This affects Telegram clients uses HTTP proxy settings.
+This only affects Telegram clients using HTTP proxy settings.
 
-'''NOTE:''' Telegram is really difficult to block. It can use 80 port with own tunnelling, SOCKS4/5, Tor, etc. AFAIK, Tor is impossible to completely block in any way if you can't block Tor's SOCKS entry point and/or any SOCKS proxies.
 ----
 CategoryConfigExample
