@@ -61,12 +61,14 @@ ebtables -t broute -A BROUTING \
         -j redirect --redirect-target DROP
 
 
- cd /proc/sys/net/bridge/
- for i in *
- do
-   echo 0 > $i
- done
- unset i
+if test -d /proc/sys/net/bridge/ ; then
+  for i in /proc/sys/net/bridge/*
+  do
+    echo 0 > $i
+  done
+  unset i
+fi
+
 }}}
 
  . /!\ The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc)
