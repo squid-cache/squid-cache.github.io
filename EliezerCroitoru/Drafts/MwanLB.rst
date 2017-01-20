@@ -125,7 +125,7 @@ done
 === NATed Environment ===
 
 == LoadBalancing general algorithms  ==
-
+  GOALS: failover, equal cost per packet, weighted per packet, equal cost per connection, and weighted per connection balancing
 === Round Robin ===
 
 === Weighted Round Robin ===
