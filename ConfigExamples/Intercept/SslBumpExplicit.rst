@@ -105,8 +105,15 @@ Finally you need to create and initialize TLS certificates cache directory and s
 
 The crtd helper will store mimicked certificates in this directory. The squid low-privilege account needs permission to both read and write there.
 
+3.5.x:
 {{{
 /usr/local/squid/libexec/ssl_crtd -c -s /var/lib/ssl_db
+chown squid:squid -R /var/lib/ssl_db
+}}}
+
+4.x
+{{{
+/usr/local/squid/libexec/security_file_certgen -c -s /var/lib/ssl_db
 chown squid:squid -R /var/lib/ssl_db
 }}}
 
