@@ -264,7 +264,6 @@ daemon_runner.do_action()
 
 {{{
 #!highlight go
-package main
 /*
 license note
 Copyright (c) 2016, Eliezer Croitoru
