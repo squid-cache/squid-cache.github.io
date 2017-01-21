@@ -102,7 +102,7 @@ For [[Squid-3.5]] the SquidConf:sslproxy_foreign_intermediate_certs directive ca
 sslproxy_foreign_intermediate_certs /etc/squid/extra-intermediate-CA.pem
 }}}
 
-Older versions of Squid cannot handle intermediate CA certificates very well. You may be able to find various hacks for certain situations around, but it is highly recommended to upgrade to at least the latest [[Squid-3.5]]] version when dealing with HTTPS / TLS traffic.
+Older versions of Squid cannot handle intermediate CA certificates very well. You may be able to find various hacks for certain situations around, but it is highly recommended to upgrade to at least the latest [[Squid-3.5]] version when dealing with HTTPS / TLS traffic.
 
 
 == Create and initialize TLS certificates cache directory ==
