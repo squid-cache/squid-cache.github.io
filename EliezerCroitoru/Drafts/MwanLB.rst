@@ -509,6 +509,17 @@ Machines:
  * WAN router-2(CentOS) IP1:192.168.10.188(pptp vpn over the 192.168.10.254 to the Internet)
  * WebServer http://myip.net.il
 
+=== Fifth LAB - MultiLink loadbalancing with a HUB ===
+Machines:
+ * Linux\Windows client 192.168.25.1
+ * Ubuntu LB 192.168.25.254 + 192.168.24.254
+ * 3 VYOS NAT routers 192.168.24.1-3 with IPIP tunnel towards the HUB server(next..)
+ * Remote Ubuntu LB HUB with IPIP tunnels towards the nat routers public IP address(and back from them), and NATTING the incomming traffic to the Internet.
+
+This setup is similar to PEPLINK product which offers Load Balancing over low cost lines and termination of the connection on the other side in a DATA-CENTER.
+In the lab on the local LB we run the golang helper on the way to the internet and route connections based on their mark, one TCP connection will stay over the same NAT router and the same PATH in one direction.
+Every side(LB, HUB) has it's own LB service and there for it can happen very often that while the traffic to the Internet will use one PATH ie IPIP tunnel, and when the data will be balanced back to the client it will pass in antother PATH.
+
 = Load Balancing - out of the box =
 As a Computer Science novice one of the important tasks in the real world would be to maintain balance between many worlds.<<BR>>
 From one hand the Computer Science is tempting and gives lots of power while on the other side of these machines there are Billions of lives around the clock in the past, present and future.<<BR>>
