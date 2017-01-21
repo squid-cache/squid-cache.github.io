@@ -64,6 +64,12 @@ http_port 3128 ssl-bump \
   cert=/etc/squid/ssl_cert/myCA.pem \
   generate-host-certificates=on dynamic_cert_mem_cache_size=4MB
 
+# For squid 3.5.x
+sslcrtd_program /usr/local/squid/libexec/ssl_crtd -s /var/lib/ssl_db -M 4MB
+
+# For squid 4.x
+# sslcrtd_program /usr/local/squid/libexec/security_file_certgen -s /var/lib/ssl_db -M 4MB
+
 acl step1 at_step SslBump1
 
 ssl_bump peek step1
