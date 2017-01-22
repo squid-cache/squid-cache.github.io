@@ -31,7 +31,7 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 ==== Squid Beta release ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 7.
- * '''Current Beta:''' 4.0.11-1 based on the latest release.
+ * '''Current Beta:''' 4.0.17-1 based on the latest release.
 The RPMs was separated into three files:
 
  * squid-VERSION.rpm
