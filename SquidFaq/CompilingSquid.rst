@@ -52,7 +52,7 @@ You will need a C++ compiler:
  * To compile Squid v3, any decent C++ compiler would do. Almost all modern Unix systems come with pre-installed C++ compilers which work just fine.
  * To compile Squid v4 and later, you will need a C++11-compliant compiler. Most recent Unix distributions come with pre-installed compilers that support C++11.
 
-/!\ Squid v3.4 and v3.5 automatically enables C++11 support in the compiler if ./configure detects such support. Later Squid versions require C++11 support while earlier ones may fail to build if C++11 compliance is enforced by the compiler.
+/!\ Squid v3.4 and v3.5 automatically enable C++11 support in the compiler if ./configure detects such support. Later Squid versions require C++11 support while earlier ones may fail to build if C++11 compliance is enforced by the compiler.
 
 
 If you are uncertain about your system's C compiler, The GNU C compiler is widely available and supplied in almost all operating systems. It is also well tested with Squid.  If your OS does not come with GCC you may download it from [[ftp://ftp.gnu.org/gnu/gcc|the GNU FTP site]].
