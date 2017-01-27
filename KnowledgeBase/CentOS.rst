@@ -29,7 +29,7 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 ## 4  = indents required for BinaryPackages page include
 
-=== Stable Repository Package (like epel-release) ===
+==== Stable Repository Package (like epel-release) ====
 To install run the command:
 {{{
 yum install http://ngtech.co.il/repo/centos/7/squid-repo-1-1.el7.centos.noarch.rpm -y
