@@ -29,6 +29,20 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 ## 4  = indents required for BinaryPackages page include
 
+=== Repository Package (like epel-release) ===
+To install run the command:
+{{{
+yum install http://ngtech.co.il/repo/centos/7/squid-repo-1-1.el7.centos.noarch.rpm -y
+}}}
+or 
+{{{
+rpm -i http://ngtech.co.il/repo/centos/7/squid-repo-1-1.el7.centos.noarch.rpm
+}}}
+and then install squid using the command:
+{{{
+yum install squid
+}}}
+
 ==== Squid Beta release ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 7.
  * '''Current Beta:''' 4.0.17-1 based on the latest release.
