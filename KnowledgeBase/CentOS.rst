@@ -29,7 +29,7 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 ## 4  = indents required for BinaryPackages page include
 
-==== Stable Repository Package (like epel-release) ====
+=== Stable Repository Package (like epel-release) ===
 To install run the command:
 {{{
 yum install http://ngtech.co.il/repo/centos/7/squid-repo-1-1.el7.centos.noarch.rpm -y
@@ -43,7 +43,7 @@ and then install squid using the command:
 yum install squid
 }}}
 
-==== Squid Beta release ====
+=== Squid Beta release ===
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 7.
  * '''Current Beta:''' 4.0.17-1 based on the latest release.
 The RPMs was separated into three files:
@@ -75,8 +75,7 @@ yum update
 yum install squid
 }}}
 
-
-==== Squid-3.5 ====
+=== Squid-3.5 ===
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6 and 7
  * '''Current:''' 3.5.19-1 based on the latest release.
 
@@ -110,7 +109,7 @@ yum install squid
 }}}
 
 
-==== Squid-3.4 ====
+=== Squid-3.4 ===
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6
  * '''Eliezer''': As of 3.4.0.2 I am releasing the squid RPMs for two CPU classes OS, i686 and x86_64.
 
@@ -145,7 +144,7 @@ yum install squid
 }}}
 
 
-==== Squid-3.3 ====
+=== Squid-3.3 ===
 
  * Official package bundled with CentOS 7
 
@@ -177,7 +176,7 @@ wget http://download.opensuse.org/repositories/home:airties:server/CentOS_CentOS
 yum install squid3
 }}}
 
-==== Squid-3.1 ====
+=== Squid-3.1 ===
 
  * Official package bundled with CentOS 6.6
 
