@@ -99,7 +99,7 @@ Measurement Factory will provide the initial set of 3-5 Polygraph workloads for 
 
  1. What if I have questions not answered here?
 
-   You may post your questions to XXX. However, most of the information required to successfully apply, plan, and complete Pilot-1 is publicly available. We hate discouraging questions (and some cooperation/discussion with the Project ''will'' be required during all pilots), but please keep in mind that nobody has the time for detailed answers, especially answers to unnecessary questions. Do your best to solve the problems on your own and, if you have to ask something, make it easy for others to answer your questions. During the application stage, we may update this page with more answers to popular questions.
+   You may post your questions to <<MailTo(info@squid-cache.org)>>. However, most of the information required to successfully apply, plan, and complete Pilot-1 is publicly available. We hate discouraging questions (and some cooperation/discussion with the Project ''will'' be required during all pilots), but please keep in mind that nobody has the time for detailed answers, especially answers to unnecessary questions. Do your best to solve the problems on your own and, if you have to ask something, make it easy for others to answer your questions. During the application stage, we may update this page with more answers to popular questions.
 
  1. Can you detail the expected QA Engineer position?
 
