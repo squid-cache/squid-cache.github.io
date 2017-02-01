@@ -47,7 +47,7 @@ Bumping Squid goes through several TCP and TLS "handshaking" steps. Peeking step
 
 '''Step 1:'''
  i. Get TCP-level info from the client.
-  * In forward proxy environments, parse the CONNECT request.
+  * In forward proxy environments, also parse the CONNECT request.
   * In interception environments, create a fake CONNECT request using TCP-level info.
  i. Go through the [[SquidFaq/OrderIsImportant#Callout_Sequence|Callout Sequence]] with the CONNECT request mentioned above.
  i. Evaluate all SquidConf:ssl_bump rules and perform the first matching action (splice, bump, peek, stare, or terminate).
