@@ -1,4 +1,4 @@
-#acl SquidWikiAdminGroup:read,write,admin All:read
+#acl SquidWikiAdminGroup:read,write,admin
 
 /!\ This is a draft page for QA Pilots announcement. '''All''' information on this page may be incorrect. The page location will change. Please ignore this page.
 
