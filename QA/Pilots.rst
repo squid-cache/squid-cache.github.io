@@ -1,3 +1,5 @@
+#acl SquidWikiAdminGroup:read,write,admin All:read
+
 = QA Pilots =
 
 The Squid Project needs to reduce the number of regression bugs in Squid releases and development snapshots. The large number of regressions illustrate that our peer code reviews are naturally insufficient, and our post-commit build tests are woefully inadequate.
