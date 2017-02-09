@@ -156,3 +156,68 @@ Output example:
   }
 }
 }}}
+
+Example of an original squid cache info page output:
+{{{
+Squid Object Cache: Version 3.5.24
+Build Info: 
+Service Name: squid
+Start Time:	Wed, 08 Feb 2017 12:52:09 GMT
+Current Time:	Thu, 09 Feb 2017 22:54:40 GMT
+Connection information for squid:
+	Number of clients accessing cache:	2
+	Number of HTTP requests received:	66
+	Number of ICP messages received:	0
+	Number of ICP messages sent:	0
+	Number of queued ICP replies:	0
+	Number of HTCP messages received:	0
+	Number of HTCP messages sent:	0
+	Request failure ratio:	 0.00
+	Average HTTP requests per minute since start:	0.0
+	Average ICP messages per minute since start:	0.0
+	Select loop called: 280647 times, 436.672 ms avg
+Cache information for squid:
+	Hits as % of all requests:	5min: 0.0%, 60min: 0.0%
+	Hits as % of bytes sent:	5min: -0.0%, 60min: 100.0%
+	Memory hits as % of hit requests:	5min: 0.0%, 60min: 0.0%
+	Disk hits as % of hit requests:	5min: 0.0%, 60min: 0.0%
+	Storage Swap size:	0 KB
+	Storage Swap capacity:	 0.0% used,  0.0% free
+	Storage Mem size:	216 KB
+	Storage Mem capacity:	 0.1% used, 99.9% free
+	Mean Object Size:	0.00 KB
+	Requests given to unlinkd:	0
+Median Service Times (seconds)  5 min    60 min:
+	HTTP Requests (All):   0.00000  0.00000
+	Cache Misses:          0.00000  0.00000
+	Cache Hits:            0.00000  0.00000
+	Near Hits:             0.00000  0.00000
+	Not-Modified Replies:  0.00000  0.00000
+	DNS Lookups:           0.00000  0.00000
+	ICP Queries:           0.00000  0.00000
+Resource usage for squid:
+	UP Time:	122550.585 seconds
+	CPU Time:	14.085 seconds
+	CPU Usage:	0.01%
+	CPU Usage, 5 minute avg:	0.01%
+	CPU Usage, 60 minute avg:	0.02%
+	Maximum Resident Size: 69920 KB
+	Page faults with physical i/o: 8
+Memory accounted for:
+	Total accounted:          471 KB
+	memPoolAlloc calls:    295619
+	memPoolFree calls:     295691
+File descriptor usage for squid:
+	Maximum number of file descriptors:   16384
+	Largest file desc currently in use:     16
+	Number of file desc currently in use:    9
+	Files queued for open:                   0
+	Available number of file descriptors: 16375
+	Reserved number of file descriptors:   100
+	Store Disk files open:                   0
+Internal Data Structures:
+	    52 StoreEntries
+	    52 StoreEntries with MemObjects
+	    51 Hot Object Cache Items
+	     0 on-disk objects
+}}}
