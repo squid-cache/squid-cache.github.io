@@ -4,7 +4,7 @@
 
 The Squid Project needs to reduce the number of regression bugs in Squid releases and development snapshots. The large number of regressions illustrate that our peer code reviews are naturally insufficient, and our post-commit build tests are woefully inadequate.
 
-To partially address these systemic problems, the Squid Software Foundation plans to adjust the commit process (making successful regression testing mandatory before any commit) and to hire a paid QA engineer to back that new process with the necessary infrastructure support. We already have a set of proxy testing tools, but the existing Project volunteers do not have enough time, interest, and/or skills to use/improve those tools and support the QA infrastructure. A paid QA engineer would be able to focus on that.
+To partially address these systemic problems, the Squid Software Foundation plans to adjust the commit process (making successful regression testing mandatory before any commit) and to hire a paid DevOps/QA engineer to back that new process with the necessary infrastructure support. We already have a set of proxy testing tools, but the existing Project volunteers do not have enough time, interest, and/or skills to use/improve those tools and support the QA infrastructure. A paid engineer would be able to focus on that.
 
 Before a regular QA Engineer position is filled, we offer the following pilot projects. These pilots will help the Project to select the most suitable candidate. They also provide a good illustration of the kind of challenges a Project QA Engineer will face.
 
@@ -144,3 +144,15 @@ Measurement Factory will provide the initial set of 3-5 Polygraph workloads for 
  1. How can I recommend somebody else to do the pilots?
 
    Please show them this page and encourage them to apply! Unfortunately, we may not have enough time to review recommendations and then solicit applications from the recommended folks. It is best if they apply themselves.
+
+ 1. Wait a second! Is not this a !DevOps position? Why do you call this work QA?!
+
+    . The three pilot projects and the expected initial work is indeed 90% !DevOps (if you want to use a fresh buzzword) or system administration (if you want to stretch an old term to cover things like CI on some cloud platform). We need an engineer to setup, configure, and occasionally create systems/processes/tools that guard Squid from regressions. Whether that engineer has "!DevOps", "sysadmin", and/or "QA" keywords on the resume is largely irrelevant.
+
+    . For example, Pilot-1 is not about writing or running QA test cases; it is about selecting and then setting up/integrating existing development and testing tools to prevent build failures. Similarly, Pilot-2 and Pilot-3 are not about writing or running test cases either!
+
+    . The long-term expectations for the position is a slow migration towards 75% QA because the systems/processes established in the beginning ought to continue to function increasingly well, with little ongoing maintenance. Thus, the need for DevOps/sysadmin work will diminish (but not disappear). On the other hand, it is also possible that the Squid Project will need both a !DevOps and a QA engineer at that time. However, even at that distant stage, we do ''not'' expect the position to focus on "boring QA" tasks such as testing whether clicking a GUI button 100 times breaks something. The focus would be on triaging complex test failures and possibly scripting new test cases for complex protocols/features (both activities require serious understanding of network protocols, which we cannot expect the candidates for this position to poses, but which they may be able to acquire with time).
+
+    . Our immediate needs are clear. Our predictions regarding the long-term future position requirements may be wrong. We do not know whether we can find a single person that can grow/adjust to stay in sync with the changing position requirements, but that would be ideal.
+
+    . Besides, !DevOps is a part of QA if you believe [[https://en.wikipedia.org/wiki/DevOps#/media/File:Devops.svg|Wikipedia]] ;-).
