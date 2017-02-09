@@ -78,3 +78,81 @@ end
 
 puts JSON.pretty_generate(mainjson)
 }}}
+Output example:
+{{{
+{
+  "Squid Object Cache: Version 3.5.24": {
+  },
+  "Build Info:": {
+  },
+  "Service Name: squid": {
+  },
+  "Start Time:\tWed, 08 Feb 2017 12:52:09 GMT": {
+  },
+  "Current Time:\tThu, 09 Feb 2017 22:45:29 GMT": {
+  },
+  "Connection information for squid:": {
+    "Number of clients accessing cache": "1",
+    "Number of HTTP requests received": "62",
+    "Number of ICP messages received": "0",
+    "Number of ICP messages sent": "0",
+    "Number of queued ICP replies": "0",
+    "Number of HTCP messages received": "0",
+    "Number of HTCP messages sent": "0",
+    "Request failure ratio": "0.00",
+    "Average HTTP requests per minute since start": "0.0",
+    "Average ICP messages per minute since start": "0.0",
+    "Select loop called": "279360 times, 436.712 ms avg"
+  },
+  "Cache information for squid:": {
+    "Hits as % of all requests": "5min",
+    "Hits as % of bytes sent": "5min",
+    "Memory hits as % of hit requests": "5min",
+    "Disk hits as % of hit requests": "5min",
+    "Storage Swap size": "0 KB",
+    "Storage Swap capacity": "0.0% used,  0.0% free",
+    "Storage Mem size": "216 KB",
+    "Storage Mem capacity": "0.1% used, 99.9% free",
+    "Mean Object Size": "0.00 KB",
+    "Requests given to unlinkd": "0"
+  },
+  "Median Service Times (seconds)  5 min    60 min:": {
+    "HTTP Requests (All)": "0.00000  0.00000",
+    "Cache Misses": "0.00000  0.00000",
+    "Cache Hits": "0.00000  0.00000",
+    "Near Hits": "0.00000  0.00000",
+    "Not-Modified Replies": "0.00000  0.00000",
+    "DNS Lookups": "0.00000  0.00000",
+    "ICP Queries": "0.00000  0.00000"
+  },
+  "Resource usage for squid:": {
+    "UP Time": "121999.905 seconds",
+    "CPU Time": "14.017 seconds",
+    "CPU Usage": "0.01%",
+    "CPU Usage, 5 minute avg": "0.01%",
+    "CPU Usage, 60 minute avg": "0.02%",
+    "Maximum Resident Size": "69920 KB",
+    "Page faults with physical i/o": "8"
+  },
+  "Memory accounted for:": {
+    "Total accounted": "445 KB",
+    "memPoolAlloc calls": "293887",
+    "memPoolFree calls": "293960"
+  },
+  "File descriptor usage for squid:": {
+    "Maximum number of file descriptors": "16384",
+    "Largest file desc currently in use": "13",
+    "Number of file desc currently in use": "6",
+    "Files queued for open": "0",
+    "Available number of file descriptors": "16378",
+    "Reserved number of file descriptors": "100",
+    "Store Disk files open": "0"
+  },
+  "Internal Data Structures": {
+    "StoreEntries": "52",
+    "StoreEntries with MemObjects": "52",
+    "Hot Object Cache Items": "51",
+    "on-disk objects": "0"
+  }
+}
+}}}
