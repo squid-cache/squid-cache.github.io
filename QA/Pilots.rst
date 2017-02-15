@@ -16,7 +16,7 @@ Please see the [[#Q_and_A|Q&A]] section for more info.
 
 == Application ==
 
-||Due date:||2017-02-15 noon UTC||
+||Due date:||2017-02-15 noon UTC (extended to 2017-02-17 noon UTC)||
 ||Preconditions:||desire and skills to complete the pilots and to continue working with the Project after that||
 
 Please review the descriptions of all three pilots and the [[#Q_and_A|Q&A]] section before applying.
