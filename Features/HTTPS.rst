@@ -97,10 +97,12 @@ More details at http://dev.chromium.org/developers/design-documents/secure-web-p
 
 == Firefox ==
 
-The Firefox 33.0 browser is able to connect to proxies over SSL connections if configured to use one in a PAC file. GUI configuration appears not to be possible (yet).
+The Firefox 33.0 browser is able to connect to proxies over TLS connections if configured to use one in a PAC file. GUI configuration appears not to be possible (yet), though there is a config hack for [[https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c68|embedding PAC logic]].
 
 There is still an important bug open:
  * Using a client certificate authentication to a proxy: https://bugzilla.mozilla.org/show_bug.cgi?id=209312
+
+If you have trouble with adding trust for the proxy cert, there is [[https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c65|a process]] by Patrick McManus to workaround that. 
 
 ----
 CategoryFeature
