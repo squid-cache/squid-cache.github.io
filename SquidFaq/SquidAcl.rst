@@ -162,7 +162,9 @@ acl Cooking2 dstdomain www.gourmet-chef.com
 http_access deny Cooking2
 http_access allow all
 }}}
-The ''dstdomain'' means to search the hostname in the URL for the string "www.gourmet-chef.com." Note that when IP addresses are used in URLs (instead of domain names), Squid implements relaxed access controls.  If the a domain name for the IP address has been saved in Squid's "FQDN cache", then Squid can compare the destination domain against the access controls. However, if the domain is not immediately available, Squid allows the request and makes a lookup for the IP address so that it may be available for future requests.
+The ''dstdomain'' means to search the hostname in the URL for the string "www.gourmet-chef.com." Note that when IP addresses are used in URLs (instead of domain names), Squid may have to do a DNS lookup to determine whether the ACL matches: If a domain name for the IP address is already in the Squid's "FQDN cache", then Squid can immediately compare the destination domain against the access controls. Otherwise, Squid does an asynchronous reverse DNS lookup and evaluates the ACL after that lookup is over. Subsequent ACL evaluations may be able to use the cached lookup result (if any).
+
+Asynchronous lookups are done for http_access and other directives that support so called "slow" ACLs. If a directive does not support a required asynchronous DNS lookup, then modern Squids use "none" instead of the actual domain name to determine whether a dstdomain ACL matches, but you should ''not'' rely on that behavior. To disable DNS lookups, use the "-n" ACL option (where supported).
 
 == How do I block specific users or groups from accessing my cache? ==
 === Using Ident ===
