@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''05:00 2016-10-28 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''05:00 2017-02-24 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
@@ -20,6 +20,7 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Review of action points from last meeting
 
  1. mailing list archival policy document
+ 1. QA Pilot-1 candidate selection
 
  1. Next meeting scheduling
  1. Open floor:
