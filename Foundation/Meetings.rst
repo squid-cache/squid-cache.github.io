@@ -7,21 +7,17 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''06:00 2017-02-24 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''06:00 2017-03-18 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
-==== Draft Agenda - Meeting #22 ====
+==== Draft Agenda - Meeting #23 ====
 
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
-
- 1. sending support points announcement
- 1. mailing list archival policy document
- 1. QA Pilot-1 candidate selection
 
  1. Next meeting scheduling
  1. Open floor:
@@ -35,21 +31,22 @@ Notes:
  1. Opening of the meeting
  1. Selection of meeting officials
  1. Agenda bashing and approval
+ 1. QA Pilot-1 candidate selection
  1. Last meeting minutes approval
  1. Review of action points from last meeting
- 1. QA Pilots
- 1. Dealing with personal insults on mailing lists
+ 1. sending support points announcement
+ 1. mailing list archival policy document
  1. Next meeting scheduling
  1. Open floor:
-
+   . no discussion.
 
 == Action Points ==
 ||'''Meeting''' ||'''Assigned''' ||'''Action''' ||'''status''' || '''ETA''' ||
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#21 || AmosJeffries || publish minutes from meeting #19 with amendments || done ||
-||#21 || AmosJeffries || publish minutes from meeting #20 || done ||
+||#22 || AmosJeffries || publish minutes from meeting #21 || not done ||
+|| ||
 ||#21 || FrancescoChemolli || draft insult suppression policy for @board discussion || not done ||
 || ||
 ||#20 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
@@ -61,7 +58,6 @@ Notes:
 ||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.|| second draft sent ||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
 ||#16 || HenrikNordstrom || create a Foundation account to host .org and probably a few other domains at the registrar of his choice. Foundation to pay for the transfers and prepay for hosting.|| not done ||
-||#16 || sysadmin || verify that there is no services left that depends on west, then Alex to take down the hardware etc.|| done ||
 || ||
 ||#13 ||FrancescoChemolli ||draft addition about third party handling and archiving to mail list welcome message ||not done || ||
 ||#13 || sysadmin ||create map of services to machines at /SysAdmin/ServicesMap ||not done || ||
@@ -84,9 +80,10 @@ Notes:
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
-||#21 ||2016-10-28 ||IRC || circulated ||
-||#20 ||2016-09-16 ||IRC || circulated ||
-||#19 ||2016-07-29 ||IRC || circulated ||
+||#22 ||2017-02-24 ||IRC || circulated ||
+||#21 ||2016-10-28 ||IRC || http://www.squid-cache.org/Foundation/archive/2016/2016-10-28_board-meeting-21.html ||
+||#20 ||2016-09-16 ||IRC || http://www.squid-cache.org/Foundation/archive/2016/2016-09-16_board-meeting-20.html ||
+||#19 ||2016-07-29 ||IRC || http://www.squid-cache.org/Foundation/archive/2016/2016-07-29_board-meeting-19.html ||
 ||#18 ||2016-02-29 ||IRC || http://www.squid-cache.org/Foundation/archive/2016/2016-02-29_board-meeting-18.html ||
 ||#17 ||2015-05-15 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-05-15_board-meeting-17.html ||
 ||#16 ||2015-03-06 ||IRC || http://www.squid-cache.org/Foundation/archive/2015/2015-03-06_board-meeting-16.html ||
