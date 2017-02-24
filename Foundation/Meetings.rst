@@ -19,25 +19,9 @@ Most of the Board discussions can be open to the public and your constructive pa
  1. Last meeting minutes approval
  1. Review of action points from last meeting
 
+ 1. sending support points announcement
  1. mailing list archival policy document
  1. QA Pilot-1 candidate selection
-
- 1. Next meeting scheduling
- 1. Open floor:
-
-
-Notes:
-
-==== Draft Agenda - Meeting #21 ====
-
- 1. Opening of the meeting
- 1. Selection of meeting officials
- 1. Agenda bashing and approval
- 1. Last meeting minutes approval
- 1. Review of action points from last meeting
-
- 1. QA Pilots
- 1. Dealing with personal insults on mailing lists
 
  1. Next meeting scheduling
  1. Open floor:
@@ -53,11 +37,10 @@ Notes:
  1. Agenda bashing and approval
  1. Last meeting minutes approval
  1. Review of action points from last meeting
- 1. Hiring QA engineer.
- 1. Decommissioning West.
+ 1. QA Pilots
+ 1. Dealing with personal insults on mailing lists
  1. Next meeting scheduling
  1. Open floor:
-
 
 
 == Action Points ==
@@ -70,12 +53,11 @@ Notes:
 ||#20 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
 || ||
 ||#19 || FrancescoChemolli || oversee a VM mirror being created to replace east.|| done ||
-||#19 || AmosJeffries || publish minutes from meeting #19 || done ||
 || ||
 ||#18 || FrancescoChemolli || drive the process for seeking and electing a new board member, starting with the announcement. || not done ||
 ||#18 || FrancescoChemolli || send Support Points public announcement|| not done ||
 ||#18 || AmosJeffries || provide Francesco with service listing contacts || not done ||
-
+|| ||
 ||#16 || FrancescoChemolli || draft a no response to Packt and circulate it on the board list for review before sending.|| second draft sent ||
 ||#16 || HenrikNordstrom || send services listing update mail with April 30 2015 as response deadline. Must be done within two weeks from today for deadline to hold.|| not done ||
 ||#16 || HenrikNordstrom || create a Foundation account to host .org and probably a few other domains at the registrar of his choice. Foundation to pay for the transfers and prepay for hosting.|| not done ||
