@@ -45,7 +45,7 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#22 || AmosJeffries || publish minutes from meeting #21 || not done ||
+||#22 || AmosJeffries || publish minutes from meeting #21 || done ||
 || ||
 ||#21 || FrancescoChemolli || draft insult suppression policy for @board discussion || not done ||
 || ||
