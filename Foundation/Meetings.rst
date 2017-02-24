@@ -50,7 +50,7 @@ Notes:
 || ||
 ||#21 || AmosJeffries || publish minutes from meeting #19 with amendments || done ||
 ||#21 || AmosJeffries || publish minutes from meeting #20 || done ||
-||#21 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
+||#21 || FrancescoChemolli || draft insult suppression policy for @board discussion || not done ||
 || ||
 ||#20 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
 || ||
