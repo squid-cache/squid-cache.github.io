@@ -48,11 +48,11 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
-||#20 || AlexRousskov || adjust QA Engineer announcement to replace hourly rate position with a paid pilot project.|| done ||
-||#20 || AmosJeffries || remove DNS entries for west. || done ||
-||#20 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
+||#21 || AmosJeffries || publish minutes from meeting #19 with amendments || done ||
+||#21 || AmosJeffries || publish minutes from meeting #20 || done ||
+||#21 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
 || ||
-||#19 || FrancescoChemolli || oversee a VM mirror being created to replace east.|| done ||
+||#20 || FrancescoChemolli || organize non-rackspace backup of master server with Alex.|| not done ||
 || ||
 ||#18 || FrancescoChemolli || drive the process for seeking and electing a new board member, starting with the announcement. || not done ||
 ||#18 || FrancescoChemolli || send Support Points public announcement|| not done ||
@@ -84,6 +84,7 @@ Notes:
 
 == Past Meetings ==
 ||'''ID''' ||'''Date''' ||'''Location''' ||'''Minutes''' ||
+||#21 ||2016-10-28 ||IRC || circulated ||
 ||#20 ||2016-09-16 ||IRC || circulated ||
 ||#19 ||2016-07-29 ||IRC || circulated ||
 ||#18 ||2016-02-29 ||IRC || http://www.squid-cache.org/Foundation/archive/2016/2016-02-29_board-meeting-18.html ||
