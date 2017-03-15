@@ -8,13 +8,15 @@ To partially address these systemic problems, the Squid Software Foundation plan
 
 Before a regular QA Engineer position is filled, we offer the following pilot projects. These pilots will help the Project to select the most suitable candidate. They also provide a good illustration of the kind of challenges a Project QA Engineer will face.
 
-Application is open to anybody interested in doing the pilots and continuing working with the Squid Project afterwards. The Project plans to offer pilot(s) to one or more applicants. There is no guarantee that any or all pilots will be eventually offered, but it is our intention to complete all these projects and then fill the QA Engineer position.
+Application --(is)--was open to anybody interested in doing the pilots and continuing working with the Squid Project afterwards. The Project ads were viewed by thousands of people. We received about 50 resumes and 10 completed applications. We selected one engineer to do the first Pilot (at least). It is our intention to complete all these pilot projects and then fill the QA Engineer position.
 
 Please see the [[#Q_and_A|Q&A]] section for more info.
 
 <<TableOfContents>>
 
 == Application ==
+
+/!\ Applications are now closed. You may submit yours as a backup in case the first Pilot projects fail, but please note that your application will receive very little attention until that failure (and we hope the pilots will succeed!).
 
 ||Due date:||2017-02-15 noon UTC (extended to 2017-02-17 noon UTC)||
 ||Preconditions:||desire and skills to complete the pilots and to continue working with the Project after that||
