@@ -469,6 +469,79 @@ In some cases, placing all services on a single host is not a good idea. High-lo
 
  . {i} Clamd with custom databases ([[https://www.securiteinfo.com/|SecuriteInfo]], etc.) uses 700 megabytes of RAM and above. Better in this case to use separate servers.
 
+=== C-ICAP monitoring ===
+
+To monitor some runtime statistics from C-ICAP, you can use solution, as described [[https://sourceforge.net/p/c-icap/wiki/faqcicap/|here]] with some additions and corrections.
+
+You can use both CLI and web interface to monitor C-ICAP via built-in info service.
+
+To use CLI, use this command (or add it as shell alias):
+
+{{{
+/usr/local/bin/c-icap-client -s "info?view=text" -i localhost -p 1344 -req use-any-url
+}}}
+
+or, as shell alias:
+
+{{{
+alias icap_stat='c-icap-client -s '\''info?view=text'\'' -i localhost -p 1344 -req use-any-url'
+}}}
+
+The result will looks as shown:
+
+{{{
+ICAP server:localhost, ip:127.0.0.1, port:1344
+
+Running Servers Statistics
+===========================
+Children number: 3
+Free Servers: 27
+Used Servers: 3
+Started Processes: 5
+Closed Processes: 2
+Crashed Processes: 2
+Closing Processes: 0
+
+Child pids: 24689 15427 4947
+Closing children pids:
+Semaphores in use
+         sysv:accept/4
+         sysv:children-queue/5
+
+
+Shared mem blocks in use
+         sysv:kids-queue/30 13 kbs
+
+
+
+General Statistics
+==================
+REQUESTS : 44501
+REQMODS : 39336
+RESPMODS : 5071
+OPTIONS : 94
+FAILED REQUESTS : 5
+ALLOW 204 : 44245
+BYTES IN : 25625 Kbs 486 bytes
+BYTES OUT : 5679 Kbs 536 bytes
+HTTP BYTES IN : 16232 Kbs 612 bytes
+HTTP BYTES OUT : 212 Kbs 887 bytes
+BODY BYTES IN : 2621 Kbs 532 bytes
+BODY BYTES OUT : 192 Kbs 288 bytes
+}}}
+
+To get same info via web, just add this lines in squid.conf and reconfigure:
+
+{{{
+# ICAP info service. URL: http://icap.info
+acl infoaccess dstdomain icap.info
+icap_service service_info reqmod_precache 1 icap://localhost:1344/info
+adaptation_service_set class_info service_info
+adaptation_access class_info allow infoaccess
+adaptation_access class_info deny all
+}}}
+
+Use url above to access stats page.
 
 == Troubleshooting ==
 
