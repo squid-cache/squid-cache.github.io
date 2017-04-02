@@ -543,6 +543,12 @@ adaptation_access class_info deny all
 
 Use url above to access stats page.
 
+Here is also Munin plugins for C-ICAP monitoring (performance-related /runtime stats):
+
+[[attachment:icap_stats]]
+[[attachment:icap_sem]]
+[[attachment:icap_mem]]
+
 == Troubleshooting ==
 
  . {i} When upgrading c-icap server, you also need (in most cases) to rebuild squidclamav to aviod possible API incompatibility.
