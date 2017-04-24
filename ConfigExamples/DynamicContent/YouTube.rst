@@ -6,8 +6,11 @@
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
-This page is an ongoing development. Not least because it must keep up with youtube.com alterations. If you start to experience problems with any of these configs please first check back here for updated config.
+This page is ongoing development. Not least because it must keep up with youtube.com alterations. If you start to experience problems with any of these configs please first check back here for updated config.
 
+
+
+{X} {X} {X} Google\YouTube changed their system to be more secure and due to this the article in it's current state is not applicable. You will need to use Content Adaptation to achive YT caching and it's not a beginne's task.
 == Outline ==
 
 The default configuration of squid older than 3.1 prevents the caching of [[ConfigExamples/DynamicContent|dynamic content]] and youtube.com specifically implement several 'features' that prevent their flash videos being effectively distributed by caches.
