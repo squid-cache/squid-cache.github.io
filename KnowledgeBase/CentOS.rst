@@ -25,7 +25,7 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 '''Bug Reporting:''' http://bugs.centos.org/search.php?category=squid&sortby=last_updated&hide_status_id=-2
 
-'''Eliezer''': 14/Jun/2016 - I have tested CentOS 7 RPMs for squid 3.5.19 on a small scale and it seems to be stable enough for 200-300 users as a forward proxy and basic features.
+'''Eliezer''': 25/Apr/2017 - I have tested CentOS 7 RPMs for squid 3.5.25 on a small scale and it seems to be stable enough for 200-300 users as a forward proxy and basic features.
 
 ## 4  = indents required for BinaryPackages page include
 
@@ -45,7 +45,7 @@ yum install squid
 
 ==== Squid Beta release ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 7.
- * '''Current Beta:''' 4.0.17-1 based on the latest release.
+ * '''Current Beta:''' 4.0.19-1 based on the latest release.
 The RPMs was separated into three files:
 
  * squid-VERSION.rpm
@@ -77,7 +77,7 @@ yum install squid
 
 ==== Squid-3.5 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 6 and 7
- * '''Current:''' 3.5.19-1 based on the latest release.
+ * '''Current:''' 3.5.25-1 based on the latest release.
 
 The RPMs was separated into three files:
 
