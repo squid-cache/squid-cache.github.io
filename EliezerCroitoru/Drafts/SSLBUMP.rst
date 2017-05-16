@@ -54,3 +54,38 @@ IPTABLES=/sbin/iptables
 LAN_INT="eth1"
 $IPTABLES -I PREROUTING 1 -i $LAN_INT -p tcp -m tcp --dport 443 -j REDIRECT --to-ports 13128
 }}}
+
+
+squid.conf example from 3.5.25
+{{{
+request_header_access Surrogate-Capability deny all
+
+forwarded_for transparent
+via off
+dns_v4_first on
+visible_hostname filter
+strip_query_terms off
+acl ms_v6test_doms dstdomain ipv6.msftncsi.com
+deny_info 503:/etc/squid/503.html ms_v6test_doms
+
+http_port 13128 ssl-bump \
+  cert=/etc/squid/ssl_cert/myCA.pem \
+  generate-host-certificates=on dynamic_cert_mem_cache_size=4MB
+acl DiscoverSNIHost at_step SslBump1
+acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/server-regex.nobump"
+
+ssl_bump splice NoSSLIntercept
+
+ssl_bump peek DiscoverSNIHost
+#ssl_bump peek step1
+ssl_bump bump all
+
+sslcrtd_program /usr/lib64/squid/ssl_crtd -s /var/lib/ssl_db -M 4MB
+
+sslcrtd_children 10
+
+sslproxy_cert_error allow all
+sslproxy_flags DONT_VERIFY_PEER
+
+read_ahead_gap 64 MB
+}}}
