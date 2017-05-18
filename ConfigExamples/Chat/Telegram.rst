@@ -58,7 +58,7 @@ acl Telegram dst 149.154.172.0/22
 http_access deny Telegram
 }}}
 
-This only affects Telegram clients using HTTP proxy settings.
+This only affects Telegram clients using HTTP proxy settings. On interception proxy it will works also with Telegram clients AUTO mode (the default).
 
 ----
 CategoryConfigExample
