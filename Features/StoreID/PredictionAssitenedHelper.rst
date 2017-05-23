@@ -8,6 +8,14 @@ store_id_program /opt/bin/ytgv-storeid.rb
 store_id_children 40 startup=10 idle=5 concurrency=0
 store_id_access allow rewritedoms GET
 store_id_access deny all
+
+acl youtube dstdomain www.youtube.com
+acl ytwatch urlpath_regex watch\?
+icap_enable on
+
+icap_service service_req reqmod_precache icap://127.0.0.1:2344/yt2upn/ bypass=on
+adaptation_access service_req allow youtube GET ytwatch
+adaptation_access service_req deny all
 }}} 
 == Youtube Google video url Prediction assitended Helper Example ==
 {{{
