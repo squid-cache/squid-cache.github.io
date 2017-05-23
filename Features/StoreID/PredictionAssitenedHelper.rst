@@ -1,3 +1,14 @@
+== squid.comf example ==
+{{{
+acl GET method GET
+
+acl rewritedoms dstdomain .googlevideo.com
+
+store_id_program /opt/bin/ytgv-storeid.rb
+store_id_children 40 startup=10 idle=5 concurrency=0
+store_id_access allow rewritedoms GET
+store_id_access deny all
+}}} 
 == Youtube Google video url Prediction assitended Helper Example ==
 {{{
 #!highlight ruby
