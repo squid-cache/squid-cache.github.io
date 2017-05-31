@@ -83,6 +83,8 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
 || RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. see [[Features/HTTP2]] ||
 || RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} || see [[Features/HTTP2]] ||
+|| RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info Response Header Fields || /!\ ||
+|| RFC:7858 || Specification for DNS over Transport Layer Security (TLS) || {X} ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
