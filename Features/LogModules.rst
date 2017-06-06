@@ -27,7 +27,7 @@ access_log module:parameters [logformat] [acls]
 
  . '''module''': One of the plugin modules Squid can use to record the log data.
 
- . '''parameters''': Parameters to configure the plugin module. Content and format is specific to to each logging module.
+ . '''parameters''': Parameters to configure the plugin module. Content and format is specific to each logging module.
 
  . '''logformat''': The access.log format to be used. See SquidConf:logformat for more details.
 
