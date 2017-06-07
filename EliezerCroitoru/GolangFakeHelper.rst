@@ -3,9 +3,10 @@ Describe EliezerCroitoru/GolangFakeHelper here.
 {{{
 #!highlight go
 package main
+
 /*
 license note
-Copyright (c) 2014, Eliezer Croitoru
+Copyright (c) 2017, Eliezer Croitoru
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -21,6 +22,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"sync"
 )
 
 var debug *string
@@ -28,7 +30,8 @@ var answer *string
 
 var err error
 
-func process_request(line string) {
+func process_request(line string, wg *sync.WaitGroup) {
+	defer wg.Done()
 	lparts := strings.Split(strings.TrimRight(line, "\n"), " ")
 	if len(lparts[0]) > 0 {
 		if *debug == "yes" {
@@ -45,6 +48,8 @@ func main() {
 	answer = flag.String("a", "OK", "Answer can be either \"ERR\" or \"OK\"")
 	flag.Parse()
 
+	var wg sync.WaitGroup
+
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
@@ -54,9 +59,10 @@ func main() {
 			// You may check here if err == io.EOF
 			break
 		}
-
-		go process_request(line)
+		wg.Add(1)
+		go process_request(line, &wg)
 
 	}
+	wg.Wait()
 }
 }}}
