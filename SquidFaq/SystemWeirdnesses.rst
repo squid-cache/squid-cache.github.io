@@ -11,6 +11,9 @@ tcp_xmit_hiwat 49152
 tcp_xmit_lowat 4096
 tcp_recv_hiwat 49152
 }}}
+
+PS. In Solaris 10 and above this parameters is system default (by Yuri Voinov).
+
 === select() ===
 ''select(3c)'' won't handle more than 1024 file descriptors.  The ''configure'' script should enable ''poll()'' by default for Solaris.  ''poll()'' allows you to use many more filedescriptors, probably 8192 or more.
 
