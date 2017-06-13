@@ -123,9 +123,11 @@ All of our mailing lists have "-subscribe" and "-unsubscribe" addresses that you
 == What's the legal status of Squid? ==
 Squid is copyrighted by The Squid Software Foundation and contributors. Squid copyright holders are listed in the CONTRIBUTORS file.
 
-Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], distributed under the terms of the [[http://www.gnu.org/copyleft/gpl.html|GNU General Public License]], version 2. Squid includes various software components distributed under several GPLv2-compatible open source licenses listed in the CREDITS file.
+Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], distributed under the terms of the [[http://www.gnu.org/copyleft/gpl.html|GNU General Public License]], [[https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt|version 2]] (GPLv2). Squid includes various software components distributed under several GPLv2-compatible open source licenses listed in the CREDITS file.
 
 Squid contributors and components change with Squid software. The appropriate CONTRIBUTORS and CREDITS files can be found in the corresponding Squid sources, available for [[http://www.squid-cache.org/Versions/|download]].
+
+Official Squid artwork distribution terms are detailed [[http://www.squid-cache.org/Artwork/|elsewhere]].
 
 <<Anchor(HowToAddOrFix)>>
 
