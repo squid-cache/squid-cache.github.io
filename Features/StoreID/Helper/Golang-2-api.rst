@@ -1,9 +1,10 @@
 {{{
 #!highlight go
 package main
+
 /*
 license note
-Copyright (c) 2016, Eliezer Croitoru
+Copyright (c) 2017, Eliezer Croitoru
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -33,6 +34,7 @@ import (
 	"net/url"
 	"os"
 	"strings"
+	"sync"
 )
 
 var debug *bool
@@ -48,7 +50,8 @@ var http_version *string
 
 var err error
 
-func process_request(line string) {
+func process_request(line string, wg *sync.WaitGroup) {
+	defer wg.Done()
 	answer := "ERR"
 	lparts := strings.Split(strings.TrimRight(line, "\n"), " ")
 	if len(lparts[0]) > 0 {
@@ -163,6 +166,8 @@ func main() {
 
 	}
 
+	var wg sync.WaitGroup
+
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
@@ -177,8 +182,11 @@ func main() {
 			break
 		}
 
-		go process_request(line)
+		wg.Add(1)
+		go process_request(line, &wg)
 
 	}
+	wg.Wait()
+
 }
 }}}
