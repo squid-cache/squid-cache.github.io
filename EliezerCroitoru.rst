@@ -10,6 +10,7 @@ Email: <<MailTo(eliezer@ngtech.co.il)>>
 <<TableOfContents>>
 
 = 2017_06 =
+----
 
 I am working on an alternative for wccp implementation.
 This alternative will be composed from:
@@ -23,12 +24,13 @@ This alternative will be composed from:
  * SSL-BUMP auto integration\deployment scripts
 
 = 2015_04 =
+----
 I have released [[http://www1.ngtech.co.il/wpe/?page_id=135|SquidBlocker]] which can be an alternative to SquidGuard.
 If you are already here take a peek at [[http://www1.ngtech.co.il/squidblocker/|SquidBlocker page]] just to understand a bit more about the different algorithms and ideas. 
 
-----
 
 = 2015 =
+----
 
 Now After a very long time that my work results [[Features/StoreID|StoreID]] and
 it has been tested of a very long time in production systems and considers Stable.<<BR>>
@@ -36,9 +38,9 @@ I am recommending for who ever reads this page to also take a peek at [[ConfigEx
 
 This is also the place to say thanks for all the great guidance from [[AmosJeffries|Amos Jeffris]], [[AlexRousskov|Alex Rousskov]] the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-users|squid users community]] and all these "people" who helped and helps me everyday to continue and do my daily routines which makes me happier and thank god every moment.
 
+= Old times =
 ----
 
-= Old times =
 Wrote many helpers for squid such as:
 "[[https://github.com/elico/squid-helpers/tree/master/squid_helpers/proxy_hb_check|Heart Beat]]",
 "[[ConfigExamples/DynamicContent/Coordinator|Caching Dynamic Content using Adaptation]]",
