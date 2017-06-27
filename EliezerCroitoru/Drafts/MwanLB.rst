@@ -462,6 +462,49 @@ Chain PREROUTING (policy ACCEPT 909 packets, 54107 bytes)
 
 === Examples ===
 
+== MultiWAN StandAlone Host reverse path consistency ==
+
+For a single host to return traffic the way it came from you need the next iptables and ip rules:
+
+{{{
+#!highlight bash
+#!/usr/bin/env bash
+
+# Disable Reverse Path filtering
+
+for i in /proc/sys/net/ipv4/conf/*/rp_filter
+do
+  echo $i
+  cat $i
+  echo 0 > $i
+done
+
+IPTABLES="/sbin/iptables"
+IP=/sbin/ip
+
+$IP route flush table 201
+$IP route add default via 192.168.188.253 table 201
+
+$IPTABLES -t mangle -F 
+
+$IPTABLES -t mangle -A PREROUTING ! -p tcp -j ACCEPT
+
+$IPTABLES -t mangle -A PREROUTING -j CONNMARK --restore-mark
+$IPTABLES -t mangle -A OUTPUT -j CONNMARK --restore-mark
+
+$IPTABLES -t mangle -A PREROUTING -i eth2 -p tcp -m state --state NEW  -j CONNMARK --set-mark 1
+
+$IPTABLES -t mangle -A PREROUTING -m connmark --mark 1 -j MARK --set-mark 1
+
+$IPTABLES -t mangle -A PREROUTING -m connmark ! --mark 0  -j CONNMARK --save-mark
+
+$IP rule|grep  'from all fwmark 0x1 lookup 201' >/dev/null
+if [ "$?" -eq "1" ]; then
+  $IP rule add fwmark 1 table 201
+fi
+
+}}}
+
 == MultiWAN NATed testing environment ==
 
 After implementing the same lab with different OS I have decided to use Ubuntu instead of TinyCore linux. And the main Reason for that is that TinyCore linux is a great OS but I am feeling like missing some tools with it.(It's not you it's me..)
