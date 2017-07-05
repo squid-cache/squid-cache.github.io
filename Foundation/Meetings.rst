@@ -1,7 +1,7 @@
 #format wiki
 #language en
 = Squid Software Foundation Board Meetings =
-The [[http://foundation.squid-cache.org/|Foundation]] Board of Directors helds semi-regular meetings to discuss current Foundation affairs. This page documents the next meeting logistics (if known) and will eventually archive past meeting details.
+The [[http://foundation.squid-cache.org/|Foundation]] Board of Directors helds semi-regular meetings to discuss current Foundation affairs. This page documents the next meeting logistics (if known), aggregates pending to-do items, and indexes past meeting minutes.
 
 Most of the Board discussions can be open to the public and your constructive participation is encouraged. We currently do not have a formal set of public participation rules. For now, please email Board member(s) in advance if you would like to join the discussion of any specific item(s) on the Draft Agenda. Most likely, you will need to wait on #squiddev for an invitation to join the meeting session when the item(s) you are interested in are being discussed. We will eventually formalize the procedure based on experience and demand.
 
