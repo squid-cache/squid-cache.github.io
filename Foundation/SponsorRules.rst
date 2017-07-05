@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-/!\ You are reading an early draft. Until this notice is gone, this document is likely to change.
+/!\ You are reading draft v2. Until this notice is gone, this document will change frequently.
 
 = Squid Software Foundation Sponsorship Program =
 
@@ -21,8 +21,8 @@ Sponsors may request to be listed on the Squid Project web [[http://www.squid-ca
  1. The listing is removed approximately one year (365 calendar days) after the last qualified donation is received and acknowledged by the Foundation.
  1. The listings are ordered by the finalized donation amount, rounded down to the nearest $1000. In case of a tie between two rounded finalized amounts, the finalized donation which arrived earlier is listed higher.
  For the purpose of ordering listings: Earlier same-year donations (if any) are prorated and added to the latest donation. The resulting amount is called the finalized donation amount. The time of the latest donation arrival is used as the finalized donation arrival time.
- 1. HTML links inside a listing use the rel="nofollow" attribute.
- 1. The listing must comply with IRS "Qualified sponsorship payment" [[http://www.irs.gov/pub/irs-pdf/p598.pdf|regulations]].
+ 1. All HTML links inside a listing, including the link from the logo image, use the rel="nofollow" attribute.
+ 1. The listing must comply with US IRS "Qualified sponsorship payment" [[http://www.irs.gov/pub/irs-pdf/p598.pdf|regulations]].
  1. The Foundation reserves the right to change these rules at any time, without advance warnings and post factum notifications. Such changes may result in reordering, removal, and/or rejection of previously approved listings.
 
 
@@ -31,10 +31,10 @@ If you would like your Sponsor status to be reflected on the Squid Project web s
  1. An explicit acknowledgment that you are familiar and agree with the listing rules provided above.
  1. An optional logo as a 190x75 pixels image suitable for display on white background.
  1. A required alternative plain text for the logo image (i.e., the value of the HTML "alt" attribute of the logo <image> element). If the logo image is not supplied, this text will be used instead of the logo image.
- 1. A URL to be used for the link from the logo. Please note that it will be added with a rel="nofollow" attribute.
- 1. Text to display next to the logo. This text is limited to 250 characters, including spaces and punctuation but excluding HTML markup. HTML markup that significantly alters the overall text presentation and Javascript are not accepted.
+ 1. A URL to be used for the link from the logo.
+ 1. English text to display next to the logo. This text is limited to 250 utf-8 characters, including spaces and punctuation.
 
-/!\ Per IRS [[http://www.irs.gov/pub/irs-pdf/p598.pdf|regulations]], a sponsor listing must ''not'' use qualitative or comparative language and must ''not'' contain price information (or other indications of savings or value), endorsements, or inducements to purchase, sell, or use the products or services. Sponsorship listings are ''not'' advertisements! Submissions that violate IRS guidelines or may be interpreted as ads (as judged by the Foundation) will be rejected.
+/!\ Per US IRS [[http://www.irs.gov/pub/irs-pdf/p598.pdf|regulations]], a sponsor listing must ''not'' use qualitative or comparative language and must ''not'' contain price information (or other indications of savings or value), endorsements, or inducements to purchase, sell, or use the products or services. Sponsorship listings are ''not'' advertisements! Submissions that violate IRS guidelines or may be interpreted as ads (as judged by the Foundation) will be rejected.
 
 Preparing your listing for publication may take a few weeks, and each review iteration with your team may increase that delay. Listings are removed one year after the last qualified donation (not one year after publication). To maximize the listing posting duration, you may submit all the necessary materials for review and preparation ''before'' you make the donation.
 
