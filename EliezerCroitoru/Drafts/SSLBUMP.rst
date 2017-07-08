@@ -16,8 +16,19 @@ How to use ssl-bump with squid 3.4?
  
 {{{
 #!highlight bash
-#!/usr/bin/env bash
-set -x 
+#!/usr/bin/env bash 
+
+set -x
+
+DOMAIN="ngtech.co.il"
+COUNTRYCODE="IL"
+STATE="Shomron"
+REGION="Center"
+ORGINZATION="NgTech LTD"
+CERTUUID=`uuidgen | awk 'BEGIN { FS="-"}; {print $1}'`
+SUBJECDETAILS=`echo -n "/C=$COUNTRYCODE/ST=$STATE/L=$REGION/O=$ORGINAZATION/CN=px$CERTUUID.$DOMAIN"`
+
+ 
 SQUIDCONF=/etc/squid/squid.conf
 SSLCRTD=/usr/lib64/squid/ssl_crtd
 SSLCRTDDB=/var/lib/ssl_db
@@ -32,8 +43,11 @@ mkdir -p /etc/squid/ssl_cert /var/lib
 
 echo "about to create certificate..."
 cd /etc/squid/ssl_cert
-openssl req -new -newkey rsa:1024 -days 365 -subj "/C=IL/ST=Shomron/L=Karney Shomron/O=NgTech LTD/CN=ytgv.ngtech.co.il" \
-	-nodes -x509 -keyout myCA.pem  -out myCA.pem 
+#openssl req -new -newkey rsa:1024 -days 365 -subj "/C=IL/ST=Shomron/L=Karney Shomron/O=NgTech LTD/CN=ytgv.ngtech.co.il" \
+#        -nodes -x509 -keyout myCA.pem  -out myCA.pem
+		
+openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -subj "$SUBJECDETAILS" \
+    -extensions v3_ca -keyout myCA.pem  -out myCA.pem 
 echo "creating der x509 certificate format"
 openssl x509 -in myCA.pem -outform DER -out myCA.der
 echo "the next is the certificate for client in x509 format:"
@@ -59,6 +73,7 @@ else
  echo "There is already sslcrtd settings"
 fi
 
+chown squid.squid -R $SSLCRTDDB
 set +x
 }}}
 
@@ -75,7 +90,7 @@ STATE="Shomron"
 REGION="Center"
 ORGINZATION="NgTech LTD"
 CERTUUID=`uuidgen | awk 'BEGIN { FS="-"}; {print $1}'`
-SUBJECDETAILS=`echo -n "/C=$COUNTRYCODE/ST=$STATE/L=$REGION/O=$ORGINAZATION/CN=px-$CERTUUID.$DOMAIN"`
+SUBJECDETAILS=`echo -n "/C=$COUNTRYCODE/ST=$STATE/L=$REGION/O=$ORGINAZATION/CN=px$CERTUUID.$DOMAIN"`
 source /etc/sysconfig/redwood
 echo $SUBJECDETAILS
 if [ -d "/etc/redwood/ssl-cert" ];then
