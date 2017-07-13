@@ -7,6 +7,8 @@
  * '''More''': 
 
  * '''Sponsored by''': [[Eliezer Croitoru]] - [[http://www1.ngtech.co.il/|NgTech]]
+ 
+ * '''Proejct git(with binaries)''': [[http://gogs.ngtech.co.il/elicro/youtube-watch-counter|NgTech git: youtube-watch-counter]]
 
 This helper is a part of a suite that analyze requests and schedules a download of a specific vidoe into a VOD solution.
 This is a helper that receives requests url when these flow into squid and increments the video ID counter.
@@ -243,6 +245,133 @@ end
 $debug = false
 STDOUT.sync = true
 main
+}}}
+
+== yt-counter.go ==
+
+{{{
+#!highlight go
+package main
+
+/*
+license note
+Copyright (c) 2017, Eliezer Croitoru
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+import (
+	"bufio"
+	"flag"
+	"fmt"
+	"github.com/monnand/goredis"
+	"os"
+	"regexp"
+	"strings"
+	"sync"
+)
+
+var debug *bool
+var db_address *string
+var db_port *string
+var active *string
+var database goredis.Client
+var err error
+var world = []byte("session")
+var re [256]*regexp.Regexp
+
+func process_request(line string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	answer := "ERR comment=yt-counter"
+
+	lparts := strings.Split(strings.TrimRight(line, "\n"), " ")
+	if len(lparts) > 1 && len(lparts[0]) > 0 && len(lparts[1]) > 0 {
+		if *debug {
+			fmt.Fprintln(os.Stderr, "ERRlog: Proccessing request => \""+strings.TrimRight(line, "\n")+"\"")
+		}
+		switch {
+		case re[0].MatchString(lparts[1]):
+			if *debug {
+				fmt.Fprintln(os.Stderr, "URL Match for", re[0])
+			}
+			regexpRes := re[0].FindAllStringSubmatch(lparts[1], -1)
+			id := "imdb-title-" + regexpRes[0][1]
+			res, err := database.Incr(id)
+			if err != nil {
+				fmt.Fprintln(os.Stderr, err)
+			}
+			if *debug {
+				fmt.Fprintln(os.Stderr, "Current Counter state for URL", lparts[1], ", id =>", id, ", Counter =>", res)
+			}
+		case re[1].MatchString(lparts[1]):
+			if *debug {
+				fmt.Fprintln(os.Stderr, "URL Match for", re[1])
+			}
+			regexpRes := re[1].FindAllStringSubmatch(lparts[1], -1)
+			id := "yt-videoid-" + regexpRes[0][2]
+			res, err := database.Incr(id)
+			if err != nil {
+				fmt.Fprintln(os.Stderr, err)
+			}
+			if *debug {
+				fmt.Fprintln(os.Stderr, "Current Counter state for URL", lparts[1], ", id =>", id, ", Counter =>", res)
+			}
+		case re[2].MatchString(lparts[1]):
+			if *debug {
+				fmt.Fprintln(os.Stderr, "URL Match for", re[1])
+			}
+			regexpRes := re[2].FindAllStringSubmatch(lparts[1], -1)
+			id := "ytimg-videoid-" + regexpRes[0][2]
+			res, err := database.Incr(id)
+			if err != nil {
+				fmt.Fprintln(os.Stderr, err)
+			}
+			if *debug {
+				fmt.Fprintln(os.Stderr, "Current Counter state for URL", lparts[1], ", id =>", id, ", Counter =>", res)
+			}
+		default:
+			if *debug {
+				fmt.Fprintln(os.Stderr, "No Match for URL", lparts[1])
+			}
+		}
+
+	}
+
+	fmt.Println(lparts[0] + " " + answer)
+}
+
+func main() {
+	fmt.Fprintln(os.Stderr, "ERRlog: Starting yt-counter.go")
+
+	debug = flag.Bool("d", false, "Debug mode can be \"yes\" or \"1\" for on and something else for off")
+	db_address = flag.String("b", "127.0.0.1", "Db ip address")
+	db_port = flag.String("p", "6379", "DB tcp port")
+
+	flag.Parse()
+
+	re[0] = regexp.MustCompile("^https?\\:\\/\\/[\\.0-9a-zA-Z\\-\\_]+\\.imdb\\.com\\/title\\/([a-zA-Z0-9\\-\\_]+)")
+	re[1] = regexp.MustCompile("^https?\\:\\/\\/www\\.youtube\\.com\\/watch\\?.*(v)\\=([a-zA-Z0-9\\-\\_]+)")
+	re[2] = regexp.MustCompile("^https?\\:\\/\\/[a-zA-Z0-9\\-\\_]+\\.(ytimg)\\.com\\/vi\\/([a-zA-Z0-9\\-\\_]+)\\/")
+
+	database.Addr = *db_address + ":" + *db_port
+	var wg sync.WaitGroup
+	reader := bufio.NewReader(os.Stdin)
+	for {
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			// You may check here if err == io.EOF
+			break
+		}
+		wg.Add(1)
+		go process_request(line, &wg)
+	}
+	wg.Wait()
+}
 }}}
 
 == stats output example ==
