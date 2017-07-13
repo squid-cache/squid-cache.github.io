@@ -244,3 +244,74 @@ $debug = false
 STDOUT.sync = true
 main
 }}}
+
+== stats output example ==
+
+=== yaml ===
+{{{
+#!highlight yaml
+---
+youtube-videos-ids:
+  -RSe8aOuZMQ: 1
+  8UM6Pc0LkDw: 1
+  80GtXgCSYJw: 1
+  gA1WcPP9uLk: 1
+youtube-img-videos-ids:
+  jfjGA8TyWXw: 1
+  weeI1G46q0o: 1
+  VD1ftHpJSu4: 1
+  WsDDhm0dAkU: 1
+  YoOXmuCRiQU: 1
+  XuMjCRlAmjc: 1
+  hvS8pjM8YVg: 1
+  aatr_2MstrI: 1
+  ax9ge-ymWIQ: 1
+  C311vyA1Ta0: 1
+  Y9LHxGuMb2A: 1
+  LoXubLsml4A: 1
+  KcLORGq2OiA: 1
+  fyaI4-5849w: 1
+  tdHSPnKDMZU: 1
+  8UM6Pc0LkDw: 2
+  80GtXgCSYJw: 5
+  byYBGEE8NCM: 1
+  her0dWH3svI: 1
+  RgKAFK5djSk: 1
+  dqsWzI4Hoss: 1
+  EKbWvGLC97Q: 1
+  N6-_gkIpL1E: 1
+  BxuY9FET9Y4: 1
+  87gWaABqGYs: 1
+  OvtwV1vXnfc: 1
+  kt3BrBYWUhs: 1
+  -RSe8aOuZMQ: 4
+  UVsRlX_skeU: 1
+  QtxvPRev3I8: 1
+  K0ibBPhiaG0: 1
+  i_yLpCLMaKk: 1
+  igNVdlXhKcI: 1
+  gA1WcPP9uLk: 4
+  Q6rTY4XH6TU: 2
+  3VT3VIRQPKA: 1
+  ejqrzU64dYQ: 1
+  dMaUNdXs6-w: 1
+  1UQzJfsT2eo: 1
+  3AtDnEC4zak: 1
+  jHMJrjkFwbI: 1
+  rIPgru7JiYQ: 1
+  TIrxyVt4jvQ: 1
+  Ey_K97x15ek: 1
+  GMwO-k8f9Hg: 1
+  nfs8NYg7yQM: 1
+  Gc15rdaxGMA: 1
+  v-Dur3uXXCQ: 1
+  TPxuhhC5OXE: 1
+  5YEqcrtsdR0: 1
+  JGwWNGJdvx8: 1
+  lp-EO5I60KA: 1
+  nSDgHBxUbVQ: 1
+  RuNnmzGi4Ao: 1
+  _dK2tDK9grQ: 1
+  MZX_2sczkmo: 1
+imdb-title-ids: {}
+}}}
