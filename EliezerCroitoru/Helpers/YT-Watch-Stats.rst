@@ -1,8 +1,22 @@
+== YouTube Watch Stats Collection tools ==
+
+ * '''Status''': 40%.
+
+ * '''Developer''': [[Eliezer Croitoru]]
+
+ * '''More''': 
+
+ * '''Sponsored by''': [[Eliezer Croitoru]] - [[http://www1.ngtech.co.il/|NgTech]]
+
 This helper is a part of a suite that analyze requests and schedules a download of a specific vidoe into a VOD solution.
 This is a helper that receives requests url when these flow into squid and increments the video ID counter.
 External tools can fetch from the local or remote redis server the stats and decide if it's worth to cache or download a specific youtube or other sites videos.
 
 This code was prettified using one of the Atom Editor plugins which utilzezs Rubocop and the code syntax might be a bit confusing and if you have any question just send me an email at: eliezer@ngtech.co.il or post a question at the squid-users list (squid-users@lists.squid-cache.org)
+
+<<TableOfContents>>
+
+== yt-counter.rb ==
 
 {{{
 #!highlight ruby
@@ -125,6 +139,105 @@ def main
       noconc(request) if validr?(request)
     end
   end
+end
+
+$debug = false
+STDOUT.sync = true
+main
+}}}
+
+== stats-collector.cgi ==
+
+{{{
+#!highlight ruby
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+# license note
+# Copyright (c) 2017, Eliezer Croitoru
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+# 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+require 'rubygems'
+require 'open-uri'
+require 'redis'
+require 'syslog'
+require 'yaml'
+require 'json'
+require 'cgi'
+
+$cgi = CGI.new
+
+$params = $cgi.params
+
+def log(msg)
+  Syslog.log(Syslog::LOG_ERR, '%s', msg)
+end
+
+def main
+  Syslog.open('stats-collector.rb', Syslog::LOG_PID)
+  log('Started')
+  redishost = 'localhost'
+  redisdb = '0'
+  redisport = 6379
+  $redisdbconn = Redis.new(host: redishost, port: redisport)
+  $redisdbconn.select redisdb
+
+  statsCollection = {}
+  statsCollection['youtube-videos-ids'] = {}
+
+  $redisdbconn.scan_each(match: 'yt-videoid-*') do |key_name|
+    res = $redisdbconn.get(key_name)
+    statsCollection['youtube-videos-ids'][key_name[11..-1]] = res.to_i
+  end
+
+  statsCollection['youtube-img-videos-ids'] = {}
+
+  $redisdbconn.scan_each(match: 'ytimg-videoid-*') do |key_name|
+    res = $redisdbconn.get(key_name)
+    statsCollection['youtube-img-videos-ids'][key_name[14..-1]] = res.to_i
+  end
+
+  statsCollection['imdb-title-ids'] = {}
+
+  $redisdbconn.scan_each(match: 'imdb-title-*') do |key_name|
+    res = $redisdbconn.get(key_name)
+    statsCollection['imdb-title-ids'][key_name[11..-1]] = res.to_i
+  end
+  output = ''
+  outputFileExtention = 'yaml'
+  outputFormat = 'application/x-yaml'
+  case $params['format'][0]
+  when nil
+    output = statsCollection.to_yaml(Indent: 4, UseHeader: true, UseVersion: true)
+  when 'json'
+    outputFormat = 'application/json'
+    outputFileExtention = 'json'
+    output = JSON.pretty_generate(statsCollection)
+  else
+    output = statsCollection.to_yaml(Indent: 4, UseHeader: true, UseVersion: true)
+  end
+  output += "\n"
+  if $params['text'] && $params['text'][0]
+    print $cgi.header('type' => 'text/plain',
+                      'expires' => Time.now - (3 * 24 * 60 * 60),
+                      'Cache-Control' => 'no-cache',
+                      'Content-Length' => output.size)
+  else
+    print $cgi.header('type' => outputFormat,
+                      'expires' => Time.now - (3 * 24 * 60 * 60),
+                      'Cache-Control' => 'no-cache',
+                      'Content-Length' => output.size,
+                      'Content-Disposition' => "attachment; filename=\"stats.#{outputFileExtention}\"")
+
+  end
+  print output
 end
 
 $debug = false
