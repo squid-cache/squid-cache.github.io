@@ -614,3 +614,4 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * [[https://github.com/xsank/EasyProxy/tree/master/src/proxy/schedule|Scheduling algorithms implementation examples in GoLang(ip hash, random)]]
  * [[https://www.dd-wrt.com/wiki/index.php/Policy_Based_Routing|Example for Policy Based Routing in dd-wrt routers]]
  * [[https://github.com/cloudfoundry/gorouter#enabling-apps-to-detect-the-requestors-ip-address-uing-proxy-protocol|GoRouter a proxy that supports the proxy protocol, can be used to load balance couple squid servers\instances]]
+ * [[http://community.brocade.com/t5/vADC-Docs/Feature-Brief-Load-Balancing-in-Stingray-Traffic-Manager/ta-p/73655|Brocade Stingray Traffic Manager]] , [[https://youtu.be/8b5WRIHm13o?t=80|Video example of configuring their product]]
