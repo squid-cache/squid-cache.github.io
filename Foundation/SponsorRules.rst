@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-/!\ You are reading draft v3. Until this notice is gone, this document will change frequently.
+/!\ You are reading draft v4. Until this notice is gone, this document will change frequently.
 
 = Squid Software Foundation Sponsorship Program =
 
@@ -19,7 +19,7 @@ Sponsors may request to be listed on the Squid Project web [[http://www.squid-ca
  1. The listing is not added unless the Sponsor explicitly requests it, provides the necessary artifacts listed below, and reviews the final version (provided by the Foundation on a mock page).
  1. The listing is not added until the Foundation receives and acknowledges a qualified donation.
  1. The listing is removed approximately one year (365 calendar days) after the last qualified donation is received and acknowledged by the Foundation.
- 1. The listings are ordered left-to-right and/or top-to-bottom by the finalized donation amount, rounded down to the nearest $1000. In case of a tie between two rounded finalized amounts, the finalized donation which arrived earlier is listed higher.
+ 1. The listings are ordered left-to-right and/or top-to-bottom by the finalized donation amount, rounded down to the nearest $1000. In case of a tie between two rounded finalized amounts, the finalized donation which arrived earlier is listed more to the left and/or higher.
  For the purpose of ordering listings: Earlier same-year donations (if any) are prorated and added to the latest donation. The resulting amount is called the finalized donation amount. The time of the latest donation arrival is used as the finalized donation arrival time.
  1. All HTML links inside a listing, including the link from the logo image, use the rel="nofollow" attribute.
  1. The listing must comply with US IRS "Qualified sponsorship payment" [[http://www.irs.gov/pub/irs-pdf/p598.pdf|regulations]].
