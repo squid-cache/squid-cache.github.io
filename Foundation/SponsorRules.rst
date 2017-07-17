@@ -2,7 +2,7 @@
 #format wiki
 #language en
 
-/!\ You are reading draft v4. Until this notice is gone, this document will change frequently.
+/!\ You are reading draft v5. Until this notice is gone, this document will change frequently.
 
 = Squid Software Foundation Sponsorship Program =
 
@@ -32,10 +32,11 @@ If you would like your Sponsor status to be reflected on the Squid Project web s
  1. An optional logo as a 190x75 pixels image suitable for display on white background.
  1. A required short alternative plain text for the logo image (i.e., the value of the HTML "alt" attribute of the logo <image> element). If the logo image is not supplied, this text will be used instead of the logo image.
  1. A URL to be used for the link from the logo.
- 1. English text to display next to the logo. This text is limited to 250 utf-8 characters, including spaces and punctuation.
 
 /!\ Per US IRS [[http://www.irs.gov/pub/irs-pdf/p598.pdf|regulations]], a sponsor listing must ''not'' use qualitative or comparative language and must ''not'' contain price information (or other indications of savings or value), endorsements, or inducements to purchase, sell, or use the products or services. Sponsorship listings are ''not'' advertisements! Submissions that violate IRS guidelines or may be interpreted as ads (as judged by the Foundation) will be rejected.
 
 Preparing your listing for publication may take a few weeks, and each review iteration with your team may increase that delay. Listings are removed one year after the last qualified donation (not one year after publication). To maximize the listing posting duration, you may submit all the necessary materials for review and preparation ''before'' you make the donation.
 
 If you have any questions about these rules, please [[http://www.squid-cache.org/Support/contact.html|contact]] us.
+
+'''Future changes''': Depending on the sponsors feedback, the Foundation may split all sponsors into two or three levels (e.g., Gold, Silver, and Bronze). Sponsors donating significantly more than the minimum $1000 would get larger icons and/or a paragraph of text (subject to the same US IRS rules discussed above). If you think adding levels and/or text is a good idea, please tell us how your contribution would change if we offer those enhancements and what donation amounts you consider appropriate for each level.
