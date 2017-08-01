@@ -2,16 +2,6 @@
 
 <<TableOfContents>>
 
-== The Bleeding Edge ==
-
-## '''Squid-3:'''
-The Squid project has moved to Bazaar as its configuration management tool. See [[BzrInstructions]] for details about using these tools and the web viewers available.
-
-##|| {i} || In order to use the repository sources, or when developing some parts of Squid, you need to perform a source bootstrap operation. How and Why are described in [[ProgrammingGuide/Bootstrap]].||
-
-## '''Squid-2:'''
-## || /!\ Obsolete || CVS access instructions are detailed in CvsInstructions; to interactively browse the repository you can use [[http://www.squid-cache.org/cgi-bin/cvsweb.cgi|CVSWeb]].||
-
 == Contributing (Code developer) ==
 
  * '''Signing Up''' to become a developer the first step is to join the  [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]].
@@ -46,22 +36,6 @@ Finding things to do
  * Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still. There are also optional behaviours in the spec not in the checklist which should be added.
 
 
-For Squid we operate the development trunk and web code browsers on [[http://bazaar-vcs.org/|Bazaar]]. If you prefer other VCS tools read-only mirrors are available via several other systems listed below.
-
-=== Repository Tools ===
-
- * [[BzrInstructions|Bazaar]]
-## * '''Squid-2''': (obsolete) [[CvsInstructions|CVS]]
-
-
-## '''Squid-3:'''
- * https://code.launchpad.net/squid provide space for Squid developers to publish and associate their code with the Squid project.
-
-## '''Squid-2:''' (obsolete)
-##To make life easier we provide space for each developer interested in developing a feature in Squid. For more information see http://devel.squid-cache.org/.
-
-During the life of the Squid project, a number of [[http://www.squid-cache.org/Devel/papers/|papers]] have been published.
-
 === Required Build Tools ===
 
  * autoconf 2.64 or later
@@ -91,28 +65,15 @@ To test a specific project branch you will need to pull the branch code directly
 
 Joining the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]] is useful if you want to get into a lot of testing or discussion with the developers. This is optional, anyone can post to that mailing list, and reports can also be made through bugzilla. For stable series testing Bugzilla reports are encouraged.
 
-=== Getting the sources via Bazaar (bzr) ===
+=== Getting raw sources via GitHub ===
 
-see [[BzrInstructions]]
+The official Squid source code repository is on [[https://github.com/squid-cache/squid|GitHub]].
+
 
  /!\ When working from this repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools|above]] for the required tools and usage.
 
-## CVS MIRROR IS NOT WORKING
-##
-## === Getting the sources via CVS ===
-##
-## see [[CvsInstructions]]
-##
-##  {i} NP: This is primarily for Squid-2 sources. Squid-3 uses Bazaar. Though sourceforge mirror does retain a CVS mirror of Squid-3 for read-only access.
-##
-##
-## /!\ Be aware this mirror has a fairly long delay for change updates and also does not use the revision numbers from Bazaar which the developers can often mention by number.
-##
-##
-## /!\ When working from the Squid-3 repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools|above]] for the required tools and usage.
-##
 
-=== Getting the sources via tarball ===
+=== Getting bootstrapped sources via tarball ===
 
 The latest sources are available at address [[http://www.squid-cache.org/Versions/]] with a series of previous daily snapshots of the code for testing regressions and other special circumstances.
 
@@ -122,8 +83,8 @@ The latest sources are available at address [[http://www.squid-cache.org/Version
 
 As a more lightweight alternative you can use rsync to fetch the latest tarball content.
 
+=== Getting bootstrapped sources via rsync ===
 
-=== Getting the sources via rsync ===
 As a more lightweight alternative to the tarballs you can use rsync; the latest sources are available at address {{{rsync://squid-cache.org/source/<version>}}}
 
 The rsync source mirrors the latest published sources tarball.
@@ -159,7 +120,9 @@ ReleaseProcess describes the process and criteria used by the Squid Developers w
 
 WhoWeAre explains who the people working on the Squid project are.
 
-== Code Sprints ==
+== Miscellaneous ==
+
+During the life of the Squid project, a number of [[http://www.squid-cache.org/Devel/papers/|papers]] have been published.
 
 Code Sprints are informal gatherings of Squid developers with a focus on developing urgently needed features or fixing major bugs.
 You can find links to related documents in MeetUps.
