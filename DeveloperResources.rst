@@ -2,78 +2,50 @@
 
 <<TableOfContents>>
 
-== Contributing (Code developer) ==
+== Contributing code ==
 
- * '''Signing Up''' to become a developer the first step is to join the  [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]].
-   1. Send a message to {{{squid-dev}}} introducing yourself and what areas of Squid you are interested to help with the development of.
-Please first introduced yourself to the other developers.
+The best way to contribute code is to submit a high-quality [[https://github.com/squid-cache/squid/pulls|pull request]] against the master branch of the official [[https://github.com/squid-cache/squid|repository]] on !GitHub. To speed up code review and improve your code acceptance chances, please adhere to SquidCodingGuidelines and follow the MergeProcedure.
 
-  || Please note that all messages must be sent in plain-text only (no HTML email).<<BR>>A read-only [[http://lists.squid-cache.org/pipermail/squid-dev/|archive]] (and [[http://www.squid-cache.org/mail-archive/squid-dev/|pre-Sept 2014 archive]]) are available to everyone. ||
+ProgrammingGuide provides a broad overview of Squid architecture and details some of Squid modules. It also discusses [[ProgrammingGuide/ManualDocumentation|manual page writing]].
 
-
-If you wish to contribute to Squid there are certain guidelines and processes you need to follow in your coding style working with the team. 
-
- * ''' MergeProcedure ''' outlines the process of patch development from planning to code release.
-
- * ''' SquidCodingGuidelines ''' outlines particular details of coding style you need to write changes in.
-##  . Squid2CodingGuidelines contains the style details for Squid-2.
-
- * ''' [[ProgrammingGuide/ManualDocumentation]] ''' outlines particular details of manual page writing.
-
-There is a lot of code and wading through it at the beginning can seem difficult to start.
-
- * '''[[http://www.squid-cache.org/Doc/code/|Programming Guide]]''' auto-generated code documentation offers some (but certainly not enough) information on the Squid internals with browseable links to the latest version of the code.
+Auto-generated [[http://www.squid-cache.org/Doc/code/|Programming Guide|code documentation]] offers some (but certainly not enough) information on the Squid internals with links to the latest version of the code.
 
 
-Finding things to do
+Finding things to do:
 
- * ''' [[http://bugs.squid-cache.org/|Bugzilla ]] ''' database contains a number of problems needing to be investigated and fixed.
+ * [[http://bugs.squid-cache.org/|Bugzilla]] contains bugs and feature requests.
 
- * ''' [[RoadMap]] ''' lists the feature wishes and plans for future releases.
+ * [[RoadMap]] lists the feature wishes and plans for future releases.
+ 
+ * [[RoadMap/Tasks]] itemizes general cleanup tasks that need to be done. These can be good introductory tasks.
 
- * ''' [[RoadMap/Tasks]] ''' lists some general cleanup tasks that need to be done. These can be good introductory tasks.
+ * [[Features/HTTP11|HTTP/1.1 compliance]] violations need to be addressed.
 
- * Squid is HTTP/1.1, but only barely. We have a [[Features/HTTP11|checklist]] for HTTP/1.1 compliance which needs to be completed still. There are also optional behaviours in the spec not in the checklist which should be added.
+ * git grep XXX
 
+ * git grep TODO
 
-=== Required Build Tools ===
+== Discussing code ==
 
- * autoconf 2.64 or later
- * automake 1.10 or later
- * libtool 2.6 or later
- * libltdl-dev
- * awk
- * [[http://cppunit.sourceforge.net/cppunit-wiki|CppUnit]] for unit testing.
+Most development discussions happen on the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]]. Please note that all messages must be sent in plain-text only (no HTML email).
 
-Depending on what features you wish to develop there may be other library and tool requirements.
-
-When working from the repository code the '''bootstrap.sh''' script is required initially to run a number of autotools to prepare ./configure and related magic. This needs repeating after any changes to the Makefile.am or configure.ac scripts, including changes received from the repository updates.
-
-|| {i} || bootstrap.sh sometimes fails. Several known problems and solutions are described in [[ProgrammingGuide/Bootstrap]].||
-
-
-== Contributing (Testing) ==
+== Testing ==
 
 We run constant integration testing with a BuildFarm. Additions to it are welcome.
 
+== Getting sources ==
 
-If you are looking to test the latest release of Squid for your own use you will need to grab yourself a copy of the sources from Bazaar, rsync, or one of the daily snapshot tarballs.
+There are several ways to get Squid sources. The method you select determines whether the sources come bootstrapped or can be easily updated as the official code changes.
 
-To test a specific project branch you will need to pull the branch code directly from bzr https://code.launchpad.net/squid
-
- {i} Note that repository checkouts for Squid require the same build tool chains as developers. The repository does not contain makefiles etc which are present in the snapshots and rsync.
-
-Joining the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]] is useful if you want to get into a lot of testing or discussion with the developers. This is optional, anyone can post to that mailing list, and reports can also be made through bugzilla. For stable series testing Bugzilla reports are encouraged.
-
-=== Getting raw sources via GitHub ===
+=== Raw sources via GitHub ===
 
 The official Squid source code repository is on [[https://github.com/squid-cache/squid|GitHub]].
 
 
- /!\ When working from this repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools|above]] for the required tools and usage.
+ /!\ When working from this repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools]] for the required bootstrapping and building tools.
 
 
-=== Getting bootstrapped sources via tarball ===
+=== Bootstrapped source tarballs via HTTP ===
 
 The latest sources are available at address [[http://www.squid-cache.org/Versions/]] with a series of previous daily snapshots of the code for testing regressions and other special circumstances.
 
@@ -83,7 +55,7 @@ The latest sources are available at address [[http://www.squid-cache.org/Version
 
 As a more lightweight alternative you can use rsync to fetch the latest tarball content.
 
-=== Getting bootstrapped sources via rsync ===
+=== Bootstrapped sources via rsync ===
 
 As a more lightweight alternative to the tarballs you can use rsync; the latest sources are available at address {{{rsync://squid-cache.org/source/<version>}}}
 
@@ -112,15 +84,27 @@ After you've selected the version you wish to download you can:
 rsync -avz rsync://squid-cache.org/source/<version> .
 }}}
 
-== Project organization ==
 
-MergeProcedure explains how to get your feature or improvement accepted into squid.
+== Required Build Tools ==
+
+ * autoconf 2.64 or later
+ * automake 1.10 or later
+ * libtool 2.6 or later
+ * libltdl-dev
+ * awk
+ * sed
+ * [[http://cppunit.sourceforge.net/cppunit-wiki|CppUnit]] for unit testing.
+
+Depending on what features you wish to develop there may be other library and tool requirements.
+
+When working from the repository code the '''bootstrap.sh''' script is required initially to run a number of autotools to prepare ./configure and related magic. This needs repeating after any changes to the Makefile.am or configure.ac scripts, including changes received from the repository updates. Common bootstrap.sh problems are discussed in [[ProgrammingGuide/Bootstrap]].
+
+
+== Miscellaneous ==
 
 ReleaseProcess describes the process and criteria used by the Squid Developers when making new Squid releases from the accepted changes.
 
 WhoWeAre explains who the people working on the Squid project are.
-
-== Miscellaneous ==
 
 During the life of the Squid project, a number of [[http://www.squid-cache.org/Devel/papers/|papers]] have been published.
 
