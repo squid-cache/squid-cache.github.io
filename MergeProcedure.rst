@@ -21,8 +21,6 @@ Before spending time coding, please discuss your plans on the [[http://www.squid
  * assist you in finding the best way to add your feature, and
  * prevent duplication of effort (somebody else might be working on similar changes already).
 
-Other developers are often able to provide projects for anyone just wanting to contribute.
-
 == Submission Checklist ==
 
 If you are sure that an item does not apply to your specific situation, just skip it (at your own risk).
