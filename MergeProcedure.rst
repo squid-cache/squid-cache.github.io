@@ -35,6 +35,8 @@ If you are sure that an item does not apply to your specific situation, just ski
 
  1. Development branch rebased on top of the official master branch.
 
+ 1. ''git diff --check upstream/master'' produces no warnings/errors and exits with zero status code. Adjust remote (i.e., "upstream") to match the official repository (i.e., ''github.com:squid-cache/squid.git'') as needed.
+
  1. '''./test-builds.sh''' succeeds. In the unlikely event the test fails because of the bugs in the official code, file a bug report or discuss on squid-dev. Your future pull request will get stuck if it cannot pass these basic build tests!
 
 == Pull Request ==
