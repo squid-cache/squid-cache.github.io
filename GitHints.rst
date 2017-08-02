@@ -54,6 +54,38 @@ You can now make and commit changes to your local feature branch.
  1. To compare with the official code that you have previously fetched:{{{#!shell
 $ git diff upstream/master
 }}}
+ 2. To compare with the official code as it existed when you created your feature branch:{{{#!shell
+$ fork_point=$(git merge-base --fork-point upstream/master support-foobar)
+$ git diff $fork_point
+}}}
+
+{i} Use ''git diff --check ...'' to check for basic whitespace problems.
+
+
+== Squash all the branch changes into a single commit ==
+
+/!\ These commands rewrite branch history. Rewriting history may mess up or even permanently destroy your work! Consider pushing all changes to your !GitHub repository ''before'' resetting your local tree and do ''not'' publish the squashed branch until you are sure it ends up with the same code as the last pushed commit.
+
+ 1. Find the master commit from which your feature branch originated, either by examining ''git log support-foobar'' or by using the following trick (which [[https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git|reportedly]] fails in some cases):{{{#!shell
+$ fork_point=$(git merge-base --fork-point upstream/master support-foobar)
+}}}
+ 2. Double check that you found the right forking point before making any changes. For example:{{{#!shell
+$ git show $fork_point
+}}} and/or {{{#!shell
+$ git log | less +/$fork_point
+}}}
+ 3. Undo all feature branch commits up to the forking point while keeping their cumulative results, staged in your working directory:{{{#!shell
+$ git reset --soft $fork_point
+}}}
+ 4. Re-commit the staged results with a new commit message summarizing all the changes on the feature branch:{{{#!shell
+$ git commit
+}}}
+ 5. Double check that the squashed result is identical to the published feature branch:{{{#!shell
+$ git diff --exit-code origin/support-foobar || echo 'Start panicking!'
+}}}
+ 5. When comfortable, publish your squashed changes, permanently deleting the old feature branch commits:{{{#!shell
+$ git push # will fail, giving you the last change to check its intended destination before you add --force
+}}}
 
 
 == Submit a pull request via GitHub ==
