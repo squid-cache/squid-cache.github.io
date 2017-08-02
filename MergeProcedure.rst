@@ -1,66 +1,54 @@
 #format wiki
 #language en
-== Squid Merge Procedure ==
-In order to clean up the quality of code entering Squid, the core developers have arranged these simple requirements and procedure for submissions.
+= Squid Merge Procedure =
 
-<<TableOfContents>>
- * Back to DeveloperResources.
+The requirements outlined in this document are meant to speedup acceptance of code changes while reducing rewrites, minimizing conflicts, and maintaining high quality of the committed code. If the requirements need changing, please discuss ''before'' violating them. Other than that, please use common sense and do what you think is in the best interest of Squid.
 
-=== Pre-Code ===
-Before spending time coding, its best to discover whether or not the code is needed or useful.
+ 1. [[#Before_you_start_coding]], make sure your future changes are welcomed and coordinate your plans with other developers.
+ 1. Implement your changes while following SquidCodingGuidelines. Use git for version control.
+ 1. Complete [[#Submission_Checklist]].
+ 1. Submit a [[#Pull_Request]] on !GitHub.
+ 1. Monitor for automated test failures and work with reviewers to get enough [[#Votes]], updating your pull request as needed.
+ 1. Remind Core Developers to merge your eligible pull request as needed.
+ 1. Enjoy your code becoming official!
+ 1. Support your changes by addressing bug reports and answering related development questions.
 
-We would like everyone to discuss their plans in the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev]] mailing list (its open to anyone). So that we can
+== Before you start coding ==
 
- * assist new developers in finding the best way to add their features
- * and, prevent duplication of effort (your feature may be half-developed already)
- * and, sometimes the feature wanted already exists in a unexpected way.
+Before spending time coding, please discuss your plans on the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev]] mailing list so that others can
+
+ * confirm that the proposed feature is not already supported and is welcomed,
+ * assist you in finding the best way to add your feature, and
+ * prevent duplication of effort (somebody else might be working on similar changes already).
 
 Other developers are often able to provide projects for anyone just wanting to contribute.
 
-=== Code Style ===
- * SquidCodingGuidelines lists the fine details of syntax required.
- * Formatting is presently enforced automatically post-commit.
-  * Self-checks may be done using the '''scripts/source-maintenance.sh''' script (requires '''astyle 1.23''' for full checks).
+== Submission Checklist ==
 
-=== Submission Format ===
-Submissions are emailed to '''squid-dev''' for merging, one submission per post. The submission email must contain:
+If you are sure that an item does not apply to your specific situation, just skip it (at your own risk).
 
- * '''Subject''': The name of the new feature or a brief change description, prefixed with [PATCH].
- * '''Main body''': A full description of the new feature or change. The description guides those reading your code. Its verbatim copy is usually used as the commit message if your submission is accepted.
- * '''Attachment''': A bzr merge bundle or a manual patch in a unified diff format.
+ 1. The code is ready to be published and distributed under the Squid licensing terms.
 
-=== Suitability for Merge ===
-Please try to not commit unfinished stuff needing more code to actually work the way intended. trunk is meant for sharing working code updates with earlybird testers. Development is supposed to be done on branches before merging.
+ 1. Release notes updated: '''doc/release-notes/release-X.sgml'''. Don't worry about the HTML or TXT files, they are automatically built by the maintainer. Only the SGML files need updating.
 
-If a follow up change (bugfix etc) is committed related to an earlier change please refer to the subject (first line) of the previous change in the commit message.
+ 1. The feature sponsor is added to the SPONSORS.list file.
 
-If you suspect that there will be a series of incremental commits relating to a specific feature or reorganization then make the subject line easy to connect together by starting the title line with a short feature name:  (i.e. "rproxy: header fixes")
+ 1. Copyright statement and license for newly imported code are added to the CREDITS file.
 
-Add to the below merging procedure any additional testing/documentation steps you think makes sense. Use of common sense is the main rule of conduct.
+ 1. Development branch rebased on top of the official master branch.
 
-=== Audit and Merging Steps ===
- 1. Check that you have added release notes, if any are needed: '''doc/release-notes/release-X.sgml'''. Don't worry about the HTML or TXT files, they are automatically built by the maintainer. Only the SGML files need updating.
+ 1. '''./test-builds.sh''' succeeds. In the unlikely event the test fails because of the bugs in the official code, file a bug report or discuss on squid-dev. Your future pull request will get stuck if it cannot pass these basic build tests!
 
- 1. If applicable, check that you have added the feature sponsor to the SPONSORS file.
+== Pull Request ==
 
- 1. If applicable, check that you have added the code copyright license to the CREDITS file.
+TBD.
 
- 1. Bring your development branch up to date as described in: [[BzrInstructions#bring_a_branch_up_to_date_with_it.27s_ancestor|BzrInstructions]]
-
- 1. Run a full build test: '''./test-builds.sh'''. Or use the build farm [[http://build.squid-cache.org/job/anybranch-wholefarm-matrix/|branch matrix]] build farm (requires an account).
-
- 1. Fix ALL issues with your code uncovered by that testing. If you are certain a problem is with the trunk code, discuss it on squid-dev.
-
- 1. When your code passes testing, [[BzrInstructions#Submit_a_patch_for_inclusion_in_the_main_tree_or_discussion|Submit a merge bundle]] or patch for auditing. see above.
-
- 1. Read reviews and address feedback, if any. This step may require re-coding and resubmitting your work or defending your choices until your submission is accepted (i.e., gets a passing vote, see below).
-
-Submissions are normally merged on the next maintenance cycle after acceptance (usually weekends).
-
-==== Voting ====
+== Votes ==
 The first matching rule wins. A submission is automatically counted as one positive vote from the submitter.
 
  {i} Any developer may vote.
+
+ {i} These rules are not yet fully enforced on !GitHub but they (or their next revision) will be. For now, !GitHub will not allow to merge your pull request without a core developer (other than you) approval, but all the voting rules still apply.
 
  1. One negative vote by a core developer blocks the merge until resolved.
 
@@ -70,21 +58,13 @@ The first matching rule wins. A submission is automatically counted as one posit
 
  1. Submissions older than 10 days without negative votes are accepted.
 
-==== Exceptions ====
+== Exceptions ==
+
+In truly exceptional situations (that ought to be disclosed and discussed as soon as possible):
+
  1. Core developers may commit any changes immediately.
 
  1. Within 10 days of the commit, core developers may remove any submission without prior notice or discussion. A post-factum notice (and discussion) are still expected on squid-dev.
 
-##=== Merging Steps for Squid2 ===
-## 1. The merge should be well tested, isolated, documented and cleaned up etc.
-##
-## 1. The merge should only contain a specific change and not multiple unrelated changes. Unrelated changes should be broken up into separate commits each following their own path in this procedure.
-##
-## 1. Larger or otherwise intrusive changes is sent to squid-dev for review. Ok for commit if there is a positive response from another core member, or no negative responses from anyone in a week.
-##
-## 1. Smaller changes or changes you do not expect someone to say no on may be committed immediately.
-##
-## 1. If a change is later found to cause trouble and not obviously trivial to fix then it will be thrown out, waiting for someone to make a proper fix.
-
 === Core Developers ===
-The [[WhoWeAre|core developers]] mentioned above are experienced developers with serious long-term dedication and contribution to the Squid project as a whole and Squid code in particular. They are usually active on squid-dev and often perform the auditing duties personally. Core folks have collective responsibility for the Squid project and may use their super powers to resolve conflicts or prevent disasters.
+The [[WhoWeAre|core developers]] mentioned above are experienced developers with serious long-term dedication and contribution to the Squid Project as a whole and Squid code in particular. They are usually active on squid-dev and often review submissions. Core folks have collective responsibility for the Squid Project and may use their super powers to resolve conflicts or prevent disasters.
