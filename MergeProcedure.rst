@@ -7,7 +7,7 @@ The requirements outlined in this document are meant to speedup acceptance of co
  1. [[#Before_you_start_coding]], make sure your future changes are welcomed and coordinate your plans with other developers.
  1. Implement your changes while following SquidCodingGuidelines. Use git for version control (see GitHints).
  1. Complete [[#Submission_Checklist]].
- 1. [[GitHints#Submit_a_pull_request_via_GitHub|Submit]] a [[#Pull_Request]] on !GitHub.
+ 1. Submit a [[#Pull_Request]] on !GitHub.
  1. Monitor for automated test failures and work with reviewers to get enough [[#Votes]], [[GitHints#Update_a_previously_submitted_pull_request|updating]] your pull request as needed.
  1. Remind Core Developers to merge your eligible pull request as needed.
  1. Enjoy your code becoming official!
@@ -41,7 +41,17 @@ If you are sure that an item does not apply to your specific situation, just ski
 
 == Pull Request ==
 
-TBD.
+All commits to the official repository require a !GitHub pull request (PR). This requirement ensures that all official changes are peer reviewed, and all official branches are always in working order (to the extent our testing can detect bugs, of course). It also helps reduce commit noise and backporting overheads. This section documents PR requirements. See GitHints for PR submission recipes.
+
+ 1. Please complete [[#Submission_Checklist]] before making a pull request. If you really need to post a PR earlier, then start your PR title with a "[WIP] " prefix (six characters indicating a "work in progress") and explain why you are posting an unchecked PR in the PR comment. By default, WIP PRs are not reviewed, but they do go through CI tests.
+ 1. Please use English and plain text formatting.
+ 1. PR title is the first line of the anticipated commit message. Be specific but succinct (do not exceed 72 characters).
+ 1. PR description is the anticipated commit message body (following the first line described above and a blank line). Avoid detailing your changes (your changes should speak for themselves!). Focus on ''why'' you changed the code and on the anticipated ''impact'' of your changes.
+ 1. PR branch should contain all commits that you want to see in the official tree and nothing else. If your branch has intermediate/housekeeping commits, squash them. Most PR branches should contain a single commit. If your branch contains multiple commits, reviewers may ask you to squash them. /!\ Currently, the rules in this item are not enforced. Approved PRs are manually squashed during commit instead, but that approach is wrong and will change when official commits are fully automated.
+ 1. Each PR branch commit should follow the same language/title/body rules outlined above.
+ 1. Each PR commit not authored by you should have the right author set (via ''git commit --author=...'' or equivalent).
+
+If you cannot submit your changes in the form of a pull request, find a developer who can do that for you.
 
 == Votes ==
 The first matching rule wins. A submission is automatically counted as one positive vote from the submitter.
