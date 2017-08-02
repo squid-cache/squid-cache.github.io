@@ -25,6 +25,8 @@ Finding things to do:
 
  * git grep TODO
 
+ * Other developers are often able to provide projects for anyone just wanting to contribute.
+
 == Discussing code ==
 
 Most development discussions happen on the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|developer mailing list]]. Please note that all messages must be sent in plain-text only (no HTML email).
