@@ -5,10 +5,10 @@
 The requirements outlined in this document are meant to speedup acceptance of code changes while reducing rewrites, minimizing conflicts, and maintaining high quality of the committed code. If the requirements need changing, please discuss ''before'' violating them. Other than that, please use common sense and do what you think is in the best interest of Squid.
 
  1. [[#Before_you_start_coding]], make sure your future changes are welcomed and coordinate your plans with other developers.
- 1. Implement your changes while following SquidCodingGuidelines. Use git for version control.
+ 1. Implement your changes while following SquidCodingGuidelines. Use git for version control (see GitHints).
  1. Complete [[#Submission_Checklist]].
- 1. Submit a [[#Pull_Request]] on !GitHub.
- 1. Monitor for automated test failures and work with reviewers to get enough [[#Votes]], updating your pull request as needed.
+ 1. [[GitHints#Submit_a_pull_request_via_GitHub|Submit]] a [[#Pull_Request]] on !GitHub.
+ 1. Monitor for automated test failures and work with reviewers to get enough [[#Votes]], [[GitHints#Update_a_previously_submitted_pull_request|updating]] your pull request as needed.
  1. Remind Core Developers to merge your eligible pull request as needed.
  1. Enjoy your code becoming official!
  1. Support your changes by addressing bug reports and answering related development questions.
