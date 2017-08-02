@@ -62,9 +62,11 @@ $ git diff $fork_point
 {i} Use ''git diff --check ...'' to check for basic whitespace problems.
 
 
-== Squash all the branch changes into a single commit ==
+== Squash all the feature branch changes into a single commit ==
 
-/!\ These commands rewrite branch history. Rewriting history may mess up or even permanently destroy your work! Consider pushing all changes to your !GitHub repository ''before'' resetting your local tree and do ''not'' publish the squashed branch until you are sure it ends up with the same code as the last pushed commit.
+/!\ These commands rewrite branch history. Rewriting history may mess up or even permanently destroy your work! Consider pushing all changes to your !GitHub repository ''before'' squashing your local tree and do ''not'' publish the squashed branch until you are sure it ends up with the same code as the last pushed commit.
+
+{i} If you need to both rebase and squash your feature branch, you may use interactive [[#Rebase_your_feature_branch_to_be_in_sync_with_the_current_upstream_master|rebase]] and replace the default "pick" with "squash" commands there. Doing two things at once is faster when things go smoothly, but it is more difficult to discover and fix problems. Also, rebasing an already ''squashed'' branch may reduce the number of conflicts but may also create more complex conflicts. Pick your poison.
 
  1. Find the master commit from which your feature branch originated, either by examining ''git log support-foobar'' or by using the following trick (which [[https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git|reportedly]] fails in some cases):{{{#!shell
 $ fork_point=$(git merge-base --fork-point upstream/master support-foobar)
@@ -84,6 +86,23 @@ $ git commit
 $ git diff --exit-code origin/support-foobar || echo 'Start panicking!'
 }}}
  5. When comfortable, publish your squashed changes, permanently deleting the old feature branch commits:{{{#!shell
+$ git push # will fail, giving you the last change to check its intended destination before you add --force
+}}}
+
+
+== Rebase your feature branch to be in sync with the current upstream master ==
+
+/!\ These commands rewrite branch history. Rewriting history may mess up or even permanently destroy your work! Consider pushing all changes to your !GitHub repository ''before'' rebasing your local tree.
+
+{i} If you need to both rebase and squash your feature branch, you may use the interactive rebase command shown below and replace the default "pick" with "squash" commands there. Doing two things at once is faster when things go smoothly, but it is more difficult to discover and fix problems. Also, rebasing an already [[#Squash_all_the_feature_branch_changes_into_a_single_commit|squashed]]  branch may reduce the number of conflicts but may also create more complex conflicts. Pick your poison.
+
+ 1. Make sure your upstream master is up to date:{{{#!shell
+$ git fetch upstream master
+}}}
+ 2. Start the interactive rebase process. The command below should start your editor so that you can tell git what to do with each of the listed commits. The default "pick" action works well for simple cases.{{{#!shell
+$ git rebase --interactive upstream/master
+}}}
+ 3. When comfortable, publish your rebased feature branch, permanently deleting the old feature branch commits:{{{#!shell
 $ git push # will fail, giving you the last change to check its intended destination before you add --force
 }}}
 
