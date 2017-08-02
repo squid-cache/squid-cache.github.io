@@ -9,7 +9,7 @@ This page archives git recipes that may be useful in the context of Squid develo
 
 == When a recipe is missing ==
 
-Use a search engine to solve git and !GitHub problems. Virtually all basic questions about git and !GitHub (and many advanced ones) are answered on the web. Git mastery helps, but is not required to do Squid development. Git manipulations required for typical Squid development is hardly rocket science.
+Use a search engine to solve git and !GitHub problems. Virtually all basic questions about git and !GitHub (and many advanced ones) are answered on the web. Git mastery helps, but is not required to do Squid development. Git manipulations required for typical Squid development are hardly rocket science.
 
 == Create your public Squid repository on GitHub ==
 
@@ -22,7 +22,7 @@ Use a search engine to solve git and !GitHub problems. Virtually all basic quest
 
 Your git work area will be a combination of your public Squid repository (a.k.a. "origin" remote), the official Squid repository (a.k.a. "upstream" remote), and your private (unpublished) Squid branches.
 
- 1. Clone your public Squid repository on !GitHub into your local work area. By default, git will refer to your public repository as "origin". This is where you will publish your development branches. To get the right repository .git address for the first command, click the "clone or download" button when looking at your repository on !GitHub.{{{#!shell
+ 1. Clone your public Squid repository on !GitHub into your local work area. By default, git will refer to your public repository as "origin". This is where you will publish your development branches. To get the right repository .git address for the first command, click the "clone or download" button while looking at your repository on !GitHub. The "clone or download" button offers https and ssh protocols; for development work, you may find ssh authentication easier to work with. The example below uses an ssh address.{{{#!shell
 $ git clone git@github.com:YOUR_GITHUB_LOGIN/squid.git
 $ cd squid
 $ git remote -v # Should show you the origin repository address
@@ -39,14 +39,11 @@ Most stand-alone code changes need a dedicated git branch. If you want to submit
 These commands assume that your changes are based on the latest [[https://github.com/squid-cache/squid|official master branch]].
 
 
- 1. Make sure your upstream master meta-information is up to date:{{{#!shell
+ 1. Make sure your upstream master is up to date:{{{#!shell
 $ git fetch upstream master
 }}}
- 2. Go to the very tip of the upstream master:{{{#!shell
-$ git checkout upstream/master
-}}}
- 3. Create a new local feature branch. This example uses "support-foobar" as the branch name.{{{#!shell
-$ git checkout -b support-foobar
+ 2. Create a new local feature branch based on the the very tip of the upstream master. This example uses "support-foobar" as the branch name.{{{#!shell
+$ git checkout -b support-foobar upstream/master
 }}}
 
 You can now make and commit changes to your local feature branch.
