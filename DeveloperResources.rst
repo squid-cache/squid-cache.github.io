@@ -94,7 +94,7 @@ rsync -avz rsync://squid-cache.org/source/<version> .
  * libtool 2.6 or later
  * libltdl-dev
  * awk
- * sed
+ * ed
  * [[http://cppunit.sourceforge.net/cppunit-wiki|CppUnit]] for unit testing.
 
 Depending on what features you wish to develop there may be other library and tool requirements.
