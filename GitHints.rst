@@ -81,6 +81,8 @@ $ git reset --soft $fork_point
 }}}
  4. Re-commit the staged results with a new commit message summarizing all the changes on the feature branch:{{{#!shell
 $ git commit
+}}} If you need to see your old commit messages, and you have published your unsquashed changes on !GitHub as recommended earlier, then you can still easily get them from{{{#!shell
+$ git log origin/support-foobar
 }}}
  5. Double check that the squashed result is identical to the published feature branch:{{{#!shell
 $ git diff --exit-code origin/support-foobar || echo 'Start panicking!'
