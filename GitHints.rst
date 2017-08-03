@@ -68,26 +68,29 @@ $ git diff $fork_point
 
 {i} If you need to both rebase and squash your feature branch, you may use interactive [[#Rebase_your_feature_branch_to_be_in_sync_with_the_current_upstream_master|rebase]] and replace the default "pick" with "squash" commands there. Doing two things at once is faster when things go smoothly, but it is more difficult to discover and fix problems. Also, rebasing an already ''squashed'' branch may reduce the number of conflicts but may also create more complex conflicts. Pick your poison.
 
- 1. Find the master commit from which your feature branch originated, either by examining ''git log support-foobar'' or by using the following trick (which [[https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git|reportedly]] fails in some cases):{{{#!shell
+ 1. Switch to the local up-to-date feature branch you want to squash:{{{#!shell
+$ git checkout support-foobar
+}}}
+ 2. Find the master commit from which your feature branch originated, either by examining ''git log support-foobar'' or by using the following trick (which [[https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git|reportedly]] fails in some cases):{{{#!shell
 $ fork_point=$(git merge-base --fork-point upstream/master support-foobar)
 }}}
- 2. Double check that you found the right forking point before making any changes. For example:{{{#!shell
+ 3. Double check that you found the right forking point before making any changes. For example:{{{#!shell
 $ git show $fork_point
 }}} and/or {{{#!shell
 $ git log | less +/$fork_point
 }}}
- 3. Undo all feature branch commits up to the forking point while keeping their cumulative results, staged in your working directory:{{{#!shell
+ 4. Undo all feature branch commits up to the forking point while keeping their cumulative results, staged in your working directory:{{{#!shell
 $ git reset --soft $fork_point
 }}}
- 4. Re-commit the staged results with a new commit message summarizing all the changes on the feature branch:{{{#!shell
+ 5. Re-commit the staged results with a new commit message summarizing all the changes on the feature branch:{{{#!shell
 $ git commit
 }}} If you need to see your old commit messages, and you have published your unsquashed changes on !GitHub as recommended earlier, then you can still easily get them from{{{#!shell
 $ git log origin/support-foobar
 }}}
- 5. Double check that the squashed result is identical to the published feature branch:{{{#!shell
+ 6. Double check that the squashed result is identical to the published feature branch:{{{#!shell
 $ git diff --exit-code origin/support-foobar || echo 'Start panicking!'
 }}}
- 5. When comfortable, publish your squashed changes, permanently deleting the old feature branch commits:{{{#!shell
+ 7. When comfortable, publish your squashed changes, permanently deleting the old feature branch commits:{{{#!shell
 $ git push # will fail, giving you the last change to check its intended destination before you add --force
 }}}
 
@@ -101,10 +104,13 @@ $ git push # will fail, giving you the last change to check its intended destina
  1. Make sure your upstream master is up to date:{{{#!shell
 $ git fetch upstream master
 }}}
- 2. Start the interactive rebase process. The command below should start your editor so that you can tell git what to do with each of the listed commits. The default "pick" action works well for simple cases.{{{#!shell
+ 2. Switch to the to the local up-to-date feature branch you want to rebase:{{{#!shell
+$ git checkout support-foobar
+}}}
+ 3. Start the interactive rebase process. The command below should start your editor so that you can tell git what to do with each of the listed commits. The default "pick" action works well for simple cases.{{{#!shell
 $ git rebase --interactive upstream/master
 }}}
- 3. When comfortable, publish your rebased feature branch, permanently deleting the old feature branch commits:{{{#!shell
+ 4. When comfortable, publish your rebased feature branch, permanently deleting the old feature branch commits:{{{#!shell
 $ git push # will fail, giving you the last change to check its intended destination before you add --force
 }}}
 
