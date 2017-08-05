@@ -70,7 +70,8 @@ As always, additional libraries may be required to support the features you want
 aptitude build-dep squid
 }}}
 This requires only that your sources.list contain the '''deb-src''' repository to pull the source package information. Features which are not supported by the distribution package will need investigation to discover the dependency package and install it.
- {i} The usual one requested is ''libssl-dev'' for TLS/SSL support.
+ {i} The usual one requested is '''libssl-dev''' for SSL support.
+  /!\ However, please note that [[Squid-3.5]] is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or Ubuntu Zesty the '''libssl1.0-dev''' package must be used instead. This is resolved in the [[Squid-4]] packages when they become available.
 
 === Init Script ===
 
