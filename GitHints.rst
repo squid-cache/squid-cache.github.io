@@ -31,6 +31,9 @@ $ git remote -v # Should show you the origin repository address
 $ git remote add -m master upstream git@github.com:squid-cache/squid.git
 $ git remote -v # Should show you the origin and upstream repository addresses
 }}}
+ 3. Optionally, load git [[http://alblue.bandlem.com/2011/11/git-tip-of-week-git-notes.html|notes]] to see original Bazaar revision numbers, --fixes URLs, and more co-author names in git logs:{{{#!shell
+$ git fetch upstream refs/notes/commits:refs/notes/commits
+}}} /!\ If you are a part of an organization, that organization may provide its own Squid annotations that you should load instead or in addition to the official ones.
 
 == Start working on a feature or change ==
 
