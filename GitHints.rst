@@ -118,21 +118,16 @@ $ git push # will fail, giving you the last change to check its intended destina
 }}}
 
 
-== Submit a pull request via GitHub ==
+== Submit a pull request ==
 
 
  1. Publish your feature branch in your !GitHub repository:{{{#!shell
 $ git push --set-upstream origin
 }}}
- 2. When you are [[MergeProcedure#Submission_Checklist|ready]], go to !GitHub, navigate to the support-foobar branch in your repository, and click "new pull request" button next to the branch name.
+ 2. When you are [[MergeProcedure#Submission_Checklist|ready]]:
 
-
-== Submit a pull request from the console ==
-
- 1. Publish your feature branch in your !GitHub repository:{{{#!shell
-$ git push --set-upstream origin
-}}}
- 2. When you are [[MergeProcedure#Submission_Checklist|ready]], use a console pull request submission tool of your choice. This example uses [[https://hub.github.com/|hub]]:{{{#!shell
+  a. either go to [[https://www.github.com/|GitHub]], navigate to the support-foobar branch in your repository, and click the "new pull request" button next to the branch name
+  a. or use a console pull request submission tool of your choice. This example uses [[https://hub.github.com/|hub]]:{{{#!shell
 $ hub pull-request
 }}}
 
