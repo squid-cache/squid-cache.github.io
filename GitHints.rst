@@ -122,7 +122,7 @@ $ git push # will fail, giving you the last change to check its intended destina
 
 
  1. Publish your feature branch in your !GitHub repository:{{{#!shell
-$ git push --set-upstream origin support-foobar
+$ git push --set-upstream origin
 }}}
  2. When you are [[MergeProcedure#Submission_Checklist|ready]], go to !GitHub, navigate to the support-foobar branch in your repository, and click "new pull request" button next to the branch name.
 
@@ -130,7 +130,7 @@ $ git push --set-upstream origin support-foobar
 == Submit a pull request from the console ==
 
  1. Publish your feature branch in your !GitHub repository:{{{#!shell
-$ git push --set-upstream origin support-foobar
+$ git push --set-upstream origin
 }}}
  2. When you are [[MergeProcedure#Submission_Checklist|ready]], use a console pull request submission tool of your choice. This example uses [[https://hub.github.com/|hub]]:{{{#!shell
 $ hub pull-request
