@@ -17,16 +17,7 @@ For what version of squid is this article for?
 
  - Eliezer
 
----- /!\ '''Edit conflict - other version:''' ----
-
-At least 3.5.20, AFAIK.
- - Yuri
-
----- /!\ '''Edit conflict - your version:''' ----
-
 ----
 <<Anchor(C2)>>
 At least 3.5.20, AFAIK.
  - Yuri
-
----- /!\ '''End of edit conflict''' ----
