@@ -16,3 +16,6 @@ See [[../|Discussed Page]]
 For what version of squid is this article for?
 
  - Eliezer
+
+At least 3.5.20, AFAIK.
+ - Yuri
