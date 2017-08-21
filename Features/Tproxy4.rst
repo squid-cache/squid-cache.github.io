@@ -334,5 +334,9 @@ setsebool -P squid_connect_any true
 
  * Shorewall Firewall Configuration http://www1.shorewall.net/Shorewall_Squid_Usage.html#TPROXY
 
+== spoof_client_ip config directive (exists only from Squid-3.4) ==
+ * Squid-Cache allows tproxy spoof control configuration directive: http://www.squid-cache.org/Doc/config/spoof_client_ip/
+ This allows to intercept traffic using tproxy but use the same concept of intercept\transparent proxy for outgoing traffic and to decide whether to spoof or not specific clients src addresses or to use the proxy as the source ip.
+
 ----
 CategoryFeature
