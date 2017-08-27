@@ -57,7 +57,11 @@ The only points of possible interest for some will be:
 
 '''Your squid may be configured to only listen for IPv4.'''
 
-Each of the port lines in squid.conf (SquidConf:http_port, SquidConf:icp_port, SquidConf:snmp_port, SquidConf:https_port maybe others) can take either a port, hostname:port, or ip:port combo.
+The UDP port listening addresses in squid.conf (SquidConf:udp_incoming_address, SquidConf:snmp_incoming_address) can be either IPv4 or IPv6. The default is to accept traffic on any IP address to the relevant UDP port. If you configure this to a specific IP address of either type it will not accept traffic of the other type.
+  * /!\ Note that configuring UDP incoming address to '''0.0.0.0''' as some old Squid-2 configurations did. Explicitly makes the incoming port IPv4-only, which can break responses to UDP packets sent out using default IPv6-enabled outgoing UDP ports.
+
+
+Each of the TCP port lines in squid.conf (SquidConf:http_port, SquidConf:https_port, SquidConf:ftp_port) can take either a port, hostname:port, or ip:port combo.
 
 When these lines contain an IPv4 address or a hostname with only IPv4 addresses Squid will only open on those IPv4 you configured. You can add new port lines for IPv6 using [ipv6]:port, add AAAA records to the hostname in DNS, or use only a port.
 
@@ -77,7 +81,7 @@ Since version 3.1.6 Squid will detect the type of TCP stack your kernel has and 
 
 Dual-Stack is easiest achieved by a method known as v4-mapping. Where all IPv4 addresses map into a special part of IPv6 space for a socket connection. Squid makes use of this feature of IPv6 when found. It is expected to enable this capability on the sockets it uses.
 
-If you have manually "disabled IPv6" using one of the many blog tutorials that advise simply forcing this socket feature off (as opposed to properly turning off IPv6) your TCP stack will be claiming IPv6 capabilities it cannot deliver. Check your cache.log for warnings or errors about 'V6ONLY'.
+If you have manually "disabled IPv6" using one of the many blog tutorials that advise simply forcing this socket feature off (as opposed to rebuilding your kernel without IPv6) your TCP stack will be claiming IPv6 capabilities it cannot deliver. Check your cache.log for warnings or errors about 'V6ONLY'.
 
 === Squid listens on IPv6 but says 'Access Denied' or 'Cannot Forward' or similar. ===
 '''Your squid may be configured to only connect out through specific IPv4.'''
@@ -98,7 +102,7 @@ tcp_outgoing_address dead:beef::1 to_ipv6
 
 That will split all outgoing requests into two groups, those headed for IPv4 and those headed for IPv6. It will push the requests out the IP which matches the destination side of the Internet and allow IPv4/IPv6 access with controlled source address exactly as before.
 
-Please note the '''dst''' ACL only works for DIRECT requests. Traffic destined for peers needs to be left without an outgoing address set. This peer bug is being worked on and a fix is expected shortly.
+Please note the '''dst''' ACL only works for DIRECT requests. Traffic destined for peers needs to be left without an outgoing address set. This bug is fixed in [[Squid-3.2]].
 
 == Mistakes people are making ==
 
@@ -128,7 +132,7 @@ acl globalIPv6 src ipv6
  * It's dead now. No need to even mention it anymore.
 
 
-== How do I make squid use IPv6 to its helpers? ==
+== How do I make squid use IPv4 to its helpers? ==
 With squid external ACL helpers there are two new options '''ipv4''' and '''ipv6'''. Squid prefers to use unix pipes to helpers and these are ignored. But on some networks TCP sockets are required. Squid will connect over IPv6 by default, but for older helpers which can only accept IPv4 you may need to be explicit.
 {{{
 external_acl_type hi ipv4 %DST /etc/squid/hello_world.sh
@@ -167,8 +171,8 @@ The solution is to configure 127.0.0.1 as the peer address instead of localhost 
 
 ## Well, nothing that we know of yet.
 
-Sadly, OpenBSD, Mac OSX and Windows XP require what is called the ''split-stack'' form of IPv6. Which means sockets opened for IPv6 cannot be used for IPv4. There are currently some issues inside Squid with the handling of socket descriptors which are stalling progress on IPv6 for those OS.
- UPDATE: These issues are now resolved.
+## Sadly, OpenBSD, Mac OSX and Windows XP require what is called the ''split-stack'' form of IPv6. Which means sockets opened for IPv6 cannot be used for IPv4. There are currently some issues inside Squid with the handling of socket descriptors which are stalling progress on IPv6 for those OS.
+## UPDATE: These issues are now resolved.
 
 Also, a few features can't be used with IPv6 addresses. IPv4 traffic going through Squid is unaffected by this. Particularly traffic from IPv4 clients. However they need to be noted.
 
