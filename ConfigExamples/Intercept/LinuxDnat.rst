@@ -17,7 +17,7 @@ To Intercept IPv4 web requests transparently without any kind of client configur
 
 '''NOTE:''' This configuration is given for use '''on the squid box'''. This is required to perform intercept accurately and securely. To intercept from a gateway machine and direct traffic at a separate squid box use [[ConfigExamples/Intercept/IptablesPolicyRoute|policy routing]].
 
-'''NOTE:''' DNAT is only available for IPv4 traffic. For IPv6 interception use [[Features/Tproxy4|TPROXY version 4]]
+'''NOTE:''' DNAT is only available for IPv4 traffic on older kernel versions. For IPv6 interception use [[Features/Tproxy4|TPROXY version 4]].
 
  . {{attachment:squid-DNAT-device.png}}
 
