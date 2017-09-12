@@ -242,7 +242,7 @@ Verbatim snippet detailing the Squid project user help contacts.
 .SH QUESTIONS
 Questions on the usage of this program can be sent to the
 .I Squid Users mailing list
-.if !'po4a'hide' <squid-users@squid-cache.org>
+.if !'po4a'hide' <squid-users@lists.squid-cache.org>
 }}}
 
 === .SH REPORTING BUGS ===
@@ -257,11 +257,11 @@ See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you ne
 Report bugs or bug fixes using http://bugs.squid-cache.org/
 .PP
 Report serious security bugs to
-.I Squid Bugs <squid-bugs@squid-cache.org>
+.I Squid Bugs <squid-bugs@lists.squid-cache.org>
 .PP
 Report ideas for new improvements to the
 .I Squid Developers mailing list
-.if !'po4a'hide' <squid-dev@squid-cache.org>
+.if !'po4a'hide' <squid-dev@lists.squid-cache.org>
 }}}
 
 Any further points of contact or reporting should be listed following the Squid project contacts and be written in a similar syntax.
@@ -356,7 +356,7 @@ Distributed under the GNU General Public License (GNU GPL) version 2 or later (G
 .SH QUESTIONS
 Questions on the usage of this program can be sent to the
 .I Squid Users mailing list
-.if !'po4a'hide' <squid-users@squid-cache.org>
+.if !'po4a'hide' <squid-users@lists.squid-cache.org>
 .
 .SH REPORTING BUGS
 Bug reports need to be made in English.
@@ -365,11 +365,11 @@ See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you ne
 Report bugs or bug fixes using http://bugs.squid-cache.org/
 .PP
 Report serious security bugs to
-.I Squid Bugs <squid-bugs@squid-cache.org>
+.I Squid Bugs <squid-bugs@lists.squid-cache.org>
 .PP
 Report ideas for new improvements to the
 .I Squid Developers mailing list
-.if !'po4a'hide' <squid-dev@squid-cache.org>
+.if !'po4a'hide' <squid-dev@lists.squid-cache.org>
 .
 .SH SEE ALSO
 .if !'po4a'hide' .BR squid "(8), "
@@ -459,7 +459,7 @@ Distributed under the GNU General Public License (GNU GPL) version 2 or later (G
 
 =head1 QUESTIONS
 
-Questions on the usage of this program can be sent to the I<Squid Users mailing list <squid-users@squid-cache.org>>
+Questions on the usage of this program can be sent to the I<Squid Users mailing list <squid-users@lists.squid-cache.org>>
 
 =head1 REPORTING BUGS
 
@@ -468,9 +468,9 @@ See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you ne
 
 Report bugs or bug fixes using http://bugs.squid-cache.org/
 
-Report serious security bugs to I<Squid Bugs <squid-bugs@squid-cache.org>>
+Report serious security bugs to I<Squid Bugs <squid-bugs@lists.squid-cache.org>>
 
-Report ideas for new improvements to the I<Squid Developers mailing list <squid-dev@squid-cache.org>>
+Report ideas for new improvements to the I<Squid Developers mailing list <squid-dev@lists.squid-cache.org>>
 
 =head1 SEE ALSO
 
