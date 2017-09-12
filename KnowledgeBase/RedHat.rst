@@ -15,8 +15,9 @@ Lubos Uhliarik is the maintainer of the Red Hat official packages as of <<Date(2
 
 ==== Squid-3.5 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on RHEL.
- * '''RHEL 6 Download:''' http://www1.ngtech.co.il/repo/centos/6/beta/
- * '''Latest Version:''' 3.5.0.2
+ * '''RHEL 6 Download:''' http://www1.ngtech.co.il/repo/centos/6/
+ * '''RHEL 7 Download:''' http://www1.ngtech.co.il/repo/rhel/7/
+ * '''Latest Version:''' 3.5.27
 
 ==== Squid-3.4 ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on RHEL.
