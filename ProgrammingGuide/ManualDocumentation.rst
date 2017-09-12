@@ -497,63 +497,63 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || ~/store.log || {X} || Missing. Relevant? ||
 || ~/swap.state || {X} || Missing. Convert wiki page info ||
 || errors/errpages.css || {X} || Missing ||
-|| helpers/basic_auth/DB/basic_db_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/getpwnam/basic_getpwnam_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/LDAP/basic_ldap_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/NCSA/basic_ncsa_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/NIS/basic_nis_auth || {X} || Missing. ||
-|| helpers/basic_auth/PAM/basic_pam_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/POP3/basic_pop3_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/RADIUS/basic_radius_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/SASL/basic_sasl_auth || 8 || (./) Done. ||
-|| helpers/basic_auth/SASL/basic_sasl_auth.pam || {X} || Missing. ||
-|| helpers/basic_auth/SASL/basic_sasl_auth.conf || {X} || Missing. ||
-|| helpers/basic_auth/SMB/basic_smb_auth || {X} || Missing. ||
-|| helpers/basic_auth/SMB/basic_smb_auth.sh || {X} || Missing. ||
-|| helpers/basic_auth/SMB_LM/basic_smb_lm_auth || {X} || Missing. Convert README.html ||
-|| helpers/basic_auth/SSPI/basic_sspi_auth.exe || 8 || (./) Done. ||
-|| helpers/digest_auth/eDirectory/digest_edir_auth || {X} || Missing. ||
-|| helpers/digest_auth/LDAP/digest_ldap_auth || {X} || Missing. ||
-|| helpers/digest_auth/file/digest_file_auth || 8 || (./) Done. ||
-|| helpers/external_acl/delayer/ext_delayer_acl|| 8 || (./) Done. ||
-|| helpers/external_acl/AD_group/ext_ad_group_acl || 8 || (./) Done. ||
-|| helpers/external_acl/file_userip/ext_file_userip_acl || 8 || (./) Done. ||
-|| helpers/external_acl/kerberos_ldap_group/ext_kerberos_ldap_group_acl || 8 || (./) Done. ||
-|| helpers/external_acl/LDAP_group/ext_ldap_group_acl || 8 || (./) Done. ||
-|| helpers/external_acl/LM_group/ext_lm_group_acl || 8 || (./) Done. ||
-|| helpers/external_acl/session/ext_session_acl || 8 || (./) Done. ||
-|| helpers/external_acl/SQL_session/ext_sql_session_acl || 8 || (./) Done. ||
-|| helpers/external_acl/unix_group/ext_unix_group_acl || 8 || (./) Done. ||
-|| helpers/external_acl/wbinfo_group/ext_wbinfo_group_acl || 8 || (./) Done. ||
-|| helpers/log_daemon/file/log_file_daemon || {X} || Missing. ||
-|| helpers/log_daemon/DB/log_db_daemon || 8 || Check pod2man syntax ||
-|| helpers/negotiate_auth/kerberos/negotiate_kerberos_auth || 8 || (./) Done. ||
-|| helpers/negotiate_auth/kerberos/negotiate_kerberos_auth_test || {X} || Missing. Convert README ||
-|| helpers/negotiate_auth/SSPI/negotiate_sspi_auth.exe || {X} || Missing. Convert readme.txt ||
-|| helpers/negotiate_auth/wrapper/negotiate_wrapper || {X} || Missing. ||
-|| helpers/ntlm_auth/fake/ntlm_fake_auth || {X} || Missing. Convert wiki NTLM fake auth page. ||
-|| helpers/ntlm_auth/smb_lm/ntlm_smb_lm_auth || {X} || Missing ||
-|| helpers/ntlm_auth/SSPI/ntlm_sspi_auth.exe || 8 || (./) Done. ||
-|| helpers/ssl/cert_valid.pl || {X} || Missing. Convert intro text with pod2man ||
-|| helpers/storeid_rewrite/file/storeid_file_rewrite || 8 || (./) Done. ||
-|| helpers/url_rewrite/fake/url_fake_rewrite || {X} || Missing ||
-|| helpers/url_rewrite/fake/url_fake_rewrite.sh || {X} || Missing ||
-|| helpers/url_rewrite/LFS/url_lfs_rewrite || 8 || (./) Done. ||
-|| src/dnsserver || {X} || Missing ||
+|| src/acl/external/delayer/ext_delayer_acl|| 8 || (./) Done. ||
+|| src/acl/external/AD_group/ext_ad_group_acl || 8 || (./) Done. ||
+|| src/acl/external/file_userip/ext_file_userip_acl || 8 || (./) Done. ||
+|| src/acl/external/kerberos_ldap_group/ext_kerberos_ldap_group_acl || 8 || (./) Done. ||
+|| src/acl/external/LDAP_group/ext_ldap_group_acl || 8 || (./) Done. ||
+|| src/acl/external/LM_group/ext_lm_group_acl || 8 || (./) Done. ||
+|| src/acl/external/session/ext_session_acl || 8 || (./) Done. ||
+|| src/acl/external/SQL_session/ext_sql_session_acl || 8 || (./) Done. ||
+|| src/acl/external/unix_group/ext_unix_group_acl || 8 || (./) Done. ||
+|| src/acl/external/wbinfo_group/ext_wbinfo_group_acl || 8 || (./) Done. ||
+|| src/auth/basic/DB/basic_db_auth || 8 || (./) Done. ||
+|| src/auth/basic/getpwnam/basic_getpwnam_auth || 8 || (./) Done. ||
+|| src/auth/basic/LDAP/basic_ldap_auth || 8 || (./) Done. ||
+|| src/auth/basic/NCSA/basic_ncsa_auth || 8 || (./) Done. ||
+|| src/auth/basic/NIS/basic_nis_auth || {X} || Missing. ||
+|| src/auth/basic/PAM/basic_pam_auth || 8 || (./) Done. ||
+|| src/auth/basic/POP3/basic_pop3_auth || 8 || (./) Done. ||
+|| src/auth/basic/RADIUS/basic_radius_auth || 8 || (./) Done. ||
+|| src/auth/basic/SASL/basic_sasl_auth || 8 || (./) Done. ||
+|| src/auth/basic/SASL/basic_sasl_auth.pam || {X} || Missing. ||
+|| src/auth/basic/SASL/basic_sasl_auth.conf || {X} || Missing. ||
+|| src/auth/basic/SMB/basic_smb_auth || {X} || Missing. ||
+|| src/auth/basic/SMB/basic_smb_auth.sh || {X} || Missing. ||
+|| src/auth/basic/SMB_LM/basic_smb_lm_auth || {X} || Missing. Convert README.html ||
+|| src/auth/basic/SSPI/basic_sspi_auth.exe || 8 || (./) Done. ||
+|| src/auth/digest/eDirectory/digest_edir_auth || {X} || Missing. ||
+|| src/auth/digest/LDAP/digest_ldap_auth || {X} || Missing. ||
+|| src/auth/digest/file/digest_file_auth || 8 || (./) Done. ||
+|| src/auth/negotiate/kerberos/negotiate_kerberos_auth || 8 || (./) Done. ||
+|| src/auth/negotiate/kerberos/negotiate_kerberos_auth_test || {X} || Missing. Convert README ||
+|| src/auth/negotiate/SSPI/negotiate_sspi_auth.exe || {X} || Missing. Convert readme.txt ||
+|| src/auth/negotiate/wrapper/negotiate_wrapper || {X} || Missing. ||
+|| src/auth/ntlm/fake/ntlm_fake_auth || {X} || Missing. Convert wiki NTLM fake auth page. ||
+|| src/auth/ntlm/smb_lm/ntlm_smb_lm_auth || {X} || Missing ||
+|| src/auth/ntlm/SSPI/ntlm_sspi_auth.exe || 8 || (./) Done. ||
+|| src/DiskIO/DiskDaemon/diskd || {X} || Missing ||
+|| src/http/url_rewriters/fake/url_fake_rewrite || {X} || Missing ||
+|| src/http/url_rewriters/fake/url_fake_rewrite.sh || {X} || Missing ||
+|| src/http/url_rewriters/LFS/url_lfs_rewrite || 8 || (./) Done. ||
+|| src/icmp/pinger || {X} || Missing ||
+|| src/log/daemon/file/log_file_daemon || {X} || Missing. ||
+|| src/log/daemon/DB/log_db_daemon || 8 || Check pod2man syntax ||
 || src/mime.conf || {X} || Missing ||
 || src/mime.conf.default || {X} || Missing. Symlink to mime.conf manual? ||
 || src/recv-announce || {X} || Missing. ||
+|| src/security/cert_generators/file/security_file_certgen || (./) Done. ||
+|| src/security/cert_validators/fake/security_fake_certverify.pl || {X} || Missing. Convert intro text with pod2man ||
 || src/squid || 8 || (./) Done. ||
 || src/squid.conf || {X} || Missing. Convert squid.conf.documented ||
 || src/squid.conf.default || N/A || http://www.squid-cache.org/Doc/config/ instead  ||
 || src/squid.conf.documented || N/A || http://www.squid-cache.org/Doc/config/ instead ||
+|| src/store/id_rewriters/file/storeid_file_rewrite || 8 || (./) Done. ||
 || src/unlinkd || {X} || Missing ||
-|| src/DiskIO/DiskDaemon/diskd || {X} || Missing ||
-|| src/icmp/pinger || {X} || Missing ||
 || tools/cachemgr.cgi || 8 || (./) Done. ||
+|| tools/helper-mux.pl || 8 || :( Needs review of the perl/pod output. ||
 || tools/purge/ || 1 || (./) Done. ||
 || tools/squidclient/ || 1 || (./) Done. ||
-|| tools/helper-mux.pl || 8 || :( Needs review of the perl/pod output. ||
 
 ----
  Discuss this page using the "Discussion" link in the main menu
