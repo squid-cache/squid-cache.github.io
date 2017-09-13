@@ -20,6 +20,8 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * Wiki [[SiteNavigation|navigation]]
  * main project site (and some of its mirrors): [[http://www1.it.squid-cache.org|it]] [[http://www1.at.squid-cache.org|at]] [[http://www1.gr.squid-cache.org|gr]] [[http://www2.de.squid-cache.org|de2]] [[http://www1.is.squid-cache.org|is]] [[http://www1.jp.squid-cache.org|jp]] [[http://www1.us.squid-cache.org|us1]] [[http://www2.nl.squid-cache.org|nl2]] [[http://www1.ie.squid-cache.org|ie]] [[http://www.squid-cache.org|us]]
 
+If you experience problems with the site or the contents, please see ReportingWikiProblems.
+
 
 === Popular topics ===
  * [[KnowledgeBase/PerformanceAnalysis|Performance Analysis]]: "Help! My users complain that the proxy is slow!"
@@ -29,11 +31,6 @@ You can learn about what a Wiki is and how to use it at AboutWiki. The following
  * MultipleInstances: how-to run multiple squid servers on a single box.
  * Squid ConfigExamples
  * The KnowledgeBase (tips, tricks and various troubleshooting howtos)
-
-== Site News ==
-
- * <<Date(2015-06-01T12:19:16Z)>>: added CookiePolicy
-If you experience problems with the site or the contents, please see ReportingWikiProblems for instructions on how to help us out improve.
 
 == Developers corner ==
 
