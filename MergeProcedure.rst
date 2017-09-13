@@ -8,8 +8,8 @@ The requirements outlined in this document are meant to speedup acceptance of co
  1. Implement your changes while following SquidCodingGuidelines. Use git for version control (see GitHints).
  1. Complete [[#Submission_Checklist]].
  1. Submit a [[#Pull_Request]] on !GitHub.
- 1. Monitor for [[#Automation|automated]] test failures and work with reviewers to get enough [[#Votes]], [[GitHints#Update_a_previously_submitted_pull_request|updating]] your pull request as needed.
- 1. Remind Core Developers to merge your eligible pull request as needed.
+ 1. Monitor for automated test failures and work with reviewers to get enough [[#Votes]], [[GitHints#Update_a_previously_submitted_pull_request|updating]] your pull request as needed.
+ 1. Remind Core Developers to merge your eligible pull request as needed (until merging is [[#Automation|automated]]).
  1. Enjoy your code becoming official!
  1. Support your changes by addressing bug reports and answering related development questions.
 
