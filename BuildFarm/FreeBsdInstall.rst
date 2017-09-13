@@ -14,7 +14,7 @@
 == FreeBSD 9+ (using pkg-ng) ==
  1. create jenkins user {{{ adduser }}}
  1. pkg update
- 1. pkg install openjdk8 bzr git cppunit libxml2 ccache autoconf automake libtool m4 nettle pkgconf autoconf-archive gcc8-devel
+ 1. pkg install openjdk8 bzr git cppunit libxml2 ccache autoconf automake libtool libltdl m4 nettle pkgconf autoconf-archive gcc8-devel
  1. (optional) pkg install vim-lite bash
 
 === build instructions for FreeBSD-9 ===
