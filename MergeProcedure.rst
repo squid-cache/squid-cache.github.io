@@ -8,7 +8,7 @@ The requirements outlined in this document are meant to speedup acceptance of co
  1. Implement your changes while following SquidCodingGuidelines. Use git for version control (see GitHints).
  1. Complete [[#Submission_Checklist]].
  1. Submit a [[#Pull_Request]] on !GitHub.
- 1. Monitor for automated test failures and work with reviewers to get enough [[#Votes]], [[GitHints#Update_a_previously_submitted_pull_request|updating]] your pull request as needed.
+ 1. Monitor for [[#Automation|automated]] test failures and work with reviewers to get enough [[#Votes]], [[GitHints#Update_a_previously_submitted_pull_request|updating]] your pull request as needed.
  1. Remind Core Developers to merge your eligible pull request as needed.
  1. Enjoy your code becoming official!
  1. Support your changes by addressing bug reports and answering related development questions.
@@ -78,3 +78,45 @@ In truly exceptional situations (that ought to be disclosed and discussed as soo
 
 === Core Developers ===
 The [[WhoWeAre|core developers]] mentioned above are experienced developers with serious long-term dedication and contribution to the Squid Project as a whole and Squid code in particular. They are usually active on squid-dev and often review submissions. Core folks have collective responsibility for the Squid Project and may use their super powers to resolve conflicts or prevent disasters.
+
+== Automation ==
+
+/!\ This work-in-progress section is not ready for use or even review.
+
+/!\ This section documents the ''expected'' automation of master commits. The documented procedure has not been fully implemented yet and at least some details will change.
+
+The "trusted master" principle enforced by merge automation states that the master branch automatically gets all ''trusted'' code changes and nothing else. In this context, an trusted code change is, by definition, a non-empty sequence of git commits that satisfies the following requirements:
+
+ i. the sequence is (the beginning of) an [[#Votes|approved]] pull request branch on !GitHub,
+ i. the sequence can be fast-forward merged into master without conflicts, and
+ i. the last commit in the sequence has passed all the required QA tests.
+
+By default, PR branches must contain a single commit. This rule significantly reduces master noise and ensures that each master commit is trusted because automated tests interrogate a single (usually the latest) PR branch revision rather than each PR branch revision. This rule can be violated in exceptional situations. We may also find a way to merge multi-commit branches while marking the trusted commits specially.
+
+Currently, the approval of earlier PR branch revisions automatically extends to all future branch revisions (until manually withdrawn) but that may change or become configurable on a per-PR basis.
+
+Automated master commits are performed by a program called ''merge bot''. Only the merge bot has the rights to modify master. This document only describes what the merge bot should do. The bot implementations may vary. There are existing merge bots that the Project should consider as alternatives to writing bespoke bot software. The merge bot may delegate implementation of some of its tasks (e.g., vote counting or QA tests) to other automation tools.
+
+Upon noticing any relevant trigger event, the merge bot ensures that exactly one merge bot instance is running and then, for each open pull request, in the order of PR numbers, performs the PR merge steps outlined below. Any failure to perform an individual merge step (including validation failures) aborts that PR consideration, moving on to the next PR.
+
+Here are the steps performed by the merge bot for each considered pull request:
+
+ 1. Validate PR approval (i.e., the "Changes approved" green light on !GitHub).
+ 1. Validate PR status checks (i.e., the "All checks have passed" green light on !GitHub).
+ 1. Create a new local ''auto'' branch, based of the official master branch.
+ 1. Merge the PR branch into the auto branch using the fast-forward merging algorithm. Eventual feature: Squash the PR changes if manually requested via a PR comment.
+ 1. Test the auto branch, updating PR status as needed. Eventual optimization: Or, when possible, just load the existing test result of the latest auto branch revision from the commit SHA-indexed cache.
+ 1. Validate PR status checks (i.e., the "All checks have passed" green light on !GitHub). This seemingly repeated check is necessary because !GitHub will no longer automatically retest modified PRs after this merge procedure is deployed. Such automatic retesting leads to O(N^2) tests when merging N PRs. Without automated retests, the merge bot must trigger tests of the latest PR code (and check their results).
+ 1. Validate PR approval (i.e., the "Changes approved" green light on !GitHub). This paranoid repeated check is added primarily because some tests may take a long time and reviewers often have last-minute regrets. The check itself does not cost much.
+ 1. Push the auto branch into the official master branch. (!GitHub will notice the merged changes and consider the PR merged.)
+ 1. Eventually: Archive testing artifacts.
+
+Again, any step failure (including validation failures) aborts the steps sequence.
+
+Merge bot trigger events are:
+
+ * a PR voting change
+ * a PR test result (change)
+ * a PR branch change (although such changes are irrelevant if we can rely on the test result change instead)
+ * a master branch change
+ * a "merge" command directed at the merge bot by an authorized !GitHub user via a PR comment
