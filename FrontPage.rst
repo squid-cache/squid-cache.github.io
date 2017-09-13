@@ -37,9 +37,8 @@ If you experience problems with the site or the contents, please see ReportingWi
 
 == Developers corner ==
 
-DeveloperResources section has instructions for [[BzrInstructions|Bazaar]] and [[CvsInstructions|CVS]] access, coding guidelines, and other useful documentation.
+DeveloperResources section has instructions for source code access, coding guidelines, and other useful documentation. Code discussions happen on the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev]] mailing list, #squiddev IRC channel on irc.freenode.net, and during pull request reviews on [[https://github.com/squid-cache/|GitHub]].
 
-Every now and then we try to organize some [[MeetUps|events, developer meetups or code sprints]]. In the MeetUps page you'll find schedules, notes and other event-related documentation.
 
 == Related resources ==
 
