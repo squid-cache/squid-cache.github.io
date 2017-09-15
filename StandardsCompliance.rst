@@ -86,7 +86,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info Response Header Fields || /!\ ||
 || RFC:7858 || Specification for DNS over Transport Layer Security (TLS) || {X} ||
 || RFC:8187 || Indicating Character Encoding and Language for HTTP Header Field Parameters || {X} ||
-|| RFC:8246 || HTTP Immutable Responses || (./) || partial. some optional SHOULD requirements not implemented. ||
+|| RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
