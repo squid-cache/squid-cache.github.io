@@ -69,7 +69,7 @@ $ git diff $fork_point
 
 /!\ These commands rewrite branch history. Rewriting history may mess up or even permanently destroy your work! Consider pushing all changes to your !GitHub repository ''before'' squashing your local tree and do ''not'' publish the squashed branch until you are sure it ends up with the same code as the last pushed commit.
 
-{i} If you need to both rebase and squash your feature branch, you may use interactive [[#Rebase_your_feature_branch_to_be_in_sync_with_the_current_upstream_master|rebase]] and replace the default "pick" with "squash" commands there. Doing two things at once is faster when things go smoothly, but it is more difficult to discover and fix problems. Also, rebasing an already ''squashed'' branch may reduce the number of conflicts but may also create more complex conflicts. Pick your poison.
+{i} If you need to both rebase and squash your feature branch, you may use interactive [[#Rebase_your_feature_branch_to_be_in_sync_with_the_current_upstream_master|rebase]] and replace the default "pick" with "squash" commands there. The resulting squashed commit will get the metadata such as Date from the first feature branch commit, confusing readers and some tools (especially on long-lived feature branches), but you can fix that using something like  ''git commit --amend --date="$(date)"''. Doing two things at once (i.e., squashing and rebasing) is faster when things go smoothly, but it is more difficult to discover and fix problems. Also, rebasing an already ''squashed'' branch may reduce the number of conflicts but may also create more complex conflicts. Pick your poison.
 
  1. Switch to the local up-to-date feature branch you want to squash:{{{#!shell
 $ git checkout support-foobar
@@ -102,7 +102,7 @@ $ git push # will fail, giving you the last change to check its intended destina
 
 /!\ These commands rewrite branch history. Rewriting history may mess up or even permanently destroy your work! Consider pushing all changes to your !GitHub repository ''before'' rebasing your local tree.
 
-{i} If you need to both rebase and squash your feature branch, you may use the interactive rebase command shown below and replace the default "pick" with "squash" commands there. Doing two things at once is faster when things go smoothly, but it is more difficult to discover and fix problems. Also, rebasing an already [[#Squash_all_the_feature_branch_changes_into_a_single_commit|squashed]]  branch may reduce the number of conflicts but may also create more complex conflicts. Pick your poison.
+{i} If you need to both rebase and squash your feature branch, you may use the interactive rebase command shown below and replace the default "pick" with "squash" commands there. The resulting squashed commit will get the metadata such as Date from the first feature branch commit, confusing readers and some tools (especially on long-lived feature branches), but you can fix that using something like  ''git commit --amend --date="$(date)"''. Doing two things at once (i.e., squashing and rebasing) is faster when things go smoothly, but it is more difficult to discover and fix problems. Also, rebasing an already [[#Squash_all_the_feature_branch_changes_into_a_single_commit|squashed]]  branch may reduce the number of conflicts but may also create more complex conflicts. Pick your poison.
 
  1. Make sure your upstream master is up to date:{{{#!shell
 $ git fetch upstream master
