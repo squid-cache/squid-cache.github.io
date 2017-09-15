@@ -537,8 +537,8 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || src/http/url_rewriters/fake/url_fake_rewrite.sh || {X} || Missing ||
 || src/http/url_rewriters/LFS/url_lfs_rewrite || 8 || (./) Done. ||
 || src/icmp/pinger || {X} || Missing ||
-|| src/log/daemon/file/log_file_daemon || {X} || Missing. ||
-|| src/log/daemon/DB/log_db_daemon || 8 || Check pod2man syntax ||
+|| src/log/file/log_file_daemon || {X} || Missing. ||
+|| src/log/DB/log_db_daemon || 8 || (./) Done. ||
 || src/mime.conf || {X} || Missing ||
 || src/mime.conf.default || {X} || Missing. Symlink to mime.conf manual? ||
 || src/recv-announce || {X} || Missing. ||
