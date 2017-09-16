@@ -527,7 +527,7 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || src/auth/digest/file/digest_file_auth || 8 || (./) Done. ||
 || src/auth/negotiate/kerberos/negotiate_kerberos_auth || 8 || (./) Done. ||
 || src/auth/negotiate/kerberos/negotiate_kerberos_auth_test || {X} || Missing. Convert README ||
-|| src/auth/negotiate/SSPI/negotiate_sspi_auth.exe || {X} || Missing. Convert readme.txt ||
+|| src/auth/negotiate/SSPI/negotiate_sspi_auth.exe || 8 || (./) Done. ||
 || src/auth/negotiate/wrapper/negotiate_wrapper || {X} || Missing. ||
 || src/auth/ntlm/fake/ntlm_fake_auth || {X} || Missing. Convert wiki NTLM fake auth page. ||
 || src/auth/ntlm/smb_lm/ntlm_smb_lm_auth || {X} || Missing ||
