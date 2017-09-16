@@ -542,8 +542,8 @@ The Manual best practice is to provide a man(x) page for each file installed on 
 || src/mime.conf || {X} || Missing ||
 || src/mime.conf.default || {X} || Missing. Symlink to mime.conf manual? ||
 || src/recv-announce || {X} || Missing. ||
-|| src/security/cert_generators/file/security_file_certgen || (./) Done. ||
-|| src/security/cert_validators/fake/security_fake_certverify.pl || {X} || Missing. Convert intro text with pod2man ||
+|| src/security/cert_generators/file/security_file_certgen || 8 || (./) Done. ||
+|| src/security/cert_validators/fake/security_fake_certverify || 8 || (./) Done. ||
 || src/squid || 8 || (./) Done. ||
 || src/squid.conf || {X} || Missing. Convert squid.conf.documented ||
 || src/squid.conf.default || N/A || http://www.squid-cache.org/Doc/config/ instead  ||
