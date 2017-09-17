@@ -122,6 +122,13 @@ do
 done
 }}}
 
+=== Linux Connection Tracking and LB, Advantages and limitations ===
+On a linux based router which utilizes the connection tracking module it is possible to "track" if a connection from the network clients are already marked or not for both TCP, UDP and couple other protocols.
+
+However on a Linux client machine the only concept of a connection is on the protocol level ie TCP and not UDP.
+
+UDP uses datagrams and doesn't have any "connection" orientation in the kernel level. Due to this in the client side UDP packets that are originated from the client\server machine would not be able to rely only on the linux kernel connection tracking to be able to send UDP packets\datagrams using the same route it was received through.
+
 === NATed Environment ===
 
 == LoadBalancing general algorithms  ==
