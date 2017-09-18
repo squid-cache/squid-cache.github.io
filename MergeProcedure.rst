@@ -104,7 +104,7 @@ Here are the steps performed by the merge bot for each considered pull request:
  1. Validate PR approval (i.e., the "Changes approved" green light on !GitHub).
  1. Validate PR status checks (i.e., the "All checks have passed" green light on !GitHub).
  1. Create a new local ''auto'' branch, based of the official master branch.
- 1. Merge the PR branch into the auto branch using the fast-forward merging algorithm. Eventual feature: Squash the PR changes if manually requested via a PR comment.
+ 1. Merge the PR branch into the auto branch using the fast-forward merging algorithm. Eventual feature: Rebase and/or squash the PR changes if manually requested via a PR comment.
  1. Test the auto branch, updating PR status as needed. Eventual optimization: Or, when possible, just load the existing test result of the latest auto branch revision from the commit SHA-indexed cache.
  1. Validate PR status checks (i.e., the "All checks have passed" green light on !GitHub). This seemingly repeated check is necessary because !GitHub will no longer automatically retest modified PRs after this merge procedure is deployed. Such automatic retesting leads to O(N^2) tests when merging N PRs. Without automated retests, the merge bot must trigger tests of the latest PR code (and check their results).
  1. Validate PR approval (i.e., the "Changes approved" green light on !GitHub). This paranoid repeated check is added primarily because some tests may take a long time and reviewers often have last-minute regrets. The check itself does not cost much.
