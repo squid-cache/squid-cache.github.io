@@ -26,9 +26,9 @@
 
 '''Latest Package:''' https://build.opensuse.org/package/show/server:proxy/squid
 
-==== Squid-3.3 ====
+==== Squid-3.5 ====
 
-https://build.opensuse.org/package/show?package=squid_33&project=server%3Aproxy
+https://software.opensuse.org/package/squid
 
 Install Procedure:
 ## Exact sequence of command-line commands or GUI actions used to install this package on the distro.
