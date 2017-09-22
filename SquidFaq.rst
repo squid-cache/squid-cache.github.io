@@ -35,6 +35,7 @@
  * /SystemWeirdnesses shows how to expect some operating-system-dependent unexpected behaviors
  * /ToomanyMisses: why more than just a few TCP_SWAPFAIL_MISS
  * /WindowsUpdate: configuring squid to pass Windows Update
+ * /ChromebookUpdate: configuring squid to pass ChromeOS Updates
  * [[/AddACacheDir]]: hints on how to increase a cache's capacity
  * /ClearingTheCache: how to wipe your entire disk cache in one easy step
  * [[/RAID]]: Why Squid and RAID play nasty together and what to do about it.
