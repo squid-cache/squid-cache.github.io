@@ -3,7 +3,9 @@
 
 ##begin
 == How do I make ChromeOS Updates cache? ==
-ChromeOS updates are downloaded from Google over HTTP. Thus, they can be cached on a standard Web caching server such as squid-cache. To make the most of your caching server there are some configuration options that you can optimize to improve the chances of successful caching your ChromeOS updates. Examples are provided using Squid version 3.5, and experienced IT administrators can adapt these settings to their choice of proxy cache software.
+ChromeOS updates are downloaded from Google over HTTP. Thus, they can be cached on a standard Web caching server such as squid-cache. 
+To make the most of your caching server there are some configuration options that you can optimize to improve the chances of successful caching your ChromeOS updates. 
+Examples are provided using Squid version 3.5, and experienced IT administrators can adapt these settings to their choice of proxy cache software.
 
 
  * '''SquidConf:maximum_object_size'''. This is the maximum individual file size that the proxy would cache. In most cases, the default setting is lower than the average size of updates. For example, it is set at 4MB in Squid.  Chrome updates are downloaded as one file, so make sure that this parameter is set at 1GB or higher. You can use the same size limit for setting your SquidConf:range_offset_limit
@@ -17,7 +19,7 @@ ChromeOS updates are downloaded from Google over HTTP. Thus, they can be cached 
 {{{
 acl chromeos dstdomain dl.google.com
 http_access allow chromeos localnet
-
+}}}
 
 == Google’s HelpCenter articles on ChromeOS Updates ==
 https://chromereleases.googleblog.com
