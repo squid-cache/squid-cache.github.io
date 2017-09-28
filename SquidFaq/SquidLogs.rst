@@ -86,6 +86,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  * These tags are optional and describe some error conditions which occured during response delivery (if any):
  || '''ABORTED''' || The response was not completed due to the connection being aborted (usually by the client). ||
  || '''TIMEOUT''' || The response was not completed due to a connection timeout. ||
+ || '''IGNORED''' || While refreshing a previously cached response A, Squid got a response B that was ''older'' than A (as determined by the Date header field). Squid ignored response B (and attempted to use A instead). This "ignore older responses" logic complies with RFC RFC:7234 Section [[https://tools.ietf.org/html/rfc7234#section-4|4]] requirement: a cache MUST use the most recent response (as determined by the Date header field). ||
 
 
 ==== HTTP status codes ====
