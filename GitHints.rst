@@ -22,7 +22,7 @@ Use a search engine to solve git and !GitHub problems. Virtually all basic quest
 
 Your git work area will be a combination of your public Squid repository (a.k.a. "origin" remote), the official Squid repository (a.k.a. "upstream" remote), and your private (unpublished) Squid branches.
 
- 1. Clone your public Squid repository on !GitHub into your local work area. By default, git will refer to your public repository as "origin". This is where you will publish your development branches. To get the right repository .git address for the first command, click the "clone or download" button while looking at your repository on !GitHub. The "clone or download" button offers https and ssh protocols; for development work, you may find ssh authentication easier to work with. The example below uses an ssh address.{{{#!shell
+ 1. Clone your public Squid repository on !GitHub into your local work area. By default, git will refer to your public repository as "origin". This is where you will publish your development branches. To get the right repository .git address for the first command, click the "clone or download" button while looking at your repository on !GitHub. The "clone or download" button offers https and ssh protocols; for development work, you may find ssh authentication easier to work with. The example below uses an ssh address. /!\ You may need to upload your publish ssh key to your !GitHub account first.{{{#!shell
 $ git clone git@github.com:YOUR_GITHUB_LOGIN/squid.git
 $ cd squid
 $ git remote -v # Should show you the origin repository address
