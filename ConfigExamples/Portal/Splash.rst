@@ -51,10 +51,9 @@ external_acl_type splash_page ttl=60 concurrency=100 %SRC /usr/local/sbin/squid/
 
 acl existing_users external splash_page
 
-http_access deny !existing_users
-
-# Deny page to display
 deny_info 511:/etc/squid/splash.html existing_users
+
+http_access deny !existing_users
 }}}
 
 == Squid Configuration File - Active Mode ==
