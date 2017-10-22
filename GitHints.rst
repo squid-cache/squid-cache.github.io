@@ -143,7 +143,7 @@ If you rebased your local feature branch or otherwise altered its previously pub
 
 == Rebase your feature branch to another official branch ==
 
-A feature branch that was branched off master often needs to be rebased on top of a versioned Squid branch (e.g., v4.0) so that the feature can be backported to a specific Squid release series. A similar need arises when you were developing a, say, v3.5 fix but then realized that the Squid Project wants you to submit a pull request against the ''master'' branch instead.
+A feature branch that was branched off master often needs to be rebased on top of a versioned Squid branch (e.g., v4.0) so that the feature can be backported to a specific Squid release series. A similar need arises when you were developing a, say, v3.5 fix but then realized that the Squid Project wants you to submit a pull request against the ''master'' branch instead. /!\ To simply cherry pick officially committed changes into a new feature porting branch, see "git cherry-pick --help". This section covers more complex (and relatively rare) use cases where rebasing the old feature branch is more appropriate than cheery picking individual commits into a new feature branch.
 
  1. Here is a possible first step to switch the base of your feature branch:{{{#!shell
 git rebase --fork-point upstream/master --interactive --onto upstream/v4.0
