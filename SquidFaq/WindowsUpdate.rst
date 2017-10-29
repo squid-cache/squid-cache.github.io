@@ -241,6 +241,9 @@ cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
 == Microsoft technical articles related to proxy issues and windows updates ==
 https://support.microsoft.com/en-us/kb/3084568
 
+== An example of refresh_pattern that is being used at OpnSense ==
+https://github.com/opnsense/core/issues/1691#issuecomment-340276788
+
 ##end
 ----
 Back to the SquidFaq
