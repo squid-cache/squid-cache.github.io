@@ -22,7 +22,7 @@ This blocks just Vimeo streams, not vimeo.com itself.
 
 == Squid Configuration File ==
 
-Paste the configuration file like this:
+Paste the configuration file like this and reconfigure:
 
 {{{
 
