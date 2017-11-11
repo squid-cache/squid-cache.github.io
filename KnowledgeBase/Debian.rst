@@ -13,6 +13,36 @@ Packages available for Squid on multiple architectures.
 
 '''Maintainer:''' Luigi Gangitano
 
+=== Squid-4 ===
+
+Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid
+
+ . {i} Debian Stretch or newer required.
+
+ . {i} [Squid-4] is still a beta release so packages in Debian are still experimental. This section will change.
+
+Build Procedure:
+{{{
+ # install build dependencies
+ sudo apt-get build-dep squid3 squid
+ sudo apt-get install git git-buildpackage
+
+ # fetch the Debian package repository managed by the Debian pkg-squid team
+ git clone https://alioth.debian.org/anonscm/git/pkg-squid/pkg-squid.git
+ cd pkg-squid && git checkout experimental
+
+ # the actual build
+ gbp buildpackage --git-debian-branch=experimental \
+    --git-upstream-tag=debian/4.0.21-1_exp5
+ cd ..
+}}}
+
+ . /!\ the gbp command may fail to sign the packages if you are not a Debian maintainer yourself. That is okay.
+
+Install Procedure:
+{{{
+ sudo dpkg -i squid-common_4.0.21*.deb squid_4.0.21*.deb
+}}}
 
 ==== Squid-3.5 ====
 Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid
