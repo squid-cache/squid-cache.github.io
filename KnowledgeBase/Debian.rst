@@ -19,7 +19,7 @@ Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid
 
  . {i} Debian Stretch or newer required.
 
- {i} [Squid-4] is still a beta release so packages in Debian are still experimental.
+ {i} [[Squid-4]] is still a beta release so packages in Debian are still experimental.
 
 Add this to '''/etc/apt/sources.list.d/experimental''' to enable the Debian experimental repository
 {{{
