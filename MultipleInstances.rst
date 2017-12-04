@@ -39,6 +39,9 @@ The macro '''${service_name}''' is added to squid.conf processing. It expands to
   to reduce duplication mistakes break shared pieces of config (ACL definitions etc) out into separate files which SquidConf:include pulls into each of the multiple squid.conf at the right places.
 
 == Tips ==
+
+/!\ This section does not apply to SMP Squids.
+
 The easiest way I found to manage multiple squids running on one single box was to:
 
  * create a configuration file per instance 
