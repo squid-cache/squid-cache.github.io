@@ -56,5 +56,32 @@ http_access allow CONNECT localnet numeric_IPS Skype_UA
 
 If you limit HTTPS access to known sites only, then permitting Skype will break that policy.
 
+=== Metro Skype WIndows 10 ===
+
+/!\ This is required to Skype work if Squid SSL-Bump aware.
+
+Add this domains to splice ACL then reconfigure Squid:
+
+{{{
+## Trusted SKYPE addresses
+# api.aps|skypegraph|edge Metro Skype requires
+(a\.config|pipe|api\.aps|skypegraph|edge)\.skype\.com
+# Metro Skype requires
+ocsp\.omniroot\.com
+trouter\.io
+msedge\.net
+
+# messenger.live.com requires for Metro Skype
+mobile\.pipe\.aria\.microsoft\.com
+messenger\.live\.com
+}}}
+
+squid.conf part should looks like this:
+
+{{{
+acl NoSSLIntercept ssl::server_name_regex "/usr/local/squid/etc/acl.url.nobump"
+ssl_bump splice NoSSLIntercept
+}}}
+
 ----
 CategoryConfigExample
