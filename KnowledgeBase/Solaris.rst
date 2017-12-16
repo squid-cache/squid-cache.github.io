@@ -387,5 +387,22 @@ Also you can combine Solaris native threading library with multithreading navive
 
 After configuration, run gmake && gmake install-strip as usual and restart your Squid.
 
+=== Building Squid on Solaris 11 with --enable-ipf-transparent configuration ===
+
+Solaris 11 has an issue, which preventing build Squid (any version starting from 3.5.x) on Solaris 11.
+
+The root of evil is: Solaris 11 (up to 11.3) contains IPFilter headers from Solaris 10 (without changes). However, in Solaris 11 IPFilter binaries uses different type for integers. So, Squid throw error during make.
+
+Here is workaround (better than install Linux instead of Solaris).
+
+Find subdirectory include-fixed/netinet under your Solaris GCC installation, for example:
+
+/opt/csw/lib/gcc/i386-pc-solaris2.10/5.2.0/include-fixed/netinet/
+
+Find files ip_compat.h and ip_fil.h in this directory.
+
+Replace it to this files:
+
+
 ----
 CategoryKnowledgeBase
