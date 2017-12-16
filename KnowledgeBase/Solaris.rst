@@ -403,6 +403,10 @@ Find files ip_compat.h and ip_fil.h in this directory.
 
 Replace it to this files:
 
+[[attachment:ip_compat.h]]
+[[attachment:ip_fil.h]]
+
+then configure and make squid.
 
 ----
 CategoryKnowledgeBase
