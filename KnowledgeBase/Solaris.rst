@@ -391,7 +391,7 @@ After configuration, run gmake && gmake install-strip as usual and restart your 
 
 Solaris 11 has an issue, which preventing build Squid (any version starting from 3.5.x) on Solaris 11.
 
-The root of evil is: Solaris 11 (up to 11.3) contains IPFilter headers from Solaris 10 (without changes). However, in Solaris 11 IPFilter binaries uses different type for integers. So, Squid throw error during make.
+The root of evil is: Solaris 11 (up to 11.3) contains IPFilter headers from Solaris 10 (without changes). However, in Solaris 11 IPFilter binaries uses different type for integers (it is bug, unknown to Oracle AFAIK). So, Squid throw error during make and can't be build.
 
 Here is workaround (better than install Linux instead of Solaris).
 
@@ -407,6 +407,8 @@ Replace it to this files:
 [[attachment:ip_fil.h]]
 
 then configure and make squid.
+
+Don't replace IPFilter system headers in /usr/include/netinet, you can break anything else. Just replace GCC-generated headers in directory above.
 
 ----
 CategoryKnowledgeBase
