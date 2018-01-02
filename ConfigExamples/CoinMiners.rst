@@ -46,7 +46,11 @@ url_rewrite_bypass off
 
 You can find updateable coin miners list [[https://raw.githubusercontent.com/Marfjeh/coinhive-block/master/domains|here]].
 
-To automate updates with cron, you can use this script.
+To automate updates with cron, you can use [[attachment:update_miners.sh|this script]]
+
+== Testing your setup ==
+
+Just visit [[https://mineblock.org/|this site]]. You should see this picture.
 
 ----
 CategoryConfigExample
