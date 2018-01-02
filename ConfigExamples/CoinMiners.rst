@@ -50,7 +50,7 @@ To automate updates with cron, you can use [[attachment:update_miners.sh|this sc
 
 == Testing your setup ==
 
-Just visit [[https://mineblock.org/|this site]]. You should see this picture.
+Just visit [[https://mineblock.org/|this site]]. You should see [[attachment:C89L68e.png|this picture]].
 
 ----
 CategoryConfigExample
