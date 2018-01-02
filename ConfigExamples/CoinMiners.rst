@@ -46,6 +46,31 @@ You can find updateable coin miners list [[https://raw.githubusercontent.com/Mar
 
 To automate updates with cron, you can use [[attachment:update_miners.sh|this script]]
 
+== ufdbguard configuration ==
+
+Add category to ufdbguard.conf:
+
+{{{
+
+category miners {
+        domainlist "miners/domains"
+	redirect "http://your_proxy_FQDN:8080/cgi-bin/URLblocked.cgi?clientgroup=%s&clientaddr=%a&category=%t&url=%u"
+}
+
+}}}
+
+Then add '''!miners''' to ufdbguard ACL(s). Don't forget to compile miners database and restart ufdbguardd.
+
+Also, don't forget to configure ufdbguard to work with bump-enabled Squid:
+
+{{{
+
+redirect-bumped-https "https://your_proxy_FQDN:4443/cgi-bin/URLblocked.cgi?clientgroup=%s&clientaddr=%a&category=%t&url=%u"
+
+}}}
+
+and make sure you redirection web-server has configured SSL.
+
 == Testing your setup ==
 
 Just visit [[https://mineblock.org/|this site]]. You should see [[attachment:C89L68e.png|this picture]].
