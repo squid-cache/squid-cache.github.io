@@ -37,8 +37,6 @@ Paste the configuration file like this:
 url_rewrite_program /usr/local/ufdbguard/bin/ufdbgclient -m 4
 url_rewrite_children 64 startup=8 idle=4 concurrency=4
 url_rewrite_extras "%>a/%>A %un %>rm bump_mode=%ssl::bump_mode sni=\"%ssl::>sni\" referer=\"%{Referer}>h\""
-acl url_rewrite_deny url_regex "/usr/local/squid/etc/acl.url.rewrite_deny"
-url_rewrite_access deny url_rewrite_deny
 url_rewrite_access allow all
 url_rewrite_bypass off
 
