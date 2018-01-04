@@ -39,7 +39,7 @@ Categories:
 
 === Authentication ===
 [[Features/Authentication|Overview and explanation]]
-<<FullSearch(title:regex:^ConfigExamples/Authenticate/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Authenticate/[^/]*$)>>
 
 === Interception ===
 [[ConfigExamples/Intercept|Overview and explanation]]
@@ -48,7 +48,7 @@ Categories:
 
 [[Features/Wccp2| WCCP v2 overview]]
 
-<<FullSearch(title:regex:^ConfigExamples/Intercept/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Intercept/[^/]*$)>>
 
 === Content Adaptation features ===
 [[SquidFaq/ContentAdaptation|Overview and explanation]]
@@ -57,51 +57,51 @@ Categories:
 
 [[Features/eCAP | eCAP overview]]
 
-<<FullSearch(title:regex:^ConfigExamples/ContentAdaptation/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/ContentAdaptation/[^/]*$)>>
 
 === Caching ===
-<<FullSearch(title:regex:^ConfigExamples/Caching/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Caching/[^/]*$)>>
 
 === Captive Portal features ===
-<<FullSearch(title:regex:^ConfigExamples/Portal/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Portal/[^/]*$)>>
 
 === Reverse Proxy (Acceleration) ===
-<<FullSearch(title:regex:^ConfigExamples/Reverse/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Reverse/[^/]*$)>>
 
 === Instant Messaging / Chat Program filtering ===
 [[ConfigExamples/Chat|Overview and explanation]]
-<<FullSearch(title:regex:^ConfigExamples/Chat/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Chat/[^/]*$)>>
 
 === Multimedia and Data Stream filtering ===
-<<FullSearch(title:regex:^ConfigExamples/Streams/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Streams/[^/]*$)>>
 
 === Torrent Filtering ===
  /!\ Torrent filtering is not simple task and can't be done using Squid's only. It uses arbitrary ports, protocols and transport. You must also use active network equipment and some experience.
 [[ConfigExamples/TorrentFiltering|ConfigExamples/TorrentFiltering]]
-<<FullSearch(title:regex:^ConfigExamples/TorrentFiltering/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/TorrentFiltering/[^/]*$)>>
 
 === SMP (Symmetric Multiprocessing) configurations ===
 
 ## The warning below is Included in the template ConfigExampleTemplate and possibly in some other pages. Please, do not remove the enclosing comments.
 ## smpwarning begin
- /!\ Squid SMP support is an ongoing series of improviements in [[Squid-3.2]] and later. The configuration here may not be exactly up to date. Or may require you install a newer release.
+ /!\ Squid SMP support is an ongoing series of improvements in [[Squid-3.2]] and later. The configuration here may not be exactly up to date. Or may require you install a newer release.
 ## smpwarning end
 
-<<FullSearch(title:regex:^ConfigExamples/Smp.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Smp[^/]*$)>>
 
 === High Performance service ===
-<<FullSearch(title:regex:^ConfigExamples/Extreme.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Extreme[^/]*$)>>
 
 see also [[Features/Wccp2| WCCP v2 overview]] for high-availability service.
 
 === General ===
-<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/ContentAdaptation -regex:ConfigExamples/Extreme -regex:ConfigExamples/Caching -regex:ConfigExamples/ConfigExample/Caching/CachingAVUpdates -regex:ConfigExamples/TorrentFiltering -regex:ConfigExamples/Intercept -regex:ConfigExamples/Reverse -regex:ConfigExamples/Smp -regex:ConfigExamples/Strange -regex:ConfigExamples/Streams -regex:ConfigExamples/Portal )>>
+<<FullSearch(title:regex:^ConfigExamples/.*$ -regex:Discussion -regex:ConfigExamples/Authenticate -regex:ConfigExamples/Chat -regex:ConfigExamples/ContentAdaptation -regex:ConfigExamples/Extreme -regex:ConfigExamples/Caching -regex:ConfigExamples/ConfigExample/Caching/CachingAVUpdates -regex:ConfigExamples/TorrentFiltering -regex:ConfigExamples/Intercept -regex:ConfigExamples/Reverse -regex:ConfigExamples/Smp -regex:ConfigExamples/Strange -regex:ConfigExamples/Streams -regex:ConfigExamples/Portal )>>
 
 === Strange and Weird configurations ===
 ##start_WEIRD_INTRO
 This is a section for weird (and sometimes wonderful) configurations Squid is capable of. Clued in admin often find no actual useful benefits from going to this much trouble, but well, people seems to occasionally ask for them...
 ##end_WEIRD_INTRO
-<<FullSearch(title:regex:^ConfigExamples/Strange/.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Strange/[^/]*$)>>
 
 == External configuration examples ==
 
