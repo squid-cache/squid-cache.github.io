@@ -37,11 +37,13 @@ Basic new features in 4.0:
   * Remove SquidConf:cache_peer_domain directive
   * basic_msnt_multi_domain_auth: Superceeded by basic_smb_lm_auth
   * Update SquidConf:external_acl_type directive to take logformat codes in its format parameter
+  * Removal of ESI custom parser
 
  * '''Minor UI changes:'''
   * Sub-millisecond transaction logging
   * ext_kerberos_ldap_group_acl -n option to disable automated SASL/GSSAPI
   * negotiate_kerberos_auth outputs group= kv-pair for use in note ACL
+  * security_file_certgen helper supports memory-only mode
   * Adaptation support for Expect:100-continue in HTTP messages
   * Add SquidConf:url_rewrite_timeout directive
   * Update localnet ACL default definition for RFC RFC:6890 compliance
