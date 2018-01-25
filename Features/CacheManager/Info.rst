@@ -1,13 +1,6 @@
 = info report =
 
-The mgr:info report provides a high-level summary of Squid state, including the following information:
-
-        UP Time:        14241.881 seconds
-        CPU Time:       1789.357 seconds
-        CPU Usage:      12.56%
-        CPU Usage, 5 minute avg:        14.77%
-        CPU Usage, 60 minute avg:       14.59%
-
+The mgr:info report provides a high-level summary of Squid state, including the following information: 
 
 ||'''Field'''||'''Units'''||'''Meaning'''||'''SMP'''||
 ||UP Time||seconds||Current Time - Start Time||maximum among kid values||
