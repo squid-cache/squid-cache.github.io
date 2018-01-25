@@ -4,7 +4,7 @@ The mgr:info report provides a high-level summary of Squid state, including the 
 
 ||'''Field'''||'''Units'''||'''Meaning'''||'''SMP'''||
 ||UP Time||seconds||Current Time - Start Time||maximum among kid values||
-||CPU Time||seconds||Total time spent using CPU during Squid process lifetime, including both user and system CPU time, as reported by getrusage(3).||the sum of kid values||
+||CPU Time||seconds||Total time spent using CPU during Squid process lifetime, including both user and system CPU time, as reported by getrusage(3).||sum of kid values||
 ||CPU Usage||%||CPU Time / UP Time. In other words, the portion of UP Time spent using CPU.||meaningless sum of kid values (bug)||
 ||CPU Usage, 5 minute avg||%||The portion of the last 5-minute interval spent using CPU.||meaningless sum of kid values (bug)||
 ||CPU Usage, 60 minute avg||%||The portion of the last 60-minute interval spent using CPU.||meaningless sum of kid values (bug)||
