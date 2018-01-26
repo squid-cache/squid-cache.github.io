@@ -184,7 +184,6 @@ Note that since Squid 3.1, methods not listed here (such as PATCH) are supported
 
 
 ==== Hierarchy Codes ====
-The following hierarchy codes are used with Squid-2:
 
 '''NONE''' For TCP HIT, TCP failures, cachemgr requests and all UDP requests, there is no hierarchy information.
 
@@ -230,7 +229,7 @@ The following hierarchy codes are used with Squid-2:
 
 '''ORIGINAL_DST''' The server connection was limited to the client provided destination IP. This occurs on interception proxies when Host security is enabled, or SquidConf:client_dst_passthru transparency is enabled.
 
-'''ANY_PARENT''' part of ''src/peer_select.c:hier_strings[]''.
+'''ANY_OLD_PARENT''' (former ANY_PARENT?) Squid used the first considered-alive parent it could reach. This happens when none of the specific parent cache selection algorithms (e.g., userhash or carp) were enabled, all enabled algorithms failed to find a suitable parent, or all suitable parents found by those algorithms failed when Squid tried to forward the request to them.
 
 '''INVALID CODE''' part of ''src/peer_select.c:hier_strings[]''.
 
