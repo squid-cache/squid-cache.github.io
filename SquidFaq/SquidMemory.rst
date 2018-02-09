@@ -64,6 +64,21 @@ Total free:              8153 KB 6%
 }}}
 If your RSS (Resident Set Size) value is much lower than your process size, then your cache performance is most likely suffering due to Paging. See also ../CacheManager
 
+
+== Why does Squid use so much cache memory? ==
+
+It can appear that a machine running Squid is using a huge amount of memory "cached Mem"
+
+{{{
+ KiB Mem:   4037016 total,  3729152 used,   307864 free,   120508 buffers
+ KiB Swap:  8511484 total,        0 used,  8511484 free.  2213580 cached Mem
+}}}
+
+This is normal behaviour in Linux - everything that's once read from disk is cached in RAM, as long as there is free memory.
+If the RAM is needed in another way, the cache in memory will be reduced. See also [[https://www.linuxatemyram.com/]]
+
+Machines running Squid can show unusual amounts of this disk I/O caching happening because Squid caches contain a lot of files and access them randomly.
+
 == My Squid process grows without bounds. ==
 You might just have your SquidConf:cache_mem parameter set too high.  See ''What can I do to reduce Squid's memory usage?'' below.
 
@@ -318,19 +333,6 @@ To make Squid use GNU malloc follow these simple steps:
 }}}
 As Squid's configure script runs, watch its output.  You should find that it locates libgnumalloc.a and optionally gnumalloc.h.
 
-=== dlmalloc ===
-[[http://g.oswego.edu/dl/html/malloc.html|dlmalloc]] has been written by ''Doug Lea''.  According to Doug:
-
-{{{
-This is not the fastest, most space-conserving, most portable, or
-most tunable malloc ever written. However it is among the fastest
-while also being among the most space-conserving, portable and tunable.
-}}}
-dlmalloc is included with the ''Squid-2'' source distribution. To use this library, you simply give an option to the ''configure'' script:
-
-{{{
-% ./configure --enable-dlmalloc ...
-}}}
 <<Anchor(how-much-ram)>>
 
 == How much memory do I need in my Squid server? ==
