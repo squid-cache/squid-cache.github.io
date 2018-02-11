@@ -14,6 +14,8 @@ The Packet Filter (PF) firewall in OpenBSD 4.4 and later offers traffic intercep
 
 This configuration example details how to integrate the PF firewall with Squid for interception of port 80 traffic using either NAT-like interception and [[Features/Tproxy4|TPROXY-like]] interception.
 
+<<Include(SquidFaq/InterceptionProxy, , from="^## start nat_disclaimer", to="^## end nat_disclaimer")>>
+
 More on configuring Squid for OpenBSD can be found in the OpenBSD ports README file:
 
  . http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/ports/www/squid/pkg/README-main
@@ -132,11 +134,10 @@ You should now see an output like this:
 {{{
 <root:openbsd> [/root]
 > nc -l 3129
-GET /mail/?ui=pb HTTP/1.1
+GET / HTTP/1.1
 User-Agent: Mozilla/5.0 (compatible; GNotify 1.0.25.0)
-Host: mail.google.com
-Connection: Keep-Alive
-Cache-Control: no-cache
+Host:  example.com
+Connection: keep-alive
 ...
 }}}
 From there on out, just set your browsers up normally with no proxy server, and you should see the cache fill up and your browsing speed up.
