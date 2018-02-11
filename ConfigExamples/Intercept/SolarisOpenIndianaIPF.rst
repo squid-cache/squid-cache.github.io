@@ -12,6 +12,8 @@
 
 == Outline ==
 
+<<Include(SquidFaq/InterceptionProxy, , from="^## start nat_disclaimer", to="^## end nat_disclaimer")>>
+
 We need to intercept incoming HTTP/HTTPS traffic on Solaris/OpenIndiana box with Squid proxy. In this example server has two aggregated 1 Gbit interfaces, bge0+bge1:
 
 {{{
