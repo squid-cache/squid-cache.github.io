@@ -48,6 +48,14 @@ If you feel that the advantages outweigh the disadvantages in your network, you 
  * A current Squid (2.5+).  You should run the latest version of Squid that is available at the time.
  * A current OS may make things easier.
  * Quite likely you will need a network device which can redirect the traffic to your cache.  If your Squid box is also functioning as a router and all traffic from and to your network is in the path, you can skip this step.  If your cache is a standalone box on a LAN that does not normally see your clients web browsing traffic, you will need to choose a method of redirecting the HTTP traffic from your client machines to the cache.  This is typically done with a network appliance such as a router or Layer 3 switch which either rewrite the destination MAC address or alternatively encapsulate the network traffic via a GRE or WCCP tunnel to your cache.
+
+## start nat_disclaimer
+
+'''NOTE:''' This configuration is given for use '''on the squid box'''. This is required to perform intercept accurately and securely. To intercept from a gateway machine and direct traffic at a separate squid box use [[ConfigExamples/Intercept/IptablesPolicyRoute|policy routing]].
+
+## end nat_disclaimer
+
+
 NB: If you are using Cisco routers and switches in your network you may wish to investigate the use of WCCP.  WCCP is an extremely flexible way of redirecting traffic and is intelligent enough to automatically stop redirecting client traffic if your cache goes offline.  This may involve you upgrading your router or switch to a release of IOS or an upgraded featureset which supports WCCP.  There is a section written specifically on WCCP below.
 
 == Steps involved in configuring Interception Caching ==
