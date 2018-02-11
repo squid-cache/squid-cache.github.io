@@ -15,6 +15,8 @@ Based on OpenBSD example by Chris Benech
 
 This configuration applies to FreeBSD 8/9, MP kernel and Squid 2.6 or later.
 
+<<Include(SquidFaq/InterceptionProxy, , from="^## start nat_disclaimer", to="^## end nat_disclaimer")>>
+
 == Squid Configuration ==
 
 First, compile and install Squid. It requires the following options:
