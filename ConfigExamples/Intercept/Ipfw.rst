@@ -11,6 +11,10 @@
 
 == Outline ==
 
+This configuration is for a machine using IPFirewall (IPFW) to NAT intercept traffic into a Squid proxy.
+
+<<Include(SquidFaq/InterceptionProxy, , from="^## start nat_disclaimer", to="^## end nat_disclaimer")>>
+
 == Squid Configuration ==
 
 First, compile and install Squid. It requires the following options:
@@ -60,11 +64,10 @@ You should now see an output like this:
 {{{
 <root:freebsd> [/root]
 > nc -l 3129
-GET /mail/?ui=pb HTTP/1.1
+GET / HTTP/1.1
 User-Agent: Mozilla/5.0 (compatible; GNotify 1.0.25.0)
-Host: mail.google.com
-Connection: Keep-Alive
-Cache-Control: no-cache
+Host: example.com
+Connection: keep-alive
 ...
 }}}
 
