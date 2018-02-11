@@ -51,7 +51,7 @@ If you feel that the advantages outweigh the disadvantages in your network, you 
 
 ## start nat_disclaimer
 
-'''NOTE:''' This configuration is given for use '''on the squid box'''. This is required to perform intercept accurately and securely. To intercept from a gateway machine and direct traffic at a separate squid box use [[ConfigExamples/Intercept/IptablesPolicyRoute|policy routing]].
+'''NOTE:''' NAT configuration will only work when used '''on the squid box'''. This is required to perform intercept accurately and securely. To intercept from a gateway machine and direct traffic at a separate squid box use [[ConfigExamples/Intercept/IptablesPolicyRoute|policy routing]].
 
 ## end nat_disclaimer
 
