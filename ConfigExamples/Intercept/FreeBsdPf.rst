@@ -21,7 +21,7 @@ This configuration applies to FreeBSD 8/9, MP kernel and Squid 2.6 or later.
 
 First, compile and install Squid. It requires the following options:
 {{{
-./configure --with-pthreads --enable-pf-transparent
+./configure --with-pthreads --enable-pf-transparent --with-nat-devpf
 }}}
 
 You will need to configure squid to know the IP is being intercepted like so:
@@ -79,11 +79,10 @@ You should now see an output like this:
 {{{
 <root:openbsd> [/root]
 > nc -l 3129
-GET /mail/?ui=pb HTTP/1.1
+GET / HTTP/1.1
 User-Agent: Mozilla/5.0 (compatible; GNotify 1.0.25.0)
-Host: mail.google.com
-Connection: Keep-Alive
-Cache-Control: no-cache
+Host: example.com
+Connection: keep-alive
 ...
 }}}
 
