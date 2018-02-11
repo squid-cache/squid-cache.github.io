@@ -15,10 +15,7 @@
 
 To Intercept IPv4 web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
 
-'''NOTE:''' This configuration is given for use '''on the squid box'''. This is required to perform intercept accurately and securely. To intercept from a gateway machine and direct traffic at a separate squid box use [[ConfigExamples/Intercept/IptablesPolicyRoute|policy routing]].
-
-'''NOTE:''' DNAT is only available for IPv4 traffic on older kernel versions. For IPv6 interception use [[Features/Tproxy4|TPROXY version 4]].
-
+<<Include(SquidFaq/InterceptionProxy, , from="^## start nat_disclaimer", to="^## end nat_disclaimer")>>
  . {{attachment:squid-DNAT-device.png}}
 
 == iptables configuration ==
@@ -42,6 +39,8 @@ iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $SQUIDI
 iptables -t nat -A POSTROUTING -j MASQUERADE
 iptables -t mangle -A PREROUTING -p tcp --dport $SQUIDPORT -j DROP
 }}}
+
+'''NOTE:''' DNAT is only available for IPv4 traffic on older kernel versions. For IPv6 interception use [[Features/Tproxy4|TPROXY version 4]].
 
 == /etc/sysctl.conf Configuration ==
 
