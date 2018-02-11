@@ -16,6 +16,7 @@
 To Intercept IPv4 web requests transparently without any kind of client configuration. When web traffic is reaching the machine squid is run on.
 
 <<Include(SquidFaq/InterceptionProxy, , from="^## start nat_disclaimer", to="^## end nat_disclaimer")>>
+
  . {{attachment:squid-DNAT-device.png}}
 
 == iptables configuration ==
