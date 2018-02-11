@@ -68,7 +68,7 @@ You should now see an output like this:
 
 {{{
 > nc -l 3129
-GET /mail/?ui=pb HTTP/1.1
+GET / HTTP/1.1
 User-Agent: Mozilla/5.0 (compatible; GNotify 1.0.25.0)
 Host: example.com
 Connection: Keep-alive
