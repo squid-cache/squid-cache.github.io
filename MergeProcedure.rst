@@ -81,42 +81,25 @@ The [[WhoWeAre|core developers]] mentioned above are experienced developers with
 
 == Automation ==
 
-/!\ This work-in-progress section is not ready for use or even review.
-
-/!\ This section documents the ''expected'' automation of master commits. The documented procedure has not been fully implemented yet and at least some details will change.
+/!\ This section documents the ''expected'' automation of master commits. Automated commits have not been enabled yet.
 
 The "trusted master" principle enforced by merge automation states that the master branch automatically gets all ''trusted'' code changes and nothing else. In this context, an trusted code change is, by definition, a non-empty sequence of git commits that satisfies the following requirements:
 
  i. the sequence is (the beginning of) an [[#Votes|approved]] pull request branch on !GitHub,
- i. the sequence can be fast-forward merged into master without conflicts, and
+ i. the sequence can be merged into master without conflicts, and
  i. the last commit in the sequence has passed all the required QA tests.
 
-By default, PR branches must contain a single commit. This rule significantly reduces master noise and ensures that each master commit is trusted because automated tests interrogate a single (usually the latest) PR branch revision rather than each PR branch revision. This rule can be violated in exceptional situations. We may also find a way to merge multi-commit branches while marking the trusted commits specially.
+Currently, PR branches are squashed when merging. Squashing significantly reduces master noise and ensures that each master commit is trusted because automated tests interrogate the to-be-committed (and usually the latest) PR branch revision. If needed, we can find a way to mark the trusted commits specially while merging unsquashed branches under exceptional circumstances.
 
-Currently, the approval of earlier PR branch revisions automatically extends to all future branch revisions (until manually withdrawn) but that may change or become configurable on a per-PR basis.
+Currently, the approval of earlier PR branch revisions automatically extends to all future branch revisions (until manually withdrawn) but that may change or even become configurable on a per-PR basis.
 
-Automated master commits are performed by a program called ''merge bot''. Only the merge bot has the rights to modify master. This document only describes what the merge bot should do. The bot implementations may vary. There are existing merge bots that the Project should consider as alternatives to writing bespoke bot software. The merge bot may delegate implementation of some of its tasks (e.g., vote counting or QA tests) to other automation tools.
+Automated master commits are performed by a program called ''merge bot''. Only the merge bot has the rights to modify master. The Squid Project is currently using the [[https://github.com/measurement-factory/anubis#readme|Anubis]] merge bot with the following configuration:
 
-Upon noticing any relevant trigger event, the merge bot ensures that exactly one merge bot instance is running and then, for each open pull request, in the order of PR numbers, performs the PR merge steps outlined below. Any failure to perform an individual merge step (including validation failures) aborts that PR consideration, moving on to the next PR.
-
-Here are the steps performed by the merge bot for each considered pull request:
-
- 1. Validate PR approval (i.e., the "Changes approved" green light on !GitHub).
- 1. Validate PR status checks (i.e., the "All checks have passed" green light on !GitHub).
- 1. Create a new local ''auto'' branch, based of the official master branch.
- 1. Merge the PR branch into the auto branch using the fast-forward merging algorithm (''git merge --ff --ff-only''). Eventual feature: Rebase and/or squash the PR changes if manually requested via a PR comment.
- 1. Test the auto branch, updating PR status as needed. Eventual optimization: Or, when possible, just load the existing test result of the latest auto branch revision from the commit SHA-indexed cache.
- 1. Validate PR status checks (i.e., the "All checks have passed" green light on !GitHub). This seemingly repeated check is necessary because !GitHub will no longer automatically retest modified PRs after this merge procedure is deployed. Such automatic retesting leads to O(N^2) tests when merging N PRs. Without automated retests, the merge bot must trigger tests of the latest PR code (and check their results).
- 1. Validate PR approval (i.e., the "Changes approved" green light on !GitHub). This paranoid repeated check is added primarily because some tests may take a long time and reviewers often have last-minute regrets. The check itself does not cost much.
- 1. Push the auto branch into the official master branch. (!GitHub will notice the merged changes and consider the PR merged.)
- 1. Eventually: Archive testing artifacts.
-
-Again, any step failure (including validation failures) aborts the steps sequence.
-
-Merge bot trigger events are:
-
- * a PR voting change
- * a PR test result (change)
- * a PR branch change (although such changes are irrelevant if we can rely on the test result change instead)
- * a master branch change
- * a "merge" command directed at the merge bot by an authorized !GitHub user via a PR comment
+|| '''Field''' ||'''Description''' ||'''Value''' ||
+|| ''github_login'' || The bot uses this !GitHub user account for all !GitHub communications, including target branch updates. This user needs to have write access to the repository. || "squid-anubis" ||
+|| ''staging_branch'' || The name of the bot-maintained git branch used for testing PR changes as if they were merged into their target branch. || auto ||
+|| ''necessary_approvals'' || The minimal number of core developers required for a PR to be merged. PRs with fewer votes are not merged, regardless of their age. || 1 ||
+|| ''sufficient_approvals'' || The minimal number of core developers required for a PR to be merged fast (i.e., without waiting for `config::voting_delay_max`) || 2 ||
+|| ''voting_delay_min'' || The minimum merging age of a PR. Younger PRs are not merged, regardless of the number of votes. The PR age string should comply with [[https://github.com/mike182uk/timestring|timestring]] parser. || "2d" ||
+|| ''voting_delay_max'' || The maximum merging age of a PR that has fewer than `config::sufficient_approvals` votes. The PR age string should comply with [[https://github.com/mike182uk/timestring|timestring]] parser. || "10d" ||
+|| ''staging_checks'' || The expected number of CI tests executed against the staging branch. || 2 ||
