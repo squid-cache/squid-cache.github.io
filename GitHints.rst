@@ -157,4 +157,8 @@ It may be tempting to let git figure out the fork point for you. In most cases d
 
 == What happens to origin/master? ==
 
-The primary purpose of having your own public repository on !GitHub is so that you can submit pull requests and share code with your collaborators or users. The copies of official branches in your forked repository will become stale because neither you nor anybody else need them (everybody should go upstream for the current official code). Unless you forked the official Squid repository to create a splinter project, you can safely ignore the copies of the official branches in your public Squid repository on !GitHub. You may pull upstream changes into origin once in a while, but many developers do not bother to do that.
+The primary purpose of having your own public repository on !GitHub is so that you can submit pull requests and share code with your collaborators or users. The copies of official branches in your forked repository will become stale because neither you nor anybody else need them (everybody should go upstream for the current official code). Unless you forked the official Squid repository to create a splinter project, you can safely ignore the copies of the official branches in your public Squid repository on !GitHub. You may pull upstream changes into origin once in a while, as shown below, but many developers do not bother to do that.
+
+{{{#!shell
+$ git push origin upstream/master:master
+}}}
