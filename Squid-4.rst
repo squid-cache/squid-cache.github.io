@@ -38,6 +38,7 @@ Basic new features in 4.0:
   * basic_msnt_multi_domain_auth: Superceeded by basic_smb_lm_auth
   * Update SquidConf:external_acl_type directive to take logformat codes in its format parameter
   * Removal of ESI custom parser
+  * Experimental GnuTLS support for some TLS features
 
  * '''Minor UI changes:'''
   * Sub-millisecond transaction logging
@@ -74,7 +75,7 @@ See our [[http://www.squid-cache.org/Advisories/|Advisories]] list.
 === Open Bugs ===
 
 ## all bugs major and higher including older versions.
- . [[http://bugs.squid-cache.org/buglist.cgi?bug_id_type=anyexact&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&chfieldto=Now&product=Squid&query_format=advanced&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&order=version%20DESC%2Cbug_severity%2Cbug_id| Major or higher bugs currently affecting this version]].
+ . [[http://bugs.squid-cache.org/buglist.cgi?bug_id_type=anyexact&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&chfieldto=Now&product=Squid&query_format=advanced&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&order=version%20DESC%2Cbug_severity%2Cbug_id&&f1=version&o1=lessthaneq&v1=4| Major or higher bugs currently affecting this version]].
   * Bugs against any older version can be closed if found fixed in 4.x
   * Bugs inherited from older versions are not necessarily blockers on stable.
 
