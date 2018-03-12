@@ -44,5 +44,9 @@ http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_siz
    cafile=/etc/squid/chain.pem
 }}}
 
+== Testing it works ==
+
+See instructions at https://langui.sh/2009/03/14/checking-a-remote-certificate-chain-with-openssl/ for how to verify a remote certificate chain. The tests should be performed against the Squid listening port to verify that it is both generating a valid certificate and sending the correct CA chain sequence.
+
 ----
 CategoryConfigExample
