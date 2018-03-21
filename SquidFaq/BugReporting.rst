@@ -181,9 +181,11 @@ First alternative is to start Squid under the contol of GDB
 handle SIGPIPE pass nostop noprint
 handle SIGTERM pass nostop noprint
 handle SIGUSR1 pass nostop noprint
+handle SIGHUP  pass
+handle SIGKILL pass
 handle SIGSEGV stop
 handle SIGABRT stop
-run -DNYCX
+run -NYCX
 [wait for crash]
 backtrace
 quit
@@ -199,9 +201,11 @@ cat <<EOF >$$.gdb
 handle SIGPIPE pass nostop noprint
 handle SIGTERM pass nostop noprint
 handle SIGUSR1 pass nostop noprint
+handle SIGHUP  pass
+handle SIGKILL pass
 handle SIGSEGV stop
 handle SIGABRT stop
-run -DNYCd3
+run -NYCd3
 backtrace
 quit
 EOF
@@ -227,6 +231,8 @@ First locate the PID number for the particular Squid worker you are wanting to d
 handle SIGPIPE pass nostop noprint
 handle SIGTERM pass nostop noprint
 handle SIGUSR1 pass nostop noprint
+handle SIGHUP  pass
+handle SIGKILL pass
 handle SIGSEGV stop
 handle SIGABRT stop
 
