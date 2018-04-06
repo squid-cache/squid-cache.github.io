@@ -21,7 +21,7 @@ First of all, Whatsapp requires SSL Bump-aware squid (no matter, bump all or spl
 
 On the other hand, bump all config requires some additional steps to make both (web and mobile) Whatsapp applications work.
 
-=== Squid Configuration File ===
+== Squid Configuration File ==
 
 First, let's assume you have SSL Bump configuration like this:
 
