@@ -14,8 +14,8 @@
 
 Whatsapp is one of difficult-to-pass IM software. Two issues found:
 
--Web whatsapp
--Media files for mobile Whatsapp application
+* Web whatsapp
+* Media files for mobile Whatsapp application
 
 First of all, Whatsapp requires SSL Bump-aware squid (no matter, bump all or splice all config). With splice all config, all Whatsapp apps should work without issues.
 
@@ -34,7 +34,7 @@ ssl_bump splice NoSSLIntercept
 ssl_bump bump all
 }}}
 
-To make Whatsapp works, add this to acl.ur.nobump:
+To make Whatsapp works, add this to acl.url.nobump:
 
 {{{
 # Web.whatsapp.com
