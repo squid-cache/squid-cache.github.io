@@ -14,8 +14,8 @@
 
 Whatsapp is one of difficult-to-pass IM software. Two issues found:
 
-* Web whatsapp
-* Media files for mobile Whatsapp application
+1. Web whatsapp
+2. Media files for mobile Whatsapp application
 
 First of all, Whatsapp requires SSL Bump-aware squid (no matter, bump all or splice all config). With splice all config, all Whatsapp apps should work without issues.
 
