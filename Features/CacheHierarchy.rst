@@ -24,7 +24,7 @@ These two simple connections can be combined in any number of complex '''hierarc
 
 == How do I configure Squid forward all requests to another proxy? ==
 
-First, you need to give Squid a parent cache witheth SquidConf:cache_peer directive.  Second, you need to tell Squid it can not connect directly to origin servers with SquidConf:never_direct.  This is done with these configuration file lines:
+First, you need to give Squid a parent cache with the SquidConf:cache_peer directive.  Second, you need to tell Squid it can not connect directly to origin servers with SquidConf:never_direct.  This is done with these configuration file lines:
 
 {{{
 cache_peer parentcache.foo.com parent 3128 0 no-query default
@@ -39,7 +39,7 @@ cache_peer parentcache.foo.com parent 3128 0 no-query
 prefer_direct off
 nonhierarchical_direct off
 }}}
-The default behavior of Squid in the absence of positive ICP, HTCP, etc replies is to connect to the origin server instead of using parents. The SquidConf:prefer_direct '''off''' directive tells Squid to try parents first.
+The default behavior of Squid in the absence of positive ICP, HTCP, etc replies is to connect to the origin server instead of using parents. The SquidConf:prefer_direct '''off''' directive tells Squid to try parents first before DNS listed servers.
 
 Certain types of requests cannot be cached or are served faster going direct, and Squid is optimized to send them over direct connections by default. The SquidConf:nonhierarchical_direct '''off''' directive tells Squid to send these requests via the parent anyway.
 
@@ -60,7 +60,10 @@ cache_peer parentcache.example.com   parent  3128 3130
 cache_peer childcache2.example.com   sibling 3128 3130
 cache_peer childcache3.example.com   sibling 3128 3130
 }}}
-The ''cache_peer_domain'' directive allows you to specify that certain caches siblings or parents for certain domains:
+
+  . /!\ cache_peer_domain is deprecated and not longer available from current Squid versions.
+
+The SquidConf:cache_peer_access directive allows you to specify that certain caches siblings or parents for certain domains:
 
 {{{
 #  squid.conf - On the host: sv.cache.nlanr.net
@@ -74,11 +77,20 @@ cache_peer it.cache.nlanr.net   parent 3128 3130
 cache_peer sd.cache.nlanr.net   parent 3128 3130
 cache_peer uc.cache.nlanr.net   sibling 3128 3130
 cache_peer bo.cache.nlanr.net   sibling 3128 3130
-cache_peer_domain electraglide.geog.unsw.edu.au .au
-cache_peer_domain cache1.nzgate.net.nz   .au .aq .fj .nz
-cache_peer_domain pb.cache.nlanr.net     .uk .de .fr .no .se .it
-cache_peer_domain it.cache.nlanr.net     .uk .de .fr .no .se .it
-cache_peer_domain sd.cache.nlanr.net     .mx .za .mu .zm
+
+acl unsw dstdomain .au
+cache_peer_access electraglide.geog.unsw.edu.au allow unsw
+
+acl nzgate dstdomain .au .aq .fj .nz
+cache_peer_domain cache1.nzgate.net.nz allow nzgate
+
+acl nlanr-eu dstdomain .uk .de .fr .no .se .it
+cache_peer_domain pb.cache.nlanr.net allow nlanr-eu
+
+cache_peer_domain it.cache.nlanr.net allow nlanr-uk
+
+acl nlanr-sa dstdomain .mx .za .mu .zm
+cache_peer_domain sd.cache.nlanr.net allow nlanr-sa
 }}}
 The configuration above indicates that the cache will use ''pb.cache.nlanr.net'' and ''it.cache.nlanr.net'' for domains uk, de, fr, no, se and it, ''sd.cache.nlanr.net'' for domains mx, za, mu and zm, and ''cache1.nzgate.net.nz'' for domains au, aq, fj, and nz.
 
