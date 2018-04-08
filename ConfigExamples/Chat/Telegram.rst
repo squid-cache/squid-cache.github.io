@@ -18,7 +18,7 @@ Starting from version 0.10.11 (for tdesktop) Telegram client uses a pinned TLS c
 # SSL-bump rules
 acl DiscoverSNIHost at_step SslBump1
 # Splice Telegram bootstrap
-acl NoSSLIntercept ssl::server_name_regex 149\.154\.16[4-7]\. 149\.154\.17[2-5]\.
+acl NoSSLIntercept ssl::server_name_regex 149\.154\.1(6[4-7]|7[2-5])\.[1-2]?[0-5]?[0-5]?
 ssl_bump peek DiscoverSNIHost
 ssl_bump splice NoSSLIntercept
 ssl_bump bump all
