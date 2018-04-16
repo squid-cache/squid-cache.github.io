@@ -44,9 +44,7 @@ Paste to /usr/local/squid/etc/acl.url.nobump next sites:
 {{{
 # Adobe updates (web installation)
 # This requires to splice due to SSL-pinned web-downloader
-get\.adobe\.com
-platformdl\.adobe\.com
-fpdownload\.adobe\.com
+(get|platformdl|fpdownload|ardownload[0-9])\.adobe\.com
 ardownload[0-9]\.adobe\.com
 }}}
 
