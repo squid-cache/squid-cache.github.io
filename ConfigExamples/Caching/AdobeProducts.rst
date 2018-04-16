@@ -45,7 +45,6 @@ Paste to /usr/local/squid/etc/acl.url.nobump next sites:
 # Adobe updates (web installation)
 # This requires to splice due to SSL-pinned web-downloader
 (get|platformdl|fpdownload|ardownload[0-9])\.adobe\.com
-ardownload[0-9]\.adobe\.com
 }}}
 
 Please note, this sites is required to download Adobe Flash and Adobe Acrobat Reader - the most common Adobe products.
