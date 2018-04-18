@@ -19,7 +19,7 @@ So [[Features/SslPeekAndSplice|SSL-Bump]] proxy must be configured to splice ini
 {{{
 # SSL-bump rules
 acl DiscoverSNIHost at_step SslBump1
-# Splice Telegram bootstrap
+# Splice specified servers
 acl NoSSLIntercept ssl::server_name_regex "/usr/local/squid/etc/acl.url.nobump"
 ssl_bump peek DiscoverSNIHost
 ssl_bump splice NoSSLIntercept
