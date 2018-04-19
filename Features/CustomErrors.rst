@@ -34,7 +34,7 @@ If needed, you can make a copy and re-write the error message template files in 
 
 == deny_info URL codes for embedding ==
 
-'''Squid-2.1 to [[Squid-3.1]] only provide this code:'''
+'''Squid-2.1 to [[Squid-3.1]] only provide this macro code:'''
 
  %s:: Absolute URL requested by client
 
@@ -82,7 +82,7 @@ If needed, you can make a copy and re-write the error message template files in 
 
 == ERR_* template codes for embedding ==
 
-This list describes the tags which Squid will insert into the messages:
+This list describes the macro codes which Squid will replace in the error response messages, and what details will be inserted:
 
  %a:: User identity
 
@@ -92,7 +92,7 @@ This list describes the tags which Squid will insert into the messages:
 
  %d:: seconds elapsed since request received (not yet implemented)
 
- %D:: Squid-generated error details. May contain other error page formating codes. Currently only SSL connection failures are detailed. For example, %D in a customized ''ERR_SECURE_CONNECT_FAIL'' response may be expanded into "The host name you are connecting to (foo.com) does not match any of the certificate names (foo.org, foo.net)..."). Supported since Squid v3.2.0.4. See also: application-level error code (%x) and system level error code/detail (%e/%E).
+ %D:: Squid-generated error details. May contain other error page formatting codes. Currently only TLS/SSL connection failures are detailed. For example, %D in a customized ''ERR_SECURE_CONNECT_FAIL'' response may be expanded into "The host name you are connecting to (foo.com) does not match any of the certificate names (foo.org, foo.net)..."). Supported since [[Squid-3.2]]. See also: application-level error code (%x) and system level error code/detail (%e/%E).
 
  %e:: errno
 
