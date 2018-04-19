@@ -68,17 +68,23 @@ http_access deny manager
 }}}
 Where 192.0.2.1 is the IP address of your web server with cachemgr.cgi or the administrators workstation.
 
-=== Troubleshooting Access ===
- /!\ If you're using SquidConf:miss_access, then don't forget to also add a SquidConf:miss_access rule for the cache manager:
+=== Troubleshooting Access Denied Issues ===
+
+ * If you're using SquidConf:miss_access, then don't forget to also add a SquidConf:miss_access rule for the cache manager:
 {{{
 miss_access allow manager
 }}}
 
- /!\ Check the ordering and placement. The default rules are placed first. This is to prevent any more complex or wider permissions you have for general access from blocking manager access with ''Access Denied'' error page or allowing general users to access the manager.
+ * Check the ordering and placement. The default rules are placed first. This is to prevent any more complex or wider permissions you have for general access from blocking manager access with ''Access Denied'' error page or allowing general users to access the manager.
 
- . /!\ Always be sure to run ''squid -k reconfigure'' any time you change the ''squid.conf'' file.
+ * Always be sure to run ''squid -k reconfigure'' any time you change the ''squid.conf'' file.
 
- . {i} Once cache manager is configured with a password you can also run the '''reconfigure''' action request remotely.
+  . {i} Once cache manager is configured with a password you can also run the '''reconfigure''' action request remotely.
+
+ * Check that the URLs used to fetch manager reports is the publicly visible hostname Squid knows for itself. The Squid host name is fetched from a reverse-DNS lookup of the first SquidConf:http_port or SquidConf:https_port IP address, or the operating system gethostname() API, or SquidConf:unique_hostname, or SquidConf:visible_hostname.
+
+  . /!\ The Squid hostname is required to be a fully-qualified domain name in order to be resolved by any clients with DNS. The SquidConf:unique_hostname and SquidConf:visible_hostname directives do not enforce this (yet) which may lead to trouble if a non-resolvable name is configured.
+
 
 == Why does it say I need a password and a URL? ==
 A password is required to perform administrative actions such as shutdown or reconfigure the cache. For security there is no default password set, which means that these command actions are not available until you set one for them.
