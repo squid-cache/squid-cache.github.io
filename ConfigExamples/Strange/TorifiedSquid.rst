@@ -106,12 +106,12 @@ Paste the configuration file like this:
 
 {{{
 # Domains to be handled by Tor
-acl tor_url dstdom_regex -i "/etc/squid/url.tor"
+acl tor_url url_regex "/etc/squid/url.tor"
 
 # SSL bump rules
 acl DiscoverSNIHost at_step SslBump1
-acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/url.nobump"
-acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/url.tor"
+acl NoSSLIntercept ssl::server_name_regex "/etc/squid/url.nobump"
+acl NoSSLIntercept ssl::server_name_regex "/etc/squid/url.tor"
 ssl_bump peek DiscoverSNIHost
 ssl_bump splice NoSSLIntercept
 ssl_bump bump all
@@ -149,6 +149,8 @@ archive\.org
 #facebook.*
 #fb.*
 #telegram.*
+#tg\.me.*
+#tdesktop.*
 }}}
 
  . {i} Note: In some cases it is better to not log Tor tunnel accesses.
