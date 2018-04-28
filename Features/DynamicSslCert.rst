@@ -40,7 +40,7 @@ make all
 make install
 }}}
 
- . /!\ NOTE: [[Squid-3.5]] requries '''--with-openssl''' instead of --enable-ssl
+ . /!\ NOTE: [[Squid-3.5]] requires '''--with-openssl''' instead of --enable-ssl
 
 ## tlscacert begin
 === Create Self-Signed Root CA Certificate ===
