@@ -116,7 +116,7 @@ http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_siz
 
 
 You will also need to add SquidConf:ssl_bump rules enabling HTTPS decryption.
-see [[Features/SslPeekAndSplice|peek-n-splice]] for newer [[Squid-3.5] or later details.
+see [[Features/SslPeekAndSplice|peek-n-splice]] for newer [[Squid-3.5]] or later details.
 see [[Features/SslBump|SSL-Bump]] for older [[Squid-3.3]] or [[Squid-3.4]] details.
 
 
