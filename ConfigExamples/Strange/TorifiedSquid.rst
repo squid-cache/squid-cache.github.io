@@ -64,6 +64,16 @@ I recommend using a configuration with bridges, the most difficult for an extern
 
 When finished, run Tor and check tor.log for errors.
 
+```Important update```
+Starting from Tor 0.3.2 you can use it directly as HTTP tunneling proxy. In this case, add this:
+
+{{{
+# Starting from Tor 0.3.2
+HTTPTunnelPort 8118
+}}}
+
+to torrc. In this case Privoxy no more requires.
+
 === Building Privoxy ===
 
 In simplest case, we will use cascading Privoxy directly on Squid's box. Let's build them. Download Privoxy from [[http://privoxy.org|here]], then unpack and build:
