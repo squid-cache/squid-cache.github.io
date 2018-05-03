@@ -64,7 +64,8 @@ I recommend using a configuration with bridges, the most difficult for an extern
 
 When finished, run Tor and check tor.log for errors.
 
-'''Important update'''
+/!\ /!\ /!\ '''Important update''' /!\ /!\ /!\
+
 Starting from Tor 0.3.2 you [[https://twitter.com/torproject/status/912708766084292608|can use it directly as HTTP tunneling proxy]]. In this case, add this:
 
 {{{
