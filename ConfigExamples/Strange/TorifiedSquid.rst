@@ -131,7 +131,7 @@ ssl_bump bump all
 never_direct allow tor_url
 
 # Local Tor is cache parent
-cache_peer 127.0.0.1 parent 8118 0 no-query no-digest name=privoxy
+cache_peer 127.0.0.1 parent 8118 0 no-query no-digest default
 
 cache_peer_access privoxy allow tor_url
 cache_peer_access privoxy deny all
