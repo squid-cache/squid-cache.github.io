@@ -66,14 +66,14 @@ When finished, run Tor and check tor.log for errors.
 
 /!\ /!\ /!\ '''Important notice''' /!\ /!\ /!\
 
-Starting from Tor 0.3.2 you [[https://twitter.com/torproject/status/912708766084292608|can use it directly as HTTP tunneling proxy]]. In this case, add this:
+Starting from Tor 0.3.2 you [[https://twitter.com/torproject/status/912708766084292608|can use it directly as HTTP tunneling proxy]]. For this version, add this to torrc:
 
 {{{
 # Starting from Tor 0.3.2
 HTTPTunnelPort 8118
 }}}
 
-to torrc. In this case Privoxy no more requires.
+In this case Privoxy no more requires.
 
 == Squid Configuration File ==
 
