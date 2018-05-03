@@ -60,7 +60,9 @@ SocksPolicy accept 127.0.0.0/8
 SocksPolicy reject *
 }}}
 
-I recommend using a configuration with bridges, the most difficult for an external blocking. Leaving the bridges configuration of your choice. I strongly recommend to read the Tor manuals carefully and do not disturb me with this questions.
+I recommend using a configuration with obfuscated bridges (obfs3/4), the most difficult for DPI blocking. Leaving the bridges configuration of your choice. I strongly recommend to read the Tor manuals carefully before this.
+
+Bridges can be get from [[https://bridges.torproject.org|here]] or via e-mail in most hardest case.
 
 When finished, run Tor and check tor.log for errors.
 
