@@ -64,7 +64,7 @@ I recommend using a configuration with bridges, the most difficult for an extern
 
 When finished, run Tor and check tor.log for errors.
 
-/!\ /!\ /!\ '''Important update''' /!\ /!\ /!\
+/!\ /!\ /!\ '''Important notice''' /!\ /!\ /!\
 
 Starting from Tor 0.3.2 you [[https://twitter.com/torproject/status/912708766084292608|can use it directly as HTTP tunneling proxy]]. In this case, add this:
 
@@ -74,42 +74,6 @@ HTTPTunnelPort 8118
 }}}
 
 to torrc. In this case Privoxy no more requires.
-
-=== Building Privoxy ===
-
-In simplest case, we will use cascading Privoxy directly on Squid's box. Let's build them. Download Privoxy from [[http://privoxy.org|here]], then unpack and build:
-
-{{{
-1. autoheader && autoconf
-
-2.
-# 32 bit GCC
-./configure --prefix=/usr/local/privoxy --enable-large-file-support --with-user=privoxy --with-group=privoxy --disable-force --disable-editor --disable-toggle 'CFLAGS=-O3 -m32 -mtune=native -pipe'
-
-# 64 bit GCC
-./configure --prefix=/usr/local/privoxy --with-user=privoxy --with-group=privoxy --disable-force --disable-editor --disable-toggle 'CFLAGS=-O3 -m64 -mtune=native -pipe' 'LDFLAGS=-m64'
-
-# 64 bit CC
-export CC=`which cc`
-./configure --prefix=/usr/local/privoxy --with-user=privoxy --with-group=privoxy --disable-force --disable-editor --disable-toggle 'CFLAGS=-xO5 -m64 -xtarget=native' 'LDFLAGS=-m64'
-
-3.
-gmake
-gmake install-strip
-}}}
-
-=== Configuring and run Privoxy ===
-
-It is enough to add this into Privoxy config:
-
-{{{
-listen-address	127.0.0.1:8118
-forward-socks5t		/	127.0.0.1:9050	.
-}}}
-
-Now, you can run Privoxy.
-
- . {i} Note: It is recommended to harden Privoxy configuration. Read manuals and do it yourself.
 
 == Squid Configuration File ==
 
@@ -159,9 +123,9 @@ archive\.org
 #blogspot.*
 #facebook.*
 #fb.*
-#telegram.*
-#tg\.me.*
-#tdesktop.*
+telegram.*
+tg\.me.*
+tdesktop.*
 }}}
 
  . {i} Note: In some cases it is better to not log Tor tunnel accesses.
