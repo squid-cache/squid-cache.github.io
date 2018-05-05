@@ -68,14 +68,47 @@ When finished, run Tor and check tor.log for errors.
 
 /!\ /!\ /!\ '''Important notice''' /!\ /!\ /!\
 
-Starting from Tor 0.3.2 you [[https://twitter.com/torproject/status/912708766084292608|can use it directly as HTTP tunneling proxy]]. For this version, add this to torrc:
+Starting from Tor 0.3.2 you [[https://twitter.com/torproject/status/912708766084292608|can use it directly as HTTPS tunneling proxy]]. For this, you can add this to torrc:
 
 {{{
 # Starting from Tor 0.3.2
 HTTPTunnelPort 8118
 }}}
 
-In this case Privoxy no more requires.
+In this case Privoxy no more requires in theory. Unfortunately, this does not work for connections starts with HTTP (i.e., when user type "archive.org" in browser command line) and you'll get empty string with [[https://tor.stackexchange.com/questions/16095/405-method-connection-mark-unattached-ap|this error in Tor log]].
+
+So, you still requires to build and configure Privoxy.
+
+== Privoxy ==
+
+Configure and build Privoxy:
+
+{{{
+# 32 bit GCC
+./configure --prefix=/usr/local/privoxy --enable-large-file-support --with-user=privoxy --with-group=privoxy --disable-force --disable-editor --disable-toggle 'CFLAGS=-O3 -m32 -mtune=native -pipe'
+
+# 64 bit GCC
+./configure --prefix=/usr/local/privoxy --with-user=privoxy --with-group=privoxy --disable-force --disable-editor --disable-toggle 'CFLAGS=-O3 -m64 -mtune=native -pipe' 'LDFLAGS=-m64'
+
+gmake
+gmake install-strip
+}}}
+
+Add this to Privoxy config:
+
+{{{
+listen-address	127.0.0.1:8118
+forward-socks5t		/	127.0.0.1:9050	.
+}}}
+
+Check and configure Privoxy performance settings as well.
+
+Run Privoxy from unprivileged user as follows:
+
+{{{
+## To start:
+privoxy --pidfile /tmp/privoxy.pid --user privoxy.privoxy /usr/local/privoxy/etc
+}}}
 
 == Squid Configuration File ==
 
