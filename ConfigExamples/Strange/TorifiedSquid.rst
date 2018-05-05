@@ -140,6 +140,13 @@ access_log daemon:/var/log/squid/access.log logformat=squid !tor_url
 
 Adapt config snippet to your configuration.
 
+For squid 4.x+, adjust access_log settings as follows:
+
+{{{
+acl hasRequest has request
+access_log daemon:/data/cache/log/access.log buffer-size=256KB logformat=squid hasRequest !tor_url
+}}}
+
 /etc/squid/url.tor contains what you need to tunnel:
 {{{
 torproject.*
