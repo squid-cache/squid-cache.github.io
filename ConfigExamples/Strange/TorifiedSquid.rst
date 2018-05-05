@@ -60,6 +60,8 @@ SocksPolicy accept 127.0.0.0/8
 SocksPolicy reject *
 }}}
 
+ . {i} Note: Pay attention, Tor should run from unprivileged user due to security reasons.
+
 I recommend using a configuration with obfuscated bridges (obfs3/4), the most difficult for DPI blocking. Leaving the bridges configuration of your choice. I strongly recommend to read the Tor manuals carefully before this.
 
 Bridges can be get from [[https://bridges.torproject.org|here]] or via e-mail in most hardest case.
