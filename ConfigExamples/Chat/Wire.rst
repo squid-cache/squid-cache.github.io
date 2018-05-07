@@ -6,8 +6,6 @@
 
 = Wire Messenger =
 
-= Configuration Title =
-
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
 <<TableOfContents>>
