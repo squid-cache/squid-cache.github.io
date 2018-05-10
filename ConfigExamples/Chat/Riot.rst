@@ -12,7 +12,7 @@
 
 == Outline ==
 
-Riot Instant Messenger is open-source end-to-end encryption messenger/VoIP/group chats/file transfers application. Using it may be prohibited by corporate security policy.
+[[https://riot.im|Riot Instant Messenger]] is open-source end-to-end encryption messenger/VoIP/group chats/file transfers application. Using it may be prohibited by corporate security policy.
 
 == Usage ==
 
