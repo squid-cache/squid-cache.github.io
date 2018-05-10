@@ -50,5 +50,7 @@ ssl_bump splice all
 
 }}}
 
+then reconfigure Squid.
+
 ----
 CategoryConfigExample
