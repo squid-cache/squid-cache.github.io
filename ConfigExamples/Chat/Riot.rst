@@ -52,5 +52,7 @@ ssl_bump splice all
 
 then reconfigure Squid.
 
+This is enough to make Riot fully unoperable with default server(s).
+
 ----
 CategoryConfigExample
