@@ -30,6 +30,7 @@ $ git remote -v # Should show you the origin repository address
  2. Point git to the official Squid repository on !GitHub. These instructions call that repository "upstream", but the name of the remote is up to you. You will never push into this repository, but you will submit pull requests against it.{{{#!shell
 $ git remote add -m master upstream git@github.com:squid-cache/squid.git
 $ git remote -v # Should show you the origin and upstream repository addresses
+$ git remote set-url --push upstream upstream-push-disabled # prevents and highlights accidental pushes
 }}}
  3. Optionally, load git [[http://alblue.bandlem.com/2011/11/git-tip-of-week-git-notes.html|notes]] to see original Bazaar revision numbers, --fixes URLs, and more co-author names in git logs:{{{#!shell
 $ git fetch upstream refs/notes/commits:refs/notes/commits
