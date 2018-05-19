@@ -28,9 +28,9 @@ Paste the configuration file like this:
 {{{
 
 # Block Riot.im
-acl riot dstdomain .riot.im .matrix.org
-http_access deny riot
-deny_info TCP_RESET riot
+acl deny_riot dstdomain .riot.im .matrix.org
+http_access deny deny_riot
+deny_info TCP_RESET deny_riot
 
 }}}
 
@@ -42,10 +42,9 @@ If you prefer not to put proxy certificate to clients, you can configure your pr
 
 # Peek-n-splice rules
 acl DiscoverSNIHost at_step SslBump1
-# Splice specified servers
-acl TerminateThis ssl::server_name_regex .riot\.im .martix\.org
+acl deny_riot ssl::server_name_regex .riot\.im .martix\.org
 ssl_bump peek DiscoverSNIHost
-ssl_bump terminate TerminateThis
+ssl_bump terminate deny_riot
 ssl_bump splice all
 
 }}}
