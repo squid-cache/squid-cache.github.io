@@ -26,10 +26,10 @@ Paste the configuration file like this:
 {{{
 
 # Block Viber
-acl viber ssl::server_name_regex .viber\.com
+acl deny_viber ssl::server_name_regex .viber\.com
 acl DiscoverSNIHost at_step SslBump1
 ssl_bump peek DiscoverSNIHost
-ssl_bump terminate viber
+ssl_bump terminate deny_viber
 ssl_bump splice all
 
 }}}
