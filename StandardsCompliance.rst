@@ -70,6 +70,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:3986 || Uniform Resource Identifier (URI): Generic Syntax || {X} || still RFC:1738 compliant ||
 || RFC:4001 || Textual Conventions for Internet Network Addresses || (./) ||
 || RFC:4559 || SPNEGO-based Kerberos and NTLM HTTP Authentication<<BR>>in Microsoft Windows || ||
+|| RFC:6540 (BCP 177) || IPv6 Support Required for All IP-Capable Nodes || (./) ||
 || RFC:6585 || Additional HTTP Status Codes || (./) ||
 || RFC:6762 || Multicast DNS || (./) || client only ||
 || RFC:7230 || Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing || almost || see [[Features/HTTP11]] ||
