@@ -50,7 +50,6 @@ At this point there are none on record. We are looking for information and possi
 || RFC:2518 || HTTP Extensions for Distributed Authoring -- WEBDAV || (./) || [[Squid-3.1|3.1+]] ||
 ## || RFC:2535 || DNS Security Extensions || {X} ||
 ## NOTE: changes affect RFC 3226 compliance.
-|| RFC:2617 || HTTP/1.1 Basic and Digest authentication || {X} || Missing support for several Digest features ||
 || RFC:2660 || The Secure HyperText Transfer Protocol (Secure-HTTP/1.4) || {X} ||
 || RFC:2756 || Hyper Text Caching Protocol (HTCP/0.0) || (./) ||
 || RFC:2817 || Upgrading to TLS Within HTTP/1.1 || {X} ||
@@ -84,7 +83,9 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
 || RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. see [[Features/HTTP2]] ||
 || RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} || see [[Features/HTTP2]] ||
-|| RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info Response Header Fields || /!\ ||
+|| RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info Response Header Fields || (./) ||
+|| RFC:7616 || HTTP Digest Access Authentication || /!\ || Missing support for several Digest features ||
+|| RFC:7617 || The 'Basic' HTTP Authentication Scheme || /!\ || missing new charset support. ||
 || RFC:7858 || Specification for DNS over Transport Layer Security (TLS) || {X} ||
 || RFC:8187 || Indicating Character Encoding and Language for HTTP Header Field Parameters || {X} ||
 || RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
