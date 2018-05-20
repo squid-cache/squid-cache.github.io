@@ -9,8 +9,6 @@
 
  * '''Status''': Completed
 
- * '''ETA''': done
-
  * '''Version''': 3.1
 
  * '''Developer''': AmosJeffries, AlexRousskov, FrancescoChemolli, everyone
