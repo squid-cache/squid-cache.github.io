@@ -46,7 +46,7 @@ To implement a HTTP/2 receiving port in Squid we need to:
   * update the new manager to handle multiple parallel data pipeline channels ("streams" in the HTTP/2 grammar). At present there is only one active context and an idle pipeline queue. HTTP/2 requires a minimum of 100 in parallel.
 
  * avoiding direct reads or writes to the client socket
-  * mostly done as of 3.2 but there are a few exceptions, ie tunnel and ssl-bump.
+  * mostly done as of [[Squid-3.2]] but there are a few exceptions, ie tunnel and ssl-bump.
 
  * implement HTTP/2 header parser and packer routines
 
@@ -65,8 +65,11 @@ To implement a HTTP/2 receiving port in Squid we need to:
 
 === Progress ===
 
-'''Completed: (in Squid-3)'''
+'''Completed: (in [[Squid-3.5]])'''
  * Solve Bug Bug:3371 interference with our ability to detect and relay HTTP/2 transparently
+
+'''Completed: (in [[Squid-4]])'''
+ * Implement TLS support using GnuTLS for systems where OpenSSL is not available.
 
 '''Completed: (in http2 branch)'''
  * Detection of the HTTP/2 connection header magic octets in port 80 intercepted traffic
