@@ -12,9 +12,9 @@
 ## use "completed" for completed projects
  * '''Status''': Design groundwork underway.
 
- * '''ETA''': initial support in 4.0 series.
+ * '''ETA''': unknown
 
- * '''Version''': 4.x
+ * '''Version''': TBC
 
  * '''Developer''': AmosJeffries
 
