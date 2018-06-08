@@ -41,7 +41,7 @@ There are several ways to get Squid sources. The method you select determines wh
 
 === Raw sources via GitHub ===
 
-The official Squid source code repository is on [[https://github.com/squid-cache/squid|GitHub]].
+The official Squid source code repository is on [[https://github.com/squid-cache/squid|GitHub]]. see GitHints for common actions you may need to perform with the git VCS.
 
 
  /!\ When working from this repository the '''bootstrap.sh''' script is required to prepare ./configure and related magic. See [[#Required_Build_Tools]] for the required bootstrapping and building tools.
