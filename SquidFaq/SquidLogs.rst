@@ -55,6 +55,7 @@ The Squid result code is composed of several tags (separated by underscore chara
  || '''NONE''' || Squid delivered an unusual response or no response at all. Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes. Also seen with responses to CONNECT requests. ||
 
  * These tags are optional and describe why the particular handling was performed or where the request came from:
+ || '''CF''' || At least one request in this transaction was collapsed. ||
  || '''CLIENT''' || The client request placed limits affecting the response. Usually seen with client issued a "no-cache", or analogous cache control command along with the request. Thus, the cache has to validate the object. ||
  || '''IMS''' || The client sent a revalidation (conditional) request. ||
  || '''ASYNC''' || The request was generated internally by Squid. Usually this is background fetches for cache information exchanges, background revalidation from ''stale-while-revalidate'' cache controls, or ESI sub-objects being loaded. ||
