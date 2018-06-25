@@ -17,10 +17,9 @@ The currently maintained farm consists of:
 ||x64 ||19 ||rs-fedora-19.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||<style="text-align:center" |4>[[http://www.ubuntu.com/|Ubuntu]] ||
 ||x64 ||14.04 (trusty) ||rs-ubuntu-trusty.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
-||x64 ||16.04 (xenial) ||rs-ubuntu-utopic.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
-||x64 ||17.04 (zesty) ||rs-ubuntu-utopic.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
-||x64 ||17.10 (artful) ||rs-ubuntu-utopic.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
-||x64 ||18.04 (utopic) ||rs-ubuntu-utopic.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
+||x64 ||16.04 (xenial) ||rs-ubuntu-xenial.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
+||x64 ||17.04 (zesty) ||rs-ubuntu-zesty.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
+||x64 ||17.10 (artful) ||rs-ubuntu-artful.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
 ||<style="text-align:center" |3>[[http://opensuse.org/|OpenSUSE]] ||
 ||x64 ||12.1 ||opensuse-x64 || {OK} ||
 ||x64 ||12.3 ||rs-suse-12.squidfarm.kinkie.it || {OK} Sponsored by [[http://www.rackspace.com/|RackSpace]] ||
