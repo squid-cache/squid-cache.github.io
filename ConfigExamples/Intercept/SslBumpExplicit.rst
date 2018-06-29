@@ -113,13 +113,13 @@ The crtd helper will store mimicked certificates in this directory. The squid lo
 
 [[Squid-3.5]]:
 {{{
-/usr/local/squid/libexec/ssl_crtd -c -s /var/lib/ssl_db
+/usr/local/squid/libexec/ssl_crtd -c -s /var/lib/ssl_db -M 4MB
 chown squid:squid -R /var/lib/ssl_db
 }}}
 
 [[Squid-4]] and newer:
 {{{
-/usr/local/squid/libexec/security_file_certgen -c -s /var/lib/ssl_db
+/usr/local/squid/libexec/security_file_certgen -c -s /var/lib/ssl_db -M 4MB
 chown squid:squid -R /var/lib/ssl_db
 }}}
 
