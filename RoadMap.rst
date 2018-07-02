@@ -64,8 +64,6 @@ Features which have not reached completion or have failed the audit, are automat
 
 <<Include(Squid-5)>>
 
-<<Include(Squid-4)>>
-
 = TODO =
 
 These are the features we are trying to work on at present. New features may be requested, suggested, or added to the plan at any time. Those which are completed and merged will be in the next formal branch after their merge date.
