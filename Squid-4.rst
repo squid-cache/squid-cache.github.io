@@ -8,15 +8,14 @@
 ## || month year ||<style="background-color: yellow;"> Squid-4 series became '''DEPRECATED''' with the release of  [[Squid-5]] series ||
 || Jul 2018 ||<style="background-color: #82FF42;"> Released for production use. ||
 
-The release timeline is now roughly monthly packages.
 
-Additions are limited to:
- * Documentation updates
- * Polish of existing features
- * Porting of Squid-2.7 feature regressions
- * Stability fixes
+The features have been set and large code changes are reserved for later versions.
+
+ Additions are limited to:
  * Security fixes
+ * Stability fixes
  * Bug fixes
+ * Documentation updates
 
 
  . {X} This series of Squid requires a C++11 capable compiler. The currently known compilers which meet this criteria and build Squid-4 reliably are GCC 4.9+ and Clang 3.5+
