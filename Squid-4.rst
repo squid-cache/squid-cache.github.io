@@ -6,11 +6,10 @@
 ## || month year ||<style="background-color: #CC0022;"> Squid-3 is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] ''' and any other recently discovered issues. ||
 ## || month year ||<style="background-color: orange;"> the Squid-4 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-5]] ||
 ## || month year ||<style="background-color: yellow;"> Squid-4 series became '''DEPRECATED''' with the release of  [[Squid-5]] series ||
-## || month year ||<style="background-color: #82FF42;"> Released for production use. ||
-|| today ||<style="background-color: #4282FE;"> Now in '''RELEASE CANDIDATE''' cycle. ||
+|| Jul 2018 ||<style="background-color: #82FF42;"> Released for production use. ||
 
-The release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
- 
+The release timeline is now roughly monthly packages.
+
 Additions are limited to:
  * Documentation updates
  * Polish of existing features
@@ -26,7 +25,7 @@ Additions are limited to:
 ##
 ## * 
 
-Basic new features in 4.0:
+Basic new features in version 4:
 
  *  '''Major UI changes:'''
   * RFC RFC:6176 compliance (SSLv2 support removal)
