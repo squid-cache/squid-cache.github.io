@@ -5,7 +5,7 @@
 ## adjust the box text as necessary for major milestones.
 ## || month year  ||<style="background-color: #CC0022;"> Squid-3.5.* and older are '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed [[http://www.squid-cache.org/Advisories/|vulnerabilities]] ||
 ## || month year ||<style="background-color: orange;"> the Squid-3.5 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-3.x]] ||
-## || month year ||<style="background-color: yellow;"> Squid-3.5 series became '''DEPRECATED''' with the release of  [[Squid-3.6]] series ||
+|| Jul 2018 ||<style="background-color: yellow;"> Squid-3.5 series became '''DEPRECATED''' with the release of  [[Squid-4]] series ||
 || Jan 2015 ||<style="background-color: #82FF42;"> Released for production use. ||
 
 The features have been set and large code changes are reserved for later versions.
