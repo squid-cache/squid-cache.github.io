@@ -12,7 +12,7 @@
 
 == How to pass Telegram ==
 
-Starting from version 0.10.11 (for tdesktop) Telegram client uses a pinned TLS connection during bootstrap connection to 149.154.164.0/22 or 149.154.172.0/22. Also, it can use relatively large Amazon/Google/Azure networks.
+Starting from version 0.10.11 (for tdesktop) Telegram client uses a pinned TLS connection during bootstrap connection to 149.154.160.0/20. Also, it can use relatively large Amazon/Google/Azure networks by push notifications as web-fronting.
 
 So [[Features/SslPeekAndSplice|SSL-Bump]] proxy must be configured to splice initial connection from Telegram to server:
 
