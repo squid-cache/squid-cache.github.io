@@ -14,6 +14,7 @@
  * '''Goal''': Remove support for operating systems whose last release was a LONG time ago.
  * '''Status''': ''Ongoing''
  * '''Version''': 4.1
+ * '''ETA''': unknown
  * '''Developer''': FrancescoChemolli
 ## * '''More''': Where can folks find more information? Include references to other pages discussing or documenting this feature. Leave blank if unknown.
 
