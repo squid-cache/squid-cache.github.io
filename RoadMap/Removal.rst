@@ -4,6 +4,9 @@ Certain features are no longer relevant as the code improves and are planned for
 
 || '''Version<<BR>>Removed''' || '''Feature''' || '''Why''' ||
 |||| ||
+|||| '''Deprecated in 5.0''' ||
+|| TBD || BerkleyDB support || Superceded by TrivialDB which has better support by distributors. ||
+|||| ||
 |||| '''Deprecated in 4.0''' ||
 || 4.0 || ESI custom parser || Limited usability and repeated security issues. ||
 |||| ||
