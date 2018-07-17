@@ -16,6 +16,8 @@
 
 Since Squid does not support runtime content compression with GZip, we will be used existing eCAP support and [[https://github.com/c-rack/squid-ecap-gzip|GZip eCAP module]].
 
+ . {i} Note: Due to original eCAP GZip adapter now abandoned, you can use [[https://github.com/yvoinov/squid-ecap-gzip|re-worked, bugfixed and improved version from here]], which also support DEFLATE and much customizable options.
+
 === Usage ===
 
 This configuration is very useful to reduce external Internet traffic from proxy and good caching compressed data.
