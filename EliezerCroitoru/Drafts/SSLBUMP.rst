@@ -4,13 +4,90 @@ In order to use sslbump in intercept or tproxy mode there are couple things that
 
 On compilation of squid add the flags "--enable-ssl enable-ssl-crtd" to configure.
 
-Create a selfs signed root CA certificate and create a der format public certificate for clients.
+Create a self signed root CA certificate and create a der format public certificate for clients.
 
 * note that for mobile devices there might be a need for another certificate format then der.
 
-Since squid 3.4 there is an option wich called bump-server-first which instructs squid to first try to identify the certificate properties aginst the origin server.
+Since squid 3.4 there is an option which called bump-server-first which instructs squid to first try to identify the certificate properties against the origin server.
 
-The above is good to allow a much more effective bumping and certificate mimicing.
+The above is good to allow a much more effective bumping and certificate mimicking.
+
+How to use ssl-bump with squid 4.1?
+
+{{{
+#!highlight bash
+#!/usr/bin/env bash
+
+set -x
+
+DOMAIN="ngtech.co.il"
+COUNTRYCODE="IL"
+STATE="Shomron"
+REGION="Center"
+ORGINZATION="NgTech LTD"
+CERTUUID=`uuidgen | awk 'BEGIN { FS="-"}; {print $1}'`
+SUBJECDETAILS=`echo -n "/C=$COUNTRYCODE/ST=$STATE/L=$REGION/O=$ORGINAZATION/CN=px$CERTUUID.$DOMAIN"`
+
+
+SQUIDCONF=/etc/squid/squid.conf
+SSLCRTD=/usr/lib64/squid/security_file_certgen
+SSLCRTDDB=/var/lib/ssl_db
+
+echo "The global variables"
+echo $SQUIDCONF
+echo $SSLCRTD
+echo $SSLCRTDDB
+
+echo "creating directories"
+mkdir -p /etc/squid/ssl_cert /var/lib
+
+echo "about to create certificate..."
+cd /etc/squid/ssl_cert
+#openssl req -new -newkey rsa:1024 -days 365 -subj "/C=IL/ST=Shomron/L=Karney Shomron/O=NgTech LTD/CN=ytgv.ngtech.co.il" \
+#        -nodes -x509 -keyout myCA.pem  -out myCA.pem
+
+openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -subj "$SUBJECDETAILS" \
+    -extensions v3_ca -keyout myCA.pem  -out myCA.pem
+echo "creating der x509 certificate format"
+openssl x509 -in myCA.pem -outform DER -out myCA.der
+echo "the next is the certificate for client in x509 format:"
+cat myCA.pem
+
+echo "initializing ssl_crtd_db"
+$SSLCRTD -c -s $SSLCRTDDB -M 16MB
+
+echo "changing ownership for ssl_db"
+chown -R nobody $SSLCRTDDB
+
+echo "adding settings into squid.conf"
+touch "/etc/squid/server-regex.nobump"
+grep "^sslcrtd_program" $SQUIDCONF
+if [ "$?" -eq "1" ];then
+echo "
+
+http_port 13129 intercept
+https_port 13128 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=16MB  cert=/etc/squid/ssl_cert/myCA.pem
+
+http_port 23128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=16MB  cert=/etc/squid/ssl_cert/myCA.pem
+
+sslcrtd_program $SSLCRTD -s $SSLCRTDDB -M 16MB
+sslcrtd_children 10
+
+acl DiscoverSNIHost at_step SslBump1
+acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/server-regex.nobump"
+
+ssl_bump splice NoSSLIntercept
+
+ssl_bump peek DiscoverSNIHost
+#ssl_bump peek step1
+ssl_bump bump all" >> $SQUIDCONF
+else
+ echo "There is already sslcrtd settings"
+fi
+
+chown squid.squid -R $SSLCRTDDB
+set +x
+}}}
 
 How to use ssl-bump with squid 3.4?
  
