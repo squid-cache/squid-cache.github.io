@@ -56,7 +56,7 @@ Bearer is at the one time both very simple and somewhat complex. Squids part has
 
  . /!\ squid only implements the '''Autorization header field''' Bearer tokens. Alternative ''Form field'' method is not compatible with HTTP proxy needs and method ''URI query parameter'' is too insecure to be trustworthy.
 
-The authentication helper is left to perform all of the risky security encryption and validation processes. Any credentials or tokens presented by the client are passed untouched to the helper. The helper supplies Squid with user name and TTL values for managing the token on later requests.
+The authentication helper is left to perform all of the risky security encryption and validation processes. Any credentials or tokens presented by the client are passed untouched to the helper. The helper supplies Squid with user name for logging and TTL values for managing the token on later requests.
 
 The protocol lines used to do this are described below.
 
@@ -70,7 +70,7 @@ Just like any other security protocol, support for Bearer in Squid is made up by
   * [[Squid-3.5]] or later built with {{{--enable-auth-bearer}}}
 
  2. one or more authentication helpers which perform the grunt work.
-  * As yet there are no helpers freely available. A fake-auth helper that does not validate is provided for testing.
+  * As yet there are no helpers freely available.
 
 Of course the protocol needs to be enabled in the configuration file for everything to work.
 {{{
@@ -99,7 +99,7 @@ Proxy-Authenticate: Bearer realm="Squid", scope="proxy"
 }}}
 
 
-Sending any URL with a GET and Beare token via Squid.
+Sending any URL with a GET and Bearer token via Squid.
 {{{
 squidclient -H 'Proxy-Authorization: Bearer abcd\n' http://example.com/
 }}}
