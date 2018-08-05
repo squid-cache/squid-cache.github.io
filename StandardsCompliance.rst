@@ -86,6 +86,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info Response Header Fields || (./) ||
 || RFC:7616 || HTTP Digest Access Authentication || /!\ || Missing support for several Digest features ||
 || RFC:7617 || The 'Basic' HTTP Authentication Scheme || /!\ || missing new charset support. ||
+|| RFC:7694 || Hypertext Transfer Protocol (HTTP) Client-Initiated Content-Encoding || (./) ||
 || RFC:7858 || Specification for DNS over Transport Layer Security (TLS) || {X} ||
 || RFC:8187 || Indicating Character Encoding and Language for HTTP Header Field Parameters || {X} ||
 || RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
