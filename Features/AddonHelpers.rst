@@ -531,6 +531,7 @@ Input line received from Squid:
 
  acl-value::
   Some ACL tests such as group name comparisons pass their test values to the external helper following the admin configured FORMAT. Depending on the ACL these may be sent one value at a time, as a list of values, or nothing may be sent. By default in current releases these tokens are also URL-encoded according to RFC RFC:1738 to protect against whitespace and binary data problems.
+   . /!\ In [[Squid-4]] these acl-value expand to a dash ('-') if there is no %DATA macro used in the format-options. In older Squid this would have expanded to whitespace.
 
 
 Result line sent back to Squid:
