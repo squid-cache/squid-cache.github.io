@@ -137,7 +137,7 @@ Input line received from Squid:
 }}}
 
  channel-ID::
-  This is the concurrency channel number. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
+  This is an ID for the line when concurrency is enabled. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
 
  URL::
   The URL received from the client. In Squid with ICAP support, this is the URL after ICAP REQMOD has taken place.
@@ -305,7 +305,7 @@ Input line received from Squid:
 }}}
 
  channel-ID::
-  This is the concurrency channel number. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
+  This is an ID for the line when concurrency is enabled. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
 
  username::
   The username field sent by the client in HTTP headers. It may be empty or missing.
@@ -357,7 +357,7 @@ channel-ID b64token [key-extras]
 }}}
 
  channel-ID::
-  This is the concurrency channel number.
+  This is an ID for the line to support concurrent lookups.
 
  b64token::
   The opaque credentials token field sent by the client in HTTP headers.
@@ -401,7 +401,7 @@ Input line received from Squid:
 }}}
 
  channel-ID::
-  This is the concurrency channel number. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
+  This is an ID for the line when concurrency is enabled. When concurrency is turned off (set to '''1''') this field and the following space will be completely missing.
 
  username::
   The username field sent by the client in HTTP headers. Sent as a "double-quoted" string. May be empty. It may be configured to use UTF-8 bytes instead of the ISO-8859-1 received.
@@ -524,7 +524,7 @@ Input line received from Squid:
 }}}
 
  channel-ID::
-  This is the concurrency channel number. When concurrency is turned off ('''concurrency=1''') in SquidConf:external_acl_type this field and the following space will be completely missing.
+  This is an ID for the line when concurrency is enabled. When concurrency is turned off ('''concurrency=1''') in SquidConf:external_acl_type this field and the following space will be completely missing.
 
  format-options::
   This is the flexible series of tokens configured as the '''FORMAT''' area of SquidConf:external_acl_type. The tokens are space-delimited and exactly match the order of '''%''' tokens in the configured '''FORMAT'''. By default in current releases these tokens are also URL-encoded according to RFC RFC:1738 to protect against whitespace and binary data problems.
