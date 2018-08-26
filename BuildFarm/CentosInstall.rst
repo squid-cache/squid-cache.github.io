@@ -13,7 +13,7 @@ On top of the default system install, run
 # next step is only needed for RHEL/CentOS 6. Watch out for the version. Not needed for fedora
 root% rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-root% yum install libxml2 expat-devel openssl-devel libcap ccache libtool-ltdl-devel cppunit cppunit-devel bzr git autoconf automake libtool gcc-c++ perl-Pod-MinimumVersion bzip2 ed make openldap-devel  pam-devel db4-devel  libxml2-devel libcap-devel screen vim nettle-devel redhat-lsb-core autoconf-archive
+root% yum install libxml2 expat-devel openssl-devel libcap ccache libtool-ltdl-devel cppunit cppunit-devel bzr git autoconf automake libtool gcc-c++ perl-Pod-MinimumVersion bzip2 ed make openldap-devel  pam-devel db4-devel  libxml2-devel libcap-devel screen vim nettle-devel redhat-lsb-core autoconf-archive libtdb-devel libtdb
 root% useradd -m -G ccache jenkins
 
 #java. Select the right version and install it
