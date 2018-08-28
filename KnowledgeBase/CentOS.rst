@@ -43,9 +43,9 @@ and then install squid using the command:
 yum install squid
 }}}
 
-==== Squid Beta release ====
+==== Squid-4 release ====
  * '''Maintainer:''' Unofficial packages built by Eliezer Croitoru which can be used on CentOS 7.
- * '''Current Beta:''' 4.0.21-1 based on the latest release.
+ * '''Current:''' 4.1-5 based on the latest release.
 The RPMs was separated into three files:
 
  * squid-VERSION.rpm
