@@ -22,15 +22,19 @@
 
 == Summary ==
 
-Squid-3.2 claims HTTP/1.1 support. Squid v3.1 claims HTTP/1.1 support but only in sent requests (from Squid to servers). Earlier Squid versions do not claim HTTP/1.1 support by default because they cannot fully handle Expect:100-continue, 1xx responses, and/or chunked messages. 
+Squid-3.2 claims HTTP/1.1 support. Squid v3.1 claims HTTP/1.1 support but only in sent requests (from Squid to servers).
+
+Earlier Squid versions do not claim HTTP/1.1 support by default because they cannot fully handle Expect:100-continue, 1xx responses, and/or chunked messages. 
 
 Co-Advisor tests no longer detect RFC MUST-level violations in Squid trunk when it comes to requirements unrelated to caching. Many caching-related requirements are still violated. The "compliance percentage" in the project header is essentially a marketing gimmick (i.e., meaningless or misleading but technically correct information). We are actively working on fixing all known violations detected by Co-Advisor.
 
 === Checklist ===
 
-Current Squid compliance with RFC MUST-level requirements: [[attachment:HTTP-1.1-Checklist_2018-08-09.ods]]. Old results for 2 and 3 Squid version: [[attachment:HTTP-1.1-Checklist_2013-08-21.ods]].
+Squid v4+ compliance with RFC MUST-level requirements as of August 2018: [[attachment:HTTP-1.1-Checklist_2018-08-09.ods]].
 
-The linked document contains the results of automated Co-Advisor HTTP/1.1 compliance tests for several Squid versions. Each test consists of almost 900 individual test cases, targeting various MUSTs in RFC 2616 and 7230-7235. For each Squid-3 version, we executed several tests. The tests were identical from HTTP point of view. If a given test case showed different results during those tests, the exact test case outcome could not be determined. Such outcomes are marked with a letter 'U'. All other markings correspond to stable results. Some test cases fail due to lack of an HTTP/1.1 feature support in Squid, incompatibility with the test suite, a test suite bug, or other reasons. Such test cases are marked with question marks. The remaining test case outcomes are successes and violations. Only successful outcomes count towards the "test cases passed" percentage.
+Squid v3 and v2 results collected in August 2013: [[attachment:HTTP-1.1-Checklist_2013-08-21.ods]].
+
+The linked document contains the results of automated Co-Advisor HTTP/1.1 compliance tests for several Squid versions. Each test consists of almost 900 individual test cases, targeting various MUSTs in RFC 2616 and 7230-7235. Each Squid v3+ column summarizes the results of several tests. These tests were identical from HTTP point of view. If a given test case showed different results during those tests, the exact test case outcome could not be determined. Such outcomes are marked with a letter 'U'. All other markings correspond to stable results. Some test cases fail due to lack of an HTTP/1.1 feature support in Squid, incompatibility with the test suite, a test suite bug, or other reasons. Such test cases are marked with question marks. The remaining test case outcomes are successes and violations. Only successful outcomes count towards the "test cases passed" percentage.
 
 The tests are on vanilla Squid with no special alterations made during build.  The 2.7 test appears to have been done with the configurable HTTP/1.1 advertisement to Servers turned on.
 
