@@ -42,7 +42,7 @@ This is minimal access requires Telergam to connect.
 This only affects Telegram clients using HTTP proxy settings. On interception proxy it will works also with Telegram clients AUTO mode (the default).
 
 
- . {i} Note: Usually latest Telegram client can connect via proxy without issues. However, if your clients experiencing difficults with connections, use configuration above. Also, if you using ufdbguard, it can be requires to add Telegram's IP's to excluding ACL for bypass ufdbguard connection probing as well (depending of ufdbguard version).
+ . {i} Note: Usually latest Telegram client can connect via proxy without issues. However, if your clients experiencing difficults, use configuration above. Also, if you using ufdbguard, it can be requires to add Telegram's IP's to excluding ACL for bypass ufdbguard connection probing as well (depending of ufdbguard version).
 
 ----
 CategoryConfigExample
