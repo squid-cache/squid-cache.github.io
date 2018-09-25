@@ -79,8 +79,7 @@ This is optional and may not be possible, but is useful when it works:
 
  * enable EDNS (extended-DNS jumbogram) and large UDP packet support.
   . Some popular domains are hosted on more IPs than will fit in a regular DNS query response. Their responses may appear inconsistent as IPs appear and disappear in the small set the regular DNS packet displays.
-  . [[Squid-3.2]] will attempt to use EDNS to get larger packets with all IPs of these domains. This reduces Squids chance of loosing the IP the client is connecting to.
-
+  . [[Squid-3.2]] can attempt to use EDNS to get larger packets with all IPs of these domains by setting the SquidConf:dns_packet_max directive. This reduces Squids chance of loosing the IP the client is connecting to but requires both your resolver to support EDNS and network to support jumbograms.
 
 '''Alternative Causes'''
 
