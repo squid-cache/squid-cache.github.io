@@ -159,7 +159,7 @@ Dodjie Nava, Jonathan Larmour, Cord Beermann, Tony Sterrett, Gerard Hynes, Katay
 This FAQ was maintained for a long time as an XML Docbook file. It was converted to a Wiki in March 2006. The wiki is now the authoritative version.
 
 == Want to contribute? ==
-We always welcome help keeping the Squid FAQ up-to-date. If you would like to help out, please register with this Wiki and type away. Please also send a note to the wiki operator <<MailTo(wiki AT kinkie DOT it)>> to inform him of your changes.
+We always welcome help keeping the Squid FAQ up-to-date. If you would like to help out, please register with this Wiki and type away.
 
 ##end
 ----
