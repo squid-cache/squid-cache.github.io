@@ -666,16 +666,16 @@ request size [key-pair]
 
  key-pair::
   The supported key=value pairs are:
-  || domain || FQDN host name or the domain ||
+  || host || FQDN host name or the domain ||
   || proto_version || The SSL/TLS version ||
   || cipher || The SSL/TLS cipher being used ||
   || cert_'''''ID''''' || Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are||
   || error_name_'''''ID''''' || The openSSL certificate validation error. The ID is an index number for this error ||
-  || error_name_'''''ID''''' || The ID of the certificate which caused error_name_ID ||
+  || error_cert_'''''ID''''' || The ID of the certificate which caused error_name_ID ||
 
 Example request:
 {{{
-cert_validate 1519 host=dmz.example-domain.com
+0 cert_validate 1519 host=dmz.example-domain.com
 cert_0=-----BEGIN CERTIFICATE-----
 MIID+DCCA2GgAwIBAgIJAIDcHRUxB2O4MA0GCSqGSIb3DQEBBAUAMIGvMQswCQYD
 ...
@@ -693,6 +693,7 @@ result size key-pair
  result::
   One of the result codes:
   || OK || Success. Certificate validated. ||
+  || ERR || Success. Certificate not validated. ||
   || BH || Failure. The helper encountered a problem. ||
 
  size::
@@ -707,7 +708,7 @@ result size key-pair
 
 Example response message:
 {{{
-OK 1444 cert_10=-----BEGIN CERTIFICATE-----
+ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
 MIIDojCCAoqgAwIBAgIQE4Y1TR0/BvLB+WUF1ZAcYjANBgkqhkiG9w0BAQUFADBr
 ...
 398znM/jra6O1I7mT1GvFpLgXPYHDw==
