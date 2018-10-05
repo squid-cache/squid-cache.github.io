@@ -1,6 +1,6 @@
 #language en
 
-The Squid project, originally funded by a NSF grant, is now run entirely by volunteers.
+The Squid project, originally funded by an NSF grant, is now run entirely by volunteers.
 There are a few key individuals who keep the project running.
 
 = The Squid Software Foundation Directors =
@@ -64,7 +64,7 @@ Developers who have contributed some significant feature to Squid and should hav
 
 
 = Other Contributors =
- * Countless independent [[http://www.squid-cache.org/CONTRIBUTORS.txt|Contributors]].
+ * Countless independent [[https://raw.githubusercontent.com/squid-cache/squid/master/CONTRIBUTORS|Contributors]].
 
 = Binary Package Maintainers =
 While squid is normally distributed in source form. Some dedicated people are donating their time to packaging Squid in other popular formats for easy use.
@@ -76,7 +76,7 @@ While squid is normally distributed in source form. Some dedicated people are do
  * [[KnowledgeBase/Fink|Fink]]: Benjamin Reed
  * [[KnowledgeBase/FreeBSD|FreeBSD]]: Thomas-Martin Seck
  * [[KnowledgeBase/Gentoo|Gentoo]]: Eray Aslan
- * [[KnowledgeBase/Mandrivia|Mandrivia]]: Luis Daniel Lucio Quiroz
+ * [[KnowledgeBase/Mandrivia|Mandriva]]: Luis Daniel Lucio Quiroz
  * [[KnowledgeBase/NetBSD|NetBSD]]: Takahiro Kambe
  * [[KnowledgeBase/RedHat|Red Hat Enterprise Linux]]: Lubos Uhliarik
  * [[KnowledgeBase/Solaris|Solaris]]: Steven M. Christensen
