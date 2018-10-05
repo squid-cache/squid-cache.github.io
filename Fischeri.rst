@@ -55,7 +55,7 @@ Beta packages are being provided through major distribution repositories. See pa
  || Debian    || Luigi Gangitano    || Issues with Debian QA policy vs developers knowledge levels. ||
  || FreeBSD   || Thomas-Martin Seck || {OK} (pending further work) ||
  || Gentoo    || Eray Aslan         || Gentoo packaging system incompatible. ||
- || Mandrivia || Luis Daniel Lucio Quiroz || ||
+ || Mandriva  || Luis Daniel Lucio Quiroz || ||
  || NetBSD    || Takahiro Kambe (3.0)<<BR>>Matthias Scheler (3.1) || ||
  || OpenBSD   || Brad Smith         || ||
  || Ubuntu    || see Debian         || https://launchpad.net/~yadi/+archive/ppa ||
