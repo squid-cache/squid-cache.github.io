@@ -15,7 +15,7 @@ Most operating system distributions provide packages in the formats appropriate 
 <<Include(KnowledgeBase/Fink,"Fink",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/FreeBSD,"FreeBSD",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/Gentoo,"Gentoo",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
-<<Include(KnowledgeBase/Mandrivia,"Mandrivia",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
+<<Include(KnowledgeBase/Mandriva,"Mandriva",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/NetBSD,"NetBSD",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/OpenSUSE,"OpenSUSE",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
 <<Include(KnowledgeBase/RedHat,"RedHat Enterprise Linux (RHEL)",3,from="^== Pre-Built Binary Packages ==$", to="^== ")>>
