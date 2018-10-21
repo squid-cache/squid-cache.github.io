@@ -3,7 +3,7 @@
 #language en
 #acl SquidWikiAdminGroup:read,write,delete,revert -All:read
 
-[[TableOfContents]]
+<<TableOfContents>>
 
 = Docker-based build farm setup =
 
