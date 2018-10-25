@@ -45,11 +45,11 @@ All commits to the official repository require a !GitHub pull request (PR). This
 
  1. Please complete [[#Submission_Checklist]] before making a pull request. If you really need to post a PR earlier, then start your PR title with a "[WIP] " prefix (six characters indicating a "work in progress") and explain why you are posting an unchecked PR in the PR comment. By default, WIP PRs are not reviewed, but they do go through CI tests.
  1. Please use English and plain text formatting.
- 1. PR title is the first line of the anticipated commit message. Be specific but succinct (do not exceed 72 characters).
- 1. PR description is the anticipated commit message body (following the first line described above and a blank line). Avoid detailing your changes (your changes should speak for themselves!). Focus on ''why'' you changed the code and on the anticipated ''impact'' of your changes.
- 1. PR branch should contain all commits that you want to see in the official tree and nothing else. If your branch has intermediate/housekeeping commits, squash them. Most PR branches should contain a single commit. If your branch contains multiple commits, reviewers may ask you to squash them. /!\ Currently, the rules in this item are not enforced. Approved PRs are manually squashed during commit instead, but that approach is wrong and will change when official commits are fully automated.
- 1. Each PR branch commit should follow the same language/title/body rules outlined above.
- 1. Each PR commit not authored by you should have the right author set (via ''git commit --author=...'' or equivalent).
+ 1. PR title is the first line of the anticipated commit message. Be specific but succinct. Do not exceed [[https://github.com/measurement-factory/anubis#commit-message|65]] characters.
+ 1. PR description is the anticipated commit message body (following the first line described above and a blank line). Avoid detailing your changes (your changes should speak for themselves!). Focus on ''why'' you changed the code and on the anticipated ''impact'' of your changes. Do not exceed [[https://github.com/measurement-factory/anubis#commit-message|72]] characters per line.
+ 1. By default, individual PR branch commits will be [[#Automation|automatically]] squash-merged. Thus, you may leave intermediate commits in your branch when posting your PR -- a reviewer should ignore them and review their cumulative result instead. Avoid squashing ''during'' !GitHub review iterations.
+ 1. ''During'' !GitHub review iterations, avoid merging fresh master (or target branch) changes into your PR branch unless such an update becomes necessary. After the PR is approved, your PR branch will be [[#Automation|automatically]] merged into then-current target branch.
+ 1. A PR commit not authored by you should have the right author set (via ''git commit --author=...'' or equivalent).
 
 If you cannot submit your changes in the form of a pull request, find a developer who can do that for you.
 
@@ -80,8 +80,6 @@ In truly exceptional situations (that ought to be disclosed and discussed as soo
 The [[WhoWeAre|core developers]] mentioned above are experienced developers with serious long-term dedication and contribution to the Squid Project as a whole and Squid code in particular. They are usually active on squid-dev and often review submissions. Core folks have collective responsibility for the Squid Project and may use their super powers to resolve conflicts or prevent disasters.
 
 == Automation ==
-
-/!\ This section documents the ''expected'' automation of master commits. Automated commits have not been enabled yet.
 
 The "trusted master" principle enforced by merge automation states that the master branch automatically gets all ''trusted'' code changes and nothing else. In this context, an trusted code change is, by definition, a non-empty sequence of git commits that satisfies the following requirements:
 
