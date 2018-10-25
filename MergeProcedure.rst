@@ -101,3 +101,4 @@ Automated master commits are performed by a program called ''merge bot''. Only t
 || ''voting_delay_min'' || The minimum merging age of a PR. Younger PRs are not merged, regardless of the number of votes. The PR age string should comply with [[https://github.com/mike182uk/timestring|timestring]] parser. || "2d" ||
 || ''voting_delay_max'' || The maximum merging age of a PR that has fewer than `config::sufficient_approvals` votes. The PR age string should comply with [[https://github.com/mike182uk/timestring|timestring]] parser. || "10d" ||
 || ''staging_checks'' || The expected number of CI tests executed against the staging branch. || 2 ||
+|| ''guarded_run'' || Only PRs (manually) labeled `M-cleared-for-merge` are merged by Anubis. || true ||
