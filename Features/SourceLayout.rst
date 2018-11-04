@@ -31,7 +31,7 @@ Key:
 || <:( || <:( || <:( || (./) || (./) ||''adaptation/'' ||code common to eCAP and ICAP ||
 || <:( || <:( || <:( || <:( || (./) ||''adaptation/ecap/'' ||eCAP support ||
 || <:( || <:( || <:( || <:( || (./) ||''adaptation/icap/'' ||ICAP support ||
-|| :\ || <:( || (./) || (./) || (./) ||''anyp/'' ||Protocol-independent protocol primitives ||url* urn* !ProtoPort* ||
+|| :\ || (./) || (./) || (./) || (./) ||''anyp/'' ||Protocol-independent protocol primitives ||url* urn* !ProtoPort* ||
 || :\ || (./) || (./) || (./)  || :\ ||''auth/'' ||Authentication schemes || ||
 || <:( || (./) || (./) || <:( || :\ ||''auth/basic/'' || Basic Authentication || ||
 || <:( || (./) || (./) || <:( || :\ ||''auth/digest/'' || Digest Authentication || ||
@@ -42,7 +42,7 @@ Key:
 || <:( || (./) || (./) || :\ || :\ ||''comm/'' ||I/O subsystem ||
 || :\ || <:( || <:( || <:( || <:( ||''config/'' ||squid.conf parsing and management ||cache_cf.* cf.* cf_* Parser.* ||
 || <:( || <:( || <:( || <:( || <:( ||''debug/'' ||Debug core utilities ||debug.cc Debug.h ||
-|| :\ || <:( || <:( || <:( || <:( || ''DiskIO'' || I/O primitives for filesystem access || ||
+|| :\ || (./) || <:( || <:( || <:( || ''DiskIO'' || I/O primitives for filesystem access || ||
 || :\ || <:( || <:( || (./) || :\ ||''dns/'' ||DNS components (Internal, dnsserver, caches) ||dns*, ipcache.* fqdncache.* ||
 || <:( || <:( || <:( || <:( || :\ ||''esi/'' ||ESI support ||ESI*, Add Esi namespace, rename classes ||
 || <:( || (./) || (./) || <:( || (./) ||''eui/'' ||EUI-48 / MAC / ARP operations ||
@@ -59,20 +59,20 @@ Key:
 || <:( || <:( || (./) || <:( || :\ ||''http/two/'' || HTTP/2 primitives shared by client, server, and ICAP sides || ||
 || :\ || (./) || <:( || <:( || :\ ||''icmp/'' ||ICMP support and Network measurement ||Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
 || <:( || <:( || <:( || <:( || :\ ||''ident/'' ||IDENT support ||ident.* Make remote connection handling into an !AsyncJob ||
-|| :\ || <:( || (./) || (./) || (./) ||''ip/'' ||IP Protocol ||Ip* Qos* ||
+|| :\ || (./) || (./) || (./) || (./) ||''ip/'' ||IP Protocol ||Ip* Qos* ||
 || <:( || <:( || <:( || (./) || :\ ||''ipc/'' ||inter-process communication ||ipc.* ipc_win32.*, Move files, add Ipc namespace to them, and adjust global names ||
-|| <:( || <:( || <:( || <:( || :\ ||''log/'' ||Logging components ||namespace for Custom log formats and tokenizer. classify ||
+|| <:( || (./) || <:( || <:( || :\ ||''log/'' ||Logging components ||namespace for Custom log formats and tokenizer. classify ||
 || :\ || (./) || (./) || (./) || :\ ||''mem/'' ||Basic Memory management || class renaming, documentation, unit tests ||
 || :\ || (./) || <:( || (./) || :\ ||''mgr/'' ||Cache Manager ||Move in CacheManager.h, cache_manager.cc, and test cases ||
 || :\ || <:( || (./) || <:( || (./) || ''parser/'' || generic parsing primitives || ||
 || <:( || <:( || <:( || <:( || <:( ||''redirect/'' ||URL alteration (redirectors, URL-rewrite, URL maps) ||redirect.* !RedirectInternal.* ||
 || <:( || <:( || <:( || <:( || :\ ||''repl/heap/'' ||HEAP Replacement Policy algorithms ||
 || <:( || <:( || <:( || <:( || :\ ||''repl/lru/'' ||Cache Replacement Policy algorithms ||
-|| :\ || <:( || <:( || (./) || (./) ||''sbuf/'' || SBuf (string buffer) components and related algorithms ||
-|| <:( || <:( || (./) || (./) || (./) ||''security/'' || Transport Layer Security components ||
+|| :\ || (./) || <:( || (./) || (./) ||''sbuf/'' || SBuf (string buffer) components and related algorithms ||
+|| <:( || (./) || (./) || (./) || (./) ||''security/'' || Transport Layer Security components ||
 || <:( || <:( || <:( || (./) || :\ ||''servers/'' ||Listening Server components for receiving connections ||client_side* ||
 || <:( || <:( || <:( || (./) || :\ ||''snmp/'' ||SNMP components ||snmp_*, move core and agent code. restructure for extensibility. ||
-|| <:( || (./) || <:( || <:( || :\ ||''ssl/'' || OpenSSL components ||ssl_* ssl.cc ||
+|| <:( || (./) || <:( || <:( || :\ ||''ssl/'' || OpenSSL components || library is named libsslsquid.la and matchgin stub_lib*.cc ||
 || <:( || <:( || <:( || <:( || <:( ||''shaping/'' ||Traffic shaping and delay pools ||*[Dd]elay.* *[Pp]ool*.* ||
 || :\ || <:( || <:( || (./) || <:( ||''store/'' ||generic (fs-agnostic) disk and memory cache support? ||Store* store* ||
 || <:( || <:( || <:( || <:( || <:( ||''time/'' ||time and date handling tools ||time.* squidTime.* ||
