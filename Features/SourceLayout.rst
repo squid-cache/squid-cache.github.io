@@ -25,57 +25,57 @@ Key:
  * {3} FrancescoChemolli doing now.
 
 ## * {3} you? doing now.
-||'''Unit''' <<BR>> '''Tests''' ||'''Stub''' ||'''Namespace''' ||'''Polish''' ||'''Group''' ||'''Definition''' ||'''Files and To-do''' ||
-|| :\ ||- ||- || :\ ||''~/compat/'' ||Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. ||** migrate remaining pieces from squid.h and squid-old.h into compat ||
-|| <:( || <:( || <:( || :\ ||''acl/'' ||Access Controls ||ACL* external_acl.*, Add Acl namespace and rename classes? ||
-|| <:( || <:( || <:( || (./) ||''adaptation/'' ||code common to eCAP and ICAP ||
-|| <:( || <:( || <:( || (./) ||''adaptation/ecap/'' ||eCAP support ||
-|| <:( || <:( || <:( || (./) ||''adaptation/icap/'' ||ICAP support ||
-|| :\ || <:( || (./) || (./) ||''anyp/'' ||Protocol-independent protocol primitives ||url* urn* !ProtoPort* ||
-|| :\ || (./) || (./) || :\ ||''auth/'' ||Authentication schemes || ||
-|| <:( || (./) || (./) || :\ ||''auth/basic/'' || Basic Authentication || ||
-|| <:( || (./) || (./) || :\ ||''auth/digest/'' || Digest Authentication || ||
-|| <:( || (./) || (./) || :\ ||''auth/negotiate/'' || Negotiate Authentication || ||
-|| <:( || (./) || (./) || :\ ||''auth/ntlm/'' || NTLM Authentication || ||
-|| :\ || <:( || {X} || :\ ||''base/'' ||Commonly used code without a better place to go. ||Async*?  wordlist.* dlink.* hash.* ||
-|| <:( || <:( || <:( || :\ ||''clients/'' ||Protocol clients and gateway components for connecting to upstream servers ||ftp.*, http.*, gopher.* ||
-|| <:( || (./) || (./) || :\ ||''comm/'' ||I/O subsystem ||
-|| :\ || <:( || <:( || ||''config/'' ||squid.conf parsing and management ||cache_cf.* cf.* cf_* Parser.* ||
-|| <:( || <:( || <:( || ||''debug/'' ||Debug core utilities ||debug.cc Debug.h ||
-|| :\ || <:( || <:( || || ''DiskIO'' || I/O primitives for filesystem access || ||
-|| :\ || <:( || <:( || :\ ||''dns/'' ||DNS components (Internal, dnsserver, caches) ||dns*, ipcache.* fqdncache.* ||
-|| <:( || <:( || <:( || :\ ||''esi/'' ||ESI support ||ESI*, Add Esi namespace, rename classes ||
-|| <:( || (./) || (./) || (./) ||''eui/'' ||EUI-48 / MAC / ARP operations ||
-|| <:( || (./) || (./) || :\ ||''format/'' ||Custom formatting ||
-|| :\ || <:( || (./) || :\ ||''fs/'' ||file system-specific cache store support? || rename classes, add Makefiles for subdirs. ||
-|| <:( || - || - || - ||''fs/aufs'' ||AUFS cache_dir ||FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
-|| <:( || - || - || - ||''fs/diskd'' ||DiskD cache_dir ||FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
-|| (./) || <:( || (./) || :\ ||''fs/ufs'' ||Ufs cache_dir || TODO: rename classes ||
-|| (./) || <:( || (./) || :\ ||''fs/rock'' ||Rock cache_dir || TODO: rename classes ||
-|| <:( || <:( || (./) || :\ ||''ftp/'' ||FTP primitives shared by client, server, and ICAP sides || ||
-|| <:( || <:( || (./) || :\ ||''helper/'' || [[Features/AddonHelpers]] protocol primitives || migrate helper.* ||
-|| :\ || <:( || (./) || {2} ||''http/'' || HTTP primitives shared by client, server, and ICAP sides ||Http* ||
-|| :\ || <:( || (./) || {2} ||''http/one/'' || HTTP/1 primitives shared by client, server, and ICAP sides || ||
-|| <:( || <:( || (./) || {2} ||''http/two/'' || HTTP/2 primitives shared by client, server, and ICAP sides || ||
-|| :\ || (./) || <:( || :\ ||''icmp/'' ||ICMP support and Network measurement ||Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
-|| <:( || <:( || <:( || :\ ||''ident/'' ||IDENT support ||ident.* Make remote connection handling into an !AsyncJob ||
-|| :\ || <:( || (./) || (./) ||''ip/'' ||IP Protocol ||Ip* Qos* ||
-|| <:( || <:( || <:( || :\ ||''ipc/'' ||inter-process communication ||ipc.* ipc_win32.*, Move files, add Ipc namespace to them, and adjust global names ||
-|| <:( || <:( || <:( || :\ ||''log/'' ||Logging components ||namespace for Custom log formats and tokenizer. classify ||
-|| :\ || (./) || (./) || :\ ||''mem/'' ||Basic Memory management || class renaming, documentation, unit tests ||
-|| :\ || (./) || <:( || :\ ||''mgr/'' ||Cache Manager ||Move in CacheManager.h, cache_manager.cc, and test cases ||
-|| :\ || <:( || (./) || (./) || ''parser/'' || generic parsing primitives || ||
-|| <:( || <:( || <:( || ||''redirect/'' ||URL alteration (redirectors, URL-rewrite, URL maps) ||redirect.* !RedirectInternal.* ||
-|| <:( || <:( || <:( || :\ ||''repl/heap/'' ||HEAP Replacement Policy algorithms ||
-|| <:( || <:( || <:( || :\ ||''repl/lru/'' ||Cache Replacement Policy algorithms ||
-|| :\ || <:( || <:( || (./) ||''sbuf/'' || SBuf (string buffer) components and related algorithms ||
-|| <:( || <:( || (./) || (./) ||''security/'' || Transport Layer Security components ||
-|| <:( || <:( || <:( || :\ ||''servers/'' ||Listening Server components for receiving connections ||client_side* ||
-|| <:( || <:( || <:( || :\ ||''snmp/'' ||SNMP components ||snmp_*, move core and agent code. restructure for extensibility. ||
-|| <:( || (./) || <:( || :\ ||''ssl/'' || OpenSSL components ||ssl_* ssl.cc ||
-|| <:( || <:( || <:( || <:( ||''shaping/'' ||Traffic shaping and delay pools ||*[Dd]elay.* *[Pp]ool*.* ||
-|| :\ || <:( || <:( || <:( ||''store/'' ||generic (fs-agnostic) disk and memory cache support? ||Store* store* ||
-|| <:( || <:( || <:( || <:( ||''time/'' ||time and date handling tools ||time.* squidTime.* ||
+||'''Unit''' <<BR>> '''Tests''' ||'''Stub''' ||'''Namespace''' ||'''forward.h''' ||'''Polish''' ||'''Group''' ||'''Definition''' ||'''Files and To-do''' ||
+|| :\ ||- ||- || - || :\ ||''~/compat/'' ||Portability primitives. <<BR>> This is a full layer below everything, should be seamless with the OS API. ||** migrate remaining pieces from squid.h and squid-old.h into compat ||
+|| <:( || <:( || <:( || (./) || :\ ||''acl/'' ||Access Controls ||ACL* external_acl.*, Add Acl namespace and rename classes? ||
+|| <:( || <:( || <:( || (./) || (./) ||''adaptation/'' ||code common to eCAP and ICAP ||
+|| <:( || <:( || <:( || <:( || (./) ||''adaptation/ecap/'' ||eCAP support ||
+|| <:( || <:( || <:( || <:( || (./) ||''adaptation/icap/'' ||ICAP support ||
+|| :\ || <:( || (./) || (./) || (./) ||''anyp/'' ||Protocol-independent protocol primitives ||url* urn* !ProtoPort* ||
+|| :\ || (./) || (./) || (./)  || :\ ||''auth/'' ||Authentication schemes || ||
+|| <:( || (./) || (./) || <:( || :\ ||''auth/basic/'' || Basic Authentication || ||
+|| <:( || (./) || (./) || <:( || :\ ||''auth/digest/'' || Digest Authentication || ||
+|| <:( || (./) || (./) || <:( || :\ ||''auth/negotiate/'' || Negotiate Authentication || ||
+|| <:( || (./) || (./) || <:( || :\ ||''auth/ntlm/'' || NTLM Authentication || ||
+|| :\ || <:( || {X} || <:( || :\ ||''base/'' ||Commonly used code without a better place to go. ||Async*?  wordlist.* dlink.* hash.* ||
+|| <:( || <:( || <:( || :\ || :\ ||''clients/'' ||Protocol clients and gateway components for connecting to upstream servers ||ftp.*, http.*, gopher.* ||
+|| <:( || (./) || (./) || :\ || :\ ||''comm/'' ||I/O subsystem ||
+|| :\ || <:( || <:( || <:( || <:( ||''config/'' ||squid.conf parsing and management ||cache_cf.* cf.* cf_* Parser.* ||
+|| <:( || <:( || <:( || <:( || <:( ||''debug/'' ||Debug core utilities ||debug.cc Debug.h ||
+|| :\ || <:( || <:( || <:( || <:( || ''DiskIO'' || I/O primitives for filesystem access || ||
+|| :\ || <:( || <:( || (./) || :\ ||''dns/'' ||DNS components (Internal, dnsserver, caches) ||dns*, ipcache.* fqdncache.* ||
+|| <:( || <:( || <:( || <:( || :\ ||''esi/'' ||ESI support ||ESI*, Add Esi namespace, rename classes ||
+|| <:( || (./) || (./) || <:( || (./) ||''eui/'' ||EUI-48 / MAC / ARP operations ||
+|| <:( || (./) || (./) || <:( || :\ ||''format/'' ||Custom formatting ||
+|| :\ || <:( || (./) || <:( || :\ ||''fs/'' ||file system-specific cache store support? || rename classes, add Makefiles for subdirs. ||
+|| <:( || - || - || <:( || - ||''fs/aufs'' ||AUFS cache_dir ||FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
+|| <:( || - || - || <:( || - ||''fs/diskd'' ||DiskD cache_dir ||FrancescoChemolli. Fs::Ufs namespace, renamed files. TODO: rename classes ||
+|| (./) || <:( || (./) || <:( || :\ ||''fs/ufs'' ||Ufs cache_dir || TODO: rename classes ||
+|| (./) || <:( || (./) || (./) || :\ ||''fs/rock'' ||Rock cache_dir || TODO: rename classes ||
+|| <:( || <:( || (./) || <:( || :\ ||''ftp/'' ||FTP primitives shared by client, server, and ICAP sides || ||
+|| <:( || <:( || (./) || (./) || :\ ||''helper/'' || [[Features/AddonHelpers]] protocol primitives || migrate helper.* ||
+|| :\ || <:( || (./) || (./) || :\ ||''http/'' || HTTP primitives shared by client, server, and ICAP sides ||Http* ||
+|| :\ || <:( || (./) || (./) || :\ ||''http/one/'' || HTTP/1 primitives shared by client, server, and ICAP sides || ||
+|| <:( || <:( || (./) || <:( || :\ ||''http/two/'' || HTTP/2 primitives shared by client, server, and ICAP sides || ||
+|| :\ || (./) || <:( || <:( || :\ ||''icmp/'' ||ICMP support and Network measurement ||Icmp* net_db.*, C++ convert net_db*, Add Icmp namespace and rename classes ||
+|| <:( || <:( || <:( || <:( || :\ ||''ident/'' ||IDENT support ||ident.* Make remote connection handling into an !AsyncJob ||
+|| :\ || <:( || (./) || (./) || (./) ||''ip/'' ||IP Protocol ||Ip* Qos* ||
+|| <:( || <:( || <:( || (./) || :\ ||''ipc/'' ||inter-process communication ||ipc.* ipc_win32.*, Move files, add Ipc namespace to them, and adjust global names ||
+|| <:( || <:( || <:( || <:( || :\ ||''log/'' ||Logging components ||namespace for Custom log formats and tokenizer. classify ||
+|| :\ || (./) || (./) || (./) || :\ ||''mem/'' ||Basic Memory management || class renaming, documentation, unit tests ||
+|| :\ || (./) || <:( || (./) || :\ ||''mgr/'' ||Cache Manager ||Move in CacheManager.h, cache_manager.cc, and test cases ||
+|| :\ || <:( || (./) || <:( || (./) || ''parser/'' || generic parsing primitives || ||
+|| <:( || <:( || <:( || <:( || <:( ||''redirect/'' ||URL alteration (redirectors, URL-rewrite, URL maps) ||redirect.* !RedirectInternal.* ||
+|| <:( || <:( || <:( || <:( || :\ ||''repl/heap/'' ||HEAP Replacement Policy algorithms ||
+|| <:( || <:( || <:( || <:( || :\ ||''repl/lru/'' ||Cache Replacement Policy algorithms ||
+|| :\ || <:( || <:( || (./) || (./) ||''sbuf/'' || SBuf (string buffer) components and related algorithms ||
+|| <:( || <:( || (./) || (./) || (./) ||''security/'' || Transport Layer Security components ||
+|| <:( || <:( || <:( || (./) || :\ ||''servers/'' ||Listening Server components for receiving connections ||client_side* ||
+|| <:( || <:( || <:( || (./) || :\ ||''snmp/'' ||SNMP components ||snmp_*, move core and agent code. restructure for extensibility. ||
+|| <:( || (./) || <:( || <:( || :\ ||''ssl/'' || OpenSSL components ||ssl_* ssl.cc ||
+|| <:( || <:( || <:( || <:( || <:( ||''shaping/'' ||Traffic shaping and delay pools ||*[Dd]elay.* *[Pp]ool*.* ||
+|| :\ || <:( || <:( || (./) || <:( ||''store/'' ||generic (fs-agnostic) disk and memory cache support? ||Store* store* ||
+|| <:( || <:( || <:( || <:( || <:( ||''time/'' ||time and date handling tools ||time.* squidTime.* ||
 
 
 == Bundled Add-On Source code ==
