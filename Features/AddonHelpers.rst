@@ -113,7 +113,7 @@ An individual helper ''process'' may be in one or more of the following states:
 || B || BUSY || Squid is expecting a response from the helper process. ||
 || W || WRITING || Squid is sending one or more requests to a stateless helper process. Squid has not been notified that all the sent data has been written. A WRITING helper is a BUSY helper. Please note that ''reporting'' this state is currently not supported for stateful helpers. ||
 || R || RESERVED || Squid is sending a request to a ''stateful'' helper process. Squid has not been notified that all the sent data has been written. ||
-|| P || PLACEHOLDER || There is at least one master transaction waiting for this stateful helper (but not necessarily this specific stateful helper ''process'') to become available (i.e. not BUSY) ||
+|| P || PLACEHOLDER || There is at least one master transaction waiting for this stateful helper (but not necessarily this specific stateful helper ''process'') to become available (i.e. not BUSY). ||
 || C || CLOSING || Squid closed its writing socket for the helper process, but the helper has not quit yet (or, to be more precise, has not closed its stdout yet). ||
 || S || SHUTDOWN PENDING || Squid marked this helper process for eventual closure but has not yet initiated that closure (usually because the helper is still BUSY). ||
 
