@@ -105,6 +105,23 @@ squid-3.5+ support:
 
 Squid-3.1 and later also support [[Features/eCAP|eCAP plugins]] and [[Features/ICAP|ICAP services]] which differ from helper scripts in many ways.
 
+== Helper states ==
+
+An individual helper ''process'' may be in one or more of the following states:
+
+|| '''Key ''' ||  '''Name''' ||  '''Meaning''' ||
+|| B || BUSY || Squid is expecting a response from the helper process. ||
+|| W || WRITING || Squid is sending one or more requests to a stateless helper process. Squid has not been notified that all the sent data has been written. A WRITING helper is a BUSY helper. Please note that ''reporting'' this state is currently not supported for stateful helpers. ||
+|| R || RESERVED || Squid is sending a request to a ''stateful'' helper process. Squid has not been notified that all the sent data has been written. ||
+|| P || PLACEHOLDER || There is at least one master transaction waiting for this stateful helper (but not necessarily this specific stateful helper ''process'') to become available (i.e. not BUSY) ||
+|| C || CLOSING || Squid closed its writing socket for the helper process, but the helper has not quit yet (or, to be more precise, has not closed its stdout yet). ||
+|| S || SHUTDOWN PENDING || Squid marked this helper process for eventual closure but has not yet initiated that closure (usually because the helper is still BUSY). ||
+
+The above table does not reflect some esoteric corner cases, especially when it comes for conditions for ending a helper state. For example, a stateful helper  process may stop being RESERVED for reasons other than writing the entire request data to the helper process.
+
+Squid [[Features/CacheManager|Cache Manager]] reports individual helper states on helper-specific pages such as mgr:store_io.
+
+
 == Helper protocols ==
 
 {i} Squid-2.6 and later all support concurrency, however the bundled helpers and many third-party commercial helpers do not. This is changing, the use of concurrency is encouraged to improve performance. The relevant squid.conf concurrency setting must match the helper concurrency support. The [[Features/HelperMultiplexer|helper multiplexer]] wrapper can be used to add concurrency benefits to most non-concurrent helpers.
