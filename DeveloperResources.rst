@@ -99,6 +99,14 @@ rsync -avz rsync://squid-cache.org/source/<version> .
 
 Depending on what features you wish to develop there may be other library and tool requirements.
 
+Building tarballs for distribution requires these additional tools:
+  * autoconf-archive
+  * tar
+  * gzip
+  * bzip2
+  * xz
+  * perl
+
 When working from the repository code the '''bootstrap.sh''' script is required initially to run a number of autotools to prepare ./configure and related magic. This needs repeating after any changes to the Makefile.am or configure.ac scripts, including changes received from the repository updates. Common bootstrap.sh problems are discussed in [[ProgrammingGuide/Bootstrap]].
 
 
