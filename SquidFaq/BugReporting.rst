@@ -243,6 +243,28 @@ detach
 quit
 }}}
 
+== Getting the current stack of a live proxy (without downtime) ==
+
+The following trick may be useful if you suspect that your Squid is stuck in a busy loop, and/or you want to know what your Squid is doing "right now", but you do not want to suspect the Squid process.
+
+ 1. To dump the current stack using gdb:
+ {{{
+sudo gdb -n -batch -ex backtrace -pid <PID>
+}}}
+ You may not need/want the `-n` (i.e. do not load gdb initialization files) option. Using `'backtrace full'` instead of `backtrace` will give even more info but might be a tad slower.
+ 1. To dump the current stack using pstack(1):
+ {{{
+sudo pstack <PID>
+}}}
+ 1. To quickly check whether Squid is waiting for a system call:
+ {{{
+sudo cat /proc/<PID>/stack
+}}}
+ This approach does not show Squid functions leading to a system call.
+
+In the above commands, `<PID>` stands for a process ID of the Squid process you want to debug. It is usually a worker process, but it could also be another kid process or even the master process.
+
+
 = Debugging Squid =
 If you believe you have found a non-fatal bug (such as incorrect HTTP processing) please send us a section of your cache.log with debugging to demonstrate the problem.  The cache.log file can become very large, so alternatively, you may want to copy it to an FTP or HTTP server where we can download it.
 
