@@ -297,7 +297,7 @@ This is a template only. Alter it according to the requirements detailed above t
 .if !'po4a'hide' .TH binary.name 8
 .
 .SH NAME
-.if !'po4a'hide' .B binary.name
+.if !'po4a'hide' binary.name
 .if !'po4a'hide' \-
 Description goes here
 .PP
