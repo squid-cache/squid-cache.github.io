@@ -17,36 +17,69 @@ Packages available for Squid on multiple architectures.
 
 Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid
 
- . {i} Debian Stretch or newer required.
+ . {i} Debian Buster (10)
 
- {i} [[Squid-4]] is still a beta release so packages in Debian are still experimental.
-
-Add this to '''/etc/apt/sources.list.d/experimental''' to enable the Debian experimental repository
+Install Procedure:
 {{{
-deb http://deb.debian.org/debian experimental main
+ aptitude install squid
+}}}
+
+ . {i} Debian Stretch (9)
+
+Add this to '''/etc/apt/sources.list.d/testing''' to enable the Debian Buster/testing repository
+{{{
+deb http://deb.debian.org/debian testing main
 }}}
 
 Install Procedure:
 {{{
- aptitude -t experimental install squid
+ aptitude -t testing install squid
+}}}
+
+=== Squid-4 custom package ===
+
+ . {i} Debian Stretch or newer required
+
+Add this to '''/etc/apt/sources.list.d/testing''' to enable the Debian Testing repository
+{{{
+deb http://deb.debian.org/debian testing main
+deb-src http://deb.debian.org/debian testing main
+}}}
+
+Install Procedure for the base package and its dependencies:
+{{{
+ aptitude -t testing install squid
 }}}
 
 The Debian squid team use git to manage these packages creation.
 If the latest code is not yet in the apt repository you can build your own cutting-edge package as follows:
 {{{
 # install build dependencies
-sudo apt-get -t experimental build-dep squid3 squid
+sudo apt-get -t testing build-dep squid
 sudo apt-get install git git-buildpackage
 
-# fetch the Debian package repository managed by the Debian pkg-squid team
-git clone https://anonscm.debian.org/git/pkg-squid/pkg-squid.git/
-cd pkg-squid && git checkout experimental
+# place a hold on future automated upgrades of the squid package
+sudo aptitude hold squid
 
-# the actual build
-gbp buildpackage --git-debian-branch=experimental --git-upstream-tag=HEAD
+# fetch the Debian package repository managed by the Debian pkg-squid team
+git clone https://salsa.debian.org/squid-team/squid.git pkg-squid
+cd pkg-squid && git checkout master
+}}}
+
+Edit debian/rules file to add or remove any custom features you need to change.
+
+Edit the top entry of debian/changelog to a note about your change, and set a local version identifier such as:
+{{{
+squid (4.4-1~example1) UNRELEASED; urgency=medium
+
+ * Added feature X for use by example
+}}}
+
+Building the .deb files
+{{{
+gbp buildpackage
 cd ..
 }}}
-##    --git-upstream-tag=debian/4.0.21-1_exp5
 
  . /!\ the gbp command may fail to sign the packages if you are not a Debian maintainer yourself. That is okay.
 
@@ -58,7 +91,7 @@ Install Procedure:
 ==== Squid-3.5 ====
 Bug Reports: http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid
 
- . {i} Debian Stretch or newer
+ . {i} Debian Stretch
 
 Install Procedure:
 {{{
@@ -112,7 +145,7 @@ aptitude build-dep squid
 }}}
 This requires only that your sources.list contain the '''deb-src''' repository to pull the source package information. Features which are not supported by the distribution package will need investigation to discover the dependency package and install it.
  {i} The usual one requested is '''libssl-dev''' for SSL support.
-  /!\ However, please note that [[Squid-3.5]] is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or Ubuntu Zesty the '''libssl1.0-dev''' package must be used instead. This is resolved in the [[Squid-4]] packages when they become available.
+  /!\ However, please note that [[Squid-3.5]] is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or Ubuntu Zesty the '''libssl1.0-dev''' package must be used instead. This is resolved in the [[Squid-4]] packages.
 
 === Init Script ===
 
