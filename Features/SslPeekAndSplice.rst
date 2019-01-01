@@ -241,5 +241,52 @@ During TLS session resumption, there is no server certificate for Squid to exami
 
 More limitations are TBD.
 
+
+= Logging =
+
+== %ssl::bump_mode logformat code ==
+
+Squid logs a single access.log record to reflect CONNECT request handling. If you add %ssl::bump_mode to your logformat definition, its value in that record would depend on Squid version:
+
+ * Squid v3.5 logs the first ssl_bump decision (usually a step1 action);
+ * Squid v4+ logs the final ssl_bump decision (usually the last used ssl_bump action).
+
+If the tunnel is bumped, then each bumped HTTP request is also logged, of course. The %ssl::bump_mode value in those records is the final !SslBump decision. Naturally, that value is either "bump" or one of the deprecated bumping actions (i.e. "server-first" or "client-first"). This logging behavior of bumped requests is the same for all modern Squid versions.
+
+Here are two version-specific tables that document expected %ssl::bump_mode value for CONNECT and bumped requests.
+
+Squid v3.5 logs:
+
+||||||'''ssl_bump configuration'''||||'''logged value'''||
+||'''step1'''||'''step2'''||'''step3'''|| '''CONNECT''' || '''bumped requests''' ||
+||splice  || -          || -          ||  splice    ||   -    ||
+||bump || -           || -          ||  bump    ||  bump  ||
+||peek || splice ||  -           || peek      || - ||
+||peek || bump || -           || peek      || bump   ||
+||peek || peek || splice  || peek      || - ||
+||peek || stare || bump ||  peek       || bump ||
+||stare || peek || splice  || stare      || - ||
+||stare || stare || bump ||  stare       || bump ||
+||server-first || -           || -          ||  server-first    ||  server-first  ||
+||client-first || -           || -          ||  client-first   ||  client-first  ||
+
+Squid v4+ logs:
+
+||||||'''ssl_bump configuration'''||||'''logged value'''||
+||'''step1'''||'''step2'''||'''step3'''|| '''CONNECT''' || '''bumped requests''' ||
+||splice || -          || -          ||  splice    ||   -    ||
+||bump || -           || -          ||  bump    ||  bump  ||
+||peek || splice ||  -           || splice      || - ||
+||peek || bump || -           || bump      || bump   ||
+||peek || peek || splice  || splice     || - ||
+||peek || stare || bump ||  bump      || bump ||
+||stare || peek || splice  || splice     || - ||
+||stare || stare || bump ||  bump       || bump ||
+||server-first || -           || -          ||  server-first    ||  server-first  ||
+||client-first || -           || -          ||  client-first   ||  client-first  ||
+
+
+The difference between the two tables is in the CONNECT column: Rows with multiple !SslBump steps differ.
+
 ----
 CategoryFeature
