@@ -11,20 +11,33 @@
 
 The set of new features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time.
 
-## Features ported from 2.7 in this release:
-##
-## * 
+Features ported from 2.7 in this release:
+
+ * Class 6 (client response) delay pool
+   - In the form of SquidConf:response_delay_pool and SquidConf:response_delay_pool_access for Squid-to-client speed limiting.
 
 Basic new features in 5.0:
 
-## *  '''Major UI changes:'''
-##  *
+ *  '''Major UI changes:'''
+  * Happy Eyeballs: Use each fully resolved forwarding destination ASAP.
+    - Removes SquidConf:dns_v4_first feature as a side effect.
 
-## * '''Minor UI changes:'''
-##  *
+ * '''Minor UI changes:'''
+  * Add SquidConf:auth_schemes to control schemes presence and order in 401s/407s.
+  * Add ACL types annotate_transaction and annotate_client.
+  * Make CONNECT ACL a built-in default.
+  * Add SquidConf:collapsed_forwarding_access to restrict Collapsed Forwarding of HTTP, ICP and HTCP requests.
+  * Add SquidConf:mark_client_connection and SquidConf:mark_client_packet directives for Netfilter MARK and CONNMARK control.
+  * Add SquidConf:deny_info and error page '''%A''' code to display Squid listening IP address.
+  * New %ssl::&lt;cert macro code to display received server X.509 certificate in PEM format.
 
  * '''Developer Interest changes:'''
-  * [[https://datatracker.ietf.org/doc/draft-rousskov-icap-trailers/|ICAP Trailers]]
+  * [[https://datatracker.ietf.org/doc/draft-rousskov-icap-trailers/|ICAP Trailers]].
+  * Remove USE_CHUNKEDMEMPOOLS compiler flag.
+  * All binaries now use standard EXIT_SUCCESS or EXIT_FAILURE termination results for better OS integration.
+  * Migrated to TrivialDB from deprecated BerkleyDB versions.
+  * ntlm_fake_auth: add ability to test delayed responses.
+  * basic_ldap_auth: return BH on internal errors.
 
 ## The intention with this series is to improve performance using C++11 features. Some remaining [[Squid-2.7]] missing features are listed as regressions in http://www.squid-cache.org/Versions/v5/RELEASENOTES.html#ss5.1
 
