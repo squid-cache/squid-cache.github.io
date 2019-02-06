@@ -22,7 +22,7 @@ This is an alert generated as part of a new security feature added in [[Squid-3.
 
 As outlined in advisory [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|SQUID-2011:1]] these scripts are able to bypass browser security measures and spread infections through the network. They do so by forging the ''Host:'' headers on HTTP traffic going through an interception proxy.
 
-  . {i} When port 443 is intercepted the client SNI value used in a generated CONNECT request can have this check perfomed. If that SNI name does not resolve to the destination server IP(s) this message will be output and TLS halted.
+  . {i} When port 443 is intercepted the client SNI value used in a generated CONNECT request can have this check performed. If that SNI name does not resolve to the destination server IP(s) this message will be output and TLS halted.
 
 To avoid this vulnerability Squid has resolved the domain name the client was supposedly contacting and determined that the IP the HTTP request was going to does not belong to that domain name.
 
@@ -69,17 +69,22 @@ The below details are mandatory configuration for NAT intercept or TPROXY proxie
   . Certain popular CDN hosting networks use load balancing systems to determine which website IPs to return in the DNS query response. These are based on the querying DNS resolvers IP. If Squid and the client are using different resolvers there is an increased chance of different results being given. Which can lead to this alert.
 
  * ensure that your DNS servers are obeying the IP rotation TTL for that domain name.
-  . Certain CDN networks load balance by rotating a set of IPs in and out of service with each TTL cycle. Storing the website IPs longer than the TTL permits is a violation of DNS system protocol which produces incorrect DNS responses periodically. This alert is just one of the more visible side effects that violation causes.
+  . Certain CDN networks load balance by rotating a set of IPs in and out of service with each TTL cycle. Storing the website IPs longer than the TTL permits is a violation of DNS protocol which produces incorrect DNS responses periodically. This alert is just one of the more visible side effects that violation causes.
 
  * ensure that the commercial 8.8.8.8 service is not being used directly.
   . This service is known to be particularly bad with rotation of lookup results on each query - much faster than even the TTL for the zones it is serving.
   . If you really need to use this service at all a local DNS resolver should be setup that uses it as upstream forwarder. The local network machines can use that local resolver to access DNS.
 
-This is optional and may not be possible, but is useful when it works:
+These are optional and may not be possible, but is useful when they work:
 
  * enable EDNS (extended-DNS jumbogram) and large UDP packet support.
   . Some popular domains are hosted on more IPs than will fit in a regular DNS query response. Their responses may appear inconsistent as IPs appear and disappear in the small set the regular DNS packet displays.
   . [[Squid-3.2]] can attempt to use EDNS to get larger packets with all IPs of these domains by setting the SquidConf:dns_packet_max directive. This reduces Squids chance of loosing the IP the client is connecting to but requires both your resolver to support EDNS and network to support jumbograms.
+
+ * restrict HTTP persistent (keep-alive) connections.
+  . Since the issue with CDNs is basically their DNS responses changing too rapidly the long lifetime of HTTP connections can exceed that change and cause false failures.
+  . The SquidConf:client_lifetime can be configured to similarly short times to reduce the occurrence of these mismatches. The default 1 day is tuned to match DNS recommended best practice TTL.
+  . Alternatively SquidConf:client_persistent_connections can be set to '''off''' to disable HTTP keep-alive entirely.
 
 '''Alternative Causes'''
 
