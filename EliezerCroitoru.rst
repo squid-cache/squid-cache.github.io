@@ -9,6 +9,46 @@ Email: <<MailTo(eliezer@ngtech.co.il)>>
 
 <<TableOfContents>>
 
+= 2019_02 =
+----
+Licensing update about the code I post in the wiki.
+The code I post in the wiki if not presented a specific License is 3-Clause BSD as in:
+ * [[http://ngtech.co.il/license/|NgTech LTD BSD License]]
+ * [[https://opensource.org/licenses/BSD-3-Clause|The 3-Clause BSD License template]]
+
+== WCCP monitoring alternative ==
+I have been working on replacing the logic of WCCP to the favor of a TCP based service that can be monitored from Mikrotik Routers and other Linux base systems such as VyOS, EdgeOS xWRT etc..
+The code for now is written in Golang due to it being simple at [[https://gogs.ngtech.co.il/NgTech-LTD/check-systemd-squid|check-systemd-squid]].
+The concept of the monitoring is to use two or three methods
+ * availability of the cache manager info page
+ * availability of a specific web host target such as google, cloudflare or an ISP internal web service
+ * the continues state of a tcp connection to the proxy like in BGP, ...as long as the connection is open to keepalive packets the proxy software is running
+
+I have a complex lab setup with every major OS:
+ * Windows Desktop+Server(2k12,2k16,2k19,7,8.1,10)
+ * Linux Desktop+Server+Router(CentOS,Ubunut,Debian,Alpine,Arch..)
+ * BSD(Free.Open.Nano,BSDRP)
+ * Mikrotik RouterOS
+ * JunOS SRX and MX
+ * VyOS
+ * EdgeOS
+ * '''''no''''' CISCO
+
+Most of them do not work with WCCP but relay on something like PBR or FBF or another way to pass the traffic towards squid or Intercept the traffic on them.
+Each and every one of them needs a specific set of configurations but I support Linux and MT for now, the others are just there to understand the market.
+
+== StoreID YouTube caching V 2019 ==
+I worked on another way to cache YouTube videos for Desktop and integrated it both locally and remotely in couple places around the world that has a SAT(WIFI dish) connection in jungles and mountains 
+and it seems to work as expected (at-least 30% hit rate).
+
+I will try to add it into the wiki while it's not 100% opensource but will have enough references for these who want to implement something similar.
+
+Requires:
+ * ICAP Service(reqmod and respomod)
+ * redis-server(optional)
+ * StoreID helper
+
+
 = 2017_06 =
 ----
 
