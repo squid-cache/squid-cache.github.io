@@ -7,6 +7,11 @@
 ## if you want to have a table of comments remove the heading hashes from the next line
 ## [[TableOfContents]]
 
+== FreeBSD 12 ==
+ 1. create jenkins user {{{ adduser }}}
+ 1. pkg install openjdk8-jre git cppunit libxml2 ccache autoconf automake libtool m4 nettle autoconf-archive libltdl
+Note: you may have to install some packages from ports instead to ensure that the versions are aligned
+
 == FreeBSD 9 ==
  1. create jenkins user {{{ adduser }}}
  1. pkg_add -r openjdk8 bzr git cppunit libxml ccache autoconf automake libtool m4 nettle autoconf-archive
