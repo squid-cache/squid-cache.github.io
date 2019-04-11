@@ -65,6 +65,7 @@ Key:
 || :\ || (./) || (./) || (./) || :\ ||''mem/'' ||Basic Memory management || class renaming, documentation, unit tests ||
 || :\ || (./) || <:( || (./) || :\ ||''mgr/'' ||Cache Manager ||Move in CacheManager.h, cache_manager.cc, and test cases ||
 || :\ || <:( || (./) || <:( || (./) || ''parser/'' || generic parsing primitives || ||
+|| <:( || <:( || (./) || (./) || <:( || ''proxyp/'' || PROXY protocol primitives || ||
 || <:( || <:( || <:( || <:( || <:( ||''redirect/'' ||URL alteration (redirectors, URL-rewrite, URL maps) ||redirect.* !RedirectInternal.* ||
 || <:( || <:( || <:( || <:( || :\ ||''repl/heap/'' ||HEAP Replacement Policy algorithms ||
 || <:( || <:( || <:( || <:( || :\ ||''repl/lru/'' ||Cache Replacement Policy algorithms ||
