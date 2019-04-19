@@ -82,7 +82,7 @@ Yon can easy to extend rules to cover IPv6 networks.
 
 If Telegram starts hide it bootstrap behind world CDN's, just extend rules above to pattern http://0.0.0.0/api.
 
-If you would like also to ban MTProto proxy, keep in mind it uses non-TLS handshake without presenting any legitimate certificate signed by the well-known CA. So, this can be easy to ban using [[https://urlfilterdb.com|Ufdbguard]] or by writing certificate testing helper for Squid.
+ . {i} Note: If you would like also to ban '''MTProto proxy''', keep in mind it uses non-TLS handshake without presenting any legitimate certificate signed by the well-known CA. So, this can be easy to ban using [[https://urlfilterdb.com|Ufdbguard]] or by writing certificate testing helper for Squid.
 
 ----
 CategoryConfigExample
