@@ -63,8 +63,8 @@ To block Telegram by any reason it is enough to write config snippet like this:
 
 {{{
 # Block Telegram
-acl Telegram url_regex 149\.154\.1(6[0-9]|7[0-5])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\/api$
-acl Telegram url_regex 91\.108\.([4-7]|5[6|7])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\/api$
+acl Telegram url_regex ^http:\/\/149\.154\.1(6[0-9]|7[0-5])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\/api$
+acl Telegram url_regex ^http:\/\/91\.108\.([4-7]|5[6|7])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\/api$
 http_access deny Telegram
 deny_info TCP_RESET Telegram
 
