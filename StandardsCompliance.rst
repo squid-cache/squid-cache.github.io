@@ -90,6 +90,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7858 || Specification for DNS over Transport Layer Security (TLS) || {X} ||
 || RFC:8187 || Indicating Character Encoding and Language for HTTP Header Field Parameters || {X} ||
 || RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
+|| RFC:8586 || Loop Detection in Content Delivery Networks (CDNs) || (./) || from [[Squid-5]]. ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
