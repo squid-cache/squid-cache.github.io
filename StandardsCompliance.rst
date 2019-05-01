@@ -18,7 +18,7 @@
 
 Squid behaviour is governed by a great many International standards and requirements. Below is a list of the standards to which Squid is expected to obey and an indication of whether we believe it does.
 
-  * This list was updated 2015-05-15. Details are believed to be accurate for the current release 3.5.4 or later.
+  * This list was updated 2019-05-02. Details are believed to be accurate for the current release 4.6 or later.
 
  {i} this list is known to be incomplete. If you are aware of anything important which has been omitted please [[http://bugs.squid-cache.org/|report it]] as a website bug.
 
