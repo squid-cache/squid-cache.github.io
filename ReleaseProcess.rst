@@ -16,7 +16,7 @@ Please check the '''Pending Bugs''' page for your particular release.
 
 '''Snapshots''' made from Stable branches are beta releases for the next Stable release from that branch.
 
- <!> If you have any compile related problems with a release, please report using [[http://bugs.squid-cache.org/|bugzilla]] or write to our ''squid-dev@squid-cache.org'' mailing list. '''DO NOT''' write to squid-users with code-related problems.
+ <!> If you have any compile related problems with a release, please report using [[http://bugs.squid-cache.org/|bugzilla]] or write to our ''squid-dev@lists.squid-cache.org'' mailing list. '''DO NOT''' write to squid-users with code-related problems.
 
 AmosJeffries makes a new Stable release at or shortly after the end of each month if the following conditions are met since the previous release:
 
@@ -34,7 +34,7 @@ Releases begin when all features intended for a release are merged into the code
 
 '''Snapshots''' made from Beta branches are ''update'' beta releases for the next bundle release from that branch.
 
- <!> If you have any problems with a release, please report using [[http://bugs.squid-cache.org/|bugzilla]] or write to our ''squid-dev@squid-cache.org'' mailing list. DO NOT write to squid-users with code-related beta release problems.
+ <!> If you have any problems with a release, please report using [[http://bugs.squid-cache.org/|bugzilla]] or write to our ''squid-dev@lists.squid-cache.org'' mailing list. DO NOT write to squid-users with code-related beta release problems.
 
 AmosJeffries makes a Beta release at or shortly after the end of each month. Out of cycle release are made to:
  * fix security vulnerabilities or similar serious bugs
@@ -48,7 +48,7 @@ These releases are meant for Squid users who are already familiar with Squid.
 You should expect to find bugs and problems with the development snapshots.
 We do not recommend running a development snapshot on your production cache without a local QA process.
 
- <!> If you have any problems with a release, please write to our ''squid-dev@squid-cache.org'' mailing list.
+ <!> If you have any problems with a release, please write to our ''squid-dev@lists.squid-cache.org'' mailing list.
   . '''DO NOT''' write to squid-users with code-related or development release problems.
 
 
