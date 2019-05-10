@@ -125,9 +125,9 @@ chown squid:squid -R /var/lib/ssl_db
 
  . /!\ The low-privilege account varies by OS and may not be 'squid' in your system.
 
- . /!\ also, be aware that SELinux and AppArmour permissions may need to be updated to allow the Squdi helper to use this directory.
+ . /!\ also, be aware that SELinux and AppArmour permissions may need to be updated to allow the Squid helper to use this directory.
 
- . /!\ certificates cache directory uses only if squid configured with --enable-ssl-crtd. Otherwise bump will work, but no certificates will store anywhere.
+ . /!\ certificates cache directory used only if squid configured with --enable-ssl-crtd. Otherwise bump will work, but no certificates will store anywhere.
 
 == Troubleshooting ==
 
