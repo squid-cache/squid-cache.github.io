@@ -49,7 +49,7 @@ Squid-3.2 and newer support dynamic helper initialization. That means the helper
 With startup=0 configured the first HTTP request through Squid is expected to start at least one instance for most of the helpers. But if for example an external ACL is configured and is only tested on rare occasions its helper will not be started until that rare occasion happens for the first time.
 
 === What happens when Squid shuts down or reconfigures? ===
-When shutting down, reconfiguring, or in other times Squid needs to shutdown a helper. Squid schedules a shutdown of the helper, which will happen when all the in-progress lookups are completed.
+When shutting down, reconfiguring, or in other times Squid needs to shutdown a helper Squid schedules closure of the stdin connection of the helper. When all the in-progress lookups are completed the helper should receive this close signal when reading stdin.
 
 Shutting down or restarting are limited by the SquidConf:shutdown_timeout which may cause Squid to abort earlier than receiving all the responses. If this happens the client connections are also being terminated just as abruptly as the helper - so the lost helper responses are not an issue.
 
@@ -58,7 +58,7 @@ You can. In a way.
 
 Squid runs the configured helper for each interface as a separate child process. Your helper can be written to detect other running instances of itself and communicate between them, effectively sharing memory and/or state outside of Squid regardless of the interface Squid is using to run each instance.
 
-NP: Just keep in mind that the number of instances (children) running on each interface is configurable and could be anything form zero to many hundreds. So do not make any assumptions about which interface another instance is running on.
+NP: Just keep in mind that the number of instances (children) running on each interface is configurable and could be anything from zero to many hundreds. So do not make any assumptions about which interface another instance is running on.
 
 == Squid operations which provide a helper interface ==
 
