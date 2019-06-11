@@ -235,5 +235,68 @@ The following ./configure options install Squid into the CentOS structure proper
 ##  Cross-OS errors go in Features with the relevant feature.
 ## Followed by a description of what it means and the solution if known.
 
+== Repository Mirror Script ==
+A copy of <https://gist.github.com/elico/333bff85f3df2889db7af2795f9d7898>
+
+{{{#!highlight bash
+#!/usr/bin/env bash
+
+#  @author:       Alexandre Plennevaux
+#  @description:  MIRROR DISTANT FOLDER TO LOCAL FOLDER using lftp
+#  @modified:     Eliezer Croitoru to mirror remote HTTP repo
+#  @url: 	  https://gist.github.com/pixeline/0f9f922cffb5a6bba97a
+
+## LICENSE, 3-Clause BSD.
+
+lockfile -r 0 /tmp/mirror-ngtech-repo.lock || exit 1
+
+# FTP LOGIN
+HOST='http://ngtech.co.il'
+PORT="80"
+
+#USER='ftpusername'
+#PASSWORD='ftppassword'
+
+# DISTANT DIRECTORY
+REMOTE_DIR='/repo/'
+
+#LOCAL DIRECTORY
+LOCAL_DIR='/tmp/backups'
+
+DOWNLOAD_SPEED="1M"
+
+# RUNTIME!
+echo
+echo "Starting download ${REMOTE_DIR} from ${HOST} to ${LOCAL_DIR}"
+date
+
+#lftp -u "${USER}","${PASSWORD}" ${HOST} <<EOF
+lftp ${HOST}${REMOTE_DIR} -p ${PORT} <<EOF
+
+# the next 3 lines put you in ftpes mode. Uncomment if you are having trouble connecting.
+# set ftp:ssl-force true
+# set ftp:ssl-protect-data true
+# set ssl:verify-certificate no
+# transfer starts now...
+# mirror --only-newer --use-pget-n=10 ${REMOTE_DIR} ${LOCAL_DIR};
+
+# set download and upload speed limit.
+set net:limit-total-rate ${DOWNLOAD_SPEED}:500K
+
+# start mirroring the folder.
+mirror --only-newer --parallel=10 ${REMOTE_DIR} ${LOCAL_DIR};
+
+exit
+EOF
+echo
+echo "Transfer finished"
+rm -f /tmp/mirror-ngtech-repo.lock
+date
+}}}
+
+== Cern Mirror of NgTech rpository ==
+Cern labs are mirroring NgTech repository for quite some time to: 
+ * http://linuxsoft.cern.ch/mirror/www1.ngtech.co.il/repo/centos/7/
+
 ----
 CategoryKnowledgeBase SquidFaq/BinaryPackages
