@@ -236,7 +236,7 @@ The following ./configure options install Squid into the CentOS structure proper
 ## Followed by a description of what it means and the solution if known.
 
 == Repository Mirror Script ==
-A copy of <https://gist.github.com/elico/333bff85f3df2889db7af2795f9d7898>
+A copy of https://gist.github.com/elico/333bff85f3df2889db7af2795f9d7898
 
 {{{#!highlight bash
 #!/usr/bin/env bash
