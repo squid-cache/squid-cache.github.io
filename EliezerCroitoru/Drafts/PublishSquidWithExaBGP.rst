@@ -68,12 +68,14 @@ neighbor 10.0.55.254 {
                         watchdog squid;
                         local-preference 100;
                         med 100;
+                        withdraw;
                 }
                 route 10.1.55.2/32 {
                         next-hop self;
                         watchdog squid;
                         local-preference 400;
                         med 400;
+                        withdraw;
                 }
         }
 }
@@ -83,7 +85,7 @@ neighbor 10.0.55.254 {
 #!highlight bash
 #!/usr/bin/env bash
 
-STATE="start"
+STATE="down"
 
 while true; do
   ls /etc/exabgp/squid-up  >/dev/null 2>&1
