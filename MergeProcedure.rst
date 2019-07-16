@@ -33,7 +33,7 @@ If you are sure that an item does not apply to your specific situation, just ski
 
  1. Copyright statement and license for newly imported code are added to the CREDITS file.
 
- 1. Development branch rebased on top of the official master branch.
+ 1. Development branch can be merged into the official master branch without conflicts and the merge result contains nothing but the proposed new code/changes.
 
  1. ''git diff --check upstream/master'' produces no warnings/errors and exits with zero status code. Adjust remote (i.e., "upstream") to match the official repository (i.e., ''github.com:squid-cache/squid.git'') as needed.
 
