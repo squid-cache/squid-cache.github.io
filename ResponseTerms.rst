@@ -4,7 +4,7 @@ This page describes different kinds of responses (and their sources) Squid deals
 
 == Details ==
 
-The diagram, outlined below helps to understand various response sources and their relation to Squid subsystems (''client'' and ''server''):
+The diagram, outlined below, helps to understand various response sources and their relation to Squid subsystems (''client'' and ''server''):
  
 {{{
 client <-- (sent) -- Squid server <-- (received) -- post-cache RESPMOD adaptation service(s) <-- Squid client <-- (virgin) -- origin server or cache peer
