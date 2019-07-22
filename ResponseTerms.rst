@@ -25,4 +25,6 @@ a response received by Squid. Typical sources include origin servers, cache peer
 
 * '''final''': A response that ends the corresponding protocol transaction (e.g., HTTP 200 OK).
 
-* '''interim''': Not a final response (e.g., HTTP 100 Continue).
+* '''interim''': Not a final response (e.g., HTTP 100 Continue). In most deployment environments, most transactions do not have interim responses.
+
+* '''last''': A single transaction may deal with zero or more interim responses and at most one final response. Usually, a logformat %code is expanded to the latest ''at %code expansion time'' response (i.e. the final response or, if there is no final response, the interim response closest to the final response). Since logformat %codes may be expanded when setting annotations and communicating with helpers, external ACLs, and adaptation services, the same %code may expand to different values within the same transaction, depending on the timing of that %code use.
