@@ -173,7 +173,7 @@ Since exif can be used for tracking, it is a good idea to remove metadata from i
 
 === Build eCAP EXIF adapter ===
 
- . {i} Note: This adapter critical for its dependencies. Dut to repositories often contains rancid versions, it is recommended to build dependencies from sources as fresh as possible? as shown below.
+ . {i} Note: This adapter critical for its dependencies. Dut to repositories often contains rancid versions, it is recommended to build dependencies from sources as fresh as possible, as shown below.
  
 First, build and install dependencies:
  
