@@ -258,6 +258,8 @@ make install
 
 Make shure all shared libraries are installed.
 
+ . {i} Note: Use correct compiler full path, depending your setup. Commands above is my system-specific. ;)
+
 Then, build and install adapter:
 
 {{{
