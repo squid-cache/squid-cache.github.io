@@ -280,6 +280,24 @@ make install-strip
 
  . {i} Note: Before run, make sure all dependencies are ok with ldd -d command. Should no dangling references on any dependency functions/libraries.
  
+=== Adapter configuration ===
+
+Adapter configures via ecap_service arguments in squid.conf.
+
+Supported configuration parameters:
+
+{{{
+tmp_filename_format
+    Set the format of temporary files that will be processed
+    by the adapter.
+memory_filesize_limit
+    Files with size greater than limit will be stored in temporary
+    disk storage, otherwise processing will be done in RAM.
+exclude_types
+    List of semicolon seprated MIME types which shouldn't be
+    handled by adapter.
+}}}
+
 === Squid Configuration File ===
 
 Paste the configuration file like this:
