@@ -14,9 +14,9 @@
 
 === Outline ===
 
-Since Squid does not support runtime content compression with GZip, we will be used existing eCAP support and [[https://github.com/c-rack/squid-ecap-gzip|GZip eCAP module]].
+Since Squid does not support runtime content compression with GZip, we will be used existing eCAP support and [[https://github.com/yvoinov/squid-ecap-gzip|re-worked and improved version from here]].
 
- . {i} Note: Since the author has long abandoned adapter above, you can also use [[https://github.com/yvoinov/squid-ecap-gzip|re-worked and improved version from here]].
+ . {i} Note: Since the original author has long abandoned adapter use re-worked and improved version.
 
 === Usage ===
 
@@ -46,23 +46,46 @@ Then rebuild your Squid with --enable-ecap configure option. To do that you may 
 }}}
 PKG_CONFIG_PATH pointed to libecap pkgconfig file.
 
-=== Patch and build squid-ecap-gzip ===
+=== Build squid-ecap-gzip ===
 
-To build [[https://github.com/c-rack/squid-ecap-gzip|squid-ecap-gzip]] with corresponding eCAP library, you need apply patch for [[attachment:squid-ecap-gzip_up_to_libecap-0.2.0.patch|0.2.0]] or [[attachment:squid-ecap-gzip_up_to_libecap-1.0.0.patch|1.0.0]] first.
-
- . {i} Note: Patch 1.0.0 appropriate also when using libecap 1.0.1.
-
-Then build squid-ecap-gzip:
 {{{
-## 32 bit GCC
-./configure 'CXXFLAGS=-O2 -m32 -pipe' 'CFLAGS=-O2 -m32 -pipe' 'LDFLAGS=-L/usr/local/lib'
-## 64 bit GCC
-./configure 'CXXFLAGS=-O2 -m64 -pipe' 'CFLAGS=-O2 -m64 -pipe' 'LDFLAGS=-L/usr/local/lib'
-gmake
-gmake install-strip
+./configure 'CXXFLAGS=-m32' 'LDFLAGS=-L/usr/local/lib'
+
+or
+
+./configure 'CXXFLAGS=-m64' 'LDFLAGS=-L/usr/local/lib'
+
+make
+make install-strip
 }}}
 
  . {i} Note: It is important to choose identical 32 or 64 bit (like your Squid) build mode for eCAP library and squid-gzip-ecap.
+
+ . {i} Note: LDFLAGS should point on libecap directory.
+ 
+=== Adapter configuration ===
+
+Adapter versions starting 1.5.0 configures via ecap_service arguments in squid.conf.
+
+Supported configuration parameters:
+
+{{{
+maxsize (default 16777216 bytes, i.e. 16 Mb) - maximum compressed file size
+level (default is 6, valid range 0-9) - gzip/deflate global compression level
+errlogname (default path/filename is /var/log/ecap_gzip_err.log)	- arbitrary error log name.
+complogname (default path/filename is /var/log/ecap_gzip_comp.log)	- arbitrary compression log name.
+errlog (default is 0, default path/filename is /var/log/ecap_gzip_err.log) 	- error log
+complog (default is 0, default path/filename is /var/log/ecap_gzip_comp.log)	- compression log
+}}}
+
+ . {i} Note: errlogname/complogname should be specify with full path and file name. Directory(-ies) should have write permission for proxy.
+      If file(s) exists - it will appends. It not exists - will be created.
+
+Adapter logging disabled by default. To enable error log specify errlog=1. To enable compression log specify complog=1.
+Proxy must have permissions to write.
+
+ . {i} Note: When configuration parameters has any error in specifications, adapter starts with defaults. If error log exists,
+      diagnostics message will be write.
 
 === Squid Configuration File ===
 
@@ -71,156 +94,212 @@ Paste the configuration file like this:
 {{{
 
 ecap_enable on
-acl HTTP_STATUS_OK http_status 200
+acl gzipmimes rep_mime_type -i "/usr/local/squid/etc/acl.gzipmimes"
 loadable_modules /usr/local/lib/ecap_adapter_gzip.so
-ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass=off
-adaptation_access gzip_service allow HTTP_STATUS_OK
+ecap_service gzip_service respmod_precache ecap://www.thecacheworks.com/ecap_gzip_deflate [maxsize=16777216] [level=6] [errlog=0] [complog=0] bypass=off
+adaptation_access gzip_service allow gzipmimes
 
 }}}
 
-Also you can add next lines to your squid.conf:
+acl.gzipmimes contents:
 
 {{{
-
-# Replace Accept-Encoding to support compression via eCAP
-request_header_access Accept-Encoding deny all
-request_header_replace Accept-Encoding gzip
-
+# Note: single "/" produces error in simulators,
+#       but works in squid's regex
+^application/atom+xml
+^application/dash+xml
+^application/javascript
+^application/json
+^application/ld+json
+^application/manifest+json
+^application/opensearchdescription+xml
+^application/rdf+xml
+^application/rss+xml
+^application/schema+json
+^application/soap+xml
+^application/vnd.apple.installer+xml
+^application/vnd.apple.mpegurl
+^application/vnd.geo+json
+^application/vnd.google-earth.kml+xml
+^application/vnd.mozilla.xul+xml
+^application/x-apple-plist
+^application/x-javascript
+^application/x-mpegurl
+^application/x-ns-proxy-autoconfig
+^application/x-protobuffer
+^application/x-web-app-manifest+json
+^application/x-www-form-urlencoded
+^application/xop+xml
+^application/xhtml+xml
+^application/xml
+^application/x-yaml
+^application/x-cdf
+^application/txt
+^application/x-sdch-dictionary
+^application/x-steam-manifest
+^audio/x-mpegurl
+^image/svg+xml
+^image/x-icon
+^text/.*
+^video/abst
+^video/vnd.mpeg.dash.mpd
 }}}
-
-to adapt Accept-Encoding to set gzip support first.
 
 Finally, restart your Squid and enjoy.
 
- . {X} Note: Don't specify Accept-Encoding in request_header_replace like this: '''gzip;q=1.0, identity; q=0.5, *;q=0'''. This is correct, but Yahoo experienced known problems with this encoding specifications. Also note - identity is default and you do not required to specify it.
+==== Notes ====
 
-=== Support compression all text/* or extended text content types ===
+Due to performance reasons, all mime checks executes only once outside adapter, at proxy level.
+So, be careful when choose what mime types will be pass into adapter.
 
-To support compression not only text/html, but also all text/* (i.e. text/javascript, text/plain, text/xml, text/css) types you must patch squid-ecap-gzip with [[attachment:squid-ecap-gzip_all_text_compressed.patch|this one]]:
+Also, HTTP/200 status now checks directly inside adapter. So, this rule:
 
+acl HTTP_STATUS_OK http_status 200
+adaptation_access gzip_service allow HTTP_STATUS_OK
+
+is no longer required.
+
+Also be careful with text/plain mime-type. For some reasons you may be required to remove it from acl,
+because of sometimes plain text files can be inadequately big and and can overload the CPU during
+decompression. In this case specify "maxsize" which fit you requirements.
+
+ . {i} Note: Adapter requires c++11 - compatible C++ compiler to build.
+
+== Using eCAP for EXIF stripping from images with Squid 3.x/4.x ==
+
+=== Outline ===
+
+Since exif can be used for tracking, it is a good idea to remove metadata from images and documents uploaded to the web. To do that, you can use this [[[https://github.com/yvoinov/squid-ecap-exif|re-worked and improved adapter from here]] (fork from [[https://github.com/maxpmaxp/ecap-exif|original version]]).
+
+=== Build eCAP EXIF adapter ===
+
+ . {i} Note: This adapter critical for its dependencies. Dut to repositories often contains rancid versions, it is recommended to build dependencies from sources as fresh as possible? as shown below.
+ 
+First, build and install dependencies:
+ 
 {{{
---- src/adapter_gzip.cc 2011-02-13 17:42:20.000000000 +0300
-+++ src/adapter_gzip.cc 2012-02-26 03:37:26.000000000 +0400
-@@ -353,17 +353,19 @@
- -* At this time, only responses with "text/html" content-type are allowed to be compressed.
- +* At this time, only responses with "text/*" content-type are allowed to be compressed.
- */
- static const libecap::Name contentTypeName("Content-Type");
- -
- +
- // Set default value
- this->requirements.responseContentTypeOk = false;
-if(adapted->header().hasAny(contentTypeName)) {
- const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
- -
- + std::string contentTypeType; // store contenttype substr
- +
- if(contentType.size > 0) {
- std::string contentTypeString = contentType.toString(); // expensive
- + contentTypeType = contentTypeString.substr(0,4);
- - if(strstr(contentTypeString.c_str(),"text/html")) {
- + if(strstr(contentTypeType.c_str(),"text")) {
- this->requirements.responseContentTypeOk = true;
- }
- }
+#### Dependencies (for PoDoFo)
+## Fontconfig
+## Freetype2
+##
+## On Solaris install this:
+## CSWlibfreetype-dev
+## CSWlibfreetype6
+## CSWfontconfig-dev
+## CSWfontconfig
+
+----------------------------------------------------------------------------------------------------
+*** Built libtag
+
+## 64 bit
+mkdir build
+cd build
+CC=/opt/csw/bin/gcc CXXFLAGS=-m64 cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS:BOOL=TRUE ..
+
+## 32 bit
+mkdir build
+cd build
+CC=/opt/csw/bin/gcc CXXFLAGS=-m32 cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS:BOOL=TRUE ..
+
+make -j8
+make install
+
+----------------------------------------------------------------------------------------------------
+*** Build libzip
+
+## 64 bit
+mkdir build
+cd build
+CC=/opt/csw/bin/gcc CFLAGS=-m64 cmake ..
+
+## 32 bit
+mkdir build
+cd build
+CC=/opt/csw/bin/gcc CFLAGS=-m32 cmake ..
+
+make -j8
+make install
+
+----------------------------------------------------------------------------------------------------
+*** Build exiv
+
+## Note: Use DevStudio on Solaris
+
+## 64 bit
+mkdir build
+cd build
+CFLAGS=-m64 CXXFLAGS=-m64 LDFLAGS='-lsocket -lnsl' cmake ..
+
+## 32 bit
+mkdir build
+cd build
+CFLAGS=-m32 CXXFLAGS=-m32 LDFLAGS='-lsocket -lnsl' cmake ..
+
+make -j8
+make install
+
+----------------------------------------------------------------------------------------------------
+*** Build PoDoFo
+
+## 64 bit
+## Note: FREETYPE_INCLUDE_DIR and FREETYPE_LIBRARY depends from your system. Adjust it.
+mkdir podofo-build
+cd podofo-build
+CC=/opt/csw/bin/gcc CFLAGS=-m64 CXXFLAGS=-m64 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="/usr/local" \
+						-DCMAKE_BUILD_TYPE=RELEASE \
+						-DFREETYPE_LIBRARY="/opt/csw/lib" \
+						-DFREETYPE_INCLUDE_DIR="/opt/csw/include/freetype2" \
+ 						-DPODOFO_BUILD_LIB_ONLY:BOOL=TRUE \
+						-DPODOFO_BUILD_SHARED:BOOL=TRUE \
+						-DPODOFO_BUILD_STATIC:BOOL=TRUE ..
+make -j8
+make install
 }}}
 
- . {i} Note: This is not all possible text types in modern Web. If you want to achieve less disk cache and a bit more delivery speed, you can apply [[attachment:gzip_ecap_extended_compressible_types_v1_6.patch|another patch]] against previous:
+Make shure all shared libraries are installed.
+
+Then, build and install adapter:
 
 {{{
---- src/adapter_gzip.cc		Tue Jun 21 03:20:48 2016
-+++ src/adapter_gzip.cc		Tue Jun 21 03:24:34 2016
-@@ -367,7 +367,6 @@
- 
- 	/**
- 	 * Checks the Content-Type response header.
--	 * At this time, only responses with "text/html" content-type are allowed to be compressed.
- 	 */
- 	static const libecap::Name contentTypeName("Content-Type");
- 	
-@@ -376,13 +375,27 @@
- 
- 	if(adapted->header().hasAny(contentTypeName)) {
- 		const libecap::Header::Value contentType = adapted->header().value(contentTypeName);
--		
-+
-+		std::string contentTypeType; // store contenttype substr		
-+
- 		if(contentType.size > 0) {
- 			std::string contentTypeString = contentType.toString(); // expensive
--			
--			if(strstr(contentTypeString.c_str(),"text/html")) {
-+			contentTypeType = contentTypeString.substr(0,4);			
-+			if(strstr(contentTypeType.c_str(),"text")) {
- 				this->requirements.responseContentTypeOk = true;
- 			}
-+			else if(strstr(contentTypeString.c_str(),"application/xml")) {
-+				this->requirements.responseContentTypeOk = true;
-+			}
-+			else if(strstr(contentTypeString.c_str(),"application/javascript")) {
-+				this->requirements.responseContentTypeOk = true;
-+			}
-+			else if(strstr(contentTypeString.c_str(),"application/x-javascript")) {
-+				this->requirements.responseContentTypeOk = true;
-+			}
-+			else if(strstr(contentTypeString.c_str(),"application/x-protobuffer")) {
-+				this->requirements.responseContentTypeOk = true;
-+			}
- 		}
- 	}
- 
-@@ -410,7 +423,7 @@
- 	adapted->header().add(name, value);
- 	
- 
--	// Add "Vary: Accept-Encoding" response header if Content-Type is "text/html"
-+	// Add "Vary: Accept-Encoding" response header if Content-Type is supported type
- 	if(requirements.responseContentTypeOk) {
- 		static const libecap::Name varyName("Vary");
- 		const libecap::Header::Value varyValue = libecap::Area::FromTempString("Accept-Encoding");
+*** Build ecap-exif
 
+## Note: /opt/csw/include is Solaris. Adjust it.
+## Note: Optimization level -O3 enabled by default.
+
+./configure 'CXXFLAGS=-m64 -mtune=native' 'LDFLAGS=-L/usr/local/lib' 'CPPFLAGS=-I/usr/local/include/taglib -I/usr/local/include/podofo -I/usr/local/include -I/opt/csw/include'
+
+or 
+
+./configure 'CXXFLAGS=-m32 -mtune=native' 'LDFLAGS=-L/usr/local/lib' 'CPPFLAGS=-I/usr/local/include/taglib -I/usr/local/include/podofo -I/usr/local/include -I/opt/csw/include'
+
+make -j8
+make install-strip
 }}}
 
-After applying this patch has the meaning to change access to adapter as follows:
+ . {i} Note: Before run, make sure all dependencies are ok with ldd -d command. Should no dangling references on any dependency functions/libraries.
+ 
+=== Squid Configuration File ===
+
+Paste the configuration file like this:
 
 {{{
 ecap_enable on
-acl HTTP_STATUS_OK http_status 200
-loadable_modules /usr/local/lib/ecap_adapter_gzip.so
-ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass=off
-acl allowedmime rep_mime_type -i (text\/|javascript|xml|application\/x-protobuffer)
-adaptation_access gzip_service allow allowedmime
-adaptation_access gzip_service allow HTTP_STATUS_OK
+loadable_modules /usr/local/lib/ecap_adapter_exif.so
+ecap_service eReqmod reqmod_precache bypass=off ecap://www.thecacheworks.com/exif-filter
+
+adaptation_service_set reqFilter eReqmod
+adaptation_access reqFilter allow all
 }}}
 
-to prevent adapter overloading with unsupported types.
+Finally, restart your Squid and enjoy.
 
- . {X} Note: To prevent possible memory leaking during adapter running, you can also use [[attachment:gzip_ecap_vb_stop_on_done_v1.patch|this patch]]:
+To log debug messages use:
 
 {{{
---- src/adapter_gzip.cc		Wed Jun  8 21:21:10 2016
-+++ src/adapter_gzip.cc		Sat Jun 18 22:32:09 2016
-@@ -548,7 +548,7 @@
- 	
- 
- 	Must(receivingVb == opOn);
--	receivingVb = opComplete;
-+	stopVb();
- 	if (sendingAb == opOn) {
- 		hostx->noteAbContentDone(atEnd);
- 		sendingAb = opComplete;
-@@ -611,7 +611,7 @@
- // if the host does not know that already
- void Adapter::Xaction::stopVb() {
- 	if (receivingVb == opOn) {
--		hostx->vbStopMaking();
-+		hostx->vbStopMaking(); // we will not call vbContent() any more
- 		receivingVb = opComplete;
- 	} else {
- 		// we already got the entire body or refused it earlier
+debug_options ALL,1 93,9
 }}}
 
-This patch is based on original Alex Rousskov patch from [[https://answers.launchpad.net/ecap/+question/295319|here]].
+To make sure adapter works use [[https://www.get-metadata.com/|this site]]. Just check raw image before upload, then upload it to any social via proxy, download and check metadata again. If no - all runs ok.
 
 == Using eCAP for antivirus checking with Squid 3.x/4.x ==
 
@@ -290,7 +369,7 @@ This is due to semi-hardcoded db path in libclamav. Otherwise adaptation module 
 
 == Co-existing all services in one setup ==
 
-Both services can co-exists in one squid instance:
+All services can co-exists in one squid instance:
 
 {{{
 ecap_enable on
@@ -318,10 +397,15 @@ ecap_service clamav_service_resp respmod_precache uri=ecap://e-cap.org/ecap/serv
 adaptation_access clamav_service_req allow !bypass_scan_types_req all
 adaptation_access clamav_service_resp allow !bypass_scan_types_rep all
 
-acl HTTP_STATUS_OK http_status 200
+acl gzipmimes rep_mime_type -i "/usr/local/squid/etc/acl.gzipmimes"
 loadable_modules /usr/local/lib/ecap_adapter_gzip.so
-ecap_service gzip_service respmod_precache ecap://www.vigos.com/ecap_gzip bypass=off
-adaptation_access gzip_service allow HTTP_STATUS_OK
+ecap_service gzip_service respmod_precache ecap://www.thecacheworks.com/ecap_gzip_deflatebypass=off
+adaptation_access gzip_service allow gzipmimes
+
+loadable_modules /usr/local/lib/ecap_adapter_exif.so
+ecap_service exif_req reqmod_precache bypass=off ecap://www.thecacheworks.com/exif-filter
+adaptation_service_set reqFilter eReqmod
+adaptation_access reqFilter allow all
 }}}
 
-{X} '''BEWARE:''' Order is important! eCAP ClamAV adapter should precede Vigos adapter!
+{X} '''BEWARE:''' Order is important! eCAP ClamAV adapter should precede TCW adapters! 
