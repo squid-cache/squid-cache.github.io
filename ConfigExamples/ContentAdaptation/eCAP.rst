@@ -189,7 +189,7 @@ First, build and install dependencies:
 ## CSWfontconfig
 
 ----------------------------------------------------------------------------------------------------
-*** Built libtag
+*** Build libtag
 
 ## 64 bit
 mkdir build
