@@ -14,7 +14,7 @@
 
 === Outline ===
 
-Since Squid does not support runtime content compression with GZip, we will be use existing eCAP support and [[https://github.com/yvoinov/squid-ecap-gzip|re-worked and improved adapter from here]].
+Since Squid does not support runtime content compression with GZip, we will be used existing eCAP support and [[https://github.com/yvoinov/squid-ecap-gzip|re-worked and improved adapter from here]].
 
  . {i} Note: Since the original author has long abandoned adapter use re-worked and improved version.
 
@@ -169,7 +169,7 @@ decompression. In this case specify "maxsize" which fit you requirements.
 
 === Outline ===
 
-Since exif can be used for tracking, it is a good idea to remove metadata from images and documents uploaded to the web. To do that, you can use this [[[https://github.com/yvoinov/squid-ecap-exif|re-worked and improved adapter from here]] (fork from [[https://github.com/maxpmaxp/ecap-exif|original version]]).
+Since exif can be used for tracking, it is a good idea to remove metadata from images and documents uploaded to the web. To do that, you can use this [[https://github.com/yvoinov/squid-ecap-exif|re-worked and improved adapter from here]] (fork from [[https://github.com/maxpmaxp/ecap-exif|original version]]).
 
 === Build eCAP EXIF adapter ===
 
