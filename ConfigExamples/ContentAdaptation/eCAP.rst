@@ -288,7 +288,7 @@ ln -s /var/lib/clamav /usr/local/clamav/share/clamav
 
 This is due to semi-hardcoded db path in libclamav. Otherwise adaptation module will be crash Squid itself in current releases.
 
-== Co-existing both services in one setup ==
+== Co-existing all services in one setup ==
 
 Both services can co-exists in one squid instance:
 
