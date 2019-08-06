@@ -24,9 +24,8 @@ This configuration is very useful to reduce internal traffic and load to downstr
 
 === Build eCAP library ===
 
-We are uses two different libraries for different branches of Squid.
-[[http://www.measurement-factory.com/tmp/ecap/libecap-0.2.0.tar.gz|0.2.0]] for Squid 3.4.x or
-[[http://www.measurement-factory.com/tmp/ecap/libecap-1.0.0.tar.gz|1.0.0]]/[[http://www.measurement-factory.com/tmp/ecap/libecap-1.0.1.tar.gz|1.0.1]] for Squid 3.5.x/4.x.x
+We are using
+[[http://www.measurement-factory.com/tmp/ecap/libecap-1.0.0.tar.gz|1.0.0]]/[[http://www.measurement-factory.com/tmp/ecap/libecap-1.0.1.tar.gz|1.0.1]] for Squid 3.5.x/4.x.x.  Due to API changes, adapters no more compatible with older libecap.
 
 Build and install library accordingly your Squid 32-bit or 64-bit versions:
 {{{
@@ -154,8 +153,10 @@ So, be careful when choose what mime types will be pass into adapter.
 
 Also, HTTP/200 status now checks directly inside adapter. So, this rule:
 
+{{{
 acl HTTP_STATUS_OK http_status 200
 adaptation_access gzip_service allow HTTP_STATUS_OK
+}}}
 
 is no longer required.
 
