@@ -326,7 +326,7 @@ debug_options ALL,1 93,9
 
 To make sure adapter works use [[https://www.get-metadata.com/|this site]]. Just check raw image before upload, then upload it to any social via proxy, download and check metadata again. If no - all runs ok.
 
-== Using eCAP for antivirus checking with Squid 3.x/4.x ==
+== Using eCAP for ClamAV antivirus checking with Squid 3.x/4.x ==
 
 === Outline ===
 
