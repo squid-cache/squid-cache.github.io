@@ -4,7 +4,7 @@
 
 = Using eCAP with Squid 3.x/4.x =
 
-== Using eCAP for GZip support with Squid 3.x/4.x ==
+== Using eCAP for GZip/DEFLATE support with Squid 3.x/4.x ==
 
  ''by YuriVoinov''
 
@@ -14,7 +14,7 @@
 
 === Outline ===
 
-Since Squid does not support runtime content compression with GZip, we will be used existing eCAP support and [[https://github.com/yvoinov/squid-ecap-gzip|re-worked and improved adapter from here]].
+Since Squid does not support runtime content compression with GZip/DEFLATE, we will be used existing eCAP support and [[https://github.com/yvoinov/squid-ecap-gzip|re-worked and improved adapter from here]].
 
  . {i} Note: Since the original author has long abandoned adapter use re-worked and improved version.
 
