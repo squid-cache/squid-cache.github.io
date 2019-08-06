@@ -187,6 +187,10 @@ First, build and install dependencies:
 ## CSWlibfreetype6
 ## CSWfontconfig-dev
 ## CSWfontconfig
+##
+## Debian dependencies:
+## apt-get install exiv2 libtag1v5 libtag1-dev libzip4 libzip-dev libpodofo0.9.6 libpodofo-dev
+## Note: Always use as fresh dependencies packages as possible.
 
 ----------------------------------------------------------------------------------------------------
 *** Build libtag
@@ -268,11 +272,11 @@ Then, build and install adapter:
 ## Note: /opt/csw/include is Solaris. Adjust it.
 ## Note: Optimization level -O3 enabled by default.
 
-./configure 'CXXFLAGS=-m64 -mtune=native' 'LDFLAGS=-L/usr/local/lib' 'CPPFLAGS=-I/usr/local/include/taglib -I/usr/local/include/podofo -I/usr/local/include -I/opt/csw/include'
+./configure 'CXXFLAGS=-m64 -mtune=native' 'LDFLAGS=-L/usr/local/lib' 'CPPFLAGS=-I/usr/local/include/podofo -I/usr/local/include -I/opt/csw/include'
 
 or 
 
-./configure 'CXXFLAGS=-m32 -mtune=native' 'LDFLAGS=-L/usr/local/lib' 'CPPFLAGS=-I/usr/local/include/taglib -I/usr/local/include/podofo -I/usr/local/include -I/opt/csw/include'
+./configure 'CXXFLAGS=-m32 -mtune=native' 'LDFLAGS=-L/usr/local/lib' 'CPPFLAGS=-I/usr/local/include/podofo -I/usr/local/include -I/opt/csw/include'
 
 make -j8
 make install-strip
