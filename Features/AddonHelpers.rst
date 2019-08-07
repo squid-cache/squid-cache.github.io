@@ -130,7 +130,7 @@ Squid [[Features/CacheManager|Cache Manager]] reports individual helper states o
 
  /!\ Note that the helper programs other than logging can not use buffered I/O.
 
-=== Key-Value pairs format ===
+=== Key=Value pairs (kv-pairs) format ===
 
 {i} Relevant to Squid-3.4 and later
 
@@ -605,7 +605,7 @@ This interface has a fixed field layout.
 
 Input ''line'' received from Squid:
 {{{
-request size kv-pair [body]
+request size kv-pairs [body]
 }}}
 
 /!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
@@ -614,10 +614,10 @@ request size kv-pair [body]
   The type of action being requested. Presently the code '''new_certificate''' is the only request made.
 
  size::
-  Total size of the following request bytes taken by the '''key-pair''' parameters and '''body'''.
+  Total size of the following request bytes taken by the '''kv-pair''' parameters and '''body'''.
 
  kv-pair::
-  One or more key=value pairs. The key names reserved on this interface:
+  One or more key=value pairs separated by new lines. The key names reserved on this interface:
   || host= || FQDN host name of the domain needing a certificate. ||
 
  body::
@@ -634,7 +634,7 @@ request size kv-pair [body]
 
 Result line sent back to Squid:
 {{{
-result size [key-pair] body
+result size [kv-pairs] body
 }}}
 
  result::
@@ -647,10 +647,10 @@ result size [key-pair] body
  size::
   Total size of the following request bytes taken by the '''body'''.
 
- key-pair::
-  Optional key=value parameters.
+ kv-pairs::
+  An optional list of key=value parameters separated by new lines.
 
-  Some of the key=value pairs:
+  Some of the supported key=value pairs are:
   || host= || FQDN host name of the domain this certificate is for. ||
 
  body::
@@ -670,7 +670,7 @@ This interface is similar to the SSL certificate generation interface.
 
 Input ''line'' received from Squid:
 {{{
-request size [key-pair]
+request size [kv-pairs]
 }}}
 
 /!\ ''line'' refers to a logical input. '''body''' may contain \n characters so each line in this format is delimited by a 0x01 byte instead of the standard \n byte.
@@ -681,8 +681,8 @@ request size [key-pair]
  size::
   Total size of the following request bytes taken by the '''key=pair''' parameters.
 
- key-pair::
-  The supported key=value pairs are:
+ kv-pairs::
+  An optional list of key=value parameters separated by new lines. Supported parameters are:
   || host || FQDN host name or the domain ||
   || proto_version || The SSL/TLS version ||
   || cipher || The SSL/TLS cipher being used ||
@@ -704,7 +704,7 @@ error_cert_0=cert0
 
 Result line sent back to Squid:
 {{{
-result size key-pair
+result size kv-pairs
 }}}
 
  result::
@@ -716,8 +716,8 @@ result size key-pair
  size::
   Total size of the following response bytes taken by the '''key=pair''' parameters.
 
- key-pair::
-  The supported key=value pairs are:
+ kv-pairs::
+  A list of key=value parameters separated by new lines. The supported parameters are:
   || cert_'''''ID''''' || A certificate send from helper to squid. The '''ID''' is an index number for this certificate ||
   || error_name_'''''ID''''' || The openSSL error name for the error '''ID''' ||
   || error_reason_'''''ID'''''|| A reason for the error '''ID'''||
