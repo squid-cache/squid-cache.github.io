@@ -624,3 +624,4 @@ dia icons - http://gnomediaicons.sourceforge.net/download.html
  * [[http://community.brocade.com/t5/vADC-Docs/Feature-Brief-Load-Balancing-in-Stingray-Traffic-Manager/ta-p/73655|Brocade Stingray Traffic Manager]] , [[https://youtu.be/8b5WRIHm13o?t=80|Video example of configuring their product]]
  * [[https://codecave.cc/multipath-routing-in-linux-part-1.html|Multipath Routing in Linux - part 1 - Jakub Sitnicki]]
  * [[https://codecave.cc/multipath-routing-in-linux-part-2.html|Multipath Routing in Linux - part 2 - Jakub Sitnicki]]
+ * [[https://www.netdevconf.org/1.1/proceedings/papers/Load-balancing-with-nftables.pdf|Load Balancing with nftables Laura García]]
