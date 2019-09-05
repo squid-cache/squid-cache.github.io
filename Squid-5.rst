@@ -21,6 +21,11 @@ Basic new features in 5.0:
  *  '''Major UI changes:'''
   * Happy Eyeballs: Use each fully resolved forwarding destination ASAP.
     - Removes SquidConf:dns_v4_first feature as a side effect.
+  * Reuse reserved Negotiate and NTLM helpers after an idle timeout.
+  * Support logformat %codes in error page templates.
+  * Support opening CONNECT tunnels through an HTTP cache peer.
+  * Change annotation behaviour when multiple same-name annotations are received. (see bug Bug:4912)
+    - Some reserved keys retain the old behaviour due to their usage (eg group= received from auth and external ACL helpers)
 
  * '''Minor UI changes:'''
   * Add SquidConf:auth_schemes to control schemes presence and order in 401s/407s.
@@ -30,6 +35,7 @@ Basic new features in 5.0:
   * Add SquidConf:mark_client_connection and SquidConf:mark_client_packet directives for Netfilter MARK and CONNMARK control.
   * Add SquidConf:deny_info and error page '''%A''' code to display Squid listening IP address.
   * New %ssl::&lt;cert macro code to display received server X.509 certificate in PEM format.
+  * New %proxy_protocol::&gt;h logformat code for logging received PROXY protocol TLV values.
 
  * '''Developer Interest changes:'''
   * [[https://datatracker.ietf.org/doc/draft-rousskov-icap-trailers/|ICAP Trailers]].
@@ -38,6 +44,7 @@ Basic new features in 5.0:
   * Migrated to TrivialDB from deprecated BerkleyDB versions.
   * ntlm_fake_auth: add ability to test delayed responses.
   * basic_ldap_auth: return BH on internal errors.
+  * Support RFC 8586: Loop Detection in Content Delivery Networks
 
 ## The intention with this series is to improve performance using C++11 features. Some remaining [[Squid-2.7]] missing features are listed as regressions in http://www.squid-cache.org/Versions/v5/RELEASENOTES.html#ss5.1
 
