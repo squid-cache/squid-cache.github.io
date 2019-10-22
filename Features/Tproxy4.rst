@@ -247,7 +247,7 @@ It may also be seen only at startup due to unrelated issues:
  * [[SquidFaq/TroubleShooting#head-97c3ff164d9706d3782ea3b242b6e409ce8395f6|Another program already using the port]]
  * [[SquidFaq/TroubleShooting#head-19aa8aba19772e32d6e3f783a20b0d2be0edc6a2|Address not assigned to any interface]]
 
-== Traffic going through Squid but the timing out ==
+== Traffic going through Squid but then timing out ==
 This is usually seen when the network design prevents packets coming back to Squid.
 
  * Check that the Routing portion of the config above is set correctly.
