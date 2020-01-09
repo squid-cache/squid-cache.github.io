@@ -29,6 +29,10 @@ EPEL, DAG and RPMforge repositories appear to no longer contain any files. Other
 
 ## 4  = indents required for BinaryPackages page include
 
+==== NgTech CentOS/Fedora Copr hosted Repository  ====
+
+https://copr.fedorainfracloud.org/coprs/elicro/Squid-Cache/
+
 ==== Stable Repository Package (like epel-release) ====
 To install run the command:
 {{{
