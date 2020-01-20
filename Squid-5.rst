@@ -7,9 +7,18 @@
 ## || month year ||<style="background-color: orange;"> the Squid-5 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-6]] ||
 ## || month year ||<style="background-color: yellow;"> Squid-5 series became '''DEPRECATED''' with the release of  [[Squid-6]] series ||
 ## || month year ||<style="background-color: #82FF42;"> Released for production use. ||
-|| today ||<style="background-color: #4282FE;"> Now in '''BETA''' cycle. ||
+|| today ||<style="background-color: #4282FE;">Now in '''RELEASE CANDIDATE''' cycle. ||
 
-The set of new features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time.
+The release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+
+Additions are limited to:
+ * Documentation updates
+ * Polish of existing features
+ * Porting of Squid-2.7 feature regressions
+ * Stability fixes
+ * Security fixes
+ * Bug fixes
+
 
 Features ported from 2.7 in this release:
 
