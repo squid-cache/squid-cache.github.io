@@ -7,7 +7,7 @@
 ## || month year ||<style="background-color: orange;"> the Squid-5 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-6]] ||
 ## || month year ||<style="background-color: yellow;"> Squid-5 series became '''DEPRECATED''' with the release of  [[Squid-6]] series ||
 ## || month year ||<style="background-color: #82FF42;"> Released for production use. ||
-|| today ||<style="background-color: #4282FE;"> Now in '''DEVELOPMENT''' cycle. ||
+|| today ||<style="background-color: #4282FE;"> Now in '''BETA''' cycle. ||
 
 The set of new features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time.
 
