@@ -39,13 +39,13 @@ $ make clean
 
 == Host installation ==
 The host needed to run the images can be installed using this commands list (assuming a debian host)
-```
+{{{
 apt -y update && apt -y upgrade && apt -y install openjdk-11-jre-headless docker.io
 useradd -m -u 1000 -G docker jenkins
 
 (optional)
 docker pull --all-tags squidcache/buildfarm
-```
+}}}
 
 ----
 Discuss this page using the "Discussion" link in the main menu
