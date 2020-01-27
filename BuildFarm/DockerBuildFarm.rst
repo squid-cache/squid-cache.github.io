@@ -47,6 +47,15 @@ useradd -m -u 1000 -G docker jenkins
 docker pull --all-tags squidcache/buildfarm
 }}}
 
+== Autoscale on-demand builds ==
+These run on buildmaster, here's how the concepts fit together:
+- builds need to be tied to a node labelled "docker-build-host". This label is provided by the DigitalOcean plugin, which instantiates a new cloud VM on demand, and tears it down when not used. The cloud initialiser installs what is needed to run a slave. If it is a matrix build, there needs to be a "slaves" matrix axis with a single label to enforce this, or jobs will be run everywhere
+- The build command is:
+  {{{docker run --rm -u jenkins -v `pwd`:`pwd` -w `pwd` squidcache/buildfarm:${OS} /bin/bash -l ./test-builds.sh --verbose ${tests} }}}
+  where OS is either a matrix axis or an OS label.
+- the docker images to be used are hosted on the docker hub, as labels of squidcache/buildfarm
+- in order to build and push these images, go to jenkins@buildmaster:~/docker-images/dockerfiles, and {{{make all push}}}
+
 ----
 Discuss this page using the "Discussion" link in the main menu
 
