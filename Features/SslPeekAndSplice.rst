@@ -13,6 +13,7 @@
  * '''Developer''': AlexRousskov and Christos Tsantilas
 ## * '''More''': unofficial development [[https://code.launchpad.net/~measurement-factory/squid/peek-and-splice|branch]].
 
+ <<TableOfContents>>
 
 = Motivation =
 
