@@ -126,7 +126,7 @@ If [[Squid-4]] or later fails to parse an expected TLS Client Hello message, Squ
 
 Some how-to tutorials are available for common policies:
 
-<<FullSearch(title:regex:^ConfigExamples/Intercept/SslBump.*$)>>
+<<FullSearch(title:regex:^ConfigExamples/Intercept/SslBump -title:regex:Discussion$)>>
 
 {{{
 # common acls for the following examples:
