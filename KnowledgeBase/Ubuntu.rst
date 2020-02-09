@@ -22,10 +22,10 @@ Packages available for Squid on multiple architectures.
 
  . '''Maintainer:''' Luigi Gangitano
 
-==== Squid-3.3 ====
-Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid3
+==== Squid-4 ====
+Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid
 
- . {i} Ubuntu 12.04 (Precise) or newer.
+ . {i} Ubuntu 18.10 (Cosmic) or newer.
 
 Install Procedure:
 
@@ -33,18 +33,17 @@ Install Procedure:
  aptitude install squid
 }}}
 
-==== Squid-3.1 ====
-Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid3
+==== Squid-3.5 ====
+Bug Reports: https://bugs.launchpad.net/ubuntu/+source/squid
 
- . {i} Ubuntu 11.10 (Oneiric) or older.
+ . {i} Ubuntu 18.04 (Bionic) or older.
 
 Install Procedure:
 
 {{{
- aptitude install squid3
+ aptitude install squid
 }}}
 
-== Compiling ==
 
 ## same as Debian for now (but no patches mentioned)
 <<Include(KnowledgeBase/Debian,"(see Debian)",3,from="^== Compiling ==$", to="^## end basic compile")>>
