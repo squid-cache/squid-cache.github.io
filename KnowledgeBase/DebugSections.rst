@@ -23,11 +23,37 @@ Administrators may also set '''SquidConf:debug_options ALL,1''' to get a report 
 
 Higher debugging levels are available if an issue needs tracking step-by-step through the code. They go up to 9, though 6 contain most information needed by the developers to debug.
 
+
+== What the Levels mean ==
+
+ * level 0 Critical issues only. No debug information at all.
+   . '''Always displayed'''
+   . These are problems fatal to squid and if your squid is crashing the problem is mentioned in cache.log at level 0.
+   . {i} currently Startup, Shutdown and Reconfigure do produce output at this level.
+
+ * level 1 Important issues.
+   . '''Default''' Squid behaviour is to log at this level unless otherwise configured.
+   . These messages usually indicate network issues the admin should be looking at fixing.
+
+ * level 2 Protocol Traffic. Generally used only by the high-level protocol sections (eg. sections 9-12).
+
+ * level 3-4 Legacy debugs. Section specific info a developer once thought to be important enough to highlight for troubleshooting.
+
+ * level 5 Most useful debug information is displayed at this level.
+
+ * level 6 More detail of debug information, if level-5 is not displaying enough about a specific problem.
+
+ * level 7-8 Some section specific debug information not commonly useful. (eg lock counting).
+
+ * level 9 Raw I/O data. May contain privacy or security sensitive information. Guaranteed to generate very large cache.log.
+
+
 == What the Section numbers mean ==
 
 || {i} || Sections are current from Squid 3.1 ||
 
  * '''ALL'''  Special section tag meaning all sections. For ease of configuration.
+
  * section 0     Announcement Server
  * section 0     Client Database
  * section 0     Debug Routines
