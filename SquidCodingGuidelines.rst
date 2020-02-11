@@ -5,7 +5,7 @@
  * [[http://www.parashift.com/c++-faq-lite/const-correctness.html#faq-18.5|const-correctness help]]
  * Back to DeveloperResources.
  
-<<Navigation(children,1)>>
+see also <<Navigation(children,1)>>
 ##<<FullSearch(title:SquidCodingGuidelines -regex:title:SquidCodingGuidelines$ )>>
 
 <<BR>>
@@ -17,7 +17,7 @@
 
  * We have an ''astyle'' wrapper that formats the code without breaking it.
  * If you have astyle version 1.23 please format your changes with ~/scripts/formater.pl
- * This formatter is run regularly over the entire code to enforce certain checkable guidelines but it helps reduce trouble if your code matches those guidelines when submitted.
+ * This formatter is run regularly over the entire code to enforce certain guidelines but it helps reduce trouble if your code matches those guidelines when submitted.
 
 ENFORCED:
  * 4-space indentation, no tabs
@@ -38,7 +38,7 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
     1. If the class works well without any of the Big3 methods, do not define any of the Big3 methods.
     1. If you have to define one of Big3, declare all of Big3.
     1. If class has a non-default destructor, you may decide to define one of the Move methods. If you define one Move method, declare the other Move method as well.
-    1. use {{{= default}}} declaration whenever possible if it is sufficientm and {{{=delete}}} declaration when method is prohibited.
+    1. use {{{= default}}} declaration whenever possible if it is sufficient and {{{=delete}}} declaration when method is prohibited.
   * Naming conventions as covered in [[Features/SourceLayout]] are to be used.
 
 == Suggested coding rules ==
@@ -52,7 +52,7 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
   * Use bool for boolean types.
   * Avoid macros.
   * Do not start names with an underscore
-  * pefer prefix form for increment and decrement operators to postfix (e.g. {{{++c}}} instead of {{{c++}}})
+  * prefer prefix form for increment and decrement operators to postfix (e.g. {{{++c}}} instead of {{{c++}}})
 
 === Word capitalization example ===
 
@@ -232,48 +232,3 @@ Squid uses autoconf defined macros to eliminate experimental or optional compone
 
 ENFORCED:
  * MUST be used inside .h to wrap relevant code.
-
-
-= Autoconf Syntax Guidelines =
-
-The current standard for both '''--enable''' and '''--with''' flags is:
- * '''yes''' means force-enable, fail the build if not possible.
- * '''no''' means force-disable,
- * '''auto''' means try to enable, disable if some required part is not available.
-
-For '''--with''' flags, everything else is usually considered as a path to be used. Though in some cases is a global constant.
-
-For '''--enable''' flags, may contain a list of the components modular pieces to be enabled. In which case:
- * being listed means force-enable
- * being omitted means force-disable
-
-For further details on autoconf macros and conventions, also see [[Features/ConfigureInRefactoring]]
-
-
-== Component Macros in Autoconf ==
-
-Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
-
- * name for variables passed to automake code should start with ENABLE_
- * name for build/no-build variables passed to C++ code should start with USE_
- * name for variables passed to either automake or C++ containing default values should start with DEFAULT_
-
- /!\ In the event of a clash or potential clash with system variables tack SQUID_ after the above prefix. ie ENABLE_SQUID_ or USE_SQUID_
-
-{{{
-# For --enable-foo / --disable-foo
-
-AC_CONDITIONAL([ENABLE_FOO],[test "x${enable_foo:=yes}" = "xyes"])
-
-SQUID_DEFINE_BOOL(USE_FOO,${enable_foo:=no},[Whether to enable foo.])
-
-DEFAULT_FOO_MAGIC="magic"
-AC_SUBST(DEFAULT_FOO_MAGIC)
-}}}
-
-= C source guidelines =
-
-The only remaining C sources are in third-party code. Follow their standard from surrounding code.
-  /!\ Remember to update the third-party changelog.
-
-As per Squid2CodingGuidelines.
