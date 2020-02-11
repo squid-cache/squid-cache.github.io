@@ -41,10 +41,3 @@ SQUID_DEFINE_BOOL(USE_FOO,${enable_foo:=no},[Whether to enable foo.])
 DEFAULT_FOO_MAGIC="magic"
 AC_SUBST(DEFAULT_FOO_MAGIC)
 }}}
-
-= C source guidelines =
-
-The only remaining C sources are in third-party code. Follow their standard from surrounding code.
-  /!\ Remember to update the third-party changelog.
-
-As per Squid2CodingGuidelines.
