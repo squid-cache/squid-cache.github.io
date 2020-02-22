@@ -7,7 +7,7 @@ Most of the Board discussions can be open to the public and your constructive pa
 
 ## [[TableOfContents]]
 == Upcoming Meeting ==
- * Date: '''06:00 2017-03-18 UTC''' (if this date is in the past, then this section is stale)
+ * Date: '''07:30 2020-02-25 UTC''' (if this date is in the past, then this section is stale)
 
  * Location: IRC / Skype TBD.
 
