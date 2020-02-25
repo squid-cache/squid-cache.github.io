@@ -45,6 +45,8 @@ Notes:
 ||- ||anyone ||email confirmation regarding meeting 2 days in advance ||not done || TBD ||
 ||- ||AmosJeffries ||prepare summary of completed action points in advance of meeting || not done || ||
 || ||
+||#23 || AlexRousskov || simplify support points procedure to allow for more automation || not done ||
+|| ||
 ||#22 || AmosJeffries || publish minutes from meeting #21 || done ||
 || ||
 ||#21 || FrancescoChemolli || draft insult suppression policy for @board discussion || not done ||
