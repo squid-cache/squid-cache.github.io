@@ -197,17 +197,6 @@ when given either an IP address, or a host name.  The /24 prefix
 aggregation is used to reduce the overall database size.  File:
 {{{net_db.c}}}.
 
-== Redirectors ==
-
-
-Squid has the ability to rewrite requests from clients.  After
-checking the access controls, but before checking for cache hits,
-requested URLs may optionally be written to an external
-''redirector'' process.  This program, which can be highly
-customized, may return a new URL to replace the original request.
-Common applications for this feature are extended access controls
-and local mirroring.  File: {{{redirect.c}}}.
-
 == Autonomous System Numbers ==
 
 
@@ -235,15 +224,6 @@ so that the {{{callback_data}}} memory is still valid when
 the callback function is executed.  The routines in {{{cbdata.c}}}
 provide a uniform method for managing callback data memory,
 canceling callbacks, and preventing erroneous memory accesses.
-
-== Refcount Data Allocator (C++ Only) ==
-
-
-Manual reference counting such as cbdata uses is error prone,
-and time consuming for the programmer. C++'s operator overloading
-allows us to create automatic reference counting pointers, that will
-free objects when they are no longer needed. With some care these 
-objects can be passed to functions needed Callback Data pointers.
 
 == Debugging ==
 
@@ -285,13 +265,6 @@ Here we track the number of filedescriptors in use, and the
 number of bytes which has been read from or written to each
 file descriptor.
 
-
-== Hashtable Support ==
-
-
-These routines implement generic hash tables.  A hash table
-is created with a function for hashing the key values, and a
-function for comparing the key values.
 
 == HTTP Anonymization ==
 
