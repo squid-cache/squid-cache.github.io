@@ -467,7 +467,30 @@ In some cases, placing all services on a single host is not a good idea. High-lo
 
  . {i} On some Solaris setups you can get performance gain by using libmtmalloc for c-icap processes. Just add ''-lmtmalloc'' to CFLAGS and CXXFLAGS when configuring. This also can reduce memory lock contention on multi-core CPU boxes. This solution can also reduce the memory consumption problem for clamd.
 
- . {i} Clamd with custom databases ([[https://www.securiteinfo.com/|SecuriteInfo]], etc.) uses 700 megabytes of RAM and above. Better in this case to use separate servers.
+ . {i} Clamd with custom databases ([[https://www.securiteinfo.com/|SecuriteInfo]], etc.) or latest version (0.102.x) uses 700 megabytes of RAM and above. Better in this case to use separate servers.
+ 
+=== Multi-tier setups ===
+
+Due to last ClamAV utilizes a lot of memory (up to 1 Gb RAM), multi-tier setups can be better.
+
+To build this, keep in mind:
+
+. {i} c-icap should remain on squid's tier; due to squid connectivity with c-icap over TCP is non-reliable.
+
+. {i} squidclamav will talk with clamd via TCP; just modify squidclamav.conf and restart c-icap:
+
+{{{
+  clamd_ip your_clamav_tier_ip
+  clamd_port 3310
+}}}
+
+. {i} On ClamAV tier uncomment this parameter in clamd.conf and restart daemon:
+
+{{{
+  TCPSocket 3310
+}}}
+
+. {i} Don't forget to open TCP port 3310 on ClamAV tier firewall.
 
 === C-ICAP monitoring ===
 
