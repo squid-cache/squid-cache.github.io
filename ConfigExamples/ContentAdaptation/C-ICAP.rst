@@ -484,6 +484,8 @@ To build this, keep in mind:
   clamd_port 3310
 }}}
 
+. {i} Comment out clamd_local in squidclamav.conf.
+
 . {i} On ClamAV tier uncomment this parameter in clamd.conf and restart daemon:
 
 {{{
