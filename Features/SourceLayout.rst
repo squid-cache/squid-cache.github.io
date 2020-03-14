@@ -40,7 +40,7 @@ Key:
 || :\ || <:( || {X} || <:( || :\ ||''base/'' ||Commonly used code without a better place to go. ||Async*?  wordlist.* dlink.* hash.* ||
 || <:( || <:( || <:( || :\ || :\ ||''clients/'' ||Protocol clients and gateway components for connecting to upstream servers ||ftp.*, http.*, gopher.* ||
 || <:( || (./) || (./) || :\ || :\ ||''comm/'' ||I/O subsystem ||
-|| :\ || <:( || <:( || <:( || <:( ||''cfg/'' {2} ||squid.conf parsing and management ||cache_cf.* cf.* cf_* Parser.* ConfigParser.* ||
+|| :\ || <:( || <:( || <:( || <:( ||''cfg/'' {2} ||squid.conf parsing and management ||cache_cf.* cf.* cf_* Parser.* ConfigParser.* ConfigOption.* ||
 || <:( || <:( || <:( || <:( || <:( ||''debug/'' ||Debug core utilities ||debug.cc Debug.h ||
 || :\ || (./) || <:( || <:( || <:( || ''DiskIO'' || I/O primitives for filesystem access || ||
 || :\ || <:( || <:( || (./) || :\ ||''dns/'' ||DNS components (Internal, dnsserver, caches) ||dns*, ipcache.* fqdncache.* ||
