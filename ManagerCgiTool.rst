@@ -68,7 +68,7 @@ Consult the Apache documentation for information on using ''htpasswd'' to set a 
 
 First, make sure the cgi-bin directory you're using is listed with a Script''''''Alias in your Apache config.
 
-Then, make sure a CGI module is enabled in your Apache settings. '''cgid''' or ''fastcgi''' are usually bundled with Apache but disabled by default.
+Then, make sure a CGI module is enabled in your Apache settings. '''cgid''' or '''fastcgi''' are usually bundled with Apache but disabled by default.
 
 In the Apache config there is a sub-directory ''/etc/apache2/conf.d'' for application specific settings (unrelated to any specific site). Create a file ''conf.d/squid'' containing this:
 
