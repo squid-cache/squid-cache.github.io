@@ -178,6 +178,8 @@ tdesktop.*
 
  . {i} Note: url.tor and url.nobump are different lists.
 
+ . {i} Note: Bridges obfs3 and older is no more supported by Tor.
+
 == Performance considerations ==
 
 Tor-tunneled HTTP connections has better performance, because of caching. However, HTTPS connections still limited by Tor performance, because of splice required and they can't be caching in this configuration in any form. Note this.
