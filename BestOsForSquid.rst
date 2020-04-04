@@ -3,19 +3,7 @@
 = What is the Best OS for Squid? =
 
 This is an all-time favourite FAQ, bound to show up every month or so on the Squid Users mailing-list.
-Let's try to dispel some myths first, and clarify first and foremost what OS are '''not''' suited for running Squid. You might want to avoid:
 
- 1. Commodore (VIC20, 64,128) OSes - YMMV on Amiga systems. Status is unclear on Sinclairs and Spectrums.
- 1. Palm OS and other palmtop systems, including PocketPC, Symbian and TRon. We have no success stories on the Sharp Zaurus yet (but also no mention of failures)
- 1. Non network-capable operating systems or devices (but this is mainly a matter of futility)
-
-In some people's opinions, you might also want to avoid
- 1. Microsoft Windows Server Family
- 1. Microsoft Windows client systems
-
-While this is probably true for those outfits who desire to obtain the highest possible performance, not all do and it might be perfectly reasonable to run Squid on MS-Windows systems in some environments (a small office comes to mind as the perfect example).
-
-=== What about Unices? ===
 Generally speaking, any modern Unix or Unix-like operating system will offer similarly good performance. A technically sensible administrator will choose the best tool for the job, which means whatever OS she is most comfortable with.
 
 For reference we maintain an incomplete list of OS where Squid is known to be popular. Where possible there are also OS pages here in the wiki with extra information.
@@ -43,27 +31,5 @@ On systems with synchronous directory updates (Solaris, some BSD versions)
 
  * mount option to enable asynchronous directory updates, or preferably a filesystem meta journal on a separate device taking the heat of directory updates.
 
-=== But I want to use foofs for my cache_dirs, it will perform best! ===
-In case you didn't read the previous paragraph, please do! In case you ''still'' believe it makes much of a difference, here's some tips:
- * Linux
-  * Reiserfs
-    reiserfs3 works just fine, it's recommended that you mount with ''noatime'' and ''notail'' options, and for the performance freaks put the journal on a different spindle
-  * ext4
-    no data. we are looking for some ext4 experienced users to send tuning details in (if any!).
-  * ext3
-    another fine blend, the defaults filesystem creation parameters are just good for squid - watch out for the number of inodes - squid cached objects are usually about 12-16kb in size, make sure you have enough. Consider using a ''rock'' SquidConf:cache_dir if you run into inode problems.
-  * ext2
-    well, ext2 is a venerable good filesystem. But do you really want to wait for hours while your FS is being checked?
-  * everything else
-    see the note about "really bad choices" above.
-
- * Solaris
-  * UFS 
-   . the old Solaris File System, which good and stable. Use "noatime" as mount option.
-  * ZFS 
-   . if you want really high performance for your Squid Cache, and dont mind bug Bug:2313 (which is not related to ZFS on Solaris).
-   . ZFS is included in Solaris beginning with Solaris 10. Release 6/06. Use "noatime" as mount option.
-   . Set logbias property for ZFS to "throughput" when zfs fs for cache created on hardware RAID level 5 and above to avoid much TCP_SWAPFAIL_MISS.
-   . more about ZFS: http://www.sun.com/software/solaris/zfs_learning_center.jsp
 
 ----
