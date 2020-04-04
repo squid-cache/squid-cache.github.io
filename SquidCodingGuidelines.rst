@@ -16,7 +16,7 @@ see also <<Navigation(children,1)>>
 == Source formatting guidelines ==
 
  * We have an ''astyle'' wrapper that formats the code without breaking it.
- * If you have astyle version 1.23 please format your changes with ~/scripts/formater.pl
+ * If you have astyle version 2.04 please format your changes with ~/scripts/formater.pl
  * This formatter is run regularly over the entire code to enforce certain guidelines but it helps reduce trouble if your code matches those guidelines when submitted.
 
 ENFORCED:
