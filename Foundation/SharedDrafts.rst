@@ -6,7 +6,7 @@
 
 Drafts prepared for shared discussion. Each draft is a subpage of this.
 
-New draft: <<NewPage(SquidBoardPageTemplate,Create)>>
+New draft: <<NewPage(SquidBoardPageTemplate,Create,Foundation/SharedDrafts)>>
 === navigation ===
 <<Navigation(children)>>
 === pageslist ===
