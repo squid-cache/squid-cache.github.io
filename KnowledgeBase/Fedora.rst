@@ -5,33 +5,13 @@
 <<TableOfContents>>
 
 == Pre-Built Binary Packages ==
-Binary RPMs for Fedora are available via the Fedora download/update servers for all active Fedora versions like most other free software.
+Binary RPMs for Fedora are available via the Fedora download/update servers for all active Fedora versions like most other free software. Note that Fedora releases have an approximately [[https://fedoraproject.org/wiki/Fedora_Release_Life_Cycle|13 month life cycle]], so information on this page may not be current.
 
-Package information: https://apps.fedoraproject.org/packages/squid
+Package information: https://src.fedoraproject.org/rpms/squid
 
-Bug Reports: https://apps.fedoraproject.org/packages/squid/bugs
+==== Squid-4.10 ====
 
-==== Squid-3.5 ====
-
-Available on Fedora 22 - 25.
-
-Install Procedure:
-{{{
-yum install squid
-}}}
-
-==== Squid-3.4 ====
-
-Available on Fedora 21.
-
-Install Procedure:
-{{{
-yum install squid
-}}}
-
-==== Squid-3.3 ====
-
-Available on Fedora 19 - 20.
+Available on Fedora 30 and later.
 
 Install Procedure:
 {{{
@@ -40,13 +20,24 @@ yum install squid
 
 == Compiling ==
 
-Rebuilding the binary rpm is most easily done by checking out the package definition from cvs
+Rebuilding the binary rpm is most easily done by installing the `fedpkg` tool:
 
 {{{
-cvs -d :pserver:anonymous@cvs.fedoraproject.org:/cvs/pkgs/ co squid
+yum install fedpkg
 }}}
 
-then do a "make local" in the version you want to recompile.
+Cloning the package:
+
+{{{
+fedpkg clone -a squid
+}}}
+
+And then using `fedpkg mockbuild` to rebuild the package:
+
+{{{
+cd squid
+fedpkg mockbuild
+}}}
 
 == Troubleshooting ==
 ----
