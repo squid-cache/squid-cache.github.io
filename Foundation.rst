@@ -12,7 +12,7 @@ The description of its role is on the [[http://www.squid-cache.org/Foundation/|S
 This part of the wiki deals with helping run the foundation.
  * A bit of [[/History]] of the foundation
  * Minutes from the foundation Board [[/Meetings]]
- * Board [[/SharedDrafts]]
+ * Board [[/SharedDrafts]] (restricted access)
 
 
 ----
