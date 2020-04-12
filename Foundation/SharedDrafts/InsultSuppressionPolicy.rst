@@ -1,3 +1,4 @@
+## page was renamed from InsultSuppressionPolicy
 ##master-page:SquidBoardPageTemplate
 #format wiki
 #language en
