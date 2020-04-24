@@ -51,7 +51,7 @@ The official Squid source code repository is on [[https://github.com/squid-cache
 
 The latest sources are available at address [[http://www.squid-cache.org/Versions/]] with a series of previous daily snapshots of the code for testing regressions and other special circumstances.
 
- {i} The daily tarballs displayed are listed by date created and the Bazaar evision number / git hash included in that tarball. Gaps are expected in the list when there were no new revisions committed that day, or when the revision failed to compile on our tarball creation machine.
+ {i} The daily tarballs displayed are listed by date created and the repository revision ID included in that tarball. Gaps are expected in the list when there were no new revisions committed that day, or when the revision failed to compile on our tarball creation machine.
 
  /!\ Daily tarballs contain the fully bootstrapped tool chain ready to build. But be aware that some changes may appear with incomplete or missing documentation.
 
