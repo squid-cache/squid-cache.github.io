@@ -3,33 +3,37 @@
 #language en
 #faqlisted yes
 
-= Feature: HTTPS (Secure HTTP or TLS explicit proxy) =
+= Feature: SHTTP (Secure HTTP messaging) =
 
- * '''Version''': 2.5
- * '''More''': RFC RFC:2817, [[Features/HTTPS]], [[Features/S-HTTP]]
+ * '''Version''': none
+ * '''More''': RFC RFC:2660, RFC RFC:8188, [[Features/HTTPS]]
 
 <<TableOfContents>>
 
-= Encrypted browser-Squid connection =
+When a client needs to transmit sensitive content securely over potentially insecure or untrusted network connections it can do several things;
 
-Squid can accept regular proxy traffic using SquidConf:https_port in the same way Squid does it using an SquidConf:http_port directive. Unfortunately, popular modern browsers do not permit configuration of TLS/SSL encrypted proxy connections. There are open bug reports against most of those browsers now, waiting for support to appear. If you have any interest, please assist browser teams with getting that to happen.
+ * encrypt communications using the S-HTTP protocol defined in RFC RFC:2660, or
+ * encrypt the message payload using HTTP mechanism defined in RFC RFC:8188, or
+ * use a TLS encrypted connection (see [[Features/HTTPS]])
 
-Meanwhile, tricks using stunnel or SSH tunnels are required to encrypt the browser-to-proxy connection before it leaves the client machine. These are somewhat heavy on the network and can be slow as a result.
 
-== Chrome ==
+= Encrypted S-HTTP messaging =
 
-The Chrome browser is able to connect to proxies over SSL connections if configured to use one in a PAC file or command line switch. GUI configuration appears not to be possible (yet).
+Squid does not (yet) support the RFC RFC:2660 protocol.
 
-More details at http://dev.chromium.org/developers/design-documents/secure-web-proxy
 
-== Firefox ==
+= Encrypted HTTP message payload =
 
-The Firefox 33.0 browser is able to connect to proxies over TLS connections if configured to use one in a PAC file. GUI configuration appears not to be possible (yet), though there is a config hack for [[https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c68|embedding PAC logic]].
+The RFC RFC:8188 HTTP extension defines encryption as just another a payload encoding. Squid supports this protocol for all traffic cached.
 
-There is still an important bug open:
- * Using a client certificate authentication to a proxy: https://bugzilla.mozilla.org/show_bug.cgi?id=209312
+Squid does not (yet) support acting as an end-client for resources using encryption coding.
 
-If you have trouble with adding trust for the proxy cert, there is [[https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c65|a process]] by Patrick McManus to workaround that. 
+Squid does not (yet) support acting as surrogate (reverse-proxy) performing encoding operations for this content. Only relay messages to an external service.
+
+
+= Encrypted connection =
+
+See [[Features/HTTPS]]
 
 ----
 CategoryFeature
