@@ -10,12 +10,13 @@
 
 <<TableOfContents>>
 
-When a browser comes across an '''https://''' URL, it does one of two things:
+When a client comes across an '''https://''' URL, it can do one of three things:
 
- * opens an TLS connection directly to the origin server or
- * opens a TCP tunnel through Squid to the origin server using the ''CONNECT'' request method.
+ * opens an TLS connection directly to the origin server, or
+ * opens a tunnel through a proxy to the origin server using the ''CONNECT'' request method, or
+ * opens an TLS connection to a secure proxy.
 
-Squid interaction with these two traffic types is discussed below.
+Squid interaction with these traffic types is discussed below.
 
 
 = CONNECT tunnel =
@@ -52,7 +53,7 @@ From the browser point of view, encapsulated messages are not sent to a proxy. T
 
 = Direct TLS connection =
 
-When a browser creates a direct secure connection with an origin server, there are no HTTP CONNECT requests. The first HTTP request sent on such a connection is already encrypted. In most cases, Squid is out of the loop: Squid knows nothing about that connection and cannot block or proxy that traffic. The reverse proxy and interception exceptions are described below.
+When a browser creates a direct TLS connection with an origin server, there are no HTTP CONNECT requests. The first HTTP request sent on such a connection is already encrypted. In most cases, Squid is out of the loop: Squid knows nothing about that connection and cannot block or proxy that traffic. The reverse proxy and interception exceptions are described below.
 
 
 == Direct TLS connection to a reverse proxy ==
@@ -83,15 +84,15 @@ From the browser point of view, intercepted messages are not sent to a proxy. Th
 
 = Encrypted browser-Squid connection =
 
-While HTTPS design efforts were focused on end-to-end communication, it would also be nice to be able to encrypt the browser-to-proxy connection (without creating a CONNECT tunnel that blocks Squid from accessing and caching content). This would allow, for example, a secure use of remote proxies located across a possibly hostile network.
+Squid can accept regular proxy traffic using SquidConf:https_port in the same way Squid does it using an SquidConf:http_port directive. RFC RFC:2818 defines the protocol requirements around this.
 
-Squid can accept regular proxy traffic using SquidConf:https_port in the same way Squid does it using an SquidConf:http_port directive. Unfortunately, popular modern browsers do not permit configuration of TLS/SSL encrypted proxy connections. There are open bug reports against most of those browsers now, waiting for support to appear. If you have any interest, please assist browser teams with getting that to happen.
+Unfortunately, popular modern browsers do not yet permit configuration of TLS encrypted proxy connections. There are open bug reports against most of those browsers now, waiting for support to appear. If you have any interest, please assist browser teams with getting that to happen.
 
 Meanwhile, tricks using stunnel or SSH tunnels are required to encrypt the browser-to-proxy connection before it leaves the client machine. These are somewhat heavy on the network and can be slow as a result.
 
 == Chrome ==
 
-The Chrome browser is able to connect to proxies over SSL connections if configured to use one in a PAC file or command line switch. GUI configuration appears not to be possible (yet).
+The Chrome browser is able to connect to proxies over TLS connections if configured to use one in a PAC file or command line switch. GUI configuration appears not to be possible (yet).
 
 More details at http://dev.chromium.org/developers/design-documents/secure-web-proxy
 
