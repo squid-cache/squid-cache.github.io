@@ -6,7 +6,7 @@
 = Feature: HTTPS (HTTP Secure or HTTP over TLS) =
 
  * '''Version''': 2.5
- * '''More''': RFC RFC:2817, RFC:2818, [[Features/SHTTP]], [[Features/S-HTTP]]
+ * '''More''': RFC RFC:2817, RFC:2818, [[Features/SHTTP]]
 
 <<TableOfContents>>
 
