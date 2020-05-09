@@ -35,6 +35,39 @@ Most development discussions happen on the [[http://www.squid-cache.org/Support/
 
 We run constant integration testing with a BuildFarm. Additions to it are welcome.
 
+=== Detecting build errors early ===
+
+It is always better to find bugs before submitting a PR for review. Since Squid has such a large number of build permutations that can interact to change build dependencies and outcomes the a '''test-builds.sh''' script is provided in the repository to check that your code contribution will at least compile successfully. This is the same script which will be run by the CI system in a wider range of OS systems to prevent regressions.
+
+In a checkout of the Squid sources branch you are proposing to submit for PR, run:
+```
+./bootstrap.sh && ./test-builds.sh
+```
+
+The default stdout display just lists the ERROR and FAIL messages produced during build. Not all of these are problems (eg stats indicating 0 failures), a series of logs with full build output are provided as well. See the end of the log for overall build result if you have any doubts about the success/failure status.
+
+The command line option '''--keep-going''' is provided to allow as many error as possible to be found on one script execution. It builds with '''make -k''' and tries all build permutations instead of exiting on the first compile failure.
+
+The command line option '''--verbose''' is provided to allow full compile output to stdout instead of only to logs. The logs are still produced.
+
+Other options are available for specific build situations. See the script for details or ask on squid-dev mailing list.
+
+
+=== Replication of CI BuildFarm failures ===
+
+On any linux system with docker installed, to reproduce a build you can check out squid sources on a fresh directory, then run:
+
+```
+OS_VERSION=fedora-32
+docker run -ti --rm -u jenkins -v $PWD:$PWD -w $PWD squidcache/buildfarm:`uname -m`-$OS_VERSION /bin/bash -l
+```
+
+ . /!\ Replace OS_VERSION with the OS version of the CI system node which is failing (eg, fedora-rawhide, debian-unstable)
+
+This will drop you in the container, ready to try things out.
+
+
+
 == Getting sources ==
 
 There are several ways to get Squid sources. The method you select determines whether the sources come bootstrapped or can be easily updated as the official code changes.
