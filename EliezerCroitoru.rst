@@ -4,10 +4,27 @@
 #language en
 = Eliezer Croitoru =
 
-Email: <<MailTo(eliezer@ngtech.co.il)>>
+Email: <<MailTo(ngtech1ltd@gmail.com)>>
 ## You can even more obfuscate your email address by adding more uppercase letters followed by a leading and trailing blank.
 
 <<TableOfContents>>
+
+= 2020_05 =
+
+OK, So restarting the NgTech LTD service.
+After working on couple projects some time now I have published and offloaded the RPM and binary packages build of Squid-Cahce.
+Can be seen at:
+[[BuildFarm/DockerPackaging]]
+
+For now we are downsizing the workload and I am changing the availability of my services in general.
+I will have Desktop/Office hours so you are welcome to try and contact me directly by any of my contact details of the ngtech.co.il domain.
+
+== YouTube Granular videos filtering ==
+My current project is YouTube Granular videos filtering.
+A draft can be seen at:
+https://github.com/elico/yt-classification-service-example
+
+I hope that this idea will be integrated in the wide market.
 
 = 2019_02 =
 ----
