@@ -31,7 +31,9 @@ Deleting users:
 htpasswd -D -nbm /etc/squid/passwords username password
 }}}
 
- * /!\ The '''m''' option specifies MD5 encryption which is the default for htpasswd. Squid helpers support DES, MD5 and SHA. Bcrypt requires additional support in the crypto libraries Squid is built with so may or may not work.
+ * /!\ The '''m''' option specifies MD5 encryption which is the default for htpasswd.
+
+Squid helpers support DES, MD5 and SHA encryption of the passwords file. Bcrypt requires additional support in the crypto libraries Squid is built with so may or may not work.
 
 == Squid Configuration File ==
 
