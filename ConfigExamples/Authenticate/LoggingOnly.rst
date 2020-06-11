@@ -29,8 +29,6 @@ One of the following authentication helpers is also needed to ensure that login 
 
 == Basic Authentication ==
 
-=== Dummy Auth Helpers ===
-
 Squid provides a helper '''basic_fake_auth''' to do the authentication challenges needed.
 It simply does NO authentication, and replies '''OK''' to any username/password combination.
 
