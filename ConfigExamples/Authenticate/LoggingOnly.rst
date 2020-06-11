@@ -31,67 +31,29 @@ One of the following authentication helpers is also needed to ensure that login 
 
 === Dummy Auth Helpers ===
 
-## TODO: bundle this with Squid as basic_fake_auth
-
-Since Squid is only supplied with real authentication helpers (at the time of writing), you pretty much need to make your own. I simply cut down a supplied one to suite. It simply does NO authentication, and replies "OK" to any username/password combination.
-This could probably be improved upon by someone with knowledge of C. For example, the "#define ERR" line is probably not necessary.
-{{{
-/* dummy_auth.c
- * AUTHOR: Tim Bates
- *
- * Dummy authentication program for Squid, based on the
- * getpwnam_auth.c example program supplied with Squid.
- */
-
-#include <stdio.h>
-#include <stdlib.h>
-
-#define ERR    "ERR\n"
-#define OK     "OK\n"
-
-int main()
-{
-    char buf[256];
-    struct passwd *pwd;
-    char *user, *passwd, *p;
-
-    setbuf(stdout, NULL);
-    while (fgets(buf, 256, stdin) != NULL) {
-
-   printf(OK);
-    }
-    exit(0);
-}
-}}}
-
-You can compile this on most Linux  by saving the content to a file called "dummy_auth.c" and running "gcc dummy_auth.c -o dummy_auth".
-Windows users will need to find a C compiler on their own (I believe GCC is also available for Windows, but I can't be sure).
+Squid provides a helper '''basic_fake_auth''' to do the authentication challenges needed.
+It simply does NO authentication, and replies '''OK''' to any username/password combination.
 
 === Squid Configuration File ===
 
-Now that you have a dummy_auth program, you can tell Squid how to use it.
 This section defines the authentication helper and related settings.
 {{{
-auth_param basic program /usr/lib/squid/dummy_auth
+auth_param basic program /usr/lib/squid/basic_fake_auth
 auth_param basic children 10
-auth_param basic realm My Proxy
 auth_param basic credentialsttl 1 hours
 auth_param basic casesensitive off
 }}}
 
 == NTLM Authentication ==
 
-Squid provides a helper '''fakeauth''' to do the NTLM handshake and authentication challenges needed.
+Squid provides a helper '''ntlm_fake_auth''' to do the NTLM handshake and authentication challenges needed.
 The helper always returns '''OK''' whatever the result.
 
 === Squid Configuration File ===
 
 {{{
-auth_param ntlm program /usr/lib/squid/fakeauth
+auth_param ntlm program /usr/lib/squid/ntlm_fake_auth
 auth_param ntlm children 10
-auth_param ntlm realm My Proxy
-auth_param ntlm credentialsttl 1 hours
-auth_param ntlm casesensitive off
 }}}
 
 ----
