@@ -6,11 +6,14 @@ Besides this, I'm a general nag-person for the other developers and I'm this wik
 
 I'm also known by the nickname "Kinkie".
 
-There's a playground for new features available at /LabArea.<<BR>>
-Random bits at /NotePad, along with some /RemindersToSelf.<<BR>>
-I'm trying to improve combination filters in [[http://jenkins-ci.org/|Jenkins]], bits in /JenkinsBits.<<BR>>
-
 I'm reachable by email at <<MailTo(kinkie@squid-cache.org)>>
+
+== Subtopics ==
+ * queue of things I'd like to work on in Squid at [[/SquidProjects]]
+ * There's a playground for new wiki features available at /LabArea.
+ * Random bits at /NotePad
+ * Random small notes on [[http://jenkins-ci.org/|Jenkins]] in /JenkinsBits
+
 
 == Development hints and bits ==
  * [[http://tokyocabinet.sourceforge.net/|Tokyo Cabinet]]
