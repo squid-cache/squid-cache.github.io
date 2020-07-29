@@ -2,11 +2,16 @@
 #language en
 #acl SquidWikiAdminGroup:read,write,delete,revert -All:read
 
+== health checks ==
+ * we are using [[http://statuscake.com | StatusCake]] to do black-box availability testing of the main services. For now (July 2020) only FrancescoChemolli is notified; we'll add NOC once the reliability of the service is validated
+
+
+----
+/!\ most of what's below here is obsolete.
+----
 
 '''BUGS TO FIX:'''
  
- * DNS service on east is still set to slave from west.
-
  * bin/mk-static.sh copies CVS directories from dynamic to static site copies. (old bug) requires rsync cmd line voodoo to fix.
 
  * rsync run on west to mirror data, has permissions errors reading from master.
