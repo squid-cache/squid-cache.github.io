@@ -20,7 +20,7 @@ yum install squid
 
 ==== Squid-4.10 ====
 
-Available on Fedora 30 and later.
+Available on Fedora 30.
 
 Install Procedure:
 {{{
