@@ -9,6 +9,15 @@ Binary RPMs for Fedora are available via the Fedora download/update servers for 
 
 Package information: https://src.fedoraproject.org/rpms/squid
 
+==== Squid-4.12 ====
+
+Available on Fedora 31 and later.
+
+Install Procedure:
+{{{
+yum install squid
+}}}
+
 ==== Squid-4.10 ====
 
 Available on Fedora 30 and later.
