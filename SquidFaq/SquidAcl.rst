@@ -118,11 +118,17 @@ http_access allow|deny acl AND acl AND ...
         OR
 ...
 }}}
-If none of the rules are matched, then the default action is the ''opposite'' of the last rule in the list.  Its a good idea to be explicit with the default action.  The best way is to use the ''all'' ACL.  For example:
+
+If none of the configured rules match, then Squid ''reverses'' the action of the last configured rule. For example, if the last configured http_access action was "allow", then Squid denies access.
+
+Consult directive-specific documentation for that directive ''default'' behavior. For example, if no http_access rules are configured at all, Squid denies access.
+
+Relying on these implicit defaults is dangerous because Squid action may "unexpectedly" change when you add or remove the last configured rule. It is best to end your rules with an explicit rule that will match any transaction. For example:
 
 {{{
 http_access deny all
 }}}
+
 == How do I allow my clients to use the cache? ==
 Define an ACL that corresponds to your client's IP addresses. For example:
 
