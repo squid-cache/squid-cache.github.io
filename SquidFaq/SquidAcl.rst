@@ -210,7 +210,7 @@ In Squid this authentication is handled via external processes.  For information
 
 == Common Mistakes ==
 === And/Or logic ===
-You've probably noticed (and been frustrated by) the fact that you cannot combine access controls with terms like "and" or "or." These operations are already built in to the access control scheme in a fundamental way which you must understand.
+Interpretation of ACL-driven directives is based, in part, on the following rules:
 
  * '''All elements of an ''SquidConf:acl'' entry are OR'ed together'''.
  * '''All elements of an ''access'' entry are AND'ed together''' (e.g. ''SquidConf:http_access'' and ''SquidConf:icp_access'')
