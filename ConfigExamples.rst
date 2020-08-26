@@ -20,15 +20,19 @@ We now provide an the Authoritative Configuration Manual for each version of squ
 
 ## For Squid-3.0 the Manual is at http://www.squid-cache.org/Versions/v3/3.0/cfgman/
 
-For Squid-3.1 the Manual is at http://www.squid-cache.org/Versions/v3/3.1/cfgman/
+## For Squid-3.1 the Manual is at http://www.squid-cache.org/Versions/v3/3.1/cfgman/
 
-For Squid-3.2 the Manual is at http://www.squid-cache.org/Versions/v3/3.2/cfgman/
+## For Squid-3.2 the Manual is at http://www.squid-cache.org/Versions/v3/3.2/cfgman/
 
-For Squid-3.3 the Manual is at http://www.squid-cache.org/Versions/v3/3.3/cfgman/
+## For Squid-3.3 the Manual is at http://www.squid-cache.org/Versions/v3/3.3/cfgman/
 
-For Squid-3.4 the Manual is at http://www.squid-cache.org/Versions/v3/3.4/cfgman/
+## For Squid-3.4 the Manual is at http://www.squid-cache.org/Versions/v3/3.4/cfgman/
 
 For Squid-3.5 the Manual is at http://www.squid-cache.org/Versions/v3/3.5/cfgman/
+
+For Squid-4 the Manual is at http://www.squid-cache.org/Versions/v4/cfgman/
+
+For Squid-5 the Manual is at http://www.squid-cache.org/Versions/v5/cfgman/
 
 A combined Squid Manual can be found at http://www.squid-cache.org/Doc/config/ with details on each option supported in Squid, and what differences can be encountered between major Squid releases.
 
