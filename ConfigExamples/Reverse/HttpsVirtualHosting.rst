@@ -11,7 +11,7 @@
 
 == Usage ==
 
-This configuratino example documents how to configure a Squid proxy to receive HTTPS traffic for multiple domains when it is acting as a "reverse-proxy" (aka CDN frontend or gateway proxy).
+This configuration example documents how to configure a Squid proxy to receive HTTPS traffic for multiple domains when it is acting as a "reverse-proxy" (aka CDN frontend or gateway proxy).
 
 This configuration is for [[Squid-4]] and newer which have been built with GnuTLS support. Older Squid versions and Squid built with OpenSSL support cannot be configured this way.
 
