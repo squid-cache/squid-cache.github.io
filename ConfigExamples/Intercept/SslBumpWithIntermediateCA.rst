@@ -35,10 +35,34 @@ Now Squid can send the intermediate CA2 public key with root CA1 to client and d
 
 == Squid Configuration File ==
 
+=== Port 80 traffic ===
+
 Paste the configuration file like this:
 
 {{{
-http_port 3128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
+http_port 3127 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
+   cert=/etc/squid/signingCA.crt \
+   key=/etc/squid/signingCA.key \
+   cafile=/etc/squid/chain.pem
+}}}
+
+=== Port 443 traffic ===
+
+Paste the configuration file like this:
+
+{{{
+https_port 3129 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
+   cert=/etc/squid/signingCA.crt \
+   key=/etc/squid/signingCA.key \
+   cafile=/etc/squid/chain.pem
+}}}
+
+=== Explicit Proxy traffic ===
+
+Paste the configuration file like this:
+
+{{{
+http_port 3129 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB \
    cert=/etc/squid/signingCA.crt \
    key=/etc/squid/signingCA.key \
    cafile=/etc/squid/chain.pem
