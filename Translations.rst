@@ -33,9 +33,10 @@ Several people have volunteered their time to check and confirm translations to 
 || Slovak || sk || ''Helix'' ||
 || Slovenian || sl || Aleksa Šušulić ||
 || Serbian (Latin) || sr-latn || ''batailic'' ||
+|| Spanish || es , es-mx|| Javier Pacheco ||
 || Swedish || sv || HenrikNordstrom (Squid Project) ||
 ## || Turkish || tr || Umut Çinar ||
-|| Vietnamese || vi || ''Clytie'' ||
+## || Vietnamese || vi || ''Clytie'' ||
 || Others || || '''Unverified''', If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. ||
 
 == How can I contribute? ==
