@@ -1,4 +1,11 @@
 = Bazaar =
+
+----
+
+/!\ '''''This page is obsolete and only kept for historic purposes. Squid has transitioned to git and github as SCM and main source repository'''''
+
+----
+
 Bazaar is a distributed VCS written in python. It offers both drop-in CVS replacement work flow (use checkouts to work on code), and full distributed work flow (every copy is a new branch), up to the user to work as they want.
 
 <<TableOfContents>>
