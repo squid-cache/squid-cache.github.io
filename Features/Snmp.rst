@@ -229,7 +229,7 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 || *.1.5.1.2.13 || cachePeerKeepAlRecv || Counter32 || 2.6-2.8 ||Number of keepalives received||
 || *.1.5.1.2.14 || cachePeerIndex || Integer32 || 2.6-2.8 ||Reference Index for each peer||
 || *.1.5.1.2.15 || cachePeerHost || STRING || 2.6-2.8 ||The FQDN name for the peer cache||
-||<-5> '''Peer Servers Table (Squid-3.1)''' ||
+||<-5> '''Peer Servers Table (Squid-3.1 and later)''' ||
 || *.1.5.1.3.1 || cachePeerIndex || Integer32 || 3.1+ ||A unique value, greater than zero for each SquidConf:cache_peer instance in the managed system.||
 || *.1.5.1.3.2 || cachePeerName || STRING || 3.1+ ||The FQDN name or internal alias for the peer cache||
 || *.1.5.1.3.3 || cachePeerAddressType || !InetAddressType || 3.1+ ||The type of Internet address by which the peer cache is reachable.||
