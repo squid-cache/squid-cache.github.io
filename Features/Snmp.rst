@@ -255,7 +255,7 @@ Squid OIDs do change between releases. Below is a table of the current OIDs avai
 || *.1.5.2.1.7 || cacheClientIcpKb || Counter32 || 2.x-3.0 ||Amount of total ICP traffic to this client (child)||
 || *.1.5.2.1.8 || cacheClientIcpHits || Counter32 || 2.x-3.0 ||Number of hits in response to this client's ICP requests||
 || *.1.5.2.1.9 || cacheClientIcpHitKb || Counter32 || 2.x-3.0 ||Amount of ICP hit traffic in KB||
-||<-5> '''Client Table (Squid-3)''' ||
+||<-5> '''Client Table (Squid-3 and later)''' ||
 || *.1.5.2.2.1 || cacheClientAddrType || Integer32 || 3.1+ || IP version :: 1 = IPv4, 2 = IPv6 ||
 || *.1.5.2.2.2 || cacheClientAddr || IP Address || 3.1+ ||The client's IP address||
 || *.1.5.2.2.3 || cacheClientHttpRequests || Counter32 || 3.1+ ||Number of HTTP requests received from client||
