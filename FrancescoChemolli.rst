@@ -13,6 +13,7 @@ I'm reachable by email at <<MailTo(kinkie@squid-cache.org)>>
  * There's a playground for new wiki features available at /LabArea.
  * Random bits at /NotePad
  * Random small notes on [[http://jenkins-ci.org/|Jenkins]] in /JenkinsBits
+ * /PagesToMigrate
 
 
 == Development hints and bits ==
