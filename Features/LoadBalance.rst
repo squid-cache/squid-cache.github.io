@@ -7,15 +7,7 @@
 
  * '''Goal''': Load balance origin servers or peers.
 
- * '''Status''': incomplete.
-
-## * '''ETA''': unknown
-
  * '''Version''': 2.6
-
-## * '''Developer''':
-
-## * '''More''':
 
 <<TableOfContents>>
 
