@@ -324,7 +324,7 @@ There also appears to be some work done by Joe Pelaez Jorge (https://code.launch
 === Visual Studio ===
 Almost no work on this environment has been done since [[Squid-2.7]].
 
-Entirely new .sln, .sdf and .vcxproj build files need to be generated. Ideally these would mirror the on-Windows style of convenience libraries assembled to produce a number of different binaries. Experiments along those lines have some nice results, but issues with BZR on Windows are causing trouble. The Squid developers are discussing moving to git, which will hopefully resolve the main issue there.
+Entirely new .sln, .sdf and .vcxproj build files need to be generated. Ideally these would mirror the on-Windows style of convenience libraries assembled to produce a number of different binaries. Experiments along those lines have some nice results.
 
 == Troubleshooting ==
 
