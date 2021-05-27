@@ -305,7 +305,6 @@ As of [[Squid-3.5]] :
  * the default feature set builds without extra special ./configure options.
  * missing shared socket support available in Vista and later. Necessary for SMP workers.
 
-AmosJeffries is compiling with native MinGW environment. As this is spare-time work progress is slow.
 {{{
 
 ./configure \
