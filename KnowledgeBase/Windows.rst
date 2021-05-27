@@ -32,11 +32,11 @@ On Windows 2000 and later the service is configured to use the Windows Service R
 
 Packages available for Squid on multiple environments.
 
-==== Squid-3.5 ====
+==== Squid-4 ====
 
 Maintainer: Rafael Akchurin, [[http://www.diladele.com/|Diladele B.V.]]
 
-Bug Reporting: (about the installer only) https://github.com/diladele/squid3-windows/issues
+Bug Reporting: (about the installer only) https://github.com/diladele/squid-windows/issues
 
 ## Binary packages for the Cygwin environment on Windows are at:
 
