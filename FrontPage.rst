@@ -34,7 +34,7 @@ If you experience problems with the site or the contents, please see ReportingWi
 
 == Developers corner ==
 
-DeveloperResources section has instructions for source code access, coding guidelines, and other useful documentation. Code discussions happen on the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev]] mailing list, #squiddev IRC channel on irc.freenode.net, and during pull request reviews on [[https://github.com/squid-cache/|GitHub]].
+DeveloperResources section has instructions for source code access, coding guidelines, and other useful documentation. Code discussions happen on the [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev]] mailing list, and during pull request reviews on [[https://github.com/squid-cache/|GitHub]].
 
 
 == Related resources ==
