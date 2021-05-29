@@ -8,7 +8,7 @@ The Squid Project is not currently a financial concern. It is run by volunteers 
 
 == Installation / Configuration Support ==
 
- '''Free User Support''' for any current stable release and perhapse for one or two slightly older releases is provided by volunteers on the '''squid-users''' mailing list or IRC channel '''#squid''' on irc.freenode.net
+ '''Free User Support''' for any current stable release and perhapse for one or two slightly older releases is provided by volunteers on the '''squid-users''' mailing list
 
  '''Paid User Support''' for any release can be purchased from a team developer or Squid support provider. These are listed at http://www.squid-cache.org/Support/services.html
 
