@@ -4,13 +4,13 @@
 
 Major stable releases follow a two-year schedule. Beta branches are spawned six months before the corresponding major stable release.
 
-||<:> '''Date''' ||<:> '''Event''' || '''Numbered Release''' ||
-||<)>   July 4, 2021 || v5 Final RC ||<:> v5.0.7 ||
-||<)>   August 1, 2021 || v5 branch frozen ||<:> v5.1 ||
-||<)> February 5, 2023 || v6 branch created ||<:> v6.0.1 ||
-||<)>   August 6, 2023 || v6 branch frozen ||<:> v6.1 ||
-||<)> February 2, 2025 || v7 branch created ||<:> v7.0.1 ||
-||<)>   August 3, 2025 || v7 branch frozen ||<:> v7.1 ||
+||<:> '''Date''' || '''Release''' ||
+|| 2021-07-04 || v5.0.7 ||
+|| 2021-08-01 || v5.1 ||
+|| 2023-02-05 || v6.0.1 ||
+|| 2023-07-06 || v6.1 ||
+|| 2025-02-02 || v7.0.1 ||
+|| 2025-07-03 || v7.1 ||
 
 = Notes =
 
