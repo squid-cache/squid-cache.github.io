@@ -7,11 +7,12 @@
 Major stable releases follow a two-year schedule. Beta branches are spawned six months before the corresponding major stable release. The following table contains specific dates.
 
 ||<:> '''Date''' ||<:> '''Event''' || '''Numbered Release''' ||
-||<)>   August 1, 2021 || v5 branch is declared stable ||<:> v5.1 ||
-||<)> February 5, 2023 || v6 branch is created         ||<:> v6.0.1 ||
-||<)>   August 6, 2023 || v6 branch is declared stable ||<:> v6.1 ||
-||<)> February 2, 2025 || v7 branch is created         ||<:> v7.0.1 ||
-||<)>   August 3, 2025 || v7 branch is declared stable ||<:> v7.1 ||
+||<)>   July 4, 2021 || v5 Final RC ||<:> v5.0.7 ||
+||<)>   August 1, 2021 || v5 branch frozen ||<:> v5.1 ||
+||<)> February 5, 2023 || v6 branch created ||<:> v6.0.1 ||
+||<)>   August 6, 2023 || v6 branch frozen ||<:> v6.1 ||
+||<)> February 2, 2025 || v7 branch created ||<:> v7.0.1 ||
+||<)>   August 3, 2025 || v7 branch frozen ||<:> v7.1 ||
 
 The published dates follow the two-year cycle starting with August 1, 2021, with an additional Squid maintainer requirement that these event dates fall on a Sunday. If that additional requirement changes, the dates may be adjusted by up to seven days (in either direction).
 
