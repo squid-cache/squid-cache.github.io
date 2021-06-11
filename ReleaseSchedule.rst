@@ -1,10 +1,8 @@
 #language en
 
-## <<TableOfContents>>
+= Future Release Schedule =
 
-'''''The is a draft page. Ignore it until this text is gone.'''''
-
-Major stable releases follow a two-year schedule. Beta branches are spawned six months before the corresponding major stable release. The following table contains specific dates.
+Major stable releases follow a two-year schedule. Beta branches are spawned six months before the corresponding major stable release.
 
 ||<:> '''Date''' ||<:> '''Event''' || '''Numbered Release''' ||
 ||<)>   July 4, 2021 || v5 Final RC ||<:> v5.0.7 ||
@@ -13,6 +11,8 @@ Major stable releases follow a two-year schedule. Beta branches are spawned six 
 ||<)>   August 6, 2023 || v6 branch frozen ||<:> v6.1 ||
 ||<)> February 2, 2025 || v7 branch created ||<:> v7.0.1 ||
 ||<)>   August 3, 2025 || v7 branch frozen ||<:> v7.1 ||
+
+= Notes =
 
 The published dates follow the two-year cycle starting with August 1, 2021, with an additional Squid maintainer requirement that these event dates fall on a Sunday. If that additional requirement changes, the dates may be adjusted by up to seven days (in either direction).
 
