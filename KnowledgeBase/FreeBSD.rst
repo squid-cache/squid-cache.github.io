@@ -48,4 +48,4 @@ FreeBSD contains additional security settings to prevent users sending fatal or 
 Unfortunately this catches Squid in the middle. Since the administrative process of Squid normally runs as root and the child worker process runs as some other non-privileged user (by default: '''nobody'''). The '''root''' administrative process is unable to send signals such as ''shutdown'' or ''reconfigure'' to its own child.
 
 ----
-CategoryKnowledgeBase
+CategoryKnowledgeBase CategoryUpdated
