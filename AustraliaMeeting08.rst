@@ -17,7 +17,7 @@
 === Developers ===
 
  * [[AdrianChadd]] (Squid Core)
- * [[]] (Squid Core)
+ * [[AmosJeffries]] (Squid Core)
  * Benno Rice (random Squid hacker)
  * [[RobertCollins]] (Squid Core) - I'll try to drop by, will see how much time I have available.
 
@@ -49,3 +49,5 @@ Developer discussion (continued)
 If time permits or interest is high
  * [[AmosJeffries]] - IPv6 in Squid
  * [[AdrianChadd]] - Cacheboy, or "Where could Squid-2 go?"
+
+CategoryUpdated
