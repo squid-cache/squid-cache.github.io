@@ -4,13 +4,17 @@
 
 Major stable releases follow a two-year schedule. Beta branches are spawned six months before the corresponding major stable release.
 
-||<:> '''Date''' || '''Release''' ||
-|| 2021-07-04 || v5.0.7 ||
-|| 2021-08-01 || v5.1, v6.0.0 (alpha) ||
-|| 2023-02-05 || v6.0.1 (beta)||
-|| 2023-07-06 || v6.1 , v7.0.0 (alpha) ||
-|| 2025-02-02 || v7.0.1 (beta) ||
-|| 2025-07-03 || v7.1 ||
+||<:> '''Date''' || '''Release''' || '''Type''' ||
+|| 2021-07-04 || v5.0.7 || beta ||
+|| 2021-08-01 || v5.1 || stable ||
+|| ||
+|| 2021-08-02 || v6.0.0 || alpha ||
+|| 2023-02-05 || v6.0.1 || beta||
+|| 2023-07-06 || v6.1 || stable ||
+|| ||
+|| 2023-07-07 || v7.0.0 || alpha ||
+|| 2025-02-02 || v7.0.1|| beta ||
+|| 2025-07-03 || v7.1 || stable ||
 
 = Notes =
 
