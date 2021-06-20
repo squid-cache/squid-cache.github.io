@@ -1,7 +1,5 @@
-#language en
 <<TableOfContents>>
 
-##begin
 == What is Squid? ==
 Squid is a high-performance proxy caching server for web clients, supporting FTP, gopher, and HTTP data objects.  Squid handles all requests in a single, non-blocking, I/O-driven process over IPv4 or IPv6.
 
@@ -59,13 +57,18 @@ That question is best answered by the official mailing lists page at http://www.
  * [[http://www.ircache.net/|The IRCache Mesh]] gives information on our operational mesh of caches.
  * [[http://wiki.squid-cache.org/SquidFaq/|The Squid FAQ]] (uh, you're reading it).
  * [[http://www.squid-cache.org/|Authoritative Config Guides]] are available in the menu on squid-cache.org
- * Squid documentation in [[http://www.squid-handbuch.de/|German]], [[http://istanbul.linux.org.tr/~ilkerg/squid/elkitabi.html|Turkish]], [[http://www.linuxman.pro.br/squid/|Brazilian Portugese]], and another in [[http://www.geocities.com/glasswalk3r/linux/squidnomicon.html|Brazilian Portugese]].
- * [[http://squid.treenet.co.nz/Doc/Code|Squid Programmers Guide]]. Yeah, its extremely incomplete. I assure you this is the most recent version. Please send any description updates to the <<MailTo(squid-dev AT squid-cache DOT org)>> mailing list
- * [[http://www.web-cache.com|Web Caching Resources]]
+ * Squid documentation in [[http://www.squid-handbuch.de/|German]], [[http://istanbul.linux.org.tr/~ilkerg/squid/elkitabi.html|Turkish]]
  * [[http://www.squid-cache.org/Doc/Hierarchy-Tutorial/|Tutorial on Configuring Hierarchical Squid Caches]]
- * [[ftp://ftp.isi.edu/in-notes/rfc2186.txt|RFC 2186]] ICPv2 -- Protocol
- * [[ftp://ftp.isi.edu/in-notes/rfc2187.txt|RFC 2187]] ICPv2 -- Application
- * [[ftp://ftp.isi.edu/in-notes/rfc1016.txt|RFC 1016]]
+ * [[https://datatracker.ietf.org/doc/html/rfc2186|RFC 2186]] ICPv2 -- Protocol
+ * [[https://datatracker.ietf.org/doc/html/rfc2187|RFC 2187]] ICPv2 -- Application
+ * [[https://datatracker.ietf.org/doc/html/rfc1016|RFC 1016]]
+ * [[https://datatracker.ietf.org/doc/html/rfc7230|RFC 7230]] - HTTP 1.1 Message Syntax and Routing
+ * [[https://datatracker.ietf.org/doc/html/rfc7231|RFC 7231]] - HTTP 1.1 Semantics and Content
+ * [[https://datatracker.ietf.org/doc/html/rfc7232|RFC 7232]] - HTTP 1.1 Conditional requests
+ * [[https://datatracker.ietf.org/doc/html/rfc7233|RFC 7233]] - HTTP 1.1 Range Requests
+ * [[https://datatracker.ietf.org/doc/html/rfc7234|RFC 7234]] - HTTP 1.1 Caching
+ * [[https://datatracker.ietf.org/doc/html/rfc7235|RFC 7235]] - HTTP 1.1 Authentication
+
 
 == What's the legal status of Squid? ==
 Squid is copyrighted by The Squid Software Foundation and contributors. Squid copyright holders are listed in the CONTRIBUTORS file.
@@ -74,23 +77,23 @@ Squid is [[http://www.gnu.org/philosophy/free-sw.html|Free Software]], distribut
 
 Squid contributors and components change with Squid software. The appropriate CONTRIBUTORS and CREDITS files can be found in the corresponding Squid sources, available for [[http://www.squid-cache.org/Versions/|download]].
 
-Official Squid artwork distribution terms are detailed [[http://www.squid-cache.org/Artwork/|elsewhere]].
+Official Squid artwork distribution terms are detailed [[http://www.squid-cache.org/Artwork/|on the main website]].
 
 <<Anchor(HowToAddOrFix)>>
 
 == How to add a new Squid feature, enhance, of fix something? ==
 Adding new features, enhancing, or fixing Squid behavior usually requires source code modifications. Several options are generally available to those who need Squid development:
 
- * '''Wait''' for somebody to do it: Waiting is free but may take forever. If you want to use this option, make sure you file a [[http://bugs.squid-cache.org/|bugzilla report]] describing the bug or enhancement so that others know what you need. Posting feature requests to a [[http://www.squid-cache.org/Support/mailing-lists.html|mailing list]] is often useful because it can generate interest and discussion, but without a bugzilla record, your request may be overlooked or forgotten.
+ * '''Wait''' for somebody to do it: Waiting is free but may take forever. If you want to use this option, make sure you file a [[http://bugs.squid-cache.org/|bug report]] describing the bug or enhancement so that others know what you need. Posting feature requests to a [[http://www.squid-cache.org/Support/mailing-lists.html|mailing list]] is often useful because it can generate interest and discussion, but without a bug record, your request may be overlooked or forgotten.
 
- * '''Do''' it yourself: Enhancing Squid and working with other developers can be a very rewarding experience. However, this option requires understanding and modifying the source code, which is getting better, but it is still very complex, often ugly, and lacking documentation. These obstacles affect the required development effort. In most cases, you would want your changes to be incorporated into the official Squid sources for long-term support. To get the code committed, one needs to cooperate with other developers. It is a good idea to describe the changes you are going to work on before diving into development. Development-related discussions happen on [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev mailing list]]. Documenting upcoming changes as a [[http://bugs.squid-cache.org/|bugzilla entry]] or a wiki [[CategoryFeature|feature page]] helps attract contributors or sponsors.
+ * '''Do''' it yourself: Enhancing Squid and working with other developers can be a very rewarding experience. However, this option requires understanding and modifying the source code, which is getting better, but it is still very complex, often ugly, and lacking documentation. These obstacles affect the required development effort. In most cases, you would want your changes to be incorporated into the official Squid sources for long-term support. To get the code committed, one needs to cooperate with other developers. It is a good idea to describe the changes you are going to work on before diving into development. Development-related discussions happen on [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev mailing list]]. Documenting upcoming changes as a [[http://bugs.squid-cache.org/|bug report]].
 
- * '''Pay''' somebody to do it: Many organizations and individuals offer commercial Squid development [[http://www.squid-cache.org/Support/services.html|services]]. When selecting the developer, discuss how they plan to integrate the changes with the official Squid sources and consider the company past contributions to the Squid project. Please see the [[http://wiki.squid-cache.org/SquidFaq/AboutSquid#Can_I_pay_someone_for_Squid_support.3F|"Can I pay?"]] entry for more details.
+ * '''Pay''' somebody to do it: Many organizations and individuals offer commercial Squid development [[http://www.squid-cache.org/Support/services.html|services]]. When selecting the developer, discuss how they plan to integrate the changes with the official Squid sources and consider the company past contributions to the Squid project. Please see the "Can I pay someone for Squid support?" entry for more details.
 
 The best development option depends on many factors. Here is some project dynamics information that may help you pick the right one: Most Squid features and maintenance is done by individual contributors, working alone or in small development/consulting shops. In the early years (1990-2000), these developers were able to work on Squid using their free time, research grants, or similarly broad-scope financial support. Requested features were often added on-demand because many folks could work on them. Most recent (2006-2008) contributions, especially large features, are the result of paid development contracts, reflecting both the maturity of software and the lack of "free" time among active Squid developers.
 
 == Can I pay someone for Squid support? ==
-Yes.  Please see [[http://www.squid-cache.org/Support/services.html|Squid Support Services]]. Unfortunately, that page is poorly maintained and has many stale/bogus entries, but we do plan to improve it in the foreseeable future. Please do ''not'' email the Squid Project asking for official recommendations -- the Project itself cannot recommend specific Squid administrators or developers due to various conflicts of interests. However, if the Project could make official referrals, they would probably form a (tiny) subset of the [[http://www.squid-cache.org/Support/services.html|listed entries]].
+Yes.  Please see [[http://www.squid-cache.org/Support/services.html|Squid Support Services]]. Unfortunately, that page is poorly maintained and has many stale/bogus entries, so exercise caution. Please do ''not'' email the Squid Project asking for official recommendations -- the Project itself cannot recommend specific Squid administrators or developers due to various conflicts of interests. However, if the Project could make official referrals, they would probably form a (tiny) subset of the [[http://www.squid-cache.org/Support/services.html|listed entries]].
 
 Besides the Services page, you can post a Request For Proposals to [[http://www.squid-cache.org/Support/mailing-lists.html#squid-users|squid-users]] (Squid administration and integration) or [[http://www.squid-cache.org/Support/mailing-lists.html#squid-dev|squid-dev]] (Squid development) mailing list. A good RFP contains enough details (including your deadlines and Squid versions) for the respondents to provide a ballpark cost estimate. Expect private responses to your RFPs and avoid discussing private arrangements on the public mailing lists. Please do ''not'' email RFPs to the Project info@ alias for the reasons discussed in the previous paragraph.
 
@@ -102,12 +105,10 @@ The following people have made contributions to this document:
 Dodjie Nava, Jonathan Larmour, Cord Beermann, Tony Sterrett, Gerard Hynes, Katayama, Takeo, Duane Wessels, K Claffy, Paul Southworth, Oskar Pearson, Ong Beng Hui, Torsten Sturm, James R Grinter, Rodney van den Oever, Kolics Bertold, Carson Gaspar, Michael O'Reilly, Hume Smith, Richard Ayres, John Saunders, Miquel van Smoorenburg, David J N Begley, Kevin Sartorelli, Andreas Doering, Mark Visser, tom minchin, Jens-S. Vöckler, Andre Albsmeier, Doug Nazar, HenrikNordstrom, Mark Reynolds, Arjan de Vet, Peter Wemm, John Line, Jason Armistead, Chris Tilbury, Jeff Madison, Mike Batchelor, Bill Bogstad, Radu Greab, F.J. Bosscha, Brian Feeny, Martin Lyons, David Luyer, Chris Foote, Jens Elkner, Simon White, Jerry Murdock, Gerard Eviston, Rob Poe, FrancescoChemolli, ReubenFarrelly AlexRousskov AmosJeffries
 
 == About This Document ==
-## The Squid FAQ is copyrighted (2006) by The Squid Core Team.
 This FAQ was maintained for a long time as an XML Docbook file. It was converted to a Wiki in March 2006. The wiki is now the authoritative version.
 
 == Want to contribute? ==
 We always welcome help keeping the Squid FAQ up-to-date. If you would like to help out, please register with this Wiki and type away.
 
-##end
 ----
-Back to the SquidFaq
+Back to the [[SquidFaq]] CategoryUpdated
