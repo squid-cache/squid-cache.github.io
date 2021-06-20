@@ -5,7 +5,7 @@
 == What is Squid? ==
 Squid is a high-performance proxy caching server for web clients, supporting FTP, gopher, and HTTP data objects.  Squid handles all requests in a single, non-blocking, I/O-driven process over IPv4 or IPv6.
 
-Squid keeps meta data and especially hot objects cached in RAM, caches DNS lookups, supports non-blocking DNS lookups, and implements negative caching of failed requests.
+Squid keeps meta data and especially hot objects and DNS entries cached in RAM, and implements negative caching of failed requests.
 
 Squid supports SSL, extensive access controls, and full request logging.  By using the lightweight Internet Cache Protocol, Squid caches can be arranged in a hierarchy or mesh for additional bandwidth savings.
 
@@ -27,92 +27,39 @@ This is best answered by the [[http://www.squid-cache.org/Versions/|the Squid Ve
 == Who is responsible for Squid? ==
 
 Squid is the result of efforts by numerous individuals from the Internet community.
- * The Squid Software Foundation provides representation and oversight of the Squid Project.
- * The core team and main contributors list is at WhoWeAre.
+ * The Squid Software Foundation provides representation and oversight of the Squid Project
+ * The core team and main contributors list is at [[WhoWeAre]]
  * A list of our many excellent code contributors can be seen in the CONTRIBUTORS file within each copy of published sources.
 
 == Where can I get Squid? ==
 You can download Squid via FTP or HTTP from one of the many worldwide [[http://www.squid-cache.org/Download/mirrors.html|mirror sites]] or [[ftp://ftp.squid-cache.org/pub/|the primary FTP site]].
 
-Many sushi bars also have Squid.
+Many sushi bars and restaurants also serve Squid.
 
 == What Operating Systems does Squid support? ==
-The software is designed to operate on any modern system, and is known to work on at least the following platforms:
+The project routinely tests Squid on Linux, on several popular distributions including [[http://www.debian.org/|Debian]] and derivatives, and [[KnowledgeBase/CentOS|CentOS]] and other Red Hat inspired projects. We expect Squid to run and build on just about any modern Linux system.
 
-## supported OS list
-'''BSD:'''
+We also test on [[KnowledgeBase/FreeBSD|FreeBSD]] and [[KnowledgeBase/OpenBsd|OpenBSD]], and Squid is available on these platforms as a package or in the ports collection.
 
- * BSDI
- * DragonflyBSD
- * [[KnowledgeBase/FreeBSD|FreeBSD]]
- * [[KnowledgeBase/Debian|GNU/kFreeBSD (via Debian Project)]]
- * [[KnowledgeBase/Fink|Mac OS/X (via Fink Project)]]
- * [[KnowledgeBase/NetBSD|NetBSD]]
- * NeXTStep
- * [[KnowledgeBase/OpenBsd|OpenBSD]]
- * SunOS
+Squid is also available on MacOS X through [[https://brew.sh/|HomeBrew]]
 
-'''Linux:'''
+We expect Squid to run on commercial Unixen such as Solaris or AIX, and we know it has at some point in time, but we have no way to test  it.
 
- * Arch
- * [[KnowledgeBase/CentOS|CentOS]]
- * [[KnowledgeBase/Debian|Debian]]
- * [[KnowledgeBase/Fedora|Fedora]]
- * [[KnowledgeBase/Gentoo|Gentoo]]
- * Mageia
- * Mandriva
- * [[KnowledgeBase/OpenSUSE|OpenSUSE]]
- * [[KnowledgeBase/RedHat|RedHat Enterprise Linux]]
- * [[KnowledgeBase/Slackware|Slackware]]
- * [[KnowledgeBase/SLES|Novelle SuSE / SLES]]
- * [[KnowledgeBase/Ubuntu|Ubuntu]]
- * !ZenWalk
-## http://www.zenwalk.org/
+Squid is also known to run on [[KnowledgeBase/Windows|Windows]] 
 
-'''Unix:'''
 
- * AIX
- * HP-UX
- * IRIX
- * SCO Unix
- * [[KnowledgeBase/Solaris|Solaris]]
- * OmniOS
- * !OpenIndiana
- * OSF/Digital Unix/Tru64
-## OmniOS http://omnios.omniti.com/
-
-'''[[KnowledgeBase/Windows|Windows]]:''' (Cygwin and MinGW)
-
- * Windows 2000 Server
- * Windows NT
- * Windows XP Server
- * Windows 2003 Server
- * Windows Vista Server
-
-'''Other:'''
-
- * OS/2
-
-## end supported OS list
-
-If you encounter any platform-specific problems, please let us know by registering an entry in our [[http://bugs.squid-cache.org/|bug database]]. If you're curious about what is the best OS to run Squid, see BestOsForSquid.
-
-If you would like your favorite OS to join the list above, please try to build the latest Squid on it and send any feedback to the squid-dev mailing list.
+If you encounter any platform-specific problems, please let us know by registering an entry in our [[http://bugs.squid-cache.org/|bug database]].
 
 == What Squid mailing lists are available? ==
 That question is best answered by the official mailing lists page at http://www.squid-cache.org/Support/mailing-lists.html
 
-=== I can't figure out how to unsubscribe from your mailing list. ===
-All of our mailing lists have "-subscribe" and "-unsubscribe" addresses that you must use for subscribe and unsubscribe requests.  To unsubscribe from the squid-users list, you send a message to <<MailTo(squid-users-unsubscribe AT squid-cache DOT org)>>.
-
 == What other Squid-related documentation is available? ==
  * [[http://www.squid-cache.org/|The Squid home page]] for information on the Squid software
- * [[http://squidbook.org/|Squid: The Definitive Guide]] written by Duane Wessels and published by [[http://www.oreilly.com/catalog/squid/|O'Reilly and Associates]] January 2004.
+ * Squid: The Definitive Guide written by Duane Wessels and published by [[http://www.oreilly.com/catalog/squid/|O'Reilly and Associates]] January 2004.
  * [[http://www.ircache.net/|The IRCache Mesh]] gives information on our operational mesh of caches.
  * [[http://wiki.squid-cache.org/SquidFaq/|The Squid FAQ]] (uh, you're reading it).
- * [[http://www.deckle.co.za/squid-users-guide/Main_Page|Oskar's Squid Users Guide]].
  * [[http://www.squid-cache.org/|Authoritative Config Guides]] are available in the menu on squid-cache.org
- * Squid documentation in [[http://www.squid-handbuch.de/|German]], [[http://istanbul.linux.org.tr/~ilkerg/squid/elkitabi.html|Turkish]], [[http://merlino.merlinobbs.net/Squid-Book/|Italian]], [[http://www.linuxman.pro.br/squid/|Brazilian Portugese]], and another in [[http://www.geocities.com/glasswalk3r/linux/squidnomicon.html|Brazilian Portugese]].
+ * Squid documentation in [[http://www.squid-handbuch.de/|German]], [[http://istanbul.linux.org.tr/~ilkerg/squid/elkitabi.html|Turkish]], [[http://www.linuxman.pro.br/squid/|Brazilian Portugese]], and another in [[http://www.geocities.com/glasswalk3r/linux/squidnomicon.html|Brazilian Portugese]].
  * [[http://squid.treenet.co.nz/Doc/Code|Squid Programmers Guide]]. Yeah, its extremely incomplete. I assure you this is the most recent version. Please send any description updates to the <<MailTo(squid-dev AT squid-cache DOT org)>> mailing list
  * [[http://www.web-cache.com|Web Caching Resources]]
  * [[http://www.squid-cache.org/Doc/Hierarchy-Tutorial/|Tutorial on Configuring Hierarchical Squid Caches]]
