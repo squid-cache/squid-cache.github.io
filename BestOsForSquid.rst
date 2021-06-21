@@ -1,3 +1,4 @@
+# CategoryUpdated
 = What is the Best OS for Squid? =
 
 This is an all-time favourite FAQ, bound to show up every now and then Squid Users mailing-list.
