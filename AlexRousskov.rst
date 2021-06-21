@@ -1,3 +1,4 @@
+# CategoryUpdated
 == Alex Rousskov ==
 
 Email: rousskov (at) measurement-factory (dot) com
@@ -30,4 +31,4 @@ Here is an ''auto-generated'' list of my current public Squid projects:
  * [[Features/eCAP]]
 
 ----
-CategoryHomepage CategoryUpdated
+CategoryHomepage
