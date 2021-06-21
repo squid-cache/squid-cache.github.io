@@ -28,7 +28,3 @@ What matters the most to obtain the most out of any setup is to properly tune a 
 On systems with synchronous directory updates (Solaris, some BSD versions)
 
  * mount option to enable asynchronous directory updates, or preferably a filesystem meta journal on a separate device taking the heat of directory updates.
-
-
-----
-CategoryUpdated
