@@ -1,3 +1,5 @@
+# CategoryUpdated
+
 = Squid on FreeBSD =
 
 <<TableOfContents>>
