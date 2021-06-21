@@ -1,3 +1,4 @@
+# CategoryUpdated
 = Australia Meeting - 2008 =
 == Details ==
  * Dates: August 18-19
