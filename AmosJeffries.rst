@@ -1,3 +1,4 @@
+# CategoryUpdated
 == Amos Jeffries ==
 
 Email: squid3 (AT) treenet (DOT) co (DOT) nz
@@ -38,4 +39,4 @@ Ongoing work:
  1. [[Translations|Translating Squid Errors]]
 
 ----
-CategoryHomepage CategoryUpdated
+CategoryHomepage
