@@ -1,3 +1,5 @@
+# CategoryUpdated
+
 <<TableOfContents>>
 
 == What is Squid? ==
@@ -111,4 +113,4 @@ This FAQ was maintained for a long time as an XML Docbook file. It was converted
 We always welcome help keeping the Squid FAQ up-to-date. If you would like to help out, please register with this Wiki and type away.
 
 ----
-Back to the [[SquidFaq]] CategoryUpdated
+Back to the [[SquidFaq]]
