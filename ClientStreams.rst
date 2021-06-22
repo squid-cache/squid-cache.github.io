@@ -1,3 +1,4 @@
+# CategoryUpdated
 ClientStreams provides an API to retrieve and manipulate data from squid, from inside squid. Squid's Client``Side processing uses ClientStreams to fulfill standard client HTTP requests.
 
 What follows is a very slightly edited transcript (with permission) of an IRC chat about ClientStreams, it needs to be cleaned up and made more organised...
