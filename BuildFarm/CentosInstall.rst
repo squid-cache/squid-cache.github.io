@@ -1,11 +1,4 @@
-##master-page:SquidTemplate
-#format wiki
-#language en
-
-## add some descriptive text. A title is not necessary as the WikiPageName is already added here.
-
-## if you want to have a table of comments remove the heading hashes from the next line
-## [[TableOfContents]]
+# CategoryUpdated
 
 == System Setup ==
 On top of the default system install, run
@@ -24,7 +17,7 @@ root% yum search headless
 }}}
 set up permissions to the jenkins user, and that's it.
 
-# for rpm build
+In case RPMs are to be built,
 {{{
 yum install redhat-rpm-config rpm-build rpm-devel
 useradd rpm
@@ -38,9 +31,3 @@ echo '%__make /usr/bin/make -j 9'>> ~/.rpmmacros
 }}}
  * [[http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment|CentOS RPM build envirnment guide]]
  * [[http://www.g-loaded.eu/2009/04/24/manually-prepare-the-rpm-building-environment/|nice example for multiCPU rpm building environment(-j X)]]
-
-
-----
-Discuss this page using the "Discussion" link in the main menu
-
-<<Include(/Discussion)>>
