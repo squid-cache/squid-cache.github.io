@@ -1,14 +1,9 @@
-##master-page:SquidTemplate
-#format wiki
-#language en
-#acl SquidWikiAdminGroup:read,write,delete,revert -All:read
-
-<<TableOfContents>>
+# CategoryUpdated CategoryPrivate
 
 = Docker-based build farm setup =
 
 == Host ==
-The build farm itself runs on ''buildmaster.squid-cache.org''. You require a login there to perform any of the following.
+The build farm itself runs on ''buildmaster.squid-cache.org''. You need a login there to perform any of the following.
 
 All content is in /srv/jenkins, which is the home directory of the jenkins user. The only external hook is {{{/etc/rc.local}}}, to start jenkins up.
 
@@ -55,8 +50,3 @@ These run on buildmaster, here's how the concepts fit together:
   where OS is either a matrix axis or an OS label.
 - the docker images to be used are hosted on the docker hub, as labels of squidcache/buildfarm
 - in order to build and push these images, go to jenkins@buildmaster:~/docker-images/dockerfiles, and {{{make all push}}}
-
-----
-Discuss this page using the "Discussion" link in the main menu
-
-<<Include(/Discussion)>>
