@@ -1,11 +1,7 @@
-#format wiki
-#language en
-
+# CategoryUpdated
 = cache_object:// URI Scheme =
 
-The {{{cache_object}}} is the URI scheme which defines a naming structure suitable for referring to [[CacheManagerObject|Cache Manager Objects]]. The scheme specific part is defined as below:
-
-## the lines below are ugly, I know
+The {{{cache_object}}} is the URI scheme which can be used to access the [[CacheManager|Cache Manager]]. The scheme specific part is defined as below:
 
  * `cache_object://hostname/request@password`
 
@@ -16,6 +12,7 @@ The {{{cache_object}}} is the URI scheme which defines a naming structure suitab
 If `request` is not specified, the default is `menu`, which will enumerate all available actions. The `password` is only required for pages that require it.
 
  . {i} [[Squid-3.1]] and later all accept HTTP Basic authentication credentials instead of a URL-based password. Use the '''WWW-Authenticate:''' header to pass the password.
+ . {i} [[Squid-4]] and later serve Cache Manager contents through the {{{http://hostname/squid-internal-mgr}}} URL-prefix
 
 == Examples ==
 
