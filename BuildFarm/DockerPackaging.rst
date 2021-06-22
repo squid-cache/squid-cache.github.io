@@ -1,15 +1,11 @@
-#format wiki
-#language en
+# CategoryUpdated
 
 = Project: Dockerised build and packaging =
 
  * '''Goal''': Convert my VM's based build and packaging farm into dockerised one.
-
  * '''Status''': Skeleton completed .
-
- * '''Developer''': [[Eliezer Croitoru]]
-
- * '''Sponsored by''': [[Eliezer Croitoru]] - [[http://www1.ngtech.co.il/|NgTech]]
+ * '''Developer''': [[EliezerCroitoru]]
+ * '''Sponsored by''': [[EliezerCroitoru]] - [[http://www1.ngtech.co.il/|NgTech]]
 
 = Details =
 
