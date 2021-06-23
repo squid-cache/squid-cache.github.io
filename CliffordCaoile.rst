@@ -1,5 +1,4 @@
-##master-page:HomepageTemplate
-#format wiki
+# CategoryUpdated
 == Clifford Caoile ==
 
 Squid experience: 30 minutes, "test drive"
