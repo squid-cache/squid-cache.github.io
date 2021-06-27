@@ -234,6 +234,17 @@ Now, to run Squid as a Windows system service, run ''squid -n'', this will creat
 
 Always check the provided release notes for any version specific detail.
 
+== Compiling with msys2 ==
+ * Download and install [[https://www.msys2.org/|msys2]]
+ * run:
+   . {{{pacman -Syu}}}
+   . {{{pacman -Su}}}
+   . {{{pacman -S --needed base-devel mingw-w64-x86_64-toolchain}}}
+   . {{{pacman -S git ed}}}
+   . (optional) set ssh up as described on [[https://www.msys2.org/wiki/Setting-up-SSHd/|the msys2 site]]
+
+
+
 == Squid-3 porting efforts ==
 
 Squid series 3 has major build issues on all Windows compiler systems. Below is a summary of the known status for producing a useful Squid 3.x for Windows. In a rough order of completeness as of the last page update.
