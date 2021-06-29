@@ -236,14 +236,17 @@ Always check the provided release notes for any version specific detail.
 
 == Compiling with msys2 ==
  * Download and install [[https://www.msys2.org/|msys2]]
+ * download and install [[https://www.oracle.com/java/technologies/javase-jre8-downloads.html|Java JRE]]
+ * download and install git 
  * run:
    . {{{pacman -Syu}}}
    . {{{pacman -Su}}}
    . {{{pacman -S --needed base-devel mingw-w64-x86_64-toolchain}}}
-   . {{{pacman -S git ed}}}
-   . (optional) set ssh up as described on [[https://www.msys2.org/wiki/Setting-up-SSHd/|the msys2 site]]
+   . {{{pacman -S git ed editrights cygrunsrv gcc ccache}}}
+   . enable windows' openssh optional feature
+   . create jenins user and c:\jenkins work dir
 
-
+(work in progress)
 
 == Squid-3 porting efforts ==
 
