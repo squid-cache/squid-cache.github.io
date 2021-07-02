@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Authenticate with NCSA httpd-style password file =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
