@@ -1,7 +1,4 @@
-## page was renamed from ConfigExamples/Authenticate
-##master-page:CategoryTemplate
-#format wiki
-#language en
+# CategoryToUpdate
 
 = Configuring Squid to authenticate against multiple services =
 
