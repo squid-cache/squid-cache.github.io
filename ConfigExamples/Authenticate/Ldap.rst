@@ -1,9 +1,4 @@
-## page was renamed from ConfigExamples/Authenticate/LDAP
-## page was renamed from ConfigExamples/SquidAndLDAP
-## page was renamed from ConfigExamples/ConfigExamples/SquidAndLDAP
-##master-page:CategoryTemplate
-#format wiki
-#language en
+# CategoryToUpdate 
 
 = Configuring a Squid Server to authenticate off LDAP =
 By Askar Ali Khan
