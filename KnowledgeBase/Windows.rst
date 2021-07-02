@@ -242,11 +242,13 @@ Always check the provided release notes for any version specific detail.
    . {{{pacman -Syu}}}
    . {{{pacman -Su}}}
    . {{{pacman -S --needed base-devel mingw-w64-x86_64-toolchain}}}
-   . {{{pacman -S git ed editrights cygrunsrv gcc ccache}}}
+   . {{{pacman -S git ed editrights cygrunsrv gcc libgnutls-devel}}}
    . enable windows' openssh optional feature
    . create jenins user and c:\jenkins work dir
 
 (work in progress)
+
+---- /!\ '''End of edit conflict''' ----
 
 == Squid-3 porting efforts ==
 
