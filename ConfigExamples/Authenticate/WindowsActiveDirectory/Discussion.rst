@@ -1,6 +1,4 @@
-##master-page:DiscussionTemplate
-#format wiki
-#language en
+# CategoryToUpdate
 
 See [[../|Discussed Page]]
 
