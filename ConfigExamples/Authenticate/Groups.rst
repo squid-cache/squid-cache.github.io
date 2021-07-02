@@ -1,6 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
+# CategoryUpdated
 
 = Configure Squid for Group-Based access controls =
 
