@@ -1,7 +1,4 @@
-## page was renamed from ConfigExamples/SquidAndMysql
-##master-page:CategoryTemplate
-#format wiki
-#language en
+# CategoryToUpdate
 
 = Configuring a Squid Server to authenticate from MySQL database =
 By Askar Ali Khan
