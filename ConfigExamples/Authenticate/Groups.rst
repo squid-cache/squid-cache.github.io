@@ -1,4 +1,4 @@
-# CategoryUpdated
+# CategoryToUpdate
 
 = Configure Squid for Group-Based access controls =
 
