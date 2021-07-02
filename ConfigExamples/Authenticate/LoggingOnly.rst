@@ -1,7 +1,4 @@
-## page was renamed from ConfigExamples/LogUsernamesWithPassthroughAuth
-##master-page:CategoryTemplate
-#format wiki
-#language en
+# CategoryToUpdate 
 
 = Logging usernames when using passthrough authentication =
 
