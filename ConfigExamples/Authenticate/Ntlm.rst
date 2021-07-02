@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Configuring Squid for NTLM with Winbind authenticators =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
