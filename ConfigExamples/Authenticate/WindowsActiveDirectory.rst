@@ -1,7 +1,4 @@
-## page was renamed from ConfigExamples/WindowsAuthenticationNTLM
-#language en
-#format wiki
-
+# CategoryToUpdate
 = Configuring a Squid Server to authenticate off Active Directory =
 Original work By Adrian Chadd
 
