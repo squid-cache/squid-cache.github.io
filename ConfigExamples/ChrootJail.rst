@@ -1,6 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
+# CategoryToUpdate
 = Running Squid inside a Chroot Jail =
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
