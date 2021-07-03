@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Gizmo Project (Pidgeon IM, Fring, Taler, ICQ, IRC, AOL)  =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
