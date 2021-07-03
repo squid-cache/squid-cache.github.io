@@ -1,6 +1,4 @@
-#format wiki
-#language en
-
+# CategoryToUpdate
 <<TableOfContents>>
 
 = Content adaptation =
