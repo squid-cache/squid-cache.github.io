@@ -1,8 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-Describe ConfigExamples/ClusteringTproxySquidLinuxRouter here.
-
+# CategoryToUpdate
 = Clustering Tproxy Squid With Linux Router =
 by ''Eliezer Croitoru''
 
