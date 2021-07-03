@@ -357,3 +357,6 @@ http_access deny !auth
 http_access allow auth
 http_access deny all
 }}}
+
+=== Additional reads ===
+ * http://wiki.bitbinary.com/index.php/Active_Directory_Integrated_Squid_Proxy (by Eliezer Croitoru)
