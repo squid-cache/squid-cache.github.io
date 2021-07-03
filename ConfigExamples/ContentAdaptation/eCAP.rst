@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Using eCAP with Squid 3.x/4.x =
 
 == Using eCAP for GZip/DEFLATE support with Squid 3.x/4.x ==
