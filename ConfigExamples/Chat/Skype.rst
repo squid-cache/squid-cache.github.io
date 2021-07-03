@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Important update (06/03/2017) =
 
  /!\ Important update (06/03/2017) to prevent this article misleading you to the assumption that you indded got to the right place.
