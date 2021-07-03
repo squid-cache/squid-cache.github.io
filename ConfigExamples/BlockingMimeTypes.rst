@@ -1,10 +1,4 @@
-## page was renamed from KnowledgeBase/BlockingMimeTypes
-##master-page:KnowledgeBaseTemplate
-##Page-Creation-Date:[[Date(2007-07-13T15:58:18Z)]]
-##Page-Original-Author:AdrianChadd
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Blocking Content Based on MIME Types =
 
 == Synopsis ==
