@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Caching Windows Updates =
 
 by ''YuriVoinov''
