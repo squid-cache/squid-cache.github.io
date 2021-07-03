@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Caching Dynamic Content =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
