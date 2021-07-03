@@ -1,9 +1,4 @@
-## page was renamed from ConfigExamples/InstantMessenger
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
-
+# CategoryToUpdate
 = AOL Instant Messenger (AIM) =
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
 
