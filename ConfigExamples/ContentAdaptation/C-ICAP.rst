@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Using c-icap for proxy content antivirus checking on-the-fly =
 
  ''by YuriVoinov''
