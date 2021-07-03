@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Caching YouTube Content =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
