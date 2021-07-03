@@ -1,6 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
+# CategoryToUpdate
 
 = Caching Dynamic Content using Adaptation =
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
