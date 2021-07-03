@@ -1,7 +1,4 @@
-##master-page:CategoryTemplate
-#format wiki
-#language en
-
+# CategoryToUpdate
 = Securing Instant Messengers =
 
 <<Include(ConfigExamples, , from="^## warning begin", to="^## warning end")>>
