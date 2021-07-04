@@ -4,27 +4,21 @@
 
 == Contributing code ==
 
-The best way to contribute code is to submit a high-quality [[https://github.com/squid-cache/squid/pulls|pull request]] against the master branch of the official [[https://github.com/squid-cache/squid|repository]] on !GitHub. To speed up code review and improve your code acceptance chances, please adhere to SquidCodingGuidelines and follow the MergeProcedure.
+The best way to contribute code is to submit a high-quality [[https://github.com/squid-cache/squid/pulls|pull request]] against the master branch of the official [[https://github.com/squid-cache/squid|repository]] on !GitHub. To speed up code review and improve your code acceptance chances, please adhere to [[SquidCodingGuidelines]] and follow the [[MergeProcedure]].
 
-ProgrammingGuide provides a broad overview of Squid architecture and details some of Squid modules. It also discusses [[ProgrammingGuide/ManualDocumentation|manual page writing]].
+[[ProgrammingGuide]] provides a broad overview of Squid architecture and details some of Squid modules. It also discusses [[ProgrammingGuide/ManualDocumentation|manual page writing]].
 
-Auto-generated [[http://www.squid-cache.org/Doc/code/|Programming Guide|code documentation]] offers some (but certainly not enough) information on the Squid internals with links to the latest version of the code.
+Auto-generated [[http://www.squid-cache.org/Doc/code/|code documentation]] offers some information on the Squid internals with links to the latest version of the code.
 
 
 Finding things to do:
 
  * [[http://bugs.squid-cache.org/|Bugzilla]] contains bugs and feature requests.
-
  * [[RoadMap]] lists the feature wishes and plans for future releases.
- 
  * [[RoadMap/Tasks]] itemizes general cleanup tasks that need to be done. These can be good introductory tasks.
-
  * [[Features/HTTP11|HTTP/1.1 compliance]] violations need to be addressed.
-
- * git grep XXX
-
- * git grep TODO
-
+ * {{{git grep XXX}}}
+ * {{{git grep TODO}}}
  * Other developers are often able to provide projects for anyone just wanting to contribute.
 
 == Discussing code ==
@@ -33,7 +27,17 @@ Most development discussions happen on the [[http://www.squid-cache.org/Support/
 
 == Testing ==
 
-We run constant integration testing with a BuildFarm. Additions to it are welcome.
+We run constant integration testing with a [[BuildFarm]].
+
+It is possible to rely on the images we use for it to test code changes against different Linux distributions and compiler versions.
+We publish these images to the [[https://hub.docker.com/orgs/squidcache/repositories|Docker Hub]].
+They are named {{{squidcache/buildfarm-`uname -m`-<os name>}}}
+
+Assuming you have access to a Docker environment, the easiest way to test a local checkout on it is to run the command:
+
+{{{OS=centos-7 docker run -ti --rm -v$PWD:$PWD -w$PWD -u1000 ./test-builds.sh squidcache/buildfarm-`uname -m`-$OS --verbose --use-config-cache --cleanup}}}
+
+It may leave behind some files owned by UID 1000; sorry it can't be avoided
 
 === Detecting build errors early ===
 
