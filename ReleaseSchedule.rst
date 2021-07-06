@@ -15,7 +15,7 @@ Major stable releases follow a two-year schedule. Beta branches are spawned six 
 
 = Notes =
 
-The published dates follow the two-year cycle starting with August 1, 2021, with an additional Squid maintainer requirement that these event dates fall on a Sunday. If that additional requirement changes, the dates may be adjusted by up to seven days (in either direction).
+Squid v5 is declared stable on August 1, 2021. After that, the published dates follow a two-year cycle: Every two years starting with 2023, we plan on branching a new beta on the first Sunday in February and declaring it stable six month later, on the first Sunday in July. The day-of-the-week choice is based on a Squid maintainer requirement. If that requirement changes, the dates will be adjusted (well in advance) by up to seven days in either direction.
 
 A numbered vN branch is considered beta until it is declared stable. There will be no beta branch for the first 18 months of each two-year release cycle, reducing porting and maintenance overheads. The master branch will always be available for testing, of course. 
 
