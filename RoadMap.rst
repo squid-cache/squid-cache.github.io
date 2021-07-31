@@ -28,10 +28,11 @@ Features which have not reached completion or have failed the audit, are automat
 
 ## Now in '''DEVELOPMENT''' cycle.
 ## The set of new features is determined by submissions and available developer time. New features may be completed and added at any time.
+## Features accepted before 2023-02-05 (see ReleaseSchedule) will be part of this release.
 ## 
 
 ## Now in '''RELEASE CANDIDATE''' cycle.
-## The release timeline is now monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+## The release timeline is now monthly beta packages until 2023-07-06 (see ReleaseSchedule).
 ## 
 ## Additions are limited to:
 ##  * Documentation updates
