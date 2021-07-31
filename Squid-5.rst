@@ -6,26 +6,21 @@
 ## || month year ||<style="background-color: #CC0022;"> Squid-5 is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-...|CVE-...]] ''' and any other recently discovered issues. ||
 ## || month year ||<style="background-color: orange;"> the Squid-5 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-6]] ||
 ## || month year ||<style="background-color: yellow;"> Squid-5 series became '''DEPRECATED''' with the release of  [[Squid-6]] series ||
-## || month year ||<style="background-color: #82FF42;"> Released for production use. ||
-|| today ||<style="background-color: #4282FE;">Now in '''RELEASE CANDIDATE''' cycle. ||
+|| Aug 2021 ||<style="background-color: #82FF42;"> Released for production use. ||
 
-The release timeline is now roughly monthly beta packages until the new features are considered finished and a period of two weeks occur without any new bugs being discovered in those features.
+The features have been set and large code changes are reserved for later versions.
 
 Additions are limited to:
- * Documentation updates
- * Polish of existing features
- * Porting of Squid-2.7 feature regressions
- * Stability fixes
  * Security fixes
- * Bug fixes
-
+ * Serious Bug fixes
+ * Documentation updates
 
 Features ported from 2.7 in this release:
 
  * Class 6 (client response) delay pool
    - In the form of SquidConf:response_delay_pool and SquidConf:response_delay_pool_access for Squid-to-client speed limiting.
 
-Basic new features in 5.0:
+Basic new features in 5.1:
 
  *  '''Major UI changes:'''
   * Happy Eyeballs: Use each fully resolved forwarding destination ASAP.
