@@ -9,7 +9,8 @@
 ## || month year ||<style="background-color: #82FF42;"> Released for production use. ||
 || today ||<style="background-color: #4282FE;"> Now in '''DEVELOPMENT''' cycle. ||
 
-The set of new features and release timeline is determined by submissions and available developer time. New features may be completed and added at any time.
+The set of new features is determined by submissions and available developer time. New features may be completed and added at any time.
+Features accepted before 2023-02-05 (see ReleaseSchedule) will be part of this release.
 
 ## Features ported from 2.7 in this release:
 ##
@@ -37,7 +38,6 @@ See our [[http://www.squid-cache.org/Advisories/|Advisories]] list.
 ## all bugs major and higher including older versions.
  . [[http://bugs.squid-cache.org/buglist.cgi?bug_id_type=anyexact&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&chfieldto=Now&product=Squid&query_format=advanced&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&order=version%20DESC%2Cbug_severity%2Cbug_id&o2=equals&v2=unspecified&f1=version&o1=lessthaneq&v1=6| Major or higher bugs currently affecting this version]].
   * Bugs against any older version can be closed if found fixed in 6.x
-  * Bugs inherited from older versions are not necessarily blockers on stable.
 
 
 ## bugs down to major added by this version
