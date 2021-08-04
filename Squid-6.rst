@@ -20,10 +20,29 @@ Features accepted before 2023-02-05 (see ReleaseSchedule) will be part of this r
 Basic new features in 6.0:
 
  *  '''Major UI changes:'''
+  * Remove 8K limit for single access.log line
+  * Replaced X-Cache and X-Cache-Lookup headers with Cache-Status
+  * Add SquidConf:tls_key_log to report TLS communication secrets
+  * Reject HTTP/1.0 requests with unusual framing
 
  * '''Minor UI changes:'''
+  * Add %transport::>connection_id SquidConf:logformat code
+  * Add SquidConf:paranoid_hit_validation directive
+  * Report SMP store queues state (mgr:store_queues)
+  * Add SquidConf:cache_log_message directive
 
  * '''Developer Interest changes:'''
+  * codespell check added to source maintenance enforcement
+  * Streamlined ./configure handling of optional libraries
+  * Add --progress option to test-builds.sh 
+  * Remove layer-00-bootstrap from test script
+  * Convert LRU map into a CLP map
+  * Remove legacy context-based debugging in favor of CodeContext
+
+ * '''Removed features''':
+  * Remove unused cache_diff binary
+  * Remove obsolete membanger test
+  * Remove deprecated leakfinder (--enable-leakfinder)
 
 ## The intention with this series is to improve performance using C++11 features. Some remaining [[Squid-2.7]] missing features are listed as regressions in http://www.squid-cache.org/Versions/v6/RELEASENOTES.html#ss5.1
 
