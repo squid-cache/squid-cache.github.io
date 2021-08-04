@@ -5,7 +5,7 @@
 ## adjust the box text as necessary for major milestones.
 ## || month year ||<style="background-color: #CC0022;"> Squid-3 is '''CONSIDERED DANGEROUS''' as the security people say. Due to unfixed vulnerabilities ''' [[http://www.squid-cache.org/Advisories/SQUID-2011_1.txt|CVE-2009-0801]] ''' and any other recently discovered issues. ||
 ## || month year ||<style="background-color: orange;"> the Squid-4 series became '''OBSOLETE''' with the release of distro-X shipping [[Squid-5]] ||
-## || month year ||<style="background-color: yellow;"> Squid-4 series became '''DEPRECATED''' with the release of  [[Squid-5]] series ||
+|| Aug 2021 ||<style="background-color: yellow;"> Squid-4 series became '''DEPRECATED''' with the release of  [[Squid-5]] series ||
 || Jul 2018 ||<style="background-color: #82FF42;"> Released for production use. ||
 
 
