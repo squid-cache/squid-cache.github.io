@@ -21,9 +21,7 @@ Basic new features in 6.0:
 
  *  '''Major UI changes:'''
   * Remove 8K limit for single access.log line
-  * Replaced X-Cache and X-Cache-Lookup headers with Cache-Status
   * Add SquidConf:tls_key_log to report TLS communication secrets
-  * Reject HTTP/1.0 requests with unusual framing
 
  * '''Minor UI changes:'''
   * Add %transport::>connection_id SquidConf:logformat code
@@ -32,6 +30,8 @@ Basic new features in 6.0:
   * Add SquidConf:cache_log_message directive
 
  * '''Developer Interest changes:'''
+  * Replaced X-Cache and X-Cache-Lookup headers with Cache-Status
+  * Reject HTTP/1.0 requests with unusual framing
   * codespell check added to source maintenance enforcement
   * Streamlined ./configure handling of optional libraries
   * Add --progress option to test-builds.sh 
