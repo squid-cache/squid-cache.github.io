@@ -72,13 +72,14 @@ At this point there are none on record. We are looking for information and possi
 || RFC:6540 (BCP 177) || IPv6 Support Required for All IP-Capable Nodes || (./) ||
 || RFC:6585 || Additional HTTP Status Codes || (./) ||
 || RFC:6762 || Multicast DNS || (./) || client only ||
+|| RFC:6750 || The OAuth 2.0 Authorization Framework: Bearer Token Usage || {X} || Merge Request SquidPr:30 ||
 || RFC:7230 || Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing || almost || see [[Features/HTTP11]] ||
 || RFC:7231 || Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content || almost || see [[Features/HTTP11]] ||
 || RFC:7232 || Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests || almost || see [[Features/HTTP11]] ||
 || RFC:7233 || Hypertext Transfer Protocol (HTTP/1.1): Range Requests || (./) || conditional, see [[Features/HTTP11]] ||
 || RFC:7234 || Hypertext Transfer Protocol (HTTP/1.1): Caching || (./) || conditional, see [[Features/HTTP11]] ||
 || RFC:7235 || Hypertext Transfer Protocol (HTTP/1.1): Authentication || (./) ||
-|| RFC:7239 || Forwarded HTTP Extension || {X} ||
+|| RFC:7239 || Forwarded HTTP Extension || {X} || Merges Request SquidPr:55 ||
 || RFC:7240 || Prefer HTTP Extension || (./) || conditional; proxy MUST relay unless listed in Connection header. ||
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
 || RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. see [[Features/HTTP2]] ||
@@ -91,6 +92,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:8187 || Indicating Character Encoding and Language for HTTP Header Field Parameters || {X} ||
 || RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
 || RFC:8586 || Loop Detection in Content Delivery Networks (CDNs) || (./) || from [[Squid-5]]. ||
+|| RFC:8941 || Structured Field Values for HTTP || {X} || ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
