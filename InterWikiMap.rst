@@ -5,4 +5,4 @@ Bug https://bugs.squid-cache.org/show_bug.cgi?id=
 SquidConf http://www.squid-cache.org/Doc/config/
 SquidHelper http://www.squid-cache.org/Versions/v5/manuals/
 RFC https://tools.ietf.org/rfc/rfc
-SquidPr:https://github.com/squid-cache/squid/pull/
+SquidPr https://github.com/squid-cache/squid/pull/
