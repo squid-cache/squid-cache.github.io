@@ -73,6 +73,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:6585 || Additional HTTP Status Codes || (./) ||
 || RFC:6762 || Multicast DNS || (./) || client only ||
 || RFC:6750 || The OAuth 2.0 Authorization Framework: Bearer Token Usage || {X} || Merge Request SquidPr:30 ||
+|| RFC:6874 || Representing IPv6 Zone Identifiers in Address Literals and Uniform Resource Identifiers || {X} ||
 || RFC:7230 || Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing || almost || see [[Features/HTTP11]] ||
 || RFC:7231 || Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content || almost || see [[Features/HTTP11]] ||
 || RFC:7232 || Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests || almost || see [[Features/HTTP11]] ||
