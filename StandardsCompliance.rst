@@ -98,6 +98,7 @@ At this point there are none on record. We are looking for information and possi
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
 || draft-wilson-wccp-v2-12-oct-2001.txt || WCCP 2.0 || almost ||
+|| https://datatracker.ietf.org/doc/html/draft-param-wccp-v2rev1-01 || WCCP 2.0 rev 1 || {X} ||
 || draft-vinod-carp-v1-03.txt || Microsoft CARP peering algorithm ||  ||
 || draft-ietf-radext-digest-auth-06.txt || RADIUS Extension for Digest Authentication ||  ||
 
