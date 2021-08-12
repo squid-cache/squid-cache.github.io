@@ -16,7 +16,7 @@ see also <<Navigation(children,1)>>
 == Source formatting guidelines ==
 
  * We have an ''astyle'' wrapper that formats the code without breaking it.
- * If you have astyle version 2.04 please format your changes with ~/scripts/formater.pl
+ * If you have astyle version 3.1 please format your changes with ~/scripts/formater.pl
  * This formatter is run regularly over the entire code to enforce certain guidelines but it helps reduce trouble if your code matches those guidelines when submitted.
 
 ENFORCED:
@@ -47,37 +47,55 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
   * Words in global names and all type names are CamelCase capitalized:
    * including the first word.
    * acronyms are to be downcased to fit (ie Http)
-   * This includes class types, global variables, static class members, and macros.
+   * This includes namespaces, class types, global variables, static class members, and macros.
   * Use const qualifiers in declarations as much as appropriate.
   * Use bool for boolean types.
   * Avoid macros.
-  * Do not start names with an underscore
-  * prefer prefix form for increment and decrement operators to postfix (e.g. {{{++c}}} instead of {{{c++}}})
+  * Do not start names with an underscore.
+  * Do not end a member name with underscore. Unless the name collides with a method name.
+  * Use prefix form for increment and decrement operators (i.e. {{{++c}}} instead of {{{c++}}})
+  * When a method is inherited and overloaded locally it should be grouped under a one-line comment naming the API where it comes from.
 
 === Word capitalization example ===
 
 {{{
-  class ClassStats;
+  namespace Foo // namespace name CamelCased
+  {
 
-  class ClassName {
+  class ClassStats; // class type name CamelCased
+
+  class ClassName
+  {
   public:
-    static ClassStats &Stats();
+    static ClassStats &Stats(); // static methods use CameCased
 
     void clear();
 
   private:
-    static ClassStats Stats_;
-    int internalState_;
+    static ClassStats Stats_; // static member CamelCased. Underscore since name collides with Stats() method
+
+    int internalState;
   };
 
-  extern void ReportUsage(ostream &os);
+  extern void ReportUsage(ostream &); // global function CamelCased
 }}}
 
 == Class declaration layout ==
 
 {{{
-  class Foo {
+  class Foo : public Bar
+  {
+    CBDATA_* or MEMPROXY_* special macro.
+
   public:
+    all public typedef
+
+    all constructors and operators
+    Foo destructor (if any)
+
+    /* Bar API */
+    all methods overloaded from FooBar parent class
+
     all public static methods
     all public member methods
 
@@ -99,6 +117,7 @@ NP: The formater is known to enforce some weird indentation at times. Notably af
     all private member variables
   };
 }}}
+
 
 == Member naming ==
 
@@ -172,7 +191,7 @@ Pick one of the applicable styles described below and stick to it. For old class
  2. custom headers provided by Squid:
    * place internal header includes above system includes
    * omit wrappers
-   * always include with ""
+   * always include with double-quotes ("")
    * ENFORCED: sort alphabetically
    * use full path (only src/ prefix may be omitted)
 
@@ -181,7 +200,6 @@ Pick one of the applicable styles described below and stick to it. For old class
   * '''omit''' any HAVE_ wrapper
   * sort alphabetically
   * if the file is not portable, do not use it
-   . NP: this includes C++11 specific headers for now, which are not portable to older OS and compilers.
 
  4. system C headers (with a .h suffix):
   * always include with <>
@@ -227,7 +245,7 @@ Layout Example:
 Squid uses autoconf defined macros to eliminate experimental or optional components at build time.
 
  * name in C++ code should start with USE_
- * should be tested with #if and #if !  rather than #ifdef or #ifndef
+ * test with #if and #if !  rather than #ifdef or #ifndef
  * should be wrapped around all code related solely to a component; including compiler directives and #include statements
 
 ENFORCED:
