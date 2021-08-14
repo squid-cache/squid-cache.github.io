@@ -460,7 +460,7 @@ The following ACL entry gives inconsistent or unexpected results:
 {{{
 acl restricted  src 10.0.0.128/255.0.0.128 10.85.0.0/16
 }}}
-The reason is that IP access lists are stored in "splay" tree data structures.  These trees require the keys to be sortable. When you use a complicated, or non-standard, netmask (255.0.0.128), it confuses the function that compares two address/mask pairs.
+The reason is that IP access lists are stored in "splay" tree data structures. These trees require the keys (i.e. address/mask pairs) to follow a strong sorting order. Complicated or non-standard netmasks (like the 255.0.0.128 netmask that uses a non-CIDR netmask notation) break the key comparison function.
 
 The best way to fix this problem is to use separate ACL names for each ACL value.  For example, change the above to:
 
