@@ -36,7 +36,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:1035 || DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION || (./) || client only ||
 || RFC:1157 || A Simple Network Management Protocol (SNMP) || || {i} version 2c ||
 || RFC:1413 || Identification Protocol (IDENT) || (./) || note bug Bug:2853 ||
-|| RFC:1738 || Uniform Resource Locators (URL) || (./) ||
+## || RFC:1738 || Uniform Resource Locators (URL) || (./) ||
 || RFC:1902 || Structure of Management Information<<BR>>for Version 2 of the<<BR>>Simple Network Management Protocol (SNMPv2) || ||
 || RFC:1905 || Protocol Operations<<BR>>for Version 2 of the<<BR>>Simple Network Management Protocol (SNMPv2) || ||
 || RFC:1945 || Hypertext Transfer Protocol -- HTTP/1.0 || (./) ||
@@ -69,6 +69,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:3986 || Uniform Resource Identifier (URI): Generic Syntax || /!\ || since [[Squid-4|Squid-4.12]]. still uses rc1738 encoder on some URI segments and helper protocol. ||
 || RFC:4001 || Textual Conventions for Internet Network Addresses || (./) ||
 || RFC:4559 || SPNEGO-based Kerberos and NTLM HTTP Authentication<<BR>>in Microsoft Windows || ||
+|| RFC:6266 || Use of the Content-Disposition Header Field in the<<BR>>Hypertext Transfer Protocol (HTTP) || {X} ||
 || RFC:6540 (BCP 177) || IPv6 Support Required for All IP-Capable Nodes || (./) ||
 || RFC:6585 || Additional HTTP Status Codes || (./) ||
 || RFC:6762 || Multicast DNS || (./) || client only ||
@@ -80,6 +81,8 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7233 || Hypertext Transfer Protocol (HTTP/1.1): Range Requests || (./) || conditional, see [[Features/HTTP11]] ||
 || RFC:7234 || Hypertext Transfer Protocol (HTTP/1.1): Caching || (./) || conditional, see [[Features/HTTP11]] ||
 || RFC:7235 || Hypertext Transfer Protocol (HTTP/1.1): Authentication || (./) ||
+|| RFC:7236 || Initial Hypertext Transfer Protocol (HTTP) Authentication Scheme Registrations || almost || missing support for Bearer and OAuth schemes ||
+|| RFC:7237 || Initial Hypertext Transfer Protocol (HTTP) Method Registrations || {X} || ||
 || RFC:7239 || Forwarded HTTP Extension || {X} || Merges Request SquidPr:55 ||
 || RFC:7240 || Prefer HTTP Extension || (./) || conditional; proxy MUST relay unless listed in Connection header. ||
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
@@ -88,13 +91,24 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info Response Header Fields || (./) ||
 || RFC:7616 || HTTP Digest Access Authentication || /!\ || Missing support for several Digest features ||
 || RFC:7617 || The 'Basic' HTTP Authentication Scheme || /!\ || missing new charset support. ||
+|| RFC:7639 || The ALPN HTTP Header Field || {X} ||
 || RFC:7694 || Hypertext Transfer Protocol (HTTP) Client-Initiated Content-Encoding || (./) ||
+|| RFC:7725 || An HTTP Status Code to Report Legal Obstacles || {X} ||
+|| RFC:7838 || HTTP Alternative Services || {X} ||
 || RFC:7858 || Specification for DNS over Transport Layer Security (TLS) || {X} ||
+|| RFC:8164 || Opportunistic Security for HTTP/2 || {X} ||
 || RFC:8187 || Indicating Character Encoding and Language for HTTP Header Field Parameters || {X} ||
+|| RFC:8188 || Encrypted Content-Encoding for HTTP || {X} ||
 || RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
+|| RFC:8297 || An HTTP Status Code for Indicating Hints || {X} ||
+|| RFC:8336 || The ORIGIN HTTP/2 Frame || {X} ||
+|| RFC:8441 || Bootstrapping WebSockets with HTTP/2 || {X} ||
+|| RFC:8470 || Using Early Data in HTTP || {X} || Merge Request PR:873 ||
 || RFC:8586 || Loop Detection in Content Delivery Networks (CDNs) || (./) || from [[Squid-5]]. ||
-|| RFC:8941 || Structured Field Values for HTTP || {X} || ||
-|| RFC:8942 || HTTP Client Hints || {X} || ||
+|| RFC:8673 || HTTP Random Access and Live Content || {X} ||
+|| RFC:8740 || Using TLS 1.3 with HTTP/2 || {X} ||
+|| RFC:8941 || Structured Field Values for HTTP || {X} ||
+|| RFC:8942 || HTTP Client Hints || {X} ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
