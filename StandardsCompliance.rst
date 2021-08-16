@@ -94,6 +94,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
 || RFC:8586 || Loop Detection in Content Delivery Networks (CDNs) || (./) || from [[Squid-5]]. ||
 || RFC:8941 || Structured Field Values for HTTP || {X} || ||
+|| RFC:8942 || HTTP Client Hints || {X} || ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
