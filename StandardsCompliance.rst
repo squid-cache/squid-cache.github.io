@@ -69,6 +69,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:3986 || Uniform Resource Identifier (URI): Generic Syntax || /!\ || since [[Squid-4|Squid-4.12]]. still uses rc1738 encoder on some URI segments and helper protocol. ||
 || RFC:4001 || Textual Conventions for Internet Network Addresses || (./) ||
 || RFC:4559 || SPNEGO-based Kerberos and NTLM HTTP Authentication<<BR>>in Microsoft Windows || ||
+## || RFC:5785 || Defining Well-Known Uniform Resource Identifiers (URIs) || {X} ||
 || RFC:6266 || Use of the Content-Disposition Header Field in the<<BR>>Hypertext Transfer Protocol (HTTP) || {X} ||
 || RFC:6540 (BCP 177) || IPv6 Support Required for All IP-Capable Nodes || (./) ||
 || RFC:6585 || Additional HTTP Status Codes || (./) ||
@@ -88,6 +89,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
 || RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. see [[Features/HTTP2]] ||
 || RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} || see [[Features/HTTP2]] ||
+|| RFC:7595 || Guidelines and Registration Procedures for URI Schemes || {X} || Missing prohibition of example: URI scheme ||
 || RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info Response Header Fields || (./) ||
 || RFC:7616 || HTTP Digest Access Authentication || /!\ || Missing support for several Digest features ||
 || RFC:7617 || The 'Basic' HTTP Authentication Scheme || /!\ || missing new charset support. ||
@@ -105,6 +107,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:8441 || Bootstrapping WebSockets with HTTP/2 || {X} ||
 || RFC:8470 || Using Early Data in HTTP || {X} || Merge Request PR:873 ||
 || RFC:8586 || Loop Detection in Content Delivery Networks (CDNs) || (./) || from [[Squid-5]]. ||
+|| RFC:8615 || Well-Known Uniform Resource Identifiers (URIs) || {X} ||
 || RFC:8673 || HTTP Random Access and Live Content || {X} ||
 || RFC:8740 || Using TLS 1.3 with HTTP/2 || {X} ||
 || RFC:8941 || Structured Field Values for HTTP || {X} ||
