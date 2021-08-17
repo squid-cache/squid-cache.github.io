@@ -78,6 +78,7 @@ While squid is normally distributed in source form. Some dedicated people are do
  * [[KnowledgeBase/Gentoo|Gentoo]]: Eray Aslan
  * [[KnowledgeBase/Mandriva|Mandriva]]: Luis Daniel Lucio Quiroz
  * [[KnowledgeBase/NetBSD|NetBSD]]: Takahiro Kambe
+ * [[KnowledgeBase/OpenBsd|OpenBSD]]: Stuart Henderson
  * [[KnowledgeBase/RedHat|Red Hat Enterprise Linux]]: Lubos Uhliarik
  * [[KnowledgeBase/Solaris|Solaris]]: Steven M. Christensen
  * [[KnowledgeBase/Ubuntu|Ubuntu]]: Luigi Gangitano
@@ -86,7 +87,6 @@ While squid is normally distributed in source form. Some dedicated people are do
 ## OpenSuSE or SuSE: who? Linda W. ?
 ## IRIX: anyone?
 ## Darwin: who? (mww@macports.org)
-## OpenBSD: who? "brad0" on IRC
 ## NextStep: anyone? obsolete.
 ## UNIX: anyone?
 ## AIX: anyone?
