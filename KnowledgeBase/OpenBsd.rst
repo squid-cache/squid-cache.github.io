@@ -39,7 +39,7 @@ make package # can be omitted; install depends on this anyway
 make install
 }}}
 
-Compiler flags can be given on the make command line. Debug builds can be done by passing flags in the DEBUG variable, which also disables strippping. e.g.
+Compiler flags can be given on the make command line. Debug builds can be done by passing flags in the DEBUG variable; setting this also disables strippping. e.g.
 
 {{{
 make CXXFLAGS="-O3"
