@@ -28,7 +28,7 @@ Some optional parts are packaged separately and can also be installed with pkg_a
 
 If using Squid as an InterceptionProxy, note that the packages are built using --enable-ipfw-transparent which is the preferred method on OpenBSD. Use this with "divert-to" rules in PF. More information is available in the [[http://www.openbsd.org/cgi-bin/cvsweb/ports/www/squid/pkg/README-main?content-type=text%2Fplain|package's README file]].
 
-==== Building from ports ====
+== Building from ports ==
 If you need to add patches or modify the build, follow the [[https://www.openbsd.org/faq/ports/ports.html|ports FAQ]] to checkout the ports tree, then the following will build Squid from ports, create a package and install it:
 
 {{{
