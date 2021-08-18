@@ -59,6 +59,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:2964 || Use of HTTP State Management || ||
 || RFC:2965 || HTTP State Management Mechanism || ||
 ## || RFC:3162 || RADIUS and IPv6 || {X} ||
+|| RFC:3205 (BCP 56) || On the use of HTTP as a Substrate || ||
 || RFC:3225 || Indicating Resolver Support of DNSSEC || (./) || {i} no-support conditional compliance. ||
 || RFC:3310 || Hypertext Transfer Protocol (HTTP) Digest Authentication<<BR>>Using Authentication and Key Agreement (AKA) ||  ||
 || RFC:3493 || Basic Socket Interface Extensions for IPv6 || (./) ||
