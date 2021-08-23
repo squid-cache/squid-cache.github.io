@@ -36,6 +36,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:1035 || DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION || (./) || client only ||
 || RFC:1157 || A Simple Network Management Protocol (SNMP) || || {i} version 2c ||
 || RFC:1413 || Identification Protocol (IDENT) || (./) || note bug Bug:2853 ||
+|| RFC:1436 || The Internet Gopher Protocol<<BR>>(a distributed document search and retrieval protocol)|| (./) || client and gateway to HTTP ||
 ## || RFC:1738 || Uniform Resource Locators (URL) || (./) ||
 || RFC:1902 || Structure of Management Information<<BR>>for Version 2 of the<<BR>>Simple Network Management Protocol (SNMPv2) || ||
 || RFC:1905 || Protocol Operations<<BR>>for Version 2 of the<<BR>>Simple Network Management Protocol (SNMPv2) || ||
@@ -69,6 +70,8 @@ At this point there are none on record. We are looking for information and possi
 || RFC:3875 || The Common Gateway Interface (CGI) Version 1.1 || ||
 || RFC:3986 || Uniform Resource Identifier (URI): Generic Syntax || /!\ || since [[Squid-4|Squid-4.12]]. still uses rc1738 encoder on some URI segments and helper protocol. ||
 || RFC:4001 || Textual Conventions for Internet Network Addresses || (./) ||
+|| RFC:4266 || The gopher URI Scheme || (./) ||
+|| RFC:4288 || The telnet URI Scheme || {X} ||
 || RFC:4559 || SPNEGO-based Kerberos and NTLM HTTP Authentication<<BR>>in Microsoft Windows || ||
 ## || RFC:5785 || Defining Well-Known Uniform Resource Identifiers (URIs) || {X} ||
 || RFC:6266 || Use of the Content-Disposition Header Field in the<<BR>>Hypertext Transfer Protocol (HTTP) || {X} ||
