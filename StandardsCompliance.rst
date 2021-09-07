@@ -79,14 +79,14 @@ At this point there are none on record. We are looking for information and possi
 || RFC:6585 || Additional HTTP Status Codes || (./) ||
 || RFC:6762 || Multicast DNS || (./) || client only ||
 || RFC:6750 || The OAuth 2.0 Authorization Framework: Bearer Token Usage || {X} || Merge Request SquidPr:30 ||
-|| RFC:6874 || Representing IPv6 Zone Identifiers in Address Literals and Uniform Resource Identifiers || {X} ||
+|| RFC:6874 || Representing IPv6 Zone Identifiers in<<BR>>Address Literals and Uniform Resource Identifiers || {X} ||
 || RFC:7230 || Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing || almost || see [[Features/HTTP11]] ||
 || RFC:7231 || Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content || almost || see [[Features/HTTP11]] ||
 || RFC:7232 || Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests || almost || see [[Features/HTTP11]] ||
 || RFC:7233 || Hypertext Transfer Protocol (HTTP/1.1): Range Requests || (./) || conditional, see [[Features/HTTP11]] ||
 || RFC:7234 || Hypertext Transfer Protocol (HTTP/1.1): Caching || (./) || conditional, see [[Features/HTTP11]] ||
 || RFC:7235 || Hypertext Transfer Protocol (HTTP/1.1): Authentication || (./) ||
-|| RFC:7236 || Initial Hypertext Transfer Protocol (HTTP) Authentication Scheme Registrations || almost || missing support for Bearer and OAuth schemes ||
+|| RFC:7236 || Initial Hypertext Transfer Protocol (HTTP)<<BR>>Authentication Scheme Registrations || almost || missing support for Bearer and OAuth schemes ||
 || RFC:7237 || Initial Hypertext Transfer Protocol (HTTP) Method Registrations || {X} || ||
 || RFC:7239 || Forwarded HTTP Extension || {X} || Merges Request SquidPr:55 ||
 || RFC:7240 || Prefer HTTP Extension || (./) || conditional; proxy MUST relay unless listed in Connection header. ||
@@ -94,7 +94,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. see [[Features/HTTP2]] ||
 || RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} || see [[Features/HTTP2]] ||
 || RFC:7595 || Guidelines and Registration Procedures for URI Schemes || {X} || Missing prohibition of example: URI scheme ||
-|| RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info Response Header Fields || (./) ||
+|| RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info<<BR>>Response Header Fields || (./) ||
 || RFC:7616 || HTTP Digest Access Authentication || /!\ || Missing support for several Digest features ||
 || RFC:7617 || The 'Basic' HTTP Authentication Scheme || /!\ || missing new charset support. ||
 || RFC:7639 || The ALPN HTTP Header Field || {X} ||
