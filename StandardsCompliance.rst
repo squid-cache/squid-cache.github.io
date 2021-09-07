@@ -116,6 +116,10 @@ At this point there are none on record. We are looking for information and possi
 || RFC:8740 || Using TLS 1.3 with HTTP/2 || {X} ||
 || RFC:8941 || Structured Field Values for HTTP || {X} ||
 || RFC:8942 || HTTP Client Hints || {X} ||
+|| RFC:8999 || Version-Independent Properties of QUIC || {X} ||
+|| RFC:9000 || QUIC: A UDP-Based Multiplexed and Secure Transport || {X} ||
+|| RFC:9001 || Using TLS to Secure QUIC || {X} ||
+|| RFC:9002 || QUIC Loss Detection and Congestion Control || {X} ||
 
 === IETF Drafts ===
 || draft-forster-wrec-wccp-v1-00.txt || WCCP 1.0 || (./) ||
