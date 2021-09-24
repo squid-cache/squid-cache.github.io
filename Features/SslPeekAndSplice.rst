@@ -119,7 +119,7 @@ If [[Squid-4]] or later fails to parse an expected TLS Client Hello message, Squ
 
 '''IMPORTANT :'''
 
- . /!\ At no point during SquidConf:ssl_bump processing will '''dstdomain''' ACL work. That ACL relies on HTTP message details that are not yet decrypted. An '''ssl::server_name''' SquidConf:acl type is provided instead that uses CONNECT, SNI, or server certificate Subject name (whichever is available).
+ . /!\ If you use '''dstdomain''' ACL before the HTTP connection is bumped, please note that it will attempt to match the (fake or real) CONNECT request URI. Depending on your listening ports configuration, browser behavior, the current !SslBump step, and other factors, that URI may be just an IP address, and the reverse lookup of that IP address may not be the origin server domain name(s) in the encrypted requests. The '''ssl::server_name''' SquidConf:acl type may use (fake or real) CONNECT request URI, TLS client SNI, and server certificate subject information. It also has knobs to control which bits of information are used. However, it does not perform DNS lookups. Read SquidConf:acl documentation for your Squid version and choose carefully.
 
  . {i} Selecting an action only to happen at a particular step can be done using an '''at_step''' type SquidConf:acl.
 
