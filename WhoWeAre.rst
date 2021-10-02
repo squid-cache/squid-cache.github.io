@@ -52,10 +52,6 @@ Developers who have contributed some significant feature to Squid and should hav
   . '''system admin''': master, eu, [[BuildFarm|build farm]] VMs
   . '''service admin''': wiki, jenkins, pootle
 
- * [[http://wessels.squid-cache.org/|Duane Wessels]]
-  . '''system admin''': master
-  . '''service admin''': dns, bugzilla
-
  * [[PieterDeWit|Pieter de Wit]]
   . '''system admin''': master
 
