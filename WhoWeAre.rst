@@ -18,7 +18,7 @@ Emeritus developers who provided oversight of the Squid Project before [[http://
  * [[AmosJeffries|Amos Jeffries]] HTTP/2 and IPv6 guru, [[Translations]] coordinator, and [[RoadMap/Squid3|Squid-3.x]] release manager.
  * [[http://www.squid-cache.org/~robertc/|Robert Collins]] was the main driver of the initial Squid-3 C++ migration effort.
  * [[GuidoSerassio|Guido Serassio]] led the [[http://squid.acmeconsulting.it/|Squid-2.x for Windows]] effort
- * [[AlexRousskov|Alex Rousskov]] manages various Squid-3 projects.
+ * [[AlexRousskov|Alex Rousskov]], author and manager.
  * [[http://wessels.squid-cache.org/|Duane Wessels]], Chief Procrastinator
 
 = Certified Developers =
