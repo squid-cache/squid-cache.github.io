@@ -41,6 +41,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:1902 || Structure of Management Information<<BR>>for Version 2 of the<<BR>>Simple Network Management Protocol (SNMPv2) || ||
 || RFC:1905 || Protocol Operations<<BR>>for Version 2 of the<<BR>>Simple Network Management Protocol (SNMPv2) || ||
 || RFC:1945 || Hypertext Transfer Protocol -- HTTP/1.0 || (./) ||
+|| RFC:2169 || A Trivial Convention for using HTTP in URN Resolution || (./) ||
 || RFC:2181 || Clarifications to the DNS Specification || (./) ||
 ##        Squid uses a number of constants from the DNS and Host specifications
 ##        (RFC 1035, RFC 1123) this defines details on their correct usage.
