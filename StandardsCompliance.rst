@@ -48,12 +48,16 @@ At this point there are none on record. We are looking for information and possi
 || RFC:2186 || Internet Cache Protocol (ICP), version 2 || (./) ||
 || RFC:2187 || Application of Internet Cache Protocol (ICP), version 2 || (./) ||
 || RFC:2227 || Simple Hit-Metering and Usage-Limiting for HTTP ||  ||
+|| RFC:2295 || Transparent Content Negotiation in HTTP || ||
+|| RFC:2296 || HTTP Remote Variant Selection Algorithm -- RVSA/1.0 || {X} ||
+|| RFC:2310 || The Safe Response Header Field || {X} ||
 || RFC:2428 || FTP Extensions for IPv6 and NATs || (./) || [[Squid-3.1|3.1+]] ||
 || RFC:2518 || HTTP Extensions for Distributed Authoring -- WEBDAV || (./) || [[Squid-3.1|3.1+]] ||
 ## || RFC:2535 || DNS Security Extensions || {X} ||
 ## NOTE: changes affect RFC 3226 compliance.
-|| RFC:2660 || The Secure HyperText Transfer Protocol (Secure-HTTP/1.4) || {X} ||
+## || RFC:2660 || The Secure HyperText Transfer Protocol (Secure-HTTP/1.4) || {X} ||
 || RFC:2756 || Hyper Text Caching Protocol (HTCP/0.0) || (./) ||
+|| RFC:2774 || An HTTP Extension Framework || (./) ||
 || RFC:2817 || Upgrading to TLS Within HTTP/1.1 || {X} ||
 || RFC:2818 || HTTP Over TLS || (./) ||
 ## || RFC:2874 || DNS Extensions to Support IPv6 Address Aggregation and Renumbering || {X} ||
@@ -103,14 +107,14 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7725 || An HTTP Status Code to Report Legal Obstacles || {X} ||
 || RFC:7838 || HTTP Alternative Services || {X} ||
 || RFC:7858 || Specification for DNS over Transport Layer Security (TLS) || {X} ||
-|| RFC:8164 || Opportunistic Security for HTTP/2 || {X} ||
+## || RFC:8164 || Opportunistic Security for HTTP/2 || {X} ||
 || RFC:8187 || Indicating Character Encoding and Language for HTTP Header Field Parameters || {X} ||
 || RFC:8188 || Encrypted Content-Encoding for HTTP || {X} ||
 || RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
 || RFC:8297 || An HTTP Status Code for Indicating Hints || {X} ||
 || RFC:8336 || The ORIGIN HTTP/2 Frame || {X} ||
 || RFC:8441 || Bootstrapping WebSockets with HTTP/2 || {X} ||
-|| RFC:8470 || Using Early Data in HTTP || {X} || Merge Request PR:873 ||
+|| RFC:8470 || Using Early Data in HTTP || {X} || Merge Request SquidPr:873 ||
 || RFC:8586 || Loop Detection in Content Delivery Networks (CDNs) || (./) || from [[Squid-5]]. ||
 || RFC:8615 || Well-Known Uniform Resource Identifiers (URIs) || {X} ||
 || RFC:8673 || HTTP Random Access and Live Content || {X} ||
