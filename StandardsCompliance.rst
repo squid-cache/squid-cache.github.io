@@ -73,7 +73,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:3513 || Internet Protocol Version 6 (IPv6) Addressing Architecture || (./) ||
 || RFC:3596 || DNS Extensions to Support IP Version 6 || (./) ||
 || RFC:3875 || The Common Gateway Interface (CGI) Version 1.1 || ||
-|| RFC:3986 || Uniform Resource Identifier (URI): Generic Syntax || /!\ || since [[Squid-4|Squid-4.12]]. still uses rc1738 encoder on some URI segments and helper protocol. ||
+|| RFC:3986 || Uniform Resource Identifier (URI): Generic Syntax || /!\ || since [[Squid-4|Squid-4.12]]. still uses rc1738 encoder on some URI segments and helper protocol. Merge Request SquidPr:335 ||||
 || RFC:4001 || Textual Conventions for Internet Network Addresses || (./) ||
 || RFC:4266 || The gopher URI Scheme || (./) ||
 || RFC:4288 || The telnet URI Scheme || {X} ||
@@ -96,7 +96,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7239 || Forwarded HTTP Extension || {X} || Merges Request SquidPr:55 ||
 || RFC:7240 || Prefer HTTP Extension || (./) || conditional; proxy MUST relay unless listed in Connection header. ||
 || RFC:7538 || The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect) || (./) ||
-|| RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. see [[Features/HTTP2]] ||
+|| RFC:7540 || Hypertext Transfer Protocol Version 2 (HTTP/2) || /!\ || {i} HTTP/1.x relay and no-support conditional compliance. see [[Features/HTTP2]] and Merge Request SquidPr:893 ||
 || RFC:7541 || HPACK: Header Compression for HTTP/2 || {X} || see [[Features/HTTP2]] ||
 || RFC:7595 || Guidelines and Registration Procedures for URI Schemes || {X} || Missing prohibition of example: URI scheme ||
 || RFC:7615 || HTTP Authentication-Info and Proxy-Authentication-Info<<BR>>Response Header Fields || (./) ||
@@ -121,8 +121,8 @@ At this point there are none on record. We are looking for information and possi
 || RFC:8740 || Using TLS 1.3 with HTTP/2 || {X} ||
 || RFC:8941 || Structured Field Values for HTTP || {X} ||
 || RFC:8942 || HTTP Client Hints || {X} ||
-|| RFC:8999 || Version-Independent Properties of QUIC || {X} ||
-|| RFC:9000 || QUIC: A UDP-Based Multiplexed and Secure Transport || {X} ||
+|| RFC:8999 || Version-Independent Properties of QUIC || {X} || Merge Request SquidPr:919 ||
+|| RFC:9000 || QUIC: A UDP-Based Multiplexed and Secure Transport || {X} || Merge Request SquidPr:919 ||
 || RFC:9001 || Using TLS to Secure QUIC || {X} ||
 || RFC:9002 || QUIC Loss Detection and Congestion Control || {X} ||
 
