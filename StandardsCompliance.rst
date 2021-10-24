@@ -132,6 +132,8 @@ At this point there are none on record. We are looking for information and possi
 || https://datatracker.ietf.org/doc/html/draft-param-wccp-v2rev1-01 || WCCP 2.0 rev 1 || {X} ||
 || draft-vinod-carp-v1-03.txt || Microsoft CARP peering algorithm ||  ||
 || draft-ietf-radext-digest-auth-06.txt || RADIUS Extension for Digest Authentication ||  ||
+|| https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-proxy-status || The Proxy-Status HTTP Response Header Field || (./) ||
+|| https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-targeted-cache-control || Targeted HTTP Cache Control || {X} ||
 
 ## Not directly for us.
 ## || draft-cooper-webi-wpad-00.txt || WPAD protocol ||
