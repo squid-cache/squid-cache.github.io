@@ -7,3 +7,5 @@ root% aptitude install g++ default-jre-headless libxml2-dev libexpat-dev libssl-
 root% useradd -m jenkins
 }}}
 set up permissions to the jenkins user, and that's it.
+
+CategoryUpdated
