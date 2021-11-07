@@ -39,4 +39,4 @@ Ongoing work:
  1. [[Translations|Translating Squid Errors]]
 
 ----
-CategoryHomepage
+CategoryHomepage CategoryUpdated
