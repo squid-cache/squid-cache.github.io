@@ -31,3 +31,5 @@ echo '%__make /usr/bin/make -j 9'>> ~/.rpmmacros
 }}}
  * [[http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment|CentOS RPM build envirnment guide]]
  * [[http://www.g-loaded.eu/2009/04/24/manually-prepare-the-rpm-building-environment/|nice example for multiCPU rpm building environment(-j X)]]
+
+CategoryUpdated
