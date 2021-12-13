@@ -67,6 +67,7 @@ At this point there are none on record. We are looking for information and possi
 ## || RFC:3162 || RADIUS and IPv6 || {X} ||
 || RFC:3205 (BCP 56) || On the use of HTTP as a Substrate || ||
 || RFC:3225 || Indicating Resolver Support of DNSSEC || (./) || {i} no-support conditional compliance. ||
+|| RFC:3226 || DNSSEC and IPv6 A6 aware server/resolver message size requirements || ||
 || RFC:3253 || Versioning Extensions to WebDAV<<BR>>(Web Distributed Authoring and Versioning) || (./) || since [[Squid-3.1]] ||
 || RFC:3310 || Hypertext Transfer Protocol (HTTP) Digest Authentication<<BR>>Using Authentication and Key Agreement (AKA) ||  ||
 || RFC:3493 || Basic Socket Interface Extensions for IPv6 || (./) ||
@@ -80,6 +81,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:4266 || The gopher URI Scheme || (./) ||
 || RFC:4288 || The telnet URI Scheme || {X} ||
 || RFC:4559 || SPNEGO-based Kerberos and NTLM HTTP Authentication<<BR>>in Microsoft Windows || ||
+|| RFC:4918 || HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV) || ||
 ## || RFC:5785 || Defining Well-Known Uniform Resource Identifiers (URIs) || {X} ||
 || RFC:6266 || Use of the Content-Disposition Header Field in the<<BR>>Hypertext Transfer Protocol (HTTP) || {X} ||
 || RFC:6540 (BCP 177) || IPv6 Support Required for All IP-Capable Nodes || (./) ||
@@ -109,7 +111,7 @@ At this point there are none on record. We are looking for information and possi
 || RFC:7725 || An HTTP Status Code to Report Legal Obstacles || {X} ||
 || RFC:7838 || HTTP Alternative Services || {X} ||
 || RFC:7858 || Specification for DNS over Transport Layer Security (TLS) || {X} ||
-## || RFC:8164 || Opportunistic Security for HTTP/2 || {X} ||
+|| RFC:8164 || Opportunistic Security for HTTP/2 || {X} ||
 || RFC:8187 || Indicating Character Encoding and Language for HTTP Header Field Parameters || {X} ||
 || RFC:8188 || Encrypted Content-Encoding for HTTP || {X} ||
 || RFC:8246 || HTTP Immutable Responses || (./) || partial. see bug Bug:4774 ||
@@ -148,6 +150,10 @@ At this point there are none on record. We are looking for information and possi
 
 
 ## I'm sure there must be a lot more here. ISC is more prolific that IETF.
+
+== Non-standard Protocols ==
+
+|| [[http://www.haproxy.org/download/2.5/doc/proxy-protocol.txt|PROXY]] || The PROXY protocol, Versions 1 & 2 || (./) ||
 
 ----
 CategoryKnowledgeBase
