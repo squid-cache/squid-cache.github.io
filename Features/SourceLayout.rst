@@ -38,9 +38,10 @@ Key:
 || <:( || (./) || (./) || <:( || :\ ||''auth/negotiate/'' || Negotiate Authentication || ||
 || <:( || (./) || (./) || <:( || :\ ||''auth/ntlm/'' || NTLM Authentication || ||
 || :\ || <:( || {X} || <:( || :\ ||''base/'' ||Commonly used code without a better place to go. ||Async*?  wordlist.* dlink.* hash.* ||
+|| <:( || <:( || <:( || <:( || <:( ||''clientdb/'' {2} || Database of information about clients || PR SquidPr:954 client_db.* ||
 || <:( || <:( || <:( || :\ || :\ ||''clients/'' ||Protocol clients and gateway components for connecting to upstream servers ||ftp.*, http.*, gopher.* ||
 || <:( || (./) || (./) || :\ || :\ ||''comm/'' ||I/O subsystem ||
-|| :\ || <:( || <:( || <:( || <:( ||''cfg/'' {2} ||squid.conf parsing and management ||cache_cf.* cf.* cf_* Parser.* ConfigParser.* ConfigOption.* ||
+|| :\ || <:( || <:( || <:( || <:( ||''cfg/'' {2} ||squid.conf parsing and management || PR SquidPr:928, cache_cf.* cf.* cf_* Parser.* ConfigParser.* ConfigOption.* ||
 || <:( || <:( || <:( || <:( || <:( ||''debug/'' ||Debug core utilities ||debug.cc Debug.h ||
 || :\ || (./) || <:( || <:( || <:( || ''DiskIO'' || I/O primitives for filesystem access || ||
 || :\ || <:( || <:( || (./) || :\ ||''dns/'' ||DNS components (Internal, dnsserver, caches) ||dns*, ipcache.* fqdncache.* ||
@@ -74,7 +75,7 @@ Key:
 || <:( || <:( || <:( || (./) || :\ ||''servers/'' ||Listening Server components for receiving connections ||client_side* ||
 || <:( || <:( || <:( || (./) || :\ ||''snmp/'' ||SNMP components ||snmp_*, move core and agent code. restructure for extensibility. ||
 || <:( || (./) || <:( || <:( || :\ ||''ssl/'' || OpenSSL components || library is named libsslsquid.la and matchgin stub_lib*.cc ||
-|| <:( || <:( || <:( || <:( || <:( ||''shaping/'' ||Traffic shaping and delay pools ||*[Dd]elay.* *[Pp]ool*.* ||
+|| <:( || <:( || <:( || <:( || <:( ||''shaping/'' {2} ||Traffic shaping and delay pools || PR SquidPr:928,  *[Dd]elay.* *[Pp]ool*.* ||
 || :\ || <:( || <:( || (./) || <:( ||''store/'' ||generic (fs-agnostic) disk and memory cache support? ||Store* store* ||
 || <:( || <:( || <:( || <:( || <:( ||''time/'' ||time and date handling tools ||time.* squidTime.* ||
 
