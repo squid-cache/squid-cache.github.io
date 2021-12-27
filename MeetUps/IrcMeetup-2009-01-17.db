@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>MeetUps/IrcMeetup-2009-01-17</title><revhistory><revision><revnumber>3</revnumber><date>2009-01-21 23:02:43</date><authorinitials>FrancescoChemolli</authorinitials><revremark>Updated with today's discussion</revremark></revision><revision><revnumber>2</revnumber><date>2009-01-20 09:42:56</date><authorinitials>FrancescoChemolli</authorinitials><revremark>Added list of participants</revremark></revision><revision><revnumber>1</revnumber><date>2009-01-20 09:31:19</date><authorinitials>FrancescoChemolli</authorinitials><revremark>First revision</revremark></revision></revhistory></articleinfo><para>An informal meeting was held over IRC on Jan 17th, 2009 in the #squiddev freenode channel. The main topic was <ulink url="https://wiki.squid-cache.org/MeetUps/IrcMeetup-2009-01-17/Features/BetterStringBuffer/StringNg#">StringNg</ulink>, its implementation architecture and strategy for eventual merge into Squid. </para><para>Participants: </para><itemizedlist><listitem><para>rousskov is <ulink url="https://wiki.squid-cache.org/MeetUps/IrcMeetup-2009-01-17/AlexRousskov#">AlexRousskov</ulink> </para></listitem><listitem><para>kinkie is <ulink url="https://wiki.squid-cache.org/MeetUps/IrcMeetup-2009-01-17/FrancescoChemolli#">FrancescoChemolli</ulink> </para></listitem><listitem><para>amosjeffries is <ulink url="https://wiki.squid-cache.org/MeetUps/IrcMeetup-2009-01-17/AmosJeffries#">AmosJeffries</ulink> </para></listitem><listitem><para>adri is <ulink url="https://wiki.squid-cache.org/MeetUps/IrcMeetup-2009-01-17/AdrianChadd#">AdrianChadd</ulink> </para></listitem><listitem><para>lifeless is Robert Collins </para></listitem><listitem><para>Holocaine is Benno Rice </para></listitem><listitem><para>hno is <ulink url="https://wiki.squid-cache.org/MeetUps/IrcMeetup-2009-01-17/Henrik_Nordstr%C3%B6m#">Henrik_Nordström</ulink> </para></listitem></itemizedlist><para>Here's the discussion log. </para><programlisting format="linespecific" language="irc" linenumbering="numbered" startinglinenumber="1"><![CDATA[19:47 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, do we need < and >? Have you found a use for them already?]]>
+<![CDATA[19:47 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Might be useful for STL container types.]]>
+<![CDATA[19:47 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[sorted lists etc]]>
+<![CDATA[20:11 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, what is matchPrefix?]]>
+<![CDATA[20:12 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[strncmp()]]>
+<![CDATA[20:12 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[length is determined by the length of the argument.]]>
+<![CDATA[20:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(bounds checking is supposed to be an integral guarrantee to every call, so I'm not going to mention it from now on]]>
+<![CDATA[20:37 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, do you know whether we still need _SQUID_INLINE_ ?]]>
+<![CDATA[20:40 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I found it in live code, so I suppose we do]]>
+<![CDATA[20:41 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[it may be debateable which calls to inline and which not]]>
+<![CDATA[21:11 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I hope we can remove the #define. Need to find somebody who knows which environment needed it. Perhaps it is in the commit logs.]]>
+<![CDATA[21:11 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[which one? The _SQUID_INLINE_?]]>
+<![CDATA[21:12  ]]><token><![CDATA[* ]]></token><![CDATA[rousskov nods.]]>
+<![CDATA[21:12 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Not specific to String, of course.]]>
+<![CDATA[21:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I understand it's an essential part of the .cci files.]]>
+<![CDATA[21:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[The most knowledgeable person about it is robert]]>
+<![CDATA[21:24 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[AFAICT, it just tells Squid whether to say "inline" or not. I have never seen an environment where "inline" did not work. I am sure they exist[ed], but I wonder if they are still relevant.]]>
+<![CDATA[21:33 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[As far as I know that's not for portability.]]>
+<![CDATA[21:33 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Inlining can make debugging difficult. --disable-inline conifigure option will allow that.]]>
+<![CDATA[21:34 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[It may also be helpful in small footprint environments, to save program memory]]>
+<![CDATA[21:41 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Popular compilers already have parameters to disable inlining.]]>
+<![CDATA[21:42 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[you're right.. you may want to drop an RFC to -dev, there may be other reasons I don't know]]>
+<![CDATA[21:45 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Yeah.]]>
+<![CDATA[22:18 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Hm... The way you implemented SBuf, you do not really need StringNg.]]>
+<![CDATA[22:19 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[It depends on where you want to draw the line.]]>
+<![CDATA[22:19 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I am trying to understand whether we should just merge the two classes or change SBuf so that StringNg is needed.]]>
+<![CDATA[22:20 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Well StringNg was implemented to address your concerns..]]>
+<![CDATA[22:20 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I know.]]>
+<![CDATA[22:20 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(in other words, my bias is clear)]]>
+<![CDATA[22:21 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I started by taking an OO-ized libC approach, as the API is well known and understood. This has obvious pros and cons.]]>
+<![CDATA[22:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Yes, you tried to address my concerns by adding a class named String, but you left the essential bits in SBuf, making String mostly useless]]>
+<![CDATA[22:22 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[the only significant bits it has are those which are encoding-aware.]]>
+<![CDATA[22:22 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[We could debate whether the Tokenizer should be buf- or string- oriente]]>
+<![CDATA[22:23 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[oriented]]>
+<![CDATA[22:24 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[But my ideal approach would be "buf is 8-bit-encoded, string is complex-encoded (via ucs-2)]]>
+<![CDATA[22:24 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[and since we do not really support multiple encodings, String looks rather weird. That is, what it represents is invisible.]]>
+<![CDATA[22:25 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[we do not really support multiple encodings YET]]>
+<![CDATA[22:27 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And, I suspect, we are not really designing well to support them either. My focus was different. Making eventual support for encodings easier was just a side-effect of what I was trying to achieve by the Buffer/String split.]]>
+<![CDATA[22:28 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[With the current implementation, it is not clear to me (yet), whether the split is worth it. I need to think about it.]]>
+<![CDATA[22:29 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[nod]]>
+<![CDATA[22:29 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Merging the two is rather trivial. Splitting differently is doable. I'll support either way.]]>
+<![CDATA[22:29 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I wanted a dumb Buffer and a smart String slicing and dicing that dumb Buffer. What you have implemented is smart Buffer and smart String.]]>
+<![CDATA[22:30 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[well, slicing and dicing is a buffer thing]]>
+<![CDATA[22:30 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, in your implementation, yes.]]>
+<![CDATA[22:34 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[at least now the reasons for discussions we've had in the past should be clearer..]]>
+<![CDATA[22:35 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[so whats changed?]]>
+<![CDATA[22:36 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Alex was finally able to dig into the StringNg review]]>
+<![CDATA[22:41 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[ah. no more code changes then?]]>
+<![CDATA[22:41 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[No, not lately.]]>
+<![CDATA[22:44 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[but the design is a bit different from what Alex thought it'd be.. there's more smarts in the SBuf than he'd think there'd be]]>
+<![CDATA[22:44 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(I'll let him elaborate further)]]>
+<![CDATA[22:47 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I found many secondary bugs. They are ready to be emailed, but I want to decide what to do with this first-level issue first.]]>
+<![CDATA[22:52 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[nod]]>
+<![CDATA[22:56 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, how do you explain that both Buffer and String have a search method?]]>
+<![CDATA[22:57 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[String proxies most Buffer methods. It should proxy almost all of them really.. It's virtually a heir class.]]>
+<![CDATA[22:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[but why do we have search in both classes?]]>
+<![CDATA[22:58 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I'd like to be able to search both blobs and strings. For different purposes, but it makes sense.]]>
+<![CDATA[22:58 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[E.g. ]]>
+<![CDATA[22:59 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[You get a network buffer as a blob. You search for a delimiter, and decide that up to the delimiter you found it was a string.]]>
+<![CDATA[22:59 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(think HTTP request parsing..)]]>
+<![CDATA[23:01 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[But then it doesn't make sense to have a String having less methods than the buffer you started with, does it?]]>
+<![CDATA[23:01 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[sometimes it does kinkie.]]>
+<![CDATA[23:01 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[sometimes yes.. but this time?]]>
+<![CDATA[23:02 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[well see about this time during the rollout.]]>
+<![CDATA[23:03 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ nod]]>
+<![CDATA[23:04 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[why not use String to search in an I/O buffer for an HTTP delimiter?!]]>
+<![CDATA[23:04 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[We end up with SBuf being the widely used class and StringNg being the special case converted to only when its unusual functions are needed.]]>
+<![CDATA[23:04 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[that sort of use a heir class makes more sense.]]>
+<![CDATA[23:05 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ String search should be limited to valid string chars no? binary has more available.]]>
+<![CDATA[23:06 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[oop.  s/We end up with/We MAY end up with/]]>
+<![CDATA[23:07 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ re the wiki: there's an XMLRPC interface available, but I've never really investigated it.]]>
+<![CDATA[23:07 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[yo]]>
+<![CDATA[23:07 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[gah, etc.]]>
+<![CDATA[23:07 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[hi adri]]>
+<![CDATA[23:08 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[hi adri]]>
+<![CDATA[23:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[still no hno?]]>
+<![CDATA[23:09 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I do not think we need String if I understand your intentions correctly]]>
+<![CDATA[23:09 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Hm, nope]]>
+<![CDATA[23:09 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Hm]]>
+<![CDATA[23:10 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ that was the original plan, yes]]>
+<![CDATA[23:12 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[there were many original plans, but that is not important]]>
+<![CDATA[23:12 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[yes]]>
+<![CDATA[23:13 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[So I need to decide whether to recommend removing one of the classes or recommend moving to the plan where both make sense]]>
+<![CDATA[23:14 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[yes]]>
+<![CDATA[23:14 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[basically right now String is a marker.. its main meaning is just being there, to allow the caller to declare 'this is a string' or 'this is a blob']]>
+<![CDATA[23:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[hm]]>
+<![CDATA[23:17 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[with virtually no visible difference between the two]]>
+<![CDATA[23:17 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Where's the current code being reviewed hiding?]]>
+<![CDATA[23:17 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[lp:]]></methodname><![CDATA[~kinkie/squid/stringng]]>
+<![CDATA[23:18 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, you wanted I/O (comm and such) code to create buffers as/when needed, right?]]>
+<![CDATA[23:18 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'd like IO to be able to do scatter/gather IO on buffer references where needed]]>
+<![CDATA[23:18 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[There'll end up havin gto be some vector type of region references]]>
+<![CDATA[23:18 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[that would require the next step: SBufList]]>
+<![CDATA[23:18 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[There's perfectly good vector types already in the STL iirc]]>
+<![CDATA[23:19 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[yes]]>
+<![CDATA[23:19 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I don't think you need to create a new type just for a generic vector]]>
+<![CDATA[23:19 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ it may very well end up being a typedef in fact]]>
+<![CDATA[23:19 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Gods, where acn I browse the code already]]>
+<![CDATA[23:19 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[ok, there]]>
+<![CDATA[23:19 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, and if you look at lp URL above, ignore the lower-level bugs like wrong parameter types, names, unneeded methods, etc. I already have a list of those. Concentrating on String/Buffer role split for now.]]>
+<![CDATA[23:20 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'm just going to brush over it]]>
+<![CDATA[23:20 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, ignore scatter/gather I/O. Who is creating the I/O buffer? The caller or the I/O code?]]>
+<![CDATA[23:20 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'm knee-deep in src/http.c]]>
+<![CDATA[23:20 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ who knows]]>
+<![CDATA[23:21 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ its not always that clear]]>
+<![CDATA[23:21 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ it depends really on how system-specific you want to get.]]>
+<![CDATA[23:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I thought you were proposing something rather specific.]]>
+<![CDATA[23:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Long time ago]]>
+<![CDATA[23:22 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ if you want to handle things like mmap() backed io for things like disk/sockets, then the IO code has to give you buffers]]>
+<![CDATA[23:22 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[That's what you were probably talking about.]]>
+<![CDATA[23:22 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[yeah.]]>
+<![CDATA[23:22 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[As I said, its not always that clear.]]>
+<![CDATA[23:22 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Then if it -is- mmap() backing of things like say, just straight file contents]]>
+<![CDATA[23:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[The IO code has to not only give you buffers, but there has to be some reasonably thorough tracking of whats where, so the IO code doesn't unmmap() active regions]]>
+<![CDATA[23:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[In other cases, say its POSIX AIO, you give the IO system buffers]]>
+<![CDATA[23:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and it will fill them for you, and return]]>
+<![CDATA[23:24 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[or even just our aio implementation, extended perhaps to include iovec read/write]]>
+<![CDATA[23:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[for now, I'd not worry abut it too much, not for the majority of what this stuff is planned for]]>
+<![CDATA[23:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[eventually it will matter for the memory store]]>
+<![CDATA[23:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[well, the memory and disk store]]>
+<![CDATA[23:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but the amount of code you can tidy up by just allocating buffers from RAM normally, ignoring potential IO mappings, will be huge]]>
+<![CDATA[23:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and will make the next task - more optimal IO buffers - a lot easier]]>
+<![CDATA[23:26 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Almost all of the stuff you will want to tidy up - the network oriented stuff - will benefit from this just dodging malloc and copy overheads]]>
+<![CDATA[23:27 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[(and the modifications to the codebase to handle that kind of async socket IO in particular is going to be uhm, scary.)]]>
+<![CDATA[23:27 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[One thing that would make the String/Buffer split decision easier is to understand whether "an area of a Buffer" is still a Buffer or only a String. This boils down to, I think,  whether the I/O code would need to consume() the head of an I/O buffer.]]>
+<![CDATA[23:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[doing consume at a level which makes sense to low level IO gets a bit silly, really]]>
+<![CDATA[23:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[At the end of the day, the last thing you want to do is keep growing the tail of the buffer as you append]]>
+<![CDATA[23:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[And you absolutely don't want to keep memcpy()'ing data to the head as you consume]]>
+<![CDATA[23:28 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[If I/O code always deals with "complete" buffers and does not consume(), then Buffer does not need "offset", only "size"]]>
+<![CDATA[23:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Instead what I did, was have buffer's and buffer references different]]>
+<![CDATA[23:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[so a buffer is just {buf, size, capacity, refcnt}]]>
+<![CDATA[23:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[a bufregion is {buffer, offset, length}]]>
+<![CDATA[23:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and a string is a {bufregion, encoding, NULL terminated?}]]>
+<![CDATA[23:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[an IO layer may actually only consume part of a buffer at a time]]>
+<![CDATA[23:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[if you issue a nonblocking write, it may write part of the buffer]]>
+<![CDATA[23:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[you could just not care and mark the whole region as taken until its completely written]]>
+<![CDATA[23:30 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ current implementation 'an area of a buffer' is a SBuf, which maps 1-1 to a String. consume() is realized by appending to a buffer tail and copying the unconsumed head when it can't grow anymore. The count of the copies is kept around to leave more and more headroom as the SBuf is used this way]]>
+<![CDATA[23:31 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but from teh point of view of the rest of the code, I made the three distinctions above specifically so I didn't use String except where things were actually to be treated as such, rather than an opaque region of memory]]>
+<![CDATA[23:31 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[for example]]>
+<![CDATA[23:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[If I have a buffer in src/http.c as the incoming reply buffer]]>
+<![CDATA[23:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'll read into it, and possibly read/append some more]]>
+<![CDATA[23:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[when I get a complete header set, I'll create strings off that]]>
+<![CDATA[23:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but I'll pass a bufregion containing "reply status + headers" to the store layer]]>
+<![CDATA[23:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and a second bufregion containing "reply body" to the store layer seperately]]>
+<![CDATA[23:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[that will be from teh same buffer, but they mean seperate things]]>
+<![CDATA[23:33 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[(then I have to worry about how to readv() into the end of a partially full buffer, and into the beginning of the next buffer, but that is chapter 2.)]]>
+<![CDATA[23:34  ]]><token><![CDATA[* ]]></token><![CDATA[adri is still stuck in src/http.c hell :(]]>
+<![CDATA[23:35 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ what I did is more or less the same - except for the ]]>
+<![CDATA[23:35 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[\0 at the end of strings]]>
+<![CDATA[23:35 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ the is_null is optional]]>
+<![CDATA[23:35 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ a "transition" thing]]>
+<![CDATA[23:35 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[readv() and writev() require a vector buffer, which may be masked behind an interface...]]>
+<![CDATA[23:36 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[nod]]>
+<![CDATA[23:36 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ \0'ed strings can be duped, but they can't be created by merely referencing another region]]>
+<![CDATA[23:36 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[yes]]>
+<![CDATA[23:36 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ this is btw why I already have working code. :)]]>
+<![CDATA[23:36 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[so the sbuf interface may very well use a vector backing store, possibly lazily reassembled. but that's chapter 4 :)]]>
+<![CDATA[23:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Nah]]>
+<![CDATA[23:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Don't extend it to do that]]>
+<![CDATA[23:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[If you want that, extend string to do that]]>
+<![CDATA[23:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Don't extend sbuf to do that. :)]]>
+<![CDATA[23:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[sbuf should just be "a reference counted region of memory with some way of filling it with gunk, and accessing it with bounds checking"]]>
+<![CDATA[23:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[if you want to be able to build on top of that, do so. :)]]>
+<![CDATA[23:39 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ sbuf is the refcounter, not the refcountee.. sbufstore is the refcountee.]]>
+<![CDATA[23:40 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, the scheme you described above is what I expected from Buffer/String split.]]>
+<![CDATA[23:40 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[maybe the problem is that the names are misleading..]]>
+<![CDATA[23:40 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ maybe]]>
+<![CDATA[23:40 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[and sbufstore must be called buffer, and sbuf string.]]>
+<![CDATA[23:40 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, but currently it is just one Buffer (essentially), used for everything. An area of a Buffer is Buffer.]]>
+<![CDATA[23:40 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[yup]]>
+<![CDATA[23:40 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ I had that too]]>
+<![CDATA[23:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ it quickly made things painful]]>
+<![CDATA[23:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ things like string and stmem suddenly had to track their own {buf, offset, length} with the same freaking semantics as each other.]]>
+<![CDATA[23:42 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Well, in the current code, String just lets Buffer track everything]]>
+<![CDATA[23:42 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[maybe they do need to be re-named.]]>
+<![CDATA[23:43 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Well, with the current design, I am struggling to find enough reasons to keep String at all.]]>
+<![CDATA[23:45 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Kinkie has implemented the Buffer that, apparently, he always wanted. Then he pulled or copied a few methods, creating String to satisfy my demands for separation of the two.]]>
+<![CDATA[23:45 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[brb]]>
+<![CDATA[23:46 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ yes.. as I had understood that there were two reasons you wanted String for.. to be able to define something as 'this is a String' (think size_t and similar types), and to keep the methods which are encoding-aware]]>
+<![CDATA[23:47 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, I am not sure we interpret the first reason the same way. I agree with the second reason, but currently Buffer has methods which are encoding-aware.]]>
+<![CDATA[23:48 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[hmm such as? search() takes either a char or a SBuf.. what else may there be?]]>
+<![CDATA[23:48 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(and searching for a byte or for a blob within a blob doesn't seem much encoding-aware to me)]]>
+<![CDATA[23:50 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[but it is]]>
+<![CDATA[23:50 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[because you assume that values are the same if they are encoded the same way]]>
+<![CDATA[23:51 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[There is also ==, <, and >]]>
+<![CDATA[23:52 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And scanf!]]>
+<![CDATA[23:52 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[ok, you found them. <, > and cmp _ARE_ encoding-depedent. == isn't imo.. it's basic blob matching. under some encodings it may be that things represented in different ways are the same, but that's for UcsString (or whatever) to handle]]>
+<![CDATA[23:53 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[many things might be equal even if their encoding differs]]>
+<![CDATA[23:53 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[nod]]>
+<![CDATA[23:53 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[so == is encoding aware]]>
+<![CDATA[23:53 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[or buggy]]>
+<![CDATA[23:54 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[why are <> on blob codeing aware then? they should be working on eth same domain as ==. ie (offset or length are ><)]]>
+<![CDATA[23:54 ]]><methodname><![CDATA[< lifeless> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ it is surprising for < to be coding aware and == not to be]]>
+<![CDATA[23:54 ]]><methodname><![CDATA[< lifeless> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ it will trip up programmers]]>
+<![CDATA[23:54 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[lifeless:]]></methodname><![CDATA[ why? It checks that two regions of memory have the same exact contents]]>
+<![CDATA[23:54 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[amosjeffries, they all are in the same category]]>
+<![CDATA[23:55 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, the meaning of "the same" depends on the encoding]]>
+<![CDATA[23:55 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[aye, for blob they should act on offset/length nothing more. for string they go into bytes-level]]>
+<![CDATA[23:55 ]]><methodname><![CDATA[< lifeless> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ its about consistency]]>
+<![CDATA[23:55 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[You can, of course, claim that Buffer handles one encoding, namely "raw bytes" or something like that.]]>
+<![CDATA[23:56 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[But that makes Buffer, content encoding-aware]]>
+<![CDATA[23:56 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Well, I'd claim that it's C-like. But 'raw bytes' sounds reasonable]]>
+<![CDATA[23:56 ]]><methodname><![CDATA[< lifeless> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ I can guarantee that if you have a single interface where one operator is defined 'same bytes' and other is defined 'same characters', that users of the API will get it horribly wrong]]>
+<![CDATA[23:57 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, right. So we have Buffer for C-like content and String for ASCII content.]]>
+<![CDATA[23:57 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Actually, not even that]]>
+<![CDATA[23:57 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[now, no.]]>
+<![CDATA[23:57 ]]><methodname><![CDATA[< lifeless> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ either don't define < on the byte level interface, or define < and == in a single spacec]]>
+<![CDATA[23:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[We have Buffer for C-like content and String for ... C-like content.]]>
+<![CDATA[23:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Now.]]>
+<![CDATA[23:58 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[lifeless:]]></methodname><![CDATA[ yes]]>
+<![CDATA[23:58 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[my ideal split would be 'buffer for c-like content,string for unicode'. but here opinions vary ;)]]>
+<![CDATA[23:58 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[what we all seem to be edging around to slowly is a model of a buffer with offset/length and a heirarchy layer of children that look deeper as needed.]]>
+<![CDATA[23:59 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[amosjeffries, if that is the model, we do not need either String or Buffer. They are the same.]]>
+<![CDATA[23:59 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I should relax that a bit. They could be the same.]]>
+<![CDATA[00:00 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I am not sure there is much value in having two nearly identical, complex classes just to mark one of them for future extension.]]>
+<![CDATA[00:00 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[yes, they could be. kinkie where did you put that auto-docs again?]]>
+<![CDATA[00:00 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Especially if we have very poor understanding of what that extension would look like.]]>
+<![CDATA[00:01 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ it may be out of date.. let me see]]>
+<![CDATA[00:01 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[I just want to look at the collaboration graph]]>
+<![CDATA[00:02 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[The alternative design is Buffer that is only a monolithic opaque blob and String is everything on top of that.]]>
+<![CDATA[00:02 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[That is what I expected and that is what, I think, Adrian said he ended up after trying the first approach (FWIW).]]>
+<![CDATA[00:03 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[rebuilding the autodocs]]>
+<![CDATA[00:03 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ i had a middle thing, a buffer reference]]>
+<![CDATA[00:03 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ which -just- handled the {buf,offset,length} and accesor]]>
+<![CDATA[00:03 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ other than that, yeah]]>
+<![CDATA[00:04 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[OK. So Adrian had four layers BufferStore-Buffer-BufferReference-String]]>
+<![CDATA[00:04 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I dodn't have bufferstore]]>
+<![CDATA[00:04 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I just had buffer -> bufferreference -> string]]>
+<![CDATA[00:05 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[sorry, difering terminology]]>
+<![CDATA[00:05 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[{thing which refcounted a block of memory } -> { thing which wrapped offset/length inside a thing which refcounted a region of memory } -> { thing which acted as a squid "String" with a referenced region of memory }]]>
+<![CDATA[00:05 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And most of the code used what for raw I/O? buffer? or bufferreference?]]>
+<![CDATA[00:06 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adrian, and what was the class for block of memory?]]>
+<![CDATA[00:06 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ autodox at http://www.kinkie.it/~kinkie/dox/]]>
+<![CDATA[00:06 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I had only started doing the network side of things, and buf_t's backing store was allocated via malloc()]]>
+<![CDATA[00:06 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Ah]]>
+<![CDATA[00:06 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Yes, that bit]]>
+<![CDATA[00:06 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I was in progress of converting things over to use buffer-reference]]>
+<![CDATA[00:06 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[BufferStore = block of memory]]>
+<![CDATA[00:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Buffer = refcounting]]>
+<![CDATA[00:07 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but what I found alex, was almost everything was either copied]]>
+<![CDATA[00:07 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[sorry, reference copied]]>
+<![CDATA[00:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[String = search, case, etc.]]>
+<![CDATA[00:07 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[or there was the original creator, doing the appending]]>
+<![CDATA[00:07 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[almost nothing really modified the middle of a string after it was allocated]]>
+<![CDATA[00:07 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[at least, in the existing codebase]]>
+<![CDATA[00:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[so when things like substr's were creatd, I started modifying the code to use my buffer region thing when copying]]>
+<![CDATA[00:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[sorry, when creating references to subregions]]>
+<![CDATA[00:09 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ again, bufferstore may or may not be useful, because in order to allocate it you may need to know what it is you're allocating it from]]>
+<![CDATA[00:09 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ it isn't clear to me right now how to do that without breaking layering]]>
+<![CDATA[00:09 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ I'm sure its doable, VM systems do it all the time]]>
+<![CDATA[00:09 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Well, this all makes sense. My concern is not with harmless append() or substr() but with consume().]]>
+<![CDATA[00:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[right.]]>
+<![CDATA[00:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[i'd toss consume() to be honest]]>
+<![CDATA[00:10 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[If we make String the only thing that is area-aware, then consume() will be expensive.]]>
+<![CDATA[00:10 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I mean, Buffer::consume() will be expensive.]]>
+<![CDATA[00:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Yeah]]>
+<![CDATA[00:11 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[as I said, I'd toss that. :)]]>
+<![CDATA[00:11 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Most of the current code uses I/O buffers in a consume/append loop, does it not?]]>
+<![CDATA[00:11 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[If you want to implement a producer consumer model, I don't think doing it at this low level is the correct place to]]>
+<![CDATA[00:11 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ no idea in -3]]>
+<![CDATA[00:11 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ in -2, explicit producer/consumer happens in one place]]>
+<![CDATA[00:12 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ (client-side.c's read-side socket buffer)]]>
+<![CDATA[00:12 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I do not know what producer/consumer means :-).]]>
+<![CDATA[00:12 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ everything else is "sort of" producer/consumer]]>
+<![CDATA[00:12 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ append/consume. :)]]>
+<![CDATA[00:12 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ I'll use "append/consume", i think I understnad your specific use]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I believe Squid3 client, server, and ICAP sides all append into the buffer and then consume the beginning of it.]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[right]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[the trouble with that]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[is the copying required]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[IMO, comsume should normally be a simple offset++ type operation.]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[The way I chose to address this is:]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amos:]]></methodname><![CDATA[ it should be]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[- consume is offset++]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[amos, yes, which means you need offset.]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amos:]]></methodname><![CDATA[ "give me that buffer, now go away its my problem to use it"]]>
+<![CDATA[00:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[- buffer is allocated bigger than needed to make room for appending.]]>
+<![CDATA[00:14 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[appending is not the problem]]>
+<![CDATA[00:14 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amos:]]></methodname><![CDATA[ doing it based on region is fine too; the last thing to release its reference frees it]]>
+<![CDATA[00:14 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[- when appending is not possible because there's not room, copying occurs of the non-consumed part.]]>
+<![CDATA[00:14 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amos:]]></methodname><![CDATA[ but you don't want to keep reallocating when the thing grows, nor do youw ant to keep copying() data to the front]]>
+<![CDATA[00:14 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[-heuristics are used to try and be smart, but they must be tuned]]>
+<![CDATA[00:15 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ this is one of my "the code is wrong in the first place, rewrite it rather than trying to keep it happy" argument points]]>
+<![CDATA[00:15 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ like a few of the string methods, I think that particular behaviour inside squid isn't one you want to try and support.]]>
+<![CDATA[00:16 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[that problem will go away together with the scatter-gather issue]]>
+<![CDATA[00:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[it won't]]>
+<![CDATA[00:16 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[My problem is that if I have a big I/O buffer that is being appended/consumed, then that buffer is going to get realloced all the time because of all the Strings pointing to that Buffer and forcing cow.]]>
+<![CDATA[00:16 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[forcing cow on consume().]]>
+<![CDATA[00:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[if -code- uses the API kinkie, it'll be chewing CPU]]>
+<![CDATA[00:16 ]]><methodname><![CDATA[< lifeless> ]]></methodname><![CDATA[append consume shouldn't require a single contiguous region]]>
+<![CDATA[00:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[it depends what the consumer wants]]>
+<![CDATA[00:16 ]]><methodname><![CDATA[< lifeless> ]]></methodname><![CDATA[it may want to offer byte by byte consumption, but it should be backed by multiple fixed size regions]]>
+<![CDATA[00:17 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[if the consumer wants a linear, contiguous region]]>
+<![CDATA[00:17 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[like the current string implementation does]]>
+<![CDATA[00:17 ]]><methodname><![CDATA[< lifeless> ]]></methodname><![CDATA[well, 'backable by']]>
+<![CDATA[00:17 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[then you have to provide itthat]]>
+<![CDATA[00:17 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[lifeless:]]></methodname><![CDATA[ currently Buffers are contiguous.]]>
+<![CDATA[00:17 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[if you go "Well, we can create a vector type to handle multiple non-contig non-linear regions which some magic buffer type will turn into a contig region"]]>
+<![CDATA[00:17 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[then you suddenly may end up with lots of shitty perfoming code which relies on that]]>
+<![CDATA[00:18  ]]><token><![CDATA[* ]]></token><![CDATA[Holocaine sells adri some Contiguation Fairies.]]>
+<![CDATA[00:18 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and translating that into copies later sucks even more, thanks to post-1995 computer architecture]]>
+<![CDATA[00:18 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[If we move away from the current model to a model where each I/O uses a separate buffer (to be vectorized later), then there is not consume() to worry about.]]>
+<![CDATA[00:18 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ I am doing it in two steps]]>
+<![CDATA[00:18 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ first step is exactly that]]>
+<![CDATA[00:18 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ second step is being able to vector-fill a short list]]>
+<![CDATA[00:18 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ if you have a buffer thats part-filled, and you're reading data into it]]>
+<![CDATA[00:18 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Right, that is what I meant by "later"]]>
+<![CDATA[00:19 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ the next append operation]]>
+<![CDATA[00:19 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ its cheap to keep a buffer around to read into]]>
+<![CDATA[00:19 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ the VM won't back the page until something touches it]]>
+<![CDATA[00:19 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ so if you have a half-sized 4k page, and you allocate a second 4k page]]>
+<![CDATA[00:19 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ do a readv() into both regions]]>
+<![CDATA[00:19 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ if you don't read into the second region, the VM won't allocate it]]>
+<![CDATA[00:20 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ if it does, then great, you've got a full and a partially full next page, you pass references to the newly filled regions up to the consumer]]>
+<![CDATA[00:20 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ then you don't end up wasting stupid amounts of partially filled PAGE_SIZE buffers]]>
+<![CDATA[00:21 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ its a real issue in live data, because most socket read()'s over anything not a LAN end up giving you partially filled buffers, like maybe 1 or 2k]]>
+<![CDATA[00:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[The question is: Should we design Buffer/String to optimize the current code or the code we may want to write next?]]>
+<![CDATA[00:21 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ its one of the silly downsides to event driven, efficient, entwork iO. You end up handling IO so quickly sometimes your IO transactions don't fill PAGE_SIZE buffers. :)]]>
+<![CDATA[00:22 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[ok, so this is a kind of interesting question]]>
+<![CDATA[00:22 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[If you limit yourselves to -just- replacing the socket read buffers on the client/server side]]>
+<![CDATA[00:22 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and then creating strings from that]]>
+<![CDATA[00:22 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but still copy in and out of the store, like happens in 2.7 / 3.x]]>
+<![CDATA[00:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[then you end up saving big on the allocator, it'll make tidying up various bits of the code much more doable]]>
+<![CDATA[00:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Trying to use that design in the actual store, wikthout the vector append operations, becomes a bit nightmarish for memory use]]>
+<![CDATA[00:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[the thing is]]>
+<![CDATA[00:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[that will provide enough of a useful API to allow people to go through the current code and properly fix all the stupid little memcpy/strdup/etc things that happen when doing string related crap]]>
+<![CDATA[00:24 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[And -that- i think is going to be more important in the long run]]>
+<![CDATA[00:24 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I think we can commit to support vector operations in Rock Store for 3.2, if that is the primary stumbling block here.]]>
+<![CDATA[00:24 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[See, this is whY i was telling you in prive, its more complicated than you think]]>
+<![CDATA[00:24 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I wouldn't rush into it like that]]>
+<![CDATA[00:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[as in, there's a lot to tidy up -before- you think about vector opreations]]>
+<![CDATA[00:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'm doing this as an experiment in cacheboy_head right now, so I can -do- the above]]>
+<![CDATA[00:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and tidying up client side and http.c enough to do this]]>
+<![CDATA[00:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[is 3 months of adrian time]]>
+<![CDATA[00:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[_just_ unwinding the crack]]>
+<![CDATA[00:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[far, far before you think about any of the benefits this may have for the store]]>
+<![CDATA[00:25 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Well, here I lost you.]]>
+<![CDATA[00:26 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[alex, in order to be able to efficient copy data in and out of th store]]>
+<![CDATA[00:26 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[alex, you first have to change the src/http.c{c} code to not be stupid in how it shuffles data -into- the store]]>
+<![CDATA[00:26 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Accepting new Buffer/String is not a big deal. Rock Store is not a big deal. It is all doable for 3.2.]]>
+<![CDATA[00:26 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[unless its changed dramatically in the last 3 months, src/http.cc still looks as bad as the squid-2 one]]>
+<![CDATA[00:26 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[If by "3.2" you mean "+18 months", sure]]>
+<![CDATA[00:27 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Not really.]]>
+<![CDATA[00:27 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[or "+9 months with three full time people dedicated to unwinding the junk code", sure]]>
+<![CDATA[00:27 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Hey, I'm just talking based on having done it twice. :)]]>
+<![CDATA[00:27 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I do not understand why all the junk code needs to be cleaned up.]]>
+<![CDATA[00:27 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ because otherwise whatever magic you can dream up for rock store will give almost 0% benefit to teh rest of the code]]>
+<![CDATA[00:28 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I only need to optimize the common path.]]>
+<![CDATA[00:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[hah]]>
+<![CDATA[00:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Your idea of the "common path" is probably wrong. :)]]>
+<![CDATA[00:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[there are lots of "common apaths" depending upon what the user is doing]]>
+<![CDATA[00:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[is it a proxy? ]]>
+<![CDATA[00:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[if its a proxy, with a 30% ish byte hit rate]]>
+<![CDATA[00:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[then there's a lot of data still coming in from the network and coming into the store]]>
+<![CDATA[00:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[if its a reverse proxy? then that 90% byte hit rate is not tickling http.cc so much; its mostly store -> store client -> client_side]]>
+<![CDATA[00:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[eliminating that store client copy will probably boost squid-3's performance by about 5%, like it did to squid-2.HEAD]]>
+<![CDATA[00:30 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Common path is network-disk-network, essentially. If we do that, 3.2 becomes a lot faster than 3.1 and that is sufficient.]]>
+<![CDATA[00:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[oh, and if you fix the mstmem access to not be a freaking tree lookup each time]]>
+<![CDATA[00:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[alex]]>
+<![CDATA[00:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[let me re-iterate]]>
+<![CDATA[00:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[network -> disk -> network]]>
+<![CDATA[00:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[is about 30,000 lines of shit code]]>
+<![CDATA[00:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[when I say shit, I actually mean, i've sat down and looked at it, even recently in -3]]>
+<![CDATA[00:31 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[(sorry, DSL router just croaked)]]>
+<![CDATA[00:31 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[there's a lot of shit code]]>
+<![CDATA[00:31 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Well, I also work with the code and I disagree that I need to rewrite 30K lines to get serious improvements in 3.2 compared to 3.1, but it is a matter of opinion. We are not going to convince each other regarding that.]]>
+<![CDATA[00:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[The place to start, as I keep saying, is to stick a proper profiler on whatever load you current thing is "normal"]]>
+<![CDATA[00:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and map out "common paths" that way]]>
+<![CDATA[00:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[then we can continue this discussion]]>
+<![CDATA[00:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[without any conjecture :)]]>
+<![CDATA[00:32 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[The question is, currently, about String/Buffer versus Buffer alone. :-)]]>
+<![CDATA[00:32 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[The biggest places you're going to hurt is the copies into store, the copy out from store, maybe you've got some more parsing I haven't checked]]>
+<![CDATA[00:33 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[changing the memory cache won't fix that]]>
+<![CDATA[00:33 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[then its ACL regex lookups. :)]]>
+<![CDATA[00:33 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[then last time I checked, its 70% of sub-1% CPU time calls. :)]]>
+<![CDATA[00:33 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[with the memory allocators way, way up there]]>
+<![CDATA[00:34 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[We need to tell kinkie to commit the current design or to change it (secondary-level bugs aside).]]>
+<![CDATA[00:34 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Kinkie is not doing any performance work, so the above does not matter to him. He does, however, need an answer.]]>
+<![CDATA[00:34 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'm still way, way  not comfortable enough with that design]]>
+<![CDATA[00:34 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I think that right now, all those APIs are way overloaded]]>
+<![CDATA[00:34 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[sorry]]>
+<![CDATA[00:35 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[the API is way overloaded]]>
+<![CDATA[00:35 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Well, let's limit ourselves to one question for now.]]>
+<![CDATA[00:35 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Ok]]>
+<![CDATA[00:35 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Should Buffer contain all string-manipulation functions (and, hence, offset)?]]>
+<![CDATA[00:35 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[no]]>
+<![CDATA[00:35 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Wait]]>
+<![CDATA[00:36 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[define "buffer" :)]]>
+<![CDATA[00:36 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[The thing that does cow.]]>
+<![CDATA[00:36 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Are you talking about "thing which references a refcounted backing store" ?]]>
+<![CDATA[00:36 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[For now]]>
+<![CDATA[00:36 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[For this initial pass]]>
+<![CDATA[00:36 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'd tidy up the lot of places where String is being used poorly]]>
+<![CDATA[00:36 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[thing that references raw memory buffer and refcounts it.]]>
+<![CDATA[00:36 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and I'd imlement just, -just- a refcounted buffer thing with an append, get, set operation]]>
+<![CDATA[00:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and then add in the relevant functionality into SquidString to do all of what his current SBuf code is trying to do]]>
+<![CDATA[00:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Beacuse]]>
+<![CDATA[00:37 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[OK.]]>
+<![CDATA[00:37 ]]><methodname><![CDATA[< lifeless> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ the stmem thing being a tree is fine IMO - but the tree implementation is pathological at the moment, because its ill suited to the insertion/lookup behaviour]]>
+<![CDATA[00:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Until people do the _really_ hard task]]>
+<![CDATA[00:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[of tidying up all the places where buffers from Strings are used, and poorly]]>
+<![CDATA[00:37 ]]><methodname><![CDATA[< lifeless> ]]></methodname><![CDATA[an rb tree with cached front node and tail node would be much better]]>
+<![CDATA[00:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[The actual -benefit- from that code is completely missed]]>
+<![CDATA[00:38 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[lifeless:]]></methodname><![CDATA[ I think the idea is fine. I think stmem has morphed poorly from being an in-transit object data pipeline into a cache]]>
+<![CDATA[00:38 ]]><methodname><![CDATA[< lifeless> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ agreed]]>
+<![CDATA[00:38 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[lifeless:]]></methodname><![CDATA[ I believe it should just be an in-transit object data pipeline _ONLY_, and the memory cache is seperate]]>
+<![CDATA[00:38 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, yes, we know you want the cleanup first. Let's focus on the answer for Kinkie though.]]>
+<![CDATA[00:38 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[lifeless:]]></methodname><![CDATA[ which would mean backing out everything which treats it otherwise]]>
+<![CDATA[00:39 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[alex:]]></methodname><![CDATA[ the answer is for kinkie]]>
+<![CDATA[00:39 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ if this goes in, I'll have something to work with for the cleanup. We already agreed on the attack vector]]>
+<![CDATA[00:39 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, do you think the limited Buffer you were talking about should have offset? Or just size?]]>
+<![CDATA[00:40 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I think it should have offset, if its referencing a refcounted memory backing store]]>
+<![CDATA[00:40 ]]><methodname><![CDATA[< lifeless> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ well, I can deal with it being just one or both; though the in-transit thing has multiple readers fairly often, or did when I looked at this - for things like adobe acrobat a single browser can generate multiple concurrent overlapping range requests]]>
+<![CDATA[00:40 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, sure, but let's not argue about cleanup. We will do it later. Let's focus on the design points we can focus on.]]>
+<![CDATA[00:40 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[lifeless:]]></methodname><![CDATA[ agreed, but it was rushed]]>
+<![CDATA[00:40 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[And I don't think a Buffer should have no manipulators. If it doesn't what I'd end doing is manipulate somewhere else and then copy in. And then copy out to export]]>
+<![CDATA[00:40 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, if Buffer has offset, then it has consume(), right?]]>
+<![CDATA[00:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ no]]>
+<![CDATA[00:41 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Because exporting the raw pointer like current SquidString does is dangerous at best]]>
+<![CDATA[00:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ Buffer has an offset so when you ask for Buffer[0], it starts at the right offset]]>
+<![CDATA[00:41 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, what operation will increase Buffer::offset?]]>
+<![CDATA[00:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ It should be assignment-only]]>
+<![CDATA[00:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ what I'ms aying is, the -consume- operation shouldn't exist.]]>
+<![CDATA[00:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ any situation where consume exists at that layer is flawed.]]>
+<![CDATA[00:42 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Ah, I see. Let's assume that memory backing store is a char* pointer, for now]]>
+<![CDATA[00:42 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Will Buffer have an offset then?]]>
+<![CDATA[00:43 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[yes]]>
+<![CDATA[00:43 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[beacuse if you have multiple Buffer's referencing the same char * pointer]]>
+<![CDATA[00:43 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and assume the BufferStore is just { char *ptr, int size, int capacity, int refcnt }]]>
+<![CDATA[00:43 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Yes]]>
+<![CDATA[00:43 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Then there needs to be some abstracted way of referencing -just- a region of that]]>
+<![CDATA[00:43 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[because it'll be done in multiple places]]>
+<![CDATA[00:43 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[not just String]]>
+<![CDATA[00:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Since all a Buffer is]]>
+<![CDATA[00:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[is just { BufferStore *, int offset, int length }]]>
+<![CDATA[00:44 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Then we come to the same question. What Buffer operation will increase offset?]]>
+<![CDATA[00:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Why would you want to increase the offset of a Buffer?]]>
+<![CDATA[00:44 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[BUT, shoudl regions have floating windows? ie clientStreams 'Im up to here' ]]>
+<![CDATA[00:44 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[If iffset is always zero, we do not need it]]>
+<![CDATA[00:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[offset won't always be zero]]>
+<![CDATA[00:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[what I'm saying is]]>
+<![CDATA[00:45 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[What will increase it?]]>
+<![CDATA[00:45 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[its simply initialised at creation]]>
+<![CDATA[00:45 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Initialized to non-zero?]]>
+<![CDATA[00:45 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[if you want to destroy and reinit the buffer to point at another region, then fine]]>
+<![CDATA[00:45 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'm assuming "increase" implies "it started at value X, now change its value to be something > X"]]>
+<![CDATA[00:46 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[OK. I understand initialize to non-zero.]]>
+<![CDATA[00:46 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[  this is why I'm avoiding using it for now in situations like communicating any actual buffers around]]>
+<![CDATA[00:46 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, what classes other than String will use Buffer with an offset?]]>
+<![CDATA[00:46 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ because the only way to do that efficiently is via large buffers that get filled full first, or by communcicating vectors]]>
+<![CDATA[00:47 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ the memory store]]>
+<![CDATA[00:47 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ anything writing stuff to disk, for example]]>
+<![CDATA[00:47 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[What will those classes do after writing the first N bytes?]]>
+<![CDATA[00:47 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ they'll track whatever they've written out of that buffer, until its completely done, then they'll free their Buffer]]>
+<![CDATA[00:48 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ yet that is one of teh two basic purposes of the buffer, for passed entire or partial headersets around]]>
+<![CDATA[00:48 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I understand that you want to push tracking that down into Buffer]]>
+<![CDATA[00:48 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, how will they track?]]>
+<![CDATA[00:48 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ if you want to consume that wya, for that purpose, then fine]]>
+<![CDATA[00:48 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ as long as its used like -that-, ie, tracking how much is left that they care about]]>
+<![CDATA[00:49 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ not to be combined with an append() operator throwing more data into the same Buffer elsewhere]]>
+<![CDATA[00:49 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ -that- use of append/consume is what will lead to silliness]]>
+<![CDATA[00:49 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Hm]]>
+<![CDATA[00:50 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ the only places I like the idea of append/grow is where you -require- for now, contiguous data, for things like creating Strings for headers]]>
+<![CDATA[00:50 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ _that_ use of append/consume wil lead to one COW which allocates more than it needs to for later append madness]]>
+<![CDATA[00:50 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ things get silly later on when you're doing content scanning, for example]]>
+<![CDATA[00:50 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ wait a sec]]>
+<![CDATA[00:50 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ because at the moment, parts of the code may just treat the reply body as a stream of octets with no specific boundaries, but various content scanning bits may want to try and read "byte patterns" (eg binary blobs, strings, image fingerprints, etc0]]>
+<![CDATA[00:51 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ and they may not get their entire "blob" in one read]]>
+<![CDATA[00:51 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I haven't looked into eCAP to see how its solved in that API yet]]>
+<![CDATA[00:51 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[What if we have Buffer and Area. Buffer does not have an offset. Area does. String does too.]]>
+<![CDATA[00:51 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ that's it. See http://www.kinkie.it/~kinkie/dox/classSBuf.html#fd6e2e48dd380a94ac40b312b8f8d9f1]]>
+<![CDATA[00:52 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I think that "offset" is being used slightly differently here]]>
+<![CDATA[00:52 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Area and String point to Buffer and add offset (and other stuff).]]>
+<![CDATA[00:52 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ what I've proposed (and coded up) works fine for header sets in particular]]>
+<![CDATA[00:53 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ the append operation grows the buffer until the reply headers have been completely read in]]>
+<![CDATA[00:53 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ after that, for now, new buffers are created for each socket read, but the right way is to do vector reads into particlaly filled and new buffers]]>
+<![CDATA[00:54 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ for HTTP requests, the only copying that has to happen atm is for left-over data from the next pipelined request, and I only did the copy-into-new-buffer so things were clean. You don't -have- to.]]>
+<![CDATA[00:54 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ that works fine. The inefficiencies in the current code stem from the assumption that everything is a 4k page, and all the random IO transaction sizes from the network get copied into contiguous 4k blocks]]>
+<![CDATA[00:55 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ but for throwing around reference counted request/reply/header sets, it works just fine]]>
+<![CDATA[00:55 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[I wa reading earlier when you said all that. question is not about low-level SbufStore, but next level up.]]>
+<![CDATA[00:56 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ I didn't need a sliding window when I used it]]>
+<![CDATA[00:56 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ I think i understand what alex is getting at, and thats fine]]>
+<![CDATA[00:56 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[when Buffer starts a COW on an effecive read-only BuferStore, offset becomes 0 and append+consume can play merilly away]]>
+<![CDATA[00:56 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[on anow read-write buffer]]>
+<![CDATA[00:57 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ but the offsets from any and all of the htp header stringsincrease from 0, I don't get what the problem is. :)]]>
+<![CDATA[00:57 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[amosjeffries, it is not about whether it will work correctly or not.]]>
+<![CDATA[00:57 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ the COW only happens when you need to write, at which point the "offset" would yes become 0, into the newly created copy of -that- region]]>
+<![CDATA[00:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, so your current code does not have consume(), right?]]>
+<![CDATA[00:58 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[nope]]>
+<![CDATA[00:58 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I hadn't hit a point where I needed to slide the offset of any of the strings or buffer references]]>
+<![CDATA[00:59 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I can see that you may want to if you wanted to push tracking what you had written, for example, back into Buffer]]>
+<![CDATA[00:59 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but then, I treated the "track what you wrote" something completely not related to strings or buffers]]>
+<![CDATA[00:59 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[re consume: I think I used that as a convenience in the Tokenizer]]>
+<![CDATA[00:59 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[which is essentially a consume-until-delimiter engine]]>
+<![CDATA[00:59 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, I understand. You had an Area or something like that. It had an offset and a pointer to Buffer, right?]]>
+<![CDATA[00:59 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[well, I wrote a hand-unrolled parser. :)]]>
+<![CDATA[01:00 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ i can see why you'd do that]]>
+<![CDATA[01:00 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, we are not talking about an specific method in your code. It is a general concept.]]>
+<![CDATA[01:00 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[nod]]>
+<![CDATA[01:00 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ the buffer region (whichi s Buffer here, I guess) has a buf_t * pointer to the backing buffer, an offset, and a len]]>
+<![CDATA[01:01 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Does userland code share "buffer regions" or "backing buffers"?]]>
+<![CDATA[01:01 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ buffer regions are private]]>
+<![CDATA[01:02 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ backing buffers are shared only]]>
+<![CDATA[01:02 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ the backing buffer itself is refcounted]]>
+<![CDATA[01:03 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ in code, backing buffers are always pointers, and buffer regions are always declared as a variable or part of a struct, not a pointer]]>
+<![CDATA[01:10 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ anything new in what Adrian is saying?]]>
+<![CDATA[01:10 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[the design is the same, names change.]]>
+<![CDATA[01:11 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Backing Buffers = Alex' Buffer = SBufStore class.]]>
+<![CDATA[01:12 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Alex' Buffer = adri's buffer region = my SBuf]]>
+<![CDATA[01:12 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[so no changes yet. thats good,]]>
+<![CDATA[01:12 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[only some API to see if it can be dead-coded.]]>
+<![CDATA[01:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Re backing buffers I'm more radical than what I've seen so far: they're a private data class of Buffer regions: noone can access them except for Buffer Regions and their friend classes (not even heirs).]]>
+<![CDATA[01:14 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Buffer Stores are intelligent in that they have methods. They're dumb in that they're not self-sustaining. They are managed by Buffer (SBuf's).]]>
+<![CDATA[01:14 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Think of them as 'structs with utilities'.]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[hm]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[kinkie, are you running the irc logging bot still?]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[yes]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[it's named kot_]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[could you please make sure that this discussion makes it up on the wiki somewhere afterwards?]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(probably some split)]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[If all participants agree.]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[We should probably have a section somewhere which links to interesting discussions]]>
+<![CDATA[01:16 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Becuase a lot of this is replacing what used to go on in the distant past on squid-dev. :)]]>
+<![CDATA[01:18 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[this can go on the meet-ups  think. it was a specific StringNG audit meet-up with alex,adri,kinkie + extras doing FUD.]]>
+<![CDATA[01:18  ]]><token><![CDATA[* ]]></token><![CDATA[rousskov sighs network problems.]]>
+<![CDATA[01:18 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Regarding consume. I agree no consume on Buffer Stores (SBufStore). But Buffer Regions imo need to have manipulation functions. The minimal interface I can think of on top of my head is set, append, slice/substr, import, export.]]>
+<![CDATA[01:18 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, I can attack my question from the other side: Do you think String without any data members other than Buffer pointer makes sense?]]>
+<![CDATA[01:19 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[In other words, is it worth creating a String class just to move all encoding/meaning-aware methods there?]]>
+<![CDATA[01:19 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[we're planning sticking the irc log into wiki alex? okay with that?]]>
+<![CDATA[01:19 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[sure]]>
+<![CDATA[01:19 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Then of course there's = and setAt and []. ]]>
+<![CDATA[01:19 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I missed everything after :: (05:00:55 PM) adri: rousskov: the buffer region (whichi s Buffer here, I guess) has a buf_t * pointer to the backing buffer, an offset, and a len]]>
+<![CDATA[01:19 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ yes]]>
+<![CDATA[01:20 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ hm, wait]]>
+<![CDATA[01:20 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Back to manipulators. given that set, everything else (head, tail, consume etc) are only utility aliases]]>
+<![CDATA[01:20 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[GAH]]>
+<![CDATA[01:20 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I think String having explicitly different len and size, seperate from capacity, makes sense]]>
+<![CDATA[01:20 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Hang on Alex]]>
+<![CDATA[01:20 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ and encoding for later, yes]]>
+<![CDATA[01:20 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I caon't think of anything data-oriented besides a Buffer (which encodes the backing buffer, an offset and a length inside of that buffer)]]>
+<![CDATA[01:21 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ I'm giving Alex access to the bot logs]]>
+<![CDATA[01:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, the current design String stores offset and length in Buffer. So it does not have any members of its own, other than the Buffer pointer]]>
+<![CDATA[01:22 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, its only reason for existence is to accumulate meaning-specific methods.]]>
+<![CDATA[01:22 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I am wondering if that reason is enough.]]>
+<![CDATA[01:22 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I think it is]]>
+<![CDATA[01:22 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ later on, the meaning of encoding alone may be worth it]]>
+<![CDATA[01:22 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ along with the comparison operators, for example]]>
+<![CDATA[01:22 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I was hoping you would be certain that Buffer does not need an offset, then the answer would be clear because String would need it...]]>
+<![CDATA[01:22 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Heh.]]>
+<![CDATA[01:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[ok, I'm goinng afk for a bit]]>
+<![CDATA[01:23 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[afk?]]>
+<![CDATA[01:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Yeah]]>
+<![CDATA[01:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[as in, I'm going to do the exercise I should've done about 4 hours ago]]>
+<![CDATA[01:24 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[but what are the acronym words?]]>
+<![CDATA[01:24 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[away from keyboard]]>
+<![CDATA[01:24 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[lol, I was thinking "away for (WTF?)"]]>
+<![CDATA[01:25 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[next question: String as bridge or heir to Buffer Region?]]>
+<![CDATA[01:27 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[IMO heir. since members are needed and SBufStore is not directly available to it. the enciding-alternate members should be virtual with the class name giving meaning context. (== on buffer = offset/len comparison, on string  = byte-wise)]]>
+<![CDATA[01:27 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[amosjeffries:]]></methodname><![CDATA[ so:]]>
+<![CDATA[01:28 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[SBuf foo("foo"), bar("foo"), foo!=bar]]>
+<![CDATA[01:28 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[String foo("foo"), bar("foo"), foo==bar]]>
+<![CDATA[01:28 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[?]]>
+<![CDATA[01:29 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(last atom is a true equality check)]]>
+<![CDATA[01:29 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[and also:]]>
+<![CDATA[01:29 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Virtual methods?!]]>
+<![CDATA[01:30 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I doubt it is a good idea to add significant overhead for what we might need later.]]>
+<![CDATA[01:31 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Let's assume we do not know how to support different encodings the right way.]]>
+<![CDATA[01:31 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I think that the current implementation is about as expensive as a virtual method...]]>
+<![CDATA[01:31 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[We might isolate encoding-specific stuff to String, but let's not make it more heavy than it needs to be for known use.]]>
+<![CDATA[01:32 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, I do not want to argue about which methods are virtual. We can always add that keyword later.]]>
+<![CDATA[01:32 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Besides, I want to store String instances.]]>
+<![CDATA[01:32 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[then String should disappear, and we remain with a Buffer Store and a Buffer Region which assumes a C ASCII encoding and handles that]]>
+<![CDATA[01:33 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[You cannot store String instances if String does not really exist and you have to store AsciiString or UtfString]]>
+<![CDATA[01:33 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(I'm using Buffer Store and Buffer Region as names as they seem the less ambiguous so far)]]>
+<![CDATA[01:33 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ yes]]>
+<![CDATA[01:33 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[If there is no String class, we still should not add virtual. For the same reasons.]]>
+<![CDATA[01:34 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[no String = no virtual for sure.]]>
+<![CDATA[01:34 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[In fact, no String is about as efficient as it gets.]]>
+<![CDATA[01:34 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Again, let's ignore the question of how we will support encoding a year from now. I do not know the answer, and I dare to bet that nobody else here knows it either.]]>
+<![CDATA[01:35 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[The client-side marking can be achieved as a typedef.]]>
+<![CDATA[01:35 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(but that's quite abuseable)]]>
+<![CDATA[01:35 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[and cannot be pre-declared.]]>
+<![CDATA[01:36 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[amos, do you think it is worth having String just to accumulate meaning-specific methods?]]>
+<![CDATA[01:38 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, your answer is "no, it is not worth it", right?]]>
+<![CDATA[01:38 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[correct. with the addition of "but if the consensus is that it's worth it, I'll code it up"]]>
+<![CDATA[01:39 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[well, sure]]>
+<![CDATA[01:52 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, I emailed you the review results. I am not going to do more until the class split decision is made.]]>
+<![CDATA[01:52 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Ok.]]>
+<![CDATA[01:52 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And you probably do not want to change much until then either...]]>
+<![CDATA[01:53 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I'll go to sleep now, it's 2AM and I'm pretty tired. If you wish, please continue the discussion. I'll read about it on the bot logs tomorrow, or mail me any news.]]>
+<![CDATA[01:53 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Ta]]>
+<![CDATA[01:53 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Thanks and goodnight]]>
+<![CDATA[01:54 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Ciao]]>
+<![CDATA[01:55 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[sorry, got dragged away to a client.]]>
+<![CDATA[01:55  ]]><token><![CDATA[* ]]></token><![CDATA[amosjeffries reading up]]>
+<![CDATA[01:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I think you only missed the last question: Do you think it is worth having String just to accumulate meaning-specific methods? ]]>
+<![CDATA[02:05 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[long-term, yes. short-term, tricky. but for an 18mth short term its probably worth not, for simplicity if anything.]]>
+<![CDATA[02:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Does not look like there is any consensus regarding this, then.]]>
+<![CDATA[02:09 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[In the absence of new information or opinions, simplicity wins and kinkie should get rid of StringNg class.]]>
+<![CDATA[02:41 ]]><methodname><![CDATA[< amosjeffries> ]]></methodname><![CDATA[well, I cant see any reason for keeping StringNg separate it in the current state of things.]]>
+<![CDATA[03:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[The only reason would be to avoid going through code and changing Buffer to String or SomeSpecificString where needed, when we start supporting encodings and such.]]>
+</programlisting><para>Further discussion happened on the topic on Jan 21st, 2009 </para><programlisting format="linespecific" language="irc" linenumbering="numbered" startinglinenumber="1"><![CDATA[15:38 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Hello Henrik, nice to see you again..]]>
+<![CDATA[15:39 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I see you've chimed in on the StringNg debate.. I have a few hiints about the current implementation which may address the points you raise..]]>
+<![CDATA[15:39 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[And sorry for not having done a proper review of your code.]]>
+<![CDATA[15:40 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[you don't need to. I only hope that the end results won't be 'start over'. I couldn't do that. But if a relatively small changeset is what's needed, I'll happily do it.]]>
+<![CDATA[15:40 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[I don't really care if there is a String class or not, other than that I think it adds clarity to the implementation.]]>
+<![CDATA[15:41 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Regarding "String/Buffer split & encoding" - that's more or less how it's done now. Some functionalities would need to be moved out of SBuf into StringNg, but it's doable. Folding everything back into one class if it shows no good advantage is doable.]]>
+<![CDATA[15:43 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Regarding "who creates i/o buffers": as long as an I/O buffer is a contiguous chunk of memory, SBuf.importBuf() will happily accept it and memory-manage it. So the caller would have to allocate a char[], fill it in, importBuf(),return the resulting SBuf and forget about it all.]]>
+<![CDATA[15:44 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[That's a side discussion, not really relevant. But it's good if the use case described works.]]>
+<![CDATA[15:45 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Regarding "String consume method": I refer you to the current implementaiton of SBuf::consume(), as it's easier to see it in code than to explain. In short words, consuming does not move data. When appending ends the available tail space, cow() occurs. Heuristics are applied to try and be smart about how much free tail-space to reserve.]]>
+<![CDATA[15:45 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[which is a producer of some kind filling up linear memory, which gets fed to the received as String or Buffer as it gets filled.]]>
+<![CDATA[15:46 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(of course cow() only copies the non-consumed data)]]>
+<![CDATA[15:46 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Nod.]]>
+<![CDATA[15:47 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[That's fine, but more of a corner use case. Normal operations should not trigger that cow.]]>
+<![CDATA[15:47 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Yes. It's all up to finding the right balance between cpu and memory.]]>
+<![CDATA[15:48 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[In this case I'd say it's more of finding the right producer/consumer model and who is responsible for what..]]>
+<![CDATA[15:48 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[If we're generous about leaving more unused free tail-space in buffers, less copying will occur. The right balance needs to be found, I've put the code doing the smarts together to be able to more finely tune]]>
+<![CDATA[15:49 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[in the model of "producer allocates" you rarely if ever needs append. But you will need the non-linear container class.]]>
+<![CDATA[15:49 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[For the heavy lifting of producer-consumer workloads in a medium-term development timeframe, please see my answer to Alex in "Buffer/String split, take2"]]>
+<![CDATA[15:50 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(in particular the paragraph on vector i/o]]>
+<![CDATA[15:50 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[)]]>
+<![CDATA[15:51 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Ok. I'll read it in detail in an hour or so.]]>
+<![CDATA[15:52 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[ok]]>
+<![CDATA[15:52 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[What do you refer to by "D&C approach"?]]>
+<![CDATA[15:52 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[That's Alex's Divide & Conquer approach.]]>
+<![CDATA[15:53 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Saw it now.]]>
+<![CDATA[15:54 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[evening]]>
+<![CDATA[15:54 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[hi Alex]]>
+<![CDATA[15:54 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, feeling better?]]>
+<![CDATA[16:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[hai]]>
+<![CDATA[16:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[replying to email(s)]]>
+<![CDATA[16:13 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, if we have one Buffer for all uses and users, your "smart heuristics" are more likely to be harmful than helpful.]]>
+<![CDATA[16:13 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Short string users needs differ from that of I/O buffer users, for example.]]>
+<![CDATA[16:14 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I doubt we can optimize both in the same class.]]>
+<![CDATA[16:14 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(hang on, phone call)]]>
+<![CDATA[16:14 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[This is one of the reasons why D&C strategy works.]]>
+<![CDATA[16:18 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ imo it's more useful to D&C THAT too: if reallocation strategy is the only one difference, then let's just make that modular via a Strategy object or some tuneables]]>
+<![CDATA[16:18 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I doubt allocation is the only difference.]]>
+<![CDATA[16:19 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[Downside:]]></methodname><![CDATA[ it increases sizeof(buffer). Upside: less code duplication.]]>
+<![CDATA[16:19 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I do not see much code duplication in D&C]]>
+<![CDATA[16:19 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[D is for divide, not duplicate.]]>
+<![CDATA[16:20 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[The D&C you suggest moves the substringing out of Blob and into String*. I don't see that as a big win..]]>
+<![CDATA[16:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[As for "whose blueprint has also been available for 5 month", I think it is an invalid argument because at least half of the folks reviewing your code from the very start wanted something other than what you kept producing.]]>
+<![CDATA[16:22 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[In other words, "you were not listening for 5 months" or "you were ignoring the repeated calls for a change for 5 months"]]>
+<![CDATA[16:22 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Substring can be moved to Buffer if all or most Buffers need sub-areas. See (note).]]>
+<![CDATA[16:23 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I believe I changed lots, and what I didn't change, it's for sure I didn't understand.]]>
+<![CDATA[16:23 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[And that may have been purely a communication issue, with no actual badness on anyones' part]]>
+<![CDATA[16:23 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I am not saying it was]]>
+<![CDATA[16:24 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I am saying it is not a valid argument to tell others that it is too late to argue for a different design.]]>
+<![CDATA[16:24 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Please, don't see me as placing blame on anyone but myself. Still the reasons for me not doing a rewrite-from-scratch stand.]]>
+<![CDATA[16:24 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[If that different design has been advocated even _before_ StringNg]]>
+<![CDATA[16:25 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Whether you are going to finish the project or not is a separate issue.]]>
+<![CDATA[16:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[You don't have to do a rewrite from scratch]]>
+<![CDATA[16:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[the path forward shouldn't be that]]>
+<![CDATA[16:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[the path forward should be]]>
+<![CDATA[16:25 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[That is true as well.]]>
+<![CDATA[16:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA["what have we learnt from this, now what should we pull in and in what order?"]]>
+<![CDATA[16:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA["What sized chunks"]]>
+<![CDATA[16:25 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA["What needs to happen elsewhere first before we pull in the next bits"]]>
+<![CDATA[16:26 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ that's exactly my point]]>
+<![CDATA[16:26 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[The point of your work kinkie, is not to throw it away, its to add to the "clue" that is the "squid project clue"]]>
+<![CDATA[16:26 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, the code you have now has the right pieces. If D&C wins, the pieces will need to be rearranged. Not a "from scratch rewrite".]]>
+<![CDATA[16:26 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[And part of clue is not just "use it or toss it"]]>
+<![CDATA[16:26 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[sometimes its "what not to do" as much as "What to do"]]>
+<![CDATA[16:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I've been through this string / buffer crap at least 3 times in various squid-2 branches]]>
+<![CDATA[16:28 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[nod]]>
+<![CDATA[16:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Its not something you get right first, and its certainly not something you toss all of your clue away each time]]>
+<![CDATA[16:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[You go "Hm, that didn't work, lets try another approach building on what I've done"]]>
+<![CDATA[16:28 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[in my eyes, the bits that we should steal right now is the refcounted backing buffer with minimal sugar, glue it into String, fix the String users right now so its not completely sucky, and then see where to go]]>
+<![CDATA[16:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Others disagree on the path forward, sure]]>
+<![CDATA[16:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but the point is, you can -start- with the bits you've written.]]>
+<![CDATA[16:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[heck, the svn branch I linked you to]]>
+<![CDATA[16:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[ended up using the buffer code I wrote in my last attempt, verbatim]]>
+<![CDATA[16:29 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but I did the String stuff differently]]>
+<![CDATA[16:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[hence why I managed to get refcounted NUL string sin like two tiny commits. :)]]>
+<![CDATA[16:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Rather than my -last- attempt, which was to fix all the current users of NUL Strings to -not- assume NUL termination]]>
+<![CDATA[16:30 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[That was too much to bite off in one chunk]]>
+<![CDATA[16:32 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ Yes thanks.]]>
+<![CDATA[16:33 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Glad to hear that.]]>
+<![CDATA[16:36 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[refcounted backing store, with a slicing & dicing thing ontop is defenitely the first step. Very useful foundation to build Strings, parsers etc ontop.]]>
+<![CDATA[16:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Well, the NUL termination puts an unfortunate halt on slicing/dicint]]>
+<![CDATA[16:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[slicing/dicing]]>
+<![CDATA[16:37 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Does it? See my squid-dev post earlier today.]]>
+<![CDATA[16:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[otherwise you may end up slicing up a buffer into a string, and said string may just have a NUL in the middle]]>
+<![CDATA[16:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[because some substring of it now has a NUL there]]>
+<![CDATA[16:37 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[And I'm saying, you haven't thought this through enough. :)]]>
+<![CDATA[16:37 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ you refer to a very specific corner-case]]>
+<![CDATA[16:38 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[If you slice/dice using NUL and then use the current codeabse but with NUL terminated refcounted buffers]]>
+<![CDATA[16:38 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Ah, that. Well.. \0 within string data is badness, but not a stopper.]]>
+<![CDATA[16:38 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, I agree with hno regarding foundation and I would add cow to that.]]>
+<![CDATA[16:38 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[all your subtsr operations suddenly turn into COW]]>
+<![CDATA[16:38 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[since strictly speaking, you -are- modifying the buffer]]>
+<![CDATA[16:38 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I would not cow at this level.]]>
+<![CDATA[16:38 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, no]]>
+<![CDATA[16:38 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[or you don't COW on slice/dice, and risk random overwrites]]>
+<![CDATA[16:39 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Or, you just go "thats too hard for pass one", and don't implement cheap substrings in the first pass]]>
+<![CDATA[16:39 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, we know how to implement cow so that it works and is safe. I do not think we should argue about that.]]>
+<![CDATA[16:39 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[in fact, COW for NUL terminated strings, with copy for new / substring]]>
+<![CDATA[16:39 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Most strings or buffers should be const imho.]]>
+<![CDATA[16:39 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[is probably the easiest thing]]>
+<![CDATA[16:39 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[except for the one producing it in the first place.]]>
+<![CDATA[16:39 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ sure. But if you're creating strings by referencing some backing buffer which you're parsing]]>
+<![CDATA[16:39 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[and? ]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ suddenly you're breaking the expectation that once you have a reference it won't change]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ because the parser may scribble further NULs inside substrs]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[for example]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[in the current parser]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and certainly in logging]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[a bunch of stuff works on -lines-, not fields]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[So you create a line]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[you get one str with a \0 at the end]]>
+<![CDATA[16:40 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[then you further parse that buffer into field/value]]>
+<![CDATA[16:41 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[ok, then you end up with two \0 terminated strings in that buffer, but the original line string now has a \0 in the middle]]>
+<![CDATA[16:41 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, cow will address all that. The code can then be made more efficient to reduce COW invocations.]]>
+<![CDATA[16:41 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Yes. But I don't consider that a problem. It's only a problem if there is multiple references before you started adding those \0s..]]>
+<![CDATA[16:41 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Sure]]>
+<![CDATA[16:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ and this is my point]]>
+<![CDATA[16:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ that code isn't very sensible]]>
+<![CDATA[16:41 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ it may be sensible right now, but having to add that as a 'catch' in the API is going to trip up people later on]]>
+<![CDATA[16:42 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[We need better foundation to make it sensible, IMO.]]>
+<![CDATA[16:42 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ this doesn'te ven begin to touch on the actual issue surrounding trying to pull that move]]>
+<![CDATA[16:42 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[You want to make it sensible using old foundation. We will never agree on that.]]>
+<![CDATA[16:42 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ which is 'how do I grestructure the client/http code to actually -give- the parser a buffer it can refcount in the first place"]]>
+<![CDATA[16:42 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ except that _I_ have working code you can look at and evaluate right now. :)]]>
+<![CDATA[16:43 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ everyone else is just talking. :)]]>
+<![CDATA[16:43 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Well, there is a clear distinction between immutable strings and writeable strings.]]>
+<![CDATA[16:43 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, you are not the only person in the world working with code.]]>
+<![CDATA[16:43 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ ok, let me rephrase. I'm the only one with public code right now based on some Squid version, which he's tested, and is sharing with everyone.]]>
+<![CDATA[16:44 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, and we cannot copy the code you did, so it is of marginal value.]]>
+<![CDATA[16:44 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ this isn't the first time someone's done this to Squid. But I don't see any other public codebases.]]>
+<![CDATA[16:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Of course you can]]>
+<![CDATA[16:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[You'd be surprised how much of it you -can- copy]]>
+<![CDATA[16:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Half of the work is actually tidying up the damned users of the code in the first place]]>
+<![CDATA[16:44 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[as I keep saying. :)]]>
+<![CDATA[16:44 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Patches for Squid3 are welcome.]]>
+<![CDATA[16:45 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ Exacly, and that part is very hard for anyone but you to copy.]]>
+<![CDATA[16:45 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I'm not going to head down a path with Squid-3 which is going to make things unstable, until people stop making it unstable.]]>
+<![CDATA[16:45 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I've said this before.]]>
+<![CDATA[16:45 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Right. So let's stop arguing about it. It is a dead end.]]>
+<![CDATA[16:45 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I've offered to help kinkie identify and work on bits of the codebase which use String incorrectly, and if thats the path forward, then I'll go with that]]>
+<![CDATA[16:46 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[That is a path forward, no matter what happens with StringNg.]]>
+<![CDATA[16:46 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And I am not against that "as such" but I am focusing on String issues right now.]]>
+<![CDATA[16:46 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Because kinkie needs an answer.]]>
+<![CDATA[16:47 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ and my concern isn't that its a path forward, it's that I hold that much, much higher than any actual decisions on what a replacement buffer/string backend should look like.]]>
+<![CDATA[16:47 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And I do not want to give him "do something else for 5 month" answer.]]>
+<![CDATA[16:47 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ Is eem to be singular here.]]>
+<![CDATA[16:47 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ if he's willing to work with me on tidying up some of the busted things to do with String, then I'm happy to]]>
+<![CDATA[16:47 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ he's said before that he doesn't think that working on String is the path forward, so we disagree there]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[well, he wants to commit it!]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[If he does not, we should not be wasting time rererereviewing that code and arguing about it.]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[adri, alex: those are parallel paths]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I'd like to commit StringNg so that *new* code can start using it.]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[no]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[argh!]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Then for adoption there's a multi-stragetegy]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[There you go]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ look.]]>
+<![CDATA[16:48 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[ok]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I'm not going to agree with that]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[String users need to be sanitized so that they can be converted.]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I don't thing new code should be using it right now]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Committing will allow more developers to]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ I don't get you. What is the problem you try to highlight?]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[- fix what's broken to StringNg rather than tell me how to do it, me misunderstanding and misimplementing]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ there's lots of problems, all to do with the order people are attacking this]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[- get to work themselves on comverting what they see as useful]]>
+<![CDATA[16:49 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, _and_ writing new code using correct APIs]]>
+<![CDATA[16:50 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[that do not need to be converted a few months later.]]>
+<![CDATA[16:50 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ _I_ would like to see the refcounted buffer stuff go in, and for the few stupid uses of String to be unstupidified]]>
+<![CDATA[16:50 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I already told it, I would _love_ if someone else fixed what I've broken in StringNg.]]>
+<![CDATA[16:50 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[anyone against what adri just said?]]>
+<![CDATA[16:50 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ I'm worried that if new code is added and used, whilst ther'es another two ways of doing String, we're never goign to end up with -one- majority way]]>
+<![CDATA[16:51 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ if we find out that some incorrect assumptions were made, then suddenly you have to try and fix all the new code which uses StringNg]]>
+<![CDATA[16:51 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, I agree with the first part: "good API in, bad code polished"]]>
+<![CDATA[16:51 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[  I volunteered (and still do) to work with Adri to that end]]>
+<![CDATA[16:51 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ i don't think adding in another String API in its entirety is the way to go]]>
+<![CDATA[16:51 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ I don't think that having new code -use- the new APIs is the way to go]]>
+<![CDATA[16:52 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And those I disagree with.]]>
+<![CDATA[16:52 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ I think that converting over the mess we have, and using it very restrictively, to achieve a small set of goals (tidy up the String users, which need to happen anyway; parsing, which needs to happen aanyway)]]>
+<![CDATA[16:52 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[for some definition of "entirety"]]>
+<![CDATA[16:52 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ and then standing back, looking at what was done, and re-evaluating]]>
+<![CDATA[16:52 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ is the way to go.]]>
+<![CDATA[16:52 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ because I've seen ever ysingle time someone tries introducingv some new thing and then use it where -they- see fit]]>
+<![CDATA[16:53 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[A agree with the principle, but see little choice here as a moving directly to the "right" String is faily major and potentially disruptive.]]>
+<![CDATA[16:53 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ its completely stupid]]>
+<![CDATA[16:53 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ and ends up breaking stuff which takes a lot of developer time to fix]]>
+<![CDATA[16:53 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ in ways which the people working on it to start with didn't think about or didn't test, because they were working in -their- areas on stuff -they- saw interesting]]>
+<![CDATA[16:53 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[hno:]]></methodname><![CDATA[ and didn't see how it broke the bigger picture]]>
+<![CDATA[16:54 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, what do you mean by "moving directly to the right String"?]]>
+<![CDATA[16:55 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ Getting String fixed in a way that makes it behave like StringNg, eleminating the need of StringNg, all in one go.]]>
+<![CDATA[16:55 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[That would be bad.]]>
+<![CDATA[16:55 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[instead of a transition from String to StringNg.]]>
+<![CDATA[16:55 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[So let's try to split this into three questions:]]>
+<![CDATA[16:56 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[My vote (once the API discussion settles) is to rename String to ObsoleteString, and merge the new one as String.]]>
+<![CDATA[16:56 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[1) Do we need to polish bad String users? Yes.]]>
+<![CDATA[16:56 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[with a project goal of eleminating ObsoleteStrng.]]>
+<![CDATA[16:56 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[1. Yes.]]>
+<![CDATA[16:56 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[2) Do we commit new Buffer/String code. TBD.]]>
+<![CDATA[16:57 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[3) Do we immediately replace all old String users with code that uses new String. No.]]>
+<![CDATA[16:57 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[So I think the only place where adri and I disagree is #2.]]>
+<![CDATA[16:57 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[4) Should new code and stuff outside of what uses String use the new API?]]>
+<![CDATA[16:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I want to make a decision and commit the new API. He wants #1 to happen first.]]>
+<![CDATA[16:58 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I disageree on that too]]>
+<![CDATA[16:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[adri, that is part of #2. If something is committed, it should be used, of course.]]>
+<![CDATA[16:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[There is no point in committing something we are not going to use.]]>
+<![CDATA[16:59 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ yes and no.. it could be committed so that everyone has a better chance to fix what's broken in it before using it]]>
+<![CDATA[16:59  ]]><token><![CDATA[* ]]></token><![CDATA[adri sighs]]>
+<![CDATA[16:59 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, you do not know what is broken if you are not using it]]>
+<![CDATA[16:59 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Unless you want to work on my branch - which is of course also fine]]>
+<![CDATA[17:00 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[misdesign for instance.. things I'm not able to understand]]>
+<![CDATA[17:00 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, you do not know what is broken if you are not using it]]>
+<![CDATA[17:00 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[especially things like inferior design.]]>
+<![CDATA[17:01 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ there's also misimplementation issues.. I've had quite a few false steps where I misunderstood what you were objecting to, and tried fixing the wrong thing]]>
+<![CDATA[17:01 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Ok. here is a proposal. There is three tasks, all which need to be done.]]>
+<![CDATA[17:01 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Sure, but just committing code that nobody uses will not find any misimplementation issues.]]>
+<![CDATA[17:02 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[1. As above.]]>
+<![CDATA[17:02 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[s/misimplementation/misdesign/]]>
+<![CDATA[17:02 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[2. Code needs to start using StringNg. Before merge.]]>
+<![CDATA[17:03 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[3. these reviews combined with 2 should highlught any possible misdesigns..]]>
+<![CDATA[17:03 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[(well most..)]]>
+<![CDATA[17:04 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[1 & 2 can both start, and is independent.]]>
+<![CDATA[17:04 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Great, so whats your escape plan?]]>
+<![CDATA[17:04 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I am not against your proposal, but I think we need to agree on the initial design now, before #2 gets too far.]]>
+<![CDATA[17:05 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Kinkie is already reluctant to redo stuff and will be even more reluctant to redo stuff after converting a lot of code to use StringNg]]>
+<![CDATA[17:05 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[understandably so!]]>
+<![CDATA[17:06 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I'm reluctant to restart from scratch. If changes need to be applied, I'll gladly apply them.]]>
+<![CDATA[17:06 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[It is all relative. Still I think the decision on the initial class hierarchy should happen now.]]>
+<![CDATA[17:07 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Why do you need to commit -all- of it right now?]]>
+<![CDATA[17:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno plan does not call for commits right now.]]>
+<![CDATA[17:07 ]]><methodname><![CDATA[< adri> ]]></methodname><methodname><![CDATA[16:]]></methodname><![CDATA[02 < hno> 2. Code needs to start using StringNg. Before merge.]]>
+<![CDATA[17:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[See, _before_ merge.]]>
+<![CDATA[17:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Meaning that it is done on a branch.]]>
+<![CDATA[17:08 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[To stress-test the initial design.]]>
+<![CDATA[17:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[What I'm saying is]]>
+<![CDATA[17:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Don't even -do- that]]>
+<![CDATA[17:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Just leave the StringNg stuff alone]]>
+<![CDATA[17:08 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Yes, we know. You have a different plan.]]>
+<![CDATA[17:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Grab just the buffer stuff]]>
+<![CDATA[17:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[stuff it into String, where it already assumes a NUL termintaed C buffer, so you're nto actually changing semantics]]>
+<![CDATA[17:08 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[The amount of new code is minimised]]>
+<![CDATA[17:09 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[Do the changes you have to do -anywa- to the main code to tidy things up]]>
+<![CDATA[17:09 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[adri:]]></methodname><![CDATA[ the fact is that if the 'Universal String' approach goes through, there is no 'buffer stuff', everything happens within the Universal String.]]>
+<![CDATA[17:09 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[1 should be committed, incrementally.]]>
+<![CDATA[17:09 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[and the 'buffer stuff' is almost a dumb struct.]]>
+<![CDATA[17:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[and I'm saying we can blissfully ignore that right now to get a fraction of your stuff in, right now]]>
+<![CDATA[17:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[so it can be used with minimal changes by a lot of the core code, right now]]>
+<![CDATA[17:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[without changing semantics of -anything-]]>
+<![CDATA[17:10 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And if D&C gets through, I am not 100% against doing/committing Buffer alone first, although I think that would not be the best option.]]>
+<![CDATA[17:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[do the needed changing]]>
+<![CDATA[17:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[but limit the use of the new code to -just- String]]>
+<![CDATA[17:10  ]]><token><![CDATA[* ]]></token><![CDATA[hno has to go. Dinner time.]]>
+<![CDATA[17:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[anyway]]>
+<![CDATA[17:10 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[I have to go do paid work]]>
+<![CDATA[17:11 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[And try to eliminat ethe last couple memcpy()'s and *printf()s in the critical path]]>
+<![CDATA[17:11 ]]><methodname><![CDATA[< adri> ]]></methodname><![CDATA[So I know what stuff needs stabbing in the longer term]]>
+<![CDATA[17:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[In the meantime I'll open a feature-branch to start and work on (1), as it's an independent issue.]]>
+<![CDATA[19:05 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Hi all]]>
+<![CDATA[19:19 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, IIRC, you were wondering if regular Sunday chats are a good idea. FWIW, I would prefer a weekday chat and may have to miss many weekend chats.]]>
+<![CDATA[19:20 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[sure.. the idea is, let's see if we can make up some more-or-less-regular schedule]]>
+<![CDATA[19:20 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[A brief weekly chat would be neat.]]>
+<![CDATA[19:21 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[fine by me. We need to agree on day and time, hopefully accomodating as many people as possible]]>
+<![CDATA[19:44  ]]><token><![CDATA[* ]]></token><![CDATA[hno is back.]]>
+<![CDATA[19:47 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Seen recent emails on squid-dev? Can we agree on the step 2 of the plan and the initial class hierarchy?]]>
+<![CDATA[19:47 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[welcome]]>
+<![CDATA[19:48 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Let me summarize what I understood of today's discussion and mails, so that I know how to move forward.]]>
+<![CDATA[19:49 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[1. I open a new feature-branch off trunk, dedicated to fixing OldString users. This will get aggressively merged so that stuff can be tested. Adrian will help me out with the nastier spots.]]>
+<![CDATA[19:49 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[jwestfall:]]></methodname><![CDATA[ Initial reaction is that most likely storeUpdate() probably needs to be throttled allowing the swapout or internal client(when chained) to catch up..]]>
+<![CDATA[19:50 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[kinkie:]]></methodname><![CDATA[ 1. Yes.]]>
+<![CDATA[19:50 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Some parts of the lower-layers of StringNg are sane under case 'UniversalString' and 'D&C (note)'. I can thus concentrate on those parts, applying some of the remarks Alex already sent me.]]>
+<![CDATA[19:51 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Yes. And when satisfied send those for review & merge again.]]>
+<![CDATA[19:51 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Ok.]]>
+<![CDATA[19:51 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Re 1: it may require extending the OldString API somewhat, without changing its innards significantly.]]>
+<![CDATA[19:52  ]]><token><![CDATA[* ]]></token><![CDATA[hno sent a mail with more detailed producer use cases some minutes ago.]]>
+<![CDATA[19:52  ]]><token><![CDATA[* ]]></token><![CDATA[kinkie checks]]>
+<![CDATA[19:52 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[haven't gotten it yet.]]>
+<![CDATA[19:53 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[The question: UniversalString or D&C still stands, but this strategy gives everyone more time to decide the best option forward.]]>
+<![CDATA[19:54 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[It's about more than just String..]]>
+<![CDATA[19:55 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[it's also about MemBuf, and lots of places where we still use "char *"...]]>
+<![CDATA[19:55 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[and general way of design..]]>
+<![CDATA[19:55 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Yes.]]>
+<![CDATA[19:55 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[In time, I hope most of those will just be converted away.]]>
+<![CDATA[19:56 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[That 'more' part is the part I'm the most unfamiliar with, so I'll rely on the Team to define the best way forward. I hope that the discussion won't die off now to return in full force at the next merge request]]>
+<![CDATA[19:56 ]]><methodname><![CDATA[< jwestfall> ]]></methodname><![CDATA[hi hno]]>
+<![CDATA[19:56 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[We need a well defined foundation, and then start the migration onto that..]]>
+<![CDATA[19:57 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[and getting rid of lots of legacy (OldString, MemBuf, strdup() etc..)]]>
+<![CDATA[19:57 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[We need to make that decision.]]>
+<![CDATA[19:58 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ Which one?]]>
+<![CDATA[19:58 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[moving forward, or staing in the worst position?]]>
+<![CDATA[19:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Step 1 is not blocked on it, but we need to decide on the set of "foundation" classes]]>
+<![CDATA[19:59 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And knowing the future foundation would help to avoid wrong changes in step 1 as well.]]>
+<![CDATA[20:00 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[1 is pretty isolated in it self, and likelyhood for wrong changes is low. But there is a significant risk that many areas touched in 1 then goes away or gets rewritten anyway.]]>
+<![CDATA[20:00 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[So, we need to decide between Unified String and D&C (unless there are other design choices offered).]]>
+<![CDATA[20:00 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[but 1 prepares te path.]]>
+<![CDATA[20:01 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Right. A lot of work in #1 may end up being a waste, but I am not against that step, especially if it makes Adrian happier]]>
+<![CDATA[20:01 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I kind of assume that everything touched in #1 will have to be re-touched in #2. But I don't mind that really]]>
+<![CDATA[20:02 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[It makes 2 easier, as there is a more uniform codebase to deal with.]]>
+<![CDATA[20:02 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[yes]]>
+<![CDATA[20:02 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[My focus is on the classes at the moment. Kinkie and Adrian can handle #1 on their own, but they cannot handle #2.]]>
+<![CDATA[20:02 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[AND it requires not to think about too many corner cases.]]>
+<![CDATA[20:02 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ yes]]>
+<![CDATA[20:03 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[(I'm speaking for myself, Adiran is certainly more than able to handle his stuff)]]>
+<![CDATA[20:05 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[My view doesn't really fit either of UniveralBuffer or D&C I think. And I don't quite get the Buffer in D&C..]]>
+<![CDATA[20:07 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[but it's more aligned with D&C than UniversalBuffer I suppose.]]>
+<![CDATA[20:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Buffer is your Buffer, region of a memory area. (memory area, offset, size). ]]>
+<![CDATA[20:07 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ "works with Blob as a whole: not areas"]]>
+<![CDATA[20:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[But see (note)]]>
+<![CDATA[20:08 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[With (note), the area code is moved to Buffer, and it starts matching your Buffer]]>
+<![CDATA[20:08 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[ok. So D&C is now the "possible variation" version?]]>
+<![CDATA[20:10 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I guess. To make it easier to reach a consensus]]>
+<![CDATA[20:13 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Then the difference between UniversalBuffer and D&C is how much to subclass Buffer into special-purpose classes for specific tasks, all inheriting Buffer, right?]]>
+<![CDATA[20:13 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[as it is now String holds Buffer, doesn't inherit it.]]>
+<![CDATA[20:14 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, right]]>
+<![CDATA[20:14 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, does not matter]]>
+<![CDATA[20:15 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[ok]]>
+<![CDATA[20:17 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[On that I am pretty neutral as long as casting to/from Buffer is a cheap operation.]]>
+<![CDATA[20:18 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[so actually I am more in the UniversalBuffer camp I guess. ]]>
+<![CDATA[20:19 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[traceroute from squid-cache.org:  2  12.116.159.125 (12.116.159.125)  170.575 ms  181.820 ms  158.040 ms]]>
+<![CDATA[20:19 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[whoa... reminds me of the 56k modem days]]>
+<![CDATA[20:20 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[OK. So do we go with UniBuffer?]]>
+<![CDATA[20:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, how we will write I/O code that needs to read, append, consume? See my email.]]>
+<![CDATA[20:21 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Would not a custom buffer be better for that than one-size-fits-all?]]>
+<![CDATA[20:22 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[With UniBuffer, the code itself will have to deal with allocation of new buffers...]]>
+<![CDATA[20:22 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[As long as it's "refcounted Blob" + "Buffer with offset,length" I am happy. Don't care if Buffer is subclassed to special-purpose classes adding additional methods or one large jumo-class with all different operations we may need...]]>
+<![CDATA[20:28 ]]><methodname><![CDATA[< jwestfall> ]]></methodname><![CDATA[hno any ideas on how to throttle the store update?]]>
+<![CDATA[20:31 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[OK. Since nobody is pushing hard for D&C, let's do UniBuffer]]>
+<![CDATA[20:32 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[nobody but me, I guess]]>
+<![CDATA[20:36 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ it's not that. for me it's that I don't see the advantage in the added complexity. Changing from one model to the other doesn't seem THAT hard, so the complexity may be added later if the need is there.]]>
+<![CDATA[20:36 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[But again, I trust in the Team to choose what's right]]>
+<![CDATA[20:38 ]]><methodname><![CDATA[< jwestfall> ]]></methodname><![CDATA[i imagine we need something like if(state->oldentry->mem_obj->inmem_hi - storeLowestMemReaderOffset(state->oldentry) > Config.readAheadGap) { stop reading } in storeUpdateCopy()]]>
+<![CDATA[20:39 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, it would be quite hard to split later.]]>
+<![CDATA[20:39 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[because the user code will be written to morph meanings together]]>
+<![CDATA[20:40 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[but this is not a Huge Deal for me. I can live with One Buffer For All. I might add custom buffers for I/O, but their use would be localized to low-level I/O code.]]>
+<![CDATA[20:40 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[that's a possibility.]]>
+<![CDATA[20:41 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[OR we may add specialized buffers and handy cast functions.. in the end it's all a (char*,len) or array of (char*,len)...]]>
+<![CDATA[20:42 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I am more worried, currently, about the smart heuristics you mentioned recently. Please keep the code as simple and straight as possible. Correctness comes before optimizations as long as there is room left for the latter.]]>
+<![CDATA[20:42 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[just see SBuf::realloc_strategy(). It's all in there]]>
+<![CDATA[20:43 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[maybe 20 LOC altogether]]>
+<![CDATA[20:43 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, that kind of "in the end" thinking is a bad idea for OO]]>
+<![CDATA[20:44 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I will check it out once you merge and apply my StringNg comments.]]>
+<![CDATA[20:44 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[So you would object to a UniversalBuffer foo=SpecializedBuffer.convertToUniVersalBuffer()?]]>
+<![CDATA[20:44 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ ok]]>
+<![CDATA[20:44 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ I don't see much difference between UniBuffer and D&C with the note..]]>
+<![CDATA[20:47 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[if you want a preference from me then my preference is specialized classes, and not everything jumbled togeter in a big mess. Blob, Buffer referencing Blob. String being a child of Buffer. Producers sitting somewhere inbetween as explained on squid-dev.]]>
+<![CDATA[20:49 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, that question lacks context.]]>
+<![CDATA[20:50 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, then why are you voting for UniBuffer?]]>
+<![CDATA[20:50 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, your vote is the deciding one here. There are less than two votes for D&C and less than two votes for UniBuffer.]]>
+<![CDATA[20:51 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[We have to pick one and run with it.]]>
+<![CDATA[20:52 ]]><methodname><![CDATA[< kinkie> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ context is "general OOP". If you have a problem with two implementation of a mostly similar interface, one better in some scenarios and the other in others, what do you do? Try to merge them? Make them implementations of a pure-virtual and use static_cast? Or create a factory method in each to be used when appropriate? Just curious]]>
+<![CDATA[20:56 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[The question is too general to answer, sorry.]]>
+<![CDATA[20:56 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Refcounted Blob + Buffer with offset,lenth is my vote. Today I don't care if there is one single Buffer class, or a class hierarchy for special purposes, at this stage I consider that more of an implementation detail that will give itself once things starts to be reasonably implemented. That's pretty easy to swich between as needed.]]>
+<![CDATA[20:57 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I disagree on the switch part.]]>
+<![CDATA[20:57 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, since the part of the design you vote for is common to both options, your vote does not help :-)]]>
+<![CDATA[20:58 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[But if subclasses is used, then it should be restricted to adding new methods. Any design needing to venture into virtual methods should be avoided on Buffer.]]>
+<![CDATA[20:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[I agree with no virtual in Buffer]]>
+<![CDATA[20:58 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Adding data members should be OK though.]]>
+<![CDATA[21:01 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Yes and no. Means it needs to be dynamically casted (copied), including blob refcount bumps. Not a problem if done right, but also easy to get wrong (in terms of performance, not code sanity).]]>
+<![CDATA[21:01 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[kinkie, to sum it up, it looks like you should merge String back into Buffer. ]]>
+<![CDATA[21:03 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[Ok. I'll add an edited log from today to the wiki with the contents of Sunday's discussion, and then then work on.]]>
+<![CDATA[21:03 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, probably does not matter for now, but I do not think there would be casting complications or performance overheads from adding data members to Buffer kids. Clearly, once such a kid is converted to Buffer, the added functionality would disappear. And that is OK.]]>
+<![CDATA[21:04 ]]><methodname><![CDATA[< kinkie> ]]></methodname><![CDATA[I need to be off for 3 hours or so.. see you later]]>
+<![CDATA[21:05 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Buffer forTheRestOfTheCode; IoBuffer forThisIo; ...; forTheRestOfTheCode = forThisIo; // should work fine]]>
+<![CDATA[21:05 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[This is just a sketch, of course.]]>
+<![CDATA[21:07 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Performance cost = one extra refcounted "copy".]]>
+<![CDATA[21:07 ]]><methodname><![CDATA[< hno> ]]></methodname><methodname><![CDATA[rousskov:]]></methodname><![CDATA[ Just afraid there will be frequent for (something) { SpecialBuffer forMe = SomeBufferIFoundSomewhere; operations on forMe.. }]]>
+<![CDATA[21:08 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[But even that is pretty cheap.]]>
+<![CDATA[21:09 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[And probably better overall than spreading "special state" all over the place while manipulating a generic Buffer]]>
+<![CDATA[21:09 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Let's see how it plays out.]]>
+<![CDATA[21:10 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[First steps is the same anyway, and is imho the hard part.]]>
+<![CDATA[21:10 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[Agreed]]>
+<![CDATA[21:11 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, how does your schedule look now? Will you be able to resume Rock Store work soon?]]>
+<![CDATA[21:11 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[I prefer deferring the discussion on UniBuffer vs hierarchy until there is something meaningful other than plain String to discuss around.]]>
+<![CDATA[21:11 ]]><methodname><![CDATA[< hno> ]]></methodname><![CDATA[Yes.]]>
+<![CDATA[21:12 ]]><methodname><![CDATA[< rousskov> ]]></methodname><![CDATA[hno, OK regarding deferring.]]>
+</programlisting><!--rule (<hr>) is not applicable to DocBook--><para> Discuss this page using the &quot;Discussion&quot; link in the main menu </para></article>

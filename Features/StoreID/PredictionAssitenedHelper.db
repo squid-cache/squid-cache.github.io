@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>Features/StoreID/PredictionAssitenedHelper</title><revhistory><revision><revnumber>3</revnumber><date>2017-05-23 23:57:22</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>2</revnumber><date>2017-05-23 23:55:04</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>1</revnumber><date>2017-05-23 23:00:50</date><authorinitials>Eliezer Croitoru</authorinitials></revision></revhistory></articleinfo><section><title>squid.comf example</title><screen><![CDATA[acl GET method GET
+]]><![CDATA[
+acl rewritedoms dstdomain .googlevideo.com
+]]><![CDATA[
+store_id_program /opt/bin/ytgv-storeid.rb
+store_id_children 40 startup=10 idle=5 concurrency=0
+store_id_access allow rewritedoms GET
+store_id_access deny all
+]]><![CDATA[
+acl youtube dstdomain www.youtube.com
+acl ytwatch urlpath_regex watch\?
+icap_enable on
+]]><![CDATA[
+icap_service service_req reqmod_precache icap://127.0.0.1:2344/yt2upn/ bypass=on
+adaptation_access service_req allow youtube GET ytwatch
+adaptation_access service_req deny all]]></screen></section><section><title>Youtube Google video url Prediction assitended Helper Example</title><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/ruby]]></lineannotation>
+<lineannotation><![CDATA[# encoding: utf-8]]></lineannotation>
+
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[rubygems]]></phrase><phrase><![CDATA["]]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[net/http]]></phrase><phrase><![CDATA["]]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[open-uri]]></phrase><phrase><![CDATA["]]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['timeout']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[redis]]></phrase><phrase><![CDATA["]]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['syslog']]></phrase>
+
+<token><![CDATA[class]]></token><![CDATA[ ]]><methodname><![CDATA[Cache]]></methodname>
+<![CDATA[        ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[initialize]]></methodname>
+<![CDATA[        ]]><methodname><![CDATA[@host]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[127.0.0.1]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[        ]]><methodname><![CDATA[@db]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[0]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[        ]]><methodname><![CDATA[@port]]></methodname><![CDATA[ = 6379]]>
+<![CDATA[        ]]><methodname><![CDATA[@redis]]></methodname><![CDATA[ = ]]><symbol><![CDATA[Redis]]></symbol><![CDATA[.]]><methodname><![CDATA[new]]></methodname><![CDATA[(]]><phrase><![CDATA[:host]]></phrase><![CDATA[ => ]]><methodname><![CDATA[@host]]></methodname><![CDATA[, ]]><phrase><![CDATA[:port]]></phrase><![CDATA[ => ]]><methodname><![CDATA[@port]]></methodname><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[@redis]]></methodname><![CDATA[.]]><methodname><![CDATA[select]]></methodname><![CDATA[ ]]><methodname><![CDATA[@db]]></methodname>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<![CDATA[        ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[setvid]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[,]]><methodname><![CDATA[vid]]></methodname><![CDATA[)]]>
+<![CDATA[           ]]><lineannotation><![CDATA[#return @redis.setex  "md5(" + vid+ ")",1200 ,url]]></lineannotation>
+<![CDATA[           ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[true]]></token><![CDATA[;]]>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<![CDATA[        ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[geturl]]></methodname><![CDATA[(]]><methodname><![CDATA[vid]]></methodname><![CDATA[)]]>
+<![CDATA[           ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[@redis]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[md5(]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ + ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[)]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<![CDATA[        ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[getytidfromgvid]]></methodname><![CDATA[(]]><methodname><![CDATA[vid]]></methodname><![CDATA[)]]>
+<![CDATA[           ]]><token><![CDATA[id]]></token><![CDATA[ = ]]><methodname><![CDATA[@redis]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><methodname><![CDATA[vid]]></methodname><![CDATA[)]]>
+<![CDATA[           ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Google video check getytidfromgvid[]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[vid]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[] result []]></phrase><phrase><![CDATA[#{]]></phrase><token><![CDATA[id]]></token><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[           ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[id]]></token>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<![CDATA[        ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[sfdlid]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                        ]]><methodname><![CDATA[m]]></methodname><![CDATA[ = ]]><methodname><![CDATA[url]]></methodname><![CDATA[.]]><methodname><![CDATA[match]]></methodname><![CDATA[(]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^http:]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[.*]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.dl]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.sourceforge]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.net]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[(.*)]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[)]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[[1]]]>
+<![CDATA[                                ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[[1]]]>
+<![CDATA[                        ]]><token><![CDATA[else]]></token>
+<![CDATA[                                ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[nil]]></token>
+<![CDATA[                        ]]><token><![CDATA[end]]></token>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<![CDATA[        ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[ytimg]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                ]]><methodname><![CDATA[m]]></methodname><![CDATA[ = ]]><methodname><![CDATA[url]]></methodname><![CDATA[.]]><methodname><![CDATA[match]]></methodname><![CDATA[(]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[.*]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.ytimg.com]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[(.*]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.jpg|.*]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.gif|.*]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.js)]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[)]]>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[[1]]]>
+<![CDATA[                        ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[[1]]]>
+<![CDATA[                ]]><token><![CDATA[else]]></token>
+<![CDATA[                        ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[nil]]></token>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<![CDATA[        ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[googlevideoYouTubeID]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Google video check []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[url]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+
+<![CDATA[                ]]><token><![CDATA[id]]></token><![CDATA[ = ]]><methodname><![CDATA[getgvid]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Google video check getgvid[]]></phrase><phrase><![CDATA[#{]]></phrase><token><![CDATA[id]]></token><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+
+<![CDATA[                ]]><methodname><![CDATA[itag]]></methodname><![CDATA[ = ]]><methodname><![CDATA[getgvitag]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                ]]><methodname><![CDATA[range]]></methodname><![CDATA[ = ]]><methodname><![CDATA[getgvrange]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><token><![CDATA[id]]></token><![CDATA[ == ]]><token><![CDATA[nil]]></token>
+<![CDATA[                        ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[nil]]></token>
+<![CDATA[                ]]><token><![CDATA[else]]></token>
+<![CDATA[                  ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ = ]]><methodname><![CDATA[getytidfromgvid]]></methodname><![CDATA[(]]><token><![CDATA[id]]></token><![CDATA[[3..-1])]]>
+<![CDATA[                  ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[nil]]></token><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ == ]]><token><![CDATA[nil]]></token><![CDATA[ ]]><token><![CDATA[or]]></token><![CDATA[ ]]><methodname><![CDATA[vid]]></methodname><![CDATA[.]]><methodname><![CDATA[size]]></methodname><![CDATA[ < 5]]>
+<![CDATA[                  ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[id=]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[+]]><methodname><![CDATA[vid]]></methodname>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[itag]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ = ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ + ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[&]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[itag]]></methodname>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[range]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ = ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ + ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[&]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[range]]></methodname>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+
+<![CDATA[                ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[vid]]></methodname>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<![CDATA[        ]]><token><![CDATA[private]]></token>
+<![CDATA[                ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[getgvid]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                        ]]><methodname><![CDATA[m]]></methodname><![CDATA[ = ]]><methodname><![CDATA[url]]></methodname><![CDATA[.]]><methodname><![CDATA[match]]></methodname><![CDATA[(]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[(id]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[=[a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[%]+)]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[)]]>
+<![CDATA[                        ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[.]]><methodname><![CDATA[to_s]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+
+<![CDATA[                ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[getgvitag]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                        ]]><methodname><![CDATA[m]]></methodname><![CDATA[ = ]]><methodname><![CDATA[url]]></methodname><![CDATA[.]]><methodname><![CDATA[match]]></methodname><![CDATA[(]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[(itag]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[=[0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]+)]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[)]]>
+<![CDATA[                        ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[.]]><methodname><![CDATA[to_s]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+
+<![CDATA[                ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[getgvrange]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                        ]]><methodname><![CDATA[m]]></methodname><![CDATA[ = ]]><methodname><![CDATA[url]]></methodname><![CDATA[.]]><methodname><![CDATA[match]]></methodname><![CDATA[(]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[(range]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[=[0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]+)]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[)]]>
+<![CDATA[                        ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[.]]><methodname><![CDATA[to_s]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+
+<![CDATA[                ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[getgvredirect]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[                        ]]><methodname><![CDATA[m]]></methodname><![CDATA[ = ]]><methodname><![CDATA[url]]></methodname><![CDATA[.]]><methodname><![CDATA[match]]></methodname><![CDATA[(]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[(redirect]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[=)([a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]+)]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[)]]>
+<![CDATA[                        ]]><token><![CDATA[return]]></token><![CDATA[ (]]><methodname><![CDATA[m]]></methodname><![CDATA[.]]><methodname><![CDATA[to_s]]></methodname><![CDATA[ + ]]><symbol><![CDATA[Time]]></symbol><![CDATA[.]]><methodname><![CDATA[now]]></methodname><![CDATA[.]]><methodname><![CDATA[to_i]]></methodname><![CDATA[.]]><methodname><![CDATA[to_s]]></methodname><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[m]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[rewriter]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[                ]]><token><![CDATA[case]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname>
+<![CDATA[                ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^https?:]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[[a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.]+]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.googlevideo]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.com]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[videoplayback]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[?]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[                  ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Google video Match []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                  ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ = ]]><methodname><![CDATA[$cache]]></methodname><![CDATA[.]]><methodname><![CDATA[googlevideoYouTubeID]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[                  ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Google video Match VID []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[vid]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                  ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[http://ytgv.squid.internal/]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                  ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[url]]></methodname>
+<![CDATA[                ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^http:]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[[a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.]+]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.dl]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.sourceforge]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.net]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[.*]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[                  ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ = ]]><methodname><![CDATA[$cache]]></methodname><![CDATA[.]]><methodname><![CDATA[sfdlid]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[                  ]]><methodname><![CDATA[$cache]]></methodname><![CDATA[.]]><methodname><![CDATA[setvid]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[, ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[http://dl.sourceforge.net.squid.internal/]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[vid]]></methodname><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                  ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[http://dl.sourceforge.net.squid.internal/]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                  ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[url]]></methodname>
+<![CDATA[                ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^http:]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[[a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.]+]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.ytimg]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.com]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[(.*]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.jpg|.*]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.gif|.*]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.js)]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[                  ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ = ]]><methodname><![CDATA[$cache]]></methodname><![CDATA[.]]><methodname><![CDATA[ytimg]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[                  ]]><methodname><![CDATA[$cache]]></methodname><![CDATA[.]]><methodname><![CDATA[setvid]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[, ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[http://ytimg.squid.internal/]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[vid]]></methodname><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                  ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[http://ytimg.squid.internal/]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[vid]]></methodname><![CDATA[ != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                  ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[url]]></methodname>
+<![CDATA[                ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^quit.*]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[                  ]]><token><![CDATA[exit]]></token><![CDATA[ 0]]>
+<![CDATA[                ]]><token><![CDATA[else]]></token>
+<![CDATA[                 ]]><token><![CDATA[return]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><methodname><![CDATA[msg]]></methodname><![CDATA[)]]>
+<![CDATA[ ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[.]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[::]]><symbol><![CDATA[LOG_ERR]]></symbol><![CDATA[, ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[%s]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[, ]]><methodname><![CDATA[msg]]></methodname><![CDATA[)]]>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[eval]]></methodname>
+<![CDATA[        ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><token><![CDATA[gets]]></token>
+<![CDATA[        ]]><token><![CDATA[if]]></token><![CDATA[ (]]><methodname><![CDATA[request]]></methodname><![CDATA[ && (]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[match]]></methodname><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^[0-9]+]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[ ]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[))]]>
+<![CDATA[         ]]><methodname><![CDATA[conc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[         ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[true]]></token>
+<![CDATA[        ]]><token><![CDATA[else]]></token>
+<![CDATA[         ]]><methodname><![CDATA[noconc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[         ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[false]]></token>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[conc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[                ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ !]]><methodname><![CDATA[request]]></methodname>
+<![CDATA[                ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[[0] && ]]><methodname><![CDATA[request]]></methodname><![CDATA[[1]]]>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[original request []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[join]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><methodname><![CDATA[result]]></methodname><![CDATA[ = ]]><methodname><![CDATA[rewriter]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[[1])]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[result]]></methodname><![CDATA[ && (]]><methodname><![CDATA[result]]></methodname><![CDATA[.]]><methodname><![CDATA[size]]></methodname><![CDATA[ > 10)]]>
+<![CDATA[                          ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[result for request []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[join]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[], []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[result]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[]]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                          ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><methodname><![CDATA[request]]></methodname><![CDATA[[0] +]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ OK store-id=]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[result]]></methodname>
+<![CDATA[                        ]]><token><![CDATA[else]]></token>
+<![CDATA[                          ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><methodname><![CDATA[request]]></methodname><![CDATA[[0] +]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ ERR]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[                        ]]><token><![CDATA[end]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[modified response []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[url]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[url]]></methodname>
+<![CDATA[                ]]><token><![CDATA[else]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[original request [had a problem].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><methodname><![CDATA[request]]></methodname><![CDATA[[0] + ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ERR]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[modified response []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[url]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[url]]></methodname>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[noconc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[                ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ !]]><methodname><![CDATA[request]]></methodname>
+<![CDATA[                ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[[0]]]>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Original request []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[join]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><methodname><![CDATA[result]]></methodname><![CDATA[ = ]]><methodname><![CDATA[rewriter]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[[0])]]>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[result for request []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[join]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[], []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[result]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[]]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[result]]></methodname><![CDATA[ && (]]><methodname><![CDATA[result]]></methodname><![CDATA[.]]><methodname><![CDATA[size]]></methodname><![CDATA[ > 10)]]>
+<![CDATA[                                ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[OK store-id=]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[rewriter]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[[0])]]>
+<![CDATA[                        ]]><token><![CDATA[else]]></token>
+<![CDATA[                                ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ERR]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[                        ]]><token><![CDATA[end]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[modified response []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[url]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[url]]></methodname>
+<![CDATA[                ]]><token><![CDATA[else]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Original request [had a problem].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><methodname><![CDATA[url]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ERR]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[                        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[modified response []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[url]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[                        ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[url]]></methodname>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[validr?]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ (]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[ascii_only?]]></methodname><![CDATA[ && ]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[valid_encoding?]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[true]]></token>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[errorness line]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[false]]></token>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+
+
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[main]]></methodname>
+
+<![CDATA[        ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[.]]><methodname><![CDATA[open]]></methodname><![CDATA[(]]><phrase><![CDATA['ytgv.rb']]></phrase><![CDATA[, ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[::]]><symbol><![CDATA[LOG_PID]]></symbol><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Started]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+
+<![CDATA[        ]]><methodname><![CDATA[c]]></methodname><![CDATA[ = ]]><token><![CDATA[eval]]></token>
+
+<![CDATA[         ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[c]]></methodname>
+<![CDATA[          ]]><token><![CDATA[while]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><token><![CDATA[gets]]></token>
+<![CDATA[             ]]><methodname><![CDATA[conc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[validr?]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[          ]]><token><![CDATA[end]]></token>
+<![CDATA[         ]]><token><![CDATA[else]]></token>
+<![CDATA[          ]]><token><![CDATA[while]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><token><![CDATA[gets]]></token>
+<![CDATA[             ]]><methodname><![CDATA[noconc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[validr?]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[          ]]><token><![CDATA[end]]></token>
+<![CDATA[         ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<methodname><![CDATA[$debug]]></methodname><![CDATA[ = ]]><token><![CDATA[true]]></token>
+<methodname><![CDATA[$cache]]></methodname><![CDATA[ = ]]><symbol><![CDATA[Cache]]></symbol><![CDATA[.]]><methodname><![CDATA[new]]></methodname>
+<symbol><![CDATA[STDOUT]]></symbol><![CDATA[.]]><methodname><![CDATA[sync]]></methodname><![CDATA[ = ]]><token><![CDATA[true]]></token>
+
+<methodname><![CDATA[main]]></methodname>
+</programlisting></section></article>

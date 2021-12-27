@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>EliezerCroitoru/MgrInfoToJson</title><revhistory><revision><revnumber>3</revnumber><date>2017-02-09 22:56:18</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>Adding an original squid sample page</revremark></revision><revision><revnumber>2</revnumber><date>2017-02-09 22:45:38</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>Adding output example</revremark></revision><revision><revnumber>1</revnumber><date>2017-02-09 22:42:26</date><authorinitials>Eliezer Croitoru</authorinitials></revision></revhistory></articleinfo><itemizedlist><listitem><para>A ruby script to convert cache manager info page into a json format. </para></listitem><listitem><para>This is designed to help and collect data from squid-cache servers  to a central DB. </para></listitem><listitem><para>You will eventually just need to drop the json into the server with using a username and a password + server ID and the squid project will get some statistics. </para></listitem><listitem><para>License <ulink url="http://ngtech.co.il/license/">3-Clause BSD License</ulink> </para></listitem></itemizedlist><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/env ruby]]></lineannotation>
+
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[json]]></phrase><phrase><![CDATA["]]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['net/http']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['uri']]></phrase>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[open]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[)]]>
+<![CDATA[        ]]><symbol><![CDATA[Net]]></symbol><![CDATA[::]]><symbol><![CDATA[HTTP]]></symbol><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><symbol><![CDATA[URI]]></symbol><![CDATA[.]]><methodname><![CDATA[parse]]></methodname><![CDATA[(]]><methodname><![CDATA[url]]></methodname><![CDATA[))]]>
+<token><![CDATA[end]]></token>
+
+<methodname><![CDATA[host]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[localhost]]></phrase><phrase><![CDATA["]]></phrase>
+<methodname><![CDATA[port]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[3128]]></phrase><phrase><![CDATA["]]></phrase>
+<methodname><![CDATA[infourl]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[http://]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[host]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[port]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[/squid-internal-mgr/info]]></phrase><phrase><![CDATA["]]></phrase>
+
+<methodname><![CDATA[debug]]></methodname><![CDATA[ = ]]><token><![CDATA[false]]></token>
+<methodname><![CDATA[infopage]]></methodname><![CDATA[ = ]]><token><![CDATA[open]]></token><![CDATA[(]]><methodname><![CDATA[infourl]]></methodname><![CDATA[)]]>
+<token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[infopage]]></methodname><![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+
+<methodname><![CDATA[mainjson]]></methodname><![CDATA[ = {}]]>
+
+<methodname><![CDATA[namespace]]></methodname><![CDATA[ = ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA["]]></phrase>
+<methodname><![CDATA[intdatastruct]]></methodname><![CDATA[ = ]]><token><![CDATA[false]]></token>
+<methodname><![CDATA[infopage]]></methodname><![CDATA[.]]><methodname><![CDATA[each_line]]></methodname><![CDATA[ ]]><token><![CDATA[do]]></token><![CDATA[ |]]><methodname><![CDATA[line]]></methodname><![CDATA[|]]>
+<![CDATA[        ]]><token><![CDATA[case]]></token>
+<![CDATA[        ]]><token><![CDATA[when]]></token><![CDATA[ ]]><methodname><![CDATA[line]]></methodname><![CDATA[ =~ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^Internal Data Structures:]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[                ]]><token><![CDATA[p]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[line of internal data statement: ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+<![CDATA[                ]]><methodname><![CDATA[intdatastruct]]></methodname><![CDATA[ = ]]><token><![CDATA[true]]></token>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[[]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[chop]]></methodname><![CDATA[] == ]]><token><![CDATA[nil]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[[]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[chop]]></methodname><![CDATA[] = {}]]>
+<![CDATA[                        ]]><methodname><![CDATA[namespace]]></methodname><![CDATA[ = ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[chop]]></methodname>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<![CDATA[        ]]><token><![CDATA[when]]></token><![CDATA[ ]]><methodname><![CDATA[intdatastruct]]></methodname><![CDATA[ && ]]><methodname><![CDATA[line]]></methodname><![CDATA[ =~ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[t]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[                ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[line that starts with a tab which is no in the int data: ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+<![CDATA[                ]]><methodname><![CDATA[cleanline]]></methodname><![CDATA[ = ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[strip]]></methodname>
+<![CDATA[                ]]><token><![CDATA[p]]></token><![CDATA[ ]]><methodname><![CDATA[cleanline]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+<![CDATA[                ]]><methodname><![CDATA[data]]></methodname><![CDATA[ = ]]><methodname><![CDATA[cleanline]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname><![CDATA[(]]><phrase><![CDATA[' ']]></phrase><![CDATA[,2)]]>
+<![CDATA[                ]]><token><![CDATA[p]]></token><![CDATA[ ]]><methodname><![CDATA[data]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+<![CDATA[                ]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[[]]><methodname><![CDATA[namespace]]></methodname><![CDATA[][]]><methodname><![CDATA[data]]></methodname><![CDATA[[1].]]><methodname><![CDATA[strip]]></methodname><![CDATA[] = ]]><methodname><![CDATA[data]]></methodname><![CDATA[[0].]]><methodname><![CDATA[strip]]></methodname>
+<![CDATA[        ]]><token><![CDATA[when]]></token><![CDATA[ ]]><methodname><![CDATA[line]]></methodname><![CDATA[ =~ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^[]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[w]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[d]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[s]+]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[ && ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[chop]]></methodname><![CDATA[.]]><methodname><![CDATA[index]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) != ]]><token><![CDATA[nil]]></token><![CDATA[ && ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[).]]><methodname><![CDATA[size]]></methodname><![CDATA[ == 1]]>
+<![CDATA[                ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Line with that starts with a letter and has an index: ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+<![CDATA[                ]]><methodname><![CDATA[intdatastruct]]></methodname><![CDATA[ = ]]><token><![CDATA[false]]></token>
+<![CDATA[                ]]><methodname><![CDATA[data]]></methodname><![CDATA[ = ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[strip]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[data]]></methodname><![CDATA[[1] != ]]><token><![CDATA[nil]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[[]]><methodname><![CDATA[data]]></methodname><![CDATA[[0].]]><methodname><![CDATA[strip]]></methodname><![CDATA[] = ]]><methodname><![CDATA[data]]></methodname><![CDATA[[1].]]><methodname><![CDATA[strip]]></methodname>
+<![CDATA[                ]]><token><![CDATA[else]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[[]]><methodname><![CDATA[data]]></methodname><![CDATA[[0].]]><methodname><![CDATA[strip]]></methodname><![CDATA[] = []]]>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<![CDATA[        ]]><token><![CDATA[when]]></token><![CDATA[ ]]><methodname><![CDATA[line]]></methodname><![CDATA[ =~ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^[]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[w]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[d]+]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[                ]]><token><![CDATA[p]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[line that starts with a letter: ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+<![CDATA[                ]]><lineannotation><![CDATA[#set namespace]]></lineannotation>
+<![CDATA[                ]]><methodname><![CDATA[intdatastruct]]></methodname><![CDATA[ = ]]><token><![CDATA[false]]></token>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[[]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[strip]]></methodname><![CDATA[] == ]]><token><![CDATA[nil]]></token>
+<![CDATA[                        ]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[[]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[strip]]></methodname><![CDATA[] = {}]]>
+<![CDATA[                        ]]><methodname><![CDATA[namespace]]></methodname><![CDATA[ = ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[strip]]></methodname>
+<![CDATA[                ]]><token><![CDATA[end]]></token>
+<![CDATA[                ]]><lineannotation><![CDATA[#"Store Disk files open"]]></lineannotation>
+<![CDATA[                ]]><lineannotation><![CDATA[#]]></lineannotation>
+
+<![CDATA[        ]]><token><![CDATA[when]]></token><![CDATA[ ]]><methodname><![CDATA[line]]></methodname><![CDATA[ =~ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[t]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[ ]]><lineannotation><![CDATA[#&& !intdatastruct]]></lineannotation>
+<![CDATA[                ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[line with tab ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+<![CDATA[                ]]><lineannotation><![CDATA[#subspace]]></lineannotation>
+<![CDATA[                ]]><token><![CDATA[p]]></token><![CDATA[ ]]><methodname><![CDATA[line]]></methodname><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname>
+<![CDATA[                ]]><methodname><![CDATA[cleanline]]></methodname><![CDATA[ = ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[gsub]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><![CDATA[\t]]><phrase><![CDATA["]]></phrase><![CDATA[,]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[ ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+<![CDATA[                ]]><methodname><![CDATA[splittedline]]></methodname><![CDATA[ = ]]><methodname><![CDATA[cleanline]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+<![CDATA[                ]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[[]]><methodname><![CDATA[namespace]]></methodname><![CDATA[][]]><methodname><![CDATA[splittedline]]></methodname><![CDATA[[0].]]><methodname><![CDATA[strip]]></methodname><![CDATA[] = ]]><methodname><![CDATA[splittedline]]></methodname><![CDATA[[1].]]><methodname><![CDATA[strip]]></methodname>
+<![CDATA[                ]]><lineannotation><![CDATA[#p splittedline]]></lineannotation>
+<![CDATA[        ]]><token><![CDATA[else]]></token>
+<![CDATA[                ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[else case: ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[line]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[        ]]><token><![CDATA[end]]></token>
+
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[puts]]></token><![CDATA[ ]]><symbol><![CDATA[JSON]]></symbol><![CDATA[.]]><methodname><![CDATA[pretty_generate]]></methodname><![CDATA[(]]><methodname><![CDATA[mainjson]]></methodname><![CDATA[)]]>
+</programlisting><para>Output example: </para><screen><![CDATA[{
+  "Squid Object Cache: Version 3.5.24": {
+  },
+  "Build Info:": {
+  },
+  "Service Name: squid": {
+  },
+  "Start Time:\tWed, 08 Feb 2017 12:52:09 GMT": {
+  },
+  "Current Time:\tThu, 09 Feb 2017 22:45:29 GMT": {
+  },
+  "Connection information for squid:": {
+    "Number of clients accessing cache": "1",
+    "Number of HTTP requests received": "62",
+    "Number of ICP messages received": "0",
+    "Number of ICP messages sent": "0",
+    "Number of queued ICP replies": "0",
+    "Number of HTCP messages received": "0",
+    "Number of HTCP messages sent": "0",
+    "Request failure ratio": "0.00",
+    "Average HTTP requests per minute since start": "0.0",
+    "Average ICP messages per minute since start": "0.0",
+    "Select loop called": "279360 times, 436.712 ms avg"
+  },
+  "Cache information for squid:": {
+    "Hits as % of all requests": "5min",
+    "Hits as % of bytes sent": "5min",
+    "Memory hits as % of hit requests": "5min",
+    "Disk hits as % of hit requests": "5min",
+    "Storage Swap size": "0 KB",
+    "Storage Swap capacity": "0.0% used,  0.0% free",
+    "Storage Mem size": "216 KB",
+    "Storage Mem capacity": "0.1% used, 99.9% free",
+    "Mean Object Size": "0.00 KB",
+    "Requests given to unlinkd": "0"
+  },
+  "Median Service Times (seconds)  5 min    60 min:": {
+    "HTTP Requests (All)": "0.00000  0.00000",
+    "Cache Misses": "0.00000  0.00000",
+    "Cache Hits": "0.00000  0.00000",
+    "Near Hits": "0.00000  0.00000",
+    "Not-Modified Replies": "0.00000  0.00000",
+    "DNS Lookups": "0.00000  0.00000",
+    "ICP Queries": "0.00000  0.00000"
+  },
+  "Resource usage for squid:": {
+    "UP Time": "121999.905 seconds",
+    "CPU Time": "14.017 seconds",
+    "CPU Usage": "0.01%",
+    "CPU Usage, 5 minute avg": "0.01%",
+    "CPU Usage, 60 minute avg": "0.02%",
+    "Maximum Resident Size": "69920 KB",
+    "Page faults with physical i/o": "8"
+  },
+  "Memory accounted for:": {
+    "Total accounted": "445 KB",
+    "memPoolAlloc calls": "293887",
+    "memPoolFree calls": "293960"
+  },
+  "File descriptor usage for squid:": {
+    "Maximum number of file descriptors": "16384",
+    "Largest file desc currently in use": "13",
+    "Number of file desc currently in use": "6",
+    "Files queued for open": "0",
+    "Available number of file descriptors": "16378",
+    "Reserved number of file descriptors": "100",
+    "Store Disk files open": "0"
+  },
+  "Internal Data Structures": {
+    "StoreEntries": "52",
+    "StoreEntries with MemObjects": "52",
+    "Hot Object Cache Items": "51",
+    "on-disk objects": "0"
+  }
+}]]></screen><para>Example of an original squid cache info page output: </para><screen><![CDATA[Squid Object Cache: Version 3.5.24
+Build Info: 
+Service Name: squid
+Start Time:     Wed, 08 Feb 2017 12:52:09 GMT
+Current Time:   Thu, 09 Feb 2017 22:54:40 GMT
+Connection information for squid:
+        Number of clients accessing cache:      2
+        Number of HTTP requests received:       66
+        Number of ICP messages received:        0
+        Number of ICP messages sent:    0
+        Number of queued ICP replies:   0
+        Number of HTCP messages received:       0
+        Number of HTCP messages sent:   0
+        Request failure ratio:   0.00
+        Average HTTP requests per minute since start:   0.0
+        Average ICP messages per minute since start:    0.0
+        Select loop called: 280647 times, 436.672 ms avg
+Cache information for squid:
+        Hits as % of all requests:      5min: 0.0%, 60min: 0.0%
+        Hits as % of bytes sent:        5min: -0.0%, 60min: 100.0%
+        Memory hits as % of hit requests:       5min: 0.0%, 60min: 0.0%
+        Disk hits as % of hit requests: 5min: 0.0%, 60min: 0.0%
+        Storage Swap size:      0 KB
+        Storage Swap capacity:   0.0% used,  0.0% free
+        Storage Mem size:       216 KB
+        Storage Mem capacity:    0.1% used, 99.9% free
+        Mean Object Size:       0.00 KB
+        Requests given to unlinkd:      0
+Median Service Times (seconds)  5 min    60 min:
+        HTTP Requests (All):   0.00000  0.00000
+        Cache Misses:          0.00000  0.00000
+        Cache Hits:            0.00000  0.00000
+        Near Hits:             0.00000  0.00000
+        Not-Modified Replies:  0.00000  0.00000
+        DNS Lookups:           0.00000  0.00000
+        ICP Queries:           0.00000  0.00000
+Resource usage for squid:
+        UP Time:        122550.585 seconds
+        CPU Time:       14.085 seconds
+        CPU Usage:      0.01%
+        CPU Usage, 5 minute avg:        0.01%
+        CPU Usage, 60 minute avg:       0.02%
+        Maximum Resident Size: 69920 KB
+        Page faults with physical i/o: 8
+Memory accounted for:
+        Total accounted:          471 KB
+        memPoolAlloc calls:    295619
+        memPoolFree calls:     295691
+File descriptor usage for squid:
+        Maximum number of file descriptors:   16384
+        Largest file desc currently in use:     16
+        Number of file desc currently in use:    9
+        Files queued for open:                   0
+        Available number of file descriptors: 16375
+        Reserved number of file descriptors:   100
+        Store Disk files open:                   0
+Internal Data Structures:
+            52 StoreEntries
+            52 StoreEntries with MemObjects
+            51 Hot Object Cache Items
+             0 on-disk objects]]></screen></article>

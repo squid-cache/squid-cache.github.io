@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>EliezerCroitoru/Drafts/PythonHelper</title><revhistory><revision><revnumber>2</revnumber><date>2014-08-27 11:11:45</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>1</revnumber><date>2014-01-21 17:52:37</date><authorinitials>Eliezer Croitoru</authorinitials></revision></revhistory></articleinfo><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/env python]]></lineannotation>
+<lineannotation><![CDATA[# license note]]></lineannotation>
+<lineannotation><![CDATA[# Copyright (c) 2014, Eliezer Croitoru]]></lineannotation>
+<lineannotation><![CDATA[# All rights reserved.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE]]></lineannotation>
+
+<methodname><![CDATA[import]]></methodname><![CDATA[ ]]><methodname><![CDATA[sys]]></methodname>
+<methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stderr]]></methodname><![CDATA[.]]><methodname><![CDATA[write]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[__debug info__  loaded sys lib]]></phrase><![CDATA[
+]]><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+
+<methodname><![CDATA[import]]></methodname><![CDATA[ ]]><methodname><![CDATA[re]]></methodname>
+<methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stderr]]></methodname><![CDATA[.]]><methodname><![CDATA[write]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[__debug info__  loaded regex lib]]></phrase><![CDATA[
+]]><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+
+<methodname><![CDATA[import]]></methodname><![CDATA[ ]]><methodname><![CDATA[md5]]></methodname>
+<methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stderr]]></methodname><![CDATA[.]]><methodname><![CDATA[write]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[__debug info__  loaded md5 lib]]></phrase><![CDATA[
+]]><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+<methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stderr]]></methodname><![CDATA[.]]><methodname><![CDATA[write]]></methodname><![CDATA[( ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[__debug info__ for md5 test: ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[md5]]></methodname><![CDATA[.]]><methodname><![CDATA[new]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[http://www.netflix.com/watch?video_id=757bd34f5c51c074fc463885987cfbd3]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[).]]><methodname><![CDATA[digest]]></methodname><![CDATA[() + ]]><phrase><![CDATA["]]></phrase><![CDATA[
+]]><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+
+<lineannotation><![CDATA[#note that the examples are NOT from the real world!!!]]></lineannotation>
+<lineannotation><![CDATA[#example: "http://www.netflix.com/watch?video_id=757bd34f5c51c074fc463885987cfbd3"]]></lineannotation>
+<methodname><![CDATA[netflix]]></methodname><![CDATA[ = ]]><methodname><![CDATA[re]]></methodname><![CDATA[.]]><methodname><![CDATA[compile]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[http]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[/]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[/www]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.netflix]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.com]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[/watch]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[?video]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_id]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[=([a-fA-F]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[d]{32})]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[modify_url]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[):]]>
+<![CDATA[     ]]><methodname><![CDATA[list]]></methodname><![CDATA[ = ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname><![CDATA[(]]><phrase><![CDATA[' ']]></phrase><![CDATA[)]]>
+<![CDATA[     ]]><methodname><![CDATA[old_url]]></methodname><![CDATA[ = ]]><methodname><![CDATA[list]]></methodname><![CDATA[[0]]]>
+<![CDATA[     ]]><methodname><![CDATA[new_url]]></methodname><![CDATA[ = ]]><phrase><![CDATA['\n']]></phrase>
+<![CDATA[     ]]><methodname><![CDATA[is_match]]></methodname><![CDATA[ = ]]><methodname><![CDATA[netflix]]></methodname><![CDATA[.]]><methodname><![CDATA[search]]></methodname><![CDATA[(]]><methodname><![CDATA[old_url]]></methodname><![CDATA[)]]>
+<![CDATA[     ]]><token><![CDATA[if]]></token><![CDATA[ ]]><phrase><![CDATA[is_match]]></phrase><![CDATA[:]]>
+<![CDATA[        ]]><methodname><![CDATA[new_url]]></methodname><![CDATA[=]]><phrase><![CDATA['http://www.netflix.com.squid.internal/']]></phrase><![CDATA[ + ]]><methodname><![CDATA[is_match]]></methodname><![CDATA[.]]><methodname><![CDATA[group]]></methodname><![CDATA[(1) + ]]><methodname><![CDATA[new_url]]></methodname>
+<![CDATA[        ]]><token><![CDATA[return]]></token><![CDATA[ ]]><methodname><![CDATA[new_url]]></methodname>
+
+<token><![CDATA[while]]></token><![CDATA[ ]]><phrase><![CDATA[True]]></phrase><![CDATA[:]]>
+<![CDATA[     ]]><methodname><![CDATA[line]]></methodname><![CDATA[ = ]]><methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stdin]]></methodname><![CDATA[.]]><methodname><![CDATA[readline]]></methodname><![CDATA[().]]><methodname><![CDATA[strip]]></methodname><![CDATA[()]]>
+<![CDATA[     ]]><methodname><![CDATA[new_url]]></methodname><![CDATA[ = ]]><methodname><![CDATA[modify_url]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[)]]>
+<![CDATA[     ]]><token><![CDATA[if]]></token><![CDATA[ ]]><phrase><![CDATA[new_url]]></phrase><![CDATA[:]]>
+<![CDATA[        ]]><methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stdout]]></methodname><![CDATA[.]]><methodname><![CDATA[write]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[OK ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[new_url]]></methodname><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stderr]]></methodname><![CDATA[.]]><methodname><![CDATA[write]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[__debug info__ REWRITE: ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[new_url]]></methodname><![CDATA[ + ]]><phrase><![CDATA['\nORIGNAL_URI: ']]></phrase><![CDATA[ + ]]><methodname><![CDATA[line]]></methodname><![CDATA[)]]>
+<![CDATA[     ]]><token><![CDATA[else]]></token><![CDATA[:]]>
+<![CDATA[        ]]><methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stdout]]></methodname><![CDATA[.]]><methodname><![CDATA[write]]></methodname><![CDATA[(]]><phrase><![CDATA['ERR\n']]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stderr]]></methodname><![CDATA[.]]><methodname><![CDATA[write]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[__debug info__ NOREWRITE: ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ + ]]><methodname><![CDATA[line]]></methodname><![CDATA[ + ]]><phrase><![CDATA['\n']]></phrase><![CDATA[)]]>
+<![CDATA[     ]]><methodname><![CDATA[sys]]></methodname><![CDATA[.]]><methodname><![CDATA[stdout]]></methodname><![CDATA[.]]><methodname><![CDATA[flush]]></methodname><![CDATA[()]]>
+</programlisting></article>

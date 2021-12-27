@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>EliezerCroitoru/Helpers/YT-Watch-Stats</title><revhistory><revision><revnumber>4</revnumber><date>2017-07-13 02:04:30</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>Added the GoLang helper and git link</revremark></revision><revision><revnumber>3</revnumber><date>2017-07-13 00:41:53</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>2</revnumber><date>2017-07-13 00:38:07</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>1</revnumber><date>2017-07-12 14:17:15</date><authorinitials>Eliezer Croitoru</authorinitials></revision></revhistory></articleinfo><section><title>YouTube Watch Stats Collection tools</title><itemizedlist><listitem><para><emphasis role="strong">Status</emphasis>: 40%. </para></listitem><listitem><para><emphasis role="strong">Developer</emphasis>: <ulink url="https://wiki.squid-cache.org/EliezerCroitoru/Helpers/YT-Watch-Stats/Eliezer%20Croitoru#">Eliezer Croitoru</ulink> </para></listitem><listitem><para><emphasis role="strong">More</emphasis>:  </para></listitem><listitem><para><emphasis role="strong">Sponsored by</emphasis>: <ulink url="https://wiki.squid-cache.org/EliezerCroitoru/Helpers/YT-Watch-Stats/Eliezer%20Croitoru#">Eliezer Croitoru</ulink> - <ulink url="http://www1.ngtech.co.il/">NgTech</ulink> </para></listitem><listitem><para><emphasis role="strong">Proejct git(with binaries)</emphasis>: <ulink url="http://gogs.ngtech.co.il/elicro/youtube-watch-counter">NgTech git: youtube-watch-counter</ulink> </para></listitem></itemizedlist><para>This helper is a part of a suite that analyze requests and schedules a download of a specific vidoe into a VOD solution. This is a helper that receives requests url when these flow into squid and increments the video ID counter. External tools can fetch from the local or remote redis server the stats and decide if it's worth to cache or download a specific youtube or other sites videos. </para><para>This code was prettified using one of the Atom Editor plugins which utilzezs Rubocop and the code syntax might be a bit confusing and if you have any question just send me an email at: <ulink url="mailto:eliezer@ngtech.co.il">eliezer@ngtech.co.il</ulink> or post a question at the squid-users list (<ulink url="mailto:squid-users@lists.squid-cache.org">squid-users@lists.squid-cache.org</ulink>) </para></section><section><title>yt-counter.rb</title><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/ruby]]></lineannotation>
+<lineannotation><![CDATA[# encoding: utf-8]]></lineannotation>
+
+<lineannotation><![CDATA[=begin]]></lineannotation>
+<lineannotation><![CDATA[license note]]></lineannotation>
+<lineannotation><![CDATA[Copyright (c) 2017, Eliezer Croitoru]]></lineannotation>
+<lineannotation><![CDATA[All rights reserved.]]></lineannotation>
+<lineannotation></lineannotation>
+<lineannotation><![CDATA[Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:]]></lineannotation>
+<lineannotation><![CDATA[1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.]]></lineannotation>
+<lineannotation><![CDATA[2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.]]></lineannotation>
+<lineannotation><![CDATA[3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.]]></lineannotation>
+<lineannotation></lineannotation>
+<lineannotation><![CDATA[THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.]]></lineannotation>
+<lineannotation><![CDATA[=end]]></lineannotation>
+
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['rubygems']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['open-uri']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['redis']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['syslog']]></phrase>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[statsTest]]></methodname><![CDATA[(]]><methodname><![CDATA[requestUrl]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[case]]></token><![CDATA[ ]]><methodname><![CDATA[requestUrl]]></methodname>
+<![CDATA[  ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^https?]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[[]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.0-9a-zA-Z]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]+]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.imdb]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.com]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[title]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[([a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]+)]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[    ]]><token><![CDATA[if]]></token><![CDATA[ ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(1)]]>
+<![CDATA[      ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Incerementing ID => ]]></phrase><phrase><![CDATA[#{]]></phrase><phrase><![CDATA['imdb-title-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(1)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[      ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[incr]]></methodname><![CDATA[(]]><phrase><![CDATA['imdb-title-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(1))]]>
+<![CDATA[      ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Current stats for: ]]></phrase><phrase><![CDATA[#{]]></phrase><phrase><![CDATA['imdb-title-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(1)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[ => ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><phrase><![CDATA['imdb-title-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(1))]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^https?]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[www]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.youtube]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.com]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[watch]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[?.*(v)]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[=([a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]+)]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[    ]]><token><![CDATA[if]]></token><![CDATA[ ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2)]]>
+<![CDATA[      ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Incerementing ID => ]]></phrase><phrase><![CDATA[#{]]></phrase><phrase><![CDATA['yt-videoid-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[      ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[incr]]></methodname><![CDATA[(]]><phrase><![CDATA['yt-videoid-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2))]]>
+<![CDATA[      ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Current stats for: ]]></phrase><phrase><![CDATA[#{]]></phrase><phrase><![CDATA['yt-videoid-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[ => ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><phrase><![CDATA['yt-videoid-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2))]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^https?]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[:]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[[a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]+]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.(ytimg)]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[.com]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[vi]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[([a-zA-Z0-9]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[-]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[_]+)]]></phrase><phrase><![CDATA[\/]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[    ]]><token><![CDATA[if]]></token><![CDATA[ ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2)]]>
+<![CDATA[      ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Incerementing ID => ]]></phrase><phrase><![CDATA[#{]]></phrase><phrase><![CDATA['ytimg-videoid-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[      ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[incr]]></methodname><![CDATA[(]]><phrase><![CDATA['ytimg-videoid-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2))]]>
+<![CDATA[      ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Current stats for: ]]></phrase><phrase><![CDATA[#{]]></phrase><phrase><![CDATA['ytimg-videoid-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[ => ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><phrase><![CDATA['ytimg-videoid-']]></phrase><![CDATA[ + ]]><symbol><![CDATA[Regexp]]></symbol><![CDATA[.]]><methodname><![CDATA[last_match]]></methodname><![CDATA[(2))]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^quit.*]]></phrase><phrase><![CDATA[/]]></phrase>
+<![CDATA[    ]]><token><![CDATA[exit]]></token><![CDATA[ 0]]>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><phrase><![CDATA['']]></phrase>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><methodname><![CDATA[msg]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[.]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[::]]><symbol><![CDATA[LOG_ERR]]></symbol><![CDATA[, ]]><phrase><![CDATA['%s']]></phrase><![CDATA[, ]]><methodname><![CDATA[msg]]></methodname><![CDATA[)]]>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[evalulateConc]]></methodname>
+<![CDATA[  ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><token><![CDATA[gets]]></token>
+<![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[ && (]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[match]]></methodname><![CDATA[ ]]><phrase><![CDATA[/]]></phrase><phrase><![CDATA[^[0-9]+]]></phrase><phrase><![CDATA[\]]></phrase><phrase><![CDATA[ ]]></phrase><phrase><![CDATA[/]]></phrase><![CDATA[)]]>
+<![CDATA[    ]]><methodname><![CDATA[conc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[true]]></token>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><methodname><![CDATA[noconc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[false]]></token>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[conc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[unless]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname>
+<![CDATA[  ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname>
+<![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[[0] && ]]><methodname><![CDATA[request]]></methodname><![CDATA[[1]]]>
+<![CDATA[    ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[original request []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[join]]></methodname><![CDATA[(]]><phrase><![CDATA[' ']]></phrase><![CDATA[)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[    ]]><methodname><![CDATA[result]]></methodname><![CDATA[ = ]]><methodname><![CDATA[statsTest]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[[1])]]>
+<![CDATA[    ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[[0] + ]]><phrase><![CDATA[' ERR']]></phrase>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA['original request [had a problem].']]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[    ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA['ERR']]></phrase>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[noconc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[unless]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname>
+<![CDATA[  ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname>
+<![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[[0]]]>
+<![CDATA[    ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[Original request []]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[join]]></methodname><![CDATA[(]]><phrase><![CDATA[' ']]></phrase><![CDATA[)]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA[].]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[    ]]><methodname><![CDATA[result]]></methodname><![CDATA[ = ]]><methodname><![CDATA[statsTest]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[[0])]]>
+<![CDATA[    ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA['ERR']]></phrase>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA['Original request [had a problem].']]></phrase><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[    ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA['ERR']]></phrase>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[validr?]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[ascii_only?]]></methodname><![CDATA[ && ]]><methodname><![CDATA[request]]></methodname><![CDATA[.]]><methodname><![CDATA[valid_encoding?]]></methodname>
+<![CDATA[    ]]><token><![CDATA[true]]></token>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[errorness line]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[request]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+<![CDATA[    ]]><lineannotation><![CDATA[# sleep 2]]></lineannotation>
+<![CDATA[    ]]><token><![CDATA[false]]></token>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[main]]></methodname>
+<![CDATA[  ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[.]]><methodname><![CDATA[open]]></methodname><![CDATA[(]]><phrase><![CDATA['yt-counter.rb']]></phrase><![CDATA[, ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[::]]><symbol><![CDATA[LOG_PID]]></symbol><![CDATA[)]]>
+<![CDATA[  ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA['Started']]></phrase><![CDATA[)]]>
+<![CDATA[  ]]><methodname><![CDATA[redishost]]></methodname><![CDATA[ = ]]><phrase><![CDATA['localhost']]></phrase>
+<![CDATA[  ]]><methodname><![CDATA[redisdb]]></methodname><![CDATA[ = ]]><phrase><![CDATA['0']]></phrase>
+<![CDATA[  ]]><methodname><![CDATA[redisport]]></methodname><![CDATA[ = 6379]]>
+<![CDATA[  ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[ = ]]><symbol><![CDATA[Redis]]></symbol><![CDATA[.]]><methodname><![CDATA[new]]></methodname><![CDATA[(]]><phrase><![CDATA[host]]></phrase><![CDATA[: ]]><methodname><![CDATA[redishost]]></methodname><![CDATA[, ]]><phrase><![CDATA[port]]></phrase><![CDATA[: ]]><methodname><![CDATA[redisport]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[select]]></methodname><![CDATA[ ]]><methodname><![CDATA[redisdb]]></methodname>
+
+<![CDATA[  ]]><methodname><![CDATA[c]]></methodname><![CDATA[ = ]]><methodname><![CDATA[evalulateConc]]></methodname>
+
+<![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[c]]></methodname>
+<![CDATA[    ]]><token><![CDATA[while]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><token><![CDATA[gets]]></token>
+<![CDATA[      ]]><methodname><![CDATA[conc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[validr?]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><token><![CDATA[while]]></token><![CDATA[ ]]><methodname><![CDATA[request]]></methodname><![CDATA[ = ]]><token><![CDATA[gets]]></token>
+<![CDATA[      ]]><methodname><![CDATA[noconc]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[) ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[validr?]]></methodname><![CDATA[(]]><methodname><![CDATA[request]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<methodname><![CDATA[$debug]]></methodname><![CDATA[ = ]]><token><![CDATA[false]]></token>
+<symbol><![CDATA[STDOUT]]></symbol><![CDATA[.]]><methodname><![CDATA[sync]]></methodname><![CDATA[ = ]]><token><![CDATA[true]]></token>
+<methodname><![CDATA[main]]></methodname>
+</programlisting></section><section><title>stats-collector.cgi</title><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/env ruby]]></lineannotation>
+<lineannotation><![CDATA[# encoding: utf-8]]></lineannotation>
+
+<lineannotation><![CDATA[# license note]]></lineannotation>
+<lineannotation><![CDATA[# Copyright (c) 2017, Eliezer Croitoru]]></lineannotation>
+<lineannotation><![CDATA[# All rights reserved.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:]]></lineannotation>
+<lineannotation><![CDATA[# 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.]]></lineannotation>
+<lineannotation><![CDATA[# 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.]]></lineannotation>
+<lineannotation><![CDATA[# 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.]]></lineannotation>
+
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['rubygems']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['open-uri']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['redis']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['syslog']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['yaml']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['json']]></phrase>
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA['cgi']]></phrase>
+
+<methodname><![CDATA[$cgi]]></methodname><![CDATA[ = ]]><symbol><![CDATA[CGI]]></symbol><![CDATA[.]]><methodname><![CDATA[new]]></methodname>
+
+<methodname><![CDATA[$params]]></methodname><![CDATA[ = ]]><methodname><![CDATA[$cgi]]></methodname><![CDATA[.]]><methodname><![CDATA[params]]></methodname>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><methodname><![CDATA[msg]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[.]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[::]]><symbol><![CDATA[LOG_ERR]]></symbol><![CDATA[, ]]><phrase><![CDATA['%s']]></phrase><![CDATA[, ]]><methodname><![CDATA[msg]]></methodname><![CDATA[)]]>
+<token><![CDATA[end]]></token>
+
+<token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[main]]></methodname>
+<![CDATA[  ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[.]]><methodname><![CDATA[open]]></methodname><![CDATA[(]]><phrase><![CDATA['stats-collector.rb']]></phrase><![CDATA[, ]]><symbol><![CDATA[Syslog]]></symbol><![CDATA[::]]><symbol><![CDATA[LOG_PID]]></symbol><![CDATA[)]]>
+<![CDATA[  ]]><methodname><![CDATA[log]]></methodname><![CDATA[(]]><phrase><![CDATA['Started']]></phrase><![CDATA[)]]>
+<![CDATA[  ]]><methodname><![CDATA[redishost]]></methodname><![CDATA[ = ]]><phrase><![CDATA['localhost']]></phrase>
+<![CDATA[  ]]><methodname><![CDATA[redisdb]]></methodname><![CDATA[ = ]]><phrase><![CDATA['0']]></phrase>
+<![CDATA[  ]]><methodname><![CDATA[redisport]]></methodname><![CDATA[ = 6379]]>
+<![CDATA[  ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[ = ]]><symbol><![CDATA[Redis]]></symbol><![CDATA[.]]><methodname><![CDATA[new]]></methodname><![CDATA[(]]><phrase><![CDATA[host]]></phrase><![CDATA[: ]]><methodname><![CDATA[redishost]]></methodname><![CDATA[, ]]><phrase><![CDATA[port]]></phrase><![CDATA[: ]]><methodname><![CDATA[redisport]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[select]]></methodname><![CDATA[ ]]><methodname><![CDATA[redisdb]]></methodname>
+
+<![CDATA[  ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[ = {}]]>
+<![CDATA[  ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[[]]><phrase><![CDATA['youtube-videos-ids']]></phrase><![CDATA[] = {}]]>
+
+<![CDATA[  ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[scan_each]]></methodname><![CDATA[(]]><phrase><![CDATA[match]]></phrase><![CDATA[: ]]><phrase><![CDATA['yt-videoid-*']]></phrase><![CDATA[) ]]><token><![CDATA[do]]></token><![CDATA[ |]]><methodname><![CDATA[key_name]]></methodname><![CDATA[|]]>
+<![CDATA[    ]]><methodname><![CDATA[res]]></methodname><![CDATA[ = ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><methodname><![CDATA[key_name]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[[]]><phrase><![CDATA['youtube-videos-ids']]></phrase><![CDATA[][]]><methodname><![CDATA[key_name]]></methodname><![CDATA[[11..-1]] = ]]><methodname><![CDATA[res]]></methodname><![CDATA[.]]><methodname><![CDATA[to_i]]></methodname>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+
+<![CDATA[  ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[[]]><phrase><![CDATA['youtube-img-videos-ids']]></phrase><![CDATA[] = {}]]>
+
+<![CDATA[  ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[scan_each]]></methodname><![CDATA[(]]><phrase><![CDATA[match]]></phrase><![CDATA[: ]]><phrase><![CDATA['ytimg-videoid-*']]></phrase><![CDATA[) ]]><token><![CDATA[do]]></token><![CDATA[ |]]><methodname><![CDATA[key_name]]></methodname><![CDATA[|]]>
+<![CDATA[    ]]><methodname><![CDATA[res]]></methodname><![CDATA[ = ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><methodname><![CDATA[key_name]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[[]]><phrase><![CDATA['youtube-img-videos-ids']]></phrase><![CDATA[][]]><methodname><![CDATA[key_name]]></methodname><![CDATA[[14..-1]] = ]]><methodname><![CDATA[res]]></methodname><![CDATA[.]]><methodname><![CDATA[to_i]]></methodname>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+
+<![CDATA[  ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[[]]><phrase><![CDATA['imdb-title-ids']]></phrase><![CDATA[] = {}]]>
+
+<![CDATA[  ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[scan_each]]></methodname><![CDATA[(]]><phrase><![CDATA[match]]></phrase><![CDATA[: ]]><phrase><![CDATA['imdb-title-*']]></phrase><![CDATA[) ]]><token><![CDATA[do]]></token><![CDATA[ |]]><methodname><![CDATA[key_name]]></methodname><![CDATA[|]]>
+<![CDATA[    ]]><methodname><![CDATA[res]]></methodname><![CDATA[ = ]]><methodname><![CDATA[$redisdbconn]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><methodname><![CDATA[key_name]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[[]]><phrase><![CDATA['imdb-title-ids']]></phrase><![CDATA[][]]><methodname><![CDATA[key_name]]></methodname><![CDATA[[11..-1]] = ]]><methodname><![CDATA[res]]></methodname><![CDATA[.]]><methodname><![CDATA[to_i]]></methodname>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><methodname><![CDATA[output]]></methodname><![CDATA[ = ]]><phrase><![CDATA['']]></phrase>
+<![CDATA[  ]]><methodname><![CDATA[outputFileExtention]]></methodname><![CDATA[ = ]]><phrase><![CDATA['yaml']]></phrase>
+<![CDATA[  ]]><methodname><![CDATA[outputFormat]]></methodname><![CDATA[ = ]]><phrase><![CDATA['application/x-yaml']]></phrase>
+<![CDATA[  ]]><token><![CDATA[case]]></token><![CDATA[ ]]><methodname><![CDATA[$params]]></methodname><![CDATA[[]]><phrase><![CDATA['format']]></phrase><![CDATA[][0]]]>
+<![CDATA[  ]]><token><![CDATA[when]]></token><![CDATA[ ]]><token><![CDATA[nil]]></token>
+<![CDATA[    ]]><methodname><![CDATA[output]]></methodname><![CDATA[ = ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[.]]><methodname><![CDATA[to_yaml]]></methodname><![CDATA[(]]><phrase><![CDATA[Indent]]></phrase><![CDATA[: 4, ]]><phrase><![CDATA[UseHeader]]></phrase><![CDATA[: ]]><token><![CDATA[true]]></token><![CDATA[, ]]><phrase><![CDATA[UseVersion]]></phrase><![CDATA[: ]]><token><![CDATA[true]]></token><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[when]]></token><![CDATA[ ]]><phrase><![CDATA['json']]></phrase>
+<![CDATA[    ]]><methodname><![CDATA[outputFormat]]></methodname><![CDATA[ = ]]><phrase><![CDATA['application/json']]></phrase>
+<![CDATA[    ]]><methodname><![CDATA[outputFileExtention]]></methodname><![CDATA[ = ]]><phrase><![CDATA['json']]></phrase>
+<![CDATA[    ]]><methodname><![CDATA[output]]></methodname><![CDATA[ = ]]><symbol><![CDATA[JSON]]></symbol><![CDATA[.]]><methodname><![CDATA[pretty_generate]]></methodname><![CDATA[(]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><methodname><![CDATA[output]]></methodname><![CDATA[ = ]]><methodname><![CDATA[statsCollection]]></methodname><![CDATA[.]]><methodname><![CDATA[to_yaml]]></methodname><![CDATA[(]]><phrase><![CDATA[Indent]]></phrase><![CDATA[: 4, ]]><phrase><![CDATA[UseHeader]]></phrase><![CDATA[: ]]><token><![CDATA[true]]></token><![CDATA[, ]]><phrase><![CDATA[UseVersion]]></phrase><![CDATA[: ]]><token><![CDATA[true]]></token><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><methodname><![CDATA[output]]></methodname><![CDATA[ += ]]><phrase><![CDATA["]]></phrase><![CDATA[
+]]><phrase><![CDATA["]]></phrase>
+<![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$params]]></methodname><![CDATA[[]]><phrase><![CDATA['text']]></phrase><![CDATA[] && ]]><methodname><![CDATA[$params]]></methodname><![CDATA[[]]><phrase><![CDATA['text']]></phrase><![CDATA[][0]]]>
+<![CDATA[    ]]><token><![CDATA[print]]></token><![CDATA[ ]]><methodname><![CDATA[$cgi]]></methodname><![CDATA[.]]><methodname><![CDATA[header]]></methodname><![CDATA[(]]><phrase><![CDATA['type']]></phrase><![CDATA[ => ]]><phrase><![CDATA['text/plain']]></phrase><![CDATA[,]]>
+<![CDATA[                      ]]><phrase><![CDATA['expires']]></phrase><![CDATA[ => ]]><symbol><![CDATA[Time]]></symbol><![CDATA[.]]><methodname><![CDATA[now]]></methodname><![CDATA[ - (3 * 24 * 60 * 60),]]>
+<![CDATA[                      ]]><phrase><![CDATA['Cache-Control']]></phrase><![CDATA[ => ]]><phrase><![CDATA['no-cache']]></phrase><![CDATA[,]]>
+<![CDATA[                      ]]><phrase><![CDATA['Content-Length']]></phrase><![CDATA[ => ]]><methodname><![CDATA[output]]></methodname><![CDATA[.]]><methodname><![CDATA[size]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><token><![CDATA[print]]></token><![CDATA[ ]]><methodname><![CDATA[$cgi]]></methodname><![CDATA[.]]><methodname><![CDATA[header]]></methodname><![CDATA[(]]><phrase><![CDATA['type']]></phrase><![CDATA[ => ]]><methodname><![CDATA[outputFormat]]></methodname><![CDATA[,]]>
+<![CDATA[                      ]]><phrase><![CDATA['expires']]></phrase><![CDATA[ => ]]><symbol><![CDATA[Time]]></symbol><![CDATA[.]]><methodname><![CDATA[now]]></methodname><![CDATA[ - (3 * 24 * 60 * 60),]]>
+<![CDATA[                      ]]><phrase><![CDATA['Cache-Control']]></phrase><![CDATA[ => ]]><phrase><![CDATA['no-cache']]></phrase><![CDATA[,]]>
+<![CDATA[                      ]]><phrase><![CDATA['Content-Length']]></phrase><![CDATA[ => ]]><methodname><![CDATA[output]]></methodname><![CDATA[.]]><methodname><![CDATA[size]]></methodname><![CDATA[,]]>
+<![CDATA[                      ]]><phrase><![CDATA['Content-Disposition']]></phrase><![CDATA[ => ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[attachment; filename=]]></phrase><![CDATA[\"]]><phrase><![CDATA[stats.]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[outputFileExtention]]></methodname><phrase><![CDATA[}]]></phrase><![CDATA[\"]]><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><token><![CDATA[print]]></token><![CDATA[ ]]><methodname><![CDATA[output]]></methodname>
+<token><![CDATA[end]]></token>
+
+<methodname><![CDATA[$debug]]></methodname><![CDATA[ = ]]><token><![CDATA[false]]></token>
+<symbol><![CDATA[STDOUT]]></symbol><![CDATA[.]]><methodname><![CDATA[sync]]></methodname><![CDATA[ = ]]><token><![CDATA[true]]></token>
+<methodname><![CDATA[main]]></methodname>
+</programlisting></section><section><title>yt-counter.go</title><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><token><![CDATA[package]]></token><![CDATA[ ]]><methodname><![CDATA[main]]></methodname>
+
+<lineannotation><![CDATA[/*]]></lineannotation>
+<lineannotation><![CDATA[license note]]></lineannotation>
+<lineannotation><![CDATA[Copyright (c) 2017, Eliezer Croitoru]]></lineannotation>
+<lineannotation><![CDATA[All rights reserved.]]></lineannotation>
+<lineannotation></lineannotation>
+<lineannotation><![CDATA[Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:]]></lineannotation>
+<lineannotation><![CDATA[1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.]]></lineannotation>
+<lineannotation><![CDATA[2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.]]></lineannotation>
+<lineannotation><![CDATA[3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.]]></lineannotation>
+<lineannotation></lineannotation>
+<lineannotation><![CDATA[THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.]]></lineannotation>
+<lineannotation><![CDATA[*/]]></lineannotation>
+<token><![CDATA[import]]></token><![CDATA[ (]]>
+<![CDATA[        ]]><phrase><![CDATA["bufio"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["flag"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["fmt"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["github.com/monnand/goredis"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["os"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["regexp"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["strings"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["sync"]]></phrase>
+<![CDATA[)]]>
+
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname><![CDATA[ *]]><token><![CDATA[bool]]></token>
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[db_address]]></methodname><![CDATA[ *]]><token><![CDATA[string]]></token>
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[db_port]]></methodname><![CDATA[ *]]><token><![CDATA[string]]></token>
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[active]]></methodname><![CDATA[ *]]><token><![CDATA[string]]></token>
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[database]]></methodname><![CDATA[ ]]><methodname><![CDATA[goredis]]></methodname><![CDATA[.]]><methodname><![CDATA[Client]]></methodname>
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[err]]></methodname><![CDATA[ ]]><token><![CDATA[error]]></token>
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[world]]></methodname><![CDATA[ = []]]><token><![CDATA[byte]]></token><![CDATA[(]]><phrase><![CDATA["session"]]></phrase><![CDATA[)]]>
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[re]]></methodname><![CDATA[ [256]*]]><methodname><![CDATA[regexp]]></methodname><![CDATA[.]]><methodname><![CDATA[Regexp]]></methodname>
+
+<token><![CDATA[func]]></token><![CDATA[ ]]><methodname><![CDATA[process_request]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[ ]]><token><![CDATA[string]]></token><![CDATA[, ]]><methodname><![CDATA[wg]]></methodname><![CDATA[ *]]><methodname><![CDATA[sync]]></methodname><![CDATA[.]]><methodname><![CDATA[WaitGroup]]></methodname><![CDATA[) {]]>
+<![CDATA[        ]]><token><![CDATA[defer]]></token><![CDATA[ ]]><methodname><![CDATA[wg]]></methodname><![CDATA[.]]><methodname><![CDATA[Done]]></methodname><![CDATA[()]]>
+<![CDATA[        ]]><methodname><![CDATA[answer]]></methodname><![CDATA[ := ]]><phrase><![CDATA["ERR comment=yt-counter"]]></phrase>
+
+<![CDATA[        ]]><methodname><![CDATA[lparts]]></methodname><![CDATA[ := ]]><methodname><![CDATA[strings]]></methodname><![CDATA[.]]><methodname><![CDATA[Split]]></methodname><![CDATA[(]]><methodname><![CDATA[strings]]></methodname><![CDATA[.]]><methodname><![CDATA[TrimRight]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[, ]]><phrase><![CDATA["\n"]]></phrase><![CDATA[), ]]><phrase><![CDATA[" "]]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><token><![CDATA[if]]></token><![CDATA[ ]]><token><![CDATA[len]]></token><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[) > 1 && ]]><token><![CDATA[len]]></token><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[0]) > 0 && ]]><token><![CDATA[len]]></token><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1]) > 0 {]]>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ {]]>
+<![CDATA[                        ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["ERRlog: Proccessing request => \""]]></phrase><![CDATA[+]]><methodname><![CDATA[strings]]></methodname><![CDATA[.]]><methodname><![CDATA[TrimRight]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[, ]]><phrase><![CDATA["\n"]]></phrase><![CDATA[)+]]><phrase><![CDATA["\""]]></phrase><![CDATA[)]]>
+<![CDATA[                }]]>
+<![CDATA[                ]]><token><![CDATA[switch]]></token><![CDATA[ {]]>
+<![CDATA[                ]]><token><![CDATA[case]]></token><![CDATA[ ]]><methodname><![CDATA[re]]></methodname><![CDATA[[0].]]><methodname><![CDATA[MatchString]]></methodname><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1]):]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["URL Match for"]]></phrase><![CDATA[, ]]><methodname><![CDATA[re]]></methodname><![CDATA[[0])]]>
+<![CDATA[                        }]]>
+<![CDATA[                        ]]><methodname><![CDATA[regexpRes]]></methodname><![CDATA[ := ]]><methodname><![CDATA[re]]></methodname><![CDATA[[0].]]><methodname><![CDATA[FindAllStringSubmatch]]></methodname><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1], -1)]]>
+<![CDATA[                        ]]><methodname><![CDATA[id]]></methodname><![CDATA[ := ]]><phrase><![CDATA["imdb-title-"]]></phrase><![CDATA[ + ]]><methodname><![CDATA[regexpRes]]></methodname><![CDATA[[0][1]]]>
+<![CDATA[                        ]]><methodname><![CDATA[res]]></methodname><![CDATA[, ]]><methodname><![CDATA[err]]></methodname><![CDATA[ := ]]><methodname><![CDATA[database]]></methodname><![CDATA[.]]><methodname><![CDATA[Incr]]></methodname><![CDATA[(]]><methodname><![CDATA[id]]></methodname><![CDATA[)]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[err]]></methodname><![CDATA[ != ]]><symbol><![CDATA[nil]]></symbol><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><methodname><![CDATA[err]]></methodname><![CDATA[)]]>
+<![CDATA[                        }]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["Current Counter state for URL"]]></phrase><![CDATA[, ]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1], ]]><phrase><![CDATA[", id =>"]]></phrase><![CDATA[, ]]><methodname><![CDATA[id]]></methodname><![CDATA[, ]]><phrase><![CDATA[", Counter =>"]]></phrase><![CDATA[, ]]><methodname><![CDATA[res]]></methodname><![CDATA[)]]>
+<![CDATA[                        }]]>
+<![CDATA[                ]]><token><![CDATA[case]]></token><![CDATA[ ]]><methodname><![CDATA[re]]></methodname><![CDATA[[1].]]><methodname><![CDATA[MatchString]]></methodname><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1]):]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["URL Match for"]]></phrase><![CDATA[, ]]><methodname><![CDATA[re]]></methodname><![CDATA[[1])]]>
+<![CDATA[                        }]]>
+<![CDATA[                        ]]><methodname><![CDATA[regexpRes]]></methodname><![CDATA[ := ]]><methodname><![CDATA[re]]></methodname><![CDATA[[1].]]><methodname><![CDATA[FindAllStringSubmatch]]></methodname><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1], -1)]]>
+<![CDATA[                        ]]><methodname><![CDATA[id]]></methodname><![CDATA[ := ]]><phrase><![CDATA["yt-videoid-"]]></phrase><![CDATA[ + ]]><methodname><![CDATA[regexpRes]]></methodname><![CDATA[[0][2]]]>
+<![CDATA[                        ]]><methodname><![CDATA[res]]></methodname><![CDATA[, ]]><methodname><![CDATA[err]]></methodname><![CDATA[ := ]]><methodname><![CDATA[database]]></methodname><![CDATA[.]]><methodname><![CDATA[Incr]]></methodname><![CDATA[(]]><methodname><![CDATA[id]]></methodname><![CDATA[)]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[err]]></methodname><![CDATA[ != ]]><symbol><![CDATA[nil]]></symbol><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><methodname><![CDATA[err]]></methodname><![CDATA[)]]>
+<![CDATA[                        }]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["Current Counter state for URL"]]></phrase><![CDATA[, ]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1], ]]><phrase><![CDATA[", id =>"]]></phrase><![CDATA[, ]]><methodname><![CDATA[id]]></methodname><![CDATA[, ]]><phrase><![CDATA[", Counter =>"]]></phrase><![CDATA[, ]]><methodname><![CDATA[res]]></methodname><![CDATA[)]]>
+<![CDATA[                        }]]>
+<![CDATA[                ]]><token><![CDATA[case]]></token><![CDATA[ ]]><methodname><![CDATA[re]]></methodname><![CDATA[[2].]]><methodname><![CDATA[MatchString]]></methodname><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1]):]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["URL Match for"]]></phrase><![CDATA[, ]]><methodname><![CDATA[re]]></methodname><![CDATA[[1])]]>
+<![CDATA[                        }]]>
+<![CDATA[                        ]]><methodname><![CDATA[regexpRes]]></methodname><![CDATA[ := ]]><methodname><![CDATA[re]]></methodname><![CDATA[[2].]]><methodname><![CDATA[FindAllStringSubmatch]]></methodname><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1], -1)]]>
+<![CDATA[                        ]]><methodname><![CDATA[id]]></methodname><![CDATA[ := ]]><phrase><![CDATA["ytimg-videoid-"]]></phrase><![CDATA[ + ]]><methodname><![CDATA[regexpRes]]></methodname><![CDATA[[0][2]]]>
+<![CDATA[                        ]]><methodname><![CDATA[res]]></methodname><![CDATA[, ]]><methodname><![CDATA[err]]></methodname><![CDATA[ := ]]><methodname><![CDATA[database]]></methodname><![CDATA[.]]><methodname><![CDATA[Incr]]></methodname><![CDATA[(]]><methodname><![CDATA[id]]></methodname><![CDATA[)]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[err]]></methodname><![CDATA[ != ]]><symbol><![CDATA[nil]]></symbol><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><methodname><![CDATA[err]]></methodname><![CDATA[)]]>
+<![CDATA[                        }]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["Current Counter state for URL"]]></phrase><![CDATA[, ]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1], ]]><phrase><![CDATA[", id =>"]]></phrase><![CDATA[, ]]><methodname><![CDATA[id]]></methodname><![CDATA[, ]]><phrase><![CDATA[", Counter =>"]]></phrase><![CDATA[, ]]><methodname><![CDATA[res]]></methodname><![CDATA[)]]>
+<![CDATA[                        }]]>
+<![CDATA[                ]]><token><![CDATA[default]]></token><![CDATA[:]]>
+<![CDATA[                        ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ {]]>
+<![CDATA[                                ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["No Match for URL"]]></phrase><![CDATA[, ]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[1])]]>
+<![CDATA[                        }]]>
+<![CDATA[                }]]>
+
+<![CDATA[        }]]>
+
+<![CDATA[        ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Println]]></methodname><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[0] + ]]><phrase><![CDATA[" "]]></phrase><![CDATA[ + ]]><methodname><![CDATA[answer]]></methodname><![CDATA[)]]>
+<![CDATA[}]]>
+
+<token><![CDATA[func]]></token><![CDATA[ ]]><methodname><![CDATA[main]]></methodname><![CDATA[() {]]>
+<![CDATA[        ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["ERRlog: Starting yt-counter.go"]]></phrase><![CDATA[)]]>
+
+<![CDATA[        ]]><methodname><![CDATA[debug]]></methodname><![CDATA[ = ]]><methodname><![CDATA[flag]]></methodname><![CDATA[.]]><methodname><![CDATA[Bool]]></methodname><![CDATA[(]]><phrase><![CDATA["d"]]></phrase><![CDATA[, ]]><symbol><![CDATA[false]]></symbol><![CDATA[, ]]><phrase><![CDATA["Debug mode can be \"yes\" or \"1\" for on and something else for off"]]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[db_address]]></methodname><![CDATA[ = ]]><methodname><![CDATA[flag]]></methodname><![CDATA[.]]><methodname><![CDATA[String]]></methodname><![CDATA[(]]><phrase><![CDATA["b"]]></phrase><![CDATA[, ]]><phrase><![CDATA["127.0.0.1"]]></phrase><![CDATA[, ]]><phrase><![CDATA["Db ip address"]]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[db_port]]></methodname><![CDATA[ = ]]><methodname><![CDATA[flag]]></methodname><![CDATA[.]]><methodname><![CDATA[String]]></methodname><![CDATA[(]]><phrase><![CDATA["p"]]></phrase><![CDATA[, ]]><phrase><![CDATA["6379"]]></phrase><![CDATA[, ]]><phrase><![CDATA["DB tcp port"]]></phrase><![CDATA[)]]>
+
+<![CDATA[        ]]><methodname><![CDATA[flag]]></methodname><![CDATA[.]]><methodname><![CDATA[Parse]]></methodname><![CDATA[()]]>
+
+<![CDATA[        ]]><methodname><![CDATA[re]]></methodname><![CDATA[[0] = ]]><methodname><![CDATA[regexp]]></methodname><![CDATA[.]]><methodname><![CDATA[MustCompile]]></methodname><![CDATA[(]]><phrase><![CDATA["^https?\\:\\/\\/[\\.0-9a-zA-Z\\-\\_]+\\.imdb\\.com\\/title\\/([a-zA-Z0-9\\-\\_]+)"]]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[re]]></methodname><![CDATA[[1] = ]]><methodname><![CDATA[regexp]]></methodname><![CDATA[.]]><methodname><![CDATA[MustCompile]]></methodname><![CDATA[(]]><phrase><![CDATA["^https?\\:\\/\\/www\\.youtube\\.com\\/watch\\?.*(v)\\=([a-zA-Z0-9\\-\\_]+)"]]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[re]]></methodname><![CDATA[[2] = ]]><methodname><![CDATA[regexp]]></methodname><![CDATA[.]]><methodname><![CDATA[MustCompile]]></methodname><![CDATA[(]]><phrase><![CDATA["^https?\\:\\/\\/[a-zA-Z0-9\\-\\_]+\\.(ytimg)\\.com\\/vi\\/([a-zA-Z0-9\\-\\_]+)\\/"]]></phrase><![CDATA[)]]>
+
+<![CDATA[        ]]><methodname><![CDATA[database]]></methodname><![CDATA[.]]><methodname><![CDATA[Addr]]></methodname><![CDATA[ = *]]><methodname><![CDATA[db_address]]></methodname><![CDATA[ + ]]><phrase><![CDATA[":"]]></phrase><![CDATA[ + *]]><methodname><![CDATA[db_port]]></methodname>
+<![CDATA[        ]]><token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[wg]]></methodname><![CDATA[ ]]><methodname><![CDATA[sync]]></methodname><![CDATA[.]]><methodname><![CDATA[WaitGroup]]></methodname>
+<![CDATA[        ]]><methodname><![CDATA[reader]]></methodname><![CDATA[ := ]]><methodname><![CDATA[bufio]]></methodname><![CDATA[.]]><methodname><![CDATA[NewReader]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stdin]]></methodname><![CDATA[)]]>
+<![CDATA[        ]]><token><![CDATA[for]]></token><![CDATA[ {]]>
+<![CDATA[                ]]><methodname><![CDATA[line]]></methodname><![CDATA[, ]]><methodname><![CDATA[err]]></methodname><![CDATA[ := ]]><methodname><![CDATA[reader]]></methodname><![CDATA[.]]><methodname><![CDATA[ReadString]]></methodname><![CDATA[('\n')]]>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[err]]></methodname><![CDATA[ != ]]><symbol><![CDATA[nil]]></symbol><![CDATA[ {]]>
+<![CDATA[                        ]]><lineannotation><![CDATA[// You may check here if err == io.EOF]]></lineannotation>
+<lineannotation></lineannotation><![CDATA[                        ]]><token><![CDATA[break]]></token>
+<![CDATA[                }]]>
+<![CDATA[                ]]><methodname><![CDATA[wg]]></methodname><![CDATA[.]]><methodname><![CDATA[Add]]></methodname><![CDATA[(1)]]>
+<![CDATA[                ]]><token><![CDATA[go]]></token><![CDATA[ ]]><methodname><![CDATA[process_request]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[, &]]><methodname><![CDATA[wg]]></methodname><![CDATA[)]]>
+<![CDATA[        }]]>
+<![CDATA[        ]]><methodname><![CDATA[wg]]></methodname><![CDATA[.]]><methodname><![CDATA[Wait]]></methodname><![CDATA[()]]>
+<![CDATA[}]]>
+</programlisting></section><section><title>stats output example</title><section><title>yaml</title><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><methodname><![CDATA[---]]></methodname>
+<![CDATA[youtube-videos-ids:]]>
+<![CDATA[  -RSe8aOuZMQ: 1]]>
+<![CDATA[  8UM6Pc0LkDw: 1]]>
+<![CDATA[  80GtXgCSYJw: 1]]>
+<![CDATA[  gA1WcPP9uLk: 1]]>
+<![CDATA[youtube-img-videos-ids:]]>
+<![CDATA[  jfjGA8TyWXw: 1]]>
+<![CDATA[  weeI1G46q0o: 1]]>
+<![CDATA[  VD1ftHpJSu4: 1]]>
+<![CDATA[  WsDDhm0dAkU: 1]]>
+<![CDATA[  YoOXmuCRiQU: 1]]>
+<![CDATA[  XuMjCRlAmjc: 1]]>
+<![CDATA[  hvS8pjM8YVg: 1]]>
+<![CDATA[  aatr_2MstrI: 1]]>
+<![CDATA[  ax9ge-ymWIQ: 1]]>
+<![CDATA[  C311vyA1Ta0: 1]]>
+<![CDATA[  Y9LHxGuMb2A: 1]]>
+<![CDATA[  LoXubLsml4A: 1]]>
+<![CDATA[  KcLORGq2OiA: 1]]>
+<![CDATA[  fyaI4-5849w: 1]]>
+<![CDATA[  tdHSPnKDMZU: 1]]>
+<![CDATA[  8UM6Pc0LkDw: 2]]>
+<![CDATA[  80GtXgCSYJw: 5]]>
+<![CDATA[  byYBGEE8NCM: 1]]>
+<![CDATA[  her0dWH3svI: 1]]>
+<![CDATA[  RgKAFK5djSk: 1]]>
+<![CDATA[  dqsWzI4Hoss: 1]]>
+<![CDATA[  EKbWvGLC97Q: 1]]>
+<![CDATA[  N6-_gkIpL1E: 1]]>
+<![CDATA[  BxuY9FET9Y4: 1]]>
+<![CDATA[  87gWaABqGYs: 1]]>
+<![CDATA[  OvtwV1vXnfc: 1]]>
+<![CDATA[  kt3BrBYWUhs: 1]]>
+<![CDATA[  -RSe8aOuZMQ: 4]]>
+<![CDATA[  UVsRlX_skeU: 1]]>
+<![CDATA[  QtxvPRev3I8: 1]]>
+<![CDATA[  K0ibBPhiaG0: 1]]>
+<![CDATA[  i_yLpCLMaKk: 1]]>
+<![CDATA[  igNVdlXhKcI: 1]]>
+<![CDATA[  gA1WcPP9uLk: 4]]>
+<![CDATA[  Q6rTY4XH6TU: 2]]>
+<![CDATA[  3VT3VIRQPKA: 1]]>
+<![CDATA[  ejqrzU64dYQ: 1]]>
+<![CDATA[  dMaUNdXs6-w: 1]]>
+<![CDATA[  1UQzJfsT2eo: 1]]>
+<![CDATA[  3AtDnEC4zak: 1]]>
+<![CDATA[  jHMJrjkFwbI: 1]]>
+<![CDATA[  rIPgru7JiYQ: 1]]>
+<![CDATA[  TIrxyVt4jvQ: 1]]>
+<![CDATA[  Ey_K97x15ek: 1]]>
+<![CDATA[  GMwO-k8f9Hg: 1]]>
+<![CDATA[  nfs8NYg7yQM: 1]]>
+<![CDATA[  Gc15rdaxGMA: 1]]>
+<![CDATA[  v-Dur3uXXCQ: 1]]>
+<![CDATA[  TPxuhhC5OXE: 1]]>
+<![CDATA[  5YEqcrtsdR0: 1]]>
+<![CDATA[  JGwWNGJdvx8: 1]]>
+<![CDATA[  lp-EO5I60KA: 1]]>
+<![CDATA[  nSDgHBxUbVQ: 1]]>
+<![CDATA[  RuNnmzGi4Ao: 1]]>
+<![CDATA[  _dK2tDK9grQ: 1]]>
+<![CDATA[  MZX_2sczkmo: 1]]>
+<![CDATA[imdb-title-ids: {}]]>
+</programlisting></section></section></article>

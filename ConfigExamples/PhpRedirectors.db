@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ConfigExamples/PhpRedirectors</title><revhistory><revision><revnumber>17</revnumber><date>2011-12-26 20:32:29</date><authorinitials>The_Spider</authorinitials></revision><revision><revnumber>16</revnumber><date>2011-12-26 19:44:12</date><authorinitials>The_Spider</authorinitials></revision><revision><revnumber>15</revnumber><date>2010-03-29 11:08:45</date><authorinitials>Shoaib Ali</authorinitials><revremark>Fixed the code where strpos returns a zero does not mean its false it means its matched at first character hence needs to be checked against false boolean</revremark></revision><revision><revnumber>14</revnumber><date>2010-02-19 10:34:26</date><authorinitials>FrancescoChemolli</authorinitials><revremark>Fixed dangling wiki-links</revremark></revision><revision><revnumber>13</revnumber><date>2009-10-14 00:26:06</date><authorinitials>AmosJeffries</authorinitials><revremark>tweak.</revremark></revision><revision><revnumber>12</revnumber><date>2009-10-14 00:17:17</date><authorinitials>AmosJeffries</authorinitials><revremark>updates of example IPs, domains, and config options</revremark></revision><revision><revnumber>11</revnumber><date>2009-02-27 12:41:14</date><authorinitials>AmosJeffries</authorinitials><revremark>re-link to new redirectors page location</revremark></revision><revision><revnumber>10</revnumber><date>2009-02-04 08:14:59</date><authorinitials>AmosJeffries</authorinitials><revremark>main redirector page describes format better</revremark></revision><revision><revnumber>9</revnumber><date>2008-12-18 23:20:12</date><authorinitials>Henrik Nordström</authorinitials><revremark>Fix #! hashbangs by prefixing them by #!plain, stopping moinmoing from eating them as format directives..</revremark></revision><revision><revnumber>8</revnumber><date>2008-05-18 19:38:56</date><authorinitials>localhost</authorinitials><revremark>converted to 1.6 markup</revremark></revision><revision><revnumber>7</revnumber><date>2008-05-09 14:09:40</date><authorinitials>AmosJeffries</authorinitials><revremark>redirect_progrem is obsolete. use url_rewrite_program instead</revremark></revision><revision><revnumber>6</revnumber><date>2008-04-17 22:29:13</date><authorinitials>The_Spider</authorinitials><revremark>Removed 'that moron' from the 'Putting it all together' regarding yahoo.</revremark></revision><revision><revnumber>5</revnumber><date>2008-04-10 10:35:22</date><authorinitials>FrancescoChemolli</authorinitials><revremark>Changed the page title to CamelCase</revremark></revision><revision><revnumber>4</revnumber><date>2008-04-09 18:34:19</date><authorinitials>The_Spider</authorinitials></revision><revision><revnumber>3</revnumber><date>2008-04-09 16:31:34</date><authorinitials>The_Spider</authorinitials></revision><revision><revnumber>2</revnumber><date>2008-04-09 16:28:54</date><authorinitials>The_Spider</authorinitials></revision><revision><revnumber>1</revnumber><date>2008-04-09 15:46:21</date><authorinitials>The_Spider</authorinitials></revision></revhistory></articleinfo><section><title>Using PHP for Redirects</title><para><emphasis role="strong">Warning</emphasis>: Any example presented here is provided &quot;as-is&quot; with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list. </para><section><title>Why PHP?</title><para>When looking at the documentation for squid I was relieved to find the page regarding <ulink url="https://wiki.squid-cache.org/ConfigExamples/PhpRedirectors/Features/Redirectors#">redirecting</ulink> urls. However, when I finally got there I was disappointed to see that it was in <ulink url="http://perl.org">perl</ulink>. Not knocking perl, I know it is a more clean language than PHP, but I have little knowledge of the language, which limited my ability to edit and manipulate the redirect as I have done here. </para></section><section><title>Getting Started</title><para>It should be noted that your redirect should be executable. </para><para>I will be placing the redirect in my squid configuration directory (/etc/squid), this is not a requirement, but its easier to find when you want to go back after a few months and make a few changes. </para><para>Don't forget to add the redirect program to your squid configuration. </para><screen><![CDATA[url_rewrite_program /etc/squid/redirect.php]]></screen><para>Note: PHP directive 'stream_set_timeout' is set to 24 hours here, otherwise the script would terminate every 60 seconds (php.ini default) which could cause your proxy service to be inaccessible frequently as squid re-starts the processes. </para><section><title>Related config options</title><itemizedlist><listitem><para><ulink url="http://www.squid-cache.org/Doc/config/url_rewrite_program#">url_rewrite_program</ulink> </para></listitem><listitem><para><ulink url="http://www.squid-cache.org/Doc/config/url_rewrite_access#">url_rewrite_access</ulink> </para></listitem><listitem><para><ulink url="http://www.squid-cache.org/Doc/config/url_rewrite_bypass#">url_rewrite_bypass</ulink> </para></listitem><listitem><para><ulink url="http://www.squid-cache.org/Doc/config/url_rewrite_children#">url_rewrite_children</ulink> </para></listitem><listitem><para><ulink url="http://www.squid-cache.org/Doc/config/url_rewrite_concurrency#">url_rewrite_concurrency</ulink> </para></listitem><listitem><para><ulink url="http://www.squid-cache.org/Doc/config/url_rewrite_host_header#">url_rewrite_host_header</ulink> </para></listitem></itemizedlist></section></section><section><title>PHP Redirect (Simple)</title><screen><![CDATA[#!/usr/bin/php
+<?php
+]]><![CDATA[
+$temp = array();
+]]><![CDATA[
+// Extend stream timeout to 24 hours
+stream_set_timeout(STDIN, 86400);
+]]><![CDATA[
+while ( $input = fgets(STDIN) ) {
+  // Split the output (space delimited) from squid into an array.
+  $temp = split(' ', $input);
+]]><![CDATA[
+  // Set the URL from squid to a temporary holder.
+  $output = $temp[0] . "\n";
+]]><![CDATA[
+  // Check the URL and rewrite it if it matches foo.example.com
+  if ( strpos($temp[0], "foo.example.com") !== false ) {
+    $output = "302:http://www.example.com/\n";
+  }
+  echo $output;
+}]]></screen><para>As you can probably see this rewrites the URL so that it redirects any request that contains 'foo.example.com' to the example.com homepage. I choose the 302 HTTP code so that the URL in the users browser also reflects the redirect, otherwise it would display example.com's page and the URL would read foo.example.com. </para><para>I am fully aware that this is much more code than the perl example. Where this comes into play is later when we start looking at the requesting IP and the time, or day the request was made. </para></section><section><title>PHP Redirect (With IP Checking)</title><screen><![CDATA[#!/usr/bin/php
+<?php
+]]><![CDATA[
+$temp = array();
+]]><![CDATA[
+// Extend stream timeout to 24 hours
+stream_set_timeout(STDIN, 86400);
+]]><![CDATA[
+while ( $input = fgets(STDIN) ) {
+  // Split the output (space delimited) from squid into an array.
+  $temp = split(' ', $input);
+]]><![CDATA[
+  // Set the URL from squid to a temporary holder.
+  $output = $temp[0] . "\n";
+]]><![CDATA[
+  // Clean the Requesting IP Address field up.
+  $ip = rtrim($temp[1], "/-");
+]]><![CDATA[
+  // Check the requesting IP Address.
+  if ( $ip == "192.0.2.101" ) {
+    // Check the URL and rewrite it if it matches foo.example.com
+    if ( strpos($temp[0], "foo.example.com") !== false ) {
+      $output = "302:http://www.example.com/\n";
+    }
+  }
+]]><![CDATA[
+  echo $output;
+}]]></screen><para>This redirect takes the requesting IP Address into consideration. It does not take much editing to change the way this works. I'll leave it to you to figure out how to use this to your advantage. (Hint: '==' equal, '!=' not equal) </para></section><section><title>PHP Redirect (With day of week and time of day)</title><screen><![CDATA[#!/usr/bin/php
+<?php
+]]><![CDATA[
+$temp = array();
+]]><![CDATA[
+// Extend stream timeout to 24 hours
+stream_set_timeout(STDIN, 86400);
+]]><![CDATA[
+while ( $input = fgets(STDIN) ) {
+  // Split the output (space delimited) from squid into an array.
+  $temp = split(' ', $input);
+]]><![CDATA[
+  // Set the URL from squid to a temporary holder.
+  $output = $temp[0] . "\n";
+]]><![CDATA[
+  // Get the current day of the week and the current hour.
+  $hour = date('G');
+  $day = date('N');
+]]><![CDATA[
+  // If it is Monday - Friday and 8:00 - 17:00 (5:00 PM)
+  if ( $hour >= 8 && $hour <= 16 && $day <= 5 ) {
+    // Check the URL and rewrite it if it matches foo.example.com
+    if ( strpos($temp[0], "foo.example.com") !== false ) {
+      $output = "302:http://www.example.com/\n";
+    }
+  }
+]]><![CDATA[
+  echo $output;
+}]]></screen><para>This will perform the redirect but only during a work week and during work hours. </para></section><section><title>Putting it all together</title><screen><![CDATA[#!/usr/bin/php
+<?php
+]]><![CDATA[
+$temp = array();
+]]><![CDATA[
+// Extend stream timeout to 24 hours
+stream_set_timeout(STDIN, 86400);
+]]><![CDATA[
+while ( $input = fgets(STDIN) ) {
+  // Split the output (space delimited) from squid into an array.
+  $temp = split(' ', $input);
+]]><![CDATA[
+  // Set the URL from squid to a temporary holder.
+  $output = $temp[0] . "\n";
+]]><![CDATA[
+  // Clean the Requesting IP Address field up.
+  $ip = rtrim($temp[1], "/-");
+]]><![CDATA[
+  // Get the current day of the week and the current hour.
+  $hour = date('G');
+  $day = date('N');
+]]><![CDATA[
+  if ($hour >= 8 && $hour <= 16 && $day <= 5) {
+    if ( strpos($temp[0], "foo.example.com") !== false ) {
+      $output = "302:http://www.example.com/\n";
+    } elseif ( strpos($temp[0], "bar.example.com") !== false) {
+      $output = "302:http://www.example.com/\n";
+    }
+  }
+  if ( strpos($temp[0], "bad.example.com") !== false ) {
+    $output = "302:http://www.example.com/\n";
+  } elseif ( $ip == "192.0.2.101" && (strpos($temp[0], "example.com") !== false) ) {
+    $output = "302:http://example.com/\n";
+  }
+]]><![CDATA[
+  echo $output;
+}]]></screen><para>This is rather interesting, it redirects some sites (foo.example.com, bar.example.com) but only during work hours. It also redirects <emphasis>bad.example.com</emphasis>, and forces a machine to use example.com instead of www.example.com </para><!--rule (<hr>) is not applicable to DocBook--><itemizedlist><listitem override="none"><para><ulink url="https://wiki.squid-cache.org/ConfigExamples/PhpRedirectors/CategoryConfigExample#">CategoryConfigExample</ulink> </para></listitem></itemizedlist></section></section></article>
