@@ -1,5 +1,7 @@
+JEKYLL:=~/.gem/ruby/2.7.0/bin/jekyll
+
 serve:
-	jekyll serve --incremental --watch -P 8080 -H \*
+	$(JEKYLL) serve --incremental --watch -P 8080 -H \*
 
 clean:
-	jekyll clean
+	$(JEKYLL) clean

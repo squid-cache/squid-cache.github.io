@@ -41,4 +41,12 @@ plugins:
 #   - vendor/ruby/
 
 exclude: ["*.rst", "*.db"]
+include: ["*.md"]
 
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "page"
+      output: true
