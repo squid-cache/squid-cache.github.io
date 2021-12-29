@@ -1,5 +1,5 @@
 serve:
-	jekyll serve --incremental -P 8080 -H \*
+	jekyll serve --incremental --watch -P 8080 -H \*
 
 clean:
 	jekyll clean
