@@ -1,1 +1,16 @@
+title: Squid Web Cache wiki
+email: info@squid-cache.org
+description: >-
+  WIP for the Squid Web Cache wiki
+
+markdown: kramdown
+theme: minima
+
 exclude: ["*.rst", "*.db"]
+
+defaults:
+  -
+    scope:
+      path: "" # all files
+    values:
+      layout: "default"
