@@ -28,12 +28,13 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-optional-front-matter
+  - jekyll-titles-from-headings
+#  - jekyll-index-pages # version conflict
 # - jekyll-include-cache
 # - jekyll-sitemap
 # - jekyll-mentions
 # - jekyll-target-blank
 # - jekyll-default-layout
-# - titles-from-headings
 
 
 # Adding the following slows performance down to a crawl
