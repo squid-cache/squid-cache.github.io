@@ -27,26 +27,28 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-optional-front-matter
+# - jekyll-include-cache
+# - jekyll-sitemap
+# - jekyll-mentions
+# - jekyll-target-blank
+# - jekyll-default-layout
+# - titles-from-headings
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
+
+# Adding the following slows performance down to a crawl
+
 # exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-
-exclude: ["*.rst", "*.db"]
-include: ["*.md"]
-
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      layout: "page"
-      output: true
+#   - "*.rst"
+#   - "*.db"
+#   - ".git/"
+#   - "Gemfile"
+#   - "Gemfile.lock"
+# include: ["*.md"]
+#
+# defaults:
+#   -
+#     scope:
+#       path: "*.md"
+#     values:
+#       layout: "page"
