@@ -38,7 +38,7 @@ buffer and virtual `parse` method which splits the buffer content into
 message segments for followup processing.
 
 Parsing of mime header block is (for now) handled as char\* strings by
-`HttpMsg}} objects in turn using {{{HttpHeader` objects outside the
+`HttpMsg` objects in turn using `HttpHeader` objects outside the
 `Parser` hierarchy. This object and all the logics it uses need to be
 refactored to operate on the SBuf presented by Http::One::Parser method
 `mimeHeaders`
