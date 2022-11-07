@@ -1,11 +1,11 @@
 The **Cache Manager** is the Squid internal subsystem that provides a
 common way for registering, finding and triggering management actions.
 It interfaces with the outside world through the normal Squid HTTP
-server, responding requests made with the [cache\_object
-scheme](/CacheObjectScheme#)
-or with the `/squid-internal-mgr` well-known URL path. Sometimes it is
-confused with the [Cache Manager
-CGI](/CacheManagerCgi#).
+server, responding requests made with the
+[cache_object scheme](/CacheObjectScheme#)
+or with the `/squid-internal-mgr` well-known URL path.
+
+Sometimes it isconfused with the [Cache Manager CGI](/CacheManagerCgi#).
 This last one is just an external CGI application that reads data from
 the Squid Cache Manager and presents in HTML.
 
@@ -23,12 +23,8 @@ descriptions using the `Mgr::RegisterAction` API.
 
 Internally, the handlers are C functions with a common prototype.
 
-# See also
-
+## See also
   - [CacheManagerObject](/CacheManagerObject#)
-
   - [CacheObjectProtocol](/CacheObjectProtocol#)
-
   - [CacheObjectScheme](/CacheObjectScheme#)
-
   - [CacheManagerCgi](/CacheManagerCgi#)
