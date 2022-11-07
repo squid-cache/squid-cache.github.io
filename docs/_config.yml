@@ -1,4 +1,9 @@
 # theme: minima
-theme: slate
+remote_theme: pages-themes/slate@v0.2.0
 title: "[WIP] Squid Web Cache wiki"
 description: work-in-progress to migrate the Squid Wiki to GitHub pages
+
+url: "https://kinkie.github.io"
+plugins:
+  - jekyll-sitemap
+  - jekyll-remote-theme # add this line to the plugins list if you already have one
