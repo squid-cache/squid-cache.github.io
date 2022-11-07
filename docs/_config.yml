@@ -1,3 +1,4 @@
-theme: minima
+# theme: minima
+theme: slate
 title: "[WIP] Squid Web Cache wiki"
 description: work-in-progress to migrate the Squid Wiki to GitHub pages
