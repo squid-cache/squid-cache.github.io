@@ -231,7 +231,7 @@ directive.
     [acl](http://www.squid-cache.org/Doc/config/acl#) documentation for
     your Squid version and choose carefully.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Selecting an action only to happen at a particular step can be done
     using an **at\_step** type
     [acl](http://www.squid-cache.org/Doc/config/acl#).

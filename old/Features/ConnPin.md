@@ -50,7 +50,7 @@ This feature has been implemented for the Squid-3 branch starting with
 by
 [ChristosTsantilas](/ChristosTsantilas#)
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     NOTE: This feature does not exist in
     [Squid-3.0](/Squid-3.0#).
 

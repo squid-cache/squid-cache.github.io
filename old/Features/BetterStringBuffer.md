@@ -25,7 +25,7 @@ Plans for the string API are intended to allow improved access at all
 current usage of strings (ESI, ICAP, others?) and allow for improved and
 safer access to larger buffers (HTTP parser, URI Parser, etc).
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Please clarify your goal. What "usage" aspects are you trying to
     improve? APIs are rarely the goal, they are usually the means to
     achieve some goal(s). It is not clear what "improved access" means.
@@ -65,7 +65,7 @@ we can insert them seamlessly at any point in the code with no loss of
 performance, but an overall gain in places where two can reference each
 other.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Can you rewrite the above as a sequence of specific steps? This is a
     big and important project that will affect other code. Let's try to
     be clear about the steps. This will also help you describe the
@@ -121,7 +121,7 @@ triggered. Destructor cascade is kicked-off by the buffer when it needs
 to de-allocate and all remaining child strings must duplicate their data
 or loose it.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     The above design will work, but there are alternatives. Can you
     compare the above with a simpler design where the buffer is locked
     by stings using it, but does not point back to them; if a string
@@ -144,7 +144,7 @@ the child/parent buffers/strings one object type the implementation for
 either can be coded and tested for speed + benefits in squid and the
 best kept.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Please also address the overheads of content insertion or explicitly
     say that we are not going to address that at this stage: The above
     design optimizes parsing, but does not help much with the opposite
@@ -168,7 +168,7 @@ object-parsing may be peripherally affected.
 NP: a generically-written buffer may be a string itself referencing
 another larger buffer elsewhere.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     This needs clarification. Please define the primary roles of the
     buffer and string classes. For example, the string is responsible
     for maintaining information about an area of a buffer (buffer,
@@ -191,7 +191,7 @@ parent-buffer in addition to the character-pointer into the parent
 buffer if parent is present, or to its own duplicated buffer if
 necessary.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     I do not think you need "parent buffers" and "own buffers". One kind
     of buffer should suffice. The "own buffer" is just a buffer that is
     currently used by one string. That can change whenever the string or
@@ -230,7 +230,7 @@ length agnostic. It is up to the high-level object whether it outputs
 the original input buffer or the (possibly altered) child strings
 individually re-formatted.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Perhaps I am missing something, but I think it is OK to pass
     constant string content pointers to external code (I/O, system
     libraries, etc.) as long as the string is guaranteed to remain
@@ -270,7 +270,7 @@ There are two options for handling this:
     unparsed/garbage. All IO at that point MUST be performed from the
     top-down to encompass these 'deletions'.
     
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         It sounds like your buffer consists of parts here. If that is
         the case, the above design needs to reflect that. At least, it
         was not clear to me that you are proposing support for

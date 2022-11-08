@@ -37,11 +37,11 @@ Chadd. It has not changed significantly since older TPROXY.
     | libcap 2.09 or later      | any                                                                                 |
     
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     **libcap2** is needed at run time. To build you need the developer
     versions (\*-dev) to compile with Squid.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     NP: the versions above are a minimum from the expected working
     versions for the below config.
 
@@ -60,7 +60,7 @@ Chadd. It has not changed significantly since older TPROXY.
     
       - 2.6.32 to 2.6.34 have bridging issues on some systems.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     [Squid-3.4](/Squid-3.4#)
     also supports TPROXY on BSD systems with PF firewall using
     **divert-to** rules in place of the Linux iptables rules.
@@ -76,7 +76,7 @@ squid.conf settings
     http_port 3128
     http_port 3129 tproxy
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     NP: A dedicated squid port for tproxy is REQUIRED. The way TPROXYv4
     works makes it incompatible with NAT interception, reverse-proxy
     acceleration, and standard proxy traffic. The **intercept**,
@@ -191,7 +191,7 @@ Or configure **/etc/sysctl.conf**:
 
 ### iptables on a Router device
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     For IPv6 the rules are identical. But the *ip6tables* tool needs to
     be used in place of *iptables*
 
@@ -285,7 +285,7 @@ the troubleshooting section for alternative approaches.
 ## WCCP Configuration (only if you use WCCP)
 
   - *by Steve Wilton*
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     $ROUTERIP needs to be replaced with the IP Squid uses to contact the
     WCCP router.
 
@@ -423,7 +423,7 @@ back to Squid.
 
 ### Timeouts with Squid not running in the router directly
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     The above configuration assumes that squid is running on the router
     OR has a direct connection to the Internet without having to go
@@ -443,7 +443,7 @@ TOS set by Squid
 and MAC source have all been found to be useful under specific
 situations. **IP address rules are the one thing guaranteed to fail.**
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     We should not really need to say it; but these exception rules
     **MUST** be placed before any of the capture TPROXY/DIVERT rules.
 

@@ -121,10 +121,10 @@ commands:
     cd squid-2.6.STABLE14
     zcat /tmp/squid-2.6.STABLE13-STABLE14.diff.gz | patch -p1
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Squid-2 patches require the **-p1** option.
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     Squid-3 patches require the **-p0** option.
 
 After the patch has been applied, you must rebuild Squid from the very
@@ -283,7 +283,7 @@ repository to pull the source package information. Features which are
 not supported by the distribution package will need investigation to
 discover the dependency package and install it.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     The usual one requested is **libssl-dev** for SSL support.
     
       - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
@@ -370,7 +370,7 @@ environments, and -devel version of libraries must be installed.
 
 |                                                                        |                                                                                                                                         |
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | Squid will by default, install into */usr/local/squid*. If you wish to install somewhere else, see the *--prefix* option for configure. |
+| ℹ️ | Squid will by default, install into */usr/local/squid*. If you wish to install somewhere else, see the *--prefix* option for configure. |
 
 Now, add a new Cygwin user - see the Cygwin user guide - and map it to
 SYSTEM, or create a new NT user, and a matching Cygwin user and they
@@ -407,7 +407,7 @@ tools must be downloaded separately:
   - db-1.85: [TinyCOBOL download
     area](http://tiny-cobol.sourceforge.net/download.php)
     
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         3.2+ releases require a newer 4.6 or later version of libdb
 
 Before building Squid with SSL support, some operations are needed (in

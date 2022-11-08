@@ -171,7 +171,7 @@ with
 [tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address#)
 which will get around this problem for DIRECT requests.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     This is only needed for Squid-3.1 series. Later Squid do this
     automatically when selecting the outgoing connection properties.
 

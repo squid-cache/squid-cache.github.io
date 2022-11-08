@@ -146,7 +146,7 @@ backend web server.
 
 |                                                                        |                                                                  |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | To pass details back as given **login=PASS** is an exact string. |
+| ℹ️ | To pass details back as given **login=PASS** is an exact string. |
 
 ### Visitor requests can force fetching new objects from the back-end server
 

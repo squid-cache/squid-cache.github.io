@@ -73,13 +73,13 @@ Edit c-icap.conf as follows:
 Edit paths if necessary and start c-icap server. Add startup script to
 your OS.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: [Method OPTIONS is excluding from
     scanning](http://squidclamav.darold.net/news.html) in latest
     squidclamav release (starting from squidclamav version 6.14). So,
     permit access for it not required.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: TmpDir usually set to /var/tmp (this is default). Be **very**
     careful when change it. TmpDir uses for temp files when oblect in
     memory greater than MaxMemObject. And this temp files
@@ -87,7 +87,7 @@ your OS.
     housekeeping for TmpDir otherwise free space on /var filesystem can
     ran out on high loaded servers.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: In some cases you can increase MaxMemObject to increase
     performance at the cost of some increase in consumption of RAM.
     Sometimes it is advisable to set this parameter to the maximum value
@@ -109,7 +109,7 @@ performance and memory issues and DetectPUA due to much false-positives.
 Also take care about antivirus databases updates - it will occurs often
 enough. I use 24 times per day.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: ClamAV daemon (clamd) is memory consumption service, it uses
     about 200-300 megabytes in minimal configuration (mainly used to
     store AV database in memory), it can be higher during deep scans of
@@ -119,7 +119,7 @@ enough. I use 24 times per day.
 
 <!-- end list -->
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: It is important to set StreamMaxLength parameter in clamd.conf
     to the same value as maxsize in squidclamav.conf.
 
@@ -303,14 +303,14 @@ where squidclamav\_whitelist contains:
     threatcenter\.crdf\.fr
     ...
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: You may want to use I-CAP templates for redirection, against
     squidclamav redirection. In this case you must customize c-icap
     templates according to your needs.
 
 ### Squid Configuration File
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     [Squid-3.4](/Squid-3.4#)
     and older need to be built with the **--enable-icap-client** option.
     Newer releases have this enabled by default.
@@ -331,7 +331,7 @@ Paste the configuration file like this:
     icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav bypass=off
     adaptation_access service_avi_resp allow all
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     IPv6-enabled operating systems may resolve localhost to the
     dual-stack enabled ::1 address. If you have troubles with
     connectivity to IPv4-only ICAP services, just replace **localhost**
@@ -363,7 +363,7 @@ then configuring and build according your ClamAV and c-icap build types
     gmake
     gmake install-strip
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     To build submodule clamav\_mod (uses libclamav) you can require
     patch your c-icap installation with last fixes. It uses OpenSSL
     headers dependency and you can have problems with modules build.
@@ -394,7 +394,7 @@ Add following line at the end of c-icap.conf:
 
     Include virus_scan.conf
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: You also must create symbolic link in ClamAV installation
     directory pointed to ClamAV antivirus database directory, configured
     for daemon in clamd.conf, for example:
@@ -407,7 +407,7 @@ Finally restart c-icap service to accept changes.
 
 ### Squid Configuration File
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     [Squid-3.4](/Squid-3.4#)
     needs to be built with the **--enable-icap-client** option. Newer
     releases have this enabled by default.
@@ -420,7 +420,7 @@ Paste the configuration file like this:
     icap_service service_avi_resp respmod_precache icap://localhost:1344/virus_scan bypass=on
     adaptation_access service_avi_resp allow all
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     When using squidclamav, you must bypass whitelisted sites with Squid
     ACL's and
     [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)
@@ -478,7 +478,7 @@ Adjust srv\_url\_check.conf as follows:
     
     url_check.DefaultAction pass AddXHeader "X-Next-Services"
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: Using whitelist is good idea for performance reasons. It is
     plain text file with 2nd level domain names. All hostnames beyong
     this domains will be pass. Also setup DNS cache is also great idea
@@ -495,7 +495,7 @@ and add this to your squid.conf:
 Finally you must restart c-icap service and restart your squid. That's
 basically all.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: Add DNSBL ICAP service **before** ClamAV antivirus service.
 
 When using squidclamav AV service, can be better to create adaptation
@@ -520,7 +520,7 @@ chain on requests, like this:
     icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav
     adaptation_access service_avi_resp allow all
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     When using DNSBL, it is recommended to set up a DNS cache on the
     c-icap host for performance.
 
@@ -550,21 +550,21 @@ High-load setups must be separated between tiers.
     correct access - so as not to overload the individual stages of
     unnecessary work.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     c-icap workers produces high CPU load during scanning in all cases.
     You must minimize scanning as much as possible. Do not scan all data
     types. Do not scan trusted sites. And do not try to scan Youtube
     videos, of course.
     ![:)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     On some Solaris setups you can get performance gain by using
     libmtmalloc for c-icap processes. Just add *-lmtmalloc* to CFLAGS
     and CXXFLAGS when configuring. This also can reduce memory lock
     contention on multi-core CPU boxes. This solution can also reduce
     the memory consumption problem for clamd.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Clamd with custom databases
     ([SecuriteInfo](https://www.securiteinfo.com/), etc.) or latest
     version (0.102.x) uses 700 megabytes of RAM and above. Better in
@@ -577,11 +577,11 @@ setups can be better.
 
 To build this, keep in mind:
 
-. ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+. ℹ️
 c-icap should remain on squid's tier; due to squid connectivity with
 c-icap over TCP is non-reliable.
 
-. ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+. ℹ️
 squidclamav will talk with clamd via TCP; just modify squidclamav.conf
 and restart c-icap:
 
@@ -590,10 +590,10 @@ and restart c-icap:
   clamd_port 3310
 ```
 
-. ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+. ℹ️
 Comment out clamd\_local in squidclamav.conf.
 
-. ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+. ℹ️
 On ClamAV tier uncomment this parameter in clamd.conf and restart
 daemon:
 
@@ -601,7 +601,7 @@ daemon:
   TCPSocket 3310
 ```
 
-. ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+. ℹ️
 Don't forget to open TCP port 3310 on ClamAV tier firewall.
 
 ### C-ICAP monitoring
@@ -683,11 +683,11 @@ Here is also Munin plugins for C-ICAP monitoring (performance-related
 
 ## Troubleshooting
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     When upgrading c-icap server, you also need (in most cases) to
     rebuild squidclamav to aviod possible API incompatibility.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     In case of c-icap permanently restarts, increase DebugLevel in
     c-icap.conf and check ServerLog first. Beware, DebugLevel 0 is
     production value, which can mask any problems during tune up.
@@ -716,7 +716,7 @@ transaction being considered. In some cases, adaptation actions chain
 can be mutually exclusive. So, be careful with adaptation configuration.
 Thoroughly test adaptation logic.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: The simplest case is to chain adaptations with the same access
     scheme. When access scheme is different for chained adaptations, use
     [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)

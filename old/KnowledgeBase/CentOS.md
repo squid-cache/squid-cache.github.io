@@ -193,7 +193,7 @@ Install Procedure:
     enabled=1
     gpgcheck=0
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     **Eliezer:** a nice build from a friend that is hosted on SUSE
     servers.
 

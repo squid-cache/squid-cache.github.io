@@ -173,7 +173,7 @@ When compiled 64-bit the `  %>a  ` and `  %>p  `
 log **::** and **0** respectively, and the DNS source filter starts
 rejecting DNS responses as it thinks their src IP is **::**.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     This happens because Solaris 9 wrongly defined part of the universal
     IP address information structure **struct addrinfo**. We rely on
     this part for receiving remote IPs.
@@ -204,7 +204,7 @@ filedescriptors, and Squid picks up the limit at build time.
     ./configure ...
     make install
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Be sure to run `make clean` before ./configure if you have already
     run ./configure as the script might otherwise have cached the prior
     result.

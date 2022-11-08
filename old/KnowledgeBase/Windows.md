@@ -11,7 +11,7 @@ supported.
 On Windows 2000 and later the service is configured to use the Windows
 Service Recovery option restarting automatically after 60 seconds.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     The original development code name of the 2.5 project port was
     SquidNT, but after the 2.6.STABLE4 release, this project was
     complete. So when speaking about Squid on Windows, people should
@@ -258,7 +258,7 @@ environments, and -devel version of libraries must be installed.
 
 |                                                                        |                                                                                                                                         |
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | Squid will by default, install into */usr/local/squid*. If you wish to install somewhere else, see the *--prefix* option for configure. |
+| ℹ️ | Squid will by default, install into */usr/local/squid*. If you wish to install somewhere else, see the *--prefix* option for configure. |
 
 Now, add a new Cygwin user - see the Cygwin user guide - and map it to
 SYSTEM, or create a new NT user, and a matching Cygwin user and they
@@ -295,7 +295,7 @@ tools must be downloaded separately:
   - db-1.85: [TinyCOBOL download
     area](http://tiny-cobol.sourceforge.net/download.php)
     
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         3.2+ releases require a newer 4.6 or later version of libdb
 
 Before building Squid with SSL support, some operations are needed (in

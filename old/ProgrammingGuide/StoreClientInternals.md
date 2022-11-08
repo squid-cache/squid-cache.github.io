@@ -1,4 +1,4 @@
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     This documentation was written for Squid-2.6
 
 By

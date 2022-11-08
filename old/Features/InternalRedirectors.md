@@ -26,8 +26,8 @@ overrides internal redirectors and the external helper is used instead.
 
 |                                                                        |                                                                                                                       |
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | The format for 3.x differs from 2.x in the directives it provides. This description covers the 2.x version in detail. |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | The patch for 2.x has been accepted into the main code for testing and release in 2.8                                 |
+| ℹ️ | The format for 3.x differs from 2.x in the directives it provides. This description covers the 2.x version in detail. |
+| ℹ️ | The patch for 2.x has been accepted into the main code for testing and release in 2.8                                 |
 
 Squid 2.x this feature is enabled by default.
 
@@ -45,7 +45,7 @@ names differ, but behavior remains identical.
 
 |                                                                        |                                                                                                                       |
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | The format for 3.x differs from 2.x in the directives it provides. This description covers the 3.x version in detail. |
+| ℹ️ | The format for 3.x differs from 2.x in the directives it provides. This description covers the 3.x version in detail. |
 
 When squid is built with configure option:
 

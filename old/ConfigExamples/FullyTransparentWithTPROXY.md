@@ -10,7 +10,7 @@ This is a work in progress (read: a place for Adrian to jot down TPROXY
 documentation notes as he's coming up with the authoritative
 documentation.)
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     The following documentation applies to Squid-2 WCCPv2 support and
     TPROXYv2 support running on a Linux box. If you have a newer version
     of the exact configuration options may differ.
@@ -19,7 +19,7 @@ documentation.)
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [Features/Tproxy4](/Features/Tproxy4#)) |
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     The configuration for Squid-3.1 is very different than the following
     documentation.
 

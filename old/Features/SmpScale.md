@@ -568,7 +568,7 @@ see above.
 
 ### Cannot bind socket FD NN to \[::\]: (13) Permission denied
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Also may display as **Cannot bind socket FD NN to 0.0.0.0: (13)
     Permission denied** if you disabled IPv6.
 

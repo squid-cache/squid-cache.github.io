@@ -2,26 +2,15 @@
 
 by *Markus Moeller*
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+Warning: Any example presented here is provided "as-is" with no support
+or guarantee of suitability. If you have any further questions about
+these examples please email the squid-users mailing list.
 
 ## Outline
 
-Squid-2.6 and later are capable of performing Kerberos authentication
-(for example with Windows Vista).
-
-For Squid-2.7 and later two helpers are bundled with the Squid sources:
-
-  - **squid\_kerb\_auth** for Unix/Linux systems
-
-  - **mswin\_negotiate\_auth.exe** for Windows systems
-
-For Squid-3.2 and later the Unix/Linux helper is called
-**negotiate\_kerberos\_auth**.
-
-Earlier Squid require squid\_kerb\_auth from
-[](https://sourceforge.net/project/showfiles.php?group_id=196348)
+Two helpers are bundled with the Squid sources:
+  - **negotiate_kerberos_auth** for Squid running on Unix/Linux systems
+  - **mswin_negotiate_auth.exe** ffor Squid running on Windows systems
 
 The following documentation applies to the helper Unix/Linux systems.
 The Windows helper doesnot need any kind of configuration, it works just
@@ -30,18 +19,14 @@ out of the box.
 ## Pre-requisites for Active Directory integration
 
 Install msktutil package from [](http://fuhm.net/software/msktutil/) or
-[](https://code.google.com/p/msktutil/).
-
-  - or
-
-Install Samba
+[](https://code.google.com/p/msktutil/), or install [Samba](http://www.samba.org/)
 
 ## krb5.conf Configuration
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     In IE the proxy must be specified as FQDN not as an IP-address
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     rc4-hmac should be listed as encryption type for windows 2003.
 
 A minimal setup without DNS resolution of AD servers would be (MIT
@@ -269,5 +254,3 @@ If squid\_kerb\_ldap is used the following steps are happening
     authentication to the ldap server
     
     ![Squid-6.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-6.jpeg)
-
-[CategoryConfigExample](/CategoryConfigExample#)

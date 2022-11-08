@@ -110,7 +110,7 @@ You can now make and commit changes to your local feature branch.
         $ fork_point=$(git merge-base --fork-point upstream/master support-foobar)
         $ git diff $fork_point
 
-![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+ℹ️
 Use *git diff --check ...* to check for basic whitespace problems.
 
 ## Squash all the feature branch changes into a single commit
@@ -122,7 +122,7 @@ your GitHub repository *before* squashing your local tree and do *not*
 publish the squashed branch until you are sure it ends up with the same
 code as the last pushed commit.
 
-![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+ℹ️
 If you need to both rebase and squash your feature branch, you may use
 interactive
 [rebase](#Rebase_your_feature_branch_to_be_in_sync_with_the_current_upstream_master)
@@ -190,7 +190,7 @@ These commands rewrite branch history. Rewriting history may mess up or
 even permanently destroy your work\! Consider pushing all changes to
 your GitHub repository *before* rebasing your local tree.
 
-![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+ℹ️
 If you need to both rebase and squash your feature branch, you may use
 the interactive rebase command shown below and replace the default
 "pick" with "squash" commands there. The resulting squashed commit will

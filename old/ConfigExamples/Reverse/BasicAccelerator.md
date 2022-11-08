@@ -16,7 +16,7 @@ are.
 
 |                                                                        |                                                                                                                                        |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | The accel option to [http\_port](http://www.squid-cache.org/Doc/config/http_port#) should only be specified for 2.6.STABLE8 and later. |
+| ℹ️ | The accel option to [http\_port](http://www.squid-cache.org/Doc/config/http_port#) should only be specified for 2.6.STABLE8 and later. |
 
 |                                                                      |                                                                                                                                         |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |

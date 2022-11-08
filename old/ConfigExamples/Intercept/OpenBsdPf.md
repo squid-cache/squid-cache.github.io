@@ -49,7 +49,7 @@ connections:
 
 ### NAT Interception proxy
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     This is available as standard with the OpenBSD 5.0+ squid
     port/packages.
 

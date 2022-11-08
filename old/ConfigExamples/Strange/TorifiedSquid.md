@@ -38,7 +38,7 @@ two years of successfully operating in a productive server with
 This configuration can also be used with
 [Squid-4](/Squid-4#).
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: We are required to use Privoxy as intermediate proxy, because
     of Tor is SOCKS, not HTTP proxy, and cannot be directly chained with
     Squid.
@@ -69,7 +69,7 @@ Edit torrc as follows:
     #SocksPolicy accept 192.168.0.0/16
     SocksPolicy reject *
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: Pay attention, Tor should run from unprivileged user due to
     security reasons.
 
@@ -186,18 +186,18 @@ For squid 4.x+, adjust access\_log settings as follows:
     tg\.me.*
     tdesktop.*
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: In some cases it is better to not log Tor tunnel accesses.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: Currently you must **splice** Tor tunneled connections,
     because of Squid can't re-crypt peer connections yet. It is
     recommended to use this configuration in bump-enabled setups.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: url.tor and url.nobump are different lists.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: Bridges obfs3 and older is no more supported by Tor.
 
 ## Performance considerations

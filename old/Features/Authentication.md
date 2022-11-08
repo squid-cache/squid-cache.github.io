@@ -315,7 +315,7 @@ See also:
 It depends on the authentication scheme; Squid does some caching when it
 can.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: Caching credentials has nothing to do with how often the user
     needs to re-authenticate himself. It is the browser who maintains
     the session, and re-authentication is a business between the user

@@ -25,7 +25,7 @@ the checks operate.
 
 |                                                                        |                                                                                                                                                                   |
 | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | The information here is current for version 3.1 see [acl](http://www.squid-cache.org/Doc/config/acl#) for the latest configuration guide list of available types. |
+| ℹ️ | The information here is current for version 3.1 see [acl](http://www.squid-cache.org/Doc/config/acl#) for the latest configuration guide list of available types. |
 
 Squid knows about the following types of ACL elements:
 
@@ -700,7 +700,7 @@ specific of these (e.g. *www.example.com*) to be used.
 
 |                                                                        |                                                                                                                                                                                                                                                                                                                                            |
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | Squid-2.4 and later will warn you when this kind of configuration is used. If your Squid does not warn you while reading the configuration file you do not have the problem described below. Also the configuration here uses the dstdomain syntax of Squid-2.1 or earlier.. (Squid-2.2 and later needs to have domains prefixed by a dot) |
+| ℹ️ | Squid-2.4 and later will warn you when this kind of configuration is used. If your Squid does not warn you while reading the configuration file you do not have the problem described below. Also the configuration here uses the dstdomain syntax of Squid-2.1 or earlier.. (Squid-2.2 and later needs to have domains prefixed by a dot) |
 
 There is a subtle problem with domain-name based access controls when a
 single ACL element has an entry that is a subdomain of another entry.

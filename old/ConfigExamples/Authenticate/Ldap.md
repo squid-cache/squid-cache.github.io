@@ -46,7 +46,7 @@ First edit squid.conf so that authentication against LDAP works
     
     |                                                                        |                                                                                                                                  |
     | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-    | ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | If you want to use the anonymous LDAP binding method then just don't specify the bind DN (-D option, and it's related -w option) |
+    | ℹ️ | If you want to use the anonymous LDAP binding method then just don't specify the bind DN (-D option, and it's related -w option) |
     
 
 ### SSL/TLS adjustments
@@ -56,7 +56,7 @@ an Ldap server through a SSL/TLS secure channel then pass -ZZ argument
 to squid\_ldap\_auth program. For more information see the
 squid\_ldap\_auth manual
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: You should have generated your SSL certs and placed it under
     /etc/openldap/cacerts directory on squid server before using secure
     channel authentication. Remember that this only secures the traffic

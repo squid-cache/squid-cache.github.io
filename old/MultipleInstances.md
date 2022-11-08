@@ -24,7 +24,7 @@ will interact only with other processes using the same service name. A
 service name is always present, the default service name is *squid* is
 used when the **-n** option is absent from the command line.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     A service name may only contain ASCI alphanumeric values (a-z, A-Z,
     0-9).
 

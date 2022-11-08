@@ -30,7 +30,7 @@ Some resolvers have been identified which support EDNS on IPv6 address
 lookups (AAAA)) but which fail or reject requests with EDNS on IPv4
 address lookups (A).
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     To resolve this Squid is currently hard-coded not to send EDNS hints
     on the IPv4 A lookups.
 

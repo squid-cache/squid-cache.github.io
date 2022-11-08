@@ -82,9 +82,9 @@ limit on total file descriptors for all processes.
 
 |                                                                                                                                           |                                                                 |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.0-2.6 provide a ./configure option --with-maxfd=N       |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.7+ provide a squid.conf option max\_filedescriptors     |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 3.x provide a ./configure option --with-filedescriptors=N |
+| ℹ️ ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.0-2.6 provide a ./configure option --with-maxfd=N       |
+| ℹ️ ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.7+ provide a squid.conf option max\_filedescriptors     |
+| ℹ️ ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 3.x provide a ./configure option --with-filedescriptors=N |
 
   - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
     Even with Squid built to support large numbers of FD and the system
@@ -390,8 +390,8 @@ To make Squid allow underscores in hostnames:
     
     |                                                                        |           |                                                         |
     | ---------------------------------------------------------------------- | --------- | ------------------------------------------------------- |
-    | ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | Squid 2.x | Re-build with **--enable-underscores** configure option |
-    | ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | Squid-3.x | add to squid.conf: **enable\_underscores on**           |
+    | ℹ️ | Squid 2.x | Re-build with **--enable-underscores** configure option |
+    | ℹ️ | Squid-3.x | add to squid.conf: **enable\_underscores on**           |
     
 
 # Why am I getting access denied from a sibling cache?
@@ -402,7 +402,7 @@ The answer to this is somewhat complicated, so please hold on.
     
     |                                                                        |                                                                                                                       |
     | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-    | ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | Most of this text is taken from [ICP and the Squid Web Cache](http://www.life-gone-hazy.com/writings/icp-squid.ps.gz) |
+    | ℹ️ | Most of this text is taken from [ICP and the Squid Web Cache](http://www.life-gone-hazy.com/writings/icp-squid.ps.gz) |
     
 
 An ICP query does not include any parent or sibling designation, so the
@@ -483,7 +483,7 @@ already running, or it could be from another program. To verify, use the
 
     netstat -antup | grep 8080
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
     Windows Users need to use *netstat -ant* and manually find the
     entry.
@@ -540,7 +540,7 @@ consider.
 
 # WARNING: Failed to start 'dnsserver'
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
     All current Squid now contain an optimized internal DNS engine.
     Which is much faster and responsive that then the dnsserver helper.
@@ -556,7 +556,7 @@ see
 
 # FATAL: ipcache\_init: DNS name lookup tests failed
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
     This issue is now permanently resolved in Squid 3.1 and later.
 
@@ -615,18 +615,18 @@ Either
 
 2.  some other process has bound itself to the port
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     Remember that root privileges are required to open port numbers less
     than 1024. If you see this message when using a high port number, or
     even when starting Squid as root, then the port has already been
     opened by another process.
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     SELinux can also deny squid access to port 80, even if you are
     starting squid as root. Configure SELinux to allow squid to open
     port 80 or disable SELinux in this case.
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     Maybe you are running in the HTTP Accelerator mode and there is
     already a HTTP server running on port 80? If you're really stuck,
     install the way cool
@@ -693,7 +693,7 @@ or
     # chown root /usr/local/squid/bin/pinger
     # chmod 4755 /usr/local/squid/bin/pinger
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
     location of the pinger binary may vary. I recommend searching for it
     first:
@@ -758,7 +758,7 @@ Kennedy](mailto:mtk@ny.ubs.com) gives a great explanation:
 
 |                                                                        |                                          |
 | ---------------------------------------------------------------------- | ---------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | These messages are specific to squid 2.x |
+| ℹ️ | These messages are specific to squid 2.x |
 
 Got these messages in my cache.log - I guess it means that the index
 contents do not match the contents on disk.
@@ -900,7 +900,7 @@ may get the above error message. To check your system, run:
 
     ifconfig
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Windows users must use: **ipfconfig**
 
 The result should contain:
@@ -980,7 +980,7 @@ running, the absence of the PID file usually means Squid is not running.
 If you accidentally delete the PID file, Squid will continue running,
 and you won't be able to send it any signals.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     If you accidentally removed the PID file, there are two ways to get
     it back.
 
@@ -1120,7 +1120,7 @@ things, including:
 
 You may be able to use *tcpdump* to track down and observe the problem.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Some users believe the problem is caused by very large cookies. One
     user reports that his Zero Sized Reply problem went away when he
     told Internet Explorer to not accept third-party cookies.

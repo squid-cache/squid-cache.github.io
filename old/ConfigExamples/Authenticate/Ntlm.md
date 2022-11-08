@@ -101,7 +101,7 @@ Test winbindd user authentication:
     challenge/response password authentication succeeded
     error code was NT_STATUS_OK (0x0)
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     both plaintext and challenge/response should return
 
 "succeeded." If there is no "challenge/response" status returned then
@@ -128,7 +128,7 @@ Squid runs as to the **winbindd\_priv** group.
     present. This setting causes squid to ignore the auxiliary
     winbindd\_priv group membership.
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     the default user Squid is bundled as **nobody** though some
     distribution packages are built with **squid** or **proxy** or other
     similar low-access user.

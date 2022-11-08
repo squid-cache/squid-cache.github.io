@@ -8,9 +8,7 @@ these examples please email the squid-users mailing list.
 
 A very common setup in forward proxy design calls for two different
 access classes:
-
   - some destinations should be available to all users
-
   - all other destinations should require users to authenticate
 
 Squid allows for this kind of setup, by simply setting your access-lists
@@ -20,17 +18,15 @@ in the right order.
 
 First recommendation is to get acquainted with the basic notions of how
 to configure squid to properly authenticate. Useful documentation can be
-found at
-[Features/Authentication](/Features/Authentication#),
-and the manual pages for
-[acl](http://www.squid-cache.org/Doc/config/acl#),
+found at [Features/Authentication](/Features/Authentication#),
+and the manual pages for [acl](http://www.squid-cache.org/Doc/config/acl#),
 [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#),
 [http\_access](http://www.squid-cache.org/Doc/config/http_access#),
 [http\_access2](http://www.squid-cache.org/Doc/config/http_access2#) and
 [http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access#).
 
 You may also want to
-check[ConfigExamples/Authenticate/Kerberos](/ConfigExamples/Authenticate/Kerberos#),
+check [ConfigExamples/Authenticate/Kerberos](/ConfigExamples/Authenticate/Kerberos#),
 [ConfigExamples/Authenticate/Ntlm](/ConfigExamples/Authenticate/Ntlm#)
 for authentication-scheme-specific documentation.
 

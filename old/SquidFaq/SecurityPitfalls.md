@@ -108,7 +108,7 @@ outlines for SMTP above.
     They should be left as the **top** access control lines in any
     standard forward-proxy configuration.
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     Only Reverse-Proxy configurations need to go above them.
 
 Default usage:

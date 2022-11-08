@@ -47,13 +47,13 @@ protocol is used to contact both NTLM and Negotiate authentication
 helpers. This allows Squid to support both Negotiate/Kerberos and
 Negotiate/NTLM flavours through the one protocol configuration.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     This double support does lead to some administrative confusion when
     the helper does not support the same flavour as the client browser.
 
 <!-- end list -->
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     These authenticator schemes do not support concurrency due to the
     statefulness of NTLM.
 
@@ -107,7 +107,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem.                                         |
         
 
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         the **OK** and **ERR** result codes are only accepted by
         [Squid-3.4](/Squid-3.4#)
         and newer.
@@ -118,12 +118,12 @@ Result line sent back to Squid:
         base64-encoded, as defined by RFC
         [2045](https://tools.ietf.org/rfc/rfc2045#).
         
-        ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+        ℹ️
         NOTE: NTLM authenticator interface on Squid-3.3 and older does
         not support a **token** field. Negotiate authenticator interface
         requires it on **TT**, **AF** and **NA** responses.
         
-        ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+        ℹ️
         This field must not be sent on **OK**, **ERR** and **BH**
         responses.
 
@@ -151,12 +151,12 @@ Result line sent back to Squid:
         | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                                                                                |
         
 
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         the kv-pair field is only accepted by
         [Squid-3.4](/Squid-3.4#)
         and newer.
     
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat#)
@@ -206,7 +206,7 @@ everything to work.
 
     auth_param negotiate program /usr/sbin/squid_kerb_auth
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     All other negotiate parameters are optional. see
     [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#)
     NEGOTIATE section for more details.

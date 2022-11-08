@@ -36,7 +36,7 @@ requests the "/wpad.dat" file, with the Host set to the domain name.
 
 ## Example
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note: This example is browser and IPv4 specific.
 
 A client has an IP 1.2.3.4 which resolves to host-1-2-3-4.pop1.isp.net.

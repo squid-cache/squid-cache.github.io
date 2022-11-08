@@ -241,7 +241,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         the result field is only accepted by
         [Squid-3.4](/Squid-3.4#)
         and newer.
@@ -261,12 +261,12 @@ Result line sent back to Squid:
         | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                       |
         
 
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         the kv-pair field is only accepted by
         [Squid-3.4](/Squid-3.4#)
         and newer.
     
-      - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+      - ℹ️
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat#)

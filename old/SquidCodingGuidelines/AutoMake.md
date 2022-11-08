@@ -6,7 +6,7 @@
 
 <!-- end list -->
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     details labeled ENFORCED are checked and forced by source testing
     mechanisms.
 

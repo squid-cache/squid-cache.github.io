@@ -11,7 +11,7 @@ expected to obey and an indication of whether we believe it does.
 
 <!-- end list -->
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     this list is known to be incomplete. If you are aware of anything
     important which has been omitted please [report
     it](https://bugs.squid-cache.org/) as a website bug.

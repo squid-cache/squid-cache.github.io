@@ -35,7 +35,7 @@ access.log:
 
     1184342357.997    542 192.168.1.129 TCP_DENIED_REPLY/403 2411 GET http://74.125.15.26/get_video?video_id=fzDmJpCt9dE - DIRECT/74.125.15.26 text/html
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Note that the reply mime-type is "text/html" because the error page
     being returned is HTML rather than the original flash video.
 

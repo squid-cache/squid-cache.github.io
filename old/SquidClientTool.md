@@ -11,7 +11,7 @@ A simple way to test the access to the cache manager is:
 
     squidclient mgr:info
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     If you are using a port other than *3128* on your Squid you will
     need to use the **-p** option to specify it.
 

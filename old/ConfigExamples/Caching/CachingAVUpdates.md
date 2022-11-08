@@ -1,11 +1,10 @@
 # Caching AV updates
 
-by
-*[YuriVoinov](/YuriVoinov#)*
+by Yuri Voinov
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+Warning: Any example presented here is provided "as-is" with no support
+or guarantee of suitability. If you have any further questions about
+these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -27,5 +26,3 @@ Paste the configuration file like this:
     refresh_pattern -i .update\.geo\.drweb\.com     4320    100%    43200   reload-into-ims
     refresh_pattern -i \.avast.com\/.*\.(vp[u|aa])          4320    100%    43200   reload-into-ims
     refresh_pattern -i \.avg.com\/.*\.(bin)         4320    100%    43200   reload-into-ims
-
-[CategoryConfigExample](/CategoryConfigExample#)

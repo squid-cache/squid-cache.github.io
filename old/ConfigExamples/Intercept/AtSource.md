@@ -33,7 +33,7 @@ routing](/ConfigExamples/Intercept/IptablesPolicyRoute#).
     Replace **SQUIDIP** with the public IP which squid may use for its
     listening port and outbound connections.
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     You may also need to replace "squid" UID with the
     [cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user#)
     account Squid runs as. This may be using a built-in default of

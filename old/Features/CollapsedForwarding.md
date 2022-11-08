@@ -34,7 +34,7 @@ part to
 [refresh\_stale\_hit](http://www.squid-cache.org/Doc/config/refresh_stale_hit#)
 is still awaiting re-implementation.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     The *stale-while-revalidate* part of the original
     [Squid-2.6](/Squid-2.6#)
     feature has since been turned into an official HTTP/1.1 extension by

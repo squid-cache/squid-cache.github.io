@@ -47,7 +47,7 @@ implementation in a server for a disk system. JBOD has no data
 protection and a Squid cache fails if a disk that holds one of the cache
 directories fails.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     There are
     [Plans](/Features/CacheDirFailover#)
     to make squid more robust against disk failures.

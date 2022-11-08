@@ -125,7 +125,7 @@ or
 
 ## Component Documentation
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     For simplicity, its not worth doing much component documentation
     until after the
     [Features/SourceLayout](/Features/SourceLayout#)

@@ -133,10 +133,10 @@ developer who can do that for you.
 The first matching rule wins. A submission is automatically counted as
 one positive vote from the submitter.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Any developer may vote.
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     These rules are not yet fully enforced on GitHub but they (or their
     next revision) will be. For now, GitHub will not allow to merge your
     pull request without a core developer (other than you) approval, but

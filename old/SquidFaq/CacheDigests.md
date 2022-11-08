@@ -512,7 +512,7 @@ standard.
 
 |                                                                        |                                                 |
 | ---------------------------------------------------------------------- | ----------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | The information here is current for version 2.2 |
+| ℹ️ | The information here is current for version 2.2 |
 
 Squid already has code to spread the digest updates. The algorithm is
 currently controlled by a few hard-coded constants in *peer\_digest.c*.

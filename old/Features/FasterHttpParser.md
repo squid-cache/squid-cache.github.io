@@ -83,7 +83,7 @@ TODO:
 
 After initial structural updates to the Http::Parser hierarchy.
 
-![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+ℹ️
 the stack is asynchronous, now with incremental parse checkpoints
 resumed after read operations.
 
@@ -161,7 +161,7 @@ The ICAP *response* parsing system
 `Adaptation::Icap::ResponseParser::parse` in parser-ng-icap-pt2 branch
 is as follows:
 
-![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+ℹ️
 class inherits from the `Http1::ResponseParser` parser, but replaces the
 stage 1 version scan with an ICAP specific scan.
 

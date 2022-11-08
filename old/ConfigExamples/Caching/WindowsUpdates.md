@@ -1,11 +1,10 @@
 # Caching Windows Updates
 
-by
-*[YuriVoinov](/YuriVoinov#)*
+by Yuri Voinov
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+Warning: Any example presented here is provided "as-is" with no support
+or guarantee of suitability. If you have any further questions about
+these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -70,7 +69,7 @@ requests. Particularly when large objects are involved.
     maximum_object_size 200 MB
     quick_abort_min -1
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Due to the slow-down problem below we recommend service packs be
     handled specially:
     
@@ -151,7 +150,7 @@ The work-around used by many cache maintainers has been to set the above
 config and force Squid to fetch the whole object when a range request
 goes through.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Compounding the problem and ironically causing some slowdowns is the
     fact that some of the Microsoft servers may be telling your Squid
     not to store the archive file. This means that Squid will pull the
@@ -164,7 +163,7 @@ bypass and see which provides the best results for you.
 Another symptoms which occasionally appear when attempting to force
 caching of windows updates is service packs.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     If the
     [quick\_abort\_min](http://www.squid-cache.org/Doc/config/quick_abort_min#),
     [quick\_abort\_max](http://www.squid-cache.org/Doc/config/quick_abort_max#),
@@ -207,7 +206,7 @@ Anti-Virus vendors, just add their domains to the
 
 |                                                                        |                                                                                                                                                                                                                     |
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png) | If you have squid listening on a localhost port with other software in front (ie dansGuardian). You will probably need to add permission for **localhost** address so the front-end service can relay the requests. |
+| ℹ️ | If you have squid listening on a localhost port with other software in front (ie dansGuardian). You will probably need to add permission for **localhost** address so the front-end service can relay the requests. |
 
     ...
     http_access allow CONNECT wuCONNECT localnet
@@ -241,15 +240,13 @@ Windows Update doesn't work, but it is in Windows itself. The solution
 is to use the 'proxycfg' or 'netsh' tool shipped with Windows. With this
 tool you can set the proxy for WinHTTP.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
-    Similar issues are found with other Microsoft products in the same
+  - ℹ️ Similar issues are found with other Microsoft products in the same
     Windows versions. The commands below often fix all Microsoft proxy
     issues at once.
 
 ### Proxy configuration with proxycfg
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
-    In Windows Vista, Server 2008 and later proxycfg is obsolete. Use
+  - ℹ️ In Windows Vista, Server 2008 and later proxycfg is obsolete. Use
     netsh instead.
 
 Commands:
@@ -323,7 +320,7 @@ Just add this file as Squid ACL as follows:
 
 and you do not need to know all the IP authorization server for updates.
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     **NOTE:** In some countries WU can product
     SQUID\_X509\_V\_ERR\_DOMAIN\_MISMATCH error via Akamai. To do WU,
     you can require to add this into your Squid's config:
@@ -342,7 +339,7 @@ and add this to **dstdom.broken**:
     update.microsoft.com.akadns.net
     update.microsoft.com.nsatc.net
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     **NOTE:** Depending your Squid's configuration, you may need to
     change your Squid's cipher configuration to this one:
 
@@ -368,10 +365,8 @@ assets site.
 
 ## Microsoft technical articles related to proxy issues and windows updates
 
-[](https://support.microsoft.com/en-us/kb/3084568)
+[Microsoft KB](https://support.microsoft.com/en-us/kb/3084568)
 
 ## An example of refresh\_pattern that is being used at OpnSense
 
 [](https://github.com/opnsense/core/issues/1691#issuecomment-340276788)
-
-[CategoryConfigExample](/CategoryConfigExample#)

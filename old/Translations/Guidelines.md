@@ -115,7 +115,7 @@ at present).
     You still need to meet all the translation guidelines listed above
     about codes and content.
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     **.PO** files need to have ISO-639 code information to indicate the
     language, and if possible the country ISO-3166 variant code as well.
     

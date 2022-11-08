@@ -202,7 +202,7 @@ everything to work.
     auth_param bearer realm Squid
     auth_param bearer scope proxy
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     All other bearer parameters are optional. see
     [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#)
     BEARER section for more details.

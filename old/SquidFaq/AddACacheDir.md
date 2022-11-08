@@ -61,7 +61,7 @@ existing cache\_dir anyway.
 
 7.  Reconfigure the running squid with `squid -k reconfigure`
     
-    ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+    ℹ️
     While the -z with existing ufs/aufs/diskd is harmless it's a
     destructive operation with for example coss
     [cache\_dirs](http://www.squid-cache.org/Doc/config/cache_dirs#) so

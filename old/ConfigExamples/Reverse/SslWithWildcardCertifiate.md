@@ -54,7 +54,7 @@ You will need to:
 
 ## Squid Configuration File
 
-  - ![{i}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png)
+  - ℹ️
     Please note the config lines below may wrap in your browser.
 
 |                                                                      |                                                                                                                                                                                                                       |
