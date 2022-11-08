@@ -3,9 +3,9 @@
 
 # Viber Messenger
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+Warning: Any example presented here is provided "as-is" with no support
+or guarantee of suitability. If you have any further questions about
+these examples please email the squid-users mailing list.
 
 ## Outline
 

@@ -1,8 +1,8 @@
 # Gizmo Project (Pidgeon IM, Fring, Taler, ICQ, IRC, AOL)
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+Warning: Any example presented here is provided "as-is" with no support
+or guarantee of suitability. If you have any further questions about
+these examples please email the squid-users mailing list.
 
 Gizmo Project include software to connect to a wide range of messaging
 protocols and VoIP services. This config does not include settings to
