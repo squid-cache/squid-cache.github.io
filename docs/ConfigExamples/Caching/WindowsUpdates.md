@@ -43,7 +43,7 @@ requests. Particularly when large objects are involved.
     Default value is a bit small. It needs to be somewhere 100MB or
     higher to cope with the IE updates.
     
-      - **UPDATE:** Windows 8.1 upgrade pack requires up to 5GB objects
+      - ⚠️ Windows 8.1 upgrade pack requires up to 5GB objects
         to be cached. It will however, cache nicely provided the size
         limit is set high enough.
 
