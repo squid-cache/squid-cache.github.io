@@ -3,6 +3,7 @@
 |          |                              |
 | -------- | ---------------------------- |
 | Aug 2021 | Released for production use. |
+| | |
 
 The features have been set and large code changes are reserved for later
 versions.

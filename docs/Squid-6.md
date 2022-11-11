@@ -3,6 +3,7 @@
 |       |                               |
 | ----- | ----------------------------- |
 | current | Now in **DEVELOPMENT** cycle. |
+| | |
 
 The set of new features is determined by submissions and available
 developer time. New features may be completed and added at any time.
