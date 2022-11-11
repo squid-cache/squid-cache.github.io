@@ -8,99 +8,70 @@ The features have been set and large code changes are reserved for later
 versions.
 
 Additions are limited to:
-
   - Security fixes
-
   - Serious Bug fixes
-
   - Documentation updates
 
-Features ported from 2.7 in this release:
-
+## Features ported from 2.7 in this release
   - Class 6 (client response) delay pool
-    
-      - \- In the form of
-        [response\_delay\_pool](http://www.squid-cache.org/Doc/config/response_delay_pool#)
+      - In the form of
+        [response_delay_pool](http://www.squid-cache.org/Doc/config/response_delay_pool#)
         and
-        [response\_delay\_pool\_access](http://www.squid-cache.org/Doc/config/response_delay_pool_access#)
+        [response_delay_pool_access](http://www.squid-cache.org/Doc/config/response_delay_pool_access#)
         for Squid-to-client speed limiting.
 
-Basic new features in 5.1:
-
+## Basic new features in 5.1
   - **Major UI changes:**
-    
       - Happy Eyeballs: Use each fully resolved forwarding destination
         ASAP.
-        
-          - \- Removes
-            [dns\_v4\_first](http://www.squid-cache.org/Doc/config/dns_v4_first#)
+          - Removes
+            [dns_v4_first](http://www.squid-cache.org/Doc/config/dns_v4_first#)
             feature as a side effect.
-    
       - Reuse reserved Negotiate and NTLM helpers after an idle timeout.
-    
       - Support logformat %codes in error page templates.
-    
       - Support opening CONNECT tunnels through an HTTP cache peer.
-    
       - Change annotation behaviour when multiple same-name annotations
-        are received. (see bug
-        [4912](https://bugs.squid-cache.org/show_bug.cgi?id=4912#))
-        
-          - \- Some reserved keys retain the old behaviour due to their
+        are received (see [bug 4912](https://bugs.squid-cache.org/show_bug.cgi?id=4912#))
+          - Some reserved keys retain the old behaviour due to their
             usage (eg group= received from auth and external ACL
             helpers)
 
   - **Minor UI changes:**
-    
       - Add
-        [auth\_schemes](http://www.squid-cache.org/Doc/config/auth_schemes#)
+        [auth_schemes](http://www.squid-cache.org/Doc/config/auth_schemes#)
         to control schemes presence and order in 401s/407s.
-    
-      - Add ACL types annotate\_transaction and annotate\_client.
-    
+      - Add ACL types annotate_transaction and annotate_client.
       - Make CONNECT ACL a built-in default.
-    
       - Add
-        [collapsed\_forwarding\_access](http://www.squid-cache.org/Doc/config/collapsed_forwarding_access#)
+        [collapsed_forwarding_access](http://www.squid-cache.org/Doc/config/collapsed_forwarding_access#)
         to restrict Collapsed Forwarding of HTTP, ICP and HTCP requests.
-    
       - Add
-        [mark\_client\_connection](http://www.squid-cache.org/Doc/config/mark_client_connection#)
+        [mark_client_connection](http://www.squid-cache.org/Doc/config/mark_client_connection#)
         and
-        [mark\_client\_packet](http://www.squid-cache.org/Doc/config/mark_client_packet#)
+        [mark_client_packet](http://www.squid-cache.org/Doc/config/mark_client_packet#)
         directives for Netfilter MARK and CONNMARK control.
-    
       - Add
-        [deny\_info](http://www.squid-cache.org/Doc/config/deny_info#)
+        [deny_info](http://www.squid-cache.org/Doc/config/deny_info#)
         and error page **%A** code to display Squid listening IP
         address.
-    
-      - New %ssl::\<cert macro code to display received server X.509
+      - New %ssl::<cert macro code to display received server X.509
         certificate in PEM format.
-    
-      - New %proxy\_protocol::\>h logformat code for logging received
+      - New %proxy_protocol::>h logformat code for logging received
         PROXY protocol TLV values.
 
   - **Developer Interest changes:**
-    
       - [ICAP
         Trailers](https://datatracker.ietf.org/doc/draft-rousskov-icap-trailers/).
-    
-      - Remove USE\_CHUNKEDMEMPOOLS compiler flag.
-    
-      - All binaries now use standard EXIT\_SUCCESS or EXIT\_FAILURE
+      - Remove USE_CHUNKEDMEMPOOLS compiler flag.
+      - All binaries now use standard EXIT_SUCCESS or EXIT_FAILURE
         termination results for better OS integration.
-    
       - Migrated to TrivialDB from deprecated BerkleyDB versions.
-    
-      - ntlm\_fake\_auth: add ability to test delayed responses.
-    
-      - basic\_ldap\_auth: return BH on internal errors.
-    
+      - ntlm_fake_auth: add ability to test delayed responses.
+      - basic_ldap_auth: return BH on internal errors.
       - Support RFC 8586: Loop Detection in Content Delivery Networks
 
 Packages of what will become Squid-5 source code are available at
-[](http://www.squid-cache.org/Versions/v5/)
+http://www.squid-cache.org/Versions/v5/
 
 ## Security Advisories
 
@@ -110,15 +81,10 @@ See our [Advisories](http://www.squid-cache.org/Advisories/) list.
 
   - [Major or higher bugs currently affecting this
     version](http://bugs.squid-cache.org/buglist.cgi?bug_id_type=anyexact&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&chfieldto=Now&product=Squid&query_format=advanced&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&order=version%20DESC%2Cbug_severity%2Cbug_id&o2=equals&v2=unspecified&f1=version&o1=lessthaneq&v1=5).
-    
       - Bugs against any older version can be closed if found fixed in
         5.x
-    
       - Bugs inherited from older versions are not necessarily blockers
         on stable.
-
-<!-- end list -->
-
   - [Bugs new in this
     version](http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&version=5&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&bug_severity=minor&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&list_id=917&order=version%20DESC%2Cbug_severity%2Cbug_id)
 
