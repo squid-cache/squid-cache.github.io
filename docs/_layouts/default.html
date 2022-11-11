@@ -43,15 +43,12 @@
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
         <footer class="inner">
-            {% if site.github.is_project_page %}
-            <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a
-                    href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-            {% endif %}
             <p class="copyright">
                 Contents are © their respective authors, <br>licensed under the
                 <a href="http://creativecommons.org/licenses/by-sa/2.5/" target=_blank
                     >Creative Commons Attribution Sharealike 2.5 License<
-                /a>
+                /a><br>
+                Last generated on {{ site.time }}
             </p>
             <!-- <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p> -->
         </footer>
