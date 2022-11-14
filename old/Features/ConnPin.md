@@ -38,7 +38,7 @@ Internet Draft draft-jaganathan-kerberos-http-01.txt (a copy can be
 found in doc/rfc/ in the development tree)
 
 This feature has been implemented for the Squid-2 branch starting with
-[Squid-2.6](/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6#)
 by
 [HenrikNordström](/HenrikNordstr%C3%B6m#)
 during the
@@ -46,21 +46,21 @@ during the
 code sprint in Torino.
 
 This feature has been implemented for the Squid-3 branch starting with
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 by
 [ChristosTsantilas](/ChristosTsantilas#)
 
   - ℹ️
     NOTE: This feature does not exist in
-    [Squid-3.0](/Squid-3.0#).
+    [Squid-3.0](/Releases/Squid-3.0#).
 
 ## Configuration Options
 
 *details relevant to
-[Squid-3.1](/Squid-3.1#)*
+[Squid-3.1](/Releases/Squid-3.1#)*
 
 This feature is enabled by default in
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 and makes use of the **connection-auth** option.
 
 The option can be applied on

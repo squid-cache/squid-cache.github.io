@@ -773,9 +773,9 @@ having to have a router do the redirection.
 #### What about WCCPv2?
 
 WCCPv2 is a new feature to
-[Squid-2.6](/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6#)
 and
-[Squid-3.0](/Squid-3.0#).
+[Squid-3.0](/Releases/Squid-3.0#).
 WCCPv2 configuration is similar to the WCCPv1 configuration. The
 directives in squid.conf are slightly different but are well documented
 within that file. Router configuration for WCCPv2 is identical except

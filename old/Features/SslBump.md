@@ -76,7 +76,7 @@ and bypass the error. Quality patches or sponsorships are welcomed.
 
   - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
     to avoid this major limitation an upgrade to
-    [Squid-3.3](/Squid-3.3#)
+    [Squid-3.3](/Releases/Squid-3.3#)
     or later and use of the [origin server certificate
     mimicking](/Features/MimicSslServerCert#)
     feature is strongly advised.
@@ -102,9 +102,9 @@ Example of how to configure the HTTP port to bump CONNECT requests
 prevent some requests being *bumped*.
 
 Example of how to avoid bumping requests to sites that
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 or
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 cannot proxy well:
 
     acl broken_sites dstdomain .example.com
@@ -113,7 +113,7 @@ cannot proxy well:
 
 The [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#)
 directive in
-[Squid-3.3](/Squid-3.3#)
+[Squid-3.3](/Releases/Squid-3.3#)
 has been updated to select between several bumping algorithms. The above
 rules are now configured like this:
 
@@ -123,7 +123,7 @@ rules are now configured like this:
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     However
-    [Squid-3.3](/Squid-3.3#)
+    [Squid-3.3](/Releases/Squid-3.3#)
     and later provide the *server-first* algorithm which can be used in
     place of *client-first* in the above rules and is better for bumping
     HTTPS as it avoided the problems below.
@@ -134,7 +134,7 @@ Certain certificate errors may occur which are not really problems. Such
 as an internal site with self-signed certificates, or an internal domain
 name for a site differing from its public certificate name.
 
-  - **[Squid-3.3](/Squid-3.3#)
+  - **[Squid-3.3](/Releases/Squid-3.3#)
     and later**
 
 The *server-first* bumping algorithm with [certificate
@@ -142,9 +142,9 @@ mimicing](/Features/MimicSslServerCert#)
 allows Squid to transparently pass on these flaws to the client browser
 for a more accurate decision about safety to be made there.
 
-  - **[Squid-3.1](/Squid-3.1#)
+  - **[Squid-3.1](/Releases/Squid-3.1#)
     and
-    [Squid-3.2](/Squid-3.2#)**
+    [Squid-3.2](/Releases/Squid-3.2#)**
 
 The
 [sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error#)
@@ -178,7 +178,7 @@ another domain.
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     Warning: Unlike the rest of this page at the time of writing, this
     section applies to
-    [Squid-3.3](/Squid-3.3#)
+    [Squid-3.3](/Releases/Squid-3.3#)
     and possibly later code capable of [dynamic SSL certificate
     generation](/Features/DynamicSslCert#)
     and [origin server certificate

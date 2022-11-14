@@ -24,7 +24,7 @@ world at this moment:
     Bearer)](http://en.wikipedia.org/wiki/OAuth#OAuth_2.0) - IETF second
     attempt at single-sign-on
 
-[Squid-2.6](/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6#)
 and later support Basic, NTLM (SMB LM, v1 and v2), Digest, and
 [Negotiate](/Features/NegotiateAuthentication#)
 (Kerberos and/or NTLM flavours).

@@ -37,13 +37,13 @@ files in any version.
 ## deny\_info URL codes for embedding
 
 **Squid-2.1 to
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 only provide this macro code:**
 
   - %s  
     Absolute URL requested by client
 
-**[Squid-3.2](/Squid-3.2#)
+**[Squid-3.2](/Releases/Squid-3.2#)
 adds URL templating codes:**
 
   - %a  
@@ -131,7 +131,7 @@ error response messages, and what details will be inserted:
     *ERR\_SECURE\_CONNECT\_FAIL* response may be expanded into "The host
     name you are connecting to (foo.com) does not match any of the
     certificate names (foo.org, foo.net)..."). Supported since
-    [Squid-3.2](/Squid-3.2#).
+    [Squid-3.2](/Releases/Squid-3.2#).
     See also: application-level error code (%x) and system level error
     code/detail (%e/%E).
 

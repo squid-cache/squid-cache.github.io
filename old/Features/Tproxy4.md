@@ -61,7 +61,7 @@ Chadd. It has not changed significantly since older TPROXY.
       - 2.6.32 to 2.6.34 have bridging issues on some systems.
 
   - ℹ️
-    [Squid-3.4](/Squid-3.4#)
+    [Squid-3.4](/Releases/Squid-3.4#)
     also supports TPROXY on BSD systems with PF firewall using
     **divert-to** rules in place of the Linux iptables rules.
 

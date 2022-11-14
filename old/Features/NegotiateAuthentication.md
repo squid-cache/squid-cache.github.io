@@ -84,7 +84,7 @@ Input line received from Squid:
         configured with
         [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#)
         *key\_extras* parameter. Only available in
-        [Squid-3.5](/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5#)
         and later.
 
 Result line sent back to Squid:
@@ -109,7 +109,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the **OK** and **ERR** result codes are only accepted by
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         and newer.
 
   - token
@@ -141,7 +141,7 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                                                                                    |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Squid-3.5#))                                                  |
+        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5#))                                                  |
         | group=...          | reserved                                                                                                                                                                           |
         | message=...        | A message string that Squid can display on an error page.                                                                                                                          |
         | tag=...            | reserved                                                                                                                                                                           |
@@ -153,7 +153,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the kv-pair field is only accepted by
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         and newer.
     
       - ℹ️
@@ -170,7 +170,7 @@ Result line sent back to Squid:
     
       - A message string that Squid can display on an error page. This
         field is only accepted on **NA** and **BH** responses. From
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         this field is deprecated by the **message=** kv-pair on **BH**
         responses.
 
@@ -186,10 +186,10 @@ made up by two parts:
 
 1.  code within Squid to talk to the client.
     
-      - [Squid-2.6](/Squid-2.6#)
+      - [Squid-2.6](/Releases/Squid-2.6#)
         or later built with `--enable-auth="negotiate"`
     
-      - [Squid-3.2](/Squid-3.2#)
+      - [Squid-3.2](/Releases/Squid-3.2#)
         or later built with `--enable-auth-negotiate`
 
 2.  one or more authentication helpers which perform the grunt work.

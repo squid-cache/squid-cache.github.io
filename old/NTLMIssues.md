@@ -41,5 +41,5 @@ the next-hop proxy using NTLM.
 
   - ℹ️
     Microsoft has officially deprecated NTLM in faviour of Kerberos.
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     does support Kerberos (Negotiate) login to upstream proxies.

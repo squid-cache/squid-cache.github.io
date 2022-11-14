@@ -493,7 +493,7 @@ However, we certainly do not recommend this, as it could be very easy
 for someone to see or grab your password.
 
 Starting with
-[Squid-3.1](/Squid-3.1#),
+[Squid-3.1](/Releases/Squid-3.1#),
 the above will be tried then regular HTTP Basic authentication will be
 used to recover new credentials. If login is required and none given a
 regular website login popup box will appear asking for the credentials

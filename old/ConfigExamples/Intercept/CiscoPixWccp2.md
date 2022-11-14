@@ -57,9 +57,9 @@ only**
   - **$IP-OF-ROUTER** is used below to represent the IP address of the
     router sending the WCCP traffic to Squid.
 
-[Squid-2.6](/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6#)
 to
-[Squid-3.0](/Squid-3.0#)
+[Squid-3.0](/Releases/Squid-3.0#)
 require magic numbers...
 
     http_port 3129 transparent
@@ -68,7 +68,7 @@ require magic numbers...
     wccp2_return_method 1
     wccp2_service standard 0 password=foo
 
-  - [Squid-3.1](/Squid-3.1#)
+  - [Squid-3.1](/Releases/Squid-3.1#)
     and later accept text names for the tunneling methods
 
 <!-- end list -->

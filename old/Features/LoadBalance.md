@@ -258,9 +258,9 @@ availability the hash is adjusted to cope with the change.
 
 This algorithm is one of the preferred methods of object de-duplication
 in cache clusters and load balancing for multi-instance installations of
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 and older (it is outdated in this purpose by SMP support in
-[Squid-3.2](/Squid-3.2#)).
+[Squid-3.2](/Releases/Squid-3.2#)).
 The efficient alternatives are multicast ICP or HTCP.
 
 ### Round-Robin

@@ -14,7 +14,7 @@ you have questions/troubles with the steps. I have not fully checked the
 steps for clarity and accuracy...but I eventually will.
 
 These steps are for setting
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 with
 [TPROXYv4](/Features/Tproxy4#),
 IP spoofing and Cisco WCCP. This is not a bridging setup. It is also

@@ -6,7 +6,7 @@ about these examples please email the squid-users mailing list.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     ℹ️
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     has now had experimental multi-process SMP support merged. It is
     designed to operate with a similar but different configuration to
     these while reducing much of the complexity of process instance
@@ -33,7 +33,7 @@ setup.
 
 |                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) Notice | This setup has been designed with a recent version of Squid in mind. It has been tested with [Squid-3.1](/Squid-3.1#), but it should work with [Squid-3.0](/Squid-3.0#) and [Squid-2.7](/Squid-2.7#) as-is as well. [Squid-2.6](/Squid-2.6#) and earlier can be coaxed to work, but it will be harder to setup and maintain. |
+| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) Notice | This setup has been designed with a recent version of Squid in mind. It has been tested with [Squid-3.1](/Releases/Squid-3.1#), but it should work with [Squid-3.0](/Releases/Squid-3.0#) and [Squid-2.7](/Releases/Squid-2.7#) as-is as well. [Squid-2.6](/Releases/Squid-2.6#) and earlier can be coaxed to work, but it will be harder to setup and maintain. |
 
 It is also geared at **expert system-administrators**.
 [MultipleInstances](/MultipleInstances#)

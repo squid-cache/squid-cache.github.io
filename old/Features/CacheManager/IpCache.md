@@ -90,7 +90,7 @@ found to be unusable or not able to connect.
 
 The rest of the line lists all the IP addresses that have been
 associated with that hostname entry. In
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 and later lines starting with empty spaces are a continuation of the
 previous entry when it has multiple IP addresses.
 

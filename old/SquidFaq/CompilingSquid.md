@@ -288,11 +288,11 @@ discover the dependency package and install it.
     
       - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
         However, please note that
-        [Squid-3.5](/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5#)
         is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or
         Ubuntu Zesty the **libssl1.0-dev** package must be used instead.
         This is resolved in the
-        [Squid-4](/Squid-4#)
+        [Squid-4](/Releases/Squid-4#)
         packages.
 
 #### Init Script
@@ -426,7 +426,7 @@ Unpack the source archive as usual and run configure.
 The following are the recommended minimal options for Windows:
 
 **Squid-3** : (requires
-[Squid-3.5](/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5#)
 or later, see porting efforts section below)
 
     --prefix=c:/squid
@@ -573,7 +573,7 @@ to
 ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
 Unfortunately the `/usr/include/inet/mib2.h` header required for IPF
 interception support clashes with
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 class definitions. This has been fixed in the 3.2 series.
 
 For 3.1 to build you may need to run this class rename command in the

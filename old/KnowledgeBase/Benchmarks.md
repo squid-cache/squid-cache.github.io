@@ -389,7 +389,7 @@ The Measurement Factory benchmarked Squid 2.4, in particular IO systems
 in 2000 [](http://polygraph.ircache.net/Results/bakeoff-2/)
 
 Bryan Migliorisi posted some analysis of
-[Squid-2.6](/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6#)
 speeds under pressure on September 8th, 2009 at unfortunately a dynamic
 website that disappeared on us.
 

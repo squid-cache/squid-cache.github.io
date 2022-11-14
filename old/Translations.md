@@ -99,12 +99,12 @@ in their squid.conf will not be affected. If you have used this method
 to provide your own language translations please consider joining the
 translation effort by submitting your language as outlined above, and
 then upgrading to the langpack or
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 with auto-negotiate.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     Squid older than
-    [Squid-3.1](/Squid-3.1#)
+    [Squid-3.1](/Releases/Squid-3.1#)
     without an explicit
     [error\_directory](http://www.squid-cache.org/Doc/config/error_directory#)
     entry have a default one. This may need overriding to use the new
@@ -125,7 +125,7 @@ with auto-negotiate.
 
 ## Manual Install
 
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 admin just need to follow these steps:
 
   - Check that your preferred default language is available for

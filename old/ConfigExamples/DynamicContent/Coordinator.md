@@ -11,7 +11,7 @@ any of these configs please first check back here for updated config.
 ## Problem Outline
 
 Squid since old days till today
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 use The URL \*as\* the resource key. It has been and remains the
 fundamental design property of HTTP. this approach based on the
 assumption that each GET request of a URL should identify one and only
@@ -308,7 +308,7 @@ Content-MD5, Digest:, Link:, etc).
 #### Store URL Rewrite
 
 In
-[Squid-2.7](/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7#)
 the
 [store\_url\_rewrite](http://www.squid-cache.org/Doc/config/store_url_rewrite#)
 interface was integrated to solve a resource De-Duplication case. an

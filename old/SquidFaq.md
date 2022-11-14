@@ -51,7 +51,7 @@
 
   - ESI processor (or ESI surrogate): Assembling web pages. This is a
     sub-type of accelerator mode which since
-    [Squid-3.3](/Squid-3.3#)
+    [Squid-3.3](/Releases/Squid-3.3#)
     is enabled automatically and cannot be used with other modes.
 
 ## Troubleshooting

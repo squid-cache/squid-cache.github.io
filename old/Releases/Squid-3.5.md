@@ -2,7 +2,7 @@
 
 |          |                                                                                                                                          |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Jul 2018 | Squid-3.5 series became **DEPRECATED** with the release of [Squid-4](/Squid-4#) series |
+| Jul 2018 | Squid-3.5 series became **DEPRECATED** with the release of [Squid-4](/Releases/Squid-4#) series |
 | Jan 2015 | Released for production use.                                                                                                             |
 
 The features have been set and large code changes are reserved for later

@@ -23,7 +23,7 @@ requests. Particularly when large objects are involved.
     [maximum\_object\_size](http://www.squid-cache.org/Doc/config/maximum_object_size#)
     to prevent conversion of requests for objects which will not cache
     anyway. With
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     or later use the **windowsupdate** ACL list defined below to apply
     this offset limit only to windows updates.
 
@@ -261,9 +261,9 @@ or similar.
 WU now uses its own pinned SSL certificate and must be spliced to work.
 When you use sniffer, you can see many IP's with relatively big
 subnetworks. This leads to problems with a
-[Squid-3.4](/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4#)
 and causes serious problems when using
-[Squid-3.5](/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5#)
 or above.
 
 To use splicing, you need to know the names of the servers, however, a

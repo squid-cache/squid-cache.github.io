@@ -101,7 +101,7 @@ clients with proxies set.
 (next email)
 
 The tproxy support in
-[Squid-2.6](/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6#)
 does not need to be run as root. It maintains root capabilities for
 network requests at all times (allowing the tproxy patch to work),
 without the need to maintain all root capabilities.

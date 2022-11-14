@@ -314,7 +314,7 @@ Unpack the source archive as usual and run configure.
 The following are the recommended minimal options for Windows:
 
 **Squid-3** : (requires
-[Squid-3.5](/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5#)
 or later, see porting efforts section below)
 
     --prefix=c:/squid
@@ -398,7 +398,7 @@ Cygwin has working builds and available packages sponsored by
 ## MinGW-w64
 
 As of
-[Squid-3.5](/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5#)
 :
 
   - the default feature set builds without extra special ./configure
@@ -458,14 +458,14 @@ compiler.
 ## MinGW32
 
 Sponsorship from iCelero produced a working
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 and
-[Squid-3.3](/Squid-3.3#).
+[Squid-3.3](/Releases/Squid-3.3#).
 Unfortunately the product and sponsorship dropped before the final
 stages of this work could be cleaned up for GPL release.
 
 As of
-[Squid-3.5](/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5#)
 :
 
   - the default feature set builds without extra special ./configure
@@ -482,7 +482,7 @@ As of
             --enable-build-info="Windows (MinGW32)"
 
   - This builds for
-    [Squid-3.5](/Squid-3.5#)
+    [Squid-3.5](/Releases/Squid-3.5#)
     but not later code. A newer GCC version than supplied with
     [MingW32](/MingW32#)
     is required.
@@ -496,7 +496,7 @@ There also appears to be some work done by Joe Pelaez Jorge
 ## Visual Studio
 
 Almost no work on this environment has been done since
-[Squid-2.7](/Squid-2.7#).
+[Squid-2.7](/Releases/Squid-2.7#).
 
 Entirely new .sln, .sdf and .vcxproj build files need to be generated.
 Ideally these would mirror the on-Windows style of convenience libraries

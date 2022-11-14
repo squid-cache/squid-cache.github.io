@@ -19,7 +19,7 @@ ago. It may be sensible to clean up the codebase a bit and drop support
 for them
 
 Removed in
-[Squid-4](/Squid-4#)
+[Squid-4](/Releases/Squid-4#)
 :
 
   - BSDi

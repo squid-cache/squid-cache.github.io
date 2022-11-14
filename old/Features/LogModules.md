@@ -148,7 +148,7 @@ Configuration **module:parameters** to be used by
 
   - ℹ️
     Available from
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
 
   - ℹ️
     [Syslog-ng](http://www.balabit.com/network-security/syslog-ng) can

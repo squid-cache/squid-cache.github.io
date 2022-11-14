@@ -34,9 +34,9 @@ configuration was excessive in some places, and it has a serious
 drawback - it worked incorrectly with HTTPS traffic. After some
 experiments, correct configuration has been created, which is more than
 two years of successfully operating in a productive server with
-[Squid-3.5](/Squid-3.5#).
+[Squid-3.5](/Releases/Squid-3.5#).
 This configuration can also be used with
-[Squid-4](/Squid-4#).
+[Squid-4](/Releases/Squid-4#).
 
   - ℹ️
     Note: We are required to use Privoxy as intermediate proxy, because

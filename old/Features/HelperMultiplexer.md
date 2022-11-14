@@ -26,7 +26,7 @@ them.
 
 ℹ️
 NP: The helper is bundled with
-[Squid-3.2](/Squid-3.2#),
+[Squid-3.2](/Releases/Squid-3.2#),
 however it works with earlier releases which are capable of the
 multi-slot / concurrent protocol.
 

@@ -61,7 +61,7 @@ Master and Worker.
 
 ## Current Status and Architecture
 
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 supports basic SMP scale using
 [workers](http://www.squid-cache.org/Doc/config/workers#).
 Administrators can configure and run one Squid that spawns multiple
@@ -397,12 +397,12 @@ works OK.
 
 ### Older Squids
 
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 and older allow administrators to configure and start multiple isolated
 Squid instances. This labor-intensive setup allows a crude form of SMP
 scale in the environments where port and cache sharing are not
 important. Sample configurations for
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 and older are available:
 
   - [ConfigExamples/MultiCpuSystem](/ConfigExamples/MultiCpuSystem#)

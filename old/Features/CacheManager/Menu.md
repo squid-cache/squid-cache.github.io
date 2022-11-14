@@ -25,7 +25,7 @@ The menu lists:
 ## Example report
 
   - this is an example from a default build of
-    [Squid-3.2](/Squid-3.2#).
+    [Squid-3.2](/Releases/Squid-3.2#).
     Remember the menu varies with available features.
 
 <!-- end list -->

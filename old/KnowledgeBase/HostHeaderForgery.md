@@ -9,7 +9,7 @@
 **Explanation**
 
 This is an alert generated as part of a new security feature added in
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 to protect the network against hijacking by malicious web scripts.
 
 As outlined in advisory
@@ -78,7 +78,7 @@ here.
 
   - ℹ️
     As of May 2012,
-    [Squid-3.2.0.18](/Squid-3.2#)
+    [Squid-3.2.0.18](/Releases/Squid-3.2#)
     will pass traffic which fails these validation checks to the same
     origin as intended by the client. But will disable caching, route
     error recovery and peer routing in order to do so safely. The
@@ -145,7 +145,7 @@ work:
         inconsistent as IPs appear and disappear in the small set the
         regular DNS packet displays.
     
-      - [Squid-3.2](/Squid-3.2#)
+      - [Squid-3.2](/Releases/Squid-3.2#)
         can attempt to use EDNS to get larger packets with all IPs of
         these domains by setting the
         [dns\_packet\_max](http://www.squid-cache.org/Doc/config/dns_packet_max#)
@@ -176,7 +176,7 @@ work:
     receive for a domain lookup.
 
 In these cases
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 hijacking protection will pass the traffic through to the clients
 destination IP address **without** redirecting to any specific other IP.
 Additional Destination-NAT configuration is required to identify the

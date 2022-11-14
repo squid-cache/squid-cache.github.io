@@ -6,13 +6,13 @@ about these examples please email the squid-users mailing list.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     Squid SMP support is an ongoing series of improvements in
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     and later. The configuration here may not be exactly up to date. Or
     may require you install a newer release.
 
 ## Outline
 
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 and newer offer support for SMP scaling on Multi-Core systems and much
 simpler configuration of multi-process systems. However the support is
 not yet complete for all components, notably the UFS cache storage
@@ -22,7 +22,7 @@ versions by utilizing the CARP peer selection algorithm in a multi-teir
 multi-process design.
 
 This configuration outlines how to utilize
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 SMP support to simplify the configuration of a Squid CARP cluster while
 retaining the CARP object de-duplication benefits. It is geared at
 **expert system-administrators**. Knowledge of forwarding loop control

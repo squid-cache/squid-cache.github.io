@@ -168,9 +168,9 @@ I also wrote an external\_acl helper framework in ruby for many purposes
 which support concurrency.
 
 Currently working on porting Store\_url\_rewrite from
-[Squid-2.7](/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7#)
 to
-[Squid-3.3](/Squid-3.3#).
+[Squid-3.3](/Releases/Squid-3.3#).
 
 The plan is to add a "fake store url rewrite" (which was done) and then
 find the way to internally implement the Store\_url\_rewrite.

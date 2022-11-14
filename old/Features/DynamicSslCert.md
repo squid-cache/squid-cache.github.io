@@ -68,7 +68,7 @@ Dynamic generation of SSL certificates is not enabled by default:
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     NOTE:
-    [Squid-3.5](/Squid-3.5#)
+    [Squid-3.5](/Releases/Squid-3.5#)
     requires **--with-openssl** instead of --enable-ssl
 
 ### Create Self-Signed Root CA Certificate
@@ -172,13 +172,13 @@ You will also need to add
 enabling HTTPS decryption. see
 [peek-n-splice](/Features/SslPeekAndSplice#)
 for newer
-[Squid-3.5](/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5#)
 or later details. see
 [SSL-Bump](/Features/SslBump#)
 for older
-[Squid-3.3](/Squid-3.3#)
+[Squid-3.3](/Releases/Squid-3.3#)
 or
-[Squid-3.4](/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4#)
 details.
 
 Additional configuration options (see below) can be added to squid.conf
@@ -237,7 +237,7 @@ Squid should process HTTPS sites without any warnings.
     
     |                                                                                                                                                                                                                                                                               |
     | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **This section is outdated. The below limitations were resolved in [Squid-3.5](/Squid-3.5#) by [peek-n-splice](/Features/SslPeekAndSplice#)** |
+    | **This section is outdated. The below limitations were resolved in [Squid-3.5](/Releases/Squid-3.5#) by [peek-n-splice](/Features/SslPeekAndSplice#)** |
     
 
 ### No dynamically generated certificates for intercepted connections

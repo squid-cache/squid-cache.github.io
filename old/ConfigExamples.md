@@ -156,7 +156,7 @@ explanation](/ConfigExamples/Chat#)
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     Squid SMP support is an ongoing series of improvements in
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     and later. The configuration here may not be exactly up to date. Or
     may require you install a newer release.
 

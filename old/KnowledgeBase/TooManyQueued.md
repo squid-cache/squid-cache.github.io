@@ -54,7 +54,7 @@ also has an annoyingly low capacity.
     number of helpers used. The protocols for these helpers do not
     support concurrency.
 
-  - [Squid-3.2](/Squid-3.2#)
+  - [Squid-3.2](/Releases/Squid-3.2#)
     and later have a *dynamic helper* feature which allows
     administrators to configure minimum and maximum helper numbers.
     Squid will attempt to run the minimum, but if traffic load requires

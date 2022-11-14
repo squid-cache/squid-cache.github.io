@@ -33,7 +33,7 @@ special cache\_object:// URL scheme. Which allows other tools and
 scripts to easily be written for any special use you may have.
 
 The cache manager has been extended in
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 to allow access from the [](http://) and [](https://) URL schemes. This
 opens the cache manager reports directly to the web browser if permitted
 by [http\_access](http://www.squid-cache.org/Doc/config/http_access#)
@@ -55,7 +55,7 @@ The default cache manager access configuration in *squid.conf* is:
 
   - ℹ️
     This default has been updated to accommodate changes in
-    [Squid-3.2](/Squid-3.2#).
+    [Squid-3.2](/Releases/Squid-3.2#).
     For older squid the squid.conf entries may appear different.
 
 The first ACL is the most important as the cache manager program
@@ -66,7 +66,7 @@ yourself by doing:
     GET cache_object://mycache.example.com/info HTTP/1.0
 
 or for
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 typing this into your browser address bar:
 
     http://mycache.example.com:3128/squid-internal-mgr/info

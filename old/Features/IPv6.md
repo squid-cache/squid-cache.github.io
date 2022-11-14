@@ -19,7 +19,7 @@ enabled by default. See your system documentation for its capability and
 configuration.
 
 **IPv6 support** is enabled by default in
-[Squid-3.1](/Squid-3.1#).
+[Squid-3.1](/Releases/Squid-3.1#).
 If you are using a packaged version of 3.1 without it, please contact
 the package maintainer about enabling it.
 
@@ -193,7 +193,7 @@ access with controlled source address exactly as before.
 Please note the **dst** ACL only works for DIRECT requests. Traffic
 destined for peers needs to be left without an outgoing address set.
 This bug is fixed in
-[Squid-3.2](/Squid-3.2#).
+[Squid-3.2](/Releases/Squid-3.2#).
 
 ## Mistakes people are making
 
@@ -330,7 +330,7 @@ NDP (Neighbour Discovery Protocol) Proper IPv6 auto-configuration of
 networks can provide an equivalent in the IPv6 address itself.
 
 From
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 support for handling EUI-64 exists in
 [acl](http://www.squid-cache.org/Doc/config/acl#),
 [logformat](http://www.squid-cache.org/Doc/config/logformat#) and

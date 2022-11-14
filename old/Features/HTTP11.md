@@ -84,7 +84,7 @@ HTTP/1.1 advertisement to Servers turned on.
 ## Compliance
 
 The following compliance notes apply to
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 and later. Older Squid did not even conditionally comply with HTTP/1.1.
 
 ### Message Syntax and Routing
@@ -101,9 +101,9 @@ Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230#)
       - NP: Sharepoint and several other MS products break with
         authentication loops when different HTTP/1.x versions are
         advertised on server and client side (as seen with
-        [Squid-3.1](/Squid-3.1#)).
+        [Squid-3.1](/Releases/Squid-3.1#)).
         This is resolved with
-        [Squid-3.2](/Squid-3.2#)
+        [Squid-3.2](/Releases/Squid-3.2#)
         advertising HTTP/1.1 in both sides.
 
 2.  HTTP/1.1 requires support for chunked encoding in both parsers and
@@ -111,7 +111,7 @@ Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230#)
     
       - Both Squid-3 and Squid-2 contain at least response chunked
         decoding. The chunked encoding portion is available from
-        [Squid-3.2](/Squid-3.2#)
+        [Squid-3.2](/Releases/Squid-3.2#)
         on all traffic except CONNECT requests.
     
       - Squid is missing support for chunked encoding trailers.
@@ -138,7 +138,7 @@ Specification Document: RFC [7231](https://tools.ietf.org/rfc/rfc7231#)
 1.  The forwarding path needs to be cleaned up to better separate HTTP
     messages and actual content, allowing for proper forwarding of 1xx
     responses. 1xx forwarding has been implemented in
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     but the forwarding path still needs further work to make this
     efficient.
     

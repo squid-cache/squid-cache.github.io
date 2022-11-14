@@ -750,11 +750,11 @@ discover the dependency package and install it.
     
       - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
         However, please note that
-        [Squid-3.5](/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5#)
         is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or
         Ubuntu Zesty the **libssl1.0-dev** package must be used instead.
         This is resolved in the
-        [Squid-4](/Squid-4#)
+        [Squid-4](/Releases/Squid-4#)
         packages.
 
 ##### Init Script

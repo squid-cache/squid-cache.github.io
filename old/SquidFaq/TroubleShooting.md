@@ -1178,7 +1178,7 @@ behavior. Or at all in standard proxy.
   - [reply\_header\_max\_size](http://www.squid-cache.org/Doc/config/reply_header_max_size#)
 
 These two default to 64kB starting from
-[Squid-3.1](/Squid-3.1#).
+[Squid-3.1](/Releases/Squid-3.1#).
 Earlier versions of Squid had defaults as low as 2 kB. In some rather
 rare circumstances even 64kB is too low, so you can increase this value.
 

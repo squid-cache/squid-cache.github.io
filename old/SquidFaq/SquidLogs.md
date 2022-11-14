@@ -104,9 +104,9 @@ outlined in the
 
 Most log file analysis program are based on the entries in *access.log*.
 
-[Squid-2.7](/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7#)
 and
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 allow the administrators to configure their [logfile
 format](/Features/LogFormat#)
 and [log output
@@ -155,7 +155,7 @@ underscore characters) which describe the response sent to the client.
     | **FAIL**       | Only seen on **REFRESH** to indicate the revalidation request failed. The response object may be the server provided network error or the stale object which was being revalidated depending on *stale-if-error* cache control.                     |
     | **MODIFIED**   | Only seen on **REFRESH** responses to indicate revalidation produced a new modified object.                                                                                                                                                         |
     | **UNMODIFIED** | Only seen on **REFRESH** responses to indicate revalidation produced a 304 (Not Modified) status. The client gets either a full 200 (OK), a 304 (Not Modified), or (in theory) another response, depending on the client request and other details. |
-    | **REDIRECT**   | Squid generated an HTTP redirect response to this request. Only on [Squid-3.2](/Squid-3.2#)+ or Squid built with -DLOG\_TCP\_REDIRECTS compiler flag.                                    |
+    | **REDIRECT**   | Squid generated an HTTP redirect response to this request. Only on [Squid-3.2](/Releases/Squid-3.2#)+ or Squid built with -DLOG\_TCP\_REDIRECTS compiler flag.                                    |
     
 
   - These tags are optional and describe whether the response was loaded
@@ -168,7 +168,7 @@ underscore characters) which describe the response sent to the client.
     | **MISS**    | The response object delivered was the network response object.                                                                                                                                                                                                          |
     | **DENIED**  | The request was denied by access controls.                                                                                                                                                                                                                              |
     | **NOFETCH** | A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either **UDP\_HIT** or **UDP\_MISS\_NOFETCH**. Neighbours will thus only fetch hits. |
-    | **TUNNEL**  | A binary tunnel was established for this transaction. Only on [Squid-3.5](/Squid-3.5#)+                                                                                                                      |
+    | **TUNNEL**  | A binary tunnel was established for this transaction. Only on [Squid-3.5](/Releases/Squid-3.5#)+                                                                                                                      |
     
 
   - These tags are optional and describe some error conditions which
@@ -511,7 +511,7 @@ will not see such a file.
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     [RunCache](/RunCache#)
     has been obsoleted since
-    [Squid-2.6](/Squid-2.6#).
+    [Squid-2.6](/Releases/Squid-2.6#).
     Modern Squid run as daemons usually log this output to the system
     syslog facility or if run manually to stdout for the account which
     operates the master daemon process.
@@ -520,7 +520,7 @@ will not see such a file.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     Starting from
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     this log has become one of the default [access.log](#access.log)
     formats and is always available for use. It is no longer a special
     separate log file.
@@ -612,7 +612,7 @@ When logging debug information into cache.log it can easily become
 extremely large and when a long access.log traffic history is required
 (ie by law in some countries) storing large cache.log for that time is
 not reasonable. From
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 cache.log can be rotated with an individual cap set by
 [debug\_options](http://www.squid-cache.org/Doc/config/debug_options#)
 rotate=N} option to store fewer of these large files in the .0 to .N
@@ -630,9 +630,9 @@ third-party logfile management systems, such as
 [newsyslog](http://www.weird.com/~woods/projects/newsyslog.html) or
 *logrotate*, to maintain the log files.
 
-[Squid-2.7](/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7#)
 and
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 and later also provide modular logging outputs which provide flexibility
 for sending log data to alternative logging systems.
 
@@ -762,19 +762,19 @@ There are several alternatives which are much safer to setup and use.
 The basic capabilities present are :
 
 since
-[Squid-2.6](/Squid-2.6#):
+[Squid-2.6](/Releases/Squid-2.6#):
 
   - logging to system syslog
 
 since
-[Squid-2.7](/Squid-2.7#):
+[Squid-2.7](/Releases/Squid-2.7#):
 
   - logging to an external service via UDP packets
 
   - logging through IPC to a custom local daemon
 
 since
-[Squid-3.2](/Squid-3.2#):
+[Squid-3.2](/Releases/Squid-3.2#):
 
   - logging to an external service via TCP streams
 

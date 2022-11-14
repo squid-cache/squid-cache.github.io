@@ -3,14 +3,14 @@
 |          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | today    | Squid-2.6 is **CONSIDERED DANGEROUS** as the security people say. Due to unfixed vulnerabilities **[CVE-2014-7141](http://www.squid-cache.org/Advisories/SQUID-2014_4.txt), [CVE-2014-7142](http://www.squid-cache.org/Advisories/SQUID-2014_4.txt), [CVE-2014-6270](http://www.squid-cache.org/Advisories/SQUID-2014_3.txt), [CVE-2012-5643](http://www.squid-cache.org/Advisories/SQUID-2012_1.txt), [CVE-2013-0189](http://www.squid-cache.org/Advisories/SQUID-2012_1.txt), [CVE-2009-0801](http://www.squid-cache.org/Advisories/SQUID-2011_1.txt)** and any other recently discovered issues. |
-| Aug 2012 | the Squid-2.6 series became **OBSOLETE** with the release of [Squid-3.2](/Squid-3.2#) features                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| May 2008 | the Squid-2.6 series became **DEPRECATED** with the release of [Squid-2.7](/Squid-2.7#) series                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Aug 2012 | the Squid-2.6 series became **OBSOLETE** with the release of [Squid-3.2](/Releases/Squid-3.2#) features                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| May 2008 | the Squid-2.6 series became **DEPRECATED** with the release of [Squid-2.7](/Releases/Squid-2.7#) series                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Jul 2006 | Released for production use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 During the sprint it was recognised that it would be beneficial to
 collect all of the available completed Squid-2.5 based works into a
 Squid-2.6 release while we work on getting
-[Squid-3.0](/Squid-3.0#)
+[Squid-3.0](/Releases/Squid-3.0#)
 ready.
 
 There is very a large list of completed features developed for Squid-2.5
@@ -30,7 +30,7 @@ effort, especially considering that each of these pieces have been
 fairly well validated separately both by Squid developers and
 independenly by numerous users of these features, but will buy us a
 great deal in momentum while working on
-[Squid-3.0](/Squid-3.0#)
+[Squid-3.0](/Releases/Squid-3.0#)
 to stabilize.
 
 List of things we have thought of include in a Squid-2.6 release include

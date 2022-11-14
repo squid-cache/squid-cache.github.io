@@ -70,13 +70,13 @@ Input line received from Squid:
   - key-extras
     
       - Starting with
-        [Squid-3.5](/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5#)
         additional parameters passed to the helper which may be
         configured with
         [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras#).
         For backward compatibility the default key-extras for URL
         helpers matches the format fields sent by
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         and older in this field position:
     
     <!-- end list -->
@@ -124,7 +124,7 @@ Input line received from Squid:
       - One or more key=value pairs. Only "myip" and "myport" pairs
         documented below were ever defined and are sent unconditionally
         by
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         and older:
         
         |            |                         |
@@ -188,7 +188,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the result field is only accepted by
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         and newer.
 
   - kv-pair
@@ -198,7 +198,7 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                       |
         | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Squid-3.5#)) |
+        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5#)) |
         | message=...        | reserved                                                                                                              |
         | status=...         | HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308                                      |
         | tag=...            | reserved                                                                                                              |
@@ -209,7 +209,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the kv-pair field is only accepted by
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         and newer.
     
       - ℹ️
@@ -305,7 +305,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the result field is only accepted by
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         and newer.
 
   - kv-pair
@@ -315,7 +315,7 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                       |
         | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Squid-3.5#)) |
+        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5#)) |
         | message=...        | reserved                                                                                                              |
         | rewrite-url=...    | re-write the transaction to the given URL.                                                                            |
         | tag=...            | reserved                                                                                                              |
@@ -325,7 +325,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the kv-pair field is only accepted by
-        [Squid-3.4](/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4#)
         and newer.
     
       - ℹ️

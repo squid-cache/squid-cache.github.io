@@ -43,7 +43,7 @@ Using
 The same using
 [cache\_peer\_domain](http://www.squid-cache.org/Doc/config/cache_peer_domain#)
 (deprecated since
-[Squid-3.2](/Squid-3.2#)):
+[Squid-3.2](/Releases/Squid-3.2#)):
 
     cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
     cache_peer_domain server_1 www.example.com example.com
@@ -53,7 +53,7 @@ The same using
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     This directive has been removed in
-    [Squid-4](/Squid-4#).
+    [Squid-4](/Releases/Squid-4#).
 
 #### Other Criteria than Domain
 

@@ -8,16 +8,16 @@ misdetected forwarding loops).
 ## SMP enabled Squid
 
 ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 to
-[Squid-3.4](/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4#)
 contain [SMP scaling
 support](/Features/SmpScale#)
 implemented in such a way that only one squid instance could be run on a
 single machine when SMP was enabled. Multiple instances can **only** be
 run without SMP support.
 
-[Squid-3.5](/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5#)
 provides the **-n** command line option to configure a unique service
 name for each Squid instance started. Each set of SMP-aware processes
 will interact only with other processes using the same service name. A
@@ -79,11 +79,11 @@ expands to the service name of the process parsing the config file.
         squid to detect a running instance and to send various internal
         messages (i.e. `squid -k reconfigure`).
         
-          - [Squid-4](/Squid-4#)
+          - [Squid-4](/Releases/Squid-4#)
             and later the default uses **${service\_name}** making it no
             longer necessary to configure.
         
-          - [Squid-3.5](/Squid-3.5#)
+          - [Squid-3.5](/Releases/Squid-3.5#)
             and older must explicitly set this option to a unique file
             per instance.
 

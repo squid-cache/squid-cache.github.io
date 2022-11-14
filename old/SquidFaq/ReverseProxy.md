@@ -157,7 +157,7 @@ earlier than needed. This raises load on the delivery system which can
 lead to bandwidth problems and rising costs.
 
 In
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 and later the
 [http\_port](http://www.squid-cache.org/Doc/config/http_port#)
 **ignore-cc** options is available on accel ports. This option informs

@@ -26,7 +26,7 @@ header parsing.
 One of the main expected gains from this and
 [StringNg](/Features/BetterStringBuffer/StringNg#)
 is increased clarity and performance in HTTP parsing. The (as of
-[Squid-3.1](/Squid-3.1#))
+[Squid-3.1](/Releases/Squid-3.1#))
 implementation of the HTTP parser (below "baseline situation") is a bit
 byzantine and also benefits from a makeover. The code shows that
 attempts have been made in the pasts but have not been completed.

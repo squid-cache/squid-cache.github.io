@@ -89,7 +89,7 @@ currently achieved through the use of **:lang()** attributes in CSS.
 
 To ensure compatibility with Squid-2 which does not natively perform the
 same CSS insertion as
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 these language settings are embedded directly into the templates and
 alterations need to be brought to the attention of the Squid Developers.
 

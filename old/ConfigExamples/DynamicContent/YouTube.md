@@ -222,12 +222,12 @@ standards.
 collapsed-forwarding feature to protect from high bandwidth consumption
 and possible cache DDoS attacks. Squid-3 do not have that feature at
 this time.
-[Squid-2.7](/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7#)
 is recommended for use with these settings.
 
 If you require Squid-3 for features this functionality can be achieved
 by configuring a
-[Squid-2.7](/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7#)
 proxy as a
 [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#)
 dedicated to caching and serving the media content.
@@ -256,7 +256,7 @@ for this would be greatly loved by many.
 UPDATE: see the
 [storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program#)
 feature in
-[Squid-2.7](/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7#)
 and the
 [discussion](/ConfigExamples/DynamicContent/YouTube/Discussion#)
 about this entry.

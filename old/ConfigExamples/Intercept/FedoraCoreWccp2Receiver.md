@@ -74,7 +74,7 @@ the Squid application.
 
   - ℹ️
     From
-    [Squid-3.1](/Squid-3.1#)
+    [Squid-3.1](/Releases/Squid-3.1#)
     the magic numbers are now mostly gone. This should work and be
     clearer:
 

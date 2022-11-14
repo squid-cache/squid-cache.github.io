@@ -20,7 +20,7 @@
 "Peek and Splice" is a collection of new
 [SslBump](/Features/SslBump#)
 actions and related features introduced in
-[Squid-3.5](/Squid-3.5#).
+[Squid-3.5](/Releases/Squid-3.5#).
 Older Squids used server-first and client-first actions that did not
 work well many cases. Many SslBump deployments try to minimize potential
 damage by *not* bumping sites unless the local policy demands it. Before
@@ -206,7 +206,7 @@ Actions peek and stare allow Squid to proceed to the next SslBump step.
 ## See Also
 
 If
-[Squid-4](/Squid-4#)
+[Squid-4](/Releases/Squid-4#)
 or later fails to parse an expected TLS Client Hello message, Squid
 consults
 [on\_unsupported\_protocol](http://www.squid-cache.org/Doc/config/on_unsupported_protocol#)

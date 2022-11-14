@@ -18,13 +18,13 @@ enumerate all available actions. The `password` is only required for
 pages that require it.
 
   - ℹ️
-    [Squid-3.1](/Squid-3.1#)
+    [Squid-3.1](/Releases/Squid-3.1#)
     and later all accept HTTP Basic authentication credentials instead
     of a URL-based password. Use the **WWW-Authenticate:** header to
     pass the password.
 
   - ℹ️
-    [Squid-4](/Squid-4#)
+    [Squid-4](/Releases/Squid-4#)
     and later serve Cache Manager contents through the
     `http://hostname/squid-internal-mgr` URL-prefix
 

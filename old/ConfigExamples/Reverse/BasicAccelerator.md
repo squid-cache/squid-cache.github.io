@@ -41,7 +41,7 @@ this site:
   - **defaultsite=X** tells Squid to assume the domain *X* is wanted.
 
   - **no-vhost** for
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     or later disables HTTP/1.1 [domain based virtual
     hosting](/ConfigExamples/Reverse/VirtualHosting#)
     support. Omit this option for older Squid versions.

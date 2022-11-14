@@ -137,7 +137,7 @@ has some examples.
 
 cache\_stoplist:: This directive also has been reimplemented with access
 control lists. You will use the *cache* option since
-[Squid-2.6](/Squid-2.6#).
+[Squid-2.6](/Releases/Squid-2.6#).
 For example:
 
 ``` 

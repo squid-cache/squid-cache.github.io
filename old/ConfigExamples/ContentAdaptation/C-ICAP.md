@@ -10,7 +10,7 @@ about these examples please email the squid-users mailing list.
 ## Outline
 
 For
-[Squid-3.0](/Squid-3.0#)
+[Squid-3.0](/Releases/Squid-3.0#)
 and later we can use ICAP for content filtering or antivirus checking.
 This config example describes how to scan for viruses on-the-fly using
 [squidclamav](http://squidclamav.darold.net/) antivirus module in
@@ -18,7 +18,7 @@ combination with [ClamAV antivirus](http://www.clamav.net/index.html)
 service. It is a bit different with [recommended squidclamav
 configuration](http://squidclamav.darold.net/config.html) and adapted
 for
-[Squid-3.4](/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4#)
 releases and above with latest configuration changes.
 
 ## Usage
@@ -311,7 +311,7 @@ where squidclamav\_whitelist contains:
 ### Squid Configuration File
 
   - ℹ️
-    [Squid-3.4](/Squid-3.4#)
+    [Squid-3.4](/Releases/Squid-3.4#)
     and older need to be built with the **--enable-icap-client** option.
     Newer releases have this enabled by default.
 
@@ -408,7 +408,7 @@ Finally restart c-icap service to accept changes.
 ### Squid Configuration File
 
   - ℹ️
-    [Squid-3.4](/Squid-3.4#)
+    [Squid-3.4](/Releases/Squid-3.4#)
     needs to be built with the **--enable-icap-client** option. Newer
     releases have this enabled by default.
 

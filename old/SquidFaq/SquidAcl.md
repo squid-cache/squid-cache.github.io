@@ -238,7 +238,7 @@ There are a number of different access lists:
     (replaced by
     [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)
     in
-    [Squid-3.1](/Squid-3.1#))
+    [Squid-3.1](/Releases/Squid-3.1#))
     What requests may be sent to a particular ICAP server.
 
   - [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#):
@@ -837,7 +837,7 @@ supported on Linux, Solaris, and probably BSD variants.
 | ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | MAC address is only available for clients that are on the same subnet. If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router. |
 
 For
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 and older to use ARP (MAC) access controls, you first need to compile in
 the optional code.
 
@@ -851,7 +851,7 @@ If *src/acl.c* doesn't compile, then ARP ACLs are probably not supported
 on your system.
 
 For
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 and newer the EUI support is enabled by default whenever it can be used.
 
 Add some *arp* ACL lines to your squid.conf:

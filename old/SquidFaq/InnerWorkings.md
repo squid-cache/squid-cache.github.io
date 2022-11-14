@@ -414,7 +414,7 @@ something like this:
 
   - Responses with *Cache-Control: No-Cache* are NOT cachable by Squid
     older than
-    [Squid-3.2](/Squid-3.2#).
+    [Squid-3.2](/Releases/Squid-3.2#).
 
   - Responses with *Cache-Control: No-Store* are NOT cachable.
 
@@ -724,7 +724,7 @@ Then, Squid will always close its side of the connection instead of
 marking it as half-closed.
 
   - **NP:** from
-    [Squid-3.0](/Squid-3.0#)
+    [Squid-3.0](/Releases/Squid-3.0#)
     the default is now OFF.
 
 # What does --enable-heap-replacement do?

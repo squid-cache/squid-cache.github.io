@@ -74,16 +74,16 @@ PROBLEM:
 
 SOLUTION:
 
-  - [Squid-2.7](/Squid-2.7#)
+  - [Squid-2.7](/Releases/Squid-2.7#)
     and
-    [Squid-3.1](/Squid-3.1#)
+    [Squid-3.1](/Releases/Squid-3.1#)
     offer the
     [ignore\_expect\_100](http://www.squid-cache.org/Doc/config/ignore_expect_100#)
     directive to skip the 417 and wait for the client to resume. There
     are potential DoS side effects to its use, please avoid unless you
     must.
     
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     supports the HTTP/1.1 feature these clients depend on. This problem
     will not occur there.
 

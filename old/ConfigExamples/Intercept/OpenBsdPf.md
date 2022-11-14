@@ -34,7 +34,7 @@ README file:
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     This configuration requires
-    [Squid-3.3.4](/Squid-3.3#)
+    [Squid-3.3.4](/Releases/Squid-3.3#)
     or later.
 
 Squid requires the following build option:
@@ -54,15 +54,15 @@ connections:
     port/packages.
 
 For
-[Squid-3.4](/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4#)
 or later:
 
     --enable-pf-transparent
 
 For
-[Squid-3.3](/Squid-3.3#)
+[Squid-3.3](/Releases/Squid-3.3#)
 and
-[Squid-3.2](/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2#)
 support for this is not integrated with the --enable-pf-transparent
 build option. However the IPFW NAT component of Squid is compatible with
 PF. You can build Squid with these configure options:
@@ -70,7 +70,7 @@ PF. You can build Squid with these configure options:
     --disable-pf-transparent --enable-ipfw-transparent
 
 For
-[Squid-2.7](/Squid-2.7#),
+[Squid-2.7](/Releases/Squid-2.7#),
 the default build with no particular configuration options uses the IPFW
 compatible method.
 
@@ -121,7 +121,7 @@ is no divert-reply rule, cache.log will show a line similar to:
 
   - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
     NOTE: OpenBSD older than 4.4 requires
-    [Squid-3.2](/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2#)
     or older built with **--enable-pf-transparent** and only supports
     the NAT interception method.
 

@@ -68,7 +68,7 @@ To implement a HTTP/2 receiving port in Squid we need to:
   - avoiding direct reads or writes to the client socket
     
       - mostly done as of
-        [Squid-3.2](/Squid-3.2#)
+        [Squid-3.2](/Releases/Squid-3.2#)
         but there are a few exceptions, ie tunnel and ssl-bump.
 
   - implement HTTP/2 header parser and packer routines
@@ -100,14 +100,14 @@ To implement a HTTP/2 receiving port in Squid we need to:
 ### Progress
 
 **Completed: (in
-[Squid-3.5](/Squid-3.5#))**
+[Squid-3.5](/Releases/Squid-3.5#))**
 
   - Solve Bug [3371](https://bugs.squid-cache.org/show_bug.cgi?id=3371#)
     interference with our ability to detect and relay HTTP/2
     transparently
 
 **Completed: (in
-[Squid-4](/Squid-4#))**
+[Squid-4](/Releases/Squid-4#))**
 
   - Implement TLS support using GnuTLS for systems where OpenSSL is not
     available.

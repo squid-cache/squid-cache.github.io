@@ -88,7 +88,7 @@ to
 ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
 Unfortunately the `/usr/include/inet/mib2.h` header required for IPF
 interception support clashes with
-[Squid-3.1](/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1#)
 class definitions. This has been fixed in the 3.2 series.
 
 For 3.1 to build you may need to run this class rename command in the
