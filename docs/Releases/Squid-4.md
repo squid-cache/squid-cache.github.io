@@ -2,7 +2,7 @@
 
 |    |    |
 | -------- | ------ |
-| Aug 2021 | Squid-4 series became **DEPRECATED** with the release of [Squid-5](/Squid-5#) series |
+| Aug 2021 | Squid-4 series became **DEPRECATED** with the release of [Squid-5](/Releases/Squid-5#) series |
 | Jul 2018 | Released for production use |
 |  |  |
 
@@ -64,7 +64,7 @@
 
 The intention with this series is to improve performance using C++11
 features. Some remaining
-[Squid-2.7](/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7#)
 missing features are listed as regressions in
 http://www.squid-cache.org/Versions/v4/RELEASENOTES.html#ss5.1
 
