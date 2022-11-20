@@ -102,7 +102,7 @@ then upgrading to the langpack or
 [Squid-3.1](/Releases/Squid-3.1)
 with auto-negotiate.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Squid older than
     [Squid-3.1](/Releases/Squid-3.1)
     without an explicit

@@ -102,16 +102,16 @@ maintainer.
 ([AmosJeffries](/AmosJeffries)
 at present).
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Please note submissions are only considered for new languages or
     ones without a translator at the time of submission.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     There is no guarantee that your work will make it into Squid until
     another translator can be found to verify it and enter it into the
     system for you.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     You still need to meet all the translation guidelines listed above
     about codes and content.
     

@@ -23,7 +23,7 @@ Install msktutil package from [](http://fuhm.net/software/msktutil/) or
 
 ## krb5.conf Configuration
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     In IE the proxy must be specified as FQDN not as an IP-address
 
   - ℹ️
@@ -81,19 +81,19 @@ Kerberos example):
     
     msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     beware the wrap\! above 'mskutil' options are meant to be on one
     line.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     beware the \<computer-name\> has Windows Netbios limitations of 15
     characters.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     msktutil requires cyrus-sasl-gssapi ldap plugin to authenticate to
     AD ldap.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     because of a bug in msktutil 0.3.16 the \<computer-name\> must be
     lowercase
 
@@ -114,7 +114,7 @@ OR with Samba
     
     unset KRB5_KTNAME
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Do not use this method if you run winbindd or other samba services
     as samba will reset the machine password every x days and thereby
     makes the keytab invalid \!\!

@@ -2,7 +2,7 @@
 
 |                                                                      |                                                                                                                           |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | This article is a **STUB**. It's written to encourage discussion on the topic, but it's not (yet) to be used as reference |
+| ⚠️ | This article is a **STUB**. It's written to encourage discussion on the topic, but it's not (yet) to be used as reference |
 
 **Synopsis**
 

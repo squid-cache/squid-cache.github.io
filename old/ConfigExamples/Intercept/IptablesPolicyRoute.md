@@ -89,7 +89,7 @@ Needs to be run as root.
 Pick a number which does **NOT** exist there yet. We choose *201* for
 this demo. You need to pick your own.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     "201" is just a unique routing table number. Check the file contents
     first\!
 

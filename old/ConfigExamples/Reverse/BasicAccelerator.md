@@ -20,13 +20,13 @@ are.
 
 |                                                                      |                                                                                                                                         |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Accelerator mode in Squid-2.5 worked quite differently, and upgrade to 2.6 or later is strongly recommended if you still use Squid-2.5. |
+| ⚠️ | Accelerator mode in Squid-2.5 worked quite differently, and upgrade to 2.6 or later is strongly recommended if you still use Squid-2.5. |
 
 ## Squid Configuration File
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http\_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http\_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
 First, you have to tell Squid to listen on port 80 (usually), so set the
 **[http\_port](http://www.squid-cache.org/Doc/config/http_port)**

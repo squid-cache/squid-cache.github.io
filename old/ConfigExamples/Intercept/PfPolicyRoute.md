@@ -12,7 +12,7 @@ tproxy mode.
 
 ## pf example rules
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) the
+⚠️ the
 "no state" are very important to make the re-routing decision a packet
 by packet one.
 
@@ -112,7 +112,7 @@ Additional settings for a router mode:
 Similar to FreeBSD there is an issue in OpenBSD with the virtio drivers
 which causes packets to get corrupted.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     I will try to contact the OpenBSD mailing list to see if something
     could be done.
 

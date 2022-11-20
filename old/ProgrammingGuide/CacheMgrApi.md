@@ -1,4 +1,4 @@
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 This page is a work in progress. It reflects the discoveries by
 [FrancescoChemolli](/FrancescoChemolli)
 as it tries to implement the new cachemgr framework. It may contain

@@ -77,7 +77,7 @@ Project web site, please supply the following artifacts:
 
 4.  A URL to be used for the link from the logo.
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) Per
+⚠️ Per
 US IRS [regulations](http://www.irs.gov/pub/irs-pdf/p598.pdf), a sponsor
 listing must *not* use qualitative or comparative language and must
 *not* contain price information (or other indications of savings or

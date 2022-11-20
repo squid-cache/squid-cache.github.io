@@ -6,7 +6,7 @@ about these examples please email the squid-users mailing list.
 
 ## Outline
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 **NOTICE**: this is an *extreme* setup. It is meant to be used in
 complex environments, where the resources available to the administrator
 are huge, as are the requests for performance. It is not suited for

@@ -16,7 +16,7 @@ This wiki page covers setup of a Squid proxy which will seamlessly
 integrate with Active Directory using Kerberos, NTLM and basic
 authentication for clients not authenticated via Kerberos or NTLM.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     This configuration example appears to have been written for an
     Ubuntu installation and incompletely munged for someones idea of
     general use. File paths and account user/group names will depend on

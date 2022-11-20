@@ -1,4 +1,4 @@
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 Please consider adding new wishes as
 [Features](/Features)
 pages rather than dumping them here. Wishes as Feature pages are more

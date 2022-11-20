@@ -25,7 +25,7 @@ Deleting users:
 
     htpasswd -D -nbm /etc/squid/passwords username password
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     The **m** option specifies MD5 encryption which is the default for
     htpasswd.
 

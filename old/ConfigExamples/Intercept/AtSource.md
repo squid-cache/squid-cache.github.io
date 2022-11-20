@@ -6,7 +6,7 @@ about these examples please email the squid-users mailing list.
 
 ## Outline
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     WARNING: Using NAT interception is not recommended other than as a
     final backup to other systems. There are other methods such as
     [Proxy
@@ -29,7 +29,7 @@ routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 ## iptables configuration
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Replace **SQUIDIP** with the public IP which squid may use for its
     listening port and outbound connections.
     
@@ -52,7 +52,7 @@ like so:
 
     http_port 3129 transparent
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     In Squid 3.1+ the *transparent* option has been split. Use
     **'intercept** to catch DNAT packets.
 

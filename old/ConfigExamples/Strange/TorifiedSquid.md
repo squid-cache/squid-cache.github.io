@@ -19,9 +19,9 @@ required to your users.
 
 ### LEGAL NOTICE
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
+⚠️
+⚠️
 Beware, this configuration may be illegal in some countries. Doing this,
 you can break the law. Remember that you are taking full responsibility
 by doing this.
@@ -83,13 +83,13 @@ e-mail in most hardest case.
 
 When finished, run Tor and check tor.log for errors.
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
+⚠️
+⚠️
 **Important notice**
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
+⚠️
+⚠️
 
 Starting from Tor 0.3.2 you [can use it directly as HTTPS tunneling
 proxy](https://twitter.com/torproject/status/912708766084292608). For

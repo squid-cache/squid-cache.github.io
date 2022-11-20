@@ -532,7 +532,7 @@ This only happens immediately after you authenticate.
 This is not a Squid error or bug. Microsoft broke the Basic
 Authentication when they put out IE6 SP1.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     this appears to be fixed again in later service packs and IE 7+
 
 There is a knowledgebase article (

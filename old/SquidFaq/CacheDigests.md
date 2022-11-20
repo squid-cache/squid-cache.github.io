@@ -492,7 +492,7 @@ you understand how Cache Digests work):
 
 |                                                                      |        |
 | -------------------------------------------------------------------- | ------ |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | WANTED |
+| ⚠️ | WANTED |
 
 # Is there a Cache Digest Specification?
 

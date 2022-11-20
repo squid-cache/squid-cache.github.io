@@ -27,7 +27,7 @@ about 40 req/sec.
 
 |                                                                      |                                                                                                                                                                                                                          |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Modern *Linux* systems the Disk Daemon has been trumped by extremely fast AUFS. diskd is still recommended for *BSD* variants. However, we may have found an implementation bug in squid which was hobbling AUFS on BSD. |
+| ⚠️ | Modern *Linux* systems the Disk Daemon has been trumped by extremely fast AUFS. diskd is still recommended for *BSD* variants. However, we may have found an implementation bug in squid which was hobbling AUFS on BSD. |
 
 ## How do I use it?
 

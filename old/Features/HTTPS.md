@@ -51,7 +51,7 @@ that flow through the tunnel, but Squid does not have access to those
 encrypted messages. Other tunneled protocols may not even use HTTP
 messages and URLs (e.g., telnet).
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     It is important to notice that the protocols passed through CONNECT
     are not limited to the ones Squid normally handles. Quite literally
     **anything** that uses a two-way TCP connection can be passed

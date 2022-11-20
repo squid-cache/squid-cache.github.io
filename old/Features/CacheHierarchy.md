@@ -55,7 +55,7 @@ default. The
 **off** directive tells Squid to send these requests via the parent
 anyway.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     The
     [hierarchy\_stoplist](http://www.squid-cache.org/Doc/config/hierarchy_stoplist)
     directive is another which will cause traffic to go DIRECT instead
@@ -80,7 +80,7 @@ one parent cache and two sibling caches:
     cache_peer childcache2.example.com   sibling 3128 3130
     cache_peer childcache3.example.com   sibling 3128 3130
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     cache\_peer\_domain is deprecated and not longer available from
     current Squid versions.
 

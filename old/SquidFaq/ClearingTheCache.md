@@ -26,7 +26,7 @@ and reconfigure ...
 
     squid -k reconfigure
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     **reconfigure** does not work on COSS directory changes. Use the
     tricks below and a full restart instead. This is due to COSS using
     partition/disk level mapping instead of 'normal' human accessible

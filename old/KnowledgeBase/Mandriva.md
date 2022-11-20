@@ -11,7 +11,7 @@
 
 ### Squid-3.1
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     experimental packages. Not yet in official distribution.
 
 **Maintainer:** Luis Daniel Lucio Quiroz

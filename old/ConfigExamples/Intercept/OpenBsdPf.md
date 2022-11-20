@@ -32,7 +32,7 @@ README file:
 
 ### Fully Transparent Proxy (TPROXY)
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     This configuration requires
     [Squid-3.3.4](/Releases/Squid-3.3)
     or later.

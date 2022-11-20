@@ -24,7 +24,7 @@ Samba-3.X is supported natively using the ntlm\_auth helper shipped as
 part of Samba. No Squid specific winbind helpers need to be compiled
 (and even if compiled they won't work with Samba-3.X).
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Samba 2.2.X reached its End-Of-Life on October 1, 2004. It was
     supported using the winbind helpers shipped with Squid-2.5 but is no
     longer supported with later versions, even if using the helper from
@@ -123,7 +123,7 @@ Squid runs as to the **winbindd\_priv** group.
 
     gpasswd -a proxy winbindd_priv
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Remove the cache\_effective\_group setting in squid.conf, if
     present. This setting causes squid to ignore the auxiliary
     winbindd\_priv group membership.

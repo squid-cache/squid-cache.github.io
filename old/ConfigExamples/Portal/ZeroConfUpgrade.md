@@ -36,7 +36,7 @@ most popular browsers and a generic instruction for less popular ones.
 As with all our bundled pages these come translated in many languages
 for easier user reading.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     When using ERR\_AGENT\_CONFIGURE with Squid older than
     [Squid-3.1.20](/Releases/Squid-3.1)
     you will have to edit the file and change the %b to the squid port

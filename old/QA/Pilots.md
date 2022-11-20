@@ -30,7 +30,7 @@ Please see the [Q\&A](#Q_and_A) section for more info.
 
 ## Application
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 Applications are now closed. You may submit yours as a backup in case
 the first Pilot projects fail, but please note that your application
 will receive very little attention until that failure (and we hope the

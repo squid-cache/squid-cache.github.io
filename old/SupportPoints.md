@@ -76,7 +76,7 @@ Bonuses for volunteers performing specific, regular project duties:
     | Foundation Director   | 0     | Directorship is a conflict of interests position |
     
 
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     Commits are counted by Author, not Committer fields (if both are
     present). The number of trunk commits should include individual
     commits inside bzr merges because they usually indicate a larger or
@@ -84,13 +84,13 @@ Bonuses for volunteers performing specific, regular project duties:
     ported by the release maintainer and so are covered by Maintainer
     bonus.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     Donations may include monetary donations to the Foundation and
     non-monetary contributions with clear monetary value regularly used
     by the Project, such as payments for Squid Project hosting services
     or testing software.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     All numbers are calculated for the past year (starting approximately
     395 days from the calculation date) and remain fresh for one year
     since submission (but may be occasionally updated before they become
@@ -98,7 +98,7 @@ Bonuses for volunteers performing specific, regular project duties:
     minimize submission duels and rushed submissions relying on
     potentially unsettled issues.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     Logarithm base is 2. Log parameters below 1 are treated as 1 (and
     result in zero log value). The logarithm is applied to encourage
     balanced contributions and discourage attempts to game the system by

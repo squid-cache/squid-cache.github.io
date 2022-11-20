@@ -508,7 +508,7 @@ contains the Squid startup times, and also all fatal errors, e.g. as
 produced by an *assert()* failure. If you are not using *RunCache*, you
 will not see such a file.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     [RunCache](/RunCache)
     has been obsoleted since
     [Squid-2.6](/Releases/Squid-2.6).
@@ -518,7 +518,7 @@ will not see such a file.
 
 ## useragent.log
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Starting from
     [Squid-3.2](/Releases/Squid-3.2)
     this log has become one of the default [access.log](#access.log)
@@ -587,7 +587,7 @@ To disable *cache.log*:
 |                                                                           |                                                                                                                                                                                                                                                                                                 |
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | It is a bad idea to disable the *cache.log* because this file contains many important status and debugging messages. However, if you really want to, you can                                                                                                                                    |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)      | If /dev/null is specified to any of the above log files, [logfile](http://www.squid-cache.org/Doc/config/logfile) rotate MUST also be set to *0* or else risk Squid rotating away /dev/null making it a plain log file                                                                         |
+| ⚠️      | If /dev/null is specified to any of the above log files, [logfile](http://www.squid-cache.org/Doc/config/logfile) rotate MUST also be set to *0* or else risk Squid rotating away /dev/null making it a plain log file                                                                         |
 | ℹ️    | Instead of disabling the log files, it is advisable to use a smaller value for [logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate) and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system |
 
 # What is the maximum size of access.log?
@@ -600,7 +600,7 @@ they do not become very large.
 
 |                                                                      |                                                                                                                                                                                                            |
 | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Logging is very important to Squid. In fact, it is so important that it will shut itself down if it can't write to its logfiles. This includes cases such as a full log disk, or logfiles getting too big. |
+| ⚠️ | Logging is very important to Squid. In fact, it is so important that it will shut itself down if it can't write to its logfiles. This includes cases such as a full log disk, or logfiles getting too big. |
 
 # My log files get very big\!
 
@@ -756,7 +756,7 @@ whole load of possible problems.
 
 |                                                                      |                                                                                                                                  |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Logging is very important to Squid. In fact, it is so important that it will shut itself down if it can't write to its logfiles. |
+| ⚠️ | Logging is very important to Squid. In fact, it is so important that it will shut itself down if it can't write to its logfiles. |
 
 There are several alternatives which are much safer to setup and use.
 The basic capabilities present are :

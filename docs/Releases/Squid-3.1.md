@@ -84,7 +84,7 @@ easier.
     
     |                                                                      |                                                                                                                             |
     | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | This minimal configuration does not work with versions earlier than 3.1 which are missing special cleanup done to the code. |
+    | ⚠️ | This minimal configuration does not work with versions earlier than 3.1 which are missing special cleanup done to the code. |
     
 
 <!-- end list -->

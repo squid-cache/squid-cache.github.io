@@ -36,7 +36,7 @@ for each website, and IPv6 addresses in the cachemgr reports and logs.
 
 |                                                                      |                                                                                |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Make sure that you check your helper script can handle IPv6 addresses as input |
+| ⚠️ | Make sure that you check your helper script can handle IPv6 addresses as input |
 
 ## How do I setup squid.conf for IPv6?
 
@@ -102,7 +102,7 @@ can be either IPv4 or IPv6. The default is to accept traffic on any IP
 address to the relevant UDP port. If you configure this to a specific IP
 address of either type it will not accept traffic of the other type.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Note that configuring UDP incoming address to **0.0.0.0** as some
     old Squid-2 configurations did. Explicitly makes the incoming port
     IPv4-only, which can break responses to UDP packets sent out using

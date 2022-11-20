@@ -86,7 +86,7 @@ Bearer is at the one time both very simple and somewhat complex. Squids
 part has been kept intentionally minor and simple to improve the overall
 system security.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     squid only implements the **Autorization header field** Bearer
     tokens. Alternative *Form field* method is not compatible with HTTP
     proxy needs and method *URI query parameter* is too insecure to be

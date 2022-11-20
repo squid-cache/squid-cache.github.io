@@ -25,7 +25,7 @@ Basic HTTP authentication.
 
 First edit squid.conf so that authentication against LDAP works
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     The first config line below wraps, it is meant to be one long line.
 
 <!-- end list -->
@@ -63,7 +63,7 @@ squid\_ldap\_auth manual
     Squid\<-\>LDAP Server, not browsers\<-\>Squid. For SSL/TLS your
     squid\_ldap\_auth line will look like...
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     The config line below wraps, it is meant to be one long line.
 
 <!-- end list -->
@@ -76,7 +76,7 @@ Windows 2003 AD also supports LDAP authentication. Some adjustment to
 the search filter is needed to map to the Microsoft way of naming
 things...
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     The config line below wraps, it is meant to be one long line.
 
 <!-- end list -->

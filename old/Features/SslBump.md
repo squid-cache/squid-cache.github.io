@@ -36,7 +36,7 @@ adapted using regular Squid features such as
 and
 [eCAP](/Features/eCAP).
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     By default, most user agents will warn end-users about a possible
     man-in-the-middle attack.
 
@@ -121,7 +121,7 @@ rules are now configured like this:
     ssl_bump none broken_sites
     ssl_bump client-first all
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     However
     [Squid-3.3](/Releases/Squid-3.3)
     and later provide the *server-first* algorithm which can be used in
@@ -175,7 +175,7 @@ another domain.
 
 ## Memory usage
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Warning: Unlike the rest of this page at the time of writing, this
     section applies to
     [Squid-3.3](/Releases/Squid-3.3)

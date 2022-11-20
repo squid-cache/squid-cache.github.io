@@ -6,7 +6,7 @@ about these examples please email the squid-users mailing list.
 
 ## Outline
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     The PIX only supports WCCPv2 and not WCCPv1.
 
 Note that the only supported configuration of WCCP on the PIX is with

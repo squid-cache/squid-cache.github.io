@@ -216,7 +216,7 @@ directive.
 
 **IMPORTANT :**
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     If you use **dstdomain** ACL before the HTTP connection is bumped,
     please note that it will attempt to match the (fake or real) CONNECT
     request URI. Depending on your listening ports configuration,
@@ -259,7 +259,7 @@ Only observe TCP/TLS metadata. Do not look at HTTP information. Modify
 nothing. Useful for logging purposes since the SNI and server
 certificates are peeked at and can be logged.
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 Depending on other settings, Squid may terminate connections if it
 cannot validate client SNI (Host header forgery detection) or the server
 certificate.
@@ -269,7 +269,7 @@ certificate.
 
 Only bump a set of sites.
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 Usually does not work for requests without SNI that go to monitoredSites
 -- they will not be bumped.
 
@@ -279,11 +279,11 @@ Usually does not work for requests without SNI that go to monitoredSites
 
 Bump All Sites Except Banks
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 Usually does not work for requests that go to non-banks -- they will not
 be bumped.
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 Depending on other settings, Squid may terminate connections to banks if
 Squid cannot validate client SNI (Host header forgery detection) or the
 server certificate.

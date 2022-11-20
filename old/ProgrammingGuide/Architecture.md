@@ -42,7 +42,7 @@ At the broad level Squid consists of five generic processing areas;
     
       - ![BroadOverview.png](https://wiki.squid-cache.org/ProgrammingGuide/Architecture?action=AttachFile&do=get&target=BroadOverview.png)
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** image is outdated.
 
   - Client Side now includes SNMP, PROXY, FTP, (with many bugs) SFTP
@@ -61,15 +61,15 @@ TODO:** image is outdated.
     Squid-2 being composed purely of event callback chains, Squid-3 adds
     the model of task encapsulation within Jobs.
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** images with overview of data flow.
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** pull in existing descriptions of I/O event model,
 [AsyncJob](/AsyncJob)
 model from source code.
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** data processing diagram with color-coded for display of
 [AsyncJob](/AsyncJob)
 vs Event callback coverage.
@@ -109,7 +109,7 @@ A **helper transaction** (class Helper::Xaction) may occur for each
 plugin helper which squid.conf settings may cause to be used by the
 stream transaction.
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** alter the **master transaction** definition to cope with UDP
 based protocols involving streams and content adapted. eg SNMPv3,
 HTTP/3, QUICK, CoAP, CoAPS, DNS,
@@ -181,16 +181,16 @@ through the above above motions.
 Your Squid directives and helpers must be prepared to deal with multiple
 \[CONNECT\] requests per connection.
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** document forwarding destination selection
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** HTTP response callback processing sequence
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** non-TCP transaction processing sequence?
 
-**![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+**⚠️
 TODO:** non-HTTP stream transactions?
 
 Discuss this page using the "Discussion" link in the main menu

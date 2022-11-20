@@ -69,7 +69,7 @@ with the community strings that you previously defined. For example:
 The above will allow anyone on the localhost who uses the community
 *public* to access the agent. It will deny all others access.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     If you do not define any
     [snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access)
     ACL's, then SNMP access is denied by default.

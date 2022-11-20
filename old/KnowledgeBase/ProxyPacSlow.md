@@ -43,7 +43,7 @@ resolvable. For example:
 will force non-resolvable names to be forwarded to the proxy
 immediately.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     This should be included before any javascript functions which
     require a DNS lookup to be performed, such as `isInNet()`.
 

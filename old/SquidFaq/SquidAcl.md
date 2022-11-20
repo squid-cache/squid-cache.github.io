@@ -497,7 +497,7 @@ Cache manager requests from the *server* address work because *server*
 is a subset of **ourhosts** and the second access rule will match and
 allow the request.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Also note that this means any cache manager request from *ourhosts*
     would be allowed.
 
@@ -834,7 +834,7 @@ supported on Linux, Solaris, and probably BSD variants.
 
 |                                                                      |                                                                                                                                                                                                                              |
 | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | MAC address is only available for clients that are on the same subnet. If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router. |
+| ⚠️ | MAC address is only available for clients that are on the same subnet. If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router. |
 
 For
 [Squid-3.1](/Releases/Squid-3.1)

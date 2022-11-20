@@ -45,7 +45,7 @@ Doing these apparently works ad makes Squid into a SOCKS proxy. There
 are several users who have reported actively using Squid in this
 fashion.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     It has one downside in that ALL connections inbound and outbound are
     SOCKS connections. There is no middle ground for mixed
     SOCKS/non-SOCKS connections.

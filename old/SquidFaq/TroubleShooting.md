@@ -117,7 +117,7 @@ Squid picks up the limit at build time.
     /proc/sys/net/ipv4/, like in "*echo 1024 32768 \>
     /proc/sys/net/ipv4/ip\_local\_port\_range*")
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     NOTE that the **-n** option is separate from the **-HS** options.
     ulimit will fail on some systems if you try to combine them.
 
@@ -185,7 +185,7 @@ by [Torsten Sturm](mailto:torsten.sturm@axis.de)
 
 |                                                                      |                                                                                          |
 | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | You probably want *maxfiles \> maxfilesperproc* if you're going to be pushing the limit. |
+| ⚠️ | You probably want *maxfiles \> maxfilesperproc* if you're going to be pushing the limit. |
 
   - What is the upper limit?
     
@@ -724,7 +724,7 @@ Via
 header. If a cache notices its own hostname in this header for an
 incoming request, it knows there is a forwarding loop somewhere.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Squid may report a forwarding loop if a request goes through two
     caches that have the same **visible\_hostname** value. If you want
     to have multiple machines with the same **visible\_hostname** then
@@ -1002,7 +1002,7 @@ process id number there. For example:
 
     echo 8893 > /usr/local/squid/logs/squid.pid
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Be careful of file permissions. It's no use having a .pid file if
     squid can't update it when things change.
 

@@ -77,7 +77,7 @@ from bridging mode to routing mode:
       unset i
     fi
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     The bridge interfaces also need to be configured with public IP
     addresses for Squid to use in its normal operating traffic (DNS,
     ICMP, TPROXY failed requests, peer requests, etc)

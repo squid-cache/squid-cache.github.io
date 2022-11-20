@@ -1,14 +1,14 @@
 # Misplaced ToDo's
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     The right place to list bugs is the bugzilla database.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     The right place to list future improvements is the
     [Features](/Features)
     interface.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     The right place to list minor tasks anyone can do is the [Roadmap
     Tasks
     list](/RoadMap/Tasks).

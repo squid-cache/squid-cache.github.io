@@ -368,7 +368,7 @@ Always check the provided release notes for any version specific detail.
 
 (work in progress)
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 **End of edit conflict**
 
 # Squid-3 porting efforts

@@ -215,7 +215,7 @@ An example for input and output of the helper:
 
 ### Helper Example
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     This helper is an example. It is provided without any warranty or
     guarantees and is not recommended for production use.
 

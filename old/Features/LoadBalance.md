@@ -30,7 +30,7 @@ list serves the request, but various failures may necessitate contacting
 other destinations. This section describes how the destination list is
 constructed.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     This section currently assumes that there are **no** pinned
     connections, ICP/HTCP queries, netdb databases, and Cache Digests to
     deal with. If your Squid uses those features, the destination list
@@ -351,7 +351,7 @@ If you want to reduce or increase this bias you can configure the
 takes the number of milliseconds to be subtracted from RTT before the
 calculation is made.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Don't forget that basetime=T is a fixed value, and RTT lag can vary
     with network conditions. So this is just a bias, not a "fix" for
     distance problems.

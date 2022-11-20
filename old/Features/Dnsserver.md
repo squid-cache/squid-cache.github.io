@@ -6,7 +6,7 @@
 
 # Details
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     dnsserver helper is now replaced by a faster internal DNS client.
     You should NOT be running with external DNS processes.
 

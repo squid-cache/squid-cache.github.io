@@ -183,7 +183,7 @@ When this is completed;
 
 ## Discussion
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) To
+⚠️ To
 answer, use the "Discussion" link in the main menu
 
 See [Discussed

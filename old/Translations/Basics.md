@@ -144,7 +144,7 @@ a bunch of those suggestions.
 
 #### Weekly Notices
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     This feature is on hold for now.
 
 Once a week each language is checked for missing text, new suggestions,

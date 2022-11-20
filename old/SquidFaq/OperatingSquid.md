@@ -112,7 +112,7 @@ If your cache processes several hundred hits per second, good luck.
     
     see above about creating a new cache directory.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     do not use /tmp \!\! That will cause Squid to periodically encounter
     fatal errors.
 

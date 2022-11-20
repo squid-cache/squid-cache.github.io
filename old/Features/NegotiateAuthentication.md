@@ -162,7 +162,7 @@ Result line sent back to Squid:
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
     
-      - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+      - ⚠️
         This field is only accepted on **OK**, **ERR** and **BH**
         responses and must not be sent on other responses.
 

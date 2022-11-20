@@ -5,7 +5,7 @@ Squid development. It is not meant as a guide to git or GitHub. Most of
 the recipes here target *developers* that will eventually submit pull
 requests back to the Squid Project.
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 Many later recipes rely on the setup (partially) shown in earlier
 recipes. Your setup may be different; git-related naming conventions
 vary a lot. If you start in the middle, make sure you understand what
@@ -27,7 +27,7 @@ are hardly rocket science.
     [repository](https://github.com/squid-cache/squid).
 
 3.  Click the "Fork" button.
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     If you are a part of an organization, that organization may already
     have a Squid repository fork that you should use instead.
 
@@ -46,7 +46,7 @@ Your git work area will be a combination of your public Squid repository
     and ssh protocols; for development work, you may find ssh
     authentication easier to work with. The example below uses an ssh
     address.
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     You may need to upload your publish ssh key to your GitHub account
     first.
     
@@ -70,7 +70,7 @@ Your git work area will be a combination of your public Squid repository
     
         $ git fetch upstream refs/notes/commits:refs/notes/commits
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     If you are a part of an organization, that organization may provide
     its own Squid annotations that you should load instead or in
     addition to the official ones.
@@ -115,7 +115,7 @@ Use *git diff --check ...* to check for basic whitespace problems.
 
 ## Squash all the feature branch changes into a single commit
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 These commands rewrite branch history. Rewriting history may mess up or
 even permanently destroy your work\! Consider pushing all changes to
 your GitHub repository *before* squashing your local tree and do *not*
@@ -185,7 +185,7 @@ but may also create more complex conflicts. Pick your poison.
 
 ## Rebase your feature branch to be in sync with the current upstream master
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+⚠️
 These commands rewrite branch history. Rewriting history may mess up or
 even permanently destroy your work\! Consider pushing all changes to
 your GitHub repository *before* rebasing your local tree.
@@ -272,7 +272,7 @@ be backported to a specific Squid release series. A similar need arises
 when you were developing a, say, v3.5 fix but then realized that the
 Squid Project wants you to submit a pull request against the *master*
 branch instead.
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) To
+⚠️ To
 simply cherry pick officially committed changes into a new feature
 porting branch, see "git cherry-pick --help". This section covers more
 complex (and relatively rare) use cases where rebasing the old feature
@@ -286,7 +286,7 @@ new feature branch.
     
     The above command switches the base branch from the official master
     branch to the official branch called v4.0.
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     If, prior to rebase, your feature branch is not up to date with its
     official base branch, then you will need to use *HEAD\~1* or a
     similar reference/SHA to identify the right fork point (i.e., the

@@ -9,7 +9,7 @@
 
 <!-- end list -->
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Some *redirectors* are properly called URL re-writers to reflect
     what they actually do. Which is to alter the URL being handled.
     Thanks to a long legacy in both Squid and other software (looking at

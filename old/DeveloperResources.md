@@ -109,7 +109,7 @@ check out squid sources on a fresh directory, then run:
 \` OS\_VERSION=fedora-32 docker run -ti --rm -u jenkins -v $PWD:$PWD -w
 $PWD squidcache/buildfarm:`uname -m`-$OS\_VERSION /bin/bash -l \`
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Replace OS\_VERSION with the OS version of the CI system node which
     is failing (eg, fedora-rawhide, debian-unstable)
 
@@ -128,7 +128,7 @@ The official Squid source code repository is on
 [GitHints](/GitHints)
 for common actions you may need to perform with the git VCS.
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     When working from this repository the **bootstrap.sh** script is
     required to prepare ./configure and related magic. See
     [\#Required\_Build\_Tools](#Required_Build_Tools) for the required
@@ -147,7 +147,7 @@ circumstances.
     in the list when there were no new revisions committed that day, or
     when the revision failed to compile on our tarball creation machine.
     
-    ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+    ⚠️
     Daily tarballs contain the fully bootstrapped tool chain ready to
     build. But be aware that some changes may appear with incomplete or
     missing documentation.
@@ -163,7 +163,7 @@ latest sources are available at address
 
 The rsync source mirrors the latest published sources tarball.
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) The
+⚠️ The
 rsync sources contain the fully bootstrapped tool chain ready to build.
 But be aware that some changes may appear with incomplete or missing
 documentation.

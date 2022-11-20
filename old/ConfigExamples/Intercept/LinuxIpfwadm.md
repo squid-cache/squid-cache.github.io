@@ -19,7 +19,7 @@ routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 ## ipfwadm Configuration (/etc/rc.d/rc.local)
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Replace SQUIDIP with the public IP squid may use to send traffic.
     Repeat the ipfwadm line for each such IP Squid uses.
 
@@ -48,7 +48,7 @@ like so:
 
     http_port 3129 transparent
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     In Squid 3.1+ the *transparent* option has been split. Use
     **'intercept** to catch IPFW packets.
 

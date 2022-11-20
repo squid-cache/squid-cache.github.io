@@ -12,7 +12,7 @@
 
 # Details
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     This is all a draft brain-dump for now. It has yet to be discussed
     and checked by anyone.
 
@@ -109,7 +109,7 @@ Suggestions please?
 
 ## Discussion
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) To
+⚠️ To
 answer, use the "Discussion" link in the main menu
 
 See [Discussed

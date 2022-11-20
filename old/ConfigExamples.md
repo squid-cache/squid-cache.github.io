@@ -145,7 +145,7 @@ explanation](/ConfigExamples/Chat)
 
 ## Torrent Filtering
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Torrent filtering is not simple task and can't be done using Squid's
     only. It uses arbitrary ports, protocols and transport. You must
     also use active network equipment and some experience.
@@ -154,7 +154,7 @@ explanation](/ConfigExamples/Chat)
 
 ## SMP (Symmetric Multiprocessing) configurations
 
-  - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
+  - ⚠️
     Squid SMP support is an ongoing series of improvements in
     [Squid-3.2](/Releases/Squid-3.2)
     and later. The configuration here may not be exactly up to date. Or
