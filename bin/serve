@@ -1,0 +1,21 @@
+#!/bin/sh
+
+offline=""
+
+if [ ! -d .git -o ! -e README.md ]; then
+    echo "Please run from the root of the repo"
+    exit 1
+fi
+
+# should we run locally?
+if gem list --local jekyll-theme-slate | grep -q jekyll-theme-slate; then
+    echo "Running local configuration"
+    offline="true"
+    sed 's/^remote_theme.*/theme: jekyll-theme-slate/' docs/_config.yml >/tmp/_jekyll-local-config.yml
+fi
+
+if [ "$offline" = "true" ] ; then
+    exec jekyll serve --incremental --watch --source docs --config /tmp/_jekyll-local-config.yml
+fi
+
+exec jekyll serve --incremental --watch --source docs
