@@ -4,7 +4,7 @@ description: work-in-progress to migrate the Squid Wiki to GitHub pages
 
 url: "https://kinkie.github.io"
 plugins:
-  - jekyll-remote-theme # add this line to the plugins list if you already have one
+  - jekyll-remote-theme
   - jekyll-sitemap
   - jekyll-optional-front-matter
 
