@@ -14,23 +14,23 @@ Email: `<rafael AT SPAMFREE pivato DOT info>`
 ## To Do
 
   - Write some new [configuration
-    example](/ConfigExamples#).
+    example](/ConfigExamples).
 
 ## Done
 
   - Finished interlinked pages about the [Cache
-    Manager](/CacheManager#).
+    Manager](/CacheManager).
     They are still very short, but will let it as is for a while... for
     public scrutiny.
     
-      - [CacheManager](/CacheManager#)
+      - [CacheManager](/CacheManager)
     
-      - [CacheManagerObject](/CacheManagerObject#)
+      - [CacheManagerObject](/CacheManagerObject)
     
-      - [CacheObjectProtocol](/CacheObjectProtocol#)
+      - [CacheObjectProtocol](/CacheObjectProtocol)
     
-      - [CacheObjectScheme](/CacheObjectScheme#)
+      - [CacheObjectScheme](/CacheObjectScheme)
     
-      - [CacheManagerCgi](/CacheManagerCgi#)
+      - [CacheManagerCgi](/CacheManagerCgi)
 
-[CategoryHomepage](/CategoryHomepage#)
+[CategoryHomepage](/CategoryHomepage)

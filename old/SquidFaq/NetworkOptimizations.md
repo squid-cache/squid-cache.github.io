@@ -10,4 +10,4 @@ on Linux systems can be found at
 [](http://lukecyca.com/2004/09/28/howto-multirouting-with-linux/).
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

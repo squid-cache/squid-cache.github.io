@@ -8,7 +8,7 @@
   - **Status**: Ready for testing; code in Squid 3.1 and later
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
 
   - **More**: [eCAP info](http://www.e-cap.org/),
     [context](http://wiki.squid-cache.org/SquidFaq/ContentAdaptation#head-b3e83ccdb647537404a70d9c17c87463524a470b),
@@ -45,11 +45,11 @@ specify which services the module provides:
     ecap_service eRespmod respmod_precache 0 ecap://e-cap.org/ecap/services/sample/minimal
 
 Among all dynamically loaded services, only the services matching
-[ecap\_service](http://www.squid-cache.org/Doc/config/ecap_service#)
+[ecap\_service](http://www.squid-cache.org/Doc/config/ecap_service)
 configuration are enabled by Squid. However, enabling an adaptation
 service is not enough. You need to direct messages to the service(s)
 using
-[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)
+[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
 directives:
 
     adaptation_service_set reqFilter eReqmod
@@ -67,20 +67,20 @@ Squid supports sending client IP address to the adapter via the
 *libecap::metaClientIp* transaction option. Please see eCAP
 [FAQ](https://answers.launchpad.net/ecap/+faq/1516) for details and do
 not forget to enable
-[adaptation\_send\_client\_ip](http://www.squid-cache.org/Doc/config/adaptation_send_client_ip#)
+[adaptation\_send\_client\_ip](http://www.squid-cache.org/Doc/config/adaptation_send_client_ip)
 in squid.conf.
 
 ## Supported eCAP versions
 
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 supports libecap v0.0.3 only, but will try to build with any libecap
 version installed. Builds with incompatible versions should fail, but be
 careful: Check that you are building with libecap v0.0.3 and not the
 latest library version. The same applies to
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 releases prior to v3.2.0.6.
 
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 releases starting with v3.2.0.6 support libecap v0.2.0 and have a
 configure-time libecap version check.
 
@@ -112,4 +112,4 @@ views regarding eCAP adapter licensing requirements, including:
     in order to distribute:
     [](http://www.fsf.org/licensing/licenses/gpl-faq.html#GPLAndPlugins)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

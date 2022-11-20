@@ -8,14 +8,14 @@
   - **Version**: 2.6+ and 3.1+
 
   - **Developer**:
-    [HenrikNordstrom](/HenrikNordstrom#)
+    [HenrikNordstrom](/HenrikNordstrom)
     (2.6), Christos Tsantilas (3.1)
 
   - **More**: draft-jaganathan-kerberos-http-01.txt and Squid-2
     implementation;
 
   - **More**: also
-    [1632](https://bugs.squid-cache.org/show_bug.cgi?id=1632#)
+    [1632](https://bugs.squid-cache.org/show_bug.cgi?id=1632)
 
 ## Details
 
@@ -38,35 +38,35 @@ Internet Draft draft-jaganathan-kerberos-http-01.txt (a copy can be
 found in doc/rfc/ in the development tree)
 
 This feature has been implemented for the Squid-2 branch starting with
-[Squid-2.6](/Releases/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6)
 by
-[HenrikNordström](/HenrikNordstr%C3%B6m#)
+[HenrikNordström](/HenrikNordstr%C3%B6m)
 during the
-[CodeSprintOct2005](/CodeSprintOct2005#)
+[CodeSprintOct2005](/CodeSprintOct2005)
 code sprint in Torino.
 
 This feature has been implemented for the Squid-3 branch starting with
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 by
-[ChristosTsantilas](/ChristosTsantilas#)
+[ChristosTsantilas](/ChristosTsantilas)
 
   - ℹ️
     NOTE: This feature does not exist in
-    [Squid-3.0](/Releases/Squid-3.0#).
+    [Squid-3.0](/Releases/Squid-3.0).
 
 ## Configuration Options
 
 *details relevant to
-[Squid-3.1](/Releases/Squid-3.1#)*
+[Squid-3.1](/Releases/Squid-3.1)*
 
 This feature is enabled by default in
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 and makes use of the **connection-auth** option.
 
 The option can be applied on
-[http\_port](http://www.squid-cache.org/Doc/config/http_port#),
-[https\_port](http://www.squid-cache.org/Doc/config/https_port#), and
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) lines.
+[http\_port](http://www.squid-cache.org/Doc/config/http_port),
+[https\_port](http://www.squid-cache.org/Doc/config/https_port), and
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) lines.
 It controls connections either IN or OUT of those access points. If
 either is disabled connection auth cannot be performed.
 
@@ -76,10 +76,10 @@ When used on a receiving port it can be set to ON or OFF. Default is ON.
     https_port ... connection-auth[=on|off]
 
 When used on a
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) link it
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) link it
 can be set to ON, OFF, or AUTO. Default is AUTO which attempts to detect
 the peer capability when needed.
 
     cache_peer ... connection-auth[=on|off|auto]
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

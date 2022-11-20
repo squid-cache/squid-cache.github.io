@@ -11,4 +11,4 @@ main job at a high school, and the 3rd is at a small government agency.
 All 3 boxes have very different requirements, especially with regard to
 access control.
 
-[CategoryHomepage](/CategoryHomepage#)
+[CategoryHomepage](/CategoryHomepage)

@@ -599,7 +599,7 @@ slackware user community.
 **Source**: SlackBuilds
 
   - [](http://slackbuilds.org/repository/14.1/network/squid/) (3.4.10 on
-    [SlackWare](/SlackWare#)
+    [SlackWare](/SlackWare)
     14.1)
 
 #### Squid-3.3
@@ -615,7 +615,7 @@ Unofficial package provided by Helmut Hullen can be found in:
 **Source**: SlackBuilds
 
   - [](http://slackbuilds.org/repository/14.0/network/squid/) (3.1.20 on
-    [SlackWare](/SlackWare#)
+    [SlackWare](/SlackWare)
     14.0)
 
   - [](http://slackbuilds.org/repository/13.37/network/squid/) (3.1.12
@@ -704,7 +704,7 @@ Install Procedure:
 
 Many versions of Ubuntu and Debian are routinely build-tested and
 unit-tested as part of our
-[BuildFarm](/BuildFarm#)
+[BuildFarm](/BuildFarm)
 and are known to compile OK.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
@@ -750,11 +750,11 @@ discover the dependency package and install it.
     
       - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
         However, please note that
-        [Squid-3.5](/Releases/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5)
         is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or
         Ubuntu Zesty the **libssl1.0-dev** package must be used instead.
         This is resolved in the
-        [Squid-4](/Releases/Squid-4#)
+        [Squid-4](/Releases/Squid-4)
         packages.
 
 ##### Init Script
@@ -808,4 +808,4 @@ Binary packages for the Cygwin environment on Windows are at:
 <!-- end list -->
 
   - Back to the
-    [SquidFaq](/SquidFaq#)
+    [SquidFaq](/SquidFaq)

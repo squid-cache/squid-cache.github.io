@@ -12,11 +12,11 @@
   - **Developer**:
 
   - **More**: Imported from
-    [Bug 2142](https://bugs.squid-cache.org/show_bug.cgi?id=2142#)
+    [Bug 2142](https://bugs.squid-cache.org/show_bug.cgi?id=2142)
 
 # Details
 
 Current workaround in squid 3.1 and onwards is to silently not exchange
 IPv6-related data.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

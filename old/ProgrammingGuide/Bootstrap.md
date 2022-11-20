@@ -1,6 +1,6 @@
 The **bootstrap.sh** script runs a number of autotools to prepare
 ./configure and related magic. See
-[DeveloperResources](/DeveloperResources#)
+[DeveloperResources](/DeveloperResources)
 for the tools required by this script.
 
 It doesn't always work. Here are some errors and solutions:

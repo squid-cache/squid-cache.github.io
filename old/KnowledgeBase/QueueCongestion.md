@@ -91,5 +91,5 @@ or you have run out of CPU cycles to handle it.
     
         The disk was EITHER reading or writing; never a r/w op. 
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[CategoryErrorMessages](/CategoryErrorMessages#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[CategoryErrorMessages](/CategoryErrorMessages)

@@ -145,4 +145,4 @@ or specific to allow only you network management access. But beware that
 changes keep regular visitors out.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

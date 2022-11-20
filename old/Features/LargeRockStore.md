@@ -8,11 +8,11 @@
   - **Version**: 3.5
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
     and Dmitry Kurochkin
 
   - **More**: Based on [Rock
-    Store](/Features/RockStore#)
+    Store](/Features/RockStore)
     feature.
 
 # Definitions
@@ -136,7 +136,7 @@ rejected or postponed. Some of them are documented here.
 
 1.  Initial implementation will scan the entire db to build an in-memory
     cache\_dir map
-    ([StoreMap](/StoreMap#)).
+    ([StoreMap](/StoreMap)).
     Eventually, we will start saving the map to disk and loading it at
     startup to decrease db loading times. We need more information on db
     loading times, which may affect how the db map is stored and loaded.
@@ -211,4 +211,4 @@ discussed above. There are several important wrinkles here:
       - building an index from scratch by scanning the entire cache at
         start like rock stores do.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

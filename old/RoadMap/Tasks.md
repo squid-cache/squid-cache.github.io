@@ -24,21 +24,21 @@ see what we are up to and how you can assist the move forward on these.
   - Migration to smart Pointer framework
     
     1.  update a
-        [HttpRequest](/HttpRequest#)
+        [HttpRequest](/HttpRequest)
         raw pointer to a
-        [HttpRequest](/HttpRequest#)::Pointer.
+        [HttpRequest](/HttpRequest)::Pointer.
         Including all code performing locking on it
     
     2.  update a
-        [HttpReply](/HttpReply#)
+        [HttpReply](/HttpReply)
         raw pointer to a
-        [HttpReply](/HttpReply#)::Pointer.
+        [HttpReply](/HttpReply)::Pointer.
         Including all code performing locking on it
     
     3.  update a
-        [HttpMsg](/HttpMsg#)
+        [HttpMsg](/HttpMsg)
         raw pointer to a
-        [HttpMsg](/HttpMsg#)::Pointer.
+        [HttpMsg](/HttpMsg)::Pointer.
         Including all code performing locking on it
     
     4.  update a CBDATA raw pointer to a CbcPointer. Including all code
@@ -57,7 +57,7 @@ see what we are up to and how you can assist the move forward on these.
     
     4.  ℹ️
         This is being tracked in
-        [Features/SourceLayout](/Features/SourceLayout#).
+        [Features/SourceLayout](/Features/SourceLayout).
 
   - Add unit tests for each class, API method and function already in
     existence to improve code quality and speedup future testing.
@@ -71,7 +71,7 @@ see what we are up to and how you can assist the move forward on these.
     1.  going through each .h file and minimizing the other .h it
         includes, using class pre-defines where possible. (This is being
         done during
-        [Features/SourceLayout](/Features/SourceLayout#)
+        [Features/SourceLayout](/Features/SourceLayout)
         somewhat so contact squid-dev before attempting).
 
   - Normalize the debug level 0 and 1 messages
@@ -81,7 +81,7 @@ see what we are up to and how you can assist the move forward on these.
         FAQ](/SquidFaq/SquidLogs#Squid_Error_Messages)
     
     2.  verify all DBG\_CRITICAL and DBG\_IMPORTANT output has a
-        [KnowledgeBase](/KnowledgeBase#)
+        [KnowledgeBase](/KnowledgeBase)
         page describing it (as per [the
         FAQ](/SquidFaq/SquidLogs#Squid_Error_Messages))
         or a Feature page troubleshooting entry.
@@ -109,10 +109,10 @@ done.
   - Language and Translation
     
     1.  Verify or Update one of the non-modified [translated Squid error
-        pages](/Translations#).
+        pages](/Translations).
     
     2.  Add a new language [translation for Squid error
-        pages](/Translations#).
+        pages](/Translations).
     
     3.  log the language dialect(s) going through your Squid (logformat
         languages %{Accept-Language} ) and help supply the translations
@@ -139,4 +139,4 @@ done.
           - For helpers with multiple backends (ie DB), how do they
             compare?
 
-[CategoryWish](/CategoryWish#)
+[CategoryWish](/CategoryWish)

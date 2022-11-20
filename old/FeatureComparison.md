@@ -35,7 +35,7 @@ missing features please let us know.
 | SNMPv1                                                                                                              | \-      | Y       | Y       | Y       | Y       | Y       | Y      |                                     |
 | **URI Protocols handled**                                                                                           |         |         |         |         |         |         |        |                                     |
 | HTTP 1.0                                                                                                            | Y       | Y       | Y       | Y       | Y       | Y       | Y      |                                     |
-| [HTTP 1.1](/Features/HTTP11#)                             | \-      | \-      | X       | \-      | y       | Y       | Y      |                                     |
+| [HTTP 1.1](/Features/HTTP11)                             | \-      | \-      | X       | \-      | y       | Y       | Y      |                                     |
 | HTTPS                                                                                                               | Y       | Y       | Y       | Y       | Y       | Y       | Y      |                                     |
 | FTP                                                                                                                 | Y       | Y       | Y       | Y       | Y       | Y       | Y      |                                     |
 | Gopher                                                                                                              | Y       | Y       | Y       | Y       | Y       | Y       | Y      |                                     |
@@ -61,10 +61,10 @@ missing features please let us know.
 | NTLM Authentication                                                                                                 | Y       | Y       | Y       | Y       | Y       | Y       | Y      | For full NTLMv2 we rely on Samba    |
 | Negotiate Authentication                                                                                            | \-      | Y       | Y       | Y       | Y       | Y       | Y      | aka Kerberos                        |
 | **Efficiency aids**                                                                                                 |         |         |         |         |         |         |        |                                     |
-| [SMP Scalability](/Features/SmpScale#)                    | \-      | \-      | \-      | \-      | \-      | X       | X      |                                     |
-| [Collapsed Forwarding](/Features/CollapsedForwarding#)    | \-      | Y       | Y       | \-      | \-      | \-      | \-     |                                     |
+| [SMP Scalability](/Features/SmpScale)                    | \-      | \-      | \-      | \-      | \-      | X       | X      |                                     |
+| [Collapsed Forwarding](/Features/CollapsedForwarding)    | \-      | Y       | Y       | \-      | \-      | \-      | \-     |                                     |
 | stale-if-error                                                                                                      | \-      | \-      | Y       | \-      | \-      | Y       | Y      |                                     |
-| [stale-while-revalidate](/Features/StaleWhileRevalidate#) | \-      | \-      | Y       | \-      | \-      | \-      | \-     |                                     |
+| [stale-while-revalidate](/Features/StaleWhileRevalidate) | \-      | \-      | Y       | \-      | \-      | \-      | \-     |                                     |
 | **Authorization Sources**                                                                                           |         |         |         |         |         |         |        |                                     |
 | RADIUS Authorization                                                                                                | \-      | Ys17    | Y       | Y       | Y       | Y       | Y      |                                     |
 | LDAP Authorization                                                                                                  |         | Y       | Y       | Y       | Y       | Y       | Y      |                                     |

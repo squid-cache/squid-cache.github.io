@@ -2,28 +2,28 @@
 
 |    |    |
 | -------- | ------ |
-| Aug 2021 | Squid-4 series became **DEPRECATED** with the release of [Squid-5](/Releases/Squid-5#) series |
+| Aug 2021 | Squid-4 series became **DEPRECATED** with the release of [Squid-5](/Releases/Squid-5) series |
 | Jul 2018 | Released for production use |
 |  |  |
 
 ##  Basic new features in version 4
   - **Major UI changes:**
-      - [RFC 6176](https://tools.ietf.org/rfc/rfc6176#) compliance
+      - [RFC 6176](https://tools.ietf.org/rfc/rfc6176) compliance
         (SSLv2 support removal)
       - Secure ICAP service connections
       - Add url_lfs_rewrite: a URL-rewriter based on local file
         existence
-      - [on_unsupported_protocol](http://www.squid-cache.org/Doc/config/on_unsupported_protocol#) directive to allow Non-HTTP bypass
+      - [on_unsupported_protocol](http://www.squid-cache.org/Doc/config/on_unsupported_protocol) directive to allow Non-HTTP bypass
       - Removal of
-        [refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern#)
+        [refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
         ignore-auth and ignore-must-revalidate options
       - Remove
-        [cache_peer_domain](http://www.squid-cache.org/Doc/config/cache_peer_domain#)
+        [cache_peer_domain](http://www.squid-cache.org/Doc/config/cache_peer_domain)
         directive
       - basic_msnt_multi_domain_auth: Superceeded by
         basic_smb_lm_auth
       - Update
-        [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type#)
+        [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
         directive to take logformat codes in its format parameter
       - Removal of ESI custom parser
       - Experimental GnuTLS support for some TLS features
@@ -37,16 +37,16 @@
       - security_file_certgen helper supports memory-only mode
       - Adaptation support for Expect:100-continue in HTTP messages
       - Add
-        [url_rewrite_timeout](http://www.squid-cache.org/Doc/config/url_rewrite_timeout#)
+        [url_rewrite_timeout](http://www.squid-cache.org/Doc/config/url_rewrite_timeout)
         directive
       - Update localnet ACL default definition for
-        [RFC 6890](https://tools.ietf.org/rfc/rfc6890#) compliance
+        [RFC 6890](https://tools.ietf.org/rfc/rfc6890) compliance
       - Persistent connection timeouts
-        [request_start_timeout](http://www.squid-cache.org/Doc/config/request_start_timeout#)
+        [request_start_timeout](http://www.squid-cache.org/Doc/config/request_start_timeout)
         and
-        [pconn_lifetime](http://www.squid-cache.org/Doc/config/pconn_lifetime#)    
+        [pconn_lifetime](http://www.squid-cache.org/Doc/config/pconn_lifetime)    
       - Per-rule
-        [refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern#)
+        [refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
         matching statistics in cachemgr report    
       - Configurable helper queue size, with consistent defaults and
         better overflow handling
@@ -64,7 +64,7 @@
 
 The intention with this series is to improve performance using C++11
 features. Some remaining
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 missing features are listed as regressions in
 http://www.squid-cache.org/Versions/v4/RELEASENOTES.html#ss5.1
 

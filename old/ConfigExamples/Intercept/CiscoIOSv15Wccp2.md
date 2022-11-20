@@ -1,7 +1,7 @@
 # Variant I: Routed DMZ witch WCCPv2
 
   - *by
-    [YuriVoinov](/YuriVoinov#)*
+    [YuriVoinov](/YuriVoinov)*
 
 ## Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using ISR G2 router
 
@@ -189,7 +189,7 @@ interception.
 # Variant II: Switch L3 as WCCPv2 router
 
   - *by
-    [YuriVoinov](/YuriVoinov#)*
+    [YuriVoinov](/YuriVoinov)*
     and Svyatoslav Voinov
 
 ## Configuring a Cisco IOS 15.0(2)SE9 with WCCPv2 using aggregation switch
@@ -321,7 +321,7 @@ different ports interception.
 # Variant III: Switched ISR G2 router with WCCPv2
 
   - *by
-    [YuriVoinov](/YuriVoinov#)*
+    [YuriVoinov](/YuriVoinov)*
     and Svyatoslav Voinov
 
 ## Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using switched ISR G2 router with convergent switch board
@@ -446,7 +446,7 @@ reasons.
 # Variant IV: VRF with WCCPv2
 
   - *by
-    [YuriVoinov](/YuriVoinov#)*
+    [YuriVoinov](/YuriVoinov)*
     and Svyatoslav Voinov
 
 ## Outline
@@ -461,4 +461,4 @@ squid 3.x/4.x for processing the traffic. You can have many VRF routers
 router box) with the as many proxy boxes as you wish, for example, in
 ISP.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

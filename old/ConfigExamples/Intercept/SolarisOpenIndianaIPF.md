@@ -1,7 +1,7 @@
 # Intercepting traffic with IPFilter on Solaris/OpenIndiana
 
   - *by
-    [YuriVoinov](/YuriVoinov#)*
+    [YuriVoinov](/YuriVoinov)*
 
 **Warning**: Any example presented here is provided "as-is" with no
 support or guarantee of suitability. If you have any further questions
@@ -13,7 +13,7 @@ about these examples please email the squid-users mailing list.
 box**. This is required to perform intercept accurately and securely. To
 intercept from a gateway machine and direct traffic at a separate squid
 box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute#).
+routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 We need to intercept incoming HTTP/HTTPS traffic on Solaris/OpenIndiana
 box with Squid proxy. In this example server has two aggregated 1 Gbit
@@ -46,7 +46,7 @@ Squid must be configured with ipf-transparent option:
 **Note:** You don't need any authentification options, because of no
 auth in transparent interception mode. Also, be sure your Squid is
 **really** built with Intercept module (see bug
-[3754](https://bugs.squid-cache.org/show_bug.cgi?id=3754#)).
+[3754](https://bugs.squid-cache.org/show_bug.cgi?id=3754)).
 
 ## Configure IPFilter
 
@@ -141,4 +141,4 @@ Paste the configuration file like this:
 That's all, folks.
 ![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png)
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

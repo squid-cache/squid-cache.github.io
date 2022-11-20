@@ -30,4 +30,4 @@ without violating HTTP specs. Since they retain the website limits as
 *upper* bounds and any cache may freely drop an item before its maximum
 storage interval.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

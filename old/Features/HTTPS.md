@@ -2,9 +2,9 @@
 
   - **Version**: 2.5
 
-  - **More**: RFC [2817](https://tools.ietf.org/rfc/rfc2817#),
-    [2818](https://tools.ietf.org/rfc/rfc2818#),
-    [Features/SHTTP](/Features/SHTTP#)
+  - **More**: RFC [2817](https://tools.ietf.org/rfc/rfc2817),
+    [2818](https://tools.ietf.org/rfc/rfc2818),
+    [Features/SHTTP](/Features/SHTTP)
 
 When a client comes across an **[](https://)** URL, it can do one of
 three things:
@@ -26,7 +26,7 @@ specified server, responds with an HTTP 200 (Connection Established)
 response, and then shovels packets back and forth between the client and
 the server, without understanding or interpreting the tunneled traffic.
 For the gory details on tunneling and the CONNECT method, please see RFC
-[2817](https://tools.ietf.org/rfc/rfc2817#) and the expired [Tunneling
+[2817](https://tools.ietf.org/rfc/rfc2817) and the expired [Tunneling
 TCP based protocols through Web proxy
 servers](http://www.web-cache.com/Writings/Internet-Drafts/draft-luotonen-web-proxy-tunneling-01.txt)
 draft.
@@ -34,7 +34,7 @@ draft.
 ## CONNECT tunnel through Squid
 
 When a browser establishes a CONNECT tunnel through Squid, [Access
-Controls](/SquidFaq/SquidAcl#)
+Controls](/SquidFaq/SquidAcl)
 are able to control CONNECT requests, but only limited information is
 available. For example, many common parts of the request URL do not
 exist in a CONNECT request:
@@ -89,7 +89,7 @@ hand-crafted CONNECT request knowing that it is going to be intercepted.
     decision makers have enough information to make wise choices.
 
 Squid
-[SslBump](/Features/SslBump#)
+[SslBump](/Features/SslBump)
 and associated features can be used to decrypt HTTPS CONNECT tunnels
 while they pass through a Squid proxy. This allows dealing with tunneled
 HTTP messages as if they were regular HTTP messages, including applying
@@ -115,7 +115,7 @@ described below.
 
 Squid-2.5 and later can terminate TLS or SSL connections. You must have
 built with *--enable-ssl*. See
-[https\_port](http://www.squid-cache.org/Doc/config/https_port#) for
+[https\_port](http://www.squid-cache.org/Doc/config/https_port) for
 more information. Squid-3.5 and later autodetect the availability of
 GnuTLS library and enable the functionality if available. OpenSSL must
 be enabled explicitly with the *--with-openssl* configure option. If the
@@ -127,14 +127,14 @@ reverse proxy) configuration. Simply configure Squid with a normal
 [reverse
 proxy](/ConfigExamples#Reverse_Proxy_.28Acceleration.29)
 configuration using port 443 and SSL certificate details on an
-[https\_port](http://www.squid-cache.org/Doc/config/https_port#) line.
+[https\_port](http://www.squid-cache.org/Doc/config/https_port) line.
 
 ## Intercepting direct TLS connections
 
 It is possible to
-[intercept](/SquidFaq/InterceptionProxy#)
+[intercept](/SquidFaq/InterceptionProxy)
 an HTTPS connection to an origin server at Squid's
-[https\_port](http://www.squid-cache.org/Doc/config/https_port#). This
+[https\_port](http://www.squid-cache.org/Doc/config/https_port). This
 may be useful in surrogate (aka, http accelerator, reverse proxy)
 environments, but limited to situations where Squid can represent the
 origin server using that origin server SSL certificate. In most
@@ -162,8 +162,8 @@ traffic -- Squid is not a TCP-level proxy.
     decision makers have enough information to make wise choices.
 
 A combination of Squid [NAT
-Interception](/SquidFaq/InterceptionProxy#),
-[SslBump](/Features/SslBump#),
+Interception](/SquidFaq/InterceptionProxy),
+[SslBump](/Features/SslBump),
 and associated features can be used to intercept direct HTTPS
 connections and decrypt HTTPS messages while they pass through a Squid
 proxy. This allows dealing with HTTPS messages sent to the origin server
@@ -175,10 +175,10 @@ unencrypted messages escaping Squid boundaries.
 
 Currently, Squid-to-client traffic on intercepted direct HTTPS
 connections cannot use [Dynamic Certificate
-Generation](/Features/DynamicSslCert#),
+Generation](/Features/DynamicSslCert),
 leading to browser warnings and rendering such configurations nearly
 impractical. This limitation will be addressed by the
-[bump-server-first](/Features/BumpSslServerFirst#)
+[bump-server-first](/Features/BumpSslServerFirst)
 project.
 
 From the browser point of view, intercepted messages are not sent to a
@@ -188,10 +188,10 @@ authenticate requests, apply to bumped intercepted transactions as well.
 # Encrypted browser-Squid connection
 
 Squid can accept regular proxy traffic using
-[https\_port](http://www.squid-cache.org/Doc/config/https_port#) in the
+[https\_port](http://www.squid-cache.org/Doc/config/https_port) in the
 same way Squid does it using an
-[http\_port](http://www.squid-cache.org/Doc/config/http_port#)
-directive. RFC [2818](https://tools.ietf.org/rfc/rfc2818#) defines the
+[http\_port](http://www.squid-cache.org/Doc/config/http_port)
+directive. RFC [2818](https://tools.ietf.org/rfc/rfc2818) defines the
 protocol requirements around this.
 
 Unfortunately, popular modern browsers do not yet permit configuration
@@ -228,7 +228,7 @@ There is still an important bug open:
 If you have trouble with adding trust for the proxy cert, there is [a
 process](https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c65) by
 Patrick
-[McManus](/McManus#)
+[McManus](/McManus)
 to workaround that.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

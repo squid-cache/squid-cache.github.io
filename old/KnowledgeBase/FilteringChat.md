@@ -3,7 +3,7 @@
 **Synopsis**
 
 This is an article in progress. Please contact
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 if you'd like to contribute to this article.
 
 Many Squid users are interested in filtering MSN, Yahoo, Google, Skype
@@ -28,19 +28,19 @@ request editor privileges and update the information.
 
 **Config Example ACL set**
 
-  - [AOL](/ConfigExamples/Chat/Aol#)
+  - [AOL](/ConfigExamples/Chat/Aol)
 
   - [Gizmo
-    Project](/ConfigExamples/Chat/Gizmo#)
+    Project](/ConfigExamples/Chat/Gizmo)
 
-  - [ICQ](/ConfigExamples/Chat/Icq#)
+  - [ICQ](/ConfigExamples/Chat/Icq)
 
   - [MSN
-    Messenger](/ConfigExamples/Chat/MsnMessenger#)
+    Messenger](/ConfigExamples/Chat/MsnMessenger)
 
-  - [Skype](/ConfigExamples/Chat/Skype#)
+  - [Skype](/ConfigExamples/Chat/Skype)
 
-  - [Yahoo\!Messenger](/ConfigExamples/Chat/YahooMessenger#)
+  - [Yahoo\!Messenger](/ConfigExamples/Chat/YahooMessenger)
 
 We are still seeking confirmed information on configurations to
 identify:
@@ -59,4 +59,4 @@ identify:
 
 Thanks to Norman Noah for the initial set of example ACLs.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

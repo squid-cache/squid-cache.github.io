@@ -216,4 +216,4 @@ Note that when using NTLM authentication, you will see two
 "TCP\_DENIED/407" entries in access.log for every request. This is due
 to the challenge-response process of NTLM.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

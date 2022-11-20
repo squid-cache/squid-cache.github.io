@@ -8,16 +8,16 @@ misdetected forwarding loops).
 ## SMP enabled Squid
 
 ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 to
-[Squid-3.4](/Releases/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4)
 contain [SMP scaling
-support](/Features/SmpScale#)
+support](/Features/SmpScale)
 implemented in such a way that only one squid instance could be run on a
 single machine when SMP was enabled. Multiple instances can **only** be
 run without SMP support.
 
-[Squid-3.5](/Releases/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5)
 provides the **-n** command line option to configure a unique service
 name for each Squid instance started. Each set of SMP-aware processes
 will interact only with other processes using the same service name. A
@@ -41,18 +41,18 @@ expands to the service name of the process parsing the config file.
 
 ## Relevant squid.conf directives
 
-  - [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname#)
+  - [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
     
       - you may want to keep this unique for troubleshooting purposes.
 
-  - [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname#)
+  - [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname)
     
       - if you don't change the
-        [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname#)
+        [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
         and want your caches to cooperate, at least change this setting
         to properly detect forwarding loops
 
-  - [http\_port](http://www.squid-cache.org/Doc/config/http_port#)
+  - [http\_port](http://www.squid-cache.org/Doc/config/http_port)
     
       - either the various squids run on different ports, or on
         different IP addresses. In the latter case the syntax to be used
@@ -60,44 +60,44 @@ expands to the service name of the process parsing the config file.
         used instead of IP address, but take care that the domain(s)
         used by each instance resolve to different IPs.
 
-  - [icp\_port](http://www.squid-cache.org/Doc/config/icp_port#),
-    [snmp\_port](http://www.squid-cache.org/Doc/config/snmp_port#)
+  - [icp\_port](http://www.squid-cache.org/Doc/config/icp_port),
+    [snmp\_port](http://www.squid-cache.org/Doc/config/snmp_port)
     
       - same as with http\_port. If you do not need ICP and SNMP, remove
         from the config file.
 
-  - [access\_log](http://www.squid-cache.org/Doc/config/access_log#),
-    [cache\_log](http://www.squid-cache.org/Doc/config/cache_log#)
+  - [access\_log](http://www.squid-cache.org/Doc/config/access_log),
+    [cache\_log](http://www.squid-cache.org/Doc/config/cache_log)
     
       - you want to have different logfiles for you different squid
         instances. Squid **might** even work when all log to the same
         files, but the result would probably be a garbled mess.
 
-  - [pid\_filename](http://www.squid-cache.org/Doc/config/pid_filename#)
+  - [pid\_filename](http://www.squid-cache.org/Doc/config/pid_filename)
     
       - this file **must** be different for each instance. It is used by
         squid to detect a running instance and to send various internal
         messages (i.e. `squid -k reconfigure`).
         
-          - [Squid-4](/Releases/Squid-4#)
+          - [Squid-4](/Releases/Squid-4)
             and later the default uses **${service\_name}** making it no
             longer necessary to configure.
         
-          - [Squid-3.5](/Releases/Squid-3.5#)
+          - [Squid-3.5](/Releases/Squid-3.5)
             and older must explicitly set this option to a unique file
             per instance.
 
-  - [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#)
+  - [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir)
     
       - make sure that no overlapping directories exist. Squids do not
         coordinate when accessing them, and shuffling stuff around each
         others' playground is a **bad thing <sup>TM</sup>**
 
-  - [include](http://www.squid-cache.org/Doc/config/include#)
+  - [include](http://www.squid-cache.org/Doc/config/include)
     
       - to reduce duplication mistakes break shared pieces of config
         (ACL definitions etc) out into separate files which
-        [include](http://www.squid-cache.org/Doc/config/include#) pulls
+        [include](http://www.squid-cache.org/Doc/config/include) pulls
         into each of the multiple squid.conf at the right places.
 
 ## Tips

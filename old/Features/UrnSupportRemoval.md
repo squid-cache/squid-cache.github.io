@@ -23,4 +23,4 @@
 
 # Details
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

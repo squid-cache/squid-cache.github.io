@@ -50,7 +50,7 @@ community.
     of the Squid Project
 
   - The core team and main contributors list is at
-    [WhoWeAre](/WhoWeAre#)
+    [WhoWeAre](/WhoWeAre)
 
   - A list of our many excellent code contributors can be seen in the
     CONTRIBUTORS file within each copy of published sources.
@@ -68,14 +68,14 @@ Many sushi bars and restaurants also serve Squid.
 The project routinely tests Squid on Linux, on several popular
 distributions including [Debian](http://www.debian.org/) and
 derivatives, and
-[CentOS](/KnowledgeBase/CentOS#)
+[CentOS](/KnowledgeBase/CentOS)
 and other Red Hat inspired projects. We expect Squid to run and build on
 just about any modern Linux system.
 
 We also test on
-[FreeBSD](/KnowledgeBase/FreeBSD#)
+[FreeBSD](/KnowledgeBase/FreeBSD)
 and
-[OpenBSD](/KnowledgeBase/OpenBsd#),
+[OpenBSD](/KnowledgeBase/OpenBsd),
 and Squid is available on these platforms as a package or in the ports
 collection.
 
@@ -85,7 +85,7 @@ We expect Squid to run on commercial Unixen such as Solaris or AIX, and
 we know it has at some point in time, but we have no way to test it.
 
 Squid is also known to run on
-[Windows](/KnowledgeBase/Windows#)
+[Windows](/KnowledgeBase/Windows)
 
 If you encounter any platform-specific problems, please let us know by
 registering an entry in our [bug
@@ -254,15 +254,15 @@ Oever, Kolics Bertold, Carson Gaspar, Michael O'Reilly, Hume Smith,
 Richard Ayres, John Saunders, Miquel van Smoorenburg, David J N Begley,
 Kevin Sartorelli, Andreas Doering, Mark Visser, tom minchin, Jens-S.
 Vöckler, Andre Albsmeier, Doug Nazar,
-[HenrikNordstrom](/HenrikNordstrom#),
+[HenrikNordstrom](/HenrikNordstrom),
 Mark Reynolds, Arjan de Vet, Peter Wemm, John Line, Jason Armistead,
 Chris Tilbury, Jeff Madison, Mike Batchelor, Bill Bogstad, Radu Greab,
 F.J. Bosscha, Brian Feeny, Martin Lyons, David Luyer, Chris Foote, Jens
 Elkner, Simon White, Jerry Murdock, Gerard Eviston, Rob Poe,
-[FrancescoChemolli](/FrancescoChemolli#),
-[ReubenFarrelly](/ReubenFarrelly#)
-[AlexRousskov](/AlexRousskov#)
-[AmosJeffries](/AmosJeffries#)
+[FrancescoChemolli](/FrancescoChemolli),
+[ReubenFarrelly](/ReubenFarrelly)
+[AlexRousskov](/AlexRousskov)
+[AmosJeffries](/AmosJeffries)
 
 # About This Document
 
@@ -276,4 +276,4 @@ We always welcome help keeping the Squid FAQ up-to-date. If you would
 like to help out, please register with this Wiki and type away.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

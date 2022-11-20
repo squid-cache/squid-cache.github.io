@@ -3,7 +3,7 @@
 ## Using eCAP for GZip/DEFLATE support with Squid 3.x/4.x
 
   - *by
-    [YuriVoinov](/YuriVoinov#)*
+    [YuriVoinov](/YuriVoinov)*
 
 **Warning**: Any example presented here is provided "as-is" with no
 support or guarantee of suitability. If you have any further questions
@@ -409,7 +409,7 @@ Paste the configuration file like this:
   - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
     Note: On some setups you may need to create symbolic link in
     $prefix/clamav/share to
-    **[DatabaseDirectory](/DatabaseDirectory#)**
+    **[DatabaseDirectory](/DatabaseDirectory)**
     path, specified in clamd.conf. I.e, for example:
 
 <!-- end list -->

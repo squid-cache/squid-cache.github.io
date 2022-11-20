@@ -1,5 +1,5 @@
 *by
-[YuriVoinov](/YuriVoinov#)*
+[YuriVoinov](/YuriVoinov)*
 
 # Wire Messenger
 
@@ -40,4 +40,4 @@ Paste the configuration file like this:
 
 and reconfigure.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

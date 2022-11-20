@@ -1,5 +1,5 @@
 See [Discussed
-Page](/Features/RockStore#)
+Page](/Features/RockStore)
 
 Several bugs and issues have come into view when using RAM-only and COSS
 Squid that are relevant to this.
@@ -16,5 +16,5 @@ Several of those things waiting for a rebuild only need \_a\_ cache for
 objects to start running. The RAM-cache would be completely sufficient
 for the first few minutes while disk storage indexes get loaded.
 
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 2009-04-24

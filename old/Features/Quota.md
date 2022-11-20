@@ -15,7 +15,7 @@
 
   - **Related Bugs**:
     
-      - [1849](https://bugs.squid-cache.org/show_bug.cgi?id=1849#)
+      - [1849](https://bugs.squid-cache.org/show_bug.cgi?id=1849)
         (policy helper feature)
 
 ## Description
@@ -58,10 +58,10 @@ sessions over HTTP) may bypass the quota controls.
     permitted.
 
   - ext\_time\_quota\_acl helper added with
-    [Squid-3.3](/Releases/Squid-3.3#)
+    [Squid-3.3](/Releases/Squid-3.3)
     allows an allocated period of time which is consumed as requests are
     made. Configurable long periods with no requests can be eliminated
     from the consumption.
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

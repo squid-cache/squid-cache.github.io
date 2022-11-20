@@ -9,7 +9,7 @@ Describe Eliezer Croitoru/Drafts/LinuxBcache here.
   - **State**: Research, trial and error.
 
   - **Writer**: [Eliezer
-    Croitoru](/EliezerCroitoru#)
+    Croitoru](/EliezerCroitoru)
 
   - **More**:
 

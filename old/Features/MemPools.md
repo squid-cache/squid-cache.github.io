@@ -65,4 +65,4 @@ Classes which use the CBDATA\_CLASS macro **must not** also use
 MEMPROXY\_CLASS. That includes use in the direct line of inheritence
 within a class hierarchy.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

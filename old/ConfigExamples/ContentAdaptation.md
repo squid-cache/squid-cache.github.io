@@ -13,4 +13,4 @@ types of adaptation protocol.
 
 1.  ConfigExamples/ContentAdaptation/eCAP
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

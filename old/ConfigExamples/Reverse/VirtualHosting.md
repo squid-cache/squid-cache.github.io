@@ -23,10 +23,10 @@ about these examples please email the squid-users mailing list.
 | ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http\_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
 If you are using
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 or older has an accelerator for a domain based virtual host system then
 you need to additionally specify the **vhost** option to
-[http\_port](http://www.squid-cache.org/Doc/config/http_port#)
+[http\_port](http://www.squid-cache.org/Doc/config/http_port)
 
     http_port 80 accel defaultsite=your.main.website.name vhost
 
@@ -36,10 +36,10 @@ you need to additionally specify the **vhost** option to
   - **defaultsite=X** tells Squid to assume the domain *X* is wanted.
 
   - **vhost** for
-    [Squid-3.1](/Releases/Squid-3.1#)
+    [Squid-3.1](/Releases/Squid-3.1)
     or older enables HTTP/1.1 domain based virtual hosting support. Omit
     this option for
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     or later versions.
 
 When both defaultsite and vhost is specified, defaultsite specifies the
@@ -75,4 +75,4 @@ When that testing works, public DNS can be updated to send public
 requests to the Squid proxy instead of the master web server and
 Acceleration will begin immediately.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

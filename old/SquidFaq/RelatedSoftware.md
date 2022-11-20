@@ -191,4 +191,4 @@ understand how cacheable is the served content. An online tool is
 available at [](http://www.ircache.net/cgi-bin/cacheability.py)
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

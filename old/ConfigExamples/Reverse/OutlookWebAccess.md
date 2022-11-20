@@ -30,8 +30,8 @@ single Squid server. The following information is required:
 | ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http\_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
 Please note that the
-[https\_port](http://www.squid-cache.org/Doc/config/https_port#) and
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) lines
+[https\_port](http://www.squid-cache.org/Doc/config/https_port) and
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) lines
 may wrap in your browser\!
 
     https_port ip_of_squid:443 accel cert=/path/to/certificate/ defaultsite=owa_domain_name
@@ -49,14 +49,14 @@ may wrap in your browser\!
     miss_access deny all
 
 If the connection to the OWA server requires SSL then the
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) line
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) line
 should be changed appropriately:
 
     cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/client-certificate name=owaServer
 
   - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
     an apparent bug in Squid-3.1 means that
-    [https\_port](http://www.squid-cache.org/Doc/config/https_port#) may
+    [https\_port](http://www.squid-cache.org/Doc/config/https_port) may
     also need to use the **connection-auth=off** option for now.
 
 ## Troubleshooting
@@ -74,16 +74,16 @@ PROBLEM:
 
 SOLUTION:
 
-  - [Squid-2.7](/Releases/Squid-2.7#)
+  - [Squid-2.7](/Releases/Squid-2.7)
     and
-    [Squid-3.1](/Releases/Squid-3.1#)
+    [Squid-3.1](/Releases/Squid-3.1)
     offer the
-    [ignore\_expect\_100](http://www.squid-cache.org/Doc/config/ignore_expect_100#)
+    [ignore\_expect\_100](http://www.squid-cache.org/Doc/config/ignore_expect_100)
     directive to skip the 417 and wait for the client to resume. There
     are potential DoS side effects to its use, please avoid unless you
     must.
     
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     supports the HTTP/1.1 feature these clients depend on. This problem
     will not occur there.
 
@@ -98,4 +98,4 @@ SOLUTION:
 Thanks to Tuukka Laurikainen \<<t.laurikainen@ibermatica.com>\> for
 providing the background information for this article.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

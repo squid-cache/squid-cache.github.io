@@ -18,4 +18,4 @@ For very old versions of IOS you will need this config:
     CTRL Z
     copy running-config startup-config
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

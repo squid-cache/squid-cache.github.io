@@ -18,7 +18,7 @@
   - **Developer**:
 
   - **More**: Bug
-    [2144](https://bugs.squid-cache.org/show_bug.cgi?id=2144#)
+    [2144](https://bugs.squid-cache.org/show_bug.cgi?id=2144)
 
 # Details
 
@@ -28,7 +28,7 @@
 answer, use the "Discussion" link in the main menu
 
 See [Discussed
-Page](/Features/Ipv6DelayPool#)
+Page](/Features/Ipv6DelayPool)
 
 I'd like to see this as the starting point for an overhaul of the delay
 pools concept: there is the potential to be much more flexible than we
@@ -43,6 +43,6 @@ mechanism should be that ALL pools assigned to a request get consumed,
 and the strictest bandwidth is enforced.
 
 \--
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

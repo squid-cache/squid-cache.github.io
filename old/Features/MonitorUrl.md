@@ -13,7 +13,7 @@
   - **Developer**:
 
   - **More**: Imported from
-    [Bug 2185](https://bugs.squid-cache.org/show_bug.cgi?id=2185#)
+    [Bug 2185](https://bugs.squid-cache.org/show_bug.cgi?id=2185)
 
 # Details
 
@@ -26,4 +26,4 @@ check interval, the number of failed probes before the peer is
 considered down, and the number of successful probes before it's
 considered back up.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

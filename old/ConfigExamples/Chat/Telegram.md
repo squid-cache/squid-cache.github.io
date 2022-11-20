@@ -1,5 +1,5 @@
 *by
-[YuriVoinov](/YuriVoinov#)*
+[YuriVoinov](/YuriVoinov)*
 
 # Telegram Messenger
 
@@ -24,7 +24,7 @@ Also, it can use relatively large Amazon/Google/Azure networks by push
 notifications as web-fronting.
 
 So
-[SSL-Bump](/Features/SslPeekAndSplice#)
+[SSL-Bump](/Features/SslPeekAndSplice)
 proxy must be configured to splice initial connection from Telegram to
 server:
 
@@ -92,4 +92,4 @@ rules above to pattern [](http://0.0.0.0/api).
     this can be easy to ban using [Ufdbguard](https://urlfilterdb.com)
     or by writing certificate testing helper for Squid.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

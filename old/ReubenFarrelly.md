@@ -13,4 +13,4 @@ small patches (I'm not fluent in C).
 Of recent times I have contributed a fair amount to the Squid-2.6
 release and tidied up documentation in the new Squid wiki.
 
-[CategoryHomepage](/CategoryHomepage#)
+[CategoryHomepage](/CategoryHomepage)

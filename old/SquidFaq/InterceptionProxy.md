@@ -5,7 +5,7 @@ the browsers for proxying?*
 
 Interception Caching goes under many names - Interception Caching,
 Transparent Proxying, URL rewriting,
-[SSL-Bump](/Features/SslBump#)
+[SSL-Bump](/Features/SslBump)
 and Cache Redirection. Interception Caching is the process by which HTTP
 connections coming from remote clients are redirected to a cache server,
 without their knowledge or explicit configuration.
@@ -142,7 +142,7 @@ Interception Caching.
 box**. This is required to perform intercept accurately and securely. To
 intercept from a gateway machine and direct traffic at a separate squid
 box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute#).
+routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 NB: If you are using Cisco routers and switches in your network you may
 wish to investigate the use of WCCP. WCCP is an extremely flexible way
@@ -212,7 +212,7 @@ hijacked connections and discern the destination addresses.
 
 A number of different interception methods and their specific
 configuration is detailed at
-[ConfigExamples/Intercept](/ConfigExamples/Intercept#)
+[ConfigExamples/Intercept](/ConfigExamples/Intercept)
 
 ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
 You can usually manually configure browsers to connect to the IP address
@@ -658,7 +658,7 @@ following command:
 
 Contributors: [Glenn Chisholm](mailto:glenn@ircache.net), [Lincoln
 Dale](mailto:ltd@cisco.com) and
-[ReubenFarrelly](/ReubenFarrelly#).
+[ReubenFarrelly](/ReubenFarrelly).
 
 WCCP is a very common and indeed a good way of doing Interception
 Caching as it adds additional features and intelligence to the traffic
@@ -773,9 +773,9 @@ having to have a router do the redirection.
 #### What about WCCPv2?
 
 WCCPv2 is a new feature to
-[Squid-2.6](/Releases/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6)
 and
-[Squid-3.0](/Releases/Squid-3.0#).
+[Squid-3.0](/Releases/Squid-3.0).
 WCCPv2 configuration is similar to the WCCPv1 configuration. The
 directives in squid.conf are slightly different but are well documented
 within that file. Router configuration for WCCPv2 is identical except
@@ -938,7 +938,7 @@ further by hiding your cache engine so that the end client is seen as
 the source of the request (even though really they aren't).
 
 Here are some notes by
-[StevenWilton](/StevenWilton#)
+[StevenWilton](/StevenWilton)
 on how to get TProxy working properly:
 
 I've got TProxy + WCCPv2 working with squid 2.6. There are a few things
@@ -1023,13 +1023,13 @@ The homepage for the TProxy software is at
 
 Starting with Squid 3.1 support for TProxy is closely tied into the
 netfilter component of Linux kernels. see [TProxy v4.1
-Feature](/Features/Tproxy4#)
+Feature](/Features/Tproxy4)
 for current details.
 
 ## Other Configuration Examples
 
 Contributed by users who have working installations can be found in the
-[ConfigExamples/Intercept](/ConfigExamples/Intercept#)
+[ConfigExamples/Intercept](/ConfigExamples/Intercept)
 section for most current details.
 
 If you have managed to configure your operating system to support WCCP
@@ -1129,9 +1129,9 @@ credentials to an unexpected party, wouldn't you agree? Especially so
 when the user-agent can do so without notifying the user, like Microsoft
 browsers can do when the proxy offers any of the Microsoft-designed
 authentication schemes such as NTLM (see
-[../ProxyAuthentication](/SquidFaq/ProxyAuthentication#)
+[../ProxyAuthentication](/SquidFaq/ProxyAuthentication)
 and
-[Features/NegotiateAuthentication](/Features/NegotiateAuthentication#)).
+[Features/NegotiateAuthentication](/Features/NegotiateAuthentication)).
 
 In other words, it's not a squid bug, but a **browser security**
 feature.
@@ -1168,12 +1168,12 @@ This appears to cause the correct behaviour.
 
 ## Further information about configuring Interception Caching with Squid
 
-[ReubenFarrelly](/ReubenFarrelly#)
+[ReubenFarrelly](/ReubenFarrelly)
 has written a fairly comprehensive but somewhat incomplete guide to
 configuring WCCP with cisco routers on his website. You can find it at
 [www.reub.net](http://www.reub.net/node/3).
 
-[DuaneWessels](/DuaneWessels#)
+[DuaneWessels](/DuaneWessels)
 has written an O'Reilly book about Web Caching which is an invaluable
 reference guide for Squid (and in fact non-Squid) cache administrators.
 A sample chapter on "Interception Proxying and Caching" from his book is
@@ -1188,4 +1188,4 @@ problem. see
 more details on that and some solutions.
 
   - Back to the
-    [SquidFaq](/SquidFaq#)
+    [SquidFaq](/SquidFaq)

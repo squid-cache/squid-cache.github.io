@@ -8,9 +8,9 @@
   - **Version**: 3.1
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#),
-    [AlexRousskov](/AlexRousskov#),
-    [FrancescoChemolli](/FrancescoChemolli#),
+    [AmosJeffries](/AmosJeffries),
+    [AlexRousskov](/AlexRousskov),
+    [FrancescoChemolli](/FrancescoChemolli),
     everyone
 
 ## Details
@@ -39,8 +39,8 @@ current developer practices.
 | 1         | **DONE**      | 3.0+ Automated build-testing of releases                                                                                        |
 | 2         | **DONE**      | 3.1+ Automated dependency testing of code                                                                                       |
 | 3         | **DONE**      | 3.0+ Daily automated test                                                                                                       |
-| 4         | **DONE**      | Test scheduling on multiple OS see [BuildFarm](/BuildFarm#)        |
-| 5         | **DONE**      | Automated defect tracking see [CoverityTesting](/CoverityTesting#) |
+| 4         | **DONE**      | Test scheduling on multiple OS see [BuildFarm](/BuildFarm)        |
+| 5         | **DONE**      | Automated defect tracking see [CoverityTesting](/CoverityTesting) |
 
 \* **NP**: All stages of this system implementation may involve ongoing
 improvements. The status here is merely an indication that the stage
@@ -49,7 +49,7 @@ actions have been implemented and begun to be used.
 ### Taking Part in the Testing
 
 see
-[BuildFarm](/BuildFarm#)
+[BuildFarm](/BuildFarm)
 on whats needed and how to volunteer time on a machine as a test slave.
 
 ### Tasks needing a volunteer:
@@ -111,11 +111,11 @@ Modulating code into convenient functional units is all what 3.x is
 about.
 
 VCS has been changed to
-[Bazaar](/BzrInstructions#)
+[Bazaar](/BzrInstructions)
 in part to make these changes easier and more manageable.
 
 The code is being
-[re-arranged](/Features/SourceLayout#)
+[re-arranged](/Features/SourceLayout)
 into functional units an built as internal library modules to match the
 code-level cleaning that has been done.
 
@@ -134,4 +134,4 @@ selection of blackbox testing tools have been suggested, and some
 machinery is being assembled. That work will be covered by a separate
 Feature page soon.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

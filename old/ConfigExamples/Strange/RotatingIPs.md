@@ -71,4 +71,4 @@ Points to Note:
     # IP used in the night
     tcp_outgoing_address 192.0.2.3 night
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

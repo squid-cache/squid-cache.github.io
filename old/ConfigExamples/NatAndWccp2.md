@@ -1,7 +1,7 @@
 # WCCP2 and NAT on a private internal network
 
 By
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 
 **Warning**: Any example presented here is provided "as-is" with no
 support or guarantee of suitability. If you have any further questions
@@ -225,4 +225,4 @@ Kernel Version:
     adrian@cindy:~$ uname -a
     Linux cindy 2.6.17-1.2174_FC5xenU #1 SMP Tue Aug 8 17:36:31 EDT 2006 i686 GNU/Linux
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

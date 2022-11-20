@@ -9,7 +9,7 @@
   - **Version**: 3.5
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
     and Dmitry Kurochkin
 
   - **More**: lp
@@ -184,4 +184,4 @@ probably track the URI using one or more algorithms, but this project
 does not include such support or the decision which URI tracking
 algorithm to implement.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

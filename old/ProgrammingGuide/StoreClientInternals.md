@@ -2,7 +2,7 @@
     This documentation was written for Squid-2.6
 
 By
-[Henrik\_Nordström](/Henrik_Nordstr%C3%B6m#):
+[Henrik\_Nordström](/Henrik_Nordstr%C3%B6m):
 
     Given the StoreEntry pointer for a cached object, how can I read its contents (HTML text)?
 

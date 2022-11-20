@@ -12,7 +12,7 @@
   - **Version**:
 
   - **Developer**:
-    [FrancescoChemolli](/FrancescoChemolli#)
+    [FrancescoChemolli](/FrancescoChemolli)
 
   - **More**:
 
@@ -23,7 +23,7 @@ storing out-of-process RAM-based caches, in some cases (e.g. facebook)
 of huge proportions. It would make sense to create an asyncrhonous
 storedir which talks to one or more memcached-based backends for storing
 contents, possibly using selectors a la
-[COSS](/Features/CyclicObjectStorageSystem#)
+[COSS](/Features/CyclicObjectStorageSystem)
 to maximize the performance gains.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

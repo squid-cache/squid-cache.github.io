@@ -1,7 +1,7 @@
 # Using c-icap for proxy content antivirus checking on-the-fly
 
   - *by
-    [YuriVoinov](/YuriVoinov#)*
+    [YuriVoinov](/YuriVoinov)*
 
 **Warning**: Any example presented here is provided "as-is" with no
 support or guarantee of suitability. If you have any further questions
@@ -10,7 +10,7 @@ about these examples please email the squid-users mailing list.
 ## Outline
 
 For
-[Squid-3.0](/Releases/Squid-3.0#)
+[Squid-3.0](/Releases/Squid-3.0)
 and later we can use ICAP for content filtering or antivirus checking.
 This config example describes how to scan for viruses on-the-fly using
 [squidclamav](http://squidclamav.darold.net/) antivirus module in
@@ -18,7 +18,7 @@ combination with [ClamAV antivirus](http://www.clamav.net/index.html)
 service. It is a bit different with [recommended squidclamav
 configuration](http://squidclamav.darold.net/config.html) and adapted
 for
-[Squid-3.4](/Releases/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4)
 releases and above with latest configuration changes.
 
 ## Usage
@@ -311,7 +311,7 @@ where squidclamav\_whitelist contains:
 ### Squid Configuration File
 
   - ℹ️
-    [Squid-3.4](/Releases/Squid-3.4#)
+    [Squid-3.4](/Releases/Squid-3.4)
     and older need to be built with the **--enable-icap-client** option.
     Newer releases have this enabled by default.
 
@@ -408,7 +408,7 @@ Finally restart c-icap service to accept changes.
 ### Squid Configuration File
 
   - ℹ️
-    [Squid-3.4](/Releases/Squid-3.4#)
+    [Squid-3.4](/Releases/Squid-3.4)
     needs to be built with the **--enable-icap-client** option. Newer
     releases have this enabled by default.
 
@@ -423,7 +423,7 @@ Paste the configuration file like this:
   - ℹ️
     When using squidclamav, you must bypass whitelisted sites with Squid
     ACL's and
-    [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)
+    [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
     directives. Also you can customize virus\_scan module templates to
     your language etc.
 
@@ -696,21 +696,21 @@ Here is also Munin plugins for C-ICAP monitoring (performance-related
 
 To apply multiple adaptation services to the same transaction at the
 same vectoring point, one must use
-[adaptation\_service\_chain](http://www.squid-cache.org/Doc/config/adaptation_service_chain#).
+[adaptation\_service\_chain](http://www.squid-cache.org/Doc/config/adaptation_service_chain).
 Adaptation order is often important from adaptation logic or performance
 point of view, but Squid supports any order of chained services. Squid
 adaptation chaining code does not even know the difference between ICAP
 and eCAP\! For example, an
-[adaptation\_service\_chain](http://www.squid-cache.org/Doc/config/adaptation_service_chain#)
+[adaptation\_service\_chain](http://www.squid-cache.org/Doc/config/adaptation_service_chain)
 containing an ICAP service followed by an eCAP service, followed by
 another ICAP service is supported.
 
 When you require both c-icap and eCAP in one Squid's instance, you must
 remember: order of adaptation service/chain definitions and
-[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)
+[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
 ACL's is important. Adaptation logic defines in adaptation service
 default order of preference, in
-[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)
+[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
 directives define which services or chains are able to be used for the
 transaction being considered. In some cases, adaptation actions chain
 can be mutually exclusive. So, be careful with adaptation configuration.
@@ -719,5 +719,5 @@ Thoroughly test adaptation logic.
   - ℹ️
     Note: The simplest case is to chain adaptations with the same access
     scheme. When access scheme is different for chained adaptations, use
-    [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)
+    [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
     in correct sequence to achieve required adaptation goals.

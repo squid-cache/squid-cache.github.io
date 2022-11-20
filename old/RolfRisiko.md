@@ -16,4 +16,4 @@ answer as soon as possible.
 
 ...
 
-[CategoryHomepage](/CategoryHomepage#)
+[CategoryHomepage](/CategoryHomepage)

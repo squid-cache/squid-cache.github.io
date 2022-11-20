@@ -5,7 +5,7 @@
   - **Status**: completed.
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
   - **More**: [](http://www.squid-cache.org/Versions/v3/3.1/)
 
@@ -19,7 +19,7 @@ enabled by default. See your system documentation for its capability and
 configuration.
 
 **IPv6 support** is enabled by default in
-[Squid-3.1](/Releases/Squid-3.1#).
+[Squid-3.1](/Releases/Squid-3.1).
 If you are using a packaged version of 3.1 without it, please contact
 the package maintainer about enabling it.
 
@@ -48,10 +48,10 @@ background behavior.
 
 The only points of possible interest for some will be:
 
-  - [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#)
+  - [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
     flags 'ipv4' or 'ipv6'
 
-  - [tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address#)
+  - [tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
     magic ACL's
 
   - CIDR is required - that brand spanking new concept (from 1993).
@@ -68,12 +68,12 @@ The only points of possible interest for some will be:
     available for speed. This is a good idea in general for your IPv6
     experience. Go with native routing as soon as your upstream can
     supply it. Squid-3.1.16 and later provide
-    [dns\_v4\_first](http://www.squid-cache.org/Doc/config/dns_v4_first#)
+    [dns\_v4\_first](http://www.squid-cache.org/Doc/config/dns_v4_first)
     directive to avoid the worst cases of tunnel lag. Enable this only
     if you have to.
 
   - A single listening port
-    **[http\_port](http://www.squid-cache.org/Doc/config/http_port#)
+    **[http\_port](http://www.squid-cache.org/Doc/config/http_port)
     3128** is less resource hungry than one for each IPv4 and IPv6.
     Also, its fully compatible with IPv6 auto-configuration and
     link-local addressed peers.
@@ -84,9 +84,9 @@ The only points of possible interest for some will be:
 
   - Squid can already cope with bad or inaccessible IPs. This can be
     improved by tuning the
-    [connect\_timeout](http://www.squid-cache.org/Doc/config/connect_timeout#)
+    [connect\_timeout](http://www.squid-cache.org/Doc/config/connect_timeout)
     and
-    [dns\_timeout](http://www.squid-cache.org/Doc/config/dns_timeout#)
+    [dns\_timeout](http://www.squid-cache.org/Doc/config/dns_timeout)
     down to a few seconds.
 
 ## Trouble Shooting IPv6
@@ -96,8 +96,8 @@ The only points of possible interest for some will be:
 **Your squid may be configured to only listen for IPv4.**
 
 The UDP port listening addresses in squid.conf
-([udp\_incoming\_address](http://www.squid-cache.org/Doc/config/udp_incoming_address#),
-[snmp\_incoming\_address](http://www.squid-cache.org/Doc/config/snmp_incoming_address#))
+([udp\_incoming\_address](http://www.squid-cache.org/Doc/config/udp_incoming_address),
+[snmp\_incoming\_address](http://www.squid-cache.org/Doc/config/snmp_incoming_address))
 can be either IPv4 or IPv6. The default is to accept traffic on any IP
 address to the relevant UDP port. If you configure this to a specific IP
 address of either type it will not accept traffic of the other type.
@@ -109,9 +109,9 @@ address of either type it will not accept traffic of the other type.
     default IPv6-enabled outgoing UDP ports.
 
 Each of the TCP port lines in squid.conf
-([http\_port](http://www.squid-cache.org/Doc/config/http_port#),
-[https\_port](http://www.squid-cache.org/Doc/config/https_port#),
-[ftp\_port](http://www.squid-cache.org/Doc/config/ftp_port#)) can take
+([http\_port](http://www.squid-cache.org/Doc/config/http_port),
+[https\_port](http://www.squid-cache.org/Doc/config/https_port),
+[ftp\_port](http://www.squid-cache.org/Doc/config/ftp_port)) can take
 either a port, hostname:port, or ip:port combo.
 
 When these lines contain an IPv4 address or a hostname with only IPv4
@@ -163,12 +163,12 @@ or errors about 'V6ONLY'.
 IPv4.**
 
 A number of networks are known to need
-[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address#)
+[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
 (or various other \*\_outgoing\_address) in their squid.conf. These can
 force squid to request the website over an IPv4 link when it should be
 trying an IPv6 link instead. There is a little bit of ACL magic possible
 with
-[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address#)
+[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
 which will get around this problem for DIRECT requests.
 
   - ℹ️
@@ -193,7 +193,7 @@ access with controlled source address exactly as before.
 Please note the **dst** ACL only works for DIRECT requests. Traffic
 destined for peers needs to be left without an outgoing address set.
 This bug is fixed in
-[Squid-3.2](/Releases/Squid-3.2#).
+[Squid-3.2](/Releases/Squid-3.2).
 
 ## Mistakes people are making
 
@@ -292,7 +292,7 @@ IPv6 was originally designed to work without NAT. That all changed
 around 2010 with the introduction of NAT66 and NPT66.
 
   - Linux [TPROXY
-    v4](/Features/Tproxy4#)
+    v4](/Features/Tproxy4)
     is capable of IPv6. Kernel and iptables releases containing IPv6
     TPROXYv4 are now readily available.
 
@@ -330,11 +330,11 @@ NDP (Neighbour Discovery Protocol) Proper IPv6 auto-configuration of
 networks can provide an equivalent in the IPv6 address itself.
 
 From
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 support for handling EUI-64 exists in
-[acl](http://www.squid-cache.org/Doc/config/acl#),
-[logformat](http://www.squid-cache.org/Doc/config/logformat#) and
-[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#).
+[acl](http://www.squid-cache.org/Doc/config/acl),
+[logformat](http://www.squid-cache.org/Doc/config/logformat) and
+[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type).
 It currently still requires IPv6 SLAAC (the IPv6 automatically
 configured client address) to supply the EUI information.
 
@@ -356,4 +356,4 @@ turn on AAAA records for your website. If you have any worries this can
 be run and show how many if any of your clients and visitors might have
 trouble.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

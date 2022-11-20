@@ -1,4 +1,4 @@
-[TableOfContents](/TableOfContents#)
+[TableOfContents](/TableOfContents)
 
 # Accessing Slaves
 

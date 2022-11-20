@@ -128,7 +128,7 @@ or
   - ℹ️
     For simplicity, its not worth doing much component documentation
     until after the
-    [Features/SourceLayout](/Features/SourceLayout#)
+    [Features/SourceLayout](/Features/SourceLayout)
     alterations have been done to a component. After which the following
     applies...
 
@@ -196,7 +196,7 @@ This is all written up in a \*.dox file inside the component sub-folder.
   - Discuss this page using the "Discussion" link in the main menu
 
 See [Discussed
-Page](/ProgrammingGuide/DoxygenDocumentation#)
+Page](/ProgrammingGuide/DoxygenDocumentation)
 
 Thanks Kinkie, I should have added this to the wiki long ago. You seem
 to have covered a fair chunk of what I wrote up last year.
@@ -235,7 +235,7 @@ I've made a few alterations that need to be noted:
     developer has no time for completing in current work scope and are
     very code-line specific.
 
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 2009-04-17 21:26
 
 Entities terminology needs to be polished to be correct from C++ point
@@ -264,13 +264,13 @@ variables), and **members** (including class methods and data members).
     definitions may have more detailed, expanded documentation.
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 C++ comments (/// and ///\<) should be allowed and *encouraged* for
 one-line descriptions, IMO.
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 FWIW, I am strongly against the proposed "Function / Class Method
 documentation template". It is too verbose and yet useless in most
@@ -282,7 +282,7 @@ says, loud and clear. For example, correct types and good parameter
 names are usually sufficient for parameter documentation.
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 The template states (and if it doesn't, it should) that almost all
 clauses are optional. Everything else is (for good and bed) left to the
@@ -299,7 +299,7 @@ documentor the hassle of having to actually \_learn\_ doxygen, replacing
 this for a 'copy,paste'n edit' approach.
 
 \--
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)
 
     almost all clauses are optional. Everything else is left to the good sense of the documentor. 
 
@@ -328,7 +328,7 @@ FWIW, the one-line template may look like this:
     }
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
     Until we get skillful documetors on board, I do not think it is a good idea to present a 30-line template and hope that the documentor will come to her senses and cut most of the stuff out when documenting a simple 5-line function.
 
@@ -345,4 +345,4 @@ For a practical example of how it may end up looking like, please see
 .
 
 \--
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)

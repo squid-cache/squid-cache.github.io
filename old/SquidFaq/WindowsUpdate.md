@@ -9,7 +9,7 @@ yet.
 A mix of configuration options are required to force caching of range
 requests. Particularly when large objects are involved.
 
-  - **[maximum\_object\_size](http://www.squid-cache.org/Doc/config/maximum_object_size#)**.
+  - **[maximum\_object\_size](http://www.squid-cache.org/Doc/config/maximum_object_size)**.
     Default value is a bit small. It needs to be somewhere 100MB or
     higher to cope with the IE updates.
     
@@ -17,20 +17,20 @@ requests. Particularly when large objects are involved.
         to be cached. It will however, cache nicely provided the size
         limit is set high enough.
 
-  - **[range\_offset\_limit](http://www.squid-cache.org/Doc/config/range_offset_limit#)**.
+  - **[range\_offset\_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)**.
     Does the main work of converting range requests into cacheable
     requests. Use the same size limit as
-    [maximum\_object\_size](http://www.squid-cache.org/Doc/config/maximum_object_size#)
+    [maximum\_object\_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     to prevent conversion of requests for objects which will not cache
     anyway. With
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     or later use the **windowsupdate** ACL list defined below to apply
     this offset limit only to windows updates.
 
-  - **[quick\_abort\_min](http://www.squid-cache.org/Doc/config/quick_abort_min#)**.
+  - **[quick\_abort\_min](http://www.squid-cache.org/Doc/config/quick_abort_min)**.
     May need to be altered to allow the full object to download when the
     client software disconnects. Some Squid releases let
-    [range\_offset\_limit](http://www.squid-cache.org/Doc/config/range_offset_limit#)
+    [range\_offset\_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)
     override properly, some have weird behavior when combined.
 
 <!-- end list -->
@@ -57,7 +57,7 @@ revalidation. Which pushes the cached content out and fetches new
 objects very frequently.
 
 An idea that was floating around suggested that you use a
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern#)
+[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
 regexp config to do your WU caching. I decided to test this idea out in
 my squid proxy, along with one or 2 other ideas (the other ideas failed
 hopelessly but the WU caching worked like a charm.)
@@ -70,7 +70,7 @@ The original idea seemed to work in theory, yet in practicality it was
 pretty useless - the updates expired after 30 minutes, there were
 download inconsistencies, and a whole array of issues. So looking at the
 HTTP responses and documentation for
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern#),
+[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern),
 there was an extra clause that could be added. This is how it changed:
 
     refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
@@ -85,7 +85,7 @@ must not be used it gets converted to an if-modified-since check instead
 of a new copy reload request.
 
 So adding it to the original Squid settings to do with
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern#),
+[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern),
 we get:
 
     # Add one of these lines for each of the websites you want to cache.
@@ -108,7 +108,7 @@ times a minute. It'll hand out the Windows updates, and will keep them
 stored in the squid cache.
 
 I also recommend a 30 to 60GB
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) size
+[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) size
 allocation, which will let you download tonnes of windows updates and
 other stuff and then you won't really have any major issues with cache
 storage or cache allocation or any other issues to do with the cache. .
@@ -127,7 +127,7 @@ goes through.
     entire archive every time it needs any small piece.
 
 You will need to test your squid config with smaller values for the
-[range\_offset\_limit](http://www.squid-cache.org/Doc/config/range_offset_limit#)
+[range\_offset\_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)
 bypass and see which provides the best results for you.
 
 Another symptoms which occasionally appear when attempting to force
@@ -135,9 +135,9 @@ caching of windows updates is service packs.
 
   - ℹ️
     If the
-    [quick\_abort\_min](http://www.squid-cache.org/Doc/config/quick_abort_min#),
-    [quick\_abort\_max](http://www.squid-cache.org/Doc/config/quick_abort_max#),
-    [quick\_abort\_pct](http://www.squid-cache.org/Doc/config/quick_abort_pct#)
+    [quick\_abort\_min](http://www.squid-cache.org/Doc/config/quick_abort_min),
+    [quick\_abort\_max](http://www.squid-cache.org/Doc/config/quick_abort_max),
+    [quick\_abort\_pct](http://www.squid-cache.org/Doc/config/quick_abort_pct)
     settings are set to abort a download incomplete and a client closes
     with almost but not quite enough of the service pack downloaded.
     That clients following requests will often timeout waiting for Squid
@@ -172,7 +172,7 @@ top before any ACL that require authentication.
 
 The above config is also useful for other automatic update sites such as
 Anti-Virus vendors, just add their domains to the
-[acl](http://www.squid-cache.org/Doc/config/acl#).
+[acl](http://www.squid-cache.org/Doc/config/acl).
 
 |                                                                        |                                                                                                                                                                                                                     |
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -255,15 +255,15 @@ To reset proxy settings for WinHTTP use:
 
 In modern setups with Squid, Windows Update cannot be check updates with
 error
-"[WindowsUpdate](/WindowsUpdate#)\_80072F8F"
+"[WindowsUpdate](/WindowsUpdate)\_80072F8F"
 or similar.
 
 WU now uses its own pinned SSL certificate and must be spliced to work.
 When you use sniffer, you can see many IP's with relatively big
 subnetworks. This leads to problems with a
-[Squid-3.4](/Releases/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4)
 and causes serious problems when using
-[Squid-3.5](/Releases/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5)
 or above.
 
 To use splicing, you need to know the names of the servers, however, a
@@ -344,4 +344,4 @@ assets site.
 [](https://github.com/opnsense/core/issues/1691#issuecomment-340276788)
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

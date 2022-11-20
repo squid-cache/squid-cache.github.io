@@ -13,7 +13,7 @@ configuration. When web traffic is reaching the machine squid is run on.
 box**. This is required to perform intercept accurately and securely. To
 intercept from a gateway machine and direct traffic at a separate squid
 box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute#).
+routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
   - ![squid-NAT-device-REDIRECT.png](https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxRedirect?action=AttachFile&do=get&target=squid-NAT-device-REDIRECT.png)
 
@@ -58,4 +58,4 @@ like so:
 
     http_port 3129 intercept
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

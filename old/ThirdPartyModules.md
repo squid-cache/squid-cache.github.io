@@ -19,10 +19,10 @@ registry](#modules).
 It is possible - and in fact encouraged - to use the Squid Wiki
 infrastructure to document extension modules. It is also possible to use
 this wiki to distribute those modules as [Wiki
-Attachments](/HelpOnActions/AttachFile#)
+Attachments](/HelpOnActions/AttachFile)
 
 To be given write-access to the wiki please follow the instructions in
-[FrontPage](/FrontPage#).
+[FrontPage](/FrontPage).
 
 ### Using LaunchPad
 
@@ -31,7 +31,7 @@ to host and help Free/Open Source Software projects by offering services
 related to code development, such as code repositories, bug tracking
 databases, documentation repositories etc. It is very well integrated
 with
-[Bazaar](/BzrInstructions#),
+[Bazaar](/BzrInstructions),
 the code repository tool used by the Squid project.
 
 It is possible to also use Launchpad to maintain a link to the squid
@@ -47,7 +47,7 @@ extension modules with the Squid releases. We are currently developing a
 set of guidelines to help ease the distribution integration. Until they
 are finalized, we ask interested parties to them for tracking and apply
 with the project
-[MergeProcedure](/MergeProcedure#).
+[MergeProcedure](/MergeProcedure).
 
 # Modules Registry
 
@@ -61,7 +61,7 @@ Here's an auto-generated list of available third-party modules.
 ## Register a new third-party module
 
 Choose a good
-[WikiName](/WikiName#)
+[WikiName](/WikiName)
 for it and enter it here:
 
 Discuss this page using the "Discussion" link in the main menu

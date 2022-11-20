@@ -6,7 +6,7 @@ about these examples please email the squid-users mailing list.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     ℹ️
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     has now had experimental multi-process SMP support merged. It is
     designed to operate with a similar but different configuration to
     these while reducing much of the complexity of process instance
@@ -16,32 +16,32 @@ about these examples please email the squid-users mailing list.
 
 Squid-3.1 and older do not scale very well to Multi-CPU or Multi-Core
 systems. Some of its features do help, such as for example
-[DiskDaemon](/Features/DiskDaemon#),
+[DiskDaemon](/Features/DiskDaemon),
 or
-[COSS](/Features/CyclicObjectStorageSystem#),
+[COSS](/Features/CyclicObjectStorageSystem),
 or the ability to delegate parts of the request processing to external
 helpers such as
-[Authenticators](/SquidFaq/ProxyAuthentication#)
+[Authenticators](/SquidFaq/ProxyAuthentication)
 or [other auxiliary
-software](/SquidFaq/RelatedSoftware#).
+software](/SquidFaq/RelatedSoftware).
 Still Squid remains to this day very bound to a single processing core
 model. There are plans to eventually make Squid able to effectively use
 multicore systems, but something may be done already, by using a
 fine-tuned
-[MultipleInstances](/MultipleInstances#)
+[MultipleInstances](/MultipleInstances)
 setup.
 
 |                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) Notice | This setup has been designed with a recent version of Squid in mind. It has been tested with [Squid-3.1](/Releases/Squid-3.1#), but it should work with [Squid-3.0](/Releases/Squid-3.0#) and [Squid-2.7](/Releases/Squid-2.7#) as-is as well. [Squid-2.6](/Releases/Squid-2.6#) and earlier can be coaxed to work, but it will be harder to setup and maintain. |
+| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) Notice | This setup has been designed with a recent version of Squid in mind. It has been tested with [Squid-3.1](/Releases/Squid-3.1), but it should work with [Squid-3.0](/Releases/Squid-3.0) and [Squid-2.7](/Releases/Squid-2.7) as-is as well. [Squid-2.6](/Releases/Squid-2.6) and earlier can be coaxed to work, but it will be harder to setup and maintain. |
 
 It is also geared at **expert system-administrators**.
-[MultipleInstances](/MultipleInstances#)
+[MultipleInstances](/MultipleInstances)
 is not easy to manage and run, and system integration depends on the
 specific details of the operating system distribution of choice.
 
 The setup laid out in this [configuration
-example](/ConfigExamples#)
+example](/ConfigExamples)
 aims at creating on a system multiple running squid processes:
 
   - a 'front-end' process which does
@@ -216,4 +216,4 @@ include /usr/local/etc/lab/common.backend.conf
 
 [backend-2.conf.txt](/ConfigExamples/MultiCpuSystem?action=AttachFile&do=get&target=backend-2.conf.txt)
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

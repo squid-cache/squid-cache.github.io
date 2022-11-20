@@ -10,7 +10,7 @@
   - **Version**:
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
 # Details
 
@@ -20,7 +20,7 @@ across several versions for example Squid 2.5 to 3.1 there are multiple
 sets of detailed release notes to wade through.
 
 Starting with
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 obsolete config directives are identified and upgrade instructions are
 printed out when `squid -k parse` command is used, or to cache.log if
 Squid is simply run without checking the config validity.
@@ -34,7 +34,7 @@ is wrong with the config line and what to do about it.
   - sometimes old single tag options have been replaced by more complex
     options nested within another setting. For example the multiple
     Squid-2.5 httpd\_\* options migrate to sub-options on a specific
-    [http\_port](http://www.squid-cache.org/Doc/config/http_port#) tag.
+    [http\_port](http://www.squid-cache.org/Doc/config/http_port) tag.
 
   - squid developers are continually improving squid.conf settings and
     the systems behind them so the system must be easily updated.
@@ -43,7 +43,7 @@ is wrong with the config line and what to do about it.
     current parsers (plural\!) and configure
     startup/restart/reload/shutdown pathways all need to be re-worked
     properly before this can be built-in. see
-    [Features/HotConf](/Features/HotConf#)
+    [Features/HotConf](/Features/HotConf)
     for details on that work.
 
   - some options are supported, but not by the current set of
@@ -53,7 +53,7 @@ is wrong with the config line and what to do about it.
     
       - NP: this is already done for *directives* but not for
         sub-options where the directive is parsed (ie
-        *[http\_port](http://www.squid-cache.org/Doc/config/http_port#)
+        *[http\_port](http://www.squid-cache.org/Doc/config/http_port)
         ... sslcacert=/foo* still comes up as bungled config).
 
 ## Malformed Config Logic
@@ -64,9 +64,9 @@ Having the parser detect these cases and warn about them would be good.
 
   - access lists being configured when the relevant protocol has no
     ports open (ie
-    [icp\_port](http://www.squid-cache.org/Doc/config/icp_port#)
+    [icp\_port](http://www.squid-cache.org/Doc/config/icp_port)
     disabled and
-    [icp\_access](http://www.squid-cache.org/Doc/config/icp_access#)
+    [icp\_access](http://www.squid-cache.org/Doc/config/icp_access)
     configured)
 
   - "\!all" token being used on a one-line fast ACL (ie `  access_log
@@ -103,7 +103,7 @@ Having the parser detect these cases and warn about them would be good.
     http_access deny all
 
   - delay pool with
-    [delay\_parameters](http://www.squid-cache.org/Doc/config/delay_parameters#)
+    [delay\_parameters](http://www.squid-cache.org/Doc/config/delay_parameters)
     limits all set to *-1/-1*.
 
   - directives configured to their default value. Not a major problem,
@@ -114,7 +114,7 @@ Having the parser detect these cases and warn about them would be good.
 ### Solutions
 
 Stuff done in
-[Squid-3.2](/Releases/Squid-3.2#):
+[Squid-3.2](/Releases/Squid-3.2):
 
   - obsolete directives are kept in `cf.data.pre` with the type
     **obsolete**. The documentation comments are printed as upgrade
@@ -127,4 +127,4 @@ Stuff done in
     message indicating the missing component or build requirements is
     logged.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

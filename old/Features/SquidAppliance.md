@@ -127,7 +127,7 @@ trying one of the packages mentioned above in Authentication.
 ### Operating System
 
 The
-[BestOsForSquid](/BestOsForSquid#)
+[BestOsForSquid](/BestOsForSquid)
 says almost any Unix-like OS would work. It should be a very common
 distro with a large user base so that regular updates are likely, and
 questions regarding obscure OS errors might be answered.
@@ -212,4 +212,4 @@ specifically changes for each install option.
 
 ## Relevant Links
 
-  - [CategoryFeature](/CategoryFeature#)
+  - [CategoryFeature](/CategoryFeature)

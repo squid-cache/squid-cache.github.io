@@ -1,8 +1,8 @@
   - Back to
-    [SquidCodingGuidelines](/SquidCodingGuidelines#).
+    [SquidCodingGuidelines](/SquidCodingGuidelines).
 
   - Back to
-    [DeveloperResources](/DeveloperResources#).
+    [DeveloperResources](/DeveloperResources).
 
 <!-- end list -->
 
@@ -27,7 +27,7 @@ ENFORCED:
   - No two file names that differ only in capitalization
 
   - For new group of files, follow
-    [Features/SourceLayout](/Features/SourceLayout#)
+    [Features/SourceLayout](/Features/SourceLayout)
 
   - convenience libraries should be named for the subdirectory they are
     within

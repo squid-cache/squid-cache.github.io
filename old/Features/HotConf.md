@@ -10,7 +10,7 @@
   - **Version**:
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
 # Details
 
@@ -31,30 +31,30 @@ This causes many issues which are visible:
 
 Related Bug reports:
 
-  - [219](https://bugs.squid-cache.org/show_bug.cgi?id=219#)
+  - [219](https://bugs.squid-cache.org/show_bug.cgi?id=219)
 
-  - [513](https://bugs.squid-cache.org/show_bug.cgi?id=513#)
+  - [513](https://bugs.squid-cache.org/show_bug.cgi?id=513)
 
-  - [537](https://bugs.squid-cache.org/show_bug.cgi?id=537#)
+  - [537](https://bugs.squid-cache.org/show_bug.cgi?id=537)
 
-  - [1545](https://bugs.squid-cache.org/show_bug.cgi?id=1545#)
+  - [1545](https://bugs.squid-cache.org/show_bug.cgi?id=1545)
 
-  - [1946](https://bugs.squid-cache.org/show_bug.cgi?id=1946#)
+  - [1946](https://bugs.squid-cache.org/show_bug.cgi?id=1946)
 
-  - [2110](https://bugs.squid-cache.org/show_bug.cgi?id=2110#)
+  - [2110](https://bugs.squid-cache.org/show_bug.cgi?id=2110)
 
-  - [2460](https://bugs.squid-cache.org/show_bug.cgi?id=2460#)
+  - [2460](https://bugs.squid-cache.org/show_bug.cgi?id=2460)
 
-  - [2570](https://bugs.squid-cache.org/show_bug.cgi?id=2570#)
+  - [2570](https://bugs.squid-cache.org/show_bug.cgi?id=2570)
     
       - A workaround is in use for memory-only caches, but this keeps
         resurfacing. Lately rock type dirs with SMP diskers is causing
         it again.
     
       - We need to obsolete
-        [wccp2\_rebuild\_wait](http://www.squid-cache.org/Doc/config/wccp2_rebuild_wait#).
+        [wccp2\_rebuild\_wait](http://www.squid-cache.org/Doc/config/wccp2_rebuild_wait).
 
-  - [2626](https://bugs.squid-cache.org/show_bug.cgi?id=2626#)
+  - [2626](https://bugs.squid-cache.org/show_bug.cgi?id=2626)
 
 ## State up to Squid-3.1
 
@@ -81,7 +81,7 @@ per-component split of the initial Squid-3 parser.
 ## New Design for Squid-3.1+
 
 The current work begun already in Squid-3.1 and building in with
-[Features/SourceLayout](/Features/SourceLayout#)
+[Features/SourceLayout](/Features/SourceLayout)
 takes the Squid-3.0 parser idea of modular component config (each
 sub-library has its own XX::Config object which holds only that
 components configuration settings.
@@ -115,7 +115,7 @@ The option handlers:
   - produce clear warnings when an option is being deprecated
 
   - provide for migrating obsolete squid.conf options, a built-in
-    [Features/ConfigUpdater](/Features/ConfigUpdater#)
+    [Features/ConfigUpdater](/Features/ConfigUpdater)
 
 It also must provide an API for the startup, shutdown, reload, and
 reconfigure processes. The reconfigure is in need of the most work.
@@ -187,7 +187,7 @@ When this is completed;
 answer, use the "Discussion" link in the main menu
 
 See [Discussed
-Page](/Features/HotConf#)
+Page](/Features/HotConf)
 
 Thank you for setting up this page, Amos. Lots of good thoughts here.
 
@@ -215,7 +215,7 @@ In pseudo C++, and simplifying a bit:
     Module::Config *Module::Parse(const SquidDotConfTokenizer &text);
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 Good point, I can see the switchover case would need that separation of
 data vs handlers. However I dislike the need to pass config objects to
@@ -245,7 +245,7 @@ or if its editing current on the spot (think err directory locations,
 size limits, and other state-agnostic settings).
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 
 I am worried about several ideas expressed here but I may be just
 misinterpreting what you are saying. I will provide specific sketches in
@@ -360,7 +360,7 @@ this sketch might work:
     }
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 Aw, heck no. That leaves the configure startup/shutdown process outside
 the main loop and inaccessible to async operations.
@@ -461,7 +461,7 @@ The parsing tokenizer needs to be looked at separately as you pointed
 out. But that is not relevant to the reconfigure scope of this feature.
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 
 Making configuration asynchronous is worth trying.
 
@@ -512,7 +512,7 @@ modules, but having Module::Config objects free of side-effects will
 help with that.
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 This bit confused me terribly...
 
@@ -647,7 +647,7 @@ new TheConfig set to check dependencies etc, fine. I think it will turn
 out to be very small, but it may be useful.
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 
 I am sorry, but do not follow most of your comments because I think you
 are attacking a model that I am not proposing while discussing low-level
@@ -709,7 +709,7 @@ Ignoring all other details, do you see any serious problems with the
 above?
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 Yes I think we are definitely talking to different things. I will try
 harder to catch you on IRC about the fine details of the processing.
@@ -839,7 +839,7 @@ you are making for the above step. Until we agree on step (1) design I
 think we should skip them.
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 
 Your first two worries are non-issues, I think:
 
@@ -873,7 +873,7 @@ to their module state like we have them now (at best). They will be
 So these are settled, I think. Let's call that progress\!
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 I believe we have rough agreement on the high-level definition for the
 first configuration step, despite that you think you cannot ignore some
@@ -914,6 +914,6 @@ If the above is satisfactory, let's try to move on to step2 discussion
 and come back to the lower-level details as needed.
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

@@ -8,7 +8,7 @@ about these examples please email the squid-users mailing list.
 
 When looking at the documentation for squid I was relieved to find the
 page regarding
-[redirecting](/Features/Redirectors#)
+[redirecting](/Features/Redirectors)
 urls. However, when I finally got there I was disappointed to see that
 it was in [perl](http://perl.org). Not knocking perl, I know it is a
 more clean language than PHP, but I have little knowledge of the
@@ -34,17 +34,17 @@ squid re-starts the processes.
 
 ### Related config options
 
-  - [url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program#)
+  - [url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 
-  - [url\_rewrite\_access](http://www.squid-cache.org/Doc/config/url_rewrite_access#)
+  - [url\_rewrite\_access](http://www.squid-cache.org/Doc/config/url_rewrite_access)
 
-  - [url\_rewrite\_bypass](http://www.squid-cache.org/Doc/config/url_rewrite_bypass#)
+  - [url\_rewrite\_bypass](http://www.squid-cache.org/Doc/config/url_rewrite_bypass)
 
-  - [url\_rewrite\_children](http://www.squid-cache.org/Doc/config/url_rewrite_children#)
+  - [url\_rewrite\_children](http://www.squid-cache.org/Doc/config/url_rewrite_children)
 
-  - [url\_rewrite\_concurrency](http://www.squid-cache.org/Doc/config/url_rewrite_concurrency#)
+  - [url\_rewrite\_concurrency](http://www.squid-cache.org/Doc/config/url_rewrite_concurrency)
 
-  - [url\_rewrite\_host\_header](http://www.squid-cache.org/Doc/config/url_rewrite_host_header#)
+  - [url\_rewrite\_host\_header](http://www.squid-cache.org/Doc/config/url_rewrite_host_header)
 
 ## PHP Redirect (Simple)
 
@@ -196,4 +196,4 @@ bar.example.com) but only during work hours. It also redirects
 *bad.example.com*, and forces a machine to use example.com instead of
 www.example.com
 
-  - [CategoryConfigExample](/CategoryConfigExample#)
+  - [CategoryConfigExample](/CategoryConfigExample)

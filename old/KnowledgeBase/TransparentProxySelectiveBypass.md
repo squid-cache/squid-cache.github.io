@@ -22,9 +22,9 @@ typically destination IP address and TCP port.
 
 When running on a Linux host, interception will typically be handled,
 via an `iptables` `REDIRECT` or `DNAT` rule, as detailed in
-[ConfigExamples/Intercept/LinuxRedirect](/ConfigExamples/Intercept/LinuxRedirect#)
+[ConfigExamples/Intercept/LinuxRedirect](/ConfigExamples/Intercept/LinuxRedirect)
 or
-[ConfigExamples/Intercept/LinuxDnat](/ConfigExamples/Intercept/LinuxDnat#).
+[ConfigExamples/Intercept/LinuxDnat](/ConfigExamples/Intercept/LinuxDnat).
 
 To add an exception allowing direct access to www.example.com, the
 iptables configuration example in that page should be changed like this:
@@ -54,5 +54,5 @@ workarounds such as the one shown at
 [LinuxQuestions](http://www.linuxquestions.org/questions/linux-networking-3/url-blocking-via-iptables-655678/)
 are not reliable and should not be deployed.
 
-  - [CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-    [SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting#)
+  - [CategoryKnowledgeBase](/CategoryKnowledgeBase)
+    [SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting)

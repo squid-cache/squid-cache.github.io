@@ -7,9 +7,9 @@ about these examples please email the squid-users mailing list.
 ## Sending different requests to different backend web servers
 
 To control which web servers
-([cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#)) gets
+([cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)) gets
 which requests the
-[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access#)
+[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
 directives is used. These directives limit which requests may be sent to
 a given peer.
 
@@ -30,7 +30,7 @@ For example the websites are hosted like this on two servers:
 ### Switching on Domains
 
 Using
-[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access#):
+[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access):
 
     cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
     acl sites_server_1 dstdomain www.example.com example.com
@@ -41,9 +41,9 @@ Using
     cache_peer_access server_2 allow sites_server_2
 
 The same using
-[cache\_peer\_domain](http://www.squid-cache.org/Doc/config/cache_peer_domain#)
+[cache\_peer\_domain](http://www.squid-cache.org/Doc/config/cache_peer_domain)
 (deprecated since
-[Squid-3.2](/Releases/Squid-3.2#)):
+[Squid-3.2](/Releases/Squid-3.2)):
 
     cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
     cache_peer_domain server_1 www.example.com example.com
@@ -53,13 +53,13 @@ The same using
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     This directive has been removed in
-    [Squid-4](/Releases/Squid-4#).
+    [Squid-4](/Releases/Squid-4).
 
 #### Other Criteria than Domain
 
 It is also possible to route requests based on other criteria than the
 host name by using other
-[acl](http://www.squid-cache.org/Doc/config/acl#) types, such as
+[acl](http://www.squid-cache.org/Doc/config/acl) types, such as
 urlpath\_regex.
 
 For our example here the websites /foo directory alone is hosted on a
@@ -84,4 +84,4 @@ second server:
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Remember that the cache is on the requested URL and not which peer the request is forwarded to so don't use user dependent acls if the content is cached. |
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

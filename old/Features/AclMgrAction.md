@@ -13,7 +13,7 @@
 
 # Details
 
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 cache manager access through [](http://) and [](https://) URLs requires
 a way to control which actions are visible to which users.
 
@@ -27,4 +27,4 @@ manager request properties and then checks only the action name portion
 of the URL. Ignoring additional parameters and internal 'well-known'
 path locations.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

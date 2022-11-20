@@ -8,19 +8,19 @@ project running.
 US registered non-profit (501(c)(3) tax-exempt) providing the
 infrastructure and support framework for Squid developers and users.
 
-  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m#)
+  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m)
     - President
 
   - [Francesco
-    Chemolli](/FrancescoChemolli#)
+    Chemolli](/FrancescoChemolli)
     - Vice President
 
   - [Amos
-    Jeffries](/AmosJeffries#)
+    Jeffries](/AmosJeffries)
     - Secretary
 
   - [Alex
-    Rousskov](/AlexRousskov#)
+    Rousskov](/AlexRousskov)
     - Treasurer
 
 # Squid Core Team
@@ -28,29 +28,29 @@ infrastructure and support framework for Squid developers and users.
 Emeritus developers who provided oversight of the Squid Project before
 [The Squid Software Foundation](http://foundation.squid-cache.org/).
 
-  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m#),
+  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m),
     Squid Hacker Extraordinaire and
-    [Squid-2.x](/RoadMap/Squid2#)
+    [Squid-2.x](/RoadMap/Squid2)
     release manager.
 
   - [Amos
-    Jeffries](/AmosJeffries#)
+    Jeffries](/AmosJeffries)
     HTTP/2 and IPv6 guru,
-    [Translations](/Translations#)
+    [Translations](/Translations)
     coordinator, and
-    [Squid-3.x](/RoadMap/Squid3#)
+    [Squid-3.x](/RoadMap/Squid3)
     release manager.
 
   - [Robert Collins](http://www.squid-cache.org/~robertc/) was the main
     driver of the initial Squid-3 C++ migration effort.
 
   - [Guido
-    Serassio](/GuidoSerassio#)
+    Serassio](/GuidoSerassio)
     led the [Squid-2.x for Windows](http://squid.acmeconsulting.it/)
     effort
 
   - [Alex
-    Rousskov](/AlexRousskov#),
+    Rousskov](/AlexRousskov),
     author and manager.
 
   - [Duane Wessels](http://wessels.squid-cache.org/), Chief
@@ -64,26 +64,26 @@ should have some familiarity with the processes involved.
 **Squid-3**:
 
   - [Christos
-    Tsantilas](/ChristosTsantilas#)
+    Tsantilas](/ChristosTsantilas)
     works mainly with ICAP, SSL-Bump, HTTPS and fixes some bugs.
 
   - [Doug
-    Dixon](/DougDixon#)
+    Dixon](/DougDixon)
     assisted with the early development of Squid-3.0
 
   - [Eliezer
-    Croitoru](/EliezerCroitoru#)
+    Croitoru](/EliezerCroitoru)
     wrote and supports the [Store
-    ID](/Features/StoreID#)
+    ID](/Features/StoreID)
     and helpers, but also maintains unofficial CentOS and RHEL packages.
 
   - [Francesco
-    Chemolli](/FrancescoChemolli#)
+    Chemolli](/FrancescoChemolli)
     works mainly on documentation and maintains the wiki, but also
     chimes in with patches every now and then.
 
   - [Markus
-    Moeller](/MarkusMoeller#)
+    Moeller](/MarkusMoeller)
     wrote and supports the Kerberos features
 
 **Squid-2**:
@@ -92,9 +92,9 @@ should have some familiarity with the processes involved.
     developer, performance/scalability stuff.
 
   - [Steven
-    Wilton](/StevenWilton#)
+    Wilton](/StevenWilton)
     brought the
-    [COSS](/Features/CyclicObjectStorageSystem#)
+    [COSS](/Features/CyclicObjectStorageSystem)
     storage engine in Squid-2 to maturity
 
 # Squid Project Sysadmin Team
@@ -104,7 +104,7 @@ should have some familiarity with the processes involved.
     Bugzilla under [Project
     Services](http://bugs.squid-cache.org/enter_bug.cgi?product=Project%20Services).
 
-  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m#)
+  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m)
     
       - **system admin**: master, east, west
     
@@ -113,7 +113,7 @@ should have some familiarity with the processes involved.
       - **mail admin**: qmail
 
   - [Amos
-    Jeffries](/AmosJeffries#)
+    Jeffries](/AmosJeffries)
     
       - **service admin**: bugzilla, bzr, mysql, rsync, jenkins,
         website, pootle
@@ -121,21 +121,21 @@ should have some familiarity with the processes involved.
       - **mail admin**: moderator
 
   - [Francesco
-    Chemolli](/FrancescoChemolli#)
+    Chemolli](/FrancescoChemolli)
     
       - **system admin**: master, eu, [build
-        farm](/BuildFarm#)
+        farm](/BuildFarm)
         VMs
     
       - **service admin**: wiki, jenkins, pootle
 
   - [Pieter de
-    Wit](/PieterDeWit#)
+    Wit](/PieterDeWit)
     
       - **system admin**: master
 
   - [Nathan
-    Hoad](/NathanHoad#)
+    Hoad](/NathanHoad)
     
       - **service admin**: wiki
 
@@ -150,42 +150,42 @@ While squid is normally distributed in source form. Some dedicated
 people are donating their time to packaging Squid in other popular
 formats for easy use.
 
-  - [Debian](/KnowledgeBase/Debian#):
+  - [Debian](/KnowledgeBase/Debian):
     Luigi Gangitano
 
-  - [Fedora](/KnowledgeBase/Fedora#):
-    [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m#),
+  - [Fedora](/KnowledgeBase/Fedora):
+    [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m),
     Lubos Uhliarik
 
-  - [Fink](/KnowledgeBase/Fink#):
+  - [Fink](/KnowledgeBase/Fink):
     Benjamin Reed
 
-  - [FreeBSD](/KnowledgeBase/FreeBSD#):
+  - [FreeBSD](/KnowledgeBase/FreeBSD):
     Thomas-Martin Seck
 
-  - [Gentoo](/KnowledgeBase/Gentoo#):
+  - [Gentoo](/KnowledgeBase/Gentoo):
     Eray Aslan
 
-  - [Mandriva](/KnowledgeBase/Mandriva#):
+  - [Mandriva](/KnowledgeBase/Mandriva):
     Luis Daniel Lucio Quiroz
 
-  - [NetBSD](/KnowledgeBase/NetBSD#):
+  - [NetBSD](/KnowledgeBase/NetBSD):
     Takahiro Kambe
 
-  - [OpenBSD](/KnowledgeBase/OpenBsd#):
+  - [OpenBSD](/KnowledgeBase/OpenBsd):
     Stuart Henderson
 
   - [Red Hat Enterprise
-    Linux](/KnowledgeBase/RedHat#):
+    Linux](/KnowledgeBase/RedHat):
     Lubos Uhliarik
 
-  - [Solaris](/KnowledgeBase/Solaris#):
+  - [Solaris](/KnowledgeBase/Solaris):
     Steven M. Christensen
 
-  - [Ubuntu](/KnowledgeBase/Ubuntu#):
+  - [Ubuntu](/KnowledgeBase/Ubuntu):
     Luigi Gangitano
 
-  - [Windows](/KnowledgeBase/Windows#):
+  - [Windows](/KnowledgeBase/Windows):
     [Guido
-    Serassio](/GuidoSerassio#)
+    Serassio](/GuidoSerassio)
     (Squid-2), Rafael Akchurin (Squid-3)

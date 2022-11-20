@@ -1,7 +1,7 @@
 # Configuring Squid and Webwasher in a proxy chain
 
 By
-[ChristophHaas](/ChristophHaas#)
+[ChristophHaas](/ChristophHaas)
 
 ## Outline
 
@@ -251,4 +251,4 @@ your LDAP software of course. This is an example configuration:
 
 <!-- end list -->
 
-  - [CategoryConfigExample](/CategoryConfigExample#)
+  - [CategoryConfigExample](/CategoryConfigExample)

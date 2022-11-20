@@ -1,8 +1,8 @@
   - Back to
-    [SquidCodingGuidelines](/SquidCodingGuidelines#).
+    [SquidCodingGuidelines](/SquidCodingGuidelines).
 
   - Back to
-    [DeveloperResources](/DeveloperResources#).
+    [DeveloperResources](/DeveloperResources).
 
 # C source guidelines
 
@@ -13,4 +13,4 @@ standard from surrounding code.
     Remember to update the third-party changelog.
 
 As per
-[Squid2CodingGuidelines](/Squid2CodingGuidelines#).
+[Squid2CodingGuidelines](/Squid2CodingGuidelines).

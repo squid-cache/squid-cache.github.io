@@ -13,7 +13,7 @@ known ones where possible.
 
 ## Squid Configuration File
 
-Configuration file to [Include](/Features/ConfigIncludes#):
+Configuration file to [Include](/Features/ConfigIncludes):
 
     # Media Streams
     

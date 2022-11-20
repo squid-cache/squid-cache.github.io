@@ -9,7 +9,7 @@
   - **Version**: 3.5
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
     and Christos Tsantilas
 
 <!-- end list -->
@@ -18,9 +18,9 @@
 # Motivation
 
 "Peek and Splice" is a collection of new
-[SslBump](/Features/SslBump#)
+[SslBump](/Features/SslBump)
 actions and related features introduced in
-[Squid-3.5](/Releases/Squid-3.5#).
+[Squid-3.5](/Releases/Squid-3.5).
 Older Squids used server-first and client-first actions that did not
 work well many cases. Many SslBump deployments try to minimize potential
 damage by *not* bumping sites unless the local policy demands it. Before
@@ -83,7 +83,7 @@ server](https://wiki.squid-cache.org/Features/SslPeekAndSplice?action=AttachFile
     with the CONNECT request mentioned above.
 
 3.  Evaluate all
-    [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#) rules
+    [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
     and perform the first matching action (splice, bump, peek, stare, or
     terminate).
 
@@ -106,7 +106,7 @@ a forward proxy environments.
     with the adjusted CONNECT request mentioned above.
 
 3.  Evaluate again all
-    [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#) rules
+    [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
     and perform the first matching action (splice, bump, peek, stare, or
     terminate).
     
@@ -131,7 +131,7 @@ logged until that tunnel is closed.
 2.  Validate the TLS server certificate.
 
 3.  Evaluate again all
-    [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#) rules
+    [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
     and perform the first matching action (splice, bump, or terminate)
     for the connection.
 
@@ -154,12 +154,12 @@ final action (which sometimes cannot be delayed any further).
 ## Actions
 
 Several actions are possible when a proxy handles a TLS connection. See
-the [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#)
+the [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
 directive in your squid.conf.documented for a list of actions your
 version of Squid supports. Some actions are only possible during certain
 processing steps (see above). During a given processing step, Squid
 (3.5.8 and later) *ignores*
-[ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#) lines with
+[ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump) lines with
 impossible actions. This helps us keep configuration sane. Processing
 steps are discussed further below.
 
@@ -169,12 +169,12 @@ steps are discussed further below.
 | **peek**      | step1, step2                      | When a peek rule matches during step1, Squid proceeds to step2 where it parses the TLS Client Hello and extracts SNI (if any). When a peek rule matches during step 2, Squid proceeds to step3 where it parses the TLS Server Hello and extracts server certificate while preserving the possibility of splicing the client and server connections; peeking at the server certificate usually precludes future bumping (see Limitations).  |
 | **splice**    | step1, step2, and sometimes step3 | Become a TCP tunnel without decoding the connection. The client and the server exchange data as if there is no proxy in between.                                                                                                                                                                                                                                                                                                           |
 | **stare**     | step1, step2                      | When a stare rule matches during step1, Squid proceeds to step2 where it parses the TLS Client Hello and extracts SNI (if any). When a stare rule matches during step2, Squid proceeds to step3 where it parses the TLS Server Hello and extracts server certificate while preserving the possibility of bumping the client and server connections; staring at the server certificate usually precludes future splicing (see Limitations). |
-| **bump**      | step1, step2, and sometimes step3 | Establish a TLS connection with the server (using client SNI, if any) and establish a TLS connection with the client (using a mimicked server certificate). **However**, this is not what actually happens right now if a bump rule matches during step1. See bug [4327](https://bugs.squid-cache.org/show_bug.cgi?id=4327#)                                                                                                               |
+| **bump**      | step1, step2, and sometimes step3 | Establish a TLS connection with the server (using client SNI, if any) and establish a TLS connection with the client (using a mimicked server certificate). **However**, this is not what actually happens right now if a bump rule matches during step1. See bug [4327](https://bugs.squid-cache.org/show_bug.cgi?id=4327)                                                                                                               |
 | **terminate** | step1, step2, step3               | Close client and server connections.                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 Actions splice, bump, and terminate are final actions: They prevent
 further processing of the
-[ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#) rules.
+[ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules.
 Actions peek and stare allow Squid to proceed to the next SslBump step.
 
 <table>
@@ -206,10 +206,10 @@ Actions peek and stare allow Squid to proceed to the next SslBump step.
 ## See Also
 
 If
-[Squid-4](/Releases/Squid-4#)
+[Squid-4](/Releases/Squid-4)
 or later fails to parse an expected TLS Client Hello message, Squid
 consults
-[on\_unsupported\_protocol](http://www.squid-cache.org/Doc/config/on_unsupported_protocol#)
+[on\_unsupported\_protocol](http://www.squid-cache.org/Doc/config/on_unsupported_protocol)
 directive.
 
 ## Configuration Examples
@@ -224,17 +224,17 @@ directive.
     URI may be just an IP address, and the reverse lookup of that IP
     address may not be the origin server domain name(s) in the encrypted
     requests. The **ssl::server\_name**
-    [acl](http://www.squid-cache.org/Doc/config/acl#) type may use (fake
+    [acl](http://www.squid-cache.org/Doc/config/acl) type may use (fake
     or real) CONNECT request URI, TLS client SNI, and server certificate
     subject information. It also has knobs to control which bits of
     information are used. However, it does not perform DNS lookups. Read
-    [acl](http://www.squid-cache.org/Doc/config/acl#) documentation for
+    [acl](http://www.squid-cache.org/Doc/config/acl) documentation for
     your Squid version and choose carefully.
 
   - ℹ️
     Selecting an action only to happen at a particular step can be done
     using an **at\_step** type
-    [acl](http://www.squid-cache.org/Doc/config/acl#).
+    [acl](http://www.squid-cache.org/Doc/config/acl).
 
 Some how-to tutorials are available for common policies:
 
@@ -485,4 +485,4 @@ Squid v4+ logs:
 The difference between the two tables is in the CONNECT column: Rows
 with multiple SslBump steps differ.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

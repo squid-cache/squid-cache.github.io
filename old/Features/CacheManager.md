@@ -18,13 +18,13 @@ cache during processing of the report.
 
 Squid packages come with two tools for accessing the cache manager:
 
-  - [cachemgr.cgi](/ManagerCgiTool#)
+  - [cachemgr.cgi](/ManagerCgiTool)
     is a CGI utility for online browsing of the manager reports. It can
     be configured to interface with multiple proxies so provides a
     convenient way to manage proxies and view statistics without logging
     into each server.
 
-  - [squidclient](/SquidClientTool#)
+  - [squidclient](/SquidClientTool)
     is a command line utility for performing web requests. It also has a
     special ability to send cache manager requests to Squid proxies.
 
@@ -33,14 +33,14 @@ special cache\_object:// URL scheme. Which allows other tools and
 scripts to easily be written for any special use you may have.
 
 The cache manager has been extended in
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 to allow access from the [](http://) and [](https://) URL schemes. This
 opens the cache manager reports directly to the web browser if permitted
-by [http\_access](http://www.squid-cache.org/Doc/config/http_access#)
+by [http\_access](http://www.squid-cache.org/Doc/config/http_access)
 security controls.
 
   - [Manager INDEX
-    report](/Features/CacheManager/Index#)
+    report](/Features/CacheManager/Index)
     allows for provision of a customisable HTML template for accessing
     cache manager reports via a scripted user interface.
 
@@ -55,7 +55,7 @@ The default cache manager access configuration in *squid.conf* is:
 
   - ℹ️
     This default has been updated to accommodate changes in
-    [Squid-3.2](/Releases/Squid-3.2#).
+    [Squid-3.2](/Releases/Squid-3.2).
     For older squid the squid.conf entries may appear different.
 
 The first ACL is the most important as the cache manager program
@@ -66,7 +66,7 @@ yourself by doing:
     GET cache_object://mycache.example.com/info HTTP/1.0
 
 or for
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 typing this into your browser address bar:
 
     http://mycache.example.com:3128/squid-internal-mgr/info
@@ -75,7 +75,7 @@ typing this into your browser address bar:
     NOTE: the above tests assume you have correctly configured your
     proxy machine with a working FQDN *mycache.example.com* for its
     publicly
-    [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname#).
+    [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname).
 
 The default ACLs say that if the request is for a cache\_object://, and
 it isn't the local host, then deny access; otherwise allow access.
@@ -106,9 +106,9 @@ or the administrators workstation.
 ### Troubleshooting Access Denied Issues
 
   - If you're using
-    [miss\_access](http://www.squid-cache.org/Doc/config/miss_access#),
+    [miss\_access](http://www.squid-cache.org/Doc/config/miss_access),
     then don't forget to also add a
-    [miss\_access](http://www.squid-cache.org/Doc/config/miss_access#)
+    [miss\_access](http://www.squid-cache.org/Doc/config/miss_access)
     rule for the cache manager:
 
 <!-- end list -->
@@ -130,19 +130,19 @@ or the administrators workstation.
   - Check that the URLs used to fetch manager reports is the publicly
     visible hostname Squid knows for itself. The Squid host name is
     fetched from a reverse-DNS lookup of the first
-    [http\_port](http://www.squid-cache.org/Doc/config/http_port#) or
-    [https\_port](http://www.squid-cache.org/Doc/config/https_port#) IP
+    [http\_port](http://www.squid-cache.org/Doc/config/http_port) or
+    [https\_port](http://www.squid-cache.org/Doc/config/https_port) IP
     address, or the operating system gethostname() API, or
-    [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname#),
+    [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname),
     or
-    [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname#).
+    [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname).
     
       - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
         The Squid hostname is required to be a fully-qualified domain
         name in order to be resolved by any clients with DNS. The
-        [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname#)
+        [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname)
         and
-        [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname#)
+        [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
         directives do not enforce this (yet) which may lead to trouble
         if a non-resolvable name is configured.
 
@@ -154,7 +154,7 @@ password set, which means that these command actions are not available
 until you set one for them.
 
 You can set the
-[cachemgr\_passwd](http://www.squid-cache.org/Doc/config/cachemgr_passwd#)
+[cachemgr\_passwd](http://www.squid-cache.org/Doc/config/cachemgr_passwd)
 directive with a specific password for one or more of the manager
 actions and/or access to the reports. This directive allows you to set
 different password for each report or group them so that multiple
@@ -162,11 +162,11 @@ administrators can get different access.
 
 Squid will use Basic Authentication for retrieving the password to
 access reports. If
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param#) is
+[auth\_param](http://www.squid-cache.org/Doc/config/auth_param) is
 configured that helper will be used to verify the username and password
 are correct. Otherwise username will be ignored and the password
 compared against
-[cachemgr\_passwd](http://www.squid-cache.org/Doc/config/cachemgr_passwd#)
+[cachemgr\_passwd](http://www.squid-cache.org/Doc/config/cachemgr_passwd)
 for the report being accessed.
 
 The URL is required to refresh an object (i.e., retrieve it from its
@@ -392,9 +392,9 @@ seconds. This can tell you if the system as a whole is swapping a lot
 
 It is very bad for squid to swap, as every single request will be
 blocked until the requested data is swapped in. It is better to tweak
-the [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#)
+the [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem)
 and/or
-[memory\_pools](http://www.squid-cache.org/Doc/config/memory_pools#)
+[memory\_pools](http://www.squid-cache.org/Doc/config/memory_pools)
 directive in squid.conf than allow this to happen.
 
 by *Peter Wemm*
@@ -508,7 +508,7 @@ reasons:
     before the ICP arrived.
 
   - The reply came from a multicast-responder, but the
-    [cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access#)
+    [cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
     configuration does not allow us to forward this request to that
     neighbor.
 
@@ -517,4 +517,4 @@ reasons:
   - ICP\_OP\_DENIED replies are ignored after the first 100.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

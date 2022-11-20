@@ -21,7 +21,7 @@ needed. It requires multiple servers in a triple-layer architecture.
 
 The needs for extreme performance may be addressed using a three-layer
 load-balancing scheme. The basic architecture is laid out in
-[ConfigExamples/MultiCpuSystem](/ConfigExamples/MultiCpuSystem#):
+[ConfigExamples/MultiCpuSystem](/ConfigExamples/MultiCpuSystem):
 a farm of caching backends is load-balanced in a smart way by a CARP
 frontend which performs little or no caching.
 
@@ -34,7 +34,7 @@ We assume that:
 
 1.  the administrator has set up a farm of backend servers, using the
     means suggested in
-    [MultipleInstances](/MultipleInstances#)
+    [MultipleInstances](/MultipleInstances)
     . Those servers are *not* directly accessible from clients, and are
     *not* internally-load balanced.
 
@@ -49,7 +49,7 @@ We assume that:
 ### Frontend Balancer Alternative 1: iptables
 
   - *by
-    [FrancescoChemolli](/FrancescoChemolli#)*
+    [FrancescoChemolli](/FrancescoChemolli)*
 
 In this example we will be using *iptables*. The Linux firewall and
 packet management software.
@@ -120,4 +120,4 @@ the whole structure. This is wonderful for overall service uptime. Be
 wary though, this adds yet another hardware single point of failure and
 bottleneck risk.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

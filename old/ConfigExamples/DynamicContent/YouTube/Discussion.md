@@ -1,15 +1,15 @@
 See
-[Features/StoreUrlRewrite](/Features/StoreUrlRewrite#)
+[Features/StoreUrlRewrite](/Features/StoreUrlRewrite)
 
 See
-[Features/StoreID](/Features/StoreID#)
+[Features/StoreID](/Features/StoreID)
 
   - 
 ... lets figure out what the hell is going on with Google Video and
 Youtube stuff so we can cache the current setup.
 
 \--
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 
   - 
 A way to show you what Dynamic Content is really
@@ -21,7 +21,7 @@ A way to show you what Dynamic Content is really
 [](http://www1.ngtech.co.il/squid/How%20Dynamic%20Content%20Affects%20the%20Way%20People%20Find%20Online.mp4)
 
 \-- [Eliezer
-Croitoru](/Eliezer%20Croitoru#)
+Croitoru](/Eliezer%20Croitoru)
 
 # Caching YT is impossible with Squid only now
 
@@ -70,7 +70,7 @@ If Google return static video ID, we can cache YT video again. But now
 it is impossible by any way.
 
 \--
-[YuriVoinov](/YuriVoinov#)
+[YuriVoinov](/YuriVoinov)
 
 # Knowing what to cache
 
@@ -116,7 +116,7 @@ add this to squid.conf
     acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback.*id)
 
 \[ UPDATE: if you still have cache deny QUERY line. Go do this:
-[ConfigExamples/DynamicContent](/ConfigExamples/DynamicContent#)
+[ConfigExamples/DynamicContent](/ConfigExamples/DynamicContent)
 \]
 
 and the storeurl feature
@@ -265,7 +265,7 @@ the redirected URL (which is presumably the video) from you.
 Do you think that'd be enough?
 
 \--
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 
 ## Fixed
 

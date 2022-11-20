@@ -19,14 +19,14 @@ Uses of memory by Squid include:
 | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ----------- |
 | reason                                                                  | parameter                                                                    | explanation |
 | Disk buffers for reading and writing                                    | \-                                                                           | \-          |
-| Network I/O buffers                                                     | [read\_ahead\_gap](http://www.squid-cache.org/Doc/config/read_ahead_gap#) \* | D           |
-| IP Cache contents                                                       | [ipcache\_size](http://www.squid-cache.org/Doc/config/ipcache_size#)         | DNS         |
-| FQDN Cache contents                                                     | [fqdncache\_size](http://www.squid-cache.org/Doc/config/fqdncache_size#)     | DNS         |
+| Network I/O buffers                                                     | [read\_ahead\_gap](http://www.squid-cache.org/Doc/config/read_ahead_gap) \* | D           |
+| IP Cache contents                                                       | [ipcache\_size](http://www.squid-cache.org/Doc/config/ipcache_size)         | DNS         |
+| FQDN Cache contents                                                     | [fqdncache\_size](http://www.squid-cache.org/Doc/config/fqdncache_size)     | DNS         |
 | Netdb ICMP measurement database                                         | \-                                                                           | N           |
 | Per-request state information, including full request and reply headers | \-                                                                           | D           |
 | Miscellaneous statistics collection                                     | \-                                                                           | D           |
-| Index of on-disk cache (metadata, kept in memory)                       | [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#)               | I           |
-| In-memory cache with "hot objects"                                      | [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#)               | M+I         |
+| Index of on-disk cache (metadata, kept in memory)                       | [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir)               | I           |
+| In-memory cache with "hot objects"                                      | [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem)               | M+I         |
 
 Explanation of letters:
 
@@ -61,7 +61,7 @@ Explanation of letters:
 </tbody>
 </table>
 
-  - [read\_ahead\_gap](http://www.squid-cache.org/Doc/config/read_ahead_gap#)
+  - [read\_ahead\_gap](http://www.squid-cache.org/Doc/config/read_ahead_gap)
     only caps the window of data read from a server and not yet
     delivered to the client. There are at least two buffers
     (client-to-server and server-to-client directions) and an additional
@@ -110,7 +110,7 @@ similar to this:
 If your RSS (Resident Set Size) value is much lower than your process
 size, then your cache performance is most likely suffering due to
 Paging. See also
-[../CacheManager](/SquidFaq/CacheManager#)
+[../CacheManager](/SquidFaq/CacheManager)
 
 # Why does Squid use so much cache memory?
 
@@ -134,7 +134,7 @@ randomly.
 # My Squid process grows without bounds.
 
 You might just have your
-[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) parameter
+[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) parameter
 set too high. See *What can I do to reduce Squid's memory usage?* below.
 
 When a process continually grows in size, without levelling off or
@@ -154,13 +154,13 @@ process size phenomenon, we suggest you first try
 
 # I set cache\_mem to XX, but the process grows beyond that\!
 
-The [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#)
+The [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem)
 parameter **does NOT** specify the maximum size of the process. It only
 specifies how much memory to use for caching "hot" (very popular)
 replies. Squid's actual memory usage is depends very strongly on your
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) sizes
+[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) sizes
 (disk space) and your incoming request load. Reducing
-[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) will
+[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) will
 usually also reduce the process size, but not necessarily, and there are
 other ways to reduce Squid's memory usage (see below).
 
@@ -212,19 +212,19 @@ The pool sizes are specified by *squid.conf* parameters. In version 1.0,
 these pools are somewhat broken: we keep a stack of unused pages instead
 of freeing the block. In the *Pool for in-memory object*, the unused
 stack size is 1/2 of
-[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#). The
+[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem). The
 *Pool for disk I/O* is hardcoded at 200. For *MemObject* and *Request*
 it's 1/8 of your system's *FD\_SETSIZE* value.
 
 If you need to lower your process size, we recommend lowering the max
 object sizes in the 'http', 'ftp' and 'gopher' config lines. You may
 also want to lower
-[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) to suit
+[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) to suit
 your needs. But if you make
-[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) too low,
+[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) too low,
 then some objects may not get saved to disk during high-load periods.
 Newer Squid versions allow you to set
-[memory\_pools](http://www.squid-cache.org/Doc/config/memory_pools#) OFF
+[memory\_pools](http://www.squid-cache.org/Doc/config/memory_pools) OFF
 to disable the free memory pools.
 
 # The "Total memory accounted" value is less than the size of my Squid process.
@@ -244,7 +244,7 @@ has reached.
 # xmalloc: Unable to allocate 4096 bytes\!
 
 by
-[HenrikNordström](/HenrikNordstr%C3%B6m#)
+[HenrikNordström](/HenrikNordstr%C3%B6m)
 
 Messages like "FATAL: xcalloc: Unable to allocate 4096 blocks of 1
 bytes\!" appear when Squid can't allocate more memory, and on most
@@ -424,24 +424,24 @@ There are a number of things to try:
   - Try a different malloc library (see below)
 
   - Reduce the
-    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#)
+    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem)
     parameter in the config file. This controls how many "hot" objects
     are kept in memory. Reducing this parameter will not significantly
     affect performance, but you may recieve some warnings in *cache.log*
     if your cache is busy.
 
   - Turn the
-    [memory\_pools](http://www.squid-cache.org/Doc/config/memory_pools#)
+    [memory\_pools](http://www.squid-cache.org/Doc/config/memory_pools)
     OFF in the config file. This causes Squid to give up unused memory
     by calling *free()* instead of holding on to the chunk for
     potential, future use. Generally speaking, this is a bad idea as it
     will induce heap fragmentation. Use
-    [memory\_pools\_limit](http://www.squid-cache.org/Doc/config/memory_pools_limit#)
+    [memory\_pools\_limit](http://www.squid-cache.org/Doc/config/memory_pools_limit)
     instead.
 
   - Reduce the
-    [cache\_swap\_low](http://www.squid-cache.org/Doc/config/cache_swap_low#)
-    or [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#)
+    [cache\_swap\_low](http://www.squid-cache.org/Doc/config/cache_swap_low)
+    or [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir)
     parameter in your config file. This will reduce the number of
     objects Squid keeps. Your overall hit ratio may go down a little,
     but your cache will perform significantly better.
@@ -521,13 +521,13 @@ memory and affecting performance. A very large cache\_dir total and
 insufficient physical RAM + Swap could cause Squid to stop functioning
 completely. The solution for larger caches is to get more physical RAM;
 allocating more to Squid via
-[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) will not
+[cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) will not
 help.
 
 # Why can't my Squid process grow beyond a certain size?
 
 by
-\[[AdrianChadd](/AdrianChadd#)
+\[[AdrianChadd](/AdrianChadd)
 Adrian Chadd\]
 
 A number of people are running Squid with more than a gigabyte of
@@ -553,4 +553,4 @@ memory. Here are some things to keep in mind.
     compiler may default to a 32 bit userland.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

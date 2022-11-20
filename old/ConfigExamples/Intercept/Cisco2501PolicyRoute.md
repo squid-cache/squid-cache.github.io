@@ -13,7 +13,7 @@ environment where my router is a Cisco 2501 running IOS 11.1.
 
 You also need to configure the squid machine to handle the traffic it
 receives. See
-[ConfigExamples/Intercept](/ConfigExamples/Intercept#)
+[ConfigExamples/Intercept](/ConfigExamples/Intercept)
 for details on configuring the rest.
 
 ## Cisco Configuration
@@ -60,6 +60,6 @@ Cisco/Linux box.
 
   - Mark White
 
-  - [HenrikNordström](/HenrikNordstr%C3%B6m#)
+  - [HenrikNordström](/HenrikNordstr%C3%B6m)
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

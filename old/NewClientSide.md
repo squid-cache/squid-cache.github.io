@@ -91,5 +91,5 @@ be seperate message queues.
 The trick is to keep the server side around long enough to receive all
 the queued messages it has or be able to cancel them.
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

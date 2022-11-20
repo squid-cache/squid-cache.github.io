@@ -5,7 +5,7 @@
   - **Status**: 95%
 
   - **By**: [Eliezer
-    Croitoru](/Eliezer%20Croitoru#)
+    Croitoru](/Eliezer%20Croitoru)
     - [NgTech](http://www1.ngtech.co.il/)
 
   - **Disclaimer**: The StoreID feature is not a hacking tool and the
@@ -64,7 +64,7 @@ DEB or other packages. Youtbue have been trying for a very long time to
 make sure that their content distribution will not be affected by
 hackers since they don't only distribute videos but also many other
 kinds of content which is considered sensitive by many. At the same time
-[RedHat](/RedHat#),
+[RedHat](/RedHat),
 Fedora, Suse and many others are fighting hackers which tries every day
 to infect the world with their "wisdom" which in many cases is related
 directly to their ability to be cached or predicted for the matter.

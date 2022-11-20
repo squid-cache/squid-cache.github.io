@@ -60,4 +60,4 @@ Squid older than 3.1 also need to define several extension methods:
 Thanks to Tuukka Laurikanien \<<t.laurikainen@ibermatica.com>\> for
 providing the information used in preparing this article.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

@@ -22,7 +22,7 @@
 
   - Routing requests based on AS numbers.
 
-  - [../CacheDigests](/SquidFaq/CacheDigests#)
+  - [../CacheDigests](/SquidFaq/CacheDigests)
 
   - ...and many more\!
 
@@ -137,7 +137,7 @@ has some examples.
 
 cache\_stoplist:: This directive also has been reimplemented with access
 control lists. You will use the *cache* option since
-[Squid-2.6](/Releases/Squid-2.6#).
+[Squid-2.6](/Releases/Squid-2.6).
 For example:
 
 ``` 
@@ -170,4 +170,4 @@ should now write:
     read_timeout 15 minutes
 
   - Back to the
-    [SquidFaq](/SquidFaq#)
+    [SquidFaq](/SquidFaq)

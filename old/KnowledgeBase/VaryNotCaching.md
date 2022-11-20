@@ -55,8 +55,8 @@ and served.
 
 **Thanks**
 
-  - [HenrikNordstrom](/HenrikNordstrom#)
+  - [HenrikNordstrom](/HenrikNordstrom)
     - providing information on the Vary code behaviour
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

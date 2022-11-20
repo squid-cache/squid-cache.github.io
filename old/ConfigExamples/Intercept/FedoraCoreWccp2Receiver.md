@@ -1,7 +1,7 @@
 # Configuring Transparent Interception with Fedora Core Linux and WCCPv2
 
   - *by
-    [ReubenFarrelly](/ReubenFarrelly#)*
+    [ReubenFarrelly](/ReubenFarrelly)*
 
 **Warning**: Any example presented here is provided "as-is" with no
 support or guarantee of suitability. If you have any further questions
@@ -74,7 +74,7 @@ the Squid application.
 
   - ℹ️
     From
-    [Squid-3.1](/Releases/Squid-3.1#)
+    [Squid-3.1](/Releases/Squid-3.1)
     the magic numbers are now mostly gone. This should work and be
     clearer:
 
@@ -141,4 +141,4 @@ the Squid application.
               CEF:                   0
     router#
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

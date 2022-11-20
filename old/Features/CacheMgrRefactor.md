@@ -9,7 +9,7 @@
   - **Version**: 3.1
 
   - **Developer**:
-    [FrancescoChemolli](/FrancescoChemolli#)
+    [FrancescoChemolli](/FrancescoChemolli)
 
   - **More**: bzr branch at
     [](https://code.launchpad.net/~kinkie/squid/cachemgr-refactor)
@@ -17,4 +17,4 @@
 Aim: rework cachemgr into a proper C++ object-based implementation, up
 from the C-with-C++-sugarcoating it was
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

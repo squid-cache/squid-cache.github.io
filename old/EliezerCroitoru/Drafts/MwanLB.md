@@ -9,12 +9,12 @@ Describe Eliezer Croitoru/Drafts/MwanLB here.
   - **State**: DRAFT
 
   - **Writer**: [Eliezer
-    Croitoru](/EliezerCroitoru#)
+    Croitoru](/EliezerCroitoru)
 
   - **More**:
 
   - **Side Effects**: A Squid Instances
-    [LoadBalancer](/LoadBalancer#)(Tproxy
+    [LoadBalancer](/LoadBalancer)(Tproxy
     to Proxy Protocol)
 
 \- Introduction to Multi-WAN load balancing.
@@ -135,7 +135,7 @@ accessed throw two different ways\\roads.
 
 The main terms that are being used by network and system administrators
 and engineers about this and related subjects are
-"[MultiHomed](/MultiHomed#)"
+"[MultiHomed](/MultiHomed)"
 and\\or "MultiWAN" network in the relation to a specific AS which
 relates to some subnets.
 
@@ -351,7 +351,7 @@ echo "$THREE,3" >> marks_stats.csv
 #### Round Robin mark selection - Python example
 
   - An example for a
-    [RoundRobin](/RoundRobin#)
+    [RoundRobin](/RoundRobin)
     LB between 3 iptables marks using NFQUEUE mark\_verdict
 
 <!-- end list -->
@@ -654,16 +654,16 @@ fi
 
 After implementing the same lab with different OS I have decided to use
 Ubuntu instead of
-[TinyCore](/TinyCore#)
+[TinyCore](/TinyCore)
 linux. And the main Reason for that is that
-[TinyCore](/TinyCore#)
+[TinyCore](/TinyCore)
 linux is a great OS but I am feeling like missing some tools with
 it.(It's not you it's me..)
 
 Indeed Ubuntu gives more tools but
-[TinyCore](/TinyCore#)
+[TinyCore](/TinyCore)
 helped me with the basics of iptables marking and
-[RoundRobin](/RoundRobin#)
+[RoundRobin](/RoundRobin)
 basics.
 
 ### First LAB - TinyCore
@@ -712,7 +712,7 @@ Machines:
 
   - WAN router-3 IP1:192.168.13.4(lan-side) IP2:7.7.7.4(wan-side)
 
-  - [WebServer](/WebServer#)
+  - [WebServer](/WebServer)
     IP:7.7.7.7(wan)
 
 ### Third LAB - OpenSUSE+ZeroShell
@@ -724,7 +724,7 @@ Machines:
   - Linux Client2 IP 192.168.90.2
 
   - LAN core
-    router([ZeroShell](/ZeroShell#))
+    router([ZeroShell](/ZeroShell))
     IP1:192.168.90.254, Wan interface IP2:192.168.10.117
 
   - WAN router-1(OpenSUSE) IP1:192.168.10.254(pppoe dsl connection)
@@ -732,7 +732,7 @@ Machines:
   - WAN router-2(CentOS) IP1:192.168.10.188(pptp vpn over the
     192.168.10.254 to the Internet)
 
-  - [WebServer](/WebServer#)
+  - [WebServer](/WebServer)
     [](http://myip.net.il)
 
 ### Fourth LAB - OpenSUSE+Alpine
@@ -751,7 +751,7 @@ Machines:
   - WAN router-2(CentOS) IP1:192.168.10.188(pptp vpn over the
     192.168.10.254 to the Internet)
 
-  - [WebServer](/WebServer#)
+  - [WebServer](/WebServer)
     [](http://myip.net.il)
 
 ### Fifth LAB - MultiLink loadbalancing with a HUB
@@ -819,7 +819,7 @@ granted for these who have done bad deeds but with good Intention while
 assuming that this is the right thing to do.
 
   - **The above mentioned hats are not connected to the
-    [RedHat](/RedHat#)
+    [RedHat](/RedHat)
     corporation in any way and is merely a reflection of these colors
     features by some spiritual concepts.**
 

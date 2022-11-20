@@ -7,12 +7,12 @@
     reverse proxies.
 
   - **Status**: deprecated. see
-    [StoreID](/Features/StoreID#)
+    [StoreID](/Features/StoreID)
 
   - **Version**: 2.7 (only)
 
   - **Developer**:
-    [AdrianChadd](/AdrianChadd#).
+    [AdrianChadd](/AdrianChadd).
 
   - **More**: Background information about Google Maps content -
     [](http://squidproxy.wordpress.com/2007/11/16/how-cachable-is-google-part-1-google-maps/)
@@ -89,7 +89,7 @@ directives; you need to disable them and use refresh\_patterns where
 applicable to tell Squid what to not cache\!
 
 Then, add these refresh patterns at the **bottom** of your
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern#)
+[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
 section.
 
     refresh_pattern -i (/cgi-bin/|\?)   0       0%      0
@@ -158,13 +158,13 @@ Input line received from Squid:
   - key-extras
     
       - Starting with
-        [Squid-3.5](/Releases/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5)
         additional parameters passed to the helper which may be
         configured with
-        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras#).
+        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
         For backward compatibility the default key-extras for URL
         helpers matches the format fields sent by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and older in this field position:
     
     <!-- end list -->
@@ -204,7 +204,7 @@ Input line received from Squid:
     
       - Squid-2 will send this field with the URL-grouping tag which can
         be configured on
-        [http\_port](http://www.squid-cache.org/Doc/config/http_port#).
+        [http\_port](http://www.squid-cache.org/Doc/config/http_port).
         Squid-3.x will not send this field.
 
   - kv-pair
@@ -212,7 +212,7 @@ Input line received from Squid:
       - One or more key=value pairs. Only "myip" and "myport" pairs
         documented below were ever defined and are sent unconditionally
         by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and older:
         
         |            |                         |
@@ -243,7 +243,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the result field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and newer.
 
   - kv-pair
@@ -253,7 +253,7 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                           |
         | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5#)) |
+        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                                  |
         | rewrite-url=...    | re-write the transaction to the given URL.                                                                                |
         | tag=...            | reserved                                                                                                                  |
@@ -263,13 +263,13 @@ Result line sent back to Squid:
 
       - ℹ️
         the kv-pair field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
       - ℹ️
         the kv-pair returned by this helper can be logged by the
         **%note**
-        [logformat](http://www.squid-cache.org/Doc/config/logformat#)
+        [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
 
 <!-- end list -->
@@ -288,4 +288,4 @@ access.log and store.log to make sure URLs are being cached\! Check
 store.log to make sure that the google maps/earth images are being
 stored in the cache (SWAPOUT) and not just RELEASEd immediately.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

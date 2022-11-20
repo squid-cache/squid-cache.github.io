@@ -9,7 +9,7 @@
   - **Version**: 3.2
 
   - **Developer**:
-    [FrancescoChemolli](/FrancescoChemolli#)
+    [FrancescoChemolli](/FrancescoChemolli)
 
   - **More**:
     [](https://code.launchpad.net/~kinkie/squid/autoconf-refactor)
@@ -39,12 +39,12 @@ dividing it in sections, with this tentative order (see
 
 8.  other stuff
 
-[RobertCollins](/RobertCollins#)
+[RobertCollins](/RobertCollins)
 suggests to also include making use of [Pandora
 Build](https://edge.launchpad.net/pandora-build), a set of cross-project
 and cross-system configuration resources.
 
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 has investigated Pandora and found most of the tools very python and
 ruby centric. There are few macros provided we can use without some
 makeover to make them portable enough to use on the systems Squid builds
@@ -234,4 +234,4 @@ Squid's configure.in is very complex. Once refactored, it would be
 interesting to see if any of the alternatives offers substantial
 benefits, and possibly port over to it.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

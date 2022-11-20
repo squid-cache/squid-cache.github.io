@@ -49,4 +49,4 @@ are:
 
   - authenticated requests
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

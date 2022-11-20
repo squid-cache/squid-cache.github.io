@@ -53,4 +53,4 @@ whatever the result.
     auth_param ntlm program /usr/lib/squid/ntlm_fake_auth
     auth_param ntlm children 10
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

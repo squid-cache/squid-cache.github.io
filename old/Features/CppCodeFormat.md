@@ -8,7 +8,7 @@
   - **Version**: Squid 3.1
 
   - **Developer**: Christos Tsantilas,
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
 ## Details
 
@@ -70,4 +70,4 @@ formatter again. It will continue past and locate the next problem.
 
   - [](http://astyle.sourceforge.net/)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

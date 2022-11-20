@@ -15,8 +15,8 @@
   - **Developer**:
 
   - **More**: Imported from Bugzilla
-    [Bug 1580](https://bugs.squid-cache.org/show_bug.cgi?id=1580#)
+    [Bug 1580](https://bugs.squid-cache.org/show_bug.cgi?id=1580)
 
 # Details
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

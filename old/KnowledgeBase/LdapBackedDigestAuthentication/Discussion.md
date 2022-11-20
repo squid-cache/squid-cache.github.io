@@ -1,5 +1,5 @@
 See [Discussed
-Page](/KnowledgeBase/LdapBackedDigestAuthentication#)
+Page](/KnowledgeBase/LdapBackedDigestAuthentication)
 
 A basic authorization mechanism can be implemented using digest auth.
 
@@ -11,4 +11,4 @@ It is much more secure then basic auth or a simple user password form.
 The other option is to use ssl encrypted page for ip authorization.
 
 \-- [Eliezer
-Croitoru](/Eliezer%20Croitoru#)
+Croitoru](/Eliezer%20Croitoru)

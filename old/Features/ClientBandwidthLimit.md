@@ -8,8 +8,8 @@
   - **Version**: 3.2
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#),
-    [ChristosTsantilas](/ChristosTsantilas#)
+    [AlexRousskov](/AlexRousskov),
+    [ChristosTsantilas](/ChristosTsantilas)
 
 # Use case
 
@@ -22,7 +22,7 @@ NP: With IPv6 networks the range may be as large as a /32 with
 individual end-site resolution. This is equivalent to /0, the entire
 IPv4 space with single-IP resolution. For individual host resolution an
 additional 64-bit long host identifier must be added on top of that.
-Related: bug [2144](https://bugs.squid-cache.org/show_bug.cgi?id=2144#)
+Related: bug [2144](https://bugs.squid-cache.org/show_bug.cgi?id=2144)
 
 # Existing tools
 
@@ -30,7 +30,7 @@ A few existing mechanisms should be considered and reused to the extent
 possible:
 
   - Existing Squid [delay
-    pools](/Features/DelayPools#)
+    pools](/Features/DelayPools)
     limit server-to-Squid bandwidth and we need Squid-to-client shaping.
     There is also no pool class that can accommodate 4 million unique IP
     addresses.
@@ -72,4 +72,4 @@ bucket, regardless of the number of HTTP/TCP connections from that
 client to Squid. The new feature limits the approximate download
 bandwidth available to each client ID.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

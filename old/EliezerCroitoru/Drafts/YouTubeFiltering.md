@@ -1,8 +1,8 @@
 Most
-[MikroTik](/MikroTik#)
+[MikroTik](/MikroTik)
 devices are pretty Router/Switch level and despite the fact that they
 have a proxy service it's not usable for HTTPS/SNI/etc. With
-[MikroTik](/MikroTik#)
+[MikroTik](/MikroTik)
 the only option is to use some external service or device. The only real
 working solution I can recommend is some level of proxy or content
 filtering aware SSL deep inspection device/software. (The solution is
@@ -12,21 +12,21 @@ make sure it fit your needs)
 I wrote an example for a filtering service which is based on
 Fortinet/RedWood/Squid/Checkpoint/others and customized url
 categorizing. I am using
-[RedWood](/RedWood#)
+[RedWood](/RedWood)
 in production and have used Squid for a very long time but it lacks
 support for HTTP2 so there for
-[RedWood](/RedWood#).
+[RedWood](/RedWood).
 The example service and the
-sources([GoLang](/GoLang#)
+sources([GoLang](/GoLang)
 and python ontop of docker compose) can be seen at:
 [](https://github.com/elico/yt-classification-service-example)
 
 Technically speaking what you will need to define in the proxy or
 appliance if it can decrypt SSL is a policy which will include the
 relevant
-[YouTube](/YouTube#)
+[YouTube](/YouTube)
 and other services url patterns. For
-[YouTube](/YouTube#)
+[YouTube](/YouTube)
 to work eventually you will need to allow their video CDN network which
 is under the domain \*.googlevideo.com. It is pretty safe to just allow
 all of the subdomains since google will require you to access their "Web
@@ -38,10 +38,10 @@ all videos you will need to eventually block the pattern
 `http://*.youtube.com/watch?v=*`. In case you want to block also youtube
 thumbnail images and video snippets you will need to add another
 patterns to the setup. Another piece which is not covered in the code is
-[YouTube](/YouTube#)
+[YouTube](/YouTube)
 APIs which can provide to the end user "googlevideo.com" links. One such
 a service name is:
-[LiteTube](/LiteTube#)
+[LiteTube](/LiteTube)
 which embeds the googlevideo.com urls inside the html of the page. I am
 not aware of someone else then me that have implemented a prediction of
 the relevant googlevideo.com links for a video and allow only these.
@@ -50,7 +50,7 @@ and cloud services companies to implement this without my help..
 
 If you are familiar with regex and bash enough you would be able to
 learn the relevant patterns from another script/code I wrote for the
-[CheckPoint](/CheckPoint#)
+[CheckPoint](/CheckPoint)
 embedded NGFW 1500 series which is based on R80.20 at:
 [](https://github.com/elico/checkpoint-vid-filtering-managment)
 
@@ -70,7 +70,7 @@ before the issues comes if possible. This is what why I wrote this long
 response.
 
 I have been working on public white lists of
-[YouTube](/YouTube#)
+[YouTube](/YouTube)
 videos not everyone shares the same ideals of me so it's very hard to
 whitelist and expect everyone to agree with this.
 

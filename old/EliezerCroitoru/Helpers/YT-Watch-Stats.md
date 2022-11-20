@@ -3,12 +3,12 @@
   - **Status**: 40%.
 
   - **Developer**: [Eliezer
-    Croitoru](/Eliezer%20Croitoru#)
+    Croitoru](/Eliezer%20Croitoru)
 
   - **More**:
 
   - **Sponsored by**: [Eliezer
-    Croitoru](/Eliezer%20Croitoru#)
+    Croitoru](/Eliezer%20Croitoru)
     - [NgTech](http://www1.ngtech.co.il/)
 
   - **Proejct git(with binaries)**: [NgTech git:

@@ -44,26 +44,26 @@ squid or other proxy for processing the traffic.
 All the squid.conf options beginning with wccp2\_\* apply to **WCCPv2
 only**
 
-  - [wccp2\_router](http://www.squid-cache.org/Doc/config/wccp2_router#)
+  - [wccp2\_router](http://www.squid-cache.org/Doc/config/wccp2_router)
 
-  - [wccp2\_address](http://www.squid-cache.org/Doc/config/wccp2_address#)
+  - [wccp2\_address](http://www.squid-cache.org/Doc/config/wccp2_address)
 
-  - [wccp2\_forwarding\_method](http://www.squid-cache.org/Doc/config/wccp2_forwarding_method#)
+  - [wccp2\_forwarding\_method](http://www.squid-cache.org/Doc/config/wccp2_forwarding_method)
 
-  - [wccp2\_return\_method](http://www.squid-cache.org/Doc/config/wccp2_return_method#)
+  - [wccp2\_return\_method](http://www.squid-cache.org/Doc/config/wccp2_return_method)
 
-  - [wccp2\_assignment\_method](http://www.squid-cache.org/Doc/config/wccp2_assignment_method#)
+  - [wccp2\_assignment\_method](http://www.squid-cache.org/Doc/config/wccp2_assignment_method)
 
-  - [wccp2\_service](http://www.squid-cache.org/Doc/config/wccp2_service#)
+  - [wccp2\_service](http://www.squid-cache.org/Doc/config/wccp2_service)
 
 #### Squid configuration
 
   - **$IP-OF-ROUTER** is used below to represent the IP address of the
     router sending the WCCP traffic to Squid.
 
-[Squid-2.6](/Releases/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6)
 to
-[Squid-3.0](/Releases/Squid-3.0#)
+[Squid-3.0](/Releases/Squid-3.0)
 require magic numbers...
 
     http_port 3129 transparent
@@ -72,7 +72,7 @@ require magic numbers...
     wccp2_return_method 1
     wccp2_service standard 0 password=foo
 
-  - [Squid-3.1](/Releases/Squid-3.1#)
+  - [Squid-3.1](/Releases/Squid-3.1)
     and later accept text names for the tunneling methods
 
 <!-- end list -->
@@ -107,4 +107,4 @@ require magic numbers...
 
 # Troubleshooting
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

@@ -8,7 +8,7 @@
   - **State**: DRAFT
 
   - **Writer**: [Eliezer
-    Croitoru](/EliezerCroitoru#)
+    Croitoru](/EliezerCroitoru)
 
   - **More**:
 

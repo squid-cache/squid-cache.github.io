@@ -94,4 +94,4 @@ sources.
   - [](http://lwn.net/Articles/92727/) - TCP window scaling and broken
     routers
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

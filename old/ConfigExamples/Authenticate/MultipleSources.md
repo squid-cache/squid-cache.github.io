@@ -68,4 +68,4 @@ Squid-3.2 bundles one called **basic\_fake\_auth**
     Add your own version of *my\_awsome\_auth()* to do the
     authentication actions you need.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

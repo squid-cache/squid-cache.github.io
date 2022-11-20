@@ -9,7 +9,7 @@
 **Explanation**
 
 This is an alert generated as part of a new security feature added in
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 to protect the network against hijacking by malicious web scripts.
 
 As outlined in advisory
@@ -42,7 +42,7 @@ request was going to does not belong to that domain name.
             IP"**.
         
           - With
-            [host\_verify\_strict](http://www.squid-cache.org/Doc/config/host_verify_strict#)
+            [host\_verify\_strict](http://www.squid-cache.org/Doc/config/host_verify_strict)
             enabled there are other checks that can alert.
 
   - The second and third lines are self explanatory.
@@ -78,7 +78,7 @@ here.
 
   - ℹ️
     As of May 2012,
-    [Squid-3.2.0.18](/Releases/Squid-3.2#)
+    [Squid-3.2.0.18](/Releases/Squid-3.2)
     will pass traffic which fails these validation checks to the same
     origin as intended by the client. But will disable caching, route
     error recovery and peer routing in order to do so safely. The
@@ -145,10 +145,10 @@ work:
         inconsistent as IPs appear and disappear in the small set the
         regular DNS packet displays.
     
-      - [Squid-3.2](/Releases/Squid-3.2#)
+      - [Squid-3.2](/Releases/Squid-3.2)
         can attempt to use EDNS to get larger packets with all IPs of
         these domains by setting the
-        [dns\_packet\_max](http://www.squid-cache.org/Doc/config/dns_packet_max#)
+        [dns\_packet\_max](http://www.squid-cache.org/Doc/config/dns_packet_max)
         directive. This reduces Squids chance of loosing the IP the
         client is connecting to but requires both your resolver to
         support EDNS and network to support jumbograms.
@@ -160,13 +160,13 @@ work:
         exceed that change and cause false failures.
     
       - The
-        [client\_lifetime](http://www.squid-cache.org/Doc/config/client_lifetime#)
+        [client\_lifetime](http://www.squid-cache.org/Doc/config/client_lifetime)
         can be configured to similarly short times to reduce the
         occurrence of these mismatches. The default 1 day is tuned to
         match DNS recommended best practice TTL.
     
       - Alternatively
-        [client\_persistent\_connections](http://www.squid-cache.org/Doc/config/client_persistent_connections#)
+        [client\_persistent\_connections](http://www.squid-cache.org/Doc/config/client_persistent_connections)
         can be set to **off** to disable HTTP keep-alive entirely.
 
 **Alternative Causes**
@@ -176,12 +176,12 @@ work:
     receive for a domain lookup.
 
 In these cases
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 hijacking protection will pass the traffic through to the clients
 destination IP address **without** redirecting to any specific other IP.
 Additional Destination-NAT configuration is required to identify the
 packets and ensure they are delivered to the correct site regardless of
 any other details.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[CategoryErrorMessages](/CategoryErrorMessages#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[CategoryErrorMessages](/CategoryErrorMessages)

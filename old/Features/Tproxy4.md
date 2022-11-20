@@ -3,7 +3,7 @@
   - **Version**: 3.1
 
   - **Developer**: Laszlo Attilla Toth (Balabit), Krisztian Kovacs,
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
   - **More**:
     [](http://www.balabit.com/downloads/files/tproxy/README.txt)
@@ -17,7 +17,7 @@ HTTP.
 
 This feature was Sponsored by Balabit and developed by Laszlo Attilla
 Toth and
-[AmosJeffries](/AmosJeffries#).
+[AmosJeffries](/AmosJeffries).
 Production tested and debugged with the help of Krisztian Kovacs and
 Nicholas Ritter.
 
@@ -61,7 +61,7 @@ Chadd. It has not changed significantly since older TPROXY.
       - 2.6.32 to 2.6.34 have bridging issues on some systems.
 
   - ℹ️
-    [Squid-3.4](/Releases/Squid-3.4#)
+    [Squid-3.4](/Releases/Squid-3.4)
     also supports TPROXY on BSD systems with PF firewall using
     **divert-to** rules in place of the Linux iptables rules.
 
@@ -81,7 +81,7 @@ squid.conf settings
     works makes it incompatible with NAT interception, reverse-proxy
     acceleration, and standard proxy traffic. The **intercept**,
     **accel** and related flags cannot be set on the same
-    [http\_port](http://www.squid-cache.org/Doc/config/http_port#) with
+    [http\_port](http://www.squid-cache.org/Doc/config/http_port) with
     **tproxy** flag.
 
   - **Obsolete** --enable-tproxy option. Remains only for legacy v2.2
@@ -350,7 +350,7 @@ using TPROXY to spoof the client IP, the WCCP gateway will get confused
 by two identical sources and redirect packets at the wrong sibling.
 
 This is now resolved by adding the **no-tproxy** flag to the cluster
-sibling [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#)
+sibling [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 lines. This disables TPROXY spoofing on requests which are received
 through another peer in the cluster.
 
@@ -439,7 +439,7 @@ we can't point to exact routing configuration since it will depend on
 your router. But you will need to figure out some rule(s) which identify
 the Squid outbound traffic. Dedicated router interface, service groups,
 TOS set by Squid
-[tcp\_outgoing\_tos](http://www.squid-cache.org/Doc/config/tcp_outgoing_tos#),
+[tcp\_outgoing\_tos](http://www.squid-cache.org/Doc/config/tcp_outgoing_tos),
 and MAC source have all been found to be useful under specific
 situations. **IP address rules are the one thing guaranteed to fail.**
 
@@ -465,7 +465,7 @@ be multiple.
   - *by Michael Bowe*
 
 Referring to the
-[wccps\_service\_info](http://www.squid-cache.org/Doc/config/wccps_service_info#)
+[wccps\_service\_info](http://www.squid-cache.org/Doc/config/wccps_service_info)
 settings detailed above.
 
 First method:
@@ -560,4 +560,4 @@ from [](http://www.henriknordstrom.net/code/squidtproxy.te)
     whether to spoof or not specific clients src addresses or to use the
     proxy as the source ip.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

@@ -24,5 +24,5 @@ Binaries for all NetBSD platforms, from the NetBSD packages collection.
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

@@ -18,26 +18,26 @@ caching.
 # How do I install Squid?
 
 From [Binary
-Packages](/SquidFaq/BinaryPackages#)
+Packages](/SquidFaq/BinaryPackages)
 if available for your operating system.
 
 Or from Source Code.
 
 After
-[SquidFaq/CompilingSquid](/SquidFaq/CompilingSquid#),
+[SquidFaq/CompilingSquid](/SquidFaq/CompilingSquid),
 you can install it with this simple command:
 
     % make install
 
 If you have enabled ICMP or the
-[pinger](/SquidFaq/OperatingSquid#)
+[pinger](/SquidFaq/OperatingSquid)
 then you will also want to type
 
     % su
     # make install-pinger
 
 After installing, you will want to read
-[SquidFaq/ConfiguringSquid](/SquidFaq/ConfiguringSquid#)
+[SquidFaq/ConfiguringSquid](/SquidFaq/ConfiguringSquid)
 to edit and customize Squid to run the way you want it to.
 
 # How do I start Squid?
@@ -455,7 +455,7 @@ which use ICP, this will allow your cache to rebuild faster.
     boosted to show all the boring details.
 
   - Install and use the
-    [../CacheManager](/SquidFaq/CacheManager#).
+    [../CacheManager](/SquidFaq/CacheManager).
 
 # Can Squid benefit from SMP systems?
 
@@ -487,7 +487,7 @@ log directories running on separate drives.
 # Is it okay to use RAID on Squid?
 
 see Section on
-[RAID](/SquidFaq/RAID#)
+[RAID](/SquidFaq/RAID)
 
 # Is it okay to use ZFS on Squid?
 
@@ -510,4 +510,4 @@ ZFS works perfectly both diskd and aufs Squid storeIO modules (best
 choise depending your box/storage architecture).
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

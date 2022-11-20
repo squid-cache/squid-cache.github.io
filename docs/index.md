@@ -1,40 +1,40 @@
 This wiki is dedicated to hosting [Squid Web Cache](http://www.squid-cache.org/) documentation,
-including the [FAQ](/SquidFaq#), [KnowledgeBase](/KnowledgeBase#) articles,
-[ConfigExamples](/ConfigExamples#), and the development [RoadMap](/RoadMap#).
+including the [FAQ](/SquidFaq), [KnowledgeBase](/KnowledgeBase) articles,
+[ConfigExamples](/ConfigExamples), and the development [RoadMap](/RoadMap).
 
 
 ## Starting points
 
 You can learn about what a Wiki is and how to use it at
-[AboutWiki](/AboutWiki#).
+[AboutWiki](/AboutWiki).
 The following pages are good starting points.
-  - [WhySquid](/WhySquid#) ?
-  - [FAQ](/SquidFaq#)
-  - Development [Road Map](/RoadMap/Squid3#)
-  - [Configuration examples](/ConfigExamples#), or tips on how to address specific scenarios
-  - A detailed description of many squid [Features](/Features#), including specific documentation about them
+  - [WhySquid](/WhySquid) ?
+  - [FAQ](/SquidFaq)
+  - Development [Road Map](/RoadMap/Squid3)
+  - [Configuration examples](/ConfigExamples), or tips on how to address specific scenarios
+  - A detailed description of many squid [Features](/Features), including specific documentation about them
 
 If you experience problems with the site or the contents, please see
-[ReportingWikiProblems](/ReportingWikiProblems#).
+[ReportingWikiProblems](/ReportingWikiProblems).
 
 ### Popular topics
-  - [Performance Analysis](/KnowledgeBase/PerformanceAnalysis#):
+  - [Performance Analysis](/KnowledgeBase/PerformanceAnalysis):
     "Help\! My users complain that the proxy is slow\!"
-  - [BestOsForSquid](/BestOsForSquid#):
+  - [BestOsForSquid](/BestOsForSquid):
     an all-time FAQ: "What is the best OS for Squid?"
-  - [NTLMIssues](/NTLMIssues#):
+  - [NTLMIssues](/NTLMIssues):
     Things you can (and cannot) do with NTLM
-  - [ZeroSizedReply](/ZeroSizedReply#):
+  - [ZeroSizedReply](/ZeroSizedReply):
     Recurrent issues with some setups.
-  - [MultipleInstances](/MultipleInstances#):
+  - [MultipleInstances](/MultipleInstances):
     how-to run multiple squid servers on a single box.
-  - Squid [ConfigExamples](/ConfigExamples#)
-  - The [KnowledgeBase](/KnowledgeBase#)
+  - Squid [ConfigExamples](/ConfigExamples)
+  - The [KnowledgeBase](/KnowledgeBase)
     (tips, tricks and various troubleshooting howtos)
 
 ## Developers corner
 
-The [DeveloperResources](/DeveloperResources#)
+The [DeveloperResources](/DeveloperResources)
 section has instructions for source code access, coding guidelines, and
 other useful documentation. Code discussions happen on the
 [squid-dev](http://www.squid-cache.org/Support/mailing-lists.html#squid-dev)
@@ -53,4 +53,4 @@ mailing list, and during pull request reviews on
   - The book [Squid Proxy Server 3.1: Beginner's
     Guide](https://www.packtpub.com/squid-proxy-server-3-1-beginners-guide/book)
     by Kulbir Saini
-  - Other [external links](/ExternalLinks#)
+  - Other [external links](/ExternalLinks)

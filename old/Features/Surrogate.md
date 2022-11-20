@@ -6,7 +6,7 @@
   - **Version**: 3.0
 
   - **Developer**:
-    [RobertCollins](/RobertCollins#)
+    [RobertCollins](/RobertCollins)
 
   - **More**: [](http://www.esi.org/architecture_spec_1.0.html) and
     [](http://www.w3.org/TR/edge-arch)
@@ -24,48 +24,48 @@ intermediary proxies.
 
   - ℹ️
     Support is added alongside ESI protocol to
-    [Squid-3.0](/Releases/Squid-3.0#),
+    [Squid-3.0](/Releases/Squid-3.0),
     where it can be used when the ESI feature is enabled.
 
   - ℹ️
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     breaks it out for general use by non-ESI reverse proxies.
 
 ## Configuration
 
 ### Squid
 
-  - **[httpd\_accel\_surrogate\_id](http://www.squid-cache.org/Doc/config/httpd_accel_surrogate_id#)**
+  - **[httpd\_accel\_surrogate\_id](http://www.squid-cache.org/Doc/config/httpd_accel_surrogate_id)**
     is advertised to the source servers so that they can tailor their
     controls to a specific surrogate gateway. The ID can be unique to a
     specific Squid instance or shared between a cluster of proxies,
     whichever form suits your gateway design.
     
       - NP: it must be configured explicitly in
-        [Squid-3.0](/Releases/Squid-3.0#)
+        [Squid-3.0](/Releases/Squid-3.0)
         and
-        [Squid-3.1](/Releases/Squid-3.1#).
+        [Squid-3.1](/Releases/Squid-3.1).
 
-  - **[http\_accel\_surrogate\_remote](http://www.squid-cache.org/Doc/config/http_accel_surrogate_remote#)**
+  - **[http\_accel\_surrogate\_remote](http://www.squid-cache.org/Doc/config/http_accel_surrogate_remote)**
     on/off
 
-  - **[visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname#)**
+  - **[visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)**
     in
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     is the default surrogate ID name. This provides a somewhat reliable
     default for both single proxies (their unique public hostname) or
     cluster/cloud proxies (a shared visible FQDN).
 
 Simple setup
-([Squid-3.2](/Releases/Squid-3.2#)+):
+([Squid-3.2](/Releases/Squid-3.2)+):
 
     http_port 80 accel
     visible_hostname cdn.example.com
 
 Complicated setup
-([Squid-3.0](/Releases/Squid-3.0#)
+([Squid-3.0](/Releases/Squid-3.0)
 and
-[3.1](/Releases/Squid-3.1#)):
+[3.1](/Releases/Squid-3.1)):
 
     http_port 80 accel
     visible_hostname example.com
@@ -133,4 +133,4 @@ What this does is:
   - tells the client web browser to store it for no more than 15 minutes
     (Cache-Control max-age=900)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

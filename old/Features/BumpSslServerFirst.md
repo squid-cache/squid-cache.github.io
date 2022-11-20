@@ -1,7 +1,7 @@
 # Feature: SslBump using Bump-Server-First method
 
   - **Goal**: Allow
-    [bumping](/Features/SslBump#)
+    [bumping](/Features/SslBump)
     of intercepted SSL connections. Prep for mimicking server
     certificates details.
 
@@ -10,15 +10,15 @@
   - **Version**: 3.3
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
     and Christos Tsantilas
 
   - **More**: requires
-    [SslBump](/Features/SslBump#),
+    [SslBump](/Features/SslBump),
     enables [server certificate
-    mimicking](/Features/MimicSslServerCert#),
+    mimicking](/Features/MimicSslServerCert),
     and pointless without [Dynamic Certificate
-    Generation](/Features/DynamicSslCert#)
+    Generation](/Features/DynamicSslCert)
 
 # Motivation
 
@@ -26,17 +26,17 @@
     
     |                                                                                                                                                                |
     | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **This feature was replaced in Squid-3.5 by [peek-n-splice](/Features/SslPeekAndSplice#)** |
+    | **This feature was replaced in Squid-3.5 by [peek-n-splice](/Features/SslPeekAndSplice)** |
     
 
 The first
-[SslBump](/Features/SslBump#)
+[SslBump](/Features/SslBump)
 implementation works well for HTTP CONNECT requests naming the host that
 Squid must establish a TCP tunnel with. Such requests are sent by some
 browsers when they are explicitly configured to use a proxy. When
 dealing with such requests in SslBump mode, Squid can use the supplied
 host name to [dynamically
-generate](/Features/DynamicSslCert#)
+generate](/Features/DynamicSslCert)
 a server certificate and then impersonate the named server. This allows
 Squid to get the real HTTP request from the client (e.g., HTTP GET or
 POST), decrypt it, and, eventually, connect to the real server and
@@ -66,7 +66,7 @@ problems, caching user decision, etc. (and we do not really want to
 duplicate that). While this project will not forward certificate
 problems to the client, it is a required step towards supporting that
 frequently requested functionality in the
-[future](/Features/MimicSslServerCert#).
+[future](/Features/MimicSslServerCert).
 
 # Implementation overview
 
@@ -228,7 +228,7 @@ have not taken that shortcut because:
   - It is not possible to mimic the server certificate so that the user
     can (a) decide whether to ignore any certificate problems and (b)
     cache that decision (see [server certificate
-    mimicking](/Features/MimicSslServerCert#)).
+    mimicking](/Features/MimicSslServerCert)).
 
 # Limitations
 
@@ -238,4 +238,4 @@ little more difficult. However, SNI forwarding has its own *serious*
 challenges (beyond the scope of this document) that far outweigh the
 added forwarding difficulties.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

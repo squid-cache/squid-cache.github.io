@@ -1,5 +1,5 @@
   - Back to
-    [DeveloperResources](/DeveloperResources#).
+    [DeveloperResources](/DeveloperResources).
 
 # Release Types
 
@@ -63,7 +63,7 @@ attempted automatically on a daily basis.
 Snapshot releases are made after running build tests. The packaged code
 is expected to **always** build cleanly. If you find an error in this
 please report it. Our
-[BuildFarm](/BuildFarm#)
+[BuildFarm](/BuildFarm)
 catches a lot of problems, but still is missing some operating systems
 and compilers.
 

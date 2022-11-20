@@ -2,7 +2,7 @@
 
   - **Goal**: Reduce the number of "certificate mismatch" browser
     warnings when impersonating a site using the
-    [SslBump](/Features/SslBump#)
+    [SslBump](/Features/SslBump)
     feature
 
   - **Status**: complete
@@ -10,23 +10,23 @@
   - **Version**: 3.2
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#),
+    [AlexRousskov](/AlexRousskov),
     Andrew Balabohin
 
   - **More**: Squid v3.1 (r9820)
     [implementation](http://www.squid-cache.org/mail-archive/squid-dev/201003/0201.html);
     requires
-    [SslBump](/Features/SslBump#)
+    [SslBump](/Features/SslBump)
 
 # Details
 
 This page describes dynamic SSL certificate generation feature for
-[SslBump](/Features/SslBump#)
+[SslBump](/Features/SslBump)
 environments.
 
 ## Motivation
 
-[SslBump](/Features/SslBump#)
+[SslBump](/Features/SslBump)
 users know how many certificate warnings a single complex site (using
 dedicated image, style, and/or advertisement servers for embedded
 content) can generate. The warnings are legitimate and are caused by
@@ -68,7 +68,7 @@ Dynamic generation of SSL certificates is not enabled by default:
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     NOTE:
-    [Squid-3.5](/Releases/Squid-3.5#)
+    [Squid-3.5](/Releases/Squid-3.5)
     requires **--with-openssl** instead of --enable-ssl
 
 ### Create Self-Signed Root CA Certificate
@@ -160,7 +160,7 @@ their traffic without their consent?
 ### Configure Squid
 
 Open squid.conf for editing, find
-[http\_port](http://www.squid-cache.org/Doc/config/http_port#) option
+[http\_port](http://www.squid-cache.org/Doc/config/http_port) option
 and add certificate-related options. For example:
 
   - ``` 
@@ -168,17 +168,17 @@ and add certificate-related options. For example:
     ```
 
 You will also need to add
-[ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#) rules
+[ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
 enabling HTTPS decryption. see
-[peek-n-splice](/Features/SslPeekAndSplice#)
+[peek-n-splice](/Features/SslPeekAndSplice)
 for newer
-[Squid-3.5](/Releases/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5)
 or later details. see
-[SSL-Bump](/Features/SslBump#)
+[SSL-Bump](/Features/SslBump)
 for older
-[Squid-3.3](/Releases/Squid-3.3#)
+[Squid-3.3](/Releases/Squid-3.3)
 or
-[Squid-3.4](/Releases/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4)
 details.
 
 Additional configuration options (see below) can be added to squid.conf
@@ -190,11 +190,11 @@ If omitted, default values will be used.
     sslcrtd_children 5
     ```
 
-[sslcrtd\_program](http://www.squid-cache.org/Doc/config/sslcrtd_program#)
+[sslcrtd\_program](http://www.squid-cache.org/Doc/config/sslcrtd_program)
 default disk cache size is 4MB ('-M 4MB' above), which in general will
 be enough to store \~1000 certificates. If Squid is used in busy
 environments this may need to be increased, as well as the number of
-[sslcrtd\_children](http://www.squid-cache.org/Doc/config/sslcrtd_children#).
+[sslcrtd\_children](http://www.squid-cache.org/Doc/config/sslcrtd_children).
 
 Prepare directory for caching certificates:
 
@@ -237,20 +237,20 @@ Squid should process HTTPS sites without any warnings.
     
     |                                                                                                                                                                                                                                                                               |
     | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **This section is outdated. The below limitations were resolved in [Squid-3.5](/Releases/Squid-3.5#) by [peek-n-splice](/Features/SslPeekAndSplice#)** |
+    | **This section is outdated. The below limitations were resolved in [Squid-3.5](/Releases/Squid-3.5) by [peek-n-splice](/Features/SslPeekAndSplice)** |
     
 
 ### No dynamically generated certificates for intercepted connections
 
 While
-[SslBump](/Features/SslBump#)
+[SslBump](/Features/SslBump)
 itself works fine in transparent redirection environments (e.g. those
 using WCCP or iptables), dynamic certificate generation does not: To
 generate the certificate dynamically, Squid must know the server domain
 name. That information is not available at the time the HTTPS client TCP
 connection is intercepted and bumped. Currently, you cannot use dynamic
 certificate generation for transparent connections until
-[bump-server-first](/Features/BumpSslServerFirst#)
+[bump-server-first](/Features/BumpSslServerFirst)
 is supported.
 
 We believe it is technically possible to implement dynamic certificate
@@ -261,11 +261,11 @@ client. The implementation will be difficult, but it will allow Squid to
 get the server name from the server certificate and use that to generate
 a fake server certificate to give to the client. This
 connect-to-server-first approach can even support SNI. See
-[bump-server-first](/Features/BumpSslServerFirst#)
+[bump-server-first](/Features/BumpSslServerFirst)
 feature for more information.
 
 While this limitation is significant, it does not render the feature
 useless, of course. Many corporate deployments do not intercept
 connections but need to generate certificates.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

@@ -95,4 +95,4 @@ squid.conf part should looks like this:
     acl NoSSLIntercept ssl::server_name_regex "/usr/local/squid/etc/acl.url.nobump"
     ssl_bump splice NoSSLIntercept
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

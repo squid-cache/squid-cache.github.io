@@ -70,13 +70,13 @@ Input line received from Squid:
   - key-extras
     
       - Starting with
-        [Squid-3.5](/Releases/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5)
         additional parameters passed to the helper which may be
         configured with
-        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras#).
+        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
         For backward compatibility the default key-extras for URL
         helpers matches the format fields sent by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and older in this field position:
     
     <!-- end list -->
@@ -116,7 +116,7 @@ Input line received from Squid:
     
       - Squid-2 will send this field with the URL-grouping tag which can
         be configured on
-        [http\_port](http://www.squid-cache.org/Doc/config/http_port#).
+        [http\_port](http://www.squid-cache.org/Doc/config/http_port).
         Squid-3.x will not send this field.
 
   - kv-pair
@@ -124,7 +124,7 @@ Input line received from Squid:
       - One or more key=value pairs. Only "myip" and "myport" pairs
         documented below were ever defined and are sent unconditionally
         by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and older:
         
         |            |                         |
@@ -156,7 +156,7 @@ clients to a secure Web server for internal documents:
     }
 
 Redirection can be performed by helpers on the
-[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program#)
+[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 interface. Lines performing either redirect or re-write can be produced
 by the same helpers on a per-request basis. Redirect is preferred since
 re-writing URLs introduces a large number of problems into the client
@@ -188,7 +188,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the result field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and newer.
 
   - kv-pair
@@ -198,7 +198,7 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                       |
         | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5#)) |
+        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                              |
         | status=...         | HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308                                      |
         | tag=...            | reserved                                                                                                              |
@@ -209,19 +209,19 @@ Result line sent back to Squid:
 
       - ℹ️
         the kv-pair field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
       - ℹ️
         the kv-pair returned by this helper can be logged by the
         **%note**
-        [logformat](http://www.squid-cache.org/Doc/config/logformat#)
+        [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
 
   - status
     
       - The HTTP 301, 302 or 307 status code. Please see section 10.3 of
-        RFC [2616](https://tools.ietf.org/rfc/rfc2616#) for an
+        RFC [2616](https://tools.ietf.org/rfc/rfc2616) for an
         explanation of the HTTP redirect codes and which request methods
         they may be sent on.
 
@@ -270,17 +270,17 @@ your own URL re-writer:
     }
 
 URL re-writing can be performed by helpers on the
-[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program#),
-[storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program#)
+[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program),
+[storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program)
 and
-[location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program#)
+[location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
 interfaces.
 
 WARNING: when used on the url\_rewrite\_program interface re-writing
 URLs introduces a large number of problems into the client HTTP
 experience. Some of these problems can be mitigated with a paired helper
 running on the
-[location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program#)
+[location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
 interface de-mangling the server redirection URLs.
 
 Result line sent back to Squid:
@@ -305,7 +305,7 @@ Result line sent back to Squid:
 
       - ℹ️
         the result field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and newer.
 
   - kv-pair
@@ -315,7 +315,7 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                       |
         | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5#)) |
+        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                              |
         | rewrite-url=...    | re-write the transaction to the given URL.                                                                            |
         | tag=...            | reserved                                                                                                              |
@@ -325,13 +325,13 @@ Result line sent back to Squid:
 
       - ℹ️
         the kv-pair field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
       - ℹ️
         the kv-pair returned by this helper can be logged by the
         **%note**
-        [logformat](http://www.squid-cache.org/Doc/config/logformat#)
+        [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
 
 <!-- end list -->
@@ -354,7 +354,7 @@ Problem:
 The usual URL re-writer interface only acts on *client requests*. If you
 wish to modify server-generated redirections (the HTTP *Location*
 header) you have to use a
-[location\_rewrite](http://www.squid-cache.org/Doc/config/location_rewrite#)
+[location\_rewrite](http://www.squid-cache.org/Doc/config/location_rewrite)
 helper.
 
 The server doing this is very likely also to be using these private URLs
@@ -366,7 +366,7 @@ won't work** is just one popular example of the cookie side-effect.
 ### Can I use something other than perl?
 
 Almost any external script can be used to perform a redirect. See
-[ConfigExamples/PhpRedirectors](/ConfigExamples/PhpRedirectors#)
+[ConfigExamples/PhpRedirectors](/ConfigExamples/PhpRedirectors)
 for hints on writing complex redirectors using PHP.
 
 ## Troubleshooting
@@ -380,7 +380,7 @@ memory or has memory access errors. You may want to test your redirector
 program outside of squid with a big input list, taken from your
 *access.log* perhaps. Also, check for coredump files from the redirector
 program (see
-[SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting#)
+[SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting)
 to define where).
 
 ### unexpected reply on channel ...

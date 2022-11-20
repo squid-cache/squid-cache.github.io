@@ -3,7 +3,7 @@ Describe EliezerCroitoru/Drafts/Atime here.
 In order to understand what “noatime” is good for first we need to
 understand: What atime is? The basic knowledge needed to answer this
 question is
-[FileSystem](/FileSystem#)
+[FileSystem](/FileSystem)
 internals.
 
 The lower levels of any software relay on the fact that all the
@@ -13,7 +13,7 @@ by other software.
 You can call it common data structure or in any other name.
 
 For all that to work the
-[FileSystem](/FileSystem#)
+[FileSystem](/FileSystem)
 was designed with a specific way of accessing the data on different
 storage devices.
 
@@ -25,7 +25,7 @@ basement and also a list of people that got access to the files archive
 and if also fetch a copy of one file or more.
 
 A simple
-[FileSystem](/FileSystem#)
+[FileSystem](/FileSystem)
 will allow the option to store a file in it while maybe also giving the
 advanced options to store in the log the time that the file was created
 or was last accessed.

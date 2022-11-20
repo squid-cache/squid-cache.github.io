@@ -57,12 +57,12 @@ context, some ICAP failures can be bypassed, making them invisible to
 proxy end-users.
 
 see
-[../../Features/ICAP](/Features/ICAP#)
+[../../Features/ICAP](/Features/ICAP)
 
 ## Client Streams
 
 Squid3 sources include
-[ClientStreams](/ProgrammingGuide/ClientStreams#)
+[ClientStreams](/ProgrammingGuide/ClientStreams)
 classes designed for embedded server-side includes (ESI). A Client
 Streams node has access to the HTTP response message being received from
 the origin server or being fetched from the cache. By modifying Squid
@@ -76,7 +76,7 @@ Client Streams are limited to response modification.
 
 Unfortunately, Client Streams creators have not been actively
 participating in Squid development for a while, little API
-[documentation](/ProgrammingGuide/ClientStreams#)
+[documentation](/ProgrammingGuide/ClientStreams)
 is available, and the long-term sustainability of the code is uncertain.
 Custom Client Streams code integrated with Squid may need to be licensed
 under GPL.
@@ -98,19 +98,19 @@ on Squid.
     beginning)
 
 Initial support for eCAP is available in
-[Squid 3.1](/RoadMap/Squid3#).
+[Squid 3.1](/RoadMap/Squid3).
 You can find more details
-[elsewhere](/Features/eCAP#).
+[elsewhere](/Features/eCAP).
 
 ## Squid.conf ACLs
 
 Simple HTTP request header adaptation is possible without writing any
 code. Squid supports a few configuration options that allow the
 administrator to add, delete, or replace specified HTTP request headers:
-[request\_header\_add](http://www.squid-cache.org/Doc/config/request_header_add#),
-[request\_header\_access](http://www.squid-cache.org/Doc/config/request_header_access#),
+[request\_header\_add](http://www.squid-cache.org/Doc/config/request_header_add),
+[request\_header\_access](http://www.squid-cache.org/Doc/config/request_header_access),
 and
-[request\_header\_replace](http://www.squid-cache.org/Doc/config/request_header_replace#).
+[request\_header\_replace](http://www.squid-cache.org/Doc/config/request_header_replace).
 Similar directives available for adapting response headers.
 
   - **Pros**: Fast, integrated, adaptation-focused API, no Squid
@@ -193,4 +193,4 @@ content adaptation will annoy content owners, producers, consumers, or
 all of the above. Not everything that is technically possible is
 ethical, desirable, or legal. Think before you adapt others content\!
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

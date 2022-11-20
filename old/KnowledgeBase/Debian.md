@@ -135,7 +135,7 @@ can safely use their normal Debian packages instead.
 
 Many versions of Ubuntu and Debian are routinely build-tested and
 unit-tested as part of our
-[BuildFarm](/BuildFarm#)
+[BuildFarm](/BuildFarm)
 and are known to compile OK.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
@@ -181,11 +181,11 @@ discover the dependency package and install it.
     
       - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
         However, please note that
-        [Squid-3.5](/Releases/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5)
         is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or
         Ubuntu Zesty the **libssl1.0-dev** package must be used instead.
         This is resolved in the
-        [Squid-4](/Releases/Squid-4#)
+        [Squid-4](/Releases/Squid-4)
         packages.
 
 ### Init Script
@@ -201,7 +201,7 @@ to /etc/init.d/squid
 The **squid-dbg** (or **squid3-dbg**) packages provide debug symbols
 needed for bug reporting if the bug is crash related. See the [Bug
 Reporting
-FAQ](/SquidFaq/BugReporting#)
+FAQ](/SquidFaq/BugReporting)
 for what details to include in a report.
 
 Install the one matching your main Squid packages name (*squid* or
@@ -213,5 +213,5 @@ Install the one matching your main Squid packages name (*squid* or
  aptitude install squid3-dbg
 ```
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

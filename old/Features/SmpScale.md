@@ -8,7 +8,7 @@
   - **Version**: Squid 3.2
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
 
 ## Terminology
 
@@ -61,9 +61,9 @@ Master and Worker.
 
 ## Current Status and Architecture
 
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 supports basic SMP scale using
-[workers](http://www.squid-cache.org/Doc/config/workers#).
+[workers](http://www.squid-cache.org/Doc/config/workers).
 Administrators can configure and run one Squid that spawns multiple
 worker processes to utilize all available CPU cores.
 
@@ -189,7 +189,7 @@ threads was deemed not practical.
 ### Who decides which worker gets the request?
 
 All workers that share
-[http\_port](http://www.squid-cache.org/Doc/config/http_port#) listen on
+[http\_port](http://www.squid-cache.org/Doc/config/http_port) listen on
 the same IP address and TCP port. The operating system protects the
 shared listening socket with a lock and decides which worker gets the
 new HTTP connection waiting to be accepted. Once the incoming connection
@@ -231,7 +231,7 @@ register its listening descriptor with epoll(2). This dependency is
 rather strange because the epoll sets are *not* shared among Squid
 workers; it must work on a listening socket level (those sockets *are*
 shared). Special thanks to
-[HenrikNordström](/HenrikNordstr%C3%B6m#)
+[HenrikNordström](/HenrikNordstr%C3%B6m)
 for a stimulating discussion that supplied the last missing piece of the
 puzzle.
 
@@ -325,11 +325,11 @@ a -N command-line option usually is:
     + 1   Coordinator process (exists only in SMP mode).
 
 For example, if you do not explicitly configure Squid
-[workers](http://www.squid-cache.org/Doc/config/workers#) and rock
+[workers](http://www.squid-cache.org/Doc/config/workers) and rock
 cache\_dirs, then Squid will run in non-SMP mode, and you will get
 0+1+0+0=1 Squid process total. On the other hand, if you explicitly
 configure Squid with 3 worker and 1 rock
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#), then
+[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir), then
 Squid will run in SMP mode, and you will get 1+3+1+1=6 Squid processes
 total.
 
@@ -343,11 +343,11 @@ to spend non-trivial amounts of time/labor/money doing that, then
 consider the following SMP rules of thumb:
 
 1.  If you want to cache, use the largest
-    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) your
+    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) your
     system can handle safely. Please note that Squid will not tell you
     when you over-allocate but may crash. If you do not want to cache,
     then set cache\_mem to zero, prohibit caching using the
-    [cache](http://www.squid-cache.org/Doc/config/cache#) directive, and
+    [cache](http://www.squid-cache.org/Doc/config/cache) directive, and
     ignore rule \#3 below.
 
 2.  One or two CPU core reserved for the OS, depending on network usage
@@ -355,18 +355,18 @@ consider the following SMP rules of thumb:
     restrict NIC interrupts to these "OS-only" core(s).
 
 3.  One Rock
-    [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) per
+    [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) per
     physical disk spindle with no other cache\_dirs. No RAID. Diskers
     may be able to use virtual CPU cores. Tuning Rock is tricky. See the
     Performance Tuning recommendations at the Rock Store [feature
-    page](/Features/RockStore#).
+    page](/Features/RockStore).
     Please note that compared to other cache\_dir types, Rock
     cache\_dirs are currently slower to load during Squid startup and
     may have other problems incompatible with your deployment needs. You
     may, of course, use other cache\_dir types instead of Rock. These
     *SMP* rules use Rock because other cache\_dirs are not SMP-aware.
 
-4.  One SMP [worker](http://www.squid-cache.org/Doc/config/workers#) per
+4.  One SMP [worker](http://www.squid-cache.org/Doc/config/workers) per
     remaining non-virtual CPU cores. Be wary of heavily loading multiple
     *virtual* CPU cores that share the same physical CPU core -- such
     virtual cores can usually accomplish less useful work than one
@@ -377,7 +377,7 @@ consider the following SMP rules of thumb:
     workers with their near-real-time constraints.
 
 5.  Use [CPU
-    affinity](http://www.squid-cache.org/Doc/config/cpu_affinity_map#)
+    affinity](http://www.squid-cache.org/Doc/config/cpu_affinity_map)
     for each Squid kid process (diskers and workers). Prohibit kernel
     from moving kids from one CPU core to another. Without your help,
     the general-purpose OS kernel will most likely *not* load-balance
@@ -397,17 +397,17 @@ works OK.
 
 ### Older Squids
 
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 and older allow administrators to configure and start multiple isolated
 Squid instances. This labor-intensive setup allows a crude form of SMP
 scale in the environments where port and cache sharing are not
 important. Sample configurations for
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 and older are available:
 
-  - [ConfigExamples/MultiCpuSystem](/ConfigExamples/MultiCpuSystem#)
+  - [ConfigExamples/MultiCpuSystem](/ConfigExamples/MultiCpuSystem)
 
-  - [ConfigExamples/ExtremeCarpFrontend](/ConfigExamples/ExtremeCarpFrontend#)
+  - [ConfigExamples/ExtremeCarpFrontend](/ConfigExamples/ExtremeCarpFrontend)
 
 ## SMP architecture layers
 
@@ -473,10 +473,10 @@ permits.
 
 1.  The modularization of Squid code into compact logical work units
     suitable for SMP consideration. Tracked as
-    [Features/SourceLayout](/Features/SourceLayout#)
+    [Features/SourceLayout](/Features/SourceLayout)
 
 2.  Those resulting module libraries then need to be made fully Async
-    [Features/NativeAsyncCalls](/Features/NativeAsyncCalls#)
+    [Features/NativeAsyncCalls](/Features/NativeAsyncCalls)
     jobs.
 
 3.  Finally those resulting jobs made into SMP threads that can utilize
@@ -493,11 +493,11 @@ Some other features are aimed at reducing the blocker problems for SMP.
 Not exactly forward steps along the SMP capability pathway, but required
 to make those steps possible.
 
-  - [Features/NoCentralStoreIndex](/Features/NoCentralStoreIndex#)
+  - [Features/NoCentralStoreIndex](/Features/NoCentralStoreIndex)
 
-  - [Features/CommCleanup](/Features/CommCleanup#)
+  - [Features/CommCleanup](/Features/CommCleanup)
 
-  - [Features/ClientSideCleanup](/Features/ClientSideCleanup#)
+  - [Features/ClientSideCleanup](/Features/ClientSideCleanup)
 
   - Forwarding API also needs work, but has no tracker feature yet.
 
@@ -597,5 +597,5 @@ them\!):
     net.local.dgram.recvspace: 262144
     net.local.dgram.maxdgram: 16384
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

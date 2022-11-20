@@ -1,5 +1,5 @@
 *by
-[YuriVoinov](/YuriVoinov#)*
+[YuriVoinov](/YuriVoinov)*
 
 # Snowflake
 
@@ -19,7 +19,7 @@ Transparent proxy without special rule to prevent bump (splice) to this
 domain will prevent connecting.
 
 So
-[SSL-Bump](/Features/SslPeekAndSplice#)
+[SSL-Bump](/Features/SslPeekAndSplice)
 proxy must be configured to splice initial connection from Snowflake to
 bridges:
 
@@ -43,4 +43,4 @@ This is minimal access requires Snowflake to connect.
 To block Snowflake by any reason it is enough to do not do actions
 described above.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

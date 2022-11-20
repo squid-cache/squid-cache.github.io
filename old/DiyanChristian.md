@@ -6,4 +6,4 @@ Email: diyan AT mitra DOT net DOT id
 
 ...
 
-[CategoryHomepage](/CategoryHomepage#)
+[CategoryHomepage](/CategoryHomepage)

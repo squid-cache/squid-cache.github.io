@@ -7,9 +7,9 @@
   - **Version**: 2.7, 3.2
 
   - **Developer**:
-    [AdrianChadd](/AdrianChadd#)
+    [AdrianChadd](/AdrianChadd)
     (Squid-2),
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
     (Squid-3 port)
 
 ## Plug-in Modules
@@ -17,7 +17,7 @@
 Logging modules are API built into Squid which pass logging information
 out to helpers in several different formats.
 
-General [access\_log](http://www.squid-cache.org/Doc/config/access_log#)
+General [access\_log](http://www.squid-cache.org/Doc/config/access_log)
 format:
 
     access_log module:parameters [logformat] [acls]
@@ -29,7 +29,7 @@ format:
     and format is specific to each logging module.
 
   - **logformat**: The access.log format to be used. See
-    [logformat](http://www.squid-cache.org/Doc/config/logformat#) for
+    [logformat](http://www.squid-cache.org/Doc/config/logformat) for
     more details.
 
   - **acls**: A list of ACL names, if all the named ACLs match a request
@@ -41,7 +41,7 @@ This is a module uses the traditional I/O method of Squid writing its
 logs directly to the file system.
 
 Configuration **module:parameters** to be used by
-[access\_log](http://www.squid-cache.org/Doc/config/access_log#):
+[access\_log](http://www.squid-cache.org/Doc/config/access_log):
 
     stdio:/var/log/squid/access.log
 
@@ -56,13 +56,13 @@ This is a module runs a helper daemon to offload the log storage
 processing from Squid.
 
 The helper daemon program is configured with the
-[logfile\_daemon](http://www.squid-cache.org/Doc/config/logfile_daemon#)
+[logfile\_daemon](http://www.squid-cache.org/Doc/config/logfile_daemon)
 directive.
 
     logfile_daemon /path/to/helper.binary
 
 Configuration **module:parameters** to be used by
-[access\_log](http://www.squid-cache.org/Doc/config/access_log#):
+[access\_log](http://www.squid-cache.org/Doc/config/access_log):
 
     daemon:/var/log/squid/access.log
 
@@ -110,7 +110,7 @@ This is a module using the syslog() API to send log data to any system
 logging daemons which accept records in that binary format.
 
 Configuration **module:parameters** to be used by
-[access\_log](http://www.squid-cache.org/Doc/config/access_log#):
+[access\_log](http://www.squid-cache.org/Doc/config/access_log):
 
     syslog:facility.priority
 
@@ -128,7 +128,7 @@ This is a module using UDP protocol to send log lines to an external
 daemon or central logging server.
 
 Configuration **module:parameters** to be used by
-[access\_log](http://www.squid-cache.org/Doc/config/access_log#):
+[access\_log](http://www.squid-cache.org/Doc/config/access_log):
 
     udp://host:port
 
@@ -142,16 +142,16 @@ This is a module using TCP protocol to send log lines to an external
 daemon or central logging server.
 
 Configuration **module:parameters** to be used by
-[access\_log](http://www.squid-cache.org/Doc/config/access_log#):
+[access\_log](http://www.squid-cache.org/Doc/config/access_log):
 
     tcp://host:port
 
   - ℹ️
     Available from
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
 
   - ℹ️
     [Syslog-ng](http://www.balabit.com/network-security/syslog-ng) can
     receive these logs directly.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

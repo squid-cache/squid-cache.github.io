@@ -10,7 +10,7 @@
   - **ETA**: unknown
 
   - **Developer**:
-    [FrancescoChemolli](/FrancescoChemolli#)
+    [FrancescoChemolli](/FrancescoChemolli)
 
 # Details
 
@@ -19,7 +19,7 @@ ago. It may be sensible to clean up the codebase a bit and drop support
 for them
 
 Removed in
-[Squid-4](/Releases/Squid-4#)
+[Squid-4](/Releases/Squid-4)
 :
 
   - BSDi
@@ -33,8 +33,8 @@ Candidates for obsolescence are:
   - NextStep (last release 1994)
     
       - QNX is a current OS apparently based on
-        [NextStep](/NextStep#)
+        [NextStep](/NextStep)
         and needs checking to see whether it still relies on Next
         specific code.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

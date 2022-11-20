@@ -24,15 +24,15 @@ and notice that there is a way to know what you have done...
 # Exclusion patterns for Squid to prevent usage of StoreID
 
 These patterns should be used in a url\_regex type
-[acl](http://www.squid-cache.org/Doc/config/acl#) and
-[store\_id\_access](http://www.squid-cache.org/Doc/config/store_id_access#)
+[acl](http://www.squid-cache.org/Doc/config/acl) and
+[store\_id\_access](http://www.squid-cache.org/Doc/config/store_id_access)
 deny line.
 
     acl noStoreID url_regex "/etc/squid/storeid.whitelist"
     store_id_access deny noStoreID
 
 For
-[Fedora](/KnowledgeBase/Fedora#)
+[Fedora](/KnowledgeBase/Fedora)
 DB files.
 
     ^https?\:\/\/[a-zA-Z0-9\.\-\_]+\/.*\/repodata\/.*(bz2|gz|xml)$

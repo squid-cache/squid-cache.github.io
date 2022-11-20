@@ -599,11 +599,11 @@ number of installed files which have no manual at all.
   - Discuss this page using the "Discussion" link in the main menu
 
 See [Discussed
-Page](/ProgrammingGuide/ManualDocumentation#)
+Page](/ProgrammingGuide/ManualDocumentation)
 
 I like the idea. Would it be possible to have a complete template page
 attached to the wiki entry? It would make starting to write stuff
 easier.
 
 \--
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)

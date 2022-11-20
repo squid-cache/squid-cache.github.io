@@ -56,8 +56,8 @@ change?
     actually want to use a quoted string like that in the old
     configuration and no workaround is implemented for that specific
     directive. Known directives with workarounds:
-    [acl](http://www.squid-cache.org/Doc/config/acl#) and
-    [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#).
+    [acl](http://www.squid-cache.org/Doc/config/acl) and
+    [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type).
 
 ## Open Issues
 

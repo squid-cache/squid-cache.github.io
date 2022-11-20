@@ -11,7 +11,7 @@ these configs please first check back here for updated config.
 ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
 ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
 ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
-Google\\[YouTube](/YouTube#)
+Google\\[YouTube](/YouTube)
 changed their system to be more secure and due to this the article in
 it's current state is not applicable. You will need to use Content
 Adaptation to achive YT caching and it's not a beginne's task.
@@ -20,7 +20,7 @@ Adaptation to achive YT caching and it's not a beginne's task.
 
 The default configuration of squid older than 3.1 prevents the caching
 of [dynamic
-content](/ConfigExamples/DynamicContent#)
+content](/ConfigExamples/DynamicContent)
 and youtube.com specifically implement several 'features' that prevent
 their flash videos being effectively distributed by caches.
 
@@ -213,7 +213,7 @@ caching. However, there is presently no simple solution available to the
 general public.
 
 To cache youtube.com files you will need to enable caching of [dynamic
-content](/ConfigExamples/DynamicContent#).
+content](/ConfigExamples/DynamicContent).
 Along with some other measures which technically break the HTTP
 standards.
 
@@ -222,14 +222,14 @@ standards.
 collapsed-forwarding feature to protect from high bandwidth consumption
 and possible cache DDoS attacks. Squid-3 do not have that feature at
 this time.
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 is recommended for use with these settings.
 
 If you require Squid-3 for features this functionality can be achieved
 by configuring a
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 proxy as a
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#)
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 dedicated to caching and serving the media content.
 
 ### Missing Pieces
@@ -254,11 +254,11 @@ to a certain site range, etc. Anyone able to donate time and/or money
 for this would be greatly loved by many.
 
 UPDATE: see the
-[storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program#)
+[storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program)
 feature in
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 and the
-[discussion](/ConfigExamples/DynamicContent/YouTube/Discussion#)
+[discussion](/ConfigExamples/DynamicContent/YouTube/Discussion)
 about this entry.
 
 ### Squid Configuration File
@@ -296,17 +296,17 @@ about this entry.
 ## Discussion
 
 See
-[Features/StoreUrlRewrite](/Features/StoreUrlRewrite#)
+[Features/StoreUrlRewrite](/Features/StoreUrlRewrite)
 
 See
-[Features/StoreID](/Features/StoreID#)
+[Features/StoreID](/Features/StoreID)
 
   - 
 ... lets figure out what the hell is going on with Google Video and
 Youtube stuff so we can cache the current setup.
 
 \--
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 
   - 
 A way to show you what Dynamic Content is really
@@ -318,7 +318,7 @@ A way to show you what Dynamic Content is really
 [](http://www1.ngtech.co.il/squid/How%20Dynamic%20Content%20Affects%20the%20Way%20People%20Find%20Online.mp4)
 
 \-- [Eliezer
-Croitoru](/Eliezer%20Croitoru#)
+Croitoru](/Eliezer%20Croitoru)
 
 ### Caching YT is impossible with Squid only now
 
@@ -367,7 +367,7 @@ If Google return static video ID, we can cache YT video again. But now
 it is impossible by any way.
 
 \--
-[YuriVoinov](/YuriVoinov#)
+[YuriVoinov](/YuriVoinov)
 
 ### Knowing what to cache
 
@@ -413,7 +413,7 @@ add this to squid.conf
     acl store_rewrite_list urlpath_regex \/(get_video\?|videodownload\?|videoplayback.*id)
 
 \[ UPDATE: if you still have cache deny QUERY line. Go do this:
-[ConfigExamples/DynamicContent](/ConfigExamples/DynamicContent#)
+[ConfigExamples/DynamicContent](/ConfigExamples/DynamicContent)
 \]
 
 and the storeurl feature
@@ -562,7 +562,7 @@ the redirected URL (which is presumably the video) from you.
 Do you think that'd be enough?
 
 \--
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 
 #### Fixed
 
@@ -600,4 +600,4 @@ Good luck\!
 
 <Chudy_Fernandez@yahoo.com>
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

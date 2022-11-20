@@ -6,4 +6,4 @@ NTLM session pass-through. He then turned to improving Adrian's work on
 COSS and testing it in the field, making it production ready and useful
 in the real world.
 
-[CategoryHomepage](/CategoryHomepage#)
+[CategoryHomepage](/CategoryHomepage)

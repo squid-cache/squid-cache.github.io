@@ -10,8 +10,8 @@
   - **Version**: Squid 3.2
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
-    [ChristosTsantilas](/ChristosTsantilas#)
+    [AlexRousskov](/AlexRousskov)
+    [ChristosTsantilas](/ChristosTsantilas)
 
   - **More**:
     [bug 2055](http://bugs.squid-cache.org/show_bug.cgi?id=2055)
@@ -52,7 +52,7 @@ following:
   - Force: proceed, ignoring the Max-Connections limit
 
 The configuration is done using
-[icap\_service](http://www.squid-cache.org/Doc/config/icap_service#)
+[icap\_service](http://www.squid-cache.org/Doc/config/icap_service)
 on-overload=block|bypass|wait|force parameter.
 
 Currently, Squid ignores the Max-Connections limit, essentially
@@ -70,11 +70,11 @@ workers to arrive at per-worker limit.
 Developer notes: Use general adaptation service classes where possible
 because similar support will be added to eCAP later. Be extra careful
 with passing connection descriptors from the ICAP
-[ServiceRep](/ServiceRep#)
+[ServiceRep](/ServiceRep)
 class to the waiting ICAP transaction because the transaction job may
 terminate while the message with the descriptor is pending. We probably
 need a custom Dialer that would return the descriptor to the
-[ServiceRep](/ServiceRep#)
+[ServiceRep](/ServiceRep)
 object if the transaction is gone (or close it if both the service and
 the transaction are gone).
 
@@ -93,26 +93,26 @@ algorithm to prevent too-frequent notifications (TBD).
 
 Support eCAP Max-Connections meta header as well as max-conn and
 on-overload
-[ecap\_service](http://www.squid-cache.org/Doc/config/ecap_service#)
+[ecap\_service](http://www.squid-cache.org/Doc/config/ecap_service)
 parameters, counting each concurrent eCAP transaction as "connection".
 
 # Phase 4: Load balancing
 
 Account for service being in an
-[adaptation\_service\_set](http://www.squid-cache.org/Doc/config/adaptation_service_set#)
+[adaptation\_service\_set](http://www.squid-cache.org/Doc/config/adaptation_service_set)
 when making bypass-related decisions for essential services. When the
 first service in a set is overloaded, we should probably use the second
 service instead of blocking the message or bypassing the services. In
 other words, overload should be treated as a recoverable transaction
 error, *provided* there are more services in the
-[adaptation\_service\_set](http://www.squid-cache.org/Doc/config/adaptation_service_set#)
+[adaptation\_service\_set](http://www.squid-cache.org/Doc/config/adaptation_service_set)
 to try. This approach would be useful for other adaptation errors as
 well.
 
 We could also add an
-[adaptation\_service\_set](http://www.squid-cache.org/Doc/config/adaptation_service_set#)
+[adaptation\_service\_set](http://www.squid-cache.org/Doc/config/adaptation_service_set)
 parameter to indicate whether all services in the set should be used in
 a round-robin, least-loaded, next-on-failure, or reshuffle-on-failure
 fashion.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

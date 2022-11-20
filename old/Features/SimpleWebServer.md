@@ -11,7 +11,7 @@
   - **Developer**:
 
   - **More**: Imported from bug
-    [1059](https://bugs.squid-cache.org/show_bug.cgi?id=1059#)
+    [1059](https://bugs.squid-cache.org/show_bug.cgi?id=1059)
 
 # Details
 
@@ -20,4 +20,4 @@ icons, etc. They are mostly hard-coded and served from memory. It would
 make sense to add simple webserving capabilities for generic content,
 and fold this static content back in.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

@@ -16,8 +16,8 @@
   - **Developer**:
 
   - **More**: Bug
-    [914](https://bugs.squid-cache.org/show_bug.cgi?id=914#)
+    [914](https://bugs.squid-cache.org/show_bug.cgi?id=914)
 
 # Details
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

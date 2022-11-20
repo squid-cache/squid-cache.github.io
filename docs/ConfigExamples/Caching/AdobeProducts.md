@@ -72,5 +72,5 @@ configurations Squid to caching Adobe downloads will be useless.
     your proxy start stare. It interrupts downloading updates
     immediately. So, avoid staring in any form. This means your
     squid.conf should **not** use the
-    [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump#)
+    [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
     **stare** action for Adobe traffic.

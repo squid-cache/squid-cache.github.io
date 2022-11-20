@@ -705,4 +705,4 @@ for use in your network.
 | ------------------------------------------------------------------- | ---------------------------------- | ----------------------------------------------------------------------- |
 | [PROXY](http://www.haproxy.org/download/2.5/doc/proxy-protocol.txt) | The PROXY protocol, Versions 1 & 2 | ![(./)](https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png) |
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

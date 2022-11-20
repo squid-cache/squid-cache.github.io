@@ -10,10 +10,10 @@
   - **Version**:
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
 
   - **More**: patches for
-    [bug 410](https://bugs.squid-cache.org/show_bug.cgi?id=410#)
+    [bug 410](https://bugs.squid-cache.org/show_bug.cgi?id=410)
 
 ## Details
 
@@ -22,7 +22,7 @@ versions. Current
 [patches](http://bugs.squid-cache.org/attachment.cgi?bugid=410&action=viewall)
 implement optional bypass of COSS cache\_dir failures for Squid2 only.
 Please see the patch preamble for technical notes and the bug
-[report](https://bugs.squid-cache.org/show_bug.cgi?id=410#) for
+[report](https://bugs.squid-cache.org/show_bug.cgi?id=410) for
 discussion.
 
 Adding bypass=1 option to cache\_dir allows Squid to bypass errors
@@ -94,5 +94,5 @@ without explicit configuration. So squid.conf need only contain:
 
     cache_dir ufs /squid/cache 20GB
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

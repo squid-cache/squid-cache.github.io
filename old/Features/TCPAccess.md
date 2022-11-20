@@ -41,13 +41,13 @@ packet level firewalls, cluster wide connection accounting etc.
 To answer, use the "Discussion" link in the main menu
 
 See [Discussed
-Page](/Features/TCPAccess#)
+Page](/Features/TCPAccess)
 
 Nice\!. I suggest adding dst and port directives, which are quite
 useless in forward proxy scenarios, but could be useful in transaprent
 and reverse proxy setups.
 
 \--
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

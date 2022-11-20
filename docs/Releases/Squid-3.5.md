@@ -2,7 +2,7 @@
 
 |          |                                                                                                                                          |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Jul 2018 | Squid-3.5 series became **DEPRECATED** with the release of [Squid-4](/Releases/Squid-4#) series |
+| Jul 2018 | Squid-3.5 series became **DEPRECATED** with the release of [Squid-4](/Releases/Squid-4) series |
 | Jan 2015 | Released for production use.                                                                                                             |
 
 The features have been set and large code changes are reserved for later
@@ -28,17 +28,17 @@ Basic new features in 3.5:
   - eCAP version 1.0 support
 
   - Authentication helper query extensions (see
-    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#))
+    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param))
 
   - Caching large (\>32KB) objects in [Rock
-    storage](/Features/LargeRockStore#)
+    storage](/Features/LargeRockStore)
 
   - Extended cache HIT/MISS decision control (see
-    [send\_hit](http://www.squid-cache.org/Doc/config/send_hit#),
-    [store\_miss](http://www.squid-cache.org/Doc/config/store_miss#))
+    [send\_hit](http://www.squid-cache.org/Doc/config/send_hit),
+    [store\_miss](http://www.squid-cache.org/Doc/config/store_miss))
 
   - Logging of transaction start time (see
-    [logformat](http://www.squid-cache.org/Doc/config/logformat#))
+    [logformat](http://www.squid-cache.org/Doc/config/logformat))
 
   - Adaptation service performed ACL test
 
@@ -50,7 +50,7 @@ Basic new features in 3.5:
     StoreID, URL-rewrite)
 
   - [Native FTP protocol
-    relay](/Features/FtpRelay#)
+    relay](/Features/FtpRelay)
 
   - Initial support for [PROXY
     protocol](http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt)
@@ -64,7 +64,7 @@ Added in 3.5.13:
 Features removed in 3.5:
 
   - COSS storage type has been superceded by
-    [Rock](/Features/LargeRockStore#)
+    [Rock](/Features/LargeRockStore)
     storage type.
 
   - dnsserver helper has been superceded by DNS internal client.

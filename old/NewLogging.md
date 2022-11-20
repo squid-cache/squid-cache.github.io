@@ -136,5 +136,5 @@ which will be fast and flexible.
 
   - What else?
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

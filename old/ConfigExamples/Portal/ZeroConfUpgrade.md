@@ -8,9 +8,9 @@ about these examples please email the squid-users mailing list.
 
 Squid when acting as a web portal sometimes is required to perform
 things such as
-[authentication](/Features/Authentication#)
+[authentication](/Features/Authentication)
 or
-[ssl-bump](/Features/SslBump#)
+[ssl-bump](/Features/SslBump)
 which are not possible on a transparent interception proxy. And Yet the
 portal is also required to intercept port 80 traffic.
 
@@ -38,7 +38,7 @@ for easier user reading.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     When using ERR\_AGENT\_CONFIGURE with Squid older than
-    [Squid-3.1.20](/Releases/Squid-3.1#)
+    [Squid-3.1.20](/Releases/Squid-3.1)
     you will have to edit the file and change the %b to the squid port
     you want the users configuring. This can be done with:
 
@@ -49,12 +49,12 @@ for easier user reading.
 ```
 
   - ℹ️
-    [3.1.20](/Releases/Squid-3.1#)
+    [3.1.20](/Releases/Squid-3.1)
     will fill out the %b value with port 3128. Use the above replacement
     to use another port.
     
     ℹ️
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     will fill out the %b value with the proxies first *normal*
     (forward-proxy) listening port.
 
@@ -83,4 +83,4 @@ redirect to be done. Rules which permit the visitor use of the proxy are
 expected to be placed as appropriate below them. The basic default
 safety nets should as always be above them.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

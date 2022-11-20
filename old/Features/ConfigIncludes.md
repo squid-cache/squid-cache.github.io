@@ -5,9 +5,9 @@
   - **Status**: complete.
 
   - **Developer**:
-    [AdrianChadd](/AdrianChadd#)
+    [AdrianChadd](/AdrianChadd)
     (2.7),
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
     (3.0)
 
 # Details
@@ -55,7 +55,7 @@ community.
 
 We hope to provide a repository of config examples for general use. Some
 work has been done towards this in the [Config
-Examples](/ConfigExamples#)
+Examples](/ConfigExamples)
 section.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

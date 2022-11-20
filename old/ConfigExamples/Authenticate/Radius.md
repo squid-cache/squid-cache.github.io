@@ -71,4 +71,4 @@ login failure"
     http_access allow localhost
     http_access deny all
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

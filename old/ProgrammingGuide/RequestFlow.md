@@ -4,7 +4,7 @@
 been updated for Squid-3.*
 
 1.  A client connection is accepted by the
-    *Comm::[TcpAcceptor](/TcpAcceptor#)*,
+    *Comm::[TcpAcceptor](/TcpAcceptor)*,
     passed to *client-side socket support* and parsed,
     
       - or an internal Squid request is directly created via
@@ -14,7 +14,7 @@ been updated for Squid-3.*
     performed.
 
 3.  The
-    [http\_access](http://www.squid-cache.org/Doc/config/http_access#)
+    [http\_access](http://www.squid-cache.org/Doc/config/http_access)
     controls are checked. The client-side-request builds an ACL state
     data structure and registers a callback function for notification
     when access control checking is completed.

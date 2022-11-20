@@ -11,7 +11,7 @@ definitions), where an HTTP request and response can each be loosely
 considered equivelent to one "packet" in a transport architecture. Just
 like IP packets HTTP messages are stateless and the delivery is entirely
 optional for process. See the RFC
-[7230](https://tools.ietf.org/rfc/rfc7230#) texts for a better
+[7230](https://tools.ietf.org/rfc/rfc7230) texts for a better
 description on HTTP specifics and how it operates.
 
 At the broad level Squid consists of five generic processing areas;
@@ -66,12 +66,12 @@ TODO:** images with overview of data flow.
 
 **![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
 TODO:** pull in existing descriptions of I/O event model,
-[AsyncJob](/AsyncJob#)
+[AsyncJob](/AsyncJob)
 model from source code.
 
 **![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
 TODO:** data processing diagram with color-coded for display of
-[AsyncJob](/AsyncJob#)
+[AsyncJob](/AsyncJob)
 vs Event callback coverage.
 
 ## Transaction Processing
@@ -113,7 +113,7 @@ stream transaction.
 TODO:** alter the **master transaction** definition to cope with UDP
 based protocols involving streams and content adapted. eg SNMPv3,
 HTTP/3, QUICK, CoAP, CoAPS, DNS,
-[WebSockets3](/WebSockets3#)
+[WebSockets3](/WebSockets3)
 
 ### HTTP Request
 
@@ -124,29 +124,29 @@ server. The checks are listed here in the order of their execution:
 
 1.  Host header forgery checks
 
-2.  [http\_access](http://www.squid-cache.org/Doc/config/http_access#)
+2.  [http\_access](http://www.squid-cache.org/Doc/config/http_access)
     directive
 
 3.  ICAP/eCAP
-    [adaptation](/SquidFaq/ContentAdaptation#)
+    [adaptation](/SquidFaq/ContentAdaptation)
 
-4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program#)
+4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 
-5.  [adapted\_http\_access](http://www.squid-cache.org/Doc/config/adapted_http_access#)
+5.  [adapted\_http\_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     directive
 
-6.  [store\_id](http://www.squid-cache.org/Doc/config/store_id#)
+6.  [store\_id](http://www.squid-cache.org/Doc/config/store_id)
     directive
 
 7.  clientInterpretRequestHeaders()
 
-8.  [cache](http://www.squid-cache.org/Doc/config/cache#) directive
+8.  [cache](http://www.squid-cache.org/Doc/config/cache) directive
 
 9.  ToS marking
 
 10. nf marking
 
-11. [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#)
+11. [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
     directive
 
 12. callout sequence error handling

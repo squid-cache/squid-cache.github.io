@@ -16,9 +16,9 @@ Additions are limited to:
 ## Features ported from 2.7 in this release
   - Class 6 (client response) delay pool
       - In the form of
-        [response_delay_pool](http://www.squid-cache.org/Doc/config/response_delay_pool#)
+        [response_delay_pool](http://www.squid-cache.org/Doc/config/response_delay_pool)
         and
-        [response_delay_pool_access](http://www.squid-cache.org/Doc/config/response_delay_pool_access#)
+        [response_delay_pool_access](http://www.squid-cache.org/Doc/config/response_delay_pool_access)
         for Squid-to-client speed limiting.
 
 ## Basic new features in 5.1
@@ -26,33 +26,33 @@ Additions are limited to:
       - Happy Eyeballs: Use each fully resolved forwarding destination
         ASAP.
           - Removes
-            [dns_v4_first](http://www.squid-cache.org/Doc/config/dns_v4_first#)
+            [dns_v4_first](http://www.squid-cache.org/Doc/config/dns_v4_first)
             feature as a side effect.
       - Reuse reserved Negotiate and NTLM helpers after an idle timeout.
       - Support logformat %codes in error page templates.
       - Support opening CONNECT tunnels through an HTTP cache peer.
       - Change annotation behaviour when multiple same-name annotations
-        are received (see [bug 4912](https://bugs.squid-cache.org/show_bug.cgi?id=4912#))
+        are received (see [bug 4912](https://bugs.squid-cache.org/show_bug.cgi?id=4912))
           - Some reserved keys retain the old behaviour due to their
             usage (eg group= received from auth and external ACL
             helpers)
 
   - **Minor UI changes:**
       - Add
-        [auth_schemes](http://www.squid-cache.org/Doc/config/auth_schemes#)
+        [auth_schemes](http://www.squid-cache.org/Doc/config/auth_schemes)
         to control schemes presence and order in 401s/407s.
       - Add ACL types annotate_transaction and annotate_client.
       - Make CONNECT ACL a built-in default.
       - Add
-        [collapsed_forwarding_access](http://www.squid-cache.org/Doc/config/collapsed_forwarding_access#)
+        [collapsed_forwarding_access](http://www.squid-cache.org/Doc/config/collapsed_forwarding_access)
         to restrict Collapsed Forwarding of HTTP, ICP and HTCP requests.
       - Add
-        [mark_client_connection](http://www.squid-cache.org/Doc/config/mark_client_connection#)
+        [mark_client_connection](http://www.squid-cache.org/Doc/config/mark_client_connection)
         and
-        [mark_client_packet](http://www.squid-cache.org/Doc/config/mark_client_packet#)
+        [mark_client_packet](http://www.squid-cache.org/Doc/config/mark_client_packet)
         directives for Netfilter MARK and CONNMARK control.
       - Add
-        [deny_info](http://www.squid-cache.org/Doc/config/deny_info#)
+        [deny_info](http://www.squid-cache.org/Doc/config/deny_info)
         and error page **%A** code to display Squid listening IP
         address.
       - New %ssl::<cert macro code to display received server X.509

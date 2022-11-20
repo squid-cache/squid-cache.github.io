@@ -6,6 +6,6 @@ Contact: [](http://piyokun.googlepages.com)
 
 Edited pages:
 
-  - [SquidFaq/ConfiguringSquid](/SquidFaq/ConfiguringSquid#)
+  - [SquidFaq/ConfiguringSquid](/SquidFaq/ConfiguringSquid)
 
-[CategoryHomepage](/CategoryHomepage#)
+[CategoryHomepage](/CategoryHomepage)

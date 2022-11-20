@@ -54,9 +54,9 @@ To enable delay pools features in Squid configure with
 
   - class 5  
     custom class based on tag values returned by
-    [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#)
+    [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
     helpers in
-    [http\_access](http://www.squid-cache.org/Doc/config/http_access#).
+    [http\_access](http://www.squid-cache.org/Doc/config/http_access).
     One bucket per used tag value.
 
 Delay pools allows you to limit traffic for clients or client groups,
@@ -133,7 +133,7 @@ to be replenished.
 
 You can not limit a single HTTP request's connection speed. You *can*
 limit individual hosts to some bandwidth rate. To limit a specific host,
-define an *[acl](http://www.squid-cache.org/Doc/config/acl#)* for that
+define an *[acl](http://www.squid-cache.org/Doc/config/acl)* for that
 host and use the example above. To limit a group of hosts, then you must
 use a delay pool of class 2 or 3. For example:
 
@@ -229,16 +229,16 @@ examples. Squid install with a squid.conf.documented or
 squid.conf.default file. If you no longer have a documented config file
 the latest version is provided on the squid-cache.org website.
 
-  - [delay\_parameters](http://www.squid-cache.org/Doc/config/delay_parameters#)
+  - [delay\_parameters](http://www.squid-cache.org/Doc/config/delay_parameters)
 
-  - [delay\_pools](http://www.squid-cache.org/Doc/config/delay_pools#)
+  - [delay\_pools](http://www.squid-cache.org/Doc/config/delay_pools)
 
-  - [delay\_class](http://www.squid-cache.org/Doc/config/delay_class#)
+  - [delay\_class](http://www.squid-cache.org/Doc/config/delay_class)
 
-  - [delay\_access](http://www.squid-cache.org/Doc/config/delay_access#)
+  - [delay\_access](http://www.squid-cache.org/Doc/config/delay_access)
 
-  - [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#)
+  - [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
 
 <!-- end list -->
 
-  - [CategoryFeature](/CategoryFeature#)
+  - [CategoryFeature](/CategoryFeature)

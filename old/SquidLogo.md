@@ -6,7 +6,7 @@ Thanks to all who contributed\!
 |                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------- |
 | ![squid-logo-rpivato-1.png](https://wiki.squid-cache.org/SquidLogo?action=AttachFile&do=get&target=squid-logo-rpivato-1.png) |
-| Designed by [Rafael Pivato](/rpivato#)                                     |
+| Designed by [Rafael Pivato](/rpivato)                                     |
 
 |                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------ |

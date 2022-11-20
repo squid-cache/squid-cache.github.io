@@ -45,4 +45,4 @@ modifications. Please read the article for further information.
   - Microsoft Tech Note article:
     [](http://support.microsoft.com/?scid=kb%3Ben-us%3B271361&x=14&y=15)
 
-[CategoryTechnology](/CategoryTechnology#)
+[CategoryTechnology](/CategoryTechnology)

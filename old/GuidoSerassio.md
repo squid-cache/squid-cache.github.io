@@ -8,4 +8,4 @@ More information about me can be found on my personal homepage
 
 Email: `<serassio AT SPAMFREE squid-cache DOT org>`
 
-  - [CategoryHomepage](/CategoryHomepage#)
+  - [CategoryHomepage](/CategoryHomepage)

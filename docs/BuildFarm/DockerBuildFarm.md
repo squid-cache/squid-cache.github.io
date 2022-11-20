@@ -69,7 +69,7 @@ list (assuming a debian host)
 These run on buildmaster, here's how the concepts fit together: - builds
 need to be tied to a node labelled "docker-build-host". This label is
 provided by the
-[DigitalOcean](/DigitalOcean#)
+[DigitalOcean](/DigitalOcean)
 plugin, which instantiates a new cloud VM on demand, and tears it down
 when not used. The cloud initialiser installs what is needed to run a
 slave. If it is a matrix build, there needs to be a "slaves" matrix axis

@@ -82,4 +82,4 @@ from bridging mode to routing mode:
     addresses for Squid to use in its normal operating traffic (DNS,
     ICMP, TPROXY failed requests, peer requests, etc)
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

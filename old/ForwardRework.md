@@ -39,7 +39,7 @@ And protocols we have a client implementation of:
 
   - FTP
 
-Theres a [patch](https://bugs.squid-cache.org/show_bug.cgi?id=1763#) to
+Theres a [patch](https://bugs.squid-cache.org/show_bug.cgi?id=1763) to
 break out the server implementations - HTTPS, HTTP, ICP, HTCP. This
 possibly needs more work to be really polished, and is slated for 3.1.
 
@@ -249,5 +249,5 @@ protocolClientFactory for gopher will return a GopherClient object.
 There is no Gopher peer type, because our gopher implementation cannot
 forward other protocols.
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

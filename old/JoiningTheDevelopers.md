@@ -7,7 +7,7 @@ branches up to date with the main Squid version.
 
 To become a Squid developer you need to have some knowledge of C++ code
 and some tools covered in
-[DeveloperResources](/DeveloperResources#),
+[DeveloperResources](/DeveloperResources),
 and then email <squid-dev@squid-cache.org> with your name and a short
 introduction on who you are and your interest in Squid development.
 

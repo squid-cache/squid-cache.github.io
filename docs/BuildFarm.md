@@ -6,10 +6,10 @@ testing is done on all platforms we can, and we rely on a number of
 Docker containers and virtual machines running on hosts kindly donated
 by volunteers and by [DigitalOcean](http://www.digitalocean.com/).
 
-[FrancescoChemolli](/FrancescoChemolli#) is leading this effort.
+[FrancescoChemolli](/FrancescoChemolli) is leading this effort.
 
 Project sysadmins can find documentation on the Docker farm at
-[BuildFarm/DockerBuildFarm](/BuildFarm/DockerBuildFarm#).
+[BuildFarm/DockerBuildFarm](/BuildFarm/DockerBuildFarm).
 The images used to test our supported builds are available on the
 [Docker Hub](https://hub.docker.com/repository/docker/squidcache/buildfarm), and
 are built from instructions at [GitHub](https://github.com/kinkie/dockerfiles);

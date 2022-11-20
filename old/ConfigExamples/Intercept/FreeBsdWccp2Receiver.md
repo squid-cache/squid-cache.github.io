@@ -71,4 +71,4 @@ the Squid application.
     wccp2_return_method 1
     wccp2_service standard 0
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

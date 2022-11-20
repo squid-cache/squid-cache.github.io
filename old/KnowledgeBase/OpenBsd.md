@@ -32,7 +32,7 @@ packages and may be helpful to users wanting to integrate with Microsoft
 authentication via Kerberos.
 
 If using Squid as an
-[InterceptionProxy](/InterceptionProxy#),
+[InterceptionProxy](/InterceptionProxy),
 note that the packages are built using --enable-ipfw-transparent which
 is the preferred method on OpenBSD. Use this with "divert-to" rules in
 PF. More information is available in the [package's README
@@ -78,7 +78,7 @@ use in OpenBSD.
 
 To build squid for standard use, no particular method should be needed.
 See
-[SquidFaq/CompilingSquid](/SquidFaq/CompilingSquid#)
+[SquidFaq/CompilingSquid](/SquidFaq/CompilingSquid)
 for detailed instructions.
 
 The following may be outdated: If you plan to do development on squid,
@@ -95,5 +95,5 @@ running Squid requires \*write\* access against /dev/pf to invoke the
 ioctl() to do a NAT lookup. For this method, use "rdr-to" PF rules to
 pass the traffic to squid.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

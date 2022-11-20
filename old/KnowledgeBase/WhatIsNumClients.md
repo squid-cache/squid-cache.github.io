@@ -1,7 +1,7 @@
 # What is the "Number of clients accessing cache"?
 
 In the [cache
-manager](/SquidFaq/CacheManager#)'s
+manager](/SquidFaq/CacheManager)'s
 "general runtime information" page, Squid specifies the number of
 clients accesssing the cache; but WHAT it is is not really explained
 anywhere.
@@ -25,4 +25,4 @@ have
 This logic is hard-coded in the Squid source and at this time can't be
 changed.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

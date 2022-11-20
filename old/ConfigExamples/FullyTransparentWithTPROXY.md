@@ -17,7 +17,7 @@ documentation.)
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [Features/Tproxy4](/Features/Tproxy4#)) |
+| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [Features/Tproxy4](/Features/Tproxy4)) |
 
   - ℹ️
     The configuration for Squid-3.1 is very different than the following
@@ -51,14 +51,14 @@ wccp services, otherwise things will break if you have more than 1 cache
 (specifically, you will have problems when the a web server's name
 resolves to multiple ip addresses).
 
-The [http\_port](http://www.squid-cache.org/Doc/config/http_port#) that
+The [http\_port](http://www.squid-cache.org/Doc/config/http_port) that
 you are redirecting to must have the transparent and tproxy options
 enabled as follows (modify the port as appropriate):
 
     http_port 80 transparent tproxy
 
 There \_must\_ be a
-[tcp\_outgoing](http://www.squid-cache.org/Doc/config/tcp_outgoing#)
+[tcp\_outgoing](http://www.squid-cache.org/Doc/config/tcp_outgoing)
 address defined. This will need to be valid to satisfy any non-tproxied
 connections.
 
@@ -91,7 +91,7 @@ interface. Ie:
      ip wccp redirect exclude in
 
 It's highly recommended to turn
-[httpd\_accel\_no\_pmtu\_disc](http://www.squid-cache.org/Doc/config/httpd_accel_no_pmtu_disc#)
+[httpd\_accel\_no\_pmtu\_disc](http://www.squid-cache.org/Doc/config/httpd_accel_no_pmtu_disc)
 on in the squid conf.
 
 If you have some clients who set their proxy, it is recommended to use a
@@ -101,7 +101,7 @@ clients with proxies set.
 (next email)
 
 The tproxy support in
-[Squid-2.6](/Releases/Squid-2.6#)
+[Squid-2.6](/Releases/Squid-2.6)
 does not need to be run as root. It maintains root capabilities for
 network requests at all times (allowing the tproxy patch to work),
 without the need to maintain all root capabilities.
@@ -117,7 +117,7 @@ for tproxy + wccpv2:
 
 Can you please check that you've enabled ip\_forwarding in your kernel.
 If that doesn't work, I don't know if the "vhost vport=80" is required
-in the [http\_port](http://www.squid-cache.org/Doc/config/http_port#)
+in the [http\_port](http://www.squid-cache.org/Doc/config/http_port)
 line in the squid config (we don't have these options enabled on our
 proxies).
 
@@ -196,7 +196,7 @@ Now, I will try tuning-up my box & squid.conf tommorow
 ## References
 
   - Squid
-    [Features/Tproxy4](/Features/Tproxy4#)
+    [Features/Tproxy4](/Features/Tproxy4)
 
   - TPROXY patch homepage:
     [](http://www.balabit.com/support/community/products/tproxy/)
@@ -206,4 +206,4 @@ Now, I will try tuning-up my box & squid.conf tommorow
 
 <!-- end list -->
 
-  - [CategoryConfigExample](/CategoryConfigExample#)
+  - [CategoryConfigExample](/CategoryConfigExample)

@@ -11,7 +11,7 @@ browser.)
 
 WPAD does not do much more than to allow the User Agent to discover a
 [PAC or Proxy
-Auto-Configuration](/Technology/ProxyPac#)
+Auto-Configuration](/Technology/ProxyPac)
 file.
 
 This article is aimed at the network/system administrator who wishes to
@@ -38,7 +38,7 @@ Windows Active Directory Group Policy.
     faq article
 
   - [WPAD
-    DNS](/Technology/WPAD/DNS#)
+    DNS](/Technology/WPAD/DNS)
     covers how User Agents can detect the existance of the proxy
     autoconfiguration file via DNS "Well Known Aliases"
 
@@ -59,5 +59,5 @@ Windows Active Directory Group Policy.
 
 <!-- end list -->
 
-  - [CategoryTechnologyIndex](/CategoryTechnologyIndex#)
-    [CategoryTechnology](/CategoryTechnology#)
+  - [CategoryTechnologyIndex](/CategoryTechnologyIndex)
+    [CategoryTechnology](/CategoryTechnology)

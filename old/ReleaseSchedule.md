@@ -14,7 +14,7 @@ spawned six months before the corresponding major stable release.
 
 For details of features already planned to be included in the upcoming
 series see our development
-[RoadMap](/RoadMap#).
+[RoadMap](/RoadMap).
 
 # Notes
 
@@ -34,7 +34,7 @@ The tabulated events are nearly instantaneous and should occur (or be
 deemed occurred) at the beginning of the corresponding day (T00:00:00)
 in maintainer time zone. After the event, any commits on the
 corresponding branch must follow
-[ReleaseProcess](/ReleaseProcess#)
+[ReleaseProcess](/ReleaseProcess)
 policies designated to that branch status. The corresponding numbered
 release should occur as soon as possible after the tabulated event; the
 maintainer may need about 20 hours (or more) to complete all the

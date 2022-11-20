@@ -22,4 +22,4 @@ Configuration file to Include:
     http_access deny ym
     http_access deny ymregex
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

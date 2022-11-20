@@ -100,6 +100,6 @@ This is done by the NAT infrastructure of the operating system firewall.
 <!-- end list -->
 
   - [Linux TPROXY Real Transparent Interception (without
-    NAT)](/Features/Tproxy4#)
+    NAT)](/Features/Tproxy4)
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

@@ -18,16 +18,16 @@ in the right order.
 
 First recommendation is to get acquainted with the basic notions of how
 to configure squid to properly authenticate. Useful documentation can be
-found at [Features/Authentication](/Features/Authentication#),
-and the manual pages for [acl](http://www.squid-cache.org/Doc/config/acl#),
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param#),
-[http\_access](http://www.squid-cache.org/Doc/config/http_access#),
-[http\_access2](http://www.squid-cache.org/Doc/config/http_access2#) and
-[http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access#).
+found at [Features/Authentication](/Features/Authentication),
+and the manual pages for [acl](http://www.squid-cache.org/Doc/config/acl),
+[auth\_param](http://www.squid-cache.org/Doc/config/auth_param),
+[http\_access](http://www.squid-cache.org/Doc/config/http_access),
+[http\_access2](http://www.squid-cache.org/Doc/config/http_access2) and
+[http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access).
 
 You may also want to
-check [ConfigExamples/Authenticate/Kerberos](/ConfigExamples/Authenticate/Kerberos#),
-[ConfigExamples/Authenticate/Ntlm](/ConfigExamples/Authenticate/Ntlm#)
+check [ConfigExamples/Authenticate/Kerberos](/ConfigExamples/Authenticate/Kerberos),
+[ConfigExamples/Authenticate/Ntlm](/ConfigExamples/Authenticate/Ntlm)
 for authentication-scheme-specific documentation.
 
 Start by setting up Squid so that it authenticates all users to all

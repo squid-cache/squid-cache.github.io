@@ -14,9 +14,9 @@ you have questions/troubles with the steps. I have not fully checked the
 steps for clarity and accuracy...but I eventually will.
 
 These steps are for setting
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 with
-[TPROXYv4](/Features/Tproxy4#),
+[TPROXYv4](/Features/Tproxy4),
 IP spoofing and Cisco WCCP. This is not a bridging setup. It is also
 important to note that these steps are specific to the x86\_64 version
 of CentOS 5.3, although very minor changes would make this solution work
@@ -58,7 +58,7 @@ differences.)
 ### Routing Configuration
 
 As per the
-[TPROXYv4](/Features/Tproxy4#)
+[TPROXYv4](/Features/Tproxy4)
 regular configuration:
 
     ip rule add fwmark 1 lookup 100
@@ -176,4 +176,4 @@ After preparing the kernel and iptables as above.
 | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | A special http\_port line is recommended since tproxy mode for Squid can interfere with non-tproxy requests on the same port. |
 
-  - [CategoryConfigExample](/CategoryConfigExample#)
+  - [CategoryConfigExample](/CategoryConfigExample)

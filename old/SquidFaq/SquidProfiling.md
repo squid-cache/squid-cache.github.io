@@ -77,17 +77,17 @@ resources. There's a few things that frequently occur:
   - Linux servers spending a lot of time in IOWAIT can also be because
     you're overloading your disks with IO. See what your disk IO looks
     like in vmstat. You could look at moving to the aufs/diskd
-    [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) if
+    [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) if
     you're using UFS. COSS also can drastically drop IOWAIT times under
     heavy disk loads.
 
   - You're swapping\! This happens quite often when people wind up
-    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) and
+    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) and
     don't watch how much RAM Squid is actually using. Watch the output
     of "vmstat" and see how much free memory is available. If you see
     your server paging memory in and out of disk then you're in trouble.
     Either decrease
-    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) or
+    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) or
     add more physical RAM.
 
 ### How can I see what Squid is actually doing?

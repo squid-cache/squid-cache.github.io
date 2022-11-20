@@ -6,14 +6,14 @@ branch of the official
 [repository](https://github.com/squid-cache/squid) on GitHub. To speed
 up code review and improve your code acceptance chances, please adhere
 to
-[SquidCodingGuidelines](/SquidCodingGuidelines#)
+[SquidCodingGuidelines](/SquidCodingGuidelines)
 and follow the
-[MergeProcedure](/MergeProcedure#).
+[MergeProcedure](/MergeProcedure).
 
-[ProgrammingGuide](/ProgrammingGuide#)
+[ProgrammingGuide](/ProgrammingGuide)
 provides a broad overview of Squid architecture and details some of
 Squid modules. It also discusses [manual page
-writing](/ProgrammingGuide/ManualDocumentation#).
+writing](/ProgrammingGuide/ManualDocumentation).
 
 Auto-generated [code
 documentation](http://www.squid-cache.org/Doc/code/) offers some
@@ -25,15 +25,15 @@ Finding things to do:
   - [Bugzilla](http://bugs.squid-cache.org/) contains bugs and feature
     requests.
 
-  - [RoadMap](/RoadMap#)
+  - [RoadMap](/RoadMap)
     lists the feature wishes and plans for future releases.
 
-  - [RoadMap/Tasks](/RoadMap/Tasks#)
+  - [RoadMap/Tasks](/RoadMap/Tasks)
     itemizes general cleanup tasks that need to be done. These can be
     good introductory tasks.
 
   - [HTTP/1.1
-    compliance](/Features/HTTP11#)
+    compliance](/Features/HTTP11)
     violations need to be addressed.
 
   - `git grep XXX`
@@ -53,7 +53,7 @@ email).
 # Testing
 
 We run constant integration testing with a
-[BuildFarm](/BuildFarm#).
+[BuildFarm](/BuildFarm).
 
 It is possible to rely on the images we use for it to test code changes
 against different Linux distributions and compiler versions. We publish
@@ -125,7 +125,7 @@ updated as the official code changes.
 
 The official Squid source code repository is on
 [GitHub](https://github.com/squid-cache/squid). see
-[GitHints](/GitHints#)
+[GitHints](/GitHints)
 for common actions you may need to perform with the git VCS.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
@@ -227,15 +227,15 @@ required initially to run a number of autotools to prepare ./configure
 and related magic. This needs repeating after any changes to the
 Makefile.am or configure.ac scripts, including changes received from the
 repository updates. Common bootstrap.sh problems are discussed in
-[ProgrammingGuide/Bootstrap](/ProgrammingGuide/Bootstrap#).
+[ProgrammingGuide/Bootstrap](/ProgrammingGuide/Bootstrap).
 
 # Miscellaneous
 
-[ReleaseProcess](/ReleaseProcess#)
+[ReleaseProcess](/ReleaseProcess)
 describes the process and criteria used by the Squid Developers when
 making new Squid releases from the accepted changes.
 
-[WhoWeAre](/WhoWeAre#)
+[WhoWeAre](/WhoWeAre)
 explains who the people working on the Squid project are.
 
 During the life of the Squid project, a number of
@@ -244,4 +244,4 @@ During the life of the Squid project, a number of
 Code Sprints are informal gatherings of Squid developers with a focus on
 developing urgently needed features or fixing major bugs. You can find
 links to related documents in
-[MeetUps](/MeetUps#).
+[MeetUps](/MeetUps).

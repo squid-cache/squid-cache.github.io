@@ -39,7 +39,7 @@ Install Procedure:
 ## LDAP support fails to build
 
 Seen on
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 and older. The build appears to start well then breaks with strange
 compile errors on the LDAP helpers. Usually mentioning missing variable
 definitions or miss-placed **)** brackets.
@@ -49,11 +49,11 @@ SLES11-SP1-SDK-DVD:
 
     zypper install openldap2-devel
 
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 does much better support detection and should present you with a useful
 message about LDAP support files not being found.
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

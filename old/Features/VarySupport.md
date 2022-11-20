@@ -12,9 +12,9 @@
 
   - **More**:
     
-      - bug [1647](https://bugs.squid-cache.org/show_bug.cgi?id=1647#),
+      - bug [1647](https://bugs.squid-cache.org/show_bug.cgi?id=1647),
         see also
-        [Features/EtagSupport](/Features/EtagSupport#)
+        [Features/EtagSupport](/Features/EtagSupport)
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

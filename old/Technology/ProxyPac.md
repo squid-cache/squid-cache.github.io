@@ -11,7 +11,7 @@ selectively uses proxy servers based on certain criteria.
 ## Articles
 
   - [Internet Explorer
-    Caching](/Technology/ProxyPac/InternetExplorerCaching#)
+    Caching](/Technology/ProxyPac/InternetExplorerCaching)
     - Microsoft Internet Explorer's automatic proxy caching; how it can
     interfere with proxy.pac load balancing and failover
 
@@ -36,5 +36,5 @@ available at [](http://code.google.com/p/pacparser/)
   - Microsoft proposed IPv6 extensions to proxy.pac:
     [](http://blogs.msdn.com/wndp/articles/IPV6_PAC_Extensions_v0_9.aspx)
 
-[CategoryTechnologyIndex](/CategoryTechnologyIndex#)
-[CategoryTechnology](/CategoryTechnology#)
+[CategoryTechnologyIndex](/CategoryTechnologyIndex)
+[CategoryTechnology](/CategoryTechnology)

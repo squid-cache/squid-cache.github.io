@@ -4,7 +4,7 @@
 wide consensus has been reached towards replacing CVS with another more
 modern Version Control solution. If you do not already have a VCS please
 see
-[BzrInstructions](/BzrInstructions#).
+[BzrInstructions](/BzrInstructions).
 
 # Repository Location
 
@@ -58,7 +58,7 @@ To update your source tree later, type:
 
 ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
 Note: If you are looking for the main Squid sources please see
-[BzrInstructions](/BzrInstructions#)
+[BzrInstructions](/BzrInstructions)
 and use the Bazaar instead.
 
 # Web View
@@ -101,4 +101,4 @@ Squid-2.7.STABLE, for tracking the current STABLE release.
   cvs checkout -d squid-2.6 -r SQUID_2_7 squid
 ```
 
-[CategoryObsolete](/CategoryObsolete#)
+[CategoryObsolete](/CategoryObsolete)

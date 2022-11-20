@@ -16,7 +16,7 @@
   - **Developer**:
 
   - **More**: Bug
-    [2463](https://bugs.squid-cache.org/show_bug.cgi?id=2463#)
+    [2463](https://bugs.squid-cache.org/show_bug.cgi?id=2463)
 
 # Details
 
@@ -24,4 +24,4 @@ More information can be printed about the current call, at the slightly
 increased risk of a nested crash if AsyncCall::print() fails because the
 call object itself is corrupted.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

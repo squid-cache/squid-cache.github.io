@@ -7,7 +7,7 @@
   - **Version**: Squid 3.2
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
   - **More**:
     [branch](https://code.launchpad.net/~yadi/squid/cleanup-comm)
@@ -60,7 +60,7 @@ Currently testing in 3.2:
   - Persistent connections pooled by destination IP:port. Retrieval out
     of the pool is filtered on required local endpoint IP (if any) to
     support transparent interception and
-    [tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address#)
+    [tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
     which require a fixed local address.
 
 ### TODO
@@ -79,5 +79,5 @@ Currently testing in 3.2:
 
   - The socket writing operations need an API polished up.
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

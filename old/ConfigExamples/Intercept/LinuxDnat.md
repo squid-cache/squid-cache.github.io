@@ -13,7 +13,7 @@ configuration. When web traffic is reaching the machine squid is run on.
 box**. This is required to perform intercept accurately and securely. To
 intercept from a gateway machine and direct traffic at a separate squid
 box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute#).
+routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
   - ![squid-DNAT-device.png](https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxDnat?action=AttachFile&do=get&target=squid-DNAT-device.png)
 
@@ -45,7 +45,7 @@ encounter problems with forwarding loops.
 
 **NOTE:** DNAT is only available for IPv4 traffic on older kernel
 versions. For IPv6 interception use [TPROXY
-version 4](/Features/Tproxy4#).
+version 4](/Features/Tproxy4).
 
 ## /etc/sysctl.conf Configuration
 
@@ -73,4 +73,4 @@ like so:
 
     http_port 3129 intercept
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

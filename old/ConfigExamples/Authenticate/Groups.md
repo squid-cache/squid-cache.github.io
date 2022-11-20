@@ -11,10 +11,10 @@ authentication configured and working on a per-user basis.
 
 Details on how to do that are covered in:
 
-  - [ConfigExamples/Authenticate/Ntlm](/ConfigExamples/Authenticate/Ntlm#)
+  - [ConfigExamples/Authenticate/Ntlm](/ConfigExamples/Authenticate/Ntlm)
     for NTLM (only)
 
-  - [ConfigExamples/Authenticate/WindowsActiveDirectory](/ConfigExamples/Authenticate/WindowsActiveDirectory#)
+  - [ConfigExamples/Authenticate/WindowsActiveDirectory](/ConfigExamples/Authenticate/WindowsActiveDirectory)
     for Negotiate (NTLM and/or Kerberos)
 
 The example below uses winbind for group lookps. There are several other

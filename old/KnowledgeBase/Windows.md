@@ -126,7 +126,7 @@ service is set to "-D -u 3130":
 ## Cache Manager CGI on Windows
 
 On Windows, [cache
-manager](/Features/CacheManager#)
+manager](/Features/CacheManager)
 can be used with Microsoft IIS or Apache. Some specific configuration
 could be needed:
 
@@ -167,27 +167,27 @@ could be needed:
 ## Configuration Guides
 
   - [Windows
-    Update](/SquidFaq/WindowsUpdate#)
+    Update](/SquidFaq/WindowsUpdate)
 
   - [Active Directory
-    Authentication](/ConfigExamples/Authenticate/WindowsActiveDirectory#)
+    Authentication](/ConfigExamples/Authenticate/WindowsActiveDirectory)
 
   - [Kerberos
-    Authentication](/ConfigExamples/Authenticate/Kerberos#)
+    Authentication](/ConfigExamples/Authenticate/Kerberos)
 
   - [NTLM
-    Authentication](/ConfigExamples/Authenticate/Ntlm#)
+    Authentication](/ConfigExamples/Authenticate/Ntlm)
     ([with
-    Groups](/ConfigExamples/Authenticate/NtlmWithGroups#))
+    Groups](/ConfigExamples/Authenticate/NtlmWithGroups))
 
 These and many other general manuals in the
-[ConfigExamples](/ConfigExamples#)
+[ConfigExamples](/ConfigExamples)
 section.
 
 ## Registry DNS lookup
 
 On Windows platforms, if no value is specified in the
-[dns\_nameservers](http://www.squid-cache.org/Doc/config/dns_nameservers#)
+[dns\_nameservers](http://www.squid-cache.org/Doc/config/dns_nameservers)
 option in squid.conf or in the /etc/resolv.conf file, the list of DNS
 name servers are taken from the Windows registry, both static and
 dynamic DHCP configurations are supported.
@@ -200,7 +200,7 @@ dynamic DHCP configurations are supported.
     supported by Squid
 
   - When using ACL like
-    '[acl](http://www.squid-cache.org/Doc/config/acl#) aclname acltype
+    '[acl](http://www.squid-cache.org/Doc/config/acl) aclname acltype
     "file"' the file must be in DOS text format (CR+LF) and the full
     Windows path must be specified, for example:
 
@@ -314,7 +314,7 @@ Unpack the source archive as usual and run configure.
 The following are the recommended minimal options for Windows:
 
 **Squid-3** : (requires
-[Squid-3.5](/Releases/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5)
 or later, see porting efforts section below)
 
     --prefix=c:/squid
@@ -398,7 +398,7 @@ Cygwin has working builds and available packages sponsored by
 ## MinGW-w64
 
 As of
-[Squid-3.5](/Releases/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5)
 :
 
   - the default feature set builds without extra special ./configure
@@ -407,7 +407,7 @@ As of
   - missing shared socket support available in Vista and later.
     Necessary for SMP workers.
 
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 is cross-compiling with Mingw-w64 build environment on Debian, with
 occasional native MinGW-w64 environment builds for confirmation of
 changes. As this is spare-time work progress is slow.
@@ -458,14 +458,14 @@ compiler.
 ## MinGW32
 
 Sponsorship from iCelero produced a working
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 and
-[Squid-3.3](/Releases/Squid-3.3#).
+[Squid-3.3](/Releases/Squid-3.3).
 Unfortunately the product and sponsorship dropped before the final
 stages of this work could be cleaned up for GPL release.
 
 As of
-[Squid-3.5](/Releases/Squid-3.5#)
+[Squid-3.5](/Releases/Squid-3.5)
 :
 
   - the default feature set builds without extra special ./configure
@@ -482,9 +482,9 @@ As of
             --enable-build-info="Windows (MinGW32)"
 
   - This builds for
-    [Squid-3.5](/Releases/Squid-3.5#)
+    [Squid-3.5](/Releases/Squid-3.5)
     but not later code. A newer GCC version than supplied with
-    [MingW32](/MingW32#)
+    [MingW32](/MingW32)
     is required.
 
   - The main Squid binary still lacks SMP support and will only operate
@@ -496,7 +496,7 @@ There also appears to be some work done by Joe Pelaez Jorge
 ## Visual Studio
 
 Almost no work on this environment has been done since
-[Squid-2.7](/Releases/Squid-2.7#).
+[Squid-2.7](/Releases/Squid-2.7).
 
 Entirely new .sln, .sdf and .vcxproj build files need to be generated.
 Ideally these would mirror the on-Windows style of convenience libraries
@@ -505,4 +505,4 @@ those lines have some nice results.
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

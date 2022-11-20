@@ -11,7 +11,7 @@
   - **Version**: 2.8
 
   - **Developer**:
-    [AdrianChadd](/AdrianChadd#)
+    [AdrianChadd](/AdrianChadd)
 
   - **More**:
 
@@ -25,4 +25,4 @@ forward whether or not the whole body has been received).
 Buffering to disk would be more complex to implement, but would probably
 be more robust.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

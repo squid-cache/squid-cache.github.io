@@ -23,9 +23,9 @@ Alternatively, you may want to use more than one Squid cache and use
 load-balancing mechanisms such as
 [VRRP](http://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol),
 external load-balancers or ad-hoc Proxy Auto-Configuration Scripts (see
-[../ConfiguringBrowsers](/SquidFaq/ConfiguringBrowsers#)
+[../ConfiguringBrowsers](/SquidFaq/ConfiguringBrowsers)
 and
-[Technology/ProxyPac](/Technology/ProxyPac#))
+[Technology/ProxyPac](/Technology/ProxyPac))
 to achieve higher availability.
 
 Performance is also important for modern networking environments which
@@ -49,7 +49,7 @@ directories fails.
 
   - ℹ️
     There are
-    [Plans](/Features/CacheDirFailover#)
+    [Plans](/Features/CacheDirFailover)
     to make squid more robust against disk failures.
 
 Since JBOD does not guarantee high availability for the disk subsystem,
@@ -89,13 +89,13 @@ benefits for Squid and only the drawbacks of loosing the whole cache
 should a single drive fail.
 
 The choice of
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) type
+[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) type
 strongly influences the performance of RAID0. **ufs** and **diskd**
 types use one thread IO process per
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) entry.
+[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) entry.
 Under RAID0 using N disks you get 1/N the IO speed of the equivalent
 JBOD configuration. **aufs** can be tuned with multiple IO threads per
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) and
+[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) and
 reduce the performance difference to some degree.
 
 Recommendation:
@@ -127,7 +127,7 @@ equal speed as JBOD. Software controllers can expect to see 50% increase
 in CPU overheads on disk IO.
 
 As with JBOD, it's recommended to use one
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) per
+[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) per
 logical volume to maximize throughput.
 
 Recommendation:

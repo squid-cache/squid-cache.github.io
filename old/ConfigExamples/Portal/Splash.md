@@ -28,21 +28,21 @@ Captive portal splash pages can confuse client software when it appears
 on intercepted traffic responses. The client software can confuse the
 splash page as a response from the intended origin server.
 
-RFC [6585](https://tools.ietf.org/rfc/rfc6585#) defines an extension
+RFC [6585](https://tools.ietf.org/rfc/rfc6585) defines an extension
 HTTP status code (**511**) passing the information back to the client
 software that the response is NOT from the origin and things may change
 in future (ie after any splash page login has been performed).
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 and later can be configured to send this extension status code and a
 template splash page with the
-[deny\_info](http://www.squid-cache.org/Doc/config/deny_info#)
+[deny\_info](http://www.squid-cache.org/Doc/config/deny_info)
 directive.
 
   - 
     
     |                                                                             |                                                                                                                                                                                                      |
     | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | ℹ️ NOTE | Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the [deny\_info](http://www.squid-cache.org/Doc/config/deny_info#) directive. |
+    | ℹ️ NOTE | Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the [deny\_info](http://www.squid-cache.org/Doc/config/deny_info) directive. |
     
 
 ## Squid Configuration File - Simple Example
@@ -71,7 +71,7 @@ NOTE: in the examples below:
     "/var/lib/squid/session.db" and ensure it is writeable to by the
     Squid user
 
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 and older:
 
     # mind the wrap. this is one line:
@@ -83,7 +83,7 @@ and older:
     
     http_access deny !existing_users
 
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 and later (session helper renamed and 511 status code with splash
 template):
 
@@ -107,7 +107,7 @@ which receives the splash screen.
 The following configuration example adds in a url\_regex rule to force
 the user to browse to a particular website before the session is reset.
 This example is for
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 and later, but can be adapted for earlier versions.
 
     # Set up the session helper in active mode. Mind the wrap - this is one line:
@@ -145,9 +145,9 @@ and later, but can be adapted for earlier versions.
 
   - Dependency on an external web server to publish the splash page can
     be eliminated in some situations with the use of a [custom
-    error](/Features/CustomErrors#)
+    error](/Features/CustomErrors)
     page template passed to
-    [deny\_info](http://www.squid-cache.org/Doc/config/deny_info#).
+    [deny\_info](http://www.squid-cache.org/Doc/config/deny_info).
     However, note that is page can only be a static HTML page.
 
   - ℹ️
@@ -158,4 +158,4 @@ and later, but can be adapted for earlier versions.
     [deny\_info](http://www.squid-cache.org/Doc/config/deny_info/),
     [http\_access](http://www.squid-cache.org/Doc/config/http_access/)
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

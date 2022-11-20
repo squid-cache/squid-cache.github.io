@@ -10,10 +10,10 @@
 
 # Configuration Options
 
-[logformat](http://www.squid-cache.org/Doc/config/logformat#) option in
+[logformat](http://www.squid-cache.org/Doc/config/logformat) option in
 squid.conf defines a named format for log output.
 
-[access\_log](http://www.squid-cache.org/Doc/config/access_log#) option
+[access\_log](http://www.squid-cache.org/Doc/config/access_log) option
 then uses the named format to write a given log file with its output
 about each request in that format.
 
@@ -21,7 +21,7 @@ about each request in that format.
 
 The default formats are built-in to squid and do not need to be defined
 manually. They can be used simply by specifying the default format name
-on [access\_log](http://www.squid-cache.org/Doc/config/access_log#)
+on [access\_log](http://www.squid-cache.org/Doc/config/access_log)
 lines.
 
 ### squid
@@ -103,7 +103,7 @@ columns separated by one ore more spaces:
 
 3.  **client address** The IP address of the requesting instance, the
     client IP address. The
-    [client\_netmask](http://www.squid-cache.org/Doc/config/client_netmask#)
+    [client\_netmask](http://www.squid-cache.org/Doc/config/client_netmask)
     configuration option can distort the clients for data protection
     reasons, but it makes analysis more difficult. Often it is better to
     use one of the log file anonymizers.
@@ -132,7 +132,7 @@ columns separated by one ore more spaces:
 6.  **request method** The request method to obtain an object. Please
     refer to section [request-methods](#request-methods) for available
     methods. If you turned off
-    [log\_icp\_queries](http://www.squid-cache.org/Doc/config/log_icp_queries#)
+    [log\_icp\_queries](http://www.squid-cache.org/Doc/config/log_icp_queries)
     in your configuration, you will not see (and thus unable to analyze)
     ICP exchanges. The *PURGE* method is only available, if you have an
     ACL for "method purge" enabled in your configuration file.
@@ -140,13 +140,13 @@ columns separated by one ore more spaces:
 7.  **URL** This column contains the URL requested. Please note that the
     log file may contain whitespace for the URI. The default
     configuration for
-    [uri\_whitespace](http://www.squid-cache.org/Doc/config/uri_whitespace#)
+    [uri\_whitespace](http://www.squid-cache.org/Doc/config/uri_whitespace)
     denies or truncates whitespace, though.
 
 8.  **user** The eighth column may contain the user identity for the
     requesting client. This may be sourced from one of HTTP
     authentication, an external ACL helper, TLS authentication, or IDENT
-    lookup (RFC [931](https://tools.ietf.org/rfc/rfc931#)) - checked in
+    lookup (RFC [931](https://tools.ietf.org/rfc/rfc931)) - checked in
     that order with the first to present information displayed. If no
     user identity is available a "-" will be logged.
 
@@ -156,7 +156,7 @@ columns separated by one ore more spaces:
       - Any hierarchy tag may be prefixed with *TIMEOUT\_*, if the
         timeout occurs waiting for all ICP replies to return from the
         neighbours. The timeout is either dynamic, if the
-        [icp\_query\_timeout](http://www.squid-cache.org/Doc/config/icp_query_timeout#)
+        [icp\_query\_timeout](http://www.squid-cache.org/Doc/config/icp_query_timeout)
         was not set, or the time configured there has run up.
     
       - A code that explains how the request was handled, e.g. by
@@ -177,10 +177,10 @@ columns separated by one ore more spaces:
     content types ":" or even empty ones.
 
 There may be two more columns in the *access.log*, if the (debug) option
-[log\_mime\_headers](http://www.squid-cache.org/Doc/config/log_mime_headers#)
+[log\_mime\_headers](http://www.squid-cache.org/Doc/config/log_mime_headers)
 is enabled In this case, the HTTP request headers are logged between a
 "`[" and a "`\]", and the HTTP reply headers are also logged between
 "`[" and "`\]". All control characters like CR and LF are URL-escaped,
 but spaces are *not* escaped\! Parsers should watch out for this.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

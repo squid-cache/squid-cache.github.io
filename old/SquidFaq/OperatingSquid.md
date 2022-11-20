@@ -2,7 +2,7 @@
 
 The Squid distribution includes a CGI utility called *cachemgr.cgi*
 which can be used to view squid statistics with a web browser. See
-[../CacheManager](/SquidFaq/CacheManager#)
+[../CacheManager](/SquidFaq/CacheManager)
 for more information on its usage and installation.
 
 # Managing the Cache Storage
@@ -323,22 +323,22 @@ has root privilege and therefore cannot cause as much damage as it might
 have done.
 
 Squid does this with
-[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user#).
+[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user).
 The coordinator (daemon manager) process must be run as 'root' in order
 to setup the administrative details and will downgrade its privileges to
 the
-[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user#)
+[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
 account before running any of the more risky network operations.
 
 If the
-[cache\_effective\_group](http://www.squid-cache.org/Doc/config/cache_effective_group#)
+[cache\_effective\_group](http://www.squid-cache.org/Doc/config/cache_effective_group)
 is configured Squid will drop additional group privileges and run as
 only the user:group specified.
 
 The **-N** command line option makes Squid run without spawning
 low-privileged child processes for safe networking. When this option is
 used Squid main process will drop its privileges down to the
-[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user#)
+[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
 account but will try to retain some means of regaining root privileges
 for reconfiguration. Some components which rely on the more dangerous
 root privieges will not be able to be altered with just a reconfigure
@@ -387,4 +387,4 @@ another path, the real clients will send TCP resets to the origin
 servers, thereby breaking the connections.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

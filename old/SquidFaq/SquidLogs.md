@@ -90,7 +90,7 @@ administrative messages.
 
 Some of the more frequently questioned messages and what they mean are
 outlined in the
-[KnowledgeBase](/KnowledgeBase#):
+[KnowledgeBase](/KnowledgeBase):
 
   - 1.  KnowledgeBase/ExcessData
     2.  KnowledgeBase/FailedToSelectSource
@@ -104,13 +104,13 @@ outlined in the
 
 Most log file analysis program are based on the entries in *access.log*.
 
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 and
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 allow the administrators to configure their [logfile
-format](/Features/LogFormat#)
+format](/Features/LogFormat)
 and [log output
-method](/Features/LogModules#)
+method](/Features/LogModules)
 with great flexibility. Previous versions offered a much more limited
 functionality.
 
@@ -133,14 +133,14 @@ underscore characters) which describe the response sent to the client.
     
     |              |                                                                                                                                                                                                                                                                                                                                                                                                                       |
     | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **CF**       | At least one request in this transaction was collapsed. See [collapsed\_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding#) for more details about request collapsing. Support for this tag has been added to Squid v5 on 2018-06-18 (commit [d2a6dc](https://github.com/squid-cache/squid/commit/d2a6dcba707c15484c255e7a569b90f7f1186383)). It may not be available in earlier Squid versions. |
+    | **CF**       | At least one request in this transaction was collapsed. See [collapsed\_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding) for more details about request collapsing. Support for this tag has been added to Squid v5 on 2018-06-18 (commit [d2a6dc](https://github.com/squid-cache/squid/commit/d2a6dcba707c15484c255e7a569b90f7f1186383)). It may not be available in earlier Squid versions. |
     | **CLIENT**   | The client request placed limits affecting the response. Usually seen with client issued a "no-cache", or analogous cache control command along with the request. Thus, the cache has to validate the object.                                                                                                                                                                                                         |
     | **IMS**      | The client sent a revalidation (conditional) request.                                                                                                                                                                                                                                                                                                                                                                 |
     | **ASYNC**    | The request was generated internally by Squid. Usually this is background fetches for cache information exchanges, background revalidation from *stale-while-revalidate* cache controls, or ESI sub-objects being loaded.                                                                                                                                                                                             |
     | **SWAPFAIL** | The object was believed to be in the cache, but could not be accessed. A new copy was requested from the server.                                                                                                                                                                                                                                                                                                      |
     | **REFRESH**  | A revalidation (conditional) request was sent to the server.                                                                                                                                                                                                                                                                                                                                                          |
     | **SHARED**   | This tag is not supported yet. This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED.                                                                                                                                                                                                                                                    |
-    | **REPLY**    | The HTTP reply from server or peer. Usually seen on **DENIED** due to [http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access#) ACLs preventing delivery of servers response object to the client.                                                                                                                                                                                              |
+    | **REPLY**    | The HTTP reply from server or peer. Usually seen on **DENIED** due to [http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access) ACLs preventing delivery of servers response object to the client.                                                                                                                                                                                              |
     
 
   - These tags are optional and describe what type of object was
@@ -150,12 +150,12 @@ underscore characters) which describe the response sent to the client.
     | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **NEGATIVE**   | Only seen on **HIT** responses. Indicating the response was a cached error response. e.g. "404 not found"                                                                                                                                           |
     | **STALE**      | The object was cached and served stale. This is usually caused by *stale-while-revalidate* or *stale-if-error* cache controls.                                                                                                                      |
-    | **OFFLINE**    | The requested object was retrieved from the cache during [offline\_mode](http://www.squid-cache.org/Doc/config/offline_mode#). The offline mode never validates any object.                                                                         |
+    | **OFFLINE**    | The requested object was retrieved from the cache during [offline\_mode](http://www.squid-cache.org/Doc/config/offline_mode). The offline mode never validates any object.                                                                         |
     | **INVALID**    | An invalid request was received. An error response was delivered indicating what the problem was.                                                                                                                                                   |
     | **FAIL**       | Only seen on **REFRESH** to indicate the revalidation request failed. The response object may be the server provided network error or the stale object which was being revalidated depending on *stale-if-error* cache control.                     |
     | **MODIFIED**   | Only seen on **REFRESH** responses to indicate revalidation produced a new modified object.                                                                                                                                                         |
     | **UNMODIFIED** | Only seen on **REFRESH** responses to indicate revalidation produced a 304 (Not Modified) status. The client gets either a full 200 (OK), a 304 (Not Modified), or (in theory) another response, depending on the client request and other details. |
-    | **REDIRECT**   | Squid generated an HTTP redirect response to this request. Only on [Squid-3.2](/Releases/Squid-3.2#)+ or Squid built with -DLOG\_TCP\_REDIRECTS compiler flag.                                    |
+    | **REDIRECT**   | Squid generated an HTTP redirect response to this request. Only on [Squid-3.2](/Releases/Squid-3.2)+ or Squid built with -DLOG\_TCP\_REDIRECTS compiler flag.                                    |
     
 
   - These tags are optional and describe whether the response was loaded
@@ -168,7 +168,7 @@ underscore characters) which describe the response sent to the client.
     | **MISS**    | The response object delivered was the network response object.                                                                                                                                                                                                          |
     | **DENIED**  | The request was denied by access controls.                                                                                                                                                                                                                              |
     | **NOFETCH** | A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either **UDP\_HIT** or **UDP\_MISS\_NOFETCH**. Neighbours will thus only fetch hits. |
-    | **TUNNEL**  | A binary tunnel was established for this transaction. Only on [Squid-3.5](/Releases/Squid-3.5#)+                                                                                                                      |
+    | **TUNNEL**  | A binary tunnel was established for this transaction. Only on [Squid-3.5](/Releases/Squid-3.5)+                                                                                                                      |
     
 
   - These tags are optional and describe some error conditions which
@@ -178,19 +178,19 @@ underscore characters) which describe the response sent to the client.
     | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
     | **ABORTED** | The response was not completed due to the connection being aborted (usually by the client).                                                                                                                                                                                                                                                                                                                                                                        |
     | **TIMEOUT** | The response was not completed due to a connection timeout.                                                                                                                                                                                                                                                                                                                                                                                                        |
-    | **IGNORED** | While refreshing a previously cached response A, Squid got a response B that was *older* than A (as determined by the Date header field). Squid ignored response B (and attempted to use A instead). This "ignore older responses" logic complies with RFC [7234](https://tools.ietf.org/rfc/rfc7234#) Section [4](https://tools.ietf.org/html/rfc7234#section-4) requirement: a cache MUST use the most recent response (as determined by the Date header field). |
+    | **IGNORED** | While refreshing a previously cached response A, Squid got a response B that was *older* than A (as determined by the Date header field). Squid ignored response B (and attempted to use A instead). This "ignore older responses" logic complies with RFC [7234](https://tools.ietf.org/rfc/rfc7234) Section [4](https://tools.ietf.org/html/rfc7234#section-4) requirement: a cache MUST use the most recent response (as determined by the Date header field). |
     
 
 ### HTTP status codes
 
-These are taken from RFC [1945](https://tools.ietf.org/rfc/rfc1945#)
-(HTTP/1.0), [2616](https://tools.ietf.org/rfc/rfc2616#) (HTTP/1.1) and
+These are taken from RFC [1945](https://tools.ietf.org/rfc/rfc1945)
+(HTTP/1.0), [2616](https://tools.ietf.org/rfc/rfc2616) (HTTP/1.1) and
 verified for Squid. Squid uses almost all codes except 416 (Request
 Range Not Satisfiable). Extra codes used in the Squid logs (but not live
 traffic) include 000 for a result code being unavailable, and 600 to
 signal an invalid header, a proxy error. Also, some definitions were
-added as for RFC [2518](https://tools.ietf.org/rfc/rfc2518#) and
-[4918](https://tools.ietf.org/rfc/rfc4918#) (WebDAV). Yes, there are
+added as for RFC [2518](https://tools.ietf.org/rfc/rfc2518) and
+[4918](https://tools.ietf.org/rfc/rfc4918) (WebDAV). Yes, there are
 really two entries for status code 424:
 
 |            |                                                    |                                                                                                                                       |
@@ -198,57 +198,57 @@ really two entries for status code 424:
 | **Status** | **Description**                                    | **RFC(s)**                                                                                                                            |
 | 000        | Used mostly with UDP traffic.                      | N/A                                                                                                                                   |
 |            | **Informational**                                  |                                                                                                                                       |
-| 100        | Continue                                           | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 101        | Switching Protocols                                | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 102        | Processing                                         | [2518](https://tools.ietf.org/rfc/rfc2518#)                                                                                           |
+| 100        | Continue                                           | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 101        | Switching Protocols                                | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 102        | Processing                                         | [2518](https://tools.ietf.org/rfc/rfc2518)                                                                                           |
 |            | **Successful Transaction**                         |                                                                                                                                       |
-| 200        | OK                                                 | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 201        | Created                                            | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 202        | Accepted                                           | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 203        | Non-Authoritative Information                      | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 204        | No Content                                         | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#) |
-| 205        | Reset Content                                      | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 206        | Partial Content                                    | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 207        | Multi Status                                       | [2518](https://tools.ietf.org/rfc/rfc2518#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
+| 200        | OK                                                 | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 201        | Created                                            | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 202        | Accepted                                           | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 203        | Non-Authoritative Information                      | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 204        | No Content                                         | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
+| 205        | Reset Content                                      | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 206        | Partial Content                                    | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 207        | Multi Status                                       | [2518](https://tools.ietf.org/rfc/rfc2518), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
 |            | **Redirection**                                    |                                                                                                                                       |
-| 300        | Multiple Choices                                   | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#) |
-| 301        | Moved Permanently                                  | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#) |
-| 302        | Moved Temporarily                                  | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#) |
-| 303        | See Other                                          | [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
-| 304        | Not Modified                                       | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 305        | Use Proxy                                          | [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
-| 307        | Temporary Redirect                                 | [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
+| 300        | Multiple Choices                                   | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
+| 301        | Moved Permanently                                  | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
+| 302        | Moved Temporarily                                  | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
+| 303        | See Other                                          | [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
+| 304        | Not Modified                                       | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 305        | Use Proxy                                          | [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
+| 307        | Temporary Redirect                                 | [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
 |            | **Client Error**                                   |                                                                                                                                       |
-| 400        | Bad Request                                        | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#) |
-| 401        | Unauthorized                                       | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 402        | Payment Required                                   | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 403        | Forbidden                                          | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#) |
-| 404        | Not Found                                          | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 405        | Method Not Allowed                                 | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 406        | Not Acceptable                                     | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 407        | Proxy Authentication Required                      | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 408        | Request Timeout                                    | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 409        | Conflict                                           | [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
-| 410        | Gone                                               | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 411        | Length Required                                    | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 412        | Precondition Failed                                | [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
-| 413        | Request Entity Too Large                           | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 414        | Request URI Too Large                              | [2616](https://tools.ietf.org/rfc/rfc2616#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
-| 415        | Unsupported Media Type                             | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 416        | Request Range Not Satisfiable                      | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 417        | Expectation Failed                                 | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 422        | Unprocessable Entity                               | [2518](https://tools.ietf.org/rfc/rfc2518#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
+| 400        | Bad Request                                        | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
+| 401        | Unauthorized                                       | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 402        | Payment Required                                   | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 403        | Forbidden                                          | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
+| 404        | Not Found                                          | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 405        | Method Not Allowed                                 | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 406        | Not Acceptable                                     | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 407        | Proxy Authentication Required                      | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 408        | Request Timeout                                    | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 409        | Conflict                                           | [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
+| 410        | Gone                                               | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 411        | Length Required                                    | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 412        | Precondition Failed                                | [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
+| 413        | Request Entity Too Large                           | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 414        | Request URI Too Large                              | [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
+| 415        | Unsupported Media Type                             | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 416        | Request Range Not Satisfiable                      | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 417        | Expectation Failed                                 | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 422        | Unprocessable Entity                               | [2518](https://tools.ietf.org/rfc/rfc2518), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
 | 424        | Locked                                             | (broken WebDAV implementations??)                                                                                                     |
-| 424        | Failed Dependency                                  | [2518](https://tools.ietf.org/rfc/rfc2518#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
+| 424        | Failed Dependency                                  | [2518](https://tools.ietf.org/rfc/rfc2518), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
 | 433        | Unprocessable Entity                               |                                                                                                                                       |
 |            | **Server Errors**                                  |                                                                                                                                       |
-| 500        | Internal Server Error                              | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 501        | Not Implemented                                    | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 502        | Bad Gateway                                        | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 503        | Service Unavailable                                | [1945](https://tools.ietf.org/rfc/rfc1945#), [2616](https://tools.ietf.org/rfc/rfc2616#)                                              |
-| 504        | Gateway Timeout                                    | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 505        | HTTP Version Not Supported                         | [2616](https://tools.ietf.org/rfc/rfc2616#)                                                                                           |
-| 507        | Insufficient Storage                               | [2518](https://tools.ietf.org/rfc/rfc2518#), [4918](https://tools.ietf.org/rfc/rfc4918#)                                              |
+| 500        | Internal Server Error                              | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 501        | Not Implemented                                    | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 502        | Bad Gateway                                        | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 503        | Service Unavailable                                | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
+| 504        | Gateway Timeout                                    | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 505        | HTTP Version Not Supported                         | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
+| 507        | Insufficient Storage                               | [2518](https://tools.ietf.org/rfc/rfc2518), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
 |            |                                                    |                                                                                                                                       |
 |            | Broken Server Software                             |                                                                                                                                       |
 | 600        | Squid: header parsing error                        |                                                                                                                                       |
@@ -259,8 +259,8 @@ really two entries for status code 424:
 ### Request methods
 
 Squid recognizes several request methods as defined in RFC
-[2616](https://tools.ietf.org/rfc/rfc2616#) and RFC
-[2518](https://tools.ietf.org/rfc/rfc2518#) "HTTP Extensions for
+[2616](https://tools.ietf.org/rfc/rfc2616) and RFC
+[2518](https://tools.ietf.org/rfc/rfc2518) "HTTP Extensions for
 Distributed Authoring -- WEBDAV" extensions.
 
 ``` 
@@ -357,7 +357,7 @@ authentication requirements.
 **ORIGINAL\_DST** The server connection was limited to the client
 provided destination IP. This occurs on interception proxies when Host
 security is enabled, or
-[client\_dst\_passthru](http://www.squid-cache.org/Doc/config/client_dst_passthru#)
+[client\_dst\_passthru](http://www.squid-cache.org/Doc/config/client_dst_passthru)
 transparency is enabled.
 
 **ANY\_OLD\_PARENT** (former ANY\_PARENT?) Squid used the first
@@ -509,9 +509,9 @@ produced by an *assert()* failure. If you are not using *RunCache*, you
 will not see such a file.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-    [RunCache](/RunCache#)
+    [RunCache](/RunCache)
     has been obsoleted since
-    [Squid-2.6](/Releases/Squid-2.6#).
+    [Squid-2.6](/Releases/Squid-2.6).
     Modern Squid run as daemons usually log this output to the system
     syslog facility or if run manually to stdout for the account which
     operates the master daemon process.
@@ -520,7 +520,7 @@ will not see such a file.
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     Starting from
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     this log has become one of the default [access.log](#access.log)
     formats and is always available for use. It is no longer a special
     separate log file.
@@ -551,13 +551,13 @@ feature. You should rotate your log files at least once per day. The
 current log files are closed and then renamed with numeric extensions
 (.0, .1, etc). If you want to, you can write your own scripts to archive
 or remove the old log files. If not, Squid will only keep up to
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate#)
+[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 versions of each log file. The logfile rotation procedure also writes a
 clean *swap.state* file, but it does not leave numbered versions of the
 old files.
 
 If you set
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate#)
+[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 to 0, Squid simply closes and then re-opens the logs. This allows
 third-party logfile management systems, such as *newsyslog*, to maintain
 the log files.
@@ -587,8 +587,8 @@ To disable *cache.log*:
 |                                                                           |                                                                                                                                                                                                                                                                                                 |
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | It is a bad idea to disable the *cache.log* because this file contains many important status and debugging messages. However, if you really want to, you can                                                                                                                                    |
-| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)      | If /dev/null is specified to any of the above log files, [logfile](http://www.squid-cache.org/Doc/config/logfile#) rotate MUST also be set to *0* or else risk Squid rotating away /dev/null making it a plain log file                                                                         |
-| ℹ️    | Instead of disabling the log files, it is advisable to use a smaller value for [logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate#) and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system |
+| ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)      | If /dev/null is specified to any of the above log files, [logfile](http://www.squid-cache.org/Doc/config/logfile) rotate MUST also be set to *0* or else risk Squid rotating away /dev/null making it a plain log file                                                                         |
+| ℹ️    | Instead of disabling the log files, it is advisable to use a smaller value for [logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate) and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system |
 
 # What is the maximum size of access.log?
 
@@ -612,27 +612,27 @@ When logging debug information into cache.log it can easily become
 extremely large and when a long access.log traffic history is required
 (ie by law in some countries) storing large cache.log for that time is
 not reasonable. From
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 cache.log can be rotated with an individual cap set by
-[debug\_options](http://www.squid-cache.org/Doc/config/debug_options#)
+[debug\_options](http://www.squid-cache.org/Doc/config/debug_options)
 rotate=N} option to store fewer of these large files in the .0 to .N
 series of backups. The default is to store the same number as with
 access.log and set in the
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate#)
+[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 directive.
 
 # I want to use another tool to maintain the log files.
 
 If you set
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate#)
+[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 to 0, Squid simply closes and then re-opens the logs. This allows
 third-party logfile management systems, such as
 [newsyslog](http://www.weird.com/~woods/projects/newsyslog.html) or
 *logrotate*, to maintain the log files.
 
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 and
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 and later also provide modular logging outputs which provide flexibility
 for sending log data to alternative logging systems.
 
@@ -647,14 +647,14 @@ the cache operations in progress. The procedures were described above.
 Depending on the disk space allocated for log file storage, it is
 recommended to set up a cron job which rotates the log files every 24,
 12, or 8 hour. You will need to set your
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate#)
+[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 to a sufficiently large number. During a time of some idleness, you can
 safely transfer the log files to your analysis host in one burst.
 
 Before transport, the log files can be compressed during off-peak time.
 On the analysis host, the log file are concatenated into one file, so
 one file for 24 hours is the yield. Also note that with
-[log\_icp\_queries](http://www.squid-cache.org/Doc/config/log_icp_queries#)
+[log\_icp\_queries](http://www.squid-cache.org/Doc/config/log_icp_queries)
 enabled, you might have around 1 GB of uncompressed log information per
 day and busy cache. Look into you cache manager info page to make an
 educated guess on the size of your log files.
@@ -762,25 +762,25 @@ There are several alternatives which are much safer to setup and use.
 The basic capabilities present are :
 
 since
-[Squid-2.6](/Releases/Squid-2.6#):
+[Squid-2.6](/Releases/Squid-2.6):
 
   - logging to system syslog
 
 since
-[Squid-2.7](/Releases/Squid-2.7#):
+[Squid-2.7](/Releases/Squid-2.7):
 
   - logging to an external service via UDP packets
 
   - logging through IPC to a custom local daemon
 
 since
-[Squid-3.2](/Releases/Squid-3.2#):
+[Squid-3.2](/Releases/Squid-3.2):
 
   - logging to an external service via TCP streams
 
 See the [Log Modules
-feature](/Features/LogModules#)
+feature](/Features/LogModules)
 for technical details on setting up a daemon or other output modules.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

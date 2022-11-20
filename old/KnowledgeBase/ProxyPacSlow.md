@@ -54,4 +54,4 @@ issue and successfully applying the suggested fix and David Gameau
 `<David.Gameau AT unisa DOT edu DOT au>` for identifying the problem and
 suggesting the workaround.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

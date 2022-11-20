@@ -309,7 +309,7 @@ Here is a simple patch to fix the bug:
     @@ -31,7 +31,7 @@
       * SUCH DAMAGE.
       *
-      *     @(#)uipc_socket.c       8.3 (Berkeley) 4/15/94
+      *     @()uipc_socket.c       8.3 (Berkeley) 4/15/94
     - *     $Id: FAQ.sgml,v 1.250 2005/04/22 19:29:50 hno Exp $
     + *     $Id: FAQ.sgml,v 1.250 2005/04/22 19:29:50 hno Exp $
       */
@@ -574,7 +574,7 @@ command:
 
     echo 0 > /proc/sys/net/ipv4/tcp_ecn
 
-[HenrikNordstrom](/HenrikNordstrom#)
+[HenrikNordstrom](/HenrikNordstrom)
 explains:
 
     ECN is an standard extension to TCP/IP, making TCP/IP behave better in
@@ -692,4 +692,4 @@ on large program support for more information, including how to patch an
 already-compiled program.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

@@ -96,5 +96,5 @@ connection pools. A few ideas:
     connection set.
 
   - 
-[CategoryWish](/CategoryWish#)
-[CategoryFeature](/CategoryFeature#)
+[CategoryWish](/CategoryWish)
+[CategoryFeature](/CategoryFeature)

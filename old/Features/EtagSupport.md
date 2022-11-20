@@ -15,7 +15,7 @@
   - **Developer**:
 
   - **More**: bug
-    [1631](https://bugs.squid-cache.org/show_bug.cgi?id=1631#), see also
-    [Features/VarySupport](/Features/VarySupport#)
+    [1631](https://bugs.squid-cache.org/show_bug.cgi?id=1631), see also
+    [Features/VarySupport](/Features/VarySupport)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

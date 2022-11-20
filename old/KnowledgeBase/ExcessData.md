@@ -63,5 +63,5 @@ Some of the options include:
 NP: if you track it down to some other cause not mentioned above, we
 would like to know so this article gets updated.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[CategoryErrorMessages](/CategoryErrorMessages#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[CategoryErrorMessages](/CategoryErrorMessages)

@@ -36,9 +36,9 @@ query strings (?) to obfuscate the video locations but despite that has
 large flash video files and images in relatively static locations.
 
 There are other specific needs detailed in
-[ConfigExamples/DynamicContent/YouTube](/ConfigExamples/DynamicContent/YouTube#).
+[ConfigExamples/DynamicContent/YouTube](/ConfigExamples/DynamicContent/YouTube).
 
 The same mechanisms may be employed for other less popular sites as long
 as the site behavior and obfuscation pattern is understood.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

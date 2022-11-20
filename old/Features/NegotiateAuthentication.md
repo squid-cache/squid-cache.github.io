@@ -7,10 +7,10 @@
   - **Version**: 2.6+
 
   - **Developer**:
-    [GuidoSerassio](/GuidoSerassio#),
-    [HenrikNordstrom](/HenrikNordstrom#),
-    [RobertCollins](/RobertCollins#),
-    [FrancescoChemolli](/FrancescoChemolli#)
+    [GuidoSerassio](/GuidoSerassio),
+    [HenrikNordstrom](/HenrikNordstrom),
+    [RobertCollins](/RobertCollins),
+    [FrancescoChemolli](/FrancescoChemolli)
 
   - **More**: [](http://squid.acmeconsulting.it/)
 
@@ -27,7 +27,7 @@ significantly more secure than NTLM and also poses much less burden on
 the Domain Controller.
 
 See
-[Features/Authentication](/Features/Authentication#)
+[Features/Authentication](/Features/Authentication)
 for details on other schemes supported by Squid and how authentication
 in general works.
 
@@ -69,7 +69,7 @@ Input line received from Squid:
         
         |    |                                                                                                                                                                                                                                                                                                                                                               |
         | -- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-        | YR | A new challenge token is needed. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#) max\_challenge\_lifetime and max\_challenge\_uses parameters. The helper should respond with a **TT** message. |
+        | YR | A new challenge token is needed. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) max\_challenge\_lifetime and max\_challenge\_uses parameters. The helper should respond with a **TT** message. |
         | KK | Authenticate a user's credentials. The helper responds with either **OK**, **ERR**, **AF**, **NA**, or **BH**.                                                                                                                                                                                                                                                |
         
 
@@ -82,9 +82,9 @@ Input line received from Squid:
     
       - Additional parameters passed to the helper which may be
         configured with
-        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#)
+        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
         *key\_extras* parameter. Only available in
-        [Squid-3.5](/Releases/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5)
         and later.
 
 Result line sent back to Squid:
@@ -109,14 +109,14 @@ Result line sent back to Squid:
 
       - ℹ️
         the **OK** and **ERR** result codes are only accepted by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and newer.
 
   - token
     
       - A new challenge **token** value is presented. The token is
         base64-encoded, as defined by RFC
-        [2045](https://tools.ietf.org/rfc/rfc2045#).
+        [2045](https://tools.ietf.org/rfc/rfc2045).
         
         ℹ️
         NOTE: NTLM authenticator interface on Squid-3.3 and older does
@@ -141,11 +141,11 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                                                                                    |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5#))                                                  |
+        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5))                                                  |
         | group=...          | reserved                                                                                                                                                                           |
         | message=...        | A message string that Squid can display on an error page.                                                                                                                          |
         | tag=...            | reserved                                                                                                                                                                           |
-        | token=...          | The base64-encoded, as defined by RFC [2045](https://tools.ietf.org/rfc/rfc2045#), token to be used. This field is only used on **OK** responses.                                  |
+        | token=...          | The base64-encoded, as defined by RFC [2045](https://tools.ietf.org/rfc/rfc2045), token to be used. This field is only used on **OK** responses.                                  |
         | ttl=...            | reserved                                                                                                                                                                           |
         | user=...           | The label to be used by Squid for this client request as **"username"**. With Negotiate and NTLM protocols it typically has the format NAME@DOMAIN or NAME\\\\DOMAIN respectively. |
         | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                                                                                |
@@ -153,13 +153,13 @@ Result line sent back to Squid:
 
       - ℹ️
         the kv-pair field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
       - ℹ️
         the kv-pair returned by this helper can be logged by the
         **%note**
-        [logformat](http://www.squid-cache.org/Doc/config/logformat#)
+        [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
     
       - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
@@ -170,7 +170,7 @@ Result line sent back to Squid:
     
       - A message string that Squid can display on an error page. This
         field is only accepted on **NA** and **BH** responses. From
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         this field is deprecated by the **message=** kv-pair on **BH**
         responses.
 
@@ -186,10 +186,10 @@ made up by two parts:
 
 1.  code within Squid to talk to the client.
     
-      - [Squid-2.6](/Releases/Squid-2.6#)
+      - [Squid-2.6](/Releases/Squid-2.6)
         or later built with `--enable-auth="negotiate"`
     
-      - [Squid-3.2](/Releases/Squid-3.2#)
+      - [Squid-3.2](/Releases/Squid-3.2)
         or later built with `--enable-auth-negotiate`
 
 2.  one or more authentication helpers which perform the grunt work.
@@ -208,7 +208,7 @@ everything to work.
 
   - ℹ️
     All other negotiate parameters are optional. see
-    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#)
+    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
     NEGOTIATE section for more details.
 
 ## Testing
@@ -287,4 +287,4 @@ The issue is a mismatch between the client and helper capabilities. The
 *negotiate\_wrapper* helper is currently the only helper known which can
 handle both types at once.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

@@ -199,4 +199,4 @@ At that point your Windows clients can change their passwords from
 inside Windows and Linux clients can change their passwords using
 smbldap-passwd. All passwords and digests will remain in sync.****
 
-  - [CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+  - [CategoryKnowledgeBase](/CategoryKnowledgeBase)

@@ -5,11 +5,11 @@ Email: `<ngtech1ltd@gmail.com>`
 # 2020\_05
 
 OK, So restarting the
-[NgTech](/NgTech#)
+[NgTech](/NgTech)
 LTD service. After working on couple projects some time now I have
 published and offloaded the RPM and binary packages build of
 Squid-Cahce. Can be seen at:
-[BuildFarm/DockerPackaging](/BuildFarm/DockerPackaging#)
+[BuildFarm/DockerPackaging](/BuildFarm/DockerPackaging)
 
 For now we are downsizing the workload and I am changing the
 availability of my services in general. I will have Desktop/Office hours
@@ -19,7 +19,7 @@ details of the ngtech.co.il domain.
 ## YouTube Granular videos filtering
 
 My current project is
-[YouTube](/YouTube#)
+[YouTube](/YouTube)
 Granular videos filtering. A draft can be seen at:
 [](https://github.com/elico/yt-classification-service-example)
 
@@ -80,7 +80,7 @@ there to understand the market.
 ## StoreID YouTube caching V 2019
 
 I worked on another way to cache
-[YouTube](/YouTube#)
+[YouTube](/YouTube)
 videos for Desktop and integrated it both locally and remotely in couple
 places around the world that has a SAT(WIFI dish) connection in jungles
 and mountains and it seems to work as expected (at-least 30% hit rate).
@@ -128,7 +128,7 @@ will be composed from:
 I have released
 [SquidBlocker](http://www1.ngtech.co.il/wpe/?page_id=135) which can be
 an alternative to
-[SquidGuard](/SquidGuard#).
+[SquidGuard](/SquidGuard).
 If you are already here take a peek at [SquidBlocker
 page](http://www1.ngtech.co.il/squidblocker/) just to understand a bit
 more about the different algorithms and ideas.
@@ -136,19 +136,19 @@ more about the different algorithms and ideas.
 # 2015
 
 Now After a very long time that my work results
-[StoreID](/Features/StoreID#)
+[StoreID](/Features/StoreID)
 and it has been tested of a very long time in production systems and
 considers Stable.
 
 I am recommending for who ever reads this page to also take a peek at
 [Caching Dynamic Content using
-Adaptation](/ConfigExamples/DynamicContent/Coordinator#).
+Adaptation](/ConfigExamples/DynamicContent/Coordinator).
 
 This is also the place to say thanks for all the great guidance from
 [Amos
-Jeffris](/AmosJeffries#),
+Jeffris](/AmosJeffries),
 [Alex
-Rousskov](/AlexRousskov#)
+Rousskov](/AlexRousskov)
 the [squid users
 community](http://www.squid-cache.org/Support/mailing-lists.html#squid-users)
 and all these "people" who helped and helps me everyday to continue and
@@ -159,7 +159,7 @@ do my daily routines which makes me happier and thank god every moment.
 Wrote many helpers for squid such as: "[Heart
 Beat](https://github.com/elico/squid-helpers/tree/master/squid_helpers/proxy_hb_check)",
 "[Caching Dynamic Content using
-Adaptation](/ConfigExamples/DynamicContent/Coordinator#)",
+Adaptation](/ConfigExamples/DynamicContent/Coordinator)",
 "store url", "[Echeclon ICAP
 server](https://github.com/elico/echelon)","DNSBL External\_acl", "DNSBL
 server".
@@ -168,9 +168,9 @@ I also wrote an external\_acl helper framework in ruby for many purposes
 which support concurrency.
 
 Currently working on porting Store\_url\_rewrite from
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 to
-[Squid-3.3](/Releases/Squid-3.3#).
+[Squid-3.3](/Releases/Squid-3.3).
 
 The plan is to add a "fake store url rewrite" (which was done) and then
 find the way to internally implement the Store\_url\_rewrite.
@@ -178,4 +178,4 @@ find the way to internally implement the Store\_url\_rewrite.
 After reading literally thousands lines of code I'm still optimistic
 about the next steps.
 
-[CategoryHomepage](/CategoryHomepage#)
+[CategoryHomepage](/CategoryHomepage)

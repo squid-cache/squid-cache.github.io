@@ -32,7 +32,7 @@ need to know how many directories, space, etc) - maximize network
 performance (using all avaliable space in disk, when avaliable) -
 minimize downtime (when other program fill the disk)
 
-[HenrikNordström](/HenrikNordstr%C3%B6m#)
+[HenrikNordström](/HenrikNordstr%C3%B6m)
 adds:
 
     Squid needs to know the max size it may use in the directory, as this also
@@ -49,4 +49,4 @@ Robert Collins comments:
     * Reduce cache_mem and swap_dir sizes at run-time in line with the set upper bound. I'm thinking that an automatic ratio of 1:9 between memory cache and disk cache index should be reasonable.
     * This provides the groundwork for automatic disk cache management - we know how big we can safely allow it to be in terms of index entries.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

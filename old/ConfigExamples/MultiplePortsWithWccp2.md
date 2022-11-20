@@ -1,7 +1,7 @@
 # Configuring multiple interception ports using WCCPv2
 
 By
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 
 **Warning**: Any example presented here is provided "as-is" with no
 support or guarantee of suitability. If you have any further questions
@@ -15,7 +15,7 @@ currrent implementation can create multiple arbitrary TCP and UDP ports.
 There are a few caveats:
 
   - Squid will have to be configured to listen on each port - the
-    [wccp2\_service](http://www.squid-cache.org/Doc/config/wccp2_service#)
+    [wccp2\_service](http://www.squid-cache.org/Doc/config/wccp2_service)
     configuration only tells WCCPv2 what to do, not Squid;
 
   - WCCPv2 (as far as I know) can't be told to redirect random dynamic
@@ -60,7 +60,7 @@ This configuration covers the interception part - this Squid sits behind
 a NATted interface that is WCCPv2 intercepted. The Squid server sits on
 two network interfaces: an external interface with real a IP address
 that squid binds to with
-[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address#),
+[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address),
 and the internal 192.0.2.0/24 WCCPv2 intercept + NAT'ted address.
 
 ``` 
@@ -94,4 +94,4 @@ address which is being WCCPv2 intercepted.
     iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 8000 -j DNAT --to-destination 192.0.2.10:8000
     iptables -t nat -A PREROUTING -i gre0 -p tcp -m tcp --dport 2080 -j DNAT --to-destination 192.0.2.10:2080
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

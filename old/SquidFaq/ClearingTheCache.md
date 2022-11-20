@@ -58,4 +58,4 @@ know the results then please do. We would like this page to cover all
 known resizing requirements and options.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

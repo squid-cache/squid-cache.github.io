@@ -14,7 +14,7 @@ Squid contains its own debugging system broken into sections and levels.
     section.
 
 They are configured in squid.conf with the
-[debug\_options](http://www.squid-cache.org/Doc/config/debug_options#)
+[debug\_options](http://www.squid-cache.org/Doc/config/debug_options)
 setting as a list of Section,Level pairs. Each pair is set
 left-to-right. If a section is mentioned twice the last mentioned level
 is used.
@@ -24,7 +24,7 @@ urgent fix. These are problems fatal to squid and if your squid is
 crashing the problem is mentioned in cache.log at level 0.
 
 Administrators may also set
-**[debug\_options](http://www.squid-cache.org/Doc/config/debug_options#)
+**[debug\_options](http://www.squid-cache.org/Doc/config/debug_options)
 ALL,1** to get a report of issues which are not causing critical
 problems to squid, but which may be fatal to certain client requests.
 These messages usually also indicate network issues the admin should be
@@ -379,4 +379,4 @@ information needed by the developers to debug.
 
   - section 93 ICAP (RFC 3507) Client
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

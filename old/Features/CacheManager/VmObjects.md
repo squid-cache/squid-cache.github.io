@@ -5,12 +5,12 @@ objects which are currently being retrieved and those which were kept in
 memory for fast access (accelerator mode).
 
 This may also include objects which are stored in the RAM cache
-([cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#)) with no
+([cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem)) with no
 disk copy.
 
   - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
     This is usually much smaller report than the full
-    [objects](/Features/CacheManager/Objects#)
+    [objects](/Features/CacheManager/Objects)
     report. But can still be very, very large.
 
 ## Example Report

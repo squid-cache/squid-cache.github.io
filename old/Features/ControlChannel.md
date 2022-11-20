@@ -29,4 +29,4 @@ channel should be both machine-controllable and user-controllable,
 remote and allow for fine-grained permission tuning. Maybe it can be
 hooked to the HTTP-ification of the cachemgr.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

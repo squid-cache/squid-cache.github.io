@@ -11,14 +11,14 @@ website](http://www.squid-cache.org/Foundation/).
 This part of the wiki deals with helping run the foundation.
 
   - A bit of
-    [/History](/Foundation/History#)
+    [/History](/Foundation/History)
     of the foundation
 
   - Minutes from the foundation Board
-    [/Meetings](/Foundation/Meetings#)
+    [/Meetings](/Foundation/Meetings)
 
   - Board
-    [/SharedDrafts](/Foundation/SharedDrafts#)
+    [/SharedDrafts](/Foundation/SharedDrafts)
     (restricted access)
 
 Discuss this page using the "Discussion" link in the main menu

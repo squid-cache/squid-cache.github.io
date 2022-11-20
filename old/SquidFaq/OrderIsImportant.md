@@ -27,7 +27,7 @@ in squid.conf. But the order determines what the final situation is.
 Modern Squid run multiple *modes* of operation simultaneously.
 
 The order of
-[http\_access](http://www.squid-cache.org/Doc/config/http_access#)
+[http\_access](http://www.squid-cache.org/Doc/config/http_access)
 forward-proxy and reverse-proxy configuration options determines whether
 a reverse-proxy website visitor is able to reach the website. They also
 determine whether that website is able to perform HTTPS, AJAX, JSON, or
@@ -38,45 +38,45 @@ example for specific order details. Generally the reverse-proxy needs to
 be first.
 
 The order and placement of
-[debug\_options](http://www.squid-cache.org/Doc/config/debug_options#)
+[debug\_options](http://www.squid-cache.org/Doc/config/debug_options)
 directives determines what debug levels are run during processing of the
 configuration file and later during normal running of Squid.
 
 ## Authentication
 
 The order of
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param#)
+[auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
 **program** directives determines how Squid reports the authentication
 options to Browsers. This has visible effects on what type of
 authentication is performed. see
-[Features/Authentication](/Features/Authentication#)
+[Features/Authentication](/Features/Authentication)
 for details and recommended ordering.
 
-[acl](http://www.squid-cache.org/Doc/config/acl#) **proxy\_auth** and
-[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#)
+[acl](http://www.squid-cache.org/Doc/config/acl) **proxy\_auth** and
+[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
 using **%LOGIN** must be defined after
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param#). Squid
+[auth\_param](http://www.squid-cache.org/Doc/config/auth_param). Squid
 will warn about authentication being used but not setup here.
 
-[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#)
+[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
 using **%LOGIN** will trigger authentication challenges if those
 credentials are not present. The placement of these tests affects which
 rules around them require authentication.
 
-Similarly [acl](http://www.squid-cache.org/Doc/config/acl#) testing
+Similarly [acl](http://www.squid-cache.org/Doc/config/acl) testing
 authentication placement left-to-right on their line determins whether
 the test bypasses, fails or triggers an auth challenges.
 
 ## Access Controls
 
-[acl](http://www.squid-cache.org/Doc/config/acl#) definition lines must
+[acl](http://www.squid-cache.org/Doc/config/acl) definition lines must
 be specified before any point at which they are mentioned for use.
 
 The order of individual access controls affects other lines of the same
 type. For example each
-[http\_access](http://www.squid-cache.org/Doc/config/http_access#) is
+[http\_access](http://www.squid-cache.org/Doc/config/http_access) is
 run in order and affect each other, but not any
-[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access#)
+[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
 in between.
 
 This goes for each type of access directive. see
@@ -109,29 +109,29 @@ server. The checks are listed here in the order of their execution:
 
 1.  Host header forgery checks
 
-2.  [http\_access](http://www.squid-cache.org/Doc/config/http_access#)
+2.  [http\_access](http://www.squid-cache.org/Doc/config/http_access)
     directive
 
 3.  ICAP/eCAP
-    [adaptation](/SquidFaq/ContentAdaptation#)
+    [adaptation](/SquidFaq/ContentAdaptation)
 
-4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program#)
+4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 
-5.  [adapted\_http\_access](http://www.squid-cache.org/Doc/config/adapted_http_access#)
+5.  [adapted\_http\_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     directive
 
-6.  [store\_id](http://www.squid-cache.org/Doc/config/store_id#)
+6.  [store\_id](http://www.squid-cache.org/Doc/config/store_id)
     directive
 
 7.  clientInterpretRequestHeaders()
 
-8.  [cache](http://www.squid-cache.org/Doc/config/cache#) directive
+8.  [cache](http://www.squid-cache.org/Doc/config/cache) directive
 
 9.  ToS marking
 
 10. nf marking
 
-11. [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#)
+11. [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
     directive
 
 12. callout sequence error handling

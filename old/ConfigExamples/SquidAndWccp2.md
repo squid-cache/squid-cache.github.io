@@ -309,4 +309,4 @@ loosely sorted so that rules with more hits are higher up:
 
 Thanks to Nicolas Ruiz \<<nicolas@ula.ve>\> for his contribution.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

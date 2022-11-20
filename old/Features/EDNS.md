@@ -9,9 +9,9 @@
   - **Version**: 3.2
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
-  - **More**: [2785](https://bugs.squid-cache.org/show_bug.cgi?id=2785#)
+  - **More**: [2785](https://bugs.squid-cache.org/show_bug.cgi?id=2785)
 
 # Details
 
@@ -42,7 +42,7 @@ communication.
 
 Due to design issues within Squid we cannot (yet) make use of these
 hints to automate the packet sizing. Instead the configuration option
-[dns\_packet\_max](http://www.squid-cache.org/Doc/config/dns_packet_max#)
+[dns\_packet\_max](http://www.squid-cache.org/Doc/config/dns_packet_max)
 is needed to set the advertised packet size or disable EDNS entirely.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

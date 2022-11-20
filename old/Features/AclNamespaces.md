@@ -9,7 +9,7 @@
   - **Version**:
 
   - **Developer**:
-    [AlexeyVeselovsky](/AlexeyVeselovsky#)
+    [AlexeyVeselovsky](/AlexeyVeselovsky)
 
   - **More**:
 
@@ -55,4 +55,4 @@ should be able to say:
 
 No currently known issues.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

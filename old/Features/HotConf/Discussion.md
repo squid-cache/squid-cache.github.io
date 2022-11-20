@@ -1,5 +1,5 @@
 See [Discussed
-Page](/Features/HotConf#)
+Page](/Features/HotConf)
 
 Thank you for setting up this page, Amos. Lots of good thoughts here.
 
@@ -27,7 +27,7 @@ In pseudo C++, and simplifying a bit:
     Module::Config *Module::Parse(const SquidDotConfTokenizer &text);
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 Good point, I can see the switchover case would need that separation of
 data vs handlers. However I dislike the need to pass config objects to
@@ -57,7 +57,7 @@ or if its editing current on the spot (think err directory locations,
 size limits, and other state-agnostic settings).
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 
 I am worried about several ideas expressed here but I may be just
 misinterpreting what you are saying. I will provide specific sketches in
@@ -172,7 +172,7 @@ this sketch might work:
     }
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 Aw, heck no. That leaves the configure startup/shutdown process outside
 the main loop and inaccessible to async operations.
@@ -273,7 +273,7 @@ The parsing tokenizer needs to be looked at separately as you pointed
 out. But that is not relevant to the reconfigure scope of this feature.
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 
 Making configuration asynchronous is worth trying.
 
@@ -324,7 +324,7 @@ modules, but having Module::Config objects free of side-effects will
 help with that.
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 This bit confused me terribly...
 
@@ -459,7 +459,7 @@ new TheConfig set to check dependencies etc, fine. I think it will turn
 out to be very small, but it may be useful.
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 
 I am sorry, but do not follow most of your comments because I think you
 are attacking a model that I am not proposing while discussing low-level
@@ -521,7 +521,7 @@ Ignoring all other details, do you see any serious problems with the
 above?
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 Yes I think we are definitely talking to different things. I will try
 harder to catch you on IRC about the fine details of the processing.
@@ -651,7 +651,7 @@ you are making for the above step. Until we agree on step (1) design I
 think we should skip them.
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 
 Your first two worries are non-issues, I think:
 
@@ -685,7 +685,7 @@ to their module state like we have them now (at best). They will be
 So these are settled, I think. Let's call that progress\!
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)
 
 I believe we have rough agreement on the high-level definition for the
 first configuration step, despite that you think you cannot ignore some
@@ -726,4 +726,4 @@ If the above is satisfactory, let's try to move on to step2 discussion
 and come back to the lower-level details as needed.
 
 \--
-[AlexRousskov](/AlexRousskov#)
+[AlexRousskov](/AlexRousskov)

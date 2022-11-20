@@ -8,34 +8,34 @@
 
   - **More**:
     
-      - RFC [7230](https://tools.ietf.org/rfc/rfc7230#) HTTP/1.1:
+      - RFC [7230](https://tools.ietf.org/rfc/rfc7230) HTTP/1.1:
         Message Syntax and Routing
         
-          - RFC [2817](https://tools.ietf.org/rfc/rfc2817#) Upgrading to
+          - RFC [2817](https://tools.ietf.org/rfc/rfc2817) Upgrading to
             TLS Within HTTP/1.1
     
-      - RFC [7231](https://tools.ietf.org/rfc/rfc7231#) HTTP/1.1:
+      - RFC [7231](https://tools.ietf.org/rfc/rfc7231) HTTP/1.1:
         Semantics and Content
         
-          - RFC [7238](https://tools.ietf.org/rfc/rfc7238#) Status Code
+          - RFC [7238](https://tools.ietf.org/rfc/rfc7238) Status Code
             308 (Permanent Redirect)
     
-      - RFC [7232](https://tools.ietf.org/rfc/rfc7232#) HTTP/1.1:
+      - RFC [7232](https://tools.ietf.org/rfc/rfc7232) HTTP/1.1:
         Conditional Requests
     
-      - RFC [7233](https://tools.ietf.org/rfc/rfc7233#) HTTP/1.1: Range
+      - RFC [7233](https://tools.ietf.org/rfc/rfc7233) HTTP/1.1: Range
         Requests
     
-      - RFC [7234](https://tools.ietf.org/rfc/rfc7234#) HTTP/1.1:
+      - RFC [7234](https://tools.ietf.org/rfc/rfc7234) HTTP/1.1:
         Caching
     
-      - RFC [7235](https://tools.ietf.org/rfc/rfc7235#) HTTP/1.1:
+      - RFC [7235](https://tools.ietf.org/rfc/rfc7235) HTTP/1.1:
         Authentication
         
-          - RFC [2617](https://tools.ietf.org/rfc/rfc2617#) Basic and
+          - RFC [2617](https://tools.ietf.org/rfc/rfc2617) Basic and
             Digest Access Authentication
         
-          - RFC [4559](https://tools.ietf.org/rfc/rfc4559#) SPNEGO-based
+          - RFC [4559](https://tools.ietf.org/rfc/rfc4559) SPNEGO-based
             Kerberos and NTLM HTTP Authentication
 
 ## Summary
@@ -84,12 +84,12 @@ HTTP/1.1 advertisement to Servers turned on.
 ## Compliance
 
 The following compliance notes apply to
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 and later. Older Squid did not even conditionally comply with HTTP/1.1.
 
 ### Message Syntax and Routing
 
-Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230#)
+Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230)
 
 1.  HTTP/1.1 requires that we upgrade to our highest supported version.
     This has been found problematic with certain broken clients and
@@ -101,9 +101,9 @@ Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230#)
       - NP: Sharepoint and several other MS products break with
         authentication loops when different HTTP/1.x versions are
         advertised on server and client side (as seen with
-        [Squid-3.1](/Releases/Squid-3.1#)).
+        [Squid-3.1](/Releases/Squid-3.1)).
         This is resolved with
-        [Squid-3.2](/Releases/Squid-3.2#)
+        [Squid-3.2](/Releases/Squid-3.2)
         advertising HTTP/1.1 in both sides.
 
 2.  HTTP/1.1 requires support for chunked encoding in both parsers and
@@ -111,7 +111,7 @@ Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230#)
     
       - Both Squid-3 and Squid-2 contain at least response chunked
         decoding. The chunked encoding portion is available from
-        [Squid-3.2](/Releases/Squid-3.2#)
+        [Squid-3.2](/Releases/Squid-3.2)
         on all traffic except CONNECT requests.
     
       - Squid is missing support for chunked encoding trailers.
@@ -121,37 +121,37 @@ Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230#)
     
       - Squid is missing support for HTTP message Trailers.
 
-Specification Document: RFC [2817](https://tools.ietf.org/rfc/rfc2817#)
+Specification Document: RFC [2817](https://tools.ietf.org/rfc/rfc2817)
 
 1.  Squid is conditionally compliant with this feature. Always ignores
     the header content and ensures **Upgrade** header is dropped safely.
 
 2.  Squid with
-    [ssl-bump](/Features/SslBump#)
+    [ssl-bump](/Features/SslBump)
     feature enabled will attempt to upgrade CONNECT requests to TLS
     regardless of the presence of Upgrade headers.
 
 ### Semantics and Content
 
-Specification Document: RFC [7231](https://tools.ietf.org/rfc/rfc7231#)
+Specification Document: RFC [7231](https://tools.ietf.org/rfc/rfc7231)
 
 1.  The forwarding path needs to be cleaned up to better separate HTTP
     messages and actual content, allowing for proper forwarding of 1xx
     responses. 1xx forwarding has been implemented in
-    [Squid-3.2](/Releases/Squid-3.2#)
+    [Squid-3.2](/Releases/Squid-3.2)
     but the forwarding path still needs further work to make this
     efficient.
     
       - This is likely to touch the store API as today all messages go
         via the store, even if just an interim 1xx response.
 
-Specification Document: RFC [7238](https://tools.ietf.org/rfc/rfc7238#)
+Specification Document: RFC [7238](https://tools.ietf.org/rfc/rfc7238)
 
   - Squid is fully compliant with this specification.
 
 ### Conditional Requests
 
-Specification Document: RFC [7232](https://tools.ietf.org/rfc/rfc7232#)
+Specification Document: RFC [7232](https://tools.ietf.org/rfc/rfc7232)
 
   - Squid is missing support for **If-Unmodified-Since** validation.
 
@@ -159,7 +159,7 @@ Specification Document: RFC [7232](https://tools.ietf.org/rfc/rfc7232#)
 
 ### Range Requests
 
-Specification Document: RFC [7233](https://tools.ietf.org/rfc/rfc7233#)
+Specification Document: RFC [7233](https://tools.ietf.org/rfc/rfc7233)
 
   - Squid is unable to store range requests and is currently limited to
     converting the request into a full request or passing it on
@@ -172,16 +172,16 @@ Specification Document: RFC [7233](https://tools.ietf.org/rfc/rfc7233#)
 
 ### Caching
 
-Specification Document: RFC [7234](https://tools.ietf.org/rfc/rfc7234#)
+Specification Document: RFC [7234](https://tools.ietf.org/rfc/rfc7234)
 
   - Many caching-related requirements are still violated. see Co-Advisor
     checklist.
 
 ### Authentication
 
-Specification Document: RFC [7235](https://tools.ietf.org/rfc/rfc7235#)
+Specification Document: RFC [7235](https://tools.ietf.org/rfc/rfc7235)
 
-Specification Document: RFC [2617](https://tools.ietf.org/rfc/rfc2617#)
+Specification Document: RFC [2617](https://tools.ietf.org/rfc/rfc2617)
 
   - Squid fully supports Basic authentication.
 
@@ -190,7 +190,7 @@ Specification Document: RFC [2617](https://tools.ietf.org/rfc/rfc2617#)
 
   - Squid is missing support for Digest auth-int authentication mode.
 
-Specification Document: RFC [4559](https://tools.ietf.org/rfc/rfc4559#)
+Specification Document: RFC [4559](https://tools.ietf.org/rfc/rfc4559)
 
   - Squid fully supports Negotiate/Kerberos authentication.
     
@@ -201,4 +201,4 @@ Specification Document: RFC [4559](https://tools.ietf.org/rfc/rfc4559#)
   - There are outstanding bugs in the NTLM and Negotiate/NTLM
     implementation.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

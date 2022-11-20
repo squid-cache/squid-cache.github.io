@@ -8,7 +8,7 @@
   - **Version**: 3.2
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
 
 # Overview
 
@@ -59,7 +59,7 @@ time, the logged value is increased by *current\_time-start* difference.
 It may be difficult to locate the master transaction from where DNS
 lookups are initiated or finished. Solving this puzzle may help properly
 fix Squid [bug
-\#2459](https://bugs.squid-cache.org/show_bug.cgi?id=2459#).
+\#2459](https://bugs.squid-cache.org/show_bug.cgi?id=2459).
 
 # Availability
 
@@ -67,4 +67,4 @@ The development is done on Squid3 trunk, targeting official v3.2
 inclusion. The feature is also unofficially ported to
 [v3.1](https://code.launchpad.net/~rousskov/squid/3p1-plus).
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

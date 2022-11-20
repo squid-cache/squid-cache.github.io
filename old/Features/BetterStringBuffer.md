@@ -8,8 +8,8 @@
   - **ETA**: unknown
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#),
-    [FrancescoChemolli](/FrancescoChemolli#)
+    [AmosJeffries](/AmosJeffries),
+    [FrancescoChemolli](/FrancescoChemolli)
 
   - **More**: [](https://code.launchpad.net/~kinkie/squid/stringng)
 
@@ -47,12 +47,12 @@ going to die underneath the callee code. The present
   - existing usage within squid strictly assuming the above two limits
     are always true.
 
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)
 has started a sample implementation, drawing from many concepts in this
 page and
-[AdrianChadd](/AdrianChadd#)'s
+[AdrianChadd](/AdrianChadd)'s
 implementation in branch s27\_adri. General concepts and discussion in
-[/StringNg](/Features/BetterStringBuffer/StringNg#),
+[/StringNg](/Features/BetterStringBuffer/StringNg),
 will be merged here once better sketched.
 
 ## Plan
@@ -295,4 +295,4 @@ from network read to network/disk write).
 
 Though true, the output generation optimization does need more thought.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

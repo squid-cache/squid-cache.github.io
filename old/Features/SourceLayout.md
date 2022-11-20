@@ -10,9 +10,9 @@
   - **Version**: 3.3
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
     and
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
   - **More**:
     [email07121](http://www.mail-archive.com/squid-dev@squid-cache.org/msg07121.html)
@@ -46,15 +46,15 @@ Key:
     the To-do column for details.
 
   - ![{1}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio1.png)
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
     doing now.
 
   - ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
     doing now.
 
   - ![{3}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio3.png)
-    [FrancescoChemolli](/FrancescoChemolli#)
+    [FrancescoChemolli](/FrancescoChemolli)
     doing now.
 
 <table>
@@ -605,20 +605,20 @@ Developers for bundling.
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **Directory Path**               | **Content Type**                                                                                                  |
 | src/adaptation/ecap/modules/\*   | (PROPOSED) eCAP extension modules which may be linked by configuration.                                           |
-| src/auth/basic/\*/               | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#) basic helpers                                    |
-| src/auth/digest/\*/              | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#) digest helpers                                   |
-| src/auth/negotiate/\*/           | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#) negotiate helpers                                |
-| src/auth/ntlm/\*/                | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#) ntlm helpers                                     |
-| src/acl/external/\*              | [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#) helpers                           |
-| src/fs/diskd/\*                  | [diskd\_program](http://www.squid-cache.org/Doc/config/diskd_program#) Disk I/O helpers                           |
-| src/fs/unlink/\*                 | (PROPOSED) [unlinkd\_program](http://www.squid-cache.org/Doc/config/unlinkd_program#) helpers                     |
-| src/http/url\_rewriters/\*       | HTTP message URL re-writers ([url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program#)) |
-| src/icmp/\*                      | [pinger\_program](http://www.squid-cache.org/Doc/config/pinger_program#) helpers                                  |
-| src/log/\*/                      | [logfile\_daemon](http://www.squid-cache.org/Doc/config/logfile_daemon#) helpers                                  |
-| src/security/cert\_validators/\* | [sslcrtvalidator\_program](http://www.squid-cache.org/Doc/config/sslcrtvalidator_program#) helpers                |
-| src/security/cert\_generators/\* | [sslcrtd\_program](http://www.squid-cache.org/Doc/config/sslcrtd_program#) helpers                                |
-| src/security/cert\_password/\*   | (PROPOSED) [sslpassword\_program](http://www.squid-cache.org/Doc/config/sslpassword_program#) helpers             |
-| src/store/id\_rewriters/\*       | Store-ID re-writers ([store\_id\_program](http://www.squid-cache.org/Doc/config/store_id_program#))               |
+| src/auth/basic/\*/               | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) basic helpers                                    |
+| src/auth/digest/\*/              | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) digest helpers                                   |
+| src/auth/negotiate/\*/           | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) negotiate helpers                                |
+| src/auth/ntlm/\*/                | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) ntlm helpers                                     |
+| src/acl/external/\*              | [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type) helpers                           |
+| src/fs/diskd/\*                  | [diskd\_program](http://www.squid-cache.org/Doc/config/diskd_program) Disk I/O helpers                           |
+| src/fs/unlink/\*                 | (PROPOSED) [unlinkd\_program](http://www.squid-cache.org/Doc/config/unlinkd_program) helpers                     |
+| src/http/url\_rewriters/\*       | HTTP message URL re-writers ([url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)) |
+| src/icmp/\*                      | [pinger\_program](http://www.squid-cache.org/Doc/config/pinger_program) helpers                                  |
+| src/log/\*/                      | [logfile\_daemon](http://www.squid-cache.org/Doc/config/logfile_daemon) helpers                                  |
+| src/security/cert\_validators/\* | [sslcrtvalidator\_program](http://www.squid-cache.org/Doc/config/sslcrtvalidator_program) helpers                |
+| src/security/cert\_generators/\* | [sslcrtd\_program](http://www.squid-cache.org/Doc/config/sslcrtd_program) helpers                                |
+| src/security/cert\_password/\*   | (PROPOSED) [sslpassword\_program](http://www.squid-cache.org/Doc/config/sslpassword_program) helpers             |
+| src/store/id\_rewriters/\*       | Store-ID re-writers ([store\_id\_program](http://www.squid-cache.org/Doc/config/store_id_program))               |
 | tools/                           | Administration tools                                                                                              |
 
 ## Problems
@@ -732,4 +732,4 @@ called GetFoo() or Foo::GetInstance() for the foo global) returning a
 static local variable. The variable should either self-initialize or be
 carefully initialized by the getter function.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

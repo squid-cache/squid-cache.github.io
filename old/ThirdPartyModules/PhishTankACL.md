@@ -2,7 +2,7 @@
 
 |                  |                                                                                                     |
 | ---------------- | --------------------------------------------------------------------------------------------------- |
-| Author           | [AdrianChadd](/AdrianChadd#) |
+| Author           | [AdrianChadd](/AdrianChadd) |
 | Date Added       | 16-Jan-2009                                                                                         |
 | Summary          | This is an example External ACL module which queries a local Phishtank DB to provide protection.    |
 | Status           | Works for me - needs better documentation\!                                                         |
@@ -13,4 +13,4 @@
 
 # Details
 
-[ThirdPartyModules](/ThirdPartyModules#)
+[ThirdPartyModules](/ThirdPartyModules)

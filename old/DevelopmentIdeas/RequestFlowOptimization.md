@@ -18,9 +18,9 @@ Due to requirement '3', I think we should drop the idea of joined
 requests where there is more than one client. Better if we simply
 support storage of partial objects, and then ignores the whole issue.
 
-[Henrik\_Nordström](/Henrik_Nordstr%C3%B6m#)
+[Henrik\_Nordström](/Henrik_Nordstr%C3%B6m)
 
 **Discussion**
 
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 is working on this in the \[Squid-2.6\] codebase.

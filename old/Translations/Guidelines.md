@@ -1,7 +1,7 @@
 # Guidelines for Translating Squid
 
 How to use the translation tools is covered in
-[Translations/Basics](/Translations/Basics#).
+[Translations/Basics](/Translations/Basics).
 This page covers the details involved with translating a specific piece
 of text.
 
@@ -78,7 +78,7 @@ the various English or Dutch codes for an example of what this means.
 If you have any unusual situation with language and country combination
 or language variant combinations that is not already solved, please
 contact the translation maintainer for assistance.
-([AmosJeffries](/AmosJeffries#)
+([AmosJeffries](/AmosJeffries)
 at present).
 
 ## Special Language Display
@@ -89,7 +89,7 @@ currently achieved through the use of **:lang()** attributes in CSS.
 
 To ensure compatibility with Squid-2 which does not natively perform the
 same CSS insertion as
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 these language settings are embedded directly into the templates and
 alterations need to be brought to the attention of the Squid Developers.
 
@@ -99,7 +99,7 @@ If you are truly against using the existing translation toolkit system
 we run. You have the option of locating the **errpages.pot** file in the
 squid source code. Translating it and sending it to the translation
 maintainer.
-([AmosJeffries](/AmosJeffries#)
+([AmosJeffries](/AmosJeffries)
 at present).
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
@@ -126,4 +126,4 @@ at present).
         just as useful (ie american english, or british english, not
         just english).
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

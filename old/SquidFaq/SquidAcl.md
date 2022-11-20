@@ -8,7 +8,7 @@ elements*, and *access lists*. An access list consists of an *allow* or
 *deny* action followed by a number of ACL elements.
 
 When loading the configuration file Squid processes all the
-[acl](http://www.squid-cache.org/Doc/config/acl#) lines (directives)
+[acl](http://www.squid-cache.org/Doc/config/acl) lines (directives)
 into memory as tests which can be performed against any request
 transaction. Types of tests are outlined in the next section *ACL
 Elements*. By themselves these tests do nothing. For example; the word
@@ -25,7 +25,7 @@ the checks operate.
 
 |                                                                        |                                                                                                                                                                   |
 | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ℹ️ | The information here is current for version 3.1 see [acl](http://www.squid-cache.org/Doc/config/acl#) for the latest configuration guide list of available types. |
+| ℹ️ | The information here is current for version 3.1 see [acl](http://www.squid-cache.org/Doc/config/acl) for the latest configuration guide list of available types. |
 
 Squid knows about the following types of ACL elements:
 
@@ -133,9 +133,9 @@ Squid knows about the following types of ACL elements:
 Not all of the ACL elements can be used with all types of access lists
 (described below). For example, *snmp\_community* is only meaningful
 when used with
-[snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access#). The
+[snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access). The
 *src\_as* and *dst\_as* types are only used in
-[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access#)
+[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
 lines.
 
 The *arp* ACL requires the special configure option --enable-arp-acl in
@@ -166,89 +166,89 @@ Squid combines them into one list.
 
 There are a number of different access lists:
 
-  - [http\_access](http://www.squid-cache.org/Doc/config/http_access#):
+  - [http\_access](http://www.squid-cache.org/Doc/config/http_access):
     Allows HTTP clients (browsers) to access the HTTP port. This is the
     primary access control list.
 
-  - [http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access#):
+  - [http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access):
     Allows HTTP clients (browsers) to receive the reply to their
     request. This further restricts permissions given by
-    [http\_access](http://www.squid-cache.org/Doc/config/http_access#),
+    [http\_access](http://www.squid-cache.org/Doc/config/http_access),
     and is primarily intended to be used together with rep\_mime\_type
-    [acl](http://www.squid-cache.org/Doc/config/acl#) for blocking
+    [acl](http://www.squid-cache.org/Doc/config/acl) for blocking
     different content types.
 
-  - [icp\_access](http://www.squid-cache.org/Doc/config/icp_access#):
+  - [icp\_access](http://www.squid-cache.org/Doc/config/icp_access):
     Allows neighbor caches to query your cache with ICP.
 
-  - [miss\_access](http://www.squid-cache.org/Doc/config/miss_access#):
+  - [miss\_access](http://www.squid-cache.org/Doc/config/miss_access):
     Allows certain clients to forward cache misses through your cache.
     This further restricts permissions given by
-    [http\_access](http://www.squid-cache.org/Doc/config/http_access#),
+    [http\_access](http://www.squid-cache.org/Doc/config/http_access),
     and is primarily intended to be used for enforcing sibling relations
     by denying siblings from forwarding cache misses through your cache.
 
-  - [cache](http://www.squid-cache.org/Doc/config/cache#): Defines
+  - [cache](http://www.squid-cache.org/Doc/config/cache): Defines
     responses that should not be cached.
 
-  - [url\_rewrite\_access](http://www.squid-cache.org/Doc/config/url_rewrite_access#):
+  - [url\_rewrite\_access](http://www.squid-cache.org/Doc/config/url_rewrite_access):
     Controls which requests are sent through the redirector pool.
 
-  - [ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access#):
+  - [ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access):
     Controls which requests need an Ident lookup.
 
-  - [always\_direct](http://www.squid-cache.org/Doc/config/always_direct#):
+  - [always\_direct](http://www.squid-cache.org/Doc/config/always_direct):
     Controls which requests should always be forwarded directly to
     origin servers.
 
-  - [never\_direct](http://www.squid-cache.org/Doc/config/never_direct#):
+  - [never\_direct](http://www.squid-cache.org/Doc/config/never_direct):
     Controls which requests should never be forwarded directly to origin
     servers.
 
-  - [snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access#):
+  - [snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access):
     Controls SNMP client access to the cache.
 
-  - [broken\_posts](http://www.squid-cache.org/Doc/config/broken_posts#):
+  - [broken\_posts](http://www.squid-cache.org/Doc/config/broken_posts):
     Defines requests for which squid appends an extra CRLF after POST
     message bodies as required by some broken origin servers.
 
-  - [cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access#):
+  - [cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access):
     Controls which requests can be forwarded to a given neighbor
-    ([cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#)).
+    ([cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)).
 
-  - [htcp\_access](http://www.squid-cache.org/Doc/config/htcp_access#):
+  - [htcp\_access](http://www.squid-cache.org/Doc/config/htcp_access):
     Controls which remote machines are able to make HTCP requests.
 
-  - [htcp\_clr\_access](http://www.squid-cache.org/Doc/config/htcp_clr_access#):
+  - [htcp\_clr\_access](http://www.squid-cache.org/Doc/config/htcp_clr_access):
     Controls which remote machines are able to make HTCP CLR requests.
 
-  - [request\_header\_access](http://www.squid-cache.org/Doc/config/request_header_access#):
+  - [request\_header\_access](http://www.squid-cache.org/Doc/config/request_header_access):
     Controls which request headers are removed when violating HTTP
     protocol.
 
-  - [reply\_header\_access](http://www.squid-cache.org/Doc/config/reply_header_access#):
+  - [reply\_header\_access](http://www.squid-cache.org/Doc/config/reply_header_access):
     Controls which reply headers are removed from delivery to the client
     when violating HTTP protocol.
 
-  - [delay\_access](http://www.squid-cache.org/Doc/config/delay_access#):
+  - [delay\_access](http://www.squid-cache.org/Doc/config/delay_access):
     Controls which requests are handled by what [delay
-    pool](/Features/DelayPools#)
+    pool](/Features/DelayPools)
 
-  - [icap\_access](http://www.squid-cache.org/Doc/config/icap_access#):
+  - [icap\_access](http://www.squid-cache.org/Doc/config/icap_access):
     (replaced by
-    [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#)
+    [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
     in
-    [Squid-3.1](/Releases/Squid-3.1#))
+    [Squid-3.1](/Releases/Squid-3.1))
     What requests may be sent to a particular ICAP server.
 
-  - [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access#):
+  - [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access):
     What requests may be sent to a particular ICAP or eCAP filter
     service.
 
-  - [log\_access](http://www.squid-cache.org/Doc/config/log_access#):
+  - [log\_access](http://www.squid-cache.org/Doc/config/log_access):
     Controls which requests are logged. This is global and overrides
     specific file access lists appended to
-    [access\_log](http://www.squid-cache.org/Doc/config/access_log#)
+    [access\_log](http://www.squid-cache.org/Doc/config/access_log)
     directives.
 
 **Notes**:
@@ -299,7 +299,7 @@ example:
     acl myclients src 172.16.5.0/24
 
 Next, allow those clients in the
-*[http\_access](http://www.squid-cache.org/Doc/config/http_access#)*
+*[http\_access](http://www.squid-cache.org/Doc/config/http_access)*
 list:
 
     http_access allow myclients
@@ -370,20 +370,20 @@ write something like this:
     http_access deny all
 
 Note that
-[ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access#)
+[ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access)
 only permits/denies whether a machine is tested for its Ident. This does
 not directly alter access to the users request.
 
 ## Is there a way to do ident lookups only for a certain host and compare the result with a userlist in squid.conf?
 
 You can use the
-*[ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access#)*
+*[ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access)*
 directive to control for which hosts Squid will issue [ident
 lookup](ftp://ftp.isi.edu/in-notes/rfc931.txt) requests.
 
 Additionally, if you use a *ident* ACL in squid.conf, then Squid will
 make sure an ident lookup is performed while evaluating the acl even if
-*[ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access#)*
+*[ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access)*
 does not indicate ident lookups should be performed earlier.
 
 However, Squid does not wait for the lookup to complete unless the ACL
@@ -409,7 +409,7 @@ username and password.
 
 In Squid this authentication is handled via external processes. For
 information on how to configure this, please see
-[SquidFaq/ProxyAuthentication](/SquidFaq/ProxyAuthentication#).
+[SquidFaq/ProxyAuthentication](/SquidFaq/ProxyAuthentication).
 
 ## Do you have a CGI program which lets users change their own proxy passwords?
 
@@ -425,13 +425,13 @@ Interpretation of ACL-driven directives is based, in part, on the
 following rules:
 
   - **All elements of an
-    *[acl](http://www.squid-cache.org/Doc/config/acl#)* entry are OR'ed
+    *[acl](http://www.squid-cache.org/Doc/config/acl)* entry are OR'ed
     together**.
 
   - **All elements of an *access* entry are AND'ed together** (e.g.
-    *[http\_access](http://www.squid-cache.org/Doc/config/http_access#)*
+    *[http\_access](http://www.squid-cache.org/Doc/config/http_access)*
     and
-    *[icp\_access](http://www.squid-cache.org/Doc/config/icp_access#)*)
+    *[icp\_access](http://www.squid-cache.org/Doc/config/icp_access)*)
 
 For example, the following access control configuration will never work:
 
@@ -440,8 +440,8 @@ For example, the following access control configuration will never work:
     http_access allow ME YOU
 
 In order for the request to be allowed, it must match the "ME"
-[acl](http://www.squid-cache.org/Doc/config/acl#) **AND** the "YOU"
-[acl](http://www.squid-cache.org/Doc/config/acl#). This is impossible
+[acl](http://www.squid-cache.org/Doc/config/acl) **AND** the "YOU"
+[acl](http://www.squid-cache.org/Doc/config/acl). This is impossible
 because any IP address could only match one or the other. This should
 instead be rewritten as:
 
@@ -464,7 +464,7 @@ work out why the following will not work.*
 *I can successfully access **cachemgr.cgi** from our web server machine
 here, but I would like to use MRTG to monitor various aspects of our
 proxy. When I try to use
-[squidclient](/SquidClientTool#)
+[squidclient](/SquidClientTool)
 or GET cache\_object from the machine the proxy is running on, I always
 get access denied.*
 
@@ -511,9 +511,9 @@ rewritten as
     http_access deny all
 
 If you're using
-*[miss\_access](http://www.squid-cache.org/Doc/config/miss_access#)*,
+*[miss\_access](http://www.squid-cache.org/Doc/config/miss_access)*,
 then don't forget to also add a
-*[miss\_access](http://www.squid-cache.org/Doc/config/miss_access#)*
+*[miss\_access](http://www.squid-cache.org/Doc/config/miss_access)*
 rule for the cache manager:
 
     miss_access allow manager
@@ -528,7 +528,7 @@ verify that for yourself, however.
 
 For the *srcdomain* ACL type, Squid does a reverse lookup of the
 client's IP address and checks the result with the domains given on the
-*[acl](http://www.squid-cache.org/Doc/config/acl#)* line. With the *src*
+*[acl](http://www.squid-cache.org/Doc/config/acl)* line. With the *src*
 ACL type, Squid converts hostnames to IP addresses at startup and then
 only compares the client's IP address. The *src* ACL is preferred over
 *srcdomain* because it does not require address-to-name lookups for each
@@ -561,7 +561,7 @@ access list processing. Be warned that this can be quite some lines per
 request.
 
 See also
-[SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting#).
+[SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting).
 
 ## Proxy-authentication and neighbor caches
 
@@ -589,7 +589,7 @@ not be passed on to other proxies.
 Therefore, you must allow the neighbor caches to request from each other
 without proxy authentication. This is simply accomplished by listing the
 neighbor ACL's first in the list of
-*[http\_access](http://www.squid-cache.org/Doc/config/http_access#)*
+*[http\_access](http://www.squid-cache.org/Doc/config/http_access)*
 lines. For example:
 
     acl proxy-A src 10.0.0.1
@@ -602,7 +602,7 @@ lines. For example:
 
 Squid-2.5 allows two exceptions to this rule, by defining the
 appropriate
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#)
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 options:
 
     cache_peer parent.foo.com parent login=PASS
@@ -767,7 +767,7 @@ known ports and protocols.
 ## Does Squid support the use of a database such as mySQL for storing the ACL list?
 
 Yes, Squid supports acl interaction with external data sources via the
-[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type#)
+[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
 directive. Helpers for LDAP and NT Domain group membership is included
 in the distribution and it's very easy to write additional helpers to
 fit your environment.
@@ -823,7 +823,7 @@ ACL value. For example, change the above to:
     acl restricted2 src 10.85.0.0/16
 
 Then, of course, you'll have to rewrite your
-*[http\_access](http://www.squid-cache.org/Doc/config/http_access#)*
+*[http\_access](http://www.squid-cache.org/Doc/config/http_access)*
 lines as well.
 
 ## Can I set up ACL's based on MAC address rather than IP?
@@ -837,7 +837,7 @@ supported on Linux, Solaris, and probably BSD variants.
 | ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png) | MAC address is only available for clients that are on the same subnet. If the client is on a different subnet, then Squid can not find out its MAC address as the MAC is replaced by the router MAC when a packet is router. |
 
 For
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 and older to use ARP (MAC) access controls, you first need to compile in
 the optional code.
 
@@ -851,7 +851,7 @@ If *src/acl.c* doesn't compile, then ARP ACLs are probably not supported
 on your system.
 
 For
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 and newer the EUI support is enabled by default whenever it can be used.
 
 Add some *arp* ACL lines to your squid.conf:
@@ -868,7 +868,7 @@ available and the ACLs are going to work.
 ## Can I limit the number of connections from a client?
 
 Yes, use the *maxconn* ACL type in conjunction with
-*[http\_access](http://www.squid-cache.org/Doc/config/http_access#)
+*[http\_access](http://www.squid-cache.org/Doc/config/http_access)
 deny*. For example:
 
     acl losers src 1.2.3.0/24
@@ -878,22 +878,22 @@ deny*. For example:
 Given the above configuration, when a client whose source IP address is
 in the 1.2.3.0/24 subnet tries to establish 6 or more connections at
 once, Squid returns an error page. Unless you use the
-*[deny\_info](http://www.squid-cache.org/Doc/config/deny_info#)*
+*[deny\_info](http://www.squid-cache.org/Doc/config/deny_info)*
 feature, the error message will just say "access denied."
 
 The *maxconn* ACL requires the
-[client\_db](http://www.squid-cache.org/Doc/config/client_db#) feature.
+[client\_db](http://www.squid-cache.org/Doc/config/client_db) feature.
 If you've disabled
-[client\_db](http://www.squid-cache.org/Doc/config/client_db#) (for
+[client\_db](http://www.squid-cache.org/Doc/config/client_db) (for
 example with
-*[client\_db](http://www.squid-cache.org/Doc/config/client_db#) off*)
+*[client\_db](http://www.squid-cache.org/Doc/config/client_db) off*)
 then *maxconn* ALCs will not work.
 
 Note, the *maxconn* ACL type is kind of tricky because it uses less-than
 comparison. The ACL is a match when the number of established
 connections is *greater* than the value you specify. Because of that,
 you don't want to use the *maxconn* ACL with
-*[http\_access](http://www.squid-cache.org/Doc/config/http_access#)
+*[http\_access](http://www.squid-cache.org/Doc/config/http_access)
 allow*.
 
 Also note that you could use *maxconn* in conjunction with a user type
@@ -913,9 +913,9 @@ if you want to deny *bar.foo.com*, you should write
 
 You can customize the existing error messages as described in
 *Customizable Error Messages* in
-[SquidFaq/MiscFeatures](/SquidFaq/MiscFeatures#).
+[SquidFaq/MiscFeatures](/SquidFaq/MiscFeatures).
 You can also create new error messages and use these in conjunction with
-the *[deny\_info](http://www.squid-cache.org/Doc/config/deny_info#)*
+the *[deny\_info](http://www.squid-cache.org/Doc/config/deny_info)*
 option.
 
 For example, lets say you want your users to see a special message when
@@ -943,7 +943,7 @@ time is.
 
 To change the timestamp in Squid generated error messages you must
 change the Squid signature. See *Customizable Error Messages* in
-[MiscFeatures](/SquidFaq/MiscFeatures#).
+[MiscFeatures](/SquidFaq/MiscFeatures).
 The signature by defaults uses %T as timestamp, but if you like then you
 can use %t instead for a timestamp using local time zone.
 
@@ -976,9 +976,9 @@ There is an excellent resource over at
 membership checking.
 
 Also the
-[LDAP](/ConfigExamples/Authenticate/Ldap#)
+[LDAP](/ConfigExamples/Authenticate/Ldap)
 or [Active
-Directory](/ConfigExamples/Authenticate/WindowsActiveDirectory#)
+Directory](/ConfigExamples/Authenticate/WindowsActiveDirectory)
 config example here in the squid wiki might prove useful.
 
 ## Maximum length of an acl name
@@ -1094,58 +1094,58 @@ such ACL types are in general not reliable in all access check clauses.
 
 The following are **SLOW** access clauses:
 
-  - [http\_access](http://www.squid-cache.org/Doc/config/http_access#)
+  - [http\_access](http://www.squid-cache.org/Doc/config/http_access)
 
-  - [adapted\_http\_access](http://www.squid-cache.org/Doc/config/adapted_http_access#)
+  - [adapted\_http\_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     (2.x call this
-    [http\_access2](http://www.squid-cache.org/Doc/config/http_access2#))
+    [http\_access2](http://www.squid-cache.org/Doc/config/http_access2))
 
-  - [http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access#)
+  - [http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access)
 
-  - [url\_rewrite\_access](http://www.squid-cache.org/Doc/config/url_rewrite_access#)
+  - [url\_rewrite\_access](http://www.squid-cache.org/Doc/config/url_rewrite_access)
 
-  - [storeurl\_access](http://www.squid-cache.org/Doc/config/storeurl_access#)
+  - [storeurl\_access](http://www.squid-cache.org/Doc/config/storeurl_access)
 
-  - [location\_rewrite\_access](http://www.squid-cache.org/Doc/config/location_rewrite_access#)
+  - [location\_rewrite\_access](http://www.squid-cache.org/Doc/config/location_rewrite_access)
 
-  - [always\_direct](http://www.squid-cache.org/Doc/config/always_direct#)
+  - [always\_direct](http://www.squid-cache.org/Doc/config/always_direct)
 
-  - [never\_direct](http://www.squid-cache.org/Doc/config/never_direct#)
+  - [never\_direct](http://www.squid-cache.org/Doc/config/never_direct)
 
-  - [cache](http://www.squid-cache.org/Doc/config/cache#)
+  - [cache](http://www.squid-cache.org/Doc/config/cache)
 
 These are instead **FAST** access clauses:
 
-  - [icp\_access](http://www.squid-cache.org/Doc/config/icp_access#)
+  - [icp\_access](http://www.squid-cache.org/Doc/config/icp_access)
 
-  - [htcp\_access](http://www.squid-cache.org/Doc/config/htcp_access#)
+  - [htcp\_access](http://www.squid-cache.org/Doc/config/htcp_access)
 
-  - [htcp\_clr\_access](http://www.squid-cache.org/Doc/config/htcp_clr_access#)
+  - [htcp\_clr\_access](http://www.squid-cache.org/Doc/config/htcp_clr_access)
 
-  - [miss\_access](http://www.squid-cache.org/Doc/config/miss_access#)
+  - [miss\_access](http://www.squid-cache.org/Doc/config/miss_access)
 
-  - [ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access#)
+  - [ident\_lookup\_access](http://www.squid-cache.org/Doc/config/ident_lookup_access)
 
-  - [reply\_body\_max\_size](http://www.squid-cache.org/Doc/config/reply_body_max_size#)
+  - [reply\_body\_max\_size](http://www.squid-cache.org/Doc/config/reply_body_max_size)
     {R}
 
-  - [authenticate\_ip\_shortcircuit\_access](http://www.squid-cache.org/Doc/config/authenticate_ip_shortcircuit_access#)
+  - [authenticate\_ip\_shortcircuit\_access](http://www.squid-cache.org/Doc/config/authenticate_ip_shortcircuit_access)
 
-  - [log\_access](http://www.squid-cache.org/Doc/config/log_access#)
+  - [log\_access](http://www.squid-cache.org/Doc/config/log_access)
 
-  - [header\_access](http://www.squid-cache.org/Doc/config/header_access#)
+  - [header\_access](http://www.squid-cache.org/Doc/config/header_access)
 
-  - [delay\_access](http://www.squid-cache.org/Doc/config/delay_access#)
+  - [delay\_access](http://www.squid-cache.org/Doc/config/delay_access)
 
-  - [snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access#)
+  - [snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access)
 
-  - [cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access#)
+  - [cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
 
-  - [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump#)
+  - [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
 
-  - [sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error#)
+  - [sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error)
 
-  - [follow\_x\_forwarded\_for](http://www.squid-cache.org/Doc/config/follow_x_forwarded_for#)
+  - [follow\_x\_forwarded\_for](http://www.squid-cache.org/Doc/config/follow_x_forwarded_for)
 
 Thus the safest course of action is to only use fast ACLs in fast access
 clauses, and any kind of ACL in slow access clauses.
@@ -1156,4 +1156,4 @@ ACL checks in slow clauses, so that subsequent fast clauses may have a
 cached result to evaluate against.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

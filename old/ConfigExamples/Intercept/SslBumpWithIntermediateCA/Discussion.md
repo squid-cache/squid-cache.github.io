@@ -1,5 +1,5 @@
 See [Discussed
-Page](/ConfigExamples/Intercept/SslBumpWithIntermediateCA#)
+Page](/ConfigExamples/Intercept/SslBumpWithIntermediateCA)
 
 For what version of squid is this article for?
 

@@ -9,18 +9,18 @@
   - **Version**: 3.3
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
     and Christos Tsantilas
 
   - **More**: requires
-    [bump-server-first](/Features/BumpSslServerFirst#)
+    [bump-server-first](/Features/BumpSslServerFirst)
     and benefits from [Dynamic Certificate
-    Generation](/Features/DynamicSslCert#)
+    Generation](/Features/DynamicSslCert)
 
 # Motivation
 
 One of the
-[SslBump](/Features/SslBump#)
+[SslBump](/Features/SslBump)
 serious drawbacks is the loss of information embedded in SSL server
 certificate. There are two basic cases to consider from Squid point of
 view:
@@ -58,7 +58,7 @@ The ssl\_crtd daemon receives matching configuration options as well as
 the original server certificate to mimic its properties.
 
 A
-[bump-server-first](/Features/BumpSslServerFirst#)
+[bump-server-first](/Features/BumpSslServerFirst)
 support is required to get the original server certificate before we
 have to send our fake certificate to the client.
 
@@ -98,7 +98,7 @@ serves it *after* establishing the secure connection with the client and
 receiving the first encrypted client request. The error is served
 securely. The same approach is used for Squid redirect messages
 configured via
-[deny\_info](http://www.squid-cache.org/Doc/config/deny_info#). This
+[deny\_info](http://www.squid-cache.org/Doc/config/deny_info). This
 error delay is implemented because (a) browsers like FireFox and
 Chromium [do not display CONNECT
 errors](https://bugzilla.mozilla.org/show_bug.cgi?id=479880) correctly
@@ -121,7 +121,7 @@ requests are sent to the broken server.
 
 It is important to understand that Squid can be configured to ignore or
 tolerate certain SSL connection establishment errors using
-[sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error#).
+[sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error).
 If the error is allowed, Squid forgets about the error, mimics true
 broken certificate properties, and continues to talk to the server.
 Otherwise, Squid does not mimic and terminates the server connection as
@@ -274,4 +274,4 @@ with CA or other specialized certificates (or are too vague to be
 mimicked safely): Basic Constraints, Name Constraints, Policy
 Constraints, and Inhibit anyPolicy.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

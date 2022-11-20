@@ -10,7 +10,7 @@
   - **Priority**: 1
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
 
 # Overview
 
@@ -28,4 +28,4 @@ the first ICAP response.
 
 The feature has been added to Squid-3.1 from release 3.1.0.11.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

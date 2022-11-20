@@ -49,4 +49,4 @@ The basic auth ACL controls to make use of it are:
     http_access allow auth
     http_access deny all
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

@@ -1,7 +1,7 @@
 # Feature: act-as-origin option for reverse proxies
 
   - **Goal**: porting and extending the act-as-origin flag from
-    [Squid-2.7](/Releases/Squid-2.7#)
+    [Squid-2.7](/Releases/Squid-2.7)
 
 <!-- end list -->
 
@@ -13,8 +13,8 @@
 
   - **Version**: 2.7, 3.2
 
-  - **Developer**:[AmosJeffries](/AmosJeffries#),
-    [HenrikNordstrom](/HenrikNordstrom#)
+  - **Developer**:[AmosJeffries](/AmosJeffries),
+    [HenrikNordstrom](/HenrikNordstrom)
 
   - **More**:
     
@@ -32,7 +32,7 @@ This option is only *right* for use in reverse-proxy mode and on
 replies. It is not for requests or regular traffic alterations. Although
 the HTTP problems fixed may be valid and useful in any traffic.
 
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 only provides these operations:
 
   - replace Date: header with current timestamp. Fixes origin problems
@@ -43,12 +43,12 @@ only provides these operations:
     problems with centuries-old expiry, invalid formats, or invalid
     values.
 
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 only provides these operations:
 
   - synthesize Date: header when missing (on all traffic).
 
-[Squid-3.2](/Releases/Squid-3.2#)
+[Squid-3.2](/Releases/Squid-3.2)
 port combines all of the above and has a few extensions planned:
 
   - Sync Expires: value to match Date: and Cache-Control: max-age. Fixes
@@ -61,4 +61,4 @@ port combines all of the above and has a few extensions planned:
 
   - Strip invalid uses of Cache-Control: public
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

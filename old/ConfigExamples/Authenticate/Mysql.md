@@ -90,4 +90,4 @@ Type the username and password on the same line separated with space, on
 successful authentication it will give "OK" otherwise "ERR login
 failure"
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

@@ -25,4 +25,4 @@ functional squid, especially on ia64/amd64 platforms. The detected
 defaults can be overridden by supplying the `--disable-arch-native`
 option to the `configure` script.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

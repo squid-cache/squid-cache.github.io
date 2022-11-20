@@ -29,7 +29,7 @@ tune a few parameters. In priority order:
         especially RAID4/5. Since the data are not by definition
         valuable, it is recommended to run the cache\_dirs on JBOD
         ("just a bunch of disks", in other words NO RAID) (see
-        [SquidFaq/RAID](/SquidFaq/RAID#))
+        [SquidFaq/RAID](/SquidFaq/RAID))
       - of course the disk type matters: SSD performs better than HDD
         (but be mindful about lifecycle), 15kRPM is better than 5.4kRPM,
         etc.

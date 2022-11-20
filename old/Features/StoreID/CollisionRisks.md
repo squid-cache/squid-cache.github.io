@@ -141,11 +141,11 @@ We are humans and we have the right to do a mistake two or more but we
 are obligated to do our best.
 
 When configuring
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern#)
+[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
 ,
-[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program#)
+[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 ,
-[store\_id\_program](http://www.squid-cache.org/Doc/config/store_id_program#)
+[store\_id\_program](http://www.squid-cache.org/Doc/config/store_id_program)
 , ICAP service\\client or any other feature sit.. eat a good meal, drink
 a good drink. Then when you are full with power sit on whatever you are
 supposed to do in order to make it the best you can.

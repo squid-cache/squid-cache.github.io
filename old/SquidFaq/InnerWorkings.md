@@ -11,8 +11,8 @@ to the client.
 
 ICP is a protocol used for communication among squid caches. The ICP
 protocol is defined in two Internet RFC's. RFC
-[2186](https://tools.ietf.org/rfc/rfc2186#) describes the protocol
-itself, while RFC [2187](https://tools.ietf.org/rfc/rfc2187#) describes
+[2186](https://tools.ietf.org/rfc/rfc2186) describes the protocol
+itself, while RFC [2187](https://tools.ietf.org/rfc/rfc2187) describes
 the application of ICP to hierarchical Web caching.
 
 ICP is primarily used within a cache hierarchy to locate specific
@@ -66,7 +66,7 @@ Siblings will not fetch an object for another sibling to resolve a cache
 
 The algorithm is somewhat more complicated when firewalls are involved.
 
-The [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#)
+The [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 **no-query** option can be used to skip the ICP queries if the only
 appropriate source is a parent cache (i.e., if there's only one place
 you'd fetch the object from, why bother querying?)
@@ -75,7 +75,7 @@ you'd fetch the object from, why bother querying?)
 
 The features and areas we work on are always changing. See the [Squid
 Road
-Maps](/RoadMap#)
+Maps](/RoadMap)
 for more details on current activities.
 
 # Tell me more about Internet traffic workloads
@@ -349,7 +349,7 @@ protocols.
 Sometimes reading on the server-side gets ahead of writing to the
 client-side. Especially if your cache is on a fast network and your
 clients are connected at modem speeds. Squid will read up to
-[read\_ahead\_gap](http://www.squid-cache.org/Doc/config/read_ahead_gap#)
+[read\_ahead\_gap](http://www.squid-cache.org/Doc/config/read_ahead_gap)
 bytes (default of 16 KB) ahead of the client before it starts to defer
 the server-side reads.
 
@@ -414,7 +414,7 @@ something like this:
 
   - Responses with *Cache-Control: No-Cache* are NOT cachable by Squid
     older than
-    [Squid-3.2](/Releases/Squid-3.2#).
+    [Squid-3.2](/Releases/Squid-3.2).
 
   - Responses with *Cache-Control: No-Store* are NOT cachable.
 
@@ -724,7 +724,7 @@ Then, Squid will always close its side of the connection instead of
 marking it as half-closed.
 
   - **NP:** from
-    [Squid-3.0](/Releases/Squid-3.0#)
+    [Squid-3.0](/Releases/Squid-3.0)
     the default is now OFF.
 
 # What does --enable-heap-replacement do?
@@ -741,7 +741,7 @@ Currently, the heap replacement code supports two additional algorithms:
 LFUDA, and GDS.
 
 Then, in *squid.conf*, you can select different policies with the
-[cache\_replacement\_policy](http://www.squid-cache.org/Doc/config/cache_replacement_policy#)
+[cache\_replacement\_policy](http://www.squid-cache.org/Doc/config/cache_replacement_policy)
 directive.
 
 The LFUDA and GDS replacement code was contributed by John Dilley and
@@ -767,7 +767,7 @@ may be due to a number of reasons:
 
   - Squid doesn't keep track of the size of the *swap.state* file, which
     normally resides on each
-    [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#).
+    [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir).
 
   - Directory entries and take up filesystem space.
 
@@ -784,19 +784,19 @@ may be due to a number of reasons:
 
 # How do ''positive\_dns\_ttl'' and ''negative\_dns\_ttl'' work?
 
-[positive\_dns\_ttl](http://www.squid-cache.org/Doc/config/positive_dns_ttl#)
+[positive\_dns\_ttl](http://www.squid-cache.org/Doc/config/positive_dns_ttl)
 is how long Squid caches a successful DNS lookup. Similarly,
-[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl#)
+[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
 is how long Squid caches a failed DNS lookup.
 
-[positive\_dns\_ttl](http://www.squid-cache.org/Doc/config/positive_dns_ttl#)
+[positive\_dns\_ttl](http://www.squid-cache.org/Doc/config/positive_dns_ttl)
 is not always used. It is NOT used in the following cases:
 
   - Squid-2.3 and later versions with internal DNS lookups. Internal
     lookups are the default for Squid-2.3 and later.
 
   - If you applied the "DNS TTL" for BIND as described in
-    [../CompilingSquid](/SquidFaq/CompilingSquid#).
+    [../CompilingSquid](/SquidFaq/CompilingSquid).
 
   - If you are using FreeBSD, then it already has the DNS TTL patch
     built in.
@@ -830,13 +830,13 @@ Negative values mean the entry is already expired, and will be refreshed
 upon next use.
 
 The
-[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl#)
+[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
 directive specifies how long to cache failed DNS lookups. When Squid
 fails to resolve a hostname, you can be pretty sure that it is a real
 failure, and you are not likely to get a successful answer within a
 short time period. Squid retries its lookups many times before declaring
 a lookup has failed. If you like, you can set
-[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl#)
+[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
 to zero.
 
 # What does ''swapin MD5 mismatch'' mean?
@@ -913,7 +913,7 @@ connects to the server on that IP and port and data flows.
 # When does Squid re-forward a client request?
 
 When Squid forwards an HTTP request to the next hop (either a
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) or an
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) or an
 origin server), things may go wrong. In some cases, Squid decides to
 re-forward the request. This section documents the associated Squid
 decision logic. Notes in `{curly braces}` are meant to help developers
@@ -936,9 +936,9 @@ following conditions is true:
     `{FwdState::reforward}`, one of the two decision making methods.
 
   - The number of forwarding attempts exceeded
-    [forward\_max\_tries](http://www.squid-cache.org/Doc/config/forward_max_tries#).
+    [forward\_max\_tries](http://www.squid-cache.org/Doc/config/forward_max_tries).
     For example, if you set
-    [forward\_max\_tries](http://www.squid-cache.org/Doc/config/forward_max_tries#)
+    [forward\_max\_tries](http://www.squid-cache.org/Doc/config/forward_max_tries)
     to 1 (one), then no requests will be re-forwarded.
 
   - Squid successfully received a complete response. See below regarding
@@ -973,12 +973,12 @@ following conditions is true:
     `{ServerStateData::handleRequestBodyProducerAborted}`.
 
   - HTTP response header size sent by the next hop exceeds
-    [reply\_header\_max\_size](http://www.squid-cache.org/Doc/config/reply_header_max_size#).
+    [reply\_header\_max\_size](http://www.squid-cache.org/Doc/config/reply_header_max_size).
     `{flags.dont_retry}` set in
     `{HttpStateData::continueAfterParsingHeader}`.
 
   - The received response body size exceeds
-    [reply\_body\_max\_size](http://www.squid-cache.org/Doc/config/reply_body_max_size#)
+    [reply\_body\_max\_size](http://www.squid-cache.org/Doc/config/reply_body_max_size)
     configuration. Currently, this condition may only occur if precache
     RESPMOD adaptation is enabled for the response. `{flags.dont_retry}`
     set in `{ServerStateData::sendBodyIsTooLargeError}`.
@@ -1010,7 +1010,7 @@ following conditions is true:
     alternative destinations may include multiple next hop IP addresses
     and multiple peers.
 
-  - [retry\_on\_error](http://www.squid-cache.org/Doc/config/retry_on_error#)
+  - [retry\_on\_error](http://www.squid-cache.org/Doc/config/retry_on_error)
     is *off* and the received HTTP response status code is 403
     (Forbidden), 500 (Internal Server Error), 501 (Not Implemented) or
     503 (Service not available).
@@ -1037,4 +1037,4 @@ is based on Squid trunk revision 12993 dated 2013-08-29. Hard-coded
 logic may have changed since then.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

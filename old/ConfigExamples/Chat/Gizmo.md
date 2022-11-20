@@ -10,9 +10,9 @@ block those IM which are not Gizmo Project provided services.
 
 see Also:
 
-  - [AOL](/ConfigExamples/Chat/Aol#)
+  - [AOL](/ConfigExamples/Chat/Aol)
 
-  - [ICQ](/ConfigExamples/Chat/Icq#)
+  - [ICQ](/ConfigExamples/Chat/Icq)
 
   - IRC
 
@@ -34,4 +34,4 @@ Configuration file to Include:
     
     http_access deny gizmo
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

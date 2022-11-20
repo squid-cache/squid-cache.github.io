@@ -2,7 +2,7 @@
 
 |          |                                                                                                                                                                                                                                                                                                                                                 |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Jan 2015 | Squid-3.4 series became **DEPRECATED** with the release of [Squid-3.5](/Releases/Squid-3.5#) series                                                                                                                                                                                                    |
+| Jan 2015 | Squid-3.4 series became **DEPRECATED** with the release of [Squid-3.5](/Releases/Squid-3.5) series                                                                                                                                                                                                    |
 | Sep 2014 | Squid-3.4.7 and older are **CONSIDERED DANGEROUS** as the security people say. Due to unfixed vulnerabilities **[CVE-2014-7141](http://www.squid-cache.org/Advisories/SQUID-2014_4.txt), [CVE-2014-7142](http://www.squid-cache.org/Advisories/SQUID-2014_4.txt), and [CVE-2014-6270](http://www.squid-cache.org/Advisories/SQUID-2014_3.txt)** |
 | Dec 2013 | Released for production use.                                                                                                                                                                                                                                                                                                                    |
 
@@ -18,21 +18,21 @@ Additions are limited to **Security and Bug fixes**
 Features ported from 2.7 in this release:
 
   - [Store
-    ID](/Features/StoreID#)
+    ID](/Features/StoreID)
     - a redesign of the store-URL rewrite feature from 2.7.
 
 Basic new features in 3.4:
 
   - [SSL server certificate
-    validator](/Features/SslServerCertValidator#)
+    validator](/Features/SslServerCertValidator)
 
-  - [note](http://www.squid-cache.org/Doc/config/note#) directive for
+  - [note](http://www.squid-cache.org/Doc/config/note) directive for
     annotating transactions
 
-  - [TPROXY](/Features/Tproxy4#)
+  - [TPROXY](/Features/Tproxy4)
     Support for BSD systems
 
-  - [spoof\_client\_ip](http://www.squid-cache.org/Doc/config/spoof_client_ip#)
+  - [spoof\_client\_ip](http://www.squid-cache.org/Doc/config/spoof_client_ip)
     directive for managing TPROXY spoofing
 
   - Various Access Control updates:
@@ -45,7 +45,7 @@ Basic new features in 3.4:
       - **all-of** and **any-of** types for complex configurations.
     
       - No-lookup DNS for certain
-        [acl](http://www.squid-cache.org/Doc/config/acl#) types.
+        [acl](http://www.squid-cache.org/Doc/config/acl) types.
 
   - Support OK/ERR/BH response codes and kv-pair options from any helper
 

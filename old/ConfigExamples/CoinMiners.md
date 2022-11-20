@@ -1,5 +1,5 @@
 *by
-[YuriVoinov](/YuriVoinov#)*
+[YuriVoinov](/YuriVoinov)*
 
 # Coin Miners Filtering
 
@@ -111,4 +111,4 @@ and make sure you redirection web-server has configured SSL.
 Just visit [this site](https://mineblock.org/). You should see [this
 picture](/ConfigExamples/CoinMiners?action=AttachFile&do=get&target=C89L68e.png).
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

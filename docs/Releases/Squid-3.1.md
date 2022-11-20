@@ -3,7 +3,7 @@
 |          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | today    | Squid-3.1 is **CONSIDERED DANGEROUS** as the security people say. Due to unfixed vulnerabilities **[CVE-2014-7141](http://www.squid-cache.org/Advisories/SQUID-2014_4.txt), [CVE-2014-7142](http://www.squid-cache.org/Advisories/SQUID-2014_4.txt), [CVE-2014-6270](http://www.squid-cache.org/Advisories/SQUID-2014_3.txt), [CVE-2014-3609](http://www.squid-cache.org/Advisories/SQUID-2014_2.txt), [CVE-2014-0128](http://www.squid-cache.org/Advisories/SQUID-2014_1.txt), [CVE-2009-0801](http://www.squid-cache.org/Advisories/SQUID-2011_1.txt)** and any other recently discovered issues. |
-| Aug 2012 | the Squid-3.1 series became **DEPRECATED** with the release of [Squid-3.2](/Releases/Squid-3.2#) series                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Aug 2012 | the Squid-3.1 series became **DEPRECATED** with the release of [Squid-3.2](/Releases/Squid-3.2) series                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Mar 2010 | Released for production use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 The features have been set and code changes are reserved for later
@@ -12,28 +12,28 @@ versions. Additions are limited to **Security and Bug fixes**
 Basic new features in 3.1:
 
   - [Connection Pinning (for NTLM Auth
-    Passthrough)](/Features/ConnPin#)
+    Passthrough)](/Features/ConnPin)
 
   - [Native
-    IPv6](/Features/IPv6#)
+    IPv6](/Features/IPv6)
 
   - [Quality of Service (QoS) Flow
-    support](/Features/QualityOfService#)
+    support](/Features/QualityOfService)
 
   - [Native Memory
-    Cache](/Features/RemoveNullStore#)
+    Cache](/Features/RemoveNullStore)
 
   - [SSL Bump (for HTTPS Filtering and
-    Adaptation)](/Features/SslBump#)
+    Adaptation)](/Features/SslBump)
 
   - [TProxy v4.1+
-    support](/Features/Tproxy4#)
+    support](/Features/Tproxy4)
 
   - [eCAP Adaptation Module
-    support](/Features/eCAP#)
+    support](/Features/eCAP)
 
   - [Error Page
-    Localization](/Translations#)
+    Localization](/Translations)
 
   - Follow X-Forwarded-For support
 
@@ -44,15 +44,15 @@ Basic new features in 3.1:
   - Reply headers to external ACL.
 
   - [ICAP and eCAP
-    Logging](/Features/AdaptationLog#)
+    Logging](/Features/AdaptationLog)
 
   - [ICAP Service Sets and
-    Chains](/Features/AdaptationChain#)
+    Chains](/Features/AdaptationChain)
 
   - ICY (SHOUTcast) streaming protocol support
 
   - [HTTP/1.1 support on connections to web servers and
-    peers.](/Features/HTTP11#)
+    peers.](/Features/HTTP11)
 
 From 3.1.9
 
@@ -61,7 +61,7 @@ From 3.1.9
 From 3.1.13
 
   - [HTTPS man-in-middle certificate
-    generation](/Features/DynamicSslCert#)
+    generation](/Features/DynamicSslCert)
 
 Packages of squid 3.1 source code are available at
 [](http://www.squid-cache.org/Versions/v3/3.1/)

@@ -4,7 +4,7 @@ This is a report of the Squid DNS cache for IP address resolution.
 
 **How is it different from the ipcache?**
 
-  - [ipcache](/Features/CacheManager/IpCache#)
+  - [ipcache](/Features/CacheManager/IpCache)
     contains data for the Hostname to IP-Number mapping, and this report
     does it the other way round.
 

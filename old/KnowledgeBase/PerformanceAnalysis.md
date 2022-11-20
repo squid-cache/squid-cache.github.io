@@ -52,7 +52,7 @@ Only at this point you should have a clear enough picture to know what
 knob to turn in order to fix your problem. if there really is a problem.
 If everything so far points at squid being the source of the problems,
 try to follow the steps in
-[SquidFaq/SquidProfiling](/SquidFaq/SquidProfiling#).
+[SquidFaq/SquidProfiling](/SquidFaq/SquidProfiling).
 
 **What settings should I change?**
 
@@ -65,4 +65,4 @@ memory than your system has, parts of squid end up being swapped to disk
 trashing performance. In such cases it's much better to actually
 **reduce** cache\_mem.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

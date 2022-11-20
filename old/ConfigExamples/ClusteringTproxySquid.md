@@ -63,7 +63,7 @@ to the net and back). based on the mark we will forward all the traffic
 using routing rule to specific "cache" table. The cache table consist of
 the list of cache proxy available. The routes in the table will be load
 balanced using
-[RoundRobin](/RoundRobin#)
+[RoundRobin](/RoundRobin)
 Algorithm. (later i will maybe will do something more sophisticated)
 
 ## Topology
@@ -194,4 +194,4 @@ On customed built of squid you must include:
 
     --enable-linux-netfilter --enable-wccpv2
 
-  - [CategoryConfigExample](/CategoryConfigExample#)
+  - [CategoryConfigExample](/CategoryConfigExample)

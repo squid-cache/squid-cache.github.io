@@ -55,4 +55,4 @@ performance penalties, so only disable them if there is no other way.
 IOS firewall inspection can also cause problems with WCCP and is worth
 disabling if you experience problems.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

@@ -13,7 +13,7 @@ slackware user community.
 **Source**: SlackBuilds
 
   - [](http://slackbuilds.org/repository/14.1/network/squid/) (3.4.10 on
-    [SlackWare](/SlackWare#)
+    [SlackWare](/SlackWare)
     14.1)
 
 ### Squid-3.3
@@ -29,7 +29,7 @@ Unofficial package provided by Helmut Hullen can be found in:
 **Source**: SlackBuilds
 
   - [](http://slackbuilds.org/repository/14.0/network/squid/) (3.1.20 on
-    [SlackWare](/SlackWare#)
+    [SlackWare](/SlackWare)
     14.0)
 
   - [](http://slackbuilds.org/repository/13.37/network/squid/) (3.1.12
@@ -47,5 +47,5 @@ Unofficial package provided by Helmut Hullen can be found in:
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

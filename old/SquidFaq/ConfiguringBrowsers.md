@@ -57,7 +57,7 @@ benefits, and historic problems with the upper two layers.
         (Windows uses a Domain Policy)
 
 4.  [NAT or TPROXY
-    interception](/ConfigExamples/Intercept#).
+    interception](/ConfigExamples/Intercept).
     (aka *transparent proxy*)
     
       - Client software does not need to be touched.
@@ -470,7 +470,7 @@ There is a community website explaining PAC features and functions at
 
 There are several ways the login can be done with FTP through Squid.
 
-[ftp\_user](http://www.squid-cache.org/Doc/config/ftp_user#) directive
+[ftp\_user](http://www.squid-cache.org/Doc/config/ftp_user) directive
 will accept the username or username:password values to be used by
 default on **all** FTP login requests. It will be overridden by any
 other available login credentials.
@@ -493,7 +493,7 @@ However, we certainly do not recommend this, as it could be very easy
 for someone to see or grab your password.
 
 Starting with
-[Squid-3.1](/Releases/Squid-3.1#),
+[Squid-3.1](/Releases/Squid-3.1),
 the above will be tried then regular HTTP Basic authentication will be
 used to recover new credentials. If login is required and none given a
 regular website login popup box will appear asking for the credentials
@@ -502,7 +502,7 @@ to be entered.
 # IE 5.0x crops trailing slashes from FTP URL's
 
 by
-[ReubenFarrelly](/ReubenFarrelly#)
+[ReubenFarrelly](/ReubenFarrelly)
 
 There was a bug in the 5.0x releases of Internet Explorer in which IE
 cropped any trailing slash off an FTP URL. The URL showed up correctly
@@ -562,4 +562,4 @@ ERR\_CACHE\_ACCESS\_DENIED larger than 1460 bytes. This should trigger
 IE to handle the authentication in a slightly different manner.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

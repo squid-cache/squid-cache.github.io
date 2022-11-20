@@ -9,7 +9,7 @@
   - **Version**:
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
 # Details
 
@@ -17,9 +17,9 @@ Squid handles many HTTP related protocols. But presently is unable to
 natively accept or send HTTP connections over SOCKS.
 
 The aim of this project will be to make
-[http\_port](http://www.squid-cache.org/Doc/config/http_port#) accept
+[http\_port](http://www.squid-cache.org/Doc/config/http_port) accept
 SOCKS connections and make outgoing connections to SOCKS
-[cache\_peers](http://www.squid-cache.org/Doc/config/cache_peers#) so
+[cache\_peers](http://www.squid-cache.org/Doc/config/cache_peers) so
 that Squid can send requests easily through to SOCKS gateways or act as
 an HTTP SOCKS gateway itself.
 
@@ -35,7 +35,7 @@ bind() call and library linkage.
 
 With knowledge of how upstream peering works it follows that the
 connect() calls Squid may also need to be socksified to use
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) with a
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) with a
 socks proxy. Which would be:
 
     export CFLAGS=" -Dbind=SOCKSbind -Dconnect=SOCKSconnect "
@@ -54,13 +54,13 @@ fashion.
 
 A new COMM\_SOCKSBIND flag will be needed to the comm layer calls for
 the listener binding, outbound maybe a config setting for
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) acting
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) acting
 on the bind() choice directly.
 
 I've had a bit of time too short to do anything much and created a
 branch that is supposed to do listening port and SOCKS peers. It builds
 and listens on an
-[http\_port](http://www.squid-cache.org/Doc/config/http_port#) as far as
+[http\_port](http://www.squid-cache.org/Doc/config/http_port) as far as
 I can tell now. squidclient has also been adapted to use SOCKS socket
 operations. Bazaar Branch available on launchpad at
 [](https://code.launchpad.net/~yadi/squid/socks) for anyone keen on
@@ -106,6 +106,6 @@ Situations:
 Extra additions: there seems to also be a system configuration setting
 and config file(s) for setting a parent SOCKSv5 proxy. It may be useful
 to pull this in as a possible automatic
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) entry.
+[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) entry.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

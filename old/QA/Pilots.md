@@ -302,7 +302,7 @@ configure and run Web Polygraph tests will be required.
 6.  Will applicants be notified when this page changes?
     
       - No manual notifications are planned. Registered wiki users may
-        [subscribe](/HelpOnSubscribing#)
+        [subscribe](/HelpOnSubscribing)
         to monitor this page changes. It is applicants responsibility to
         stay up to date, and we encourage you to use appropriate tools
         to track this page modifications.

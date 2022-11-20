@@ -135,7 +135,7 @@ documentation for further details for your system.
 ### Roxen 2.0 and later
 
 by
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)
 
 Notice: this is **not** how things would get best done with Roxen, but
 this what you need to do go adhere to the example. Also, knowledge of

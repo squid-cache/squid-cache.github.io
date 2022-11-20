@@ -83,4 +83,4 @@ things...
 
     auth_param basic program /usr/lib/squid/squid_ldap_auth -v 3 -b ou="something",ou=something,dc=svbmt,dc=net -D cn=LDAPUSER,ou="Generic User Accounts",ou=something",dc=svbmt,dc=net -w password -f sAMAccountName=%s -h ldap.yourcompany.com
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

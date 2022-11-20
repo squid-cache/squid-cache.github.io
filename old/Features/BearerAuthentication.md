@@ -7,14 +7,14 @@
   - **Version**: 3.5+
 
   - **Developer**:
-    [AmosJeffries](/AmosJeffries#)
+    [AmosJeffries](/AmosJeffries)
 
-  - **More Info**: RFC [6750](https://tools.ietf.org/rfc/rfc6750#)
+  - **More Info**: RFC [6750](https://tools.ietf.org/rfc/rfc6750)
 
 # Details
 
 **Bearer** is an HTTP authentication scheme created as part of OAuth 2.0
-in RFC [6750](https://tools.ietf.org/rfc/rfc6750#). A client wanting to
+in RFC [6750](https://tools.ietf.org/rfc/rfc6750). A client wanting to
 access to a service is required to locate a control server trusted by
 that service, authenticate itself against the control server and
 retrieve an opaque token. The opaque token is delivered using HTTP
@@ -76,7 +76,7 @@ nonce.
 Bearer authentication over HTTPS connections**
 
 See
-[Features/Authentication](/Features/Authentication#)
+[Features/Authentication](/Features/Authentication)
 for details on other schemes supported by Squid and how authentication
 in general works.
 
@@ -117,9 +117,9 @@ Input line received from Squid:
     
       - Additional parameters passed to the helper which may be
         configured with
-        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#)
+        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
         *key\_extras* parameter. Only available in
-        [Squid-3.5](/Releases/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5)
         and later.
 
 Result line sent back to Squid:
@@ -188,7 +188,7 @@ made up by two parts:
 
 1.  code within Squid to talk to the client.
     
-      - [Squid-3.5](/Releases/Squid-3.5#)
+      - [Squid-3.5](/Releases/Squid-3.5)
         or later built with `--enable-auth-bearer`
 
 2.  one or more authentication helpers which perform the grunt work.
@@ -204,7 +204,7 @@ everything to work.
 
   - ℹ️
     All other bearer parameters are optional. see
-    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param#)
+    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
     BEARER section for more details.
 
 ## Testing
@@ -238,4 +238,4 @@ shown:
 
 Bearer authentication is debugged with level 29.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

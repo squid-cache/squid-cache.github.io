@@ -1,6 +1,6 @@
 ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
 This page is a work in progress. It reflects the discoveries by
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)
 as it tries to implement the new cachemgr framework. It may contain
 inaccurate informations.
 
@@ -8,7 +8,7 @@ inaccurate informations.
 
 This document details how to implement a multi-cpu cache manager action
 for Squid 3.2+, following the API framework implemented by
-[AlexRousskov](/AlexRousskov#).
+[AlexRousskov](/AlexRousskov).
 
 # Overview
 

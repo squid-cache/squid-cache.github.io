@@ -15,4 +15,4 @@ can be achieved in various ways.
 
 1.  ConfigExamples/Caching/WindowsUpdates
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

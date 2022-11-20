@@ -1,8 +1,8 @@
   - Back to
-    [SquidCodingGuidelines](/SquidCodingGuidelines#).
+    [SquidCodingGuidelines](/SquidCodingGuidelines).
 
   - Back to
-    [DeveloperResources](/DeveloperResources#).
+    [DeveloperResources](/DeveloperResources).
 
 # Autoconf Syntax Guidelines
 
@@ -26,7 +26,7 @@ pieces to be enabled. In which case:
   - being omitted means force-disable
 
 For further details on autoconf macros and conventions, also see
-[Features/ConfigureInRefactoring](/Features/ConfigureInRefactoring#)
+[Features/ConfigureInRefactoring](/Features/ConfigureInRefactoring)
 
 ## Component Macros in Autoconf
 

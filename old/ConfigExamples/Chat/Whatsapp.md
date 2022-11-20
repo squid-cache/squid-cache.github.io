@@ -1,5 +1,5 @@
 *by
-[YuriVoinov](/YuriVoinov#)*
+[YuriVoinov](/YuriVoinov)*
 
 # Whatsapp Messenger (mobile/web)
 
@@ -44,4 +44,4 @@ That's all. Just reconfigure squid.
 
 Don't forget to put proxy CA to mobile devices.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

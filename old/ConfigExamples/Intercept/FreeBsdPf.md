@@ -15,7 +15,7 @@ later.
 box**. This is required to perform intercept accurately and securely. To
 intercept from a gateway machine and direct traffic at a separate squid
 box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute#).
+routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 ## Squid Configuration
 
@@ -93,4 +93,4 @@ You should now see an output like this:
 From there on out, just set your browsers up normally with no proxy
 server, and you should see the cache fill up and your browsing speed up.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

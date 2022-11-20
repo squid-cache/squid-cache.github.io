@@ -2,7 +2,7 @@
     help](http://www.parashift.com/c++-faq-lite/const-correctness.html#faq-18.5)
 
   - Back to
-    [DeveloperResources](/DeveloperResources#).
+    [DeveloperResources](/DeveloperResources).
 
 see also
 
@@ -73,7 +73,7 @@ formater.
             prohibited.
 
   - Naming conventions as covered in
-    [Features/SourceLayout](/Features/SourceLayout#)
+    [Features/SourceLayout](/Features/SourceLayout)
     are to be used.
 
 ## Suggested coding rules
@@ -81,7 +81,7 @@ formater.
   - Use internally consistent naming scheme (see below for choices).
 
   - Words in global names and all type names are
-    [CamelCase](/CamelCase#)
+    [CamelCase](/CamelCase)
     capitalized:
     
       - including the first word.

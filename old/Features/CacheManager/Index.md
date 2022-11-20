@@ -3,16 +3,16 @@
 When an HTML template named **MGR\_INDEX** is installed in the
 **templates/** error page directory this report will return its contents
 after [macro
-expansion](/Features/CustomErrors#).
+expansion](/Features/CustomErrors).
 
 This allows creation of a scripted user interface for the cache manager
 loaded from that template.
 
 ## Example JS reporting tool
 
-[FrancescoChemolli](/FrancescoChemolli#)
+[FrancescoChemolli](/FrancescoChemolli)
 and
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)
 have developed a javascript based tool using the MGR\_INDEX interface
 which can be found at [](https://github.com/yadij/cachemgr.js)
 

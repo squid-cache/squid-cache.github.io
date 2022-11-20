@@ -8,10 +8,10 @@
   - **Version**: v3.4
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
 
   - **More**: Not needed without
-    [SslBump](/Features/SslBump#).
+    [SslBump](/Features/SslBump).
 
 # Motivation
 
@@ -49,7 +49,7 @@ validation error(s), the helper will return:
 
   - the validation error name (see *%err\_name* error page macro and
     *%err\_details*
-    [logformat](http://www.squid-cache.org/Doc/config/logformat#) code),
+    [logformat](http://www.squid-cache.org/Doc/config/logformat) code),
 
   - error reason (*%ssl\_lib\_error* macro),
 
@@ -60,7 +60,7 @@ validation error(s), the helper will return:
 
 The returned information mimics what the internal OpenSSL-based
 validation code collects now. Returned errors, if any, will be fed to
-[sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error#),
+[sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error),
 triggering the existing SSL error processing code.
 
 Helper responses will be cached to reduce validation performance burden
@@ -174,4 +174,4 @@ OpenSSL-detected error, but since such errors should be rare, the option
 will likely add overheads to the common case without bringing any
 functionality advantages for the rare erronous case.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

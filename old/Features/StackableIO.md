@@ -17,5 +17,5 @@ Currently the network I/O is very filedescriptor centric, which do not
 fit very well with the needs of SSL and other middle layers where
 protocol level I/O operations do not match exactly the actual I/O.
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

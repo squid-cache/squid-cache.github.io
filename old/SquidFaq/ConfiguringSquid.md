@@ -29,7 +29,7 @@ firewall access, and various timeout information.
 ## Where can I find examples and configuration for a Feature?
 
 There is still a fair bit of config knowledge buried in the old
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)
 and Guide pages of this wiki. We are endeavoring to pull them into a
 layout easier to use.
 
@@ -39,11 +39,11 @@ What we have so far is:
 
   - Specific feature descriptions pros/cons and some config are linked
     from the main
-    [SquidFaq](/SquidFaq#)
+    [SquidFaq](/SquidFaq)
     in a features section.
 
   - Any complex tuning stuff mixing features and specific demos in
-    [ConfigExamples](/ConfigExamples#)
+    [ConfigExamples](/ConfigExamples)
     and usually linked from the related features or FAQ pages as well.
 
 ## Do you have a squid.conf example?
@@ -476,7 +476,7 @@ on a *cache\_peer* line. For example:
 ## How do I configure Squid forward all requests to another proxy?
 
 see
-[Features/CacheHierarchy](/Features/CacheHierarchy#)
+[Features/CacheHierarchy](/Features/CacheHierarchy)
 
 ## What ''cache\_dir'' size should I use?
 
@@ -738,4 +738,4 @@ reached, the client's connection is simply closed.*
 <!-- end list -->
 
   - Back to the
-    [SquidFaq](/SquidFaq#)
+    [SquidFaq](/SquidFaq)

@@ -1,4 +1,4 @@
-[MoinMoin](/MoinMoin#)
+[MoinMoin](/MoinMoin)
 *DesktopEdition* is the easiest way to run moin, without much
 installation and without separate server software (this is why its
 built-in server is also called the *standalone server*).
@@ -12,7 +12,7 @@ It is intended as a local personal information manager.
     installation), get it from [](http://python.org/)
 
   - download the moin distribution archive from
-    [MoinMoinDownload](http://moinmo.in/MoinMoinDownload#)
+    [MoinMoinDownload](http://moinmo.in/MoinMoinDownload)
 
   - unpack it (will give some moin-1.x.x directory)
 
@@ -60,9 +60,9 @@ like to have more log output for debugging.
 # Wiki Configuration
 
 See the `wikiconfig.py` in the toplevel directory.
-[HelpOnConfiguration](/HelpOnConfiguration#)
+[HelpOnConfiguration](/HelpOnConfiguration)
 lists the configuration options. You maybe also want to look at the
 sample config in the `wiki/config/` directory.
 
 See also:
-[HelpOnInstalling/StandaloneServer](/HelpOnInstalling/StandaloneServer#)
+[HelpOnInstalling/StandaloneServer](/HelpOnInstalling/StandaloneServer)

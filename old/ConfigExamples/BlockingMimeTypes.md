@@ -42,8 +42,8 @@ access.log:
 ### Thanks
 
 Thanks to
-[AdrianChadd](/AdrianChadd#)
+[AdrianChadd](/AdrianChadd)
 for this basic outline; please feel free to apply for a Wiki Editor
 account and update the page\!
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase#)
+[CategoryKnowledgeBase](/CategoryKnowledgeBase)

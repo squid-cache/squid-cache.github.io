@@ -8,7 +8,7 @@ attach a screenshot showing the problem that you're having.
 
 Problems with the wiki **contents** can be reported in the same way, but
 the recommended solution in this case is to get involved, please see
-[FrontPage](/FrontPage#)
+[FrontPage](/FrontPage)
 for information on how to do so.
 
 Thanks\!

@@ -16,7 +16,7 @@
   - **Developer**:
 
   - **More**: bug
-    [2334](https://bugs.squid-cache.org/show_bug.cgi?id=2334#)
+    [2334](https://bugs.squid-cache.org/show_bug.cgi?id=2334)
 
 # Details
 
@@ -40,4 +40,4 @@ Some examples:
 So, we could add this and other basic diagnostic info to squid -v output
 and eventually add a new command line option for this.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

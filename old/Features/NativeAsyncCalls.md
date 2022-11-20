@@ -8,11 +8,11 @@
   - **Status**: complete
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#)
+    [AlexRousskov](/AlexRousskov)
 
   - **More**:
-    [bug1912](https://bugs.squid-cache.org/show_bug.cgi?id=1912#),
-    [bug2093](https://bugs.squid-cache.org/show_bug.cgi?id=2093#), and
+    [bug1912](https://bugs.squid-cache.org/show_bug.cgi?id=1912),
+    [bug2093](https://bugs.squid-cache.org/show_bug.cgi?id=2093), and
     item 1 in
     [email109](http://www.squid-cache.org/mail-archive/squid-dev/200707/0109.html)
 
@@ -148,4 +148,4 @@ three parameters (at least). Designing a simple and efficient set of
 wrappers without using a template-based library like
 [Boost](http://www.boost.org/) will be tricky.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

@@ -11,6 +11,6 @@
   - **Developer**:
 
   - **More**:
-    [Bug 2256](https://bugs.squid-cache.org/show_bug.cgi?id=2256#)
+    [Bug 2256](https://bugs.squid-cache.org/show_bug.cgi?id=2256)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

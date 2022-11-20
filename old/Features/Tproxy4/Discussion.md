@@ -1,5 +1,5 @@
 See [Discussed
-Page](/Features/Tproxy4#)
+Page](/Features/Tproxy4)
 
 There ebtables settings that was mentioned at:
 [](http://wiki.squid-cache.org/ConfigExamples/Intercept/DebianWithRedirectorAndReporting?highlight=%28ebtables%29)
@@ -8,7 +8,7 @@ rules. What should it be in order to make the bridged packets from the
 LAN to go into the iptables plane? ACCEPT or DROP?
 
 \-- [Eliezer
-Croitoru](/Eliezer%20Croitoru#)
+Croitoru](/Eliezer%20Croitoru)
 
 **DROP** is the correct target action. The semantics of ebtables rules
 are that it either ACCEPTS the packet (delivering it **over the bridge**
@@ -27,4 +27,4 @@ of *echoing* back at Squid. That is of course quite bad for performance,
 reliability, security, privacy, etc.
 
 \--
-[AmosJeffries](/AmosJeffries#)
+[AmosJeffries](/AmosJeffries)

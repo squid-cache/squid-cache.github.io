@@ -39,7 +39,7 @@ so that you can view the output as text rather than raw OID numbers.
 
 To configure SNMP first specify a list of communities that you would
 like to allow access by using a standard
-[acl](http://www.squid-cache.org/Doc/config/acl#) of the form:
+[acl](http://www.squid-cache.org/Doc/config/acl) of the form:
 
     acl aclname snmp_community string
 
@@ -48,19 +48,19 @@ For example:
     acl snmppublic snmp_community public
     acl snmpjoebloggs snmp_community joebloggs
 
-This creates two [acl](http://www.squid-cache.org/Doc/config/acl#)'s,
+This creates two [acl](http://www.squid-cache.org/Doc/config/acl)'s,
 with two different communities, public and joebloggs. You can name the
-[acl](http://www.squid-cache.org/Doc/config/acl#)'s and the community
+[acl](http://www.squid-cache.org/Doc/config/acl)'s and the community
 strings anything that you like.
 
 To specify the port that the agent will listen on modify the
-[snmp\_port](http://www.squid-cache.org/Doc/config/snmp_port#)
+[snmp\_port](http://www.squid-cache.org/Doc/config/snmp_port)
 parameter, the official SNMP port is **3401**.
 
     snmp_port 3401
 
 To allow access to Squid's SNMP agent, define an
-[snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access#) ACL
+[snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access) ACL
 with the community strings that you previously defined. For example:
 
     snmp_access allow snmppublic localhost
@@ -71,7 +71,7 @@ The above will allow anyone on the localhost who uses the community
 
   - ![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
     If you do not define any
-    [snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access#)
+    [snmp\_access](http://www.squid-cache.org/Doc/config/snmp_access)
     ACL's, then SNMP access is denied by default.
 
 Finally squid allows to you to configure the address that the agent will
@@ -101,16 +101,16 @@ where the OID is present.
 |                                                                |                               |                 |           |                                                                                                                                             |
 | -------------------------------------------------------------- | ----------------------------- | --------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | **OID**                                                        | **Name**                      | **Type**        | **Squid** | **Description**                                                                                                                             |
-| \*.1.1.1.0                                                     | cacheSysVMsize                | Integer32       | 2.0+      | Amount of [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) storage space used, in KB.                                         |
-| \*.1.1.2.0                                                     | cacheSysStorage               | Integer32       | 2.0+      | Amount of [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) storage space used, in KB.                                         |
+| \*.1.1.1.0                                                     | cacheSysVMsize                | Integer32       | 2.0+      | Amount of [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) storage space used, in KB.                                         |
+| \*.1.1.2.0                                                     | cacheSysStorage               | Integer32       | 2.0+      | Amount of [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) storage space used, in KB.                                         |
 | \*.1.1.3.0                                                     | cacheUptime                   | Timeticks       | 2.0+      | The Uptime of the cache in timeticks                                                                                                        |
 | \*.1.2.1.0                                                     | cacheAdmin                    | STRING          | 2.0+      | Cache Administrator E-Mail address                                                                                                          |
 | \*.1.2.2.0                                                     | cacheSoftware                 | STRING          | 2.0+      | Cache Software Name. Constant **squid**                                                                                                     |
 | \*.1.2.3.0                                                     | cacheVersionId                | STRING          | 2.0+      | Cache Software Version                                                                                                                      |
 | \*.1.2.4.0                                                     | cacheLoggingFacility          | STRING          | 2.0+      | Logging Facility. An informational string indicating logging info like debug level, local/syslog/remote logging etc                         |
 | **Memory Usage Overview**                                      |                               |                 |           |                                                                                                                                             |
-| \*.1.2.5.1.0                                                   | cacheMemMaxSize               | Integer32       | 2.0+      | The value of the [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem#) parameter in MB                                             |
-| \*.1.2.5.2.0                                                   | cacheSwapMaxSize              | Integer32       | 2.2+      | The total of the [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir#) space allocated in MB                                       |
+| \*.1.2.5.1.0                                                   | cacheMemMaxSize               | Integer32       | 2.0+      | The value of the [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) parameter in MB                                             |
+| \*.1.2.5.2.0                                                   | cacheSwapMaxSize              | Integer32       | 2.2+      | The total of the [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) space allocated in MB                                       |
 | \*.1.2.5.3.0                                                   | cacheSwapHighWM               | Integer32       | 2.2+      | Cache Swap High Water Mark                                                                                                                  |
 | \*.1.2.5.4.0                                                   | cacheSwapLowWM                | Integer32       | 2.2+      | Cache Swap Low Water Mark                                                                                                                   |
 | \*.1.2.6.0                                                     | cacheUniqName                 | Integer32       | 2.6+      | Cache unique host name                                                                                                                      |
@@ -234,7 +234,7 @@ where the OID is present.
 | \*.1.5.1.2.14                                                  | cachePeerIndex                | Integer32       | 2.6-2.8   | Reference Index for each peer                                                                                                               |
 | \*.1.5.1.2.15                                                  | cachePeerHost                 | STRING          | 2.6-2.8   | The FQDN name for the peer cache                                                                                                            |
 | **Peer Servers Table (Squid-3.1 and later)**                   |                               |                 |           |                                                                                                                                             |
-| \*.1.5.1.3.1                                                   | cachePeerIndex                | Integer32       | 3.1+      | A unique value, greater than zero for each [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#) instance in the managed system. |
+| \*.1.5.1.3.1                                                   | cachePeerIndex                | Integer32       | 3.1+      | A unique value, greater than zero for each [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) instance in the managed system. |
 | \*.1.5.1.3.2                                                   | cachePeerName                 | STRING          | 3.1+      | The FQDN name or internal alias for the peer cache                                                                                          |
 | \*.1.5.1.3.3                                                   | cachePeerAddressType          | InetAddressType | 3.1+      | The type of Internet address by which the peer cache is reachable.                                                                          |
 | \*.1.5.1.3.4                                                   | cachePeerAddress              | InetAddress     | 3.1+      | The Internet address for the peer cache. The type of this address is determined by the value of the cachePeerAddressType object.            |
@@ -427,6 +427,6 @@ cross-compatible with v1 in places.
         or bundling process would be very helpful long-term
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

@@ -147,4 +147,4 @@ Edit your **/etc/squid/squid.conf** to enable the helper and adjust
 
 <!-- end list -->
 
-  - [CategoryConfigExample](/CategoryConfigExample#)
+  - [CategoryConfigExample](/CategoryConfigExample)

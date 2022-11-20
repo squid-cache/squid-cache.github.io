@@ -53,4 +53,4 @@ like so:
 
     http_port 3127 intercept
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

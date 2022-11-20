@@ -45,5 +45,5 @@ this in a far simpler design. By having helpers simply stop running when
 their config becomes old. Squid will start new helpers as load requires
 and helpers only need load config on startup.
 
-[CategoryFeature](/CategoryFeature#)
-[CategoryWish](/CategoryWish#)
+[CategoryFeature](/CategoryFeature)
+[CategoryWish](/CategoryWish)

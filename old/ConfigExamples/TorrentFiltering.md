@@ -1,5 +1,5 @@
 *by
-[YuriVoinov](/YuriVoinov#)*
+[YuriVoinov](/YuriVoinov)*
 
 # Introduction
 
@@ -97,4 +97,4 @@ completely terminates all torrent sessions on border router/firewall.
     devices you need to activate SECURITY technology pack or has
     security-enabled iOS version.
 
-[CategoryConfigExample](/CategoryConfigExample#)
+[CategoryConfigExample](/CategoryConfigExample)

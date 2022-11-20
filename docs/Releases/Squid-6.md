@@ -8,22 +8,22 @@
 The set of new features is determined by submissions and available
 developer time. New features may be completed and added at any time.
 Features accepted before 2023-02-05 (see
-[ReleaseSchedule](/ReleaseSchedule#)) will be part of this release.
+[ReleaseSchedule](/ReleaseSchedule)) will be part of this release.
 
 ## Basic new features in 6.0:
   - **Major UI changes:**  
       - Remove 8K limit for single access.log line    
       - Add
-        [tls_key_log](http://www.squid-cache.org/Doc/config/tls_key_log#) to report TLS communication secrets
+        [tls_key_log](http://www.squid-cache.org/Doc/config/tls_key_log) to report TLS communication secrets
   - **Minor UI changes:**
       - Add %transport::>connection_id
-        [logformat](http://www.squid-cache.org/Doc/config/logformat#)
+        [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code  
       - Add
-        [paranoid_hit_validation](http://www.squid-cache.org/Doc/config/paranoid_hit_validation#)
+        [paranoid_hit_validation](http://www.squid-cache.org/Doc/config/paranoid_hit_validation)
         directive   
       - Report SMP store queues state (mgr:store_queues)
-      - Add[cache_log_message](http://www.squid-cache.org/Doc/config/cache_log_message#)
+      - Add[cache_log_message](http://www.squid-cache.org/Doc/config/cache_log_message)
         directive
   - **Developer Interest changes:**
       - Replaced X-Cache and X-Cache-Lookup headers with Cache-Status
@@ -33,7 +33,7 @@ Features accepted before 2023-02-05 (see
       - Add --progress option to test-builds.sh
       - Remove layer-00-bootstrap from test script
       - Convert LRU map into a CLP map
-      - Remove legacy context-based debugging in favor of [CodeContext](/CodeContext#)
+      - Remove legacy context-based debugging in favor of [CodeContext](/CodeContext)
   - **Removed features**:    
       - Remove unused cache_diff binary
       - Remove obsolete membanger test

@@ -52,9 +52,9 @@ destination will be intercepted.
 
 Steps to config squid in TPROXY mode with WCCP v2. These steps are for
 setting
-[Squid-3.1](/Releases/Squid-3.1#)
+[Squid-3.1](/Releases/Squid-3.1)
 with
-[TPROXYv4](/Features/Tproxy4#),
+[TPROXYv4](/Features/Tproxy4),
 IP spoofing and Cisco WCCP.
 
 they apply to Ubuntu 12.04 LTS manually and not with automatic network
@@ -171,4 +171,4 @@ On customed built of squid you must include:
 
     --enable-linux-netfilter --enable-wccpv2
 
-  - [CategoryConfigExample](/CategoryConfigExample#)
+  - [CategoryConfigExample](/CategoryConfigExample)

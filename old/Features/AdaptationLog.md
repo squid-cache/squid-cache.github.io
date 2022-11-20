@@ -7,7 +7,7 @@
   - **Version**: 3.1
 
   - **Developer**:
-    [AlexRousskov](/AlexRousskov#),
+    [AlexRousskov](/AlexRousskov),
     Christos Tsantilas
 
   - **More**: [v3.0
@@ -105,4 +105,4 @@ v3.0 as a Launchpad
 Adaptation logging features are committed to Squid and scheduled for
 v3.1.0.11 release.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

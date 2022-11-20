@@ -104,4 +104,4 @@ It would be nice if Registrars prohibited the registration of the "wpad"
 domain name; its not known if this is policy for any current DNS
 registry.
 
-[CategoryTechnology](/CategoryTechnology#)
+[CategoryTechnology](/CategoryTechnology)

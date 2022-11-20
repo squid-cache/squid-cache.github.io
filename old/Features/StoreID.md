@@ -8,12 +8,12 @@
   - **Version**: 3.4
 
   - **Developer**: [Eliezer
-    Croitoru](/Eliezer%20Croitoru#)
+    Croitoru](/Eliezer%20Croitoru)
 
   - **More**:
 
   - **Sponsored by**: [Eliezer
-    Croitoru](/Eliezer%20Croitoru#)
+    Croitoru](/Eliezer%20Croitoru)
     - [NgTech](http://www1.ngtech.co.il/)
 
 ## Details
@@ -35,13 +35,13 @@ successful, maintaining the Store ID helper correctness is usually
 difficult because of sudden external mapping changes.
 
 This feature is a port of the
-[Squid-2.7](/Releases/Squid-2.7#)
+[Squid-2.7](/Releases/Squid-2.7)
 Store-URL feature, however it does work in a slightly different way and
 will make
-[Squid-3.4](/Releases/Squid-3.4#)
+[Squid-3.4](/Releases/Squid-3.4)
 or later to apply all store\\cache related work to be against the
 StoreID and not the request URL. This includes
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern#).
+[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern).
 This allows more flexibility in the way admin will be able use the
 helper.
 
@@ -78,7 +78,7 @@ This feature will allow us later to implement
   - ICP and HTCP support is missing.
     
       - URL queries received from
-        [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer#)
+        [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
         siblings are not passed through StoreID helper. So the resulting
         store/cache lookup will MISS on URLs normally alterd by StoreID.
 
@@ -86,21 +86,21 @@ This feature will allow us later to implement
 
   - Eliezer Croitoru has designed several \!Ruby helpers, including the
     [example
-    helper](/Features/StoreID/Helper#)
+    helper](/Features/StoreID/Helper)
     here.
 
   - **storeid\_file\_rewrite** by Alan Mizrahi is a simple helper which
     is packaged with
-    [Squid-3.4](/Releases/Squid-3.4#).
+    [Squid-3.4](/Releases/Squid-3.4).
     It can be used to load a [database of
     patterns](http://wiki.squid-cache.org/Features/StoreID/DB) without
     needing to edit the code of the helper internals.
 
   - ℹ️
     Any helper previously designed for the
-    [Squid-2.7](/Releases/Squid-2.7#)
+    [Squid-2.7](/Releases/Squid-2.7)
     StoreURL feature is expected to work with
-    [Squid-3.4](/Releases/Squid-3.4#).
+    [Squid-3.4](/Releases/Squid-3.4).
     However upgrading the response syntax sent back to Squid is advised
     for better performance and forward-compatibility with future Squid
     versions.
@@ -109,7 +109,7 @@ This feature will allow us later to implement
     Older URL-rewriter programs such as SQUIRM and Jesred will also work
     using the above backward-compatibility support. However newer
     URL-rewrite helpers designed for the
-    [Squid-3.4](/Releases/Squid-3.4#)
+    [Squid-3.4](/Releases/Squid-3.4)
     response syntax **WILL NOT** work on the Store-ID interface unless
     they have specific Store-ID interface support.
 
@@ -121,7 +121,7 @@ which can be shared by various helper designs.
 
 [The DB of patterns](http://wiki.squid-cache.org/Features/StoreID/DB)
 provides de-duplication for content such as
-[SourceForge](/SourceForge#)
+[SourceForge](/SourceForge)
 CDN network or Linux distributions repository mirrors. Contributions are
 welcome.
 
@@ -173,7 +173,7 @@ the token based urls that are embedded in the POST response.
 In theory, an ID computed by an eCAP service can already be passed to
 Squid via eCAP annotations (a.k.a. meta headers) and then passed to the
 storeID helper via
-[store\_id\_extras](http://www.squid-cache.org/Doc/config/store_id_extras#).
+[store\_id\_extras](http://www.squid-cache.org/Doc/config/store_id_extras).
 Currently, ICAP services do not support the option to send a StoreID as
 a part of the request and response processing.
 
@@ -208,7 +208,7 @@ An example for input and output of the helper:
 
   - ℹ️
     from
-    [Squid-3.5](/Releases/Squid-3.5#)
+    [Squid-3.5](/Releases/Squid-3.5)
     this helper can support any value for the concurrency setting.
 
 ## Developers info
@@ -220,7 +220,7 @@ An example for input and output of the helper:
     guarantees and is not recommended for production use.
 
 There is a newer [StoreID
-helper](/Features/StoreID/Helper#)
+helper](/Features/StoreID/Helper)
 which has more URL patterns in it in a way you can learn URL patterns.
 
 ``` highlight
@@ -393,13 +393,13 @@ Input line received from Squid:
   - key-extras
     
       - Starting with
-        [Squid-3.5](/Releases/Squid-3.5#)
+        [Squid-3.5](/Releases/Squid-3.5)
         additional parameters passed to the helper which may be
         configured with
-        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras#).
+        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
         For backward compatibility the default key-extras for URL
         helpers matches the format fields sent by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and older in this field position:
     
     <!-- end list -->
@@ -439,7 +439,7 @@ Input line received from Squid:
     
       - Squid-2 will send this field with the URL-grouping tag which can
         be configured on
-        [http\_port](http://www.squid-cache.org/Doc/config/http_port#).
+        [http\_port](http://www.squid-cache.org/Doc/config/http_port).
         Squid-3.x will not send this field.
 
   - kv-pair
@@ -447,7 +447,7 @@ Input line received from Squid:
       - One or more key=value pairs. Only "myip" and "myport" pairs
         documented below were ever defined and are sent unconditionally
         by
-        [Squid-3.4](/Releases/Squid-3.4#)
+        [Squid-3.4](/Releases/Squid-3.4)
         and older:
         
         |            |                         |
@@ -483,7 +483,7 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                   |
         | ------------------ | ----------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5#)) |
+        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                          |
         | store-id=...       | set the cache storage ID for this URL.                                                                            |
         | tag=...            | reserved                                                                                                          |
@@ -494,16 +494,16 @@ Result line sent back to Squid:
       - ℹ️
         the kv-pair returned by this helper can be logged by the
         **%note**
-        [logformat](http://www.squid-cache.org/Doc/config/logformat#)
+        [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
     
     ℹ️
     This interface will also accept responses in the syntax delivered by
     [Store
-    URL-rewrite](/Features/StoreUrlRewrite#)
+    URL-rewrite](/Features/StoreUrlRewrite)
     feature helpers written for
-    [Squid-2.7](/Releases/Squid-2.7#).
+    [Squid-2.7](/Releases/Squid-2.7).
     However thst syntax is deprecated and such helpers should be
     upgraded as soon as possible to use this Store-ID syntax.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

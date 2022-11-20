@@ -7,7 +7,7 @@
   - **Version**: 2.6
 
   - **Developer**:
-    [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m#),
+    [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m),
     others welcome
 
   - **Priority**: 2

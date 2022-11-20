@@ -362,7 +362,7 @@ to pinpoint the problem:
 5.  Reproduce the failing transaction, using a single request if
     possible. Please note that reloading a page in a browser often sends
     dozens or even hundreds of requests to Squid. Ideally, use
-    [squidclient](/SquidClientTool#),
+    [squidclient](/SquidClientTool),
     wget, curl, or another "single-request" tool when possible.
 
 6.  Kill the "tail" command above.
@@ -417,7 +417,7 @@ to edit **squid.conf** and add to the **debug\_options** line. Every
 Squid source file is assigned a debugging **section**. The debugging
 section assignments can be found by looking at the top of individual
 source files, by reading the file *debug-sections.txt*, or looking at
-[KnowledgeBase/DebugSections](/KnowledgeBase/DebugSections#).
+[KnowledgeBase/DebugSections](/KnowledgeBase/DebugSections).
 
 ## Debug Levels
 
@@ -531,4 +531,4 @@ activity and stop the capture as soon as possible when you detect an
 assertion. Otherwise, the interesting file dump would be overwritten.
 
 Back to the
-[SquidFaq](/SquidFaq#)
+[SquidFaq](/SquidFaq)

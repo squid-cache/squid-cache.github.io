@@ -66,7 +66,7 @@ increase it beyond that value, you would have to edit the source code.
 
 First, find out if you have enough *dnsserver* processes running by
 looking at the
-[SquidFaq/CacheManager](/SquidFaq/CacheManager#)
+[SquidFaq/CacheManager](/SquidFaq/CacheManager)
 *dns* output. Ideally, you should see that the first *dnsserver* handles
 a lot of requests, the second one less than the first, etc. The last
 *dnsserver* should have serviced relatively few requests. If there is
@@ -100,4 +100,4 @@ only ever seen at most three *dnsserver* processes in use, make at least
 five. Remember that a *dnsserver* is small and, if unused, will be
 swapped out.
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)

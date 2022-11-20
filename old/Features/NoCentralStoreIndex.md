@@ -29,6 +29,6 @@ multiple Squid frontends.
 Goal of not having a central index, making it possible to push more of
 the store logics down..
 
-[CategoryFeature](/CategoryFeature#)
+[CategoryFeature](/CategoryFeature)
 |
-[CategoryWish](/CategoryWish#)
+[CategoryWish](/CategoryWish)

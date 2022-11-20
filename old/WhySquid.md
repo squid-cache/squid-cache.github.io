@@ -14,35 +14,35 @@ regular) and reverse.
 The main functions a regular proxy can perform are caching, to save
 network resources by directly supplying commonly-accessed data to
 clients, [authentication and
-authorization](/SquidFaq/ProxyAuthentication#),
-[logging](/SquidFaq/SquidLogs#),
+authorization](/SquidFaq/ProxyAuthentication),
+[logging](/SquidFaq/SquidLogs),
 company internet policy enforcement (aka content filtering), [network
 resources usage
-management](/Features/DelayPools#).
+management](/Features/DelayPools).
 
 ## Advantages of a Reverse Proxy
 
 A [Reverse
-Proxy](/SquidFaq/ReverseProxy#)
+Proxy](/SquidFaq/ReverseProxy)
 usually sits in front of a web server farm, and optimizes the work of
 the web servers, by caching and serving frequently-accessed static
 contents,
-[SpoonFeeding](/SpoonFeeding#)
+[SpoonFeeding](/SpoonFeeding)
 slow clients, and also possibly perform request filtering to enhance the
 web applications' security. It can also be used as an IPv4-IPv6 (or
 v6-v4) gateway.
 
 # Squid
 
-[Squid](/SquidFaq/AboutSquid#)
+[Squid](/SquidFaq/AboutSquid)
 is one of the most used HTTP proxy implementations, and can be deployed
 both in forward and reverse proxy scenarios. Its most distinguishing
 feature is its extreme flexibility (see
-[Features](/Features#),[SquidFaq](/SquidFaq#))
+[Features](/Features),[SquidFaq](/SquidFaq))
 and customizability
-([ConfigExamples](/ConfigExamples#)).
+([ConfigExamples](/ConfigExamples)).
 It is actively deployed by the [Squid Development
-Team](/WhoWeAre#), and
+Team](/WhoWeAre), and
 freely available under the terms of the GNU General Public License.
 
 Discuss this page using the "Discussion" link in the main menu
