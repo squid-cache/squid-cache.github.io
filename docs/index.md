@@ -12,6 +12,7 @@ including the [FAQ](/SquidFaq), [KnowledgeBase](/KnowledgeBase) articles,
   - Development [Road Map](/RoadMap/Squid3)
   - [Configuration examples](/ConfigExamples), or tips on how to address specific scenarios
   - A detailed description of many squid [Features](/Features), including specific documentation about them
+  - full list of the site's [Pages](/SitePages)
 
 If you experience problems with the site or the contents, please see
 [ReportingWikiProblems](/ReportingWikiProblems).
