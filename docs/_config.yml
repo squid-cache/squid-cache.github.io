@@ -10,6 +10,7 @@ plugins:
   - jekyll-relative-links
   - jekyll-titles-from-headings
 
+#   - jekyll-navigation-tree # too restrictive
 
 defaults:
   -
