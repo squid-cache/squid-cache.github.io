@@ -1,4 +1,4 @@
-# OpenBSD Setup
+# OpenBSD build farm setup
 
 1.  create jenkins user `useradd -m jenkins; passwd jenkins`
 1.  set PKG\_PATH in /root/.profile (e.g. to

@@ -1,4 +1,4 @@
-# Blocking YouTube Videos
+# How to block YouTube Videos
 
 Warning: Any example presented here is provided "as-is" with no support
 or guarantee of suitability. If you have any further questions about

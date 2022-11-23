@@ -1,3 +1,5 @@
+# Squid Web Cache documentation
+
 This wiki is dedicated to hosting [Squid Web Cache](http://www.squid-cache.org/) documentation,
 including the [FAQ](/SquidFaq), [KnowledgeBase](/KnowledgeBase) articles,
 [ConfigExamples](/ConfigExamples), and the development [RoadMap](/RoadMap).
@@ -5,9 +7,6 @@ including the [FAQ](/SquidFaq), [KnowledgeBase](/KnowledgeBase) articles,
 
 ## Starting points
 
-You can learn about what a Wiki is and how to use it at
-[AboutWiki](/AboutWiki).
-The following pages are good starting points.
   - [WhySquid](/WhySquid) ?
   - [FAQ](/SquidFaq)
   - Development [Road Map](/RoadMap/Squid3)

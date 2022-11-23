@@ -1,3 +1,5 @@
+# MacOS build farm setup
+
 1.  download xcode from [the Apple site](http://developer.apple.com/tools/download/) and install it
     (requires registration)
 1.  download [HomeBrew](https://brew.sh/) and install it

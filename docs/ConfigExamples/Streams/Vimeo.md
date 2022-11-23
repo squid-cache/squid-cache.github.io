@@ -1,4 +1,4 @@
-# Vimeo
+# How to cache Vimeo
 
 by Yuri Voinov
 

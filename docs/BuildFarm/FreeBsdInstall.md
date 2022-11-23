@@ -1,4 +1,4 @@
-# FreeBSD 12
+# FreeBSD 12 build farm setup
 
 1.  create jenkins user `  adduser  `
 1.  `pkg install openjdk8-jre git cppunit libxml2 ccache autoconf automake libtool m4 nettle autoconf-archive libltdl`

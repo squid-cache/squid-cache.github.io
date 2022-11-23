@@ -1,4 +1,4 @@
-# Linux system setup
+# Linux build farm setup
 
 The most updotdate instructions on preparing the environment to
 support building Squid on several Linux distributions are in in the build farm
