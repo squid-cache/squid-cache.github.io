@@ -37,7 +37,9 @@
     <div id="main_content_wrap" class="outer">
         <section id="main_content" class="inner">
             {{ content }}
-        {%- if page.category == "ConfigExample" -%}{% include config-example-footer.html -%}{%- endif -%}
+        {%- if page.categories contains 'ConfigExample' -%}{% include config-example-footer.html -%}{%- endif -%}
+        {%- if page.categories.size -%}Page categories: {{ page.categories | join: ', ' }}{%- endif -%}
+        {%- if page.tags.size -%}Page tags: {{page.tags | join: ', '}}{%- endif -%}
         </section>
     </div>
 
