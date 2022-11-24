@@ -4,28 +4,28 @@ This wiki is dedicated to hosting [Squid Web Cache](http://www.squid-cache.org/)
 including the [FAQ](/SquidFaq), [KnowledgeBase](/KnowledgeBase) articles,
 [ConfigExamples](/ConfigExamples), and the development [RoadMap](/RoadMap)
 
-
 ## Starting points
 
-  - [Why Squid](/WhySquid) ?
-  - [FAQ](/SquidFaq)
-  - Development [Road Map](/RoadMap/Squid3)
-  - [Configuration examples](/ConfigExamples), or tips on how to address specific scenarios
-  - A detailed description of many squid [Features](/Features), including specific documentation about them
-  - full list of the site's [Pages](/SitePages)
+- [Why Squid](/WhySquid) ?
+- [FAQ](/SquidFaq)
+- Development [Road Map](/RoadMap/Squid3)
+- [Configuration examples](/ConfigExamples), or tips on how to address specific scenarios
+- A detailed description of many squid [Features](/Features), including specific documentation about them
+- full list of the site's [Pages](/SitePages)
 
 If you experience problems with the site or the contents, please see
 [Reporting Wiki Problems](/ReportingWikiProblems)
 
 ### Popular topics
-  - [Performance Analysis](/KnowledgeBase/PerformanceAnalysis):
+
+- [Performance Analysis](/KnowledgeBase/PerformanceAnalysis):
     "Help! My users complain that the proxy is slow!"
-  - an all-time FAQ: [What is the best OS for Squid?](/BestOsForSquid)
-  - [Things you can (and cannot) do with NTLM](/NTLMIssues)
-  - [Zero Sized Reply](/ZeroSizedReply): A frequent issue with some setups
-  - How to run [multiple squid servers](/MultipleInstances) on a single box
-  - Squid [Configuration Examples](/ConfigExamples)
-  - The [Knowledge Base](/KnowledgeBase)
+- an all-time FAQ: [What is the best OS for Squid?](/BestOsForSquid)
+- [Things you can (and cannot) do with NTLM](/NTLMIssues)
+- [Zero Sized Reply](/ZeroSizedReply): A frequent issue with some setups
+- How to run [multiple squid servers](/MultipleInstances) on a single box
+- Squid [Configuration Examples](/ConfigExamples)
+- The [Knowledge Base](/KnowledgeBase)
     (tips, tricks and various troubleshooting howtos)
 
 ## Developers corner
@@ -38,16 +38,17 @@ mailing list, and during pull request reviews on
 [GitHub](https://github.com/squid-cache/)
 
 ## Related resources
-  - The main Squid [site](http://www.squid-cache.org/)
-  - The Bugzilla [database](http://bugs.squid-cache.org/index.cgi)
-  - The Squijj refresh\_pattern analysis [program](http://www.mnot.net/squij/)
-  - The Calamaris log file analysis [tool](http://freshmeat.net/projects/calamaris/)
-  - Visolve's configuration manuals for
+
+- The main Squid [site](http://www.squid-cache.org/)
+- The Bugzilla [database](http://bugs.squid-cache.org/index.cgi)
+- The Squijj refresh\_pattern analysis [program](http://www.mnot.net/squij/)
+- The Calamaris log file analysis [tool](http://freshmeat.net/projects/calamaris/)
+- Visolve's configuration manuals for
     [Squid 3.0](http://www.visolve.com/squid/squid30/contents.php), also mostly
     valid for following releases
-  - Martin Stransky's Squid [page](http://people.redhat.com/stransky/squid/)
+- Martin Stransky's Squid [page](http://people.redhat.com/stransky/squid/)
     Martin maintains the official Red Hat package
-  - The book [Squid Proxy Server 3.1: Beginner's
+- The book [Squid Proxy Server 3.1: Beginner's
     Guide](https://www.packtpub.com/squid-proxy-server-3-1-beginners-guide/book)
     by Kulbir Saini
-  - Other [external links](/ExternalLinks)
+- Other [external links](/ExternalLinks)

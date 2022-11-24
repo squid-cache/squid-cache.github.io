@@ -25,7 +25,8 @@ descriptions using the `Mgr::RegisterAction` API.
 Internally, the handlers are C functions with a common prototype.
 
 ## See also
-  - [CacheManagerObject](/CacheManagerObject)
-  - [CacheObjectProtocol](/CacheObjectProtocol)
-  - [CacheObjectScheme](/CacheObjectScheme)
-  - [CacheManagerCgi](/CacheManagerCgi)
+
+- [CacheManagerObject](/CacheManagerObject)
+- [CacheObjectProtocol](/CacheObjectProtocol)
+- [CacheObjectScheme](/CacheObjectScheme)
+- [CacheManagerCgi](/CacheManagerCgi)
