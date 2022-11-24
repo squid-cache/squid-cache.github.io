@@ -3,10 +3,6 @@ category: ConfigExample
 ---
 # Bypass Authentication for certain sites
 
-Warning: Any example presented here is provided "as-is" with no support
-or guarantee of suitability. If you have any further questions about
-these examples please email the squid-users mailing list.
-
 ## Outline
 
 A very common setup in forward proxy design calls for two different
@@ -23,10 +19,10 @@ First recommendation is to get acquainted with the basic notions of how
 to configure squid to properly authenticate. Useful documentation can be
 found at [Features/Authentication](/Features/Authentication),
 and the manual pages for [acl](http://www.squid-cache.org/Doc/config/acl),
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param),
-[http\_access](http://www.squid-cache.org/Doc/config/http_access),
-[http\_access2](http://www.squid-cache.org/Doc/config/http_access2) and
-[http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access).
+[auth_param](http://www.squid-cache.org/Doc/config/auth_param),
+[http_access](http://www.squid-cache.org/Doc/config/http_access),
+[http_access2](http://www.squid-cache.org/Doc/config/http_access2) and
+[http_reply_access](http://www.squid-cache.org/Doc/config/http_reply_access).
 
 You may also want to
 check [ConfigExamples/Authenticate/Kerberos](/ConfigExamples/Authenticate/Kerberos),
@@ -83,7 +79,7 @@ overlapping. Groups are kept in the squid configuration itself, using
 auxiliary files.
 
 This can be accomplished by using 6 configuration files:
-
+```
 */etc/squid/groupa.txt*
 
     user1
@@ -142,6 +138,7 @@ This can be accomplished by using 6 configuration files:
     
     # catch-all rule
     http_access deny all
+```
 
 This example configuration will allow any user access to whitelisted
 sites without asking for identification, users in group A will be able
@@ -150,28 +147,30 @@ from group B and noone will be able to access anything else.
 
 ## Advanced configuration
 
-The order of the http\_access clauses is important, as is important the
-order of the acl's expressed in each http\_access clause: that's because
+The order of the http_access clauses is important, as is important the
+order of the acl's expressed in each http_access clause: that's because
 as soon as Squid has decided that a set of conditions is not met, it
 will not evaluate the following ones. This can lead to very subtle
 differences in behaviour.
 
 Let's focus on a few lines from the second example (the ACL definitions
 remain the same)
-
+```
     http_access allow http port_80 whitelist
     http_access allow http port_80 SitesGroupA UsersGroupA
     http_access allow http port_80 SitesGroupB UsersGroupB
     # catch-all rule
     http_access deny all
+```
 
 and perform a small change:
-
+```
     http_access allow http port_80 whitelist
     http_access allow http port_80 SitesGroupA UsersGroupA
     http_access allow http port_80 SitesGroupB UsersGroupB
     # catch-all rule
     http_access deny authenticated_users
+```
 
 The effect of this change is that access rights will remain the same:
 groupA will get sitesA and groupB will get sitesB. The difference is
@@ -182,12 +181,13 @@ password. They still get no access, but the way they are denied is
 different.
 
 Another possible change is:
-
+```
     http_access allow http port_80 whitelist
     http_access allow UsersGroupA http port_80 SitesGroupA
     http_access allow UsersGroupB http port_80 SitesGroupB
     # catch-all rule
     http_access deny all
+```
 
 The behaviour changes again: users will need no authentication to access
 whitelisted sites. As soon as they step outside whitelisted sites, they
