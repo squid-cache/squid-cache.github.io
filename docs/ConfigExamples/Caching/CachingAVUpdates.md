@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Caching AV updates
 
 by Yuri Voinov

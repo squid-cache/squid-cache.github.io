@@ -1,3 +1,7 @@
+---
+category: ConfigExample
+---
+
 # Caching Adobe Products and Updates
 
 by Yuri Voinov

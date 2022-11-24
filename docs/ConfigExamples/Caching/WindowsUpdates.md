@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Caching Windows Updates
 
 by Yuri Voinov
