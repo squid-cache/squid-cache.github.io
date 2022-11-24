@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Squid to authenticate against multiple services
 
 by *Joseph Spadavecchia*

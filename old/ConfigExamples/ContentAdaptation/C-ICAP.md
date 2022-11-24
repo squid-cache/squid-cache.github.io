@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Using c-icap for proxy content antivirus checking on-the-fly
 
   - *by

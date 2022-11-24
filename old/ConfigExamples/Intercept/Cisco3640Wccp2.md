@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring a Cisco 3640 with WCCPv2 Interception
 
 **Warning**: Any example presented here is provided "as-is" with no

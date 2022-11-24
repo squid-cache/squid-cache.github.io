@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Policy Routing Web Traffic On A Linux Router
 
 **Warning**: Any example presented here is provided "as-is" with no

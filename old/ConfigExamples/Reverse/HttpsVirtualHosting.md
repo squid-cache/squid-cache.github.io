@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Reverse Proxy with HTTPS Virtual Host Support
 
 **Warning**: Any example presented here is provided "as-is" with no

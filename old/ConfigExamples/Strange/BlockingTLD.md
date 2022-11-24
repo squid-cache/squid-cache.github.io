@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Blocking TLD by Squid
 
   - *by

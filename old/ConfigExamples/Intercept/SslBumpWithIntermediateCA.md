@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # SSL-Bump using an intermediate CA
 
 **Warning**: Any example presented here is provided "as-is" with no

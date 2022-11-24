@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # WCCP 2 with TPROXY on Ubuntu 12.04
 
 by *Eliezer Croitoru*

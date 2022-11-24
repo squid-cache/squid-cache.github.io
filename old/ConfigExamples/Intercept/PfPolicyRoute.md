@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Policy Routing Web Traffic On A FreeBSD Router
 
 **Warning**: Any example presented here is provided "as-is" with no

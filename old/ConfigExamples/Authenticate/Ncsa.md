@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Authenticate with NCSA httpd-style password file
 
 **Warning**: Any example presented here is provided "as-is" with no

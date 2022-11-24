@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Reverse Proxy with HTTP/1.1 Domain Based Virtual Host Support
 
 **Warning**: Any example presented here is provided "as-is" with no

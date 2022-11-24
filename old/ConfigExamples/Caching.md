@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Caching content
 
 Caching content is one of important task for HTTP proxy. This objective

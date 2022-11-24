@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Rotating the Squid outbound IPs
 
 **Warning**: Any example presented here is provided "as-is" with no

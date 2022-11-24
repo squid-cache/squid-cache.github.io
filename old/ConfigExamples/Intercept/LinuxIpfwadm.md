@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Intercepting traffic with IPFW on Linux
 
   - *by Brian Feeny*

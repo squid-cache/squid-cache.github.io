@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Cisoc PIX with WCCPv2 Interception
 
 **Warning**: Any example presented here is provided "as-is" with no

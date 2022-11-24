@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Intercepting traffic with IPFilter on Solaris/OpenIndiana
 
   - *by

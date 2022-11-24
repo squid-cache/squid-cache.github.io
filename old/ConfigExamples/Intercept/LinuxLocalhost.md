@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Linux traffic Interception with Squid and the Browser on the same box
 
   - *by Joshua N Pritikin*

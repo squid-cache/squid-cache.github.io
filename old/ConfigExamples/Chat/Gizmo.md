@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Gizmo Project (Pidgeon IM, Fring, Taler, ICQ, IRC, AOL)
 
 Warning: Any example presented here is provided "as-is" with no support

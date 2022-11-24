@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Fully Transparent Interception with Squid-2, TPROXYv2 and WCCP
 
 **Warning**: Any example presented here is provided "as-is" with no

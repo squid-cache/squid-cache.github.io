@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Content adaptation
 
 Adaptation protocol can be used in conjunction with a proxy server to

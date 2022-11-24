@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Transparent Interception with FreeBSD and WCCPv2
 
 **Warning**: Any example presented here is provided "as-is" with no

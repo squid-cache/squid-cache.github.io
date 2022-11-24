@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring multiple interception ports using WCCPv2
 
 By

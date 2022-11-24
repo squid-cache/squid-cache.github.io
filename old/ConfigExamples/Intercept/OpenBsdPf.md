@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Intercepting traffic with PF on OpenBSD
 
 by Chris Benech and Amos Jeffries

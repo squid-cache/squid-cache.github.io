@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Yahoo\! Messenger
 
 Warning: Any example presented here is provided "as-is" with no support

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # HTTPS Reverse Proxy With Wild Card Certificate to Support Multiple Websites
 
 **Warning**: Any example presented here is provided "as-is" with no

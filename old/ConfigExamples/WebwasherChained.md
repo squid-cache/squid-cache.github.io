@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Squid and Webwasher in a proxy chain
 
 By

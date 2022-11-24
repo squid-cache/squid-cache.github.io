@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring a Squid Server to authenticate from Kerberos
 
 by *Markus Moeller*

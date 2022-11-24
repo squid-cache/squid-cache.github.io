@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Intercepting traffic with PF on FreeBSD
 
 Based on OpenBSD example by Chris Benech

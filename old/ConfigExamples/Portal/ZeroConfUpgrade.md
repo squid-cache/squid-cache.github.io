@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Portal with Browser configuration detection
 
 **Warning**: Any example presented here is provided "as-is" with no

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Intercept HTTPS CONNECT messages with SSL-Bump
 
 **Warning**: Any example presented here is provided "as-is" with no

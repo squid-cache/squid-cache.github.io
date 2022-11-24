@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Vimeo
 
   - *by

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 See
 [Features/StoreUrlRewrite](/Features/StoreUrlRewrite)
 

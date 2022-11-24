@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Proxying Web Traffic On A Linux Bridge Server
 
 **Warning**: Any example presented here is provided "as-is" with no

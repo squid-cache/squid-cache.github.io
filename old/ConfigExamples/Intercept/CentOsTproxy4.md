@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # TPROXY v4 with CentOS 5.3
 
 by *Nicholas Ritter*

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Blocking Content Based on MIME Types
 
 ## Synopsis

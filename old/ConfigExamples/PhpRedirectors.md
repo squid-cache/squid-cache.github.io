@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Using PHP for Redirects
 
 **Warning**: Any example presented here is provided "as-is" with no

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Squid to Accelerate/ACL RPC over HTTP
 
 **Warning**: Any example presented here is provided "as-is" with no

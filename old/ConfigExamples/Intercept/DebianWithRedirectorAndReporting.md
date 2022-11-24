@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Interceptor Squid on Debian with Redirectors and Reporting
 
 This document (based on [this

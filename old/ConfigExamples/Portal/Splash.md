@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Portal Splash Pages
 
 **Warning**: Any example presented here is provided "as-is" with no

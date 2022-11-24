@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 Describe ConfigExamples/Intercept/JuniperSRXRoutingPolicy here.
 
 Eliezer: I will write and article about routing policy to work with

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 See [Discussed
 Page](/ConfigExamples/Intercept/SslBumpWithIntermediateCA)
 

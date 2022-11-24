@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring a Basic Reverse Proxy (Website Accelerator)
 
 **Warning**: Any example presented here is provided "as-is" with no

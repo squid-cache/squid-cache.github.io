@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configure Squid for Group-Based access controls
 
 Warning: Any example presented here is provided "as-is" with no support

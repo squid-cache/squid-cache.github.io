@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring a Squid Server to authenticate from MySQL database
 
 By Askar Ali Khan

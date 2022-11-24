@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring a Cisco IOS 12.4(6) T2 with WCCPv2 Interception
 
   - *by

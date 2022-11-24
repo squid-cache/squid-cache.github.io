@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Squid for NTLM with Winbind authenticators
 
 **Warning**: Any example presented here is provided "as-is" with no

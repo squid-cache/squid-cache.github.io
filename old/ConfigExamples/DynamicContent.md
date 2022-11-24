@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Caching Dynamic Content
 
 **Warning**: Any example presented here is provided "as-is" with no

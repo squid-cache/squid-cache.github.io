@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Caching Dynamic Content using Adaptation
 
 **Warning**: Any example presented here is provided "as-is" with no

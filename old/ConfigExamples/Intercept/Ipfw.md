@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Intercepting traffic with IPFW
 
 **Warning**: Any example presented here is provided "as-is" with no

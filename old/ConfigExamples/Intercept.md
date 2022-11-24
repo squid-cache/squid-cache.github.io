@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Traffic Interception with WCCP
 
 WCCP is a forwarding/tunneling method. Since a tunnel could be built

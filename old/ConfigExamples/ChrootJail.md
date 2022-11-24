@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Running Squid inside a Chroot Jail
 
 **Warning**: Any example presented here is provided "as-is" with no

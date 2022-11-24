@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Logging usernames when using passthrough authentication
 
 **Warning**: Any example presented here is provided "as-is" with no

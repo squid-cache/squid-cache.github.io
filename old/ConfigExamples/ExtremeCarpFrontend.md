@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Extreme CARP Frontend
 
 **Warning**: Any example presented here is provided "as-is" with no

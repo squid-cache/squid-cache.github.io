@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Variant I: Routed DMZ witch WCCPv2
 
   - *by

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring a Squid Server to authenticate off Active Directory
 
 Original work By Adrian Chadd

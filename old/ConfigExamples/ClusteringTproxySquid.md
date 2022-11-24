@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Clustering Tproxy Squid With Linux Router
 
 by *Eliezer Croitoru*

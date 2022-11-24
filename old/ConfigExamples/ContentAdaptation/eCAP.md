@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Using eCAP with Squid 3.x/4.x
 
 ## Using eCAP for GZip/DEFLATE support with Squid 3.x/4.x

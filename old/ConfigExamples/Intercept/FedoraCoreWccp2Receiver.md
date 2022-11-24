@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Transparent Interception with Fedora Core Linux and WCCPv2
 
   - *by

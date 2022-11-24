@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Squid and WCCPv2 to a 7206VXR
 
 **Warning**: Any example presented here is provided "as-is" with no

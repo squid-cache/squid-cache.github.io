@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 *by
 [YuriVoinov](/YuriVoinov)*
 

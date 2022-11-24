@@ -1,1 +1,4 @@
+---
+category: ConfigExample
+---
 

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Squid for NTLM with Winbind Authentication on CentOS 5
 
 By Joseph L. Casale

@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # CARP Cluster of SMP workers
 
 **Warning**: Any example presented here is provided "as-is" with no

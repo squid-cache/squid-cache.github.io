@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Reverse Proxy with Multiple Backend Web Servers
 
 **Warning**: Any example presented here is provided "as-is" with no

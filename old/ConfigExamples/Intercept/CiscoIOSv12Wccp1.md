@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Configuring Cisco IOS 12.x for WCCP Interception
 
 **Warning**: Any example presented here is provided "as-is" with no

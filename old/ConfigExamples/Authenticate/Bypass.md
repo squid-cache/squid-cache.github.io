@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Bypass Authentication for certain sites
 
 Warning: Any example presented here is provided "as-is" with no support

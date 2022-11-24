@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Torified Squid
 
   - *by

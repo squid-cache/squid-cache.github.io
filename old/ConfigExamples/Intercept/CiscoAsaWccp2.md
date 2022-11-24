@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Cisco ASA and Squid with WCCP2
 
 **Warning**: Any example presented here is provided "as-is" with no

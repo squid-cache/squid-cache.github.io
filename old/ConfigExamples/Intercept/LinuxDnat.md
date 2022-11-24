@@ -1,3 +1,6 @@
+---
+category: ConfigExample
+---
 # Linux traffic Interception using DNAT
 
 **Warning**: Any example presented here is provided "as-is" with no
