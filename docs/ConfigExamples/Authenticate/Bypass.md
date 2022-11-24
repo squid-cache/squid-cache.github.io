@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Bypass Authentication for certain sites
 

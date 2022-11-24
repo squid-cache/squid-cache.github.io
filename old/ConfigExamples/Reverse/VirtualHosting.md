@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Reverse Proxy with HTTP/1.1 Domain Based Virtual Host Support
 

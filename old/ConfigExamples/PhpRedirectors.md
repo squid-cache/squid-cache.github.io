@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Using PHP for Redirects
 

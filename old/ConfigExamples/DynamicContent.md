@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Caching Dynamic Content
 

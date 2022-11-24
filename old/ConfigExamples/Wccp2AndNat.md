@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # WCCP2 and NAT on a private internal network
 

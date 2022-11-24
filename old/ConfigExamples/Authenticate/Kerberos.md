@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Configuring a Squid Server to authenticate from Kerberos
 

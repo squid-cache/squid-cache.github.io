@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Intercept HTTPS CONNECT messages with SSL-Bump
 

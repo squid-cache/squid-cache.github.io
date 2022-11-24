@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # HTTPS Reverse Proxy With Wild Card Certificate to Support Multiple Websites
 

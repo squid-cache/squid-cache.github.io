@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 Describe ConfigExamples/Intercept/JuniperSRXRoutingPolicy here.
 

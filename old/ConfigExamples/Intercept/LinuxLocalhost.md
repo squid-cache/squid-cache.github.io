@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Linux traffic Interception with Squid and the Browser on the same box
 

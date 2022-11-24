@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Fully Transparent Interception with Squid-2, TPROXYv2 and WCCP
 

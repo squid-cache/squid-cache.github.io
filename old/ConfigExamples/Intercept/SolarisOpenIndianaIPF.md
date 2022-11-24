@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Intercepting traffic with IPFilter on Solaris/OpenIndiana
 

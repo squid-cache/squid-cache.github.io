@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Gizmo Project (Pidgeon IM, Fring, Taler, ICQ, IRC, AOL)
 

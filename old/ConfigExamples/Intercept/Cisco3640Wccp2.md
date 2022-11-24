@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Configuring a Cisco 3640 with WCCPv2 Interception
 

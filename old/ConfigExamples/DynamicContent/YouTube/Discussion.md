@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 See
 [Features/StoreUrlRewrite](/Features/StoreUrlRewrite)

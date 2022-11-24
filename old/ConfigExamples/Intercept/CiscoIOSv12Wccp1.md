@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Configuring Cisco IOS 12.x for WCCP Interception
 

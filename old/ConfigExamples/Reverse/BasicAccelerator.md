@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Configuring a Basic Reverse Proxy (Website Accelerator)
 

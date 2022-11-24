@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Policy Routing web traffic on a Cisco 2501 Router
 

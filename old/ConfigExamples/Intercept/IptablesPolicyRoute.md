@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Policy Routing Web Traffic On A Linux Router
 

@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Reverse Proxy with Multiple Backend Web Servers
 

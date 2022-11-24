@@ -1,4 +1,4 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 

@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 See [Discussed
 Page](/ConfigExamples/Portal/Splash)

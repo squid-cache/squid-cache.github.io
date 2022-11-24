@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Configuring Squid as an accelerator/SSL offload for Outlook Web Access
 

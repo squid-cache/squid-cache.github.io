@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Variant I: Routed DMZ witch WCCPv2
 

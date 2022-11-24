@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Squid and WCCPv2 to a 7206VXR
 

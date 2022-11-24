@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Proxying Web Traffic On A Linux Bridge Server
 

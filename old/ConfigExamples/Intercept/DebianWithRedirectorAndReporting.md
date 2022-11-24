@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # Interceptor Squid on Debian with Redirectors and Reporting
 

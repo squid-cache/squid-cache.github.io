@@ -1,5 +1,5 @@
 ---
-category: ConfigExample
+categories: ConfigExample
 ---
 # WCCP 2 with TPROXY on Ubuntu 12.04
 
