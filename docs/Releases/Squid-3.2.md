@@ -32,10 +32,10 @@ Features Ported from 2.7 in this release:
 Basic new features in 3.2:
 
   - Fully transparent credential pass-thru to
-    [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+    [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 
   - Kerberos login to
-    [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+    [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 
   - [Full HTTP/1.1
     Support](/Features/HTTP11)
@@ -44,7 +44,7 @@ Basic new features in 3.2:
     IPv6](/Features/Tproxy4)
 
   - Dynamic URL generation for
-    [deny\_info](http://www.squid-cache.org/Doc/config/deny_info)
+    [deny_info](http://www.squid-cache.org/Doc/config/deny_info)
     redirects
 
   - Multi-Lingual FTP directory listings
@@ -67,7 +67,7 @@ Basic new features in 3.2:
     helpers](/Features/HelperMultiplexer)
 
   - New helpers to demo
-    [url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
+    [url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
     programs
 
   - New helper to lookup Kerberos or NTLM group via LDAP
@@ -109,7 +109,7 @@ See our [Advisories](http://www.squid-cache.org/Advisories/) list.
 ## Squid-3.2 default config
 
 From 3.2 further configuration cleanups have been done to make things
-easier and safer. The manager, localhost, and to\_localhost ACL
+easier and safer. The manager, localhost, and to_localhost ACL
 definitions are now built-in.
 
   - 

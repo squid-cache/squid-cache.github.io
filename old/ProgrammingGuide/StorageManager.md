@@ -13,7 +13,7 @@ such as LRU that keeps track of the objects and determines the removal
 order when space needs to be reclaimed. For the LRU policy this is
 implemented as a doubly linked list.
 
-For each object the *StoreEntry* maps to a cache\_dir and location via
+For each object the *StoreEntry* maps to a cache_dir and location via
 sdirn and sfilen. For the "ufs" store this file number (sfilen) is
 converted to a disk pathname by a simple modulo of L2 and L1, but other
 storage drivers may map sfilen in other ways. A cache swap file consists
@@ -93,7 +93,7 @@ void storeFsSetup(void)
 
 Each storage type initializes through the `storeFsSetup_$type()`
 function. The `storeFsSetup_$type()` function takes a single argument -
-a `storefs_entry_t` pointer. This pointer references the storefs\_entry
+a `storefs_entry_t` pointer. This pointer references the storefs_entry
 to initialise. A typical setup function is as follows:
 
 ``` cpp
@@ -109,7 +109,7 @@ storeFsSetup_ufs(storefs_entry_t *storefs)
 }
 ```
 
-There are five function pointers in the storefs\_entry which require
+There are five function pointers in the storefs_entry which require
 initializing. In this example, some protection is made against the setup
 function being called twice, and a memory pool is initialised for use
 inside the storage module.
@@ -135,14 +135,14 @@ STFSRECONFIGURE(SwapDir *SD, int index, char *path);
 ```
 
 These functions handle configuring and reconfiguring a storage
-directory. Additional arguments from the cache\_dir configuration line
+directory. Additional arguments from the cache_dir configuration line
 can be retrieved through calls to strtok() and GetInteger().
 
 *STFSPARSE* has the task of initialising a new swapdir. It should parse
-the remaining arguments on the cache\_dir line, initialise the relevant
+the remaining arguments on the cache_dir line, initialise the relevant
 function pointers and data structures, and choose the replacement
 policy. *STFSRECONFIGURE* deals with reconfiguring an active swapdir. It
-should parse the remaining arguments on the cache\_dir line and change
+should parse the remaining arguments on the cache_dir line and change
 any active configuration parameters. The actual storage initialisation
 is done through the *STINIT* function pointer in the SwapDir.
 
@@ -282,7 +282,7 @@ given *StoreEntry*. Used to grab a configuration file dump from th
 *cachemgr* interface.
 
 Note: The printed options should start with a space character to
-separate them from the cache\_dir path.
+separate them from the cache_dir path.
 
 ### freefs
 
@@ -333,7 +333,7 @@ typedef void
 STCALLBACK(SwapDir *SD);
 ```
 
-This function is called inside the comm\_select/comm\_poll loop to
+This function is called inside the comm_select/comm_poll loop to
 handle any callbacks pending.
 
 ### sync
@@ -392,8 +392,8 @@ typedef storeIOState *
 STOBJCREATE(SwapDir *SD, StoreEntry *e, STFNCB *file_callback, STIOCB *io_callback, void *io_callback_data);
 ```
 
-Create an object in the *SwapDir* \*SD. *file\_callback* is called
-whenever the filesystem allocates or reallocates the *swap\_filen*. Note
+Create an object in the *SwapDir* \*SD. *file_callback* is called
+whenever the filesystem allocates or reallocates the *swap_filen*. Note
 - *STFNCB* is called with a generic cbdata pointer, which points to the
 *StoreEntry* e. The *StoreEntry* should not be modified EXCEPT for the
 replacement policy fields.
@@ -414,7 +414,7 @@ STOBJOPEN(SwapDir *SD, StoreEntry *e, STFNCB *file_callback, STIOCB *io_callback
 
 Open the *StoreEntry* in *SwapDir* \*SD for reading. Much the same is
 applicable from *STOBJCREATE*, the major difference being that the data
-passed to *file\_callback* is the relevant *store\_client* .
+passed to *file_callback* is the relevant *store_client* .
 
 ### closeobj
 
@@ -449,7 +449,7 @@ STOBJWRITE(SwapDir *SD, storeIOState *sio, char *buf, size_t size, off_t offset,
 
 Write the given block of data to the given store object. *buf* is
 allocated by the caller. When the write is complete, the data is freed
-through *free\_func*.
+through *free_func*.
 
 If a write operation fails, the filesystem layer notifies the calling
 module by calling the *STIOCB* callback with an error status code.
@@ -535,7 +535,7 @@ storeWrite(storeIOState *sio, char *buf, size_t size, off_t offset, FREE *free_f
 store. The caller is responsible for allocating *buf*, but since there
 is no per-write callback, this memory must be freed by the lower
 filesystem implementation. Therefore, the caller must specify the
-*free\_func* to be used to deallocate the memory.
+*free_func* to be used to deallocate the memory.
 
 If a write operation fails, the filesystem layer notifies the calling
 module by calling the *STIOCB* callback with an error status code.
@@ -558,7 +558,7 @@ off_t
 storeOffset(storeIOState *sio)
 ```
 
-`storeOffset()` returns the current \_ondisk\_ offset. This is used to
+`storeOffset()` returns the current _ondisk_ offset. This is used to
 determine how much of an objects memory can be freed to make way for
 other in-transit and cached objects. You must make sure that the
 *storeIOState-\>offset* refers to the ondisk offset, or undefined
@@ -669,7 +669,7 @@ STLOGWRITE(const SwapDir *, const StoreEntry *, int op);
 
 The `log.write` function, of type *STLOGWRITE*, is used to write an
 entry to the state-holding log file. The *op* argument is either
-*SWAP\_LOG\_ADD* or *SWAP\_LOG\_DEL*. This feature may not be required
+*SWAP_LOG_ADD* or *SWAP_LOG_DEL*. This feature may not be required
 by some storage systems and can be implemented as a null-function
 (no-op).
 
@@ -854,7 +854,7 @@ RemovalPurgeWalker purgewalker = policy->PurgeInit(RemovalPolicy *policy, int ma
 ```
 
 Initiates a search for removal candidates. Search depth is indicated by
-max\_scan.
+max_scan.
 
 The returned RemovalPurgeWalker instance is cbdata registered
 
@@ -913,11 +913,11 @@ struct _RemovalPolicy {
 };
 ```
 
-The \_type member is mainly for debugging and diagnostics purposes, and
+The _type member is mainly for debugging and diagnostics purposes, and
 should be a pointer to the name of the policy (same name as used for
 creation)
 
-The \_data member is for storing policy specific information.
+The _data member is for storing policy specific information.
 
 #### RemovalPolicyWalker
 
@@ -961,7 +961,7 @@ supported. Currently all API calls are mandatory, but the policy
 implementation must make sure to NULL fill the structure prior to
 populating it in order to assure future API compability.
 
-It should also populate the \_data member with a pointer to policy
+It should also populate the _data member with a pointer to policy
 specific data.
 
 ### Walker

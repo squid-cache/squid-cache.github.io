@@ -101,7 +101,7 @@ and passthrough default route to next hop (or last resort gateway).
 
   - ℹ️
     Note: This example uses L2 redirecting (for OSes without native GRE
-    support). Beware, wccp2\_rebuild\_wait sends "Here I am" message to
+    support). Beware, wccp2_rebuild_wait sends "Here I am" message to
     router when proxy is ready to serve requests, without cache
     rebuilding complere. Also, both - router and proxy - uses port
     2048/udp to communicate with WCCP. So, this port must be open in

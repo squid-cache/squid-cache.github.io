@@ -45,11 +45,11 @@ specify which services the module provides:
     ecap_service eRespmod respmod_precache 0 ecap://e-cap.org/ecap/services/sample/minimal
 
 Among all dynamically loaded services, only the services matching
-[ecap\_service](http://www.squid-cache.org/Doc/config/ecap_service)
+[ecap_service](http://www.squid-cache.org/Doc/config/ecap_service)
 configuration are enabled by Squid. However, enabling an adaptation
 service is not enough. You need to direct messages to the service(s)
 using
-[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
+[adaptation_access](http://www.squid-cache.org/Doc/config/adaptation_access)
 directives:
 
     adaptation_service_set reqFilter eReqmod
@@ -67,7 +67,7 @@ Squid supports sending client IP address to the adapter via the
 *libecap::metaClientIp* transaction option. Please see eCAP
 [FAQ](https://answers.launchpad.net/ecap/+faq/1516) for details and do
 not forget to enable
-[adaptation\_send\_client\_ip](http://www.squid-cache.org/Doc/config/adaptation_send_client_ip)
+[adaptation_send_client_ip](http://www.squid-cache.org/Doc/config/adaptation_send_client_ip)
 in squid.conf.
 
 ## Supported eCAP versions

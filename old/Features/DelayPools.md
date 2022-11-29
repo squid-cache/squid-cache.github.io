@@ -54,9 +54,9 @@ To enable delay pools features in Squid configure with
 
   - class 5  
     custom class based on tag values returned by
-    [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+    [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
     helpers in
-    [http\_access](http://www.squid-cache.org/Doc/config/http_access).
+    [http_access](http://www.squid-cache.org/Doc/config/http_access).
     One bucket per used tag value.
 
 Delay pools allows you to limit traffic for clients or client groups,
@@ -122,7 +122,7 @@ relatively small traffic allocation across a large number of users.
 
 The 1 second buffer (max = restore = 64kbytes/sec) is because a limit is
 requested, and no responsiveness to a burst is requested. If you want it
-to be able to respond to a burst, increase the aggregate\_max to a
+to be able to respond to a burst, increase the aggregate_max to a
 larger value, and traffic bursts will be handled. It is recommended that
 the maximum is at least twice the restore value - if there is only a
 single object being downloaded, sometimes the download rate will fall
@@ -229,15 +229,15 @@ examples. Squid install with a squid.conf.documented or
 squid.conf.default file. If you no longer have a documented config file
 the latest version is provided on the squid-cache.org website.
 
-  - [delay\_parameters](http://www.squid-cache.org/Doc/config/delay_parameters)
+  - [delay_parameters](http://www.squid-cache.org/Doc/config/delay_parameters)
 
-  - [delay\_pools](http://www.squid-cache.org/Doc/config/delay_pools)
+  - [delay_pools](http://www.squid-cache.org/Doc/config/delay_pools)
 
-  - [delay\_class](http://www.squid-cache.org/Doc/config/delay_class)
+  - [delay_class](http://www.squid-cache.org/Doc/config/delay_class)
 
-  - [delay\_access](http://www.squid-cache.org/Doc/config/delay_access)
+  - [delay_access](http://www.squid-cache.org/Doc/config/delay_access)
 
-  - [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+  - [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
 
 <!-- end list -->
 

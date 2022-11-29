@@ -54,7 +54,7 @@ username:realm:password.
 **Installing and testing the helper**
 
 **1.**Get the [Squid sources](http://www.squid-cache.org/Versions/),
-compile the digest\_ldap\_auth helper and put it together with the
+compile the digest_ldap_auth helper and put it together with the
 others squid helpers.
 
 Here I will not discuss much on how to compile Squid or solve dependency

@@ -106,7 +106,7 @@ For intercepted connections:
 3.  After Squid receives the first HTTP request, all HTTP
     request-specific ACLs should be available. For each request, Squid
     verifies that the requested host matches the certificate CN
-    retrieved earlier. A SQUID\_X509\_V\_ERR\_DOMAIN\_MISMATCH error is
+    retrieved earlier. A SQUID_X509_V_ERR_DOMAIN_MISMATCH error is
     triggered and the connection with the client is terminated if there
     is no match.
 
@@ -131,11 +131,11 @@ For bumped CONNECT requests:
 3.  After Squid receives the first bumped HTTP request, all HTTP
     request-specific ACLs should be available. For each request, Squid
     verifies that the requested host matches the certificate CN
-    retrieved earlier. A SQUID\_X509\_V\_ERR\_DOMAIN\_MISMATCH error is
+    retrieved earlier. A SQUID_X509_V_ERR_DOMAIN_MISMATCH error is
     triggered and the connection with the client is terminated if there
     is no match.
 
-Please note that sslproxy\_cert\_error ACLs always check the true server
+Please note that sslproxy_cert_error ACLs always check the true server
 certificate and not the generated fake one.
 
 ## Connection pinning
@@ -169,7 +169,7 @@ by using the following approach:
 
 3.  When reopening a server connection, Squid verifies that the server
     SSL certificate has not changed much. If server certificate has
-    changed, Squid responds with a SQUID\_X509\_V\_ERR\_DOMAIN\_MISMATCH
+    changed, Squid responds with a SQUID_X509_V_ERR_DOMAIN_MISMATCH
     error which was added during this project. This feature minimizes
     the probability that another an attacker can inject itself into the
     post-Squid message stream after Squid already sent a fake server

@@ -1,6 +1,6 @@
 # index report
 
-When an HTML template named **MGR\_INDEX** is installed in the
+When an HTML template named **MGR_INDEX** is installed in the
 **templates/** error page directory this report will return its contents
 after [macro
 expansion](/Features/CustomErrors).
@@ -13,7 +13,7 @@ loaded from that template.
 [FrancescoChemolli](/FrancescoChemolli)
 and
 [AmosJeffries](/AmosJeffries)
-have developed a javascript based tool using the MGR\_INDEX interface
+have developed a javascript based tool using the MGR_INDEX interface
 which can be found at [](https://github.com/yadij/cachemgr.js)
 
 It is worth noting that prettiness of the reporting tool GUI is affected

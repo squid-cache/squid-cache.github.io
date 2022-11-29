@@ -468,7 +468,7 @@ I made a few modifications to the pristine EMX 0.9d install.
 
   - added defines for *strcasecmp()* & *strncasecmp()* to *string.h*
 
-  - changed all occurrences of time\_t to signed long instead of
+  - changed all occurrences of time_t to signed long instead of
     unsigned long
 
   - hacked ld.exe
@@ -536,7 +536,7 @@ and
  pkg install sunstudioexpress SUNWbtool
 ```
 
-##### com\_err.h: warning: ignoring \#pragma ident
+##### com_err.h: warning: ignoring \#pragma ident
 
 This problem occurs with certain kerberos library headers distributed
 with Solaris 10. It has been fixed in later release of the kerberos
@@ -556,7 +556,7 @@ There are several options available:
     krb5.h header to match the one found in later working krb5 library
     releases.
 
-3.  Editing com\_err.h directly to change the line
+3.  Editing com_err.h directly to change the line
 
 <!-- end list -->
 
@@ -626,7 +626,7 @@ software designed to operate on multiple platforms. Squid 3.2 and later
 should build without generating any warnings; a big effort was spent
 into making the code truly portable.
 
-## undefined reference to \_\_inet\_ntoa
+## undefined reference to __inet_ntoa
 
 Probably you have bind 8.x installed.
 

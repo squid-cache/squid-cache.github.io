@@ -29,14 +29,14 @@ Squid packages come with two tools for accessing the cache manager:
     special ability to send cache manager requests to Squid proxies.
 
 The cache manager is accessed with standard HTTP requests using a
-special cache\_object:// URL scheme. Which allows other tools and
+special cache_object:// URL scheme. Which allows other tools and
 scripts to easily be written for any special use you may have.
 
 The cache manager has been extended in
 [Squid-3.2](/Releases/Squid-3.2)
 to allow access from the [](http://) and [](https://) URL schemes. This
 opens the cache manager reports directly to the web browser if permitted
-by [http\_access](http://www.squid-cache.org/Doc/config/http_access)
+by [http_access](http://www.squid-cache.org/Doc/config/http_access)
 security controls.
 
   - [Manager INDEX
@@ -59,7 +59,7 @@ The default cache manager access configuration in *squid.conf* is:
     For older squid the squid.conf entries may appear different.
 
 The first ACL is the most important as the cache manager program
-interrogates squid using a special **cache\_object://** protocol. Try it
+interrogates squid using a special **cache_object://** protocol. Try it
 yourself by doing:
 
     telnet mycache.example.com 3128
@@ -75,9 +75,9 @@ typing this into your browser address bar:
     NOTE: the above tests assume you have correctly configured your
     proxy machine with a working FQDN *mycache.example.com* for its
     publicly
-    [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname).
+    [visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname).
 
-The default ACLs say that if the request is for a cache\_object://, and
+The default ACLs say that if the request is for a cache_object://, and
 it isn't the local host, then deny access; otherwise allow access.
 
 In fact, only allowing localhost access means that on the initial
@@ -106,9 +106,9 @@ or the administrators workstation.
 ### Troubleshooting Access Denied Issues
 
   - If you're using
-    [miss\_access](http://www.squid-cache.org/Doc/config/miss_access),
+    [miss_access](http://www.squid-cache.org/Doc/config/miss_access),
     then don't forget to also add a
-    [miss\_access](http://www.squid-cache.org/Doc/config/miss_access)
+    [miss_access](http://www.squid-cache.org/Doc/config/miss_access)
     rule for the cache manager:
 
 <!-- end list -->
@@ -130,19 +130,19 @@ or the administrators workstation.
   - Check that the URLs used to fetch manager reports is the publicly
     visible hostname Squid knows for itself. The Squid host name is
     fetched from a reverse-DNS lookup of the first
-    [http\_port](http://www.squid-cache.org/Doc/config/http_port) or
-    [https\_port](http://www.squid-cache.org/Doc/config/https_port) IP
+    [http_port](http://www.squid-cache.org/Doc/config/http_port) or
+    [https_port](http://www.squid-cache.org/Doc/config/https_port) IP
     address, or the operating system gethostname() API, or
-    [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname),
+    [unique_hostname](http://www.squid-cache.org/Doc/config/unique_hostname),
     or
-    [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname).
+    [visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname).
     
       - ⚠️
         The Squid hostname is required to be a fully-qualified domain
         name in order to be resolved by any clients with DNS. The
-        [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname)
+        [unique_hostname](http://www.squid-cache.org/Doc/config/unique_hostname)
         and
-        [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
+        [visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
         directives do not enforce this (yet) which may lead to trouble
         if a non-resolvable name is configured.
 
@@ -154,7 +154,7 @@ password set, which means that these command actions are not available
 until you set one for them.
 
 You can set the
-[cachemgr\_passwd](http://www.squid-cache.org/Doc/config/cachemgr_passwd)
+[cachemgr_passwd](http://www.squid-cache.org/Doc/config/cachemgr_passwd)
 directive with a specific password for one or more of the manager
 actions and/or access to the reports. This directive allows you to set
 different password for each report or group them so that multiple
@@ -162,11 +162,11 @@ administrators can get different access.
 
 Squid will use Basic Authentication for retrieving the password to
 access reports. If
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param) is
+[auth_param](http://www.squid-cache.org/Doc/config/auth_param) is
 configured that helper will be used to verify the username and password
 are correct. Otherwise username will be ignored and the password
 compared against
-[cachemgr\_passwd](http://www.squid-cache.org/Doc/config/cachemgr_passwd)
+[cachemgr_passwd](http://www.squid-cache.org/Doc/config/cachemgr_passwd)
 for the report being accessed.
 
 The URL is required to refresh an object (i.e., retrieve it from its
@@ -257,16 +257,16 @@ update the table to clarify or file a documentation bug report.
 | info              | Number of clients accessing cache | yes, but poorly                                                                                                                                                                                                               | Coordinator sums up the number of clients reported by each kid, which is usually wrong because most active clients will use more than one worker, leading to exaggerated values. Note that even without SMP, this statistics is exaggerated because the count goes down when Squid cleans up the internal client table and not when the last client connection closes. SMP amplifies that effect.                                                                                                                                                                              |
 | UP Time           | yes                               | The maximum uptime across all kids is reported.                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | other             | yes                               |                                                                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| server\_list      | all                               | no, but can be                                                                                                                                                                                                                | If you work on aggregating these stats, please keep in mind that kids may have a different set of peers. The to-Coordinator responses should include, for each peer, a peer name and not just its "index".                                                                                                                                                                                                                                                                                                                                                                     |
+| server_list      | all                               | no, but can be                                                                                                                                                                                                                | If you work on aggregating these stats, please keep in mind that kids may have a different set of peers. The to-Coordinator responses should include, for each peer, a peer name and not just its "index".                                                                                                                                                                                                                                                                                                                                                                     |
 | mem               | all                               | no, but can be                                                                                                                                                                                                                | If you work on aggregating these stats, please keep in mind that kids may have a different set of memory pools. The to-Coordinator responses should include, for each pool, a pool name and not just its "index". Full stats may exceed typical UDS message size limits (16KB). If overflows are likely, it may be a good idea to create response messages so that overflowing items are not included (in the current sort order). Another alternative is to split mgr:mem into mgr:mem (with various aggregated totals) and mgr:pools (with non-aggregated per-pool details). |
-| counters          | sample\_time                      | yes                                                                                                                                                                                                                           | The latest (maximum) sample time across all kids is reported.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| counters          | sample_time                      | yes                                                                                                                                                                                                                           | The latest (maximum) sample time across all kids is reported.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | other             | yes                               |                                                                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | refresh           | all                               | no, but can be                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | idns              | queue                             | no and should not be                                                                                                                                                                                                          | The kids should probably report their own queues, especially since DNS query IDs are kid-specific.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | other             | no, but can be                    | If you work on aggregating these stats, please keep in mind that kids may have a different set of name servers. The to-Coordinator responses should include, for each name server, a server address and not just its "index". |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | histograms        | all                               | no, but can be                                                                                                                                                                                                                | If you work on aggregating these stats, please keep typical UDS message size limits (16KB) in mind.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| 5min              | sample\_start\_time               | yes                                                                                                                                                                                                                           | The earliest (minimum) sample time across all kids is reported.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| sample\_end\_time | yes                               | The latest (maximum) sample time across all kids is reported.                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| 5min              | sample_start_time               | yes                                                                                                                                                                                                                           | The earliest (minimum) sample time across all kids is reported.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| sample_end_time | yes                               | The latest (maximum) sample time across all kids is reported.                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | \*median\*        | yes, approximately                | The arithmetic mean over kids medians is reported. This is not a true median. True median reporting is possible but would require adding code to exchange and aggregate raw histograms.                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | other             | yes                               |                                                                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | 60min             | all                               | yes                                                                                                                                                                                                                           | See 5min rows for component details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -281,11 +281,11 @@ environment) and file bugs reports as appropriate.
 
 ### Secure SMP reports
 
-When Squid is running in SMP mode, only \_insecure\_ Cache Manager
-requests (i.e., those received on http\_port) are currently supported.
+When Squid is running in SMP mode, only _insecure_ Cache Manager
+requests (i.e., those received on http_port) are currently supported.
 
 What would happen if you try to send a Cache Manager query to a secure
-https\_port? The Squid worker receiving the management request on an
+https_port? The Squid worker receiving the management request on an
 secure connection does not send the response back. Instead, Coordinator
 and/or other processes send Cache Manager responses directly to the
 secure client using raw TCP socket descriptor they receive from the
@@ -295,7 +295,7 @@ encryption state, they send plain data, confusing the client which
 expects an encrypted stream.
 
 To support secure Cache Manager requests (i.e., those received on
-https\_port), we may have to restrict writing the Cache Manager response
+https_port), we may have to restrict writing the Cache Manager response
 to the secure worker, but that is difficult because we still want to
 support large (non-aggregatable) Cache Manager responses where each
 worker should produce its own response stream. The secure worker would
@@ -303,7 +303,7 @@ probably have to receive and forward those streams to the client
 somehow.
 
 As a workaround, one could create a secure tunnel (using secure TCP
-tunneling programs such as ssh or stunnel) to a Squid http\_port
+tunneling programs such as ssh or stunnel) to a Squid http_port
 assigned to a loopback address and send all Cache Manager requests
 securely through that tunnel. Squid will not have to deal with
 encryption then and SMP cache manager queries will work. This workaround
@@ -392,9 +392,9 @@ seconds. This can tell you if the system as a whole is swapping a lot
 
 It is very bad for squid to swap, as every single request will be
 blocked until the requested data is swapped in. It is better to tweak
-the [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem)
+the [cache_mem](http://www.squid-cache.org/Doc/config/cache_mem)
 and/or
-[memory\_pools](http://www.squid-cache.org/Doc/config/memory_pools)
+[memory_pools](http://www.squid-cache.org/Doc/config/memory_pools)
 directive in squid.conf than allow this to happen.
 
 by *Peter Wemm*
@@ -449,7 +449,7 @@ is the 'struct proc'. The FreeBSD paging system is highly adaptive and
 can resort to paging in a way that is equivalent to the traditional
 swapping style operation (ie: entire process). FreeBSD also tries
 stealing pages from active processes in order to make space for disk
-cache. I suspect this is why setting 'memory\_pools off' on the non-NOVM
+cache. I suspect this is why setting 'memory_pools off' on the non-NOVM
 squids on FreeBSD is reported to work better - the VM/buffer system
 could be competing with squid to cache the same pages. It's a pity that
 squid cannot use mmap() to do file IO on the 4K chunks in it's memory
@@ -508,13 +508,13 @@ reasons:
     before the ICP arrived.
 
   - The reply came from a multicast-responder, but the
-    [cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
+    [cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
     configuration does not allow us to forward this request to that
     neighbor.
 
   - Source-Echo replies from known neighbors are ignored.
 
-  - ICP\_OP\_DENIED replies are ignored after the first 100.
+  - ICP_OP_DENIED replies are ignored after the first 100.
 
 Back to the
 [SquidFaq](/SquidFaq)

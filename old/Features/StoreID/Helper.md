@@ -208,12 +208,12 @@ class Cache
 
         private
                 def getytid(url)
-                        m = url.match(/(id\=[a-zA-Z0-9\-\_\%]+)/)
+                        m = url.match(/(id\=[a-zA-Z0-9\-_\%]+)/)
                         return m.to_s if m != nil
                 end
 
                 def getytitag(url)
-                        m = url.match(/(itag\=[0-9\-\_]+)/)
+                        m = url.match(/(itag\=[0-9\-_]+)/)
                         return m.to_s if m != nil
                 end
 
@@ -223,7 +223,7 @@ class Cache
                 end
 
                 def getytredirect(url)
-                        m = url.match(/(redirect\=)([a-zA-Z0-9\-\_]+)/)
+                        m = url.match(/(redirect\=)([a-zA-Z0-9\-_]+)/)
                         return (m.to_s + Time.now.to_i.to_s) if m != nil
                 end
 
@@ -233,7 +233,7 @@ end
 def rewriter(request)
                 case request
 
-                when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.squid\.internal\/.*/
+                when /^http:\/\/[a-zA-Z0-9\-_\.]+\.squid\.internal\/.*/
                    url = $cache.geturl(request)
                    if url != nil
                       return url
@@ -241,7 +241,7 @@ def rewriter(request)
                       return ""
                   return ""
                     end
-                when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.dl\.sourceforge\.net\/.*/
+                when /^http:\/\/[a-zA-Z0-9\-_\.]+\.dl\.sourceforge\.net\/.*/
                   vid = $cache.sfdlid(request)
                   $cache.setvid(request, "http://dl.sourceforge.net.squid.internal/" + vid) if vid != nil
                   url = "http://dl.sourceforge.net.squid.internal/" + vid if vid != nil
@@ -251,12 +251,12 @@ def rewriter(request)
                   $cache.setvid(request, "http://vimeo.squid.internal/" + vid) if vid != nil
                   url = "http://vimeo.squid.internal/" + vid if vid != nil
                   return url
-                when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.c\.youtube\.com\/videoplayback\?.*id\=.*/
+                when /^http:\/\/[a-zA-Z0-9\-_\.]+\.c\.youtube\.com\/videoplayback\?.*id\=.*/
                   vid = $cache.ytvid(request)
                   $cache.setvid(request, "http://youtube.squid.internal/" + vid) if vid != nil
                   url = "http://youtube.squid.internal/" + vid if vid != nil
                   return url
-                when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.ytimg\.com\/(.*\.jpg|.*\.gif|.*\.js)/
+                when /^http:\/\/[a-zA-Z0-9\-_\.]+\.ytimg\.com\/(.*\.jpg|.*\.gif|.*\.js)/
                   vid = $cache.ytimg(request)
                   $cache.setvid(request, "http://ytimg.squid.internal/" + vid) if vid != nil
                   url = "http://ytimg.squid.internal/" + vid if vid != nil

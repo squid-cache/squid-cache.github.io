@@ -99,12 +99,12 @@ class Cache
 
         private
                 def getgvid(url)
-                        m = url.match(/(id\=[a-zA-Z0-9\-\_\%]+)/)
+                        m = url.match(/(id\=[a-zA-Z0-9\-_\%]+)/)
                         return m.to_s if m != nil
                 end
 
                 def getgvitag(url)
-                        m = url.match(/(itag\=[0-9\-\_]+)/)
+                        m = url.match(/(itag\=[0-9\-_]+)/)
                         return m.to_s if m != nil
                 end
 
@@ -114,25 +114,25 @@ class Cache
                 end
 
                 def getgvredirect(url)
-                        m = url.match(/(redirect\=)([a-zA-Z0-9\-\_]+)/)
+                        m = url.match(/(redirect\=)([a-zA-Z0-9\-_]+)/)
                         return (m.to_s + Time.now.to_i.to_s) if m != nil
                 end
 end
 
 def rewriter(request)
                 case request
-                when /^https?:\/\/[a-zA-Z0-9\-\_\.]+\.googlevideo\.com\/videoplayback\?/
+                when /^https?:\/\/[a-zA-Z0-9\-_\.]+\.googlevideo\.com\/videoplayback\?/
                   log("Google video Match [#{request}].") if $debug
                   vid = $cache.googlevideoYouTubeID(request)
                   log("Google video Match VID [#{vid}].") if $debug
                   url = "http://ytgv.squid.internal/" + vid if vid != nil
                   return url
-                when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.dl\.sourceforge\.net\/.*/
+                when /^http:\/\/[a-zA-Z0-9\-_\.]+\.dl\.sourceforge\.net\/.*/
                   vid = $cache.sfdlid(request)
                   $cache.setvid(request, "http://dl.sourceforge.net.squid.internal/" + vid) if vid != nil
                   url = "http://dl.sourceforge.net.squid.internal/" + vid if vid != nil
                   return url
-                when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.ytimg\.com\/(.*\.jpg|.*\.gif|.*\.js)/
+                when /^http:\/\/[a-zA-Z0-9\-_\.]+\.ytimg\.com\/(.*\.jpg|.*\.gif|.*\.js)/
                   vid = $cache.ytimg(request)
                   $cache.setvid(request, "http://ytimg.squid.internal/" + vid) if vid != nil
                   url = "http://ytimg.squid.internal/" + vid if vid != nil

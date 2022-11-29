@@ -48,7 +48,7 @@ includes documentation on all directives.
 
 In the Squid distribution there is a small QUICKSTART guide indicating
 which directives you need to look closer at and why. At a absolute
-minimum you need to change the http\_access configuration to allow
+minimum you need to change the http_access configuration to allow
 access from your clients.
 
 To verify your configuration file you can use the -k parse option
@@ -71,7 +71,7 @@ with the -z option:
 
 |                                                                           |                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | If you run Squid as root then you may need to first create */usr/local/squid/var/logs* and your *cache\_dir* directories and assign ownership of these to the cache\_effective\_user configured in your squid.conf |
+| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | If you run Squid as root then you may need to first create */usr/local/squid/var/logs* and your *cache_dir* directories and assign ownership of these to the cache_effective_user configured in your squid.conf |
 
 Once the creation of the cache directories completes, you can start
 Squid and try it out. Probably the best thing to do is run it from your
@@ -90,7 +90,7 @@ leave off all options:
 
 |                                                                           |                                                                                                  |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | Depending on which http\_port you select you may need to start squid as root (http\_port \<1024) |
+| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | Depending on which http_port you select you may need to start squid as root (http_port \<1024) |
 
 # How do I start Squid automatically when the system boots?
 
@@ -352,7 +352,7 @@ command-line arguments start|stop|refresh|restart, put it into
 
 You can get complete Squid SMF scripts with all needful to run it on
 Solaris here:
-[squid\_autostart25.tar.gz](/SquidFaq/InstallingSquid?action=AttachFile&do=get&target=squid_autostart25.tar.gz)
+[squid_autostart25.tar.gz](/SquidFaq/InstallingSquid?action=AttachFile&do=get&target=squid_autostart25.tar.gz)
 
 # How do I tell if Squid is running?
 
@@ -395,12 +395,12 @@ compiled into the executable.
 its configuration files.
 
 **-k rotate** Sends an *USR1* signal, which causes Squid to rotate its
-log files. Note, if *logfile\_rotate* is set to zero, Squid still closes
+log files. Note, if *logfile_rotate* is set to zero, Squid still closes
 and re-opens all log files.
 
 **-k shutdown** Sends a *TERM* signal, which causes Squid to wait
 briefly for current connections to finish and then exit. The amount of
-time to wait is specified with *shutdown\_lifetime*.
+time to wait is specified with *shutdown_lifetime*.
 
 **-k interrupt** Sends an *INT* signal, which causes Squid to shutdown
 immediately, without waiting for current connections.
@@ -425,7 +425,7 @@ testing a configuration file on a non-standard port.
 
 **-z** Creates disk swap directories. You must use this option when
 installing Squid for the first time, or when you add or modify the
-*cache\_dir* configuration.
+*cache_dir* configuration.
 
 **-D** Do not make initial DNS tests. Normally, Squid looks up some
 well-known DNS hostnames to ensure that your DNS name resolution service
@@ -440,11 +440,11 @@ satisfied during this time.
 
 **-N** Do not automatically become a background daemon process.
 
-**-R** Do not set the SO\_REUSEADDR option on sockets.
+**-R** Do not set the SO_REUSEADDR option on sockets.
 
 **-X** Enable full debugging while parsing the config file.
 
-**-Y** Return ICP\_OP\_MISS\_NOFETCH instead of ICP\_OP\_MISS while the
+**-Y** Return ICP_OP_MISS_NOFETCH instead of ICP_OP_MISS while the
 *swap.state* file is being read. If your cache has mostly child caches
 which use ICP, this will allow your cache to rebuild faster.
 
@@ -478,7 +478,7 @@ is often a very good idea.
 
 Generally seek time is what you want to optimize for Squid, or more
 precisely the total amount of seeks/s your system can sustain. This is
-why it is better to have your cache\_dir spread over multiple smaller
+why it is better to have your cache_dir spread over multiple smaller
 disks than one huge drive (especially with SCSI).
 
 If your system is very I/O bound, you will want to have both your OS and
@@ -496,15 +496,15 @@ Yes. Running Squid on native ZFS-supporting systems, like Solaris or
 
 In general, just set up ZFS mirror (usually the best with separate
 controllers for each spindle) and set recordsize 4-64k (depending your
-cache prefferable cache\_replacement\_policy). Also it can better for
+cache prefferable cache_replacement_policy). Also it can better for
 disk IO performance to change primarycache=metadata and
-secondarycache=none, and atime=off on cache\_dir filesystems. Consider
+secondarycache=none, and atime=off on cache_dir filesystems. Consider
 to correctly set **logbias** property for zfs fs which Squid's cache
 stores. Default value for this property is *latency*, which is
 appropriate for software ZFS raid/mirror. When ZFS created over hardware
 RAID5/10, set this property to *throughput* to avoid much
-TCP\_SWAPFAIL\_MISS. On system level the good idea is limiting ZFS ARC
-size to 1/8-1/4 of RAM by setting zfs:zfs\_arc\_max.
+TCP_SWAPFAIL_MISS. On system level the good idea is limiting ZFS ARC
+size to 1/8-1/4 of RAM by setting zfs:zfs_arc_max.
 
 ZFS works perfectly both diskd and aufs Squid storeIO modules (best
 choise depending your box/storage architecture).

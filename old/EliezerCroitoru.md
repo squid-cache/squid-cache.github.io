@@ -2,7 +2,7 @@
 
 Email: `<ngtech1ltd@gmail.com>`
 
-# 2020\_05
+# 2020_05
 
 OK, So restarting the
 [NgTech](/NgTech)
@@ -25,7 +25,7 @@ Granular videos filtering. A draft can be seen at:
 
 I hope that this idea will be integrated in the wide market.
 
-# 2019\_02
+# 2019_02
 
 Licensing update about the code I post in the wiki. The code I post in
 the wiki if not presented a specific License is 3-Clause BSD as in:
@@ -97,7 +97,7 @@ Requires:
 
   - StoreID helper
 
-# 2017\_06
+# 2017_06
 
 I am working on an alternative for wccp implementation. This alternative
 will be composed from:
@@ -123,7 +123,7 @@ will be composed from:
 
   - SSL-BUMP auto integration\\deployment scripts
 
-# 2015\_04
+# 2015_04
 
 I have released
 [SquidBlocker](http://www1.ngtech.co.il/wpe/?page_id=135) which can be
@@ -161,19 +161,19 @@ Beat](https://github.com/elico/squid-helpers/tree/master/squid_helpers/proxy_hb_
 "[Caching Dynamic Content using
 Adaptation](/ConfigExamples/DynamicContent/Coordinator)",
 "store url", "[Echeclon ICAP
-server](https://github.com/elico/echelon)","DNSBL External\_acl", "DNSBL
+server](https://github.com/elico/echelon)","DNSBL External_acl", "DNSBL
 server".
 
-I also wrote an external\_acl helper framework in ruby for many purposes
+I also wrote an external_acl helper framework in ruby for many purposes
 which support concurrency.
 
-Currently working on porting Store\_url\_rewrite from
+Currently working on porting Store_url_rewrite from
 [Squid-2.7](/Releases/Squid-2.7)
 to
 [Squid-3.3](/Releases/Squid-3.3).
 
 The plan is to add a "fake store url rewrite" (which was done) and then
-find the way to internally implement the Store\_url\_rewrite.
+find the way to internally implement the Store_url_rewrite.
 
 After reading literally thousands lines of code I'm still optimistic
 about the next steps.

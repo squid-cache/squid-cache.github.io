@@ -48,10 +48,10 @@ background behavior.
 
 The only points of possible interest for some will be:
 
-  - [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+  - [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
     flags 'ipv4' or 'ipv6'
 
-  - [tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
+  - [tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
     magic ACL's
 
   - CIDR is required - that brand spanking new concept (from 1993).
@@ -68,12 +68,12 @@ The only points of possible interest for some will be:
     available for speed. This is a good idea in general for your IPv6
     experience. Go with native routing as soon as your upstream can
     supply it. Squid-3.1.16 and later provide
-    [dns\_v4\_first](http://www.squid-cache.org/Doc/config/dns_v4_first)
+    [dns_v4_first](http://www.squid-cache.org/Doc/config/dns_v4_first)
     directive to avoid the worst cases of tunnel lag. Enable this only
     if you have to.
 
   - A single listening port
-    **[http\_port](http://www.squid-cache.org/Doc/config/http_port)
+    **[http_port](http://www.squid-cache.org/Doc/config/http_port)
     3128** is less resource hungry than one for each IPv4 and IPv6.
     Also, its fully compatible with IPv6 auto-configuration and
     link-local addressed peers.
@@ -84,9 +84,9 @@ The only points of possible interest for some will be:
 
   - Squid can already cope with bad or inaccessible IPs. This can be
     improved by tuning the
-    [connect\_timeout](http://www.squid-cache.org/Doc/config/connect_timeout)
+    [connect_timeout](http://www.squid-cache.org/Doc/config/connect_timeout)
     and
-    [dns\_timeout](http://www.squid-cache.org/Doc/config/dns_timeout)
+    [dns_timeout](http://www.squid-cache.org/Doc/config/dns_timeout)
     down to a few seconds.
 
 ## Trouble Shooting IPv6
@@ -96,8 +96,8 @@ The only points of possible interest for some will be:
 **Your squid may be configured to only listen for IPv4.**
 
 The UDP port listening addresses in squid.conf
-([udp\_incoming\_address](http://www.squid-cache.org/Doc/config/udp_incoming_address),
-[snmp\_incoming\_address](http://www.squid-cache.org/Doc/config/snmp_incoming_address))
+([udp_incoming_address](http://www.squid-cache.org/Doc/config/udp_incoming_address),
+[snmp_incoming_address](http://www.squid-cache.org/Doc/config/snmp_incoming_address))
 can be either IPv4 or IPv6. The default is to accept traffic on any IP
 address to the relevant UDP port. If you configure this to a specific IP
 address of either type it will not accept traffic of the other type.
@@ -109,9 +109,9 @@ address of either type it will not accept traffic of the other type.
     default IPv6-enabled outgoing UDP ports.
 
 Each of the TCP port lines in squid.conf
-([http\_port](http://www.squid-cache.org/Doc/config/http_port),
-[https\_port](http://www.squid-cache.org/Doc/config/https_port),
-[ftp\_port](http://www.squid-cache.org/Doc/config/ftp_port)) can take
+([http_port](http://www.squid-cache.org/Doc/config/http_port),
+[https_port](http://www.squid-cache.org/Doc/config/https_port),
+[ftp_port](http://www.squid-cache.org/Doc/config/ftp_port)) can take
 either a port, hostname:port, or ip:port combo.
 
 When these lines contain an IPv4 address or a hostname with only IPv4
@@ -163,12 +163,12 @@ or errors about 'V6ONLY'.
 IPv4.**
 
 A number of networks are known to need
-[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
-(or various other \*\_outgoing\_address) in their squid.conf. These can
+[tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
+(or various other \*_outgoing_address) in their squid.conf. These can
 force squid to request the website over an IPv4 link when it should be
 trying an IPv6 link instead. There is a little bit of ACL magic possible
 with
-[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
+[tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
 which will get around this problem for DIRECT requests.
 
   - ℹ️
@@ -334,7 +334,7 @@ From
 support for handling EUI-64 exists in
 [acl](http://www.squid-cache.org/Doc/config/acl),
 [logformat](http://www.squid-cache.org/Doc/config/logformat) and
-[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type).
+[external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type).
 It currently still requires IPv6 SLAAC (the IPv6 automatically
 configured client address) to supply the EUI information.
 

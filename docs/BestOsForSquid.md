@@ -28,7 +28,7 @@ tune a few parameters. In priority order:
 - Number of harddrives used for cache and their architecture
   - squid disk access patterns hit particularly hard RAID systems -
         especially RAID4/5. Since the data are not by definition
-        valuable, it is recommended to run the cache\_dirs on JBOD
+        valuable, it is recommended to run the cache_dirs on JBOD
         ("just a bunch of disks", in other words NO RAID) (see
         [SquidFaq/RAID](/SquidFaq/RAID))
   - of course the disk type matters: SSD performs better than HDD
@@ -40,7 +40,7 @@ tune a few parameters. In priority order:
         just saves a whole lot of writes to the disks
 - amount of space used
   - always leave about 20% of free space on the filesystems
-        containing your cache\_dirs: generally FS performance degrades
+        containing your cache_dirs: generally FS performance degrades
         dramatically if used space exceeds 80%
 - type of filesystem
   - only applies on OSes which offer multiple choices (except for a

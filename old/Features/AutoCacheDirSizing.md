@@ -1,7 +1,7 @@
-# Feature: Automatic cache\_dir sizing
+# Feature: Automatic cache_dir sizing
 
-  - **Goal**: Allow squid to automatically define the best cache\_dir
-    and cache\_mem sizing, based on available disk space and core memory
+  - **Goal**: Allow squid to automatically define the best cache_dir
+    and cache_mem sizing, based on available disk space and core memory
     availability
 
   - **Status**: not started
@@ -19,7 +19,7 @@
 
 # Details
 
-Fernando Ulisses dos Santos suggests to create a option in cache\_dir
+Fernando Ulisses dos Santos suggests to create a option in cache_dir
 param, like this: `cache_dir /var/spool/squid AUTO`
 
 where AUTO indicates that squid may use all avaliable space in disc, but

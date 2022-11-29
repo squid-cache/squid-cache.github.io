@@ -31,7 +31,7 @@ adaptation service working in a request satisfaction mode. Unless
 restricted further, received replies include both interim and final
 responses.
 
-\* **sent** : A response that was massaged (e.g., by http\_reply\_access
+\* **sent** : A response that was massaged (e.g., by http_reply_access
 rules) and forwarded by the Squid server to a Squid client. Most sent
 replies come from received responses that were adjusted for Squid client
 use. This category also includes responses that were meant to be sent

@@ -24,7 +24,7 @@ risky. Most (perhaps all) developers cannot even grasp all the
 interactions and inner dependencies, which causes the snowball effect of
 degrading code quality.
 
-Affected client\_side\* classes may be renamed to reflect the fact that
+Affected client_side\* classes may be renamed to reflect the fact that
 they implement an HTTP server. This code communicates with Squid clients
 and, hence, has been called *client side*.
 

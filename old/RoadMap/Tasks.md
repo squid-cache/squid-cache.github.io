@@ -46,7 +46,7 @@ see what we are up to and how you can assist the move forward on these.
 
   - Migration to the STUB.h framework
     
-    1.  create a src/tests/stub\_libX.cc for each convenience library
+    1.  create a src/tests/stub_libX.cc for each convenience library
         API using src/tests/STUB.h
     
     2.  find unit tests which can be linked to the stub instead of the
@@ -76,11 +76,11 @@ see what we are up to and how you can assist the move forward on these.
 
   - Normalize the debug level 0 and 1 messages
     
-    1.  verify all DBG\_CRITICAL output conforms to the labeling
+    1.  verify all DBG_CRITICAL output conforms to the labeling
         criterion in [the
         FAQ](/SquidFaq/SquidLogs#Squid_Error_Messages)
     
-    2.  verify all DBG\_CRITICAL and DBG\_IMPORTANT output has a
+    2.  verify all DBG_CRITICAL and DBG_IMPORTANT output has a
         [KnowledgeBase](/KnowledgeBase)
         page describing it (as per [the
         FAQ](/SquidFaq/SquidLogs#Squid_Error_Messages))
@@ -120,8 +120,8 @@ done.
 
   - Cleanup Squid component macros that enable/disable components:
     
-    1.  .convention for Makefile.am conditionals is ENABLE\_\* (currenty
-        some have incorrect USE\_\* maro names)
+    1.  .convention for Makefile.am conditionals is ENABLE_\* (currenty
+        some have incorrect USE_\* maro names)
 
   - Helper and Tool Manuals
     

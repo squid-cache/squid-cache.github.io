@@ -628,14 +628,14 @@ Step 2 is to create a filter to trap port 80 traffic.
 
     ADD PROFILE IP FILTER ENTRY http INPUT  0.0.0.0 0.0.0.0 0.0.0.0 0.0.0.0 = 0x6 D= 80 NORMAL
 
-Step 3 is to set the "APPLICATION\_ID" on port 80 traffic to 80. This
+Step 3 is to set the "APPLICATION_ID" on port 80 traffic to 80. This
 causes all packets matching this filter to have ID 80 instead of the
 default ID of 0.
 
     SET PROFILE IP FILTER APPLICATION_ID http 80
 
 Step 4 is to create a special route that is used for packets with
-"APPLICATION\_ID" set to 80. The routing engine uses the ID to select
+"APPLICATION_ID" set to 80. The routing engine uses the ID to select
 which routes to use.
 
     ADD IP ROUTE ENTRY 0.0.0.0 0.0.0.0 PROXY-IP 1
@@ -812,8 +812,8 @@ For WCCPv1, you need these directives:
     your cache, do not specify these.
 
 ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
-Note: do NOT configure both the WCCPv1 directives (wccp\_\*) and WCCPv2
-(wccp2\_\*) options at the same time in your squid.conf. Squid only
+Note: do NOT configure both the WCCPv1 directives (wccp_\*) and WCCPv2
+(wccp2_\*) options at the same time in your squid.conf. Squid only
 supports configuration of one version at a time, either WCCPv1 or
 WCCPv2. With no configuration, the unconfigured version(s) are not
 enabled. Unpredictable things might happen if you configure both sets of
@@ -828,11 +828,11 @@ For WCCPv2, then you will want something like this:
     wccp2_service standard 0
     wccp2_outgoing_address e.f.g.h
 
-  - Use a wccp\_forwarding\_method and wccp2\_return\_method of **1** if
+  - Use a wccp_forwarding_method and wccp2_return_method of **1** if
     you are using a router and GRE/WCCP tunnel, or **2** if you are
     using a Layer 3 switch to do the forwarding.
 
-  - Your wccp2\_service should be set to **standard 0** which is the
+  - Your wccp2_service should be set to **standard 0** which is the
     standard HTTP redirection.
 
   - a.b.c.d is the address of your WCCP router
@@ -913,7 +913,7 @@ intercepting the HTTP packets. `<Host-IP>` is the IP address of your
 cache, and `<interface>` is the network interface that receives those
 packets (probably eth0).
 
-Note that WCCP is incompatible with the rp\_filter function in Linux and
+Note that WCCP is incompatible with the rp_filter function in Linux and
 you must disable this if enabled. If enabled any packets redirected by
 WCCP and intercepted by Netfilter/iptables will be silendly discarded by
 the TCP/IP stack due to their "unexpected" origin from the gre
@@ -946,8 +946,8 @@ that need to be done:
 
   - The kernel and iptables need to be patched with the tproxy patches
     (and the tproxy include file needs to be placed in
-    /usr/include/linux/netfilter\_ipv4/ip\_tproxy.h or
-    include/netfilter\_ipv4/ip\_tproxy.h in the squid src tree).
+    /usr/include/linux/netfilter_ipv4/ip_tproxy.h or
+    include/netfilter_ipv4/ip_tproxy.h in the squid src tree).
 
   - The iptables rule needs to use the TPROXY target (instead of the
     REDIRECT target) to redirect the port 80 traffic to the proxy. ie:
@@ -957,7 +957,7 @@ that need to be done:
     iptables -t tproxy -A PREROUTING -i eth0 -p tcp -m tcp --dport 80 -j TPROXY --on-port 80
 
   - The kernel must strip the GRE header from the incoming packets
-    (either using the ip\_wccp module, or by having a GRE tunnel set up
+    (either using the ip_wccp module, or by having a GRE tunnel set up
     in Linux pointing at the router (no GRE setup is required on the
     router)).
 
@@ -979,9 +979,9 @@ server resolves to multiple ip addresses).
 
   - The http port that you are redirecting to must have the transparent
     and tproxy options enabled as follows (modify the port as
-    appropriate): http\_port 80 transparent tproxy
+    appropriate): http_port 80 transparent tproxy
 
-  - There **must** be a tcp\_outgoing address defined. This will need to
+  - There **must** be a tcp_outgoing address defined. This will need to
     be valid to satisfy any non-tproxied connections.
 
   - On the router, you need to make sure that all traffic going to/from
@@ -1013,7 +1013,7 @@ your caches have registered to the WCCP router. ie:
      ip address x.x.x.x y.y.y.y
      ip wccp redirect exclude in
 
-  - It's highly recommended to turn httpd\_accel\_no\_pmtu\_disc on in
+  - It's highly recommended to turn httpd_accel_no_pmtu_disc on in
     the squid.conf.
 
 The homepage for the TProxy software is at
@@ -1094,7 +1094,7 @@ session as this imposes a performance hit on your router.
     not loaded, and your cache is rejecting the traffic because it does
     not know what to do with it.
 
-  - Have you configured both wccp\_ and wccp2\_ options? You should only
+  - Have you configured both wccp_ and wccp2_ options? You should only
     configure one or the other and NOT BOTH.
 
   - The most common problem people have is that the router and cache are
@@ -1136,7 +1136,7 @@ and
 In other words, it's not a squid bug, but a **browser security**
 feature.
 
-### Can I use ''proxy\_auth'' with interception?
+### Can I use ''proxy_auth'' with interception?
 
 No, you cannot. See the answer to the previous question. With
 interception proxying, the client thinks it is talking to an origin

@@ -75,7 +75,7 @@ need to make them listen on different IP addresses. Usually the loopback
 address (127.0.0.1 or ::1) is used for the web server.
 
 In Squid this is done by specifying the public IP address in
-[http\_port](http://www.squid-cache.org/Doc/config/http_port), and
+[http_port](http://www.squid-cache.org/Doc/config/http_port), and
 using loopback address for the web server
 
     http_port the.public.ip.address:80 accel defaultsite=your.main.website
@@ -95,9 +95,9 @@ details.
 
 To load balance requests among a set of backend servers allow requests
 to be forwarded to more than one
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer), and
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer), and
 use one of the load balancing options in the
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) lines.
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) lines.
 I.e. the round-robin option.
 
     cache_peer ip.of.server1 parent 80 0 no-query originserver round-robin
@@ -105,7 +105,7 @@ I.e. the round-robin option.
 
 Other load balancing methods is also available. See squid.conf.default
 for the full the description of the
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 directive options.
 
 ## Common Problems
@@ -121,11 +121,11 @@ the accelerator.
 
 To fix this make sure that defaultsite is the site name requested by
 clients, and that the port number of
-[http\_port](http://www.squid-cache.org/Doc/config/http_port) and the
+[http_port](http://www.squid-cache.org/Doc/config/http_port) and the
 backent web server is the same. You may also need to configure the
 official site name on the web server.
 
-Alternatively you can also use the location\_rewrite helper interface to
+Alternatively you can also use the location_rewrite helper interface to
 Squid to fixup redirects on the way out to the client, but this only
 works for the Location header, not URLs dynamically embedded in the
 returned content.
@@ -135,7 +135,7 @@ returned content.
 If the content on the web servers is password protected then you need to
 tell the proxy to trust your web server with authentication credentials.
 This is done via the login= option to
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer).
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer).
 Normally you would use login=PASS to have the login information
 forwarded. The other alternatives is meant to be used when it's the
 reverse proxy which processes the authentication as such but you like to
@@ -159,7 +159,7 @@ lead to bandwidth problems and rising costs.
 In
 [Squid-3.1](/Releases/Squid-3.1)
 and later the
-[http\_port](http://www.squid-cache.org/Doc/config/http_port)
+[http_port](http://www.squid-cache.org/Doc/config/http_port)
 **ignore-cc** options is available on accel ports. This option informs
 Squid to ignore the visitors control headers and depend solely on the
 headers provided by backend servers.

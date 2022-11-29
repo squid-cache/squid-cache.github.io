@@ -57,7 +57,7 @@ sessions over HTTP) may bypass the quota controls.
     period, but no new requests may start without a new session being
     permitted.
 
-  - ext\_time\_quota\_acl helper added with
+  - ext_time_quota_acl helper added with
     [Squid-3.3](/Releases/Squid-3.3)
     allows an allocated period of time which is consumed as requests are
     made. Configurable long periods with no requests can be eliminated

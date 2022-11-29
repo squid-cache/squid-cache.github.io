@@ -38,7 +38,7 @@ Basic new features in 3.3:
   - [Features/MimicSslServerCert](/Features/MimicSslServerCert)
 
   - New directive
-    [request\_header\_add](http://www.squid-cache.org/Doc/config/request_header_add)
+    [request_header_add](http://www.squid-cache.org/Doc/config/request_header_add)
     for custom HTTP headers
 
 The intention with this series is to improve the upgrade path and

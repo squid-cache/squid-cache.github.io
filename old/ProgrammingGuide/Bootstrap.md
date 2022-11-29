@@ -21,7 +21,7 @@ It doesn't always work. Here are some errors and solutions:
   echo '/usr/local/share/aclocal' >> /usr/local/share/aclocal19/dirlist
 ```
 
-# possibly undefined macro: AC\_DISABLE\_SHARED
+# possibly undefined macro: AC_DISABLE_SHARED
 
 *Problem*
 
@@ -49,7 +49,7 @@ It doesn't always work. Here are some errors and solutions:
 
   - rm -rf autom4te.cache
 
-# possibly undefined macro: AC\_LTDL\_DLLIB
+# possibly undefined macro: AC_LTDL_DLLIB
 
   - Generally in Debian based systems:
 

@@ -42,7 +42,7 @@ request was going to does not belong to that domain name.
             IP"**.
         
           - With
-            [host\_verify\_strict](http://www.squid-cache.org/Doc/config/host_verify_strict)
+            [host_verify_strict](http://www.squid-cache.org/Doc/config/host_verify_strict)
             enabled there are other checks that can alert.
 
   - The second and third lines are self explanatory.
@@ -148,7 +148,7 @@ work:
       - [Squid-3.2](/Releases/Squid-3.2)
         can attempt to use EDNS to get larger packets with all IPs of
         these domains by setting the
-        [dns\_packet\_max](http://www.squid-cache.org/Doc/config/dns_packet_max)
+        [dns_packet_max](http://www.squid-cache.org/Doc/config/dns_packet_max)
         directive. This reduces Squids chance of loosing the IP the
         client is connecting to but requires both your resolver to
         support EDNS and network to support jumbograms.
@@ -160,13 +160,13 @@ work:
         exceed that change and cause false failures.
     
       - The
-        [client\_lifetime](http://www.squid-cache.org/Doc/config/client_lifetime)
+        [client_lifetime](http://www.squid-cache.org/Doc/config/client_lifetime)
         can be configured to similarly short times to reduce the
         occurrence of these mismatches. The default 1 day is tuned to
         match DNS recommended best practice TTL.
     
       - Alternatively
-        [client\_persistent\_connections](http://www.squid-cache.org/Doc/config/client_persistent_connections)
+        [client_persistent_connections](http://www.squid-cache.org/Doc/config/client_persistent_connections)
         can be set to **off** to disable HTTP keep-alive entirely.
 
 **Alternative Causes**

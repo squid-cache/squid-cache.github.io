@@ -83,7 +83,7 @@ func main() {
 
         regex[0] = regexp.MustCompile("^https?:\\/\\/[^\\.]+\\.dl\\.sourceforge\\.net\\/(.*)")
         regex[1] = regexp.MustCompile("^https?:\\/\\/.*\\.ytimg.com\\/(.*\\.jpg|.*\\.gif|.*\\.js)")
-        regex[2] = regexp.MustCompile("^^https?:\\/\\/(pdlvimeocdn-a|avvimeo-a)\\.akamaihd\\.net\\/([\\w\\d\\-\\_\\.\\/]+\\.mp4)?")
+        regex[2] = regexp.MustCompile("^^https?:\\/\\/(pdlvimeocdn-a|avvimeo-a)\\.akamaihd\\.net\\/([\\w\\d\\-\_\\.\\/]+\\.mp4)?")
 
         reader := bufio.NewReader(os.Stdin)
 

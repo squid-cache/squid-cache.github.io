@@ -5,7 +5,7 @@ is still evolving and when stable will be turned into a macro.*
 
 ## Overview of Behaviour
 
-Each library depended on by Squid should have an **AC\_WITH()** macro
+Each library depended on by Squid should have an **AC_WITH()** macro
 defined to permit user disabling, requirement, or replacement of the
 library. Squid should be capable of quicky detecting the libraries
 absence and
@@ -23,9 +23,9 @@ will be performed, nor will it be used by Squid.
 for the library should not be searched for. This reduces the time
 ./configure spends performing useless operations.
 
-## Piece 1: AC\_ARG\_WITH()
+## Piece 1: AC_ARG_WITH()
 
-Use this autoconf provided macro to setup path locations and with\_\*
+Use this autoconf provided macro to setup path locations and with_\*
 variables for the library.
 
     AC_ARG_WITH(foo,
@@ -72,10 +72,10 @@ AC_MSG_NOTICE([Foo library support: ${with_foo:=auto} ${LIBFOO_PATH} ${LIBFOO_LI
 AC_SUBST(FOOLIB)
 ```
 
-  - Note the absence of AC\_CONDITIONAL to setup ENABLE\_FOO. If a major
+  - Note the absence of AC_CONDITIONAL to setup ENABLE_FOO. If a major
     feature requires library foo then it should base its determination
     on the setting in `$with_foo` only **after** these library tests
-    have been performed and set $with\_foo to one of yes/no.
+    have been performed and set $with_foo to one of yes/no.
 
 ## Piece 3: pkg-config and file detections
 
@@ -84,8 +84,8 @@ by the library author they are updated automatically if the build
 parameters change, and can also do library version detection more
 accurately.
 
-The PKG\_CHECK\_MODULES macro creates the local variables
-**LIBFOO\_CFLAGS** and **LIBFOO\_LIBS** necessary to build against the
+The PKG_CHECK_MODULES macro creates the local variables
+**LIBFOO_CFLAGS** and **LIBFOO_LIBS** necessary to build against the
 library.
 
   - Note that the users custom path (if any) is already provided in
@@ -96,7 +96,7 @@ library.
     the backup detection logics should re-use the pkg-config variables
     so they can be setup only for binaries using this library.
 
-An example of how to use PKG\_CHECK\_MODULES:
+An example of how to use PKG_CHECK_MODULES:
 
 ``` 
   # auto-detect using pkg-config
@@ -116,7 +116,7 @@ An example of how to use PKG\_CHECK\_MODULES:
 Check for the library header includes separately.
 
 This is required as a side effect of the Squid requiremet for
-HAVE\_FOO\_H wrapper definitions. The pkg-config tool does not check for
+HAVE_FOO_H wrapper definitions. The pkg-config tool does not check for
 them automatically and it makes no sense to do them twice for both its
 success and failure actions.
 

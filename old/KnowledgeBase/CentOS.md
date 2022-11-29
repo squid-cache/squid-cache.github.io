@@ -130,7 +130,7 @@ Install Procedure:
     can be used on CentOS 6
 
   - **Eliezer**: As of 3.4.0.2 I am releasing the squid RPMs for two CPU
-    classes OS, i686 and x86\_64.
+    classes OS, i686 and x86_64.
 
   - Since somewhere in the 3.4 tree there was a change in the way the
     squid was packaged by me:

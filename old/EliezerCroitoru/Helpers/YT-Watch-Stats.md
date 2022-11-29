@@ -53,19 +53,19 @@ require 'syslog'
 
 def statsTest(requestUrl)
   case requestUrl
-  when /^https?\:\/\/[\.0-9a-zA-Z\-\_]+\.imdb\.com\/title\/([a-zA-Z0-9\-\_]+)\//
+  when /^https?\:\/\/[\.0-9a-zA-Z\-_]+\.imdb\.com\/title\/([a-zA-Z0-9\-_]+)\//
     if Regexp.last_match(1)
       STDERR.puts "Incerementing ID => #{'imdb-title-' + Regexp.last_match(1)}" if $debug
       $redisdbconn.incr('imdb-title-' + Regexp.last_match(1))
       STDERR.puts("Current stats for: #{'imdb-title-' + Regexp.last_match(1)} => #{$redisdbconn.get('imdb-title-' + Regexp.last_match(1))}") if $debug
     end
-  when /^https?\:\/\/www\.youtube\.com\/watch\?.*(v)\=([a-zA-Z0-9\-\_]+)/
+  when /^https?\:\/\/www\.youtube\.com\/watch\?.*(v)\=([a-zA-Z0-9\-_]+)/
     if Regexp.last_match(2)
       STDERR.puts "Incerementing ID => #{'yt-videoid-' + Regexp.last_match(2)}" if $debug
       $redisdbconn.incr('yt-videoid-' + Regexp.last_match(2))
       STDERR.puts("Current stats for: #{'yt-videoid-' + Regexp.last_match(2)} => #{$redisdbconn.get('yt-videoid-' + Regexp.last_match(2))}") if $debug
     end
-  when /^https?\:\/\/[a-zA-Z0-9\-\_]+\.(ytimg)\.com\/vi\/([a-zA-Z0-9\-\_]+)\//
+  when /^https?\:\/\/[a-zA-Z0-9\-_]+\.(ytimg)\.com\/vi\/([a-zA-Z0-9\-_]+)\//
     if Regexp.last_match(2)
       STDERR.puts "Incerementing ID => #{'ytimg-videoid-' + Regexp.last_match(2)}" if $debug
       $redisdbconn.incr('ytimg-videoid-' + Regexp.last_match(2))
@@ -361,9 +361,9 @@ func main() {
 
         flag.Parse()
 
-        re[0] = regexp.MustCompile("^https?\\:\\/\\/[\\.0-9a-zA-Z\\-\\_]+\\.imdb\\.com\\/title\\/([a-zA-Z0-9\\-\\_]+)")
-        re[1] = regexp.MustCompile("^https?\\:\\/\\/www\\.youtube\\.com\\/watch\\?.*(v)\\=([a-zA-Z0-9\\-\\_]+)")
-        re[2] = regexp.MustCompile("^https?\\:\\/\\/[a-zA-Z0-9\\-\\_]+\\.(ytimg)\\.com\\/vi\\/([a-zA-Z0-9\\-\\_]+)\\/")
+        re[0] = regexp.MustCompile("^https?\\:\\/\\/[\\.0-9a-zA-Z\\-\_]+\\.imdb\\.com\\/title\\/([a-zA-Z0-9\\-\_]+)")
+        re[1] = regexp.MustCompile("^https?\\:\\/\\/www\\.youtube\\.com\\/watch\\?.*(v)\\=([a-zA-Z0-9\\-\_]+)")
+        re[2] = regexp.MustCompile("^https?\\:\\/\\/[a-zA-Z0-9\\-\_]+\\.(ytimg)\\.com\\/vi\\/([a-zA-Z0-9\\-\_]+)\\/")
 
         database.Addr = *db_address + ":" + *db_port
         var wg sync.WaitGroup

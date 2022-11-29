@@ -15,7 +15,7 @@ format **Name: values**. The quoted value inside {} brackets is what
 Squid was given.
 
 Set
-[relaxed\_header\_parser](http://www.squid-cache.org/Doc/config/relaxed_header_parser)
+[relaxed_header_parser](http://www.squid-cache.org/Doc/config/relaxed_header_parser)
 to **warn** (or **off**) for more detailed diagnostics of the problem.
 
 For example

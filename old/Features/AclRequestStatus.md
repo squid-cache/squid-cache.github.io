@@ -1,7 +1,7 @@
 # Feature: Request Status ACL
 
   - **Goal**: Implement a Reply-type ACL which matches against the
-    status of a request (e.g. TCP\_MEM\_HIT, TCP\_MISS, etc.)
+    status of a request (e.g. TCP_MEM_HIT, TCP_MISS, etc.)
 
   - **Status**: *In progress*. Patch available by Gonzalo Arana needs to
     be polished and merged.

@@ -58,9 +58,9 @@ of message types:
 
   - A "reply body chunk" message type
 
-  - A "status" message type - eg, REQUEST\_OK, REPLY\_OK, HEADERS\_OK,
-    REQBODY\_OK, REPBODY\_OK, REQBODY\_EOF, REPBODY\_EOF,
-    REQBODY\_WANTMORE, REPBODY\_WANTMORE
+  - A "status" message type - eg, REQUEST_OK, REPLY_OK, HEADERS_OK,
+    REQBODY_OK, REPBODY_OK, REQBODY_EOF, REPBODY_EOF,
+    REQBODY_WANTMORE, REPBODY_WANTMORE
 
 The request message type probably isn't required - the whole request
 information should be a part of the HTTP request itself and so is

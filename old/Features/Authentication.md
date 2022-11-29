@@ -31,16 +31,16 @@ and later support Basic, NTLM (SMB LM, v1 and v2), Digest, and
 
 ## How does Proxy Authentication work in Squid?
 
-Users will be authenticated if squid is configured to use *proxy\_auth*
+Users will be authenticated if squid is configured to use *proxy_auth*
 ACLs (see next question).
 
 Browsers send the user's authentication credentials in the HTTP
 *Authorization:* request header.
 
 If Squid gets a request and the
-[http\_access](http://www.squid-cache.org/Doc/config/http_access) rule
-list gets to a *proxy\_auth* ACL or an *external* ACL
-([external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type))
+[http_access](http://www.squid-cache.org/Doc/config/http_access) rule
+list gets to a *proxy_auth* ACL or an *external* ACL
+([external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type))
 with *%LOGIN* parameter, Squid looks for the *Authorization:* header. If
 the header is present, Squid decodes it and extracts a user credentials.
 
@@ -76,7 +76,7 @@ the NTLM, Negotiate and Digest authentication schemes which provide more
 secure authentication methods, in that where the password is not
 exchanged in plain text over the wire. Each scheme have their own set of
 helpers and
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
+[auth_param](http://www.squid-cache.org/Doc/config/auth_param)
 settings. Notice that helpers for different authentication schemes use
 different protocols to talk with squid, so they can't be mixed.
 
@@ -125,7 +125,7 @@ others](http://www.squid-cache.org/Misc/related-software.html#authenticators),
 or supply your own.
 
 You tell Squid which authentication helper program to use with the
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
+[auth_param](http://www.squid-cache.org/Doc/config/auth_param)
 directive in squid.conf. Specify the name of the program, plus any
 command line options if necessary. For example:
 
@@ -139,7 +139,7 @@ found in the manual pages linked above).
 Make sure that your authentication program is installed and working
 correctly. You can test it by hand.
 
-Add some *proxy\_auth* ACL entries to your squid configuration. For
+Add some *proxy_auth* ACL entries to your squid configuration. For
 example:
 
     acl foo proxy_auth REQUIRED
@@ -210,7 +210,7 @@ probably look like this:
 There is a trick which can force the user to authenticate with a
 different account in certain situations. This happens if you deny access
 with an authentication related ACL **last** in the
-[http\_access](http://www.squid-cache.org/Doc/config/http_access) deny
+[http_access](http://www.squid-cache.org/Doc/config/http_access) deny
 statement. Example configuration:
 
     acl my_auth proxy_auth REQUIRED
@@ -221,12 +221,12 @@ statement. Example configuration:
     http_access deny all
 
 In this case if the user requests *www.google.com* then the first
-[http\_access](http://www.squid-cache.org/Doc/config/http_access) line
+[http_access](http://www.squid-cache.org/Doc/config/http_access) line
 matches and triggers re-authentication unless the user is one of the
 listed users.
 
 Remember: it is the last ACL on a
-[http\_access](http://www.squid-cache.org/Doc/config/http_access) line
+[http_access](http://www.squid-cache.org/Doc/config/http_access) line
 that determines whether authentication is performed. If the ACL deals
 with authentication a new challenge is triggered. If you didn't want
 that you would need to switch the order of ACLs so that you get
@@ -286,13 +286,13 @@ although you don't intend to. This config is likely wrong for you:
     http_access deny !ldapgroup-allowed
     http_access allow all
 
-The [http\_access](http://www.squid-cache.org/Doc/config/http_access)
+The [http_access](http://www.squid-cache.org/Doc/config/http_access)
 deny line would force the user to re-authenticate time and again if
-he/she is not member of the PROXY\_ALLOWED group. This is perhaps not
+he/she is not member of the PROXY_ALLOWED group. This is perhaps not
 what you want. You rather wanted to deny access to non-members.
 
 You need to rewrite this
-[http\_access](http://www.squid-cache.org/Doc/config/http_access) line
+[http_access](http://www.squid-cache.org/Doc/config/http_access) line
 so that an ACL matches that has nothing to do with authentication. This
 is the correct example:
 
@@ -302,7 +302,7 @@ is the correct example:
     http_access allow all
 
 This way the
-[http\_access](http://www.squid-cache.org/Doc/config/http_access) line
+[http_access](http://www.squid-cache.org/Doc/config/http_access) line
 still matches. But it's the *all* ACL which is now last in the line.
 Since *all* is a static ACL (that always matches) and has nothing to do
 with authentication you will find that the access is just denied.
@@ -331,7 +331,7 @@ can.
     to keep using your cache up to an hour after they have been removed
     from the authentication database. You can control the expiration
     time with the
-    *[auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
+    *[auth_param](http://www.squid-cache.org/Doc/config/auth_param)
     basic credentialsttl* configuration option.
 
   - Successful NTLM and Negotiate authentication results are tied to the
@@ -368,7 +368,7 @@ and how these authentication services stores the password is outside of
 this document but usually it's not in plain text.
 
 In side-band authentication, using the
-[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+[external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
 directive. There is a *password=* value which is possibly transfered to
 Squid from the helper. This value is entirely **optional** and may in
 fact have no relation to a real password so we cannot be certain what
@@ -389,7 +389,7 @@ and
 [SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting)).
 You *can* enable more than one at any given moment, just configure the
 relevant
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
+[auth_param](http://www.squid-cache.org/Doc/config/auth_param)
 sections for each different scheme you want to offer to the browsers.
 
 RFC [2617](https://tools.ietf.org/rfc/rfc2617), chapter 4.6, states: *A
@@ -400,7 +400,7 @@ Of course definition of *strongest* may vary
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ⚠️ | Due to a **bug** in common User-Agents (most notably some Microsoft Internet Explorer and Firefox versions) the *order* the auth-schemes are configured *is* relevant. Early versions of MSIE instead chooses the *first* auth-scheme (in the order they are offered) it understands. |
 
-In other words, you **SHOULD** use this order for the *auth\_params*
+In other words, you **SHOULD** use this order for the *auth_params*
 directives:
 
 1.  negotiate
@@ -462,7 +462,7 @@ protocols.
   - [smbclient man
     page](http://samba.org/samba/docs/man/manpages-3/smbclient.1.html)
 
-  - [ntlm\_auth man
+  - [ntlm_auth man
     page](http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html)
 
 ## Authentication in interception and transparent modes

@@ -165,7 +165,7 @@ analyse what goes wrong later on.
     caching objects, the CSS records the availability of objects in each
     of its neighbour caches. Caches that have smart neighbours update
     each smart neighbour with the status of their cache by sending
-    ICP\_STORE\_NOTIFY/ICP\_RELEASE\_NOTIFY messages upon
+    ICP_STORE_NOTIFY/ICP_RELEASE_NOTIFY messages upon
     storing/releasing an object from their cache. The CSS maintains an
     up to date 'object map' recording the availability of objects in its
     neighbouring caches.

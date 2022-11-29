@@ -49,7 +49,7 @@ workarounds:
 
 # Why am I getting "Proxy Access Denied?"
 
-You may need to set up the *http\_access* option to allow requests from
+You may need to set up the *http_access* option to allow requests from
 your IP addresses. Please see
 [../SquidAcl](/SquidFaq/SquidAcl)
 for information about that.
@@ -67,7 +67,7 @@ If the HTTP port number is wrong but the ICP port is correct you will
 send ICP queries correctly and the ICP replies will fool your cache into
 thinking the configuration is correct but large objects will fail since
 you don't have the correct HTTP port for the sibling in your
-*squid.conf* file. If your sibling changed their *http\_port*, you could
+*squid.conf* file. If your sibling changed their *http_port*, you could
 have this problem for some time before noticing.
 
 # Running out of filedescriptors
@@ -83,7 +83,7 @@ limit on total file descriptors for all processes.
 |                                                                                                                                           |                                                                 |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | ℹ️ ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.0-2.6 provide a ./configure option --with-maxfd=N       |
-| ℹ️ ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.7+ provide a squid.conf option max\_filedescriptors     |
+| ℹ️ ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.7+ provide a squid.conf option max_filedescriptors     |
 | ℹ️ ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 3.x provide a ./configure option --with-filedescriptors=N |
 
   - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
@@ -115,7 +115,7 @@ Squid picks up the limit at build time.
     command to raise the filedescriptor limit. You may also need to
     allow a larger port span for outgoing connections (set in
     /proc/sys/net/ipv4/, like in "*echo 1024 32768 \>
-    /proc/sys/net/ipv4/ip\_local\_port\_range*")
+    /proc/sys/net/ipv4/ip_local_port_range*")
     
     ⚠️
     NOTE that the **-n** option is separate from the **-HS** options.
@@ -125,7 +125,7 @@ Alternatively you can
 
   - Run configure with your needed configure options
 
-  - edit include/autoconf.h and define SQUID\_MAXFD to your desired
+  - edit include/autoconf.h and define SQUID_MAXFD to your desired
     limit. Make sure to make it a nice and clean modulo 64 value
     (multiple of 64) to avoid various bugs in the libc headers.
 
@@ -135,7 +135,7 @@ Alternatively you can
 
 If running things as root is not an option then get your sysadmin to
 install a the needed ulimit command in /etc/inittscript (see man
-initscript), install a patched kernel where INR\_OPEN in
+initscript), install a patched kernel where INR_OPEN in
 include/linux/fs.h is changed to at least the amount you need or have
 them install a small suid program which sets the limit (see link below).
 
@@ -253,7 +253,7 @@ variables:
 
 Where *NPROC* is defined by: *\#define NPROC (20 + 16 \* MAXUSERS)* The
 per-process limit can also be adjusted directly in the kernel
-configuration file with the following directive: *options OPEN\_MAX=128*
+configuration file with the following directive: *options OPEN_MAX=128*
 
 ### BSD/OS (from the 2.1 kernel)
 
@@ -265,7 +265,7 @@ Edit */usr/src/sys/conf/param.c* and adjust the *maxfiles* math here:
     int     maxfiles = 3 * (NPROC + MAXUSERS) + 80;
 
 Where *NPROC* is defined by: *\#define NPROC (20 + 16 \* MAXUSERS)* You
-should also set the *OPEN\_MAX* value in your kernel configuration file
+should also set the *OPEN_MAX* value in your kernel configuration file
 to change the per-process limit.
 
 ## Reconfigure afterwards
@@ -292,7 +292,7 @@ For example:
     97/01/23 22:35:40| Removed 1 of 14 objects from bucket 6391
 
 These log entries are normal, and do not indicate that *squid* has
-reached *cache\_swap\_high*.
+reached *cache_swap_high*.
 
 Consult your cache information page in *cachemgr.cgi* for a line like
 this:
@@ -301,7 +301,7 @@ this:
 
 Objects which have not been used for that amount of time are removed as
 a part of the regular maintenance. You can set an upper limit on the
-*LRU Expiration Age* value with *reference\_age* in the config file.
+*LRU Expiration Age* value with *reference_age* in the config file.
 
 # Can I change a Windows NT FTP server to list directories in Unix format?
 
@@ -336,7 +336,7 @@ situations.
 If the peer is multihomed, it is sending packets out an interface which
 is not advertised in the DNS. Unfortunately, this is a configuration
 problem at the peer site. You can tell them to either add the IP address
-interface to their DNS, or use Squid's "udp\_outgoing\_address" option
+interface to their DNS, or use Squid's "udp_outgoing_address" option
 to force the replies out a specific interface. For example: *on your
 parent squid.conf:*
 
@@ -354,7 +354,7 @@ log the warning message. To fix this situation, either tell the unknown
 cache to stop listening on the multicast address, or if they are
 legitimate, add them to your configuration file.
 
-# DNS lookups for domain names with underscores (\_) always fail.
+# DNS lookups for domain names with underscores (_) always fail.
 
 The standards for naming hosts (
 [RFC 952](ftp://ftp.isi.edu/in-notes/rfc952.txt) and
@@ -391,7 +391,7 @@ To make Squid allow underscores in hostnames:
     |                                                                        |           |                                                         |
     | ---------------------------------------------------------------------- | --------- | ------------------------------------------------------- |
     | ℹ️ | Squid 2.x | Re-build with **--enable-underscores** configure option |
-    | ℹ️ | Squid-3.x | add to squid.conf: **enable\_underscores on**           |
+    | ℹ️ | Squid-3.x | add to squid.conf: **enable_underscores on**           |
     
 
 # Why am I getting access denied from a sibling cache?
@@ -411,7 +411,7 @@ use it. This issue becomes important when a cache is willing to serve
 cache hits to anyone, but only handle cache misses for its paying users
 or customers. In other words, whether or not to allow the request
 depends on if the result is a hit or a miss. To accomplish this, Squid
-acquired the *miss\_access* feature in October of 1996.
+acquired the *miss_access* feature in October of 1996.
 
 The necessity of "miss access" makes life a little bit complicated, and
 not only because it was awkward to implement. Miss access means that the
@@ -464,9 +464,9 @@ so that freshness parameters are included. Until that happens, the
 members of a cache hierarchy have only two options to totally eliminate
 the "access denied" messages from sibling caches:*
 
-  - *Make sure all members have the same*refresh\_rules*parameters.*
+  - *Make sure all members have the same*refresh_rules*parameters.*
 
-  - Do not use miss\_access*at all. Promise your sibling cache
+  - Do not use miss_access*at all. Promise your sibling cache
     administrator that*your*cache is properly configured and that you
     will not abuse their generosity. The sibling cache administrator can
     check his log files to make sure you are keeping your word.*
@@ -554,7 +554,7 @@ permission to execute the dnsserver*program?*
 see
 [SquidFaq/BugReporting](/SquidFaq/BugReporting)
 
-# FATAL: ipcache\_init: DNS name lookup tests failed
+# FATAL: ipcache_init: DNS name lookup tests failed
 
   - ℹ️
     ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
@@ -562,7 +562,7 @@ see
 
 Squid normally tests your system's DNS configuration before it starts
 server requests. Squid tries to resolve some common DNS names, as
-defined in the dns\_testnames*configuration directive. If Squid cannot
+defined in the dns_testnames*configuration directive. If Squid cannot
 resolve these names, it could mean:*
 
   - your DNS nameserver is unreachable or not running.
@@ -591,12 +591,12 @@ to create the swap directories on your filesystem.
 
 Squid basic default is user **nobody**. This can be overridden in
 packages with the **--with-default-user** option when building or in
-squid.conf with the **cache\_effective\_user** option.
+squid.conf with the **cache_effective_user** option.
 
 The Squid process takes on the given userid before making the
 directories. If the
 
-cache\_dir
+cache_dir
 
 directory (e.g. /var/spool/cache) does not exist, and the Squid userid
 does not have permission to create it, then you will get the "permission
@@ -662,7 +662,7 @@ A process is normally owned by the user who starts it. However, Unix
 sometimes allows a process to change its owner. If you specified a value
 for the
 
-cache\_effective\_user
+cache_effective_user
 
 option in
 
@@ -676,7 +676,7 @@ until you learn some more about Unix. As a reference, I suggest
 [Learning the UNIX Operating System, 4th
 Edition](http://www.oreilly.com/catalog/lunix4/).
 
-# pingerOpen: icmp\_sock: (13) Permission denied
+# pingerOpen: icmp_sock: (13) Permission denied
 
 This means your
 
@@ -726,9 +726,9 @@ incoming request, it knows there is a forwarding loop somewhere.
 
   - ⚠️
     Squid may report a forwarding loop if a request goes through two
-    caches that have the same **visible\_hostname** value. If you want
-    to have multiple machines with the same **visible\_hostname** then
-    you must give each machine a different **unique\_hostname** so that
+    caches that have the same **visible_hostname** value. If you want
+    to have multiple machines with the same **visible_hostname** then
+    you must give each machine a different **unique_hostname** so that
     forwarding loops are correctly detected.
 
 When Squid detects a forwarding loop, it is logged to the *cache.log*
@@ -740,7 +740,7 @@ which cache (the last in the list) forwarded the request to you.
     relationship to a *sibling* relationship.
     
     ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
-    Another way is to use *cache\_peer\_access* rules.
+    Another way is to use *cache_peer_access* rules.
 
 # accept failure: (71) Protocol error
 
@@ -851,7 +851,7 @@ Internet standards. The whitespace characters should be encoded.
 If you want Squid to accept URL's with whitespace, you have to decide
 how to handle them. There are four choices that you can set with the
 
-uri\_whitespace
+uri_whitespace
 
 option in squid.conf:
 
@@ -1024,7 +1024,7 @@ The best fix for this is to assign squid a low-privilege user-id and
 assign that uerid to a group-id. There is a good chance that *nobody*
 will work for you as part of group *nogroup*.
 
-Alternatively in older Squid the *cache\_effective\_group* in squid.conf
+Alternatively in older Squid the *cache_effective_group* in squid.conf
 my be changed to the name of an unpriveledged group from */etc/group*.
 There is a good chance that *nobody* will work for you.
 
@@ -1132,11 +1132,11 @@ Sized Reply error:
     prompt you before accepting any new cookies.
 
   - Disable HTTP persistent connections with the
-    *server\_persistent\_connections* and
-    *client\_persistent\_connections* directives.
+    *server_persistent_connections* and
+    *client_persistent_connections* directives.
 
   - Disable any advanced TCP features on the Squid system. Disable ECN
-    on Linux with *echo 0 \> /proc/sys/net/ipv4/tcp\_ecn/*.
+    on Linux with *echo 0 \> /proc/sys/net/ipv4/tcp_ecn/*.
 
   - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
     Upgrade to Squid-2.6 or later to work around a Host header related
@@ -1165,17 +1165,17 @@ This error message appears when you try downloading large file using GET
 or uploading it using POST/PUT. There are several parameters to look
 for:
 
-  - [request\_body\_max\_size](http://www.squid-cache.org/Doc/config/request_body_max_size)
+  - [request_body_max_size](http://www.squid-cache.org/Doc/config/request_body_max_size)
 
-  - [reply\_body\_max\_size](http://www.squid-cache.org/Doc/config/reply_body_max_size)
+  - [reply_body_max_size](http://www.squid-cache.org/Doc/config/reply_body_max_size)
 
 These two are set to 0 by default, which means no limits at all. They
 should not be limited unless you really know how that affects your squid
 behavior. Or at all in standard proxy.
 
-  - [request\_header\_max\_size](http://www.squid-cache.org/Doc/config/request_header_max_size)
+  - [request_header_max_size](http://www.squid-cache.org/Doc/config/request_header_max_size)
 
-  - [reply\_header\_max\_size](http://www.squid-cache.org/Doc/config/reply_header_max_size)
+  - [reply_header_max_size](http://www.squid-cache.org/Doc/config/reply_header_max_size)
 
 These two default to 64kB starting from
 [Squid-3.1](/Releases/Squid-3.1).

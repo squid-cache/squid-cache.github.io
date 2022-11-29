@@ -14,14 +14,14 @@ been updated for Squid-3.*
     performed.
 
 3.  The
-    [http\_access](http://www.squid-cache.org/Doc/config/http_access)
+    [http_access](http://www.squid-cache.org/Doc/config/http_access)
     controls are checked. The client-side-request builds an ACL state
     data structure and registers a callback function for notification
     when access control checking is completed.
     
       - authentication may be performed
     
-      - deny\_info redirection may be performed
+      - deny_info redirection may be performed
 
 4.  ICAP REQMOD adaptation takes place.
     
@@ -44,7 +44,7 @@ been updated for Squid-3.*
     function begins the peer selection procedure, which may involve
     sending ICP queries and receiving ICP replies. The peer selection
     procedure also involves checking configuration options such as
-    *never\_direct* and *always\_direct*.
+    *never_direct* and *always_direct*.
 
   - When the ICP replies (if any) have been processed, we end up at
     *protoStart*. This function calls an appropriate protocol-specific
@@ -85,7 +85,7 @@ been updated for Squid-3.*
     waits for another request from the client, or closes the client
     connection.
 
-# The Main Loop: comm\_select()
+# The Main Loop: comm_select()
 
 At the core of Squid is the `select(2)` system call. Squid uses
 `select()` or `poll(2)` or `kqueue` or `epoll` or /dev/poll to process
@@ -128,21 +128,21 @@ pointers are saved in the *fde* data structure:
             void *defer_data;
     };
 
-*read\_handler* and *write\_handler* are called when the file descriptor
-is ready for reading or writing, respectively. The *close\_handler* is
-called when the filedescriptor is closed. The *close\_handler* is
+*read_handler* and *write_handler* are called when the file descriptor
+is ready for reading or writing, respectively. The *close_handler* is
+called when the filedescriptor is closed. The *close_handler* is
 actually a linked list of callback functions to be called.
 
 In some situations we want to defer reading from a filedescriptor, even
 though it has data for us to read. This may be the case when data
 arrives from the server-side faster than it can be written to the
 client-side. Before adding a filedescriptor to the *read set* for
-select, we call *defer\_check* (if it is non-NULL). If *defer\_check*
+select, we call *defer_check* (if it is non-NULL). If *defer_check*
 returns 1, then we skip the filedescriptor for that time through the
 select loop.
 
-These handlers are stored in the *FD\_ENTRY* structure as defined in
-`comm.h`. `fd_table[]` is the global array of *FD\_ENTRY* structures.
+These handlers are stored in the *FD_ENTRY* structure as defined in
+`comm.h`. `fd_table[]` is the global array of *FD_ENTRY* structures.
 The handler functions are of type *PF*, which is a typedef:
 
 ``` 
@@ -160,7 +160,7 @@ read bitmask. Similarly, write handlers are scanned and bits set for the
 write bitmask. `select()` is then called, and the return read and write
 bitmasks are scanned for descriptors with pending I/O. For each ready
 descriptor, the handler is called. Note that the handler is cleared from
-the *FD\_ENTRY* before it is called.
+the *FD_ENTRY* before it is called.
 
 After each handler is called, `comm_select_incoming()` is called to
 process new HTTP and ICP requests.

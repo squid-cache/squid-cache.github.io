@@ -98,7 +98,7 @@ code is more accurate than the documentation, and thus unless otherwise
 stated it takes precedence.
 
 Please remind that the main purpose for the template is to avoid the
-documentor the hassle of having to actually \_learn\_ doxygen, replacing
+documentor the hassle of having to actually _learn_ doxygen, replacing
 this for a 'copy,paste'n edit' approach.
 
 \--

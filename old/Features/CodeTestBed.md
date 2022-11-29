@@ -97,7 +97,7 @@ and 01, for default and minimal builds.
 ### Tasks needing a volunteer:
 
   - A check of all components independence. This can easily be
-    identified by the *\#if USE\_X* macros throughout the code. But may
+    identified by the *\#if USE_X* macros throughout the code. But may
     take some time.
 
   - Handlers for layer 03 and 04 failure need adding to the master

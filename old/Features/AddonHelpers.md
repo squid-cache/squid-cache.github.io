@@ -99,7 +99,7 @@ helper. When all the in-progress lookups are completed the helper should
 receive this close signal when reading stdin.
 
 Shutting down or restarting are limited by the
-[shutdown\_timeout](http://www.squid-cache.org/Doc/config/shutdown_timeout)
+[shutdown_timeout](http://www.squid-cache.org/Doc/config/shutdown_timeout)
 which may cause Squid to abort earlier than receiving all the responses.
 If this happens the client connections are also being terminated just as
 abruptly as the helper - so the lost helper responses are not an issue.
@@ -125,19 +125,19 @@ Squid-2.6 and later all support:
 
   - URL manipulation: re-writing and redirection
     
-      - ([url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program),
-        [url\_rewrite\_access](http://www.squid-cache.org/Doc/config/url_rewrite_access))
+      - ([url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program),
+        [url_rewrite_access](http://www.squid-cache.org/Doc/config/url_rewrite_access))
     
       - Specific feature details at
         [Features/Redirectors](/Features/Redirectors)
 
   - ACL logic tests
     
-      - ([external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type))
+      - ([external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type))
 
   - Authentication
     
-      - ([auth\_param](http://www.squid-cache.org/Doc/config/auth_param))
+      - ([auth_param](http://www.squid-cache.org/Doc/config/auth_param))
     
       - Specific feature details at
         [Features/Authentication](/Features/Authentication)
@@ -145,23 +145,23 @@ Squid-2.6 and later all support:
 
   - cache file eraser
     
-      - [unlinkd\_program](http://www.squid-cache.org/Doc/config/unlinkd_program)
+      - [unlinkd_program](http://www.squid-cache.org/Doc/config/unlinkd_program)
 
   - DNS lookup (removed in Squid-3.5)
     
-      - [dns\_program](http://www.squid-cache.org/Doc/config/dns_program)
+      - [dns_program](http://www.squid-cache.org/Doc/config/dns_program)
 
 Squid-2.7 (only):
 
   - HTTP Server redirection replies
     
-      - ([location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program),
-        [location\_rewrite\_access](http://www.squid-cache.org/Doc/config/location_rewrite_access))
+      - ([location_rewrite_program](http://www.squid-cache.org/Doc/config/location_rewrite_program),
+        [location_rewrite_access](http://www.squid-cache.org/Doc/config/location_rewrite_access))
 
   - Cache object de-duplication
     
-      - ([storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program),
-        [storeurl\_rewrite\_access](http://www.squid-cache.org/Doc/config/storeurl_rewrite_access))
+      - ([storeurl_rewrite_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program),
+        [storeurl_rewrite_access](http://www.squid-cache.org/Doc/config/storeurl_rewrite_access))
     
       - Specific feature details at
         [Features/StoreUrlRewrite](/Features/StoreUrlRewrite)
@@ -170,7 +170,7 @@ Squid-2.7 and Squid-3.1+ support:
 
   - Logging
     
-      - ([logfile\_daemon](http://www.squid-cache.org/Doc/config/logfile_daemon))
+      - ([logfile_daemon](http://www.squid-cache.org/Doc/config/logfile_daemon))
     
       - Specific feature details at
         [Features/LogModules](/Features/LogModules)
@@ -183,18 +183,18 @@ Squid-3.4+ support:
 
   - Cache object de-duplication
     
-      - ([store\_id\_program](http://www.squid-cache.org/Doc/config/store_id_program),
-        [store\_id\_access](http://www.squid-cache.org/Doc/config/store_id_access),
-        [store\_id\_children](http://www.squid-cache.org/Doc/config/store_id_children),
-        [store\_id\_bypass](http://www.squid-cache.org/Doc/config/store_id_bypass))
+      - ([store_id_program](http://www.squid-cache.org/Doc/config/store_id_program),
+        [store_id_access](http://www.squid-cache.org/Doc/config/store_id_access),
+        [store_id_children](http://www.squid-cache.org/Doc/config/store_id_children),
+        [store_id_bypass](http://www.squid-cache.org/Doc/config/store_id_bypass))
     
       - Specific feature details at
         [Features/StoreID](/Features/StoreID)
 
   - SSL certificate validation
     
-      - ([sslcrtvalidator\_program](http://www.squid-cache.org/Doc/config/sslcrtvalidator_program),
-        [sslcrtvalidator\_children](http://www.squid-cache.org/Doc/config/sslcrtvalidator_children))
+      - ([sslcrtvalidator_program](http://www.squid-cache.org/Doc/config/sslcrtvalidator_program),
+        [sslcrtvalidator_children](http://www.squid-cache.org/Doc/config/sslcrtvalidator_children))
     
       - Specific feature details at
         [Features/SslServerCertValidator](/Features/SslServerCertValidator)
@@ -232,7 +232,7 @@ writing the entire request data to the helper process.
 Squid [Cache
 Manager](/Features/CacheManager)
 reports individual helper states on helper-specific pages such as
-mgr:store\_io.
+mgr:store_io.
 
 ## Helper protocols
 
@@ -265,7 +265,7 @@ lists of key=value pairs, with the syntax `  key=value  `. Some keys
 have special meaning to Squid, as documented here. All messages from
 squid are URL-escaped (the `  rfc1738_unescape  ` from rfc1738.h can be
 used to decode them. For responses, the safe way is to either
-URL-escape, or to enclose the value in double\_quotes ("); any
+URL-escape, or to enclose the value in double_quotes ("); any
 double-quotes or backslashes (\\) in the value need to be prefixed by a
 backslash, \\r and \\n are replaced respectively by CR and LF
 
@@ -300,7 +300,7 @@ Input line received from Squid:
         [Squid-3.5](/Releases/Squid-3.5)
         additional parameters passed to the helper which may be
         configured with
-        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
+        [url_rewrite_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
         For backward compatibility the default key-extras for URL
         helpers matches the format fields sent by
         [Squid-3.4](/Releases/Squid-3.4)
@@ -343,7 +343,7 @@ Input line received from Squid:
     
       - Squid-2 will send this field with the URL-grouping tag which can
         be configured on
-        [http\_port](http://www.squid-cache.org/Doc/config/http_port).
+        [http_port](http://www.squid-cache.org/Doc/config/http_port).
         Squid-3.x will not send this field.
 
   - kv-pair
@@ -363,7 +363,7 @@ Input line received from Squid:
 #### HTTP Redirection
 
 Redirection can be performed by helpers on the
-[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
+[url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 interface. Lines performing either redirect or re-write can be produced
 by the same helpers on a per-request basis. Redirect is preferred since
 re-writing URLs introduces a large number of problems into the client
@@ -405,13 +405,13 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                        |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                               |
         | status=...         | HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308                                       |
         | tag=...            | reserved                                                                                                               |
         | ttl=...            | reserved                                                                                                               |
         | url=...            | redirect the client to given URL                                                                                       |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                    |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
       - ℹ️
@@ -448,17 +448,17 @@ Result line sent back to Squid:
 #### URL Re-Writing (Mangling)
 
 URL re-writing can be performed by helpers on the
-[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program),
-[storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program)
+[url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program),
+[storeurl_rewrite_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program)
 and
-[location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
+[location_rewrite_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
 interfaces.
 
-WARNING: when used on the url\_rewrite\_program interface re-writing
+WARNING: when used on the url_rewrite_program interface re-writing
 URLs introduces a large number of problems into the client HTTP
 experience. Some of these problems can be mitigated with a paired helper
 running on the
-[location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
+[location_rewrite_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
 interface de-mangling the server redirection URLs.
 
 Result line sent back to Squid:
@@ -493,12 +493,12 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                        |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                               |
         | rewrite-url=...    | re-write the transaction to the given URL.                                                                             |
         | tag=...            | reserved                                                                                                               |
         | ttl=...            | reserved                                                                                                               |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                    |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
       - ℹ️
@@ -524,7 +524,7 @@ Result line sent back to Squid:
 #### Store ID de-duplication
 
 URL to Store-ID mapping can be performed by helpers on the
-[storeid\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeid_rewrite_program)
+[storeid_rewrite_program](http://www.squid-cache.org/Doc/config/storeid_rewrite_program)
 interface.
 
 WARNING: care must be taken that the URLs de-duplicated onto one shared
@@ -560,12 +560,12 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                        |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                               |
         | store-id=...       | set the cache storage ID for this URL.                                                                                 |
         | tag=...            | reserved                                                                                                               |
         | ttl=...            | reserved                                                                                                               |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                    |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
       - ℹ️
@@ -611,8 +611,8 @@ Input line received from Squid:
     
       - Additional parameters passed to the helper which may be
         configured with
-        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
-        *key\_extras* parameter. Only available in
+        [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
+        *key_extras* parameter. Only available in
         [Squid-3.5](/Releases/Squid-3.5)
         and later.
 
@@ -648,12 +648,12 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                        |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | group=...          | reserved                                                                                                               |
         | message=...        | A message string that Squid can display on an error page.                                                              |
         | tag=...            | reserved                                                                                                               |
         | ttl=...            | reserved                                                                                                               |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                    |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
       - ℹ️
@@ -692,8 +692,8 @@ Input line received from Squid:
     
       - Additional parameters passed to the helper which may be
         configured with
-        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
-        *key\_extras* parameter. Only available in
+        [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
+        *key_extras* parameter. Only available in
         [Squid-3.5](/Releases/Squid-3.5)
         and later.
 
@@ -787,8 +787,8 @@ and separated by a colon (**:**) as shown above.
     
       - Additional parameters passed to the helper which may be
         configured with
-        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
-        *key\_extras* parameter. Only available in
+        [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
+        *key_extras* parameter. Only available in
         [Squid-3.5](/Releases/Squid-3.5)
         and later.
 
@@ -829,13 +829,13 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                        |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | group=...          | reserved                                                                                                               |
         | ha1=...            | The digest HA1 value to be used. This field is only used on **OK** responses.                                          |
         | message=...        | A message string that Squid can display on an error page.                                                              |
         | tag=...            | reserved                                                                                                               |
         | ttl=...            | reserved                                                                                                               |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                    |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
       - ℹ️
@@ -876,7 +876,7 @@ Input line received from Squid:
         
         |    |                                                                                                                                                                                                                                                                                                                                                               |
         | -- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-        | YR | A new challenge token is needed. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) max\_challenge\_lifetime and max\_challenge\_uses parameters. The helper should respond with a **TT** message. |
+        | YR | A new challenge token is needed. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the [auth_param](http://www.squid-cache.org/Doc/config/auth_param) max_challenge_lifetime and max_challenge_uses parameters. The helper should respond with a **TT** message. |
         | KK | Authenticate a user's credentials. The helper responds with either **OK**, **ERR**, **AF**, **NA**, or **BH**.                                                                                                                                                                                                                                                |
         
 
@@ -889,8 +889,8 @@ Input line received from Squid:
     
       - Additional parameters passed to the helper which may be
         configured with
-        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
-        *key\_extras* parameter. Only available in
+        [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
+        *key_extras* parameter. Only available in
         [Squid-3.5](/Releases/Squid-3.5)
         and later.
 
@@ -948,14 +948,14 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                                                                                    |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5))                                                             |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5))                                                             |
         | group=...          | reserved                                                                                                                                                                           |
         | message=...        | A message string that Squid can display on an error page.                                                                                                                          |
         | tag=...            | reserved                                                                                                                                                                           |
         | token=...          | The base64-encoded, as defined by RFC [2045](https://tools.ietf.org/rfc/rfc2045), token to be used. This field is only used on **OK** responses.                                  |
         | ttl=...            | reserved                                                                                                                                                                           |
         | user=...           | The label to be used by Squid for this client request as **"username"**. With Negotiate and NTLM protocols it typically has the format NAME@DOMAIN or NAME\\\\DOMAIN respectively. |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                                                                                |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                                                                                |
         
 
       - ℹ️
@@ -995,14 +995,14 @@ Input line received from Squid:
     
       - This is an ID for the line when concurrency is enabled. When
         concurrency is turned off (**concurrency=1**) in
-        [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+        [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
         this field and the following space will be completely missing.
 
   - format-options
     
       - This is the flexible series of tokens configured as the
         **FORMAT** area of
-        [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type).
+        [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type).
         The tokens are space-delimited and exactly match the order of
         **%** tokens in the configured **FORMAT**. By default in current
         releases these tokens are also URL-encoded according to RFC
@@ -1057,21 +1057,21 @@ Result line sent back to Squid:
   - kv-pair
     
       - One or more key=value pairs. see
-        [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+        [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
         for the full list supported by your Squid. The key names
         reserved on this interface:
         
         |                    |                                                                                                                                         |
         | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5))                  |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5))                  |
         | group=...          | reserved                                                                                                                                |
         | log=...            | String to be logged in access.log. Available as **%ea** in [logformat](http://www.squid-cache.org/Doc/config/logformat) specifications |
         | message=...        | Message describing the reason. Available as %o in error pages                                                                           |
-        | password=...       | The users password (for login= [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) option)                                 |
+        | password=...       | The users password (for login= [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) option)                                 |
         | tag=...            | Apply a tag to a request (for both **ERR** and **OK** results). Only sets a tag, does not alter existing tags.                          |
         | ttl=...            | reserved                                                                                                                                |
         | user=...           | The users name (login)                                                                                                                  |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                                     |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                                     |
         
 
 ### Logging
@@ -1111,7 +1111,7 @@ standard \\n byte.
   - request
     
       - The type of action being requested. Presently the code
-        **new\_certificate** is the only request made.
+        **new_certificate** is the only request made.
 
   - size
     
@@ -1204,7 +1204,7 @@ standard \\n byte.
   - request
     
       - The type of action being requested. Presently the code
-        **cert\_validate** is the only request made.
+        **cert_validate** is the only request made.
 
   - size
     
@@ -1219,11 +1219,11 @@ standard \\n byte.
         |                       |                                                                                                                                 |
         | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
         | host                  | FQDN host name or the domain                                                                                                    |
-        | proto\_version        | The SSL/TLS version                                                                                                             |
+        | proto_version        | The SSL/TLS version                                                                                                             |
         | cipher                | The SSL/TLS cipher being used                                                                                                   |
-        | cert\_***ID***        | Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are |
-        | error\_name\_***ID*** | The openSSL certificate validation error. The ID is an index number for this error                                              |
-        | error\_cert\_***ID*** | The ID of the certificate which caused error\_name\_ID                                                                          |
+        | cert_***ID***        | Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are |
+        | error_name_***ID*** | The openSSL certificate validation error. The ID is an index number for this error                                              |
+        | error_cert_***ID*** | The ID of the certificate which caused error_name_ID                                                                          |
         
 
 Example request:
@@ -1264,10 +1264,10 @@ Result line sent back to Squid:
         
         |                         |                                                                                                                           |
         | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-        | cert\_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
-        | error\_name\_***ID***   | The openSSL error name for the error **ID**                                                                               |
-        | error\_reason\_***ID*** | A reason for the error **ID**                                                                                             |
-        | error\_cert\_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
+        | cert_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
+        | error_name_***ID***   | The openSSL error name for the error **ID**                                                                               |
+        | error_reason_***ID*** | A reason for the error **ID**                                                                                             |
+        | error_cert_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
         
 
 Example response message:
@@ -1286,7 +1286,7 @@ Example response message:
 The unlink() function used to erase files is a blocking call and can
 slow Squid down. This interface is used to pass file erase instructions
 to a helper program specified by
-[unlinkd\_program](http://www.squid-cache.org/Doc/config/unlinkd_program).
+[unlinkd_program](http://www.squid-cache.org/Doc/config/unlinkd_program).
 
 This interface has a fixed field layout. As of
 [Squid-3.3](/Releases/Squid-3.3)
@@ -1323,10 +1323,10 @@ Result line sent back to Squid:
         
         |                    |                                                                     |
         | ------------------ | ------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | reserved                                                            |
+        | clt_conn_tag=... | reserved                                                            |
         | message=...        | reserved                                                            |
         | tag=...            | reserved                                                            |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use. |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use. |
         
 
 [CategoryFeature](/CategoryFeature)

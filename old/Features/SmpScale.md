@@ -30,8 +30,8 @@ developers use the same terminology.
     outsource some of their work to helpers (directly), other workers
     (via Coordinator), or even independent servers (via ICAP, DNS, etc).
 
-  - **Disker**: A Squid process dedicated to cache\_dir I/O. Diskers are
-    created by the Master process. Today, only Rock cache\_dirs may use
+  - **Disker**: A Squid process dedicated to cache_dir I/O. Diskers are
+    created by the Master process. Today, only Rock cache_dirs may use
     diskers.
 
   - **Coordinator**: A Squid process dedicated to synchronizing other
@@ -68,10 +68,10 @@ Administrators can configure and run one Squid that spawns multiple
 worker processes to utilize all available CPU cores.
 
 A worker accepts new HTTP requests and handles each accepted request
-until its completion. Workers can share http\_ports but they do not pass
+until its completion. Workers can share http_ports but they do not pass
 transactions to each other. A worker has all capabilities of a single
 non-SMP Squid, but workers may be configured differently (e.g., serve
-different http\_ports). The cpu\_affinity\_map option allows to dedicate
+different http_ports). The cpu_affinity_map option allows to dedicate
 a CPU core for each worker.
 
 ### How are workers coordinated?
@@ -123,7 +123,7 @@ locking and associated performance overheads.
 
 Conditional configuration and worker-dependent macros can be used to
 limit sharing. For example, each worker can be given a dedicated
-http\_port to listen on.
+http_port to listen on.
 
 Currently, Squid workers do not share and do not synchronize other
 resources and services, including (but not limited to):
@@ -158,7 +158,7 @@ responses are going to be cached by individual workers), but their
 performance suffers from the lack of synchronization and they require
 more resources due to duplication of information (e.g., each worker may
 independently resolve and cache the IP of the same domain name). Some
-SMP-unaware features break badly (e.g., ufs-based cache\_dirs become
+SMP-unaware features break badly (e.g., ufs-based cache_dirs become
 corrupted) unless squid.conf conditionals are used to prevent such
 breakage. Some SMP-unaware features will appear to work but will do so
 incorrectly (e.g., delay pools will limit bandwidth on per-worker basis,
@@ -189,7 +189,7 @@ threads was deemed not practical.
 ### Who decides which worker gets the request?
 
 All workers that share
-[http\_port](http://www.squid-cache.org/Doc/config/http_port) listen on
+[http_port](http://www.squid-cache.org/Doc/config/http_port) listen on
 the same IP address and TCP port. The operating system protects the
 shared listening socket with a lock and decides which worker gets the
 new HTTP connection waiting to be accepted. Once the incoming connection
@@ -326,10 +326,10 @@ a -N command-line option usually is:
 
 For example, if you do not explicitly configure Squid
 [workers](http://www.squid-cache.org/Doc/config/workers) and rock
-cache\_dirs, then Squid will run in non-SMP mode, and you will get
+cache_dirs, then Squid will run in non-SMP mode, and you will get
 0+1+0+0=1 Squid process total. On the other hand, if you explicitly
 configure Squid with 3 worker and 1 rock
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir), then
+[cache_dir](http://www.squid-cache.org/Doc/config/cache_dir), then
 Squid will run in SMP mode, and you will get 1+3+1+1=6 Squid processes
 total.
 
@@ -343,10 +343,10 @@ to spend non-trivial amounts of time/labor/money doing that, then
 consider the following SMP rules of thumb:
 
 1.  If you want to cache, use the largest
-    [cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem) your
+    [cache_mem](http://www.squid-cache.org/Doc/config/cache_mem) your
     system can handle safely. Please note that Squid will not tell you
     when you over-allocate but may crash. If you do not want to cache,
-    then set cache\_mem to zero, prohibit caching using the
+    then set cache_mem to zero, prohibit caching using the
     [cache](http://www.squid-cache.org/Doc/config/cache) directive, and
     ignore rule \#3 below.
 
@@ -355,16 +355,16 @@ consider the following SMP rules of thumb:
     restrict NIC interrupts to these "OS-only" core(s).
 
 3.  One Rock
-    [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) per
-    physical disk spindle with no other cache\_dirs. No RAID. Diskers
+    [cache_dir](http://www.squid-cache.org/Doc/config/cache_dir) per
+    physical disk spindle with no other cache_dirs. No RAID. Diskers
     may be able to use virtual CPU cores. Tuning Rock is tricky. See the
     Performance Tuning recommendations at the Rock Store [feature
     page](/Features/RockStore).
-    Please note that compared to other cache\_dir types, Rock
-    cache\_dirs are currently slower to load during Squid startup and
+    Please note that compared to other cache_dir types, Rock
+    cache_dirs are currently slower to load during Squid startup and
     may have other problems incompatible with your deployment needs. You
-    may, of course, use other cache\_dir types instead of Rock. These
-    *SMP* rules use Rock because other cache\_dirs are not SMP-aware.
+    may, of course, use other cache_dir types instead of Rock. These
+    *SMP* rules use Rock because other cache_dirs are not SMP-aware.
 
 4.  One SMP [worker](http://www.squid-cache.org/Doc/config/workers) per
     remaining non-virtual CPU cores. Be wary of heavily loading multiple
@@ -529,9 +529,9 @@ sharing include:
 Low-level components that may need to be rewritten in a sharing-safe way
 or replaced include:
 
-  - hash\_link
+  - hash_link
 
-  - dlink\_list
+  - dlink_list
 
   - FD / fde handling
 
@@ -549,7 +549,7 @@ suitable speedy and efficient versions.
 
 ## Troubleshooting
 
-### Ipc::Mem::Segment::create failed to shm\_open(...): (13) Permission denied
+### Ipc::Mem::Segment::create failed to shm_open(...): (13) Permission denied
 
 On Linux the page pool should "just work". However it is still dependent
 on the SHM device mapping being initialized.
@@ -562,7 +562,7 @@ After that use (as root):
 
     mount shm
 
-### Ipc::Mem::Segment::create failed to shm\_open(...): (2) No such file or directory
+### Ipc::Mem::Segment::create failed to shm_open(...): (2) No such file or directory
 
 see above.
 

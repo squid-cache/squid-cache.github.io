@@ -54,7 +54,7 @@ such as LRU that keeps track of the objects and determines the removal
 order when space needs to be reclaimed. For the LRU policy this is
 implemented as a doubly linked list.
 
-For each object the *StoreEntry* maps to a cache\_dir and location via
+For each object the *StoreEntry* maps to a cache_dir and location via
 sdirn and sfilen. For the "ufs" store this file number (sfilen) is
 converted to a disk pathname by a simple modulo of L2 and L1, but other
 storage drivers may map sfilen in other ways. A cache swap file consists
@@ -189,8 +189,8 @@ bugs and strange behavior. Every debug statement is assigned a section
 and level. Usually, every debug statement in the same source file has
 the same section. Levels are chosen depending on how much output will be
 generated, or how useful the provided information will be. The
-*debug\_options* line in the configuration file determines which debug
-statements will be shown and which will not. The *debug\_options* line
+*debug_options* line in the configuration file determines which debug
+statements will be shown and which will not. The *debug_options* line
 assigns a maximum level for every section. If a given debug statement
 has a level less than or equal to the configured level for that section,
 it will be shown. This description probably sounds more complicated than
@@ -247,7 +247,7 @@ Some sites use this facility for access control and logging purposes.*
 These routines allocate and manage pools of memory for frequently-used
 data structures. When the
 
-memory\_pools
+memory_pools
 
 configuration option is enabled, unused memory is not actually freed.
 Instead it is kept for future use. This may result in more efficient use
@@ -272,7 +272,7 @@ seconds, idle socket connections are closed.
 These routines decide whether a cached object is stale or fresh, based
 on the
 
-refresh\_pattern
+refresh_pattern
 
 configuration options. If an object is fresh, it can be returned as a
 cache hit. If it is stale, then it must be revalidated with an
@@ -295,5 +295,5 @@ Squid](http://squid.nlanr.net/Squid/urn-support.html).
 
 ESI is an implementation of Edge Side Includes [](http://www.esi.org)
 ESI is implemented as a client side stream and a small modification to
-client\_side\_reply.c to check whether ESI should be inserted into the
+client_side_reply.c to check whether ESI should be inserted into the
 reply stream or not.

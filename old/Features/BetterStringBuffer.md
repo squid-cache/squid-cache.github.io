@@ -51,7 +51,7 @@ going to die underneath the callee code. The present
 has started a sample implementation, drawing from many concepts in this
 page and
 [AdrianChadd](/AdrianChadd)'s
-implementation in branch s27\_adri. General concepts and discussion in
+implementation in branch s27_adri. General concepts and discussion in
 [/StringNg](/Features/BetterStringBuffer/StringNg),
 will be merged here once better sketched.
 

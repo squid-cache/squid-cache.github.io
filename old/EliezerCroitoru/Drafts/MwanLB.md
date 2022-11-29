@@ -352,7 +352,7 @@ echo "$THREE,3" >> marks_stats.csv
 
   - An example for a
     [RoundRobin](/RoundRobin)
-    LB between 3 iptables marks using NFQUEUE mark\_verdict
+    LB between 3 iptables marks using NFQUEUE mark_verdict
 
 <!-- end list -->
 

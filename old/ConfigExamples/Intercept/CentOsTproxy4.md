@@ -21,7 +21,7 @@ These steps are for setting
 with
 [TPROXYv4](/Features/Tproxy4),
 IP spoofing and Cisco WCCP. This is not a bridging setup. It is also
-important to note that these steps are specific to the x86\_64 version
+important to note that these steps are specific to the x86_64 version
 of CentOS 5.3, although very minor changes would make this solution work
 on any version of CentOS 5 (I try to make notes where there are
 differences.)
@@ -177,6 +177,6 @@ After preparing the kernel and iptables as above.
 
 |                                                                      |                                                                                                                               |
 | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | A special http\_port line is recommended since tproxy mode for Squid can interfere with non-tproxy requests on the same port. |
+| ⚠️ | A special http_port line is recommended since tproxy mode for Squid can interfere with non-tproxy requests on the same port. |
 
   - [CategoryConfigExample](/CategoryConfigExample)

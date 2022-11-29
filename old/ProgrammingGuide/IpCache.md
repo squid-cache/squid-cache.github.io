@@ -12,8 +12,8 @@ below).
 ## Data Structures
 
 The data structure used for storing name-address mappings is a small
-hashtable (*static hash\_table \*ip\_table*), where structures of type
-*ipcache\_entry* whose most interesting members are:
+hashtable (*static hash_table \*ip_table*), where structures of type
+*ipcache_entry* whose most interesting members are:
 
     struct _ipcache_entry {
             char *name;
@@ -44,7 +44,7 @@ Main functionality is provided through calls to:
         data-structures and does not by default contact the
         
         DNS, unless this is requested, by setting the *flags* to
-        *IP\_BLOCKING\_LOOKUP* or *IP\_LOOKUP\_IF\_MISS*.
+        *IP_BLOCKING_LOOKUP* or *IP_LOOKUP_IF_MISS*.
 
   - `ipcache_init()`
     
@@ -61,12 +61,12 @@ Main functionality is provided through calls to:
 ## Internal Operation
 
 Internally, the execution flow is as follows: On a miss,
-*ipcache\_getnbhostbyname* checks whether a request for this name is
+*ipcache_getnbhostbyname* checks whether a request for this name is
 already pending, and if positive, it creates a new entry using
-*ipcacheAddNew* with the *IP\_PENDING* flag set . Then it calls
+*ipcacheAddNew* with the *IP_PENDING* flag set . Then it calls
 *ipcacheAddPending* to add a request to the queue together with data and
-handler. Else, *ipcache\_dnsDispatch()* is called to directly create a
+handler. Else, *ipcache_dnsDispatch()* is called to directly create a
 DNS query or to *ipcacheEnqueue()* if all no DNS port is free.
-*ipcache\_call\_pending()* is called regularly to walk down the pending
+*ipcache_call_pending()* is called regularly to walk down the pending
 list and call handlers. LRU clean-up is performed through
-*ipcache\_purgelru()* according to the *ipcache\_high* threshold.
+*ipcache_purgelru()* according to the *ipcache_high* threshold.

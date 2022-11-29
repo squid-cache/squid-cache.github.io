@@ -41,7 +41,7 @@ will make
 [Squid-3.4](/Releases/Squid-3.4)
 or later to apply all store\\cache related work to be against the
 StoreID and not the request URL. This includes
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern).
+[refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern).
 This allows more flexibility in the way admin will be able use the
 helper.
 
@@ -78,7 +78,7 @@ This feature will allow us later to implement
   - ICP and HTCP support is missing.
     
       - URL queries received from
-        [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+        [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
         siblings are not passed through StoreID helper. So the resulting
         store/cache lookup will MISS on URLs normally alterd by StoreID.
 
@@ -89,7 +89,7 @@ This feature will allow us later to implement
     helper](/Features/StoreID/Helper)
     here.
 
-  - **storeid\_file\_rewrite** by Alan Mizrahi is a simple helper which
+  - **storeid_file_rewrite** by Alan Mizrahi is a simple helper which
     is packaged with
     [Squid-3.4](/Releases/Squid-3.4).
     It can be used to load a [database of
@@ -173,7 +173,7 @@ the token based urls that are embedded in the POST response.
 In theory, an ID computed by an eCAP service can already be passed to
 Squid via eCAP annotations (a.k.a. meta headers) and then passed to the
 storeID helper via
-[store\_id\_extras](http://www.squid-cache.org/Doc/config/store_id_extras).
+[store_id_extras](http://www.squid-cache.org/Doc/config/store_id_extras).
 Currently, ICAP services do not support the option to send a StoreID as
 a part of the request and response processing.
 
@@ -246,7 +246,7 @@ end
 
 def rewriter(request)
 case request
-  when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.dl\.sourceforge\.net\/.*/
+  when /^http:\/\/[a-zA-Z0-9\-_\.]+\.dl\.sourceforge\.net\/.*/
           vid = $cache.sfdlid(request)
           url = "http://dl.sourceforge.net.squid.internal/" + vid if vid != nil
           return url    
@@ -396,7 +396,7 @@ Input line received from Squid:
         [Squid-3.5](/Releases/Squid-3.5)
         additional parameters passed to the helper which may be
         configured with
-        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
+        [url_rewrite_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
         For backward compatibility the default key-extras for URL
         helpers matches the format fields sent by
         [Squid-3.4](/Releases/Squid-3.4)
@@ -439,7 +439,7 @@ Input line received from Squid:
     
       - Squid-2 will send this field with the URL-grouping tag which can
         be configured on
-        [http\_port](http://www.squid-cache.org/Doc/config/http_port).
+        [http_port](http://www.squid-cache.org/Doc/config/http_port).
         Squid-3.x will not send this field.
 
   - kv-pair
@@ -483,12 +483,12 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                   |
         | ------------------ | ----------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                          |
         | store-id=...       | set the cache storage ID for this URL.                                                                            |
         | tag=...            | reserved                                                                                                          |
         | ttl=...            | reserved                                                                                                          |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                               |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                               |
         
 
       - ℹ️

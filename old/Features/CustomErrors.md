@@ -34,7 +34,7 @@ For older Squid you can select the language with the configure option
 If needed, you can make a copy and re-write the error message template
 files in any version.
 
-## deny\_info URL codes for embedding
+## deny_info URL codes for embedding
 
 **Squid-2.1 to
 [Squid-3.1](/Releases/Squid-3.1)
@@ -107,7 +107,7 @@ adds URL templating codes:**
   - %w  
     cachemgr email address
 
-## ERR\_\* template codes for embedding
+## ERR_\* template codes for embedding
 
 This list describes the macro codes which Squid will replace in the
 error response messages, and what details will be inserted:
@@ -128,7 +128,7 @@ error response messages, and what details will be inserted:
     Squid-generated error details. May contain other error page
     formatting codes. Currently only TLS/SSL connection failures are
     detailed. For example, %D in a customized
-    *ERR\_SECURE\_CONNECT\_FAIL* response may be expanded into "The host
+    *ERR_SECURE_CONNECT_FAIL* response may be expanded into "The host
     name you are connecting to (foo.com) does not match any of the
     certificate names (foo.org, foo.net)..."). Supported since
     [Squid-3.2](/Releases/Squid-3.2).
@@ -167,7 +167,7 @@ error response messages, and what details will be inserted:
     **L**)
 
   - %L  
-    contents of **err\_html\_text** config option
+    contents of **err_html_text** config option
 
   - %M  
     Request Method
@@ -214,7 +214,7 @@ error response messages, and what details will be inserted:
 
   - %x  
     Application-level error name or identifier (e.g.,
-    X509\_V\_ERR\_UNABLE\_TO\_GET\_CRL). Currently only supported for
+    X509_V_ERR_UNABLE_TO_GET_CRL). Currently only supported for
     SSL certificate validation errors. See also: system-level error
     code/detail (%e/%E) and application-level error detail (%D).
 

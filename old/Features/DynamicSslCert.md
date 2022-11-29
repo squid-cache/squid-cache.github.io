@@ -160,7 +160,7 @@ their traffic without their consent?
 ### Configure Squid
 
 Open squid.conf for editing, find
-[http\_port](http://www.squid-cache.org/Doc/config/http_port) option
+[http_port](http://www.squid-cache.org/Doc/config/http_port) option
 and add certificate-related options. For example:
 
   - ``` 
@@ -168,7 +168,7 @@ and add certificate-related options. For example:
     ```
 
 You will also need to add
-[ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
+[ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
 enabling HTTPS decryption. see
 [peek-n-splice](/Features/SslPeekAndSplice)
 for newer
@@ -190,11 +190,11 @@ If omitted, default values will be used.
     sslcrtd_children 5
     ```
 
-[sslcrtd\_program](http://www.squid-cache.org/Doc/config/sslcrtd_program)
+[sslcrtd_program](http://www.squid-cache.org/Doc/config/sslcrtd_program)
 default disk cache size is 4MB ('-M 4MB' above), which in general will
 be enough to store \~1000 certificates. If Squid is used in busy
 environments this may need to be increased, as well as the number of
-[sslcrtd\_children](http://www.squid-cache.org/Doc/config/sslcrtd_children).
+[sslcrtd_children](http://www.squid-cache.org/Doc/config/sslcrtd_children).
 
 Prepare directory for caching certificates:
 
@@ -203,12 +203,12 @@ Prepare directory for caching certificates:
     ```
 
 The above command initializes the SSL database for storing cached
-certificates. More information about the ssl\_ctrld program can be found
+certificates. More information about the ssl_ctrld program can be found
 in `/usr/local/squid/libexec/ssl_crtd -h` output.
 
 If you run a multi-Squid environment with several certificates caching
 locations, you may also need to use the '-n' option when initializing
-ssl\_db. The option sets the initial database serial number, which is
+ssl_db. The option sets the initial database serial number, which is
 incremented and used in each new certificate. To avoid serial number
 overlapping among instances, the initial serial may need to be set
 manually.

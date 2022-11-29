@@ -47,11 +47,11 @@ versions:
     gmake install-strip
 
 Then rebuild your Squid with --enable-ecap configure option. To do that
-you may need to add PKG\_CONFIG\_PATH to your configure options:
+you may need to add PKG_CONFIG_PATH to your configure options:
 
     ./configure '--enable-ecap' 'PKG_CONFIG_PATH=/usr/local/lib/pkgconfig'
 
-PKG\_CONFIG\_PATH pointed to libecap pkgconfig file.
+PKG_CONFIG_PATH pointed to libecap pkgconfig file.
 
 ### Build squid-ecap-gzip
 
@@ -73,7 +73,7 @@ PKG\_CONFIG\_PATH pointed to libecap pkgconfig file.
 
 ### Adapter configuration
 
-Adapter versions starting 1.5.0 configures via ecap\_service arguments
+Adapter versions starting 1.5.0 configures via ecap_service arguments
 in squid.conf.
 
 Supported configuration parameters:
@@ -309,7 +309,7 @@ Then, build and install adapter:
 
 ### Adapter configuration
 
-Adapter configures via ecap\_service arguments in squid.conf.
+Adapter configures via ecap_service arguments in squid.conf.
 
 Supported configuration parameters:
 

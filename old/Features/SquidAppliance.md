@@ -67,7 +67,7 @@ does not seem to be any information as to if it is better installed on a
 file system or with direct partition access. Presumably direct partition
 access would be best.
 
-I don't see any information on which of the other cache\_dir types
+I don't see any information on which of the other cache_dir types
 (aufs, diskd or ufs) are best for storing large files.
 
 The size of the two caches (one for small files and the other for large)

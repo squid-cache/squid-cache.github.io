@@ -73,7 +73,7 @@ window sizes and TCP scale factors which tend to aggrivate the issue.
 The workaround is to entirely disable TCP window scaling on your Squid
 proxy server. Under Linux this is done by:
 
-  - echo 0 \> /proc/sys/net/ipv4/tcp\_default\_win\_scale
+  - echo 0 \> /proc/sys/net/ipv4/tcp_default_win_scale
 
 Other platforms will implement it differently.
 

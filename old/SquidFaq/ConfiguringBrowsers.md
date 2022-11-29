@@ -46,7 +46,7 @@ benefits, and historic problems with the upper two layers.
 
 3.  Machine-wide Configuration
     
-      - Using a system-wide environment variable **http\_proxy** (or GUI
+      - Using a system-wide environment variable **http_proxy** (or GUI
         configuration which sets it). Most operating systems support
         this. Windows is the exception, however the IE settings are used
         in an equivalent way.
@@ -470,7 +470,7 @@ There is a community website explaining PAC features and functions at
 
 There are several ways the login can be done with FTP through Squid.
 
-[ftp\_user](http://www.squid-cache.org/Doc/config/ftp_user) directive
+[ftp_user](http://www.squid-cache.org/Doc/config/ftp_user) directive
 will accept the username or username:password values to be used by
 default on **all** FTP login requests. It will be overridden by any
 other available login credentials.
@@ -558,7 +558,7 @@ problem:
   - UNSELECT "Show friendly HTTP error messages" under Browsing.
 
 Another possible workaround to these problems is to make the
-ERR\_CACHE\_ACCESS\_DENIED larger than 1460 bytes. This should trigger
+ERR_CACHE_ACCESS_DENIED larger than 1460 bytes. This should trigger
 IE to handle the authentication in a slightly different manner.
 
 Back to the

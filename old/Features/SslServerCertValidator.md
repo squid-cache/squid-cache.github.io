@@ -47,20 +47,20 @@ will receive:
 If the helper decides to honor an OpenSSL error or report another
 validation error(s), the helper will return:
 
-  - the validation error name (see *%err\_name* error page macro and
-    *%err\_details*
+  - the validation error name (see *%err_name* error page macro and
+    *%err_details*
     [logformat](http://www.squid-cache.org/Doc/config/logformat) code),
 
-  - error reason (*%ssl\_lib\_error* macro),
+  - error reason (*%ssl_lib_error* macro),
 
-  - the offending certificate (*%ssl\_subject* and *%ssl\_ca\_name*
+  - the offending certificate (*%ssl_subject* and *%ssl_ca_name*
     macros), and
 
   - the list of all other discovered errors
 
 The returned information mimics what the internal OpenSSL-based
 validation code collects now. Returned errors, if any, will be fed to
-[sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error),
+[sslproxy_cert_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error),
 triggering the existing SSL error processing code.
 
 Helper responses will be cached to reduce validation performance burden
@@ -82,7 +82,7 @@ standard \\n byte.
   - request
     
       - The type of action being requested. Presently the code
-        **cert\_validate** is the only request made.
+        **cert_validate** is the only request made.
 
   - size
     
@@ -97,11 +97,11 @@ standard \\n byte.
         |                       |                                                                                                                                 |
         | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
         | host                  | FQDN host name or the domain                                                                                                    |
-        | proto\_version        | The SSL/TLS version                                                                                                             |
+        | proto_version        | The SSL/TLS version                                                                                                             |
         | cipher                | The SSL/TLS cipher being used                                                                                                   |
-        | cert\_***ID***        | Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are |
-        | error\_name\_***ID*** | The openSSL certificate validation error. The ID is an index number for this error                                              |
-        | error\_cert\_***ID*** | The ID of the certificate which caused error\_name\_ID                                                                          |
+        | cert_***ID***        | Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are |
+        | error_name_***ID*** | The openSSL certificate validation error. The ID is an index number for this error                                              |
+        | error_cert_***ID*** | The ID of the certificate which caused error_name_ID                                                                          |
         
 
 Example request:
@@ -142,10 +142,10 @@ Result line sent back to Squid:
         
         |                         |                                                                                                                           |
         | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-        | cert\_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
-        | error\_name\_***ID***   | The openSSL error name for the error **ID**                                                                               |
-        | error\_reason\_***ID*** | A reason for the error **ID**                                                                                             |
-        | error\_cert\_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
+        | cert_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
+        | error_name_***ID***   | The openSSL error name for the error **ID**                                                                               |
+        | error_reason_***ID*** | A reason for the error **ID**                                                                                             |
+        | error_cert_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
         
 
 Example response message:

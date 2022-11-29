@@ -25,13 +25,13 @@ cacheable information.
 It was left out of
 [Squid-3.0](/Releases/Squid-3.0)
 due to time and stability constraints. The
-[max\_stale](http://www.squid-cache.org/Doc/config/max_stale) part of
+[max_stale](http://www.squid-cache.org/Doc/config/max_stale) part of
 this feature was added to
 [Squid-3.2](/Releases/Squid-3.2),
-[collapsed\_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding)
+[collapsed_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding)
 part to
 [Squid-3.5](/Releases/Squid-3.5),
-[refresh\_stale\_hit](http://www.squid-cache.org/Doc/config/refresh_stale_hit)
+[refresh_stale_hit](http://www.squid-cache.org/Doc/config/refresh_stale_hit)
 is still awaiting re-implementation.
 
   - ℹ️
@@ -51,7 +51,7 @@ backend server if a very frequently accessed object expires from the
 cache or a new very frequently accessed object is added.
 
 To remedy this situation this feature adds a new tuning knob
-([SquidConf](/SquidConf)::collapsed\_forwarding)
+([SquidConf](/SquidConf)::collapsed_forwarding)
 to squid.conf, making Squid delay further requests while a cache
 revalidation or cache miss is being resolved. This sacrifices general
 proxy latency in favor for accelerator performance and thus should not
@@ -61,7 +61,7 @@ be enabled unless you are running an accelerator.
 and
 [Squid-2.7](/Releases/Squid-2.7)
 in addition contain a **stale-while-revalidate** option on
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
+[refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
 to shortcut the cache revalidation of frequently accessed objects is
 added, making further requests immediately return as a cache hit while a
 cache revalidation is pending. This may temporarily give slightly stale
@@ -109,7 +109,7 @@ avoid having more than one client wait for the revalidation to finish.
   - Might even be suitable for the general Internet proxy situation, not
     only reverse proxies.
 
-  - Fails to occur when memory-only cache is used and no cache\_dir are
+  - Fails to occur when memory-only cache is used and no cache_dir are
     present.
 
 [CategoryFeature](/CategoryFeature)

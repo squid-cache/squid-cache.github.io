@@ -10,9 +10,9 @@ about these examples please email the squid-users mailing list.
 ## Sending different requests to different backend web servers
 
 To control which web servers
-([cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)) gets
+([cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)) gets
 which requests the
-[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
+[cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
 directives is used. These directives limit which requests may be sent to
 a given peer.
 
@@ -33,7 +33,7 @@ For example the websites are hosted like this on two servers:
 ### Switching on Domains
 
 Using
-[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access):
+[cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access):
 
     cache_peer ip.of.server1 parent 80 0 no-query originserver name=server_1
     acl sites_server_1 dstdomain www.example.com example.com
@@ -44,7 +44,7 @@ Using
     cache_peer_access server_2 allow sites_server_2
 
 The same using
-[cache\_peer\_domain](http://www.squid-cache.org/Doc/config/cache_peer_domain)
+[cache_peer_domain](http://www.squid-cache.org/Doc/config/cache_peer_domain)
 (deprecated since
 [Squid-3.2](/Releases/Squid-3.2)):
 
@@ -63,7 +63,7 @@ The same using
 It is also possible to route requests based on other criteria than the
 host name by using other
 [acl](http://www.squid-cache.org/Doc/config/acl) types, such as
-urlpath\_regex.
+urlpath_regex.
 
 For our example here the websites /foo directory alone is hosted on a
 second server:

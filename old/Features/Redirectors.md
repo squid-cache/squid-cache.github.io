@@ -35,7 +35,7 @@ defines many features which this breaks.
 
 The helper program is ***NOT*** a standard part of the Squid package.
 However, some examples are provided below, and in the
-"helpers/url\_rewrite/" directory of the source distribution. Since
+"helpers/url_rewrite/" directory of the source distribution. Since
 everyone has different needs, it is up to the individual administrators
 to write their own implementation.
 
@@ -73,7 +73,7 @@ Input line received from Squid:
         [Squid-3.5](/Releases/Squid-3.5)
         additional parameters passed to the helper which may be
         configured with
-        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
+        [url_rewrite_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
         For backward compatibility the default key-extras for URL
         helpers matches the format fields sent by
         [Squid-3.4](/Releases/Squid-3.4)
@@ -116,7 +116,7 @@ Input line received from Squid:
     
       - Squid-2 will send this field with the URL-grouping tag which can
         be configured on
-        [http\_port](http://www.squid-cache.org/Doc/config/http_port).
+        [http_port](http://www.squid-cache.org/Doc/config/http_port).
         Squid-3.x will not send this field.
 
   - kv-pair
@@ -156,7 +156,7 @@ clients to a secure Web server for internal documents:
     }
 
 Redirection can be performed by helpers on the
-[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
+[url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 interface. Lines performing either redirect or re-write can be produced
 by the same helpers on a per-request basis. Redirect is preferred since
 re-writing URLs introduces a large number of problems into the client
@@ -198,13 +198,13 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                       |
         | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                              |
         | status=...         | HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308                                      |
         | tag=...            | reserved                                                                                                              |
         | ttl=...            | reserved                                                                                                              |
         | url=...            | redirect the client to given URL                                                                                      |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                   |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                   |
         
 
       - ℹ️
@@ -270,17 +270,17 @@ your own URL re-writer:
     }
 
 URL re-writing can be performed by helpers on the
-[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program),
-[storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program)
+[url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program),
+[storeurl_rewrite_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program)
 and
-[location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
+[location_rewrite_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
 interfaces.
 
-WARNING: when used on the url\_rewrite\_program interface re-writing
+WARNING: when used on the url_rewrite_program interface re-writing
 URLs introduces a large number of problems into the client HTTP
 experience. Some of these problems can be mitigated with a paired helper
 running on the
-[location\_rewrite\_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
+[location_rewrite_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
 interface de-mangling the server redirection URLs.
 
 Result line sent back to Squid:
@@ -315,12 +315,12 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                       |
         | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                              |
         | rewrite-url=...    | re-write the transaction to the given URL.                                                                            |
         | tag=...            | reserved                                                                                                              |
         | ttl=...            | reserved                                                                                                              |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                   |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                   |
         
 
       - ℹ️
@@ -354,7 +354,7 @@ Problem:
 The usual URL re-writer interface only acts on *client requests*. If you
 wish to modify server-generated redirections (the HTTP *Location*
 header) you have to use a
-[location\_rewrite](http://www.squid-cache.org/Doc/config/location_rewrite)
+[location_rewrite](http://www.squid-cache.org/Doc/config/location_rewrite)
 helper.
 
 The server doing this is very likely also to be using these private URLs

@@ -19,7 +19,7 @@
 ## Details
 
 Any explicit external URL-rewiter helper via
-[url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
+[url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 overrides internal redirectors and the external helper is used instead.
 
 ### Squid 2.x
@@ -38,7 +38,7 @@ rewriter helper.
     
     rewrite dsturl acl [acl [acl ...]]
 
-see url\_map\* descriptions below for details on their operation. The
+see url_map\* descriptions below for details on their operation. The
 names differ, but behavior remains identical.
 
 ### Squid 3.x
@@ -58,15 +58,15 @@ rewriter helper.
     
     url_map dsturl acl [acl [acl ...]]
 
-**url\_map\_access** controls whether url\_maps are processed at all for
+**url_map_access** controls whether url_maps are processed at all for
 a request. By default are checked against
-[url\_map](http://www.squid-cache.org/Doc/config/url_map) list. If
+[url_map](http://www.squid-cache.org/Doc/config/url_map) list. If
 specified, only requests matching
-[url\_map\_access](http://www.squid-cache.org/Doc/config/url_map_access)
+[url_map_access](http://www.squid-cache.org/Doc/config/url_map_access)
 ACL are further processed against each
-[url\_map](http://www.squid-cache.org/Doc/config/url_map).
+[url_map](http://www.squid-cache.org/Doc/config/url_map).
 
-[url\_map](http://www.squid-cache.org/Doc/config/url_map) directives
+[url_map](http://www.squid-cache.org/Doc/config/url_map) directives
 are processed in the order configured.
 
 **dsturl** specifies the resulting URL when all acls are matched. If

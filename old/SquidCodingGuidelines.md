@@ -274,7 +274,7 @@ used.
     
       - always include with \<\>
     
-      - **omit** any HAVE\_ wrapper
+      - **omit** any HAVE_ wrapper
     
       - sort alphabetically
     
@@ -284,7 +284,7 @@ used.
     
       - always include with \<\>
     
-      - **mandatory** HAVE\_FOO\_H wrapper
+      - **mandatory** HAVE_FOO_H wrapper
     
       - avoid where C++ alternative is available
     
@@ -328,7 +328,7 @@ Layout Example:
 Squid uses autoconf defined macros to eliminate experimental or optional
 components at build time.
 
-  - name in C++ code should start with USE\_
+  - name in C++ code should start with USE_
 
   - test with \#if and \#if \! rather than \#ifdef or \#ifndef
 

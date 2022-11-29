@@ -1,7 +1,7 @@
 # Feature: Support caching of partial responses
 
   - **Goal**: Enable the caching of partial responses, and obsolete the
-    range\_offset\_limit configuration option.
+    range_offset_limit configuration option.
 
   - **Status**: *Not started*
 
@@ -21,12 +21,12 @@
 
 # Details
 
-(from the bug report): When range\_offset\_limit is set to -1, Squid
+(from the bug report): When range_offset_limit is set to -1, Squid
 tries to fetch the entire object in response to an HTTP range request.
 
   - **Bug**: The entire object is fetched even when it is not cacheable
     (e.g. because it is larger than
-    [maximum\_object\_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
+    [maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     or some other criteria).
     
       - Squid should revert to fetching just the range if the entire
@@ -42,7 +42,7 @@ tries to fetch the entire object in response to an HTTP range request.
 
 The proper fix for this is to add caching of partial responses,
 eleminating the need for
-[range\_offset\_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)
+[range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)
 entirely.
 
 # Proposal 1: chunked sequencing

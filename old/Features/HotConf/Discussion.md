@@ -74,7 +74,7 @@ Refcounting has nothing to do with this issue, IMO. Refcounting is just
 a low-level memory-saving mechanism, and we are discussing a high-level
 API (which should work with or without refcounting).
 
-The Parser should \_not\_ be editing "on the spot". It should always
+The Parser should _not_ be editing "on the spot". It should always
 create and fill brand new dumb configuration objects. It will spend a
 little bit more memory compared to the current "stuff everything into
 one global" design, but the spending is relatively small, temporary, and
@@ -331,7 +331,7 @@ This bit confused me terribly...
     It is possible that two modules will need access to the same option, for example.
 
 Do you mean 'access' by the dictionary meaning or do you actually mean
-access to \_set\_ during reconfigure?
+access to _set_ during reconfigure?
 
 Name one instance where it's a good idea to load two components
 simultaneously which use the same configuration line tag with different
@@ -418,10 +418,10 @@ cannot make any assumptions as to what a component may need in a token.
 ... so we instead force squid to know in advance of loading any
 third-party module exactly what format its TheConfig class/structure
 has? create a new one, Parse into it, and pass it back to the component?
-in order to \_save\_ complexity? I don't believe I have to mention any
+in order to _save_ complexity? I don't believe I have to mention any
 of the problems associated with that to you.
 
-IMO thats \_way\_ more complexity and trouble than simply passing
+IMO thats _way_ more complexity and trouble than simply passing
 squid.conf buffers to the component. You could I suppose go the way of
 having pre-configure method/function return a void\* that gets passed
 back.
@@ -431,7 +431,7 @@ IMO again we should leave the TheConfig handling and details to the
 component if it even needs them.
 
 Consider the third-party black-box component Widget dynamically loaded
-last configure time. In order to parse the widget\_magic lines which
+last configure time. In order to parse the widget_magic lines which
 part of the upper layer (squid) and lower-layer (component library)
 whats the minimum transfer of information and call complexity we can do?
 
@@ -543,7 +543,7 @@ You make 3 design choices above.
     cachemgr config 'dump' display. I could go either way here.
 
   - *Module::Config being integrated into a Squid::Config*. This worries
-    me. A \_lot\_ of the current dependency loops in Squid are directly
+    me. A _lot_ of the current dependency loops in Squid are directly
     caused by the existence of struct SquidConfig. I was under the
     impression that the cleanup work was dropping such dependency. We
     need to clarify this further.
@@ -584,7 +584,7 @@ module.*
     b. *Let's ignore how the module decides which parts of squid.conf
     are relevant to that module.*
     
-      - Here we hit a vital assumption. I don't think we \_can\_ ignore
+      - Here we hit a vital assumption. I don't think we _can_ ignore
         it.
     
       - How this happens defines critically whether we are doing **fill
@@ -627,7 +627,7 @@ module.*
     
       - We need to clarify what you are trying to achieve with this.
     
-      - This one defines whether or not we \_can\_ handle more than one
+      - This one defines whether or not we _can_ handle more than one
         Module::Config object at all.
     
       - Also defines the central core step of what is termed hot-config,
@@ -690,7 +690,7 @@ So these are settled, I think. Let's call that progress\!
 I believe we have rough agreement on the high-level definition for the
 first configuration step, despite that you think you cannot ignore some
 of the details. As long as you agree that my high-level statements
-\_may\_ be correct (if we do the details right), we are in agreement.
+_may_ be correct (if we do the details right), we are in agreement.
 
 I think we can ignore most of what you are worried about until the
 high-level steps are agreed upon. One can always ignore things until
@@ -699,7 +699,7 @@ decisions would have to be redone when details are considered)\!
 However, let's try to nail at least two of these concerns now:
 
 1\. I do not really understand the "creation versus fill" problem. I
-think we will create \_and\_ fill. Clearly, the module will create its
+think we will create _and_ fill. Clearly, the module will create its
 own Config object: The module knows the actual Module::Config type. The
 Configurator (i.e., Squid code performing the high-level configuration
 steps) does not use and should not know that specific type. The created

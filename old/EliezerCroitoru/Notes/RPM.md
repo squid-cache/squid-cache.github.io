@@ -4,8 +4,8 @@ Describe EliezerCroitoru/Notes/RPM here.
 
   - init script
 
-  - ssl\_crtd
+  - ssl_crtd
 
-  - store\_id\_program
+  - store_id_program
 
   - tproxy script

@@ -1,7 +1,7 @@
 # Neighbor
 
 In Squid, *neighbor* usually means the same thing as *peer*. A neighbor
-cache is one that you have defined with the *cache\_peer* configuration
+cache is one that you have defined with the *cache_peer* configuration
 option. Neighbor refers to either a parent or a sibling.
 
 In Harvest 1.4, neighbor referred to what Squid calls a sibling. That

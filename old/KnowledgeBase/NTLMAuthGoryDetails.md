@@ -10,7 +10,7 @@ Mozilla Firefox (now on all platforms).
 Server-side it is supported by Microsoft Proxy / ISA Server (of course),
 Squid version 2.5 (only NTLMv1 up to Squid 2.5STABLE5), and via an
 Apache 1.3 module
-[mod\_ntlm\_winbind](http://download.samba.org/ftp/unpacked/lorikeet/trunk/mod_ntlm_winbind/)
+[mod_ntlm_winbind](http://download.samba.org/ftp/unpacked/lorikeet/trunk/mod_ntlm_winbind/)
 is available from [Samba's lorkikeet
 repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
 
@@ -40,10 +40,10 @@ repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
 
 4.  The client re connects and issues a GET-request, this time with an
     accompanying `Proxy-Authorization: NTLM some_more_stuff` header,
-    where some\_more\_stuff is a base64-encoded negotiate packet. The
+    where some_more_stuff is a base64-encoded negotiate packet. The
     server once again replies with a 407 ("proxy auth required") status
     code, along with an header: `Proxy-Authenticate: NTLM
-    still_some_more_stuff` where some\_more\_stuff is a base64-encoded
+    still_some_more_stuff` where some_more_stuff is a base64-encoded
     challenge packet. Somewhere in this packet is the challenge nonce.
     From here on it is vital that the TCP connection be kept alive,
     since all subsequent authentication-related information is tied to
@@ -52,7 +52,7 @@ repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
 
 5.  The client sends a new GET-request, along with an header:
     `Proxy-Authenticate: NTLM cmon_we_are_almost_done` where
-    cmon\_we\_are\_almost\_done is an authenticate packet. The packet
+    cmon_we_are_almost_done is an authenticate packet. The packet
     includes informations about the user name and domain, the challenge
     nonce encoded with the user's password (actually it MIGHT contain it
     encoded TWICE using different algorithms).

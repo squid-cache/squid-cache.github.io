@@ -76,7 +76,7 @@
     behaviors
 
   - [/ToomanyMisses](/SquidFaq/ToomanyMisses):
-    why more than just a few TCP\_SWAPFAIL\_MISS
+    why more than just a few TCP_SWAPFAIL_MISS
 
   - [/WindowsUpdate](/SquidFaq/WindowsUpdate):
     configuring squid to pass Windows Update

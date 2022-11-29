@@ -44,20 +44,20 @@ squid or other proxy for processing the traffic.
 
 ### Squid configuration for WCCP version 2
 
-All the squid.conf options beginning with wccp2\_\* apply to **WCCPv2
+All the squid.conf options beginning with wccp2_\* apply to **WCCPv2
 only**
 
-  - [wccp2\_router](http://www.squid-cache.org/Doc/config/wccp2_router)
+  - [wccp2_router](http://www.squid-cache.org/Doc/config/wccp2_router)
 
-  - [wccp2\_address](http://www.squid-cache.org/Doc/config/wccp2_address)
+  - [wccp2_address](http://www.squid-cache.org/Doc/config/wccp2_address)
 
-  - [wccp2\_forwarding\_method](http://www.squid-cache.org/Doc/config/wccp2_forwarding_method)
+  - [wccp2_forwarding_method](http://www.squid-cache.org/Doc/config/wccp2_forwarding_method)
 
-  - [wccp2\_return\_method](http://www.squid-cache.org/Doc/config/wccp2_return_method)
+  - [wccp2_return_method](http://www.squid-cache.org/Doc/config/wccp2_return_method)
 
-  - [wccp2\_assignment\_method](http://www.squid-cache.org/Doc/config/wccp2_assignment_method)
+  - [wccp2_assignment_method](http://www.squid-cache.org/Doc/config/wccp2_assignment_method)
 
-  - [wccp2\_service](http://www.squid-cache.org/Doc/config/wccp2_service)
+  - [wccp2_service](http://www.squid-cache.org/Doc/config/wccp2_service)
 
 #### Squid configuration
 
@@ -93,7 +93,7 @@ require magic numbers...
     
     ifconfig wccp0 $SQUID-IP netmask 255.255.255.255 up
 
-  - disable rp\_filter, or the packets will be silently discarded
+  - disable rp_filter, or the packets will be silently discarded
 
 <!-- end list -->
 

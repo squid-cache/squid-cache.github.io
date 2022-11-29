@@ -1,7 +1,7 @@
 # OpenBSD build farm setup
 
 1.  create jenkins user `useradd -m jenkins; passwd jenkins`
-1.  set PKG\_PATH in /root/.profile (e.g. to
+1.  set PKG_PATH in /root/.profile (e.g. to
     `` ftp://mirror.switch.ch/pub/OpenBSD/`uname -r`/packages/`machine -a` ``
 1.  add packages: `pkg_add jre git cppunit libxml ccache autoconf
     automake libtool m4 bash`

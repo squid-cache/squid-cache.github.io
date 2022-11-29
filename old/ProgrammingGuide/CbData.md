@@ -12,17 +12,17 @@ memory allocator.
 
 ## API
 
-### CBDATA\_TYPE
+### CBDATA_TYPE
 
     CBDATA_TYPE(datatype);
 
 Macro that defines a new cbdata datatype. Similar to a variable or
 struct definition. Scope is always local to the file/block where it is
 defined and all calls to cbdataAlloc for this type must be within the
-same scope as the CBDATA\_TYPE declaration. Allocated entries may be
+same scope as the CBDATA_TYPE declaration. Allocated entries may be
 referenced or freed anywhere with no restrictions on scope.
 
-### CBDATA\_GLOBAL\_TYPE
+### CBDATA_GLOBAL_TYPE
 
     /* Module header file */
     external CBDATA_GLOBAL_TYPE(datatype);
@@ -33,7 +33,7 @@ referenced or freed anywhere with no restrictions on scope.
 Defines a global cbdata type that can be referenced anywhere in the
 code.
 
-### CBDATA\_INIT\_TYPE
+### CBDATA_INIT_TYPE
 
     CBDATA_INIT_TYPE(datatype);
     /* or */
@@ -132,9 +132,9 @@ of events in programs NOT using cbdata is as follows:
     free(our_data);
 
 However, things become more interesting if we want or need to free the
-callback\_data, or otherwise cancel the callback, before the operation
+callback_data, or otherwise cancel the callback, before the operation
 completes. In constructs like this you can quite easily end up with
-having the memory referenced pointed to by callback\_data freed before
+having the memory referenced pointed to by callback_data freed before
 the callback is invoked causing a program failure or memory corruption:
 
     /* initialization */
@@ -211,15 +211,15 @@ fooOperantionComplete(...).
         callback_func(...., cbdata);
 
 In this case, when `cbdataFree` is called before
-`cbdataReferenceValidDone`, the callback\_data gets marked as invalid.
-When the callback\_data is invalid before executing the callback
-function, `cbdataReferenceValidDone` will return 0 and callback\_func is
+`cbdataReferenceValidDone`, the callback_data gets marked as invalid.
+When the callback_data is invalid before executing the callback
+function, `cbdataReferenceValidDone` will return 0 and callback_func is
 never executed.
 
 ### Adding a new cbdata registered type
 
 To add new module specific data types to the allocator one uses the
-macros CBDATA\_TYPE and CBDATA\_INIT\_TYPE. These creates a local cbdata
+macros CBDATA_TYPE and CBDATA_INIT_TYPE. These creates a local cbdata
 definition (file or block scope). Any cbdataAlloc calls must be made
 within this scope. However, cbdataFree might be called from anywhere.
 
@@ -244,10 +244,10 @@ within this scope. However, cbdataFree might be called from anywhere.
 ### Adding a new cbdata registered data type globally
 
 To add new global data types that can be allocated from anywhere within
-the code one have to add them to the cbdata\_type enum in enums.h, and a
-corresponding CREATE\_CBDATA call in cbdata.c:cbdataInit(). Or
-alternatively add a CBDATA\_GLOBAL\_TYPE definition to globals.h as
-shown below and use CBDATA\_INIT\_TYPE at the appropriate location(s) as
+the code one have to add them to the cbdata_type enum in enums.h, and a
+corresponding CREATE_CBDATA call in cbdata.c:cbdataInit(). Or
+alternatively add a CBDATA_GLOBAL_TYPE definition to globals.h as
+shown below and use CBDATA_INIT_TYPE at the appropriate location(s) as
 described above.
 
     extern CBDATA_GLOBAL_TYPE(type_of_data);        /* CBDATA_UNDEF */

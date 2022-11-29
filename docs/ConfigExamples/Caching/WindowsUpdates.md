@@ -286,7 +286,7 @@ To reset proxy settings for WinHTTP use:
 
 In modern setups with Squid, Windows Update cannot be check updates with
 error
-"[WindowsUpdate](/WindowsUpdate)\_80072F8F"
+"[WindowsUpdate](/WindowsUpdate)_80072F8F"
 or similar.
 
 WU now uses its own pinned SSL certificate and must be spliced to work.

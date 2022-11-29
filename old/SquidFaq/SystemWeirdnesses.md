@@ -23,7 +23,7 @@ Voinov).
 more.
 
 For older Squid versions you can enable *poll()* manually by changing
-HAVE\_POLL in *include/autoconf.h*, or by adding -DUSE\_POLL=1 to the
+HAVE_POLL in *include/autoconf.h*, or by adding -DUSE_POLL=1 to the
 DEFINES in src/Makefile.
 
 ## malloc
@@ -96,7 +96,7 @@ it is being started with. The 2.6 ypstart script checks to see if there
 is a *resolv.conf* file present when it starts ypserv. If there is, then
 it starts it with the *-d* option.
 
-This has the same effect as putting the *YP\_INTERDOMAIN* key in the
+This has the same effect as putting the *YP_INTERDOMAIN* key in the
 hosts table -- namely, that failed NIS host lookups are tried against
 the DNS by the NIS server.
 
@@ -112,7 +112,7 @@ that
 
   - ypserv doesn't start with the *-d* flag.
 
-  - you don't have the *YP\_INTERDOMAIN* key in the hosts table (find
+  - you don't have the *YP_INTERDOMAIN* key in the hosts table (find
     the *B=-b* line in the yp Makefile and change it to *B=*)
 
 We changed these here, and saw our average lookup times drop by up to an
@@ -141,7 +141,7 @@ becoming highly fragmented, until it reaches a point where there are
 insufficient free blocks left to create files with, and only fragments
 available. At this point, you'll get this error and squid will revise
 its idea of how much space is actually available to it. You can do a
-"fsck -n raw\_device" (no need to unmount, this checks in read only
+"fsck -n raw_device" (no need to unmount, this checks in read only
 mode) to look at the fragmentation level of the filesystem. It will
 probably be quite high (\>15%).
 
@@ -208,10 +208,10 @@ is *ncsize*. In */etc/system*, you might want to try
 
     set ncsize = 8192
 
-or even higher. The kernel variable *ufs\_inode* - which is the size of
+or even higher. The kernel variable *ufs_inode* - which is the size of
 the inode cache itself - scales with *ncsize* in Solaris 2.5.1 and
 later. Previous versions of Solaris required both to be adjusted
-independently, but now, it is not recommended to adjust *ufs\_inode*
+independently, but now, it is not recommended to adjust *ufs_inode*
 directly on 2.5.1 and later.
 
 You can set *ncsize* quite high, but at some point - dependent on the
@@ -222,23 +222,23 @@ Defaults are:
     Solaris 2.5.1 : (max_nprocs + 16 + maxusers) + 64
     Solaris 2.6/Solaris 7 : 4 * (max_nprocs + maxusers) + 320
 
-## The priority\_paging algorithm
+## The priority_paging algorithm
 
 by [Mike Batchelor](mailto:mbatchelor@citysearch.com)
 
 Another new tuneable (actually a toggle) in Solaris 2.5.1, 2.6 or
-Solaris 7 is the *priority\_paging* algorithm. This is actually a
+Solaris 7 is the *priority_paging* algorithm. This is actually a
 complete rewrite of the virtual memory system on Solaris. It will page
 out application data last, and filesystem pages first, if you turn it on
-(set *priority\_paging* = 1 in */etc/system*). As you may know, the
+(set *priority_paging* = 1 in */etc/system*). As you may know, the
 Solaris buffer cache grows to fill available pages, and under the old VM
 system, applications could get paged out to make way for the buffer
 cache, which can lead to swap thrashing and degraded application
-performance. The new *priority\_paging* helps keep application and
+performance. The new *priority_paging* helps keep application and
 shared library pages in memory, preventing the buffer cache from paging
 them out, until memory gets REALLY short. Solaris 2.5.1 requires patch
 103640-25 or higher and Solaris 2.6 requires 105181-10 or higher to get
-priority\_paging. Solaris 7 needs no patch, but all versions have it
+priority_paging. Solaris 7 needs no patch, but all versions have it
 turned off by default.
 
 ## assertion failed: StatHist.c:91: \`statHistBin(H, max) == H-\>capacity - 1'
@@ -405,7 +405,7 @@ Specifically, Squid logs messages like:
     2001/10/12 02:08:49| idnsSendQuery: FD 4: sendto: (22) Invalid argument
 
 You can eliminate the problem by putting the jail's network interface
-address in the 'udp\_outgoing\_addr' configuration option in
+address in the 'udp_outgoing_addr' configuration option in
 *squid.conf*.
 
 ## "Zero Sized Reply" error due to TCP blackholing
@@ -490,17 +490,17 @@ using a very old and unsupported distribution.
 There have been issues with GLIBC in some very old distributions, and
 upgrading or fixing GLIBC is not for the faint of heart.
 
-## FATAL: Don't run Squid as root, set 'cache\_effective\_user'\!
+## FATAL: Don't run Squid as root, set 'cache_effective_user'\!
 
-Some users have reported that setting *cache\_effective\_user* to
+Some users have reported that setting *cache_effective_user* to
 *nobody* under Linux does not work. However, it appears that using any
-*cache\_effective\_user* other than *nobody* will succeed. One solution
-is to create a user account for Squid and set *cache\_effective\_user*
+*cache_effective_user* other than *nobody* will succeed. One solution
+is to create a user account for Squid and set *cache_effective_user*
 to that. Alternately you can change the UID for the *nobody* account
 from 65535 to 65534.
 
 [Russ Mellon](mailto:galifrey@crown.net) notes that these problems with
-*cache\_effective\_user* are fixed in version 2.2.x of the Linux kernel.
+*cache_effective_user* are fixed in version 2.2.x of the Linux kernel.
 
 ## Large ACL lists make Squid slow
 
@@ -635,7 +635,7 @@ To test if this is the source of your problem try the following:
 
 But be warned that this will quite noticeably degrade TCP performance.
 
-Other possible alternatives is setting tcp\_recv\_bufsize in squid.conf,
+Other possible alternatives is setting tcp_recv_bufsize in squid.conf,
 or using the /sbin/ip route ... window=xxx option.
 
 # IRIX
@@ -643,8 +643,8 @@ or using the /sbin/ip route ... window=xxx option.
 ## ''dnsserver'' always returns 255.255.255.255
 
 There is a problem with GCC (2.8.1 at least) on Irix 6 which causes it
-to always return the string 255.255.255.255 for \_ANY\_ address when
-calling inet\_ntoa(). If this happens to you, compile Squid with the
+to always return the string 255.255.255.255 for _ANY_ address when
+calling inet_ntoa(). If this happens to you, compile Squid with the
 native C compiler instead of GCC.
 
 # SCO-UNIX
@@ -678,9 +678,9 @@ script or shell which starts squid.
 default memory model. To force the loader to use large address space for
 squid, either:
 
-  - set the *LDR\_CNTRL* environment variable,
+  - set the *LDR_CNTRL* environment variable,
 
-eg *LDR\_CNTRL="MAXDATA=0x80000000"*; or
+eg *LDR_CNTRL="MAXDATA=0x80000000"*; or
 
   - link with *-bmaxdata:0x80000000*; or
 

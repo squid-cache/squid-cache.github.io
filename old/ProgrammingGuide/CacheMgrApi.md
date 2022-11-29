@@ -82,7 +82,7 @@ Execution flow is:
 5.  the Coordinator process uses the Action's `add()` method to merge in
     information from all workers. The Action argument is really a
     polymorphic reference to the MyModuleMgrAction, and it can safely be
-    dynamic\_cast to the right type
+    dynamic_cast to the right type
 
 6.  once data is accumulated, the `dump()` method is called to print out
     the information.

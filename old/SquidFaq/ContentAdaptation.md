@@ -107,10 +107,10 @@ You can find more details
 Simple HTTP request header adaptation is possible without writing any
 code. Squid supports a few configuration options that allow the
 administrator to add, delete, or replace specified HTTP request headers:
-[request\_header\_add](http://www.squid-cache.org/Doc/config/request_header_add),
-[request\_header\_access](http://www.squid-cache.org/Doc/config/request_header_access),
+[request_header_add](http://www.squid-cache.org/Doc/config/request_header_add),
+[request_header_access](http://www.squid-cache.org/Doc/config/request_header_access),
 and
-[request\_header\_replace](http://www.squid-cache.org/Doc/config/request_header_replace).
+[request_header_replace](http://www.squid-cache.org/Doc/config/request_header_replace).
 Similar directives available for adapting response headers.
 
   - **Pros**: Fast, integrated, adaptation-focused API, no Squid

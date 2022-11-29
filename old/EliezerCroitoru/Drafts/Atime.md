@@ -73,7 +73,7 @@ sec which costs Disk bandwidth.
 In general squid uses it's own way of looking at cached files while not
 looking at the Modification time or Access time and there for the
 “noatime” is a good choice for a partition which hosts a squid UFS
-cache\_dir.
+cache_dir.
 
   - atime = access time
 

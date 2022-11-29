@@ -20,12 +20,12 @@ This list page just has a general TODO of various bogons noticed in
 squid.
 
   - internal requests - we change their protocol to HTTP in
-    client\_side, and then back to INTERNAL in client\_side\_reply. WTF.
+    client_side, and then back to INTERNAL in client_side_reply. WTF.
 
   - delegate stuff like httpCachable to the request object, and from
     there to the URLScheme.
 
-  - HTTP is considered unrevalidatable in client\_side. Fixable by
+  - HTTP is considered unrevalidatable in client_side. Fixable by
     delegation to the protocol
 
   - why do we consider PUT requests to internal: etc servable ?
@@ -50,13 +50,13 @@ This TODO list is no longer accurate. For more updated Squid plans see:
 
   - refactoring of acl driven types to reduce amount of duplicated
     
-      - code (acl\_check, acl\_tos, acl\_address, acl\_size\_t, ...)
+      - code (acl_check, acl_tos, acl_address, acl_size_t, ...)
 
   - ETag caching (???)
 
   - Generalize socket binding to allow for multipe ICP/HTCP/SNMP sockets
     
-      - (get rid of udp\_incoming\_address) (???)
+      - (get rid of udp_incoming_address) (???)
 
   - Rework the store API like planned
 
@@ -70,13 +70,13 @@ This TODO list is no longer accurate. For more updated Squid plans see:
 
   - Implement HTCP authentication
 
-  - Log HTCP queries somewhere, like htcp\_query.log
+  - Log HTCP queries somewhere, like htcp_query.log
 
   - There are various places where ICP means ICP/HTCP, and
     
       - other places where it does not. For example, cachemgr 'counters'
-        stats like icp.pkts\_sent count only ICP. However, in
-        'peer\_select' stats, ICP does include HTCP as well.
+        stats like icp.pkts_sent count only ICP. However, in
+        'peer_select' stats, ICP does include HTCP as well.
 
   - dont re-sibling requests which came from a sibling
 
@@ -90,10 +90,10 @@ This TODO list is no longer accurate. For more updated Squid plans see:
   - Efficient public peer access control \*without ACLs\*
     
       - Bill Wichers `<billw@unix0.waveform.net>` Dave Zarzycki
-        `<zarzycki@ricochet.net>` \# distant\_peer\_deny (icmp rtt)
+        `<zarzycki@ricochet.net>` \# distant_peer_deny (icmp rtt)
         (hops) \# If the ICP client is farther than "z" hops away, \# or
         if more than y% of pings to the client exceed \# x milliseconds,
-        then deny. distant\_peer\_deny 200 75 10
+        then deny. distant_peer_deny 200 75 10
 
   - What to do about ACL's and URL escaping?
 
@@ -103,7 +103,7 @@ This TODO list is no longer accurate. For more updated Squid plans see:
 
   - Everywhere that we use 'pattern' or such, use ACL elements instead.
     
-      - stoplist\_pattern, refresh\_pattern, ... (DW)
+      - stoplist_pattern, refresh_pattern, ... (DW)
 
   - Refresh based on content types. This means we'll need an enum of
     

@@ -69,7 +69,7 @@ Input line received from Squid:
         
         |    |                                                                                                                                                                                                                                                                                                                                                               |
         | -- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-        | YR | A new challenge token is needed. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) max\_challenge\_lifetime and max\_challenge\_uses parameters. The helper should respond with a **TT** message. |
+        | YR | A new challenge token is needed. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the [auth_param](http://www.squid-cache.org/Doc/config/auth_param) max_challenge_lifetime and max_challenge_uses parameters. The helper should respond with a **TT** message. |
         | KK | Authenticate a user's credentials. The helper responds with either **OK**, **ERR**, **AF**, **NA**, or **BH**.                                                                                                                                                                                                                                                |
         
 
@@ -82,8 +82,8 @@ Input line received from Squid:
     
       - Additional parameters passed to the helper which may be
         configured with
-        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
-        *key\_extras* parameter. Only available in
+        [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
+        *key_extras* parameter. Only available in
         [Squid-3.5](/Releases/Squid-3.5)
         and later.
 
@@ -141,14 +141,14 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                                                                                    |
         | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5))                                                  |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5))                                                  |
         | group=...          | reserved                                                                                                                                                                           |
         | message=...        | A message string that Squid can display on an error page.                                                                                                                          |
         | tag=...            | reserved                                                                                                                                                                           |
         | token=...          | The base64-encoded, as defined by RFC [2045](https://tools.ietf.org/rfc/rfc2045), token to be used. This field is only used on **OK** responses.                                  |
         | ttl=...            | reserved                                                                                                                                                                           |
         | user=...           | The label to be used by Squid for this client request as **"username"**. With Negotiate and NTLM protocols it typically has the format NAME@DOMAIN or NAME\\\\DOMAIN respectively. |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                                                                                |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                                                                                |
         
 
       - ℹ️
@@ -194,12 +194,12 @@ made up by two parts:
 
 2.  one or more authentication helpers which perform the grunt work.
     
-      - ntlm\_auth from Samba 4 with the `--helper-protocol=gss-spnego`
+      - ntlm_auth from Samba 4 with the `--helper-protocol=gss-spnego`
         parameter
     
-      - negotiate\_wrapper or squid\_kerb\_auth by Markus Moeller
+      - negotiate_wrapper or squid_kerb_auth by Markus Moeller
     
-      - win32\_negotiate\_auth.exe on windows
+      - win32_negotiate_auth.exe on windows
 
 Of course the protocol needs to be enabled in the configuration file for
 everything to work.
@@ -208,7 +208,7 @@ everything to work.
 
   - ℹ️
     All other negotiate parameters are optional. see
-    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
+    [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
     NEGOTIATE section for more details.
 
 ## Testing
@@ -248,7 +248,7 @@ to access the win32 helper from a Unix box, and that is by performing an
     /home/system from now on).
 
   - Create a /home/system/.ssh directory on the windows box, and copy
-    within its authorized\_keys file the public key of the squid user on
+    within its authorized_keys file the public key of the squid user on
     the unix box. Try connecting from the unix box (you can run bash
     over ssh), save the server key and check that everything works.
 
@@ -284,7 +284,7 @@ with Negotiate authentication. Particularly common are problems with
 type 1 when configured with Kerberos helpers.
 
 The issue is a mismatch between the client and helper capabilities. The
-*negotiate\_wrapper* helper is currently the only helper known which can
+*negotiate_wrapper* helper is currently the only helper known which can
 handle both types at once.
 
 [CategoryFeature](/CategoryFeature)

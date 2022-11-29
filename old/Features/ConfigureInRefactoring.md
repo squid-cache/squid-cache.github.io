@@ -109,42 +109,42 @@ Variable names can fall in different categories:
 
 ### Variables defined at the beginning of the process
 
-  - $squid\_host\_os  
+  - $squid_host_os  
     a simplified version of `$host_os`, it only contains the operating
     system name, *without* the version number. In general, the most
     known values are: *linux-gnu*, *solaris*, *mingw*, *cygwin*, *irix*
 
-  - $squid\_host\_os\_version  
+  - $squid_host_os_version  
     the version number extracted from `$host_os`. On MS-Windows it MAY
     be *32*, but it should in general be ignored.
 
 ### Extra available Macros
 
-  - SQUID\_STATE\_SAVE(state\_name\_prefix(\[,extra\_vars\_list\])  
+  - SQUID_STATE_SAVE(state_name_prefix(\[,extra_vars_list\])  
     checkpoints all relevant autoconf status variables (CFLAGS, LDFLAGS,
-    etc.) in preparation of invasive checks. *state\_name\_prefix* must
+    etc.) in preparation of invasive checks. *state_name_prefix* must
     be suitable as a shell variable name. Extra variables to be saved
-    may be specified, as a whitespace\_separated variable names list.
+    may be specified, as a whitespace_separated variable names list.
 
-  - SQUID\_STATE\_COMMIT(state\_name\_prefix)  
-    commits the changes saved since the last call to SQUID\_STATE\_SAVE,
+  - SQUID_STATE_COMMIT(state_name_prefix)  
+    commits the changes saved since the last call to SQUID_STATE_SAVE,
     and deletes the associated temporary storage variables.
 
-  - SQUID\_STATE\_ROLLBACK(state\_name\_prefix)  
+  - SQUID_STATE_ROLLBACK(state_name_prefix)  
     reverts the autoconf state changes since the last call to
-    SQUID\_STATE\_SAVE with the same prefix, and frees temporary
+    SQUID_STATE_SAVE with the same prefix, and frees temporary
     storage. It is not necessary to specify the extra variables passed
     when saving state, they are retained automatically.
 
-  - SQUID\_LOOK\_FOR\_MODULES(base\_dir,var\_name)  
+  - SQUID_LOOK_FOR_MODULES(base_dir,var_name)  
     fills in `$var_name` with the whitespace-separated list of the
-    subdirs of base\_dir containing modules.
+    subdirs of base_dir containing modules.
 
-  - SQUID\_CLEANUP\_MODULES\_LIST(var\_name)  
+  - SQUID_CLEANUP_MODULES_LIST(var_name)  
     removes duplicates from the modules list contained in `$var_name`.
     Modifies the variable in place.
 
-  - SQUID\_CHECK\_EXISTING\_MODULES(base\_dir,var\_name)  
+  - SQUID_CHECK_EXISTING_MODULES(base_dir,var_name)  
     checks that all modules in the whitespace-separated list of modules
     `$var_name` are actually modules contained in the base directory
     `base_dir`. Aborts configuration in case of error. For each module,
@@ -162,27 +162,27 @@ Variable names can fall in different categories:
        exist and are directories, abort if they're not
     2. set iomodules_disk and iomodules_net to "yes"
 
-  - SQUID\_TOLOWER\_VAR\_CONTENTS(varname)  
+  - SQUID_TOLOWER_VAR_CONTENTS(varname)  
     lowercases $varname's contents
 
-  - SQUID\_TOUPPER\_VAR\_CONTENTS(varname)  
+  - SQUID_TOUPPER_VAR_CONTENTS(varname)  
     uppercases $varname's contents
 
-  - SQUID\_CC\_CHECK\_ARGUMENT(varname,flag)  
+  - SQUID_CC_CHECK_ARGUMENT(varname,flag)  
     tests whether the compiler can handle the supplied flag. Sets
     `$varname` to either "yes" or "no"
 
-  - SQUID\_DEFINE\_BOOL(define\_name,$shell\_variable,define\_comment)  
+  - SQUID_DEFINE_BOOL(define_name,$shell_variable,define_comment)  
     define a C(++) preprocessor macro `define_name` with comment
     `define_comment` using the expansion of `$shell_variable` to assign
     a value: it will be set to 0 if the variable expands to an empty
     string, 0 , false, or no; 1 if it expands to true, yes or 1; will
     abort in all other cases.
 
-  - SQUID\_YESNO($variable)  
+  - SQUID_YESNO($variable)  
     aborts unless the variable expansion is either "yes" or "no". It is
-    mostly useful as an input validator for the AC\_ARG\_ENABLE and
-    AC\_ARG\_WITH macros.
+    mostly useful as an input validator for the AC_ARG_ENABLE and
+    AC_ARG_WITH macros.
 
 There more specific tests, checks and guesses performed by specific
 macros; their definitions have been moved to the `acinclude/` directory
@@ -204,17 +204,17 @@ them
     in reporting the reasons for failure. They should be reworked to be
     configure.in scripts to gain those advantages.
 
-3.  AC\_CONDITIONAL macors should use in a more uniform manner
-    ENABLE\_FOO
+3.  AC_CONDITIONAL macors should use in a more uniform manner
+    ENABLE_FOO
 
-4.  the complication setting $ECAP\_LIBS to ecap/libecap.la can be
-    replaced by the automake "if USE\_ECAP" conditional to build and
+4.  the complication setting $ECAP_LIBS to ecap/libecap.la can be
+    replaced by the automake "if USE_ECAP" conditional to build and
     link the ecap subdir library in src/adaptation/Makefile.am instead
     of configure.
 
-5.  same for $ICAP\_LIBS
+5.  same for $ICAP_LIBS
 
-6.  wrapping of the auth libraries build+link in the ENABLE\_AUTH\_\*
+6.  wrapping of the auth libraries build+link in the ENABLE_AUTH_\*
 
 ## Other random thoughts
 

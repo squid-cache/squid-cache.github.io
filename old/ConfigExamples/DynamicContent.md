@@ -24,7 +24,7 @@ change to this caching policy. These changes will also work in 3.0 and
 squid.conf.default.
 
 The changed policy is to remove the QUERY ACL and paired cache line. To
-be replaced by the refresh\_patterns below:
+be replaced by the refresh_patterns below:
 
     refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
     refresh_pattern .            0 20% 4320

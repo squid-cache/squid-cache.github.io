@@ -78,7 +78,7 @@ you do know what a GRE tunnel is.
 
 ## Toplogy
 
-![wccp2\_vlan.png](https://wiki.squid-cache.org/ConfigExamples/UbuntuTproxy4Wccp2?action=AttachFile&do=get&target=wccp2_vlan.png)
+![wccp2_vlan.png](https://wiki.squid-cache.org/ConfigExamples/UbuntuTproxy4Wccp2?action=AttachFile&do=get&target=wccp2_vlan.png)
 
 ## Linux and Squid Configuration
 

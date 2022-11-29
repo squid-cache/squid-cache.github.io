@@ -7,7 +7,7 @@ requirements need changing, please discuss *before* violating them.
 Other than that, please use common sense and do what you think is in the
 best interest of Squid.
 
-1.  [\#Before\_you\_start\_coding](#Before_you_start_coding), make sure
+1.  [\#Before_you_start_coding](#Before_you_start_coding), make sure
     your future changes are welcomed and coordinate your plans with
     other developers.
 
@@ -16,9 +16,9 @@ best interest of Squid.
     Use git for version control (see
     [GitHints](/GitHints)).
 
-3.  Complete [\#Submission\_Checklist](#Submission_Checklist).
+3.  Complete [\#Submission_Checklist](#Submission_Checklist).
 
-4.  Submit a [\#Pull\_Request](#Pull_Request) on GitHub.
+4.  Submit a [\#Pull_Request](#Pull_Request) on GitHub.
 
 5.  Monitor for automated test failures and work with reviewers to get
     enough [\#Votes](#Votes),
@@ -89,7 +89,7 @@ requirements. See
 [GitHints](/GitHints)
 for PR submission recipes.
 
-1.  Please complete [\#Submission\_Checklist](#Submission_Checklist)
+1.  Please complete [\#Submission_Checklist](#Submission_Checklist)
     before making a pull request. If you really need to post a PR
     earlier, then start your PR title with a "\[WIP\] " prefix (six
     characters indicating a "work in progress") and explain why you are
@@ -210,11 +210,11 @@ with the following configuration:
 |                         |                                                                                                                                                                                                    |                |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | **Field**               | **Description**                                                                                                                                                                                    | **Value**      |
-| *github\_login*         | The bot uses this GitHub user account for all GitHub communications, including target branch updates. This user needs to have write access to the repository.                                      | "squid-anubis" |
-| *staging\_branch*       | The name of the bot-maintained git branch used for testing PR changes as if they were merged into their target branch.                                                                             | auto           |
-| *necessary\_approvals*  | The minimal number of core developers required for a PR to be merged. PRs with fewer votes are not merged, regardless of their age.                                                                | 1              |
-| *sufficient\_approvals* | The minimal number of core developers required for a PR to be merged fast (i.e., without waiting for `config::voting_delay_max`)                                                                   | 2              |
-| *voting\_delay\_min*    | The minimum merging age of a PR. Younger PRs are not merged, regardless of the number of votes. The PR age string should comply with [timestring](https://github.com/mike182uk/timestring) parser. | "2d"           |
-| *voting\_delay\_max*    | The maximum merging age of a PR that has fewer than `config::sufficient_approvals` votes. The PR age string should comply with [timestring](https://github.com/mike182uk/timestring) parser.       | "10d"          |
-| *staging\_checks*       | The expected number of CI tests executed against the staging branch.                                                                                                                               | 2              |
-| *guarded\_run*          | Only PRs (manually) labeled `M-cleared-for-merge` are merged by Anubis.                                                                                                                            | true           |
+| *github_login*         | The bot uses this GitHub user account for all GitHub communications, including target branch updates. This user needs to have write access to the repository.                                      | "squid-anubis" |
+| *staging_branch*       | The name of the bot-maintained git branch used for testing PR changes as if they were merged into their target branch.                                                                             | auto           |
+| *necessary_approvals*  | The minimal number of core developers required for a PR to be merged. PRs with fewer votes are not merged, regardless of their age.                                                                | 1              |
+| *sufficient_approvals* | The minimal number of core developers required for a PR to be merged fast (i.e., without waiting for `config::voting_delay_max`)                                                                   | 2              |
+| *voting_delay_min*    | The minimum merging age of a PR. Younger PRs are not merged, regardless of the number of votes. The PR age string should comply with [timestring](https://github.com/mike182uk/timestring) parser. | "2d"           |
+| *voting_delay_max*    | The maximum merging age of a PR that has fewer than `config::sufficient_approvals` votes. The PR age string should comply with [timestring](https://github.com/mike182uk/timestring) parser.       | "10d"          |
+| *staging_checks*       | The expected number of CI tests executed against the staging branch.                                                                                                                               | 2              |
+| *guarded_run*          | Only PRs (manually) labeled `M-cleared-for-merge` are merged by Anubis.                                                                                                                            | true           |

@@ -10,8 +10,8 @@ about these examples please email the squid-users mailing list.
 ## Outline
 
 Squid can be used as an accelerator and ACL filter in front of an
-exchange server exporting mail via RPC over HTTP. The RPC\_IN\_DATA and
-RPC\_OUT\_DATA methods communicate with
+exchange server exporting mail via RPC over HTTP. The RPC_IN_DATA and
+RPC_OUT_DATA methods communicate with
 [](https://URL/rpc/rpcproxy.dll), for if there's need to limit the
 access..
 
@@ -20,11 +20,11 @@ access..
 The example situation involves a single Outlook Web Access server and a
 single Squid server. The following information is required:
 
-  - The IP of the Squid server (ip\_of\_squid)
+  - The IP of the Squid server (ip_of_squid)
 
-  - The 'public' domain used for RPC Access (rpc\_domain\_name)
+  - The 'public' domain used for RPC Access (rpc_domain_name)
 
-  - The IP of the Exchange (RPC) server (ip\_of\_exchange\_server)
+  - The IP of the Exchange (RPC) server (ip_of_exchange_server)
 
   - SSL Certificate to present to Exchange Server (/path/to/certificate)
 
@@ -34,7 +34,7 @@ single Squid server. The following information is required:
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http\_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
     # Publish the RPCoHTTP service via SSL
     https_port ip_of_squid:443 accel cert=/path/to/clientcertificate defaultsite=rpc_domain_name

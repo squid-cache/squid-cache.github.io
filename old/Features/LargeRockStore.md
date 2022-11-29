@@ -102,7 +102,7 @@ slot. If an entry chain contains a slot with a different entry chain
 version, the entire chain is invalid and all its slots are marked as
 empty during db validation process.
 
-The StoreEntry embryo (STORE\_META\_STD) is used to create a StoreEntry
+The StoreEntry embryo (STORE_META_STD) is used to create a StoreEntry
 object for a given slot when hit is detected. XXX: research whether we
 have to store that information or can delay using embryo data until the
 entire first hit slot is loaded.
@@ -135,7 +135,7 @@ Several alternative design options have been considered and either
 rejected or postponed. Some of them are documented here.
 
 1.  Initial implementation will scan the entire db to build an in-memory
-    cache\_dir map
+    cache_dir map
     ([StoreMap](/StoreMap)).
     Eventually, we will start saving the map to disk and loading it at
     startup to decrease db loading times. We need more information on db

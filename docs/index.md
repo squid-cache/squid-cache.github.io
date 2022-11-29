@@ -41,7 +41,7 @@ mailing list, and during pull request reviews on
 
 - The main Squid [site](http://www.squid-cache.org/)
 - The Bugzilla [database](http://bugs.squid-cache.org/index.cgi)
-- The Squijj refresh\_pattern analysis [program](http://www.mnot.net/squij/)
+- The Squijj refresh_pattern analysis [program](http://www.mnot.net/squij/)
 - The Calamaris log file analysis [tool](http://freshmeat.net/projects/calamaris/)
 - Visolve's configuration manuals for
     [Squid 3.0](http://www.visolve.com/squid/squid30/contents.php), also mostly

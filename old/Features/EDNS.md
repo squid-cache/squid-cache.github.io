@@ -42,7 +42,7 @@ communication.
 
 Due to design issues within Squid we cannot (yet) make use of these
 hints to automate the packet sizing. Instead the configuration option
-[dns\_packet\_max](http://www.squid-cache.org/Doc/config/dns_packet_max)
+[dns_packet_max](http://www.squid-cache.org/Doc/config/dns_packet_max)
 is needed to set the advertised packet size or disable EDNS entirely.
 
 [CategoryFeature](/CategoryFeature)

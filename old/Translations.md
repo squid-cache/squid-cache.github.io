@@ -94,7 +94,7 @@ Any Squid is able to use the pre-translated
 the auto-negotiate and CSS features are not planned for back-porting.
 
 Any existing Squid which have been configured with
-[error\_directory](http://www.squid-cache.org/Doc/config/error_directory)
+[error_directory](http://www.squid-cache.org/Doc/config/error_directory)
 in their squid.conf will not be affected. If you have used this method
 to provide your own language translations please consider joining the
 translation effort by submitting your language as outlined above, and
@@ -106,7 +106,7 @@ with auto-negotiate.
     Squid older than
     [Squid-3.1](/Releases/Squid-3.1)
     without an explicit
-    [error\_directory](http://www.squid-cache.org/Doc/config/error_directory)
+    [error_directory](http://www.squid-cache.org/Doc/config/error_directory)
     entry have a default one. This may need overriding to use the new
     files.
 
@@ -134,13 +134,13 @@ admin just need to follow these steps:
     (en, en-gb, etc.).
 
   - Add
-    [error\_default\_language](http://www.squid-cache.org/Doc/config/error_default_language)
+    [error_default_language](http://www.squid-cache.org/Doc/config/error_default_language)
     option to squid.conf with the code/folder-name for the language.
     This will provide a suitable default language if none can be
     negotiated with the browser.
 
   - Remove
-    [error\_directory](http://www.squid-cache.org/Doc/config/error_directory)
+    [error_directory](http://www.squid-cache.org/Doc/config/error_directory)
     from squid.conf
 
   - Optional: download newest translations and languages
@@ -180,7 +180,7 @@ translation. Details are at the top of this page.
 ### Now I keep getting: "Unable to load default error language files. Reset to backups."
 
 The language code you have entered in squid.conf for
-[error\_default\_language](http://www.squid-cache.org/Doc/config/error_default_language)
+[error_default_language](http://www.squid-cache.org/Doc/config/error_default_language)
 does not match any of the currently installed error page translations.
 
 Check that you spelled it correctly, it must match the ISO codes used
@@ -190,7 +190,7 @@ for one of the sub-directory names in your squid errors directory.
     This only affects the backup language, the one used if the users
     preferred is not available.
 
-### What about the custom ERR\_MY\_PAGE files I made?
+### What about the custom ERR_MY_PAGE files I made?
 
 Yes Squid can still present them. Even while presenting localized copies
 of the basic error pages.
@@ -199,7 +199,7 @@ Create a new directory next to the installed **templates/** and language
 coded directories. This is essentially a fake language. Your custom
 pages go in there and specify the fake language name of your folder in
 the
-[error\_default\_language](http://www.squid-cache.org/Doc/config/error_default_language)
+[error_default_language](http://www.squid-cache.org/Doc/config/error_default_language)
 directive.
 
 Note: Custom errors need unique names, so as not to clash with the

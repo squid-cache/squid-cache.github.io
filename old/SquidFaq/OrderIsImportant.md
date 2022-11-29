@@ -27,38 +27,38 @@ in squid.conf. But the order determines what the final situation is.
 Modern Squid run multiple *modes* of operation simultaneously.
 
 The order of
-[http\_access](http://www.squid-cache.org/Doc/config/http_access)
+[http_access](http://www.squid-cache.org/Doc/config/http_access)
 forward-proxy and reverse-proxy configuration options determines whether
 a reverse-proxy website visitor is able to reach the website. They also
 determine whether that website is able to perform HTTPS, AJAX, JSON, or
 other advanced website operations beyond plain simple HTTP. see the
 relevant
-[SquidFaq/ReverseProxy\#How\_do\_I\_set\_it\_up.3F](/SquidFaq/ReverseProxy#How_do_I_set_it_up.3F)
+[SquidFaq/ReverseProxy\#How_do_I_set_it_up.3F](/SquidFaq/ReverseProxy#How_do_I_set_it_up.3F)
 example for specific order details. Generally the reverse-proxy needs to
 be first.
 
 The order and placement of
-[debug\_options](http://www.squid-cache.org/Doc/config/debug_options)
+[debug_options](http://www.squid-cache.org/Doc/config/debug_options)
 directives determines what debug levels are run during processing of the
 configuration file and later during normal running of Squid.
 
 ## Authentication
 
 The order of
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
+[auth_param](http://www.squid-cache.org/Doc/config/auth_param)
 **program** directives determines how Squid reports the authentication
 options to Browsers. This has visible effects on what type of
 authentication is performed. see
 [Features/Authentication](/Features/Authentication)
 for details and recommended ordering.
 
-[acl](http://www.squid-cache.org/Doc/config/acl) **proxy\_auth** and
-[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+[acl](http://www.squid-cache.org/Doc/config/acl) **proxy_auth** and
+[external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
 using **%LOGIN** must be defined after
-[auth\_param](http://www.squid-cache.org/Doc/config/auth_param). Squid
+[auth_param](http://www.squid-cache.org/Doc/config/auth_param). Squid
 will warn about authentication being used but not setup here.
 
-[external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+[external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
 using **%LOGIN** will trigger authentication challenges if those
 credentials are not present. The placement of these tests affects which
 rules around them require authentication.
@@ -74,20 +74,20 @@ be specified before any point at which they are mentioned for use.
 
 The order of individual access controls affects other lines of the same
 type. For example each
-[http\_access](http://www.squid-cache.org/Doc/config/http_access) is
+[http_access](http://www.squid-cache.org/Doc/config/http_access) is
 run in order and affect each other, but not any
-[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
+[cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
 in between.
 
 This goes for each type of access directive. see
-[SquidFaq/SquidAcl\#Access\_Lists](/SquidFaq/SquidAcl#Access_Lists)
+[SquidFaq/SquidAcl\#Access_Lists](/SquidFaq/SquidAcl#Access_Lists)
 for a list of access types.
 
 The order of individual words on each access control line is even more
 critical. This can mean the difference between having an access control
 line match or skip. Or whether Squid can process 300 or 3 thousand
 requests per second. see
-[SquidFaq/SquidAcl\#Common\_Mistakes](/SquidFaq/SquidAcl#Common_Mistakes)
+[SquidFaq/SquidAcl\#Common_Mistakes](/SquidFaq/SquidAcl#Common_Mistakes)
 for details on how ordering of individual line words works.
 
 ## Major Transaction Milestones
@@ -109,7 +109,7 @@ server. The checks are listed here in the order of their execution:
 
 1.  Host header forgery checks
 
-2.  [http\_access](http://www.squid-cache.org/Doc/config/http_access)
+2.  [http_access](http://www.squid-cache.org/Doc/config/http_access)
     directive
 
 3.  ICAP/eCAP
@@ -117,10 +117,10 @@ server. The checks are listed here in the order of their execution:
 
 4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 
-5.  [adapted\_http\_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
+5.  [adapted_http_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     directive
 
-6.  [store\_id](http://www.squid-cache.org/Doc/config/store_id)
+6.  [store_id](http://www.squid-cache.org/Doc/config/store_id)
     directive
 
 7.  clientInterpretRequestHeaders()
@@ -131,7 +131,7 @@ server. The checks are listed here in the order of their execution:
 
 10. nf marking
 
-11. [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
+11. [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
     directive
 
 12. callout sequence error handling
@@ -155,7 +155,7 @@ If you use SslBump for intercepted port 443 traffic, then shortly after
 a new connection is accepted by Squid, SslBump creates a fake CONNECT
 request with TCP level information, and that CONNECT request goes
 through the above sequence (matching step SslBump1 ACL if any). If an
-"ssl\_bump peek" or "ssl\_bump stare" rule matches during that first
+"ssl_bump peek" or "ssl_bump stare" rule matches during that first
 SslBump step, then SslBump code gets SNI and creates a second fake
 CONNECT request that goes through the same sequence again.
 
@@ -170,10 +170,10 @@ Your Squid directives and helpers must be prepared to deal with multiple
 
 Some others have a simpler interaction, but ordering is still important.
 
-  - refresh\_pattern - top down first pattern match wins.
+  - refresh_pattern - top down first pattern match wins.
 
-  - delay\_pools + delay\_class + delay\_parameters - must be added in
+  - delay_pools + delay_class + delay_parameters - must be added in
     that order: pools, class, parameters.
 
-  - cache\_peer - order of individual cache\_peer entries affects
+  - cache_peer - order of individual cache_peer entries affects
     selection of default and first-available peer.

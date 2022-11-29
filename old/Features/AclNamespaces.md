@@ -40,7 +40,7 @@ future, but this is not critical.
 Lets assume that the ACL object can store both ICAP and HTTP messages at
 the same time. The user can specify which message the ACL should apply
 to using a namespace or scope technique. For example, given a generic
-rep\_status\_code ACL type (currently called http\_status), the user
+rep_status_code ACL type (currently called http_status), the user
 should be able to say:
 
 ``` 

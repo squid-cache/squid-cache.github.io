@@ -1,7 +1,7 @@
 # Way Too Many Cache Misses
 
 In normal operation Squid gives very few (typically well less than 1%)
-code TCP\_SWAPFAIL\_MISS indicating an object was thought to be in the
+code TCP_SWAPFAIL_MISS indicating an object was thought to be in the
 cache but couldn't be found. Once in a while though this occurs very
 very frequently. When lots of errors occur, the problem is the Squid
 cache **index** (probably in a file named something like *swap.state* at

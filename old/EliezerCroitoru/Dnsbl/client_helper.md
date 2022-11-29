@@ -60,7 +60,7 @@ def process(line)
 #0 http://askubuntu.com/ 192.168.10.131/- - GET myip=192.168.10.1 myport=3128
   id, url, src, fqdn, method, src, squidport, others = line.split
   case url
-    when /^([\w]+\:\/\/)([\w\d\.\-\_]+)/
+    when /^([\w]+\:\/\/)([\w\d\.\-_]+)/
       begin
         uri = URI(url)
       rescue URI::InvalidURIError => e
@@ -70,7 +70,7 @@ def process(line)
       rescue => e
        debug("rescued URI parsing")
       end
-    when /^([\w\d\.\-\_]+)\:([\d]{1,5})/
+    when /^([\w\d\.\-_]+)\:([\d]{1,5})/
       uri = URI("CONNECT://#{$1}:#{$2}")
     else
     STDERR.puts "ELSE"

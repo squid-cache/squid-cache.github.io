@@ -86,7 +86,7 @@ your OS.
     Note: TmpDir usually set to /var/tmp (this is default). Be **very**
     careful when change it. TmpDir uses for temp files when oblect in
     memory greater than MaxMemObject. And this temp files
-    (CI\_TMP\_XXXX) remains in TmpDir when processing complete. Schedule
+    (CI_TMP_XXXX) remains in TmpDir when processing complete. Schedule
     housekeeping for TmpDir otherwise free space on /var filesystem can
     ran out on high loaded servers.
 
@@ -285,8 +285,8 @@ Then adjust squidclamav.conf as follows:
     # See also 'trustuser' and 'trustclient' configuration directives
     #
 
-and restart c-icap server. Finally don't forget to put clwarn.cgi.xx\_XX
-(where xx\_XX matches your language) into your web server cgi-bin
+and restart c-icap server. Finally don't forget to put clwarn.cgi.xx_XX
+(where xx_XX matches your language) into your web server cgi-bin
 directory.
 
 As whitelist can be big enough, to reduce maintenance and simplify
@@ -297,7 +297,7 @@ and configure squidclamav as follows:
     # Abort both AV and chained program
     whitelist /usr/local/etc/squidclamav_whitelist
 
-where squidclamav\_whitelist contains:
+where squidclamav_whitelist contains:
 
     clamav\.net
     securiteinfo\.com
@@ -367,7 +367,7 @@ then configuring and build according your ClamAV and c-icap build types
     gmake install-strip
 
   - ℹ️
-    To build submodule clamav\_mod (uses libclamav) you can require
+    To build submodule clamav_mod (uses libclamav) you can require
     patch your c-icap installation with last fixes. It uses OpenSSL
     headers dependency and you can have problems with modules build.
     This can be workarounded if your system has an older OpenSSL version
@@ -376,7 +376,7 @@ then configuring and build according your ClamAV and c-icap build types
 
 ### Configuring c-icap modules
 
-Add non-default parameters into clamav\_mod.conf:
+Add non-default parameters into clamav_mod.conf:
 
     clamav_mod.TmpDir /var/tmp
     clamav_mod.MaxFilesInArchive 1000
@@ -384,7 +384,7 @@ Add non-default parameters into clamav\_mod.conf:
     clamav_mod.HeuristicScanPrecedence on
     clamav_mod.OLE2BlockMacros on
 
-Add non-default parameters into virus\_scan.conf:
+Add non-default parameters into virus_scan.conf:
 
     virus_scan.ScanFileTypes TEXT DATA EXECUTABLE ARCHIVE DOCUMENT
     virus_scan.SendPercentData 5
@@ -426,8 +426,8 @@ Paste the configuration file like this:
   - ℹ️
     When using squidclamav, you must bypass whitelisted sites with Squid
     ACL's and
-    [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
-    directives. Also you can customize virus\_scan module templates to
+    [adaptation_access](http://www.squid-cache.org/Doc/config/adaptation_access)
+    directives. Also you can customize virus_scan module templates to
     your language etc.
 
   - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
@@ -468,7 +468,7 @@ then add this to your c-icap.conf file:
     Module common dnsbl_tables.so
     Include srv_url_check.conf
 
-Adjust srv\_url\_check.conf as follows:
+Adjust srv_url_check.conf as follows:
 
     Service url_check srv_url_check.so
     
@@ -594,7 +594,7 @@ and restart c-icap:
 ```
 
 . ℹ️
-Comment out clamd\_local in squidclamav.conf.
+Comment out clamd_local in squidclamav.conf.
 
 . ℹ️
 On ClamAV tier uncomment this parameter in clamd.conf and restart
@@ -680,9 +680,9 @@ Use url above to access stats page.
 Here is also Munin plugins for C-ICAP monitoring (performance-related
 /runtime stats):
 
-[icap\_stats](/ConfigExamples/ContentAdaptation/C-ICAP?action=AttachFile&do=get&target=icap_stats)
-[icap\_sem](/ConfigExamples/ContentAdaptation/C-ICAP?action=AttachFile&do=get&target=icap_sem)
-[icap\_mem](/ConfigExamples/ContentAdaptation/C-ICAP?action=AttachFile&do=get&target=icap_mem)
+[icap_stats](/ConfigExamples/ContentAdaptation/C-ICAP?action=AttachFile&do=get&target=icap_stats)
+[icap_sem](/ConfigExamples/ContentAdaptation/C-ICAP?action=AttachFile&do=get&target=icap_sem)
+[icap_mem](/ConfigExamples/ContentAdaptation/C-ICAP?action=AttachFile&do=get&target=icap_mem)
 
 ## Troubleshooting
 
@@ -699,21 +699,21 @@ Here is also Munin plugins for C-ICAP monitoring (performance-related
 
 To apply multiple adaptation services to the same transaction at the
 same vectoring point, one must use
-[adaptation\_service\_chain](http://www.squid-cache.org/Doc/config/adaptation_service_chain).
+[adaptation_service_chain](http://www.squid-cache.org/Doc/config/adaptation_service_chain).
 Adaptation order is often important from adaptation logic or performance
 point of view, but Squid supports any order of chained services. Squid
 adaptation chaining code does not even know the difference between ICAP
 and eCAP\! For example, an
-[adaptation\_service\_chain](http://www.squid-cache.org/Doc/config/adaptation_service_chain)
+[adaptation_service_chain](http://www.squid-cache.org/Doc/config/adaptation_service_chain)
 containing an ICAP service followed by an eCAP service, followed by
 another ICAP service is supported.
 
 When you require both c-icap and eCAP in one Squid's instance, you must
 remember: order of adaptation service/chain definitions and
-[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
+[adaptation_access](http://www.squid-cache.org/Doc/config/adaptation_access)
 ACL's is important. Adaptation logic defines in adaptation service
 default order of preference, in
-[adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
+[adaptation_access](http://www.squid-cache.org/Doc/config/adaptation_access)
 directives define which services or chains are able to be used for the
 transaction being considered. In some cases, adaptation actions chain
 can be mutually exclusive. So, be careful with adaptation configuration.
@@ -722,5 +722,5 @@ Thoroughly test adaptation logic.
   - ℹ️
     Note: The simplest case is to chain adaptations with the same access
     scheme. When access scheme is different for chained adaptations, use
-    [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
+    [adaptation_access](http://www.squid-cache.org/Doc/config/adaptation_access)
     in correct sequence to achieve required adaptation goals.

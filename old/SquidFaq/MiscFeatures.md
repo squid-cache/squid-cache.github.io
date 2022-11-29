@@ -26,7 +26,7 @@
 
   - ...and many more\!
 
-# How do I configure 'ssl\_proxy' now?
+# How do I configure 'ssl_proxy' now?
 
 By default, Squid connects directly to origin servers for SSL requests.
 But if you must force SSL requests through a parent, first tell Squid it
@@ -37,7 +37,7 @@ can not go direct for SSL:
 
 With this in place, Squid *should* pick one of your parents to use for
 SSL requests. If you want it to pick a particular parent, you must use
-the *cache\_peer\_access* configuration:
+the *cache_peer_access* configuration:
 
     cache_peer parent1 parent 3128 3130
     cache_peer parent2 parent 3128 3130
@@ -48,7 +48,7 @@ always use *parent1*.
 
 # Adding a new cache disk
 
-Simply add your new *cache\_dir* line to *squid.conf*, then run *squid
+Simply add your new *cache_dir* line to *squid.conf*, then run *squid
 -z* again. Squid will create swap directories on the new disk and leave
 the existing ones in place.
 
@@ -58,7 +58,7 @@ Authentication is handled via external processes. Arjan's [proxy auth
 page](http://www.devet.org/squid/proxy_auth/) describes how to set it
 up. Some simple instructions are given below as well.
 
-  - We assume you have configured an ACL entry with proxy\_auth, for
+  - We assume you have configured an ACL entry with proxy_auth, for
     example:
 
 <!-- end list -->
@@ -67,9 +67,9 @@ up. Some simple instructions are given below as well.
     http_access allow foo
 
   - You will need to compile and install an external authenticator
-    program. Most people will want to use *ncsa\_auth*. The source for
+    program. Most people will want to use *ncsa_auth*. The source for
     this program is included in the source distribution, in the
-    *helpers/basic\_auth/NCSA* directory.
+    *helpers/basic_auth/NCSA* directory.
 
 <!-- end list -->
 
@@ -77,7 +77,7 @@ up. Some simple instructions are given below as well.
     % make
     % make install
 
-You should now have an *ncsa\_auth* program in the \<prefix\>/libexec/
+You should now have an *ncsa_auth* program in the \<prefix\>/libexec/
 directory where the helpers for *squid* lives (usually
 /usr/local/squid/libexec unless overridden by configure flags). You can
 also select with the --enable-basic-auth-helpers=... option which
@@ -90,7 +90,7 @@ helpers should be installed by default when you install Squid.
     as your squid.conf.
 
   - Configure the external authenticator in *squid.conf*. For
-    *ncsa\_auth* you need to give the pathname to the executable and the
+    *ncsa_auth* you need to give the pathname to the executable and the
     password file as an argument. For example:
 
 <!-- end list -->
@@ -124,18 +124,18 @@ configuration option:
 Yes, a number of configuration directives have been renamed. Here are
 some of them:
 
-cache\_host:: This is now called *cache\_peer*. The old term does not
+cache_host:: This is now called *cache_peer*. The old term does not
 really describe what you are configuring, but the new name tells you
 that you are configuring a peer for your cache.
 
-cache\_host\_domain:: Renamed to *cache\_peer\_domain*
+cache_host_domain:: Renamed to *cache_peer_domain*
 
-local\_ip, local\_domain:: The functaionality provided by these
+local_ip, local_domain:: The functaionality provided by these
 directives is now implemented as access control lists. You will use the
-*always\_direct* and *never\_direct* options. The new *squid.conf* file
+*always_direct* and *never_direct* options. The new *squid.conf* file
 has some examples.
 
-cache\_stoplist:: This directive also has been reimplemented with access
+cache_stoplist:: This directive also has been reimplemented with access
 control lists. You will use the *cache* option since
 [Squid-2.6](/Releases/Squid-2.6).
 For example:
@@ -145,10 +145,10 @@ For example:
         cache deny Uncachable
 ```
 
-cache\_swap:: This option used to specify the cache disk size. Now you
-specify the disk size on each *cache\_dir* line.
+cache_swap:: This option used to specify the cache disk size. Now you
+specify the disk size on each *cache_dir* line.
 
-cache\_host\_acl:: This option has been renamed to *cache\_peer\_access*
+cache_host_acl:: This option has been renamed to *cache_peer_access*
 **and** the syntax has changed. Now this option is a true access control
 list, and you must include an *allow* or *deny* keyword. For example:
 
@@ -160,8 +160,8 @@ This example sends requests to your peer *thatcache.thatdomain.net* only
 for origin servers in Autonomous System Number 1241.
 
 units:: In Squid-1.1 many of the configuration options had implied units
-associated with them. For example, the *connect\_timeout* value may have
-been in seconds, but the *read\_timeout* value had to be given in
+associated with them. For example, the *connect_timeout* value may have
+been in seconds, but the *read_timeout* value had to be given in
 minutes. With Squid-2, these directives take units after the numbers,
 and you will get a warning if you leave off the units. For example, you
 should now write:

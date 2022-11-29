@@ -17,11 +17,11 @@ which will be fast and flexible.
   - Some dead sourceforge project I think? Logging over TCP; saw
     messages being "lost" and thus was never finished
 
-  - s26\_logfile sourceforge branch - Adrian's initial attempt at simply
+  - s26_logfile sourceforge branch - Adrian's initial attempt at simply
     breaking the logging out to an external process; didn't lose
     messages and showed great promise but wasn't finished.
 
-## Stuff learnt doing s26\_logfile
+## Stuff learnt doing s26_logfile
 
   - Logs need to be rotated at the point where the person runs "squid -k
     rotate"; this means the rotate command has to be in-line with the
@@ -76,7 +76,7 @@ which will be fast and flexible.
     
       - What else?
 
-  - s26\_logfile treated individual logfile lines as commands - a
+  - s26_logfile treated individual logfile lines as commands - a
     command was simply a line, and most of them would be logging lines.
     The most efficient method would be to bunch the logfile lines up
     into a big chunk that can be written all at once to disk or the UDP
@@ -116,7 +116,7 @@ which will be fast and flexible.
 
   - "Write this to disk please"
 
-  - Find a volunteer to write a "write this to disk \_AND\_ write out to
+  - Find a volunteer to write a "write this to disk _AND_ write out to
     MySQL too whilst you're at it"
 
   - Find another volunteer to write a "write this to disk and/or TCP

@@ -30,24 +30,24 @@ Don't forget to add the redirect program to your squid configuration.
 
     url_rewrite_program /etc/squid/redirect.php
 
-Note: PHP directive 'stream\_set\_timeout' is set to 24 hours here,
+Note: PHP directive 'stream_set_timeout' is set to 24 hours here,
 otherwise the script would terminate every 60 seconds (php.ini default)
 which could cause your proxy service to be inaccessible frequently as
 squid re-starts the processes.
 
 ### Related config options
 
-  - [url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
+  - [url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 
-  - [url\_rewrite\_access](http://www.squid-cache.org/Doc/config/url_rewrite_access)
+  - [url_rewrite_access](http://www.squid-cache.org/Doc/config/url_rewrite_access)
 
-  - [url\_rewrite\_bypass](http://www.squid-cache.org/Doc/config/url_rewrite_bypass)
+  - [url_rewrite_bypass](http://www.squid-cache.org/Doc/config/url_rewrite_bypass)
 
-  - [url\_rewrite\_children](http://www.squid-cache.org/Doc/config/url_rewrite_children)
+  - [url_rewrite_children](http://www.squid-cache.org/Doc/config/url_rewrite_children)
 
-  - [url\_rewrite\_concurrency](http://www.squid-cache.org/Doc/config/url_rewrite_concurrency)
+  - [url_rewrite_concurrency](http://www.squid-cache.org/Doc/config/url_rewrite_concurrency)
 
-  - [url\_rewrite\_host\_header](http://www.squid-cache.org/Doc/config/url_rewrite_host_header)
+  - [url_rewrite_host_header](http://www.squid-cache.org/Doc/config/url_rewrite_host_header)
 
 ## PHP Redirect (Simple)
 

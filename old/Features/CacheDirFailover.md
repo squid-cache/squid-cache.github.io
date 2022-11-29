@@ -20,31 +20,31 @@
 The following description applies to all supported store types and Squid
 versions. Current
 [patches](http://bugs.squid-cache.org/attachment.cgi?bugid=410&action=viewall)
-implement optional bypass of COSS cache\_dir failures for Squid2 only.
+implement optional bypass of COSS cache_dir failures for Squid2 only.
 Please see the patch preamble for technical notes and the bug
 [report](https://bugs.squid-cache.org/show_bug.cgi?id=410) for
 discussion.
 
-Adding bypass=1 option to cache\_dir allows Squid to bypass errors
-related to that cache store. A bypassed cache\_dir does not store misses
+Adding bypass=1 option to cache_dir allows Squid to bypass errors
+related to that cache store. A bypassed cache_dir does not store misses
 and does not load hits. Its state may be corrupted, requiring a dirty
 rebuild. However, Squid should keep running, using the remaining cache
-directories (if any). Once triggered, cache\_dir bypass lasts until
+directories (if any). Once triggered, cache_dir bypass lasts until
 Squid is stopped. Squid never starts in a bypass mode.
 
-Bypass code considers cache swap state failures as cache\_dir failures,
-even if the swap state file resides outside of cache\_dir disk space.
+Bypass code considers cache swap state failures as cache_dir failures,
+even if the swap state file resides outside of cache_dir disk space.
 
 Configuration errors (e.g.,using unsupported store type or wrong
-cache\_dir options for a given store type) are still fatal.
+cache_dir options for a given store type) are still fatal.
 
 ### squid.conf changes
 
-  - bypass=1 parameter for cache\_dir (required)
+  - bypass=1 parameter for cache_dir (required)
 
-  - cache\_dir\_bypass\_sample option (optional)
+  - cache_dir_bypass_sample option (optional)
 
-  - cache\_dir\_bypass\_errors\_min (optional)
+  - cache_dir_bypass_errors_min (optional)
 
 ### Diagnostics and monitoring
 
@@ -55,7 +55,7 @@ along with a possibly relevant error message:
     (/var/cache/dir1): stat() system call failed
 
 You can use the cache manager interface to check the status of a
-cache\_dir. For example, mgr:storedir menu will have the following flags
+cache_dir. For example, mgr:storedir menu will have the following flags
 for a given cache directory that is both bypassable and is being
 bypassed (many irrelevant bits snipped):
 
@@ -76,7 +76,7 @@ You can use the same manager interface to check if a disk is bypassable.
 
 *Requested by Chris Woodfield*
 
-The following sections document ideas remotely related to cache\_dir
+The following sections document ideas remotely related to cache_dir
 bypass. If you want to work on those features, please start a new
 Feature page for your work.
 

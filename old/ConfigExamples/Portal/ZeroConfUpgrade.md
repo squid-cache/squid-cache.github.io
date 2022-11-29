@@ -34,13 +34,13 @@ the user on how to make the browser changes themselves.
 
 The squid [langpack](http://www.squid-cache.org/Versions/langpack)
 bundle of error pages contains two template files called
-*ERR\_AGENT\_WPAD* and *ERR\_AGENT\_CONFIGURE* with instructions for the
+*ERR_AGENT_WPAD* and *ERR_AGENT_CONFIGURE* with instructions for the
 most popular browsers and a generic instruction for less popular ones.
 As with all our bundled pages these come translated in many languages
 for easier user reading.
 
   - ⚠️
-    When using ERR\_AGENT\_CONFIGURE with Squid older than
+    When using ERR_AGENT_CONFIGURE with Squid older than
     [Squid-3.1.20](/Releases/Squid-3.1)
     you will have to edit the file and change the %b to the squid port
     you want the users configuring. This can be done with:

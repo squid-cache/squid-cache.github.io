@@ -1,4 +1,4 @@
-# cache\_object:// URI Scheme
+# cache_object:// URI Scheme
 
 The `cache_object` is the URI scheme which can be used to access the
 [Cache

@@ -106,11 +106,11 @@ script for details or ask on squid-dev mailing list.
 On any linux system with docker installed, to reproduce a build you can
 check out squid sources on a fresh directory, then run:
 
-\` OS\_VERSION=fedora-32 docker run -ti --rm -u jenkins -v $PWD:$PWD -w
-$PWD squidcache/buildfarm:`uname -m`-$OS\_VERSION /bin/bash -l \`
+\` OS_VERSION=fedora-32 docker run -ti --rm -u jenkins -v $PWD:$PWD -w
+$PWD squidcache/buildfarm:`uname -m`-$OS_VERSION /bin/bash -l \`
 
   - ⚠️
-    Replace OS\_VERSION with the OS version of the CI system node which
+    Replace OS_VERSION with the OS version of the CI system node which
     is failing (eg, fedora-rawhide, debian-unstable)
 
 This will drop you in the container, ready to try things out.
@@ -131,7 +131,7 @@ for common actions you may need to perform with the git VCS.
   - ⚠️
     When working from this repository the **bootstrap.sh** script is
     required to prepare ./configure and related magic. See
-    [\#Required\_Build\_Tools](#Required_Build_Tools) for the required
+    [\#Required_Build_Tools](#Required_Build_Tools) for the required
     bootstrapping and building tools.
 
 ## Bootstrapped source tarballs via HTTP

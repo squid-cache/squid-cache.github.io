@@ -32,12 +32,12 @@ Basic new features in 3.4:
   - [TPROXY](/Features/Tproxy4)
     Support for BSD systems
 
-  - [spoof\_client\_ip](http://www.squid-cache.org/Doc/config/spoof_client_ip)
+  - [spoof_client_ip](http://www.squid-cache.org/Doc/config/spoof_client_ip)
     directive for managing TPROXY spoofing
 
   - Various Access Control updates:
     
-      - **server\_ssl\_cert\_fingerprint** type to match certificate
+      - **server_ssl_cert_fingerprint** type to match certificate
         fingerprints
     
       - **note** type to match annotations for a transaction.

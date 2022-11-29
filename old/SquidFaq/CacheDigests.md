@@ -109,7 +109,7 @@ Upon initialisation, the *capacity* is set to the number of objects that
 can be (are) stored in the cache. Note that there are upper and lower
 limits here.
 
-An arbitrary constant, bits\_per\_entry (currently set to 5), is used to
+An arbitrary constant, bits_per_entry (currently set to 5), is used to
 calculate the size of the array using the following formula:
 
 ``` 
@@ -166,7 +166,7 @@ Since Squid stores references to objects in its index using the MD5 key
 discussed earlier there is no URL actually available for each object -
 which means that the pattern used will fall back to the default pattern,
 ".". This is an unfortunate state of affairs, but little can be done
-about it. A *cd\_refresh\_pattern* option will be added to the
+about it. A *cd_refresh_pattern* option will be added to the
 configuration file soon which will at least make the confusion a little
 clearer
 ![:-)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
@@ -200,7 +200,7 @@ Costs:
 
 The local digest is built:
 
-  - when store\_rebuild completes after startup (the cache contents have
+  - when store_rebuild completes after startup (the cache contents have
     been indexed in RAM), and
 
   - periodically thereafter. Currently, it is rebuilt every hour (more
@@ -366,7 +366,7 @@ the peer for it *but* the peer is not able to satisfy the request.
 Expiring or stale objects on the peer are frequent causes of False Hits.
 At the time of the query actual refresh patterns are used on the peer
 and stale entries are marked for revalidation. However, revalidation is
-prohibited unless the peer is behaving as a parent, or *miss\_access* is
+prohibited unless the peer is behaving as a parent, or *miss_access* is
 enabled. Thus, clients can receive error messages instead of revalidated
 objects\!
 
@@ -408,7 +408,7 @@ to add a *configure* option, so that the relevant code is compiled in:
 
 If a request is forwarded to a neighbour due a HIT in that neighbour's
 Cache Digest the hierarchy (9th) field of the access.log file for the
-*local cache* will look like *CACHE\_DIGEST\_HIT/neighbour*. The Log Tag
+*local cache* will look like *CACHE_DIGEST_HIT/neighbour*. The Log Tag
 (4th field) should obviously show a MISS.
 
 On the peer cache the request should appear as a normal HTTP request
@@ -419,11 +419,11 @@ from the first cache.
 The easiest situation to analyse is when two caches (say A and
 ![B)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile2.png) are
 involved neither of which uses the other as a parent. In this case, a
-False Hit would show up as a CACHE\_DIGEST\_HIT on A and *NOT* as a
-TCP\_HIT on B (or vice versa). If B does not fetch the object for A then
+False Hit would show up as a CACHE_DIGEST_HIT on A and *NOT* as a
+TCP_HIT on B (or vice versa). If B does not fetch the object for A then
 the hierarchy field will look like *NONE/-* (and A will have received an
 Access Denied or Forbidden message). This will happen if the object is
-not "available" on B and B does not have *miss\_access* enabled for A
+not "available" on B and B does not have *miss_access* enabled for A
 (or is not acting as a parent for A).
 
 ## How is the cause of a False Hit determined?
@@ -480,9 +480,9 @@ follows:
 
   - *CacheDigest.c (debug section 70)* Generic Cache Digest routines
 
-  - *store\_digest.c (debug section 71)* Local Cache Digest routines
+  - *store_digest.c (debug section 71)* Local Cache Digest routines
 
-  - *peer\_digest.c (debug section 72)* Peer Cache Digest routines
+  - *peer_digest.c (debug section 72)* Peer Cache Digest routines
 
 Note that in the source the term *Store Digest* refers to the digest
 created locally. The Cache Digest code is fairly self-explanatory (once
@@ -508,19 +508,19 @@ to submit this document as a draft because Cache Digests will likely
 undergo some important changes before we want to try to make it a
 standard.
 
-# Would it be possible to stagger the timings when cache\_digests are retrieved from peers?
+# Would it be possible to stagger the timings when cache_digests are retrieved from peers?
 
 |                                                                        |                                                 |
 | ---------------------------------------------------------------------- | ----------------------------------------------- |
 | ℹ️ | The information here is current for version 2.2 |
 
 Squid already has code to spread the digest updates. The algorithm is
-currently controlled by a few hard-coded constants in *peer\_digest.c*.
+currently controlled by a few hard-coded constants in *peer_digest.c*.
 For example, *GlobDigestReqMinGap* variable determines the minimum
 interval between two requests for a digest. You may want to try to
 increase the value of GlobDigestReqMinGap from 60 seconds to whatever
 you feel comfortable with (but it should be smaller than
-hour/number\_of\_peers, of course).
+hour/number_of_peers, of course).
 
 Note that whatever you do, you still need to give Squid enough time and
 bandwidth to fetch all the digests. Depending on your environment, that

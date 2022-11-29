@@ -23,14 +23,14 @@ prevent this, you must make sure that your proxy denies HTTP requests to
 port 25, the SMTP port.
 
 Squid is configured this way by default. The default *squid.conf* file
-lists a small number of trusted ports. See the *Safe\_ports* ACL in
+lists a small number of trusted ports. See the *Safe_ports* ACL in
 *squid.conf*. Your configuration file should always deny unsafe ports
-early in the *http\_access* lists:
+early in the *http_access* lists:
 
     http_access deny !Safe_ports
     (additional http_access lines ...)
 
-Do NOT add port 25 to *Safe\_ports* (unless your goal is to end up in
+Do NOT add port 25 to *Safe_ports* (unless your goal is to end up in
 the [RBL](http://mail-abuse.org/rbl/)). You may want to make a cron job
 that regularly verifies that your proxy blocks access to port 25.
 
@@ -87,18 +87,18 @@ hop anyway.
 The configuration controls provided by Squid are intended for
 Accelerator setups.
 
-# The Safe\_Ports and SSL\_Ports ACL
+# The Safe_Ports and SSL_Ports ACL
 
 These ACL controls are listed in a very specific way in the default
 squid.conf to protect Squid against Security issues such as those
 outlines for SMTP above.
 
-  - Safe\_Ports  
+  - Safe_Ports  
     Prevents people from making requests to any of the registered
     protocol ports. For which Squid is unable to proxy and filter the
     protocol.
 
-  - SSL\_Ports  
+  - SSL_Ports  
     Along with the CONNECT ACL prevents anyone from making an unfiltered
     tunnel to any of the otherwise safe ports which don't need it.
 

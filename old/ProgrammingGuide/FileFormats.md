@@ -22,10 +22,10 @@ has the following elements:
 
   - op
     
-      - Either SWAP\_LOG\_ADD (1) when an object is added to the disk
-        storage, or SWAP\_LOG\_DEL (2) when an object is deleted.
+      - Either SWAP_LOG_ADD (1) when an object is added to the disk
+        storage, or SWAP_LOG_DEL (2) when an object is deleted.
 
-  - swap\_file\_number
+  - swap_file_number
     
       - The 32-bit file number which maps to a pathname. Only the low
         24-bits are relevant. The high 8-bits are used as an index to an
@@ -67,7 +67,7 @@ has the following elements:
             
             *header, or if it is unparseable.*
         
-          - swap\_file\_sz
+          - swap_file_sz
             
               - This is the number of bytes that the object occupies on
                 
@@ -84,7 +84,7 @@ has the following elements:
             
               - A copy of the *StoreEntry* flags field. Used as a sanity
                 check when rebuilding the cache at startup. Objects that
-                have the KEY\_PRIVATE flag set are not added back to the
+                have the KEY_PRIVATE flag set are not added back to the
                 cache.
         
           - key
@@ -110,36 +110,36 @@ and then the VALUE (which is LENGTH octets long).
 
 As of Squid-2.3, the following TYPES are defined (from *enums.h*):
 
-  - STORE\_META\_VOID
+  - STORE_META_VOID
     
       - Just a placeholder for the zeroth value. It is never used on
         disk.
 
-  - STORE\_META\_KEY\_URL
+  - STORE_META_KEY_URL
     
       - This represents the case when we use the URL as the cache key,
         as Squid-1.1 does. Currently we don't support using a URL as a
         cache key, so this is not used.
 
-  - STORE\_META\_KEY\_SHA
+  - STORE_META_KEY_SHA
     
       - For a brief time we considered supporting SHA (secure hash
         algorithm) as a cache key. Nobody liked it, and this type is not
         currently used.
 
-  - STORE\_META\_KEY\_MD5
+  - STORE_META_KEY_MD5
     
       - This represents the MD5 cache key that Squid currently uses.
         When Squid opens a disk file for reading, it can check that this
         MD5 matches the MD5 of the user's request. If not, then
         something went wrong and this is probably the wrong object.
 
-  - STORE\_META\_URL
+  - STORE_META_URL
     
       - The object's URL. This also may be matched against a user's
         request for cache hits to make sure we got the right object.
 
-  - STORE\_META\_STD
+  - STORE_META_STD
     
       - This is the *standard metadata* for an object. Really its just
         this middle chunk of the StoreEntry structure:
@@ -154,15 +154,15 @@ As of Squid-2.3, the following TYPES are defined (from *enums.h*):
                 u_short flags;
         ```
 
-  - STORE\_META\_HITMETERING
+  - STORE_META_HITMETERING
     
       - Reserved for future hit-metering (RFC 2227) stuff.
 
-  - STORE\_META\_VALID
+  - STORE_META_VALID
     
       - ?
 
-  - STORE\_META\_END
+  - STORE_META_END
     
       - Marks the last valid META type.
 
@@ -174,13 +174,13 @@ is done with a couple of functions. First, `storeSwapMetaPack()` takes a
 `storeSwapMetaPack()` converts the *tlv* list into a character buffer
 that we can write.
 
-Note that the *MemObject* has a member called *swap\_hdr\_sz*. This
+Note that the *MemObject* has a member called *swap_hdr_sz*. This
 value is the size of that character buffer; the size of the swap file
-meta data. The *StoreEntry* has a member named *swap\_file\_sz* that
+meta data. The *StoreEntry* has a member named *swap_file_sz* that
 represents the size of the disk file. Thus, the size of the object
-content*is StoreEntry-\>swap\_file\_sz - MemObject-\>swap\_hdr\_sz;Note
+content*is StoreEntry-\>swap_file_sz - MemObject-\>swap_hdr_sz;Note
 that the swap file content includes the HTTP reply headers and the HTTP
 reply body (if any).When reading a swap file, there is a similar process
 to extract the swap meta data. First, `storeSwapMetaUnpack()` converts a
 character buffer into atlv*linked list. It also tells us the value
-for*MemObject-\>swap\_hdr\_sz*.**
+for*MemObject-\>swap_hdr_sz*.**

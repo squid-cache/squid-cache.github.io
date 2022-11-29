@@ -123,13 +123,13 @@ Socket - an fd on unix, a HANDLE on windows.
     
       - Dispatch drops its `CallbackReference`
 
-11. `HttpClientConnection` calls clean\_close on Socket
+11. `HttpClientConnection` calls clean_close on Socket
     
       - The Socket checks for outstanding reads or writes
 
-12. Socket calls shutdown(SD\_SEND) to the os
+12. Socket calls shutdown(SD_SEND) to the os
     
-      - Socket calls 'socket\_detached' on `HttpClientConnection`
+      - Socket calls 'socket_detached' on `HttpClientConnection`
         informing it that it has been released.
     
       - Socket drops its `CallbackReference` to the
@@ -172,7 +172,7 @@ Case 1: the read gets EOF first (the shutdown was acked by the far end)
 
 3.  `LingerSocket` calls close on Socket.
     
-      - Socket does sd\_shutdown(SD\_BOTH) and close(fd).
+      - Socket does sd_shutdown(SD_BOTH) and close(fd).
 
 4.  Socket calls back the comms layer callback noting its finished with
     
@@ -180,7 +180,7 @@ Case 1: the read gets EOF first (the shutdown was acked by the far end)
 
 5.  Socket frees due to no references
     
-      - Socket calls 'socket\_detached' on the `LingerSocketClient`.
+      - Socket calls 'socket_detached' on the `LingerSocketClient`.
 
 6.  `LingerSocketClient` frees due to no references.
 
@@ -198,9 +198,9 @@ Case 2: the Linger timeout fires.
     
       - Dispatcher drops `CallbackReference` to the `LingerSocketClient`
 
-3.  `LingerSocketClient` calls socket.force\_close()
+3.  `LingerSocketClient` calls socket.force_close()
     
-      - Socket does sd\_shutdown(SD\_BOTH) and close(fd).
+      - Socket does sd_shutdown(SD_BOTH) and close(fd).
 
 4.  Socket calls back the comms layer callback noting its finished with
     
@@ -208,7 +208,7 @@ Case 2: the Linger timeout fires.
 
 5.  Socket frees due to no references
     
-      - Socket calls 'socket\_detached' on the `LingerSocketClient`.
+      - Socket calls 'socket_detached' on the `LingerSocketClient`.
 
 6.  `LingerSocketClient` frees due to no references.
 

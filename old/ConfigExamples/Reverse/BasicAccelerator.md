@@ -19,7 +19,7 @@ are.
 
 |                                                                        |                                                                                                                                        |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| ℹ️ | The accel option to [http\_port](http://www.squid-cache.org/Doc/config/http_port) should only be specified for 2.6.STABLE8 and later. |
+| ℹ️ | The accel option to [http_port](http://www.squid-cache.org/Doc/config/http_port) should only be specified for 2.6.STABLE8 and later. |
 
 |                                                                      |                                                                                                                                         |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,10 +29,10 @@ are.
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http\_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
 First, you have to tell Squid to listen on port 80 (usually), so set the
-**[http\_port](http://www.squid-cache.org/Doc/config/http_port)**
+**[http_port](http://www.squid-cache.org/Doc/config/http_port)**
 option with the defaultsite option telling Squid it's an accelerator for
 this site:
 

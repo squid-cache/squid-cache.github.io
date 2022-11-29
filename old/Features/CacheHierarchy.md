@@ -12,21 +12,21 @@
 Proxy and Cache Hierarchies are built out of two basic peering linkages.
 **parent** links (shown as green) and **sibling** links (show as blue).
 
-![Peering\_Basics.png](https://wiki.squid-cache.org/Features/CacheHierarchy?action=AttachFile&do=get&target=Peering_Basics.png)
+![Peering_Basics.png](https://wiki.squid-cache.org/Features/CacheHierarchy?action=AttachFile&do=get&target=Peering_Basics.png)
 
 These two simple connections can be combined in any number of complex
 **hierarchies**. For example this cluster of 6 sibling caches with a
 gateway proxy load balancing between them.
 
-![Cluster\_1x6.png](https://wiki.squid-cache.org/Features/CacheHierarchy?action=AttachFile&do=get&target=Cluster_1x6.png)
+![Cluster_1x6.png](https://wiki.squid-cache.org/Features/CacheHierarchy?action=AttachFile&do=get&target=Cluster_1x6.png)
 
 ## How do I configure Squid forward all requests to another proxy?
 
 First, you need to give Squid a parent cache with the
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 directive. Second, you need to tell Squid it can not connect directly to
 origin servers with
-[never\_direct](http://www.squid-cache.org/Doc/config/never_direct).
+[never_direct](http://www.squid-cache.org/Doc/config/never_direct).
 This is done with these configuration file lines:
 
     cache_peer parentcache.foo.com parent 3128 0 no-query default
@@ -44,20 +44,20 @@ parents go down you should use a different approach:
 
 The default behavior of Squid in the absence of positive ICP, HTCP, etc
 replies is to connect to the origin server instead of using parents. The
-[prefer\_direct](http://www.squid-cache.org/Doc/config/prefer_direct)
+[prefer_direct](http://www.squid-cache.org/Doc/config/prefer_direct)
 **off** directive tells Squid to try parents first before DNS listed
 servers.
 
 Certain types of requests cannot be cached or are served faster going
 direct, and Squid is optimized to send them over direct connections by
 default. The
-[nonhierarchical\_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
+[nonhierarchical_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
 **off** directive tells Squid to send these requests via the parent
 anyway.
 
   - ⚠️
     The
-    [hierarchy\_stoplist](http://www.squid-cache.org/Doc/config/hierarchy_stoplist)
+    [hierarchy_stoplist](http://www.squid-cache.org/Doc/config/hierarchy_stoplist)
     directive is another which will cause traffic to go DIRECT instead
     of to a peer. It should be removed completely from
     [Squid-3.2](/Releases/Squid-3.2)
@@ -65,7 +65,7 @@ anyway.
 
 ## How do I join a cache hierarchy?
 
-To place your cache in a hierarchy, use the *cache\_peer* directive in
+To place your cache in a hierarchy, use the *cache_peer* directive in
 *squid.conf* to specify the parent and sibling nodes.
 
 For example, the following *squid.conf* file on
@@ -81,11 +81,11 @@ one parent cache and two sibling caches:
     cache_peer childcache3.example.com   sibling 3128 3130
 
   - ⚠️
-    cache\_peer\_domain is deprecated and not longer available from
+    cache_peer_domain is deprecated and not longer available from
     current Squid versions.
 
 The
-[cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
+[cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
 directive allows you to specify that certain caches siblings or parents
 for certain domains:
 

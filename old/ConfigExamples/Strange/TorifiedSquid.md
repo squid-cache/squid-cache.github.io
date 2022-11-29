@@ -162,7 +162,7 @@ Paste the configuration file like this:
 
 Adapt config snippet to your configuration.
 
-For squid 4.x+, adjust access\_log settings as follows:
+For squid 4.x+, adjust access_log settings as follows:
 
     acl hasRequest has request
     access_log daemon:/data/cache/log/access.log buffer-size=256KB logformat=squid hasRequest !tor_url

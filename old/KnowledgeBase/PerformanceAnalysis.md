@@ -59,10 +59,10 @@ try to follow the steps in
 None, before having understood what is really going on.
 
 Some of the solutions could actually end up worsening the problem: for
-instance increasing cache\_mem on a memory-bound system can actually be
+instance increasing cache_mem on a memory-bound system can actually be
 detrimental to overall squid performance: if you end up using more
 memory than your system has, parts of squid end up being swapped to disk
 trashing performance. In such cases it's much better to actually
-**reduce** cache\_mem.
+**reduce** cache_mem.
 
 [CategoryKnowledgeBase](/CategoryKnowledgeBase)

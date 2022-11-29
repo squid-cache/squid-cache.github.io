@@ -19,7 +19,7 @@
 
 Squid can receive limited directives via Unix signals (e.g. used for
 reconfigure, rotate, etc.), or via cachemgr actions (shutdown,
-toggle\_offline). It would be nice to have an extendible interface to
+toggle_offline). It would be nice to have an extendible interface to
 allow finer control over a greater set of squid's behaviour.
 
 The control channel can be used to implement all the currently-available

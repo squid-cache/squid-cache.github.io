@@ -12,7 +12,7 @@ about these examples please email the squid-users mailing list.
 ## Outline
 
 In this example a squid installation will use RADIUS
-"squid\_radius\_auth" Squid RADIUS authentication helper to authenticate
+"squid_radius_auth" Squid RADIUS authentication helper to authenticate
 users before allowing them to surf the web. For security reasons users
 need to enter their username and password before they are allowed to
 surf the internet.
@@ -23,7 +23,7 @@ Install squid using your distro package management system or using
 source.
 
 Make sure squid is compiled with
-**--enable-basic-auth-helpers="squid\_radius\_auth"** option which is
+**--enable-basic-auth-helpers="squid_radius_auth"** option which is
 only available in Squid-2.6.STABLE17 and later.
 
 ## Create radius configuration file
@@ -40,12 +40,12 @@ is ignored. The radius configuration file will contain...
     
     port portnumber: Specifies the port number or  service name where the helper should connect. (default to 1812)
 
-Here is my radius config: /etc/radius\_config
+Here is my radius config: /etc/radius_config
 
     server 192.168.10.20
     secret someSecret
 
-## Test the squid\_radius\_auth helper
+## Test the squid_radius_auth helper
 
 Before making changes to squid.conf its better to test the helper from
 command line.

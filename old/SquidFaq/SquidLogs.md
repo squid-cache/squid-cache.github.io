@@ -124,7 +124,7 @@ underscore characters) which describe the response sent to the client.
     |          |                                                                                                                                                                                                                                             |
     | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **TCP**  | Requests on the HTTP port (usually 3128).                                                                                                                                                                                                   |
-    | **UDP**  | Requests on the ICP port (usually 3130) or HTCP port (usually 4128). If ICP logging was disabled using the *log\_icp\_queries* option, no ICP replies will be logged.                                                                       |
+    | **UDP**  | Requests on the ICP port (usually 3130) or HTCP port (usually 4128). If ICP logging was disabled using the *log_icp_queries* option, no ICP replies will be logged.                                                                       |
     | **NONE** | Squid delivered an unusual response or no response at all. Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes. Also seen with responses to CONNECT requests. |
     
 
@@ -133,14 +133,14 @@ underscore characters) which describe the response sent to the client.
     
     |              |                                                                                                                                                                                                                                                                                                                                                                                                                       |
     | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **CF**       | At least one request in this transaction was collapsed. See [collapsed\_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding) for more details about request collapsing. Support for this tag has been added to Squid v5 on 2018-06-18 (commit [d2a6dc](https://github.com/squid-cache/squid/commit/d2a6dcba707c15484c255e7a569b90f7f1186383)). It may not be available in earlier Squid versions. |
+    | **CF**       | At least one request in this transaction was collapsed. See [collapsed_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding) for more details about request collapsing. Support for this tag has been added to Squid v5 on 2018-06-18 (commit [d2a6dc](https://github.com/squid-cache/squid/commit/d2a6dcba707c15484c255e7a569b90f7f1186383)). It may not be available in earlier Squid versions. |
     | **CLIENT**   | The client request placed limits affecting the response. Usually seen with client issued a "no-cache", or analogous cache control command along with the request. Thus, the cache has to validate the object.                                                                                                                                                                                                         |
     | **IMS**      | The client sent a revalidation (conditional) request.                                                                                                                                                                                                                                                                                                                                                                 |
     | **ASYNC**    | The request was generated internally by Squid. Usually this is background fetches for cache information exchanges, background revalidation from *stale-while-revalidate* cache controls, or ESI sub-objects being loaded.                                                                                                                                                                                             |
     | **SWAPFAIL** | The object was believed to be in the cache, but could not be accessed. A new copy was requested from the server.                                                                                                                                                                                                                                                                                                      |
     | **REFRESH**  | A revalidation (conditional) request was sent to the server.                                                                                                                                                                                                                                                                                                                                                          |
     | **SHARED**   | This tag is not supported yet. This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED.                                                                                                                                                                                                                                                    |
-    | **REPLY**    | The HTTP reply from server or peer. Usually seen on **DENIED** due to [http\_reply\_access](http://www.squid-cache.org/Doc/config/http_reply_access) ACLs preventing delivery of servers response object to the client.                                                                                                                                                                                              |
+    | **REPLY**    | The HTTP reply from server or peer. Usually seen on **DENIED** due to [http_reply_access](http://www.squid-cache.org/Doc/config/http_reply_access) ACLs preventing delivery of servers response object to the client.                                                                                                                                                                                              |
     
 
   - These tags are optional and describe what type of object was
@@ -150,12 +150,12 @@ underscore characters) which describe the response sent to the client.
     | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **NEGATIVE**   | Only seen on **HIT** responses. Indicating the response was a cached error response. e.g. "404 not found"                                                                                                                                           |
     | **STALE**      | The object was cached and served stale. This is usually caused by *stale-while-revalidate* or *stale-if-error* cache controls.                                                                                                                      |
-    | **OFFLINE**    | The requested object was retrieved from the cache during [offline\_mode](http://www.squid-cache.org/Doc/config/offline_mode). The offline mode never validates any object.                                                                         |
+    | **OFFLINE**    | The requested object was retrieved from the cache during [offline_mode](http://www.squid-cache.org/Doc/config/offline_mode). The offline mode never validates any object.                                                                         |
     | **INVALID**    | An invalid request was received. An error response was delivered indicating what the problem was.                                                                                                                                                   |
     | **FAIL**       | Only seen on **REFRESH** to indicate the revalidation request failed. The response object may be the server provided network error or the stale object which was being revalidated depending on *stale-if-error* cache control.                     |
     | **MODIFIED**   | Only seen on **REFRESH** responses to indicate revalidation produced a new modified object.                                                                                                                                                         |
     | **UNMODIFIED** | Only seen on **REFRESH** responses to indicate revalidation produced a 304 (Not Modified) status. The client gets either a full 200 (OK), a 304 (Not Modified), or (in theory) another response, depending on the client request and other details. |
-    | **REDIRECT**   | Squid generated an HTTP redirect response to this request. Only on [Squid-3.2](/Releases/Squid-3.2)+ or Squid built with -DLOG\_TCP\_REDIRECTS compiler flag.                                    |
+    | **REDIRECT**   | Squid generated an HTTP redirect response to this request. Only on [Squid-3.2](/Releases/Squid-3.2)+ or Squid built with -DLOG_TCP_REDIRECTS compiler flag.                                    |
     
 
   - These tags are optional and describe whether the response was loaded
@@ -167,7 +167,7 @@ underscore characters) which describe the response sent to the client.
     | **MEM**     | Additional tag indicating the response object came from memory cache, avoiding disk accesses. Only seen on **HIT** responses.                                                                                                                                           |
     | **MISS**    | The response object delivered was the network response object.                                                                                                                                                                                                          |
     | **DENIED**  | The request was denied by access controls.                                                                                                                                                                                                                              |
-    | **NOFETCH** | A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either **UDP\_HIT** or **UDP\_MISS\_NOFETCH**. Neighbours will thus only fetch hits. |
+    | **NOFETCH** | A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either **UDP_HIT** or **UDP_MISS_NOFETCH**. Neighbours will thus only fetch hits. |
     | **TUNNEL**  | A binary tunnel was established for this transaction. Only on [Squid-3.5](/Releases/Squid-3.5)+                                                                                                                      |
     
 
@@ -295,83 +295,83 @@ requests, there is no hierarchy information.
 
 **DIRECT** The object was fetched from the origin server.
 
-**SIBLING\_HIT** The object was fetched from a sibling cache which
-replied with UDP\_HIT.
+**SIBLING_HIT** The object was fetched from a sibling cache which
+replied with UDP_HIT.
 
-**PARENT\_HIT** The object was requested from a parent cache which
-replied with UDP\_HIT.
+**PARENT_HIT** The object was requested from a parent cache which
+replied with UDP_HIT.
 
-**DEFAULT\_PARENT** No ICP queries were sent. This parent was chosen
+**DEFAULT_PARENT** No ICP queries were sent. This parent was chosen
 because it was marked "default" in the config file.
 
-**SINGLE\_PARENT** The object was requested from the only parent
+**SINGLE_PARENT** The object was requested from the only parent
 appropriate for the given URL.
 
-**FIRST\_UP\_PARENT** The object was fetched from the first parent in
+**FIRST_UP_PARENT** The object was fetched from the first parent in
 the list of parents.
 
-**NO\_PARENT\_DIRECT** The object was fetched from the origin server,
+**NO_PARENT_DIRECT** The object was fetched from the origin server,
 because no parents existed for the given URL.
 
-**FIRST\_PARENT\_MISS** The object was fetched from the parent with the
+**FIRST_PARENT_MISS** The object was fetched from the parent with the
 fastest (possibly weighted) round trip time.
 
-**CLOSEST\_PARENT\_MISS** This parent was chosen, because it included
+**CLOSEST_PARENT_MISS** This parent was chosen, because it included
 the the lowest RTT measurement to the origin server. See also the
 *closest-only* peer configuration option.
 
-**CLOSEST\_PARENT** The parent selection was based on our own RTT
+**CLOSEST_PARENT** The parent selection was based on our own RTT
 measurements.
 
-**CLOSEST\_DIRECT** Our own RTT measurements returned a shorter time
+**CLOSEST_DIRECT** Our own RTT measurements returned a shorter time
 than any parent.
 
-**NO\_DIRECT\_FAIL** The object could not be requested because of a
-firewall configuration, see also *never\_direct* and related material,
+**NO_DIRECT_FAIL** The object could not be requested because of a
+firewall configuration, see also *never_direct* and related material,
 and no parents were available.
 
-**SOURCE\_FASTEST** The origin site was chosen, because the source ping
+**SOURCE_FASTEST** The origin site was chosen, because the source ping
 arrived fastest.
 
-**ROUNDROBIN\_PARENT** No ICP replies were received from any parent. The
+**ROUNDROBIN_PARENT** No ICP replies were received from any parent. The
 parent was chosen, because it was marked for round robin in the config
 file and had the lowest usage count.
 
-**CACHE\_DIGEST\_HIT** The peer was chosen, because the cache digest
+**CACHE_DIGEST_HIT** The peer was chosen, because the cache digest
 predicted a hit. This option was later replaced in order to distinguish
 between parents and siblings.
 
-**CD\_PARENT\_HIT** The parent was chosen, because the cache digest
+**CD_PARENT_HIT** The parent was chosen, because the cache digest
 predicted a hit.
 
-**CD\_SIBLING\_HIT** The sibling was chosen, because the cache digest
+**CD_SIBLING_HIT** The sibling was chosen, because the cache digest
 predicted a hit.
 
-**NO\_CACHE\_DIGEST\_DIRECT** This output seems to be unused?
+**NO_CACHE_DIGEST_DIRECT** This output seems to be unused?
 
 **CARP** The peer was selected by CARP.
 
 **PINNED** The server connection was pinned by NTLM or Negotiate
 authentication requirements.
 
-**ORIGINAL\_DST** The server connection was limited to the client
+**ORIGINAL_DST** The server connection was limited to the client
 provided destination IP. This occurs on interception proxies when Host
 security is enabled, or
-[client\_dst\_passthru](http://www.squid-cache.org/Doc/config/client_dst_passthru)
+[client_dst_passthru](http://www.squid-cache.org/Doc/config/client_dst_passthru)
 transparency is enabled.
 
-**ANY\_OLD\_PARENT** (former ANY\_PARENT?) Squid used the first
+**ANY_OLD_PARENT** (former ANY_PARENT?) Squid used the first
 considered-alive parent it could reach. This happens when none of the
 specific parent cache selection algorithms (e.g., userhash or carp) were
 enabled, all enabled algorithms failed to find a suitable parent, or all
 suitable parents found by those algorithms failed when Squid tried to
 forward the request to them.
 
-**INVALID CODE** part of *src/peer\_select.c:hier\_strings\[\]*.
+**INVALID CODE** part of *src/peer_select.c:hier_strings\[\]*.
 
-Almost any of these may be preceded by 'TIMEOUT\_' if the two-second
+Almost any of these may be preceded by 'TIMEOUT_' if the two-second
 (default) timeout occurs waiting for all ICP replies to arrive from
-neighbors, see also the *icp\_query\_timeout* configuration option.
+neighbors, see also the *icp_query_timeout* configuration option.
 
 The following hierarchy codes were removed from Squid-2:
 
@@ -395,7 +395,7 @@ swap out (save to disk).
 The *store.log* file may be of interest to log file analysis which looks
 into the objects on your disks and the time they spend there, or how
 many times a hot object was accessed. The latter may be covered by
-another log file, too. With knowledge of the *cache\_dir* configuration
+another log file, too. With knowledge of the *cache_dir* configuration
 option, this log file allows for a URL to filename mapping without
 recursing your cache disks. However, the Squid developers recommend to
 treat *store.log* primarily as a debug file, and so should you, unless
@@ -403,7 +403,7 @@ you know what you are doing.
 
 The print format for a store log entry (one line) consists of thirteen
 space-separated columns, compare with the *storeLog()* function in file
-*src/store\_log.c*:
+*src/store_log.c*:
 
     9ld.%03d %-7s %02d %08X %s %4d %9ld %9ld %9ld %s %ld/%ld %s %s
 
@@ -411,7 +411,7 @@ space-separated columns, compare with the *storeLog()* function in file
     millisecond fraction.
 
 2.  **action** The action the object was sumitted to, compare with
-    *src/store\_log.c*:
+    *src/store_log.c*:
     
       - **CREATE** Seems to be unused.
     
@@ -422,12 +422,12 @@ space-separated columns, compare with the *storeLog()* function in file
     
       - **SWAPIN** The object existed on disk and was read into memory.
 
-3.  **dir number** The cache\_dir number this object was stored into,
-    starting at 0 for your first cache\_dir line.
+3.  **dir number** The cache_dir number this object was stored into,
+    starting at 0 for your first cache_dir line.
 
 4.  **file number** The file number for the object storage file. Please
     note that the path to this file is calculated according to your
-    *cache\_dir* configuration. A file number of *FFFFFFFF* indicates
+    *cache_dir* configuration. A file number of *FFFFFFFF* indicates
     "memory only" objects. Any action code for such a file number refers
     to an object which existed only in memory, not on disk. For
     instance, if a *RELEASE* code was logged with file number
@@ -494,8 +494,8 @@ also causes a clean swap log to be written.
     % squid -k rotate
 
 By default the *swap.state* file is stored in the top-level of each
-*cache\_dir*. You can move the logs to a different location with the
-*cache\_swap\_state* option.
+*cache_dir*. You can move the logs to a different location with the
+*cache_swap_state* option.
 
 The file is a binary format that includes MD5 checksums, and
 *StoreEntry* fields. Please see the Programmers' Guide for information
@@ -529,7 +529,7 @@ The user agent log file is only maintained, if
 
   - you configured the compile time *--enable-useragent-log* option, and
 
-  - you pointed the *useragent\_log* configuration option to a file.
+  - you pointed the *useragent_log* configuration option to a file.
 
 From the user agent log file you are able to find out about distribution
 of browsers of your clients. Using this option in conjunction with a
@@ -551,13 +551,13 @@ feature. You should rotate your log files at least once per day. The
 current log files are closed and then renamed with numeric extensions
 (.0, .1, etc). If you want to, you can write your own scripts to archive
 or remove the old log files. If not, Squid will only keep up to
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
+[logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 versions of each log file. The logfile rotation procedure also writes a
 clean *swap.state* file, but it does not leave numbered versions of the
 old files.
 
 If you set
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
+[logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 to 0, Squid simply closes and then re-opens the logs. This allows
 third-party logfile management systems, such as *newsyslog*, to maintain
 the log files.
@@ -588,7 +588,7 @@ To disable *cache.log*:
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | It is a bad idea to disable the *cache.log* because this file contains many important status and debugging messages. However, if you really want to, you can                                                                                                                                    |
 | ⚠️      | If /dev/null is specified to any of the above log files, [logfile](http://www.squid-cache.org/Doc/config/logfile) rotate MUST also be set to *0* or else risk Squid rotating away /dev/null making it a plain log file                                                                         |
-| ℹ️    | Instead of disabling the log files, it is advisable to use a smaller value for [logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate) and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system |
+| ℹ️    | Instead of disabling the log files, it is advisable to use a smaller value for [logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate) and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system |
 
 # What is the maximum size of access.log?
 
@@ -614,17 +614,17 @@ extremely large and when a long access.log traffic history is required
 not reasonable. From
 [Squid-3.2](/Releases/Squid-3.2)
 cache.log can be rotated with an individual cap set by
-[debug\_options](http://www.squid-cache.org/Doc/config/debug_options)
+[debug_options](http://www.squid-cache.org/Doc/config/debug_options)
 rotate=N} option to store fewer of these large files in the .0 to .N
 series of backups. The default is to store the same number as with
 access.log and set in the
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
+[logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 directive.
 
 # I want to use another tool to maintain the log files.
 
 If you set
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
+[logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 to 0, Squid simply closes and then re-opens the logs. This allows
 third-party logfile management systems, such as
 [newsyslog](http://www.weird.com/~woods/projects/newsyslog.html) or
@@ -647,14 +647,14 @@ the cache operations in progress. The procedures were described above.
 Depending on the disk space allocated for log file storage, it is
 recommended to set up a cron job which rotates the log files every 24,
 12, or 8 hour. You will need to set your
-[logfile\_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
+[logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 to a sufficiently large number. During a time of some idleness, you can
 safely transfer the log files to your analysis host in one burst.
 
 Before transport, the log files can be compressed during off-peak time.
 On the analysis host, the log file are concatenated into one file, so
 one file for 24 hours is the yield. Also note that with
-[log\_icp\_queries](http://www.squid-cache.org/Doc/config/log_icp_queries)
+[log_icp_queries](http://www.squid-cache.org/Doc/config/log_icp_queries)
 enabled, you might have around 1 GB of uncompressed log information per
 day and busy cache. Look into you cache manager info page to make an
 educated guess on the size of your log files.
@@ -692,26 +692,26 @@ to obey when handling and processing log files:
     
       - The requests handled per interval (e.g. second, minute or hour).
 
-# Why do I get ERR\_NO\_CLIENTS\_BIG\_OBJ messages so often?
+# Why do I get ERR_NO_CLIENTS_BIG_OBJ messages so often?
 
 This message means that the requested object was in "Delete Behind" mode
 and the user aborted the transfer. An object will go into "Delete
 Behind" mode if
 
-  - It is larger than *maximum\_object\_size*
+  - It is larger than *maximum_object_size*
 
   - It is being fetched from a neighbor which has the *proxy-only*
     option set.
 
-# What does ERR\_LIFETIME\_EXP mean?
+# What does ERR_LIFETIME_EXP mean?
 
 This means that a timeout occurred while the object was being
 transferred. Most likely the retrieval of this object was very slow (or
 it stalled before finishing) and the user aborted the request. However,
-depending on your settings for *quick\_abort*, Squid may have continued
+depending on your settings for *quick_abort*, Squid may have continued
 to try retrieving the object. Squid imposes a maximum amount of time on
 all open sockets, so after some amount of time the stalled request was
-aborted and logged win an ERR\_LIFETIME\_EXP message.
+aborted and logged win an ERR_LIFETIME_EXP message.
 
 # Retrieving "lost" files from the cache
 

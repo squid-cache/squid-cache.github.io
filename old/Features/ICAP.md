@@ -113,37 +113,37 @@ adaptation:
     icap_service service_resp respmod_precache bypass=0 icap://127.0.0.1:1344/response
     adaptation_access service_resp allow all
 
-  - [adaptation\_access](http://www.squid-cache.org/Doc/config/adaptation_access)
+  - [adaptation_access](http://www.squid-cache.org/Doc/config/adaptation_access)
 
-  - [adaptation\_service\_set](http://www.squid-cache.org/Doc/config/adaptation_service_set)
+  - [adaptation_service_set](http://www.squid-cache.org/Doc/config/adaptation_service_set)
 
-  - [icap\_client\_username\_encode](http://www.squid-cache.org/Doc/config/icap_client_username_encode)
+  - [icap_client_username_encode](http://www.squid-cache.org/Doc/config/icap_client_username_encode)
 
-  - [icap\_client\_username\_header](http://www.squid-cache.org/Doc/config/icap_client_username_header)
+  - [icap_client_username_header](http://www.squid-cache.org/Doc/config/icap_client_username_header)
 
-  - [icap\_connect\_timeout](http://www.squid-cache.org/Doc/config/icap_connect_timeout)
+  - [icap_connect_timeout](http://www.squid-cache.org/Doc/config/icap_connect_timeout)
 
-  - [icap\_default\_options\_ttl](http://www.squid-cache.org/Doc/config/icap_default_options_ttl)
+  - [icap_default_options_ttl](http://www.squid-cache.org/Doc/config/icap_default_options_ttl)
 
-  - [icap\_enable](http://www.squid-cache.org/Doc/config/icap_enable)
+  - [icap_enable](http://www.squid-cache.org/Doc/config/icap_enable)
 
-  - [icap\_io\_timeout](http://www.squid-cache.org/Doc/config/icap_io_timeout)
+  - [icap_io_timeout](http://www.squid-cache.org/Doc/config/icap_io_timeout)
 
-  - [icap\_persistent\_connections](http://www.squid-cache.org/Doc/config/icap_persistent_connections)
+  - [icap_persistent_connections](http://www.squid-cache.org/Doc/config/icap_persistent_connections)
 
-  - [icap\_preview\_enable](http://www.squid-cache.org/Doc/config/icap_preview_enable)
+  - [icap_preview_enable](http://www.squid-cache.org/Doc/config/icap_preview_enable)
 
-  - [icap\_preview\_size](http://www.squid-cache.org/Doc/config/icap_preview_size)
+  - [icap_preview_size](http://www.squid-cache.org/Doc/config/icap_preview_size)
 
-  - [icap\_send\_client\_ip](http://www.squid-cache.org/Doc/config/icap_send_client_ip)
+  - [icap_send_client_ip](http://www.squid-cache.org/Doc/config/icap_send_client_ip)
 
-  - [icap\_send\_client\_username](http://www.squid-cache.org/Doc/config/icap_send_client_username)
+  - [icap_send_client_username](http://www.squid-cache.org/Doc/config/icap_send_client_username)
 
-  - [icap\_service](http://www.squid-cache.org/Doc/config/icap_service)
+  - [icap_service](http://www.squid-cache.org/Doc/config/icap_service)
 
-  - [icap\_service\_failure\_limit](http://www.squid-cache.org/Doc/config/icap_service_failure_limit)
+  - [icap_service_failure_limit](http://www.squid-cache.org/Doc/config/icap_service_failure_limit)
 
-  - [icap\_service\_revival\_delay](http://www.squid-cache.org/Doc/config/icap_service_revival_delay)
+  - [icap_service_revival_delay](http://www.squid-cache.org/Doc/config/icap_service_revival_delay)
 
 ### Squid 3.0
 
@@ -164,37 +164,37 @@ adaptation:
 
 There are other options which can control various aspects of ICAP:
 
-  - [icap\_access](http://www.squid-cache.org/Doc/config/icap_access)
+  - [icap_access](http://www.squid-cache.org/Doc/config/icap_access)
 
-  - [icap\_class](http://www.squid-cache.org/Doc/config/icap_class)
+  - [icap_class](http://www.squid-cache.org/Doc/config/icap_class)
 
-  - [icap\_client\_username\_encode](http://www.squid-cache.org/Doc/config/icap_client_username_encode)
+  - [icap_client_username_encode](http://www.squid-cache.org/Doc/config/icap_client_username_encode)
 
-  - [icap\_client\_username\_header](http://www.squid-cache.org/Doc/config/icap_client_username_header)
+  - [icap_client_username_header](http://www.squid-cache.org/Doc/config/icap_client_username_header)
 
-  - [icap\_connect\_timeout](http://www.squid-cache.org/Doc/config/icap_connect_timeout)
+  - [icap_connect_timeout](http://www.squid-cache.org/Doc/config/icap_connect_timeout)
 
-  - [icap\_default\_options\_ttl](http://www.squid-cache.org/Doc/config/icap_default_options_ttl)
+  - [icap_default_options_ttl](http://www.squid-cache.org/Doc/config/icap_default_options_ttl)
 
-  - [icap\_enable](http://www.squid-cache.org/Doc/config/icap_enable)
+  - [icap_enable](http://www.squid-cache.org/Doc/config/icap_enable)
 
-  - [icap\_io\_timeout](http://www.squid-cache.org/Doc/config/icap_io_timeout)
+  - [icap_io_timeout](http://www.squid-cache.org/Doc/config/icap_io_timeout)
 
-  - [icap\_persistent\_connections](http://www.squid-cache.org/Doc/config/icap_persistent_connections)
+  - [icap_persistent_connections](http://www.squid-cache.org/Doc/config/icap_persistent_connections)
 
-  - [icap\_preview\_enable](http://www.squid-cache.org/Doc/config/icap_preview_enable)
+  - [icap_preview_enable](http://www.squid-cache.org/Doc/config/icap_preview_enable)
 
-  - [icap\_preview\_size](http://www.squid-cache.org/Doc/config/icap_preview_size)
+  - [icap_preview_size](http://www.squid-cache.org/Doc/config/icap_preview_size)
 
-  - [icap\_send\_client\_ip](http://www.squid-cache.org/Doc/config/icap_send_client_ip)
+  - [icap_send_client_ip](http://www.squid-cache.org/Doc/config/icap_send_client_ip)
 
-  - [icap\_send\_client\_username](http://www.squid-cache.org/Doc/config/icap_send_client_username)
+  - [icap_send_client_username](http://www.squid-cache.org/Doc/config/icap_send_client_username)
 
-  - [icap\_service](http://www.squid-cache.org/Doc/config/icap_service)
+  - [icap_service](http://www.squid-cache.org/Doc/config/icap_service)
 
-  - [icap\_service\_failure\_limit](http://www.squid-cache.org/Doc/config/icap_service_failure_limit)
+  - [icap_service_failure_limit](http://www.squid-cache.org/Doc/config/icap_service_failure_limit)
 
-  - [icap\_service\_revival\_delay](http://www.squid-cache.org/Doc/config/icap_service_revival_delay)
+  - [icap_service_revival_delay](http://www.squid-cache.org/Doc/config/icap_service_revival_delay)
 
 <!-- end list -->
 

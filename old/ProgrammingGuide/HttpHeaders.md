@@ -18,9 +18,9 @@ scratch or searching through the entire "string".
 field is represented by an `HttpHeaderEntry` object. `HttpHeaderEntry`
 is an (id, name, value) triplet. Meaningful "Id"s are defined for
 "well-known" header-fields like "Connection" or "Content-Length". When
-Squid fails to recognize a field, it uses special "id", *HDR\_OTHER*.
+Squid fails to recognize a field, it uses special "id", *HDR_OTHER*.
 Ids are formed by capitalizing the corresponding HTTP header-field name
-and replacing dashes ('-') with underscores ('\_').
+and replacing dashes ('-') with underscores ('_').
 
 Most operations on `HttpHeader` require a "known" id as a parameter. The
 rationale behind the later restriction is that Squid programmer should
@@ -65,7 +65,7 @@ particular header-field (`httpHeaderHas()`), extracting field-values
 (`httpHeaderGet*()`), and adding new fields (`httpHeaderPut*()`).
 
 `httpHeaderHas(hdr, id)` returns true if at least one header-field
-specified by "id" is present in the header. Note that using *HDR\_OTHER*
+specified by "id" is present in the header. Note that using *HDR_OTHER*
 as an id is prohibited. There is usually no reason to know if there are
 "other" header-fields in a header.
 
@@ -87,7 +87,7 @@ processing one value of an header-field while ignoring other valid
 values.
 
 `httpHeaderPut<Type>(hdr, id, value)` will add an header-field with a
-specified field-name (based on "id") and field\_value. The location of
+specified field-name (based on "id") and field_value. The location of
 the newly added field in the header array is undefined, but it is
 guaranteed to be after all fields with the same "id" if any. Note that
 old header-fields with the same id (if any) are not altered in any way.
@@ -105,7 +105,7 @@ Example:
 ```
 
 There are two ways to delete a field from a header. To delete a "known"
-field (a field with "id" other than *HDR\_OTHER*), use
+field (a field with "id" other than *HDR_OTHER*), use
 `httpHeaderDelById()` function. Sometimes, it is convenient to delete
 all fields with a given name ("known" or not) using
 `httpHeaderDelByName()` method. Both methods will delete *all* fields
@@ -141,11 +141,11 @@ protocol.
 
 ## Adding new header-field ids
 
-Adding new ids is simple. First add new HDR\_ entry to the
-http\_hdr\_type enumeration in enums.h. Then describe a new header-field
+Adding new ids is simple. First add new HDR_ entry to the
+http_hdr_type enumeration in enums.h. Then describe a new header-field
 attributes in the HeadersAttrs array located in `HttpHeader.c`. The last
 attribute specifies field type. Five types are supported: integer
-(*ftInt*), string (*ftStr*), date in RFC 1123 format (*ftDate\_1123*),
+(*ftInt*), string (*ftStr*), date in RFC 1123 format (*ftDate_1123*),
 cache control field (*ftPCc*), range field (*ftPRange*), and content
 range field (*ftPContRange*). Squid uses type information to convert
 internal binary representation of fields to their string representation

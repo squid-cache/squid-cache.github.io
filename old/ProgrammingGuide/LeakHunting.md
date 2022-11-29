@@ -89,7 +89,7 @@ reduce the number of false positives, it is best to `./configure` Squid
 `--with-valgrind-debug`. `./configure --disable-optimizations` helps
 when interpreting valgrind reports (but slows Squid down). Disabling
 memory pools
-([memory\_pools](http://www.squid-cache.org/Doc/config/memory_pools)
+([memory_pools](http://www.squid-cache.org/Doc/config/memory_pools)
 off) further reduces the number of false positives. Another essential
 technique for minimizing false positives, is using valgrind
 suppressions. The attached suppressions

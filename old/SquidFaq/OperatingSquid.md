@@ -85,7 +85,7 @@ If your cache processes several hundred hits per second, good luck.
 
 ## How can I add a cache directory?
 
-1.  Edit **squid.conf** and add a new **cache\_dir** line.
+1.  Edit **squid.conf** and add a new **cache_dir** line.
 
 2.  Shutdown Squid `  squid -k shutdown  `
 
@@ -100,12 +100,12 @@ If your cache processes several hundred hits per second, good luck.
 ## How can I delete a cache directory?
 
   - ℹ️
-    If you don't have any *cache\_dir* lines in your squid.conf, then
+    If you don't have any *cache_dir* lines in your squid.conf, then
     Squid was using the default. From Squid-3.1 the default has been
-    changed to memory-only cache and does not involve cache\_dir.
+    changed to memory-only cache and does not involve cache_dir.
     
     For Squid older than 3.1 using the default you'll need to add a new
-    **cache\_dir** line because Squid will continue to use the default
+    **cache_dir** line because Squid will continue to use the default
     otherwise. You can add a small, temporary directory, for example:
     
         /usr/local/squid/cachetmp ....
@@ -119,7 +119,7 @@ If your cache processes several hundred hits per second, good luck.
 **The removal:**
 
 1.  Edit your **squid.conf** file and comment out, or delete the
-    **cache\_dir** line for the cache directory that you want to remove.
+    **cache_dir** line for the cache directory that you want to remove.
 
 2.  You can not delete a cache directory from a running Squid process;
     you can not simply reconfigure squid.
@@ -130,7 +130,7 @@ If your cache processes several hundred hits per second, good luck.
 
 4.  Once Squid exits, you may immediately start it up again.
 
-Since you deleted the old **cache\_dir** from squid.conf, Squid won't
+Since you deleted the old **cache_dir** from squid.conf, Squid won't
 try to access that directory. If you use the RunCache script, Squid
 should start up again automatically.
 
@@ -149,9 +149,9 @@ objects which fail for any reason are automatically purged from the
 cache.
 
 The above mechanisms can be triggered manually to force squid into a
-full cache\_dir scan and re-load all objects from disk by simply
+full cache_dir scan and re-load all objects from disk by simply
 shuttign down Squid and deleting the **swap.state** journal from each
-cache\_dir before restarting.
+cache_dir before restarting.
 
   - *NP:* Deleting the swap.state before shutting down will cause Squid
     to generate new ones and fail to do the re-scan you wanted.
@@ -166,7 +166,7 @@ following commands provide the fastest recovery time:
  mv /dir/cache /dir/cache.old
 ```
 
-repeat for each cache\_dir location you wish to empty.
+repeat for each cache_dir location you wish to empty.
 
 ``` 
  squid -z
@@ -183,7 +183,7 @@ As of version 1.1.9, Squid is able to utilize ICMP Round-Trip-Time (RTT)
 measurements to select the optimal location to forward a cache miss.
 Previously, cache misses would be forwarded to the parent cache which
 returned the first ICP reply message. These were logged with
-FIRST\_PARENT\_MISS in the access.log file. Now we can select the parent
+FIRST_PARENT_MISS in the access.log file. Now we can select the parent
 which is closest (RTT-wise) to the origin server.
 
 ## Supporting ICMP in your Squid cache
@@ -194,8 +194,8 @@ cache. Also, if your cache makes RTT measurements, it will fetch objects
 directly if your cache is closer than any of the parents.
 
 If you want your Squid cache to measure RTT's to origin servers, Squid
-must be compiled with the USE\_ICMP option. This is easily accomplished
-by uncommenting "-DUSE\_ICMP=1" in *src/Makefile* and/or
+must be compiled with the USE_ICMP option. This is easily accomplished
+by uncommenting "-DUSE_ICMP=1" in *src/Makefile* and/or
 *src/Makefile.in*.
 
 An external program called *pinger* is responsible for sending and
@@ -209,23 +209,23 @@ permissions.
     # make install-pinger
 
 There are three configuration file options for tuning the measurement
-database on your cache. *netdb\_low* and *netdb\_high* specify high and
+database on your cache. *netdb_low* and *netdb_high* specify high and
 low water marks for keeping the database to a certain size (e.g. just
-like with the IP cache). The *netdb\_ttl* option specifies the minimum
-rate for pinging a site. If *netdb\_ttl* is set to 300 seconds (5
+like with the IP cache). The *netdb_ttl* option specifies the minimum
+rate for pinging a site. If *netdb_ttl* is set to 300 seconds (5
 minutes) then an ICMP packet will not be sent to the same site more than
 once every five minutes. Note that a site is only pinged when an HTTP
 request for the site is received.
 
-Another option, *minimum\_direct\_hops* can be used to try finding
+Another option, *minimum_direct_hops* can be used to try finding
 servers which are close to your cache. If the measured hop count to the
-origin server is less than or equal to *minimum\_direct\_hops*, the
+origin server is less than or equal to *minimum_direct_hops*, the
 request will be forwarded directly to the origin server.
 
 ## Utilizing your parents database
 
 Your parent caches can be asked to include the RTT measurements in their
-ICP replies. To do this, you must enable *query\_icmp* in your config
+ICP replies. To do this, you must enable *query_icmp* in your config
 file:
 
     query_icmp on
@@ -269,22 +269,22 @@ show the measured values from our parent caches. Since
 *bo.cache.nlanr.net* has the lowest RTT, it would be selected as the
 location to forward a request for a www.jisedu.org or www.dozo.com URL.
 
-# Why are so few requests logged as TCP\_IMS\_MISS?
+# Why are so few requests logged as TCP_IMS_MISS?
 
 When Squid receives an *If-Modified-Since* request, it will not forward
 the request unless the object needs to be refreshed according to the
-*refresh\_pattern* rules. If the request does need to be refreshed, then
-it will be logged as TCP\_REFRESH\_HIT or TCP\_REFRESH\_MISS.
+*refresh_pattern* rules. If the request does need to be refreshed, then
+it will be logged as TCP_REFRESH_HIT or TCP_REFRESH_MISS.
 
 If the request is not forwarded, Squid replies to the IMS request
 according to the object in its cache. If the modification times are the
-same, then Squid returns TCP\_IMS\_HIT. If the modification times are
-different, then Squid returns TCP\_IMS\_MISS. In most cases, the cached
-object will not have changed, so the result is TCP\_IMS\_HIT. Squid will
-only return TCP\_IMS\_MISS if some other client causes a newer version
+same, then Squid returns TCP_IMS_HIT. If the modification times are
+different, then Squid returns TCP_IMS_MISS. In most cases, the cached
+object will not have changed, so the result is TCP_IMS_HIT. Squid will
+only return TCP_IMS_MISS if some other client causes a newer version
 of the object to be pulled into the cache.
 
-# Why do I need to run Squid as root? why can't I just use cache\_effective\_user root?
+# Why do I need to run Squid as root? why can't I just use cache_effective_user root?
 
   - *by Antony Stone and Dave J Woolley*
 
@@ -323,22 +323,22 @@ has root privilege and therefore cannot cause as much damage as it might
 have done.
 
 Squid does this with
-[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user).
+[cache_effective_user](http://www.squid-cache.org/Doc/config/cache_effective_user).
 The coordinator (daemon manager) process must be run as 'root' in order
 to setup the administrative details and will downgrade its privileges to
 the
-[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
+[cache_effective_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
 account before running any of the more risky network operations.
 
 If the
-[cache\_effective\_group](http://www.squid-cache.org/Doc/config/cache_effective_group)
+[cache_effective_group](http://www.squid-cache.org/Doc/config/cache_effective_group)
 is configured Squid will drop additional group privileges and run as
 only the user:group specified.
 
 The **-N** command line option makes Squid run without spawning
 low-privileged child processes for safe networking. When this option is
 used Squid main process will drop its privileges down to the
-[cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
+[cache_effective_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
 account but will try to retain some means of regaining root privileges
 for reconfiguration. Some components which rely on the more dangerous
 root privieges will not be able to be altered with just a reconfigure
@@ -351,7 +351,7 @@ Here is a technique that was described by *Radu Greab*.
 Start a second Squid server on an unused HTTP port (say 4128). This
 instance of Squid probably doesn't need a large disk cache. When this
 second server has finished reloading the disk store, swap the
-*http\_port* values in the two *squid.conf* files. Set the original
+*http_port* values in the two *squid.conf* files. Set the original
 Squid to use port 5128, and the second one to use 3128. Next, run "squid
 -k reconfigure" for both Squids. New requests will go to the second
 Squid, now on port 3128 and the first Squid will finish handling its
@@ -363,7 +363,7 @@ process in reverse.
 
 *Note: The information here is current for version 2.3.*
 
-Yes, you can specify multiple *http\_port* lines in your *squid.conf*
+Yes, you can specify multiple *http_port* lines in your *squid.conf*
 file. Squid attempts to bind() to each port that you specify. Sometimes
 Squid may not be able to bind to a port, either because of permissions
 or because the port is already in use. If Squid can bind to at least one

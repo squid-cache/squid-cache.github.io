@@ -20,7 +20,7 @@ different amounts of extra patches today. Not surprising given the fact
 that Squid-2.5 has been feature frozen for 3 years now.
 
 The general consensus among the code sprint participants
-([Henrik\_Nordström](/Henrik_Nordstr%C3%B6m),
+([Henrik_Nordström](/Henrik_Nordstr%C3%B6m),
 [FrancescoChemolli](/FrancescoChemolli)
 & our kind host
 [GuidoSerassio](/GuidoSerassio))
@@ -35,7 +35,7 @@ to stabilize.
 
 List of things we have thought of include in a Squid-2.6 release include
 
-  - addition of IPPROTO\_TCP & IPPROTO\_UDP usage - OK
+  - addition of IPPROTO_TCP & IPPROTO_UDP usage - OK
 
   - Cygwin full support - almost complete
     
@@ -67,7 +67,7 @@ List of things we have thought of include in a Squid-2.6 release include
     
       - password= from 3.0 - OK
     
-      - grace parameter from external\_acl\_fuzzy / 3.0 (but not the
+      - grace parameter from external_acl_fuzzy / 3.0 (but not the
         cache "level" thing) - OK
 
   - UNIX sockets IPC - OK

@@ -100,7 +100,7 @@ version of Squid where the debug symbols have not been removed.
   - Threads and Linux
     
       - On Linux, threaded applications do not generate core dumps. When
-        you use the aufs cache\_dir type, it uses threads and you can't
+        you use the aufs cache_dir type, it uses threads and you can't
         get a coredump.
 
   - It did leave a coredump file, you just can't find it.
@@ -118,7 +118,7 @@ To change the coredumpsize limit you might use a command like:
     limits coredump unlimited
 
 If Squid binary is started by RHEL6/CentOS6 init script, you may need to
-set variable *DAEMON\_COREFILE\_LIMIT="unlimited"* in the init script or
+set variable *DAEMON_COREFILE_LIMIT="unlimited"* in the init script or
 the script's configuration file (usually /etc/sysconfig/squid).
 
 For systemd units the equivalent option is *LimitCORE=infinity*.
@@ -154,10 +154,10 @@ the debugging symbols.
 
 The core dump file will be left in one of the following locations:
 
-1.  The *coredump\_dir* directory, if you set that option.
+1.  The *coredump_dir* directory, if you set that option.
 
-2.  The first *cache\_dir* directory if you have used the
-    *cache\_effective\_user* option.
+2.  The first *cache_dir* directory if you have used the
+    *cache_effective_user* option.
 
 3.  The current directory when Squid was started
 
@@ -196,12 +196,12 @@ In some environments, coredump is handled by dedicated utility for
 management purposes. For example, in RHEL6/CentOS6 environment it may be
 *abrtd* with *abrt-addon-ccpp* (man abrtd, man abrt-install-ccpp-hook).
 In systemd environments it is *systemd-coredump* (man systemd-coredump).
-You can check it by reading */proc/sys/kernel/core\_pattern* (man core):
+You can check it by reading */proc/sys/kernel/core_pattern* (man core):
 
     # cat /proc/sys/kernel/core_pattern 
     |/usr/libexec/abrt-hook-ccpp %s %c %p %u %g %t e
 
-The core\_pattern for systemd-coredump:
+The core_pattern for systemd-coredump:
 
     # cat /proc/sys/kernel/core_pattern 
     |/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %e
@@ -391,12 +391,12 @@ To enable full or level-9 debugging (i.e., to force every debugging
 statement in Squid to emit some output when reached), you have two
 options:
 
-1.  Set debug\_options in squid.conf to ALL,9. Doing so will debug what
+1.  Set debug_options in squid.conf to ALL,9. Doing so will debug what
     happens after the configuration file is parsed. This is sufficient
     to triage most runtime problems.
 
 2.  Start Squid with the **-X** command line option. Doing so will debug
-    what happens both before and after debug\_options in the
+    what happens both before and after debug_options in the
     configuration file are parsed.
 
 When started with -X (or -d) command-line option, before Squid opens
@@ -413,7 +413,7 @@ debugging.
 ## Debug Sections
 
 To enable selective debugging (e.g. for one source file only), you need
-to edit **squid.conf** and add to the **debug\_options** line. Every
+to edit **squid.conf** and add to the **debug_options** line. Every
 Squid source file is assigned a debugging **section**. The debugging
 section assignments can be found by looking at the top of individual
 source files, by reading the file *debug-sections.txt*, or looking at
@@ -451,8 +451,8 @@ Syntax:
     tcpdump -s 0 -i $nic -w /path/to/dump.pcap port $port and host $origin_ip [and host $client_ip]
 
 where **$nic** is WAN or LAN network interface, **$port** is intercepted
-port, **$origin\_ip** is origin server IP, **$client\_ip** is client IP
-in local network. The section 'and host $client\_ip' applicable only for
+port, **$origin_ip** is origin server IP, **$client_ip** is client IP
+in local network. The section 'and host $client_ip' applicable only for
 Squid-to-client transactions on NAT proxies. TProxy interception proxies
 can use the section for both transaction types. The argument **-s 0**
 required to instruct tcpdump to save full packet, **-w** specifies dump
@@ -482,7 +482,7 @@ So the syntax is:
 
     tcpdump -s 0 -i $nic -w /path/to/dump.pcap port $proxy_port and host $proxy_ip and host $client_ip
 
-where **$proxy\_port** and **$proxy\_ip** are values used by user agents
+where **$proxy_port** and **$proxy_ip** are values used by user agents
 (e.g. browsers) to access Squid. For example:
 
     tcpdump -s 0 -i eth0 -w /tmp/squid-to-client100.pcap port 3128 and host 192.168.1.1 and host 192.168.1.100
@@ -502,7 +502,7 @@ operation, so it is better to enable dump file rotation. For example:
     tcpdump -s 0 -i eth0 -G 300 -w /tmp/squid-to-client100-%Y-%m-%d_%H:%M:%S.pcap port 3128 and host 192.168.1.1 and host 192.168.1.100
 
 where **-G** specifies rotation interval in seconds, and the flexible
-string like **%Y-%m-%d\_%H:%M:%S** in filename exposes to date (man
+string like **%Y-%m-%d_%H:%M:%S** in filename exposes to date (man
 strftime) when the rotation occurred.
 
 In above example, tcpdump will rotate the dump file every 5 minutes.

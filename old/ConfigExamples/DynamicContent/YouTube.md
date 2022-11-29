@@ -221,7 +221,7 @@ Along with some other measures which technically break the HTTP
 standards.
 
 \*\*\*SECURITY NOTE:\*\*\* Some of the required configuration
-(quick\_abort\_min + large maximum\_object\_size) requires
+(quick_abort_min + large maximum_object_size) requires
 collapsed-forwarding feature to protect from high bandwidth consumption
 and possible cache DDoS attacks. Squid-3 do not have that feature at
 this time.
@@ -232,7 +232,7 @@ If you require Squid-3 for features this functionality can be achieved
 by configuring a
 [Squid-2.7](/Releases/Squid-2.7)
 proxy as a
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 dedicated to caching and serving the media content.
 
 ### Missing Pieces
@@ -257,7 +257,7 @@ to a certain site range, etc. Anyone able to donate time and/or money
 for this would be greatly loved by many.
 
 UPDATE: see the
-[storeurl\_rewrite\_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program)
+[storeurl_rewrite_program](http://www.squid-cache.org/Doc/config/storeurl_rewrite_program)
 feature in
 [Squid-2.7](/Releases/Squid-2.7)
 and the

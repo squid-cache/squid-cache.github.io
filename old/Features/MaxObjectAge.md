@@ -20,9 +20,9 @@ seems reasonable. Whether this is some global (easily done) or ACL
 controlled setting is yet to be decided.
 
 Presently the only options are to not cache at all (cache deny), or to
-extend short caching times (refresh\_pattern).
+extend short caching times (refresh_pattern).
 
-refresh\_pattern does not meet this need in its present form since it
+refresh_pattern does not meet this need in its present form since it
 acts as an extender, opposite to what is needed; a shortener. Adjusting
 that directive may be an option though. Such shortener mode for Squid
 would allow the override-\* to be used (requires them implicitly)

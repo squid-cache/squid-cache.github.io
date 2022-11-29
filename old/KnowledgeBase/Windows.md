@@ -187,7 +187,7 @@ section.
 ## Registry DNS lookup
 
 On Windows platforms, if no value is specified in the
-[dns\_nameservers](http://www.squid-cache.org/Doc/config/dns_nameservers)
+[dns_nameservers](http://www.squid-cache.org/Doc/config/dns_nameservers)
 option in squid.conf or in the /etc/resolv.conf file, the list of DNS
 name servers are taken from the Windows registry, both static and
 dynamic DHCP configurations are supported.

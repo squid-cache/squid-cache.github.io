@@ -12,7 +12,7 @@
 
 ## Details
 
-*Chris Woodfield*: Allow helper children (url\_rewriters, etc) to send
+*Chris Woodfield*: Allow helper children (url_rewriters, etc) to send
 some sort of "pause" message back to squid to signal that that child is
 temporarily unavailable for new queries, and then a "ready" message when
 it's available again. (yes, this is kinda obscure - the issue here is a

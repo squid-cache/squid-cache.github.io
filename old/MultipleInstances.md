@@ -36,23 +36,23 @@ types require SMP-aware processing.
 The configuration directives outlined below still require unique values
 to be configured even when service name is being used.
 
-The macro **${service\_name}** is added to squid.conf processing. It
+The macro **${service_name}** is added to squid.conf processing. It
 expands to the service name of the process parsing the config file.
 
 ## Relevant squid.conf directives
 
-  - [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
+  - [visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
     
       - you may want to keep this unique for troubleshooting purposes.
 
-  - [unique\_hostname](http://www.squid-cache.org/Doc/config/unique_hostname)
+  - [unique_hostname](http://www.squid-cache.org/Doc/config/unique_hostname)
     
       - if you don't change the
-        [visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
+        [visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
         and want your caches to cooperate, at least change this setting
         to properly detect forwarding loops
 
-  - [http\_port](http://www.squid-cache.org/Doc/config/http_port)
+  - [http_port](http://www.squid-cache.org/Doc/config/http_port)
     
       - either the various squids run on different ports, or on
         different IP addresses. In the latter case the syntax to be used
@@ -60,34 +60,34 @@ expands to the service name of the process parsing the config file.
         used instead of IP address, but take care that the domain(s)
         used by each instance resolve to different IPs.
 
-  - [icp\_port](http://www.squid-cache.org/Doc/config/icp_port),
-    [snmp\_port](http://www.squid-cache.org/Doc/config/snmp_port)
+  - [icp_port](http://www.squid-cache.org/Doc/config/icp_port),
+    [snmp_port](http://www.squid-cache.org/Doc/config/snmp_port)
     
-      - same as with http\_port. If you do not need ICP and SNMP, remove
+      - same as with http_port. If you do not need ICP and SNMP, remove
         from the config file.
 
-  - [access\_log](http://www.squid-cache.org/Doc/config/access_log),
-    [cache\_log](http://www.squid-cache.org/Doc/config/cache_log)
+  - [access_log](http://www.squid-cache.org/Doc/config/access_log),
+    [cache_log](http://www.squid-cache.org/Doc/config/cache_log)
     
       - you want to have different logfiles for you different squid
         instances. Squid **might** even work when all log to the same
         files, but the result would probably be a garbled mess.
 
-  - [pid\_filename](http://www.squid-cache.org/Doc/config/pid_filename)
+  - [pid_filename](http://www.squid-cache.org/Doc/config/pid_filename)
     
       - this file **must** be different for each instance. It is used by
         squid to detect a running instance and to send various internal
         messages (i.e. `squid -k reconfigure`).
         
           - [Squid-4](/Releases/Squid-4)
-            and later the default uses **${service\_name}** making it no
+            and later the default uses **${service_name}** making it no
             longer necessary to configure.
         
           - [Squid-3.5](/Releases/Squid-3.5)
             and older must explicitly set this option to a unique file
             per instance.
 
-  - [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir)
+  - [cache_dir](http://www.squid-cache.org/Doc/config/cache_dir)
     
       - make sure that no overlapping directories exist. Squids do not
         coordinate when accessing them, and shuffling stuff around each

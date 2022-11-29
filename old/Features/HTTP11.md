@@ -58,10 +58,10 @@ Co-Advisor.
 ### Checklist
 
 Squid v4+ compliance with RFC MUST-level requirements as of August 2018:
-[HTTP-1.1-Checklist\_2018-08-09.ods](/Features/HTTP11?action=AttachFile&do=get&target=HTTP-1.1-Checklist_2018-08-09.ods).
+[HTTP-1.1-Checklist_2018-08-09.ods](/Features/HTTP11?action=AttachFile&do=get&target=HTTP-1.1-Checklist_2018-08-09.ods).
 
 Squid v3 and v2 results collected in August 2013:
-[HTTP-1.1-Checklist\_2013-08-21.ods](/Features/HTTP11?action=AttachFile&do=get&target=HTTP-1.1-Checklist_2013-08-21.ods).
+[HTTP-1.1-Checklist_2013-08-21.ods](/Features/HTTP11?action=AttachFile&do=get&target=HTTP-1.1-Checklist_2013-08-21.ods).
 
 The linked document contains the results of automated Co-Advisor
 HTTP/1.1 compliance tests for several Squid versions. Each test consists

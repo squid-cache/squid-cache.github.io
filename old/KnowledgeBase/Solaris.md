@@ -51,7 +51,7 @@ and
  pkg install sunstudioexpress SUNWbtool
 ```
 
-### com\_err.h: warning: ignoring \#pragma ident
+### com_err.h: warning: ignoring \#pragma ident
 
 This problem occurs with certain kerberos library headers distributed
 with Solaris 10. It has been fixed in later release of the kerberos
@@ -71,7 +71,7 @@ There are several options available:
     krb5.h header to match the one found in later working krb5 library
     releases.
 
-3.  Editing com\_err.h directly to change the line
+3.  Editing com_err.h directly to change the line
 
 <!-- end list -->
 
@@ -317,13 +317,13 @@ linker path. To do that first run something like:
     crle -64 -c /var/ld/64/ld.config -l /lib/64:/usr/lib/64:/opt/csw/lib/64:/usr/sfw/lib/64
 
 ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
-Don't use LD\_LIBRARY\_PATH\! Use crle command instead\!
+Don't use LD_LIBRARY_PATH\! Use crle command instead\!
 
 ## Squid process memory grows unlimited with an interception proxy
 
 The common place - Squid grows unlimited in interception mode on Solaris
 10 and above with IPFilter. This also accomplish Squid session aborts
-(high TCP\_MISS\_ABORTED in access.log) periodically. Squid/OS/IPFilter
+(high TCP_MISS_ABORTED in access.log) periodically. Squid/OS/IPFilter
 restarts fix this, but temporary.
 
 This problem occurs due to conservative IPFilter settings, especially
@@ -354,8 +354,8 @@ Second, tune up settings above to be reasonable big:
 
     # ipf -T fr_statemax=105000,fr_statesize=150001
 
-**Note**: *fr\_statesize* must be prime number, *fr\_statemax* must be
-\~70% of *fr\_statesize*.
+**Note**: *fr_statesize* must be prime number, *fr_statemax* must be
+\~70% of *fr_statesize*.
 
 Third, enable IPFilter again:
 
@@ -414,8 +414,8 @@ decrease NAT/RDR rules table:
     ipf_rdrrules_sz = 127
 
 **Note**: Be sure your TCP stack settings is not changed with ECN
-(*tcp\_ecn\_permitted* parameter) and WScale (*tcp\_wscale\_always*
-parameter). Also you can want to set *ip\_path\_mtu\_discovery* to
+(*tcp_ecn_permitted* parameter) and WScale (*tcp_wscale_always*
+parameter). Also you can want to set *ip_path_mtu_discovery* to
 enabled (if your network environment uses PMTUD). This will minimize
 interruptions sessions, especially
 [YouTube](/YouTube).
@@ -478,12 +478,12 @@ installation, for example:
 
 /opt/csw/lib/gcc/i386-pc-solaris2.10/5.2.0/include-fixed/netinet/
 
-Find files ip\_compat.h and ip\_fil.h in this directory.
+Find files ip_compat.h and ip_fil.h in this directory.
 
 Replace it to this files:
 
-[ip\_compat.h](/KnowledgeBase/Solaris?action=AttachFile&do=get&target=ip_compat.h)
-[ip\_fil.h](/KnowledgeBase/Solaris?action=AttachFile&do=get&target=ip_fil.h)
+[ip_compat.h](/KnowledgeBase/Solaris?action=AttachFile&do=get&target=ip_compat.h)
+[ip_fil.h](/KnowledgeBase/Solaris?action=AttachFile&do=get&target=ip_fil.h)
 
 then configure and make squid.
 

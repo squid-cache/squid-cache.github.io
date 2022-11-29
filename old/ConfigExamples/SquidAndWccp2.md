@@ -127,16 +127,16 @@ The changes are:
     $ cd squid-2.6.5
     $ dpkg-buildpackage -rfakeroot -uc -b
 
-The last command produces debian packages: squid\_2.6.5-4\_i386.deb and
-squid-common\_2.6.5-4\_all.deb
+The last command produces debian packages: squid_2.6.5-4_i386.deb and
+squid-common_2.6.5-4_all.deb
 
 Install both packages in the proxy server:
 
-dpkg -i squid\_2.6.5-4\_i386.deb squid-common\_2.6.5-4\_all.deb
+dpkg -i squid_2.6.5-4_i386.deb squid-common_2.6.5-4_all.deb
 
 change /etc/default/squid to:
 
-SQUID\_MAXFD=8192
+SQUID_MAXFD=8192
 
 ## Squid Configuration File
 

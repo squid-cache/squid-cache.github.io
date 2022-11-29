@@ -34,7 +34,7 @@ and reconfigure ...
 
 # Changing the Cache Levels
 
-Altering the cache\_dir L1 and L2 sizes has not been tested with the
+Altering the cache_dir L1 and L2 sizes has not been tested with the
 above altering. It is still recommended to manually delete the cache
 directory and rebuild after altering the configuration.
 

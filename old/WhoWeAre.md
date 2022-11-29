@@ -8,7 +8,7 @@ project running.
 US registered non-profit (501(c)(3) tax-exempt) providing the
 infrastructure and support framework for Squid developers and users.
 
-  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m)
+  - [Henrik_Nordström](/Henrik_Nordstr%C3%B6m)
     - President
 
   - [Francesco
@@ -28,7 +28,7 @@ infrastructure and support framework for Squid developers and users.
 Emeritus developers who provided oversight of the Squid Project before
 [The Squid Software Foundation](http://foundation.squid-cache.org/).
 
-  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m),
+  - [Henrik_Nordström](/Henrik_Nordstr%C3%B6m),
     Squid Hacker Extraordinaire and
     [Squid-2.x](/RoadMap/Squid2)
     release manager.
@@ -104,7 +104,7 @@ should have some familiarity with the processes involved.
     Bugzilla under [Project
     Services](http://bugs.squid-cache.org/enter_bug.cgi?product=Project%20Services).
 
-  - [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m)
+  - [Henrik_Nordström](/Henrik_Nordstr%C3%B6m)
     
       - **system admin**: master, east, west
     
@@ -154,7 +154,7 @@ formats for easy use.
     Luigi Gangitano
 
   - [Fedora](/KnowledgeBase/Fedora):
-    [Henrik\_Nordström](/Henrik_Nordstr%C3%B6m),
+    [Henrik_Nordström](/Henrik_Nordstr%C3%B6m),
     Lubos Uhliarik
 
   - [Fink](/KnowledgeBase/Fink):

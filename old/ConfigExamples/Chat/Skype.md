@@ -56,7 +56,7 @@ Configuration file to include.
 ### Permitting
 
   - ⚠️
-    This needs to be done before any restrictive CONNECT http\_access
+    This needs to be done before any restrictive CONNECT http_access
     controls.
 
 <!-- end list -->

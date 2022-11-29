@@ -28,13 +28,13 @@ become a Hacker.
 ## Objects prediction
 
 One of the most common tasks in this area which is related to squid is
-to understand urls patterns in order to define a refresh\_pattern which
+to understand urls patterns in order to define a refresh_pattern which
 will "catch" objects for caching. It requires the admin to analyze and
 understand the "target" well enough so he can define enough rules that
 will predict what kind of url patterns should be cached and for how
 long. This turns the situation into a "predator" fighting with a "prey"
 in the http level. When the admin can predict the http objects and
-define refresh\_patterns(the right way...) the situation is that he at
+define refresh_patterns(the right way...) the situation is that he at
 least hacked something and with the right tools he can theoretically
 inject and poison a cache.
 

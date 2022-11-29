@@ -64,9 +64,9 @@ This feature is enabled by default in
 and makes use of the **connection-auth** option.
 
 The option can be applied on
-[http\_port](http://www.squid-cache.org/Doc/config/http_port),
-[https\_port](http://www.squid-cache.org/Doc/config/https_port), and
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) lines.
+[http_port](http://www.squid-cache.org/Doc/config/http_port),
+[https_port](http://www.squid-cache.org/Doc/config/https_port), and
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) lines.
 It controls connections either IN or OUT of those access points. If
 either is disabled connection auth cannot be performed.
 
@@ -76,7 +76,7 @@ When used on a receiving port it can be set to ON or OFF. Default is ON.
     https_port ... connection-auth[=on|off]
 
 When used on a
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) link it
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) link it
 can be set to ON, OFF, or AUTO. Default is AUTO which attempts to detect
 the peer capability when needed.
 

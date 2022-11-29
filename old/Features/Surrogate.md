@@ -35,7 +35,7 @@ intermediary proxies.
 
 ### Squid
 
-  - **[httpd\_accel\_surrogate\_id](http://www.squid-cache.org/Doc/config/httpd_accel_surrogate_id)**
+  - **[httpd_accel_surrogate_id](http://www.squid-cache.org/Doc/config/httpd_accel_surrogate_id)**
     is advertised to the source servers so that they can tailor their
     controls to a specific surrogate gateway. The ID can be unique to a
     specific Squid instance or shared between a cluster of proxies,
@@ -46,10 +46,10 @@ intermediary proxies.
         and
         [Squid-3.1](/Releases/Squid-3.1).
 
-  - **[http\_accel\_surrogate\_remote](http://www.squid-cache.org/Doc/config/http_accel_surrogate_remote)**
+  - **[http_accel_surrogate_remote](http://www.squid-cache.org/Doc/config/http_accel_surrogate_remote)**
     on/off
 
-  - **[visible\_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)**
+  - **[visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)**
     in
     [Squid-3.2](/Releases/Squid-3.2)
     is the default surrogate ID name. This provides a somewhat reliable

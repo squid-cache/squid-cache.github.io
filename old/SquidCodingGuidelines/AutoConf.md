@@ -34,18 +34,18 @@ Squid uses autoconf defined macros to eliminate experimental or optional
 components at build time.
 
   - name for variables passed to automake code should start with
-    ENABLE\_
+    ENABLE_
 
   - name for build/no-build variables passed to C++ code should start
-    with USE\_
+    with USE_
 
   - name for variables passed to either automake or C++ containing
-    default values should start with DEFAULT\_
+    default values should start with DEFAULT_
     
     ⚠️
     In the event of a clash or potential clash with system variables
-    tack SQUID\_ after the above prefix. ie ENABLE\_SQUID\_ or
-    USE\_SQUID\_
+    tack SQUID_ after the above prefix. ie ENABLE_SQUID_ or
+    USE_SQUID_
 
 <!-- end list -->
 

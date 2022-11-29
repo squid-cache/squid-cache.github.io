@@ -39,7 +39,7 @@ possibility the ACL will match.
 
   - ℹ️
     To debug this ACL use
-    [debug\_options](http://www.squid-cache.org/Doc/config/debug_options)
+    [debug_options](http://www.squid-cache.org/Doc/config/debug_options)
     28,3 and watch for lines beginning with "ACL Random".
 
 # Use Cases
@@ -47,9 +47,9 @@ possibility the ACL will match.
 ## Uplink Load Balancing
 
 When used within
-[tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
+[tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
 or
-[tcp\_outgoing\_tos](http://www.squid-cache.org/Doc/config/tcp_outgoing_tos)
+[tcp_outgoing_tos](http://www.squid-cache.org/Doc/config/tcp_outgoing_tos)
 selection this ACL permits load to be roughly split between multiple
 links based on their relative capacity.
 
@@ -113,7 +113,7 @@ ends up going out the default anyway.
 ## Log sampling of traffic
 
 When used in
-[access\_log](http://www.squid-cache.org/Doc/config/access_log)
+[access_log](http://www.squid-cache.org/Doc/config/access_log)
 directives this ACL permits a small random proportion of requests to be
 logged. Rather than all traffic or some only matching fixed criteria.
 

@@ -38,14 +38,14 @@ in future (ie after any splash page login has been performed).
 [Squid-3.2](/Releases/Squid-3.2)
 and later can be configured to send this extension status code and a
 template splash page with the
-[deny\_info](http://www.squid-cache.org/Doc/config/deny_info)
+[deny_info](http://www.squid-cache.org/Doc/config/deny_info)
 directive.
 
   - 
     
     |                                                                             |                                                                                                                                                                                                      |
     | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | ℹ️ NOTE | Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the [deny\_info](http://www.squid-cache.org/Doc/config/deny_info) directive. |
+    | ℹ️ NOTE | Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the [deny_info](http://www.squid-cache.org/Doc/config/deny_info) directive. |
     
 
 ## Squid Configuration File - Simple Example
@@ -107,7 +107,7 @@ user's computer (such as automatic security updates) can reset the
 session counter, so it is that process rather than the user's browsing
 which receives the splash screen.
 
-The following configuration example adds in a url\_regex rule to force
+The following configuration example adds in a url_regex rule to force
 the user to browse to a particular website before the session is reset.
 This example is for
 [Squid-3.2](/Releases/Squid-3.2)
@@ -150,15 +150,15 @@ and later, but can be adapted for earlier versions.
     be eliminated in some situations with the use of a [custom
     error](/Features/CustomErrors)
     page template passed to
-    [deny\_info](http://www.squid-cache.org/Doc/config/deny_info).
+    [deny_info](http://www.squid-cache.org/Doc/config/deny_info).
     However, note that is page can only be a static HTML page.
 
   - ℹ️
     For more information please see
-    [ext\_session\_acl](http://www.squid-cache.org/Versions/v3/3.2/manuals/ext_session_acl.html),
-    [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type/),
+    [ext_session_acl](http://www.squid-cache.org/Versions/v3/3.2/manuals/ext_session_acl.html),
+    [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type/),
     [acl](http://www.squid-cache.org/Doc/config/acl/),
-    [deny\_info](http://www.squid-cache.org/Doc/config/deny_info/),
-    [http\_access](http://www.squid-cache.org/Doc/config/http_access/)
+    [deny_info](http://www.squid-cache.org/Doc/config/deny_info/),
+    [http_access](http://www.squid-cache.org/Doc/config/http_access/)
 
 [CategoryConfigExample](/CategoryConfigExample)

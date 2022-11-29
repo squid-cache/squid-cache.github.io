@@ -40,7 +40,7 @@ own problems.
 To force all client requests to go to a consistent IP address you must
 disable destination load balancing in all network Systems when
 connecting to Hotmail. Turned **off** the Squid
-[balance\_on\_multiple\_ip](http://www.squid-cache.org/Doc/config/balance_on_multiple_ip)
+[balance_on_multiple_ip](http://www.squid-cache.org/Doc/config/balance_on_multiple_ip)
 directive. Other load balancing software may or may not have similar
 controls.
 
@@ -48,7 +48,7 @@ To force all client requests to go to Hotmail with consistent IPs. You
 can do one of a few things:
 
   - Proxy clusters can use the **usernamehash** or **sourcehash**
-    [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+    [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
     algorithms to limit the HTTP request flow without hindering load
     balancing too much.
 
@@ -60,7 +60,7 @@ can do one of a few things:
     up.
 
   - Older Squid releases can use
-    [tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
+    [tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
     directive Forcing all outgoing requests to Hotmail to use a fixed
     Squid outbound IP. This risks the old well-known problem that
     Hotmail *Single-Sign-On* is linked to the IP address as well and all

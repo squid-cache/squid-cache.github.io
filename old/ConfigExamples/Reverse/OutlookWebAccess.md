@@ -20,21 +20,21 @@ Squid-2.6 STABLE release before attempting this.
 The example situation involves a single Outlook Web Access server and a
 single Squid server. The following information is required:
 
-  - The IP of the Squid server (ip\_of\_squid)
+  - The IP of the Squid server (ip_of_squid)
 
-  - The 'public' domain used for Outlook Web Access (owa\_domain\_name)
+  - The 'public' domain used for Outlook Web Access (owa_domain_name)
 
-  - The IP of the Outlook Web Access server (ip\_of\_owa\_server)
+  - The IP of the Outlook Web Access server (ip_of_owa_server)
 
 ## Configuration
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http\_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
 Please note that the
-[https\_port](http://www.squid-cache.org/Doc/config/https_port) and
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) lines
+[https_port](http://www.squid-cache.org/Doc/config/https_port) and
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) lines
 may wrap in your browser\!
 
     https_port ip_of_squid:443 accel cert=/path/to/certificate/ defaultsite=owa_domain_name
@@ -52,14 +52,14 @@ may wrap in your browser\!
     miss_access deny all
 
 If the connection to the OWA server requires SSL then the
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) line
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) line
 should be changed appropriately:
 
     cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/client-certificate name=owaServer
 
   - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
     an apparent bug in Squid-3.1 means that
-    [https\_port](http://www.squid-cache.org/Doc/config/https_port) may
+    [https_port](http://www.squid-cache.org/Doc/config/https_port) may
     also need to use the **connection-auth=off** option for now.
 
 ## Troubleshooting
@@ -81,7 +81,7 @@ SOLUTION:
     and
     [Squid-3.1](/Releases/Squid-3.1)
     offer the
-    [ignore\_expect\_100](http://www.squid-cache.org/Doc/config/ignore_expect_100)
+    [ignore_expect_100](http://www.squid-cache.org/Doc/config/ignore_expect_100)
     directive to skip the 417 and wait for the client to resume. There
     are potential DoS side effects to its use, please avoid unless you
     must.

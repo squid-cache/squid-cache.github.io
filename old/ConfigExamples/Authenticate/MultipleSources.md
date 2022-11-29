@@ -31,7 +31,7 @@ cleanly without modifying squid.
 I created a custom authenticator that always returns "OK" and linked it
 to the external acl.
 ℹ️
-Squid-3.2 bundles one called **basic\_fake\_auth**
+Squid-3.2 bundles one called **basic_fake_auth**
 
 ## Squid Configuration
 
@@ -68,7 +68,7 @@ Squid-3.2 bundles one called **basic\_fake\_auth**
     }
 
   - ⚠️
-    Add your own version of *my\_awsome\_auth()* to do the
+    Add your own version of *my_awsome_auth()* to do the
     authentication actions you need.
 
 [CategoryConfigExample](/CategoryConfigExample)

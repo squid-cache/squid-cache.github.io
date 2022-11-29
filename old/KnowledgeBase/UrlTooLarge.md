@@ -25,10 +25,10 @@ cannot handle issues with these extra long URL lengths.
 
 **Workaround**
 
-The limit being applied is a MAX\_URL macro - the size limit placed on
+The limit being applied is a MAX_URL macro - the size limit placed on
 stack variables storing URL parts. Squid will at times allocate up to
-5\*MAX\_URL in stack memory and/or copy the URL into buffers not sized
-by MAX\_URL - so increasing this macro is not recommended.
+5\*MAX_URL in stack memory and/or copy the URL into buffers not sized
+by MAX_URL - so increasing this macro is not recommended.
 
 Work is ongoing to change Squid into more flexible dynamic buffers. As
 that update progresses the code altered will migrate naturally to a 64KB

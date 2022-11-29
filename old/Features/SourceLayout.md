@@ -605,20 +605,20 @@ Developers for bundling.
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **Directory Path**               | **Content Type**                                                                                                  |
 | src/adaptation/ecap/modules/\*   | (PROPOSED) eCAP extension modules which may be linked by configuration.                                           |
-| src/auth/basic/\*/               | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) basic helpers                                    |
-| src/auth/digest/\*/              | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) digest helpers                                   |
-| src/auth/negotiate/\*/           | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) negotiate helpers                                |
-| src/auth/ntlm/\*/                | [auth\_param](http://www.squid-cache.org/Doc/config/auth_param) ntlm helpers                                     |
-| src/acl/external/\*              | [external\_acl\_type](http://www.squid-cache.org/Doc/config/external_acl_type) helpers                           |
-| src/fs/diskd/\*                  | [diskd\_program](http://www.squid-cache.org/Doc/config/diskd_program) Disk I/O helpers                           |
-| src/fs/unlink/\*                 | (PROPOSED) [unlinkd\_program](http://www.squid-cache.org/Doc/config/unlinkd_program) helpers                     |
-| src/http/url\_rewriters/\*       | HTTP message URL re-writers ([url\_rewrite\_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)) |
-| src/icmp/\*                      | [pinger\_program](http://www.squid-cache.org/Doc/config/pinger_program) helpers                                  |
-| src/log/\*/                      | [logfile\_daemon](http://www.squid-cache.org/Doc/config/logfile_daemon) helpers                                  |
-| src/security/cert\_validators/\* | [sslcrtvalidator\_program](http://www.squid-cache.org/Doc/config/sslcrtvalidator_program) helpers                |
-| src/security/cert\_generators/\* | [sslcrtd\_program](http://www.squid-cache.org/Doc/config/sslcrtd_program) helpers                                |
-| src/security/cert\_password/\*   | (PROPOSED) [sslpassword\_program](http://www.squid-cache.org/Doc/config/sslpassword_program) helpers             |
-| src/store/id\_rewriters/\*       | Store-ID re-writers ([store\_id\_program](http://www.squid-cache.org/Doc/config/store_id_program))               |
+| src/auth/basic/\*/               | [auth_param](http://www.squid-cache.org/Doc/config/auth_param) basic helpers                                    |
+| src/auth/digest/\*/              | [auth_param](http://www.squid-cache.org/Doc/config/auth_param) digest helpers                                   |
+| src/auth/negotiate/\*/           | [auth_param](http://www.squid-cache.org/Doc/config/auth_param) negotiate helpers                                |
+| src/auth/ntlm/\*/                | [auth_param](http://www.squid-cache.org/Doc/config/auth_param) ntlm helpers                                     |
+| src/acl/external/\*              | [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type) helpers                           |
+| src/fs/diskd/\*                  | [diskd_program](http://www.squid-cache.org/Doc/config/diskd_program) Disk I/O helpers                           |
+| src/fs/unlink/\*                 | (PROPOSED) [unlinkd_program](http://www.squid-cache.org/Doc/config/unlinkd_program) helpers                     |
+| src/http/url_rewriters/\*       | HTTP message URL re-writers ([url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)) |
+| src/icmp/\*                      | [pinger_program](http://www.squid-cache.org/Doc/config/pinger_program) helpers                                  |
+| src/log/\*/                      | [logfile_daemon](http://www.squid-cache.org/Doc/config/logfile_daemon) helpers                                  |
+| src/security/cert_validators/\* | [sslcrtvalidator_program](http://www.squid-cache.org/Doc/config/sslcrtvalidator_program) helpers                |
+| src/security/cert_generators/\* | [sslcrtd_program](http://www.squid-cache.org/Doc/config/sslcrtd_program) helpers                                |
+| src/security/cert_password/\*   | (PROPOSED) [sslpassword_program](http://www.squid-cache.org/Doc/config/sslpassword_program) helpers             |
+| src/store/id_rewriters/\*       | Store-ID re-writers ([store_id_program](http://www.squid-cache.org/Doc/config/store_id_program))               |
 | tools/                           | Administration tools                                                                                              |
 
 ## Problems
@@ -706,10 +706,10 @@ to squid-dev mailing list.
     with libsquid, libbase files and file IO.
 
   - automake can generate library dependency links for us from
-    foo\_LDADD. But for historic reasons that no longer apply most of
-    the makefiles are using foo\_DEPENDENCIES which disables that
-    functionality. We should remove the foo\_DEPENDENCIES instead and
-    move to foo\_LDADD any objects not already there.
+    foo_LDADD. But for historic reasons that no longer apply most of
+    the makefiles are using foo_DEPENDENCIES which disables that
+    functionality. We should remove the foo_DEPENDENCIES instead and
+    move to foo_LDADD any objects not already there.
 
 ### Other:
 

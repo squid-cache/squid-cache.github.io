@@ -19,7 +19,7 @@
 
 Buffering to memory is easiest, but will require a config option that
 controls the max per-request memory used for buffering (e.g.,
-request\_buffer 8 KB would buffer up to 8K of a request body, then go
+request_buffer 8 KB would buffer up to 8K of a request body, then go
 forward whether or not the whole body has been received).
 
 Buffering to disk would be more complex to implement, but would probably

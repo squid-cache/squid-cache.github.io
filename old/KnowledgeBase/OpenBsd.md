@@ -27,7 +27,7 @@ Heimdal).
     # rcctl start squid
 
 LDAP authentication/ACL modules are packaged separately and can be
-installed with "**pkg\_add squid-ldap**". msktutil is also available in
+installed with "**pkg_add squid-ldap**". msktutil is also available in
 packages and may be helpful to users wanting to integrate with Microsoft
 authentication via Kerberos.
 
@@ -42,7 +42,7 @@ OpenBSD releases are made approximately every 6 months. Typically
 packages are only updated in "-current" (development snapshots) but
 occasionally updates are backported to the "-stable" branch for the most
 recent release (there is no LTS version; an OpenBSD release is only
-supported for 6 months); run "**pkg\_add -u**" to update if a new
+supported for 6 months); run "**pkg_add -u**" to update if a new
 version is available and "**rcctl restart squid**" to restart.
 
 ## Building from ports
@@ -70,7 +70,7 @@ use GCC. If you need to test building from ports using GCC on a
 clang-based architecture, change the COMPILER line in the ports Makefile
 to "COMPILER=ports-gcc". gdb in the base OS is an outdated GPLv2 version
 and doesn't cope well with modern compilers; install a newer version
-from ports with "pkg\_add gdb" and use the "egdb" binary. lldb is also
+from ports with "pkg_add gdb" and use the "egdb" binary. lldb is also
 available though at the time of writing is still at an early stage of
 use in OpenBSD.
 

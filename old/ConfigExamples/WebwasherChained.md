@@ -78,7 +78,7 @@ What the Webwasher does:
 What the Webwasher currently does not:
 
   - The concept of *profiles* is very different from Squid's concept of
-    ACLs. With ACLs and **http\_access** statements you run through
+    ACLs. With ACLs and **http_access** statements you run through
     those rules from top to bottom and the first matching entry
     determines whether the access is allowed or not. Profiles on the
     other hand define whether a certain filter is enabled or not. One
@@ -107,7 +107,7 @@ First define how LDAP authentication will work:
     auth_param basic credentialsttl 1 minute
     auth_param basic program /usr/lib/squid/ldap_auth -b o=ourcompany -h ldapserver -D cn=proxyauth,o=ourcompany -w secretpassword -f (&(objectclass=person)(cn=%s))
 
-The interesting part is the call to **ldap\_auth**. These are the
+The interesting part is the call to **ldap_auth**. These are the
 meanings of the respective arguments:
 
 |                                |                                                                                    |
@@ -132,7 +132,7 @@ This LDAP expression queries for (1) all persons whose (2) name is
 **%v** \[this is defined by your ACL later\] and you (3) look in groups
 inside the **ou=groupcontainer,o=ourcompany** branch.
 
-A minimal ACL/http\_access configuration that uses authentication will
+A minimal ACL/http_access configuration that uses authentication will
 look like this:
 
     acl ldap-auth proxy_auth REQUIRED
@@ -144,7 +144,7 @@ OPTIONAL:
 You may want to create a special LDAP group with users that are allowed
 to surf through the proxy. Perhaps you have an LDAP directory where all
 your users are listed and you don't want to allow everybody internet
-access. So you create an LDAP group **user\_can\_surf** and list all
+access. So you create an LDAP group **user_can_surf** and list all
 privileged users there. Example configuration:
 
     acl ldap-auth proxy_auth REQUIRED
@@ -155,7 +155,7 @@ privileged users there. Example configuration:
     http_access allow all
 
 To tell the user why the access was denied you should consider using
-**deny\_info** statements to define your own error pages. See your
+**deny_info** statements to define your own error pages. See your
 squid.conf for details.
 
 ### Proxy chain
@@ -184,7 +184,7 @@ Webwasher proxy without fetching the URL directly:
 
 If you have certain URLs that you want to be queried directly because
 it's your intranet site or because Webwasher does something bad with the
-web site you can always use **always\_direct allow ...** to send certain
+web site you can always use **always_direct allow ...** to send certain
 types of queries directly from the Squid to the web server.
 
 ## Webwasher configuration
@@ -204,7 +204,7 @@ Find the *Policy Management* option in the web interface. Next select
 assigned. You can do that by
 
   - IP mapping: The profile gets assigned depending on the IP of the
-    user's client PC. Set **forwarded\_for on** in the squid.conf to use
+    user's client PC. Set **forwarded_for on** in the squid.conf to use
     this.
 
   - Username mapping: The name of the user as authenticated by Squid is

@@ -33,8 +33,8 @@ is wrong with the config line and what to do about it.
 
   - sometimes old single tag options have been replaced by more complex
     options nested within another setting. For example the multiple
-    Squid-2.5 httpd\_\* options migrate to sub-options on a specific
-    [http\_port](http://www.squid-cache.org/Doc/config/http_port) tag.
+    Squid-2.5 httpd_\* options migrate to sub-options on a specific
+    [http_port](http://www.squid-cache.org/Doc/config/http_port) tag.
 
   - squid developers are continually improving squid.conf settings and
     the systems behind them so the system must be easily updated.
@@ -53,7 +53,7 @@ is wrong with the config line and what to do about it.
     
       - NP: this is already done for *directives* but not for
         sub-options where the directive is parsed (ie
-        *[http\_port](http://www.squid-cache.org/Doc/config/http_port)
+        *[http_port](http://www.squid-cache.org/Doc/config/http_port)
         ... sslcacert=/foo* still comes up as bungled config).
 
 ## Malformed Config Logic
@@ -64,9 +64,9 @@ Having the parser detect these cases and warn about them would be good.
 
   - access lists being configured when the relevant protocol has no
     ports open (ie
-    [icp\_port](http://www.squid-cache.org/Doc/config/icp_port)
+    [icp_port](http://www.squid-cache.org/Doc/config/icp_port)
     disabled and
-    [icp\_access](http://www.squid-cache.org/Doc/config/icp_access)
+    [icp_access](http://www.squid-cache.org/Doc/config/icp_access)
     configured)
 
   - "\!all" token being used on a one-line fast ACL (ie `  access_log
@@ -103,7 +103,7 @@ Having the parser detect these cases and warn about them would be good.
     http_access deny all
 
   - delay pool with
-    [delay\_parameters](http://www.squid-cache.org/Doc/config/delay_parameters)
+    [delay_parameters](http://www.squid-cache.org/Doc/config/delay_parameters)
     limits all set to *-1/-1*.
 
   - directives configured to their default value. Not a major problem,

@@ -43,7 +43,7 @@ Set the daemon to start automatically at boot and start it:
 ### Samba and Winbind
 
 The Samba configuration file **/etc/samba/smb.conf** and Squid
-authentication helper **/usr/bin/ntlm\_auth** are provided by the
+authentication helper **/usr/bin/ntlm_auth** are provided by the
 samba-common package.
 
 Check if the software is installed:
@@ -101,11 +101,11 @@ configure Samba, Winbind and perform the join in one step.
 If Winbind wasn't running before this it can't shutdown, but authconfig
 will start it and enable it to start at boot.
 
-The default permissions for **/var/cache/samba/winbindd\_privileged** in
+The default permissions for **/var/cache/samba/winbindd_privileged** in
 RHEL/CentOS 5.4 were 750 root:squid (which worked by default) but are
 now 750 root:wbpriv in 5.5 which doesn't allow the user Squid runs under
 to access the socket. Make sure squid.conf does not have a
-**cache\_effective\_group** defined and add wbpriv as a supplementary
+**cache_effective_group** defined and add wbpriv as a supplementary
 group to the user Squid runs under:
 
     # usermod -a -G wbpriv squid
@@ -122,11 +122,11 @@ everything is working.
 
 I created an Active Directory Group to control who gets access to the
 proxy. Check the man pages for
-[ntlm\_auth](http://www.samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html)
+[ntlm_auth](http://www.samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html)
 for options.
 
 Edit your **/etc/squid/squid.conf** to enable the helper and adjust
-**our\_networks** accordingly:
+**our_networks** accordingly:
 
     auth_param ntlm program /usr/bin/ntlm_auth --helper-protocol=squid-2.5-ntlmssp --require-membership-of=EXAMPLE+ADGROUP
     auth_param ntlm children 5

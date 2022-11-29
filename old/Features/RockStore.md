@@ -57,8 +57,8 @@ The current design consists of the following major components:
   - **Shared I/O pages**: Shared memory storage used by Squid workers
     and Rock "diskers" to exchange object data being swapped in or out.
 
-  - **Rock diskers**: one process per cache\_dir responsible for
-    low-level blocking I/O. One disker (or one Rock cache\_dir) is meant
+  - **Rock diskers**: one process per cache_dir responsible for
+    low-level blocking I/O. One disker (or one Rock cache_dir) is meant
     to be used for each physical disk dedicated to the Squid disk cache.
     Conceptually, Rock diskers are similar to *diskd* processes.
 
@@ -186,9 +186,9 @@ continue to lag behind workers.
 
 When your disks cannot keep up with the offered load, you should add
 *max-swap-rate* and *swap-timeout* options to your Rock
-[cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir) lines. In
+[cache_dir](http://www.squid-cache.org/Doc/config/cache_dir) lines. In
 most cases, you need both of those options or none. The first option
-tells Squid to pace Rock cache\_dir traffic (artificially delaying I/Os
+tells Squid to pace Rock cache_dir traffic (artificially delaying I/Os
 as necessary to prevent traffic jams) and the second one tells Squid
 when it should avoid disk I/O because it would take "too long".
 
@@ -232,14 +232,14 @@ an algorithm you may use as a starting point:
     are needed at all. Repeat testing after every change.
 
 As always, it is usually a bad idea to change more than one thing at a
-time: Patience is a virtue. Unfortunately, most Rock cache\_dir
+time: Patience is a virtue. Unfortunately, most Rock cache_dir
 parameters are not reconfigurable without stopping Squid, which makes
 one-at-a-time changes painful, especially in a live deployment
 environment. Consider benchmarking and tuning Squid in a realistic lab
 setting first.
 
 Ideally, you should build a mathematical model that explains why your
-disk performance is what it is, given your disk parameters, cache\_dir
+disk performance is what it is, given your disk parameters, cache_dir
 settings, and offered load. An accurate model removes the need for blind
 experimentation.
 
@@ -247,7 +247,7 @@ The above procedure works in some, but not all cases. YMMV.
 
 ## Limitations
 
-  - Objects larger than 32,000 bytes cannot be cached when cache\_dirs
+  - Objects larger than 32,000 bytes cannot be cached when cache_dirs
     are shared among workers. Rock Store itself supports arbitrary slot
     sizes, but disker processes use IPC I/O (rather than Blocking I/O)
     which relies on shared memory pages, which are currently hard-coded
@@ -263,21 +263,21 @@ The above procedure works in some, but not all cases. YMMV.
     space waste. Since Rock Store uses slot-size I/O, larger slot sizes
     delay I/O completion. We need to add support for storing large
     objects using a chain of Rock slots and/or add shared caching
-    support for UFS cache\_dirs.
+    support for UFS cache_dirs.
 
-  - You must use round-robin cache\_dir selection. We will eventually
+  - You must use round-robin cache_dir selection. We will eventually
     add load-based selection support.
 
-  - Most cache\_dir parameters are not reconfigurable without stopping
+  - Most cache_dir parameters are not reconfigurable without stopping
     Squid. This makes performance tuning difficult, especially if you
     use live users as guinea pigs.
 
   - There is no way to force Blocking I/O use if IPC I/O is supported
     and multiple workers are used. Fortunately, it is not necessary in
-    most cases because you want to share cache\_dirs among workers,
+    most cases because you want to share cache_dirs among workers,
     which requires IPC I/O.
 
-  - It is difficult to restrict a cache\_dir to a given worker.
+  - It is difficult to restrict a cache_dir to a given worker.
     Fortunately, in most cases, it is not necessary.
 
 ## Appendix: Design choices
@@ -292,8 +292,8 @@ as a historical reference and may be outdated.
 | Do we want to guarantee 100% store-ability and 100% retrieve-ability? We can probably optimize more if we can skip some new objects or overwrite old ones as long as the memory cache handles hot spots.                                                                                                                                                                                                                       | SMP implementation assumes unreliable storage (e.g., diskers may die or become blocked) but does not take advantage of it. Future optimizations may skip or reorder I/O requests                                                                                                                                                                                  |
 | Do we want 100% disk space utilization? We can optimize more if we are allowed to leave holes. How large can those holes be relative to the total disk size? With disk storage prices decreasing, it may be appropriate to waste a "little" storage if we can gain a "lot" of performance.                                                                                                                                     | Current implementation does not optimize by deliberately creating holes in on-disk storage.                                                                                                                                                                                                                                                                       |
 | Do we rely on OS buffers? OS-level disk I/O optimizations often go wrong under high proxy load. Will bypassing OS buffers and doing raw disk I/O help us approach hardware limits?                                                                                                                                                                                                                                             | Current implementation uses OS buffers for simplicity. Future optimizations are likely to use raw, unbuffered disk I/O.                                                                                                                                                                                                                                           |
-| Do we need a complete, reliable in-memory cache index? Should we make the index smaller and perhaps less reliable to free RAM for the memory cache? Can we use hashing to find object location on disk without an index?                                                                                                                                                                                                       | SMP implementation keeps one index for the shared memory cache and one index for each of the configured Rock Store cache\_dirs. These indexes are shared among workers.                                                                                                                                                                                           |
+| Do we need a complete, reliable in-memory cache index? Should we make the index smaller and perhaps less reliable to free RAM for the memory cache? Can we use hashing to find object location on disk without an index?                                                                                                                                                                                                       | SMP implementation keeps one index for the shared memory cache and one index for each of the configured Rock Store cache_dirs. These indexes are shared among workers.                                                                                                                                                                                           |
 | What parts of Rock Store should be replaceable/configurable? For example, is it worth designing so that solid state disks can be efficiently supported by the same store architecture?                                                                                                                                                                                                                                         | Current configuration is limited to the block size and the concurrent I/Os limit, but it will surely become more complex in the future. We did not have a chance to play with solid state disks, but the overall design should accommodate them well. Future code will probably have an option to optimize either seek latency or the number of same-spot writes. |
-| Will per-cache\_dir limit remain at 17M objects? Can we optimize knowing that busy caches will reach that limit?                                                                                                                                                                                                                                                                                                               | Current code continues to rely on the 17M limit in some data structures.                                                                                                                                                                                                                                                                                          |
+| Will per-cache_dir limit remain at 17M objects? Can we optimize knowing that busy caches will reach that limit?                                                                                                                                                                                                                                                                                                               | Current code continues to rely on the 17M limit in some data structures.                                                                                                                                                                                                                                                                                          |
 
 [CategoryFeature](/CategoryFeature)

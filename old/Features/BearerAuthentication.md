@@ -117,8 +117,8 @@ Input line received from Squid:
     
       - Additional parameters passed to the helper which may be
         configured with
-        [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
-        *key\_extras* parameter. Only available in
+        [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
+        *key_extras* parameter. Only available in
         [Squid-3.5](/Releases/Squid-3.5)
         and later.
 
@@ -204,7 +204,7 @@ everything to work.
 
   - ℹ️
     All other bearer parameters are optional. see
-    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param)
+    [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
     BEARER section for more details.
 
 ## Testing

@@ -16,8 +16,8 @@
 
 ENFORCED:
 
-  - Makefile.am must use the $(DEFAULT\_FOO) form for autoconf variables
-    passed with AC\_SUBST(DEFAULT\_FOO).
+  - Makefile.am must use the $(DEFAULT_FOO) form for autoconf variables
+    passed with AC_SUBST(DEFAULT_FOO).
 
 ## File naming
 
@@ -50,7 +50,7 @@ Squid uses autoconf defined macros to eliminate experimental or optional
 components at build time.
 
   - name for variables passed to automake code should start with
-    ENABLE\_
+    ENABLE_
 
 Example usage:
 

@@ -58,23 +58,23 @@ Basic new features in 6.0:
       - Remove 8K limit for single access.log line
     
       - Add
-        [tls\_key\_log](http://www.squid-cache.org/Doc/config/tls_key_log)
+        [tls_key_log](http://www.squid-cache.org/Doc/config/tls_key_log)
         to report TLS communication secrets
 
   - **Minor UI changes:**
     
-      - Add %transport::\>connection\_id
+      - Add %transport::\>connection_id
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code
     
       - Add
-        [paranoid\_hit\_validation](http://www.squid-cache.org/Doc/config/paranoid_hit_validation)
+        [paranoid_hit_validation](http://www.squid-cache.org/Doc/config/paranoid_hit_validation)
         directive
     
-      - Report SMP store queues state (mgr:store\_queues)
+      - Report SMP store queues state (mgr:store_queues)
     
       - Add
-        [cache\_log\_message](http://www.squid-cache.org/Doc/config/cache_log_message)
+        [cache_log_message](http://www.squid-cache.org/Doc/config/cache_log_message)
         directive
 
   - **Developer Interest changes:**
@@ -98,7 +98,7 @@ Basic new features in 6.0:
 
   - **Removed features**:
     
-      - Remove unused cache\_diff binary
+      - Remove unused cache_diff binary
     
       - Remove obsolete membanger test
     

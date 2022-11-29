@@ -32,8 +32,8 @@ documentation.)
 
 The kernel and iptables need to be patched with the tproxy patches (and
 the tproxy include file needs to be placed in
-/usr/include/linux/netfilter\_ipv4/ip\_tproxy.h or
-include/netfilter\_ipv4/ip\_tproxy.h in the squid src tree).
+/usr/include/linux/netfilter_ipv4/ip_tproxy.h or
+include/netfilter_ipv4/ip_tproxy.h in the squid src tree).
 
 TThe iptables rule needs to use the TPROXY target (instead of the
 REDIRECT target) to redirect the port 80 traffic to the proxy. Ie:
@@ -41,7 +41,7 @@ REDIRECT target) to redirect the port 80 traffic to the proxy. Ie:
     iptables -t tproxy -A PREROUTING -i eth0 -p tcp -m tcp --dport 80 -j TPROXY --on-port 80
 
 The kernel must strip the GRE header from the incoming packets (either
-using the ip\_wccp module, or by having a GRE tunnel set up in linux
+using the ip_wccp module, or by having a GRE tunnel set up in linux
 pointing at the router (no GRE setup is required on the router)).
 
     wccp2_service dynamic 80
@@ -54,19 +54,19 @@ wccp services, otherwise things will break if you have more than 1 cache
 (specifically, you will have problems when the a web server's name
 resolves to multiple ip addresses).
 
-The [http\_port](http://www.squid-cache.org/Doc/config/http_port) that
+The [http_port](http://www.squid-cache.org/Doc/config/http_port) that
 you are redirecting to must have the transparent and tproxy options
 enabled as follows (modify the port as appropriate):
 
     http_port 80 transparent tproxy
 
-There \_must\_ be a
-[tcp\_outgoing](http://www.squid-cache.org/Doc/config/tcp_outgoing)
+There _must_ be a
+[tcp_outgoing](http://www.squid-cache.org/Doc/config/tcp_outgoing)
 address defined. This will need to be valid to satisfy any non-tproxied
 connections.
 
 On the router, you need to make sure that all traffic going to/from the
-customer will be processed by \_both\_ wccp rules. The way we have
+customer will be processed by _both_ wccp rules. The way we have
 implemented this is to apply wccp service 80 to all traffic coming in
 from a customer-facing interface, and wccp service 90 applied to all
 traffic going out a customer-facing interface. We have also applied the
@@ -94,7 +94,7 @@ interface. Ie:
      ip wccp redirect exclude in
 
 It's highly recommended to turn
-[httpd\_accel\_no\_pmtu\_disc](http://www.squid-cache.org/Doc/config/httpd_accel_no_pmtu_disc)
+[httpd_accel_no_pmtu_disc](http://www.squid-cache.org/Doc/config/httpd_accel_no_pmtu_disc)
 on in the squid conf.
 
 If you have some clients who set their proxy, it is recommended to use a
@@ -114,21 +114,21 @@ without the need to maintain all root capabilities.
 I would like to add the following to my previous list of requirements
 for tproxy + wccpv2:
 
-  - You must make sure rp\_filter is disabled in the kernel
+  - You must make sure rp_filter is disabled in the kernel
 
-  - You must make sure ip\_forwarding is enabled in the kernel
+  - You must make sure ip_forwarding is enabled in the kernel
 
-Can you please check that you've enabled ip\_forwarding in your kernel.
+Can you please check that you've enabled ip_forwarding in your kernel.
 If that doesn't work, I don't know if the "vhost vport=80" is required
-in the [http\_port](http://www.squid-cache.org/Doc/config/http_port)
+in the [http_port](http://www.squid-cache.org/Doc/config/http_port)
 line in the squid config (we don't have these options enabled on our
 proxies).
 
-I use the ip\_wccp module to make the kernel handle the GRE packets
-correctly (which works slightly differently from the ip\_gre module). Do
+I use the ip_wccp module to make the kernel handle the GRE packets
+correctly (which works slightly differently from the ip_gre module). Do
 you have a GRE tunnel set up in linux? If so, what command are you
 running to set it up? I don't have an example to give you here, but I'm
-sure other people are using the ip\_gre module with wccp to handle the
+sure other people are using the ip_gre module with wccp to handle the
 GRE packets, and should be able to help.
 
 (reply from the user)
@@ -139,7 +139,7 @@ finally it work....
 
 Here is my step :
 
-\* install squid-2.6.s1 + FD-patch\_from\_you + cttproxy-patch from
+\* install squid-2.6.s1 + FD-patch_from_you + cttproxy-patch from
 balabit for kernel & iptables tproxy
 
 \* create gre tunnel
@@ -147,7 +147,7 @@ balabit for kernel & iptables tproxy
     insmod ip_gre
     ifconfig gre0 <use ip address within loopback0 router subnet> up
 
-  - disable rp\_filter & enable forwarding
+  - disable rp_filter & enable forwarding
 
 <!-- end list -->
 

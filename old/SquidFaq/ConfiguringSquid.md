@@ -146,7 +146,7 @@ easier.
 ### [Squid-3.2 default config](/Releases/Squid-3.2)
 
 From 3.2 further configuration cleanups have been done to make things
-easier and safer. The manager, localhost, and to\_localhost ACL
+easier and safer. The manager, localhost, and to_localhost ACL
 definitions are now built-in.
 
   - 
@@ -445,9 +445,9 @@ perspective of global hit ratio, and thus you need to tell Squid when it
 can not go direct and must use a parent proxy even if it knows the
 request will be a cache miss.
 
-You can use the *never\_direct* access list in *squid.conf* to specify
+You can use the *never_direct* access list in *squid.conf* to specify
 which requests must be forwarded to your parent cache outside the
-firewall, and the *always\_direct* access list to specify which requests
+firewall, and the *always_direct* access list to specify which requests
 must not be forwarded. For example, if Squid must connect directly to
 all servers that end with *mydomain.com*, but must use the parent for
 all others, you would write:
@@ -466,10 +466,10 @@ Note, however that when you use IP addresses, Squid must perform a DNS
 lookup to convert URL hostnames to an address. Your internal DNS servers
 may not be able to lookup external domains.
 
-If you use *never\_direct* and you have multiple parent caches, then you
+If you use *never_direct* and you have multiple parent caches, then you
 probably will want to mark one of them as a default choice in case Squid
 can't decide which one to use. That is done with the *default* keyword
-on a *cache\_peer* line. For example:
+on a *cache_peer* line. For example:
 
     cache_peer xyz.mydomain.com parent 3128 0 no-query default
 
@@ -478,15 +478,15 @@ on a *cache\_peer* line. For example:
 see
 [Features/CacheHierarchy](/Features/CacheHierarchy)
 
-## What ''cache\_dir'' size should I use?
+## What ''cache_dir'' size should I use?
 
 This chapter assumes that you are dedicating an entire disk partition to
-a squid cache\_dir, as is often the case.
+a squid cache_dir, as is often the case.
 
-Generally speaking, setting the cache\_dir to be the same size as the
+Generally speaking, setting the cache_dir to be the same size as the
 disk partition is not a wise choice, for two reasons. The first is that
 squid is not very tolerant to running out of disk space. On top of the
-cache\_dir size, squid will use some extra space for *swap.state* and
+cache_dir size, squid will use some extra space for *swap.state* and
 then some more temporary storage as work-areas, for instance when
 rebuilding *swap.state*. So in any case make sure to leave some extra
 room for this, or your cache will enter an endless crash-restart cycle.
@@ -506,20 +506,20 @@ to find..). First thing, manifacturers often lie about disk capacity
 for its accounting structures, so you'll reasonably end up with 8Gib of
 useable space. You then have to account for another 10% in overhead for
 Squid, and then the space needed for keeping fragmentation at bay. So in
-the end the recommended cache\_dir setting is 6000 to 7000 Mebibyte.
+the end the recommended cache_dir setting is 6000 to 7000 Mebibyte.
 
     cache_dir ... 7000 16 256
 
 Its better to start out with a conservative setting and then, after the
 cache has been filled, look at the disk usage. If you think there is
-plenty of unused space, then increase the cache\_dir setting a little.
+plenty of unused space, then increase the cache_dir setting a little.
 
 If you're getting "disk full" write errors, then you definitely need to
 decrease your cache size.
 
-## I'm adding a new cache\_dir. Will I lose my cache?
+## I'm adding a new cache_dir. Will I lose my cache?
 
-No. You can add and delete cache\_dir lines without affecting any of the
+No. You can add and delete cache_dir lines without affecting any of the
 others.
 
 ## Squid and http-gw from the TIS toolkit.
@@ -615,7 +615,7 @@ Disadvantages:
 
 (contributed by [Rodney van den Oever](mailto:RvdOever@baan.nl))
 
-## What is "HTTP\_X\_FORWARDED\_FOR"? Why does squid provide it to WWW servers, and how can I stop it?
+## What is "HTTP_X_FORWARDED_FOR"? Why does squid provide it to WWW servers, and how can I stop it?
 
 see. [Security -
 X-Forwarded-For](/SquidFaq/SecurityPitfalls#head-bc80c66abc9dfd9d6463fac3113bf5101d7b741e)
@@ -629,7 +629,7 @@ adds the request header called "X-Forwarded-For" which looks like this:
 
 Entries are always IP addresses, or the word unknown if the address
 could not be determined or if it has been disabled with the
-forwarded\_for configuration option.
+forwarded_for configuration option.
 
 We must note that access controls based on this header are extremely
 weak and simple to fake. Anyone may hand-enter a request with any IP
@@ -638,7 +638,7 @@ have been omitted from the HTTP/1.1 specification.
 
 Because of the weakness of this header, access controls based on
 X-Forwarded-For are not used by default. It's needs to be specifically
-enabled with **follow\_x\_forwarded\_for**.
+enabled with **follow_x_forwarded_for**.
 
 ## Can Squid anonymize HTTP requests?
 
@@ -647,10 +647,10 @@ versions of squid. Please follow the instructions for the version of
 squid that you are using. As a default, no anonymizing is done.
 
 If you choose to use the anonymizer you might wish to investigate the
-forwarded\_for option to prevent the client address being disclosed.
-Failure to turn off the forwarded\_for option will reduce the
+forwarded_for option to prevent the client address being disclosed.
+Failure to turn off the forwarded_for option will reduce the
 effectiveness of the anonymizer. Finally if you filter the User-Agent
-header using the fake\_user\_agent option can prevent some user problems
+header using the fake_user_agent option can prevent some user problems
 as some sites require the User-Agent header.
 
 NP: Squid must be built with the **--enable-http-violations** configure
@@ -661,12 +661,12 @@ capability;
 
   - Squid 2.6 - 2.7  
     Allow erasure or replacement of specific headers through the
-    **http\_header\_access** and **header\_replace** options.
+    **http_header_access** and **header_replace** options.
 
   - Squid 3.0  
     Allows selective erasure and replacement of specific headers in
-    either request or reply with the **request\_header\_access** and
-    **reply\_header\_access** and **header\_replace** settings.
+    either request or reply with the **request_header_access** and
+    **reply_header_access** and **header_replace** settings.
 
   - Squid 3.1  
     Adds to the 3.0 capability with truncation, replacement, or removal
@@ -681,7 +681,7 @@ squid.conf.documented for your specific version of squid.
 
 ## Can I make Squid go direct for some sites?
 
-Sure, just use the **always\_direct** access list.
+Sure, just use the **always_direct** access list.
 
 For example, if you want Squid to connect directly to hotmail.com
 servers, you can use these lines in your config file:
@@ -698,7 +698,7 @@ response:
 
     cache deny all
 
-With Squid-2.7, Squid-3.1 and later you can also remove all 'cache\_dir'
+With Squid-2.7, Squid-3.1 and later you can also remove all 'cache_dir'
 options from your squid.conf to avoid having a cache directory.
 
 With Squid-2.4, 2.5, 2.6, and 3.0 you need to use the "null" storage
@@ -706,7 +706,7 @@ module:
 
     cache_dir null /tmp
 
-Note: a null cache\_dir does not disable caching, but it does save you
+Note: a null cache_dir does not disable caching, but it does save you
 from creating a cache structure if you have disabled caching with cache.
 The directory (e.g., `/tmp`) must exist so that squid can chdir to it,
 unless you also use the `coredump_dir` option.

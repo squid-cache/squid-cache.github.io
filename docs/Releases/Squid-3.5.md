@@ -28,14 +28,14 @@ Basic new features in 3.5:
   - eCAP version 1.0 support
 
   - Authentication helper query extensions (see
-    [auth\_param](http://www.squid-cache.org/Doc/config/auth_param))
+    [auth_param](http://www.squid-cache.org/Doc/config/auth_param))
 
   - Caching large (\>32KB) objects in [Rock
     storage](/Features/LargeRockStore)
 
   - Extended cache HIT/MISS decision control (see
-    [send\_hit](http://www.squid-cache.org/Doc/config/send_hit),
-    [store\_miss](http://www.squid-cache.org/Doc/config/store_miss))
+    [send_hit](http://www.squid-cache.org/Doc/config/send_hit),
+    [store_miss](http://www.squid-cache.org/Doc/config/store_miss))
 
   - Logging of transaction start time (see
     [logformat](http://www.squid-cache.org/Doc/config/logformat))

@@ -111,7 +111,7 @@ ICP reply from an unknown address.
 query.
 
 To configure your multicast group neighbours, use the
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 directive and the *multicast-responder* option:
 
     cache_peer cache1 sibling 3128 3130 multicast-responder
@@ -121,7 +121,7 @@ Here all fields are relevant.
 
   - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
     The ICP port number (3130) must be the same as in the
-    [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+    [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
     line defining the multicast peer above.
 
   - The third field must either be *parent* or *sibling* to indicate how
@@ -130,13 +130,13 @@ Here all fields are relevant.
   - With the *multicast-responder* flag set for a peer, Squid will NOT
     send ICP queries to it directly (i.e. unicast) but will send to the
     special **multicast** group
-    [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+    [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
     instead.
 
 ## How do I know what Multicast TTL to use?
 
 The Multicast TTL (which is specified on the
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) line of
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) line of
 your multicast group) determines how "far" your ICP queries will go. In
 the Mbone, there is a certain TTL threshold defined for each network
 interface or tunnel. A multicast packet's TTL must be larger than the
@@ -160,7 +160,7 @@ for example *ttl=4*.
 # Configuration - Receive and respond
 
 You must tell Squid to join a multicast group address with the
-[mcast\_groups](http://www.squid-cache.org/Doc/config/mcast_groups)
+[mcast_groups](http://www.squid-cache.org/Doc/config/mcast_groups)
 directive.
 
 For example:

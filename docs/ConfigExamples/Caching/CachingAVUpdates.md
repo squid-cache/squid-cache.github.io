@@ -15,7 +15,7 @@ One of most common task is caching AV (antivirus) updates.
 
 ## Usage
 
-To do this you can modify refresh\_pattern to your Squid.
+To do this you can modify refresh_pattern to your Squid.
 
 ## Squid Configuration File
 

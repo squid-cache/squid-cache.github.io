@@ -14,7 +14,7 @@ about these examples please email the squid-users mailing list.
     final backup to other systems. There are other methods such as
     [Proxy
     WPAD/PAC](/Technology/WPAD),
-    linux http\_proxy environment variable, and windows policy
+    linux http_proxy environment variable, and windows policy
     enforcement of browser config. All of which are just as effective
     and encounter less problems when multiple clients are involved.
 
@@ -38,7 +38,7 @@ routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
     
     ℹ️
     You may also need to replace "squid" UID with the
-    [cache\_effective\_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
+    [cache_effective_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
     account Squid runs as. This may be using a built-in default of
     "nobody", "squid", or "proxy" depending on your operating system.
 

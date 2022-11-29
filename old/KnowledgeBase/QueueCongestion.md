@@ -2,7 +2,7 @@
 
 **Symptoms**
 
-  - squidaio\_queue\_request: WARNING - Queue congestion
+  - squidaio_queue_request: WARNING - Queue congestion
 
 **Explanation**
 

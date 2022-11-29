@@ -17,9 +17,9 @@ Squid handles many HTTP related protocols. But presently is unable to
 natively accept or send HTTP connections over SOCKS.
 
 The aim of this project will be to make
-[http\_port](http://www.squid-cache.org/Doc/config/http_port) accept
+[http_port](http://www.squid-cache.org/Doc/config/http_port) accept
 SOCKS connections and make outgoing connections to SOCKS
-[cache\_peers](http://www.squid-cache.org/Doc/config/cache_peers) so
+[cache_peers](http://www.squid-cache.org/Doc/config/cache_peers) so
 that Squid can send requests easily through to SOCKS gateways or act as
 an HTTP SOCKS gateway itself.
 
@@ -35,7 +35,7 @@ bind() call and library linkage.
 
 With knowledge of how upstream peering works it follows that the
 connect() calls Squid may also need to be socksified to use
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) with a
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) with a
 socks proxy. Which would be:
 
     export CFLAGS=" -Dbind=SOCKSbind -Dconnect=SOCKSconnect "
@@ -52,15 +52,15 @@ fashion.
 
 ## Upgrade Plans
 
-A new COMM\_SOCKSBIND flag will be needed to the comm layer calls for
+A new COMM_SOCKSBIND flag will be needed to the comm layer calls for
 the listener binding, outbound maybe a config setting for
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) acting
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) acting
 on the bind() choice directly.
 
 I've had a bit of time too short to do anything much and created a
 branch that is supposed to do listening port and SOCKS peers. It builds
 and listens on an
-[http\_port](http://www.squid-cache.org/Doc/config/http_port) as far as
+[http_port](http://www.squid-cache.org/Doc/config/http_port) as far as
 I can tell now. squidclient has also been adapted to use SOCKS socket
 operations. Bazaar Branch available on launchpad at
 [](https://code.launchpad.net/~yadi/squid/socks) for anyone keen on
@@ -74,13 +74,13 @@ Outstanding Problem:
     branch built and appeared to run fine as a regular proxy.
 
   - There seems to be no difference between traffic arriving on a
-    SOCKS\_listen() bound port and on a regular listen() bound port.
+    SOCKS_listen() bound port and on a regular listen() bound port.
     Both regular and SOCKS traffic was tried. Both ports accepted both
     types of traffic\!
 
-  - There seems to be no SOCKS operations on the outbound cache\_peer
+  - There seems to be no SOCKS operations on the outbound cache_peer
     links, even when talking to a SOCKS server, over a SSH SOCKS tunnel
-    and using SOCKS\_connect()+SOCKS\_bind() to make the outgoing
+    and using SOCKS_connect()+SOCKS_bind() to make the outgoing
     connection. Possibly errors at the tunnel or server configuration,
     looking for someone more expert to test that properly.
 
@@ -106,6 +106,6 @@ Situations:
 Extra additions: there seems to also be a system configuration setting
 and config file(s) for setting a parent SOCKSv5 proxy. It may be useful
 to pull this in as a possible automatic
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) entry.
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) entry.
 
 [CategoryFeature](/CategoryFeature)

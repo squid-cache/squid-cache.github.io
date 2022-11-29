@@ -50,11 +50,11 @@ accommodate lookups that have not ended at the logging time,
 The *start* member keeps the last time when concurrent DNS lookups
 started at level zero. A new DNS lookup increases the level. A finished
 lookup decreases the level and if it is the last lookup, adds
-*current\_time-start* difference to the transaction total. Methods to
+*current_time-start* difference to the transaction total. Methods to
 encapsulate lookup start/end accounting should be added.
 
 If the concurrency level is positive at the master transaction logging
-time, the logged value is increased by *current\_time-start* difference.
+time, the logged value is increased by *current_time-start* difference.
 
 It may be difficult to locate the master transaction from where DNS
 lookups are initiated or finished. Solving this puzzle may help properly

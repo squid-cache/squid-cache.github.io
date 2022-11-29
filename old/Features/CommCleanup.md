@@ -60,7 +60,7 @@ Currently testing in 3.2:
   - Persistent connections pooled by destination IP:port. Retrieval out
     of the pool is filtered on required local endpoint IP (if any) to
     support transparent interception and
-    [tcp\_outgoing\_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
+    [tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
     which require a fixed local address.
 
 ### TODO

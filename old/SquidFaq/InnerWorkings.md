@@ -66,7 +66,7 @@ Siblings will not fetch an object for another sibling to resolve a cache
 
 The algorithm is somewhat more complicated when firewalls are involved.
 
-The [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+The [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 **no-query** option can be used to skip the ICP queries if the only
 appropriate source is a parent cache (i.e., if there's only one place
 you'd fetch the object from, why bother querying?)
@@ -137,10 +137,10 @@ Internet. In this case, we would like B to recognize that it has poor
 reachability and somehow convey this fact to its neighbor caches.
 
 Squid will track the ratio of failed-to-successful requests over short
-time periods. A failed request is one which is logged as ERR\_DNS\_FAIL,
-ERR\_CONNECT\_FAIL, or ERR\_READ\_ERROR. When the failed-to-successful
-ratio exceeds 1.0, then Squid will return ICP\_MISS\_NOFETCH instead of
-ICP\_MISS to neighbors. Note, Squid will still return ICP\_HIT for cache
+time periods. A failed request is one which is logged as ERR_DNS_FAIL,
+ERR_CONNECT_FAIL, or ERR_READ_ERROR. When the failed-to-successful
+ratio exceeds 1.0, then Squid will return ICP_MISS_NOFETCH instead of
+ICP_MISS to neighbors. Note, Squid will still return ICP_HIT for cache
 hits.
 
 # Does squid periodically re-read its configuration file?
@@ -260,33 +260,33 @@ but it filters out the *Set-Cookie* header itself for cache hits.
 
 When checking the object freshness, we calculate these values:
 
-  - *OBJ\_DATE* is the time when the object was given out by the
+  - *OBJ_DATE* is the time when the object was given out by the
 
 origin server. This is taken from the HTTP Date reply header.
 
-  - *OBJ\_LASTMOD* is the time when the object was last modified,
+  - *OBJ_LASTMOD* is the time when the object was last modified,
 
 given by the HTTP Last-Modified reply header.
 
-  - *OBJ\_AGE* is how much the object has aged *since* it was retrieved:
+  - *OBJ_AGE* is how much the object has aged *since* it was retrieved:
 
 <!-- end list -->
 
     OBJ_AGE = NOW - OBJ_DATE
 
-  - *LM\_AGE* is how old the object was *when* it was retrieved:
+  - *LM_AGE* is how old the object was *when* it was retrieved:
 
 <!-- end list -->
 
     LM_AGE = OBJ_DATE - OBJ_LASTMOD
 
-  - *LM\_FACTOR* is the ratio of *OBJ\_AGE* to *LM\_AGE*:
+  - *LM_FACTOR* is the ratio of *OBJ_AGE* to *LM_AGE*:
 
 <!-- end list -->
 
     LM_FACTOR = OBJ_AGE / LM_AGE
 
-  - *CLIENT\_MAX\_AGE* is the (optional) maximum object age the client
+  - *CLIENT_MAX_AGE* is the (optional) maximum object age the client
     will
 
 accept as taken from the HTTP/1.1 Cache-Control request header.
@@ -294,22 +294,22 @@ accept as taken from the HTTP/1.1 Cache-Control request header.
   - *EXPIRES* is the (optional) expiry time from the server reply
     headers.
 
-These values are compared with the parameters of the *refresh\_pattern*
+These values are compared with the parameters of the *refresh_pattern*
 rules. The refresh parameters are:
 
   - URL regular expression
 
-  - *CONF\_MIN*: The time (in minutes) an object without an explicit
+  - *CONF_MIN*: The time (in minutes) an object without an explicit
     expiry time should be considered fresh. The recommended value is 0,
     any higher values may cause dynamic applications to be erronously
     cached unless the application designer has taken the appropriate
     actions.
 
-  - *CONF\_PERCENT*: A percentage of the objects age (time since last
+  - *CONF_PERCENT*: A percentage of the objects age (time since last
     modification age) an object without explicit exipry time will be
     considered fresh.
 
-  - *CONF\_MAX*: An upper limit on how long objects without an explicit
+  - *CONF_MAX*: An upper limit on how long objects without an explicit
     expiry time will be considered fresh.
 
 The URL regular expressions are checked in the order listed until a
@@ -349,7 +349,7 @@ protocols.
 Sometimes reading on the server-side gets ahead of writing to the
 client-side. Especially if your cache is on a fast network and your
 clients are connected at modem speeds. Squid will read up to
-[read\_ahead\_gap](http://www.squid-cache.org/Doc/config/read_ahead_gap)
+[read_ahead_gap](http://www.squid-cache.org/Doc/config/read_ahead_gap)
 bytes (default of 16 KB) ahead of the client before it starts to defer
 the server-side reads.
 
@@ -483,7 +483,7 @@ All other HTTP status codes are NOT cachable, including:
 
 # What does ''keep-alive ratio'' mean?
 
-The *keep-alive ratio* shows up in the *server\_list* cache manager
+The *keep-alive ratio* shows up in the *server_list* cache manager
 page.
 
 This is a mechanism to try detecting neighbor caches which might not be
@@ -565,7 +565,7 @@ headers have been received and parsed. In some cases, the reply headers
 will indicate the object should not be made public. For example, if the
 *private* Cache-Control directive is used.
 
-# What is FORW\_VIA\_DB for?
+# What is FORW_VIA_DB for?
 
 We use it to collect data for
 [Plankton](http://www.ircache.net/Cache/Plankton/).
@@ -587,7 +587,7 @@ that says UDP echo and chargen services can be used for a denial of
 service attack. This made admins extremely nervous about any packets
 hitting port 7 on their systems, and they made complaints.
 
-The *source\_ping* feature has been disabled in Squid-2. If you're
+The *source_ping* feature has been disabled in Squid-2. If you're
 seeing packets to port 7 that are coming from a Squid cache (remote port
 3130), then its probably a very old version of Squid.
 
@@ -627,18 +627,18 @@ name servers by setting this configuration option:
 See *storeDirMapAllocate()* in the source code.
 
 When Squid wants to create a new disk file for storing an object, it
-first selects which *cache\_dir* the object will go into. This is done
+first selects which *cache_dir* the object will go into. This is done
 with the *storeDirSelectSwapDir()* function. If you have *N* cache
 directories, the function identifies the *3N/4* (75%) of them with the
 most available space. These directories are then used, in order of
 having the most available space. When Squid has stored one URL to each
-of the *3N/4* *cache\_dir*s, the process repeats and
+of the *3N/4* *cache_dir*s, the process repeats and
 *storeDirSelectSwapDir()* finds a new set of *3N/4* cache directories
 with the most available space.
 
-Once the *cache\_dir* has been selected, the next step is to find an
+Once the *cache_dir* has been selected, the next step is to find an
 available *swap file number*. This is accomplished by checking the *file
-map*, with the *file\_map\_allocate()* function. Essentially the swap
+map*, with the *file_map_allocate()* function. Essentially the swap
 file numbers are allocated sequentially. For example, if the last number
 allocated happens to be 1000, then the next one will be the first number
 after 1000 that is not already being used.
@@ -654,18 +654,18 @@ byte hit ratio is calculated as
         (client_bytes - server_bytes) / client_bytes
 ```
 
-If server\_bytes is greater than client\_bytes, you end up with a
+If server_bytes is greater than client_bytes, you end up with a
 negative value.
 
-The server\_bytes may be greater than client\_bytes for a number of
+The server_bytes may be greater than client_bytes for a number of
 reasons, including:
 
   - Cache Digests and other internally generated requests. Cache Digest
-    messages are quite large. They are counted in the server\_bytes, but
+    messages are quite large. They are counted in the server_bytes, but
     since they are consumed internally, they do not count in
-    client\_bytes.
+    client_bytes.
 
-  - User-aborted requests. If your *quick\_abort* setting allows it,
+  - User-aborted requests. If your *quick_abort* setting allows it,
     Squid sometimes continues to fetch aborted requests from the
     server-side, without sending any data to the client-side.
 
@@ -676,7 +676,7 @@ client-side. In a range request, the client is asking for only some part
 of the object. Squid may decide to retrieve the whole object anyway, so
 that it can be used later on. This means downloading more from the
 server than sending to the client. You can affect this behavior with the
-*range\_offset\_limit* option.
+*range_offset_limit* option.
 
 # What does "Disabling use of private keys" mean?
 
@@ -741,7 +741,7 @@ Currently, the heap replacement code supports two additional algorithms:
 LFUDA, and GDS.
 
 Then, in *squid.conf*, you can select different policies with the
-[cache\_replacement\_policy](http://www.squid-cache.org/Doc/config/cache_replacement_policy)
+[cache_replacement_policy](http://www.squid-cache.org/Doc/config/cache_replacement_policy)
 directive.
 
 The LFUDA and GDS replacement code was contributed by John Dilley and
@@ -767,7 +767,7 @@ may be due to a number of reasons:
 
   - Squid doesn't keep track of the size of the *swap.state* file, which
     normally resides on each
-    [cache\_dir](http://www.squid-cache.org/Doc/config/cache_dir).
+    [cache_dir](http://www.squid-cache.org/Doc/config/cache_dir).
 
   - Directory entries and take up filesystem space.
 
@@ -782,14 +782,14 @@ may be due to a number of reasons:
     gotten lost without being removed from the swap.state file. Over
     time, Squid will detect this and automatically fix it.
 
-# How do ''positive\_dns\_ttl'' and ''negative\_dns\_ttl'' work?
+# How do ''positive_dns_ttl'' and ''negative_dns_ttl'' work?
 
-[positive\_dns\_ttl](http://www.squid-cache.org/Doc/config/positive_dns_ttl)
+[positive_dns_ttl](http://www.squid-cache.org/Doc/config/positive_dns_ttl)
 is how long Squid caches a successful DNS lookup. Similarly,
-[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
+[negative_dns_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
 is how long Squid caches a failed DNS lookup.
 
-[positive\_dns\_ttl](http://www.squid-cache.org/Doc/config/positive_dns_ttl)
+[positive_dns_ttl](http://www.squid-cache.org/Doc/config/positive_dns_ttl)
 is not always used. It is NOT used in the following cases:
 
   - Squid-2.3 and later versions with internal DNS lookups. Internal
@@ -830,13 +830,13 @@ Negative values mean the entry is already expired, and will be refreshed
 upon next use.
 
 The
-[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
+[negative_dns_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
 directive specifies how long to cache failed DNS lookups. When Squid
 fails to resolve a hostname, you can be pretty sure that it is a real
 failure, and you are not likely to get a successful answer within a
 short time period. Squid retries its lookups many times before declaring
 a lookup has failed. If you like, you can set
-[negative\_dns\_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
+[negative_dns_ttl](http://www.squid-cache.org/Doc/config/negative_dns_ttl)
 to zero.
 
 # What does ''swapin MD5 mismatch'' mean?
@@ -913,7 +913,7 @@ connects to the server on that IP and port and data flows.
 # When does Squid re-forward a client request?
 
 When Squid forwards an HTTP request to the next hop (either a
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) or an
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) or an
 origin server), things may go wrong. In some cases, Squid decides to
 re-forward the request. This section documents the associated Squid
 decision logic. Notes in `{curly braces}` are meant to help developers
@@ -936,9 +936,9 @@ following conditions is true:
     `{FwdState::reforward}`, one of the two decision making methods.
 
   - The number of forwarding attempts exceeded
-    [forward\_max\_tries](http://www.squid-cache.org/Doc/config/forward_max_tries).
+    [forward_max_tries](http://www.squid-cache.org/Doc/config/forward_max_tries).
     For example, if you set
-    [forward\_max\_tries](http://www.squid-cache.org/Doc/config/forward_max_tries)
+    [forward_max_tries](http://www.squid-cache.org/Doc/config/forward_max_tries)
     to 1 (one), then no requests will be re-forwarded.
 
   - Squid successfully received a complete response. See below regarding
@@ -973,12 +973,12 @@ following conditions is true:
     `{ServerStateData::handleRequestBodyProducerAborted}`.
 
   - HTTP response header size sent by the next hop exceeds
-    [reply\_header\_max\_size](http://www.squid-cache.org/Doc/config/reply_header_max_size).
+    [reply_header_max_size](http://www.squid-cache.org/Doc/config/reply_header_max_size).
     `{flags.dont_retry}` set in
     `{HttpStateData::continueAfterParsingHeader}`.
 
   - The received response body size exceeds
-    [reply\_body\_max\_size](http://www.squid-cache.org/Doc/config/reply_body_max_size)
+    [reply_body_max_size](http://www.squid-cache.org/Doc/config/reply_body_max_size)
     configuration. Currently, this condition may only occur if precache
     RESPMOD adaptation is enabled for the response. `{flags.dont_retry}`
     set in `{ServerStateData::sendBodyIsTooLargeError}`.
@@ -1010,7 +1010,7 @@ following conditions is true:
     alternative destinations may include multiple next hop IP addresses
     and multiple peers.
 
-  - [retry\_on\_error](http://www.squid-cache.org/Doc/config/retry_on_error)
+  - [retry_on_error](http://www.squid-cache.org/Doc/config/retry_on_error)
     is *off* and the received HTTP response status code is 403
     (Forbidden), 500 (Internal Server Error), 501 (Not Implemented) or
     503 (Service not available).

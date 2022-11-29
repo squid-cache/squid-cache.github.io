@@ -33,22 +33,22 @@ Updates".)
 The current changes to Squid-2.HEAD implement the functionality through
 a number of structural changes:
 
-  - The "Rewrite" code in client\_side.c is broken out into
-    client\_side\_rewrite.c;
+  - The "Rewrite" code in client_side.c is broken out into
+    client_side_rewrite.c;
 
   - This was used as a template for "store URL" rewriting in
-    client\_side\_storeurl\_rewrite.c;
+    client_side_storeurl_rewrite.c;
 
   - An external helper (exactly the same data format is used as a
     redirect helper\!) receives URLs and can rewrite them to a canonical
-    form - these rewritten URLs are stored as "store\_url" URLs,
+    form - these rewritten URLs are stored as "store_url" URLs,
     seperate from the normal URL;
 
   - The existing/normal URLs are used for ACL and forwarding
 
-  - The "store\_url" URLs are used for the store key lookup and storage
+  - The "store_url" URLs are used for the store key lookup and storage
 
-  - A new meta type has been added - STORE\_META\_STOREURL - which means
+  - A new meta type has been added - STORE_META_STOREURL - which means
     the on-disk object format has slightly changed. There's no big deal
     here - Squid may warn about an unknown meta data type if you
     rollback to another squid version after trying this feature but it
@@ -84,12 +84,12 @@ uncachable. Search your configuration and remove these two lines:
     acl QUERY urlpath_regex cgi-bin \?
     cache deny QUERY 
 
-Make sure you check your configuration file for cache and no\_cache
-directives; you need to disable them and use refresh\_patterns where
+Make sure you check your configuration file for cache and no_cache
+directives; you need to disable them and use refresh_patterns where
 applicable to tell Squid what to not cache\!
 
 Then, add these refresh patterns at the **bottom** of your
-[refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
+[refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
 section.
 
     refresh_pattern -i (/cgi-bin/|\?)   0       0%      0
@@ -97,7 +97,7 @@ section.
 
 These rules make sure that you don't try caching cgi-bin and ? URLs
 unless expiry information is explictly given. Make sure you don't add
-the rules after a "refresh\_pattern ." line; refresh\_pattern entries
+the rules after a "refresh_pattern ." line; refresh_pattern entries
 are evaluated in order and the first match is used\! The last entry must
 be the "." entry\!
 
@@ -161,7 +161,7 @@ Input line received from Squid:
         [Squid-3.5](/Releases/Squid-3.5)
         additional parameters passed to the helper which may be
         configured with
-        [url\_rewrite\_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
+        [url_rewrite_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
         For backward compatibility the default key-extras for URL
         helpers matches the format fields sent by
         [Squid-3.4](/Releases/Squid-3.4)
@@ -204,7 +204,7 @@ Input line received from Squid:
     
       - Squid-2 will send this field with the URL-grouping tag which can
         be configured on
-        [http\_port](http://www.squid-cache.org/Doc/config/http_port).
+        [http_port](http://www.squid-cache.org/Doc/config/http_port).
         Squid-3.x will not send this field.
 
   - kv-pair
@@ -253,12 +253,12 @@ Result line sent back to Squid:
         
         |                    |                                                                                                                           |
         | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-        | clt\_conn\_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
+        | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                                  |
         | rewrite-url=...    | re-write the transaction to the given URL.                                                                                |
         | tag=...            | reserved                                                                                                                  |
         | ttl=...            | reserved                                                                                                                  |
-        | \*\_=...           | Key names ending in (\_) are reserved for local administrators use.                                                       |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                       |
         
 
       - ℹ️

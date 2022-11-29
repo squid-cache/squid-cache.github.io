@@ -52,11 +52,11 @@ Chadd. It has not changed significantly since older TPROXY.
         older than 2.6.28 are known to supply IPs wrongly to Squid and
         other client programs. Avoid\!
     
-      - 2.6.28 to 2.6.32 have different rp\_filter configuration. The
-        rp\_filter settings (0 or 1) for these kernels will silently
+      - 2.6.28 to 2.6.32 have different rp_filter configuration. The
+        rp_filter settings (0 or 1) for these kernels will silently
         block TPROXY if used on newer kernels.
     
-      - 2.6.28 to 2.6.36 are known to have ICMP and TIME\_WAIT issues.
+      - 2.6.28 to 2.6.36 are known to have ICMP and TIME_WAIT issues.
     
       - 2.6.32 to 2.6.34 have bridging issues on some systems.
 
@@ -81,7 +81,7 @@ squid.conf settings
     works makes it incompatible with NAT interception, reverse-proxy
     acceleration, and standard proxy traffic. The **intercept**,
     **accel** and related flags cannot be set on the same
-    [http\_port](http://www.squid-cache.org/Doc/config/http_port) with
+    [http_port](http://www.squid-cache.org/Doc/config/http_port) with
     **tproxy** flag.
 
   - **Obsolete** --enable-tproxy option. Remains only for legacy v2.2
@@ -307,7 +307,7 @@ resolves to multiple ip addresses).
 ### Router config
 
 On the router, you need to make sure that all traffic going to/from the
-customer will be processed by **\_both\_** WCCP rules. The way we
+customer will be processed by **_both_** WCCP rules. The way we
 implement this is to apply:
 
   - WCCP *service 80* applied to all traffic coming **in from** a
@@ -350,7 +350,7 @@ using TPROXY to spoof the client IP, the WCCP gateway will get confused
 by two identical sources and redirect packets at the wrong sibling.
 
 This is now resolved by adding the **no-tproxy** flag to the cluster
-sibling [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+sibling [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 lines. This disables TPROXY spoofing on requests which are received
 through another peer in the cluster.
 
@@ -439,7 +439,7 @@ we can't point to exact routing configuration since it will depend on
 your router. But you will need to figure out some rule(s) which identify
 the Squid outbound traffic. Dedicated router interface, service groups,
 TOS set by Squid
-[tcp\_outgoing\_tos](http://www.squid-cache.org/Doc/config/tcp_outgoing_tos),
+[tcp_outgoing_tos](http://www.squid-cache.org/Doc/config/tcp_outgoing_tos),
 and MAC source have all been found to be useful under specific
 situations. **IP address rules are the one thing guaranteed to fail.**
 
@@ -460,27 +460,27 @@ be multiple.
     *automatically* by the OS to the dead-end route/NIC used only for
     administering the bridge.
 
-### Wccp2 dst\_ip\_hash packet loops
+### Wccp2 dst_ip_hash packet loops
 
   - *by Michael Bowe*
 
 Referring to the
-[wccps\_service\_info](http://www.squid-cache.org/Doc/config/wccps_service_info)
+[wccps_service_info](http://www.squid-cache.org/Doc/config/wccps_service_info)
 settings detailed above.
 
 First method:
 
-  - dst\_ip\_hash on 80
+  - dst_ip_hash on 80
 
-  - src\_ip\_hash on 90
+  - src_ip_hash on 90
 
 Ties a particular web server to a particular cache
 
 Second method:
 
-  - src\_ip\_hash on 80
+  - src_ip_hash on 80
 
-  - dst\_ip\_hash on 90
+  - dst_ip_hash on 90
 
 Ties a particular client to a particular cache
 
@@ -491,7 +491,7 @@ Say a client wants to access [](http://some-large-site), their PC
 resolves the address and gets x.x.x.1
 
 1.  GET request goes off to the network, Cisco sees it and hashes the
-    dst\_ip.
+    dst_ip.
 
 2.  Hash for this IP points to cache-A
 
@@ -504,7 +504,7 @@ time it resolves to x.x.x.2
 
 2.  Reply comes back from x.x.x.2, and arrives at the Cisco.
 
-3.  Cisco does hash on src\_ip and this happens to map to cache-B
+3.  Cisco does hash on src_ip and this happens to map to cache-B
 
 4.  Reply arrives at cache-B and it doesn’t know anything about it.
     Trouble\!
@@ -551,7 +551,7 @@ from [](http://www.henriknordstrom.net/code/squidtproxy.te)
   - Shorewall Firewall Configuration
     [](http://www1.shorewall.net/Shorewall_Squid_Usage.html#TPROXY)
 
-## spoof\_client\_ip config directive (exists only from Squid-3.4)
+## spoof_client_ip config directive (exists only from Squid-3.4)
 
   - Squid-Cache allows tproxy spoof control configuration directive:
     [](http://www.squid-cache.org/Doc/config/spoof_client_ip/) This

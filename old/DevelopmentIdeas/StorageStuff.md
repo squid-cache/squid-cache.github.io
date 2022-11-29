@@ -40,7 +40,7 @@ The Squid storage manager does a bunch of things inefficiently. Namely:
     memory cache actually starts at the beginning of the memory object
     and starts walking along each 4k page until it finds the offset
     which satisfies that copy. This is fine for objects under a few
-    multiples of 4k but if you run a cache\_mem of a couple gigabytes
+    multiples of 4k but if you run a cache_mem of a couple gigabytes
     and don't mind caching \>10 megabyte objects in RAM, things get a
     bit fiddly.
 
@@ -75,22 +75,22 @@ The Squid storage manager does a bunch of things inefficiently. Namely:
     appropriate) and return the reply status + headers, and any data
     thats available.
 
-  - That should mean we can get rid of the seen\_offset stuff. Thats
+  - That should mean we can get rid of the seen_offset stuff. Thats
     only ever used, as far as I can tell, when trying to parse the reply
     headers.
 
   - Once thats happy (and its a significant amount of work\!), modify
     the storeClientCopy() API again take an offset and return a
-    (mem\_node + offset + size) which will supply the data required. The
-    offset is required because the mem\_node may contain data which has
-    already be seen; the size is required because the mem\_node may not
+    (mem_node + offset + size) which will supply the data required. The
+    offset is required because the mem_node may contain data which has
+    already be seen; the size is required because the mem_node may not
     yet be filled.
 
   - Once -thats- happy (and thats another large chunk of work right
     there\!) consider changing things to not need to keep seeking into
     the memory object. Instead we should just do it in two parts - a
     seek() type call to set the current position, then return pages.
-    Full pages, or perhaps (mem\_node + offset + size).
+    Full pages, or perhaps (mem_node + offset + size).
 
   - Then if you feel up to it, maybe look at variable-sized storage
     pages, rather than a fixed 4k. If we know the reply is small (thanks

@@ -201,7 +201,7 @@ library default "Global Trusted CA" set. This is done by
     **NOT COMPLETE**. Specifically most intermediate certificates are
     not included (see below). Adding extra root CA in this way is your
     responsibility. Also beware, when you use OpenSSL, you need to make
-    c\_rehash utility before Squid can use the added certificates.
+    c_rehash utility before Squid can use the added certificates.
     Beware - you can't grab any CA's you see. Check it before use\!
 
 ### Missing intermediate certificates
@@ -217,7 +217,7 @@ popular browsers do.
 For
 [Squid-3.5](/Releases/Squid-3.5)
 the
-[sslproxy\_foreign\_intermediate\_certs](http://www.squid-cache.org/Doc/config/sslproxy_foreign_intermediate_certs)
+[sslproxy_foreign_intermediate_certs](http://www.squid-cache.org/Doc/config/sslproxy_foreign_intermediate_certs)
 directive can be used to load intermediate CA certificates from a file:
 
     sslproxy_foreign_intermediate_certs /etc/squid/extra-intermediate-CA.pem
@@ -280,13 +280,13 @@ configuration:
     these options at your own risk.
 
   - ℹ️
-    Note that **DONT\_VERIFY\_PEER** is not good even for debugging.
+    Note that **DONT_VERIFY_PEER** is not good even for debugging.
     Since it will most probably hide the error you are trying to
     identify and fix.
 
   - ℹ️
     Note:
-    [sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error)
+    [sslproxy_cert_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error)
     can be used to refine server's cert error and control access to it.
     Use it with caution.
 
@@ -305,7 +305,7 @@ To increase security the good idea to set these options:
     SSL options must be comma (,) or colon (:) separated, not spaces\!
 
   - ℹ️
-    NO\_SSLv2 is relevant only for Squid-3.x. SSLv2 support has been
+    NO_SSLv2 is relevant only for Squid-3.x. SSLv2 support has been
     completely removed from
     [Squid-4](/Releases/Squid-4).
 
@@ -335,9 +335,9 @@ line):
     sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 
 In combination with
-[sslproxy\_options](http://www.squid-cache.org/Doc/config/sslproxy_options)
+[sslproxy_options](http://www.squid-cache.org/Doc/config/sslproxy_options)
 or
-[tls\_outgoing\_options](http://www.squid-cache.org/Doc/config/tls_outgoing_options)
+[tls_outgoing_options](http://www.squid-cache.org/Doc/config/tls_outgoing_options)
 above you can increase the outgoing TLS connection's security.
 
 A good result should look like this:
@@ -375,16 +375,16 @@ or
     tls_outgoing_options cipher=HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 
   - ℹ️
-    Note: Don't forget, that sslproxy\_cipher/tls\_outgoing\_options
+    Note: Don't forget, that sslproxy_cipher/tls_outgoing_options
     effective for external (i.e., from Squid to Web) connections. For
     internal (i.e., from Squid to LAN) connections you also need to
-    specify cipher in http\_port/https\_port.
+    specify cipher in http_port/https_port.
 
 ### Modern DH/EDH ciphers usage
 
 To enable Squid to use modern DH/EDH exchanges/ciphers you must
 (depending of your openssl build) create DH params file and specify it
-with http(s)\_port.
+with http(s)_port.
 
 To do that first create DH params file:
 

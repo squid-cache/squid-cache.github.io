@@ -30,7 +30,7 @@ sys.stderr.write( "__debug info__ for md5 test: " + md5.new("http://www.netflix.
 
 #note that the examples are NOT from the real world!!!
 #example: "http://www.netflix.com/watch?video_id=757bd34f5c51c074fc463885987cfbd3"
-netflix = re.compile("http\:\/\/www\.netflix\.com\/watch\?video\_id\=([a-fA-F\d]{32})")
+netflix = re.compile("http\:\/\/www\.netflix\.com\/watch\?video_id\=([a-fA-F\d]{32})")
 
 def modify_url(line):
      list = line.split(' ')

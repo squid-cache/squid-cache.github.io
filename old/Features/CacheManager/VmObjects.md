@@ -1,11 +1,11 @@
-# vm\_objects Report
+# vm_objects Report
 
 VM Objects are the objects which are in Virtual Memory. These are
 objects which are currently being retrieved and those which were kept in
 memory for fast access (accelerator mode).
 
 This may also include objects which are stored in the RAM cache
-([cache\_mem](http://www.squid-cache.org/Doc/config/cache_mem)) with no
+([cache_mem](http://www.squid-cache.org/Doc/config/cache_mem)) with no
 disk copy.
 
   - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)

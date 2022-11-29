@@ -124,7 +124,7 @@ server. The checks are listed here in the order of their execution:
 
 1.  Host header forgery checks
 
-2.  [http\_access](http://www.squid-cache.org/Doc/config/http_access)
+2.  [http_access](http://www.squid-cache.org/Doc/config/http_access)
     directive
 
 3.  ICAP/eCAP
@@ -132,10 +132,10 @@ server. The checks are listed here in the order of their execution:
 
 4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 
-5.  [adapted\_http\_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
+5.  [adapted_http_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     directive
 
-6.  [store\_id](http://www.squid-cache.org/Doc/config/store_id)
+6.  [store_id](http://www.squid-cache.org/Doc/config/store_id)
     directive
 
 7.  clientInterpretRequestHeaders()
@@ -146,7 +146,7 @@ server. The checks are listed here in the order of their execution:
 
 10. nf marking
 
-11. [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
+11. [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
     directive
 
 12. callout sequence error handling
@@ -170,7 +170,7 @@ If you use SslBump for intercepted port 443 traffic, then shortly after
 a new connection is accepted by Squid, SslBump creates a fake CONNECT
 request with TCP level information, and that CONNECT request goes
 through the above sequence (matching step SslBump1 ACL if any). If an
-"ssl\_bump peek" or "ssl\_bump stare" rule matches during that first
+"ssl_bump peek" or "ssl_bump stare" rule matches during that first
 SslBump step, then SslBump code gets SNI and creates a second fake
 CONNECT request that goes through the same sequence again.
 

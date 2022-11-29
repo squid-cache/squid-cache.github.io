@@ -19,7 +19,7 @@
 ## What stuff I'd like the comm layer to do and not do
 
   - be involved in scheduling read/write to stream sockets (currently
-    comm\_read and comm\_write)
+    comm_read and comm_write)
 
   - be involved in UDP datagram socket send/recv where possible
 
@@ -30,7 +30,7 @@
     tracking half-closed sockets and such
 
   - In theory, code shouldn't ever get its fingers into the
-    fd\_table\[\] and fdc\_table\[\]; there should be really cheap
+    fd_table\[\] and fdc_table\[\]; there should be really cheap
     inline methods to do so
 
 ## The current comm API
@@ -83,9 +83,9 @@
   - .. and therefore, only one pending read/write IO callback per
     filedescriptor
 
-  - The comm\_read/comm\_write routines should use a statically
+  - The comm_read/comm_write routines should use a statically
     allocated - one per FD - read/write callback structure. This
-    structure should have a dlink\_node to 'thread' them together to
+    structure should have a dlink_node to 'thread' them together to
     form a completed callback list.
 
   - The UDP send/receive routines should become callback-driven

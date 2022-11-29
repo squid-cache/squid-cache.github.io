@@ -19,8 +19,8 @@ authentication. NTLM user authentication still succeeds normally.
 **Explanation**
 
 Group ACLs for NTLM are implemented by using the helper
-"wbinfo\_group.pl" to map users+groups into true or false. Squid then
-uses the results of this in the ACL. "wbinfo\_group.pl" internally uses
+"wbinfo_group.pl" to map users+groups into true or false. Squid then
+uses the results of this in the ACL. "wbinfo_group.pl" internally uses
 the command line program "wbinfo" to perform the lookups. If "wbinfo"
 can't map the user/group sid to a group id (gid) then all lookups will
 return failure/false and Squid will deny access.
@@ -28,7 +28,7 @@ return failure/false and Squid will deny access.
 **Repairing**
 
 At least one report of this issue was solved by deleting a corrupted
-"winbindd\_idmap.tdb" file in /var/db/samba. The steps taken to resolve
+"winbindd_idmap.tdb" file in /var/db/samba. The steps taken to resolve
 the issue were:
 
   - Verify kerberos is working fine:
@@ -49,7 +49,7 @@ the issue were:
 
   - Stop Squid, Samba, Winbindd
 
-  - Delete the winbindd\_idmap.tdb file
+  - Delete the winbindd_idmap.tdb file
 
   - Ensure time synchronisation to the Active Directory server is setup
     and running correctly

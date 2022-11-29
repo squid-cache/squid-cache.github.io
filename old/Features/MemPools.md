@@ -42,7 +42,7 @@ See [](http://www.squid-cache.org/Doc/code/namespaceMem.html) and
 [](http://www.squid-cache.org/Doc/code/group__MemPoolsAPI.html) for the
 public API definitions.
 
-### MEMPROXY\_CLASS Macro
+### MEMPROXY_CLASS Macro
 
 This macro defines pooled *new* and *delete* operators for the class in
 which it is used. It should be your first choice of how to integrate a
@@ -61,8 +61,8 @@ and followed by an empty line then the 'public:' section definition.
        ...
     };
 
-Classes which use the CBDATA\_CLASS macro **must not** also use
-MEMPROXY\_CLASS. That includes use in the direct line of inheritence
+Classes which use the CBDATA_CLASS macro **must not** also use
+MEMPROXY_CLASS. That includes use in the direct line of inheritence
 within a class hierarchy.
 
 [CategoryFeature](/CategoryFeature)

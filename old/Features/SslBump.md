@@ -98,7 +98,7 @@ Example of how to configure the HTTP port to bump CONNECT requests
 
 ### Access Controls
 
-[ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump) is used to
+[ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump) is used to
 prevent some requests being *bumped*.
 
 Example of how to avoid bumping requests to sites that
@@ -111,7 +111,7 @@ cannot proxy well:
     ssl_bump deny broken_sites
     ssl_bump allow all
 
-The [ssl\_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
+The [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
 directive in
 [Squid-3.3](/Releases/Squid-3.3)
 has been updated to select between several bumping algorithms. The above
@@ -147,8 +147,8 @@ for a more accurate decision about safety to be made there.
     [Squid-3.2](/Releases/Squid-3.2)**
 
 The
-[sslproxy\_cert\_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error)
-directive and the *ssl\_error* ACL type allow these domains to be
+[sslproxy_cert_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error)
+directive and the *ssl_error* ACL type allow these domains to be
 accepted despite the certificate problems.
 
   - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
@@ -193,12 +193,12 @@ Current documentation is specific to bump-server-first configurations.
 ### Squid talking to SSL clients
 
 If generate-host-certificates is "on" (which it is by default for
-ssl-bump http\*\_ports), then Squid uses one SSL context (SSL\_CTX) per
+ssl-bump http\*_ports), then Squid uses one SSL context (SSL_CTX) per
 true SSL server certificate (see ConnStateData::getSslContextStart).
 That SSL context is configured with the fake certificate for the
 corresponding SSL server. That fake certificate comes either from the
-[security\_file\_certgen](http://www.squid-cache.org/Versions/v5/manuals/security_file_certgen)
-helper (older Squid call it ssl\_crtd) or is generated ad hoc by Squid.
+[security_file_certgen](http://www.squid-cache.org/Versions/v5/manuals/security_file_certgen)
+helper (older Squid call it ssl_crtd) or is generated ad hoc by Squid.
 Fake certificates (or, to be precise, their contexts) may be cached in a
 Squid context cache. The cache key includes subject name, common name
 (CN), valid after, valid before, and other true certificate properties.
@@ -206,7 +206,7 @@ An SSL context storing a full certificate chain may consume a few MBs of
 RAM. Since Squid usually talks to lots of servers, the total certificate
 cache capacity may have to exceed several GBs to avoid capacity misses.
 Please see
-[dynamic\_cert\_mem\_cache\_size](http://www.squid-cache.org/Doc/config/dynamic_cert_mem_cache_size)
+[dynamic_cert_mem_cache_size](http://www.squid-cache.org/Doc/config/dynamic_cert_mem_cache_size)
 and Squid bug [4005](https://bugs.squid-cache.org/show_bug.cgi?id=4005)
 on why the configured cache limit does not currently work as intended.
 Squid does not empty its context cache during reconfiguration (although
@@ -214,12 +214,12 @@ contexts for no-longer-used or no-longer-caching ports are deleted in
 recent Squids).
 
 If generate-host-certificates is "off", then Squid uses one SSL context
-(SSL\_CTX) per
-[http\_port](http://www.squid-cache.org/Doc/config/http_port) /
-[https\_port](http://www.squid-cache.org/Doc/config/https_port) for all
+(SSL_CTX) per
+[http_port](http://www.squid-cache.org/Doc/config/http_port) /
+[https_port](http://www.squid-cache.org/Doc/config/https_port) for all
 transactions on that port, regardless of their destination (see
 PortCfg::staticSslContext). That SSL context is configured using
-[http\_port](http://www.squid-cache.org/Doc/config/http_port) options.
+[http_port](http://www.squid-cache.org/Doc/config/http_port) options.
 This is done before Squid starts (or resumes) handling traffic so no
 server certificate mimicking is possible with this context. The context
 is recreated during reconfiguration. At the time of writing, there are
@@ -229,11 +229,11 @@ cleanup in some Squid.
 ### Squid talking to SSL servers
 
 When talking to SSL origin servers, Squid uses one SSL context for all
-servers (or one SSL\_CTX per peer if a
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) is
-used; see Config.ssl\_client.sslContext and FwdState::initiateSSL()).
-That SSL context is configured using various sslproxy\_\* directives (or
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer) ssl\*
+servers (or one SSL_CTX per peer if a
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) is
+used; see Config.ssl_client.sslContext and FwdState::initiateSSL()).
+That SSL context is configured using various sslproxy_\* directives (or
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) ssl\*
 options) in squid.conf.
 
 OpenSSL will automatically load and cache (inside the SSL context)

@@ -30,15 +30,15 @@ expect.
 
 # Configuration Options
 
-  - cache\_dns\_program
+  - cache_dns_program
 
-  - dns\_children
+  - dns_children
 
-  - positive\_dns\_ttl
+  - positive_dns_ttl
 
-  - negative\_dns\_ttl
+  - negative_dns_ttl
 
-  - min\_dns\_poll\_cnt
+  - min_dns_poll_cnt
 
 # Troubleshooting
 
@@ -51,11 +51,11 @@ Each *dnsserver* program can only handle one request at a time. When all
 certain point.
 
 To alleviate this condition, you need to either (1) increase the number
-of *dnsserver* processes by changing the value for *dns\_children* in
+of *dnsserver* processes by changing the value for *dns_children* in
 your config file, or (2) switch to using Squid's internal DNS client
 code.
 
-Note that in some versions, Squid limits *dns\_children* to 32. To
+Note that in some versions, Squid limits *dns_children* to 32. To
 increase it beyond that value, you would have to edit the source code.
 
 ## My ''dnsserver'' average/median service time seems high, how can I reduce it?
@@ -71,7 +71,7 @@ looking at the
 a lot of requests, the second one less than the first, etc. The last
 *dnsserver* should have serviced relatively few requests. If there is
 not an obvious decreasing trend, then you need to increase the number of
-*dns\_children* in the configuration file. If the last *dnsserver* has
+*dns_children* in the configuration file. If the last *dnsserver* has
 zero requests, then you definately have enough.
 
 Another factor which affects the DNS service time is the proximity of

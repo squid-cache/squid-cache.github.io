@@ -9,9 +9,9 @@
 ## What is DISKD?
 
 DISKD refers to some features in Squid-2.4 and later to improve Disk I/O
-performance. The basic idea is that each *cache\_dir* has its own
+performance. The basic idea is that each *cache_dir* has its own
 *diskd* child process. The diskd process performs all disk I/O
-operations (open, close, read, write, unlink) for the cache\_dir.
+operations (open, close, read, write, unlink) for the cache_dir.
 Message queues are used to send requests and responses between the Squid
 and diskd processes. Shared memory is used for chunks of data to be read
 and written.
@@ -39,7 +39,7 @@ To configure Squid for DISKD, use the *--enable-storeio* option:
 
     % ./configure --enable-storeio=diskd,ufs
 
-## FATAL: Unknown cache\_dir type 'diskd'
+## FATAL: Unknown cache_dir type 'diskd'
 
 You didn't put *diskd* in the list of storeio modules as described
 above. You need to run *configure* and and recompile Squid.
@@ -82,8 +82,8 @@ The messages between Squid and diskd are 32 bytes for 32-bit CPUs and 40
 bytes for 64-bit CPUs. Thus, MSGSSZ should be 32 or greater. You may
 want to set it to a larger value, just to be safe.
 
-We'll have two queues for each *cache\_dir* -- one in each direction.
-So, MSGMNI needs to be at least two times the number of *cache\_dir**s.
+We'll have two queues for each *cache_dir* -- one in each direction.
+So, MSGMNI needs to be at least two times the number of *cache_dir**s.
 I've found that 75 messages per queue is about the limit of decent
 performance. If each diskd message consists of just one segment
 (depending on your value of MSGSSZ), then MSGSEG should be greater than
@@ -91,7 +91,7 @@ performance. If each diskd message consists of just one segment
 one time. Diskd messages shouldn't be more than 40 bytes, but let's use
 64 bytes to be safe. MSGMNB should be at least 64\*75. I recommend
 rounding up to the nearest power of two, or 8192.MSGTQL should be at
-least 75 times the number ofcache\_dir**s that you'll have.*
+least 75 times the number ofcache_dir**s that you'll have.*
 
 ### FreeBSD
 
@@ -177,7 +177,7 @@ Reference](http://docs.oracle.com/cd/E23823_01/html/817-0404/index.html)
 
 Shared memory uses a set of parameters similar to the ones for message
 queues. The Squid DISKD implementation uses one shared memory area for
-each cache\_dir. Each shared memory area is about 800 kilobytes in size.
+each cache_dir. Each shared memory area is about 800 kilobytes in size.
 You may need to modify your system's shared memory parameters:
 
   - SHMSEG  
@@ -193,9 +193,9 @@ You may need to modify your system's shared memory parameters:
     Total amount of shared memory that can be used.
 
 For Squid and DISKD, *SHMSEG* and *SHMMNI* must be greater than or equal
-to the number of cache\_dir's that you have. *SHMMAX* must be at least
+to the number of cache_dir's that you have. *SHMMAX* must be at least
 800 kilobytes. *SHMALL* must be at least 800 kilobytes multiplied by the
-number of cache\_dir's.
+number of cache_dir's.
 
 Note that some operating systems express *SHMALL* in pages, rather than
 bytes, so be sure to divide the number of bytes by the page size if
@@ -285,7 +285,7 @@ Yes, this is a little problem sometimes. Seems like the operating system
 gets confused and doesn't always release shared memory and message queue
 resources when processes exit, especially if they exit abnormally. To
 fix it you can "manually" clear the resources with the *ipcs* command.
-Add this command into your *RunCache* or *squid\_start* script:
+Add this command into your *RunCache* or *squid_start* script:
 
     ipcs | awk '/squid/ {printf "ipcrm -%s %s\n", $1, $2}' | /bin/sh
 
@@ -293,7 +293,7 @@ Add this command into your *RunCache* or *squid\_start* script:
 
 In the source code, these are called *magic1* and *magic2*. These
 numbers refer to the number of oustanding requests on a message queue.
-They are specified on the *cache\_dir* option line, after the L1 and L2
+They are specified on the *cache_dir* option line, after the L1 and L2
 directories:
 
     cache_dir diskd /cache1 1024 16 256 Q1=72 Q2=64

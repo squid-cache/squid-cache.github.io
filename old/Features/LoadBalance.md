@@ -23,7 +23,7 @@ features are not well integrated or missing.
 
 To forward a request, Squid builds a list of unique destinations to try.
 These destinations may include peers
-([cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)) and
+([cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)) and
 origin servers. The destinations are then used as needed in the order
 they were added to the list. Usually, the very first destination in the
 list serves the request, but various failures may necessitate contacting
@@ -50,11 +50,11 @@ following four possible answers:
   - Prefer peering (but go direct if needed).
 
 This decision to go direct or use peering is based on the combination of
-[always\_direct](http://www.squid-cache.org/Doc/config/always_direct),
-[never\_direct](http://www.squid-cache.org/Doc/config/never_direct),
+[always_direct](http://www.squid-cache.org/Doc/config/always_direct),
+[never_direct](http://www.squid-cache.org/Doc/config/never_direct),
 and various transaction properties/restrictions. If those initial checks
 are inconclusive, Squid uses
-[prefer\_direct](http://www.squid-cache.org/Doc/config/prefer_direct)
+[prefer_direct](http://www.squid-cache.org/Doc/config/prefer_direct)
 to pick from the last two possible options (prefer direct or prefer
 peering). The decision affects which peer selection algorithms are used
 to add destinations to the list, as detailed below.
@@ -105,7 +105,7 @@ destination list:
   - The peer has an *originserver* type and the request is a CONNECT for
     a non-peer port.
 
-  - [cache\_peer\_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
+  - [cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
     denies access to the peer.
 
 Peers that meet at least one of the above disqualifying conditions are
@@ -118,7 +118,7 @@ Squid builds the destination list using the following two steps:
 1.  Add the origin server to the destination list.
 
 2.  If the request is "hierarchical" or
-    [nonhierarchical\_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
+    [nonhierarchical_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
     is off, then Squid follows the three steps described in the "Going
     through a peer" subsection above. Otherwise, this step does nothing.
 
@@ -127,7 +127,7 @@ Squid builds the destination list using the following two steps:
 Squid builds the destination list using the following two steps:
 
 1.  If the request is "hierarchical" or
-    [nonhierarchical\_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
+    [nonhierarchical_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
     is off, then Squid follows the three steps described in the "Going
     through a peer" subsection above. Otherwise, this step does nothing.
 
@@ -148,13 +148,13 @@ In absence of any configuration the peers selected will be:
 
   - first ICP responding sibling, followed by **default** **first-up**
     parent then **default**
-    [cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer).
+    [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer).
 
 ### HTCP : Hyper Text Caching Protocol
 
 |              |                                    |                                                    |
 | ------------ | ---------------------------------- | -------------------------------------------------- |
-| **Log Code** | UDP\_\*, SIBLING\_HIT, PARENT\_HIT |                                                    |
+| **Log Code** | UDP_\*, SIBLING_HIT, PARENT_HIT |                                                    |
 | **Options**  | no-query                           | Disable HTCP queries to this peer.                 |
 |              | htcp                               | Enable HTCP queries to this peer (instead of ICP). |
 |              | htcp=                              | Enable HTCP queries to this peer (instead of ICP). |
@@ -172,7 +172,7 @@ can cause a larger background traffic overhead.
 
 |              |                                    |                                   |
 | ------------ | ---------------------------------- | --------------------------------- |
-| **Log Code** | UDP\_\*, SIBLING\_HIT, PARENT\_HIT |                                   |
+| **Log Code** | UDP_\*, SIBLING_HIT, PARENT_HIT |                                   |
 | **Options**  | no-query                           | Disable ICP queries to this peer. |
 
 This is a UDP based fetch-response protocol used to discover if a
@@ -191,7 +191,7 @@ selection in the modern www. see HTCP below for the fix.
 
 |               |                 |
 | ------------- | --------------- |
-| **Log entry** | DEFAULT\_PARENT |
+| **Log entry** | DEFAULT_PARENT |
 | **Options**   | default         |
 
 If a peer is marked as *default* it is always considered for use as a
@@ -208,7 +208,7 @@ be skipped. Only one peer may be marked as the default.
 
 |               |                    |                                            |
 | ------------- | ------------------ | ------------------------------------------ |
-| **Log entry** | SOURCEHASH\_PARENT |                                            |
+| **Log entry** | SOURCEHASH_PARENT |                                            |
 | **Options**   | sourcehash         | Use IP-based hash algorithm with this peer |
 
 Peers marked for *sourcehash* are bundled into a group and a hash is
@@ -222,7 +222,7 @@ not available.
 
 |               |                  |                                               |
 | ------------- | ---------------- | --------------------------------------------- |
-| **Log entry** | USERHASH\_PARENT |                                               |
+| **Log entry** | USERHASH_PARENT |                                               |
 | **Options**   | userhash         | Use login based hash algorithm with this peer |
 
 Peers marked for *userhash* are bundled into a group and a hash is used
@@ -267,7 +267,7 @@ The efficient alternatives are multicast ICP or HTCP.
 
 |               |                    |                                                                  |
 | ------------- | ------------------ | ---------------------------------------------------------------- |
-| **Log entry** | ROUNDROBIN\_PARENT |                                                                  |
+| **Log entry** | ROUNDROBIN_PARENT |                                                                  |
 | **Options**   | weight=N           | Un-balance the connections to pick this peer N times each cycle. |
 |               | basetime=T         | Fine tune the RTT distance bias.                                 |
 
@@ -318,7 +318,7 @@ balancing.
 
 |               |                    |                                                                  |
 | ------------- | ------------------ | ---------------------------------------------------------------- |
-| **Log entry** | ROUNDROBIN\_PARENT |                                                                  |
+| **Log entry** | ROUNDROBIN_PARENT |                                                                  |
 | **Options**   | weight=N           | Un-balance the connections to pick this peer N times each cycle. |
 |               | basetime=T         | Fine tune the RTT distance bias.                                 |
 
@@ -347,7 +347,7 @@ network with 10ms RTT. There is a 1:2 bias towards using peer A.
 
 If you want to reduce or increase this bias you can configure the
 *basetime=T* option on
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer). It
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer). It
 takes the number of milliseconds to be subtracted from RTT before the
 calculation is made.
 
@@ -360,11 +360,11 @@ calculation is made.
 
 |               |                   |
 | ------------- | ----------------- |
-| **Log entry** | FIRST\_UP\_PARENT |
+| **Log entry** | FIRST_UP_PARENT |
 | **Options**   | (none)            |
 
 Select the first squid.conf listed
-[cache\_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 **parent** entry which is marked as ALIVE and available.
 
 This algorithm is the default used for **parent** peers. There is

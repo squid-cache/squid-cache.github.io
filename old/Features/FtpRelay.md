@@ -22,7 +22,7 @@
 
 # Functionality
 
-This project adds an ftp\_port option to squid.conf. Squid acts as an
+This project adds an ftp_port option to squid.conf. Squid acts as an
 FTP-to-FTP gateway for TCP traffic sent to that port:
 
 1.  Squid listens for native FTP requests sent to the configured port.

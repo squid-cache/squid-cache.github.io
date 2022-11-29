@@ -29,7 +29,7 @@ release in parallel with the maturing
 (ported to 3.1)
 
   - Removal of the dummy "null" store type and useless default
-    cache\_dir.
+    cache_dir.
 
   - Include configuration file support
 

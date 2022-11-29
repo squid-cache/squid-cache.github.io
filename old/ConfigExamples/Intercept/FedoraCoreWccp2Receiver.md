@@ -13,7 +13,7 @@ about these examples please email the squid-users mailing list.
 ## Outline
 
 This configuration for a Fedora Core Linux 2.6.18 box running Squid and
-receiving WCCPv2 traffic through ip\_gre. It is expected that another
+receiving WCCPv2 traffic through ip_gre. It is expected that another
 device will perform the WCCPv2 routing and forward it to this box for
 processing.
 

@@ -46,14 +46,14 @@ If you need to use specific width types - such as a 16 bit unsigned
 integer, use one of the following types. To access them simply include
 "config.h".
 
-  - int16\_t - 16 bit signed.
+  - int16_t - 16 bit signed.
 
-  - u\_int16\_t - 16 bit unsigned.
+  - u_int16_t - 16 bit unsigned.
 
   - int32t - 32 bit signed.
 
-  - u\_int32\_t - 32 bit unsigned.
+  - u_int32_t - 32 bit unsigned.
 
-  - int64\_t - 64 bit signed.
+  - int64_t - 64 bit signed.
 
-  - u\_int64\_t - 64 bit unsigned.
+  - u_int64_t - 64 bit unsigned.
