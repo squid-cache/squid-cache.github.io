@@ -9,26 +9,17 @@ and some depend on which particular components are built into that
 Squid.
 
 The menu lists:
-
   - the report or action name
-
   - a short description about what it is
-
   - whether or not it is
-    
       - public - available to anyone with manager access,
-    
       - protected - available but requires a password,
-    
       - hidden - not available due to configuration.
 
 ## Example report
+This is an example from a default build of [Squid-3.2](/Releases/Squid-3.2).
+Remember the menu varies with available features.
 
-  - this is an example from a default build of
-    [Squid-3.2](/Releases/Squid-3.2).
-    Remember the menu varies with available features.
-
-<!-- end list -->
 
 ``` 
  index                  Cache Manager Interface                 public

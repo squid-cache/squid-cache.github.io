@@ -1,9 +1,8 @@
 # index report
 
-When an HTML template named **MGR_INDEX** is installed in the
-**templates/** error page directory this report will return its contents
-after [macro
-expansion](/Features/CustomErrors).
+When an HTML template named `MGR_INDEX` is installed in the
+`templates/` error page directory this report will return its contents
+after [macro expansion](/Features/CustomErrors).
 
 This allows creation of a scripted user interface for the cache manager
 loaded from that template.
