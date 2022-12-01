@@ -128,7 +128,7 @@
   - [tinyproxy](http://tinyproxy.sourceforge.net/)
     
       - name says it all
-        ![:)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
+        :smile:
 
 ## Discontinued products
 

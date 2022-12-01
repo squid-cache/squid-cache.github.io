@@ -39,7 +39,7 @@ which will be fast and flexible.
   - Could be implemented varnish-style - shared memory ring buffer -
     fast, efficient, perhaps not portable to embedded environments (but
     is Squid currently portable to embedded environments?
-    ![:)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
+    :smile:
 
   - UNIX stream sockets / pipes / loopback TCP: mostly portable
     everywhere, well-understood semantics. Need to be careful that you

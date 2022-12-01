@@ -162,7 +162,7 @@ directive:
     #include <ieeefp.h>
 
 ... And then you go on building the usual way
-![:)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
+:smile:
 
 # Troubleshooting
 

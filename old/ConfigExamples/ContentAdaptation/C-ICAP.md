@@ -558,7 +558,7 @@ High-load setups must be separated between tiers.
     You must minimize scanning as much as possible. Do not scan all data
     types. Do not scan trusted sites. And do not try to scan Youtube
     videos, of course.
-    ![:)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
+    :smile:
 
   - :information_source:
     On some Solaris setups you can get performance gain by using

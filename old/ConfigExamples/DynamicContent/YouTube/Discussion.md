@@ -256,7 +256,7 @@ you can always hit your local cache for the initial URL? The problem is
 that the store URL stuff is rewriting the URL on the -request-. Its
 pointless to rewrite the store URL on -reply- because you'd not be able
 to handle a cache hit that way.
-![:)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
+:smile:
 
 This could be done separately from the store URL stuff. Whats needed is
 a way to set the cachability of something based on a -reply- ACL.

@@ -31,7 +31,7 @@ unpack the underlay pages:
   - `./wikiserver.py` (or click on `wikiserver.py`)
 
   - now a fresh moin wiki will run on [](http://localhost:8080/)
-    ![:)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
+    :smile:
 
   - you can terminate the wiki server either by using Ctrl-C or closing
     the window

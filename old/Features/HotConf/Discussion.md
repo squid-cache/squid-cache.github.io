@@ -450,7 +450,7 @@ whats the minimum transfer of information and call complexity we can do?
 at east we agree on that much. As you re-state my model with an
 additional validation step, but no pre-setup for the component to create
 its 'empty' TheConfig for us
-![:)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
+:smile:
 
 Validation IMO should happen at the point of parsing. It's either a
 valid parse or not, and the state produced should be expected to work.
