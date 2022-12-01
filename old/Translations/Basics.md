@@ -30,11 +30,11 @@ aware of.
 Further details about these steps are covered below. Along with hints
 and examples of the tools used.
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     Step \#2 above is done manually by a volunteer translator for the
     Squid Project. So things like timing are variable.
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     links if provided below in the instructions can be used as
     shortcuts.
 
@@ -120,12 +120,12 @@ See [Translation
 Guidelines](/Translations/Guidelines)
 for what sort of things are needed to get your suggestion accepted.
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     Special characters which standard PC keyboards may not provide
     easily are listed. Leaving the mouse cursor in the text box, and
     clicking on a character adds it to the text.
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     If you are not fully certain you got the text right. Clicking the
     fuzzy checkbox can help the language moderator know they need to
     double-check it.
@@ -136,7 +136,7 @@ Some wonderful people have been willing to go further than just sending
 us suggestions. They have agreed to spend a few minutes a week checking
 a bunch of those suggestions.
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     Only the languages listed as
     [verified](/Translations)
     are checked. All the other suggestions just pile up waiting for

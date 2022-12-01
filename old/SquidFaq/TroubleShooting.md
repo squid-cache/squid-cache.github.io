@@ -82,9 +82,9 @@ limit on total file descriptors for all processes.
 
 |                                                                                                                                           |                                                                 |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| :information_source: ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.0-2.6 provide a ./configure option --with-maxfd=N       |
-| :information_source: ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.7+ provide a squid.conf option max_filedescriptors     |
-| :information_source: ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 3.x provide a ./configure option --with-filedescriptors=N |
+| :information_source: :bulb: | Squid 2.0-2.6 provide a ./configure option --with-maxfd=N       |
+| :information_source: :bulb: | Squid 2.7+ provide a squid.conf option max_filedescriptors     |
+| :information_source: :bulb: | Squid 3.x provide a ./configure option --with-filedescriptors=N |
 
   - :x:
     Even with Squid built to support large numbers of FD and the system
@@ -484,7 +484,7 @@ already running, or it could be from another program. To verify, use the
     netstat -antup | grep 8080
 
   - :information_source:
-    ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+    :bulb:
     Windows Users need to use *netstat -ant* and manually find the
     entry.
 
@@ -541,7 +541,7 @@ consider.
 # WARNING: Failed to start 'dnsserver'
 
   - :information_source:
-    ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+    :bulb:
     All current Squid now contain an optimized internal DNS engine.
     Which is much faster and responsive that then the dnsserver helper.
     That should be used by preference.
@@ -557,7 +557,7 @@ see
 # FATAL: ipcache_init: DNS name lookup tests failed
 
   - :information_source:
-    ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+    :bulb:
     This issue is now permanently resolved in Squid 3.1 and later.
 
 Squid normally tests your system's DNS configuration before it starts
@@ -694,7 +694,7 @@ or
     # chmod 4755 /usr/local/squid/bin/pinger
 
   - :information_source:
-    ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+    :bulb:
     location of the pinger binary may vary. I recommend searching for it
     first:
 
@@ -735,11 +735,11 @@ When Squid detects a forwarding loop, it is logged to the *cache.log*
 file with the recieved *Via* header. From this header you can determine
 which cache (the last in the list) forwarded the request to you.
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     One way to reduce forwarding loops is to change a *parent*
     relationship to a *sibling* relationship.
     
-    ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+    :bulb:
     Another way is to use *cache_peer_access* rules.
 
 # accept failure: (71) Protocol error
@@ -794,7 +794,7 @@ into an SSL request. The only thing we can do is return the error
 message.
 
   - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
-    ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+    :bulb:
     This browser bug does represent a **security risk** because the
     browser is sending sensitive information unencrypted over the
     network.
@@ -803,7 +803,7 @@ message.
 
 by Dave J Woolley (DJW at bts dot co dot uk)
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     These are illegal URLs, generally only used by illegal sites;
     typically the web site that supports a spammer and is expected to
     survive a few hours longer than the spamming account.
@@ -839,7 +839,7 @@ the hostname part of a URL:
 
 # I get a lot of "URI has whitespace" error messages in my cache log, what should I do?
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     Whitespace characters (space, tab, newline, carriage return) are not
     allowed in URI's and URL's.
 
@@ -1138,7 +1138,7 @@ Sized Reply error:
   - Disable any advanced TCP features on the Squid system. Disable ECN
     on Linux with *echo 0 \> /proc/sys/net/ipv4/tcp_ecn/*.
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     Upgrade to Squid-2.6 or later to work around a Host header related
     bug in Cisco PIX HTTP inspection. The Cisco PIX firewall wrongly
     assumes the Host header can be found in the first packet of the

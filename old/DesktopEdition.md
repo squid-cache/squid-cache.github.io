@@ -42,7 +42,7 @@ If you need to use a configuration different from the standard
 configuration you can edit the `wikiserverconfig.py` in the toplevel
 directory, see the comments there.
 
-![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) By
+:bulb: By
 default, moin only listens on the localhost interface. Before opening it
 to a wider audience, please check if the security settings of moin are
 what you want. Especially the `DesktopEdition` and `acl_rights_*`
@@ -53,7 +53,7 @@ localhost only.
 
 See `wikiserverlogging.conf`.
 
-![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) You
+:bulb: You
 maybe usually don't want to change that, but you *can* - e.g. if you
 like to have more log output for debugging.
 

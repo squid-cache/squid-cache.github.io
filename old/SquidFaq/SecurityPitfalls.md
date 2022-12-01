@@ -104,7 +104,7 @@ outlines for SMTP above.
 
 **Notes:**
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     They should be left as the **top** access control lines in any
     standard forward-proxy configuration.
     

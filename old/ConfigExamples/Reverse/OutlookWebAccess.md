@@ -57,7 +57,7 @@ should be changed appropriately:
 
     cache_peer ip_of_owa_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/client-certificate name=owaServer
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     an apparent bug in Squid-3.1 means that
     [https_port](http://www.squid-cache.org/Doc/config/https_port) may
     also need to use the **connection-auth=off** option for now.

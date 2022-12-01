@@ -39,7 +39,7 @@ If you wish to redirect all client traffic then remove the:
 
     ip wccp web-cache redirect-list
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     WCCP is smart enough that it will automatically bypass your cache
     from the redirection process, ensuring that your cache does not
     become redirected back to itself.

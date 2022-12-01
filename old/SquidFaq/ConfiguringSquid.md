@@ -731,7 +731,7 @@ connection is closed and the user receives an error message from Squid.
 counts how many bytes are written to the client. Once the limit is
 reached, the client's connection is simply closed.*
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     Note that "creative" user-agents will still be able to download
     really large files through the cache using HTTP/1.1 range requests.
 

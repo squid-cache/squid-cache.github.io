@@ -430,7 +430,7 @@ installing Squid for the first time, or when you add or modify the
 **-D** Do not make initial DNS tests. Normally, Squid looks up some
 well-known DNS hostnames to ensure that your DNS name resolution service
 is working properly.
-![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+:bulb:
 obsolete in 3.1 and later.
 
 **-F** If the *swap.state* logs are clean, then the cache is rebuilt in

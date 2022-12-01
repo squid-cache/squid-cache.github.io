@@ -60,7 +60,7 @@ increase it beyond that value, you would have to edit the source code.
 
 ## My ''dnsserver'' average/median service time seems high, how can I reduce it?
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     Use the internal DNS resolver now built into Squid. It is not
     limited to single request-response blocking.
 

@@ -20,7 +20,7 @@ an **md5sum** (binary or script equivalent).
 
 ### When to format.
 
-  - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
+  - :bulb:
     If you don't have the astyle 1.23 and md5sum tools to do a format
     correctly. Particularly the right version of astyle. We would rather
     you didn't do a format yourself. The formatter script will check and
