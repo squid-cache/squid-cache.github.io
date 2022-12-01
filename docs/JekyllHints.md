@@ -21,3 +21,16 @@
 ## Markdown
 - [Cheat sheet](https://www.markdownguide.org/cheat-sheet/)
 - [Github Flavoured Markdown Cheat Sheet](https://itnext.io/github-markdown-cheatsheet-50642835effa)
+- [Emoji symbols](https://gist.github.com/rxaviers/7360908)
+
+## common emojis:
+
+
+|---|---|---|---|
+| `:warning:` | :warning: | `:information_source:` | :information_source: |
+| `:white_check_mark:` | :white_check_mark: | `:x:` | :x: |
+| `:o:` | :o: | `:no_entry_sign:` | :no_entry_sign: |
+| `:ok:` | :ok: | `:new:` | :new: |
+| `:heavy_exclamation_mark:` | :heavy_exclamation_mark: | `:bangbang:` | :bangbang: |
+| `:interrobang:` | :interrobang: | `:heavy_plus_sign:` | :heavy_plus_sign: |
+| `:heavy_minus_sign:` | :heavy_minus_sign: | `:sos:` | :sos: |
