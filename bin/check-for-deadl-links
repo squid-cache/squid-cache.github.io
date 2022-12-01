@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+echo "ensure you're serving documents on http://localhost:4000"
+echo "e.g. by running ./bin/serve"
+
+test -x node_modules/markdown-link-check/markdown-link-check || 
+    npm install markdown-link-check
+
+./node_modules/markdown-link-check/markdown-link-check http://localhost:4000
