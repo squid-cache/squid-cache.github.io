@@ -78,7 +78,7 @@ for proxied sites. For all practical purposes, this certificate becomes
 a [Root certificate](http://en.wikipedia.org/wiki/Root_certificate) and
 you become a Root CA.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     If your certificate is compromised, any user trusting (knowingly or
     otherwise) your Root certificate may not be able to detect
     man-in-the-middle attacks orchestrated by others.

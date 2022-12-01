@@ -71,7 +71,7 @@ nonce.
       - less secure than Negotiate authentication.
 
 **NOTE:**
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 **Due to the weak security offered by OAuth it is advised to only use
 Bearer authentication over HTTPS connections**
 

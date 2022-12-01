@@ -11,9 +11,9 @@ This page is ongoing development. Not least because it must keep up with
 youtube.com alterations. If you start to experience problems with any of
 these configs please first check back here for updated config.
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
+:x:
+:x:
 Google\\[YouTube](/YouTube)
 changed their system to be more secure and due to this the article in
 it's current state is not applicable. You will need to use Content
@@ -109,7 +109,7 @@ for any questions.
     system. Be sure to check and update this following example as
     needed.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     also take care to remove the space between *\# \!*. It is there to
     avoid a wiki bug.
 

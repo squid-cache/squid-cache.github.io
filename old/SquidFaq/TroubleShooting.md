@@ -86,7 +86,7 @@ limit on total file descriptors for all processes.
 | :information_source: ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 2.7+ provide a squid.conf option max_filedescriptors     |
 | :information_source: ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png) | Squid 3.x provide a ./configure option --with-filedescriptors=N |
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Even with Squid built to support large numbers of FD and the system
     configuration default set to permit large numbers to be used. The
     ulimit or equivalent tools can change those limits under Squid at

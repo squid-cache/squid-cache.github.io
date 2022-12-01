@@ -97,7 +97,7 @@ The web server or application must be capable of receiving the
 **Surrogate-Capability** headers and identifying whether the ID is
 acceptible.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Special care may be needed. The ID tags "unset-id" , "unconfigured"
     and "localhost", "localhost.localdomain" are known to possibly be
     sent by many broken or mis-configured proxies.

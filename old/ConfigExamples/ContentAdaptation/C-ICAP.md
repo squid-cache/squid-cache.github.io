@@ -430,7 +430,7 @@ Paste the configuration file like this:
     directives. Also you can customize virus_scan module templates to
     your language etc.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Also beware: without clamd you will have the same 300-500 megabytes
     of loaded AV database to one of c-icap process with libclamav.
     ![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png)

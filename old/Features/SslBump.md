@@ -40,9 +40,9 @@ and
     By default, most user agents will warn end-users about a possible
     man-in-the-middle attack.
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 WARNING:
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 HTTPS was designed to give users an expectation of privacy and security.
 Decrypting HTTPS tunnels without user consent or knowledge may violate
 ethical norms and may be illegal in your jurisdiction. Squid decryption
@@ -74,7 +74,7 @@ considering adding code to mimic server certificate errors when
 generating a fake certificate, giving back the user an option to examine
 and bypass the error. Quality patches or sponsorships are welcomed.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     to avoid this major limitation an upgrade to
     [Squid-3.3](/Releases/Squid-3.3)
     or later and use of the [origin server certificate
@@ -151,7 +151,7 @@ The
 directive and the *ssl_error* ACL type allow these domains to be
 accepted despite the certificate problems.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     SECURITY WARNING: ignoring certificate errors is a security flaw.
     Doing it in a shared proxy is an extremely dangerous action. It
     should not be done lightly or for domains which you are not the

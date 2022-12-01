@@ -9,7 +9,7 @@ about these examples please email the squid-users mailing list.
 
 ## Very important passage from the Cisco-Manual
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     "The only topology that the security appliance supports is when
     client and cache engine are behind the same interface of the
     security appliance and the cache engine can directly communicate

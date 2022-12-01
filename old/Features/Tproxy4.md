@@ -48,7 +48,7 @@ Chadd. It has not changed significantly since older TPROXY.
   - TPROXYv4 support reached a usable form in 2.6.28. However several
     Kernels have various known bugs:
     
-      - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+      - :x:
         older than 2.6.28 are known to supply IPs wrongly to Squid and
         other client programs. Avoid\!
     
@@ -170,7 +170,7 @@ Or configure **/etc/sysctl.conf**:
     each interface to have a separate "table" entry for looking up
     packets via that device.
     
-      - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+      - :x:
         in this situation the tables often cannot use the same number.
         When experimenting finding out how to erase the route table is
         useful.
@@ -178,7 +178,7 @@ Or configure **/etc/sysctl.conf**:
       - **eth0** is shown above, change to match your TPROXY
         interface(s).
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     the particular device needed differs between OS. eth0 seems to be
     the least troublesome. Although **dev lo** may be the only one that
     works.
@@ -508,7 +508,7 @@ time it resolves to x.x.x.2
 
 4.  Reply arrives at cache-B and it doesn’t know anything about it.
     Trouble\!
-    ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+    :x:
 
 ## selinux policy denials
 

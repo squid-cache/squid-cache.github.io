@@ -57,7 +57,7 @@ This problem occurs with certain kerberos library headers distributed
 with Solaris 10. It has been fixed in later release of the kerberos
 library.
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 Unfortunately the `/usr/include/kerberosv5/com_err.h` system-include
 file sports a \#pragma directive which is not compatible with gcc.
 
@@ -85,7 +85,7 @@ to
 
 ### 3.1 -enable-ipf-transparent support
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 Unfortunately the `/usr/include/inet/mib2.h` header required for IPF
 interception support clashes with
 [Squid-3.1](/Releases/Squid-3.1)
@@ -254,7 +254,7 @@ To fix this run:
      per-process setid core dumps: enabled
          global core dump logging: enabled
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 **Note:** Don't edit /etc/coreadm.conf manually. Use commands above\!
 
 ## Squid process memory grows unlimited on Solaris 10 and above
@@ -289,7 +289,7 @@ Add this lines to /etc/profile:
     LD_PRELOAD_64=libmtmalloc.so
     export LD_PRELOAD_64
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 **Note:** Some 32-bit applications from userland will be crash with this
 library. For example, vi editor from coreutils. You are warned\!
 
@@ -316,7 +316,7 @@ linker path. To do that first run something like:
     crle -c /var/ld/ld.config -l /lib:/usr/lib:/usr/local/lib:/opt/csw/lib:/usr/sfw/lib
     crle -64 -c /var/ld/64/ld.config -l /lib/64:/usr/lib/64:/opt/csw/lib/64:/usr/sfw/lib/64
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 Don't use LD_LIBRARY_PATH\! Use crle command instead\!
 
 ## Squid process memory grows unlimited with an interception proxy

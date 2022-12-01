@@ -71,9 +71,9 @@ hand-crafted CONNECT request knowing that it is going to be intercepted.
 
 ## Bumping CONNECT tunnels
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     **WARNING:**
-    ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+    :x:
     HTTPS was designed to give users an expectation of privacy and
     security. Decrypting HTTPS tunnels without user consent or knowledge
     may violate ethical norms and may be illegal in your jurisdiction.
@@ -144,9 +144,9 @@ traffic -- Squid is not a TCP-level proxy.
 
 ## Bumping direct TLS connections
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     **WARNING:**
-    ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+    :x:
     HTTPS was designed to give users an expectation of privacy and
     security. Decrypting HTTPS tunnels without user consent or knowledge
     may violate ethical norms and may be illegal in your jurisdiction.

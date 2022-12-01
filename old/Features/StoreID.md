@@ -54,7 +54,7 @@ This feature will allow us later to implement
     each are **exact** duplicates. Down to their metadata information
     used by HTTP conditional and revalidation requests.
     
-      - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+      - :x:
         care must be taken when using StoreID helper that the URLs are
         indeed precise duplicates or the end result may be a *reduced*
         HIT-ratio and bad proxy performance rather than improved

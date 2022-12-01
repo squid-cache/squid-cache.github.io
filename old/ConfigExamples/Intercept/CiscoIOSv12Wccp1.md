@@ -27,7 +27,7 @@ about these examples please email the squid-users mailing list.
     CTRL Z
     copy running-config startup-config
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     IOS defaults to using WCCP version 2 if you do not explicitly
     specify a version.
 

@@ -116,13 +116,13 @@ is no divert-reply rule, cache.log will show a line similar to:
     2013/04/16 14:28:37 kid1|  FD 12, 127.0.0.1 [Stopped, reason:Listener socket closed job49]: (53) Software caused connection abort
     ```
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     PF offers a **rdr-to** option. However this not supported with any
     Squid. Use **divert-to** instead.
 
 ### OpenBSD 4.1 to 4.3
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     NOTE: OpenBSD older than 4.4 requires
     [Squid-3.2](/Releases/Squid-3.2)
     or older built with **--enable-pf-transparent** and only supports

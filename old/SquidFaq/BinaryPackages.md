@@ -725,11 +725,11 @@ and are known to compile OK.
 
 Plus, of course, any custom configuration options you may need.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     For Debian Jesse (8), Ubuntu Oneiric (11.10), or older **squid3**
     packages; the above *squid* labels should have a **3** appended.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Remember these are only defaults. Altering squid.conf you can point
     the logs at the right path anyway without either the workaround or
     the patching.

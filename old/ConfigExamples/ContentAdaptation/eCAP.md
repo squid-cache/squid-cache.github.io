@@ -409,7 +409,7 @@ Paste the configuration file like this:
     adaptation_access clamav_service_req allow !bypass_scan_types_req all
     adaptation_access clamav_service_resp allow !bypass_scan_types_rep all
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Note: On some setups you may need to create symbolic link in
     $prefix/clamav/share to
     **[DatabaseDirectory](/DatabaseDirectory)**
@@ -461,6 +461,6 @@ All services can co-exists in one squid instance:
     adaptation_service_set reqFilter eReqmod
     adaptation_access reqFilter allow all
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 **BEWARE:** Order is important\! eCAP ClamAV adapter should precede TCW
 adapters\!

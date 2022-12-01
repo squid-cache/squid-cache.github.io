@@ -113,7 +113,7 @@ If multiple service command line options must be specified, use quote.
 The **-n** switch is needed only when a non default service name is in
 use.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Don't use the "Start parameters" in the Windows 2000/XP/2003 Service
     applet. They are specific to Windows services functionality and
     Squid is not able to interpret and use them.

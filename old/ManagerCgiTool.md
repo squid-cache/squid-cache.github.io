@@ -48,7 +48,7 @@ Script****Alias in your Apache *httpd.conf* file like this:
 
     ScriptAlias /Squid/cgi-bin/ /usr/local/squid/cgi-bin/
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     **SECURITY NOTE:** It's probably a **bad** idea to ScriptAlias the
     entire */usr/local/squid/bin/* directory where all the Squid
     executables live.
@@ -99,7 +99,7 @@ file *conf.d/squid* containing this:
     allow from workstation.example.com
     </Location>
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     **SECURITY NOTE:** It's possible but a **bad** idea to ScriptAlias
     the entire */usr/local/squid/bin/* directory where all the Squid
     executables live.

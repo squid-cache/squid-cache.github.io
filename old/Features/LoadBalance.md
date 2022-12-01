@@ -198,7 +198,7 @@ If a peer is marked as *default* it is always considered for use as a
 fallback source. Although if DEAD or blocked by ACL requirements it may
 be skipped. Only one peer may be marked as the default.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Despite the documentation stating this since squid-2.6; in squid
     older than 3.1.15 a default peer will in fact be preferred over all
     other selection algorithms. This has been corrected in 3.1.15 so

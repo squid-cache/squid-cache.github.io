@@ -197,7 +197,7 @@ Squid-3.
 
 ### BSD/OS or BSDI
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 Known Problem:
 
     cache_cf.c: In function `parseConfigFile':
@@ -263,11 +263,11 @@ and are known to compile OK.
 
 Plus, of course, any custom configuration options you may need.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     For Debian Jesse (8), Ubuntu Oneiric (11.10), or older **squid3**
     packages; the above *squid* labels should have a **3** appended.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Remember these are only defaults. Altering squid.conf you can point
     the logs at the right path anyway without either the workaround or
     the patching.
@@ -542,7 +542,7 @@ This problem occurs with certain kerberos library headers distributed
 with Solaris 10. It has been fixed in later release of the kerberos
 library.
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 Unfortunately the `/usr/include/kerberosv5/com_err.h` system-include
 file sports a \#pragma directive which is not compatible with gcc.
 
@@ -570,7 +570,7 @@ to
 
 ##### 3.1 -enable-ipf-transparent support
 
-![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+:x:
 Unfortunately the `/usr/include/inet/mib2.h` header required for IPF
 interception support clashes with
 [Squid-3.1](/Releases/Squid-3.1)

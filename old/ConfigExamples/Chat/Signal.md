@@ -43,7 +43,7 @@ With the above your regular access permissions for any given client are
 applied to Signal. Just the same as if it were performing HTTPS
 connections.
 
-  - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+  - :x:
     Note that port 80 is still too unsafe to allow generic CONNECT to
     happen on it. However, Signal client often can't do initial connect
     without permission CONNECT to port 80 at

@@ -91,7 +91,7 @@ To implement a HTTP/2 receiving port in Squid we need to:
     
       - Possibly also NPN extension support
     
-      - ![{X}](https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png)
+      - :x:
         this is only required because browser manufacturers refuse once
         again to implement proxy support for HTTP/2 over port 80 or
         3128. Notable exception being MSIE which is being friendly to
