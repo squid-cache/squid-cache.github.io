@@ -46,8 +46,6 @@ mailing list, and during pull request reviews on
 - Visolve's configuration manuals for
     [Squid 3.0](http://www.visolve.com/squid/squid30/contents.php), also mostly
     valid for following releases
-- Martin Stransky's Squid [page](http://people.redhat.com/stransky/squid/)
-    Martin maintains the official Red Hat package
 - The book [Squid Proxy Server 3.1: Beginner's
     Guide](https://www.packtpub.com/squid-proxy-server-3-1-beginners-guide/book)
     by Kulbir Saini
