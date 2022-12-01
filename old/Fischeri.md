@@ -100,7 +100,7 @@ repositories. See package list below, or the individual
     <tr class="odd">
     <td><p>FreeBSD</p></td>
     <td><p>Thomas-Martin Seck</p></td>
-    <td><p><img src="https://wiki.squid-cache.org/wiki/squidtheme/img/thumbs-up.png" width="14" height="12" alt="{OK}" /> (pending further work)</p></td>
+    <td><p>:+1: (pending further work)</p></td>
     </tr>
     <tr class="even">
     <td><p>Gentoo</p></td>

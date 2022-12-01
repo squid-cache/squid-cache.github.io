@@ -214,7 +214,7 @@ A number of different interception methods and their specific
 configuration is detailed at
 [ConfigExamples/Intercept](/ConfigExamples/Intercept)
 
-![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+:warning:
 You can usually manually configure browsers to connect to the IP address
 and port which you have specified as intercepted. The only drawback is
 that there will be a very slight (and probably unnoticeable) performance
@@ -242,7 +242,7 @@ rebuilding as the required modules will have been built by default.
 
 ### Interception Caching packet redirection for Solaris, SunOS, and BSD systems
 
-![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+:warning:
 You don't need to use IP Filter on FreeBSD. Use the built-in *ipfw*
 feature instead. See the FreeBSD subsection below.
 
@@ -811,7 +811,7 @@ For WCCPv1, you need these directives:
     go from. If you are not sure or have only a single IP address on
     your cache, do not specify these.
 
-![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+:warning:
 Note: do NOT configure both the WCCPv1 directives (wccp_\*) and WCCPv2
 (wccp2_\*) options at the same time in your squid.conf. Squid only
 supports configuration of one version at a time, either WCCPv1 or

@@ -119,7 +119,7 @@ directive and the *multicast-responder* option:
 
 Here all fields are relevant.
 
-  - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+  - :warning:
     The ICP port number (3130) must be the same as in the
     [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
     line defining the multicast peer above.
@@ -170,7 +170,7 @@ For example:
 Of course, all members of your Multicast ICP group will need to use the
 exact same multicast group address.
 
-  - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+  - :warning:
     Choose a multicast group address with care\! If two organizations
 
 happen to choose the same multicast address, then they may find that

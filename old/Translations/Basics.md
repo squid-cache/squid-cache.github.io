@@ -188,7 +188,7 @@ see what the issue is.
 Each is listed with two buttons:
 
   - Click on **green
-    ![(./)](https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png)**
+    :heavy_check_mark:**
     (accept) to replace existing translation with the suggested one.
 
   - Click on **red X** (reject) to remove the suggestion.

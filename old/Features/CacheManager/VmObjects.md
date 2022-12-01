@@ -8,7 +8,7 @@ This may also include objects which are stored in the RAM cache
 ([cache_mem](http://www.squid-cache.org/Doc/config/cache_mem)) with no
 disk copy.
 
-  - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+  - :warning:
     This is usually much smaller report than the full
     [objects](/Features/CacheManager/Objects)
     report. But can still be very, very large.

@@ -9,7 +9,7 @@ Meant for production caches. Code changes are intentionally kept
 minimal. Of course, you may still find bugs in a stable release. Please
 check the **Pending Bugs** page for your particular release.
 
-  - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+  - :warning:
     If you have any compile related problems with a release, please
     report using [bugzilla](http://bugs.squid-cache.org/) or write to
     our *<squid-dev@lists.squid-cache.org>* mailing list. **DO NOT**
@@ -23,7 +23,7 @@ Code changes are intentionally kept minimal. Of course, you may still
 find bugs in any release. Please check the **Pending Bugs** page for
 your particular release.
 
-  - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+  - :warning:
     If you have any compile related problems with a release, please
     report using [bugzilla](http://bugs.squid-cache.org/) or write to
     our *<squid-dev@lists.squid-cache.org>* mailing list. **DO NOT**
@@ -45,7 +45,7 @@ activities. The command line, cachemgr API, and squid.conf are frozen
 and can be expected not to change until the next major version is
 released.
 
-  - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+  - :warning:
     If you have any problems with a release, please report using
     [bugzilla](http://bugs.squid-cache.org/) or write to our
     *<squid-dev@lists.squid-cache.org>* mailing list. DO NOT write to

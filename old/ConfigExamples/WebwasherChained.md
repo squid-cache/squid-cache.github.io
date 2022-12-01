@@ -20,7 +20,7 @@ other proxies in a *proxy chain*. So this article deals with the
 integration of the Webwasher proxy software (made by *Secure
 Computing*).
 
-![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+:warning:
 DISCLAIMER: Webwasher is a relatively expensive piece of software. If
 you want to save your kids at home from porn web sites this article is
 not for you. The reason this article exists is that we use it at work.

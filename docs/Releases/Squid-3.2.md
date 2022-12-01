@@ -96,7 +96,7 @@ See our [Advisories](http://www.squid-cache.org/Advisories/) list.
 
 ## Open Bugs
 
-  - ![\<:(](https://wiki.squid-cache.org/wiki/squidtheme/img/frown.png)
+  - :frowning:
     [Major or higher Bugs currently affecting this
     release](http://bugs.squid-cache.org/buglist.cgi?bug_id_type=anyexact&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&chfieldto=Now&product=Squid&query_format=advanced&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&order=version%20DESC%2Cbug_severity%2Cbug_id).
     

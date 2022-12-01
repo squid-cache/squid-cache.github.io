@@ -296,7 +296,7 @@ Implementing wpad requires you to **fully** understand:
 
 |                                                                           |                                                                                                                                                |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | Please don't bombard the squid list with web server or DNS questions. See your system administrator, or do some more research on those topics. |
+| :warning: | Please don't bombard the squid list with web server or DNS questions. See your system administrator, or do some more research on those topics. |
 
 This is not a recommendation for any product or version. All major
 browsers out now implementing WPAD. I think WPAD is an excellent feature

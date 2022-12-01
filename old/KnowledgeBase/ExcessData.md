@@ -21,15 +21,15 @@ website and your Squid.
 
   - It could be a broken proxy (other than yours) failing to update the
     reply headers correctly after re-validation.
-    ![{1}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio1.png)
+    :one:
 
   - It could be a broken adaptation service failing to adjust the new
     size of the object.
-    ![{1}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio1.png)
+    :one:
 
   - It could be a service somewhere sending length header on chunked
     replies.
-    ![{1}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio1.png)
+    :one:
 
 Squid protects itself and your other clients against these possibilities
 by erasing the broken received copy and not sharing it out to other
@@ -57,7 +57,7 @@ Some of the options include:
     problem.
 
   - In the cases labelled
-    ![{1}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio1.png)
+    :one:
     software upgrades for the relevant middleware might help.
 
 NP: if you track it down to some other cause not mentioned above, we

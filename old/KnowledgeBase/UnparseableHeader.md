@@ -5,7 +5,7 @@
   - WARNING: unparseable HTTP header field {...}
 
   - WARNING: unparseable HTTP header field {HTTP/1.0 200 OK}
-    ![{1}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio1.png)
+    :one:
 
 **Explanation**
 
@@ -19,7 +19,7 @@ Set
 to **warn** (or **off**) for more detailed diagnostics of the problem.
 
 For example
-![{1}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio1.png) ;
+:one: ;
 
   - This broken server (or script) is sending two replies. But it fails
     to send the reply separator between them. So Squid believe the start

@@ -169,7 +169,7 @@ which means that the pattern used will fall back to the default pattern,
 about it. A *cd_refresh_pattern* option will be added to the
 configuration file soon which will at least make the confusion a little
 clearer
-![:-)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png)
+:smile:
 
 Note that it is best to be conservative with your refresh pattern for
 the Cache Digest, i.e. do *not* add objects if they might become stale
@@ -417,7 +417,7 @@ from the first cache.
 ## What does a False Hit look like?
 
 The easiest situation to analyse is when two caches (say A and
-![B)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile2.png) are
+:sunglasses: are
 involved neither of which uses the other as a parent. In this case, a
 False Hit would show up as a CACHE_DIGEST_HIT on A and *NOT* as a
 TCP_HIT on B (or vice versa). If B does not fetch the object for A then
@@ -455,7 +455,7 @@ The X-Cache and X-Cache-Lookup headers from A should both show MISS.
 
 If A requests the object from B (which it will if the digest lookup
 indicates B has it - assuming B is closest peer of course
-![:-)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile.png) then
+:smile: then
 there will be another set of these headers from B.
 
 If the X-Cache header from B shows a MISS a False Hit has occurred. This

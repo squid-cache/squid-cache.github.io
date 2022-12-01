@@ -71,7 +71,7 @@ with the -z option:
 
 |                                                                           |                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | If you run Squid as root then you may need to first create */usr/local/squid/var/logs* and your *cache_dir* directories and assign ownership of these to the cache_effective_user configured in your squid.conf |
+| :warning: | If you run Squid as root then you may need to first create */usr/local/squid/var/logs* and your *cache_dir* directories and assign ownership of these to the cache_effective_user configured in your squid.conf |
 
 Once the creation of the cache directories completes, you can start
 Squid and try it out. Probably the best thing to do is run it from your
@@ -90,7 +90,7 @@ leave off all options:
 
 |                                                                           |                                                                                                  |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | Depending on which http_port you select you may need to start squid as root (http_port \<1024) |
+| :warning: | Depending on which http_port you select you may need to start squid as root (http_port \<1024) |
 
 # How do I start Squid automatically when the system boots?
 

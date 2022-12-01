@@ -167,7 +167,7 @@ of the FreeBSD based on Adrian Chad
 
 ### older then 2015
 
-  - ![\>:\>](https://wiki.squid-cache.org/wiki/squidtheme/img/devil.png)
+  - :rage:
     This information is outdated, and may no longer be relevant.
 
 by [Torsten Sturm](mailto:torsten.sturm@axis.de)
@@ -196,7 +196,7 @@ by [Torsten Sturm](mailto:torsten.sturm@axis.de)
 
 ## General BSD
 
-  - ![\>:\>](https://wiki.squid-cache.org/wiki/squidtheme/img/devil.png)
+  - :rage:
     This information is outdated, and may no longer be relevant.
 
 For most BSD-derived systems (SunOS, 4.4BSD, OpenBSD, FreeBSD, NetBSD,
@@ -226,7 +226,7 @@ Here are a few examples which should lead you in the right direction:
 
 ### SunOS
 
-  - ![\>:\>](https://wiki.squid-cache.org/wiki/squidtheme/img/devil.png)
+  - :rage:
     This information is outdated, and may no longer be relevant.
 
 Change the value of *nfile* in **'usr/kvm/sys/conf.common/param.c/tt\>
@@ -241,7 +241,7 @@ Where *NPROC* is defined by:
 
 ### FreeBSD (from the 2.1.6 kernel)
 
-  - ![\>:\>](https://wiki.squid-cache.org/wiki/squidtheme/img/devil.png)
+  - :rage:
     This information is outdated, and may no longer be relevant.
 
 Very similar to SunOS, edit */usr/src/sys/conf/param.c* and alter the
@@ -257,7 +257,7 @@ configuration file with the following directive: *options OPEN_MAX=128*
 
 ### BSD/OS (from the 2.1 kernel)
 
-  - ![\>:\>](https://wiki.squid-cache.org/wiki/squidtheme/img/devil.png)
+  - :rage:
     This information is outdated, and may no longer be relevant.
 
 Edit */usr/src/sys/conf/param.c* and adjust the *maxfiles* math here:
@@ -270,7 +270,7 @@ to change the per-process limit.
 
 ## Reconfigure afterwards
 
-  - ![\>:\>](https://wiki.squid-cache.org/wiki/squidtheme/img/devil.png)
+  - :rage:
     This information is outdated, and may no longer be relevant.
 
 After you rebuild/reconfigure your kernel with more filedescriptors, you
@@ -793,7 +793,7 @@ Now, all of the headers, and the message body have been sent,
 into an SSL request. The only thing we can do is return the error
 message.
 
-  - ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png)
+  - :warning:
     :bulb:
     This browser bug does represent a **security risk** because the
     browser is sending sensitive information unencrypted over the

@@ -11,7 +11,7 @@ the server I run for my flat (heavy users), which among other things,
 runs squid to speed things up a little/reduce our Internet bill. Sounds
 unnecessary, but seeing TCP_MEM_HIT in the logs for
 'robotunicornattack.swf' 100 times make me think its worth it
-![:D](https://wiki.squid-cache.org/wiki/squidtheme/img/biggrin.png)
+:grin:
 
 My main interesting in tinkering with squid is to allow for caching of
 CDN based content. My current project is caching youtube, although the

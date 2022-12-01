@@ -53,7 +53,7 @@ available for helpers built in Python or Ruby.
     <tr class="odd">
     <td><p>Go</p></td>
     <td><p>read() operation seems to have some form of timeout on threads which returns socket-closed signals. Causing a multi-threaded concurrent helper to exit if its least-used thread times out. There is no known workaround or solution for this.</p>
-    <p><img src="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-info.png" width="16" height="16" alt="{i}" /> As of Go version 1.12.1 the issue appears to be resolved.</p></td>
+    :information_source: As of Go version 1.12.1 the issue appears to be resolved.</p></td>
     </tr>
     </tbody>
     </table>

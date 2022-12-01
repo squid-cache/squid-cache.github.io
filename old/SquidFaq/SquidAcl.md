@@ -612,7 +612,7 @@ which will be thus able to authenticate again.
 
 |                                                                           |                                                                                                              |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | This will **only** work with the *Basic* authentication scheme. If any other scheme is enabled, it will fail |
+| :warning: | This will **only** work with the *Basic* authentication scheme. If any other scheme is enabled, it will fail |
 
     cache_peer parent.foo.com parent login=*:somepassword
 

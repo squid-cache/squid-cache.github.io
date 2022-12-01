@@ -139,9 +139,7 @@ Just enable these options in your *squid.conf* and you'll be registered:
     cache_announce 24
     announce_to sd.cache.nlanr.net:3131
 
-|                                                                           |                                                                                                                                                                                                                  |
-| ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | Announcing your cache **is not** the same thing as joining the NLANR cache hierarchy. You can join the NLANR cache hierarchy without registering, and you can register without joining the NLANR cache hierarchy |
+> :warning: Announcing your cache **is not** the same thing as joining the NLANR cache hierarchy. You can join the NLANR cache hierarchy without registering, and you can register without joining the NLANR cache hierarchy
 
 ## How do I find other caches close to me and arrange parent/child/sibling relationships with them?
 

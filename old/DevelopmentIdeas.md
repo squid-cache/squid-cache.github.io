@@ -13,19 +13,19 @@ related
 related
 
   - [/LinuxOptimizedIO](/DevelopmentIdeas/LinuxOptimizedIO)
-    ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
-    ![{3}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio3.png)
+    :two:
+    :three:
 
   - [/NewStorageAPI](/DevelopmentIdeas/NewStorageAPI)
-    ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
+    :two:
 
   - [/RequestFlowOptimization](/DevelopmentIdeas/RequestFlowOptimization)
-    ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
-    ![{3}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio3.png)
+    :two:
+    :three:
 
   - [/StorageStuff](/DevelopmentIdeas/StorageStuff)
-    ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
-    ![{3}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio3.png)
+    :two:
+    :three:
 
   - [AdrianChadd](/AdrianChadd)'s
     ideas about how to rework the HTTP communications layer are laid out
@@ -33,24 +33,24 @@ related
     [NewClientSide](/NewClientSide)
     and
     [NewServerSide](/NewServerSide)
-    ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
+    :two:
 
   - [CommApi](/CommApi)
-    ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
+    :two:
     details ideas on how to rework the way Squid abstracts the I/O
     operations
 
   - [ForwardRework](/ForwardRework)
-    ![{3}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio3.png)
+    :three:
     has pointers on how to abstract the internal request-handling pipes
 
   - [NewLogging](/NewLogging)
-    ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
-    ![{3}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio3.png)
+    :two:
+    :three:
     contains ideas on how to improve squid's logging functionality
 
   - [RequestQueues](/RequestQueues)
-    ![{2}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio2.png)
-    ![{3}](https://wiki.squid-cache.org/wiki/squidtheme/img/prio3.png)
+    :two:
+    :three:
     has ideas on how to improve squid's internal message-passing
     primitives

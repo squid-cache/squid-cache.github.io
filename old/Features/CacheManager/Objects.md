@@ -5,9 +5,10 @@ to **extremely** large depending on the size of your cache. You should
 check the **info** report to see how many Store****Entries (aka stored
 objects) you have before requesting this report.
 
-|                                                                           |                                                                                                                                                                                                                                                              |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | This will download to your browser a list of every URL in the cache and statistics about it. It can be very, very large. *Sometimes it will be larger than the amount of available memory in your client\!* You probably don't need this information anyway. |
+> :warning: This will download to your browser a list of every URL in the cache and statistics about it.
+  It can be very, very large.
+  *Sometimes it will be larger than the amount of available memory in your client\!*
+  You probably don't need this information anyway.
 
 ## Example Report
 
