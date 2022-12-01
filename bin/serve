@@ -15,7 +15,7 @@ if gem list --local jekyll-theme-slate | grep -q jekyll-theme-slate; then
 fi
 
 if [ "$offline" = "true" ] ; then
-    exec jekyll serve --incremental --watch --source docs --config /tmp/_jekyll-local-config.yml
+    bundle exec jekyll serve --incremental --watch --source docs --config /tmp/_jekyll-local-config.yml
 fi
 
-exec jekyll serve --incremental --watch --source docs
+bundle exec jekyll serve --incremental --watch --source docs
