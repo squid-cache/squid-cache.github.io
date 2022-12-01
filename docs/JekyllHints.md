@@ -34,4 +34,6 @@
 | `:heavy_exclamation_mark:` | :heavy_exclamation_mark: | `:bangbang:` | :bangbang: |
 | `:interrobang:` | :interrobang: | `:heavy_plus_sign:` | :heavy_plus_sign: |
 | `:heavy_minus_sign:` | :heavy_minus_sign: | `:sos:` | :sos: |
-| `:bulb:` | :bulb: | | |
+| `:+1:` | :+1: | `:-1:` | :-1: |
+| `:point_up:` | :point_up: | `:point_down:` | :point_down: |
+| `:point_right:` | :point_right: | `:bulb:` | :bulb: |
