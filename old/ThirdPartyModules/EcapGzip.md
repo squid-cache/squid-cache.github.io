@@ -9,8 +9,6 @@
 | License          | GPL                                                                                                   |
 | Squid Version    | 3.1                                                                                                   |
 | Interface        | **eCAP**                                                                                              |
-| Distribution URL | [](http://code.google.com/p/squid-ecap-gzip/)                                                         |
+| Distribution URL | [github](https://github.com/c-rack/squid-ecap-gzip)                                                         |
 
 # Details
-
-[ThirdPartyModules](/ThirdPartyModules)
