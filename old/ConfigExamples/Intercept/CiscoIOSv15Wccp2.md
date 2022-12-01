@@ -185,9 +185,9 @@ interception.
     Note: This configuration was tested and fully operated on Cisco iOS
     versions 15.4(1)T, 15.4(3)M, 15.5(1)T, 15.5(2)T1, 15.5(3)M,
     15.5(3)M2, 15.6(2)T, 15.6(2)T1, 15.6(3)M.
-    ![{OK}](https://wiki.squid-cache.org/wiki/squidtheme/img/thumbs-up.png)
-    ![{OK}](https://wiki.squid-cache.org/wiki/squidtheme/img/thumbs-up.png)
-    ![{OK}](https://wiki.squid-cache.org/wiki/squidtheme/img/thumbs-up.png)
+    :+1:
+    :+1:
+    :+1:
 
 # Variant II: Switch L3 as WCCPv2 router
 
@@ -292,14 +292,14 @@ different ports interception.
     Note: Initial setup was created, tested and fully operated on switch
     WS-C3750G-16TD-S with iOS 12.2(55)SE10 IPSERVICEK9 with Squid
     3.5.19.
-    ![{OK}](https://wiki.squid-cache.org/wiki/squidtheme/img/thumbs-up.png)
+    :+1:
 
   - :information_source:
     Note: This configuration was tested and fully operated on Cisco iOS
     version 15.0(2)SE9 on appropriate switch (see next note).
-    ![{OK}](https://wiki.squid-cache.org/wiki/squidtheme/img/thumbs-up.png)
-    ![{OK}](https://wiki.squid-cache.org/wiki/squidtheme/img/thumbs-up.png)
-    ![{OK}](https://wiki.squid-cache.org/wiki/squidtheme/img/thumbs-up.png)
+    :+1:
+    :+1:
+    :+1:
 
   - :information_source:
     Note: Be **VERY CAREFUL**: Cisco 3750 series has much submodels, not
