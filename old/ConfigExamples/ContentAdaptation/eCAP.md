@@ -284,7 +284,7 @@ Make shure all shared libraries are installed.
   - :information_source:
     Note: Use correct compiler full path, depending your setup. Commands
     above is my system-specific.
-    ![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png)
+    :smirk:
 
 Then, build and install adapter:
 

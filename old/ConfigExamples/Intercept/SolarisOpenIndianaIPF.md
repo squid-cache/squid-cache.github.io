@@ -142,6 +142,6 @@ Paste the configuration file like this:
     # svcadm restart squid
 
 That's all, folks.
-![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png)
+:smirk:
 
 [CategoryConfigExample](/CategoryConfigExample)

@@ -103,7 +103,7 @@ Variable names can fall in different categories:
 
 3.  Variables to be substituted in Makefile.am's etc.: `ALL_UPPERCASE`
     (and try to avoid clashes
-    ![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png) )
+    :smirk: )
 
 ## Documentation for extra macros and available variables
 

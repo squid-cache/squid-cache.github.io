@@ -30,4 +30,4 @@ Paste the configuration file like this:
 
 Pay your attention, that we send TCP_RESET to client. So, he can't see
 we do it with our proxy.
-![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png)
+:smirk:

@@ -67,7 +67,7 @@ backend servers ID before storing files.
 
 In practice, best solution for today I found is NOT caching
 googlevideo.com domain, NOT caching youtube.com/watch/v= pages (try and
-see ![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png)
+see :smirk:
 why). The only solution is caching images/css/js from YT with store ID.
 If Google return static video ID, we can cache YT video again. But now
 it is impossible by any way.

@@ -433,7 +433,7 @@ Paste the configuration file like this:
   - :x:
     Also beware: without clamd you will have the same 300-500 megabytes
     of loaded AV database to one of c-icap process with libclamav.
-    ![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png)
+    :smirk:
 
 ## Testing your installation
 
@@ -444,7 +444,7 @@ sure you're get redirected to warning page.
 For really big installations you can place all checking infrastructure
 components on separate nodes - i.e. proxy, c-icap server, ClamAV. That's
 all, folks\!
-![;)](https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png)
+:smirk:
 
 ## DNSBL filtering support
 
