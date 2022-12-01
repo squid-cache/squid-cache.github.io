@@ -30,7 +30,7 @@ cleanly without modifying squid.
 
 I created a custom authenticator that always returns "OK" and linked it
 to the external acl.
-ℹ️
+:information_source:
 Squid-3.2 bundles one called **basic_fake_auth**
 
 ## Squid Configuration
@@ -43,7 +43,7 @@ Squid-3.2 bundles one called **basic_fake_auth**
     
     http_access allow MyAcl
 
-  - ℹ️
+  - :information_source:
     myAclType's dependence on **%LOGIN** is required for triggering
     authentication and, thus, setting **%{Proxy-Authorization}**.
 

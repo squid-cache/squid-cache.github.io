@@ -193,7 +193,7 @@ Install Procedure:
     enabled=1
     gpgcheck=0
 
-  - ℹ️
+  - :information_source:
     **Eliezer:** a nice build from a friend that is hosted on SUSE
     servers.
 

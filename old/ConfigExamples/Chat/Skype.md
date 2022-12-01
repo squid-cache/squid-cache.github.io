@@ -66,7 +66,7 @@ Configuration file to include.
     
     http_access allow CONNECT localnet numeric_IPS Skype_UA
 
-  - ℹ️
+  - :information_source:
     Note that Skype prefers the **port 443** which is by default enabled
     in Squid anyway so this configuration is only needed when you block
     HTTPS access through the proxy.

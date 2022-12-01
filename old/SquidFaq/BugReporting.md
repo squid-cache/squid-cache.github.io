@@ -277,7 +277,7 @@ Other options if the above cannot be done is to:
 
 2.  Run Squid using the "catchsegv" tool. (Linux glibc Intel)
     
-    ℹ️
+    :information_source:
     these approaches do not by far provide as much details as using gdb.
 
 ## Attaching gdb debugger to and already running Squid

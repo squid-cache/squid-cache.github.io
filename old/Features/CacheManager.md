@@ -53,7 +53,7 @@ The default cache manager access configuration in *squid.conf* is:
     http_access allow localhost manager
     http_access deny manager
 
-  - ℹ️
+  - :information_source:
     This default has been updated to accommodate changes in
     [Squid-3.2](/Releases/Squid-3.2).
     For older squid the squid.conf entries may appear different.
@@ -123,7 +123,7 @@ or the administrators workstation.
   - Always be sure to run *squid -k reconfigure* any time you change the
     *squid.conf* file.
     
-      - ℹ️
+      - :information_source:
         Once cache manager is configured with a password you can also
         run the **reconfigure** action request remotely.
 

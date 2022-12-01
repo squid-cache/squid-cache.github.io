@@ -56,7 +56,7 @@ TODO:** image is outdated.
 
 ## General Overview
 
-  - ℹ️
+  - :information_source:
     The general design level is where Squid-2 and Squid-3 differ. With
     Squid-2 being composed purely of event callback chains, Squid-3 adds
     the model of task encapsulation within Jobs.

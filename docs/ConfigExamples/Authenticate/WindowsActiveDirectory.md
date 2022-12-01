@@ -78,7 +78,7 @@ dig -x 192.168.0.10
 The **ANSWER SECTION** should contain the the DNS name of
 `dc1.example.local` and `squidproxy.example.local`.
 
-> ℹ️ **Important:** If either lookup fails do not proceed until fixed or
+> :information_source: **Important:** If either lookup fails do not proceed until fixed or
 authentication may fail.
 
 ## NTP Configuration
@@ -94,7 +94,7 @@ Install Kerberos packages - on Debian these are `krb5-user libkrb53`
 Edit the file `/etc/krb5.conf` replacing the variables with the your
 domain and servers.
 
-> ℹ️ **Important:** If you only have 1 Domain Controller remove the
+> :information_source: **Important:** If you only have 1 Domain Controller remove the
 additional `kdc` entry from the `[realms]` section, or add any
 additional DC's.
 
@@ -132,7 +132,7 @@ Windows 200X section and comment out the opposing section.
     example.local = EXAMPLE.LOCAL
 ```
 
-> ℹ️ **Important notice:** One should use "Windows 2008 with AES" if
+> :information_source: **Important notice:** One should use "Windows 2008 with AES" if
 available. This is not just important for security reasons, but you
 might also experience problems when using the DNS name of the squid
 server instead of the IP address.
@@ -195,7 +195,7 @@ msktutil -c -b "CN=COMPUTERS" -s HTTP/squidproxy.example.local -k /etc/squid3/PR
     --computer-name SQUIDPROXY-K --upn HTTP/squidproxy.example.local --server dc1.example.local --verbose
 ```
 
-> ℹ️ If you are using a Server 2008 domain then add
+> :information_source: If you are using a Server 2008 domain then add
     `--enctypes 28` at the end of the command
 
 
@@ -221,7 +221,7 @@ as expected. Then run the following:
 
     msktutil --auto-update --verbose --computer-name squidproxy-k
 
-> ℹ️ Even though the account was added in capital letters, the
+> :information_source: Even though the account was added in capital letters, the
     `--auto-update` in msktutil requires the `--computer-name` to be lower
     case.
 

@@ -25,7 +25,7 @@ https://code.google.com/p/msktutil/, or install [Samba](http://www.samba.org/)
 ## krb5.conf Configuration
 
 - :warning: In IE the proxy must be specified as FQDN not as an IP-address
-- ℹ️ `rc4-hmac` should be listed as encryption type for windows 2003.
+- :information_source: `rc4-hmac` should be listed as encryption type for windows 2003.
 
 A minimal setup without DNS resolution of AD servers would be (MIT
 Kerberos example):

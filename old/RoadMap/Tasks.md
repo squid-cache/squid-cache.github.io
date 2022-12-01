@@ -55,7 +55,7 @@ see what we are up to and how you can assist the move forward on these.
     3.  find unit tests with unnecessary linkages and remove (mostly in
         src/Makefile.am)
     
-    4.  ℹ️
+    4.  :information_source:
         This is being tracked in
         [Features/SourceLayout](/Features/SourceLayout).
 

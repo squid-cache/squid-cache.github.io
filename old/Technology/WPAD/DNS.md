@@ -36,7 +36,7 @@ requests the "/wpad.dat" file, with the Host set to the domain name.
 
 ## Example
 
-  - ℹ️
+  - :information_source:
     Note: This example is browser and IPv4 specific.
 
 A client has an IP 1.2.3.4 which resolves to host-1-2-3-4.pop1.isp.net.

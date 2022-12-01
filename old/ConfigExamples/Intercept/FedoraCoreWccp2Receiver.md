@@ -75,7 +75,7 @@ the Squid application.
     wccp2_return_method 1
     wccp2_service standard 0
 
-  - ℹ️
+  - :information_source:
     From
     [Squid-3.1](/Releases/Squid-3.1)
     the magic numbers are now mostly gone. This should work and be

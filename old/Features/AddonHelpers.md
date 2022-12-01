@@ -236,7 +236,7 @@ mgr:store_io.
 
 ## Helper protocols
 
-ℹ️
+:information_source:
 Squid-2.6 and later all support concurrency, however the bundled helpers
 and many third-party commercial helpers do not. This is changing, the
 use of concurrency is encouraged to improve performance. The relevant
@@ -257,7 +257,7 @@ helpers.
 
 ### Key=Value pairs (kv-pairs) format
 
-ℹ️
+:information_source:
 Relevant to Squid-3.4 and later
 
 The interface for all helpers has been extended to support arbitrary
@@ -393,7 +393,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - ℹ️
+      - :information_source:
         the result field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -414,12 +414,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -438,10 +438,10 @@ Result line sent back to Squid:
         must be an absolute URL. ie starting with [](http://) or
         [](ftp://) etc.
     
-    ℹ️
+    :information_source:
     If no action is required leave status:URL area blank.
     
-    ℹ️
+    :information_source:
     The **status** and **URL** are separated by a colon (**:**) as shown
     above instead of whitespace.
 
@@ -481,7 +481,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - ℹ️
+      - :information_source:
         the result field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -501,12 +501,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -568,13 +568,13 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
     
-    ℹ️
+    :information_source:
     This interface will also accept responses in the syntax delivered by
     [Store
     URL-rewrite](/Features/StoreUrlRewrite)
@@ -636,7 +636,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - ℹ️
+      - :information_source:
         the **BH** result code is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -656,12 +656,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -669,7 +669,7 @@ Result line sent back to Squid:
 
 #### Bearer Scheme
 
-  - ℹ️
+  - :information_source:
     the **Bearer** authentication scheme is **proposed** to be supported
     by
     [Squid-3.4](/Releases/Squid-3.4)
@@ -779,7 +779,7 @@ Input line received from Squid:
       - The digest auth realm string configured in squid.conf. Sent as a
         "double-quoted" string.
 
-ℹ️
+:information_source:
 The **username** and **realm** strings are both double quoted (**"**)
 and separated by a colon (**:**) as shown above.
 
@@ -812,12 +812,12 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem.                 |
         
 
-      - ℹ️
+      - :information_source:
         the **OK** and **BH** result codes are only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - ℹ️
+      - :information_source:
         for
         [Squid-3.3](/Releases/Squid-3.3)
         and older the **OK** result is not sent, but hash field is.
@@ -838,12 +838,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -860,7 +860,7 @@ Result line sent back to Squid:
 
 #### Negotiate and NTLM Scheme
 
-  - ℹ️
+  - :information_source:
     These authenticator schemes do not support concurrency due to the
     statefulness of NTLM.
 
@@ -914,7 +914,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem.                                         |
         
 
-      - ℹ️
+      - :information_source:
         the **OK** and **ERR** result codes are only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -925,12 +925,12 @@ Result line sent back to Squid:
         base64-encoded, as defined by RFC
         [2045](https://tools.ietf.org/rfc/rfc2045).
         
-        ℹ️
+        :information_source:
         NOTE: NTLM authenticator interface on Squid-3.3 and older does
         not support a **token** field. Negotiate authenticator interface
         requires it on **TT**, **AF** and **NA** responses.
         
-        ℹ️
+        :information_source:
         This field must not be sent on **OK**, **ERR** and **BH**
         responses.
 
@@ -958,12 +958,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                                                                                |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -1049,7 +1049,7 @@ Result line sent back to Squid:
       - The configured usage of the external ACL in squid.conf
         determines what this result means.
     
-      - ℹ️
+      - :information_source:
         the **BH** result code is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -1156,7 +1156,7 @@ Result line sent back to Squid:
         | BH | Failure. The helper encountered a problem. |
         
 
-      - ℹ️
+      - :information_source:
         the **OK** and **BH** result codes are only accepted by
         [Squid-3.3](/Releases/Squid-3.3)
         and newer.

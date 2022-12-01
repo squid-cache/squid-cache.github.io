@@ -83,7 +83,7 @@ TODO:
 
 After initial structural updates to the Http::Parser hierarchy.
 
-ℹ️
+:information_source:
 the stack is asynchronous, now with incremental parse checkpoints
 resumed after read operations.
 
@@ -161,7 +161,7 @@ The ICAP *response* parsing system
 `Adaptation::Icap::ResponseParser::parse` in parser-ng-icap-pt2 branch
 is as follows:
 
-ℹ️
+:information_source:
 class inherits from the `Http1::ResponseParser` parser, but replaces the
 stage 1 version scan with an ICAP specific scan.
 

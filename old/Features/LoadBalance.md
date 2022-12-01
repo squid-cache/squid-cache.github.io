@@ -239,7 +239,7 @@ sessions (such as
 These sessions break when passing through regular HTTP stateless
 clusters which split up the transaction stream for load balancing.
 
-  - ℹ️
+  - :information_source:
     In Squid older than 3.1.15 this is selected higher priority than
     Source IP hash. They are mutually exclusive algorithms, so this
     should not be an issue.

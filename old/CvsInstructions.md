@@ -53,7 +53,7 @@ To update your source tree later, type:
   cvs -d:pserver:anonymous@cvs.devel.squid-cache.org:/cvsroot/squid co -rHEAD -d squid-HEAD squid3
 ```
 
-  - ℹ️
+  - :information_source:
     Squid-3 STABLE branches are not mirrored in CVS.
 
 :warning:

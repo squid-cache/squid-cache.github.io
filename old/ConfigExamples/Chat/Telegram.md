@@ -51,7 +51,7 @@ This only affects Telegram clients using HTTP proxy settings. On
 interception proxy it will works also with Telegram clients AUTO mode
 (the default).
 
-  - ℹ️
+  - :information_source:
     Note: Usually latest Telegram client can connect via proxy without
     issues. However, if your clients experiencing difficults, use
     configuration above. Also, if you using ufdbguard, it can be
@@ -88,7 +88,7 @@ Yon can easy to extend rules to cover IPv6 networks.
 If Telegram starts hide it bootstrap behind world CDN's, just extend
 rules above to pattern [](http://0.0.0.0/api).
 
-  - ℹ️
+  - :information_source:
     Note: If you would like also to ban **MTProto proxy**, keep in mind
     it uses non-TLS handshake without presenting any legitimate
     certificate signed by the well-known CA (like Telegram does). So,

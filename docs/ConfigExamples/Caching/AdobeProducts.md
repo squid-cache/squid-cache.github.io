@@ -72,7 +72,7 @@ will be discontinued in September 2016 and will continue to take place
 exclusively through the web downloader. Thus, the previous Squid's
 configurations Squid to caching Adobe downloads will be useless.
 
-    ℹ️ Note: Adobe downloader does not like when for pinned connections
+    :information_source: Note: Adobe downloader does not like when for pinned connections
     your proxy start stare. It interrupts downloading updates
     immediately. So, avoid staring in any form. This means your
     squid.conf should **not** use the

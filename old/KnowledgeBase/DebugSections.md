@@ -43,7 +43,7 @@ information needed by the developers to debug.
       - These are problems fatal to squid and if your squid is crashing
         the problem is mentioned in cache.log at level 0.
     
-      - ℹ️
+      - :information_source:
         currently Startup, Shutdown and Reconfigure do produce output at
         this level.
 
@@ -76,7 +76,7 @@ information needed by the developers to debug.
 
 |                                                                        |                                      |
 | ---------------------------------------------------------------------- | ------------------------------------ |
-| ℹ️ | Sections are current from Squid 4.11 |
+| :information_source: | Sections are current from Squid 4.11 |
 
   - **ALL** Special section tag meaning all sections. For ease of
     configuration.

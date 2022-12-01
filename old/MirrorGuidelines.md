@@ -70,7 +70,7 @@ The website pages and content can be fetched from here:
 
     rsync -avz --delete-after master.squid-cache.org::http-files  /www/path
 
-  - ℹ️
+  - :information_source:
     We have deprecated the use of country-specific mirror domains. If
     you have previously been assigned a mirror domain such as
     www1.us.squid-cache.org. Please change that to hosting just the

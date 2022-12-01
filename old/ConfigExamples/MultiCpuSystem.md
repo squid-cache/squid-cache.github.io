@@ -8,7 +8,7 @@ support or guarantee of suitability. If you have any further questions
 about these examples please email the squid-users mailing list.
 
   - :warning:
-    ℹ️
+    :information_source:
     [Squid-3.2](/Releases/Squid-3.2)
     has now had experimental multi-process SMP support merged. It is
     designed to operate with a similar but different configuration to

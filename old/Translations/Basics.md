@@ -17,7 +17,7 @@ aware of.
     someone with the right knowledge can identify whether its right or
     not.
     
-      - ℹ️
+      - :information_source:
         if you find you want to do more than suggest we are always
         looking for moderators.
 
@@ -158,7 +158,7 @@ The notice emails contain helpful links which go direct to the page
 where the needed task can be completed. Saving much time locating things
 in the maze of job links.
 
-  - ℹ️
+  - :information_source:
     If there is no translator the list gets sent to the Squid project
     team as a digest. We usually don't know the language so it's only an
     indication of where we need to track down new helpers from.

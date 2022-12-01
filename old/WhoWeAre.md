@@ -99,7 +99,7 @@ should have some familiarity with the processes involved.
 
 # Squid Project Sysadmin Team
 
-  - ℹ️
+  - :information_source:
     To contact the sysadmin about any problems please report via
     Bugzilla under [Project
     Services](http://bugs.squid-cache.org/enter_bug.cgi?product=Project%20Services).

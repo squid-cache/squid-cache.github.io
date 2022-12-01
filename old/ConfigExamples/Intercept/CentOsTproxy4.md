@@ -72,7 +72,7 @@ regular configuration:
 
 |                                                                        |                                                                                                                      |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| ℹ️ | iptables 1.4.3 is now released and has support integrated. [](http://www.netfilter.org/projects/iptables/index.html) |
+| :information_source: | iptables 1.4.3 is now released and has support integrated. [](http://www.netfilter.org/projects/iptables/index.html) |
 
   - configure the Makefile for iptables:
 
@@ -101,7 +101,7 @@ regular configuration:
 
 |                                                                        |                                                                                                                                         |
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| ℹ️ | If it doesn't show this, but v1.3.5 instead, then I wrote the step 15 above from memory incorrectly, and the paths need to be adjusted. |
+| :information_source: | If it doesn't show this, but v1.3.5 instead, then I wrote the step 15 above from memory incorrectly, and the paths need to be adjusted. |
 
   - Do a "service iptables status" and see if iptables is running,
     stopped, or has a "RH-Firewall-1-INPUT" chain. If it stopped
@@ -123,7 +123,7 @@ regular configuration:
 
 |                                                                                  |                                                                                                                                                                                                                           |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ℹ️ **Note:** | If any of the above commands fails, there is something wrong with iptables update to 1.4.0 and/or tproxy module status in iptables 1.4.0. Keep in mind that the commands are sensitive to case, spacing, and hyphenation. |
+| :information_source: **Note:** | If any of the above commands fails, there is something wrong with iptables update to 1.4.0 and/or tproxy module status in iptables 1.4.0. Keep in mind that the commands are sensitive to case, spacing, and hyphenation. |
 
 ### WCCP Configuration
 
@@ -145,7 +145,7 @@ regular configuration:
 
 |                                                                                  |                                                                                                                                                                                                                                                                                                                                                                                           |
 | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ℹ️ **note:** | When running **iptables** commands, you my find that you have no firewall rules at all. In this case you will need to create an input chain to add some of the rules to. I created a chain called **LocalFW** instead (see below) and added the final WCCP rule to that chain. The other rules stay as they are. To do this, learn iptables...or something \*LIKE\* what is listed below: |
+| :information_source: **note:** | When running **iptables** commands, you my find that you have no firewall rules at all. In this case you will need to create an input chain to add some of the rules to. I created a chain called **LocalFW** instead (see below) and added the final WCCP rule to that chain. The other rules stay as they are. To do this, learn iptables...or something \*LIKE\* what is listed below: |
 
     iptables -t filter -NLocalFW
     iptables -A FORWARD -j LocalFW

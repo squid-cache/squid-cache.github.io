@@ -51,12 +51,12 @@ for easier user reading.
  sed --in-place s/%b/3128/ ERR_AGENT_CONFIGURE
 ```
 
-  - ℹ️
+  - :information_source:
     [3.1.20](/Releases/Squid-3.1)
     will fill out the %b value with port 3128. Use the above replacement
     to use another port.
     
-    ℹ️
+    :information_source:
     [Squid-3.2](/Releases/Squid-3.2)
     will fill out the %b value with the proxies first *normal*
     (forward-proxy) listening port.

@@ -96,7 +96,7 @@ This feature will allow us later to implement
     patterns](http://wiki.squid-cache.org/Features/StoreID/DB) without
     needing to edit the code of the helper internals.
 
-  - ℹ️
+  - :information_source:
     Any helper previously designed for the
     [Squid-2.7](/Releases/Squid-2.7)
     StoreURL feature is expected to work with
@@ -105,7 +105,7 @@ This feature will allow us later to implement
     for better performance and forward-compatibility with future Squid
     versions.
 
-  - ℹ️
+  - :information_source:
     Older URL-rewriter programs such as SQUIRM and Jesred will also work
     using the above backward-compatibility support. However newer
     URL-rewrite helpers designed for the
@@ -206,7 +206,7 @@ An example for input and output of the helper:
     http://i2.ytimg.com/vi/95b1zk3qhSM/hqdefault.jpg
     OK store-id=http://ytimg.squid.internal/vi/95b1zk3qhSM/hqdefault.jpg
 
-  - ℹ️
+  - :information_source:
     from
     [Squid-3.5](/Releases/Squid-3.5)
     this helper can support any value for the concurrency setting.
@@ -491,13 +491,13 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                               |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
     
-    ℹ️
+    :information_source:
     This interface will also accept responses in the syntax delivered by
     [Store
     URL-rewrite](/Features/StoreUrlRewrite)

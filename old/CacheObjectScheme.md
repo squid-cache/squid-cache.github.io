@@ -17,13 +17,13 @@ If `request` is not specified, the default is `menu`, which will
 enumerate all available actions. The `password` is only required for
 pages that require it.
 
-  - ℹ️
+  - :information_source:
     [Squid-3.1](/Releases/Squid-3.1)
     and later all accept HTTP Basic authentication credentials instead
     of a URL-based password. Use the **WWW-Authenticate:** header to
     pass the password.
 
-  - ℹ️
+  - :information_source:
     [Squid-4](/Releases/Squid-4)
     and later serve Cache Manager contents through the
     `http://hostname/squid-internal-mgr` URL-prefix

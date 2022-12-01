@@ -19,7 +19,7 @@ are.
 
 |                                                                        |                                                                                                                                        |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| ℹ️ | The accel option to [http_port](http://www.squid-cache.org/Doc/config/http_port) should only be specified for 2.6.STABLE8 and later. |
+| :information_source: | The accel option to [http_port](http://www.squid-cache.org/Doc/config/http_port) should only be specified for 2.6.STABLE8 and later. |
 
 |                                                                      |                                                                                                                                         |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |

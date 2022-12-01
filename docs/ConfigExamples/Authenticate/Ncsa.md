@@ -22,7 +22,7 @@ To delete users:
 ```
 htpasswd -D -nbm /etc/squid/passwords username password
 ```
-> ℹ️ The `-m` option specifies MD5 encryption which is the default for
+> :information_source: The `-m` option specifies MD5 encryption which is the default for
     htpasswd
 
 Squid helpers support DES, MD5 and SHA encryption of the passwords file.

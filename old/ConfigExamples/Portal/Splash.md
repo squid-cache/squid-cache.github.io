@@ -45,7 +45,7 @@ directive.
     
     |                                                                             |                                                                                                                                                                                                      |
     | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | ℹ️ NOTE | Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the [deny_info](http://www.squid-cache.org/Doc/config/deny_info) directive. |
+    | :information_source: NOTE | Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the [deny_info](http://www.squid-cache.org/Doc/config/deny_info) directive. |
     
 
 ## Squid Configuration File - Simple Example
@@ -153,7 +153,7 @@ and later, but can be adapted for earlier versions.
     [deny_info](http://www.squid-cache.org/Doc/config/deny_info).
     However, note that is page can only be a static HTML page.
 
-  - ℹ️
+  - :information_source:
     For more information please see
     [ext_session_acl](http://www.squid-cache.org/Versions/v3/3.2/manuals/ext_session_acl.html),
     [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type/),

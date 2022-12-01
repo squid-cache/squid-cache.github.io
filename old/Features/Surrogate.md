@@ -22,12 +22,12 @@ delivery gateways (**reverse proxies**, or accelerator proxies) to be
 assigned specific controls different to both user browsers and
 intermediary proxies.
 
-  - ℹ️
+  - :information_source:
     Support is added alongside ESI protocol to
     [Squid-3.0](/Releases/Squid-3.0),
     where it can be used when the ESI feature is enabled.
 
-  - ℹ️
+  - :information_source:
     [Squid-3.2](/Releases/Squid-3.2)
     breaks it out for general use by non-ESI reverse proxies.
 
@@ -87,7 +87,7 @@ or maybe
     Surrogate-Capability: proxy123.example.com="Surrogate/1.0"
     ...
 
-  - ℹ️
+  - :information_source:
     The text which is quoted may contain other protocol names like this:
     "Surrogate/1.0 ESI/1.0"
 

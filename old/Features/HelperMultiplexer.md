@@ -24,7 +24,7 @@ middleware object which talks the multi-slot protocol to Squid and runs
 a farm of helpers talking the single-slot variant of the protocol to
 them.
 
-ℹ️
+:information_source:
 NP: The helper is bundled with
 [Squid-3.2](/Releases/Squid-3.2),
 however it works with earlier releases which are capable of the

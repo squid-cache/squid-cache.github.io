@@ -568,7 +568,7 @@ see above.
 
 ### Cannot bind socket FD NN to \[::\]: (13) Permission denied
 
-  - ℹ️
+  - :information_source:
     Also may display as **Cannot bind socket FD NN to 0.0.0.0: (13)
     Permission denied** if you disabled IPv6.
 

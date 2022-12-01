@@ -588,7 +588,7 @@ To disable *cache.log*:
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![\<\!\>](https://wiki.squid-cache.org/wiki/squidtheme/img/attention.png) | It is a bad idea to disable the *cache.log* because this file contains many important status and debugging messages. However, if you really want to, you can                                                                                                                                    |
 | :warning:      | If /dev/null is specified to any of the above log files, [logfile](http://www.squid-cache.org/Doc/config/logfile) rotate MUST also be set to *0* or else risk Squid rotating away /dev/null making it a plain log file                                                                         |
-| ℹ️    | Instead of disabling the log files, it is advisable to use a smaller value for [logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate) and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system |
+| :information_source:    | Instead of disabling the log files, it is advisable to use a smaller value for [logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate) and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system |
 
 # What is the maximum size of access.log?
 

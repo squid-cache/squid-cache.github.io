@@ -18,7 +18,7 @@ these scripts are able to bypass browser security measures and spread
 infections through the network. They do so by forging the *Host:*
 headers on HTTP traffic going through an interception proxy.
 
-  - ℹ️
+  - :information_source:
     When port 443 is intercepted the client SNI value used in a
     generated CONNECT request can have this check performed. If that SNI
     name does not resolve to the destination server IP(s) this message
@@ -63,7 +63,7 @@ request was going to does not belong to that domain name.
 
   - configure the browsers manually
 
-  - ℹ️
+  - :information_source:
     all of these methods make the client browser agent aware of the
     proxy. This causes the browser to send a differently formatted HTTP
     request which avoids both the security vulnerability and checks
@@ -76,7 +76,7 @@ here.
 
 **Workaround**
 
-  - ℹ️
+  - :information_source:
     As of May 2012,
     [Squid-3.2.0.18](/Releases/Squid-3.2)
     will pass traffic which fails these validation checks to the same

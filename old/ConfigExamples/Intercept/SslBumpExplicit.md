@@ -196,7 +196,7 @@ library default "Global Trusted CA" set. This is done by
 
     tls_outgoing_options cafile=/usr/local/openssl/cabundle.file
 
-  - ℹ️
+  - :information_source:
     Note: OpenSSL CA's bundle is derived from Mozilla's bundle and is
     **NOT COMPLETE**. Specifically most intermediate certificates are
     not included (see below). Adding extra root CA in this way is your
@@ -279,12 +279,12 @@ configuration:
     server certificates errors and connect your users with them. Use
     these options at your own risk.
 
-  - ℹ️
+  - :information_source:
     Note that **DONT_VERIFY_PEER** is not good even for debugging.
     Since it will most probably hide the error you are trying to
     identify and fix.
 
-  - ℹ️
+  - :information_source:
     Note:
     [sslproxy_cert_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error)
     can be used to refine server's cert error and control access to it.
@@ -304,7 +304,7 @@ To increase security the good idea to set these options:
   - :warning:
     SSL options must be comma (,) or colon (:) separated, not spaces\!
 
-  - ℹ️
+  - :information_source:
     NO_SSLv2 is relevant only for Squid-3.x. SSLv2 support has been
     completely removed from
     [Squid-4](/Releases/Squid-4).
@@ -347,12 +347,12 @@ suite](https://wiki.squid-cache.org/ConfigExamples/Intercept/SslBumpExplicit?act
 
 This looks like more better for outgoing SSL connections.
 
-  - ℹ️
+  - :information_source:
     Note: Your browser shows connection security info from proxy to
     client. But it is important for you to know the security level from
     proxy to server connection. Don't forget about ciphers.
 
-  - ℹ️
+  - :information_source:
     Note: Some HTTPS sites will prevent connections with the above
     ciphers. So, to make it work you can add HIGH cipher suite to this
     cipher's list. Remember, this makes your configuration a bit weak,
@@ -362,7 +362,7 @@ This looks like more better for outgoing SSL connections.
 
     sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:HIGH:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 
-  - ℹ️
+  - :information_source:
     Note: Ciphers are used also depending from your SSL/TLS library. In
     some cases will be enough to specify:
 
@@ -374,7 +374,7 @@ or
 
     tls_outgoing_options cipher=HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 
-  - ℹ️
+  - :information_source:
     Note: Don't forget, that sslproxy_cipher/tls_outgoing_options
     effective for external (i.e., from Squid to Web) connections. For
     internal (i.e., from Squid to LAN) connections you also need to
@@ -417,11 +417,11 @@ Squid 4.x:
 
 and restart squid.
 
-  - ℹ️
+  - :information_source:
     Note: Careful, these config snippets may not work in your proxy.
     They are just examples\!
 
-  - ℹ️
+  - :information_source:
     Note: In some cases you can specify curve in tls-dh option:
 
 <!-- end list -->

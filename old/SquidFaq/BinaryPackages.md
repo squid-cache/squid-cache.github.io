@@ -205,7 +205,7 @@ Install Procedure:
     enabled=1
     gpgcheck=0
 
-  - ℹ️
+  - :information_source:
     **Eliezer:** a nice build from a friend that is hosted on SUSE
     servers.
 
@@ -235,7 +235,7 @@ Packages available for Squid on multiple architectures.
 
 Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid)
 
-  - ℹ️
+  - :information_source:
     Debian Bookworm (11)
 
 Install Procedure:
@@ -248,10 +248,10 @@ Install Procedure:
 
 Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid)
 
-  - ℹ️
+  - :information_source:
     Debian Buster (10)
 
-  - ℹ️
+  - :information_source:
     Debian Bullseye (11)
 
 Install Procedure:
@@ -264,7 +264,7 @@ Install Procedure:
 
 Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid)
 
-  - ℹ️
+  - :information_source:
     Debian Stretch
 
 Install Procedure:
@@ -277,7 +277,7 @@ Install Procedure:
 
 Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3)
 
-  - ℹ️
+  - :information_source:
     Debian Jesse or older.
 
 Install Procedure:
@@ -290,7 +290,7 @@ Install Procedure:
 
 Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid)
 
-  - ℹ️
+  - :information_source:
     Debian Jesse or older.
 
 Install Procedure:
@@ -678,7 +678,7 @@ Packages available for Squid on multiple architectures.
 
 Bug Reports: [](https://bugs.launchpad.net/ubuntu/+source/squid)
 
-  - ℹ️
+  - :information_source:
     Ubuntu 18.10 (Cosmic) or newer.
 
 Install Procedure:
@@ -691,7 +691,7 @@ Install Procedure:
 
 Bug Reports: [](https://bugs.launchpad.net/ubuntu/+source/squid)
 
-  - ℹ️
+  - :information_source:
     Ubuntu 18.04 (Bionic) or older.
 
 Install Procedure:
@@ -745,7 +745,7 @@ repository to pull the source package information. Features which are
 not supported by the distribution package will need investigation to
 discover the dependency package and install it.
 
-  - ℹ️
+  - :information_source:
     The usual one requested is **libssl-dev** for SSL support.
     
       - :warning:

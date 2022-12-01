@@ -6,7 +6,7 @@
 
 see also
 
-  - ℹ️
+  - :information_source:
     details labeled ENFORCED are checked and forced by source testing
     mechanisms.
 

@@ -186,7 +186,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - ℹ️
+      - :information_source:
         the result field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -207,12 +207,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                   |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -231,10 +231,10 @@ Result line sent back to Squid:
         must be an absolute URL. ie starting with [](http://) or
         [](ftp://) etc.
     
-    ℹ️
+    :information_source:
     If no action is required leave status:URL area blank.
     
-    ℹ️
+    :information_source:
     The **status** and **URL** are separated by a colon (**:**) as shown
     above instead of whitespace.
 
@@ -303,7 +303,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - ℹ️
+      - :information_source:
         the result field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -323,12 +323,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                   |
         
 
-      - ℹ️
+      - :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - ℹ️
+      - :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)

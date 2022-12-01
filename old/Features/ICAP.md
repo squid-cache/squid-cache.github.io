@@ -92,7 +92,7 @@ Squid's memory usage in supporting 204s.
   - ![(\!)](https://wiki.squid-cache.org/wiki/squidtheme/img/idea.png)
     ICAP server configuration should be detailed in the server
     documentation. Squid is expected to work with any of them.
-    ℹ️
+    :information_source:
     The configuration of Squid-3 underwent a change between
     [Squid-3.0](/Releases/Squid-3.0)
     and

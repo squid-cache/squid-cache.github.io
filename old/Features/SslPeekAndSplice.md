@@ -231,7 +231,7 @@ directive.
     [acl](http://www.squid-cache.org/Doc/config/acl) documentation for
     your Squid version and choose carefully.
 
-  - ℹ️
+  - :information_source:
     Selecting an action only to happen at a particular step can be done
     using an **at_step** type
     [acl](http://www.squid-cache.org/Doc/config/acl).

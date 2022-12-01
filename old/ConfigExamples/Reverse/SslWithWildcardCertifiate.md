@@ -57,7 +57,7 @@ You will need to:
 
 ## Squid Configuration File
 
-  - ℹ️
+  - :information_source:
     Please note the config lines below may wrap in your browser.
 
 |                                                                      |                                                                                                                                                                                                                       |

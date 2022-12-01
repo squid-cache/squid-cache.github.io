@@ -108,7 +108,7 @@ outlines for SMTP above.
     They should be left as the **top** access control lines in any
     standard forward-proxy configuration.
     
-    ℹ️
+    :information_source:
     Only Reverse-Proxy configurations need to go above them.
 
 Default usage:

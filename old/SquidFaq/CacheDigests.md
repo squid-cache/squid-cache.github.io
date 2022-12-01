@@ -512,7 +512,7 @@ standard.
 
 |                                                                        |                                                 |
 | ---------------------------------------------------------------------- | ----------------------------------------------- |
-| ℹ️ | The information here is current for version 2.2 |
+| :information_source: | The information here is current for version 2.2 |
 
 Squid already has code to spread the digest updates. The algorithm is
 currently controlled by a few hard-coded constants in *peer_digest.c*.

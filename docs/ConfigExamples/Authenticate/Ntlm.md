@@ -51,7 +51,7 @@ challenge/response password authentication succeeded
 error code was NT_STATUS_OK (0x0)
 ```
 
-> ℹ️ both plaintext and challenge/response should return "succeeded". 
+> :information_source: both plaintext and challenge/response should return "succeeded". 
 If there is no "challenge/response" status returned then
 Samba was not built with "--with-winbind-auth-challenge" and cannot
 support ntlm authentication.
@@ -77,7 +77,7 @@ gpasswd -a proxy winbindd_priv
   present. This setting causes squid to ignore the auxiliary
   winbindd_priv group membership.
     
-> ℹ️
+> :information_source:
   the default user Squid is bundled as `nobody` though some
   distribution packages are built with `squid` or `proxy` or other
   similar low-access user.

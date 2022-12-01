@@ -146,7 +146,7 @@ backend web server.
 
 |                                                                        |                                                                  |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| ℹ️ | To pass details back as given **login=PASS** is an exact string. |
+| :information_source: | To pass details back as given **login=PASS** is an exact string. |
 
 ### Visitor requests can force fetching new objects from the back-end server
 
