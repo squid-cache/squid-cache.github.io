@@ -275,7 +275,7 @@ for use in your network.
 <tr class="odd">
 <td><p><a href="https://tools.ietf.org/rfc/rfc3986#">3986</a></p></td>
 <td><p>Uniform Resource Identifier (URI): Generic Syntax</p></td>
-<td><p><img src="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15" height="15" alt="/!\" /></p></td>
+<td><p>:warning:</p></td>
 <td><p>since <a href="/Squid-4#">Squid-4.12</a>. still uses rc1738 encoder on some URI segments and helper protocol. Merge Request <a href="https://github.com/squid-cache/squid/pull/335#">335</a></p></td>
 <td></td>
 </tr>
@@ -420,14 +420,14 @@ for use in your network.
 <tr class="odd">
 <td><p><a href="https://tools.ietf.org/rfc/rfc7616#">7616</a></p></td>
 <td><p>HTTP Digest Access Authentication</p></td>
-<td><p><img src="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15" height="15" alt="/!\" /></p></td>
+<td><p>:warning:</p></td>
 <td><p>Missing support for several Digest features</p></td>
 <td></td>
 </tr>
 <tr class="even">
 <td><p><a href="https://tools.ietf.org/rfc/rfc7617#">7617</a></p></td>
 <td><p>The 'Basic' HTTP Authentication Scheme</p></td>
-<td><p><img src="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15" height="15" alt="/!\" /></p></td>
+<td><p>:warning:</p></td>
 <td><p>missing new charset support.</p></td>
 <td></td>
 </tr>
@@ -605,7 +605,7 @@ for use in your network.
 <tr class="odd">
 <td><p><a href="https://tools.ietf.org/rfc/rfc9113#">9113</a></p></td>
 <td><p>HTTP/2</p></td>
-<td><p><img src="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15" height="15" alt="/!\" /></p></td>
+<td><p>:warning:</p></td>
 <td><p>:information_source: HTTP/1.x relay and no-support conditional compliance. see <a href="/Features/HTTP2#">Features/HTTP2</a> and Merge Request <a href="https://github.com/squid-cache/squid/pull/893#">893</a></p></td>
 <td></td>
 </tr>
@@ -641,7 +641,7 @@ for use in your network.
 <tr class="even">
 <td><p><a href="https://tools.ietf.org/rfc/rfc9211#">9211</a></p></td>
 <td><p>The Cache-Status HTTP Response Header Field</p></td>
-<td><p><img src="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15" height="15" alt="/!\" /></p></td>
+<td><p>:warning:</p></td>
 <td><p>conditional</p></td>
 <td></td>
 </tr>
@@ -669,7 +669,7 @@ for use in your network.
 <tr class="even">
 <td><p><a href="https://tools.ietf.org/rfc/rfc9230#">9230</a></p></td>
 <td><p>Oblivious DNS over HTTPS</p></td>
-<td><p><img src="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15" height="15" alt="/!\" /></p></td>
+<td><p>:warning:</p></td>
 <td><p>HTTPS relay only</p></td>
 <td></td>
 </tr>
