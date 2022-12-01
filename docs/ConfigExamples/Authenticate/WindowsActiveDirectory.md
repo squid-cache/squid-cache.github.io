@@ -13,7 +13,7 @@ An alternate way to integrate with Active Directory is via Samba and [NTLM](Ntlm
 This wiki page covers setup of a Squid proxy which will seamlessly
 integrate with Active Directory using Kerberos, NTLM and basic
 authentication for clients not authenticated via Kerberos or NTLM.
-> ⚠️
+> :warning:
     File paths and account user/group names will depend on
     the specific operating system setup
 
@@ -179,7 +179,7 @@ Now we configure the proxy's kerberos computer account and service
 principle by running msktutil (remember to update the values with
 yours).
 
-> ⚠️ **Important:** There are 2 important caveats in regard to the msktutils
+> :warning: **Important:** There are 2 important caveats in regard to the msktutils
 --computer-name argument:
 - `-computer-name` cannot be longer than 15 characters due to netbios name
     limitations. See this link and this link for further information.
@@ -292,7 +292,7 @@ Set Permissions so the proxy user account can read
 gpasswd -a proxy winbindd_priv
 ```
 
-> - ⚠️ on Debian an Ubuntu systems there may also be a
+> - :warning: on Debian an Ubuntu systems there may also be a
     `/var/lib/samba/winbindd_privileged` directory created by the
     winbind and ntlm_auth tools with root ownership. The group of that
     folder needs to be changed to match the

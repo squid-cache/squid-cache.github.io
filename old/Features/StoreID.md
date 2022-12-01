@@ -215,7 +215,7 @@ An example for input and output of the helper:
 
 ### Helper Example
 
-  - ⚠️
+  - :warning:
     This helper is an example. It is provided without any warranty or
     guarantees and is not recommended for production use.
 

@@ -248,17 +248,17 @@ and newer:
     /usr/local/squid/libexec/security_file_certgen -c -s /var/lib/ssl_db -M 4MB
     chown squid:squid -R /var/lib/ssl_db
 
-  - ⚠️
+  - :warning:
     The low-privilege account varies by OS and may not be 'squid' in
     your system.
 
-  - ⚠️
+  - :warning:
     also, be aware that SELinux and
     [AppArmour](/AppArmour)
     permissions may need to be updated to allow the Squid helper to use
     this directory.
 
-  - ⚠️
+  - :warning:
     certificates cache directory used only if squid configured with
     --enable-ssl-crtd. Otherwise bump will work, but no certificates
     will store anywhere.
@@ -273,7 +273,7 @@ configuration:
     sslproxy_cert_error allow all
     sslproxy_flags DONT_VERIFY_PEER
 
-  - ⚠️
+  - :warning:
     **BEWARE\!** It can reduce SSL/TLS errors in cache.log, but **this
     is NOT SECURE\!** With these options your cache will ignore all
     server certificates errors and connect your users with them. Use
@@ -301,7 +301,7 @@ To increase security the good idea to set these options:
     # for Squid-4 and newer
     tls_outgoing_options options=NO_SSLv3,SINGLE_DH_USE,SINGLE_ECDH_USE
 
-  - ⚠️
+  - :warning:
     SSL options must be comma (,) or colon (:) separated, not spaces\!
 
   - ℹ️

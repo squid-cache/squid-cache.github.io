@@ -7,7 +7,7 @@ misdetected forwarding loops).
 
 ## SMP enabled Squid
 
-⚠️
+:warning:
 [Squid-3.2](/Releases/Squid-3.2)
 to
 [Squid-3.4](/Releases/Squid-3.4)
@@ -102,7 +102,7 @@ expands to the service name of the process parsing the config file.
 
 ## Tips
 
-⚠️
+:warning:
 This section does not apply to SMP Squids.
 
 The easiest way I found to manage multiple squids running on one single

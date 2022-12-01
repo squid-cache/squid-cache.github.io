@@ -1,4 +1,4 @@
-⚠️
+:warning:
 Please consider adding new wishes as
 [Features](/Features)
 pages rather than dumping them here. Wishes as Feature pages are more

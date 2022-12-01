@@ -149,7 +149,7 @@ example:
 The REQUIRED term means that any already authenticated user will match
 the ACL named *foo*.
 
-  - ⚠️
+  - :warning:
     Note that **allow** will NOT trigger the 407 authentication denial
     to fetch new auth details if the user is not correctly logged in
     already. Some browsers will send *anonymous* auth details by
@@ -398,7 +398,7 @@ Of course definition of *strongest* may vary
 
 |                                                                      |                                                                                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | Due to a **bug** in common User-Agents (most notably some Microsoft Internet Explorer and Firefox versions) the *order* the auth-schemes are configured *is* relevant. Early versions of MSIE instead chooses the *first* auth-scheme (in the order they are offered) it understands. |
+| :warning: | Due to a **bug** in common User-Agents (most notably some Microsoft Internet Explorer and Firefox versions) the *order* the auth-schemes are configured *is* relevant. Early versions of MSIE instead chooses the *first* auth-scheme (in the order they are offered) it understands. |
 
 In other words, you **SHOULD** use this order for the *auth_params*
 directives:

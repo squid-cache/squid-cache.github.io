@@ -326,11 +326,11 @@ and add this one to your bumped port's configuration:
 3DES and RC4 required to connect to WU and - **attention\!** - Skype
 assets site.
 
-  - ⚠️
+  - :warning:
     **WARNING:** Some updates cannot be cached due to splice above.
     Beware\!
 
-  - ⚠️
+  - :warning:
     **WARNING:** Adding 3DES and, especially, RC4, produces potentially
     weak ciphers via client and WU/Skype and some other sites. Be
     careful\!

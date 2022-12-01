@@ -158,7 +158,7 @@ Actual config snippets are to be marked not for translation.
 For a multi-line configuration block use **.br** (lower case is
 important) to split the lines legibly.
 
-  - ⚠️
+  - :warning:
     Any word which *begins* with a dash / hyphen must be slash-escaped.
 
 For example, URL re-writers would have something like this:

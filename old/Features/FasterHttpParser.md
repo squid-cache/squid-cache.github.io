@@ -193,7 +193,7 @@ stage 1 version scan with an ICAP specific scan.
 
 7.  strListGet scan for parse of header content options
 
-⚠️
+:warning:
 NOTE: Parsing of ICAP response messages and payload segments still uses
 the old `HttpMsg` API documented below for HTTP responses, when the
 payload segment is a request it uses the
@@ -207,7 +207,7 @@ request-line code paths.
 Initial analysis of the *request* parsing systems in Squid-3 showed the
 parser stack to be as follows:
 
-⚠️ the
+:warning: the
 entire stack is asynchronous with a full reset to step 1 after read
 operation where the message was incompletely received.
 

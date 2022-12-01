@@ -102,7 +102,7 @@ then upgrading to the langpack or
 [Squid-3.1](/Releases/Squid-3.1)
 with auto-negotiate.
 
-  - ⚠️
+  - :warning:
     Squid older than
     [Squid-3.1](/Releases/Squid-3.1)
     without an explicit

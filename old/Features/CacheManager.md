@@ -71,7 +71,7 @@ typing this into your browser address bar:
 
     http://mycache.example.com:3128/squid-internal-mgr/info
 
-  - ⚠️
+  - :warning:
     NOTE: the above tests assume you have correctly configured your
     proxy machine with a working FQDN *mycache.example.com* for its
     publicly
@@ -137,7 +137,7 @@ or the administrators workstation.
     or
     [visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname).
     
-      - ⚠️
+      - :warning:
         The Squid hostname is required to be a fully-qualified domain
         name in order to be resolved by any clients with DNS. The
         [unique_hostname](http://www.squid-cache.org/Doc/config/unique_hostname)
@@ -181,7 +181,7 @@ When you run *configure* use the *--enable-cachemgr-hostname* option:
 
     % ./configure --enable-cachemgr-hostname=`hostname` ...
 
-  - ⚠️
+  - :warning:
     Note, if you do this after you already installed Squid before, you
     need to make sure *cachemgr.cgi* gets recompiled.
 

@@ -99,7 +99,7 @@ easier.
     
     |                                                                      |                                                                                                                             |
     | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | ⚠️ | This minimal configuration does not work with versions earlier than 3.1 which are missing special cleanup done to the code. |
+    | :warning: | This minimal configuration does not work with versions earlier than 3.1 which are missing special cleanup done to the code. |
     
 
 <!-- end list -->
@@ -153,7 +153,7 @@ definitions are now built-in.
     
     |                                                                      |                                                                                                                             |
     | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | ⚠️ | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
+    | :warning: | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
     
 
 <!-- end list -->
@@ -203,7 +203,7 @@ protections.
     
     |                                                                      |                                                                                                                             |
     | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | ⚠️ | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
+    | :warning: | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
     
 
 <!-- end list -->
@@ -292,7 +292,7 @@ protections.
     
     |                                                                      |                                                                                                                             |
     | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | ⚠️ | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
+    | :warning: | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
     
 
 <!-- end list -->

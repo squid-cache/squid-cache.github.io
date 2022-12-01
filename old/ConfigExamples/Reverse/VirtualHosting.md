@@ -23,7 +23,7 @@ about these examples please email the squid-users mailing list.
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+| :warning: | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
 If you are using
 [Squid-3.1](/Releases/Squid-3.1)

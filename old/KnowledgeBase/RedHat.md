@@ -47,7 +47,7 @@ structure properly:
 
 # Troubleshooting
 
-  - ⚠️
+  - :warning:
     SELinux on RHEL 5 does not give the proper context to the default
     SNMP port (3401) as of selinux-policy-2.4.6-106.el5
 

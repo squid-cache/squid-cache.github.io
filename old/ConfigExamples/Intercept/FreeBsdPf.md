@@ -31,7 +31,7 @@ like so:
 
     http_port 3129 transparent
 
-  - ⚠️
+  - :warning:
     In Squid 3.1+ the *transparent* option has been split. Use
     **'intercept** to catch PF packets.
 

@@ -11,7 +11,7 @@
 
 ### Squid-3.1
 
-  - ⚠️
+  - :warning:
     experimental packages. Not yet in official distribution.
 
 **Maintainer:** Luis Daniel Lucio Quiroz

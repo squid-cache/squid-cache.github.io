@@ -35,7 +35,7 @@ README file:
 
 ### Fully Transparent Proxy (TPROXY)
 
-  - ⚠️
+  - :warning:
     This configuration requires
     [Squid-3.3.4](/Releases/Squid-3.3)
     or later.

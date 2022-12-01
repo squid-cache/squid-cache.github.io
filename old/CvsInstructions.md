@@ -1,6 +1,6 @@
 # Installation
 
-⚠️ a
+:warning: a
 wide consensus has been reached towards replacing CVS with another more
 modern Version Control solution. If you do not already have a VCS please
 see
@@ -56,7 +56,7 @@ To update your source tree later, type:
   - ℹ️
     Squid-3 STABLE branches are not mirrored in CVS.
 
-⚠️
+:warning:
 Note: If you are looking for the main Squid sources please see
 [BzrInstructions](/BzrInstructions)
 and use the Bazaar instead.

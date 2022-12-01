@@ -21,10 +21,10 @@ for details on configuring the rest.
 
 ## Cisco Configuration
 
-  - ⚠️
+  - :warning:
     Replace SQUIDIP in the following with the IP address of your Squid
     host.
-    ⚠️
+    :warning:
     Replace ROUTERIP in the following with the IP address of your
     Router.
 

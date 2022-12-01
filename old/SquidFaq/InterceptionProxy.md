@@ -34,7 +34,7 @@ There are some good reasons why you may want to use this technique:
         ![http://other.server/example.com/](http://other.server/example.com/)
         a re-writer is needed to 'fix' the broken web server system.
     
-      - ⚠️
+      - :warning:
         Note that all other known uses of re-write can be avoided with
         better alternatives\!
 

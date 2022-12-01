@@ -136,7 +136,7 @@ special localhost IP.
     http_access allow localhost manager
     http_access deny manager
 
-  - ⚠️
+  - :warning:
     placing any kind of major **allow** privilege before this ACL breaks
     it. {\!} only reverse-proxy configuration may go above it.
 

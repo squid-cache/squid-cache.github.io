@@ -110,7 +110,7 @@ primary parser gets preprocessed content.
     lchar = ; any octet except EOL
     EOL = ; the new line character or sequence
 
-  - ⚠️
+  - :warning:
     Currently, preprocessor removes EOL from all lines, including when
     unfolding lines. We should change that to support multiline
     directives with comments. The revised preprocessor would still need

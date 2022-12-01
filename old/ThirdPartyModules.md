@@ -8,7 +8,7 @@ extension modules' authors make their work known to users.
 
 |                                                                      |                                                                                                                                                                                   |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | The Squid Development Team cannot in any way offer any warranty, or take any responsibility, on any third-party code. We did not write it, and we cannot support nor maintain it. |
+| :warning: | The Squid Development Team cannot in any way offer any warranty, or take any responsibility, on any third-party code. We did not write it, and we cannot support nor maintain it. |
 
 ## Self-distributed modules
 

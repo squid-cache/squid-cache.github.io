@@ -167,7 +167,7 @@ After preparing the kernel and iptables as above.
 
 |                                                                      |                                                                                                                          |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| ⚠️ | \--enable-linux-tproxy was phased out because tproxy has been more tightly integrated with iptables/netfilter and Squid. |
+| :warning: | \--enable-linux-tproxy was phased out because tproxy has been more tightly integrated with iptables/netfilter and Squid. |
 
   - Configure squid as noted in the squid and tproxy readmes.
 
@@ -177,6 +177,6 @@ After preparing the kernel and iptables as above.
 
 |                                                                      |                                                                                                                               |
 | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | A special http_port line is recommended since tproxy mode for Squid can interfere with non-tproxy requests on the same port. |
+| :warning: | A special http_port line is recommended since tproxy mode for Squid can interfere with non-tproxy requests on the same port. |
 
   - [CategoryConfigExample](/CategoryConfigExample)

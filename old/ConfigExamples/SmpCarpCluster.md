@@ -7,7 +7,7 @@ categories: ConfigExample
 support or guarantee of suitability. If you have any further questions
 about these examples please email the squid-users mailing list.
 
-  - ⚠️
+  - :warning:
     Squid SMP support is an ongoing series of improvements in
     [Squid-3.2](/Releases/Squid-3.2)
     and later. The configuration here may not be exactly up to date. Or

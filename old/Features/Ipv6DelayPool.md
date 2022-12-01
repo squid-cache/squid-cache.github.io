@@ -24,7 +24,7 @@
 
 ## Discussion
 
-⚠️ To
+:warning: To
 answer, use the "Discussion" link in the main menu
 
 See [Discussed

@@ -492,7 +492,7 @@ you understand how Cache Digests work):
 
 |                                                                      |        |
 | -------------------------------------------------------------------- | ------ |
-| ⚠️ | WANTED |
+| :warning: | WANTED |
 
 # Is there a Cache Digest Specification?
 

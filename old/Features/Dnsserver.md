@@ -6,7 +6,7 @@
 
 # Details
 
-  - ⚠️
+  - :warning:
     dnsserver helper is now replaced by a faster internal DNS client.
     You should NOT be running with external DNS processes.
 

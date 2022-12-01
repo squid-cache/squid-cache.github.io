@@ -1,14 +1,14 @@
 # Misplaced ToDo's
 
-  - ⚠️
+  - :warning:
     The right place to list bugs is the bugzilla database.
     
-    ⚠️
+    :warning:
     The right place to list future improvements is the
     [Features](/Features)
     interface.
     
-    ⚠️
+    :warning:
     The right place to list minor tasks anyone can do is the [Roadmap
     Tasks
     list](/RoadMap/Tasks).

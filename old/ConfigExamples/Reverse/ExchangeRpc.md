@@ -34,7 +34,7 @@ single Squid server. The following information is required:
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+| :warning: | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
     # Publish the RPCoHTTP service via SSL
     https_port ip_of_squid:443 accel cert=/path/to/clientcertificate defaultsite=rpc_domain_name

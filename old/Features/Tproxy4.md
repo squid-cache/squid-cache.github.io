@@ -93,7 +93,7 @@ squid.conf settings
 
 ## Linux Kernel Configuration
 
-  - ⚠️
+  - :warning:
     Requires kernel built with the configuration options:
 
 <!-- end list -->
@@ -124,17 +124,17 @@ your system.
 Every OS has different security and limitations around what you can do
 here.
 
-  - ⚠️
+  - :warning:
     some systems require that **lo** is the interface TPROXY uses.
 
-  - ⚠️
+  - :warning:
     some systems require that an **ethN** is the interface TPROXY uses.
 
-  - ⚠️
+  - :warning:
     some systems require that each receiving interface have its own
     unique table.
 
-  - ⚠️
+  - :warning:
     Some OS block multiple interfaces being linked to the table. You
     will see a rejected route when a second `ip -f inet route` is added
     to the table. To erase the custom route entry repeat the rule with
@@ -154,18 +154,18 @@ Or configure **/etc/sysctl.conf**:
     net.ipv4.conf.all.rp_filter = 0
     net.ipv4.conf.eth0.rp_filter = 0
 
-  - ⚠️
+  - :warning:
     your OS also may require the keyword **set** before each of those
     sysctl.conf lines.
 
-  - ⚠️
+  - :warning:
     since we are removing the RP filter on 'default' and 'all' sysctl
     you may want to set it to 1 or 2 individually on all devices **not**
     using TPROXY.
 
 ### Some routing problems to be aware of
 
-  - ⚠️
+  - :warning:
     Systems with strict localhost interface security boundaries require
     each interface to have a separate "table" entry for looking up
     packets via that device.
@@ -183,7 +183,7 @@ Or configure **/etc/sysctl.conf**:
     the least troublesome. Although **dev lo** may be the only one that
     works.
 
-  - ⚠️
+  - :warning:
     your OS may require the keyword **set** before each sysctl.conf
     line.
 
@@ -249,7 +249,7 @@ from bridging mode to routing mode:
       unset i
     fi
 
-  - ⚠️
+  - :warning:
     The bridge interfaces also need to be configured with public IP
     addresses for Squid to use in its normal operating traffic (DNS,
     ICMP, TPROXY failed requests, peer requests, etc)
@@ -363,7 +363,7 @@ through another peer in the cluster.
 Could be a few things. Check cache.log for messages like those listed
 here in Troubleshooting.
 
-  - ⚠️
+  - :warning:
     The warning about missing libcap appears to be issued before
     cache.log is started. So does not always show up when Squid starts.
     Start testing this problem by making sure of that dependency
@@ -393,9 +393,9 @@ configured:
     interception.
     
     Ports using the **tproxy** flag
-    ⚠️
+    :warning:
     MUST NOT
-    ⚠️
+    :warning:
     receive traffic for any other mode Squid can run in.
 
   - If Squid is receiving TPROXY traffic on a port without the
@@ -424,7 +424,7 @@ back to Squid.
 ### Timeouts with Squid not running in the router directly
 
   - ℹ️
-    ⚠️
+    :warning:
     The above configuration assumes that squid is running on the router
     OR has a direct connection to the Internet without having to go
     through the capture router again. For both outbound and return
@@ -455,7 +455,7 @@ packets to the Internet. Ideally there is only one default route, but
 for a bridge with routing enabled or for multi-homed systems there may
 be multiple.
 
-  - ⚠️
+  - :warning:
     There has been one confirmed case of the default route being set
     *automatically* by the OS to the dead-end route/NIC used only for
     administering the bridge.

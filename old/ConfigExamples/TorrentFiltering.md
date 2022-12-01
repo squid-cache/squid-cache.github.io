@@ -87,7 +87,7 @@ this:
 This configuration, depending which P2P protocol you are specified,
 completely terminates all torrent sessions on border router/firewall.
 
-  - ⚠️
+  - :warning:
     You need to have actual NBAR2 protocol pack to do this. To do this
     you need to have subscription for Cisco's service and router which
     is support DPI, like ISR-G2 router (2901 or the similar). And you
@@ -95,7 +95,7 @@ completely terminates all torrent sessions on border router/firewall.
     HTTP/HTTPS. Both of these methods permit you to block torrents
     almost completely.
     
-    ⚠️
+    :warning:
     Also note, to filter encrypted P2P protocols, on most Cisco's
     devices you need to activate SECURITY technology pack or has
     security-enabled iOS version.

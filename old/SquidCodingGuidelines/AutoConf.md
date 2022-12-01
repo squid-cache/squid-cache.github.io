@@ -42,7 +42,7 @@ components at build time.
   - name for variables passed to either automake or C++ containing
     default values should start with DEFAULT_
     
-    ⚠️
+    :warning:
     In the event of a clash or potential clash with system variables
     tack SQUID_ after the above prefix. ie ENABLE_SQUID_ or
     USE_SQUID_

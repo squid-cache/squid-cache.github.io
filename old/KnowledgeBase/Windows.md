@@ -368,7 +368,7 @@ Always check the provided release notes for any version specific detail.
 
 (work in progress)
 
-⚠️
+:warning:
 **End of edit conflict**
 
 # Squid-3 porting efforts

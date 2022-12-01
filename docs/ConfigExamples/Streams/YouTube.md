@@ -11,7 +11,7 @@ actually very easy. They are encrypted, so no caching is possible
 
 ## Squid Configuration File
 
-⚠️ Google are using one subdomain of youtube.com for
+:warning: Google are using one subdomain of youtube.com for
 authenticating **all** google services, including Docs and Gmail. If
 you were intending to block only YouTube access this needs to be
 whitelisted from the denial.

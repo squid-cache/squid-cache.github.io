@@ -20,7 +20,7 @@ documentation.)
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [Features/Tproxy4](/Features/Tproxy4)) |
+| :warning: | Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [Features/Tproxy4](/Features/Tproxy4)) |
 
   - ℹ️
     The configuration for Squid-3.1 is very different than the following

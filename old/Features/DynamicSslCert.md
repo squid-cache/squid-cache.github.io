@@ -66,7 +66,7 @@ Dynamic generation of SSL certificates is not enabled by default:
     make install
     ```
 
-  - ⚠️
+  - :warning:
     NOTE:
     [Squid-3.5](/Releases/Squid-3.5)
     requires **--with-openssl** instead of --enable-ssl
@@ -213,7 +213,7 @@ incremented and used in each new certificate. To avoid serial number
 overlapping among instances, the initial serial may need to be set
 manually.
 
-  - ⚠️
+  - :warning:
     NOTE: whenever you change the signing CA be sure to erase and
     re-initialize the certificate database. It contains signed
     certificates and clients may experience connectivity problems when

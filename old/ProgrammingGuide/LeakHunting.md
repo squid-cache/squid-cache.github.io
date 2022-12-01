@@ -9,7 +9,7 @@ hours of production useage.
     
     |                                                                      |                                                                                                                                                                                                                                             |
     | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | ⚠️ | Leak Finder is known to crash [Squid-3.3](/Releases/Squid-3.3) and older when AUFS or threading is used. Please use valgrind (below) if you need to debug in those components. |
+    | :warning: | Leak Finder is known to crash [Squid-3.3](/Releases/Squid-3.3) and older when AUFS or threading is used. Please use valgrind (below) if you need to debug in those components. |
     
 
 *src/leakfinder.c* contains some routines useful for debugging and

@@ -2,7 +2,7 @@
 
 |                                                                      |                                                                                                                           |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | This article is a **STUB**. It's written to encourage discussion on the topic, but it's not (yet) to be used as reference |
+| :warning: | This article is a **STUB**. It's written to encourage discussion on the topic, but it's not (yet) to be used as reference |
 
 **Synopsis**
 

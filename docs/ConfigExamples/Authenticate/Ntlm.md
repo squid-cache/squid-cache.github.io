@@ -73,7 +73,7 @@ Squid runs as to the `winbindd_priv` group.
 gpasswd -a proxy winbindd_priv
 ```
 
-> ⚠️ Remove the cache_effective_group setting in squid.conf, if
+> :warning: Remove the cache_effective_group setting in squid.conf, if
   present. This setting causes squid to ignore the auxiliary
   winbindd_priv group membership.
     
@@ -82,7 +82,7 @@ gpasswd -a proxy winbindd_priv
   distribution packages are built with `squid` or `proxy` or other
   similar low-access user.
 
-> ⚠️
+> :warning:
   on Debian an Ubuntu systems there may also be a
   `/var/lib/samba/winbindd_privileged` directory created by the
   winbind and ntlm_auth tools with root ownership. The group of that

@@ -3,7 +3,7 @@ categories: ConfigExample
 ---
 # Important update (06/03/2017)
 
-  - ⚠️
+  - :warning:
     Important update (06/03/2017) to prevent this article misleading you
     to the assumption that you indded got to the right place.
 
@@ -28,7 +28,7 @@ about these examples please email the squid-users mailing list.
 
 Configuration file to include.
 
-  - ⚠️
+  - :warning:
     Since FTP uses numeric IPs the Skype ACL must be exact including the
     port.
 
@@ -42,7 +42,7 @@ Configuration file to include.
     http_access deny numeric_IPS
     http_access deny Skype_UA
 
-  - ⚠️
+  - :warning:
     Recent releases of Skype have been evading the above restriction by
     not sending their User-Agent headers and using domain names. The
     following can be used to catch those installs, but be aware it will
@@ -55,7 +55,7 @@ Configuration file to include.
 
 ### Permitting
 
-  - ⚠️
+  - :warning:
     This needs to be done before any restrictive CONNECT http_access
     controls.
 
@@ -76,7 +76,7 @@ will break that policy.
 
 ### Metro Skype WIndows 10
 
-⚠️
+:warning:
 This is required to Skype work if Squid SSL-Bump aware.
 
 Add this domains to splice ACL then reconfigure Squid:

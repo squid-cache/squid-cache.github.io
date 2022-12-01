@@ -23,13 +23,13 @@ are.
 
 |                                                                      |                                                                                                                                         |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | Accelerator mode in Squid-2.5 worked quite differently, and upgrade to 2.6 or later is strongly recommended if you still use Squid-2.5. |
+| :warning: | Accelerator mode in Squid-2.5 worked quite differently, and upgrade to 2.6 or later is strongly recommended if you still use Squid-2.5. |
 
 ## Squid Configuration File
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+| :warning: | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
 First, you have to tell Squid to listen on port 80 (usually), so set the
 **[http_port](http://www.squid-cache.org/Doc/config/http_port)**

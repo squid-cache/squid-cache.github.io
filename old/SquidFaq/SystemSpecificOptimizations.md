@@ -19,7 +19,7 @@ available filedescriptors, by setting in: in `/etc/sysctl.conf`
 
 |                                                                      |                                                                                                                                                                          |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ⚠️ | This information is out-of-date, as with newer FreeBSD versions these parameters can be tuned at runtime via sysctl. We're looking for contributions to update this page |
+| :warning: | This information is out-of-date, as with newer FreeBSD versions these parameters can be tuned at runtime via sysctl. We're looking for contributions to update this page |
 
 In order to run diskd you may need to tweak your kernel settings. Try
 setting in the kernel config file (larger values may be needed for very

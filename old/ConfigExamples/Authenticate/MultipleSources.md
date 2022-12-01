@@ -67,7 +67,7 @@ Squid-3.2 bundles one called **basic_fake_auth**
         print my_awsome_auth($ip, $username, $password);
     }
 
-  - ⚠️
+  - :warning:
     Add your own version of *my_awsome_auth()* to do the
     authentication actions you need.
 

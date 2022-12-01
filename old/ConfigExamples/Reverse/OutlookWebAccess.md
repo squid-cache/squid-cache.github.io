@@ -30,7 +30,7 @@ single Squid server. The following information is required:
 
 |                                                                      |                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+| :warning: | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
 
 Please note that the
 [https_port](http://www.squid-cache.org/Doc/config/https_port) and

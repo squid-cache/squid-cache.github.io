@@ -342,7 +342,7 @@ Building the .deb files
     gbp buildpackage
     cd ..
 
-  - ⚠️
+  - :warning:
     the gbp command may fail to sign the packages if you are not a
     Debian maintainer yourself. That is okay.
 
@@ -486,7 +486,7 @@ you will see the following notice:
 
 #### Squid-3.1
 
-  - ⚠️
+  - :warning:
     experimental packages. Not yet in official distribution.
 
 **Maintainer:** Luis Daniel Lucio Quiroz
@@ -653,7 +653,7 @@ packages.
 
 ### [SLES](/KnowledgeBase/SLES)
 
-  - ⚠️
+  - :warning:
     Seeking information:
     
       - what exactly are the available versions on SLES? both official
@@ -707,7 +707,7 @@ unit-tested as part of our
 [BuildFarm](/BuildFarm)
 and are known to compile OK.
 
-  - ⚠️
+  - :warning:
     The Linux system layout differs markedly from the Squid defaults.
     The following ./configure options are needed to install Squid into
     the Debian / Ubuntu standard filesystem locations:
@@ -748,7 +748,7 @@ discover the dependency package and install it.
   - ℹ️
     The usual one requested is **libssl-dev** for SSL support.
     
-      - ⚠️
+      - :warning:
         However, please note that
         [Squid-3.5](/Releases/Squid-3.5)
         is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or

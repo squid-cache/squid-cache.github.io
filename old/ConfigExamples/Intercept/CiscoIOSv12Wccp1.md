@@ -11,7 +11,7 @@ about these examples please email the squid-users mailing list.
 
 ## Cisco IOS 12.x router
 
-  - ⚠️
+  - :warning:
     Some of the early versions of 12.x do not have the 'ip wccp version'
     command. You will need to upgrade your IOS version to use V1.0.
 

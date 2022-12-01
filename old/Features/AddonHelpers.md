@@ -37,7 +37,7 @@ The helpers bundled with Squid are currently written in Bash shell
 script, awk script, perl script, and C++. There are also frameworks
 available for helpers built in Python or Ruby.
 
-  - ⚠️
+  - :warning:
     There are several languages which encounter difficulties though:
     
     <table>
@@ -246,12 +246,12 @@ multiplexer](/Features/HelperMultiplexer)
 wrapper can be used to add concurrency benefits to most non-concurrent
 helpers.
 
-  - ⚠️
+  - :warning:
     **WARNING:** For every line sent by Squid exactly one line is
     expected back. Some script language such as perl and python need to
     be careful about the number of newlines in their output.
     
-    ⚠️
+    :warning:
     Note that the helper programs other than logging can not use
     buffered I/O.
 
@@ -854,7 +854,7 @@ Result line sent back to Squid:
       - The digest HA1 value to be used. This field is only accepted on
         **OK** responses.
         
-        ⚠️
+        :warning:
         This field is deprecated on Squid-3.4 and newer, use the **ha1**
         kv-pair instead.
 
@@ -969,7 +969,7 @@ Result line sent back to Squid:
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
     
-      - ⚠️
+      - :warning:
         This field is only accepted on **OK**, **ERR** and **BH**
         responses and must not be sent on other responses.
 
@@ -1019,7 +1019,7 @@ Input line received from Squid:
         RFC [1738](https://tools.ietf.org/rfc/rfc1738) to protect
         against whitespace and binary data problems.
         
-          - ⚠️
+          - :warning:
             In
             [Squid-4](/Releases/Squid-4)
             these acl-value expand to a dash ('-') if there is no %DATA
@@ -1103,7 +1103,7 @@ Input *line* received from Squid:
 
     request size kv-pairs [body]
 
-⚠️
+:warning:
 *line* refers to a logical input. **body** may contain \\n characters so
 each line in this format is delimited by a 0x01 byte instead of the
 standard \\n byte.
@@ -1161,7 +1161,7 @@ Result line sent back to Squid:
         [Squid-3.3](/Releases/Squid-3.3)
         and newer.
     
-      - ⚠️
+      - :warning:
         The helper will display an error message and abort if any error
         or unexpected event is detected.
 
@@ -1196,7 +1196,7 @@ Input *line* received from Squid:
 
     request size [kv-pairs]
 
-⚠️
+:warning:
 *line* refers to a logical input. **body** may contain \\n characters so
 each line in this format is delimited by a 0x01 byte instead of the
 standard \\n byte.

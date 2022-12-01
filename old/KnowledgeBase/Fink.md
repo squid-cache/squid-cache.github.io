@@ -71,7 +71,7 @@ From this point, the [general build
 instructions](/SquidFaq/CompilingSquid#How_do_I_compile_Squid.3F)
 should be all you need.
 
-  - ⚠️
+  - :warning:
     It is worth noting this platform doesn't support EUI. The
     --enable-eui ./configure will cause build errors.
 

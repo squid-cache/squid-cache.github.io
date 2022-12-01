@@ -5,7 +5,7 @@ categories: ConfigExample
 
 by *Markus Moeller*
 
-    ⚠️ Need to extract linked images and embed them
+    :warning: Need to extract linked images and embed them
 
 ## Outline
 
@@ -24,7 +24,7 @@ https://code.google.com/p/msktutil/, or install [Samba](http://www.samba.org/)
 
 ## krb5.conf Configuration
 
-- ⚠️ In IE the proxy must be specified as FQDN not as an IP-address
+- :warning: In IE the proxy must be specified as FQDN not as an IP-address
 - ℹ️ `rc4-hmac` should be listed as encryption type for windows 2003.
 
 A minimal setup without DNS resolution of AD servers would be (MIT
@@ -81,13 +81,13 @@ Kerberos example):
     msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
 ```
 
-  - ⚠️ beware the wrap! above `mskutil` options are meant to be on one
+  - :warning: beware the wrap! above `mskutil` options are meant to be on one
     line.
-  - ⚠️ beware that \<computer-name\> has Windows Netbios limitations of 15
+  - :warning: beware that \<computer-name\> has Windows Netbios limitations of 15
     characters.
-  - ⚠️ `msktutil` requires the `cyrus-sasl-gssapi` ldap plugin to authenticate to
+  - :warning: `msktutil` requires the `cyrus-sasl-gssapi` ldap plugin to authenticate to
     AD ldap.
-  - ⚠️ because of a bug in `msktutil` 0.3.16 the \<computer-name\> must be
+  - :warning: because of a bug in `msktutil` 0.3.16 the \<computer-name\> must be
     lowercase
 
 OR with Samba
@@ -106,7 +106,7 @@ net ads keytab ADD HTTP
 unset KRB5_KTNAME
 ```
 
-- ⚠️ Do not use this method if you run winbindd or other samba services
+- :warning: Do not use this method if you run winbindd or other samba services
   as samba will reset the machine password every x days and thereby
   makes the keytab invalid !
 

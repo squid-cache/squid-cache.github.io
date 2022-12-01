@@ -30,7 +30,7 @@ traffic to clients.
 
 |                                                                      |                                                |
 | -------------------------------------------------------------------- | ---------------------------------------------- |
-| ⚠️ | Requires **--enable-zph-qos** configure option |
+| :warning: | Requires **--enable-zph-qos** configure option |
 
 ### Squid 3.2 and later
 
@@ -67,7 +67,7 @@ Responses found as a MISS may have existing values.
     or unpatched Linux the miss TOS is always zero. The capability may
     be disabled if desired.
     
-      - ⚠️
+      - :warning:
         TOS requires Linux with kernel patching.
 
 <!-- end list -->
@@ -80,7 +80,7 @@ Responses found as a MISS may have existing values.
     Squid. An optionanl mask can be applied to limit which bits are set
     to the new value. Unmasked bits are preserved from the value
     received from server.
-    ⚠️
+    :warning:
     TOS requires Linux with kernel patching to reserve and mask the
     existing value from server.
 
@@ -116,7 +116,7 @@ Responses found as a HIT on parent peer.
 **preserve-miss** locates and passes the same TOS settings received by
 Squid from the remote server, on the client connection.
 
-  - ⚠️
+  - :warning:
     requires Linux with kernel patching.
 
 On non-Linux or unpatched Linux the miss TOS is always zero. The

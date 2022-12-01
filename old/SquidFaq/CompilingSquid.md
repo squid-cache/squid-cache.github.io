@@ -62,7 +62,7 @@ You will need a C++ compiler:
     compiler. Most recent Unix distributions come with pre-installed
     compilers that support C++11.
 
-⚠️
+:warning:
 Squid v3.4 and v3.5 automatically enable C++11 support in the compiler
 if ./configure detects such support. Later Squid versions require C++11
 support while earlier ones may fail to build if C++11 compliance is
@@ -83,7 +83,7 @@ compiler and Sun's SunStudio. Microsoft Visual C++ is another target the
 Squid developers aim for, but at the time of this writing (April 2014)
 still quite a way off.
 
-⚠️
+:warning:
 Please note that due to a bug in clang's support for atomic operations,
 squid doesn't build on clang older than 3.2.
 
@@ -245,7 +245,7 @@ unit-tested as part of our
 [BuildFarm](/BuildFarm)
 and are known to compile OK.
 
-  - ⚠️
+  - :warning:
     The Linux system layout differs markedly from the Squid defaults.
     The following ./configure options are needed to install Squid into
     the Debian / Ubuntu standard filesystem locations:
@@ -286,7 +286,7 @@ discover the dependency package and install it.
   - ℹ️
     The usual one requested is **libssl-dev** for SSL support.
     
-      - ⚠️
+      - :warning:
         However, please note that
         [Squid-3.5](/Releases/Squid-3.5)
         is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or

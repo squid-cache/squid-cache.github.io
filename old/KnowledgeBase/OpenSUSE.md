@@ -18,7 +18,7 @@ Install Procedure:
 
 # Compiling
 
-  - ⚠️
+  - :warning:
     There is just one known problem. The Linux system layout differs
     markedly from the Squid defaults. The following ./configure options
     are needed to install Squid into the OpenSUSE structure properly:

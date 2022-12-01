@@ -74,7 +74,7 @@ Input *line* received from Squid:
 
     request size [kv-pairs]
 
-⚠️
+:warning:
 *line* refers to a logical input. **body** may contain \\n characters so
 each line in this format is delimited by a 0x01 byte instead of the
 standard \\n byte.

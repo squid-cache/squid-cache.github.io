@@ -615,7 +615,7 @@ name servers by setting this configuration option:
 
     ignore_unknown_nameservers off
 
-  - ⚠️
+  - :warning:
     WARNING: this opens your Squid up to many possible security
     breaches. You should prefer to configure your set of possible
     nameserver IPs correctly.

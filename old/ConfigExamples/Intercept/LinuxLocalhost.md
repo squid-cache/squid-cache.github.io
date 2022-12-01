@@ -24,7 +24,7 @@ it instead of process gid to also be effective.
 
 ## iptables configuration
 
-  - ⚠️
+  - :warning:
     Replace **SQUIDIP** with the public IP(s) which squid may use for
     its listening port and outbound connections. Repeat each iptables
     line one per squid outbound IP.
@@ -48,7 +48,7 @@ like so:
 
     http_port 3127 transparent
 
-  - ⚠️
+  - :warning:
     In Squid 3.1+ the *transparent* option has been split. Use
     **'intercept** to catch DNAT packets.
 

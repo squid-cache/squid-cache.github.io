@@ -1,7 +1,7 @@
 This is an attempt to document how the various parts of squid **should**
 interact for a number of use cases.
 
-⚠️
+:warning:
 Currently draft, read in fear for your mind
 
 # Guiding principles

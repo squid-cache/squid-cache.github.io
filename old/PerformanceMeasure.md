@@ -12,7 +12,7 @@
 
 # Details
 
-  - ⚠️
+  - :warning:
     This is all a draft brain-dump for now. It has yet to be discussed
     and checked by anyone.
 
@@ -109,7 +109,7 @@ Suggestions please?
 
 ## Discussion
 
-⚠️ To
+:warning: To
 answer, use the "Discussion" link in the main menu
 
 See [Discussed

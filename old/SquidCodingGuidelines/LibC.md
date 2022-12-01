@@ -9,7 +9,7 @@
 The only remaining C sources are in third-party code. Follow their
 standard from surrounding code.
 
-  - ⚠️
+  - :warning:
     Remember to update the third-party changelog.
 
 As per
