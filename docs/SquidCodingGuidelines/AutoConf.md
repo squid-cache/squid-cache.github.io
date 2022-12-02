@@ -3,7 +3,7 @@ categories: ReviewMe
 published: false
 ---
   - Back to
-    [SquidCodingGuidelines](/SquidCodingGuidelines).
+    [SquidCodingGuidelines](/DeveloperResources/SquidCodingGuidelines).
 
   - Back to
     [DeveloperResources](/DeveloperResources).

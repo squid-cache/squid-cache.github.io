@@ -16,7 +16,7 @@ best interest of Squid.
     other developers.
 
 2.  Implement your changes while following
-    [SquidCodingGuidelines](/SquidCodingGuidelines).
+    [SquidCodingGuidelines](/DeveloperResources/SquidCodingGuidelines).
     Use git for version control (see
     [GitHints](/GitHints)).
 

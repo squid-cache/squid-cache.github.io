@@ -10,7 +10,7 @@ branch of the official
 [repository](https://github.com/squid-cache/squid) on GitHub. To speed
 up code review and improve your code acceptance chances, please adhere
 to
-[SquidCodingGuidelines](/SquidCodingGuidelines)
+[SquidCodingGuidelines](/DeveloperResources/SquidCodingGuidelines)
 and follow the
 [MergeProcedure](/MergeProcedure).
 
