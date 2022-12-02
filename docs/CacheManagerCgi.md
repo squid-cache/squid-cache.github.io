@@ -8,14 +8,14 @@ software, it requires an HTTP server to make it really run.
 
 The communication with the Squid server is made up using the
 [Cache Object Protocol](/CacheObjectProtocol), that provides
-access to the underlying [Cache Manager](/CacheManager).
+access to the underlying [Cache Manager](/Features/CacheManager).
 
 More information is currently available at
 [Features/CacheManager](/Features/CacheManager).
 
 ## See also
 
-- [CacheManager](/CacheManager)
+- [CacheManager](/Features/CacheManager)
 - [CacheManagerObject](/CacheManagerObject)
 - [CacheObjectProtocol](/CacheObjectProtocol)
 - [CacheObjectScheme](/Features/CacheManager/CacheObjectScheme)

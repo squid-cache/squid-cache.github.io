@@ -1,7 +1,7 @@
 # cache_object:// URI Scheme
 
 The `cache_object` is the URI scheme which can be used to access the
-[Cache Manager](/CacheManager).
+[Cache Manager](/Features/CacheManager).
 The scheme specific part is defined as below:
 
 - `cache_object://hostname/request@password`
@@ -34,6 +34,6 @@ pages that require it.
 
 ## See also
 
-- [CacheManager](/CacheManager)
+- [CacheManager](/Features/CacheManager)
 - [CacheObjectProtocol](/CacheObjectProtocol)
 - [CacheManagerCgi](/CacheManagerCgi)
