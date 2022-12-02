@@ -35,5 +35,4 @@ pages that require it.
 ## See also
 
 - [CacheManager](/Features/CacheManager)
-- [CacheObjectProtocol](/CacheObjectProtocol)
 - [CacheManagerCgi](/Features/CacheManagerCgi)

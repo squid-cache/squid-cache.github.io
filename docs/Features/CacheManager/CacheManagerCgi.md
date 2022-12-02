@@ -7,8 +7,8 @@ As every
 software, it requires an HTTP server to make it really run.
 
 The communication with the Squid server is made up using the
-[Cache Object Protocol](/CacheObjectProtocol), that provides
-access to the underlying [Cache Manager](/Features/CacheManager).
+[Cache Object Protocol](/Features/CacheManager/CacheObjectScheme), that provides access to the underlying
+[Cache Manager](/Features/CacheManager).
 
 More information is currently available at
 [Features/CacheManager](/Features/CacheManager).
@@ -16,6 +16,5 @@ More information is currently available at
 ## See also
 
 - [CacheManager](/Features/CacheManager)
-- [CacheObjectProtocol](/CacheObjectProtocol)
 - [CacheObjectScheme](/Features/CacheManager/CacheObjectScheme)
 - [CacheMgrJs](/Features/CacheMgrJs), a possible replacement for the CGI tool

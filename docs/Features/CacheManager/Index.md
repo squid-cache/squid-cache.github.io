@@ -27,6 +27,5 @@ Internally, the handlers are C functions with a common prototype.
 
 ## See also
 
-- [CacheObjectProtocol](/CacheObjectProtocol)
 - [CacheObjectScheme](/Features/CacheManager/CacheObjectScheme)
 - [CacheManagerCgi](/Features/CacheManagerCgi)
