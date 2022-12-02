@@ -7,7 +7,7 @@ server, responding requests made with the
 [cache_object scheme](/Features/CacheManager/CacheObjectScheme)
 or with the `/squid-internal-mgr` well-known URL path.
 
-Sometimes it isconfused with the [Cache Manager CGI](/CacheManagerCgi).
+Sometimes it isconfused with the [Cache Manager CGI](/Features/CacheManagerCgi).
 This last one is just an external CGI application that reads data from
 the Squid Cache Manager and presents in HTML.
 
@@ -29,4 +29,4 @@ Internally, the handlers are C functions with a common prototype.
 
 - [CacheObjectProtocol](/CacheObjectProtocol)
 - [CacheObjectScheme](/Features/CacheManager/CacheObjectScheme)
-- [CacheManagerCgi](/CacheManagerCgi)
+- [CacheManagerCgi](/Features/CacheManagerCgi)
