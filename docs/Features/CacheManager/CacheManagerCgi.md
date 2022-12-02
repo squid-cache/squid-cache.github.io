@@ -18,4 +18,4 @@ More information is currently available at
 - [CacheManager](/Features/CacheManager)
 - [CacheObjectProtocol](/CacheObjectProtocol)
 - [CacheObjectScheme](/Features/CacheManager/CacheObjectScheme)
-- [Features/CacheManager](/Features/CacheManager)
+- [CacheMgrJs](/Features/CacheMgrJs), a possible replacement for the CGI tool
