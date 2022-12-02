@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Publishing Squid instance with ExaBGP
 
   - **Goal**: Advertise a single Squid proxy instance to a router using

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Response Terminology
 
 This page documents various response-related terms. This terminology

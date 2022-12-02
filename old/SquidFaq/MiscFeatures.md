@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # What are the new features in squid 2.X?
 
   - persistent connections.

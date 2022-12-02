@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 Describe EliezerCroitoru/Drafts/DynamonicContent here.
 
 # Demonic Content on the 21 centuary

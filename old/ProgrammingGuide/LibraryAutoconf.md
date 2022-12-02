@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Autoconf Library Detection guideline
 
 *This page is a work in progress. The autoconf template documented here

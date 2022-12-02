@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Using the digest LDAP authentication helper
 
 **Synopsis**

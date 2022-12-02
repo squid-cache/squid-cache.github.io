@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid Web Cache FAQ Table of Contents
 
   - [/FaqIndex](/SquidFaq/FaqIndex)

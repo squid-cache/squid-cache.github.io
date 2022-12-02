@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Profiling Squid Servers
 
 Is Squid running too slow? Would you like to investigate why and try to

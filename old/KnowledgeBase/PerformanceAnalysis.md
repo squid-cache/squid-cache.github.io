@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # How to analyze whether squid is performing well
 
 Users will **always** complain that Internet access is slow. The problem

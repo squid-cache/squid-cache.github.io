@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Using RAID with Squid cache directories
 
 The choice of disk storage architecture is an important factor in

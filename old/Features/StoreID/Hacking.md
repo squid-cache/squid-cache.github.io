@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Article: Store ID - The hackers side of the feature
 
   - **Goal**: Understand the danger in StoreID.

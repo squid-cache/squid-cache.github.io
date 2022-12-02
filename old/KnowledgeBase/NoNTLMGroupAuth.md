@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # NTLM Group ACLs fail during upgrade from Squid-2.5 to Squid-2.6
 
 **Synopsis**

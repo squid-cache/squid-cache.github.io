@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid Manager CGI Tool
 
 This tool is a CGI utility for online browsing of the Squid manager

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on OpenSUSE
 
 ## Pre-Built Binary Packages

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 A basic structure as an example for StoreID url DB "Many to One".
 
 This DB design is from Alan at [POST:"Fwd: \[squid-users\] store-id.pl

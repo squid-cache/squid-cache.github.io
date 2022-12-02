@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # man(8) documentation guidelines and standards
 
 This is a guide for a standard manual page documentation format and

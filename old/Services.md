@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Services Offered by the Squid Project and related providers
 
 The Squid Project is not currently a financial concern. It is run by

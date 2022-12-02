@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 This is a collection of example Squid Configurations intended to
 demonstrate the flexibility of Squid.
 

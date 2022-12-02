@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Bearer Authentication
 
   - **Goal**: Make Squid support Bearer authentication protocol.

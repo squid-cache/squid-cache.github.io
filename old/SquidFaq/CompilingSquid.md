@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Compiling Squid
 
 ## Which file do I download to get Squid?

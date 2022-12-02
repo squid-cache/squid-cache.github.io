@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Mandriva
 
 ## Pre-Built Binary Packages

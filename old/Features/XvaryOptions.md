@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: X-Vary-Options
 
   - **Goal**: Wikimedia uses an X-Vary-Options extended header, which is

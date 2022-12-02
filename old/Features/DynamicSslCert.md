@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Dynamic SSL Certificate Generation
 
   - **Goal**: Reduce the number of "certificate mismatch" browser

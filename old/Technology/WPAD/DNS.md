@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Web Proxy Auto Detection using DNS
 
 ## Overview

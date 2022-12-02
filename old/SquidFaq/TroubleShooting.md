@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Starting Point
 
 If your Squid version is older than 2.6 it is very outdated. Many of the

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Squid Appliance
 
   - **Goal**: Provide a quick/trivial and complete install of OS + Squid

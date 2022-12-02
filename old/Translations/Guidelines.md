@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Guidelines for Translating Squid
 
 How to use the translation tools is covered in

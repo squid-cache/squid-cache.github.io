@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Store URL Rewriting?
 
   - **Goal**: Separate out the URL used for storage lookups from the URL

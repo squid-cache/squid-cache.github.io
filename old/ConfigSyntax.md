@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Configuration Syntax
 
 This page summarizes squid.conf syntax issues related to revising

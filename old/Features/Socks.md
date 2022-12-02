@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: SOCKS Support
 
   - **Goal**: To add SOCKS support to Squid.

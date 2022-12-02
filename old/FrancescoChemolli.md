@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 I'm involved with squid development since 2000, I've been working mainly
 in the autentication area and on integration with Microsoft windows
 authentication systems.

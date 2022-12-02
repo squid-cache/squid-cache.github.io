@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Content Adaptation
 
 A proxy may analyze, capture, block, replace, or modify the messages it

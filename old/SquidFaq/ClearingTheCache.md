@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Pruning the Cache Down
 
 Clearing the cache can be necessary under some unusual circumstances.

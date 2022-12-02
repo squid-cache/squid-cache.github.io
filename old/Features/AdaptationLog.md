@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Adaptation logging
 
   - **Goal**: Log ICAP and eCAP transaction details

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Browser speed/lockup issues when using a proxy.pac auto configuration file
 
 **Synopsis**

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Client Bandwidth Limits
 
   - **Goal**: Shape Squid-to-client bandwidth usage on client IP-level,

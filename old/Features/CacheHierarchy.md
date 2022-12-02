@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Linking Squid into a Cache Hierarchy
 
   - **Goal**: To connect multiple Squid together forming a 'mesh' or

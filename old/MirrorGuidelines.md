@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Guidelines for Mirroring the Squid Website and Sources
 
 Please ensure all mirrors use **rsync** to replicate their content.

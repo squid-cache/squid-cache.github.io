@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Schedule for Feature Removals
 
 Certain features are no longer relevant as the code improves and are

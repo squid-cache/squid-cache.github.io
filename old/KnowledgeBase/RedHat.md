@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on RedHat Enterprise Linux
 
 ## Pre-Built Binary Packages

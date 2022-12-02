@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # How big of a system do I need to run Squid?
 
 There are no hard-and-fast rules. The most important resource for Squid

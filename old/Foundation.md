@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid Software Foundation
 
 The Squid software foundation is the nonprofit entity in charge of

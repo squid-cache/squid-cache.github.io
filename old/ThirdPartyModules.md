@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Third Party Modules in Squid
 
 Squid offers many different interfaces and API for extension, and has

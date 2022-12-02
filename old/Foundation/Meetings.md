@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid Software Foundation Board Meetings
 
 The [Foundation](http://foundation.squid-cache.org/) Board of Directors

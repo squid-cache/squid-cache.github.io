@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Single Sign-on with databases other than Microsoft's user databases
 
 In \<

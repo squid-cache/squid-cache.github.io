@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Automatic cache_dir sizing
 
   - **Goal**: Allow squid to automatically define the best cache_dir

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Braindump about the storage system
 
 The Squid storage manager does a bunch of things inefficiently. Namely:

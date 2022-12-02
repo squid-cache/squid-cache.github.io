@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Web Proxy Auto Detection (WPAD)
 
 ## What is WPAD?

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Overview of Squid Components
 
 Squid consists of the following major components

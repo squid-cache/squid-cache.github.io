@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Neighbor
 
 In Squid, *neighbor* usually means the same thing as *peer*. A neighbor

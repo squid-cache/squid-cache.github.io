@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Debian
 
 ## Pre-Built Binary Packages

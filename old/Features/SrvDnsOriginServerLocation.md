@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: SRV based origin server location
 
   - **Goal**: Make use of DNS SRV records to locate the origin server

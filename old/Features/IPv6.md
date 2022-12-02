@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # IPv6 in Squid
 
   - **Version**: 3.1

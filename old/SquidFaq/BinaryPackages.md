@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Binary Packages for Squid
 
 ## Do you have pre-compiled binaries available?

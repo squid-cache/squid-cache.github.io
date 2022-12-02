@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: "Benchmark" cachemgr page
 
   - **Goal**: To have a synthesis page where to collect the information

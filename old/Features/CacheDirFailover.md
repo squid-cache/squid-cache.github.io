@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Cache Directory Failure Bypass
 
   - **Goal**: Make various cache store directory errors not fatal

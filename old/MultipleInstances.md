@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Running multiple instances of Squid on a system
 
 Running multiple instances of Squid on a system is not hard, but it

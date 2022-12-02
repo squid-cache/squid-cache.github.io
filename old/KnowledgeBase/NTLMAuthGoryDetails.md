@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Client-Squid NTLM authentication protocol description
 
 This document details the mechanics of the

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 This is a helper that receives only the requests domains when the flow
 into squid and reports them into a centralized logging server. This
 helper is a part of a suite that analyze requests domains and schedules

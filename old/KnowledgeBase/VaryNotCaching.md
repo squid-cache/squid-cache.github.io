@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # GZIP Encoded Variants Being Replaced by Non-Compressed Objects
 
 **Synopsis**

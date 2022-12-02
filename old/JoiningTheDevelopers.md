@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # How to become a Squid developer
 
 The current Squid development model makes extensive use of branches,

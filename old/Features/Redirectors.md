@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Redirection Helpers
 
   - **Goal**: Allow Squid to use custom helpers to redirect and/or

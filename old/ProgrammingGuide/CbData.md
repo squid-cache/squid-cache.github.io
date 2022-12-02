@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Callback Data Allocator
 
 Squid's extensive use of callback functions makes it very susceptible to

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Reverse Proxy Mode
 
 ## What is the Reverse Proxy (httpd-accelerator) mode?

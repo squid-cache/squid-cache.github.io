@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 TODO: These ideas should be reviewed, morphed into
 [CategoryFeature](/CategoryFeature)
 pages, and moved into the

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # How do I see system level Squid statistics?
 
 The Squid distribution includes a CGI utility called *cachemgr.cgi*

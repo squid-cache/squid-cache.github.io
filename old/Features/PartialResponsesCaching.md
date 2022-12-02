@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Support caching of partial responses
 
   - **Goal**: Enable the caching of partial responses, and obsolete the

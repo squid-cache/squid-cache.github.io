@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on NetBSD
 
 ## Pre-Built Binary Packages

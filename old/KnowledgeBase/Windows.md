@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Windows
 
 ## Does Squid run on Windows ?

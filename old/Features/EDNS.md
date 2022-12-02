@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: EDNS support
 
   - **Goal**: For DNS efficiency Squid should include an EDNS OPT record

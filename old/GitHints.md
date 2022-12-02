@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Git Hints
 
 This page archives git recipes that may be useful in the context of

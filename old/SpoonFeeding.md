@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 Spoon Feeding is an optimization obtained by deploying a [Reverse
 Proxy](/SquidFaq/ReverseProxy).
 Its purpose is to free up valuable computation resources by allowing

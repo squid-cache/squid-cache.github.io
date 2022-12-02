@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Communication between browsers and Squid
 
 Most web browsers available today support proxying and are easily

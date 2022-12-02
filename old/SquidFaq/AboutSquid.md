@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # What is Squid?
 
 Squid is a high-performance proxy caching server for web clients,

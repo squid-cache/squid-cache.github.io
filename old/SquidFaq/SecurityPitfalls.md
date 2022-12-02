@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Open-access proxies
 
 Squid's default configuration file denies all external requests. It is

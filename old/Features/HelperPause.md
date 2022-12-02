@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Helper Pause State
 
   - **Goal**: Skip busy helpers without delays.

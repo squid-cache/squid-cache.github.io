@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Novell SUSE Linux
 
 ## Pre-Built Binary Packages

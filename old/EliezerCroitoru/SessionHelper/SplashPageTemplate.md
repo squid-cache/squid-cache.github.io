@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
   - An example for a html splash page for wifi or any other login page.
 
   - you can do what ever you want with this piece of html template.

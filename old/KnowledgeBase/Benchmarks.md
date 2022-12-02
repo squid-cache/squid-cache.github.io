@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Most Current Squid Benchmarks
 
 Speed and Requirement details of squid are a little hard to come by at

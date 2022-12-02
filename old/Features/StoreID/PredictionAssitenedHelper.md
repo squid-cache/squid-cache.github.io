@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # squid.comf example
 
     acl GET method GET

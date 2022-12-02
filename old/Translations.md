@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Internationalization of Squid Project
 
   - **Goal**: To make Squid available in many languages.

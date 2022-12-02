@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Ubuntu
 
 ## Pre-Built Binary Packages

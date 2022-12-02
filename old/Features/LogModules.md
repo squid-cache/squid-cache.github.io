@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Log Modules for Squid
 
   - **Goal**: Logging plugin interface for Squid

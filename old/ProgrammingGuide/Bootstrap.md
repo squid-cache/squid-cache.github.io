@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 The **bootstrap.sh** script runs a number of autotools to prepare
 ./configure and related magic. See
 [DeveloperResources](/DeveloperResources)

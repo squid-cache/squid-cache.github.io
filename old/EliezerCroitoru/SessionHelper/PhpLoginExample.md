@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 This is an example of a session helper "LOGIN" button for client using
 php instead of a "LOGIN" url combination with the helper.
 

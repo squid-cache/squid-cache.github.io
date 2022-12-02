@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Sending Bug Reports to the Squid Team
 
 Bug reports for Squid should be registered in our [bug

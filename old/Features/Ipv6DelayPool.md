@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: IPv6 delay pool type
 
   - **Goal**: Current delay pool types are quite heavily geared for

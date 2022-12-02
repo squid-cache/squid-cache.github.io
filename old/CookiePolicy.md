@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 This website, as part of its normal technical operations, may leave on
 the user's browser some information (Cookies). We do not attempt in any
 way to connect this information to the user's identity or to track

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
   - A ruby script to convert cache manager info page into a json format.
 
   - This is designed to help and collect data from squid-cache servers

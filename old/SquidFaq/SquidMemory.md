@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Why does Squid use so much memory\!?
 
 Squid uses a lot of memory for performance reasons. It takes much, much

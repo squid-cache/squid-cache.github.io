@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # How do I make ChromeOS Updates cache?
 
 ChromeOS updates are downloaded from Google over HTTP. Thus, they can be

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Illegal Instruction errors on Squid 3.4
 
 **Synopsis** Squid 3.4 and later, running on certain *paravirtualized

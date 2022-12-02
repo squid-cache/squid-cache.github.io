@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: COSS (Cyclic Object Storage System)
 
   - **Goal**: Stabilized COSS systems in all Squid.

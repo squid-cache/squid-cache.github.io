@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Service Overload Handling (ICAP Max-Connections and more)
 
   - **Goal**: Make Squid behaviour during \[adaptation\] service

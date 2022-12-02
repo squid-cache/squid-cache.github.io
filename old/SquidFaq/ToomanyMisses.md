@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Way Too Many Cache Misses
 
 In normal operation Squid gives very few (typically well less than 1%)

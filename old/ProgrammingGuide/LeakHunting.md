@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 Memory management is a thorny issue in Squid. Its single-process nature
 makes it very important no to leak memory in any circumstance, as even a
 single leaked byte per request can grind a proxy to a halt in a few

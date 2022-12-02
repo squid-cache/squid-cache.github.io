@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Contributing to Squid Translations
 
 We use the Pootle Toolkit to manage the Squid translations. Being an

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # How to profile Squid using oprofile on Linux
 
 Setup oprofile

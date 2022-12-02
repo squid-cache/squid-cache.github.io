@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid Software Foundation Sponsorship Program
 
 **Version**: 6

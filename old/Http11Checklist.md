@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Progress of the HTTP/1.1 conversion of Squid?
 
   - **Goal**: To make Squid a full HTTP/1.1 proxy

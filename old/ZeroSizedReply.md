@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 A ZeroSizedReply error page is shown when squid successfully sends the
 request to the next hop server, and then the connection is dropped with
 no data sent back.

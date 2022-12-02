@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: squid.conf migration
 
   - **Goal**: To easing the upgrade path for squid.conf between squid

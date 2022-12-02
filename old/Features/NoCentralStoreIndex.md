@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: No in-memory central index
 
   - **Goal**: Allow store to grow unbounded by memory

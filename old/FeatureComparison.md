@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature Comparison Map for Squid
 
 This pages hope to be authoritative. If you know of any errors or

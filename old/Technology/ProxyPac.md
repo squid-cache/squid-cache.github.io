@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Proxy Configuration Via "proxy.pac"
 
 ## Overview

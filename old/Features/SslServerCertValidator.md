@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: SSL Server Certificate Validator
 
   - **Goal**: Allow external code to perform SSL/TLS server certificates

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Obsolete Operating Systems
 
   - **Goal**: Remove support for operating systems whose last release

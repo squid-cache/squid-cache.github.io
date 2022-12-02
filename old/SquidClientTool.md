@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # squidclient Tool
 
 This tool is a command line utility for performing web requests.

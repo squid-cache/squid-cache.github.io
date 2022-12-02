@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid Log Files
 
 The logs are a valuable source of information about Squid workloads and

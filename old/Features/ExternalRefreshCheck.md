@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: External Refresh Check
 
   - **Goal**: Port the external refresh check over from squid-2

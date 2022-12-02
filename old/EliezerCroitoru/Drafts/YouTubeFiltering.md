@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 Most
 [MikroTik](/MikroTik)
 devices are pretty Router/Switch level and despite the fact that they

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Hot Configuration
 
   - **Goal**: To remove the many issues squid currently displays due to

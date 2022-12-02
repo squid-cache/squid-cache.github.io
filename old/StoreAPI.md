@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 Draft Store API.
 
     class StoreSearch : RefCountable

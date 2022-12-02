@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Identifying and working around sites with broken TCP Window Scaling
 
 **Synopsis**

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: ICAP (Internet Content Adaptation Protocol)
 
   - **Status**: completed

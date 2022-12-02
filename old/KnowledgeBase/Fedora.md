@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Fedora
 
 ## Pre-Built Binary Packages

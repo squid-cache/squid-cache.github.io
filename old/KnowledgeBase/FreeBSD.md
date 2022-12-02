@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on FreeBSD
 
 ## Pre-Built Binary Packages

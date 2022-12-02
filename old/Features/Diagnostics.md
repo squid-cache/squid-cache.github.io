@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Diagnostics Information View
 
   - **Goal**: To add a basic diagnostic view to Squid for

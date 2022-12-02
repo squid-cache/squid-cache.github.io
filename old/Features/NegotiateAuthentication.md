@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Negotiate Authentication
 
   - **Goal**: Make Squid support Negotiate authentication protocol.

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Extendible control channel for squid
 
   - **Goal**: an extendible interface to allow finer control over a

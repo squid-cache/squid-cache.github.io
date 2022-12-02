@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Solaris
 
 ## Pre-Built Binary Packages

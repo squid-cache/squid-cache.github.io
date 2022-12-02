@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Customizable Log Formats
 
   - **Goal**: To allow users to define their own log content.

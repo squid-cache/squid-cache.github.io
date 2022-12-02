@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Request Buffering
 
   - **Goal**: Add configuration option to have Squid buffer requests

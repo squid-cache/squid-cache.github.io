@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Complete Squid Faq Index
 
 Sorry, we've had to disable this page due to issues with the wiki

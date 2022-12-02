@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # QA Pilots
 
 The Squid Project needs to reduce the number of regression bugs in Squid

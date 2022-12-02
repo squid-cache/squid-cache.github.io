@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: eCAP support
 
   - **Goal**: Improve Squid3 content adaptation performance by 20+%,

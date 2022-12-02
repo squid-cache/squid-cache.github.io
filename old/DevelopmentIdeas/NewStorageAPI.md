@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # New Store API for Squid-2
 
 ## Introduction

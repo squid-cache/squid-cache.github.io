@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 [MoinMoin](/MoinMoin)
 *DesktopEdition* is the easiest way to run moin, without much
 installation and without separate server software (this is why its

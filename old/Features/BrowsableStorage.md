@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Browsable File Storage?
 
   - **Goal**: To add store so files can be saved at a directory matching

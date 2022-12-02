@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 based on a discussion at a local postgresql user group last week..
 
 Could we factor out the cache management routines in a sane generic

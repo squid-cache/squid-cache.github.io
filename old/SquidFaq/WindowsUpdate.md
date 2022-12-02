@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # How do I make Windows Updates cache?
 
 Windows Update generally (but not always) uses HTTP Range-Offsets' (AKA

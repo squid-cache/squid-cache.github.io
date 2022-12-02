@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Connection Pinning
 
   - **Goal**: Support connection handling required for NTLM

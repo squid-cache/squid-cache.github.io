@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 Or, *How can I make my users' browsers use my cache without configuring
 the browsers for proxying?*
 

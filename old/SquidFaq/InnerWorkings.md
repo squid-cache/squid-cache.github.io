@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # What are cachable objects?
 
 An Internet Object is a file, document or response to a query for an

@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Gzip compression / decompression in Squid
 
   - **Goal**: To make Squid capable of compressing or decompressing

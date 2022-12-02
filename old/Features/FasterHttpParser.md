@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Faster HTTP parser
 
   - **Goal**: Improve non-caching Squid3 performance by 20+%

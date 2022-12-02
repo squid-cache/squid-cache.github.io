@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Guido Serassio
 
 I'm one of the core team Squid developers. Currently I'm the maintainer

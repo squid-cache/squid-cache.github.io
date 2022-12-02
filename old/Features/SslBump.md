@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Feature: Squid-in-the-middle SSL Bump
 
   - **Goal**: Enable ICAP inspection of SSL traffic.

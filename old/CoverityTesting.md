@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 The Squid project uses the services of [Coverity
 Scan](https://communities.coverity.com/community/scan-%28open-source%29)
 to run automated test builds, as part of the

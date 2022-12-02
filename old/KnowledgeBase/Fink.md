@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Fink
 
 ## Pre-Built Binary Packages

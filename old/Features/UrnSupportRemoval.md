@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # URN Support Removal
 
   - **Goal**: Squid has supported for a long time various URN features,

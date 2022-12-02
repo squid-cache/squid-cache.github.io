@@ -1,3 +1,7 @@
+---
+categories: ReviewMe
+published: false
+---
 # Squid on Slackware
 
 ## Pre-Built Binary Packages
