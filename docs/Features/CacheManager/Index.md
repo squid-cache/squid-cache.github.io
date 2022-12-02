@@ -1,21 +1,32 @@
-# index report
+# The Cache Manager
 
-When an HTML template named `MGR_INDEX` is installed in the
-`templates/` error page directory this report will return its contents
-after [macro expansion](/Features/CustomErrors).
+It is the Squid internal subsystem that provides a
+common way for registering, finding and triggering management actions.
+It interfaces with the outside world through the normal Squid HTTP
+server, responding requests made with the
+[cache_object scheme](/Features/CacheManager/CacheObjectScheme)
+or with the `/squid-internal-mgr` well-known URL path.
 
-This allows creation of a scripted user interface for the cache manager
-loaded from that template.
+Sometimes it isconfused with the [Cache Manager CGI](/CacheManagerCgi).
+This last one is just an external CGI application that reads data from
+the Squid Cache Manager and presents in HTML.
 
-## Example JS reporting tool
+A table with existing actions is maintained by the subsystem. For each
+tuple it will bring up a unique name for the specific action, a short
+description and a handler to be called when the item is invoked. Some
+flags can be set too, like the one that indicates the requirement of a
+password.
 
-[FrancescoChemolli](/FrancescoChemolli)
-and
-[AmosJeffries](/AmosJeffries)
-have developed a javascript based tool using the MGR_INDEX interface
-which can be found at [](https://github.com/yadij/cachemgr.js)
+At the time of initialization only a few actions will be registered. The
+most important of all is the `menu`, responsible for enumerating
+current available actions in the table. After this initialization
+various snippets of code will register different new handlers and
+descriptions using the `Mgr::RegisterAction` API.
 
-It is worth noting that prettiness of the reporting tool GUI is affected
-by the report format produced by your Squid. Most existing Squids have
-rather basic text/plain outputs intended for the cachemgr.CGI tool. It
-is hoped that future releases will be more flexible.
+Internally, the handlers are C functions with a common prototype.
+
+## See also
+
+- [CacheObjectProtocol](/CacheObjectProtocol)
+- [CacheObjectScheme](/Features/CacheManager/CacheObjectScheme)
+- [CacheManagerCgi](/CacheManagerCgi)
