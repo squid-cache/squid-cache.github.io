@@ -468,7 +468,7 @@ work out why the following will not work.*
 *I can successfully access **cachemgr.cgi** from our web server machine
 here, but I would like to use MRTG to monitor various aspects of our
 proxy. When I try to use
-[squidclient](/SquidClientTool)
+[squidclient](/Features/CacheManager/SquidClientTool)
 or GET cache_object from the machine the proxy is running on, I always
 get access denied.*
 

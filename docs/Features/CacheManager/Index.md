@@ -25,7 +25,7 @@ Squid packages come with some tools for accessing the cache manager:
     be configured to interface with multiple proxies so provides a
     convenient way to manage proxies and view statistics without logging
     into each server.
-- [squidclient](/SquidClientTool)
+- [squidclient](/Features/CacheManager/SquidClientTool)
     is a command line utility for performing web requests. It also has a
     special ability to send cache manager requests to Squid proxies.
 - [CacheMgrJs](/Features/CacheMgrJs) is a javascript-based tool
