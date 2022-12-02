@@ -366,7 +366,7 @@ to pinpoint the problem:
 5.  Reproduce the failing transaction, using a single request if
     possible. Please note that reloading a page in a browser often sends
     dozens or even hundreds of requests to Squid. Ideally, use
-    [squidclient](/SquidClientTool),
+    [squidclient](/Features/CacheManager/SquidClientTool),
     wget, curl, or another "single-request" tool when possible.
 
 6.  Kill the "tail" command above.
