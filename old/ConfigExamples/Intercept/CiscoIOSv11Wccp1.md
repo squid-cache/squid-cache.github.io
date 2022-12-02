@@ -1,5 +1,6 @@
 ---
-categories: ConfigExample
+categories: [ConfigExample, ReviewMe]
+published: false
 ---
 # Configure Cisco IOS 11.x router for WCCP Interception
 

@@ -1,5 +1,6 @@
 ---
-categories: ConfigExample
+categories: [ConfigExample, ReviewMe]
+published: false
 ---
 # Using c-icap for proxy content antivirus checking on-the-fly
 

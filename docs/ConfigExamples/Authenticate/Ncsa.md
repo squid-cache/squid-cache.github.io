@@ -1,5 +1,6 @@
 ---
-categories: ConfigExample
+categories: [ConfigExample, ReviewMe]
+published: false
 ---
 # Authenticate with a NCSA httpd-style passwords file
 

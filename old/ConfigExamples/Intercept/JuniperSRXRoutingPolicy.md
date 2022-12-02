@@ -1,5 +1,6 @@
 ---
-categories: ConfigExample
+categories: [ConfigExample, ReviewMe]
+published: false
 ---
 Describe ConfigExamples/Intercept/JuniperSRXRoutingPolicy here.
 

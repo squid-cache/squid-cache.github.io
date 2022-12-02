@@ -1,4 +1,5 @@
 ---
-categories: ConfigExample
+categories: [ConfigExample, ReviewMe]
+published: false
 ---
 

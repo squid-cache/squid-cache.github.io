@@ -1,5 +1,6 @@
 ---
-categories: ConfigExample
+categories: [ConfigExample, ReviewMe]
+published: false
 ---
 # WCCP 2 with TPROXY on Ubuntu 12.04
 

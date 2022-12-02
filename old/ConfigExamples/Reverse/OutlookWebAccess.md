@@ -1,5 +1,6 @@
 ---
-categories: ConfigExample
+categories: [ConfigExample, ReviewMe]
+published: false
 ---
 # Configuring Squid as an accelerator/SSL offload for Outlook Web Access
 

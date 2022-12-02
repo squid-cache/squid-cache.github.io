@@ -1,5 +1,6 @@
 ---
-categories: ConfigExample
+categories: [ConfigExample, ReviewMe]
+published: false
 ---
 # Gizmo Project (Pidgeon IM, Fring, Taler, ICQ, IRC, AOL)
 
