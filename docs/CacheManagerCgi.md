@@ -16,7 +16,6 @@ More information is currently available at
 ## See also
 
 - [CacheManager](/Features/CacheManager)
-- [CacheManagerObject](/CacheManagerObject)
 - [CacheObjectProtocol](/CacheObjectProtocol)
 - [CacheObjectScheme](/Features/CacheManager/CacheObjectScheme)
 - [Features/CacheManager](/Features/CacheManager)
