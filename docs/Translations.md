@@ -71,7 +71,7 @@ The relatively small **languages.log.compacted** file can then be sent
 at any time to the Squid project to help us identify what code aliases
 we need to supply for each language.
 
-  - :information_source:
+> :information_source:
     reverse-proxy operators may also find this info useful for
     identifying the languages their users would prefer the website texts
     to be shown in.
@@ -155,7 +155,7 @@ admin just need to follow these steps:
 
 Reconfigure or restart squid.
 
-  - :information_source:
+> :information_source:
     Languages specified by their full name (ie *English*) are not able
     to be auto-negotiated. They are now deprecated and due for removal
     as soon as ISO coded versions are made available.
@@ -190,7 +190,7 @@ does not match any of the currently installed error page translations.
 Check that you spelled it correctly, it must match the ISO codes used
 for one of the sub-directory names in your squid errors directory.
 
-  - :information_source:
+> :information_source:
     This only affects the backup language, the one used if the users
     preferred is not available.
 

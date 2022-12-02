@@ -125,7 +125,7 @@ commands:
     cd squid-2.6.STABLE14
     zcat /tmp/squid-2.6.STABLE13-STABLE14.diff.gz | patch -p1
 
-  - :information_source:
+> :information_source:
     Squid-2 patches require the **-p1** option.
     
     :information_source:
@@ -287,7 +287,7 @@ repository to pull the source package information. Features which are
 not supported by the distribution package will need investigation to
 discover the dependency package and install it.
 
-  - :information_source:
+> :information_source:
     The usual one requested is **libssl-dev** for SSL support.
     
       - :warning:
@@ -411,7 +411,7 @@ tools must be downloaded separately:
   - db-1.85: [TinyCOBOL download
     area](http://tiny-cobol.sourceforge.net/download.php)
     
-      - :information_source:
+    > :information_source:
         3.2+ releases require a newer 4.6 or later version of libdb
 
 Before building Squid with SSL support, some operations are needed (in

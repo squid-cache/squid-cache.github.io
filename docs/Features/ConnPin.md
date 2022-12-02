@@ -54,7 +54,7 @@ This feature has been implemented for the Squid-3 branch starting with
 by
 [ChristosTsantilas](/ChristosTsantilas)
 
-  - :information_source:
+> :information_source:
     NOTE: This feature does not exist in
     [Squid-3.0](/Releases/Squid-3.0).
 

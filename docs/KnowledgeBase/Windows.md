@@ -15,7 +15,7 @@ supported.
 On Windows 2000 and later the service is configured to use the Windows
 Service Recovery option restarting automatically after 60 seconds.
 
-  - :information_source:
+> :information_source:
     The original development code name of the 2.5 project port was
     SquidNT, but after the 2.6.STABLE4 release, this project was
     complete. So when speaking about Squid on Windows, people should
@@ -299,7 +299,7 @@ tools must be downloaded separately:
   - db-1.85: [TinyCOBOL download
     area](http://tiny-cobol.sourceforge.net/download.php)
     
-      - :information_source:
+    > :information_source:
         3.2+ releases require a newer 4.6 or later version of libdb
 
 Before building Squid with SSL support, some operations are needed (in

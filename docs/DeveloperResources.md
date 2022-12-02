@@ -145,7 +145,7 @@ The latest sources are available at address
 snapshots of the code for testing regressions and other special
 circumstances.
 
-  - :information_source:
+> :information_source:
     The daily tarballs displayed are listed by date created and the
     repository revision ID included in that tarball. Gaps are expected
     in the list when there were no new revisions committed that day, or

@@ -136,6 +136,6 @@ Each binary that uses library Foo should include `  $(FOOLIB)  ` in its
 LDADD declaration **following** the libcompat.la entry and will be
 linked when relevant.
 
-  - :information_source:
+> :information_source:
     for ease of maintenance these FOOLIB LDADD entries should be
     alphabetical.

@@ -94,12 +94,12 @@ Squid OIDs do change between releases. Below is a table of the current
 OIDs available. The column **Squid** contains the versions of Squid
 where the OID is present.
 
-  - :information_source:
+> :information_source:
     NP: Last updated for Squid-3.1.0.15
 
 <!-- end list -->
 
-  - :information_source:
+> :information_source:
     All Squid OID begin with **1.3.6.1.4.1.3495**
 
 |                                                                |                               |                 |           |                                                                                                                                             |

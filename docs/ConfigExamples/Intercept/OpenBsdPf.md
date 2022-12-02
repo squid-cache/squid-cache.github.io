@@ -53,7 +53,7 @@ connections:
 
 ### NAT Interception proxy
 
-  - :information_source:
+> :information_source:
     This is available as standard with the OpenBSD 5.0+ squid
     port/packages.
 

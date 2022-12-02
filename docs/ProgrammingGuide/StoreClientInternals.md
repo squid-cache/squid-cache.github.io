@@ -2,7 +2,7 @@
 categories: ReviewMe
 published: false
 ---
-  - :information_source:
+> :information_source:
     This documentation was written for Squid-2.6
 
 By

@@ -38,7 +38,7 @@ you find one that is wrong or missing please let us know.
 
 ## Partial Solution 1: Local Web Server
 
-  - :information_source:
+> :information_source:
     A more polished, mature and expensive\! version of this is available
     commercially as [VideoCache](http://cachevideos.com/).
     
@@ -105,7 +105,7 @@ for any questions.
     # leave caching up to the local web server
     cache deny youtube
 
-  - :information_source:
+> :information_source:
     **/usr/bin/php** may not be the correct path or name for PHP on your
     system. Be sure to check and update this following example as
     needed.

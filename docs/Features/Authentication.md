@@ -319,7 +319,7 @@ See also:
 It depends on the authentication scheme; Squid does some caching when it
 can.
 
-  - :information_source:
+> :information_source:
     Note: Caching credentials has nothing to do with how often the user
     needs to re-authenticate himself. It is the browser who maintains
     the session, and re-authentication is a business between the user

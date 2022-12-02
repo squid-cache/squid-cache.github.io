@@ -42,7 +42,7 @@ two years of successfully operating in a productive server with
 This configuration can also be used with
 [Squid-4](/Releases/Squid-4).
 
-  - :information_source:
+> :information_source:
     Note: We are required to use Privoxy as intermediate proxy, because
     of Tor is SOCKS, not HTTP proxy, and cannot be directly chained with
     Squid.
@@ -73,7 +73,7 @@ Edit torrc as follows:
     #SocksPolicy accept 192.168.0.0/16
     SocksPolicy reject *
 
-  - :information_source:
+> :information_source:
     Note: Pay attention, Tor should run from unprivileged user due to
     security reasons.
 
@@ -190,18 +190,18 @@ For squid 4.x+, adjust access_log settings as follows:
     tg\.me.*
     tdesktop.*
 
-  - :information_source:
+> :information_source:
     Note: In some cases it is better to not log Tor tunnel accesses.
 
-  - :information_source:
+> :information_source:
     Note: Currently you must **splice** Tor tunneled connections,
     because of Squid can't re-crypt peer connections yet. It is
     recommended to use this configuration in bump-enabled setups.
 
-  - :information_source:
+> :information_source:
     Note: url.tor and url.nobump are different lists.
 
-  - :information_source:
+> :information_source:
     Note: Bridges obfs3 and older is no more supported by Tor.
 
 ## Performance considerations

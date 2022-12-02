@@ -107,7 +107,7 @@ You must also specify which of your neighbours will respond to your
 multicast queries, since it would be a bad idea to implicitly trust any
 ICP reply from an unknown address.
 
-  - :information_source:
+> :information_source:
     Note that ICP replies are sent back to *unicast* addresses; they are
     NOT multicast, so Squid has no indication whether a reply is from a
     regular query or a multicast

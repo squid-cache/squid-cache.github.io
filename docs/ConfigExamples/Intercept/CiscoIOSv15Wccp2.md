@@ -32,11 +32,11 @@ scheme](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?a
 Router has both router/switch functionality, so we can use both GRE/L2
 redirection methods.
 
-  - :information_source:
+> :information_source:
     Note: Beware - you must have NAT configuted on your squid's box, and
     you must have squid built with OS-specific NAT support.
 
-  - :information_source:
+> :information_source:
     Note: When using managed switch in DMZ, be sure proxy box port in
     the same VLAN/has the same encapsulation as router port with WCCP
     activated. Otherwise router can't do WCCP handshake with proxy.
@@ -70,7 +70,7 @@ redirection methods.
     !
     !
 
-  - :information_source:
+> :information_source:
     Note: ip wccp web-cache can redirect only HTTP (port 80), so to
     redirect HTTPS we create another dynamic wccp-service 70 (in Cisco
     WCCP documentation this number dedicated to HTTPS. In general,
@@ -93,14 +93,14 @@ and passthrough default route to next hop (or last resort gateway).
     wccp2_service dynamic 70
     wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=231 ports=443
 
-  - :information_source:
+> :information_source:
     Note: Squid must be built with WCCPv2 support.
 
-  - :information_source:
+> :information_source:
     Note: Squid box has configured default router pointed to
     192.168.200.1 (Ge0/1 on 2901) - last resort gateway.
 
-  - :information_source:
+> :information_source:
     Note: This example uses L2 redirecting (for OSes without native GRE
     support). Beware, wccp2_rebuild_wait sends "Here I am" message to
     router when proxy is ready to serve requests, without cache
@@ -110,7 +110,7 @@ and passthrough default route to next hop (or last resort gateway).
     WCCP-enabled router port and proxy - must share the same L2 network
     segment.
 
-  - :information_source:
+> :information_source:
     Note: If your choose GRE for communication with router and proxy,
     remember: you must have configured GRE on your proxy box\!
 
@@ -143,7 +143,7 @@ Then change WCCP service definitions in squid.conf:
 
 Then restart squid and check redirection is working.
 
-  - :information_source:
+> :information_source:
     Note: Beware your squid.conf contains **any** passwords in
     plain-text\! Protect it as by as protect proxy box from unauthorized
     access\!
@@ -164,7 +164,7 @@ router:
 
 ### QUIC/SPDY protocol blocking
 
-  - :information_source:
+> :information_source:
     Note: In most modern installations you may want (and you must) to
     block alternate protocols: SPDY and/or QUIC. To do that, please use
     **[this
@@ -176,13 +176,13 @@ This configuration example used on Cisco 2911 with Squid 3.x/4.x. As you
 can see, you can configure your environment for different ports
 interception.
 
-  - :information_source:
+> :information_source:
     Note: **Performance** is more better against PBR (route-map), WCCP
     uses less CPU on Cisco's devices. So, WCCP is preferrable against
     route-map. Also note, l2 redirection has hardware support and less
     overhead, than gre, which has only software processing (on CPU).
 
-  - :information_source:
+> :information_source:
     Note: This configuration was tested and fully operated on Cisco iOS
     versions 15.4(1)T, 15.4(3)M, 15.5(1)T, 15.5(2)T1, 15.5(3)M,
     15.5(3)M2, 15.6(2)T, 15.6(2)T1, 15.6(3)M.
@@ -246,7 +246,7 @@ assignment method **mask**. Switch only support WCCP "IN" redirection.
      remark all others bypass WCCP
      deny   ip any any
 
-  - :information_source:
+> :information_source:
     Note: "WCCP is supported only on the SDM templates that support PBR:
     access, routing, and dual IPv4/v6 routing." (from Cisco
     documentation)
@@ -268,13 +268,13 @@ assignment method **mask**. Switch only support WCCP "IN" redirection.
     
     balance_on_multiple_ip on
 
-  - :information_source:
+> :information_source:
     Note: As usual, it's expected your Squid already configured with
     HTTP and HTTPS ports.
 
 #### Security
 
-  - :information_source:
+> :information_source:
     Note: When using authenticated WCCP, like previous example, please
     note, Cisco equipement has passwork length limit (no more than 8
     symbols on routers and most switches) and password strength limit -
@@ -289,20 +289,20 @@ This configuration example used on Cisco 3750 aggregation switch with
 Squid 3.x/4.x. As you can see, you can configure your environment for
 different ports interception.
 
-  - :information_source:
+> :information_source:
     Note: Initial setup was created, tested and fully operated on switch
     WS-C3750G-16TD-S with iOS 12.2(55)SE10 IPSERVICEK9 with Squid
     3.5.19.
     :+1:
 
-  - :information_source:
+> :information_source:
     Note: This configuration was tested and fully operated on Cisco iOS
     version 15.0(2)SE9 on appropriate switch (see next note).
     :+1:
     :+1:
     :+1:
 
-  - :information_source:
+> :information_source:
     Note: Be **VERY CAREFUL**: Cisco 3750 series has much submodels, not
     at all compatible with iOS 15.x. Partially, C3750G-16TD-S can run
     iOS 12.2(55)SE series only. Read [Cisco Release
@@ -317,7 +317,7 @@ different ports interception.
     12.2(55)SE and later (SE1, SE2, and so on)." Also note, WCCP on this
     series of switches are supported starting from 12.2(37)SE iOS.
 
-  - :information_source:
+> :information_source:
     Note: Against Variant I, switches hardware accelerated redirections
     don't shown in **sho ip wccp** command output. Check redirection
     work via Squid's access.log.
@@ -415,7 +415,7 @@ board with four 100 Mbps or 1 Gbps ports. WCCPv2 configured on router
      permit tcp 192.168.0.0 0.0.255.255 any eq www 443
     !
 
-  - :information_source:
+> :information_source:
     Note: Whenever clients and proxy connected via switch module, router
     uses **hash** assignment method itself.
 
@@ -436,7 +436,7 @@ board with four 100 Mbps or 1 Gbps ports. WCCPv2 configured on router
 
 #### Security
 
-  - :information_source:
+> :information_source:
     Note: You can use authenticated WCCP like first example.
 
 ### Conclusion

@@ -397,7 +397,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - :information_source:
+    > :information_source:
         the result field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -418,12 +418,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - :information_source:
+    > :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - :information_source:
+    > :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -485,7 +485,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - :information_source:
+    > :information_source:
         the result field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -505,12 +505,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - :information_source:
+    > :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - :information_source:
+    > :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -572,7 +572,7 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - :information_source:
+    > :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -640,7 +640,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem. |
         
 
-      - :information_source:
+    > :information_source:
         the **BH** result code is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -660,12 +660,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - :information_source:
+    > :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - :information_source:
+    > :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -673,7 +673,7 @@ Result line sent back to Squid:
 
 #### Bearer Scheme
 
-  - :information_source:
+> :information_source:
     the **Bearer** authentication scheme is **proposed** to be supported
     by
     [Squid-3.4](/Releases/Squid-3.4)
@@ -816,12 +816,12 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem.                 |
         
 
-      - :information_source:
+    > :information_source:
         the **OK** and **BH** result codes are only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - :information_source:
+    > :information_source:
         for
         [Squid-3.3](/Releases/Squid-3.3)
         and older the **OK** result is not sent, but hash field is.
@@ -842,12 +842,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                    |
         
 
-      - :information_source:
+    > :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - :information_source:
+    > :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -864,7 +864,7 @@ Result line sent back to Squid:
 
 #### Negotiate and NTLM Scheme
 
-  - :information_source:
+> :information_source:
     These authenticator schemes do not support concurrency due to the
     statefulness of NTLM.
 
@@ -918,7 +918,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem.                                         |
         
 
-      - :information_source:
+    > :information_source:
         the **OK** and **ERR** result codes are only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -962,12 +962,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                                                                                |
         
 
-      - :information_source:
+    > :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - :information_source:
+    > :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -1053,7 +1053,7 @@ Result line sent back to Squid:
       - The configured usage of the external ACL in squid.conf
         determines what this result means.
     
-      - :information_source:
+    > :information_source:
         the **BH** result code is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -1160,7 +1160,7 @@ Result line sent back to Squid:
         | BH | Failure. The helper encountered a problem. |
         
 
-      - :information_source:
+    > :information_source:
         the **OK** and **BH** result codes are only accepted by
         [Squid-3.3](/Releases/Squid-3.3)
         and newer.

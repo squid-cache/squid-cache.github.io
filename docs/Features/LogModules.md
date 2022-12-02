@@ -49,7 +49,7 @@ Configuration **module:parameters** to be used by
 
     stdio:/var/log/squid/access.log
 
-  - :information_source:
+> :information_source:
     Used for backwards compatibility with old squid.conf. It is
     recommended that you upgrade to the **daemon** module with the basic
     file helper for better performance.
@@ -122,7 +122,7 @@ Configuration **module:parameters** to be used by
     same as syslog.conf entries. See your syslog configuration
     documentation for possible values.
 
-  - :information_source:
+> :information_source:
     syslog uses UDP which may drop packets when the network is under
     load or congested.
 
@@ -136,7 +136,7 @@ Configuration **module:parameters** to be used by
 
     udp://host:port
 
-  - :information_source:
+> :information_source:
     being UDP this module may drop packets when the network is under
     load or congested.
 
@@ -150,11 +150,11 @@ Configuration **module:parameters** to be used by
 
     tcp://host:port
 
-  - :information_source:
+> :information_source:
     Available from
     [Squid-3.2](/Releases/Squid-3.2)
 
-  - :information_source:
+> :information_source:
     [Syslog-ng](http://www.balabit.com/network-security/syslog-ng) can
     receive these logs directly.
 

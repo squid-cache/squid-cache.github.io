@@ -103,7 +103,7 @@ If your cache processes several hundred hits per second, good luck.
 
 ## How can I delete a cache directory?
 
-  - :information_source:
+> :information_source:
     If you don't have any *cache_dir* lines in your squid.conf, then
     Squid was using the default. From Squid-3.1 the default has been
     changed to memory-only cache and does not involve cache_dir.

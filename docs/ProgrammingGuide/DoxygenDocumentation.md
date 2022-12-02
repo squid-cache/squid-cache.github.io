@@ -129,7 +129,7 @@ or
 
 ## Component Documentation
 
-  - :information_source:
+> :information_source:
     For simplicity, its not worth doing much component documentation
     until after the
     [Features/SourceLayout](/Features/SourceLayout)

@@ -44,7 +44,7 @@ Squid-3.2 bundles one called **basic_fake_auth**
     
     http_access allow MyAcl
 
-  - :information_source:
+> :information_source:
     myAclType's dependence on **%LOGIN** is required for triggering
     authentication and, thus, setting **%{Proxy-Authorization}**.
 

@@ -10,7 +10,7 @@ published: false
 
 see also
 
-  - :information_source:
+> :information_source:
     details labeled ENFORCED are checked and forced by source testing
     mechanisms.
 

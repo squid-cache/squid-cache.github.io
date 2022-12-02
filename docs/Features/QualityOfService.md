@@ -42,7 +42,7 @@ The configuration options for
 [Squid-3.2](/Releases/Squid-3.2)
 are extended to support both TOS and Linux MARK tagging.
 
-  - :information_source:
+> :information_source:
     The 0xNN values here are set according to your system policy. They
     may differ from those shown.
 
@@ -101,7 +101,7 @@ The configuration options for 2.7 and 3.1 are based on different ZPH
 patches. The 3.1 configuration provides clear TOS settings for each
 outbound response type.
 
-  - :information_source:
+> :information_source:
     The 0xNN values here are set according to your system policy. They
     may differ from those shown.
 
@@ -134,7 +134,7 @@ The configuration options for 2.7 and 3.1 are based on different ZPH
 patches. The 2.7 patch does not have pass-thru capability. It does
 however include support for some legacy QoS protocols besides ToS.
 
-  - :information_source:
+> :information_source:
     The 0xNN values here are set according to your system policy. They
     may differ from those shown.
 

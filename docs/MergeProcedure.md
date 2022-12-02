@@ -137,7 +137,7 @@ developer who can do that for you.
 The first matching rule wins. A submission is automatically counted as
 one positive vote from the submitter.
 
-  - :information_source:
+> :information_source:
     Any developer may vote.
     
     :information_source:

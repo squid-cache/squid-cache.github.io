@@ -43,7 +43,7 @@ requests. Particularly when large objects are involved.
     maximum_object_size 200 MB
     quick_abort_min -1
 
-  - :information_source:
+> :information_source:
     Due to the slow-down problem below we recommend service packs be
     handled specially:
     
@@ -124,7 +124,7 @@ The work-around used by many cache maintainers has been to set the above
 config and force Squid to fetch the whole object when a range request
 goes through.
 
-  - :information_source:
+> :information_source:
     Compounding the problem and ironically causing some slowdowns is the
     fact that some of the Microsoft servers may be telling your Squid
     not to store the archive file. This means that Squid will pull the
@@ -137,7 +137,7 @@ bypass and see which provides the best results for you.
 Another symptoms which occasionally appear when attempting to force
 caching of windows updates is service packs.
 
-  - :information_source:
+> :information_source:
     If the
     [quick_abort_min](http://www.squid-cache.org/Doc/config/quick_abort_min),
     [quick_abort_max](http://www.squid-cache.org/Doc/config/quick_abort_max),
@@ -214,14 +214,14 @@ Windows Update doesn't work, but it is in Windows itself. The solution
 is to use the 'proxycfg' or 'netsh' tool shipped with Windows. With this
 tool you can set the proxy for WinHTTP.
 
-  - :information_source:
+> :information_source:
     Similar issues are found with other Microsoft products in the same
     Windows versions. The commands below often fix all Microsoft proxy
     issues at once.
 
 ## Proxy configuration with proxycfg
 
-  - :information_source:
+> :information_source:
     In Windows Vista, Server 2008 and later proxycfg is obsolete. Use
     netsh instead.
 
@@ -296,7 +296,7 @@ Just add this file as Squid ACL as follows:
 
 and you do not need to know all the IP authorization server for updates.
 
-  - :information_source:
+> :information_source:
     **NOTE:** In some countries WU can product
     SQUID_X509_V_ERR_DOMAIN_MISMATCH error via Akamai. To do WU,
     you can require to add this into your Squid's config:
@@ -315,7 +315,7 @@ and add this to **dstdom.broken**:
     update.microsoft.com.akadns.net
     update.microsoft.com.nsatc.net
 
-  - :information_source:
+> :information_source:
     **NOTE:** Depending your Squid's configuration, you may need to
     change your Squid's cipher configuration to this one:
 

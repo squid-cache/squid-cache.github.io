@@ -25,9 +25,8 @@ A WPAD-enabled User Agent will construct a DNS lookup for a "wpad" host
 in a list of domain names. It may assemble this domain name list from a
 variety of sources, including:
 
-  - The reverse DNS resolution of the hosts' IP;
-
-  - Configured DNS domain search list
+- The reverse DNS resolution of the hosts' IP;
+- Configured DNS domain search list
 
 The User Agent then tries an address (A) lookup for each of the domain
 entries, prepended with "wpad". If it doesn't find an A response it
@@ -40,7 +39,7 @@ requests the "/wpad.dat" file, with the Host set to the domain name.
 
 ## Example
 
-  - :information_source:
+> :information_source:
     Note: This example is browser and IPv4 specific.
 
 A client has an IP 1.2.3.4 which resolves to host-1-2-3-4.pop1.isp.net.

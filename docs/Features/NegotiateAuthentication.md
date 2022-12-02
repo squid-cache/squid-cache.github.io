@@ -51,13 +51,13 @@ protocol is used to contact both NTLM and Negotiate authentication
 helpers. This allows Squid to support both Negotiate/Kerberos and
 Negotiate/NTLM flavours through the one protocol configuration.
 
-  - :information_source:
+> :information_source:
     This double support does lead to some administrative confusion when
     the helper does not support the same flavour as the client browser.
 
 <!-- end list -->
 
-  - :information_source:
+> :information_source:
     These authenticator schemes do not support concurrency due to the
     statefulness of NTLM.
 
@@ -111,7 +111,7 @@ Result line sent back to Squid:
         | BH  | Failure. The helper encountered a problem.                                         |
         
 
-      - :information_source:
+    > :information_source:
         the **OK** and **ERR** result codes are only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
@@ -155,12 +155,12 @@ Result line sent back to Squid:
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                                                                                |
         
 
-      - :information_source:
+    > :information_source:
         the kv-pair field is only accepted by
         [Squid-3.4](/Releases/Squid-3.4)
         and newer.
     
-      - :information_source:
+    > :information_source:
         the kv-pair returned by this helper can be logged by the
         **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -210,7 +210,7 @@ everything to work.
 
     auth_param negotiate program /usr/sbin/squid_kerb_auth
 
-  - :information_source:
+> :information_source:
     All other negotiate parameters are optional. see
     [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
     NEGOTIATE section for more details.

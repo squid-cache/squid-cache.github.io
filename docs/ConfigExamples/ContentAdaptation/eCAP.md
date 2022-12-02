@@ -19,7 +19,7 @@ Since Squid does not support runtime content compression with
 GZip/DEFLATE, we will be used existing eCAP support and [re-worked and
 improved adapter from here](https://github.com/yvoinov/squid-ecap-gzip).
 
-  - :information_source:
+> :information_source:
     Note: Since the original author has long abandoned adapter use
     re-worked and improved version.
 
@@ -65,11 +65,11 @@ PKG_CONFIG_PATH pointed to libecap pkgconfig file.
     make
     make install-strip
 
-  - :information_source:
+> :information_source:
     Note: It is important to choose identical 32 or 64 bit (like your
     Squid) build mode for eCAP library and squid-gzip-ecap.
 
-  - :information_source:
+> :information_source:
     Note: LDFLAGS should point on libecap directory.
 
 ### Adapter configuration
@@ -86,7 +86,7 @@ Supported configuration parameters:
     errlog (default is 0, default path/filename is /var/log/ecap_gzip_err.log)      - error log
     complog (default is 0, default path/filename is /var/log/ecap_gzip_comp.log)    - compression log
 
-  - :information_source:
+> :information_source:
     Note: errlogname/complogname should be specify with full path and
     file name. Directory(-ies) should have write permission for proxy.
     
@@ -97,7 +97,7 @@ Adapter logging disabled by default. To enable error log specify
 errlog=1. To enable compression log specify complog=1. Proxy must have
 permissions to write.
 
-  - :information_source:
+> :information_source:
     Note: When configuration parameters has any error in specifications,
     adapter starts with defaults. If error log exists,
     
@@ -176,7 +176,7 @@ can be inadequately big and and can overload the CPU during
 decompression. In this case specify "maxsize" which fit you
 requirements.
 
-  - :information_source:
+> :information_source:
     Note: Adapter requires c++11 - compatible C++ compiler to build.
 
 ## Using eCAP for EXIF stripping from images with Squid 3.x/4.x
@@ -191,7 +191,7 @@ version](https://github.com/maxpmaxp/ecap-exif)).
 
 ### Build eCAP EXIF adapter
 
-  - :information_source:
+> :information_source:
     Note: This adapter critical for its dependencies. Dut to
     repositories often contains rancid versions, it is recommended to
     build dependencies from sources as fresh as possible, as shown
@@ -282,7 +282,7 @@ First, build and install dependencies:
 
 Make shure all shared libraries are installed.
 
-  - :information_source:
+> :information_source:
     Note: Use correct compiler full path, depending your setup. Commands
     above is my system-specific.
     :smirk:
@@ -303,7 +303,7 @@ Then, build and install adapter:
     make -j8
     make install-strip
 
-  - :information_source:
+> :information_source:
     Note: Before run, make sure all dependencies are ok with ldd -d
     command. Should no dangling references on any dependency
     functions/libraries.
@@ -370,13 +370,13 @@ Then you need to compile and install adapter:
     gmake
     gmake install-strip
 
-  - :information_source:
+> :information_source:
     Note: To use adapter with 64-bit Squid, you need also to compile
     ClamAV and libecap also with 64 bit. Also use appropriate adapter
     version for interoperability with your Squid version and used
     libecap.
 
-  - :information_source:
+> :information_source:
     Note: On some platforms (i.e. Solaris) you may need to add \#include
     \<unistd.h\> to src/Gadgets.h to avoid compilation error due to lack
     of unlink subroutine.

@@ -15,7 +15,7 @@ expected to obey and an indication of whether we believe it does.
 
 <!-- end list -->
 
-  - :information_source:
+> :information_source:
     this list is known to be incomplete. If you are aware of anything
     important which has been omitted please [report
     it](https://bugs.squid-cache.org/) as a website bug.

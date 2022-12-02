@@ -14,7 +14,7 @@ squid is sufficient. Squid will handle the changes automatically and
 starts to purge the cache down to size again within 10 minutes of the
 configure.
 
-  - :information_source:
+> :information_source:
     NP: on particularly large caches the prune has been known to take a
     long time and/or a lot of CPU.
 

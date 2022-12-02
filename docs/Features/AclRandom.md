@@ -41,7 +41,7 @@ Every test, a new random number is generated and checked against the
 stored value. If the random number is within the threshold range of
 possibility the ACL will match.
 
-  - :information_source:
+> :information_source:
     To debug this ACL use
     [debug_options](http://www.squid-cache.org/Doc/config/debug_options)
     28,3 and watch for lines beginning with "ACL Random".

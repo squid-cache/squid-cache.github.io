@@ -14,7 +14,7 @@ Packages available for Squid on multiple architectures.
 
 Bug Reports: [](https://bugs.launchpad.net/ubuntu/+source/squid)
 
-  - :information_source:
+> :information_source:
     Ubuntu 18.10 (Cosmic) or newer.
 
 Install Procedure:
@@ -27,7 +27,7 @@ Install Procedure:
 
 Bug Reports: [](https://bugs.launchpad.net/ubuntu/+source/squid)
 
-  - :information_source:
+> :information_source:
     Ubuntu 18.04 (Bionic) or older.
 
 Install Procedure:
@@ -81,7 +81,7 @@ repository to pull the source package information. Features which are
 not supported by the distribution package will need investigation to
 discover the dependency package and install it.
 
-  - :information_source:
+> :information_source:
     The usual one requested is **libssl-dev** for SSL support.
     
       - :warning:

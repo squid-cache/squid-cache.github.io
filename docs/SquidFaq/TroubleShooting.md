@@ -487,7 +487,7 @@ already running, or it could be from another program. To verify, use the
 
     netstat -antup | grep 8080
 
-  - :information_source:
+> :information_source:
     :bulb:
     Windows Users need to use *netstat -ant* and manually find the
     entry.
@@ -544,7 +544,7 @@ consider.
 
 # WARNING: Failed to start 'dnsserver'
 
-  - :information_source:
+> :information_source:
     :bulb:
     All current Squid now contain an optimized internal DNS engine.
     Which is much faster and responsive that then the dnsserver helper.
@@ -560,7 +560,7 @@ see
 
 # FATAL: ipcache_init: DNS name lookup tests failed
 
-  - :information_source:
+> :information_source:
     :bulb:
     This issue is now permanently resolved in Squid 3.1 and later.
 
@@ -697,7 +697,7 @@ or
     # chown root /usr/local/squid/bin/pinger
     # chmod 4755 /usr/local/squid/bin/pinger
 
-  - :information_source:
+> :information_source:
     :bulb:
     location of the pinger binary may vary. I recommend searching for it
     first:
@@ -904,7 +904,7 @@ may get the above error message. To check your system, run:
 
     ifconfig
 
-  - :information_source:
+> :information_source:
     Windows users must use: **ipfconfig**
 
 The result should contain:
@@ -984,7 +984,7 @@ running, the absence of the PID file usually means Squid is not running.
 If you accidentally delete the PID file, Squid will continue running,
 and you won't be able to send it any signals.
 
-  - :information_source:
+> :information_source:
     If you accidentally removed the PID file, there are two ways to get
     it back.
 
@@ -1124,7 +1124,7 @@ things, including:
 
 You may be able to use *tcpdump* to track down and observe the problem.
 
-  - :information_source:
+> :information_source:
     Some users believe the problem is caused by very large cookies. One
     user reports that his Zero Sized Reply problem went away when he
     told Internet Explorer to not accept third-party cookies.

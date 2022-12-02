@@ -38,7 +38,7 @@ or you have run out of CPU cycles to handle it.
 
 **Additional Info**
 
-  - :information_source:
+> :information_source:
     One should note before reading the below that XFS benchmarks in
     professional tests from 2004/2005 as the slowest FS to use
     underneath Squid. The mail below shows an interesting

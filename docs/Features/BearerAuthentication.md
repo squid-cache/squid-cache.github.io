@@ -206,7 +206,7 @@ everything to work.
     auth_param bearer realm Squid
     auth_param bearer scope proxy
 
-  - :information_source:
+> :information_source:
     All other bearer parameters are optional. see
     [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
     BEARER section for more details.

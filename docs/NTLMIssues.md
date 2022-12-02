@@ -43,7 +43,7 @@ The Squid mechanisms for adding Proxy-Authentication: headers on client
 requests sent upstream does not support the NTLM handshake for login to
 the next-hop proxy using NTLM.
 
-  - :information_source:
+> :information_source:
     Microsoft has officially deprecated NTLM in faviour of Kerberos.
     [Squid-3.2](/Releases/Squid-3.2)
     does support Kerberos (Negotiate) login to upstream proxies.
