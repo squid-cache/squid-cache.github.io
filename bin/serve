@@ -14,6 +14,11 @@ if gem list --local jekyll-theme-slate | grep -q jekyll-theme-slate; then
     sed 's/^remote_theme.*/theme: jekyll-theme-slate/' docs/_config.yml >/tmp/_jekyll-local-config.yml
 fi
 
+for dir in _site docs/.jekyll-cache docs/.jekyll-metadata
+do
+    test -d "$dir" && rm -rf "$dir"
+done
+
 if [ "$offline" = "true" ] ; then
     exec bundle exec jekyll serve --incremental --watch --source docs --config /tmp/_jekyll-local-config.yml
 fi
