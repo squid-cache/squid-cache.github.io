@@ -55,5 +55,4 @@ The
 [squid users community](http://www.squid-cache.org/Support/mailing-lists.html#squid-users)
 will be the best source of help for questions about configuring and operating
 squid.
-You can use our [bugzilla](https://bugs.squid-cache.org/) for code-related
-issues, such as crashes
+For code-related issues, such as crashes, see [BugReporting](/SquidFaq/BugReporting)
