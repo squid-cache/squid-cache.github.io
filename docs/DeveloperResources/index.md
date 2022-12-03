@@ -1,76 +1,61 @@
----
-categories: ReviewMe
-published: false
----
-# Contributing code
+# Developer Resources
 
-The best way to contribute code is to submit a high-quality [pull
-request](https://github.com/squid-cache/squid/pulls) against the master
+## Contributing code
+
+The best way to contribute code is to submit a high-quality
+[pull request](https://github.com/squid-cache/squid/pulls) against the master
 branch of the official
 [repository](https://github.com/squid-cache/squid) on GitHub. To speed
 up code review and improve your code acceptance chances, please adhere
-to
-[SquidCodingGuidelines](/DeveloperResources/SquidCodingGuidelines)
-and follow the
-[MergeProcedure](/MergeProcedure).
+to the [SquidCodingGuidelines](/DeveloperResources/SquidCodingGuidelines)
+and follow the [MergeProcedure](/MergeProcedure).
 
-[ProgrammingGuide](/ProgrammingGuide)
+The [ProgrammingGuide](/ProgrammingGuide)
 provides a broad overview of Squid architecture and details some of
-Squid modules. It also discusses [manual page
-writing](/ProgrammingGuide/ManualDocumentation).
+Squid modules. It also discusses
+[how to contribute to the documentation](/ProgrammingGuide/ManualDocumentation).
 
-Auto-generated [code
-documentation](http://www.squid-cache.org/Doc/code/) offers some
-information on the Squid internals with links to the latest version of
-the code.
+Auto-generated [code documentation](http://www.squid-cache.org/Doc/code/)
+offers some information on the Squid internals with links to the latest
+version of the code.
 
-Finding things to do:
-
-  - [Bugzilla](http://bugs.squid-cache.org/) contains bugs and feature
-    requests.
-
-  - [RoadMap](/RoadMap)
-    lists the feature wishes and plans for future releases.
-
-  - [RoadMap/Tasks](/RoadMap/Tasks)
-    itemizes general cleanup tasks that need to be done. These can be
-    good introductory tasks.
-
-  - [HTTP/1.1
-    compliance](/Features/HTTP11)
-    violations need to be addressed.
-
-  - `git grep XXX`
-
-  - `git grep TODO`
-
-  - Other developers are often able to provide projects for anyone just
-    wanting to contribute.
+### Finding things to do
+- [Bugzilla](http://bugs.squid-cache.org/) contains bugs and feature
+  requests.
+- [RoadMap](/RoadMap)
+  lists the feature wishes and plans for future releases.
+- [RoadMap/Tasks](/RoadMap/Tasks)
+  itemizes general cleanup tasks that need to be done. These can be
+  good introductory tasks.
+- We have a list of [HTTP/1.1 compliance](/Features/HTTP11) violations 
+  that need to be addressed.
+- `git grep XXX`
+- `git grep TODO`
+- Other developers are often able to provide projects for anyone just
+  wanting to contribute.
 
 # Discussing code
 
-Most development discussions happen on the [developer mailing
-list](http://www.squid-cache.org/Support/mailing-lists.html#squid-dev).
-Please note that all messages must be sent in plain-text only (no HTML
-email).
+Most development discussions happen on the
+[developer mailing list](http://www.squid-cache.org/Support/mailing-lists.html#squid-dev).
+Please use plain-text only (no HTML email).
 
 # Testing
 
-We run constant integration testing with a
-[BuildFarm](/BuildFarm).
+We run constant integration testing with a [BuildFarm](/BuildFarm).
 
 It is possible to rely on the images we use for it to test code changes
 against different Linux distributions and compiler versions. We publish
-these images to the [Docker
-Hub](https://hub.docker.com/orgs/squidcache/repositories). They are
-named ``squidcache/buildfarm-`uname -m`-<os name>``
+these images to the
+[Docker Hub](https://hub.docker.com/orgs/squidcache/repositories). They are
+named `squidcache/buildfarm-<CPU architecture>-<os name>`
 
 Assuming you have access to a Docker environment, the easiest way to
 test a local checkout on it is to run the command:
 
-``OS=centos-7 docker run -ti --rm -v$PWD:$PWD -w$PWD -u1000
+`OS=centos-7 docker run -ti --rm -v$PWD:$PWD -w$PWD -u1000
 ./test-builds.sh squidcache/buildfarm-`uname -m`-$OS --verbose
---use-config-cache --cleanup``
+--use-config-cache --cleanup`
 
 It may leave behind some files owned by UID 1000; sorry it can't be
 avoided
@@ -80,13 +65,13 @@ avoided
 It is always better to find bugs before submitting a PR for review.
 Since Squid has such a large number of build permutations that can
 interact to change build dependencies and outcomes the a
-**test-builds.sh** script is provided in the repository to check that
+`test-builds.sh` script is provided in the repository to check that
 your code contribution will at least compile successfully. This is the
 same script which will be run by the CI system in a wider range of OS
 systems to prevent regressions.
 
 In a checkout of the Squid sources branch you are proposing to submit
-for PR, run: \` ./bootstrap.sh && ./test-builds.sh \`
+for PR, run: `./bootstrap.sh && ./test-builds.sh`
 
 The default stdout display just lists the ERROR and FAIL messages
 produced during build. Not all of these are problems (eg stats
@@ -94,12 +79,12 @@ indicating 0 failures), a series of logs with full build output are
 provided as well. See the end of the log for overall build result if you
 have any doubts about the success/failure status.
 
-The command line option **--keep-going** is provided to allow as many
+The command line option `--keep-going` is provided to allow as many
 error as possible to be found on one script execution. It builds with
-**make -k** and tries all build permutations instead of exiting on the
+`make -k` and tries all build permutations instead of exiting on the
 first compile failure.
 
-The command line option **--verbose** is provided to allow full compile
+The command line option `--verbose` is provided to allow full compile
 output to stdout instead of only to logs. The logs are still produced.
 
 Other options are available for specific build situations. See the
@@ -109,13 +94,11 @@ script for details or ask on squid-dev mailing list.
 
 On any linux system with docker installed, to reproduce a build you can
 check out squid sources on a fresh directory, then run:
-
-\` OS_VERSION=fedora-32 docker run -ti --rm -u jenkins -v $PWD:$PWD -w
-$PWD squidcache/buildfarm:`uname -m`-$OS_VERSION /bin/bash -l \`
-
-  - :warning:
-    Replace OS_VERSION with the OS version of the CI system node which
-    is failing (eg, fedora-rawhide, debian-unstable)
+` OS_VERSION=fedora-32 docker run -ti --rm -u jenkins -v $PWD:$PWD -w
+$PWD squidcache/buildfarm:`uname -m`-$OS_VERSION /bin/bash -l`
+> :warning:
+  Replace OS_VERSION with the OS version of the CI system node which
+  is failing (eg, fedora-rawhide, debian-unstable)
 
 This will drop you in the container, ready to try things out.
 
@@ -131,17 +114,16 @@ The official Squid source code repository is on
 [GitHub](https://github.com/squid-cache/squid). see
 [GitHints](/GitHints)
 for common actions you may need to perform with the git VCS.
-
-  - :warning:
-    When working from this repository the **bootstrap.sh** script is
-    required to prepare ./configure and related magic. See
-    [\#Required_Build_Tools](#Required_Build_Tools) for the required
-    bootstrapping and building tools.
+> :warning:
+  When working from this repository the `bootstrap.sh` script is
+  required to prepare ./configure and related magic. See
+  [\#Required_Build_Tools](#Required_Build_Tools) for the required
+  bootstrapping and building tools.
 
 ## Bootstrapped source tarballs via HTTP
 
 The latest sources are available at address
-[](http://www.squid-cache.org/Versions/) with a series of previous daily
+[http://www.squid-cache.org/Versions/](http://www.squid-cache.org/Versions/) with a series of previous daily
 snapshots of the code for testing regressions and other special
 circumstances.
 
@@ -226,7 +208,7 @@ Building tarballs for distribution requires these additional tools:
 
   - perl
 
-When working from the repository code the **bootstrap.sh** script is
+When working from the repository code the `bootstrap.sh` script is
 required initially to run a number of autotools to prepare ./configure
 and related magic. This needs repeating after any changes to the
 Makefile.am or configure.ac scripts, including changes received from the
