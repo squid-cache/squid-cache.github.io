@@ -1,8 +1,10 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: misc
 ---
-# Clients
+# Related software
+## Clients
 
   - [Wget](ftp://gnjilux.cc.fer.hr/pub/unix/util/wget/) is a
     command-line Web client. It supports HTTP and FTP URLs, recursive

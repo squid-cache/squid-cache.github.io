@@ -1,6 +1,7 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: installation
 ---
 # How big of a system do I need to run Squid?
 

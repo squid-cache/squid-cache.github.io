@@ -1,7 +1,9 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: misc
 ---
+# Other resources
 The external resources on this page are only provided as pointers so
 that users may find useful information.
 

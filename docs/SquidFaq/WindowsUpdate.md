@@ -1,6 +1,7 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: operation
 ---
 # How do I make Windows Updates cache?
 

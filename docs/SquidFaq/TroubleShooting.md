@@ -1,8 +1,9 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: troubleshooting
 ---
-# Starting Point
+# What to do when Squid misbehaves
 
 If your Squid version is older than 2.6 it is very outdated. Many of the
 issues experienced in those versions are now fixed in 2.6 and later.

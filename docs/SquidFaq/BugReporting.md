@@ -1,6 +1,7 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: troubleshooting
 ---
 # Sending Bug Reports to the Squid Team
 

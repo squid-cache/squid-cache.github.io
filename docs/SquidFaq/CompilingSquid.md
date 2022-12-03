@@ -1,6 +1,8 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: installation
+
 ---
 # Compiling Squid
 

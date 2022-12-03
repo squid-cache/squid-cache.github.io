@@ -1,6 +1,7 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: operation
 ---
 # Using RAID with Squid cache directories
 

@@ -1,6 +1,7 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: installation
 ---
 # Communication between browsers and Squid
 

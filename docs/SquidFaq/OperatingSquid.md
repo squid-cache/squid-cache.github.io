@@ -1,6 +1,7 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: installation
 ---
 # How do I see system level Squid statistics?
 

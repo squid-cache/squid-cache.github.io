@@ -1,6 +1,7 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: operation
 ---
 *Cache Digest FAQs compiled by Niall Doherty `<ndoherty AT eei DOT
 ericsson DOT se>`.*

@@ -1,6 +1,6 @@
 ---
 categories: ReviewMe
-published: false
+FaqSection: installation
 ---
 # Binary Packages for Squid
 

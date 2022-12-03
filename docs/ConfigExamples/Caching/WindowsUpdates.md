@@ -1,6 +1,7 @@
 ---
 categories: [ConfigExample, ReviewMe]
 published: false
+FaqSection: operation
 ---
 # Caching Windows Updates
 
