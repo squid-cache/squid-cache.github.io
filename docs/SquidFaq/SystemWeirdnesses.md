@@ -1,23 +1,28 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: troubleshooting
 ---
-# Solaris
+# OS-specific special cases
 
-## TCP incompatibility?
+> :information_source: A lot of this content is old, and probably doesn't
+  apply to modern systems. We do not necessarily have access to these systems
+  to validate, so we are leaving the information in for now
+
+## Solaris
+
+### TCP incompatibility?
 
 J.D. Bronson (jb at ktxg dot com) reported that his Solaris box could
 not talk to certain origin servers, such as
 [moneycentral.msn.com](http://moneycentral.msn.com/) and
 [www.mbnanetaccess.com](http://www.mbnanetaccess.com). J.D. fixed his
 problem by setting:
+```
+tcp_xmit_hiwat 49152
+tcp_xmit_lowat 4096
+tcp_recv_hiwat 49152
+```
 
-    tcp_xmit_hiwat 49152
-    tcp_xmit_lowat 4096
-    tcp_recv_hiwat 49152
-
-PS. In Solaris 10 and above this parameters is system default (by Yuri
+> :information_source: In Solaris 10 and above this parameters is system default (by Yuri
 Voinov).
 
 ## select()
@@ -43,14 +48,16 @@ by [David J N Begley](mailto:david@avarice.nepean.uws.edu.au).
 DNS lookups can be slow because of some mysterious thing called
 **ncsd**. You should edit */etc/nscd.conf* and make it say:
 
-    enable-cache            hosts           no
+```
+enable-cache            hosts           no
+```
 
 Apparently nscd serializes DNS queries thus slowing everything down when
 an application (such as Squid) hits the resolver hard. You may notice
 something similar if you run a log processor executing many DNS resolver
 queries - the resolver starts to slow.. right.. down.. . . .
 
-According to [at online dot ee Andres Kroonmaa](mailto:andre), users of
+According to **Andres Kroonmaa**, users of
 Solaris starting from version 2.6 and up should NOT completely disable
 *nscd* daemon. *nscd* should be running and caching passwd and group
 files, although it is suggested to disable hosts caching as it may
@@ -62,7 +69,7 @@ are all in use.
 
 Since solaris 2.6 Sun has changed the way some system calls work and is
 using *nscd* daemon as a implementor of them. To communicate to *nscd*
-Solaris is using undocumented door calls. Basically *nscd* is used to
+Solaris is using undocumented calls. Basically *nscd* is used to
 reduce memory usage of user-space system libraries that use passwd and
 group files. Before 2.6 Solaris cached full passwd file in library
 memory on the first use but as this was considered to use up too much
@@ -77,8 +84,9 @@ The */etc/nsswitch.conf* file determines the order of searches for
 lookups (amongst other things). You might only have it set up to allow
 NIS and HOSTS files to work. You definitely want the "hosts:" line to
 include the word *dns*, e.g.:
-
-    hosts:      nis dns [NOTFOUND=return] files
+```
+hosts:      nis dns [NOTFOUND=return] files
+```
 
 ## DNS lookups and NIS
 
@@ -105,7 +113,7 @@ This has the same effect as putting the *YP_INTERDOMAIN* key in the
 hosts table -- namely, that failed NIS host lookups are tried against
 the DNS by the NIS server.
 
-This is a **bad thing(tm)**\! If NIS itself tries to resolve names using
+This is a **bad thing(tm)**! If NIS itself tries to resolve names using
 the DNS, then the requests are serialised through the NIS server,
 creating a bottleneck (This is the same basic problem that is seen with
 *nscd*). Thus, one failing or slow lookup can, if you have NIS before
@@ -114,11 +122,9 @@ every other lookup taking place.
 
 If you're running in this kind of setup, then you will want to make sure
 that
-
-  - ypserv doesn't start with the *-d* flag.
-
-  - you don't have the *YP_INTERDOMAIN* key in the hosts table (find
-    the *B=-b* line in the yp Makefile and change it to *B=*)
+- ypserv doesn't start with the *-d* flag.
+- you don't have the *YP_INTERDOMAIN* key in the hosts table (find
+  the *B=-b* line in the yp Makefile and change it to *B=*)
 
 We changed these here, and saw our average lookup times drop by up to an
 order of magnitude (\~150msec for name-ip queries and \~1.5sec for
@@ -137,8 +143,10 @@ You might get this error even if your disk is not full, and is not out
 of inodes. Check your syslog logs (/var/adm/messages, normally) for
 messages like either of these:
 
-    NOTICE: realloccg /proxy/cache: file system full
-    NOTICE: alloc: /proxy/cache: file system full
+```
+NOTICE: realloccg /proxy/cache: file system full
+NOTICE: alloc: /proxy/cache: file system full
+```
 
 In a nutshell, the UFS filesystem used by Solaris can't cope with the
 workload squid presents to it very well. The filesystem will end up
@@ -223,9 +231,11 @@ You can set *ncsize* quite high, but at some point - dependent on the
 application - a too-large *ncsize* will increase the latency of lookups.
 
 Defaults are:
+```
+Solaris 2.5.1 : (max_nprocs + 16 + maxusers) + 64
+Solaris 2.6/Solaris 7 : 4 * (max_nprocs + maxusers) + 320
 
-    Solaris 2.5.1 : (max_nprocs + 16 + maxusers) + 64
-    Solaris 2.6/Solaris 7 : 4 * (max_nprocs + maxusers) + 320
+```
 
 ## The priority_paging algorithm
 
@@ -274,140 +284,29 @@ or add this to your /etc/rc files:
 
     sysctl -w net.inet.tcp.rfc1644=0
 
-## mbuf size
-
-We noticed an odd thing with some of Squid's interprocess communication.
-Often, output from the *dnsserver* processes would NOT be read in one
-chunk. With full debugging, it looks like this:
-
-    1998/04/02 15:18:48| comm_select: FD 46 ready for reading
-    1998/04/02 15:18:48| ipcache_dnsHandleRead: Result from DNS ID 2 (100 bytes)
-    1998/04/02 15:18:48| ipcache_dnsHandleRead: Incomplete reply
-    ....other processing occurs...
-    1998/04/02 15:18:48| comm_select: FD 46 ready for reading
-    1998/04/02 15:18:48| ipcache_dnsHandleRead: Result from DNS ID 2 (9 bytes)
-    1998/04/02 15:18:48| ipcache_parsebuffer: parsing:
-    $name www.karup.com
-    $h_name www.karup.inter.net
-    $h_len 4
-    $ipcount 2
-    38.15.68.128
-    38.15.67.128
-    $ttl 2348
-    $end
-
-Interestingly, it is very common to get only 100 bytes on the first
-read. When two read() calls are required, this adds additional latency
-to the overall request. On our caches running Digital Unix, the median
-*dnsserver* response time was measured at 0.01 seconds. On our FreeBSD
-cache, however, the median latency was 0.10 seconds.
-
-Here is a simple patch to fix the bug:
-
-    ============================
-    RCS file: /home/ncvs/src/sys/kern/uipc_socket.c,v
-    retrieving revision 1.40
-    retrieving revision 1.41
-    diff -p -u -r1.40 -r1.41
-    --- src/sys/kern/uipc_socket.c  1998/05/15 20:11:30     1.40
-    +++ /home/ncvs/src/sys/kern/uipc_socket.c       1998/07/06 19:27:14     1.41
-    @@ -31,7 +31,7 @@
-      * SUCH DAMAGE.
-      *
-      *     @()uipc_socket.c       8.3 (Berkeley) 4/15/94
-    - *     $Id: FAQ.sgml,v 1.250 2005/04/22 19:29:50 hno Exp $
-    + *     $Id: FAQ.sgml,v 1.250 2005/04/22 19:29:50 hno Exp $
-      */
-     #include <sys/param.h>
-    @@ -491,6 +491,7 @@ restart:
-                                    mlen = MCLBYTES;
-                                    len = min(min(mlen, resid), space);
-                            } else {
-    +                               atomic = 1;
-     nopages:
-                                    len = min(min(mlen, resid), space);
-                                    /*
-
-Another technique which may help, but does not fix the bug, is to
-increase the kernel's mbuf size. The default is 128 bytes. The MSIZE
-symbol is defined in */usr/include/machine/param.h*. However, to change
-it we added this line to our kernel configuration file:
-
-``` 
-        options         MSIZE="256"
-```
-
 ## Dealing with NIS
 
 */var/yp/Makefile* has the following section:
 
 ``` 
-        # The following line encodes the YP_INTERDOMAIN key into the hosts.byname
-        # and hosts.byaddr maps so that ypserv(8) will do DNS lookups to resolve
-        # hosts not in the current domain. Commenting this line out will disable
-        # the DNS lookups.
-        B=-b
+# The following line encodes the YP_INTERDOMAIN key into the hosts.byname
+# and hosts.byaddr maps so that ypserv(8) will do DNS lookups to resolve
+# hosts not in the current domain. Commenting this line out will disable
+# the DNS lookups.
+B=-b
 ```
 
 You will want to comment out the *B=-b* line so that *ypserv* does not
 do DNS lookups.
 
-## FreeBSD 3.3: The lo0 (loop-back) device is not configured on startup
-
-Squid requires a the loopback interface to be up and configured. If it
-is not, you will get errors such as
-\[FAQ-11.html\#comm-bind-loopback-fail commBind\].
-
-From [FreeBSD 3.3 Errata
-Notes](http://www.freebsd.org/releases/3.3R/errata.html):
-
-    Fix: Assuming that you experience this problem at all, edit ''/etc/rc.conf''
-    and search for where the network_interfaces variable is set.  In
-    its value, change the word ''auto'' to ''lo0'' since the auto keyword
-    doesn't bring the loop-back device up properly, for reasons yet to
-    be adequately determined.  Since your other interface(s) will already
-    be set in the network_interfaces variable after initial installation,
-    it's reasonable to simply s/auto/lo0/ in rc.conf and move on.
-
-Thanks to [at lentil dot org Robert Lister](mailto:robl).
-
-## FreeBSD 3.x or newer: Speed up disk writes using Softupdates
-
-by [Andre Albsmeier](mailto:andre.albsmeier@mchp.siemens.de)
-
-FreeBSD 3.x and newer support Softupdates. This is a mechanism to speed
-up disk writes as it is possible by mounting ufs volumes async. However,
-Softupdates does this in a way that a performance similar or better than
-async is achieved but without loosing security in a case of a system
-crash. For more detailed information and the copyright terms see
-*/sys/contrib/softupdates/README* and */sys/ufs/ffs/README.softupdate*.
-
-To build a system supporting softupdates, you have to build a kernel
-with *options SOFTUPDATES* set (see *LINT* for a commented out example).
-After rebooting with the new kernel, you can enable softupdates on a per
-filesystem base with the command:
-
-``` 
-        $ tunefs -n /mountpoint
-```
-
-The filesystem in question MUST NOT be mounted at this time. After that,
-softupdates are permanently enabled and the filesystem can be mounted
-normally. To verify that the softupdates code is running, simply issue a
-mount command and an output similar to the following will appear:
-
-``` 
-        $ mount
-        /dev/da2a on /usr/local/squid/cache (ufs, local, noatime, soft-updates, writes: sync 70 async 225)
-```
-
 ## Internal DNS problems with jail environment
 
 Some users report problems with running Squid in the jail environment.
 Specifically, Squid logs messages like:
-
-    2001/10/12 02:08:49| comm_udp_sendto: FD 4, 192.168.1.3, port 53: (22) Invalid argument
-    2001/10/12 02:08:49| idnsSendQuery: FD 4: sendto: (22) Invalid argument
+```
+2001/10/12 02:08:49| comm_udp_sendto: FD 4, 192.168.1.3, port 53: (22) Invalid argument
+2001/10/12 02:08:49| idnsSendQuery: FD 4: sendto: (22) Invalid argument
+```
 
 You can eliminate the problem by putting the jail's network interface
 address in the 'udp_outgoing_addr' configuration option in
@@ -436,127 +335,7 @@ to the file */etc/sysctl.conf*:
 
     net.inet.tcp.blackhole=0
 
-# OSF1/3.2
-
-If you compile both libgnumalloc.a and Squid with *cc*, the *mstats()*
-function returns bogus values. However, if you compile libgnumalloc.a
-with *gcc*, and Squid with *cc*, the values are correct.
-
-# BSD/OS
-
-## gcc/yacc
-
-Some people report \[FAQ-2.html\#bsdi-compile difficulties compiling
-squid on BSD/OS\].
-
-## process priority
-
-*I've noticed that my Squid process seems to stick at a nice value of
-four, and clicks back to that even after I renice it to a higher
-priority. However, looking through the Squid source, I can't find any
-instance of a setpriority() call, or anything else that would seem to
-indicate Squid's adjusting its own priority.*
-
-by [Bill Bogstad](mailto:bogstad@pobox.com)
-
-BSD Unices traditionally have auto-niced non-root processes to 4 after
-they used alot (4 minutes???) of CPU time. My guess is that it's the
-BSD/OS not Squid that is doing this. I don't know offhand if there is a
-way to disable this on BSD/OS.
-
-by [Arjan de Vet](mailto:Arjan.deVet@adv.iae.nl)
-
-You can get around this by starting Squid with nice-level -4 (or another
-negative value).
-
-by [at nl dot compuware dot com Bert Driehuis](mailto:bert_driehuis)
-
-The autonice behavior is a leftover from the history of BSD as a
-university OS. It penalises CPU bound jobs by nicing them after using
-600 CPU seconds. Adding
-
-``` 
-        sysctl -w kern.autonicetime=0
-```
-
-to */etc/rc.local* will disable the behavior systemwide.
-
 # Linux
-
-Generally we recommend you use Squid with an up-to-date Linux
-distribution, preferably one with a 2.6 kernel. Recent 2.6 kernels
-support some features in new versions of Squid such as epoll and
-WCCP/GRE support built in that will give better performance and
-flexibility. Note that Squid will however still function just fine under
-older Linux kernels. You will need to be mindful of the security
-implications of running your Squid proxy on the Internet if you are
-using a very old and unsupported distribution.
-
-There have been issues with GLIBC in some very old distributions, and
-upgrading or fixing GLIBC is not for the faint of heart.
-
-## FATAL: Don't run Squid as root, set 'cache_effective_user'\!
-
-Some users have reported that setting *cache_effective_user* to
-*nobody* under Linux does not work. However, it appears that using any
-*cache_effective_user* other than *nobody* will succeed. One solution
-is to create a user account for Squid and set *cache_effective_user*
-to that. Alternately you can change the UID for the *nobody* account
-from 65535 to 65534.
-
-[Russ Mellon](mailto:galifrey@crown.net) notes that these problems with
-*cache_effective_user* are fixed in version 2.2.x of the Linux kernel.
-
-## Large ACL lists make Squid slow
-
-The regular expression library which comes with Linux is known to be
-very slow. Some people report it entirely fails to work after long
-periods of time.
-
-To fix, use the GNUregex library included with the Squid source code.
-With Squid-2, use the *--enable-gnuregex* configure option.
-
-## gethostbyname() leaks memory in RedHat 6.0 with glibc 2.1.1.
-
-by [at netsoft dot ro Radu Greab](mailto:radu)
-
-The gethostbyname() function leaks memory in RedHat 6.0 with glibc
-2.1.1. The quick fix is to delete nisplus service from hosts entry in
-*/etc/nsswitch.conf*. In my tests dnsserver memory use remained stable
-after I made the above change.
-
-See [RedHat bug
-id 3919](http://developer.redhat.com/bugzilla/show_bug.cgi?id=3919).
-
-## assertion failed: StatHist.c:91: \`statHistBin(H, max) == H-\>capacity - 1' on Alpha system.
-
-by [Jamie Raymond](mailto:jraymond@gnu.org)
-
-Some early versions of Linux have a kernel bug that causes this. All
-that is needed is a recent kernel that doesn't have the mentioned bug.
-
-## tools.c:605: storage size of \`rl' isn't known
-
-This is a bug with some versions of glibc. The glibc headers incorrectly
-depended on the contents of some kernel headers. Everything broke down
-when the kernel folks rearranged a bit in the kernel-specific header
-files.
-
-We think this glibc bug is present in versions 2.1.1 (or 2.1.0) and
-earlier. There are two solutions:
-
-  - Make sure /usr/include/linux and /usr/include/asm are from the
-    kernel version glibc is build/configured for, not any other kernel
-    version. Only compiling of loadable kernel modules outside of the
-    kernel sources depends on having the current versions of these, and
-    for such builds -I/usr/src/linux/include (or where ever the new
-    kernel headers are located) can be used to resolve the matter.
-
-  - Upgrade glibc to 2.1.2 or later. This is always a good idea anyway,
-    provided a prebuilt upgrade package exists for the Linux
-    distribution used.. Note: Do not attempt to manually build and
-    install glibc from source unless you know exactly what you are
-    doing, as this can easily render the system unuseable.
 
 ## Can't connect to some sites through Squid
 
@@ -582,7 +361,7 @@ command:
 [HenrikNordstrom](/HenrikNordstrom)
 explains:
 
-    ECN is an standard extension to TCP/IP, making TCP/IP behave better in
+> ECN is an standard extension to TCP/IP, making TCP/IP behave better in
     overload conditions where the available bandwidth is all used up (i.e.
     the default condition for any WAN link).
     Defined by Internet RFC3168 issued by the Networking Working Group at
@@ -604,11 +383,10 @@ explains:
 
 See also the [thread on the NANOG mailing
 list](http://answerpointe.cctec.com/maillists/nanog/historical/0104/msg00714.html),
-[RFC3168 \&quot;The Addition of Explicit Congestion Notification (ECN)
-to IP, PROPOSED STANDARD\&quot;](ftp://ftp.isi.edu/in-notes/rfc3168.txt)
-, [Sally Floyd's page on ECN and problems related to
-it](http://www.aciri.org/floyd/ecn.html) or [ECN Hall of
-Shame](http://urchin.earth.li/ecn/) for more information.
+[RFC3168 "The Addition of Explicit Congestion Notification (ECN)
+to IP, PROPOSED STANDARD"](ftp://ftp.isi.edu/in-notes/rfc3168.txt),
+[Sally Floyd's page on ECN and problems related to it](http://www.aciri.org/floyd/ecn.html) or
+[ECN Hall of Shame](http://urchin.earth.li/ecn/) for more information.
 
 ## Some sites load extremely slowly or not at all
 
@@ -642,59 +420,3 @@ But be warned that this will quite noticeably degrade TCP performance.
 
 Other possible alternatives is setting tcp_recv_bufsize in squid.conf,
 or using the /sbin/ip route ... window=xxx option.
-
-# IRIX
-
-## ''dnsserver'' always returns 255.255.255.255
-
-There is a problem with GCC (2.8.1 at least) on Irix 6 which causes it
-to always return the string 255.255.255.255 for _ANY_ address when
-calling inet_ntoa(). If this happens to you, compile Squid with the
-native C compiler instead of GCC.
-
-# SCO-UNIX
-
-by [F.J. Bosscha](mailto:f.j.bosscha@nhl.nl)
-
-To make squid run comfortable on SCO-unix you need to do the following:
-
-Increase the *NOFILES* paramater and the *NUMSP* parameter and compile
-squid with I had, although squid told in the cache.log file he had 3000
-filedescriptors, problems with the messages that there were no
-filedescriptors more available. After I increase also the NUMSP value
-the problems were gone.
-
-One thing left is the number of tcp-connections the system can handle.
-Default is 256, but I increase that as well because of the number of
-clients we have.
-
-# AIX
-
-## "shmat failed" errors with ''diskd''
-
-32-bit processes on AIX and later are restricted by default to a maximum
-of 11 shared memory segments. This restriction can be removed on AIX
-4.2.1 and later by setting the environment variable *EXTSHM=ON* in the
-script or shell which starts squid.
-
-## Core dumps when squid process grows to 256MB
-
-32-bit processes cannot use more than 256MB of stack and data in the
-default memory model. To force the loader to use large address space for
-squid, either:
-
-  - set the *LDR_CNTRL* environment variable,
-
-eg *LDR_CNTRL="MAXDATA=0x80000000"*; or
-
-  - link with *-bmaxdata:0x80000000*; or
-
-  - patch the squid binary
-
-See [IBM's
-documentation](http://publibn.boulder.ibm.com/doc_link/en_US/a_doc_lib/aixprggd/genprogc/lrg_prg_support.htm)
-on large program support for more information, including how to patch an
-already-compiled program.
-
-Back to the
-[SquidFaq](/SquidFaq)

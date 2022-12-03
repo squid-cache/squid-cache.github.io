@@ -11,15 +11,22 @@ categories: ReviewMe
 
   - [InnerWorkings](/SquidFaq/InnerWorkings):
     a few insights into squid and its underlying logic
-    
 
-## Installation and Use
 {% comment %}
-For each sectoin, replace this bit of liquid text, changing
+For each section, replace this bit of liquid text, changing
 the section definition in the first line (the rest can
 remain the same). This will autopopulate the FAQ index using
 the FaqSection FrontMatter metadata
 {% endcomment %}
+
+{% assign section = "preamble" %}
+{%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
+{% for p in pages %}
+- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
+{% endfor %}
+
+## Installation and Use
+
 {% assign section = "installation" %}
 
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}

@@ -1,6 +1,7 @@
 ---
 categories: ReviewMe
 published: false
+FaqSection: misc
 ---
 # What are cachable objects?
 
