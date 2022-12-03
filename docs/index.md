@@ -22,7 +22,7 @@ If you experience problems with the site or the contents, please see
     "Help! My users complain that the proxy is slow!"
 - an all-time FAQ: [What is the best OS for Squid?](/BestOsForSquid)
 - [Things you can (and cannot) do with NTLM](/NTLMIssues)
-- [Zero Sized Reply](/ZeroSizedReply): A frequent issue with some setups
+- [Zero Sized Reply](/SquidFaq/ZeroSizedReply): A frequent issue with some setups
 - How to run [multiple squid servers](/MultipleInstances) on a single box
 - Squid [Configuration Examples](/ConfigExamples)
 - The [Knowledge Base](/KnowledgeBase)
