@@ -1,46 +1,31 @@
----
-categories: ReviewMe
----
-# Squid Web Cache FAQ Table of Contents
+# Squid Web Cache FAQ
 
-  - [Index](/SquidFaq/FaqIndex)
-    contains the detailed list of covered topics
-
-  - [AboutSquid](/SquidFaq/AboutSquid)
-    is about squid itself and the people behind it
-
-  - [InnerWorkings](/SquidFaq/InnerWorkings):
-    a few insights into squid and its underlying logic
-
-{% comment %}
-For each section, replace this bit of liquid text, changing
-the section definition in the first line (the rest can
-remain the same). This will autopopulate the FAQ index using
-the FaqSection FrontMatter metadata
-{% endcomment %}
+## Introduction
 
 {% assign section = "preamble" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
-{% for p in pages %}
+{% for p in pages -%}
 - [{{ p.title }}]({{ p.url | replace: ".html", "" }})
 {% endfor %}
+
 
 ## Installation and Use
 
 {% assign section = "installation" %}
 
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
-{% for p in pages %}
+{% for p in pages -%}
 - [{{ p.title }}]({{ p.url | replace: ".html", "" }})
 {% endfor %}
+
 
 ## Modes of operation
 
 {% assign section = "operation" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
-{% for p in pages %}
+{% for p in pages -%}
 - [{{ p.title }}]({{ p.url | replace: ".html", "" }})
-{% endfor %}
+{% endfor -%}
 - Explicit Proxy (or Forward Proxy) is the basic mode, upon which
   everything else is built.
 - *Offline* or aggressive mode: serving up stale data with
@@ -53,10 +38,9 @@ the FaqSection FrontMatter metadata
 ## Troubleshooting
 {% assign section = "troubleshooting" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
-{% for p in pages %}
+{% for p in pages -%}
 - [{{ p.title }}]({{ p.url | replace: ".html", "" }})
-{% endfor %}
-
+{% endfor -%}
 - the [KnowledgeBase](/KnowledgeBase)
   Covers how things are supposed to work and what to look out for. It includes specific help guides for supported operating systems.
 - [ConfigExamples](/ConfigExamples):
@@ -65,9 +49,9 @@ the FaqSection FrontMatter metadata
 ## Performance Tuning
 {% assign section = "performance" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
-{% for p in pages %}
+{% for p in pages -%}
 - [{{ p.title }}]({{ p.url | replace: ".html", "" }})
-{% endfor %}
+{% endfor -}
 
 ## Squid features
 
@@ -76,6 +60,6 @@ See [Features](/Features) for a run down of Squid's main features
 ## Other FAQ
 {% assign section = "misc" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
-{% for p in pages %}
+{% for p in pages -%}
 - [{{ p.title }}]({{ p.url | replace: ".html", "" }})
-{% endfor %}
+{% endfor -%}
