@@ -11,7 +11,7 @@ published: false
   - **Version**: 2.6
 
   - **Developer**:
-    [Henrik_Nordström](/Henrik_Nordstr%C3%B6m),
+    [Henrik_Nordström](/HenrikNordstrom.md),
     others welcome
 
   - **Priority**: 2

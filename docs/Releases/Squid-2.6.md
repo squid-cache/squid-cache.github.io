@@ -20,7 +20,7 @@ different amounts of extra patches today. Not surprising given the fact
 that Squid-2.5 has been feature frozen for 3 years now.
 
 The general consensus among the code sprint participants
-([Henrik_Nordström](/Henrik_Nordstr%C3%B6m),
+([Henrik_Nordström](/HenrikNordstrom.md),
 [FrancescoChemolli](/FrancescoChemolli)
 & our kind host
 [GuidoSerassio](/GuidoSerassio))

@@ -8,7 +8,7 @@ project running.
 US registered non-profit (501(c)(3) tax-exempt) providing the
 infrastructure and support framework for Squid developers and users.
 
-- [Henrik_Nordström](/Henrik_Nordstr%C3%B6m)
+- [Henrik_Nordström](/HenrikNordstrom.md)
   President
 - [Francesco Chemolli](/FrancescoChemolli)
   Vice President
@@ -21,7 +21,7 @@ infrastructure and support framework for Squid developers and users.
 
 Emeritus developers who provided oversight of the Squid Project before
 [The Squid Software Foundation](http://foundation.squid-cache.org/).
-- [Henrik_Nordström](/Henrik_Nordstr%C3%B6m),
+- [Henrik_Nordström](/HenrikNordstrom.md),
   Squid Hacker Extraordinaire and [Squid-2.x](/RoadMap/Squid2)
   release manager.
 - [Amos Jeffries](/AmosJeffries)
@@ -75,7 +75,7 @@ formats for easy use.
 - [Debian](/KnowledgeBase/Debian):
   Luigi Gangitano
 - [Fedora](/KnowledgeBase/Fedora):
-  [Henrik_Nordström](/Henrik_Nordstr%C3%B6m),
+  [Henrik_Nordström](/HenrikNordstrom.md),
   Lubos Uhliarik
 - [Fink](/KnowledgeBase/Fink):
   Benjamin Reed
