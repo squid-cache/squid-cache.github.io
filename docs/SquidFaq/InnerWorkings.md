@@ -74,9 +74,8 @@ you'd fetch the object from, why bother querying?)
 
 ## What features are Squid developers currently working on?
 
-The features and areas we work on are always changing. See the [Squid
-Road
-Maps](/RoadMap)
+The features and areas we work on are always changing. See the 
+[Squid Roadmap](/RoadMap)
 for more details on current activities.
 
 ## Tell me more about Internet traffic workloads
