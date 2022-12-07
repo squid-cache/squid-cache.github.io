@@ -1,12 +1,11 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
-*Cache Digest FAQs compiled by Niall Doherty `<ndoherty AT eei DOT
-ericsson DOT se>`.*
+# Cache Digests
 
-# What is a Cache Digest?
+* by Niall Doherty <ndoherty AT eei DOT ericsson DOT se>*
+
+## What is a Cache Digest?
 
 A Cache Digest is a summary of the contents of an Internet Object
 Caching Server. It contains, in a compact (i.e. compressed) format, an
@@ -16,7 +15,7 @@ A "lossy" technique is used for compression, which means that very high
 compression factors can be achieved at the expense of not having 100%
 correct information.
 
-# How and why are they used?
+## How and why are they used?
 
 Cache servers periodically exchange their digests with each other.
 
@@ -33,16 +32,15 @@ valid one is fetched.
 The checks in the digest are very fast and they eliminate the need for
 per-request queries to peers. Hence:
 
-  - Latency is eliminated and client response time should be improved.
-
-  - Network utilisation may be improved.
+- Latency is eliminated and client response time should be improved.
+- Network utilisation may be improved.
 
 Note that the use of Cache Digests (for querying the cache contents of
 peers) and the generation of a Cache Digest (for retrieval by peers) are
 independent. So, it is possible for a cache to make a digest available
 for peers, and not use the functionality itself and vice versa.
 
-# What is the theory behind Cache Digests?
+## What is the theory behind Cache Digests?
 
 Cache Digests are based on Bloom Filters - they are a method for
 representing a set of keys with lookup capabilities; where lookup means
@@ -50,17 +48,15 @@ representing a set of keys with lookup capabilities; where lookup means
 
 In building a cache digest:
 
-  - A vector (1-dimensional array) of m bits is allocated, with all bits
-    initially set to 0.
+- A vector (1-dimensional array) of m bits is allocated, with all bits
+  initially set to 0.
+- A number, k, of independent hash functions are chosen, h1, h2, ...,
+  hk, with range { 1, ..., m } (i.e. a key hashed with any of these
+  functions gives a value between 1 and m inclusive).
+- The set of n keys to be operated on are denoted by: A = { a1, a2,
+  a3, ..., an }.
 
-  - A number, k, of independent hash functions are chosen, h1, h2, ...,
-    hk, with range { 1, ..., m } (i.e. a key hashed with any of these
-    functions gives a value between 1 and m inclusive).
-
-  - The set of n keys to be operated on are denoted by: A = { a1, a2,
-    a3, ..., an }.
-
-## Adding a Key
+### Adding a Key
 
 To add a key the value of each hash function for that key is calculated.
 So, if the key was denoted by *a*, then h1(a), h2(a), ..., hk(a) are
@@ -73,7 +69,7 @@ hash functions would have 6 bits to be set to 1 for each key added.
 Note that the addition of a number of *different* keys could cause one
 particular bit to be set to 1 multiple times.
 
-## Querying a Key
+### Querying a Key
 
 To query for the existence of a key the indices into the array are
 calculated from the hash functions as above.
@@ -92,7 +88,7 @@ controlled. Larger values for the ratio of the digest size to the number
 of entries added lower the probability. The number of hash functions
 chosen also influence the probability.
 
-## Deleting a Key
+### Deleting a Key
 
 To delete a key, it is not possible to simply set the associated bits to
 0 since any one of those bits could have been set to 1 by the addition
@@ -108,7 +104,7 @@ position in the array. The procedures to follow would be:
     0), and if a counter reaches 0 *then* the corresponding bit is set
     to 0.
 
-# How is the size of the Cache Digest in Squid determined?
+## How is the size of the Cache Digest in Squid determined?
 
 Upon initialisation, the *capacity* is set to the number of objects that
 can be (are) stored in the cache. Note that there are upper and lower
@@ -117,9 +113,7 @@ limits here.
 An arbitrary constant, bits_per_entry (currently set to 5), is used to
 calculate the size of the array using the following formula:
 
-``` 
- number of bits in array = capacity * bits_per_entry + 7
-```
+    number of bits in array = capacity * bits_per_entry + 7
 
 The size of the digest, in bytes, is therefore:
 
@@ -130,7 +124,7 @@ measured. If the capacity has changed by a large enough amount (10%)
 then the digest array is freed and reallocated memory, otherwise the
 same digest is re-used.
 
-# What hash functions (and how many of them) does Squid use?
+## What hash functions (and how many of them) does Squid use?
 
 The protocol design allows for a variable number of hash functions (k).
 However, Squid employs a very efficient method using a fixed number -
@@ -145,16 +139,16 @@ Each chunk, modulo the digest size (m), is used as the value for one of
 the hash functions - i.e. an index into the bit array.
 
 Note: As Squid retrieves objects and stores them in its cache on disk,
-it adds them to the in-RAM index using a lookup key which is an MD5 hash
-- the very one discussed above. This means that the values for the Cache
+it adds them to the in-RAM index using a lookup key which is an MD5 hash,
+the very one discussed above. This means that the values for the Cache
 Digest hash functions are already available and consequently the
-operations are extremely efficient\!
+operations are extremely efficient!
 
 Obviously, modifying the code to support a variable number of hash
 functions would prove a little more difficult and would most likely
 reduce efficiency.
 
-# How are objects added to the Cache Digest in Squid?
+## How are objects added to the Cache Digest in Squid?
 
 Every object referenced in the index in RAM is checked to see if it is
 suitable for addition to the digest.
@@ -180,7 +174,7 @@ Note that it is best to be conservative with your refresh pattern for
 the Cache Digest, i.e. do *not* add objects if they might become stale
 soon. This will reduce the number of False Hits.
 
-# Does Squid support deletions in Cache Digests? What are diffs/deltas?
+## Does Squid support deletions in Cache Digests? What are diffs/deltas?
 
 Squid does not support deletions from the digest. Because of this the
 digest must, periodically, be rebuilt from scratch to erase stale bits
@@ -196,23 +190,22 @@ to have more frequent updates (and hence, more accurate information).
 
 Costs:
 
-  - RAM - extra RAM needed to hold two digests while comparisons takes
-    place.
+* RAM: extra RAM needed to hold two digests while comparisons takes
+  place.
+* CPU: probably a negligible amount.
 
-  - CPU - probably a negligible amount.
 
-# When and how often is the local digest built?
+## When and how often is the local digest built?
 
 The local digest is built:
 
-  - when store_rebuild completes after startup (the cache contents have
-    been indexed in RAM), and
-
-  - periodically thereafter. Currently, it is rebuilt every hour (more
-    data and experience is required before other periods, whether fixed
-    or dynamically varying, can "intelligently" be chosen). The good
-    thing is that the local cache decides on the expiry time and peers
-    must obey (see later).
+* when store_rebuild completes after startup (the cache contents have
+  been indexed in RAM), and
+* periodically thereafter. Currently, it is rebuilt every hour (more
+  data and experience is required before other periods, whether fixed
+  or dynamically varying, can "intelligently" be chosen). The good
+  thing is that the local cache decides on the expiry time and peers
+  must obey (see later).
 
 While the (new) digest is being built in RAM the old version (stored on
 disk) is still valid, and will be returned to any peer requesting it.
@@ -224,12 +217,12 @@ programmed using an event-handling model, the approach taken is to split
 the digest building task into chunks (i.e. chunks of entries to add) and
 to register each chunk as an event. If CPU load is overly high, it is
 possible to extend the build period - as long as it is finished before
-the next rebuild is due\!
+the next rebuild is due!
 
 It may prove more efficient to implement the digest building as a
 separate process/thread in the future...
 
-# How are Cache Digests transferred between peers?
+## How are Cache Digests transferred between peers?
 
 Cache Digests are fetched from peers using the standard HTTP protocol
 (note that a *pull* rather than *push* technique is used).
@@ -248,46 +241,41 @@ Note: requesting caches use an If-Modified-Since request in case the
 peer has not rebuilt its digest for some reason since the last time it
 was fetched.
 
-# How and where are Cache Digests stored?
+## How and where are Cache Digests stored?
 
-## Cache Digest built locally
+### Cache Digest built locally
 
 Since the local digest is generated purely for the benefit of its
 neighbours keeping it in RAM is not strictly required. However, it was
 decided to keep the local digest in RAM partly because of the following:
 
-  - Approximately the same amount of memory will be (re-)allocated on
-    every rebuild of the digest
-
-  - the memory requirements are probably quite small (when compared to
-    other requirements of the cache server)
-
-  - if ongoing updates of the digest are to be supported (e.g.
-    additions/deletions) it will be necessary to perform these
-    operations on a digest in RAM
-
-  - if diffs/deltas are to be supported the "old" digest would have to
-    be swapped into RAM anyway for the comparisons.
+* Approximately the same amount of memory will be (re-)allocated on
+  every rebuild of the digest
+* the memory requirements are probably quite small (when compared to
+  other requirements of the cache server)
+* if ongoing updates of the digest are to be supported (e.g.
+  additions/deletions) it will be necessary to perform these
+  operations on a digest in RAM
+* if diffs/deltas are to be supported the "old" digest would have to
+  be swapped into RAM anyway for the comparisons.
 
 When the digest is built in RAM, it is then swapped out to disk, where
 it is stored as a "normal" cache item - which is how peers request it.
 
-## Cache Digest fetched from peer
+### Cache Digest fetched from peer
 
 When a query from a client arrives, *fast lookups* are required to
 decide if a request should be made to a neighbour cache. It it therefore
 required to keep all peer digests in RAM.
 
 Peer digests are also stored on disk for the following reasons:
+* **Recovery** If stopped and restarted, peer digests can be reused
+  from the local on-disk copy (they will soon be validated using an
+  HTTP IMS request to the appropriate peers as discussed earlier)
+* **Sharing** peer digests are stored as normal objects in the cache.
+  This allows them to be given to neighbour caches.
 
-  - **Recovery** If stopped and restarted, peer digests can be reused
-    from the local on-disk copy (they will soon be validated using an
-    HTTP IMS request to the appropriate peers as discussed earlier)
-
-  - **Sharing** peer digests are stored as normal objects in the cache.
-    This allows them to be given to neighbour caches.
-
-# How are the Cache Digest statistics in the Cache Manager to be interpreted?
+## How are the Cache Digest statistics in the Cache Manager to be interpreted?
 
 Cache Digest statistics can be seen from the Cache Manager or through
 the *squidclient* utility. The following examples show how to use the
@@ -297,10 +285,10 @@ statistics from the localhost and local digest statistics from another
 cache, respectively.
 
 ``` 
-  squidclient mgr:menu
-  squidclient mgr:store_digest
-  squidclient mgr:refresh
-  squidclient -h peer mgr:store_digest
+squidclient mgr:menu
+squidclient mgr:store_digest
+squidclient mgr:refresh
+squidclient -h peer mgr:store_digest
 ```
 
 The available statistics provide a lot of useful debugging information.
@@ -350,10 +338,10 @@ Remember also that at time of validation (on the peer) the "real"
 refresh pattern will be used - so it is wise to keep the default refresh
 pattern conservative.
 
-**bits: on** indicates the number of bits in the digest that are set to
-1. **bits: util** gives this figure as a percentage of the total number
+**bits: on** indicates the number of bits in the digest that are set to 1.
+**bits: util** gives this figure as a percentage of the total number
 of bits in the digest. As we saw earlier, a figure of 50% represents the
-optimal trade-off. Values too high (say \> 75%) would cause a larger
+optimal trade-off. Values too high (say > 75%) would cause a larger
 number of collisions, and hence False Hits, while lower values mean the
 digest is under-utilised (using unnecessary RAM). Note that low values
 are normal for caches that are starting to fill up.
@@ -361,7 +349,7 @@ are normal for caches that are starting to fill up.
 A bit sequence is an uninterrupted sequence of bits with the same value.
 *bit-seq: avg.len* gives some insight into the quality of the hash
 functions. Long values indicate problem, even if *bits:util* is 50% (\>
-3 = suspicious, \> 10 = very suspicious).
+3 = suspicious, > 10 = very suspicious).
 
 # What are False Hits and how should they be handled?
 
@@ -386,30 +374,25 @@ objects made to a peer will use this header and if the objects are not
 available, the peer can reply appropriately allowing Squid to recognise
 the situation. The following describes what Squid is aiming towards:
 
-  - Cache Digests used to obtain good estimates of where a requested
-    object is located in a Cache Hierarchy
+- Cache Digests used to obtain good estimates of where a requested
+  object is located in a Cache Hierarchy
+- Persistent HTTP Connections between peers. There will be no TCP
+  startup overhead and both latency and network load will be similar for 
+  ICP (i.e. fast).
+- HTTP False Hit Recognition using the *only-if-cached* HTTP header -
+    allowing fall back to another peer or, if no other peers are available
+    with the object, then going direct (or *through* a parent if behind a firewall).
 
-  - Persistent HTTP Connections between peers. There will be no TCP
-    startup overhead and both latency and
+## How can Cache Digest related activity be traced/debugged?
 
-network load will be similar for ICP (i.e. fast).
-
-  - HTTP False Hit Recognition using the *only-if-cached* HTTP header -
-    allowing fall back to another peer or, if no other
-
-peers are available with the object, then going direct (or *through* a
-parent if behind a firewall).
-
-# How can Cache Digest related activity be traced/debugged?
-
-## Enabling Cache Digests
+### Enabling Cache Digests
 
 If you wish to use Cache Digests (available in Squid version 2) you need
 to add a *configure* option, so that the relevant code is compiled in:
 
     ./configure --enable-cache-digests ...
 
-## What do the access.log entries look like?
+### What do the access.log entries look like?
 
 If a request is forwarded to a neighbour due a HIT in that neighbour's
 Cache Digest the hierarchy (9th) field of the access.log file for the
@@ -419,10 +402,9 @@ Cache Digest the hierarchy (9th) field of the access.log file for the
 On the peer cache the request should appear as a normal HTTP request
 from the first cache.
 
-## What does a False Hit look like?
+### What does a False Hit look like?
 
-The easiest situation to analyse is when two caches (say A and
-:sunglasses: are
+The easiest situation to analyse is when two caches (say A and B) are
 involved neither of which uses the other as a parent. In this case, a
 False Hit would show up as a CACHE_DIGEST_HIT on A and *NOT* as a
 TCP_HIT on B (or vice versa). If B does not fetch the object for A then
@@ -431,36 +413,27 @@ Access Denied or Forbidden message). This will happen if the object is
 not "available" on B and B does not have *miss_access* enabled for A
 (or is not acting as a parent for A).
 
-## How is the cause of a False Hit determined?
+### How is the cause of a False Hit determined?
 
 Assume A requests a URL from B and receives a False Hit
 
-  - Using the *squidclient* utility *PURGE* the URL from A, e.g.
-    
-      - ``` 
-          squidclient -m PURGE 'URL'
-        ```
-
-  - Using the *squidclient* utility request the object from A, e.g.
-    
-      - ``` 
-          squidclient 'URL'
-        ```
+- Using the *squidclient* utility *PURGE* the URL from A, e.g.
+    `squidclient -m PURGE 'URL'`
+- Using the *squidclient* utility request the object from A, e.g.
+    `squidclient 'URL'`
 
 The HTTP headers of the request are available. Two header types are of
 particular interest:
 
-  - **X-Cache** - this shows whether an object is available or not.
-
-  - **X-Cache-Lookup** - this keeps the result of a store table lookup
-    *before* refresh causing rules are checked (i.e. it indicates if the
-    object is available before any validation would be attempted).
+- **X-Cache** - this shows whether an object is available or not.
+- **X-Cache-Lookup** - this keeps the result of a store table lookup
+  *before* refresh causing rules are checked (i.e. it indicates if the
+  object is available before any validation would be attempted).
 
 The X-Cache and X-Cache-Lookup headers from A should both show MISS.
 
 If A requests the object from B (which it will if the digest lookup
-indicates B has it - assuming B is closest peer of course
-:smile: then
+indicates B has it - assuming B is closest peer of course :smile: then
 there will be another set of these headers from B.
 
 If the X-Cache header from B shows a MISS a False Hit has occurred. This
@@ -468,16 +441,14 @@ means that A thought B had an object but B tells A it does not have it
 available for retrieval. The reason why it is not available for
 retrieval is indicated by the X-Cache-Lookup header. If:
 
-  - *X-Cache-Lookup = MISS* then either A's (version of B's) digest is
-    out-of-date or corrupt OR a collision occurred
+- *X-Cache-Lookup = MISS* then either A's (version of B's) digest is
+  out-of-date or corrupt OR a collision occurred in the digest
+  (very small probability) OR B recently purged the object.
+- *X-Cache-Lookup = HIT* then B had the object, but refresh rules (or
+  A's max-age requirements) prevent A from getting a HIT (validation
+  failed).
 
-in the digest (very small probability) OR B recently purged the object.
-
-  - *X-Cache-Lookup = HIT* then B had the object, but refresh rules (or
-    A's max-age requirements) prevent A from getting a HIT (validation
-    failed).
-
-## Use The Source
+### Use The Source
 
 If there is something else you need to check you can always look at the
 source code. The main Cache Digest functionality is organised as
@@ -495,17 +466,14 @@ you understand how Cache Digests work):
 
 # What about ICP?
 
-|                                                                      |        |
-| -------------------------------------------------------------------- | ------ |
-| :warning: | WANTED |
+> :warning: missing section
 
-# Is there a Cache Digest Specification?
+## Is there a Cache Digest Specification?
 
 There is now, thanks to Martin Hamilton `<martin AT net DOT lut DOT ac
-DOT uk>` and
-[AlexRousskov](/AlexRousskov).
+DOT uk>` and [AlexRousskov](/AlexRousskov).
 
-Cache Digests, as implemented in Squid 2.1.PATCH2, are described in
+Cache Digests are described in
 [cache-digest-v5.txt](http://www.squid-cache.org/CacheDigest/cache-digest-v5.txt).
 
 You'll notice the format is similar to an Internet Draft. We decided not
@@ -513,11 +481,7 @@ to submit this document as a draft because Cache Digests will likely
 undergo some important changes before we want to try to make it a
 standard.
 
-# Would it be possible to stagger the timings when cache_digests are retrieved from peers?
-
-|                                                                        |                                                 |
-| ---------------------------------------------------------------------- | ----------------------------------------------- |
-| :information_source: | The information here is current for version 2.2 |
+## Would it be possible to stagger the timings when cache_digests are retrieved from peers?
 
 Squid already has code to spread the digest updates. The algorithm is
 currently controlled by a few hard-coded constants in *peer_digest.c*.
@@ -532,6 +496,3 @@ bandwidth to fetch all the digests. Depending on your environment, that
 bandwidth may be more or less than an ICP would require. Upcoming digest
 deltas (x10 smaller than the digests themselves) may be the only way to
 solve the "big scale" problem.
-
-Back to the
-[SquidFaq](/SquidFaq)

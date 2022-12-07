@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
 # Adding a Cache Dir
