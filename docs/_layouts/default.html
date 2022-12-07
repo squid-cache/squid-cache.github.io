@@ -38,6 +38,7 @@
         <section id="main_content" class="inner">
             {{ content }}
         {%- if page.categories contains 'ConfigExample' -%}{% include config-example-footer.html -%}{%- endif -%}
+        {%- if page.FaqSection -%}<p>To the <a href="/SquidFaq">FAQ Index</a></p>{%- endif -%}
         {%- if page.categories.size -%}Page categories: {{ page.categories | join: ', ' }}{%- endif -%}
         {%- if page.tags.size -%}Page tags: {{page.tags | join: ', '}}{%- endif -%}
         </section>
