@@ -85,8 +85,7 @@ alterations need to be brought to the attention of the Squid Developers.
 
 # Submissions Outside the System
 
-If you are truly against using the existing translation toolkit system
-we run. You have the option of locating the **errpages.pot** file in the
+Locate the **errpages.pot** file in the
 squid source code. Translating it and sending it to the translation
 maintainer ([AmosJeffries](/AmosJeffries) at present).
 
