@@ -83,7 +83,7 @@ same CSS insertion as [Squid-3.1](/Releases/Squid-3.1)
 these language settings are embedded directly into the templates and
 alterations need to be brought to the attention of the Squid Developers.
 
-# Submissions Outside the System
+# How to submit
 
 Locate the **errpages.pot** file in the
 squid source code. Translating it and sending it to the translation
