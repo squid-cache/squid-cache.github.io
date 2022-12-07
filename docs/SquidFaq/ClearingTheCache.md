@@ -1,9 +1,7 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
-# Pruning the Cache Down
+# Clearing the Cache contents
 
 Clearing the cache can be necessary under some unusual circumstances.
 Usually if the estimated size of the cache was calculated incorrectly
@@ -15,8 +13,8 @@ squid is sufficient. Squid will handle the changes automatically and
 starts to purge the cache down to size again within 10 minutes of the
 configure.
 
-> :information_source:
-    NP: on particularly large caches the prune has been known to take a
+> :warning:
+    on particularly large caches the prune has been known to take a
     long time and/or a lot of CPU.
 
 old squid.conf
@@ -31,13 +29,13 @@ and reconfigure ...
 
     squid -k reconfigure
 
-  - :warning:
+> :warning:
     **reconfigure** does not work on COSS directory changes. Use the
     tricks below and a full restart instead. This is due to COSS using
     partition/disk level mapping instead of 'normal' human accessible
     files and directories.
 
-# Changing the Cache Levels
+## Changing the Cache Levels
 
 Altering the cache_dir L1 and L2 sizes has not been tested with the
 above altering. It is still recommended to manually delete the cache
@@ -62,5 +60,3 @@ If you wish to try the pruning method with a level change and let us
 know the results then please do. We would like this page to cover all
 known resizing requirements and options.
 
-Back to the
-[SquidFaq](/SquidFaq)

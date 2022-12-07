@@ -1,8 +1,5 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: installation
-
 ---
 # Compiling Squid
 
@@ -46,11 +43,7 @@ need.
     % cd squid-2.6.RELEASExy
     % ./configure --with-MYOPTION --with-MYOPTION2 etc
     % make
-
-  - .. and finally install...
-
-<!-- end list -->
-
+    % make check
     % make install
 
 Squid will by default, install into */usr/local/squid*. If you wish to
@@ -60,19 +53,11 @@ install somewhere else, see the *--prefix* option for configure.
 
 You will need a C++ compiler:
 
-  - To compile Squid v3, any decent C++ compiler would do. Almost all
-    modern Unix systems come with pre-installed C++ compilers which work
-    just fine.
-
-  - To compile Squid v4 and later, you will need a C++11-compliant
-    compiler. Most recent Unix distributions come with pre-installed
-    compilers that support C++11.
-
-:warning:
-Squid v3.4 and v3.5 automatically enable C++11 support in the compiler
-if ./configure detects such support. Later Squid versions require C++11
-support while earlier ones may fail to build if C++11 compliance is
-enforced by the compiler.
+- To compile Squid 4 and later, you will need a C++11-compliant
+  compiler. Most recent Unix and Linux distributions come with pre-installed
+  compilers that support C++11.
+- Squid 6 will require a C++17-compliant compiler. These are generally available
+  on modern unix and linux distributions
 
 If you are uncertain about your system's C compiler, The GNU C compiler
 is widely available and supplied in almost all operating systems. It is
@@ -89,9 +74,9 @@ compiler and Sun's SunStudio. Microsoft Visual C++ is another target the
 Squid developers aim for, but at the time of this writing (April 2014)
 still quite a way off.
 
-:warning:
-Please note that due to a bug in clang's support for atomic operations,
-squid doesn't build on clang older than 3.2.
+> :warning:
+  Please note that due to a bug in clang's support for atomic operations,
+  squid doesn't build on clang older than 3.2.
 
 ### What else do I need to compile Squid?
 
@@ -102,11 +87,15 @@ You will need [Perl](http://www.perl.com/) installed on your system.
 Each feature you choose to enable may also require additional libraries
 or tools to build.
 
+The easiest way to understand the dependencies for a full Squid installation
+is to check the [Dockefiles](https://github.com/kinkie/dockerfiles) for the
+containers used to run the project's CI/CD
+
 ### How do I cross-compile Squid ?
 
 Use the ./configure option **--host** to specify the cross-compilation
-tuplet for the machine which Squid will be installed on. The [autotools
-manual](http://www.gnu.org/software/automake/manual/html_node/Cross_002dCompilation.html)
+tuplet for the machine which Squid will be installed on. The
+[autotools manual](http://www.gnu.org/software/automake/manual/html_node/Cross_002dCompilation.html)
 has some simple documentation for this and other cross-configuration
 options - in particular what they mean is a very useful detail to know.
 
@@ -142,8 +131,8 @@ beginning, i.e.:
     make install
 
 If your *patch* program seems to complain or refuses to work, you should
-get a more recent version, from the [GNU FTP
-site](ftp://ftp.gnu.ai.mit.edu/pub/gnu/), for example.
+get a more recent version, from the [GNU FTP site](ftp://ftp.gnu.ai.mit.edu/pub/gnu/),
+for example.
 
 Ideally you should use the patch command which comes with your OS.
 
@@ -211,11 +200,7 @@ Known Problem:
     ...
 
 You may need to upgrade your gcc installation to a more recent version.
-Check your gcc version with
-
-``` 
-  gcc -v
-```
+Check your gcc version with `gcc -v`
 
 If it is earlier than 2.7.2, you might consider upgrading. Gcc 2.7.2 is
 very old and not widely supported.
@@ -251,13 +236,12 @@ unit-tested as part of our
 [BuildFarm](/BuildFarm)
 and are known to compile OK.
 
-  - :warning:
-    The Linux system layout differs markedly from the Squid defaults.
-    The following ./configure options are needed to install Squid into
-    the Debian / Ubuntu standard filesystem locations:
+> :warning:
+  The Linux system layout differs markedly from the Squid defaults.
+  The following ./configure options are needed to install Squid into
+  the Debian / Ubuntu standard filesystem locations:`
 
-<!-- end list -->
-
+```
     --prefix=/usr \
     --localstatedir=/var \
     --libexecdir=${prefix}/lib/squid \
@@ -266,17 +250,18 @@ and are known to compile OK.
     --with-default-user=proxy \
     --with-logdir=/var/log/squid \
     --with-pidfile=/var/run/squid.pid
+```
 
 Plus, of course, any custom configuration options you may need.
 
-  - :x:
-    For Debian Jesse (8), Ubuntu Oneiric (11.10), or older **squid3**
-    packages; the above *squid* labels should have a **3** appended.
+> :x:
+  For Debian Jesse (8), Ubuntu Oneiric (11.10), or older **squid3**
+  packages; the above *squid* labels should have a **3** appended.
 
-  - :x:
-    Remember these are only defaults. Altering squid.conf you can point
-    the logs at the right path anyway without either the workaround or
-    the patching.
+> :x:
+  Remember these are only defaults. Altering squid.conf you can point
+  the logs at the right path anyway without either the workaround or
+  the patching.
 
 As always, additional libraries may be required to support the features
 you want to build. The default package dependencies can be installed
@@ -290,24 +275,16 @@ not supported by the distribution package will need investigation to
 discover the dependency package and install it.
 
 > :information_source:
-    The usual one requested is **libssl-dev** for SSL support.
-    
-      - :warning:
-        However, please note that
-        [Squid-3.5](/Releases/Squid-3.5)
-        is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or
-        Ubuntu Zesty the **libssl1.0-dev** package must be used instead.
-        This is resolved in the
-        [Squid-4](/Releases/Squid-4)
-        packages.
+  The usual one requested is **libssl-dev** for SSL support.
 
-#### Init Script
+> :warning:
+  However, please note that [Squid-3.5](/Releases/Squid-3.5)
+  is not compatible with OpenSSL v1.1+. As of Debian Squeeze, or
+  Ubuntu Zesty the **libssl1.0-dev** package must be used instead.
+  This is resolved in the [Squid-4](/Releases/Squid-4)
+  packages.
 
-The init.d script is part of the official Debain/Ubuntu packaging. It
-does not come with Squid directly. So you will need to download a copy
-from
-[](https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc)
-to /etc/init.d/squid
+
 
 ### [Fedora](/KnowledgeBase/Fedora)
 
@@ -336,47 +313,46 @@ your other FreeBSD packages, it might be easiest to install Squid from
 the Ports collection. As of FreeBSD 12.2, the available ports are:
 
   - `/usr/ports/www/squid3` - Squid 3.5.28
-
   - `/usr/ports/www/squid3` - Squid 4.10
 
 To install squid-4:
 
 ``` 
- cd /usr/ports/www/squid
- make install clean
+cd /usr/ports/www/squid
+make install clean
 ```
 
 ### [Windows](/KnowledgeBase/Windows)
 
-  - These instructions apply to building **Squid-3.x**. Squid-2 package
-    are available for download. See the
+  - These instructions apply to building **Squid-3.x** and later
 
 **New configure options:**
 
-  - \--enable-win32-service
+- \--enable-win32-service
 
 **Updated configure options:**
 
-  - \--enable-default-hostsfile
+- \--enable-default-hostsfile
 
 **Unsupported configure options:**
 
-  - \--with-large-files: No suitable build environment is available on
+- \--with-large-files: No suitable build environment is available on
     both Cygwin and MinGW, but --enable-large-files works fine
 
-#### Compiling with Cygwin
+### Compiling with Cygwin
 
-  - **This section needs re-writing. Is has very little in compiling
-    Squid and much about installation.**
+> :warning:
+ **This section needs re-writing. Is has very little in compiling
+  Squid and much about installation.**
 
 In order to compile Squid, you need to have Cygwin fully installed.
 
 The usage of the Cygwin environment is very similar to other Unix/Linux
 environments, and -devel version of libraries must be installed.
 
-|                                                                        |                                                                                                                                         |
-| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| :information_source: | Squid will by default, install into */usr/local/squid*. If you wish to install somewhere else, see the *--prefix* option for configure. |
+>  :information_source:
+  Squid will by default, install into */usr/local/squid*.
+  If you wish to install somewhere else, see the *--prefix* option for configure.
 
 Now, add a new Cygwin user - see the Cygwin user guide - and map it to
 SYSTEM, or create a new NT user, and a matching Cygwin user and they
@@ -398,41 +374,33 @@ good, try browsing through squid.
 Now, configure *cygrunsrv* to run Squid as a service as the chosen
 username. You may need to check permissions here.
 
-#### Compiling with MinGW
+### Compiling with MinGW
 
 In order to compile squid using the MinGW environment, the packages
 MSYS, MinGW and msysDTK must be installed. Some additional libraries and
 tools must be downloaded separately:
 
-  - OpenSSL: [Shining Light Productions Win32
-    OpenSSL](http://www.slproweb.com/products/Win32OpenSSL.html)
+- OpenSSL: [Shining Light Productions Win32 OpenSSL](http://www.slproweb.com/products/Win32OpenSSL.html)
+- libcrypt: [MinGW packages repository](http://sourceforge.net/projects/mingwrep/)
+- db-1.85: [TinyCOBOL download area](http://tiny-cobol.sourceforge.net/download.php)
 
-  - libcrypt: [MinGW packages
-    repository](http://sourceforge.net/projects/mingwrep/)
-
-  - db-1.85: [TinyCOBOL download
-    area](http://tiny-cobol.sourceforge.net/download.php)
-    
-    > :information_source:
-        3.2+ releases require a newer 4.6 or later version of libdb
+> :information_source:
+  3.2+ releases require a newer 4.6 or later version of libdb
 
 Before building Squid with SSL support, some operations are needed (in
 the following example OpenSSL is installed in C:\\OpenSSL and MinGW in
 C:\\MinGW):
 
-  - Copy C:\\OpenSSL\\lib\\MinGW content to C:\\MinGW\\lib
-
-  - Copy C:\\OpenSSL\\include\\openssl content to
-    C:\\MinGW\\include\\openssl
-
-  - Rename C:\\MinGW\\lib\\ssleay32.a to C:\\MinGW\\lib\\libssleay32.a
+- Copy C:\\OpenSSL\\lib\\MinGW content to C:\\MinGW\\lib
+- Copy C:\\OpenSSL\\include\\openssl content to
+  C:\\MinGW\\include\\openssl
+- Rename C:\\MinGW\\lib\\ssleay32.a to C:\\MinGW\\lib\\libssleay32.a
 
 Unpack the source archive as usual and run configure.
 
 The following are the recommended minimal options for Windows:
 
-**Squid-3** : (requires
-[Squid-3.5](/Releases/Squid-3.5)
+**Squid-3** : (requires [Squid-3.5](/Releases/Squid-3.5)
 or later, see porting efforts section below)
 
     --prefix=c:/squid
@@ -461,43 +429,6 @@ Administrative Applet.
 
 Always check the provided release notes for any version specific detail.
 
-### OS/2
-
-by Doug Nazar (`<nazard AT man-assoc DOT on DOT ca>`).
-
-In order in compile squid, you need to have a reasonable facsimile of a
-Unix system installed. This includes *bash*, *make*, *sed*, *emx*,
-various file utilities and a few more. I've setup a TVFS drive that
-matches a Unix file system but this probably isn't strictly necessary.
-
-I made a few modifications to the pristine EMX 0.9d install.
-
-  - added defines for *strcasecmp()* & *strncasecmp()* to *string.h*
-
-  - changed all occurrences of time_t to signed long instead of
-    unsigned long
-
-  - hacked ld.exe
-    
-      - to search for both xxxx.a and libxxxx.a
-    
-      - to produce the correct filename when using the -Zexe option
-
-You will need to run *scripts/convert.configure.to.os2* (in the Squid
-source distribution) to modify the configure script so that it can
-search for the various programs.
-
-Next, you need to set a few environment variables (see EMX docs for
-meaning):
-
-    export EMXOPT="-h256 -c"
-    export LDFLAGS="-Zexe -Zbin -s"
-
-Now you are ready to configure, make, and install Squid.
-
-Now, **don't forget to set EMXOPT before running squid each time**. I
-recommend using the -Y and -N options.
-
 ### [RedHat, RHEL](/KnowledgeBase/RedHat)
 
 The following ./configure options install Squid into the RedHat
@@ -513,112 +444,12 @@ structure properly:
   --sysconfdir=/etc/squid
 ```
 
-### [Solaris](/KnowledgeBase/Solaris)
-
-In order to successfully build squid on Solaris, a complete build-chain
-has to be available.
-
-#### Squid-3.x
-
-In order to successfully build squid, a few GNU-related packages need to
-be available. Unfortunately, not all of the software is available on a
-stock Solaris install.
-
-What you need is:
-
-``` 
- pkg install SUNWgnu-coreutils SUNWgtar SUNWgm4 SUNWgmake SUNWlxml  SUNWgsed
-```
-
-and of course a compiler. You can choose between
-
-``` 
- pkg install SUNWgcc
-```
-
-and
-
-``` 
- pkg install sunstudioexpress SUNWbtool
-```
-
-##### com_err.h: warning: ignoring \#pragma ident
-
-This problem occurs with certain kerberos library headers distributed
-with Solaris 10. It has been fixed in later release of the kerberos
-library.
-
-:x:
-Unfortunately the `/usr/include/kerberosv5/com_err.h` system-include
-file sports a \#pragma directive which is not compatible with gcc.
-
-There are several options available:
-
-1.  Upgrading your library to a working version is the recommended best
-    option.
-
-2.  Applying a patch distributed with Squid (
-    `contrib/solaris/solaris-krb5-include.patch` ) which updates the
-    krb5.h header to match the one found in later working krb5 library
-    releases.
-
-3.  Editing com_err.h directly to change the line
-
-<!-- end list -->
-
-    #pragma ident   "%Z%%M% %I%     %E% SMI"
-
-to
-
-    #if !defined(__GNUC__)
-    #pragma ident   "%Z%%M% %I%     %E% SMI"
-    #endif
-
-##### 3.1 -enable-ipf-transparent support
-
-:x:
-Unfortunately the `/usr/include/inet/mib2.h` header required for IPF
-interception support clashes with
-[Squid-3.1](/Releases/Squid-3.1)
-class definitions. This has been fixed in the 3.2 series.
-
-For 3.1 to build you may need to run this class rename command in the
-top Squid sources directory:
-
-    find . -type f -print | xargs perl -i -p -e 's/\b(IpAddress\b[^.])/Squid$1/g
-
-#### Squid-2.x and older
-
-The following error occurs on Solaris systems using gcc when the Solaris
-C compiler is not installed:
-
-    /usr/bin/rm -f libmiscutil.a
-    /usr/bin/false r libmiscutil.a rfc1123.o rfc1738.o util.o ...
-    make[1]: *** [libmiscutil.a] Error 255
-    make[1]: Leaving directory `/tmp/squid-1.1.11/lib'
-    make: *** [all] Error 1
-
-Note on the second line the */usr/bin/false*. This is supposed to be a
-path to the *ar* program. If *configure* cannot find *ar* on your
-system, then it substitutes *false*.
-
-To fix this you either need to:
-
-  - Add */usr/ccs/bin* to your PATH. This is where the *ar* command
-    should be. You need to install SUNWbtool if *ar* is not there.
-    Otherwise,
-
-  - Install the **binutils** package from [the GNU FTP
-    site](ftp://ftp.gnu.org/gnu/binutils). This package includes
-    programs such as *ar*, *as*, and *ld*.
-
 ### Other Platforms
 
 Please let us know of other platforms you have built squid. Whether
 successful or not.
 
-Please check the [page of
-platforms](/SquidFaq/AboutSquid#What_Operating_Systems_does_Squid_support.3F)
+Please check the [page of platforms](/SquidFaq/AboutSquid#What_Operating_Systems_does_Squid_support.3F)
 on which Squid is known to compile.
 
 If you have a problem not listed above with a solution, mail us at
@@ -639,6 +470,3 @@ Probably you have bind 8.x installed.
 **UPDATE:** That version of bind is now officially obsolete and known to
 be vulnerable to a critical infrastructure flaw. It should be upgraded
 to bind 9.x or replaced as soon as possible.
-
-Back to the
-[SquidFaq](/SquidFaq)
