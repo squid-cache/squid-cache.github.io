@@ -21,11 +21,6 @@
 
 ## Modes of operation
 
-{% assign section = "operation" %}
-{%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
-{% for p in pages -%}
-- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
-{% endfor -%}
 - Explicit Proxy (or Forward Proxy) is the basic mode, upon which
   everything else is built.
 - *Offline* or aggressive mode: serving up stale data with
@@ -34,6 +29,15 @@
   This is a sub-type of accelerator mode which since
   [Squid-3.3](/Releases/Squid-3.3)
   is enabled automatically and cannot be used with other modes
+
+
+## Running squid
+
+{% assign section = "operation" %}
+{%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
+{% for p in pages -%}
+- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
+{% endfor -%}
 
 ## Troubleshooting
 {% assign section = "troubleshooting" %}
@@ -47,6 +51,7 @@
   Gives detailed configurations in case you have missed something
 
 ## Performance Tuning
+
 {% assign section = "performance" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
 {% for p in pages -%}
@@ -58,6 +63,7 @@
 See [Features](/Features) for a run down of Squid's main features
 
 ## Other FAQ
+
 {% assign section = "misc" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
 {% for p in pages -%}
