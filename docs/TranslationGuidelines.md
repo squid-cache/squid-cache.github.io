@@ -1,20 +1,14 @@
----
-categories: ReviewMe
-published: false
----
 # Guidelines for Translating Squid
 
-How to use the translation tools is covered in
-[Translations/Basics](/Translations/Basics).
 This page covers the details involved with translating a specific piece
 of text.
 
 ## HTML Tags
 
 The translation of Squid is currently just a translation of the various
-HTML pages produced by Squid. This means; the error pages seen when
-things go wrong, most of the FTP pages dealing with file transfers and
-directory listings.
+HTML pages produced by Squid. This means: the error pages seen when things
+go wrong, and most of the FTP pages dealing with file transfers and directory
+listings
 
 The text shown for translation may contain HTML markup. You should be
 careful to leave these codes in the translation unchanged. You should
@@ -35,21 +29,15 @@ translations include a language description in brackets () or
 equivalent, immediately after the term itself.
 
 Some examples of these actually seen in the pages are:
-
-  - **GET**
-
-  - **PUT**
-
-  - **Content-Length:**
-
-  - **if-not-cached**
+- **GET**
+- **PUT**
+- **Content-Length:**
+- **if-not-cached**
 
 Others may appear any time.
 
 So an english translation might look like this:
-
     Original:   PUT failed
-    
     Translated: PUT (upload) failed
 
 ## % Code Tags
@@ -82,8 +70,7 @@ the various English or Dutch codes for an example of what this means.
 If you have any unusual situation with language and country combination
 or language variant combinations that is not already solved, please
 contact the translation maintainer for assistance.
-([AmosJeffries](/AmosJeffries)
-at present).
+([AmosJeffries](/AmosJeffries) at present).
 
 ## Special Language Display
 
@@ -92,8 +79,7 @@ instead of the standard HTML English Left-to-Right settings. This is
 currently achieved through the use of **:lang()** attributes in CSS.
 
 To ensure compatibility with Squid-2 which does not natively perform the
-same CSS insertion as
-[Squid-3.1](/Releases/Squid-3.1)
+same CSS insertion as [Squid-3.1](/Releases/Squid-3.1)
 these language settings are embedded directly into the templates and
 alterations need to be brought to the attention of the Squid Developers.
 
@@ -102,32 +88,28 @@ alterations need to be brought to the attention of the Squid Developers.
 If you are truly against using the existing translation toolkit system
 we run. You have the option of locating the **errpages.pot** file in the
 squid source code. Translating it and sending it to the translation
-maintainer.
-([AmosJeffries](/AmosJeffries)
-at present).
+maintainer ([AmosJeffries](/AmosJeffries) at present).
 
-  - :warning:
-    Please note submissions are only considered for new languages or
-    ones without a translator at the time of submission.
-    
-    :warning:
-    There is no guarantee that your work will make it into Squid until
-    another translator can be found to verify it and enter it into the
-    system for you.
-    
-    :warning:
-    You still need to meet all the translation guidelines listed above
-    about codes and content.
-    
-    :information_source:
-    **.PO** files need to have ISO-639 code information to indicate the
-    language, and if possible the country ISO-3166 variant code as well.
-    
-      - Alhpabet used if there are a range of alphabets used for the
-        language (ie Latin and Cyrillic)
-    
-      - If you don't know these codes, an indication of that info may be
-        just as useful (ie american english, or british english, not
-        just english).
-
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+> :warning:
+  Please note submissions are only considered for new languages or
+  ones without a translator at the time of submission.
+  
+> :warning:
+  There is no guarantee that your work will make it into Squid until
+  another translator can be found to verify it and enter it into the
+  system for you.
+  
+> :warning:
+  You still need to meet all the translation guidelines listed above
+  about codes and content.
+  
+> :information_source:
+  **.PO** files need to have ISO-639 code information to indicate the
+  language, and if possible the country ISO-3166 variant code as well.
+```
+    * Alhpabet used if there are a range of alphabets used for the
+      language (ie Latin and Cyrillic)
+    * If you don't know these codes, an indication of that info may be
+      just as useful (ie american english, or british english, not
+      just english).
+```
