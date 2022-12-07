@@ -1,20 +1,18 @@
 ---
-categories: ReviewMe
-published: false
-FaqSection: installation
+FaqSection: operation
 ---
-# How do I see system level Squid statistics?
+# Operating Squid
+
+## How do I see system level Squid statistics?
 
 The Squid distribution includes a CGI utility called *cachemgr.cgi*
 which can be used to view squid statistics with a web browser. See
-[../CacheManager](/SquidFaq/CacheManager)
+[CacheManager](/Features/CacheManager)
 for more information on its usage and installation.
-
-# Managing the Cache Storage
 
 ## How can I make Squid NOT cache some servers or URLs?
 
-From Squid-2.6, you use the **cache** option to specify uncachable
+You can use the **cache** option to specify uncachable
 requests and any exceptions to your cachable rules.
 
 For example, this makes all responses from origin servers in the
@@ -86,21 +84,14 @@ not possible at this time.
 
     sort -r -n +4 -5 access.log | awk '{print $5, $7}' | head -25
 
-If your cache processes several hundred hits per second, good luck.
+It might take a while, depending on who busy your cache is
 
 ## How can I add a cache directory?
 
-1.  Edit **squid.conf** and add a new **cache_dir** line.
-
-2.  Shutdown Squid `  squid -k shutdown  `
-
-3.  Initialize the new directory by running
-    
-    ``` 
-     squid -z 
-    ```
-
-4.  Start Squid again
+1. Edit **squid.conf** and add a new **cache_dir** line.
+1. Shutdown Squid `squid -k shutdown  `
+1. Initialize the new directory by running `squid -z `
+1. Start Squid again
 
 ## How can I delete a cache directory?
 
@@ -108,32 +99,14 @@ If your cache processes several hundred hits per second, good luck.
     If you don't have any *cache_dir* lines in your squid.conf, then
     Squid was using the default. From Squid-3.1 the default has been
     changed to memory-only cache and does not involve cache_dir.
-    
-    For Squid older than 3.1 using the default you'll need to add a new
-    **cache_dir** line because Squid will continue to use the default
-    otherwise. You can add a small, temporary directory, for example:
-    
-        /usr/local/squid/cachetmp ....
-    
-    see above about creating a new cache directory.
-    
-    :warning:
-    do not use /tmp \!\! That will cause Squid to periodically encounter
-    fatal errors.
 
-**The removal:**
 
-1.  Edit your **squid.conf** file and comment out, or delete the
+1. Edit your **squid.conf** file and comment out, or delete the
     **cache_dir** line for the cache directory that you want to remove.
-
-2.  You can not delete a cache directory from a running Squid process;
+1. You can not delete a cache directory from a running Squid process;
     you can not simply reconfigure squid.
-
-3.  You must shutdown Squid:
-    
-        squid -k shutdown
-
-4.  Once Squid exits, you may immediately start it up again.
+1. You must shutdown Squid:` squid -k shutdown`
+1. Once Squid exits, you may immediately start it up again.
 
 Since you deleted the old **cache_dir** from squid.conf, Squid won't
 try to access that directory. If you use the RunCache script, Squid
@@ -158,7 +131,7 @@ full cache_dir scan and re-load all objects from disk by simply
 shuttign down Squid and deleting the **swap.state** journal from each
 cache_dir before restarting.
 
-  - *NP:* Deleting the swap.state before shutting down will cause Squid
+> :information_source: Deleting the swap.state before shutting down will cause Squid
     to generate new ones and fail to do the re-scan you wanted.
 
 ## I want to restart Squid with an empty cache
@@ -167,31 +140,31 @@ To erase the entire contents of the cache and make Squid start fresh the
 following commands provide the fastest recovery time:
 
 ``` 
- squid -k shutdown
- mv /dir/cache /dir/cache.old
+squid -k shutdown
+mv /dir/cache /dir/cache.old
 ```
 
 repeat for each cache_dir location you wish to empty.
 
 ``` 
- squid -z
- squid
- rm -rf /dir/cache.old
+squid -z
+squid
+rm -rf /dir/cache.old
 ```
 
 The **rm** command may take some time, but since Squid is already back
 up and running the service downtime is reduced.
 
-# Using ICMP to Measure the Network
+## Using ICMP to measure the network latency
 
-As of version 1.1.9, Squid is able to utilize ICMP Round-Trip-Time (RTT)
+Squid is able to utilize ICMP Round-Trip-Time (RTT)
 measurements to select the optimal location to forward a cache miss.
 Previously, cache misses would be forwarded to the parent cache which
 returned the first ICP reply message. These were logged with
 FIRST_PARENT_MISS in the access.log file. Now we can select the parent
 which is closest (RTT-wise) to the origin server.
 
-## Supporting ICMP in your Squid cache
+### Supporting ICMP in your Squid cache
 
 It is more important that your parent caches enable the ICMP features.
 If you are acting as a parent, then you may want to enable ICMP on your
@@ -227,7 +200,7 @@ servers which are close to your cache. If the measured hop count to the
 origin server is less than or equal to *minimum_direct_hops*, the
 request will be forwarded directly to the origin server.
 
-## Utilizing your parents database
+### Utilizing your parents database
 
 Your parent caches can be asked to include the RTT measurements in their
 ICP replies. To do this, you must enable *query_icmp* in your config
@@ -248,7 +221,7 @@ parents, the request will be logged with
 
     CLOSEST_DIRECT/www.sample.com
 
-## Inspecting the database
+### Inspecting the database
 
 The measurement database can be viewed from the cachemgr by selecting
 "Network Probe Database." Hostnames are aggregated into /24 networks.
@@ -274,7 +247,7 @@ show the measured values from our parent caches. Since
 *bo.cache.nlanr.net* has the lowest RTT, it would be selected as the
 location to forward a request for a www.jisedu.org or www.dozo.com URL.
 
-# Why are so few requests logged as TCP_IMS_MISS?
+## Why are so few requests logged as TCP_IMS_MISS?
 
 When Squid receives an *If-Modified-Since* request, it will not forward
 the request unless the object needs to be refreshed according to the
@@ -289,14 +262,11 @@ object will not have changed, so the result is TCP_IMS_HIT. Squid will
 only return TCP_IMS_MISS if some other client causes a newer version
 of the object to be pulled into the cache.
 
-# Why do I need to run Squid as root? why can't I just use cache_effective_user root?
+## Why do I need to run Squid as root? why can't I just use cache_effective_user root?
 
   - *by Antony Stone and Dave J Woolley*
 
 |                                                                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Why run the parent squid process as root and the child as user proxy? Is that normal? Is it best practice? Should I chmod or chown cache and other directories? |
-
 It is completely normal for a great many applications providing network
 services, and yes, it is best practice. In fact some will not **allow**
 you to run them as root, without an unprivileged user to run the main
@@ -306,26 +276,18 @@ status, not just squid.
 The reasoning is simple:
 
 1.  You need root privileges to do certain things when you start an
-    application
-
-(such as bind to a network socket, open a log file, perhaps read a
-configuration file), therefore it starts as root.
-
+    application, such as bind to a network socket, open a log file, perhaps read a
+    configuration file), therefore it starts as root.
 1.  Any application might contain bugs which lead to security
-    vulnerabilities,
-
-which can be remotely exploited through the network connection, and
-until the bugs are fixed, you at least want to minimise the risk
-presented by them.
-
-1.  Therefore as soon as you've done all the things involved in (1)
-    above, you
-
-drop the privilege level of the application, and/or spawn a child
-process with reduced privilege, so that it still runs and does
-everything you need, but if a vulnerability is exploited, it no longer
-has root privilege and therefore cannot cause as much damage as it might
-have done.
+    vulnerabilities, which can be remotely exploited through the network 
+    connection, and until the bugs are fixed, you at least want to minimise the risk
+    presented by them.
+1.  Therefore as soon as you've done all the things involved in the first step
+    above, you drop the privilege level of the application, and/or spawn a child
+    process with reduced privilege, so that it still runs and does
+    everything you need, but if a vulnerability is exploited, it no longer
+    has root privilege and therefore cannot cause as much damage as it might
+    have done.
 
 Squid does this with
 [cache_effective_user](http://www.squid-cache.org/Doc/config/cache_effective_user).
@@ -349,7 +311,7 @@ for reconfiguration. Some components which rely on the more dangerous
 root privieges will not be able to be altered with just a reconfigure
 but will need a full restart.
 
-# Can you tell me a good way to upgrade Squid with minimal downtime?
+## Can you tell me a good way to upgrade Squid with minimal downtime?
 
 Here is a technique that was described by *Radu Greab*.
 
@@ -364,9 +326,8 @@ current requests. After a few minutes, it should be safe to fully shut
 down the first Squid and upgrade it. Later you can simply repeat this
 process in reverse.
 
-# Can Squid listen on more than one HTTP port?
 
-*Note: The information here is current for version 2.3.*
+## Can Squid listen on more than one HTTP port?
 
 Yes, you can specify multiple *http_port* lines in your *squid.conf*
 file. Squid attempts to bind() to each port that you specify. Sometimes
@@ -375,21 +336,17 @@ or because the port is already in use. If Squid can bind to at least one
 port, then it will continue running. If it can not bind to any of the
 ports, then Squid stops.
 
-With version 2.3 and later you can specify IP addresses and port numbers
-together (see the squid.conf comments).
+You can specify IP addresses and port numbers together (see the squid.conf comments).
 
-# Can I make origin servers see the client's IP address when going through Squid?
+## Can I make origin servers see the client's IP address when going through Squid?
 
 Normally you cannot. Most TCP/IP stacks do not allow applications to
 create sockets with the local endpoint assigned to a foreign IP address.
-However, some folks have some [patches to
-Linux](http://www.balabit.hu/en/downloads/tproxy/) that allow exactly
+However, some folks have some
+[patches to Linux](http://www.balabit.hu/en/downloads/tproxy/) that allow exactly
 that.
 
 In this situation, you must ensure that all HTTP packets destined for
 the client IP addresses are routed to the Squid box. If the packets take
 another path, the real clients will send TCP resets to the origin
 servers, thereby breaking the connections.
-
-Back to the
-[SquidFaq](/SquidFaq)
