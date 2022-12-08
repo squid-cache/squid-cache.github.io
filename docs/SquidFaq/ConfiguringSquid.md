@@ -1,20 +1,17 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: installation
 ---
 # Configuring Squid
 
-# Before you start configuring
+## Before you start configuring
 
-  - The best all around advice I can give on Squid is to start simple\!
-    Once everything works the way you expect, then start tweaking your
-    way into complexity with a means to track the (in)effectiveness of
-    each change you make (and a known good configuration that you can
-    always go back to when you inevitably fubar the thing\!).
-    
-    *by Gregori Parker* Seconded by all the Squid developers and Squid
-    helpers.
+*by Gregori Parker*
+
+The best all around advice I can give on Squid is to start simple\!
+Once everything works the way you expect, then start tweaking your
+way into complexity with a means to track the (in)effectiveness of
+each change you make (and a known good configuration that you can
+always go back to when you inevitably fubar the thing!).
 
 ## How do I configure Squid without re-compiling it?
 
@@ -24,422 +21,42 @@ The **squid.conf** file. By default, this file is located at
 Also, a QUICKSTART guide has been included with the source distribution.
 Please see the directory where you unpacked the source archive.
 
-## What does the squid.conf file do?
+### What does the squid.conf file do?
 
 The *squid.conf* file defines the configuration for *squid*. The
 configuration includes (but not limited to) HTTP port number, the ICP
 request port number, incoming and outgoing requests, information about
 firewall access, and various timeout information.
 
-## Where can I find examples and configuration for a Feature?
+### Where can I find examples and configuration for a Feature?
 
 There is still a fair bit of config knowledge buried in the old
-[SquidFaq](/SquidFaq)
-and Guide pages of this wiki. We are endeavoring to pull them into a
-layout easier to use.
+[SquidFaq](/SquidFaq) and Guide pages of this wiki. We are endeavoring
+to pull them into a layout easier to use.
 
 What we have so far is:
 
-  - The general background configuration info here on this page
+- The general background configuration info here on this page
+- Specific feature descriptions pros/cons and some config are linked
+  from the main [SquidFaq](/SquidFaq) in a features section.
+- Any complex tuning stuff mixing features and specific demos in
+  [ConfigExamples](/ConfigExamples)
+  and usually linked from the related features or FAQ pages as well.
 
-  - Specific feature descriptions pros/cons and some config are linked
-    from the main
-    [SquidFaq](/SquidFaq)
-    in a features section.
-
-  - Any complex tuning stuff mixing features and specific demos in
-    [ConfigExamples](/ConfigExamples)
-    and usually linked from the related features or FAQ pages as well.
-
-## Do you have a squid.conf example?
+### Do you have a squid.conf example?
 
 Yes.
 
-For Squid 2.x and 3.0 after you *make install*, a sample
-*squid.conf.default* file will exist in the *etc* directory under the
-Squid installation directory.
+After you *make install*, a sample squid.conf.default* file will exist in
+the *etc* directory under the Squid installation directory
 
-From 2.6 the Squid developers also provide a set of Configuration Guides
-online. They list all the options each version of Squid can accept in
-its squid.conf file
+- [Squid 4](http://www.squid-cache.org/Versions/v4/cfgman/)
+  Configuration Guide
+- [Squid 5](http://www.squid-cache.org/Versions/v5/cfgman/)
+  Configuration Guide
+- [Squid 6](http://www.squid-cache.org/Versions/v6/cfgman/)
+  Configuration Guide
 
-  - [Squid 2.7](http://www.squid-cache.org/Versions/v2/2.7/cfgman/)
-    Configuration Guide
-
-  - [Squid 3.0](http://www.squid-cache.org/Versions/v3/3.0/cfgman/)
-    Configuration Guide
-
-  - [Squid 3.1](http://www.squid-cache.org/Versions/v3/3.1/cfgman/)
-    Configuration Guide
-
-  - [Squid 3.2](http://www.squid-cache.org/Versions/v3/3.2/cfgman/)
-    Configuration Guide
-
-  - [Squid 3.3](http://www.squid-cache.org/Versions/v3/3.3/cfgman/)
-    Configuration Guide
-
-  - [Squid 3.4](http://www.squid-cache.org/Versions/v3/3.4/cfgman/)
-    Configuration Guide
-
-  - [Squid 3.5](http://www.squid-cache.org/Versions/v3/3.5/cfgman/)
-    Configuration Guide
-
-  - [Squid 4](http://www.squid-cache.org/Versions/v4/cfgman/)
-    Configuration Guide
-
-  - [Squid 5](http://www.squid-cache.org/Versions/v5/cfgman/)
-    Configuration Guide
-
-including guides for the current development test releases
-
-  - [Squid 6](http://www.squid-cache.org/Versions/v6/cfgman/)
-    Configuration Guide
-
-### [Squid-3.1 default config](/Releases/Squid-3.1)
-
-From 3.1 a lot of configuration cleanups have been done to make things
-easier.
-
-  - 
-    
-    |                                                                      |                                                                                                                             |
-    | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | :warning: | This minimal configuration does not work with versions earlier than 3.1 which are missing special cleanup done to the code. |
-    
-
-<!-- end list -->
-
-    http_port 3128
-    
-    refresh_pattern ^ftp:           1440    20%     10080
-    refresh_pattern ^gopher:        1440    0%      1440
-    refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
-    refresh_pattern .               0       20%     4320
-    
-    acl manager url_regex -i ^cache_object:// +i ^https?://[^/]+/squid-internal-mgr/
-    
-    acl localhost src 127.0.0.1/32 ::1
-    acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
-    
-    acl localnet src 10.0.0.0/8     # RFC 1918 possible internal network
-    acl localnet src 172.16.0.0/12  # RFC 1918 possible internal network
-    acl localnet src 192.168.0.0/16 # RFC 1918 possible internal network
-    acl localnet src fc00::/7       # RFC 4193 local private network range
-    acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
-    
-    acl SSL_ports port 443
-    acl Safe_ports port 80          # http
-    acl Safe_ports port 21          # ftp
-    acl Safe_ports port 443         # https
-    acl Safe_ports port 70          # gopher
-    acl Safe_ports port 210         # wais
-    acl Safe_ports port 1025-65535  # unregistered ports
-    acl Safe_ports port 280         # http-mgmt
-    acl Safe_ports port 488         # gss-http
-    acl Safe_ports port 591         # filemaker
-    acl Safe_ports port 777         # multiling http
-    acl CONNECT method CONNECT
-    
-    http_access allow manager localhost
-    http_access deny manager
-    http_access deny !Safe_ports
-    http_access deny CONNECT !SSL_ports
-    http_access allow localhost
-    http_access allow localnet
-    http_access deny all
-
-### [Squid-3.2 default config](/Releases/Squid-3.2)
-
-From 3.2 further configuration cleanups have been done to make things
-easier and safer. The manager, localhost, and to_localhost ACL
-definitions are now built-in.
-
-  - 
-    
-    |                                                                      |                                                                                                                             |
-    | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | :warning: | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
-    
-
-<!-- end list -->
-
-    http_port 3128
-    
-    refresh_pattern ^ftp:           1440    20%     10080
-    refresh_pattern ^gopher:        1440    0%      1440
-    refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
-    refresh_pattern .               0       20%     4320
-    
-    acl localnet src 10.0.0.0/8     # RFC 1918 possible internal network
-    acl localnet src 172.16.0.0/12  # RFC 1918 possible internal network
-    acl localnet src 192.168.0.0/16 # RFC 1918 possible internal network
-    acl localnet src fc00::/7       # RFC 4193 local private network range
-    acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
-    
-    acl SSL_ports port 443
-    
-    acl Safe_ports port 80          # http
-    acl Safe_ports port 21          # ftp
-    acl Safe_ports port 443         # https
-    acl Safe_ports port 70          # gopher
-    acl Safe_ports port 210         # wais
-    acl Safe_ports port 1025-65535  # unregistered ports
-    acl Safe_ports port 280         # http-mgmt
-    acl Safe_ports port 488         # gss-http
-    acl Safe_ports port 591         # filemaker
-    acl Safe_ports port 777         # multiling http
-    acl CONNECT method CONNECT
-    
-    http_access allow manager localhost
-    http_access deny manager
-    http_access deny !Safe_ports
-    http_access deny CONNECT !SSL_ports
-    http_access allow localhost
-    http_access allow localnet
-    http_access deny all
-
-### [Squid-3.3 default config](/Releases/Squid-3.3)
-
-From 3.3 a few performance improvements have been done. The manager
-regex ACLs have been moved after the DoS and protocol smuggling attack
-protections.
-
-  - 
-    
-    |                                                                      |                                                                                                                             |
-    | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | :warning: | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
-    
-
-<!-- end list -->
-
-    http_port 3128
-    
-    refresh_pattern ^ftp:           1440    20%     10080
-    refresh_pattern ^gopher:        1440    0%      1440
-    refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
-    refresh_pattern .               0       20%     4320
-    
-    acl localnet src 10.0.0.0/8     # RFC 1918 possible internal network
-    acl localnet src 172.16.0.0/12  # RFC 1918 possible internal network
-    acl localnet src 192.168.0.0/16 # RFC 1918 possible internal network
-    acl localnet src fc00::/7       # RFC 4193 local private network range
-    acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
-    
-    acl SSL_ports port 443          # https
-    
-    acl Safe_ports port 80          # http
-    acl Safe_ports port 21          # ftp
-    acl Safe_ports port 443         # https
-    acl Safe_ports port 70          # gopher
-    acl Safe_ports port 210         # wais
-    acl Safe_ports port 1025-65535  # unregistered ports
-    acl Safe_ports port 280         # http-mgmt
-    acl Safe_ports port 488         # gss-http
-    acl Safe_ports port 591         # filemaker
-    acl Safe_ports port 777         # multiling http
-    
-    acl CONNECT method CONNECT
-    
-    http_access deny !Safe_ports
-    http_access deny CONNECT !SSL_ports
-    http_access allow localhost manager
-    http_access deny manager
-    http_access allow localnet
-    http_access allow localhost
-    http_access deny all
-
-### [Squid-3.4 default config](/Releases/Squid-3.4)
-
-    http_port 3128
-    
-    refresh_pattern ^ftp:           1440    20%     10080
-    refresh_pattern ^gopher:        1440    0%      1440
-    refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
-    refresh_pattern .               0       20%     4320
-    
-    acl localnet src 10.0.0.0/8     # RFC 1918 possible internal network
-    acl localnet src 172.16.0.0/12  # RFC 1918 possible internal network
-    acl localnet src 192.168.0.0/16 # RFC 1918 possible internal network
-    acl localnet src fc00::/7       # RFC 4193 local private network range
-    acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
-    
-    acl SSL_ports port 443          # https
-    
-    acl Safe_ports port 80          # http
-    acl Safe_ports port 21          # ftp
-    acl Safe_ports port 443         # https
-    acl Safe_ports port 70          # gopher
-    acl Safe_ports port 210         # wais
-    acl Safe_ports port 1025-65535  # unregistered ports
-    acl Safe_ports port 280         # http-mgmt
-    acl Safe_ports port 488         # gss-http
-    acl Safe_ports port 591         # filemaker
-    acl Safe_ports port 777         # multiling http
-    
-    acl CONNECT method CONNECT
-    
-    http_access deny !Safe_ports
-    http_access deny CONNECT !SSL_ports
-    http_access allow localhost manager
-    http_access deny manager
-    http_access allow localnet
-    http_access allow localhost
-    http_access deny all
-
-### [Squid-3.5 default config](/Releases/Squid-3.5)
-
-From 3.5 a few performance improvements have been done. The manager
-regex ACLs have been moved after the DoS and protocol smuggling attack
-protections.
-
-  - 
-    
-    |                                                                      |                                                                                                                             |
-    | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | :warning: | This minimal configuration does not work with versions earlier than 3.2 which are missing special cleanup done to the code. |
-    
-
-<!-- end list -->
-
-    http_port 3128
-    
-    acl localnet src 10.0.0.0/8     # RFC1918 possible internal network
-    acl localnet src 172.16.0.0/12  # RFC1918 possible internal network
-    acl localnet src 192.168.0.0/16 # RFC1918 possible internal network
-    acl localnet src fc00::/7       # RFC 4193 local private network range
-    acl localnet src fe80::/10      # RFC 4291 link-local (directly plugged) machines
-    
-    acl SSL_ports port 443
-    
-    acl Safe_ports port 80          # http
-    acl Safe_ports port 21          # ftp
-    acl Safe_ports port 443         # https
-    acl Safe_ports port 70          # gopher
-    acl Safe_ports port 210         # wais
-    acl Safe_ports port 280         # http-mgmt
-    acl Safe_ports port 488         # gss-http
-    acl Safe_ports port 591         # filemaker
-    acl Safe_ports port 777         # multiling http
-    acl Safe_ports port 1025-65535  # unregistered ports
-    
-    acl CONNECT method CONNECT
-    
-    http_access deny !Safe_ports
-    http_access deny CONNECT !SSL_ports
-    http_access allow localhost manager
-    http_access deny manager
-    
-    #
-    # INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
-    #
-    
-    http_access allow localnet
-    http_access allow localhost
-    http_access deny all
-    
-    coredump_dir /squid/var/cache/squid
-    
-    refresh_pattern ^ftp:           1440    20%     10080
-    refresh_pattern ^gopher:        1440    0%      1440
-    refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
-    refresh_pattern .               0       20%     4320
-
-### [Squid-4 default config](/Releases/Squid-4)
-
-    http_port 3128
-    
-    # Example rule allowing access from your local networks.
-    # Adapt to list your (internal) IP networks from where browsing
-    # should be allowed
-    acl localnet src 0.0.0.1-0.255.255.255  # RFC 1122 "this" network (LAN)
-    acl localnet src 10.0.0.0/8             # RFC 1918 local private network (LAN)
-    acl localnet src 100.64.0.0/10          # RFC 6598 shared address space (CGN)
-    acl localnet src 169.254.0.0/16         # RFC 3927 link-local (directly plugged) machines
-    acl localnet src 172.16.0.0/12          # RFC 1918 local private network (LAN)
-    acl localnet src 192.168.0.0/16         # RFC 1918 local private network (LAN)
-    acl localnet src fc00::/7               # RFC 4193 local private network range
-    acl localnet src fe80::/10              # RFC 4291 link-local (directly plugged) machines
-    
-    acl SSL_ports port 443
-    acl Safe_ports port 80          # http
-    acl Safe_ports port 21          # ftp
-    acl Safe_ports port 443         # https
-    acl Safe_ports port 70          # gopher
-    acl Safe_ports port 210         # wais
-    acl Safe_ports port 1025-65535  # unregistered ports
-    acl Safe_ports port 280         # http-mgmt
-    acl Safe_ports port 488         # gss-http
-    acl Safe_ports port 591         # filemaker
-    acl Safe_ports port 777         # multiling http
-    
-    http_access deny !Safe_ports
-    http_access deny CONNECT !SSL_ports
-    http_access allow localhost manager
-    http_access deny manager
-    
-    #
-    # INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
-    #
-    
-    http_access allow localnet
-    http_access allow localhost
-    http_access deny all
-    
-    coredump_dir /squid/var/cache/squid
-    
-    refresh_pattern ^ftp:           1440    20%     10080
-    refresh_pattern ^gopher:        1440    0%      1440
-    refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
-    refresh_pattern .               0       20%     4320
-
-### [Squid-5 default config](/Releases/Squid-5)
-
-    http_port 3128
-    
-    # Example rule allowing access from your local networks.
-    # Adapt to list your (internal) IP networks from where browsing
-    # should be allowed
-    acl localnet src 0.0.0.1-0.255.255.255  # RFC 1122 "this" network (LAN)
-    acl localnet src 10.0.0.0/8             # RFC 1918 local private network (LAN)
-    acl localnet src 100.64.0.0/10          # RFC 6598 shared address space (CGN)
-    acl localnet src 169.254.0.0/16         # RFC 3927 link-local (directly plugged) machines
-    acl localnet src 172.16.0.0/12          # RFC 1918 local private network (LAN)
-    acl localnet src 192.168.0.0/16         # RFC 1918 local private network (LAN)
-    acl localnet src fc00::/7               # RFC 4193 local private network range
-    acl localnet src fe80::/10              # RFC 4291 link-local (directly plugged) machines
-    
-    acl SSL_ports port 443
-    acl Safe_ports port 80          # http
-    acl Safe_ports port 21          # ftp
-    acl Safe_ports port 443         # https
-    acl Safe_ports port 70          # gopher
-    acl Safe_ports port 210         # wais
-    acl Safe_ports port 1025-65535  # unregistered ports
-    acl Safe_ports port 280         # http-mgmt
-    acl Safe_ports port 488         # gss-http
-    acl Safe_ports port 591         # filemaker
-    acl Safe_ports port 777         # multiling http
-    
-    http_access deny !Safe_ports
-    http_access deny CONNECT !SSL_ports
-    http_access allow localhost manager
-    http_access deny manager
-    
-    #
-    # INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
-    #
-    
-    http_access allow localnet
-    http_access allow localhost
-    http_access deny all
-    
-    coredump_dir /squid/var/cache/squid
-    
-    refresh_pattern ^ftp:           1440    20%     10080
-    refresh_pattern ^gopher:        1440    0%      1440
-    refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
-    refresh_pattern .               0       20%     4320
 
 ## How do I configure Squid to work behind a firewall?
 
@@ -480,8 +97,7 @@ on a *cache_peer* line. For example:
 
 ## How do I configure Squid forward all requests to another proxy?
 
-see
-[Features/CacheHierarchy](/Features/CacheHierarchy)
+see [Features/CacheHierarchy](/Features/CacheHierarchy)
 
 ## What ''cache_dir'' size should I use?
 
@@ -527,11 +143,11 @@ decrease your cache size.
 No. You can add and delete cache_dir lines without affecting any of the
 others.
 
-## Squid and http-gw from the TIS toolkit.
+## Squid and http-gw from the TIS toolkit
 
 Several people on both the fwtk-users and the squid-users mailing asked
-about using Squid in combination with http-gw from the [TIS
-toolkit](http://www.tis.com/). The most elegant way in my opinion is to
+about using Squid in combination with http-gw from the 
+[TIS toolkit](http://www.tis.com/). The most elegant way in my opinion is to
 run an internal Squid caching proxyserver which handles client requests
 and let this server forward it's requests to the http-gw running on the
 firewall. Cache hits won't need to be handled by the firewall.
@@ -602,28 +218,24 @@ To summarize:
 
 Advantages:
 
-  - http-gw allows you to selectively block ActiveX and Java, and it's
-    primary design goal is security.
-
-  - The firewall doesn't need to run large applications like Squid.
-
-  - The internal Squid-server still gives you the benefit of caching.
+- http-gw allows you to selectively block ActiveX and Java, and it's
+  primary design goal is security.
+- The firewall doesn't need to run large applications like Squid.
+- The internal Squid-server still gives you the benefit of caching.
 
 Disadvantages:
 
-  - The internal Squid proxyserver can't (and shouldn't) work with other
-    parent or neighbor caches.
+- The internal Squid proxyserver can't (and shouldn't) work with other
+  parent or neighbor caches.
+- Initial requests are slower because these go through http-gw,
+  http-gw also does reverse lookups. Run a nameserver on the firewall
+  or use an internal nameserver.
 
-  - Initial requests are slower because these go through http-gw,
-    http-gw also does reverse lookups. Run a nameserver on the firewall
-    or use an internal nameserver.
-
-(contributed by [Rodney van den Oever](mailto:RvdOever@baan.nl))
+*contributed by [Rodney van den Oever](mailto:RvdOever@baan.nl)*
 
 ## What is "HTTP_X_FORWARDED_FOR"? Why does squid provide it to WWW servers, and how can I stop it?
 
-see. [Security -
-X-Forwarded-For](/SquidFaq/SecurityPitfalls#head-bc80c66abc9dfd9d6463fac3113bf5101d7b741e)
+see [Security - X-Forwarded-For](/SquidFaq/SecurityPitfalls#head-bc80c66abc9dfd9d6463fac3113bf5101d7b741e)
 
 When a proxy-cache is used, a server does not see the connection coming
 from the originating client. Many people like to implement access
@@ -680,9 +292,8 @@ capability;
 For details see the documentation in squid.conf.default or
 squid.conf.documented for your specific version of squid.
 
-[](http://www.squid-cache.org/Versions/v2/HEAD/cfgman/) ,
-[](http://www.squid-cache.org/Versions/v3/3.HEAD/cfgman/) , References:
-[Anonymous WWW](http://www.iks-jena.de/mitarb/lutz/anon/web.en.html)
+[Squid 3 configuration manual](http://www.squid-cache.org/Versions/v3/3.HEAD/cfgman/)
+References: [Anonymous WWW](http://www.iks-jena.de/mitarb/lutz/anon/web.en.html)
 
 ## Can I make Squid go direct for some sites?
 
@@ -732,15 +343,10 @@ header, then Squid compares the content-length value to the
 `reply_body_max_size` value. If the content-length is larger,the server
 connection is closed and the user receives an error message from Squid.
 
-*Some responses don't have*Content-length*headers. In this case, Squid
+Some responses don't have *Content-length* headers. In this case, Squid
 counts how many bytes are written to the client. Once the limit is
-reached, the client's connection is simply closed.*
+reached, the client's connection is simply closed.
 
-  - :bulb:
+> :bulb:
     Note that "creative" user-agents will still be able to download
     really large files through the cache using HTTP/1.1 range requests.
-
-<!-- end list -->
-
-  - Back to the
-    [SquidFaq](/SquidFaq)

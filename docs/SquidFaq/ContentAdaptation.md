@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
 # Content Adaptation
@@ -13,29 +11,22 @@ Squid can be configured or modified to perform some forms of content
 adaptation. This page highlights content adaptation approaches supported
 by Squid.
 
-# Use cases
+## Use cases
 
 The following are typical content adaptation needs. Virtually all of the
 adaptations listed below have been implemented using one or more
 mechanisms described in this document.
 
-  - Add, remove, or modify an HTTP header field (e.g., Cookie)
+- Add, remove, or modify an HTTP header field (e.g., Cookie)
+- Block messages based on request URLs
+- Block messages based on content
+- Redirect certain requests to a custom page or server
+- Respond to certain requests with a custom page
+- Modify a page to insert new content (e.g., warnings or ads)
+- Modify a page to remove existing content (e.g., images or ads)
+- Scale an embedded image (e.g., for mobile devices)
 
-  - Block messages based on request URLs
-
-  - Block messages based on content
-
-  - Redirect certain requests to a custom page or server
-
-  - Respond to certain requests with a custom page
-
-  - Modify a page to insert new content (e.g., warnings or ads)
-
-  - Modify a page to remove existing content (e.g., images or ads)
-
-  - Scale an embedded image (e.g., for mobile devices)
-
-# Adaptation Mechanisms
+# Adaptation mechanisms
 
 ## ICAP
 
@@ -49,11 +40,11 @@ able to work in a variety of environments and will not depend on a
 single proxy project or vendor. No proxy code modifications are
 necessary for most content adaptations using ICAP.
 
-  - **Pros**: Proxy-independent, adaptation-focused API, no Squid
-    modifications, supports remote adaptation servers, scalable.
-    
-    **Cons**: Communication delays, protocol functionality limitations,
-    needs a stand-alone ICAP server process or box.
+**Pros**: Proxy-independent, adaptation-focused API, no Squid
+  modifications, supports remote adaptation servers, scalable.
+  
+**Cons**: Communication delays, protocol functionality limitations,
+  needs a stand-alone ICAP server process or box.
 
 One proxy may access many ICAP servers, and one ICAP server may be
 accessed by many proxies. An ICAP server may reside on the same physical
@@ -61,23 +52,21 @@ machine as Squid or run on a remote host. Depending on configuration and
 context, some ICAP failures can be bypassed, making them invisible to
 proxy end-users.
 
-see
-[../../Features/ICAP](/Features/ICAP)
+see [Features: ICAP](/Features/ICAP)
 
 ## Client Streams
 
-Squid3 sources include
-[ClientStreams](/ProgrammingGuide/ClientStreams)
+Squid provides [ClientStreams](/ProgrammingGuide/ClientStreams)
 classes designed for embedded server-side includes (ESI). A Client
 Streams node has access to the HTTP response message being received from
 the origin server or being fetched from the cache. By modifying Squid
 code, new nodes performing custom content adaptation may be added.
 Client Streams are limited to response modification.
 
-  - **Pros**: Fast, integrated.
-    
-    **Cons**: Limited API documentation, lack of support, cannot adapt
-    requests, dependent on Squid (installation, code, license).
+**Pros**: Fast, integrated.
+  
+**Cons**: Limited API documentation, lack of support, cannot adapt
+requests, dependent on Squid (installation, code, license).
 
 Unfortunately, Client Streams creators have not been actively
 participating in Squid development for a while, little API
@@ -96,16 +85,14 @@ adaptation without tight dependency on Squid sources. Other proxies and
 even ICAP servers may chose to support the same API, removing dependency
 on Squid.
 
-  - **Pros**: Fast, integrated, adaptation-focused API, no Squid
-    modifications.
-    
-    **Cons**: Dependent on Squid installation (at least in the
-    beginning)
+**Pros**: Fast, integrated, adaptation-focused API, no Squid
+modifications.
 
-Initial support for eCAP is available in
-[Squid 3.1](/RoadMap/Squid3).
-You can find more details
-[elsewhere](/Features/eCAP).
+**Cons**: Dependent on Squid installation (at least in the
+beginning)
+
+Initial support for eCAP is available from [Squid 3.1](/RoadMap/Squid3).
+You can find more details [in Features/eCAP](/Features/eCAP).
 
 ## Squid.conf ACLs
 
@@ -118,11 +105,11 @@ and
 [request_header_replace](http://www.squid-cache.org/Doc/config/request_header_replace).
 Similar directives available for adapting response headers.
 
-  - **Pros**: Fast, integrated, adaptation-focused API, no Squid
-    modifications.
-    
-    **Cons**: Limited to simple header adaptations, dependent on Squid
-    installation.
+**Pros**: Fast, integrated, adaptation-focused API, no Squid
+modifications.
+
+**Cons**: Limited to simple header adaptations, dependent on Squid
+installation.
 
 The extent of header manipulation support depends on Squid version: Some
 versions do not allow adding new headers and some do not allow replacing
@@ -136,10 +123,10 @@ Simple and generic adaptations such as header manipulations may be
 accepted into the official Squid code base, minimizing long-term
 maintenance overheads.
 
-  - **Pros**: Fast, integrated.
-    
-    **Cons**: Must study Squid sources (no API), limited support,
-    dependent on Squid (installation, code, license).
+**Pros**: Fast, integrated.
+
+**Cons**: Must study Squid sources ), limited support,
+dependent on Squid (installation, code, license).
 
 Unfortunately, most adaptations are relatively complex, not limited to
 headers, or highly customized and, hence, are unlikely to be accepted.
@@ -158,10 +145,8 @@ Some adaptation mechanisms are limited in their scope. The following
 table summarizes what messages and what message parts the mechanisms can
 adapt.
 
-|                                     |             |              |          |     |
+| Mechanism              | Request Header | Request Body | Reply Header| Reply Body |
 | ----------------------------------- | ----------- | ------------ | -------- | --- |
-| **Mechanism**                       | **Request** | **Response** |          |     |
-| **Header**                          | **Body**    | **Header**   | **Body** |     |
 | [ICAP](#secICAP)                    | yes         | yes          | yes      | yes |
 | [Client Streams](#secClientStreams) |             |              | yes      | yes |
 | [eCAP](#seceCAP)                    | yes         | yes          | yes      | yes |
@@ -172,9 +157,8 @@ Each adaptation mechanism has its strength and weaknesses. The following
 table attempts to rank mechanisms using frequently used evaluation
 criteria.
 
-|                                         |                                                                                                                              |
-| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Evaluation Criteria**                 | **Mechanisms in rough order from "best" to "worst"**                                                                         |
+| Evaluation Criteria | Mechanisms in rough order from "best" to "worst" |
+| --- | --- |
 | Squid independence                      | [ICAP](#secICAP), [eCAP](#seceCAP), [ACLs](#secACLs), [Client Streams](#secClientStreams), [code hacks](#secCodeHacks)       |
 | Processing speed                        | [eCAP](#seceCAP) or [Client Streams](#secClientStreams) or [ACLs](#secACLs) or [code hacks](#secCodeHacks), [ICAP](#secICAP) |
 | Development effort (header adaptation)  | [ACLs](#secACLs), [code hacks](#secCodeHacks), [Client Streams](#secClientStreams), [eCAP](#seceCAP), [ICAP](#secICAP)       |
@@ -182,14 +166,14 @@ criteria.
 | Versatility                             | [code hacks](#secCodeHacks), [eCAP](#seceCAP), [ICAP](#secICAP), [Client Streams](#secClientStreams), [ACLs](#secACLs)       |
 | Maintenance overheads                   | [ACLs](#secACLs), [eCAP](#seceCAP), [ICAP](#secICAP), [Client Streams](#secClientStreams), [code hacks](#secCodeHacks)       |
 
-# Additional resources
+## Additional resources
 
 The following mailing list threads cover some content adaptation
 scenarios and options:
 [4048](http://thread.gmane.org/gmane.comp.web.squid.devel/4048/),
 [4197](http://thread.gmane.org/gmane.comp.web.squid.devel/4197/).
 
-# Warning
+## Warning
 
 Certain forms of content adaptation are considered harmful by
 [IETF](http://www.ietf.org/) (see, for example, RFC
@@ -197,5 +181,3 @@ Certain forms of content adaptation are considered harmful by
 content adaptation will annoy content owners, producers, consumers, or
 all of the above. Not everything that is technically possible is
 ethical, desirable, or legal. Think before you adapt others content\!
-
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)

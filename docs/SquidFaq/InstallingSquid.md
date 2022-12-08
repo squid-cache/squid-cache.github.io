@@ -1,32 +1,11 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: installation
 ---
-# How big of a system do I need to run Squid?
 
-There are no hard-and-fast rules. The most important resource for Squid
-is physical memory, so put as much in your Squid box as you can. Your
-processor does not need to be ultra-fast. We recommend buying whatever
-is economical at the time.
+# Installing Squid
 
-Your disk system will be the major bottleneck, so fast disks are
-important for high-volume caches. SCSI disks generally perform better
-than ATA, if you can afford them. Serial ATA (SATA) performs somewhere
-between the two. Your system disk, and logfile disk can probably be IDE
-without losing any cache performance.
-
-The ratio of memory-to-disk can be important. We recommend that you have
-at least 32 MB of RAM for each GB of disk space that you plan to use for
-caching.
-
-# How do I install Squid?
-
-From [Binary
-Packages](/SquidFaq/BinaryPackages)
-if available for your operating system.
-
-Or from Source Code.
+From [Binary Packages](/SquidFaq/BinaryPackages)
+if available for your operating system, or from from source.
 
 After
 [SquidFaq/CompilingSquid](/SquidFaq/CompilingSquid),
@@ -45,7 +24,7 @@ After installing, you will want to read
 [SquidFaq/ConfiguringSquid](/SquidFaq/ConfiguringSquid)
 to edit and customize Squid to run the way you want it to.
 
-# How do I start Squid?
+## How do I start Squid?
 
 First you need to check your Squid configuration. The Squid
 configuration can be found in */usr/local/squid/etc/squid.conf* and
@@ -74,9 +53,12 @@ with the -z option:
 
     % /usr/local/squid/sbin/squid -z
 
-|                                                                           |                                                                                                                                                                                                                    |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| :warning: | If you run Squid as root then you may need to first create */usr/local/squid/var/logs* and your *cache_dir* directories and assign ownership of these to the cache_effective_user configured in your squid.conf |
+
+> :warning:
+    If you run Squid as root then you may need to first 
+    create */usr/local/squid/var/logs* and your *cache_dir* directories and 
+    assign ownership of these to the cache_effective_user configured 
+    in your squid.conf
 
 Once the creation of the cache directories completes, you can start
 Squid and try it out. Probably the best thing to do is run it from your
@@ -93,13 +75,13 @@ leave off all options:
 
     % /usr/local/squid/sbin/squid
 
-|                                                                           |                                                                                                  |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| :warning: | Depending on which http_port you select you may need to start squid as root (http_port \<1024) |
+> :warning:
+    Depending on which http_port you select you may need to start
+    squid as root (if http_port <1024)
 
-# How do I start Squid automatically when the system boots?
+## How do I start Squid automatically when the system boots?
 
-## by hand
+### by hand
 
 Squid has a restart feature built in. This greatly simplifies starting
 Squid and means that you don't need to use *RunCache* or *inittab*. At
@@ -147,7 +129,7 @@ option.
 
     /usr/local/squid/bin/squid -N
 
-## from inittab
+### from inittab
 
 On systems which have an */etc/inittab* file (Digital Unix, old Solaris,
 IRIX, HP-UX, Linux), you can add a line like this:
@@ -179,7 +161,7 @@ sample *squid.sh* script is shown below:
             | Mail -s "Squid restart on `hostname` at `date`" $notify
     exec bin/squid -N $opts
 
-## from rc.local
+### from rc.local
 
 On BSD-ish systems, you will need to start Squid from the "rc" files,
 usually */etc/rc.local*. For example:
@@ -189,7 +171,7 @@ usually */etc/rc.local*. For example:
             /usr/local/squid/sbin/squid
     fi
 
-## from init.d
+### from init.d
 
 Squid ships with a init.d type startup script in contrib/squid.rc which
 works on most init.d type systems. Or you can write your own using any
@@ -210,7 +192,7 @@ Stop:
         n=`expr $n - 1`
     done
 
-## with daemontools
+### with daemontools
 
 Create squid service directory, and the log directory (if it does not
 exist yet).
@@ -239,7 +221,7 @@ area.
 
 Squid should start within 5 seconds.
 
-## from SMF
+### from SMF
 
 On new Solaris (10 and above) inittab/sysvinit is deprecated and is
 recommended to use new SMF (Service Management Facility).
@@ -359,7 +341,7 @@ You can get complete Squid SMF scripts with all needful to run it on
 Solaris here:
 [squid_autostart25.tar.gz](/SquidFaq/InstallingSquid?action=AttachFile&do=get&target=squid_autostart25.tar.gz)
 
-# How do I tell if Squid is running?
+## How do I tell if Squid is running?
 
 You can use the *squidclient* program:
 
@@ -380,9 +362,9 @@ And then check the shell's exit status variable.
 Also, check the log files, most importantly the *access.log* and
 *cache.log* files.
 
-# squid command line options
+## squid command line options
 
-These are the command line options for **Squid-2**:
+These are the command line options:
 
 **-a** Specify an alternate port number for incoming HTTP requests.
 Useful for testing a configuration file on a non-standard port.
@@ -453,16 +435,14 @@ satisfied during this time.
 *swap.state* file is being read. If your cache has mostly child caches
 which use ICP, this will allow your cache to rebuild faster.
 
-# How do I see how Squid works?
+## How do I see how Squid works?
 
-  - Check the *cache.log* file in your logs directory. It logs
-    interesting things as a part of its normal operation and can be
-    boosted to show all the boring details.
+- Check the *cache.log* file in your logs directory. It logs
+interesting things as a part of its normal operation and can be
+boosted to show all the boring details.
+- Install and use the [CacheManager](/Features/CacheManager).
 
-  - Install and use the
-    [../CacheManager](/SquidFaq/CacheManager).
-
-# Can Squid benefit from SMP systems?
+## Can Squid benefit from SMP systems?
 
 Squid is a single process application and can not make use of SMP. If
 you want to make Squid benefit from a SMP system you will need to run
@@ -476,7 +456,7 @@ to run various statistics collections during peak hours.
 The authentication and group helpers barely use any CPU and does not
 benefit much from dual-CPU configuration.
 
-# Is it okay to use separate drives for Squid?
+## Is it okay to use separate drives for Squid?
 
 Yes. Running Squid on separate drives to that which your OS is running
 is often a very good idea.
@@ -489,12 +469,11 @@ disks than one huge drive (especially with SCSI).
 If your system is very I/O bound, you will want to have both your OS and
 log directories running on separate drives.
 
-# Is it okay to use RAID on Squid?
+## Is it okay to use RAID on Squid?
 
-see Section on
-[RAID](/SquidFaq/RAID)
+see Section on [RAID](/SquidFaq/RAID)
 
-# Is it okay to use ZFS on Squid?
+## Is it okay to use ZFS on Squid?
 
 Yes. Running Squid on native ZFS-supporting systems, like Solaris or
 [OpenIndiana](http://openindiana.org) is well-known practice.
@@ -513,6 +492,3 @@ size to 1/8-1/4 of RAM by setting zfs:zfs_arc_max.
 
 ZFS works perfectly both diskd and aufs Squid storeIO modules (best
 choise depending your box/storage architecture).
-
-Back to the
-[SquidFaq](/SquidFaq)
