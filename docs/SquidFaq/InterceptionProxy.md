@@ -1,10 +1,10 @@
 ---
 FaqSection: operation
 ---
+# Interception Caching
+
 Or, *How can I make my users' browsers use my cache without configuring
 the browsers for proxying?*
-
-# Concepts of Interception Caching
 
 Interception Caching goes under many names - Interception Caching,
 Transparent Proxying, URL rewriting, [SSL-Bump](/Features/SslBump)
