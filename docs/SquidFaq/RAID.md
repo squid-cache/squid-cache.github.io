@@ -10,8 +10,7 @@ determining the performance of a Squid cache.
 
 RAID comes is many flavors and with different properties. For a
 technical description of RAID you check the relevant entry in
-[Wikipedia](http://en.wikipedia.org/wiki/RAID) or
-\[\[[](http://www.midwestdatarecovery.com/raid-array-types.html) \]\].
+[Wikipedia](http://en.wikipedia.org/wiki/RAID).
 In a nutshell, RAID is used to increase the reliability of a disk
 subsystem by redundancy.
 
@@ -28,7 +27,7 @@ Alternatively, you may want to use more than one Squid cache and use
 load-balancing mechanisms such as
 [VRRP](http://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol),
 external load-balancers or ad-hoc Proxy Auto-Configuration Scripts (see
-[../ConfiguringBrowsers](/SquidFaq/ConfiguringBrowsers)
+[ConfiguringBrowsers](/SquidFaq/ConfiguringBrowsers)
 and
 [Technology/ProxyPac](/Technology/ProxyPac))
 to achieve higher availability.

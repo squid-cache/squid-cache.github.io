@@ -56,7 +56,7 @@ workarounds:
 
 You may need to set up the *http_access* option to allow requests from
 your IP addresses. Please see
-[../SquidAcl](/SquidFaq/SquidAcl)
+[SquidAcl](/SquidFaq/SquidAcl)
 for information about that.
 
 Alternately, you may have misconfigured one of your ACLs. Check the
@@ -519,7 +519,7 @@ connections.
 Yes, Squid supports Microsoft NTLM authentication to authenticate users
 accessing the proxy server itself (be it in a forward or reverse setup).
 See
-[../ProxyAuthentication](/SquidFaq/ProxyAuthentication)
+[ProxyAuthentication](/SquidFaq/ProxyAuthentication)
 for further details
 
 Squid 2.6+ and 3.1+ also support the kind of infrastructure that's
@@ -1111,7 +1111,7 @@ things, including:
   - An overloaded origin server.
 
   - TCP implementation/interoperability bugs. See the
-    [../SystemWeirdnesses](/SquidFaq/SystemWeirdnesses)
+    [SystemWeirdnesses](/SquidFaq/SystemWeirdnesses)
     for details.
 
   - Race conditions with HTTP persistent connections.
@@ -1121,7 +1121,7 @@ things, including:
   - Denial of service attacks.
 
   - Utilizing TCP blackholing on FreeBSD (check
-    [../SystemWeirdnesses](/SquidFaq/SystemWeirdnesses)).
+    [SystemWeirdnesses](/SquidFaq/SystemWeirdnesses)).
 
 You may be able to use *tcpdump* to track down and observe the problem.
 
@@ -1198,7 +1198,7 @@ swap.state index from the cached files reasonably well.
 
 If this does not work or causes too high load on your server due to the
 reindexing of the cache then delete the cache content as explained in
-[../OperatingSquid](/SquidFaq/OperatingSquid).
+[OperatingSquid](/SquidFaq/OperatingSquid).
 
 # Problems with Windows update
 

@@ -28,7 +28,7 @@ published: false
 The current list of status strings is hardcoded in
 HttpStatusLine.cc:httpStatusString. Letting origin strings through
 currently incurs in memory management-related difficulties. After
-[../BetterStringBuffer](/Features/BetterStringBuffer)
+[BetterStringBuffer](/Features/BetterStringBuffer)
 lands it'll be considerably easier to implement.
 
 [CategoryFeature](/CategoryFeature)
