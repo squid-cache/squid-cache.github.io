@@ -5,7 +5,7 @@
 {% assign section = "preamble" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
 {% for p in pages -%}
-- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
+* [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
 {% endfor %}
 
 
@@ -15,7 +15,7 @@
 
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
 {% for p in pages -%}
-- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
+* [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
 {% endfor %}
 
 
@@ -36,27 +36,27 @@
 {% assign section = "operation" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
 {% for p in pages -%}
-- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
-{% endfor -%}
+* [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
+{% endfor %}
 
 ## Troubleshooting
 {% assign section = "troubleshooting" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
 {% for p in pages -%}
-- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
+* [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
 {% endfor -%}
+
 - the [KnowledgeBase](/KnowledgeBase)
   Covers how things are supposed to work and what to look out for. It includes specific help guides for supported operating systems.
 - [ConfigExamples](/ConfigExamples):
   Gives detailed configurations in case you have missed something
 
 ## Performance Tuning
-
 {% assign section = "performance" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
 {% for p in pages -%}
-- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
-{% endfor -}
+* [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
+{% endfor %}
 
 ## Squid features
 
@@ -67,5 +67,5 @@ See [Features](/Features) for a run down of Squid's main features
 {% assign section = "misc" %}
 {%- assign pages = site.pages | where: "FaqSection", section | sort: "title" -%}
 {% for p in pages -%}
-- [{{ p.title }}]({{ p.url | replace: ".html", "" }})
-{% endfor -%}
+* [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
+{% endfor %}
