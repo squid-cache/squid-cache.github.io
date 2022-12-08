@@ -1,12 +1,9 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: troubleshooting
 ---
-# Order Is Important\!
+# Squid configuration: Order Is Important!
 
   - Order is important
-
   - Order is critical
 
 This is by far the No. 1 most repeated comment in the Squid user help
@@ -38,7 +35,7 @@ a reverse-proxy website visitor is able to reach the website. They also
 determine whether that website is able to perform HTTPS, AJAX, JSON, or
 other advanced website operations beyond plain simple HTTP. see the
 relevant
-[SquidFaq/ReverseProxy\#How_do_I_set_it_up.3F](/SquidFaq/ReverseProxy#How_do_I_set_it_up.3F)
+[SquidFaq/ReverseProxy\#How_do_I_set_it_up](/SquidFaq/ReverseProxy#How_do_I_set_it_up)
 example for specific order details. Generally the reverse-proxy needs to
 be first.
 
@@ -113,33 +110,22 @@ ends before Squid starts satisfying the request from the cache or origin
 server. The checks are listed here in the order of their execution:
 
 1.  Host header forgery checks
-
-2.  [http_access](http://www.squid-cache.org/Doc/config/http_access)
+1.  [http_access](http://www.squid-cache.org/Doc/config/http_access)
     directive
-
-3.  ICAP/eCAP
+1.  ICAP/eCAP
     [adaptation](/SquidFaq/ContentAdaptation)
-
-4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
-
-5.  [adapted_http_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
+1.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
+1.  [adapted_http_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     directive
-
-6.  [store_id](http://www.squid-cache.org/Doc/config/store_id)
+1.  [store_id](http://www.squid-cache.org/Doc/config/store_id)
     directive
-
-7.  clientInterpretRequestHeaders()
-
-8.  [cache](http://www.squid-cache.org/Doc/config/cache) directive
-
-9.  ToS marking
-
-10. nf marking
-
-11. [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
+1.  clientInterpretRequestHeaders()
+1.  [cache](http://www.squid-cache.org/Doc/config/cache) directive
+1.  ToS marking
+10. NetFilter (nf) marking
+1. [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
     directive
-
-12. callout sequence error handling
+1. callout sequence error handling
 
 A failed check may prevent subsequent checks from running.
 
@@ -169,16 +155,14 @@ Transaction translated into various HTTP messages which should go
 through the above above motions.
 
 Your Squid directives and helpers must be prepared to deal with multiple
-\[CONNECT\] requests per connection.
+*CONNECT* requests per connection.
 
 ## Others
 
 Some others have a simpler interaction, but ordering is still important.
 
-  - refresh_pattern - top down first pattern match wins.
-
-  - delay_pools + delay_class + delay_parameters - must be added in
-    that order: pools, class, parameters.
-
-  - cache_peer - order of individual cache_peer entries affects
-    selection of default and first-available peer.
+- refresh_pattern - top down first pattern match wins.
+- delay_pools + delay_class + delay_parameters - must be added in
+  that order: pools, class, parameters.
+- cache_peer - order of individual cache_peer entries affects
+  selection of default and first-available peer.

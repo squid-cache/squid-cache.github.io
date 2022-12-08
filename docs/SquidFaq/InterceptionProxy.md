@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
 Or, *How can I make my users' browsers use my cache without configuring
@@ -9,111 +7,63 @@ the browsers for proxying?*
 # Concepts of Interception Caching
 
 Interception Caching goes under many names - Interception Caching,
-Transparent Proxying, URL rewriting,
-[SSL-Bump](/Features/SslBump)
+Transparent Proxying, URL rewriting, [SSL-Bump](/Features/SslBump)
 and Cache Redirection. Interception Caching is the process by which HTTP
 connections coming from remote clients are redirected to a cache server,
 without their knowledge or explicit configuration.
 
-There are some good reasons why you may want to use this technique:
+There are also significant disadvantages for this strategy, as
+outlined by *Mark Elsen*:
 
-  - There is no client configuration required.
-    
-      - This is the most popular reason for investigating HTTP intercept
-        - there are many client software who fail to implement HTTP
-        proxy support.
-
-  - There is no client SSL proxy connection required.
-    
-      - This is the most popular reason for investigating HTTPS
-        intercept - there are very few clients which support SSL proxy
-        connections.
-
-  - The server may be using URL-based virtual hosting.
-    
-      - This is the only known reason to need URL-rewrite form of
-        intercept - there are two popular CMS systems which depend on
-        this form of URL manipulation to operate. When the public URL
-        ![http://example.com/](http://example.com/) is presented by the
-        web server as
-        ![http://other.server/example.com/](http://other.server/example.com/)
-        a re-writer is needed to 'fix' the broken web server system.
-    
-      - :warning:
-        Note that all other known uses of re-write can be avoided with
-        better alternatives\!
-
-However there are also significant disadvantages for this strategy, as
-outlined by Mark Elsen:
-
-  - Intercepting HTTP breaks TCP/IP standards because user agents think
-    they are talking directly to the origin server.
-
-  - Requires IPv4 with NAT on most operating systems, although some now
-    support TPROXY or NAT for IPv6 as well.
-
-  - It causes path-MTU (PMTUD) to fail, possibly making some remote
-    sites inaccessible. This is not usually a problem if your client
-    machines are connected via Ethernet or DSL PPPoATM where the MTU of
-    all links between the cache and client is 1500 or more. If your
-    clients are connecting via DSL PPPoE then this is likely to be a
-    problem as PPPoE links often have a reduced MTU (1472 is very
-    common).
-
-  - On older IE versions before version 6, the ctrl-reload function did
-    not work as expected.
-
-  - Connection multiplexing does not work. Clients aware of the proxy
-    can send requests for multiple domains down one proxy connection and
-    save resources while letting teh proxy do multiple backend
-    connections. When talking to an origin clients are not permitted to
-    do this and will open many TCP connections for resources. This
-    causes intercepting proxy to consume more network sockets than a
-    regular proxy.
-
-  - Proxy authentication does not work.
-
-  - IP based authentication by the origin fails because the users are
-    all seen to come from the Interception Cache's own IP address.
-
-  - You can't use IDENT lookups (which are inherently very insecure
-    anyway)
-
-  - ARP relay breaks at the proxy machine.
-
-  - Interception Caching only supports the HTTP protocol, not gopher,
-    SSL, or FTP. You cannot setup a redirection-rule to the proxy server
-    for other protocols other than HTTP since the client will not know
-    how to deal with it.
-
-  - Intercepting Caches are incompatible with IP filtering designed to
-    prevent address spoofing.
-
-  - Clients are still expected to have full Internet DNS resolving
-    capabilities; in certain intranet/firewalling setups, this is not
-    always wanted.
-
-  - Related to above: suppose the users browser connects to a site which
-    is down. However, due to the transparent proxying, it gets a
-    connected state to the interceptor. The end user may get wrong error
-    messages or a hung browser, for seemingly unknown reasons to them.
-
-  - DNS load is doubled, as clients do one DNS lookup, and the
-    interception proxy repeats it.
-
-  - protocol tunnelling over the intercepted port 80 or 443 breaks.
-
-  - [WebSockets](http://www.websocket.org/) connectivity does not work.
-
-  - SPDY connectivity does not work (HTTPS interception proxy).
-
-  - URL-rewriting and SSL-Bump forms of interception are usually not
-    compatible. SSL-Bump generates a fake server certificate to match
-    what the server presents. If URL-rewrite alters what sever is being
-    contacted the client will receive wrong certificates. OR, attempting
-    to re-write a HTTPS URL to [](http:://) - the server will not
-    present any SSL certificate. Both of these will result in user
-    visible errors.
+- Intercepting HTTP breaks TCP/IP standards because user agents think
+  they are talking directly to the origin server.
+- Requires IPv4 with NAT on most operating systems, although some now
+  support TPROXY or NAT for IPv6 as well.
+- It causes path-MTU (PMTUD) to fail, possibly making some remote
+  sites inaccessible. This is not usually a problem if your client
+  machines are connected via Ethernet or DSL PPPoATM where the MTU of
+  all links between the cache and client is 1500 or more. If your
+  clients are connecting via DSL PPPoE then this is likely to be a
+  problem as PPPoE links often have a reduced MTU (1472 is very
+  common).
+- Connection multiplexing does not work. Clients aware of the proxy
+  can send requests for multiple domains down one proxy connection and
+  save resources while letting teh proxy do multiple backend
+  connections. When talking to an origin clients are not permitted to
+  do this and will open many TCP connections for resources. This
+  causes intercepting proxy to consume more network sockets than a
+  regular proxy.
+- Proxy authentication does not work.
+- IP based authentication by the origin fails because the users are
+  all seen to come from the Interception Cache's own IP address.
+- You can't use IDENT lookups (which are inherently very insecure
+  anyway)
+- ARP relay breaks at the proxy machine.
+- Interception Caching only supports the HTTP protocol, not gopher,
+  SSL, or FTP. You cannot setup a redirection-rule to the proxy server
+  for other protocols other than HTTP since the client will not know
+  how to deal with it.
+- Intercepting Caches are incompatible with IP filtering designed to
+  prevent address spoofing.
+- Clients are still expected to have full Internet DNS resolving
+  capabilities; in certain intranet/firewalling setups, this is not
+  always wanted.
+- Related to above: suppose the users browser connects to a site which
+  is down. However, due to the transparent proxying, it gets a
+  connected state to the interceptor. The end user may get wrong error
+  messages or a hung browser, for seemingly unknown reasons to them.
+- DNS load is doubled, as clients do one DNS lookup, and the
+  interception proxy repeats it.
+- protocol tunnelling over the intercepted port 80 or 443 breaks.
+- [WebSockets](http://www.websocket.org/) connectivity does not work.
+- SPDY connectivity does not work (HTTPS interception proxy).
+- URL-rewriting and SSL-Bump forms of interception are usually not
+  compatible. SSL-Bump generates a fake server certificate to match
+  what the server presents. If URL-rewrite alters what sever is being
+  contacted the client will receive wrong certificates. OR, attempting
+  to re-write a HTTPS URL to [](http:://) - the server will not
+  present any SSL certificate. Both of these will result in user
+  visible errors.
 
 If you feel that the advantages outweigh the disadvantages in your
 network, you may choose to continue reading and look at implementing
@@ -121,66 +71,58 @@ Interception Caching.
 
 # Requirements and methods for Interception Caching
 
-  - You need to have a good understanding of what you are doing before
-    you start. This involves understanding at a TCP layer what is
-    happening to the connections. This will help you both configure the
-    system and additionally assist you if your end clients experience
-    problems after you have deployed your solution.
+- You need to have a good understanding of what you are doing before
+  you start. This involves understanding at a TCP layer what is
+  happening to the connections. This will help you both configure the
+  system and additionally assist you if your end clients experience
+  problems after you have deployed your solution.
+- A current OS may make things easier.
+- Quite likely you will need a network device which can redirect the
+  traffic to your cache. If your Squid box is also functioning as a
+  router and all traffic from and to your network is in the path, you
+  can skip this step. If your cache is a standalone box on a LAN that
+  does not normally see your clients web browsing traffic, you will
+  need to choose a method of redirecting the HTTP traffic from your
+  client machines to the cache. This is typically done with a network
+  appliance such as a router or Layer 3 switch which either rewrite
+  the destination MAC address or alternatively encapsulate the network
+  traffic via a GRE or WCCP tunnel to your cache.
 
-  - A current Squid (2.5+). You should run the latest version of Squid
-    that is available at the time.
+> :information_source: NAT configuration will only work when used
+  **on the squid box**. This is required to perform intercept accurately and securely. To
+  intercept from a gateway machine and direct traffic at a separate squid
+  box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
-  - A current OS may make things easier.
-
-  - Quite likely you will need a network device which can redirect the
-    traffic to your cache. If your Squid box is also functioning as a
-    router and all traffic from and to your network is in the path, you
-    can skip this step. If your cache is a standalone box on a LAN that
-    does not normally see your clients web browsing traffic, you will
-    need to choose a method of redirecting the HTTP traffic from your
-    client machines to the cache. This is typically done with a network
-    appliance such as a router or Layer 3 switch which either rewrite
-    the destination MAC address or alternatively encapsulate the network
-    traffic via a GRE or WCCP tunnel to your cache.
-
-**NOTE:** NAT configuration will only work when used **on the squid
-box**. This is required to perform intercept accurately and securely. To
-intercept from a gateway machine and direct traffic at a separate squid
-box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
-
-NB: If you are using Cisco routers and switches in your network you may
-wish to investigate the use of WCCP. WCCP is an extremely flexible way
-of redirecting traffic and is intelligent enough to automatically stop
-redirecting client traffic if your cache goes offline. This may involve
-you upgrading your router or switch to a release of IOS or an upgraded
-featureset which supports WCCP. There is a section written specifically
-on WCCP below.
+> :information_source: If you are using Cisco routers and switches in your network you may
+  wish to investigate the use of WCCP. WCCP is an extremely flexible way
+  of redirecting traffic and is intelligent enough to automatically stop
+  redirecting client traffic if your cache goes offline. This may involve
+  you upgrading your router or switch to a release of IOS or an upgraded
+  featureset which supports WCCP. There is a section written specifically
+  on WCCP below.
 
 # Steps involved in configuring Interception Caching
 
-  - Building a Squid with the correct options to ./configure to support
-    the redirection and handle the clients correctly.
-
-  - Routing the traffic from port 80 to the port your Squid is
-    configured to accept the connections on
-
-  - Decapsulating the traffic that your network device sends to Squid
-    (only if you are using GRE or WCCP to intercept the traffic)
-
-  - Configuring your network device to redirect the port 80 traffic.
+- Building a Squid with the correct options to ./configure to support
+  the redirection and handle the clients correctly.
+- Routing the traffic from port 80 to the port your Squid is
+  configured to accept the connections on
+- Decapsulating the traffic that your network device sends to Squid
+  (only if you are using GRE or WCCP to intercept the traffic)
+- Configuring your network device to redirect the port 80 traffic.
 
 The first two steps are required and the last two may or may not be
 required depending on how you intend to route the HTTP traffic to your
 cache.
 
-\!It is **critical** to read the full comments in the squid.conf file
-and in this document in it's entirety before you begin. Getting
-Interception Caching to work with Squid is non-trivial and requires many
-subsystems of both Squid and your network to be configured exactly right
-or else you will find that it will not work and your users will not be
-able to browse at all. You MUST test your configuration out in a
-non-live environment before you unleash this feature on your end users.
+> :warning: 
+  It is **critical** to read the full comments in the squid.conf file
+  and in this document in it's entirety before you begin. Getting
+  Interception Caching to work with Squid is non-trivial and requires many
+  subsystems of both Squid and your network to be configured exactly right
+  or else you will find that it will not work and your users will not be
+  able to browse at all. You MUST test your configuration out in a
+  non-live environment before you unleash this feature on your end users.
 
 ## Compile a version of Squid which accepts connections for other addresses
 
@@ -195,20 +137,17 @@ network also need to be configured. For some operating systems, you need
 to have configured and built a version of Squid which can recognize the
 hijacked connections and discern the destination addresses.
 
-  - For Linux configure Squid with the `--enable-linux-netfilter`
-    option.
-
-  - For \*BSD-based systems with IP filter configure Squid with the
-    `--enable-ipf-transparent` option.
-
-  - If you're using OpenBSD's PF configure Squid with
-    `--enable-pf-transparent`.
+- For Linux configure Squid with the `--enable-linux-netfilter`
+  option
+- For \*BSD-based systems with IP filter configure Squid with the
+  `--enable-ipf-transparent` option
+- If you're using OpenBSD's PF configure Squid with
+  `--enable-pf-transparent`
 
 Do a `make clean` if you previously configured without that option, or
 the correct settings may not be present.
 
-Squid-2.6+ and Squid-3.0+ support both WCCPv1 and WCCPv2 by default
-(unless explicitly disabled).
+Squid supports both WCCPv1 and WCCPv2 by default (unless explicitly disabled).
 
 ### Configure Squid to accept and process the redirected port 80 connections
 
@@ -219,13 +158,13 @@ A number of different interception methods and their specific
 configuration is detailed at
 [ConfigExamples/Intercept](/ConfigExamples/Intercept)
 
-:warning:
-You can usually manually configure browsers to connect to the IP address
-and port which you have specified as intercepted. The only drawback is
-that there will be a very slight (and probably unnoticeable) performance
-hit as a syscall done to see if the connection is intercepted. If no
-interception state is found it is processed just like a normal
-connection.
+> :warning:
+  You can usually manually configure browsers to connect to the IP address
+  and port which you have specified as intercepted. The only drawback is
+  that there will be a very slight (and probably unnoticeable) performance
+  hit as a syscall done to see if the connection is intercepted. If no
+  interception state is found it is processed just like a normal
+  connection.
 
 ## Getting your traffic to the right port on your Squid Cache
 
@@ -234,29 +173,26 @@ any IP address, on port 80 - and deliver them to your cache application.
 This is typically done with IP filtering/forwarding features built into
 the kernel.
 
-  - On Linux 2.4 and above this is called `iptables`
-
-  - On FreeBSD its called `ipfw`.
-
-  - Other BSD systems may use `ip filter`, `ipnat` or `pf`.
+- On Linux 2.4 and above this is called `iptables`
+- On FreeBSD its called `ipfw`.
+- Other BSD systems may use `ip filter`, `ipnat` or `pf`.
 
 On most systems, it may require rebuilding the kernel or adding a new
 loadable kernel module. If you are running a modern Linux distribution
 and using the vendor supplied kernel you will likely not need to do any
 rebuilding as the required modules will have been built by default.
 
-### Interception Caching packet redirection for Solaris, SunOS, and BSD systems
+## Interception Caching packet redirection for Solaris, SunOS, and BSD systems
 
-:warning:
-You don't need to use IP Filter on FreeBSD. Use the built-in *ipfw*
-feature instead. See the FreeBSD subsection below.
+> :warning:
+  You don't need to use IP Filter on FreeBSD. Use the built-in *ipfw*
+  feature instead. See the FreeBSD subsection below.
 
-#### Install IP Filter
+### Install IP Filter
 
-First, get and install the [IP Filter
-package](http://coombs.anu.edu.au/ipfilter/).
+First, get and install the [IP Filter package](http://coombs.anu.edu.au/ipfilter/).
 
-#### Configure ipnat
+### Configure ipnat
 
 Put these lines in `/etc/ipnat.rules`:
 
@@ -275,9 +211,9 @@ it looks something like this:
 
 Thanks to [Quinton Dolan](mailto:q@fan.net.au).
 
-### Interception Caching packet redirection for OpenBSD PF
+## Interception Caching packet redirection for OpenBSD PF
 
-\<After having compiled Squid with the options to accept and process the
+After having compiled Squid with the options to accept and process the
 redirected port 80 connections enumerated above, either manually or with
 `FLAVOR=transparent` for `/usr/ports/www/squid`, one needs to add a
 redirection rule to pf (`/etc/pf.conf`). In the following example, `sk0`
@@ -293,8 +229,7 @@ Or, depending on how recent your implementation of PF is:
     i = "sk0"
     rdr pass on $i inet proto tcp to any port 80 -> $i port 3128
 
-Also, see [Daniel Hartmeier's page on the
-subject.](http://www.benzedrine.cx/transquid.html)
+Also, see [Daniel Hartmeier's page on the subject](http://www.benzedrine.cx/transquid.html)
 
 ## Get the packets from the end clients to your cache server
 
@@ -318,7 +253,7 @@ type product, or routing capabilities of an access server.
 
 ### Interception Caching packet redirection with Cisco routers using policy routing (NON WCCP)
 
-by [John Saunders](mailto:John.Saunders@scitec.com.au)
+by *[John Saunders](mailto:John.Saunders@scitec.com.au)*
 
 This works with at least IOS 11.1 and later. If your router is doing
 anything more complicated that shuffling packets between an ethernet
@@ -352,9 +287,9 @@ Apply the route map to the ethernet interface.
      ip policy route-map proxy-redirect
     !
 
-#### Shortcomings of the cisco ip policy route-map method
+### Shortcomings of the cisco ip policy route-map method
 
-[Bruce Morgan](mailto:morgan@curtin.net) notes that there is a Cisco bug
+*[Bruce Morgan](mailto:morgan@curtin.net)* notes that there is a Cisco bug
 relating to interception proxying using IP policy route maps, that
 causes NFS and other applications to break. Apparently there are two bug
 reports raised in Cisco, but they are not available for public
@@ -370,7 +305,7 @@ checked against the access-list it is accepted (it isn't regarded as an
 icmp packet), and goes to the action determined by the policy route
 map\!
 
-[John](mailto:John.Saunders@scitec.com.au) notes that you may be able to
+*[John](mailto:John.Saunders@scitec.com.au)* notes that you may be able to
 get around this bug by carefully writing your access lists. If the
 last/default rule is to permit then this bug would be a problem, but if
 the last/default rule was to deny then it won't be a problem. I guess
@@ -394,7 +329,7 @@ Conversely, this set has worse performance, but works for all protocols:
 
 ### Interception Caching packet redirection with Foundry L4 switches
 
-by [at shreve dot net Brian Feeny](mailto:signal).
+by *Brian Feeny*
 
 First, configure Squid for interception caching as detailed at the
 [beginning of this section](#trans-caching).
@@ -424,38 +359,27 @@ This example assumes your router is plugged into interface **17** of the
 switch. If not, adjust the following commands accordingly.
 
   - Enter configuration mode:
-
-<!-- end list -->
-
-    telnet@ServerIron#conf t
-
+    `telnet@ServerIron#conf t`
   - Configure each squid on the Foundry:
-
-<!-- end list -->
-
+  ```
     telnet@ServerIron(config)# server cache-name squid1 192.168.1.10
     telnet@ServerIron(config)# server cache-name squid2 192.168.1.11
-
+  ```
   - Add the squids to a cache-group:
-
-<!-- end list -->
-
+  ```
     telnet@ServerIron(config)#server cache-group 1
     telnet@ServerIron(config-tc-1)#cache-name squid1
     telnet@ServerIron(config-tc-1)#cache-name squid2
-
+  ```
   - Create a policy for caching http on a local port
-
-<!-- end list -->
-
+  ```
     telnet@ServerIron(config)# ip policy 1 cache tcp http local
-
+  ```
   - Enable that policy on the port connected to your router
-
-<!-- end list -->
-
+  ```
     telnet@ServerIron(config)#int e 17
     telnet@ServerIron(config-if-17)# ip-policy 1
+```
 
 Since all outbound traffic to the Internet goes out interface `17` (the
 router), and interface `17` has the caching policy applied to it, HTTP
@@ -477,47 +401,33 @@ by Pedro A M Vazquez
 
 On the switch define a network group to be intercepted:
 
-``` 
- policy network group MyGroup 10.1.1.0 mask 255.255.255.0
-```
+    policy network group MyGroup 10.1.1.0 mask 255.255.255.0
 
 Define the tcp services to be intercepted:
 
-``` 
- policy service web80 destination tcp port 80
- policy service web8080 destination tcp port 8080
-```
+    policy service web80 destination tcp port 80
+    policy service web8080 destination tcp port 8080
 
 Define a group of services using the services above:
 
-``` 
- policy service group WebPorts web80 web8080
-```
+    policy service group WebPorts web80 web8080
 
 And use these to create an intercept condition:
 
-``` 
- policy condition WebFlow source network group MyGroup service group WebPorts
-```
+    policy condition WebFlow source network group MyGroup service group WebPorts
 
 Now, define an action to redirect the traffic to the host running squid:
 
-``` 
- policy action Redir alternate gateway ip 10.1.2.3
-```
+    policy action Redir alternate gateway ip 10.1.2.3
 
 Finally, create a rule using this condition and the corresponding
 action:
 
-``` 
- policy rule Intercept  condition WebFlow action Redir
-```
+    policy rule Intercept  condition WebFlow action Redir
 
 Apply the rules to the QoS system to make them effective
 
-``` 
- qos apply
-```
+    qos apply
 
 Don't forget that you still need to configure Squid and Squid's
 operating system to handle the intercepted connections. See above for
@@ -661,8 +571,8 @@ following command:
 
 ## WCCP - Web Cache Coordination Protocol
 
-Contributors: [Glenn Chisholm](mailto:glenn@ircache.net), [Lincoln
-Dale](mailto:ltd@cisco.com) and
+Contributors: [Glenn Chisholm](mailto:glenn@ircache.net),
+[Lincoln Dale](mailto:ltd@cisco.com) and
 [ReubenFarrelly](/ReubenFarrelly).
 
 WCCP is a very common and indeed a good way of doing Interception
@@ -729,7 +639,7 @@ require an upgrade to their software feature sets to a 'PLUS' featureset
 or better. WCCPv2 is supported on almost all routers in recent IPBASE
 releases.
 
-Cisco's Feature Navigator at [](http://www.cisco.com/go/fn) runs an up
+Cisco's [Feature Navigator](http://www.cisco.com/go/fn) runs an up
 to date list of which platforms support WCCPv2.
 
 Generally you should run the latest release train of IOS for your router
@@ -777,10 +687,8 @@ having to have a router do the redirection.
 
 #### What about WCCPv2?
 
-WCCPv2 is a new feature to
-[Squid-2.6](/Releases/Squid-2.6)
-and
-[Squid-3.0](/Releases/Squid-3.0).
+WCCPv2 is a new feature to [Squid-2.6](/Releases/Squid-2.6)
+and [Squid-3.0](/Releases/Squid-3.0).
 WCCPv2 configuration is similar to the WCCPv1 configuration. The
 directives in squid.conf are slightly different but are well documented
 within that file. Router configuration for WCCPv2 is identical except
@@ -810,19 +718,18 @@ For WCCPv1, you need these directives:
     wccp_incoming_address e.f.g.h
     wccp_outgoing_address e.f.g.h
 
-  - a.b.c.d is the address of your WCCP router
+- a.b.c.d is the address of your WCCP router
+- e.f.g.h is the address that you want your WCCP requests to come and
+  go from. If you are not sure or have only a single IP address on
+  your cache, do not specify these.
 
-  - e.f.g.h is the address that you want your WCCP requests to come and
-    go from. If you are not sure or have only a single IP address on
-    your cache, do not specify these.
-
-:warning:
-Note: do NOT configure both the WCCPv1 directives (wccp_\*) and WCCPv2
-(wccp2_\*) options at the same time in your squid.conf. Squid only
-supports configuration of one version at a time, either WCCPv1 or
-WCCPv2. With no configuration, the unconfigured version(s) are not
-enabled. Unpredictable things might happen if you configure both sets of
-options.
+> :warning:
+  Note: do NOT configure both the WCCPv1 directives (wccp_\*) and WCCPv2
+  (wccp2_\*) options at the same time in your squid.conf. Squid only
+  supports configuration of one version at a time, either WCCPv1 or
+  WCCPv2. With no configuration, the unconfigured version(s) are not
+  enabled. Unpredictable things might happen if you configure both sets of
+  options.
 
 For WCCPv2, then you will want something like this:
 
@@ -833,30 +740,27 @@ For WCCPv2, then you will want something like this:
     wccp2_service standard 0
     wccp2_outgoing_address e.f.g.h
 
-  - Use a wccp_forwarding_method and wccp2_return_method of **1** if
-    you are using a router and GRE/WCCP tunnel, or **2** if you are
-    using a Layer 3 switch to do the forwarding.
-
-  - Your wccp2_service should be set to **standard 0** which is the
-    standard HTTP redirection.
-
-  - a.b.c.d is the address of your WCCP router
-
-  - e.f.g.h is the address that you want your WCCP requests to come and
-    go from. If you are not sure or have only a single IP address on
-    your cache, do not specify these parameters as they are usually not
-    needed.
+- Use a wccp_forwarding_method and wccp2_return_method of **1** if
+  you are using a router and GRE/WCCP tunnel, or **2** if you are
+  using a Layer 3 switch to do the forwarding.
+- Your wccp2_service should be set to **standard 0** which is the
+  standard HTTP redirection.
+- a.b.c.d is the address of your WCCP router
+- e.f.g.h is the address that you want your WCCP requests to come and
+  go from. If you are not sure or have only a single IP address on
+  your cache, do not specify these parameters as they are usually not
+  needed.
 
 Now you need to read on for the details of configuring your operating
 system to support WCCP.
 
-#### Configuring FreeBSD
+### Configuring FreeBSD
 
 FreeBSD first needs to be configured to receive and strip the GRE
 encapsulation from the packets from the router. The steps depend on your
 kernel version.
 
-#### FreeBSD 4.8 and later
+### FreeBSD 4.8 and later
 
 The operating system now comes standard with some GRE support. You need
 to make a kernel with the GRE code enabled:
@@ -879,7 +783,7 @@ Alternatively, you can try it like this:
 Since the WCCP/GRE tunnel is one-way, Squid never sends any packets to
 10.20.30.40 and that particular address doesn't matter.
 
-#### FreeBSD 6.x and later
+### FreeBSD 6.x and later
 
 FreeBSD 6.x has GRE support in kernel by default. It also supports both
 WCCPv1 and WCCPv2. From gre(4) manpage: "Since there is no reliable way
@@ -888,7 +792,7 @@ using the link2 flag. If the link2 flag is not set (default), then WCCP
 version 1 is selected." The rest of configuration is just as it was in
 4.8+
 
-#### Standard Linux GRE Tunnel
+### Standard Linux GRE Tunnel
 
 Linux versions earlier than 2.6.9 may need to be patched to support
 WCCP. That is why we strongly recommend you run a recent version of the
@@ -949,77 +853,66 @@ on how to get TProxy working properly:
 I've got TProxy + WCCPv2 working with squid 2.6. There are a few things
 that need to be done:
 
-  - The kernel and iptables need to be patched with the tproxy patches
-    (and the tproxy include file needs to be placed in
-    /usr/include/linux/netfilter_ipv4/ip_tproxy.h or
-    include/netfilter_ipv4/ip_tproxy.h in the squid src tree).
-
-  - The iptables rule needs to use the TPROXY target (instead of the
-    REDIRECT target) to redirect the port 80 traffic to the proxy. ie:
-
-<!-- end list -->
-
-    iptables -t tproxy -A PREROUTING -i eth0 -p tcp -m tcp --dport 80 -j TPROXY --on-port 80
-
-  - The kernel must strip the GRE header from the incoming packets
-    (either using the ip_wccp module, or by having a GRE tunnel set up
-    in Linux pointing at the router (no GRE setup is required on the
-    router)).
-
-  - Two WCCP services must be used, one for outgoing traffic and an
-    inverse for return traffic from the Internet. We use the following
-    WCCP definitions in squid.conf:
-
-<!-- end list -->
-
-    wccp2_service dynamic 80
-    wccp2_service_info 80 protocol=tcp flags=src_ip_hash priority=240 ports=80
-    wccp2_service dynamic 90
-    wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 ports=80
-
-It is highly recommended that the above definitions be used for the two
-WCCP services, otherwise things will break if you have more than one
-cache (specifically, you will have problems when the name of a web
-server resolves to multiple ip addresses).
-
-  - The http port that you are redirecting to must have the transparent
-    and tproxy options enabled as follows (modify the port as
-    appropriate): http_port 80 transparent tproxy
-
-  - There **must** be a tcp_outgoing address defined. This will need to
-    be valid to satisfy any non-tproxied connections.
-
-  - On the router, you need to make sure that all traffic going to/from
-    the customer will be processed by **both** WCCP rules. The way we
-    have
-
-implemented this is to apply WCCP service 80 to all traffic coming in
-from a customer-facing interface, and WCCP service 90 applied to all
-traffic going out a customer-facing interface. We have also applied the
-WCCP *exclude-in* rule to all traffic coming in from the proxy-facing
-interface although this will probably not normally be necessary if all
-your caches have registered to the WCCP router. ie:
-
-    interface GigabitEthernet0/3.100
-     description ADSL customers
-     encapsulation dot1Q 502
-     ip address x.x.x.x y.y.y.y
-     ip wccp 80 redirect in
-     ip wccp 90 redirect out
-    interface GigabitEthernet0/3.101
-     description Dialup customers
-     encapsulation dot1Q 502
-     ip address x.x.x.x y.y.y.y
-     ip wccp 80 redirect in
-     ip wccp 90 redirect out
-    interface GigabitEthernet0/3.102
-     description proxy servers
-     encapsulation dot1Q 506
-     ip address x.x.x.x y.y.y.y
-     ip wccp redirect exclude in
-
-  - It's highly recommended to turn httpd_accel_no_pmtu_disc on in
-    the squid.conf.
+- The kernel and iptables need to be patched with the tproxy patches
+  (and the tproxy include file needs to be placed in
+  /usr/include/linux/netfilter_ipv4/ip_tproxy.h or
+  include/netfilter_ipv4/ip_tproxy.h in the squid src tree)
+- The iptables rule needs to use the TPROXY target (instead of the
+  REDIRECT target) to redirect the port 80 traffic to the proxy. ie:
+  ```
+  iptables -t tproxy -A PREROUTING -i eth0 -p tcp -m tcp --dport 80 -j TPROXY --on-port 80
+  ```
+- The kernel must strip the GRE header from the incoming packets
+  (either using the ip_wccp module, or by having a GRE tunnel set up
+  in Linux pointing at the router (no GRE setup is required on the
+  router))
+- Two WCCP services must be used, one for outgoing traffic and an
+  inverse for return traffic from the Internet. We use the following
+  WCCP definitions in squid.conf:
+  ```
+  wccp2_service dynamic 80
+  wccp2_service_info 80 protocol=tcp flags=src_ip_hash priority=240 ports=80
+  wccp2_service dynamic 90
+  wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 ports=80
+  ```
+- It is highly recommended that the above definitions be used for the two
+    WCCP services, otherwise things will break if you have more than one
+    cache (specifically, you will have problems when the name of a web
+    server resolves to multiple ip addresses)
+- The http port that you are redirecting to must have the transparent
+  and tproxy options enabled as follows (modify the port    as
+  appropriate): http_port 80 transparent tproxy
+- There **must** be a tcp_outgoing address defined. This will need to
+  be valid to satisfy any non-tproxied connections
+- On the router, you need to make sure that all traffic going to/from
+  the customer will be processed by **both** WCCP rules. The way we
+  have implemented this is to apply WCCP service 80 to all traffic coming in
+  from a customer-facing interface, and WCCP service 90 applied to all
+  traffic going out a customer-facing interface. We have also applied the
+  WCCP *exclude-in* rule to all traffic coming in from the proxy-facing
+  interface although this will probably not normally be necessary if all
+  your caches have registered to the WCCP router. ie:
+  ```
+  interface GigabitEthernet0/3.100
+    description ADSL customers
+    encapsulation dot1Q 502
+    ip address x.x.x.x y.y.y.y
+    ip wccp 80 redirect in
+    ip wccp 90 redirect out
+  interface GigabitEthernet0/3.101
+    description Dialup customers
+    encapsulation dot1Q 502
+    ip address x.x.x.x y.y.y.y
+    ip wccp 80 redirect in
+    ip wccp 90 redirect out
+  interface GigabitEthernet0/3.102
+    description proxy servers
+    encapsulation dot1Q 506
+    ip address x.x.x.x y.y.y.y
+    ip wccp redirect exclude in
+  ```
+- It's highly recommended to turn httpd_accel_no_pmtu_disc on in
+  the squid.conf.
 
 The homepage for the TProxy software is at
 [balabit.com](http://www.balabit.com/products/oss/tproxy/).
@@ -1027,9 +920,9 @@ The homepage for the TProxy software is at
 ### TProxy v4.1+
 
 Starting with Squid 3.1 support for TProxy is closely tied into the
-netfilter component of Linux kernels. see [TProxy v4.1
-Feature](/Features/Tproxy4)
-for current details.
+netfilter component of Linux kernels.
+see [TProxy v4.1 Feature](/Features/Tproxy4)
+for  details
 
 ## Other Configuration Examples
 
@@ -1054,70 +947,58 @@ will want to read on to our troubleshooting section below.
 
 ### It doesn't work. How do I debug it?
 
-  - Start by testing your cache. Check to make sure you have configured
-    Squid with the right configure options - squid -v will tell you what
-    options Squid was configured with.
-
-  - Can you manually configure your browser to talk to the proxy port?
-    If not, you most likely have a proxy configuration problem.
-
-  - Have you tried unloading ALL firewall rules on your cache and/or the
-    inside address of your network device to see if that helps? If your
-    router or cache are inadvertently blocking or dropping either the
-    WCCP control traffic or the GRE, things won't work.
-
-  - If you are using WCCP on a cisco router or switch, is the router
-    seeing your cache? Use the command show ip wccp web-cache detail
-
-  - Look in your logs both in Squid (cache.log), and on your
-    router/switch where a show log will likely tell you if it has
-    detected your cache engine registering.
-
-  - On your Squid cache, set `  debug_options ALL,1 80,3  ` or for even
-    more detail `  debug_options ALL,1 80,5  `. The output of this will
-    be in your cache.log.
-
-  - On your cisco router, turn on WCCP debugging:
-
-<!-- end list -->
-
+- Start by testing your cache. Check to make sure you have configured
+  Squid with the right configure options - squid -v will tell you what
+  options Squid was configured with.
+- Can you manually configure your browser to talk to the proxy port?
+  If not, you most likely have a proxy configuration problem.
+- Have you tried unloading ALL firewall rules on your cache and/or the
+  inside address of your network device to see if that helps? If your
+  router or cache are inadvertently blocking or dropping either the
+  WCCP control traffic or the GRE, things won't work.
+- If you are using WCCP on a cisco router or switch, is the router
+  seeing your cache? Use the command show ip wccp web-cache detail
+- Look in your logs both in Squid (cache.log), and on your
+  router/switch where a show log will likely tell you if it has
+  detected your cache engine registering.
+- On your Squid cache, set `  debug_options ALL,1 80,3  ` or for even
+  more detail `  debug_options ALL,1 80,5  `. The output of this will
+  be in your cache.log.
+- On your cisco router, turn on WCCP debugging:
+    ```
     router#term mon
     router#debug ip wccp events
     WCCP events debugging is on
     router#debug ip wccp packets
     WCCP packet info debugging is on
     router#
-
-\!Do not forget to turn this off after you have finished your debugging
+    ```
+- :warning: Do not forget to turn this off after you have finished your debugging
 session as this imposes a performance hit on your router.
-
-  - Run tcpdump or ethereal on your cache interface and look at the
-    traffic, try and figure out what is going on. You should be seeing
-    UDP packets to and from port 2048 and GRE encapsulated traffic with
-    TCP inside it. If you are seeing messages about "protocol not
-    supported" or "invalid protocol", then your GRE or WCCP module is
-    not loaded, and your cache is rejecting the traffic because it does
-    not know what to do with it.
-
-  - Have you configured both wccp_ and wccp2_ options? You should only
-    configure one or the other and NOT BOTH.
-
-  - The most common problem people have is that the router and cache are
-    talking to each other and traffic is being redirected from the
-    router but the traffic decapsulation process is either broken or (as
-    is almost always the case) misconfigured. This is often a case of
-    your traffic rewriting rules on your cache not being applied
-    correctly (see section 2 above - Getting your traffic to the right
-    port on your Squid Cache).
-
-  - Run the most recent General Deployment (GD) release of the software
-    train you have on your router or switch. Broken IOS's can also
-    result in broken redirection. A known good version of IOS for
-    routers with no apparent WCCP breakage is 12.3(7)T12. There was
-    extensive damage to WCCP in 12.3(8)T up to and including early
-    12.4(x) releases. 12.4(8) is known to work fine as long as you are
-    not doing ip firewall inspection on the interface where your cache
-    is located.
+- Run tcpdump or ethereal on your cache interface and look at the
+  traffic, try and figure out what is going on. You should be seeing
+  UDP packets to and from port 2048 and GRE encapsulated traffic with
+  TCP inside it. If you are seeing messages about "protocol not
+  supported" or "invalid protocol", then your GRE or WCCP module is
+  not loaded, and your cache is rejecting the traffic because it does
+  not know what to do with it.
+- Have you configured both *wccp_\** and *wccp2_\** options? You should only
+  configure one or the other and NOT BOTH.
+- The most common problem people have is that the router and cache are
+  talking to each other and traffic is being redirected from the
+  router but the traffic decapsulation process is either broken or (as
+  is almost always the case) misconfigured. This is often a case of
+  your traffic rewriting rules on your cache not being applied
+  correctly (see section 2 above - Getting your traffic to the right
+  port on your Squid Cache).
+- Run the most recent General Deployment (GD) release of the software
+  train you have on your router or switch. Broken IOS's can also
+  result in broken redirection. A known good version of IOS for
+  routers with no apparent WCCP breakage is 12.3(7)T12. There was
+  extensive damage to WCCP in 12.3(8)T up to and including early
+  12.4(x) releases. 12.4(8) is known to work fine as long as you are
+  not doing ip firewall inspection on the interface where your cache
+  is located.
 
 If none of these steps yield any useful clues, post the vital
 information including the versions of your router, proxy, operating
@@ -1134,9 +1015,9 @@ credentials to an unexpected party, wouldn't you agree? Especially so
 when the user-agent can do so without notifying the user, like Microsoft
 browsers can do when the proxy offers any of the Microsoft-designed
 authentication schemes such as NTLM (see
-[../ProxyAuthentication](/SquidFaq/ProxyAuthentication)
+[ProxyAuthentication](/SquidFaq/ProxyAuthentication)
 and
-[Features/NegotiateAuthentication](/Features/NegotiateAuthentication)).
+[NegotiateAuthentication](/Features/NegotiateAuthentication)).
 
 In other words, it's not a squid bug, but a **browser security**
 feature.
@@ -1147,7 +1028,7 @@ No, you cannot. See the answer to the previous question. With
 interception proxying, the client thinks it is talking to an origin
 server and would never send the *Proxy-authorization* request header.
 
-### "Connection reset by peer" and Cisco policy routing
+## "Connection reset by peer" and Cisco policy routing
 
 Fyodor has tracked down the cause of unusual "connection reset by peer"
 messages when using Cisco policy routing to hijack HTTP requests.
@@ -1173,24 +1054,16 @@ This appears to cause the correct behaviour.
 
 ## Further information about configuring Interception Caching with Squid
 
-[ReubenFarrelly](/ReubenFarrelly)
-has written a fairly comprehensive but somewhat incomplete guide to
-configuring WCCP with cisco routers on his website. You can find it at
-[www.reub.net](http://www.reub.net/node/3).
-
 [DuaneWessels](/DuaneWessels)
 has written an O'Reilly book about Web Caching which is an invaluable
 reference guide for Squid (and in fact non-Squid) cache administrators.
 A sample chapter on "Interception Proxying and Caching" from his book is
 up online, at
-[](http://www.oreilly.com/catalog/webcaching/chapter/ch05.html).
+[O'Reilly](http://www.oreilly.com/catalog/webcaching/chapter/ch05.html).
 
-# Issues with HotMail
+## Issues with HotMail
 
 Hotmail has been known to suffer from the HTTP/1.1 Transfer Encoding
 problem. see
-[](http://squidproxy.wordpress.com/2008/04/29/chunked-decoding/) for
+[article](http://squidproxy.wordpress.com/2008/04/29/chunked-decoding/) for
 more details on that and some solutions.
-
-  - Back to the
-    [SquidFaq](/SquidFaq)
