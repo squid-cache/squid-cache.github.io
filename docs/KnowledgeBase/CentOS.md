@@ -329,5 +329,5 @@ repository for quite some time to:
 
   - <http://linuxsoft.cern.ch/mirror/www1.ngtech.co.il/repo/centos/7/>
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

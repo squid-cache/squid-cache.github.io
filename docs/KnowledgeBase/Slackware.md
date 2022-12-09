@@ -51,5 +51,5 @@ Unofficial package provided by Helmut Hullen can be found in:
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

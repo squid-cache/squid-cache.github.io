@@ -4,13 +4,13 @@ published: false
 ---
 # Host header forgery detected
 
-**Symptoms**
+## Symptoms
 
     SECURITY ALERT: Host header forgery detected on ... (local IP does not match any domain IP)
     SECURITY ALERT: By user agent: ...
     SECURITY ALERT: on URL: ...
 
-**Explanation**
+## Explanation
 
 This is an alert generated as part of a new security feature added in
 [Squid-3.2](/Releases/Squid-3.2)
@@ -78,7 +78,7 @@ client has being hijacked or infected. In this case the proper fix may
 involve other actions to remove the infection which we will not cover
 here.
 
-**Workaround**
+## Workaround
 
 > :information_source:
     As of May 2012,
@@ -187,5 +187,5 @@ Additional Destination-NAT configuration is required to identify the
 packets and ensure they are delivered to the correct site regardless of
 any other details.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [CategoryErrorMessages](/CategoryErrorMessages)

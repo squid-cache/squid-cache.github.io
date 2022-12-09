@@ -118,5 +118,5 @@ Latest squid 3.3.8 builds and runs on ubuntu server 13.04.
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

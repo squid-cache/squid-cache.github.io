@@ -4,7 +4,7 @@ published: false
 ---
 # Hierarchy Control
 
-**Synopsis**
+## Synopsis
 
 Squid offers various mechanisms to control how requests are forwarded.
 The most important are `never_direct`, `always_direct` and
@@ -53,4 +53,4 @@ are:
 
   - authenticated requests
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

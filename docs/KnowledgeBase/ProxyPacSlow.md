@@ -4,7 +4,7 @@ published: false
 ---
 # Browser speed/lockup issues when using a proxy.pac auto configuration file
 
-**Synopsis**
+## Synopsis
 
 A "proxy.pac" auto configuration file is frequently used to configure
 web browsers to use a web proxy under certain conditions. Various issues
@@ -12,7 +12,7 @@ can arise which can result in the web browser appearing slow or
 unresponsive when attempting to resolve unknown domain names which seems
 to only occur whilst using the auto configuration file.
 
-**Symptoms**
+## Symptoms
 
   - accessing normal sites is fast; accessing an unknown site causes the
     browser to lockup for longer than a few seconds;
@@ -22,7 +22,7 @@ to only occur whilst using the auto configuration file.
 
   - configuring the proxy directly stops the problem
 
-**Explanation**
+## Explanation
 
 A variety of javascript files are available for use in the proxy.pac
 file. One frequently used function is `isInNet()` which takes a
@@ -51,11 +51,11 @@ immediately.
     This should be included before any javascript functions which
     require a DNS lookup to be performed, such as `isInNet()`.
 
-**Thanks**
+## Thanks
 
 Thanks to Brian Riffle `<riffle AT klamathcc DOT edu>` for reporting the
 issue and successfully applying the suggested fix and David Gameau
 `<David.Gameau AT unisa DOT edu DOT au>` for identifying the problem and
 suggesting the workaround.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

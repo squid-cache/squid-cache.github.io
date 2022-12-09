@@ -4,12 +4,12 @@ published: false
 ---
 # Transparent Proxy Selective Bypass
 
-**Synopsis**
+## Synopsis
 
 Is it possible to selectively bypass a Transparent Interception Proxy
 squid? If so, how?
 
-**Explanation**
+## Explanation
 
 Yes, it is possible to bypass a Squid running as an interception proxy.
 Except for the fact that it's not up to squid to do it, but it's a task
@@ -58,5 +58,5 @@ workarounds such as the one shown at
 [LinuxQuestions](http://www.linuxquestions.org/questions/linux-networking-3/url-blocking-via-iptables-655678/)
 are not reliable and should not be deployed.
 
-  - [CategoryKnowledgeBase](/CategoryKnowledgeBase)
+  - 
     [SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting)

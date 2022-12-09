@@ -4,7 +4,7 @@ published: false
 ---
 # Filtering Chat usage through Squid
 
-**Synopsis**
+## Synopsis
 
 This is an article in progress. Please contact
 [AdrianChadd](/AdrianChadd)
@@ -59,8 +59,8 @@ identify:
 
   - MSNExplorer
 
-**Thanks**
+## Thanks
 
 Thanks to Norman Noah for the initial set of example ACLs.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

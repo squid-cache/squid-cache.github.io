@@ -4,16 +4,16 @@ published: false
 ---
 # No forward-proxy ports
 
-**Synopsis**
+## Synopsis
 
 Squid has been configuered without any port capable of receiving
 forward-proxy traffic.
 
-**Symptoms**
+## Symptoms
 
   - ERROR: No forward-proxy ports configured.
 
-**Explanation**
+## Explanation
 
 Squid occasionally needs to generate URLs for clients to fetch
 supplementary content. Images in error pages or FTP and Gopher indexes,
@@ -31,4 +31,4 @@ interception port.
 Configure multiple port lines with at least one being capable of
 receiving forward-proxy traffic.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

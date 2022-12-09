@@ -29,4 +29,4 @@ have
 This logic is hard-coded in the Squid source and at this time can't be
 changed.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

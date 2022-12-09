@@ -4,14 +4,14 @@ published: false
 ---
 # HTTP header parsing problems
 
-**Symptoms**
+## Symptoms
 
   - WARNING: unparseable HTTP header field {...}
 
   - WARNING: unparseable HTTP header field {HTTP/1.0 200 OK}
     :one:
 
-**Explanation**
+## Explanation
 
 The client or server has sent Squid a header which does not comply with
 the HTTP protocol standards. HTTP headers are plain text and have the
@@ -52,7 +52,7 @@ Example 2;
 
     2005/09/11 23:19:36| WARNING: unparseable HTTP header field {N*!!!PT!!!U_~~~~~~8OQVn8PP>0!!!NB!!!)2~!!!1t!!!7T!!!<^~!#Ds0*E[XF![(N*!!!PT!!!U_~~~~~~8OQVn8PP>0 !!!NB!!!)<~!!!1t!!!7T!!!<^~! 
 
-**Workaround**
+## Workaround
 
   - Fix the software sending this header. if you cant do that yourself
     report it to the broken server or client software authors please.
@@ -66,6 +66,6 @@ Example 2;
     determine from their end. They will still face the same problem from
     other software around the Internet.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [CategoryErrorMessages](/CategoryErrorMessages)
 [SquidFaq](/SquidFaq)

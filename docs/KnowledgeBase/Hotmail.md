@@ -4,17 +4,17 @@ published: false
 ---
 # Troubleshooting: Hotmail.com
 
-**Synopsis**
+## Synopsis
 
 This website contains several rather broken systems. As of March 2011
 these problems have been known for most of a decade and left unfixed by
 the Webmasters.
 
-**Symptoms**
+## Symptoms
 
   - Site complains about: **Intrusion Logged. Access denied.**
 
-**Explanation**
+## Explanation
 
 HTTP is designed as a relay model, with a built-in concept of proxies
 and defined behaviour. It operates with stateless requests. These
@@ -36,7 +36,7 @@ websites which also exhibit these bad security decisions. Hotmail is
 merely the most popular and thus well-known (and longest lasting)
 problem.
 
-**Workaround**
+## Workaround
 
 There are several changes needed to work with Hotmail. Each with their
 own problems.
@@ -75,5 +75,5 @@ can do one of a few things:
     a range of IPs so each client has a temporary but distinct IP for
     their entire Hotmail session.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting)

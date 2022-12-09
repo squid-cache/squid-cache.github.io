@@ -4,11 +4,11 @@ published: false
 ---
 # Excess Data
 
-**Symptoms**
+## Symptoms
 
   - httpReadReply: Excess data from "GET <http://example.com>"
 
-**Explanation**
+## Explanation
 
 HTTP transactions contain headers specifying the sizes of objects
 transferred. When these are present Squid will validate the object
@@ -44,7 +44,7 @@ to handle broken reply itself. Squid will try to assist by aborting the
 connection with a RESET, indicating that the something nasty has gone
 on. Not all clients handle this cleanly.
 
-**Workaround**
+## Workaround
 
 There is no generally usable workaround for this problem. Fixes for this
 are very specific to your installation and which of the above problems
@@ -67,5 +67,5 @@ Some of the options include:
 NP: if you track it down to some other cause not mentioned above, we
 would like to know so this article gets updated.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [CategoryErrorMessages](/CategoryErrorMessages)

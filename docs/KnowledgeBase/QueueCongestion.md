@@ -4,11 +4,11 @@ published: false
 ---
 # AIO Queue Congestion
 
-**Symptoms**
+## Symptoms
 
   - squidaio_queue_request: WARNING - Queue congestion
 
-**Explanation**
+## Explanation
 
 Working with multi-threaded disk access (AIO) Squid queues the tasks to
 be performed and lets the disk controller work through it as fast as it
@@ -23,7 +23,7 @@ Up to a few of these is OK under very high load. But if you get them
 very frequently then it's a sign that either the disk I/O is overloaded
 or you have run out of CPU cycles to handle it.
 
-**Workaround**
+## Workaround
 
   - A few seconds of these after a clean startup can be ignored. They
     should decrease exponentially as the queue is automatically adjusted
@@ -95,5 +95,5 @@ or you have run out of CPU cycles to handle it.
     
         The disk was EITHER reading or writing; never a r/w op. 
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [CategoryErrorMessages](/CategoryErrorMessages)

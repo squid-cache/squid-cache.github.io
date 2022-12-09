@@ -4,12 +4,12 @@ published: false
 ---
 # Too Many Queued Requests
 
-**Synopsis**
+## Synopsis
 
 Squid crashes and maybe restarts immediately. Logging complains about
 too many queued requests.
 
-**Symptoms**
+## Symptoms
 
   - FATAL: Too many queued ntlmauthenticator requests
 
@@ -21,7 +21,7 @@ too many queued requests.
 
   - FATAL: Too many queued redirector requests
 
-**Explanation**
+## Explanation
 
 Squid uses helper processes to perform certain actions such as
 authentication checks. The number of each helper is configurable by the
@@ -44,7 +44,7 @@ client connection rates require some skills organising fast handshakes
 and managing multiple DC. Negotiate can handle many more handshakes, but
 also has an annoyingly low capacity.
 
-**Workaround**
+## Workaround
 
   - concurrency - certain helper types are able to be made concurrent.
     These are basic auth, external ACL, URL re-write and redirect
@@ -66,5 +66,5 @@ also has an annoyingly low capacity.
     If traffic exceeds the maximum helper this message may start
     appearing again.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [CategoryErrorMessages](/CategoryErrorMessages)

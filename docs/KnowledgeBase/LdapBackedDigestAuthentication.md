@@ -4,7 +4,7 @@ published: false
 ---
 # Using the digest LDAP authentication helper
 
-**Synopsis**
+## Synopsis
 
 A lot of people storing their password in an LDAP base don't feel
 comfortable when using the basic mechanism because it sends the
@@ -203,4 +203,4 @@ At that point your Windows clients can change their passwords from
 inside Windows and Linux clients can change their passwords using
 smbldap-passwd. All passwords and digests will remain in sync.****
 
-  - [CategoryKnowledgeBase](/CategoryKnowledgeBase)
+  - 

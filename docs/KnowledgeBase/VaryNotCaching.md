@@ -2,12 +2,12 @@
 ---
 # GZIP Encoded Variants Being Replaced by Non-Compressed Objects
 
-**Synopsis**
+## Synopsis
 
 Squid stores a compressed reply variant fine but a non-compressed reply
 causes all subsequent replies to be non-compressed.
 
-**Symptoms**
+## Symptoms
 
   - Initial request included Accept-Encoding: gzip (or similar);
 
@@ -26,7 +26,7 @@ causes all subsequent replies to be non-compressed.
   - And subsequent requests, compressed or not, return the uncompressed
     object.
 
-**Explanation**
+## Explanation
 
 (TBD: find relevant sections in the RFC.)
 
@@ -39,7 +39,7 @@ In summary, Squid is doing the right thing. Origin servers need to set
 correct ETag and Vary: headers so variant content is correctly cached
 and served.
 
-**Workaround**
+## Workaround
 
   - Make sure the origin server sets Vary: Accept-Encoding for both
     compressed and non-compressed replies, or Squid will replace the
@@ -49,16 +49,16 @@ and served.
     reply type - ie, a different ETag for compressed and uncompressed -
     or browsers/caches will believe the replies are equivalent.
 
-**See Also**
+## See Also
 
   - <http://devel.squid-cache.org/vary/>
 
   - <http://devel.squid-cache.org/etag/>
 
-**Thanks**
+## Thanks
 
   - [HenrikNordstrom](/HenrikNordstrom)
     - providing information on the Vary code behaviour
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
+

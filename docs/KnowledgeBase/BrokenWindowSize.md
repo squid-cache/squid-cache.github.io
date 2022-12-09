@@ -4,7 +4,7 @@ published: false
 ---
 # Identifying and working around sites with broken TCP Window Scaling
 
-**Synopsis**
+## Synopsis
 
 Many servers on the internet now implement the TCP window scaling open
 (covered in RFC1323). TCP Window scaling is implemented during the TCP
@@ -21,7 +21,7 @@ generally bring a halt to traffic transfers.
 By default, TCP window scaling is enabled in most modern server
 operating systems.
 
-**Symptoms**
+## Symptoms
 
   - Connections complete correctly;
 
@@ -31,7 +31,7 @@ operating systems.
 
   - Sometimes downloaded files can appear truncated.
 
-**Explanation**
+## Explanation
 
 Normal TCP windows operate with a 16-bit window size - allowing, by
 default, a maximum of 64 kbytes (65536 bytes) to be in-flight at any
@@ -72,7 +72,7 @@ configured and thus they tend not to be too far "out of whack" with what
 the server believes. Modern server operating systems tend to have larger
 window sizes and TCP scale factors which tend to aggrivate the issue.
 
-**Workaround**
+## Workaround
 
 The workaround is to entirely disable TCP window scaling on your Squid
 proxy server. Under Linux this is done by:
@@ -85,7 +85,7 @@ Another possibility is to add in specific routes to target networks
 which force a TCP window size maximum of 65535. This currently can't be
 done automatically by Squid.
 
-**Thanks**
+## Thanks
 
 Thanks to Adrian Chadd for assembling this article from a variety of
 sources.
@@ -98,4 +98,4 @@ sources.
   - <http://lwn.net/Articles/92727/> - TCP window scaling and broken
     routers
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

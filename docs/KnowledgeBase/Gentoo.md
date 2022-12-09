@@ -53,5 +53,5 @@ you will see the following notice:
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

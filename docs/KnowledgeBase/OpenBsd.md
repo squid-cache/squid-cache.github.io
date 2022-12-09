@@ -99,5 +99,5 @@ running Squid requires \*write\* access against /dev/pf to invoke the
 ioctl() to do a NAT lookup. For this method, use "rdr-to" PF rules to
 pass the traffic to squid.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

@@ -8,7 +8,7 @@ published: false
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | :warning: | This article is a **STUB**. It's written to encourage discussion on the topic, but it's not (yet) to be used as reference |
 
-**Synopsis**
+## Synopsis
 
 [COSS](/Features/CyclicObjectStorageSystem)
 or Cyclic Object Storage System is the fastest disk storage method
@@ -34,5 +34,5 @@ cache_dir's.
 
 Use the cachemgr to fine-tune those parameters you can tweak.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [CategoryStub](/CategoryStub)

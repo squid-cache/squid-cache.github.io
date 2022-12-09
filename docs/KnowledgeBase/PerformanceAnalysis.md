@@ -69,4 +69,4 @@ memory than your system has, parts of squid end up being swapped to disk
 trashing performance. In such cases it's much better to actually
 **reduce** cache_mem.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

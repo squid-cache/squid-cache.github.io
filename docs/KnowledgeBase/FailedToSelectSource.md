@@ -4,11 +4,11 @@ published: false
 ---
 # Failed to select source for ...
 
-**Synopsis**
+## Synopsis
 
 Squid fails for some or all requests. Users see an error page.
 
-**Symptoms**
+## Symptoms
 
 A user will see the error page **ERR_CANNOT_FORWARD**:
 
@@ -40,7 +40,7 @@ Squid Logs:
     
       - never_direct = -1
 
-**Explanation**
+## Explanation
 
 Squid contains several access control lists which determine how and
 where a request may be fetched from.
@@ -72,7 +72,7 @@ to make direct connections to origin servers
 ([never_direct](http://www.squid-cache.org/Doc/config/never_direct)
 allow all), and all configured parent caches are currently unreachable.
 
-**Workaround**
+## Workaround
 
 If the result is produced by an upstream peer, you will only see the
 error page and not the log warnings (at level 1). You can workaround
@@ -80,5 +80,5 @@ that by sending the affected traffic elsewhere.
 
 If the problem is being logged by your own Squid. You must fix it.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [CategoryErrorMessages](/CategoryErrorMessages)

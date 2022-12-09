@@ -61,5 +61,5 @@ The command to takes care of this problem is:
 
 (via <http://tanso.net/selinux/squid/>)
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

@@ -48,5 +48,5 @@ And then using `fedpkg mockbuild` to rebuild the package:
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

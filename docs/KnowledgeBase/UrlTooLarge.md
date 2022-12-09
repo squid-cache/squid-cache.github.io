@@ -4,18 +4,18 @@ published: false
 ---
 # URL Too Large
 
-**Synopsis**
+## Synopsis
 
 The HTTP client has sent an HTTP request with a URL longer than Squid is
 willing to handle. The size detected is indicated following the message.
 
-**Symptoms**
+## Symptoms
 
   - urlParse: URL too large
 
   - AnyP::Uri::parse: URL too large
 
-**Explanation**
+## Explanation
 
 This message is informational and starting to appear is the result of
 the limit on request-lines being raised to 64KB. It would previously
@@ -27,7 +27,7 @@ and any larger sizes are unlikely to be accepted by HTTP software. The
 Squid limit already exceeds this. So it is a client bug if the client
 cannot handle issues with these extra long URL lengths.
 
-**Workaround**
+## Workaround
 
 The limit being applied is a MAX_URL macro - the size limit placed on
 stack variables storing URL parts. Squid will at times allocate up to
@@ -42,4 +42,4 @@ to track the work progress. Feel free to subscribe for notifications,
 but please do not comment there unless you intend to help work on the
 changes. We already know **everybody** is affected by this.
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

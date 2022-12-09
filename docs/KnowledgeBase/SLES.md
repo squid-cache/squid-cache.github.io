@@ -59,5 +59,5 @@ message about LDAP support files not being found.
 
 # Troubleshooting
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

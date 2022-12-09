@@ -4,7 +4,7 @@ published: false
 ---
 # What Debug Sections and debug_options in squid.conf are all about
 
-**Synopsis**
+## Synopsis
 
 Sometimes people need to see more than just the fatal or critical
 problems occurring within Squid.
@@ -383,4 +383,4 @@ information needed by the developers to debug.
 
   - section 93 ICAP (RFC 3507) Client
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+

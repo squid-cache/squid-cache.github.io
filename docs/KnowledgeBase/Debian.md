@@ -217,5 +217,5 @@ Install the one matching your main Squid packages name (*squid* or
  aptitude install squid3-dbg
 ```
 
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)
