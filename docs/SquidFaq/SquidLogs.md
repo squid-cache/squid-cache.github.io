@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
 # Squid Log Files
@@ -36,155 +34,126 @@ Error messages come in several forms. Debug traces are not logged at
 level 0 or level 1. These levels are reserved for important and critical
 administrative messages.
 
-  - **FATAL** messages indicate a problem which has killed the Squid
+- **FATAL** messages indicate a problem which has killed the Squid
     process. Affecting all current client traffic being supplied by that
     Squid instance.
-    
-      - Obviously if these occur when starting or configuring a Squid
-        component it **must** be resolved before you can run Squid.
-
-  - **ERROR** messages indicate a serious problem which has broken an
+    If these occur when starting or configuring a Squid
+    component it **must** be resolved before you can run Squid.
+- **ERROR** messages indicate a serious problem which has broken an
     individual client transaction and may have some effect on other
     clients indirectly. But has not completely aborted all traffic
     service.
-    
-      - These can also occur when starting or configuring Squid
-        components. In which case any service actions which that
-        component would have supplied will not happen until it is
-        resolved and Squid reconfigured.
-    
-      - NOTE: Some log level 0 error messages inherited from older Squid
+*   These can also occur when starting or configuring Squid
+    components. In which case any service actions which that
+    component would have supplied will not happen until it is
+    resolved and Squid reconfigured.
+    > :information_source: Some log level 0 error messages inherited from older Squid
         versions exist without any prioritization tag.
-
-  - **WARNING** messages indicate problems which might be causing
+*   **WARNING** messages indicate problems which might be causing
     problems to the client, but Squid is capable of working around
     automatically. These usually only display at log level 1 and higher.
-    
-      - NOTE: Some log level 1 warning messages inherited from older
+    > :information_source: Some log level 1 warning messages inherited from older
         Squid versions exist without any prioritization tag.
-
-  - **SECURITY ERROR** messages indicate problems processing a client
+*   **SECURITY ERROR** messages indicate problems processing a client
     request with the security controls which Squid has been configured
     with. Some impossible condition is required to pass the security
     test.
-    
-      - This is commonly seen when testing whether to accept a client
-        **request** based on some **reply** detail which will only be
-        available in the future.
-
-  - **SECURITY ALERT** messages indicate security attack problems being
+    This is commonly seen when testing whether to accept a client
+    **request** based on some **reply** detail which will only be
+    available in the future.
+*   **SECURITY ALERT** messages indicate security attack problems being
     detected. This is only for problems which are unambiguous. 'Attacks'
     signatures which can appear in normal traffic are logged as regular
     WARNING.
-    
-      - A complete solution to these usually requires fixing the client,
+    - A complete solution to these usually requires fixing the client,
         which may not be possible.
-    
-      - Administrative workarounds (extra firewall rules etc) can assist
-        Squid in reducing the damage to network performance.
-    
-      - Attack notices may seem rather critical, but occur at level 1
-        since in all cases Squid also has some workaround it can
-        perform.
-
-  - **SECURITY NOTICE** messages can appear during startup and
+    - Administrative workarounds (extra firewall rules etc) can assist
+      Squid in reducing the damage to network performance.
+    - Attack notices may seem rather critical, but occur at level 1
+      since in all cases Squid also has some workaround it can
+      perform.
+*   **SECURITY NOTICE** messages can appear during startup and
     reconfigure to indicate security related problems with the
     configuration file setting. These are accompanied by hints for
     better configuration where possible, and an indication of what Squid
     is going to do instead of the configured action.
 
 Some of the more frequently questioned messages and what they mean are
-outlined in the
-[KnowledgeBase](/KnowledgeBase):
+outlined in the [KnowledgeBase](/KnowledgeBase):
 
-  - 1.  KnowledgeBase/ExcessData
-    2.  KnowledgeBase/FailedToSelectSource
-    3.  KnowledgeBase/HostHeaderForgery
-    4.  KnowledgeBase/QueueCongestion
-    5.  KnowledgeBase/TooManyQueued
-    6.  KnowledgeBase/UnparseableHeader
-    7.  SquidFaq/SquidLogs
+1. [Excess Data](/KnowledgeBase/ExcessData)
+2. [Failed to select source](/KnowledgeBase/FailedToSelectSource)
+3. [Host Header Forgery](/KnowledgeBase/HostHeaderForgery)
+4. [Queue congestion](/KnowledgeBase/QueueCongestion)
+5. [Too Many Queued Requests](/KnowledgeBase/TooManyQueued)
+6. [Unparseable Header](/KnowledgeBase/UnparseableHeader)
 
 ## access.log
 
 Most log file analysis program are based on the entries in *access.log*.
 
-[Squid-2.7](/Releases/Squid-2.7)
-and
-[Squid-3.2](/Releases/Squid-3.2)
-allow the administrators to configure their [logfile
-format](/Features/LogFormat)
-and [log output
-method](/Features/LogModules)
-with great flexibility. Previous versions offered a much more limited
-functionality.
+Squid allows the administrators to configure their
+[logfile format](/Features/LogFormat)
+and [log output method](/Features/LogModules)
+with great flexibility.
 
 ### Squid result codes
 
 The Squid result code is composed of several tags (separated by
 underscore characters) which describe the response sent to the client.
 
-  - One of these tags always exists to describe how it was delivered:
+- One of these tags always exists to describe how it was delivered:
     
-    |          |                                                                                                                                                                                                                                             |
-    | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **TCP**  | Requests on the HTTP port (usually 3128).                                                                                                                                                                                                   |
-    | **UDP**  | Requests on the ICP port (usually 3130) or HTCP port (usually 4128). If ICP logging was disabled using the *log_icp_queries* option, no ICP replies will be logged.                                                                       |
+    | --- | --- |
+    | **TCP**  | Requests on the HTTP port (usually 3128). |
+    | **UDP**  | Requests on the ICP port (usually 3130) or HTCP port (usually 4128). If ICP logging was disabled using the *log_icp_queries* option, no ICP replies will be logged. |
     | **NONE** | Squid delivered an unusual response or no response at all. Seen with cachemgr requests and errors, usually when the transaction fails before being classified into one of the above outcomes. Also seen with responses to CONNECT requests. |
-    
 
-  - These tags are optional and describe why the particular handling was
+- These tags are optional and describe why the particular handling was
     performed or where the request came from:
     
-    |              |                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | --- | --- |
     | **CF**       | At least one request in this transaction was collapsed. See [collapsed_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding) for more details about request collapsing. Support for this tag has been added to Squid v5 on 2018-06-18 (commit [d2a6dc](https://github.com/squid-cache/squid/commit/d2a6dcba707c15484c255e7a569b90f7f1186383)). It may not be available in earlier Squid versions. |
-    | **CLIENT**   | The client request placed limits affecting the response. Usually seen with client issued a "no-cache", or analogous cache control command along with the request. Thus, the cache has to validate the object.                                                                                                                                                                                                         |
-    | **IMS**      | The client sent a revalidation (conditional) request.                                                                                                                                                                                                                                                                                                                                                                 |
-    | **ASYNC**    | The request was generated internally by Squid. Usually this is background fetches for cache information exchanges, background revalidation from *stale-while-revalidate* cache controls, or ESI sub-objects being loaded.                                                                                                                                                                                             |
-    | **SWAPFAIL** | The object was believed to be in the cache, but could not be accessed. A new copy was requested from the server.                                                                                                                                                                                                                                                                                                      |
-    | **REFRESH**  | A revalidation (conditional) request was sent to the server.                                                                                                                                                                                                                                                                                                                                                          |
-    | **SHARED**   | This tag is not supported yet. This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED.                                                                                                                                                                                                                                                    |
-    | **REPLY**    | The HTTP reply from server or peer. Usually seen on **DENIED** due to [http_reply_access](http://www.squid-cache.org/Doc/config/http_reply_access) ACLs preventing delivery of servers response object to the client.                                                                                                                                                                                              |
+    | **CLIENT**   | The client request placed limits affecting the response. Usually seen with client issued a "no-cache", or analogous cache control command along with the request. Thus, the cache has to validate the object. |
+    | **IMS**      | The client sent a revalidation (conditional) request. |
+    | **ASYNC**    | The request was generated internally by Squid. Usually this is background fetches for cache information exchanges, background revalidation from *stale-while-revalidate* cache controls, or ESI sub-objects being loaded. |
+    | **SWAPFAIL** | The object was believed to be in the cache, but could not be accessed. A new copy was requested from the server. |
+    | **REFRESH**  | A revalidation (conditional) request was sent to the server. |
+    | **SHARED**   | This tag is not supported yet. This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED. |
+    | **REPLY**    | The HTTP reply from server or peer. Usually seen on **DENIED** due to [http_reply_access](http://www.squid-cache.org/Doc/config/http_reply_access) ACLs preventing delivery of servers response object to the client. |
     
 
-  - These tags are optional and describe what type of object was
-    produced:
+- These tags are optional and describe what type of object was produced:
     
-    |                |                                                                                                                                                                                                                                                     |
-    | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **NEGATIVE**   | Only seen on **HIT** responses. Indicating the response was a cached error response. e.g. "404 not found"                                                                                                                                           |
-    | **STALE**      | The object was cached and served stale. This is usually caused by *stale-while-revalidate* or *stale-if-error* cache controls.                                                                                                                      |
+    | --- | --- |
+    | **NEGATIVE**   | Only seen on **HIT** responses. Indicating the response was a cached error response. e.g. "404 not found" |
+    | **STALE**      | The object was cached and served stale. This is usually caused by *stale-while-revalidate* or *stale-if-error* cache controls. |
     | **OFFLINE**    | The requested object was retrieved from the cache during [offline_mode](http://www.squid-cache.org/Doc/config/offline_mode). The offline mode never validates any object.                                                                         |
-    | **INVALID**    | An invalid request was received. An error response was delivered indicating what the problem was.                                                                                                                                                   |
+    | **INVALID**    | An invalid request was received. An error response was delivered indicating what the problem was. |
     | **FAIL**       | Only seen on **REFRESH** to indicate the revalidation request failed. The response object may be the server provided network error or the stale object which was being revalidated depending on *stale-if-error* cache control.                     |
-    | **MODIFIED**   | Only seen on **REFRESH** responses to indicate revalidation produced a new modified object.                                                                                                                                                         |
+    | **MODIFIED**   | Only seen on **REFRESH** responses to indicate revalidation produced a new modified object. |
     | **UNMODIFIED** | Only seen on **REFRESH** responses to indicate revalidation produced a 304 (Not Modified) status. The client gets either a full 200 (OK), a 304 (Not Modified), or (in theory) another response, depending on the client request and other details. |
-    | **REDIRECT**   | Squid generated an HTTP redirect response to this request. Only on [Squid-3.2](/Releases/Squid-3.2)+ or Squid built with -DLOG_TCP_REDIRECTS compiler flag.                                    |
-    
+    | **REDIRECT**   | Squid generated an HTTP redirect response to this request. |
 
-  - These tags are optional and describe whether the response was loaded
+- These tags are optional and describe whether the response was loaded
     from cache, network, or otherwise:
-    
-    |             |                                                                                                                                                                                                                                                                         |
-    | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **HIT**     | The response object delivered was the local cache object.                                                                                                                                                                                                               |
-    | **MEM**     | Additional tag indicating the response object came from memory cache, avoiding disk accesses. Only seen on **HIT** responses.                                                                                                                                           |
-    | **MISS**    | The response object delivered was the network response object.                                                                                                                                                                                                          |
-    | **DENIED**  | The request was denied by access controls.                                                                                                                                                                                                                              |
-    | **NOFETCH** | A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either **UDP_HIT** or **UDP_MISS_NOFETCH**. Neighbours will thus only fetch hits. |
-    | **TUNNEL**  | A binary tunnel was established for this transaction. Only on [Squid-3.5](/Releases/Squid-3.5)+                                                                                                                      |
-    
 
-  - These tags are optional and describe some error conditions which
+    | --- | --- |
+    | **HIT**     | The response object delivered was the local cache object. |
+    | **MEM**     | Additional tag indicating the response object came from memory cache, avoiding disk accesses. Only seen on **HIT** responses. |
+    | **MISS**    | The response object delivered was the network response object. |
+    | **DENIED**  | The request was denied by access controls. |
+    | **NOFETCH** | A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either **UDP_HIT** or **UDP_MISS_NOFETCH**. Neighbours will thus only fetch hits. |
+    | **TUNNEL**  | A binary tunnel was established for this transaction. |    
+
+- These tags are optional and describe some error conditions which
     occured during response delivery (if any):
-    
-    |             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-    | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **ABORTED** | The response was not completed due to the connection being aborted (usually by the client).                                                                                                                                                                                                                                                                                                                                                                        |
-    | **TIMEOUT** | The response was not completed due to a connection timeout.                                                                                                                                                                                                                                                                                                                                                                                                        |
+
+    | --- | --- |
+    | **ABORTED** | The response was not completed due to the connection being aborted (usually by the client). |
+    | **TIMEOUT** | The response was not completed due to a connection timeout. |
     | **IGNORED** | While refreshing a previously cached response A, Squid got a response B that was *older* than A (as determined by the Date header field). Squid ignored response B (and attempted to use A instead). This "ignore older responses" logic complies with RFC [7234](https://tools.ietf.org/rfc/rfc7234) Section [4](https://tools.ietf.org/html/rfc7234#section-4) requirement: a cache MUST use the most recent response (as determined by the Date header field). |
-    
+
 
 ### HTTP status codes
 
@@ -198,15 +167,14 @@ added as for RFC [2518](https://tools.ietf.org/rfc/rfc2518) and
 [4918](https://tools.ietf.org/rfc/rfc4918) (WebDAV). Yes, there are
 really two entries for status code 424:
 
-|            |                                                    |                                                                                                                                       |
-| ---------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| **Status** | **Description**                                    | **RFC(s)**                                                                                                                            |
+| Status | Description | RFC(s) |
+| --- | --- | --- |
 | 000        | Used mostly with UDP traffic.                      | N/A                                                                                                                                   |
-|            | **Informational**                                  |                                                                                                                                       |
+|            | **Informational** | |
 | 100        | Continue                                           | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
 | 101        | Switching Protocols                                | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
 | 102        | Processing                                         | [2518](https://tools.ietf.org/rfc/rfc2518)                                                                                           |
-|            | **Successful Transaction**                         |                                                                                                                                       |
+|            | **Successful Transaction**                         | |
 | 200        | OK                                                 | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
 | 201        | Created                                            | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
 | 202        | Accepted                                           | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
@@ -215,7 +183,7 @@ really two entries for status code 424:
 | 205        | Reset Content                                      | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
 | 206        | Partial Content                                    | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
 | 207        | Multi Status                                       | [2518](https://tools.ietf.org/rfc/rfc2518), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
-|            | **Redirection**                                    |                                                                                                                                       |
+|            | **Redirection**                                    | |
 | 300        | Multiple Choices                                   | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
 | 301        | Moved Permanently                                  | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
 | 302        | Moved Temporarily                                  | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
@@ -223,7 +191,7 @@ really two entries for status code 424:
 | 304        | Not Modified                                       | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
 | 305        | Use Proxy                                          | [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
 | 307        | Temporary Redirect                                 | [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
-|            | **Client Error**                                   |                                                                                                                                       |
+|            | **Client Error**                                   | |
 | 400        | Bad Request                                        | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616), [4918](https://tools.ietf.org/rfc/rfc4918) |
 | 401        | Unauthorized                                       | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
 | 402        | Payment Required                                   | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
@@ -245,8 +213,8 @@ really two entries for status code 424:
 | 422        | Unprocessable Entity                               | [2518](https://tools.ietf.org/rfc/rfc2518), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
 | 424        | Locked                                             | (broken WebDAV implementations??)                                                                                                     |
 | 424        | Failed Dependency                                  | [2518](https://tools.ietf.org/rfc/rfc2518), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
-| 433        | Unprocessable Entity                               |                                                                                                                                       |
-|            | **Server Errors**                                  |                                                                                                                                       |
+| 433        | Unprocessable Entity                               | |
+|            | **Server Errors**                                  | |
 | 500        | Internal Server Error                              | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
 | 501        | Not Implemented                                    | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
 | 502        | Bad Gateway                                        | [1945](https://tools.ietf.org/rfc/rfc1945), [2616](https://tools.ietf.org/rfc/rfc2616)                                              |
@@ -254,12 +222,11 @@ really two entries for status code 424:
 | 504        | Gateway Timeout                                    | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
 | 505        | HTTP Version Not Supported                         | [2616](https://tools.ietf.org/rfc/rfc2616)                                                                                           |
 | 507        | Insufficient Storage                               | [2518](https://tools.ietf.org/rfc/rfc2518), [4918](https://tools.ietf.org/rfc/rfc4918)                                              |
-|            |                                                    |                                                                                                                                       |
-|            | Broken Server Software                             |                                                                                                                                       |
-| 600        | Squid: header parsing error                        |                                                                                                                                       |
-| 601        | Squid: header size overflow detected while parsing |                                                                                                                                       |
-| 601        | roundcube: software configuration error            |                                                                                                                                       |
-| 603        | roundcube: invalid authorization                   |                                                                                                                                       |
+|            | **Broken Server Software** | |
+| 600        | Squid: header parsing error                        | |
+| 601        | Squid: header size overflow detected while parsing | |
+| 601        | roundcube: software configuration error            | |
+| 603        | roundcube: invalid authorization                   | |
 
 ### Request methods
 
@@ -295,84 +262,61 @@ supported "out of the box."
 
 ### Hierarchy Codes
 
-**NONE** For TCP HIT, TCP failures, cachemgr requests and all UDP
-requests, there is no hierarchy information.
-
-**DIRECT** The object was fetched from the origin server.
-
-**SIBLING_HIT** The object was fetched from a sibling cache which
-replied with UDP_HIT.
-
-**PARENT_HIT** The object was requested from a parent cache which
-replied with UDP_HIT.
-
-**DEFAULT_PARENT** No ICP queries were sent. This parent was chosen
-because it was marked "default" in the config file.
-
-**SINGLE_PARENT** The object was requested from the only parent
-appropriate for the given URL.
-
-**FIRST_UP_PARENT** The object was fetched from the first parent in
-the list of parents.
-
-**NO_PARENT_DIRECT** The object was fetched from the origin server,
-because no parents existed for the given URL.
-
-**FIRST_PARENT_MISS** The object was fetched from the parent with the
-fastest (possibly weighted) round trip time.
-
-**CLOSEST_PARENT_MISS** This parent was chosen, because it included
-the the lowest RTT measurement to the origin server. See also the
-*closest-only* peer configuration option.
-
-**CLOSEST_PARENT** The parent selection was based on our own RTT
-measurements.
-
-**CLOSEST_DIRECT** Our own RTT measurements returned a shorter time
-than any parent.
-
-**NO_DIRECT_FAIL** The object could not be requested because of a
-firewall configuration, see also *never_direct* and related material,
-and no parents were available.
-
-**SOURCE_FASTEST** The origin site was chosen, because the source ping
-arrived fastest.
-
-**ROUNDROBIN_PARENT** No ICP replies were received from any parent. The
-parent was chosen, because it was marked for round robin in the config
-file and had the lowest usage count.
-
-**CACHE_DIGEST_HIT** The peer was chosen, because the cache digest
-predicted a hit. This option was later replaced in order to distinguish
-between parents and siblings.
-
-**CD_PARENT_HIT** The parent was chosen, because the cache digest
-predicted a hit.
-
-**CD_SIBLING_HIT** The sibling was chosen, because the cache digest
-predicted a hit.
-
-**NO_CACHE_DIGEST_DIRECT** This output seems to be unused?
-
-**CARP** The peer was selected by CARP.
-
-**PINNED** The server connection was pinned by NTLM or Negotiate
-authentication requirements.
-
-**ORIGINAL_DST** The server connection was limited to the client
-provided destination IP. This occurs on interception proxies when Host
-security is enabled, or
-[client_dst_passthru](http://www.squid-cache.org/Doc/config/client_dst_passthru)
-transparency is enabled.
-
-**ANY_OLD_PARENT** (former ANY_PARENT?) Squid used the first
-considered-alive parent it could reach. This happens when none of the
-specific parent cache selection algorithms (e.g., userhash or carp) were
-enabled, all enabled algorithms failed to find a suitable parent, or all
-suitable parents found by those algorithms failed when Squid tried to
-forward the request to them.
-
-**INVALID CODE** part of *src/peer_select.c:hier_strings\[\]*.
+* **NONE** For TCP HIT, TCP failures, cachemgr requests and all UDP
+    requests, there is no hierarchy information.
+* **DIRECT** The object was fetched from the origin server.
+* **SIBLING_HIT** The object was fetched from a sibling cache which
+    replied with UDP_HIT.
+* **PARENT_HIT** The object was requested from a parent cache which
+    replied with UDP_HIT.
+* **DEFAULT_PARENT** No ICP queries were sent. This parent was chosen
+    because it was marked "default" in the config file.
+* **SINGLE_PARENT** The object was requested from the only parent
+    appropriate for the given URL.
+* **FIRST_UP_PARENT** The object was fetched from the first parent in
+    the list of parents.
+* **NO_PARENT_DIRECT** The object was fetched from the origin server,
+    because no parents existed for the given URL.
+* **FIRST_PARENT_MISS** The object was fetched from the parent with the
+    fastest (possibly weighted) round trip time.
+* **CLOSEST_PARENT_MISS** This parent was chosen, because it included
+    the the lowest RTT measurement to the origin server. See also the
+    *closest-only* peer configuration option.
+* **CLOSEST_PARENT** The parent selection was based on our own RTT
+    measurements.
+* **CLOSEST_DIRECT** Our own RTT measurements returned a shorter time
+    than any parent.
+* **NO_DIRECT_FAIL** The object could not be requested because of a
+    firewall configuration, see also *never_direct* and related material,
+    and no parents were available.
+* **SOURCE_FASTEST** The origin site was chosen, because the source ping
+    arrived fastest.
+* **ROUNDROBIN_PARENT** No ICP replies were received from any parent. The
+    parent was chosen, because it was marked for round robin in the config
+    file and had the lowest usage count.
+* **CACHE_DIGEST_HIT** The peer was chosen, because the cache digest
+    predicted a hit. This option was later replaced in order to distinguish
+    between parents and siblings.
+* **CD_PARENT_HIT** The parent was chosen, because the cache digest
+    predicted a hit.
+* **CD_SIBLING_HIT** The sibling was chosen, because the cache digest
+    predicted a hit.
+* **NO_CACHE_DIGEST_DIRECT** This output seems to be unused?
+* **CARP** The peer was selected by CARP.
+* **PINNED** The server connection was pinned by NTLM or Negotiate
+    authentication requirements.
+* **ORIGINAL_DST** The server connection was limited to the client
+    provided destination IP. This occurs on interception proxies when Host
+    security is enabled, or
+    [client_dst_passthru](http://www.squid-cache.org/Doc/config/client_dst_passthru)
+    transparency is enabled.
+* **ANY_OLD_PARENT** (former ANY_PARENT?) Squid used the first
+    considered-alive parent it could reach. This happens when none of the
+    specific parent cache selection algorithms (e.g., userhash or carp) were
+    enabled, all enabled algorithms failed to find a suitable parent, or all
+    suitable parents found by those algorithms failed when Squid tried to
+    forward the request to them.
+* **INVALID CODE** part of *src/peer_select.c:hier_strings\[\]*.
 
 Almost any of these may be preceded by 'TIMEOUT_' if the two-second
 (default) timeout occurs waiting for all ICP replies to arrive from
@@ -414,22 +358,15 @@ space-separated columns, compare with the *storeLog()* function in file
 
 1.  **time** The timestamp when the line was logged in UTC with a
     millisecond fraction.
-
 2.  **action** The action the object was sumitted to, compare with
     *src/store_log.c*:
-    
       - **CREATE** Seems to be unused.
-    
       - **RELEASE** The object was removed from the cache (see also
         **file number** below).
-    
       - **SWAPOUT** The object was saved to disk.
-    
-      - **SWAPIN** The object existed on disk and was read into memory.
-
+      - **SWAPIN** The object existed on disk and was read into memory
 3.  **dir number** The cache_dir number this object was stored into,
     starting at 0 for your first cache_dir line.
-
 4.  **file number** The file number for the object storage file. Please
     note that the path to this file is calculated according to your
     *cache_dir* configuration. A file number of *FFFFFFFF* indicates
@@ -438,38 +375,25 @@ space-separated columns, compare with the *storeLog()* function in file
     instance, if a *RELEASE* code was logged with file number
     *FFFFFFFF*, the object existed only in memory, and was released from
     memory.
-
 5.  **hash** The hash value used to index the object in the cache. Squid
     currently uses MD5 for the hash value.
-
 6.  **status** The HTTP reply status code.
-
 7.  **datehdr** The value of the HTTP *Date* reply header.
-
 8.  **lastmod** The value of the HTTP *Last-Modified* reply header.
-
 9.  **expires** The value of the HTTP "Expires: " reply header.
-
 10. **type** The HTTP *Content-Type* major value, or "unknown" if it
     cannot be determined.
-
 11. **sizes** This column consists of two slash separated fields:
-    
-      - The advertised content length from the HTTP *Content-Length*
+    - The advertised content length from the HTTP *Content-Length*
         reply header.
-    
-      - The size actually read.
-        
-          - If the advertised (or expected) length is missing, it will
-            be set to zero. If the advertised length is not zero, but
-            not equal to the real length, the object will be released
-            from the cache.
-
+    - The size actually read.
+    - If the advertised (or expected) length is missing, it will
+        be set to zero. If the advertised length is not zero, but
+        not equal to the real length, the object will be released
+        from the cache.
 12. **method** The request method for the object, e.g. *GET*.
-
 13. **key** The key to the object, usually the URL.
-    
-      - The **datehdr**, **lastmod**, and **expires** values are all
+    -   The **datehdr**, **lastmod**, and **expires** values are all
         expressed in UTC seconds. The actual values are parsed from the
         HTTP reply headers. An unparsable header is represented by a
         value of -1, and a missing header is represented by a value of
@@ -513,32 +437,20 @@ contains the Squid startup times, and also all fatal errors, e.g. as
 produced by an *assert()* failure. If you are not using *RunCache*, you
 will not see such a file.
 
-  - :warning:
-    [RunCache](/RunCache)
-    has been obsoleted since
-    [Squid-2.6](/Releases/Squid-2.6).
+> :warning: [RunCache](/RunCache)
+    has been obsoleted since [Squid-2.6](/Releases/Squid-2.6).
     Modern Squid run as daemons usually log this output to the system
     syslog facility or if run manually to stdout for the account which
     operates the master daemon process.
 
 ## useragent.log
 
-  - :warning:
+> :warning:
     Starting from
     [Squid-3.2](/Releases/Squid-3.2)
     this log has become one of the default [access.log](#access.log)
     formats and is always available for use. It is no longer a special
     separate log file.
-
-The user agent log file is only maintained, if
-
-  - you configured the compile time *--enable-useragent-log* option, and
-
-  - you pointed the *useragent_log* configuration option to a file.
-
-From the user agent log file you are able to find out about distribution
-of browsers of your clients. Using this option in conjunction with a
-loaded production squid might not be the best of all ideas.
 
 # Which log files can I delete safely?
 
@@ -589,13 +501,25 @@ To disable *cache.log*:
 
     cache_log /dev/null
 
-|                                                                           |                                                                                                                                                                                                                                                                                                 |
-| ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :warning: | It is a bad idea to disable the *cache.log* because this file contains many important status and debugging messages. However, if you really want to, you can                                                                                                                                    |
-| :warning:      | If /dev/null is specified to any of the above log files, [logfile](http://www.squid-cache.org/Doc/config/logfile) rotate MUST also be set to *0* or else risk Squid rotating away /dev/null making it a plain log file                                                                         |
-| :information_source:    | Instead of disabling the log files, it is advisable to use a smaller value for [logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate) and properly rotating Squid's log files in your cron. That way, your log files are more controllable and self-maintained by your system |
+> :warning:
+    It is a bad idea to disable the *cache.log* because this file contains
+    many important status and debugging messages.
+    However, if you really want to, you can 
 
-# What is the maximum size of access.log?
+> :warning:
+    If /dev/null is specified to any of the above log files,
+    [logfile](http://www.squid-cache.org/Doc/config/logfile) rotate MUST
+    also be set to *0* or else risk Squid rotating away /dev/null making 
+    t a plain log file
+
+> :information_source: 
+    Instead of disabling the log files, it is advisable to use a smaller value
+    for [logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
+    and properly rotating Squid's log files in your cron.
+    That way, your log files are more controllable and
+    self-maintained by your system
+
+## What is the maximum size of access.log?
 
 Squid does not impose a size limit on its log files. Some operating
 systems have a maximum file size limit, however. If a Squid log file
@@ -603,11 +527,13 @@ exceeds the operating system's size limit, Squid receives a write error
 and shuts down. You should regularly rotate Squid's log files so that
 they do not become very large.
 
-|                                                                      |                                                                                                                                                                                                            |
-| -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :warning: | Logging is very important to Squid. In fact, it is so important that it will shut itself down if it can't write to its logfiles. This includes cases such as a full log disk, or logfiles getting too big. |
+> :warning:
+    Logging is very important to Squid.
+    In fact, it is so important that it will shut itself down if it
+    can't write to its logfiles. This includes cases such as a full log disk,
+    or logfiles getting too big.
 
-# My log files get very big\!
+## My log files get very big!
 
 You need to *rotate* your log files with a cron job. For example:
 
@@ -616,8 +542,7 @@ You need to *rotate* your log files with a cron job. For example:
 When logging debug information into cache.log it can easily become
 extremely large and when a long access.log traffic history is required
 (ie by law in some countries) storing large cache.log for that time is
-not reasonable. From
-[Squid-3.2](/Releases/Squid-3.2)
+not reasonable. From [Squid-3.2](/Releases/Squid-3.2)
 cache.log can be rotated with an individual cap set by
 [debug_options](http://www.squid-cache.org/Doc/config/debug_options)
 rotate=N} option to store fewer of these large files in the .0 to .N
@@ -626,22 +551,17 @@ access.log and set in the
 [logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 directive.
 
-# I want to use another tool to maintain the log files.
+## I want to use another tool to maintain the log files.
 
 If you set
 [logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
 to 0, Squid simply closes and then re-opens the logs. This allows
 third-party logfile management systems, such as
 [newsyslog](http://www.weird.com/~woods/projects/newsyslog.html) or
-*logrotate*, to maintain the log files.
+[logrotate](https://github.com/logrotate/logrotate), to maintain the log files.
 
-[Squid-2.7](/Releases/Squid-2.7)
-and
-[Squid-3.2](/Releases/Squid-3.2)
-and later also provide modular logging outputs which provide flexibility
-for sending log data to alternative logging systems.
 
-# Managing log files
+## Managing log files
 
 The preferred log file for analysis is the *access.log* file in native
 format. For long term evaluations, the log file should be obtained at
@@ -664,51 +584,40 @@ enabled, you might have around 1 GB of uncompressed log information per
 day and busy cache. Look into you cache manager info page to make an
 educated guess on the size of your log files.
 
-The EU project [DESIRE](http://www.desire.org/) developed some [some
-basic
-rules](http://www.uninett.no/prosjekt/desire/arneberg/statistics.html)
+The EU project [DESIRE](http://www.desire.org/) developed some
+[some basic rules](http://www.uninett.no/prosjekt/desire/arneberg/statistics.html)
 to obey when handling and processing log files:
-
-  - Respect the privacy of your clients when publishing results.
-
-  - Keep logs unavailable unless anonymized. Most countries have laws on
+- Respect the privacy of your clients when publishing results.
+- Keep logs unavailable unless anonymized. Most countries have laws on
     privacy protection, and some even on how long you are legally
     allowed to keep certain kinds of information.
-
-  - Rotate and process log files at least once a day. Even if you don't
+- Rotate and process log files at least once a day. Even if you don't
     process the log files, they will grow quite large, see *My log files
     get very big* above here. If you rely on processing the log files,
     reserve a large enough partition solely for log files.
-
-  - Keep the size in mind when processing. It might take longer to
+- Keep the size in mind when processing. It might take longer to
     process log files than to generate them\!
-
-  - Limit yourself to the numbers you are interested in. There is data
+- Limit yourself to the numbers you are interested in. There is data
     beyond your dreams available in your log file, some quite obvious,
     others by combination of different views. Here are some examples for
     figures to watch:
-    
-      - The hosts using your cache.
-    
-      - The elapsed time for HTTP requests - this is the latency the
+    - The hosts using your cache.
+    - The elapsed time for HTTP requests - this is the latency the
         user sees. Usually, you will want to make a distinction for HITs
         and MISSes and overall times. Also, medians are preferred over
         averages.
-    
-      - The requests handled per interval (e.g. second, minute or hour).
+    - The requests handled per interval (e.g. second, minute or hour).
 
-# Why do I get ERR_NO_CLIENTS_BIG_OBJ messages so often?
+## Why do I get ERR_NO_CLIENTS_BIG_OBJ messages so often?
 
 This message means that the requested object was in "Delete Behind" mode
 and the user aborted the transfer. An object will go into "Delete
 Behind" mode if
+- It is larger than *maximum_object_size*
+- It is being fetched from a neighbor which has the *proxy-only*
+    option set
 
-  - It is larger than *maximum_object_size*
-
-  - It is being fetched from a neighbor which has the *proxy-only*
-    option set.
-
-# What does ERR_LIFETIME_EXP mean?
+## What does ERR_LIFETIME_EXP mean?
 
 This means that a timeout occurred while the object was being
 transferred. Most likely the retrieval of this object was very slow (or
@@ -718,7 +627,7 @@ to try retrieving the object. Squid imposes a maximum amount of time on
 all open sockets, so after some amount of time the stalled request was
 aborted and logged win an ERR_LIFETIME_EXP message.
 
-# Retrieving "lost" files from the cache
+## Retrieving "lost" files from the cache
 
 "I've been asked to retrieve an object which was accidentally destroyed
 at the source for recovery. So, how do I figure out where the things are
@@ -736,7 +645,7 @@ of the Squid source distribution. The usage is
 
 file numbers are read on stdin, and pathnames are printed on stdout.
 
-# Can I use store.log to figure out if a response was cachable?
+## Can I use store.log to figure out if a response was cachable?
 
 Sort of. You can use *store.log* to find out if a particular response
 was *cached*.
@@ -751,7 +660,7 @@ you can look at the filenumber (3rd) field. When an uncachable response
 is released, the filenumber is FFFFFFFF (-1). Any other filenumber
 indicates a cached response was released.
 
-# Can I pump the squid access.log directly into a pipe?
+## Can I pump the squid access.log directly into a pipe?
 
 Several people have asked for this, usually to feed the log into some
 kind of external database, or to analyze them in real-time.
@@ -759,33 +668,13 @@ kind of external database, or to analyze them in real-time.
 The answer is No. Well, yes, sorta. Using a pipe directly opens up a
 whole load of possible problems.
 
-|                                                                      |                                                                                                                                  |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| :warning: | Logging is very important to Squid. In fact, it is so important that it will shut itself down if it can't write to its logfiles. |
+> :warning:
+    Logging is very important to Squid.
+    In fact, it is so important that it will shut itself down if it
+    can't write to its logfiles.
 
 There are several alternatives which are much safer to setup and use.
 The basic capabilities present are :
 
-since
-[Squid-2.6](/Releases/Squid-2.6):
-
-  - logging to system syslog
-
-since
-[Squid-2.7](/Releases/Squid-2.7):
-
-  - logging to an external service via UDP packets
-
-  - logging through IPC to a custom local daemon
-
-since
-[Squid-3.2](/Releases/Squid-3.2):
-
-  - logging to an external service via TCP streams
-
-See the [Log Modules
-feature](/Features/LogModules)
+See the [Log Modules feature](/Features/LogModules)
 for technical details on setting up a daemon or other output modules.
-
-Back to the
-[SquidFaq](/SquidFaq)

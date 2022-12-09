@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
 # Using RAID with Squid cache directories
@@ -52,9 +50,8 @@ protection and a Squid cache fails if a disk that holds one of the cache
 directories fails.
 
 > :information_source:
-    There are
-    [Plans](/Features/CacheDirFailover)
-    to make squid more robust against disk failures.
+  There are [Plans](/Features/CacheDirFailover)
+  to make squid more robust against disk failures.
 
 Since JBOD does not guarantee high availability for the disk subsystem,
 the easiest way to obtain high reliability is to duplicate the whole
@@ -66,19 +63,16 @@ are the most limiting performance factor, using many small disks is
 recommended over few big disks.
 
 Recommendation:
-
-  - For most setups the cache content can be easily and fast recovered
-    from live traffic. JBOD with multiple proxies for failover is
-    suitable for most networks.
+- For most setups the cache content can be easily and fast recovered
+  from live traffic. JBOD with multiple proxies for failover is
+  suitable for most networks.
 
 Summary:
 
-  - price: lowest.
-
-  - performance: best.
-
-  - reliability: modest, the Squid proxy is unavailable in case of a
-    single disk failure
+- price: lowest.
+- performance: best.
+- reliability: modest, the Squid proxy is unavailable in case of a
+  single disk failure
 
 ## RAID0 (Striping)
 
@@ -104,17 +98,15 @@ reduce the performance difference to some degree.
 
 Recommendation:
 
-  - Instead use JBOD as it gives you the same price, potentially better
-    performance and better reliability than RAID0/striping.
+- Instead use JBOD as it gives you the same price, potentially better
+  performance and better reliability than RAID0/striping.
 
 Summary:
 
-  - price: lowest.
-
-  - performance: good.
-
-  - reliability: poor. risk of losing entire cache. The Squid proxy is
-    also unavailable in case of a single disk failure.
+- price: lowest.
+- performance: good.
+- reliability: poor. risk of losing entire cache. The Squid proxy is
+  also unavailable in case of a single disk failure.
 
 ## Software RAID1
 
@@ -136,18 +128,16 @@ logical volume to maximize throughput.
 
 Recommendation:
 
-  - Use only if single-proxy uptime is more important than price of the
-    hardware. You will be paying extra for disk storage and high-quality
-    hardware disk controllers.
+- Use only if single-proxy uptime is more important than price of the
+  hardware. You will be paying extra for disk storage and high-quality
+  hardware disk controllers.
 
 Summary:
 
-  - price: high.
-
-  - performance: quite good.
-
-  - reliability: good, the system can afford to fail one physical disk
-    per logical volume
+- price: high.
+- performance: quite good.
+- reliability: good, the system can afford to fail one physical disk
+  per logical volume
 
 ## RAID10
 
@@ -163,21 +153,19 @@ logical volume can generally be made of 2+1 to 7+1 physical disks.
 It is extremely slow, as each high-level write operation on a volume
 built of N+1 disks will require N+1 reads and 2 writes.
 
-  - If you have 4 disks, Software RAID1 is considered better than
-    Software RAID5 since you can make 2 logical disks with RAID1 and
-    only 1 logical disk with RAID5 and using more logical disks improves
-    Squid performance.
+- If you have 4 disks, Software RAID1 is considered better than
+  Software RAID5 since you can make 2 logical disks with RAID1 and
+  only 1 logical disk with RAID5 and using more logical disks improves
+  Squid performance.
 
 Use only one cache directory per logical disk. Do not put multiple
 logical disks on the same set of physical disks.
 
 Summary:
 
-  - price: low
-
-  - performance: low
-
-  - reliability: good
+- price: low
+- performance: low
+- reliability: good
 
 ## Hardware RAID1 or RAID5
 
@@ -192,12 +180,10 @@ apply.
 
 Summary:
 
-  - price: modest (An extra server with VRRP is comparably expensive)
-
-  - performance: modest to good, depending on the RAID controller and
-    disk architecture
-
-  - reliability: good
+- price: modest (An extra server with VRRP is comparably expensive)
+- performance: modest to good, depending on the RAID controller and
+  disk architecture
+- reliability: good
 
 ## Sophisticated Disk Arrays
 
@@ -219,11 +205,9 @@ performance.
 
 Summary:
 
-  - price: highest
-
-  - performance: highest
-
-  - reliability: highest
+- price: highest
+- performance: highest
+- reliability: highest
 
 ## So what should I do?
 

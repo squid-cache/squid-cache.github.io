@@ -1,9 +1,9 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: installation
 ---
-# Open-access proxies
+# common security pitfalls
+
+## Open-access proxies
 
 Squid's default configuration file denies all external requests. It is
 the administrator's responsibility to configure Squid to allow access
@@ -20,7 +20,7 @@ on this list.
 Be sure to carefully design your access control scheme. You should also
 check it from time to time to make sure that it works as you expect.
 
-# Mail relaying
+## Mail relaying
 
 SMTP and HTTP are rather similar in design. This, unfortunately, may
 allow someone to relay an email message through your HTTP proxy. To
@@ -39,7 +39,7 @@ Do NOT add port 25 to *Safe_ports* (unless your goal is to end up in
 the [RBL](http://mail-abuse.org/rbl/)). You may want to make a cron job
 that regularly verifies that your proxy blocks access to port 25.
 
-# Hijackable proxies
+## Hijackable proxies
 
 Squid's default configuration file denies all external requests. It is
 the administrator's responsibility to configure Squid to allow access
@@ -70,7 +70,7 @@ OR even better:
     ...
     http_access allow localnet mycoolapp
 
-# X-Forwarded-For fiddling
+## X-Forwarded-For fiddling
 
 The **X-Forwarded-For** header is inserted by Squid to identify the
 internal client making a request. Some people mistake it for a
@@ -92,28 +92,27 @@ hop anyway.
 The configuration controls provided by Squid are intended for
 Accelerator setups.
 
-# The Safe_Ports and SSL_Ports ACL
+## The Safe_Ports and SSL_Ports ACL
 
 These ACL controls are listed in a very specific way in the default
 squid.conf to protect Squid against Security issues such as those
 outlines for SMTP above.
 
-  - Safe_Ports  
-    Prevents people from making requests to any of the registered
-    protocol ports. For which Squid is unable to proxy and filter the
-    protocol.
-
-  - SSL_Ports  
-    Along with the CONNECT ACL prevents anyone from making an unfiltered
-    tunnel to any of the otherwise safe ports which don't need it.
+- Safe_Ports  
+  Prevents people from making requests to any of the registered
+  protocol ports. For which Squid is unable to proxy and filter the
+  protocol.
+- SSL_Ports  
+  Along with the CONNECT ACL prevents anyone from making an unfiltered
+  tunnel to any of the otherwise safe ports which don't need it.
 
 **Notes:**
 
-  - :bulb:
+> :bulb:
     They should be left as the **top** access control lines in any
-    standard forward-proxy configuration.
-    
-    :information_source:
+    standard forward-proxy configuration
+
+> :information_source:
     Only Reverse-Proxy configurations need to go above them.
 
 Default usage:
@@ -125,7 +124,7 @@ Default usage:
     ...
     http_access deny all
 
-# The manager ACLs
+## The manager ACLs
 
 These ACLs control access to the Squid cache manager. The manager can do
 a lot of powerful things. Including shutting down your Squid, or
@@ -141,13 +140,10 @@ special localhost IP.
     http_access allow localhost manager
     http_access deny manager
 
-  - :warning:
+> :warning:
     placing any kind of major **allow** privilege before this ACL breaks
-    it. {\!} only reverse-proxy configuration may go above it.
+    it. Pnly reverse-proxy configuration may go above it.
 
 Feel free to change the **localhost** part to something even more secure
 or specific to allow only you network management access. But beware that
 changes keep regular visitors out.
-
-Back to the
-[SquidFaq](/SquidFaq)

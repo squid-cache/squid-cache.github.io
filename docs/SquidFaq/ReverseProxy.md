@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
 # Reverse Proxy Mode
@@ -64,13 +62,13 @@ Several configurations are possible. The
 [ConfigExamples](/ConfigExamples)
 section details several variations of Reverse Proxy.
 
-1.  ConfigExamples/Reverse/BasicAccelerator
-2.  ConfigExamples/Reverse/ExchangeRpc
-3.  ConfigExamples/Reverse/HttpsVirtualHosting
-4.  ConfigExamples/Reverse/MultipleWebservers
-5.  ConfigExamples/Reverse/OutlookWebAccess
-6.  ConfigExamples/Reverse/SslWithWildcardCertifiate
-7.  ConfigExamples/Reverse/VirtualHosting
+1. [Basic Accelerator](ConfigExamples/Reverse/BasicAccelerator)
+1. [Exchange RPC](ConfigExamples/Reverse/ExchangeRpc)
+1. [Https Virtual Hosting](ConfigExamples/Reverse/HttpsVirtualHosting)
+1. [Multiple Webservers](ConfigExamples/Reverse/MultipleWebservers)
+1. [Outlook Web Access](ConfigExamples/Reverse/OutlookWebAccess)
+1. [SSL with Wildcard Certificate](ConfigExamples/Reverse/SslWithWildcardCertifiate)
+1. [Virtual Hosting](ConfigExamples/Reverse/VirtualHosting)
 
 ## Running the web server on the same server
 
@@ -86,7 +84,7 @@ using loopback address for the web server
     http_port the.public.ip.address:80 accel defaultsite=your.main.website
     cache_peer 127.0.0.1 parent 80 0 no-query originserver
 
-And[Apache](http://www.apache.org/) may be configured like in
+And [Apache](http://www.apache.org/) may be configured like in
 *httpd.conf*to listen on the loopback address:
 
     Port 80
@@ -149,9 +147,8 @@ backend web server.
 
     cache_peer ip.of.server parent 80 0 no-query originserver login=PASS
 
-|                                                                        |                                                                  |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| :information_source: | To pass details back as given **login=PASS** is an exact string. |
+> :information_source:
+    To pass details back as given **login=PASS** is an exact string
 
 ### Visitor requests can force fetching new objects from the back-end server
 
@@ -161,15 +158,10 @@ revalidate or fetch new content from the backend web server rather
 earlier than needed. This raises load on the delivery system which can
 lead to bandwidth problems and rising costs.
 
-In
-[Squid-3.1](/Releases/Squid-3.1)
-and later the
-[http_port](http://www.squid-cache.org/Doc/config/http_port)
+In [Squid-3.1](/Releases/Squid-3.1)
+and later the [http_port](http://www.squid-cache.org/Doc/config/http_port)
 **ignore-cc** options is available on accel ports. This option informs
 Squid to ignore the visitors control headers and depend solely on the
 headers provided by backend servers.
 
     http_port 80 accel ignore-cc
-
-  - Back to the
-    [SquidFaq](/SquidFaq)
