@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Squid on NetBSD
 
@@ -12,21 +11,10 @@ Binaries for all NetBSD platforms, from the NetBSD packages collection.
 
 **Bug Reporting:** <http://www.netbsd.org/support/query-pr.html>
 
-### Squid-3.1
+### Squid-4
 
-  - <ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid31/README.html>
+- <ftp://ftp.netbsd.org:/pub/NetBSD/NetBSD-current/pkgsrc/www/squid4/README.html>
 
-### Squid-3.0
+### Squid-5
 
-  - <ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid30/README.html>
-
-### Squid-2.7
-
-  - <ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/www/squid27/README.html>
-
-# Compiling
-
-# Troubleshooting
-
-
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)
+- <ftp://ftp.netbsd.org:/pub/NetBSD/NetBSD-current/pkgsrc/www/squid5/README.html>

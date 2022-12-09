@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Troubleshooting: Hotmail.com
 
@@ -24,7 +23,6 @@ The Hotmail is one of many websites with a security system is designed
 assuming a model of end-to-end client-to-server connectivity.
 
   - It requires all requests to come from the same client IP address.
-
   - It requires all requests to go **to** the same server IP address.
 
 This latter detail betrays a historic browser behaviour of finding an IP
@@ -51,29 +49,23 @@ controls.
 To force all client requests to go to Hotmail with consistent IPs. You
 can do one of a few things:
 
-  - Proxy clusters can use the **usernamehash** or **sourcehash**
+- Proxy clusters can use the **usernamehash** or **sourcehash**
     [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
     algorithms to limit the HTTP request flow without hindering load
     balancing too much.
-
-  - Recent Squid releases with TPROXYv4 support are able to spoof the
+- Recent Squid releases with TPROXYv4 support are able to spoof the
     client IP on their contacts. This spoofing gets around the website
     security system by allowing it access to the client IP. Effectively
     making it believe the proxy is not there. This can be complex to
     debug if things go wrong and requires modern systems from the kernel
     up.
-
-  - Older Squid releases can use
+- Older Squid releases can use
     [tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
     directive Forcing all outgoing requests to Hotmail to use a fixed
     Squid outbound IP. This risks the old well-known problem that
     Hotmail *Single-Sign-On* is linked to the IP address as well and all
     clients visiting through the proxy may get to see each others email
     boxes.
-
-  - Alternatively you can use NAT to set the outbound connection IP from
+- Alternatively you can use NAT to set the outbound connection IP from
     a range of IPs so each client has a temporary but distinct IP for
     their entire Hotmail session.
-
-
-[SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting)

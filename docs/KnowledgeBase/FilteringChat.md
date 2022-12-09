@@ -1,6 +1,5 @@
 ---
 categories: KB
-published: false
 ---
 # Filtering Chat usage through Squid
 

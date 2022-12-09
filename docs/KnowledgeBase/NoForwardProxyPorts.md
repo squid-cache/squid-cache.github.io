@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # No forward-proxy ports
 
@@ -11,7 +10,7 @@ forward-proxy traffic.
 
 ## Symptoms
 
-  - ERROR: No forward-proxy ports configured.
+`ERROR: No forward-proxy ports configured.`
 
 ## Explanation
 
@@ -26,9 +25,8 @@ assigned for this is **port 3128**.
 This error occurs when port 3128 has been incorrectly altered into a
 interception port.
 
-**Solution**
+## Solution
 
 Configure multiple port lines with at least one being capable of
 receiving forward-proxy traffic.
-
 

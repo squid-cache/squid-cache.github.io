@@ -1,11 +1,12 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
-# Illegal Instruction errors on Squid 3.4
+# Illegal Instruction errors on Squid 3.4 and later
 
-## Synopsis Squid 3.4 and later, running on certain *paravirtualized
-systems* and even some claiming full virtualization (at least KVM, Xen,
+## Synopsis
+
+Squid 3.4 and later, running on certain *paravirtualized systems*
+and even some claiming full virtualization (at least KVM, Xen,
 and Xen derivatives are confirmed so far) crashes with an illegal
 instruction error soon after startup.
 

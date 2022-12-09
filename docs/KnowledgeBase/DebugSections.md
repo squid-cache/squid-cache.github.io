@@ -1,6 +1,5 @@
 ---
 categories: KB
-published: false
 ---
 # What Debug Sections and debug_options in squid.conf are all about
 
