@@ -1,5 +1,5 @@
 ---
-categories: ReviewMe
+categories: KB
 published: false
 ---
 # Failed to select source for ...
@@ -17,27 +17,16 @@ A user will see the error page **ERR_CANNOT_FORWARD**:
 Squid Logs:
 
 1.  Failed to select source for \`<http://>...'
-    
       - always_direct = 0
-    
       - never_direct = 1
-
 2.  Failed to select source for \`<http://>...'
-    
       - always_direct = -1
-    
       - never_direct = 1
-
 3.  Failed to select source for \`<http://>...'
-    
       - always_direct = 0
-    
       - never_direct = -1
-
 4.  Failed to select source for \`<http://>...'
-    
       - always_direct = -1
-    
       - never_direct = -1
 
 ## Explanation
@@ -46,19 +35,15 @@ Squid contains several access control lists which determine how and
 where a request may be fetched from.
 
 These are (in order of testing):
-
-  - [prefer_direct](http://www.squid-cache.org/Doc/config/prefer_direct)
-    (on or off) - whether DIRECT connection to the origin is tried first
+- [prefer_direct](http://www.squid-cache.org/Doc/config/prefer_direct)
+    (on or off), defines whether DIRECT connection to the origin is tried first
     or last.
-
-  - [always_direct](http://www.squid-cache.org/Doc/config/always_direct)
-    - whether connections to the origin are **required** (allow).
-
-  - [never_direct](http://www.squid-cache.org/Doc/config/never_direct)
-    - whether DIRECT to origin requests are blocked (allow).
-
-  - [cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
-    - whether the request is permitted to go to this peer (allow).
+- [always_direct](http://www.squid-cache.org/Doc/config/always_direct),
+    defines whether connections to the origin are **required** (allow).
+- [never_direct](http://www.squid-cache.org/Doc/config/never_direct), 
+    defines whether DIRECT to origin requests are blocked (allow).
+- [cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
+    defines whether the request is permitted to go to this peer (allow).
 
 The error message is just stating the fact that your configuration of
 these options does not allow this request to be sent directly to the
@@ -79,6 +64,3 @@ error page and not the log warnings (at level 1). You can workaround
 that by sending the affected traffic elsewhere.
 
 If the problem is being logged by your own Squid. You must fix it.
-
-
-[CategoryErrorMessages](/CategoryErrorMessages)

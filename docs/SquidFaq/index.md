@@ -8,7 +8,6 @@
 * [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
 {% endfor %}
 
-
 ## Installation and Use
 
 {% assign section = "installation" %}

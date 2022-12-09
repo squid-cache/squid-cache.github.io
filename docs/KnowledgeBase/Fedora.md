@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Squid on Fedora
 
@@ -14,23 +13,7 @@ information on this page may not be current.
 
 Package information: <https://src.fedoraproject.org/rpms/squid>
 
-### Squid-4.12
-
-Available on Fedora 31 and later.
-
-Install Procedure:
-
-    yum install squid
-
-### Squid-4.10
-
-Available on Fedora 30.
-
-Install Procedure:
-
-    yum install squid
-
-# Compiling
+## Compiling
 
 Rebuilding the binary rpm is most easily done by installing the `fedpkg`
 tool:
@@ -46,7 +29,3 @@ And then using `fedpkg mockbuild` to rebuild the package:
     cd squid
     fedpkg mockbuild
 
-# Troubleshooting
-
-
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

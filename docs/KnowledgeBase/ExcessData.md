@@ -1,12 +1,11 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Excess Data
 
 ## Symptoms
 
-  - httpReadReply: Excess data from "GET <http://example.com>"
+`httpReadReply: Excess data from "GET <http://example.com>"`
 
 ## Explanation
 
@@ -19,21 +18,15 @@ to be.
 It is a sign that the transfer has been altered somewhere between the
 website and your Squid.
 
-  - It could be a cache-poisoning security attack on your traffic.
+- It could be a cache-poisoning security attack on your traffic.
     Attempting to inject false replies into your cache, spreading an
     embedded infection to other clients on the network.
-
-  - It could be a broken proxy (other than yours) failing to update the
+- It could be a broken proxy (other than yours) failing to update the
     reply headers correctly after re-validation.
-    :one:
-
-  - It could be a broken adaptation service failing to adjust the new
+- It could be a broken adaptation service failing to adjust the new
     size of the object.
-    :one:
-
   - It could be a service somewhere sending length header on chunked
     replies.
-    :one:
 
 Squid protects itself and your other clients against these possibilities
 by erasing the broken received copy and not sharing it out to other
@@ -52,20 +45,13 @@ is causing it.
 
 Some of the options include:
 
-  - ACLs blocking access to the problem website
-
-  - Bypassing the proxy for that specific site (unsafe if it really is
+- ACLs blocking access to the problem website
+- Bypassing the proxy for that specific site (unsafe if it really is
     an attack).
-
-  - Tracking down which of the causes is occurring and reporting the
+- Tracking down which of the causes is occurring and reporting the
     problem.
-
-  - In the cases labelled
-    :one:
+- In the cases labelled
     software upgrades for the relevant middleware might help.
 
-NP: if you track it down to some other cause not mentioned above, we
+If you track it down to some other cause not mentioned above, we
 would like to know so this article gets updated.
-
-
-[CategoryErrorMessages](/CategoryErrorMessages)

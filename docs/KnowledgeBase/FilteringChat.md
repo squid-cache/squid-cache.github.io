@@ -1,13 +1,12 @@
 ---
-categories: ReviewMe
+categories: KB
 published: false
 ---
 # Filtering Chat usage through Squid
 
 ## Synopsis
 
-This is an article in progress. Please contact
-[AdrianChadd](/AdrianChadd)
+This is an article in progress. Please contact [AdrianChadd](/AdrianChadd)
 if you'd like to contribute to this article.
 
 Many Squid users are interested in filtering MSN, Yahoo, Google, Skype
@@ -16,7 +15,6 @@ and thus can only filter HTTP - so this relies on:
 
   - General desktops/workstations aren't able to directly connect to the
     internet; and
-
   - All their internet access is manually configured to use Squid as a
     HTTP proxy.
 
@@ -33,34 +31,21 @@ request editor privileges and update the information.
 **Config Example ACL set**
 
   - [AOL](/ConfigExamples/Chat/Aol)
-
-  - [Gizmo
-    Project](/ConfigExamples/Chat/Gizmo)
-
+  - [Gizmo Project](/ConfigExamples/Chat/Gizmo)
   - [ICQ](/ConfigExamples/Chat/Icq)
-
-  - [MSN
-    Messenger](/ConfigExamples/Chat/MsnMessenger)
-
+  - [MSN Messenger](/ConfigExamples/Chat/MsnMessenger)
   - [Skype](/ConfigExamples/Chat/Skype)
-
-  - [Yahoo\!Messenger](/ConfigExamples/Chat/YahooMessenger)
+  - [Yahoo Messenger](/ConfigExamples/Chat/YahooMessenger)
 
 We are still seeking confirmed information on configurations to
 identify:
 
   - GoogleTalk
-
   - IRC
-
   - WindowsLiveMessenger
-
   - MSNLive
-
   - MSNExplorer
 
 ## Thanks
 
 Thanks to Norman Noah for the initial set of example ACLs.
-
-

@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Squid on CentOS
 
@@ -13,9 +12,8 @@ contain any files. Other sources imply that CentOS is an alias for RHEL
 (we know otherwise). Although, yes, the RHEL packages should work on
 CentOS.
 
-**Maintainer:** unknown
+## Bug Reporting
 
-**Bug Reporting:**
 <http://bugs.centos.org/search.php?category=squid&sortby=last_updated&hide_status_id=-2>
 
 **Eliezer**: 25/Apr/2017 - I have tested CentOS 7 RPMs for squid 3.5.25
@@ -40,184 +38,8 @@ and then install squid using the command:
 
     yum install squid
 
-### Squid-4 release
 
-  - **Maintainer:** Unofficial packages built by Eliezer Croitoru which
-    can be used on CentOS 7.
-
-  - **Current:** 4.1-5 based on the latest release.
-
-The RPMs was separated into three files:
-
-  - squid-VERSION.rpm
-
-  - squid-helpers-VERSION.rpm
-
-  - squid-debuginfo-VERSION.rpm
-
-The core squid rpm will provide the basic squid forward, intercept and
-tproxy modes while also allowing ssl-bump. The helpers package contains
-all sorts of other helpers which are bundled with squid sources but are
-not essential for a basic and simple proxy.
-
-  - pinger is now disabled by default to allow a smooth startup on
-    selinux enabled system.
-
-  - src rpm files are at:
-    <http://www1.ngtech.co.il/repo/centos/7/beta/SRPMS/>
-
-  - binary RPMs can be found in the architecture specific folders at
-    <http://www1.ngtech.co.il/repo/centos/7/beta/x86_64/>
-
-<!-- end list -->
-
-    [squid]
-    name=Squid repo for CentOS Linux - 7 
-    #IL mirror
-    baseurl=http://www1.ngtech.co.il/repo/centos/$releasever/beta/$basearch/
-    failovermethod=priority
-    enabled=1
-    gpgcheck=0
-
-Install Procedure:
-
-    yum update
-    yum install squid
-
-### Squid-3.5
-
-  - **Maintainer:** Unofficial packages built by Eliezer Croitoru which
-    can be used on CentOS 6 and 7
-
-  - **Current:** 3.5.25-1 based on the latest release.
-
-The RPMs was separated into three files:
-
-  - squid-VERSION.rpm
-
-  - squid-helpers-VERSION.rpm
-
-  - squid-debuginfo-VERSION.rpm
-
-The core squid rpm will provide the basic squid forward, intercept and
-tproxy modes while also allowing ssl-bump. The helpers package contains
-all sorts of other helpers which are bundled with squid sources but are
-not essential for a basic and simple proxy.
-
-  - Since 3.5.7-2 I disabled pinger by default to allow a smooth startup
-    on selinux enabled system.
-
-  - src rpm files are at:
-    <http://www1.ngtech.co.il/repo/centos/$releasever/SRPMS/>
-
-  - binary RPMs can be found in the architecture specific folders at
-    <http://www1.ngtech.co.il/repo/centos/$releasever/>
-
-<!-- end list -->
-
-    [squid]
-    name=Squid repo for CentOS Linux - $basearch
-    #IL mirror
-    baseurl=http://www1.ngtech.co.il/repo/centos/$releasever/$basearch/
-    failovermethod=priority
-    enabled=1
-    gpgcheck=0
-
-Install Procedure:
-
-    yum update
-    yum install squid
-
-### Squid-3.4
-
-  - **Maintainer:** Unofficial packages built by Eliezer Croitoru which
-    can be used on CentOS 6
-
-  - **Eliezer**: As of 3.4.0.2 I am releasing the squid RPMs for two CPU
-    classes OS, i686 and x86_64.
-
-  - Since somewhere in the 3.4 tree there was a change in the way the
-    squid was packaged by me:
-
-The RPMs was separated into three files:
-
-  - squid-VERSION.rpm
-
-  - squid-helpers-VERSION.rpm
-
-  - squid-debuginfo-VERSION.rpm
-
-The core squid rpm will provides the basic squid forward, intercept and
-tproxy modes while also allowing ssl-bump. The helpers package contains
-all sorts of other helpers which are bundled with squid sources but are
-not essential for a basic and simple proxy.
-
-There are couple issues that needs to be fixed since there was some data
-loss in the transition from my old server to another.
-
-  - The init.d script, I am have been working on it in my spare time.
-
-  - src rpm files are at:
-    <http://www1.ngtech.co.il/repo/centos/6/SRPMS/>
-
-<!-- end list -->
-
-    [squid]
-    name=Squid repo for CentOS Linux 6 - $basearch
-    #IL mirror
-    baseurl=http://www1.ngtech.co.il/repo/centos/6/$basearch
-    failovermethod=priority
-    enabled=1
-    gpgcheck=0
-
-Install Procedure:
-
-    yum update
-    yum install squid
-
-### Squid-3.3
-
-  - Official package bundled with CentOS 7
-
-Install Procedure:
-
-    yum update
-    yum install squid
-
-  - **Maintainer:** Unofficial packages built by Eliezer Croitoru which
-    can be used on CentOS 6
-
-<!-- end list -->
-
-    [squid]
-    name=Squid repo for CentOS Linux 6 - $basearch
-    #IL mirror
-    baseurl=http://www1.ngtech.co.il/repo/centos/6/$basearch
-    failovermethod=priority
-    enabled=1
-    gpgcheck=0
-
-> :information_source:
-    **Eliezer:** a nice build from a friend that is hosted on SUSE
-    servers.
-
-at:
-<http://software.opensuse.org/download.html?project=home%3Aairties%3Aserver&package=squid3>
-
-    cd /etc/yum.repos.d/
-    wget http://download.opensuse.org/repositories/home:airties:server/CentOS_CentOS-6/home:airties:server.repo
-    yum install squid3
-
-### Squid-3.1
-
-  - Official package bundled with CentOS 6.6
-
-Install Procedure:
-
-    yum update
-    yum install squid
-
-# Potentially missing OS resources (libs\\software)
+## Potentially missing OS resources (libs/software)
 
 There are couple dependencies that CentOS might need but cannot be
 installed by "yum install" yet..
@@ -234,7 +56,7 @@ In order to install it use cpan or EPEL repositories.
 
 **troubleshooting SSL**: first install the libs then see what happens.
 
-# Compiling
+## Compiling
 
     # You will need the usual build chain
     yum install -y perl gcc autoconf automake make sudo wget
@@ -258,14 +80,14 @@ structure properly:
   --sysconfdir=/etc/squid
 ```
 
-# Troubleshooting
+## Troubleshooting
 
-# Repository Mirror Script
+## Repository Mirror Script
 
 A copy of
 <https://gist.github.com/elico/333bff85f3df2889db7af2795f9d7898>
 
-``` highlight
+```bash
 #!/usr/bin/env bash
 
 #  @author:       Alexandre Plennevaux
@@ -321,13 +143,8 @@ rm -f /tmp/mirror-ngtech-repo.lock
 date
 ```
 
-# Cern Mirror of NgTech rpository
+## Cern Mirror of NgTech rpository
 
-Cern labs are mirroring
-[NgTech](/NgTech)
-repository for quite some time to:
-
-  - <http://linuxsoft.cern.ch/mirror/www1.ngtech.co.il/repo/centos/7/>
-
-
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)
+Cern labs are mirroring [NgTech](/NgTech)
+repository for quite some time to
+<http://linuxsoft.cern.ch/mirror/www1.ngtech.co.il/repo/centos/7/>

@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Identifying and working around sites with broken TCP Window Scaling
 

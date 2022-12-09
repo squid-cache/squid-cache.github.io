@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Hierarchy Control
 
@@ -17,24 +16,16 @@ satisfied.
 The various directives are evaluated in this order:
 
 1.  `always_direct`
-    
-      - if it matches as *allow*, go to origin
-
+:     if it matches as *allow*, go to origin
 2.  `never_direct`
-    
-      - if it matches as *allow*, go to a parent instead of origin in
+:     if it matches as *allow*, go to a parent instead of origin in
         the cases below
-
 3.  `hierarchy_stoplist`
-    
-      - if it matches as *allow*, go to origin
-
+:     if it matches as *allow*, go to origin
 4.  determine if a request is hierarchic
-    
-      - if it is, check whether siblings or parents have the object via
-        cache digests or ICP. In case of hit, ask the fastest among
-        those hiting for the object
-
+:     if it is, check whether siblings or parents have the object via
+      cache digests or ICP. In case of hit, ask the fastest among
+      those hiting for the object
 5.  go to origin
 
 **What makes a request hierarchic**
@@ -46,11 +37,6 @@ objects are **not** cacheable, and are thus **not** hierarchic. Those
 are:
 
   - reload requests
-
   - cache validations with non-Squid ICP peers
-
   - requests for HTTP methods other than `GET`, `HEAD` or `TRACE`
-
   - authenticated requests
-
-

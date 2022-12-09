@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Squid on Gentoo
 
@@ -26,21 +25,7 @@ Install Procedure:
  emerge =squid-3.3*
 ```
 
-### Squid-3.2
-
-Install Procedure:
-
-``` 
- emerge =squid-3.2*
-```
-
-### Squid-3.1
-
-Install Procedure:
-
-``` 
- emerge =squid-3.1*
-```
+> :information_source: Older versions are similar
 
 ### Version Notice
 
@@ -48,10 +33,3 @@ If you try and install a version not available in portage, such as 2.5,
 you will see the following notice:
 
     emerge: there are no ebuilds to satisfy "=net-proxy/squid-2.5*".
-
-# Compiling
-
-# Troubleshooting
-
-
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

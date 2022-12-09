@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Host header forgery detected
 
@@ -32,40 +31,33 @@ To avoid this vulnerability Squid has resolved the domain name the
 client was supposedly contacting and determined that the IP the HTTP
 request was going to does not belong to that domain name.
 
-  - The first line of the three cites:
-    
-      - the **local=** (packet destination IP) address of the domain the
+The **first line** of the three cites:
+1. the **local=** (packet destination IP) address of the domain the
         client was connecting to,
-    
-      - the **remote=** (packet source IP) address of the client making
-        the connection,
-    
-      - and the reason for the alert.
-        
-          - In this case it is **"local IP does not match any domain
-            IP"**.
-        
-          - With
-            [host_verify_strict](http://www.squid-cache.org/Doc/config/host_verify_strict)
-            enabled there are other checks that can alert.
+1. the **remote=** (packet source IP) address of the client making
+        the connection,  and the reason for the alert.
 
-  - The second and third lines are self explanatory.
+In this case it is **"local IP does not match any domain IP"**.
 
-**Fix**
+With [host_verify_strict](http://www.squid-cache.org/Doc/config/host_verify_strict)
+enabled there are other checks that can alert.
 
-  - use the
-    [WPAD/PAC](/SquidFaq/ConfiguringBrowsers#Fully_Automatic_Configuration)
-    protocol to **automatically configure** the browser agents instead
-    of intercepting traffic.
-    
-      - OR
+The **second and third lines** are self explanatory.
 
-  - use an Active Directory(R) GPO to **automatically configure** the
-    browser agents instead of intercepting traffic.
-    
-      - OR
+## Fix
 
-  - configure the browsers manually
+Use the [WPAD/PAC](/SquidFaq/ConfiguringBrowsers#Fully_Automatic_Configuration)
+protocol to **automatically configure** the browser agents instead
+of intercepting traffic
+
+**OR**
+
+use an Active Directory(R) GPO to **automatically configure** the
+browser agents instead of intercepting traffic.
+
+**OR**
+
+configure the browsers manually
 
 > :information_source:
     all of these methods make the client browser agent aware of the
@@ -81,8 +73,7 @@ here.
 ## Workaround
 
 > :information_source:
-    As of May 2012,
-    [Squid-3.2.0.18](/Releases/Squid-3.2)
+    As of May 2012, [Squid-3.2.0.18](/Releases/Squid-3.2)
     will pass traffic which fails these validation checks to the same
     origin as intended by the client. But will disable caching, route
     error recovery and peer routing in order to do so safely. The
@@ -97,44 +88,47 @@ The below details are mandatory configuration for NAT intercept or
 TPROXY proxies. Some of them appeared previously to be optional due to
 old Squid bugs which have now been fixed.
 
-  - ensure that NAT is performed on the same box as Squid.
-    
-      - Squid **MUST** have access to the NAT systems records of what
+* ensure that NAT is performed on the same box as Squid.
+    > :information_source:
+        Squid **MUST** have access to the NAT systems records of what
         the original destination IP was. Without that information all
         traffic will get a 409 HTTP error and log this alert.
     
-      - When operating Squid on a different machine to your router use
+    > :information_source:
+        When operating Squid on a different machine to your router use
         **Policy Routing** or a tunnel to deliver traffic to squid. Do
         not perform destination NAT (DNAT, REDIRECT, Port Forwarding) on
         the router machine before the traffic hits Squid.
 
-  - ensure that the DNS servers Squid uses are the same as those used by
+* ensure that the DNS servers Squid uses are the same as those used by
     the client(s).
-    
-      - Certain popular CDN hosting networks use load balancing systems
+    > :information_source:
+        Certain popular CDN hosting networks use load balancing systems
         to determine which website IPs to return in the DNS query
         response. These are based on the querying DNS resolvers IP. If
         Squid and the client are using different resolvers there is an
         increased chance of different results being given. Which can
         lead to this alert.
 
-  - ensure that your DNS servers are obeying the IP rotation TTL for
+* ensure that your DNS servers are obeying the IP rotation TTL for
     that domain name.
-    
-      - Certain CDN networks load balance by rotating a set of IPs in
+    > :information_source:
+        Certain CDN networks load balance by rotating a set of IPs in
         and out of service with each TTL cycle. Storing the website IPs
         longer than the TTL permits is a violation of DNS protocol which
         produces incorrect DNS responses periodically. This alert is
         just one of the more visible side effects that violation causes.
 
-  - ensure that the commercial 8.8.8.8 service is not being used
+* ensure that the commercial 8.8.8.8 service is not being used
     directly.
     
-      - This service is known to be particularly bad with rotation of
+    > :information_source:
+        This service is known to be particularly bad with rotation of
         lookup results on each query - much faster than even the TTL for
         the zones it is serving.
     
-      - If you really need to use this service at all a local DNS
+    > :information_source:
+        If you really need to use this service at all a local DNS
         resolver should be setup that uses it as upstream forwarder. The
         local network machines can use that local resolver to access
         DNS.
@@ -142,50 +136,40 @@ old Squid bugs which have now been fixed.
 These are optional and may not be possible, but is useful when they
 work:
 
-  - enable EDNS (extended-DNS jumbogram) and large UDP packet support.
-    
-      - Some popular domains are hosted on more IPs than will fit in a
+* enable EDNS (extended-DNS jumbogram) and large UDP packet support.
+    - Some popular domains are hosted on more IPs than will fit in a
         regular DNS query response. Their responses may appear
         inconsistent as IPs appear and disappear in the small set the
         regular DNS packet displays.
-    
-      - [Squid-3.2](/Releases/Squid-3.2)
+    - [Squid-3.2](/Releases/Squid-3.2)
         can attempt to use EDNS to get larger packets with all IPs of
         these domains by setting the
         [dns_packet_max](http://www.squid-cache.org/Doc/config/dns_packet_max)
         directive. This reduces Squids chance of loosing the IP the
         client is connecting to but requires both your resolver to
-        support EDNS and network to support jumbograms.
-
-  - restrict HTTP persistent (keep-alive) connections.
-    
-      - Since the issue with CDNs is basically their DNS responses
+        support EDNS and network to support jumbograms
+* restrict HTTP persistent (keep-alive) connections
+    - Since the issue with CDNs is basically their DNS responses
         changing too rapidly the long lifetime of HTTP connections can
         exceed that change and cause false failures.
-    
-      - The
+    - The
         [client_lifetime](http://www.squid-cache.org/Doc/config/client_lifetime)
         can be configured to similarly short times to reduce the
         occurrence of these mismatches. The default 1 day is tuned to
         match DNS recommended best practice TTL.
-    
-      - Alternatively
+    - Alternatively
         [client_persistent_connections](http://www.squid-cache.org/Doc/config/client_persistent_connections)
         can be set to **off** to disable HTTP keep-alive entirely.
 
-**Alternative Causes**
+## Alternative Causes
 
-  - Interception performed at the DNS layer by the use of *dnsmasq* tool
-    or other DNS trickery altering the IP destination the clients
-    receive for a domain lookup.
+Interception performed at the DNS layer by the use of *dnsmasq* tool
+or other DNS trickery altering the IP destination the clients
+receive for a domain lookup.
 
-In these cases
-[Squid-3.2](/Releases/Squid-3.2)
+In these cases [Squid-3.2](/Releases/Squid-3.2)
 hijacking protection will pass the traffic through to the clients
 destination IP address **without** redirecting to any specific other IP.
 Additional Destination-NAT configuration is required to identify the
 packets and ensure they are delivered to the correct site regardless of
 any other details.
-
-
-[CategoryErrorMessages](/CategoryErrorMessages)
