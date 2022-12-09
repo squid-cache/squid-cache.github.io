@@ -25,7 +25,7 @@ published: false
     
       - Bug [4248](https://bugs.squid-cache.org/show_bug.cgi?id=4248)
     
-      - [](http://http2.github.io/)
+      - <http://http2.github.io/>
 
 # Details
 

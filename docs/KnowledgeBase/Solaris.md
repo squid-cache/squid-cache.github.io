@@ -17,7 +17,7 @@ Configuration files will then be stored in `/etc/squid`, user-accessible
 executables such as squidclient in `/usr/bin`, while the main squid
 executable will be in `/usr/squid/sbin`.
 
-[](http://www.opencsw.org/packages/squid/) also hosts binary Squid
+<http://www.opencsw.org/packages/squid/> also hosts binary Squid
 packages.
 
 ### Squid-2.7
@@ -143,7 +143,7 @@ system, which can either be:
     for Squid-3 repository details.
     
       - You need to manually download bzr from
-        [](http://bazaar-vcs.org/) and install it. It's simple, and its
+        <http://bazaar-vcs.org/> and install it. It's simple, and its
         prerequisites (python) are present in the base setup.
 
 # Build-Farm
@@ -158,7 +158,7 @@ and optional, but useful
     pkg install ccache
 
 and CPPunit to be installed from source: you can find it at
-[](http://sourceforge.net/projects/cppunit/). In order to build it
+<http://sourceforge.net/projects/cppunit/>. In order to build it
 you'll have to patch the file
 `include/cppunit/portability/FloatingPoint.h` adding a include
 directive:
@@ -190,7 +190,7 @@ Fixes for this problem include:
 
   - Using a 32-bit operating system build of Solaris 9
 
-Reference: [](http://bugs.squid-cache.org/show_bug.cgi?id=3057)
+Reference: <http://bugs.squid-cache.org/show_bug.cgi?id=3057>
 
 ## Your cache is running out of filedescriptors
 

@@ -193,9 +193,9 @@ Now, I will try tuning-up my box & squid.conf tommorow
 ## Another Example
 
   - Mailing list post:
-    [](http://www.squid-cache.org/mail-archive/squid-users/200705/0443.html)
+    <http://www.squid-cache.org/mail-archive/squid-users/200705/0443.html>
     and
-    [](http://www.squid-cache.org/mail-archive/squid-users/200705/0447.html)
+    <http://www.squid-cache.org/mail-archive/squid-users/200705/0447.html>
 
 ## References
 
@@ -203,10 +203,10 @@ Now, I will try tuning-up my box & squid.conf tommorow
     [Features/Tproxy4](/Features/Tproxy4)
 
   - TPROXY patch homepage:
-    [](http://www.balabit.com/support/community/products/tproxy/)
+    <http://www.balabit.com/support/community/products/tproxy/>
 
   - A useful script to test:
-    [](http://devel.squid-cache.org/cgi-bin/test)
+    <http://devel.squid-cache.org/cgi-bin/test>
 
 <!-- end list -->
 

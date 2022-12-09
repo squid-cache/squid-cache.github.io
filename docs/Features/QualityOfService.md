@@ -8,7 +8,7 @@ published: false
 
   - **Developer**: Marin Stavrev
 
-  - **More**: [](http://zph.bratcheda.org/)
+  - **More**: <http://zph.bratcheda.org/>
 
 ## Details
 
@@ -25,7 +25,7 @@ traffic to clients.
     response coming from the remote server masked. For this to work
     correctly, you will need to patch your linux kernel with the TOS
     preserving ZPH patch. The kernel patch can be downloaded from
-    [](http://zph.bratcheda.org)
+    <http://zph.bratcheda.org>
 
   - Allows you to mask certain bits in the TOS received from the remote
     server, before copying the value to the TOS send towards clients.

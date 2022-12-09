@@ -19,9 +19,9 @@ Lubos Uhliarik is the maintainer of the Red Hat official packages as of
   - **Maintainer:** Unofficial packages built by Eliezer Croitoru which
     can be used on RHEL.
 
-  - **RHEL 6 Download:** [](http://www1.ngtech.co.il/repo/centos/6/)
+  - **RHEL 6 Download:** <http://www1.ngtech.co.il/repo/centos/6/>
 
-  - **RHEL 7 Download:** [](http://www1.ngtech.co.il/repo/rhel/7/)
+  - **RHEL 7 Download:** <http://www1.ngtech.co.il/repo/rhel/7/>
 
   - **Latest Version:** 3.5.27
 
@@ -30,7 +30,7 @@ Lubos Uhliarik is the maintainer of the Red Hat official packages as of
   - **Maintainer:** Unofficial packages built by Eliezer Croitoru which
     can be used on RHEL.
 
-  - **RHEL 6 Download:** [](http://www1.ngtech.co.il/repo/centos/)
+  - **RHEL 6 Download:** <http://www1.ngtech.co.il/repo/centos/>
 
   - **Latest Version:** 3.4.9
 
@@ -59,7 +59,7 @@ The command to takes care of this problem is:
 
     semanage port -a -t http_cache_port_t -p udp 3401
 
-(via [](http://tanso.net/selinux/squid/))
+(via <http://tanso.net/selinux/squid/>)
 
 [CategoryKnowledgeBase](/CategoryKnowledgeBase)
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

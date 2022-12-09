@@ -174,8 +174,8 @@ cannot distinguish the two cases and assumes that an IP address in the
 CONNECT request implies that the user typed that address in the address
 bar. Besides assuming user input, Squid overall behavior here is meant
 to mimic what would happen if Squid was not in the loop. Here are a few
-cases when the user enters something like [](https://74.125.65.99/)
-instead of [](https://www.google.com/):
+cases when the user enters something like <https://74.125.65.99/>
+instead of <https://www.google.com/>:
 
 <table>
 <tbody>

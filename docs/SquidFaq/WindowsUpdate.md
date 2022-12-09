@@ -342,11 +342,11 @@ assets site.
 
 # Microsoft technical articles related to proxy issues and windows updates
 
-[](https://support.microsoft.com/en-us/kb/3084568)
+<https://support.microsoft.com/en-us/kb/3084568>
 
 # An example of refresh_pattern that is being used at OpnSense
 
-[](https://github.com/opnsense/core/issues/1691#issuecomment-340276788)
+<https://github.com/opnsense/core/issues/1691#issuecomment-340276788>
 
 Back to the
 [SquidFaq](/SquidFaq)

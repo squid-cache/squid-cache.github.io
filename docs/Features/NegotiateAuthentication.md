@@ -16,7 +16,7 @@ published: false
     [RobertCollins](/RobertCollins),
     [FrancescoChemolli](/FrancescoChemolli)
 
-  - **More**: [](http://squid.acmeconsulting.it/)
+  - **More**: <http://squid.acmeconsulting.it/>
 
 # Details
 
@@ -181,7 +181,7 @@ Result line sent back to Squid:
 ## Squid native Windows build with NEGOTIATE support
 
 A native Windows build of Squid with Negotiate support. Binary package
-and source archive are available on [](http://squid.acmeconsulting.it/).
+and source archive are available on <http://squid.acmeconsulting.it/>.
 
 ## What do I need to do to support NEGOTIATE on Squid?
 
@@ -241,7 +241,7 @@ to access the win32 helper from a Unix box, and that is by performing an
 
   - You need to have an sshd running on the windows box (not a small
     feat by itself, but it's outside the scope of this document - see
-    [](http://www.cygwin.com/) for details). Notice that it **has** to
+    <http://www.cygwin.com/> for details). Notice that it **has** to
     be running as the SYSTEM account.
 
   - Create an ssh keypair for the squid user on the Unix box - it's

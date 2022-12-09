@@ -53,9 +53,9 @@ and served.
 
 **See Also**
 
-  - [](http://devel.squid-cache.org/vary/)
+  - <http://devel.squid-cache.org/vary/>
 
-  - [](http://devel.squid-cache.org/etag/)
+  - <http://devel.squid-cache.org/etag/>
 
 **Thanks**
 

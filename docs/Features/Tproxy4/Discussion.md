@@ -6,7 +6,7 @@ See [Discussed
 Page](/Features/Tproxy4)
 
 There ebtables settings that was mentioned at:
-[](http://wiki.squid-cache.org/ConfigExamples/Intercept/DebianWithRedirectorAndReporting?highlight=%28ebtables%29)
+<http://wiki.squid-cache.org/ConfigExamples/Intercept/DebianWithRedirectorAndReporting?highlight=%28ebtables%29>
 are in contradiction to this page regarding the action of the ebtables
 rules. What should it be in order to make the bridged packets from the
 LAN to go into the iptables plane? ACCEPT or DROP?
@@ -20,7 +20,7 @@ to the remote machine) or DROPS it out into the local machine for
 routing by iptables.
 
 See the *--redirect-target* description in
-[](http://linux.die.net/man/8/ebtables) - "Making it DROP in the
+<http://linux.die.net/man/8/ebtables> - "Making it DROP in the
 BROUTING chain will let the frames be routed."
 
 There are however some strange combo of bugs in the kernel TCP stack,

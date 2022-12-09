@@ -93,7 +93,7 @@ SOLUTION:
 
 ## See also
 
-  - [](http://support.microsoft.com/?scid=kb%3Ben-us%3B327800&x=17&y=16)
+  - <http://support.microsoft.com/?scid=kb%3Ben-us%3B327800&x=17&y=16>
     - "How to configure SSL Offloading for Outlook Web Access in
     Exchange 2000 Server and in Exchange Server 2003"
 

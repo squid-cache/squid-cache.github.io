@@ -119,7 +119,7 @@ The Squid source code bundles with a few authentication backends
   - SSPI: Windows native authenticator
 
 Documentation for each of these helpers can be found at
-[](http://www.squid-cache.org/Doc/man/). Due to its simplicity Basic
+<http://www.squid-cache.org/Doc/man/>. Due to its simplicity Basic
 authentication has by far the most helpers, but the other schemes also
 have several helpers available.
 
@@ -312,7 +312,7 @@ Since *all* is a static ACL (that always matches) and has nothing to do
 with authentication you will find that the access is just denied.
 
 See also:
-[](http://www.squid-cache.org/mail-archive/squid-users/200511/0339.html)
+<http://www.squid-cache.org/mail-archive/squid-users/200511/0339.html>
 
 ## Does Squid cache authentication lookups?
 

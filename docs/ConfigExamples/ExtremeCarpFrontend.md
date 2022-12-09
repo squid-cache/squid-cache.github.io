@@ -86,7 +86,7 @@ The relevant iptables commands are then:
   - *by Robin*
 
 In this example we will be using *balance*. A GPL licensed software
-available at [](http://www.inlab.de/). The latest version of *balance*
+available at <http://www.inlab.de/>. The latest version of *balance*
 software is 3.54 at the time of this writing.
 
 *balance* provides the above iptables functionality to very old Linux

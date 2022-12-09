@@ -76,8 +76,8 @@ Configuration **module:parameters** to be used by
 
   - **log_db_daemon** : Log directly to an SQL database. MySQL backend
     default.
-    [](http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html)
-    or [](http://sourceforge.net/projects/logmysqldaemon/)
+    <http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html>
+    or <http://sourceforge.net/projects/logmysqldaemon/>
 
   - **blooper** :
     
@@ -85,7 +85,7 @@ Configuration **module:parameters** to be used by
         database (Postgres being the main target for it).
     
       - Sources are available on github at
-        [](https://github.com/paranormal/blooper)
+        <https://github.com/paranormal/blooper>
 
 ### [Daemon Message Protocol](/Features/AddonHelpers)
 

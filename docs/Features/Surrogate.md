@@ -12,8 +12,8 @@ published: false
   - **Developer**:
     [RobertCollins](/RobertCollins)
 
-  - **More**: [](http://www.esi.org/architecture_spec_1.0.html) and
-    [](http://www.w3.org/TR/edge-arch)
+  - **More**: <http://www.esi.org/architecture_spec_1.0.html> and
+    <http://www.w3.org/TR/edge-arch>
 
 # Details
 
@@ -111,7 +111,7 @@ in its HTTP replies containing the instructions which are to be used
 instead of the **Cache-Control** header settings.
 
 Details about **Surrogate-Control** can be found at
-[](http://www.w3.org/TR/edge-arch)
+<http://www.w3.org/TR/edge-arch>
 
 ## Usage Examples
 

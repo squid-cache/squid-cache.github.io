@@ -93,10 +93,10 @@ cached.
 question mark append to the URL is used to pass arguments to a script
 and can represent "Dynamic Content" page that will vary by the
 arguments. the url:
-"[](http://wiki.squid-cache.org/index.html?action=login)" will pass to
+"<http://wiki.squid-cache.org/index.html?action=login>" will pass to
 the argument "action=login" to the wiki server and will result a login
 page. if you will send an argument to a static html file such as:
-"[](http://www.squid-cache.org/index.html?action=login)" the result is
+"<http://www.squid-cache.org/index.html?action=login>" the result is
 just a longer url. many CMS like Wordpress use question mark to identify
 a specific page\\article stored in the system. ("/wordpress/?p=941")
 
@@ -105,7 +105,7 @@ a specific page\\article stored in the system. ("/wordpress/?p=941")
 many systems use CGI to run a script on a server that will result html
 output or not. i wrote a simple CGI script that shows the public ip
 address used to contact my server:
-[](http://www1.ngtech.co.il/cgi-bin/myip.cgi) this script result will
+<http://www1.ngtech.co.il/cgi-bin/myip.cgi> this script result will
 vary for each user by the server and shouldn't be cached. There is a
 convention about CGI scripts to run under "cgi-bin" directory as a mark
 of live feed.
@@ -500,7 +500,7 @@ code:
 
 analyze request. if request fits criteria: extract from request the
 needed data (from url and other headers) create an internal "address"
-like "[](http://ytvideo.squid.internal/somekey)" store a key pair of the
+like "<http://ytvideo.squid.internal/somekey>" store a key pair of the
 original url and the modified url on the db. send the modified request
 to squid.
 
@@ -508,12 +508,12 @@ on squid 1 we pre-configured a cache\_peer for all dstdomain of
 .internal so the rewritten url must be fetched through squid 2.
 
 squid 2 then gets the request for
-"[](http://ytvideo.squid.internal/somekey)" and passes the request to
+"<http://ytvideo.squid.internal/somekey>" and passes the request to
 the ICAP server. the ICAP server in time fetch the original URL from DB
 and rewrites the request to the original origin server.
 
 The status now is: client thinks it's fetching the original file. squid
-1 thinks it's fetching the "[](http://ytvideo.squid.internal/somekey)"
+1 thinks it's fetching the "<http://ytvideo.squid.internal/somekey>"
 file squid 2 feeds the whole network one big lie but with the original
 video.
 

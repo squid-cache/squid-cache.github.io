@@ -112,4 +112,4 @@ For [Windows NT](http://ftp.tdcnorge.no/pub/windows/Identd/),
 The [Cacheability Engine](http://www.mnot.net/cacheability/) is a python
 script that validates an URL, analyzing the clues a web server gives to
 understand how cacheable is the served content. An online tool is
-available at [](http://www.ircache.net/cgi-bin/cacheability.py)
+available at <http://www.ircache.net/cgi-bin/cacheability.py>

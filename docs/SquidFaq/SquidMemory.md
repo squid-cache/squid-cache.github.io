@@ -130,7 +130,7 @@ memory "cached Mem"
 This is normal behaviour in Linux - everything that's once read from
 disk is cached in RAM, as long as there is free memory. If the RAM is
 needed in another way, the cache in memory will be reduced. See also
-[](https://www.linuxatemyram.com/)
+<https://www.linuxatemyram.com/>
 
 Machines running Squid can show unusual amounts of this disk I/O caching
 happening because Squid caches contain a lot of files and access them

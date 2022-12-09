@@ -162,7 +162,7 @@ random or encrypted token which will result in the download of the file.
 For example:
 
   - \-
-    [](http://ngtech.co.il/token-based-files/some-randomblob/xyz/yer/?couple=random&request=properties)
+    <http://ngtech.co.il/token-based-files/some-randomblob/xyz/yer/?couple=random&request=properties>
 
 The above url will be unique on each download request and there for
 cannot be predicted using the urls only. In order to to predict this url

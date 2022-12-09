@@ -467,7 +467,7 @@ flowing towards SMP support. There are likely to be problems and
 unexpected things encountered at every turn, starting with the
 disagreements on this view itself.
 
-  - [](http://www.squid-cache.org/Devel/papers/threading-notes.txt)
+  - <http://www.squid-cache.org/Devel/papers/threading-notes.txt>
     while old still contains a good and valid analysis of the SMP
     problems inside Squid which must be hurdled.
 

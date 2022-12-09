@@ -64,7 +64,7 @@ From 3.1.13
     generation](/Features/DynamicSslCert)
 
 Packages of squid 3.1 source code are available at
-[](http://www.squid-cache.org/Versions/v3/3.1/)
+<http://www.squid-cache.org/Versions/v3/3.1/>
 
 ## Security Advisories
 

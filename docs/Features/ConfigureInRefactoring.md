@@ -16,7 +16,7 @@ published: false
     [FrancescoChemolli](/FrancescoChemolli)
 
   - **More**:
-    [](https://code.launchpad.net/~kinkie/squid/autoconf-refactor)
+    <https://code.launchpad.net/~kinkie/squid/autoconf-refactor>
 
 # Details
 
@@ -25,7 +25,7 @@ portability, it's also important that the infrastructure allowing to
 detect the build environment be clean and extensible. Sadly, the current
 configure.in is not. It would be useful to refactor and comment it,
 dividing it in sections, with this tentative order (see
-[](http://www.gnu.org/software/autoconf/manual/autoconf.html#Autoconf-Input-Layout)):
+<http://www.gnu.org/software/autoconf/manual/autoconf.html#Autoconf-Input-Layout>):
 
 1.  auxiliary software available on the host system (including cc)
 

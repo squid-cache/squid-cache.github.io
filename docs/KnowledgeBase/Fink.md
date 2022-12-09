@@ -10,7 +10,7 @@ Packages available in binary or source for Squid on i86 64-bit, i86
 32-bit and PowerPC architectures.
 
 Package Information:
-[](http://pdb.finkproject.org/pdb/package.php/squid-unified)
+<http://pdb.finkproject.org/pdb/package.php/squid-unified>
 
 **Maintainer:** Benjamin Reed
 

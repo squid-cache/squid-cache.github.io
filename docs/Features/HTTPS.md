@@ -10,7 +10,7 @@ published: false
     [2818](https://tools.ietf.org/rfc/rfc2818),
     [Features/SHTTP](/Features/SHTTP)
 
-When a client comes across an **[](https://)** URL, it can do one of
+When a client comes across an **<https://>** URL, it can do one of
 three things:
 
   - opens an TLS connection directly to the origin server, or
@@ -43,8 +43,8 @@ are able to control CONNECT requests, but only limited information is
 available. For example, many common parts of the request URL do not
 exist in a CONNECT request:
 
-  - the URL scheme or protocol (e.g., [](http://), [](https://),
-    [](ftp://), voip://, itunes://, or [](telnet://)),
+  - the URL scheme or protocol (e.g., <http://>, <https://>,
+    <ftp://>, voip://, itunes://, or <telnet://>),
 
   - the URL path (e.g., */index.html* or */secure/images/*),
 
@@ -214,7 +214,7 @@ configured to use one in a PAC file or command line switch. GUI
 configuration appears not to be possible (yet).
 
 More details at
-[](http://dev.chromium.org/developers/design-documents/secure-web-proxy)
+<http://dev.chromium.org/developers/design-documents/secure-web-proxy>
 
 ## Firefox
 
@@ -227,7 +227,7 @@ logic](https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c68).
 There is still an important bug open:
 
   - Using a client certificate authentication to a proxy:
-    [](https://bugzilla.mozilla.org/show_bug.cgi?id=209312)
+    <https://bugzilla.mozilla.org/show_bug.cgi?id=209312>
 
 If you have trouble with adding trust for the proxy cert, there is [a
 process](https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c65) by

@@ -17,7 +17,7 @@ many cases will require direct access to the Internet and will not work
 in a very restricted networks with allow access only using a proxy. I
 belive that NTOP have some more details on how to somehow make skype
 work or be blocked in some cases. I recommend peeking at theri at:
-[](https://github.com/ntop/nDPI/search?utf8=✓&q=skype)
+<https://github.com/ntop/nDPI/search?utf8=✓&q=skype>
 
 # Skype Access Controls
 

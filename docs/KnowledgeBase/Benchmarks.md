@@ -197,7 +197,7 @@ running ab over the loopback interface.
 | CPU Usage | 16%                                    |
 
 Full Details:
-[](http://www.squid-cache.org/mail-archive/squid-users/201002/0838.html)
+<http://www.squid-cache.org/mail-archive/squid-users/201002/0838.html>
 
     Submitted by: Markus Meyer. 2010-02-25.
     
@@ -357,7 +357,7 @@ load balance to three backend DB servers. The squid settings:
     access_log none
 
 Environent topology at:
-[](http://ngtech.co.il/squidblocker/topology1.png) ![SquidBlocker test
+<http://ngtech.co.il/squidblocker/topology1.png> ![SquidBlocker test
 lab](http://ngtech.co.il/squidblocker/topology1.png)
 
 |                         |                                                                |
@@ -387,10 +387,10 @@ from another host and from the same host with similar results.
 ## Older
 
 Mark Nottingham benchmarked Squid 2.5 vs 2.6 in late 2006:
-[](http://www.mnot.net/blog/2006/08/21/caching_performance)
+<http://www.mnot.net/blog/2006/08/21/caching_performance>
 
 The Measurement Factory benchmarked Squid 2.4, in particular IO systems
-in 2000 [](http://polygraph.ircache.net/Results/bakeoff-2/)
+in 2000 <http://polygraph.ircache.net/Results/bakeoff-2/>
 
 Bryan Migliorisi posted some analysis of
 [Squid-2.6](/Releases/Squid-2.6)

@@ -32,7 +32,7 @@ For this Following information will be required
 ## Certificate Setup
 
 Details on certificate management can be found at
-[](http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/c118.html)
+<http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/c118.html>
 
 You will need to:
 

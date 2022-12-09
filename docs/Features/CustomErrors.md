@@ -235,7 +235,7 @@ error response messages, and what details will be inserted:
 
 HTTPS uses HTTP CONNECT messages to relay through a proxy. Due to
 browser behaviour handling these CONNECT messages (described in
-[](https://bugzilla.mozilla.org/show_bug.cgi?id=479880)) any custom
+<https://bugzilla.mozilla.org/show_bug.cgi?id=479880>) any custom
 error page produced by the proxy is ignored and a generic browser page
 displayed instead.
 

@@ -20,7 +20,7 @@ published: false
 
 <!-- end list -->
 
-  - [](http://bugs.squid-cache.org/show_bug.cgi?id=3070)
+  - <http://bugs.squid-cache.org/show_bug.cgi?id=3070>
 
 ## Details
 

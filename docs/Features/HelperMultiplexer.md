@@ -15,7 +15,7 @@ published: false
     [FrancescoChemolli](/FrancescoChemolli)
 
   - **More**:
-    [](ftp://ftp.squid-cache.org/pub/squid/contrib/helper-mux/) ;
+    <ftp://ftp.squid-cache.org/pub/squid/contrib/helper-mux/> ;
     bundled with 3.2
 
 # Details

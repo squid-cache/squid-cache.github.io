@@ -691,11 +691,11 @@ for use in your network.
 
 |                                                                         |                                            |                                                                         |
 | ----------------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------- |
-| [](https://datatracker.ietf.org/doc/html/draft-forster-wrec-wccp-v1)    | WCCP 1.0                                   | :heavy_check_mark: |
-| [](https://datatracker.ietf.org/doc/html/draft-wilson-wrec-wccp-v2)     | WCCP 2.0                                   | almost                                                                  |
-| [](https://datatracker.ietf.org/doc/html/draft-param-wccp-v2rev1-01)    | WCCP 2.0 rev 1                             | partial                                                                 |
-| [](https://datatracker.ietf.org/doc/html/draft-vinod-carp-v1)           | Microsoft CARP peering algorithm           |                                                                         |
-| [](https://datatracker.ietf.org/doc/html/draft-ietf-radext-digest-auth) | RADIUS Extension for Digest Authentication |                                                                         |
+| <https://datatracker.ietf.org/doc/html/draft-forster-wrec-wccp-v1>    | WCCP 1.0                                   | :heavy_check_mark: |
+| <https://datatracker.ietf.org/doc/html/draft-wilson-wrec-wccp-v2>     | WCCP 2.0                                   | almost                                                                  |
+| <https://datatracker.ietf.org/doc/html/draft-param-wccp-v2rev1-01>    | WCCP 2.0 rev 1                             | partial                                                                 |
+| <https://datatracker.ietf.org/doc/html/draft-vinod-carp-v1>           | Microsoft CARP peering algorithm           |                                                                         |
+| <https://datatracker.ietf.org/doc/html/draft-ietf-radext-digest-auth> | RADIUS Extension for Digest Authentication |                                                                         |
 
 ## ISO standards
 

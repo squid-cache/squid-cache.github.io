@@ -109,7 +109,7 @@ Basic new features in 6.0:
       - Remove deprecated leakfinder (--enable-leakfinder)
 
 Packages of what will become Squid-6 source code are available at
-[](http://www.squid-cache.org/Versions/v6/)
+<http://www.squid-cache.org/Versions/v6/>
 
 ### Security Advisories
 

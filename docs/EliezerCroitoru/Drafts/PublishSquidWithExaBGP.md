@@ -30,15 +30,15 @@ marking.
 
 ## ExaBGP links
 
-  - [](https://gist.github.com/elico/db3d2e4c63989f0326db60c15dc92206)
+  - <https://gist.github.com/elico/db3d2e4c63989f0326db60c15dc92206>
 
-  - [](https://www.aangelis.gr/blog/2016/03/dns-high-availability-using-exabgp)
+  - <https://www.aangelis.gr/blog/2016/03/dns-high-availability-using-exabgp>
 
-  - [](https://karld.blog/2015/01/18/anycasting-dns/)
+  - <https://karld.blog/2015/01/18/anycasting-dns/>
 
-  - [](https://github.com/criteo-cookbooks/chef-exabgp)
+  - <https://github.com/criteo-cookbooks/chef-exabgp>
 
-  - [](https://engineering.linkedin.com/blog/2016/04/the-joy-of-anycast--in-side-the-datacenter)
+  - <https://engineering.linkedin.com/blog/2016/04/the-joy-of-anycast--in-side-the-datacenter>
 
 ## Code
 

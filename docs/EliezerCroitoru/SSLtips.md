@@ -5,7 +5,7 @@ published: false
 Describe EliezerCroitoru/SSLtips here.
 
 You can take a look also at:
-[](http://www.sslshopper.com/article-most-common-openssl-commands.html)
+<http://www.sslshopper.com/article-most-common-openssl-commands.html>
 
 # Couple handy commands with openssl
 

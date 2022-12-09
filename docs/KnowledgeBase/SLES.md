@@ -17,7 +17,7 @@ published: false
 ### Squid-2.7
 
 **Bug Reporting:**
-[](https://bugzilla.novell.com/buglist.cgi?quicksearch=squid)
+<https://bugzilla.novell.com/buglist.cgi?quicksearch=squid>
 
 Install Procedure:
 

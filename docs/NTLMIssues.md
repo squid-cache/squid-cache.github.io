@@ -18,7 +18,7 @@ be done.
 Long answer: in order to implement this you need to have access to a
 database containing the user passwords, either in cleartext or at least
 their NT- and LM-hashes (see
-[](http://forum.hackinthebox.org/viewtopic.php?p=40224) for some info on
+<http://forum.hackinthebox.org/viewtopic.php?p=40224> for some info on
 what those are). These password ***must*** be in sync with those
 contained in Active Directory, or the first authentication of a session
 will fail and the user will get the dreaded popup. Once you have those,

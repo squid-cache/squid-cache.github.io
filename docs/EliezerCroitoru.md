@@ -25,7 +25,7 @@ details of the ngtech.co.il domain.
 My current project is
 [YouTube](/YouTube)
 Granular videos filtering. A draft can be seen at:
-[](https://github.com/elico/yt-classification-service-example)
+<https://github.com/elico/yt-classification-service-example>
 
 I hope that this idea will be integrated in the wide market.
 

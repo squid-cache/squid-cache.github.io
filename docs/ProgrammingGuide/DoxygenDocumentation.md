@@ -345,7 +345,7 @@ all instances follow the same layout and general structure.
 Least-surprise principle..
 
 For a practical example of how it may end up looking like, please see
-[](http://bazaar.launchpad.net/~kinkie/squid/documentation/annotate/head%3A/src/ip/IpAddress.h)
+<http://bazaar.launchpad.net/~kinkie/squid/documentation/annotate/head%3A/src/ip/IpAddress.h>
 .
 
 \--

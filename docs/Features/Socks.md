@@ -31,7 +31,7 @@ an HTTP SOCKS gateway itself.
 
 A little research indicates SOCKSv5 is supposed to be as easy as a new
 bind() call and library linkage.
-[](http://www.squid-cache.org/mail-archive/squid-users/199901/0033.html)
+<http://www.squid-cache.org/mail-archive/squid-users/199901/0033.html>
 
     export CFLAGS=" -Dbind=SOCKSbind "
     export CXXFLAGS=" -Dbind=SOCKSbind "
@@ -67,7 +67,7 @@ and listens on an
 [http_port](http://www.squid-cache.org/Doc/config/http_port) as far as
 I can tell now. squidclient has also been adapted to use SOCKS socket
 operations. Bazaar Branch available on launchpad at
-[](https://code.launchpad.net/~yadi/squid/socks) for anyone keen on
+<https://code.launchpad.net/~yadi/squid/socks> for anyone keen on
 testing.
 
 Outstanding Problem:

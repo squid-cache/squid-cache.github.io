@@ -57,7 +57,7 @@ release in parallel with the maturing
   - Further transparent interception improvements from Steven Wilton
 
 Packages of squid 2.7 source code are available at
-[](http://www.squid-cache.org/Versions/v2/2.7/)
+<http://www.squid-cache.org/Versions/v2/2.7/>
 
 # The Future
 

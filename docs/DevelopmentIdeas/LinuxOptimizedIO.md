@@ -24,10 +24,10 @@ implement them
 
 **Resources**:
 
-  - [](http://lwn.net/Articles/178199/)
+  - <http://lwn.net/Articles/178199/>
 
-  - [](http://lwn.net/Articles/179492/)
+  - <http://lwn.net/Articles/179492/>
 
-  - [](http://lwn.net/Articles/181169/)
+  - <http://lwn.net/Articles/181169/>
 
 **Discussion**

@@ -232,8 +232,8 @@ Result line sent back to Squid:
   - URL
     
       - The URL to be used instead of the one sent by the client. This
-        must be an absolute URL. ie starting with [](http://) or
-        [](ftp://) etc.
+        must be an absolute URL. ie starting with <http://> or
+        <ftp://> etc.
     
     :information_source:
     If no action is required leave status:URL area blank.
@@ -344,7 +344,7 @@ Result line sent back to Squid:
     
       - The URL to be used instead of the one sent by the client. If no
         action is required leave the URL field blank. The URL sent must
-        be an absolute URL. ie starting with [](http://) or [](ftp://)
+        be an absolute URL. ie starting with <http://> or <ftp://>
         etc.
 
 ## Redirections by origin servers

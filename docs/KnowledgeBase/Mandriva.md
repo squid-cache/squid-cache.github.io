@@ -11,7 +11,7 @@ published: false
 **Maintainer:** Luis Daniel Lucio Quiroz
 
 **Bug Reporting:**
-[](https://qa.mandriva.com/buglist.cgi?quicksearch=squid)
+<https://qa.mandriva.com/buglist.cgi?quicksearch=squid>
 
 ### Squid-3.1
 
@@ -20,7 +20,7 @@ published: false
 
 **Maintainer:** Luis Daniel Lucio Quiroz
 
-**Download:** [](http://kenobi.mandriva.com/~dlucio/)
+**Download:** <http://kenobi.mandriva.com/~dlucio/>
 
 Install Procedure:
 
@@ -33,7 +33,7 @@ Install Procedure:
 **Maintainer:** Luis Daniel Lucio Quiroz
 
 **Download:**
-[](http://www.rpmfind.net//linux/RPM/mandriva/2009.1/i586/media/main/release/squid-3.0-14mdv2009.1.i586.html)
+<http://www.rpmfind.net//linux/RPM/mandriva/2009.1/i586/media/main/release/squid-3.0-14mdv2009.1.i586.html>
 
 Install Procedure:
 

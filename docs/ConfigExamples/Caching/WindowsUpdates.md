@@ -374,4 +374,4 @@ assets site.
 
 ## An example of refresh_pattern that is being used at OpnSense
 
-[](https://github.com/opnsense/core/issues/1691#issuecomment-340276788)
+<https://github.com/opnsense/core/issues/1691#issuecomment-340276788>

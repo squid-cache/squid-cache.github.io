@@ -285,7 +285,7 @@ even redirect *wpad.dat* to *proxy.pac*:
 
     Redirect /wpad.dat http://example.com/proxy.pac
 
-If you do nothing more, a URL like [](http://www.example.com/wpad.dat)
+If you do nothing more, a URL like <http://www.example.com/wpad.dat>
 should bring up the script text in your browser window.
 
 Insert the following entry into your web server *mime.types* file. Maybe

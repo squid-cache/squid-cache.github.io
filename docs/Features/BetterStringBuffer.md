@@ -15,7 +15,7 @@ published: false
     [AmosJeffries](/AmosJeffries),
     [FrancescoChemolli](/FrancescoChemolli)
 
-  - **More**: [](https://code.launchpad.net/~kinkie/squid/stringng)
+  - **More**: <https://code.launchpad.net/~kinkie/squid/stringng>
 
 ## Details
 

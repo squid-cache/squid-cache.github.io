@@ -19,7 +19,7 @@ Developers are assumed to know and follow these simple rules (separate
 page)
 
 The current developer projects are hosted by
-[](http://code.launchpad.net/squid)
+<http://code.launchpad.net/squid>
 
 Older ones are hosted on devel.squid-cache.org. This service is built
 around the service provided by [SourceForge](http://sourceforge.net).

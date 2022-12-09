@@ -90,7 +90,7 @@ registering an entry in our [bug database](http://bugs.squid-cache.org/).
 # What Squid mailing lists are available?
 
 That question is best answered by the official mailing lists page at
-[](http://www.squid-cache.org/Support/mailing-lists.html)
+<http://www.squid-cache.org/Support/mailing-lists.html>
 
 # What other Squid-related documentation is available?
 

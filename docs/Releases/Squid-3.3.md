@@ -44,10 +44,10 @@ Basic new features in 3.3:
 The intention with this series is to improve the upgrade path and
 concentrate on further portability improvements. Squid-2.7 missing
 features are listed as regressions in
-[](http://www.squid-cache.org/Versions/v3/3.3/RELEASENOTES.html#s6)
+<http://www.squid-cache.org/Versions/v3/3.3/RELEASENOTES.html#s6>
 
 Packages of squid 3.3 source code are available at
-[](http://www.squid-cache.org/Versions/v3/3.3/)
+<http://www.squid-cache.org/Versions/v3/3.3/>
 
 ## Security Advisories
 

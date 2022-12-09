@@ -16,7 +16,7 @@ CentOS.
 **Maintainer:** unknown
 
 **Bug Reporting:**
-[](http://bugs.centos.org/search.php?category=squid&sortby=last_updated&hide_status_id=-2)
+<http://bugs.centos.org/search.php?category=squid&sortby=last_updated&hide_status_id=-2>
 
 **Eliezer**: 25/Apr/2017 - I have tested CentOS 7 RPMs for squid 3.5.25
 on a small scale and it seems to be stable enough for 200-300 users as a
@@ -24,7 +24,7 @@ forward proxy and basic features.
 
 ### NgTech CentOS/Fedora Copr hosted Repository
 
-[](https://copr.fedorainfracloud.org/coprs/elicro/Squid-Cache/)
+<https://copr.fedorainfracloud.org/coprs/elicro/Squid-Cache/>
 
 ### Stable Repository Package (like epel-release)
 
@@ -64,10 +64,10 @@ not essential for a basic and simple proxy.
     selinux enabled system.
 
   - src rpm files are at:
-    [](http://www1.ngtech.co.il/repo/centos/7/beta/SRPMS/)
+    <http://www1.ngtech.co.il/repo/centos/7/beta/SRPMS/>
 
   - binary RPMs can be found in the architecture specific folders at
-    [](http://www1.ngtech.co.il/repo/centos/7/beta/x86_64/)
+    <http://www1.ngtech.co.il/repo/centos/7/beta/x86_64/>
 
 <!-- end list -->
 
@@ -108,10 +108,10 @@ not essential for a basic and simple proxy.
     on selinux enabled system.
 
   - src rpm files are at:
-    [](http://www1.ngtech.co.il/repo/centos/$releasever/SRPMS/)
+    <http://www1.ngtech.co.il/repo/centos/$releasever/SRPMS/>
 
   - binary RPMs can be found in the architecture specific folders at
-    [](http://www1.ngtech.co.il/repo/centos/$releasever/)
+    <http://www1.ngtech.co.il/repo/centos/$releasever/>
 
 <!-- end list -->
 
@@ -158,7 +158,7 @@ loss in the transition from my old server to another.
   - The init.d script, I am have been working on it in my spare time.
 
   - src rpm files are at:
-    [](http://www1.ngtech.co.il/repo/centos/6/SRPMS/)
+    <http://www1.ngtech.co.il/repo/centos/6/SRPMS/>
 
 <!-- end list -->
 
@@ -202,7 +202,7 @@ Install Procedure:
     servers.
 
 at:
-[](http://software.opensuse.org/download.html?project=home%3Aairties%3Aserver&package=squid3)
+<http://software.opensuse.org/download.html?project=home%3Aairties%3Aserver&package=squid3>
 
     cd /etc/yum.repos.d/
     wget http://download.opensuse.org/repositories/home:airties:server/CentOS_CentOS-6/home:airties:server.repo
@@ -263,7 +263,7 @@ structure properly:
 # Repository Mirror Script
 
 A copy of
-[](https://gist.github.com/elico/333bff85f3df2889db7af2795f9d7898)
+<https://gist.github.com/elico/333bff85f3df2889db7af2795f9d7898>
 
 ``` highlight
 #!/usr/bin/env bash
@@ -327,7 +327,7 @@ Cern labs are mirroring
 [NgTech](/NgTech)
 repository for quite some time to:
 
-  - [](http://linuxsoft.cern.ch/mirror/www1.ngtech.co.il/repo/centos/7/)
+  - <http://linuxsoft.cern.ch/mirror/www1.ngtech.co.il/repo/centos/7/>
 
 [CategoryKnowledgeBase](/CategoryKnowledgeBase)
 [SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

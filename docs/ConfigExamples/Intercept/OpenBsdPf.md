@@ -30,7 +30,7 @@ routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 More on configuring Squid for OpenBSD can be found in the OpenBSD ports
 README file:
 
-  - [](http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/ports/www/squid/pkg/README-main)
+  - <http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/ports/www/squid/pkg/README-main>
 
 ## Squid Configuration
 

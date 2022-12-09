@@ -5,7 +5,7 @@ published: false
 Describe EliezerCroitoru/Certbot here.
 
 Link to certbot integration with squid:
-[](https://community.letsencrypt.org/t/squid-reverse-proxy-ssl/69625/6)
+<https://community.letsencrypt.org/t/squid-reverse-proxy-ssl/69625/6>
 
 Crontab example:
 

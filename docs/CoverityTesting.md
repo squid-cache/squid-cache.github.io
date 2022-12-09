@@ -22,6 +22,6 @@ please also add a brief introduction or a link to some Net resource
 detailing your background.
 
 You can then access the Squid analysis results page at address
-[](http://scan5.coverity.com:8080/)
+<http://scan5.coverity.com:8080/>
 
 Discuss this page using the "Discussion" link in the main menu

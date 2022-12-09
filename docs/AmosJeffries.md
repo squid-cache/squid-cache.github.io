@@ -16,7 +16,7 @@ off the [Translation
 Project](/Translations)
 a few months later.
 
-I run an IT Consulting business [](http://www.treenet.co.nz); Treehouse
+I run an IT Consulting business <http://www.treenet.co.nz>; Treehouse
 Networks Ltd. in New Zealand. Which provides customers from around the
 world with a web hosting, email and content delivery network (CDN) built
 with Squid.
@@ -24,7 +24,7 @@ with Squid.
 A few bits and pieces about Squid including
 [PayPal](/PayPal)
 donations to me can be found at
-[](http://www.treenet.co.nz/projects/squid/)
+<http://www.treenet.co.nz/projects/squid/>
 
 Here is an *auto-generated* list of my current public Squid projects:
 

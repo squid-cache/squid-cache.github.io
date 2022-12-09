@@ -17,12 +17,12 @@ end server systems are to be documented with a manual page.
 ## Documentation format
 
 Use simplified ngroff syntax. see
-[](http://www.fnal.gov/docs/products/ups/ReferenceManual/html/manpages.html)
+<http://www.fnal.gov/docs/products/ups/ReferenceManual/html/manpages.html>
 for ngroff format details.
 
 Some additional markup is added for integration with **po4a**
 translation automation. see
-[](http://po4a.alioth.debian.org/man/man3pm/Locale::Po4a::Man.3pm.php)
+<http://po4a.alioth.debian.org/man/man3pm/Locale::Po4a::Man.3pm.php>
 for details on specific markup and limits imposed by those tools.
 
 Each **.SH** section is preceded by an *empty* line. In ngroff syntax
@@ -591,8 +591,8 @@ number of installed files which have no manual at all.
 | src/security/cert_validators/fake/security_fake_certverify          | 8                                                                       | :heavy_check_mark: Done.                        |
 | src/squid                                                              | 8                                                                       | :heavy_check_mark: Done.                        |
 | src/squid.conf                                                         | :x: | Missing. Convert squid.conf.documented                                                               |
-| src/squid.conf.default                                                 | N/A                                                                     | [](http://www.squid-cache.org/Doc/config/) instead                                                   |
-| src/squid.conf.documented                                              | N/A                                                                     | [](http://www.squid-cache.org/Doc/config/) instead                                                   |
+| src/squid.conf.default                                                 | N/A                                                                     | <http://www.squid-cache.org/Doc/config/> instead                                                   |
+| src/squid.conf.documented                                              | N/A                                                                     | <http://www.squid-cache.org/Doc/config/> instead                                                   |
 | src/store/id_rewriters/file/storeid_file_rewrite                    | 8                                                                       | :heavy_check_mark: Done.                        |
 | src/unlinkd                                                            | :x: | Missing                                                                                              |
 | tools/cachemgr.cgi                                                     | 8                                                                       | :heavy_check_mark: Done.                        |

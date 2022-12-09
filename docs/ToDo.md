@@ -43,7 +43,7 @@ squid.
 
 This TODO list is no longer accurate. For more updated Squid plans see:
 
-  - [](http://wiki.squid-cache.org/RoadMap/Squid3)
+  - <http://wiki.squid-cache.org/RoadMap/Squid3>
 
 <!-- end list -->
 

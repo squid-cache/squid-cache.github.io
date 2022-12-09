@@ -16,7 +16,7 @@ published: false
     everyone
 
   - **More**: Current work at
-    [](http://devel.squid-cache.org/changesets/squid/s27_adri.html)
+    <http://devel.squid-cache.org/changesets/squid/s27_adri.html>
 
 ## Optimize the easy parts
 

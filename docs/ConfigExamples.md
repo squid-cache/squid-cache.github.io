@@ -17,13 +17,13 @@ squid source code to provide the most up to date information on squid
 options.
 
 For Squid-4 the Manual is at
-[](http://www.squid-cache.org/Versions/v4/cfgman/)
+<http://www.squid-cache.org/Versions/v4/cfgman/>
 
 For Squid-5 the Manual is at
-[](http://www.squid-cache.org/Versions/v5/cfgman/)
+<http://www.squid-cache.org/Versions/v5/cfgman/>
 
 A combined Squid Manual can be found at
-[](http://www.squid-cache.org/Doc/config/) with details on each option
+<http://www.squid-cache.org/Doc/config/> with details on each option
 supported in Squid, and what differences can be encountered between
 major Squid releases.
 
@@ -208,7 +208,7 @@ ask for them...
 
 # External configuration examples
 
-\* [](http://freshmeat.net/articles/view/1433/) - Configuring a
+\* <http://freshmeat.net/articles/view/1433/> - Configuring a
 Transparent Proxy/Webcache in a Bridge using Squid and ebtables (Jan
 1st, 2005)
 

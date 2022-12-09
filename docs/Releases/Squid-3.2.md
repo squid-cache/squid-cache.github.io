@@ -88,7 +88,7 @@ Basic new features in 3.2:
   - IPv6 support for TCP split-stack
 
 Packages of squid 3.2 source code are available at
-[](http://www.squid-cache.org/Versions/v3/3.2/)
+<http://www.squid-cache.org/Versions/v3/3.2/>
 
 ## Security Advisories
 

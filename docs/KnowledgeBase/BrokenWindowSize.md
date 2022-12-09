@@ -92,10 +92,10 @@ sources.
 
 **References**
 
-  - [](http://www.faqs.org/rfcs/rfc1323.html) - TCP Extensions for High
+  - <http://www.faqs.org/rfcs/rfc1323.html> - TCP Extensions for High
     Performance
 
-  - [](http://lwn.net/Articles/92727/) - TCP window scaling and broken
+  - <http://lwn.net/Articles/92727/> - TCP window scaling and broken
     routers
 
 [CategoryKnowledgeBase](/CategoryKnowledgeBase)

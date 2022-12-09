@@ -139,7 +139,7 @@ the third to 3129, and the fourth back to 3127 (cycling through the
 ports on an even distribution).
 
 The full thread on netfilter-devel where this was developed is here:
-[](http://marc.info/?l=netfilter-devel&m=127483388828088&w=2)
+<http://marc.info/?l=netfilter-devel&m=127483388828088&w=2>
 
 (watch the wrap, iptables rules are single lines)
 

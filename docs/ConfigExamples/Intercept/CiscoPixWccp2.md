@@ -23,7 +23,7 @@ version 7.2(1) and Squid-2.6.
 
 You can find more information about configuring this and how the PIX
 handles WCCP at
-[](http://www.cisco.com/en/US/customer/products/ps6120/products_configuration_guide_chapter09186a0080636f31.html#wp1094445)
+<http://www.cisco.com/en/US/customer/products/ps6120/products_configuration_guide_chapter09186a0080636f31.html#wp1094445>
 
 ## Cisco PIX
 

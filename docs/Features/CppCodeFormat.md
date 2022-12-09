@@ -72,6 +72,6 @@ formatter again. It will continue past and locate the next problem.
 
 ## astyle
 
-  - [](http://astyle.sourceforge.net/)
+  - <http://astyle.sourceforge.net/>
 
 [CategoryFeature](/CategoryFeature)

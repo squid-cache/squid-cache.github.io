@@ -115,26 +115,26 @@ Notes:
 | ------ | ---------- | ------------- | --------------------------------------------------------------------------------------- |
 | **ID** | **Date**   | **Location**  | **Minutes**                                                                             |
 | \#22   | 2017-02-24 | IRC           | circulated                                                                              |
-| \#21   | 2016-10-28 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2016/2016-10-28_board-meeting-21.html) |
-| \#20   | 2016-09-16 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2016/2016-09-16_board-meeting-20.html) |
-| \#19   | 2016-07-29 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2016/2016-07-29_board-meeting-19.html) |
-| \#18   | 2016-02-29 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2016/2016-02-29_board-meeting-18.html) |
-| \#17   | 2015-05-15 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2015/2015-05-15_board-meeting-17.html) |
-| \#16   | 2015-03-06 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2015/2015-03-06_board-meeting-16.html) |
-| \#15   | 2014-09-20 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2014/2014-09-20_board-meeting-15.html) |
-| \#14   | 2014-07-12 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2014/2014-07-12_board-meeting-14.html) |
-| \#13   | 2014-06-08 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2014/2014-06-08_board-meeting-13.html) |
-| \#12   | 2014-05-09 | IRC and Skype | [](http://www.squid-cache.org/Foundation/archive/2014/2014-05-09_board-meeting-12.html) |
-| \#11   | 2014-01-11 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2014/2014-01-11_board-meeting-11.html) |
-| \#10   | 2013-10-08 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2013/2013-10-08_board-meeting-10.html) |
-| \#9    | 2013-09-01 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2013/2013-09-01_board-meeting-9.html)  |
-| \#8    | 2013-07-15 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2013/2013-07-15_board-meeting-8.html)  |
-| \#7    | 2013-05-26 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2013/2013-05-26_board-meeting-7.html)  |
-| \#6    | 2013-04-28 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2013/2013-04-28_board-meeting-6.html)  |
-| \#5    | 2012-07-26 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2012/2012-07-26_board-meeting-5.html)  |
-| \#4    | 2012-06-16 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2012/2012-06-16_board-meeting-4.html)  |
-| \#3    | 2012-05-17 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2012/2012-05-17_board-meeting-3.html)  |
-| \#2    | 2012-03-20 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2012/2012-03-20_board-meeting-2.html)  |
-| \#1    | 2012-02-20 | IRC           | [](http://www.squid-cache.org/Foundation/archive/2012/2012-02-20_board-meeting-1.html)  |
+| \#21   | 2016-10-28 | IRC           | <http://www.squid-cache.org/Foundation/archive/2016/2016-10-28_board-meeting-21.html> |
+| \#20   | 2016-09-16 | IRC           | <http://www.squid-cache.org/Foundation/archive/2016/2016-09-16_board-meeting-20.html> |
+| \#19   | 2016-07-29 | IRC           | <http://www.squid-cache.org/Foundation/archive/2016/2016-07-29_board-meeting-19.html> |
+| \#18   | 2016-02-29 | IRC           | <http://www.squid-cache.org/Foundation/archive/2016/2016-02-29_board-meeting-18.html> |
+| \#17   | 2015-05-15 | IRC           | <http://www.squid-cache.org/Foundation/archive/2015/2015-05-15_board-meeting-17.html> |
+| \#16   | 2015-03-06 | IRC           | <http://www.squid-cache.org/Foundation/archive/2015/2015-03-06_board-meeting-16.html> |
+| \#15   | 2014-09-20 | IRC           | <http://www.squid-cache.org/Foundation/archive/2014/2014-09-20_board-meeting-15.html> |
+| \#14   | 2014-07-12 | IRC           | <http://www.squid-cache.org/Foundation/archive/2014/2014-07-12_board-meeting-14.html> |
+| \#13   | 2014-06-08 | IRC           | <http://www.squid-cache.org/Foundation/archive/2014/2014-06-08_board-meeting-13.html> |
+| \#12   | 2014-05-09 | IRC and Skype | <http://www.squid-cache.org/Foundation/archive/2014/2014-05-09_board-meeting-12.html> |
+| \#11   | 2014-01-11 | IRC           | <http://www.squid-cache.org/Foundation/archive/2014/2014-01-11_board-meeting-11.html> |
+| \#10   | 2013-10-08 | IRC           | <http://www.squid-cache.org/Foundation/archive/2013/2013-10-08_board-meeting-10.html> |
+| \#9    | 2013-09-01 | IRC           | <http://www.squid-cache.org/Foundation/archive/2013/2013-09-01_board-meeting-9.html>  |
+| \#8    | 2013-07-15 | IRC           | <http://www.squid-cache.org/Foundation/archive/2013/2013-07-15_board-meeting-8.html>  |
+| \#7    | 2013-05-26 | IRC           | <http://www.squid-cache.org/Foundation/archive/2013/2013-05-26_board-meeting-7.html>  |
+| \#6    | 2013-04-28 | IRC           | <http://www.squid-cache.org/Foundation/archive/2013/2013-04-28_board-meeting-6.html>  |
+| \#5    | 2012-07-26 | IRC           | <http://www.squid-cache.org/Foundation/archive/2012/2012-07-26_board-meeting-5.html>  |
+| \#4    | 2012-06-16 | IRC           | <http://www.squid-cache.org/Foundation/archive/2012/2012-06-16_board-meeting-4.html>  |
+| \#3    | 2012-05-17 | IRC           | <http://www.squid-cache.org/Foundation/archive/2012/2012-05-17_board-meeting-3.html>  |
+| \#2    | 2012-03-20 | IRC           | <http://www.squid-cache.org/Foundation/archive/2012/2012-03-20_board-meeting-2.html>  |
+| \#1    | 2012-02-20 | IRC           | <http://www.squid-cache.org/Foundation/archive/2012/2012-02-20_board-meeting-1.html>  |
 
 Discuss this page using the "Discussion" link in the main menu

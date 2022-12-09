@@ -111,7 +111,7 @@ it in time:
   - commloops separation - OK
 
 Packages of squid 2.6 source code are available at
-[](http://www.squid-cache.org/Versions/v2/2.6/)
+<http://www.squid-cache.org/Versions/v2/2.6/>
 
 # Opinions on if there should be a release
 

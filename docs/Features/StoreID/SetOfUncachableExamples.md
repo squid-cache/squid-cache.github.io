@@ -5,7 +5,7 @@ published: false
 This article will be on couple request and responses that are needed to
 be handled but looks weird with a basic look.
 
-which comes from: [](http://www.packtpub.com/)
+which comes from: <http://www.packtpub.com/>
 
     HTTP/1.1 200 OK
     Server: Apache

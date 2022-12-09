@@ -12,7 +12,7 @@ Packages available for Squid on multiple architectures.
 
 ### Squid-5
 
-Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid)
+Bug Reports: <http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid>
 
 > :information_source:
     Debian Bookworm (11)
@@ -25,7 +25,7 @@ Install Procedure:
 
 ### Squid-4
 
-Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid)
+Bug Reports: <http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid>
 
 > :information_source:
     Debian Buster (10)
@@ -41,7 +41,7 @@ Install Procedure:
 
 #### Squid-3.5
 
-Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid)
+Bug Reports: <http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid>
 
 > :information_source:
     Debian Stretch
@@ -54,7 +54,7 @@ Install Procedure:
 
 #### Squid-3.4 / Squid-3.1
 
-Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3)
+Bug Reports: <http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid3>
 
 > :information_source:
     Debian Jesse or older.
@@ -67,7 +67,7 @@ Install Procedure:
 
 #### Squid-2.7
 
-Bug Reports: [](http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid)
+Bug Reports: <http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=squid>
 
 > :information_source:
     Debian Jesse or older.
@@ -197,7 +197,7 @@ discover the dependency package and install it.
 The init.d script is part of the official Debain/Ubuntu packaging. It
 does not come with Squid directly. So you will need to download a copy
 from
-[](https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc)
+<https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc>
 to /etc/init.d/squid
 
 ## Troubleshooting

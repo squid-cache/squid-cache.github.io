@@ -23,7 +23,7 @@ support for HTTP2 so there for
 The example service and the
 sources([GoLang](/GoLang)
 and python ontop of docker compose) can be seen at:
-[](https://github.com/elico/yt-classification-service-example)
+<https://github.com/elico/yt-classification-service-example>
 
 Technically speaking what you will need to define in the proxy or
 appliance if it can decrypt SSL is a policy which will include the
@@ -56,7 +56,7 @@ If you are familiar with regex and bash enough you would be able to
 learn the relevant patterns from another script/code I wrote for the
 [CheckPoint](/CheckPoint)
 embedded NGFW 1500 series which is based on R80.20 at:
-[](https://github.com/elico/checkpoint-vid-filtering-managment)
+<https://github.com/elico/checkpoint-vid-filtering-managment>
 
 Probably the relevant REGEX for this purpose are:
 
@@ -81,4 +81,4 @@ whitelist and expect everyone to agree with this.
 If you or anyone wants to implement squid with ssl bump and have a
 service that does the same you might want to look at the sources this
 ruby service I wrote at:
-[](https://github.com/elico/squid-external-matchers/blob/master/youtube-id-matcher.rb)
+<https://github.com/elico/squid-external-matchers/blob/master/youtube-id-matcher.rb>

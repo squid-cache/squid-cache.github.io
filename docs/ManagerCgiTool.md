@@ -22,7 +22,7 @@ to re-read its configuration files.
 When you're done configuring your web server, you'll connect to the
 cache manager with a web browser, using a URL such as:
 
-*[](http://www.example.com/cgi-bin/cachemgr.cgi)*
+*<http://www.example.com/cgi-bin/cachemgr.cgi>*
 
 ### for CERN httpd 3.0
 
@@ -150,7 +150,7 @@ the cache manager. If you already have some Virtual Server you wish to
 use to host the Cache Manager, just add a new CGI support module to it.
 
 Create a new virtual server, and set it to host
-[](http://www.example.com/). Add to it at least the following modules:
+<http://www.example.com/>. Add to it at least the following modules:
 
   - Content Types
 

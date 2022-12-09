@@ -12,7 +12,7 @@ Packages available for Squid on multiple architectures.
 
 ### Squid-4
 
-Bug Reports: [](https://bugs.launchpad.net/ubuntu/+source/squid)
+Bug Reports: <https://bugs.launchpad.net/ubuntu/+source/squid>
 
 > :information_source:
     Ubuntu 18.10 (Cosmic) or newer.
@@ -25,7 +25,7 @@ Install Procedure:
 
 ### Squid-3.5
 
-Bug Reports: [](https://bugs.launchpad.net/ubuntu/+source/squid)
+Bug Reports: <https://bugs.launchpad.net/ubuntu/+source/squid>
 
 > :information_source:
     Ubuntu 18.04 (Bionic) or older.
@@ -98,7 +98,7 @@ discover the dependency package and install it.
 The init.d script is part of the official Debain/Ubuntu packaging. It
 does not come with Squid directly. So you will need to download a copy
 from
-[](https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc)
+<https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc>
 to /etc/init.d/squid
 
 ## Compile on A basic Ubuntu Server

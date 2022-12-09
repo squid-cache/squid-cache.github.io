@@ -61,7 +61,7 @@ outlined by *Mark Elsen*:
   compatible. SSL-Bump generates a fake server certificate to match
   what the server presents. If URL-rewrite alters what sever is being
   contacted the client will receive wrong certificates. OR, attempting
-  to re-write a HTTPS URL to [](http:://) - the server will not
+  to re-write a HTTPS URL to <http:://> - the server will not
   present any SSL certificate. Both of these will result in user
   visible errors.
 

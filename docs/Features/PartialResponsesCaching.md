@@ -21,7 +21,7 @@ published: false
     [1337](https://bugs.squid-cache.org/show_bug.cgi?id=1337)
 
   - **More**:
-    [](http://tools.ietf.org/html/draft-ietf-httpbis-p5-range-26)
+    <http://tools.ietf.org/html/draft-ietf-httpbis-p5-range-26>
 
 # Details
 

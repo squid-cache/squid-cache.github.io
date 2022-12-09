@@ -13,7 +13,7 @@ loaded from that template.
 and
 [AmosJeffries](/AmosJeffries)
 have developed a javascript based tool using the MGR_INDEX interface
-which can be found at [](https://github.com/yadij/cachemgr.js)
+which can be found at <https://github.com/yadij/cachemgr.js>
 
 It is worth noting that prettiness of the reporting tool GUI is affected
 by the report format produced by your Squid. Most existing Squids have

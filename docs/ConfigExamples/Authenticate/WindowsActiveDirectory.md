@@ -163,7 +163,7 @@ install some packages that msktutil requires. On Debian install
 `libsasl2-modules-gssapi-mit libsasl2-modules`
 
 Install msktutil - you can find msktutil here
-"[](http://fuhm.net/software/msktutil/releases/)"
+"<http://fuhm.net/software/msktutil/releases/>"
 
 Initiate a kerberos session to the server with administrator permissions
 to add objects to AD, update the username where necessary. msktutil will

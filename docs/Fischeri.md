@@ -167,7 +167,7 @@ Beta testing:
     
     |        |                                                         |
     | ------ | ------------------------------------------------------- |
-    | Ubuntu | [](https://launchpad.net/~yadi/+archive/ppa) (Maverick) |
+    | Ubuntu | <https://launchpad.net/~yadi/+archive/ppa> (Maverick) |
     
 
 ## Build-your-own package

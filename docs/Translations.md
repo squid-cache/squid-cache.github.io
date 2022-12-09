@@ -10,7 +10,7 @@ published: false
 
   - **Version**: 2.5+ (langpacks), 3.1+ (auto-negotiate, CSS)
 
-  - **Download**: [](http://www.squid-cache.org/Versions/langpack/)
+  - **Download**: <http://www.squid-cache.org/Versions/langpack/>
 
   - **Coordinator**:
     [AmosJeffries](/AmosJeffries).

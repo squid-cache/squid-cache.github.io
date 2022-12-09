@@ -17,7 +17,7 @@ published: false
   - **Developer**:
 
   - **More**: Quick mailing list discussion.
-    [](http://www.squid-cache.org/mail-archive/squid-users/200803/0206.html)
+    <http://www.squid-cache.org/mail-archive/squid-users/200803/0206.html>
 
 ## Details
 

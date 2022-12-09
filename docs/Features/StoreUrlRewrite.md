@@ -19,11 +19,11 @@ published: false
     [AdrianChadd](/AdrianChadd).
 
   - **More**: Background information about Google Maps content -
-    [](http://squidproxy.wordpress.com/2007/11/16/how-cachable-is-google-part-1-google-maps/)
+    <http://squidproxy.wordpress.com/2007/11/16/how-cachable-is-google-part-1-google-maps/>
     (Disclaimer: No, I don't work for Google. No, never have.)
 
   - **Sponsored by**: Xenion Communications -
-    [](http://www.xenion.com.au/)
+    <http://www.xenion.com.au/>
 
 ## Details
 
@@ -282,7 +282,7 @@ Result line sent back to Squid:
     
       - The URL to be used instead of the one sent by the client. If no
         action is required leave the URL field blank. The URL sent must
-        be an absolute URL. ie starting with [](http://) or [](ftp://)
+        be an absolute URL. ie starting with <http://> or <ftp://>
         etc.
 
 ## Testing

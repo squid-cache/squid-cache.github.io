@@ -48,13 +48,13 @@ Windows Active Directory Group Policy.
 
 ## Other Articles and Information on WPAD
 
-  - [](http://homepages.tesco.net/J.deBoynePollard/FGA/web-browser-auto-proxy-configuration.html)
+  - <http://homepages.tesco.net/J.deBoynePollard/FGA/web-browser-auto-proxy-configuration.html>
 
-  - [](http://www.wlug.org.nz/WPAD)
+  - <http://www.wlug.org.nz/WPAD>
 
-  - [](http://tools.ietf.org/wg/wrec/draft-ietf-wrec-wpad/)
+  - <http://tools.ietf.org/wg/wrec/draft-ietf-wrec-wpad/>
 
-  - [](http://blogs.msdn.com/wndp/articles/IPV6_PAC_Extensions_v0_9.aspx)
+  - <http://blogs.msdn.com/wndp/articles/IPV6_PAC_Extensions_v0_9.aspx>
 
 ## WPAD-like functionality in other protocols
 

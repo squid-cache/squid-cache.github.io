@@ -105,9 +105,9 @@ done.
 
   - Fix kqueue bugs once and for all (ie, delete events for closed FDs)
     
-      - [](http://bugs.squid-cache.org/show_bug.cgi?id=1991)
+      - <http://bugs.squid-cache.org/show_bug.cgi?id=1991>
     
-      - [](http://bugs.squid-cache.org/show_bug.cgi?id=2816)
+      - <http://bugs.squid-cache.org/show_bug.cgi?id=2816>
     
       - 
   - Language and Translation

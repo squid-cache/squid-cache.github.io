@@ -44,7 +44,7 @@ From STABLE 8
   - cachemgr.cgi Sub-Actions
 
 Packages of squid 3.0 source code are available at
-[](http://www.squid-cache.org/Versions/v3/3.0/)
+<http://www.squid-cache.org/Versions/v3/3.0/>
 
 ## Split Choice
 

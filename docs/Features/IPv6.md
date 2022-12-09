@@ -11,7 +11,7 @@ published: false
   - **Developer**:
     [AmosJeffries](/AmosJeffries)
 
-  - **More**: [](http://www.squid-cache.org/Versions/v3/3.1/)
+  - **More**: <http://www.squid-cache.org/Versions/v3/3.1/>
 
 ## How do I enable IPv6?
 
@@ -354,7 +354,7 @@ the helper.
 
 # Other Resources
 
-\[[](http://www.braintrust.co.nz/ipv6wwwtest/)\] For content providers
+\[<http://www.braintrust.co.nz/ipv6wwwtest/>\] For content providers
 Braintrust Ltd. provide a test script to check what happens when you
 turn on AAAA records for your website. If you have any worries this can
 be run and show how many if any of your clients and visitors might have

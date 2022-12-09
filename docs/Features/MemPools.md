@@ -15,9 +15,9 @@ published: false
 
   - **More**:
     
-      - [](http://www.squid-cache.org/Doc/code/namespaceMem.html)
+      - <http://www.squid-cache.org/Doc/code/namespaceMem.html>
     
-      - [](http://www.squid-cache.org/Doc/code/group__MemPoolsAPI.html)
+      - <http://www.squid-cache.org/Doc/code/group__MemPoolsAPI.html>
 
 # Details
 
@@ -42,8 +42,8 @@ want to link Squid against an alternaive malloc implementation:
 
 ## Public API
 
-See [](http://www.squid-cache.org/Doc/code/namespaceMem.html) and
-[](http://www.squid-cache.org/Doc/code/group__MemPoolsAPI.html) for the
+See <http://www.squid-cache.org/Doc/code/namespaceMem.html> and
+<http://www.squid-cache.org/Doc/code/group__MemPoolsAPI.html> for the
 public API definitions.
 
 ### MEMPROXY_CLASS Macro

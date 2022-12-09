@@ -22,7 +22,7 @@ published: false
 
   - **More**:
     
-      - [](http://www.squid-cache.org/~amosjeffries/patches/act-as-origin.patch)
+      - <http://www.squid-cache.org/~amosjeffries/patches/act-as-origin.patch>
         (initial portage, may not work)
 
 # Details

@@ -9,7 +9,7 @@ published: false
 **Maintainer:** Eray Aslan
 
 **Bug Reporting:**
-[](http://bugs.gentoo.org/buglist.cgi?quicksearch=squid-)
+<http://bugs.gentoo.org/buglist.cgi?quicksearch=squid->
 
 Install Procedure (for the latest version in your selected portage
 tree):

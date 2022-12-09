@@ -74,10 +74,10 @@ Features removed in 3.5:
 The intention with this series is to improve performance and HTTP
 support. Some remaining Squid-2.7 missing features are listed as
 regressions in
-[](http://www.squid-cache.org/Versions/v3/3.5/RELEASENOTES.html#ss5.1)
+<http://www.squid-cache.org/Versions/v3/3.5/RELEASENOTES.html#ss5.1>
 
 Packages of what will become squid 3.5 source code are available at
-[](http://www.squid-cache.org/Versions/v3/3.5/)
+<http://www.squid-cache.org/Versions/v3/3.5/>
 
 ## Security Advisories
 

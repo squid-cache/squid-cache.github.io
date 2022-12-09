@@ -10,7 +10,7 @@ published: false
     [AmosJeffries](/AmosJeffries)
 
   - **More**:
-    [](http://www.balabit.com/downloads/files/tproxy/README.txt)
+    <http://www.balabit.com/downloads/files/tproxy/README.txt>
 
 ## Details
 
@@ -109,7 +109,7 @@ squid.conf settings
 
 So far we have this:
 
-  - [](https://lists.balabit.hu/pipermail/tproxy/2008-June/000853.html)
+  - <https://lists.balabit.hu/pipermail/tproxy/2008-June/000853.html>
 
 ## Routing configuration
 
@@ -491,7 +491,7 @@ Ties a particular client to a particular cache
 When using TPROXY the second method must be used. The problem with the
 first method is this sequence of events which starts to occur:
 
-Say a client wants to access [](http://some-large-site), their PC
+Say a client wants to access <http://some-large-site>, their PC
 resolves the address and gets x.x.x.1
 
 1.  GET request goes off to the network, Cisco sees it and hashes the
@@ -538,7 +538,7 @@ to the net operations is needs for TPROXY.
     semodule -i squidtproxy.pp
 
 Alternatively you can download and install a precomposed policy module
-from [](http://www.henriknordstrom.net/code/squidtproxy.te)
+from <http://www.henriknordstrom.net/code/squidtproxy.te>
 
     wget http://www.henriknordstrom.net/code/squidtproxy.te
     checkmodule -M -m -o squidtproxy.mod squidtproxy.te
@@ -550,15 +550,15 @@ from [](http://www.henriknordstrom.net/code/squidtproxy.te)
 
   - Older config how-to from before the kernel and iptables bundles were
     available...
-    [](http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS)
+    <http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS>
 
   - Shorewall Firewall Configuration
-    [](http://www1.shorewall.net/Shorewall_Squid_Usage.html#TPROXY)
+    <http://www1.shorewall.net/Shorewall_Squid_Usage.html#TPROXY>
 
 ## spoof_client_ip config directive (exists only from Squid-3.4)
 
   - Squid-Cache allows tproxy spoof control configuration directive:
-    [](http://www.squid-cache.org/Doc/config/spoof_client_ip/) This
+    <http://www.squid-cache.org/Doc/config/spoof_client_ip/> This
     allows to intercept traffic using tproxy but use the same concept of
     intercept\\transparent proxy for outgoing traffic and to decide
     whether to spoof or not specific clients src addresses or to use the

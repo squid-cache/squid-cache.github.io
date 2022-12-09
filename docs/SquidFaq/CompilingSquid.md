@@ -7,7 +7,7 @@ FaqSection: installation
 
 That depends on the version of Squid you have chosen to try. The list of
 current versions released can be found at
-[](http://www.squid-cache.org/Versions/). Each version has a page of
+<http://www.squid-cache.org/Versions/>. Each version has a page of
 release bundles. Usually you want the release bundle that is listed as
 the most current.
 

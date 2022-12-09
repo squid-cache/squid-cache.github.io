@@ -70,6 +70,6 @@ repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
 
 ## External resources
 
-  - [](http://www.innovation.ch/personal/ronald/ntlm.html)
+  - <http://www.innovation.ch/personal/ronald/ntlm.html>
 
-  - [](http://davenport.sourceforge.net/ntlm.html)
+  - <http://davenport.sourceforge.net/ntlm.html>

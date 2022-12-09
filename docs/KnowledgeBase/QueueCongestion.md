@@ -44,7 +44,7 @@ or you have run out of CPU cycles to handle it.
     underneath Squid. The mail below shows an interesting
     counter-result, but should be taken with care.
 
-[](http://www.squid-cache.org/mail-archive/squid-users/200603/0903.html)
+<http://www.squid-cache.org/mail-archive/squid-users/200603/0903.html>
 
     Ons 2006-03-29 klockan 18:13 -0300 skrev Rodrigo A B Freire:
     

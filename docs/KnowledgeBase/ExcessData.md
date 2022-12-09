@@ -6,7 +6,7 @@ published: false
 
 **Symptoms**
 
-  - httpReadReply: Excess data from "GET [](http://example.com)"
+  - httpReadReply: Excess data from "GET <http://example.com>"
 
 **Explanation**
 

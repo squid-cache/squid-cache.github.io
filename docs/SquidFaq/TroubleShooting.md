@@ -12,7 +12,7 @@ Your first point of troubleshooting should be to test with a newer
 *supported* release and resolve any remaining issues with that install.
 
 Current releases can be retrieved from
-[](http://www.squid-cache.org/Versions) or your operating system
+<http://www.squid-cache.org/Versions> or your operating system
 distributor. How to do this is outlined in the system-specific help
 pages.
 

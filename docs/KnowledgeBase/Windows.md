@@ -54,21 +54,21 @@ Packages available for Squid on multiple environments.
 Maintainer: Rafael Akchurin, [Diladele B.V.](http://www.diladele.com/)
 
 Bug Reporting: (about the installer only)
-[](https://github.com/diladele/squid-windows/issues)
+<https://github.com/diladele/squid-windows/issues>
 
 MSI installer packages for Windows are at:
 
-  - 64-bit: [](http://squid.diladele.com/)
+  - 64-bit: <http://squid.diladele.com/>
 
 ### Squid-3.3
 
-Bug Reporting: see [](https://cygwin.com/problems.html)
+Bug Reporting: see <https://cygwin.com/problems.html>
 
 Binary packages for the Cygwin environment on Windows are at:
 
-  - 32-bit: [](https://cygwin.com/packages/x86/squid/)
+  - 32-bit: <https://cygwin.com/packages/x86/squid/>
 
-  - 64-bit: [](https://cygwin.com/packages/x86_64/squid/)
+  - 64-bit: <https://cygwin.com/packages/x86_64/squid/>
 
 # Installing Squid
 
@@ -451,7 +451,7 @@ changes. As this is spare-time work progress is slow.
     **The native build:**
 
 Requires the latest packages from
-[](http://sourceforge.net/projects/mingw-w64/) with GCC 4.9 series
+<http://sourceforge.net/projects/mingw-w64/> with GCC 4.9 series
 compiler.
 
     sh ./configure \
@@ -495,7 +495,7 @@ As of
     with the **-N** command line option.
 
 There also appears to be some work done by Joe Pelaez Jorge
-([](https://code.launchpad.net/~joelpelaez/squid/win32)).
+(<https://code.launchpad.net/~joelpelaez/squid/win32>).
 
 ## Visual Studio
 

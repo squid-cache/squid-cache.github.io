@@ -47,6 +47,6 @@ modifications. Please read the article for further information.
     [https://support.microsoft.com/en-sg/help/271361](https://support.microsoft.com/en-sg/help/271361/how-to-disable-automatic-proxy-caching-in-internet-explorer)
 
   - Microsoft Tech Note article:
-    [](http://support.microsoft.com/?scid=kb%3Ben-us%3B271361&x=14&y=15)
+    <http://support.microsoft.com/?scid=kb%3Ben-us%3B271361&x=14&y=15>
 
 [CategoryTechnology](/CategoryTechnology)

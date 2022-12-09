@@ -13,7 +13,7 @@ It is intended as a local personal information manager.
 
   - if you don't already have Python installed (Linux systems often have
     it by default, Mac OS X also, Windows usually needs manual
-    installation), get it from [](http://python.org/)
+    installation), get it from <http://python.org/>
 
   - download the moin distribution archive from
     [MoinMoinDownload](http://moinmo.in/MoinMoinDownload)
@@ -34,7 +34,7 @@ unpack the underlay pages:
 
   - `./wikiserver.py` (or click on `wikiserver.py`)
 
-  - now a fresh moin wiki will run on [](http://localhost:8080/)
+  - now a fresh moin wiki will run on <http://localhost:8080/>
     :smile:
 
   - you can terminate the wiki server either by using Ctrl-C or closing

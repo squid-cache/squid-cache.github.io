@@ -17,10 +17,10 @@ This email needs to include:
 
   - The URL you are providing for mirror
     
-      - For FTP package mirrors the [](ftp://) URL and whether you
-        provide an [](http://) alternative URL as well.
+      - For FTP package mirrors the <ftp://> URL and whether you
+        provide an <http://> alternative URL as well.
     
-      - For HTTP package mirrors the [](http://) URL.
+      - For HTTP package mirrors the <http://> URL.
     
       - For website mirrors the FQDN for the mirror server or proxy
 

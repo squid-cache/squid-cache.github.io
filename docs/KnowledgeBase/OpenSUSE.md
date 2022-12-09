@@ -9,14 +9,14 @@ published: false
 **Maintainer:** appears to be Christian Wittmer
 
 **Bug Reporting:**
-[](https://bugzilla.novell.com/buglist.cgi?quicksearch=squid)
+<https://bugzilla.novell.com/buglist.cgi?quicksearch=squid>
 
 **Latest Package:**
-[](https://build.opensuse.org/package/show/server:proxy/squid)
+<https://build.opensuse.org/package/show/server:proxy/squid>
 
 ### Squid-3.5
 
-[](https://software.opensuse.org/package/squid)
+<https://software.opensuse.org/package/squid>
 
 Install Procedure:
 

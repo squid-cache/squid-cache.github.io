@@ -73,7 +73,7 @@ regular configuration:
 
 |                                                                        |                                                                                                                      |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| :information_source: | iptables 1.4.3 is now released and has support integrated. [](http://www.netfilter.org/projects/iptables/index.html) |
+| :information_source: | iptables 1.4.3 is now released and has support integrated. <http://www.netfilter.org/projects/iptables/index.html> |
 
   - configure the Makefile for iptables:
 

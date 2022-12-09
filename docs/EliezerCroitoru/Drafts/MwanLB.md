@@ -314,7 +314,7 @@ echo "$THREE,3" >> marks_stats.csv
 
   - it brings the problem of "packet by packet" routing systems.
 
-[](http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89aef8921bfbac22f00e04f8450f6e447db13e42)
+<http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=89aef8921bfbac22f00e04f8450f6e447db13e42>
 
   - Quote from the commit
 
@@ -346,7 +346,7 @@ echo "$THREE,3" >> marks_stats.csv
   - Can be done in a connection or packet level
 
   - Example for such commercial prodcuts
-    \[[](https://www.peplink.com/technology/sd-wan/|peplink) sd-wan\]
+    \[<https://www.peplink.com/technology/sd-wan/|peplink> sd-wan\]
 
 ### NFQUEUE to mark flowing connection
 
@@ -687,7 +687,7 @@ routing OS.
   - WAN router-2 IP1:192.168.100.2(lan-core)
     IP2:192.168.122.66(wan-core)
 
-  - Internet target Server at: [](http://www2.ngtech.co.il/)
+  - Internet target Server at: <http://www2.ngtech.co.il/>
 
 The scenario is that Client will try to contact www2.ngtech.co.il
 through LAN-core router which will load-balance the traffic over 2 WAN
@@ -737,7 +737,7 @@ Machines:
     192.168.10.254 to the Internet)
 
   - [WebServer](/WebServer)
-    [](http://myip.net.il)
+    <http://myip.net.il>
 
 ### Fourth LAB - OpenSUSE+Alpine
 
@@ -756,7 +756,7 @@ Machines:
     192.168.10.254 to the Internet)
 
   - [WebServer](/WebServer)
-    [](http://myip.net.il)
+    <http://myip.net.il>
 
 ### Fifth LAB - MultiLink loadbalancing with a HUB
 
@@ -863,25 +863,25 @@ for these who talks the "Computer Language".
     Load
     Balancer](http://www.pc-freak.net/blog/web-application-server-load-balancer-general-types-description-kind-load-balancer/)
 
-  - [](http://pdfs.loadbalancer.org/Web_Proxy_Deployment_Guide_Sophos.pdf)
+  - <http://pdfs.loadbalancer.org/Web_Proxy_Deployment_Guide_Sophos.pdf>
 
-  - [](http://marc.info/?l=netfilter&m=121300947219385)
+  - <http://marc.info/?l=netfilter&m=121300947219385>
 
-  - [](https://github.com/glanf/dockerfiles/blob/master/load_balancer/loadbalancer.py)
+  - <https://github.com/glanf/dockerfiles/blob/master/load_balancer/loadbalancer.py>
 
-  - [](http://1hdb.cn/index.php?&id=29060)
+  - <http://1hdb.cn/index.php?&id=29060>
 
-  - [](http://www.tana.it/sw/ipqbdb/)
+  - <http://www.tana.it/sw/ipqbdb/>
 
-  - [](http://samag.ru/uploads/artfiles/1355728538source12\(121\).txt)
+  - <http://samag.ru/uploads/artfiles/1355728538source12\(121\>.txt)
 
-  - [](http://bazaar.launchpad.net/~oubiwann/txloadbalancer/1.0.1/view/head:/txlb/schedulers.py#L147)
+  - <http://bazaar.launchpad.net/~oubiwann/txloadbalancer/1.0.1/view/head:/txlb/schedulers.py#L147>
 
-  - [](https://brooker.co.za/blog/2012/01/17/two-random.html)
+  - <https://brooker.co.za/blog/2012/01/17/two-random.html>
 
-  - [](https://gist.github.com/fqrouter/5151855)
+  - <https://gist.github.com/fqrouter/5151855>
 
-  - [](https://github.com/mdentonSkyport/nradix)
+  - <https://github.com/mdentonSkyport/nradix>
 
   - [BalanceNG :
     About/Features](https://www.inlab.de/load-balancer/description.html)

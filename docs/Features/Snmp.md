@@ -382,7 +382,7 @@ Further examples of Squid MRTG configurations can be found here:
 
 Cacti is a software tool based on the same concepts as MRTG, but with a
 more user-friendly interface and infrastructure. Its home is at
-[](http://www.cacti.net/). It allows to use pre-defined templates to
+<http://www.cacti.net/>. It allows to use pre-defined templates to
 facilitate deployment. Templates for squid can be found on [the cacti
 forums](http://forums.cacti.net/about4142.html)
 

@@ -29,7 +29,7 @@ Sponsors may request to be listed on the Squid Project web
 rules apply to such listings:
 
 1.  The listing is added to the
-    [](http://www.squid-cache.org/Support/sponsors.html) page, above the
+    <http://www.squid-cache.org/Support/sponsors.html> page, above the
     entries reflecting non-monetary or historically significant
     contributions.
 

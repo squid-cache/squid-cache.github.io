@@ -588,7 +588,7 @@ up with the list of sites that should be blocked. You may want to
 maintain such a list yourself, or get one from somewhere else (see
 below). Note that once you start blocking web content, users will try to
 use web proxies to circumvent the porn filter, hence you will also need
-to block all web proxies (visit [](http://www.proxy.org) if you do not
+to block all web proxies (visit <http://www.proxy.org> if you do not
 know what a web proxy is).
 
 The ACL syntax for using such a list depends on its contents. If the
