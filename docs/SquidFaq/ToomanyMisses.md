@@ -1,9 +1,7 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: troubleshooting
 ---
-# Way Too Many Cache Misses
+# What to do when there are way too many cache misses
 
 In normal operation Squid gives very few (typically well less than 1%)
 code TCP_SWAPFAIL_MISS indicating an object was thought to be in the
@@ -19,6 +17,7 @@ what's in the cache every time. But it always works.
 
 ## sample script
 
+```bash
     # restart Squid
     # (probably after making arbitrary config changes)
     
@@ -45,3 +44,4 @@ what's in the cache every time. But it always works.
     sleep 2
     echo starting Dans Guardian [Squid user] again
     dansguardian
+```

@@ -1,3 +1,6 @@
+---
+FaqSection: troubleshooting
+---
 # What is the meaning of a Zero Sized Reply?
 
 A ZeroSizedReply error page is shown when squid successfully sends the

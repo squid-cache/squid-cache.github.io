@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: operation
 ---
 # How do I make Windows Updates cache?
@@ -14,47 +12,41 @@ yet.
 A mix of configuration options are required to force caching of range
 requests. Particularly when large objects are involved.
 
-  - **[maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)**.
+- **[maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)**.
     Default value is a bit small. It needs to be somewhere 100MB or
     higher to cope with the IE updates.
-    
-      - **UPDATE:** Windows 8.1 upgrade pack requires up to 5GB objects
-        to be cached. It will however, cache nicely provided the size
-        limit is set high enough.
-
+    Windows 8.1 upgrade pack requires up to 5GB objects
+    to be cached. It will however, cache nicely provided the size
+    limit is set high enough.
   - **[range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)**.
     Does the main work of converting range requests into cacheable
     requests. Use the same size limit as
     [maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     to prevent conversion of requests for objects which will not cache
-    anyway. With
-    [Squid-3.2](/Releases/Squid-3.2)
+    anyway. With [Squid-3.2](/Releases/Squid-3.2)
     or later use the **windowsupdate** ACL list defined below to apply
     this offset limit only to windows updates.
-
   - **[quick_abort_min](http://www.squid-cache.org/Doc/config/quick_abort_min)**.
     May need to be altered to allow the full object to download when the
     client software disconnects. Some Squid releases let
     [range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)
     override properly, some have weird behavior when combined.
 
-<!-- end list -->
-
-    range_offset_limit 200 MB windowsupdate
-    maximum_object_size 200 MB
-    quick_abort_min -1
+        range_offset_limit 200 MB windowsupdate
+        maximum_object_size 200 MB
+        quick_abort_min -1
 
 > :information_source:
     Due to the slow-down problem below we recommend service packs be
     handled specially:
     
-      - Extend the maximum cached object size to the required size, then
+- Extend the maximum cached object size to the required size, then
         run a full download on a single machine, then run on a second
         machine to verify the cache is being used. Only after this
         verification succeeds open updating to all other machines
         through the proxy.
 
-# Preventing Early or Frequent Replacement
+## Preventing Early or Frequent Replacement
 
 Once you have done the above to cache updates you encounter the problem
 that some software often forces a full object reload instead of
@@ -116,8 +108,7 @@ I also recommend a 30 to 60GB
 [cache_dir](http://www.squid-cache.org/Doc/config/cache_dir) size
 allocation, which will let you download tonnes of windows updates and
 other stuff and then you won't really have any major issues with cache
-storage or cache allocation or any other issues to do with the cache. .
-.
+storage or cache allocation or any other issues to do with the cache.
 
 # Why does it go so slowly through Squid?
 
@@ -179,70 +170,20 @@ The above config is also useful for other automatic update sites such as
 Anti-Virus vendors, just add their domains to the
 [acl](http://www.squid-cache.org/Doc/config/acl).
 
-|                                                                        |                                                                                                                                                                                                                     |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :information_source: | If you have squid listening on a localhost port with other software in front (ie dansGuardian). You will probably need to add permission for **localhost** address so the front-end service can relay the requests. |
-
-    ...
-    http_access allow CONNECT wuCONNECT localnet
-    http_access allow CONNECT wuCONNECT localhost
-    http_access allow windowsupdate localnet
-    http_access allow windowsupdate localhost
-
-# Squid problems with Windows Update v5
-
-## AKA, Why does Internet Explorer work but the background automatic updates fail?
-
-  - *by Janno de Wit*
-
-There seems to be some problems with Microsoft Windows to access the
-Windows Update website. This is especially a problem when you block all
-traffic by a firewall and force your users to go through a proxy.
-
-Symptom: Windows Update gives error codes like 0x80072EFD and cannot
-update, automatic updates aren't working too.
-
-Cause: In earlier Windows-versions Windows Update takes the
-proxy-settings from Internet Explorer. Since XP SP2 this is not sure. At
-my machine I ran Windows XP SP1 without Windows Update problems. When I
-upgraded to SP2 Windows Update started to give errors when searching
-updates etc.
-
-The problem was that WU did not go through the proxy and tries to
-establish direct HTTP connections to Update-servers. Even when I set the
-proxy in IE again, it didn't help . It isn't Squid's problem that
-Windows Update doesn't work, but it is in Windows itself. The solution
-is to use the 'proxycfg' or 'netsh' tool shipped with Windows. With this
-tool you can set the proxy for WinHTTP.
-
 > :information_source:
-    Similar issues are found with other Microsoft products in the same
-    Windows versions. The commands below often fix all Microsoft proxy
-    issues at once.
+    If you have squid listening on a localhost port with other software in
+    front (ie dansGuardian). You will probably need to add permission for
+    **localhost** address so the front-end service can relay the requests.
 
-## Proxy configuration with proxycfg
-
-> :information_source:
-    In Windows Vista, Server 2008 and later proxycfg is obsolete. Use
-    netsh instead.
-
-Commands:
-
-    C:\> proxycfg
-    # gives information about the current connection type. Note: 'Direct Connection' does not force WU to bypass proxy
-    
-    C:\> proxycfg -d
-    # Set Direct Connection
-    
-    C:\> proxycfg -p wu-proxy.lan:8080
-    # Set Proxy to use with Windows Update to wu-proxy.lan, port 8080
-    
-    C:\> proxycfg -u
-    # Set proxy to Internet Explorer settings.
+        ...
+        http_access allow CONNECT wuCONNECT localnet
+        http_access allow CONNECT wuCONNECT localhost
+        http_access allow windowsupdate localnet
+        http_access allow windowsupdate localhost
 
 ## Proxy configuration with netsh
 
-  - *by Yuri Voinov*
+by *Yuri Voinov*
 
 Syntax:
 
@@ -254,14 +195,12 @@ To reset proxy settings for WinHTTP use:
 
     C:\> netsh winhttp reset proxy
 
-# Squid with SSL-Bump and Windows Updates
+## Squid with SSL-Bump and Windows Updates
 
-  - *by Yuri Voinov*
+by *Yuri Voinov*
 
 In modern setups with Squid, Windows Update cannot be check updates with
-error
-"[WindowsUpdate](/WindowsUpdate)_80072F8F"
-or similar.
+error *"WindowsUpdate_80072F8F"* or similar.
 
 WU now uses its own pinned SSL certificate and must be spliced to work.
 When you use sniffer, you can see many IP's with relatively big
@@ -302,51 +241,39 @@ and you do not need to know all the IP authorization server for updates.
     SQUID_X509_V_ERR_DOMAIN_MISMATCH error via Akamai. To do WU,
     you can require to add this into your Squid's config:
 
-<!-- end list -->
+        acl BrokenButTrustedServers dstdomain "/usr/local/squid/etc/dstdom.broken"
+        acl DomainMismatch ssl_error SQUID_X509_V_ERR_DOMAIN_MISMATCH
+        sslproxy_cert_error allow BrokenButTrustedServers DomainMismatch
+        sslproxy_cert_error deny all
 
-    acl BrokenButTrustedServers dstdomain "/usr/local/squid/etc/dstdom.broken"
-    acl DomainMismatch ssl_error SQUID_X509_V_ERR_DOMAIN_MISMATCH
-    sslproxy_cert_error allow BrokenButTrustedServers DomainMismatch
-    sslproxy_cert_error deny all
+    and add this to **dstdom.broken**:
 
-and add this to **dstdom.broken**:
-
-    download.microsoft.com
-    update.microsoft.com
-    update.microsoft.com.akadns.net
-    update.microsoft.com.nsatc.net
+        download.microsoft.com
+        update.microsoft.com
+        update.microsoft.com.akadns.net
+        update.microsoft.com.nsatc.net
 
 > :information_source:
-    **NOTE:** Depending your Squid's configuration, you may need to
+    Depending your Squid's configuration, you may need to
     change your Squid's cipher configuration to this one:
 
-<!-- end list -->
+        sslproxy_cipher HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
 
-    sslproxy_cipher HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
+    and add this one to your bumped port's configuration:
 
-and add this one to your bumped port's configuration:
+        cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
 
-    cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
+    3DES and RC4 required to connect to WU and - **attention** - Skype
+    assets site.
 
-3DES and RC4 required to connect to WU and - **attention\!** - Skype
-assets site.
+> :warning: Some updates cannot be cached due to splice above.
 
-  - :warning:
-    **WARNING:** Some updates cannot be cached due to splice above.
-    Beware\!
-
-  - :warning:
-    **WARNING:** Adding 3DES and, especially, RC4, produces potentially
+> :warning: Adding 3DES and, especially, RC4, produces potentially
     weak ciphers via client and WU/Skype and some other sites. Be
-    careful\!
+    careful!
 
-# Microsoft technical articles related to proxy issues and windows updates
 
-<https://support.microsoft.com/en-us/kb/3084568>
+## See Also
 
-# An example of refresh_pattern that is being used at OpnSense
-
-<https://github.com/opnsense/core/issues/1691#issuecomment-340276788>
-
-Back to the
-[SquidFaq](/SquidFaq)
+* [Microsoft technical articles related to proxy issues and windows updates](https://support.microsoft.com/en-us/kb/3084568)* 
+* [An example of refresh_pattern that is being used at OpnSense](https://github.com/opnsense/core/issues/1691#issuecomment-340276788)

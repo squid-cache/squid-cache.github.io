@@ -1,9 +1,8 @@
 ---
-categories: ReviewMe
-published: false
 FaqSection: misc
 ---
 # Squid terminology
+
 ## Neighbor
 
 In Squid, *neighbor* usually means the same thing as *peer*. A neighbor
@@ -20,6 +19,3 @@ Regular expressions are patterns that used for matching sequences of
 characters in text. For more information, see [A Tao of Regular
 Expressions](http://jmason.org/software/sitescooper/tao_regexps.html)
 and [Newbie's page](http://www.newbie.org/gazette/xxaxx/xprmnt02.html).
-
-Back to the
-[SquidFaq](/SquidFaq)

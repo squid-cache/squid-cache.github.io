@@ -1,8 +1,6 @@
 ---
-categories: ReviewMe
-published: false
 ---
-Describe EliezerCroitoru/SSLtips here.
+# openssl tips
 
 You can take a look also at:
 <http://www.sslshopper.com/article-most-common-openssl-commands.html>
