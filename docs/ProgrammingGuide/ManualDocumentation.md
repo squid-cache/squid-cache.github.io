@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # man(8) documentation guidelines and standards
 
@@ -52,9 +50,7 @@ below.
 One initial line of content.
 
 1.  name of file being documented. Marked not for translation.
-
 2.  a hyphen. Marked not for translation.
-
 3.  A one-line description of the file. Suitable for use in a title.
 
 If a version number is relevant state it in a separate paragraph below
@@ -162,7 +158,7 @@ Actual config snippets are to be marked not for translation.
 For a multi-line configuration block use **.br** (lower case is
 important) to split the lines legibly.
 
-  - :warning:
+> :warning:
     Any word which *begins* with a dash / hyphen must be slash-escaped.
 
 For example, URL re-writers would have something like this:
@@ -428,7 +424,7 @@ a separate .8 file.
 This is a template only. Alter it according to the requirements detailed
 above to document an installed file.
 
-``` 
+``` perl
  #!@PERL@
 
 use strict;
@@ -533,81 +529,68 @@ various types as listed below. Some work is underway to bring existing
 texts into matching these standard style of markup. However there are a
 number of installed files which have no manual at all.
 
-|                                                                        |                                                                         |                                                                                                      |
-| ---------------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **Installed file**                                                     | **man(x)**                                                              | **Current State:**                                                                                   |
-| \~/access.log                                                          | :x: | Missing. Relevant?                                                                                   |
-| \~/cache.log                                                           | :x: | Missing. Relevant?                                                                                   |
-| \~/netdb.state                                                         | :x: | Missing.                                                                                             |
-| \~/store.log                                                           | :x: | Missing. Relevant?                                                                                   |
-| \~/swap.state                                                          | :x: | Missing. Convert wiki page info                                                                      |
-| errors/errpages.css                                                    | :x: | Missing                                                                                              |
-| src/acl/external/delayer/ext_delayer_acl                             | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/AD_group/ext_ad_group_acl                         | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/file_userip/ext_file_userip_acl                   | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/kerberos_ldap_group/ext_kerberos_ldap_group_acl | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/LDAP_group/ext_ldap_group_acl                     | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/LM_group/ext_lm_group_acl                         | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/session/ext_session_acl                             | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/SQL_session/ext_sql_session_acl                   | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/unix_group/ext_unix_group_acl                     | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/acl/external/wbinfo_group/ext_wbinfo_group_acl                 | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/DB/basic_db_auth                                      | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/getpwnam/basic_getpwnam_auth                          | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/LDAP/basic_ldap_auth                                  | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/NCSA/basic_ncsa_auth                                  | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/NIS/basic_nis_auth                                    | :x: | Missing.                                                                                             |
-| src/auth/basic/PAM/basic_pam_auth                                    | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/POP3/basic_pop3_auth                                  | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/RADIUS/basic_radius_auth                              | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/SASL/basic_sasl_auth                                  | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/basic/SASL/basic_sasl_auth.pam                              | :x: | Missing.                                                                                             |
-| src/auth/basic/SASL/basic_sasl_auth.conf                             | :x: | Missing.                                                                                             |
-| src/auth/basic/SMB/basic_smb_auth                                    | :x: | Missing.                                                                                             |
-| src/auth/basic/SMB/basic_smb_auth.sh                                 | :x: | Missing.                                                                                             |
-| src/auth/basic/SMB_LM/basic_smb_lm_auth                            | :x: | Missing. Convert README.html                                                                         |
-| src/auth/basic/SSPI/basic_sspi_auth.exe                              | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/digest/eDirectory/digest_edir_auth                          | :x: | Missing.                                                                                             |
-| src/auth/digest/LDAP/digest_ldap_auth                                | :x: | Missing.                                                                                             |
-| src/auth/digest/file/digest_file_auth                                | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/negotiate/kerberos/negotiate_kerberos_auth                  | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/negotiate/kerberos/negotiate_kerberos_auth_test            | :x: | Missing. Convert README                                                                              |
-| src/auth/negotiate/SSPI/negotiate_sspi_auth.exe                      | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/auth/negotiate/wrapper/negotiate_wrapper                          | :x: | Missing.                                                                                             |
-| src/auth/ntlm/fake/ntlm_fake_auth                                    | :x: | Missing. Convert wiki NTLM fake auth page.                                                           |
-| src/auth/ntlm/smb_lm/ntlm_smb_lm_auth                              | :x: | Missing                                                                                              |
-| src/auth/ntlm/SSPI/ntlm_sspi_auth.exe                                | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/DiskIO/DiskDaemon/diskd                                            | :x: | Missing                                                                                              |
-| src/http/url_rewriters/fake/url_fake_rewrite                        | :x: | Missing                                                                                              |
-| src/http/url_rewriters/fake/url_fake_rewrite.sh                     | :x: | Missing                                                                                              |
-| src/http/url_rewriters/LFS/url_lfs_rewrite                          | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/icmp/pinger                                                        | :x: | Missing                                                                                              |
-| src/log/file/log_file_daemon                                         | :x: | Missing.                                                                                             |
-| src/log/DB/log_db_daemon                                             | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/mime.conf                                                          | :x: | Missing                                                                                              |
-| src/mime.conf.default                                                  | :x: | Missing. Symlink to mime.conf manual?                                                                |
-| src/recv-announce                                                      | :x: | Missing.                                                                                             |
-| src/security/cert_generators/file/security_file_certgen             | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/security/cert_validators/fake/security_fake_certverify          | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/squid                                                              | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/squid.conf                                                         | :x: | Missing. Convert squid.conf.documented                                                               |
-| src/squid.conf.default                                                 | N/A                                                                     | <http://www.squid-cache.org/Doc/config/> instead                                                   |
-| src/squid.conf.documented                                              | N/A                                                                     | <http://www.squid-cache.org/Doc/config/> instead                                                   |
-| src/store/id_rewriters/file/storeid_file_rewrite                    | 8                                                                       | :heavy_check_mark: Done.                        |
-| src/unlinkd                                                            | :x: | Missing                                                                                              |
-| tools/cachemgr.cgi                                                     | 8                                                                       | :heavy_check_mark: Done.                        |
-| tools/helper-mux.pl                                                    | 8                                                                       | :worried: Needs review of the perl/pod output. |
-| tools/purge/                                                           | 1                                                                       | :heavy_check_mark: Done.                        |
-| tools/squidclient/                                                     | 1                                                                       | :heavy_check_mark: Done.                        |
-
-  - Discuss this page using the "Discussion" link in the main menu
-
-See [Discussed
-Page](/ProgrammingGuide/ManualDocumentation)
-
-I like the idea. Would it be possible to have a complete template page
-attached to the wiki entry? It would make starting to write stuff
-easier.
-
-\--
-[FrancescoChemolli](/FrancescoChemolli)
+| Installed file | man(x) | Current State |
+| -------------- | ------ | ------------- |
+| \~/access.log | :x: | Missing. Relevant? |
+| \~/cache.log | :x: | Missing. Relevant? |
+| \~/netdb.state | :x: | Missing. |
+| \~/store.log | :x: | Missing. Relevant? |
+| \~/swap.state | :x: | Missing. Convert wiki page info |
+| errors/errpages.css | :x: | Missing |
+| src/acl/external/delayer/ext_delayer_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/AD_group/ext_ad_group_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/file_userip/ext_file_userip_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/kerberos_ldap_group/ext_kerberos_ldap_group_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/LDAP_group/ext_ldap_group_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/LM_group/ext_lm_group_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/session/ext_session_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/SQL_session/ext_sql_session_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/unix_group/ext_unix_group_acl | 8 | :heavy_check_mark: Done. |
+| src/acl/external/wbinfo_group/ext_wbinfo_group_acl | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/DB/basic_db_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/getpwnam/basic_getpwnam_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/LDAP/basic_ldap_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/NCSA/basic_ncsa_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/NIS/basic_nis_auth | :x: | Missing. |
+| src/auth/basic/PAM/basic_pam_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/POP3/basic_pop3_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/RADIUS/basic_radius_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/SASL/basic_sasl_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/basic/SASL/basic_sasl_auth.pam | :x: | Missing. |
+| src/auth/basic/SASL/basic_sasl_auth.conf | :x: | Missing. |
+| src/auth/basic/SMB/basic_smb_auth | :x: | Missing. |
+| src/auth/basic/SMB/basic_smb_auth.sh | :x: | Missing. |
+| src/auth/basic/SMB_LM/basic_smb_lm_auth | :x: | Missing. Convert README.html |
+| src/auth/basic/SSPI/basic_sspi_auth.exe | 8 | :heavy_check_mark: Done. |
+| src/auth/digest/eDirectory/digest_edir_auth | :x: | Missing. |
+| src/auth/digest/LDAP/digest_ldap_auth | :x: | Missing. |
+| src/auth/digest/file/digest_file_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/negotiate/kerberos/negotiate_kerberos_auth | 8 | :heavy_check_mark: Done. |
+| src/auth/negotiate/kerberos/negotiate_kerberos_auth_test | :x: | Missing. Convert README |
+| src/auth/negotiate/SSPI/negotiate_sspi_auth.exe | 8 | :heavy_check_mark: Done. |
+| src/auth/negotiate/wrapper/negotiate_wrapper | :x: | Missing. |
+| src/auth/ntlm/fake/ntlm_fake_auth | :x: | Missing. Convert wiki NTLM fake auth page. |
+| src/auth/ntlm/smb_lm/ntlm_smb_lm_auth | :x: | Missing |
+| src/auth/ntlm/SSPI/ntlm_sspi_auth.exe | 8 | :heavy_check_mark: Done. |
+| src/DiskIO/DiskDaemon/diskd | :x: | Missing |
+| src/http/url_rewriters/fake/url_fake_rewrite | :x: | Missing |
+| src/http/url_rewriters/fake/url_fake_rewrite.sh | :x: | Missing |
+| src/http/url_rewriters/LFS/url_lfs_rewrite | 8 | :heavy_check_mark: Done. |
+| src/icmp/pinger | :x: | Missing |
+| src/log/file/log_file_daemon | :x: | Missing. |
+| src/log/DB/log_db_daemon | 8 | :heavy_check_mark: Done. |
+| src/mime.conf | :x: | Missing |
+| src/mime.conf.default | :x: | Missing. Symlink to mime.conf manual? |
+| src/recv-announce | :x: | Missing. |
+| src/security/cert_generators/file/security_file_certgen | 8 | :heavy_check_mark: Done. |
+| src/security/cert_validators/fake/security_fake_certverify | 8 | :heavy_check_mark: Done. |
+| src/squid | 8 | :heavy_check_mark: Done. |
+| src/squid.conf | :x: | Missing. Convert squid.conf.documented |
+| src/squid.conf.default | N/A | <http://www.squid-cache.org/Doc/config/> instead |
+| src/squid.conf.documented | N/A | <http://www.squid-cache.org/Doc/config/> instead |
+| src/store/id_rewriters/file/storeid_file_rewrite | 8 | :heavy_check_mark: Done. |
+| src/unlinkd | :x: | Missing |
+| tools/cachemgr.cgi | 8 | :heavy_check_mark: Done. |
+| tools/helper-mux.pl | 8 | :worried: Needs review of the perl/pod output. |
+| tools/purge/ | 1 | :heavy_check_mark: Done. |
+| tools/squidclient/ | 1 | :heavy_check_mark: Done. |
