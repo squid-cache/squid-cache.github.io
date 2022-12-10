@@ -1,10 +1,10 @@
 ---
-categories: ReviewMe
+categories: [ConfigExample, ReviewMe]
 published: false
 ---
 Describe Features/StoreID/Helper/Golang here.
 
-``` highlight
+```golang
 package main
 /*
 license note

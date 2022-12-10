@@ -1,28 +1,21 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: ConfigExample
 ---
 # Using c-icap for proxy content antivirus checking on-the-fly
 
-  - *by
-    [YuriVoinov](/YuriVoinov)*
+*by [YuriVoinov](/YuriVoinov)*
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
-For
-[Squid-3.0](/Releases/Squid-3.0)
+For [Squid-3.0](/Releases/Squid-3.0)
 and later we can use ICAP for content filtering or antivirus checking.
 This config example describes how to scan for viruses on-the-fly using
 [squidclamav](http://squidclamav.darold.net/) antivirus module in
 combination with [ClamAV antivirus](http://www.clamav.net/index.html)
 service. It is a bit different with [recommended squidclamav
 configuration](http://squidclamav.darold.net/config.html) and adapted
-for
-[Squid-3.4](/Releases/Squid-3.4)
+for [Squid-3.4](/Releases/Squid-3.4)
 releases and above with latest configuration changes.
 
 ## Usage
@@ -33,9 +26,8 @@ delay and performed with acceptable latency.
 
 ## Building c-icap server
 
-Download latest c-icap sources from
-[here](http://c-icap.sourceforge.net/download.html). (Changelog is
-[here](https://sourceforge.net/p/c-icap/news)). For antivirus checking
+Download [latest c-icap sources](http://c-icap.sourceforge.net/download.html)
+([Changelog](https://sourceforge.net/p/c-icap/news)).For antivirus checking
 you do not need BerkeleyDB support. Then configure as shown below and
 make.
 
@@ -103,7 +95,7 @@ Of course, this installation requires more resources, especially when
 installing on single host. But also provides more flexibility and - in
 some cases - more scalability.
 
-### Build, configuring and run ClamAV daemon
+## Build, configuring and run ClamAV daemon
 
 ClamAV including in many repositories and can be got from them. When
 configuring clamd, be very conservative with options. Defaults is good
@@ -121,8 +113,6 @@ enough. I use 24 times per day.
     interconnect with your proxy (this option is valid only when using
     squidclamav).
 
-<!-- end list -->
-
 > :information_source:
     Note: It is important to set StreamMaxLength parameter in clamd.conf
     to the same value as maxsize in squidclamav.conf.
@@ -131,7 +121,7 @@ I.e., uncomment and adjust in clamd.conf:
 
     StreamMaxLength 5M
 
-### Build and configuring squidclamav
+## Build and configuring squidclamav
 
 Installing [SquidClamav](http://squidclamav.darold.net/) requires that
 you already have installed the c-icap as explained above. You must
@@ -312,7 +302,7 @@ where squidclamav_whitelist contains:
     squidclamav redirection. In this case you must customize c-icap
     templates according to your needs.
 
-### Squid Configuration File
+## Squid Configuration File
 
 > :information_source:
     [Squid-3.4](/Releases/Squid-3.4)
@@ -347,14 +337,12 @@ Like eCAP, you can perform antivirus checking with libclamav. This not
 requires daemon and fries up to 500 Mbytes (average) required to run
 clamd. This can be useful for single-tier setups.
 
-[I-CAP modules
-provides](http://sourceforge.net/projects/c-icap/files/c-icap-modules/)
+[I-CAP modules](http://sourceforge.net/projects/c-icap/files/c-icap-modules/)
 provides two submodules: using ClamAV daemon, and using libclamav only.
 
 ### Build c-icap modules
 
-[Download last
-modules](http://sourceforge.net/projects/c-icap/files/c-icap-modules/),
+[Download last modules](http://sourceforge.net/projects/c-icap/files/c-icap-modules/),
 then configuring and build according your ClamAV and c-icap build types
 (32 or 64 bit):
 
@@ -403,9 +391,7 @@ Add following line at the end of c-icap.conf:
     directory pointed to ClamAV antivirus database directory, configured
     for daemon in clamd.conf, for example:
 
-<!-- end list -->
-
-    # ln -s /var/lib/clamav /usr/local/clamav/share/clamav
+        # ln -s /var/lib/clamav /usr/local/clamav/share/clamav
 
 Finally restart c-icap service to accept changes.
 
