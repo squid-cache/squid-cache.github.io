@@ -1,5 +1,5 @@
 ---
-categories: KB
+categories: KnowledgeBase
 ---
 # How to analyze whether squid is performing well
 

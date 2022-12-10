@@ -1,5 +1,5 @@
 ---
-categories: KB
+categories: KnowledgeBase
 ---
 # Illegal Instruction errors on Squid 3.4 and later
 

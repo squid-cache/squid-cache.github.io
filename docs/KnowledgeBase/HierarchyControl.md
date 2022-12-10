@@ -1,5 +1,5 @@
 ---
-categories: KB
+categories: KnowledgeBase
 ---
 # Hierarchy Control
 

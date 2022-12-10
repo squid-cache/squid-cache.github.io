@@ -1,5 +1,5 @@
 ---
-categories: KB
+categories: KnowledgeBase
 ---
 # Browser speed/lockup issues when using a proxy.pac auto configuration file
 

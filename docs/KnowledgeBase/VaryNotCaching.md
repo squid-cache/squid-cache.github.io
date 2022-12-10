@@ -1,5 +1,5 @@
 ---
-categories: KB
+categories: KnowledgeBase
 ---
 # GZIP Encoded Variants Being Replaced by Non-Compressed Objects
 

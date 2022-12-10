@@ -1,6 +1,5 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: ConfigExample
 ---
 # Interceptor Squid on Debian with Redirectors and Reporting
 
@@ -19,25 +18,6 @@ First of all, you need a Linux box with two network interfaces that
 we'll set up as a bridge. We'll assume that eth0 is connected downstream
 to the LAN, while eth1 provides upstream access to the Internet.
 
-## Getting Squid
-
-If you have the Debian 6 OS release, then Squid is already available as
-a precompiled binary with all the necessary flags, and all you have to
-do is install the squid3 package:
-
-    aptitude update
-    aptitude install squid3
-
-It is also a good idea to let Squid run as a standalone daemon. You can
-therefore disable avahi as it's not needed in a server:
-
-    root@squidbox:~# update-rc.d -f avahi-daemon remove
-
-For the rest of this document we'll assume that the paths of the Squid
-executable, configuration file, log files, cache etc. are the ones set
-up when compiling Squid from the source. If you grabbed the package
-binaries instead, pathnames will be different but correcting them should
-be easy for you.
 
 ## Setting up a Linux bridge
 
@@ -324,7 +304,7 @@ SARG is available as a standard Debian package:
     root@squidbox:~# apt-get install sarg
 
 and can be fine-tuned via its configuration file `/etc/squid/sarg.conf`
-.
+
 
 SARG generates its reports based on the content of Squid's `access.log`
 files. As reports are in HTML format, it's handy to let an Apache server
@@ -353,7 +333,7 @@ Always monitor your disk space and inode usage via the commands
 For this reason, we will arrange our system to targzip reports after 15
 days, and eventually delete them after 3 months. To do so we create a
 script `/etc/squid/tarsarg.sh` :
-
+```bash
     D_TAR=`date +%Y%b%d --date="15 days ago"`
     D_DEL=`date +%Y%b%d --date="3 months ago"`
     DAILY=/var/www/Daily
@@ -377,12 +357,8 @@ script `/etc/squid/tarsarg.sh` :
        rm -f $ARCHIVE/$D_DEL.tar.gz
        echo "`date`: deleted targzip $D_DEL" >> $LOGFILE
     fi
-
+```
 Then we schedule this script to run daily, after the report generation,
 by adding the following line to the crontab file:
 
     0 1 * * *   root   /etc/squid/tarsarg.sh
-
-That's it. Enjoy surfing with Squid\!
-
-CategoryConfigExample/Redirect

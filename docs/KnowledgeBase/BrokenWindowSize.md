@@ -1,5 +1,5 @@
 ---
-categories: KB
+categories: KnowledgeBase
 ---
 # Identifying and working around sites with broken TCP Window Scaling
 

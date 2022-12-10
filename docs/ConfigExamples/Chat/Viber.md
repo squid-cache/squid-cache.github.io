@@ -1,19 +1,13 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: ConfigExample
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
-
 # Viber Messenger
 
-Warning: Any example presented here is provided "as-is" with no support
-or guarantee of suitability. If you have any further questions about
-these examples please email the squid-users mailing list.
+*by [YuriVoinov](/YuriVoinov)*
 
 ## Outline
 
-[Viber Messenger](https://viber.com) is end-to-end encryption
+[Viber Messenger](https://viber.com) is end-to-end encrypted
 messenger/VoIP/group chats/file transfers application. Using it may be
 prohibited by corporate security policy.
 
@@ -39,5 +33,3 @@ Paste the configuration file like this:
 then reconfigure Squid.
 
 This is enough to make Viber fully unoperable (both desktop/mobile).
-
-[CategoryConfigExample](/CategoryConfigExample)

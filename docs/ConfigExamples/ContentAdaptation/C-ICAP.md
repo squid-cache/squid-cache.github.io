@@ -417,7 +417,7 @@ Paste the configuration file like this:
     directives. Also you can customize virus_scan module templates to
     your language etc.
 
-  - :x:
+> :x:
     Also beware: without clamd you will have the same 300-500 megabytes
     of loaded AV database to one of c-icap process with libclamav.
     :smirk:
@@ -430,8 +430,7 @@ sure you're get redirected to warning page.
 
 For really big installations you can place all checking infrastructure
 components on separate nodes - i.e. proxy, c-icap server, ClamAV. That's
-all, folks\!
-:smirk:
+all, folks!
 
 ## DNSBL filtering support
 
@@ -567,32 +566,30 @@ setups can be better.
 
 To build this, keep in mind:
 
-. :information_source:
-c-icap should remain on squid's tier; due to squid connectivity with
-c-icap over TCP is non-reliable.
+> :information_source:
+    c-icap should remain on squid's tier; due to squid connectivity with
+    c-icap over TCP is non-reliable.
 
-. :information_source:
-squidclamav will talk with clamd via TCP; just modify squidclamav.conf
-and restart c-icap:
+> :information_source:
+    squidclamav will talk with clamd via TCP; just modify squidclamav.conf
+    and restart c-icap:
 
 ``` 
   clamd_ip your_clamav_tier_ip
   clamd_port 3310
 ```
 
-. :information_source:
-Comment out clamd_local in squidclamav.conf.
+> :information_source:
+    Comment out clamd_local in squidclamav.conf.
 
-. :information_source:
-On ClamAV tier uncomment this parameter in clamd.conf and restart
-daemon:
+> :information_source:
+    On ClamAV tier uncomment this parameter in clamd.conf and restart
+    daemon:
 
-``` 
-  TCPSocket 3310
-```
+        TCPSocket 3310
 
-. :information_source:
-Don't forget to open TCP port 3310 on ClamAV tier firewall.
+> :information_source:
+    Don't forget to open TCP port 3310 on ClamAV tier firewall.
 
 ### C-ICAP monitoring
 

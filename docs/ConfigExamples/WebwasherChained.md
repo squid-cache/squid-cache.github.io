@@ -1,11 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: ConfigExample
 ---
 # Configuring Squid and Webwasher in a proxy chain
 
-By
-[ChristophHaas](/ChristophHaas)
+*By [ChristophHaas](/ChristophHaas)*
 
 ## Outline
 
@@ -39,46 +37,37 @@ test their own server from the internet.
 
 The setup described below works roughly like this:
 
-  - Users point their browsers to the Squid proxy
-
-  - When accessing the proxy the user gets asked for authentication (by
-    verifying the credentials through LDAP)
-
-  - Once the user is authenticated and let through according to ACLs the
-    request is forwarded to the Webwasher
-
-  - The Webwasher takes the authenticated username from Squid and
-    assigns a *profile* (by looking up LDAP groups)
-
-  - The transmitted content (request and response) are checked by the
-    rules of the assigned profile and is either allowed or blocked
+- Users point their browsers to the Squid proxy
+- When accessing the proxy the user gets asked for authentication (by
+  verifying the credentials through LDAP)
+- Once the user is authenticated and let through according to ACLs the
+  request is forwarded to the Webwasher
+- The Webwasher takes the authenticated username from Squid and
+  assigns a *profile* (by looking up LDAP groups)
+- The transmitted content (request and response) are checked by the
+  rules of the assigned profile and is either allowed or blocked
 
 The big picture:
 
 ![bigpicture.png](https://wiki.squid-cache.org/ConfigExamples/WebwasherChained?action=AttachFile&do=get&target=bigpicture.png)
 
 What the Webwasher does:
-
-  - Virus scanning
-
-  - URL blocking (huge database of URLs that allows you to block certain
-    categories like web mail, porn or anonymous proxies)
-
-  - Scanning of *active content* like Javascript, Java or ActiveX. It
-    analyses what the Javascript or Java is actually doing and can block
-    e.g. scripts that try to access the hard disk.
-
-  - Checking of allowed content types (it does not just accept the
-    content type that is sent by the browser but instead checks the
-    actual content by so called *magic bytes* that are also used by the
-    UNIX' **file** command)
-
-  - Sanity checks: depth and size of archives, Microsoft Authenticode
-    (most incorrectly signed scripts seem to come from Microsoft itself)
+- Virus scanning
+- URL blocking (huge database of URLs that allows you to block certain
+  categories like web mail, porn or anonymous proxies)
+- Scanning of *active content* like Javascript, Java or ActiveX. It
+  analyses what the Javascript or Java is actually doing and can block
+  e.g. scripts that try to access the hard disk.
+- Checking of allowed content types (it does not just accept the
+  content type that is sent by the browser but instead checks the
+  actual content by so called *magic bytes* that are also used by the
+  UNIX' **file** command)
+- Sanity checks: depth and size of archives, Microsoft Authenticode
+  (most incorrectly signed scripts seem to come from Microsoft itself)
 
 What the Webwasher currently does not:
 
-  - The concept of *profiles* is very different from Squid's concept of
+- The concept of *profiles* is very different from Squid's concept of
     ACLs. With ACLs and **http_access** statements you run through
     those rules from top to bottom and the first matching entry
     determines whether the access is allowed or not. Profiles on the
@@ -111,7 +100,6 @@ First define how LDAP authentication will work:
 The interesting part is the call to **ldap_auth**. These are the
 meanings of the respective arguments:
 
-|                                |                                                                                    |
 | ------------------------------ | ---------------------------------------------------------------------------------- |
 | o=ourcompany                   | the DN (distinguished name) the defines where your LDAP tree starts                |
 | ldapserver                     | the DNS name or IP address of your LDAP server to query                            |
@@ -204,43 +192,32 @@ Find the *Policy Management* option in the web interface. Next select
 *Web Mapping*. Here you can define which profile a certain user gets
 assigned. You can do that by
 
-  - IP mapping: The profile gets assigned depending on the IP of the
+- IP mapping: The profile gets assigned depending on the IP of the
     user's client PC. Set **forwarded_for on** in the squid.conf to use
     this.
-
-  - Username mapping: The name of the user as authenticated by Squid is
+- Username mapping: The name of the user as authenticated by Squid is
     taken into account.
-    
-      - Mapping method: Map from "Username" / Map via "LDAP lookup"
-    
-      - Extract user information from: Standard Request Header
+    - Mapping method: Map from "Username" / Map via "LDAP lookup"
+    - Extract user information from: Standard Request Header
         (Proxy-Authorization)
-    
-      - Mapping options: Do not verify password when using request
+    - Mapping options: Do not verify password when using request
         headers (this is important to just map the username provided in
         Proxy-Authorization to a profile without checking the password
         again)
-    
-      - Current Rules: set mappings here. On the left select the profile
+    - Current Rules: set mappings here. On the left select the profile
         to be assigned. And on the right put the name of an LDAP group
         that contains the users who should get this profile assigned.
 
 Of course you need to have LDAP configured already. The setup depends on
 your LDAP software of course. This is an example configuration:
 
-  - User:
-    
-      - Attributes to extract: cn
-
-  - Group object:
-    
-      - Attributes to extract: cn
-    
-      - Base DN to group objects: ou=proxygroups,o=ourcompany
-    
-      - Group member attribute name: uniqueMember
-    
-      - Object class for groups: groupOfNames
+- User:
+    - Attributes to extract: cn
+- Group object:
+    - Attributes to extract: cn
+    - Base DN to group objects: ou=proxygroups,o=ourcompany
+    - Group member attribute name: uniqueMember
+    - Object class for groups: groupOfNames
 
 (To debug LDAP lookups ethereal/ethershark can be really useful.)
 
@@ -248,11 +225,6 @@ your LDAP software of course. This is an example configuration:
 
 1.  Why do you use Squid at all? Seems like Webwasher can do all you
     want without Squid.
-    
       - Squid is used for caching and because of its flexible ACLs. If
         you don't need that you can as well just use Webwasher and let
         that do the authentication.
-
-<!-- end list -->
-
-  - [CategoryConfigExample](/CategoryConfigExample)

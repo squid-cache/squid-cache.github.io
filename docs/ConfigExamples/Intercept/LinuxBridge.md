@@ -1,12 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Proxying Web Traffic On A Linux Bridge Server
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -38,8 +33,7 @@ which iptables will be able to intercept\\tproxy.
 
 A picture of the netfilter flow to illustrate:
 
-[![netfilter packet flow
-illustration](http://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)](http://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg)
+[![netfilter packet flow illustration](http://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)](http://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg)
 
 ## ebtables Configuration Rules
 

@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: Internals
 ---
 # HTTP Headers
 
@@ -36,18 +35,18 @@ processing, it must be given an id.
 `HttpHeader` follows a common pattern for object initialization and
 cleaning:
 
-``` 
+``` c++
     /* declare */
     HttpHeader hdr;
 
     /* initialize (as an HTTP Request header) */
-    httpHeaderInit(&amp;hdr, hoRequest);
+    httpHeaderInit(&hdr, hoRequest);
 
     /* do something */
     ...
 
     /* cleanup */
-    httpHeaderClean(&amp;hdr);
+    httpHeaderClean(&hdr);
 ```
 
 Prior to use, an `HttpHeader` must be initialized. A programmer must
@@ -120,7 +119,7 @@ through all fields in a given header. Iteration is controlled by the
 *pos* parameter. Thus, several concurrent iterations over one *hdr* are
 possible. It is also safe to delete/add fields from/to *hdr* while
 iteration is in progress.
-
+```c++
     /* delete all fields with a given name */
     HttpHeaderPos pos = HttpHeaderInitPos;
     HttpHeaderEntry *e;
@@ -128,7 +127,7 @@ iteration is in progress.
             if (!strCaseCmp(e->name, name))
                     ... /* delete entry */
     }
-
+```
 Note that *httpHeaderGetEntry()* is a low level function and must not be
 used if high level alternatives are available. For example, to delete an
 entry with a given name, use the *httpHeaderDelByName()* function rather
