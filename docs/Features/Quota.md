@@ -1,26 +1,17 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Quota control
 
-  - **Goal**: Better quota controls
-
-  - **Status**: *Not started*
-
-  - **ETA**: *unknown*
-
-  - **Version**: Squid 3.2 or 3.3
-
-  - **Developer**:
-
-  - **More**: [squid-dev
-    thread](http://www.squid-cache.org/mail-archive/squid-dev/200902/0138.html)
-
-  - **Related Bugs**:
-    
-      - [1849](https://bugs.squid-cache.org/show_bug.cgi?id=1849)
-        (policy helper feature)
+- **Goal**: Better quota controls
+- **Status**: *Not started*
+- **ETA**: *unknown*
+- **Version**: Squid 3.2 or 3.3
+- **Developer**:
+- **More**: [squid-dev thread](http://www.squid-cache.org/mail-archive/squid-dev/200902/0138.html)
+- **Related Bugs**:
+    - [1849](https://bugs.squid-cache.org/show_bug.cgi?id=1849)
+      (policy helper feature)
 
 ## Description
 
@@ -42,11 +33,10 @@ transfer instead of denying the request). It is not yet clear whether a
 single interface should serve both purposes.
 
 **Update:**
-
-  - With TCP logging a helper can be written to account log information
-    live and maintain any external accounting or traffic needed to
-    maintain quota limits. An internal accounting pool is still needed
-    per client to maintain limits on active requests.
+With TCP logging a helper can be written to account log information
+live and maintain any external accounting or traffic needed to
+maintain quota limits. An internal accounting pool is still needed
+per client to maintain limits on active requests.
 
 ### Time Quotas
 
@@ -55,17 +45,13 @@ request based on relation to earlier requests. Duration of the requests
 themselves are not accounted. Long-polling in particular (such as chat
 sessions over HTTP) may bypass the quota controls.
 
-  - The `ext_session_acl` helper version 1.1 adds support for
+- The `ext_session_acl` helper version 1.1 adds support for
     fixed-length sessions. Emulating a time quota within which new
     requests may be made. Long requests may continue outside this
     period, but no new requests may start without a new session being
     permitted.
-
-  - ext_time_quota_acl helper added with
+- ext_time_quota_acl helper added with
     [Squid-3.3](/Releases/Squid-3.3)
     allows an allocated period of time which is consumed as requests are
     made. Configurable long periods with no requests can be eliminated
     from the consumption.
-
-[CategoryFeature](/CategoryFeature)
-[CategoryWish](/CategoryWish)

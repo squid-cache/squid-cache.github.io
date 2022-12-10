@@ -1,26 +1,19 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: SRV based origin server location
 
-  - **Goal**: Make use of DNS SRV records to locate the origin server
+- **Goal**: Make use of DNS SRV records to locate the origin server
     for a given website.
-
-  - **Status**: in progress; a working redirector-based proof-of-concept
+- **Status**: in progress; a working redirector-based proof-of-concept
     is available. It can be improved upon, with the aim of mimicking
     Squid's internal processes.
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Proof of Concept**:
+- **ETA**: unknown
+- **Version**:
+- **Proof of Concept**:
     [FrancescoChemolli](/FrancescoChemolli)
-
-  - **Developer**:
-
-  - **More**:
+- **Developer**:
+- **More**:
 
 # Proof Of Concept Code
 
@@ -33,7 +26,7 @@ Configuration snippet:
 
 Some tuneables are in the redirector script itself.
 
-# Details
+## Details
 
 [DNS SRV records](http://en.wikipedia.org/wiki/SRV_record), defined in
 [RFC 2782](http://www.ietf.org/rfc/rfc2782.txt) can help attain some
@@ -46,9 +39,8 @@ of a set has.
 For example a query: `  _http._tcp.www.kinkie.it. SRV  ` Might return
 results similar to those:
 
-|              |            |                      |
+| priority |  weight |  target |
 | ------------ | ---------- | -------------------- |
-| **priority** | **weight** | **target**           |
 | 10           | 10         | srv1.kinkie.it.      |
 | 10           | 10         | srv2.kinkie.it.      |
 | 20           | 5          | backupsrv.kinkie.it. |
@@ -74,6 +66,3 @@ tries to address some inconsistencies of the general addressing scheme.
 
 The redirector is RFC-compliant at version 0.4. Andrews' draft is the
 next target for integration.
-
-  - [CategoryFeature](/CategoryFeature)
-    [CategoryWish](/CategoryWish)

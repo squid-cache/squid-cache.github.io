@@ -1,12 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Fully Transparent Interception with Squid-2, TPROXYv2 and WCCP
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -19,9 +14,9 @@ documentation.)
     TPROXYv2 support running on a Linux box. If you have a newer version
     of the exact configuration options may differ.
 
-|                                                                      |                                                                                                                                                                                                                       |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :warning: | Balabit now only support TPROXY v4.1 which has been integrated with the 3.1 squid code (see [Features/Tproxy4](/Features/Tproxy4)) |
+> :warning:
+  Balabit now only support TPROXY v4.1 which has been integrated with the 3.1
+    squid code (see [Features/Tproxy4](/Features/Tproxy4))
 
 > :information_source:
     The configuration for Squid-3.1 is very different than the following
@@ -140,53 +135,45 @@ finally it work....
 
 Here is my step :
 
-\* install squid-2.6.s1 + FD-patch_from_you + cttproxy-patch from
+* install squid-2.6.s1 + FD-patch_from_you + cttproxy-patch from
 balabit for kernel & iptables tproxy
+* create gre tunnel
 
-\* create gre tunnel
+        insmod ip_gre
+        ifconfig gre0 <use ip address within loopback0 router subnet> up
 
-    insmod ip_gre
-    ifconfig gre0 <use ip address within loopback0 router subnet> up
+* disable rp_filter & enable forwarding
 
-  - disable rp_filter & enable forwarding
+        echo 0 > /proc/sys/net/ipv4/conf/lo/rp_filter
+        echo 1 > /proc/sys/net/ipv4/ip_forward
 
-<!-- end list -->
+* iptables :
 
-    echo 0 > /proc/sys/net/ipv4/conf/lo/rp_filter
-    echo 1 > /proc/sys/net/ipv4/ip_forward
 
-  - iptables :
+        iptables -t tproxy -A PREROUTING -p tcp -m tcp  -i gre0 --dport 80 -j TPROXY --on-port 80
 
-<!-- end list -->
+* squid.conf :
 
-    iptables -t tproxy -A PREROUTING -p tcp -m tcp  -i gre0 --dport 80 -j TPROXY --on-port 80
+        http_port 80 transparent tproxy vhost vport=80
+        always_direct allow all
+        wccp2_router y.y.y.y
+        wccp2_forwarding_method 1
+        wccp2_return_method 1
+        wccp2_service dynamic 80
+        wccp2_service dynamic 90
+        wccp2_service_info 80 protocol=tcp flags=src_ip_hash priority=240 ports=80
+        wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 ports=80
 
-  - squid.conf :
+* router config (cisco):
 
-<!-- end list -->
+        ip wccp 80
+        ip wccp 90
+        int fasteth0 -->ip wccp 90 redirect out (gateway to internet)
+        int fasteth1 -->ip wccp 80 redirect out (my client gateway)
+        int fasteth3 -->ip wccp redirect exclude in  (squid-box attached here)
 
-    http_port 80 transparent tproxy vhost vport=80
-    always_direct allow all
-    wccp2_router y.y.y.y
-    wccp2_forwarding_method 1
-    wccp2_return_method 1
-    wccp2_service dynamic 80
-    wccp2_service dynamic 90
-    wccp2_service_info 80 protocol=tcp flags=src_ip_hash priority=240 ports=80
-    wccp2_service_info 90 protocol=tcp flags=dst_ip_hash,ports_source priority=240 ports=80
-
-  - router config (cisco):
-
-<!-- end list -->
-
-    ip wccp 80
-    ip wccp 90
-    int fasteth0 -->ip wccp 90 redirect out (gateway to internet)
-    int fasteth1 -->ip wccp 80 redirect out (my client gateway)
-    int fasteth3 -->ip wccp redirect exclude in  (squid-box attached here)
-
-check-up access.log --\> yes it is increments log check-up my pc by
-opening whatismyipaddress.com --\> yes it is my pc's ip
+* check-up access.log --\> yes it is increments log check-up my pc by
+* opening whatismyipaddress.com --\> yes it is my pc's ip
 
 Now, I will try tuning-up my box & squid.conf tommorow
 
@@ -201,13 +188,3 @@ Now, I will try tuning-up my box & squid.conf tommorow
 
   - Squid
     [Features/Tproxy4](/Features/Tproxy4)
-
-  - TPROXY patch homepage:
-    <http://www.balabit.com/support/community/products/tproxy/>
-
-  - A useful script to test:
-    <http://devel.squid-cache.org/cgi-bin/test>
-
-<!-- end list -->
-
-  - [CategoryConfigExample](/CategoryConfigExample)
