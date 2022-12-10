@@ -1,19 +1,15 @@
 ---
-categories: [ConfigExample, ReviewMe]
+categories: [ConfigExample]
 published: false
 ---
 # Clustering Tproxy Squid With Linux Router
 
 by *Eliezer Croitoru*
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
-
 ## Linux router and WCCP
 
-WCCP stands for ["Web Cache Communication
-Protocol"](http://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol)
+WCCP stands for
+[Web Cache Communication Protocol](http://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol)
 
 What is good about WCCP? WCCP allows web cache clustering with built in
 fail-over mechanism and semi auto configuration management.
@@ -56,37 +52,33 @@ Compared to the CLI of cisco or juniper it can seem like annoying or
 joke to some but Linux has a very low limit on pps and there for very
 powerful.
 
-  - the cache proxy clusters can sit in a private network despite the
+- the cache proxy clusters can sit in a private network despite the
     fact they serve public addressees.
-    
-      - it is involving natting so take a moment to think about the
-        cost.
+- it is involving natting so take a moment to think about the
+    cost.
 
 We will configure the linux router to mark all web (port 80) traffic(out
 to the net and back). based on the mark we will forward all the traffic
 using routing rule to specific "cache" table. The cache table consist of
 the list of cache proxy available. The routes in the table will be load
-balanced using
-[RoundRobin](/RoundRobin)
+balanced using [RoundRobin](/RoundRobin)
 Algorithm. (later i will maybe will do something more sophisticated)
 
 ## Topology
 
 On the network:
 
-  - all the routing on the edge router is managed VIA routing
-    Daemon(Bird).
-
-  - all the cache proxies have routing Daemon connected to the edge
-    routers to choose the right path\\gw.
-
+- all the routing on the edge router is managed VIA routing
+  Daemon(Bird).
+- all the cache proxies have routing Daemon connected to the edge
+  routers to choose the right path\\gw.
 ![http://www1.ngtech.co.il/squid/cachecluster.png](http://www1.ngtech.co.il/squid/cachecluster.png)
 
 ## Basic assumptions on you
 
 You know the difference between TPROXY and intercept mode of squid.
 
-you do know basic\\advanced Networking.
+you do know basic/advanced Networking.
 
 you do have experience using iptables iproute2(ip) and know a thing or
 two about routing Daemons(Quagga,Openbgpd,Bird)
@@ -109,7 +101,7 @@ You must load them manually to avoid auto-loading of other modules.
 Requirements on ubuntu: Basic ubuntu server ships with iptunnel iproute2
 and all iptables modules needed for the task.
 
-``` highlight
+```bash
 #!/usr/bin/bash
 
 echo "Loading modules.."
@@ -194,8 +186,6 @@ add into squid.conf the next lines:
 
 ## Building Squid
 
-On customed built of squid you must include:
+Squid must have been built with these options to ./configure
 
     --enable-linux-netfilter --enable-wccpv2
-
-  - [CategoryConfigExample](/CategoryConfigExample)

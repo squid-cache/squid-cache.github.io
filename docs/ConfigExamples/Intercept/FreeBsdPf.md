@@ -1,25 +1,20 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Intercepting traffic with PF on FreeBSD
 
 Based on OpenBSD example by Chris Benech
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
 This configuration applies to FreeBSD 8/9, MP kernel and Squid 2.6 or
 later.
 
-**NOTE:** NAT configuration will only work when used **on the squid
-box**. This is required to perform intercept accurately and securely. To
-intercept from a gateway machine and direct traffic at a separate squid
-box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
+> :information_source: 
+    NAT configuration will only work when used **on the squid box**. This
+    is required to perform intercept accurately and securely. To
+    intercept from a gateway machine and direct traffic at a separate squid
+    box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 ## Squid Configuration
 
@@ -32,11 +27,9 @@ like so:
 
     http_port 3129 transparent
 
-  - :warning:
+> :warning:
     In Squid 3.1+ the *transparent* option has been split. Use
-    **'intercept** to catch PF packets.
-
-<!-- end list -->
+    **intercept** to catch PF packets.
 
     http_port 3129 intercept
 
@@ -61,14 +54,12 @@ packets coming in on an internal interface.
 
 Some pointers:
 
-  - Use **rdr pass** instead of **rdr on ...** part of the way that pf
+- Use **rdr pass** instead of **rdr on ...** part of the way that pf
     evaluates packets, it would drop through and be allowed as is
     instead of redirected if you don't use **rdr pass**.
-
-  - If it seems to be ignoring your changes and no redirection is
+- If it seems to be ignoring your changes and no redirection is
     happening, make sure you removed the set **skip on** lines.
-
-  - Make sure and add the **pass in quick** lines. Myself I have two
+- Make sure and add the **pass in quick** lines. Myself I have two
     internal interfaces, one for wired and one for wireless internet.
     Although there is a bridge configured, strange things happen
     sometimes when you don't explicitly allow all traffic on both
@@ -96,5 +87,3 @@ You should now see an output like this:
 
 From there on out, just set your browsers up normally with no proxy
 server, and you should see the cache fill up and your browsing speed up.
-
-[CategoryConfigExample](/CategoryConfigExample)

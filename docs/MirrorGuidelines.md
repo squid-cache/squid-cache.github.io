@@ -1,12 +1,21 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Guidelines for Mirroring the Squid Website and Sources
 
+## Mirrors being phased out
+
+The availability of platforms such as [github](https://github.com) that provide
+free hosting for free software such as squid, we will progressively phase out
+our homegrown mirror platform.
+
+Thanks to all the contributors who supported the project through the years
+with donatins of storage and bandwidth!
+
+## historic information
+
 Please ensure all mirrors use **rsync** to replicate their content.
 
-## Informing us about the mirror
+### Informing us about the mirror
 
 Please send **info at squid-cache.org** an email informing us about your
 mirror if you are mirroring the FTP server or HTTP website. We will
@@ -51,7 +60,7 @@ To terminate a mirror stop the updates and erase all public content from
 the Squid Project. Please also notify the above contact to get scanning
 stopped early.
 
-## Mirrors for www.squid-cache.org
+### Mirrors for www.squid-cache.org
 
 Both IPv4 and/or IPv6 mirrors are accepted.
 
@@ -100,7 +109,7 @@ The squid.conf snippet required is here:
     cache_peer_access master.squid-cache.org allow squidcache
     cache_peer_access master.squid-cache.org deny all
 
-## Mirrors for ftp.squid-cache.org
+### Mirrors for ftp.squid-cache.org
 
 Package archive is split into two sections. An archive containing the
 full history of package releases and a volatile area only containing the

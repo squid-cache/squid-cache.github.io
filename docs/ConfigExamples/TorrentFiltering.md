@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
+*by [YuriVoinov](/YuriVoinov)*
 
-# Introduction
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+# Filtering Bittorrent
 
 ## Outline
 
@@ -18,8 +12,8 @@ To difficult this for users you can first deny download .torrent files.
 
 ## Usage
 
-You can also enforce this task uses [NBAR protocol
-discovery](http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos_nbar/configuration/xe-3s/qos-nbar-xe-3s-book/nbar-protocl-discvry.html)
+You can also enforce this task uses
+[NBAR protocol discovery](http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos_nbar/configuration/xe-3s/qos-nbar-xe-3s-book/nbar-protocl-discvry.html)
 (DPI functionality) in your router (ISR G-2 and above 29xx Cisco series
 or similar). Only Squid can't completely block torrents your wish.
 
@@ -88,17 +82,15 @@ this:
 This configuration, depending which P2P protocol you are specified,
 completely terminates all torrent sessions on border router/firewall.
 
-  - :warning:
+ > :warning:
     You need to have actual NBAR2 protocol pack to do this. To do this
     you need to have subscription for Cisco's service and router which
     is support DPI, like ISR-G2 router (2901 or the similar). And you
     can use Squid to enforce deny download .torrent files via
     HTTP/HTTPS. Both of these methods permit you to block torrents
     almost completely.
-    
-    :warning:
+
+> :warning:
     Also note, to filter encrypted P2P protocols, on most Cisco's
     devices you need to activate SECURITY technology pack or has
     security-enabled iOS version.
-
-[CategoryConfigExample](/CategoryConfigExample)

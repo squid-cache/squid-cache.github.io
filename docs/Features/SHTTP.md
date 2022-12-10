@@ -1,27 +1,23 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: SHTTP (Secure HTTP messaging)
 
-  - **Version**: none
-
-  - **More**: RFC [2660](https://tools.ietf.org/rfc/rfc2660), RFC
-    [8188](https://tools.ietf.org/rfc/rfc8188),
-    [Features/HTTPS](/Features/HTTPS)
+- **Version**: none
+- **More**: RFC [2660](https://tools.ietf.org/rfc/rfc2660), RFC
+  [8188](https://tools.ietf.org/rfc/rfc8188),
+  [Features/HTTPS](/Features/HTTPS)
 
 When a client needs to transmit sensitive content securely over
 potentially insecure or untrusted network connections it can do several
-things;
+things:
 
-  - encrypt communications using the S-HTTP protocol defined in RFC
-    [2660](https://tools.ietf.org/rfc/rfc2660), or
-
-  - encrypt the message payload using HTTP mechanism defined in RFC
-    [8188](https://tools.ietf.org/rfc/rfc8188), or
-
-  - use a TLS encrypted connection (see
-    [Features/HTTPS](/Features/HTTPS))
+- encrypt communications using the S-HTTP protocol defined in RFC
+  [2660](https://tools.ietf.org/rfc/rfc2660), or
+- encrypt the message payload using HTTP mechanism defined in RFC
+  [8188](https://tools.ietf.org/rfc/rfc8188), or
+- use a TLS encrypted connection (see
+  [Features/HTTPS](/Features/HTTPS))
 
 # Encrypted S-HTTP messaging
 
@@ -43,7 +39,4 @@ an external service.
 
 # Encrypted connection
 
-See
-[Features/HTTPS](/Features/HTTPS)
-
-[CategoryFeature](/CategoryFeature)
+See [Features/HTTPS](/Features/HTTPS)

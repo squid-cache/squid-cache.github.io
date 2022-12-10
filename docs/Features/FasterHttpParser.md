@@ -1,26 +1,19 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Faster HTTP parser
 
-  - **Goal**: Improve non-caching Squid3 performance by 20+%
-
-  - **Version**: 3.6
-
-  - **Status**: started
-
-  - **ETA**: 2016
-
-  - **Priority**: 1
-
-  - **Developer**:
-    [AmosJeffries](/AmosJeffries)
-    and
-    [FrancescoChemolli](/FrancescoChemolli)
-
-  - **Feature Branch**: lp:\~squid/squid/parser-ng (old:
-    lp:\~kinkie/squid/http-parser-ng)
+- **Goal**: Improve non-caching Squid3 performance by 20+%
+- **Version**: 3.6
+- **Status**: started
+- **ETA**: 2016
+- **Priority**: 1
+- **Developer**:
+  [AmosJeffries](/AmosJeffries)
+  and
+  [FrancescoChemolli](/FrancescoChemolli)
+- **Feature Branch**: lp:\~squid/squid/parser-ng (old:
+  lp:\~kinkie/squid/http-parser-ng)
 
 # Details
 
@@ -42,7 +35,7 @@ buffer and virtual `parse` method which splits the buffer content into
 message segments for followup processing.
 
 Parsing of mime header block is (for now) handled as char\* strings by
-`HttpMsg}} objects in turn using {{{HttpHeader` objects outside the
+`HttpMsg` objects in turn using `{HttpHeader` objects outside the
 `Parser` hierarchy. This object and all the logics it uses need to be
 refactored to operate on the SBuf presented by Http::One::Parser method
 `mimeHeaders`
@@ -50,159 +43,118 @@ refactored to operate on the SBuf presented by Http::One::Parser method
 The `HttpMsg` hierarchy objects are currently overloaded with two
 purposes;
 
-1.  as general purpose HTTP message state storage objects
-
+1. as general purpose HTTP message state storage objects
 2.  as HTTP and ICAP response message parsing objects
 
 ### going forward
 
 Under review:
 
-  - conversion of ICAP I/O read buffer to SBuf
+- conversion of ICAP I/O read buffer to SBuf
 
 Underway:
 
-  - add HTTP/2 frame parser
-
-  - add ICAP response parser
+- add HTTP/2 frame parser
+- add ICAP response parser
 
 TODO:
 
-  - use the parsed ICAP response to interpret how the ICAP payload
+- use the parsed ICAP response to interpret how the ICAP payload
     segments need to be parsed instead of attempting (badly) to
     auto-detect by throwing the `HttpMsg` parser at it.
-
-  - code using the `HttpMsg` parser needs to be refactored to use the
+- code using the `HttpMsg` parser needs to be refactored to use the
     `Http::Parser` API instead and the duplicate parser removed from
     Squid.
-
-  - refactor the `HttpHeader` parsing logics to use `SBuf` and
+- refactor the `HttpHeader` parsing logics to use `SBuf` and
     `::Parser::Tokenizer` API. Possibly run by the new `Parser` child
     classes.
 
-  - refactor `ChunkedDecoder::parse` to use `SBuf` and
+- refactor `ChunkedDecoder::parse` to use `SBuf` and
     `::Parser::Tokenizer`.
 
 ### current state
 
 After initial structural updates to the Http::Parser hierarchy.
 
-:information_source:
-the stack is asynchronous, now with incremental parse checkpoints
-resumed after read operations.
+> :information_source:
+  the stack is asynchronous, now with incremental parse checkpoints
+  resumed after read operations.
 
 The *request* parsing system `Http1::RequestParser::parse` in Squid-3.6+
 is as follows:
 
-1.  scan to skip over garbage prefix
-    
-      - incremental checkpoint wherever it halts, (start of request-line
-        or empty buffer)
-
-2.  scan to find method
-    
-      - incremental checkpoint at end of method
-
-3.  scan to find URI and version
-    
-      - in relaxed parser scan to find LF then work backwards
-    
-      - in strict parsser scan for SP delimiters with extra checkppoint
+1. scan to skip over garbage prefix 
+1. incremental checkpoint wherever it halts, (start of request-line
+    or empty buffer)
+1. scan to find method
+1. incremental checkpoint at end of method
+1. scan to find URI and version
+    - in relaxed parser scan to find LF then work backwards
+    - in strict parsser scan for SP delimiters with extra checkppoint
         after URI
-    
-      - incremental checkpoint at end of request-line
-
-4.  char\* loop scan for end of header chunk
+    - incremental checkpoint at end of request-line
+1. char\* loop scan for end of header chunk
     (Http1::Parser::findMimeBlock / headersEnd)
-    
-      - incremental checkpoint at end of mime headers block
-
-5.  strcmp / scanf / char\* loops for parsing URL (urlParse)
-
-6.  char\* loop scan for end of each header line
+1. incremental checkpoint at end of mime headers block
+1. strcmp / scanf / char\* loops for parsing URL (urlParse)
+1. char\* loop scan for end of each header line
     ([HttpHeader](/HttpHeader)::parse)
-
-7.  strcmp scan for : delimiter on header name and generate header
+1. strcmp scan for : delimiter on header name and generate header
     objects
-
-8.  strListGet scan for parse of header content options
+1. strListGet scan for parse of header content options
 
 The *response* parsing system `Http1::ResponseParser::parse` in
 Squid-3.6+ is as follows:
 
-1.  scan for message version field
-    
-      - accepting both "HTTP/1.x" and "ICY" protocol versions
-    
-      - if necessary generates a fake HTTP/0.9 reply and terminates
+1. scan for message version field    
+    - accepting both "HTTP/1.x" and "ICY" protocol versions
+    - if necessary generates a fake HTTP/0.9 reply and terminates
         parsing.
-    
-      - incremental checkpoint at end of version label
-
-2.  scan for message status code field
-    
-      - incremental checkpoint at end of status code
-
-3.  scan for end of first line
-    
-      - incremental checkpoint at end of line
-
-4.  char\* loop scan for end of header chunk
+1. incremental checkpoint at end of version label
+1. scan for message status code field
+1. incremental checkpoint at end of status code
+1. scan for end of first line
+1. incremental checkpoint at end of line
+1. char\* loop scan for end of header chunk
     (Http1::Parser::findMimeBlock / headersEnd)
-    
-      - incremental checkpoint at end of mime headers block
-
-5.  char\* loop scan for end of header chunk
+1. incremental checkpoint at end of mime headers block
+1. char\* loop scan for end of header chunk
     ([HttpMsg](/HttpMsg)::httpMsgIsolateStart)
-
-6.  strcmp scan for : delimiter on header name and generate header
+1.  strcmp scan for : delimiter on header name and generate header
     objects
     ([HttpHeader](/HttpHeader)::parse)
-
-7.  strListGet scan for parse of header content options
+1.  strListGet scan for parse of header content options
 
 The ICAP *response* parsing system
 `Adaptation::Icap::ResponseParser::parse` in parser-ng-icap-pt2 branch
 is as follows:
 
-:information_source:
+> :information_source:
 class inherits from the `Http1::ResponseParser` parser, but replaces the
 stage 1 version scan with an ICAP specific scan.
 
-1.  scan for message version field
-    
-      - accepting "ICAP/1.0" protocol version only
-    
-      - incremental checkpoint at end of version label
-
-2.  scan for message status code field
-    
-      - incremental checkpoint at end of status code
-
-3.  scan for end of first line
-    
-      - incremental checkpoint at end of line
-
-4.  char\* loop scan for end of header chunk
+1. scan for message version field 
+    - accepting "ICAP/1.0" protocol version only
+    - incremental checkpoint at end of version label
+1.  scan for message status code field
+1. incremental checkpoint at end of status code
+1.  scan for end of first line
+1. incremental checkpoint at end of line
+1.  char\* loop scan for end of header chunk
     (Http1::Parser::findMimeBlock / headersEnd)
-    
-      - incremental checkpoint at end of mime headers block
-
-5.  char\* loop scan for end of header chunk
+1. incremental checkpoint at end of mime headers block
+1.  char\* loop scan for end of header chunk
     ([HttpMsg](/HttpMsg)::httpMsgIsolateStart)
-
-6.  strcmp scan for : delimiter on header name and generate header
+1.  strcmp scan for : delimiter on header name and generate header
     objects
     ([HttpHeader](/HttpHeader)::parse)
+1.  strListGet scan for parse of header content options
 
-7.  strListGet scan for parse of header content options
-
-:warning:
-NOTE: Parsing of ICAP response messages and payload segments still uses
-the old `HttpMsg` API documented below for HTTP responses, when the
-payload segment is a request it uses the
-[HttpMsg](/HttpMsg)::parse
-request-line code paths.
+> :warning:
+    NOTE: Parsing of ICAP response messages and payload segments still uses
+    the old `HttpMsg` API documented below for HTTP responses, when the
+    payload segment is a request it uses the
+    [HttpMsg](/HttpMsg)::parse request-line code paths.
 
 ### the baseline situation
 
@@ -215,7 +167,7 @@ parser stack to be as follows:
 entire stack is asynchronous with a full reset to step 1 after read
 operation where the message was incompletely received.
 
-1.  scan to skip over garbage prefix
+1. scan to skip over garbage prefix
 
 2.  parse request line to find LF, and invalid CR and NIL
     ([HttpParser](/HttpParser)::parseRequestLine)
@@ -258,14 +210,14 @@ operation where the message was incompletely received.
 The parse sequences join at header line parsing (step 6), with some
 crossover at sanity checks (step 3). *response* parsing is as follows:
 
-1.  processReplyHeader calls
+1. processReplyHeader calls
     [HttpMsg](/HttpMsg)::parse
     
       - discarding all previous parse information \!\!
     
     <!-- end list -->
     
-    1.  char\* loop scan for end of header chunk (headersEnd)
+    1. char\* loop scan for end of header chunk (headersEnd)
     
     2.  sscanf re- scan and sanity check first line
         ([HttpReply](/HttpReply)::sanityCheck)
@@ -311,7 +263,3 @@ TODO: document the ICAP response parsing sequence. Despite visible
 efforts to make it simple that is even worse than HTTP response parsing
 due to its need to run the whole of the response AND request parsing
 chains above on payloads to auto-detect which will succeed.
-
-[CategoryFeature](/CategoryFeature)
-|
-[CategoryWish](/CategoryWish)

@@ -1,15 +1,10 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 FaqSection: operation
 ---
 # Caching Windows Updates
 
 by Yuri Voinov
-
-Warning: Any example presented here is provided "as-is" with no support
-or guarantee of suitability. If you have any further questions about
-these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -31,7 +26,7 @@ Paste the configuration file like this:
     refresh_pattern -i microsoft.com.akadns.net/.*\.(cab|exe|ms[i|u|f|p]|[ap]sf|wm[v|a]|dat|zip|psf) 43200 80% 129600 reload-into-ims
     refresh_pattern -i deploy.akamaitechnologies.com/.*\.(cab|exe|ms[i|u|f|p]|[ap]sf|wm[v|a]|dat|zip|psf) 43200 80% 129600 reload-into-ims
 
-# Troubleshooting
+## Troubleshooting
 
 ## How do I make Windows Updates cache?
 
@@ -44,45 +39,39 @@ yet.
 A mix of configuration options are required to force caching of range
 requests. Particularly when large objects are involved.
 
-  - **[maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)**.
+- **[maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)**.
     Default value is a bit small. It needs to be somewhere 100MB or
-    higher to cope with the IE updates.
-    
-      - :warning: Windows 8.1 upgrade pack requires up to 5GB objects
-        to be cached. It will however, cache nicely provided the size
-        limit is set high enough.
-
-  - **[range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)**.
+higher to cope with the IE updates.
+- **[range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)**.
     Does the main work of converting range requests into cacheable
     requests. Use the same size limit as
     [maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     to prevent conversion of requests for objects which will not cache
-    anyway. With
-    [Squid-3.2](/Squid-3.2)
+    anyway. With    [Squid-3.2](/Releases/Squid-3.2)
     or later use the **windowsupdate** ACL list defined below to apply
     this offset limit only to windows updates.
-
-  - **[quick_abort_min](http://www.squid-cache.org/Doc/config/quick_abort_min)**.
+- **[quick_abort_min](http://www.squid-cache.org/Doc/config/quick_abort_min)**.
     May need to be altered to allow the full object to download when the
     client software disconnects. Some Squid releases let
     [range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)
     override properly, some have weird behavior when combined.
 
-<!-- end list -->
-
     range_offset_limit 200 MB windowsupdate
     maximum_object_size 200 MB
     quick_abort_min -1
 
+> :warning: Windows 8.1 upgrade pack requires up to 5GB objects
+    to be cached. It will however, cache nicely provided the size
+    limit is set high enough.
+
 > :information_source:
     Due to the slow-down problem below we recommend service packs be
     handled specially:
-    
-      - Extend the maximum cached object size to the required size, then
-        run a full download on a single machine, then run on a second
-        machine to verify the cache is being used. Only after this
-        verification succeeds open updating to all other machines
-        through the proxy.
+    Extend the maximum cached object size to the required size, then
+    run a full download on a single machine, then run on a second
+    machine to verify the cache is being used. Only after this
+    verification succeeds open updating to all other machines
+    through the proxy.
 
 ## Preventing Early or Frequent Replacement
 
@@ -124,13 +113,10 @@ So adding it to the original Squid settings to do with
 we get:
 
     # Add one of these lines for each of the websites you want to cache.
-    
     refresh_pattern -i microsoft.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
-    
     refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
-    
     refresh_pattern -i windows.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
-    
+
     
     # DONT MODIFY THESE LINES
     refresh_pattern ^ftp:           1440    20%     10080
@@ -146,8 +132,7 @@ I also recommend a 30 to 60GB
 [cache_dir](http://www.squid-cache.org/Doc/config/cache_dir) size
 allocation, which will let you download tonnes of windows updates and
 other stuff and then you won't really have any major issues with cache
-storage or cache allocation or any other issues to do with the cache. .
-.
+storage or cache allocation or any other issues to do with the cache.
 
 ## Why does it go so slowly through Squid?
 
@@ -209,9 +194,10 @@ The above config is also useful for other automatic update sites such as
 Anti-Virus vendors, just add their domains to the
 [acl](http://www.squid-cache.org/Doc/config/acl).
 
-|                                                                        |                                                                                                                                                                                                                     |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :information_source: | If you have squid listening on a localhost port with other software in front (ie dansGuardian). You will probably need to add permission for **localhost** address so the front-end service can relay the requests. |
+> :information_source:
+    If you have squid listening on a localhost port with other software in
+    front (ie dansGuardian). You will probably need to add permission
+    for **localhost** address so the front-end service can relay the requests.
 
     ...
     http_access allow CONNECT wuCONNECT localnet
@@ -287,17 +273,14 @@ To reset proxy settings for WinHTTP use:
   - *by Yuri Voinov*
 
 In modern setups with Squid, Windows Update cannot be check updates with
-error
-"[WindowsUpdate](/WindowsUpdate)_80072F8F"
+error "[WindowsUpdate](/WindowsUpdate)_80072F8F"
 or similar.
 
 WU now uses its own pinned SSL certificate and must be spliced to work.
 When you use sniffer, you can see many IP's with relatively big
 subnetworks. This leads to problems with a
-[Squid-3.4](/Squid-3.4)
-and causes serious problems when using
-[Squid-3.5](/Squid-3.5)
-or above.
+[Squid-3.4](/Squid-3.4) and causes serious problems when using
+[Squid-3.5](/Squid-3.5) or above.
 
 To use splicing, you need to know the names of the servers, however, a
 recursive DNS query does not give a result.
@@ -330,41 +313,36 @@ and you do not need to know all the IP authorization server for updates.
     SQUID_X509_V_ERR_DOMAIN_MISMATCH error via Akamai. To do WU,
     you can require to add this into your Squid's config:
 
-<!-- end list -->
+        acl BrokenButTrustedServers dstdomain "/usr/local/squid/etc/dstdom.broken"
+        acl DomainMismatch ssl_error SQUID_X509_V_ERR_DOMAIN_MISMATCH
+        sslproxy_cert_error allow BrokenButTrustedServers DomainMismatch
+        sslproxy_cert_error deny all
 
-    acl BrokenButTrustedServers dstdomain "/usr/local/squid/etc/dstdom.broken"
-    acl DomainMismatch ssl_error SQUID_X509_V_ERR_DOMAIN_MISMATCH
-    sslproxy_cert_error allow BrokenButTrustedServers DomainMismatch
-    sslproxy_cert_error deny all
+    and add this to **dstdom.broken**:
 
-and add this to **dstdom.broken**:
-
-    download.microsoft.com
-    update.microsoft.com
-    update.microsoft.com.akadns.net
-    update.microsoft.com.nsatc.net
+        download.microsoft.com
+        update.microsoft.com
+        update.microsoft.com.akadns.net
+        update.microsoft.com.nsatc.net
 
 > :information_source:
     **NOTE:** Depending your Squid's configuration, you may need to
     change your Squid's cipher configuration to this one:
 
-<!-- end list -->
+        sslproxy_cipher HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
 
-    sslproxy_cipher HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
+    and add this one to your bumped port's configuration:
 
-and add this one to your bumped port's configuration:
+        cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
 
-    cipher=HIGH:MEDIUM:RC4:3DES:!aNULL:!eNULL:!LOW:!MD5:!EXP:!PSK:!SRP:!DSS
+    3DES and RC4 required to connect to WU and - **attention!** - Skype
+    assets site.
 
-3DES and RC4 required to connect to WU and - **attention!** - Skype
-assets site.
+> :warning:
+    Some updates cannot be cached due to splice above. Beware!
 
-  - :warning:
-    **WARNING:** Some updates cannot be cached due to splice above.
-    Beware!
-
-  - :warning:
-    **WARNING:** Adding 3DES and, especially, RC4, produces potentially
+> :warning:
+    Adding 3DES and, especially, RC4, produces potentially
     weak ciphers via client and WU/Skype and some other sites. Be
     careful!
 

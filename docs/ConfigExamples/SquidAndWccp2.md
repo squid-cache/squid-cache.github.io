@@ -1,12 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Squid and WCCPv2 to a 7206VXR
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -66,78 +61,6 @@ router and travel to upstreams.
     access-list 190 permit tcp 10.15.128.0 0.0.63.255 any eq 8000
     access-list 190 permit tcp 10.15.128.0 0.0.63.255 any eq 8080
 
-## Modifying the Debian Squid package
-
-At the time of this writing, Debian GNU/Linux ships Squid 2.6STABLE5
-with a maximum number of file descriptors of 4096. We needed to increase
-the number of file descriptors to more than 4096 (the maximum number of
-file descriptors seems to be below 6000), which can only be accomplished
-recompiling squid. We increased the maximum number of file descriptors
-in the debian package to 16384 but will configure squid to use only
-8192. For simplicity we want the apt package manager to handle squid, so
-we build a new debian package with a higher number of file descriptors.
-For this:
-
-    $ cd /usr/local/src
-    $ apt-get source squid
-    $ cd squid-2.6.5
-    < edit debian/rules debian/default debian/squid.rc >
-
-The changes are:
-
-    --- squid-2.6.5-orig/debian/default.squid       2007-03-05 10:06:19.000000000 -0400
-    +++ squid-2.6.5/debian/default.squid    2007-03-05 10:11:11.000000000 -0400
-    @@ -3,6 +3,6 @@
-     #
-    
-     # Max. number of filedescriptors to use. You can increase this on a busy
-    -# cache to a maximum of (currently) 4096 filedescriptors. Default is 1024.
-    +# cache to a maximum of (currently) 16384 filedescriptors. Default is 1024.
-     SQUID_MAXFD=1024
-    
-    diff -Naur squid-2.6.5-orig/debian/rul10.es squid-2.6.5/debian/rules
-    --- squid-2.6.5-orig/debian/rules       2007-03-05 10:06:19.000000000 -0400
-    +++ squid-2.6.5/debian/rules    2007-03-05 10:11:02.000000000 -0400
-    @@ -149,8 +149,8 @@
-            --with-large-files \
-            $(DEB_HOST_ARCH_CPU)-debian-$(DEB_HOST_ARCH_OS)
-     ifeq ($(DEB_HOST_ARCH_OS), linux)
-    -       # Force 4096 filedescriptors
-    -       perl -pi -e 's/^#define SQUID_MAXFD.*/#define SQUID_MAXFD 4096/;' \
-    +       # Force 16384 filedescriptors
-    +       perl -pi -e 's/^#define SQUID_MAXFD.*/#define SQUID_MAXFD 16384/;' \
-                    include/autoconf.h
-     endif
-    
-    diff -Naur squid-2.6.5-orig/debian/squid.rc squid-2.6.5/debian/squid.rc
-    --- squid-2.6.5-orig/debian/squid.rc    2007-03-05 10:06:19.000000000 -0400
-    +++ squid-2.6.5/debian/squid.rc 2007-03-05 10:11:28.000000000 -0400
-    @@ -61,9 +61,9 @@
-     maxfds () {
-            [ -n "$SQUID_MAXFD" ] || return
-            [ -f /proc/sys/fs/file-max ] || return 0
-    -       [ $SQUID_MAXFD -le 4096 ] || SQUID_MAXFD=4096
-    +       [ $SQUID_MAXFD -le 16384 ] || SQUID_MAXFD=16384
-            global_file_max=`cat /proc/sys/fs/file-max`
-    -       minimal_file_max=$(($SQUID_MAXFD + 4096))
-    +       minimal_file_max=$(($SQUID_MAXFD + 16384))
-            if [ "$global_file_max" -lt $minimal_file_max ]
-            then
-                    echo $minimal_file_max > /proc/sys/fs/file-max
-
-    $ cd squid-2.6.5
-    $ dpkg-buildpackage -rfakeroot -uc -b
-
-The last command produces debian packages: squid_2.6.5-4_i386.deb and
-squid-common_2.6.5-4_all.deb
-
-Install both packages in the proxy server:
-
-dpkg -i squid_2.6.5-4_i386.deb squid-common_2.6.5-4_all.deb
-
-change /etc/default/squid to:
-
-SQUID_MAXFD=8192
 
 ## Squid Configuration File
 
@@ -309,8 +232,6 @@ loosely sorted so that rules with more hits are higher up:
     COMMIT
     # Completed on Wed Mar 14 14:56:26 2007
 
-## Thanks to
+## Thanks
 
 Thanks to Nicolas Ruiz \<<nicolas@ula.ve>\> for his contribution.
-
-[CategoryConfigExample](/CategoryConfigExample)

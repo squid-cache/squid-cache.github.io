@@ -1,18 +1,17 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring a Squid Server to authenticate against Kerberos
 
 by *Markus Moeller*
 
-    :warning: Need to extract linked images and embed them
+> :warning: Need to extract linked images and embed them
 
 ## Outline
 
 Two helpers are bundled with the Squid sources:
-  - `negotiate_kerberos_auth` for Squid running on Unix/Linux systems
-  - `mswin_negotiate_auth.exe` ffor Squid running on Windows systems
+- `negotiate_kerberos_auth` for Squid running on Unix/Linux systems
+- `mswin_negotiate_auth.exe` ffor Squid running on Windows systems
 
 The following documentation applies to the helper Unix/Linux systems.
 The Windows helper doesnot need any kind of configuration, it works just
@@ -25,8 +24,8 @@ https://code.google.com/p/msktutil/, or install [Samba](http://www.samba.org/)
 
 ## krb5.conf Configuration
 
-- :warning: In IE the proxy must be specified as FQDN not as an IP-address
-- :information_source: `rc4-hmac` should be listed as encryption type for windows 2003.
+> :warning: In IE the proxy must be specified as FQDN not as an IP-address
+> :information_source: `rc4-hmac` should be listed as encryption type for windows 2003.
 
 A minimal setup without DNS resolution of AD servers would be (MIT
 Kerberos example):
@@ -72,23 +71,19 @@ Kerberos example):
     samba net join use another computer name than the hostname used by
     net join)
 
-```
-  kinit administrator@DOMAIN
-    
-    msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose
-```
+        kinit administrator@DOMAIN
+        msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose
+
     or for Windows 2008 for AES support
-```
-    msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
+
+        msktutil -c -b "CN=COMPUTERS" -s HTTP/<fqdn> -h <fqdn> -k /etc/squid/HTTP.keytab --computer-name squid-http --upn HTTP/<fqdn> --server <domain controller> --verbose --enctypes 28
 ```
 
-  - :warning: beware the wrap! above `mskutil` options are meant to be on one
-    line.
-  - :warning: beware that \<computer-name\> has Windows Netbios limitations of 15
+> :warning: \<computer-name\> has Windows Netbios limitations of 15
     characters.
-  - :warning: `msktutil` requires the `cyrus-sasl-gssapi` ldap plugin to authenticate to
+> :warning: `msktutil` requires the `cyrus-sasl-gssapi` ldap plugin to authenticate to
     AD ldap.
-  - :warning: because of a bug in `msktutil` 0.3.16 the \<computer-name\> must be
+> :warning: because of a bug in `msktutil` 0.3.16 the \<computer-name\> must be
     lowercase
 
 OR with Samba
@@ -107,7 +102,7 @@ net ads keytab ADD HTTP
 unset KRB5_KTNAME
 ```
 
-- :warning: Do not use this method if you run winbindd or other samba services
+> :warning: Do not use this method if you run winbindd or other samba services
   as samba will reset the machine password every x days and thereby
   makes the keytab invalid !
 

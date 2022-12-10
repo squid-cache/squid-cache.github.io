@@ -52,7 +52,6 @@ Configuration file to include.
     This needs to be done before any restrictive CONNECT http_access
     controls.
 
-
     acl numeric_IPs dstdom_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9a-f]+)?:([0-9a-f:]+)?:([0-9a-f]+|0-9\.]+)?\])):443
     acl Skype_UA browser ^skype
     
