@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Transparent Proxy Selective Bypass
 
@@ -22,13 +21,13 @@ This requirement also determines what kind of filtering is possible;
 generally speaking this restricts to only using network-level checks:
 typically destination IP address and TCP port.
 
-**Example**
+## Example
 
 When running on a Linux host, interception will typically be handled,
 via an `iptables` `REDIRECT` or `DNAT` rule, as detailed in
-[ConfigExamples/Intercept/LinuxRedirect](/ConfigExamples/Intercept/LinuxRedirect)
+[Config Examples: Linux Redirect](/ConfigExamples/Intercept/LinuxRedirect)
 or
-[ConfigExamples/Intercept/LinuxDnat](/ConfigExamples/Intercept/LinuxDnat).
+[Config Examples: Linux DNAT](/ConfigExamples/Intercept/LinuxDnat).
 
 To add an exception allowing direct access to www.example.com, the
 iptables configuration example in that page should be changed like this:
@@ -49,7 +48,7 @@ intercept.
 For details on setting iptables up and the meaning of the various flags
 and options, please see the iptables documentation.
 
-**Problems with the solution**
+## Problems with this solution
 
 As a side effect, all sites served from the same IP address as
 www.example.com, will be directly accessible as well. At this time, this
@@ -57,6 +56,3 @@ is an unavoidable side-effect using general-purpose technologies;
 workarounds such as the one shown at
 [LinuxQuestions](http://www.linuxquestions.org/questions/linux-networking-3/url-blocking-via-iptables-655678/)
 are not reliable and should not be deployed.
-
-  - 
-    [SquidFaq/TroubleShooting](/SquidFaq/TroubleShooting)

@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Too Many Queued Requests
 
@@ -11,15 +10,11 @@ too many queued requests.
 
 ## Symptoms
 
-  - FATAL: Too many queued ntlmauthenticator requests
-
-  - FATAL: Too many queued negotiateauthenticator requests
-
-  - FATAL: Too many queued basicauthenticator requests
-
-  - FATAL: Too many queued digestauthenticator requests
-
-  - FATAL: Too many queued redirector requests
+- `FATAL: Too many queued ntlmauthenticator requests`
+- `FATAL: Too many queued negotiateauthenticator requests`
+- `FATAL: Too many queued basicauthenticator requests`
+- `FATAL: Too many queued digestauthenticator requests`
+- `FATAL: Too many queued redirector requests`
 
 ## Explanation
 
@@ -46,25 +41,20 @@ also has an annoyingly low capacity.
 
 ## Workaround
 
-  - concurrency - certain helper types are able to be made concurrent.
+- concurrency - certain helper types are able to be made concurrent.
     These are basic auth, external ACL, URL re-write and redirect
     helpers. Annoyingly these are the helpers where this problem occurs
     least anyway. Raising concurrency is better than children, up to a
     point. There is a [helper
     multiplexer](/Features/HelperMultiplexer)
     available to easily add support to any existing helper.
-
-  - NTLM / Negotiate - if you hit this your only choice is to raise the
+- NTLM / Negotiate - if you hit this your only choice is to raise the
     number of helpers used. The protocols for these helpers do not
     support concurrency.
-
-  - [Squid-3.2](/Releases/Squid-3.2)
+- [Squid-3.2](/Releases/Squid-3.2)
     and later have a *dynamic helper* feature which allows
     administrators to configure minimum and maximum helper numbers.
     Squid will attempt to run the minimum, but if traffic load requires
     more helpers they will be started. Up until the maximum is reached.
     If traffic exceeds the maximum helper this message may start
     appearing again.
-
-
-[CategoryErrorMessages](/CategoryErrorMessages)

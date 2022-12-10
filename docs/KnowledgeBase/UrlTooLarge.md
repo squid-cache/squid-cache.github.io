@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # URL Too Large
 
@@ -11,9 +10,8 @@ willing to handle. The size detected is indicated following the message.
 
 ## Symptoms
 
-  - urlParse: URL too large
-
-  - AnyP::Uri::parse: URL too large
+- `urlParse: URL too large`
+- `AnyP::Uri::parse: URL too large`
 
 ## Explanation
 

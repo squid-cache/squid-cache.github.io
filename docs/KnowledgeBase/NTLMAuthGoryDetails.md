@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Client-Squid NTLM authentication protocol description
 
@@ -15,8 +14,7 @@ Server-side it is supported by Microsoft Proxy / ISA Server (of course),
 Squid version 2.5 (only NTLMv1 up to Squid 2.5STABLE5), and via an
 Apache 1.3 module
 [mod_ntlm_winbind](http://download.samba.org/ftp/unpacked/lorikeet/trunk/mod_ntlm_winbind/)
-is available from [Samba's lorkikeet
-repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
+is available from [Samba's lorkikeet repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
 
 ## The mechanics of NTLM authentication
 
@@ -25,9 +23,8 @@ repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
     most Basic authentication implementations which will supply
     authentication information automatically for all connections after a
     successful authentication is performed.
-
-2.  The server returns a 407 status code, along with an header: ` 
-    Proxy-Authenticate: NTLM  ` No realm, domain or anything is
+2.  The server returns a 407 status code, along with an header: 
+    `Proxy-Authenticate: NTLM  ` No realm, domain or anything is
     specified. Of course, additional Proxy-Authenticate headers might be
     supplied to announce other supported authentication schemes. There
     is a bug in all version of Microsoft Internet Explorer by which the
@@ -36,12 +33,10 @@ repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
     MUST choose to use the strongest auth scheme it understands" and
     NTLM, while broken in many ways, is still worlds stronger than
     Basic.
-
 3.  At this point, Squid disconnects the connection, forcing the client
     to initiate a new connection, regardless of any keep-alive
     directives from the client. This is a bug-compatibility issue. It
     may not be required with HTTP/1.1, but there's no way to make sure.
-
 4.  The client re connects and issues a GET-request, this time with an
     accompanying `Proxy-Authorization: NTLM some_more_stuff` header,
     where some_more_stuff is a base64-encoded negotiate packet. The
@@ -53,14 +48,12 @@ repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
     since all subsequent authentication-related information is tied to
     the TCP connection. If it's dropped, it's back to square one,
     authentication-wise.
-
 5.  The client sends a new GET-request, along with an header:
     `Proxy-Authenticate: NTLM cmon_we_are_almost_done` where
     cmon_we_are_almost_done is an authenticate packet. The packet
     includes informations about the user name and domain, the challenge
     nonce encoded with the user's password (actually it MIGHT contain it
     encoded TWICE using different algorithms).
-
 6.  Either the server denies the authentication via a 407/DENIED or
     403/DENIED return code, and we're back to square one, or it returns
     the requested resource. From now on, until the TCP connection is
@@ -68,8 +61,7 @@ repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
     the proxy. The TCP connection is marked as "OK", and the client
     expects that it can pump whatever it wants.
 
-## External resources
+## See Also
 
-  - <http://www.innovation.ch/personal/ronald/ntlm.html>
-
-  - <http://davenport.sourceforge.net/ntlm.html>
+- <http://www.innovation.ch/personal/ronald/ntlm.html>
+- <http://davenport.sourceforge.net/ntlm.html>

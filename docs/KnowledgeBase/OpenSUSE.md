@@ -1,33 +1,26 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Squid on OpenSUSE
 
-## Pre-Built Binary Packages
+## Latest Package
 
-**Maintainer:** appears to be Christian Wittmer
-
-**Bug Reporting:**
-<https://bugzilla.novell.com/buglist.cgi?quicksearch=squid>
-
-**Latest Package:**
 <https://build.opensuse.org/package/show/server:proxy/squid>
 
-### Squid-3.5
+## Bug Reporting
 
-<https://software.opensuse.org/package/squid>
+<https://bugzilla.novell.com/buglist.cgi?quicksearch=squid>
+
 
 Install Procedure:
 
 # Compiling
 
-  - :warning:
+> :warning:
     There is just one known problem. The Linux system layout differs
     markedly from the Squid defaults. The following ./configure options
     are needed to install Squid into the OpenSUSE structure properly:
 
-<!-- end list -->
 
 ``` 
  --prefix=/usr
@@ -42,8 +35,3 @@ Install Procedure:
  --with-swapdir=/var/cache/squid
  --with-pidfile=/var/run/squid.pid
 ```
-
-# Troubleshooting
-
-
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)

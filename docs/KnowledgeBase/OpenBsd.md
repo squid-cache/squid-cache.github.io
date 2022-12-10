@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: KB
 ---
 # Squid on OpenBSD
 
@@ -35,12 +34,11 @@ installed with "**pkg_add squid-ldap**". msktutil is also available in
 packages and may be helpful to users wanting to integrate with Microsoft
 authentication via Kerberos.
 
-If using Squid as an
-[InterceptionProxy](/InterceptionProxy),
+If using Squid as an [InterceptionProxy](/InterceptionProxy),
 note that the packages are built using --enable-ipfw-transparent which
 is the preferred method on OpenBSD. Use this with "divert-to" rules in
-PF. More information is available in the [package's README
-file](http://www.openbsd.org/cgi-bin/cvsweb/ports/www/squid/pkg/README-main?content-type=text%2Fplain).
+PF. More information is available in the package's
+[README file](http://www.openbsd.org/cgi-bin/cvsweb/ports/www/squid/pkg/README-main?content-type=text%2Fplain).
 
 OpenBSD releases are made approximately every 6 months. Typically
 packages are only updated in "-current" (development snapshots) but
@@ -51,8 +49,8 @@ version is available and "**rcctl restart squid**" to restart.
 
 ## Building from ports
 
-If you need to add patches or modify the build, follow the [ports
-FAQ](https://www.openbsd.org/faq/ports/ports.html) to checkout the ports
+If you need to add patches or modify the build, follow the
+[ports FAQ](https://www.openbsd.org/faq/ports/ports.html) to checkout the ports
 tree, then the following will build Squid from ports, create a package
 and install it:
 
@@ -81,8 +79,7 @@ use in OpenBSD.
 ## Compiling outside ports
 
 To build squid for standard use, no particular method should be needed.
-See
-[SquidFaq/CompilingSquid](/SquidFaq/CompilingSquid)
+See [Compiling Squid](/SquidFaq/CompilingSquid)
 for detailed instructions.
 
 The following may be outdated: If you plan to do development on squid,
@@ -98,6 +95,3 @@ recommended. If you do use this for some reason, note that the userid
 running Squid requires \*write\* access against /dev/pf to invoke the
 ioctl() to do a NAT lookup. For this method, use "rdr-to" PF rules to
 pass the traffic to squid.
-
-
-[SquidFaq/BinaryPackages](/SquidFaq/BinaryPackages)
