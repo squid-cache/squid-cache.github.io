@@ -1,12 +1,8 @@
-{%- comment -%}
-NOT YET WORKING
-
-Create one page per category with the exact same contents.
-Jekyll will figure out the rest
-{%- endcomment -%}
 {%- assign category = page.name | split: "" | reverse | slice: 3, 100 | reverse | join: "" -%}
+{%- assign pages_in_category = site.pages | where_exp: "page", "page.categories contains category" | sort: "title" -%}
+
 # Pages in category {{ category }}
-Categories: {{ site.categories | json_encode }}
-{% for post in site.categories.ConfigExample %}
-- {{ post.url }}
+
+{% for p in pages_in_category -%}
+* [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
 {% endfor %}

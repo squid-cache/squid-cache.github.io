@@ -1,14 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: ConfigExample
 ---
 # Linux traffic Interception with Squid and the Browser on the same box
 
   - *by Joshua N Pritikin*
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -57,4 +52,3 @@ like so:
 
     http_port 3127 intercept
 
-[CategoryConfigExample](/CategoryConfigExample)
