@@ -33,7 +33,7 @@ which iptables will be able to intercept\\tproxy.
 
 A picture of the netfilter flow to illustrate:
 
-[![netfilter packet flow illustration](http://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)](http://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg)
+![netfilter packet flow illustration](http://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)
 
 ## ebtables Configuration Rules
 
@@ -42,7 +42,7 @@ Bridging configuration in Linux is done with the *ebtables* utility.
 You also need to follow all the steps for setting up the Squid box as a
 router device. These bridging rules are additional steps to move packets
 from bridging mode to routing mode:
-
+```bash
     ## interface facing clients
     CLIENT_IFACE=eth0
     
@@ -75,9 +75,7 @@ from bridging mode to routing mode:
       unset i
     fi
 
-  - :warning:
+ > :warning:
     The bridge interfaces also need to be configured with public IP
     addresses for Squid to use in its normal operating traffic (DNS,
     ICMP, TPROXY failed requests, peer requests, etc)
-
-[CategoryConfigExample](/CategoryConfigExample)
