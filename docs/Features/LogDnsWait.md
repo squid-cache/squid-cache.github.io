@@ -1,20 +1,16 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: DNS wait time logging for access.log
 
-  - **Goal**: Provide per-transaction DNS delay information for
-    post-mortem analysis.
+- **Goal**: Provide per-transaction DNS delay information for
+  post-mortem analysis.
+- **Status**: In progress
+- **Version**: 3.2
+- **Developer**:
+  [AlexRousskov](/AlexRousskov)
 
-  - **Status**: In progress
-
-  - **Version**: 3.2
-
-  - **Developer**:
-    [AlexRousskov](/AlexRousskov)
-
-# Overview
+## Overview
 
 A *master transaction* is all Squid activities associated with handling
 of a single incoming HTTP request. A master transaction may include
@@ -39,7 +35,7 @@ As any time­-related log field, the DNS wait time precision is a few
 milliseconds at best, due to infrequent updates of the Squid internal
 clock and event processing delays.
 
-# Implementation ideas
+## Implementation ideas
 
 Master transaction stats are accumulated in *HttpRequest* or its
 members. We can create a *MasterDnsStats* class to maintain DNS
@@ -62,13 +58,10 @@ time, the logged value is increased by *current_time-start* difference.
 
 It may be difficult to locate the master transaction from where DNS
 lookups are initiated or finished. Solving this puzzle may help properly
-fix Squid [bug
-\#2459](https://bugs.squid-cache.org/show_bug.cgi?id=2459).
+fix Squid [bug 2459](https://bugs.squid-cache.org/show_bug.cgi?id=2459).
 
-# Availability
+## Availability
 
 The development is done on Squid3 trunk, targeting official v3.2
 inclusion. The feature is also unofficially ported to
 [v3.1](https://code.launchpad.net/~rousskov/squid/3p1-plus).
-
-[CategoryFeature](/CategoryFeature)

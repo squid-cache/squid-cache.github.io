@@ -1,10 +1,10 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
----
-# Important update (06/03/2017)
+categories: [ConfigExample]
 
-  - :warning:
+---
+# Control access to Skype through Squid
+
+> :warning:
     Important update (06/03/2017) to prevent this article misleading you
     to the assumption that you indded got to the right place.
 
@@ -19,17 +19,11 @@ belive that NTOP have some more details on how to somehow make skype
 work or be blocked in some cases. I recommend peeking at theri at:
 <https://github.com/ntop/nDPI/search?utf8=✓&q=skype>
 
-# Skype Access Controls
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
-
 ## Squid Configuration File
 
 Configuration file to include.
 
-  - :warning:
+> :warning:
     Since FTP uses numeric IPs the Skype ACL must be exact including the
     port.
 
@@ -43,24 +37,21 @@ Configuration file to include.
     http_access deny numeric_IPS
     http_access deny Skype_UA
 
-  - :warning:
+> :warning:
     Recent releases of Skype have been evading the above restriction by
     not sending their User-Agent headers and using domain names. The
     following can be used to catch those installs, but be aware it will
     likely also catch other agents.
-
-<!-- end list -->
 
     acl validUserAgent browser \S+
     http_access deny !validUserAgent
 
 ### Permitting
 
-  - :warning:
+ > :warning:
     This needs to be done before any restrictive CONNECT http_access
     controls.
 
-<!-- end list -->
 
     acl numeric_IPs dstdom_regex ^(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)|(\[([0-9a-f]+)?:([0-9a-f:]+)?:([0-9a-f]+|0-9\.]+)?\])):443
     acl Skype_UA browser ^skype
@@ -77,8 +68,8 @@ will break that policy.
 
 ### Metro Skype WIndows 10
 
-:warning:
-This is required to Skype work if Squid SSL-Bump aware.
+> :warning:
+  This is required to Skype work if Squid SSL-Bump aware.
 
 Add this domains to splice ACL then reconfigure Squid:
 
@@ -98,5 +89,3 @@ squid.conf part should looks like this:
 
     acl NoSSLIntercept ssl::server_name_regex "/usr/local/squid/etc/acl.url.nobump"
     ssl_bump splice NoSSLIntercept
-
-[CategoryConfigExample](/CategoryConfigExample)

@@ -1,12 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring Squid to Accelerate/ACL RPC over HTTP
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -21,21 +16,19 @@ access..
 The example situation involves a single Outlook Web Access server and a
 single Squid server. The following information is required:
 
-  - The IP of the Squid server (ip_of_squid)
-
-  - The 'public' domain used for RPC Access (rpc_domain_name)
-
-  - The IP of the Exchange (RPC) server (ip_of_exchange_server)
-
-  - SSL Certificate to present to Exchange Server (/path/to/certificate)
-
-  - SSL certificate to present to Clients (/path/to/clientcertificate)
+- The IP of the Squid server (ip_of_squid)
+- The 'public' domain used for RPC Access (rpc_domain_name)
+- The IP of the Exchange (RPC) server (ip_of_exchange_server)
+- SSL Certificate to present to Exchange Server (/path/to/certificate)
+- SSL certificate to present to Clients (/path/to/clientcertificate)
 
 ## Configuration
 
-|                                                                      |                                                                                                                                                                                                                       |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :warning: | This configuration **MUST** appear at the top of squid.conf above any other forward-proxy configuration (http_access etc). Otherwise the standard proxy access rules block some people viewing the accelerated site. |
+> :warning: 
+  This configuration **MUST** appear at the top of squid.conf above any
+  other forward-proxy configuration (http_access etc).
+  Otherwise the standard proxy access rules block some people viewing
+  the accelerated site.
 
     # Publish the RPCoHTTP service via SSL
     https_port ip_of_squid:443 accel cert=/path/to/clientcertificate defaultsite=rpc_domain_name
@@ -53,15 +46,9 @@ single Squid server. The following information is required:
     http_access deny all
     miss_access allow EXCH
     miss_access deny all
-
-Squid older than 3.1 also need to define several extension methods:
-
-    # Define the required extension methods
-    extension_methods RPC_IN_DATA RPC_OUT_DATA
+ATA
 
 ## Thanks to
 
-Thanks to Tuukka Laurikanien \<<t.laurikainen@ibermatica.com>\> for
+Thanks to Tuukka Laurikanien <t.laurikainen@ibermatica.com> for
 providing the information used in preparing this article.
-
-[CategoryConfigExample](/CategoryConfigExample)
