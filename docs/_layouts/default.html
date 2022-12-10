@@ -39,7 +39,7 @@
             {{ content }}
         {%- if page.categories contains 'ConfigExample' -%}{% include config-example-footer.html -%}{%- endif -%}
         {%- if page.FaqSection -%}<p>To the <a href="/SquidFaq">FAQ Index</a></p>{%- endif -%}
-        {%- if page.categories.size -%}Page categories: {{ page.categories | join: ', ' }}{%- endif -%}
+        {%- for c in page.categories -%}<a href="/Categories/{{c}}">{{c}}</a>{%- unless c == page.categories.last -%}, {%- endunless -%}{% endfor %}
         {%- if page.tags.size -%}Page tags: {{page.tags | join: ', '}}{%- endif -%}
         {%- if page.path != "/" -%}<a href="{{ page.url | remove_first: '/' | split: '/' | pop | join: '/' | prepend: '/' }}">🔼 go up</a>{%- endif -%}
         </section>
