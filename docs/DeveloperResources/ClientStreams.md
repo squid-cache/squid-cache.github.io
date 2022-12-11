@@ -2,6 +2,8 @@
 categories: ReviewMe
 published: false
 ---
+# ClientStreams API
+
 ClientStreams provides an API to retrieve and manipulate data from
 squid, from inside squid. Squid's ClientSide processing uses
 ClientStreams to fulfill standard client HTTP requests.
@@ -10,7 +12,7 @@ What follows is a very slightly edited transcript (with permission) of
 an IRC chat about ClientStreams, it needs to be cleaned up and made more
 organised...
 
-``` irc
+```irc
 14:48 < nicholas> Hi. I'm working on bug 1160 (analyze HTML to prefetch embedded objects). I can't figure out why, but even though it 
                   fetches the pages, it doesn't cache the result! The fetch is initiated with "fwdState(-1, entry, request);".
 14:49 < lifeless> I'd use the same mechanism ESI does.

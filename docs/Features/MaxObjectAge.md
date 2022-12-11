@@ -1,23 +1,17 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Limiting the maximum caching time for objects?
 
-  - **Goal**: Create an alternative control for capping object storage
+- **Goal**: Create an alternative control for capping object storage
     times.
+- **Status**: Not started
+- **ETA**: unknown
+- **Version**:
+- **Priority**:
+- **Developer**:
 
-  - **Status**: Not started
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Priority**:
-
-  - **Developer**:
-
-# Details
+## Details
 
 Allowing administrators to set some local maximum age to store objects
 seems reasonable. Whether this is some global (easily done) or ACL
@@ -33,5 +27,3 @@ would allow the override-\* to be used (requires them implicitly)
 without violating HTTP specs. Since they retain the website limits as
 *upper* bounds and any cache may freely drop an item before its maximum
 storage interval.
-
-[CategoryFeature](/CategoryFeature)

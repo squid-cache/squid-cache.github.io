@@ -1,19 +1,14 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Redirection Helpers
 
-  - **Goal**: Allow Squid to use custom helpers to redirect and/or
+- **Goal**: Allow Squid to use custom helpers to redirect and/or
     hijack web requests on demand to another location.
+- **Status**: completed
+- **Version**: 2.5+
 
-  - **Status**: completed
-
-  - **Version**: 2.5+
-
-<!-- end list -->
-
-  - :warning:
+> :warning:
     Some *redirectors* are properly called URL re-writers to reflect
     what they actually do. Which is to alter the URL being handled.
     Thanks to a long legacy in both Squid and other software (looking at
@@ -60,82 +55,49 @@ Input line received from Squid:
 
     [channel-ID] URL [key-extras]
 
-  - channel-ID
-    
-      - This is an ID for the line when concurrency is enabled. When
-        concurrency is turned off (set to **1**) this field and the
-        following space will be completely missing.
+*   channel-ID   
+:   This is an ID for the line when concurrency is enabled. When
+    concurrency is turned off (set to **1**) this field and the
+    following space will be completely missing.
+*   URL
+:   The URL received from the client. In Squid with ICAP support,
+    this is the URL after ICAP REQMOD has taken place.
+*   key-extras
+:   Starting with [Squid-3.5](/Releases/Squid-3.5)
+    additional parameters passed to the helper which may be configured with
+    [url_rewrite_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
+    For backward compatibility the default key-extras for URL
+    helpers matches the format fields sent by
+    [Squid-3.4](/Releases/Squid-3.4) and older in this field position:
+            ip/fqdn ident method kv-pair
+*   ip
+:   This is the IP address of the client. Followed by a slash
+    (**/**) as shown above.
+*   fqdn
+:   The FQDN rDNS of the client, if any is known. Squid does not
+    normally perform lookup unless needed by logging or ACLs. Squid
+    does not wait for any results unless ACLs are configured to
+    wait. If none is available **-** will be sent to the helper
+    instead.
+*   ident
+:   The IDENT protocol username (if known) of the client machine.
+    Squid will not wait for IDENT username to become known unless
+    there are ACL which depend on it. So at the time re-writers are
+    run the IDENT username may not yet be known. If none is
+    available **-** will be sent to the helper instead.
+*   method
+:   The HTTP request method. URL alterations and particularly
+    redirection are only possible on certain methods, and some such
+    as POST and CONNECT require special care.
+*   kv-pair
+:   One or more key=value pairs. Only "myip" and "myport" pairs
+    documented below were ever defined and are sent unconditionally by
+    [Squid-3.4](/Releases/Squid-3.4)  and older:
 
-  - URL
-    
-      - The URL received from the client. In Squid with ICAP support,
-        this is the URL after ICAP REQMOD has taken place.
-
-  - key-extras
-    
-      - Starting with
-        [Squid-3.5](/Releases/Squid-3.5)
-        additional parameters passed to the helper which may be
-        configured with
-        [url_rewrite_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
-        For backward compatibility the default key-extras for URL
-        helpers matches the format fields sent by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and older in this field position:
-    
-    <!-- end list -->
-    
-      - ``` 
-         ip/fqdn ident method [urlgroup] kv-pair
-        ```
-
-  - ip
-    
-      - This is the IP address of the client. Followed by a slash
-        (**/**) as shown above.
-
-  - fqdn
-    
-      - The FQDN rDNS of the client, if any is known. Squid does not
-        normally perform lookup unless needed by logging or ACLs. Squid
-        does not wait for any results unless ACLs are configured to
-        wait. If none is available **-** will be sent to the helper
-        instead.
-
-  - ident
-    
-      - The IDENT protocol username (if known) of the client machine.
-        Squid will not wait for IDENT username to become known unless
-        there are ACL which depend on it. So at the time re-writers are
-        run the IDENT username may not yet be known. If none is
-        available **-** will be sent to the helper instead.
-
-  - method
-    
-      - The HTTP request method. URL alterations and particularly
-        redirection are only possible on certain methods, and some such
-        as POST and CONNECT require special care.
-
-  - urlgroup
-    
-      - Squid-2 will send this field with the URL-grouping tag which can
-        be configured on
-        [http_port](http://www.squid-cache.org/Doc/config/http_port).
-        Squid-3.x will not send this field.
-
-  - kv-pair
-    
-      - One or more key=value pairs. Only "myip" and "myport" pairs
-        documented below were ever defined and are sent unconditionally
-        by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and older:
-        
-        |            |                         |
         | ---------- | ----------------------- |
         | myip=...   | Squid receiving address |
         | myport=... | Squid receiving port    |
-        
+
 
 ### Using an HTTP redirector
 
@@ -144,7 +106,7 @@ message to the client specifying an alternative URL to work with.
 
 For example; the following script might be used to redirect external
 clients to a secure Web server for internal documents:
-
+```perl
     $|=1;
     while (<>) {
         chomp;
@@ -158,6 +120,7 @@ clients to a secure Web server for internal documents:
             print $X[0]." \n";
         }
     }
+```
 
 Redirection can be performed by helpers on the
 [url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
@@ -174,71 +137,50 @@ Result line sent back to Squid:
 
     [channel-ID] [result] [kv-pairs] [status:URL]
 
-  - channel-ID
-    
-      - When a concurrency **channel-ID** is received it must be sent
-        back to Squid unchanged as the first entry on the line.
+- channel-ID
+:   When a concurrency **channel-ID** is received it must be sent
+    back to Squid unchanged as the first entry on the line.
+- result
+:   One of the result codes:
 
-  - result
-    
-      - One of the result codes:
-        
-        |     |                                            |
         | --- | ------------------------------------------ |
         | OK  | Success. A new URL is presented.           |
         | ERR | Success. No action for this URL.           |
         | BH  | Failure. The helper encountered a problem. |
-        
 
-    > :information_source:
-        the result field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and newer.
+- kv-pair
+:   One or more key=value pairs. The key names reserved on this
+    interface for HTTP redirection:
 
-  - kv-pair
-    
-      - One or more key=value pairs. The key names reserved on this
-        interface for HTTP redirection:
-        
-        |                    |                                                                                                                       |
-        | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+        | --- | --- |
         | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
-        | message=...        | reserved                                                                                                              |
-        | status=...         | HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308                                      |
-        | tag=...            | reserved                                                                                                              |
-        | ttl=...            | reserved                                                                                                              |
-        | url=...            | redirect the client to given URL                                                                                      |
-        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                   |
-        
+        | message=... | reserved |
+        | status=... | HTTP status code to use on the redirect. Must be one of: 301, 302, 303, 307, 308 |
+        | tag=... | reserved |
+        | ttl=... | reserved |
+        | url=... | redirect the client to given URL |
+        | \*_=... | Key names ending in (_) are reserved for local administrators use. |
 
-    > :information_source:
-        the kv-pair field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and newer.
-    
     > :information_source:
         the kv-pair returned by this helper can be logged by the
-        **%note**
-        [logformat](http://www.squid-cache.org/Doc/config/logformat)
+        **%note** [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
 
-  - status
-    
-      - The HTTP 301, 302 or 307 status code. Please see section 10.3 of
+- status
+:   The HTTP 301, 302 or 307 status code. Please see section 10.3 of
         RFC [2616](https://tools.ietf.org/rfc/rfc2616) for an
         explanation of the HTTP redirect codes and which request methods
         they may be sent on.
 
-  - URL
+- URL
+:   The URL to be used instead of the one sent by the client. This
+    must be an absolute URL. ie starting with <http://> or
+    <ftp://> etc.
     
-      - The URL to be used instead of the one sent by the client. This
-        must be an absolute URL. ie starting with <http://> or
-        <ftp://> etc.
+    > :information_source:
+        If no action is required leave status:URL area blank.
     
-    :information_source:
-    If no action is required leave status:URL area blank.
-    
-    :information_source:
+> :information_source:
     The **status** and **URL** are separated by a colon (**:**) as shown
     above instead of whitespace.
 
@@ -260,7 +202,7 @@ An even faster and slightly more featured rewriter based on SQUIRM is
 
 The following Perl script may also be used as a template for writing
 your own URL re-writer:
-
+```perl
     $|=1;
     while (<>) {
         chomp;
@@ -272,6 +214,7 @@ your own URL re-writer:
             print $X[0]." \n";
         }
     }
+```
 
 URL re-writing can be performed by helpers on the
 [url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program),
@@ -280,45 +223,34 @@ and
 [location_rewrite_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
 interfaces.
 
-WARNING: when used on the url_rewrite_program interface re-writing
-URLs introduces a large number of problems into the client HTTP
-experience. Some of these problems can be mitigated with a paired helper
-running on the
-[location_rewrite_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
-interface de-mangling the server redirection URLs.
+> :warning:
+    when used on the url_rewrite_program interface re-writing
+    URLs introduces a large number of problems into the client HTTP
+    experience. Some of these problems can be mitigated with a paired helper
+    running on the
+    [location_rewrite_program](http://www.squid-cache.org/Doc/config/location_rewrite_program)
+    interface de-mangling the server redirection URLs.
 
-Result line sent back to Squid:
+**Result line sent back to Squid**
 
     [channel-ID] [result] [kv-pair] [URL]
 
-  - channel-ID
-    
-      - When a concurrency **channel-ID** is received it must be sent
-        back to Squid unchanged as the first entry on the line.
+- channel-ID
+:   When a concurrency **channel-ID** is received it must be sent
+    back to Squid unchanged as the first entry on the line.
+- result
+:   One of the result codes:
 
-  - result
-    
-      - One of the result codes:
-        
-        |     |                                            |
         | --- | ------------------------------------------ |
         | OK  | Success. A new URL is presented            |
         | ERR | Success. No change for this URL.           |
         | BH  | Failure. The helper encountered a problem. |
-        
 
-    > :information_source:
-        the result field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and newer.
-
-  - kv-pair
-    
-      - One or more key=value pairs. The key names reserved on this
-        interface for URL re-writing:
+- kv-pair
+:   One or more key=value pairs. The key names reserved on this
+    interface for URL re-writing:
         
-        |                    |                                                                                                                       |
-        | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+        | --- | --- |
         | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
         | message=...        | reserved                                                                                                              |
         | rewrite-url=...    | re-write the transaction to the given URL.                                                                            |
@@ -326,32 +258,22 @@ Result line sent back to Squid:
         | ttl=...            | reserved                                                                                                              |
         | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                   |
         
-
     > :information_source:
-        the kv-pair field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and newer.
-    
-    > :information_source:
-        the kv-pair returned by this helper can be logged by the
-        **%note**
+        the kv-pair returned by this helper can be logged by the **%note**
         [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
 
-<!-- end list -->
-
-  - URL
-    
-      - The URL to be used instead of the one sent by the client. If no
-        action is required leave the URL field blank. The URL sent must
-        be an absolute URL. ie starting with <http://> or <ftp://>
-        etc.
+- URL
+:   The URL to be used instead of the one sent by the client. If no
+    action is required leave the URL field blank. The URL sent must
+    be an absolute URL. ie starting with <http://> or <ftp://>
+    etc.
 
 ## Redirections by origin servers
 
 Problem:
 
-  - You are using a re-writer to mangle the URL seen by the internal web
+> You are using a re-writer to mangle the URL seen by the internal web
     service. These are not to be shown publicly. But the web server
     keeps redirecting clients to these internal URLs anyway.
 
@@ -375,7 +297,7 @@ for hints on writing complex redirectors using PHP.
 
 ## Troubleshooting
 
-### FATAL: All redirectors have exited\!
+### FATAL: All redirectors have exited!
 
 A redirector process must exit (stop running) only when its *stdin* is
 closed. If you see the "All redirectors have exited" message, it

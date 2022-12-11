@@ -1,17 +1,13 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Delay Pools
 
-  - **Goal**: To provide a way to limit the bandwidth of certain
+- **Goal**: To provide a way to limit the bandwidth of certain
     requests based on any list of criteria.
-
-  - **Status**: Completed
-
-  - **Version**: 2.2+
-
-  - **Developer**: David Luyer
+- **Status**: Completed
+- **Version**: 2.2+
+- **Developer**: David Luyer
 
 ## Delay Pools
 
@@ -22,42 +18,34 @@ To enable delay pools features in Squid configure with
 
 ### Terminology for this FAQ entry:
 
-  - pool  
-    a collection of bucket groups as appropriate to a given class
-
-  - bucket group  
-    a group of buckets within a pool, such as the per-host bucket group,
+*   pool  
+:   a collection of bucket groups as appropriate to a given class
+*   bucket group  
+:   a group of buckets within a pool, such as the per-host bucket group,
     the per-network bucket group or the aggregate bucket group (the
     aggregate bucket group is actually a single bucket)
-
-  - bucket  
-    an individual delay bucket represents a traffic allocation which is
+*   bucket  
+:   an individual delay bucket represents a traffic allocation which is
     replenished at a given rate (up to a given limit) and causes traffic
     to be delayed when empty
-
-  - class  
-    the class of a delay pool determines how the delay is applied, ie,
+*   class  
+:   the class of a delay pool determines how the delay is applied, ie,
     whether the different client IPs are treated separately or as a
     group (or both)
-
-  - class 1  
-    a class 1 delay pool contains a single unified bucket which is used
+* class 1  
+:   a class 1 delay pool contains a single unified bucket which is used
     for all requests from hosts subject to the pool
-
-  - class 2  
-    a class 2 delay pool contains one unified bucket and 255 buckets,
+* class 2  
+:   a class 2 delay pool contains one unified bucket and 255 buckets,
     one for each host on an 8-bit network (IPv4 class C)
-
-  - class 3  
+*   class 3  
     contains 255 buckets for the subnets in a 16-bit network, and
     individual buckets for every host on these networks (IPv4 class B )
-
-  - class 4  
-    as class 3 but in addition have per authenticated user buckets, one
+*   class 4  
+:   as class 3 but in addition have per authenticated user buckets, one
     per user.
-
-  - class 5  
-    custom class based on tag values returned by
+*   class 5  
+:   custom class based on tag values returned by
     [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
     helpers in
     [http_access](http://www.squid-cache.org/Doc/config/http_access).
@@ -66,19 +54,16 @@ To enable delay pools features in Squid configure with
 Delay pools allows you to limit traffic for clients or client groups,
 with various features:
 
-  - can specify peer hosts which aren't affected by delay pools, ie,
+- can specify peer hosts which aren't affected by delay pools, ie,
     local peering or other 'free' traffic (with the *no-delay* peer
     option).
-
-  - delay behavior is selected by ACLs (low and high priority traffic,
+- delay behavior is selected by ACLs (low and high priority traffic,
     staff vs students or student vs authenticated student or so on).
-
-  - each group of users has a number of buckets, a bucket has an amount
+- each group of users has a number of buckets, a bucket has an amount
     coming into it in a second and a maximum amount it can grow to; when
     it reaches zero, objects reads are deferred until one of the
     object's clients has some traffic allowance.
-
-  - any number of pools can be configured with a given class and any set
+- any number of pools can be configured with a given class and any set
     of limits within the pools can be disabled, for example you might
     only want to use the aggregate and per-host bucket groups of class
     3, not the per-network one.
@@ -91,28 +76,24 @@ relatively small traffic allocation across a large number of users.
 
 ### There are some limitations of delay pools:
 
-  - delay pools are incompatible with slow aborts; quick abort should be
+- delay pools are incompatible with slow aborts; quick abort should be
     set fairly low to prevent objects being retrieved at full speed once
     there are no clients requesting them (as the traffic allocation is
     based on the current clients, and when there are no clients attached
     to the object there is no way to determine the traffic allocation).
-
-  - delay pools only limits the actual data transferred and is not
+- delay pools only limits the actual data transferred and is not
     inclusive of overheads such as TCP overheads, ICP, DNS, ICMP pings,
     etc.
-
-  - it is possible for one connection or a small number of connections
+- it is possible for one connection or a small number of connections
     to take all the bandwidth from a given bucket and the other
     connections to be starved completely, which can be a major problem
     if there are a number of large objects being transferred and the
     parameters are set in a way that a few large objects will cause all
     clients to be starved (potentially fixed by a currently experimental
     patch).
-
-  - in Squid 3.1 the class-based pools do not work yet with IPv6
+- in Squid 3.1 the class-based pools do not work yet with IPv6
     addressed clients.
-
-  - In squid older than 3.1 the delay pool bucket is limited to 32-bits
+- In squid older than 3.1 the delay pool bucket is limited to 32-bits
     and thus has a rather low MB cap on both bucket content and refill
     rate. The bucket size is now raised to 64-bit 'unlimited' values,
     but refill rate remains low.
@@ -233,16 +214,8 @@ examples. Squid install with a squid.conf.documented or
 squid.conf.default file. If you no longer have a documented config file
 the latest version is provided on the squid-cache.org website.
 
-  - [delay_parameters](http://www.squid-cache.org/Doc/config/delay_parameters)
-
-  - [delay_pools](http://www.squid-cache.org/Doc/config/delay_pools)
-
-  - [delay_class](http://www.squid-cache.org/Doc/config/delay_class)
-
-  - [delay_access](http://www.squid-cache.org/Doc/config/delay_access)
-
-  - [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
-
-<!-- end list -->
-
-  - [CategoryFeature](/CategoryFeature)
+- [delay_parameters](http://www.squid-cache.org/Doc/config/delay_parameters)
+- [delay_pools](http://www.squid-cache.org/Doc/config/delay_pools)
+- [delay_class](http://www.squid-cache.org/Doc/config/delay_class)
+- [delay_access](http://www.squid-cache.org/Doc/config/delay_access)
+- [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)

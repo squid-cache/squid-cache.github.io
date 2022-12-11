@@ -1,17 +1,14 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Multicast ICP cluster
 
-  - **Goal**: Bandwidth and delay reduction using multicast to optimize
+- **Goal**: Bandwidth and delay reduction using multicast to optimize
     cluster traffic.
+- **Status**: completed.
+- **Version**: 2.x
 
-  - **Status**: completed.
-
-  - **Version**: 2.x
-
-# Details
+## Details
 
 Multicast is essentially the ability to send one IP packet to multiple
 receivers. Multicast is often used for audio and video conferencing
@@ -24,8 +21,8 @@ manager doesn't know, or looks at you funny, then you probably don't
 have it.
 
 Another way is to use the *mtrace* program, which can be found on the
-[Xerox PARC FTP
-site](ftp://parcftp.xerox.com/pub/net-research/ipmulti/). Mtrace is
+[Xerox PARC FTP site](ftp://parcftp.xerox.com/pub/net-research/ipmulti/).
+Mtrace is
 similar to traceroute. It will tell you about the multicast path between
 your site and another. For example:
 
@@ -50,25 +47,21 @@ Short answer: *No, probably not*.
 
 Reasons why you SHOULD use Multicast:
 
-  - It reduces the number of times Squid calls *sendto()* to put a UDP
+- It reduces the number of times Squid calls *sendto()* to put a UDP
     packet onto the network.
-
-  - Its trendy and cool to use Multicast.
+- Its trendy and cool to use Multicast.
 
 Reasons why you SHOULD NOT use Multicast:
 
-  - Multicast tunnels/configurations/infrastructure are often unstable.
+- Multicast tunnels/configurations/infrastructure are often unstable.
     You may lose multicast connectivity but still have unicast
     connectivity.
-
-  - Multicast does not simplify your Squid configuration file. Every
+- Multicast does not simplify your Squid configuration file. Every
     trusted neighbor cache must still be specified.
-
-  - Multicast does not reduce the number of ICP replies being sent
+- Multicast does not reduce the number of ICP replies being sent
     around. It does reduce the number of ICP queries sent, but not the
     number of replies.
-
-  - Multicast exposes your cache to some privacy issues. There are no
+- Multicast exposes your cache to some privacy issues. There are no
     special emissions required to join a multicast group. Anyone may
     join your group and eavesdrop on ICP query messages. However, the
     scope of your multicast traffic can be controlled such that it does
@@ -88,19 +81,13 @@ example:
 
     cache_peer 224.9.9.9 multicast 0 3130 ttl=64
 
-  - 224.9.9.9 is a sample multicast group address.
-
-  - *multicast* indicates that this is a special type of neighbour.
-
-  - The HTTP-port argument is ignored for multicast peers, but the
+- 224.9.9.9 is a sample multicast group address.
+- *multicast* indicates that this is a special type of neighbour.
+- The HTTP-port argument is ignored for multicast peers, but the
     ICP-port (3130) is very important.
-
-  - The final argument, *ttl=64* specifies the multicast TTL value for
-    queries sent to this
-
-address.
-
-  - It is probably a good idea to increment the minimum TTL by a few to
+- The final argument, *ttl=64* specifies the multicast TTL value for
+    queries sent to this address.
+- It is probably a good idea to increment the minimum TTL by a few to
     provide a margin for error and changing conditions.
 
 You must also specify which of your neighbours will respond to your
@@ -123,19 +110,19 @@ directive and the *multicast-responder* option:
 
 Here all fields are relevant.
 
-  - :warning:
+> :warning:
     The ICP port number (3130) must be the same as in the
     [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
     line defining the multicast peer above.
 
-  - The third field must either be *parent* or *sibling* to indicate how
-    Squid should treat replies.
+The third field must either be *parent* or *sibling* to indicate how
+Squid should treat replies.
 
-  - With the *multicast-responder* flag set for a peer, Squid will NOT
-    send ICP queries to it directly (i.e. unicast) but will send to the
-    special **multicast** group
-    [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
-    instead.
+With the *multicast-responder* flag set for a peer, Squid will NOT
+send ICP queries to it directly (i.e. unicast) but will send to the
+special **multicast** group
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
+instead.
 
 ## How do I know what Multicast TTL to use?
 
@@ -161,7 +148,7 @@ and will be subject to eavesdropping by others. If you're only using
 multicast on your LAN, as we suggest, then your TTL will be quite small,
 for example *ttl=4*.
 
-# Configuration - Receive and respond
+## Configuration - Receive and respond
 
 You must tell Squid to join a multicast group address with the
 [mcast_groups](http://www.squid-cache.org/Doc/config/mcast_groups)
@@ -174,7 +161,7 @@ For example:
 Of course, all members of your Multicast ICP group will need to use the
 exact same multicast group address.
 
-  - :warning:
+> :warning:
     Choose a multicast group address with care\! If two organizations
 
 happen to choose the same multicast address, then they may find that
@@ -182,9 +169,8 @@ their groups "overlap" at some point. This will be especially true if
 one of the querying caches uses a large TTL value. There are two ways to
 reduce the risk of group overlap:
 
-  - Use a unique group address
-
-  - Limit the scope of multicast messages with TTLs or administrative
+- Use a unique group address
+- Limit the scope of multicast messages with TTLs or administrative
     scoping.
 
 Using a unique address is a good idea, but not without some potential
@@ -202,7 +188,3 @@ with some newer techniques known as administratively scoped addresses.
 Here you can configure well-defined boundaries for the traffic to a
 specific address. The RFC [2365](https://tools.ietf.org/rfc/rfc2365)
 (Administratively Scoped IP Multicast) describes this.
-
-[CategoryFeature](/CategoryFeature)
-Back to the
-[SquidFaq](/SquidFaq)

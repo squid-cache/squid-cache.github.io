@@ -1,39 +1,29 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: SslBump Peek and Splice
 
-  - **Goal**: Make bumping decisions after the origin server name is
+- **Goal**: Make bumping decisions after the origin server name is
     known, especially when transparently intercepting TLS/SSL. Avoid
     bumping non-TLS traffic.
-
-  - **Status**: completed.
-
-  - **Version**: 3.5
-
-  - **Developer**:
+- **Status**: completed.
+- **Version**: 3.5
+- **Developer**:
     [AlexRousskov](/AlexRousskov)
     and Christos Tsantilas
 
-<!-- end list -->
+## Motivation
 
-  - 
-# Motivation
-
-"Peek and Splice" is a collection of new
-[SslBump](/Features/SslBump)
-actions and related features introduced in
-[Squid-3.5](/Releases/Squid-3.5).
+"Peek and Splice" is a collection of new [SslBump](/Features/SslBump)
+actions and related features introduced in [Squid-3.5](/Releases/Squid-3.5).
 Older Squids used server-first and client-first actions that did not
 work well many cases. Many SslBump deployments try to minimize potential
 damage by *not* bumping sites unless the local policy demands it. Before
 the new actions became available, the decision to bump was made based on
 very limited information:
 
-  - A typical HTTP CONNECT request does not contain many details, and
-
-  - intercepted TCP connections reveal nothing but IP addresses and port
+- A typical HTTP CONNECT request does not contain many details, and
+- intercepted TCP connections reveal nothing but IP addresses and port
     numbers.
 
 Peek and Splice gives admin a way to make bumping decisions later in the
@@ -41,11 +31,11 @@ TLS handshake process, when client SNI and the server certificate are
 available. Or when it becomes clear that we are not dealing with a TLS
 connection at all\!
 
-# Terminology
+## Terminology
 
 In most cases, this page uses *TLS* to mean *TLS or SSL*.
 
-# Overview
+## Overview
 
 The Peek and Splice feature looks at the TLS Client Hello message and
 SNI info (if any), sends an identical or similar (to the extent
@@ -70,23 +60,17 @@ a TLS server. Note that with a bumping proxy between the client and the
 server *_the flow is duplicated_* where the first flow is between client
 and proxy and the second flow between proxy and server.
 
-![TLS handshake between client and
-server](https://wiki.squid-cache.org/Features/SslPeekAndSplice?action=AttachFile&do=get&target=TLS-handshake-02.png)
+![TLS handshake between client and server](https://wiki.squid-cache.org/Features/SslPeekAndSplice?action=AttachFile&do=get&target=TLS-handshake-02.png)
 
 **Step 1:**
 
-1.  Get TCP-level info from the client.
-    
-      - In forward proxy environments, also parse the CONNECT request.
-    
-      - In interception environments, create a fake CONNECT request
+1. Get TCP-level info from the client.
+    - In forward proxy environments, also parse the CONNECT request.
+    - In interception environments, create a fake CONNECT request
         using TCP-level info.
-
-2.  Go through the [Callout
-    Sequence](/SquidFaq/OrderIsImportant#Callout_Sequence)
+2. Go through the [Callout Sequence](/SquidFaq/OrderIsImportant#Callout_Sequence)
     with the CONNECT request mentioned above.
-
-3.  Evaluate all
+3. Evaluate all
     [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
     and perform the first matching action (splice, bump, peek, stare, or
     terminate).
@@ -102,21 +86,16 @@ a forward proxy environments.
 
 **Step 2:**
 
-1.  Get TLS Client Hello info from the client, including SNI where
+1. Get TLS Client Hello info from the client, including SNI where
     available. Adjust the CONNECT request from step1 to reflect SNI.
-
-2.  Go through the [Callout
-    Sequence](/SquidFaq/OrderIsImportant#Callout_Sequence)
+2. Go through the [Callout Sequence](/SquidFaq/OrderIsImportant#Callout_Sequence)
     with the adjusted CONNECT request mentioned above.
-
-3.  Evaluate again all
+3. Evaluate again all
     [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
     and perform the first matching action (splice, bump, peek, stare, or
     terminate).
-    
-      - Peeking at this step usually makes bumping at step 3 impossible.
-    
-      - Staring at this step usually makes splicing at step 3
+    - Peeking at this step usually makes bumping at step 3 impossible.
+    - Staring at this step usually makes splicing at step 3
         impossible.
 
 Step 2 is only performed if a peek or stare rule matched during the
@@ -129,12 +108,10 @@ logged until that tunnel is closed.
 
 **Step 3:**
 
-1.  Get TLS Server Hello info from the server, including the server
+1. Get TLS Server Hello info from the server, including the server
     certificate.
-
-2.  Validate the TLS server certificate.
-
-3.  Evaluate again all
+2. Validate the TLS server certificate.
+3. Evaluate again all
     [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules
     and perform the first matching action (splice, bump, or terminate)
     for the connection.
@@ -167,60 +144,31 @@ processing steps (see above). During a given processing step, Squid
 impossible actions. This helps us keep configuration sane. Processing
 steps are discussed further below.
 
-|               |                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| ------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Action**    | **Applicable processing steps**   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| **peek**      | step1, step2                      | When a peek rule matches during step1, Squid proceeds to step2 where it parses the TLS Client Hello and extracts SNI (if any). When a peek rule matches during step 2, Squid proceeds to step3 where it parses the TLS Server Hello and extracts server certificate while preserving the possibility of splicing the client and server connections; peeking at the server certificate usually precludes future bumping (see Limitations).  |
-| **splice**    | step1, step2, and sometimes step3 | Become a TCP tunnel without decoding the connection. The client and the server exchange data as if there is no proxy in between.                                                                                                                                                                                                                                                                                                           |
-| **stare**     | step1, step2                      | When a stare rule matches during step1, Squid proceeds to step2 where it parses the TLS Client Hello and extracts SNI (if any). When a stare rule matches during step2, Squid proceeds to step3 where it parses the TLS Server Hello and extracts server certificate while preserving the possibility of bumping the client and server connections; staring at the server certificate usually precludes future splicing (see Limitations). |
-| **bump**      | step1, step2, and sometimes step3 | Establish a TLS connection with the server (using client SNI, if any) and establish a TLS connection with the client (using a mimicked server certificate). **However**, this is not what actually happens right now if a bump rule matches during step1. See bug [4327](https://bugs.squid-cache.org/show_bug.cgi?id=4327)                                                                                                               |
-| **terminate** | step1, step2, step3               | Close client and server connections.                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Action | Applicable processing steps | Description |
+| ------ | --------------------------- | ----------- |
+| **peek** | step1, step2 | When a peek rule matches during step1, Squid proceeds to step2 where it parses the TLS Client Hello and extracts SNI (if any). When a peek rule matches during step 2, Squid proceeds to step3 where it parses the TLS Server Hello and extracts server certificate while preserving the possibility of splicing the client and server connections; peeking at the server certificate usually precludes future bumping (see Limitations). |
+| **splice** | step1, step2, and sometimes step3 | Become a TCP tunnel without decoding the connection. The client and the server exchange data as if there is no proxy in between. |
+| **stare** | step1, step2 | When a stare rule matches during step1, Squid proceeds to step2 where it parses the TLS Client Hello and extracts SNI (if any). When a stare rule matches during step2, Squid proceeds to step3 where it parses the TLS Server Hello and extracts server certificate while preserving the possibility of bumping the client and server connections; staring at the server certificate usually precludes future splicing (see Limitations). |
+| **bump** | step1, step2, and sometimes step3 | Establish a TLS connection with the server (using client SNI, if any) and establish a TLS connection with the client (using a mimicked server certificate). **However**, this is not what actually happens right now if a bump rule matches during step1. See bug [4327](https://bugs.squid-cache.org/show_bug.cgi?id=4327) |
+| **terminate** | step1, step2, step3 | Close client and server connections. |
 
 Actions splice, bump, and terminate are final actions: They prevent
 further processing of the
 [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump) rules.
 Actions peek and stare allow Squid to proceed to the next SslBump step.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>pre-3.5 actions are listed below for completeness sake only; <em>do not use these with <a href="/Squid-3.5#">Squid-3.5</a> and newer</em></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><p><strong>client-first</strong></p></td>
-<td><p>step1</p></td>
-<td><p>Ancient <a href="/Squid-3.1#">Squid-3.1</a> style bumping: Establish a secure connection with the client first, then connect to the server. Cannot mimic server certificate well, which causes a lot of problems.</p></td>
-</tr>
-<tr class="odd">
-<td><p><strong>server-first</strong></p></td>
-<td><p>step1</p></td>
-<td><p>Old <a href="/Squid-3.3#">Squid-3.3</a> style bumping: Establish a secure connection with the server first, then establish a secure connection with the client, using a mimicked server certificate. Does not support peeking, which causes various problems.</p>
-<p>When used for intercepted traffic SNI is not available and the server raw-IP will be used in certificates.</p></td>
-</tr>
-<tr class="even">
-<td><p><strong>none</strong></p></td>
-<td><p>step1</p></td>
-<td><p>Same as "splice" but does not support peeking and should not be used in configurations that use those steps.</p></td>
-</tr>
-</tbody>
-</table>
-
 ## See Also
 
-If
-[Squid-4](/Releases/Squid-4)
-or later fails to parse an expected TLS Client Hello message, Squid
-consults
+If [Squid-4](/Releases/Squid-4) or later fails to parse an expected TLS
+Client Hello message, Squid consults
 [on_unsupported_protocol](http://www.squid-cache.org/Doc/config/on_unsupported_protocol)
 directive.
 
 ## Configuration Examples
 
-**IMPORTANT :**
+**IMPORTANT:**
 
-  - :warning:
+> :warning:
     If you use **dstdomain** ACL before the HTTP connection is bumped,
     please note that it will attempt to match the (fake or real) CONNECT
     request URI. Depending on your listening ports configuration,
@@ -242,13 +190,9 @@ directive.
 
 Some how-to tutorials are available for common policies:
 
-1.  ConfigExamples/Intercept/SslBump
-    Explicit
-2.  ConfigExamples/Intercept/SslBump
-    WithIntermediateCA
-
-<!-- end list -->
-
+1. [Explicit](ConfigExamples/Intercept/SslBump/Explicit)
+2. [With an intermediate CA](ConfigExamples/Intercept/SslBump/WithIntermediateCA)
+    
     # common acls for the following examples:
     acl serverIsBank ssl::server_name .bank1.example.com
     acl serverIsBank ssl::server_name .bank2.example.net
@@ -263,19 +207,20 @@ Only observe TCP/TLS metadata. Do not look at HTTP information. Modify
 nothing. Useful for logging purposes since the SNI and server
 certificates are peeked at and can be logged.
 
-:warning:
-Depending on other settings, Squid may terminate connections if it
-cannot validate client SNI (Host header forgery detection) or the server
-certificate.
+> :warning:
+    Depending on other settings, Squid may terminate connections if it
+    cannot validate client SNI (Host header forgery detection) or the server
+    certificate.
+
 
     ssl_bump peek all
     ssl_bump splice all
 
 Only bump a set of sites.
 
-:warning:
-Usually does not work for requests without SNI that go to monitoredSites
--- they will not be bumped.
+> :warning:
+    Usually does not work for requests without SNI that go to monitoredSites
+    -- they will not be bumped.
 
     ssl_bump bump monitoredSites
     ssl_bump peek all
@@ -283,14 +228,14 @@ Usually does not work for requests without SNI that go to monitoredSites
 
 Bump All Sites Except Banks
 
-:warning:
-Usually does not work for requests that go to non-banks -- they will not
-be bumped.
+> :warning:
+    Usually does not work for requests that go to non-banks -- they will not
+    be bumped.
 
-:warning:
-Depending on other settings, Squid may terminate connections to banks if
-Squid cannot validate client SNI (Host header forgery detection) or the
-server certificate.
+> :warning:
+    Depending on other settings, Squid may terminate connections to banks if
+    Squid cannot validate client SNI (Host header forgery detection) or the
+    server certificate.
 
     ssl_bump splice serverIsBank
     ssl_bump peek all
@@ -356,16 +301,15 @@ This section documents TLS Client Hello message fields generated by the
 ssl_bump stare action. The information in this section is incomplete
 and somewhat stale.
 
-|                            |                |                                                                                                                                                                                                                                                                                                                                                                 |
-| -------------------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **TLS Client Hello field** | **Forwarded?** | **Comments**                                                                                                                                                                                                                                                                                                                                                    |
-| TLS/SSL Version            | yes            | only SSL v3 and TLS versions.                                                                                                                                                                                                                                                                                                                                   |
-| Ciphers list               | yes            |                                                                                                                                                                                                                                                                                                                                                                 |
-| SNI extension              | yes            | SNI stands for Server Name Indication. It is the hostname of the origin server being contacted, **not** a URL domain name.                                                                                                                                                                                                                                      |
-| Random bytes               | yes            |                                                                                                                                                                                                                                                                                                                                                                 |
-| Compression                | partially      | Compression request flag is mimicked. If compression is requested by the client, then the compression algorithm in the mimicked message is set by Squid OpenSSL (instead of being copied from the client message). This may be OK because the only widely used algorithm is deflate. It is possible that OpenSSL does not support other compression algorithms. |
-| Other TLS extensions       | sometimes      | We will probably need to mimic at least some of these for splicing TLS connections to work.                                                                                                                                                                                                                                                                     |
-| other                      | sometimes      | There are probably other fields. We should probably mimic some of them. However, blindly forwarding everything is probably a bad idea because it is likely to lead to TLS negotiation failures during bumping.                                                                                                                                                  |
+| TLS Client Hello field | Forwarded? | Comments |
+| ---------------------- | ---------- | -------- |
+| TLS/SSL Version | yes | only SSL v3 and TLS versions. |
+| Ciphers list | yes | |
+| SNI extension | yes | SNI stands for Server Name Indication. It is the hostname of the origin server being contacted, **not** a URL domain name. |
+| Random bytes | yes | |
+| Compression | partially | Compression request flag is mimicked. If compression is requested by the client, then the compression algorithm in the mimicked message is set by Squid OpenSSL (instead of being copied from the client message). This may be OK because the only widely used algorithm is deflate. It is possible that OpenSSL does not support other compression algorithms. |
+| Other TLS extensions | sometimes | We will probably need to mimic at least some of these for splicing TLS connections to work. |
+| other | sometimes | There are probably other fields. We should probably mimic some of them. However, blindly forwarding everything is probably a bad idea because it is likely to lead to TLS negotiation failures during bumping. |
 
 Please note that for splicing to work at a future step, the Client Hello
 message must be sent "as is", without any modifications at all. On the
@@ -387,27 +331,23 @@ sides of that bumped communication may start using those extensions,
 confusing Squid's OpenSSL in unpredictable ways. Possible solutions or
 workarounds (all deficient in various ways):
 
-1.  If bumping is more valuable/important than splicing in your
+1. If bumping is more valuable/important than splicing in your
     environment, you should "stare" instead of peeking. Staring usually
     precludes future splicing, of course. Pick your poison.
-
-2.  We could add an ACL that will tell you whether those extensions and
+2. We could add an ACL that will tell you whether those extensions and
     other complications are present in Client Hello. This is doable, but
     if that ACL usually evaluates to "yes", do we really want to do all
     this extra development and then complicate Squid configurations?
-
-3.  We could teach Squid to understand more TLS extensions. This may
+3. We could teach Squid to understand more TLS extensions. This may
     require significant low-level work (because we would have to do what
     OpenSSL cannot do for us). This approach may eventually cover many
     popular cases, but will never cover everything and will require
     ongoing additions, of course.
-
-4.  Squid could ignore the client and/or server extensions and try to
+4. Squid could ignore the client and/or server extensions and try to
     bump anyway. The exact results cannot be predicted, but will often
     be a total transaction failure, possibly with user-visible browser
     warnings.
-
-5.  We could teach Squid to abandon the current server connection and
+5. We could teach Squid to abandon the current server connection and
     then bump a newly open one. This is something we do not want to do
     as it is likely to create an even worse operational problems with
     Squids being auto-blocked for opening and closing connections in
@@ -436,10 +376,9 @@ Squid logs a single access.log record to reflect CONNECT request
 handling. If you add %ssl::bump_mode to your logformat definition, its
 value in that record would depend on Squid version:
 
-  - Squid v3.5 logs the first ssl_bump decision (usually a step1
+- Squid v3.5 logs the first ssl_bump decision (usually a step1
     action);
-
-  - Squid v4+ logs the final ssl_bump decision (usually the last used
+- Squid v4+ logs the final ssl_bump decision (usually the last used
     ssl_bump action).
 
 If the tunnel is bumped, then each bumped HTTP request is also logged,
@@ -454,39 +393,35 @@ Here are two version-specific tables that document expected
 
 Squid v3.5 logs:
 
-|                             |                  |           |              |                     |
-| --------------------------- | ---------------- | --------- | ------------ | ------------------- |
-| **ssl_bump configuration** | **logged value** |           |              |                     |
-| **step1**                   | **step2**        | **step3** | **CONNECT**  | **bumped requests** |
-| splice                      | \-               | \-        | splice       | \-                  |
-| bump                        | \-               | \-        | bump         | bump                |
-| peek                        | splice           | \-        | peek         | \-                  |
-| peek                        | bump             | \-        | peek         | bump                |
-| peek                        | peek             | splice    | peek         | \-                  |
-| peek                        | stare            | bump      | peek         | bump                |
-| stare                       | peek             | splice    | stare        | \-                  |
-| stare                       | stare            | bump      | stare        | bump                |
-| server-first                | \-               | \-        | server-first | server-first        |
-| client-first                | \-               | \-        | client-first | client-first        |
+| ssl_bump configuration | logged value |     |     |     |
+| ---------------------- | ------------ | --- | --- | --- |
+| **step1** | **step2** | **step3** | **CONNECT** | **bumped requests** |
+| splice | \- | \- | splice | \- |
+| bump | \- | \- | bump | bump |
+| peek | splice | \- | peek | \- |
+| peek | bump | \- | peek | bump |
+| peek | peek | splice | peek | \- |
+| peek | stare | bump | peek | bump |
+| stare | peek | splice | stare | \- |
+| stare | stare | bump | stare | bump |
+| server-first | \- | \- | server-first | server-first |
+| client-first | \- | \- | client-first | client-first |
 
 Squid v4+ logs:
 
-|                             |                  |           |              |                     |
-| --------------------------- | ---------------- | --------- | ------------ | ------------------- |
-| **ssl_bump configuration** | **logged value** |           |              |                     |
-| **step1**                   | **step2**        | **step3** | **CONNECT**  | **bumped requests** |
-| splice                      | \-               | \-        | splice       | \-                  |
-| bump                        | \-               | \-        | bump         | bump                |
-| peek                        | splice           | \-        | splice       | \-                  |
-| peek                        | bump             | \-        | bump         | bump                |
-| peek                        | peek             | splice    | splice       | \-                  |
-| peek                        | stare            | bump      | bump         | bump                |
-| stare                       | peek             | splice    | splice       | \-                  |
-| stare                       | stare            | bump      | bump         | bump                |
-| server-first                | \-               | \-        | server-first | server-first        |
-| client-first                | \-               | \-        | client-first | client-first        |
+| ssl_bump configuration | logged value |     |     |     |
+| ---------------------- | ------------ | --- | --- | --- |
+| **step1** | **step2** | **step3** | **CONNECT** | **bumped requests** |
+| splice | \- | \- | splice | \- |
+| bump | \- | \- | bump | bump |
+| peek | splice | \- | splice | \- |
+| peek | bump | \- | bump | bump |
+| peek | peek | splice | splice | \- |
+| peek | stare | bump | bump | bump |
+| stare | peek | splice | splice | \- |
+| stare | stare | bump | bump | bump |
+| server-first | \- | \- | server-first | server-first |
+| client-first | \- | \- | client-first | client-first |
 
 The difference between the two tables is in the CONNECT column: Rows
 with multiple SslBump steps differ.
-
-[CategoryFeature](/CategoryFeature)

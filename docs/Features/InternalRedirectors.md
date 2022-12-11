@@ -1,23 +1,17 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Internal Redirector / URL Maps
 
-  - **Goal**: To provide an internal URL-rewrite mechanism which can be
+- **Goal**: To provide an internal URL-rewrite mechanism which can be
     used with ACL to replace simple redirectors.
-
-  - **Status**: Merged with 2-HEAD. Port to 3.1 stalled
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**: Gonzalo Arana (2.x),
+- **Status**: Merged with 2-HEAD. Port to 3.1 stalled
+- **ETA**: unknown
+- **Version**:
+- **Developer**: Gonzalo Arana (2.x),
     [AmosJeffries](/AmosJeffries)
     (3.x)
-
-  - **More**: bug
+- **More**: bug
     [1208](https://bugs.squid-cache.org/show_bug.cgi?id=1208)
 
 ## Details
@@ -28,10 +22,12 @@ overrides internal redirectors and the external helper is used instead.
 
 ### Squid 2.x
 
-|                                                                        |                                                                                                                       |
-| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| :information_source: | The format for 3.x differs from 2.x in the directives it provides. This description covers the 2.x version in detail. |
-| :information_source: | The patch for 2.x has been accepted into the main code for testing and release in 2.8                                 |
+> :information_source:
+    The format for 3.x differs from 2.x in the directives it provides.
+    This description covers the 2.x version in detail.
+> :information_source:
+    The patch for 2.x has been accepted into the main code
+    for testing and release in 2.8
 
 Squid 2.x this feature is enabled by default.
 
@@ -39,7 +35,6 @@ An extra squid.conf options are made available to re-write URL without a
 rewriter helper.
 
     rewrite_access acl [acl [acl ...]]
-    
     rewrite dsturl acl [acl [acl ...]]
 
 see url_map\* descriptions below for details on their operation. The
@@ -47,9 +42,9 @@ names differ, but behavior remains identical.
 
 ### Squid 3.x
 
-|                                                                        |                                                                                                                       |
-| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| :information_source: | The format for 3.x differs from 2.x in the directives it provides. This description covers the 3.x version in detail. |
+> :information_source:
+    The format for 3.x differs from 2.x in the directives it provides.
+    This description covers the 3.x version in detail.
 
 When squid is built with configure option:
 
@@ -110,5 +105,3 @@ Codes:
     %et      Tag returned by external acl
     %ea      Log string returned by external acl
     %%       a literal % character
-
-[CategoryFeature](/CategoryFeature)

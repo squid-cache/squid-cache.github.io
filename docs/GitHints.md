@@ -25,12 +25,12 @@ are hardly rocket science.
 
 ## Create your public Squid repository on GitHub
 
-1.  Login to GitHub.
+1. Login to GitHub.
 
-2.  Navigate to the official Squid
+2. Navigate to the official Squid
     [repository](https://github.com/squid-cache/squid).
 
-3.  Click the "Fork" button.
+3. Click the "Fork" button.
     :warning:
     If you are a part of an organization, that organization may already
     have a Squid repository fork that you should use instead.
@@ -41,7 +41,7 @@ Your git work area will be a combination of your public Squid repository
 (a.k.a. "origin" remote), the official Squid repository (a.k.a.
 "upstream" remote), and your private (unpublished) Squid branches.
 
-1.  Clone your public Squid repository on GitHub into your local work
+1. Clone your public Squid repository on GitHub into your local work
     area. By default, git will refer to your public repository as
     "origin". This is where you will publish your development branches.
     To get the right repository .git address for the first command,
@@ -58,7 +58,7 @@ Your git work area will be a combination of your public Squid repository
         $ cd squid
         $ git remote -v # Should show you the origin repository address
 
-2.  Point git to the official Squid repository on GitHub. These
+2. Point git to the official Squid repository on GitHub. These
     instructions call that repository "upstream", but the name of the
     remote is up to you. You will never push into this repository, but
     you will submit pull requests against it.
@@ -67,7 +67,7 @@ Your git work area will be a combination of your public Squid repository
         $ git remote -v # Should show you the origin and upstream repository addresses
         $ git remote set-url --push upstream upstream-push-disabled # prevents and highlights accidental pushes
 
-3.  Optionally, load git
+3. Optionally, load git
     [notes](http://alblue.bandlem.com/2011/11/git-tip-of-week-git-notes.html)
     to see original Bazaar revision numbers, --fixes URLs, and more
     co-author names in git logs:
@@ -90,11 +90,11 @@ to the latest commit on the branch.
 These commands assume that your changes are based on the latest
 [official master branch](https://github.com/squid-cache/squid).
 
-1.  Make sure your upstream master is up to date:
+1. Make sure your upstream master is up to date:
     
         $ git fetch upstream master
 
-2.  Create a new local feature branch based on the the very tip of the
+2. Create a new local feature branch based on the the very tip of the
     upstream master. This example uses "support-foobar" as the branch
     name.
     
@@ -104,11 +104,11 @@ You can now make and commit changes to your local feature branch.
 
 ## Compare your changes with the official code
 
-1.  To compare with the official code that you have previously fetched:
+1. To compare with the official code that you have previously fetched:
     
         $ git diff upstream/master
 
-2.  To compare with the official code as it existed when you created
+2. To compare with the official code as it existed when you created
     your feature branch:
     
         $ fork_point=$(git merge-base --fork-point upstream/master support-foobar)
@@ -140,11 +140,11 @@ smoothly, but it is more difficult to discover and fix problems. Also,
 rebasing an already *squashed* branch may reduce the number of conflicts
 but may also create more complex conflicts. Pick your poison.
 
-1.  Switch to the local up-to-date feature branch you want to squash:
+1. Switch to the local up-to-date feature branch you want to squash:
     
         $ git checkout support-foobar
 
-2.  Find the master commit from which your feature branch originated,
+2. Find the master commit from which your feature branch originated,
     either by examining *git log support-foobar* or by using the
     following trick (which
     [reportedly](https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git)
@@ -152,7 +152,7 @@ but may also create more complex conflicts. Pick your poison.
     
         $ fork_point=$(git merge-base --fork-point upstream/master support-foobar)
 
-3.  Double check that you found the right forking point before making
+3. Double check that you found the right forking point before making
     any changes. For example:
     
         $ git show $fork_point
@@ -161,12 +161,12 @@ but may also create more complex conflicts. Pick your poison.
     
         $ git log | less +/$fork_point
 
-4.  Undo all feature branch commits up to the forking point while
+4. Undo all feature branch commits up to the forking point while
     keeping their cumulative results, staged in your working directory:
     
         $ git reset --soft $fork_point
 
-5.  Re-commit the staged results with a new commit message summarizing
+5. Re-commit the staged results with a new commit message summarizing
     all the changes on the feature branch:
     
         $ git commit
@@ -177,12 +177,12 @@ but may also create more complex conflicts. Pick your poison.
     
         $ git log origin/support-foobar
 
-6.  Double check that the squashed result is identical to the published
+6. Double check that the squashed result is identical to the published
     feature branch:
     
         $ git diff --exit-code origin/support-foobar || echo 'Start panicking!'
 
-7.  When comfortable, publish your squashed changes, permanently
+7. When comfortable, publish your squashed changes, permanently
     deleting the old feature branch commits:
     
         $ git push # will fail, giving you the last change to check its intended destination before you add --force
@@ -208,54 +208,54 @@ discover and fix problems. Also, rebasing an already
 branch may reduce the number of conflicts but may also create more
 complex conflicts. Pick your poison.
 
-1.  Make sure your upstream master is up to date:
+1. Make sure your upstream master is up to date:
     
         $ git fetch upstream master
 
-2.  Switch to the to the local up-to-date feature branch you want to
+2. Switch to the to the local up-to-date feature branch you want to
     rebase:
     
         $ git checkout support-foobar
 
-3.  Start the interactive rebase process. The command below should start
+3. Start the interactive rebase process. The command below should start
     your editor so that you can tell git what to do with each of the
     listed commits. The default "pick" action works well for simple
     cases.
     
         $ git rebase --interactive upstream/master
 
-4.  When comfortable, publish your rebased feature branch, permanently
+4. When comfortable, publish your rebased feature branch, permanently
     deleting the old feature branch commits:
     
         $ git push # will fail, giving you the last change to check its intended destination before you add --force
 
 ## Submit a pull request
 
-1.  Publish your feature branch in your GitHub repository:
+1. Publish your feature branch in your GitHub repository:
     
         $ git push --set-upstream origin
 
-2.  When you are
+2. When you are
     [ready](/MergeProcedure#Submission_Checklist):
     
-    1.  either go to [GitHub](https://www.github.com/), navigate to the
+    1. either go to [GitHub](https://www.github.com/), navigate to the
         support-foobar branch in your repository, and click the "new
         pull request" button next to the branch name
     
-    2.  or use a console pull request submission tool of your choice.
+    2. or use a console pull request submission tool of your choice.
         This example uses [hub](https://hub.github.com/):
         
             $ hub pull-request
 
 ## Update a previously submitted pull request
 
-1.  When you are
+1. When you are
     [ready](/MergeProcedure#Submission_Checklist),
     publish your updates in your GitHub repository:
     
         $ git push
 
-2.  GitHub will notice the updates in your public repository and reflect
+2. GitHub will notice the updates in your public repository and reflect
     them in your pull request in the official repository. Now it is time
     to go through the reviewer comments inside the pull request and
     respond to those you have addressed with "Done", "Fixed", or another
@@ -283,7 +283,7 @@ complex (and relatively rare) use cases where rebasing the old feature
 branch is more appropriate than cheery picking individual commits into a
 new feature branch.
 
-1.  Here is a possible first step to switch the base of your feature
+1. Here is a possible first step to switch the base of your feature
     branch:
     
         git rebase --fork-point upstream/master --interactive --onto upstream/v4.0
@@ -302,13 +302,13 @@ new feature branch.
     [hint](#Rebase_your_feature_branch_to_be_in_sync_with_the_current_upstream_master)
     about that).
 
-2.  Changing the base branch often leads to conflicts that you will need
+2. Changing the base branch often leads to conflicts that you will need
     to resolve. A *git rebase --continue* command will move you forward
     with the rebase process. Moreover, even without conflicts, you may
     need to modify your code to actually work well in another code base.
     This hint does *not* cover those common complications.
 
-3.  This example does not contain a final "git push" command that makes
+3. This example does not contain a final "git push" command that makes
     your changes public (after all conflicts are resolved, and the
     feature is tested on the new base branch). There are two primary
     options to publish your rebased feature:
