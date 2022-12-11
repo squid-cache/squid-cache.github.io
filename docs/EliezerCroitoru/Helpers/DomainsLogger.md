@@ -7,7 +7,7 @@ into squid and reports them into a centralized logging server. This
 helper is a part of a suite that analyze requests domains and schedules
 human inspection of unknown and categorized sites.
 
-``` highlight
+```golang
 package main
 
 /*

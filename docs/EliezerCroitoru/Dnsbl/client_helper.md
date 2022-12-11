@@ -2,7 +2,7 @@
 categories: ReviewMe
 published: false
 ---
-``` highlight
+```ruby
 #!/usr/bin/ruby
 # license note
 # Copyright (c) 2017, Eliezer Croitoru

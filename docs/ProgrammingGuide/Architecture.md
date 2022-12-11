@@ -1,13 +1,11 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Squid Architecture
 
 ## Broad Overview
 
-Squid is operating at layers 4-7 on the [OSI data
-model](http://wikipedia.org/wiki/OSI_model). So unlike most networking
+Squid is operating at layers 4-7 on the
+[OSI data model](http://wikipedia.org/wiki/OSI_model). So unlike most networking
 applications there is no relationship between packets (a layer 3
 concept) and the traffic received by Squid. Instead of packets HTTP
 operates on a **message** basis (called segments in the OSI model
@@ -20,24 +18,20 @@ description on HTTP specifics and how it operates.
 
 At the broad level Squid consists of five generic processing areas;
 
-  - client facing (was "client-side") which implements HTTP, HTTPS,
+- client facing (was "client-side") which implements HTTP, HTTPS,
     PROXY, FTP, ICP, HTCP, and SNMP protocols to communicate with
     clients, and
-
-  - server facing (was "server-side") which implements HTTP, HTTPS, ICY,
+- server facing (was "server-side") which implements HTTP, HTTPS, ICY,
     FTP, Gopher, WAIS, URN-N2H, and blind TCP tunnels to communicate
     with web servers (with or without an upstream proxy/relay) , and
-
-  - between them is the cache storage. Which in broad terms provides the
+- between them is the cache storage. Which in broad terms provides the
     buffering mechanisms for data transit, and provides switching logic
     to determine data source between disk, memory, and server-side.
-
-  - on each side of storage after client facing logic, and before
+- on each side of storage after client facing logic, and before
     server-facing there are optional diversions to pass the traffic
     through content adaptation services (URI rewrite, redirection, ICAP,
     eCAP, or HTTP request/reply manglers).
-
-  - there is also a set of components performing extra support tasks.
+- there is also a set of components performing extra support tasks.
     Such as; security (authentication and access control), (m)DNS
     client, IDENT client, WHOIS client, logging, QoS, WCCP, NAT client,
     cache/peer integration. Some are obvious, some not - protocols
@@ -46,17 +40,13 @@ At the broad level Squid consists of five generic processing areas;
     
       - ![BroadOverview.png](https://wiki.squid-cache.org/ProgrammingGuide/Architecture?action=AttachFile&do=get&target=BroadOverview.png)
 
-**:warning:
-TODO:** image is outdated.
+**:warning: TODO:** image is outdated.
 
-  - Client Side now includes SNMP, PROXY, FTP, (with many bugs) SFTP
+- Client Side now includes SNMP, PROXY, FTP, (with many bugs) SFTP
     protocols and "other" protocols.
-
-  - Storage removed COSS and added CLP caches
-
-  - Extra Processing Logics includes URN, ICAP, eCAP
-
-  - Server side missing URN N2H translator.
+- Storage removed COSS and added CLP caches
+- Extra Processing Logics includes URN, ICAP, eCAP
+- Server side missing URN N2H translator.
 
 ## General Overview
 
@@ -65,18 +55,13 @@ TODO:** image is outdated.
     Squid-2 being composed purely of event callback chains, Squid-3 adds
     the model of task encapsulation within Jobs.
 
-**:warning:
-TODO:** images with overview of data flow.
+**:warning: TODO:** images with overview of data flow.
 
-**:warning:
-TODO:** pull in existing descriptions of I/O event model,
-[AsyncJob](/AsyncJob)
-model from source code.
+**:warning: TODO:** pull in existing descriptions of I/O event model,
+[AsyncJob](/AsyncJob) model from source code.
 
-**:warning:
-TODO:** data processing diagram with color-coded for display of
-[AsyncJob](/AsyncJob)
-vs Event callback coverage.
+**:warning: TODO:** data processing diagram with color-coded for display of
+[AsyncJob](/AsyncJob) vs Event callback coverage.
 
 ## Transaction Processing
 
@@ -113,11 +98,9 @@ A **helper transaction** (class Helper::Xaction) may occur for each
 plugin helper which squid.conf settings may cause to be used by the
 stream transaction.
 
-**:warning:
-TODO:** alter the **master transaction** definition to cope with UDP
+**:warning: TODO:** alter the **master transaction** definition to cope with UDP
 based protocols involving streams and content adapted. eg SNMPv3,
-HTTP/3, QUICK, CoAP, CoAPS, DNS,
-[WebSockets3](/WebSockets3)
+HTTP/3, QUICK, CoAP, CoAPS, DNS, [WebSockets3](/WebSockets3)
 
 ### HTTP Request
 
@@ -127,32 +110,21 @@ ends before Squid starts satisfying the request from the cache or origin
 server. The checks are listed here in the order of their execution:
 
 1.  Host header forgery checks
-
 2.  [http_access](http://www.squid-cache.org/Doc/config/http_access)
     directive
-
 3.  ICAP/eCAP
     [adaptation](/SquidFaq/ContentAdaptation)
-
 4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
-
 5.  [adapted_http_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     directive
-
 6.  [store_id](http://www.squid-cache.org/Doc/config/store_id)
     directive
-
 7.  clientInterpretRequestHeaders()
-
 8.  [cache](http://www.squid-cache.org/Doc/config/cache) directive
-
 9.  ToS marking
-
 10. nf marking
-
 11. [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
     directive
-
 12. callout sequence error handling
 
 A failed check may prevent subsequent checks from running.
@@ -183,18 +155,12 @@ Transaction translated into various HTTP messages which should go
 through the above above motions.
 
 Your Squid directives and helpers must be prepared to deal with multiple
-\[CONNECT\] requests per connection.
+_CONNECT_ requests per connection.
 
-**:warning:
-TODO:** document forwarding destination selection
+**:warning: TODO:** document forwarding destination selection
 
-**:warning:
-TODO:** HTTP response callback processing sequence
+**:warning: TODO:** HTTP response callback processing sequence
 
-**:warning:
-TODO:** non-TCP transaction processing sequence?
+**:warning: TODO:** non-TCP transaction processing sequence?
 
-**:warning:
-TODO:** non-HTTP stream transactions?
-
-Discuss this page using the "Discussion" link in the main menu
+**:warning: TODO:** non-HTTP stream transactions?

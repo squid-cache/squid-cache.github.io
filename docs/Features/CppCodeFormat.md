@@ -1,31 +1,26 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: C++ code formatting
 
-  - **Goal**: Minimize patch conflicts, reduce commit noise, and improve
+- **Goal**: Minimize merge conflicts, reduce commit noise, and improve
     code readability.
-
-  - **Status**: completed
-
-  - **Version**: Squid 3.1
-
-  - **Developer**: Christos Tsantilas,
-    [AmosJeffries](/AmosJeffries)
+- **Status**: completed
+- **Version**: Squid 3.1
+- **Developer**: Christos Tsantilas,
+[AmosJeffries](/AmosJeffries)
 
 ## Details
 
-Squid-2 code has a specific format which is enforced on CVS commit.
+Squid merge procedures require to run a set of tools meant to normalize
+code and to conform to a standard set of coding guidelines.
+See [Doing a Reformat](#doing-a-reformat)
 
-This project adds a similar format to Squid-3 code. Starting with 3.1.
-To format the source correctly you require **astyle version 1.23** and
-an **md5sum** (binary or script equivalent).
+### When to format
 
-### When to format.
-
-  - :bulb:
-    If you don't have the astyle 1.23 and md5sum tools to do a format
+> :warning:
+    If you don't have the [astyle](http://astyle.sourceforge.net/) 3.1 and
+    md5sum tools to do a format
     correctly. Particularly the right version of astyle. We would rather
     you didn't do a format yourself. The formatter script will check and
     omit the format step if you do not have the right version.
@@ -50,7 +45,7 @@ on the overall clarity/compatibility of your changes.
 ### Doing a Reformat
 
 Given the right tools to use. The **scripts/source-maintenance.sh**
-script can be run over a checkout of the Squid-3 code to format it
+script can be run over a checkout of the Squid code to format it
 correctly.
 
 This tool does other code checks and rebuilds several compiler system
@@ -69,9 +64,3 @@ Sometimes code comments get re-arranged. These are picked up as errors
 and can be ignored. Simply accept the change by moving the
 fubar.h.astylebad into place over the unformatted one and run the
 formatter again. It will continue past and locate the next problem.
-
-## astyle
-
-  - <http://astyle.sourceforge.net/>
-
-[CategoryFeature](/CategoryFeature)

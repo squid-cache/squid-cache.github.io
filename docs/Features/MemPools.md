@@ -1,25 +1,17 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
-# MemPools
+# Memory Pools
 
-  - **Goal**: Reduce memory fragmentation and provide detailed
+- **Goal**: Reduce memory fragmentation and provide detailed
     statistics
+- **Status**: Done.
+- **Version**: 2.0
+- **More**:
+    - <http://www.squid-cache.org/Doc/code/namespaceMem.html>
+    - <http://www.squid-cache.org/Doc/code/group__MemPoolsAPI.html>
 
-  - **Status**: Done.
-
-  - **Version**: 2.0
-
-<!-- end list -->
-
-  - **More**:
-    
-      - <http://www.squid-cache.org/Doc/code/namespaceMem.html>
-    
-      - <http://www.squid-cache.org/Doc/code/group__MemPoolsAPI.html>
-
-# Details
+## Details
 
 MemPools is a set of pooled memory allocators running on top of
 malloc(). It's purpose is to reduce memory fragmentation and provide
@@ -35,10 +27,8 @@ some issues open, such as initialization order.
 Also, with the current advancements in malloc implementations one may
 want to link Squid against an alternaive malloc implementation:
 
-  - [Google
-    tcmalloc](http://google-perftools.googlecode.com/svn/trunk/doc/tcmalloc.html)
-
-  - [Wolfram Gloger's ptmalloc3](http://www.malloc.de/en/)
+- [Google tcmalloc](http://google-perftools.googlecode.com/svn/trunk/doc/tcmalloc.html)
+- [Wolfram Gloger's ptmalloc3](http://www.malloc.de/en/)
 
 ## Public API
 
@@ -57,6 +47,7 @@ For easy reading and code maintenance it should be placed at the top of
 the class definition in the *private* area before any other API details
 and followed by an empty line then the 'public:' section definition.
 
+```c++
     class Foo
     {
         MEMPROXY_CLASS(Foo);
@@ -64,9 +55,8 @@ and followed by an empty line then the 'public:' section definition.
     public:
        ...
     };
+```
 
 Classes which use the CBDATA_CLASS macro **must not** also use
 MEMPROXY_CLASS. That includes use in the direct line of inheritence
 within a class hierarchy.
-
-[CategoryFeature](/CategoryFeature)

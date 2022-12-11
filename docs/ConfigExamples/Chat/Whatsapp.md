@@ -1,9 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
+*by [YuriVoinov](/YuriVoinov)*
 
 # Whatsapp Messenger (mobile/web)
 
@@ -16,7 +14,6 @@ these examples please email the squid-users mailing list.
 Whatsapp is one of difficult-to-pass IM software. Two issues found:
 
 1.  Web whatsapp general connecting
-
 2.  Media files transfers for mobile Whatsapp application
 
 First of all, Whatsapp requires SSL Bump-aware squid (no matter, bump
@@ -47,5 +44,3 @@ To make Whatsapp works, add this to acl.url.nobump:
 That's all. Just reconfigure squid.
 
 Don't forget to put proxy CA to mobile devices.
-
-[CategoryConfigExample](/CategoryConfigExample)
