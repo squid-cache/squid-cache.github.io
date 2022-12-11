@@ -1,18 +1,14 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: SMP Scalability
 
-  - **Goal**: Approach linear scale in non-disk throughput with the
-    increase of the number of processors or cores.
-
-  - **Status**: In progress; ready for deployment in some environments
-
-  - **Version**: Squid 3.2
-
-  - **Developer**:
-    [AlexRousskov](/AlexRousskov)
+- **Goal**: Approach linear scale in non-disk throughput with the
+  increase of the number of processors or cores.
+- **Status**: In progress; ready for deployment in some environments
+- **Version**: Squid 3.2
+- **Developer**:
+  [AlexRousskov](/AlexRousskov)
 
 ## Terminology
 
@@ -20,43 +16,37 @@ This sections documents SMP-related terminology. The terms and their
 definitions are still evolving and not all Squid documentation and
 developers use the same terminology.
 
-  - **Squid instance**: All processes running as a result of a single
-    "squid" command. This includes, but is not limited to, kid processes
-    defined below.
-
-  - **Kid**: A Squid process (i.e., a process running Squid executable
-    code) created by the Master process. Coordinator, worker, and
-    diskers defined below are often Squid kids.
-
-  - **Worker**: A Squid process accepting HTTP or HTTPS requests.
-    Workers are usually created by the Master process. In general,
-    workers are responsible for most transaction processing but may
-    outsource some of their work to helpers (directly), other workers
-    (via Coordinator), or even independent servers (via ICAP, DNS, etc).
-
-  - **Disker**: A Squid process dedicated to cache_dir I/O. Diskers are
-    created by the Master process. Today, only Rock cache_dirs may use
-    diskers.
-
-  - **Coordinator**: A Squid process dedicated to synchronizing other
-    kids.
-
-  - **Master**: The first Squid process created when you run a "squid"
-    command. The Master process is responsible for starting and
-    restarting all kids. This definition is not 100% accurate because
-    the OS creates the first process and that first Squid process then
-    forks the actual Master process to become a daemon (except for
-    "squid -N"). Since that first OS-created process exits immediately
-    after fork, this inaccurate definition works OK for most purposes.
-    Better wording is welcomed\!
-
-  - **SMP mode**: Squid is said to be working in SMP mode when the sum
-    of the number of worker and the number of disker processes exceeds
-    one. Here are three random examples of a Squid instance working in
-    SMP mode: 2 workers and 0 diskers; 1 worker and 1 disker; 2 workers
-    and 3 diskers. Sometimes, the same "SMP mode" term is used to mean
-    "multiple workers"; that usage excludes configurations with a single
-    worker and multiple diskers; such usage should be avoided.
+- **Squid instance**: All processes running as a result of a single
+  "squid" command. This includes, but is not limited to, kid processes
+  defined below.
+- **Kid**: A Squid process (i.e., a process running Squid executable
+  code) created by the Master process. Coordinator, worker, and
+  diskers defined below are often Squid kids.
+- **Worker**: A Squid process accepting HTTP or HTTPS requests.
+  Workers are usually created by the Master process. In general,
+  workers are responsible for most transaction processing but may
+  outsource some of their work to helpers (directly), other workers
+  (via Coordinator), or even independent servers (via ICAP, DNS, etc).
+- **Disker**: A Squid process dedicated to cache_dir I/O. Diskers are
+  created by the Master process. Today, only Rock cache_dirs may use
+  diskers.
+- **Coordinator**: A Squid process dedicated to synchronizing other
+  kids.
+- **Master**: The first Squid process created when you run a "squid"
+  command. The Master process is responsible for starting and
+  restarting all kids. This definition is not 100% accurate because
+  the OS creates the first process and that first Squid process then
+  forks the actual Master process to become a daemon (except for
+  "squid -N"). Since that first OS-created process exits immediately
+  after fork, this inaccurate definition works OK for most purposes.
+  Better wording is welcomed\!
+- **SMP mode**: Squid is said to be working in SMP mode when the sum
+  of the number of worker and the number of disker processes exceeds
+  one. Here are three random examples of a Squid instance working in
+  SMP mode: 2 workers and 0 diskers; 1 worker and 1 disker; 2 workers
+  and 3 diskers. Sometimes, the same "SMP mode" term is used to mean
+  "multiple workers"; that usage excludes configurations with a single
+  worker and multiple diskers; such usage should be avoided.
 
 Please note that the same process may play multiple roles. For example,
 when you start Squid with the -N command line option, there will be only
@@ -65,8 +55,7 @@ Master and Worker.
 
 ## Current Status and Architecture
 
-[Squid-3.2](/Releases/Squid-3.2)
-supports basic SMP scale using
+[Squid-3.2](/Releases/Squid-3.2) supports basic SMP scale using
 [workers](http://www.squid-cache.org/Doc/config/workers).
 Administrators can configure and run one Squid that spawns multiple
 worker processes to utilize all available CPU cores.
@@ -84,14 +73,11 @@ A special Coordinator process starts workers and coordinates their
 activities when needed. Here are some of the Coordinator
 responsibilities:
 
-  - restart failed worker processes;
-
-  - allow workers to share listening sockets;
-
-  - broadcasts reconfiguration and shutdown commands to workers;
-
-  - concatenate and/or aggregate worker statistics for the Cache Manager
-    responses.
+- restart failed worker processes;
+- allow workers to share listening sockets;
+- broadcasts reconfiguration and shutdown commands to workers;
+- concatenate and/or aggregate worker statistics for the Cache Manager
+  responses.
 
 Coordinator does not participate in regular transaction handling and
 does not decide which worker gets to handle the incoming connection or
@@ -103,23 +89,16 @@ Using Coordinator and common configuration files, Squid workers can
 receive identical configuration information and synchronize some of
 their activities. By default, Squid workers share the following:
 
-  - Squid executable,
-
-  - general configuration,
-
-  - listening ports (but shared ICP and HTCP ports do not work well; see
-    below),
-
-  - logs,
-
-  - memory object cache (in most environments),
-
-  - disk object cache (with Rock Store only),
-
-  - insecure cache manager statistics (detailed
-    [elsewhere](/Features/CacheManager#SMP_considerations)),
-
-  - SNMP statistics.
+- Squid executable,
+- general configuration,
+- listening ports (but shared ICP and HTCP ports do not work well; see
+  below),
+- logs,
+- memory object cache (in most environments),
+- disk object cache (with Rock Store only),
+- insecure cache manager statistics (detailed
+  [elsewhere](/Features/CacheManager#SMP_considerations)),
+- SNMP statistics.
 
 Cache indexes are shared without copying. Other shared information is
 usually small in terms of RAM use and is essentially copied to avoid
@@ -132,30 +111,22 @@ http_port to listen on.
 Currently, Squid workers do not share and do not synchronize other
 resources and services, including (but not limited to):
 
-  - memory object cache (in some environments),
-
-  - disk object cache (except for Rock Store),
-
-  - DNS caches (ipcache and fqdncache),
-
-  - helper processes and daemons,
-
-  - stateful HTTP authentication (e.g., digest authentication; see bug
-    [3517](http://bugs.squid-cache.org/show_bug.cgi?id=3517)),
-
-  - delay pools,
-
-  - SSL session cache (there is an active project to allow session
-    sharing among workers),
-
-  - secure cache manager statistics (detailed
-    [elsewhere](/Features/CacheManager#SMP_considerations)),
-
-  - ICP/HTCP (works with a caveat: If multiple workers share the same
-    ICP/HTCP port, an ICP/HTCP response may not go the worker that sent
-    the request, causing timeouts at the requesting worker; use a
-    dedicated ICP/HTCP port as a
-    [workaround](http://www.squid-cache.org/mail-archive/squid-users/201308/0358.html)).
+- memory object cache (in some environments),
+- disk object cache (except for Rock Store),
+- DNS caches (ipcache and fqdncache),
+- helper processes and daemons,
+- stateful HTTP authentication (e.g., digest authentication; see bug
+  [3517](http://bugs.squid-cache.org/show_bug.cgi?id=3517)),
+- delay pools,
+- SSL session cache (there is an active project to allow session
+  sharing among workers),
+- secure cache manager statistics (detailed
+  [elsewhere](/Features/CacheManager#SMP_considerations)),
+- ICP/HTCP (works with a caveat: If multiple workers share the same
+  ICP/HTCP port, an ICP/HTCP response may not go the worker that sent
+  the request, causing timeouts at the requesting worker; use a
+  dedicated ICP/HTCP port as a
+  [workaround](http://www.squid-cache.org/mail-archive/squid-users/201308/0358.html)).
 
 Some SMP-unaware features continue to work in SMP mode (e.g., DNS
 responses are going to be cached by individual workers), but their
@@ -174,17 +145,15 @@ bandwidth limits among workers).
 Several reasons determined the choice of processes versus threads for
 workers:
 
-  - Threading Squid code in its current shape would take too long
-    because most of the code is thread-unsafe, including virtually all
-    base classes. Users need SMP scale now and cannot wait for a
-    ground-up rewrite of Squid.
-
-  - Threads offer faster context switching, but in a typical SMP Squid
-    deployment with each worker bound to a dedicated core, context
-    switching overheads are not that important.
-
-  - Both processes and threads have synchronization and sharing
-    mechanisms sufficient for an SMP-scalable implementation.
+- Threading Squid code in its current shape would take too long
+  because most of the code is thread-unsafe, including virtually all
+  base classes. Users need SMP scale now and cannot wait for a
+  ground-up rewrite of Squid.
+- Threads offer faster context switching, but in a typical SMP Squid
+  deployment with each worker bound to a dedicated core, context
+  switching overheads are not that important.
+- Both processes and threads have synchronization and sharing
+  mechanisms sufficient for an SMP-scalable implementation.
 
 In summary, we used processes instead of threads because they allowed us
 to deliver similar SMP performance within reasonable time frame. Using
@@ -208,7 +177,6 @@ initial deployments proved us wrong. Here are, for example, cumulative
 CPU times of several identical workers handling moderate load for a
 while:
 
-|                           |            |
 | ------------------------- | ---------- |
 | **Cumulative CPU**        | **Worker** |
 | **Utilization (minutes)** |            |
@@ -234,8 +202,7 @@ new client connection is usually the worker that was the last to
 register its listening descriptor with epoll(2). This dependency is
 rather strange because the epoll sets are *not* shared among Squid
 workers; it must work on a listening socket level (those sockets *are*
-shared). Special thanks to
-[HenrikNordström](/HenrikNordstr%C3%B6m)
+shared). Special thanks to [HenrikNordström](/HenrikNordstrom)
 for a stimulating discussion that supplied the last missing piece of the
 puzzle.
 
@@ -257,7 +224,6 @@ The change results in reasonable load distribution across workers. Here
 is an instant snapshot showing current CPU core utilization by each
 worker in addition to the total CPU time accumulated by that worker.
 
-|                     |                |           |
 | ------------------- | -------------- | --------- |
 | **CPU Utilization** | **Worker**     |           |
 | **now**             | **cumulative** |           |
@@ -292,26 +258,23 @@ accepts incoming connections and gives them to one of the worker
 threads. We have considered and rejected this approach for the initial
 implementation for the following reasons:
 
-  - User-level scheduling and connection passing come with performance
+- User-level scheduling and connection passing come with performance
     overheads. We wanted to avoid such overheads in the initial
     implementation so that Squid v3.2 does not become slower than
     earlier releases.
-
-  - Since most users are not expected to treat workers differently, the
+- Since most users are not expected to treat workers differently, the
     OS kernel already has all the information necessary to balance the
     load, including low-level hardware information not available to
     Squid. Duplicating and/or competing with kernel CPU scheduling
     algorithms and tuning parameters seemed unwise in this general case.
-
-  - The accepting process itself may become a bottleneck. We could
+- The accepting process itself may become a bottleneck. We could
     support multiple accepting processes, but then the user will be
     facing a complex task of optimizing the number of accepting
     processes and the number of workers given limited number of CPU
     cores. Even now, without accepting processes, such optimization is
     complex. Since each worker is fully capable of accepting connections
     itself, the added complexity seemed unnecessary in the general case.
-
-  - If workers are configured differently, they would require either
+- If workers are configured differently, they would require either
     different accepting processes or some sorts of routing maps,
     complicating configuration and performance optimization.
 
@@ -346,19 +309,17 @@ If you have beefy hardware, want to optimize performance, and are ready
 to spend non-trivial amounts of time/labor/money doing that, then
 consider the following SMP rules of thumb:
 
-1.  If you want to cache, use the largest
+1. If you want to cache, use the largest
     [cache_mem](http://www.squid-cache.org/Doc/config/cache_mem) your
     system can handle safely. Please note that Squid will not tell you
     when you over-allocate but may crash. If you do not want to cache,
     then set cache_mem to zero, prohibit caching using the
     [cache](http://www.squid-cache.org/Doc/config/cache) directive, and
     ignore rule \#3 below.
-
-2.  One or two CPU core reserved for the OS, depending on network usage
+2. One or two CPU core reserved for the OS, depending on network usage
     levels. Use OS CPU affinity configuration for network interrupts to
     restrict NIC interrupts to these "OS-only" core(s).
-
-3.  One Rock
+3. One Rock
     [cache_dir](http://www.squid-cache.org/Doc/config/cache_dir) per
     physical disk spindle with no other cache_dirs. No RAID. Diskers
     may be able to use virtual CPU cores. Tuning Rock is tricky. See the
@@ -369,8 +330,7 @@ consider the following SMP rules of thumb:
     may have other problems incompatible with your deployment needs. You
     may, of course, use other cache_dir types instead of Rock. These
     *SMP* rules use Rock because other cache_dirs are not SMP-aware.
-
-4.  One SMP [worker](http://www.squid-cache.org/Doc/config/workers) per
+4. One SMP [worker](http://www.squid-cache.org/Doc/config/workers) per
     remaining non-virtual CPU cores. Be wary of heavily loading multiple
     *virtual* CPU cores that share the same physical CPU core -- such
     virtual cores can usually accomplish less useful work than one
@@ -379,15 +339,12 @@ consider the following SMP rules of thumb:
     core, which is the only place where useful work happens. Virtual
     cores often work best for semi-idle background tasks, not busy
     workers with their near-real-time constraints.
-
-5.  Use [CPU
-    affinity](http://www.squid-cache.org/Doc/config/cpu_affinity_map)
+5. Use [CPU affinity](http://www.squid-cache.org/Doc/config/cpu_affinity_map)
     for each Squid kid process (diskers and workers). Prohibit kernel
     from moving kids from one CPU core to another. Without your help,
     the general-purpose OS kernel will most likely *not* load-balance
     your Squid server well.
-
-6.  Watch individual CPU core utilization (not just the average or total
+6. Watch individual CPU core utilization (not just the average or total
     across all cores\!). Adjust the number of workers, the number of
     diskers, and CPU affinity maps to achieve balance while leaving a
     healthy overload safety margin.
@@ -398,20 +355,6 @@ top-notch performance, especially without understanding of the
 underlying issues. Achieving top Squid performance on a given hardware
 requires a lot of work. Do not bother with this if your Squid already
 works OK.
-
-### Older Squids
-
-[Squid-3.1](/Releases/Squid-3.1)
-and older allow administrators to configure and start multiple isolated
-Squid instances. This labor-intensive setup allows a crude form of SMP
-scale in the environments where port and cache sharing are not
-important. Sample configurations for
-[Squid-3.1](/Releases/Squid-3.1)
-and older are available:
-
-  - [ConfigExamples/MultiCpuSystem](/ConfigExamples/MultiCpuSystem)
-
-  - [ConfigExamples/ExtremeCarpFrontend](/ConfigExamples/ExtremeCarpFrontend)
 
 ## SMP architecture layers
 
@@ -467,7 +410,7 @@ flowing towards SMP support. There are likely to be problems and
 unexpected things encountered at every turn, starting with the
 disagreements on this view itself.
 
-  - <http://www.squid-cache.org/Devel/papers/threading-notes.txt>
+<http://www.squid-cache.org/Devel/papers/threading-notes.txt>
     while old still contains a good and valid analysis of the SMP
     problems inside Squid which must be hurdled.
 
@@ -475,20 +418,17 @@ We have broken the SMP requirements of Squid into a series of smaller
 work units and are trying to get the following completed as spare time
 permits.
 
-1.  The modularization of Squid code into compact logical work units
+1. The modularization of Squid code into compact logical work units
     suitable for SMP consideration. Tracked as
     [Features/SourceLayout](/Features/SourceLayout)
-
-2.  Those resulting module libraries then need to be made fully Async
+2. Those resulting module libraries then need to be made fully Async
     [Features/NativeAsyncCalls](/Features/NativeAsyncCalls)
     jobs.
-
-3.  Finally those resulting jobs made into SMP threads that can utilize
+3. Finally those resulting jobs made into SMP threads that can utilize
     one of many CPUs. Code checked for thread safety and efficient
     resource handling. Recalling that a *Job* requires its *Calls* to
     happen in sequence.
-    
-      - Probably wrong but it seems that *AsyncCalls* may float between
+        Probably wrong but it seems that *AsyncCalls* may float between
         CPU as long as they retain the sequential nature. *AsyncJobs*
         may be run fully parallel interleaved, perhapse with some
         locking where one Job depends on another.
@@ -497,13 +437,10 @@ Some other features are aimed at reducing the blocker problems for SMP.
 Not exactly forward steps along the SMP capability pathway, but required
 to make those steps possible.
 
-  - [Features/NoCentralStoreIndex](/Features/NoCentralStoreIndex)
-
-  - [Features/CommCleanup](/Features/CommCleanup)
-
-  - [Features/ClientSideCleanup](/Features/ClientSideCleanup)
-
-  - Forwarding API also needs work, but has no tracker feature yet.
+- [Features/NoCentralStoreIndex](/Features/NoCentralStoreIndex)
+- [Features/CommCleanup](/Features/CommCleanup)
+- [Features/ClientSideCleanup](/Features/ClientSideCleanup)
+- Forwarding API also needs work, but has no tracker feature yet.
 
 ## Sharing of Resources and Services
 
@@ -518,32 +455,23 @@ is often impossible to rewrite just one given resource/service algorithm
 Resources and services that are currently isolated but may benefit from
 sharing include:
 
-  - ipcache and fqdncache (may benefit from merging so that only one DNS
-    cache needs to be shared)
-
-  - ufs-based caching storage (see above)
-
-  - statistics (current cache manager implementation shares worker stats
-    from the admin point of view)
-
-  - memory manager
-
-  - configuration objects
+- ipcache and fqdncache (may benefit from merging so that only one DNS
+  cache needs to be shared)
+- ufs-based caching storage (see above)
+- statistics (current cache manager implementation shares worker stats
+  from the admin point of view)
+- memory manager
+- configuration objects
 
 Low-level components that may need to be rewritten in a sharing-safe way
 or replaced include:
 
-  - hash_link
-
-  - dlink_list
-
-  - FD / fde handling
-
-  - memory buffers
-
-  - String
-
-  - any function, method, or class with static variables.
+- hash_link
+- dlink_list
+- FD / fde handling
+- memory buffers
+- String
+- any function, method, or class with static variables.
 
 One possibility often spoken of is to replace one or more of the
 low-level components with a public implementation having better
@@ -600,6 +528,3 @@ them\!):
 
     net.local.dgram.recvspace: 262144
     net.local.dgram.maxdgram: 16384
-
-[CategoryFeature](/CategoryFeature)
-[CategoryWish](/CategoryWish)

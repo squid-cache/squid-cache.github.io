@@ -1,12 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Reverse Proxy with Multiple Backend Web Servers
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Sending different requests to different backend web servers
 
@@ -19,15 +14,11 @@ a given peer.
 
 For example the websites are hosted like this on two servers:
 
-  - www.example.com hosted on server1
-
-  - example.com hosted on server1
-
-  - download.example.com hosted on server2
-
-  - \*.example.net hosted on server2
-
-  - example.net hosted on server2
+- www.example.com hosted on server1
+- example.com hosted on server1
+- download.example.com hosted on server2
+- \*.example.net hosted on server2
+- example.net hosted on server2
 
 ## Squid Configuration
 
@@ -55,11 +46,11 @@ The same using
     cache_peer ip.of.server2 parent 80 0 no-query originserver name=server_2
     cache_peer_domain server_2 download.example.com .example.net
 
-  - :warning:
+> :warning:
     This directive has been removed in
     [Squid-4](/Releases/Squid-4).
 
-#### Other Criteria than Domain
+### Other Criteria than Domain
 
 It is also possible to route requests based on other criteria than the
 host name by using other
@@ -69,11 +60,8 @@ urlpath_regex.
 For our example here the websites /foo directory alone is hosted on a
 second server:
 
-  - example.com is hosted on server1
-
-  - example.com/foo is hosted on server2
-
-<!-- end list -->
+- example.com is hosted on server1
+- example.com/foo is hosted on server2
 
     acl foo urlpath_regex ^/foo
     
@@ -84,8 +72,7 @@ second server:
     cache_peer_access server2 allow foo
     cache_peer_access server2 deny all
 
-|                                                                      |                                                                                                                                                           |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :warning: | Remember that the cache is on the requested URL and not which peer the request is forwarded to so don't use user dependent acls if the content is cached. |
-
-[CategoryConfigExample](/CategoryConfigExample)
+> :warning:
+    Remember that the cache is on the requested URL and not which
+    peer the request is forwarded to so don't use user dependent acls
+    if the content is cached.
