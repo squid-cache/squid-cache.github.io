@@ -4,8 +4,7 @@ published: false
 ---
 # Variant I: Routed DMZ witch WCCPv2
 
-  - *by
-    [YuriVoinov](/YuriVoinov)*
+- *by [YuriVoinov](/YuriVoinov)*
 
 ## Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using ISR G2 router
 
@@ -153,7 +152,7 @@ Then restart squid and check redirection is working.
 To verify setup up and running execute next commands on WCCP-enabled
 router:
 
-  - ![Check WCCP
+- ![Check WCCP
     HTTP/HTTPS](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Check_WCCP_1.png)
     ![Check WCCP
     HTTP/HTTPS](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Check_WCCP_2.png)
@@ -192,7 +191,7 @@ interception.
 
 # Variant II: Switch L3 as WCCPv2 router
 
-  - *by
+- *by
     [YuriVoinov](/YuriVoinov)*
     and Svyatoslav Voinov
 
@@ -214,7 +213,7 @@ has physical 1 Gbps interfaces. Proxy has two aggregated ports, IP's
 aggregate, aggr2) in this example. WCCPv2 uses L2 redirection with
 assignment method **mask**. Switch only support WCCP "IN" redirection.
 
-  - ![Network scheme
+- ![Network scheme
     2](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme2.png)
 
 ### Cisco IOS 15.0(2)SE9 switch
@@ -324,7 +323,7 @@ different ports interception.
 
 # Variant III: Switched ISR G2 router with WCCPv2
 
-  - *by
+- *by
     [YuriVoinov](/YuriVoinov)*
     and Svyatoslav Voinov
 
@@ -342,7 +341,7 @@ and DATAK9 technology packs activated. Router contains convergent switch
 board with four 100 Mbps or 1 Gbps ports. WCCPv2 configured on router
 2911.
 
-  - ![Network scheme
+- ![Network scheme
     3](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme3.png)
 
 ### Cisco IOS 15.5(3)M2 router
@@ -449,7 +448,7 @@ reasons.
 
 # Variant IV: VRF with WCCPv2
 
-  - *by
+- *by
     [YuriVoinov](/YuriVoinov)*
     and Svyatoslav Voinov
 

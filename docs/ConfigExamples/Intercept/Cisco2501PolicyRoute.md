@@ -1,14 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Policy Routing web traffic on a Cisco 2501 Router
 
   - *by Brian Feeny*
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -16,13 +11,12 @@ Here is how I have Interception proxying working for me, in an
 environment where my router is a Cisco 2501 running IOS 11.1.
 
 You also need to configure the squid machine to handle the traffic it
-receives. See
-[ConfigExamples/Intercept](/ConfigExamples/Intercept)
+receives. See [ConfigExamples/Intercept](/ConfigExamples/Intercept)
 for details on configuring the rest.
 
 ## Cisco Configuration
 
-  - :warning:
+> :warning:
     Replace SQUIDIP in the following with the IP address of your Squid
     host.
     :warning:
@@ -59,11 +53,6 @@ helping me get redirection and interception proxying working on my
 Cisco/Linux box.
 
   - Lincoln Dale
-
   - Riccardo Vratogna
-
   - Mark White
-
   - [HenrikNordström](/HenrikNordstr%C3%B6m)
-
-[CategoryConfigExample](/CategoryConfigExample)

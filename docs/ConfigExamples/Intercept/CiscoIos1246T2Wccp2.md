@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring a Cisco IOS 12.4(6) T2 with WCCPv2 Interception
 
-  - *by
-    [ReubenFarrelly](/ReubenFarrelly)*
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+- *by  [ReubenFarrelly](/ReubenFarrelly)*
 
 ## Outline
 
@@ -45,38 +39,17 @@ trunk
 All the squid.conf options beginning with wccp2_\* apply to **WCCPv2
 only**
 
-  - [wccp2_router](http://www.squid-cache.org/Doc/config/wccp2_router)
+- [wccp2_router](http://www.squid-cache.org/Doc/config/wccp2_router)
+- [wccp2_address](http://www.squid-cache.org/Doc/config/wccp2_address)
+- [wccp2_forwarding_method](http://www.squid-cache.org/Doc/config/wccp2_forwarding_method)
+- [wccp2_return_method](http://www.squid-cache.org/Doc/config/wccp2_return_method)
+- [wccp2_assignment_method](http://www.squid-cache.org/Doc/config/wccp2_assignment_method)
+- [wccp2_service](http://www.squid-cache.org/Doc/config/wccp2_service)
 
-  - [wccp2_address](http://www.squid-cache.org/Doc/config/wccp2_address)
+### Squid configuration
 
-  - [wccp2_forwarding_method](http://www.squid-cache.org/Doc/config/wccp2_forwarding_method)
-
-  - [wccp2_return_method](http://www.squid-cache.org/Doc/config/wccp2_return_method)
-
-  - [wccp2_assignment_method](http://www.squid-cache.org/Doc/config/wccp2_assignment_method)
-
-  - [wccp2_service](http://www.squid-cache.org/Doc/config/wccp2_service)
-
-#### Squid configuration
-
-  - **$IP-OF-ROUTER** is used below to represent the IP address of the
+**$IP-OF-ROUTER** is used below to represent the IP address of the
     router sending the WCCP traffic to Squid.
-
-[Squid-2.6](/Releases/Squid-2.6)
-to
-[Squid-3.0](/Releases/Squid-3.0)
-require magic numbers...
-
-    http_port 3129 transparent
-    wccp2_router $IP-OF-ROUTER
-    wccp2_forwarding_method 1
-    wccp2_return_method 1
-    wccp2_service standard 0 password=foo
-
-  - [Squid-3.1](/Releases/Squid-3.1)
-    and later accept text names for the tunneling methods
-
-<!-- end list -->
 
     http_port 3129 intercept
     wccp2_router $IP-OF-ROUTER
@@ -91,16 +64,12 @@ require magic numbers...
     
     ifconfig wccp0 $SQUID-IP netmask 255.255.255.255 up
 
-  - disable rp_filter, or the packets will be silently discarded
-
-<!-- end list -->
+disable rp_filter, or the packets will be silently discarded
 
     echo 0 >/proc/sys/net/ipv4/conf/wccp0/rp_filter
     echo 0 >/proc/sys/net/ipv4/conf/eth0/rp_filter
 
-  - enable ip-forwarding and redirect packets to squid
-
-<!-- end list -->
+enable ip-forwarding and redirect packets to squid
 
     echo 1 >/proc/sys/net/ipv4/ip_forward
     iptables -t nat -A PREROUTING -i wccp0 -p tcp --dport 80 -j REDIRECT --to-port 3129
@@ -110,9 +79,9 @@ require magic numbers...
 
 ## IOS 12.4 (6)-(9) T dropping packets
 
-  - In this release of IOS software that I am running (12.4(6)T2 and
-    12.4(9)T) you MUST NOT have **ip inspect fw-rules** in on the same
-    interface as your **ip wccp web-cache redirect** statement.
+In this release of IOS software that I am running (12.4(6)T2 and
+12.4(9)T) you MUST NOT have **ip inspect fw-rules** in on the same
+interface as your **ip wccp web-cache redirect** statement.
 
 I opened a TAC case on this as it is clearly a bug and regression from
 past behaviour where WCCP did work fine with IP inspection configured on
@@ -126,5 +95,3 @@ first place. This bug does not occur on the PIX which works fine with
 the same network design and configuration. If you would like this bug
 fixed, please open a cisco TAC case referencing this bug report and
 encourage cisco to fix it.
-
-[CategoryConfigExample](/CategoryConfigExample)

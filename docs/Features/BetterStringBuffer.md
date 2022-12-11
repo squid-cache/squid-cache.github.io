@@ -1,21 +1,16 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Better String memory usage
 
-  - **Goal**: Improve the usage of short strings to use best-practice,
-    efficient, pointer-safe APIs.
-
-  - **Status**: general code conversion underway
-
-  - **ETA**: unknown
-
-  - **Developer**:
-    [AmosJeffries](/AmosJeffries),
-    [FrancescoChemolli](/FrancescoChemolli)
-
-  - **More**: <https://code.launchpad.net/~kinkie/squid/stringng>
+- **Goal**: Improve the usage of short strings to use best-practice,
+  efficient, pointer-safe APIs.
+- **Status**: general code conversion underway
+- **ETA**: unknown
+- **Developer**:
+  [AmosJeffries](/AmosJeffries),
+  [FrancescoChemolli](/FrancescoChemolli)
+- **More**: <https://code.launchpad.net/~kinkie/squid/stringng>
 
 ## Details
 
@@ -40,16 +35,14 @@ to network/disk write within Squid.
 Safer access, means with a coded non-char\* access to raw data buffers
 which we can store in state objects and be sure the pointers are not
 going to die underneath the callee code. The present
-\!SquidString/String implementation is limited by:
+!SquidString/String implementation is limited by:
 
-  - max-size of 65536 bytes. This was made evident by earlier attempts
-    at using it universally for char\* replacement.
-
-  - direct access to a self-controlled char\* buffer. No existing
-    ability for non-local buffer sharing.
-
-  - existing usage within squid strictly assuming the above two limits
-    are always true.
+- max-size of 65536 bytes. This was made evident by earlier attempts
+  at using it universally for char\* replacement.
+- direct access to a self-controlled char\* buffer. No existing
+  ability for non-local buffer sharing.
+- existing usage within squid strictly assuming the above two limits
+  are always true.
 
 [FrancescoChemolli](/FrancescoChemolli)
 has started a sample implementation, drawing from many concepts in this
@@ -215,9 +208,10 @@ An alteration feedback mechanism needs to be added to prevent a string
 buffer being altered when it has child-strings itself. To prevent
 unnecessary duplication.
 
-**NP:** Concatenations are a special case here with no duplicate need
-IFF the string has its own already-duplicated buffer large enough to
-hold the extra.
+> :information_source:
+    Concatenations are a special case here with no duplicate need
+    IFF the string has its own already-duplicated buffer large enough to
+    hold the extra.
 
 ### String-Users
 
@@ -225,8 +219,9 @@ All code that uses these strings MUST NOT reference the raw-data buffer
 for access or manipulation. Offset-based API needs to be provided for
 all actions instead.
 
-**NP:** I/O is the one exception to this, where output may be done from
-the current string buffer.
+> :information_source:
+    I/O is the one exception to this, where output may be done from
+    the current string buffer.
 
 Preferably IO is done through the highest-level of construct tracking
 the child-strings and thus being buffer-agnostic and most importantly
@@ -263,17 +258,16 @@ This will have to be maintained cleanly somewhere.
 
 There are two options for handling this:
 
-  - A small Dead-String class type to map these dead-spaces in the
+- A small Dead-String class type to map these dead-spaces in the
     buffer. Which the parent creates when a child-string de-references
     itself indicating alteration as the reason (other reasons may be
     child-destruct).
-
-  - We ensure parsers are run over the full buffer they need to, user
+- We ensure parsers are run over the full buffer they need to, user
     keep reference to the C-parts IFF they need to and ignore this,
     considering all unreferenced areas of the parent buffer as
     unparsed/garbage. All IO at that point MUST be performed from the
     top-down to encompass these 'deletions'.
-    
+
     > :information_source:
         It sounds like your buffer consists of parts here. If that is
         the case, the above design needs to reflect that. At least, it
@@ -298,5 +292,3 @@ reconstruct them into the socket write stream directly (think; non-copy
 from network read to network/disk write).
 
 Though true, the output generation optimization does need more thought.
-
-[CategoryFeature](/CategoryFeature)

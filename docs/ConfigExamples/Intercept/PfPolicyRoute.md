@@ -1,12 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Policy Routing Web Traffic On A FreeBSD Router
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -16,9 +11,9 @@ tproxy mode.
 
 ## pf example rules
 
-:warning: the
-"no state" are very important to make the re-routing decision a packet
-by packet one.
+> :warning: the
+  "no state" are very important to make the re-routing decision a packet
+  by packet one.
 
     ext_if = "em0"
     int_if = "em2"
@@ -59,14 +54,13 @@ From an unknown reason the FreeBSD virtio net drivers creates invalid
 packets while being routed. To prevent this corruption to happen there
 is a need to disable two interfaces options:
 
-  - rxcsum
-
-  - txcsum
+- rxcsum
+- txcsum
 
 I wrote a small startup script to disable these options for
 vtnet(virtio) devices.
 
-``` highlight
+```bash
 #!/bin/sh
 
 . /etc/rc.subr
@@ -116,10 +110,10 @@ Additional settings for a router mode:
 Similar to FreeBSD there is an issue in OpenBSD with the virtio drivers
 which causes packets to get corrupted.
 
-  - :warning:
+> :warning:
     I will try to contact the OpenBSD mailing list to see if something
     could be done.
 
-  - I have contacted someone on the IRC channel and after testing
+I have contacted someone on the IRC channel and after testing
     latest(27/08/2015) current(5.8) it seems that the issue got resolved
     and the packets are not malformed anymore.
