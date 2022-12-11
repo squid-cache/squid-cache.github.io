@@ -1,9 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
+*by [YuriVoinov](/YuriVoinov)*
 
 # Wire Messenger
 
@@ -43,5 +41,3 @@ Paste the configuration file like this:
     # other SSL-bump rules ...
 
 and reconfigure.
-
-[CategoryConfigExample](/CategoryConfigExample)
