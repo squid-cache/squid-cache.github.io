@@ -1,23 +1,17 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Request Buffering
 
-  - **Goal**: Add configuration option to have Squid buffer requests
+- **Goal**: Add configuration option to have Squid buffer requests
     with bodies, to remove burden of slow clients from back-end servers
     (usually for accelerator deployments).
-
-  - **Status**: Started
-
-  - **ETA**: late October, 2008
-
-  - **Version**: 2.8
-
-  - **Developer**:
+- **Status**: Started
+- **ETA**: late October, 2008
+- **Version**: 2.8
+- **Developer**:
     [AdrianChadd](/AdrianChadd)
-
-  - **More**:
+- **More**:
 
 ## Details
 
@@ -28,5 +22,3 @@ forward whether or not the whole body has been received).
 
 Buffering to disk would be more complex to implement, but would probably
 be more robust.
-
-[CategoryFeature](/CategoryFeature)

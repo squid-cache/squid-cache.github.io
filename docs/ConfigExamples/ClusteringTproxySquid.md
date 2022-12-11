@@ -1,6 +1,5 @@
 ---
 categories: [ConfigExample]
-published: false
 ---
 # Clustering Tproxy Squid With Linux Router
 

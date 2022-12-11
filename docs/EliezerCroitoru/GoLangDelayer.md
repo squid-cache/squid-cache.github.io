@@ -4,7 +4,7 @@ published: false
 ---
 Describe EliezerCroitoru/GoLangDelayer here.
 
-``` highlight
+```golang
 /*
 license note: http://ngtech.co.il/license/
 Copyright (c) 2016, Eliezer Croitoru

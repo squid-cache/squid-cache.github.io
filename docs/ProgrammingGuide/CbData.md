@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Callback Data Allocator
 
@@ -121,7 +119,7 @@ Here you can find some examples on how to use cbdata, and why
 
 For a asyncronous operation with callback functions, the normal sequence
 of events in programs NOT using cbdata is as follows:
-
+```c++
     /* initialization */
     type_of_data our_data;
     ...
@@ -134,13 +132,13 @@ of events in programs NOT using cbdata is as follows:
     callback_func(callback_data, ....);
     /* Some time later we clean up our data */
     free(our_data);
-
+```
 However, things become more interesting if we want or need to free the
 callback_data, or otherwise cancel the callback, before the operation
 completes. In constructs like this you can quite easily end up with
 having the memory referenced pointed to by callback_data freed before
 the callback is invoked causing a program failure or memory corruption:
-
+```c++
     /* initialization */
     type_of_data our_data;
     ...
@@ -162,7 +160,7 @@ the callback is invoked causing a program failure or memory corruption:
     /* CRASH, the memory pointer to by callback_data is no longer valid
      * at the time of the callback
      */
-
+```
 ### Asyncronous operation with cbdata
 
 The callback data allocator lets us do this in a uniform and safe
@@ -170,7 +168,7 @@ manner. The callback data allocator is used to allocate, track and free
 memory pool objects used during callback operations. Allocated memory is
 locked while the asyncronous operation executes elsewhere, and is freed
 when the operation completes. The normal sequence of events is:
-
+```c++
     /* initialization */
     type_of_data our_data;
     ...
@@ -188,12 +186,12 @@ when the operation completes. The normal sequence of events is:
         callback_func(...., cbdata);
     ...
     cbdataFree(our_data);
-
+```
 ### Asynchronous operation cancelled by cbdata
 
 With this scheme, nothing bad happens if `cbdataFree` gets called before
 fooOperantionComplete(...).
-
+```c++
     /* initialization */
     type_of_data our_data;
     ...
@@ -213,7 +211,7 @@ fooOperantionComplete(...).
     if (cbdataReferenceValidDone(local_pointer, &amp;cbdata))
         /* won't be called, as the data is no longer valid */
         callback_func(...., cbdata);
-
+```
 In this case, when `cbdataFree` is called before
 `cbdataReferenceValidDone`, the callback_data gets marked as invalid.
 When the callback_data is invalid before executing the callback
@@ -226,7 +224,7 @@ To add new module specific data types to the allocator one uses the
 macros CBDATA_TYPE and CBDATA_INIT_TYPE. These creates a local cbdata
 definition (file or block scope). Any cbdataAlloc calls must be made
 within this scope. However, cbdataFree might be called from anywhere.
-
+```c++
     /* First the cbdata type needs to be defined in the module. This
      * is usually done at file scope, but it can also be local to a
      * function or block..
@@ -244,7 +242,7 @@ within this scope. However, cbdataFree might be called from anywhere.
      * cbdataReferenceValidDone
      */
     CBDATA_INIT_TYPE_FREECB(type_of_data, free_function);
-
+```
 ### Adding a new cbdata registered data type globally
 
 To add new global data types that can be allocated from anywhere within
@@ -253,5 +251,6 @@ corresponding CREATE_CBDATA call in cbdata.c:cbdataInit(). Or
 alternatively add a CBDATA_GLOBAL_TYPE definition to globals.h as
 shown below and use CBDATA_INIT_TYPE at the appropriate location(s) as
 described above.
-
+```c++
     extern CBDATA_GLOBAL_TYPE(type_of_data);        /* CBDATA_UNDEF */
+```

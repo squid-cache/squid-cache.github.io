@@ -1,10 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring a Squid Server to authenticate off LDAP
 
-By Askar Ali Khan
+_By Askar Ali Khan_
 
 ## Outline
 
@@ -40,7 +39,10 @@ http_access allow localhost
 http_access deny all
 ```
 
-> :information_source: If you want to use the anonymous LDAP binding method then just don't specify the bind DN (-D option, and it's related -w option)
+> :information_source:
+    If you want to use the anonymous LDAP
+    binding method then just don't specify the bind DN
+    (-D option, and it's related -w option)
     
 
 ### SSL/TLS adjustments
@@ -50,11 +52,12 @@ an Ldap server through a SSL/TLS secure channel then pass -ZZ argument
 to squid_ldap_auth program. For more information see the
 squid_ldap_auth manual
 
-> :information_source: Note: You should have generated your SSL certs and placed it under
-`/etc/openldap/cacerts` directory on squid server before using secure
-channel authentication. Remember that this only secures the traffic
-Squid\<-\>LDAP Server, not browsers\<-\>Squid. For SSL/TLS your
-squid_ldap_auth line will look like...
+> :information_source:
+    You should have generated your SSL certs and placed it under
+    `/etc/openldap/cacerts` directory on squid server before using secure
+    channel authentication. Remember that this only secures the traffic
+    Squid\<-\>LDAP Server, not browsers\<-\>Squid. For SSL/TLS your
+    squid_ldap_auth line will look like...
 
 ```
 # the following is one long line, do not wrap

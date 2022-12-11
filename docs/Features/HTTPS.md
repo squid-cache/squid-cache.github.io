@@ -1,28 +1,23 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: HTTPS (HTTP Secure or HTTP over TLS)
 
-  - **Version**: 2.5
-
-  - **More**: RFC [2817](https://tools.ietf.org/rfc/rfc2817),
+- **Version**: 2.5
+- **More**: RFC [2817](https://tools.ietf.org/rfc/rfc2817),
     [2818](https://tools.ietf.org/rfc/rfc2818),
     [Features/SHTTP](/Features/SHTTP)
 
 When a client comes across an **<https://>** URL, it can do one of
 three things:
-
-  - opens an TLS connection directly to the origin server, or
-
-  - opens a tunnel through a proxy to the origin server using the
-    *CONNECT* request method, or
-
-  - opens an TLS connection to a secure proxy.
+- open an TLS connection directly to the origin server, or
+- open a tunnel through a proxy to the origin server using the
+    *CONNECT* request method, **OR**
+- open an TLS connection to a secure proxy.
 
 Squid interaction with these traffic types is discussed below.
 
-# CONNECT tunnel
+## CONNECT tunnel
 
 The *CONNECT* method is a way to tunnel any kind of connection through
 an HTTP proxy. By default, the proxy establishes a TCP connection to the
@@ -30,9 +25,8 @@ specified server, responds with an HTTP 200 (Connection Established)
 response, and then shovels packets back and forth between the client and
 the server, without understanding or interpreting the tunneled traffic.
 For the gory details on tunneling and the CONNECT method, please see RFC
-[2817](https://tools.ietf.org/rfc/rfc2817) and the expired [Tunneling
-TCP based protocols through Web proxy
-servers](http://www.web-cache.com/Writings/Internet-Drafts/draft-luotonen-web-proxy-tunneling-01.txt)
+[2817](https://tools.ietf.org/rfc/rfc2817) and the expired
+[Tunneling TCP based protocols through Web proxy servers](http://www.web-cache.com/Writings/Internet-Drafts/draft-luotonen-web-proxy-tunneling-01.txt)
 draft.
 
 ## CONNECT tunnel through Squid
@@ -43,19 +37,17 @@ are able to control CONNECT requests, but only limited information is
 available. For example, many common parts of the request URL do not
 exist in a CONNECT request:
 
-  - the URL scheme or protocol (e.g., <http://>, <https://>,
+- the URL scheme or protocol (e.g., <http://>, <https://>,
     <ftp://>, voip://, itunes://, or <telnet://>),
-
-  - the URL path (e.g., */index.html* or */secure/images/*),
-
-  - and query string (e.g. *?a=b\&c=d*)
+- the URL path (e.g., */index.html* or */secure/images/*),
+- and query string (e.g. *?a=b\&c=d*)
 
 With HTTPS, the above parts are present in *encapsulated* HTTP requests
 that flow through the tunnel, but Squid does not have access to those
 encrypted messages. Other tunneled protocols may not even use HTTP
 messages and URLs (e.g., telnet).
 
-  - :warning:
+> :warning:
     It is important to notice that the protocols passed through CONNECT
     are not limited to the ones Squid normally handles. Quite literally
     **anything** that uses a two-way TCP connection can be passed
@@ -75,9 +67,8 @@ hand-crafted CONNECT request knowing that it is going to be intercepted.
 
 ## Bumping CONNECT tunnels
 
-  - :x:
+ > :x:
     **WARNING:**
-    :x:
     HTTPS was designed to give users an expectation of privacy and
     security. Decrypting HTTPS tunnels without user consent or knowledge
     may violate ethical norms and may be illegal in your jurisdiction.
@@ -92,8 +83,7 @@ hand-crafted CONNECT request knowing that it is going to be intercepted.
     world: Make sure you understand what you are doing and that your
     decision makers have enough information to make wise choices.
 
-Squid
-[SslBump](/Features/SslBump)
+Squid [SslBump](/Features/SslBump)
 and associated features can be used to decrypt HTTPS CONNECT tunnels
 while they pass through a Squid proxy. This allows dealing with tunneled
 HTTP messages as if they were regular HTTP messages, including applying
@@ -106,7 +96,7 @@ From the browser point of view, encapsulated messages are not sent to a
 proxy. Thus, general interception limitations, such as inability to
 authenticate individual embedded requests, apply here as well.
 
-# Direct TLS connection
+## Direct TLS connection
 
 When a browser creates a direct TLS connection with an origin server,
 there are no HTTP CONNECT requests. The first HTTP request sent on such
@@ -128,8 +118,7 @@ library is installed in a non-standard location you may need to use the
 
 This is perhaps most useful in a surrogate (aka, http accelerator,
 reverse proxy) configuration. Simply configure Squid with a normal
-[reverse
-proxy](/ConfigExamples#Reverse_Proxy_.28Acceleration.29)
+[reverse proxy](/ConfigExamples#Reverse_Proxy_.28Acceleration.29)
 configuration using port 443 and SSL certificate details on an
 [https_port](http://www.squid-cache.org/Doc/config/https_port) line.
 
@@ -148,9 +137,7 @@ traffic -- Squid is not a TCP-level proxy.
 
 ## Bumping direct TLS connections
 
-  - :x:
-    **WARNING:**
-    :x:
+> :x:  **WARNING:**
     HTTPS was designed to give users an expectation of privacy and
     security. Decrypting HTTPS tunnels without user consent or knowledge
     may violate ethical norms and may be illegal in your jurisdiction.
@@ -165,8 +152,7 @@ traffic -- Squid is not a TCP-level proxy.
     world: Make sure you understand what you are doing and that your
     decision makers have enough information to make wise choices.
 
-A combination of Squid [NAT
-Interception](/SquidFaq/InterceptionProxy),
+A combination of Squid [NAT Interception](/SquidFaq/InterceptionProxy),
 [SslBump](/Features/SslBump),
 and associated features can be used to intercept direct HTTPS
 connections and decrypt HTTPS messages while they pass through a Squid
@@ -178,8 +164,7 @@ Configuration mistakes, Squid bugs, and malicious attacks may lead to
 unencrypted messages escaping Squid boundaries.
 
 Currently, Squid-to-client traffic on intercepted direct HTTPS
-connections cannot use [Dynamic Certificate
-Generation](/Features/DynamicSslCert),
+connections cannot use [Dynamic Certificate Generation](/Features/DynamicSslCert),
 leading to browser warnings and rendering such configurations nearly
 impractical. This limitation will be addressed by the
 [bump-server-first](/Features/BumpSslServerFirst)
@@ -221,18 +206,12 @@ More details at
 The Firefox 33.0 browser is able to connect to proxies over TLS
 connections if configured to use one in a PAC file. GUI configuration
 appears not to be possible (yet), though there is a config hack for
-[embedding PAC
-logic](https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c68).
+[embedding PAC logic](https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c68).
 
 There is still an important bug open:
-
-  - Using a client certificate authentication to a proxy:
+- Using a client certificate authentication to a proxy:
     <https://bugzilla.mozilla.org/show_bug.cgi?id=209312>
 
-If you have trouble with adding trust for the proxy cert, there is [a
-process](https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c65) by
-Patrick
-[McManus](/McManus)
-to workaround that.
-
-[CategoryFeature](/CategoryFeature)
+If you have trouble with adding trust for the proxy cert, there is
+[a process](https://bugzilla.mozilla.org/show_bug.cgi?id=378637#c65) by
+_Patrick McManus_ to work around that.
