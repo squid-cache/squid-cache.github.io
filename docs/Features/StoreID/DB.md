@@ -1,22 +1,19 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 A basic structure as an example for StoreID url DB "Many to One".
 
-This DB design is from Alan at [POST:"Fwd: \[squid-users\] store-id.pl
-doesnt cache youtube
-"](http://squid-web-proxy-cache.1019090.n4.nabble.com/store-id-pl-doesnt-cache-youtube-tp4660861p4660945.html)
+This DB design is
+[contributed](https://www.mail-archive.com/squid-users@squid-cache.org/msg90367.html)
+from Alan.
 
 # The pattern syntax
 
-The pattern contains the following parts
+The pattern contains the following parts:
 
-1.  a pattern-regex. URL should not contain spaces.
-
-2.  whitespace.
-
-3.  storeID replacement pattern. Based on the pattern regex.
+1. a pattern-regex. URL should not contain spaces.
+2. whitespace.
+3. storeID replacement pattern. Based on the pattern regex.
 
 If you understand the design and have a clue about a pattern just add it
 and notice that there is a way to know what you have done...
@@ -35,18 +32,15 @@ deny line.
     acl noStoreID url_regex "/etc/squid/storeid.whitelist"
     store_id_access deny noStoreID
 
-For
-[Fedora](/KnowledgeBase/Fedora)
-DB files.
+For [Fedora](/KnowledgeBase/Fedora)DB files.
 
     ^https?\:\/\/[a-zA-Z0-9\.\-_]+\/.*\/repodata\/.*(bz2|gz|xml)$
 
 # Patterns
 
-\* In a case you have a large amount of traffic towards these mirrors
+* In a case you have a large amount of traffic towards these mirrors
 consider adding one for your clients benefit.
-
-\* Caching is not mirroring which gives much more then just plain
+* Caching is not mirroring which gives much more then just plain
 transfer speedup.
 
 ## Aimp media player
