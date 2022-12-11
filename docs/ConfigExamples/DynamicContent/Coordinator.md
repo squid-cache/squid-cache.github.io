@@ -1,12 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Caching Dynamic Content using Adaptation
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 This page is an ongoing development. Not least because it must keep up
 with youtube.com alterations. If you start to experience problems with
@@ -14,16 +9,15 @@ any of these configs please first check back here for updated config.
 
 ## Problem Outline
 
-Squid since old days till today
-[Squid-3.2](/Releases/Squid-3.2)
-use The URL \*as\* the resource key. It has been and remains the
+Squid since old days till today [Squid-3.2](/Releases/Squid-3.2)
+use The URL as the resource key. It has been and remains the
 fundamental design property of HTTP. this approach based on the
 assumption that each GET request of a URL should identify one and only
 one resource. dynamic content should be sent based on user data in a
 POST request. as defined in
-[rfc2616](http://tools.ietf.org/html/rfc2616) [section 9.3 for
-GET](http://tools.ietf.org/html/rfc2616#section-9.3) and [section 9.5
-for POST](http://tools.ietf.org/html/rfc2616#section-9.5)
+[rfc2616](http://tools.ietf.org/html/rfc2616)
+[section 9.3 for GET](http://tools.ietf.org/html/rfc2616#section-9.3) 
+and [section 9.5 for POST](http://tools.ietf.org/html/rfc2616#section-9.5)
 
 9.3 "The GET method means retrieve whatever information (in the form of
 an entity) is identified by the Request-URI."
@@ -33,39 +27,32 @@ the entity enclosed in the request as a new subordinate of the resource
 identified by the Request-URI in the Request-Line."
 
 The rfc states the specification of the protocol but it's in
-developers\\webdesigners to enforce it.
+developers/webdesigners to enforce it.
 
 ## What is Dynamic Content
 
 one URL that can result in more then one resource.( one to many )
 
-  - Dynamic content is about the entity resource being generated on
+- Dynamic content is about the entity resource being generated on
     request. The usual result of that is an entity which varies with
     each request and contains request-specific information. eg web pages
     which contain the name of the user logged in and requesting it.
 
 some of the reasons for that:
 
-  - The result of a live content feed based or not on argument supplied
+- The result of a live content feed based or not on argument supplied
     by end user.
+- a CMS(Content Management System) scripts design.
+- bad programing.
+- Privacy policies.
 
-  - a CMS(Content Management System) scripts design.
+## File De-Duplication/Duplication
 
-  - bad programing.
-
-  - Privacy policies.
-
-## File De-Duplication\\Duplication
-
-  - two urls that result the same identical resource.( many to one )
-
-some of the reasons for that:
-
-  - a temporary URL for content access based on credentials.
-
-  - bad programing or fear from caching
-
-  - Privacy policies
+- two urls that result the same identical resource ( many to one ).
+    Some of the reasons for that:
+    - a temporary URL for content access based on credentials
+    - bad programing or fear from caching
+    - Privacy policies
 
 There is also the problem of content copying around the web. For
 example: how many sites contain their own copy of "jQuery.js" ? images,
@@ -74,19 +61,20 @@ much duplication that reduces cache efficiency.
 
 ## Marks of dynamic content in URL
 
-squid applies a refresh pattern acl on [Dynamic
-Content](/ConfigExamples/DynamicContent)
+squid applies a refresh pattern acl on
+[Dynamic Content](/ConfigExamples/DynamicContent)
 marks in the URL such "?" and "cgi-bin" by default.
 [refresh\_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
 
     refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 
-NOTE: the only reason these should not be cached is that old CGI systems
-commonly do not send cache-control or expiry information to permit safe
-caching. Same goes for the "?" query string scripts. The
-refresh\_pattern directive is specifically used so that dynamic content
-responses which \*do\* contain sufficient cache control headers \*are\*
-cached.
+> :bulb:
+    the only reason these should not be cached is that old CGI systems
+    commonly do not send cache-control or expiry information to permit safe
+    caching. Same goes for the "?" query string scripts. The
+    refresh\_pattern directive is specifically used so that dynamic content
+    responses which *do* contain sufficient cache control headers \*are\*
+    cached.
 
 ### "?"
 
@@ -98,7 +86,7 @@ the argument "action=login" to the wiki server and will result a login
 page. if you will send an argument to a static html file such as:
 "<http://www.squid-cache.org/index.html?action=login>" the result is
 just a longer url. many CMS like Wordpress use question mark to identify
-a specific page\\article stored in the system. ("/wordpress/?p=941")
+a specific page/article stored in the system. ("/wordpress/?p=941")
 
 ### CGI-BIN
 
@@ -118,8 +106,7 @@ Cache specific headers to allow or disallow caching the resource.
 Mark Nottingham wrote a very detailed document ["Caching Tutorial for
 Web Authors and Webmasters"](http://www.mnot.net/cache_docs/) about
 cache that i recommend to read. and also wrote a great tool to analyze
-cache headers of sites
-[RedBot](http://redbot.org/)![http://redbot.org/favicon.ico](http://redbot.org/favicon.ico)
+cache headers of sites [RedBot](http://redbot.org/)
 
 ### HTTP headers
 
@@ -160,14 +147,14 @@ Common response headers are:
     Etag:
     Pragma:
 
-### HTTP 206\\partial content
+### HTTP 206/partial content
 
 Squid has not been caching range responses. but there are other software
 that do offer that.
 
 ## Dynamic-Content|Bandwidth Consumers
 
-If you will look at some ISP\\office graphs you will see that there is a
+If you will look at some ISP/office graphs you will see that there is a
 pattern that shapes the usage graphs. Software updates and videos
 content are well known bandwidth consumers. Some are cache friendly
 while others not.
@@ -179,15 +166,12 @@ friendly but it got into a dead end from youtube side.
 
 File De-duplication
 
-  - Microsoft updates
-
-  - Youtube video\\img
-
-  - CDN\\DNS load balancing
+- Microsoft updates
+- Youtube video/img
+- CDN/DNS load balancing
 
 Real dynamic content
-
-  - Facebook
+- Facebook
 
 ### Microsoft Updates Caching
 
@@ -211,11 +195,11 @@ other then that a chunk of 1KB out of a 90MB file will result in a 90MB
 bandwidth waist. so it's up to the proxy admin to set the cache
 properly.
 
-### Youtube video\\img
+### Youtube video/img
 
 Pages are, and URLs are dynamically created, but they de-duplicate down
 to static video locations. Youtube serves video content requests by user
-to apply polices like "allow only specific user\\group\\friends" etc. A
+to apply polices like "allow only specific user/group/friends" etc. A
 video will be served to the same client with different URL in matter of
 a second. most of the video urls has some common sense identity in the
 form of an arguments so it can be cached using a specific "key". since
@@ -229,13 +213,13 @@ in Squid2.X. other solution was using the "url\_rewrite" combined with
 Web-server mentioned at
 [ConfigExamples/DynamicContent/YouTube](http://wiki.squid-cache.org/ConfigExamples/DynamicContent/YouTube)
 
-### CDN\\DNS load balancing
+### CDN/DNS load balancing
 
 Many websites use CDN(Content Delivery Network) to scale their website.
 some of these are using same URL on other domain. one of the major
 opensource players that i can demonstrate with is
-[SourceForge](/SourceForge).
-they have mirrors all over the world and they use a prefix domain to
+[SourceForge](https://sourceforge.net/).
+They have mirrors all over the world and they use a prefix domain to
 select the mirror like in:
 
     http://iweb.dl.sourceforge.net/project/assp/ASSP%20Installation/README.txt
@@ -247,7 +231,7 @@ a pseudo for this: every subdomain of "dl.sourceforge.net" should be
 sotred as: "dl.sourceforge.net.some\_internal\_key". and ruby example to
 demonstrate code for that:
 
-``` highlight
+```
 url = "http://iweb.dl.sourceforge.net/project/assp/ASSP%20Installation/README.txt"
 key = "http://dl.sourceforge.net.squid.internal/" + url.match(/.*\.dl\.sourceforge\.net\/(.*)/)[1]
 ```
@@ -268,7 +252,7 @@ one issue with Social Networks is "Privacy". These networks produce a
 large volume of responses containing private data that when cached by an
 ISP can lead to "Invasion of privacy"
 
-  - a case i have seen is that in a misconfiguration on a cache people
+- a case i have seen is that in a misconfiguration on a cache people
     started getting Facebook and gmail pages of other users.
 
 Privacy is an issue that a cache operator should consider very deeply
@@ -301,7 +285,7 @@ offer a solution.
 
 ### Old methods
 
-Sites like youtube\\CDNs atec made a problem needed to be solved
+Sites like youtube/CDNs atec made a problem needed to be solved
 quickly. these sites provides the internet with a huge amount of data
 that had no cache Friendly API. That is why old the old methods was
 developed quickly.
@@ -311,14 +295,12 @@ Content-MD5, Digest:, Link:, etc).
 
 #### Store URL Rewrite
 
-In
-[Squid-2.7](/Releases/Squid-2.7)
-the
+In [Squid-2.7](/Releases/Squid-2.7) the
 [store\_url\_rewrite](http://www.squid-cache.org/Doc/config/store_url_rewrite)
 interface was integrated to solve a resource De-Duplication case. an
 example is sourceforge and it can implemented for youtube and others.
 
-``` highlight
+```ruby
 #!/usr/bin/ruby
 def main
   while request = gets
@@ -349,15 +331,11 @@ can do:
 
 1.  create a redirect file:
 
-<!-- end list -->
-
-    head -100000 access.log | awk '{ print $7 " " $3"/-" " " $8 " " $6}' >/tmp/testurls
+        head -100000 access.log | awk '{ print $7 " " $3"/-" " " $8 " " $6}' >/tmp/testurls
 
 1.  do the test:
 
-<!-- end list -->
-
-    time ./rewritter.rb < /tmp/testurls >/dev/null
+        time ./rewritter.rb < /tmp/testurls >/dev/null
 
 Pros:
 
@@ -366,35 +344,31 @@ Pros:
 Cons:
 
   - works only with squid2 tree
-
   - The check is done based only on requested URL. in a case of 300
     status code response the URL will be cached and can cause endless
     loop.
-
   - There is no way to interact with the cached key in any of squid
-    cache interfaces such as ICP\\HTCP\\[Cache
+    cache interfaces such as ICP/HTCP/[Cache
     Manager](/Features/CacheManager),
     the resource is a GHOST.
 
-(I wrote an ICP client and was working on a HTCP Switch\\Hub to monitor
+(I wrote an ICP client and was working on a HTCP Switch/Hub to monitor
 and control live cache objects)
 
   - To solve the 300 status code problem a specific patch was proposed
     but wasn't integrated into squid.
-    
-      - The 300 status code problem can be solved by ICAP RESPMOD
-        rewriting.
+- The 300 status code problem can be solved by ICAP RESPMOD
+    rewriting
 
 #### Web-server and URL Rewrite
 
 In brief the idea is to use the url\_rewrite interface to silently
 redirect the request to a local web server script.
 
-  - in time the script will fetch for squid the url and store the file
+- in time the script will fetch for squid the url and store the file
     on HDD or will fetch from HDD the cached file.
 
-[the proposed solution in more
-detail](http://wiki.squid-cache.org/ConfigExamples/DynamicContent/YouTube#Partial_Solution_1:_Local_Web_Server)
+[the proposed solution in more detail](http://wiki.squid-cache.org/ConfigExamples/DynamicContent/YouTube#Partial_Solution_1:_Local_Web_Server)
 
 Another same style solution was used by
 [youtube-cache](http://code.google.com/p/youtube-cache/) and later was
@@ -403,27 +377,21 @@ extended at[yt-cache](http://code.google.com/p/yt-cache/)
 Pros:
 
   - works with any Squid version
-
   - easily adaptable for other CDN
 
 Cons:
 
-  - no keep-alive support and as result cannot cache youtube with
+- no keep-alive support and as result cannot cache youtube with
     "range" argument requests(will result youtube player stop all the
     time)
-
-  - There is no support for POST requests at all, they will be treated
+- There is no support for POST requests at all, they will be treated
     as GET.(can be changed doing some coding)
-
-  - If two people watch an uncached video at the same time, it will be
+- If two people watch an uncached video at the same time, it will be
     downloaded by both.
-
-  - It requires a webserver running at all times
-
-  - Cache dir will be managed manually by administrator and not by Squid
+- It requires a webserver running at all times
+- Cache dir will be managed manually by administrator and not by Squid
     smart replacement algorithms.
-
-  - cannot be used with tproxy(the webserver will use his own IP to get
+- cannot be used with tproxy(the webserver will use his own IP to get
     the request instead of squid way of imposing to be the client)
 
 #### NGINX as a Cache Peer
@@ -441,25 +409,20 @@ for youtube can be used:
 
 Pros:
 
-  - works with any Squid version
-
-  - easily adaptable for other CDN
+- works with any Squid version
+- easily adaptable for other CDN
 
 Cons:
 
-  - no keep-alive support and as result cannot cache youtube with
+- no keep-alive support and as result cannot cache youtube with
     "range" argument requests(will result youtube player stop all the
     time)
-
-  - A request will lead to a full file download and can cause DDOS or
+- A request will lead to a full file download and can cause DDOS or
     massive bandwidth consumption by the cache web-server.
-
-  - It requires a webserver running at all times
-
-  - Cache dir will be managed manually by administrator and not by Squid
+- It requires a webserver running at all times
+- Cache dir will be managed manually by administrator and not by Squid
     smart replacement algorithms.
-
-  - cannot be used with tproxy.
+- cannot be used with tproxy.
 
 ### Summery of the ICAP solution
 
@@ -471,7 +434,7 @@ that is based on the same idea because it has updates, support and other
 features.
 
 this resulted Squid servers to serve files from a local
-NGINX\\APACHE\\LIGHTHTTPD that resulted a very nasty cache
+NGINX/APACHE/LIGHTHTTPD that resulted a very nasty cache
 maintainability problem.
 
 many cache admins gained youtube videos cache but lost most of squid
@@ -486,11 +449,9 @@ The solution i implemented was meant for newer Squid version 3+ can be
 implemented using either one of two options ICAP server or url\_rewrite
 while ICAP has many advantages. it requires:
 
-  - 2 squid instances
-
-  - ICAP server\\url\_rewrite script
-
-  - very fast DB engine(MYSQL\\PGSQL\\REDIS\\OTHERS)
+- 2 squid instances
+- ICAP server/url\_rewrite script
+- very fast DB engine(MYSQL/PGSQL/REDIS/OTHERS)
 
 what will it do? *Cheat Everyone in the system\!\!*. ICAP and
 url\_rewrite has the capability to rewrite the url transparently to the
@@ -518,31 +479,26 @@ file squid 2 feeds the whole network one big lie but with the original
 video.
 
 The Result is: squid 1 will store the video with a unique key that can
-be verified using ICP\\HTCP\\CACHEMGR\\LOGS etc. squid 2 is just a
+be verified using ICP/HTCP/CACHEMGR/LOGS etc. squid 2 is just a
 simple proxy(no-cache) ICAP server coordinates the work flow.
 
 Pros:
 
   - cache managed by squid algorithms/
-
-  - should work on any squid version support ICAP\\url\_rewrite.(tested
+  - should work on any squid version support ICAP/url\_rewrite.(tested
     on squid 3.1.19)
-
   - can build key based on the URL and all request headers.
 
 Cons:
 
-  - depends on DB and ICAP server.
+  - depends on DB and ICAP server
 
-  - 
 ### Implementing ICAP solution
 
 requires:
 
   - squid with icap support
-
   - mysql DB
-
   - ICAP server (i wrote [echelon-mod](https://github.com/elico/echelon)
     specific for the project requirements) I also implemented this using
     [GreasySpoon](https://github.com/elico/squid-helpers/tree/master/squid_helpers/youtubetwist)
@@ -635,30 +591,10 @@ of open port.
 the same logic i implemented using ICAP can be used using the
 url\_rewrite mechanizm.
 
-i wrote a specific url rewriter with the db\\cache server redis as
+i wrote a specific url rewriter with the db/cache server redis as
 backend. we can use the same logic as ICAP server to rewrite the urls on
 each of the squid instances. you need to install "redis" and redis gem
 for ruby.
-
-<table>
-<tbody>
-<tr class="odd">
-<td><p>ubuntu</p></td>
-<td><p>gentoo</p></td>
-<td><p>centos\fedora</p></td>
-</tr>
-<tr class="even">
-<td><p>gem install redis</p>
-<p>apt-get install redis</p></td>
-<td><p>gem install redis</p>
-<p>emerge redis</p></td>
-<td><p>gem install redis</p>
-<p>yum install redis</p>
-<p>/sbin/chkconfig redis on</p>
-<p>/etc/init.d/redis start</p></td>
-</tr>
-</tbody>
-</table>
 
 squid1.conf
 
@@ -680,11 +616,11 @@ squid2.conf
     url_rewrite_access allow internaldoms
     url_rewrite_access deny all
 
-  - remember to chmod +x coordinator.rb
+remember to chmod +x coordinator.rb
 
 coordinator.rb
 
-``` highlight
+```ruby
 #!/usr/bin/ruby
 require 'syslog'
 require 'redis'

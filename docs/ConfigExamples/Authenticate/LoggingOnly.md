@@ -1,6 +1,5 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Logging usernames when using passthrough authentication
 
@@ -16,10 +15,10 @@ there instead).
 ## Silent Authentication Demand
 To make squid 'demand' authentication details for logging this small
 hack needs to be used:
-```
-acl dummyAuth proxy_auth REQUIRED
-http_access deny !dummyAuth all
-```
+
+    acl dummyAuth proxy_auth REQUIRED
+    http_access deny !dummyAuth all
+
 
 Remember that http_access order is very important. If you allow access
 without the "dummyAuth" acl, you won't get usernames logged
@@ -36,12 +35,11 @@ to any username/password combination.
 ### Squid Configuration File
 
 This section defines the authentication helper and related settings.
-```
-auth_param basic program /usr/lib/squid/basic_fake_auth
-auth_param basic children 10
-auth_param basic credentialsttl 1 hours
-auth_param basic casesensitive off
-```
+
+    auth_param basic program /usr/lib/squid/basic_fake_auth
+    auth_param basic children 10
+    auth_param basic credentialsttl 1 hours
+    auth_param basic casesensitive off
 
 ## NTLM Authentication
 
@@ -50,7 +48,6 @@ and authentication challenges needed. The helper always returns `OK`
 whatever the result.
 
 ### Squid Configuration File
-```
+
     auth_param ntlm program /usr/lib/squid/ntlm_fake_auth
     auth_param ntlm children 10
-```

@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
-
 # Coin Miners Filtering
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+*by [YuriVoinov](/YuriVoinov)*
 
 ## Outline
 
@@ -51,9 +45,10 @@ Paste the configuration file like this:
 You can find updateable coin miners list
 [here](https://raw.githubusercontent.com/Marfjeh/coinhive-block/master/domains).
 
-To automate updates with cron, you can use [this
-script](/ConfigExamples/CoinMiners?action=AttachFile&do=get&target=update_miners.sh):
+To automate updates with cron, you can use
+[this script](/ConfigExamples/CoinMiners?action=AttachFile&do=get&target=update_miners.sh):
 
+```bash
     #
     # Convert the miners server listing
     # into an ufdbGuard domains.
@@ -90,6 +85,7 @@ script](/ConfigExamples/CoinMiners?action=AttachFile&do=get&target=update_miners
     $TOUCH $dst_dir/*
     $ECHO "Done."
     #
+```
 
 ## ufdbguard configuration
 
@@ -100,7 +96,7 @@ Add category to ufdbguard.conf:
             redirect "http://your_proxy_FQDN:8080/cgi-bin/URLblocked.cgi?clientgroup=%s&clientaddr=%a&category=%t&url=%u"
     }
 
-Then add **\!miners** to ufdbguard ACL(s). Don't forget to compile
+Then add **!miners** to ufdbguard ACL(s). Don't forget to compile
 miners database and restart ufdbguardd.
 
 Also, don't forget to configure ufdbguard to work with bump-enabled
@@ -112,7 +108,5 @@ and make sure you redirection web-server has configured SSL.
 
 ## Testing your setup
 
-Just visit [this site](https://mineblock.org/). You should see [this
-picture](/ConfigExamples/CoinMiners?action=AttachFile&do=get&target=C89L68e.png).
-
-[CategoryConfigExample](/CategoryConfigExample)
+Just visit [this site](https://mineblock.org/). You should see 
+![this picture](/ConfigExamples/CoinMiners?action=AttachFile&do=get&target=C89L68e.png)

@@ -1,21 +1,16 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Client Bandwidth Limits
 
-  - **Goal**: Shape Squid-to-client bandwidth usage on client IP-level,
+- **Goal**: Shape Squid-to-client bandwidth usage on client IP-level,
     for 4M IPs (/10 network).
+- **Status**: complete
+- **Version**: 3.2
+- **Developer**:
+    [AlexRousskov](/AlexRousskov), [ChristosTsantilas](/ChristosTsantilas)
 
-  - **Status**: complete
-
-  - **Version**: 3.2
-
-  - **Developer**:
-    [AlexRousskov](/AlexRousskov),
-    [ChristosTsantilas](/ChristosTsantilas)
-
-# Use case
+## Use case
 
 In mobile environments, Squid needs to limit Squid-to-client bandwidth
 available to individual users, identified by their IP addresses. The IP
@@ -28,28 +23,25 @@ IPv4 space with single-IP resolution. For individual host resolution an
 additional 64-bit long host identifier must be added on top of that.
 Related: bug [2144](https://bugs.squid-cache.org/show_bug.cgi?id=2144)
 
-# Existing tools
+## Existing tools
 
 A few existing mechanisms should be considered and reused to the extent
 possible:
 
-  - Existing Squid [delay
-    pools](/Features/DelayPools)
+- Existing Squid [delay pools](/Features/DelayPools)
     limit server-to-Squid bandwidth and we need Squid-to-client shaping.
     There is also no pool class that can accommodate 4 million unique IP
     addresses.
-
-  - Squid2 experimental client-side bandwidth limiting code should be
+- Squid2 experimental client-side bandwidth limiting code should be
     studied. Portions of it may be reusable. According to Adrian Chad,
     the experimental Squid2 code has not been extensively tested and
     does not satisfy all of the project requirements.
-
-  - Linux *iptables* do not work "as is" either, because they operate on
+- Linux *iptables* do not work "as is" either, because they operate on
     connection and not on source IP basis: Multiple connections may not
     share the same bucket and once the connection is gone so is the
     bandwidth usage history.
 
-# Details
+## Details
 
 This work is based on the existing server­-to­-Squid delay pools
 architecture and an experimental Squid2 feature dealing with
@@ -75,5 +67,3 @@ connection. All transfers with the same client ID will drain the same
 bucket, regardless of the number of HTTP/TCP connections from that
 client to Squid. The new feature limits the approximate download
 bandwidth available to each client ID.
-
-[CategoryFeature](/CategoryFeature)

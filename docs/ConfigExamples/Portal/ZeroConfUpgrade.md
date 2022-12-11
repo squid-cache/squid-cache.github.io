@@ -1,5 +1,5 @@
 ---
-categories: [ConfigExample, ReviewMe]
+categories: [ConfigExample]
 published: false
 ---
 # Portal with Browser configuration detection
@@ -13,8 +13,7 @@ about these examples please email the squid-users mailing list.
 Squid when acting as a web portal sometimes is required to perform
 things such as
 [authentication](/Features/Authentication)
-or
-[ssl-bump](/Features/SslBump)
+or [ssl-bump](/Features/SslBump)
 which are not possible on a transparent interception proxy. And Yet the
 portal is also required to intercept port 80 traffic.
 
@@ -40,13 +39,11 @@ most popular browsers and a generic instruction for less popular ones.
 As with all our bundled pages these come translated in many languages
 for easier user reading.
 
-  - :warning:
+> :warning:
     When using ERR_AGENT_CONFIGURE with Squid older than
     [Squid-3.1.20](/Releases/Squid-3.1)
     you will have to edit the file and change the %b to the squid port
     you want the users configuring. This can be done with:
-
-<!-- end list -->
 
 ``` 
  sed --in-place s/%b/3128/ ERR_AGENT_CONFIGURE
@@ -57,7 +54,7 @@ for easier user reading.
     will fill out the %b value with port 3128. Use the above replacement
     to use another port.
     
-    :information_source:
+> :information_source:
     [Squid-3.2](/Releases/Squid-3.2)
     will fill out the %b value with the proxies first *normal*
     (forward-proxy) listening port.
@@ -86,5 +83,3 @@ These are just the snippets of config which cause the splash page and
 redirect to be done. Rules which permit the visitor use of the proxy are
 expected to be placed as appropriate below them. The basic default
 safety nets should as always be above them.
-
-[CategoryConfigExample](/CategoryConfigExample)
