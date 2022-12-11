@@ -1,14 +1,11 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Disk Daemon (diskd) helper
 
   - **Status**: Complete.
-
   - **Version**: 2.4
 
-# Details
 
 ## What is DISKD?
 
@@ -29,9 +26,11 @@ are also described
 bakeoff, we got 160 req/sec with diskd. Without diskd, we'd have gotten
 about 40 req/sec.
 
-|                                                                      |                                                                                                                                                                                                                          |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| :warning: | Modern *Linux* systems the Disk Daemon has been trumped by extremely fast AUFS. diskd is still recommended for *BSD* variants. However, we may have found an implementation bug in squid which was hobbling AUFS on BSD. |
+> :warning:
+  On modern *Linux* systems the Disk Daemon has been trumped by extremely
+  fast AUFS. diskd is still recommended for *BSD* variants.
+  However, we may have found an implementation bug in squid
+  which was hobbling AUFS on BSD.
 
 ## How do I use it?
 
@@ -62,25 +61,19 @@ However, you will likely need to increase the message queue parameters
 for Squid. Message queue implementations normally have the following
 parameters:
 
-  - MSGMNB  
+- MSGMNB:
     Maximum number of bytes per message queue.
-
-  - MSGMNI  
+- MSGMNI:
     Maximum number of message queue identifiers (system wide).
-
-  - MSGSEG  
+- MSGSEG:
     Maximum number of message segments per queue.
-
-  - MSGSSZ  
+- MSGSSZ:
     Size of a message segment.
-
-  - MSGTQL  
+- MSGTQL:
     Maximum number of messages (system wide).
-
-  - MSGMAX  
+- MSGMAX:
     Maximum size of a whole message. On some systems you may need to
-
-increase this limit. On other systems, you may not be able to change it.
+    increase this limit. On other systems, you may not be able to change it.
 
 The messages between Squid and diskd are 32 bytes for 32-bit CPUs and 40
 bytes for 64-bit CPUs. Thus, MSGSSZ should be 32 or greater. You may
@@ -123,59 +116,6 @@ example. Make sure the values are appropriate for your system:
     option          MSGSSZ=64       # size of a message segment (Must be 2^N)
     option          MSGTQL=1024     # max amount of messages in the system
 
-### Digital Unix
-
-Message queue support seems to be in the kernel by default. Setting the
-options is as follows:
-
-    options         MSGMNB="8192"     # max # bytes on queue
-    options         MSGMNI="40"       # # of message queue identifiers
-    options         MSGMAX="2048"     # max message size
-    options         MSGTQL="2048"     # # of system message headers
-
-by (B.C.Phillips at massey dot ac dot nz) Brenden Phillips
-
-If you have a newer version (DU64), then you can probably use
-*sysconfig* instead. To see what the current IPC settings are run
-
-    # sysconfig -q ipc
-
-To change them make a file like this called ipc.stanza:
-
-    ipc:
-            msg-max = 2048
-            msg-mni = 40
-            msg-tql = 2048
-            msg-mnb = 8192
-
-then run
-
-    # sysconfigdb -a -f ipc.stanza
-
-You have to reboot for the change to take effect.
-
-### Solaris
-
-Refer to [Demangling Message
-Queues](http://www.sunworld.com/sunworldonline/swol-11-1997/swol-11-insidesolaris.html)
-in Sunworld Magazine.
-
-I don't think the above article really tells you how to set the
-parameters. You do it in */etc/system* with lines like this:
-
-    set msgsys:msginfo_msgmax=2048
-    set msgsys:msginfo_msgmnb=8192
-    set msgsys:msginfo_msgmni=40
-    set msgsys:msginfo_msgssz=64
-    set msgsys:msginfo_msgtql=2048
-
-Of course, you must reboot whenever you modify */etc/system* before
-changes take effect.
-
-**Note:** Starting with Solaris 10 8/11 release all of them parameters
-deprecated or remove. New Solaris IPC model is using. See [Solaris
-Tunable Parameters
-Reference](http://docs.oracle.com/cd/E23823_01/html/817-0404/index.html)
 
 ## How do I configure shared memory?
 
@@ -184,16 +124,13 @@ queues. The Squid DISKD implementation uses one shared memory area for
 each cache_dir. Each shared memory area is about 800 kilobytes in size.
 You may need to modify your system's shared memory parameters:
 
-  - SHMSEG  
+- SHMSEG  
     Maximum number of shared memory segments per process.
-
-  - SHMMNI  
+- SHMMNI  
     Maximum number of shared memory segments for the whole system.
-
-  - SHMMAX  
+- SHMMAX  
     Largest shared memory segment size allowed.
-
-  - SHMALL  
+- SHMALL  
     Total amount of shared memory that can be used.
 
 For Squid and DISKD, *SHMSEG* and *SHMMNI* must be greater than or equal
@@ -230,59 +167,6 @@ OpenBSD is similar to FreeBSD, except you must use *option* instead of
     option         SHMMAX=2048      # max shared memory segment size (pages)
     option         SHMALL=4096      # max amount of shared memory (pages)
 
-### Digital Unix
-
-Message queue support seems to be in the kernel by default. Setting the
-options is as follows:
-
-    options         SHMSEG="16"       # max shared mem id's per process
-    options         SHMMNI="32"       # max shared mem id's per system
-    options         SHMMAX="2097152"  # max shared memory segment size (bytes)
-    options         SHMALL=4096       # max amount of shared memory (pages)
-
-by (B.C.Phillips at massey dot ac dot nz) Brenden Phillips
-
-If you have a newer version (DU64), then you can probably use
-*sysconfig* instead. To see what the current IPC settings are run
-
-    # sysconfig -q ipc
-
-To change them make a file like this called ipc.stanza:
-
-    ipc:
-            shm-seg = 16
-            shm-mni = 32
-            shm-max = 2097152
-            shm-all = 4096
-
-then run
-
-    # sysconfigdb -a -f ipc.stanza
-
-You have to reboot for the change to take effect.
-
-### Solaris
-
-Refer to [Shared memory
-uncovered](http://www.sunworld.com/swol-09-1997/swol-09-insidesolaris.html)
-in Sunworld Magazine.
-
-To set the values, you can put these lines in */etc/system*:
-
-    set shmsys:shminfo_shmmax=2097152
-    set shmsys:shminfo_shmmni=32
-    set shmsys:shminfo_shmseg=16
-
-**Note:** Parameter *shmmni* is obsolete starting from Solaris 10
-release 8/11, parameter *shmseg* is removed from Solaris 10 to release
-8/11 and not exists now. Consult [actual
-reference](http://docs.oracle.com/cd/E23823_01/html/817-0404/idx-16.html)
-**before** change system parameters\! Also beware - *shmmax* in actual
-Solaris releases is 8,388,608 by default and appears good enough. You
-should not change it without good performance reasons. See
-[reference](http://docs.oracle.com/cd/E23823_01/html/817-0404/appendixa-6.html#indexterm-272)
-for details.
-
 ## Sometimes shared memory and message queues aren't released when Squid exits.
 
 Yes, this is a little problem sometimes. Seems like the operating system
@@ -315,6 +199,3 @@ of the messages and sends back some replies.
 Reasonable Q1 and Q2 values are 64 and 72. If you would rather have good
 hit ratio and bad response time, set Q1 \> Q2. Otherwise, if you would
 rather have good response time and bad hit ratio, set Q1 \< Q2.
-
-Back to the
-[SquidFaq](/SquidFaq)
