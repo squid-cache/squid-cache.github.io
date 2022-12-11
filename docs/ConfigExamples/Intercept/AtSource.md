@@ -1,20 +1,14 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Linux traffic Interception at source using DNAT
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
-
 ## Outline
 
-  - :warning:
-    WARNING: Using NAT interception is not recommended other than as a
+> :warning:
+    Using NAT interception is not recommended other than as a
     final backup to other systems. There are other methods such as
-    [Proxy
-    WPAD/PAC](/Technology/WPAD),
+    [Proxy WPAD/PAC](/Technology/WPAD),
     linux http_proxy environment variable, and windows policy
     enforcement of browser config. All of which are just as effective
     and encounter less problems when multiple clients are involved.
@@ -25,29 +19,25 @@ client application configuration or proxy support. It is extremely
 intrusive and not applicable unless full control is had over the client
 machine (ie rogue application server).
 
-**NOTE:** NAT configuration will only work when used **on the squid
-box**. This is required to perform intercept accurately and securely. To
-intercept from a gateway machine and direct traffic at a separate squid
-box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
+> :information_soiurce: NAT configuration will only work when used
+    **on the squid box**. This is required to perform intercept accurately and securely. To
+    intercept from a gateway machine and direct traffic at a separate squid
+    box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 ## iptables configuration
 
-  - :warning:
+> :warning:
     Replace **SQUIDIP** with the public IP which squid may use for its
     listening port and outbound connections.
-    
-    :information_source:
+
+> :information_source:
     You may also need to replace "squid" UID with the
     [cache_effective_user](http://www.squid-cache.org/Doc/config/cache_effective_user)
     account Squid runs as. This may be using a built-in default of
     "nobody", "squid", or "proxy" depending on your operating system.
 
-<!-- end list -->
-
-    iptables -t nat -A OUTPUT --match owner --uid-owner squid -p tcp --dport 80 -j ACCEPT
-    
-    iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination SQUIDIP:3129
+        iptables -t nat -A OUTPUT --match owner --uid-owner squid -p tcp --dport 80 -j ACCEPT    
+        iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination SQUIDIP:3129
 
 ## Squid Configuration File
 
@@ -56,12 +46,8 @@ like so:
 
     http_port 3129 transparent
 
-  - :warning:
+> :warning:
     In Squid 3.1+ the *transparent* option has been split. Use
     **'intercept** to catch DNAT packets.
 
-<!-- end list -->
-
     http_port 3129 intercept
-
-[CategoryConfigExample](/CategoryConfigExample)

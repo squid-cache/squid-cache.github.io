@@ -1,10 +1,9 @@
 ---
-categories: ReviewMe
-published: false
+categories: KnowledgeBase
 ---
-  - *by Eliezer Croitoru*
+# The risks that come with using StoreID
 
-# The risks that come with the Job
+- *by Eliezer Croitoru*
 
 I would like to describe some of the risks that comes with maintaining a
 cache.
@@ -76,13 +75,11 @@ settings since they can harm almost directly a patient and others.**
 Examples for cases which was seen in the past when a cache was
 configured wrongly in a medical facility:
 
-  - The Doctor couldn't know about the latest news in a specific area
+- The Doctor couldn't know about the latest news in a specific area
     since the cached page was not up to date.
-
-  - The patient cannot buy the drug since there is a big gap between
+- The patient cannot buy the drug since there is a big gap between
     production and market demand and the inventory meter was wrong.
-
-  - X-ray\\CT\\MRI and other scan results that was transferred over the
+- X-ray/CT/MRI and other scan results that was transferred over the
     Internet or Intranet was over-cached and resulted a situation which
     the wrong and old file was downloaded and caused a false diagnose.
 
@@ -92,14 +89,12 @@ Police might be able to use squid as a forensic evidence tool that will
 help to catch pedophiles, arms dealers, drug smugglers and many other
 things which might exist out-there.
 
-  - Squid in it's current form might not be able to prove things unless
+- Squid in it's current form might not be able to prove things unless
     it is being used by a Squid Master.
-
-  - There are couple things which needs to be tuned in squid in order to
+- There are couple things which needs to be tuned in squid in order to
     make it acceptable in court as an Electronic Forensic assisting
     tool.
-
-  - If you are looking for a solution without modifying squid, you can
+- If you are looking for a solution without modifying squid, you can
     run an ICAP service which can help to shed more light in many cases
     then squid debug
     output.([GreasySpoon](http://www.squid-cache.org/Misc/icap.html),
@@ -116,7 +111,7 @@ Pictures that parents do not want shown their child shows up on a clean
 site since there is a problem with the StoreID algorithm pattern
 matching the clean site with another porn site pattern.
 
-## Bank\\Trade
+## Bank/Trade
 
 A bank account page that is not up-to-date will make the poor users buy
 something he can't really pay for.
@@ -126,17 +121,6 @@ captcha picture to be delivered to users. Entering the embedded text in
 the captcha login does not work properly. Blocking users from accessing
 their banking accounts or making online purchases.
 
-# Cache in other levels
-
-## CPU
-
-A CPU cache memory can effect many results of calculations.
-
-We are doing lots of work on a computers that has lots of cache and if
-the cache will break down from any reason you won't like the computer
-that much. I imagine that the CPU cache helps me a lot when writing a
-small scripts or reading emails.
-
 # Conclusion
 
 There is a risk in maintaining a cache and there are benefits.
@@ -145,12 +129,10 @@ We are humans and we have the right to do a mistake two or more but we
 are obligated to do our best.
 
 When configuring
-[refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
-,
-[url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program)
-,
-[store_id_program](http://www.squid-cache.org/Doc/config/store_id_program)
-, ICAP service\\client or any other feature sit.. eat a good meal, drink
+[refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern) ,
+[url_rewrite_program](http://www.squid-cache.org/Doc/config/url_rewrite_program) ,
+[store_id_program](http://www.squid-cache.org/Doc/config/store_id_program) , 
+ICAP service/client or any other feature sit.. eat a good meal, drink
 a good drink. Then when you are full with power sit on whatever you are
 supposed to do in order to make it the best you can.
 
@@ -162,23 +144,3 @@ all.
 
 Since I am the author of StoreID I would say that it can help to make
 the WWW faster and one level up more reliable.
-
-With all the risks that comes with a new function\\helper there is a big
-benefit that make me happy one more day since many others are happy to:
-
-|                 |
-| --------------- |
-| Read an article |
-| Play a game     |
-| Watch a video   |
-| Watch a picture |
-
-And many more.
-
-So good luck StoreID,
-
-    # sudo squid
-
-and "May the Force be with you".
-
-Discuss this page using the "Discussion" link in the main menu

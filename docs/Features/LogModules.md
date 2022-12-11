@@ -1,20 +1,13 @@
 ---
-categories: ReviewMe
 published: false
 ---
 # Feature: Log Modules for Squid
 
-  - **Goal**: Logging plugin interface for Squid
-
-  - **Status**: seeking additional daemon helpers to bundle with Squid.
-
-  - **Version**: 2.7, 3.2
-
-  - **Developer**:
-    [AdrianChadd](/AdrianChadd)
-    (Squid-2),
-    [AmosJeffries](/AmosJeffries)
-    (Squid-3 port)
+- **Goal**: Logging plugin interface for Squid
+- **Status**: seeking additional daemon helpers to bundle with Squid.
+- **Version**: 2.7, 3.2
+- **Developer**: [AdrianChadd](/AdrianChadd) (Squid-2),
+    [AmosJeffries](/AmosJeffries) (Squid-3 port)
 
 ## Plug-in Modules
 
@@ -26,17 +19,14 @@ format:
 
     access_log module:parameters [logformat] [acls]
 
-  - **module**: One of the plugin modules Squid can use to record the
+- **module**: One of the plugin modules Squid can use to record the
     log data.
-
-  - **parameters**: Parameters to configure the plugin module. Content
+- **parameters**: Parameters to configure the plugin module. Content
     and format is specific to each logging module.
-
-  - **logformat**: The access.log format to be used. See
+- **logformat**: The access.log format to be used. See
     [logformat](http://www.squid-cache.org/Doc/config/logformat) for
     more details.
-
-  - **acls**: A list of ACL names, if all the named ACLs match a request
+- **acls**: A list of ACL names, if all the named ACLs match a request
     it will be logged to this log.
 
 ### Module: Standard I/O
@@ -72,19 +62,15 @@ Configuration **module:parameters** to be used by
 
 #### Daemon Helpers Available
 
-  - **log_file_daemon** : Log directly to the local file system.
-
-  - **log_db_daemon** : Log directly to an SQL database. MySQL backend
+- **log_file_daemon** : Log directly to the local file system.
+- **log_db_daemon** : Log directly to an SQL database. MySQL backend
     default.
     <http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html>
     or <http://sourceforge.net/projects/logmysqldaemon/>
-
-  - **blooper** :
-    
-      - *blooper* is a ruby logfile_daemon which can log to any SQL
-        database (Postgres being the main target for it).
-    
-      - Sources are available on github at
+- **blooper** :    
+    - *blooper* is a ruby logfile_daemon which can log to any SQL
+        database (Postgres being the main target for it)
+    - Sources are available on github at
         <https://github.com/paranormal/blooper>
 
 ### [Daemon Message Protocol](/Features/AddonHelpers)
@@ -92,9 +78,6 @@ Configuration **module:parameters** to be used by
 Squid sends a number of commands to the log daemon. These are sent in
 the first byte of each input line:
 
-  - 
-    
-    |              |                                            |
     | ------------ | ------------------------------------------ |
     | L\<data\>\\n | logfile data                               |
     | R\\n         | rotate file                                |
@@ -103,7 +86,6 @@ the first byte of each input line:
     | F\\n         | flush file                                 |
     | r\<n\>\\n    | set rotate count to \<n\>                  |
     | b\<n\>\\n    | 1 = buffer output, 0 = don't buffer output |
-    
 
 No response is expected. Any response that may be desired should occur
 on stderr to be viewed through cache.log.
@@ -118,7 +100,7 @@ Configuration **module:parameters** to be used by
 
     syslog:facility.priority
 
-  - *facility* and *priority* fields are intentionally formatted the
+*facility* and *priority* fields are intentionally formatted the
     same as syslog.conf entries. See your syslog configuration
     documentation for possible values.
 
@@ -150,9 +132,6 @@ Configuration **module:parameters** to be used by
 
     tcp://host:port
 
-> :information_source:
-    Available from
-    [Squid-3.2](/Releases/Squid-3.2)
 
 > :information_source:
     [Syslog-ng](http://www.balabit.com/network-security/syslog-ng) can

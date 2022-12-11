@@ -1,28 +1,22 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
-# Feature: Store URL Rewriting?
+# Feature: Store URL Rewriting
 
-  - **Goal**: Separate out the URL used for storage lookups from the URL
+- **Goal**: Separate out the URL used for storage lookups from the URL
     used for forwarding. This allows for multiple destination URLs to
     reference the same backend content and cut back on duplicated
     content, both for forward proxies (think "google maps") and CDN type
     reverse proxies.
-
-  - **Status**: deprecated. see
+- **Status**: deprecated. see
     [StoreID](/Features/StoreID)
-
-  - **Version**: 2.7 (only)
-
-  - **Developer**:
+- **Version**: 2.7 (only)
+- **Developer**:
     [AdrianChadd](/AdrianChadd).
-
-  - **More**: Background information about Google Maps content -
+- **More**: Background information about Google Maps content -
     <http://squidproxy.wordpress.com/2007/11/16/how-cachable-is-google-part-1-google-maps/>
     (Disclaimer: No, I don't work for Google. No, never have.)
-
-  - **Sponsored by**: Xenion Communications -
+- **Sponsored by**: Xenion Communications -
     <http://www.xenion.com.au/>
 
 ## Details
@@ -37,22 +31,17 @@ Updates".)
 The current changes to Squid-2.HEAD implement the functionality through
 a number of structural changes:
 
-  - The "Rewrite" code in client_side.c is broken out into
+- The "Rewrite" code in client_side.c is broken out into
     client_side_rewrite.c;
-
-  - This was used as a template for "store URL" rewriting in
+- This was used as a template for "store URL" rewriting in
     client_side_storeurl_rewrite.c;
-
-  - An external helper (exactly the same data format is used as a
+- An external helper (exactly the same data format is used as a
     redirect helper\!) receives URLs and can rewrite them to a canonical
     form - these rewritten URLs are stored as "store_url" URLs,
     seperate from the normal URL;
-
-  - The existing/normal URLs are used for ACL and forwarding
-
-  - The "store_url" URLs are used for the store key lookup and storage
-
-  - A new meta type has been added - STORE_META_STOREURL - which means
+- The existing/normal URLs are used for ACL and forwarding
+- The "store_url" URLs are used for the store key lookup and storage
+- A new meta type has been added - STORE_META_STOREURL - which means
     the on-disk object format has slightly changed. There's no big deal
     here - Squid may warn about an unknown meta data type if you
     rollback to another squid version after trying this feature but it
@@ -103,14 +92,14 @@ These rules make sure that you don't try caching cgi-bin and ? URLs
 unless expiry information is explictly given. Make sure you don't add
 the rules after a "refresh_pattern ." line; refresh_pattern entries
 are evaluated in order and the first match is used\! The last entry must
-be the "." entry\!
+be the "." entry!
 
 ## Storage URL re-writing Helper
 
 Here's what I've been using:
 
-``` highlight
-#!/usr/local/sbin/perl
+```perl
+#!/usr/bin/perl
 $| = 1;
 while (<>) {
         chomp;
@@ -148,78 +137,52 @@ Input line received from Squid:
 
     [channel-ID] URL [key-extras]
 
-  - channel-ID
-    
-      - This is an ID for the line when concurrency is enabled. When
-        concurrency is turned off (set to **1**) this field and the
-        following space will be completely missing.
+- **channel-ID**
+    This is an ID for the line when concurrency is enabled. When
+    concurrency is turned off (set to **1**) this field and the
+    following space will be completely missing.
+- **URL**
+    The URL received from the client. In Squid with ICAP support,
+    this is the URL after ICAP REQMOD has taken place.
+- **key-extras**
+    Starting with [Squid-3.5](/Releases/Squid-3.5)
+    additional parameters passed to the helper which may be
+    configured with
+    [url_rewrite_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
+    For backward compatibility the default key-extras for URL
+    helpers matches the format fields sent by [Squid-3.4](/Releases/Squid-3.4)
+    and older in this field position:
 
-  - URL
-    
-      - The URL received from the client. In Squid with ICAP support,
-        this is the URL after ICAP REQMOD has taken place.
-
-  - key-extras
-    
-      - Starting with
-        [Squid-3.5](/Releases/Squid-3.5)
-        additional parameters passed to the helper which may be
-        configured with
-        [url_rewrite_extras](http://www.squid-cache.org/Doc/config/url_rewrite_extras).
-        For backward compatibility the default key-extras for URL
-        helpers matches the format fields sent by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and older in this field position:
-    
-    <!-- end list -->
-    
-      - ``` 
-         ip/fqdn ident method [urlgroup] kv-pair
-        ```
-
-  - ip
-    
-      - This is the IP address of the client. Followed by a slash
-        (**/**) as shown above.
-
-  - fqdn
-    
-      - The FQDN rDNS of the client, if any is known. Squid does not
-        normally perform lookup unless needed by logging or ACLs. Squid
-        does not wait for any results unless ACLs are configured to
-        wait. If none is available **-** will be sent to the helper
-        instead.
-
-  - ident
-    
-      - The IDENT protocol username (if known) of the client machine.
-        Squid will not wait for IDENT username to become known unless
-        there are ACL which depend on it. So at the time re-writers are
-        run the IDENT username may not yet be known. If none is
-        available **-** will be sent to the helper instead.
-
-  - method
-    
-      - The HTTP request method. URL alterations and particularly
-        redirection are only possible on certain methods, and some such
-        as POST and CONNECT require special care.
-
-  - urlgroup
-    
-      - Squid-2 will send this field with the URL-grouping tag which can
-        be configured on
-        [http_port](http://www.squid-cache.org/Doc/config/http_port).
-        Squid-3.x will not send this field.
-
-  - kv-pair
-    
-      - One or more key=value pairs. Only "myip" and "myport" pairs
+        ip/fqdn ident method [urlgroup] kv-pair
+- **ip**
+    This is the IP address of the client. Followed by a slash
+    (**/**) as shown above.
+- **fqdn**
+    The FQDN rDNS of the client, if any is known. Squid does not
+    normally perform lookup unless needed by logging or ACLs. Squid
+    does not wait for any results unless ACLs are configured to
+    wait. If none is available **-** will be sent to the helper
+    instead.
+- **ident**
+    The IDENT protocol username (if known) of the client machine.
+    Squid will not wait for IDENT username to become known unless
+    there are ACL which depend on it. So at the time re-writers are
+    run the IDENT username may not yet be known. If none is
+    available **-** will be sent to the helper instead.
+- **method**
+    The HTTP request method. URL alterations and particularly
+    redirection are only possible on certain methods, and some such
+    as POST and CONNECT require special care.
+- **urlgroup**
+    Squid-2 will send this field with the URL-grouping tag which can
+    be configured on
+    [http_port](http://www.squid-cache.org/Doc/config/http_port).
+    Squid-3.x will not send this field.
+- **kv-pair**
+        One or more key=value pairs. Only "myip" and "myport" pairs
         documented below were ever defined and are sent unconditionally
-        by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and older:
-        
-        |            |                         |
+        by [Squid-3.4](/Releases/Squid-3.4)  and older:
+
         | ---------- | ----------------------- |
         | myip=...   | Squid receiving address |
         | myport=... | Squid receiving port    |
@@ -229,67 +192,40 @@ Result line sent back to Squid:
 
     [channel-ID] [result] [kv-pair] [URL]
 
-  - channel-ID
-    
-      - When a concurrency **channel-ID** is received it must be sent
-        back to Squid unchanged as the first entry on the line.
+- **channel-ID**
+    a concurrency **channel-ID** is received it must be sent
+    back to Squid unchanged as the first entry on the line.
+- **result**
+    One of the result codes:
 
-  - result
-    
-      - One of the result codes:
-        
-        |     |                                            |
         | --- | ------------------------------------------ |
         | OK  | Success. A new URL is presented            |
         | ERR | Success. No change for this URL.           |
         | BH  | Failure. The helper encountered a problem. |
-        
 
-    > :information_source:
-        the result field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and newer.
+> :information_source:
+    the result field is only accepted by
+    [Squid-3.4](/Releases/Squid-3.4) and newer.
 
-  - kv-pair
-    
-      - One or more key=value pairs. The key names reserved on this
-        interface for URL re-writing:
-        
-        |                    |                                                                                                                           |
-        | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+- **kv-pair**
+    One or more key=value pairs. The key names reserved on this
+    interface for URL re-writing:
+
+        | --- | --- |
         | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5)) |
-        | message=...        | reserved                                                                                                                  |
-        | rewrite-url=...    | re-write the transaction to the given URL.                                                                                |
-        | tag=...            | reserved                                                                                                                  |
-        | ttl=...            | reserved                                                                                                                  |
-        | \*_=...           | Key names ending in (_) are reserved for local administrators use.                                                       |
-        
+        | message=...        | reserved |
+        | rewrite-url=...    | re-write the transaction to the given |
+        | tag=...            | reserved |
+        | ttl=...            | reserved |
+        | \*_=...           | Key names ending in (_) are reserved for local administrators use |
 
-    > :information_source:
-        the kv-pair field is only accepted by
-        [Squid-3.4](/Releases/Squid-3.4)
-        and newer.
-    
-    > :information_source:
+- **URL**
+    The URL to be used instead of the one sent by the client. If no
+    action is required leave the URL field blank. The URL sent must
+    be an absolute URL. ie starting with <http://> or <ftp://>
+    etc.
+
+> :information_source:
         the kv-pair returned by this helper can be logged by the
-        **%note**
-        [logformat](http://www.squid-cache.org/Doc/config/logformat)
+        **%note** [logformat](http://www.squid-cache.org/Doc/config/logformat)
         code.
-
-<!-- end list -->
-
-  - URL
-    
-      - The URL to be used instead of the one sent by the client. If no
-        action is required leave the URL field blank. The URL sent must
-        be an absolute URL. ie starting with <http://> or <ftp://>
-        etc.
-
-## Testing
-
-Finally, restart Squid-2.HEAD and browse google maps; check your
-access.log and store.log to make sure URLs are being cached\! Check
-store.log to make sure that the google maps/earth images are being
-stored in the cache (SWAPOUT) and not just RELEASEd immediately.
-
-[CategoryFeature](/CategoryFeature)
