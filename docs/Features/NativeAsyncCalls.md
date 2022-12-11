@@ -1,20 +1,14 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Native support for asynchronous calls
 
-  - **Goal**: Simplify code, improve debugging, improve ICAP
-    performance, and prevent crashes from single transaction errors.
-
-  - **Version**: 3.1
-
-  - **Status**: complete
-
-  - **Developer**:
-    [AlexRousskov](/AlexRousskov)
-
-  - **More**:
+- **Goal**: Simplify code, improve debugging, improve ICAP
+performance, and prevent crashes from single transaction errors.
+- **Version**: 3.1
+- **Status**: complete
+- **Developer**: [AlexRousskov](/AlexRousskov)
+- **More**:
     [bug1912](https://bugs.squid-cache.org/show_bug.cgi?id=1912),
     [bug2093](https://bugs.squid-cache.org/show_bug.cgi?id=2093), and
     item 1 in
@@ -58,7 +52,7 @@ the call itself fails to fire (e.g., an event callback data became
 invalid), Squid stops working with the call. If an exception is caught,
 the call exception handler is called:
 
-``` 
+```c++
     try {
         if (!call->fire())
             return;
@@ -97,7 +91,7 @@ include: an AsyncJob object method, other object method, and a global
 static function.
 
 Here is how AsyncJob call might implement its public methods:
-
+```c++
     bool JobCall::fire() {
         AsyncJob *job = dynamic_cast<AsyncJob*>(theObject);
         if (job pointer is not valid) {
@@ -127,6 +121,7 @@ Here is how AsyncJob call might implement its public methods:
         debug("Exited " << className << "::" << methodName <<
             " method [" >> job->status () >> "]");
     }
+```
 
 The actual JobCall code will use more debugging and probably use more
 ObjectCall (i.e., its parent) facilities):
@@ -151,5 +146,3 @@ handle arbitrary call destination addresses and calls with one, two, or
 three parameters (at least). Designing a simple and efficient set of
 wrappers without using a template-based library like
 [Boost](http://www.boost.org/) will be tricky.
-
-[CategoryFeature](/CategoryFeature)

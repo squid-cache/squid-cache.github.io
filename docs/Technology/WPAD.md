@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Web Proxy Auto Detection (WPAD)
 
@@ -33,35 +31,22 @@ Windows Active Directory Group Policy.
 
 ## WPAD Articles
 
-  - [Fully Automatically Configuring Browsers for
-    WPAD](/SquidFaq/ConfiguringBrowsers#head-5aa28de5e8308087a925cb7ef54ca070a16564d4)
+- [Fully Automatically Configuring Browsers for WPAD](/SquidFaq/ConfiguringBrowsers)
     faq article
-
-  - [Fully Automatically Configuring Browsers for WPAD with
-    DHCP](/SquidFaq/ConfiguringBrowsers#head-8623ffc5e6a381ccfe77f17bbe29fa87c3cf9734)
-    faq article
-
-  - [WPAD
-    DNS](/Technology/WPAD/DNS)
+- [Fully Automatically Configuring Browsers for WPAD with DHCP](/SquidFaq/ConfiguringBrowsers)
+  faq article
+- [WPAD DNS](/Technology/WPAD/DNS)
     covers how User Agents can detect the existance of the proxy
     autoconfiguration file via DNS "Well Known Aliases"
 
 ## Other Articles and Information on WPAD
 
-  - <http://homepages.tesco.net/J.deBoynePollard/FGA/web-browser-auto-proxy-configuration.html>
-
-  - <http://www.wlug.org.nz/WPAD>
-
-  - <http://tools.ietf.org/wg/wrec/draft-ietf-wrec-wpad/>
-
-  - <http://blogs.msdn.com/wndp/articles/IPV6_PAC_Extensions_v0_9.aspx>
+- <http://homepages.tesco.net/J.deBoynePollard/FGA/web-browser-auto-proxy-configuration.html>
+- <http://www.wlug.org.nz/WPAD>
+- <http://tools.ietf.org/wg/wrec/draft-ietf-wrec-wpad/>
+- <http://blogs.msdn.com/wndp/articles/IPV6_PAC_Extensions_v0_9.aspx>
 
 ## WPAD-like functionality in other protocols
 
-  - The Azereus Bittorrent client implements a WPAD-like Cache discovery
+- The Azereus Bittorrent client implements a WPAD-like Cache discovery
     protocol (JPC) to discover JPC-compatible caches. (Links?)
-
-<!-- end list -->
-
-  - [CategoryTechnologyIndex](/CategoryTechnologyIndex)
-    [CategoryTechnology](/CategoryTechnology)

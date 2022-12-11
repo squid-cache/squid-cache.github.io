@@ -1,23 +1,17 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Squid Appliance
 
-  - **Goal**: Provide a quick/trivial and complete install of OS + Squid
-    with sane default options from a bootable CD, in a way that is
-    easily updateable.
-
-  - **Status**: Not Started.
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**:
-
-  - **More**: Quick mailing list discussion.
-    <http://www.squid-cache.org/mail-archive/squid-users/200803/0206.html>
+- **Goal**: Provide a quick/trivial and complete install of OS + Squid
+  with sane default options from a bootable CD, in a way that is
+  easily updateable.
+- **Status**: Not Started.
+- **ETA**: unknown
+- **Version**:
+- **Developer**:
+- **More**: Quick mailing list discussion.
+  <http://www.squid-cache.org/mail-archive/squid-users/200803/0206.html>
 
 ## Details
 
@@ -130,19 +124,15 @@ trying one of the packages mentioned above in Authentication.
 
 ### Operating System
 
-The
-[BestOsForSquid](/BestOsForSquid)
+The [BestOsForSquid](/BestOsForSquid)
 says almost any Unix-like OS would work. It should be a very common
 distro with a large user base so that regular updates are likely, and
 questions regarding obscure OS errors might be answered.
 
-  - Large user base
-
-  - Regular updates
-
-  - Excellent hardware support. Particularly hard drive controllers.
-
-  - Ability to install/use without X
+- Large user base
+- Regular updates
+- Excellent hardware support. Particularly hard drive controllers.
+- Ability to install/use without X
 
 ### Squid Version
 
@@ -168,52 +158,41 @@ specifically changes for each install option.
 
 #### Install type
 
-  - Fresh install (Repartition entire drive)
-
-  - Upgrade (Format and install only OS partition, then load existing
-    configuration files)
+- Fresh install (Repartition entire drive)
+- Upgrade (Format and install only OS partition, then load existing
+  configuration files)
 
 #### Inline Proxy
 
-  - Yes (set in bridged mode, set to whatever port, etc)
-
-  - No
+- Yes (set in bridged mode, set to whatever port, etc)
+- No
 
 #### Transparent Proxy
 
-  - Yes (set up
-    [TPROXY](http://wiki.squid-cache.org/ConfigExamples/FullyTransparentWithTPROXY)
-    )
-
-  - No
+- Yes (set up [TPROXY](http://wiki.squid-cache.org/ConfigExamples/FullyTransparentWithTPROXY))
+- No
 
 #### Proxy Purpose
 
-  - Accelerate Internet browsing (Large
-    [COSS](http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem)
-    partition for small files and small other type of cache partition
-    for large files)
-
-  - Save bandwidth (small COSS partition and larger other type of
-    partition)
-
-  - Balance accelerating browsing and saving bandwidth (more balanced
-    partition sizes)
+- Accelerate Internet browsing (Large
+  [COSS](http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem)
+  partition for small files and small other type of cache partition
+  for large files)
+- Save bandwidth (small COSS partition and larger other type of
+  partition)
+- Balance accelerating browsing and saving bandwidth (more balanced
+  partition sizes)
 
 #### IP Information
 
-  - DHCP
-
-  - Manual (set IP/gateway/subnet/DNS/etc)
+- DHCP
+- Manual (set IP/gateway/subnet/DNS/etc)
 
 #### Squid Version
 
-  - 2.x
-
-  - 3.x
+- 2.x
+- 3.x
 
 ## Other Considerations
 
 ## Relevant Links
-
-  - [CategoryFeature](/CategoryFeature)

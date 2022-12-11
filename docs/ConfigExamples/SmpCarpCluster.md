@@ -1,14 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # CARP Cluster of SMP workers
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
-
-  - :warning:
+> :warning:
     Squid SMP support is an ongoing series of improvements in
     [Squid-3.2](/Releases/Squid-3.2)
     and later. The configuration here may not be exactly up to date. Or
@@ -25,37 +20,26 @@ storage caches remains. That problem was partially solved in older
 versions by utilizing the CARP peer selection algorithm in a multi-teir
 multi-process design.
 
-This configuration outlines how to utilize
-[Squid-3.2](/Releases/Squid-3.2)
+This configuration outlines how to utilize [Squid-3.2](/Releases/Squid-3.2)
 SMP support to simplify the configuration of a Squid CARP cluster while
 retaining the CARP object de-duplication benefits. It is geared at
 **expert system-administrators**. Knowledge of forwarding loop control
 and SMP worker numbering will help with understanding this
 configuration.
 
-The setup laid out in this [configuration
-example](/ConfigExamples)
+The setup laid out in this [configuration example](/ConfigExamples)
 aims at creating on a system running squid with SMP workers:
 
-  - a 'front-end' worker which does
-    
-      - authentication
-    
-      - authorization
-    
-      - logging, delay pools etc.
-    
-      - in-memory hot-object caching
-    
-      - load-balancing of the backend processes
-    
-      - redirection etc.
-
-  - a 'back-end' worker farm, whose each does
-    
-      - disk caching
-    
-      - do the network heavy lifting
+- a 'front-end' worker which does
+    * authentication
+    * authorization
+    * logging, delay pools etc.
+    * in-memory hot-object caching
+    * load-balancing of the backend processes
+    * redirection etc.
+-a 'back-end' worker farm, whose each does
+    * disk caching
+    * do the network heavy lifting
 
 While this setup is expected to increase the general throughput of a
 multicore system and simplify the CARP cluster maintenance, the benefits
@@ -172,5 +156,3 @@ file on its filename to download it.
     http_access allow localhost
 
 [backend.conf](/ConfigExamples/SmpCarpCluster?action=AttachFile&do=get&target=backend.conf)
-
-[CategoryConfigExample](/CategoryConfigExample)

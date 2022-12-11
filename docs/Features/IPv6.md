@@ -1,17 +1,12 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # IPv6 in Squid
 
-  - **Version**: 3.1
-
-  - **Status**: completed.
-
-  - **Developer**:
-    [AmosJeffries](/AmosJeffries)
-
-  - **More**: <http://www.squid-cache.org/Versions/v3/3.1/>
+- **Version**: 3.1
+- **Status**: completed.
+- **Developer**: [AmosJeffries](/AmosJeffries)
+- **More**: <http://www.squid-cache.org/Versions/v3/3.1/>
 
 ## How do I enable IPv6?
 
@@ -22,8 +17,7 @@ IPv6 is available in ALL current operating systems. Most now provide it
 enabled by default. See your system documentation for its capability and
 configuration.
 
-**IPv6 support** is enabled by default in
-[Squid-3.1](/Releases/Squid-3.1).
+**IPv6 support** is enabled by default in [Squid-3.1](/Releases/Squid-3.1).
 If you are using a packaged version of 3.1 without it, please contact
 the package maintainer about enabling it.
 
@@ -52,22 +46,18 @@ background behavior.
 
 The only points of possible interest for some will be:
 
-  - [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
+- [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
     flags 'ipv4' or 'ipv6'
-
-  - [tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
+- [tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
     magic ACL's
-
-  - CIDR is required - that brand spanking new concept (from 1993).
-
-  - **localhost** has two IP addresses.
+- CIDR is required - that brand spanking new concept (from 1993).
+- **localhost** has two IP addresses.
 
 ## Fine Tuning IPv6 Performance
 
-  - DNS works best and fastest through the internal resolver built into
+- DNS works best and fastest through the internal resolver built into
     squid. Check that your configure options do not disable it.
-
-  - IPv6 links still may have some tunnel lag. Squid can benefit most
+- IPv6 links still may have some tunnel lag. Squid can benefit most
     from a fast link, so test the various tunnel methods and brokers
     available for speed. This is a good idea in general for your IPv6
     experience. Go with native routing as soon as your upstream can
@@ -75,18 +65,15 @@ The only points of possible interest for some will be:
     [dns_v4_first](http://www.squid-cache.org/Doc/config/dns_v4_first)
     directive to avoid the worst cases of tunnel lag. Enable this only
     if you have to.
-
-  - A single listening port
-    **[http_port](http://www.squid-cache.org/Doc/config/http_port)
-    3128** is less resource hungry than one for each IPv4 and IPv6.
+- A single listening port
+    **[http_port](http://www.squid-cache.org/Doc/config/http_port) 3128** is 
+    less resource hungry than one for each IPv4 and IPv6.
     Also, its fully compatible with IPv6 auto-configuration and
     link-local addressed peers.
-
-  - Splitting the listening ports on input mode (standard, tproxy,
+- Splitting the listening ports on input mode (standard, tproxy,
     intercept, accel, ssl-bump) is better than mixing two modes on one
     port. The most current Squid now require this splitting.
-
-  - Squid can already cope with bad or inaccessible IPs. This can be
+- Squid can already cope with bad or inaccessible IPs. This can be
     improved by tuning the
     [connect_timeout](http://www.squid-cache.org/Doc/config/connect_timeout)
     and
@@ -106,7 +93,7 @@ can be either IPv4 or IPv6. The default is to accept traffic on any IP
 address to the relevant UDP port. If you configure this to a specific IP
 address of either type it will not accept traffic of the other type.
 
-  - :warning:
+> :warning:
     Note that configuring UDP incoming address to **0.0.0.0** as some
     old Squid-2 configurations did. Explicitly makes the incoming port
     IPv4-only, which can break responses to UDP packets sent out using
@@ -179,25 +166,22 @@ which will get around this problem for DIRECT requests.
     This is only needed for Squid-3.1 series. Later Squid do this
     automatically when selecting the outgoing connection properties.
 
-<!-- end list -->
+        acl to_ipv6 dst ipv6
+        
+        # Magic entry. Place first in your config. This makes sure Squid has the IP available.
+        http_access deny to_ipv6 !all
+        
+        tcp_outgoing_address 10.255.0.1 !to_ipv6
+        tcp_outgoing_address dead:beef::1 to_ipv6
 
-    acl to_ipv6 dst ipv6
-    
-    # Magic entry. Place first in your config. This makes sure Squid has the IP available.
-    http_access deny to_ipv6 !all
-    
-    tcp_outgoing_address 10.255.0.1 !to_ipv6
-    tcp_outgoing_address dead:beef::1 to_ipv6
-
-That will split all outgoing requests into two groups, those headed for
-IPv4 and those headed for IPv6. It will push the requests out the IP
-which matches the destination side of the Internet and allow IPv4/IPv6
-access with controlled source address exactly as before.
+    That will split all outgoing requests into two groups, those headed for
+    IPv4 and those headed for IPv6. It will push the requests out the IP
+    which matches the destination side of the Internet and allow IPv4/IPv6
+    access with controlled source address exactly as before.
 
 Please note the **dst** ACL only works for DIRECT requests. Traffic
 destined for peers needs to be left without an outgoing address set.
-This bug is fixed in
-[Squid-3.2](/Releases/Squid-3.2).
+This bug is fixed in [Squid-3.2](/Releases/Squid-3.2).
 
 ## Mistakes people are making
 
@@ -207,38 +191,31 @@ and then asking why it does not work.
 
 ### Defining acl all src ::/0 0.0.0.0/0
 
-  - **all** is pre-defined in every Squid-3 release.
-
-  - It will now throw nasty confusing WARNING: at confused people.
+- **all** is pre-defined in every Squid-3 release.
+- It will now throw nasty confusing WARNING: at confused people.
 
 ### Defining IPv4 with ::ffff:a.b.c.d
 
-  - Squid still understands IPv4.
-
-  - No need to write anything new and confusing.
+- Squid still understands IPv4.
+- No need to write anything new and confusing.
 
 ### Defining IPv6 as 2000::/3
 
-  - It's not true.
-
-  - Squid provides an ACL magic moniker **ipv6** meaning the currently
+- It's not true.
+- Squid provides an ACL magic moniker **ipv6** meaning the currently
     routed IPv6 space.
-
-<!-- end list -->
 
     acl globalIPv6 src ipv6
 
 ### Defining IPv6 space as containing any address starting with F
 
-  - they are **local-only** ranges.
-
-  - Add them to your localnet ACL when actually needed.
+- they are **local-only** ranges.
+- Add them to your localnet ACL when actually needed.
 
 ### Defining 3ffe::/16
 
-  - Once upon a time there was a experimental network called 6bone.
-
-  - It's dead now. No need to even mention it anymore.
+- Once upon a time there was a experimental network called 6bone.
+- It's dead now. No need to even mention it anymore.
 
 ## How do I make squid use IPv4 to its helpers?
 
@@ -282,7 +259,7 @@ This config for example has been known to display this problem:
 The solution is to configure 127.0.0.1 as the peer address instead of
 localhost until you can IPv6-enable the peers.
 
-  - *Thanks to Artemis Braja for bringing this problem to light*
+*Thanks to Artemis Braja for bringing this problem to light*
 
 ## So what gets broken by IPv6?
 
@@ -295,19 +272,15 @@ IPv4 clients. However they need to be noted.
 IPv6 was originally designed to work without NAT. That all changed
 around 2010 with the introduction of NAT66 and NPT66.
 
-  - Linux [TPROXY
-    v4](/Features/Tproxy4)
+- Linux [TPROXY v4](/Features/Tproxy4)
     is capable of IPv6. Kernel and iptables releases containing IPv6
     TPROXYv4 are now readily available.
-
-  - Linux versions had IPv6 NAT capability added late in the 3.x series.
+- Linux versions had IPv6 NAT capability added late in the 3.x series.
     It should be stable enough to use in Linux 4.0+, YMMV though.
-
-  - BSD **divert** sockets provide TPROXY equivalent functionality for
+- BSD **divert** sockets provide TPROXY equivalent functionality for
     recent OpenBSD and derivative systems. Support for *tproxy* mode on
     BSD was added to Squid-3.4.
-
-  - BSD **redirect** sockets provide NAT66 functionality for recent
+- BSD **redirect** sockets provide NAT66 functionality for recent
     OpenBSD and derivative systems. But are not supported by Squid due
     to kernel API issues.
 
@@ -333,9 +306,7 @@ ARP does not exist in IPv6. It has been replaced by a protocol called
 NDP (Neighbour Discovery Protocol) Proper IPv6 auto-configuration of
 networks can provide an equivalent in the IPv6 address itself.
 
-From
-[Squid-3.2](/Releases/Squid-3.2)
-support for handling EUI-64 exists in
+From [Squid-3.2](/Releases/Squid-3.2) support for handling EUI-64 exists in
 [acl](http://www.squid-cache.org/Doc/config/acl),
 [logformat](http://www.squid-cache.org/Doc/config/logformat) and
 [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type).
@@ -354,10 +325,8 @@ the helper.
 
 # Other Resources
 
-\[<http://www.braintrust.co.nz/ipv6wwwtest/>\] For content providers
+<http://www.braintrust.co.nz/ipv6wwwtest/> For content providers
 Braintrust Ltd. provide a test script to check what happens when you
 turn on AAAA records for your website. If you have any worries this can
 be run and show how many if any of your clients and visitors might have
 trouble.
-
-[CategoryFeature](/CategoryFeature)

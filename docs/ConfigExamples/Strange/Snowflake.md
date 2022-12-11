@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
+*by [YuriVoinov](/YuriVoinov)*
 
 # Snowflake
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## How to pass Snowflake
 
@@ -22,8 +16,7 @@ to bootstrap.
 Transparent proxy without special rule to prevent bump (splice) to this
 domain will prevent connecting.
 
-So
-[SSL-Bump](/Features/SslPeekAndSplice)
+So [SSL-Bump](/Features/SslPeekAndSplice)
 proxy must be configured to splice initial connection from Snowflake to
 bridges:
 
@@ -46,5 +39,3 @@ This is minimal access requires Snowflake to connect.
 
 To block Snowflake by any reason it is enough to do not do actions
 described above.
-
-[CategoryConfigExample](/CategoryConfigExample)

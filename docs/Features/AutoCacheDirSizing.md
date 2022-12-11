@@ -1,25 +1,16 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Automatic cache_dir sizing
 
-  - **Goal**: Allow squid to automatically define the best cache_dir
+- **Goal**: Allow squid to automatically define the best cache_dir
     and cache_mem sizing, based on available disk space and core memory
     availability
-
-  - **Status**: not started
-
-<!-- end list -->
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**:
-
-  - **More**: From
-    [Bug 498](http://bugs.squid-cache.org/show_bug.cgi?id=498)
+- **Status**: not started
+- **ETA**: unknown
+- **Version**:
+- **Developer**:
+- **More**: From [Bug 498](http://bugs.squid-cache.org/show_bug.cgi?id=498)
 
 # Details
 
@@ -52,5 +43,3 @@ Robert Collins comments:
     * calculate an automatic upper bound on squid total memory based on 50% of physical RAM. The will reduce any user set parameters (And we can provide a toggle to override this for advanced tuning).
     * Reduce cache_mem and swap_dir sizes at run-time in line with the set upper bound. I'm thinking that an automatic ratio of 1:9 between memory cache and disk cache index should be reasonable.
     * This provides the groundwork for automatic disk cache management - we know how big we can safely allow it to be in terms of index entries.
-
-[CategoryFeature](/CategoryFeature)
