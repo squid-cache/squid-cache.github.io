@@ -88,7 +88,7 @@ similar to this:
 If your RSS (Resident Set Size) value is much lower than your process
 size, then your cache performance is most likely suffering due to
 Paging. See also
-[CacheManager](/SquidFaq/CacheManager)
+[CacheManager](/Features/CacheManager)
 
 ## Why does Squid use so much cache memory?
 

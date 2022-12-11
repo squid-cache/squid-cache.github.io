@@ -1,7 +1,7 @@
 ---
 categories: ConfigExample
 ---
-# Viber Messenger
+# Filtering Viber Messenger
 
 *by [YuriVoinov](/YuriVoinov)*
 

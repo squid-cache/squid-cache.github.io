@@ -1,18 +1,13 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: No in-memory central index
 
-  - **Goal**: Allow store to grow unbounded by memory
-
-  - **Status**: *Not started*
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**:
+- **Goal**: Allow store to grow unbounded by memory
+- **Status**: *Not started*
+- **ETA**: unknown
+- **Version**:
+- **Developer**:
 
 ## Details
 
@@ -32,7 +27,3 @@ multiple Squid frontends.
 
 Goal of not having a central index, making it possible to push more of
 the store logics down..
-
-[CategoryFeature](/CategoryFeature)
-|
-[CategoryWish](/CategoryWish)

@@ -1,21 +1,15 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: SOCKS Support
 
-  - **Goal**: To add SOCKS support to Squid.
+- **Goal**: To add SOCKS support to Squid.
+- **Status**: Testing. Code available.
+- **ETA**: unknown
+- **Version**:
+- **Developer**: [AmosJeffries](/AmosJeffries)
 
-  - **Status**: Testing. Code available.
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**:
-    [AmosJeffries](/AmosJeffries)
-
-# Details
+## Details
 
 Squid handles many HTTP related protocols. But presently is unable to
 natively accept or send HTTP connections over SOCKS.
@@ -49,7 +43,7 @@ Doing these apparently works ad makes Squid into a SOCKS proxy. There
 are several users who have reported actively using Squid in this
 fashion.
 
-  - :warning:
+> :warning:
     It has one downside in that ALL connections inbound and outbound are
     SOCKS connections. There is no middle ground for mixed
     SOCKS/non-SOCKS connections.
@@ -72,17 +66,15 @@ testing.
 
 Outstanding Problem:
 
-  - This branch seems not to perform SOCKS. Even when SOCK libraries are
+- This branch seems not to perform SOCKS. Even when SOCK libraries are
     linked and SOCKS binding and connection calls are used. It is most
     likely my lack of SOCKS programming and debugging knowledge. The
     branch built and appeared to run fine as a regular proxy.
-
-  - There seems to be no difference between traffic arriving on a
+- There seems to be no difference between traffic arriving on a
     SOCKS_listen() bound port and on a regular listen() bound port.
     Both regular and SOCKS traffic was tried. Both ports accepted both
-    types of traffic\!
-
-  - There seems to be no SOCKS operations on the outbound cache_peer
+    types of traffic!
+- There seems to be no SOCKS operations on the outbound cache_peer
     links, even when talking to a SOCKS server, over a SSH SOCKS tunnel
     and using SOCKS_connect()+SOCKS_bind() to make the outgoing
     connection. Possibly errors at the tunnel or server configuration,
@@ -94,22 +86,17 @@ Ideas?
 
 Situations:
 
-  - Certain apps sending HTTP but can be configured only with SOCKS
+- Certain apps sending HTTP but can be configured only with SOCKS
     proxy (not HTTP proxy) as a relay. Weird but true.
-
-  - The TOR network passes HTTP traffic but require SOCKS to interface a
+- The TOR network passes HTTP traffic but require SOCKS to interface a
     gateway with that network.
-
-  - SSH tunnels apparently also use/require SOCKS to tunnel across to a
+- SSH tunnels apparently also use/require SOCKS to tunnel across to a
     web server at the other end.
-
-  - A MMORP Game has also been reported as requiring SOCKS to gateway. I
-    have not been able to verify at this point that their traffic is
+- A MMORP Game has also been reported as requiring SOCKS to gateway. I
+have not been able to verify at this point that their traffic is
     actually HTTP though.
 
 Extra additions: there seems to also be a system configuration setting
 and config file(s) for setting a parent SOCKSv5 proxy. It may be useful
 to pull this in as a possible automatic
 [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer) entry.
-
-[CategoryFeature](/CategoryFeature)

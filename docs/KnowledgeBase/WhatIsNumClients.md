@@ -3,7 +3,7 @@ categories: KnowledgeBase
 ---
 # What is the "Number of clients accessing cache"?
 
-In the [cache manager](/SquidFaq/CacheManager)'s
+In the [cache manager](/Features/CacheManager)'s
 "general runtime information" page, Squid specifies the number of
 clients accesssing the cache; but WHAT it is is not really explained
 anywhere.

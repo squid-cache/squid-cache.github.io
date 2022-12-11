@@ -1,16 +1,14 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
-# Feature: dnsserver helper
+# Feature: dnsserver helper (obsolete)
 
-  - **Status**: Obsolete.
-
-  - **Version**: All.
+- **Status**: Obsolete.
+- **Version**: All.
 
 # Details
 
-  - :warning:
+> :warning:
     dnsserver helper is now replaced by a faster internal DNS client.
     You should NOT be running with external DNS processes.
 
@@ -34,17 +32,13 @@ expect.
 
 # Configuration Options
 
-  - cache_dns_program
+- cache_dns_program
+- dns_children
+- positive_dns_ttl
+- negative_dns_ttl
+- min_dns_poll_cnt
 
-  - dns_children
-
-  - positive_dns_ttl
-
-  - negative_dns_ttl
-
-  - min_dns_poll_cnt
-
-# Troubleshooting
+## Troubleshooting
 
 ## dnsSubmit: queue overload, rejecting blah
 
@@ -62,15 +56,14 @@ code.
 Note that in some versions, Squid limits *dns_children* to 32. To
 increase it beyond that value, you would have to edit the source code.
 
-## My ''dnsserver'' average/median service time seems high, how can I reduce it?
+## My *dnsserver* average/median service time seems high, how can I reduce it?
 
-  - :bulb:
+> :bulb:
     Use the internal DNS resolver now built into Squid. It is not
     limited to single request-response blocking.
 
 First, find out if you have enough *dnsserver* processes running by
-looking at the
-[SquidFaq/CacheManager](/SquidFaq/CacheManager)
+looking at the [CacheManager](/Features/CacheManager)
 *dns* output. Ideally, you should see that the first *dnsserver* handles
 a lot of requests, the second one less than the first, etc. The last
 *dnsserver* should have serviced relatively few requests. If there is
@@ -84,7 +77,7 @@ Resolver on the same host. Instead you should try use a DNS resolver on
 a different host, but on the same LAN. If your DNS traffic must pass
 through one or more routers, this could be causing unnecessary delays.
 
-## I have "dnsserver" processes that aren't being used, should I lower the number in "squid.conf"?
+## I have *dnsserver* processes that aren't being used, should I lower the number in "squid.conf"?
 
 The *dnsserver* processes were originally used by *squid* because the
 *gethostbyname(3)* library routines used to convert web sites names to
@@ -103,5 +96,3 @@ and probably add two to be on the safe side. In other words, if you have
 only ever seen at most three *dnsserver* processes in use, make at least
 five. Remember that a *dnsserver* is small and, if unused, will be
 swapped out.
-
-[CategoryFeature](/CategoryFeature)

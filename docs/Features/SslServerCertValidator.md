@@ -1,21 +1,14 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: SSL Server Certificate Validator
 
-  - **Goal**: Allow external code to perform SSL/TLS server certificates
-    checks that go beyond OpenSSL validation.
-
-  - **Status**: completed.
-
-  - **Version**: v3.4
-
-  - **Developer**:
-    [AlexRousskov](/AlexRousskov)
-
-  - **More**: Not needed without
-    [SslBump](/Features/SslBump).
+- **Goal**: Allow external code to perform SSL/TLS server certificates
+  checks that go beyond OpenSSL validation.
+- **Status**: completed.
+- **Version**: v3.4
+- **Developer**: [AlexRousskov](/AlexRousskov)
+- **More**: Not needed without [SslBump](/Features/SslBump).
 
 # Motivation
 
@@ -42,25 +35,19 @@ The helper will be optionally consulted after an internal OpenSSL
 validation we do now, regardless of that validation results. The helper
 will receive:
 
-  - the origin server certificate \[chain\],
-
-  - the intended domain name, and
-
-  - a list of OpenSSL validation errors (if any).
+- the origin server certificate \[chain\],
+- the intended domain name, and
+- a list of OpenSSL validation errors (if any).
 
 If the helper decides to honor an OpenSSL error or report another
 validation error(s), the helper will return:
 
-  - the validation error name (see *%err_name* error page macro and
-    *%err_details*
-    [logformat](http://www.squid-cache.org/Doc/config/logformat) code),
-
-  - error reason (*%ssl_lib_error* macro),
-
-  - the offending certificate (*%ssl_subject* and *%ssl_ca_name*
-    macros), and
-
-  - the list of all other discovered errors
+- the validation error name (see *%err_name* error page macro and
+  *%err_details* [logformat](http://www.squid-cache.org/Doc/config/logformat) code),
+- error reason (*%ssl_lib_error* macro),
+- the offending certificate (*%ssl_subject* and *%ssl_ca_name*
+  macros), and
+- the list of all other discovered errors
 
 The returned information mimics what the internal OpenSSL-based
 validation code collects now. Returned errors, if any, will be fed to
@@ -78,35 +65,27 @@ Input *line* received from Squid:
 
     request size [kv-pairs]
 
-:warning:
-*line* refers to a logical input. **body** may contain \\n characters so
-each line in this format is delimited by a 0x01 byte instead of the
-standard \\n byte.
+> :warning:
+  *line* refers to a logical input. **body** may contain \\n characters so
+  each line in this format is delimited by a 0x01 byte instead of the
+  standard \\n byte.
 
-  - request
-    
-      - The type of action being requested. Presently the code
-        **cert_validate** is the only request made.
-
-  - size
-    
-      - Total size of the following request bytes taken by the
-        **key=pair** parameters.
-
-  - kv-pairs
-    
-      - An optional list of key=value parameters separated by new lines.
-        Supported parameters are:
-        
-        |                       |                                                                                                                                 |
-        | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-        | host                  | FQDN host name or the domain                                                                                                    |
-        | proto_version        | The SSL/TLS version                                                                                                             |
-        | cipher                | The SSL/TLS cipher being used                                                                                                   |
+- request
+:   The type of action being requested. Presently the code
+    **cert_validate** is the only request made.
+- size
+:   Total size of the following request bytes taken by the
+    **key=pair** parameters.
+- kv-pairs
+:   An optional list of key=value parameters separated by new lines.
+    Supported parameters are:
+        | --- | --- |
+        | host                  | FQDN host name or the domain |
+        | proto_version        | The SSL/TLS version |
+        | cipher                | The SSL/TLS cipher being used |
         | cert_***ID***        | Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are |
-        | error_name_***ID*** | The openSSL certificate validation error. The ID is an index number for this error                                              |
-        | error_cert_***ID*** | The ID of the certificate which caused error_name_ID                                                                          |
-        
+        | error_name_***ID*** | The openSSL certificate validation error. The ID is an index number for this error |
+        | error_cert_***ID*** | The ID of the certificate which caused error_name_ID |
 
 Example request:
 
@@ -123,34 +102,26 @@ Result line sent back to Squid:
 
     result size kv-pairs
 
-  - result
-    
-      - One of the result codes:
+- result
+:   One of the result codes:
         
-        |     |                                            |
         | --- | ------------------------------------------ |
         | OK  | Success. Certificate validated.            |
         | ERR | Success. Certificate not validated.        |
         | BH  | Failure. The helper encountered a problem. |
-        
 
-  - size
-    
-      - Total size of the following response bytes taken by the
-        **key=pair** parameters.
-
-  - kv-pairs
-    
-      - A list of key=value parameters separated by new lines. The
-        supported parameters are:
+- size
+:   Total size of the following response bytes taken by the
+    **key=pair** parameters.
+- kv-pairs
+:   A list of key=value parameters separated by new lines. The
+    supported parameters are:
         
-        |                         |                                                                                                                           |
-        | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+        | --- | --- |
         | cert_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
         | error_name_***ID***   | The openSSL error name for the error **ID**                                                                               |
         | error_reason_***ID*** | A reason for the error **ID**                                                                                             |
         | error_cert_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
-        
 
 Example response message:
 
@@ -177,5 +148,3 @@ might be out of date or simply not configured correctly. We could add an
 OpenSSL-detected error, but since such errors should be rare, the option
 will likely add overheads to the common case without bringing any
 functionality advantages for the rare erronous case.
-
-[CategoryFeature](/CategoryFeature)

@@ -1,23 +1,16 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Cache Directory Failure Bypass
 
-  - **Goal**: Make various cache store directory errors not fatal
-
-  - **Status**: Stalled; patches for Squid2 COSS available, no Squid3
-    sponsor yet
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**:
-    [AlexRousskov](/AlexRousskov)
-
-  - **More**: patches for
-    [bug 410](https://bugs.squid-cache.org/show_bug.cgi?id=410)
+- **Goal**: Make various cache store directory errors not fatal
+- **Status**: Stalled; patches for Squid2 COSS available, no Squid3
+  sponsor yet
+- **ETA**: unknown
+- **Version**:
+- **Developer**: [AlexRousskov](/AlexRousskov)
+- **More**: patches for
+  [bug 410](https://bugs.squid-cache.org/show_bug.cgi?id=410)
 
 ## Details
 
@@ -44,11 +37,9 @@ cache_dir options for a given store type) are still fatal.
 
 ### squid.conf changes
 
-  - bypass=1 parameter for cache_dir (required)
-
-  - cache_dir_bypass_sample option (optional)
-
-  - cache_dir_bypass_errors_min (optional)
+- bypass=1 parameter for cache_dir (required)
+- cache_dir_bypass_sample option (optional)
+- cache_dir_bypass_errors_min (optional)
 
 ### Diagnostics and monitoring
 
@@ -97,6 +88,3 @@ By this I mean auto-detecting the most efficient needed L1/L2 layers
 without explicit configuration. So squid.conf need only contain:
 
     cache_dir ufs /squid/cache 20GB
-
-[CategoryFeature](/CategoryFeature)
-[CategoryWish](/CategoryWish)

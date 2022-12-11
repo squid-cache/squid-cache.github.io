@@ -1,47 +1,33 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
-# Overview
+# Reworking the forwarding chain
 
 Currently there is confusion within squid between protocols that we can
 have in a request:
 
-  - FTP
-
-  - HTTP
-
-  - HTTPS
-
-  - WAIS
-
-  - URN
-
-  - GOPHER
-
-  - CACHEOBJ
+- FTP
+- HTTP
+- HTTPS
+- WAIS
+- URN
+- GOPHER
+- CACHEOBJ
 
 And protocols we have a server implementation of:
 
-  - HTTPS
-
-  - HTTP
-
-  - ICP
-
-  - HTCP
+- HTTPS
+- HTTP
+- ICP
+- HTCP
 
 And protocols we have a client implementation of:
 
-  - HTTP
-
-  - HTTPS
-
-  - URN
-
-  - GOPHER
-
-  - FTP
+- HTTP
+- HTTPS
+- URN
+- GOPHER
+- FTP
 
 Theres a [patch](https://bugs.squid-cache.org/show_bug.cgi?id=1763) to
 break out the server implementations - HTTPS, HTTP, ICP, HTCP. This
@@ -56,23 +42,19 @@ actually handing it off to an external server, are decoupled.
 This proposal tries to provide a consistent api for doing this that will
 allow:
 
-  - HTTP and HTTPS peers to be cleanly implemented
-
-  - Additional peer facilities to be implemented in squid, such as RTSP,
+- HTTP and HTTPS peers to be cleanly implemented
+- Additional peer facilities to be implemented in squid, such as RTSP,
     or a tunnel-via-SSH peer etc.
-
-  - Additional URL schemes to be handled without interfering with the
+- Additional URL schemes to be handled without interfering with the
     core.
 
-# Design
+## Design
 
 There are three key ways that requests are handled within squid:
 
-  - Internally generated data
-
-  - Hand off to a cache peer via that peers wire protocol
-
-  - Hand off to a implementation of the requests wire protocol
+- Internally generated data
+- Hand off to a cache peer via that peers wire protocol
+- Hand off to a implementation of the requests wire protocol
 
 The scheme field of each request is a reasonably good key to drive this:
 `scheme->startFetch()` will hand the request processing of to whatever
@@ -99,28 +81,25 @@ that does implement WAIS.)
 At this point we have a set of peers to try. For each peer (including
 the direct-access one if that was permitted):
 
-  - We try to grab a cached ProtocolClient object. This is a
+- We try to grab a cached ProtocolClient object. This is a
     generalisation of the current pconn facility. The cache lookup will
     have to take into consideration requirements such as 'only give this
     ProtocolClient to the same authenticated user' - to support
     connection pinning's needs.
-
-  - If we cannot get a cached ProtocolClient, we initiate a connection
+- If we cannot get a cached ProtocolClient, we initiate a connection
     to the peer using TCP.
-    
-      - When the connection completes, we call
-        peer-\>protocolClientFactory() which is a factory to create a
-        ProtocolClient. We provide the FwdState as an object to
-        refcount-lock, so it can callback when the ProtocolClient is
-        ready for use. (See the HTTPS example for the reason why this is
-        async). By calling the peer's protocolClientFactory method, we
-        allow the direct peer to have a different wire protocol
-        implementation to the wire protocol for communicating with our
-        cache peers (which are all HTTP/HTTPS). So for instance, the
-        direct-peer protocolClientFactory for FTP will construct a
-        FTPProtocolClient.
-
-  - Once we have the ProtocolClient, we either put it in the pool (if
+- When the connection completes, we call
+    peer-\>protocolClientFactory() which is a factory to create a
+    ProtocolClient. We provide the FwdState as an object to
+    refcount-lock, so it can callback when the ProtocolClient is
+    ready for use. (See the HTTPS example for the reason why this is
+    async). By calling the peer's protocolClientFactory method, we
+    allow the direct peer to have a different wire protocol
+    implementation to the wire protocol for communicating with our
+    cache peers (which are all HTTP/HTTPS). So for instance, the
+    direct-peer protocolClientFactory for FTP will construct a
+    FTPProtocolClient.
+- Once we have the ProtocolClient, we either put it in the pool (if
     the request has been aborted), or we hand off the request to it -
     `protocolClient.handleRequest(request, aForwardState)`. This call
     will create a ProtocolClientRequest immediately - i.e.a
@@ -128,12 +107,9 @@ the direct-access one if that was permitted):
     needed to satisfy this request. This ProtocolClientRequest will be
     owned by the ProtocolClient, and will have a refcount reference to
     the ForwardState, so that it can inform the ForwardState when:
-    
       - There is a response that is being delivered to the client
-    
       - The ProtocolClientRequest failed to get a response and the
         request should be reforwarded
-    
       - The ProtocolClientRequest failed to get a response and the
         client should be notified.
     
@@ -149,22 +125,18 @@ the direct-access one if that was permitted):
     be specific to the client, because the URL is irrelevant to the wire
     level encoding needed.
 
-  - If the request is aborted by our client, the ForwardState object's
+- If the request is aborted by our client, the ForwardState object's
     abort() method will be called. This should call abort on the
     ProtocolClientRequest, not on the ProtocolClient. For instance, in a
     pipeline scenario, a pipelined HttpClientRequest might not have been
     serialised, so abort() on it could just remove it from the
     ProtocolClient's queue. When the ProtocolClientRequest is aborted
     there are two possible states as far as the client is concerned:
-    
-      - The client has been sent some data
-        
-          - The client initiated the abort, and will do whatever cleanup
-            is needed.
-    
-      - The client has not been sent data
-        
-          - There is no cleanup to do.
+    - The client has been sent some data. In this case, 
+        the client initiated the abort, and will do whatever cleanup
+        is needed.
+    - The client has not been sent data. In this case,
+        there is no cleanup to do.
     
     So, when ProtocolClientRequest is aborted, it will remove itself
     from the ProtocolClient request queue, in whatever manner is
@@ -209,32 +181,23 @@ HTTPClientFactory instance. SSLClientFactory's take a socket and perform
 SSL handshaking, after which they call the factory they were
 parameterised with - so the sequence is:
 
-  - `aSSLClientFactory(fd, ProtocolClientRequest *requestor)`
-
-  - Create a SSLClientEndpoint(fd)
-
-  - Create a SSLConnectionRequest(this, requestor)
-
-  - call endpointer-\>connect(theSSLConnectionRequest)
-
-  - Handshaking occurs
-
-  - theSSLConnectionRequest-\>connected() is called when the handshaking
+1. `aSSLClientFactory(fd, ProtocolClientRequest *requestor)`
+1. Create a SSLClientEndpoint(fd)
+1. Create a SSLConnectionRequest(this, requestor)
+1. call endpointer-\>connect(theSSLConnectionRequest)
+1. Handshaking occurs
+1. theSSLConnectionRequest-\>connected() is called when the handshaking
     completes, or -\>failed() if it fails to complete.
-
-  - on error we create return a global instance -
-    FailedSSLProtocolClient, which will generate errors.
-
-  - on connected() we then call
+1. on error we create return a global instance -
+FailedSSLProtocolClient, which will generate errors.
+1. on connected() we then call
     `this->nestedProtocolClientFactory(theSSLClientEndpoint->fd,
     theSSLConnectionRequest)`. This will create the nested
     ProtocolClient - i.e. for HTTPS, this creates the HTTPClient, that
-    is actually connected to the SSL client.
-
-  - The SSLClientEndpoint is given the HTTPClient to own as a reference,
+is actually connected to the SSL client.
+1. The SSLClientEndpoint is given the HTTPClient to own as a reference,
     like the Socket owns the SSLClientEndpoint.
-
-  - The SSLClientEndpoint then calls the original Requestor with the
+1. The SSLClientEndpoint then calls the original Requestor with the
     HTTPClient.
 
 There will be no HTTPSPeer subclass. Instead HTTPS peers will be an
@@ -252,6 +215,3 @@ will return true for `protocolClientAvailable()` calls. The
 protocolClientFactory for gopher will return a GopherClient object.
 There is no Gopher peer type, because our gopher implementation cannot
 forward other protocols.
-
-[CategoryFeature](/CategoryFeature)
-[CategoryWish](/CategoryWish)
