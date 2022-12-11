@@ -4,15 +4,11 @@ published: false
 ---
 # Internationalization of Squid Project
 
-  - **Goal**: To make Squid available in many languages.
-
-  - **Status**: Translations needed.
-
-  - **Version**: 2.5+ (langpacks), 3.1+ (auto-negotiate, CSS)
-
-  - **Download**: <http://www.squid-cache.org/Versions/langpack/>
-
-  - **Coordinator**:
+- **Goal**: To make Squid available in many languages.
+- **Status**: Translations needed.
+- **Version**: 2.5+ (langpacks), 3.1+ (auto-negotiate, CSS)
+- **Download**: <http://www.squid-cache.org/Versions/langpack/>
+- **Coordinator**:
     [AmosJeffries](/AmosJeffries).
     Anyone can contribute translations.
 
@@ -21,29 +17,28 @@ published: false
 Several people have volunteered their time to check and confirm
 translations to keep their language(s) updated.
 
-|                     |                               |                                                                                                                                                                                                                                            |
-| ------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Language**        | **Translations verified by:** |                                                                                                                                                                                                                                            |
-| Afrikaans           | af                            | Friedel Wolff                                                                                                                                                                                                                              |
-| Bulgarian           | bg                            | Evgeni Gechev                                                                                                                                                                                                                              |
-| German              | de                            | Constantin Rack and Robert Förster                                                                                                                                                                                                         |
-| English             | en                            | [AmosJeffries](/AmosJeffries) (Squid Project)                                                                                                                                        |
-| Persian             | fa                            | Mohsen Saeedi (Fedora Project)                                                                                                                                                                                                             |
-| French              | fr                            | Bernard Charrier                                                                                                                                                                                                                           |
-| Armenian            | hy                            | Arthur Tumanyan                                                                                                                                                                                                                            |
-| Hungarian           | hu                            | Gergely Kiss                                                                                                                                                                                                                               |
-| Italian             | it                            | [FrancescoChemolli](/FrancescoChemolli) (Squid Project)                                                                                                                              |
-| Dutch (Nederland)   | nl                            | Rene Wijninga                                                                                                                                                                                                                              |
-| Malay               | ms                            | *tepung*                                                                                                                                                                                                                                   |
-| Portuguese (Brazil) | pt-br                         | Aecio F. Neto                                                                                                                                                                                                                              |
-| Romanian            | ro                            | Arthur Titeica                                                                                                                                                                                                                             |
-| Russian             | ru                            | Yuri Voinov                                                                                                                                                                                                                                |
-| Slovak              | sk                            | *Helix*                                                                                                                                                                                                                                    |
-| Slovenian           | sl                            | Aleksa Šušulić                                                                                                                                                                                                                             |
-| Serbian (Latin)     | sr-latn                       | *batailic*                                                                                                                                                                                                                                 |
-| Spanish             | es , es-mx                    | Javier Pacheco                                                                                                                                                                                                                             |
-| Swedish             | sv                            | [HenrikNordstrom](/HenrikNordstrom) (Squid Project)                                                                                                                                  |
-| Others              |                               | **Unverified**, If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. |
+| Language | code | Translations verified by: |
+| -------- | ---- | ------------------------- | 
+| Afrikaans | af | Friedel Wolff |
+| Bulgarian | bg | Evgeni Gechev |
+| German | de | Constantin Rack and Robert Förster |
+| English | en | [AmosJeffries](/AmosJeffries) |
+| Persian | fa | Mohsen Saeedi (Fedora Project) |
+| French | fr | Bernard Charrier |
+| Armenian | hy | Arthur Tumanyan |
+| Hungarian | hu | Gergely Kiss |
+| Italian | it | [FrancescoChemolli](/FrancescoChemolli) |
+| Dutch (Nederland) | nl | Rene Wijninga |
+| Malay | ms | *tepung* |
+| Portuguese (Brazil) | pt-br | Aecio F. Neto |
+| Romanian | ro | Arthur Titeica |
+| Russian | ru | Yuri Voinov |
+| Slovak | sk | *Helix* |
+| Slovenian | sl | Aleksa Šušulić |
+| Serbian (Latin) | sr-latn | *batailic* |
+| Spanish | es , es-mx | Javier Pacheco |
+| Swedish | sv | [HenrikNordstrom](/HenrikNordstrom) |
+| Others | | **Unverified**, If you are familiar with any of these or other languages, please volunteer. It is a short spare-time activity taking only a few minutes in the occasional week. Without a moderator we cannot fix any bad language errors. |
 
 ## How can I contribute?
 
@@ -78,10 +73,9 @@ we need to supply for each language.
 
 ### Suggest a translation fix
 
-  - How we do translations and how you can join in is detailed at
+- How we do translations and how you can join in is detailed at
     [Translations/Basics](/Translations/Basics)
-
-  - What you need to know to make useful translations is at
+- What you need to know to make useful translations is at
     [Translations/Guidelines](/Translations/Guidelines)
 
 ### Become a language moderator
@@ -106,7 +100,7 @@ then upgrading to the langpack or
 [Squid-3.1](/Releases/Squid-3.1)
 with auto-negotiate.
 
-  - :warning:
+> :warning:
     Squid older than
     [Squid-3.1](/Releases/Squid-3.1)
     without an explicit
@@ -116,49 +110,13 @@ with auto-negotiate.
 
 ## What has been done?
 
-  - More languages and new page translations
-
-  - HTML 4.01 strict standards compliance
-
-  - Provides error pages matched to visitors own browser language
+- More languages and new page translations
+- HTML 4.01 strict standards compliance
+- Provides error pages matched to visitors own browser language
     settings.
+- Provides direct control of error page display using CSS.
 
-  - Provides direct control of error page display using CSS.
-
-## So how can I do this upgrade?
-
-## Manual Install
-
-[Squid-3.1](/Releases/Squid-3.1)
-admin just need to follow these steps:
-
-  - Check that your preferred default language is available for
-    auto-translated pages. The ones installed can be seen in your squid
-    error directory as a bunch of folders named after their ISO codes:
-    (en, en-gb, etc.).
-
-  - Add
-    [error_default_language](http://www.squid-cache.org/Doc/config/error_default_language)
-    option to squid.conf with the code/folder-name for the language.
-    This will provide a suitable default language if none can be
-    negotiated with the browser.
-
-  - Remove
-    [error_directory](http://www.squid-cache.org/Doc/config/error_directory)
-    from squid.conf
-
-  - Optional: download newest translations and languages
-    [package](http://www.squid-cache.org/Versions/langpack/)
-
-  - Make any CSS changes you need to /etc/squid/errorpage.css for
-    display.
-
-Reconfigure or restart squid.
-
-> :information_source:
-    Languages specified by their full name (ie *English*) are not able
-    to be auto-negotiated. They are now deprecated and due for removal
-    as soon as ISO coded versions are made available.
+## So how can use this?
 
 ### Debian and Ubuntu
 
@@ -206,8 +164,7 @@ the
 [error_default_language](http://www.squid-cache.org/Doc/config/error_default_language)
 directive.
 
-Note: Custom errors need unique names, so as not to clash with the
-default pages. If there is a clash the provided translations will
-override custom pages for many users.
-
-[CategoryFeature](/CategoryFeature)
+> :information_source:
+    Custom errors need unique names, so as not to clash with the
+    default pages. If there is a clash the provided translations will
+    override custom pages for many users.

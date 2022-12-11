@@ -1,23 +1,17 @@
 ---
-categories: ReviewMe
+categories: WantedFeature
 published: false
 ---
 # Feature: ACL namespaces
 
-  - **Goal**: Add namespaces (for example icap and http) for ACL types.
+- **Goal**: Add namespaces (for example icap and http) for ACL types.
+- **Status**: In progress
+- **ETA**: unknown
+- **Version**:
+- **Developer**:  [AlexeyVeselovsky](/AlexeyVeselovsky)
+- **More**:
 
-  - **Status**: In progress
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**:
-    [AlexeyVeselovsky](/AlexeyVeselovsky)
-
-  - **More**:
-
-# Details
+## Details
 
 Squid has many ACL types. Many of those types apply to HTTP request or
 response properties. Since ICAP transactions are using the same request
@@ -47,16 +41,8 @@ to using a namespace or scope technique. For example, given a generic
 rep_status_code ACL type (currently called http_status), the user
 should be able to say:
 
-``` 
-  acl bad_icap_response icap::rep_status_code 202
-  acl bad_http_response http::rep_status_code 555
-  icap_retry allow bad_icap_response
-  icap_retry allow bad_http_response
-  icap_retry deny all
-```
-
-# Troubleshooting
-
-No currently known issues.
-
-[CategoryFeature](/CategoryFeature)
+    acl bad_icap_response icap::rep_status_code 202
+    acl bad_http_response http::rep_status_code 555
+    icap_retry allow bad_icap_response
+    icap_retry allow bad_http_response
+    icap_retry deny all

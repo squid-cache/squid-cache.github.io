@@ -1,17 +1,11 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Extreme CARP Frontend
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
-
 ## Outline
 
-:warning:
-**NOTICE**: this is an *extreme* setup. It is meant to be used in
+> :warning: this is an *extreme* setup. It is meant to be used in
 complex environments, where the resources available to the administrator
 are huge, as are the requests for performance. It is not suited for
 novice users.
@@ -25,7 +19,7 @@ needed. It requires multiple servers in a triple-layer architecture.
 
 The needs for extreme performance may be addressed using a three-layer
 load-balancing scheme. The basic architecture is laid out in
-[ConfigExamples/MultiCpuSystem](/ConfigExamples/MultiCpuSystem):
+[MultiCpuSystem](/ConfigExamples/MultiCpuSystem):
 a farm of caching backends is load-balanced in a smart way by a CARP
 frontend which performs little or no caching.
 
@@ -37,23 +31,18 @@ networking-level means.
 We assume that:
 
 1.  the administrator has set up a farm of backend servers, using the
-    means suggested in
-    [MultipleInstances](/MultipleInstances)
-    . Those servers are *not* directly accessible from clients, and are
+    means suggested in [MultipleInstances](/MultipleInstances).
+    Those servers are *not* directly accessible from clients, and are
     *not* internally-load balanced.
-
 2.  the administrator has set up as many frontend servers as he wishes
     (up to one per CPU core) on the CARP box. Each of those servers has
     been individually tested and, when explicitly accessed from the
     client, is working correctly.
-
 3.  the administrator is familiar with his OS of choice's firewall
     technology
-
 ### Frontend Balancer Alternative 1: iptables
 
-  - *by
-    [FrancescoChemolli](/FrancescoChemolli)*
+  - *by [FrancescoChemolli](/FrancescoChemolli)*
 
 In this example we will be using *iptables*. The Linux firewall and
 packet management software.
@@ -123,5 +112,3 @@ With IPv4 the most popular method is to place a WCCP router in front of
 the whole structure. This is wonderful for overall service uptime. Be
 wary though, this adds yet another hardware single point of failure and
 bottleneck risk.
-
-[CategoryConfigExample](/CategoryConfigExample)

@@ -1,6 +1,5 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Blocking Content Based on MIME Types
 
@@ -45,9 +44,4 @@ access.log:
 
 ### Thanks
 
-Thanks to
-[AdrianChadd](/AdrianChadd)
-for this basic outline; please feel free to apply for a Wiki Editor
-account and update the page\!
-
-[CategoryKnowledgeBase](/CategoryKnowledgeBase)
+Thanks to [AdrianChadd](/AdrianChadd)

@@ -93,4 +93,3 @@ there is software already out there somewhere that can do this fast
 enough to outperform Squid even after any improvements we make.
 
 Suggestions please?
-

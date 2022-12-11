@@ -217,7 +217,7 @@ repository updates. Common bootstrap.sh problems are discussed in
 
 # Miscellaneous
 
-[ReleaseProcess](/ReleaseProcess)
+[ReleaseProcess](ReleaseProcess)
 describes the process and criteria used by the Squid Developers when
 making new Squid releases from the accepted changes.
 

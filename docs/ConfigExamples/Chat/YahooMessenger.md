@@ -1,8 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-# Yahoo\! Messenger
+# Yahoo! Messenger
 
 Warning: Any example presented here is provided "as-is" with no support
 or guarantee of suitability. If you have any further questions about
@@ -25,5 +24,3 @@ Configuration file to Include:
     
     http_access deny ym
     http_access deny ymregex
-
-[CategoryConfigExample](/CategoryConfigExample)

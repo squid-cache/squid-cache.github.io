@@ -1,20 +1,15 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: COSS (Cyclic Object Storage System)
 
-  - **Goal**: Stabilized COSS systems in all Squid.
-
-  - **Status**: 2.6+ complete. 3.x needs stability fixes ported from 2.6
-
-  - **Version**: 2.6
-
-  - **Developer**:
+- **Goal**: Stabilized COSS systems in all Squid.
+- **Status**: 2.6+ complete. 3.x needs stability fixes ported from 2.6
+- **Version**: 2.6
+- **Developer**:
     [Henrik_Nordström](/HenrikNordstrom.md),
     others welcome
-
-  - **Priority**: 2
+- **Priority**: 2
 
 ## What is COSS?
 
@@ -62,9 +57,8 @@ following command:
 
 where:
 
-**\<size\>** is the size of the COSS partition in MB
-
-**\<outfile\>** is the partition or filename that you want to use as the
+* **size** is the size of the COSS partition in MB
+* **outfile** is the partition or filename that you want to use as the
 COSS store
 
 ## What options are required for COSS?
@@ -76,15 +70,13 @@ The minimum configuration for a COSS partition is as follows:
 
 where:
 
-**\<file\>** is the partition, directory, or file name that you want to
-use as the COSS store. You will need to pre-create the file if it
-doesn't exist.
-
-**\<size\>** is the size of the COSS cache_dir in MB
-
-**\<max-size\>** is the size of the largest object that this cache_dir
-can store. This value can not be bigger then 1MB in the default
-configuration.
+* **file** is the partition, directory, or file name that you want to
+    use as the COSS store. You will need to pre-create the file if it
+    doesn't exist.
+* **size** is the size of the COSS cache_dir in MB
+- **max-size** is the size of the largest object that this cache_dir
+    can store. This value can not be bigger then 1MB in the default
+    configuration.
 
 If a regular file name is used as \<file\>, use the cache_swap_log
 option to specify a directory where Squid should store swap.state files
@@ -108,15 +100,11 @@ This will limit the maximum size for a COSS cache_dir (where the size
 is calculated as the size of the disk space + the size of any membufs)
 as follows:
 
-n=512 - 8192 MB
-
-n=1024 - 16384 MB
-
-n=2048 - 32768 MB
-
-n=4096 - 65536 MB
-
-n=8192 - 131072 MB
+* n=512 - 8192 MB
+* n=1024 - 16384 MB
+* n=2048 - 32768 MB
+* n=4096 - 65536 MB
+* n=8192 - 131072 MB
 
 **The default value for block-size is 512 bytes.**
 
@@ -189,29 +177,19 @@ when those activities are performed.
 
     cache_dir coss /var/spool/squid/coss 100 block-size=512 max-size=131072
 
-  - This will use a file with the filename /var/spool/squid/coss
-
-  - The cache_dir will store up to 100MB worth of data
-
-  - The block size is 512 byte
-
-  - Objects that are up to 131072 bytes long will be stored.
-
-<!-- end list -->
+- This will use a file with the filename /var/spool/squid/coss
+- The cache_dir will store up to 100MB worth of data
+- The block size is 512 byte
+- Objects that are up to 131072 bytes long will be stored.
 
     cache_dir coss /dev/sdf1 34500 max-size=524288 max-stripe-waste=32768 block-size=4096 maxfullbufs=10
 
-  - This will use the /dev/sdf1 partition
-
-  - The cache_dir will store up to 34500MB worth of data
-
-  - The block size is 4096 bytes
-
-  - Objects that are up to 524288 bytes long will be stored.
-
-  - If a given stripe has less than 524288 bytes available, this
+- This will use the /dev/sdf1 partition
+- The cache_dir will store up to 34500MB worth of data
+- The block size is 4096 bytes
+- Objects that are up to 524288 bytes long will be stored.
+- If a given stripe has less than 524288 bytes available, this
     cache_dir will only accept smaller objects until there is less than
     32768 bytes available in the stripe.
-
-  - If the default stripe size of 1MB is not changed, up to 10MB will be
+- If the default stripe size of 1MB is not changed, up to 10MB will be
     used for stripes that are waiting to be written to disk.
