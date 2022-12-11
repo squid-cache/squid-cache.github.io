@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # SSL-Bump using an intermediate CA
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
-
-  - *by Jok Thuau and
-    [YuriVoinov](/YuriVoinov)*
+  - *by Jok Thuau and [YuriVoinov](/YuriVoinov)*
 
 ## Outline
 
@@ -25,22 +19,16 @@ intermediate CA2 without disturb your clients.
 
 1.  Create a **root CA** with CRL URL encoded in CA1. This CRL URL needs
     to be reachable by your clients.
-
 2.  Use the CA1 to sign an intermediate CA2, which will be used on the
     proxy for signing mimicked certificates.
-    
-      - For example in the config below we call this private key
+    For example in the config below we call this private key
         *signingCA.key*.
-
 3.  install primary CA1 public key onto clients.
-    
-      - For example in the config below we call this public key (cert)
+    For example in the config below we call this public key (cert)
         *signingCA.crt*.
-
 4.  prepare a public keys file which contains concatenated intermediate
     CA2 followed by root CA1 in PEM format.
-    
-      - For example in the config below we call this *chain.pem*.
+    For example in the config below we call this *chain.pem*.
 
 Now Squid can send the intermediate CA2 public key with root CA1 to
 client and does not need to install intermediate CA2 to clients.
@@ -82,5 +70,3 @@ for how to verify a remote certificate chain. The tests should be
 performed against the Squid listening port to verify that it is both
 generating a valid certificate and sending the correct CA chain
 sequence.
-
-[CategoryConfigExample](/CategoryConfigExample)

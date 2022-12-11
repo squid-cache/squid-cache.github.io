@@ -1,25 +1,19 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Linux traffic Interception using DNAT
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
 To Intercept IPv4 web requests transparently without any kind of client
 configuration. When web traffic is reaching the machine squid is run on.
 
-**NOTE:** NAT configuration will only work when used **on the squid
-box**. This is required to perform intercept accurately and securely. To
-intercept from a gateway machine and direct traffic at a separate squid
-box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
+> :information_source: NAT configuration will only work when used 
+    **on the squid box**. This is required to perform intercept accurately and securely. To
+    intercept from a gateway machine and direct traffic at a separate squid
+    box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute)
 
-  - ![squid-DNAT-device.png](https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxDnat?action=AttachFile&do=get&target=squid-DNAT-device.png)
+![squid-DNAT-device.png](https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxDnat?action=AttachFile&do=get&target=squid-DNAT-device.png)
 
 ## iptables configuration
 
@@ -47,9 +41,9 @@ encounter problems with forwarding loops.
     iptables -t nat -A POSTROUTING -j MASQUERADE
     iptables -t mangle -A PREROUTING -p tcp --dport $SQUIDPORT -j DROP
 
-**NOTE:** DNAT is only available for IPv4 traffic on older kernel
-versions. For IPv6 interception use [TPROXY
-version 4](/Features/Tproxy4).
+> :information_source:
+    DNAT is only available for IPv4 traffic on older kernel
+    versions. For IPv6 interception use [TPROXY version 4](/Features/Tproxy4)
 
 ## /etc/sysctl.conf Configuration
 
@@ -69,12 +63,8 @@ like so:
 
     http_port 3129 transparent
 
-  - :warning:
+> :warning:
     In Squid 3.1+ the *transparent* option has been split. Use
     **'intercept** to catch DNAT packets.
 
-<!-- end list -->
-
-    http_port 3129 intercept
-
-[CategoryConfigExample](/CategoryConfigExample)
+        http_port 3129 intercept

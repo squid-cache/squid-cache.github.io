@@ -1,16 +1,11 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Variant I: Routed DMZ witch WCCPv2
 
 - *by [YuriVoinov](/YuriVoinov)*
 
 ## Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using ISR G2 router
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ### Outline
 
@@ -25,8 +20,7 @@ GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1
 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP
 192.168.200.3 in this example. WCCPv2 configured on router 2911.
 
-![Network
-scheme](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme.png)
+![Network scheme](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme.png)
 
 Router has both router/switch functionality, so we can use both GRE/L2
 redirection methods.
@@ -147,19 +141,6 @@ Then restart squid and check redirection is working.
     plain-text\! Protect it as by as protect proxy box from unauthorized
     access\!
 
-### Setup verification
-
-To verify setup up and running execute next commands on WCCP-enabled
-router:
-
-- ![Check WCCP
-    HTTP/HTTPS](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Check_WCCP_1.png)
-    ![Check WCCP
-    HTTP/HTTPS](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Check_WCCP_2.png)
-    ![Check WCCP
-    Interfaces/summary](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Check_WCCP_3.png)
-    ![Check WCCP up and
-    running](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Check_WCCP_up_and_running.png)
 
 ### QUIC/SPDY protocol blocking
 
@@ -191,9 +172,7 @@ interception.
 
 # Variant II: Switch L3 as WCCPv2 router
 
-- *by
-    [YuriVoinov](/YuriVoinov)*
-    and Svyatoslav Voinov
+- *by [YuriVoinov](/YuriVoinov) and Svyatoslav Voinov*
 
 ## Configuring a Cisco IOS 15.0(2)SE9 with WCCPv2 using aggregation switch
 
@@ -213,8 +192,7 @@ has physical 1 Gbps interfaces. Proxy has two aggregated ports, IP's
 aggregate, aggr2) in this example. WCCPv2 uses L2 redirection with
 assignment method **mask**. Switch only support WCCP "IN" redirection.
 
-- ![Network scheme
-    2](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme2.png)
+![Network scheme 2](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme2.png)
 
 ### Cisco IOS 15.0(2)SE9 switch
 
@@ -297,12 +275,9 @@ different ports interception.
 > :information_source:
     Note: This configuration was tested and fully operated on Cisco iOS
     version 15.0(2)SE9 on appropriate switch (see next note).
-    :+1:
-    :+1:
-    :+1:
 
-> :information_source:
-    Note: Be **VERY CAREFUL**: Cisco 3750 series has much submodels, not
+> :warning:
+    Be **VERY CAREFUL**: Cisco 3750 series has much submodels, not
     at all compatible with iOS 15.x. Partially, C3750G-16TD-S can run
     iOS 12.2(55)SE series only. Read [Cisco Release
     Notes](http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/15-0_2_se/release/notes/OL25301.html)
@@ -323,9 +298,7 @@ different ports interception.
 
 # Variant III: Switched ISR G2 router with WCCPv2
 
-- *by
-    [YuriVoinov](/YuriVoinov)*
-    and Svyatoslav Voinov
+- *by [YuriVoinov](/YuriVoinov) and Svyatoslav Voinov*
 
 ## Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using switched ISR G2 router with convergent switch board
 
@@ -341,8 +314,7 @@ and DATAK9 technology packs activated. Router contains convergent switch
 board with four 100 Mbps or 1 Gbps ports. WCCPv2 configured on router
 2911.
 
-- ![Network scheme
-    3](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme3.png)
+![Network scheme 3](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme3.png)
 
 ### Cisco IOS 15.5(3)M2 router
 
@@ -448,9 +420,7 @@ reasons.
 
 # Variant IV: VRF with WCCPv2
 
-- *by
-    [YuriVoinov](/YuriVoinov)*
-    and Svyatoslav Voinov
+- *by [YuriVoinov](/YuriVoinov) and Svyatoslav Voinov*
 
 ## Outline
 
@@ -463,5 +433,3 @@ squid 3.x/4.x for processing the traffic. You can have many VRF routers
 (on [MPLS](https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching)
 router box) with the as many proxy boxes as you wish, for example, in
 ISP.
-
-[CategoryConfigExample](/CategoryConfigExample)

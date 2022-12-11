@@ -1,20 +1,18 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Intercepting traffic with IPFW
-
 
 ## Outline
 
 This configuration is for a machine using IPFirewall (IPFW) to NAT
 intercept traffic into a Squid proxy.
 
-**NOTE:** NAT configuration will only work when used **on the squid
-box**. This is required to perform intercept accurately and securely. To
-intercept from a gateway machine and direct traffic at a separate squid
-box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
+> :information_source:
+    NAT configuration will only work when used **on the squid box**.
+    This is required to perform intercept accurately and securely. To
+    intercept from a gateway machine and direct traffic at a separate squid
+    box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 ## Squid Configuration
 
@@ -27,11 +25,9 @@ like so:
 
     http_port 3129 transparent
 
-  - :warning:
+> :warning:
     In Squid 3.1+ the *transparent* option has been split. Use
     **'intercept** to catch IPFW packets.
-
-<!-- end list -->
 
     http_port 3129 intercept
 
@@ -84,5 +80,3 @@ You need to edit:
 
 Previous MacOS X set this to 0 by default. On MacOS X 10.6 it now
 defaults to 1. Disable this and Squid gets the traffic.
-
-[CategoryConfigExample](/CategoryConfigExample)

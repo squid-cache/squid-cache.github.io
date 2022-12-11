@@ -1,25 +1,20 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: ConfigExample 
 ---
 # Linux traffic Interception using REDIRECT
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
 To Intercept web requests transparently without any kind of client
 configuration. When web traffic is reaching the machine squid is run on.
 
-**NOTE:** NAT configuration will only work when used **on the squid
-box**. This is required to perform intercept accurately and securely. To
-intercept from a gateway machine and direct traffic at a separate squid
-box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
+> :information_source:
+  NAT configuration will only work when used **on the squid
+  box**. This is required to perform intercept accurately and securely. To
+  intercept from a gateway machine and direct traffic at a separate squid
+  box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
-  - ![squid-NAT-device-REDIRECT.png](https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxRedirect?action=AttachFile&do=get&target=squid-NAT-device-REDIRECT.png)
+![squid-NAT-device-REDIRECT.png](https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxRedirect?action=AttachFile&do=get&target=squid-NAT-device-REDIRECT.png)
 
 ## iptables configuration
 
@@ -54,12 +49,9 @@ like so:
 
     http_port 3129 transparent
 
-  - :warning:
+> :warning:
     In Squid 3.1+ the *transparent* option has been split. Use
     **'intercept** to catch REDIRECT packets.
 
-<!-- end list -->
 
     http_port 3129 intercept
-
-[CategoryConfigExample](/CategoryConfigExample)

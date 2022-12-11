@@ -1,12 +1,8 @@
 ---
-categories: [ConfigExample, ReviewMe]
+categories: [ConfigExample]
 published: false
 ---
 # Configuring Transparent Interception with FreeBSD and WCCPv2
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -40,12 +36,9 @@ IP (so in this case it isn't 192.168.1.1.)
 
 gre configuration:
 
-  - 192.168.1.9: Proxy server IP
-
-  - X.X.X.X: IP of the WCCPv2 router; you may need to tcpdump on the
+- 192.168.1.9: Proxy server IP
+- X.X.X.X: IP of the WCCPv2 router; you may need to tcpdump on the
     local network to find where the GRE packets are sourced.
-
-<!-- end list -->
 
     ifconfig gre0 plumb
     ifconfig gre0 link2
@@ -74,5 +67,3 @@ the Squid application.
     # GRE return method
     wccp2_return_method 1
     wccp2_service standard 0
-
-[CategoryConfigExample](/CategoryConfigExample)

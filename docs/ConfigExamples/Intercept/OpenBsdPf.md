@@ -1,14 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Intercepting traffic with PF on OpenBSD
 
 by Chris Benech and Amos Jeffries
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -17,26 +12,22 @@ interception using several very simple methods.
 
 This configuration example details how to integrate the PF firewall with
 Squid for interception of port 80 traffic using either NAT-like
-interception and
-[TPROXY-like](/Features/Tproxy4)
-interception.
+interception and [TPROXY-like](/Features/Tproxy4) interception.
 
-**NOTE:** NAT configuration will only work when used **on the squid
-box**. This is required to perform intercept accurately and securely. To
-intercept from a gateway machine and direct traffic at a separate squid
-box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
+> :information_source:
+    NAT configuration will only work when used **on the squid
+    box**. This is required to perform intercept accurately and securely. To
+    intercept from a gateway machine and direct traffic at a separate squid
+    box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 More on configuring Squid for OpenBSD can be found in the OpenBSD ports
-README file:
-
-  - <http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/ports/www/squid/pkg/README-main>
+README file: <http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/ports/www/squid/pkg/README-main>
 
 ## Squid Configuration
 
 ### Fully Transparent Proxy (TPROXY)
 
-  - :warning:
+> :warning:
     This configuration requires
     [Squid-3.3.4](/Releases/Squid-3.3)
     or later.
@@ -57,26 +48,16 @@ connections:
     This is available as standard with the OpenBSD 5.0+ squid
     port/packages.
 
-For
-[Squid-3.4](/Releases/Squid-3.4)
-or later:
+For [Squid-3.4](/Releases/Squid-3.4) or later:
 
     --enable-pf-transparent
 
-For
-[Squid-3.3](/Releases/Squid-3.3)
-and
-[Squid-3.2](/Releases/Squid-3.2)
+For [Squid-3.3](/Releases/Squid-3.3) and [Squid-3.2](/Releases/Squid-3.2)
 support for this is not integrated with the --enable-pf-transparent
 build option. However the IPFW NAT component of Squid is compatible with
 PF. You can build Squid with these configure options:
 
     --disable-pf-transparent --enable-ipfw-transparent
-
-For
-[Squid-2.7](/Releases/Squid-2.7),
-the default build with no particular configuration options uses the IPFW
-compatible method.
 
 Use the **intercept** traffic mode flag to instruct Squid that it is
 receiving intercepted traffic and to use its own IP on outgoing
@@ -109,28 +90,26 @@ For IPv4 traffic interception:
     pass in quick on inet proto tcp from 192.0.2.0/24 to port www divert-to 127.0.0.1 port 3129
     pass out quick inet from 192.0.2.0/24 divert-reply
 
-**IMPORTANT:** The divert-reply rules are needed to receive replies for
-sockets that are bound to addresses not local to the machine. If there
-is no divert-reply rule, cache.log will show a line similar to:
+> :warning:
+    The divert-reply rules are needed to receive replies for
+    sockets that are bound to addresses not local to the machine. If there
+    is no divert-reply rule, cache.log will show a line similar to:
 
-  - ``` 
-    2013/04/16 14:28:37 kid1|  FD 12, 127.0.0.1 [Stopped, reason:Listener socket closed job49]: (53) Software caused connection abort
-    ```
+        2013/04/16 14:28:37 kid1|  FD 12, 127.0.0.1 [Stopped, reason:Listener socket closed job49]: (53) Software caused connection abort
 
-  - :x:
+> :x:
     PF offers a **rdr-to** option. However this not supported with any
     Squid. Use **divert-to** instead.
 
 ### OpenBSD 4.1 to 4.3
 
-  - :x:
+> :x:
     NOTE: OpenBSD older than 4.4 requires
     [Squid-3.2](/Releases/Squid-3.2)
     or older built with **--enable-pf-transparent** and only supports
     the NAT interception method.
 
-<!-- end list -->
-
+```
     # redirect only IPv4 web traffic into squid
     rdr pass inet proto tcp from 192.168.231.0/24 to any port 80 -> 192.168.231.1 port 3129
     
@@ -138,16 +117,16 @@ is no divert-reply rule, cache.log will show a line similar to:
     pass in quick on $int_if
     pass in quick on $wi_if
     pass out keep state
+```
 
-A pointer:
-
-  - Use **rdr pass** instead of **rdr on ...** part of the way that PF
+> :information_source:
+    Use **rdr pass** instead of **rdr on ...** part of the way that PF
     evaluates packets, it would drop through and be allowed as is
     instead of redirected if you don't use **rdr pass**.
 
 ## Troubleshooting
 
-  - Make sure and add the **pass in quick** lines. Myself I have two
+- Make sure and add the **pass in quick** lines. Myself I have two
     internal interfaces, one for wired and one for wireless internet.
     Although there is a bridge configured, strange things happen
     sometimes when you don't explicitly allow all traffic on both
@@ -201,5 +180,3 @@ You should now see an output like this:
 
 From there on out, just set your browsers up normally with no proxy
 server, and you should see the cache fill up and your browsing speed up.
-
-[CategoryConfigExample](/CategoryConfigExample)

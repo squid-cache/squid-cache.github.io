@@ -1,33 +1,26 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Intercepting traffic with IPFW on Linux
-
-  - *by Brian Feeny*
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+ *by Brian Feeny*
 
 ## Outline
 
-  - **NP:** *This configuration information is up-to-date as of Linux
+> :information_source:
+    This configuration information is up-to-date as of Linux
     2.0.33*
 
-**NOTE:** NAT configuration will only work when used **on the squid
-box**. This is required to perform intercept accurately and securely. To
-intercept from a gateway machine and direct traffic at a separate squid
-box use [policy
-routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
+> :information_source:
+    NAT configuration will only work when used **on the squid
+    box**. This is required to perform intercept accurately and securely. To
+    intercept from a gateway machine and direct traffic at a separate squid
+    box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute)
 
 ## ipfwadm Configuration (/etc/rc.d/rc.local)
 
-  - :warning:
+> :warning:
     Replace SQUIDIP with the public IP squid may use to send traffic.
     Repeat the ipfwadm line for each such IP Squid uses.
-
-<!-- end list -->
 
     # Accept all on loopback
     ipfwadm -I -a accept -W lo
@@ -80,5 +73,3 @@ You should now see an output like this:
 
 From there on out, just set your browsers up normally with no proxy
 server, and you should see the cache fill up and your browsing speed up.
-
-[CategoryConfigExample](/CategoryConfigExample)

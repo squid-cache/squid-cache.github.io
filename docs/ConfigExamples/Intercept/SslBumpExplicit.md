@@ -1,28 +1,20 @@
 ---
-categories: [ConfigExample, ReviewMe]
+categories: [ConfigExample]
 published: false
 ---
 # Intercept HTTPS CONNECT messages with SSL-Bump
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 HTTPS interception has ethical and legal issues which you need to be
 aware of.
 
   - some countries do not limit what can be done within the home
     environment,
-
   - some countries permit employment or contract law to overrule
     privacy,
-
   - some countries require government registration for all decryption
     services,
-
   - some countries it is an outright capital offence with severe
     penalties
-
   - DO Seek legal advice before using this configuration, even at home.
 
 On the ethical side; consider some unknown other person reading all your
@@ -31,8 +23,7 @@ considerate of others.
 
 ## Outline
 
-This configuration is written for
-[Squid-3.5](/Releases/Squid-3.5).
+This configuration is written for [Squid-3.5](/Releases/Squid-3.5).
 It will definitely not work on older Squid releases even though they
 have a form of the SSL-Bump feature, and may not work on newer versions
 if there have been any significant improvements to the TLS protocol
@@ -72,7 +63,7 @@ for proxied sites. For all practical purposes, this certificate becomes
 a [Root certificate](http://en.wikipedia.org/wiki/Root_certificate) and
 you become a Root CA.
 
-  - :x:
+> :x:
     If your certificate is compromised, any user trusting (knowingly or
     otherwise) your Root certificate may not be able to detect
     man-in-the-middle attacks orchestrated by others.
@@ -80,30 +71,23 @@ you become a Root CA.
 Create directory to store the certificate (the exact location is not
 important):
 
-  - ``` 
     cd /etc/squid
     mkdir ssl_cert
     chown squid:squid ssl_cert
     chmod 700 ssl_cert
     cd ssl_cert
-    ```
 
 Create self-signed certificate (you will be asked to provide information
 that will be incorporated into your certificate):
 
-  - using OpenSSL:
+using OpenSSL:
 
-  - ``` 
     openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -extensions v3_ca -keyout myCA.pem  -out myCA.pem
-    ```
 
-  - using GnuTLS certtool:
+using GnuTLS certtool:
 
-  - ``` 
     certtool --generate-privkey --outfile ca-key.pem
-    
     certtool --generate-self-signed --load-privkey ca-key.pem --outfile myCA.pem
-    ```
 
 You can also specify some required additional CA's attributes in
 openssl.cfg to reduce the questions:
@@ -116,9 +100,7 @@ openssl.cfg to reduce the questions:
 
 ### Create a DER-encoded certificate to import into users' browsers
 
-  - ``` 
     openssl x509 -in myCA.pem -outform DER -out myCA.der
-    ```
 
 The result file (**myCA.der**) should be imported into the 'Authorities'
 section of users' browsers.
@@ -126,24 +108,19 @@ section of users' browsers.
 For example, in FireFox:
 
 1.  Open 'Preferences'
-
 2.  Go to the 'Advanced' section, 'Encryption' tab
-
 3.  Press the 'View Certificates' button and go to the 'Authorities' tab
-
 4.  Press the 'Import' button, select the .der file that was created
     previously and pres 'OK'
 
 In theory, you must either import your root certificate into browsers or
 instruct users on how to do that. Unfortunately, it is apparently a
-[common
-practice](https://www.computerworld.com/s/article/9224082/Trustwave_admits_issuing_man_in_the_middle_digital_certificate_Mozilla_debates_punishment)
+[common practice](https://www.computerworld.com/s/article/9224082/Trustwave_admits_issuing_man_in_the_middle_digital_certificate_Mozilla_debates_punishment)
 among well-known Root CAs to issue *subordinate* root certificates. If
 you have obtained such a subordinate root certificate from a Root CA
 already trusted by your users, you do not need to import your
 certificate into browsers. However, going down this path may result in
-[removal of the well-known Root CA
-certificate](https://bugzilla.mozilla.org/show_bug.cgi?id=724929) from
+[removal of the well-known Root CA certificate](https://bugzilla.mozilla.org/show_bug.cgi?id=724929) from
 browsers around the world. Such a removal will make your local
 SslBump-based infrastructure inoperable until you import your
 certificate, but that may only be the beginning of your troubles. Will
@@ -183,17 +160,7 @@ Paste the configuration file like this:
 In some cases you may need to specify custom root CA to be added to the
 library default "Global Trusted CA" set. This is done by
 
-  - [Squid-3.5](/Releases/Squid-3.5)
-    and older:
-
-<!-- end list -->
-
-    sslproxy_cafile /usr/local/openssl/cabundle.file
-
-  - [Squid-4](/Releases/Squid-4)
-    and newer:
-
-<!-- end list -->
+[Squid-4](/Releases/Squid-4) and newer:
 
     tls_outgoing_options cafile=/usr/local/openssl/cabundle.file
 
@@ -215,9 +182,7 @@ the chain up to their root CA.
 is capable of downloading missing intermediate CA certificates, like
 popular browsers do.
 
-For
-[Squid-3.5](/Releases/Squid-3.5)
-the
+For [Squid-3.5](/Releases/Squid-3.5) the
 [sslproxy_foreign_intermediate_certs](http://www.squid-cache.org/Doc/config/sslproxy_foreign_intermediate_certs)
 directive can be used to load intermediate CA certificates from a file:
 
@@ -226,8 +191,7 @@ directive can be used to load intermediate CA certificates from a file:
 Older versions of Squid cannot handle intermediate CA certificates very
 well. You may be able to find various hacks for certain situations
 around, but it is highly recommended to upgrade to at least the latest
-[Squid-3.5](/Releases/Squid-3.5)
-version when dealing with HTTPS / TLS traffic.
+[Squid-3.5](/Releases/Squid-3.5) version when dealing with HTTPS / TLS traffic.
 
 ## Create and initialize TLS certificates cache directory
 
@@ -249,32 +213,30 @@ and newer:
     /usr/local/squid/libexec/security_file_certgen -c -s /var/lib/ssl_db -M 4MB
     chown squid:squid -R /var/lib/ssl_db
 
-  - :warning:
+> :warning:
     The low-privilege account varies by OS and may not be 'squid' in
     your system.
 
-  - :warning:
-    also, be aware that SELinux and
-    [AppArmour](/AppArmour)
+> :warning:
+    also, be aware that SELinux and [AppArmour](/AppArmour)
     permissions may need to be updated to allow the Squid helper to use
     this directory.
 
-  - :warning:
+> :warning:
     certificates cache directory used only if squid configured with
     --enable-ssl-crtd. Otherwise bump will work, but no certificates
     will store anywhere.
 
 ## Troubleshooting
 
-For
-[Squid-3.1](/Releases/Squid-3.1)
+For [Squid-3.1](/Releases/Squid-3.1)
 in some cases you may need to add some options in your Squid
 configuration:
 
     sslproxy_cert_error allow all
     sslproxy_flags DONT_VERIFY_PEER
 
-  - :warning:
+> :warning:
     **BEWARE\!** It can reduce SSL/TLS errors in cache.log, but **this
     is NOT SECURE\!** With these options your cache will ignore all
     server certificates errors and connect your users with them. Use
@@ -301,8 +263,8 @@ To increase security the good idea to set these options:
     
     # for Squid-4 and newer
     tls_outgoing_options options=NO_SSLv3,SINGLE_DH_USE,SINGLE_ECDH_USE
-
-  - :warning:
+  
+> :warning:
     SSL options must be comma (,) or colon (:) separated, not spaces\!
 
 > :information_source:
@@ -315,8 +277,7 @@ investigate every case separately and correct it as needed.
 
 ## Hardening
 
-  - *by
-    [YuriVoinov](/YuriVoinov)*
+- *by [YuriVoinov](/YuriVoinov)*
 
 It is important to increase invisible for you part of bumped connection
 - from proxy to server.
@@ -324,8 +285,7 @@ It is important to increase invisible for you part of bumped connection
 By default, you are use default set of ciphers. And never check your ssl
 connection from outside.
 
-To achieve this, you can use [this
-link](https://www.ssllabs.com/ssltest/viewMyClient.html) for example.
+To achieve this, you can use [this link](https://www.ssllabs.com/ssltest/viewMyClient.html) for example.
 Just point browser from client behing your proxy to this URL.
 
 Most often you can see usage of export/weak ciphers.
@@ -343,8 +303,7 @@ above you can increase the outgoing TLS connection's security.
 
 A good result should look like this:
 
-![Test TLS after change cipher's
-suite](https://wiki.squid-cache.org/ConfigExamples/Intercept/SslBumpExplicit?action=AttachFile&do=get&target=ssl_client_online_check.png)
+![Test TLS after change cipher's suite](https://wiki.squid-cache.org/ConfigExamples/Intercept/SslBumpExplicit?action=AttachFile&do=get&target=ssl_client_online_check.png)
 
 This looks like more better for outgoing SSL connections.
 
@@ -359,7 +318,6 @@ This looks like more better for outgoing SSL connections.
     cipher's list. Remember, this makes your configuration a bit weak,
     but more compatible. Your cipher's row will look like this:
 
-<!-- end list -->
 
     sslproxy_cipher EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:HIGH:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 
@@ -367,13 +325,11 @@ This looks like more better for outgoing SSL connections.
     Note: Ciphers are used also depending from your SSL/TLS library. In
     some cases will be enough to specify:
 
-<!-- end list -->
+        sslproxy_cipher HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 
-    sslproxy_cipher HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
+    or
 
-or
-
-    tls_outgoing_options cipher=HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
+        tls_outgoing_options cipher=HIGH:MEDIUM:!RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS
 
 > :information_source:
     Note: Don't forget, that sslproxy_cipher/tls_outgoing_options
@@ -425,8 +381,4 @@ and restart squid.
 > :information_source:
     Note: In some cases you can specify curve in tls-dh option:
 
-<!-- end list -->
-
-    tls-dh=prime256v1:/usr/local/squid/etc/dhparam.pem
-
-[CategoryConfigExample](/CategoryConfigExample)
+        tls-dh=prime256v1:/usr/local/squid/etc/dhparam.pem

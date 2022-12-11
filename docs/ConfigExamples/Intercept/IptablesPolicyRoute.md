@@ -1,12 +1,8 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Policy Routing Web Traffic On A Linux Router
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -24,13 +20,12 @@ table and a default route in the alternate routing table to policy route
 to the distribution.
 
 Please realize that this just gets the packets to the proxy; you have to
-then configure
-[interception](/SquidFaq/InterceptionProxy)
+then configure [interception](/SquidFaq/InterceptionProxy)
 on the proxy itself to redirect traffic to the Squid TCP port\!
 
-### iptables Setup
+## iptables Setup
 
-#### When Squid is Internal amongst clients
+### When Squid is Internal amongst clients
 
     # IPv4 address of proxy
     PROXYIP4= 192.168.0.10
@@ -59,7 +54,7 @@ on the proxy itself to redirect traffic to the Squid TCP port\!
     iptables -t filter -A FORWARD -i $CLIENTIFACE -o $CLIENTIFACE -p tcp --dport 80 -j ACCEPT
     ip6tables -t filter -A FORWARD -i $CLIENTIFACE -o $CLIENTIFACE -p tcp --dport 80 -j ACCEPT
 
-#### When Squid is in a DMZ between the router and Internet
+### When Squid is in a DMZ between the router and Internet
 
 NOTE: this special configuration is only necessary if the Squid box is
 not the normal gateway for the router. If you make the Squid box the
@@ -84,7 +79,7 @@ slows both down somewhat.
   - NP: don't forget to set a route on the Squid box so traffic for the
     internal clients can get back to them.
 
-### Routing Setup
+## Routing Setup
 
 Needs to be run as root.
 
@@ -95,7 +90,7 @@ this demo. You need to pick your own.
 
   - :warning:
     "201" is just a unique routing table number. Check the file contents
-    first\!
+    first!
 
 Create a routing table for our intercepted proxy traffic
 
@@ -108,10 +103,8 @@ at **$PROXYIP**.
     ip rule add fwmark 2 table proxy
     ip route add default via $PROXYIP table proxy
 
-### Squid configuration
+## Squid configuration
 
 Squid is a separate box right? See the **capture into Squid** section of
 [ConfigExamples/Intercept](/ConfigExamples/Intercept)
 for details on configuring it.
-
-[CategoryConfigExample](/CategoryConfigExample)

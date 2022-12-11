@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring Transparent Interception with Fedora Core Linux and WCCPv2
 
-  - *by
-    [ReubenFarrelly](/ReubenFarrelly)*
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+  - *by [ReubenFarrelly](/ReubenFarrelly)*
 
 ## Outline
 
@@ -47,16 +41,6 @@ boot, and the module is loaded automatically. I can additionally ifup or
 ifdown the interface at will. This is the standard Fedora way of
 configuring a GRE interface.
 
-  - I build customised kernels for my hardware, so I have this set in my
-    kernel .config:
-
-<!-- end list -->
-
-    CONFIG_NET_IPGRE=m
-
-However you can optionally build the GRE tunnel into your kernel by
-selecting 'y' instead.
-
 ## Fedora Core Intercept configuration
 
 Then you need to redirect the packets coming in the gre0 interface to
@@ -71,27 +55,15 @@ the Squid application.
     http_port 3127 transparent
     wccp2_router $ROUTERIP
     # GRE forwarding
-    wccp2_forwarding_method 1
+    wccp2_forwarding_method gre
     # GRE return method
-    wccp2_return_method 1
+    wccp2_return_method gre
     wccp2_service standard 0
 
-> :information_source:
-    From
-    [Squid-3.1](/Releases/Squid-3.1)
-    the magic numbers are now mostly gone. This should work and be
-    clearer:
-
-<!-- end list -->
-
-    wccp2_forwarding_method gre
-    wccp2_return_method gre
 
 ## What does it all look like?
 
-  - my operating system runs a GRE tunnel which looks like this:
-
-<!-- end list -->
+my operating system runs a GRE tunnel which looks like this:
 
     [root@tornado squid]# ifconfig gre0
     gre0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00
@@ -102,10 +74,8 @@ the Squid application.
               collisions:0 txqueuelen:0
               RX bytes:20917 (20.4 KiB)  TX bytes:0 (0.0 b)
 
-  - my router sees the cache engine, and tells me how much traffic it
+my router sees the cache engine, and tells me how much traffic it
     has switched through to the cache:
-
-<!-- end list -->
 
     router#show ip wccp web-cache
     Global WCCP information:
@@ -144,5 +114,3 @@ the Squid application.
               Fast:                  0
               CEF:                   0
     router#
-
-[CategoryConfigExample](/CategoryConfigExample)
