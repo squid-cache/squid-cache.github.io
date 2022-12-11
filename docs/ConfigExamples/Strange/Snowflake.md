@@ -1,9 +1,9 @@
 ---
 categories: [ConfigExample]
 ---
-*by [YuriVoinov](/YuriVoinov)*
-
 # Snowflake
+
+*by [YuriVoinov](/YuriVoinov)*
 
 ## How to pass Snowflake
 
