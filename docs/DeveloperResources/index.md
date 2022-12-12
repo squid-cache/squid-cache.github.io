@@ -27,7 +27,7 @@ version of the code.
 - [RoadMap/Tasks](/RoadMap/Tasks)
   itemizes general cleanup tasks that need to be done. These can be
   good introductory tasks.
-- We have a list of [HTTP/1.1 compliance](/Features/HTTP11) violations 
+- We have a list of [HTTP/1.1 compliance](/Features/HTTP11) violations
   that need to be addressed.
 - `git grep XXX`
 - `git grep TODO`
@@ -112,7 +112,7 @@ updated as the official code changes.
 
 The official Squid source code repository is on
 [GitHub](https://github.com/squid-cache/squid). see
-[GitHints](/GitHints)
+[GitHints](/DeveloperResources/GitHints)
 for common actions you may need to perform with the git VCS.
 > :warning:
   When working from this repository the `bootstrap.sh` script is
@@ -132,7 +132,7 @@ circumstances.
     repository revision ID included in that tarball. Gaps are expected
     in the list when there were no new revisions committed that day, or
     when the revision failed to compile on our tarball creation machine.
-    
+
     :warning:
     Daily tarballs contain the fully bootstrapped tool chain ready to
     build. But be aware that some changes may appear with incomplete or

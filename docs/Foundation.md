@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+
 ---
 # Squid Software Foundation
 
@@ -14,8 +13,7 @@ website](http://www.squid-cache.org/Foundation/).
 
 This part of the wiki deals with helping run the foundation.
 
-  - A bit of
-    [/History](/Foundation/History)
+  - A bit of [/History](/Foundation/History)
     of the foundation
 
   - Minutes from the foundation Board

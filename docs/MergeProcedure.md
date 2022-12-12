@@ -14,7 +14,7 @@ best interest of Squid.
     other developers.
 2. Implement your changes while following
     [SquidCodingGuidelines](/DeveloperResources/SquidCodingGuidelines).
-    Use git for version control (see [GitHints](/GitHints)).
+    Use git for version control (see [GitHints](/DeveloperResources/GitHints)).
 3. Complete [the submission checklist](#submission-checklist).
 4. Submit a [pull request](#pull-request) on GitHub.
 5. Monitor for automated test failures and work with reviewers to get
@@ -71,7 +71,7 @@ All commits to the official repository require a GitHub pull request
 reviewed, and all official branches are always in working order (to the
 extent our testing can detect bugs, of course). It also helps reduce
 commit noise and backporting overheads. This section documents PR
-requirements. See [GitHints](/GitHints)
+requirements. See [GitHints](/DeveloperResources/GitHints)
 for PR submission recipes.
 
 1. Please complete [the submission checklist](#submission-checklist)
@@ -114,7 +114,7 @@ one positive vote from the submitter.
 
 > :information_source:
     Any developer may vote.
-    
+
 > :information_source:
     These rules are not yet fully enforced on GitHub but they (or their
     next revision) will be. For now, GitHub will not allow to merge your
