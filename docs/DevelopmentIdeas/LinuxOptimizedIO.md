@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Linux-Specific I/O Optimizations
 
@@ -8,13 +7,11 @@ Linux 2.6.17 (but the concepts were refined and interfaces altered in
 2.6.18+) implemented a few new system calls for zero-copy I/O operations
 involving pipes: splice, tee and vmsplice
 
-  - *splice* copies an user-specified amount data from a pipe into
+- *splice* copies an user-specified amount data from a pipe into
     another pipe
-
-  - *tee* is like splice but doesn't consume data from the input, and
+- *tee* is like splice but doesn't consume data from the input, and
     can be thus invoked multiple times on the same pipe
-
-  - *vmsplice* copies data from an user-specified memory region into a
+- *vmsplice* copies data from an user-specified memory region into a
     pipe
 
 Those ***might*** be useful in different cases: respectively disk cache
@@ -24,10 +21,6 @@ implement them
 
 **Resources**:
 
-  - <http://lwn.net/Articles/178199/>
-
-  - <http://lwn.net/Articles/179492/>
-
-  - <http://lwn.net/Articles/181169/>
-
-**Discussion**
+- <http://lwn.net/Articles/178199/>
+- <http://lwn.net/Articles/179492/>
+- <http://lwn.net/Articles/181169/>

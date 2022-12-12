@@ -1,18 +1,13 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Helper Pause State
 
-  - **Goal**: Skip busy helpers without delays.
-
-  - **Status**: Not Started.
-
-  - **ETA**: unknown
-
-  - **Version**: Squid 3
-
-  - **Developer**:
+- **Goal**: Skip busy helpers without delays.
+- **Status**: Not Started.
+- **ETA**: unknown
+- **Version**: Squid 3
+- **Developer**:
 
 ## Details
 
@@ -48,6 +43,3 @@ The on-demand starting of new helpers from 3.2 can be leveraged to do
 this in a far simpler design. By having helpers simply stop running when
 their config becomes old. Squid will start new helpers as load requires
 and helpers only need load config on startup.
-
-[CategoryFeature](/CategoryFeature)
-[CategoryWish](/CategoryWish)

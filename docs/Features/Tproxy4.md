@@ -333,9 +333,9 @@ through another peer in the cluster.
 
     cache_peer ip.of.peer sibling 3128 0 no-tproxy ...
 
-# Troubleshooting
+## Troubleshooting
 
-## Squid not spoofing the client IP
+### Squid not spoofing the client IP
 
 Could be a few things. Check cache.log for messages like those listed
 here in Troubleshooting.
@@ -346,56 +346,46 @@ here in Troubleshooting.
     Start testing this problem by making sure of that dependency
     manually.
 
-## Stopping full transparency: Error enabling needed capabilities.
+### Stopping full transparency: Error enabling needed capabilities.
 
 Something went wrong while setting advanced privileges. What exactly, we
 don't know at this point. Unfortunately its not logged anywhere either.
 Perhaps your syslog or /var/log/messages log will have details recorded
 by the OS.
 
-## Stopping full transparency: Missing needed capability support.
+### Stopping full transparency: Missing needed capability support.
 
 **libcap** support appears to be missing. The library needs to be built
 into Squid so a rebuild is required after installed the related packages
 for your system.
 
-## commBind: cannot bind socket FD X to X.X.X.X: (99) cannot assign requested address
+### commBind: cannot bind socket FD X to X.X.X.X: (99) cannot assign requested address
 
 This error has many reasons for occurring.
 
 It might be seen repeatedly when Squid is running with TPROXY
 configured:
 
-  - If the squid port receives traffic by other means than TPROXY
+- If the squid port receives traffic by other means than TPROXY
     interception.
-    
-    Ports using the **tproxy** flag
-    :warning:
-    MUST NOT
-    :warning:
+- :warning: Ports using the **tproxy** flag **MUST NOT**
     receive traffic for any other mode Squid can run in.
-
-  - If Squid is receiving TPROXY traffic on a port without the
+- If Squid is receiving TPROXY traffic on a port without the
     **tproxy** flag.
-
   - If the kernel is missing the capability to bind to any random IP.
 
 It may also be seen only at startup due to unrelated issues:
 
-  - [Another program already using the
-    port](/SquidFaq/TroubleShooting#head-97c3ff164d9706d3782ea3b242b6e409ce8395f6)
+- [Another program already using the port](/SquidFaq/TroubleShooting#head-97c3ff164d9706d3782ea3b242b6e409ce8395f6)
+- [Address not assigned to any interface](/SquidFaq/TroubleShooting#head-19aa8aba19772e32d6e3f783a20b0d2be0edc6a2)
 
-  - [Address not assigned to any
-    interface](/SquidFaq/TroubleShooting#head-19aa8aba19772e32d6e3f783a20b0d2be0edc6a2)
-
-## Traffic going through Squid but then timing out
+### Traffic going through Squid but then timing out
 
 This is usually seen when the network design prevents packets coming
 back to Squid.
 
-  - Check that the Routing portion of the config above is set correctly.
-
-  - Check that the *DIVERT* is done before *TPROXY* rules in iptables
+- Check that the Routing portion of the config above is set correctly.
+- Check that the *DIVERT* is done before *TPROXY* rules in iptables
     **PREROUTING** chain.
 
 ### Timeouts with Squid not running in the router directly
@@ -432,7 +422,7 @@ packets to the Internet. Ideally there is only one default route, but
 for a bridge with routing enabled or for multi-homed systems there may
 be multiple.
 
-  - :warning:
+> :warning:
     There has been one confirmed case of the default route being set
     *automatically* by the OS to the dead-end route/NIC used only for
     administering the bridge.
@@ -447,17 +437,15 @@ settings detailed above.
 
 First method:
 
-  - dst_ip_hash on 80
-
-  - src_ip_hash on 90
+- dst_ip_hash on 80
+- src_ip_hash on 90
 
 Ties a particular web server to a particular cache
 
 Second method:
 
-  - src_ip_hash on 80
-
-  - dst_ip_hash on 90
+- src_ip_hash on 80
+- dst_ip_hash on 90
 
 Ties a particular client to a particular cache
 
@@ -467,25 +455,19 @@ first method is this sequence of events which starts to occur:
 Say a client wants to access <http://some-large-site>, their PC
 resolves the address and gets x.x.x.1
 
-1.  GET request goes off to the network, Cisco sees it and hashes the
+1. GET request goes off to the network, Cisco sees it and hashes the
     dst_ip.
-
-2.  Hash for this IP points to cache-A
-
-3.  Router sends the request to cache-A.
+2. Hash for this IP points to cache-A
+3. Router sends the request to cache-A.
 
 This cache takes the GET and does another DNS lookup of that host. This
 time it resolves to x.x.x.2
 
-1.  Cache sends request off to the \!Internet
-
-2.  Reply comes back from x.x.x.2, and arrives at the Cisco.
-
-3.  Cisco does hash on src_ip and this happens to map to cache-B
-
-4.  Reply arrives at cache-B and it doesn’t know anything about it.
-    Trouble\!
-    :x:
+1. Cache sends request off to the \!Internet
+2. Reply comes back from x.x.x.2, and arrives at the Cisco.
+3. Cisco does hash on src_ip and this happens to map to cache-B
+4. Reply arrives at cache-B and it doesn’t know anything about it.
+    Trouble!  :x:
 
 ## selinux policy denials
 
@@ -519,22 +501,19 @@ from <http://www.henriknordstrom.net/code/squidtproxy.te>
     semodule -i squidtproxy.pp
     setsebool -P squid_connect_any true
 
-# References
+## References
 
-  - Older config how-to from before the kernel and iptables bundles were
+- Older config how-to from before the kernel and iptables bundles were
     available...
     <http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS>
-
-  - Shorewall Firewall Configuration
+- Shorewall Firewall Configuration
     <http://www1.shorewall.net/Shorewall_Squid_Usage.html#TPROXY>
 
-## spoof_client_ip config directive (exists only from Squid-3.4)
+### spoof_client_ip config directive (exists only from Squid-3.4)
 
-  - Squid-Cache allows tproxy spoof control configuration directive:
+- Squid-Cache allows tproxy spoof control configuration directive:
     <http://www.squid-cache.org/Doc/config/spoof_client_ip/> This
     allows to intercept traffic using tproxy but use the same concept of
     intercept\\transparent proxy for outgoing traffic and to decide
     whether to spoof or not specific clients src addresses or to use the
     proxy as the source ip.
-
-[CategoryFeature](/CategoryFeature)

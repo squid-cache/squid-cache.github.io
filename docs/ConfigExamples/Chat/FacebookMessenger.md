@@ -1,11 +1,8 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
-
-# Facebook Messenger
+# Filtering Facebook Messenger
+*by [YuriVoinov](/YuriVoinov)*
 
 Warning: Any example presented here is provided "as-is" with no support
 or guarantee of suitability. If you have any further questions about
@@ -53,5 +50,3 @@ then reconfigure Squid.
 
 This is enough to make Facebook Messenger fully unoperable, also as
 Web-version.
-
-[CategoryConfigExample](/CategoryConfigExample)

@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
+# Filtering Signal Messenger
 
-# Signal Messenger
-
-Warning: Any example presented here is provided "as-is" with no support
-or guarantee of suitability. If you have any further questions about
-these examples please email the squid-users mailing list.
+*by [YuriVoinov](/YuriVoinov)*
 
 ## Outline
 
@@ -44,7 +38,7 @@ With the above your regular access permissions for any given client are
 applied to Signal. Just the same as if it were performing HTTPS
 connections.
 
-  - :x:
+> :x:
     Note that port 80 is still too unsafe to allow generic CONNECT to
     happen on it. However, Signal client often can't do initial connect
     without permission CONNECT to port 80 at
@@ -63,5 +57,3 @@ also add this to configuration:
     # other SSL-bump rules ...
 
 and reconfigure.
-
-[CategoryConfigExample](/CategoryConfigExample)

@@ -1,26 +1,20 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Browsable File Storage?
 
-  - **Goal**: To add store so files can be saved at a directory matching
+- **Goal**: To add store so files can be saved at a directory matching
     their URL layout.
-
-  - **Status**: Not started.
-
-<!-- end list -->
-
-  - **ETA**: What is the estimated time of completion? Use either number
+- **Status**: Not started.
+- **ETA**: What is the estimated time of completion? Use either number
     of calendar days for not started features. Use an absolute date for
     started and completed features. Use *unknown* if unknown.
+- **Version**: none yet
 
-  - **Version**: none yet
-
-# Details
+## Details
 
 From IRC:
-
+```irc
     14:55:07) derekv: One functionality I would like is (using .pdf as an example) to have all pdfs that are downloaded through the proxy to be stored in an archive that is seperate from the cache, and where they are normal files that can be for example indexed and searched.
     (14:55:47) derekv: (one way this could be organized is to put them in a file structure similar to how wget does it when doing recursive downloads)
     (14:56:33) derekv: Unless there is some way to configure this, the easy way seems to be to use squidsearch with a periodic script to extract the files and move them to the store
@@ -35,5 +29,4 @@ From IRC:
     (15:09:32) derekv: for the pdf example, always clobber is a viable option
     
     (15:12:32) amosjeffries: Also dynamic pages where the URL may be garbage, and/or the filename is not part of the URL itself (still locatable but not with path info).
-
-[CategoryFeature](/CategoryFeature)
+```
