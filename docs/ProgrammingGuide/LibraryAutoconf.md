@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Autoconf Library Detection guideline
 
@@ -14,16 +12,13 @@ defined to permit user disabling, requirement, or replacement of the
 library. Squid should be capable of quicky detecting the libraries
 absence and
 
-\* When the user explicitly specifies `--with-foo` the libraries absence
+* When the user explicitly specifies `--with-foo` the libraries absence
 is a fatal error.
-
-\* When the user specifies `--with-foo=PATH` the library shall be
+* When the user specifies `--with-foo=PATH` the library shall be
 detected at the specified path.
-
-\* When the user specifies `--without-foo` no tests for the librarry
+* When the user specifies `--without-foo` no tests for the librarry
 will be performed, nor will it be used by Squid.
-
-\* When the library is absent API feature tests, hacks and workarounds
+* When the library is absent API feature tests, hacks and workarounds
 for the library should not be searched for. This reduces the time
 ./configure spends performing useless operations.
 
@@ -32,6 +27,7 @@ for the library should not be searched for. This reduces the time
 Use this autoconf provided macro to setup path locations and with_\*
 variables for the library.
 
+```bash
     AC_ARG_WITH(foo,
       AS_HELP_STRING([--without-foo],
                      [Do not use Foo. Default: auto-detect]), [
@@ -48,16 +44,17 @@ variables for the library.
       esac
     ])
     AH_TEMPLATE(USE_FOO,[Foo support is available])
+```
 
 ## Piece 2: Library need check
-
+```bash
     if test "x$with_foo" != "xno"; then
       SQUID_STATE_SAVE(squid_foo_state)
       LIBS="$LIBS $LIBFOO_PATH"
-
+```
 **Piece \#3 and \#4 goes in here**
 
-``` 
+```bash
   SQUID_STATE_ROLLBACK(squid_foo_state)
 
   if test "x$with_foo" = "xyes" -a "x$LIBFOO_LIBS" = "x"; then
@@ -76,7 +73,7 @@ AC_MSG_NOTICE([Foo library support: ${with_foo:=auto} ${LIBFOO_PATH} ${LIBFOO_LI
 AC_SUBST(FOOLIB)
 ```
 
-  - Note the absence of AC_CONDITIONAL to setup ENABLE_FOO. If a major
+- Note the absence of AC_CONDITIONAL to setup ENABLE_FOO. If a major
     feature requires library foo then it should base its determination
     on the setting in `$with_foo` only **after** these library tests
     have been performed and set $with_foo to one of yes/no.
@@ -92,17 +89,16 @@ The PKG_CHECK_MODULES macro creates the local variables
 **LIBFOO_CFLAGS** and **LIBFOO_LIBS** necessary to build against the
 library.
 
-  - Note that the users custom path (if any) is already provided in
+- Note that the users custom path (if any) is already provided in
     **CXXFLAGS** and **LIBS**.
-
-  - Note that any changes to the regular \*FLAGS or LIBS build variables
+- Note that any changes to the regular \*FLAGS or LIBS build variables
     will be reverted when this check state is rolled back. If necessary
     the backup detection logics should re-use the pkg-config variables
     so they can be setup only for binaries using this library.
 
 An example of how to use PKG_CHECK_MODULES:
 
-``` 
+``` bash
   # auto-detect using pkg-config
   PKG_CHECK_MODULES([LIBFOO],[foo >= 1.0.0],,[
 
@@ -124,7 +120,7 @@ HAVE_FOO_H wrapper definitions. The pkg-config tool does not check for
 them automatically and it makes no sense to do them twice for both its
 success and failure actions.
 
-``` 
+``` bash
   if test "x$LIBFOO_LIBS" != "x" ; then
     AC_CHECK_HEADERS(foo.h)
   fi

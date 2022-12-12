@@ -1,5 +1,5 @@
 ---
-published: false
+Category: Feature
 ---
 # Feature: Log Modules for Squid
 
@@ -136,5 +136,3 @@ Configuration **module:parameters** to be used by
 > :information_source:
     [Syslog-ng](http://www.balabit.com/network-security/syslog-ng) can
     receive these logs directly.
-
-[CategoryFeature](/CategoryFeature)

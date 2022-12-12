@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Squid Roadmap
 

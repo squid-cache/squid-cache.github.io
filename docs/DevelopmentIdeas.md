@@ -36,7 +36,7 @@ related
     at
     [NewClientSide](/NewClientSide)
     and
-    [NewServerSide](/NewServerSide)
+    [NewServerSide](/Features/NewServerSide)
     :two:
 
   - [CommApi](/CommApi)

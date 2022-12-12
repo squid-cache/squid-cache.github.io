@@ -1,12 +1,9 @@
 ---
-categories: ReviewMe
-published: false
 ---
 > :information_source:
     This documentation was written for Squid-2.6
 
-By
-[Henrik_Nordström](/HenrikNordstrom.md):
+*By [Henrik_Nordström](/HenrikNordstrom)*:
 
     Given the StoreEntry pointer for a cached object, how can I read its contents (HTML text)?
 
@@ -20,11 +17,9 @@ other requests.. (misses and memory hits have a lot in common however).
 The official API for getting content out of a StoreEntry is the
 undocumented storeclient API which primarily consists of
 
-  - `storeClientRegister` to register a new client of StoreEntry.
-
-  - `storeClientCopy` to request some data from the object
-
-  - `storeUnregister` to unregister to client from the StoreEntry.
+- `storeClientRegister` to register a new client of StoreEntry.
+- `storeClientCopy` to request some data from the object
+- `storeUnregister` to unregister to client from the StoreEntry.
 
 client in this is "a internal reader of the StoreEntry", not neccesarily
 a client of Squid..

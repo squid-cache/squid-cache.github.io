@@ -1,11 +1,9 @@
 ---
-categories: ReviewMe
-published: false
 ---
 As of 2008, the Squid project has settled for a new logo. Here you can
 find a sample of other applicants.
 
-Thanks to all who contributed\!
+Thanks to all who contributed!
 
 |                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------- |

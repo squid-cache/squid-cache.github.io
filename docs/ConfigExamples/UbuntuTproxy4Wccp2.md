@@ -1,25 +1,19 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample, ]
 ---
 # WCCP 2 with TPROXY on Ubuntu 12.04
 
 by *Eliezer Croitoru*
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
-
 ## What is WCCP?
 
-WCCP stands for ["Web Cache Communication
-Protocol"](http://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol)
+WCCP stands for ["Web Cache Communication Protocol"](http://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol)
 
 What is good about WCCP? WCCP allows separation of duties between the
 network and the application and there for Auto redundency.
 
 the router has couple junctions that it can intercept on routing level
-dynamicly packets. on every interface\\vlan there is a "IN" and "OUT".
+dynamicly packets. on every interface/vlan there is a "IN" and "OUT".
 IN stands for incoming packets and OUT stands for OUTGOING packets. the
 WCCP daemon on the cisco router gets information about the Cache
 supplier and service. then on the cisco router we can define ACLs to
@@ -34,9 +28,9 @@ the cisco router forwards packets to "hijack" encapsulated in the gre
 tunnel to the proxy. (the proxy should know what to do with these
 packets.)
 
-  - the proxy do what ever it wants with the session.
+- the proxy do what ever it wants with the session.
 
-on regular intercept\\nat proxy the request will be requested from the
+on regular intercept/nat proxy the request will be requested from the
 origin server using it's own ip on the regular interface. so the acls
 that will be neede to apply on the cisco are: "capture only these
 specific ip and ports" but on tproxy mode since the IP of the client is
@@ -55,10 +49,8 @@ destination will be intercepted.
 ## Outline
 
 Steps to config squid in TPROXY mode with WCCP v2. These steps are for
-setting
-[Squid-3.1](/Releases/Squid-3.1)
-with
-[TPROXYv4](/Features/Tproxy4),
+setting [Squid-3.1](/Releases/Squid-3.1)
+with [TPROXYv4](/Features/Tproxy4),
 IP spoofing and Cisco WCCP.
 
 they apply to Ubuntu 12.04 LTS manually and not with automatic network
@@ -86,7 +78,7 @@ you do know what a GRE tunnel is.
 Requirements on ubuntu: Basic ubuntu server ships with iptunnel
 iprourte2 and all iptables modules needed for the task.
 
-``` highlight
+``` bash
 #!/usr/bin/bash
 
 echo "Loading modules.."
@@ -174,5 +166,3 @@ add into squid.conf the next lines:
 On customed built of squid you must include:
 
     --enable-linux-netfilter --enable-wccpv2
-
-  - [CategoryConfigExample](/CategoryConfigExample)

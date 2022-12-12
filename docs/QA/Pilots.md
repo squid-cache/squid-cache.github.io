@@ -1,5 +1,4 @@
 ---
-categories: ReviewMe
 published: false
 ---
 # QA Pilots
@@ -30,7 +29,7 @@ completed applications. We selected one engineer to do the first Pilot
 (at least). It is our intention to complete all these pilot projects and
 then fill the QA Engineer position.
 
-Please see the [Q\&A](#Q_and_A) section for more info.
+Please see the [Q\&A](#q-and-a) section for more info.
 
 ## Application
 
@@ -40,25 +39,21 @@ the first Pilot projects fail, but please note that your application
 will receive very little attention until that failure (and we hope the
 pilots will succeed\!).
 
-|                |                                                                                              |
 | -------------- | -------------------------------------------------------------------------------------------- |
 | Due date:      | 2017-02-15 noon UTC (extended to 2017-02-17 noon UTC)                                        |
 | Preconditions: | desire and skills to complete the pilots and to continue working with the Project after that |
 
 Please review the descriptions of all three pilots and the
-[Q\&A](#Q_and_A) section before applying.
+[Q\&A](#q-and-a) section before applying.
 
 To apply, on your free-form application:
 
-1.  list any relevant skills and accomplishments,
-
-2.  propose the overall architecture for Pilot-1 and justify your
+1. list any relevant skills and accomplishments,
+2. propose the overall architecture for Pilot-1 and justify your
     design,
-
-3.  specify your country of residence (where the pilot payments would
+3. specify your country of residence (where the pilot payments would
     need to be sent) and the preferred payment method,
-
-4.  supply any other information you deem necessary.
+4. supply any other information you deem necessary.
 
 Please email your complete application to `<info@squid-cache.org>` with
 *QA pilots application* as the exact email subject.
@@ -69,7 +64,6 @@ date.
 
 ## Pilot-1
 
-|                |                                                             |
 | -------------- | ----------------------------------------------------------- |
 | Goal:          | Protect Squid trunk from build failures                     |
 | Duration:      | 4 weeks                                                     |
@@ -122,19 +116,14 @@ focuses on trunk.
 Eventually, the same validate-before-commit principle will apply to
 other admission and testing activities, including:
 
-1.  developer voting during review of the proposed changes (to
+1. developer voting during review of the proposed changes (to
     officially accept the proposed change)
-
-2.  code formatting changes (or perhaps that would be done automatically
+2. code formatting changes (or perhaps that would be done automatically
     to queued changes?)
-
-3.  compliance tests (using Co-Advisor test cases)
-
-4.  performance tests (using Web Polygraph workloads)
-
-5.  code quality tests (using Coverity test cases)
-
-6.  black-box functionality tests (using Daft test cases)
+3. compliance tests (using Co-Advisor test cases)
+4. performance tests (using Web Polygraph workloads)
+5. code quality tests (using Coverity test cases)
+6. black-box functionality tests (using Daft test cases)
 
 Keeping these plans in mind is important for Pilot-1 (to avoid proposing
 an architecture that cannot accommodate those plans well), but
@@ -142,7 +131,6 @@ implementing the corresponding features is *outside* Pilot-1 scope.
 
 ## Pilot-2
 
-|                |                                                      |
 | -------------- | ---------------------------------------------------- |
 | Goal:          | Protect Squid trunk from HTTP compliance regressions |
 | Duration:      | 4 weeks                                              |
@@ -181,7 +169,6 @@ reason).
 
 ## Pilot-3
 
-|                |                                                      |
 | -------------- | ---------------------------------------------------- |
 | Goal:          | Protect Squid trunk from performance regressions     |
 | Duration:      | 6 weeks                                              |
@@ -209,8 +196,7 @@ configure and run Web Polygraph tests will be required.
 
 ## Q and A
 
-1.  What if I have questions not answered here?
-    
+1. What if I have questions not answered here?
       - You may post your questions to `<info@squid-cache.org>`.
         However, most of the information required to successfully apply,
         plan, and complete Pilot-1 is publicly available. We hate
@@ -222,13 +208,10 @@ configure and run Web Polygraph tests will be required.
         something, make it easy for others to answer your questions.
         During the application stage, we may update this page with more
         answers to popular questions.
-
-2.  Can you detail the expected QA Engineer position?
-    
+2. Can you detail the expected QA Engineer position?
       - Just like the pilots, the QA Engineer position is for a
         part-time "remote" independent contractor. The engineer
         responsibilities will include:
-        
           - Perform needs analysis and advise the Squid Project on
             available infrastructure tools and approaches for automating
             the regression testing process. Suggest specific
@@ -236,49 +219,37 @@ configure and run Web Polygraph tests will be required.
             best solution for the Project. The candidate solutions may
             range from home-grown Jenkins scripts to commercial CI
             platforms (available to open source projects).
-        
           - Automate and manage Squid regression testing. Integrate the
             existing proxy performance and functionality testing tools
             (including test-builds.sh, Coverity, Co-Advisor, Web
             Polygraph, and Daft) with the Project-designed
             infrastructure.
-        
           - Learning HTTP and other Squid-related protocols with the
             goal of being eventually able to audit automated test
             results without deferring to Squid developers.
-        
           - Long-term: Learning existing testing tools with the goal of
             being eventually able to create new test cases and fix old
             ones without deferring to tools developers.
-        
         QA Engineer position prerequisites/requirements include:
-        
-        1.  Experience with open source projects, especially those that
+        1. Experience with open source projects, especially those that
             have many contributors. Ability to independently drive a
             project forward in the presence of multiple decision makers
             with conflicting and/or missing requirements is a big plus.
-        
-        2.  Ability to clearly express oneself in English, especially
+        2. Ability to clearly express oneself in English, especially
             when using plain text emails and simple markup pages.
             Ability to quickly comprehend technical English literature.
             Ability to speak English is not required, but is a plus.
-        
-        3.  Experience with modern test automation approaches and
+        3. Experience with modern test automation approaches and
             platforms.
-        
-        4.  Excellent scripting skills. System administration skills are
+        4. Excellent scripting skills. System administration skills are
             a plus.
-        
-        5.  10+ hours/week availability. Full-time engagement might
+        5. 10+ hours/week availability. Full-time engagement might
             eventually be possible.
-        
-        6.  Squid experience is a plus. C++ and/or Javascript knowledge
+        6. Squid experience is a plus. C++ and/or Javascript knowledge
             is a plus. This is not a development position, but auditing
             Squid failures and writing/fixing test cases require
             development skills.
-
-3.  May I propose non-free and/or closed-source solutions?
-    
+3. May I propose non-free and/or closed-source solutions?
       - Yes, you may. With all other factors being equal, the Project
         would prefer a free open-source solution. The Squid Foundation
         does not currently have enough funds to spend more than
@@ -287,38 +258,28 @@ configure and run Web Polygraph tests will be required.
         to open-source projects but it is your responsibility to
         carefully research the limits of such offerings because they may
         not include great features advertised as otherwise available.
-
-4.  What are the payment terms and procedure?
-    
+4. What are the payment terms and procedure?
       - All prices are listed in US Dollars. The Project can pay via US
         bank checks, PayPal, or bank wire transfer (subject to various
         US banking regulations). The payment will be made within 30
         calendar days of the successful pilot completion. Contractors in
         the US will need to fill out W-9s and will receive 1099s as
         required by law.
-
-5.  Will Pilot specifications change?
-    
+5. Will Pilot specifications change?
       - Yes, Pilot specs are likely to be adjusted until the Pilot is
         awarded to a contractor. After that, any material changes would
         be negotiated with the person doing the work, of course.
-
-6.  Will applicants be notified when this page changes?
-    
+6. Will applicants be notified when this page changes?
       - No manual notifications are planned. Registered wiki users may
         [subscribe](/HelpOnSubscribing)
         to monitor this page changes. It is applicants responsibility to
         stay up to date, and we encourage you to use appropriate tools
         to track this page modifications.
-
-7.  Who determines whether a pilot was successful?
-    
+7. Who determines whether a pilot was successful?
       - The Project will determine whether a pilot was successful. If
         there is no consensus on squid-dev, the Squid Software
         Foundation board will make that decision.
-
-8.  I emailed my application. Now what?
-    
+8. I emailed my application. Now what?
       - You should receive an automated response that your email was
         sent to the mailing list moderator. No later than a week after
         the application deadline, you will receive a confirmation that
@@ -328,17 +289,13 @@ configure and run Web Polygraph tests will be required.
         hear from us within these periods, please do send another email
         to troubleshoot. However, sending re-confirmation emails earlier
         than necessary may decrease your acceptance chances.
-
-9.  How can I recommend somebody else to do the pilots?
-    
+9. How can I recommend somebody else to do the pilots?
       - Please show them this page and encourage them to apply\!
         Unfortunately, we may not have enough time to review
         recommendations and then solicit applications from the
         recommended folks. It is best if they apply themselves.
-
 10. Wait a second\! Is not this a DevOps position? Why do you call this
     work QA?\!
-    
       - The three pilot projects and the expected initial work is indeed
         90% DevOps (if you want to use a fresh buzzword) or system
         administration (if you want to stretch an old term to cover
@@ -347,13 +304,11 @@ configure and run Web Polygraph tests will be required.
         systems/processes/tools that guard Squid from regressions.
         Whether that engineer has "DevOps", "sysadmin", and/or "QA"
         keywords on the resume is largely irrelevant.
-    
       - For example, Pilot-1 is not about writing or running QA test
         cases; it is about selecting and then setting up/integrating
         existing development and testing tools to prevent build
         failures. Similarly, Pilot-2 and Pilot-3 are not about writing
         or running test cases either\!
-    
       - The long-term expectations for the position is a slow migration
         towards 75% QA because the systems/processes established in the
         beginning ought to continue to function increasingly well, with
@@ -369,13 +324,11 @@ configure and run Web Polygraph tests will be required.
         understanding of network protocols, which we cannot expect the
         candidates for this position to poses, but which they may be
         able to acquire with time).
-    
       - Our immediate needs are clear. Our predictions regarding the
         long-term future position requirements may be wrong. We do not
         know whether we can find a single person that can grow/adjust to
         stay in sync with the changing position requirements, but that
         would be ideal.
-    
       - Besides, DevOps is a part of QA if you believe
         [Wikipedia](https://en.wikipedia.org/wiki/DevOps#/media/File:Devops.svg)
         ;-).
