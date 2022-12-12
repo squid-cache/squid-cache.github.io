@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # How to become a Squid developer
 
@@ -18,10 +16,6 @@ introduction on who you are and your interest in Squid development.
 Developers are assumed to know and follow these simple rules (separate
 page)
 
-The current developer projects are hosted by
-<http://code.launchpad.net/squid>
-
-Older ones are hosted on devel.squid-cache.org. This service is built
-around the service provided by [SourceForge](http://sourceforge.net).
-
-Discuss this page using the "Discussion" link in the main menu
+The current developer projects are hosted on [github](https://github.com/squid-cache/)
+In the past we have been supported by [launchpad](http://code.launchpad.net/squid)
+and [SourceForge](https://sourceforge.net/)
