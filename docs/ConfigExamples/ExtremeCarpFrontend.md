@@ -31,7 +31,7 @@ networking-level means.
 We assume that:
 
 1.  the administrator has set up a farm of backend servers, using the
-    means suggested in [MultipleInstances](/MultipleInstances).
+    means suggested in [MultipleInstances](/KnowledgeBase/MultipleInstances).
     Those servers are *not* directly accessible from clients, and are
     *not* internally-load balanced.
 2.  the administrator has set up as many frontend servers as he wishes

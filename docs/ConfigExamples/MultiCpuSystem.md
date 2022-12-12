@@ -32,7 +32,7 @@ Still Squid remains to this day very bound to a single processing core
 model. There are plans to eventually make Squid able to effectively use
 multicore systems, but something may be done already, by using a
 fine-tuned
-[MultipleInstances](/MultipleInstances)
+[MultipleInstances](/KnowledgeBase/MultipleInstances)
 setup.
 
 |                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -40,7 +40,7 @@ setup.
 | :warning: Notice | This setup has been designed with a recent version of Squid in mind. It has been tested with [Squid-3.1](/Releases/Squid-3.1), but it should work with [Squid-3.0](/Releases/Squid-3.0) and [Squid-2.7](/Releases/Squid-2.7) as-is as well. [Squid-2.6](/Releases/Squid-2.6) and earlier can be coaxed to work, but it will be harder to setup and maintain. |
 
 It is also geared at **expert system-administrators**.
-[MultipleInstances](/MultipleInstances)
+[MultipleInstances](/KnowledgeBase/MultipleInstances)
 is not easy to manage and run, and system integration depends on the
 specific details of the operating system distribution of choice.
 

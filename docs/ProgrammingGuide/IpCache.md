@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # IP Cache and FQDN Cache
 
@@ -19,6 +17,7 @@ The data structure used for storing name-address mappings is a small
 hashtable (*static hash_table \*ip_table*), where structures of type
 *ipcache_entry* whose most interesting members are:
 
+```c++
     struct _ipcache_entry {
             char *name;
             time_t lastref;
@@ -28,38 +27,29 @@ hashtable (*static hash_table \*ip_table*), where structures of type
             unsigned char locks;
             ipcache_status_t status:3;
     }
+```
 
 ## External overview
 
 Main functionality is provided through calls to:
-
-  - `ipcache_nbgethostbyname(const char *name, IPH *handler, void
-    *handlerdata)`
-    
-      - where *name* is the name of the host to resolve, *handler* is a
+- `ipcache_nbgethostbyname(const char *name, IPH *handler, void
+    *handlerdata)` ,
+        where *name* is the name of the host to resolve, *handler* is a
         pointer to the function to be called when the reply from the IP
         cache (or the DNS if the IP cache misses) and *handlerdata* is
         information that is passed to the handler and does not affect
         the IP cache.
-
-  - `ipcache_gethostbyname(const char *name,int flags)`
-    
-      - is different in that it only checks if an entry exists in it's
+- `ipcache_gethostbyname(const char *name,int flags)` ,
+        is different in that it only checks if an entry exists in it's
         data-structures and does not by default contact the
-        
         DNS, unless this is requested, by setting the *flags* to
         *IP_BLOCKING_LOOKUP* or *IP_LOOKUP_IF_MISS*.
-
-  - `ipcache_init()`
-    
-      - is called from *mainInitialize()* after disk initialization and
+- `ipcache_init()`
+        is called from *mainInitialize()* after disk initialization and
         prior to the reverse fqdn cache initialization
-
-  - `ipcache_restart()`
-    
-      - is called to clear the IP cache's data structures, cancel all
+- `ipcache_restart()`
+        is called to clear the IP cache's data structures, cancel all
         pending requests.
-        
         Currently, it is only called from *mainReconfigure*.
 
 ## Internal Operation

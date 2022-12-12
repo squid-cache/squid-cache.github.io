@@ -1,6 +1,5 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Traffic Interception with WCCP
 
@@ -29,81 +28,12 @@ on which method they support. Recent IOS versions may expand them to
 allow either method - or may not, check your Cisco device documentation
 carefully.
 
-## Router WCCP end-point
+## Catalog of use cases
 
-1.  ConfigExamples/Intercept/Cisco3640Wccp
-    2
-2.  ConfigExamples/Intercept/CiscoAsaWccp
-    2
-3.  ConfigExamples/Intercept/CiscoIOSv11Wccp
-    1
-4.  ConfigExamples/Intercept/CiscoIOSv12Wccp
-    1
-5.  ConfigExamples/Intercept/CiscoIOSv15Wccp
-    2
-6.  ConfigExamples/Intercept/CiscoIos1246T2Wccp
-    2
-7.  ConfigExamples/Intercept/CiscoPixWccp
-    2
-
-## Squid WCCP end-point
-
-1.  ConfigExamples/Intercept/FedoraCoreWccp
-    2Receiver
-2.  ConfigExamples/Intercept/FreeBsdWccp2Receiver
-
-# Traffic Interception by Policy Routing
-
-Alternative to tunneling. Policy Routing is a method of passing traffic
-directly to the interceptor unaltered.
-
-1.  ConfigExamples/Intercept/Cisco2501PolicyRoute
-2.  ConfigExamples/Intercept/IptablesPolicyRoute
-3.  ConfigExamples/Intercept/PfPolicyRoute
-
-# Traffic Interception capture into Squid
-
-Once the packets reach the Squid box they still need passing into Squid.
-This is done by the NAT infrastructure of the operating system firewall.
-
-1.  ConfigExamples/Intercept/
-    AtSource
-2.  ConfigExamples/Intercept/
-    CentOsTproxy4
-3.  ConfigExamples/Intercept/
-    DebianWithRedirectorAndReporting
-4.  ConfigExamples/Intercept/
-    FreeBsdIpfw
-5.  ConfigExamples/Intercept/
-    FreeBsdPf
-6.  ConfigExamples/Intercept/
-    Ipfw
-7.  ConfigExamples/Intercept/
-    JuniperSRXRoutingPolicy
-8.  ConfigExamples/Intercept/
-    LinuxBridge
-9.  ConfigExamples/Intercept/
-    LinuxDnat
-10. ConfigExamples/Intercept/
-    LinuxIpfwadm
-11. ConfigExamples/Intercept/
-    LinuxLocalhost
-12. ConfigExamples/Intercept/
-    LinuxRedirect
-13. ConfigExamples/Intercept/
-    OpenBsdPf
-14. ConfigExamples/Intercept/
-    SolarisOpenIndianaIPF
-15. ConfigExamples/Intercept/
-    SslBumpExplicit
-16. ConfigExamples/Intercept/
-    SslBumpWithIntermediateCA
-17. ConfigExamples/Intercept/
-    SslBumpWithIntermediateCA/Discussion
-
-<!-- end list -->
-
-  - [Linux TPROXY Real Transparent Interception (without
-    NAT)](/Features/Tproxy4)
-
-[CategoryConfigExample](/CategoryConfigExample)
+{% assign pdir = site.pages | where_exp: "p", "p.url contains 'ConfigExamples/Intercept/'" %}
+{% for p in pdir -%}
+{%- assign purl =  p.url | replace: page.dir, "" | replace: ".html", "" -%}
+{%- if purl == "" -%}{%- continue -%}{%- endif -%}
+1. [{{ p.title }}]({{ purl }})
+{% endfor -%}
+1. [Linux TPROXY Real Transparent Interception (withoutNAT)](/Features/Tproxy4)

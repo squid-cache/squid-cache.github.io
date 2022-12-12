@@ -23,7 +23,7 @@ If you experience problems with the site or the contents, please see
 - an all-time FAQ: [What is the best OS for Squid?](/BestOsForSquid)
 - [Things you can (and cannot) do with NTLM](/NTLMIssues)
 - [Zero Sized Reply](/SquidFaq/ZeroSizedReply): A frequent issue with some setups
-- How to run [multiple squid servers](/MultipleInstances) on a single box
+- How to run [multiple squid servers](/KnowledgeBase/MultipleInstances) on a single box
 - Squid [Configuration Examples](/ConfigExamples)
 - The [Knowledge Base](/KnowledgeBase)
     (tips, tricks and various troubleshooting howtos)

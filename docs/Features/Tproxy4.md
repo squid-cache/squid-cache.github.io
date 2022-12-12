@@ -1,15 +1,12 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: TPROXY version 4.1+ Support
 
-  - **Version**: 3.1
-
-  - **Developer**: Laszlo Attilla Toth (Balabit), Krisztian Kovacs,
+- **Version**: 3.1
+- **Developer**: Laszlo Attilla Toth (Balabit), Krisztian Kovacs,
     [AmosJeffries](/AmosJeffries)
-
-  - **More**:
+- **More**:
     <http://www.balabit.com/downloads/files/tproxy/README.txt>
 
 ## Details
@@ -20,8 +17,7 @@ HTTP.
 ## Sponsor
 
 This feature was Sponsored by Balabit and developed by Laszlo Attilla
-Toth and
-[AmosJeffries](/AmosJeffries).
+Toth and [AmosJeffries](/AmosJeffries).
 Production tested and debugged with the help of Krisztian Kovacs and
 Nicholas Ritter.
 
@@ -30,10 +26,7 @@ Chadd. It has not changed significantly since older TPROXY.
 
 ## Minimum Requirements (IPv6 and IPv4)
 
-  - 
-    
-    |                           |                                                                                     |
-    | ------------------------- | ----------------------------------------------------------------------------------- |
+      | ------------------------- | ----------------------------------------------------------------------------------- |
     | Linux Kernel 2.6.37       | [Official releases page](http://www.kernel.org/)                                    |
     | iptables 1.4.10           | [Official releases page](http://www.netfilter.org/projects/iptables/downloads.html) |
     | Squid 3.1                 | [Official releases page](http://www.squid-cache.org/Versions/)                      |
@@ -49,26 +42,9 @@ Chadd. It has not changed significantly since older TPROXY.
     NP: the versions above are a minimum from the expected working
     versions for the below config.
 
-  - TPROXYv4 support reached a usable form in 2.6.28. However several
+- TPROXYv4 support reached a usable form in 2.6.28. However several
     Kernels have various known bugs:
     
-      - :x:
-        older than 2.6.28 are known to supply IPs wrongly to Squid and
-        other client programs. Avoid\!
-    
-      - 2.6.28 to 2.6.32 have different rp_filter configuration. The
-        rp_filter settings (0 or 1) for these kernels will silently
-        block TPROXY if used on newer kernels.
-    
-      - 2.6.28 to 2.6.36 are known to have ICMP and TIME_WAIT issues.
-    
-      - 2.6.32 to 2.6.34 have bridging issues on some systems.
-
-> :information_source:
-    [Squid-3.4](/Releases/Squid-3.4)
-    also supports TPROXY on BSD systems with PF firewall using
-    **divert-to** rules in place of the Linux iptables rules.
-
 ## Squid Configuration
 
 Configure build options
@@ -88,28 +64,24 @@ squid.conf settings
     [http_port](http://www.squid-cache.org/Doc/config/http_port) with
     **tproxy** flag.
 
-  - **Obsolete** --enable-tproxy option. Remains only for legacy v2.2
-    ctt proxy support.
-
-  - NP: The Balabit document still refers to using options *tproxy
+> :information_source:
+    The Balabit document still refers to using options *tproxy
     transparent*. **Do not do this**. It was only needed short-term for
     a bug which is now fixed.
 
 ## Linux Kernel Configuration
 
-  - :warning:
+> :warning:
     Requires kernel built with the configuration options:
 
-<!-- end list -->
-
-    NF_CONNTRACK=m
-    NETFILTER_TPROXY=m
-    NETFILTER_XT_MATCH_SOCKET=m
-    NETFILTER_XT_TARGET_TPROXY=m
+        NF_CONNTRACK=m
+        NETFILTER_TPROXY=m
+        NETFILTER_XT_MATCH_SOCKET=m
+        NETFILTER_XT_TARGET_TPROXY=m
 
 So far we have this:
 
-  - <https://lists.balabit.hu/pipermail/tproxy/2008-June/000853.html>
+- <https://lists.balabit.hu/pipermail/tproxy/2008-June/000853.html>
 
 ## Routing configuration
 
@@ -128,17 +100,17 @@ your system.
 Every OS has different security and limitations around what you can do
 here.
 
-  - :warning:
+> :warning:
     some systems require that **lo** is the interface TPROXY uses.
 
-  - :warning:
+> :warning:
     some systems require that an **ethN** is the interface TPROXY uses.
 
-  - :warning:
+> :warning:
     some systems require that each receiving interface have its own
     unique table.
 
-  - :warning:
+> :warning:
     Some OS block multiple interfaces being linked to the table. You
     will see a rejected route when a second `ip -f inet route` is added
     to the table. To erase the custom route entry repeat the rule with
@@ -158,36 +130,37 @@ Or configure **/etc/sysctl.conf**:
     net.ipv4.conf.all.rp_filter = 0
     net.ipv4.conf.eth0.rp_filter = 0
 
-  - :warning:
+> :warning:
     your OS also may require the keyword **set** before each of those
     sysctl.conf lines.
 
-  - :warning:
+> :warning:
     since we are removing the RP filter on 'default' and 'all' sysctl
     you may want to set it to 1 or 2 individually on all devices **not**
     using TPROXY.
 
 ### Some routing problems to be aware of
 
-  - :warning:
+> :warning:
     Systems with strict localhost interface security boundaries require
     each interface to have a separate "table" entry for looking up
     packets via that device.
     
-      - :x:
-        in this situation the tables often cannot use the same number.
-        When experimenting finding out how to erase the route table is
-        useful.
+> :x:
+    in this situation the tables often cannot use the same number.
+    When experimenting finding out how to erase the route table is
+    useful.
     
-      - **eth0** is shown above, change to match your TPROXY
-        interface(s).
+> :information_source:
+    **eth0** is shown above, change to match your TPROXY
+    interface(s).
 
-  - :x:
+> :x:
     the particular device needed differs between OS. eth0 seems to be
     the least troublesome. Although **dev lo** may be the only one that
     works.
 
-  - :warning:
+> :warning:
     your OS may require the keyword **set** before each sysctl.conf
     line.
 
@@ -221,6 +194,7 @@ You also need to follow all the steps for setting up the Squid box as a
 router device. These bridging rules are additional steps to move packets
 from bridging mode to routing mode:
 
+```bash
     ## interface facing clients
     CLIENT_IFACE=eth0
     
@@ -252,8 +226,9 @@ from bridging mode to routing mode:
       done
       unset i
     fi
+```
 
-  - :warning:
+> :warning:
     The bridge interfaces also need to be configured with public IP
     addresses for Squid to use in its normal operating traffic (DNS,
     ICMP, TPROXY failed requests, peer requests, etc)
@@ -263,10 +238,9 @@ from bridging mode to routing mode:
 As always, bypassing the firewall rules is always an option. They need
 to go first, naturally.
 
-  - Bridges need to place the bypass in ebtables BROUTE before the DROP
+- Bridges need to place the bypass in ebtables BROUTE before the DROP
     rules.
-
-  - Routers need to place the bypass in iptables PREROUTING before the
+- Routers need to place the bypass in iptables PREROUTING before the
     DIVERT chain.
 
 If you do not understand how to do that or what to write in the bypass
@@ -288,8 +262,9 @@ the troubleshooting section for alternative approaches.
 
 ## WCCP Configuration (only if you use WCCP)
 
-  - *by Steve Wilton*
-    :information_source:
+*by Steve Wilton*
+
+> :information_source:
     $ROUTERIP needs to be replaced with the IP Squid uses to contact the
     WCCP router.
 
@@ -314,13 +289,11 @@ On the router, you need to make sure that all traffic going to/from the
 customer will be processed by **_both_** WCCP rules. The way we
 implement this is to apply:
 
-  - WCCP *service 80* applied to all traffic coming **in from** a
+- WCCP *service 80* applied to all traffic coming **in from** a
     customer-facing interface
-
-  - WCCP *service 90* applied to all traffic going **out to** a
+- WCCP *service 90* applied to all traffic going **out to** a
     customer-facing interface.
-
-  - WCCP *exclude in* rule to all traffic coming **in from** the
+- WCCP *exclude in* rule to all traffic coming **in from** the
     proxy-facing interface.
 
 For Example:
@@ -367,7 +340,7 @@ through another peer in the cluster.
 Could be a few things. Check cache.log for messages like those listed
 here in Troubleshooting.
 
-  - :warning:
+> :warning:
     The warning about missing libcap appears to be issued before
     cache.log is started. So does not always show up when Squid starts.
     Start testing this problem by making sure of that dependency

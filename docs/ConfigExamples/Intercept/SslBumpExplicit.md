@@ -1,21 +1,20 @@
 ---
 categories: [ConfigExample]
-published: false
 ---
 # Intercept HTTPS CONNECT messages with SSL-Bump
 
 HTTPS interception has ethical and legal issues which you need to be
 aware of.
 
-  - some countries do not limit what can be done within the home
+- some countries do not limit what can be done within the home
     environment,
-  - some countries permit employment or contract law to overrule
+- some countries permit employment or contract law to overrule
     privacy,
-  - some countries require government registration for all decryption
+- some countries require government registration for all decryption
     services,
-  - some countries it is an outright capital offence with severe
+- some countries it is an outright capital offence with severe
     penalties
-  - DO Seek legal advice before using this configuration, even at home.
+- DO Seek legal advice before using this configuration, even at home.
 
 On the ethical side; consider some unknown other person reading all your
 private communications. What would you be happy with them doing? Be
@@ -33,7 +32,7 @@ TLS is a security protocol explicitly intended to make secure
 communication possible and prevent undetected third-party (such as
 Squid) interception of the traffic.
 
-  - **when used properly TLS cannot be "bumped".**
+**when used properly TLS cannot be "bumped".**
 
 Even incorrectly used TLS usually makes it possible for at least one end
 of the communication channel to detect the proxies existence. Squid
@@ -107,10 +106,10 @@ section of users' browsers.
 
 For example, in FireFox:
 
-1.  Open 'Preferences'
-2.  Go to the 'Advanced' section, 'Encryption' tab
-3.  Press the 'View Certificates' button and go to the 'Authorities' tab
-4.  Press the 'Import' button, select the .der file that was created
+1. Open 'Preferences'
+2. Go to the 'Advanced' section, 'Encryption' tab
+3. Press the 'View Certificates' button and go to the 'Authorities' tab
+4. Press the 'Import' button, select the .der file that was created
     previously and pres 'OK'
 
 In theory, you must either import your root certificate into browsers or
