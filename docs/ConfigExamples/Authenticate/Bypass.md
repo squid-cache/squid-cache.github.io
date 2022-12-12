@@ -1,6 +1,5 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Bypass Authentication for certain sites
 
@@ -8,8 +7,8 @@ published: false
 
 A very common setup in forward proxy design calls for two different
 access classes:
-  - some destinations should be available to all users
-  - all other destinations should require users to authenticate
+- some destinations should be available to all users
+- all other destinations should require users to authenticate
 
 Squid allows for this kind of setup, by simply setting your access-lists
 in the right order.

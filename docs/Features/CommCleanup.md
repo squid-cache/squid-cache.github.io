@@ -1,25 +1,15 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Comm Layer cleanup
 
-  - **Goal**: Improve code quality and maintainability.
-
-  - **Status**: completed. debugging underway.
-
-  - **Version**: Squid 3.2
-
-  - **Developer**:
+- **Goal**: Improve code quality and maintainability.
+- **Status**: completed. debugging underway.
+- **Version**: Squid 3.2
+- **Developer**:
     [AmosJeffries](/AmosJeffries)
-
-  - **More**:
-    [branch](https://code.launchpad.net/~yadi/squid/cleanup-comm)
-
-  - **Bugs**:
-
-<!-- end list -->
-
+- **More**:
+- **Bugs**:
   - <http://bugs.squid-cache.org/show_bug.cgi?id=3070>
 
 ## Details
@@ -41,27 +31,23 @@ residence in comm.cc and com.h
 
 ### Progress
 
-  - The comm code handling inbound client connections (accept /
+- The comm code handling inbound client connections (accept /
     listeners) has now been cleaned up and isolated in a comm library
     with a small, clear and documented API.
 
 Currently testing in 3.2:
 
-  - The outbound connection setup for server connections (socket opening
+- The outbound connection setup for server connections (socket opening
     / connect / bind) has now been cleaned up and isolated in the comm
     library with a small clear and documented API.
-
-  - FD handling throughout the code has been polished up to pass
+- FD handling throughout the code has been polished up to pass
     Connection objects instead of raw FD fro TCP connections.
-
-  - DNS lookups have been extracted from comm layer TCP setup. The
+- DNS lookups have been extracted from comm layer TCP setup. The
     components needing a new connection are responsible for generating a
     Comm::Connection template with at minimum the destination IP in it.
-
-  - CONNECT tunnel method retries. Are possible up until some bytes get
+- CONNECT tunnel method retries. Are possible up until some bytes get
     transferred.
-
-  - Persistent connections pooled by destination IP:port. Retrieval out
+- Persistent connections pooled by destination IP:port. Retrieval out
     of the pool is filtered on required local endpoint IP (if any) to
     support transparent interception and
     [tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
@@ -69,7 +55,7 @@ Currently testing in 3.2:
 
 ### TODO
 
-  - The inbound SSL layer still needs some attention to combine it
+- The inbound SSL layer still needs some attention to combine it
     behind the comm listener interface away from the higher levels of
     code. This can perhaps be done as part of the upgrade enabling SSL
     to use multiple system libraries other than OpenSSL.

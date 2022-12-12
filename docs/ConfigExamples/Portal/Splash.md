@@ -1,12 +1,7 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Portal Splash Pages
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -42,50 +37,31 @@ template splash page with the
 [deny_info](http://www.squid-cache.org/Doc/config/deny_info)
 directive.
 
-  - 
-    
-    |                                                                             |                                                                                                                                                                                                      |
-    | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | :information_source: NOTE | Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the [deny_info](http://www.squid-cache.org/Doc/config/deny_info) directive. |
+> :information_source:
+    Extension status codes cannot be sent by Squid older than 3.2 series. For older Squid you should use a redirect URL in the [deny_info](http://www.squid-cache.org/Doc/config/deny_info) directive. |
     
 
 ## Squid Configuration File - Simple Example
 
 NOTE: in the examples below:
 
-  - It is assumed that the Squid helpers are installed in
+- It is assumed that the Squid helpers are installed in
     /usr/local/sbin/squid. Change this as required for your
     installation.
-
-  - It is assumed that the URL being redirected to is accessible without
+- It is assumed that the URL being redirected to is accessible without
     going through the proxy. A bypass allow access control may need to
     be added before this configuration.
-
-  - The session overall timeout is 7200 seconds. Once this length of
+- The session overall timeout is 7200 seconds. Once this length of
     time has passed, the splash screen will be shown again to the user.
     If you want a fixed timeout, use the "-T" option instead (available
     in version 1.1 of the session helper).
-
-  - The session is checked once every 60 seconds at most. This means
+- The session is checked once every 60 seconds at most. This means
     that the splash screen will be shown to the user for 60 seconds,
     during which time they will not be able to browse any other
     websites.
-
-  - A session database file is required. Create an empty file
+- A session database file is required. Create an empty file
     "/var/lib/squid/session.db" and ensure it is writeable to by the
     Squid user
-
-[Squid-3.1](/Releases/Squid-3.1)
-and older:
-
-    # mind the wrap. this is one line:
-    external_acl_type splash_page ttl=60 concurrency=100 %SRC /usr/local/sbin/squid/squid_session -t 7200 -b /var/lib/squid/session.db
-    
-    acl existing_users external splash_page
-    
-    deny_info http://example.com/splash.html existing_users
-    
-    http_access deny !existing_users
 
 [Squid-3.2](/Releases/Squid-3.2)
 and later (session helper renamed and 511 status code with splash
@@ -110,8 +86,7 @@ which receives the splash screen.
 
 The following configuration example adds in a url_regex rule to force
 the user to browse to a particular website before the session is reset.
-This example is for
-[Squid-3.2](/Releases/Squid-3.2)
+This example is for [Squid-3.2](/Releases/Squid-3.2)
 and later, but can be adapted for earlier versions.
 
     # Set up the session helper in active mode. Mind the wrap - this is one line:
@@ -137,17 +112,15 @@ and later, but can be adapted for earlier versions.
 
 ## Configuration tweaks
 
-  - This is just the snippet of config which causes the splash page and
+- This is just the snippet of config which causes the splash page and
     session to be enacted. Rules which permit the visitor use of the
     proxy are expected to be placed as appropriate below them. The basic
     default safety nets should as always be above them.
-
-  - As mentioned the above configuration emulated web browser sessions.
+- As mentioned the above configuration emulated web browser sessions.
     This behaviour is most common for portals, but may not be exactly as
     desired. To perform other behaviours a custom external ACL helper is
     needed.
-
-  - Dependency on an external web server to publish the splash page can
+- Dependency on an external web server to publish the splash page can
     be eliminated in some situations with the use of a [custom
     error](/Features/CustomErrors)
     page template passed to
@@ -161,5 +134,3 @@ and later, but can be adapted for earlier versions.
     [acl](http://www.squid-cache.org/Doc/config/acl/),
     [deny_info](http://www.squid-cache.org/Doc/config/deny_info/),
     [http_access](http://www.squid-cache.org/Doc/config/http_access/)
-
-[CategoryConfigExample](/CategoryConfigExample)
