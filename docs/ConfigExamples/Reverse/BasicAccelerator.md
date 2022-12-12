@@ -1,12 +1,8 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring a Basic Reverse Proxy (Website Accelerator)
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -25,7 +21,7 @@ are.
 ## Squid Configuration File
 
 > :warning:
-Th  is configuration **MUST** appear at the top of squid.conf above any
+    This configuration **MUST** appear at the top of squid.conf above any
     other forward-proxy configuration (http_access etc).
     Otherwise the standard proxy access rules block
     some people viewing the accelerated site.

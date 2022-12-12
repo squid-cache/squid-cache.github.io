@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
-*by
-[YuriVoinov](/YuriVoinov)*
+# Filtering Telegram Messenger
 
-# Telegram Messenger
-
-Warning: Any example presented here is provided "as-is" with no support
-or guarantee of suitability. If you have any further questions about
-these examples please email the squid-users mailing list.
+*by [YuriVoinov](/YuriVoinov)*
 
 ## How to pass Telegram
 
@@ -27,8 +21,7 @@ networks:
 Also, it can use relatively large Amazon/Google/Azure networks by push
 notifications as web-fronting.
 
-So
-[SSL-Bump](/Features/SslPeekAndSplice)
+So [SSL-Bump](/Features/SslPeekAndSplice)
 proxy must be configured to splice initial connection from Telegram to
 server:
 
@@ -95,5 +88,3 @@ rules above to pattern <http://0.0.0.0/api>.
     certificate signed by the well-known CA (like Telegram does). So,
     this can be easy to ban using [Ufdbguard](https://urlfilterdb.com)
     or by writing certificate testing helper for Squid.
-
-[CategoryConfigExample](/CategoryConfigExample)

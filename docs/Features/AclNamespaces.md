@@ -1,6 +1,5 @@
 ---
 categories: WantedFeature
-published: false
 ---
 # Feature: ACL namespaces
 

@@ -1,14 +1,12 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring Squid for NTLM with Winbind authenticators
 
-by Jerry Murdock
+*by Jerry Murdock*
 
 Winbind is a Samba component providing access to Windows Active Directory
 authentication services on a Unix-like operating system
-
 
 ## Supported Samba Releases
 Samba 3 and later provide a squid-compatible authenitcation helper named
@@ -23,6 +21,7 @@ see the Samba documentation
 
 Edit smb.conf for winbindd functionality. The following entries in the
 [global] section of smb.conf may be used as a template.
+
 ```
 workgroup = mydomain
 password server = myPDC

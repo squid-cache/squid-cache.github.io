@@ -1,23 +1,18 @@
 ---
-categories: ReviewMe
-published: false
+categories: Features
 ---
 # Feature: SslBump using Bump-Server-First method
 
-  - **Goal**: Allow
+- **Goal**: Allow
     [bumping](/Features/SslBump)
     of intercepted SSL connections. Prep for mimicking server
     certificates details.
-
-  - **Status**: complete
-
-  - **Version**: 3.3
-
-  - **Developer**:
+- **Status**: complete
+- **Version**: 3.3
+- **Developer**:
     [AlexRousskov](/AlexRousskov)
     and Christos Tsantilas
-
-  - **More**: requires
+- **More**: requires
     [SslBump](/Features/SslBump),
     enables [server certificate
     mimicking](/Features/MimicSslServerCert),
@@ -26,15 +21,11 @@ published: false
 
 # Motivation
 
-  - 
-    
-    |                                                                                                                                                                |
-    | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **This feature was replaced in Squid-3.5 by [peek-n-splice](/Features/SslPeekAndSplice)** |
-    
+ > :information_source:
+    **This feature was replaced in Squid-3.5 by [peek-n-splice](/Features/SslPeekAndSplice)** |
 
-The first
-[SslBump](/Features/SslBump)
+
+The first [SslBump](/Features/SslBump)
 implementation works well for HTTP CONNECT requests naming the host that
 Squid must establish a TCP tunnel with. Such requests are sent by some
 browsers when they are explicitly configured to use a proxy. When
@@ -69,8 +60,7 @@ user about the problem, examining invalid certificates, ignoring
 problems, caching user decision, etc. (and we do not really want to
 duplicate that). While this project will not forward certificate
 problems to the client, it is a required step towards supporting that
-frequently requested functionality in the
-[future](/Features/MimicSslServerCert).
+frequently requested functionality in the [future](/Features/MimicSslServerCert).
 
 # Implementation overview
 
@@ -99,14 +89,12 @@ For intercepted connections:
     certificate, there is no HTTP request and no server name. ACLs using
     source and destination IP addresses/ports should work during this
     stage.
-
 2.  After Squid receives the server certificate, the actual server name
     becomes available (from the CN field of the certificate). Squid
     starts using that name when reporting certificate details on error
     pages if needed, but does not assume that the future request will be
     directed to the same server. Thus, destination domain ACLs will not
     work at this stage.
-
 3.  After Squid receives the first HTTP request, all HTTP
     request-specific ACLs should be available. For each request, Squid
     verifies that the requested host matches the certificate CN
@@ -121,7 +109,6 @@ For bumped CONNECT requests:
     have a server name but some browsers CONNECT using IP address
     instead (e.g., Konqueror). ACLs using source and destination IP
     addresses/ports should work during this stage.
-
 2.  After Squid receives the server certificate, the server name becomes
     available (from the CN field of the certificate) even if it was not
     available before. ACLs using server domain name should now work.
@@ -131,7 +118,6 @@ For bumped CONNECT requests:
     location/CDN-specific IP address and because the tunnel ends may be
     designed to use multiple host names (e.g., the server end of the
     tunnel could be a proxy).
-
 3.  After Squid receives the first bumped HTTP request, all HTTP
     request-specific ACLs should be available. For each request, Squid
     verifies that the requested host matches the certificate CN
@@ -161,7 +147,6 @@ by using the following approach:
     connection. Subsequent client requests will all go to that server
     connection as if Squid was not there. Squid also remembers the
     peeked server certificate.
-
 2.  If server closes the connection but the client keeps sending more
     requests, Squid opens a new connection to the server and pins it to
     the client connection again. This reopening is necessary to minimize
@@ -170,7 +155,6 @@ by using the following approach:
     different from server-to-Squid connection signaling. TODO: In the
     future, we may send "Connection: close" to the client if the origin
     server says so.
-
 3.  When reopening a server connection, Squid verifies that the server
     SSL certificate has not changed much. If server certificate has
     changed, Squid responds with a SQUID_X509_V_ERR_DOMAIN_MISMATCH
@@ -193,20 +177,17 @@ bump-client-first approach:
     browsers do not care about those details but there may be HTTP
     clients (or even human users) that require or could benefit from
     knowing them.
-
 2.  When a server sends a *bad* certificate, Squid may be able to
     replicate that brokenness in its own fake certificate, giving the
     HTTP client control whether to ignore the problem or terminate the
     transaction. With bump-client-furst, it is difficult to support
     similar dynamic, user­-directed opt out; Squid itself has to decide
     what to do when the server certificate cannot be validated.
-
 3.  When a server asks for a *client certificate*, Squid may be able to
     ask the client and then forward the client certificate to the
     server. Such client certificate handling may not be possible with
     the bump-client-first scheme because it would have to be done after
     the SSL handshake.
-
 4.  Some clients (e.g., Rekonq browser v0.7.x) do not send host names in
     CONNECT requests. Such clients require bump-server­-first even in
     forward proxying mode. Unfortunately, there are other problems with
@@ -227,9 +208,8 @@ server name during SSL or TLS handshake using a
 [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) feature. We
 have not taken that shortcut because:
 
-  - There is no SNI support in Internet Explorer running on Windows XP.
-
-  - It is not possible to mimic the server certificate so that the user
+- There is no SNI support in Internet Explorer running on Windows XP.
+- It is not possible to mimic the server certificate so that the user
     can (a) decide whether to ignore any certificate problems and (b)
     cache that decision (see [server certificate
     mimicking](/Features/MimicSslServerCert)).
@@ -241,5 +221,3 @@ This project will not support forwarding of SSL Server Name Indication
 little more difficult. However, SNI forwarding has its own *serious*
 challenges (beyond the scope of this document) that far outweigh the
 added forwarding difficulties.
-
-[CategoryFeature](/CategoryFeature)

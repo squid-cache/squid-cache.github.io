@@ -1,23 +1,17 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Adaptation logging
 
-  - **Goal**: Log ICAP and eCAP transaction details
-
-  - **Status**: complete
-
-  - **Version**: 3.1
-
-  - **Developer**:
+- **Goal**: Log ICAP and eCAP transaction details
+- **Status**: complete
+- **Version**: 3.1
+- **Developer**:
     [AlexRousskov](/AlexRousskov),
     Christos Tsantilas
+- **More**: 
 
-  - **More**: [v3.0
-    branch](https://code.launchpad.net/~rousskov/squid/3p0-plus)
-
-# Details
+## Details
 
 HTTP transactions have access.log. ICAP and eCAP transactions need their
 own log. Also, HTTP transactions affected by adaptations may need to log
@@ -100,13 +94,3 @@ access.log:
 ```
 
 Please see *squid.conf.documented* for more details.
-
-# Availability
-
-Most of the features described here are unofficially available for Squid
-v3.0 as a Launchpad
-[branch](https://code.launchpad.net/~rousskov/squid/3p0-plus).
-Adaptation logging features are committed to Squid and scheduled for
-v3.1.0.11 release.
-
-[CategoryFeature](/CategoryFeature)

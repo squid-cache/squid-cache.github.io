@@ -1,14 +1,10 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring Squid for NTLM with Winbind Authentication on CentOS 5
 
-By Joseph L. Casale
+*By Joseph L. Casale *
 
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
 
 This Configuration Example illustrates a simplified method to setup
 Squid on CentOS 5 (or any RHEL 5 flavor) using built in configuration
@@ -58,17 +54,6 @@ If not, install it with yum:
 
     # yum install authconfig krb5-workstation samba-common
 
-### Squid
-
-Squid is available in the Base repo, check if it's installed:
-
-    # rpm -qa squid
-
-If this query returns nothing, install it and/or set it to start at
-boot:
-
-    # yum install squid
-    # chkconfig squid on
 
 ## Configure Kerberos
 
@@ -76,14 +61,11 @@ To enable Active Directory Group and User enumeration by the helper, we
 join the CentOS server to Active Directory. You can use authconfig to
 configure Samba, Winbind and perform the join in one step.
 
-  - Replace ads.example.local with the fqdn of your Active Directory
+- Replace ads.example.local with the fqdn of your Active Directory
     Server.
+- Replace EXAMPLE with the netbios name of your domain.
+- Replace EXAMPLE.LOCAL with the full name of your domain.
 
-  - Replace EXAMPLE with the netbios name of your domain.
-
-  - Replace EXAMPLE.LOCAL with the full name of your domain.
-
-<!-- end list -->
 
     # authconfig --enableshadow --enablemd5 --passalgo=md5 --krb5kdc=ads.example.local \
     --krb5realm=EXAMPLE.LOCAL --smbservers=ads.example.local --smbworkgroup=EXAMPLE \
@@ -138,17 +120,12 @@ Edit your **/etc/squid/squid.conf** to enable the helper and adjust
     acl ntlm proxy_auth REQUIRED
     http_access allow our_networks ntlm
 
-  - This is not an inclusive set of parameters for Squid to function but
+- This is not an inclusive set of parameters for Squid to function but
     is what is required for the authentication portion.
 
 ## Notes
 
-  - Current versions of Firefox are capable of ntlm authentication so
+- Current versions of Firefox are capable of ntlm authentication so
     you need not enable basic.
-
-  - You need not install the full Samba package, nor have smbd and nmbd
+- You need not install the full Samba package, nor have smbd and nmbd
     running for authentication to take place.
-
-<!-- end list -->
-
-  - [CategoryConfigExample](/CategoryConfigExample)

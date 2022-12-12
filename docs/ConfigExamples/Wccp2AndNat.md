@@ -1,48 +1,39 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # WCCP2 and NAT on a private internal network
 
 ## Outline
 
-  - Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/0 and
-    running VLANs to a DMZ and internal network on fa0/1
-
-  - Plugged into a VLAN-aware switch to break out the VLAN across
-    multiple ports
-
-  - Run WCCP on the NATted DMZ IPs; not on everything
-
-  - Squid server has two ethernet ports - one with an IP on the DMZ, one
-    with an IP on the internal network
-
-  - Redirected requests occur to the internal network port of the Squid
-    server
-
-  - Squid server makes requests through the DMZ IP; avoiding being WCCP
-    intercepted
+- Cisco 2651 dual-fastethernet router; terminating PPPoE on fa0/0 and
+  running VLANs to a DMZ and internal network on fa0/1
+- Plugged into a VLAN-aware switch to break out the VLAN across
+  multiple ports
+- Run WCCP on the NATted DMZ IPs; not on everything
+- Squid server has two ethernet ports - one with an IP on the DMZ, one
+  with an IP on the internal network
+- Redirected requests occur to the internal network port of the Squid
+  server
+- Squid server makes requests through the DMZ IP; avoiding being WCCP
+  intercepted
 
 This network architecture isn't very pretty because:
 
-  - Its better(\!) to do WCCPv2 interception on the outbound interface,
-    rather than inbound from the internal interface(s);
-
-  - It is also better to try and do the Squid cache with a single
-    network port rather than two - but this is my home development
-    environment, thankfully\!
+- Its better to do WCCPv2 interception on the outbound interface,
+  rather than inbound from the internal interface(s);
+- It is also better to try and do the Squid cache with a single
+  network port rather than two - but this is my home development
+  environment, thankfully
 
 ## Diagram
 
-![WCCP
-diagram](https://wiki.squid-cache.org/ConfigExamples/Wccp2AndNat?action=AttachFile&do=get&target=WCCP_Diagram.png)
+![WCCP diagram](https://wiki.squid-cache.org/ConfigExamples/Wccp2AndNat?action=AttachFile&do=get&target=WCCP_Diagram.png)
 
 ## Cisco Router Configuration
 
 Router version: 2651 running 12.4(2)T1 C2600-TELCO-M, 96Mb RAM, 16Mb
 Flash
 
-    Using 3115 out of 29688 bytes
     !
     ! Last configuration change at 16:26:40 UTC Sat Sep 2 2006
     ! NVRAM config last updated at 16:26:41 UTC Sat Sep 2 2006
@@ -218,5 +209,3 @@ Kernel Version:
 
     adrian@cindy:~$ uname -a
     Linux cindy 2.6.17-1.2174_FC5xenU #1 SMP Tue Aug 8 17:36:31 EDT 2006 i686 GNU/Linux
-
-[CategoryConfigExample](/CategoryConfigExample)

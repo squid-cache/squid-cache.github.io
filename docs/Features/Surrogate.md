@@ -1,21 +1,17 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Surrogate Protocol
 
-  - **Goal**: Support this protocol extension to provide selected
+  - **Goal**: Suppo rt this protocol extension to provide selected
     surrogates with alternative caching settings.
-
-  - **Version**: 3.0
-
-  - **Developer**:
+- **Version**: 3.0
+- **Developer**:
     [RobertCollins](/RobertCollins)
-
-  - **More**: <http://www.esi.org/architecture_spec_1.0.html> and
+- **More**: <http://www.esi.org/architecture_spec_1.0.html> and
     <http://www.w3.org/TR/edge-arch>
 
-# Details
+## Details
 
 The question regularly arises how to override the **Cache-Control**
 header for a local proxy acting as a reverse-proxy gateway without
@@ -39,41 +35,25 @@ intermediary proxies.
 
 ### Squid
 
-  - **[httpd_accel_surrogate_id](http://www.squid-cache.org/Doc/config/httpd_accel_surrogate_id)**
+- **[httpd_accel_surrogate_id](http://www.squid-cache.org/Doc/config/httpd_accel_surrogate_id)**
     is advertised to the source servers so that they can tailor their
     controls to a specific surrogate gateway. The ID can be unique to a
     specific Squid instance or shared between a cluster of proxies,
     whichever form suits your gateway design.
-    
-      - NP: it must be configured explicitly in
-        [Squid-3.0](/Releases/Squid-3.0)
-        and
-        [Squid-3.1](/Releases/Squid-3.1).
-
-  - **[http_accel_surrogate_remote](http://www.squid-cache.org/Doc/config/http_accel_surrogate_remote)**
+- **[http_accel_surrogate_remote](http://www.squid-cache.org/Doc/config/http_accel_surrogate_remote)**
     on/off
-
-  - **[visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)**
+- **[visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)**
     in
     [Squid-3.2](/Releases/Squid-3.2)
     is the default surrogate ID name. This provides a somewhat reliable
     default for both single proxies (their unique public hostname) or
     cluster/cloud proxies (a shared visible FQDN).
 
-Simple setup
-([Squid-3.2](/Releases/Squid-3.2)+):
+Simple setup for [Squid-3.2](/Releases/Squid-3.2) and later:
 
     http_port 80 accel
     visible_hostname cdn.example.com
 
-Complicated setup
-([Squid-3.0](/Releases/Squid-3.0)
-and
-[3.1](/Releases/Squid-3.1)):
-
-    http_port 80 accel
-    visible_hostname example.com
-    httpd_accel_surrogate_id proxy123.example.com
 
 #### Testing
 
@@ -101,7 +81,7 @@ The web server or application must be capable of receiving the
 **Surrogate-Capability** headers and identifying whether the ID is
 acceptible.
 
-  - :x:
+> :x:
     Special care may be needed. The ID tags "unset-id" , "unconfigured"
     and "localhost", "localhost.localdomain" are known to possibly be
     sent by many broken or mis-configured proxies.
@@ -128,13 +108,9 @@ Web server headers:
 
 What this does is:
 
-  - tells the proxy calling itself *cdn.example.com* to store this reply
+- tells the proxy calling itself *cdn.example.com* to store this reply
     for a day (Surrogate-Control max-age=86400),
-
-  - tells other proxies to only store it for no more than an hour
+- tells other proxies to only store it for no more than an hour
     (Cache-Control s-maxage=3600)
-
-  - tells the client web browser to store it for no more than 15 minutes
+- tells the client web browser to store it for no more than 15 minutes
     (Cache-Control max-age=900)
-
-[CategoryFeature](/CategoryFeature)
