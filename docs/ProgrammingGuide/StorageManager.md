@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Storage Manager
 
@@ -619,22 +617,22 @@ Each function is accessed through a function pointer stored in the
 *SwapDir* structure:
 
 ``` cpp
-    struct _SwapDir {
-        ...
-        STINIT *init;
-        STNEWFS *newfs;
+struct _SwapDir {
+    ...
+    STINIT *init;
+    STNEWFS *newfs;
+    struct {
+        STLOGOPEN *open;
+        STLOGCLOSE *close;
+        STLOGWRITE *write;
         struct {
-            STLOGOPEN *open;
-            STLOGCLOSE *close;
-            STLOGWRITE *write;
-            struct {
-                STLOGCLEANOPEN *open;
-                STLOGCLEANWRITE *write;
-                void *state;
-            } clean;
-        } log;
-        ....
-    };
+            STLOGCLEANOPEN *open;
+            STLOGCLEANWRITE *write;
+            void *state;
+        } clean;
+    } log;
+    ....
+};
 ```
 
 ### log.open()

@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Refcount Data Allocator (C++ Only)
 
@@ -48,7 +46,7 @@ include a macro in your class definition, and ensure that some everyone
 who would call you directly (not as a cbdata callback, but as a normal
 use), holds a RefCount\<\> smart pointer to you.
 
-``` 
+```cpp
  class MyConcrete : public RefCountable {
    public:
      typedef RefCount<MyConcrete> Pointer;
@@ -58,11 +56,11 @@ use), holds a RefCount\<\> smart pointer to you.
    private:
      CBDATA_CLASS(MyConcrete);
  };
-   
+
  ...
  /* In your .cc file */
  CBDATA_CLASS_INIT(MyConcrete);
- 
+
  void *
  MyConcrete::operator new (size_t)
  {
@@ -74,7 +72,7 @@ use), holds a RefCount\<\> smart pointer to you.
    cbdataReference(result);
    return result;
  }
-   
+
  void
  MyConcrete::operator delete (void *address)
  {
@@ -114,6 +112,7 @@ or may set their smart pointers to NULL, then you will be deleted
 partway through the method (and thus crash). To prevent this, assign a
 smart pointer to yourself:
 
+```cpp
     void
     MyConcrete::aMethod(){
       /* This holds a reference to us */
@@ -121,17 +120,19 @@ smart pointer to yourself:
       /* This is a method that may mean we don't need to exist anymore */
       someObject->someMethod();
       /* This prevents aPointer being optimised away before this point,
-       * and must be the last line in our method 
+       * and must be the last line in our method
        */
       aPointer = NULL;
     }
+```
 
 Calling methods via smart pointers is easy just dereference via -\>
-
+```cpp
     void
     SomeObject::someFunction() {
       myConcretePointer->someOtherMethod();
     }
+```
 
 When passing RefCount smart pointers, always pass them as their native
 type, never as '\*' or as '&'.

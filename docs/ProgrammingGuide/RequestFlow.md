@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Flow of a Typical Request
 
@@ -10,86 +8,68 @@ been updated for Squid-3.*
 1.  A client connection is accepted by the
     *Comm::[TcpAcceptor](/TcpAcceptor)*,
     passed to *client-side socket support* and parsed,
-    
-      - or an internal Squid request is directly created via
-        *clientBeginRequest*.
-
+    or an internal Squid request is directly created via
+    *clientBeginRequest*.
 2.  if the traffic was intercepted, the Host: header validation is
     performed.
-
 3.  The
     [http_access](http://www.squid-cache.org/Doc/config/http_access)
     controls are checked. The client-side-request builds an ACL state
     data structure and registers a callback function for notification
     when access control checking is completed.
-    
-      - authentication may be performed
-    
-      - deny_info redirection may be performed
-
+        - authentication may be performed
+        - deny_info redirection may be performed
 4.  ICAP REQMOD adaptation takes place.
-    
-      - an ICAP response may be produced with any HTTP status.
-
+        - an ICAP response may be produced with any HTTP status.
 5.  URL-rewrite adaptation takes place.
-    
-      - an HTTP redirect may take place using 3xx HTTP status codes.
+        - an HTTP redirect may take place using 3xx HTTP status codes.
 
 *the following information is outdated and seems to apply to Squid-2*
 
-  - The client-side-request is forwarded up the client stream to
+1. The client-side-request is forwarded up the client stream to
     *GetMoreData* which looks for the requested object in the cache, and
     or Vary: versions of the same. If is a cache hit, then the
     client-side registers its interest in the *StoreEntry*. Otherwise,
     Squid needs to forward the request, perhaps with an
     If-Modified-Since header.
-
-  - The request-forwarding process begins with `protoDispatch`. This
+1. The request-forwarding process begins with `protoDispatch`. This
     function begins the peer selection procedure, which may involve
     sending ICP queries and receiving ICP replies. The peer selection
     procedure also involves checking configuration options such as
     *never_direct* and *always_direct*.
-
-  - When the ICP replies (if any) have been processed, we end up at
+1. When the ICP replies (if any) have been processed, we end up at
     *protoStart*. This function calls an appropriate protocol-specific
     function for forwarding the request. Here we will assume it is an
     HTTP request.
-
-  - The HTTP module first opens a connection to the origin server or
+1. The HTTP module first opens a connection to the origin server or
     cache peer. If there is no idle persistent socket available, a new
     connection request is given to the Network Communication module with
     a callback function. The `comm.c` routines may try establishing a
     connection multiple times before giving up.
-
-  - When a TCP connection has been established, HTTP builds a request
+1. When a TCP connection has been established, HTTP builds a request
     buffer and submits it for writing on the socket. It then registers a
     read handler to receive and process the HTTP reply.
-
-  - As the reply is initially received, the HTTP reply headers are
+1. As the reply is initially received, the HTTP reply headers are
     parsed and placed into a reply data structure. As reply data is
     read, it is appended to the *StoreEntry*. Every time data is
     appended to the *StoreEntry*, the client-side is notified of the new
     data via a callback function. The rate at which reading occurs is
     regulated by the delay pools routines, via the deferred read
     mechanism.
-
-  - As the client-side is notified of new data, it copies the data from
+1. As the client-side is notified of new data, it copies the data from
     the StoreEntry and submits it for writing on the client socket.
-
-  - As data is appended to the *StoreEntry*, and the client(s) read it,
+1. As data is appended to the *StoreEntry*, and the client(s) read it,
     the data may be submitted for writing to disk.
-
-  - When the HTTP module finishes reading the reply from the upstream
+1. When the HTTP module finishes reading the reply from the upstream
     server, it marks the *StoreEntry* as *complete*. The server socket
     is either closed or given to the persistent connection pool for
     future use.
-
-  - When the client-side has written all of the object data, it
+1. When the client-side has written all of the object data, it
     unregisters itself from the *StoreEntry*. At the same time it either
     waits for another request from the client, or closes the client
     connection.
 
-# The Main Loop: comm_select()
+## The Main Loop: comm_select()
 
 At the core of Squid is the `select(2)` system call. Squid uses
 `select()` or `poll(2)` or `kqueue` or `epoll` or /dev/poll to process
@@ -121,6 +101,7 @@ e.g.:
 These I/O handlers (and others) and their associated callback data
 pointers are saved in the *fde* data structure:
 
+``` c++
     struct _fde {
             ...
             PF *read_handler;
@@ -131,6 +112,7 @@ pointers are saved in the *fde* data structure:
             DEFER *defer_check;
             void *defer_data;
     };
+```
 
 *read_handler* and *write_handler* are called when the file descriptor
 is ready for reading or writing, respectively. The *close_handler* is
@@ -149,7 +131,7 @@ These handlers are stored in the *FD_ENTRY* structure as defined in
 `comm.h`. `fd_table[]` is the global array of *FD_ENTRY* structures.
 The handler functions are of type *PF*, which is a typedef:
 
-``` 
+```cpp
     typedef void (*PF) (int, void *);
 ```
 

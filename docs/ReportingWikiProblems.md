@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Reporting Wiki Problems
 
@@ -15,4 +13,4 @@ the recommended solution in this case is to get involved, please see
 [FrontPage](/FrontPage)
 for information on how to do so.
 
-Thanks\!
+Thanks!

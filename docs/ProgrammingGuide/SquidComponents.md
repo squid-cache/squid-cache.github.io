@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # Overview of Squid Components
 

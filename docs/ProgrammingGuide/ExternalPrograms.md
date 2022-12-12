@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # External Programs
 
@@ -19,11 +17,10 @@ IP and FQDN cache modules.
 Although it would be possible for Squid to send and receive ICMP
 messages directly, we use an external process for two important reasons:
 
-1.  Because squid handles many filedescriptors simultaneously, we get
+1. Because squid handles many filedescriptors simultaneously, we get
     much more accurate RTT measurements when ICMP is handled by a
     separate process.
-
-2.  Superuser privileges are required to send and receive ICMP. Rather
+2. Superuser privileges are required to send and receive ICMP. Rather
     than require Squid to be started as root, we prefer to have the
     smaller and simpler *pinger* program installed with setuid
     permissions.

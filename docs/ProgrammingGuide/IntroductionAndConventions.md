@@ -1,8 +1,8 @@
 ---
-categories: ReviewMe
-published: false
 ---
-# Introduction
+# Introduction and conventions
+
+## Introduction
 
 The Squid source code has evolved more from empirical observation and
 tinkering, rather than a solid design process. It carries a legacy of
@@ -31,13 +31,13 @@ Note that the Squid source changes rapidly, and some parts of this
 document may become out-of-date. If you find any inconsistencies, please
 feel free to modify this document.
 
-# Conventions
+## Conventions
 
 Function names and file names will be written in a courier font, such as
 `store.c` and `storeRegister()`. Data structures and their members will
 be written in an italicized font, such as *StoreEntry*.
 
-# Coding Conventions
+## Coding Conventions
 
 ## Infrastructure
 
@@ -50,14 +50,9 @@ If you need to use specific width types - such as a 16 bit unsigned
 integer, use one of the following types. To access them simply include
 "config.h".
 
-  - int16_t - 16 bit signed.
-
-  - u_int16_t - 16 bit unsigned.
-
-  - int32t - 32 bit signed.
-
-  - u_int32_t - 32 bit unsigned.
-
-  - int64_t - 64 bit signed.
-
-  - u_int64_t - 64 bit unsigned.
+- int16_t - 16 bit signed.
+- u_int16_t - 16 bit unsigned.
+- int32t - 32 bit signed.
+- u_int32_t - 32 bit unsigned.
+- int64_t - 64 bit signed.
+- u_int64_t - 64 bit unsigned.
