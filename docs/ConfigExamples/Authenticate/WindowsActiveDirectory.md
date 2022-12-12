@@ -1,6 +1,5 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring a Squid Server to authenticate against Active Directory via Kerberos
 
@@ -182,12 +181,12 @@ yours).
 
 > :warning: **Important:** There are 2 important caveats in regard to the msktutils
 --computer-name argument:
-- `-computer-name` cannot be longer than 15 characters due to netbios name
-    limitations. See this link and this link for further information.
-- `-computer-name` must be different from the proxy's hostname so computer
-    account password updates for NTLM and Kerberos do not conflict, see this
-    [link](http://www.squid-cache.org/mail-archive/squid-users/201112/0461.html)
-    for further information. This guide uses -k appended to the hostname.
+    - `-computer-name` cannot be longer than 15 characters due to netbios name
+        limitations. See this link and this link for further information.
+    - `-computer-name` must be different from the proxy's hostname so computer
+        account password updates for NTLM and Kerberos do not conflict, see this
+        [link](http://www.squid-cache.org/mail-archive/squid-users/201112/0461.html)
+        for further information. This guide uses -k appended to the hostname.
 
 
 Execute the msktutil command as follows:
@@ -333,7 +332,7 @@ Firstly we need to install negotiate_wrapper. Install the necessary
 build tools on Debian intall `build-essential linux-headers-$(uname -r)`
 Then compile and install.
 
-```
+```bash
 cd /usr/local/src/
 wget "http://downloads.sourceforge.net/project/squidkerbauth/negotiate_wrapper/negotiate_wrapper-1.0.1/negotiate_wrapper-1.0.1.tar.gz"
 tar -xvzf negotiate_wrapper-1.0.1.tar.gz
@@ -383,4 +382,3 @@ http_access deny all
 
 ## Additional reads
 - [Active_Directory_Integrated_Squid_Proxy](http://wiki.bitbinary.com/index.php/Active_Directory_Integrated_Squid_Proxy)
-   (by Eliezer Croitoru)

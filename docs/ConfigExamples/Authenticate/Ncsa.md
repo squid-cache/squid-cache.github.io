@@ -1,6 +1,5 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Authenticate with a NCSA httpd-style passwords file
 
@@ -11,7 +10,7 @@ authenticate users
 
 To create a new password file:
 ```
-htpasswd -c -nbm /etc/squid/passwords username password
+htpasswd -c -nbm /etqc/squid/passwords username password
 ```
 
 To add users:

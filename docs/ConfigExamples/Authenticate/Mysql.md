@@ -1,10 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring a Squid Server to authenticate from MySQL database
 
-By Askar Ali Khan
+*By Askar Ali Khan*
 
 ## Outline
 
@@ -16,11 +15,11 @@ users before allowing them to surf the web
 Make sure that the `squid_db_auth` helper is built; this is generally the
 case for most prepackaged distributions, if you building squid on your own,
 it will be built if MySQL libraries are installed on the system; if you want
-to make sure, build Squid with the option `--enable-basic-auth-helpers=DB` - 
+to make sure, build Squid with the option `--enable-basic-auth-helpers=DB` -
 the build will fail if the helper cannot be built for any reason
 
 ## Creating MySQL db/table to hold user credentials
-```
+```sql
 mysql> create database squid;
 mysql> grant select on squid.* to someuser@localhost identified by 'xxxx';
 mysql> CREATE TABLE `passwd` (
@@ -34,7 +33,7 @@ mysql> CREATE TABLE `passwd` (
 ```
 
 Populate the table with some test data, eg
-```
+```sql
 mysql> insert into passwd values('testuser','test',1,'Test User','for testing purpose');
 ```
 

@@ -1,14 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Configuring a Squid Server to authenticate from RADIUS
 
-By Askar Ali Khan
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+*By Askar Ali Khan*
 
 ## Outline
 
@@ -34,11 +29,11 @@ contains a list of directives (one per line). Lines beginning with a \#
 is ignored. The radius configuration file will contain...
 
     server radiusserver: specifies the name or address of the RADIUS server to connect to.
-    
+
     secret somesecretstring: specifies the shared RADIUS secret.
-    
+
     identifier nameofserver: specifies what the proxy should identify itsels as to the RADIUS server.  This directive is optional (optional)
-    
+
     port portnumber: Specifies the port number or  service name where the helper should connect. (default to 1812)
 
 Here is my radius config: /etc/radius_config
@@ -68,11 +63,9 @@ login failure"
     auth_param basic realm Web-Proxy
     auth_param basic credentialsttl 5 minute
     auth_param basic casesensitive off
-    
-    
+
+
     acl radius-auth proxy_auth REQUIRED
     http_access allow radius-auth
     http_access allow localhost
     http_access deny all
-
-[CategoryConfigExample](/CategoryConfigExample)
