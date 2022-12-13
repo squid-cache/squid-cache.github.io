@@ -1,0 +1,9 @@
+{%- comment -%}
+arguments:
+- category (to filter against)
+{%- endcomment -%}
+
+{%- assign pages_in_category = site.pages | where_exp: "page", "page.categories contains include.category" | sort: "title" -%}
+{% for p in pages_in_category -%}
+* [{%- if p.title -%}{{ p.title }}{%- else -%}{{p.url}}{%- endif -%}]({{ p.url | replace: ".html", "" }})
+{% endfor %}
