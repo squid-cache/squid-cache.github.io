@@ -1,3 +1,6 @@
+---
+categories: WantedFeature
+---
 ## HTTP File Helper
 
 ### Contacts

@@ -1,3 +1,6 @@
+---
+categories: WantedFeature
+---
 # Enable squid to detect Variant URI
 
 ### Contacts
