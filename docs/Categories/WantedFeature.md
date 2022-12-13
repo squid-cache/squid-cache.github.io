@@ -2,4 +2,4 @@
 
 # Pages in category {{ category }}
 
-{% include enumerate-files.html category=my_category %}
+{% include pages-list-by-category.html category=my_category %}
