@@ -1,24 +1,16 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: memcached-based storedir
 
-  - **Goal**: Implement a memcached-based storedir for out-of-process
+- **Goal**: Implement a memcached-based storedir for out-of-process
     cache handling
-
-  - **Status**: not started
-
-<!-- end list -->
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**:
-    [FrancescoChemolli](/FrancescoChemolli)
-
-  - **More**:
+- **Status**: not started
+- **ETA**: unknown
+- **Version**:
+- **Developer**:
+  [FrancescoChemolli](/FrancescoChemolli)
+- **More**:
 
 # Details
 
@@ -29,5 +21,3 @@ storedir which talks to one or more memcached-based backends for storing
 contents, possibly using selectors a la
 [COSS](/Features/CyclicObjectStorageSystem)
 to maximize the performance gains.
-
-[CategoryFeature](/CategoryFeature)

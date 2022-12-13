@@ -1,65 +1,50 @@
 ---
-categories: ReviewMe
-published: false
+categories: [Feature, Obsolete]
 ---
 # Feature: Squid-in-the-middle SSL Bump
 
-  - **Goal**: Enable ICAP inspection of SSL traffic.
-
-  - **Version**: 3.1 to 3.4.
-
-  - **Developer**:
+- **Goal**: Enable ICAP inspection of SSL traffic.
+- **Version**: 3.1 to 3.4.
+- **Developer**:
     [AlexRousskov](/AlexRousskov),
     Christos Tsantilas
-
-  - **More**: See also [dynamic SSL certificate
-    generation](/Features/DynamicSslCert)
-    and [origin server certificate
-    mimicking](/Features/MimicSslServerCert)
+- **More**: See also [dynamic SSL certificate generation](/Features/DynamicSslCert)
+    and [origin server certificate mimicking](/Features/MimicSslServerCert)
     features.
 
 ## Details
 
-  - 
-    
-    |                                                                                                                                                     |
-    | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **This feature was replaced in Squid-3.5 by [peek-n-splice](/Features/SslPeekAndSplice)** |
-    
+> :information_source:
+    **This feature was replaced in Squid-3.5 by [peek-n-splice](/Features/SslPeekAndSplice)**
 
-    |                                                                                                                                                      |
-    | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **This feature was replaced in Squid-3.3 by [server-first](/Features/BumpSslServerFirst)** |
-    
+> :information_source:
+    **This feature was replaced in Squid-3.3 by [server-first](/Features/BumpSslServerFirst)**
+
 
 Squid-in-the-middle decryption and encryption of straight **CONNECT**
 and transparently redirected SSL traffic, using configurable CA
 certificates. While decrypted, the traffic can be analyzed, blocked, or
 adapted using regular Squid features such as
-[ICAP](/Features/ICAP)
-and
-[eCAP](/Features/eCAP).
+[ICAP](/Features/ICAP) and [eCAP](/Features/eCAP).
 
-  - :warning:
+> :warning:
     By default, most user agents will warn end-users about a possible
     man-in-the-middle attack.
 
-:x:
-WARNING:
-:x:
-HTTPS was designed to give users an expectation of privacy and security.
-Decrypting HTTPS tunnels without user consent or knowledge may violate
-ethical norms and may be illegal in your jurisdiction. Squid decryption
-features described here and elsewhere are designed for deployment with
-user consent or, at the very least, in environments where decryption
-without consent is legal. These features also illustrate why users
-should be careful with trusting HTTPS connections and why the weakest
-link in the chain of HTTPS protections is rather fragile. Decrypting
-HTTPS tunnels constitutes a man-in-the-middle attack from the overall
-network security point of view. Attack tools are an equivalent of an
-atomic bomb in real world: Make sure you understand what you are doing
-and that your decision makers have enough information to make wise
-choices.
+> :x: **WARNING** :x:
+    HTTPS was designed to give users an expectation of privacy and security.
+    Decrypting HTTPS tunnels without user consent or knowledge may violate
+    ethical norms and may be illegal in your jurisdiction. Squid decryption
+    features described here and elsewhere are designed for deployment with
+    user consent or, at the very least, in environments where decryption
+    without consent is legal. These features also illustrate why users
+    should be careful with trusting HTTPS connections and why the weakest
+    link in the chain of HTTPS protections is rather fragile. Decrypting
+    HTTPS tunnels constitutes a man-in-the-middle attack from the overall
+    network security point of view. Attack tools are an equivalent of an
+    atomic bomb in real world: Make sure you understand what you are doing
+    and that your decision makers have enough information to make wise
+    choices.
 
 ## Limitations
 
@@ -78,7 +63,7 @@ considering adding code to mimic server certificate errors when
 generating a fake certificate, giving back the user an option to examine
 and bypass the error. Quality patches or sponsorships are welcomed.
 
-  - :x:
+> :x:
     to avoid this major limitation an upgrade to
     [Squid-3.3](/Releases/Squid-3.3)
     or later and use of the [origin server certificate
@@ -94,7 +79,7 @@ Here is a sample squid.conf excerpt with SSL Bump-related options:
 Example of how to configure the HTTP port to bump CONNECT requests
 
     http_port 3128 ssl-bump cert=/usr/local/squid3/etc/site_priv+pub.pem
-    
+
     # Bumped requests have relative URLs so Squid has to use reverse proxy
     # or accelerator code. By default, that code denies direct forwarding.
     # The need for this option may disappear in the future.
@@ -125,9 +110,8 @@ rules are now configured like this:
     ssl_bump none broken_sites
     ssl_bump client-first all
 
-  - :warning:
-    However
-    [Squid-3.3](/Releases/Squid-3.3)
+> :warning:
+    However [Squid-3.3](/Releases/Squid-3.3)
     and later provide the *server-first* algorithm which can be used in
     place of *client-first* in the above rules and is better for bumping
     HTTPS as it avoided the problems below.
@@ -138,24 +122,20 @@ Certain certificate errors may occur which are not really problems. Such
 as an internal site with self-signed certificates, or an internal domain
 name for a site differing from its public certificate name.
 
-  - **[Squid-3.3](/Releases/Squid-3.3)
-    and later**
+**[Squid-3.3](/Releases/Squid-3.3)  and later**
 
 The *server-first* bumping algorithm with [certificate
 mimicing](/Features/MimicSslServerCert)
 allows Squid to transparently pass on these flaws to the client browser
 for a more accurate decision about safety to be made there.
 
-  - **[Squid-3.1](/Releases/Squid-3.1)
-    and
-    [Squid-3.2](/Releases/Squid-3.2)**
+**[Squid-3.1](/Releases/Squid-3.1) and [Squid-3.2](/Releases/Squid-3.2)**
 
-The
-[sslproxy_cert_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error)
+The [sslproxy_cert_error](http://www.squid-cache.org/Doc/config/sslproxy_cert_error)
 directive and the *ssl_error* ACL type allow these domains to be
 accepted despite the certificate problems.
 
-  - :x:
+> :x:
     SECURITY WARNING: ignoring certificate errors is a security flaw.
     Doing it in a shared proxy is an extremely dangerous action. It
     should not be done lightly or for domains which you are not the
@@ -179,7 +159,7 @@ another domain.
 
 ## Memory usage
 
-  - :warning:
+> :warning:
     Warning: Unlike the rest of this page at the time of writing, this
     section applies to
     [Squid-3.3](/Releases/Squid-3.3)
@@ -252,5 +232,3 @@ recreated on reconfigure. In theory, that should clear the internal
 OpenSSL certificate and CRL cache when the last SSL connection using the
 old context is gone. At the time of writing, there are several bugs
 (with pending patches) that may prevent this cleanup in some Squids.
-
-[CategoryFeature](/CategoryFeature)

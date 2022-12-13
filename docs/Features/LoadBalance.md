@@ -73,11 +73,11 @@ destination list.
 If Squid decides to peer with another proxy, it builds the destination
 list using the following three steps:
 
-1.  Add the "best" peer to use, if any.
+1. Add the "best" peer to use, if any.
 
-2.  Add All Alive Parents, if any.
+2. Add All Alive Parents, if any.
 
-3.  Add Default Parent, if any.
+3. Add Default Parent, if any.
 
 The "best" peer in step \#1 is the very first peer found by the
 following ordered sequence of peer-selection algorithms:
@@ -119,9 +119,9 @@ not added to the destination list.
 
 Squid builds the destination list using the following two steps:
 
-1.  Add the origin server to the destination list.
+1. Add the origin server to the destination list.
 
-2.  If the request is "hierarchical" or
+2. If the request is "hierarchical" or
     [nonhierarchical_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
     is off, then Squid follows the three steps described in the "Going
     through a peer" subsection above. Otherwise, this step does nothing.
@@ -130,12 +130,12 @@ Squid builds the destination list using the following two steps:
 
 Squid builds the destination list using the following two steps:
 
-1.  If the request is "hierarchical" or
+1. If the request is "hierarchical" or
     [nonhierarchical_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
     is off, then Squid follows the three steps described in the "Going
     through a peer" subsection above. Otherwise, this step does nothing.
 
-2.  Add the origin server to the destination list.
+2. Add the origin server to the destination list.
 
 ## Peer Selection Algorithms
 
@@ -159,7 +159,7 @@ In absence of any configuration the peers selected will be:
 |              |                                    |                                                    |
 | ------------ | ---------------------------------- | -------------------------------------------------- |
 | **Log Code** | UDP_\*, SIBLING_HIT, PARENT_HIT |                                                    |
-| **Options**  | no-query                           | Disable HTCP queries to this peer.                 |
+| **Options**  | no-query                           | Disable HTCP queries to this peer.                |
 |              | htcp                               | Enable HTCP queries to this peer (instead of ICP). |
 |              | htcp=                              | Enable HTCP queries to this peer (instead of ICP). |
 
@@ -273,7 +273,7 @@ The efficient alternatives are multicast ICP or HTCP.
 | ------------- | ------------------ | ---------------------------------------------------------------- |
 | **Log entry** | ROUNDROBIN_PARENT |                                                                  |
 | **Options**   | weight=N           | Un-balance the connections to pick this peer N times each cycle. |
-|               | basetime=T         | Fine tune the RTT distance bias.                                 |
+|               | basetime=T         | Fine tune the RTT distance bias.                                |
 
 The classical load distribution algorithm. It operates like a circle
 selecting the first peer, then the second, then the third, etc until all
@@ -296,13 +296,13 @@ it is.
 Let's say that I have the following (new) connections in the following
 sequence.
 
-1.  Simple HEAD request.
+1. Simple HEAD request.
 
-2.  HTTP download of kernel source.
+2. HTTP download of kernel source.
 
-3.  Simple image GET request, closed immediately.
+3. Simple image GET request, closed immediately.
 
-4.  CONNECT tunnel.
+4. CONNECT tunnel.
 
 You will find that connections \#1 and \#3 are sent to peer-A and that
 connections \#2 and \#4 are sent to peer-B. So what you end up with is
@@ -324,7 +324,7 @@ balancing.
 | ------------- | ------------------ | ---------------------------------------------------------------- |
 | **Log entry** | ROUNDROBIN_PARENT |                                                                  |
 | **Options**   | weight=N           | Un-balance the connections to pick this peer N times each cycle. |
-|               | basetime=T         | Fine tune the RTT distance bias.                                 |
+|               | basetime=T         | Fine tune the RTT distance bias.                                |
 
 Simple adaptation on the classical *round-robin* algorithm. This one
 uses measurements of the TCP latency to each peer (RTT lag) to modify
