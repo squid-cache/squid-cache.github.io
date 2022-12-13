@@ -30,10 +30,5 @@ carefully.
 
 ## Catalog of use cases
 
-{% assign pdir = site.pages | where_exp: "p", "p.url contains 'ConfigExamples/Intercept/'" %}
-{% for p in pdir -%}
-{%- assign purl =  p.url | replace: page.dir, "" | replace: ".html", "" -%}
-{%- if purl == "" -%}{%- continue -%}{%- endif -%}
-1. [{{ p.title }}]({{ purl }})
-{% endfor -%}
-1. [Linux TPROXY Real Transparent Interception (withoutNAT)](/Features/Tproxy4)
+{% include pages-list-by-path.html dir='ConfigExamples/Intercept/' -%}
+* [Linux TPROXY Real Transparent Interception (without NAT)](/Features/Tproxy4)

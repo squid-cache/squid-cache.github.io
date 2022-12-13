@@ -4,11 +4,4 @@
     there is no warranty that they are up to date or that they will
     work in any specific use case
 
-{% assign pdir = site.pages | where_exp: "p", "p.url contains page.dir" %}
-
-{% for p in pdir -%}
-{%- assign purl =  p.url | replace: page.dir, "" | replace: ".html", "" -%}
-{%- if purl == "" -%}{%- continue -%}{%- endif -%}
-* [{{ purl }}]({{ purl }})
-{% endfor %}
-
+{% include pages-list-by-path.html dir=page.dir %}
