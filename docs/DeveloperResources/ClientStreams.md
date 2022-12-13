@@ -1,6 +1,4 @@
 ---
-categories: ReviewMe
-published: false
 ---
 # ClientStreams API
 
@@ -13,7 +11,7 @@ an IRC chat about ClientStreams, it needs to be cleaned up and made more
 organised...
 
 ```irc
-14:48 < nicholas> Hi. I'm working on bug 1160 (analyze HTML to prefetch embedded objects). I can't figure out why, but even though it 
+14:48 < nicholas> Hi. I'm working on bug 1160 (analyze HTML to prefetch embedded objects). I can't figure out why, but even though it
                   fetches the pages, it doesn't cache the result! The fetch is initiated with "fwdState(-1, entry, request);".
 14:49 < lifeless> I'd use the same mechanism ESI does.
 14:49 < nicholas> Ok, that's client streams.
@@ -24,29 +22,29 @@ organised...
 14:50 < nicholas> What, concisely, is a store digest?
 14:51 < lifeless> a bitmap that lossilly represents the contents of an entire squid cache, biased to hits.
 14:51 < lifeless> uses a thing called a bloom filter
-14:52 < lifeless> it lets squid predict that another cache will have a given object, for predictive routing (as opposed to ICP which is 
+14:52 < lifeless> it lets squid predict that another cache will have a given object, for predictive routing (as opposed to ICP which is
                   reactive)
 14:52 < nicholas> That's strange, but ok. I suppose it's necessary for performance when you have a large number of cached objects.
 14:52 < lifeless> well its an optional feature.
-14:53 < nicholas> Ok, I tried to track a standard request through the code and it runs through http.cc. Http.cc uses the store, but it 
+14:53 < nicholas> Ok, I tried to track a standard request through the code and it runs through http.cc. Http.cc uses the store, but it
                   doesn't actually insert the object into the cache?
 14:53 < lifeless> right.
 14:54 < lifeless> http.cc just retrieves http objects, like ftp.cc retrieves ftp objects.
 14:54 < nicholas> I'm on the wrong side of the fence. Gotcha.
 14:54 < nicholas> Honestly, I spent about 5 days trying to understand the client stream API.
-14:55 < nicholas> Concisely, what is a client stream? I suggested that they're a chain of observers to the results of a request. Is that 
+14:55 < nicholas> Concisely, what is a client stream? I suggested that they're a chain of observers to the results of a request. Is that
                   accurate?
 14:56 < lifeless> http://www.squid-cache.org/Doc/FAQ/FAQ-16.html
 14:57 < lifeless> client streams..
 14:57 < lifeless> they are a 'chain of responsibility' pattern.
 14:58 < lifeless> sortof.
-14:58 < lifeless> the clientStream code was started in C in the squid 2.6 timeframe, it needs an overhaul badly, now we can actually 
+14:58 < lifeless> the clientStream code was started in C in the squid 2.6 timeframe, it needs an overhaul badly, now we can actually
                   write this sort of code more cleanly.
-14:59 < nicholas> Right, I noticed that the code is in flux. Might I add that I don't like CBDATA either ... not that I'm offering to do 
+14:59 < nicholas> Right, I noticed that the code is in flux. Might I add that I don't like CBDATA either ... not that I'm offering to do
                   better.
-15:00 < nicholas> For a ClientStreamData, I'm supposed to create my own Data class which is derived from, er, Refcountable? Then let the 
+15:00 < nicholas> For a ClientStreamData, I'm supposed to create my own Data class which is derived from, er, Refcountable? Then let the
                   ClientStreamData's internal pointer point to my object, then upcast it when my callbacks are called?
-15:01 < nicholas> See, I don't really understand what my callbacks are really supposed to do, since I only want "default" behaviour. As 
+15:01 < nicholas> See, I don't really understand what my callbacks are really supposed to do, since I only want "default" behaviour. As
                   in, whatever squid normally does to cache/handle a request, expect that there's no sender to send it to.
 15:02 < lifeless> well you don't want that.
 15:02 < lifeless> because you don't want to parse requests.
@@ -73,27 +71,27 @@ organised...
 15:08 < lifeless> I'm talking about the clientStream node you need to implement.
 15:09 < nicholas> so when I know a URL that I want to prefetch, I create my clientStream with this one node that you just described.
 15:10 < lifeless> ESIInclude.cc shows this well
-15:10 < nicholas> I've spent a lot of time reading it, but since I didn't understand clientStreams, I never managed to quite figure it 
+15:10 < nicholas> I've spent a lot of time reading it, but since I didn't understand clientStreams, I never managed to quite figure it
                   out.
 15:11 < lifeless> ok, start with ESIInclude::Start
 15:11 < lifeless> this calls clientBeginRequest
-15:12 < nicholas> esiBufferRecipient seems to do a lot of work, including checking whether the HTTP stream succeeded or failed, and 
+15:12 < nicholas> esiBufferRecipient seems to do a lot of work, including checking whether the HTTP stream succeeded or failed, and
                   loading it into the store  (maybe, I'm not clear on the store API either).
-15:12 < lifeless> it passes in the clientStream callbacks - esiBufferRecipient, esiBufferDetach, the streamdata (stream.getRaw()), the 
+15:12 < lifeless> it passes in the clientStream callbacks - esiBufferRecipient, esiBufferDetach, the streamdata (stream.getRaw()), the
                   http headers its synthetic request needs.
 15:12 < nicholas> oh right, this code. Yes, I cut'n'pasted this in, but I never got it working for me.
 15:12 < lifeless> esiBuffer recipient copies the object back into the ESI master document.
 15:12 < lifeless> so it has to do a bunch more work than you'll need to.
 15:13 < nicholas> stream.getRaw() is a pointer to the node, yes? I could the code around that confusing.
-15:14 < lifeless> stream is a ESIStreamContext which is a clientStream node that pulls data from a clientstream, instances of which are 
+15:14 < lifeless> stream is a ESIStreamContext which is a clientStream node that pulls data from a clientstream, instances of which are
                   used by both the master esi document and includes
 15:14 < lifeless> (different instances, but hte logic is shared by composition)
 15:14 < lifeless> that is pased into ESIInclude::Start because ESI includes have a primary include and an 'alternate' include.
 15:16 < lifeless> so all you need to start the chain is:
 15:16 < nicholas> I see. I won't need to worry about any of that.
 15:16 < lifeless> HttpHeader tempheaders(hoRequest);
-15:17 < lifeless> if (clientBeginRequest(METHOD_GET, url, aBufferRecipient, aBufferDetach, aStreamInstance, &tempheaders, 
-                  aStreamInstance->buffer->buf, HTTP_REQBUF_SZ)) 
+15:17 < lifeless> if (clientBeginRequest(METHOD_GET, url, aBufferRecipient, aBufferDetach, aStreamInstance, &tempheaders,
+                  aStreamInstance->buffer->buf, HTTP_REQBUF_SZ))
 15:17 < lifeless>   {
 15:17 < lifeless>   /* handle failure */
 15:17 < lifeless> }
@@ -133,7 +131,7 @@ organised...
 15:26 < lifeless> is this making sense ?
 15:27 < nicholas> yes, but just let me reread a litt.e
 15:27 < lifeless> ok, theres one more important thing :)
-15:27 < nicholas> "static_cast<myStream *>(node->data)->bufferData(node, ...)" calls myStream::BufferData doesn't it? So why am I calling 
+15:27 < nicholas> "static_cast<myStream *>(node->data)->bufferData(node, ...)" calls myStream::BufferData doesn't it? So why am I calling
                   myself?
 15:28 < lifeless> lowercase bufferData :)
 15:28 < nicholas> oh man, i thought that was just a typo. now i have to reread all of it!
@@ -157,14 +155,14 @@ organised...
 15:32 < lifeless> you'll need a buffer area in your class instance.
 15:32 < lifeless> (although to be tricky you could use a static buffer in your class, as you don't care about the data)
 15:33 < nicholas> (ah, nice trick! didn't think of that.)
-15:33 < nicholas> I told you earlier that I just hacked my analyzer into http.cc. While this works for me, is there a better place to put 
+15:33 < nicholas> I told you earlier that I just hacked my analyzer into http.cc. While this works for me, is there a better place to put
                   it? Especially if I want you devs to accept the patch?
 15:34 < lifeless> wbut I wouldn't worry about that - just have a HTTP_REQBUF_SZ char array in your private data.
 15:34 < nicholas> I was using SM_PAGE_SIZE.
-15:35 < lifeless> ok, where to put the analyzer ? we've got some rework we want to do in the request flow that would make this a lot 
+15:35 < lifeless> ok, where to put the analyzer ? we've got some rework we want to do in the request flow that would make this a lot
                   easier to answer.
 15:35 < lifeless> I think that the right place for now, is exactly where esi goes, and after esi in the chain.
-15:35 < lifeless> the problem with where you are is that ftp pages won't be analysed. and if its an esi upstream then the urls could be 
+15:35 < lifeless> the problem with where you are is that ftp pages won't be analysed. and if its an esi upstream then the urls could be
                   wrong (for instance)
 15:35 < nicholas> http requests that come in from clients have a client stream chain?
 15:36 < lifeless> yup
@@ -183,7 +181,7 @@ organised...
 15:36 < lifeless> #endif
 15:36 < nicholas> yep, i've got the code up here.
 15:37 < nicholas> clientStreamInsertHead. awesome.
-15:37 < lifeless>  this says - if its an accelerated request that isn't an deny-error page, and its a response that is amenable to 
+15:37 < lifeless>  this says - if its an accelerated request that isn't an deny-error page, and its a response that is amenable to
                   processing, and it passes the esi logic checks.. then add a new head.
 15:37 < nicholas> Nod. For me, I just need to know whether the mime-type is HTML or not.
 15:38 < lifeless> you'll want to add your head before esi, so that you come after esi in the processing.
@@ -205,7 +203,7 @@ organised...
 15:41 < nicholas> s/it/their thing/
 15:41 < lifeless> if the client wants a range request, the read issued to you may be for partial data.
 15:41 < nicholas> Will there be a flag on those? So I can avoid them?
-15:42 < lifeless> so you have a choice. like ESI you can force ranges off for what you request, and filter out what you supply according 
+15:42 < lifeless> so you have a choice. like ESI you can force ranges off for what you request, and filter out what you supply according
                   to what is requested from you.
 15:42 < lifeless> alternatively, and for you I think better, just don't add yourself to the chain at all if its a range request.
 15:42 < nicholas> Well, what I request will never be ranged. But, what I analyze isn't necessarily what I requested.

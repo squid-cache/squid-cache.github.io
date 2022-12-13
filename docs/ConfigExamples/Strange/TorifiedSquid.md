@@ -1,15 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # Torified Squid
 
-  - *by
-    [YuriVoinov](/YuriVoinov)*
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
+- *by  [YuriVoinov](/YuriVoinov)*
 
 ## Outline
 
@@ -23,12 +17,10 @@ required to your users.
 
 ### LEGAL NOTICE
 
-:warning:
-:warning:
-:warning:
-Beware, this configuration may be illegal in some countries. Doing this,
-you can break the law. Remember that you are taking full responsibility
-by doing this.
+> :warning: :warning: :warning:
+    Beware, this configuration may be illegal in some countries. Doing this,
+    you can break the law. Remember that you are taking full responsibility
+    by doing this.
 
 ## Overview
 
@@ -63,7 +55,7 @@ Download Tor from [here](https://torproject.org), unpack and build:
 Edit torrc as follows:
 
     SocksPort 9050
-    
+
     ## Entry policies to allow/deny SOCKS requests based on IP address.
     ## First entry that matches wins. If no SocksPolicy is set, we accept
     ## all (and only) requests that reach a SocksPort. Untrusted users who
@@ -87,26 +79,21 @@ e-mail in most hardest case.
 
 When finished, run Tor and check tor.log for errors.
 
-:warning:
-:warning:
-:warning:
-**Important notice**
-:warning:
-:warning:
-:warning:
+> :warning: :warning: :warning:
+    **Important notice**
+    :warning: :warning: :warning:
 
-Starting from Tor 0.3.2 you [can use it directly as HTTPS tunneling
-proxy](https://twitter.com/torproject/status/912708766084292608). For
-this, you can add this to torrc:
+    Starting from Tor 0.3.2 you [can use it directly as HTTPS tunneling
+    proxy](https://twitter.com/torproject/status/912708766084292608). For
+    this, you can add this to torrc:
 
-    # Starting from Tor 0.3.2
-    HTTPTunnelPort 8118
+        # Starting from Tor 0.3.2
+        HTTPTunnelPort 8118
 
-In this case Privoxy no more requires in theory. Unfortunately, this
-does not work for connections starts with HTTP (i.e., when user type
-"archive.org" in browser command line) and you'll get empty string with
-[this error in Tor
-log](https://tor.stackexchange.com/questions/16095/405-method-connection-mark-unattached-ap).
+    In this case Privoxy no more requires in theory. Unfortunately, this
+    does not work for connections starts with HTTP (i.e., when user type
+    "archive.org" in browser command line) and you'll get empty string with
+    [this error in Tor log](https://tor.stackexchange.com/questions/16095/405-method-connection-mark-unattached-ap).
 
 So, you still requires to build and configure Privoxy.
 
@@ -116,10 +103,10 @@ Configure and build Privoxy:
 
     # 32 bit GCC
     ./configure --prefix=/usr/local/privoxy --enable-large-file-support --with-user=privoxy --with-group=privoxy --disable-force --disable-editor --disable-toggle 'CFLAGS=-O3 -m32 -mtune=native -pipe'
-    
+
     # 64 bit GCC
     ./configure --prefix=/usr/local/privoxy --with-user=privoxy --with-group=privoxy --disable-force --disable-editor --disable-toggle 'CFLAGS=-O3 -m64 -mtune=native -pipe' 'LDFLAGS=-m64'
-    
+
     gmake
     gmake install-strip
 
@@ -141,7 +128,7 @@ Paste the configuration file like this:
 
     # Domains to be handled by Tor
     acl tor_url url_regex "/etc/squid/url.tor"
-    
+
     # SSL bump rules
     acl DiscoverSNIHost at_step SslBump1
     acl NoSSLIntercept ssl::server_name_regex "/etc/squid/url.nobump"
@@ -149,16 +136,16 @@ Paste the configuration file like this:
     ssl_bump peek DiscoverSNIHost
     ssl_bump splice NoSSLIntercept
     ssl_bump bump all
-    
+
     # Tor access rules
     never_direct allow tor_url
-    
+
     # Local Tor is cache parent
     cache_peer 127.0.0.1 parent 8118 0 no-query no-digest default
-    
+
     cache_peer_access privoxy allow tor_url
     cache_peer_access privoxy deny all
-    
+
     access_log daemon:/var/log/squid/access.log logformat=squid !tor_url
 
 Adapt config snippet to your configuration.
@@ -210,5 +197,3 @@ Tor-tunneled HTTP connections has better performance, because of
 caching. However, HTTPS connections still limited by Tor performance,
 because of splice required and they can't be caching in this
 configuration in any form. Note this.
-
-[CategoryConfigExample](/CategoryConfigExample)

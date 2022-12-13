@@ -1,11 +1,8 @@
 ---
-categories: ReviewMe
-published: false
 ---
-The Squid project uses the services of [Coverity
-Scan](https://communities.coverity.com/community/scan-%28open-source%29)
-to run automated test builds, as part of the
-[BuildFarm](/BuildFarm)
+The Squid project uses the services of
+[Coverity Scan](https://communities.coverity.com/community/scan-%28open-source%29)
+to run automated test builds, as part of the [BuildFarm](/BuildFarm)
 activities. Kudos to [Coverity](http://www.coverity.com/) for supporting
 this useful community service.
 
@@ -23,5 +20,3 @@ detailing your background.
 
 You can then access the Squid analysis results page at address
 <http://scan5.coverity.com:8080/>
-
-Discuss this page using the "Discussion" link in the main menu
