@@ -76,11 +76,11 @@ done.
     1.  .convention for Makefile.am conditionals is ENABLE_\* (currenty
         some have incorrect USE_\* maro names)
 - Helper and Tool Manuals
-1.  Write a manual/man(8) page for a helpers/ program that does not
+1. Write a manual/man(8) page for a helpers/ program that does not
     have one.
-2.  Update the existing README.txt and other helper docs into proper
+1. Update the existing README.txt and other helper docs into proper
     manuals ([todo list](/ProgrammingGuide/ManualDocumentation#TODO))
-3.  Benchmark documentation.
+1. Benchmark documentation.
     - How fast can each helper run?
     - For helpers with multiple backends (ie DB), how do they
         compare?

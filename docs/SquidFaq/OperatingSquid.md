@@ -275,14 +275,14 @@ status, not just squid.
 
 The reasoning is simple:
 
-1.  You need root privileges to do certain things when you start an
+1. You need root privileges to do certain things when you start an
     application, such as bind to a network socket, open a log file, perhaps read a
     configuration file), therefore it starts as root.
-1.  Any application might contain bugs which lead to security
+1. Any application might contain bugs which lead to security
     vulnerabilities, which can be remotely exploited through the network 
     connection, and until the bugs are fixed, you at least want to minimise the risk
     presented by them.
-1.  Therefore as soon as you've done all the things involved in the first step
+1. Therefore as soon as you've done all the things involved in the first step
     above, you drop the privilege level of the application, and/or spawn a child
     process with reduced privilege, so that it still runs and does
     everything you need, but if a vulnerability is exploited, it no longer

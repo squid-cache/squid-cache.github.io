@@ -139,10 +139,10 @@ the debugging symbols.
 
 The core dump file will be left in one of the following locations:
 
-1.  The *coredump_dir* directory, if you set that option.
-2.  The first *cache_dir* directory if you have used the
+1. The *coredump_dir* directory, if you set that option.
+1. The first *cache_dir* directory if you have used the
     *cache_effective_user* option.
-1.  The current directory when Squid was started
+1. The current directory when Squid was started
 
 Recent versions of Squid report in *cache.log* their current directory
 when starting:
@@ -258,10 +258,10 @@ done
 
 Other options if the above cannot be done is to:
 
-1.  Build Squid with the --enable-stacktraces option, if support exists
+1. Build Squid with the --enable-stacktraces option, if support exists
     for your OS (exists for Linux glibc on Intel, and Solaris with some
     extra libraries which seems rather impossible to find these days..)
-1.  Run Squid using the "catchsegv" tool. (Linux glibc Intel)
+1. Run Squid using the "catchsegv" tool. (Linux glibc Intel)
 
 > :information_source:
     these approaches do not by far provide as much details as using gdb.
@@ -294,18 +294,18 @@ The following trick may be useful if you suspect that your Squid is
 stuck in a busy loop, and/or you want to know what your Squid is doing
 "right now", but you do not want to suspect the Squid process.
 
-1.  To dump the current stack using gdb:
+1. To dump the current stack using gdb:
 ```    
         sudo gdb -n -batch -ex backtrace -pid <PID>
 ``` 
     You may not need/want the `-n` (i.e. do not load gdb initialization
     files) option. Using `'backtrace full'` instead of `backtrace` will
     give even more info but might be a tad slower.
-1.  To dump the current stack using pstack(1):
+1. To dump the current stack using pstack(1):
 ```
         sudo pstack <PID>
 ```
-1.  To quickly check whether Squid is waiting for a system call:
+1. To quickly check whether Squid is waiting for a system call:
     ```
         sudo cat /proc/<PID>/stack
     ```
@@ -335,20 +335,20 @@ Unfortunately, it is not yet possible to debug a single transaction, but
 the following procedure minimizes logging noise and may help developers
 to pinpoint the problem:
 
-1.  Locate your Squid log file or equivalent. In this example, we will
+1. Locate your Squid log file or equivalent. In this example, we will
     call it *cache.log*.
-1.  Enable detailed (level-7) or full (level-9) debugging. See the
+1. Enable detailed (level-7) or full (level-9) debugging. See the
     sections below for details.
-1.  Start Squid if necessary.
-1.  Run "tail -f cache.log \> partial-cache.log". This will start
+1. Start Squid if necessary.
+1. Run "tail -f cache.log \> partial-cache.log". This will start
     appending new debugging to the *partial-cache.log* file.
-1.  Reproduce the failing transaction, using a single request if
+1. Reproduce the failing transaction, using a single request if
     possible. Please note that reloading a page in a browser often sends
     dozens or even hundreds of requests to Squid. Ideally, use
     [squidclient](/Features/CacheManager/SquidClientTool),
     wget, curl, or another "single-request" tool when possible.
-1.  Kill the "tail" command above.
-1.  Share the resulting partial-cache.log, compressing it if needed.
+1. Kill the "tail" command above.
+1. Share the resulting partial-cache.log, compressing it if needed.
     Please note that it may contain sensitive information such as
     passwords.
 
@@ -372,10 +372,10 @@ To enable full or level-9 debugging (i.e., to force every debugging
 statement in Squid to emit some output when reached), you have two
 options:
 
-1.  Set debug_options in squid.conf to ALL,9. Doing so will debug what
+1. Set debug_options in squid.conf to ALL,9. Doing so will debug what
     happens after the configuration file is parsed. This is sufficient
     to triage most runtime problems
-1.  Start Squid with the **-X** command line option. Doing so will debug
+1. Start Squid with the **-X** command line option. Doing so will debug
     what happens both before and after debug_options in the
     configuration file are parsed
 

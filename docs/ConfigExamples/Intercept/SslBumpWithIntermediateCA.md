@@ -17,16 +17,16 @@ intermediate CA2 without disturb your clients.
 
 ## CA certificate preparation
 
-1.  Create a **root CA** with CRL URL encoded in CA1. This CRL URL needs
+1. Create a **root CA** with CRL URL encoded in CA1. This CRL URL needs
     to be reachable by your clients.
-2.  Use the CA1 to sign an intermediate CA2, which will be used on the
+1. Use the CA1 to sign an intermediate CA2, which will be used on the
     proxy for signing mimicked certificates.
     For example in the config below we call this private key
         *signingCA.key*.
-3.  install primary CA1 public key onto clients.
+1. install primary CA1 public key onto clients.
     For example in the config below we call this public key (cert)
         *signingCA.crt*.
-4.  prepare a public keys file which contains concatenated intermediate
+1. prepare a public keys file which contains concatenated intermediate
     CA2 followed by root CA1 in PEM format.
     For example in the config below we call this *chain.pem*.
 

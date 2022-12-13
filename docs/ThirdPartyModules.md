@@ -36,6 +36,6 @@ with the project [MergeProcedure](/MergeProcedure).
 
 Here's an auto-generated list of available third-party modules.
 
-1.  ThirdPartyModules/EcapGzip
-2.  ThirdPartyModules/PhishTankACL
+1. ThirdPartyModules/EcapGzip
+1. ThirdPartyModules/PhishTankACL
 

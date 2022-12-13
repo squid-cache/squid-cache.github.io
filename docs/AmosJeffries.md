@@ -30,45 +30,45 @@ Here is an *auto-generated* list of my current public Squid projects:
 
 Completed and available:
 
-1.  [Features/AclRandom](/Features/AclRandom)
+1. [Features/AclRandom](/Features/AclRandom)
 
-2.  [Features/BearerAuthentication](/Features/BearerAuthentication)
+1. [Features/BearerAuthentication](/Features/BearerAuthentication)
 
-3.  [Features/CodeTestBed](/Features/CodeTestBed)
+1. [Features/CodeTestBed](/Features/CodeTestBed)
 
-4.  [Features/CommCleanup](/Features/CommCleanup)
+1. [Features/CommCleanup](/Features/CommCleanup)
 
-5.  [Features/ConfigIncludes](/Features/ConfigIncludes)
+1. [Features/ConfigIncludes](/Features/ConfigIncludes)
 
-6.  [Features/CppCodeFormat](/Features/CppCodeFormat)
+1. [Features/CppCodeFormat](/Features/CppCodeFormat)
 
-7.  [Features/EDNS](/Features/EDNS)
+1. [Features/EDNS](/Features/EDNS)
 
-8.  [Features/IPv6](/Features/IPv6)
+1. [Features/IPv6](/Features/IPv6)
 
-9.  [Features/LogModules](/Features/LogModules)
+1. [Features/LogModules](/Features/LogModules)
 
 10. [Features/Tproxy4](/Features/Tproxy4)
 
 Ongoing work:
 
-1.  [Features/ActAsOrigin](/Features/ActAsOrigin)
+1. [Features/ActAsOrigin](/Features/ActAsOrigin)
 
-2.  [Features/BetterStringBuffer](/Features/BetterStringBuffer)
+1. [Features/BetterStringBuffer](/Features/BetterStringBuffer)
 
-3.  [Features/ClientSideCleanup](/Features/ClientSideCleanup)
+1. [Features/ClientSideCleanup](/Features/ClientSideCleanup)
 
-4.  [Features/ConfigUpdater](/Features/ConfigUpdater)
+1. [Features/ConfigUpdater](/Features/ConfigUpdater)
 
-5.  [Features/FasterHttpParser](/Features/FasterHttpParser)
+1. [Features/FasterHttpParser](/Features/FasterHttpParser)
 
-6.  [Features/HTTP2](/Features/HTTP2)
+1. [Features/HTTP2](/Features/HTTP2)
 
-7.  [Features/HotConf](/Features/HotConf)
+1. [Features/HotConf](/Features/HotConf)
 
-8.  [Features/InternalRedirectors](/Features/InternalRedirectors)
+1. [Features/InternalRedirectors](/Features/InternalRedirectors)
 
-9.  [Features/Optimizations](/Features/Optimizations)
+1. [Features/Optimizations](/Features/Optimizations)
 
 10. [Features/Socks](/Features/Socks)
 

@@ -329,11 +329,11 @@ the performance of this helper is about 2.6 sec for 100,000 requests.
 what means about 2,000,000 requests per minute. to test it yourself you
 can do:
 
-1.  create a redirect file:
+1. create a redirect file:
 
         head -100000 access.log | awk '{ print $7 " " $3"/-" " " $8 " " $6}' >/tmp/testurls
 
-1.  do the test:
+1. do the test:
 
         time ./rewritter.rb < /tmp/testurls >/dev/null
 

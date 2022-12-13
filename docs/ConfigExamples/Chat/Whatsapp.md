@@ -13,8 +13,8 @@ these examples please email the squid-users mailing list.
 
 Whatsapp is one of difficult-to-pass IM software. Two issues found:
 
-1.  Web whatsapp general connecting
-2.  Media files transfers for mobile Whatsapp application
+1. Web whatsapp general connecting
+1. Media files transfers for mobile Whatsapp application
 
 First of all, Whatsapp requires SSL Bump-aware squid (no matter, bump
 all or splice all config). With splice all config, all Whatsapp apps

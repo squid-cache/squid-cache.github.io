@@ -44,7 +44,7 @@ The `HttpMsg` hierarchy objects are currently overloaded with two
 purposes;
 
 1. as general purpose HTTP message state storage objects
-2.  as HTTP and ICAP response message parsing objects
+1. as HTTP and ICAP response message parsing objects
 
 ### going forward
 
@@ -120,10 +120,10 @@ Squid-3.6+ is as follows:
 1. incremental checkpoint at end of mime headers block
 1. char\* loop scan for end of header chunk
     ([HttpMsg](/HttpMsg)::httpMsgIsolateStart)
-1.  strcmp scan for : delimiter on header name and generate header
+1. strcmp scan for : delimiter on header name and generate header
     objects
     ([HttpHeader](/HttpHeader)::parse)
-1.  strListGet scan for parse of header content options
+1. strListGet scan for parse of header content options
 
 The ICAP *response* parsing system
 `Adaptation::Icap::ResponseParser::parse` in parser-ng-icap-pt2 branch
@@ -136,19 +136,19 @@ stage 1 version scan with an ICAP specific scan.
 1. scan for message version field 
     - accepting "ICAP/1.0" protocol version only
     - incremental checkpoint at end of version label
-1.  scan for message status code field
+1. scan for message status code field
 1. incremental checkpoint at end of status code
-1.  scan for end of first line
+1. scan for end of first line
 1. incremental checkpoint at end of line
-1.  char\* loop scan for end of header chunk
+1. char\* loop scan for end of header chunk
     (Http1::Parser::findMimeBlock / headersEnd)
 1. incremental checkpoint at end of mime headers block
-1.  char\* loop scan for end of header chunk
+1. char\* loop scan for end of header chunk
     ([HttpMsg](/HttpMsg)::httpMsgIsolateStart)
-1.  strcmp scan for : delimiter on header name and generate header
+1. strcmp scan for : delimiter on header name and generate header
     objects
     ([HttpHeader](/HttpHeader)::parse)
-1.  strListGet scan for parse of header content options
+1. strListGet scan for parse of header content options
 
 > :warning:
     NOTE: Parsing of ICAP response messages and payload segments still uses
@@ -169,38 +169,38 @@ operation where the message was incompletely received.
 
 1. scan to skip over garbage prefix
 
-2.  parse request line to find LF, and invalid CR and NIL
+1. parse request line to find LF, and invalid CR and NIL
     ([HttpParser](/HttpParser)::parseRequestLine)
     
       - discard prior parse information \!\!
 
-3.  and again, parse request line to find SP positions
+1. and again, parse request line to find SP positions
     ([HttpParser](/HttpParser)::parseRequestLine)
     
       - discard prior parse information \!\!
 
-4.  parse inside each request-line token to check method/URL/version
+1. parse inside each request-line token to check method/URL/version
     syntax
     ([HttpParser](/HttpParser)::parseRequestLine)
     
       - discard prior parse information \!\!
 
-5.  char\* loop scan for end of header chunk (headersEnd)
+1. char\* loop scan for end of header chunk (headersEnd)
 
-6.  sscanf re- scan and sanity check request line
+1. sscanf re- scan and sanity check request line
     ([HttpRequest](/HttpRequest)::sanityCheck)
     
       - incomplete, duplicates step 2 and 3, partially duplicates step
         5.
 
-7.  strcmp parse out request method,url,version
+1. strcmp parse out request method,url,version
     ([HttpRequest](/HttpRequest)::parseFirstLine)
     
       - duplicates step 3 and 4
 
-8.  strcmp / scanf / char\* loops for parsing URL (urlParse)
+1. strcmp / scanf / char\* loops for parsing URL (urlParse)
 
-9.  char\* loop scan for end of each header line (headersEnd)
+1. char\* loop scan for end of each header line (headersEnd)
 
 10. strcmp scan for : delimiter on header name and generate header
     objects

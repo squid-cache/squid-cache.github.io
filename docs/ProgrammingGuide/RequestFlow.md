@@ -5,23 +5,23 @@
 *NOTE: this information is a work in progress. Numbered entries have
 been updated for Squid-3.*
 
-1.  A client connection is accepted by the
+1. A client connection is accepted by the
     *Comm::[TcpAcceptor](/TcpAcceptor)*,
     passed to *client-side socket support* and parsed,
     or an internal Squid request is directly created via
     *clientBeginRequest*.
-2.  if the traffic was intercepted, the Host: header validation is
+1. if the traffic was intercepted, the Host: header validation is
     performed.
-3.  The
+1. The
     [http_access](http://www.squid-cache.org/Doc/config/http_access)
     controls are checked. The client-side-request builds an ACL state
     data structure and registers a callback function for notification
     when access control checking is completed.
         - authentication may be performed
         - deny_info redirection may be performed
-4.  ICAP REQMOD adaptation takes place.
+1. ICAP REQMOD adaptation takes place.
         - an ICAP response may be produced with any HTTP status.
-5.  URL-rewrite adaptation takes place.
+1. URL-rewrite adaptation takes place.
         - an HTTP redirect may take place using 3xx HTTP status codes.
 
 *the following information is outdated and seems to apply to Squid-2*

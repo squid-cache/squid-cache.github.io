@@ -61,9 +61,9 @@ range: bytes=2100-3000.
 
 What Squid should do is:
 
-1.  skip the 1024-2048 chunk
-2.  fetch the 2049-3072 chunk
-3.  optionally skip the 3073+ chunks, or contiue fetching.
+1. skip the 1024-2048 chunk
+1. fetch the 2049-3072 chunk
+1. optionally skip the 3073+ chunks, or contiue fetching.
 
 Caching the chunks received and marking the response as incomplete.
 

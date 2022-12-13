@@ -342,22 +342,22 @@ The OpenNMS site has a [complete tutorial](http://www.opennms.org/wiki/Squid_Dat
 The SNMP agent built into squid is very limited, as it is SNMP v2c
 cross-compatible with v1 in places.
 
-1.  The bundled library needs replacing.
+1. The bundled library needs replacing.
     - net-snmp v5.4 is now widely available.
         [net-snmp](http://www.net-snmp.org/)
     - this should resolve 64-bit integer issues just with the update
     - this may also resolve bulk OID requests without other special
         changes
-2.  Many statistics and details inside Squid need to be added to the
+1. Many statistics and details inside Squid need to be added to the
     tree.
     - synchronising with the cachemgr available data
     - possibly leading to a shared cachemgr/SNMP internal PDU fetch
         from SMP workers
-3.  Live configuration changess may be done by SNMP agents.
+1. Live configuration changess may be done by SNMP agents.
     - toggle directives and scalar values being the primary ones
     - possibly also toggle options on certain directives
     - requires the library support of SET operations
-4.  auto-generating the MIB file needs to be done at some point.
+1. auto-generating the MIB file needs to be done at some point.
     - managing the MIB contents is non-trivial already and will only
         get harder as more OID are added
     - a process of building the MIB file either in daily maintenance

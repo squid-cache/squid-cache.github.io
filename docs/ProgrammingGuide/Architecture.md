@@ -109,19 +109,19 @@ requests. This sequence starts after Squid parses the request header and
 ends before Squid starts satisfying the request from the cache or origin
 server. The checks are listed here in the order of their execution:
 
-1.  Host header forgery checks
-2.  [http_access](http://www.squid-cache.org/Doc/config/http_access)
+1. Host header forgery checks
+1. [http_access](http://www.squid-cache.org/Doc/config/http_access)
     directive
-3.  ICAP/eCAP
+1. ICAP/eCAP
     [adaptation](/SquidFaq/ContentAdaptation)
-4.  [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
-5.  [adapted_http_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
+1. [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
+1. [adapted_http_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     directive
-6.  [store_id](http://www.squid-cache.org/Doc/config/store_id)
+1. [store_id](http://www.squid-cache.org/Doc/config/store_id)
     directive
-7.  clientInterpretRequestHeaders()
-8.  [cache](http://www.squid-cache.org/Doc/config/cache) directive
-9.  ToS marking
+1. clientInterpretRequestHeaders()
+1. [cache](http://www.squid-cache.org/Doc/config/cache) directive
+1. ToS marking
 10. nf marking
 11. [ssl_bump](http://www.squid-cache.org/Doc/config/ssl_bump)
     directive

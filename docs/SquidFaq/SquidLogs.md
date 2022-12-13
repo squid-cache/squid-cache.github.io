@@ -356,18 +356,18 @@ space-separated columns, compare with the *storeLog()* function in file
 
     9ld.%03d %-7s %02d %08X %s %4d %9ld %9ld %9ld %s %ld/%ld %s %s
 
-1.  **time** The timestamp when the line was logged in UTC with a
+1. **time** The timestamp when the line was logged in UTC with a
     millisecond fraction.
-2.  **action** The action the object was sumitted to, compare with
+1. **action** The action the object was sumitted to, compare with
     *src/store_log.c*:
       - **CREATE** Seems to be unused.
       - **RELEASE** The object was removed from the cache (see also
         **file number** below).
       - **SWAPOUT** The object was saved to disk.
       - **SWAPIN** The object existed on disk and was read into memory
-3.  **dir number** The cache_dir number this object was stored into,
+1. **dir number** The cache_dir number this object was stored into,
     starting at 0 for your first cache_dir line.
-4.  **file number** The file number for the object storage file. Please
+1. **file number** The file number for the object storage file. Please
     note that the path to this file is calculated according to your
     *cache_dir* configuration. A file number of *FFFFFFFF* indicates
     "memory only" objects. Any action code for such a file number refers
@@ -375,12 +375,12 @@ space-separated columns, compare with the *storeLog()* function in file
     instance, if a *RELEASE* code was logged with file number
     *FFFFFFFF*, the object existed only in memory, and was released from
     memory.
-5.  **hash** The hash value used to index the object in the cache. Squid
+1. **hash** The hash value used to index the object in the cache. Squid
     currently uses MD5 for the hash value.
-6.  **status** The HTTP reply status code.
-7.  **datehdr** The value of the HTTP *Date* reply header.
-8.  **lastmod** The value of the HTTP *Last-Modified* reply header.
-9.  **expires** The value of the HTTP "Expires: " reply header.
+1. **status** The HTTP reply status code.
+1. **datehdr** The value of the HTTP *Date* reply header.
+1. **lastmod** The value of the HTTP *Last-Modified* reply header.
+1. **expires** The value of the HTTP "Expires: " reply header.
 10. **type** The HTTP *Content-Type* major value, or "unknown" if it
     cannot be determined.
 11. **sizes** This column consists of two slash separated fields:

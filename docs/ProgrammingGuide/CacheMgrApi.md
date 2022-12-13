@@ -73,19 +73,19 @@ command.
 The data member is used to accumulate data across squid instances.
 Execution flow is:
 
-1.  one instance gets the cachemgr request; it instantiates a
+1. one instance gets the cachemgr request; it instantiates a
     MyModuleMgrAction via its static Create function
-2.  (without going in too much detail) this Action's `run()` method
+1. (without going in too much detail) this Action's `run()` method
     calls each worker's `collect()` method
-3.  collect() is supposed to fill in the data member of the
+1. collect() is supposed to fill in the data member of the
     MyModuleMgrAction with whatever data is relevant
-4.  data is marshaled back to the coordinator process via `pack()` and
+1. data is marshaled back to the coordinator process via `pack()` and
     `unpack()`
-5.  the Coordinator process uses the Action's `add()` method to merge in
+1. the Coordinator process uses the Action's `add()` method to merge in
     information from all workers. The Action argument is really a
     polymorphic reference to the MyModuleMgrAction, and it can safely be
     dynamic_cast to the right type
-6.  once data is accumulated, the `dump()` method is called to print out
+1. once data is accumulated, the `dump()` method is called to print out
     the information.
 
 `pack()` and `unpack()` can rely on the generic infrastructure available

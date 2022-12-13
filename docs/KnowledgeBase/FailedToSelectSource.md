@@ -15,16 +15,16 @@ A user will see the error page **ERR_CANNOT_FORWARD**:
 
 Squid Logs:
 
-1.  Failed to select source for \`<http://>...'
+1. Failed to select source for \`<http://>...'
       - always_direct = 0
       - never_direct = 1
-2.  Failed to select source for \`<http://>...'
+1. Failed to select source for \`<http://>...'
       - always_direct = -1
       - never_direct = 1
-3.  Failed to select source for \`<http://>...'
+1. Failed to select source for \`<http://>...'
       - always_direct = 0
       - never_direct = -1
-4.  Failed to select source for \`<http://>...'
+1. Failed to select source for \`<http://>...'
       - always_direct = -1
       - never_direct = -1
 

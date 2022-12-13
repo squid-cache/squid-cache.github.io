@@ -27,19 +27,19 @@ of Squid with live traffic.
 
 Some things can be randomized:
 
-1.  Body data. We only require body data of specific sizes. This means
+1. Body data. We only require body data of specific sizes. This means
     we need to know real sizes when creating the benchmark set, but can
     generate new bodies randomly during benchmark suite setup. This
     saves a lot of transfer bandwidth and protects against
     privacy/copyright/security issues at the same time.
-2.  Header URL lengths. We do need to keep URL length as realistic as
+1. Header URL lengths. We do need to keep URL length as realistic as
     possible. But by its nature we are going to be forced to make URLs
     into a format our benchmarking server can use to supply the proper
     reply. They can be padded UP with garbage info to whatever length is
     needed. This will purge any of the original tracking information and
     protects against privacy/copyright/security issues. Even though some
     URL will be larger than their original real version.
-3.  Cookie etc. These can be replaced with somewhat random information.
+1. Cookie etc. These can be replaced with somewhat random information.
     Only the header format needs to be kept parsable.
 
 ## The Dataset

@@ -95,7 +95,7 @@ and later. Older Squid did not even conditionally comply with HTTP/1.1.
 
 Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230)
 
-1.  HTTP/1.1 requires that we upgrade to our highest supported version.
+1. HTTP/1.1 requires that we upgrade to our highest supported version.
     This has been found problematic with certain broken clients and
     servers.
     
@@ -110,7 +110,7 @@ Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230)
         [Squid-3.2](/Releases/Squid-3.2)
         advertising HTTP/1.1 in both sides.
 
-2.  HTTP/1.1 requires support for chunked encoding in both parsers and
+1. HTTP/1.1 requires support for chunked encoding in both parsers and
     composers. This applies to both responses and requests.
     
       - Both Squid-3 and Squid-2 contain at least response chunked
@@ -127,10 +127,10 @@ Specification Document: RFC [7230](https://tools.ietf.org/rfc/rfc7230)
 
 Specification Document: RFC [2817](https://tools.ietf.org/rfc/rfc2817)
 
-1.  Squid is conditionally compliant with this feature. Always ignores
+1. Squid is conditionally compliant with this feature. Always ignores
     the header content and ensures **Upgrade** header is dropped safely.
 
-2.  Squid with
+1. Squid with
     [ssl-bump](/Features/SslBump)
     feature enabled will attempt to upgrade CONNECT requests to TLS
     regardless of the presence of Upgrade headers.
@@ -139,7 +139,7 @@ Specification Document: RFC [2817](https://tools.ietf.org/rfc/rfc2817)
 
 Specification Document: RFC [7231](https://tools.ietf.org/rfc/rfc7231)
 
-1.  The forwarding path needs to be cleaned up to better separate HTTP
+1. The forwarding path needs to be cleaned up to better separate HTTP
     messages and actual content, allowing for proper forwarding of 1xx
     responses. 1xx forwarding has been implemented in
     [Squid-3.2](/Releases/Squid-3.2)

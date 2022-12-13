@@ -67,7 +67,7 @@ Kerberos example):
 
 ## Create keytab
 
-1.  Create keytab for HTTP/fqdn with msktutil. (If used together with
+1. Create keytab for HTTP/fqdn with msktutil. (If used together with
     samba net join use another computer name than the hostname used by
     net join)
 
@@ -88,8 +88,8 @@ Kerberos example):
 
 OR with Samba
 
-1.  Join host to domain with net ads join
-1.  Create keytab for HTTP/fqdn with net ads keytab
+1. Join host to domain with net ads join
+1. Create keytab for HTTP/fqdn with net ads keytab
 
 ```
 kinit administrator@DOMAIN
@@ -158,7 +158,7 @@ message to the client)
 
 ## Step by Step Overview
 
-1.  User login to Desktop
+1. User login to Desktop
 
 - From Windows PC to Windows Active Directory as user \<userid\>
   selecting Netbios domainname DOMAIN
@@ -171,18 +171,18 @@ message to the client)
 - Any of the above will create an AS Request/AS Reply exchange
   ![Squid-1.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-1.jpeg)
 
-2.  User requests URL from Squid
+1. User requests URL from Squid
     
 - Send GET or PUT or any other request via Squid
 - Squid (if setup correctly) replies with Proxy-Authenticate:
   Negotiate
   ![Squid-3.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-3.jpeg)
 
-3.  Desktop attempts to get a Service ticket HTTP/\<squid-fqdn\> from
+1. Desktop attempts to get a Service ticket HTTP/\<squid-fqdn\> from
   KDC as user \< <userid@DOMAIN.COM> \>
   ![Squid-2.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-2.jpeg)
 
-4.  Desktop sends request to Squid
+1. Desktop sends request to Squid
     
 - With Proxy-Authorization: Negotiate \<base64 encoded Kerberos
   token\> if previous step 3. was successful
@@ -191,13 +191,13 @@ message to the client)
   discussed here. See NTLM documentation)
   ![Squid-9.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-9.jpeg)
 
-5.  Squid verifies Kerberos ticket with help of keytab and replies after
+1. Squid verifies Kerberos ticket with help of keytab and replies after
     checking any additional access control settings 
     The ticket contains the the user detail \< <userid@DOMAIN.COM> \>
     and squid can do authorisation decision based on it
     ![Squid-10.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-10.jpeg)
 
-6.  Step 2., 4. and 5. continue until the Kerberos cache with the
+1. Step 2., 4. and 5. continue until the Kerberos cache with the
     received AS and TGS replies expires after about 8 hours (This
     depends on your kdc settings and/or your kinit options) and step 1.
     and 3 need to be done again which is usually transparent on Windows
@@ -205,7 +205,7 @@ message to the client)
 
 If squid_kerb_ldap is used the following steps are happening
 
-1.  Squid "login" to Windows Active Directory or Unix kdc as user
+1. Squid "login" to Windows Active Directory or Unix kdc as user
     \<HTTP/\<fqdn-squid\>@DOMAIN.COM\>. This requires Active Directory
     to have an attribute userPrincipalname set to
     \<HTTP/\<fqdn-squid\>@DOMAIN.COM\> for the associated acount. This
@@ -213,21 +213,21 @@ If squid_kerb_ldap is used the following steps are happening
     
     ![Squid-4.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-4.jpeg)
 
-2.  Squid determines ldap server from DNS by looking at SRV records
+1. Squid determines ldap server from DNS by looking at SRV records
     
     ![Squid-7.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-7.jpeg)
 
-3.  Squid connects to ldap server
+1. Squid connects to ldap server
     
     ![Squid-6.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-6.jpeg)
 
-4.  If Kerberos authentication is supported by the ldap server Squid
+1. If Kerberos authentication is supported by the ldap server Squid
     will request a service ticket \<ldap/\<ldap-server-fqdn\> as user
     \<HTTP/\<squid-fqdn\>@DOMAIN.COM\>
     
     ![Squid-5.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-5.jpeg)
 
-5.  Squid sends LDAP search requests and receives replies using Kerberos
+1. Squid sends LDAP search requests and receives replies using Kerberos
     authentication to the ldap server
     
     ![Squid-6.jpeg](https://wiki.squid-cache.org/ConfigExamples/Authenticate/Kerberos?action=AttachFile&do=get&target=Squid-6.jpeg)

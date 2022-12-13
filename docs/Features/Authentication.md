@@ -185,15 +185,15 @@ The
 [ConfigExamples](/ConfigExamples)
 area contains some detailed examples:
 
-1.  ConfigExamples/Authenticate/Bypass
-2.  ConfigExamples/Authenticate/Groups
-3.  ConfigExamples/Authenticate/Kerberos
-4.  ConfigExamples/Authenticate/Ldap
-5.  ConfigExamples/Authenticate/LoggingOnly
-6.  ConfigExamples/Authenticate/MultipleSources
-7.  ConfigExamples/Authenticate/Mysql
-8.  ConfigExamples/Authenticate/Ncsa
-9.  ConfigExamples/Authenticate/Ntlm
+1. ConfigExamples/Authenticate/Bypass
+1. ConfigExamples/Authenticate/Groups
+1. ConfigExamples/Authenticate/Kerberos
+1. ConfigExamples/Authenticate/Ldap
+1. ConfigExamples/Authenticate/LoggingOnly
+1. ConfigExamples/Authenticate/MultipleSources
+1. ConfigExamples/Authenticate/Mysql
+1. ConfigExamples/Authenticate/Ncsa
+1. ConfigExamples/Authenticate/Ntlm
 10. ConfigExamples/Authenticate/NtlmCentOS5
 11. ConfigExamples/Authenticate/NtlmWithGroups
 12. ConfigExamples/Authenticate/Radius
@@ -407,13 +407,13 @@ Of course definition of *strongest* may vary
 In other words, you **SHOULD** use this order for the *auth_params*
 directives:
 
-1.  negotiate
+1. negotiate
 
-2.  ntlm
+1. ntlm
 
-3.  digest
+1. digest
 
-4.  basic
+1. basic
 
 omitting those you do not plan to offer.
 

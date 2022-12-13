@@ -52,14 +52,14 @@ Socket - an fd on unix, a HANDLE on windows.
 `HttpClientConnection` refers to a single `HttpClientConnection` object
 - which represents the use of a single socket for HTTP.
 
-1.  OS reports new socket available.
+1. OS reports new socket available.
     - Comms layer constructs Socket object.
     - Comms layer holds `RefCountReference` to Socket (comms layer
         stands in for the OS here) - it cannot be freed until the OS is
         notified etc.
     - Socket holds `CallbackReference` to the comms layer to notify it
         of close.
-2.  New Socket is passed to the listening factory for the port it was
+1. New Socket is passed to the listening factory for the port it was
     recieved on.    
     - Factory constructs `HttpClientConnection` to represent the
         Socket at the protocol layer.
@@ -67,24 +67,24 @@ Socket - an fd on unix, a HANDLE on windows.
     - Socket holds `RefCountReference` to the `HttpClientConnection`
         (which subclasses `SocketClient`).
     - `HttpClientConnection` holds `CallbackReference` to the Socket.
-3.  `HttpClientConnection` calls read() on the Socket
+1. `HttpClientConnection` calls read() on the Socket
     - For some systems, the read is scheduled on the socket now. For
         others, when the next event loop occurs, the read willl be done.
     - Socket gets a `RefCount` reference to the dispatcher.
-4.  Socket requests read from the OS (if it was not already scheduled)
-5.  read completes
+1. Socket requests read from the OS (if it was not already scheduled)
+1. read completes
     - Socket hands the `HttpClientConnection` and the read result to
         the dispatcher.
     - Dispatcher holds `CallbackReference` to `HttpClientConnection`
-6.  Dispatcher calls back `HttpClientConnection`    
+1. Dispatcher calls back `HttpClientConnection`    
     - `HttpClientConnection` fails to parse the request.
-7.  `HttpClientConnection` calls write on the Socket to send an error
+1. `HttpClientConnection` calls write on the Socket to send an error
     page
     - depending on the socket logic, a write may be issued
         immediately, or it may wait for the next event loop.
     - Socket gets a `RefCountReference` to the dispatcher
-8.  Socket issues a write to the OS (if not issued immediately)
-9.  write completes
+1. Socket issues a write to the OS (if not issued immediately)
+1. write completes
     - Socket hands `HttpClientConnection` and the write result to the
         dispatcher
     - Dispatcher holds `CallbackReference` to `HttpClientConnection`
@@ -113,41 +113,41 @@ Socket - an fd on unix, a HANDLE on windows.
 
 **Case 1**: the read gets EOF first (the shutdown was acked by the far end)
 
-1.  the read completes    
+1. the read completes    
     - Socket marks its read channel as closed.
     - Socket hands the `LingerCloseSocketClient` and the read result
         to the dispatcher.
     - Dispatcher holds `CallbackReference` to `LingerSocketClient`
-2.  Dispatch hands read result to `LingerSocketClient`
+1. Dispatch hands read result to `LingerSocketClient`
     - `LingerSocketClient` sees that EOF has been reached.
-3.  `LingerSocket` calls close on Socket.
+1. `LingerSocket` calls close on Socket.
     - Socket does sd_shutdown(SD_BOTH) and close(fd).
-4.  Socket calls back the comms layer callback noting its finished with
+1. Socket calls back the comms layer callback noting its finished with
     - Comms layer drops its `RefCountReference` to the socket.
-5.  Socket frees due to no references
+1. Socket frees due to no references
     - Socket calls 'socket_detached' on the `LingerSocketClient`.
-6.  `LingerSocketClient` frees due to no references.
+1. `LingerSocketClient` frees due to no references.
 
 **Case 2**: the Linger timeout fires.
 
-1.  the `EventScheduler` puts the `LingerSocketClient` into the dispatch
+1. the `EventScheduler` puts the `LingerSocketClient` into the dispatch
     queue.
     - Dispatcher holds `CallbackReference` to the `LingerSocketClient`
     - `EventScheduler` drops its `CallbackReference` to the
         `LingerSocketClient`
-2.  Dispatcher fires event to `LingerSocketClient`
+1. Dispatcher fires event to `LingerSocketClient`
     - Dispatcher drops `CallbackReference` to the `LingerSocketClient`
-3.  `LingerSocketClient` calls socket.force_close()
+1. `LingerSocketClient` calls socket.force_close()
     - Socket does sd_shutdown(SD_BOTH) and close(fd).
-4.  Socket calls back the comms layer callback noting its finished with
+1. Socket calls back the comms layer callback noting its finished with
     - Comms layer drops its `RefCountReference` to the socket.
-5.  Socket frees due to no references
+1. Socket frees due to no references
     - Socket calls 'socket_detached' on the `LingerSocketClient`.
-6.  `LingerSocketClient` frees due to no references.
+1. `LingerSocketClient` frees due to no references.
 
 ## Internal Request
 
-1.  listening socket factory creates `SocketClient` object for an opened
+1. listening socket factory creates `SocketClient` object for an opened
     socket:
     - Socket owns the `SocketClient` via `RefCount`.
     - Socket is owned by the comms layer. If FD based, its in a table.
@@ -160,7 +160,7 @@ Socket - an fd on unix, a HANDLE on windows.
         hand the callback to be called in. This could be 'this' if we
         structure the ap well, or it could be some other thing.
         > :x:  needs more detail/care.
-2.  Client parses the URL into a normalised request using its native
+1. Client parses the URL into a normalised request using its native
     protocol : an `HTTPClient` will parse the URL using HTTP rules, a FTP
     client would do whatever FTP proxies do to get a target server etc.
     This creates a new object, to handle that one request - a
@@ -169,16 +169,16 @@ Socket - an fd on unix, a HANDLE on windows.
     request from the core: Socket has callbacks to `SocketClient`
     `SocketClient` owns Socket, and owns the `ClientRequest` it has
     created.
-3.  `SocketClient` calls `ClientRequest`.at`ReadFront`() to indicate the
+1. `SocketClient` calls `ClientRequest`.at`ReadFront`() to indicate the
     `ClientRequest` is now at the front of the queue for the socket and
     is able to start reading body data if it wants to. Socket has
     callbacks to `SocketClient` `SocketClient` owns Socket, and owns the
     `ClientRequest` it has created. `ClientRequest` has a callback
     handle to `SocketClient`
-4.  `ClientRequest` calls `SocketClient`.finishedReadingRequest() to
+1. `ClientRequest` calls `SocketClient`.finishedReadingRequest() to
     indicate it will not read any more data from the `SocketClient`, and
     that the next request can be parsed.
-5.  `SocketClient` calls `ClientRequest`.atWriteFront() to indicate the
+1. `SocketClient` calls `ClientRequest`.atWriteFront() to indicate the
     `ClientRequest` is now at the front of the queue for the socket
     `ClientRequest` has callbacks to `SocketClient` to call on events:
     `WillNotReadAnyMore`, `SocketMustBeClosed`, `SocketMustBeReset`.
@@ -186,20 +186,20 @@ Socket - an fd on unix, a HANDLE on windows.
     and owns the `ClientRequest` it has created. `ClientRequest` has
     callbacks to `SocketClient` to call on events: `WillNotReadAnyMore`,
     `SocketMustBeClosed`, `SocketMustBeReset`, and
-6.  `ClientRequest` asks for a response to this normalised request from
+1. `ClientRequest` asks for a response to this normalised request from
     the URL mapper at the core of squid Socket has callbacks to
     `SocketClient` `SocketClient` owns Socket, and owns the
     `ClientRequest` it has created. `ClientRequest` has calbacks to
     `SocketClient` to call on events: `WillNotReadAnyMore`,
     `SocketMustBeClosed`, `SocketMustBeReset`.
-7.  the URL mapper determines (based on the scheme or url path) that the
+1. the URL mapper determines (based on the scheme or url path) that the
     request is for an internal resource
-8.  The request is forwarded to the internal resource to satisfy. An
+1. The request is forwarded to the internal resource to satisfy. An
     object is given to the Client which represents the 'source' of the
     data - this has methods on it to allow requesting the response
     headers, pulling of the data stream, signalling cancellation of the
     clients request.
-9.  The internal resource object is called by the client to initiate
+1. The internal resource object is called by the client to initiate
     transfer, it then delivers the internal headers, and the internally
     generated data.
 10. The internal resource signals end of file to the client in its last

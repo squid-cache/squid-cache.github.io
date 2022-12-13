@@ -31,8 +31,8 @@ content) can generate. The warnings are legitimate and are caused by
 Squid-provided site certificate. Two things may be wrong with that
 certificate:
 
-1.  Squid certificate is not signed by a trusted authority.
-2.  Squid certificate name does not match the site domain name.
+1. Squid certificate is not signed by a trusted authority.
+1. Squid certificate name does not match the site domain name.
 
 Squid can do nothing about (A), but in most targeted environments, users
 will trust the "man in the middle" authority and install the
@@ -127,10 +127,10 @@ section of users' browsers.
 
 For example, in FireFox:
 
-1.  Open 'Preferences'
-2.  Go to the 'Advanced' section, 'Encryption' tab
-3.  Press the 'View Certificates' button and go to the 'Authorities' tab
-4.  Press the 'Import' button, select the .der file that was created
+1. Open 'Preferences'
+1. Go to the 'Advanced' section, 'Encryption' tab
+1. Press the 'View Certificates' button and go to the 'Authorities' tab
+1. Press the 'Import' button, select the .der file that was created
     previously and pres 'OK'
 
 In theory, you must either import your root certificate into browsers or

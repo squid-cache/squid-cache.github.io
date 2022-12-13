@@ -15,18 +15,18 @@ satisfied.
 
 The various directives are evaluated in this order:
 
-1.  `always_direct`
+1. `always_direct`
 :     if it matches as *allow*, go to origin
-2.  `never_direct`
+1. `never_direct`
 :     if it matches as *allow*, go to a parent instead of origin in
         the cases below
-3.  `hierarchy_stoplist`
+1. `hierarchy_stoplist`
 :     if it matches as *allow*, go to origin
-4.  determine if a request is hierarchic
+1. determine if a request is hierarchic
 :     if it is, check whether siblings or parents have the object via
       cache digests or ICP. In case of hit, ask the fastest among
       those hiting for the object
-5.  go to origin
+1. go to origin
 
 **What makes a request hierarchic**
 

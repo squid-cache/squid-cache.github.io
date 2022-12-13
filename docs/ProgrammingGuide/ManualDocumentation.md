@@ -49,9 +49,9 @@ below.
 
 One initial line of content.
 
-1.  name of file being documented. Marked not for translation.
-2.  a hyphen. Marked not for translation.
-3.  A one-line description of the file. Suitable for use in a title.
+1. name of file being documented. Marked not for translation.
+1. a hyphen. Marked not for translation.
+1. A one-line description of the file. Suitable for use in a title.
 
 If a version number is relevant state it in a separate paragraph below
 the name details.

@@ -223,7 +223,7 @@ your LDAP software of course. This is an example configuration:
 
 ## Frequently Asked Questions
 
-1.  Why do you use Squid at all? Seems like Webwasher can do all you
+1. Why do you use Squid at all? Seems like Webwasher can do all you
     want without Squid.
       - Squid is used for caching and because of its flexible ACLs. If
         you don't need that you can as well just use Webwasher and let

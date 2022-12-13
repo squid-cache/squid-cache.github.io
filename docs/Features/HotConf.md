@@ -500,15 +500,15 @@ is OK, all modules are asked to \[re\]configure themselves using these
 Config objects. We can even go further and have three reconfiguration
 steps:
 
-1.  **Parsing** -- Module::parse(tokenizer) is called for all modules,
+1. **Parsing** -- Module::parse(tokenizer) is called for all modules,
     producing Module::Config objects. Abort reconfiguration on errors.
     No changes to the current config.
 
-2.  **Validation** -- Module::canReconfigure(cfg) is called for all
+1. **Validation** -- Module::canReconfigure(cfg) is called for all
     modules, producing success/errors. Abort reconfiguration on errors.
     No changes to the current config.
 
-3.  **Application** -- Module::reconfigure(cfg) is called for all
+1. **Application** -- Module::reconfigure(cfg) is called for all
     modules. Should not fail. Changes current config.
 
 One of the biggest challenges here is handling dependencies between
@@ -665,7 +665,7 @@ the former first.
 
 In my model, there are two most important design decisions:
 
-1.  Each module has its own Config class (i.e., Module::Config),
+1. Each module has its own Config class (i.e., Module::Config),
     inherited from some common base ModuleConfig class. Only module M
     users know the details of M::Config. Others just know it is an
     instance of the base ModuleConfig class, with a few common methods
@@ -673,7 +673,7 @@ In my model, there are two most important design decisions:
     one SquidConfig class, but that is not important in most cases. The
     exact shape of that SquidConfig class is not important for now.
 
-2.  A module Config object has no runtime effect on Squid except when it
+1. A module Config object has no runtime effect on Squid except when it
     is used as the "current" config for the module. For each module,
     many, possibly conflicting, Config objects might exist at the same
     time, but there is only one current config for each module and for
@@ -682,7 +682,7 @@ In my model, there are two most important design decisions:
 And there are three most important configuration and reconfiguration
 steps:
 
-1.  During the first step, each Module creates its Config object by
+1. During the first step, each Module creates its Config object by
     parsing whatever squid.conf options are needed to be parsed for that
     module. Let's ignore how that parsing is done for now. Let's ignore
     how the module decides which parts of squid.conf are relevant to
@@ -692,7 +692,7 @@ steps:
     with no runtime effect, is the ultimate result of step1. If a module
     fails to produce a valid Config object, step1 aborts.
 
-2.  During the second step, each module validates its Config object in
+1. During the second step, each module validates its Config object in
     the context of other Config objects where necessary. This step can
     be merged with step1, but it is better to keep it separate for
     several reasons. One reason is to allow for inter-module checks such
@@ -703,7 +703,7 @@ steps:
     is free to do so. Such module will just always say "yes, this config
     is valid" for step2.
 
-3.  During the third step, each module applies its Config object (i.e.,
+1. During the third step, each module applies its Config object (i.e.,
     makes the supplied Config object "current"). This step must be
     separate and last because we do not want to leave Squid in a
     partially configured state. If squid.conf became invalid,
@@ -769,7 +769,7 @@ module.*
 
 <!-- end list -->
 
-1.  *Let's ignore how that parsing is done for now.*
+1. *Let's ignore how that parsing is done for now.*
     
       - I get worried. But okay.
     

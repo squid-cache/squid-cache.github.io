@@ -36,7 +36,7 @@ for a short time. When the token is generated as a random blob or as a
 container for encrypted user identity they are equivalent to Digest
 nonce.
 
-1.  In secure form the Bearer tokens are treated as nonce and may not be
+1. In secure form the Bearer tokens are treated as nonce and may not be
     replayed. Nonce tokens are:
     - more secure than NTLM and traditional (user:pass) Basic
         authentication,
@@ -46,7 +46,7 @@ nonce.
     - roughly matching (or less) secure as strong forms of Digest
         authentication with true nonce behaviour,
     - less secure than Negotiate authentication.
-2.  In weak form Bearer tokens replay is permitted during a TTL. The
+1. In weak form Bearer tokens replay is permitted during a TTL. The
     level of risk grows with longer TTL. Bearer using a short but
     non-zero TTL is:
     - more secure than traditional (user:pass) Basic authentication,
@@ -137,10 +137,10 @@ Result line sent back to Squid:
 Just like any other security protocol, support for Bearer in Squid is
 made up by two parts:
 
-1.  code within Squid to talk to the client.
+1. code within Squid to talk to the client.
       - [Squid-3.5](/Releases/Squid-3.5)
         or later built with `--enable-auth-bearer`
-2.  one or more authentication helpers which perform the grunt work.
+1. one or more authentication helpers which perform the grunt work.
       - As yet there are no helpers freely available.
 
 Of course the protocol needs to be enabled in the configuration file for
