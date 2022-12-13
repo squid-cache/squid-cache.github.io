@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: Developer
 ---
 # Guido Serassio
 
@@ -9,7 +8,3 @@ of the native Windows port of Squid.
 
 More information about me can be found on my personal homepage
 <http://www.serassio.it/>.
-
-Email: `<serassio AT SPAMFREE squid-cache DOT org>`
-
-  - [CategoryHomepage](/CategoryHomepage)

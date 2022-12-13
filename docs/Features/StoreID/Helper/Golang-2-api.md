@@ -2,7 +2,7 @@
 categories: ReviewMe
 published: false
 ---
-``` highlight
+``` golang
 package main
 
 /*

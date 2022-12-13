@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # Configuring Transparent Interception with Fedora Core Linux and WCCPv2
 
-  - *by [ReubenFarrelly](/ReubenFarrelly)*
+  - *by Reuben Farrelly*
 
 ## Outline
 

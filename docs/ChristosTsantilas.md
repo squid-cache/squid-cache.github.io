@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: Developer
 ---
 # Christos Tsantilas
 

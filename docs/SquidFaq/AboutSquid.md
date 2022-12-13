@@ -104,7 +104,7 @@ That question is best answered by the official mailing lists page at
 - [Authoritative Config Guides](http://www.squid-cache.org/Doc/config/)
 - Squid documentation in [German](http://www.squid-handbuch.de/),
   [Turkish](http://istanbul.linux.org.tr/~ilkerg/squid/elkitabi.html)
-- Tutorial on 
+- Tutorial on
   [Configuring Hierarchical Squid Caches](http://www.squid-cache.org/Doc/Hierarchy-Tutorial/)
 - [RFC 2186](https://datatracker.ietf.org/doc/html/rfc2186) ICPv2 --
   Protocol
@@ -142,7 +142,7 @@ appropriate CONTRIBUTORS and CREDITS files can be found in the
 corresponding Squid sources, available for
 [download](http://www.squid-cache.org/Versions/).
 
-Official Squid artwork distribution terms are detailed 
+Official Squid artwork distribution terms are detailed
 [on the website](http://www.squid-cache.org/Artwork/).
 
 # How to add a new Squid feature, enhance, of fix something?
@@ -234,7 +234,7 @@ Chris Tilbury, Jeff Madison, Mike Batchelor, Bill Bogstad, Radu Greab,
 F.J. Bosscha, Brian Feeny, Martin Lyons, David Luyer, Chris Foote, Jens
 Elkner, Simon White, Jerry Murdock, Gerard Eviston, Rob Poe,
 [FrancescoChemolli](/FrancescoChemolli),
-[ReubenFarrelly](/ReubenFarrelly)
+Reuben Farrelly
 [AlexRousskov](/AlexRousskov)
 [AmosJeffries](/AmosJeffries)
 

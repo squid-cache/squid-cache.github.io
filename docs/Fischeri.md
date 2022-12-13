@@ -4,10 +4,10 @@ published: false
 ---
 # Project Fischeri
 
-  - Fischeri  
+  - Fischeri
     From the Latin *V. fischeri* bioluminecent symbiotes that allow
     Squid to shine.
-    
+
     Pronounced FISH-er-ee
 
 ## Overview
@@ -88,7 +88,7 @@ repositories. See package list below, or the individual
 
   - Have attempted to contact the following package maintainers already,
     here is what has resulted:
-    
+
     <table>
     <tbody>
     <tr class="odd">
@@ -149,26 +149,26 @@ repositories. See package list below, or the individual
 ### Stuff Waiting:
 
   - Major issues:
-    
+
       - bzr VCS not possible for all distros (leads into problem \#2)
-    
+
       - would entail some amount of code duplication with distribution
         maintainers.
-        
+
           - which leads to maintenance issues keeping it in sync.
-    
+
       - some packaging systems not possible to be externally scripted.
 
 ## Current Packages
 
 Beta testing:
 
-  - 
-    
+  -
+
     |        |                                                         |
     | ------ | ------------------------------------------------------- |
     | Ubuntu | <https://launchpad.net/~yadi/+archive/ppa> (Maverick) |
-    
+
 
 ## Build-your-own package
 

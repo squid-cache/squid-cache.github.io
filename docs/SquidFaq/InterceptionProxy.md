@@ -115,7 +115,7 @@ The first two steps are required and the last two may or may not be
 required depending on how you intend to route the HTTP traffic to your
 cache.
 
-> :warning: 
+> :warning:
   It is **critical** to read the full comments in the squid.conf file
   and in this document in it's entirety before you begin. Getting
   Interception Caching to work with Squid is non-trivial and requires many
@@ -573,7 +573,7 @@ following command:
 
 Contributors: [Glenn Chisholm](mailto:glenn@ircache.net),
 [Lincoln Dale](mailto:ltd@cisco.com) and
-[ReubenFarrelly](/ReubenFarrelly).
+Reuben Farrelly.
 
 WCCP is a very common and indeed a good way of doing Interception
 Caching as it adds additional features and intelligence to the traffic

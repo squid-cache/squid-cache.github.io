@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # Configuring a Cisco IOS 12.4(6) T2 with WCCPv2 Interception
 
-- *by  [ReubenFarrelly](/ReubenFarrelly)*
+- *by  Reuben Farrelly*
 
 ## Outline
 
@@ -61,7 +61,7 @@ only**
 
     modprobe ip_gre
     ip tunnel add wccp0 mode gre remote $ASA-EXT-IP local $SQUID-IP dev eth0
-    
+
     ifconfig wccp0 $SQUID-IP netmask 255.255.255.255 up
 
 disable rp_filter, or the packets will be silently discarded
