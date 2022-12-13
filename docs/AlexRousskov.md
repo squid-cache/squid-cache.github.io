@@ -5,7 +5,7 @@ categories: Developer
 
 Email: rousskov (at) measurement-factory (dot) com
 
-Together with [DuaneWessels](/DuaneWessels),
+Together with Duane Wessels,
 I orchestrate [The Measurement Factory](http://www.measurement-factory.com/)
 work on various Squid projects.
 Here is an *auto-generated* (and partial and old) list of my Squid contributions:

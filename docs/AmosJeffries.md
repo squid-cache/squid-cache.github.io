@@ -18,8 +18,7 @@ Networks Ltd. in New Zealand. Which provides customers from around the
 world with a web hosting, email and content delivery network (CDN) built
 with Squid.
 
-A few bits and pieces about Squid including
-[PayPal](/PayPal)
+A few bits and pieces about Squid including PayPal
 donations to me can be found at
 <http://www.treenet.co.nz/projects/squid/>
 
@@ -46,5 +45,4 @@ Here is an *auto-generated*, partial and out of date list of my Squid projects:
 1. [Features/Optimizations](/Features/Optimizations)
 1. [Features/Socks](/Features/Socks)
 1. [Features/SourceLayout](/Features/SourceLayout)
-1. [PerformanceMeasure](/PerformanceMeasure)
 1. [Translating Squid Errors](/Translations)

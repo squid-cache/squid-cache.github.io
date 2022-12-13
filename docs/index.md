@@ -21,7 +21,7 @@ If you experience problems with the site or the contents, please see
 - [Performance Analysis](/KnowledgeBase/PerformanceAnalysis):
     "Help! My users complain that the proxy is slow!"
 - an all-time FAQ: [What is the best OS for Squid?](/BestOsForSquid)
-- [Things you can (and cannot) do with NTLM](/NTLMIssues)
+- [Things you can (and cannot) do with NTLM](/KnowledgeBase/NTLMIssues)
 - [Zero Sized Reply](/SquidFaq/ZeroSizedReply): A frequent issue with some setups
 - How to run [multiple squid servers](/KnowledgeBase/MultipleInstances) on a single box
 - Squid [Configuration Examples](/ConfigExamples)
@@ -41,7 +41,6 @@ mailing list, and during pull request reviews on
 
 - The main Squid [site](http://www.squid-cache.org/)
 - The Bugzilla [database](http://bugs.squid-cache.org/index.cgi)
-- The Squijj refresh_pattern analysis [program](http://www.mnot.net/squij/)
 - The Calamaris log file analysis [tool](http://freshmeat.net/projects/calamaris/)
 - Visolve's configuration manuals for
     [Squid 3.0](http://www.visolve.com/squid/squid30/contents.php), also mostly

@@ -30,13 +30,13 @@ In `/srv/jenkins/docker-images` there are also a few utility commands to
 support managing containers.
 
   - `./interactive <containername>`
-    
+
       - run container "farm-\<containername\>" interactively. Its
         use-case is to manage the software installed in the container
         image.
 
   - `./slave <containername>`
-    
+
       - script meant to launch the jenkins slave with the appropriate
         command-line arguments
 
@@ -60,7 +60,7 @@ list (assuming a debian host)
 
     apt -y update && apt -y upgrade && apt -y install openjdk-11-jre-headless docker.io
     useradd -m -u 1000 -G docker jenkins
-    
+
     (optional)
     docker pull --all-tags squidcache/buildfarm
 
@@ -68,8 +68,7 @@ list (assuming a debian host)
 
 These run on buildmaster, here's how the concepts fit together: - builds
 need to be tied to a node labelled "docker-build-host". This label is
-provided by the
-[DigitalOcean](/DigitalOcean)
+provided by the DigitalOcean
 plugin, which instantiates a new cloud VM on demand, and tears it down
 when not used. The cloud initialiser installs what is needed to run a
 slave. If it is a matrix build, there needs to be a "slaves" matrix axis
