@@ -1,5 +1,5 @@
 ---
-categories: Feature, WantedFeature
+categories: [Feature, WantedFeature]
 ---
 # Feature: Source layout improvements
 

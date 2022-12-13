@@ -1,20 +1,15 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Config Includes
 
-  - **Version**: 3.0, 2.7
+- **Version**: 3.0, 2.7
+- **Status**: complete.
+- **Developer**:
+    [AdrianChadd](/AdrianChadd) (2.7),
+    [AmosJeffries](/AmosJeffries) (3.0)
 
-  - **Status**: complete.
-
-  - **Developer**:
-    [AdrianChadd](/AdrianChadd)
-    (2.7),
-    [AmosJeffries](/AmosJeffries)
-    (3.0)
-
-# Details
+## Details
 
 Other popular software, most notably apache, have long had the
 capability of breaking their large or complex configurations into
@@ -51,7 +46,7 @@ folders worth of files is provided.
 This will include a sorted list of files matching the pattern in order
 at the include position.
 
-# Future Developments
+## Future Developments
 
 With this feature available it permits the development of a library of
 configuration snippets to be easily shared between the squid user
@@ -61,5 +56,3 @@ We hope to provide a repository of config examples for general use. Some
 work has been done towards this in the [Config
 Examples](/ConfigExamples)
 section.
-
-[CategoryFeature](/CategoryFeature)

@@ -1,26 +1,22 @@
 ---
-categories: ReviewMe
-published: false
+categories: [Feature, WantedFeature]
 ---
 # Feature: Load Balancing
 
-  - **Goal**: Load balance origin servers or peers.
-
-  - **Version**: 2.6
+- **Goal**: Load balance origin servers or peers.
+- **Version**: 2.6
 
 ## Wish List
 
 Support for squid to act as a load balancer is almost there, but some
 features are not well integrated or missing.
 
-  - Parent selection can now be done with ACLs.
-
-  - Session affinity can currently be done using the client IP
+- Parent selection can now be done with ACLs.
+- Session affinity can currently be done using the client IP
     addresses. To have that done as a cookie, it is now responsibility
     of the backend application to set that cookie. It would be nice to
     have an external authenticator in charge of that.
-
-  - Squid does accounting of all traffic going to a peer. It would be
+- Squid does accounting of all traffic going to a peer. It would be
     nice to have a byte-based balancing algorithm or two.
 
 ## Overall peer selection logic
@@ -34,7 +30,7 @@ list serves the request, but various failures may necessitate contacting
 other destinations. This section describes how the destination list is
 constructed.
 
-  - :warning:
+> :warning:
     This section currently assumes that there are **no** pinned
     connections, ICP/HTCP queries, netdb databases, and Cache Digests to
     deal with. If your Squid uses those features, the destination list
@@ -45,13 +41,10 @@ constructed.
 First of all, Squid decides whether to go direct, selecting from the
 following four possible answers:
 
-  - Go direct.
-
-  - Go through a peer.
-
-  - Prefer going direct (but peer if needed).
-
-  - Prefer peering (but go direct if needed).
+- Go direct.
+- Go through a peer.
+- Prefer going direct (but peer if needed).
+- Prefer peering (but go direct if needed).
 
 This decision to go direct or use peering is based on the combination of
 [always_direct](http://www.squid-cache.org/Doc/config/always_direct),
@@ -74,27 +67,19 @@ If Squid decides to peer with another proxy, it builds the destination
 list using the following three steps:
 
 1. Add the "best" peer to use, if any.
-
 2. Add All Alive Parents, if any.
-
 3. Add Default Parent, if any.
 
 The "best" peer in step \#1 is the very first peer found by the
 following ordered sequence of peer-selection algorithms:
 
-  - Source IP Hash
-
-  - Username Hash
-
-  - CARP
-
-  - Round Robin
-
-  - Weighted Round Robin
-
-  - First-Up Parent
-
-  - Default Parent
+- Source IP Hash
+- Username Hash
+- CARP
+- Round Robin
+- Weighted Round Robin
+- First-Up Parent
+- Default Parent
 
 The Default Parent algorithm at the end of step \#1 sequence is the same
 as the algorithm executed at step \#3, but Default Parent in step \#1
@@ -106,10 +91,9 @@ in step \#2) checks each candidate peer against the following
 *disqualifying* conditions before adding the candidate to the
 destination list:
 
-  - The peer has an *originserver* type and the request is a CONNECT for
+- The peer has an *originserver* type and the request is a CONNECT for
     a non-peer port.
-
-  - [cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
+- [cache_peer_access](http://www.squid-cache.org/Doc/config/cache_peer_access)
     denies access to the peer.
 
 Peers that meet at least one of the above disqualifying conditions are
@@ -120,7 +104,6 @@ not added to the destination list.
 Squid builds the destination list using the following two steps:
 
 1. Add the origin server to the destination list.
-
 2. If the request is "hierarchical" or
     [nonhierarchical_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
     is off, then Squid follows the three steps described in the "Going
@@ -134,7 +117,6 @@ Squid builds the destination list using the following two steps:
     [nonhierarchical_direct](http://www.squid-cache.org/Doc/config/nonhierarchical_direct)
     is off, then Squid follows the three steps described in the "Going
     through a peer" subsection above. Otherwise, this step does nothing.
-
 2. Add the origin server to the destination list.
 
 ## Peer Selection Algorithms
@@ -150,13 +132,12 @@ to the next.
 
 In absence of any configuration the peers selected will be:
 
-  - first ICP responding sibling, followed by **default** **first-up**
+- first ICP responding sibling, followed by **default** **first-up**
     parent then **default**
     [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer).
 
 ### HTCP : Hyper Text Caching Protocol
 
-|              |                                    |                                                    |
 | ------------ | ---------------------------------- | -------------------------------------------------- |
 | **Log Code** | UDP_\*, SIBLING_HIT, PARENT_HIT |                                                    |
 | **Options**  | no-query                           | Disable HTCP queries to this peer.                |
@@ -174,7 +155,6 @@ can cause a larger background traffic overhead.
 
 ### ICP : Internet Cache Protocol
 
-|              |                                    |                                   |
 | ------------ | ---------------------------------- | --------------------------------- |
 | **Log Code** | UDP_\*, SIBLING_HIT, PARENT_HIT |                                   |
 | **Options**  | no-query                           | Disable ICP queries to this peer. |
@@ -193,7 +173,6 @@ selection in the modern www. see HTCP below for the fix.
 
 ### Default Parent
 
-|               |                 |
 | ------------- | --------------- |
 | **Log entry** | DEFAULT_PARENT |
 | **Options**   | default         |
@@ -202,7 +181,7 @@ If a peer is marked as *default* it is always considered for use as a
 fallback source. Although if DEAD or blocked by ACL requirements it may
 be skipped. Only one peer may be marked as the default.
 
-  - :x:
+> :x:
     Despite the documentation stating this since squid-2.6; in squid
     older than 3.1.15 a default peer will in fact be preferred over all
     other selection algorithms. This has been corrected in 3.1.15 so
@@ -210,7 +189,6 @@ be skipped. Only one peer may be marked as the default.
 
 ### Source IP Hash
 
-|               |                    |                                            |
 | ------------- | ------------------ | ------------------------------------------ |
 | **Log entry** | SOURCEHASH_PARENT |                                            |
 | **Options**   | sourcehash         | Use IP-based hash algorithm with this peer |
@@ -224,7 +202,6 @@ not available.
 
 ### Username Hash
 
-|               |                  |                                               |
 | ------------- | ---------------- | --------------------------------------------- |
 | **Log entry** | USERHASH_PARENT |                                               |
 | **Options**   | userhash         | Use login based hash algorithm with this peer |
@@ -250,7 +227,6 @@ clusters which split up the transaction stream for load balancing.
 
 ### CARP : Cache Array Routing Protocol
 
-|               |      |                                        |
 | ------------- | ---- | -------------------------------------- |
 | **Log entry** | CARP |                                        |
 | **Options**   | carp | Use CARP hash algorithm with this peer |
@@ -269,7 +245,6 @@ The efficient alternatives are multicast ICP or HTCP.
 
 ### Round-Robin
 
-|               |                    |                                                                  |
 | ------------- | ------------------ | ---------------------------------------------------------------- |
 | **Log entry** | ROUNDROBIN_PARENT |                                                                  |
 | **Options**   | weight=N           | Un-balance the connections to pick this peer N times each cycle. |
@@ -297,11 +272,8 @@ Let's say that I have the following (new) connections in the following
 sequence.
 
 1. Simple HEAD request.
-
 2. HTTP download of kernel source.
-
 3. Simple image GET request, closed immediately.
-
 4. CONNECT tunnel.
 
 You will find that connections \#1 and \#3 are sent to peer-A and that
@@ -320,7 +292,6 @@ balancing.
 
 ### Weighted Round-Robin
 
-|               |                    |                                                                  |
 | ------------- | ------------------ | ---------------------------------------------------------------- |
 | **Log entry** | ROUNDROBIN_PARENT |                                                                  |
 | **Options**   | weight=N           | Un-balance the connections to pick this peer N times each cycle. |
@@ -355,14 +326,13 @@ If you want to reduce or increase this bias you can configure the
 takes the number of milliseconds to be subtracted from RTT before the
 calculation is made.
 
-  - :warning:
+> :warning:
     Don't forget that basetime=T is a fixed value, and RTT lag can vary
     with network conditions. So this is just a bias, not a "fix" for
     distance problems.
 
 ### First-Up Parent
 
-|               |                   |
 | ------------- | ----------------- |
 | **Log entry** | FIRST_UP_PARENT |
 | **Options**   | (none)            |
@@ -373,7 +343,3 @@ Select the first squid.conf listed
 
 This algorithm is the default used for **parent** peers. There is
 currently no explicit configuration option to turn it on/off.
-
-[CategoryFeature](/CategoryFeature)
-|
-[CategoryWish](/CategoryWish)

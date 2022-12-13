@@ -1,15 +1,12 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Linking Squid into a Cache Hierarchy
 
-  - **Goal**: To connect multiple Squid together forming a 'mesh' or
+- **Goal**: To connect multiple Squid together forming a 'mesh' or
     hierarchy of caches.
-
-  - **Status**: completed.
-
-  - **Version**: 1.2
+- **Status**: completed.
+- **Version**: 1.2
 
 # Details
 
@@ -59,7 +56,7 @@ default. The
 **off** directive tells Squid to send these requests via the parent
 anyway.
 
-  - :warning:
+> :warning:
     The
     [hierarchy_stoplist](http://www.squid-cache.org/Doc/config/hierarchy_stoplist)
     directive is another which will cause traffic to go DIRECT instead
@@ -84,7 +81,7 @@ one parent cache and two sibling caches:
     cache_peer childcache2.example.com   sibling 3128 3130
     cache_peer childcache3.example.com   sibling 3128 3130
 
-  - :warning:
+> :warning:
     cache_peer_domain is deprecated and not longer available from
     current Squid versions.
 
@@ -104,18 +101,18 @@ for certain domains:
     cache_peer sd.cache.nlanr.net   parent 3128 3130
     cache_peer uc.cache.nlanr.net   sibling 3128 3130
     cache_peer bo.cache.nlanr.net   sibling 3128 3130
-    
+
     acl unsw dstdomain .au
     cache_peer_access electraglide.geog.unsw.edu.au allow unsw
-    
+
     acl nzgate dstdomain .au .aq .fj .nz
     cache_peer_domain cache1.nzgate.net.nz allow nzgate
-    
+
     acl nlanr-eu dstdomain .uk .de .fr .no .se .it
     cache_peer_domain pb.cache.nlanr.net allow nlanr-eu
-    
+
     cache_peer_domain it.cache.nlanr.net allow nlanr-uk
-    
+
     acl nlanr-sa dstdomain .mx .za .mu .zm
     cache_peer_domain sd.cache.nlanr.net allow nlanr-sa
 
@@ -153,16 +150,13 @@ caches near you. Keep in mind that just because a cache is registered in
 the database **does not** mean they are willing to be your
 parent/sibling/child. But it can't hurt to ask...
 
-# Troubleshooting
+## Troubleshooting
 
-## My cache registration is not appearing in the Tracker database.
+### My cache registration is not appearing in the Tracker database.
 
-  - Your site will not be listed if your cache IP address does not have
+- Your site will not be listed if your cache IP address does not have
     a DNS PTR record. If we can't map the IP address back to a domain
     name, it will be listed as "Unknown."
-
-  - The registration messages are sent with UDP. We may not be receiving
+- The registration messages are sent with UDP. We may not be receiving
     your announcement message due to firewalls which block UDP, or
     dropped packets due to congestion.
-
-[CategoryFeature](/CategoryFeature)

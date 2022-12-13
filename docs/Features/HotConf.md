@@ -1,19 +1,14 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Hot Configuration
 
-  - **Goal**: To remove the many issues squid currently displays due to
-    reconfigure via a full component shutdown/restart cycle.
-
-  - **Status**: underway;
-
-  - **ETA**: unknown
-
-  - **Version**:
-
-  - **Developer**:
+- **Goal**: To remove the many issues squid currently displays due to
+  reconfigure via a full component shutdown/restart cycle.
+- **Status**: underway;
+- **ETA**: unknown
+- **Version**:
+- **Developer**:
     [AmosJeffries](/AmosJeffries)
 
 # Details
@@ -23,38 +18,25 @@ re-loading the config files, and restarting.
 
 This causes many issues which are visible:
 
-  - ports fully closed for a duration
-
-  - memory leaks for SSL contexts, and other in-use objects
-
-  - loss of information on in-transit requests
-
-  - INVALID URL errors when protocol info disappears.
-
-  - request denials when ACLs being checked disappear.
+- ports fully closed for a duration
+- memory leaks for SSL contexts, and other in-use objects
+- loss of information on in-transit requests
+- INVALID URL errors when protocol info disappears.
+- request denials when ACLs being checked disappear.
 
 Related Bug reports:
 
-  - [219](https://bugs.squid-cache.org/show_bug.cgi?id=219)
-
-  - [513](https://bugs.squid-cache.org/show_bug.cgi?id=513)
-
-  - [537](https://bugs.squid-cache.org/show_bug.cgi?id=537)
-
-  - [1545](https://bugs.squid-cache.org/show_bug.cgi?id=1545)
-
-  - [1946](https://bugs.squid-cache.org/show_bug.cgi?id=1946)
-
-  - [2110](https://bugs.squid-cache.org/show_bug.cgi?id=2110)
-
-  - [2460](https://bugs.squid-cache.org/show_bug.cgi?id=2460)
-
-  - [2570](https://bugs.squid-cache.org/show_bug.cgi?id=2570)
-    
+- [219](https://bugs.squid-cache.org/show_bug.cgi?id=219)
+- [513](https://bugs.squid-cache.org/show_bug.cgi?id=513)
+- [537](https://bugs.squid-cache.org/show_bug.cgi?id=537)
+- [1545](https://bugs.squid-cache.org/show_bug.cgi?id=1545)
+- [1946](https://bugs.squid-cache.org/show_bug.cgi?id=1946)
+- [2110](https://bugs.squid-cache.org/show_bug.cgi?id=2110)
+- [2460](https://bugs.squid-cache.org/show_bug.cgi?id=2460)
+- [2570](https://bugs.squid-cache.org/show_bug.cgi?id=2570)
       - A workaround is in use for memory-only caches, but this keeps
         resurfacing. Lately rock type dirs with SMP diskers is causing
         it again.
-    
       - We need to obsolete
         [wccp2_rebuild_wait](http://www.squid-cache.org/Doc/config/wccp2_rebuild_wait).
 
@@ -93,9 +75,8 @@ components configuration settings.
 But also leaves the legacy parser per-type parsing function. Which
 causes two layers to emerge:
 
-  - the underlayer of legacy parser which handles file actions
-
-  - the component layer of squid.conf option handlers
+- the underlayer of legacy parser which handles file actions
+- the component layer of squid.conf option handlers
 
 these are linked together at present by defining the legacy parser
 handlers interface as wrapper functions/macro to the XX::Config object
@@ -112,13 +93,10 @@ deprecated, and obsolete options).
 
 The option handlers:
 
-  - parse the squid.conf line for that option
-
-  - produce clear and understandable error messages when a line is bad
-
-  - produce clear warnings when an option is being deprecated
-
-  - provide for migrating obsolete squid.conf options, a built-in
+- parse the squid.conf line for that option
+- produce clear and understandable error messages when a line is bad
+- produce clear warnings when an option is being deprecated
+- provide for migrating obsolete squid.conf options, a built-in
     [Features/ConfigUpdater](/Features/ConfigUpdater)
 
 It also must provide an API for the startup, shutdown, reload, and
@@ -137,21 +115,14 @@ to use the updated config.
 Some objects will need to be made ref-counted to prevent disappearance
 when an updated config is hot-swapped into place:
 
-  - http_port definitions
-
-  - SSL context settings
-
-  - ACL lists
-
-  - helper settings
-
-  - auth settings
-
-  - delay pools
-
-  - store settings
-
-  - (any others known please add)
+- http_port definitions
+- SSL context settings
+- ACL lists
+- helper settings
+- auth settings
+- delay pools
+- store settings
+- (any others known please add)
 
 The config object for each component needs to have a component
 enable/disable flag or setting. This will allow run-time enabling and
@@ -170,28 +141,21 @@ actions currently done at global level by main.cc
 
 When this is completed;
 
-  - Components can be created semi-autonomously and 'dropped in' to the
-    code base.
-
-  - Each will manage its own set of squid.conf lines.
-
-  - The startup procedure will take less than a second
-
-  - reload will be a zero-downtime event
-
-  - restart will be a zero-downtime event
-
-  - shutdown will be a fast event
-
-  - components such as auth and helpers will be reconfigurable
+- Components can be created semi-autonomously and 'dropped in' to the
+  code base.
+- Each will manage its own set of squid.conf lines.
+- The startup procedure will take less than a second
+- reload will be a zero-downtime event
+- restart will be a zero-downtime event
+- shutdown will be a fast event
+- components such as auth and helpers will be reconfigurable
 
 ## Discussion
 
 :warning: To
 answer, use the "Discussion" link in the main menu
 
-See [Discussed
-Page](/Features/HotConf)
+See [Discussed Page](/Features/HotConf)
 
 Thank you for setting up this page, Amos. Lots of good thoughts here.
 
@@ -208,16 +172,16 @@ but they should not deal with parsing problems while making that
 decision. They should operate on and with configuration objects.
 
 In pseudo C++, and simplifying a bit:
-
+```c++
     // lifecycle
     void Module::init();
     void Module::configure(const Module::Config &cfg);
     void Module::reconfigure(const Module::Config &newCfg);
     void Module::shutdown();
-    
-    // parsing; probably static to avoid module creation  
-    Module::Config *Module::Parse(const SquidDotConfTokenizer &text);
 
+    // parsing; probably static to avoid module creation
+    Module::Config *Module::Parse(const SquidDotConfTokenizer &text);
+```
 \--
 [AlexRousskov](/AlexRousskov)
 
@@ -283,14 +247,14 @@ reconfiguration.
 
 Having initial configuration code also allows you to avoid implementing
 true hot reconfiguration when necessary:
-
+```cpp
     // a sketch of a possible default implementation for modules
     void Module::reconfigure(const Config &newCfg) {
         shutdown();
         init();
         configure(newCfg);
     }
-
+```
 This approach allows for steady migration from the code that does not
 support hot reconfiguration to the code that does. The minimum
 requirement is to implement init/shutdown/configure, which is something
@@ -300,31 +264,31 @@ Finally, I am not sure how the top-level \[re\]configuration manager
 should look like, but I do not understand the problem of "handling
 individual module configs" that your are referring to. Something like
 this sketch might work:
-
+```cpp
     int main() {
         addModule(new Module1); // calls init() and registers
         addModule(new Module2); // calls init() and registers
         addModule(new Module3); // calls init() and registers
         addModule(new Module4); // calls init() and registers
         ...
-    
+
         SquidConfig *cfg = parse();
         configure(*cfg);
-    
+
         mainLoop();
-    
+
         while (registered module container is not empty) {
             delete popModule(); // calls shutdown() and deregisters popped m
         }
     }
-    
+
     // note how parsing is unaware of individual module and configuration
     // types
     SquidConfig *parse() {
         // I do not like the Tokenizer name here; the class does more than
         // just tokenizing because it allows to search for relevant lines
         SquidDotConfTokenizer tokenizer(...);
-    
+
         SquidConfig *cfg = new SquidConfig; // collection of Module cfgs
         for each registered module m {
             // the module will find lines that belong to it by searching
@@ -332,37 +296,37 @@ this sketch might work:
             Config *moduleCfg = m->parse(tokenizer);
             cfg->add(moduleCfg);
         }
-    
+
         if (tokenizer.unusedLines())
             throw "unclaimed config options";
-    
+
         return cfg;
     }
-    
+
     void configure(const SquidConfig &cfg) {
         for each registered module m {
             // find module configuration; hide this inside m->configure()?
             Config *mcfg = cfg.find(m);
-    
+
             // configure the module
             m->configure(*mcfg);
         }
     }
-    
+
     void reconfigure() {
         SquidConfig *newCfg = parse(...);
-    
+
         for each registered module m {
             // find module configuration; hide this inside m->reconfigure()?
             Config *mcfg = newCfg->find(m);
-    
+
             // reconfigure the module
             m->reconfigure(*mcfg);
         }
-    
+
         delete newCfg; // or replace the old global refcounted pointer
     }
-
+```
 \--
 [AlexRousskov](/AlexRousskov)
 
@@ -370,43 +334,43 @@ Aw, heck no. That leaves the configure startup/shutdown process outside
 the main loop and inaccessible to async operations.
 
 Have adjusted your example to be more what I mean:
-
+```cpp
     int main() {
         addModule(new Module1);
             // calls init() and registers "no_cache" as Store::??::parse_cache_acl(...) etc.
         addModule(new Module2);
             // calls init() and registers "adaptation_enable" as Adaptation::??::parse_enable(...) etc.
         ...
-    
+
         SquidConfig::startConfigure();
         scheduleAsync(..., SquidConfig::parse(), ...); // as next job with zero time delay
         scheduleAsync(..., SquidConfig::doneConfigure(), ...); // as next job with zero time delay after parse...
-    
+
         mainLoop();
-    
+
     // I like this loop, however for code simplicity I think it should be its own async event 'shutdown'
         while (registered module container is not empty) {
             delete popModule(); // calls shutdown() and deregisters popped m
         }
     }
-    
+
     // note how parsing is unaware of individual module and configuration
     // types AND even of individual line content tokens!!
     void parse() {
         SquidDotConfTokenizer tokenizer(...);
-    
+
         for each tag = SquidDotConfTokenizer.nextLine() {
            // find handler for that named config option...
-           if ( opt = find(tag)) 
+           if ( opt = find(tag))
                opt->parseHandler(tokenizer);
            else
                handleUnclaimedLine(tag, tokenizer)
         }
-    
+
         if (tokenizer.unusedLines())
             throw "unclaimed config options";
     }
-    
+
     // only used to prep-state during a true reconfigure
     void startConfigure() {
         for each registered module m {
@@ -414,7 +378,7 @@ Have adjusted your example to be more what I mean:
             cfg.startingConfigure();
         }
     }
-    
+
     // used after any config changes from any source...
     void doneConfigure() {
         for each registered module m {
@@ -424,22 +388,22 @@ Have adjusted your example to be more what I mean:
     }
 
     using namespace Module; // ...
-    
+
     Module::Config *current;
     Module::Config *future;
-    
+
     // NP: legacy code here might call its own shutdown() instead of the hot-conf clone().
     startConfigure()
     {
        future = current->clone();
         // maybe followup with any removals needed to reset the future config to 'unused state'
     }
-    
+
     parse(tokeniser)
     {
         // parse tokeniser line into *future ...
     }
-    
+
     // NP: _this_ is the entirety of hot-swap.
     // legacy code which did shutdown earlier will be doing its own restart() stuff here instead of hot-swap.
     reconfigureComplete()
@@ -448,13 +412,13 @@ Have adjusted your example to be more what I mean:
           delete future;
           return;
        }
-    
+
        // anything else needed to finish up with ...
        Module::Config *tmp = current;
        current = future;
        delete tmp;
     }
-
+```
 both layers are essentially the same in call meaning
 Squid::startConfigure calls Module::startConfigure etc. BUT the
 difference is that the scope of each method reduces from file to line
@@ -537,7 +501,7 @@ or parser should deal with.
 Or should the shared line like `  asl bar src all ` be parsed separately
 and stored separately for each component that needs to reference it?
 
-``` 
+```
  We also do not know the order in which the options should be handled by the module (and that order can be dynamic so always using the registration order is not good enough). Overall, it just adds complexity and makes the interface more rigid than necessary.
 ```
 
@@ -558,7 +522,7 @@ the assumption/guarantees I'm making here and where they come from...
 breakage of the very many components which require things like this to
 work:
 
-``` 
+```
  http_access allow foo
  acl bar src all
  http_access deny bar
@@ -586,12 +550,11 @@ know the field format of\!) when reconfigure is needed.
 
 I'm saying:
 
-  - leave the parse details to the upper layer where the option details
+- leave the parse details to the upper layer where the option details
     are known. Lower level only needs to pass the right option text
     buffer to the right component processor unit then move on to the
     next line.
-
-  - configure is a process of three function calls pre/configure/post to
+- configure is a process of three function calls pre/configure/post to
     warn the component whats about to happen. What gets done is not
     relevant to the lower layer.
 
@@ -627,7 +590,7 @@ last configure time. In order to parse the widget_magic lines which
 part of the upper layer (squid) and lower-layer (component library)
 whats the minimum transfer of information and call complexity we can do?
 
-``` 
+```
   squid:  'about to reconfigure'
   widget: '(void)
   squid:  'reconfigure your widget_magic with this line from squid.conf ...'
@@ -672,7 +635,6 @@ In my model, there are two most important design decisions:
     for reporting and such. Configs from all modules are collected into
     one SquidConfig class, but that is not important in most cases. The
     exact shape of that SquidConfig class is not important for now.
-
 1. A module Config object has no runtime effect on Squid except when it
     is used as the "current" config for the module. For each module,
     many, possibly conflicting, Config objects might exist at the same
@@ -691,7 +653,6 @@ steps:
     Let's ignore how that is done and by whom. That Squid Config object,
     with no runtime effect, is the ultimate result of step1. If a module
     fails to produce a valid Config object, step1 aborts.
-
 1. During the second step, each module validates its Config object in
     the context of other Config objects where necessary. This step can
     be merged with step1, but it is better to keep it separate for
@@ -702,7 +663,6 @@ steps:
     Also note that if some module decides to merge step1 and step2, it
     is free to do so. Such module will just always say "yes, this config
     is valid" for step2.
-
 1. During the third step, each module applies its Config object (i.e.,
     makes the supplied Config object "current"). This step must be
     separate and last because we do not want to leave Squid in a
@@ -721,28 +681,25 @@ harder to catch you on IRC about the fine details of the processing.
 For now I will concentrate on your design for the config objects and
 point out where I disagree instead of comparing:
 
-``` 
+```
  a. Each module has its own Config class (i.e., Module::Config), inherited from some common base ModuleConfig class. Only module M users know the details of M::Config. Others just know it is an instance of the base ModuleConfig class, with a few common methods for reporting and such. Configs from all modules are collected into one SquidConfig class, but that is not important in most cases. The exact shape of that SquidConfig class is not important for now.
 ```
 
 You make 3 design choices above.
 
-  - *Module::Config existence*. I agree and am coding with you in
+- *Module::Config existence*. I agree and am coding with you in
     Features/SourceLayout for this.
-
-  - *Module::Config inheriting from a base class*. May be useful if the
+- *Module::Config inheriting from a base class*. May be useful if the
     API methods are to be virtual. The only use I see for this is the
     cachemgr config 'dump' display. I could go either way here.
-
-  - *Module::Config being integrated into a Squid::Config*. This worries
+- *Module::Config being integrated into a Squid::Config*. This worries
     me. A _lot_ of the current dependency loops in Squid are directly
     caused by the existence of struct SquidConfig. I was under the
     impression that the cleanup work was dropping such dependency. We
     need to clarify this further.
 
-<!-- end list -->
 
-``` 
+```
  b. A module Config object has no runtime effect on Squid except when it is used as the "current" config for the module. For each module, many, possibly conflicting, Config objects might exist at the same time, but there is only one current config for each module and for Squid as a whole.
 ```
 
@@ -770,70 +727,70 @@ module.*
 <!-- end list -->
 
 1. *Let's ignore how that parsing is done for now.*
-    
+
       - I get worried. But okay.
-    
+
     b. *Let's ignore how the module decides which parts of squid.conf
     are relevant to that module.*
-    
+
       - Here we hit a vital assumption. I don't think we _can_ ignore
         it.
-    
+
       - How this happens defines critically whether we are doing **fill
         Module::Config** or **create Module::Config** (with strict state
         of existence meanings to those words).
-    
+
       - How this happens defines large parts of the parser (okay we
         ignoring that).
-    
+
       - How these decisions are made defines how many little
         Module::Config are left floating around inside Squid and how we
         reference to them.
-    
+
       - How many ModuleX::Config instances we have defines how we handle
         correlating them back together.
-    
+
     c. *Let's ignore how squid.conf is presented to the module.*
-    
+
       - Another vital assumption. I don't think we can ignore this one
         either.
-    
+
       - How this is presented defines what configuration states which
         can exist.
-    
+
       - Backward compatibility adds a lot of constraints.
-    
+
       - How the constraints are handled by the Module::Config states
         defines how relevant squid.conf parts are detected. (see the
         loop?)
-    
+
     d. *Created Config objects are assembled into a Squid Config object.
     Let's ignore how that is done and by whom.*
-    
+
       - Another vital assumption we can't just ignore.
-    
+
       - IMO unnecessary as stated.
-    
+
       - The only use I see here is to allow calling of the
         Module::Config API methods.
-    
+
       - We need to clarify what you are trying to achieve with this.
-    
+
       - This one defines whether or not we _can_ handle more than one
         Module::Config object at all.
-    
+
       - Also defines the central core step of what is termed hot-config,
         which I thought we were aiming at a design for.
-    
+
     e.*That Squid Config object, with no runtime effect, is the ultimate
     result of step1. If a module fails to produce a valid Config object,
     step1 aborts.*
-    
+
       - IMO the super-object does not need to even exist as a data
         construct.
-    
+
       - It can exist perfectly well as an information state.
-    
+
       - Fatal error at any point up or down the configure system is a
         fatal error, not just the data currently held at sub-system
         terminus.
@@ -919,5 +876,3 @@ and come back to the lower-level details as needed.
 
 \--
 [AlexRousskov](/AlexRousskov)
-
-[CategoryFeature](/CategoryFeature)

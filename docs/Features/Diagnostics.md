@@ -1,28 +1,18 @@
 ---
-categories: ReviewMe
-published: false
+categories: WantedFeature
 ---
 # Feature: Diagnostics Information View
 
-  - **Goal**: To add a basic diagnostic view to Squid for
+- **Goal**: To add a basic diagnostic view to Squid for
     troubleshooting
-
-  - **Status**: Not Started
-
-<!-- end list -->
-
-  - **ETA**: unknown
-
-  - **Version**: none yet
-
-<!-- end list -->
-
-  - **Developer**:
-
-  - **More**: bug
+- **Status**: Not Started
+- **ETA**: unknown
+- **Version**: none yet
+- **Developer**:
+- **More**: bug
     [2334](https://bugs.squid-cache.org/show_bug.cgi?id=2334)
 
-# Details
+## Details
 
 From the initial feature request bug:
 
@@ -35,13 +25,9 @@ immediately available.
 
 Some examples:
 
-  - If squid is compiled for 64 bit support
-
-  - the exact platform name
-
+- If squid is compiled for 64 bit support
+- the exact platform name
   - Build options (already in -v output)
 
 So, we could add this and other basic diagnostic info to squid -v output
 and eventually add a new command line option for this.
-
-[CategoryFeature](/CategoryFeature)

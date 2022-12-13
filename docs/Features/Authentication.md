@@ -1,6 +1,5 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Proxy Authentication
 
@@ -9,23 +8,17 @@ published: false
 There are six major flavours of authentication available in the HTTP
 world at this moment:
 
-  - [Basic](http://en.wikipedia.org/wiki/BasicAuthenticationScheme) -
+- [Basic](http://en.wikipedia.org/wiki/BasicAuthenticationScheme) -
     been around since the very beginning
-
-  - [NTLM](http://en.wikipedia.org/wiki/NTLM) - Microsoft's first
+- [NTLM](http://en.wikipedia.org/wiki/NTLM) - Microsoft's first
     attempt at single-sign-on for LAN environments
-
-  - [Digest](http://en.wikipedia.org/wiki/DigestAccessAuthentication) -
+- [Digest](http://en.wikipedia.org/wiki/DigestAccessAuthentication) -
     w3c's attempt at having a secure authentication system
-
-  - [Negotiate (aka SPNEGO)](http://en.wikipedia.org/wiki/SPNEGO) -
+- [Negotiate (aka SPNEGO)](http://en.wikipedia.org/wiki/SPNEGO) -
     Microsoft's second attempt at single-sign-on.
-
-  - [OAuth](http://en.wikipedia.org/wiki/OAuth) - IETF attempt at
+- [OAuth](http://en.wikipedia.org/wiki/OAuth) - IETF attempt at
     single-sign-on
-
-  - [OAuth 2.0 (aka
-    Bearer)](http://en.wikipedia.org/wiki/OAuth#OAuth_2.0) - IETF second
+- [OAuth 2.0 (aka Bearer)](http://en.wikipedia.org/wiki/OAuth#OAuth_2.0) - IETF second
     attempt at single-sign-on
 
 [Squid-2.6](/Releases/Squid-2.6)
@@ -90,33 +83,21 @@ examples](/ConfigExamples/Authenticate/Ntlm).
 The Squid source code bundles with a few authentication backends
 ("*helpers*") for authentication. These include:
 
-  - DB: Uses a SQL database.
-
-  - getpwam: Uses the old-fashioned Unix password file.
-
-  - LDAP: Uses the Lightweight Directory Access Protocol.
-
-  - MSNT: Uses a Windows NT authentication domain.
-
-  - MSNT-multi-domain: Allows login to one of multiple Windows NT
+- DB: Uses a SQL database.
+- getpwam: Uses the old-fashioned Unix password file.
+- LDAP: Uses the Lightweight Directory Access Protocol.
+- MSNT: Uses a Windows NT authentication domain.
+- MSNT-multi-domain: Allows login to one of multiple Windows NT
     domains.
-
-  - NCSA: Uses an NCSA-style username and password file.
-
-  - NIS (or YP): Uses the NIS database
-
-  - PAM: Uses the Unix Pluggable Authentication Modules scheme.
-
-  - POP3: Uses an email server to validate credentials. Useful for
+- NCSA: Uses an NCSA-style username and password file.
+- NIS (or YP): Uses the NIS database
+- PAM: Uses the Unix Pluggable Authentication Modules scheme.
+- POP3: Uses an email server to validate credentials. Useful for
     single-signon to proxy and email.
-
-  - RADIUS: Uses a RADIUS server for login validation.
-
-  - SASL: Uses SASL libraries.
-
-  - SMB: Uses a SMB server like Windows NT or Samba.
-
-  - SSPI: Windows native authenticator
+- RADIUS: Uses a RADIUS server for login validation.
+- SASL: Uses SASL libraries.
+- SMB: Uses a SMB server like Windows NT or Samba.
+- SSPI: Windows native authenticator
 
 Documentation for each of these helpers can be found at
 <http://www.squid-cache.org/Doc/man/>. Due to its simplicity Basic
@@ -153,7 +134,7 @@ example:
 The REQUIRED term means that any already authenticated user will match
 the ACL named *foo*.
 
-  - :warning:
+> :warning:
     Note that **allow** will NOT trigger the 407 authentication denial
     to fetch new auth details if the user is not correctly logged in
     already. Some browsers will send *anonymous* auth details by
@@ -181,8 +162,7 @@ In this example, users named lisa, sarah, joe, and frank are allowed to
 use the proxy at all times. Other users are allowed only during daytime
 hours.
 
-The
-[ConfigExamples](/ConfigExamples)
+The [ConfigExamples](/ConfigExamples)
 area contains some detailed examples:
 
 1. ConfigExamples/Authenticate/Bypass
@@ -194,10 +174,10 @@ area contains some detailed examples:
 1. ConfigExamples/Authenticate/Mysql
 1. ConfigExamples/Authenticate/Ncsa
 1. ConfigExamples/Authenticate/Ntlm
-10. ConfigExamples/Authenticate/NtlmCentOS5
-11. ConfigExamples/Authenticate/NtlmWithGroups
-12. ConfigExamples/Authenticate/Radius
-13. ConfigExamples/Authenticate/WindowsActiveDirectory
+1. ConfigExamples/Authenticate/NtlmCentOS5
+1. ConfigExamples/Authenticate/NtlmWithGroups
+1. ConfigExamples/Authenticate/Radius
+1. ConfigExamples/Authenticate/WindowsActiveDirectory
 
 ## How do I ask for authentication of an already authenticated user?
 
@@ -286,7 +266,7 @@ reach certain web sites). In this case you may trigger re-authentication
 although you don't intend to. This config is likely wrong for you:
 
     acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
-    
+
     http_access deny !ldapgroup-allowed
     http_access allow all
 
@@ -301,7 +281,7 @@ so that an ACL matches that has nothing to do with authentication. This
 is the correct example:
 
     acl ldapgroup-allowed external LDAP_group PROXY_ALLOWED
-    
+
     http_access deny !ldapgroup-allowed all
     http_access allow all
 

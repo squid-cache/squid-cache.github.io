@@ -1,19 +1,15 @@
 ---
-categories: ReviewMe
-published: false
+categories: Feature
 ---
 # Feature: Collapsed Forwarding
 
-  - **Status**: completed in 2.6, 2.7, and ported to
+- **Status**: completed in 2.6, 2.7, and ported to
     [Squid-3.5](/Releases/Squid-3.5)
-
-  - **Version**: 2.6+ and 3.5+
-
-  - **Developer**:
+- **Version**: 2.6+ and 3.5+
+- **Developer**:
     [HenrikNordstrom](/HenrikNordstrom),
     [AlexRousskov](/AlexRousskov)
-
-  - **More**: Bugs
+- **More**: Bugs
     [1614](https://bugs.squid-cache.org/show_bug.cgi?id=1614) and
     [3495](https://bugs.squid-cache.org/show_bug.cgi?id=3495)
 
@@ -26,15 +22,13 @@ there can be benefit from enabling this in accelerator setups where the
 web servers are the bottleneck but are reliable and return mostly
 cacheable information.
 
-It was left out of
-[Squid-3.0](/Releases/Squid-3.0)
+It was left out of [Squid-3.0](/Releases/Squid-3.0)
 due to time and stability constraints. The
 [max_stale](http://www.squid-cache.org/Doc/config/max_stale) part of
 this feature was added to
 [Squid-3.2](/Releases/Squid-3.2),
 [collapsed_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding)
-part to
-[Squid-3.5](/Releases/Squid-3.5),
+part to [Squid-3.5](/Releases/Squid-3.5),
 [refresh_stale_hit](http://www.squid-cache.org/Doc/config/refresh_stale_hit)
 is still awaiting re-implementation.
 
@@ -61,8 +55,7 @@ revalidation or cache miss is being resolved. This sacrifices general
 proxy latency in favor for accelerator performance and thus should not
 be enabled unless you are running an accelerator.
 
-[Squid-2.6](/Releases/Squid-2.6)
-and
+[Squid-2.6](/Releases/Squid-2.6) and
 [Squid-2.7](/Releases/Squid-2.7)
 in addition contain a **stale-while-revalidate** option on
 [refresh_pattern](http://www.squid-cache.org/Doc/config/refresh_pattern)
@@ -89,8 +82,7 @@ processed as one request. Normally disabled to avoid corner cases with
 hung requests, but there can be large benefit from enabling this in
 accelerator setups where the web servers are reliable.
 
-[Squid-2.6](/Releases/Squid-2.6)
-and
+[Squid-2.6](/Releases/Squid-2.6) and
 [Squid-2.7](/Releases/Squid-2.7)
 only:
 
@@ -102,18 +94,13 @@ avoid having more than one client wait for the revalidation to finish.
 
 ## Known issues and shortcomings
 
-  - The 30 second window should be tuneable; see Bug
+- The 30 second window should be tuneable; see Bug
     [2504](https://bugs.squid-cache.org/show_bug.cgi?id=2504).
-
-  - At least in the 2.6 implementation, non-successful responses are not
+- At least in the 2.6 implementation, non-successful responses are not
     collapsed, leading to the potential for overwhelming the back-end
     server; see Bug
     [1918](https://bugs.squid-cache.org/show_bug.cgi?id=1918).
-
-  - Might even be suitable for the general Internet proxy situation, not
+- Might even be suitable for the general Internet proxy situation, not
     only reverse proxies.
-
-  - Fails to occur when memory-only cache is used and no cache_dir are
+- Fails to occur when memory-only cache is used and no cache_dir are
     present.
-
-[CategoryFeature](/CategoryFeature)
