@@ -40,7 +40,7 @@ categories: [WantedFeature, Feature]
 |            |            | 17 | SHOULD | 3.2.3 | compare URI's by case-sensitive octet-by-octet comparison of the entire URI. | empty or absent ports are equivalent to the default for that resource; empty abs_path ="/" |
 |            |            | 18 | MUST | 3.2.3 | compare hostnames in URI's case-insensitively | |
 |            |            | 19 | MUST | 3.2.3 | compare scheme names in URI's case-insensitively | |
-|            |            | 20 | MUST | 3.2.3 | match % HEX HEX encoded characters with those outside the reserved and unsafe sets when comparing URI's | ie <http://abc.com:80/~smith/home.html;> [http://ABC.com/%7Esmith/home.html;](http://ABC.com/~smith/home.html;) [http://ABC.com:/%7esmith/home.html](http://ABC.com:/~smith/home.html) match |
+|            |            | 20 | MUST | 3.2.3 | match % HEX HEX encoded characters with those outside the reserved and unsafe sets when comparing URI's | ie _http://abc.com:80/~smith/home.html;_ _http://ABC.com/~smith/home.html;_ _http://ABC.com:/~smith/home.html_ match |
 | :rage:     | :rage:     | 21 | MUST | 3.3.1 | handle the three date formats of HTTP/1.0 | robustness is encouraged :smile: |
 | :rage:     | :rage:     | 22 | MUST | 3.3.1 | only generate dates in rfc 1123 format | |
 | :rage:     | :rage:     | 23 | MUST | 3.3.1 | generate all dates in GMT (UTC) time. | |
@@ -496,5 +496,3 @@ categories: [WantedFeature, Feature]
 | :rage:     | :rage:     | 471 | MUST | 19.3 | do date calculations in GMT | |
 | :rage:     | :rage:     | 472 | MUST | 19.3 | convert HTTP header dates to GMT using the most conservative possible conversion if they are not in GMT | |
 |            |            | 473 | idea | 19.5.1 | sanitize the content-disposition header by removing directory information | |
-
-  - [CategoryFeature](/CategoryFeature)

@@ -159,7 +159,7 @@ columns separated by one ore more spaces:
     content types ":" or even empty ones.
 
 There may be two more columns in the *access.log*, if the (debug) option
-[log_mime_headers](http://www.squid-cache.org/Doc/config/log_mime_headers)
+_log_mime_headers_
 is enabled In this case, the HTTP request headers are logged between a
 "`[" and a "`\]", and the HTTP reply headers are also logged between
 "`[" and "`\]". All control characters like CR and LF are URL-escaped,

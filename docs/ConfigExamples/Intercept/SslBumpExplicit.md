@@ -131,7 +131,7 @@ their traffic without their consent?
 
 Squid must be built with:
 
-``` 
+```
  ./configure \
     --with-openssl \
     --enable-ssl-crtd
@@ -142,15 +142,15 @@ Paste the configuration file like this:
     http_port 3128 ssl-bump \
       cert=/etc/squid/ssl_cert/myCA.pem \
       generate-host-certificates=on dynamic_cert_mem_cache_size=4MB
-    
+
     # For squid 3.5.x
     sslcrtd_program /usr/local/squid/libexec/ssl_crtd -s /var/lib/ssl_db -M 4MB
-    
+
     # For squid 4.x
     # sslcrtd_program /usr/local/squid/libexec/security_file_certgen -s /var/lib/ssl_db -M 4MB
-    
+
     acl step1 at_step SslBump1
-    
+
     ssl_bump peek step1
     ssl_bump bump all
 
@@ -217,7 +217,7 @@ and newer:
     your system.
 
 > :warning:
-    also, be aware that SELinux and [AppArmour](/AppArmour)
+    also, be aware that SELinux and _AppArmour_
     permissions may need to be updated to allow the Squid helper to use
     this directory.
 
@@ -256,13 +256,13 @@ To increase security the good idea to set these options:
 
     # SINGLE_DH_USE is 3.5 before squid-3.5.12-20151222-r13967
     # SINGLE_ECDH_USE is AFTER squid-3.5.12-20151222-r13967
-    
+
     # for Squid-3.5 and older
     sslproxy_options NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
-    
+
     # for Squid-4 and newer
     tls_outgoing_options options=NO_SSLv3,SINGLE_DH_USE,SINGLE_ECDH_USE
-  
+
 > :warning:
     SSL options must be comma (,) or colon (:) separated, not spaces\!
 

@@ -19,6 +19,3 @@ of text/html cache *misses* is
 [available](/ThirdPartyModules/EcapGzip).
 That 3rd-party module has not been tested by the Squid Project.
 
-An old, unfinished Squid v3.0
-[patch](http://devel.squid-cache.org/projects.html#gzip) implements some
-of the required functionality directly in Squid.

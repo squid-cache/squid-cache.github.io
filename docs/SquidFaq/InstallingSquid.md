@@ -55,9 +55,9 @@ with the -z option:
 
 
 > :warning:
-    If you run Squid as root then you may need to first 
-    create */usr/local/squid/var/logs* and your *cache_dir* directories and 
-    assign ownership of these to the cache_effective_user configured 
+    If you run Squid as root then you may need to first
+    create */usr/local/squid/var/logs* and your *cache_dir* directories and
+    assign ownership of these to the cache_effective_user configured
     in your squid.conf
 
 Once the creation of the cache directories completes, you can start
@@ -144,13 +144,13 @@ sample *squid.sh* script is shown below:
     PATH=/usr/bin:$C/bin
     TZ=PST8PDT
     export PATH TZ
-    
+
     # User to notify on restarts
     notify="root"
-    
+
     # Squid command line options
     opts=""
-    
+
     cd $C
     umask 022
     sleep 10
@@ -233,16 +233,16 @@ To do that you need to create service manifest in XML format like this:
     <!--   Manifest-file for Squid
     -->
     <service_bundle type='manifest' name='Squid'>
-    
+
     <service
             name='network/squid'
             type='service'
             version='1'>
-    
+
             <create_default_instance enabled='false' />
-    
+
             <single_instance />
-    
+
             <dependency name='fs-local'
                     grouping='require_all'
                     restart_on='none'
@@ -250,67 +250,67 @@ To do that you need to create service manifest in XML format like this:
                     <service_fmri
                             value='svc:/system/filesystem/local' />
             </dependency>
-    
+
             <dependency name='net-loopback'
                     grouping='require_all'
                     restart_on='none'
                     type='service'>
                     <service_fmri value='svc:/network/loopback' />
             </dependency>
-    
+
             <dependency name='net-physical'
                     grouping='require_all'
                     restart_on='none'
                     type='service'>
                     <service_fmri value='svc:/network/physical' />
             </dependency>
-    
+
             <dependency name='utmp'
                     grouping='require_all'
                     restart_on='none'
                     type='service'>
                     <service_fmri value='svc:/system/utmp' />
             </dependency>
-    
+
             <dependency name='squid_config_data'
                     grouping='require_all'
                     restart_on='refresh'
                     type='path'>
                     <service_fmri value='file://localhost/usr/local/squid/etc/squid.conf' />
             </dependency>
-    
+
             <exec_method
                     type='method'
                     name='start'
                     exec='/lib/svc/method/init.squid %m'
                     timeout_seconds='60'/>
-    
+
             <exec_method
                     type='method'
                     name='stop'
                     exec='/lib/svc/method/init.squid %m'
                     timeout_seconds='60' />
-    
+
             <exec_method
                     type='method'
                     name='refresh'
                     exec='/lib/svc/method/init.squid %m'
                     timeout_seconds='60' />
-    
+
             <exec_method
                     type='method'
                     name='restart'
                     exec='/lib/svc/method/init.squid %m'
                     timeout_seconds='60' />
-    
+
             <property_group name='general' type='framework'>
                     <!-- to start stop squid -->
                     <propval name='action_authorization' type='astring'
                             value='solaris.smf.manage' />
             </property_group>
-    
+
             <stability value='Unstable' />
-    
+
             <template>
                     <common_name>
                             <loctext xml:lang='C'>
@@ -321,9 +321,9 @@ To do that you need to create service manifest in XML format like this:
                             <manpage title='squid' section='8' manpath='/usr/local/squid/share/man/man8' />
                     </documentation>
             </template>
-    
+
     </service>
-    
+
     </service_bundle>
 
 then put this file in /var/svc/manifest/network directory and execute
@@ -349,8 +349,8 @@ You can use the *squidclient* program:
 
 There are other command-line HTTP client programs available as well. Two
 that you may find useful are
-[wget](ftp://gnjilux.cc.fer.hr/pub/unix/util/wget/) and
-[echoping](ftp://ftp.internatif.org/pub/unix/echoping/).
+_wget_ and
+_echoping_.
 
 Another way is to use Squid itself to see if it can signal a running
 Squid process:

@@ -29,10 +29,7 @@ request editor privileges and update the information.
 
 **Config Example ACL set**
 
-  - [AOL](/ConfigExamples/Chat/Aol)
   - [Gizmo Project](/ConfigExamples/Chat/Gizmo)
-  - [ICQ](/ConfigExamples/Chat/Icq)
-  - [MSN Messenger](/ConfigExamples/Chat/MsnMessenger)
   - [Skype](/ConfigExamples/Chat/Skype)
   - [Yahoo Messenger](/ConfigExamples/Chat/YahooMessenger)
 

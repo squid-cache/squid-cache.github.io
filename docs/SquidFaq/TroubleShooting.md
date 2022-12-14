@@ -22,12 +22,9 @@ found in the system-specific help troubleshooting:
 3. [Fedora](/KnowledgeBase/)
 4. [Fink](/KnowledgeBase/Fink)
 5. [Gentoo](/KnowledgeBase/Gentoo)
-6. [Mandriva](/KnowledgeBase/Mandriva)
 7. [NetBSD](/KnowledgeBase/NetBSD)
 8. [OpenSUSE](/KnowledgeBase/OpenSUSE)
 9. [RedHat](/KnowledgeBase/RedHat)
-10. [SLES](/KnowledgeBase/SLES)
-11. [Slackware](/KnowledgeBase/Slackware)
 12. [Ubuntu](/KnowledgeBase/Ubuntu)
 
 Some common situations have their own detailed explanations and
@@ -122,7 +119,7 @@ them install a small suid program which sets the limit (see link below).
 > :rage:
     This information is outdated, and may no longer be relevant.
 
-[Eliezer Croitoru](/Eliezer%20Croitoru):
+_Eliezer Croitoru_:
 Referencing to [Tuning Kernel Limits](https://www.freebsd.org/doc/handbook/configtuning-kernel-limits.html)
 of the FreeBSD based on Adrian Chadd
 [article](http://adrianchadd.blogspot.co.il/2013/08/why-oh-why-am-i-seeing-rst-frames-from.html).
@@ -277,8 +274,8 @@ legitimate, add them to your configuration file.
 ## DNS lookups for domain names with underscores (_) always fail.
 
 The standards for naming hosts (
-[RFC 952](ftp://ftp.isi.edu/in-notes/rfc952.txt) and
-[RFC 1101](ftp://ftp.isi.edu/in-notes/rfc1101.txt)) do not allow
+_RFC 952_ and
+_RFC 1101_) do not allow
 underscores in domain names:
 
 >  A "name" (Net, Host, Gateway, or Domain name) is a text string up to 24
@@ -294,7 +291,7 @@ See also the
 [comp.protocols.tcp-ip.domains FAQ](http://www.intac.com/~cdp/cptd-faq/section4.html#underscore)
 
 Some people have noticed that
-[RFC 1033](ftp://ftp.isi.edu/in-notes/rfc1033.txt) implies that
+_RFC 1033_ implies that
 underscores *are* allowed. However, this is an *informational* RFC with
 a poorly chosen example, and not a *standard* by any means.
 
@@ -306,17 +303,13 @@ hostnames.
 Some DNS resolvers allow the underscore, so yes, the hostname might work
 fine when you don't use Squid.
 
-To make Squid allow underscores in hostnames, add to squid.conf: 
+To make Squid allow underscores in hostnames, add to squid.conf:
 `enable_underscores on`
-    
+
 
 ## Why am I getting access denied from a sibling cache?
 
 The answer to this is somewhat complicated, so please hold on.
-
->  :information_source:
-    Most of this text is taken from
-        [ICP and the Squid Web Cache](http://www.life-gone-hazy.com/writings/icp-squid.ps.gz)
 
 
 An ICP query does not include any parent or sibling designation, so the
@@ -402,7 +395,7 @@ already running, or it could be from another program. To verify, use the
 
 If you find that some process has bound to your port, but you're not
 sure which process it is, you might be able to use the excellent
-[lsof](ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/) program. It will
+_lsof_ program. It will
 show you which processes own every open file descriptor on your system.
 
 ## icpDetectClientClose: ERROR xxx.xxx.xxx.xxx: (32) Broken pipe
@@ -425,7 +418,7 @@ connections.
 
 Yes, Squid supports Microsoft NTLM authentication to authenticate users
 accessing the proxy server itself (be it in a forward or reverse setup).
-See [ProxyAuthentication](/SquidFaq/ProxyAuthentication)
+See [ProxyAuthentication](/Features/Authentication)
 for further details
 
 Squid 2.6+ and 3.1+ also support the kind of infrastructure that's
@@ -605,7 +598,7 @@ which cache (the last in the list) forwarded the request to you.
 > :bulb:
     One way to reduce forwarding loops is to change a *parent*
     relationship to a *sibling* relationship.
-    
+
 > :bulb:
     Another way is to use *cache_peer_access* rules.
 
@@ -733,7 +726,7 @@ may get the above error message. To check your system, run:
 
 The result should contain:
 
-    lo        Link encap:Local Loopback  
+    lo        Link encap:Local Loopback
               inet addr:127.0.0.1  Mask:255.0.0.0
               inet6 addr: ::1/128 Scope:Host
 
@@ -799,7 +792,7 @@ First locate the proces ID by running *ps* and find Squid. You'll
 probably see two processes, like this:
 
     % ps ax | grep squid
-    
+
       PID TTY      STAT   TIME COMMAND
      2267 ?        Ss     0:00 /usr/sbin/squid-ipv6 -D -sYC
      2735 pts/0    S+     0:00 grep squid
@@ -929,7 +922,7 @@ However, we will require high-quality debugging information from you,
 such as *tcpdump* output, server IP addresses, operating system
 versions, and *access.log* entries with full HTTP headers.
 
-If you want to make Squid give the Zero Sized error on demand, you can use 
+If you want to make Squid give the Zero Sized error on demand, you can use
 [a short C program](/SquidFaq/TroubleShooting?action=AttachFile&do=get&target=zerosized_reply.c).
 Simply compile and start the program on a system that doesn't already
 have a server running on port 80. Then try to connect to this fake

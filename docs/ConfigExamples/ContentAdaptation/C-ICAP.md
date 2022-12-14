@@ -13,8 +13,7 @@ and later we can use ICAP for content filtering or antivirus checking.
 This config example describes how to scan for viruses on-the-fly using
 [squidclamav](http://squidclamav.darold.net/) antivirus module in
 combination with [ClamAV antivirus](http://www.clamav.net/index.html)
-service. It is a bit different with [recommended squidclamav
-configuration](http://squidclamav.darold.net/config.html) and adapted
+service. It is a bit different with recommended squidclamav configuration and adapted
 for [Squid-3.4](/Releases/Squid-3.4)
 releases and above with latest configuration changes.
 
@@ -47,7 +46,7 @@ Edit c-icap.conf as follows:
     StartServers 1
     MaxServers 20
     MaxRequestsPerChild  100
-    Port 1344 
+    Port 1344
     User squid
     Group squid
     ServerAdmin yourname@yourdomain
@@ -57,12 +56,12 @@ Edit c-icap.conf as follows:
     ModulesDir /usr/local/lib/c_icap
     ServicesDir /usr/local/lib/c_icap
     LoadMagicFile /usr/local/etc/c-icap.magic
-    
+
     acl localhost src 127.0.0.1/255.255.255.255
     acl PERMIT_REQUESTS type REQMOD RESPMOD
     icap_access allow localhost PERMIT_REQUESTS
     icap_access deny all
-    
+
     ServerLog /var/log/i-cap_server.log
     AccessLog /var/log/i-cap_access.log
 
@@ -70,8 +69,7 @@ Edit paths if necessary and start c-icap server. Add startup script to
 your OS.
 
 > :information_source:
-    Note: [Method OPTIONS is excluding from
-    scanning](http://squidclamav.darold.net/news.html) in latest
+    Note: Method _OPTIONS_ is excluding from scanning in latest
     squidclamav release (starting from squidclamav version 6.14). So,
     permit access for it not required.
 
@@ -144,37 +142,37 @@ file:
 Then adjust squidclamav.conf as follows:
 
     maxsize 5000000
-    
+
     # When a virus is found then redirect the user to this URL
     redirect http://<You_proxy_FQDN>:8080/cgi-bin/clwarn.cgi.xx_XX
-    
+
     # Path to the clamd socket, use clamd_local if you use Unix socket or if clamd
     # is listening on an Inet socket, comment clamd_local and set the clamd_ip and
     # clamd_port to the corresponding value.
     clamd_local /tmp/clamd.socket
     #clamd_ip 127.0.0.1
     #clamd_port 3310
-    
+
     # Set the timeout for clamd connection. Default is 1 second, this is a good
     # value but if you have slow service you can increase up to 3.
     timeout 3
-    
+
     # Force SquidClamav to log all virus detection or squiguard block redirection
     # to the c-icap log file.
     logredir 1
-    
+
     # Enable / disable DNS lookup of client ip address. Default is enabled '1' to
     # preserve backward compatibility but you must desactivate this feature if you
     # don't use trustclient with hostname in the regexp or if you don't have a DNS
     # on your network. Disabling it will also speed up squidclamav.
     dnslookup 0
-    
+
     # Enable / Disable Clamav Safe Browsing feature. You must have enabled the
     # corresponding behavior in clamd by enabling SafeBrowsing into freshclam.conf
     # Enabling it will first make a safe browsing request to clamd and then the
     # virus scan request.
     safebrowsing 0
-    
+
     #
     # Here is some defaut regex pattern to have a high speed proxy on system
     # with low resources.
@@ -185,38 +183,38 @@ Then adjust squidclamav.conf as follows:
     abort \.googlevideo\.com
     abort \.ytimg\.com
     abort \.yimg\.com
-    
+
     # Do not scan images
     abort ^.*\.([j|J][p|P][?:[e|E]?[g|G]|gif|png|bmp|ico|svg|web[p|m])
     abortcontent ^image\/.*$
-    
+
     # Do not scan text files
     abort ^.*\.((cs|d?|m?|p?|r?|s?|w?|x?|z?)h?t?m?(l?)|php[3|5]?|rss|atom|vr(t|ml)|(c|x|j)s[s|t|px]?)
     abortcontent ^text\/.*$
     abortcontent ^application\/x-javascript$
     abortcontent ^application\/javascript$
     abortcontent ^application\/json$
-    
+
     # Do not scan fonts
     abort ^.*\.(ttf|eot|woff2?)
     abortcontent ^font\/.*$
     abortcontent ^application\/x-woff$
     abortcontent ^application\/font-woff2?$
     abortcontent ^application\/x-font-ttf$
-    
+
     # Do not scan (streamed) videos and audios
     abort ^.*\.(flv|f4f|mp(3|4))
     abortcontent ^video\/.*$
     abortcontent ^audio\/.*$
     abortcontent ^application\/mp4$
-    
+
     # Do not scan flash files
     abort ^.*\.swfx?
     abortcontent ^application\/x-shockwave-flash$
-    
+
     # Do not scan sequence of framed Microsoft Media Server (MMS) data packets
     abortcontent ^.*application\/x-mms-framed.*$
-    
+
     # White list some sites
     # Abort both AV and chained program
     whitelist clamav\.net
@@ -264,7 +262,7 @@ Then adjust squidclamav.conf as follows:
     whitelist \.comodo\.com
     #
     whitelist update\.microsoft\.com
-    whitelist update\.microsoft\.com\.akadns\.net 
+    whitelist update\.microsoft\.com\.akadns\.net
     whitelist download\.windowsupdate\.com
     whitelist download\.microsoft\.com
     whitelist update\.microsoft\.com
@@ -348,10 +346,10 @@ then configuring and build according your ClamAV and c-icap build types
 
     # 32 bit GCC
     ./configure 'CFLAGS=-O3 -m32 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
-    
+
     # 64 bit GCC
     ./configure 'CFLAGS=-O3 -m64 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib/'
-    
+
     gmake
     gmake install-strip
 
@@ -442,10 +440,10 @@ modules](https://sourceforge.net/projects/c-icap/files/c-icap-modules/0.4.x/):
 
     # 32 bit GCC
     ./configure 'CFLAGS=-O3 -m32 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
-    
+
     # 64 bit GCC
     ./configure 'CFLAGS=-O3 -m64 -pipe' 'CPPFLAGS=-I/usr/local/clamav/include' 'LDFLAGS=-L/usr/local/lib -L/usr/local/clamav/lib'
-    
+
     gmake
     gmake install-strip
 
@@ -457,14 +455,14 @@ then add this to your c-icap.conf file:
 Adjust srv_url_check.conf as follows:
 
     Service url_check srv_url_check.so
-    
+
     url_check.LookupTableDB whitelist domain hash:/usr/local/etc/domain.whitelist "Whitelist"
     url_check.LookupTableDB blackuribl domain dnsbl:black.uribl.com
-    
+
     url_check.Profile default pass whitelist
     url_check.Profile default block blackuribl
     url_check.Profile default pass ALL
-    
+
     url_check.DefaultAction pass AddXHeader "X-Next-Services"
 
 > :information_source:
@@ -502,10 +500,10 @@ chain on requests, like this:
     icap_service service_dnsbl_req reqmod_precache icap://localhost:1344/url_check bypass=on routing=on
     # ClamAV service
     icap_service service_avi_req reqmod_precache icap://localhost:1344/squidclamav bypass=on
-    
+
     adaptation_service_chain svcRequest service_dnsbl_req service_avi_req
     adaptation_access svcRequest allow all
-    
+
     icap_service service_avi_resp respmod_precache icap://localhost:1344/squidclamav
     adaptation_access service_avi_resp allow all
 
@@ -574,7 +572,7 @@ To build this, keep in mind:
     squidclamav will talk with clamd via TCP; just modify squidclamav.conf
     and restart c-icap:
 
-``` 
+```
   clamd_ip your_clamav_tier_ip
   clamd_port 3310
 ```
@@ -611,7 +609,7 @@ or, as shell alias:
 The result will looks as shown:
 
     ICAP server:localhost, ip:127.0.0.1, port:1344
-    
+
     Running Servers Statistics
     ===========================
     Children number: 3
@@ -621,19 +619,19 @@ The result will looks as shown:
     Closed Processes: 2
     Crashed Processes: 2
     Closing Processes: 0
-    
+
     Child pids: 24689 15427 4947
     Closing children pids:
     Semaphores in use
              sysv:accept/4
              sysv:children-queue/5
-    
-    
+
+
     Shared mem blocks in use
              sysv:kids-queue/30 13 kbs
-    
-    
-    
+
+
+
     General Statistics
     ==================
     REQUESTS : 44501

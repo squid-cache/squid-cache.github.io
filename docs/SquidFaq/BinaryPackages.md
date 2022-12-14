@@ -15,7 +15,7 @@ packaging as needed.
 Most operating system distributions provide packages in the formats
 appropriate for direct install on those systems. Please thank them.
 
-We are aware of Squid binary packages being available as part of the 
+We are aware of Squid binary packages being available as part of the
 operating system for:
 * [CentOS](/KnowledgeBase/CentOS)
 * [Debian](/KnowledgeBase/Debian)
@@ -23,15 +23,13 @@ operating system for:
 * [Fink](/KnowledgeBase/Fink)
 * [FreeBSD](/KnowledgeBase/FreeBSD)
 * [Gentoo](/KnowledgeBase/Gentoo)
-* [Mandriva](/KnowledgeBase/Mandriva)
 * [NetBSD](/KnowledgeBase/NetBSD)
 * [OpenSUSE](/KnowledgeBase/OpenSUSE)
 * [RedHat Enterprise Linux (RHEL)](/KnowledgeBase/RedHat)
-* [Slackware](/KnowledgeBase/Slackware)
 * [Ubuntu](/KnowledgeBase/Ubuntu)
 
 And from third parties, for:
-* [Mac OS](/KnowledgeBase/MacOs)
+* _Mac OS_
 * [Windows](/KnowledgeBase/Windows)
 
 ## Can I get support for Squid version.. ?
