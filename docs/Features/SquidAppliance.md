@@ -171,8 +171,7 @@ specifically changes for each install option.
 
 #### Proxy Purpose
 
-- Accelerate Internet browsing (Large
-  [COSS](http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem)
+- Accelerate Internet browsing (Large [COSS](/Features/CyclicObjectStorageSystem)
   partition for small files and small other type of cache partition
   for large files)
 - Save bandwidth (small COSS partition and larger other type of

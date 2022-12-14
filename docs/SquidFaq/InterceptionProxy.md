@@ -61,7 +61,7 @@ outlined by *Mark Elsen*:
   compatible. SSL-Bump generates a fake server certificate to match
   what the server presents. If URL-rewrite alters what sever is being
   contacted the client will receive wrong certificates. OR, attempting
-  to re-write a HTTPS URL to <http:://> - the server will not
+  to re-write a HTTPS URL to _http:://_ - the server will not
   present any SSL certificate. Both of these will result in user
   visible errors.
 
@@ -190,7 +190,7 @@ rebuilding as the required modules will have been built by default.
 
 ### Install IP Filter
 
-First, get and install the [IP Filter package](http://coombs.anu.edu.au/ipfilter/).
+First, get and install the IP Filter package.
 
 ### Configure ipnat
 
@@ -585,9 +585,9 @@ to forward traffic to it and end users will not be affected (and likely
 not even notice that your cache is out of service).
 
 WCCPv1 is documented in the Internet-Draft
-[draft-forster-wrec-wccp-v1-00.txt](http://www.web-cache.com/Writings/Internet-Drafts/draft-forster-wrec-wccp-v1-00.txt)
+[draft-forster-wrec-wccp-v1-00.txt](https://datatracker.ietf.org/doc/html/draft-forster-wrec-wccp-v1-00)
 and WCCPv2 is documented in
-[draft-wilson-wrec-wccp-v2-00.txt](http://www.web-cache.com/Writings/Internet-Drafts/draft-wilson-wrec-wccp-v2-00.txt).
+[draft-wilson-wrec-wccp-v2-00.txt](https://datatracker.ietf.org/doc/html/draft-wilson-wrec-wccp-v2-00.txt).
 
 For WCCP to work, you firstly need to configure your Squid Cache, and
 additionally configure the host OS to redirect the HTTP traffic from
@@ -846,8 +846,7 @@ cache engine as the source of the HTTP request. TProxy takes this a step
 further by hiding your cache engine so that the end client is seen as
 the source of the request (even though really they aren't).
 
-Here are some notes by
-[StevenWilton](/StevenWilton)
+Here are some notes by _Steven Wilton_
 on how to get TProxy working properly:
 
 I've got TProxy + WCCPv2 working with squid 2.6. There are a few things
@@ -1015,7 +1014,7 @@ credentials to an unexpected party, wouldn't you agree? Especially so
 when the user-agent can do so without notifying the user, like Microsoft
 browsers can do when the proxy offers any of the Microsoft-designed
 authentication schemes such as NTLM (see
-[ProxyAuthentication](/SquidFaq/ProxyAuthentication)
+[ProxyAuthentication](/Features/Authentication)
 and
 [NegotiateAuthentication](/Features/NegotiateAuthentication)).
 
@@ -1054,12 +1053,12 @@ This appears to cause the correct behaviour.
 
 ## Further information about configuring Interception Caching with Squid
 
-[DuaneWessels](/DuaneWessels)
+_Duane Wessels_
 has written an O'Reilly book about Web Caching which is an invaluable
 reference guide for Squid (and in fact non-Squid) cache administrators.
 A sample chapter on "Interception Proxying and Caching" from his book is
 up online, at
-[O'Reilly](http://www.oreilly.com/catalog/webcaching/chapter/ch05.html).
+[O'Reilly](https://www.oreilly.com/library/view/web-caching/156592536X/ch05.html).
 
 ## Issues with HotMail
 

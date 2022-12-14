@@ -20,7 +20,7 @@ for ngroff format details.
 
 Some additional markup is added for integration with **po4a**
 translation automation. see
-<http://po4a.alioth.debian.org/man/man3pm/Locale::Po4a::Man.3pm.php>
+<https://po4a.org/man/man3/Locale::Po4a::Man.3pm.php>
 for details on specific markup and limits imposed by those tools.
 
 Each **.SH** section is preceded by an *empty* line. In ngroff syntax
@@ -67,7 +67,7 @@ For example:
 documents
 
     squid - HTTP Web Proxy caching server.
-    
+
     Version 1.0
 
 ### .SH SYNOPSIS

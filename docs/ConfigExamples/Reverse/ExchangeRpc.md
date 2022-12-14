@@ -8,7 +8,7 @@ categories: [ConfigExample]
 Squid can be used as an accelerator and ACL filter in front of an
 exchange server exporting mail via RPC over HTTP. The RPC_IN_DATA and
 RPC_OUT_DATA methods communicate with
-<https://URL/rpc/rpcproxy.dll>, for if there's need to limit the
+_https://URL/rpc/rpcproxy.dll_, for if there's need to limit the
 access..
 
 ## Setup
@@ -24,7 +24,7 @@ single Squid server. The following information is required:
 
 ## Configuration
 
-> :warning: 
+> :warning:
   This configuration **MUST** appear at the top of squid.conf above any
   other forward-proxy configuration (http_access etc).
   Otherwise the standard proxy access rules block some people viewing
@@ -32,15 +32,15 @@ single Squid server. The following information is required:
 
     # Publish the RPCoHTTP service via SSL
     https_port ip_of_squid:443 accel cert=/path/to/clientcertificate defaultsite=rpc_domain_name
-    
+
     cache_peer ip_of_exchange_server parent 443 0 no-query originserver login=PASS ssl sslcert=/path/to/certificate name=exchangeServer
-    
+
     acl EXCH dstdomain .rpc_domain_name
-    
+
     cache_peer_access exchangeServer allow EXCH
     cache_peer_access exchangeServer deny all
     never_direct allow EXCH
-    
+
     # Lock down access to just the Exchange Server!
     http_access allow EXCH
     http_access deny all

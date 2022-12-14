@@ -58,10 +58,10 @@ At the broad level Squid consists of five generic processing areas;
 **:warning: TODO:** images with overview of data flow.
 
 **:warning: TODO:** pull in existing descriptions of I/O event model,
-[AsyncJob](/AsyncJob) model from source code.
+[AsyncJob](/Features/NativeAsyncCalls) model from source code.
 
 **:warning: TODO:** data processing diagram with color-coded for display of
-[AsyncJob](/AsyncJob) vs Event callback coverage.
+[AsyncJob](/Features/NativeAsyncCalls) vs Event callback coverage.
 
 ## Transaction Processing
 

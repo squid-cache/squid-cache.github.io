@@ -17,11 +17,6 @@ authentication for clients not authenticated via Kerberos or NTLM.
     File paths and account user/group names will depend on
     the specific operating system setup
 
-If you are running Debian or would like more verbose instructions
-including access groups [this
-link](http://wiki.bitbinary.com/index.php/Active_Directory_Integrated_Squid_Proxy)
-may be of interest.
-
 ## Example Environment
 
 the following examples are utilised, you should update any configuration

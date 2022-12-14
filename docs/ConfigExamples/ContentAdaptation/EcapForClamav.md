@@ -15,7 +15,7 @@ consumption as a whole.
 
 ## Build eCAP ClamAV adapter
 
-First you need to download [eCAP ClamAV adapter](http://e-cap.org/Downloads)
+First you need to download [eCAP ClamAV adapter](http://e-cap.org/downloads)
 
 Then you need to compile and install adapter:
 
@@ -42,7 +42,7 @@ Then you need to compile and install adapter:
 Paste the configuration file like this:
 
     ecap_enable on
-    
+
     # Bypass scan mime-types
     acl bypass_scan_types_req req_mime_type -i ^text/
     acl bypass_scan_types_req req_mime_type -i ^application/x-javascript
@@ -51,7 +51,7 @@ Paste the configuration file like this:
     acl bypass_scan_types_req req_mime_type -i ^video
     acl bypass_scan_types_req req_mime_type -i ^audio
     acl bypass_scan_types_req req_mime_type -i ^.*application\/x-mms-framed.*$
-    
+
     acl bypass_scan_types_rep rep_mime_type -i ^text/
     acl bypass_scan_types_rep rep_mime_type -i ^application/x-javascript
     acl bypass_scan_types_rep rep_mime_type -i ^application/x-shockwave-flash
@@ -59,7 +59,7 @@ Paste the configuration file like this:
     acl bypass_scan_types_rep rep_mime_type -i ^video
     acl bypass_scan_types_rep rep_mime_type -i ^audio
     acl bypass_scan_types_rep rep_mime_type -i ^.*application\/x-mms-framed.*$
-    
+
     loadable_modules /usr/local/lib/ecap_clamav_adapter.so
     ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off
     ecap_service clamav_service_resp respmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=RESPMOD bypass=on
@@ -69,7 +69,7 @@ Paste the configuration file like this:
 > :x:
     Note: On some setups you may need to create symbolic link in
     $prefix/clamav/share to
-    **[DatabaseDirectory](/DatabaseDirectory)**
+    **DatabaseDirectory**
     path, specified in clamd.conf. I.e, for example:
 
        ln -s /var/lib/clamav /usr/local/clamav/share/clamav
@@ -80,9 +80,9 @@ Paste the configuration file like this:
 ## Co-existing all services in one setup
 
 All services can co-exists in one squid instance:
-
+```
     ecap_enable on
-    
+
     # Bypass scan mime-types
     acl bypass_scan_types_req req_mime_type -i ^text/
     acl bypass_scan_types_req req_mime_type -i ^application/x-javascript
@@ -91,7 +91,7 @@ All services can co-exists in one squid instance:
     acl bypass_scan_types_req req_mime_type -i ^video
     acl bypass_scan_types_req req_mime_type -i ^audio
     acl bypass_scan_types_req req_mime_type -i ^.*application\/x-mms-framed.*$
-    
+
     acl bypass_scan_types_rep rep_mime_type -i ^text/
     acl bypass_scan_types_rep rep_mime_type -i ^application/x-javascript
     acl bypass_scan_types_rep rep_mime_type -i ^application/x-shockwave-flash
@@ -99,22 +99,23 @@ All services can co-exists in one squid instance:
     acl bypass_scan_types_rep rep_mime_type -i ^video
     acl bypass_scan_types_rep rep_mime_type -i ^audio
     acl bypass_scan_types_rep rep_mime_type -i ^.*application\/x-mms-framed.*$
-    
+
     loadable_modules /usr/local/lib/ecap_clamav_adapter.so
     ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off
     ecap_service clamav_service_resp respmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=RESPMOD bypass=on
     adaptation_access clamav_service_req allow !bypass_scan_types_req all
     adaptation_access clamav_service_resp allow !bypass_scan_types_rep all
-    
+
     acl gzipmimes rep_mime_type -i "/usr/local/squid/etc/acl.gzipmimes"
     loadable_modules /usr/local/lib/ecap_adapter_gzip.so
     ecap_service gzip_service respmod_precache ecap://www.thecacheworks.com/ecap_gzip_deflatebypass=off
     adaptation_access gzip_service allow gzipmimes
-    
+
     loadable_modules /usr/local/lib/ecap_adapter_exif.so
     ecap_service exif_req reqmod_precache bypass=off ecap://www.thecacheworks.com/exif-filter
     adaptation_service_set reqFilter eReqmod
     adaptation_access reqFilter allow all
+```
 
 > :x:
     **BEWARE:** Order is important! eCAP ClamAV adapter should precede TCW

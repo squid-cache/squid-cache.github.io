@@ -22,21 +22,18 @@ infrastructure and support framework for Squid developers and users.
 Emeritus developers who provided oversight of the Squid Project before
 [The Squid Software Foundation](http://foundation.squid-cache.org/).
 - [Henrik_Nordström](/HenrikNordstrom),
-  Squid Hacker Extraordinaire and [Squid-2.x](/RoadMap/Squid2)
+  Squid Hacker Extraordinaire and _Squid-2.x_
   release manager.
 - [Amos Jeffries](/AmosJeffries)
   HTTP/2 and IPv6 guru, [Translations](/Translations)
-  coordinator, and [Squid-3.x](/RoadMap/Squid3) and later
+  coordinator, and [Squid-3.x](/RoadMap) and later
   release manager.
-- [Robert Collins](http://www.squid-cache.org/~robertc/) was the main
+- [Robert Collins](https://www.linkedin.com/in/rbtcollins/) was the main
   driver of the initial Squid-3 C++ migration effort.
-- [Guido Serassio](/GuidoSerassio)
-  led the [Squid-2.x for Windows](http://squid.acmeconsulting.it/)
-  effort
+- [Guido Serassio](/GuidoSerassio) led the _Squid-2.x for Windows_ effort
 - [Alex Rousskov](/AlexRousskov),
   author and manager.
-- [Duane Wessels](http://wessels.squid-cache.org/)
-  Chief Procrastinator
+- Duane Wessels: Chief Procrastinator
 
 # Certified Developers
 
@@ -46,7 +43,7 @@ should have some familiarity with the processes involved.
 **Squid-3**:
 - [Christos  Tsantilas](/ChristosTsantilas)
   works mainly with ICAP, SSL-Bump, HTTPS and fixes some bugs.
-- [Doug Dixon](/DougDixon)
+- **Doug Dixon**
   assisted with the early development of Squid-3.0
 - [Eliezer Croitoru](/EliezerCroitoru)
   wrote and supports the [Store ID](/Features/StoreID)
@@ -54,14 +51,14 @@ should have some familiarity with the processes involved.
 - [Francesco Chemolli](/FrancescoChemolli)
   works mainly on documentation and maintains the wiki, but also
   chimes in with patches every now and then.
-- [Markus Moeller](/MarkusMoeller)
+- **Markus Moeller**
   wrote and supports the Kerberos features
 
 **Squid-2**:
 
 - [Adrian Chadd](https://github.com/erikarn), Squid-2
   developer, performance/scalability stuff.
-- [Steven Wilton](/StevenWilton)
+- **Steven Wilton**
   brought the [COSS](/Features/CyclicObjectStorageSystem)
   storage engine in Squid-2 to maturity
 - Many more
@@ -83,7 +80,7 @@ formats for easy use.
   Thomas-Martin Seck
 - [Gentoo](/KnowledgeBase/Gentoo):
   Eray Aslan
-- [Mandriva](/KnowledgeBase/Mandriva):
+- Mandriva:
   Luis Daniel Lucio Quiroz
 - [NetBSD](/KnowledgeBase/NetBSD):
   Takahiro Kambe
@@ -91,7 +88,7 @@ formats for easy use.
   Stuart Henderson
 - [Red Hat Enterprise Linux](/KnowledgeBase/RedHat):
   Lubos Uhliarik
-- [Solaris](/KnowledgeBase/Solaris):
+- Solaris:
   Steven M. Christensen
 - [Ubuntu](/KnowledgeBase/Ubuntu):
   Luigi Gangitano

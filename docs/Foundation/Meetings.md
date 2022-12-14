@@ -1,5 +1,4 @@
 ---
-categories: Foundation
 ---
 # Squid Software Foundation Board Meetings
 

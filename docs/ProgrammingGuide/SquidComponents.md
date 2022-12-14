@@ -295,7 +295,7 @@ Squid](http://squid.nlanr.net/Squid/urn-support.html).
 
 ## ESI
 
-ESI is an implementation of Edge Side Includes <http://www.esi.org>
+ESI is an implementation of [Edge Side Includes](https://en.wikipedia.org/wiki/Edge_Side_Includes)
 ESI is implemented as a client side stream and a small modification to
 client_side_reply.c to check whether ESI should be inserted into the
 reply stream or not.

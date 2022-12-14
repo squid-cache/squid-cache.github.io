@@ -37,7 +37,7 @@ iptables configuration example in that page should be changed like this:
     iptables -t nat -A PREROUTING -p tcp --dport 80 -j BYPASS
     iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3129
     iptables -t nat -A POSTROUTING -j MASQUERADE
-    
+
     iptables -t nat -A BYPASS -d www.example.com -j ACCEPT
 
 The **BYPASS** chain is the one performing the transparent interception
@@ -52,7 +52,4 @@ and options, please see the iptables documentation.
 
 As a side effect, all sites served from the same IP address as
 www.example.com, will be directly accessible as well. At this time, this
-is an unavoidable side-effect using general-purpose technologies;
-workarounds such as the one shown at
-[LinuxQuestions](http://www.linuxquestions.org/questions/linux-networking-3/url-blocking-via-iptables-655678/)
-are not reliable and should not be deployed.
+is an unavoidable side-effect using general-purpose technologies

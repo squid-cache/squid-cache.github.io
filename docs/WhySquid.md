@@ -13,7 +13,7 @@ regular) and reverse.
 
 The main functions a regular proxy can perform are caching, to save
 network resources by directly supplying commonly-accessed data to
-clients, [authentication and authorization](/SquidFaq/ProxyAuthentication),
+clients, [authentication and authorization](/Features/Authentication),
 [logging](/SquidFaq/SquidLogs),
 company internet policy enforcement (aka content filtering),
 [network resources usage management](/Features/DelayPools).

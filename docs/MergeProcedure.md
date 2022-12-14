@@ -22,7 +22,7 @@ best interest of Squid.
     [updating](/DeveloperResources/GitHints#update-a-previously-submitted-pull-request)
     your pull request as needed.
 6. Remind Core Developers to merge your eligible pull request as needed
-    (until merging is [automated]((#automation))).
+    (until merging is [automated](#automation)).
 7. Enjoy your code becoming official\!
 8. Support your changes by addressing bug reports and answering related
     development questions.
@@ -156,7 +156,7 @@ nothing else. In this context, an trusted code change is, by definition,
 a non-empty sequence of git commits that satisfies the following
 requirements:
 
-1. the sequence is (the beginning of) an [approved](#Votes) pull
+1. the sequence is (the beginning of) an [approved](#votes) pull
     request branch on GitHub,
 2. the sequence can be merged into master without conflicts, and
 3. the last commit in the sequence has passed all the required QA

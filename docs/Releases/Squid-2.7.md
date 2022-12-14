@@ -65,12 +65,8 @@ With two Squid releases now provided and supported. The core developers
 gathered to discuss what alternatives could be taken other than further
 splitting the code between two branches.
 
-However
-[AdrianChadd](/AdrianChadd)
-had [further
-plans](/RoadMap/Squid2)
-for Squid-2 and
-[Squid-3.0](/Releases/Squid-3.0)
+However [AdrianChadd](/AdrianChadd)
+had further plans for Squid-2 and [Squid-3.0](/Releases/Squid-3.0)
 was clearly not meeting the needs of some major users. The goalposts had
 shifted, as the saying goes. With a 5:1 split of developers working on
 Squid-3 over Squid-2 the feature parity gap was closing, but not fast
@@ -78,7 +74,7 @@ enough to prevent confusion amongst the users.
 
 The future aims of the project developers is to provide a single release
 with all the features needed by each user group. The
-[RoadMap/Squid3](/RoadMap/Squid3)
+[RoadMap/Squid3](/RoadMap)
 page describes our future plans in more detail than are relevant here.
 
 # Split Choice

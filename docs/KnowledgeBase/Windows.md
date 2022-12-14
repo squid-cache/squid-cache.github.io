@@ -20,7 +20,7 @@ development environment. All modern Windows versions are supported
 
 ### Unavailable features
 
-- DISKD: still needs to be ported    
+- DISKD: still needs to be ported
 - Transparent Proxy: missing Windows non commercial interception
     driver
 - WCCP: these features have not been ported. Without transparent
@@ -144,8 +144,6 @@ could be needed:
 - [Active Directory Authentication](/ConfigExamples/Authenticate/WindowsActiveDirectory)
 - [Kerberos Authentication](/ConfigExamples/Authenticate/Kerberos)
 - [NTLM Authentication](/ConfigExamples/Authenticate/Ntlm)
-    ([with Groups](/ConfigExamples/Authenticate/NtlmWithGroups))
-
 These and many other general manuals in the [ConfigExamples](/ConfigExamples)
 section.
 
@@ -323,7 +321,7 @@ As of
 - missing shared socket support available in Vista and later.
     Necessary for SMP workers.
 
-[AmosJeffries](/AmosJeffries) is cross-compiling with Mingw-w64 build 
+[AmosJeffries](/AmosJeffries) is cross-compiling with Mingw-w64 build
 environment on Debian, with
 occasional native MinGW-w64 environment builds for confirmation of
 changes. As this is spare-time work progress is slow.
@@ -341,7 +339,7 @@ changes. As this is spare-time work progress is slow.
     # mingw-w64-tools
     #       provides pkg-config and other build-time tools used by autoconf
     #
-    
+
     ./configure \
             --host=i686-w64-mingw32 \
             CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
@@ -383,14 +381,14 @@ As of[Squid-3.5](/Releases/Squid-3.5):
     options.
 - missing shared socket support available in Vista and later.
     Necessary for SMP workers.
-    
+
         ./configure \
                 CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
                 CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
                 --enable-build-info="Windows (MinGW32)"
 - This builds for [Squid-3.5](/Releases/Squid-3.5)
     but not later code. A newer GCC version than supplied with
-    [MingW32](/MingW32) is required.
+    _MingW32_ is required.
 - The main Squid binary still lacks SMP support and will only operate
     with the **-N** command line option.
 

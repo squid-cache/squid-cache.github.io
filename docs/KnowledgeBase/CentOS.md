@@ -60,17 +60,17 @@ In order to install it use cpan or EPEL repositories.
 
     # You will need the usual build chain
     yum install -y perl gcc autoconf automake make sudo wget
-    
+
     # and some extra packages
     yum install libxml2-devel libcap-devel
-    
+
     # to bootstrap and build from bzr needs also the packages
     yum install libtool-ltdl-devel
 
 The following ./configure options install Squid into the CentOS
 structure properly:
 
-``` 
+```
   --prefix=/usr
   --includedir=/usr/include
   --datadir=/usr/share
@@ -145,6 +145,6 @@ date
 
 ## Cern Mirror of NgTech rpository
 
-Cern labs are mirroring [NgTech](/NgTech)
+Cern labs are mirroring _NgTech_
 repository for quite some time to
 <http://linuxsoft.cern.ch/mirror/www1.ngtech.co.il/repo/centos/7/>

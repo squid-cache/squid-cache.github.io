@@ -123,9 +123,7 @@ no, se and it, *sd.cache.nlanr.net* for domains mx, za, mu and zm, and
 
 ## How do I join NLANR's cache hierarchy?
 
-We have a simple set of [guidelines for
-joining](http://www.ircache.net/Cache/joining.html) the NLANR cache
-hierarchy.
+Currently (December 2022) unclear
 
 ## Why should I want to join NLANR's cache hierarchy?
 

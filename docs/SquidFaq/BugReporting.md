@@ -49,7 +49,7 @@ may be due to one of the following reasons:
 - Write Permissions
 : The system user account for Squid (i.e. proxy, nobody, etc)
     needs write permissions to [coredump destination
-    directory](#Coredump_Location)
+    directory](#coredump-location)
 - sysctl options
 :   On systems such as FreeBSD, you won't get a coredump from programs that call
     setuid() and/or setgid() (like Squid sometimes does) unless you
@@ -57,7 +57,7 @@ may be due to one of the following reasons:
 ```
 # sysctl -w kern.sugid_coredump=1
 ```
-- No debugging symbols    
+- No debugging symbols
 : The Squid binary must have debugging symbols in order to get a
     meaningful coredump. The debugging traces we need look something
     like this:
@@ -181,12 +181,12 @@ management purposes. For example, in RHEL6/CentOS6 environment it may be
 In systemd environments it is *systemd-coredump* (man systemd-coredump).
 You can check it by reading */proc/sys/kernel/core_pattern* (man core):
 
-    # cat /proc/sys/kernel/core_pattern 
+    # cat /proc/sys/kernel/core_pattern
     |/usr/libexec/abrt-hook-ccpp %s %c %p %u %g %t e
 
 The core_pattern for systemd-coredump:
 
-    # cat /proc/sys/kernel/core_pattern 
+    # cat /proc/sys/kernel/core_pattern
     |/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %e
 
 Therefore, you should be familiar with the handlers to control coredump
@@ -197,14 +197,14 @@ handlers:
 
     # chkconfig abrt-ccpp off
     # service abrt-ccpp stop
-    # cat /proc/sys/kernel/core_pattern 
+    # cat /proc/sys/kernel/core_pattern
     core
 
 To disable systemd-coredump:
 
     # echo kernel.core_pattern=core > /etc/sysctl.d/50-coredump.conf
     # /usr/lib/systemd/systemd-sysctl --prefix kernel.core_pattern
-    # cat /proc/sys/kernel/core_pattern 
+    # cat /proc/sys/kernel/core_pattern
     core
 
 ## Using gdb debugger on Squid
@@ -295,9 +295,9 @@ stuck in a busy loop, and/or you want to know what your Squid is doing
 "right now", but you do not want to suspect the Squid process.
 
 1. To dump the current stack using gdb:
-```    
+```
         sudo gdb -n -batch -ex backtrace -pid <PID>
-``` 
+```
     You may not need/want the `-n` (i.e. do not load gdb initialization
     files) option. Using `'backtrace full'` instead of `backtrace` will
     give even more info but might be a tad slower.

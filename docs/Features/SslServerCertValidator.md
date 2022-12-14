@@ -15,8 +15,7 @@ categories: Feature
 Awaken by DigiNotar CA
 [compromise](http://blog.mozilla.org/security/2011/08/29/fraudulent-google-com-certificate/),
 various web agents now try harder to validate SSL certificates (see 2011
-squid-dev thread titled "[SSL Bump Certificate
-Blacklist](http://comments.gmane.org/gmane.comp.web.squid.devel/16034)"
+squid-dev thread titled "SSL Bump Certificate Blacklist"
 for a good introduction). From user point of view, an SSL bumping Squid
 is the ultimate authority on server certificate validation, so we need
 to go beyond basic OpenSSL checks as well.
@@ -104,7 +103,7 @@ Result line sent back to Squid:
 
 - result
 :   One of the result codes:
-        
+
         | --- | ------------------------------------------ |
         | OK  | Success. Certificate validated.            |
         | ERR | Success. Certificate not validated.        |
@@ -116,7 +115,7 @@ Result line sent back to Squid:
 - kv-pairs
 :   A list of key=value parameters separated by new lines. The
     supported parameters are:
-        
+
         | --- | --- |
         | cert_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
         | error_name_***ID***   | The openSSL error name for the error **ID**                                                                               |

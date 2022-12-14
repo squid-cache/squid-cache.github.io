@@ -1,5 +1,5 @@
 ---
-categories: Feature, Obsolete
+categories: [Feature, ObsoleteFeature]
 ---
 # Obsolete Operating Systems
 

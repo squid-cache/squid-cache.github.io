@@ -13,7 +13,7 @@ Bug Reports: <https://bugs.launchpad.net/ubuntu/+source/squid>
 
 Install Procedure:
 
-``` 
+```
  aptitude install squid
 ```
 
@@ -52,12 +52,11 @@ discover the dependency package and install it.
 
 > :information_source:
     The usual one requested is **libssl-dev** for SSL support.
-    
+
 
 ### Init Script
 
 The init.d script is part of the official Debain/Ubuntu packaging. It
 does not come with Squid directly. So you will need to download a copy
-from the
-[Debian repository](https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-squid/pkg-squid3.git;a=blob_plain;f=debian/squid.rc)
+from the Debian repository
 to /etc/init.d/squid

@@ -11,4 +11,4 @@ Besides this, I'm a general nag-person for the other developers and I'm
 the person who's most involved in caring for the project's infrastructure,
 including [the wiki](https://wiki.squid-cache.org), the
 [CI/CD farm](https://build.squid-cache.org),
-the [website](https://www.squid-cache.org), mailing lists etc
+the [website](http://www.squid-cache.org), mailing lists etc

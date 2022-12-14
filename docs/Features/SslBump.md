@@ -1,5 +1,5 @@
 ---
-categories: [Feature, Obsolete]
+categories: [Feature, ObsoleteFeature]
 ---
 # Feature: Squid-in-the-middle SSL Bump
 

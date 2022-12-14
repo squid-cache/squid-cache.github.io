@@ -102,10 +102,8 @@ That question is best answered by the official mailing lists page at
 - [The IRCache Mesh](http://www.ircache.net/) gives information on our
   operational mesh of caches.
 - [Authoritative Config Guides](http://www.squid-cache.org/Doc/config/)
-- Squid documentation in [German](http://www.squid-handbuch.de/),
-  [Turkish](http://istanbul.linux.org.tr/~ilkerg/squid/elkitabi.html)
+- Squid documentation in [German](http://www.squid-handbuch.de/)
 - Tutorial on
-  [Configuring Hierarchical Squid Caches](http://www.squid-cache.org/Doc/Hierarchy-Tutorial/)
 - [RFC 2186](https://datatracker.ietf.org/doc/html/rfc2186) ICPv2 --
   Protocol
 - [RFC 2187](https://datatracker.ietf.org/doc/html/rfc2187) ICPv2 --
@@ -247,4 +245,4 @@ version.
 # Want to contribute?
 
 We always welcome help keeping the Squid FAQ up-to-date. If you would
-like to help out, see [how to contribute](/ContributeDocumentation)
+like to help out, see [how to contribute](/ContributeToWiki)

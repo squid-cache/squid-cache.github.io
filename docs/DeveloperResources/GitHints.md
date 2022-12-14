@@ -1,4 +1,4 @@
----
+n---
 ---
 # Git Hints
 
@@ -130,7 +130,7 @@ You can now make and commit changes to your local feature branch.
 > :information_source:
     If you need to both rebase and squash your feature branch, you may use
     interactive
-    [rebase](#Rebase_your_feature_branch_to_be_in_sync_with_the_current_upstream_master)
+    [rebase](#rebase-your-feature-branch-to-another-official-branch)
     and replace the default "pick" with "squash" commands there. The
     resulting squashed commit will get the metadata such as Date from the
     first feature branch commit, confusing readers and some tools
@@ -205,7 +205,7 @@ You can now make and commit changes to your local feature branch.
     --date="$(date)"*. Doing two things at once (i.e., squashing and
     rebasing) is faster when things go smoothly, but it is more difficult to
     discover and fix problems. Also, rebasing an already
-    [squashed](#Squash_all_the_feature_branch_changes_into_a_single_commit)
+    [squashed](#squash-all-the-feature-branch-changes-into-a-single-commit)
     branch may reduce the number of conflicts but may also create more
     complex conflicts. Pick your poison.
 

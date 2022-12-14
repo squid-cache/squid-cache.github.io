@@ -62,13 +62,7 @@ Several configurations are possible. The
 [ConfigExamples](/ConfigExamples)
 section details several variations of Reverse Proxy.
 
-1. [Basic Accelerator](ConfigExamples/Reverse/BasicAccelerator)
-1. [Exchange RPC](ConfigExamples/Reverse/ExchangeRpc)
-1. [Https Virtual Hosting](ConfigExamples/Reverse/HttpsVirtualHosting)
-1. [Multiple Webservers](ConfigExamples/Reverse/MultipleWebservers)
-1. [Outlook Web Access](ConfigExamples/Reverse/OutlookWebAccess)
-1. [SSL with Wildcard Certificate](ConfigExamples/Reverse/SslWithWildcardCertifiate)
-1. [Virtual Hosting](ConfigExamples/Reverse/VirtualHosting)
+{% include pages-list-by-path.html dir="/ConfigExamples/Reverse"%}
 
 ## Running the web server on the same server
 

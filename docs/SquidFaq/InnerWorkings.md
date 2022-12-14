@@ -513,11 +513,6 @@ headers have been received and parsed. In some cases, the reply headers
 will indicate the object should not be made public. For example, if the
 *private* Cache-Control directive is used.
 
-## What is FORW_VIA_DB for?
-
-We use it to collect data for
-[Plankton](https://www.ircache.net/Cache/Plankton/).
-
 ## Does Squid send packets to port 7 (echo)? If so, why?
 
 It may. This is an old feature from the Harvest cache software. The

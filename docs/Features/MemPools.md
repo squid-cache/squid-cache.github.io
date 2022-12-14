@@ -27,7 +27,7 @@ some issues open, such as initialization order.
 Also, with the current advancements in malloc implementations one may
 want to link Squid against an alternaive malloc implementation:
 
-- [Google tcmalloc](http://google-perftools.googlecode.com/svn/trunk/doc/tcmalloc.html)
+- [Google tcmalloc](https://github.com/google/tcmalloc)
 - [Wolfram Gloger's ptmalloc3](http://www.malloc.de/en/)
 
 ## Public API
@@ -51,7 +51,7 @@ and followed by an empty line then the 'public:' section definition.
     class Foo
     {
         MEMPROXY_CLASS(Foo);
-    
+
     public:
        ...
     };

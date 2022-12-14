@@ -1,16 +1,9 @@
 ---
-categories: [ConfigExample, ReviewMe]
-published: false
+categories: [ConfigExample]
 ---
 # MultiCpuSystem
-
-**Warning**: Any example presented here is provided "as-is" with no
-support or guarantee of suitability. If you have any further questions
-about these examples please email the squid-users mailing list.
-
-  - :warning:
-    :information_source:
-    [Squid-3.2](/Releases/Squid-3.2)
+> :warning:
+    :information_source: [Squid-3.2](/Releases/Squid-3.2)
     has now had experimental multi-process SMP support merged. It is
     designed to operate with a similar but different configuration to
     these while reducing much of the complexity of process instance
@@ -20,14 +13,10 @@ about these examples please email the squid-users mailing list.
 
 Squid-3.1 and older do not scale very well to Multi-CPU or Multi-Core
 systems. Some of its features do help, such as for example
-[DiskDaemon](/Features/DiskDaemon),
-or
+[DiskDaemon](/Features/DiskDaemon), or
 [COSS](/Features/CyclicObjectStorageSystem),
 or the ability to delegate parts of the request processing to external
-helpers such as
-[Authenticators](/SquidFaq/ProxyAuthentication)
-or [other auxiliary
-software](/SquidFaq/RelatedSoftware).
+helpers such as [Authenticators](/Features/Authenticationn).
 Still Squid remains to this day very bound to a single processing core
 model. There are plans to eventually make Squid able to effectively use
 multicore systems, but something may be done already, by using a
@@ -35,38 +24,28 @@ fine-tuned
 [MultipleInstances](/KnowledgeBase/MultipleInstances)
 setup.
 
-|                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :warning: Notice | This setup has been designed with a recent version of Squid in mind. It has been tested with [Squid-3.1](/Releases/Squid-3.1), but it should work with [Squid-3.0](/Releases/Squid-3.0) and [Squid-2.7](/Releases/Squid-2.7) as-is as well. [Squid-2.6](/Releases/Squid-2.6) and earlier can be coaxed to work, but it will be harder to setup and maintain. |
+>  :warning:
+    This setup has been tested with [Squid-3.1](/Releases/Squid-3.1)
 
 It is also geared at **expert system-administrators**.
 [MultipleInstances](/KnowledgeBase/MultipleInstances)
 is not easy to manage and run, and system integration depends on the
 specific details of the operating system distribution of choice.
 
-The setup laid out in this [configuration
-example](/ConfigExamples)
+The setup laid out here
 aims at creating on a system multiple running squid processes:
 
-  - a 'front-end' process which does
-    
-      - authentication
-    
-      - authorization
-    
-      - logging, delay pools etc.
-    
-      - in-memory hot-object caching
-    
-      - load-balancing of the backend processes
-    
-      - redirection etc.
+- a 'front-end' process which does
+    - authentication
+    - authorization
+    - logging, delay pools etc.
+    - in-memory hot-object caching
+    - load-balancing of the backend processes
+    - redirection etc.
 
-  - a 'back-end' processes farm, whose each does
-    
-      - disk caching
-    
-      - do the network heavy lifting
+- a 'back-end' processes farm, whose each does
+    - disk caching
+    - do the network heavy lifting
 
 While this setup is expected to increase the general throughput of a
 multicore system, the benefits are anyways constrained, as the frontend
@@ -87,7 +66,7 @@ This allows to change cluster-wide parameters without needing to touch
 each instance's. Each instance will still have to be reconfigured
 individually.
 
-``` highlight
+```
 acl manager proto cache_object
 acl localhost src 127.0.0.1/32
 acl to_localhost dst 127.0.0.0/8
@@ -105,19 +84,15 @@ acl Safe_ports port 591     # filemaker
 acl Safe_ports port 777     # multiling http
 acl CONNECT method CONNECT
 
-
-
 cachemgr_passwd somepassword all
 ```
-
-[common.acl.conf.txt](/ConfigExamples/MultiCpuSystem?action=AttachFile&do=get&target=common.acl.conf.txt)
 
 ### common backend parameters
 
 Backends share most of the configuration, it makes sense to also join
 those
 
-``` highlight
+```
 #you want the backend to have a small cache_mem
 cache_mem 4 MB
 
@@ -136,11 +111,10 @@ http_access allow localhost
 http_access deny all
 ```
 
-[common.backend.conf.txt](/ConfigExamples/MultiCpuSystem?action=AttachFile&do=get&target=common.backend.conf.txt)
 
 ### frontend
 
-``` highlight
+```
 # acl are shared among instances
 include /usr/local/etc/lab/common.acl.conf
 
@@ -176,11 +150,9 @@ http_access allow localhost
 http_access deny all
 ```
 
-[frontend.conf.txt](/ConfigExamples/MultiCpuSystem?action=AttachFile&do=get&target=frontend.conf.txt)
-
 ### backend 1
 
-``` highlight
+```
 # acl are shared among instances
 include /usr/local/etc/lab/common.acl.conf
 
@@ -197,11 +169,9 @@ pid_filename /var/log/squid/backend-1.pid
 include /usr/local/etc/lab/common.backend.conf
 ```
 
-[backend-1.conf.txt](/ConfigExamples/MultiCpuSystem?action=AttachFile&do=get&target=backend-1.conf.txt)
-
 ### backend 2
 
-``` highlight
+```
 # acl are shared among instances
 include /usr/local/etc/lab/common.acl.conf
 
@@ -217,7 +187,3 @@ pid_filename /var/log/squid/backend-2.pid
 
 include /usr/local/etc/lab/common.backend.conf
 ```
-
-[backend-2.conf.txt](/ConfigExamples/MultiCpuSystem?action=AttachFile&do=get&target=backend-2.conf.txt)
-
-[CategoryConfigExample](/CategoryConfigExample)

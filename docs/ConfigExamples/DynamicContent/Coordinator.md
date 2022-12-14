@@ -16,7 +16,7 @@ assumption that each GET request of a URL should identify one and only
 one resource. dynamic content should be sent based on user data in a
 POST request. as defined in
 [rfc2616](http://tools.ietf.org/html/rfc2616)
-[section 9.3 for GET](http://tools.ietf.org/html/rfc2616#section-9.3) 
+[section 9.3 for GET](http://tools.ietf.org/html/rfc2616#section-9.3)
 and [section 9.5 for POST](http://tools.ietf.org/html/rfc2616#section-9.5)
 
 9.3 "The GET method means retrieve whatever information (in the form of
@@ -88,15 +88,6 @@ page. if you will send an argument to a static html file such as:
 just a longer url. many CMS like Wordpress use question mark to identify
 a specific page/article stored in the system. ("/wordpress/?p=941")
 
-### CGI-BIN
-
-many systems use CGI to run a script on a server that will result html
-output or not. i wrote a simple CGI script that shows the public ip
-address used to contact my server:
-<http://www1.ngtech.co.il/cgi-bin/myip.cgi> this script result will
-vary for each user by the server and shouldn't be cached. There is a
-convention about CGI scripts to run under "cgi-bin" directory as a mark
-of live feed.
 
 but insted exploting this convention the script authur can just add
 Cache specific headers to allow or disallow caching the resource.
@@ -183,7 +174,7 @@ was proposed by Amos Jeffries at:
 in order to save maximum bandwidth force Squid into downloading the
 whole file instead of a partial content using:
 
-    range_offset_limit -1 
+    range_offset_limit -1
     quick_abort_min -1
 
 [range\_offset\_limi](http://www.squid-cache.org/Doc/config/range_offset_limit/)
@@ -296,7 +287,7 @@ Content-MD5, Digest:, Link:, etc).
 #### Store URL Rewrite
 
 In [Squid-2.7](/Releases/Squid-2.7) the
-[store\_url\_rewrite](http://www.squid-cache.org/Doc/config/store_url_rewrite)
+store\_url\_rewrite
 interface was integrated to solve a resource De-Duplication case. an
 example is sourceforge and it can implemented for youtube and others.
 
@@ -461,7 +452,7 @@ code:
 
 analyze request. if request fits criteria: extract from request the
 needed data (from url and other headers) create an internal "address"
-like "<http://ytvideo.squid.internal/somekey>" store a key pair of the
+like "_http://ytvideo.squid.internal/somekey_" store a key pair of the
 original url and the modified url on the db. send the modified request
 to squid.
 
@@ -512,32 +503,32 @@ squid 1:
     acl ytcblcok urlpath_regex (begin\=)
     acl ytcblockdoms dstdomain redirector.c.youtube.com
     acl ytimg dstdomain .ytimg.com
-    
+
     refresh_pattern ^http://(youtube|ytimg)\.squid\.internal/.*  10080 80%  28800 override-lastmod override-expire override-lastmod ignore-no-cache ignore-private ignore-reload
-    
+
     maximum_object_size_in_memory 4 MB
-    
+
     #cache_peers section
     cache_peer 127.0.0.1 parent 13128 0 no-query no-digest no-tproxy default name=internal
     cache_peer_access internal allow internaldoms
     cache_peer_access internal deny all
-    
+
     never_direct allow internaldoms
     never_direct deny all
-    
+
     cache deny ytcblockdoms
     cache deny ytcdoms ytcblcok
     cache allow all
-    
+
     icap_enable on
     icap_service_revival_delay 30
-    
+
     icap_service service_req reqmod_precache bypass=1 icap://127.0.0.2:1344/reqmod?ytvideoexternal
     adaptation_access service_req deny internaldoms
     adaptation_access service_req deny ytcblockdoms
     adaptation_access service_req allow ytcdoms
     adaptation_access service_req deny all
-    
+
     icap_service service_ytimg reqmod_precache bypass=1 icap://127.0.0.2:1344/reqmod?ytimgexternal
     adaptation_access service_ytimg allow ytimg img
     adaptation_access service_ytimg deny all
@@ -547,14 +538,14 @@ squid 2
     acl internalyt dstdomain youtube.squid.internal
     acl intytimg dstdomain ytimg.squid.internal
     cache deny all
-    
+
     icap_enable on
     icap_service_revival_delay 30
-    
+
     icap_service service_req reqmod_precache bypass=0 icap://127.0.0.2:1344/reqmod?ytvideointernal
     adaptation_access service_req allow internalyt
     adaptation_access service_req deny all
-    
+
     icap_service service_ytimg reqmod_precache bypass=0 icap://127.0.0.2:1344/reqmod?ytimginternal
     adaptation_access service_ytimg allow intytimg
     adaptation_access service_ytimg deny all
@@ -599,7 +590,7 @@ for ruby.
 squid1.conf
 
     acl internaldoms dstdomain .squid.internal
-    acl rewritedoms dstdomain .c.youtube.com av.vimeo.com .dl.sourceforge.net  .ytimg.com 
+    acl rewritedoms dstdomain .c.youtube.com av.vimeo.com .dl.sourceforge.net  .ytimg.com
     url_rewrite_program /opt/coordinator.rb
     url_rewrite_children 5
     url_rewrite_concurrency 50
@@ -721,9 +712,9 @@ def rewriter(request)
                 case request
 
                 when /^http:\/\/[a-zA-Z0-9\-\_\.]+\.squid\.internal\/.*/
-                   url = $cache.geturl(request) 
+                   url = $cache.geturl(request)
                    if url != nil
-                      return url 
+                      return url
                     else
                       return ""
                   return ""
@@ -732,7 +723,7 @@ def rewriter(request)
                   vid = $cache.sfdlid(request)
                   $cache.setvid(request, "http://dl.sourceforge.net.squid.internal/" + vid) if vid != nil
                   url = "http://dl.sourceforge.net.squid.internal/" + vid if vid != nil
-                  return url                            
+                  return url
                 when /^http:\/\/av\.vimeo\.com\/.*/
                   vid = $cache.vimid(request)
                   $cache.setvid(request, "http://vimeo.squid.internal/" + vid) if vid != nil
@@ -747,7 +738,7 @@ def rewriter(request)
                    vid = $cache.ytimg(request)
            $cache.setvid(request, "http://ytimg.squid.internal/" + vid) if vid != nil
            url = "http://ytimg.squid.internal/" + vid if vid != nil
-           return url                                            
+           return url
                 when /^quit.*/
                   exit 0
                 else

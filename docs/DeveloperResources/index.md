@@ -227,7 +227,3 @@ explains who the people working on the Squid project are.
 During the life of the Squid project, a number of
 [papers](http://www.squid-cache.org/Devel/papers/) have been published.
 
-Code Sprints are informal gatherings of Squid developers with a focus on
-developing urgently needed features or fixing major bugs. You can find
-links to related documents in
-[MeetUps](/MeetUps).

@@ -56,7 +56,7 @@ interception proxy it will works also with Telegram clients AUTO mode
 ## How to block Telegram
 
 To make bootstrap, Telegram uses HTTP POST by pattern
-<http://A.B.C.D/api> on 1st stage bootstrap to networks above, and
+http://A.B.C.D/api on 1st stage bootstrap to networks above, and
 then CONNECT call to this addresses without SNI.
 
 To block Telegram by any reason it is enough to write config snippet
@@ -67,10 +67,10 @@ like this:
     acl Telegram url_regex ^http:\/\/91\.108\.([4-7]|5[6|7])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\/api$
     http_access deny Telegram
     deny_info TCP_RESET Telegram
-    
+
     acl Telegram_api_terminate ssl::server_name_regex 149\.154\.1(6[0-9]|7[0-5])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])
     acl Telegram_api_terminate ssl::server_name_regex 91\.108\.([4-7]|5[6|7])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])
-    
+
     # SSL bump rules
     acl DiscoverSNIHost at_step SslBump1
     ssl_bump peek DiscoverSNIHost
@@ -80,7 +80,7 @@ like this:
 Yon can easy to extend rules to cover IPv6 networks.
 
 If Telegram starts hide it bootstrap behind world CDN's, just extend
-rules above to pattern <http://0.0.0.0/api>.
+rules above to pattern http://0.0.0.0/api.
 
 > :information_source:
     Note: If you would like also to ban **MTProto proxy**, keep in mind

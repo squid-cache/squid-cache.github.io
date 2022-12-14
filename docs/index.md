@@ -43,7 +43,7 @@ mailing list, and during pull request reviews on
 - The Bugzilla [database](http://bugs.squid-cache.org/index.cgi)
 - The Calamaris log file analysis [tool](http://freshmeat.net/projects/calamaris/)
 - Visolve's configuration manuals for
-    [Squid 3.0](http://www.visolve.com/squid/squid30/contents.php), also mostly
+    [Squid 3.0](https://www.visolve.com/squid/squid30/contents.php), also mostly
     valid for following releases
 - The book [Squid Proxy Server 3.1: Beginner's
     Guide](https://www.packtpub.com/squid-proxy-server-3-1-beginners-guide/book)

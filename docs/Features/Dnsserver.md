@@ -1,5 +1,5 @@
 ---
-categories: Feature
+categories: [Feature, ObsoleteFeature]
 ---
 # Feature: dnsserver helper (obsolete)
 

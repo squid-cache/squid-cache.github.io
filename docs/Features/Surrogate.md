@@ -7,9 +7,8 @@ categories: Feature
     surrogates with alternative caching settings.
 - **Version**: 3.0
 - **Developer**:
-    [RobertCollins](/RobertCollins)
-- **More**: <http://www.esi.org/architecture_spec_1.0.html> and
-    <http://www.w3.org/TR/edge-arch>
+    _Robert Collins_
+- **More**: <http://www.w3.org/TR/edge-arch>
 
 ## Details
 

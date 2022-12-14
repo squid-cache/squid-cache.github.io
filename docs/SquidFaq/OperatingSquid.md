@@ -139,14 +139,14 @@ cache_dir before restarting.
 To erase the entire contents of the cache and make Squid start fresh the
 following commands provide the fastest recovery time:
 
-``` 
+```
 squid -k shutdown
 mv /dir/cache /dir/cache.old
 ```
 
 repeat for each cache_dir location you wish to empty.
 
-``` 
+```
 squid -z
 squid
 rm -rf /dir/cache.old
@@ -232,7 +232,7 @@ they are only informational.
 
 A typical database entry looks something like this:
 
-``` 
+```
     Network          recv/sent     RTT  Hops Hostnames
     192.41.10.0        20/  21    82.3   6.0 www.jisedu.org www.dozo.com
 bo.cache.nlanr.net        42.0   7.0
@@ -279,7 +279,7 @@ The reasoning is simple:
     application, such as bind to a network socket, open a log file, perhaps read a
     configuration file), therefore it starts as root.
 1. Any application might contain bugs which lead to security
-    vulnerabilities, which can be remotely exploited through the network 
+    vulnerabilities, which can be remotely exploited through the network
     connection, and until the bugs are fixed, you at least want to minimise the risk
     presented by them.
 1. Therefore as soon as you've done all the things involved in the first step

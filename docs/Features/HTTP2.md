@@ -43,7 +43,7 @@ To implement a HTTP/2 receiving port in Squid we need to:
 - duplicate the HTTP client connection manager (ConnStateData,
     ClientSocketContext, ClientHttpRequest class triplet)
 - update the new version to decapsulate/encapsulate with HTTP/2
-    framing on read/write    
+    framing on read/write
 - update the new manager to handle multiple parallel data pipeline
     channels ("streams" in the HTTP/2 grammar). At present there is
     only one active context and an idle pipeline queue. HTTP/2
@@ -58,8 +58,8 @@ To implement a HTTP/2 receiving port in Squid we need to:
 - implement Upgrade header support:
     - for h2c label
     - for TLS/\*
-- implement TLS for systems where OpenSSL is not available.    
-    - Including ALPN extension support    
+- implement TLS for systems where OpenSSL is not available.
+    - Including ALPN extension support
     - Possibly also NPN extension support
 
 > :x:
@@ -102,7 +102,7 @@ To implement a server gateway in Squid we need to:
     - holding the connections which are actively in use but can be
         shared with more server requests.
     - pooling at the level of stateful connection manager object
-        ([HttpStateData](/HttpStateData)
+        (`HttpStateData`
         presently) not stateless TCP connection details
         (Comm::Connection)
 - duplicate the HTTP server connection manager

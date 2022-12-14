@@ -20,12 +20,12 @@ Heimdal).
     See rcctl(8) for details.
     New and changed readme(s):
             /usr/local/share/doc/pkg-readmes/squid
-    
+
     # vi /etc/squid/squid.conf
-    
+
     ##...to start at boot:
     # rcctl enable squid
-    
+
     ##...to start immediately:
     # rcctl start squid
 
@@ -34,11 +34,10 @@ installed with "**pkg_add squid-ldap**". msktutil is also available in
 packages and may be helpful to users wanting to integrate with Microsoft
 authentication via Kerberos.
 
-If using Squid as an [InterceptionProxy](/InterceptionProxy),
+If using Squid as an [InterceptionProxy](/SquidFaq/InterceptionProxy),
 note that the packages are built using --enable-ipfw-transparent which
 is the preferred method on OpenBSD. Use this with "divert-to" rules in
-PF. More information is available in the package's
-[README file](http://www.openbsd.org/cgi-bin/cvsweb/ports/www/squid/pkg/README-main?content-type=text%2Fplain).
+PF.
 
 OpenBSD releases are made approximately every 6 months. Typically
 packages are only updated in "-current" (development snapshots) but

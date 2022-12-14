@@ -22,9 +22,5 @@ available at <http://code.google.com/p/pacparser/>
 
 ## Further Reading
 
-- Original specification:
-    <http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html>
 - Wikipedia overview:
     <http://en.wikipedia.org/wiki/Proxy_auto-config>
-- Microsoft proposed IPv6 extensions to proxy.pac:
-    <http://blogs.msdn.com/wndp/articles/IPV6_PAC_Extensions_v0_9.aspx>

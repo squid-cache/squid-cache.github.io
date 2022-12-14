@@ -11,7 +11,7 @@ categories: Feature
   [HenrikNordstrom](/HenrikNordstrom),
   _Robert Collins_,
   [FrancescoChemolli](/FrancescoChemolli)
-- **More**: <http://squid.acmeconsulting.it/>
+- **More**:
 
 # Details
 

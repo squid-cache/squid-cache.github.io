@@ -32,7 +32,7 @@ Chadd. It has not changed significantly since older TPROXY.
     | Squid 3.1                 | [Official releases page](http://www.squid-cache.org/Versions/)                      |
     | libcap-dev or libcap2-dev | any                                                                                 |
     | libcap 2.09 or later      | any                                                                                 |
-    
+
 
 > :information_source:
     **libcap2** is needed at run time. To build you need the developer
@@ -44,7 +44,7 @@ Chadd. It has not changed significantly since older TPROXY.
 
 - TPROXYv4 support reached a usable form in 2.6.28. However several
     Kernels have various known bugs:
-    
+
 ## Squid Configuration
 
 Configure build options
@@ -92,7 +92,7 @@ your system.
     # IPv4-only
     ip -f inet rule add fwmark 1 lookup 100
     ip -f inet route add local default dev eth0 table 100
-    
+
     # IPv6-only
     ip -f inet6 rule add fwmark 1 lookup 100
     ip -f inet6 route add local default dev eth0 table 100
@@ -145,12 +145,12 @@ Or configure **/etc/sysctl.conf**:
     Systems with strict localhost interface security boundaries require
     each interface to have a separate "table" entry for looking up
     packets via that device.
-    
+
 > :x:
     in this situation the tables often cannot use the same number.
     When experimenting finding out how to erase the route table is
     useful.
-    
+
 > :information_source:
     **eth0** is shown above, change to match your TPROXY
     interface(s).
@@ -197,28 +197,28 @@ from bridging mode to routing mode:
 ```bash
     ## interface facing clients
     CLIENT_IFACE=eth0
-    
+
     ## interface facing Internet
     INET_IFACE=eth1
-    
-    
+
+
     ebtables -t broute -A BROUTING \
             -i $CLIENT_IFACE -p ipv6 --ip6-proto tcp --ip6-dport 80 \
             -j redirect --redirect-target DROP
-    
+
     ebtables -t broute -A BROUTING \
             -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 \
             -j redirect --redirect-target DROP
-    
+
     ebtables -t broute -A BROUTING \
             -i $INET_IFACE -p ipv6 --ip6-proto tcp --ip6-sport 80 \
             -j redirect --redirect-target DROP
-    
+
     ebtables -t broute -A BROUTING \
             -i $INET_IFACE -p ipv4 --ip-proto tcp --ip-sport 80 \
             -j redirect --redirect-target DROP
-    
-    
+
+
     if test -d /proc/sys/net/bridge/ ; then
       for i in /proc/sys/net/bridge/*
       do
@@ -304,14 +304,14 @@ For Example:
      ip address x.x.x.x y.y.y.y
      ip wccp 80 redirect in
      ip wccp 90 redirect out
-    
+
     interface GigabitEthernet0/3.101
      description Dialup customers
      encapsulation dot1Q 502
      ip address x.x.x.x y.y.y.y
      ip wccp 80 redirect in
      ip wccp 90 redirect out
-    
+
     interface GigabitEthernet0/3.102
      description proxy servers
      encapsulation dot1Q 506
@@ -431,9 +431,7 @@ be multiple.
 
   - *by Michael Bowe*
 
-Referring to the
-[wccps_service_info](http://www.squid-cache.org/Doc/config/wccps_service_info)
-settings detailed above.
+Referring to the _wccps_service_info_ settings detailed above.
 
 First method:
 
@@ -452,7 +450,7 @@ Ties a particular client to a particular cache
 When using TPROXY the second method must be used. The problem with the
 first method is this sequence of events which starts to occur:
 
-Say a client wants to access <http://some-large-site>, their PC
+Say a client wants to access _http://some-large-site_, their PC
 resolves the address and gets x.x.x.1
 
 1. GET request goes off to the network, Cisco sees it and hashes the
@@ -492,22 +490,14 @@ to the net operations is needs for TPROXY.
     grep AVC.*squid /var/log/audit/autdit.log | audit2allow -M squidtproxy
     semodule -i squidtproxy.pp
 
-Alternatively you can download and install a precomposed policy module
-from <http://www.henriknordstrom.net/code/squidtproxy.te>
 
-    wget http://www.henriknordstrom.net/code/squidtproxy.te
-    checkmodule -M -m -o squidtproxy.mod squidtproxy.te
-    semodule_package -o squidtproxy.pp squidtproxy.mod
-    semodule -i squidtproxy.pp
-    setsebool -P squid_connect_any true
 
 ## References
 
 - Older config how-to from before the kernel and iptables bundles were
     available...
     <http://wiki.squid-cache.org/ConfigExamples/TPROXYPatchingCentOS>
-- Shorewall Firewall Configuration
-    <http://www1.shorewall.net/Shorewall_Squid_Usage.html#TPROXY>
+
 
 ### spoof_client_ip config directive (exists only from Squid-3.4)
 

@@ -55,7 +55,7 @@ benefits, and historic problems with the upper two layers.
     peering abilities disappear)
   - System resources and connection reliability take several major
     reductions
-1. [Manual Configuration](#Manual_Browser_Configuration).
+1. [Manual Configuration](#manual-browser-configuration).
   - Nothing beats an explicit manual configuration for *it works*
     excitement. However doing it for each and every piece of
     software on a machine is quite a hassle. Doing it for a whole
@@ -286,7 +286,7 @@ Under *Tools*, *Internet Options*, *Connections*, *Settings* **or** *Lan
 Settings*, set **ONLY** *Use Automatic Configuration Script* to be the
 URL for where your new *wpad.dat* file can be found.
 
-i.e. [http://www.example.com/wpad.dat](http://www.example.com/wpad.dat).
+i.e. _http://www.example.com/wpad.dat_.
 
 Test that that all works as per your script and network. There's no
 point continuing until this works ...
