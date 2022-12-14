@@ -14,5 +14,15 @@ test -x node_modules/markdown-link-check/markdown-link-check ||
 # done
 
 
- (cd docs; find * -name \*.md) | sed 's/\.md$//' | sort -R | sed 's!^!http://localhost:4000/!' | \
-    xargs -n 1 ./node_modules/markdown-link-check/markdown-link-check 
+(cd docs; find * -name \*.md) | sed 's/\.md$//' | sort -R | sed 's!^!http://localhost:4000/!' | \
+while read url
+do
+    echo "$url" >&2
+    if ./node_modules/markdown-link-check/markdown-link-check "$url" >/tmp/link-check.out
+    then
+        :
+    else
+        cat /tmp/link-check.out
+    fi
+done
+#    xargs -n 1 ./node_modules/markdown-link-check/markdown-link-check 
