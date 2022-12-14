@@ -19,7 +19,7 @@ best interest of Squid.
 4. Submit a [pull request](#pull-request) on GitHub.
 5. Monitor for automated test failures and work with reviewers to get
     enough [votes](#votes),
-    [updating](/GitHints#update-a-previously-submitted-pull-request)
+    [updating](/DeveloperResources/GitHints#update-a-previously-submitted-pull-request)
     your pull request as needed.
 6. Remind Core Developers to merge your eligible pull request as needed
     (until merging is [automated]((#automation))).

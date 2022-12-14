@@ -57,8 +57,8 @@ enabled as follows (modify the port as appropriate):
     http_port 80 transparent tproxy
 
 There _must_ be a
-[tcp_outgoing](http://www.squid-cache.org/Doc/config/tcp_outgoing)
-address defined. This will need to be valid to satisfy any non-tproxied
+[tcp_outgoing_address](http://www.squid-cache.org/Doc/config/tcp_outgoing_address)
+defined. This will need to be valid to satisfy any non-tproxied
 connections.
 
 On the router, you need to make sure that all traffic going to/from the
@@ -75,14 +75,14 @@ interface. Ie:
      ip address x.x.x.x y.y.y.y
      ip wccp 80 redirect in
      ip wccp 90 redirect out
-    
+
     interface GigabitEthernet0/3.101
      description Dialup customers
      encapsulation dot1Q 502
      ip address x.x.x.x y.y.y.y
      ip wccp 80 redirect in
      ip wccp 90 redirect out
-    
+
     interface GigabitEthernet0/3.102
      description proxy servers
      encapsulation dot1Q 506

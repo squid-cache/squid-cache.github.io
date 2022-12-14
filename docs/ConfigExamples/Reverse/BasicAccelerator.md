@@ -38,8 +38,8 @@ this site:
 - **defaultsite=X** tells Squid to assume the domain *X* is wanted.
 - **no-vhost** for
     [Squid-3.2](/Releases/Squid-3.2)
-    or later disables HTTP/1.1 [domain based virtual
-    hosting](/ConfigExamples/Reverse/VirtualHosting)
+    or later disables HTTP/1.1
+    *domain based virtual hosting*
     support. Omit this option for older Squid versions.
 
 Next, you need to tell Squid where to find the real web server:

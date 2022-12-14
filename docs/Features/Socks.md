@@ -17,7 +17,7 @@ natively accept or send HTTP connections over SOCKS.
 The aim of this project will be to make
 [http_port](http://www.squid-cache.org/Doc/config/http_port) accept
 SOCKS connections and make outgoing connections to SOCKS
-[cache_peers](http://www.squid-cache.org/Doc/config/cache_peers) so
+[cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)s so
 that Squid can send requests easily through to SOCKS gateways or act as
 an HTTP SOCKS gateway itself.
 
@@ -60,9 +60,7 @@ branch that is supposed to do listening port and SOCKS peers. It builds
 and listens on an
 [http_port](http://www.squid-cache.org/Doc/config/http_port) as far as
 I can tell now. squidclient has also been adapted to use SOCKS socket
-operations. Bazaar Branch available on launchpad at
-<https://code.launchpad.net/~yadi/squid/socks> for anyone keen on
-testing.
+operations.
 
 Outstanding Problem:
 

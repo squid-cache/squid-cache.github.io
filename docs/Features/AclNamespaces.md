@@ -7,7 +7,7 @@ categories: WantedFeature
 - **Status**: In progress
 - **ETA**: unknown
 - **Version**:
-- **Developer**:  [AlexeyVeselovsky](/AlexeyVeselovsky)
+- **Developer**:  AlexeyVeselovsky
 - **More**:
 
 ## Details

@@ -37,8 +37,8 @@ are able to control CONNECT requests, but only limited information is
 available. For example, many common parts of the request URL do not
 exist in a CONNECT request:
 
-- the URL scheme or protocol (e.g., <http://>, <https://>,
-    <ftp://>, voip://, itunes://, or <telnet://>),
+- the URL scheme or protocol (e.g., _http://_, _https://_,
+    _ftp://_, _voip://_, _itunes://_, or _telnet://_),
 - the URL path (e.g., */index.html* or */secure/images/*),
 - and query string (e.g. *?a=b\&c=d*)
 
@@ -51,8 +51,8 @@ messages and URLs (e.g., telnet).
     It is important to notice that the protocols passed through CONNECT
     are not limited to the ones Squid normally handles. Quite literally
     **anything** that uses a two-way TCP connection can be passed
-    through a CONNECT tunnel. This is why the Squid [default
-    ACLs](/SquidFaq/SecurityPitfalls#The_Safe_Ports_and_SSL_Ports_ACL)
+    through a CONNECT tunnel. This is why the Squid
+    [default ACLs](/SquidFaq/SecurityPitfalls#The_Safe_Ports_and_SSL_Ports_ACL)
     start with **`deny CONNECT !SSL_Ports`** and why you must have a
     very good reason to place any type of *allow* rule above them.
 

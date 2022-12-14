@@ -52,10 +52,8 @@ Any ICAP server will have unique set of pros and cons in the context of
 your adaptation project.
 
 More information about ICAP is available on the ICAP
-[Forum](http://www.icap-forum.org/). While the Forum site has not been
-actively maintained, its members-only
-[newsgroup](http://www.icap-forum.org/chat/) is still a good place to
-discuss ICAP issues.
+[Forum](http://www.icap-forum.org/).
+
 
 ## Squid Details
 
@@ -100,10 +98,10 @@ to talk to two ICAP services, one for request and one for response
 adaptation:
 
     icap_enable on
-    
+
     icap_service service_req reqmod_precache bypass=1 icap://127.0.0.1:1344/request
     adaptation_access service_req allow all
-    
+
     icap_service service_resp respmod_precache bypass=0 icap://127.0.0.1:1344/response
     adaptation_access service_resp allow all
 
@@ -132,11 +130,11 @@ to talk to two ICAP services, one for request and one for response
 adaptation:
 
     icap_enable on
-    
+
     icap_service service_req reqmod_precache 1 icap://127.0.0.1:1344/request
     icap_class class_req service_req
     icap_access class_req allow all
-    
+
     icap_service service_resp respmod_precache 0 icap://127.0.0.1:1344/response
     icap_class class_resp service_resp
     icap_access class_resp allow all

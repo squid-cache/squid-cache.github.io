@@ -20,7 +20,7 @@ password.
 ## Ways to access the manager reports
 
 Squid packages come with some tools for accessing the cache manager:
-- [cachemgr.cgi](/ManagerCgiTool)
+- [cachemgr.cgi](./CacheManagerCgi)
     is a CGI utility for online browsing of the manager reports. It can
     be configured to interface with multiple proxies so provides a
     convenient way to manage proxies and view statistics without logging
@@ -28,7 +28,7 @@ Squid packages come with some tools for accessing the cache manager:
 - [squidclient](/Features/CacheManager/SquidClientTool)
     is a command line utility for performing web requests. It also has a
     special ability to send cache manager requests to Squid proxies.
-- [CacheMgrJs](/Features/CacheMgrJs) is a javascript-based tool
+- [CacheMgrJs](./CacheMgrJs) is a javascript-based tool
     being developed as an alternative to the CGI tool
 
 Given that the Cache Manager uses plain HTTP, it's possible - and in fact easy -
@@ -203,16 +203,16 @@ collect (unless you tell it to in other ways).
 
 ### What do the Meta Data entries mean?
 
-  - StoreEntry  
+  - StoreEntry
     Entry describing an object in the cache.
 
-  - IPCacheEntry  
+  - IPCacheEntry
     An entry in the DNS cache.
 
-  - Hash link  
+  - Hash link
     Link in the cache hash table structure.
 
-  - URL strings  
+  - URL strings
     The strings of the URLs themselves that map to an object number in
     the cache, allowing access to the Store****Entry.
 
