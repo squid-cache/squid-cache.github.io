@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # Torified Squid
 
-- *by  [YuriVoinov](/YuriVoinov)*
+- *by  Yuri Voinov*
 
 ## Outline
 

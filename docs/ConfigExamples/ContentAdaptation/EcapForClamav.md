@@ -3,7 +3,7 @@ categories: ConfigExample
 ---
 # Using eCAP for ClamAV antivirus checking with Squid
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## Outline
 

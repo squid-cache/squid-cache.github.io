@@ -1,7 +1,7 @@
 ---
 categories: [ConfigExample]
 ---
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 # Whatsapp Messenger (mobile/web)
 

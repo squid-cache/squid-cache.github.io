@@ -3,7 +3,7 @@ categories: ConfigExample
 ---
 # Using eCAP for EXIF stripping from images with Squid
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## Outline
 

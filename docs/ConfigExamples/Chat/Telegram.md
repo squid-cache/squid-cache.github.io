@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # Filtering Telegram Messenger
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## How to pass Telegram
 

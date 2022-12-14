@@ -19,8 +19,6 @@ pieces to be enabled. In which case:
 - being listed means force-enable
 - being omitted means force-disable
 
-For further details on autoconf macros and conventions, also see
-[Features/ConfigureInRefactoring](/Features/ConfigureInRefactoring)
 
 ## Component Macros in Autoconf
 
@@ -33,7 +31,7 @@ components at build time.
     with USE_
 - name for variables passed to either automake or C++ containing
     default values should start with DEFAULT_
-    
+
 > :warning:
     In the event of a clash or potential clash with system variables
     tack SQUID_ after the above prefix. ie ENABLE_SQUID_ or
@@ -41,10 +39,10 @@ components at build time.
 
 
     # For --enable-foo / --disable-foo
-    
+
     AC_CONDITIONAL([ENABLE_FOO],[test "x${enable_foo:=yes}" = "xyes"])
-    
+
     SQUID_DEFINE_BOOL(USE_FOO,${enable_foo:=no},[Whether to enable foo.])
-    
+
     DEFAULT_FOO_MAGIC="magic"
     AC_SUBST(DEFAULT_FOO_MAGIC)

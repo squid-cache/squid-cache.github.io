@@ -1,7 +1,7 @@
 ---
 categories: [ConfigExample]
 ---
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 # Wire Messenger
 

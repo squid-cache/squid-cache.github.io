@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # Filtering Bittorrent
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## Outline
 

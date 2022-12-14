@@ -16,8 +16,7 @@ categories: Feature
 - **More**: Background information about Google Maps content -
     <http://squidproxy.wordpress.com/2007/11/16/how-cachable-is-google-part-1-google-maps/>
     (Disclaimer: No, I don't work for Google. No, never have.)
-- **Sponsored by**: Xenion Communications -
-    <http://www.xenion.com.au/>
+- **Sponsored by**: Xenion Communications
 
 ## Details
 

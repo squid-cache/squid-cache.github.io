@@ -190,14 +190,14 @@ directive.
 
 Some how-to tutorials are available for common policies:
 
-1. [Explicit](ConfigExamples/Intercept/SslBump/Explicit)
-2. [With an intermediate CA](ConfigExamples/Intercept/SslBump/WithIntermediateCA)
-    
+1. [Explicit](/ConfigExamples/Intercept/SslBumpExplicit)
+2. [With an intermediate CA](/ConfigExamples/Intercept/SslBumpWithIntermediateCA)
+
     # common acls for the following examples:
     acl serverIsBank ssl::server_name .bank1.example.com
     acl serverIsBank ssl::server_name .bank2.example.net
     # extend serverIsBank for all banks that are used by all users
-    
+
     acl monitoredSites ssl::server_name .foo.example.com
     acl monitoredSites ssl::server_name .bar.example.org
 

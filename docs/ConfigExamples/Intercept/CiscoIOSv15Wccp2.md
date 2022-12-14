@@ -172,7 +172,7 @@ interception.
 
 # Variant II: Switch L3 as WCCPv2 router
 
-- *by [YuriVoinov](/YuriVoinov) and Svyatoslav Voinov*
+- *by Yuri Voinov and Svyatoslav Voinov*
 
 ## Configuring a Cisco IOS 15.0(2)SE9 with WCCPv2 using aggregation switch
 
@@ -298,7 +298,7 @@ different ports interception.
 
 # Variant III: Switched ISR G2 router with WCCPv2
 
-- *by [YuriVoinov](/YuriVoinov) and Svyatoslav Voinov*
+- *by Yuri Voinov and Svyatoslav Voinov*
 
 ## Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using switched ISR G2 router with convergent switch board
 
@@ -420,7 +420,7 @@ reasons.
 
 # Variant IV: VRF with WCCPv2
 
-- *by [YuriVoinov](/YuriVoinov) and Svyatoslav Voinov*
+- *by Yuri Voinov and Svyatoslav Voinov*
 
 ## Outline
 

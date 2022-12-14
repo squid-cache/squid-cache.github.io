@@ -276,7 +276,7 @@ investigate every case separately and correct it as needed.
 
 ## Hardening
 
-- *by [YuriVoinov](/YuriVoinov)*
+- *by Yuri Voinov*
 
 It is important to increase invisible for you part of bumped connection
 - from proxy to server.

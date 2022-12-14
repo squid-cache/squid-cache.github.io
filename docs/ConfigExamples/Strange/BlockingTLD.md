@@ -3,7 +3,7 @@ categories: ConfigExample
 ---
 # Blocking TLD by Squid
 
-  - *by [YuriVoinov](/YuriVoinov)*
+  - *by Yuri Voinov*
 
 ## Outline
 

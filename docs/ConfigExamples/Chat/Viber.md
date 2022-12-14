@@ -3,7 +3,7 @@ categories: ConfigExample
 ---
 # Filtering Viber Messenger
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## Outline
 

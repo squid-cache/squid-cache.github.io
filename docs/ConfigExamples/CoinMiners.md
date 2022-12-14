@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # Coin Miners Filtering
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## Outline
 

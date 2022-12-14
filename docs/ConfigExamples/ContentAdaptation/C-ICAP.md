@@ -3,7 +3,7 @@ categories: ConfigExample
 ---
 # Using c-icap for proxy content antivirus checking on-the-fly
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 
 ## Outline

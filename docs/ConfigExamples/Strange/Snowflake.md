@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # Snowflake
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## How to pass Snowflake
 

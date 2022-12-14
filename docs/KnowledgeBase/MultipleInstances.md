@@ -42,7 +42,7 @@ expands to the service name of the process parsing the config file.
     [visible_hostname](http://www.squid-cache.org/Doc/config/visible_hostname)
     and want your caches to cooperate, at least change this setting
     to properly detect forwarding loops
-- [http_port](http://www.squid-cache.org/Doc/config/http_port) : 
+- [http_port](http://www.squid-cache.org/Doc/config/http_port) :
     either the various squids run on different ports, or on
     different IP addresses. In the latter case the syntax to be used
     is `192.0.2.1:3128` and `192.0.2.2:3128`. A domain name can be
@@ -53,11 +53,11 @@ expands to the service name of the process parsing the config file.
      same as with http_port. If you do not need ICP and SNMP, remove
     from the config file.
 - [access_log](http://www.squid-cache.org/Doc/config/access_log),
-    [cache_log](http://www.squid-cache.org/Doc/config/cache_log) : 
+    [cache_log](http://www.squid-cache.org/Doc/config/cache_log) :
     you want to have different logfiles for you different squid
     instances. Squid **might** even work when all log to the same
     files, but the result would probably be a garbled mess.
-- [pid_filename](http://www.squid-cache.org/Doc/config/pid_filename) : 
+- [pid_filename](http://www.squid-cache.org/Doc/config/pid_filename) :
     this file **must** be different for each instance. It is used by
     squid to detect a running instance and to send various internal
     messages (i.e. `squid -k reconfigure`).
@@ -68,7 +68,7 @@ expands to the service name of the process parsing the config file.
     make sure that no overlapping directories exist. Squids do not
     coordinate when accessing them, and shuffling stuff around each
     others' playground is a **bad thing <sup>TM</sup>**
-- [include](http://www.squid-cache.org/Doc/config/include) : 
+- _include_:
     to reduce duplication mistakes break shared pieces of config
     (ACL definitions etc) out into separate files which
     [include](http://www.squid-cache.org/Doc/config/include) pulls
@@ -110,21 +110,21 @@ The full thread on netfilter-devel where this was developed is here:
 
     N=3
     first_squid_port=3127
-    
+
     iptables -t mangle -F
     iptables -t mangle -X
     iptables -t mangle -N DIVERT
     iptables -t mangle -A DIVERT -j MARK --set-mark 1
     iptables -t mangle -A DIVERT -j ACCEPT
     iptables -t mangle -A PREROUTING -p tcp -m socket -j DIVERT
-    
+
     iptables -t mangle -N extrachain
     iptables -t mangle -A PREROUTING -p tcp --dport 80 -m conntrack --ctstate NEW -j extrachain
-    
+
     for i in `seq 0 $((N-1))`; do
       iptables -t mangle -A extrachain -m statistic --mode nth --every $N --packet $i -j CONNMARK --set-mark $i
     done
-    
+
     for i in `seq 0 $((N-1))`; do
       iptables -t mangle  -A PREROUTING -i eth0 -p tcp --dport 80 -m connmark --mark $i -j TPROXY --tproxy-mark 0x1/0x1  --on-port $((i+first_squid_port))
     done

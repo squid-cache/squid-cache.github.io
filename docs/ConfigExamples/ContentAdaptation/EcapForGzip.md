@@ -3,7 +3,7 @@ categories: ConfigExample
 ---
 ### Using eCAP for GZip/DEFLATE support with Squid
 
-*by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## Outline
 

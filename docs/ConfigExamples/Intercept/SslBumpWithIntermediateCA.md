@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # SSL-Bump using an intermediate CA
 
-  - *by Jok Thuau and [YuriVoinov](/YuriVoinov)*
+  - *by Jok Thuau and Yuri Voinov*
 
 ## Outline
 
