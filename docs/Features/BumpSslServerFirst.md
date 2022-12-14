@@ -16,8 +16,7 @@ categories: Features
     [SslBump](/Features/SslBump),
     enables [server certificate
     mimicking](/Features/MimicSslServerCert),
-    and pointless without [Dynamic Certificate
-    Generation](/Features/DynamicSslCert)
+    and pointless without [Dynamic Certificate Generation](/Features/DynamicSslCert)
 
 # Motivation
 

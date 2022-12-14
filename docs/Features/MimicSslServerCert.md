@@ -164,7 +164,7 @@ cannot distinguish the two cases and assumes that an IP address in the
 CONNECT request implies that the user typed that address in the address
 bar. Besides assuming user input, Squid overall behavior here is meant
 to mimic what would happen if Squid was not in the loop. Here are a few
-cases when the user enters something like <https://74.125.65.99/>
+cases when the user enters something like _https://74.125.65.99/_
 instead of <https://www.google.com/>:
 
 | Squid configuration | Comments | Browser displays |
@@ -191,7 +191,7 @@ addresses in CNs even if the URL has a bracketed IPv6 address. These
 browsers generate confusing errors when they see bracketed CNs. For
 example:
 
-``` 
+```
   You attempted to reach [2001:470:1:18::120], but instead you actually reached
   a server identifying itself as [2001:470:1:18::120]. Chromium can say for sure
   that you reached [2001:470:1:18::120], but cannot verify that that is the same

@@ -117,8 +117,7 @@ server. The checks are listed here in the order of their execution:
 1. [redirector](http://www.squid-cache.org/Doc/config/url_rewrite_program)
 1. [adapted_http_access](http://www.squid-cache.org/Doc/config/adapted_http_access)
     directive
-1. [store_id](http://www.squid-cache.org/Doc/config/store_id)
-    directive
+1. _store_id_ directive
 1. clientInterpretRequestHeaders()
 1. [cache](http://www.squid-cache.org/Doc/config/cache) directive
 1. ToS marking

@@ -286,9 +286,7 @@ clicking at the cachemgr frequently. Why not let MRTG do it for you?
 There are a number of tools that you can use to monitor Squid via SNMP.
 Many people use MRTG. Another good combination is
 [NET-SNMP](http://net-snmp.sourceforge.net/) plus
-[RRDTool](http://oss.oetiker.ch/rrdtool/). You might be able to find
-more information in the
-[ircache rrdtool scripts](http://wessels.squid-cache.org/squid-rrd/)
+[RRDTool](http://oss.oetiker.ch/rrdtool/).
 
 ## Where can I get more information/discussion about Squid and SNMP?
 
@@ -304,26 +302,10 @@ SNMP interface.
 
 To get instruction on using MRTG with Squid please visit these pages:
 
-- [Cache Monitoring - How to set up your own monitoring](http://www.cache.dfn.de/DFN-Cache/Development/Monitoring/)
-  by DFN-Cache
-- [Squid Configuration Manual - Monitoring Squid](http://squid.visolve.com/related/snmp/monitoringsquid.htm) by
-  Visolve
-- [Using MRTG for Squid monitoring](http://www.arnes.si/~matija/utrecht/lecture.html) Desire
-  II caching workshop session by Matija Grabnar
-- [How do I monitor my Squid 2 cache using MRT](http://hermes.wwwcache.ja.net/FAQ/FAQ-2.html#mrtg) by The
-  National Janet Web Cache Service
-
 Further examples of Squid MRTG configurations can be found here:
 
-- [MRTG HOWTO Collection / Squid](http://howto.aphroland.de/HOWTO/MRTG/SquidMonitoringWithMRTG)
-    from MRTG
-- [using mrtg to monitor Squid](http://people.ee.ethz.ch/~oetiker/webtools/mrtg/squid.html)
-    from MRTG
-- [Chris' MRTG Resources](http://www.psychofx.com/chris/unix/mrtg/)
 - [MRTG & Squid](http://thproxy.jinr.ru/file-archive/doc/squid/cache-snmp/mrtg-demo/)
     by Glenn Chisholm
-- [Braindump](http://www.braindump.dk/en/wiki/?catid=7&wikipage=ConfigFiles)
-    by Joakim Recht
 
 ## Monitoring Squid with Cacti
 
