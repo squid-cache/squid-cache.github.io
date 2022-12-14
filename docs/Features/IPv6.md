@@ -66,7 +66,7 @@ The only points of possible interest for some will be:
     directive to avoid the worst cases of tunnel lag. Enable this only
     if you have to.
 - A single listening port
-    **[http_port](http://www.squid-cache.org/Doc/config/http_port) 3128** is 
+    **[http_port](http://www.squid-cache.org/Doc/config/http_port) 3128** is
     less resource hungry than one for each IPv4 and IPv6.
     Also, its fully compatible with IPv6 auto-configuration and
     link-local addressed peers.
@@ -167,10 +167,10 @@ which will get around this problem for DIRECT requests.
     automatically when selecting the outgoing connection properties.
 
         acl to_ipv6 dst ipv6
-        
+
         # Magic entry. Place first in your config. This makes sure Squid has the IP available.
         http_access deny to_ipv6 !all
-        
+
         tcp_outgoing_address 10.255.0.1 !to_ipv6
         tcp_outgoing_address dead:beef::1 to_ipv6
 
@@ -324,9 +324,3 @@ protocol upgrade for IPv6. But we have none yet able to write and test
 the helper.
 
 # Other Resources
-
-<http://www.braintrust.co.nz/ipv6wwwtest/> For content providers
-Braintrust Ltd. provide a test script to check what happens when you
-turn on AAAA records for your website. If you have any worries this can
-be run and show how many if any of your clients and visitors might have
-trouble.

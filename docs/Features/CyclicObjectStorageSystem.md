@@ -7,7 +7,7 @@ categories: Feature
 - **Status**: 2.6+ complete. 3.x needs stability fixes ported from 2.6
 - **Version**: 2.6
 - **Developer**:
-    [Henrik_Nordström](/HenrikNordstrom.md),
+    [Henrik_Nordström](/HenrikNordstrom),
     others welcome
 - **Priority**: 2
 

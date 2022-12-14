@@ -422,32 +422,15 @@ protocols.
 
 ## References
 
-  - [Winbind: Use of Domain
-    Accounts](http://samba.org/samba/docs/man/Samba3-HOWTO/winbind.html)
-
-  - [Domain
-    Membership](http://samba.org/samba/docs/man/Samba-HOWTO-Collection/domain-member.html)
-
-  - [winbindd man
-    page](http://samba.org/samba/docs/man/manpages-3/winbindd.8.html)
-
-  - [wbinfo man
-    page](http://samba.org/samba/docs/man/manpages-3/wbinfo.1.html)
-
-  - [nmbd man
-    page](http://samba.org/samba/docs/man/manpages-3/nmbd.8.html)
-
-  - [smbd man
-    page](http://samba.org/samba/docs/man/manpages-3/smbd.8.html)
-
-  - [smb.conf man
-    page](http://samba.org/samba/docs/man/manpages-3/smb.conf.5.html)
-
-  - [smbclient man
-    page](http://samba.org/samba/docs/man/manpages-3/smbclient.1.html)
-
-  - [ntlm_auth man
-    page](http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html)
+- [Winbind: Use of Domain Accounts](http://samba.org/samba/docs/man/Samba3-HOWTO/winbind.html)
+- [Domain Membership](http://samba.org/samba/docs/man/Samba-HOWTO-Collection/domain-member.html)
+- [winbindd man page](http://samba.org/samba/docs/man/manpages-3/winbindd.8.html)
+- [wbinfo man  page](http://samba.org/samba/docs/man/manpages-3/wbinfo.1.html)
+- [nmbd man page](http://samba.org/samba/docs/man/manpages-3/nmbd.8.html)
+- [smbd man page](http://samba.org/samba/docs/man/manpages-3/smbd.8.html)
+- [smb.conf man page](http://samba.org/samba/docs/man/manpages-3/smb.conf.5.html)
+- [smbclient man page](http://samba.org/samba/docs/man/manpages-3/smbclient.1.html)
+- [ntlm_auth man page](http://samba.org/samba/docs/man/manpages-3/ntlm_auth.1.html)
 
 ## Authentication in interception and transparent modes
 
@@ -467,23 +450,10 @@ hard work.
 
 However, you may still find the need to write your own one for some
 system which has not been dreamed of yet. The protocol(s) Squid uses to
-communicate with its authentication helpers are very simple and
-documented in detail on the
-[Features/AddonHelpers](/Features/AddonHelpers)
-page.
+communicate with its authentication helpers are very simple, and there are
+several examples in the wiki
 
 ## Other Resources
 
-  - [Configuring Squid Proxy To Authenticate With Active
-    Directory](http://www.papercut.com/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory)
-
-  - [Samba & Active
-    Directory](http://wiki.samba.org/index.php/Samba_&_Active_Directory)
-
-  - [The Linux-PAM System Administrators'
-    Guide](http://www.kernel.org/pub/linux/libs/pam/Linux-PAM-html/Linux-PAM_SAG.html)
-
-Back to the
-[SquidFaq](/SquidFaq)
-
-[CategoryFeature](/CategoryFeature)
+- [Configuring Squid Proxy To Authenticate With Active Directory](http://www.papercut.com/kb/Main/ConfiguringSquidProxyToAuthenticateWithActiveDirectory)
+- [Samba & Active Directory](http://wiki.samba.org/index.php/Samba_&_Active_Directory)

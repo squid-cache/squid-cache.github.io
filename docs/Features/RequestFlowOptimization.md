@@ -19,4 +19,4 @@ Due to requirement '3', I think we should drop the idea of joined
 requests where there is more than one client. Better if we simply
 support storage of partial objects, and then ignores the whole issue.
 
-[Henrik_Nordström](/HenrikNordstrom.md)
+[Henrik_Nordström](/HenrikNordstrom)
