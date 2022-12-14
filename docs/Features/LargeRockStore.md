@@ -126,7 +126,7 @@ Several alternative design options have been considered and either
 rejected or postponed. Some of them are documented here.
 
 1. Initial implementation will scan the entire db to build an in-memory
-    cache_dir map ([StoreMap](/StoreMap)).
+    cache_dir map (`StoreMap`).
     Eventually, we will start saving the map to disk and loading it at
     startup to decrease db loading times. We need more information on db
     loading times, which may affect how the db map is stored and loaded.

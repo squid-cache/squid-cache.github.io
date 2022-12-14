@@ -9,9 +9,8 @@ categories: WantedFeature
 - **Developer**:
   [AdrianChadd](/AdrianChadd), [AmosJeffries](/AmosJeffries),
   everyone
-- **More**: Current work at
-  <http://devel.squid-cache.org/changesets/squid/s27_adri.html>
-
+- **More**:
+nnn
 ## Optimize the easy parts
 
 Get rid of some unneeded duplicate copying of information
@@ -31,7 +30,7 @@ Get rid of some unneeded duplicate copying of information
 
 Avoid having to use the packer to pack HTTP request/reply and headers
 into a buffer before write()ing to the network-side; this won't really
-be worth it until the copies are eliminated (above) and the 
+be worth it until the copies are eliminated (above) and the
 [stackable IO model](/Features/StackableIO)
 is in.
 

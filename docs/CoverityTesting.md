@@ -1,7 +1,7 @@
 ---
 ---
 The Squid project uses the services of
-[Coverity Scan](https://communities.coverity.com/community/scan-%28open-source%29)
+[Coverity Scan](https://scan.coverity.com/o/oss_success_stories)
 to run automated test builds, as part of the [BuildFarm](/BuildFarm)
 activities. Kudos to [Coverity](http://www.coverity.com/) for supporting
 this useful community service.
@@ -19,4 +19,4 @@ please also add a brief introduction or a link to some Net resource
 detailing your background.
 
 You can then access the Squid analysis results page at address
-<http://scan5.coverity.com:8080/>
+<https://scan.coverity.com/>

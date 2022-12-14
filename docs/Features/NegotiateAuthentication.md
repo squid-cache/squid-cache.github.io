@@ -9,7 +9,7 @@ categories: Feature
 - **Developer**:
   [GuidoSerassio](/GuidoSerassio),
   [HenrikNordstrom](/HenrikNordstrom),
-  [RobertCollins](/RobertCollins),
+  _Robert Collins_,
   [FrancescoChemolli](/FrancescoChemolli)
 - **More**: <http://squid.acmeconsulting.it/>
 
@@ -58,11 +58,11 @@ Negotiate/NTLM flavours through the one protocol configuration.
     request [credentials] [key-extras]
 
 **request** is one of the request codes:
-        
+
 | --- | --- |
 | YR | A new challenge token is needed. This is always the first communication between the two processes. It may also occur at any time that Squid needs a new challenge, due to the [auth_param](http://www.squid-cache.org/Doc/config/auth_param) max_challenge_lifetime and max_challenge_uses parameters. The helper should respond with a **TT** message. |
 | KK | Authenticate a user's credentials. The helper responds with either **OK**, **ERR**, **AF**, **NA**, or **BH**. |
-        
+
 **credentials** is an encoded blob exactly as received in the HTTP headers. This
         field is only sent on **KK** requests.
 
@@ -76,7 +76,7 @@ Negotiate/NTLM flavours through the one protocol configuration.
     result [token label] [kv-pair] [message]
 
 **result** is one of the result codes:
-        
+
 | --- | ---------------------------------------------------------------------------------- |
 | TT  | Success. A new challenge **token** value is presented.                             |
 | AF  | Success. Valid credentials. Deprecated by **OK** result from Squid-3.4 onwards.    |
@@ -92,12 +92,12 @@ Negotiate/NTLM flavours through the one protocol configuration.
 
 **token** is a new challenge value. The token is base64-encoded, as defined by RFC
     [2045](https://tools.ietf.org/rfc/rfc2045).
-        
+
 :information_source:
     NOTE: NTLM authenticator interface on Squid-3.3 and older does
     not support a **token** field. Negotiate authenticator interface
     requires it on **TT**, **AF** and **NA** responses.
-        
+
 :information_source:
     This field must not be sent on **OK**, **ERR** and **BH**
     responses.
@@ -109,7 +109,7 @@ Negotiate/NTLM flavours through the one protocol configuration.
 
 **kv-pair**: one or more key=value pairs. The key names reserved on this
         interface:
-        
+
 | --- | --- |
 | clt_conn_tag=... | Tag the client TCP connection ([Squid-3.5](/Releases/Squid-3.5))                                                  |
 | group=...        | reserved |
@@ -124,7 +124,7 @@ Negotiate/NTLM flavours through the one protocol configuration.
 > :information_source:
     the kv-pair field is only accepted by [Squid-3.4](/Releases/Squid-3.4)
     and newer.
-    
+
 > :information_source:
     the kv-pair returned by this helper can be logged by the
     **%note** [logformat](http://www.squid-cache.org/Doc/config/logformat)
@@ -138,8 +138,6 @@ Negotiate/NTLM flavours through the one protocol configuration.
 
 ## Squid native Windows build with NEGOTIATE support
 
-A native Windows build of Squid with Negotiate support. Binary package
-and source archive are available on <http://squid.acmeconsulting.it/>.
 
 ## Testing
 
@@ -181,13 +179,13 @@ to access the win32 helper from a Unix box, and that is by performing an
 - You need to have the *setspn* tool from the MS Windows Resource Kit.
     You need to add the service name of the squid box to the windows box
     machine account, using the command
-    
+
         setspn -A HTTP/netbiosname
         setspn -A HTTP/netbiosname.domain
 
 - configure as helper in squid.conf ssh calling into the helper (make
     sure that the helper is within %PATH%, i.e.
-    
+
            auth_param negotiate ssh system@netbiosname.domain "win32_negotiate_auth.exe"
 
 ## Troubleshooting

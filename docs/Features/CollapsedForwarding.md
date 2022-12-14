@@ -49,7 +49,7 @@ backend server if a very frequently accessed object expires from the
 cache or a new very frequently accessed object is added.
 
 To remedy this situation this feature adds a new tuning knob
-([SquidConf](/SquidConf)::collapsed_forwarding)
+(`SquidConf::collapsed_forwarding`)
 to squid.conf, making Squid delay further requests while a cache
 revalidation or cache miss is being resolved. This sacrifices general
 proxy latency in favor for accelerator performance and thus should not

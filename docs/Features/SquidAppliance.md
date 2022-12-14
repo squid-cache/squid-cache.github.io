@@ -29,9 +29,6 @@ of man hours. This significantly reduces the risk to opportunity cost
 for organizations. If the attempt doesn't work, then the organization
 can remove the cache and only be out a few man hours instead of days.
 
-I will be referencing [KnoppMyth](http://mysettopbox.tv/knoppmyth.html)
-for some of this as I feel that they got a number of design issues
-right.
 
 ### Disk Layout
 
@@ -59,7 +56,7 @@ best file system to set up the cache is probably ReiserFS or EXT3.
 
 ### Cache File Options
 
-[COSS](http://wiki.squid-cache.org/SquidFaq/CyclicObjectStorageSystem)
+[COSS](http://wiki.squid-cache.org/Features/CyclicObjectStorageSystem)
 is apparently the recommended cache system now for small objects. There
 does not seem to be any information as to if it is better installed on a
 file system or with direct partition access. Presumably direct partition

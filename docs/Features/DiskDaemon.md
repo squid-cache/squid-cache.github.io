@@ -3,8 +3,8 @@ categories: Feature
 ---
 # Feature: Disk Daemon (diskd) helper
 
-  - **Status**: Complete.
-  - **Version**: 2.4
+- **Status**: Complete.
+- **Version**: 2.4
 
 
 ## What is DISKD?
@@ -19,10 +19,7 @@ and written.
 
 ## Does it perform better?
 
-Yes. We benchmarked Squid-2.4 with DISKD at the [Second IRCache
-Bake-Off](http://polygraph.ircache.net/Results/bakeoff-2/). The results
-are also described
-[here](http://www.squid-cache.org/Benchmarking/bakeoff-02/). At the
+Yes. We benchmarked Squid-2.4 with DISKD at the _Second IRCache Bake-Off_. At the
 bakeoff, we got 160 req/sec with diskd. Without diskd, we'd have gotten
 about 40 req/sec.
 
@@ -124,13 +121,13 @@ queues. The Squid DISKD implementation uses one shared memory area for
 each cache_dir. Each shared memory area is about 800 kilobytes in size.
 You may need to modify your system's shared memory parameters:
 
-- SHMSEG  
+- SHMSEG
     Maximum number of shared memory segments per process.
-- SHMMNI  
+- SHMMNI
     Maximum number of shared memory segments for the whole system.
-- SHMMAX  
+- SHMMAX
     Largest shared memory segment size allowed.
-- SHMALL  
+- SHMALL
     Total amount of shared memory that can be used.
 
 For Squid and DISKD, *SHMSEG* and *SHMMNI* must be greater than or equal

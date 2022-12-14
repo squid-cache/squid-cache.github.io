@@ -68,6 +68,3 @@ Currently testing in 3.2:
   - The socket reading operations need an API polished up.
 
   - The socket writing operations need an API polished up.
-
-[CategoryFeature](/CategoryFeature)
-[CategoryWish](/CategoryWish)

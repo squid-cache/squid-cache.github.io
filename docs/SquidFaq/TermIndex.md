@@ -16,6 +16,5 @@ the term neighbor is still accepted in some Squid configuration options.
 ## Regular Expression
 
 Regular expressions are patterns that used for matching sequences of
-characters in text. For more information, see [A Tao of Regular
-Expressions](http://jmason.org/software/sitescooper/tao_regexps.html)
-and [Newbie's page](http://www.newbie.org/gazette/xxaxx/xprmnt02.html).
+characters in text. For more information, see
+Regexp [Newbie's page](http://www.newbie.org/gazette/xxaxx/xprmnt02.html).

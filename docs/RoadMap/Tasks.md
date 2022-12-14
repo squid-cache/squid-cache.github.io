@@ -20,14 +20,14 @@ see what we are up to and how you can assist the move forward on these.
     2.  src/comm.\* and related
     3.  src/DelayPools.\* and related
 - Migration to smart Pointer framework
-    1.  update a [HttpRequest](/HttpRequest)
-        raw pointer to a [HttpRequest](/HttpRequest)::Pointer.
+    1.  update a _HttpRequest_
+        raw pointer to a `HttpRequest::Pointer`.
         Including all code performing locking on it
-    2.  update a [HttpReply](/HttpReply) raw pointer to a
-        [HttpReply](/HttpReply)::Pointer.
+    2.  update a `HttpReply` raw pointer to a
+        `HttpReply::Pointer`.
         Including all code performing locking on it
-    3.  update a [HttpMsg](/HttpMsg)
-        raw pointer to a [HttpMsg](/HttpMsg)::Pointer.
+    3.  update a `HttpMsg`
+        raw pointer to a `HttpMsg::Pointer`.
         Including all code performing locking on it
     4.  update a CBDATA raw pointer to a CbcPointer. Including all code
         performing validation tests and locking on it.
@@ -84,4 +84,3 @@ done.
     - How fast can each helper run?
     - For helpers with multiple backends (ie DB), how do they
         compare?
-        

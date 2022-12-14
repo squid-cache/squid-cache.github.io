@@ -60,7 +60,7 @@ formater.
 ## Suggested coding rules
 
 * Use internally consistent naming scheme (see below for choices).
-* Words in global names and all type names are [CamelCase](/CamelCase)
+* Words in global names and all type names are CamelCase
   capitalized:
   * including the first word.
   * acronyms are to be downcased to fit (ie Http)

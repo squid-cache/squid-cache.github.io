@@ -12,9 +12,8 @@ Mozilla Firefox (now on all platforms).
 
 Server-side it is supported by Microsoft Proxy / ISA Server (of course),
 Squid version 2.5 (only NTLMv1 up to Squid 2.5STABLE5), and via an
-Apache 1.3 module
-[mod_ntlm_winbind](http://download.samba.org/ftp/unpacked/lorikeet/trunk/mod_ntlm_winbind/)
-is available from [Samba's lorkikeet repository](http://download.samba.org/ftp/unpacked/lorikeet/trunk/).
+Apache 1.3 module _mod_ntlm_winbind_
+is available from [Samba's](http://www.samba.org) repository.
 
 ## The mechanics of NTLM authentication
 
@@ -23,7 +22,7 @@ is available from [Samba's lorkikeet repository](http://download.samba.org/ftp/u
     most Basic authentication implementations which will supply
     authentication information automatically for all connections after a
     successful authentication is performed.
-1. The server returns a 407 status code, along with an header: 
+1. The server returns a 407 status code, along with an header:
     `Proxy-Authenticate: NTLM  ` No realm, domain or anything is
     specified. Of course, additional Proxy-Authenticate headers might be
     supplied to announce other supported authentication schemes. There
@@ -63,5 +62,4 @@ is available from [Samba's lorkikeet repository](http://download.samba.org/ftp/u
 
 ## See Also
 
-- <http://www.innovation.ch/personal/ronald/ntlm.html>
 - <http://davenport.sourceforge.net/ntlm.html>

@@ -134,8 +134,7 @@ are frequently non-existent anyway).
 
 ## Tuning
 
-Have a look at [Tuning your TCP/IP stack and
-more](http://www.sean.de/Solaris/soltune.html) by Jens-S. Voeckler.
+Have a look at _"Tuning your TCP/IP stack and more"_ by Jens-S. Voeckler.
 
 ## disk write error: (28) No space left on device
 
@@ -288,7 +287,7 @@ or add this to your /etc/rc files:
 
 */var/yp/Makefile* has the following section:
 
-``` 
+```
 # The following line encodes the YP_INTERDOMAIN key into the hosts.byname
 # and hosts.byaddr maps so that ypserv(8) will do DNS lookups to resolve
 # hosts not in the current domain. Commenting this line out will disable
@@ -380,13 +379,6 @@ explains:
     invalid use of TCP/IP to evolve beyond the original standards from 1981.
     ECN in it's final form was defined 2001, but earlier specifications was
     circulated several years earlier.
-
-See also the [thread on the NANOG mailing
-list](http://answerpointe.cctec.com/maillists/nanog/historical/0104/msg00714.html),
-[RFC3168 "The Addition of Explicit Congestion Notification (ECN)
-to IP, PROPOSED STANDARD"](ftp://ftp.isi.edu/in-notes/rfc3168.txt),
-[Sally Floyd's page on ECN and problems related to it](http://www.aciri.org/floyd/ecn.html) or
-[ECN Hall of Shame](http://urchin.earth.li/ecn/) for more information.
 
 ## Some sites load extremely slowly or not at all
 

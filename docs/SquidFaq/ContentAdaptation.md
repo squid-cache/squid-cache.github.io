@@ -42,7 +42,7 @@ necessary for most content adaptations using ICAP.
 
 **Pros**: Proxy-independent, adaptation-focused API, no Squid
   modifications, supports remote adaptation servers, scalable.
-  
+
 **Cons**: Communication delays, protocol functionality limitations,
   needs a stand-alone ICAP server process or box.
 
@@ -64,7 +64,7 @@ code, new nodes performing custom content adaptation may be added.
 Client Streams are limited to response modification.
 
 **Pros**: Fast, integrated.
-  
+
 **Cons**: Limited API documentation, lack of support, cannot adapt
 requests, dependent on Squid (installation, code, license).
 
@@ -91,7 +91,7 @@ modifications.
 **Cons**: Dependent on Squid installation (at least in the
 beginning)
 
-Initial support for eCAP is available from [Squid 3.1](/RoadMap/Squid3).
+Initial support for eCAP is available from [Squid 3.1](/RoadMap).
 You can find more details [in Features/eCAP](/Features/eCAP).
 
 ## Squid.conf ACLs
@@ -167,11 +167,6 @@ criteria.
 | Maintenance overheads                   | [ACLs](#secACLs), [eCAP](#seceCAP), [ICAP](#secICAP), [Client Streams](#secClientStreams), [code hacks](#secCodeHacks)       |
 
 ## Additional resources
-
-The following mailing list threads cover some content adaptation
-scenarios and options:
-[4048](http://thread.gmane.org/gmane.comp.web.squid.devel/4048/),
-[4197](http://thread.gmane.org/gmane.comp.web.squid.devel/4197/).
 
 ## Warning
 

@@ -181,7 +181,7 @@ ssl-bump http\*_ports), then Squid uses one SSL context (SSL_CTX) per
 true SSL server certificate (see ConnStateData::getSslContextStart).
 That SSL context is configured with the fake certificate for the
 corresponding SSL server. That fake certificate comes either from the
-[security_file_certgen](http://www.squid-cache.org/Versions/v5/manuals/security_file_certgen)
+_security_file_certgen_
 helper (older Squid call it ssl_crtd) or is generated ad hoc by Squid.
 Fake certificates (or, to be precise, their contexts) may be cached in a
 Squid context cache. The cache key includes subject name, common name
@@ -190,7 +190,7 @@ An SSL context storing a full certificate chain may consume a few MBs of
 RAM. Since Squid usually talks to lots of servers, the total certificate
 cache capacity may have to exceed several GBs to avoid capacity misses.
 Please see
-[dynamic_cert_mem_cache_size](http://www.squid-cache.org/Doc/config/dynamic_cert_mem_cache_size)
+_dynamic_cert_mem_cache_size_
 and Squid bug [4005](https://bugs.squid-cache.org/show_bug.cgi?id=4005)
 on why the configured cache limit does not currently work as intended.
 Squid does not empty its context cache during reconfiguration (although

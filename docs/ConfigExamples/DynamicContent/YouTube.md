@@ -9,7 +9,7 @@ youtube.com alterations. If you start to experience problems with any of
 these configs please first check back here for updated config.
 
 > :x: :x: :x:
-    Google/[YouTube](/YouTube)
+    Google/YouTube
     changed their system to be more secure and due to this the article in
     it's current state is not applicable. You will need to use Content
     Adaptation to achive YT caching and it's not a beginner's task.
@@ -43,8 +43,8 @@ working.
 My method requires a mostly normal squid setup, with a URL rewriter
 script which rewrites any requests destined for youtube to relay through
 a special caching web server script ie,
-<http://www.youtube.com/watch?v=avaSdC0QOUM> becomes
-<http://10.13.37.25/per.php?url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DavaSdC0QOUM%0A>
+_http://www.youtube.com/watch?v=avaSdC0QOUM_ becomes
+_http://10.13.37.25/per.php?url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DavaSdC0QOUM%0A_
 
 This script checks the URL, uses readfile() to pass them all through
 except those which correspond to the flvs we want to hold on to. When

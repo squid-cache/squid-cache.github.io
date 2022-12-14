@@ -146,7 +146,7 @@ others.
 ## Squid and http-gw from the TIS toolkit
 
 Several people on both the fwtk-users and the squid-users mailing asked
-about using Squid in combination with http-gw from the 
+about using Squid in combination with http-gw from the
 [TIS toolkit](http://www.tis.com/). The most elegant way in my opinion is to
 run an internal Squid caching proxyserver which handles client requests
 and let this server forward it's requests to the http-gw running on the
@@ -276,23 +276,22 @@ option before building.
 Current squid releases provide a mix of header control directives and
 capability;
 
-  - Squid 2.6 - 2.7  
+  - Squid 2.6 - 2.7
     Allow erasure or replacement of specific headers through the
     **http_header_access** and **header_replace** options.
 
-  - Squid 3.0  
+  - Squid 3.0
     Allows selective erasure and replacement of specific headers in
     either request or reply with the **request_header_access** and
     **reply_header_access** and **header_replace** settings.
 
-  - Squid 3.1  
+  - Squid 3.1
     Adds to the 3.0 capability with truncation, replacement, or removal
     of X-Forwarded-For header.
 
 For details see the documentation in squid.conf.default or
 squid.conf.documented for your specific version of squid.
 
-[Squid 3 configuration manual](http://www.squid-cache.org/Versions/v3/3.HEAD/cfgman/)
 References: [Anonymous WWW](http://www.iks-jena.de/mitarb/lutz/anon/web.en.html)
 
 ## Can I make Squid go direct for some sites?

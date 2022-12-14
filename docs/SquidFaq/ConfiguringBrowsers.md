@@ -135,18 +135,6 @@ Gopher) and enter the Squid server's address as hostname:port (e.g.
 mycache.example.com:3128 or 192.0.2.2:3128). Click on *Okay* to accept
 the setup.
 
-Notes:
-- Opera 2.12 doesn't support gopher on its own, but requires a proxy;
-  therefore Squid's gopher proxying can extend the utility of your
-  Opera immensely.
-- Unfortunately, Opera 2.12 chokes on some HTTP requests, for example
-  [abuse.net](http://spam.abuse.net/spam/).
-
-At the moment I think it has something to do with cookies. If you have
-trouble with a site, try disabling the HTTP proxying by unchecking that
-protocol in the *Preferences*|*Proxy Servers...* dialogue. Opera will
-remember the address, so reenabling is easy.
-
 
 ## Partially Automatic Configuration
 
@@ -162,8 +150,6 @@ the radio button next to **Automatic Proxy Configuration** and then fill
 in the URL for your JavaScript proxy configuration file in the text box.
 The box is too small, but the text will scroll to the r8ight as you go.
 
-You may also wish to consult Netscape's documentation for the Navigator
-[JavaScript proxy configuration](http://wp.netscape.com/eng/mozilla/2.0/relnotes/demo/proxy-live.html)
 
 Here is a sample auto configuration file from Oskar Pearson (link to
 save at the bottom):
@@ -240,9 +226,6 @@ effect. MSIE will reload the JavaScript file every time it starts.
 
 by *Mark Reynolds*
 
-You may like to start by reading the
-[Expired Internet-Draft](http://www.web-cache.com/Writings/Internet-Drafts/draft-ietf-wrec-wpad-01.txt)
-that describes WPAD.
 
 After reading the 8 steps below, if you don't understand any of the
 terms or methods mentioned, you probably shouldn't be doing this.
@@ -285,7 +268,7 @@ even redirect *wpad.dat* to *proxy.pac*:
 
     Redirect /wpad.dat http://example.com/proxy.pac
 
-If you do nothing more, a URL like <http://www.example.com/wpad.dat>
+If you do nothing more, a URL like _http://www.example.com/wpad.dat_
 should bring up the script text in your browser window.
 
 Insert the following entry into your web server *mime.types* file. Maybe
@@ -313,7 +296,7 @@ point continuing until this works ...
 Create/install/implement a DNS record so that wpad.example.com resolves
 to the host above where you have a functioning auto config script
 running. You should now be able to use
-[http://wpad.example.com/wpad.dat](http://wpad.example.com/wpad.dat)
+_http://wpad.example.com/wpad.dat_
 as the Auto Config Script location in step 5 above.
 
 And finally, go back to the setup screen detailed in 5 above, and choose
@@ -375,7 +358,7 @@ themselves) and adding the following records to my primary nameserver:
     proxy   IN      A       192.0.2.1 ; IP address of proxy1
             IN      A       192.0.2.2 ; IP address of proxy2
 
-The clients just refer to '[http://proxy/proxy.pac](http://proxy/proxy.pac)'. This script
+The clients just refer to '_http://proxy/proxy.pac_'. This script
 looks like this:
 
 ``` javascript
@@ -402,13 +385,6 @@ return "PROXY proxy2.domain.com:8081; PROXY proxy1.domain.com:8080; DIRECT";
 
 I made sure every client domain has the appropriate 'proxy' entry. The
 clients are automatically configured with two nameservers using DHCP.
-
-## Proxy Auto-Configuration with URL Hashing
-
-The [Sharp Super Proxy Script page](http://naragw.sharp.co.jp/sps/)
-contains a lot of good information about hash-based proxy
-auto-configuration scripts. With these you can distribute the load
-between a number of caching proxies.
 
 ## Where can I find more information about PAC?
 

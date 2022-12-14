@@ -21,7 +21,7 @@ interception and [TPROXY-like](/Features/Tproxy4) interception.
     box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
 More on configuring Squid for OpenBSD can be found in the OpenBSD ports
-README file: <http://www.openbsd.org/cgi-bin/cvsweb/~checkout~/ports/www/squid/pkg/README-main>
+README file
 
 ## Squid Configuration
 
@@ -112,7 +112,7 @@ For IPv4 traffic interception:
 ```
     # redirect only IPv4 web traffic into squid
     rdr pass inet proto tcp from 192.168.231.0/24 to any port 80 -> 192.168.231.1 port 3129
-    
+
     block in
     pass in quick on $int_if
     pass in quick on $wi_if

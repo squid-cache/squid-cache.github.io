@@ -34,8 +34,8 @@ found in doc/rfc/ in the development tree)
 
 This feature has been implemented for the Squid-2 branch starting with
 [Squid-2.6](/Releases/Squid-2.6) by
-[HenrikNordström](/HenrikNordstr%C3%B6m)
-during the [CodeSprintOct2005](/CodeSprintOct2005)
+[Henrik Nordstrom](/HenrikNordstrom)
+during the CodeSprintOct2005
 code sprint in Torino.
 
 This feature has been implemented for the Squid-3 branch starting with

@@ -68,7 +68,6 @@ TODO:
 - refactor the `HttpHeader` parsing logics to use `SBuf` and
     `::Parser::Tokenizer` API. Possibly run by the new `Parser` child
     classes.
-
 - refactor `ChunkedDecoder::parse` to use `SBuf` and
     `::Parser::Tokenizer`.
 
@@ -83,7 +82,7 @@ After initial structural updates to the Http::Parser hierarchy.
 The *request* parsing system `Http1::RequestParser::parse` in Squid-3.6+
 is as follows:
 
-1. scan to skip over garbage prefix 
+1. scan to skip over garbage prefix
 1. incremental checkpoint wherever it halts, (start of request-line
     or empty buffer)
 1. scan to find method
@@ -98,7 +97,7 @@ is as follows:
 1. incremental checkpoint at end of mime headers block
 1. strcmp / scanf / char\* loops for parsing URL (urlParse)
 1. char\* loop scan for end of each header line
-    ([HttpHeader](/HttpHeader)::parse)
+    (`HttpHeader::parse`)
 1. strcmp scan for : delimiter on header name and generate header
     objects
 1. strListGet scan for parse of header content options
@@ -106,7 +105,7 @@ is as follows:
 The *response* parsing system `Http1::ResponseParser::parse` in
 Squid-3.6+ is as follows:
 
-1. scan for message version field    
+1. scan for message version field
     - accepting both "HTTP/1.x" and "ICY" protocol versions
     - if necessary generates a fake HTTP/0.9 reply and terminates
         parsing.
@@ -119,10 +118,10 @@ Squid-3.6+ is as follows:
     (Http1::Parser::findMimeBlock / headersEnd)
 1. incremental checkpoint at end of mime headers block
 1. char\* loop scan for end of header chunk
-    ([HttpMsg](/HttpMsg)::httpMsgIsolateStart)
+    (`HttpMsg::httpMsgIsolateStart`)
 1. strcmp scan for : delimiter on header name and generate header
     objects
-    ([HttpHeader](/HttpHeader)::parse)
+    (`HttpHeader::parse`)
 1. strListGet scan for parse of header content options
 
 The ICAP *response* parsing system
@@ -133,7 +132,7 @@ is as follows:
 class inherits from the `Http1::ResponseParser` parser, but replaces the
 stage 1 version scan with an ICAP specific scan.
 
-1. scan for message version field 
+1. scan for message version field
     - accepting "ICAP/1.0" protocol version only
     - incremental checkpoint at end of version label
 1. scan for message status code field
@@ -144,17 +143,17 @@ stage 1 version scan with an ICAP specific scan.
     (Http1::Parser::findMimeBlock / headersEnd)
 1. incremental checkpoint at end of mime headers block
 1. char\* loop scan for end of header chunk
-    ([HttpMsg](/HttpMsg)::httpMsgIsolateStart)
+    (`HttpMsg::httpMsgIsolateStart`)
 1. strcmp scan for : delimiter on header name and generate header
     objects
-    ([HttpHeader](/HttpHeader)::parse)
+    (`HttpHeader::parse`)
 1. strListGet scan for parse of header content options
 
 > :warning:
     NOTE: Parsing of ICAP response messages and payload segments still uses
     the old `HttpMsg` API documented below for HTTP responses, when the
     payload segment is a request it uses the
-    [HttpMsg](/HttpMsg)::parse request-line code paths.
+    `HttpMsg::parse` request-line code paths.
 
 ### the baseline situation
 
@@ -170,32 +169,32 @@ operation where the message was incompletely received.
 1. scan to skip over garbage prefix
 
 1. parse request line to find LF, and invalid CR and NIL
-    ([HttpParser](/HttpParser)::parseRequestLine)
-    
+    (`HttpParser::parseRequestLine`)
+
       - discard prior parse information \!\!
 
 1. and again, parse request line to find SP positions
-    ([HttpParser](/HttpParser)::parseRequestLine)
-    
+    (`HttpParser::parseRequestLine`)
+
       - discard prior parse information \!\!
 
 1. parse inside each request-line token to check method/URL/version
     syntax
-    ([HttpParser](/HttpParser)::parseRequestLine)
-    
+    (`HttpParser::parseRequestLine`)
+
       - discard prior parse information \!\!
 
 1. char\* loop scan for end of header chunk (headersEnd)
 
 1. sscanf re- scan and sanity check request line
-    ([HttpRequest](/HttpRequest)::sanityCheck)
-    
+    (HttpRequest`::sanityCheck`)
+
       - incomplete, duplicates step 2 and 3, partially duplicates step
         5.
 
 1. strcmp parse out request method,url,version
-    ([HttpRequest](/HttpRequest)::parseFirstLine)
-    
+    (`HttpRequest::parseFirstLine`)
+
       - duplicates step 3 and 4
 
 1. strcmp / scanf / char\* loops for parsing URL (urlParse)
@@ -211,52 +210,52 @@ The parse sequences join at header line parsing (step 6), with some
 crossover at sanity checks (step 3). *response* parsing is as follows:
 
 1. processReplyHeader calls
-    [HttpMsg](/HttpMsg)::parse
-    
+    `HttpMsg::parse`
+
       - discarding all previous parse information \!\!
-    
+
     <!-- end list -->
-    
+
     1. char\* loop scan for end of header chunk (headersEnd)
-    
+
     2.  sscanf re- scan and sanity check first line
-        ([HttpReply](/HttpReply)::sanityCheck)
-        
+        (`HttpReply::sanityCheck`)
+
           - on fail skip to stage ii below
-    
+
     3.  strcspn scan for end of header line
-    
+
     4.  char\* loop scan for end of header chunk
         (HttpMSg::httpMsgIsolateStart)
-    
+
     5.  strcmp parse out response version, status message
-        ([HttpReply](/HttpReply)::parseFirstLine)
-    
+        (`HttpReply::parseFirstLine`)
+
     6.  strcspn scan for end of header line
-    
+
     7.  char\* loop scan for end of header chunk (wow 6 in a row\!)
-        (HttpMSg::httpMsgIsolateStart)
-    
+        (`HttpMSg::httpMsgIsolateStart`)
+
     8.  strcmp scan for : delimiter on header name and generate header
         objects
-    
+
     9.  strListGet scan for parse of header content options
-    
+
     ii. check for special case missing "HTTP" and "ICY" protocol
     versions
-    
+
       - generates a fake HTTP/0.9 reply
-    
+
       - packs it into a buffer
-    
+
       - parses the fake reply \!\!
-        
+
           - discarding all previous parse information \!\!
-        
+
           - repeat all of stage i
-    
+
     iii. char\* loop scan for end of header chunk (headersEnd)
-    
+
       - because we seem not to have scanned enough times in stage i
 
 TODO: document the ICAP response parsing sequence. Despite visible

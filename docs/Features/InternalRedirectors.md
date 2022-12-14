@@ -61,9 +61,9 @@ rewriter helper.
 a request. By default are checked against
 _url_map_ list. If specified, only requests matching _url_map_access_
 ACL are further processed against each
-[url_map](http://www.squid-cache.org/Doc/config/url_map).
+_url_map_.
 
-[url_map](http://www.squid-cache.org/Doc/config/url_map) directives
+_url_map_ directives
 are processed in the order configured.
 
 **dsturl** specifies the resulting URL when all acls are matched. If

@@ -60,7 +60,7 @@ We will configure the linux router to mark all web (port 80) traffic(out
 to the net and back). based on the mark we will forward all the traffic
 using routing rule to specific "cache" table. The cache table consist of
 the list of cache proxy available. The routes in the table will be load
-balanced using [RoundRobin](/RoundRobin)
+balanced using _RoundRobin_
 Algorithm. (later i will maybe will do something more sophisticated)
 
 ## Topology
@@ -144,12 +144,12 @@ add into squid.conf the next lines:
 
     #add change the src subnet to the list of clients subnets allowed.
     acl clients src 10.80.0.0/16
-    
+
     http_access allow clients
-    
-    http_port 127.0.0.1:3128 
+
+    http_port 127.0.0.1:3128
     http_port 3129 tproxy
-    
+
     # replace 10.80.2.1 with your cisco router directly connected interface
     wccp2_router 10.80.2.1
     wccp_version 2
@@ -165,7 +165,7 @@ add into squid.conf the next lines:
 ## Cisco settings
 
     conf t
-    
+
     ip access-list extended wccp
      permit ip 10.80.3.0 0.0.0.255 any
     ip access-list extended wccp_to_inside
@@ -175,11 +175,11 @@ add into squid.conf the next lines:
     ip wccp web-cache
     ip wccp 80 redirect-list wccp
     ip wccp 90 redirect-list wccp_to_inside
-    
+
     interface FastEthernet0/0
      ip wccp 80 redirect out
      ip wccp 90 redirect in
-    
+
     interface FastEthernet0/1
      ip wccp redirect exclude in
 

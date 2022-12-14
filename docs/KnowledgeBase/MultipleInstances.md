@@ -71,7 +71,7 @@ expands to the service name of the process parsing the config file.
 - _include_:
     to reduce duplication mistakes break shared pieces of config
     (ACL definitions etc) out into separate files which
-    [include](http://www.squid-cache.org/Doc/config/include) pulls
+    _include_ pulls
     into each of the multiple squid.conf at the right places.
 
 ## Tips
