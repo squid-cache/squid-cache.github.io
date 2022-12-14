@@ -16,4 +16,4 @@ fi
 SED=sed
 type -p gsed >/dev/null && SED=gsed
 
-git grep -l -F "]($1)" | xargs $SED -i~ "s#\]($1)#]$2#g"
+git grep -l -F "]($1)" | xargs $SED -i~ "s#\]($1)#]($2)#g"
