@@ -2,7 +2,7 @@
 
 |                  |                                                                                                       |
 | ---------------- | ----------------------------------------------------------------------------------------------------- |
-| Author           | [ConstantinRack](/ConstantinRack) |
+| Author           | _ConstantinRack_ |
 | Date Added       |                                                                                                       |
 | Summary          | compression of text/html misses using HTTP gzip encoding                                              |
 | Status           | Working, but not tested in production                                                                 |

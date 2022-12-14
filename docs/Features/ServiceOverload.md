@@ -64,11 +64,11 @@ workers to arrive at per-worker limit.
 
 Developer notes: Use general adaptation service classes where possible
 because similar support will be added to eCAP later. Be extra careful
-with passing connection descriptors from the ICAP [ServiceRep](/ServiceRep)
+with passing connection descriptors from the ICAP _ServiceRep_
 class to the waiting ICAP transaction because the transaction job may
 terminate while the message with the descriptor is pending. We probably
 need a custom Dialer that would return the descriptor to the
-[ServiceRep](/ServiceRep)
+_ServiceRep_
 object if the transaction is gone (or close it if both the service and
 the transaction are gone).
 

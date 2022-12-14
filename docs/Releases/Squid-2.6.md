@@ -20,7 +20,7 @@ different amounts of extra patches today. Not surprising given the fact
 that Squid-2.5 has been feature frozen for 3 years now.
 
 The general consensus among the code sprint participants
-([Henrik_Nordström](/HenrikNordstrom.md),
+([Henrik_Nordström](/HenrikNordstrom),
 [FrancescoChemolli](/FrancescoChemolli)
 & our kind host
 [GuidoSerassio](/GuidoSerassio))
@@ -38,13 +38,13 @@ List of things we have thought of include in a Squid-2.6 release include
   - addition of IPPROTO_TCP & IPPROTO_UDP usage - OK
 
   - Cygwin full support - almost complete
-    
+
       - \--enable-default-hostsfile configure option - OK
-    
+
       - Windows service - OK
-    
+
       - ARP acl - OK
-    
+
       - Native Windows helpers (basic, NTLM, negotiate and groups) - OK
 
   - negotiate (+ NTLM cleanup) - OK
@@ -60,13 +60,13 @@ List of things we have thought of include in a Squid-2.6 release include
   - overlapping helper requests - OK
 
   - external acl improvements - OK
-    
+
       - %PATH - OK
-    
+
       - log= - OK
-    
+
       - password= from 3.0 - OK
-    
+
       - grace parameter from external_acl_fuzzy / 3.0 (but not the
         cache "level" thing) - OK
 

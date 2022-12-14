@@ -141,7 +141,7 @@ Rock diskers work as fast as they can. If they are slower than swap load
 created by Squid workers, then the disk queues will grow, leading to
 overflow and timeout warnings:
 
-``` 
+```
     2011/11/15 09:39:36 kid1| Worker I/O push queue overflow: ipcIo1.5225w4
     2011/11/15 09:39:42 kid1| WARNING: abandoning 217 I/Os after at least 7.00s timeout
     2011/11/15 09:39:42 kid2| WARNING: communication with disker may be too slow or disrupted for about 7.00s; rescued ...
@@ -220,7 +220,7 @@ The above procedure works in some, but not all cases. YMMV.
     which relies on shared memory pages, which are currently hard-coded
     to be 32KB in size. You can manually raise the shared page size to
     64KB or even more by modifying
-    Ipc::Mem::[PageSize](/PageSize)(),
+    `Ipc::Mem::PageSize()`,
     but you will waste more RAM by doing so. To efficiently support
     shared caching of larger objects, we need to teach Rock Store to
     read and write slots in chunks smaller than the slot size.

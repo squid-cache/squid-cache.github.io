@@ -15,5 +15,4 @@ test -x node_modules/markdown-link-check/markdown-link-check ||
 
 
  (cd docs; find * -name \*.md) | sed 's/\.md$//' | sort -R | sed 's!^!http://localhost:4000/!' | \
-    xargs -n 1 ./node_modules/markdown-link-check/markdown-link-check | \
-    grep -e '^FILE' -e 'Status: 404'
+    xargs -n 1 ./node_modules/markdown-link-check/markdown-link-check 

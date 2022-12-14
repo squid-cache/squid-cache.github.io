@@ -11,12 +11,6 @@ Gizmo Project include software to connect to a wide range of messaging
 protocols and VoIP services. This config does not include settings to
 block those IM which are not Gizmo Project provided services.
 
-See Also:
-
-- [AOL](/ConfigExamples/Chat/Aol)
-- [ICQ](/ConfigExamples/Chat/Icq)
-- IRC
-
 If you know of other IM services available through Gizmo software please
 inform us.
 
@@ -26,11 +20,11 @@ Configuration file to Include:
 
     # Gizmo Project
     acl gizmo dstdomain .gizmoproject.com
-    
+
     # Gizmo VoIP
     acl gizmo dstdomain .talqer.com .gizmocall.com .fring.com
-    
+
     # Gizmo Chat
     acl gizmo dstdomain .pidgin.im
-    
+
     http_access deny gizmo

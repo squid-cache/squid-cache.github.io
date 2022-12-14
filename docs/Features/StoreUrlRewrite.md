@@ -58,10 +58,10 @@ rewriter.
     acl store_rewrite_list dstdomain kh3.google.com
     acl store_rewrite_list dstdomain kh.google.com.au kh0.google.com.au kh1.google.com.au
     acl store_rewrite_list dstdomain kh2.google.com.au kh3.google.com.au
-    
+
     # This needs to be narrowed down quite a bit!
     acl store_rewrite_list dstdomain .youtube.com
-    
+
     storeurl_access allow store_rewrite_list
     storeurl_access deny all
 
@@ -75,7 +75,7 @@ uncachable. Search your configuration and remove these two lines:
 
     #We recommend you to use the following two lines.
     acl QUERY urlpath_regex cgi-bin \?
-    cache deny QUERY 
+    cache deny QUERY
 
 Make sure you check your configuration file for cache and no_cache
 directives; you need to disable them and use refresh_patterns where
@@ -186,7 +186,7 @@ Input line received from Squid:
         | ---------- | ----------------------- |
         | myip=...   | Squid receiving address |
         | myport=... | Squid receiving port    |
-        
+
 
 Result line sent back to Squid:
 
@@ -222,7 +222,7 @@ Result line sent back to Squid:
 - **URL**
     The URL to be used instead of the one sent by the client. If no
     action is required leave the URL field blank. The URL sent must
-    be an absolute URL. ie starting with <http://> or <ftp://>
+    be an absolute URL. ie starting with _http://_ or _ftp://_
     etc.
 
 > :information_source:

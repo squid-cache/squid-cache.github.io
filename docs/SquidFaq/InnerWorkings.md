@@ -74,7 +74,7 @@ you'd fetch the object from, why bother querying?)
 
 ## What features are Squid developers currently working on?
 
-The features and areas we work on are always changing. See the 
+The features and areas we work on are always changing. See the
 [Squid Roadmap](/RoadMap)
 for more details on current activities.
 
@@ -516,7 +516,7 @@ will indicate the object should not be made public. For example, if the
 ## What is FORW_VIA_DB for?
 
 We use it to collect data for
-[Plankton](http://www.ircache.net/Cache/Plankton/).
+[Plankton](https://www.ircache.net/Cache/Plankton/).
 
 ## Does Squid send packets to port 7 (echo)? If so, why?
 
@@ -717,7 +717,7 @@ hostname has its own TTL value, which was set by the domain name
 administrator. You can see these values in the 'ipcache' cache manager
 page. For example:
 
-``` 
+```
  Hostname                      Flags lstref    TTL N
  www.squid-cache.org               C   73043  12784  1( 0)  204.144.128.89-OK
  www.ircache.net                   C   73812  10891  1( 0)   192.52.106.12-OK
@@ -888,7 +888,7 @@ following conditions is true:
   nibbles at the request body. `{request->bodyNibbled}`.
 - Squid has successfully established a connection but did not receive
   HTTP response headers and the request is not "Safe" or "Idempotent"
-  as defined in RFC 2619 Section 9.1. 
+  as defined in RFC 2619 Section 9.1.
   `{flags.connected_okay && !checkRetriable}`.
 - Squid has no alternative destinations to try. Please note that
   alternative destinations may include multiple next hop IP addresses

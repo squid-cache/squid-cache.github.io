@@ -67,13 +67,13 @@ Configuration **module:parameters** to be used by
     default.
     <http://www.mail-archive.com/squid-users@squid-cache.org/msg53342.html>
     or <http://sourceforge.net/projects/logmysqldaemon/>
-- **blooper** :    
+- **blooper** :
     - *blooper* is a ruby logfile_daemon which can log to any SQL
         database (Postgres being the main target for it)
     - Sources are available on github at
         <https://github.com/paranormal/blooper>
 
-### [Daemon Message Protocol](/Features/AddonHelpers)
+### Daemon Message Protocol
 
 Squid sends a number of commands to the log daemon. These are sent in
 the first byte of each input line:
