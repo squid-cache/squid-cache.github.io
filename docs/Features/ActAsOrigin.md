@@ -10,8 +10,7 @@ categories: WantedFeature
 - **Version**: 2.7, 3.2
 - **Developer**:[AmosJeffries](/AmosJeffries),
     [HenrikNordstrom](/HenrikNordstrom)
-- **More**: <http://www.squid-cache.org/~amosjeffries/patches/act-as-origin.patch>
-        (initial portage, may not work)
+- **More**:
 
 ## Details
 

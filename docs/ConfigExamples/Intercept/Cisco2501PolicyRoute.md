@@ -55,4 +55,4 @@ Cisco/Linux box.
   - Lincoln Dale
   - Riccardo Vratogna
   - Mark White
-  - [HenrikNordström](/HenrikNordstr%C3%B6m)
+  - [HenrikNordström](/HenrikNordstrom)

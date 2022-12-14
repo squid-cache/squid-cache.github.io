@@ -8,7 +8,12 @@ echo "e.g. by running ./bin/serve"
 test -x node_modules/markdown-link-check/markdown-link-check || 
     npm install markdown-link-check
 
-(cd docs; find * -name \*.md) | sed 's/\.md$//' | while read page
-do
-    ./node_modules/markdown-link-check/markdown-link-check http://localhost:4000/$page
-done
+# (cd docs; find * -name \*.md) | sed 's/\.md$//' | sort -R | while read page
+# do
+#     ./node_modules/markdown-link-check/markdown-link-check "http://localhost:4000/$page"
+# done
+
+
+ (cd docs; find * -name \*.md) | sed 's/\.md$//' | sort -R | sed 's!^!http://localhost:4000/!' | \
+    xargs -n 1 ./node_modules/markdown-link-check/markdown-link-check | \
+    grep -e '^FILE' -e 'Status: 404'

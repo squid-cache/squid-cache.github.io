@@ -35,4 +35,4 @@ pages that require it.
 ## See also
 
 - [CacheManager](/Features/CacheManager)
-- [CacheManagerCgi](/Features/CacheManagerCgi)
+- [CacheManagerCgi]/Features/CacheManager/CacheManagerCgi

@@ -3,7 +3,7 @@ categories: [ConfigExample]
 ---
 # Variant I: Routed DMZ witch WCCPv2
 
-- *by [YuriVoinov](/YuriVoinov)*
+*by Yuri Voinov*
 
 ## Configuring a Cisco IOS 15.5(3)M2 with WCCPv2 using ISR G2 router
 
@@ -197,22 +197,22 @@ assignment method **mask**. Switch only support WCCP "IN" redirection.
 ### Cisco IOS 15.0(2)SE9 switch
 
     ip routing
-     
+
     ip wccp source-interface Vlan201
     ip wccp web-cache redirect-list WCCP_ACCESS
     ip wccp 70 redirect-list WCCP_ACCESS
-    
+
     interface GigabitEthernet1/0/15
      no switchport
      ip address 192.168.200.4 255.255.255.0
-    
+
     interface Vlan201
      ip address 192.168.201.1 255.255.255.0
      ip wccp web-cache redirect in
      ip wccp 70 redirect in
-    
+
     ip route 0.0.0.0 0.0.0.0 192.168.200.1
-    
+
     ip access-list extended WCCP_ACCESS
      remark ACL for HTTP/HTTPS
      remark Squid proxies bypass WCCP
@@ -242,7 +242,7 @@ assignment method **mask**. Switch only support WCCP "IN" redirection.
     wccp2_service_info 70 protocol=tcp flags=dst_ip_hash,src_ip_alt_hash,src_port_alt_hash priority=231 ports=443
     # Cisco Routers uses hash (default), switches - mask
     wccp2_assignment_method mask
-    
+
     balance_on_multiple_ip on
 
 > :information_source:
@@ -321,14 +321,14 @@ board with four 100 Mbps or 1 Gbps ports. WCCPv2 configured on router
     !
     ip dhcp pool 100
      network 192.168.100.0 255.255.255.0
-     default-router 192.168.100.1 
-     dns-server 192.168.100.1 
+     default-router 192.168.100.1
+     dns-server 192.168.100.1
      lease 30
     !
     ip dhcp pool 101
      network 192.168.101.0 255.255.255.0
-     default-router 192.168.101.1 
-     dns-server 192.168.101.1 
+     default-router 192.168.101.1
+     dns-server 192.168.101.1
      lease 30
     !
     !
@@ -348,7 +348,7 @@ board with four 100 Mbps or 1 Gbps ports. WCCPv2 configured on router
     interface FastEthernet0/0/2
      switchport mode trunk
      no ip address
-    !         
+    !
     interface FastEthernet0/0/3
      switchport access vlan 100
      no ip address
@@ -367,7 +367,7 @@ board with four 100 Mbps or 1 Gbps ports. WCCPv2 configured on router
      ip wccp 70 redirect in
      ip nat inside
      ip virtual-reassembly in
-    !         
+    !
     interface Vlan201
      ip address 192.168.201.1 255.255.255.0
      ip wccp web-cache redirect in

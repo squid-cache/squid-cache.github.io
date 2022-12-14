@@ -54,14 +54,12 @@ An extra squid.conf options are made available to re-write URL without a
 rewriter helper.
 
     url_map_access acl [acl [acl ...]]
-    
+
     url_map dsturl acl [acl [acl ...]]
 
 **url_map_access** controls whether url_maps are processed at all for
 a request. By default are checked against
-[url_map](http://www.squid-cache.org/Doc/config/url_map) list. If
-specified, only requests matching
-[url_map_access](http://www.squid-cache.org/Doc/config/url_map_access)
+_url_map_ list. If specified, only requests matching _url_map_access_
 ACL are further processed against each
 [url_map](http://www.squid-cache.org/Doc/config/url_map).
 

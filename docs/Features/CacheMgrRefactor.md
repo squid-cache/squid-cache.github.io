@@ -9,8 +9,7 @@ categories: Feature
 - **Version**: 3.1
 - **Developer**:
   [FrancescoChemolli](/FrancescoChemolli)
-- **More**: bzr branch at
-  <https://code.launchpad.net/~kinkie/squid/cachemgr-refactor>
+- **More**:
 
 Aim: rework cachemgr into a proper C++ object-based implementation, up
 from the C-with-C++-sugarcoating it was
