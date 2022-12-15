@@ -36,7 +36,7 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
         <section id="main_content" class="inner">
-            {{ content }}
+        {% include anchor_headings.html html=content anchorBody="🔗" beforeHeading=true %}
         {%- if page.categories contains 'ConfigExample' -%}{% include config-example-footer.html -%}{%- endif -%}
         {%- if page.FaqSection -%}<p>To the <a href="/SquidFaq">FAQ Index</a></p>{%- endif -%}
         {%- if page.categories -%}<p>Categories: {% for c in page.categories -%}<a href="/Categories/{{c}}">{{c}}</a>{%- unless forloop.last == true -%}, {%- endunless -%}{% endfor %}</p>{%- endif -%}
