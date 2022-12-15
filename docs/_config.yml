@@ -1,10 +1,10 @@
 remote_theme: pages-themes/slate@v0.2.0
 title: "[WIP] Squid Web Cache wiki"
-description: work-in-progress to migrate the Squid Wiki to GitHub pages
+description: refresh of the Squid documentation
 
 url: "https://kinkie.github.io"
 plugins:
-  - jekyll-remote-theme 
+  - jekyll-remote-theme
   - jekyll-sitemap
   - jekyll-optional-front-matter
   - jekyll-relative-links
