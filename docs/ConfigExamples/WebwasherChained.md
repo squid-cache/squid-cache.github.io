@@ -3,7 +3,7 @@ categories: ConfigExample
 ---
 # Configuring Squid and Webwasher in a proxy chain
 
-*By [ChristophHaas](/ChristophHaas)*
+*By Christoph Haas*
 
 ## Outline
 

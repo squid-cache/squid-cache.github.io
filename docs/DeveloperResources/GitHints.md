@@ -297,7 +297,7 @@ branch instead.
     its base branch already. If that assumption is false in your use
     case, then you will need to rebase your branch commits on top of its
     base branch before switching the base branches (there is another
-    [hint](#Rebase_your_feature_branch_to_be_in_sync_with_the_current_upstream_master)
+    [hint](#rebase-your-feature-branch-to-be-in-sync-with-the-current-upstream-master)
     about that).
 
 2. Changing the base branch often leads to conflicts that you will need

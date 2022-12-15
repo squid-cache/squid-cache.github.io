@@ -103,7 +103,7 @@ The Squid result code is composed of several tags (separated by
 underscore characters) which describe the response sent to the client.
 
 - One of these tags always exists to describe how it was delivered:
-    
+
     | --- | --- |
     | **TCP**  | Requests on the HTTP port (usually 3128). |
     | **UDP**  | Requests on the ICP port (usually 3130) or HTCP port (usually 4128). If ICP logging was disabled using the *log_icp_queries* option, no ICP replies will be logged. |
@@ -111,7 +111,7 @@ underscore characters) which describe the response sent to the client.
 
 - These tags are optional and describe why the particular handling was
     performed or where the request came from:
-    
+
     | --- | --- |
     | **CF**       | At least one request in this transaction was collapsed. See [collapsed_forwarding](http://www.squid-cache.org/Doc/config/collapsed_forwarding) for more details about request collapsing. Support for this tag has been added to Squid v5 on 2018-06-18 (commit [d2a6dc](https://github.com/squid-cache/squid/commit/d2a6dcba707c15484c255e7a569b90f7f1186383)). It may not be available in earlier Squid versions. |
     | **CLIENT**   | The client request placed limits affecting the response. Usually seen with client issued a "no-cache", or analogous cache control command along with the request. Thus, the cache has to validate the object. |
@@ -121,10 +121,10 @@ underscore characters) which describe the response sent to the client.
     | **REFRESH**  | A revalidation (conditional) request was sent to the server. |
     | **SHARED**   | This tag is not supported yet. This request was combined with an existing transaction by collapsed forwarding. NOTE: the existing request is not marked as SHARED. |
     | **REPLY**    | The HTTP reply from server or peer. Usually seen on **DENIED** due to [http_reply_access](http://www.squid-cache.org/Doc/config/http_reply_access) ACLs preventing delivery of servers response object to the client. |
-    
+
 
 - These tags are optional and describe what type of object was produced:
-    
+
     | --- | --- |
     | **NEGATIVE**   | Only seen on **HIT** responses. Indicating the response was a cached error response. e.g. "404 not found" |
     | **STALE**      | The object was cached and served stale. This is usually caused by *stale-while-revalidate* or *stale-if-error* cache controls. |
@@ -144,7 +144,7 @@ underscore characters) which describe the response sent to the client.
     | **MISS**    | The response object delivered was the network response object. |
     | **DENIED**  | The request was denied by access controls. |
     | **NOFETCH** | A ICP specific type. Indicating service is alive, but not to be used for this request. Sent during "-Y" startup, or during frequent failures, a cache in hit only mode will return either **UDP_HIT** or **UDP_MISS_NOFETCH**. Neighbours will thus only fetch hits. |
-    | **TUNNEL**  | A binary tunnel was established for this transaction. |    
+    | **TUNNEL**  | A binary tunnel was established for this transaction. |
 
 - These tags are optional and describe some error conditions which
     occured during response delivery (if any):
@@ -235,7 +235,7 @@ Squid recognizes several request methods as defined in RFC
 [2518](https://tools.ietf.org/rfc/rfc2518) "HTTP Extensions for
 Distributed Authoring -- WEBDAV" extensions.
 
-``` 
+```
  method    defined    cachabil.  meaning
  --------- ---------- ---------- -------------------------------------------
  GET       HTTP/0.9   possibly   object retrieval and simple searches.
@@ -437,7 +437,7 @@ contains the Squid startup times, and also all fatal errors, e.g. as
 produced by an *assert()* failure. If you are not using *RunCache*, you
 will not see such a file.
 
-> :warning: [RunCache](/RunCache)
+> :warning: _RunCache_
     has been obsoleted since [Squid-2.6](/Releases/Squid-2.6).
     Modern Squid run as daemons usually log this output to the system
     syslog facility or if run manually to stdout for the account which
@@ -504,15 +504,15 @@ To disable *cache.log*:
 > :warning:
     It is a bad idea to disable the *cache.log* because this file contains
     many important status and debugging messages.
-    However, if you really want to, you can 
+    However, if you really want to, you can
 
 > :warning:
     If /dev/null is specified to any of the above log files,
-    [logfile](http://www.squid-cache.org/Doc/config/logfile) rotate MUST
-    also be set to *0* or else risk Squid rotating away /dev/null making 
+    _logfile\_rotate_  MUST
+    also be set to *0* or else risk Squid rotating away /dev/null making
     t a plain log file
 
-> :information_source: 
+> :information_source:
     Instead of disabling the log files, it is advisable to use a smaller value
     for [logfile_rotate](http://www.squid-cache.org/Doc/config/logfile_rotate)
     and properly rotating Squid's log files in your cron.
@@ -584,9 +584,7 @@ enabled, you might have around 1 GB of uncompressed log information per
 day and busy cache. Look into you cache manager info page to make an
 educated guess on the size of your log files.
 
-The EU project [DESIRE](http://www.desire.org/) developed some
-[some basic rules](http://www.uninett.no/prosjekt/desire/arneberg/statistics.html)
-to obey when handling and processing log files:
+Some basic advice to obey when handling and processing log files:
 - Respect the privacy of your clients when publishing results.
 - Keep logs unavailable unless anonymized. Most countries have laws on
     privacy protection, and some even on how long you are legally

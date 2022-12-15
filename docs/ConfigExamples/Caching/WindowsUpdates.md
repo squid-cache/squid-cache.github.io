@@ -117,7 +117,7 @@ we get:
     refresh_pattern -i windowsupdate.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
     refresh_pattern -i windows.com/.*\.(cab|exe|ms[i|u|f]|[ap]sf|wm[v|a]|dat|zip) 4320 80% 43200 reload-into-ims
 
-    
+
     # DONT MODIFY THESE LINES
     refresh_pattern ^ftp:           1440    20%     10080
     refresh_pattern ^gopher:        1440    0%      1440
@@ -182,11 +182,11 @@ top before any ACL that require authentication.
     acl windowsupdate dstdomain sls.microsoft.com
     acl windowsupdate dstdomain productactivation.one.microsoft.com
     acl windowsupdate dstdomain ntservicepack.microsoft.com
-    
+
     acl CONNECT method CONNECT
     acl wuCONNECT dstdomain www.update.microsoft.com
     acl wuCONNECT dstdomain sls.microsoft.com
-    
+
     http_access allow CONNECT wuCONNECT localnet
     http_access allow windowsupdate localnet
 
@@ -244,13 +244,13 @@ Commands:
 
     C:\> proxycfg
     # gives information about the current connection type. Note: 'Direct Connection' does not force WU to bypass proxy
-    
+
     C:\> proxycfg -d
     # Set Direct Connection
-    
+
     C:\> proxycfg -p wu-proxy.lan:8080
     # Set Proxy to use with Windows Update to wu-proxy.lan, port 8080
-    
+
     C:\> proxycfg -u
     # Set proxy to Internet Explorer settings.
 
@@ -273,14 +273,14 @@ To reset proxy settings for WinHTTP use:
   - *by Yuri Voinov*
 
 In modern setups with Squid, Windows Update cannot be check updates with
-error "[WindowsUpdate](/WindowsUpdate)_80072F8F"
+error "WindowsUpdate_80072F8F"
 or similar.
 
 WU now uses its own pinned SSL certificate and must be spliced to work.
 When you use sniffer, you can see many IP's with relatively big
 subnetworks. This leads to problems with a
-[Squid-3.4](/Squid-3.4) and causes serious problems when using
-[Squid-3.5](/Squid-3.5) or above.
+[Squid-3.4](/Releases/Squid-3.4) and causes serious problems when using
+[Squid-3.5](/Releases/Squid-3.5) or above.
 
 To use splicing, you need to know the names of the servers, however, a
 recursive DNS query does not give a result.
@@ -289,14 +289,14 @@ To pass WU check through Squid splice, you only need to splice next MS
 servers:
 
     update.microsoft.com
-    update.microsoft.com.akadns.net 
+    update.microsoft.com.akadns.net
 
 For use in real setups, write file url.nobump:
 
     # WU (Squid 3.5.x and above with SSL Bump)
     # Only this sites must be spliced.
     update\.microsoft\.com
-    update\.microsoft\.com\.akadns\.net 
+    update\.microsoft\.com\.akadns\.net
 
 Just add this file as Squid ACL as follows:
 

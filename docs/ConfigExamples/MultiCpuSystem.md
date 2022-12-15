@@ -16,7 +16,7 @@ systems. Some of its features do help, such as for example
 [DiskDaemon](/Features/DiskDaemon), or
 [COSS](/Features/CyclicObjectStorageSystem),
 or the ability to delegate parts of the request processing to external
-helpers such as [Authenticators](/Features/Authenticationn).
+helpers such as [Authenticators](/Features/Authentication).
 Still Squid remains to this day very bound to a single processing core
 model. There are plans to eventually make Squid able to effectively use
 multicore systems, but something may be done already, by using a

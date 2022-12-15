@@ -36,7 +36,8 @@ early in the *http_access* lists:
     (additional http_access lines ...)
 
 Do NOT add port 25 to *Safe_ports* (unless your goal is to end up in
-the [RBL](http://mail-abuse.org/rbl/)). You may want to make a cron job
+ [realtime blackhole lists](https://www.techopedia.com/definition/25294/real-time-blackhole-list-rbl).
+You may want to make a cron job
 that regularly verifies that your proxy blocks access to port 25.
 
 ## Hijackable proxies
@@ -98,11 +99,11 @@ These ACL controls are listed in a very specific way in the default
 squid.conf to protect Squid against Security issues such as those
 outlines for SMTP above.
 
-- Safe_Ports  
+- Safe_Ports
   Prevents people from making requests to any of the registered
   protocol ports. For which Squid is unable to proxy and filter the
   protocol.
-- SSL_Ports  
+- SSL_Ports
   Along with the CONNECT ACL prevents anyone from making an unfiltered
   tunnel to any of the otherwise safe ports which don't need it.
 

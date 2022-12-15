@@ -15,10 +15,10 @@
 - [PERL HTTP::Proxy](http://search.cpan.org/~book/HTTP-Proxy-0.20/)
 :   Pure-PERL HTTP proxy implementation
 - [nginx](http://www.nginx.net/)
-- [WWWOffle](http://www.gedanken.demon.co.uk/wwwoffle/)
+- [WWWOffle](https://www.gedanken.org.uk/software/wwwoffle/)
 :   its main purpose is to enable disconnected operation, and allows
     for content modification aimed to this purpose
-- [Varnish](http://varnish.projects.linpro.no/)
+- [Varnish](https://varnish-cache.org/)
 :   the main purpose of Varnish is high-performance HTTP
     reverse-proxying and content acceleration
 - [HTTP Anti Virus Proxy](http://havp.sourceforge.net/)
@@ -31,7 +31,7 @@
 - [Small Screen Proxy](http://ssproxy.sourceforge.net/)
 :    this project's focus is content adaptation for small-screen
     devices such as handlehds and PDAs
-- [Paros Proxy](http://www.parosproxy.org/index.shtml)
+- [Paros Proxy](https://www.parosproxy.org/)
 :   this Java-based project focuses on allowing security auditing
     and content modification of web applications
 - [NTLM Authorization Proxy Server](http://ntlmaps.sourceforge.net/)
@@ -42,10 +42,10 @@
 - [HAProxy](http://haproxy.1wt.eu/)
 :   despite the name, it's a reverse-proxy and load-balancer, meant
     for HTTP but also able to do TCP port-forwarding.
-- [Traffic Server](http://cwiki.apache.org/confluence/display/TS/Index)
+- [Apache Traffic Server](https://trafficserver.apache.org/)
 :   Traffic Server is fast, scalable and extensible HTTP/1.1
     compliant caching proxy server. Formerly a commercial product
-    (created by Inktomi, later acquired by Yahoo\!) is now an Apache
+    (created by Inktomi, later acquired by Yahoo!) is now an Apache
     Incubator Project.
 
 ## Discontinued projects
@@ -59,10 +59,7 @@
 - [Blue Coat Systems](http://www.bluecoat.com/) (previously named
     CacheFlow, now part of Broadcom)
 :   offers a family of appliances
-- [Microsoft ISA Server](http://www.microsoft.com/isaserver/default.mspx)
-: software offering, combines HTTP proxy, port-forwarding engines,
-        firewall and a kitchen sink. Now in blue.
-  - [Cisco Wide Area Application Services](http://www.cisco.com/en/US/products/ps5680/Products_Sub_Category_Home.html)
+- [Cisco Wide Area Application Services](http://www.cisco.com/en/US/products/ps5680/Products_Sub_Category_Home.html)
     (aka WAAS)
 :   is the umpteenth attempt by Cisco to provide transparent
     acceleration services for HTTP and non-HTTP traffic
@@ -72,12 +69,12 @@
 - [ANON Proxy Server](http://anonproxyserver.sourceforge.net/)
 :   despite the name, anonymity is an optional part of this
     software. HTTP(s) and Socks
-- [tinyproxy](http://tinyproxy.sourceforge.net/)
+- [tinyproxy](http://tinyproxy.github.io/)
 
 
 # Free (as in beer) products
 
-- [FreeProxy Internet Suite](http://www.handcraftedsoftware.org/index.php?page=5)
+- _FreeProxy Internet Suite_
 :   runs on MS-Windows, aimed mainly at small groups, offers a wide
     range of connectivity options and protocols
 
@@ -95,5 +92,4 @@ site.
 - [Proxybolt](http://www.proxybolt.com/) (free)
 - [Privoxy](http://www.privoxy.org/) (free)
 - [The Onion Router](http://www.torproject.org/) (aka TOR) (free)
-- [Anonymity 4 Proxy](http://www.inetprivacy.com/a4proxy/)
-    (commercial)
+

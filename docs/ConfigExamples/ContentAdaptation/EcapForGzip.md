@@ -22,21 +22,19 @@ downstream interfaces.
 
 ## Build eCAP library
 
-We are using
-[1.0.0](http://www.measurement-factory.com/tmp/ecap/libecap-1.0.0.tar.gz) or
-[1.0.1](http://www.measurement-factory.com/tmp/ecap/libecap-1.0.1.tar.gz)
-for Squid 3.5.x/4.x.x. Due to API changes, adapters no more compatible
-with older libecap.
+We are using v1.0.0 or v1.0.1 for Squid 3.5.x/4.x.x
+[downloads link](https://www.e-cap.org/downloads/).
+Due to API changes, adapters no more compatible with older libecap.
 
 Build and install library accordingly your Squid 32-bit or 64-bit
 versions:
 
     ## 32-bit GCC
     ./configure 'CXXFLAGS=-O2 -m32 -pipe' 'CFLAGS=-O2 -m32 -pipe'
-    
+
     ## 64-bit GCC
     ./configure 'CXXFLAGS=-O2 -m64 -pipe' 'CFLAGS=-O2 -m64 -pipe'
-    
+
     gmake
     gmake install-strip
 
@@ -50,11 +48,11 @@ PKG_CONFIG_PATH pointed to libecap pkgconfig file.
 ## Build squid-ecap-gzip
 
     ./configure 'CXXFLAGS=-m32' 'LDFLAGS=-L/usr/local/lib'
-    
+
     or
-    
+
     ./configure 'CXXFLAGS=-m64' 'LDFLAGS=-L/usr/local/lib'
-    
+
     make
     make install-strip
 
@@ -91,7 +89,7 @@ permissions to write.
 
 > :information_source:
     Note: When configuration parameters has any error in specifications,
-    adapter starts with defaults. If error log exists, diagnostics message 
+    adapter starts with defaults. If error log exists, diagnostics message
     will be write.
 
 ## Squid Configuration File

@@ -10,8 +10,7 @@ categories: Feature
 - **Developer**: [AlexRousskov](/AlexRousskov)
 - **More**: [eCAP info](http://www.e-cap.org/),
     [context](http://wiki.squid-cache.org/SquidFaq/ContentAdaptation#head-b3e83ccdb647537404a70d9c17c87463524a470b),
-    [code](http://devel.squid-cache.org/projects.html#eCAP), [Squid 3.1
-    Packages](http://www.squid-cache.org/Versions/v3/3.1)
+    [Squid 3.1](http://www.squid-cache.org/Versions/v3/3.1)
 
 ## Adapters Available
 
@@ -49,7 +48,7 @@ directives:
 
     adaptation_service_set reqFilter eReqmod
     adaptation_service_set respFilter eRespmod
-    
+
     adaptation_access respFilter allow all
     adaptation_access reqFilter allow all
 

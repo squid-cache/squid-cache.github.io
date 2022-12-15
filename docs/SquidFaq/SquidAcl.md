@@ -358,7 +358,7 @@ username and password.
 
 In Squid this authentication is handled via external processes. For
 information on how to configure this, please see
-[SquidFaq/ProxyAuthentication](/SquidFaq/ProxyAuthentication).
+[SquidFaq/ProxyAuthentication](/Features/Authentication).
 
 ## Do you have a CGI program which lets users change their own proxy passwords?
 
@@ -514,7 +514,7 @@ See also [TroubleShooting](/SquidFaq/TroubleShooting).
 
 **The problem**
 
-``` 
+```
                [ Parents ]
                /         \
               /           \
@@ -838,7 +838,7 @@ if you want to deny *bar.foo.com*, you should write
 ## I want to customize, or make my own error messages.
 
 You can customize the existing error messages as described in
-*Customizable Error Messages* in [MiscFeatures](/SquidFaq/MiscFeatures).
+[Customizable Error Messages](/Features/CustomErrors).
 You can also create new error messages and use these in conjunction with
 the [deny_info](http://www.squid-cache.org/Doc/config/deny_info)
 option.

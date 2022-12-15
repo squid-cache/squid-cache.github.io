@@ -26,6 +26,6 @@ for them
 ### Candidates for removal:
 
 - NextStep (last release 1994)
-- QNX is a current OS apparently based on [NextStep](/NextStep)
+- QNX is a current OS apparently based on NextStep
     and needs checking to see whether it still relies on Next
     specific code.

@@ -147,11 +147,11 @@ adapt.
 
 | Mechanism              | Request Header | Request Body | Reply Header| Reply Body |
 | ----------------------------------- | ----------- | ------------ | -------- | --- |
-| [ICAP](#secICAP)                    | yes         | yes          | yes      | yes |
-| [Client Streams](#secClientStreams) |             |              | yes      | yes |
-| [eCAP](#seceCAP)                    | yes         | yes          | yes      | yes |
-| [ACLs](#secACLs)                    | yes         |              | del      |     |
-| [code hacks](#secCodeHacks)         | yes         | yes          | yes      | yes |
+| [ICAP](#icap)                       | yes         | yes          | yes      | yes |
+| [Client Streams](#client-streams)   |             |              | yes      | yes |
+| [eCAP](#ecap)                       | yes         | yes          | yes      | yes |
+| [ACLs](#squidconf-acls)             | yes         |              | del      |     |
+| [code hacks](#code-hacks)           | yes         | yes          | yes      | yes |
 
 Each adaptation mechanism has its strength and weaknesses. The following
 table attempts to rank mechanisms using frequently used evaluation
@@ -159,12 +159,12 @@ criteria.
 
 | Evaluation Criteria | Mechanisms in rough order from "best" to "worst" |
 | --- | --- |
-| Squid independence                      | [ICAP](#secICAP), [eCAP](#seceCAP), [ACLs](#secACLs), [Client Streams](#secClientStreams), [code hacks](#secCodeHacks)       |
-| Processing speed                        | [eCAP](#seceCAP) or [Client Streams](#secClientStreams) or [ACLs](#secACLs) or [code hacks](#secCodeHacks), [ICAP](#secICAP) |
-| Development effort (header adaptation)  | [ACLs](#secACLs), [code hacks](#secCodeHacks), [Client Streams](#secClientStreams), [eCAP](#seceCAP), [ICAP](#secICAP)       |
-| Development effort (content adaptation) | [eCAP](#seceCAP), [ICAP](#secICAP), [Client Streams](#secClientStreams), [code hacks](#secCodeHacks)                         |
-| Versatility                             | [code hacks](#secCodeHacks), [eCAP](#seceCAP), [ICAP](#secICAP), [Client Streams](#secClientStreams), [ACLs](#secACLs)       |
-| Maintenance overheads                   | [ACLs](#secACLs), [eCAP](#seceCAP), [ICAP](#secICAP), [Client Streams](#secClientStreams), [code hacks](#secCodeHacks)       |
+| Squid independence                      | [ICAP](#icap), [eCAP](#ecap), [ACLs](#squidconf-acls)  , [Client Streams](#secClientStreams), [code hacks](#code-hacks)         |
+| Processing speed                        | [eCAP](#ecap) or [Client Streams](#secClientStreams) or [ACLs](#squidconf-acls)   or [code hacks](#code-hacks)  , [ICAP](#icap) |
+| Development effort (header adaptation)  | [ACLs](#squidconf-acls)  , [code hacks](#code-hacks)  , [Client Streams](#secClientStreams), [eCAP](#ecap), [ICAP](#icap)       |
+| Development effort (content adaptation) | [eCAP](#ecap), [ICAP](#icap), [Client Streams](#secClientStreams), [code hacks](#code-hacks)                           |
+| Versatility                             | [code hacks](#code-hacks)  , [eCAP](#ecap), [ICAP](#icap), [Client Streams](#secClientStreams), [ACLs](#squidconf-acls)         |
+| Maintenance overheads                   | [ACLs](#squidconf-acls)  , [eCAP](#ecap), [ICAP](#icap), [Client Streams](#secClientStreams), [code hacks](#code-hacks)         |
 
 ## Additional resources
 

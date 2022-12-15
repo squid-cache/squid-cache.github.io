@@ -93,14 +93,14 @@ for PR submission recipes.
     [72](https://github.com/measurement-factory/anubis#commit-message)
     characters per line.
 5. By default, individual PR branch commits will be
-    [automatically]((#automation)) squash-merged. Thus, you may leave
+    [automatically](#automation) squash-merged. Thus, you may leave
     intermediate commits in your branch when posting your PR -- a
     reviewer should ignore them and review their cumulative result
     instead. Avoid squashing *during* GitHub review iterations.
 6. *During* GitHub review iterations, avoid merging fresh master (or
     target branch) changes into your PR branch unless such an update
     becomes necessary. After the PR is approved, your PR branch will be
-    [automatically]((#automation)) merged into then-current target branch.
+    [automatically](#automation) merged into then-current target branch.
 7. A PR commit not authored by you should have the right author set
     (via *git commit --author=...* or equivalent).
 

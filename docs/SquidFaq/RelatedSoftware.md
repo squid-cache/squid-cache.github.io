@@ -27,9 +27,6 @@ stress-testing tool for performance analysis
 
 - [Pen](http://siag.nu/pen/) is a simple load-balancer with session
 affinity for TCP-based protocols.
-- [Layer-7 switching](http://www.linux-l7sw.org/) is a Layer-7
-load-balancing engine for Linux. It's a young project, stemming off
-the more mature Keepalived.
 - [Linux Virtual Server](http://www.linuxvirtualserver.org/) is a
 kernel-based layer 3-7 load balancer for Linux
 
@@ -51,7 +48,7 @@ kernel-based layer 3-7 load balancer for Linux
 
 ### Performance monitoring
 
-- [Munin](http://munin.projects.linpro.no/) is a very flexible
+- [Munin](https://munin-monitoring.org/) is a very flexible
   platform for collecting long-term performance data
 - [Cacti](http://www.cacti.net/) is especially suited for collecting
   SNMP-basd data
@@ -62,10 +59,6 @@ kernel-based layer 3-7 load balancer for Linux
 
 ## Logfile Analysis
 
-Rather than maintain the same list in two places, please see the
-[Logfile Analysis Scripts](http://www.squid-cache.org/Scripts/) page on
-the Web server.
-
 - [Squeezer](http://sourceforge.net/projects/squidoptimizer/) is a
   logfile analysis software aimed at measuring Squid's performance
 
@@ -74,10 +67,10 @@ the Web server.
 - [Squirm](http://squirm.foote.com.au/) is a configurable, efficient
   redirector for Squid by Chris Foote `<chris AT senet DOT com DOT
 
-- [jesred](http://ivs.cs.uni-magdeburg.de/~elkner/webtools/jesred/) by
+- [jesred](http://www.linofee.org/~jel/webtools/jesred/) by
   Jens Elkner `<elkner AT wotan DOT cs DOT Uni-Magdeburg DOT de>`.
 
-- [SquidGuard](http://www.squidguard.org/) is a free (GPL), flexible
+- [SquidGuard](https://en.wikipedia.org/wiki/SquidGuard) is a free (GPL), flexible
   and efficient filter and redirector program for squid. It lets you
   define multiple access rules with different restrictions for
   different user groups. SquidGuard uses squid standard redirector
@@ -94,22 +87,8 @@ the Web server.
   up to date 'object map' recording the availability of objects in its
   neighbouring caches.
 
-- The [Cerberian content
-  filter](http://www.marasystems.com/?section=cerberian) is a very
-  flexible URL rating system with full Squid integration provided by
-  [MARA Systems AB](http://marasystems.com/download/cerberian). The
-  service requires a license (priced by the number of seats) but
-  evaluation licenses are available.
-
-## Ident Servers
-
-For [Windows NT](http://ftp.tdcnorge.no/pub/windows/Identd/),
-[Windows 95/98](http://identd.sourceforge.net/), and
-[Unix](http://www2.lysator.liu.se/~pen/pidentd/).
-
 ## Cacheability Validators
 
 The [Cacheability Engine](http://www.mnot.net/cacheability/) is a python
 script that validates an URL, analyzing the clues a web server gives to
-understand how cacheable is the served content. An online tool is
-available at <http://www.ircache.net/cgi-bin/cacheability.py>
+understand how cacheable is the served content.

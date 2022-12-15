@@ -460,7 +460,7 @@ on squid 1 we pre-configured a cache\_peer for all dstdomain of
 .internal so the rewritten url must be fetched through squid 2.
 
 squid 2 then gets the request for
-"<http://ytvideo.squid.internal/somekey>" and passes the request to
+"http://ytvideo.squid.internal/somekey" and passes the request to
 the ICAP server. the ICAP server in time fetch the original URL from DB
 and rewrites the request to the original origin server.
 

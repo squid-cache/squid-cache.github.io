@@ -30,7 +30,7 @@ Emeritus developers who provided oversight of the Squid Project before
   HTTP/2 and IPv6 guru, [Translations](/Translations)
   coordinator, and [Squid-3.x](/RoadMap) and later
   release manager.
-- [Robert Collins](https://www.linkedin.com/in/rbtcollins/) was the main
+- Robert Collins was the main
   driver of the initial Squid-3 C++ migration effort.
 - [Guido Serassio](/GuidoSerassio) led the _Squid-2.x for Windows_ effort
 - [Alex Rousskov](/AlexRousskov),

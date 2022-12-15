@@ -46,7 +46,7 @@ The final decision to splice, bump, or terminate the connection can be
 made at any of those steps (but what Squid does at step N affects its
 ability to splice or bump at step N+1\!).
 
-Please see the [actions table](#Actions) below for definitions of the
+Please see the [actions table](#actions) below for definitions of the
 two "looking at" actions (i.e., peek and stare) as well as various final
 actions (e.g., "bump", "splice", "terminate", etc.).
 

@@ -26,7 +26,7 @@ We are aware that many networks only implement layer 3 and 4 of this
 design due to administrators familiarity with NAT, confusion about the
 benefits, and historic problems with the upper two layers.
 
-1. [Web Proxy Automatic Detection](#Fully_Automatically_Configuring_Browsers_for_WPAD)
+1. [Web Proxy Automatic Detection](#fully-automatic-configuration)
     (**WPAD**) (aka **transparent configuration**)
   - Browsers set to auto-detect the proxy for whatever network they
     are plugged into. This is particularly useful for mobile users.
@@ -34,7 +34,7 @@ benefits, and historic problems with the upper two layers.
     standard to follow, so browsers implement and two separate DNS
     and DHCP systems to setup.
   - requires the PAC to be implemented.
-1. [Proxy auto-configuration](#Partially_Automatic_Configuration)
+1. [Proxy auto-configuration](#partially-automatic-configuration)
   (**PAC**) (aka *transparent proxy*)
   - As a backup to per-machine configuration.
   - Some systems support PAC file to be explicitly set in the
