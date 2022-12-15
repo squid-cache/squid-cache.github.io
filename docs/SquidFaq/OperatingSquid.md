@@ -342,9 +342,7 @@ You can specify IP addresses and port numbers together (see the squid.conf comme
 
 Normally you cannot. Most TCP/IP stacks do not allow applications to
 create sockets with the local endpoint assigned to a foreign IP address.
-However, some folks have some
-[patches to Linux](http://www.balabit.hu/en/downloads/tproxy/) that allow exactly
-that.
+Linux [allows that in some cases](https://oswalt.dev/2022/02/non-local-address-binds-in-linux/)
 
 In this situation, you must ensure that all HTTP packets destined for
 the client IP addresses are routed to the Squid box. If the packets take

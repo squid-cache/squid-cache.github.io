@@ -14,10 +14,6 @@ the most current.
 You must download a source archive file of the form squid-x.y.tar.gz or
 squid-x.y.tar.bz2 (eg, squid-2.6.STABLE14.tar.bz2).
 
-We recommend you first try one of our [mirror
-sites](http://www.squid-cache.org/Mirrors/http-mirrors.html) for the
-actually download. They are usually faster.
-
 Alternatively, the main Squid WWW site
 [www.squid-cache.org](http://www.squid-cache.org/), and FTP site
 [ftp.squid-cache.org](ftp://www.squid-cache.org/pub/) have these files.
@@ -118,7 +114,7 @@ commands:
 
 > :information_source:
     Squid-2 patches require the **-p1** option.
-    
+
     :information_source:
     Squid-3 patches require the **-p0** option.
 
@@ -209,17 +205,17 @@ very old and not widely supported.
 
     # You will need the usual build chain
     yum install -y perl gcc autoconf automake make sudo wget
-    
+
     # and some extra packages
     yum install libxml2-devel libcap-devel
-    
+
     # to bootstrap and build from bzr needs also the packages
     yum install libtool-ltdl-devel
 
 The following ./configure options install Squid into the CentOS
 structure properly:
 
-``` 
+```
   --prefix=/usr
   --includedir=/usr/include
   --datadir=/usr/share
@@ -317,7 +313,7 @@ the Ports collection. As of FreeBSD 12.2, the available ports are:
 
 To install squid-4:
 
-``` 
+```
 cd /usr/ports/www/squid
 make install clean
 ```
@@ -434,7 +430,7 @@ Always check the provided release notes for any version specific detail.
 The following ./configure options install Squid into the RedHat
 structure properly:
 
-``` 
+```
   --prefix=/usr
   --includedir=/usr/include
   --datadir=/usr/share
