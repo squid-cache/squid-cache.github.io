@@ -41,7 +41,9 @@
         {%- if page.FaqSection -%}<p>To the <a href="/SquidFaq">FAQ Index</a></p>{%- endif -%}
         {%- if page.categories -%}<p>Categories: {% for c in page.categories -%}<a href="/Categories/{{c}}">{{c}}</a>{%- unless forloop.last == true -%}, {%- endunless -%}{% endfor %}</p>{%- endif -%}
         {%- if page.tags.size -%}Page tags: {{page.tags | join: ', '}}{%- endif -%}
-        {%- if page.path != "/" -%}Navigation: <a href="{{ page.url | remove_first: '/' | split: '/' | pop | join: '/' | prepend: '/' }}">🔼 go up</a>{%- endif -%}
+        Navigation: <a href="/Search.html">Site Search</a>,
+            <a href="/SitePages.html">Site Pages</a>,
+            <a href="/Categories">Categories</a>{%- if page.url != "/" -%}, <a href="{{ page.url | remove_first: '/' | split: '/' | pop | join: '/' | prepend: '/' }}">🔼 go up</a>{%- endif -%}
         {%- comment -%}Add next and prev page {%- endcomment -%}
         </section>
     </div>
