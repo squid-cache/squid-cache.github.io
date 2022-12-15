@@ -71,7 +71,7 @@ On the network:
   Daemon(Bird).
 - all the cache proxies have routing Daemon connected to the edge
   routers to choose the right path\\gw.
-![http://www1.ngtech.co.il/squid/cachecluster.png](http://www1.ngtech.co.il/squid/cachecluster.png)
+![cachecluster.png](/assets/images/cachecluster.png)
 
 ## Basic assumptions on you
 

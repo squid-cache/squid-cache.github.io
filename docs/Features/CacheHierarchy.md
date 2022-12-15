@@ -13,13 +13,13 @@ categories: Feature
 Proxy and Cache Hierarchies are built out of two basic peering linkages.
 **parent** links (shown as green) and **sibling** links (show as blue).
 
-![Peering_Basics.png](https://wiki.squid-cache.org/Features/CacheHierarchy?action=AttachFile&do=get&target=Peering_Basics.png)
+![Peering_Basics.png](/assets/images/peering-basics.png)
 
 These two simple connections can be combined in any number of complex
 **hierarchies**. For example this cluster of 6 sibling caches with a
 gateway proxy load balancing between them.
 
-![Cluster_1x6.png](https://wiki.squid-cache.org/Features/CacheHierarchy?action=AttachFile&do=get&target=Cluster_1x6.png)
+![Cluster_1x6.png](/assets/images/cluster-1x6.png)
 
 ## How do I configure Squid forward all requests to another proxy?
 

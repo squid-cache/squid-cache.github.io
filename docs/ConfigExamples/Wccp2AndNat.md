@@ -27,7 +27,7 @@ This network architecture isn't very pretty because:
 
 ## Diagram
 
-![WCCP diagram](https://wiki.squid-cache.org/ConfigExamples/Wccp2AndNat?action=AttachFile&do=get&target=WCCP_Diagram.png)
+![WCCP diagram](/assets/images/wccp-diagram.png)
 
 ## Cisco Router Configuration
 
@@ -49,7 +49,7 @@ Flash
     no logging console
     enable secret 5 <password>
     !
-    no network-clock-participate wic 0 
+    no network-clock-participate wic 0
     ip subnet-zero
     ip wccp web-cache
     !
@@ -61,9 +61,9 @@ Flash
     !
     ip dhcp pool localnet
        network 192.168.1.0 255.255.255.0
-       default-router 192.168.1.1 
+       default-router 192.168.1.1
        domain-name home.cacheboy.net
-       dns-server 203.56.15.78 
+       dns-server 203.56.15.78
        lease 30
     !
     !
@@ -75,17 +75,17 @@ Flash
     vpdn-group 1
      request-dialin
       protocol pppoe
-    !         
-    !         
-    !         
-    !         
+    !
+    !
+    !
+    !
     interface FastEthernet0/0
      ip address 192.168.3.2 255.255.255.0
      duplex auto
      speed auto
      pppoe enable
      pppoe-client dial-pool-number 1
-    !         
+    !
     interface FastEthernet0/1
      ip address 192.168.1.1 255.255.255.0
      ip wccp web-cache redirect in
@@ -99,7 +99,7 @@ Flash
      encapsulation dot1Q 2
      ip address 203.56.15.73 255.255.255.248
      no snmp trap link-status
-    !               
+    !
     interface Dialer1
      description ADSL
      ip address negotiated
@@ -118,11 +118,11 @@ Flash
      ppp chap password 7 <password>
      ppp chap refuse
      ppp pap sent-username <username> password 7 <password>
-    !         
+    !
     no ip http server
     ip classless
     ip route 0.0.0.0 0.0.0.0 Dialer1
-    !         
+    !
     ip nat translation timeout never
     ip nat translation tcp-timeout never
     ip nat translation udp-timeout never
@@ -142,10 +142,10 @@ Flash
     access-list 13 permit 192.168.0.0 0.0.255.255
     dialer-list 1 protocol ip permit
     snmp-server community <password> RO
-    !                  
+    !
     control-plane
-    !         
-    !         
+    !
+    !
     line con 0
      speed 115200
      flowcontrol hardware
@@ -154,8 +154,8 @@ Flash
      stopbits 1
     line vty 0 4
      password 7 <password>
-     login    
-    !         
+     login
+    !
     ntp clock-period 17207619
     ntp server 130.95.128.58
     end

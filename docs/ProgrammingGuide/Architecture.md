@@ -38,7 +38,7 @@ At the broad level Squid consists of five generic processing areas;
     implemented which are not documented as directly server or client
     facing usually fall into this group.
 
-      - ![BroadOverview.png](https://wiki.squid-cache.org/ProgrammingGuide/Architecture?action=AttachFile&do=get&target=BroadOverview.png)
+      - ![BroadOverview.png](/assets/images/broad-overview.png)
 
 **:warning: TODO:** image is outdated.
 

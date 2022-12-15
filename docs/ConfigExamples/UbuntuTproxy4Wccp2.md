@@ -71,7 +71,7 @@ you do know what a GRE tunnel is.
 
 ## Toplogy
 
-![wccp2_vlan.png](https://wiki.squid-cache.org/ConfigExamples/UbuntuTproxy4Wccp2?action=AttachFile&do=get&target=wccp2_vlan.png)
+![wccp2_vlan.png](/assets/images/wccp2-vlan.png)
 
 ## Linux and Squid Configuration
 
@@ -122,12 +122,12 @@ add into squid.conf the next lines:
 
     #add change the src subnet to the list of clients subnets allowed.
     acl clients src 10.80.0.0/16
-    
+
     http_access allow clients
-    
-    http_port 127.0.0.1:3128 
+
+    http_port 127.0.0.1:3128
     http_port 3129 tproxy
-    
+
     # replace 10.80.2.1 with your cisco router directly connected interface
     wccp2_router 10.80.2.1
     wccp_version 2
@@ -143,7 +143,7 @@ add into squid.conf the next lines:
 ## Cisco settings
 
     conf t
-    
+
     ip access-list extended wccp
      permit ip 10.80.3.0 0.0.0.255 any
     ip access-list extended wccp_to_inside
@@ -153,11 +153,11 @@ add into squid.conf the next lines:
     ip wccp web-cache
     ip wccp 80 redirect-list wccp
     ip wccp 90 redirect-list wccp_to_inside
-    
+
     interface FastEthernet0/0
      ip wccp 80 redirect out
      ip wccp 90 redirect in
-    
+
     interface FastEthernet0/1
      ip wccp redirect exclude in
 

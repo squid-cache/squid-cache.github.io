@@ -60,7 +60,7 @@ a TLS server. Note that with a bumping proxy between the client and the
 server *_the flow is duplicated_* where the first flow is between client
 and proxy and the second flow between proxy and server.
 
-![TLS handshake between client and server](https://wiki.squid-cache.org/Features/SslPeekAndSplice?action=AttachFile&do=get&target=TLS-handshake-02.png)
+![TLS handshake between client and server](/assets/images/tls-handshake-02.png)
 
 **Step 1:**
 

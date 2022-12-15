@@ -1,5 +1,5 @@
 ---
-categories: ConfigExample 
+categories: ConfigExample
 ---
 # Linux traffic Interception using REDIRECT
 
@@ -14,7 +14,7 @@ configuration. When web traffic is reaching the machine squid is run on.
   intercept from a gateway machine and direct traffic at a separate squid
   box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute).
 
-![squid-NAT-device-REDIRECT.png](https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxRedirect?action=AttachFile&do=get&target=squid-NAT-device-REDIRECT.png)
+![squid-NAT-device-REDIRECT.png](/assets/images/squid-nat-device-redirect.png)
 
 ## iptables configuration
 
@@ -32,11 +32,11 @@ encounter problems with forwarding loops.
 
     # your proxy IP
     SQUIDIP=192.168.0.2
-    
+
     # your proxy listening port
     SQUIDPORT=3129
-    
-    
+
+
     iptables -t nat -A PREROUTING -s $SQUIDIP -p tcp --dport 80 -j ACCEPT
     iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $SQUIDPORT
     iptables -t nat -A POSTROUTING -j MASQUERADE

@@ -302,7 +302,7 @@ above you can increase the outgoing TLS connection's security.
 
 A good result should look like this:
 
-![Test TLS after change cipher's suite](https://wiki.squid-cache.org/ConfigExamples/Intercept/SslBumpExplicit?action=AttachFile&do=get&target=ssl_client_online_check.png)
+![Test TLS after change cipher's suite](/assets/images/ssl-client-online-check.png)
 
 This looks like more better for outgoing SSL connections.
 

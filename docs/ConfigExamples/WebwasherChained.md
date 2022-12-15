@@ -49,7 +49,7 @@ The setup described below works roughly like this:
 
 The big picture:
 
-![bigpicture.png](https://wiki.squid-cache.org/ConfigExamples/WebwasherChained?action=AttachFile&do=get&target=bigpicture.png)
+![bigpicture.png](/assets/images/bigpicture.png)
 
 What the Webwasher does:
 - Virus scanning

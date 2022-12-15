@@ -8,12 +8,12 @@ categories: [ConfigExample]
 To Intercept IPv4 web requests transparently without any kind of client
 configuration. When web traffic is reaching the machine squid is run on.
 
-> :information_source: NAT configuration will only work when used 
+> :information_source: NAT configuration will only work when used
     **on the squid box**. This is required to perform intercept accurately and securely. To
     intercept from a gateway machine and direct traffic at a separate squid
     box use [policy routing](/ConfigExamples/Intercept/IptablesPolicyRoute)
 
-![squid-DNAT-device.png](https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxDnat?action=AttachFile&do=get&target=squid-DNAT-device.png)
+![squid-DNAT-device.png](/assets/images/squid-dnat-device.png)
 
 ## iptables configuration
 
@@ -31,11 +31,11 @@ encounter problems with forwarding loops.
 
     # your proxy IP
     SQUIDIP=192.168.0.2
-    
+
     # your proxy listening port
     SQUIDPORT=3129
-    
-    
+
+
     iptables -t nat -A PREROUTING -s $SQUIDIP -p tcp --dport 80 -j ACCEPT
     iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $SQUIDIP:$SQUIDPORT
     iptables -t nat -A POSTROUTING -j MASQUERADE
@@ -49,10 +49,10 @@ encounter problems with forwarding loops.
 
     # Controls IP packet forwarding
     net.ipv4.ip_forward = 1
-    
+
     # Controls source route verification
     net.ipv4.conf.default.rp_filter = 0
-    
+
     # Do not accept source routing
     net.ipv4.conf.default.accept_source_route = 0
 

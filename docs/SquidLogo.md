@@ -7,17 +7,17 @@ Thanks to all who contributed!
 
 |                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------- |
-| ![squid-logo-rpivato-1.png](https://wiki.squid-cache.org/SquidLogo?action=AttachFile&do=get&target=squid-logo-rpivato-1.png) |
+| ![squid-logo-rpivato-1.png](/assets/images/squid-logo-rpivato-1.png) |
 | Designed by Rafael Pivato                                                                                                    |
 
 |                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------ |
-| ![squid-logo-lucky-1.gif](https://wiki.squid-cache.org/SquidLogo?action=AttachFile&do=get&target=squid-logo-lucky-1.gif) |
+| ![squid-logo-lucky-1.gif](/assets/images/squid-logo-lucky-1.gif) |
 | Designed by Luciano Costarelli                                                                                           |
 
 |                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------ |
-| ![squid-logo-lucky-2.gif](https://wiki.squid-cache.org/SquidLogo?action=AttachFile&do=get&target=squid-logo-lucky-2.gif) |
+| ![squid-logo-lucky-2.gif](/assets/images/squid-logo-lucky-2.gif) |
 | Designed by Luciano Costarelli                                                                                           |
 
 This logo was used for this wiki, and so far seems to be the most-liked

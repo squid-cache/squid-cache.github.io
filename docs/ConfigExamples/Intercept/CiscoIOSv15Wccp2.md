@@ -20,7 +20,7 @@ GigabitEthernet0/0 which connected to LAN switch, and GigabitEthernet0/1
 (IP 192.168.200.2) connected to DMZ with proxy. Proxy has IP
 192.168.200.3 in this example. WCCPv2 configured on router 2911.
 
-![Network scheme](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme.png)
+![Network scheme](/assets/images/network-scheme.png)
 
 Router has both router/switch functionality, so we can use both GRE/L2
 redirection methods.
@@ -192,7 +192,7 @@ has physical 1 Gbps interfaces. Proxy has two aggregated ports, IP's
 aggregate, aggr2) in this example. WCCPv2 uses L2 redirection with
 assignment method **mask**. Switch only support WCCP "IN" redirection.
 
-![Network scheme 2](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme2.png)
+![Network scheme 2](/assets/images/network-scheme2.png)
 
 ### Cisco IOS 15.0(2)SE9 switch
 
@@ -314,7 +314,7 @@ and DATAK9 technology packs activated. Router contains convergent switch
 board with four 100 Mbps or 1 Gbps ports. WCCPv2 configured on router
 2911.
 
-![Network scheme 3](https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv15Wccp2?action=AttachFile&do=get&target=Network_scheme3.png)
+![Network scheme 3](/assets/images/network-scheme3.png)
 
 ### Cisco IOS 15.5(3)M2 router
 
