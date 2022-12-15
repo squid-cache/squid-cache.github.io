@@ -1,5 +1,6 @@
 ---
 ---
+# Static code testing with Coverity Scan
 The Squid project uses the services of
 [Coverity Scan](https://scan.coverity.com/o/oss_success_stories)
 to run automated test builds, as part of the [BuildFarm](/BuildFarm)

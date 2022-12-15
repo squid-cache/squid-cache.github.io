@@ -1,6 +1,8 @@
 ---
 ---
-As of 2008, the Squid project has settled for a new logo. Here you can
+# Squid logo
+
+In 2008 the Squid project has settled for a new logo. Here you can
 find a sample of other applicants.
 
 Thanks to all who contributed!
@@ -19,6 +21,3 @@ Thanks to all who contributed!
 | ------------------------------------------------------------------------------------------------------------------------ |
 | ![squid-logo-lucky-2.gif](/assets/images/squid-logo-lucky-2.gif) |
 | Designed by Luciano Costarelli                                                                                           |
-
-This logo was used for this wiki, and so far seems to be the most-liked
-one among the developers.
