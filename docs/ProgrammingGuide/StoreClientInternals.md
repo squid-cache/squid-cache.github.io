@@ -1,5 +1,7 @@
 ---
 ---
+# Store Client internals
+
 > :information_source:
     This documentation was written for Squid-2.6
 

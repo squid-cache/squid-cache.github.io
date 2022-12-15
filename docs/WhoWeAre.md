@@ -1,3 +1,5 @@
+# Who are we?
+
 The Squid project, originally funded by an NSF grant, is now run
 entirely by volunteers. There are a few key individuals who keep the
 project running.

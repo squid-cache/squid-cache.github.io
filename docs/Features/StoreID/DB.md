@@ -1,6 +1,8 @@
 ---
 categories: Feature
 ---
+# StoreID database
+
 A basic structure as an example for StoreID url DB "Many to One".
 
 This DB design is

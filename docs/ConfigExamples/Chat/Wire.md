@@ -1,13 +1,10 @@
 ---
 categories: [ConfigExample]
 ---
+# Filtering Wire Messenger
+
 *by Yuri Voinov*
 
-# Wire Messenger
-
-Warning: Any example presented here is provided "as-is" with no support
-or guarantee of suitability. If you have any further questions about
-these examples please email the squid-users mailing list.
 
 ## Outline
 
@@ -33,9 +30,9 @@ splice 2nd level domain wire.com.
 Paste the configuration file like this:
 
     acl DiscoverSNIHost at_step SslBump1
-    
+
     acl NoSSLIntercept ssl::server_name_regex .wire\.com
-    
+
     ssl_bump peek DiscoverSNIHost
     ssl_bump splice NoSSLIntercept
     # other SSL-bump rules ...

@@ -1,5 +1,6 @@
 ---
 ---
+# bootstrap.sh
 The **bootstrap.sh** script runs a number of autotools to prepare
 ./configure and related magic. See [DeveloperResources](/DeveloperResources)
 for the tools required by this script.
@@ -14,7 +15,7 @@ This sometimes happens on Debian based systems:
 
 *Problem*
 
-``` 
+```
     configure.in:34 error: possibly undefined macro: AC_LTDL_DLLIB
           If this token and others are legitimate, please use m4_pattern_allow.
           See the Autoconf documentation.
@@ -30,7 +31,7 @@ This sometimes happens on Debian based systems:
 
 *Problem*
 
-``` 
+```
     libtoolize: 'ltdl.m4' not found in '/usr/share/aclocal'
     libtoolize failed
     Autotool bootstrapping failed. You will need to investigate and correct
