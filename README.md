@@ -1,3 +1,5 @@
-# kinkie.github.io
+# squid-cache.github.io
 
-WIP for importing the [squid wiki](https://wiki.squid-cache.org/) into github pages
+This is the continuation of the Squid Web Cache Wiki, containing
+documentation, examples, and plans for evolving the Squid Web Cache
+
