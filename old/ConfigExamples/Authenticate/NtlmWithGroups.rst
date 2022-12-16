@@ -1,1 +1,0 @@
-#REDIRECT /ConfigExamples/Authenticate/Groups

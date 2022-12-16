@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ConfigExamples/Intercept/CiscoIOSv11Wccp1</title><revhistory><revision><revnumber>3</revnumber><date>2009-10-19 22:53:53</date><authorinitials>AmosJeffries</authorinitials><revremark>easier regex on feature page</revremark></revision><revision><revnumber>2</revnumber><date>2009-10-19 22:53:07</date><authorinitials>AmosJeffries</authorinitials><revremark>meta tags for feature page include</revremark></revision><revision><revnumber>1</revnumber><date>2009-06-18 11:48:35</date><authorinitials>AmosJeffries</authorinitials><revremark>import from FAQ. bit old but maybe useful still.</revremark></revision></revhistory></articleinfo><section><title>Configure Cisco IOS 11.x router for WCCP Interception</title><para><emphasis role="strong">Warning</emphasis>: Any example presented here is provided &quot;as-is&quot; with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list. </para><section><title>Cisco IOS 11.x router</title><para>For very old versions of IOS you will need this config: </para><screen><![CDATA[conf t
-wccp enable
-!
-interface [Interface carrying Outgoing Traffic]x/x
-!
-ip wccp web-cache redirect
-!
-CTRL Z
-copy running-config startup-config]]></screen><!--rule (<hr>) is not applicable to DocBook--><para> <ulink url="https://wiki.squid-cache.org/ConfigExamples/Intercept/CiscoIOSv11Wccp1/CategoryConfigExample#">CategoryConfigExample</ulink> </para></section></section></article>
