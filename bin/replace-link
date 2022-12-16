@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -lt 2 ] ;then
+cat <<_EOF
+
+$0 mandaatory arguments:
+ - full path of the link to be transformed
+ - full path of the new link
+
+replace in the current git module all markdown links to
+first argument so that they point to second argument
+_EOF
+    exit 1
+fi
+
+SED=sed
+type -p gsed >/dev/null && SED=gsed
+
+git grep -l -F "]($1)" | xargs $SED -i~ "s#\]($1)#]($2)#g"

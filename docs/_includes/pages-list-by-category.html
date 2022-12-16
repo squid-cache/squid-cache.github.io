@@ -1,0 +1,11 @@
+{%- comment -%}
+arguments:
+- category (to filter against)
+- numbers: true if you want the list to be numbered
+{%- endcomment -%}
+
+{%- if include.numbers -%}{%- assign prefix = "1."-%}{%- else -%}{%- assign prefix = "*"-%}{%- endif -%}
+{%- assign pages_in_category = site.pages | where_exp: "page", "page.categories contains include.category" | sort: "title" -%}
+{% for p in pages_in_category -%}
+{{prefix}} [{{ p.title | default: p.url }}]({{ p.url | replace: ".html", "" }})
+{% endfor %}

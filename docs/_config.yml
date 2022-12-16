@@ -1,0 +1,20 @@
+remote_theme: pages-themes/slate@v0.2.0
+title: "[WIP] Squid Web Cache wiki"
+description: refresh of the Squid documentation
+
+url: "https://kinkie.github.io"
+plugins:
+  - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-optional-front-matter
+  - jekyll-relative-links
+  - jekyll-titles-from-headings
+  - jemoji
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
