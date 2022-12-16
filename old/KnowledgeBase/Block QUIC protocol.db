@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>KnowledgeBase/Block QUIC protocol</title><revhistory><revision><revnumber>18</revnumber><date>2016-05-28 16:20:20</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>17</revnumber><date>2016-05-28 16:11:38</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>16</revnumber><date>2015-07-13 12:13:04</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>15</revnumber><date>2015-07-13 12:06:19</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>14</revnumber><date>2015-05-18 16:48:53</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>13</revnumber><date>2015-05-17 12:47:46</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>12</revnumber><date>2015-05-17 12:46:51</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>11</revnumber><date>2015-05-12 19:14:54</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>10</revnumber><date>2015-05-03 19:08:25</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>9</revnumber><date>2015-05-03 15:28:56</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>8</revnumber><date>2015-05-03 15:18:26</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>7</revnumber><date>2015-05-03 15:06:15</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>6</revnumber><date>2015-05-02 19:37:28</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>5</revnumber><date>2015-05-02 19:25:49</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>4</revnumber><date>2015-05-02 19:25:09</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>3</revnumber><date>2015-05-02 19:22:07</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>2</revnumber><date>2015-05-02 19:21:50</date><authorinitials>YuriVoinov</authorinitials></revision><revision><revnumber>1</revnumber><date>2015-05-02 19:20:51</date><authorinitials>YuriVoinov</authorinitials></revision></revhistory></articleinfo><section><title>Block QUIC protocol</title><para><emphasis role="strong">Synopsis</emphasis> </para><para>Force proxy clients to use HTTP/HTTPS against QUIC. </para><para><emphasis role="strong">Symptoms</emphasis> </para><para>You cannot see any YouTube/Google connections via access.log on proxy. Also outgoing traffic increases dramathically. </para><para><emphasis role="strong">Explanation</emphasis> </para><para>Starting from 2015, some sites (i.e., Google and <ulink url="https://wiki.squid-cache.org/KnowledgeBase/Block QUIC protocol/YouTube#">YouTube</ulink>) offer connection via QUIC protocol. Google Chrome support it in latest versions, so connections bypass Squid and cannot be proxied or cached. </para><para>QUIC uses UDP protocol over 80 and 443 port. This is often abuses Squid (current versions does not support QUIC) and permits clients to bypass transparent proxies. Also suggests, that forwarding proxies can also be bypassed. </para><para><emphasis role="strong">Workaround</emphasis> </para><para>To completely block using QUIC by clients, you must simple block UDP on ports 80 and 443 with both directions (in and out). This can be done via NAT/Firewall on transparent proxy, or on external network equipement. </para><para>Example for IPFilter on Solaris/OpenIndiana: </para><para>ipnat.conf: </para><screen><![CDATA[rdr aggr1 0.0.0.0/0 port 80 -> 0/32 port 3128 tcp
+rdr aggr1 0.0.0.0/0 port 443 -> 0/32 port 3129 tcp]]></screen><para>ipf.conf: </para><screen><![CDATA[# Group 100 - Blocked networks & packets on any interface
+# Group 100 setup
+block in all head 100
+# Group 200 - Opened incoming ports & services on net0 interface
+# Group 200 setup
+pass in on net0 head 200
+]]><![CDATA[
+# Block alternate protocols
+block return-icmp-as-dest(port-unr) in quick proto udp from any to any port=3128 keep state group 100
+block return-icmp-as-dest(port-unr) in quick proto udp from any to any port=3129 keep state group 100
+]]><![CDATA[
+# Restrict access to proxy only from localnet (forwarding)
+pass in quick proto tcp from 192.168.0.0/16 to proxy_host_name port=3127 flags S keep state keep frag group 200
+# Restrict access to proxy only from localnet (interception)
+pass in quick proto tcp from 192.168.0.0/16 to proxy_host_name port=3128 flags S keep state keep frag group 200
+# Restrict access to proxy only from localnet (HTTPS interception)
+pass in quick proto tcp from 192.168.0.0/16 to proxy_host_name port=3129 flags S keep state keep frag group 200]]></screen><para>Example for Cisco iOS with route-map redirection: </para><screen><![CDATA[ip access-list extended block-ports
+ remark Block alternate protocols
+ deny udp any any eq 80
+ deny udp any any eq 443
+!
+route-map redirect_proxy permit 30
+ match ip address block-ports
+ set ip next-hop your_proxy_IP
+route-map redirect_proxy permit 40
+!]]></screen><para><emphasis role="strong">Note:</emphasis> For Cisco WCCP you must deny UDP 80/443 port on Proxy. So, you also need explicit redirect UDP with WCCP onto proxy box: </para><screen><![CDATA[ip access-list extended WCCP_ACCESS
+ remark ACL for HTTP/HTTPS
+ remark Squid proxies bypass WCCP
+ deny   ip host 192.168.200.3 any
+ remark LAN clients proxy port 80/443
+ permit tcp 192.168.0.0 0.0.255.255 any eq www 443
+ remark Alternate protocol workaround
+ permit udp 192.168.0.0 0.0.255.255 any eq 80 443
+ remark all others bypass WCCP
+ deny   ip any any]]></screen><para>In some cases you may want to block QUIC on front router: </para><screen><![CDATA[interface GigabitEthernet0/0
+! External interface
+ ip access-group WAN_IN in
+!
+ip access-list extended WAN_IN
+ deny   udp any any eq 80
+ deny   udp any any eq 443
+ permit ip any any]]></screen><para>Also, in sone cases, you may want to block SPDY protocol on front router using NBAR: </para><screen><![CDATA[class-map match-any alternate
+ match protocol spdy
+!
+policy-map Net_Limit
+ class alternate
+  drop
+!
+interface GigabitEthernet0/0
+ ip nbar protocol-discovery
+ service-policy output Net_Limit]]></screen><para>iptables: </para><screen><![CDATA[iptables -A FORWARD -i net0 -p udp -m udp --dport 80 -j REJECT --reject-with icmp-port-unreachable
+iptables -A FORWARD -i net0 -p udp -m udp --dport 443 -j REJECT --reject-with icmp-port-unreachable
+]]><![CDATA[
+iptables -A FORWARD -p tcp -m tcp --dport 80 -m state --state RELATED,ESTABLISHED -j DROP
+iptables -A FORWARD -p tcp -m tcp --dport 443 -m state --state RELATED,ESTABLISHED -j DROP]]></screen><para>Also you may need to block Alternate-Protocol header in server response (for Squid below 3.5.x): </para><screen><![CDATA[# Disable alternate protocols
+reply_header_access Alternate-Protocol deny all]]></screen><para><emphasis role="strong">Thanks</emphasis> </para><para>Thanks to Luis Miguel Silva (for Linux solution), Antony Stone and Amos Jeffries for idea. <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/smile4.png" width="15"/></imageobject><textobject><phrase>;)</phrase></textobject></inlinemediaobject> </para><!--rule (<hr>) is not applicable to DocBook--><para> <ulink url="https://wiki.squid-cache.org/KnowledgeBase/Block QUIC protocol/CategoryKnowledgeBase#">CategoryKnowledgeBase</ulink> </para></section></article>

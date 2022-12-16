@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>EliezerCroitoru/GolangFakeHelper</title><revhistory><revision><revnumber>3</revnumber><date>2017-06-07 18:02:20</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>An improved version which answers all pending queries and only then exits.</revremark></revision><revision><revnumber>2</revnumber><date>2015-01-12 18:31:38</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>1</revnumber><date>2015-01-04 11:06:19</date><authorinitials>Eliezer Croitoru</authorinitials></revision></revhistory></articleinfo><para>Describe EliezerCroitoru/GolangFakeHelper here. </para><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><token><![CDATA[package]]></token><![CDATA[ ]]><methodname><![CDATA[main]]></methodname>
+
+<lineannotation><![CDATA[/*]]></lineannotation>
+<lineannotation><![CDATA[license note]]></lineannotation>
+<lineannotation><![CDATA[Copyright (c) 2017, Eliezer Croitoru]]></lineannotation>
+<lineannotation><![CDATA[All rights reserved.]]></lineannotation>
+<lineannotation></lineannotation>
+<lineannotation><![CDATA[Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:]]></lineannotation>
+<lineannotation><![CDATA[1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.]]></lineannotation>
+<lineannotation><![CDATA[2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.]]></lineannotation>
+<lineannotation><![CDATA[3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.]]></lineannotation>
+<lineannotation></lineannotation>
+<lineannotation><![CDATA[THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE]]></lineannotation>
+<lineannotation><![CDATA[*/]]></lineannotation>
+<token><![CDATA[import]]></token><![CDATA[ (]]>
+<![CDATA[        ]]><phrase><![CDATA["bufio"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["flag"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["fmt"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["os"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["strings"]]></phrase>
+<![CDATA[        ]]><phrase><![CDATA["sync"]]></phrase>
+<![CDATA[)]]>
+
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[debug]]></methodname><![CDATA[ *]]><token><![CDATA[string]]></token>
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[answer]]></methodname><![CDATA[ *]]><token><![CDATA[string]]></token>
+
+<token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[err]]></methodname><![CDATA[ ]]><token><![CDATA[error]]></token>
+
+<token><![CDATA[func]]></token><![CDATA[ ]]><methodname><![CDATA[process_request]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[ ]]><token><![CDATA[string]]></token><![CDATA[, ]]><methodname><![CDATA[wg]]></methodname><![CDATA[ *]]><methodname><![CDATA[sync]]></methodname><![CDATA[.]]><methodname><![CDATA[WaitGroup]]></methodname><![CDATA[) {]]>
+<![CDATA[        ]]><token><![CDATA[defer]]></token><![CDATA[ ]]><methodname><![CDATA[wg]]></methodname><![CDATA[.]]><methodname><![CDATA[Done]]></methodname><![CDATA[()]]>
+<![CDATA[        ]]><methodname><![CDATA[lparts]]></methodname><![CDATA[ := ]]><methodname><![CDATA[strings]]></methodname><![CDATA[.]]><methodname><![CDATA[Split]]></methodname><![CDATA[(]]><methodname><![CDATA[strings]]></methodname><![CDATA[.]]><methodname><![CDATA[TrimRight]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[, ]]><phrase><![CDATA["\n"]]></phrase><![CDATA[), ]]><phrase><![CDATA[" "]]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><token><![CDATA[if]]></token><![CDATA[ ]]><token><![CDATA[len]]></token><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[0]) > 0 {]]>
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ *]]><methodname><![CDATA[debug]]></methodname><![CDATA[ == ]]><phrase><![CDATA["yes"]]></phrase><![CDATA[ {]]>
+<![CDATA[                        ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["ERRlog: Proccessing request => \""]]></phrase><![CDATA[+]]><methodname><![CDATA[strings]]></methodname><![CDATA[.]]><methodname><![CDATA[TrimRight]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[, ]]><phrase><![CDATA["\n"]]></phrase><![CDATA[)+]]><phrase><![CDATA["\""]]></phrase><![CDATA[)]]>
+<![CDATA[                }]]>
+<![CDATA[        }]]>
+<![CDATA[        ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Println]]></methodname><![CDATA[(]]><methodname><![CDATA[lparts]]></methodname><![CDATA[[0] + ]]><phrase><![CDATA[" "]]></phrase><![CDATA[ + *]]><methodname><![CDATA[answer]]></methodname><![CDATA[)]]>
+<![CDATA[}]]>
+
+<token><![CDATA[func]]></token><![CDATA[ ]]><methodname><![CDATA[main]]></methodname><![CDATA[() {]]>
+<![CDATA[        ]]><methodname><![CDATA[fmt]]></methodname><![CDATA[.]]><methodname><![CDATA[Fprintln]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stderr]]></methodname><![CDATA[, ]]><phrase><![CDATA["ERRlog: Starting Fake helper"]]></phrase><![CDATA[)]]>
+
+<![CDATA[        ]]><methodname><![CDATA[debug]]></methodname><![CDATA[ = ]]><methodname><![CDATA[flag]]></methodname><![CDATA[.]]><methodname><![CDATA[String]]></methodname><![CDATA[(]]><phrase><![CDATA["d"]]></phrase><![CDATA[, ]]><phrase><![CDATA["no"]]></phrase><![CDATA[, ]]><phrase><![CDATA["Debug mode can be \"yes\" or something else for no"]]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[answer]]></methodname><![CDATA[ = ]]><methodname><![CDATA[flag]]></methodname><![CDATA[.]]><methodname><![CDATA[String]]></methodname><![CDATA[(]]><phrase><![CDATA["a"]]></phrase><![CDATA[, ]]><phrase><![CDATA["OK"]]></phrase><![CDATA[, ]]><phrase><![CDATA["Answer can be either \"ERR\" or \"OK\""]]></phrase><![CDATA[)]]>
+<![CDATA[        ]]><methodname><![CDATA[flag]]></methodname><![CDATA[.]]><methodname><![CDATA[Parse]]></methodname><![CDATA[()]]>
+
+<![CDATA[        ]]><token><![CDATA[var]]></token><![CDATA[ ]]><methodname><![CDATA[wg]]></methodname><![CDATA[ ]]><methodname><![CDATA[sync]]></methodname><![CDATA[.]]><methodname><![CDATA[WaitGroup]]></methodname>
+
+<![CDATA[        ]]><methodname><![CDATA[reader]]></methodname><![CDATA[ := ]]><methodname><![CDATA[bufio]]></methodname><![CDATA[.]]><methodname><![CDATA[NewReader]]></methodname><![CDATA[(]]><methodname><![CDATA[os]]></methodname><![CDATA[.]]><methodname><![CDATA[Stdin]]></methodname><![CDATA[)]]>
+
+<![CDATA[        ]]><token><![CDATA[for]]></token><![CDATA[ {]]>
+<![CDATA[                ]]><methodname><![CDATA[line]]></methodname><![CDATA[, ]]><methodname><![CDATA[err]]></methodname><![CDATA[ := ]]><methodname><![CDATA[reader]]></methodname><![CDATA[.]]><methodname><![CDATA[ReadString]]></methodname><![CDATA[('\n')]]>
+
+<![CDATA[                ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[err]]></methodname><![CDATA[ != ]]><symbol><![CDATA[nil]]></symbol><![CDATA[ {]]>
+<![CDATA[                        ]]><lineannotation><![CDATA[// You may check here if err == io.EOF]]></lineannotation>
+<lineannotation></lineannotation><![CDATA[                        ]]><token><![CDATA[break]]></token>
+<![CDATA[                }]]>
+<![CDATA[                ]]><methodname><![CDATA[wg]]></methodname><![CDATA[.]]><methodname><![CDATA[Add]]></methodname><![CDATA[(1)]]>
+<![CDATA[                ]]><token><![CDATA[go]]></token><![CDATA[ ]]><methodname><![CDATA[process_request]]></methodname><![CDATA[(]]><methodname><![CDATA[line]]></methodname><![CDATA[, &]]><methodname><![CDATA[wg]]></methodname><![CDATA[)]]>
+
+<![CDATA[        }]]>
+<![CDATA[        ]]><methodname><![CDATA[wg]]></methodname><![CDATA[.]]><methodname><![CDATA[Wait]]></methodname><![CDATA[()]]>
+<![CDATA[}]]>
+</programlisting></article>

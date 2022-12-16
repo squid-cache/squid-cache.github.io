@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>EliezerCroitoru/SessionHelper/Conf</title><revhistory><revision><revnumber>1</revnumber><date>2014-07-07 04:38:32</date><authorinitials>Eliezer Croitoru</authorinitials></revision></revhistory></articleinfo><para>Describe EliezerCroitoru/SessionHelper/Conf here. </para><screen><![CDATA[acl splash_page url_regex -i ^http://www1.ngtech.co.il/splash.html
+]]><![CDATA[
+# Set up the session helper in active mode.
+external_acl_type session ipv4 concurrency=100 ttl=3 %SRC /opt/external_acl/session/session_moneta.rb
+]]><![CDATA[
+# Pass the LOGIN command to the session helper with this ACL
+acl session_login external session LOGIN
+]]><![CDATA[
+# Set up the normal session helper.
+external_acl_type session_active_def ipv4 concurrency=100 ttl=3 %SRC /opt/external_acl/session/session_moneta.rb
+]]><![CDATA[
+# Normal session ACL as per simple example
+acl session_is_active external session_active_def
+]]><![CDATA[
+# ACL to match URL
+acl clicked_login_url url_regex -i ^http://www1.ngtech.co.il/splash_accept.html
+]]><![CDATA[
+# First check for the login URL. If present, login session
+http_access allow clicked_login_url session_login
+http_access allow splash_page
+]]><![CDATA[
+# If we get here, URL not present, so renew session or deny request.
+http_access deny !session_is_active
+]]><![CDATA[
+# Deny page to display
+deny_info http://www1.ngtech.co.il/splash.html session_is_active]]></screen></article>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>EliezerCroitoru/Drafts/SSLBUMP</title><revhistory><revision><revnumber>7</revnumber><date>2018-07-23 15:52:52</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>6</revnumber><date>2017-07-08 23:49:28</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>Improved ssl-bump initialization script</revremark></revision><revision><revnumber>5</revnumber><date>2017-06-16 23:53:59</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>4</revnumber><date>2017-05-23 22:53:21</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>3</revnumber><date>2017-05-16 00:34:20</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>2</revnumber><date>2014-04-22 23:10:26</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>1</revnumber><date>2014-04-22 23:03:32</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>basic draft of settings for ssl-bump serverfirst with dynamic certificate ceration</revremark></revision></revhistory></articleinfo><para>Describe EliezerCroitoru/Drafts/SSLBUMP here. </para><para>In order to use sslbump in intercept or tproxy mode there are couple things that should be known and done. </para><para>On compilation of squid add the flags &quot;--enable-ssl enable-ssl-crtd&quot; to configure. </para><para>Create a self signed root CA certificate and create a der format public certificate for clients. </para><para>* note that for mobile devices there might be a need for another certificate format then der. </para><para>Since squid 3.4 there is an option which called bump-server-first which instructs squid to first try to identify the certificate properties against the origin server. </para><para>The above is good to allow a much more effective bumping and certificate mimicking. </para><para>How to use ssl-bump with squid 4.1? </para><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/env bash]]></lineannotation>
+<lineannotation></lineannotation>
+<token><![CDATA[set]]></token><![CDATA[ -x]]>
+
+<methodname><![CDATA[DOMAIN]]></methodname><![CDATA[=]]><phrase><![CDATA["ngtech.co.il"]]></phrase>
+<methodname><![CDATA[COUNTRYCODE]]></methodname><![CDATA[=]]><phrase><![CDATA["IL"]]></phrase>
+<methodname><![CDATA[STATE]]></methodname><![CDATA[=]]><phrase><![CDATA["Shomron"]]></phrase>
+<methodname><![CDATA[REGION]]></methodname><![CDATA[=]]><phrase><![CDATA["Center"]]></phrase>
+<methodname><![CDATA[ORGINZATION]]></methodname><![CDATA[=]]><phrase><![CDATA["NgTech LTD"]]></phrase>
+<methodname><![CDATA[CERTUUID]]></methodname><![CDATA[=]]><phrase><![CDATA[`]]></phrase><![CDATA[uuidgen | awk ]]><phrase><![CDATA['BEGIN { FS="-"}; {print $1}']]></phrase><phrase><![CDATA[`]]></phrase>
+<methodname><![CDATA[SUBJECDETAILS]]></methodname><![CDATA[=]]><phrase><![CDATA[`]]></phrase><token><![CDATA[echo]]></token><![CDATA[ -n ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[/C=]]></phrase><methodname><![CDATA[$COUNTRYCODE]]></methodname><phrase><![CDATA[/ST=]]></phrase><methodname><![CDATA[$STATE]]></methodname><phrase><![CDATA[/L=]]></phrase><methodname><![CDATA[$REGION]]></methodname><phrase><![CDATA[/O=]]></phrase><methodname><![CDATA[$ORGINAZATION]]></methodname><phrase><![CDATA[/CN=px]]></phrase><methodname><![CDATA[$CERTUUID]]></methodname><phrase><![CDATA[.]]></phrase><methodname><![CDATA[$DOMAIN]]></methodname><phrase><![CDATA["]]></phrase><phrase><![CDATA[`]]></phrase>
+
+
+<methodname><![CDATA[SQUIDCONF]]></methodname><![CDATA[=/etc/squid/squid.conf]]>
+<methodname><![CDATA[SSLCRTD]]></methodname><![CDATA[=/usr/lib64/squid/security_file_certgen]]>
+<methodname><![CDATA[SSLCRTDDB]]></methodname><![CDATA[=/var/lib/ssl_db]]>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["The global variables"]]></phrase>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><methodname><![CDATA[$SQUIDCONF]]></methodname>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><methodname><![CDATA[$SSLCRTD]]></methodname>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><methodname><![CDATA[$SSLCRTDDB]]></methodname>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["creating directories"]]></phrase>
+<![CDATA[mkdir -p /etc/squid/ssl_cert /var/lib]]>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["about to create certificate..."]]></phrase>
+<token><![CDATA[cd]]></token><![CDATA[ /etc/squid/ssl_cert]]>
+<lineannotation><![CDATA[#openssl req -new -newkey rsa:1024 -days 365 -subj "/C=IL/ST=Shomron/L=Karney Shomron/O=NgTech LTD/CN=ytgv.ngtech.co.il" \]]></lineannotation>
+<lineannotation></lineannotation><lineannotation><![CDATA[#        -nodes -x509 -keyout myCA.pem  -out myCA.pem]]></lineannotation>
+<lineannotation></lineannotation>
+<![CDATA[openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -subj ]]><phrase><![CDATA["]]></phrase><methodname><![CDATA[$SUBJECDETAILS]]></methodname><phrase><![CDATA["]]></phrase><![CDATA[ \]]>
+<![CDATA[    -extensions v3_ca -keyout myCA.pem  -out myCA.pem]]>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["creating der x509 certificate format"]]></phrase>
+<![CDATA[openssl x509 -in myCA.pem -outform DER -out myCA.der]]>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["the next is the certificate for client in x509 format:"]]></phrase>
+<![CDATA[cat myCA.pem]]>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["initializing ssl_crtd_db"]]></phrase>
+<methodname><![CDATA[$SSLCRTD]]></methodname><![CDATA[ -c -s ]]><methodname><![CDATA[$SSLCRTDDB]]></methodname><![CDATA[ -M 16MB]]>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["changing ownership for ssl_db"]]></phrase>
+<![CDATA[chown -R nobody ]]><methodname><![CDATA[$SSLCRTDDB]]></methodname>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["adding settings into squid.conf"]]></phrase>
+<![CDATA[touch ]]><phrase><![CDATA["/etc/squid/server-regex.nobump"]]></phrase>
+<![CDATA[grep ]]><phrase><![CDATA["^sslcrtd_program"]]></phrase><![CDATA[ ]]><methodname><![CDATA[$SQUIDCONF]]></methodname>
+<token><![CDATA[if]]></token><![CDATA[ [ ]]><phrase><![CDATA["]]></phrase><methodname><![CDATA[$?]]></methodname><phrase><![CDATA["]]></phrase><![CDATA[ -eq ]]><phrase><![CDATA["1"]]></phrase><![CDATA[ ];]]><token><![CDATA[then]]></token>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase></phrase>
+<phrase></phrase>
+<phrase><![CDATA[http_port 13129 intercept]]></phrase>
+<phrase><![CDATA[https_port 13128 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=16MB  cert=/etc/squid/ssl_cert/myCA.pem]]></phrase>
+<phrase></phrase>
+<phrase><![CDATA[http_port 23128 ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=16MB  cert=/etc/squid/ssl_cert/myCA.pem]]></phrase>
+<phrase></phrase>
+<phrase><![CDATA[sslcrtd_program ]]></phrase><methodname><![CDATA[$SSLCRTD]]></methodname><phrase><![CDATA[ -s ]]></phrase><methodname><![CDATA[$SSLCRTDDB]]></methodname><phrase><![CDATA[ -M 16MB]]></phrase>
+<phrase><![CDATA[sslcrtd_children 10]]></phrase>
+<phrase></phrase>
+<phrase><![CDATA[acl DiscoverSNIHost at_step SslBump1]]></phrase>
+<phrase><![CDATA[acl NoSSLIntercept ssl::server_name_regex -i ]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[/etc/squid/server-regex.nobump]]><phrase><![CDATA["]]></phrase>
+<phrase></phrase>
+<phrase><![CDATA[ssl_bump splice NoSSLIntercept]]></phrase>
+<phrase></phrase>
+<phrase><![CDATA[ssl_bump peek DiscoverSNIHost]]></phrase>
+<phrase><![CDATA[#ssl_bump peek step1]]></phrase>
+<phrase><![CDATA[ssl_bump bump all"]]></phrase><![CDATA[ >> ]]><methodname><![CDATA[$SQUIDCONF]]></methodname>
+<token><![CDATA[else]]></token>
+<![CDATA[ ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["There is already sslcrtd settings"]]></phrase>
+<token><![CDATA[fi]]></token>
+
+<![CDATA[chown squid.squid -R ]]><methodname><![CDATA[$SSLCRTDDB]]></methodname>
+<token><![CDATA[set]]></token><![CDATA[ +x]]>
+</programlisting><para>How to use ssl-bump with squid 3.4? </para><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/env bash ]]></lineannotation>
+<lineannotation></lineannotation>
+<token><![CDATA[set]]></token><![CDATA[ -x]]>
+
+<methodname><![CDATA[DOMAIN]]></methodname><![CDATA[=]]><phrase><![CDATA["ngtech.co.il"]]></phrase>
+<methodname><![CDATA[COUNTRYCODE]]></methodname><![CDATA[=]]><phrase><![CDATA["IL"]]></phrase>
+<methodname><![CDATA[STATE]]></methodname><![CDATA[=]]><phrase><![CDATA["Shomron"]]></phrase>
+<methodname><![CDATA[REGION]]></methodname><![CDATA[=]]><phrase><![CDATA["Center"]]></phrase>
+<methodname><![CDATA[ORGINZATION]]></methodname><![CDATA[=]]><phrase><![CDATA["NgTech LTD"]]></phrase>
+<methodname><![CDATA[CERTUUID]]></methodname><![CDATA[=]]><phrase><![CDATA[`]]></phrase><![CDATA[uuidgen | awk ]]><phrase><![CDATA['BEGIN { FS="-"}; {print $1}']]></phrase><phrase><![CDATA[`]]></phrase>
+<methodname><![CDATA[SUBJECDETAILS]]></methodname><![CDATA[=]]><phrase><![CDATA[`]]></phrase><token><![CDATA[echo]]></token><![CDATA[ -n ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[/C=]]></phrase><methodname><![CDATA[$COUNTRYCODE]]></methodname><phrase><![CDATA[/ST=]]></phrase><methodname><![CDATA[$STATE]]></methodname><phrase><![CDATA[/L=]]></phrase><methodname><![CDATA[$REGION]]></methodname><phrase><![CDATA[/O=]]></phrase><methodname><![CDATA[$ORGINAZATION]]></methodname><phrase><![CDATA[/CN=px]]></phrase><methodname><![CDATA[$CERTUUID]]></methodname><phrase><![CDATA[.]]></phrase><methodname><![CDATA[$DOMAIN]]></methodname><phrase><![CDATA["]]></phrase><phrase><![CDATA[`]]></phrase>
+
+<![CDATA[ ]]>
+<methodname><![CDATA[SQUIDCONF]]></methodname><![CDATA[=/etc/squid/squid.conf]]>
+<methodname><![CDATA[SSLCRTD]]></methodname><![CDATA[=/usr/lib64/squid/ssl_crtd]]>
+<methodname><![CDATA[SSLCRTDDB]]></methodname><![CDATA[=/var/lib/ssl_db]]>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["The global variables"]]></phrase>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><methodname><![CDATA[$SQUIDCONF]]></methodname>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><methodname><![CDATA[$SSLCRTD]]></methodname>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><methodname><![CDATA[$SSLCRTDDB]]></methodname>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["creating directories"]]></phrase>
+<![CDATA[mkdir -p /etc/squid/ssl_cert /var/lib]]>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["about to create certificate..."]]></phrase>
+<token><![CDATA[cd]]></token><![CDATA[ /etc/squid/ssl_cert]]>
+<lineannotation><![CDATA[#openssl req -new -newkey rsa:1024 -days 365 -subj "/C=IL/ST=Shomron/L=Karney Shomron/O=NgTech LTD/CN=ytgv.ngtech.co.il" \]]></lineannotation>
+<lineannotation></lineannotation><lineannotation><![CDATA[#        -nodes -x509 -keyout myCA.pem  -out myCA.pem]]></lineannotation>
+<lineannotation></lineannotation><![CDATA[                ]]>
+<![CDATA[openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -subj ]]><phrase><![CDATA["]]></phrase><methodname><![CDATA[$SUBJECDETAILS]]></methodname><phrase><![CDATA["]]></phrase><![CDATA[ \]]>
+<![CDATA[    -extensions v3_ca -keyout myCA.pem  -out myCA.pem ]]>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["creating der x509 certificate format"]]></phrase>
+<![CDATA[openssl x509 -in myCA.pem -outform DER -out myCA.der]]>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["the next is the certificate for client in x509 format:"]]></phrase>
+<![CDATA[cat myCA.pem]]>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["initializing ssl_crtd_db"]]></phrase>
+<methodname><![CDATA[$SSLCRTD]]></methodname><![CDATA[ -c -s ]]><methodname><![CDATA[$SSLCRTDDB]]></methodname>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["changing ownership for ssl_db"]]></phrase>
+<![CDATA[chown -R nobody ]]><methodname><![CDATA[$SSLCRTDDB]]></methodname>
+
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["adding settings into squid.conf"]]></phrase>
+<![CDATA[grep ]]><phrase><![CDATA["^sslcrtd_program"]]></phrase><![CDATA[ ]]><methodname><![CDATA[$SQUIDCONF]]></methodname>
+<token><![CDATA[if]]></token><![CDATA[ [ ]]><phrase><![CDATA["]]></phrase><methodname><![CDATA[$?]]></methodname><phrase><![CDATA["]]></phrase><![CDATA[ -eq ]]><phrase><![CDATA["1"]]></phrase><![CDATA[ ];]]><token><![CDATA[then]]></token>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[https_port 13128 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=16MB  cert=/etc/squid/ssl_cert/myCA.pem]]></phrase>
+<phrase><![CDATA[http_port 23128  ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=16MB  cert=/etc/squid/ssl_cert/myCA.pem]]></phrase>
+<phrase><![CDATA[sslcrtd_program ]]></phrase><methodname><![CDATA[$SSLCRTD]]></methodname><phrase><![CDATA[ -s ]]></phrase><methodname><![CDATA[$SSLCRTDDB]]></methodname><phrase><![CDATA[ -M 16MB]]></phrase>
+<phrase><![CDATA[sslcrtd_children 10]]></phrase>
+<phrase><![CDATA[ssl_bump server-first all]]></phrase>
+<phrase><![CDATA[#sslproxy_cert_error allow all]]></phrase>
+<phrase><![CDATA[#sslproxy_flags DONT_VERIFY_PEER]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ >> ]]><methodname><![CDATA[$SQUIDCONF]]></methodname>
+<token><![CDATA[else]]></token>
+<![CDATA[ ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["There is already sslcrtd settings"]]></phrase>
+<token><![CDATA[fi]]></token>
+
+<![CDATA[chown squid.squid -R ]]><methodname><![CDATA[$SSLCRTDDB]]></methodname>
+<token><![CDATA[set]]></token><![CDATA[ +x]]>
+</programlisting><para>A nice script I wrote for initialization of <ulink url="https://wiki.squid-cache.org/EliezerCroitoru/Drafts/SSLBUMP/RedWood#">RedWood</ulink> proxy SSL-BUMP feature. </para><para>Couple things can be taken from the next script to enhance the above one like the addition of a UUID to the CA certificate. </para><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/env bash ]]></lineannotation>
+<lineannotation></lineannotation>
+<methodname><![CDATA[DOMAIN]]></methodname><![CDATA[=]]><phrase><![CDATA["ngtech.co.il"]]></phrase>
+<methodname><![CDATA[COUNTRYCODE]]></methodname><![CDATA[=]]><phrase><![CDATA["IL"]]></phrase>
+<methodname><![CDATA[STATE]]></methodname><![CDATA[=]]><phrase><![CDATA["Shomron"]]></phrase>
+<methodname><![CDATA[REGION]]></methodname><![CDATA[=]]><phrase><![CDATA["Center"]]></phrase>
+<methodname><![CDATA[ORGINZATION]]></methodname><![CDATA[=]]><phrase><![CDATA["NgTech LTD"]]></phrase>
+<methodname><![CDATA[CERTUUID]]></methodname><![CDATA[=]]><phrase><![CDATA[`]]></phrase><![CDATA[uuidgen | awk ]]><phrase><![CDATA['BEGIN { FS="-"}; {print $1}']]></phrase><phrase><![CDATA[`]]></phrase>
+<methodname><![CDATA[SUBJECDETAILS]]></methodname><![CDATA[=]]><phrase><![CDATA[`]]></phrase><token><![CDATA[echo]]></token><![CDATA[ -n ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[/C=]]></phrase><methodname><![CDATA[$COUNTRYCODE]]></methodname><phrase><![CDATA[/ST=]]></phrase><methodname><![CDATA[$STATE]]></methodname><phrase><![CDATA[/L=]]></phrase><methodname><![CDATA[$REGION]]></methodname><phrase><![CDATA[/O=]]></phrase><methodname><![CDATA[$ORGINAZATION]]></methodname><phrase><![CDATA[/CN=px]]></phrase><methodname><![CDATA[$CERTUUID]]></methodname><phrase><![CDATA[.]]></phrase><methodname><![CDATA[$DOMAIN]]></methodname><phrase><![CDATA["]]></phrase><phrase><![CDATA[`]]></phrase>
+<token><![CDATA[source]]></token><![CDATA[ /etc/sysconfig/redwood]]>
+<token><![CDATA[echo]]></token><![CDATA[ ]]><methodname><![CDATA[$SUBJECDETAILS]]></methodname>
+<token><![CDATA[if]]></token><![CDATA[ [ -d ]]><phrase><![CDATA["/etc/redwood/ssl-cert"]]></phrase><![CDATA[ ];]]><token><![CDATA[then]]></token>
+<![CDATA[  ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["Abort since /etc/redwood/ssl-cert exists"]]></phrase>
+<![CDATA[  ]]><token><![CDATA[exit]]></token><![CDATA[ 1]]>
+<token><![CDATA[else]]></token>
+<![CDATA[  mkdir -p /etc/redwood/ssl-cert]]>
+<![CDATA[  openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -subj ]]><phrase><![CDATA["]]></phrase><methodname><![CDATA[$SUBJECDETAILS]]></methodname><phrase><![CDATA["]]></phrase><![CDATA[ \]]>
+<![CDATA[    -extensions v3_ca -keyout /etc/redwood/ssl-cert/myCAkey.pem -out /etc/redwood/ssl-cert/myCAcert.pem]]>
+<token><![CDATA[fi]]></token>
+
+<![CDATA[egrep ]]><phrase><![CDATA["^(tls-cert\ |tls-key\ )"]]></phrase><![CDATA[ /etc/redwood/redwood.conf ]]>
+<token><![CDATA[if]]></token><![CDATA[ [ ]]><phrase><![CDATA["]]></phrase><methodname><![CDATA[$?]]></methodname><phrase><![CDATA["]]></phrase><![CDATA[ -eq ]]><phrase><![CDATA["1"]]></phrase><![CDATA[ ];]]><token><![CDATA[then]]></token>
+<![CDATA[  ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA[""]]></phrase><![CDATA[ >> /etc/redwood/redwood.conf]]>
+<![CDATA[  ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["# ssl-bump tls key and certificate"]]></phrase><![CDATA[ >> /etc/redwood/redwood.conf]]>
+<![CDATA[  ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["tls-cert /etc/redwood/ssl-cert/myCAcert.pem"]]></phrase><![CDATA[ >> /etc/redwood/redwood.conf]]>
+<![CDATA[  ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["tls-key /etc/redwood/ssl-cert/myCAkey.pem"]]></phrase><![CDATA[ >> /etc/redwood/redwood.conf]]>
+<![CDATA[  cat /etc/redwood/sslbump-defaultbypass-acls.conf /etc/redwood/acls.conf > /tmp/]]><methodname><![CDATA[$CERTUUID]]></methodname><![CDATA[-acls.conf]]>
+<![CDATA[  cp /etc/redwood/acls.conf /etc/redwood/acls.conf.backup]]>
+<![CDATA[  cp /tmp/]]><methodname><![CDATA[$CERTUUID]]></methodname><![CDATA[-acls.conf /etc/redwood/acls.conf]]>
+<![CDATA[  systemctl restart redwood]]>
+<token><![CDATA[else]]></token>
+<![CDATA[  ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["some sslbump settings are already in-place"]]></phrase>
+<token><![CDATA[fi]]></token>
+
+<token><![CDATA[if]]></token><![CDATA[ [ -e  ]]><phrase><![CDATA["/etc/redwood/ssl-cert/myCAcert.pem"]]></phrase><![CDATA[ ];]]><token><![CDATA[then]]></token>
+<![CDATA[        cp -v /etc/redwood/ssl-cert/myCAcert.pem /var/redwood/static/]]>
+<![CDATA[        ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["/etc/redwood/ssl-cert/myCAcert.pem was copied to /var/redwood/static/"]]></phrase>
+<![CDATA[        openssl x509 -outform der -in /etc/redwood/ssl-cert/myCAcert.pem -out /var/redwood/static/myCAcert.der]]>
+<![CDATA[        ]]><token><![CDATA[echo]]></token><![CDATA[ ]]><phrase><![CDATA["/etc/redwood/ssl-cert/myCAcert.pem was converted to der and now at => /var/redwood/static/myCAcert.der"]]></phrase>
+<token><![CDATA[fi]]></token>
+</programlisting><para>iptables rules for intercept https proxy </para><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><methodname><![CDATA[IPTABLES]]></methodname><![CDATA[=/sbin/iptables]]>
+<methodname><![CDATA[LAN_INT]]></methodname><![CDATA[=]]><phrase><![CDATA["eth1"]]></phrase>
+<methodname><![CDATA[$IPTABLES]]></methodname><![CDATA[ -I PREROUTING 1 -i ]]><methodname><![CDATA[$LAN_INT]]></methodname><![CDATA[ -p tcp -m tcp --dport 443 -j REDIRECT --to-ports 13128]]>
+</programlisting><para>squid.conf example from 3.5.25 </para><screen><![CDATA[request_header_access Surrogate-Capability deny all
+]]><![CDATA[
+forwarded_for transparent
+via off
+dns_v4_first on
+visible_hostname filter
+strip_query_terms off
+acl ms_v6test_doms dstdomain ipv6.msftncsi.com
+deny_info 503:/etc/squid/503.html ms_v6test_doms
+]]><![CDATA[
+http_port 13128 ssl-bump \
+  cert=/etc/squid/ssl_cert/myCA.pem \
+  generate-host-certificates=on dynamic_cert_mem_cache_size=4MB
+acl DiscoverSNIHost at_step SslBump1
+acl NoSSLIntercept ssl::server_name_regex -i "/etc/squid/server-regex.nobump"
+]]><![CDATA[
+ssl_bump splice NoSSLIntercept
+]]><![CDATA[
+ssl_bump peek DiscoverSNIHost
+#ssl_bump peek step1
+ssl_bump bump all
+]]><![CDATA[
+sslcrtd_program /usr/lib64/squid/ssl_crtd -s /var/lib/ssl_db -M 4MB
+]]><![CDATA[
+sslcrtd_children 10
+]]><![CDATA[
+sslproxy_cert_error allow all
+sslproxy_flags DONT_VERIFY_PEER
+]]><![CDATA[
+read_ahead_gap 64 MB]]></screen></article>

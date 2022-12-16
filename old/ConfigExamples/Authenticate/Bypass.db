@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ConfigExamples/Authenticate/Bypass</title><revhistory><revision><revnumber>7</revnumber><date>2021-06-23 20:37:16</date><authorinitials>FrancescoChemolli</authorinitials><revremark>small tweaks</revremark></revision><revision><revnumber>6</revnumber><date>2010-02-24 06:37:21</date><authorinitials>eu.squid-cache.org</authorinitials></revision><revision><revnumber>5</revnumber><date>2010-02-24 06:36:23</date><authorinitials>eu.squid-cache.org</authorinitials></revision><revision><revnumber>4</revnumber><date>2010-02-24 06:06:45</date><authorinitials>eu.squid-cache.org</authorinitials></revision><revision><revnumber>3</revnumber><date>2010-02-23 22:21:13</date><authorinitials>AmosJeffries</authorinitials><revremark>bullets</revremark></revision><revision><revnumber>2</revnumber><date>2010-02-23 21:11:49</date><authorinitials>eu.squid-cache.org</authorinitials></revision><revision><revnumber>1</revnumber><date>2009-12-03 18:29:52</date><authorinitials>FrancescoChemolli</authorinitials></revision></revhistory></articleinfo><section><title>Bypass Authentication for certain sites</title><para>Warning: Any example presented here is provided &quot;as-is&quot; with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list. </para><section><title>Outline</title><para>A very common setup in forward proxy design calls for two different access classes: </para><itemizedlist><listitem><para>some destinations should be available to all users </para></listitem><listitem><para>all other destinations should require users to authenticate </para></listitem></itemizedlist><para>Squid allows for this kind of setup, by simply setting your access-lists in the right order. </para></section><section><title>Squid Configuration File</title><para>First recommendation is to get acquainted with the basic notions of how to configure squid to properly authenticate. Useful documentation can be found at <ulink url="https://wiki.squid-cache.org/ConfigExamples/Authenticate/Bypass/Features/Authentication#">Features/Authentication</ulink>, and the manual pages for <ulink url="http://www.squid-cache.org/Doc/config/acl#">acl</ulink>, <ulink url="http://www.squid-cache.org/Doc/config/auth_param#">auth_param</ulink>, <ulink url="http://www.squid-cache.org/Doc/config/http_access#">http_access</ulink>, <ulink url="http://www.squid-cache.org/Doc/config/http_access2#">http_access2</ulink> and <ulink url="http://www.squid-cache.org/Doc/config/http_reply_access#">http_reply_access</ulink>. </para><para>You may also want to check<ulink url="https://wiki.squid-cache.org/ConfigExamples/Authenticate/Bypass/ConfigExamples/Authenticate/Kerberos#">ConfigExamples/Authenticate/Kerberos</ulink>, <ulink url="https://wiki.squid-cache.org/ConfigExamples/Authenticate/Bypass/ConfigExamples/Authenticate/Ntlm#">ConfigExamples/Authenticate/Ntlm</ulink> for authentication-scheme-specific documentation. </para><para>Start by setting up Squid so that it authenticates all users to all destinations, and once you are satisfied that it works to your liking, you can act on the configuration file in a manner similar to this example: </para><screen><![CDATA[# protect the cache manager, Safe_ports, SSL tunnels, then after the section marked as
+]]><![CDATA[
+#
+# INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
+#
+]]><![CDATA[
+]]><![CDATA[
+acl whitelist dstdomain .whitelist.com .goodsite.com .partnerssite.com
+acl http proto http
+acl port_80 port 80
+acl port_443 port 443
+acl CONNECT method CONNECT
+acl authenticated_users proxy_auth REQUIRED
+]]><![CDATA[
+# rules allowing non-authenticated users
+http_access allow http port_80 whitelist
+http_access allow CONNECT port_443 whitelist
+]]><![CDATA[
+# rules allowing authenticated users
+http_access allow http port_80 authenticated_users
+http_access allow CONNECT port_443 authenticated_users
+]]><![CDATA[
+# catch-all rule
+http_access deny all]]></screen><para>This snippet of configuration will allow http and https to the standard service ports to any user which can successfully authenticate themselves against your chosen authentication mechanisms. </para><para>The key is having all <code>http_access</code> rules that allow unauthenticated users placed <emphasis role="strong">before</emphasis> those <code>http_access</code> rules which require knowledge of the users' identity. </para><section><title>a more complex example</title><para>The previous example can be extended to more complex scenarios. For instance you may want to have two different user groups (let's call them GroupA and GroupB) and three classes of sites: one class which must be accessible to unauthenticated users, one which must be accessible to users from GroupA and one which must be accessible to users from GroupB. Notice that nothing prevents user groups or sites lists from overlapping. Groups are kept in the squid configuration itself, using auxiliary files. </para><para>This can be accomplished by using 6 configuration files: </para><para><emphasis>/etc/squid/groupa.txt</emphasis> </para><screen><![CDATA[user1
+user2
+user3]]></screen><para><emphasis>/etc/squid/groupb.txt</emphasis> </para><screen><![CDATA[user1
+user4
+user5]]></screen><para><emphasis>/etc/squid/sites.a.txt</emphasis> </para><screen><![CDATA[.foo.example.com
+.bar.example.com]]></screen><para><emphasis>/etc/squid/sites.b.txt</emphasis> </para><screen><![CDATA[.foo.example.com
+.gazonk.example.com]]></screen><para><emphasis>/etc/squid/sites.whitelist.txt</emphasis> </para><screen><![CDATA[.public.example.com]]></screen><para><emphasis>/etc/squid/squid.conf</emphasis> </para><screen><![CDATA[# protect the cache manager, Safe_ports, SSL tunnels, then after the section marked as
+]]><![CDATA[
+#
+# INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
+#
+]]><![CDATA[
+]]><![CDATA[
+acl whitelist dstdomain "/etc/squid/sites.whitelist.txt"
+acl UsersGroupA proxy_auth "/etc/squid/groupa.txt"
+acl SitesGroupA dstdomain "/etc/squid/sites.a.txt"
+acl UsersGroupB proxy_auth "/etc/squid/groupb.txt"
+acl SitesGroupB dstdomain "/etc/squid/sites.b.txt"
+acl http proto http
+acl port_80 port 80
+acl port_443 port 443
+acl CONNECT method CONNECT
+acl authenticated_users proxy_auth REQUIRED
+]]><![CDATA[
+# rules allowing non-authenticated users
+http_access allow http port_80 whitelist
+http_access allow CONNECT port_443 whitelist
+]]><![CDATA[
+# rules allowing authenticated users
+http_access allow http port_80 SitesGroupA UsersGroupA
+http_access allow CONNECT port_443 SitesGroupA UsersGroupA
+http_access allow http port_80 SitesGroupB UsersGroupB
+http_access allow CONNECT port_443 SitesGroupB UsersGroupB
+]]><![CDATA[
+# catch-all rule
+http_access deny all]]></screen><para>This example configuration will allow any user access to whitelisted sites without asking for identification, users in group A will be able to access sites in list A, users in group B will be able to access sites from group B and noone will be able to access anything else. </para></section></section><section><title>Advanced configuration</title><para>The order of the http_access clauses is important, as is important the order of the acl's expressed in each http_access clause: that's because as soon as Squid has decided that a set of conditions is not met, it will not evaluate the following ones. This can lead to very subtle differences in behaviour. </para><para>Let's focus on a few lines from the second example (the ACL definitions remain the same) </para><screen><![CDATA[http_access allow http port_80 whitelist
+http_access allow http port_80 SitesGroupA UsersGroupA
+http_access allow http port_80 SitesGroupB UsersGroupB
+# catch-all rule
+http_access deny all]]></screen><para>and perform a small change: </para><screen><![CDATA[http_access allow http port_80 whitelist
+http_access allow http port_80 SitesGroupA UsersGroupA
+http_access allow http port_80 SitesGroupB UsersGroupB
+# catch-all rule
+http_access deny authenticated_users]]></screen><para>The effect of this change is that access rights will remain the same: groupA will get sitesA and groupB will get sitesB. The difference is what happens when someone tries to access some site which is neither in sitesA nor in sitesB: while with the former example they would get a flat-out access denial, with this change they will be asked to provide a password. They still get no access, but the way they are denied is different. </para><para>Another possible change is: </para><screen><![CDATA[http_access allow http port_80 whitelist
+http_access allow UsersGroupA http port_80 SitesGroupA
+http_access allow UsersGroupB http port_80 SitesGroupB
+# catch-all rule
+http_access deny all]]></screen><para>The behaviour changes again: users will need no authentication to access whitelisted sites. As soon as they step outside whitelisted sites, they will be asked for authentication (before they were only asked for it if they tried to access a protected resource). </para></section></section></article>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ConfigSyntax</title><revhistory><revision><revnumber>1</revnumber><date>2013-09-27 23:35:27</date><authorinitials>AlexRousskov</authorinitials><revremark>Started documenting revised syntax issues, grammar. Came up with a few BC solutions while documenting this.</revremark></revision></revhistory></articleinfo><section><title>Configuration Syntax</title><para>This page summarizes squid.conf syntax issues related to revising squid.conf parsing to handle configuration values with spaces (and special characters), better regular expressions support, and more flexible comments. Currently, the grammar being documented here is not fully supported by Squid and is not final. Eventually, this page will document the revised syntax. </para><section><title>Expected breakages (non-backward compatible changes)</title><para>The examples below just illustrate a general breakage point.Many similar breaking points are possible. Unless noted otherwise, the examples are not specific to the Squid configuration directive names or parameters they are using. </para><section><title>In legacy mode</title><screen><![CDATA[acl http_access src 127.0.0.1
+acl deny src 127.0.0.2
+http_access allow foo # comment \
+http_access deny bar]]></screen><para>After comment-preserving unfolding, the above will be interpreted as </para><screen><![CDATA[http_access allow foo http_access deny bar]]></screen><para>instead of the current </para><screen><![CDATA[http_access allow foo]]></screen><para>Hopefully, nobody is using directive names and other &quot;keywords&quot; as ACL names while also trying to comment out line unfolding. Is it possible to come up with a more realistic breakage case for this comment handling change? </para></section><section><title>In strict mode</title><orderedlist numeration="arabic"><listitem><para><code>acl foo url_regex squid::&quot;bar&quot;</code> will be interpreted as a 3-letter &quot;bar&quot; RE. There is no remedy for this breakage but we hope that <code>squid::&quot;</code> strings are very uncommon in ACL specifications. </para></listitem><listitem><para><code>acl foo url_regex squid::bar(baz)?</code> will cause &quot;unknown function name: bar&quot; errors. XXX: Should we relax this to only warn about unknown functions (and re-parsing as a legacy token)? </para></listitem><listitem><para><code>acl foo url_regex squid::parameters(&quot;file.txt&quot;)</code> will cause &quot;cannot read parameter file: file.txt&quot; errors. There is no remedy for this breakage but we hope that &quot;squid::parameters(&quot; strings are very uncommon. </para></listitem><listitem><para><code>some_directive &quot;foo&quot;</code> will be interpreted as configuring a 3-letter &quot;foo&quot; value for that directive (Squid will eat the quotes). There is no known general remedy for this breakage, unfortunately. However, there are also currently no <emphasis>known</emphasis> cases where somebody would actually want to use a quoted string like that in the old configuration and no workaround is implemented for that specific directive. Known directives with workarounds: <ulink url="http://www.squid-cache.org/Doc/config/acl#">acl</ulink> and <ulink url="http://www.squid-cache.org/Doc/config/external_acl_type#">external_acl_type</ulink>. </para></listitem></orderedlist></section></section><section><title>Open Issues</title><section><title>Comment Syntax</title><para>Which of the following should be recognized as comments? There is an agreement that the last line should be parsed as if there is no comment there, for backward compatibility. Some other cases are required to be interpreted as comments for backward compatibility as well. </para><screen><![CDATA[ # nothing special; clearly a comment!
+ #no space after hash, almost "beginning" of line; uncertain
+# no space before hash, but beginning of line; a comment (used in squid.conf.documented)
+#no space before or after hash, beginning of line; a comment (used in squid.conf.documented)
+foo bar # clearly a comment (used in squid.conf.documented)
+foo bar #comment?
+foo bar# comment? (clashes with logformat %# definitions!)
+foo bar#not-a-comment!]]></screen></section><section><title>Logformat uses %#, %&quot;, %', and &quot;%{User-Agent}&gt;h&quot;</title><para>We need to make sure logformat parser uses relaxed tokens. </para></section><section><title>Multiline directives with comments</title><para>Squid comments extend to the end of the line. That makes it difficult to document individual directive parameter values in complex directives. It would be nice to support the following multiline directives with comments (and multiline strings): </para><screen><![CDATA[# here are my well-documented access rules
+http_access allow \
+    myself    # let myself in \
+    good_guys # allow the good guys \
+    nsa       # and some special cases]]></screen></section></section><section><title>Preprocessor Grammar</title><para>Squid preprocessors handles line folding, configuration file inclusion (with #line support), conditional configuration, and <code>${macros}</code>. The primary parser gets preprocessed content. </para><screen><![CDATA[raw_config = *line
+line = single_line / folded_lines
+single_line = *lchar EOL
+folded_line = single_line <\> EOL line *line
+]]><![CDATA[
+lchar = ; any octet except EOL
+EOL = ; the new line character or sequence]]></screen><itemizedlist><listitem override="none"><para><inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15"/></imageobject><textobject><phrase>/!\</phrase></textobject></inlinemediaobject> Currently, preprocessor removes EOL from all lines, including when unfolding lines. We should change that to support multiline directives with comments. The revised preprocessor would still need to convert CRLF into LF (\n). </para></listitem></itemizedlist><para>For primary grammar simplicity, the revised preprocessor should also add (as a preprocessing step) a new line character if none is found at the end of the file. </para></section><section><title>Primary Grammar</title><para>This grammar is ambiguous because certain directives will use legacy syntax when parsing values while others may use strict syntax or a mix. Other than that, all expressions here are meant to be &quot;greedy&quot;, meaning that they will absorb as much text as allowed. This greediness reduces ambiguity and simplifies grammar. For example, because the legacy parameter rules are greedy, they will absorb <code>&lt;#&gt;</code> that might otherwise be interpreted as a start of a comment. </para><screen><![CDATA[; the primary parser actually parses one preprocessed line (see preprocessor grammar) at a time, but that
+; line may contain multiple EOL characters as the result of line unfolding performed by the preprocessor
+config = *( OWS directive OWS )
+]]><![CDATA[
+directive = name *( RWS parameter ) EOL
+]]><![CDATA[
+name = token
+parameter = anonymous_parameter / named_parameter
+]]><![CDATA[
+anonymous_parameter = value
+named_parameter = name <=> value ; No spaces around = allowed!
+]]><![CDATA[
+; This is where the grammar is ambiguous!
+; The caller must ask for either strict_value, relaxed_value, or
+; "strict_value if possible and relaxed_value otherwise"
+; In the latter case, the parser must check that there is no <#>
+; after the strict value. If there is, it is not a strict value!
+value = strict_value / relaxed_value
+]]><![CDATA[
+strict_value = token / percent / RE / fcall /
+               single_quoted_string / double_quoted_string
+]]><![CDATA[
+; any non-whitespace sequence that does not start with one of
+; the two reserved prefixes: "squid::" and "regex::"
+relaxed_value = xchar *xchar ; with prefix restrictions
+]]><![CDATA[
+; The "squid::" prefix avoids fcall clashes with relaxed_values
+; and allows us to add more functions later.
+; We may require that fcall is the only or last directive parameter.
+fcall = "squid::" name <(> OWS farguments OWS <)>
+]]><![CDATA[
+; we can support just one required argument for now
+farguments = fargument *( OWS <,> OWS <fargument> )
+fargument = strict_value
+]]><![CDATA[
+; TBD, but reserve "regex::" now to avoid clashes with relaxed_values
+RE = seven characters "regex::" followed by a self-delimiting
+     sequence of characters
+]]><![CDATA[
+token = tchar *tchar
+percent = alphanumeric *alphanumeric <%> ; add <.>?
+]]><![CDATA[
+; note that, unlike double_quoted_string, the contents of a single quoted string is 
+; interpreted with only a couple of supported escape sequences and no %macro expansion
+single_quoted_string = <'> *[sqchar / escape-sequence] <'>
+double_quoted_string = dqstr_basic / dqstr_prefixed
+dqstr_basic = <"> *[dqchar / escape-sequence] <">
+; The "squid::" prefix avoids clashes with "include/file" syntax in relaxed ACLs
+; This prefix will only be required in ACLs, for backward compatibility,
+; or the admin can use a single_quoted_string instead
+dqstr_prefixed = "squid::" dqstr_basic
+]]><![CDATA[
+tchar = alphanumeric / <_> / <-> / <.>   ; Token char (strict)
+xchar = any char except schar            ; relaXed token char
+lchar = any char except EOL              ; Line char
+schar = any ASCII whitespace char or EOL ; Space char
+sqchar = any char except single quote and backslash
+dqchar = any char except double quote and backslash
+escape-sequence = <\> lchar ; must refuse unsupported escapes!
+]]><![CDATA[
+OWS = *[whitespace]  ; optional whitespace
+RWS = whitespace OWS ; required whitespace
+]]><![CDATA[
+whitespace = *schar / comment
+comment = <#> *lchar
+]]><![CDATA[
+EOL = <\n>; the new line character (sanitized and added by preprocessor)]]></screen><para>The syntax is defined using <ulink url="http://tools.ietf.org/html/rfc5234">ABNF</ulink> but its correct interpretation is impossible without obeying restrictions specified in ;comments. </para></section></section></article>

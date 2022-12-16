@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ConfigExamples/Chat/Gizmo</title><revhistory><revision><revnumber>2</revnumber><date>2021-07-03 09:48:43</date><authorinitials>FrancescoChemolli</authorinitials></revision><revision><revnumber>1</revnumber><date>2008-10-04 02:44:07</date><authorinitials>AmosJeffries</authorinitials><revremark>import from knowledge base general article.</revremark></revision></revhistory></articleinfo><section><title>Gizmo Project (Pidgeon IM, Fring, Taler, ICQ, IRC, AOL)</title><para><emphasis role="strong">Warning</emphasis>: Any example presented here is provided &quot;as-is&quot; with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list. </para><para>Gizmo Project include software to connect to a wide range of messaging protocols and VoIP services. This config does not include settings to block those IM which are not Gizmo Project provided services. </para><para>see Also: </para><itemizedlist><listitem><para><ulink url="https://wiki.squid-cache.org/ConfigExamples/Chat/Gizmo/ConfigExamples/Chat/Aol#">AOL</ulink> </para></listitem><listitem><para><ulink url="https://wiki.squid-cache.org/ConfigExamples/Chat/Gizmo/ConfigExamples/Chat/Icq#">ICQ</ulink> </para></listitem><listitem><para>IRC </para></listitem></itemizedlist><para>If you know of other IM services available through Gizmo software please inform us. </para><section><title>Squid Configuration File</title><para>Configuration file to Include: </para><screen><![CDATA[# Gizmo Project
+acl gizmo dstdomain .gizmoproject.com
+]]><![CDATA[
+# Gizmo VoIP
+acl gizmo dstdomain .talqer.com .gizmocall.com .fring.com
+]]><![CDATA[
+# Gizmo Chat
+acl gizmo dstdomain .pidgin.im
+]]><![CDATA[
+http_access deny gizmo]]></screen><!--rule (<hr>) is not applicable to DocBook--><para> <ulink url="https://wiki.squid-cache.org/ConfigExamples/Chat/Gizmo/CategoryConfigExample#">CategoryConfigExample</ulink> </para></section></section></article>

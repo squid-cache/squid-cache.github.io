@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ProgrammingGuide/ManualDocumentation</title><revhistory><revision><revnumber>31</revnumber><date>2018-12-12 00:27:25</date><authorinitials>AmosJeffries</authorinitials><revremark>make template for NAME section match the requirements earlier.</revremark></revision><revision><revnumber>30</revnumber><date>2017-09-16 05:52:09</date><authorinitials>AmosJeffries</authorinitials><revremark>update for SSPI helper status</revremark></revision><revision><revnumber>29</revnumber><date>2017-09-16 04:08:26</date><authorinitials>AmosJeffries</authorinitials><revremark>update info for security helpers</revremark></revision><revision><revnumber>28</revnumber><date>2017-09-15 16:14:49</date><authorinitials>AmosJeffries</authorinitials><revremark>updated DB helper docs</revremark></revision><revision><revnumber>27</revnumber><date>2017-09-12 05:40:47</date><authorinitials>AmosJeffries</authorinitials><revremark>update for Squid-4 helper locations</revremark></revision><revision><revnumber>26</revnumber><date>2017-09-12 04:51:21</date><authorinitials>AmosJeffries</authorinitials><revremark>update mailing list email details</revremark></revision><revision><revnumber>25</revnumber><date>2015-01-02 03:06:32</date><authorinitials>AmosJeffries</authorinitials><revremark>Basic MSNT auth helper updates</revremark></revision><revision><revnumber>24</revnumber><date>2014-12-07 15:20:59</date><authorinitials>AmosJeffries</authorinitials><revremark>Updated most perl helpers documentation</revremark></revision><revision><revnumber>23</revnumber><date>2014-12-06 14:01:52</date><authorinitials>AmosJeffries</authorinitials><revremark>update to perl format after testing.</revremark></revision><revision><revnumber>22</revnumber><date>2014-12-06 12:03:07</date><authorinitials>AmosJeffries</authorinitials><revremark>add template for perl .pl.in files</revremark></revision><revision><revnumber>21</revnumber><date>2014-11-01 05:27:31</date><authorinitials>AmosJeffries</authorinitials><revremark>helper-mux README converted to manual. still needs some sections worked out for pod2man generation</revremark></revision><revision><revnumber>20</revnumber><date>2014-11-01 01:57:57</date><authorinitials>AmosJeffries</authorinitials><revremark>Santiago Garcia Mantinan converted purge README to man.1 page, adju</revremark></revision><revision><revnumber>19</revnumber><date>2014-10-31 03:48:50</date><authorinitials>AmosJeffries</authorinitials><revremark>tools like lroff seem to die horribly if we use the po4a syntax to highlight and separate the NAME initial line. remove it from criteria</revremark></revision><revision><revnumber>18</revnumber><date>2014-09-04 03:58:22</date><authorinitials>AmosJeffries</authorinitials><revremark>add Squid Software Foundation blurb to COPYRIGHT section details.</revremark></revision><revision><revnumber>17</revnumber><date>2013-09-28 14:08:09</date><authorinitials>AmosJeffries</authorinitials></revision><revision><revnumber>16</revnumber><date>2010-09-19 04:37:11</date><authorinitials>AmosJeffries</authorinitials><revremark>spec position for KNOWN ISSUES section.</revremark></revision><revision><revnumber>15</revnumber><date>2010-09-16 12:56:31</date><authorinitials>AmosJeffries</authorinitials><revremark>mention some more formatting gotchas hit in the manuals.</revremark></revision><revision><revnumber>14</revnumber><date>2010-09-16 10:32:50</date><authorinitials>AmosJeffries</authorinitials><revremark>update status of manuals creation</revremark></revision><revision><revnumber>13</revnumber><date>2010-09-09 01:37:40</date><authorinitials>AmosJeffries</authorinitials><revremark>upgrade from proposal to guide. the outline has shown its strength now.</revremark></revision><revision><revnumber>12</revnumber><date>2010-06-18 11:49:55</date><authorinitials>AmosJeffries</authorinitials><revremark>GPL has a man page. reference that.</revremark></revision><revision><revnumber>11</revnumber><date>2010-04-30 12:19:23</date><authorinitials>AmosJeffries</authorinitials><revremark>typos in man.8 syntax</revremark></revision><revision><revnumber>10</revnumber><date>2010-04-30 11:30:32</date><authorinitials>AmosJeffries</authorinitials><revremark>digest_pw_auth renamed to digest_file_auth and .8 info found</revremark></revision><revision><revnumber>9</revnumber><date>2010-04-15 11:42:26</date><authorinitials>AmosJeffries</authorinitials><revremark>basic_sasl_auth manual done.</revremark></revision><revision><revnumber>8</revnumber><date>2010-03-19 11:34:47</date><authorinitials>AmosJeffries</authorinitials><revremark>grr, we have two copies of the texts on this page.</revremark></revision><revision><revnumber>7</revnumber><date>2010-03-19 11:33:27</date><authorinitials>AmosJeffries</authorinitials><revremark>translators notices some problems in my default texts :)</revremark></revision><revision><revnumber>6</revnumber><date>2010-01-12 21:41:28</date><authorinitials>AmosJeffries</authorinitials><revremark>name the GPL2+ correctly.</revremark></revision><revision><revnumber>5</revnumber><date>2010-01-12 04:30:12</date><authorinitials>AmosJeffries</authorinitials><revremark>PAM auth done too.</revremark></revision><revision><revnumber>4</revnumber><date>2010-01-12 04:10:42</date><authorinitials>AmosJeffries</authorinitials><revremark>update TODO list. The existing static man pages are converted now.</revremark></revision><revision><revnumber>3</revnumber><date>2010-01-12 01:24:40</date><authorinitials>AmosJeffries</authorinitials><revremark>add log_file_daemon to TODO list.</revremark></revision><revision><revnumber>2</revnumber><date>2010-01-12 01:22:32</date><authorinitials>AmosJeffries</authorinitials><revremark>add assembled example template, and table of installed files for TODO list.</revremark></revision><revision><revnumber>1</revnumber><date>2010-01-11 10:06:27</date><authorinitials>AmosJeffries</authorinitials><revremark>document the man.8 file syntax required for clean automated translation of manuals.</revremark></revision></revhistory></articleinfo><section><title>man(8) documentation guidelines and standards</title><para>This is a guide for a standard manual page documentation format and template. The aim is to allow documentation writers to focus on documentation and not on specific format and semantics, and to help integrate new texts with translation string automation. </para><section><title>Entities to be documented</title><para>All application binary, scripts, and configuration files installed on end server systems are to be documented with a manual page. </para></section><section><title>Documentation format</title><para>Use simplified ngroff syntax. see <ulink url="http://www.fnal.gov/docs/products/ups/ReferenceManual/html/manpages.html"/> for ngroff format details. </para><para>Some additional markup is added for integration with <emphasis role="strong">po4a</emphasis> translation automation. see <ulink url="http://po4a.alioth.debian.org/man/man3pm/Locale::Po4a::Man.3pm.php"/> for details on specific markup and limits imposed by those tools. </para><para>Each <emphasis role="strong">.SH</emphasis> section is preceded by an <emphasis>empty</emphasis> line. In ngroff syntax that is a line containing only a dot (.) as demonstrated below between the <emphasis role="strong">.TH</emphasis> line and the first <emphasis role="strong">.SH</emphasis> line. </para><para>The document overview is as follows. Introductory header markup as shown followed by any applicable sections. Which are detailed in more depth below. </para><screen><![CDATA[.if !'po4a'hide' .TH binary.name 8
+.
+.SH NAME
+.SH SYNOPSIS
+.SH DESCRIPTION
+.SH OPTIONS
+.SH CONFIGURATION
+.SH KNOWN ISSUES
+.SH AUTHOR
+.SH COPYRIGHT
+.SH QUESTIONS
+.SH REPORTING BUGS
+.SH SEE ALSO]]></screen><section><title>.SH NAME</title><para>One initial line of content. </para><orderedlist numeration="arabic"><listitem><para>name of file being documented. Marked not for translation. </para></listitem><listitem><para>a hyphen. Marked not for translation. </para></listitem><listitem><para>A one-line description of the file. Suitable for use in a title. </para></listitem></orderedlist><para>If a version number is relevant state it in a separate paragraph below the name details. </para><para>For example: </para><screen><![CDATA[.
+.SH NAME
+squid \- HTTP Web Proxy caching server.
+.PP
+Version 1.0]]></screen><para>documents </para><screen><![CDATA[squid - HTTP Web Proxy caching server.
+]]><![CDATA[
+Version 1.0]]></screen></section><section><title>.SH SYNOPSIS</title><para>The plain command line option syntax. </para><para>If an option takes a parameter those parameter descriptors are to be left open for translation. All other parts of the syntax are to be marked not for translation. </para><para>For example: </para><screen><![CDATA[.
+.SH SYNOPSIS
+.if !'po4a'hide' .B squid
+.if !'po4a'hide' .B [\-dh]
+.if !'po4a'hide' .B [\-f
+config\-file
+.if !'po4a'hide' .B ]]]></screen><para>documents: </para><screen><![CDATA[squid [-dh] [-f config-file ]]]></screen></section><section><title>.SH DESCRIPTION</title><para>The full description of what the file object is all about. It should but is not required to begin with the file name in bold. Paragraphs in the description are separated by <emphasis role="strong">.PP</emphasis> tags. </para><para>Use <emphasis role="strong">.if !'po4a'hide' </emphasis> to mark any lines of syntax as not for translation. </para><para>Any words which name a file or binary should be marked out in bold. </para><para>For example: </para><screen><![CDATA[.
+.SH DESCRIPTION
+.PP
+.B squid
+is a high-performance proxy caching server for web clients,
+supporting FTP, gopher, ICAP, ICP, HTCP and HTTP data objects.
+Unlike traditional caching software,
+Squid handles all requests in a single, non-blocking process.
+.PP
+Squid keeps meta data and especially hot objects cached in RAM,
+caches DNS lookups, supports non-blocking DNS lookups, and implements
+negative caching of failed requests.
+.
+.if !'po4a'hide' http://www.squid-cache.org/]]></screen></section><section><title>.SH OPTIONS</title><para>A fully documented list of available command line options. With an empty line between each. The table column offset of the description text is 12 characters, set on the first <emphasis role="strong">.TP</emphasis> tag. </para><para>The option switch and any accepted variable names are marked not for translation (unlike in synopsis). </para><para>The option description is open for translation. Any repetition of the variable name is highlighted in bold. </para><para>For example: </para><screen><![CDATA[.
+.SH OPTIONS
+.if !'po4a'hide' .TP 12
+.if !'po4a'hide' .B \-d
+Write debug info to stderr.
+.
+.if !'po4a'hide' .TP
+.if !'po4a'hide' .B "\-f config\-file"
+Use configuration file
+.B config\-file]]></screen></section><section><title>.SH CONFIGURATION</title><para>Optional section specific to application binaries and maybe helper scripts. </para><para>Configuration files have their syntax covered under <emphasis role="strong">.SH DESCRIPTION</emphasis> </para><para>This section should cover snippets of config. Usually from squid.conf. Actual config snippets are to be marked not for translation. </para><para>For a multi-line configuration block use <emphasis role="strong">.br</emphasis> (lower case is important) to split the lines legibly. </para><itemizedlist><listitem override="none"><para><inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15"/></imageobject><textobject><phrase>/!\</phrase></textobject></inlinemediaobject> Any word which <emphasis>begins</emphasis> with a dash / hyphen must be slash-escaped. </para></listitem></itemizedlist><para>For example, URL re-writers would have something like this: </para><screen><![CDATA[.
+.SH CONFIGURATION
+.PP The simplest configuration for URL re-writers is to add the script or binary name to
+.B squid.conf
+like so:
+.if !'po4a'hide' .RS
+.if !'po4a'hide' .B url_rewrite_program /usr/bin/squid/example.binary
+.if !'po4a'hide' .RE
+.PP Command line options sent to a helper script or binary are added to
+.B squid.conf
+following the helper binary name. Like so:
+.if !'po4a'hide' .RS
+.if !'po4a'hide' .B url_rewrite_program /usr/bin/squid/example.binary \-d
+.if !'po4a'hide' .br
+.if !'po4a'hide' .B url_rewrite_access ...
+.if !'po4a'hide' .RE]]></screen></section><section><title>.SH KNOWN ISSUES</title><para>Optional section specific to application binaries and maybe helper scripts. </para><para>Simple set of <emphasis role="strong">.PP</emphasis> paragraphs outlining the problems which are known with using the program or script. </para></section><section><title>.SH AUTHOR</title><para>A list of relevant paragraphs specific to the authorship style of the documented program, script or file. Each paragraph ending with a list of author names and contacts and separated by a <emphasis role="strong">.PP</emphasis> tag. </para><para>For a simple binary or script where the manual was also authored by the same individual(s): </para><screen><![CDATA[.
+.SH AUTHOR
+This program and documentation was written by
+.if !'po4a'hide' .I Authors Name <author@email.contact>]]></screen><para>For a more complicated case where the application has one or more authors and is based on a prior work: </para><screen><![CDATA[.
+.SH AUTHOR
+This program was written by
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.PP
+Based on prior work in
+.B older.source
+by
+.if !'po4a'hide' .I Authors Name <author@email.contact>]]></screen><para>Where the manual documentation was by a different author or authors than the program: </para><screen><![CDATA[.
+.SH AUTHOR
+This program was written by
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.PP
+This manual was written by
+.if !'po4a'hide' .I Authors Name <author@email.contact>]]></screen></section><section><title>.SH COPYRIGHT</title><para>Details of the copyright associated with this binary, script, or configuration file. </para><para>For example: </para><screen><![CDATA[.
+.SH COPYRIGHT
+.PP
+ * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+ *
+ * Squid software is distributed under GPLv2+ license and includes
+ * contributions from numerous individuals and organizations.
+ * Please see the COPYING and CONTRIBUTORS files for details.
+.PP
+Squid
+.B example.binary
+and this manual is Copyright 2010
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.PP
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).]]></screen><para>If no exact copyright details are known use the following snippet: </para><screen><![CDATA[.
+.SH COPYRIGHT
+.PP
+ * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+ *
+ * Squid software is distributed under GPLv2+ license and includes
+ * contributions from numerous individuals and organizations.
+ * Please see the COPYING and CONTRIBUTORS files for details.
+.PP
+This program and documentation is copyright to the authors named above.
+.PP
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).]]></screen></section><section><title>.SH QUESTIONS</title><para>Verbatim snippet detailing the Squid project user help contacts. </para><screen><![CDATA[.
+.SH QUESTIONS
+Questions on the usage of this program can be sent to the
+.I Squid Users mailing list
+.if !'po4a'hide' <squid-users@lists.squid-cache.org>]]></screen></section><section><title>.SH REPORTING BUGS</title><para>Should begin with a standard text describing the Squid project points of contact: </para><screen><![CDATA[.
+.SH REPORTING BUGS
+Bug reports need to be made in English.
+See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you need to include with your bug report.
+.PP
+Report bugs or bug fixes using http://bugs.squid-cache.org/
+.PP
+Report serious security bugs to
+.I Squid Bugs <squid-bugs@lists.squid-cache.org>
+.PP
+Report ideas for new improvements to the
+.I Squid Developers mailing list
+.if !'po4a'hide' <squid-dev@lists.squid-cache.org>]]></screen><para>Any further points of contact or reporting should be listed following the Squid project contacts and be written in a similar syntax. </para></section><section><title>.SH SEE ALSO</title><para>References to other documentation related to this file. </para><para>Each item listed should have a line of its own for easy readability and to allow individual items to be marked not for translation. </para><para>Should start with a list of other manual pages, followed by a list of described external resources. </para><para>For example: </para><screen><![CDATA[.
+.SH SEE ALSO
+.if !'po4a'hide' .B squid "(8), "
+.if !'po4a'hide' .B cachemgr.cgi "(8), "
+.if !'po4a'hide' .BR GPL "(7), "
+.br
+The Squid FAQ wiki
+.if !'po4a'hide' http://wiki.squid-cache.org/SquidFaq
+.br
+The Squid Configuration Manual
+.if !'po4a'hide' http://www.squid-cache.org/Doc/config/]]></screen></section></section><section><title>Templates</title><section><title>name.8 file</title><para>This is a template only. Alter it according to the requirements detailed above to document an installed file. </para><screen><![CDATA[.if !'po4a'hide' .TH binary.name 8
+.
+.SH NAME
+.if !'po4a'hide' binary.name
+.if !'po4a'hide' \-
+Description goes here
+.PP
+Version 1.0
+.
+.SH SYNOPSIS
+.if !'po4a'hide' .B binary.name
+.if !'po4a'hide' .B [\-dh]
+.
+.SH DESCRIPTION
+.B binary.name
+is an installed binary. The long description goes here
+.
+.SH OPTIONS
+.if !'po4a'hide' .TP 12
+.if !'po4a'hide' .B \-d
+Write debug info to stderr.
+.
+.if !'po4a'hide' .TP
+.if !'po4a'hide' .B \-h
+Display the binary help and command line syntax info using stderr.
+.
+.SH KNOWN ISSUES
+.PP
+Optional test goes here. If there is nothing major remove the whole section.
+.
+.SH CONFIGURATION
+.PP See FAQ wiki page for examples of how to write configuration snippets.
+.PP Or just write what you want to say, then mark it up according to the wiki styles.
+.
+.SH AUTHOR
+This program was written by
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.PP
+Based on prior work in
+.B older.source
+by
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.PP
+This manual was written by
+.if !'po4a'hide' .I Authors Name <author@email.contact>
+.
+.SH COPYRIGHT
+.PP
+ * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+ *
+ * Squid software is distributed under GPLv2+ license and includes
+ * contributions from numerous individuals and organizations.
+ * Please see the COPYING and CONTRIBUTORS files for details.
+.PP
+This program and documentation is copyright to the authors named above.
+.PP
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+.
+.SH QUESTIONS
+Questions on the usage of this program can be sent to the
+.I Squid Users mailing list
+.if !'po4a'hide' <squid-users@lists.squid-cache.org>
+.
+.SH REPORTING BUGS
+Bug reports need to be made in English.
+See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you need to include with your bug report.
+.PP
+Report bugs or bug fixes using http://bugs.squid-cache.org/
+.PP
+Report serious security bugs to
+.I Squid Bugs <squid-bugs@lists.squid-cache.org>
+.PP
+Report ideas for new improvements to the
+.I Squid Developers mailing list
+.if !'po4a'hide' <squid-dev@lists.squid-cache.org>
+.
+.SH SEE ALSO
+.if !'po4a'hide' .BR squid "(8), "
+.if !'po4a'hide' .BR GPL "(7), "
+.br
+The Squid FAQ wiki
+.if !'po4a'hide' http://wiki.squid-cache.org/SquidFaq
+.br
+The Squid Configuration Manual
+.if !'po4a'hide' http://www.squid-cache.org/Doc/config/]]></screen></section><section><title>name.pl.in file</title><para>Perl code can be documented inline using pod2man syntax rather than have a separate .8 file. </para><para>This is a template only. Alter it according to the requirements detailed above to document an installed file. </para><screen><![CDATA[ #!@PERL@
+]]><![CDATA[
+use strict;
+use Pod::Usage;
+use Getopt::Long;
+]]><![CDATA[
+=pod
+]]><![CDATA[
+=head1 NAME
+]]><![CDATA[
+binary.name - Brief Description goes here
+]]><![CDATA[
+Version 1.0
+]]><![CDATA[
+=head1 SYNOPSIS
+]]><![CDATA[
+ binary.name [options]
+]]><![CDATA[
+=head1 DESCRIPTION
+]]><![CDATA[
+ B<binary.name> is an installed binary. The long description goes here.
+]]><![CDATA[
+=head1 OPTIONS
+]]><![CDATA[
+=over 12
+]]><![CDATA[
+=item B<--debug>
+]]><![CDATA[
+Write debug info to stderr.
+]]><![CDATA[
+=item B<--help>
+]]><![CDATA[
+Display the binary help and command line syntax info using stderr.
+]]><![CDATA[
+=back
+]]><![CDATA[
+=head1 KNOWN ISSUES
+]]><![CDATA[
+Optional test goes here. If there is nothing major remove the whole section.
+]]><![CDATA[
+=head1 CONFIGURATION
+]]><![CDATA[
+See FAQ wiki page for examples of how to write configuration snippets.
+]]><![CDATA[
+Or just write what you want to say, then mark it up according to the wiki styles.
+]]><![CDATA[
+=head1 AUTHOR
+]]><![CDATA[
+This program was written by
+I<Authors Name <author@email.contact>> ,
+I<Authors Name <author@email.contact>>
+]]><![CDATA[
+Based on prior work in B<older.source> by I<Authors Name <author@email.contact>>
+]]><![CDATA[
+This manual was written by I<Authors Name <author@email.contact>>
+]]><![CDATA[
+=head1 COPYRIGHT
+]]><![CDATA[
+ * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+ *
+ * Squid software is distributed under GPLv2+ license and includes
+ * contributions from numerous individuals and organizations.
+ * Please see the COPYING and CONTRIBUTORS files for details.
+]]><![CDATA[
+This program and documentation is copyright to the authors named above.
+]]><![CDATA[
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+]]><![CDATA[
+=head1 QUESTIONS
+]]><![CDATA[
+Questions on the usage of this program can be sent to the I<Squid Users mailing list <squid-users@lists.squid-cache.org>>
+]]><![CDATA[
+=head1 REPORTING BUGS
+]]><![CDATA[
+Bug reports need to be made in English.
+See http://wiki.squid-cache.org/SquidFaq/BugReporting for details of what you need to include with your bug report.
+]]><![CDATA[
+Report bugs or bug fixes using http://bugs.squid-cache.org/
+]]><![CDATA[
+Report serious security bugs to I<Squid Bugs <squid-bugs@lists.squid-cache.org>>
+]]><![CDATA[
+Report ideas for new improvements to the I<Squid Developers mailing list <squid-dev@lists.squid-cache.org>>
+]]><![CDATA[
+=head1 SEE ALSO
+]]><![CDATA[
+squid (8), GPL (7),
+]]><![CDATA[
+The Squid FAQ wiki http://wiki.squid-cache.org/SquidFaq
+]]><![CDATA[
+The Squid Configuration Manual http://www.squid-cache.org/Doc/config/
+]]><![CDATA[
+=cut
+]]><![CDATA[
+# the script code follows]]></screen></section></section><section><title>TODO</title><para>The Manual best practice is to provide a man(x) page for each file installed on a server system. Squid installs a number of files of various types as listed below. Some work is underway to bring existing texts into matching these standard style of markup. However there are a number of installed files which have no manual at all. </para><informaltable><tgroup cols="3"><colspec colname="col_0"/><colspec colname="col_1"/><colspec colname="col_2"/><tbody><row rowsep="1"><entry colsep="1" rowsep="1"><para> <emphasis role="strong">Installed file</emphasis> </para></entry><entry colsep="1" rowsep="1"><para> <emphasis role="strong">man(x)</emphasis> </para></entry><entry colsep="1" rowsep="1"><para> <emphasis role="strong">Current State:</emphasis> </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> ~/access.log </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Relevant? </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> ~/cache.log </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Relevant? </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> ~/netdb.state </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> ~/store.log </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Relevant? </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> ~/swap.state </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Convert wiki page info </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> errors/errpages.css </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/delayer/ext_delayer_acl</para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/AD_group/ext_ad_group_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/file_userip/ext_file_userip_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/kerberos_ldap_group/ext_kerberos_ldap_group_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/LDAP_group/ext_ldap_group_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/LM_group/ext_lm_group_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/session/ext_session_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/SQL_session/ext_sql_session_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/unix_group/ext_unix_group_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/acl/external/wbinfo_group/ext_wbinfo_group_acl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/DB/basic_db_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/getpwnam/basic_getpwnam_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/LDAP/basic_ldap_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/NCSA/basic_ncsa_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/NIS/basic_nis_auth </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/PAM/basic_pam_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/POP3/basic_pop3_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/RADIUS/basic_radius_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/SASL/basic_sasl_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/SASL/basic_sasl_auth.pam </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/SASL/basic_sasl_auth.conf </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/SMB/basic_smb_auth </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/SMB/basic_smb_auth.sh </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/SMB_LM/basic_smb_lm_auth </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Convert README.html </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/basic/SSPI/basic_sspi_auth.exe </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/digest/eDirectory/digest_edir_auth </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/digest/LDAP/digest_ldap_auth </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/digest/file/digest_file_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/negotiate/kerberos/negotiate_kerberos_auth </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/negotiate/kerberos/negotiate_kerberos_auth_test </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Convert README </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/negotiate/SSPI/negotiate_sspi_auth.exe </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/negotiate/wrapper/negotiate_wrapper </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/ntlm/fake/ntlm_fake_auth </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Convert wiki NTLM fake auth page. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/ntlm/smb_lm/ntlm_smb_lm_auth </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/auth/ntlm/SSPI/ntlm_sspi_auth.exe </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/DiskIO/DiskDaemon/diskd </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/http/url_rewriters/fake/url_fake_rewrite </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/http/url_rewriters/fake/url_fake_rewrite.sh </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/http/url_rewriters/LFS/url_lfs_rewrite </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/icmp/pinger </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/log/file/log_file_daemon </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/log/DB/log_db_daemon </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/mime.conf </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/mime.conf.default </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Symlink to mime.conf manual? </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/recv-announce </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/security/cert_generators/file/security_file_certgen </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/security/cert_validators/fake/security_fake_certverify </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/squid </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/squid.conf </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing. Convert squid.conf.documented </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/squid.conf.default </para></entry><entry colsep="1" rowsep="1"><para> N/A </para></entry><entry colsep="1" rowsep="1"><para> <ulink url="http://www.squid-cache.org/Doc/config/"/> instead  </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/squid.conf.documented </para></entry><entry colsep="1" rowsep="1"><para> N/A </para></entry><entry colsep="1" rowsep="1"><para> <ulink url="http://www.squid-cache.org/Doc/config/"/> instead </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/store/id_rewriters/file/storeid_file_rewrite </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> src/unlinkd </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="16" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/icon-error.png" width="16"/></imageobject><textobject><phrase>{X}</phrase></textobject></inlinemediaobject> </para></entry><entry colsep="1" rowsep="1"><para> Missing </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> tools/cachemgr.cgi </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> tools/helper-mux.pl </para></entry><entry colsep="1" rowsep="1"><para> 8 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/sad.png" width="15"/></imageobject><textobject><phrase>:(</phrase></textobject></inlinemediaobject> Needs review of the perl/pod output. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> tools/purge/ </para></entry><entry colsep="1" rowsep="1"><para> 1 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row><row rowsep="1"><entry colsep="1" rowsep="1"><para> tools/squidclient/ </para></entry><entry colsep="1" rowsep="1"><para> 1 </para></entry><entry colsep="1" rowsep="1"><para> <inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/checkmark.png" width="20"/></imageobject><textobject><phrase>(./)</phrase></textobject></inlinemediaobject> Done. </para></entry></row></tbody></tgroup></informaltable><!--rule (<hr>) is not applicable to DocBook--><itemizedlist><listitem override="none"><para>Discuss this page using the &quot;Discussion&quot; link in the main menu </para></listitem></itemizedlist><para>See <ulink url="https://wiki.squid-cache.org/ProgrammingGuide/ManualDocumentation/ProgrammingGuide/ManualDocumentation#">Discussed Page</ulink> </para><!--rule (<hr>) is not applicable to DocBook--><para> <anchor id="C1"/> I like the idea. Would it be possible to have a complete template page attached to the wiki entry? It would make starting to write stuff easier. </para><para>-- <ulink url="https://wiki.squid-cache.org/ProgrammingGuide/ManualDocumentation/FrancescoChemolli#">FrancescoChemolli</ulink> <!--The macro DateTime caused an error and should be blacklisted. It returned the data '2010-01-11 10:30:11' which caused the docbook-formatter to choke. Please file a bug.--> </para></section></section></article>

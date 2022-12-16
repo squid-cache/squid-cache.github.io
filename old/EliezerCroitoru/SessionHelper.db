@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>EliezerCroitoru/SessionHelper</title><revhistory><revision><revnumber>4</revnumber><date>2014-11-16 09:54:29</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>Replacing the moneta gem with dalli due to the fact that memcached gem needs build tools which should not be a constrain on an installation.</revremark></revision><revision><revnumber>3</revnumber><date>2014-08-27 11:37:22</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>Converting the helper to use memcached as db, fixnig typos and updating to support logout</revremark></revision><revision><revnumber>2</revnumber><date>2014-07-14 18:54:31</date><authorinitials>Eliezer Croitoru</authorinitials></revision><revision><revnumber>1</revnumber><date>2014-07-07 04:33:09</date><authorinitials>Eliezer Croitoru</authorinitials></revision></revhistory></articleinfo><para>Describe EliezerCroitoru/SessionHelper here. </para><programlisting format="linespecific" language="highlight" linenumbering="numbered" startinglinenumber="1"><lineannotation><![CDATA[#!/usr/bin/env ruby]]></lineannotation>
+<lineannotation><![CDATA[# license note]]></lineannotation>
+<lineannotation><![CDATA[# Copyright (c) 2014, Eliezer Croitoru]]></lineannotation>
+<lineannotation><![CDATA[# All rights reserved.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.]]></lineannotation>
+<lineannotation><![CDATA[#]]></lineannotation>
+<lineannotation><![CDATA[# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE]]></lineannotation>
+
+<token><![CDATA[require]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[dalli]]></phrase><phrase><![CDATA["]]></phrase>
+
+<methodname><![CDATA[active_login]]></methodname><![CDATA[ = ]]><token><![CDATA[true]]></token>
+<methodname><![CDATA[$debug]]></methodname><![CDATA[ = ]]><token><![CDATA[false]]></token>
+<methodname><![CDATA[$minutes]]></methodname><![CDATA[ = 30]]>
+
+<token><![CDATA[class]]></token><![CDATA[ ]]><methodname><![CDATA[Db]]></methodname>
+
+<![CDATA[  ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[initialize]]></methodname><![CDATA[()]]>
+<![CDATA[    ]]><token><![CDATA[begin]]></token>
+<![CDATA[       ]]><methodname><![CDATA[@db]]></methodname><![CDATA[ = ]]><symbol><![CDATA[Dalli]]></symbol><![CDATA[::]]><symbol><![CDATA[Client]]></symbol><![CDATA[.]]><methodname><![CDATA[new]]></methodname><![CDATA[(]]><phrase><![CDATA['localhost:11211']]></phrase><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[rescue]]></token><![CDATA[ =>]]><methodname><![CDATA[e]]></methodname>
+<![CDATA[      ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[printing backtrace]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[      ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[e]]></methodname><![CDATA[.]]><methodname><![CDATA[inspect]]></methodname>
+<![CDATA[      ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[e]]></methodname>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+
+<![CDATA[  ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[writable?]]></methodname><![CDATA[()]]>
+<![CDATA[    ]]><token><![CDATA[begin]]></token>
+<![CDATA[      ]]><methodname><![CDATA[@db]]></methodname><![CDATA[.]]><methodname><![CDATA[set]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[8.8.8.8]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[, ]]><symbol><![CDATA[Time]]></symbol><![CDATA[.]]><methodname><![CDATA[now]]></methodname><![CDATA[.]]><methodname><![CDATA[to_i]]></methodname><![CDATA[)]]>
+<![CDATA[      ]]><methodname><![CDATA[@db]]></methodname><![CDATA[.]]><methodname><![CDATA[delete]]></methodname><![CDATA[(]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[8.8.8.8]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[rescue]]></token><![CDATA[ => ]]><methodname><![CDATA[e]]></methodname>
+<![CDATA[      ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[printing backtrace]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[      ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[e]]></methodname><![CDATA[.]]><methodname><![CDATA[inspect]]></methodname>
+<![CDATA[      ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><methodname><![CDATA[e]]></methodname>
+<![CDATA[      ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[false]]></token>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[      ]]><token><![CDATA[return]]></token><![CDATA[ ]]><token><![CDATA[true]]></token>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+
+<![CDATA[  ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[login]]></methodname><![CDATA[(]]><methodname><![CDATA[ip]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><methodname><![CDATA[@db]]></methodname><![CDATA[.]]><methodname><![CDATA[set]]></methodname><![CDATA[(]]><methodname><![CDATA[ip]]></methodname><![CDATA[,]]><symbol><![CDATA[Time]]></symbol><![CDATA[.]]><methodname><![CDATA[now]]></methodname><![CDATA[.]]><methodname><![CDATA[to_i]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+
+<![CDATA[  ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[logout]]></methodname><![CDATA[(]]><methodname><![CDATA[ip]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><methodname><![CDATA[@db]]></methodname><![CDATA[.]]><methodname><![CDATA[delete]]></methodname><![CDATA[(]]><methodname><![CDATA[ip]]></methodname><![CDATA[)]]>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+
+<![CDATA[  ]]><token><![CDATA[def]]></token><![CDATA[ ]]><methodname><![CDATA[gettime]]></methodname><![CDATA[(]]><methodname><![CDATA[ip_address]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><methodname><![CDATA[result]]></methodname><![CDATA[ = ]]><methodname><![CDATA[@db]]></methodname><![CDATA[.]]><methodname><![CDATA[get]]></methodname><![CDATA[(]]><methodname><![CDATA[ip_address]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[result]]></methodname>
+<![CDATA[      ]]><token><![CDATA[return]]></token><![CDATA[ ]]><symbol><![CDATA[Time]]></symbol><![CDATA[.]]><methodname><![CDATA[at]]></methodname><![CDATA[(]]><methodname><![CDATA[result]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[    ]]><token><![CDATA[return]]></token><![CDATA[ ]]><symbol><![CDATA[Time]]></symbol><![CDATA[.]]><methodname><![CDATA[at]]></methodname><![CDATA[(0)]]>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+
+<methodname><![CDATA[$database]]></methodname><![CDATA[ = ]]><symbol><![CDATA[Db]]></symbol><![CDATA[.]]><methodname><![CDATA[new]]></methodname><![CDATA[()]]>
+<token><![CDATA[if]]></token><![CDATA[ !]]><methodname><![CDATA[$database]]></methodname><![CDATA[.]]><methodname><![CDATA[writable?]]></methodname>
+<![CDATA[  ]]><token><![CDATA[puts]]></token><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[database is not writable exiting..]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[  ]]><token><![CDATA[exit]]></token><![CDATA[ 1]]>
+<token><![CDATA[end]]></token>
+<symbol><![CDATA[STDOUT]]></symbol><![CDATA[.]]><methodname><![CDATA[sync]]></methodname><![CDATA[ = ]]><token><![CDATA[true]]></token>
+
+<token><![CDATA[while]]></token><![CDATA[ ]]><methodname><![CDATA[line]]></methodname><![CDATA[ = ]]><symbol><![CDATA[STDIN]]></symbol><![CDATA[.]]><methodname><![CDATA[gets]]></methodname>
+<![CDATA[  ]]><token><![CDATA[id]]></token><![CDATA[ , ]]><methodname><![CDATA[ip]]></methodname><![CDATA[ , ]]><methodname><![CDATA[login]]></methodname><![CDATA[ = ]]><methodname><![CDATA[line]]></methodname><![CDATA[.]]><methodname><![CDATA[chomp]]></methodname><![CDATA[.]]><methodname><![CDATA[split]]></methodname>
+<![CDATA[  ]]><symbol><![CDATA[STDERR]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[request details: {id=> ]]></phrase><![CDATA[\"]]><phrase><![CDATA[ ]]></phrase><phrase><![CDATA[#{]]></phrase><token><![CDATA[id]]></token><phrase><![CDATA[}]]></phrase><![CDATA[\"]]><phrase><![CDATA[, ip=> ]]></phrase><![CDATA[\"]]><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[ip]]></methodname><phrase><![CDATA[}]]></phrase><![CDATA[\"]]><phrase><![CDATA[, login=> ]]></phrase><![CDATA[\"]]><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[login]]></methodname><![CDATA[ == ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[LOGIN]]></phrase><phrase><![CDATA["]]></phrase><phrase><![CDATA[}]]></phrase><![CDATA[\"]]><phrase><![CDATA[}]]></phrase><phrase><![CDATA["]]></phrase><![CDATA[ ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[$debug]]></methodname>
+<![CDATA[  ]]><token><![CDATA[if]]></token><![CDATA[ ]]><methodname><![CDATA[login]]></methodname><![CDATA[ && ]]><methodname><![CDATA[login]]></methodname><![CDATA[ == ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[LOGIN]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[    ]]><methodname><![CDATA[$database]]></methodname><![CDATA[.]]><methodname><![CDATA[login]]></methodname><![CDATA[(]]><methodname><![CDATA[ip]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><symbol><![CDATA[STDOUT]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[#{]]></phrase><token><![CDATA[id]]></token><phrase><![CDATA[}]]></phrase><phrase><![CDATA[ OK message=]]></phrase><![CDATA[\"]]><phrase><![CDATA[Welcome]]></phrase><![CDATA[\"]]><phrase><![CDATA["]]></phrase>
+<![CDATA[  ]]><token><![CDATA[elsif]]></token><![CDATA[ ]]><methodname><![CDATA[login]]></methodname><![CDATA[ && ]]><methodname><![CDATA[login]]></methodname><![CDATA[ == ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[LOGOUT]]></phrase><phrase><![CDATA["]]></phrase>
+<![CDATA[    ]]><methodname><![CDATA[$database]]></methodname><![CDATA[.]]><methodname><![CDATA[logout]]></methodname><![CDATA[(]]><methodname><![CDATA[ip]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><symbol><![CDATA[STDOUT]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[#{]]></phrase><token><![CDATA[id]]></token><phrase><![CDATA[}]]></phrase><phrase><![CDATA[ OK message=]]></phrase><![CDATA[\"]]><phrase><![CDATA[ByeBye]]></phrase><![CDATA[\"]]><phrase><![CDATA["]]></phrase>
+<![CDATA[  ]]><token><![CDATA[else]]></token>
+<![CDATA[    ]]><methodname><![CDATA[current]]></methodname><![CDATA[ = ]]><methodname><![CDATA[$database]]></methodname><![CDATA[.]]><methodname><![CDATA[gettime]]></methodname><![CDATA[(]]><methodname><![CDATA[ip]]></methodname><![CDATA[)]]>
+<![CDATA[    ]]><methodname><![CDATA[calc]]></methodname><![CDATA[ = (]]><symbol><![CDATA[Time]]></symbol><![CDATA[.]]><methodname><![CDATA[now]]></methodname><![CDATA[- ]]><methodname><![CDATA[current]]></methodname><![CDATA[).]]><methodname><![CDATA[to_i]]></methodname>
+<![CDATA[    ]]><token><![CDATA[if]]></token><![CDATA[  ]]><methodname><![CDATA[calc]]></methodname><![CDATA[ > (]]><methodname><![CDATA[$minutes]]></methodname><![CDATA[*60)]]>
+<![CDATA[      ]]><symbol><![CDATA[STDOUT]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[#{]]></phrase><token><![CDATA[id]]></token><phrase><![CDATA[}]]></phrase><phrase><![CDATA[ ERR message=]]></phrase><![CDATA[\"]]><phrase><![CDATA[No session available]]></phrase><![CDATA[\"]]><phrase><![CDATA["]]></phrase>
+<![CDATA[    ]]><token><![CDATA[else]]></token>
+<![CDATA[      ]]><symbol><![CDATA[STDOUT]]></symbol><![CDATA[.]]><methodname><![CDATA[puts]]></methodname><![CDATA[ ]]><phrase><![CDATA["]]></phrase><phrase><![CDATA[#{]]></phrase><token><![CDATA[id]]></token><phrase><![CDATA[}]]></phrase><phrase><![CDATA[ OK message=]]></phrase><![CDATA[\"]]><phrase><![CDATA[passed: ]]></phrase><phrase><![CDATA[#{]]></phrase><methodname><![CDATA[calc]]></methodname><phrase><![CDATA[}]]></phrase><phrase><![CDATA[ seconds]]></phrase><![CDATA[\"]]><phrase><![CDATA["]]></phrase>
+<![CDATA[    ]]><token><![CDATA[end]]></token>
+<![CDATA[  ]]><token><![CDATA[end]]></token>
+<token><![CDATA[end]]></token>
+</programlisting></article>

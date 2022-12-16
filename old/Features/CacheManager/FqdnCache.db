@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>Features/CacheManager/FqdnCache</title><revhistory><revision><revnumber>1</revnumber><date>2012-02-01 01:21:50</date><authorinitials>AmosJeffries</authorinitials><revremark>split off main CacheManager page. add example report</revremark></revision></revhistory></articleinfo><section><title>fqdncache report</title><para>This is a report of the Squid DNS cache for IP address resolution.  </para><para><emphasis role="strong">How is it different from the ipcache?</emphasis> </para><itemizedlist><listitem override="none"><para><ulink url="https://wiki.squid-cache.org/Features/CacheManager/FqdnCache/Features/CacheManager/IpCache#">ipcache</ulink> contains data for the Hostname to IP-Number mapping, and this report does it the other way round.   </para></listitem></itemizedlist><section><title>Example Report</title><screen><![CDATA[FQDN Cache Statistics:
+FQDNcache Entries In Use: 9
+FQDNcache Entries Cached: 9
+FQDNcache Requests: 0
+FQDNcache Hits: 0
+FQDNcache Negative Hits: 0
+FQDNcache Misses: 0
+FQDN Cache Contents:
+]]><![CDATA[
+Address                                       Flg TTL Cnt Hostnames
+::1                                             H -001   2 ip6-localhost ip6-loopback
+127.0.0.1                                       H -001   2 localhost
+ff02::1                                         H -001   1 ip6-allnodes
+ff02::2                                         H -001   1 ip6-allrouters
+ff02::3                                         H -001   1 ip6-allhosts
+ff00::0                                         H -001   1 ip6-mcastprefix
+fe00::0                                         H -001   1 ip6-localnet]]></screen><para>For the Flags (Flg) column: </para><itemizedlist><listitem><para><emphasis role="strong">C</emphasis> means positively cached. </para></listitem><listitem><para><emphasis role="strong">N</emphasis> means negatively cached. </para></listitem><listitem><para><emphasis role="strong">P</emphasis> means the request is pending being dispatched. </para></listitem><listitem><para><emphasis role="strong">D</emphasis> means the request has been dispatched and we're waiting for an answer. </para></listitem><listitem><para><emphasis role="strong">H</emphasis> means it is an entry loaded from the system <emphasis>hosts</emphasis> file. </para></listitem><listitem><para><emphasis role="strong">L</emphasis> means it is a locked entry because it represents a parent or sibling. </para></listitem></itemizedlist><para>The <emphasis role="strong">TTL</emphasis> column represents &quot;Time To Live&quot; (i.e., how long the cache entry is valid). This is given by the DNS system when each FQDN is retrieved. It may be negative if the entry has already expired, in which case the next request to need it will perform new DNS lookups to fetch new records. </para><para>The <emphasis role="strong">Cnt</emphasis> column is the number of hostnames which the cache has translations for. </para><para>The rest of the line lists all the hostnames that have been associated with that IP. </para></section></section></article>

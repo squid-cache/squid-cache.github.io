@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ConfigExamples/ChrootJail</title><revhistory><revision><revnumber>6</revnumber><date>2021-07-03 10:54:52</date><authorinitials>FrancescoChemolli</authorinitials></revision><revision><revnumber>5</revnumber><date>2009-08-24 08:50:48</date><authorinitials>port-87-234-42-202.static.qsc.de</authorinitials></revision><revision><revnumber>4</revnumber><date>2009-08-24 08:49:22</date><authorinitials>port-87-234-42-202.static.qsc.de</authorinitials></revision><revision><revnumber>3</revnumber><date>2009-08-24 08:48:06</date><authorinitials>port-87-234-42-202.static.qsc.de</authorinitials></revision><revision><revnumber>2</revnumber><date>2009-08-24 08:47:27</date><authorinitials>port-87-234-42-202.static.qsc.de</authorinitials></revision><revision><revnumber>1</revnumber><date>2009-08-21 13:18:40</date><authorinitials>AmosJeffries</authorinitials><revremark>create for Tom Penndorf</revremark></revision></revhistory></articleinfo><section><title>Running Squid inside a Chroot Jail</title><para><emphasis role="strong">Warning</emphasis>: Any example presented here is provided &quot;as-is&quot; with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list. </para><section><title>create directory tree and copy files</title><screen><![CDATA[mkdir -p /usr/local/squid3/var/cache/squid3
+chown proxy:nogroup /usr/local/squid3/var/cache/squid3
+mkdir -p /usr/local/squid3/var/log/squid3
+mkdir -p /usr/local/squid3/var/run/nscd
+chown proxy:nogroup /usr/local/squid3/var/run
+mkdir -p /usr/local/squid3/etc
+mkdir -p /usr/local/squid3/lib
+mkdir -p /usr/local/squid3/var/spool/squid3
+chown proxy:nogroup /usr/local/squid3/var/spool/squid3
+mkdir -p /usr/local/squid3/usr/share/squid3
+cp /usr/share/squid3/mime.conf /usr/local/squid3/usr/share/squid3/
+cp -r /usr/share/squid3/icons /usr/local/squid3/usr/share/squid3/
+mkdir -p /usr/local/squid3/etc
+cp /etc/resolv.conf /usr/local/squid3/etc/
+cp /etc/nsswitch.conf /usr/local/squid3/etc/
+mkdir -p /usr/local/squid3/lib
+cp /lib/libnss_dns* /usr/local/squid3/lib/
+mkdir -p /usr/local/squid3/usr/lib/squid3
+cp /usr/lib/squid3/* /usr/local/squid3/usr/lib/squid3/]]></screen></section><section><title>modify squid.conf</title><screen><![CDATA[chroot /usr/local/squid3]]></screen><!--rule (<hr>) is not applicable to DocBook--><itemizedlist><listitem override="none"><para><ulink url="https://wiki.squid-cache.org/ConfigExamples/ChrootJail/CategoryConfigExample#">CategoryConfigExample</ulink> </para></listitem></itemizedlist></section></section></article>

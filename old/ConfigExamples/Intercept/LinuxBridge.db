@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ConfigExamples/Intercept/LinuxBridge</title><revhistory><revision><revnumber>3</revnumber><date>2017-01-14 05:11:23</date><authorinitials>AmosJeffries</authorinitials><revremark>avoid cd failures causing trouble when setting bridge options to 0</revremark></revision><revision><revnumber>2</revnumber><date>2013-10-29 09:43:54</date><authorinitials>Eliezer Croitoru</authorinitials><revremark>Adding small description of ebtables DROP vs iptables DROP</revremark></revision><revision><revnumber>1</revnumber><date>2013-10-24 05:28:41</date><authorinitials>AmosJeffries</authorinitials><revremark>create from TPROXY page bridging information</revremark></revision></revhistory></articleinfo><section><title>Proxying Web Traffic On A Linux Bridge Server</title><para><emphasis role="strong">Warning</emphasis>: Any example presented here is provided &quot;as-is&quot; with no support or guarantee of suitability. If you have any further questions about these examples please email the squid-users mailing list. </para><section><title>Outline</title><para>This example outlines how to configure a Linux bridge to policy route traffic (web in this instance) towards a Squid proxy. </para><para>Please realize this just gets the packets out of the bridge mode (OSI model layer 2 packet handling) into the machines packet routing system (layer 3); you also have to configure routing (layer 3) and interception (layer 4) on the machine to divert traffic to the Squid TCP port! </para></section><section><title>Usage</title><para>Various networks are using bridge devices as gateways and wish to implement transparent caching or content filtering. </para></section><section><title>ebtables DROP vs iptables DROP</title><para>In iptables which in most cases is being used to filter network traffic the DROP target means &quot;packet disapear&quot;. </para><para>In ebtables a &quot;-j redirect --redirect-target DROP&quot; means &quot;packet be gone from the bridge into the upper layers of the kernel such as routing\forwarding&quot; </para><para>Since the ebtables works in the link layer of the connection in order to intercept the connection we must &quot;redirect&quot; the traffic to the level which iptables will be able to intercept\tproxy. </para><para>A picture of the netfilter flow to illustrate: </para><para><ulink url="http://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg"><inlinemediaobject><imageobject><imagedata depth="400px" fileref="http://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg" width="1200px"/></imageobject><textobject><phrase>netfilter packet flow illustration</phrase></textobject></inlinemediaobject></ulink> </para></section><section><title>ebtables Configuration Rules</title><para>Bridging configuration in Linux is done with the <emphasis>ebtables</emphasis> utility. </para><para>You also need to follow all the steps for setting up the Squid box as a router device. These bridging rules are additional steps to move packets from bridging mode to routing mode: </para><screen><![CDATA[## interface facing clients
+CLIENT_IFACE=eth0
+]]><![CDATA[
+## interface facing Internet
+INET_IFACE=eth1
+]]><![CDATA[
+]]><![CDATA[
+ebtables -t broute -A BROUTING \
+        -i $CLIENT_IFACE -p ipv6 --ip6-proto tcp --ip6-dport 80 \
+        -j redirect --redirect-target DROP
+]]><![CDATA[
+ebtables -t broute -A BROUTING \
+        -i $CLIENT_IFACE -p ipv4 --ip-proto tcp --ip-dport 80 \
+        -j redirect --redirect-target DROP
+]]><![CDATA[
+ebtables -t broute -A BROUTING \
+        -i $INET_IFACE -p ipv6 --ip6-proto tcp --ip6-sport 80 \
+        -j redirect --redirect-target DROP
+]]><![CDATA[
+ebtables -t broute -A BROUTING \
+        -i $INET_IFACE -p ipv4 --ip-proto tcp --ip-sport 80 \
+        -j redirect --redirect-target DROP
+]]><![CDATA[
+]]><![CDATA[
+if test -d /proc/sys/net/bridge/ ; then
+  for i in /proc/sys/net/bridge/*
+  do
+    echo 0 > $i
+  done
+  unset i
+fi]]></screen><itemizedlist><listitem override="none"><para><inlinemediaobject><imageobject><imagedata depth="15" fileref="https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png" width="15"/></imageobject><textobject><phrase>/!\</phrase></textobject></inlinemediaobject> The bridge interfaces also need to be configured with public IP addresses for Squid to use in its normal operating traffic (DNS, ICMP, TPROXY failed requests, peer requests, etc) </para></listitem></itemizedlist><!--rule (<hr>) is not applicable to DocBook--><para> <ulink url="https://wiki.squid-cache.org/ConfigExamples/Intercept/LinuxBridge/CategoryConfigExample#">CategoryConfigExample</ulink> </para></section></section></article>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>ConfigExamples/Intercept/DebianWithRedirectorAndReporting</title><revhistory><revision><revnumber>3</revnumber><date>2012-07-03 03:11:28</date><authorinitials>AmosJeffries</authorinitials><revremark>remove obsolete information</revremark></revision><revision><revnumber>2</revnumber><date>2012-06-13 13:35:16</date><authorinitials>eu.squid-cache.org</authorinitials></revision><revision><revnumber>1</revnumber><date>2012-06-12 07:25:06</date><authorinitials>eu.squid-cache.org</authorinitials></revision></revhistory></articleinfo><section><title>Interceptor Squid on Debian with Redirectors and Reporting</title><para>This document (based on <ulink url="http://freecode.com/articles/configuring-a-transparent-proxywebcache-in-a-bridge-using-squid-and-ebtables">this article</ulink> with  some updates and additions)  explains how to put into production a Bridge device running a Squid interception web proxy on a Linux Debian 6 system. Since the proxy is performing transparent interception, LAN users are able to surf the web without having to set manually the proxy address in their browser. </para><para>This document also details how to set up a few useful features such as web filtering (via Squirm) and usage monitoring (via SARG). </para><para>First of all, you need a Linux box with two network interfaces that we'll set up as a bridge.   We'll assume that eth0 is connected downstream to the LAN, while eth1 provides upstream access to the Internet. </para><section><title>Getting Squid</title><para>If you have the Debian 6 OS release, then Squid is already available as a precompiled binary with all the necessary flags, and all you have to do is install the squid3 package: </para><screen><![CDATA[aptitude update
+aptitude install squid3]]></screen><para>It is also a good idea to let Squid run as a standalone daemon.  You can therefore disable avahi as it's not needed in a server: </para><screen><![CDATA[root@squidbox:~# update-rc.d -f avahi-daemon remove]]></screen><para>For the rest of this document we'll assume that the paths of the Squid executable, configuration file, log files, cache etc. are the ones set up  when compiling Squid from the source.  If you grabbed the package binaries instead, pathnames will be different but correcting them should be easy for you. </para></section><section><title>Setting up a Linux bridge</title><para>If you haven't all the necessary packages installed, fetch them: </para><screen><![CDATA[aptitude install ebtables bridge-utils]]></screen><para>Let's assume that the machine is in the 10.9.0.0/16 subnet, and let's choose to assign the  IP address 10.9.1.9 to it.  The LAN is a 10.0.0.0/8 network accessed (downstream through eth0) via the router 10.9.2.2,  while a router or firewall 10.9.1.1 is   the gateway providing access (upstream through eth1) to the Internet.  The DNS server has IP 10.13.13.13. </para><para>We are going now to list all the commands necessary to configure the network on the machine.  You can enter these commands at the shell prompt, but to make all changes permanent (i.e. after a reboot) you must also put them in <code>/etc/rc.local</code> . </para><para>We configure the network interfaces and set them up in bridging: </para><screen><![CDATA[ifconfig eth0 0.0.0.0 promisc up
+ifconfig eth1 0.0.0.0 promisc up
+/usr/sbin/brctl addbr br0
+/usr/sbin/brctl addif br0 eth0
+/usr/sbin/brctl addif br0 eth1
+ifconfig br0 10.9.1.9 netmask 255.255.0.0 up]]></screen><para>We define routing tables and DNS: </para><screen><![CDATA[route add -net 10.0.0.0 netmask 255.0.0.0 gw 10.9.2.2
+route add default gw 10.9.1.1 dev br0
+rm -f /etc/resolv.conf 2>/dev/null
+echo "nameserver 10.13.13.13" >> /etc/resolv.conf]]></screen><para>Then, we say that all packets sent to port 80 (i.e. the http traffic from the LAN) must not go through the bridge  but redirected to the local machine instead: </para><screen><![CDATA[ebtables -t broute -A BROUTING -p IPv4 --ip-protocol 6 --ip-destination-port 80 -j redirect --redirect-target ACCEPT]]></screen><para>and that these packets must be redirected to port 3128 (i.e. the port the Squid is listening to): </para><screen><![CDATA[iptables -t nat -A PREROUTING -i br0 -p tcp --dport 80 -j REDIRECT --to-port 3128]]></screen></section><section><title>Configuring Squid</title><para>You must now configure the Squid.  Insert all the following lines into a file <code>/etc/squid/squid.conf</code> . </para><para>First, you have to define your internal IP subnets from where browsing should be allowed.  In this example we open browsing from subnet 10.0.0.0/8; if your LAN includes other subnets, repeat the line for each of them. </para><screen><![CDATA[acl localnet src 10.0.0.0/8]]></screen><para>The rest of ACL definitions for hosts and ports: </para><screen><![CDATA[acl manager proto cache_object
+acl localhost src 127.0.0.1/32 ::1
+acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
+acl localnet src fc00::/7
+acl localnet src fe80::/10
+]]><![CDATA[
+acl SSL_ports port 443
+acl Safe_ports port 80          # http
+acl Safe_ports port 21          # ftp
+acl Safe_ports port 443         # https
+acl Safe_ports port 70          # gopher
+acl Safe_ports port 210         # wais
+acl Safe_ports port 1025-65535  # unregistered ports
+acl Safe_ports port 280         # http-mgmt
+acl Safe_ports port 488         # gss-http
+acl Safe_ports port 591         # filemaker
+acl Safe_ports port 777         # multiling http
+acl CONNECT method CONNECT
+]]><![CDATA[
+http_access allow manager localhost
+http_access deny manager
+]]><![CDATA[
+http_access deny !Safe_ports
+http_access deny CONNECT !SSL_ports
+http_access deny to_localhost
+]]><![CDATA[
+http_access allow localnet
+http_access allow localhost
+http_access deny all]]></screen><para>We specify that Squid must run on default port 3128 in transparent mode: </para><screen><![CDATA[http_port 3128 intercept]]></screen><para>Squid will use a 10-Gb disk cache: </para><screen><![CDATA[cache_dir ufs /var/cache 10000 16 256]]></screen><para>We decide to keep the last 30 daily logfiles: </para><screen><![CDATA[logfile_rotate 30]]></screen><para>The following line is useful as it initiates the shutdown procedure almost immediately, without waiting for clients accessing the cache.  This allows Squid to restart more quickly. </para><screen><![CDATA[shutdown_lifetime 2 seconds]]></screen><para>And finally, some more settings: </para><screen><![CDATA[hierarchy_stoplist cgi-bin ?
+refresh_pattern ^ftp:           1440    20%     10080
+refresh_pattern ^gopher:        1440    0%      1440
+refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
+refresh_pattern .               0       20%     4320]]></screen></section><section><title>Running Squid</title><para>After editing the configuration file, start squid </para><screen><![CDATA[/etc/init.d/squid3 start]]></screen><para>Once the Squid has started, you should be able to browse the web from the LAN. Note that it is the Squid that provides HTTP connection to the outside.   If the Squid process crashes or is stopped, LAN clients won't be able to browse the web. </para><para>To see in realtime the requests served by Squid, use the command </para><screen><![CDATA[root@squidbox:~# tail -f /var/logs/access.log]]></screen><para>The first field of the output is the time of the request as expressed in seconds since the UNIX epoch (Jan 1 00:00:00 UTC 1970).   To have a more human-friendly output, pipe it through a log converter (you will need to install the ccze package first): </para><screen><![CDATA[root@squidbox:~# tail -f /var/logs/access.log | ccze -C]]></screen><para>To reload the Squid configuration after a change, run </para><screen><![CDATA[root@squidbox:~# squid -k reconfigure]]></screen></section><section><title>Setting outgoing IPs</title><para>The upstream gateway sees all HTTP requests from the LAN as coming from an unique IP: the Squid's address, in our case 10.9.1.9. </para><para>You might want to be able to differentiate between clients, perhaps in order to apply different policies, or for monitoring purposes. For instance, let's assume the LAN contains three subnets: </para><para>IT = 10.4.0.0/16, Research &amp; Development = 10.5.0.0/16, Administration = 10.6.0.0/20 </para><para>and that you would like to assign a different outgoing IP private address depending on the subnet the client is located into.  You can do so, provided that the outgoing addresses are in the same subnet as the Squid.  For instance: </para><para>IT -&gt; 10.9.1.4, Research &amp; Development -&gt; 10.9.1.5, Administration -&gt; 10.9.1.6 </para><para>First, we need to assign these IP addresses to the Squid. Each address will be assigned to a bridge subinterface. </para><para>Add the following lines to <code>/etc/rc.local</code> : </para><screen><![CDATA[/usr/sbin/brctl addbr br0:4
+/usr/sbin/brctl addbr br0:5
+/usr/sbin/brctl addbr br0:6
+ifconfig br0:4 10.9.1.4 netmask 255.255.0.0 up
+ifconfig br0:5 10.9.1.5 netmask 255.255.0.0 up
+ifconfig br0:6 10.9.1.6 netmask 255.255.0.0 up]]></screen><para>Then add the following lines to <code>/etc/squid/squid.conf</code> : </para><screen><![CDATA[acl it_net src 10.4.0.0/16
+acl rd_net src 10.5.0.0/16
+acl admin_net src 10.6.0.0/20
+]]><![CDATA[
+tcp_outgoing_address 10.9.1.4 it_net
+tcp_outgoing_address 10.9.1.5 rd_net
+tcp_outgoing_address 10.9.1.6 admin_net
+tcp_outgoing_address 10.9.1.9]]></screen><para>The last line specifies the default outgoing address, 10.9.1.9.  This is the address assigned to clients not belonging to any of the three subnets. </para><para>Restart network services and Squid for the changes to take place. </para></section><section><title>Setting up web redirection</title><para>We'll see now how to integrate into the proxy a pluggable web redirector such as Squirm.  Squirm permits to define rules for URL rewriting, making it an effective and lightweight web filter. </para><para>For instance, Google search results can be set to the strictest <ulink url="http://support.google.com/websearch/bin/answer.py?hl=en&amp;answer=2521692">SafeSearch</ulink> level by appending <code>&amp;safe=active</code> to the search URL. By rewriting as such the URLs of all Google search queries, we ensure that all LAN users get only safe content. </para><para>(Note that Google is <ulink url="http://support.google.com/websearch/bin/answer.py?hl=en&amp;answer=173733">gradually switching to HTTPS for all searches</ulink>. As Squid only handles HTTP traffic, this won't work anymore.  However, you get the idea.) </para><para><ulink url="http://squirm.foote.com.au/">Download the latest version of Squirm (squirm-1.0betaB)</ulink>, untar it, then issue the following commands: </para><screen><![CDATA[root@squidbox:~# cd regex
+root@squidbox:~# ./configure
+root@squidbox:~# make clean
+root@squidbox:~# make
+root@squidbox:~# cp -p regex.o regex.h ..]]></screen><para>Get the names of the user and group the Squid process is running as: </para><screen><![CDATA[root@squidbox:~# ps -eo args,user,group | grep squid]]></screen><para>They should be respectively <emphasis>nobody</emphasis> and <emphasis>nogroup</emphasis>, but if this is not the case, note them.   Edit the Makefile and find the <code>install</code> directives.  Change the installation user and group names to the ones Squid executes as (most probably, <code>-o nobody -g nogroup</code> ). </para><para>Issue the commands: </para><screen><![CDATA[root@squidbox:~# make
+root@squidbox:~# make install]]></screen><para>Now Squirm is installed and needs to be configured. </para><para>The first configuration file is <code>/usr/local/squirm/etc/squirm.local</code> and must contain  the class C networks which will be served by Squirm. For instance, this file in our case might start like: </para><screen><![CDATA[10.4.1
+10.4.2
+10.4.128
+10.5.64
+10.5.65]]></screen><para>and so on.  Squirm will not operate for clients of any network not listed in this file. </para><para>The second configuration file is <code>/usr/local/squirm/etc/squirm.patterns</code> and contains a list of regexs that indicate which and how URLs must be rewritten. In our case, we want it to be: </para><screen><![CDATA[regexi ^(http://www\.google\..*/search\?.*) \1&safe=active
+regexi ^(http://www\.google\..*/images\?.*) \1&safe=active]]></screen><para>Finally, add the following lines to the Squid config file: </para><screen><![CDATA[redirect_program /usr/local/squirm/bin/squirm
+redirect_children 30
+]]><![CDATA[
+acl toSquirm url_regex ^http://www\.google\..*/(search|images)\?
+url_rewrite_access allow toSquirm
+url_rewrite_access deny all]]></screen><para>The first two lines tell Squid to let Squirm handle the redirection, and spawn 30 Squirm processes for that. The subsequent lines are an useful performance optimization.  Since Squirm can be kind of a bottleneck, here we are telling Squid to call Squirm only for these URLs that are going to be rewritten eventually, and not for any URL. It is important that the regexs here mirror exactly those specified in <code>squirm.patterns</code> . </para><para>Finally, restart Squid, and Squirm will be ready to go. You can monitor Squirm activity via the file <code>/usr/local/squirm/logs/squirm.match</code> which records all regex URL matches.  This file can grow quite big, so it's a good idea to set up a cron job to periodically delete it. </para></section><section><title>Generating usage reports</title><para><ulink url="http://sarg.sourceforge.net/">SARG (Squid Analysis Report Generator)</ulink> is a nice tool that generates stats about client IPs, visited websites, amount of downloaded data, and so on. </para><para>SARG is available as a standard Debian package: </para><screen><![CDATA[root@squidbox:~# apt-get install sarg]]></screen><para>and can be fine-tuned via its configuration file <code>/etc/squid/sarg.conf</code> . </para><para>SARG generates its reports based on the content of Squid's <code>access.log</code> files. As reports are in HTML format, it's handy to let an Apache server run on the Linux box and have SARG generate the reports in the Document Root dir. For this last point, set the parameter value <code>output_dir /var/www</code> in the SARG config file. We strongly suggest you to set up at least Basic HTTP Authentication to protect the reports from casual snoopers. </para><para>Stats for the current day are generated via the command: </para><screen><![CDATA[root@squidbox:~# /usr/sbin/sarg-reports today]]></screen><para>To have a daily report automatically made, add a line to the crontab file (and remember to restart the cron daemon afterwards): </para><screen><![CDATA[30 23 * * *   root   /usr/sbin/sarg-reports today]]></screen><para>Be careful: reports can reach massive sizes.  A single daily report for a LAN of 2000 clients browsing moderately the Web during normal work hours (8 AM - 5 PM) can amount to 150'000 files and a total size of 1 Gb.  Always monitor your disk space and inode usage via the commands </para><screen><![CDATA[root@squidbox:~# df -h; df -hi]]></screen><para>For this reason, we will arrange our system to targzip reports after 15 days, and eventually delete them after 3 months. To do so we create a script <code>/etc/squid/tarsarg.sh</code> : </para><screen><![CDATA[D_TAR=`date +%Y%b%d --date="15 days ago"`
+D_DEL=`date +%Y%b%d --date="3 months ago"`
+DAILY=/var/www/Daily
+ARCHIVE=/var/www/Archive
+LOGFILE=/etc/squid/tarsarg.log
+]]><![CDATA[
+mkdir -p $ARCHIVE/
+]]><![CDATA[
+if [ ! -d $DAILY/$D_TAR-$D_TAR/ ]
+then
+   echo "`date`: error: report for $D_TAR not found" >> $LOGFILE
+else
+   tar -czf $ARCHIVE/$D_TAR.tar.gz $DAILY/$D_TAR-$D_TAR/
+   rm -rf $DAILY/$D_TAR-$D_TAR/
+   echo "`date`: archived $D_TAR" >> $LOGFILE
+fi
+if [ ! -e $ARCHIVE/$D_DEL.tar.gz ]
+then
+   echo "`date`: error: targzip $D_DEL not found" >> $LOGFILE
+else
+   rm -f $ARCHIVE/$D_DEL.tar.gz
+   echo "`date`: deleted targzip $D_DEL" >> $LOGFILE
+fi]]></screen><para>Then we schedule this script to run daily, after the report generation, by adding the following line to the crontab file: </para><screen><![CDATA[0 1 * * *   root   /etc/squid/tarsarg.sh]]></screen><para>That's it.  Enjoy surfing with Squid! </para><!--rule (<hr>) is not applicable to DocBook--><para> CategoryConfigExample/Redirect </para></section></section></article>

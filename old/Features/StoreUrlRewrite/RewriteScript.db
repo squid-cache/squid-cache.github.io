@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE article  PUBLIC '-//OASIS//DTD DocBook XML V4.4//EN'  'http://www.docbook.org/xml/4.4/docbookx.dtd'><article><articleinfo><title>Features/StoreUrlRewrite/RewriteScript</title><revhistory><revision><revnumber>6</revnumber><date>2009-07-26 07:15:55</date><authorinitials>AmosJeffries</authorinitials><revremark>correct refresh_pattern docs</revremark></revision><revision><revnumber>5</revnumber><date>2008-05-18 19:38:56</date><authorinitials>localhost</authorinitials><revremark>converted to 1.6 markup</revremark></revision><revision><revnumber>4</revnumber><date>2008-01-20 07:41:18</date><authorinitials>AdrianChadd</authorinitials></revision><revision><revnumber>3</revnumber><date>2008-01-20 07:37:25</date><authorinitials>AdrianChadd</authorinitials></revision><revision><revnumber>2</revnumber><date>2007-11-27 14:29:28</date><authorinitials>AdrianChadd</authorinitials></revision><revision><revnumber>1</revnumber><date>2007-11-27 14:27:34</date><authorinitials>AdrianChadd</authorinitials></revision></revhistory></articleinfo><para>Helper Script: </para><screen><![CDATA[$| = 1;
+]]><![CDATA[
+# 20071127 - Adrian: Initial Import
+# 20080120 - Remove the google maps stuff for now; apparently its not needed!
+]]><![CDATA[
+while (<>) {
+        chomp;
+        # print STDERR $_ . "\n";
+        if (m/^http:\/\/([A-Za-z]*?)-(.*?)\.(.*)\.youtube\.com\/get_video\?video_id=(.*) /) {
+                # http://lax-v290.lax.youtube.com/get_video?video_id=jqx1ZmzX0k0
+                print "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $4 . "\n";
+                # print STDERR "=> http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $4 . "\n";
+        } elsif (m/^http:\/\/74\.125(.*?)\/get_video\?video_id=(.*?)&origin=(.*?)\.youtube\.com /) {
+                # http://74.125.15.97/get_video?video_id=78krbfy9hh0&origin=chi-v279.chi.youtube.com
+                print "http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
+                # print STDERR "=> http://video-srv.youtube.com.SQUIDINTERNAL/get_video?video_id=" . $2 . "\n";
+        } else {
+                print $_ . "\n";
+        }
+}]]></screen><para>Config Changes: </para><para>Make sure you remove these lines: </para><screen><![CDATA[#We recommend you to use the following two lines.
+acl QUERY urlpath_regex cgi-bin \?
+cache deny QUERY]]></screen><para>Refresh Patterns: </para><para>Places these refresh patterns at the end of your list. </para><screen><![CDATA[# This pattern works around currently broken If-Modified-Since revalidation behaviour from this
+# particular google/youtube URL set.
+refresh_pattern ^http:\/\/74\.125       86400 20% 86400 override-expire override-lastmod
+# This pattern defaults all content without revalidation/explicit expiry information to
+# not be cached; replacing the old "cache deny QUERY" rule. 
+refresh_pattern -i (/cgi-bin/|\?) 0  0%  0
+refresh_pattern .               0       20%     4320]]></screen><para>ACLs and store rewrite declaration: </para><screen><![CDATA[# store url redirector config
+]]><![CDATA[
+# old-style youtube URL:
+# http://sjl-v4.sjl.youtube.com/get_video?video_id=o6iJeypmPbs
+acl store_rewrite_list dstdomain .youtube.com
+]]><![CDATA[
+]]><![CDATA[
+# And now, since the "new style google youtube" videos use a damned IP host, grr!
+# http://74.125.15.97/get_video?video_id=78krbfy9hh0&origin=chi-v279.chi.youtube.com
+]]><![CDATA[
+acl google_youtube_1 dst 74.125.0.0/16
+acl google_youtube_2 urlpath_regex get_video\?video_id=
+]]><![CDATA[
+storeurl_access allow store_rewrite_list
+storeurl_access allow google_youtube_1 google_youtube_2
+storeurl_access deny all
+storeurl_rewrite_program /data/logs/bin/store_url_rewrite]]></screen></article>
