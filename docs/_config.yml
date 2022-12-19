@@ -2,7 +2,7 @@ remote_theme: pages-themes/slate@v0.2.0
 title: "Squid Web Cache wiki"
 description: Squid Web Cache documentation
 
-url: "https://squid-cache.github.io"
+url: "https://wiki.squid-cache.org"
 plugins:
   - jekyll-remote-theme
   - jekyll-sitemap
