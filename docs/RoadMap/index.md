@@ -13,14 +13,14 @@ Feature sets are established for Squid development projects: The TODO
 List and The Wish List.
 
 * TODO list
-    TODO list features determine the release focus and timeline. Each
+:   TODO list features determine the release focus and timeline. Each
     feature must document their desired effect and estimated development
     time. Each feature must have at least one known active developer
     behind it willing to prioritize the feature and be ready to spend
     the time to fully develop the proposed feature (i.e., write, test,
     document, commit, and provide initial support).
 * Wish List
-    The Wish List accumulates features that do not meet the strict TODO
+:   The Wish List accumulates features that do not meet the strict TODO
     List criteria. Many of these features can be implemented if there is
     enough demand or a sponsor. Some may get implemented outside of the
     official process, submitted as patches, and accepted into the
