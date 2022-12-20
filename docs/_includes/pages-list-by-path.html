@@ -8,5 +8,6 @@ arguments:
 {% for p in pdir -%}
 {%- assign purl = p.url | replace: page.dir, "" | replace: ".html", "" -%}
 {%- if purl == "" -%}{%- continue -%}{%- endif -%}
-{{prefix}} [{{ p.title | default: p.url }}]({{ purl }})
+{%- assign pathsuffix = p.url | replace: ".html", "" | split: "/" | last -%}
+{{prefix}} [{{ p.title | default: pathsuffix }}]({{ purl }})
 {% endfor %}
