@@ -18,3 +18,4 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+      permalink: :path/:basename # make sitemap.xml not include .html
