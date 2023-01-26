@@ -27,7 +27,7 @@ contents, and also possibly perform request filtering to enhance the
 web applications' security. It can also be used as an IPv4-IPv6 (or
 v6-v4) gateway.
 
-#Why should I use Squid?
+# Why should I use Squid?
 
 [Squid](/SquidFaq/AboutSquid)
 is one of the most used HTTP proxy implementations, and can be deployed
