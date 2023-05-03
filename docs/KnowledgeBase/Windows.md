@@ -60,8 +60,7 @@ Binary packages for the Cygwin environment on Windows are at:
 
 ## Service
 
-Some new command line options were added for the Windows service
-support:
+Command line options for the Windows service support:
 
 - **-n** switch to specify the Windows Service Name. Multiple Squid
     service instances are allowed. **Squid** is the default when the
@@ -80,7 +79,7 @@ support:
 
         squid -r [-n service-name]
 
-  - **-k** switch is not new, but requires the use of **-n** to target
+- **-k** switch is not new, but requires the use of **-n** to target
     the service instance. The syntax is:
 
         squid -k command [-f file] [-n service-name]
@@ -97,7 +96,7 @@ The **-n** switch is needed only when a non default service name is in
 use.
 
 > :x:
-    Don't use the "Start parameters" in the Windows 2000/XP/2003 Service
+    Do not use the "Start parameters" in the Windows 2000/XP/2003 Service
     applet. They are specific to Windows services functionality and
     Squid is not able to interpret and use them.
 
@@ -113,18 +112,18 @@ can be used with Microsoft IIS or Apache. Some specific configuration
 could be needed:
 
 - **IIS 6** (Windows 2003):
-    - On IIS 6.0 all CGI extensions are denied by default for security
-        reason, so the following configuration is needed:
-        - Create a cgi-bin Directory
-        - Define the cgi-bin IIS Virtual Directory with read and CGI
-            execute IIS permissions, ASP scripts are not needed. This
-            automatically defines a cgi-bin IIS web application
-        - Copy cachemgr.cgi into cgi-bin directory and look to file
-            permissions: the IIS system account and SYSTEM must be able
-            to read and execute the file
-        - In IIS manager go to Web Service extensions and add a new
-            Web Service Extension called "Squid Cachemgr", add the
-            cachemgr.cgi file and set the extension status to Allowed
+    - On IIS 6.0 all CGI extensions are denied by default for security,
+        so the following configuration is needed:
+          - Create a cgi-bin Directory
+          - Define the cgi-bin IIS Virtual Directory with read and CGI
+              execute IIS permissions, ASP scripts are not needed. This
+              automatically defines a cgi-bin IIS web application
+          - Copy cachemgr.cgi into cgi-bin directory and look to file
+              permissions: the IIS system account and SYSTEM must be able
+              to read and execute the file
+          - In IIS manager go to Web Service extensions and add a new
+              Web Service Extension called "Squid Cachemgr", add the
+              cachemgr.cgi file and set the extension status to Allowed
 
 - **Apache**:
     On Windows, cachemgr.cgi needs to create a temporary file, so
@@ -176,7 +175,7 @@ dynamic DHCP configurations are supported.
         url_rewrite_program c:/winnt/system32/cmd.exe /C c:/squid/libexec/redir.cmd
 
 - When Squid runs in command line mode, the launching user account
-must have administrative privilege on the system
+    must have administrative privilege on the system
 - "Start parameters" in the Windows 2000/XP/2003 Service applet cannot
     be used
 - On Windows Vista and later, User Account Control (UAC) must be
@@ -198,7 +197,7 @@ must have administrative privilege on the system
 
 > :warning:
     This section needs re-writing. Is has very little in compiling
-    Squid and much about installation.**
+    Squid and much about installation.
 
 In order to compile Squid, you need to have Cygwin fully installed.
 
@@ -216,21 +215,12 @@ become the squid runas users.
 
 Read the squid FAQ on permissions if you are using CYGWIN=ntsec.
 
-When that has completed run:
-
-    squid -z
-
-If that succeeds, try:
-
-    squid -N -D -d1
-
-Squid should start. Check that there are no errors. If everything looks
-good, try browsing through squid.
-
 Now, configure *cygrunsrv* to run Squid as a service as the chosen
 username. You may need to check permissions here.
 
 ## Compiling with MinGW
+
+Requires the latest packages from <https://osdn.net/projects/mingw/> with GCC 8 or later compiler.
 
 In order to compile squid using the MinGW environment, the packages
 MSYS, MinGW and msysDTK must be installed. Some additional libraries and
@@ -251,31 +241,21 @@ C:\\MinGW):
     C:\\MinGW\\include\\openssl
 - Rename C:\\MinGW\\lib\\ssleay32.a to C:\\MinGW\\lib\\libssleay32.a
 
-Unpack the source archive as usual and run configure.
+Unpack the source archive as usual and run:
 
-The following are the recommended minimal options for Windows:
+```bash
+    ./configure \
+        CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        --enable-build-info="Windows (MinGW32)" \
+        --prefix=c:/squid \
+        --enable-default-hostsfile=none
 
-**Squid-3** : (requires [Squid-3.5](/Releases/Squid-3.5)
-or later, see porting efforts section below)
-
-    --prefix=c:/squid
-    --enable-default-hostsfile=none
-
-Then run make and install as usual.
+    make check && make install
+```
 
 Squid will install into *c:\\squid*. If you wish to install somewhere
 else, change the *--prefix* option for configure.
-
-When that has completed run:
-
-    squid -z
-
-If that succeeds, try:
-
-    squid -N -D -d1
-
-  - squid should start. Check that there are no errors. If everything
-    looks good, try browsing through squid.
 
 Now, to run Squid as a Windows system service, run *squid -n*, this will
 create a service named "Squid" with automatic startup. To start it run
@@ -289,10 +269,10 @@ Always check the provided release notes for any version specific detail.
 > :x: to be completed
 
 
-# Squid-3 porting efforts
+# Porting efforts
 
-Squid series 3 has major build issues on all Windows compiler systems.
-Below is a summary of the known status for producing a useful Squid 3.x
+Squid series 3+ have major build issues on all Windows compiler systems.
+Below is a summary of the known status for producing a useful Squid
 for Windows. In a rough order of completeness as of the last page
 update.
 
@@ -306,99 +286,69 @@ to be sorted out:
     functionality.
 - Building an installer
 
+Issues:
+- missing shared socket support available in Vista and later.
+    Necessary for SMP workers.
+- The main Squid binary still lacks SMP support and will only operate
+    with the **-N** command line option.
+
 ## Cygwin
 
-Cygwin has working builds and available packages sponsored by
+Cygwin has working [Squid-4](Releases/Squid-4) builds and available packages sponsored by
 [Diladele](http://www.diladele.com/).
 
 ## MinGW-w64
 
-As of
-[Squid-3.5](/Releases/Squid-3.5) :
-
-  - the default featu   re set builds without extra special ./configure
-    options.
-- missing shared socket support available in Vista and later.
-    Necessary for SMP workers.
-
-[AmosJeffries](/AmosJeffries) is cross-compiling with Mingw-w64 build
-environment on Debian, with
-occasional native MinGW-w64 environment builds for confirmation of
-changes. As this is spare-time work progress is slow.
+Currently the spare-time focus of porting efforts by the Squid developer team.
+Latest cross-compilation results at <https://build.squid-cache.org/job/trunk-mingw-cross/>.
+As this is spare-time work progress is slow.
 
 **cross-compiling:**
 ```bash
     # Debian Packages Required:
     #
     # g++
-    #       provides GCC base compiler. GCC 4.9.1 or later required.
+    #       provides GCC base compiler. GCC 8 or later required.
     #
     # mingw-w64
-    #       provides GCC cross-compiler. GCC 4.9.1 or later required.
+    #       provides GCC cross-compiler. GCC 8 or later required.
     #
     # mingw-w64-tools
     #       provides pkg-config and other build-time tools used by autoconf
     #
 
     ./configure \
-            --host=i686-w64-mingw32 \
+            --host=x86_64-w64-mingw32 \
             CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
             CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
             BUILDCXX="g++" \
             BUILDCXXFLAGS="-DFOO" \
-            --enable-build-info="Windows (MinGW cross-build)"
+            --enable-build-info="Windows (MinGW-w64 cross-build)"
 ```
-- This builds
-- The squidclinet tool operates well, other helpers and tools are yet
-    untested but expected to be fine.
-- The main Squid binary still lacks SMP support and will only operate
-    with the **-N** command line option.
-
 
 **Native build:**
 
-Requires the latest packages from
-<http://sourceforge.net/projects/mingw-w64/> with GCC 4.9 series
-compiler.
+> :x:  No work on this environment has been done since [Squid-3.3](/Releases/Squid-3.3):
 
+Requires the latest packages from <http://sourceforge.net/projects/mingw-w64/> with GCC 8 or later compiler.
+
+```bash
     sh ./configure \
-            CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
-            CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
-            --enable-build-info="Windows (MinGW-w64)"
+        CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
+        --enable-build-info="Windows (MinGW-w64)"
+```
 
 ## MinGW32
 
-Sponsorship from iCelero produced a working
-[Squid-3.2](/Releases/Squid-3.2)
-and
-[Squid-3.3](/Releases/Squid-3.3).
-Unfortunately the product and sponsorship dropped before the final
-stages of this work could be cleaned up for GPL release.
-
-As of[Squid-3.5](/Releases/Squid-3.5):
-
-- the default feature set builds without extra special ./configure
-    options.
-- missing shared socket support available in Vista and later.
-    Necessary for SMP workers.
-
-        ./configure \
-                CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
-                CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
-                --enable-build-info="Windows (MinGW32)"
-- This builds for [Squid-3.5](/Releases/Squid-3.5)
-    but not later code. A newer GCC version than supplied with
-    _MingW32_ is required.
-- The main Squid binary still lacks SMP support and will only operate
-    with the **-N** command line option.
+> :x:  Almost no work on this environment has been done since [Squid-3.5](/Releases/Squid-3.5):
 
 There also appears to be some work done by Joe Pelaez Jorge
 (<https://code.launchpad.net/~joelpelaez/squid/win32>).
 
 ## Visual Studio
 
-Almost no work on this environment has been done since
-[Squid-2.7](/Releases/Squid-2.7).
+> :x:  Almost no work on this environment has been done since [Squid-2.7](/Releases/Squid-2.7).
 
 Entirely new .sln, .sdf and .vcxproj build files need to be generated.
 Ideally these would mirror the on-Windows style of convenience libraries
