@@ -222,6 +222,9 @@ username. You may need to check permissions here.
 
 Requires the latest packages from <https://osdn.net/projects/mingw/> with GCC 8 or later compiler.
 
+> :warning:
+    This section needs re-writing. This environment has not successfuly built since [Squid-3.4](Releases/Squid-3.4).
+
 In order to compile squid using the MinGW environment, the packages
 MSYS, MinGW and msysDTK must be installed. Some additional libraries and
 tools must be downloaded separately:
