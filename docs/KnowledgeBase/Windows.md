@@ -249,8 +249,6 @@ Unpack the source archive as usual and run:
 
 ```bash
     ./configure \
-        CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
-        CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
         --enable-build-info="Windows (MinGW32)" \
         --prefix=c:/squid \
         --enable-default-hostsfile=none
@@ -323,8 +321,6 @@ As this is spare-time work progress is slow.
 
     ./configure \
             --host=x86_64-w64-mingw32 \
-            CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
-            CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
             BUILDCXX="g++" \
             BUILDCXXFLAGS="-DFOO" \
             --enable-build-info="Windows (MinGW-w64 cross-build)"
@@ -338,8 +334,6 @@ Requires the latest packages from <http://sourceforge.net/projects/mingw-w64/> w
 
 ```bash
     sh ./configure \
-        CXXFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
-        CFLAGS="-DWINVER=0x601 -D_WIN32_WINNT=0x601" \
         --enable-build-info="Windows (MinGW-w64)"
 ```
 
