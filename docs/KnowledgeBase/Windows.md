@@ -58,6 +58,25 @@ Binary packages for the Cygwin environment on Windows are at:
 
 # Installing Squid
 
+## Installing with Cygwin
+
+The usage of the Cygwin environment is very similar to other Unix/Linux
+environments, and -devel version of libraries must be installed.
+
+> :information_source:
+    Squid will by default, install into */usr/local/squid*.
+    If you wish to install somewhere else, see
+    the *--prefix* option for configure when building
+
+Now, add a new Cygwin user (see the Cygwin user guide) and map it to
+`SYSTEM`, or create a new NT user, and a matching Cygwin user and they
+become the `squid` runas users.
+
+Read the squid FAQ on permissions if you are using `CYGWIN=ntsec`.
+
+Now, configure *cygrunsrv* to run Squid as a service as the chosen
+username. You may need to check permissions here.
+
 ## Service
 
 Command line options for the Windows service support:
@@ -195,28 +214,10 @@ dynamic DHCP configurations are supported.
 
 ## Compiling with Cygwin
 
-> :warning:
-    This section needs re-writing. Is has very little in compiling
-    Squid and much about installation.
-
 In order to compile Squid, you need to have Cygwin fully installed.
 
 The usage of the Cygwin environment is very similar to other Unix/Linux
 environments, and -devel version of libraries must be installed.
-
-> :information_source:
-    Squid will by default, install into */usr/local/squid*.
-    If you wish to install somewhere else, see
-    the *--prefix* option for configure
-
-Now, add a new Cygwin user - see the Cygwin user guide - and map it to
-SYSTEM, or create a new NT user, and a matching Cygwin user and they
-become the squid runas users.
-
-Read the squid FAQ on permissions if you are using CYGWIN=ntsec.
-
-Now, configure *cygrunsrv* to run Squid as a service as the chosen
-username. You may need to check permissions here.
 
 ## Compiling with MinGW
 
