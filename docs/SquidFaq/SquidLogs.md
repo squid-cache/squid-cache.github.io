@@ -150,7 +150,7 @@ underscore characters) which describe the response sent to the client.
     occured during response delivery (if any):
 
     | --- | --- |
-    | **ABORTED** | The response was not completed due to the connection being aborted (usually by the client). |
+    | **ABORTED** | A client-to-Squid or Squid-to-server connection was closed unexpectedly, usually due to an I/O error or clean transport connection closure in the middle of some higher-level protocol message/negotiation. Before Squid v6, this tag was primarily seen when the client closed its connection to Squid before Squid could deliver the entire response. Since Squid v6, the tag also appears when Squid communication with an origin server or cache_peer is impossible (e.g., the server is refusing TCP connections) or aborted (e.g., an EOF in the middle of a chunked HTTP response body transfer). |
     | **TIMEOUT** | The response was not completed due to a connection timeout. |
     | **IGNORED** | While refreshing a previously cached response A, Squid got a response B that was *older* than A (as determined by the Date header field). Squid ignored response B (and attempted to use A instead). This "ignore older responses" logic complies with RFC [7234](https://tools.ietf.org/rfc/rfc7234) Section [4](https://tools.ietf.org/html/rfc7234#section-4) requirement: a cache MUST use the most recent response (as determined by the Date header field). |
 
