@@ -38,8 +38,7 @@ Key:
 
 | Unit Tests | Stub | Namespace | forward.h | Polish | Group | Definition | Files and To-do |
 | ---------- | ---- | --------- | --------- | ------ | ----- | ---------- | --------------- |
-| :neutral_face:     | -                  | -                  | -                  | :neutral_face:     | ~/compat/        | Portability primitives.
-This is a full layer below everything, should be seamless with the OS API. | ** migrate remaining pieces from squid.h and squid-old.h into compat              |
+| :neutral_face:     | -                  | -                  | -                  | :neutral_face:     | ~/compat/        | Portability primitives. This is a full layer below everything, should be seamless with the OS API. | ** migrate remaining pieces from squid.h and squid-old.h into compat              |
 | :frowning:         | :frowning:         | :frowning:         | :heavy_check_mark: | :neutral_face:     | acl/             | Access Controls                                                                                    | ACL*external_acl.*, Add Acl namespace and rename classes?                        |
 | :frowning:         | :frowning:         | :frowning:         | :heavy_check_mark: | :heavy_check_mark: | adaptation/      | code common to eCAP and ICAP                                                                       |
 | :frowning:         | :frowning:         | :frowning:         | :frowning:         | :heavy_check_mark: | adaptation/ecap/ | eCAP support                                                                                       |
