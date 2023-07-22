@@ -84,7 +84,7 @@ Key:
 | :frowning:         | :frowning:         | :frowning:         | :frowning:         | :neutral_face:     | repl/lru/        | Cache Replacement Policy algorithms                                                                |
 | :neutral_face:     | :heavy_check_mark: | :frowning:         | :heavy_check_mark: | :heavy_check_mark: | sbuf/            | SBuf (string buffer) components and related algorithms                                             |
 | :frowning:         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | security/        | Transport Layer Security components |
-| :frowning:         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | security/sspi/        | Windows Security Support Provider Interface |
+| :frowning:         | :frowning: | :frowning: | :frowning: | :frowning: | security/sspi/        | Windows Security Support Provider Interface |
 | :frowning:         | :frowning:         | :frowning:         | :heavy_check_mark: | :neutral_face:     | servers/         | Listening Server components for receiving connections                                              | client_side*                                                                      |
 | :frowning:         | :frowning:         | :frowning:         | :heavy_check_mark: | :neutral_face:     | snmp/            | SNMP components                                                                                    | snmp_*, move core and agent code. restructure for extensibility.                  |
 | :frowning:         | :heavy_check_mark: | :frowning:         | :frowning:         | :neutral_face:     | ssl/             | OpenSSL components                                                                                 | library is named libsslsquid.la and matchgin stub_lib*.cc                         |
@@ -159,11 +159,6 @@ test files go in test-suite directory. |
             operators for any object implementing the Packable API
 - **debugs()** macro handling still has a small circular dependency
     with libsquid, libbase files and file IO.
-- automake can generate library dependency links for us from
-    foo_LDADD. But for historic reasons that no longer apply most of
-    the makefiles are using foo_DEPENDENCIES which disables that
-    functionality. We should remove the foo_DEPENDENCIES instead and
-    move to foo_LDADD any objects not already there.
 
 ### Other
 
