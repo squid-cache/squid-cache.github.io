@@ -88,7 +88,7 @@ initialization order problems, including globals in the global namespace,
 namespace-scope globals, and class-scope static members (regardless of their
 access modifiers). This rule does not apply to function-scoped variables.
 
-This rule *does* apply to would-be globals of built-in/intrinsic types because
+This rule _does_ apply to would-be globals of built-in/intrinsic types because
 they may be subject to similar [initialization
 problems](https://isocpp.org/wiki/faq/ctors#static-init-order-on-intrinsics).
 
