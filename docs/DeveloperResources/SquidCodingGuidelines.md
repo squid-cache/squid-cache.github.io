@@ -53,9 +53,52 @@ formater.
     4. use `= default` declaration whenever possible if it is
       sufficient and `= delete` declaration when method is
       prohibited.
+* Avoid adding new globals as detailed in the section below.
 * Naming conventions as covered in
   [Features/SourceLayout](/Features/SourceLayout)
   are to be used.
+
+### Rule: No new globals
+
+C++ globals are prone to several [initialization order-related
+problems](https://isocpp.org/wiki/faq/ctors#static-init-order). In most cases,
+globals are unnecessary. Unnecessary globals should not be added to Squid. In
+most cases, an unnecessary global Foo of type Type should be replaced with the
+following wrapper function:
+
+```C++
+auto &
+Foo()
+{
+    static const auto foo = new Type(...);
+    return *foo;
+}
+```
+
+The function may be marked static, become a class member, adjusted to return a
+constant reference, and/or contain more complex object initialization code, as
+needed.
+
+The increased performance cost of accessing an object through a function
+wrapper (as opposed to direct access to a global object) is _not_ a valid
+excuse for avoiding a global.
+
+This rule applies to all objects that are (or may become) susceptible to
+initialization order problems, including globals in the global namespace,
+namespace-scope globals, and class-scope static members (regardless of their
+access modifiers). This rule does not apply to function-scoped variables.
+
+This rule *does* apply to would-be globals of built-in/intrinsic types because
+they may be subject to similar [initialization
+problems](https://isocpp.org/wiki/faq/ctors#static-init-order-on-intrinsics).
+
+To avoid [deinitialization order
+problems](https://isocpp.org/wiki/faq/ctors#construct-on-first-use-v2), the
+wrapper function must dynamically allocate the would-be global to prevent its
+destruction. In very rare cases where the global must be destructed at the end
+of the program, a [Nifty
+Counter](https://isocpp.org/wiki/faq/ctors#nifty-counter-idiom) may be used
+instead of the wrapper function.
 
 ## Suggested coding rules
 
