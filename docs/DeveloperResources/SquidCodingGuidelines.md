@@ -83,7 +83,7 @@ The increased performance cost of accessing an object through a function
 wrapper (as opposed to direct access to a global object) is _not_ a valid
 excuse for avoiding a global.
 
-This rule applies to all objects that are (or may become) susceptible to
+This rule applies to all new objects that are (or may become) susceptible to
 initialization order problems, including globals in the global namespace,
 namespace-scope globals, and class-scope static members (regardless of their
 access modifiers). This rule does not apply to function-scoped variables.
@@ -91,6 +91,13 @@ access modifiers). This rule does not apply to function-scoped variables.
 This rule *does* apply to would-be globals of built-in/intrinsic types because
 they may be subject to similar [initialization
 problems](https://isocpp.org/wiki/faq/ctors#static-init-order-on-intrinsics).
+
+This rule does not apply to existing globals. The global prior existence is
+determined by its name. For example, changing the type of an existing global
+does not automatically subject that global to this rule, especially if many
+users of that global remain unchanged. A dedicated pull request may propose to
+convert an existing global if the authors think that the benefits of the
+conversion outweigh its negative side effects, of course.
 
 To avoid [deinitialization order
 problems](https://isocpp.org/wiki/faq/ctors#construct-on-first-use-v2), the
