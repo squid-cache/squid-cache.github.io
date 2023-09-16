@@ -19,10 +19,10 @@ description on HTTP specifics and how it operates.
 At the broad level Squid consists of five generic processing areas;
 
 - client facing (was "client-side") which implements HTTP, HTTPS,
-    PROXY, FTP, ICP, HTCP, and SNMP protocols to communicate with
+    PROXY, FTP, SFTP, ICP, HTCP, SNMP and "other protocols to communicate with
     clients, and
 - server facing (was "server-side") which implements HTTP, HTTPS, ICY,
-    FTP, Gopher, WAIS, URN-N2H, and blind TCP tunnels to communicate
+    FTP, Gopher (until [/Releases/Squid-6](Squid v6)), WAIS, URN-N2H, and blind TCP tunnels to communicate
     with web servers (with or without an upstream proxy/relay) , and
 - between them is the cache storage. Which in broad terms provides the
     buffering mechanisms for data transit, and provides switching logic
