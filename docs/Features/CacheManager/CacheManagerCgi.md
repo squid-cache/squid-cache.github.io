@@ -17,4 +17,4 @@ More information is currently available at
 
 - [CacheManager](/Features/CacheManager)
 - [CacheObjectScheme](/Features/CacheManager/CacheObjectScheme)
-- [CacheMgrJs]/Features/CacheManagerCacheMgrJs, a possible replacement for the CGI tool
+- [CacheMgrJs](/Features/CacheManagerCacheMgrJs), a possible replacement for the CGI tool
