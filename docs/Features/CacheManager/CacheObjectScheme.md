@@ -1,5 +1,7 @@
 # cache_object:// URI Scheme
 
+ * :warning: This Feature has been removed in [Squid-6](/Releases/Squid-6).
+
 The `cache_object` is the URI scheme which can be used to access the
 [Cache Manager](/Features/CacheManager).
 The scheme specific part is defined as below:
@@ -22,7 +24,7 @@ pages that require it.
 > :information_source:
   [Squid-4](/Releases/Squid-4)
   and later serve Cache Manager contents through the
-  `http://hostname/squid-internal-mgr` URL-prefix
+  `http://hostname/squid-internal-mgr` URL-prefix.
 
 ## Examples
 
