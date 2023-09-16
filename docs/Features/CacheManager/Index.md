@@ -3,9 +3,8 @@
 It is the Squid internal subsystem that provides a
 common way for registering, finding and triggering management actions.
 It interfaces with the outside world through the normal Squid HTTP
-server, responding requests made with the
-[cache_object scheme](/Features/CacheManager/CacheObjectScheme)
-or with the `/squid-internal-mgr` well-known URL path.
+server, responding requests made with the `/squid-internal-mgr` well-known URL path,
+or with the now deprecated [ `cache_object:` URL scheme](/Features/CacheManager/CacheObjectScheme)
 
 Sometimes it is confused with the [Cache Manager CGI]/Features/CacheManager/CacheManagerCgi.
 This last one is just an external CGI application that reads data from
@@ -20,16 +19,16 @@ password.
 ## Ways to access the manager reports
 
 Squid packages come with some tools for accessing the cache manager:
-- [cachemgr.cgi](./CacheManagerCgi)
-    is a CGI utility for online browsing of the manager reports. It can
-    be configured to interface with multiple proxies so provides a
-    convenient way to manage proxies and view statistics without logging
-    into each server.
 - [squidclient](/Features/CacheManager/SquidClientTool)
     is a command line utility for performing web requests. It also has a
     special ability to send cache manager requests to Squid proxies.
 - [CacheMgrJs](./CacheMgrJs) is a javascript-based tool
     being developed as an alternative to the CGI tool
+- (deprecated) [cachemgr.cgi](./CacheManagerCgi)
+    is a CGI utility for online browsing of the manager reports. It can
+    be configured to interface with multiple proxies so provides a
+    convenient way to manage proxies and view statistics without logging
+    into each server.
 
 Given that the Cache Manager uses plain HTTP, it's possible - and in fact easy -
 to develop custom tools
