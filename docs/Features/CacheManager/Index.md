@@ -6,7 +6,7 @@ It interfaces with the outside world through the normal Squid HTTP
 server, responding requests made with the `/squid-internal-mgr` well-known URL path,
 or with the now deprecated [ `cache_object:` URL scheme](/Features/CacheManager/CacheObjectScheme)
 
-Sometimes it is confused with the [Cache Manager CGI]/Features/CacheManager/CacheManagerCgi.
+Sometimes it is confused with the [Cache Manager CGI](/Features/CacheManager/CacheManagerCgi).
 This last one is just an external CGI application that reads data from
 the Squid Cache Manager and presents in HTML.
 
