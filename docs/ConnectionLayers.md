@@ -93,8 +93,8 @@ class MiddleIoLayer: public LowerIoLayer, public UpperIoLayer
 public:
     /* LowerIoLayer and UpperIoLayer APIs */
     ~MiddleIoLayer() override {}
-    LowerIoLayer *lastLower() override { return LowerIoLayer::lastLower(); }
-    UpperIoLayer *lastUpper() override { return LowerIoLayer::lastUpper(); }
+    LowerIoLayer &lastLower() override { return LowerIoLayer::lastLower(); }
+    UpperIoLayer &lastUpper() override { return LowerIoLayer::lastUpper(); }
 };
 
 // Only the [last] UpperIoLayer may initiate the closing sequences, including
