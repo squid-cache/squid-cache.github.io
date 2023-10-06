@@ -248,6 +248,23 @@ descriptions without chasing overrides through parents.
 Destructors should be declared with `override` specifier, but are _not_
 grouped with other overrides.
 
+### CBDATA- and MEMPROXY-related declarations
+
+Squid has some legacy code that forces CBDATA- and MEMPROXY-related
+declarations to be hoisted to the very top of the class, into the "unnamed"
+section. Such hoisting is an exception to the above rules. Eventually, we will
+stop hoisting, but we should continue doing that for consistency sake until we
+get rid of the offending macros.
+
+```C++
+class Uri
+{
+    MEMPROXY_CLASS(Uri);
+
+public:
+    Uri();
+};
+```
 
 ### Caveats
 
@@ -256,12 +273,6 @@ specifiers or members that the code does not actually need (except the
 "private" specifier should be mentioned explicitly in class declarations that
 have only private members -- do not rely on the class default access specifier
 being "private").
-
-Squid has some legacy code that forces CBDATA-related declarations to be
-hoisted to the very top of the class, into the "unnamed" section. Such
-hoisting is an exception to the above rules. Eventually, we will stop doing
-that, but we should continue doing that for consistency sake until the
-offending CBDATA macros are gone.
 
 Like any style rules, these rules are not comprehensive. If your use case is
 not explicitly covered, then look around for similar Squid code and try to be
