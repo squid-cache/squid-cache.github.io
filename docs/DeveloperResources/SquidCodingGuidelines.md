@@ -278,7 +278,6 @@ Like any style rules, these rules are not comprehensive. If your use case is
 not explicitly covered, then look around for similar Squid code and try to be
 consistent and/or reasonable.
 
-
 ## Member naming
 
 Pick one of the applicable styles described below and stick to it. For
