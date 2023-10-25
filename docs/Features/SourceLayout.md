@@ -138,7 +138,6 @@ to squid-dev mailing list.
 test files go in test-suite directory. |
 | What to do with third-party integration scripts and files? | Place in application-specific subdirectories off tools/ |
 
-
 ## Dependency Issues:
 
 - Cache manager **storeAppendPrintf** - just about every component
@@ -159,6 +158,13 @@ test files go in test-suite directory. |
             operators for any object implementing the Packable API
 - **debugs()** macro handling still has a small circular dependency
     with libsquid, libbase files and file IO.
+
+### Testing Architecture
+
+Per developers meeting 2023-10-25:
+ - restructure src/Makefile.am to link all squid objects and libraries into libsquid.la.
+ - redesign tests to link libsquid.la
+ - provide distinct main.cc files for each binary, linked against libsquid.la
 
 ### Other
 
