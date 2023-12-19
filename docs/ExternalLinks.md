@@ -11,6 +11,9 @@ developers and users.
 :   An introductory article by Kent Tong to core proxy and
     reverse-proxy concepts, with some clear examples for squid
 
+- [How to Setup a Proxy Server with Squid and Raspberry PI](https://peppe8o.com/setup-a-proxy-server-with-raspberry-pi-os-lite-and-squid/)
+:   Giuseppe Cassibba shows how to install Squid on Raspberry PI.
+
 ## For developers
 
 - <http://blogs.msdn.com/ie/archive/2005/10/22/483795.aspx>
