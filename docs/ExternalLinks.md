@@ -1,6 +1,6 @@
 ---
 ---
-# External resoruces and links
+# External resources and links
 
 Here go resources to external sites which might be of interest to
 developers and users.
