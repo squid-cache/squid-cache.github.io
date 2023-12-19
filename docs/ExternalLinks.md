@@ -2,8 +2,7 @@
 ---
 # External resources and links
 
-Here go resources to external sites which might be of interest to
-developers and users.
+These external sites may be of interest to developers and users.
 
 ## Introductory
 
