@@ -10,4 +10,4 @@ FaqSection: operation
 
 The terms **Accelerator Proxy**, **httpd-accelerator**, and **Reverse Proxy**
 were all used in the past to describe what the HTTP Standard now officially
-defines as a [**Gateway Proxy**](GatewayProxy).
+defines as a [**Gateway Proxy**](HttpGatewayProxy).
