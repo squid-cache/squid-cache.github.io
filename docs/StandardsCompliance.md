@@ -117,9 +117,9 @@ for use in your network.
 | [rfc 9220](https://tools.ietf.org/rfc/rfc9220) | Bootstrapping !WebSockets with HTTP/3 | :x: |
 | [rfc 9230](https://tools.ietf.org/rfc/rfc9230) | Oblivious DNS over HTTPS | :warning:  | HTTPS relay only |
 | [rfc 9292](https://tools.ietf.org/rfc/rfc9292) | Binary Representation of HTTP Messages | :x: |
-| [rfc 9292](https://tools.ietf.org/rfc/rfc9292) | Binary Representation of HTTP Messages | :x: |
 | [rfc 9421](https://tools.ietf.org/rfc/rfc9421) | HTTP Message Signatures  | :x: |
 | [rfc 9530](https://tools.ietf.org/rfc/rfc9530) | Digest Fields   | :x: |
+| [rfc 9532](https://tools.ietf.org/rfc/rfc9532) | HTTP Proxy-Status Parameter for Next-Hop Aliases | :x: |
 
 
 ### IETF Drafts
