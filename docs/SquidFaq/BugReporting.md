@@ -298,8 +298,7 @@ stuck in a busy loop, and/or you want to know what your Squid is doing
         sudo gdb -n -batch -ex 'backtrace full' -pid <PID>
 ```
     You may not need/want the `-n` (i.e. do not load gdb initialization
-    files) option. Using `backtrace` instead of `backtrace full` will
-    give less info but might be a tad faster.
+    files) option.
 1. To dump the current stack using pstack(1):
 ```
         sudo pstack <PID>
