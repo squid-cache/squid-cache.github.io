@@ -97,7 +97,6 @@ for use in your network.
 | [rfc 8586](https://tools.ietf.org/rfc/rfc8586) | Loop Detection in Content Delivery Networks (CDNs) | :heavy_check_mark: | from [Squid-5](/Releases/Squid-5). |
 | [rfc 8615](https://tools.ietf.org/rfc/rfc8615) | Well-Known Uniform Resource Identifiers (URIs) | :x: |
 | [rfc 8673](https://tools.ietf.org/rfc/rfc8673) | HTTP Random Access and Live Content | :x: |
-| [rfc 8941](https://tools.ietf.org/rfc/rfc8941) | Structured Field Values for HTTP | :x: |
 | [rfc 8942](https://tools.ietf.org/rfc/rfc8942) | HTTP Client Hints | :x: |
 | [rfc 8999](https://tools.ietf.org/rfc/rfc8999) | Version-Independent Properties of QUIC | :x: | Merge Request SquidPr:919 |
 | [rfc 9000](https://tools.ietf.org/rfc/rfc9000) | QUIC: A UDP-Based Multiplexed and Secure Transport | :x: | Merge Request SquidPr:919 |
@@ -120,6 +119,7 @@ for use in your network.
 | [rfc 9421](https://tools.ietf.org/rfc/rfc9421) | HTTP Message Signatures  | :x: |
 | [rfc 9530](https://tools.ietf.org/rfc/rfc9530) | Digest Fields   | :x: |
 | [rfc 9532](https://tools.ietf.org/rfc/rfc9532) | HTTP Proxy-Status Parameter for Next-Hop Aliases | :x: |
+| [rfc 9651](https://tools.ietf.org/rfc/rfc9651) | Structured Field Values for HTTP | :x: |
 
 
 ### IETF Drafts
