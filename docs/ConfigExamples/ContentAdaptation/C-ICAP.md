@@ -57,6 +57,7 @@ Edit c-icap.conf as follows:
     ServicesDir /usr/local/lib/c_icap
     LoadMagicFile /usr/local/etc/c-icap.magic
 
+    acl all src 0.0.0.0/0.0.0.0
     acl localhost src 127.0.0.1/255.255.255.255
     acl PERMIT_REQUESTS type REQMOD RESPMOD
     icap_access allow localhost PERMIT_REQUESTS
