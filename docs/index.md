@@ -48,4 +48,6 @@ mailing list, and during pull request reviews on
 - The book [Squid Proxy Server 3.1: Beginner's
     Guide](https://www.packtpub.com/squid-proxy-server-3-1-beginners-guide/book)
     by Kulbir Saini
+- Documentation about how the project's [infrastructure](/ProjectInfrastructure)
+  is set up
 - Other [external links](/ExternalLinks)
