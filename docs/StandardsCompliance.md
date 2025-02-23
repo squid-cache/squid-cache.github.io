@@ -78,6 +78,7 @@ for use in your network.
 | [rfc 7237](https://tools.ietf.org/rfc/rfc7237) | Initial Hypertext Transfer Protocol (HTTP) Method Registrations | :x: |
 | [rfc 7239](https://tools.ietf.org/rfc/rfc7239) | Forwarded HTTP Extension | :x: | Merges Request SquidPr:55 |
 | [rfc 7240](https://tools.ietf.org/rfc/rfc7240) | Prefer HTTP Extension | :heavy_check_mark: | conditional; proxy MUST relay unless listed in Connection header. |
+| [rfc 7486](https://tools.ietf.org/rfc/rfc7486) | HTTP Origin-Bound Authentication (HOBA) | :x: | |
 | [rfc 7541](https://tools.ietf.org/rfc/rfc7541) | HPACK: Header Compression for HTTP/2 | :x: | see [Features/HTTP2](/Features/HTTP2) and Merge Request SquidPr:893 |
 | [rfc 7595](https://tools.ietf.org/rfc/rfc7595) | Guidelines and Registration Procedures for URI Schemes | :x: | Missing prohibition of example: URI scheme |
 | [rfc 7616](https://tools.ietf.org/rfc/rfc7616) | HTTP Digest Access Authentication | :warning: | Missing support for several Digest features |
@@ -86,6 +87,7 @@ for use in your network.
 | [rfc 7725](https://tools.ietf.org/rfc/rfc7725) | An HTTP Status Code to Report Legal Obstacles | :x: |
 | [rfc 7838](https://tools.ietf.org/rfc/rfc7838) | HTTP Alternative Services | :x: |
 | [rfc 7858](https://tools.ietf.org/rfc/rfc7858) | Specification for DNS over Transport Layer Security (TLS) | :x: |
+| [rfc 8120](https://tools.ietf.org/rfc/rfc8120) | Mutual Authentication Protocol for HTTP | :x: | |
 | [rfc 8164](https://tools.ietf.org/rfc/rfc8164) | Opportunistic Security for HTTP/2 | :x: |
 | [rfc 8187](https://tools.ietf.org/rfc/rfc8187) | Indicating Character Encoding and Language for HTTP Header Field Parameters | :x: |
 | [rfc 8188](https://tools.ietf.org/rfc/rfc8188) | Encrypted Content-Encoding for HTTP | :x: |
