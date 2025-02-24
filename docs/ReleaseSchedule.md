@@ -7,10 +7,10 @@ spawned six months before the corresponding major stable release.
 
 | Date       | Release     | Event                                |
 | ---------- | ----------- | ------------------------------------ |
-| 2023-02-05 | v6.0.1      | v6 branch is created (in beta state) |
-| 2023-07-06 | v6.1        | v6 branch is declared stable         |
 | 2025-02-02 | v7.0.1      | v7 branch is created (in beta state) |
 | 2025-07-03 | v7.1        | v7 branch is declared stable         |
+| 2027-02-07 | v8.0.1      | v8 branch is created (in beta state) |
+| 2027-07-04 | v8.1        | v8 branch is declared stable         |
 
 For details of features already planned to be included in the upcoming
 series see our development [RoadMap](/RoadMap).
