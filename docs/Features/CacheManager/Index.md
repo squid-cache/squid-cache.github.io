@@ -2,9 +2,10 @@
 
 It is the Squid internal subsystem that provides a
 common way for registering, finding and triggering management actions.
-It interfaces with the outside world through the normal Squid HTTP
-server, responding requests made with the `/squid-internal-mgr` well-known URL path,
-or with the now deprecated [ `cache_object:` URL scheme](/Features/CacheManager/CacheObjectScheme)
+It interfaces with the outside world via HTTP
+responding requests made with the `/squid-internal-mgr` well-known URL path
+(e.g. http://127.0.0.1:3128/squid-internal-mgr/menu) ,
+or (until Squid 6.5) with the [ `cache_object:` URL scheme](/Features/CacheManager/CacheObjectScheme) 
 
 Sometimes it is confused with the [Cache Manager CGI](/Features/CacheManager/CacheManagerCgi).
 This last one is just an external CGI application that reads data from
@@ -20,8 +21,9 @@ password.
 
 Squid packages come with some tools for accessing the cache manager:
 - [squidclient](/Features/CacheManager/SquidClientTool)
-    is a command line utility for performing web requests. It also has a
-    special ability to send cache manager requests to Squid proxies.
+    is a command line utility for performing web requests.
+    It also has the ability to send cache manager requests to Squid proxies.
+    It has been removed from Squid 7.
 - [CacheMgrJs](./CacheMgrJs) is a javascript-based tool
     being developed as an alternative to the CGI tool
 - (deprecated) [cachemgr.cgi](./CacheManagerCgi)
@@ -29,9 +31,12 @@ Squid packages come with some tools for accessing the cache manager:
     be configured to interface with multiple proxies so provides a
     convenient way to manage proxies and view statistics without logging
     into each server.
+    It has been removed from Squid 7.
 
 Given that the Cache Manager uses plain HTTP, it's possible - and in fact easy -
-to develop custom tools
+to develop custom tools. The most common one is curl, e.g.
+
+`curl -u user:pasword http://127.0.0.1:3128/squid-internal-mgr/menu`
 
 ## Controlling access to the cache manager
 
