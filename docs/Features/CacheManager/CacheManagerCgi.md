@@ -14,6 +14,8 @@ The communication with the Squid server is made using the
 With the removal of [`cache_object` support](/Features/CacheManager/CacheObjectScheme) in [Squid-7](/Releases/Squid-7)
 releases of this tool older than v3.2 will no longer work.
 
+:warning: `cachemgr.cgi` is no longer distributed with Squid 7 and later
+
 More information is currently available at
 [Features/CacheManager](/Features/CacheManager).
 
