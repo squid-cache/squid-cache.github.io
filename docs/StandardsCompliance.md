@@ -122,6 +122,7 @@ for use in your network.
 | [rfc 9530](https://tools.ietf.org/rfc/rfc9530) | Digest Fields   | :x: |
 | [rfc 9532](https://tools.ietf.org/rfc/rfc9532) | HTTP Proxy-Status Parameter for Next-Hop Aliases | :x: |
 | [rfc 9651](https://tools.ietf.org/rfc/rfc9651) | Structured Field Values for HTTP | :x: |
+| [rfc 9729](https://tools.ietf.org/rfc/rfc9729) | The Concealed HTTP Authentication Scheme | :x: |
 
 
 ### IETF Drafts
