@@ -58,6 +58,7 @@ for use in your network.
 | [rfc 3493](https://tools.ietf.org/rfc/rfc3493) | Basic Socket Interface Extensions for IPv6 | :heavy_check_mark: |
 | [rfc 3507](https://tools.ietf.org/rfc/rfc3507) | Internet Content Adaptation Protocol (ICAP) | | client only, PRECACHE vectors only |
 | [rfc 3596](https://tools.ietf.org/rfc/rfc3596) | DNS Extensions to Support IP Version 6 | :heavy_check_mark: |
+| [rfc 3659](https://tools.ietf.org/rfc/rfc3659) | Extensions to FTP | |
 | [rfc 3744](https://tools.ietf.org/rfc/rfc3744) | Web Distributed Authoring and Versioning (WebDAV)<BR>>Access Control Protocol | :heavy_check_mark: | since [Squid 3.1](/Releases/Squid-3.1) |
 | [rfc 3875](https://tools.ietf.org/rfc/rfc3875) | The Common Gateway Interface (CGI) Version 1.1 | :heavy_check_mark: | cachemgr.cgi |
 | [rfc 3986](https://tools.ietf.org/rfc/rfc3986) | Uniform Resource Identifier (URI): Generic Syntax | :warning: | since [Squid-4.12](/Releases/Squid-4). still uses rc1738 encoder on some URI segments and helper protocol. Merge Request SquidPr:335 |
