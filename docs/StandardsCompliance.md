@@ -67,7 +67,7 @@ for use in your network.
 | [rfc 4266](https://tools.ietf.org/rfc/rfc4266) | The gopher URI Scheme | :heavy_check_mark: | Removed in [Squid-6](/Releases/Squid-6) |
 | [rfc 4288](https://tools.ietf.org/rfc/rfc4288) | The telnet URI Scheme | :x: |
 | [rfc 4291](https://tools.ietf.org/rfc/rfc4291) | IP Version 6 Addressing Architecture | :heavy_check_mark: |
-| [rfc 4559](https://tools.ietf.org/rfc/rfc4559) | SPNEGO-based Kerberos and NTLM HTTP Authentication<br />in Microsoft Windows | |
+| [rfc 4559](https://tools.ietf.org/rfc/rfc4559) | SPNEGO-based Kerberos and NTLM HTTP Authentication<br />in Microsoft Windows | :heavy_check_mark: |
 | [rfc 4918](https://tools.ietf.org/rfc/rfc4918) | HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV) | |
 | [rfc 6266](https://tools.ietf.org/rfc/rfc6266) | Use of the Content-Disposition Header Field in the<br />Hypertext Transfer Protocol (HTTP) | :x: |
 | [rfc 6540](https://tools.ietf.org/rfc/rfc6540) <br />(BCP&nbsp;177) | IPv6 Support Required for  All IP-Capable Nodes | :heavy_check_mark: |
@@ -88,6 +88,7 @@ for use in your network.
 | [rfc 7617](https://tools.ietf.org/rfc/rfc7617) | The 'Basic' HTTP Authentication Scheme | :warning: | missing new charset support. |
 | [rfc 7639](https://tools.ietf.org/rfc/rfc7639) | The ALPN HTTP Header Field | :x: |
 | [rfc 7725](https://tools.ietf.org/rfc/rfc7725) | An HTTP Status Code to Report Legal Obstacles | :x: |
+| [rfc 7804](https://tools.ietf.org/rfc/rfc7804) | Salted Challenge Response HTTP Authentication Mechanism | :x: |
 | [rfc 7838](https://tools.ietf.org/rfc/rfc7838) | HTTP Alternative Services | :x: |
 | [rfc 7858](https://tools.ietf.org/rfc/rfc7858) | Specification for DNS over Transport Layer Security (TLS) | :x: |
 | [rfc 8120](https://tools.ietf.org/rfc/rfc8120) | Mutual Authentication Protocol for HTTP | :x: | |
@@ -95,6 +96,7 @@ for use in your network.
 | [rfc 8187](https://tools.ietf.org/rfc/rfc8187) | Indicating Character Encoding and Language for HTTP Header Field Parameters | :x: |
 | [rfc 8188](https://tools.ietf.org/rfc/rfc8188) | Encrypted Content-Encoding for HTTP | :x: |
 | [rfc 8246](https://tools.ietf.org/rfc/rfc8246) | HTTP Immutable Responses | :heavy_check_mark: | partial. see bug Bug:4774 |
+| [rfc 8292](https://tools.ietf.org/rfc/rfc8292) | Voluntary Application Server Identification (VAPID) for Web Push | :x: |
 | [rfc 8297](https://tools.ietf.org/rfc/rfc8297) | An HTTP Status Code for Indicating Hints | :heavy_check_mark: |
 | [rfc 8336](https://tools.ietf.org/rfc/rfc8336) | The ORIGIN HTTP/2 Frame | :x: |
 | [rfc 8441](https://tools.ietf.org/rfc/rfc8441) | Bootstrapping !WebSockets with HTTP/2 | :x: |
@@ -124,10 +126,13 @@ for use in your network.
 | [rfc 9292](https://tools.ietf.org/rfc/rfc9292) | Binary Representation of HTTP Messages | :x: |
 | [rfc 9297](https://tools.ietf.org/rfc/rfc9297) | HTTP Datagrams and the Capsule Protocol  | :x: |
 | [rfc 9298](https://tools.ietf.org/rfc/rfc9298) | Proxying UDP in HTTP | :x: |
-| [rfc 9421](https://tools.ietf.org/rfc/rfc9421) | HTTP Message Signatures  | :x: |
+| [rfc 9421](https://tools.ietf.org/rfc/rfc9421) | HTTP Message Signatures | :x: |
+| [rfc 9449](https://tools.ietf.org/rfc/rfc9449) | OAuth 2.0 Demonstrating Proof of Possession (DPoP) | :x: |
 | [rfc 9498](https://tools.ietf.org/rfc/rfc9498) | Proxying IP in HTTP | :x: |
-| [rfc 9530](https://tools.ietf.org/rfc/rfc9530) | Digest Fields   | :x: |
+| [rfc 9530](https://tools.ietf.org/rfc/rfc9530) | Digest Fields | :x: |
 | [rfc 9532](https://tools.ietf.org/rfc/rfc9532) | HTTP Proxy-Status Parameter for Next-Hop Aliases | :x: |
+| [rfc 9577](https://tools.ietf.org/rfc/rfc9577) | The Privacy Pass HTTP Authentication Scheme | :x: |
+| [rfc 9635](https://tools.ietf.org/rfc/rfc9635) | Grant Negotiation and Authorization Protocol (GNAP) | :x: |
 | [rfc 9651](https://tools.ietf.org/rfc/rfc9651) | Structured Field Values for HTTP | :x: |
 | [rfc 9729](https://tools.ietf.org/rfc/rfc9729) | The Concealed HTTP Authentication Scheme | :x: |
 
