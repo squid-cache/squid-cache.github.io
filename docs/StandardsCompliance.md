@@ -128,6 +128,7 @@ for use in your network.
 | [rfc 9298](https://tools.ietf.org/rfc/rfc9298) | Proxying UDP in HTTP | :x: |
 | [rfc 9421](https://tools.ietf.org/rfc/rfc9421) | HTTP Message Signatures | :x: |
 | [rfc 9449](https://tools.ietf.org/rfc/rfc9449) | OAuth 2.0 Demonstrating Proof of Possession (DPoP) | :x: |
+| [rfc 9460](https://tools.ietf.org/rfc/rfc9460) | Service Binding and Parameter Specification via the DNS (SVCB and HTTPS Resource Records) | :x: |
 | [rfc 9498](https://tools.ietf.org/rfc/rfc9498) | Proxying IP in HTTP | :x: |
 | [rfc 9530](https://tools.ietf.org/rfc/rfc9530) | Digest Fields | :x: |
 | [rfc 9532](https://tools.ietf.org/rfc/rfc9532) | HTTP Proxy-Status Parameter for Next-Hop Aliases | :x: |
