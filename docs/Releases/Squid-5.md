@@ -2,6 +2,7 @@
 
 |          |                              |
 | -------- | ---------------------------- |
+| Jul 2023 | Squid-5 series became **DEPRECATED** with the release of [Squid-6](/Releases/Squid-6) series |
 | Aug 2021 | Released for production use. |
 | | |
 
