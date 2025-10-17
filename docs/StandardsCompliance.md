@@ -110,13 +110,13 @@ for use in your network.
 | [rfc 9000](https://tools.ietf.org/rfc/rfc9000) | QUIC: A UDP-Based Multiplexed and Secure Transport | :x: | Merge Request SquidPr:919 |
 | [rfc 9001](https://tools.ietf.org/rfc/rfc9001) | Using TLS to Secure QUIC | :x: |
 | [rfc 9002](https://tools.ietf.org/rfc/rfc9002) | QUIC Loss Detection and Congestion Control | :x: |
-| [rfc 9110](https://tools.ietf.org/rfc/rfc9110) <br />(STD 97) | HTTP Semantics | :heavy_check_mark: | some conditional features, see [Features/HTTP11](/Features/HTTP11) |
-| [rfc 9111](https://tools.ietf.org/rfc/rfc9111) <br />(STD 98) | HTTP Caching |  :heavy_check_mark: | conditional, see [Features/HTTP11](/Features/HTTP11) |
-| [rfc 9112](https://tools.ietf.org/rfc/rfc9112) <br />(STD 99) | HTTP/1.1 | almost | see [Features/HTTP11](/Features/HTTP11) |
+| [rfc 9110](https://tools.ietf.org/rfc/rfc9110)<br />(STD&nbsp;97) | HTTP Semantics | :heavy_check_mark: | some conditional features, see [Features/HTTP11](/Features/HTTP11) |
+| [rfc 9111](https://tools.ietf.org/rfc/rfc9111)<br />(STD&nbsp;98) | HTTP Caching |  :heavy_check_mark: | conditional, see [Features/HTTP11](/Features/HTTP11) |
+| [rfc 9112](https://tools.ietf.org/rfc/rfc9112)<br />(STD&nbsp;99) | HTTP/1.1 | almost | see [Features/HTTP11](/Features/HTTP11) |
 | [rfc 9113](https://tools.ietf.org/rfc/rfc9113) | HTTP/2 | :warning: | :information_source: HTTP/1.x relay and no-support conditional compliance. see [Features/HTTP2](/Features/HTTP2) and Merge Request SquidPr:893 |
 | [rfc 9114](https://tools.ietf.org/rfc/rfc9114) | HTTP/3 | :x: |
 | [rfc 9163](https://tools.ietf.org/rfc/rfc9163) | Expect-CT Extension for HTTP | :x: |
-| [rfc 9205](https://tools.ietf.org/rfc/rfc9205) <br />(BCP 56) | Building Protocols with HTTP | |
+| [rfc 9205](https://tools.ietf.org/rfc/rfc9205)<br />(BCP&nbsp;56) | Building Protocols with HTTP | |
 | [rfc 9209](https://tools.ietf.org/rfc/rfc9209) | The Proxy-Status HTTP Response Header Field | :heavy_check_mark: | since [Squid-4](/Releases/Squid-4) |
 | [rfc 9211](https://tools.ietf.org/rfc/rfc9211) | The Cache-Status HTTP Response Header Field | :warning: | conditional |
 | [rfc 9213](https://tools.ietf.org/rfc/rfc9213) | Targeted HTTP Cache Control | :x: |
