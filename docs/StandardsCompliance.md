@@ -25,13 +25,13 @@ for use in your network.
 
 ## IEFT RFC standards
 
-| Specification | Title | Status |
-| --- | ---- | ------ |
-| [rfc 959](https://tools.ietf.org/rfc/rfc959) <br />(IEN 149) | FILE TRANSFER PROTOCOL (FTP) | :heavy_check_mark: |
+| Specification | Title | Status | Details |
+| --- | ---- | ------ | --- |
+| [rfc 959](https://tools.ietf.org/rfc/rfc959)<br />(IEN&nbsp;149) | FILE TRANSFER PROTOCOL (FTP) | :heavy_check_mark: |
 | [rfc 1035](https://tools.ietf.org/rfc/rfc1035) | DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION | :heavy_check_mark: | client only |
 | [rfc 1157](https://tools.ietf.org/rfc/rfc1157) | A Simple Network Management Protocol (SNMP) | | :information_source: version 2c |
 | [rfc 1413](https://tools.ietf.org/rfc/rfc1413) | Identification Protocol (IDENT) | :heavy_check_mark: | note bug Bug:2853 |
-| [rfc 1436](https://tools.ietf.org/rfc/rfc1436) | The Internet Gopher Protocol<br />(a distributed document search and retrieval protocol)| :heavy_check_mark: | client and gateway to HTTP |
+| [rfc 1436](https://tools.ietf.org/rfc/rfc1436) | The Internet Gopher Protocol<br />(a distributed document search and retrieval protocol) | :axe: | Removed in [Squid-6](/Releases/Squid-6) |
 | [rfc 1902](https://tools.ietf.org/rfc/rfc1902) | Structure of Management Information<br />for Version 2 of the<br />Simple Network Management Protocol (SNMPv2) |
 | [rfc 1905](https://tools.ietf.org/rfc/rfc1905) | Protocol Operations<br />for Version 2 of the<br />Simple Network Management Protocol (SNMPv2) |
 | [rfc 1945](https://tools.ietf.org/rfc/rfc1945) | Hypertext Transfer Protocol -- HTTP/1.0 | :heavy_check_mark: |
@@ -64,13 +64,13 @@ for use in your network.
 | [rfc 3986](https://tools.ietf.org/rfc/rfc3986) | Uniform Resource Identifier (URI): Generic Syntax | :warning: | since [Squid-4.12](/Releases/Squid-4). still uses rc1738 encoder on some URI segments and helper protocol. Merge Request SquidPr:335 |
 | [rfc 4001](https://tools.ietf.org/rfc/rfc4001) | Textual Conventions for Internet Network Addresses | :heavy_check_mark: |
 | [rfc 4217](https://tools.ietf.org/rfc/rfc4217) | Securing FTP with TLS | :x: |
-| [rfc 4266](https://tools.ietf.org/rfc/rfc4266) | The gopher URI Scheme | :heavy_check_mark: | Removed in [Squid-6](/Releases/Squid-6) |
-| [rfc 4288](https://tools.ietf.org/rfc/rfc4288) | The telnet URI Scheme | :x: |
+| [rfc 4266](https://tools.ietf.org/rfc/rfc4266) | The gopher URI Scheme | :axe: | Removed in [Squid-6](/Releases/Squid-6) |
+| [rfc 4288](https://tools.ietf.org/rfc/rfc4288) | The telnet URI Scheme | :axe: | Removed in [Squid-6](/Releases/Squid-6) |
 | [rfc 4291](https://tools.ietf.org/rfc/rfc4291) | IP Version 6 Addressing Architecture | :heavy_check_mark: |
 | [rfc 4559](https://tools.ietf.org/rfc/rfc4559) | SPNEGO-based Kerberos and NTLM HTTP Authentication<br />in Microsoft Windows | :heavy_check_mark: |
 | [rfc 4918](https://tools.ietf.org/rfc/rfc4918) | HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV) | |
 | [rfc 6266](https://tools.ietf.org/rfc/rfc6266) | Use of the Content-Disposition Header Field in the<br />Hypertext Transfer Protocol (HTTP) | :x: |
-| [rfc 6540](https://tools.ietf.org/rfc/rfc6540) <br />(BCP&nbsp;177) | IPv6 Support Required for  All IP-Capable Nodes | :heavy_check_mark: |
+| [rfc 6540](https://tools.ietf.org/rfc/rfc6540)<br />(BCP&nbsp;177) | IPv6 Support Required for  All IP-Capable Nodes | :heavy_check_mark: |
 | [rfc 6570](https://tools.ietf.org/rfc/rfc6570) | URI Template | :x: |
 | [rfc 6585](https://tools.ietf.org/rfc/rfc6585) | Additional HTTP Status Codes | :heavy_check_mark: |
 | [rfc 6762](https://tools.ietf.org/rfc/rfc6762) | Multicast DNS | :heavy_check_mark: | client only |
@@ -99,13 +99,13 @@ for use in your network.
 | [rfc 8292](https://tools.ietf.org/rfc/rfc8292) | Voluntary Application Server Identification (VAPID) for Web Push | :x: |
 | [rfc 8297](https://tools.ietf.org/rfc/rfc8297) | An HTTP Status Code for Indicating Hints | :heavy_check_mark: |
 | [rfc 8336](https://tools.ietf.org/rfc/rfc8336) | The ORIGIN HTTP/2 Frame | :x: |
-| [rfc 8441](https://tools.ietf.org/rfc/rfc8441) | Bootstrapping !WebSockets with HTTP/2 | :x: |
+| [rfc 8441](https://tools.ietf.org/rfc/rfc8441) | Bootstrapping WebSockets with HTTP/2 | :x: |
 | [rfc 8470](https://tools.ietf.org/rfc/rfc8470) | Using Early Data in HTTP | :x: | Merge Request SquidPr:873 |
-| [rfc 8586](https://tools.ietf.org/rfc/rfc8586) | Loop Detection in Content Delivery Networks (CDNs) | :heavy_check_mark: | from [Squid-5](/Releases/Squid-5). |
+| [rfc 8586](https://tools.ietf.org/rfc/rfc8586) | Loop Detection in Content Delivery Networks (CDNs) | :heavy_check_mark: | since [Squid-5](/Releases/Squid-5) |
 | [rfc 8615](https://tools.ietf.org/rfc/rfc8615) | Well-Known Uniform Resource Identifiers (URIs) | :x: |
 | [rfc 8673](https://tools.ietf.org/rfc/rfc8673) | HTTP Random Access and Live Content | :x: |
 | [rfc 8942](https://tools.ietf.org/rfc/rfc8942) | HTTP Client Hints | :x: |
-| [rfc 8996](https://tools.ietf.org/rfc/rfc8996) <br />(BCP 195)| Deprecating TLS 1.0 and TLS 1.1 | :x: |
+| [rfc 8996](https://tools.ietf.org/rfc/rfc8996)<br />(BCP&nbsp;195)| Deprecating TLS 1.0 and TLS 1.1 | :x: |
 | [rfc 8999](https://tools.ietf.org/rfc/rfc8999) | Version-Independent Properties of QUIC | :x: | Merge Request SquidPr:919 |
 | [rfc 9000](https://tools.ietf.org/rfc/rfc9000) | QUIC: A UDP-Based Multiplexed and Secure Transport | :x: | Merge Request SquidPr:919 |
 | [rfc 9001](https://tools.ietf.org/rfc/rfc9001) | Using TLS to Secure QUIC | :x: |
@@ -117,7 +117,7 @@ for use in your network.
 | [rfc 9114](https://tools.ietf.org/rfc/rfc9114) | HTTP/3 | :x: |
 | [rfc 9163](https://tools.ietf.org/rfc/rfc9163) | Expect-CT Extension for HTTP | :x: |
 | [rfc 9205](https://tools.ietf.org/rfc/rfc9205) <br />(BCP 56) | Building Protocols with HTTP | |
-| [rfc 9209](https://tools.ietf.org/rfc/rfc9209) | The Proxy-Status HTTP Response Header Field | :heavy_check_mark: | [Squid-4](/Releases/Squid-4) |
+| [rfc 9209](https://tools.ietf.org/rfc/rfc9209) | The Proxy-Status HTTP Response Header Field | :heavy_check_mark: | since [Squid-4](/Releases/Squid-4) |
 | [rfc 9211](https://tools.ietf.org/rfc/rfc9211) | The Cache-Status HTTP Response Header Field | :warning: | conditional |
 | [rfc 9213](https://tools.ietf.org/rfc/rfc9213) | Targeted HTTP Cache Control | :x: |
 | [rfc 9218](https://tools.ietf.org/rfc/rfc9218) | Extensible Prioritization Scheme for HTTP | :x: |
