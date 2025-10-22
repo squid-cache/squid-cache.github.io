@@ -91,4 +91,4 @@ kernel-based layer 3-7 load balancer for Linux
 
 The [Cacheability Engine](http://www.mnot.net/cacheability/) is a python
 script that validates an URL, analyzing the clues a web server gives to
-understand how cacheable is the served content.
+understand how cachable is the served content.

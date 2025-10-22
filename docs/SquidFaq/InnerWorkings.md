@@ -3,7 +3,7 @@ FaqSection: misc
 ---
 # Squid's Inner Workings
 
-## What are cacheable objects?
+## What are cachable objects?
 
 An Internet Object is a file, document or response to a query for an
 Internet service such as FTP, HTTP, or gopher. A client requests an
@@ -383,14 +383,14 @@ To determine whether a given object may be cached, Squid takes many
 things into consideration. The current algorithm (for Squid-2) goes
 something like this:
 
-- Responses with *Cache-Control: Private* are NOT cacheable.
-- Responses with *Cache-Control: No-Cache* are NOT cacheable by Squid
+- Responses with *Cache-Control: Private* are NOT cachable.
+- Responses with *Cache-Control: No-Cache* are NOT cachable by Squid
   older than [Squid-3.2](/Releases/Squid-3.2).
-- Responses with *Cache-Control: No-Store* are NOT cacheable.
-- Responses for requests with an *Authorization* header are cacheable
+- Responses with *Cache-Control: No-Store* are NOT cachable.
+- Responses for requests with an *Authorization* header are cachable
   ONLY if the response includes *Cache-Control: Public* or some other
   special parameters controlling revalidation.
-- The following HTTP status codes are cacheable:
+- The following HTTP status codes are cachable:
   - 200 OK
   - 203 Non-Authoritative Information
   - 300 Multiple Choices
@@ -402,7 +402,7 @@ it will NOT be cached if ALL of the *Date*, *Last-Modified*, and
 *Expires* reply headers are missing. This prevents such objects from
 bouncing back-and-forth between siblings forever.
 
-A *302 Moved Temporarily* response is cacheable ONLY if the response also
+A *302 Moved Temporarily* response is cachable ONLY if the response also
 includes an *Expires* header.
 
 The following HTTP status codes are "negatively cached" for a short
@@ -421,7 +421,7 @@ amount of time (configurable):
 - 503 Service Unavailable
 - 504 Gateway Time-out
 
-All other HTTP status codes are NOT cacheable, including:
+All other HTTP status codes are NOT cachable, including:
 
 - 206 Partial Content
 - 303 See Other

@@ -32,8 +32,8 @@ The various directives are evaluated in this order:
 
 The purpose of cache hierarchy is to maximize the chance of finding
 objects in siblings, so a set of heuristics is applied to try and
-determine in advance whether an object is likely to be cacheable. A few
-objects are **not** cacheable, and are thus **not** hierarchic. Those
+determine in advance whether an object is likely to be cachable. A few
+objects are **not** cachable, and are thus **not** hierarchic. Those
 are:
 
   - reload requests

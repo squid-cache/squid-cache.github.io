@@ -154,7 +154,7 @@ Every object referenced in the index in RAM is checked to see if it is
 suitable for addition to the digest.
 
 A number of objects are not suitable, e.g. those that are private, not
-cacheable, negatively cached etc. and are skipped immediately.
+cachable, negatively cached etc. and are skipped immediately.
 
 A *freshness* test is next made in an attempt to guess if the object
 will expire soon, since if it does, it is not worthwhile adding it to

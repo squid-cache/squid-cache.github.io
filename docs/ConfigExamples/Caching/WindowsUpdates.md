@@ -43,7 +43,7 @@ requests. Particularly when large objects are involved.
     Default value is a bit small. It needs to be somewhere 100MB or
 higher to cope with the IE updates.
 - **[range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)**.
-    Does the main work of converting range requests into cacheable
+    Does the main work of converting range requests into cachable
     requests. Use the same size limit as
     [maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     to prevent conversion of requests for objects which will not cache

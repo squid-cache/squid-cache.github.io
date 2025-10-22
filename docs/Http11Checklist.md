@@ -376,7 +376,7 @@ categories: [WantedFeature, Feature]
 |            |            | 351 | MUST | 14.8 | always revalidate responses with cache-control: s-maxage=0 | |
 |            |            | 352 | MUST | 14.9 | follow the cache-control header directives at all times | |
 |            |            | 353 | MUST | 14.9 | pass cache-control directives through to the next link in the message path (ie don't eat them) | |
-|            |            | 354 | MAY | 14.9.1 | cache responses with cache-control: public even of the header/method might not normally be cacheable | |
+|            |            | 354 | MAY | 14.9.1 | cache responses with cache-control: public even of the header/method might not normally be cachable | |
 |            |            | 355 | MUST NOT | 14.9.1 | cache responses with cache-control: private | |
 |            |            | 356 | MUST NOT | 14.9.1 | use responses with cache-control: no-cache to satisfy other requests without successful revalidation | ie auto GET to IMS is allowed |
 |            |            | 357 | MAY | 14.9.1 | use responses with cache-control: no-cache to satisfy other requests without successful revalidation if the no-cache directive includes field-names | |
@@ -384,7 +384,7 @@ categories: [WantedFeature, Feature]
 |            |            | 359 | MAY | 14.9.2 | use no-store on requests or responses to prevent data storage | |
 |            |            | 360 | MUST NOT | 14.9.2 | store any part of a request or it's response if the cache-control: no-store directive was in the request | This directive applies to both non-shared and shared caches. "MUST NOT store" in this context means that the cache MUST NOT intentionally store the information in non-volatile storage, and MUST make a best-effort attempt to remove the information from volatile storage as promptly as possible after forwarding it. |
 |            |            | 361 | MUST NOT | 14.9.2 | store any part of a response or the request that elicited it if the cache-control: no-store directive was in the response | This directive applies to both non-shared and shared caches. "MUST NOT store" in this context means that the cache MUST NOT intentionally store the information in non-volatile storage, and MUST make a best-effort attempt to remove the information from volatile storage as promptly as possible after forwarding it. |
-|            |            | 362 | SHOULD | 14.9.3 | consider responses with an Expires value that is \<= the response date and no cache-control header field to be non-cacheable | |
+|            |            | 362 | SHOULD | 14.9.3 | consider responses with an Expires value that is \<= the response date and no cache-control header field to be non-cachable | |
 |            |            | 363 | MUST | 14.9.3 | mark stale responses with Warning 110 | |
 |            |            | 364 | MAY | 14.9.3 | have squid configurable to return stale responses even when not requested by clients but responses served MUST NOT conlict with other MUST or MUST NOT requirements | |
 |            |            | 365 | MUST NOT | 14.9.4 | use a cached copy to respond to a request with cache-control: no-cache or Pragma: no-cache | |
@@ -455,8 +455,8 @@ categories: [WantedFeature, Feature]
 |            |            | 430 | MUST | 14.42 | use the upgrade header in a response with status code 101 | |
 |            |            | 431 | MUST | 14.42 | include the Upgrade connection-token whenever we use the Upgrade header | |
 |            |            | 432 | SHOULD | 14.43 | for the client - include a user-Agent field in requests | |
-|            |            | 433 | SHOULD | 14.44 | include a Vary header on any cacheable response we generate that used server negotiation | |
-|            |            | 434 | MAY | 14.44 | for the 'server' include a vary header with a non-cacheable response the used server negotiation | |
+|            |            | 433 | SHOULD | 14.44 | include a Vary header on any cachable response we generate that used server negotiation | |
+|            |            | 434 | MAY | 14.44 | for the 'server' include a vary header with a non-cachable response the used server negotiation | |
 |            |            | 435 | MAY | 14.44 | assume the same response will be given by a server for future requests with the same request field values as those listed by the vary header in the response whilst the response is still fresh | |
 |            |            | 436 | MUST NOT | 14.44 | generate a \* value for a vary field | |
 |            |            | 437 | MUST | 14.45 | fill in the Via header | |

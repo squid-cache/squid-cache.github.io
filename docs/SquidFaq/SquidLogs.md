@@ -643,7 +643,7 @@ of the Squid source distribution. The usage is
 
 file numbers are read on stdin, and pathnames are printed on stdout.
 
-## Can I use store.log to figure out if a response was cacheable?
+## Can I use store.log to figure out if a response was cachable?
 
 Sort of. You can use *store.log* to find out if a particular response
 was *cached*.

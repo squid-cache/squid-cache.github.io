@@ -29,7 +29,7 @@ interact for a number of use cases.
 - Requests on a client side connection are owned by the connection.
 - The data source from the store or upstream to satisfy a connection
   is owned by the request.
-- Upstream requests are owned by the requester - the client request
+- Upstream requests are owned by the requestor - the client request
   when the request is not being diverted to the store, and the store
   when it is being copied to cache.
 - The server-side connection is owned by the OS - it must remain a
@@ -206,8 +206,8 @@ Socket - an fd on unix, a HANDLE on windows.
     request to read data.
 11. the client
 
-## Uncacheable request
+## Uncacheble request
 
 ## Tunnel request
 
-## Cacheable request
+## Cacheble request

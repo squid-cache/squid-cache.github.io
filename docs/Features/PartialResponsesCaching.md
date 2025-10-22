@@ -20,7 +20,7 @@ categories: WantedFeature
 (from the bug report): When range_offset_limit is set to -1, Squid
 tries to fetch the entire object in response to an HTTP range request.
 
-- **Bug**: The entire object is fetched even when it is not cacheable
+- **Bug**: The entire object is fetched even when it is not cachable
     (e.g. because it is larger than
     [maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     or some other criteria).

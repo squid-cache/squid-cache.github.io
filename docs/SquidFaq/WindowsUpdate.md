@@ -19,7 +19,7 @@ requests. Particularly when large objects are involved.
     to be cached. It will however, cache nicely provided the size
     limit is set high enough.
   - **[range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)**.
-    Does the main work of converting range requests into cacheable
+    Does the main work of converting range requests into cachable
     requests. Use the same size limit as
     [maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     to prevent conversion of requests for objects which will not cache
