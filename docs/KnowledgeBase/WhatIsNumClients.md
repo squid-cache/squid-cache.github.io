@@ -5,11 +5,11 @@ categories: KnowledgeBase
 
 In the [cache manager](/Features/CacheManager)'s
 "general runtime information" page, Squid specifies the number of
-clients accesssing the cache; but WHAT it is is not really explained
+clients accessing the cache; but WHAT it is is not really explained
 anywhere.
 
 Technically speaking, it's the size of the clients database, where Squid
-records some informations about the clients haivng recently accessed its
+records some information about the clients haivng recently accessed its
 services.
 
 **So what is a "Client"?**

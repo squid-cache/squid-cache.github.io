@@ -25,7 +25,7 @@ converted from C functions to static members of a C++ class. This leaves
 some issues open, such as initialization order.
 
 Also, with the current advancements in malloc implementations one may
-want to link Squid against an alternaive malloc implementation:
+want to link Squid against an alternative malloc implementation:
 
 - [Google tcmalloc](https://github.com/google/tcmalloc)
 - [Wolfram Gloger's ptmalloc3](http://www.malloc.de/en/)
@@ -58,5 +58,5 @@ and followed by an empty line then the 'public:' section definition.
 ```
 
 Classes which use the CBDATA_CLASS macro **must not** also use
-MEMPROXY_CLASS. That includes use in the direct line of inheritence
+MEMPROXY_CLASS. That includes use in the direct line of inheritance
 within a class hierarchy.

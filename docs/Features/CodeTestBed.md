@@ -46,7 +46,7 @@ current developer practices.
 
 ### Taking Part in the Testing
 
-see [BuildFarm](/BuildFarm) on whats needed and how to volunteer
+see [BuildFarm](/BuildFarm) on what's needed and how to volunteer
 time on a machine as a test slave.
 
 ### Tasks needing a volunteer:

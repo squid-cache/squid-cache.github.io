@@ -36,7 +36,7 @@ Squid packages come with some tools for accessing the cache manager:
 Given that the Cache Manager uses plain HTTP, it's possible - and in fact easy -
 to develop custom tools. The most common one is curl, e.g.
 
-`curl -u user:pasword http://127.0.0.1:3128/squid-internal-mgr/menu`
+`curl -u user:password http://127.0.0.1:3128/squid-internal-mgr/menu`
 
 ## Controlling access to the cache manager
 

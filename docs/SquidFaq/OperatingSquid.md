@@ -13,7 +13,7 @@ for more information on its usage and installation.
 ## How can I make Squid NOT cache some servers or URLs?
 
 You can use the **cache** option to specify uncachable
-requests and any exceptions to your cachable rules.
+requests and any exceptions to your cacheable rules.
 
 For example, this makes all responses from origin servers in the
 10.0.1.0/24 network uncachable:

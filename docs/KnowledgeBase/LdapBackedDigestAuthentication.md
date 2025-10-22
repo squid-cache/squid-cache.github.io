@@ -30,7 +30,7 @@ running, but is expected from who are reading this:
 
 To manipulate the attributes in LDAP was used the tools from the package
 ldap-utils (those beginning with ldap\* and used to manipulate the base
-when running, pretty standard). Theres n ways to do that, feeding the
+when running, pretty standard). There's n ways to do that, feeding the
 base with LDIF files, using administration tools with a web interface,
 these will not be shown here. LDAP can be populated in various different
 forms, so, it is expected that yours can be a little different than mine
@@ -48,7 +48,7 @@ administrator is "cn=admin,dc=minharede,dc=lan" with a password
 **How the digest is calculated and what is expected to be in the base**
 
 The base needs to hold an attribute containing a pair, realm and H(A1)
-separated by a separator like realm:H(A1) inside a distiguished name
+separated by a separator like realm:H(A1) inside a distinguished name
 representing an user name. Where H(A1) is the digested value of
 username:realm:password.
 

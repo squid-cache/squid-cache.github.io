@@ -353,7 +353,7 @@ this document but usually it's not in plain text.
 
 In side-band authentication, using the
 [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
-directive. There is a *password=* value which is possibly transfered to
+directive. There is a *password=* value which is possibly transferred to
 Squid from the helper. This value is entirely **optional** and may in
 fact have no relation to a real password so we cannot be certain what
 risks are actually involved. When received it is generally treated by

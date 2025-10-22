@@ -125,7 +125,7 @@ name for a site differing from its public certificate name.
 **[Squid-3.3](/Releases/Squid-3.3)  and later**
 
 The *server-first* bumping algorithm with [certificate
-mimicing](/Features/MimicSslServerCert)
+mimicking](/Features/MimicSslServerCert)
 allows Squid to transparently pass on these flaws to the client browser
 for a more accurate decision about safety to be made there.
 

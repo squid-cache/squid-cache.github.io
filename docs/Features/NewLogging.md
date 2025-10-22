@@ -45,7 +45,7 @@ which will be fast and flexible.
     fixed multiple of the page size and hope the application malloc()
     doesn't recycle those pages too quickly. Grr\!
 - Still, even at 10,000 req/sec with an average logging line length of
-    160 characters thats 1.52 megabytes a second of data to copy; not
+    160 characters that's 1.52 megabytes a second of data to copy; not
     exactly a huge amount for modern machines.
 - It shouldn't bother trying to enumerate the logging entries at all
     in the first pass. Just have them formatted in Squid and sent over
@@ -67,7 +67,7 @@ which will be fast and flexible.
     The most efficient method would be to bunch the logfile lines up
     into a big chunk that can be written all at once to disk or the UDP
     socket but, to be honest, people will probably like having each line
-    seperately enumerated.
+    separately enumerated.
 
 ## Implementation details
 
@@ -97,7 +97,7 @@ which will be fast and flexible.
   socket please."
 - Grab the Wikipedia patch which does logging over UDP and massage it
   into this framework
-- Anthing else?
+- Anything else?
 
 ## Version 2?
 

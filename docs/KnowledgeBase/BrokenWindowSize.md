@@ -69,7 +69,7 @@ This isn't such a problem with desktops talking directly to servers
 because desktops typically have small window sizes and TCP scale factors
 configured and thus they tend not to be too far "out of whack" with what
 the server believes. Modern server operating systems tend to have larger
-window sizes and TCP scale factors which tend to aggrivate the issue.
+window sizes and TCP scale factors which tend to aggravate the issue.
 
 ## Workaround
 

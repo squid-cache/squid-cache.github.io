@@ -7,7 +7,7 @@ categories: [ConfigExample]
 
 ## Outline
 
-Torrent filtering is a diffucult problem. which can't be solved easily.
+Torrent filtering is a difficult problem. which can't be solved easily.
 To difficult this for users you can first deny download .torrent files.
 
 ## Usage

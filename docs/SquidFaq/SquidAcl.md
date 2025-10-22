@@ -615,7 +615,7 @@ change *url_regex* to *dstdomain* in this example.
   spammers. By blocking the spammer web sites in squid, users can no
   longer use up bandwidth downloading spam images and html. Even more
   importantly, they can no longer send out requests for things like
-  scripts and gifs that have a unique identifer attached, showing that
+  scripts and gifs that have a unique identifier attached, showing that
   they opened the email and making their addresses more valuable to
   the spammer.
 -->
@@ -789,7 +789,7 @@ Add some *arp* ACL lines to your squid.conf:
     http_access allow M2
     http_access deny all
 
-Run **squid -k parse** to confirm that the ARP / EUI supprot is
+Run **squid -k parse** to confirm that the ARP / EUI support is
 available and the ACLs are going to work.
 
 ## Can I limit the number of connections from a client?

@@ -507,7 +507,7 @@ Result line sent back to Squid:
     URL-rewrite](https://wiki.squid-cache.org/Features/AddonHelpers/Features/StoreUrlRewrite#)
     feature helpers written for
     [Squid-2.7](https://wiki.squid-cache.org/Features/AddonHelpers/Squid-2.7#).
-    However thst syntax is deprecated and such helpers should be
+    However that syntax is deprecated and such helpers should be
     upgraded as soon as possible to use this Store-ID syntax.
 
 ### Authenticator

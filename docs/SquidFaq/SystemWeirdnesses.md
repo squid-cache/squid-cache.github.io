@@ -68,7 +68,7 @@ Systems running without nscd may fail on such calls if first 256 files
 are all in use.
 
 Since solaris 2.6 Sun has changed the way some system calls work and is
-using *nscd* daemon as a implementor of them. To communicate to *nscd*
+using *nscd* daemon as a implementer of them. To communicate to *nscd*
 Solaris is using undocumented calls. Basically *nscd* is used to
 reduce memory usage of user-space system libraries that use passwd and
 group files. Before 2.6 Solaris cached full passwd file in library
@@ -338,7 +338,7 @@ to the file */etc/sysctl.conf*:
 
 ## Can't connect to some sites through Squid
 
-When using Squid, some sites may give erorrs such as "(111) Connection
+When using Squid, some sites may give errors such as "(111) Connection
 refused" or "(110) Connection timed out" although these sites work fine
 without going through Squid.
 

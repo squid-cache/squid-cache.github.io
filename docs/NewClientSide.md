@@ -3,7 +3,7 @@ categories: WantedFeature
 ---
 # Another Client Side?
 
-Or, "a new HTTP server side", as thats what it is.
+Or, "a new HTTP server side", as that's what it is.
 
 A HTTP server side should implement the following:
 - Network connection management
@@ -15,7 +15,7 @@ A HTTP server side should implement the following:
 What it might implement:
 - HTTP authentication? Or could that be implemented between the HTTP
     network server and the HTTP request queue?
-- SSL. Thats a connection property.
+- SSL. That's a connection property.
 
 What it won't implement:
 - ACL checks: that should be done as part of the HTTP request queue
@@ -71,7 +71,7 @@ In theory the server connections should be self-contained; so multiple
 threads can run multiplexed server connections without any interthread
 locking needed. This might not be so true for certain 'things' (such as
 a shared HTTP authentication cache, DNS requests, etc) but these could
-be seperate message queues.
+be separate message queues.
 
 The trick is to keep the server side around long enough to receive all
 the queued messages it has or be able to cancel them.

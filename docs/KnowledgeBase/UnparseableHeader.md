@@ -46,7 +46,7 @@ some form of serialized data.
 
 ## Workaround
 
-- Fix the software sending this header. if you cant do that yourself
+- Fix the software sending this header. if you can't do that yourself
     report it to the broken server or client software authors please.
     This used to be a big problem around 2005 but has become less common
     now that all the middleware proxies dump these requests. The authors

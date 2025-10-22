@@ -86,7 +86,7 @@ outlined in the [KnowledgeBase](/KnowledgeBase):
 3. [Host Header Forgery](/KnowledgeBase/HostHeaderForgery)
 4. [Queue congestion](/KnowledgeBase/QueueCongestion)
 5. [Too Many Queued Requests](/KnowledgeBase/TooManyQueued)
-6. [Unparseable Header](/KnowledgeBase/UnparseableHeader)
+6. [Unparsable Header](/KnowledgeBase/UnparseableHeader)
 
 ## access.log
 
@@ -147,7 +147,7 @@ underscore characters) which describe the response sent to the client.
     | **TUNNEL**  | A binary tunnel was established for this transaction. |
 
 - These tags are optional and describe some error conditions which
-    occured during response delivery (if any):
+    occurred during response delivery (if any):
 
     | --- | --- |
     | **ABORTED** | A client-to-Squid or Squid-to-server connection was closed unexpectedly, usually due to an I/O error or clean transport connection closure in the middle of some higher-level protocol message/negotiation. Before Squid v6, this tag was primarily seen when the client closed its connection to Squid before Squid could deliver the entire response. Since Squid v6, the tag also appears when Squid communication with an origin server or cache_peer is impossible (e.g., the server is refusing TCP connections) or aborted (e.g., an EOF in the middle of a chunked HTTP response body transfer). |
@@ -643,7 +643,7 @@ of the Squid source distribution. The usage is
 
 file numbers are read on stdin, and pathnames are printed on stdout.
 
-## Can I use store.log to figure out if a response was cachable?
+## Can I use store.log to figure out if a response was cacheable?
 
 Sort of. You can use *store.log* to find out if a particular response
 was *cached*.

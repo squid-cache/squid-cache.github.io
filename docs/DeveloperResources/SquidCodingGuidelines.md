@@ -32,10 +32,10 @@
   `if
   (T a = b)...`.
 
-> :warning: The formater is known to enforce some weird indentation at times.
+> :warning: The formatter is known to enforce some weird indentation at times.
 Notably after `#if ... #endif` directives. If you find these, please
 ignore for now. They will be corrected in a later version of the
-formater.
+formatter.
 
 ## Mandatory coding rules
 

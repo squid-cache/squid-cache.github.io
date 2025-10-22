@@ -211,7 +211,7 @@ To disable systemd-coredump:
 If you CANNOT get Squid to leave a core file for you then one of the
 following approaches can be used
 
-First alternative is to start Squid under the contol of GDB
+First alternative is to start Squid under the control of GDB
 
 ```
 % gdb /path/to/squid

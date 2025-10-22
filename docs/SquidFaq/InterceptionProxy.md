@@ -28,7 +28,7 @@ outlined by *Mark Elsen*:
   common).
 - Connection multiplexing does not work. Clients aware of the proxy
   can send requests for multiple domains down one proxy connection and
-  save resources while letting teh proxy do multiple backend
+  save resources while letting the proxy do multiple backend
   connections. When talking to an origin clients are not permitted to
   do this and will open many TCP connections for resources. This
   causes intercepting proxy to consume more network sockets than a
@@ -800,7 +800,7 @@ Linux kernel, as if you are you simply need to modprobe the module to
 gain it's functionality.
 
 Ensure that the GRE code is either built as static or as a module by
-chosing the appropriate option in your kernel config. Then rebuild your
+choosing the appropriate option in your kernel config. Then rebuild your
 kernel. If it is a module you will need to:
 
     modprobe ip_gre

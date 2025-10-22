@@ -143,7 +143,7 @@ This can be accomplished by using 6 configuration files:
 This example configuration will allow any user access to whitelisted
 sites without asking for identification, users in group A will be able
 to access sites in list A, users in group B will be able to access sites
-from group B and noone will be able to access anything else.
+from group B and no one will be able to access anything else.
 
 ## Advanced configuration
 

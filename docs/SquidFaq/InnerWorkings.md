@@ -3,7 +3,7 @@ FaqSection: misc
 ---
 # Squid's Inner Workings
 
-## What are cachable objects?
+## What are cacheable objects?
 
 An Internet Object is a file, document or response to a query for an
 Internet service such as FTP, HTTP, or gopher. A client requests an
@@ -238,7 +238,7 @@ But my busy caches have much lower times:
 ## How does Squid deal with Cookies?
 
 The presence of Cookies headers in **requests** does not affect whether
-or not an HTTP reply can be cached. Similarly, the presense of
+or not an HTTP reply can be cached. Similarly, the presence of
 *Set-Cookie* headers in **replies** does not affect whether the reply
 can be cached.
 
@@ -276,7 +276,7 @@ rules. The refresh parameters are:
 - URL regular expression
 - *CONF_MIN*: The time (in minutes) an object without an explicit
   expiry time should be considered fresh. The recommended value is 0,
-  any higher values may cause dynamic applications to be erronously
+  any higher values may cause dynamic applications to be erroneously
   cached unless the application designer has taken the appropriate
   actions.
 - *CONF_PERCENT*: A percentage of the objects age (time since last
@@ -383,14 +383,14 @@ To determine whether a given object may be cached, Squid takes many
 things into consideration. The current algorithm (for Squid-2) goes
 something like this:
 
-- Responses with *Cache-Control: Private* are NOT cachable.
-- Responses with *Cache-Control: No-Cache* are NOT cachable by Squid
+- Responses with *Cache-Control: Private* are NOT cacheable.
+- Responses with *Cache-Control: No-Cache* are NOT cacheable by Squid
   older than [Squid-3.2](/Releases/Squid-3.2).
-- Responses with *Cache-Control: No-Store* are NOT cachable.
-- Responses for requests with an *Authorization* header are cachable
-  ONLY if the reponse includes *Cache-Control: Public* or some other
-  special parameters controling revalidation.
-- The following HTTP status codes are cachable:
+- Responses with *Cache-Control: No-Store* are NOT cacheable.
+- Responses for requests with an *Authorization* header are cacheable
+  ONLY if the response includes *Cache-Control: Public* or some other
+  special parameters controlling revalidation.
+- The following HTTP status codes are cacheable:
   - 200 OK
   - 203 Non-Authoritative Information
   - 300 Multiple Choices
@@ -402,7 +402,7 @@ it will NOT be cached if ALL of the *Date*, *Last-Modified*, and
 *Expires* reply headers are missing. This prevents such objects from
 bouncing back-and-forth between siblings forever.
 
-A *302 Moved Temporarily* response is cachable ONLY if the response also
+A *302 Moved Temporarily* response is cacheable ONLY if the response also
 includes an *Expires* header.
 
 The following HTTP status codes are "negatively cached" for a short
@@ -421,7 +421,7 @@ amount of time (configurable):
 - 503 Service Unavailable
 - 504 Gateway Time-out
 
-All other HTTP status codes are NOT cachable, including:
+All other HTTP status codes are NOT cacheable, including:
 
 - 206 Partial Content
 - 303 See Other
@@ -752,7 +752,7 @@ beginning. This header is used to store the URL MD5, some `StoreEntry`
 data, and more. When Squid opens a disk file for reading, it looks for
 the meta data header and unpacks it.
 
-This warning means that Squid couln't unpack the meta data. This is
+This warning means that Squid couldn't unpack the meta data. This is
 non-fatal bug, from which Squid can recover. Perhaps the meta data was
 just missing, or perhaps the file got corrupted.
 
@@ -781,7 +781,7 @@ fails. Squid handles this as a failed ident lookup.
 then why not bind the local endpoint to the host's (intranet) IP
 address? Why make the masses suffer needlessly?*
 
-Because thats just how ident works. Please read
+Because that's just how ident works. Please read
 [RFC 931](ftp://ftp.isi.edu/in-notes/rfc931.txt), in particular the
 RESTRICTIONS section.
 

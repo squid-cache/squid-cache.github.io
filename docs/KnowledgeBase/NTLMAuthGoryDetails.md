@@ -50,7 +50,7 @@ is available from [Samba's](http://www.samba.org) repository.
 1. The client sends a new GET-request, along with an header:
     `Proxy-Authenticate: NTLM cmon_we_are_almost_done` where
     cmon_we_are_almost_done is an authenticate packet. The packet
-    includes informations about the user name and domain, the challenge
+    includes information about the user name and domain, the challenge
     nonce encoded with the user's password (actually it MIGHT contain it
     encoded TWICE using different algorithms).
 1. Either the server denies the authentication via a 407/DENIED or

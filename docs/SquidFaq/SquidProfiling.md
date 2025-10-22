@@ -70,7 +70,7 @@ resources. There's a few things that frequently occur:
     the system. Gigabit network cards are a good example of this. You
     trade off a few ms of latency versus a high interrupt load, but this
     doesn't matter on a server which is constantly handling packets.
-    Take a look at your hardware documentation and see whats available.
+    Take a look at your hardware documentation and see what's available.
 - Linux servers spending a lot of time in IOWAIT can also be because
     you're overloading your disks with IO. See what your disk IO looks
     like in vmstat. You could look at moving to the aufs/diskd
@@ -101,7 +101,7 @@ OProfile under Linux is easy to use and has quite a low overhead.
 Here's how I use oprofile:
 
 - Install oprofile
-- Check whats available - *opcontrol -l*
+- Check what's available - *opcontrol -l*
 - If you see a single line regarding "timer interrupt mode", you're
     stuffed. Go read the OProfile FAQ and see if you can enable ACPI.
     You won't get any meaningful results out of OProfile in timer
@@ -118,7 +118,7 @@ Here's how I use oprofile:
 Just remember:
 
 - Make sure you've got the debugging libraries and library symbols
-    installed - under Ubuntu thats 'libc6-dbg'.
+    installed - under Ubuntu that's 'libc6-dbg'.
 - Don't try using it under timer interrupt mode, it'll suffer similar
     accuracy issues to gprof and other timer-based profilers.
 

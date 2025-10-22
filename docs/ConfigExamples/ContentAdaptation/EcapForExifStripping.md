@@ -104,7 +104,7 @@ First, build and install dependencies:
     make -j8
     make install
 
-Make shure all shared libraries are installed.
+Make sure all shared libraries are installed.
 
 > :information_source:
     Note: Use correct compiler full path, depending your setup. Commands
@@ -145,7 +145,7 @@ Supported configuration parameters:
         Files with size greater than limit will be stored in temporary
         disk storage, otherwise processing will be done in RAM.
     exclude_types
-        List of semicolon seprated MIME types which shouldn't be
+        List of semicolon separated MIME types which shouldn't be
         handled by adapter.
 
 ## Squid Configuration File

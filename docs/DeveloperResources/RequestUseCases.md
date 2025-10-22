@@ -29,7 +29,7 @@ interact for a number of use cases.
 - Requests on a client side connection are owned by the connection.
 - The data source from the store or upstream to satisfy a connection
   is owned by the request.
-- Upstream requests are owned by the requestor - the client request
+- Upstream requests are owned by the requester - the client request
   when the request is not being diverted to the store, and the store
   when it is being copied to cache.
 - The server-side connection is owned by the OS - it must remain a
@@ -60,7 +60,7 @@ Socket - an fd on unix, a HANDLE on windows.
     - Socket holds `CallbackReference` to the comms layer to notify it
         of close.
 1. New Socket is passed to the listening factory for the port it was
-    recieved on.    
+    received on.    
     - Factory constructs `HttpClientConnection` to represent the
         Socket at the protocol layer.
     - Factory cals `Socket.setClient(HttpClientConnection)`
@@ -69,7 +69,7 @@ Socket - an fd on unix, a HANDLE on windows.
     - `HttpClientConnection` holds `CallbackReference` to the Socket.
 1. `HttpClientConnection` calls read() on the Socket
     - For some systems, the read is scheduled on the socket now. For
-        others, when the next event loop occurs, the read willl be done.
+        others, when the next event loop occurs, the read will be done.
     - Socket gets a `RefCount` reference to the dispatcher.
 1. Socket requests read from the OS (if it was not already scheduled)
 1. read completes
@@ -155,7 +155,7 @@ Socket - an fd on unix, a HANDLE on windows.
     - `SocketClient` has a weak reference to the Socket: It new Client
         owns the socket. Nothing owns the Client. Socket has callback to
         the client to notify on events : `ReadPossible`(data has
-        arrived), Close(by request or external occurence). Other events
+        arrived), Close(by request or external occurrence). Other events
         get callbacks as each is queued - ask the socket to read and
         hand the callback to be called in. This could be 'this' if we
         structure the ap well, or it could be some other thing.
@@ -189,7 +189,7 @@ Socket - an fd on unix, a HANDLE on windows.
 1. `ClientRequest` asks for a response to this normalised request from
     the URL mapper at the core of squid Socket has callbacks to
     `SocketClient` `SocketClient` owns Socket, and owns the
-    `ClientRequest` it has created. `ClientRequest` has calbacks to
+    `ClientRequest` it has created. `ClientRequest` has callbacks to
     `SocketClient` to call on events: `WillNotReadAnyMore`,
     `SocketMustBeClosed`, `SocketMustBeReset`.
 1. the URL mapper determines (based on the scheme or url path) that the
@@ -210,4 +210,4 @@ Socket - an fd on unix, a HANDLE on windows.
 
 ## Tunnel request
 
-## Cachable request
+## Cacheable request

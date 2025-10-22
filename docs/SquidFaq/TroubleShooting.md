@@ -403,7 +403,7 @@ show you which processes own every open file descriptor on your system.
 This means that the client socket was closed by the client before Squid
 was finished sending data to it. Squid detects this by trying to
 read(2)*some data from the socket. If the*read(2)*call fails, then Squid
-konws the socket has been closed. Normally the*read(2)*call
+knows the socket has been closed. Normally the*read(2)*call
 returns*ECONNRESET: Connection reset by peer*and these are NOT logged.
 Any other error messages (such as*EPIPE: Broken pipe*are logged
 to*cache.log*. See the "intro" of section 2 of your Unix manual for a
@@ -556,7 +556,7 @@ until you learn some more about Unix. As a reference, I suggest
 
 ## pingerOpen: icmp_sock: (13) Permission denied
 
-This means your pinger helper program does not have root priveleges.
+This means your pinger helper program does not have root privileges.
 You should either do this when building Squid:
 
     make install pinger
@@ -592,7 +592,7 @@ incoming request, it knows there is a forwarding loop somewhere.
     forwarding loops are correctly detected.
 
 When Squid detects a forwarding loop, it is logged to the *cache.log*
-file with the recieved *Via* header. From this header you can determine
+file with the received *Via* header. From this header you can determine
 which cache (the last in the list) forwarded the request to you.
 
 > :bulb:
@@ -625,7 +625,7 @@ this:
     CONNECT www.buy.com:443 HTTP/1.0
 
 Then Squid opens a TCP connection to the destination host and port, and
-the *real* request is sent encrypted over this connection. Thats the
+the *real* request is sent encrypted over this connection. That's the
 whole point of SSL, that all of the information must be sent encrypted.
 
 With this client bug, however, Squid receives a request like this:
@@ -685,7 +685,7 @@ the hostname part of a URL:
     allowed in URI's and URL's.
 
 Unfortunately, a number of web services generate URL's with whitespace.
-Of course your favorite browser silently accomodates these bad URL's.
+Of course your favorite browser silently accommodates these bad URL's.
 The servers (or people) that generate these URL's are in violation of
 Internet standards. The whitespace characters should be encoded.
 
@@ -788,7 +788,7 @@ and you won't be able to send it any signals.
     If you accidentally removed the PID file, there are two ways to get
     it back.
 
-First locate the proces ID by running *ps* and find Squid. You'll
+First locate the process ID by running *ps* and find Squid. You'll
 probably see two processes, like this:
 
     % ps ax | grep squid
@@ -821,7 +821,7 @@ The reconfigure process creates a new PID file automatically.
 ## FATAL: getgrnam failed to find groupid for effective group 'nogroup'
 
 You are probably starting Squid as root. Squid is trying to find a
-group-id that doesn't have any special priveleges that it will run as.
+group-id that doesn't have any special privileges that it will run as.
 The default is **nogroup**, but this may not be defined on your system.
 
 The best fix for this is to assign squid a low-privilege user-id and
@@ -853,7 +853,7 @@ The bad configuration of IE is the use of a active configuration script
 will only use the proxy.pac. Cydoor aps will use both and will generate
 the errors.
 
-Disabling the old proxy settings in IE is not enought, you should delete
+Disabling the old proxy settings in IE is not enough, you should delete
 them completely and only use the proxy.pac for example.
 
 ## Requests for international domain names do not work
@@ -905,7 +905,7 @@ You may be able to use *tcpdump* to track down and observe the problem.
     user reports that his Zero Sized Reply problem went away when he
     told Internet Explorer to not accept third-party cookies.
 
-Here are some things you can try to reduce the occurance of the Zero
+Here are some things you can try to reduce the occurrence of the Zero
 Sized Reply error:
 
 - Delete or rename your cookie file and configure your browser to

@@ -122,10 +122,10 @@ most likely be your worst bottleneck, by far offsetting the modest gain
 you got by having more storage.
 
 Let's see an example: you have a 9Gb disk (these times they're even hard
-to find..). First thing, manifacturers often lie about disk capacity
+to find..). First thing, manufacturers often lie about disk capacity
 (the whole Megabyte vs Mebibyte issue), and then the OS needs some space
 for its accounting structures, so you'll reasonably end up with 8Gib of
-useable space. You then have to account for another 10% in overhead for
+usable space. You then have to account for another 10% in overhead for
 Squid, and then the space needed for keeping fragmentation at bay. So in
 the end the recommended cache_dir setting is 6000 to 7000 Mebibyte.
 

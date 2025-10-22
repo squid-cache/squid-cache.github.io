@@ -303,7 +303,7 @@ There are a number of things to try:
     [cache_mem](http://www.squid-cache.org/Doc/config/cache_mem)
     parameter in the config file. This controls how many "hot" objects
     are kept in memory. Reducing this parameter will not significantly
-    affect performance, but you may recieve some warnings in *cache.log*
+    affect performance, but you may receive some warnings in *cache.log*
     if your cache is busy.
 - Turn the
     [memory_pools](http://www.squid-cache.org/Doc/config/memory_pools)

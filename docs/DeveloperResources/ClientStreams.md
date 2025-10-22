@@ -17,7 +17,7 @@ organised...
 14:49 < nicholas> Ok, that's client streams.
 14:49 < lifeless> the fwdState api is on the wrong side of the store
 14:49 < nicholas> doh!
-14:49 < lifeless> so it doesn't have any of the required logic - cachability, vary handling, updates of existing opbjects...
+14:49 < lifeless> so it doesn't have any of the required logic - cachability, vary handling, updates of existing objects...
 14:50 < lifeless> things like store digests just haven't been updated to use client streams yet.
 14:50 < nicholas> What, concisely, is a store digest?
 14:51 < lifeless> a bitmap that lossilly represents the contents of an entire squid cache, biased to hits.
@@ -49,7 +49,7 @@ organised...
 15:02 < lifeless> well you don't want that.
 15:02 < lifeless> because you don't want to parse requests.
 15:02 < lifeless> ClientSocketContext is likely to be the closest thing to what you want though.
-15:03 < lifeless> so your readfunc needs to eat all the data it recieves.
+15:03 < lifeless> so your readfunc needs to eat all the data it receives.
 15:04 < lifeless> you can throw it away.
 15:04 < lifeless> your detach function can just call clientStreamDetach(node, http);
 15:04 < nicholas> so do I add my function into ClientSocketContext's read function?
@@ -85,7 +85,7 @@ organised...
 15:13 < nicholas> stream.getRaw() is a pointer to the node, yes? I could the code around that confusing.
 15:14 < lifeless> stream is a ESIStreamContext which is a clientStream node that pulls data from a clientstream, instances of which are
                   used by both the master esi document and includes
-15:14 < lifeless> (different instances, but hte logic is shared by composition)
+15:14 < lifeless> (different instances, but the logic is shared by composition)
 15:14 < lifeless> that is pased into ESIInclude::Start because ESI includes have a primary include and an 'alternate' include.
 15:16 < lifeless> so all you need to start the chain is:
 15:16 < nicholas> I see. I won't need to worry about any of that.
@@ -130,7 +130,7 @@ organised...
 15:25 < lifeless> and likewise for the Detach static method
 15:26 < lifeless> is this making sense ?
 15:27 < nicholas> yes, but just let me reread a litt.e
-15:27 < lifeless> ok, theres one more important thing :)
+15:27 < lifeless> ok, there's one more important thing :)
 15:27 < nicholas> "static_cast<myStream *>(node->data)->bufferData(node, ...)" calls myStream::BufferData doesn't it? So why am I calling
                   myself?
 15:28 < lifeless> lowercase bufferData :)
@@ -189,7 +189,7 @@ organised...
 15:38 < lifeless> so right before that #if ESI line.
 15:39 < nicholas> Oh, I see it has the body at this point already?
 15:39 < nicholas> Or does it just have a partial body?
-15:39 < lifeless> it may have some body, but it definately has the reply metadata
+15:39 < lifeless> it may have some body, but it definitely has the reply metadata
 15:39 < nicholas> Because my code is rigged to work with partial data.
 15:39 < nicholas> ok, good.
 15:39 < nicholas> Then that's *exactly* right.

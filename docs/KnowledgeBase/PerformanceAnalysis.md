@@ -38,7 +38,7 @@ going on.
     using authentication check the authenticators' queues congestion -
     all these things add latency to a request handling, and that can
     generally make an user's browsing experience much worse.
-    Repeat the analisys at different times in different days, check for
+    Repeat the analysis at different times in different days, check for
     variations in the vital parameters.
 1. Collect a few days' worth of logs, and run on them a statistics
     software such as calamaris or webalizer, and start looking for

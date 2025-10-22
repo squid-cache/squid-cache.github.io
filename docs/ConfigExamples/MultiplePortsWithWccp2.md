@@ -8,7 +8,7 @@ categories: [ConfigExample]
 ## Outline
 
 The Squid WCCPv2 implementation can intercept more than TCP port 80. The
-currrent implementation can create multiple arbitrary TCP and UDP ports.
+current implementation can create multiple arbitrary TCP and UDP ports.
 
 There are a few caveats:
 
