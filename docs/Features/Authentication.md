@@ -75,7 +75,7 @@ exchanged in plain text over the wire. Each scheme have their own set of
 helpers and
 [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
 settings. Notice that helpers for different authentication schemes use
-different protocols to talk with squid, so they can't be mixed.
+different protocols to talk with squid, so they cannot be mixed.
 
 For information on how to set up NTLM authentication see [NTLM config
 examples](/ConfigExamples/Authenticate/Ntlm).
@@ -353,7 +353,7 @@ this document but usually it's not in plain text.
 
 In side-band authentication, using the
 [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)
-directive. There is a *password=* value which is possibly transfered to
+directive. There is a *password=* value which is possibly transferred to
 Squid from the helper. This value is entirely **optional** and may in
 fact have no relation to a real password so we cannot be certain what
 risks are actually involved. When received it is generally treated by

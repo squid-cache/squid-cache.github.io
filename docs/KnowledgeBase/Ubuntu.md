@@ -56,7 +56,7 @@ discover the dependency package and install it.
 
 ### Init Script
 
-The init.d script is part of the official Debain/Ubuntu packaging. It
+The init.d script is part of the official Debian/Ubuntu packaging. It
 does not come with Squid directly. So you will need to download a copy
 from the Debian repository
 to /etc/init.d/squid

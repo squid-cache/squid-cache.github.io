@@ -110,7 +110,7 @@ For example, in FireFox:
 2. Go to the 'Advanced' section, 'Encryption' tab
 3. Press the 'View Certificates' button and go to the 'Authorities' tab
 4. Press the 'Import' button, select the .der file that was created
-    previously and pres 'OK'
+    previously and press 'OK'
 
 In theory, you must either import your root certificate into browsers or
 instruct users on how to do that. Unfortunately, it is apparently a
@@ -169,7 +169,7 @@ library default "Global Trusted CA" set. This is done by
     not included (see below). Adding extra root CA in this way is your
     responsibility. Also beware, when you use OpenSSL, you need to make
     c_rehash utility before Squid can use the added certificates.
-    Beware - you can't grab any CA's you see. Check it before use\!
+    Beware - you cannot grab any CA's you see. Check it before use\!
 
 ### Missing intermediate certificates
 

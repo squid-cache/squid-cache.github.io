@@ -16,7 +16,7 @@ absence and
 is a fatal error.
 * When the user specifies `--with-foo=PATH` the library shall be
 detected at the specified path.
-* When the user specifies `--without-foo` no tests for the librarry
+* When the user specifies `--without-foo` no tests for the library
 will be performed, nor will it be used by Squid.
 * When the library is absent API feature tests, hacks and workarounds
 for the library should not be searched for. This reduces the time

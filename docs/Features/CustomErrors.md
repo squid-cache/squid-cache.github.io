@@ -172,7 +172,7 @@ browser behaviour handling these CONNECT messages (described in
 error page produced by the proxy is ignored and a generic browser page
 displayed instead.
 
-Usually this browser page mentions connection faulure or other such
+Usually this browser page mentions connection failure or other such
 irrelevant details.
 
 In fact any response other than **200 OK** is completely dropped by the

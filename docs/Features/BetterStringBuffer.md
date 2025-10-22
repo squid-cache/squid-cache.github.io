@@ -121,7 +121,7 @@ or loose it.
 > :information_source:
     The above design will work, but there are alternatives. Can you
     compare the above with a simpler design where the buffer is locked
-    by stings using it, but does not point back to them; if a string
+    by strings using it, but does not point back to them; if a string
     needs to be modified and the buffer has more than one lock, the
     buffer (or its affected portion) is copied for that string use,
     without any affect on other strings.
@@ -195,7 +195,7 @@ necessary.
     its portion is duplicated by the user code.
 
 Indeed, that is the intent. I use 'parent' and 'own' to differentiate
-the case where these objects are referring to a seperate object 'parent'
+the case where these objects are referring to a separate object 'parent'
 (shared buffer by offset+lock on the external object) or has
 master-control over a buffer (responsibiity for: allocate, de-allocate,
 notify-cascade initiate on changes)

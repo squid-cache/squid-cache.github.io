@@ -76,7 +76,7 @@ func process_request(line string) {
 
         if len(lparts[0]) > 0 {
                 if *debug {
-                        fmt.Fprintln(os.Stderr, "ERRlog: Proccessing request => \""+strings.TrimRight(line, "\n")+"\"")
+                        fmt.Fprintln(os.Stderr, "ERRlog: Processing request => \""+strings.TrimRight(line, "\n")+"\"")
                 }
         }
 

@@ -67,17 +67,17 @@ The Squid storage manager does a bunch of things inefficiently. Namely:
     Replace this with an explicit "`GrabReply`" async routine which'll
     do said kicking (including reading object data from disk where
     appropriate) and return the reply status + headers, and any data
-    thats available.
--  That should mean we can get rid of the seen_offset stuff. Thats
+    that's available.
+-  That should mean we can get rid of the seen_offset stuff. That's
     only ever used, as far as I can tell, when trying to parse the reply
     headers.
--  Once thats happy (and its a significant amount of work\!), modify
+-  Once that's happy (and its a significant amount of work\!), modify
     the storeClientCopy() API again take an offset and return a
     (mem_node + offset + size) which will supply the data required. The
     offset is required because the mem_node may contain data which has
     already be seen; the size is required because the mem_node may not
     yet be filled.
--  Once -thats- happy (and thats another large chunk of work right
+-  Once -that's- happy (and that's another large chunk of work right
     there\!) consider changing things to not need to keep seeking into
     the memory object. Instead we should just do it in two parts - a
     seek() type call to set the current position, then return pages.
@@ -110,7 +110,7 @@ The Squid storage manager does a bunch of things inefficiently. Namely:
 -  The client API should be presented as two streams of data. One
     stream with status line and parsed entity headers (hop-by-hop
     headers should be filtered at the protocol side), the other a sparse
-    octet stream. Sparse to suppor ranges. Maybe there should be a seek
+    octet stream. Sparse to support ranges. Maybe there should be a seek
     function as well, but not really needed with the intermediary layer
     taking care of ranges.
 -  Store API should be similarly split on both read write. Here a seek

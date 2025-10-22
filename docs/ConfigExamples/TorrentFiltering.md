@@ -7,7 +7,7 @@ categories: [ConfigExample]
 
 ## Outline
 
-Torrent filtering is a diffucult problem. which can't be solved easily.
+Torrent filtering is a difficult problem. which cannot be solved easily.
 To difficult this for users you can first deny download .torrent files.
 
 ## Usage
@@ -15,7 +15,7 @@ To difficult this for users you can first deny download .torrent files.
 You can also enforce this task uses
 [NBAR protocol discovery](http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos_nbar/configuration/xe-3s/qos-nbar-xe-3s-book/nbar-protocl-discvry.html)
 (DPI functionality) in your router (ISR G-2 and above 29xx Cisco series
-or similar). Only Squid can't completely block torrents your wish.
+or similar). Only Squid cannot completely block torrents your wish.
 
 ## Squid Configuration File
 

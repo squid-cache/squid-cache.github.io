@@ -45,7 +45,7 @@ This number was taken in a **controlled test environment**. It has
 nothing to do with the numbers someone would get in a production
 environment; it's just an estimate of how fast squid can be. Squid was
 configured to do no logging, no access control, and apachebench was used
-to hammer squid asking 10M times for a static, cacheable, 600-bytes long
+to hammer squid asking 10M times for a static, cachable, 600-bytes long
 document. Of the 4 cores, 3 were running a multi-worker squid, one was
 running ab over the loopback interface.
 
@@ -229,7 +229,7 @@ nothing to do with the numbers someone would get in a production
 environment; it's just an estimate of how fast squid can be. Squid was
 configured to do no logging and apachebench was used to hammer squid
 asking 250K times for a blocked url (leading to a 403 response with a
-location header) or with a cacheable, 16KB long document. Of the 4
+location header) or with a cachable, 16KB long document. Of the 4
 cores, 2 were running a multi-worker squid. The apache benchmark was run
 from another host and from the same host with similar results.
 

@@ -20,7 +20,7 @@ for the same URI to be processed as one request to the backend server.
 Normally disabled to avoid increased latency on dynamic content, but
 there can be benefit from enabling this in accelerator setups where the
 web servers are the bottleneck but are reliable and return mostly
-cacheable information.
+cachable information.
 
 It was left out of [Squid-3.0](/Releases/Squid-3.0)
 due to time and stability constraints. The

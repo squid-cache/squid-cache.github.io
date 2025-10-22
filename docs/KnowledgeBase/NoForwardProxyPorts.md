@@ -5,7 +5,7 @@ categories: KnowledgeBase
 
 ## Synopsis
 
-Squid has been configuered without any port capable of receiving
+Squid has been configured without any port capable of receiving
 forward-proxy traffic.
 
 ## Symptoms

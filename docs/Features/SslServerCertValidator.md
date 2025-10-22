@@ -146,4 +146,4 @@ might be out of date or simply not configured correctly. We could add an
 `squid.conf` option to control whether the helper is consulted after an
 OpenSSL-detected error, but since such errors should be rare, the option
 will likely add overheads to the common case without bringing any
-functionality advantages for the rare erronous case.
+functionality advantages for the rare erroneous case.

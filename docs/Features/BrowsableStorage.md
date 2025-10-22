@@ -15,7 +15,7 @@ categories: WantedFeature
 
 From IRC:
 ```irc
-    14:55:07) derekv: One functionality I would like is (using .pdf as an example) to have all pdfs that are downloaded through the proxy to be stored in an archive that is seperate from the cache, and where they are normal files that can be for example indexed and searched.
+    14:55:07) derekv: One functionality I would like is (using .pdf as an example) to have all pdfs that are downloaded through the proxy to be stored in an archive that is separate from the cache, and where they are normal files that can be for example indexed and searched.
     (14:55:47) derekv: (one way this could be organized is to put them in a file structure similar to how wget does it when doing recursive downloads)
     (14:56:33) derekv: Unless there is some way to configure this, the easy way seems to be to use squidsearch with a periodic script to extract the files and move them to the store
     (14:58:00) derekv: But it seems like it would be even more clever if squid could be aware of the separate store, eg, "if the requested file is a .pdf, look in pdf archive", thus the store would act as a cache as well.

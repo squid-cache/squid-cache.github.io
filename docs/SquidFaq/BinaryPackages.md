@@ -47,7 +47,7 @@ answer would be "please upgrade to the latest version as distributed by us".
 So please rely on your operating system's community and bug reporting
 systems as your first line of support
 
-But then, Squid users and develoers are a nice community with a genuine
+But then, Squid users and developers are a nice community with a genuine
 desire to help and they will, if they can.
 The
 [squid users community](http://www.squid-cache.org/Support/mailing-lists.html#squid-users)

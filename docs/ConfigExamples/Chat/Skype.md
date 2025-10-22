@@ -15,7 +15,7 @@ then the mentioned in the article to make it so skype clients will be
 able to run smooth with squid in the picture. Else then that skype in
 many cases will require direct access to the Internet and will not work
 in a very restricted networks with allow access only using a proxy. I
-belive that NTOP have some more details on how to somehow make skype
+believe that NTOP have some more details on how to somehow make skype
 work or be blocked in some cases. I recommend peeking at theri at:
 <https://github.com/ntop/nDPI/search?utf8=✓&q=skype>
 

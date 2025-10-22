@@ -50,7 +50,7 @@ may be due to one of the following reasons:
     needs write permissions to [coredump destination
     directory](#coredump-location)
 - sysctl options
-:   On systems such as FreeBSD, you won't get a coredump from programs that call
+:   On systems such as FreeBSD, you will not get a coredump from programs that call
     setuid() and/or setgid() (like Squid sometimes does) unless you
     enable this option:
 ```
@@ -84,9 +84,9 @@ may be due to one of the following reasons:
     version of Squid where the debug symbols have not been removed.
 - Threads and Linux
 : On Linux, threaded applications do not generate core dumps. When
-    you use the aufs cache_dir type, it uses threads and you can't
+    you use the aufs cache_dir type, it uses threads and you cannot
     get a coredump.
-- It did leave a coredump file, you just can't find it.
+- It did leave a coredump file, you just cannot find it.
 
 ## Resource Limits
 
@@ -211,7 +211,7 @@ To disable systemd-coredump:
 If you CANNOT get Squid to leave a core file for you then one of the
 following approaches can be used
 
-First alternative is to start Squid under the contol of GDB
+First alternative is to start Squid under the control of GDB
 
 ```
 % gdb /path/to/squid
@@ -231,7 +231,7 @@ quit
 ## Using gdb debugger on a live proxy (with minimal downtime)
 
 The drawback from the above is that it isn't really suitable to run on a
-production system as Squid then won't restart automatically if it
+production system as Squid then will not restart automatically if it
 crashes. The good news is that it is fully possible to automate the
 process above to automatically get the stack trace and then restart
 Squid. Here is a short automated script that should work:

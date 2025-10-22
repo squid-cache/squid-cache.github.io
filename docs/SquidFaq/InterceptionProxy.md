@@ -28,7 +28,7 @@ outlined by *Mark Elsen*:
   common).
 - Connection multiplexing does not work. Clients aware of the proxy
   can send requests for multiple domains down one proxy connection and
-  save resources while letting teh proxy do multiple backend
+  save resources while letting the proxy do multiple backend
   connections. When talking to an origin clients are not permitted to
   do this and will open many TCP connections for resources. This
   causes intercepting proxy to consume more network sockets than a
@@ -36,7 +36,7 @@ outlined by *Mark Elsen*:
 - Proxy authentication does not work.
 - IP based authentication by the origin fails because the users are
   all seen to come from the Interception Cache's own IP address.
-- You can't use IDENT lookups (which are inherently very insecure
+- You cannot use IDENT lookups (which are inherently very insecure
   anyway)
 - ARP relay breaks at the proxy machine.
 - Interception Caching only supports the HTTP protocol, not gopher,
@@ -308,7 +308,7 @@ map\!
 *[John](mailto:John.Saunders@scitec.com.au)* notes that you may be able to
 get around this bug by carefully writing your access lists. If the
 last/default rule is to permit then this bug would be a problem, but if
-the last/default rule was to deny then it won't be a problem. I guess
+the last/default rule was to deny then it will not be a problem. I guess
 fragments, other than the first, don't have the information available to
 properly policy route them. Normally TCP packets should not be
 fragmented, at least my network runs an MTU of 1500 everywhere to avoid
@@ -336,7 +336,7 @@ First, configure Squid for interception caching as detailed at the
 
 Next, configure the Foundry layer 4 switch to redirect traffic to your
 Squid box or boxes. By default, the Foundry redirects to port 80 of your
-squid box. This can be changed to a different port if needed, but won't
+squid box. This can be changed to a different port if needed, but will not
 be covered here.
 
 In addition, the switch does a "health check" of the port to make sure
@@ -800,7 +800,7 @@ Linux kernel, as if you are you simply need to modprobe the module to
 gain it's functionality.
 
 Ensure that the GRE code is either built as static or as a module by
-chosing the appropriate option in your kernel config. Then rebuild your
+choosing the appropriate option in your kernel config. Then rebuild your
 kernel. If it is a module you will need to:
 
     modprobe ip_gre
@@ -954,7 +954,7 @@ will want to read on to our troubleshooting section below.
 - Have you tried unloading ALL firewall rules on your cache and/or the
   inside address of your network device to see if that helps? If your
   router or cache are inadvertently blocking or dropping either the
-  WCCP control traffic or the GRE, things won't work.
+  WCCP control traffic or the GRE, things will not work.
 - If you are using WCCP on a cisco router or switch, is the router
   seeing your cache? Use the command show ip wccp web-cache detail
 - Look in your logs both in Squid (cache.log), and on your
@@ -1004,7 +1004,7 @@ information including the versions of your router, proxy, operating
 system, your traffic redirection rules, debugging output and any other
 things you have tried to the squid-users mailing list.
 
-### Why can't I use authentication together with interception proxying?
+### Why cannot I use authentication together with interception proxying?
 
 Interception Proxying works by having an active agent (the proxy) where
 there should be none. The browser is not expecting it to be there, and

@@ -10,7 +10,7 @@ applications there is no relationship between packets (a layer 3
 concept) and the traffic received by Squid. Instead of packets HTTP
 operates on a **message** basis (called segments in the OSI model
 definitions), where an HTTP request and response can each be loosely
-considered equivelent to one "packet" in a transport architecture. Just
+considered equivalent to one "packet" in a transport architecture. Just
 like IP packets HTTP messages are stateless and the delivery is entirely
 optional for process. See the RFC
 [7230](https://tools.ietf.org/rfc/rfc7230) texts for a better

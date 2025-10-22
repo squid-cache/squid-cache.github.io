@@ -69,7 +69,7 @@ This isn't such a problem with desktops talking directly to servers
 because desktops typically have small window sizes and TCP scale factors
 configured and thus they tend not to be too far "out of whack" with what
 the server believes. Modern server operating systems tend to have larger
-window sizes and TCP scale factors which tend to aggrivate the issue.
+window sizes and TCP scale factors which tend to aggravate the issue.
 
 ## Workaround
 
@@ -81,7 +81,7 @@ proxy server. Under Linux this is done by:
 Other platforms will implement it differently.
 
 Another possibility is to add in specific routes to target networks
-which force a TCP window size maximum of 65535. This currently can't be
+which force a TCP window size maximum of 65535. This currently cannot be
 done automatically by Squid.
 
 ## Thanks

@@ -20,7 +20,7 @@
       - Remove
         [cache_peer_domain](http://www.squid-cache.org/Doc/config/cache_peer_domain)
         directive
-      - basic_msnt_multi_domain_auth: Superceeded by
+      - basic_msnt_multi_domain_auth: Superseded by
         basic_smb_lm_auth
       - Update
         [external_acl_type](http://www.squid-cache.org/Doc/config/external_acl_type)

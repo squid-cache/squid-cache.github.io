@@ -78,7 +78,7 @@ or maybe
 
 The web server or application must be capable of receiving the
 **Surrogate-Capability** headers and identifying whether the ID is
-acceptible.
+acceptable.
 
 > :x:
     Special care may be needed. The ID tags "unset-id" , "unconfigured"

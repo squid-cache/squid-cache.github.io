@@ -181,7 +181,7 @@ per.php:
             //file not in cache? Get it, send it & save it
             logdata("MISS",$url,$fname);
             $fileptr=fopen($fname,"w");
-            //no validity check, simply don't write the file if we can't open it. prevents noticeable failure/
+            //no validity check, simply don't write the file if we cannot open it. prevents noticeable failure/
 
             while(!feof($urlptr)){
                     $line=fread($urlptr,$blocksize);

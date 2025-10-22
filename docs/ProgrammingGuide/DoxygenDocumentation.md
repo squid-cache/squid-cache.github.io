@@ -100,7 +100,7 @@ or
      *
      * This function does activity Y, requiring blah blah blah.
      * End with an empty line.
-     * [\note particular informations]
+     * [\note particular information]
      *
      * \param paramName paramDesc
      * ...
