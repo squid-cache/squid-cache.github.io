@@ -124,7 +124,7 @@ consists of a *list of values*. When checking for a match, the multiple
 values use OR logic. In other words, an ACL element is *matched* when
 any one of its values is a match.
 
-You can't give the same name to two different types of ACL elements. It
+You cannot give the same name to two different types of ACL elements. It
 will generate a syntax error.
 
 You can put different values for the same ACL name on different lines.
@@ -673,7 +673,7 @@ Similarly, if you said that *co.us* is GREATER than *fff.co.us*, then
 the Splay tree searching algorithm might never discover *co.us* as a
 match for *bbb.co.us*.
 
-The bottom line is that you can't have one entry that is a subdomain of
+The bottom line is that you cannot have one entry that is a subdomain of
 another. Squid will warn you if it detects this condition.
 
 ## Why does Squid deny some port numbers?

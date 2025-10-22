@@ -17,7 +17,7 @@ What it might implement:
     network server and the HTTP request queue?
 - SSL. That's a connection property.
 
-What it won't implement:
+What it will not implement:
 - ACL checks: that should be done as part of the HTTP request queue
 - URL rewriting: that should be done as part of the HTTP request queue
 - Transfer/Content encoding (deflate/gzip); that should be done as
@@ -53,7 +53,7 @@ What it won't implement:
 
 Its relatively easy to handle errors in a single-process non-threaded
 setup - just abort all the outstanding requests and delete the object
-there and then. This probably won't cut it in a threaded setup, so:
+there and then. This probably will not cut it in a threaded setup, so:
 
 - The connection closing shouldn't force the object to immediately
     disappear - it should go into a CLOSED state

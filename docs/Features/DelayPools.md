@@ -142,7 +142,7 @@ microwave (ATM) network.
 
 For our local access we use a dstdomain ACL, and for delay pool
 exceptions we use a dst ACL as well since the delay pool ACL processing
-is done using "fast lookups", which means (among other things) it won't
+is done using "fast lookups", which means (among other things) it will not
 wait for a DNS lookup if it would need one.
 
 Our proxy has two virtual interfaces, one which requires student

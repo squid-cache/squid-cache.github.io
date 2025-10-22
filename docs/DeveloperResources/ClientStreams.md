@@ -11,7 +11,7 @@ an IRC chat about ClientStreams, it needs to be cleaned up and made more
 organised...
 
 ```irc
-14:48 < nicholas> Hi. I'm working on bug 1160 (analyze HTML to prefetch embedded objects). I can't figure out why, but even though it
+14:48 < nicholas> Hi. I'm working on bug 1160 (analyze HTML to prefetch embedded objects). I cannot figure out why, but even though it
                   fetches the pages, it doesn't cache the result! The fetch is initiated with "fwdState(-1, entry, request);".
 14:49 < lifeless> I'd use the same mechanism ESI does.
 14:49 < nicholas> Ok, that's client streams.
@@ -45,7 +45,7 @@ organised...
 15:00 < nicholas> For a ClientStreamData, I'm supposed to create my own Data class which is derived from, er, Refcountable? Then let the
                   ClientStreamData's internal pointer point to my object, then upcast it when my callbacks are called?
 15:01 < nicholas> See, I don't really understand what my callbacks are really supposed to do, since I only want "default" behaviour. As
-                  in, whatever squid normally does to cache/handle a request, expect that there's no sender to send it to.
+                  in, whatever squid normally does to cache/handle a request, expect that there is no sender to send it to.
 15:02 < lifeless> well you don't want that.
 15:02 < lifeless> because you don't want to parse requests.
 15:02 < lifeless> ClientSocketContext is likely to be the closest thing to what you want though.
@@ -61,7 +61,7 @@ organised...
 15:05 < lifeless> right, you should have that already written though - whatever is doing the parsing should already be a clientStream
 15:06 < nicholas> Nope. I just hacked it into http.cc.
 15:06 < lifeless> if its not, then don't worry for now, get it working is the first step.
-15:06 < nicholas> Not that I can't move it pretty easily.
+15:06 < nicholas> Not that I cannot move it pretty easily.
 15:06 < nicholas> Everything works, except that it doesn't cache what it fetches. And now I know why.
 15:06 < lifeless> your Status calls should always return prev()->status()
 15:07 < lifeless> the callback call is the one that is given the data, it too should throw it away.
@@ -88,7 +88,7 @@ organised...
 15:14 < lifeless> (different instances, but the logic is shared by composition)
 15:14 < lifeless> that is pased into ESIInclude::Start because ESI includes have a primary include and an 'alternate' include.
 15:16 < lifeless> so all you need to start the chain is:
-15:16 < nicholas> I see. I won't need to worry about any of that.
+15:16 < nicholas> I see. I will not need to worry about any of that.
 15:16 < lifeless> HttpHeader tempheaders(hoRequest);
 15:17 < lifeless> if (clientBeginRequest(METHOD_GET, url, aBufferRecipient, aBufferDetach, aStreamInstance, &tempheaders,
                   aStreamInstance->buffer->buf, HTTP_REQBUF_SZ))
@@ -130,7 +130,7 @@ organised...
 15:25 < lifeless> and likewise for the Detach static method
 15:26 < lifeless> is this making sense ?
 15:27 < nicholas> yes, but just let me reread a litt.e
-15:27 < lifeless> ok, there's one more important thing :)
+15:27 < lifeless> ok, there is one more important thing :)
 15:27 < nicholas> "static_cast<myStream *>(node->data)->bufferData(node, ...)" calls myStream::BufferData doesn't it? So why am I calling
                   myself?
 15:28 < lifeless> lowercase bufferData :)
@@ -162,7 +162,7 @@ organised...
 15:35 < lifeless> ok, where to put the analyzer ? we've got some rework we want to do in the request flow that would make this a lot
                   easier to answer.
 15:35 < lifeless> I think that the right place for now, is exactly where esi goes, and after esi in the chain.
-15:35 < lifeless> the problem with where you are is that ftp pages won't be analysed. and if its an esi upstream then the urls could be
+15:35 < lifeless> the problem with where you are is that ftp pages will not be analysed. and if its an esi upstream then the urls could be
                   wrong (for instance)
 15:35 < nicholas> http requests that come in from clients have a client stream chain?
 15:36 < lifeless> yup

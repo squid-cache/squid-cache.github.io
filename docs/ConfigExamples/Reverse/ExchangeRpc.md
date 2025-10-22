@@ -8,7 +8,7 @@ categories: [ConfigExample]
 Squid can be used as an accelerator and ACL filter in front of an
 exchange server exporting mail via RPC over HTTP. The RPC_IN_DATA and
 RPC_OUT_DATA methods communicate with
-_https://URL/rpc/rpcproxy.dll_, for if there's need to limit the
+_https://URL/rpc/rpcproxy.dll_, for if there is need to limit the
 access..
 
 ## Setup

@@ -209,7 +209,7 @@ fooOperantionComplete(...).
     /* The asynchronous operation completes and tries to make the callback */
     void *cbdata;
     if (cbdataReferenceValidDone(local_pointer, &amp;cbdata))
-        /* won't be called, as the data is no longer valid */
+        /* will not be called, as the data is no longer valid */
         callback_func(...., cbdata);
 ```
 In this case, when `cbdataFree` is called before

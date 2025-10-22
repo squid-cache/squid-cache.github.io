@@ -75,7 +75,7 @@ exchanged in plain text over the wire. Each scheme have their own set of
 helpers and
 [auth_param](http://www.squid-cache.org/Doc/config/auth_param)
 settings. Notice that helpers for different authentication schemes use
-different protocols to talk with squid, so they can't be mixed.
+different protocols to talk with squid, so they cannot be mixed.
 
 For information on how to set up NTLM authentication see [NTLM config
 examples](/ConfigExamples/Authenticate/Ntlm).

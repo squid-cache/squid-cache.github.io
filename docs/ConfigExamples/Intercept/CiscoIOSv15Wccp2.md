@@ -32,7 +32,7 @@ redirection methods.
 > :information_source:
     Note: When using managed switch in DMZ, be sure proxy box port in
     the same VLAN/has the same encapsulation as router port with WCCP
-    activated. Otherwise router can't do WCCP handshake with proxy.
+    activated. Otherwise router cannot do WCCP handshake with proxy.
 
 ### Cisco IOS 15.5(3)M2 router
 

@@ -7,7 +7,7 @@ categories: WantedFeature
 
 The Squid logging stuff isn't:
 - fast enough - stdio, same execution thread as Squid
-- flexible enough - only can write to a file; can't write over the
+- flexible enough - only can write to a file; cannot write over the
     network, to MySQL, etc.
 
 The aim of this is to enumerate a replacement logging facility for Squid

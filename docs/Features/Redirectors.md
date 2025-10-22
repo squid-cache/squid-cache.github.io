@@ -287,7 +287,7 @@ The server doing this is very likely also to be using these private URLs
 in things like cookies or embedded page content. There is nothing Squid
 can do about those. And worse they may not be reported by your visitors
 in any way indicating it is the re-writer. A browser-specific **my login
-won't work** is just one popular example of the cookie side-effect.
+will not work** is just one popular example of the cookie side-effect.
 
 ### Can I use something other than perl?
 

@@ -93,7 +93,7 @@ gpasswd -a proxy winbindd_priv
 
 As Samba-3.x has it's own authentication helper there is no need to
 build any of the Squid authentication helpers for use with Samba-3.x
-(and the helpers provided by Squid won't work if you do). You do however
+(and the helpers provided by Squid will not work if you do). You do however
 need to enable support for the NTLM scheme if you plan on using this.
 Also you may want to use the wbinfo_group helper for group lookups
 

@@ -22,5 +22,5 @@ have
     **OR**
 - performed more than one HTTP or ICP request in th epast 5 minutes
 
-This logic is hard-coded in the Squid source and at this time can't be
+This logic is hard-coded in the Squid source and at this time cannot be
 changed.

@@ -266,7 +266,7 @@ categories: [WantedFeature, Feature]
 |            |            | 241 | SHOULD | 10.4.14 | When returning a 413 error when the request entity is too large and it is a time based (or temporary) restriction, include a Retry-After header indicating when it should be ok | |
 |            |            | 242 | SHOULD | 10.4.18 | return 417 when we have unambiguous evidence that the expectation given in a request can not be met by the next hop server | |
 | :rage:     | :rage:     | 243 | SHOULD | 10.5 | include an entity body when we create 5xx error responses explaining the issue (other than to HEAD requests) | |
-|            |            | 244 | SHOULD | 10.5.2 | return a 501 if we don't implement a given method and can't just proxy it an hope | |
+|            |            | 244 | SHOULD | 10.5.2 | return a 501 if we don't implement a given method and cannot just proxy it an hope | |
 |            |            | 245 | SHOULD | 10.5.3 | return a 502 if we get an invalid upstream response | |
 |            |            | 246 | SHOULD | 10.5.4 | return a 503 if we are overloaded, or unable to serve requests due to maintenance. | |
 |            |            | 247 | MAY | 10.5.4 | return a Retry-After when returning a 503 if we are overloaded, or unable to serve requests due to maintenance. (the header would indicate when the maintenance should finish | |
@@ -282,7 +282,7 @@ categories: [WantedFeature, Feature]
 |            |            | 257 | SHOULD | 13.1.1 | forward received responses even if the response itself is stale without adding a new Warning header | |
 |            |            | 258 | SHOULD NOT | 13.1.1 | attempt to revalidate responses that become stale in transit to squid | |
 |            |            | 259 | SHOULD | 13.1.1 | respond as per the 13.1.1 respond rules even if the origin server cannot be contacted. | |
-|            |            | 260 | MUST | 13.1.1 | return an error or warning to the client if the origin server can't be contacted, and no response can be served under the 13.1.1 rules | |
+|            |            | 260 | MUST | 13.1.1 | return an error or warning to the client if the origin server cannot be contacted, and no response can be served under the 13.1.1 rules | |
 |            |            | 261 | MUST | 13.1.2 | attach a warning noting when returning a response that is neither first-hand nor "fresh enough" using the Warning header | |
 |            |            | 262 | MUST | 13.1.2 | delete 1xx warnings from cached responses after successful revalidation | |
 |            |            | 263 | MAY | 13.1.2 | generate 1xx warnings when validating a cached entry | |

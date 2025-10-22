@@ -30,7 +30,7 @@ running, but is expected from who are reading this:
 
 To manipulate the attributes in LDAP was used the tools from the package
 ldap-utils (those beginning with ldap\* and used to manipulate the base
-when running, pretty standard). There's n ways to do that, feeding the
+when running, pretty standard). There are n ways to do that, feeding the
 base with LDIF files, using administration tools with a web interface,
 these will not be shown here. LDAP can be populated in various different
 forms, so, it is expected that yours can be a little different than mine

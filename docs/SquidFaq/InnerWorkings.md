@@ -69,7 +69,7 @@ The algorithm is somewhat more complicated when firewalls are involved.
 
 The [cache_peer](http://www.squid-cache.org/Doc/config/cache_peer)
 **no-query** option can be used to skip the ICP queries if the only
-appropriate source is a parent cache (i.e., if there's only one place
+appropriate source is a parent cache (i.e., if there is only one place
 you'd fetch the object from, why bother querying?)
 
 ## What features are Squid developers currently working on?
@@ -329,13 +329,13 @@ the server-side reads.
 ## Why is my cache's inbound traffic equal to the outbound traffic?
 
 *I've been monitoring the traffic on my cache's ethernet adapter an
-found a behavior I can't explain: the inbound traffic is equal to the
+found a behavior I cannot explain: the inbound traffic is equal to the
 outbound traffic. The differences are negligible. The hit ratio reports
 40%. Shouldn't the outbound be at least 40% greater than the inbound?*
 
 by [David J N Begley](mailto:david@avarice.nepean.uws.edu.au)
 
-I can't account for the exact behavior you're seeing, but I can offer
+I cannot account for the exact behavior you're seeing, but I can offer
 this advice; whenever you start measuring raw Ethernet or IP traffic on
 interfaces, you can forget about getting all the numbers to exactly
 match what Squid reports as the amount of traffic it has sent/received.
@@ -372,7 +372,7 @@ external Internet sites or from internal (to the organization) clients
 (making requests). If you want that, try looking at RMON2.
 
 Also, if you're talking about a 40% hit rate in terms of object
-requests/counts then there's absolutely no reason why you should expect
+requests/counts then there is absolutely no reason why you should expect
 a 40% reduction in traffic; after all, not every request/object is going
 to be the same size so you may be saving a lot in terms of requests but
 very little in terms of actual traffic.
@@ -644,7 +644,7 @@ TCP allows connections to be in a "half-closed" state. This is
 accomplished with the *shutdown(2)* system call. In Squid, this means
 that a client has closed its side of the connection for writing, but
 leaves it open for reading. Half-closed connections are tricky because
-Squid can't tell the difference between a half-closed connection, and a
+Squid cannot tell the difference between a half-closed connection, and a
 fully closed one.
 
 If Squid tries to read a connection, and *read()* returns 0, and Squid

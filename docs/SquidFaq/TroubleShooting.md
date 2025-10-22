@@ -642,7 +642,7 @@ message.
     browser is sending sensitive information unencrypted over the
     network.
 
-##Squid can't access URLs like http://3626046468/ab2/cybercards/moreinfo.html
+##Squid cannot access URLs like http://3626046468/ab2/cybercards/moreinfo.html
 
 by Dave J Woolley (DJW at bts dot co dot uk)
 
@@ -712,7 +712,7 @@ Others are technically violations and should not be performed. The
 broken web service should be fixed instead. It is breaking much more of
 the Internet than just your proxy.
 
-## commBind: Cannot bind socket FD 5 to 127.0.0.1:0: (49) Can't assign requested address
+## commBind: Cannot bind socket FD 5 to 127.0.0.1:0: (49) Cannot assign requested address
 
 This likely means that your system does not have a loopback network
 device, or that device is not properly configured. All Unix systems
@@ -782,7 +782,7 @@ This error message usually means that the *squid.pid* file is missing.
 Since the PID file is normally present when squid is
 running, the absence of the PID file usually means Squid is not running.
 If you accidentally delete the PID file, Squid will continue running,
-and you won't be able to send it any signals.
+and you will not be able to send it any signals.
 
 > :information_source:
     If you accidentally removed the PID file, there are two ways to get
@@ -808,7 +808,7 @@ process id number there. For example:
 
 > :warning:
     Be careful of file permissions. It's no use having a .pid file if
-    squid can't update it when things change.
+    squid cannot update it when things change.
 
 The second is to use the above technique to find the Squid process id.
 Then to send the process a HUP signal, which is the same as *squid -k

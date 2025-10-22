@@ -14,7 +14,7 @@ What is good about WCCP? WCCP allows web cache clustering with built in
 fail-over mechanism and semi auto configuration management.
 
 It gives the Network administrator quiet in mind that if something in
-the cache cluster is not functioning the clients won't suffer from it.
+the cache cluster is not functioning the clients will not suffer from it.
 
 WCCP can be implemented for http and other protocols. many Network
 administrator will implement the Web cache infrastructure close to the

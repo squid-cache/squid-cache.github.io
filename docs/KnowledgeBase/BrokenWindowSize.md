@@ -81,7 +81,7 @@ proxy server. Under Linux this is done by:
 Other platforms will implement it differently.
 
 Another possibility is to add in specific routes to target networks
-which force a TCP window size maximum of 65535. This currently can't be
+which force a TCP window size maximum of 65535. This currently cannot be
 done automatically by Squid.
 
 ## Thanks

@@ -14,7 +14,7 @@ traffic (web in this instance) towards a Squid proxy.
 Various networks are using embedded Linux devices (such as OpenWRT) as
 gateways and wish to implement transparent caching or proxying.
 
-There's no obvious policy routing in Linux - you use iptables to mark
+There is no obvious policy routing in Linux - you use iptables to mark
 interesting traffic, iproute2 ip rules to choose an alternate routing
 table and a default route in the alternate routing table to policy route
 to the distribution.

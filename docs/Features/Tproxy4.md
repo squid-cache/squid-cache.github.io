@@ -402,7 +402,7 @@ router which passes packets to Squid. Then you will need to explicitly
 add some additional configuration.
 
 The WCCPv2 example is provided for people using Cisco boxes. For others
-we can't point to exact routing configuration since it will depend on
+we cannot point to exact routing configuration since it will depend on
 your router. But you will need to figure out some rule(s) which identify
 the Squid outbound traffic. Dedicated router interface, service groups,
 TOS set by Squid

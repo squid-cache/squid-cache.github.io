@@ -288,7 +288,7 @@ URL for where your new *wpad.dat* file can be found.
 
 i.e. _http://www.example.com/wpad.dat_.
 
-Test that that all works as per your script and network. There's no
+Test that that all works as per your script and network. There is no
 point continuing until this works ...
 
 ### Automatic WPAD with DNS
@@ -333,11 +333,11 @@ more reliable.
 
 by *Rodney van den Oever*
 
-There's one nasty side-effect to using auto-proxy scripts: if you start
+There is one nasty side-effect to using auto-proxy scripts: if you start
 the web browser it will try and load the auto-proxy-script.
 
 If your script isn't available either because the web server hosting the
-script is down or your workstation can't reach the web server (e.g.
+script is down or your workstation cannot reach the web server (e.g.
 because you're working off-line with your notebook and just want to read
 a previously saved HTML-file) you'll get different errors depending on
 the browser you use.
@@ -346,7 +346,7 @@ The Netscape browser will just return an error after a timeout (after
 that it tries to find the site 'www.proxy.com' if the script you use is
 called 'proxy.pac').
 
-The Microsoft Internet Explorer on the other hand won't even start, no
+The Microsoft Internet Explorer on the other hand will not even start, no
 window displays, only after about 1 minute it'll display a window asking
 you to go on with/without proxy configuration.
 

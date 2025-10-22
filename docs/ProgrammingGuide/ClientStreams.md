@@ -44,7 +44,7 @@ clientSendMoreData to send data down the pipeline. client POST bodies do
 not use a pipeline currently, they use the previous code to send the
 data. This is a TODO when time permits.
 
-## What's in a node
+## What is in a node
 
 Each node must have:
 

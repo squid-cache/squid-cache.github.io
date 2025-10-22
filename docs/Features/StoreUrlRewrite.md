@@ -41,10 +41,10 @@ a number of structural changes:
 - The existing/normal URLs are used for ACL and forwarding
 - The "store_url" URLs are used for the store key lookup and storage
 - A new meta type has been added - STORE_META_STOREURL - which means
-    the on-disk object format has slightly changed. There's no big deal
+    the on-disk object format has slightly changed. There is no big deal
     here - Squid may warn about an unknown meta data type if you
     rollback to another squid version after trying this feature but it
-    won't affect the operation of your cache.
+    will not affect the operation of your cache.
 
 ## Squid Configuration
 

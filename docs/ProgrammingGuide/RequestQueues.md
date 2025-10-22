@@ -47,7 +47,7 @@ exchange. The request is destroyed once both parties - client and server
 
 ### Messages
 
-The general exchange should involve simple messages. There's a handful
+The general exchange should involve simple messages. There is a handful
 of message types:
 
 - A "request" message type - method, URL, version

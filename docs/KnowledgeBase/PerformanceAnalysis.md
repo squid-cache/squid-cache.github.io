@@ -10,7 +10,7 @@ source of performance information as it raises their performance
 expectations beyond what is reasonable in a work environment.
 
 The first step is to quantify and measure the problem, since users
-almost always have a subjective (and not quantitative) view of what's
+almost always have a subjective (and not quantitative) view of what is
 going on.
 
 1. Try a simple test: on a test client system with enough network
@@ -24,7 +24,7 @@ going on.
     squid restarting unexpectedly or complaining about some resource
     being unavailable (for instance, is it low on file descriptors?)
 1. Check your uplink congestion rate. Is it congested? Squid can help
-    with a congested uplink, but can't perform miracles. What about
+    with a congested uplink, but cannot perform miracles. What about
     latencies? Do a traceroute to a test site and check what is the
     performance on the first two-three hops: the problem might not be
     with your uplink, but with your provider's.

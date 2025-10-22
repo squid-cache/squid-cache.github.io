@@ -131,7 +131,7 @@ stored in the squid cache.
 I also recommend a 30 to 60GB
 [cache_dir](http://www.squid-cache.org/Doc/config/cache_dir) size
 allocation, which will let you download tonnes of windows updates and
-other stuff and then you won't really have any major issues with cache
+other stuff and then you will not really have any major issues with cache
 storage or cache allocation or any other issues to do with the cache.
 
 ## Why does it go so slowly through Squid?

@@ -530,7 +530,7 @@ they do not become very large.
 > :warning:
     Logging is very important to Squid.
     In fact, it is so important that it will shut itself down if it
-    can't write to its logfiles. This includes cases such as a full log disk,
+    cannot write to its logfiles. This includes cases such as a full log disk,
     or logfiles getting too big.
 
 ## My log files get very big!
@@ -669,7 +669,7 @@ whole load of possible problems.
 > :warning:
     Logging is very important to Squid.
     In fact, it is so important that it will shut itself down if it
-    can't write to its logfiles.
+    cannot write to its logfiles.
 
 There are several alternatives which are much safer to setup and use.
 The basic capabilities present are :
