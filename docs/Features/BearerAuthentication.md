@@ -74,7 +74,7 @@ part has been kept intentionally minor and simple to improve the overall
 system security.
 
 > :warning:
-    squid only implements the **Autorization header field** Bearer
+    squid only implements the **Authorization header field** Bearer
     tokens. Alternative *Form field* method is not compatible with HTTP
     proxy needs and method *URI query parameter* is too insecure to be
     trustworthy.

@@ -10,10 +10,10 @@ by *Eliezer Croitoru*
 WCCP stands for ["Web Cache Communication Protocol"](http://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol)
 
 What is good about WCCP? WCCP allows separation of duties between the
-network and the application and there for Auto redundency.
+network and the application and there for Auto redundancy.
 
 the router has couple junctions that it can intercept on routing level
-dynamicly packets. on every interface/vlan there is a "IN" and "OUT".
+dynamically packets. on every interface/vlan there is a "IN" and "OUT".
 IN stands for incoming packets and OUT stands for OUTGOING packets. the
 WCCP daemon on the cisco router gets information about the Cache
 supplier and service. then on the cisco router we can define ACLs to
@@ -21,7 +21,7 @@ apply the service on besides the Cache settings supplied by the cache.
 
 the Cache supplier can interact in two ways with cisco devices: GRE
 tunnel and Layer 2 SWITCHING forwarding. when used with a GRE tunnel all
-the traffic that comes and goes to the client are transfered to the
+the traffic that comes and goes to the client are transferred to the
 proxy on the GRE tunnel instead
 
 the cisco router forwards packets to "hijack" encapsulated in the gre
@@ -39,7 +39,7 @@ loop. so instead of applying regulare WCCP ACLs we are applying another
 ACL built in WCCP and this is the EXLUDE.
 
 the EXCLUDE applies only on Interface (or vlan interface) so we need to
-separte the traffic of the clients and the proxy. in our case we use
+separate the traffic of the clients and the proxy. in our case we use
 another interface. on the router we use interface f1/0 for clients, f1/0
 for the proxy and f0/0 to the internet.
 
@@ -69,7 +69,7 @@ you do know basic Networking and cisco cli basics.
 
 you do know what a GRE tunnel is.
 
-## Toplogy
+## Topology
 
 ![wccp2_vlan.png](/assets/images/wccp2-vlan.png)
 

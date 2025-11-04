@@ -208,7 +208,7 @@ If squid_kerb_ldap is used the following steps are happening
 1. Squid "login" to Windows Active Directory or Unix kdc as user
     \<HTTP/\<fqdn-squid\>@DOMAIN.COM\>. This requires Active Directory
     to have an attribute userPrincipalname set to
-    \<HTTP/\<fqdn-squid\>@DOMAIN.COM\> for the associated acount. This
+    \<HTTP/\<fqdn-squid\>@DOMAIN.COM\> for the associated account. This
     is usaully done by using msktutil.
 
     ![Squid-4.jpeg](/assets/images/squid-4.jpg)

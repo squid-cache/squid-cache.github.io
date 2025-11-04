@@ -20,7 +20,7 @@ categories: WantedFeature
 (from the bug report): When range_offset_limit is set to -1, Squid
 tries to fetch the entire object in response to an HTTP range request.
 
-- **Bug**: The entire object is fetched even when it is not cacheable
+- **Bug**: The entire object is fetched even when it is not cachable
     (e.g. because it is larger than
     [maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     or some other criteria).
@@ -35,7 +35,7 @@ tries to fetch the entire object in response to an HTTP range request.
     file.
 
 The proper fix for this is to add caching of partial responses,
-eleminating the need for
+eliminating the need for
 [range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)
 entirely.
 
@@ -63,7 +63,7 @@ What Squid should do is:
 
 1. skip the 1024-2048 chunk
 1. fetch the 2049-3072 chunk
-1. optionally skip the 3073+ chunks, or contiue fetching.
+1. optionally skip the 3073+ chunks, or continue fetching.
 
 Caching the chunks received and marking the response as incomplete.
 

@@ -9,7 +9,7 @@ Winbind is a Samba component providing access to Windows Active Directory
 authentication services on a Unix-like operating system
 
 ## Supported Samba Releases
-Samba 3 and later provide a squid-compatible authenitcation helper named
+Samba 3 and later provide a squid-compatible authentication helper named
 `ntlm_auth`
 
 ## Samba Configuration
@@ -93,7 +93,7 @@ gpasswd -a proxy winbindd_priv
 
 As Samba-3.x has it's own authentication helper there is no need to
 build any of the Squid authentication helpers for use with Samba-3.x
-(and the helpers provided by Squid won't work if you do). You do however
+(and the helpers provided by Squid will not work if you do). You do however
 need to enable support for the NTLM scheme if you plan on using this.
 Also you may want to use the wbinfo_group helper for group lookups
 

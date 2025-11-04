@@ -37,7 +37,7 @@ IP Cache Contents:
 ```
 ## FAQ about this report
 
-### What's the difference between a hit, a negative hit and a miss?
+###  i the difference between a hit, a negative hit and a miss?
 
 - A HIT means the domain was found in the cache.
 - A MISS means the domain was not found in the cache.

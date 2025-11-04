@@ -23,6 +23,6 @@ Paste the configuration file like this:
     http_access deny block_tld
     deny_info TCP_RESET block_tld
 
-Pay your attention, that we send TCP_RESET to client. So, he can't see
+Pay your attention, that we send TCP_RESET to client. So, he cannot see
 we do it with our proxy.
 :smirk:

@@ -137,7 +137,7 @@ details is not a good thing. For this reason the **very top** access
 control in Squid limits manager access on only be available to the
 special localhost IP.
 
-    acl manger url_regex -i ^cache_object:// /squid-internal-mgr/
+    acl manager url_regex -i ^cache_object:// /squid-internal-mgr/
     http_access allow localhost manager
     http_access deny manager
 

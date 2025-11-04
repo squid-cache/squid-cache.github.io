@@ -23,7 +23,7 @@ servers/peers.
     end servers/peers.
 - HTTP/HTTPS CONNECT style connections
 
-## What won't it do?
+## What will not it do?
 
 - Handle content/transfer encodings (eg gzip/deflate)
 - Handle any of the cache logic whatsoever
@@ -73,7 +73,7 @@ connection pools. A few ideas:
     if we really need to migrate stuff.)
 - Implement multiple threads for handling client and server events;
     the majority of connections (normal, pinned) will be inside a given
-    thread and so won't need to involve thread locking to queue stuff.
+    thread and so will not need to involve thread locking to queue stuff.
     Persistent connections could be managed as above to limit thread
     locking overhead or, well, we could just lock the persistent
     connection set.

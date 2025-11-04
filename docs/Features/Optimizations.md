@@ -15,10 +15,10 @@ nnn
 
 Get rid of some unneeded duplicate copying of information
 
-- There's a copy from the http.c server-side code (via storeAppend())
+- There is a copy from the http.c server-side code (via storeAppend())
     to the client_side.c client-side code (via storeClientCopy()) - in
     progress in s27_adri branch.
-- There's a copy out from the store memory into the client-side layer
+- There is a copy out from the store memory into the client-side layer
     (via storeClientCopy()) - integrated into Squid-2.HEAD
 
 ## Optimise the hard parts
@@ -29,7 +29,7 @@ Get rid of some unneeded duplicate copying of information
 ## Implement scatter-gather IO
 
 Avoid having to use the packer to pack HTTP request/reply and headers
-into a buffer before write()ing to the network-side; this won't really
+into a buffer before write()ing to the network-side; this will not really
 be worth it until the copies are eliminated (above) and the
 [stackable IO model](/Features/StackableIO)
 is in.

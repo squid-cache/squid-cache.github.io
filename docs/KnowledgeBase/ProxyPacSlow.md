@@ -29,7 +29,7 @@ network/netmask range.
 This requires the browser to perform a DNS lookup to map the given host
 to an IP address before it can attempt the match.
 
-Some browsers will do a seperate DNS lookup for each `isInNet()`
+Some browsers will do a separate DNS lookup for each `isInNet()`
 function call, resulting in a very long delay before finally completing
 the proxy lookup. This can result in slow or non-functional web
 browsing.

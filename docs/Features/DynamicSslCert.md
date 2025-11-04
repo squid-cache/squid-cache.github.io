@@ -131,7 +131,7 @@ For example, in FireFox:
 1. Go to the 'Advanced' section, 'Encryption' tab
 1. Press the 'View Certificates' button and go to the 'Authorities' tab
 1. Press the 'Import' button, select the .der file that was created
-    previously and pres 'OK'
+    previously and press 'OK'
 
 In theory, you must either import your root certificate into browsers or
 instruct users on how to do that. Unfortunately, it is apparently a
