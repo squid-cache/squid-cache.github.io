@@ -1121,13 +1121,20 @@ This interface is similar to the SSL certificate generation interface.
 
 Request messages sent by Squid have the following syntax:
 
-    action SP size SP body LF
+    [request-ID SP] action SP size SP body LF
 
 ... where `SP` is an ASCII space character, and `LF` is an ASCII new line
-character (\\n), and the other three fields are documented below.
+character (\\n), and the other fields are documented below.
 
 :warning: The `body` field usually contains new line characters. Use the
 `size` field to find the end of the body.
+
+- request-ID: An unsigned positive 64-bit decimal number uniquely identifying
+  this request among all requests submitted to this helper process (i.e. on
+  this helper stdin connection). Squid sends this field when (and only when)
+  the `concurrency=N` helper configuration option is used with `N` values
+  grater than 1. When this field is present, the corresponding helper response
+  must start with a matching `response-ID` field.
 
 - action: A string with the name of helper operation being requested. Squid
   currently only sends `cert_validate` requests.
@@ -1150,7 +1157,7 @@ character (\\n), and the other three fields are documented below.
 
 Example request:
 
-    0 cert_validate 1519 host=dmz.example-domain.com
+    17179869184 cert_validate 1519 host=dmz.example-domain.com
     cert_0=-----BEGIN CERTIFICATE-----
     MIID+DCCA2GgAwIBAgIJAIDcHRUxB2O4MA0GCSqGSIb3DQEBBAUAMIGvMQswCQYD
     ...
@@ -1162,14 +1169,18 @@ Example request:
 
 Squid expects response messages with the following syntax:
 
-    result SP size SP body SOH
+    [request-ID SP] result SP size SP body SOH
 
 ... where `SP` is an ASCII space character, `SOH` is an ASCII Start of Heading
-character (with the value of 1), and the other three fields are documented
-below.
+character (with the value of 1), and the other fields are documented below.
 
 :warning: The `body` field usually contains new line characters. Use the
 `size` field to find the end of the body.
+
+- request-ID: An unsigned positive 64-bit decimal number equal to the
+  `request-ID` field of the corresponding helper request. This field must be
+  sent when (and only when) the `concurrency=N` helper configuration option is
+  used with `N` values grater than 1.
 
 - result: A string matching one of the following codes:
         
@@ -1195,7 +1206,7 @@ below.
 
 Example response message (with the terminating SOH character not shown):
 
-    ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
+    17179869184 ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
     MIIDojCCAoqgAwIBAgIQE4Y1TR0/BvLB+WUF1ZAcYjANBgkqhkiG9w0BAQUFADBr
     ...
     398znM/jra6O1I7mT1GvFpLgXPYHDw==
