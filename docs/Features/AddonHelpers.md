@@ -1204,7 +1204,7 @@ character (with the value of 1), and the other fields are documented below.
         | error\_cert\_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
         
 
-Example response message (with the terminating SOH character not shown):
+Example response message (with the terminating SOH character shown as `^A`):
 
     17179869184 ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
     MIIDojCCAoqgAwIBAgIQE4Y1TR0/BvLB+WUF1ZAcYjANBgkqhkiG9w0BAQUFADBr
@@ -1213,7 +1213,7 @@ Example response message (with the terminating SOH character not shown):
     -----END CERTIFICATE-----
     error_name_0=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
     error_reason_0=Checked by Cert Validator
-    error_cert_0=cert_10
+    error_cert_0=cert_10^A
 
 ### Cache file eraser
 
