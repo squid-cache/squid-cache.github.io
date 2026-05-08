@@ -1123,7 +1123,7 @@ Request messages sent by Squid have the following syntax:
 
     [request-ID SP] action SP size SP body LF
 
-... where `SP` is an ASCII space character, and `LF` is an ASCII new line
+... where `SP` is an ASCII space character, `LF` is an ASCII new line
 character (\\n), and the other fields are documented below.
 
 :warning: The `body` field usually contains new line characters. Use the
@@ -1134,10 +1134,10 @@ character (\\n), and the other fields are documented below.
   this helper stdin connection). Squid sends this field when (and only when)
   the `concurrency=N` helper configuration option is used with `N` values
   grater than 1. When this field is present, the corresponding helper response
-  must start with a matching `response-ID` field.
+  must start with a matching `request-ID` field.
 
-- action: A string with the name of helper operation being requested. Squid
-  currently only sends `cert_validate` requests.
+- action: A string with the name of the helper operation being requested.
+  Squid currently only sends `cert_validate` requests.
 
 - size: A decimal number representing the size of the `body` field in bytes.
   The size of an empty `body` is zero.
@@ -1171,14 +1171,16 @@ Squid expects response messages with the following syntax:
 
     [request-ID SP] result SP size SP body SOH
 
-... where `SP` is an ASCII space character, `SOH` is an ASCII Start of Heading
-character (with the value of 1), and the other fields are documented below.
+... where `SP` is an ASCII space character, `SOH` is an ASCII "Start of
+Heading" character (with the value of 1), and the other fields are documented
+below.
 
-:warning: The `body` field usually contains new line characters. Use the
-`size` field to find the end of the body.
+:warning: If the response `body` field is empty or contains a single key=value
+pair that has no embedded new lines, then the entire response message should
+have no new line characters.
 
 - request-ID: An unsigned positive 64-bit decimal number equal to the
-  `request-ID` field of the corresponding helper request. This field must be
+  `request-ID` field of the corresponding helper request. These fields must be
   sent when (and only when) the `concurrency=N` helper configuration option is
   used with `N` values grater than 1.
 
