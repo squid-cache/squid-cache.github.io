@@ -14,7 +14,9 @@ including the [FAQ](/SquidFaq), [KnowledgeBase](/KnowledgeBase) articles,
 - full list of the site's [Pages](/SitePages)
 
 If you experience problems with the site or the contents, please see
-[Reporting Wiki Problems](/ReportingWikiProblems)
+[Reporting Wiki Problems](/ReportingWikiProblems).
+
+Instructions for [Editing this wiki](/EditingTheWiki).
 
 ### Popular topics
 
