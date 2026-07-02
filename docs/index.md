@@ -43,8 +43,7 @@ mailing list, and during pull request reviews on
 
 - The main Squid [site](http://www.squid-cache.org/)
 - The Bugzilla [database](http://bugs.squid-cache.org/index.cgi)
-- A [related software](/SquidFaq/RelatedSoftware) list for tools and add-ons
-  relevant to Squid
+- [Related software and add-ons](/SquidFaq/RelatedSoftware)
 - The Calamaris log file analysis [tool](http://freshmeat.net/projects/calamaris/)
 - Visolve's configuration manuals for
     [Squid 3.0](https://www.visolve.com/squid/squid30/contents.php), also mostly
@@ -53,4 +52,3 @@ mailing list, and during pull request reviews on
     Guide](https://www.packtpub.com/squid-proxy-server-3-1-beginners-guide/book)
     by Kulbir Saini
 - Other [external links](/ExternalLinks)
-

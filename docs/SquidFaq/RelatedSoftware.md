@@ -36,8 +36,7 @@ kernel-based layer 3-7 load balancer for Linux
   implements HA (via VRRP) and status monitoring with failover
   capabilities. It's focused on Linux, support for other OSes is
   unclear.
-- [VRRPd](http://off.net/~jme/vrrpd/) is a simple implementation of
-  VRRPv2
+- [VRRPd](https://gitlab.com/fredbcode/Vrrpd) VRRP daemon
 
 ## Monitoring
 
@@ -61,11 +60,9 @@ kernel-based layer 3-7 load balancer for Linux
 
 - [Squeezer](http://sourceforge.net/projects/squidoptimizer/) is a
   logfile analysis software aimed at measuring Squid's performance
-- [SquidStats](https://github.com/kaelthasmanu/SquidStats) is a modern tool
-  for parsing and analyzing Squid logs, providing a sleek and user-friendly
-  dashboard to visualize real-time connection data. It helps network
-  administrators monitor and manage Squid proxy connections effectively,
-  including quota management and usage control.
+- [SquidStats](https://github.com/kaelthasmanu/SquidStats) is a tool for
+  parsing and analyzing Squid logs, providing a user-friendly dashboard to
+  visualize real-time connection data.
 
 ## Squid add-ons
 
