@@ -36,7 +36,7 @@ kernel-based layer 3-7 load balancer for Linux
   implements HA (via VRRP) and status monitoring with failover
   capabilities. It's focused on Linux, support for other OSes is
   unclear.
-- [VRRPd](http://off.net/~jme/vrrpd/) is aimple implementation of
+- [VRRPd](http://off.net/~jme/vrrpd/) is a simple implementation of
   VRRPv2
 
 ## Monitoring
@@ -51,7 +51,7 @@ kernel-based layer 3-7 load balancer for Linux
 - [Munin](https://munin-monitoring.org/) is a very flexible
   platform for collecting long-term performance data
 - [Cacti](http://www.cacti.net/) is especially suited for collecting
-  SNMP-basd data
+  SNMP-based data
 - [RRDtool](http://oss.oetiker.ch/rrdtool) is the grandparent of F/OSS
   performance monitoring solutions
 - [SqStat](http://samm.kiev.ua/sqstat/) is an alternate frontend using
@@ -61,6 +61,11 @@ kernel-based layer 3-7 load balancer for Linux
 
 - [Squeezer](http://sourceforge.net/projects/squidoptimizer/) is a
   logfile analysis software aimed at measuring Squid's performance
+- [SquidStats](https://github.com/kaelthasmanu/SquidStats) is a modern tool
+  for parsing and analyzing Squid logs, providing a sleek and user-friendly
+  dashboard to visualize real-time connection data. It helps network
+  administrators monitor and manage Squid proxy connections effectively,
+  including quota management and usage control.
 
 ## Squid add-ons
 
@@ -71,7 +76,7 @@ kernel-based layer 3-7 load balancer for Linux
   Jens Elkner `<elkner AT wotan DOT cs DOT Uni-Magdeburg DOT de>`.
 
 - [SquidGuard](https://en.wikipedia.org/wiki/SquidGuard) is a free (GPL), flexible
-  and efficient filter and redirector program for squid. It lets you
+  and efficient filter and redirector program for Squid. It lets you
   define multiple access rules with different restrictions for
   different user groups. SquidGuard uses squid standard redirector
   interface.
