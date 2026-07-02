@@ -324,11 +324,96 @@ components at build time.
 
 * MUST be used inside .h to wrap relevant code.
 
-## Error reporting
 
-To report an error and abort the current transaction, throw a `TextException("descriptive text", Here())`.
-Use `Assure(condition)` to test an invariant and abort the current transaction.
-To check system-level invariants, where a failure needs to terminate Squid, use `xassert(condition)`
+## Error handling
+
+There are several primary ways to handle various error conditions in Squid
+code. For any given context, only one is usually the correct choice. Using the
+list below, pick the _first_ one that matches your use case. See further below
+for notes about optional custom assertion messages and legacy code.
+
+1. If the condition can be checked at compilation time, use `static_assert()`.
+   Minor code adjustments to make compile-time assertions possible may be
+   allowed, but Squid currently avoids explicit `constexpr`, and sprinkling
+   Squid code with many `constexpr` specifiers to get some compile-time
+   assertion working is usually a bad idea.
+
+2. If the condition describes a code invariant (e.g., "our caller must supply
+   a non-nil pointer"), and the bug violating that invariant is likely to
+   affect transactions that do not check this condition (e.g., a cache may get
+   corrupted, feeding other/independent transactions bogus response data), use
+   `assert(3)`. The guarantees provided by `assert()` are significant, but
+   they do not automatically extend beyond a single kid process. There is
+   currently no mechanism that is guaranteed to terminate the entire SMP Squid
+   instance.
+
+3. If the condition describes a code invariant (e.g., "our caller must supply
+   a non-nil pointer"), and the bug violating that invariant is likely to
+   affect just the transaction checking it, use `Assure()`. In most cases,
+   `Assure()` failures kill the checking transaction but keep its kid process
+   alive. Neither outcome is guaranteed though because Squid may catch and
+   handle the exception before it kills the transaction or the exception may
+   propagate to the top level where it kills the kid process.
+
+4. If the condition describes some input characteristics (e.g., "the client
+   sent a syntactically valid HTTP request to Squid"), do not use any of the
+   above calls. Instead, create and throw a `TextException` object, return
+   `std::nullopt`, or otherwise signal the problem to the caller. In most
+   cases, adding a level-0/1 `debugs()` message is not a good idea. This is
+   especially true when Squid cache administrator can do nothing about that
+   bad input, and that bad input does not represent some very unusual or
+   dangerous situation. Most input validation failures ought to be reflected
+   in various error details logged to `access.log`, not level-0/1 `cache.log`
+   messages.
+
+
+### Squid bug workarounds
+
+In special rare cases, the correct choice is `Assure()`, but it is possible to
+implementing a temporary workaround that would be much better than killing the
+transaction. In this case, it may be permissible to emulate `Assure()`
+reporting without throwing an exception:
+
+```C++
+debugs(54, DBG_IMPORTANT, "ERROR: Squid BUG: wrong fd_note ID: " << fdNoteId);
+```
+
+Do a `git grep ERROR:.Squid.BUG:` search to find more examples to mimic.
+
+
+### Legacy error handling
+
+Legacy error handling macros include `Must()`, `Must3()`, and `TexcHere()`. Do
+not use them in new code. The information below is provided to guide the
+replacement of legacy calls with their modern equivalents.
+
+* Legacy `Must()` was probably meant for checking input, but developers
+  started to use it for checking code invariants as well. The mixture of these
+  two use case categories made it impossible to address various `Must()`
+  problems, necessitating the introduction of `Assure()` and deprecation of
+  `Must()` in 2022 commit b9a1bbfb. When replacing `Must()`, one has to
+  determine the correct use case category (as detailed in the enumerated list
+  at the beginning of the "Error handling" section).
+
+* Legacy `Must3()` is like `Must()` but supports a custom message. Existing
+  `Must3()` custom messages are inconsistent -- some describe the correct
+  condition and some describe the failure.
+
+* Legacy `TexcHere()` is a convenience macro. Modern code spells out
+  `TextException` and `Here()` explicitly.
+
+Keep in mind that it is usually best to leave legacy code intact. Upgrading
+legacy code may be appropriate when your pull request has to modify that
+specific legacy code lines for other legitimate in-scope reasons or your pull
+request is actually dedicated to upgrading legacy code. In those exceptional
+cases, the author becomes responsible for providing a high quality
+replacement, of course.
+
+### Special cases
+
+The following functions are not covered by this documentation. They should be
+avoided in most cases: `xassert()`.
+
 
 ## See Also
 
