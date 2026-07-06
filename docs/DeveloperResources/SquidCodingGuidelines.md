@@ -330,7 +330,8 @@ components at build time.
 There are several primary ways to handle various error conditions in Squid
 code. For any given context, only one is usually the correct choice. Using the
 list below, pick the _first_ one that matches your use case. See further below
-for notes about optional custom assertion messages and legacy code.
+for notes about bug workarounds, optional custom assertion messages, and
+legacy code.
 
 1. If the condition can be checked at compilation time, use `static_assert()`.
    Minor code adjustments to make compile-time assertions possible may be
@@ -379,6 +380,25 @@ debugs(54, DBG_IMPORTANT, "ERROR: Squid BUG: wrong fd_note ID: " << fdNoteId);
 ```
 
 Do a `git grep ERROR:.Squid.BUG:` search to find more examples to mimic.
+
+
+### Custom assertion messages
+
+Compiler-generated `static_assert()`, `Assure()`, and deprecated `Must()`
+error messages spell out the specified condition. In special rare cases, it is
+desirable to replace that generated message with a custom one. When doing so,
+please preserve the message generation algorithm by describing what should be
+happening (i.e. the expected condition) rather than what went wrong. For
+example,
+
+```C++
+// XXX: The custom message describes the problem rather than the condition.
+static_assert(sizeof(quotedOut) > 0, "quotedOut has zero length");
+
+// OK: The custom message describes the condition.
+static_assert(id > 0, "debugs() message ID must be positive");
+Assure2(headerSize >= SwapMetaPrefixSize, "UnpackPrefix() validates metadata length");
+```
 
 
 ### Legacy error handling
