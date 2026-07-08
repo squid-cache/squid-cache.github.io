@@ -15,7 +15,7 @@ involving pipes: splice, tee and vmsplice
     pipe
 
 Those ***might*** be useful in different cases: respectively disk cache
-hit, cacheable miss and (probably) error pages. We need to verify that
+hit, cachable miss and (probably) error pages. We need to verify that
 the semantics are right, and what kind of compromises are required to
 implement them
 

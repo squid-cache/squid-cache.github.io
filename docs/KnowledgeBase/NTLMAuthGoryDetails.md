@@ -27,7 +27,7 @@ is available from [Samba's](http://www.samba.org) repository.
     specified. Of course, additional Proxy-Authenticate headers might be
     supplied to announce other supported authentication schemes. There
     is a bug in all version of Microsoft Internet Explorer by which the
-    NTLM authentication scheme MUST be declared first or it won't be
+    NTLM authentication scheme MUST be declared first or it will not be
     selected. This goes against RFC 2616, which recites "A user agent
     MUST choose to use the strongest auth scheme it understands" and
     NTLM, while broken in many ways, is still worlds stronger than
@@ -35,7 +35,7 @@ is available from [Samba's](http://www.samba.org) repository.
 1. At this point, Squid disconnects the connection, forcing the client
     to initiate a new connection, regardless of any keep-alive
     directives from the client. This is a bug-compatibility issue. It
-    may not be required with HTTP/1.1, but there's no way to make sure.
+    may not be required with HTTP/1.1, but there is no way to make sure.
 1. The client re connects and issues a GET-request, this time with an
     accompanying `Proxy-Authorization: NTLM some_more_stuff` header,
     where some_more_stuff is a base64-encoded negotiate packet. The
@@ -50,7 +50,7 @@ is available from [Samba's](http://www.samba.org) repository.
 1. The client sends a new GET-request, along with an header:
     `Proxy-Authenticate: NTLM cmon_we_are_almost_done` where
     cmon_we_are_almost_done is an authenticate packet. The packet
-    includes informations about the user name and domain, the challenge
+    includes information about the user name and domain, the challenge
     nonce encoded with the user's password (actually it MIGHT contain it
     encoded TWICE using different algorithms).
 1. Either the server denies the authentication via a 407/DENIED or

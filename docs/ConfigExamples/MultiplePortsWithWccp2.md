@@ -8,15 +8,15 @@ categories: [ConfigExample]
 ## Outline
 
 The Squid WCCPv2 implementation can intercept more than TCP port 80. The
-currrent implementation can create multiple arbitrary TCP and UDP ports.
+current implementation can create multiple arbitrary TCP and UDP ports.
 
 There are a few caveats:
 
 - Squid will have to be configured to listen on each port - the
   [wccp2_service](http://www.squid-cache.org/Doc/config/wccp2_service)
   configuration only tells WCCPv2 what to do, not Squid;
-- WCCPv2 (as far as I know) can't be told to redirect random dynamic
-  TCP sessions, only "fixed" service ports - so it can't intercept and
+- WCCPv2 (as far as I know) cannot be told to redirect random dynamic
+  TCP sessions, only "fixed" service ports - so it cannot intercept and
   cache the FTP data streams;
 - You could use Squid to advertise services which are handled by
   "other" software running on the server (for example, if you had a

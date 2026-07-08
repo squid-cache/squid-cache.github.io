@@ -82,7 +82,7 @@ The only points of possible interest for some will be:
 
 ## Trouble Shooting IPv6
 
-### Squid builds with IPv6 but it won't listen for IPv6 requests.
+### Squid builds with IPv6 but it will not listen for IPv6 requests.
 
 **Your squid may be configured to only listen for IPv4.**
 
@@ -243,7 +243,7 @@ Example creation in squid.conf:
     acl to_ipv6 dst ipv6
     acl from_ipv6 src ipv6
 
-## Why can't I connect to my localhost peers?
+## Why cannot I connect to my localhost peers?
 
 In modern IPv6-enabled systems the special **localhost** name has at
 least two IP addresses. IPv4 (127.0.0.1) and IPv6 (::1).
@@ -263,7 +263,7 @@ localhost until you can IPv6-enable the peers.
 
 ## So what gets broken by IPv6?
 
-Also, a few features can't be used with IPv6 addresses. IPv4 traffic
+Also, a few features cannot be used with IPv6 addresses. IPv4 traffic
 going through Squid is unaffected by this. Particularly traffic from
 IPv4 clients. However they need to be noted.
 
@@ -288,7 +288,7 @@ around 2010 with the introduction of NAT66 and NPT66.
 
 Squid delay pools are still linked to class-B and class-C networking
 (from pre-1995 Internet design). Until that gets modernized the
-address-based pool classes can't apply to IPv6 address sizes.
+address-based pool classes cannot apply to IPv6 address sizes.
 
 The pools that should still work are the Squid-3 username based pool, or
 tag based pool.

@@ -36,7 +36,7 @@ Squid packages come with some tools for accessing the cache manager:
 Given that the Cache Manager uses plain HTTP, it's possible - and in fact easy -
 to develop custom tools. The most common one is curl, e.g.
 
-`curl -u user:pasword http://127.0.0.1:3128/squid-internal-mgr/menu`
+`curl -u user:password http://127.0.0.1:3128/squid-internal-mgr/menu`
 
 ## Controlling access to the cache manager
 
@@ -191,7 +191,7 @@ of course.
 
 ## Understanding the manager reports
 
-### What's the difference between Squid TCP connections and Squid UDP connections?
+### What is the difference between Squid TCP connections and Squid UDP connections?
 
 Browsers and caches use TCP connections to retrieve web objects from web
 servers or caches. UDP connections are used when another cache using you
@@ -253,7 +253,7 @@ by *Jonathan Larmour*
 
 You get a "page fault" when your OS tries to access something in memory
 which is actually swapped to disk. The term "page fault" while correct
-at the kernel and CPU level, is a bit deceptive to a user, as there's no
+at the kernel and CPU level, is a bit deceptive to a user, as there is no
 actual error - this is a normal feature of operation.
 
 Also, this doesn't necessarily mean your squid is swapping by that much.
@@ -278,27 +278,27 @@ directive in squid.conf than allow this to happen.
 
 by *Peter Wemm*
 
-There's two different operations at work, Paging and swapping. Paging is
+There are two different operations at work, Paging and swapping. Paging is
 when individual pages are shuffled (either discarded or swapped to/from
 disk), while "swapping" *generally* means the entire process got sent
 to/from disk.
 
 Needless to say, swapping a process is a pretty drastic event, and
-usually only reserved for when there's a memory crunch and paging out
-cannot free enough memory quickly enough. Also, there's some variation
+usually only reserved for when there is a memory crunch and paging out
+cannot free enough memory quickly enough. Also, there is some variation
 on how swapping is implemented in OS's. Some don't do it at all or do a
 hybrid of paging and swapping instead.
 
 As you say, paging out doesn't necessarily involve disk IO, eg: text
 (code) pages are read-only and can simply be discarded if they are not
 used (and reloaded if/when needed). Data pages are also discarded if
-unmodified, and paged out if there's been any changes. Allocated memory
-(malloc) is always saved to disk since there's no executable file to
+unmodified, and paged out if there has been any changes. Allocated memory
+(malloc) is always saved to disk since there is no executable file to
 recover the data from. mmap() memory is variable.. If it's backed from a
 file, it uses the same rules as the data segment of a file - ie: either
 discarded if unmodified or paged out.
 
-There's also "demand zeroing" of pages as well that cause faults.. If
+There is also "demand zeroing" of pages as well that cause faults.. If
 you malloc memory and it calls brk()/sbrk() to allocate new pages, the
 chances are that you are allocated demand zero pages. Ie: the pages are
 not "really" attached to your process yet, but when you access them for
@@ -333,7 +333,7 @@ squids on FreeBSD is reported to work better - the VM/buffer system
 could be competing with squid to cache the same pages. It's a pity that
 squid cannot use mmap() to do file IO on the 4K chunks in it's memory
 pool (I can see that this is not a simple thing to do though, but that
-won't stop me wishing. :-).
+will not stop me wishing. :-).
 
 by *John Line*
 
@@ -348,7 +348,7 @@ behind-the-scenes.)
 
 The effect of this is that on Solaris 2, paging figures will also
 include file I/O. Or rather, the figures from vmstat certainly appear to
-include file I/O, and I presume (but can't quickly test) that figures
+include file I/O, and I presume (but cannot quickly test) that figures
 such as those quoted by Squid will also include file I/O.
 
 To confirm the above (which represents an impression from what I've read

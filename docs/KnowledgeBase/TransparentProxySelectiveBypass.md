@@ -14,7 +14,7 @@ Yes, it is possible to bypass a Squid running as an interception proxy.
 Except for the fact that it's not up to squid to do it, but it's a task
 for the underlying interception technology.
 
-Once Squid gets engaged to serve a request, it can't declare itself out
+Once Squid gets engaged to serve a request, it cannot declare itself out
 of the game, but has to either service it or fail it.
 
 This requirement also determines what kind of filtering is possible;

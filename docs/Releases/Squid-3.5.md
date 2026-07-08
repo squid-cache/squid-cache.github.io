@@ -63,13 +63,13 @@ Added in 3.5.13:
 
 Features removed in 3.5:
 
-  - COSS storage type has been superceded by
+  - COSS storage type has been superseded by
     [Rock](/Features/LargeRockStore)
     storage type.
 
-  - dnsserver helper has been superceded by DNS internal client.
+  - dnsserver helper has been superseded by DNS internal client.
 
-  - DNS helper API has been superceded by DNS internal client.
+  - DNS helper API has been superseded by DNS internal client.
 
 The intention with this series is to improve performance and HTTP
 support. Some remaining Squid-2.7 missing features are listed as

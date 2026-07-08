@@ -25,7 +25,7 @@ servers using Microsoft Integrated Login (NTLM/Negotiate), it needs:
 - code to activate the tying when a stateful authentication layer is
   seen
 - code to mark the objects downloaded over a pinned connection
-  uncacheable
+  uncachable
 - code to add a header advertising this capability to clients
 
 The HTTP protocol extensions used to negotiate this is documented in

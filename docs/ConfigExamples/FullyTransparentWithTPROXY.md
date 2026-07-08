@@ -31,7 +31,7 @@ the tproxy include file needs to be placed in
 /usr/include/linux/netfilter_ipv4/ip_tproxy.h or
 include/netfilter_ipv4/ip_tproxy.h in the squid src tree).
 
-TThe iptables rule needs to use the TPROXY target (instead of the
+The iptables rule needs to use the TPROXY target (instead of the
 REDIRECT target) to redirect the port 80 traffic to the proxy. Ie:
 
     iptables -t tproxy -A PREROUTING -i eth0 -p tcp -m tcp --dport 80 -j TPROXY --on-port 80
@@ -175,7 +175,7 @@ balabit for kernel & iptables tproxy
 * check-up access.log --\> yes it is increments log check-up my pc by
 * opening whatismyipaddress.com --\> yes it is my pc's ip
 
-Now, I will try tuning-up my box & squid.conf tommorow
+Now, I will try tuning-up my box & squid.conf tomorrow
 
 ## Another Example
 

@@ -182,7 +182,7 @@ For squid 4.x+, adjust access_log settings as follows:
 
 > :information_source:
     Note: Currently you must **splice** Tor tunneled connections,
-    because of Squid can't re-crypt peer connections yet. It is
+    because of Squid cannot re-crypt peer connections yet. It is
     recommended to use this configuration in bump-enabled setups.
 
 > :information_source:
@@ -195,5 +195,5 @@ For squid 4.x+, adjust access_log settings as follows:
 
 Tor-tunneled HTTP connections has better performance, because of
 caching. However, HTTPS connections still limited by Tor performance,
-because of splice required and they can't be caching in this
+because of splice required and they cannot be caching in this
 configuration in any form. Note this.

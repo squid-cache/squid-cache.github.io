@@ -122,7 +122,7 @@ That question is best answered by the official mailing lists page at
 - [RFC 7235](https://datatracker.ietf.org/doc/html/rfc7235) - HTTP 1.1
   Authentication
 
-# What's the legal status of Squid?
+# What is the legal status of Squid?
 
 Squid is copyrighted by The Squid Software Foundation and contributors.
 Squid copyright holders are listed in the CONTRIBUTORS file.

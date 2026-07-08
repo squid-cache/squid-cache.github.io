@@ -106,7 +106,7 @@ maintainer ([AmosJeffries](/AmosJeffries) at present).
   **.PO** files need to have ISO-639 code information to indicate the
   language, and if possible the country ISO-3166 variant code as well.
 ```
-    * Alhpabet used if there are a range of alphabets used for the
+    * Alphabet used if there are a range of alphabets used for the
       language (ie Latin and Cyrillic)
     * If you don't know these codes, an indication of that info may be
       just as useful (ie american english, or british english, not

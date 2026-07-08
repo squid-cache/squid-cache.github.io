@@ -2,7 +2,7 @@
 
 ## Overview
 
-WPAD can use DNS to probe for the existance of a WPAD web server to
+WPAD can use DNS to probe for the existence of a WPAD web server to
 fetch the proxy configuration file from. The WPAD specification
 enumerates a number of possibilities; the only required DNS method is
 the "Well known alias" method.

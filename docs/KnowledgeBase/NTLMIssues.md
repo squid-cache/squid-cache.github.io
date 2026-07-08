@@ -25,7 +25,7 @@ and the helper use) and the Squid NTLM authenticator protocol.
 
 Due to the way NTLM authentication over HTTP has been designed by
 Microsoft, each new TCP connection needs to be denied twice to perform
-the authentication handshake. Then as long as it's kept alive it won't
+the authentication handshake. Then as long as it's kept alive it will not
 need any further authentication. Yes, it breaks protocol layering. Yes,
 it breaks HTTP's statelessness. And yes, it wastes lots of bandwidth
 (two \~2kb denies for an average-sized 16k object means a whopping 20%

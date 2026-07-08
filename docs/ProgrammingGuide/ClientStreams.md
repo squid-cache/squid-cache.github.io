@@ -44,7 +44,7 @@ clientSendMoreData to send data down the pipeline. client POST bodies do
 not use a pipeline currently, they use the previous code to send the
 data. This is a TODO when time permits.
 
-## Whats in a node
+## What is in a node
 
 Each node must have:
 
@@ -133,6 +133,6 @@ Parameters:
 
 - clienthttpRequest \* - MUST NOT be NULL.
 
-Side effects: Detachs the tail of the stream. CURRENTLY DOES NOT clean
+Side effects: Detaches the tail of the stream. CURRENTLY DOES NOT clean
 up the tail node data - this must be done separately. Thus Abort may
 ONLY be called by the tail node.

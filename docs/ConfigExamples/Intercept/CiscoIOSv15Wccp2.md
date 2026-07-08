@@ -26,13 +26,13 @@ Router has both router/switch functionality, so we can use both GRE/L2
 redirection methods.
 
 > :information_source:
-    Note: Beware - you must have NAT configuted on your squid's box, and
+    Note: Beware - you must have NAT configured on your squid's box, and
     you must have squid built with OS-specific NAT support.
 
 > :information_source:
     Note: When using managed switch in DMZ, be sure proxy box port in
     the same VLAN/has the same encapsulation as router port with WCCP
-    activated. Otherwise router can't do WCCP handshake with proxy.
+    activated. Otherwise router cannot do WCCP handshake with proxy.
 
 ### Cisco IOS 15.5(3)M2 router
 
@@ -109,7 +109,7 @@ and passthrough default route to next hop (or last resort gateway).
 
 #### Security
 
-To avoid denial-of-service attacks, you can enforce authentification
+To avoid denial-of-service attacks, you can enforce authentication
 between proxy(proxies) and router. To do that you need to setup WCCP
 services on router using passwords:
 
@@ -158,7 +158,7 @@ interception.
 
 > :information_source:
     Note: **Performance** is more better against PBR (route-map), WCCP
-    uses less CPU on Cisco's devices. So, WCCP is preferrable against
+    uses less CPU on Cisco's devices. So, WCCP is preferable against
     route-map. Also note, l2 redirection has hardware support and less
     overhead, than gre, which has only software processing (on CPU).
 

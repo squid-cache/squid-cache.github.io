@@ -17,14 +17,14 @@ categories: WantedFeature
 Fernando Ulisses dos Santos suggests to create a option in cache_dir
 param, like this: `cache_dir /var/spool/squid AUTO`
 
-where AUTO indicates that squid may use all avaliable space in disc, but
+where AUTO indicates that squid may use all available space in disc, but
 auto-decrease when the disc is near of being full. It may have a
 parameter like always leave 10% free on the partition, if it's above,
 call the auto-clean function.
 
-this may help administrators on: - minimize effort on instalation (don't
+this may help administrators on: - minimize effort on installation (don't
 need to know how many directories, space, etc) - maximize network
-performance (using all avaliable space in disk, when avaliable) -
+performance (using all available space in disk, when available) -
 minimize downtime (when other program fill the disk)
 
 [HenrikNordström](/HenrikNordstrom)

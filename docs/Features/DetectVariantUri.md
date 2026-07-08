@@ -10,7 +10,7 @@ Anyone on Development Team
 ### Description
 
 A number of sites around the web send out identical content on different
-URI. This is often found occuring due to:
+URI. This is often found occurring due to:
 - bad designs in load-balancing
 - attempts at explicit cache-busting
 - non-compliance with HTTP privacy standards

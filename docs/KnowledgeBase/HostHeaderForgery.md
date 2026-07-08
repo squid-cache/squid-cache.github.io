@@ -145,7 +145,7 @@ work:
         can attempt to use EDNS to get larger packets with all IPs of
         these domains by setting the
         [dns_packet_max](http://www.squid-cache.org/Doc/config/dns_packet_max)
-        directive. This reduces Squids chance of loosing the IP the
+        directive. This reduces Squids chance of losing the IP the
         client is connecting to but requires both your resolver to
         support EDNS and network to support jumbograms
 * restrict HTTP persistent (keep-alive) connections

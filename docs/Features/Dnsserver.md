@@ -69,7 +69,7 @@ a lot of requests, the second one less than the first, etc. The last
 *dnsserver* should have serviced relatively few requests. If there is
 not an obvious decreasing trend, then you need to increase the number of
 *dns_children* in the configuration file. If the last *dnsserver* has
-zero requests, then you definately have enough.
+zero requests, then you definitely have enough.
 
 Another factor which affects the DNS service time is the proximity of
 your DNS resolver. Normally we do not recommend running Squid and

@@ -89,7 +89,7 @@ and restoring configurations very strait forward.
 
 ### GUI
 
-I can't see any practical reason to have X installed on the system. Is
+I cannot see any practical reason to have X installed on the system. Is
 there anything on a proxy like this that would benefit from X?
 
 Some simple after the fact configuration and system information could be

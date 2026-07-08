@@ -26,7 +26,7 @@ See [Doing a Reformat](#doing-a-reformat)
     omit the format step if you do not have the right version.
 
 Poorly formatted code is often difficult to read so if you do have the
-right tools, consider formating before sending a \[PATCH\] or \[MERGE\]
+right tools, consider formatting before sending a \[PATCH\] or \[MERGE\]
 request to squid-dev for auditing (or before committing accepted code).
 A global reformat is repeated regularly on trunk, but it saves everybody
 trouble and keeps bundlebuggy happy if patches have the right format to

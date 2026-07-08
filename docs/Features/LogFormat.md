@@ -66,7 +66,7 @@ format line for native *access.log* entries looks like this:
     "%9d.%03d %6d %s %s/%03d %d %s %s %s %s%s/%s %s"
 
 Therefore, an *access.log* entry usually consists of (at least) 10
-columns separated by one ore more spaces:
+columns separated by one or more spaces:
 
 1. **time** A Unix timestamp as UTC seconds with a millisecond
     resolution. This is the time when Squid started to log the
