@@ -370,16 +370,16 @@ legacy code.
 
 ### Squid bug workarounds
 
-In special rare cases, the correct choice is `Assure()`, but it is possible to
-implementing a temporary workaround that would be much better than killing the
-transaction. In this case, it may be permissible to emulate `Assure()`
-reporting without throwing an exception:
+In special rare cases, implementing a temporary bug workaround would be much
+better than killing the affected transaction or Squid. In such cases, produce
+`DBG_CRITICAL` or `DBG_IMPORTANT` _reporting_ with `ERROR` _and_ `Squid BUG`
+but labels without calling `Assure()` or `assert()`.
 
 ```C++
-debugs(54, DBG_IMPORTANT, "ERROR: Squid BUG: wrong fd_note ID: " << fdNoteId);
+debugs(33, DBG_IMPORTANT, "ERROR: Squid BUG: ConnStateData did not close " << clientConnection);
 ```
 
-Do a `git grep ERROR:.Squid.BUG:` search to find more examples to mimic.
+More good examples can be found among `git grep ERROR:.Squid.BUG:` matches.
 
 
 ### Custom assertion messages
