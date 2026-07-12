@@ -340,23 +340,13 @@ assertion messages, and legacy code.
    assertion working is usually a bad idea.
 
 2. If the condition describes a code invariant (e.g., "our caller must supply
-   a non-nil pointer"), and the bug violating that invariant is likely to
-   affect transactions that do not check this condition (e.g., a cache may get
-   corrupted, feeding other/independent transactions bogus response data), use
-   `assert(3)`. The guarantees provided by `assert()` are significant, but
-   they do not automatically extend beyond a single kid process. There is
-   currently no mechanism that is guaranteed to terminate the entire SMP Squid
-   instance.
+   a non-nil pointer"), use `Assure()`. In most cases, `Assure()` failures
+   kill the checking transaction but keep its kid process alive. Neither
+   outcome is guaranteed though because Squid may catch and handle the
+   exception before it kills the transaction, or the exception may propagate
+   to the top level where it kills the kid process.
 
-3. If the condition describes a code invariant (e.g., "our caller must supply
-   a non-nil pointer"), and the bug violating that invariant is likely to
-   affect just the transaction checking it, use `Assure()`. In most cases,
-   `Assure()` failures kill the checking transaction but keep its kid process
-   alive. Neither outcome is guaranteed though because Squid may catch and
-   handle the exception before it kills the transaction, or the exception may
-   propagate to the top level where it kills the kid process.
-
-4. If the condition describes some input characteristics (e.g., "the client
+3. If the condition describes some input characteristics (e.g., "the client
    sent a syntactically valid HTTP request to Squid"), do not use any of the
    above calls. Instead, create and throw a `TextException` object, return
    `std::nullopt`, or otherwise signal the problem to the caller. In most
@@ -373,7 +363,7 @@ assertion messages, and legacy code.
 In special rare cases, implementing a temporary bug workaround would be much
 better than killing the affected transaction or Squid. In such cases, produce
 `DBG_CRITICAL` or `DBG_IMPORTANT` _reporting_ with `ERROR` _and_ `Squid BUG`
-but labels without calling `Assure()` or `assert()`.
+but labels without calling `Assure()`.
 
 ```C++
 debugs(33, DBG_IMPORTANT, "ERROR: Squid BUG: ConnStateData did not close " << clientConnection);
@@ -429,7 +419,11 @@ request is actually dedicated to upgrading legacy code. In those exceptional
 cases, the author becomes responsible for providing a high quality
 replacement, of course.
 
-### Special cases
+### Other special cases
+
+In code residing outside of `src/`, in helper code that has not been upgraded
+to use `src/base` APIs, and in legacy C code, `Assure()` is not available. Use
+`assert()`.
 
 The following functions are not covered by this documentation. They should be
 avoided in most cases: `xassert()`.
