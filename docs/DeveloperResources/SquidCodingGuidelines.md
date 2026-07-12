@@ -327,11 +327,11 @@ components at build time.
 
 ## Error handling
 
-There are several primary ways to handle various error conditions in Squid
-code. For any given context, only one is usually the correct choice. Using the
+There are several primary ways to handle error conditions in Squid code. For
+any given context, only one approach is usually the correct choice. Using the
 list below, pick the _first_ one that matches your use case. See further below
-for notes about bug workarounds, optional custom assertion messages, and
-legacy code.
+for notes about such special rare cases as bug workarounds, optional custom
+assertion messages, and legacy code.
 
 1. If the condition can be checked at compilation time, use `static_assert()`.
    Minor code adjustments to make compile-time assertions possible may be
@@ -353,19 +353,19 @@ legacy code.
    affect just the transaction checking it, use `Assure()`. In most cases,
    `Assure()` failures kill the checking transaction but keep its kid process
    alive. Neither outcome is guaranteed though because Squid may catch and
-   handle the exception before it kills the transaction or the exception may
+   handle the exception before it kills the transaction, or the exception may
    propagate to the top level where it kills the kid process.
 
 4. If the condition describes some input characteristics (e.g., "the client
    sent a syntactically valid HTTP request to Squid"), do not use any of the
    above calls. Instead, create and throw a `TextException` object, return
    `std::nullopt`, or otherwise signal the problem to the caller. In most
-   cases, adding a level-0/1 `debugs()` message is not a good idea. This is
-   especially true when Squid cache administrator can do nothing about that
-   bad input, and that bad input does not represent some very unusual or
-   dangerous situation. Most input validation failures ought to be reflected
-   in various error details logged to `access.log`, not level-0/1 `cache.log`
-   messages.
+   cases, adding a level-0/1 `debugs()` `ERROR` or `WARNING` message is _not_
+   a good idea. This is especially true when Squid cache administrator can do
+   nothing about that bad input, and that bad input does not represent some
+   very unusual or dangerous situation. Most transaction-related input
+   validation failures ought to be reflected in various error details logged
+   to `access.log`, not level-0/1 `cache.log` messages.
 
 
 ### Squid bug workarounds
@@ -384,18 +384,18 @@ More good examples can be found among `git grep ERROR:.Squid.BUG:` matches.
 
 ### Custom assertion messages
 
-Compiler-generated `static_assert()`, `Assure()`, and deprecated `Must()`
-error messages spell out the specified condition. In special rare cases, it is
-desirable to replace that generated message with a custom one. When doing so,
-please preserve the message generation algorithm by describing what should be
-happening (i.e. the expected condition) rather than what went wrong. For
-example,
+Compiler-generated `static_assert()`, `Assure()`, `assert()`, and deprecated
+`Must()` error messages spell out the specified condition. In special rare
+cases, it is desirable to replace that generated message with a custom one.
+When doing so, please preserve the message generation algorithm by describing
+what should be happening (i.e. the expected condition) rather than what went
+wrong. For example,
 
 ```C++
-// XXX: The custom message describes the problem rather than the condition.
+// XXX: This bad custom message describes the problem rather than the condition:
 static_assert(sizeof(quotedOut) > 0, "quotedOut has zero length");
 
-// OK: The custom message describes the condition.
+// OK: These custom messages describe the condition:
 static_assert(id > 0, "debugs() message ID must be positive");
 Assure2(headerSize >= SwapMetaPrefixSize, "UnpackPrefix() validates metadata length");
 ```
