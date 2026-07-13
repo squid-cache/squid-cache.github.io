@@ -62,29 +62,39 @@ This interface is similar to the SSL certificate generation interface.
 
 Input *line* received from Squid:
 
-    request size [kv-pairs]
+    channel request size [kv-pairs]
 
 > :warning:
-  *line* refers to a logical input. **body** may contain \\n characters so
-  each line in this format is delimited by a 0x01 byte instead of the
-  standard \\n byte.
+  *`line`* refers to a logical input. **`kv-pairs`** may contain `\n` characters so
+  each request message is composed by appending `\n`-terminated lines (including
+  those `\n` characters) until **`size`** bytes have been received.
+
+- channel
+:  A numeric identifier for the concurrency channel correlating this message and its response.
+   Helper should typically treat this as an opaque value that must be returned as the start of the response to Squid.
+   Multi-threaded helpers must ensure that each message is written back to Squid as an "atomic" sequence of bytes,
+   this parameter permits responses to be returned out-of-order to squid.
 
 - request
 :   The type of action being requested. Presently the code
     **cert_validate** is the only request made.
+
 - size
 :   Total size of the following request bytes taken by the
-    **key=pair** parameters.
+    **kv-pairs** parameters.
+
 - kv-pairs
-:   An optional list of key=value parameters separated by new lines.
+:   An optional list of **`key=value`** parameters separated by `\n` characters.
     Supported parameters are:
-        | --- | --- |
-        | host                  | FQDN host name or the domain |
-        | proto_version        | The SSL/TLS version |
-        | cipher                | The SSL/TLS cipher being used |
-        | cert_***ID***        | Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are |
-        | error_name_***ID*** | The openSSL certificate validation error. The ID is an index number for this error |
-        | error_cert_***ID*** | The ID of the certificate which caused error_name_ID |
+
+| **key** | **value** contains |
+| --- | --- |
+| host                | FQDN host name or the domain |
+| proto_version       | The SSL/TLS version |
+| cipher              | The SSL/TLS cipher being used |
+| cert_***ID***       | Server certificate.<br>The **ID** is an index number for this certificate.<br>One message may deliver multiple server certificates. |
+| error_name_***ID*** | The openSSL certificate validation error.<br>The ID is an index number for this error. |
+| error_cert_***ID*** | The **ID** of the certificate which caused the preceeding `error_name_`***ID***. |
 
 Example request:
 
@@ -99,32 +109,43 @@ Example request:
 
 Result line sent back to Squid:
 
-    result size kv-pairs
+    channel result size kv-pairs
+
+> :warning:
+  *line* refers to a logical input. **kv-pairs** contains `\n` characters so
+  each response message in this format is delimited by a 0x01 byte instead of the
+  standard `\n` byte.
+
+- channel
+:  An identifier for the concurrency channel correlating this message to the request which caused it.
+   The value received on the request must be returned as the start of the response to squid.
 
 - result
-:   One of the result codes:
+:  One of the result codes:
 
-        | --- | ------------------------------------------ |
-        | OK  | Success. Certificate validated.            |
-        | ERR | Success. Certificate not validated.        |
-        | BH  | Failure. The helper encountered a problem. |
+| **result** | **meaning** |
+| --- | --- |
+| OK  | Success. Certificate validated. |
+| ERR | Success. Certificate **not** validated. |
+| BH  | Failure. The helper encountered a problem. |
 
 - size
-:   Total size of the following response bytes taken by the
-    **key=pair** parameters.
+:   Total size of the following response bytes taken by the **kv-pairs** parameters.
+
 - kv-pairs
-:   A list of key=value parameters separated by new lines. The
+:   A list of **`key=value`** parameters separated by '\n' characters. The
     supported parameters are:
 
-        | --- | --- |
-        | cert_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
-        | error_name_***ID***   | The openSSL error name for the error **ID**                                                                               |
-        | error_reason_***ID*** | A reason for the error **ID**                                                                                             |
-        | error_cert_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
+| **key** | **value** contains |
+| --- | --- |
+| cert_***ID***         | A certificate sent from helper to squid.<br>The **ID** is an index number for this certificate. |
+| error_name_***ID***   | The openSSL error name for the error **ID**. |
+| error_reason_***ID*** | A reason for the error **ID**. |
+| error_cert_***ID***   | The `cert_ID` key name of a broken certificate.<br>It can be one of the certificates sent by helper to squid, or one of those sent by squid to helper. |
 
 Example response message:
 
-    ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
+    0 ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
     MIIDojCCAoqgAwIBAgIQE4Y1TR0/BvLB+WUF1ZAcYjANBgkqhkiG9w0BAQUFADBr
     ...
     398znM/jra6O1I7mT1GvFpLgXPYHDw==
