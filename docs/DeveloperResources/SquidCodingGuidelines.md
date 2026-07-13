@@ -363,7 +363,7 @@ assertion messages, and legacy code.
 In special rare cases, implementing a temporary bug workaround would be much
 better than killing the affected transaction or Squid. In such cases, produce
 `DBG_CRITICAL` or `DBG_IMPORTANT` _reporting_ with `ERROR` _and_ `Squid BUG`
-but labels without calling `Assure()`.
+labels but without calling `Assure()`.
 
 ```C++
 debugs(33, DBG_IMPORTANT, "ERROR: Squid BUG: ConnStateData did not close " << clientConnection);
@@ -419,15 +419,16 @@ request is actually dedicated to upgrading legacy code. In those exceptional
 cases, the author becomes responsible for providing a high quality
 replacement, of course.
 
+
 ### Other special cases
 
-In code residing outside of `src/`, in helper code that has not been upgraded
-to use `src/base` APIs, and in legacy C code, `Assure()` is not available. Use
-`assert()`.
+`Assure()` is not available in code residing outside of `src/`, in helper code
+that has not been upgraded to use `src/base` APIs, and in legacy C code. Use
+`assert()` instead.
 
-The following functions are not covered by this documentation. They should be
-avoided in most cases, especially in new code: `fatalf()`, `fatal()`,
-`fatal_dump()`, xassert()`.
+The following error handling functions are not covered by this documentation.
+They should be avoided in most cases, especially in new code: `fatalf()`,
+`fatal()`, `fatal_dump()`, xassert()`.
 
 
 ## See Also
