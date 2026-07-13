@@ -330,8 +330,8 @@ components at build time.
 There are several primary ways to handle error conditions in Squid code. For
 any given context, only one approach is usually the correct choice. Using the
 list below, pick the _first_ one that matches your use case. See further below
-for notes about such special rare cases as bug workarounds, optional custom
-assertion messages, and legacy code.
+for notes about such special rare cases as bug workarounds, unreachable code,
+optional custom assertion messages, and legacy code.
 
 1. If the condition can be checked at compilation time, use `static_assert()`.
    Minor code adjustments to make compile-time assertions possible may be
@@ -370,6 +370,21 @@ debugs(33, DBG_IMPORTANT, "ERROR: Squid BUG: ConnStateData did not close " << cl
 ```
 
 More good examples can be found among `git grep ERROR:.Squid.BUG:` matches.
+
+
+### Unreachable code
+
+Unreachable code is special because there is no meaningful condition to be
+evaluated inside that code (unless you consider `true` to be meaningful).
+Reaching an unreachable code is a Squid bug. If this bug can be detected at
+compile time, use `#error` preprocessor instruction. Otherwise, use `Assure()`
+with the following always-false condition pattern:
+
+```C++
+Assure(!"invariant description");
+```
+
+Good examples can be found among `git grep 'Assure.!"'` matches.
 
 
 ### Custom assertion messages
