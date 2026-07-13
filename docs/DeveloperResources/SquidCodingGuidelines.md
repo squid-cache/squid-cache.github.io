@@ -426,7 +426,8 @@ to use `src/base` APIs, and in legacy C code, `Assure()` is not available. Use
 `assert()`.
 
 The following functions are not covered by this documentation. They should be
-avoided in most cases: `xassert()`.
+avoided in most cases, especially in new code: `fatalf()`, `fatal()`,
+`fatal_dump()`, xassert()`.
 
 
 ## See Also
