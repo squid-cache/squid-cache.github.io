@@ -125,5 +125,5 @@ that has not been upgraded to use `src/base` APIs, and in legacy C code. Use
 
 The following error handling functions are not covered by this documentation.
 They should be avoided in most cases, especially in new code: `fatalf()`,
-`fatal()`, `fatal_dump()`, xassert()`.
+`fatal()`, `fatal_dump()`, `xassert()`.
 
