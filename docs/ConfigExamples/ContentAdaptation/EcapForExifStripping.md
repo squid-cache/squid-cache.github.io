@@ -165,7 +165,7 @@ To log debug messages use:
 
     debug_options ALL,1 93,9
 
-To make sure adapter works use [this site](https://www.get-metadata.com/).
+To make sure the adapter works, use [Get-Metadata](https://www.get-metadata.com/) or the browser-local image alternative [Metadata Remover](https://metadataremover.ai/metadata-viewer).
 Just check raw image before
 upload, then upload it to any social via proxy, download and check
 metadata again. If no - all runs ok.
