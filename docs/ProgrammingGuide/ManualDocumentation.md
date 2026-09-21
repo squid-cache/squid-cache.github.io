@@ -233,38 +233,35 @@ the program:
 Details of the copyright associated with this binary, script, or
 configuration file.
 
+The legal copyright claim must not be translated.
+It should be prefixed with `.if !'po4a'hide' .SS ` to both
+prevent translation and highlight as a sub-header.
+Then followed by the brief copyright license text (aka. "blurb") which may be translated.
+
 For example:
 
     .
     .SH COPYRIGHT
-    .PP
-     * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
-     *
-     * Squid software is distributed under GPLv2+ license and includes
-     * contributions from numerous individuals and organizations.
-     * Please see the COPYING and CONTRIBUTORS files for details.
-    .PP
-    Squid
-    .B example.binary
-    and this manual is Copyright 2010
-    .if !'po4a'hide' .I Authors Name <author@email.contact>
-    .PP
+    .
+    .if !'po4a'hide' .SS Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+    .
+    Squid software is distributed under GPLv2+ license and includes
+    contributions from numerous individuals and organizations.
+    Please see the COPYING and CONTRIBUTORS files for details.
+    .
+    .if !'po4a'hide' .SS Copyright (C) 2010 .I Authors Name <author@email.contact>
+    .
     Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
 
 If no exact copyright details are known use the following snippet:
 
     .
     .SH COPYRIGHT
-    .PP
-     * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
-     *
-     * Squid software is distributed under GPLv2+ license and includes
-     * contributions from numerous individuals and organizations.
-     * Please see the COPYING and CONTRIBUTORS files for details.
-    .PP
-    This program and documentation is copyright to the authors named above.
-    .PP
-    Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+    .if !'po4a'hide' .SS Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+    .
+    Squid software is distributed under GPLv2+ license and includes
+    contributions from numerous individuals and organizations.
+    Please see the COPYING and CONTRIBUTORS files for details.
 
 ### .SH QUESTIONS
 
@@ -377,16 +374,11 @@ above to document an installed file.
     .if !'po4a'hide' .I Authors Name <author@email.contact>
     .
     .SH COPYRIGHT
-    .PP
-     * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
-     *
-     * Squid software is distributed under GPLv2+ license and includes
-     * contributions from numerous individuals and organizations.
-     * Please see the COPYING and CONTRIBUTORS files for details.
-    .PP
-    This program and documentation is copyright to the authors named above.
-    .PP
-    Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+    .if !'po4a'hide' .SS Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+    .
+    Squid software is distributed under GPLv2+ license and includes
+    contributions from numerous individuals and organizations.
+    Please see the COPYING and CONTRIBUTORS files for details.
     .
     .SH QUESTIONS
     Questions on the usage of this program can be sent to the
@@ -483,15 +475,11 @@ This manual was written by I<Authors Name <author@email.contact>>
 
 =head1 COPYRIGHT
 
- * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
- *
- * Squid software is distributed under GPLv2+ license and includes
- * contributions from numerous individuals and organizations.
- * Please see the COPYING and CONTRIBUTORS files for details.
+=head2 Copyright (C) 1996-2014 The Squid Software Foundation and contributors
 
-This program and documentation is copyright to the authors named above.
-
-Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+Squid software is distributed under GPLv2+ license and includes
+contributions from numerous individuals and organizations.
+Please see the COPYING and CONTRIBUTORS files for details.
 
 =head1 QUESTIONS
 
