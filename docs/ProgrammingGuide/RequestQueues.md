@@ -39,7 +39,7 @@ queue.
 
 A queue runner will scan the pending request queue and decide what to
 do. In the case of a proxy it'll want to find or create a client to
-satisfy the request. Once the request has been satisified somehow it'll
+satisfy the request. Once the request has been satisfied somehow it'll
 be attached to a client, forming the other end of the data pipeline. The
 request moves to the "In progress HTTP request" queue and begins data
 exchange. The request is destroyed once both parties - client and server
@@ -47,7 +47,7 @@ exchange. The request is destroyed once both parties - client and server
 
 ### Messages
 
-The general exchange should involve simple messages. There's a handful
+The general exchange should involve simple messages. There is a handful
 of message types:
 
 - A "request" message type - method, URL, version

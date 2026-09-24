@@ -81,7 +81,7 @@ configure Samba, Winbind and perform the join in one step.
     Shutting down Winbind services:                            [FAILED]
     Starting Winbind services:                                 [  OK  ]
 
-If Winbind wasn't running before this it can't shutdown, but authconfig
+If Winbind wasn't running before this it cannot shutdown, but authconfig
 will start it and enable it to start at boot.
 
 The default permissions for **/var/cache/samba/winbindd_privileged** in

@@ -38,7 +38,7 @@ and, hence, has been called *client side*.
         - reading HTTP/1.1 frames (request headers block, body blocks)
         - writing HTTP/1.1 frames (response headers block, 1xx headers block, body blocks)        
 - generate HttpParser, ClientSocketContext and other AsyncJobs
-        to operate on teh above frames types as needed
+        to operate on the above frames types as needed
 
 ### In Progress
 

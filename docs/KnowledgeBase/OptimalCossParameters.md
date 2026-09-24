@@ -12,7 +12,7 @@ categories: KnowledgeBase
 [COSS](/Features/CyclicObjectStorageSystem)
 or Cyclic Object Storage System is the fastest disk storage method
 available to Squid. The [SquidFaq](/SquidFaq)
-contains information about its configureable parameters, while here we
+contains information about its configurable parameters, while here we
 want to focus on how to optimize those parameters for a typical proxying
 setup for maximum performance.
 

@@ -59,7 +59,7 @@ func process_request(line string, wg *sync.WaitGroup) {
         lparts := strings.Split(strings.TrimRight(line, "\n"), " ")
         if len(lparts[0]) > 0 {
                 if *debug {
-                        fmt.Fprintln(os.Stderr, "ERRlog: Proccessing request => \""+strings.TrimRight(line, "\n")+"\"")
+                        fmt.Fprintln(os.Stderr, "ERRlog: Processing request => \""+strings.TrimRight(line, "\n")+"\"")
                 }
         }
 

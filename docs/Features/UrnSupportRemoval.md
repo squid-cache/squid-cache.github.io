@@ -8,7 +8,7 @@ categories: Feature
     accepted by modern web browsers. In addition, most of the currently
     hardcoded practices can be easily achieved using different means,
     such as redirectors. Aim of the Feature is removing URN support
-    code, except for what's needed to successfully parse URNs
+    code, except for what is needed to successfully parse URNs
 - **Status**: *Not started*
 - **ETA**: *unknown*
 - **Version**: 3.2

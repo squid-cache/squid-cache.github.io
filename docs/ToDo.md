@@ -44,7 +44,7 @@ This TODO list is no longer accurate. For more updated Squid plans see:
 - [ ] refactoring of acl driven types to reduce amount of duplicated
     code (acl_check, acl_tos, acl_address, acl_size_t, ...)
 - [ ]  ETag caching (???)
-- [ ] Generalize socket binding to allow for multipe ICP/HTCP/SNMP sockets
+- [ ] Generalize socket binding to allow for multiple ICP/HTCP/SNMP sockets
     (get rid of udp_incoming_address) (???)
 - [ ]  Rework the store API like planned
 - [ ] Improved event driven comm code

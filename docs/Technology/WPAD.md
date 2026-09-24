@@ -36,7 +36,7 @@ Windows Active Directory Group Policy.
 - [Fully Automatically Configuring Browsers for WPAD with DHCP](/SquidFaq/ConfiguringBrowsers)
   faq article
 - [WPAD DNS](/Technology/WPAD/DNS)
-    covers how User Agents can detect the existance of the proxy
+    covers how User Agents can detect the existence of the proxy
     autoconfiguration file via DNS "Well Known Aliases"
 
 ## Other Articles and Information on WPAD

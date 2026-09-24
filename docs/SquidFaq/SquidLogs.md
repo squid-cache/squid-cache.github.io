@@ -86,7 +86,7 @@ outlined in the [KnowledgeBase](/KnowledgeBase):
 3. [Host Header Forgery](/KnowledgeBase/HostHeaderForgery)
 4. [Queue congestion](/KnowledgeBase/QueueCongestion)
 5. [Too Many Queued Requests](/KnowledgeBase/TooManyQueued)
-6. [Unparseable Header](/KnowledgeBase/UnparseableHeader)
+6. [Unparsable Header](/KnowledgeBase/UnparseableHeader)
 
 ## access.log
 
@@ -147,7 +147,7 @@ underscore characters) which describe the response sent to the client.
     | **TUNNEL**  | A binary tunnel was established for this transaction. |
 
 - These tags are optional and describe some error conditions which
-    occured during response delivery (if any):
+    occurred during response delivery (if any):
 
     | --- | --- |
     | **ABORTED** | A client-to-Squid or Squid-to-server connection was closed unexpectedly, usually due to an I/O error or clean transport connection closure in the middle of some higher-level protocol message/negotiation. Before Squid v6, this tag was primarily seen when the client closed its connection to Squid before Squid could deliver the entire response. Since Squid v6, the tag also appears when Squid communication with an origin server or cache_peer is impossible (e.g., the server is refusing TCP connections) or aborted (e.g., an EOF in the middle of a chunked HTTP response body transfer). |
@@ -530,7 +530,7 @@ they do not become very large.
 > :warning:
     Logging is very important to Squid.
     In fact, it is so important that it will shut itself down if it
-    can't write to its logfiles. This includes cases such as a full log disk,
+    cannot write to its logfiles. This includes cases such as a full log disk,
     or logfiles getting too big.
 
 ## My log files get very big!
@@ -669,7 +669,7 @@ whole load of possible problems.
 > :warning:
     Logging is very important to Squid.
     In fact, it is so important that it will shut itself down if it
-    can't write to its logfiles.
+    cannot write to its logfiles.
 
 There are several alternatives which are much safer to setup and use.
 The basic capabilities present are :

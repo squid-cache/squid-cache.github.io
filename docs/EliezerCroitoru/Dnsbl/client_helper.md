@@ -102,7 +102,7 @@ def process(line)
             res << "Blacklisted"
     else
             #unknown or error
-            debug("unkown issue") if $debug
+            debug("unknown issue") if $debug
         end
   rescue Exception => e
     debug(e)

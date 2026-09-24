@@ -17,7 +17,7 @@ categories: WantedFeature
 
 # Details
 
-HTTP/2 was designed loosly based on the SPDY experimental protocol for
+HTTP/2 was designed loosely based on the SPDY experimental protocol for
 framing HTTP requests in a multiplexed fashion over SSL connections.
 Avoiding the pipeline issues which HTTP has with its dependency on
 stateful "\\r\\n" frame boundaries.

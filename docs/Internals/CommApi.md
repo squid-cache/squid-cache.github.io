@@ -104,4 +104,4 @@ CommSelectEngine::checkEvents()
 - If the average 'web' object size is still under 64k in size then we
   should be able to do all of that in a single write() (or writev())
   without any copying.
-- Whats the most optimal size to read/write?
+- What is the most optimal size to read/write?

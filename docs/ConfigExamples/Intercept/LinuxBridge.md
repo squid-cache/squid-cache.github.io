@@ -21,7 +21,7 @@ implement transparent caching or content filtering.
 ## ebtables DROP vs iptables DROP
 
 In iptables which in most cases is being used to filter network traffic
-the DROP target means "packet disapear".
+the DROP target means "packet disappear".
 
 In ebtables a "-j redirect --redirect-target DROP" means "packet be gone
 from the bridge into the upper layers of the kernel such as

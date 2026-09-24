@@ -27,7 +27,7 @@ Voinov).
 
 ## select()
 
-*select(3c)* won't handle more than 1024 file descriptors. The
+*select(3c)* will not handle more than 1024 file descriptors. The
 *configure* script should enable *poll()* by default for Solaris.
 *poll()* allows you to use many more filedescriptors, probably 8192 or
 more.
@@ -68,7 +68,7 @@ Systems running without nscd may fail on such calls if first 256 files
 are all in use.
 
 Since solaris 2.6 Sun has changed the way some system calls work and is
-using *nscd* daemon as a implementor of them. To communicate to *nscd*
+using *nscd* daemon as a implementer of them. To communicate to *nscd*
 Solaris is using undocumented calls. Basically *nscd* is used to
 reduce memory usage of user-space system libraries that use passwd and
 group files. Before 2.6 Solaris cached full passwd file in library
@@ -147,7 +147,7 @@ NOTICE: realloccg /proxy/cache: file system full
 NOTICE: alloc: /proxy/cache: file system full
 ```
 
-In a nutshell, the UFS filesystem used by Solaris can't cope with the
+In a nutshell, the UFS filesystem used by Solaris cannot cope with the
 workload squid presents to it very well. The filesystem will end up
 becoming highly fragmented, until it reaches a point where there are
 insufficient free blocks left to create files with, and only fragments
@@ -336,9 +336,9 @@ to the file */etc/sysctl.conf*:
 
 # Linux
 
-## Can't connect to some sites through Squid
+## Cannot connect to some sites through Squid
 
-When using Squid, some sites may give erorrs such as "(111) Connection
+When using Squid, some sites may give errors such as "(111) Connection
 refused" or "(110) Connection timed out" although these sites work fine
 without going through Squid.
 

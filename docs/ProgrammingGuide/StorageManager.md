@@ -63,7 +63,7 @@ squid/src/fs/$type/ from a Makefile.in file.
 
 configure will take a list of storage types through the
 *--enable-store-io* parameter. This parameter takes a list of space
-seperated storage types. For example, --enable-store-io="ufs coss" .
+separated storage types. For example, --enable-store-io="ufs coss" .
 
 Each storage type must create an archive file `in squid/src/fs/$type.a`
 . This file is automatically linked into squid at compile time.
@@ -181,7 +181,7 @@ struct _SwapDir {
         STFREE *freefs;                         /* Free the fs data */
         STDBLCHECK *dblcheck;                   /* Double check the obj integrity */
         STSTATFS *statfs;                       /* Dump fs statistics */
-        STMAINTAINFS *maintainfs;               /* Replacement maintainence */
+        STMAINTAINFS *maintainfs;               /* Replacement maintenance */
         STCHECKOBJ *checkob;                    /* Check if the fs will store an object, and get the FS load */
         /* These two are notifications */
         STREFOBJ *refobj;                       /* Reference this object */
@@ -404,7 +404,7 @@ The IO callback should be called when an error occurs and when the
 object is closed. Once the IO callback is called, the *storeIOState*
 becomes invalid.
 
-*STOBJCREATE* returns a *storeIOState* suitable for writing on sucess,
+*STOBJCREATE* returns a *storeIOState* suitable for writing on success,
 or NULL if an error occurs.
 
 ### openobj
@@ -730,7 +730,7 @@ The replacement policy can be updated during
 STOBJREAD/STOBJWRITE/STOBJOPEN/ STOBJCLOSE as well as STREFOBJ and
 STUNREFOBJ. Care should be taken to only modify the relevant replacement
 policy entries in the StoreEntry. The responsibility of replacement
-policy maintainence has been moved into each SwapDir so that the storage
+policy maintenance has been moved into each SwapDir so that the storage
 code can have tight control of the replacement policy. Cyclic
 filesystems such as COSS require this tight coupling between the storage
 layer and the replacement policy.
@@ -961,7 +961,7 @@ createRemovalPolicy_<name>(char *arguments)` This function creates the
 policy instance and populates it with at least the API methods
 supported. Currently all API calls are mandatory, but the policy
 implementation must make sure to NULL fill the structure prior to
-populating it in order to assure future API compability.
+populating it in order to assure future API compatibility.
 
 It should also populate the _data member with a pointer to policy
 specific data.

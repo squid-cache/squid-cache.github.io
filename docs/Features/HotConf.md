@@ -555,7 +555,7 @@ I'm saying:
     buffer to the right component processor unit then move on to the
     next line.
 - configure is a process of three function calls pre/configure/post to
-    warn the component whats about to happen. What gets done is not
+    warn the component what is about to happen. What gets done is not
     relevant to the lower layer.
 
 I also took a look at breaking the line down into generic tokens and
@@ -576,7 +576,7 @@ has? create a new one, Parse into it, and pass it back to the component?
 in order to _save_ complexity? I don't believe I have to mention any
 of the problems associated with that to you.
 
-IMO thats _way_ more complexity and trouble than simply passing
+IMO that's _way_ more complexity and trouble than simply passing
 squid.conf buffers to the component. You could I suppose go the way of
 having pre-configure method/function return a void\* that gets passed
 back.
@@ -588,7 +588,7 @@ component if it even needs them.
 Consider the third-party black-box component Widget dynamically loaded
 last configure time. In order to parse the widget_magic lines which
 part of the upper layer (squid) and lower-layer (component library)
-whats the minimum transfer of information and call complexity we can do?
+what is the minimum transfer of information and call complexity we can do?
 
 ```
   squid:  'about to reconfigure'
@@ -767,7 +767,7 @@ module.*
     d. *Created Config objects are assembled into a Squid Config object.
     Let's ignore how that is done and by whom.*
 
-      - Another vital assumption we can't just ignore.
+      - Another vital assumption we cannot just ignore.
 
       - IMO unnecessary as stated.
 

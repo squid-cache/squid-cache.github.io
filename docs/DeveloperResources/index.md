@@ -57,7 +57,7 @@ test a local checkout on it is to run the command:
 ./test-builds.sh squidcache/buildfarm-`uname -m`-$OS --verbose
 --use-config-cache --cleanup`
 
-It may leave behind some files owned by UID 1000; sorry it can't be
+It may leave behind some files owned by UID 1000; sorry it cannot be
 avoided
 
 ## Detecting build errors early

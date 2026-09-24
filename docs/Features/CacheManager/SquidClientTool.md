@@ -38,4 +38,4 @@ depending on your Squid version.
   - squidclient version 3.1.\* and older you add **@** then the password
     to the URL. So that it looks like this `mgr:info@admin`.
   - squidclient version 3.2.\* use the proxy login options **-u** and
-    **w** to pass your admin login to the cache manger.
+    **w** to pass your admin login to the cache manager.

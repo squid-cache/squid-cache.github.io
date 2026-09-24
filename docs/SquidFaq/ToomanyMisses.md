@@ -13,7 +13,7 @@ with the actual cache contents.
 
 Here's a script I use to make **sure** this doesn't happen. It's way too
 paranoid, doing a lot of unnecessary things including throwing away
-what's in the cache every time. But it always works.
+what is in the cache every time. But it always works.
 
 ## sample script
 

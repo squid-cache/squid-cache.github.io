@@ -68,10 +68,10 @@ categories: [WantedFeature, Feature]
 | :rage:     | :rage:     | 45 | MUST | 3.7.1 | represent entity-bodies in canonical media-type form (except "text" types). | |
 | :rage:     | :rage:     | 46 | MUST | 3.7.1 | represent entity-bodies in canonical media-type form (except "text" types) prior to content-coding them | |
 |            |            | 47 | MUST | 3.7.1 | label data in charsets other than ISO-8859-1" with an appropriate charset value. | see rfc 2616 section 3.4.1 for compatibility notes |
-|            |            | 48 | MUST | 3.7.2 | include a boundary parameter as part of the media type value for multipart media types | hno - squid does not generate or touch mulipart entries. Rbc - we may need to with TE content. Ermm, |
-|            |            | 49 | MUST | 3.7.2 | only use CRLF in multipart messages to represent line breaks between body-parts. | hno - squid does not generate or touch mulipart entries. Rbc - we may need to with TE content. Ermm, |
-|            |            | 50 | MUST | 3.7.2 | have the epilogue of multipart messages empty | hno - squid does not generate or touch mulipart entries. Rbc - we may need to with TE content. Ermm, |
-|            |            | 51 | MUST NOT | 3.7.2 | transmit the epligoue of multipart messages (even if given one) | hno - squid does not generate or touch mulipart entries. Rbc - we may need to with TE content. Ermm, |
+|            |            | 48 | MUST | 3.7.2 | include a boundary parameter as part of the media type value for multipart media types | hno - squid does not generate or touch multipart entries. Rbc - we may need to with TE content. Ermm, |
+|            |            | 49 | MUST | 3.7.2 | only use CRLF in multipart messages to represent line breaks between body-parts. | hno - squid does not generate or touch multipart entries. Rbc - we may need to with TE content. Ermm, |
+|            |            | 50 | MUST | 3.7.2 | have the epilogue of multipart messages empty | hno - squid does not generate or touch multipart entries. Rbc - we may need to with TE content. Ermm, |
+|            |            | 51 | MUST NOT | 3.7.2 | transmit the epligoue of multipart messages (even if given one) | hno - squid does not generate or touch multipart entries. Rbc - we may need to with TE content. Ermm, |
 |            |            | 52 | SHOULD | 3.7.2 | follow the same behaviour as a MIME agent when receiving a multipart message-body. | |
 |            |            | 53 | MUST | 3.7.2 | treat unrecognized multipart subtypes as "multipart/mixed" | see rfc 1867 for multipart/form-data definition |
 |            |            | 54 | SHOULD | 3.8 | use short to the point product-tokens | |
@@ -115,9 +115,9 @@ categories: [WantedFeature, Feature]
 |            |            | 90 | SHOULD | 4.4 | return 400 bad request if it cannot determine the length of a request message or 411 if we wish to enforce receiving a valid content-length | |
 |            |            | 91 | MUST NOT | 4.4 | include both Content-Length and a non-identity transfer coding. | |
 |            |            | 92 | MUST | 4.4 | ignore the Content-Length header if a non-identity Transfer-Encoding is received. (perhaps covering for TE instead of Transfer-Encoding??) | |
-|            |            | 93 | MUST | 4.4 | IF we are acting like a user agent - ie 'client' - notify the user when an invalid length is received and detected - ie Content-Length does not match the number of octects in the message-body. | |
-|            |            | 94 | MUST | 4.4 | when sending a response where a message body is allowed and we include Content-Length, it's value must match the number of OCTECTS in the message-body | |
-|            |            | 95 | MUST | 4.5 | treat unrecognized header fields as enitity header fields | |
+|            |            | 93 | MUST | 4.4 | IF we are acting like a user agent - ie 'client' - notify the user when an invalid length is received and detected - ie Content-Length does not match the number of octets in the message-body. | |
+|            |            | 94 | MUST | 4.4 | when sending a response where a message body is allowed and we include Content-Length, it's value must match the number of OCTETS in the message-body | |
+|            |            | 95 | MUST | 4.5 | treat unrecognized header fields as entity header fields | |
 |            |            | 96 | SHOULD | 5.1.1 | return 405 if a request method is recognized but not allowed | |
 |            |            | 97 | SHOULD | 5.1.1 | return 501 if a request method is not implemented | |
 |            |            | 98 | MUST | 5.1.1 | support GET and HEAD for squid generated pages | |
@@ -211,7 +211,7 @@ categories: [WantedFeature, Feature]
 |            |            | 186 | MUST NOT | 9.2 | forward a request with a Max-Forwards field when squid receives an OPTIONS request on an absoluteURI for which request forwarding is permitted and the value of Max-Forwards is 0. | |
 |            |            | 187 | SHOULD | 9.2 | response with Squids communications options to an OPTIONS request with a Max-Forwards field on an absoluteURI for which request forwarding is permitted and the value of Max-Forwards is 0. | |
 |            |            | 188 | MUST | 9.2 | decrement the Max-Forwards field-value when forwarding an OPTIONS request with a Max-Forwards field on an absoluteURI for which request forwarding is permitted and the value of Max-Forwards is a non zero integer. | |
-|            |            | 189 | MUST NOT | 9.2 | add a Max-Forwards header to an OPTIONS request if non is present when squid recieves it | |
+|            |            | 189 | MUST NOT | 9.2 | add a Max-Forwards header to an OPTIONS request if non is present when squid receives it | |
 |            |            | 190 | MUST NOT | 9.3 | cache a GET response if it does not meet the HTTP caching requirements from rfc 2616 section 13 | |
 |            |            | 191 | MUST NOT | 9.4 | for the squid 'server' - generate a message-body in HEAD responses | |
 |            |            | 192 | SHOULD | 9.4 | for the squid 'server' - generate identical http headers for a HEAD request to the equivalent GET request. | |
@@ -266,23 +266,23 @@ categories: [WantedFeature, Feature]
 |            |            | 241 | SHOULD | 10.4.14 | When returning a 413 error when the request entity is too large and it is a time based (or temporary) restriction, include a Retry-After header indicating when it should be ok | |
 |            |            | 242 | SHOULD | 10.4.18 | return 417 when we have unambiguous evidence that the expectation given in a request can not be met by the next hop server | |
 | :rage:     | :rage:     | 243 | SHOULD | 10.5 | include an entity body when we create 5xx error responses explaining the issue (other than to HEAD requests) | |
-|            |            | 244 | SHOULD | 10.5.2 | return a 501 if we don't implement a given method and can't just proxy it an hope | |
+|            |            | 244 | SHOULD | 10.5.2 | return a 501 if we don't implement a given method and cannot just proxy it an hope | |
 |            |            | 245 | SHOULD | 10.5.3 | return a 502 if we get an invalid upstream response | |
 |            |            | 246 | SHOULD | 10.5.4 | return a 503 if we are overloaded, or unable to serve requests due to maintenance. | |
 |            |            | 247 | MAY | 10.5.4 | return a Retry-After when returning a 503 if we are overloaded, or unable to serve requests due to maintenance. (the header would indicate when the maintenance should finish | |
-|            |            | 248 | SHOULD | 10.5.5 | return a 504 on an upstream timeout, or timeout on an auxilary server - ie DNS/authentication helper | we may be returning 400 or 500 presently |
+|            |            | 248 | SHOULD | 10.5.5 | return a 504 on an upstream timeout, or timeout on an auxiliary server - ie DNS/authentication helper | we may be returning 400 or 500 presently |
 | :frowning: | :rage:     3.1 | 249 | MUST | 10.5.6 | return a 505 if we don't support, (or have \#defed it out) the HTTP major version in the request message | |
 | :rage:     | :rage:     | 250 | OPTIONAL | 11 | implement basic and or digest authentication | |
 | :frowning: | :rage:     | 251 | MAY | 12 | use content-negotiation on any entity body request/response - ie in selecting what language the error should be in | |
 |            |            | 252 | MAY | 12.1 | for the squid client - include request header fields (Accept, Accept-Language, Accept-Encoding etc) in requests | |
 |            |            | 253 | MAY | 12.3 | develop transparent negotiation capabilities within HTTP/1.1 | |
-|            |            | 254 | recommendation | 13 | Note: The server, cache, or client implementor might be faced with design decisions not explicitly discussed in this specification. If a decision might affect semantic transparency, the implementor ought to err on the side of maintaining transparency unless a careful and complete analysis shows significant benefits in breaking transparency. | |
+|            |            | 254 | recommendation | 13 | Note: The server, cache, or client implementer might be faced with design decisions not explicitly discussed in this specification. If a decision might affect semantic transparency, the implementer ought to err on the side of maintaining transparency unless a careful and complete analysis shows significant benefits in breaking transparency. | |
 |            |            | 255 | MUST | 13.1.1 | respond to a request with the most up-to-date response held by squid which is appropriate to the request (see 13.2.5,13.2.6,13.12) and meets one of : 1) it has been revalidated with the origin, 2) it is "fresh enough (see 13.12) & 14.9 or 3) it is an appropriate 304/305/ 4xx/5xx response | |
 | 2.7 | | 256 | MAY | 13.1.1 | If a stored response is not "fresh enough" by the most restrictive freshness requirement of both the client and the origin server, in carefully considered circumstances the cache MAY still return the response with the appropriate Warning header (see section 13.1.5 and 14.46), unless such a response is prohibited (e.g., by a "no-store" cache-directive, or by a "no-cache" cache-request-directive; see section 14.9). | |
 |            |            | 257 | SHOULD | 13.1.1 | forward received responses even if the response itself is stale without adding a new Warning header | |
 |            |            | 258 | SHOULD NOT | 13.1.1 | attempt to revalidate responses that become stale in transit to squid | |
 |            |            | 259 | SHOULD | 13.1.1 | respond as per the 13.1.1 respond rules even if the origin server cannot be contacted. | |
-|            |            | 260 | MUST | 13.1.1 | return an error or warning to the client if the origin server can't be contacted, and no response can be served under the 13.1.1 rules | |
+|            |            | 260 | MUST | 13.1.1 | return an error or warning to the client if the origin server cannot be contacted, and no response can be served under the 13.1.1 rules | |
 |            |            | 261 | MUST | 13.1.2 | attach a warning noting when returning a response that is neither first-hand nor "fresh enough" using the Warning header | |
 |            |            | 262 | MUST | 13.1.2 | delete 1xx warnings from cached responses after successful revalidation | |
 |            |            | 263 | MAY | 13.1.2 | generate 1xx warnings when validating a cached entry | |
@@ -313,7 +313,7 @@ categories: [WantedFeature, Feature]
 |            |            | 288 | MUST NOT | 13.3.5 | use other headers than entity tags and Last-Modified for validation | |
 |            |            | 289 | MAY | 13.4 | always cache a successful response (unless constrained by 14.9) | |
 |            |            | 290 | MAY | 13.4 | return cached responses without validation while fresh (unless constrained by 14.9) | |
-|            |            | 291 | MAY | 13.4 | return cached responses after succesful validation (unless constrained by 14.9) | |
+|            |            | 291 | MAY | 13.4 | return cached responses after successful validation (unless constrained by 14.9) | |
 |            |            | 292 | MAY | 13.4 | cache responses with no validator or expiration time, but shouldn't do so in normal conditions | |
 |            |            | 293 | MAY | 13.4 | cache and use as replies, responses with status codes 200, 203, 206, 300, 301 or 410 (subject to expiration & cache-control mechanisms) | |
 |            |            | 294 | MUST NOT | 13.4 | return responses to status codes other than (200, 203, 206, 300, 301 or 410) in a reply to subsequent requests unless there are cache-control directives that explicitly allow it (eg Expires/ a max-age , s-maxage, must-revalidate, proxy-revalidate, puvlic or private cache-control header | |
@@ -344,8 +344,8 @@ categories: [WantedFeature, Feature]
 |            |            | 319 | MUST NOT | 13.8 | return a partial response to a client without marking it as such (using 206 status code) | |
 |            |            | 320 | MUST NOT | 13.8 | return a partial response to a client with status 200 | |
 |            |            | 321 | MAY | 13.8 | forward 5xx responses received while revalidating entries to the client, or act as if the server failed to respond | |
-|            |            | 322 | MAY | 13.8 | when a server fails to respond, return a cached response unless the cached entry inludes the must-revalidate cache-control directive | |
-|            |            | 323 | MUST NOT | 13.9 | treat GET and HEAD requests with ? In the URI path as fresh UNLESS explicit exipration times are provided in the response | |
+|            |            | 322 | MAY | 13.8 | when a server fails to respond, return a cached response unless the cached entry includes the must-revalidate cache-control directive | |
+|            |            | 323 | MUST NOT | 13.9 | treat GET and HEAD requests with ? In the URI path as fresh UNLESS explicit expiration times are provided in the response | |
 |            |            | 324 | SHOULD NOT | 13.9 | cache GET and HEAD responses from HTTP/1.0 servers with ? In the URI path | |
 |            |            | 325 | MUST | 13.10 | invalidate entities referred to by the Content-Location header;Location header or the Request-URI in PUT/DELETE and POST requests. This is only done for the same host hwn using the Content-Locaiton and Location headers | |
 |            |            | 326 | SHOULD | 13.10 | invalidate entities referred to by the Request-URI in non understood methods if we pass them upstream | |
@@ -376,7 +376,7 @@ categories: [WantedFeature, Feature]
 |            |            | 351 | MUST | 14.8 | always revalidate responses with cache-control: s-maxage=0 | |
 |            |            | 352 | MUST | 14.9 | follow the cache-control header directives at all times | |
 |            |            | 353 | MUST | 14.9 | pass cache-control directives through to the next link in the message path (ie don't eat them) | |
-|            |            | 354 | MAY | 14.9.1 | cache responses with cache-control: public even of the header/method might not normally be cacheable | |
+|            |            | 354 | MAY | 14.9.1 | cache responses with cache-control: public even of the header/method might not normally be cachable | |
 |            |            | 355 | MUST NOT | 14.9.1 | cache responses with cache-control: private | |
 |            |            | 356 | MUST NOT | 14.9.1 | use responses with cache-control: no-cache to satisfy other requests without successful revalidation | ie auto GET to IMS is allowed |
 |            |            | 357 | MAY | 14.9.1 | use responses with cache-control: no-cache to satisfy other requests without successful revalidation if the no-cache directive includes field-names | |
@@ -384,7 +384,7 @@ categories: [WantedFeature, Feature]
 |            |            | 359 | MAY | 14.9.2 | use no-store on requests or responses to prevent data storage | |
 |            |            | 360 | MUST NOT | 14.9.2 | store any part of a request or it's response if the cache-control: no-store directive was in the request | This directive applies to both non-shared and shared caches. "MUST NOT store" in this context means that the cache MUST NOT intentionally store the information in non-volatile storage, and MUST make a best-effort attempt to remove the information from volatile storage as promptly as possible after forwarding it. |
 |            |            | 361 | MUST NOT | 14.9.2 | store any part of a response or the request that elicited it if the cache-control: no-store directive was in the response | This directive applies to both non-shared and shared caches. "MUST NOT store" in this context means that the cache MUST NOT intentionally store the information in non-volatile storage, and MUST make a best-effort attempt to remove the information from volatile storage as promptly as possible after forwarding it. |
-|            |            | 362 | SHOULD | 14.9.3 | consider responses with an Expires value that is \<= the response date and no cache-control header field to be non-cacheable | |
+|            |            | 362 | SHOULD | 14.9.3 | consider responses with an Expires value that is \<= the response date and no cache-control header field to be non-cachable | |
 |            |            | 363 | MUST | 14.9.3 | mark stale responses with Warning 110 | |
 |            |            | 364 | MAY | 14.9.3 | have squid configurable to return stale responses even when not requested by clients but responses served MUST NOT conlict with other MUST or MUST NOT requirements | |
 |            |            | 365 | MUST NOT | 14.9.4 | use a cached copy to respond to a request with cache-control: no-cache or Pragma: no-cache | |
@@ -455,8 +455,8 @@ categories: [WantedFeature, Feature]
 |            |            | 430 | MUST | 14.42 | use the upgrade header in a response with status code 101 | |
 |            |            | 431 | MUST | 14.42 | include the Upgrade connection-token whenever we use the Upgrade header | |
 |            |            | 432 | SHOULD | 14.43 | for the client - include a user-Agent field in requests | |
-|            |            | 433 | SHOULD | 14.44 | include a Vary header on any cacheable response we generate that used server negotiation | |
-|            |            | 434 | MAY | 14.44 | for the 'server' include a vary header with a non-cacheable response the used server negotiation | |
+|            |            | 433 | SHOULD | 14.44 | include a Vary header on any cachable response we generate that used server negotiation | |
+|            |            | 434 | MAY | 14.44 | for the 'server' include a vary header with a non-cachable response the used server negotiation | |
 |            |            | 435 | MAY | 14.44 | assume the same response will be given by a server for future requests with the same request field values as those listed by the vary header in the response whilst the response is still fresh | |
 |            |            | 436 | MUST NOT | 14.44 | generate a \* value for a vary field | |
 |            |            | 437 | MUST | 14.45 | fill in the Via header | |

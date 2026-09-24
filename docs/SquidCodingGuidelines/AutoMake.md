@@ -23,7 +23,7 @@
     [Features/SourceLayout](/Features/SourceLayout)
 - convenience libraries should be named for the subdirectory they are
     within. For example; foo/libfoo.la or foo/libfoosomething.la
-- conveniece library names must contain only alphanumeric characters
+- convenience library names must contain only alphanumeric characters
     0-9 a-z, avoid upper case or punctuation
 
 **ENFORCED:**

@@ -20,7 +20,7 @@ The big single in-memory store index is starting to become quite a
 burden. There is a need for something which scales better with both size
 and CPU.
 
-We need to move away from this, providing an asyncronous store lookup
+We need to move away from this, providing an asynchronous store lookup
 mechanism allowing the index to be moved out from the core and down to
 the store layer. Ultimately even supporting shared stores used by
 multiple Squid frontends.

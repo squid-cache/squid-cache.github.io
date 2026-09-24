@@ -402,7 +402,7 @@ router which passes packets to Squid. Then you will need to explicitly
 add some additional configuration.
 
 The WCCPv2 example is provided for people using Cisco boxes. For others
-we can't point to exact routing configuration since it will depend on
+we cannot point to exact routing configuration since it will depend on
 your router. But you will need to figure out some rule(s) which identify
 the Squid outbound traffic. Dedicated router interface, service groups,
 TOS set by Squid
@@ -470,7 +470,7 @@ time it resolves to x.x.x.2
 ## selinux policy denials
 
 When configuring TPROXY support on Fedora 12 using the Squid shipped
-with Fedora selinux initially blocked Squid from usng the TPROXY
+with Fedora selinux initially blocked Squid from using the TPROXY
 feature.
 
 The quick fix is disabling selinux entirely, but this is not generally

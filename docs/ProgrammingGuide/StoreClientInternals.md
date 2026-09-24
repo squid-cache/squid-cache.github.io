@@ -23,7 +23,7 @@ undocumented storeclient API which primarily consists of
 - `storeClientCopy` to request some data from the object
 - `storeUnregister` to unregister to client from the StoreEntry.
 
-client in this is "a internal reader of the StoreEntry", not neccesarily
+client in this is "a internal reader of the StoreEntry", not necessarily
 a client of Squid..
 
 But depending on "who" you are and why maybe this is not the interface

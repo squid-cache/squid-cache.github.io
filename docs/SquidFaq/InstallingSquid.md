@@ -397,7 +397,7 @@ exit immediately, without closing any connections or log files. Use this
 only as a last resort.
 
 **-k debug** Sends an *USR2* signal, which causes Squid to generate full
-debugging messages until the next *USR2* signal is recieved. Obviously
+debugging messages until the next *USR2* signal is received. Obviously
 very useful for debugging problems.
 
 **-k check** Sends a "*ZERO*" signal to the Squid process. This simply
@@ -480,7 +480,7 @@ Yes. Running Squid on native ZFS-supporting systems, like Solaris or
 
 In general, just set up ZFS mirror (usually the best with separate
 controllers for each spindle) and set recordsize 4-64k (depending your
-cache prefferable cache_replacement_policy). Also it can better for
+cache preferable cache_replacement_policy). Also it can better for
 disk IO performance to change primarycache=metadata and
 secondarycache=none, and atime=off on cache_dir filesystems. Consider
 to correctly set **logbias** property for zfs fs which Squid's cache

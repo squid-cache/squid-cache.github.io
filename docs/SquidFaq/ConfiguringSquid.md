@@ -60,7 +60,7 @@ the *etc* directory under the Squid installation directory
 
 ## How do I configure Squid to work behind a firewall?
 
-If you are behind a firewall which can't make direct connections to the
+If you are behind a firewall which cannot make direct connections to the
 outside world, you **must** use a parent cache. Normally Squid tries to
 be smart and only uses cache peers when it makes sense from a
 perspective of global hit ratio, and thus you need to tell Squid when it
@@ -90,7 +90,7 @@ may not be able to lookup external domains.
 
 If you use *never_direct* and you have multiple parent caches, then you
 probably will want to mark one of them as a default choice in case Squid
-can't decide which one to use. That is done with the *default* keyword
+cannot decide which one to use. That is done with the *default* keyword
 on a *cache_peer* line. For example:
 
     cache_peer xyz.mydomain.com parent 3128 0 no-query default
@@ -112,7 +112,7 @@ then some more temporary storage as work-areas, for instance when
 rebuilding *swap.state*. So in any case make sure to leave some extra
 room for this, or your cache will enter an endless crash-restart cycle.
 
-The second reason is fragmentation (note, this won't apply to the COSS
+The second reason is fragmentation (note, this will not apply to the COSS
 object storage engine - when it will be ready): filesystems can only do
 so much to avoid fragmentation, and in order to be effective they need
 to have the space to try and optimize file placement. If the disk is
@@ -122,10 +122,10 @@ most likely be your worst bottleneck, by far offsetting the modest gain
 you got by having more storage.
 
 Let's see an example: you have a 9Gb disk (these times they're even hard
-to find..). First thing, manifacturers often lie about disk capacity
+to find..). First thing, manufacturers often lie about disk capacity
 (the whole Megabyte vs Mebibyte issue), and then the OS needs some space
 for its accounting structures, so you'll reasonably end up with 8Gib of
-useable space. You then have to account for another 10% in overhead for
+usable space. You then have to account for another 10% in overhead for
 Squid, and then the space needed for keeping fragmentation at bay. So in
 the end the recommended cache_dir setting is 6000 to 7000 Mebibyte.
 
@@ -150,7 +150,7 @@ about using Squid in combination with http-gw from the
 [TIS toolkit](http://www.tis.com/). The most elegant way in my opinion is to
 run an internal Squid caching proxyserver which handles client requests
 and let this server forward it's requests to the http-gw running on the
-firewall. Cache hits won't need to be handled by the firewall.
+firewall. Cache hits will not need to be handled by the firewall.
 
 In this example Squid runs on the same server as the http-gw, Squid uses
 8000 and http-gw uses 8080 (web). The local domain is home.nl.
@@ -225,7 +225,7 @@ Advantages:
 
 Disadvantages:
 
-- The internal Squid proxyserver can't (and shouldn't) work with other
+- The internal Squid proxyserver cannot (and shouldn't) work with other
   parent or neighbor caches.
 - Initial requests are slower because these go through http-gw,
   http-gw also does reverse lookups. Run a nameserver on the firewall

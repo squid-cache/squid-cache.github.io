@@ -6,7 +6,7 @@
     This page is a work in progress. It reflects the discoveries by
     [FrancescoChemolli](/FrancescoChemolli)
     as it tries to implement the new cachemgr framework. It may contain
-    inaccurate informations.
+    inaccurate information.
 
 This document details how to implement a multi-cpu cache manager action
 for Squid 3.2+, following the API framework implemented by
