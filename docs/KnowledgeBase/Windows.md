@@ -38,6 +38,16 @@ Packages available for Squid on multiple environments.
 
 ### Squid-7
 
+Maintainer: Rafael Akchurin, [Diladele B.V.](http://www.diladele.com/)
+
+Bug Reporting: (about the installer only)
+<https://github.com/diladele/squid-windows/issues>
+
+MSI installer packages for Windows are at:
+
+  - 64-bit: <http://squid.diladele.com/>
+
+
 Maintainer: Steve Faleiro, [Squid Proxy Professional](https://squidproxypro.com/)
 
 Bug Reporting: (about the package only) <support@squidproxypro.com>
@@ -49,16 +59,6 @@ patch and build script for the bundled Squid:
 <https://squidproxypro.com/open-source.php>
 
   - 64-bit: <https://squidproxypro.com/download.php>
-
-
-Maintainer: Rafael Akchurin, [Diladele B.V.](http://www.diladele.com/)
-
-Bug Reporting: (about the installer only)
-<https://github.com/diladele/squid-windows/issues>
-
-MSI installer packages for Windows are at:
-
-  - 64-bit: <http://squid.diladele.com/>
 
 ### Squid-3.3
 
