@@ -230,41 +230,136 @@ the program:
 
 ### .SH COPYRIGHT
 
-Details of the copyright associated with this binary, script, or
-configuration file.
+Details of the copyright notices associated with this binary, script,
+or configuration file. There are three legal scopes that are relevant
+and should have claims listed separately.
+
+> :warning:
+ The claim line (e.g. `Copyright (C) 1970 Example Author <author@example.com>`) must not be translated.
+
+Each claim line should be prefixed with `.if !'po4a'hide' .SS ` to
+both prevent translation and highlight as a sub-header.
+Then followed by the brief copyright notice which may be translated.
+
+#### 1) The Squid Software Collective copyright
+
+This is the copyright under which all Squid source code is published.
+The notice text is provided in the `scripts/boilerplate.h`
+source file and should be copy-pasted (without the C++ comment markup).
 
 For example:
+```
+.if !'po4a'hide' .SS Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+.
+Squid software is distributed under GPLv2+ license and includes
+contributions from numerous individuals and organizations.
+Please see the COPYING and CONTRIBUTORS files for details.
+```
 
-    .
-    .SH COPYRIGHT
-    .PP
-     * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
-     *
-     * Squid software is distributed under GPLv2+ license and includes
-     * contributions from numerous individuals and organizations.
-     * Please see the COPYING and CONTRIBUTORS files for details.
-    .PP
-    Squid
-    .B example.binary
-    and this manual is Copyright 2010
-    .if !'po4a'hide' .I Authors Name <author@email.contact>
-    .PP
-    Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+#### 2) The relevant binary copyright claims (if any)
 
-If no exact copyright details are known use the following snippet:
+These are the binary-specific copyright notices for any authors of the
+binary or helper script(s) this manual is documenting.
 
-    .
-    .SH COPYRIGHT
-    .PP
-     * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
-     *
-     * Squid software is distributed under GPLv2+ license and includes
-     * contributions from numerous individuals and organizations.
-     * Please see the COPYING and CONTRIBUTORS files for details.
-    .PP
-    This program and documentation is copyright to the authors named above.
-    .PP
-    Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+All notices from the source code and other distributed files should be listed.
+But may be merged, as described below.
+
+#### 3) The manual copyright claims (if any)
+
+This is the claim you as an author of the manual apply to your work of
+documenting whatever the manual is about.
+
+#### Merging notices:
+
+For purposes of this documentation, we treat copyright notice as containing two parts:
+   - the copyright holders claim ("claim")
+   - a series of paragraphs containing license conditions and/or disclaimers ("blurb")
+
+There are several legal requirements for managing copyright notices and licensing:
+
+ * Default: Every distinct copyright claim and notice text should be listed.
+   - this means **any** variation of the wording within a notice classifies it for its own entry **in full**.
+ * Blurbs may be merged IF (and only if) the blurb text contain the exact same set of legal clauses and disclaimers.
+   - When merging notices the claim lines are listed individually before the shared blurb text.
+ * Claim lines can be merged IF they a) share a blurb, and 2) only the year range differs
+
+Examples:
+
+1) These copyright blurbs can be combined, because the license permissions (paragraph 1) and disclaimers (paragraph 2) are identical text. The third paragraph is clarification text not a legal clause, and is optional (but recommended).
+```
+.if !'po4a'hide' .SS Copyright (C) 2011 John Smith <john@example.net>
+.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+.
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
+.
+.if !'po4a'hide' .SS Copyright (C) 1998 James Wight <james@example.com>
+.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+```
+When combined they look like this (two distinct claims, shared blurb using the more verbose wording):
+```
+.if !'po4a'hide' .SS Copyright (C) 2011 John Smith <john@example.net>
+.if !'po4a'hide' .SS Copyright (C) 1998 James Wight <james@example.com>
+.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+.
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
+```
+
+ 2) These two can be combined fully because the same copyright holder has issued both notices with identical blurb text:
+```
+.if !'po4a'hide' .SS Copyright (C) 2010 .I Authors Name <author@email.contact>
+.
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+.
+.if !'po4a'hide' .SS Copyright (C) 2026 .I Authors Name <author@email.contact>
+.
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+```
+When combined they look like this:
+```
+.if !'po4a'hide' .SS Copyright (C) 2010,2026 .I Authors Name <author@email.contact>
+.
+Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+```
+> :warning: **LEGAL TRAP**
+ Be aware that the above is **not** a GPL license notice. It is a custom Multi-license that happens to be using the GPLv2 contract for one of its legal references, GPLv2+ as another, GPLv3 as another, and so on.
+
+ 3) These cannot be combined because the two notices apply to different sets of source code, each with different sets of authors (copyright holders). First being the entire Squid sources, and the second being just the helper this manual is about.
+```
+.if !'po4a'hide' .SS Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+.
+Squid software is distributed under GPLv2+ license and includes
+contributions from numerous individuals and organizations.
+Please see the COPYING and CONTRIBUTORS files for details.
+.
+.if !'po4a'hide' .SS Copyright (C) 2011 John Smith <john@example.net>
+.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+.
+```
+
+ 4) These cannot be combined because one author has removed the normal GPL WARRANTY disclaimer. Making these two legally distinct licenses for a Dual-Licensed program. The third paragraph of the first notice is clarification text not a legal clause, and is optional (but recommended).
+```
+.if !'po4a'hide' .SS Copyright (C) 2011 John Smith <john@example.net>
+.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+.
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
+.
+.if !'po4a'hide' .SS Copyright (C) 1998 James Wight <james@example.com>
+.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+```
 
 ### .SH QUESTIONS
 
@@ -377,16 +472,11 @@ above to document an installed file.
     .if !'po4a'hide' .I Authors Name <author@email.contact>
     .
     .SH COPYRIGHT
-    .PP
-     * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
-     *
-     * Squid software is distributed under GPLv2+ license and includes
-     * contributions from numerous individuals and organizations.
-     * Please see the COPYING and CONTRIBUTORS files for details.
-    .PP
-    This program and documentation is copyright to the authors named above.
-    .PP
-    Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+    .if !'po4a'hide' .SS Copyright (C) 1996-2014 The Squid Software Foundation and contributors
+    .
+    Squid software is distributed under GPLv2+ license and includes
+    contributions from numerous individuals and organizations.
+    Please see the COPYING and CONTRIBUTORS files for details.
     .
     .SH QUESTIONS
     Questions on the usage of this program can be sent to the
@@ -441,11 +531,11 @@ Version 1.0
 
 =head1 SYNOPSIS
 
- binary.name [options]
+binary.name [options]
 
 =head1 DESCRIPTION
 
- B<binary.name> is an installed binary. The long description goes here.
+B<binary.name> is an installed binary. The long description goes here.
 
 =head1 OPTIONS
 
@@ -483,15 +573,11 @@ This manual was written by I<Authors Name <author@email.contact>>
 
 =head1 COPYRIGHT
 
- * Copyright (C) 1996-2014 The Squid Software Foundation and contributors
- *
- * Squid software is distributed under GPLv2+ license and includes
- * contributions from numerous individuals and organizations.
- * Please see the COPYING and CONTRIBUTORS files for details.
+=head2 Copyright (C) 1996-2014 The Squid Software Foundation and contributors
 
-This program and documentation is copyright to the authors named above.
-
-Distributed under the GNU General Public License (GNU GPL) version 2 or later (GPLv2+).
+Squid software is distributed under GPLv2+ license and includes
+contributions from numerous individuals and organizations.
+Please see the COPYING and CONTRIBUTORS files for details.
 
 =head1 QUESTIONS
 
