@@ -39,14 +39,43 @@ Features which have not reached completion or have failed the audit, are
 automatically delayed to the next Squid series. Which should not be an
 unreasonable delay given the fast-track release plan.
 
-## Squid 6
+## Squid 7
 
-> Now in **DEVELOPMENT** cycle.
+> Now in **DEVELOPMENT** phase
 
 The set of new features is determined by submissions and available
 developer time. New features may be completed and added at any time.
-Features accepted before 2023-02-05 (see [ReleaseSchedule](/ReleaseSchedule))
-will be part of this release.
+Features accepted before XXXX-XX-XX (see [ReleaseSchedule](/ReleaseSchedule))
+will be part of this release
+
+New features in 7.0:
+- **Major user-visible changes:**
+- **Minor user-visible changes:**
+- **Administrator Interest changes:**
+  -  Improved handling of duplicate entries in certain classes of ACLs such as `src`, `dst`, `http-status`
+  -  Improved correctness of some cache manager reports
+- **Developer Interest changes:**
+  - Improved efficiency in handling buffers
+- **Removed features**:
+
+### Security Advisories
+
+See our [Advisories](http://www.squid-cache.org/Advisories/) list.
+
+### Open Bugs
+
+* [Major or higher bugs currently affecting this version](http://bugs.squid-cache.org/buglist.cgi?bug_id_type=anyexact&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&chfieldto=Now&product=Squid&query_format=advanced&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&order=version%20DESC%2Cbug_severity%2Cbug_id&o2=equals&v2=unspecified&f1=version&o1=lessthaneq&v1=7)
+* [Bugs new in this version](http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&version=7&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bug_severity=normal&bug_severity=minor&emailtype1=substring&email1=&emailtype2=substring&email2=&bugidtype=include&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&list_id=917&order=version%20DESC%2Cbug_severity%2Cbug_id)
+* [Serious Bugs](http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=blocker&bug_severity=critical&bug_severity=major&bugidtype=include&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&list_id=917&order=version%20DESC%2Cbug_severity%2Cbug_id)
+* [General Bug Zapping](http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=major&bug_severity=normal&bugidtype=include&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&list_id=917&order=version%20DESC%2Cbug_severity%2Cbug_id)
+* [Minor Bugs](http://bugs.squid-cache.org/buglist.cgi?query_format=advanced&product=Squid&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_severity=minor&bug_severity=trivial&bugidtype=include&columnlist=bug_severity%2Cversion%2Cop_sys%2Cshort_desc&list_id=917&order=version%20DESC%2Cbug_severity%2Cbug_id)
+
+
+## Squid 6
+
+> Now **RELEASED**.
+
+
 
 New features in 6.0:
 - **Major UI changes:**
