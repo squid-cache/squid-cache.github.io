@@ -324,6 +324,12 @@ components at build time.
 
 * MUST be used inside .h to wrap relevant code.
 
+## Error reporting
+
+To report an error and abort the current transaction, throw a `TextException("descriptive text", Here())`.
+Use `Assure(condition)` to test an invariant and abort the current transaction.
+To check system-leve invariants, where a failure needs to terminate Squid, use `xassert(condition)`
+
 ## See Also
 
 * [DeveloperResources](/DeveloperResources).
