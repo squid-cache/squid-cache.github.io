@@ -8,7 +8,7 @@ including the [FAQ](/SquidFaq), [KnowledgeBase](/KnowledgeBase) articles,
 
 - [Why Squid](/WhySquid) ?
 - [FAQ](/SquidFaq)
-- Development [Road Map](/RoadMap)
+- Development [Road Map](/RoadMap) and [notes](/Roadmap/CoreDevConvos) from core develoepers conversations
 - [Configuration examples](/ConfigExamples), or tips on how to address specific scenarios
 - A detailed description of many squid [Features](/Features), including specific documentation about them
 - full list of the site's [Pages](/SitePages)
