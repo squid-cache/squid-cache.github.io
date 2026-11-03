@@ -56,82 +56,9 @@ triggering the existing SSL error processing code.
 Helper responses will be cached to reduce validation performance burden
 (indexed by validation query parameters).
 
-## Helper communication protocol
-
-This interface is similar to the SSL certificate generation interface.
-
-Input *line* received from Squid:
-
-    request size [kv-pairs]
-
-> :warning:
-  *line* refers to a logical input. **body** may contain \\n characters so
-  each line in this format is delimited by a 0x01 byte instead of the
-  standard \\n byte.
-
-- request
-:   The type of action being requested. Presently the code
-    **cert_validate** is the only request made.
-- size
-:   Total size of the following request bytes taken by the
-    **key=pair** parameters.
-- kv-pairs
-:   An optional list of key=value parameters separated by new lines.
-    Supported parameters are:
-        | --- | --- |
-        | host                  | FQDN host name or the domain |
-        | proto_version        | The SSL/TLS version |
-        | cipher                | The SSL/TLS cipher being used |
-        | cert_***ID***        | Server certificate. The ID is an index number for this certificate. This parameter exist as many as the server certificates are |
-        | error_name_***ID*** | The openSSL certificate validation error. The ID is an index number for this error |
-        | error_cert_***ID*** | The ID of the certificate which caused error_name_ID |
-
-Example request:
-
-    0 cert_validate 1519 host=dmz.example-domain.com
-    cert_0=-----BEGIN CERTIFICATE-----
-    MIID+DCCA2GgAwIBAgIJAIDcHRUxB2O4MA0GCSqGSIb3DQEBBAUAMIGvMQswCQYD
-    ...
-    YpVJGt5CJuNfCcB/
-    -----END CERTIFICATE-----
-    error_name_0=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
-    error_cert_0=cert0
-
-Result line sent back to Squid:
-
-    result size kv-pairs
-
-- result
-:   One of the result codes:
-
-        | --- | ------------------------------------------ |
-        | OK  | Success. Certificate validated.            |
-        | ERR | Success. Certificate not validated.        |
-        | BH  | Failure. The helper encountered a problem. |
-
-- size
-:   Total size of the following response bytes taken by the
-    **key=pair** parameters.
-- kv-pairs
-:   A list of key=value parameters separated by new lines. The
-    supported parameters are:
-
-        | --- | --- |
-        | cert_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
-        | error_name_***ID***   | The openSSL error name for the error **ID**                                                                               |
-        | error_reason_***ID*** | A reason for the error **ID**                                                                                             |
-        | error_cert_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
-
-Example response message:
-
-    ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
-    MIIDojCCAoqgAwIBAgIQE4Y1TR0/BvLB+WUF1ZAcYjANBgkqhkiG9w0BAQUFADBr
-    ...
-    398znM/jra6O1I7mT1GvFpLgXPYHDw==
-    -----END CERTIFICATE-----
-    error_name_0=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
-    error_reason_0=Checked by Cert Validator
-    error_cert_0=cert_10
+Helper communication protocol will be similar to the one used by the x509
+certificate generator helper, as documented
+[elsewhere](Features/AddonHelpers).
 
 ## Design decision points
 

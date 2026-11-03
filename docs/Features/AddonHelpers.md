@@ -1119,32 +1119,34 @@ Result line sent back to Squid:
 
 This interface is similar to the SSL certificate generation interface.
 
-Input *line* received from Squid:
+Request messages sent by Squid have the following syntax:
 
-    request size [kv-pairs]
+    [request-ID SP] action SP size SP body LF
 
-![/\!\\](https://wiki.squid-cache.org/wiki/squidtheme/img/alert.png)
-*line* refers to a logical input. **body** may contain \\n characters so
-each line in this format is delimited by a 0x01 byte instead of the
-standard \\n byte.
+... where `SP` is an ASCII space character, `LF` is an ASCII new line
+character (\\n), and the other fields are documented below.
 
-  - request
-    
-      - The type of action being requested. Presently the code
-        **cert\_validate** is the only request made.
+:warning: The `body` field usually contains new line characters. Use the
+`size` field to find the end of the body.
 
-  - size
-    
-      - Total size of the following request bytes taken by the
-        **key=pair** parameters.
+- request-ID: An unsigned positive 64-bit decimal number uniquely identifying
+  this request among all requests submitted to this helper process (i.e. on
+  this helper stdin connection). Squid sends this field when (and only when)
+  the `concurrency=N` helper configuration option is used with `N` values
+  grater than 1. When this field is present, the corresponding helper response
+  must start with a matching `request-ID` field.
 
-  - kv-pairs
-    
-      - An optional list of key=value parameters separated by new lines.
-        Supported parameters are:
-        
-        |                       |                                                                                                                                 |
-        | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+- action: A string with the name of the helper operation being requested.
+  Squid currently only sends `cert_validate` requests.
+
+- size: A decimal number representing the size of the `body` field in bytes.
+  The size of an empty `body` is zero.
+
+- body: A possibly empty list of the following key=value pairs separated by
+  ASCII new line characters (\\n).
+
+        | key                   | value description           |
+        | --------------------- | --------------------------- |
         | host                  | FQDN host name or the domain                                                                                                    |
         | proto\_version        | The SSL/TLS version                                                                                                             |
         | cipher                | The SSL/TLS cipher being used                                                                                                   |
@@ -1155,7 +1157,7 @@ standard \\n byte.
 
 Example request:
 
-    0 cert_validate 1519 host=dmz.example-domain.com
+    17179869184 cert_validate 1519 host=dmz.example-domain.com
     cert_0=-----BEGIN CERTIFICATE-----
     MIID+DCCA2GgAwIBAgIJAIDcHRUxB2O4MA0GCSqGSIb3DQEBBAUAMIGvMQswCQYD
     ...
@@ -1164,49 +1166,56 @@ Example request:
     error_name_0=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
     error_cert_0=cert0
 
-Result line sent back to Squid:
 
-    result size kv-pairs
+Squid expects response messages with the following syntax:
 
-  - result
-    
-      - One of the result codes:
+    [request-ID SP] result SP size SP body SOH
+
+... where `SP` is an ASCII space character, `SOH` is an ASCII "Start of
+Heading" character (with the value of 1), and the other fields are documented
+below.
+
+:warning: If the response `body` field is empty or contains a single key=value
+pair that has no embedded new lines, then the entire response message should
+have no new line characters.
+
+- request-ID: An unsigned positive 64-bit decimal number equal to the
+  `request-ID` field of the corresponding helper request. These fields must be
+  sent when (and only when) the `concurrency=N` helper configuration option is
+  used with `N` values grater than 1.
+
+- result: A string matching one of the following codes:
         
-        |     |                                            |
+        | code| code meaning                               |
         | --- | ------------------------------------------ |
         | OK  | Success. Certificate validated.            |
         | ERR | Success. Certificate not validated.        |
         | BH  | Failure. The helper encountered a problem. |
         
+- size: A decimal number representing the size of the `body` field in bytes.
+  The size of an empty `body` is zero.
 
-  - size
-    
-      - Total size of the following response bytes taken by the
-        **key=pair** parameters.
+- body: A possibly empty list of the following key=value pairs separated by
+  ASCII new line characters (\\n).
 
-  - kv-pairs
-    
-      - A list of key=value parameters separated by new lines. The
-        supported parameters are:
-        
-        |                         |                                                                                                                           |
-        | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+        | key                     | value description           |
+        | ----------------------- | --------------------------- |
         | cert\_***ID***          | A certificate send from helper to squid. The **ID** is an index number for this certificate                               |
         | error\_name\_***ID***   | The openSSL error name for the error **ID**                                                                               |
         | error\_reason\_***ID*** | A reason for the error **ID**                                                                                             |
         | error\_cert\_***ID***   | The broken certificate. It can be one of the certificates sent by helper to squid or one of those sent by squid to helper |
         
 
-Example response message:
+Example response message (with the terminating SOH character shown as `^A`):
 
-    ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
+    17179869184 ERR 1444 cert_10=-----BEGIN CERTIFICATE-----
     MIIDojCCAoqgAwIBAgIQE4Y1TR0/BvLB+WUF1ZAcYjANBgkqhkiG9w0BAQUFADBr
     ...
     398znM/jra6O1I7mT1GvFpLgXPYHDw==
     -----END CERTIFICATE-----
     error_name_0=X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT
     error_reason_0=Checked by Cert Validator
-    error_cert_0=cert_10
+    error_cert_0=cert_10^A
 
 ### Cache file eraser
 
