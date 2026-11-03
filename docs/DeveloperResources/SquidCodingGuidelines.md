@@ -57,6 +57,19 @@ formater.
 * Naming conventions as covered in
   [Features/SourceLayout](/Features/SourceLayout)
   are to be used.
+* To assert a condition that can be checked at compilation time, use
+  `static_assert()`. See [ErrorHandling](/DeveloperResources/ErrorHandling)
+  for details.
+* To confirm a code invariant that cannot be checked at compilation time, use
+  `Assure()` if you can and `assert()` otherwise. See
+  [ErrorHandling](/DeveloperResources/ErrorHandling) for details.
+* Do not use `Assure()` or `assert()` to validate input. Instead, create and
+  throw a `TextException` object, return `std::nullopt`, or otherwise signal
+  the problem to the caller. See
+  [ErrorHandling](/DeveloperResources/ErrorHandling) for details.
+* Do not use deprecated `Must()`, `Must3()`, fatalf()`, `fatal()`, and
+  `fatal_dump()` in new code. See
+  [ErrorHandling](/DeveloperResources/ErrorHandling) for details.
 
 ### Rule: No new globals
 
