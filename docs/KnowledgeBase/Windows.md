@@ -36,7 +36,7 @@ development environment. All modern Windows versions are supported
 
 Packages available for Squid on multiple environments.
 
-### Squid-4
+### Squid-7
 
 Maintainer: Rafael Akchurin, [Diladele B.V.](http://www.diladele.com/)
 
@@ -46,6 +46,19 @@ Bug Reporting: (about the installer only)
 MSI installer packages for Windows are at:
 
   - 64-bit: <http://squid.diladele.com/>
+
+
+Maintainer: Steve Faleiro, [Squid Proxy Professional](https://squidproxypro.com/)
+
+Bug Reporting: (about the package only) <support@squidproxypro.com>
+
+Commercial package (paid license, 30-day trial). Squid is built from the
+official release source on Cygwin, installed by a code-signed installer,
+runs as a Windows service and comes with a management console. Source,
+patch and build script for the bundled Squid:
+<https://squidproxypro.com/open-source.php>
+
+  - 64-bit: <https://squidproxypro.com/download.php>
 
 ### Squid-3.3
 
