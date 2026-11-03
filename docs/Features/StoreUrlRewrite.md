@@ -22,7 +22,7 @@ categories: Feature
 
 My main focus with this feature is to support caching various
 CDN-supplied content which maps the same resource/content to multiple
-locations. Initially I'm targetting Google content - Google Earth,
+locations. Initially I'm targeting Google content - Google Earth,
 Google Maps, Google Video, Youtube - but the same technique can be used
 to cache similar content from CDNs such as Akamai (think "Microsoft
 Updates".)
@@ -37,14 +37,14 @@ a number of structural changes:
 - An external helper (exactly the same data format is used as a
     redirect helper\!) receives URLs and can rewrite them to a canonical
     form - these rewritten URLs are stored as "store_url" URLs,
-    seperate from the normal URL;
+    separate from the normal URL;
 - The existing/normal URLs are used for ACL and forwarding
 - The "store_url" URLs are used for the store key lookup and storage
 - A new meta type has been added - STORE_META_STOREURL - which means
-    the on-disk object format has slightly changed. There's no big deal
+    the on-disk object format has slightly changed. There is no big deal
     here - Squid may warn about an unknown meta data type if you
     rollback to another squid version after trying this feature but it
-    won't affect the operation of your cache.
+    will not affect the operation of your cache.
 
 ## Squid Configuration
 
@@ -88,7 +88,7 @@ section.
     refresh_pattern .                   0       20%     4320
 
 These rules make sure that you don't try caching cgi-bin and ? URLs
-unless expiry information is explictly given. Make sure you don't add
+unless expiry information is explicitly given. Make sure you don't add
 the rules after a "refresh_pattern ." line; refresh_pattern entries
 are evaluated in order and the first match is used\! The last entry must
 be the "." entry!

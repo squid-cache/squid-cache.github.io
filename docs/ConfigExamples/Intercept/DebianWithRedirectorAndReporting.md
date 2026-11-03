@@ -142,7 +142,7 @@ After editing the configuration file, start squid
 
 Once the Squid has started, you should be able to browse the web from
 the LAN. Note that it is the Squid that provides HTTP connection to the
-outside. If the Squid process crashes or is stopped, LAN clients won't
+outside. If the Squid process crashes or is stopped, LAN clients will not
 be able to browse the web.
 
 To see in realtime the requests served by Squid, use the command
@@ -223,7 +223,7 @@ get only safe content.
 
 (Note that Google is [gradually switching to HTTPS for all
 searches](http://support.google.com/websearch/bin/answer.py?hl=en&answer=173733).
-As Squid only handles HTTP traffic, this won't work anymore. However,
+As Squid only handles HTTP traffic, this will not work anymore. However,
 you get the idea.)
 
 [Download the latest version of Squirm

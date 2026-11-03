@@ -8,7 +8,7 @@ using any two devices the configurations have been separated into
 endpoint configurations.
 
 L2 forwarding is best suited for when the proxy is directly connected to
-the router, i.e. presists in the same L2-segment of LAN. Since Layer-2
+the router, i.e. exists in the same L2-segment of LAN. Since Layer-2
 is a level below TCP/IP it can be treated as equivalent to *Policy
 Routing* at the IP layer (the difference is PBR is executes on CPU,
 against true L2 WCCP forwarding, which often executes on control plane

@@ -43,7 +43,7 @@ requests. Particularly when large objects are involved.
     Default value is a bit small. It needs to be somewhere 100MB or
 higher to cope with the IE updates.
 - **[range_offset_limit](http://www.squid-cache.org/Doc/config/range_offset_limit)**.
-    Does the main work of converting range requests into cacheable
+    Does the main work of converting range requests into cachable
     requests. Use the same size limit as
     [maximum_object_size](http://www.squid-cache.org/Doc/config/maximum_object_size)
     to prevent conversion of requests for objects which will not cache
@@ -131,7 +131,7 @@ stored in the squid cache.
 I also recommend a 30 to 60GB
 [cache_dir](http://www.squid-cache.org/Doc/config/cache_dir) size
 allocation, which will let you download tonnes of windows updates and
-other stuff and then you won't really have any major issues with cache
+other stuff and then you will not really have any major issues with cache
 storage or cache allocation or any other issues to do with the cache.
 
 ## Why does it go so slowly through Squid?

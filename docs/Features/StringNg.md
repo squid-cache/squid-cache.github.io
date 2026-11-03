@@ -32,7 +32,7 @@ is the only holder of the MemBlob.
 Memory Manager friendliness can be obtained by tuning the allocation
 strategies for MemBlobs. Current practices are: heuristics are used
 to define how much extra space to allocate. Burden is split between
-SBuf and MemBlob: the former former uses SBuf-local informations
+SBuf and MemBlob: the former former uses SBuf-local information
 (e.g. the length of the SBuf lifetime expressed in number of copy operations),
 while MemBlob handles lower-level optimizations.
 

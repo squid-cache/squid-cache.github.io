@@ -39,7 +39,7 @@ func process_request(line string, re [256]*regexp.Regexp) {
         lparts := strings.Split(strings.TrimRight(line, "\n"), " ")
         if len(lparts[0]) > 0 {
                 if *debug == "yes" {
-                        fmt.Fprintln(os.Stderr, "ERRlog: Proccessing request => \""+strings.TrimRight(line, "\n")+"\"")
+                        fmt.Fprintln(os.Stderr, "ERRlog: Processing request => \""+strings.TrimRight(line, "\n")+"\"")
                 }
         }
                 res := re[0].FindAllStringSubmatch(lparts[1] ,-1)

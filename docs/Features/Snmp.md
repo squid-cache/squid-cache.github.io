@@ -278,7 +278,7 @@ There are a lot of things you can do with SNMP and Squid. It can be
 useful in some extent for a longer term overview of how your proxy is
 doing. It can also be used as a problem solver. For example: how is it
 going with your filedescriptor usage? or how much does your LRU vary
-along a day. Things you can't monitor very well normally, aside from
+along a day. Things you cannot monitor very well normally, aside from
 clicking at the cachemgr frequently. Why not let MRTG do it for you?
 
 ## How can I use SNMP with Squid?

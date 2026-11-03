@@ -10,7 +10,7 @@ cache is one that you have defined with the *cache_peer* configuration
 option. Neighbor refers to either a parent or a sibling.
 
 In Harvest 1.4, neighbor referred to what Squid calls a sibling. That
-is, Harvest had *parents* and *neighbors*. For backward compatability,
+is, Harvest had *parents* and *neighbors*. For backward compatibility,
 the term neighbor is still accepted in some Squid configuration options.
 
 ## Regular Expression

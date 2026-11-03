@@ -177,7 +177,7 @@ Add this command into your *RunCache* or *squid_start* script:
 ## What are the Q1 and Q2 parameters?
 
 In the source code, these are called *magic1* and *magic2*. These
-numbers refer to the number of oustanding requests on a message queue.
+numbers refer to the number of outstanding requests on a message queue.
 They are specified on the *cache_dir* option line, after the L1 and L2
 directories:
 

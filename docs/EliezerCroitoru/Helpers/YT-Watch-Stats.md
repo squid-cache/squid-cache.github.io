@@ -15,7 +15,7 @@ published: false
     Croitoru](/Eliezer%20Croitoru)
     - [NgTech](http://www1.ngtech.co.il/)
 
-  - **Proejct git(with binaries)**: [NgTech git:
+  - **Project git(with binaries)**: [NgTech git:
     youtube-watch-counter](http://gogs.ngtech.co.il/elicro/youtube-watch-counter)
 
 This helper is a part of a suite that analyze requests and schedules a
@@ -303,7 +303,7 @@ func process_request(line string, wg *sync.WaitGroup) {
         lparts := strings.Split(strings.TrimRight(line, "\n"), " ")
         if len(lparts) > 1 && len(lparts[0]) > 0 && len(lparts[1]) > 0 {
                 if *debug {
-                        fmt.Fprintln(os.Stderr, "ERRlog: Proccessing request => \""+strings.TrimRight(line, "\n")+"\"")
+                        fmt.Fprintln(os.Stderr, "ERRlog: Processing request => \""+strings.TrimRight(line, "\n")+"\"")
                 }
                 switch {
                 case re[0].MatchString(lparts[1]):

@@ -114,7 +114,7 @@ matching the clean site with another porn site pattern.
 ## Bank/Trade
 
 A bank account page that is not up-to-date will make the poor users buy
-something he can't really pay for.
+something he cannot really pay for.
 
 Administrators choosing to ignore caching rules on images causes wrong
 captcha picture to be delivered to users. Entering the embedded text in

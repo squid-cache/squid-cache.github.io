@@ -17,7 +17,7 @@ to do this, so don't worry too much!
 
 Squid is a CPU-intensive application (since, after all, it spends all of
 its time processing incoming data and generating data to send.) But
-there's many different types of CPU usage which can identify what you're
+there are many different types of CPU usage which can identify what you're
 running out of.
 
 - CPU spent in user-space: This is the CPU time spent by the Squid
@@ -52,7 +52,7 @@ resource variables and watch usage trends.
 ### What sort of things impact the performance of my Squid ?
 
 Squid will start suffering if you run out of any of your server
-resources. There's a few things that frequently occur:
+resources. There are a few things that frequently occur:
 
 - You just plain run out of CPU. This is where all of your resources
     are low save your kernel and user CPU usage. This may be because
@@ -70,7 +70,7 @@ resources. There's a few things that frequently occur:
     the system. Gigabit network cards are a good example of this. You
     trade off a few ms of latency versus a high interrupt load, but this
     doesn't matter on a server which is constantly handling packets.
-    Take a look at your hardware documentation and see whats available.
+    Take a look at your hardware documentation and see what is available.
 - Linux servers spending a lot of time in IOWAIT can also be because
     you're overloading your disks with IO. See what your disk IO looks
     like in vmstat. You could look at moving to the aufs/diskd
@@ -90,7 +90,7 @@ resources. There's a few things that frequently occur:
 
 The best thing you can do to identify where all your CPU usage is going
 is to use a process or system profiler. Personally, I use oprofile.
-gprof isn't at all accurate with modern CPU clockspeeds. There's other
+gprof isn't at all accurate with modern CPU clockspeeds. There are other
 options - hwpmc under FreeBSD, for example, can do somewhat what
 oprofile can but it currently has trouble getting any samples from Squid
 in userspace. Grr. *perfmon* is also an option if you don't have root
@@ -101,10 +101,10 @@ OProfile under Linux is easy to use and has quite a low overhead.
 Here's how I use oprofile:
 
 - Install oprofile
-- Check whats available - *opcontrol -l*
+- Check what is available - *opcontrol -l*
 - If you see a single line regarding "timer interrupt mode", you're
     stuffed. Go read the OProfile FAQ and see if you can enable ACPI.
-    You won't get any meaningful results out of OProfile in timer
+    You will not get any meaningful results out of OProfile in timer
     interrupt mode.
 - Set it up - *opcontrol --setup -c 4 -p library,kernel --no-vmlinux*
     (if you have a vmlinux image, read the opcontrol manpage for
@@ -118,7 +118,7 @@ Here's how I use oprofile:
 Just remember:
 
 - Make sure you've got the debugging libraries and library symbols
-    installed - under Ubuntu thats 'libc6-dbg'.
+    installed - under Ubuntu that's 'libc6-dbg'.
 - Don't try using it under timer interrupt mode, it'll suffer similar
     accuracy issues to gprof and other timer-based profilers.
 

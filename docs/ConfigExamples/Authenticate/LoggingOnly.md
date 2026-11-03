@@ -21,7 +21,7 @@ hack needs to be used:
 
 
 Remember that http_access order is very important. If you allow access
-without the "dummyAuth" acl, you won't get usernames logged
+without the "dummyAuth" acl, you will not get usernames logged
 
 One of the following authentication helpers is also needed to ensure
 that login details are available for use when that demand is made.

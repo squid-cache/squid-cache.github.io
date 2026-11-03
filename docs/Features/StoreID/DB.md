@@ -736,7 +736,7 @@ Fedora latest mirrors as at 2013-10-15.
 ### Special Example Pattern of main repo data of Fedora
 
 The next pattern is a strict but yet complex pattern of all the main
-repodata that icludes files DB and other important stuff that can be
+repodata that includes files DB and other important stuff that can be
 cached safely.
 
 This pattern is very wide range so use it carefully.

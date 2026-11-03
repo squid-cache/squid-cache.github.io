@@ -163,7 +163,7 @@ Then adjust squidclamav.conf as follows:
     logredir 1
 
     # Enable / disable DNS lookup of client ip address. Default is enabled '1' to
-    # preserve backward compatibility but you must desactivate this feature if you
+    # preserve backward compatibility but you must deactivate this feature if you
     # don't use trustclient with hostname in the regexp or if you don't have a DNS
     # on your network. Disabling it will also speed up squidclamav.
     dnslookup 0
@@ -175,7 +175,7 @@ Then adjust squidclamav.conf as follows:
     safebrowsing 0
 
     #
-    # Here is some defaut regex pattern to have a high speed proxy on system
+    # Here is some default regex pattern to have a high speed proxy on system
     # with low resources.
     #
     # Abort AV scan, but not chained program
@@ -468,7 +468,7 @@ Adjust srv_url_check.conf as follows:
 
 > :information_source:
     Note: Using whitelist is good idea for performance reasons. It is
-    plain text file with 2nd level domain names. All hostnames beyong
+    plain text file with 2nd level domain names. All hostnames beyond
     this domains will be pass. Also setup DNS cache is also great idea
     to improve performance.
 
@@ -671,7 +671,7 @@ Here is also Munin plugins for C-ICAP monitoring (performance-related
 
 > :information_source:
     When upgrading c-icap server, you also need (in most cases) to
-    rebuild squidclamav to aviod possible API incompatibility.
+    rebuild squidclamav to avoid possible API incompatibility.
 
 > :information_source:
     In case of c-icap permanently restarts, increase DebugLevel in

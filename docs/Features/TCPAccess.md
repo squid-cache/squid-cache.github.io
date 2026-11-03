@@ -17,7 +17,7 @@ categories: WantedFeature
 ## Details
 
 This is a proposal for a new tcp_access directive, to be executed
-immediately when a new connection is accepted, before reading any HTPT
+immediately when a new connection is accepted, before reading any HTTP
 request. As no HTTP data is yet available it's limited to src, myport,
 myaddr, time and maxconn type acls, maybe one or two more.
 

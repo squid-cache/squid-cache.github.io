@@ -146,14 +146,14 @@ Visit the NLANR cache [registration
 database](http://www.ircache.net/Cache/Tracker/) to discover other
 caches near you. Keep in mind that just because a cache is registered in
 the database **does not** mean they are willing to be your
-parent/sibling/child. But it can't hurt to ask...
+parent/sibling/child. But it cannot hurt to ask...
 
 ## Troubleshooting
 
 ### My cache registration is not appearing in the Tracker database.
 
 - Your site will not be listed if your cache IP address does not have
-    a DNS PTR record. If we can't map the IP address back to a domain
+    a DNS PTR record. If we cannot map the IP address back to a domain
     name, it will be listed as "Unknown."
 - The registration messages are sent with UDP. We may not be receiving
     your announcement message due to firewalls which block UDP, or

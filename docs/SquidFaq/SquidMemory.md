@@ -164,7 +164,7 @@ has reached.
 by [HenrikNordström](/HenrikNordstrom)
 
 Messages like "FATAL: xcalloc: Unable to allocate 4096 blocks of 1
-bytes!" appear when Squid can't allocate more memory, and on most
+bytes!" appear when Squid cannot allocate more memory, and on most
 operating systems (inclusive BSD) there are only two possible reasons:
 
 - The machine is out of swap
@@ -303,7 +303,7 @@ There are a number of things to try:
     [cache_mem](http://www.squid-cache.org/Doc/config/cache_mem)
     parameter in the config file. This controls how many "hot" objects
     are kept in memory. Reducing this parameter will not significantly
-    affect performance, but you may recieve some warnings in *cache.log*
+    affect performance, but you may receive some warnings in *cache.log*
     if your cache is busy.
 - Turn the
     [memory_pools](http://www.squid-cache.org/Doc/config/memory_pools)
@@ -388,7 +388,7 @@ allocating more to Squid via
 [cache_mem](http://www.squid-cache.org/Doc/config/cache_mem) will not
 help.
 
-## Why can't my Squid process grow beyond a certain size?
+## Why cannot my Squid process grow beyond a certain size?
 
 by [Adrian Chadd](/AdrianChadd)
 
@@ -405,7 +405,7 @@ memory. Here are some things to keep in mind.
     documentation for specific details.
 - Some malloc implementations may not support \> 2gb of memory - eg
     dlmalloc. Don't use dlmalloc unless your platform is very broken
-    (and then realise you won't be able to use \>2gb RAM using it.)
+    (and then realise you will not be able to use \>2gb RAM using it.)
 - Make sure the Squid has been compiled to be a 64 bit binary (with
     modern Unix-like OSes you can use the 'file' command for this); some
     platforms may have a 64 bit kernel but a 32 bit userland, or the

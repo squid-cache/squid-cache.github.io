@@ -40,7 +40,7 @@ connections.
 
 > :x:
     Note that port 80 is still too unsafe to allow generic CONNECT to
-    happen on it. However, Signal client often can't do initial connect
+    happen on it. However, Signal client often cannot do initial connect
     without permission CONNECT to port 80 at
     textsecure-service-ca.whispersystems.org. You are warned.
 

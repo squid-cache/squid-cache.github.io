@@ -198,7 +198,7 @@ loosely sorted so that rules with more hits are higher up:
     -A INPUT -s ! 10.15.128.0/255.255.192.0 -p tcp -m tcp --sport 8080 -j ACCEPT
     # TCP DNS replies. Just in case
     -A INPUT -p tcp -m tcp --sport 53 -j ACCEPT
-    # SSH conection from admin server
+    # SSH connection from admin server
     -A INPUT -s 10.15.138.45 -p tcp -m tcp --dport 22 -j ACCEPT
     # Reject other SSH connections (optional)
     -A INPUT -s ! 10.15.128.0/255.255.192.0 -p tcp -m tcp --dport 22 -j REJECT --reject-with icmp-port-unreachable
@@ -210,10 +210,10 @@ loosely sorted so that rules with more hits are higher up:
     # Accept some traceroute. 3 per second
     -A INPUT -p udp -m udp --dport 33434:33445 -m limit --limit 3/sec --limit-burst 3 -j ACCEPT
     # Log everything else, maybe add explicit rules to block certain traffic.
-    # Unnecesary but useful monitoring
+    # Unnecessary but useful monitoring
     -A INPUT -j LOG
     # Accept forwarded requests.
-    # Totally unnecesary, but allows for basic monitoring.
+    # Totally unnecessary, but allows for basic monitoring.
     -A FORWARD -s 10.15.128.0/255.255.192.0 -d ! 10.15.128.0/255.255.192.0 -p tcp -m tcp --dport 80 -j ACCEPT
     -A FORWARD -s 10.15.128.0/255.255.192.0 -d ! 10.15.128.0/255.255.192.0 -p tcp -m tcp --dport 3128 -j ACCEPT
     -A FORWARD -s 10.15.128.0/255.255.192.0 -d ! 10.15.128.0/255.255.192.0 -p tcp -m tcp --dport 8000 -j ACCEPT

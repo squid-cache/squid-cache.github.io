@@ -66,7 +66,7 @@ credentials are not present. The placement of these tests affects which
 rules around them require authentication.
 
 Similarly [acl](http://www.squid-cache.org/Doc/config/acl) testing
-authentication placement left-to-right on their line determins whether
+authentication placement left-to-right on their line determines whether
 the test bypasses, fails or triggers an auth challenges.
 
 ## Access Controls

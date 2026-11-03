@@ -179,7 +179,7 @@ types of queries directly from the Squid to the web server.
 ## Webwasher configuration
 
 Since the configuration options in the web interface have moved between
-version 5.x and 6.x I won't describe the exact path. If you don't know
+version 5.x and 6.x I will not describe the exact path. If you don't know
 where to find a certain option just use the search box on the top right.
 
 First of all define your *profiles*. You will probably already have an

@@ -43,7 +43,7 @@ some of the reasons for that:
 - The result of a live content feed based or not on argument supplied
     by end user.
 - a CMS(Content Management System) scripts design.
-- bad programing.
+- bad programming.
 - Privacy policies.
 
 ## File De-Duplication/Duplication
@@ -51,7 +51,7 @@ some of the reasons for that:
 - two urls that result the same identical resource ( many to one ).
     Some of the reasons for that:
     - a temporary URL for content access based on credentials
-    - bad programing or fear from caching
+    - bad programming or fear from caching
     - Privacy policies
 
 There is also the problem of content copying around the web. For
@@ -89,7 +89,7 @@ just a longer url. many CMS like Wordpress use question mark to identify
 a specific page/article stored in the system. ("/wordpress/?p=941")
 
 
-but insted exploting this convention the script authur can just add
+but instead exploting this convention the script authur can just add
 Cache specific headers to allow or disallow caching the resource.
 
 ## HTTP and caching

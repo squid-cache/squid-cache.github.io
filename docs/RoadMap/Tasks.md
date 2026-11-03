@@ -73,7 +73,7 @@ done.
     - <http://bugs.squid-cache.org/show_bug.cgi?id=1991>
     - <http://bugs.squid-cache.org/show_bug.cgi?id=2816>
 - Cleanup Squid component macros that enable/disable components:
-    1.  .convention for Makefile.am conditionals is ENABLE_\* (currenty
+    1.  .convention for Makefile.am conditionals is ENABLE_\* (currently
         some have incorrect USE_\* maro names)
 - Helper and Tool Manuals
 1. Write a manual/man(8) page for a helpers/ program that does not

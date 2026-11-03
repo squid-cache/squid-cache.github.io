@@ -78,7 +78,7 @@ authentication may fail.
 
 ## NTP Configuration
 
-Time needs to be syncronised with Windows Domain Controllers for
+Time needs to be synchronised with Windows Domain Controllers for
 authentication, configure the proxy to obtain time from them and test to
 ensure they are working as expected.
 
@@ -165,7 +165,7 @@ use it to create our kerberos computer object in Active directory.
 
     kinit administrator
 
-It should return without errors. You can see if you succesfully obtained
+It should return without errors. You can see if you successfully obtained
 a ticket with:
 
     klist
@@ -227,7 +227,7 @@ users will not be able to authenticate with Squid.
 Add the following to cron so it can automatically updates the computer
 account in active directory when it expires (typically 30 days). Pipe it
 through logger so I can see any errors in syslog if necessary. As stated
-msktutil uses the default `/etc/krb5.conf` file for its paramaters so be
+msktutil uses the default `/etc/krb5.conf` file for its parameters so be
 aware of that if you decide to make any changes in it.
 
     00 4  *   *   *     msktutil --auto-update --verbose --computer-name squidproxy-k | logger -t msktutil
@@ -263,7 +263,7 @@ Now join the proxy to the domain.
 ```
 net ads join -U Administrator
 ```
-Start samba and winbind and test acces to the domain.
+Start samba and winbind and test access to the domain.
 ```
 wbinfo -t
 ```
@@ -324,7 +324,7 @@ chgrp proxy /etc/squid3/ldappass.txt
 ## Install negotiate_wrapper
 
 Firstly we need to install negotiate_wrapper. Install the necessary
-build tools on Debian intall `build-essential linux-headers-$(uname -r)`
+build tools on Debian install `build-essential linux-headers-$(uname -r)`
 Then compile and install.
 
 ```bash

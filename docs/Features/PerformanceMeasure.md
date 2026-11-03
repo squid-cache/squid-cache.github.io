@@ -59,7 +59,7 @@ When processed the dataset should contain:
 - a script listing the reply objects and size. Headers would need to
   be packaged with the benchmark bundle, bodies can be generated on
   setup from this file.
-- a directory heirarchy of request and reply headers.
+- a directory hierarchy of request and reply headers.
 
 ## Scripts
 

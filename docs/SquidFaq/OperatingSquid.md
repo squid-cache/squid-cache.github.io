@@ -108,7 +108,7 @@ It might take a while, depending on who busy your cache is
 1. You must shutdown Squid:` squid -k shutdown`
 1. Once Squid exits, you may immediately start it up again.
 
-Since you deleted the old **cache_dir** from squid.conf, Squid won't
+Since you deleted the old **cache_dir** from squid.conf, Squid will not
 try to access that directory. If you use the RunCache script, Squid
 should start up again automatically.
 
@@ -262,7 +262,7 @@ object will not have changed, so the result is TCP_IMS_HIT. Squid will
 only return TCP_IMS_MISS if some other client causes a newer version
 of the object to be pulled into the cache.
 
-## Why do I need to run Squid as root? why can't I just use cache_effective_user root?
+## Why do I need to run Squid as root? why cannot I just use cache_effective_user root?
 
   - *by Antony Stone and Dave J Woolley*
 

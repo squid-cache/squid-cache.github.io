@@ -16,7 +16,7 @@ some sort of "pause" message back to squid to signal that that child is
 temporarily unavailable for new queries, and then a "ready" message when
 it's available again. (yes, this is kinda obscure - the issue here is a
 single-threaded rewriter helper app that occasionally has to re-read its
-rules database, and can't answer queries while it's doing so)
+rules database, and cannot answer queries while it's doing so)
 
 It is not clear whether expanding redirector API is the right direction.
 It could be argued that folks that need non-basic adaptors should use

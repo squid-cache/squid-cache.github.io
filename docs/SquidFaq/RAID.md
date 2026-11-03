@@ -83,7 +83,7 @@ large.
 
 As squid mostly deals with small I/O operations in the KB range randomly
 spread out over a large number of files RAID0 do not provide any
-benefits for Squid and only the drawbacks of loosing the whole cache
+benefits for Squid and only the drawbacks of losing the whole cache
 should a single drive fail.
 
 The choice of

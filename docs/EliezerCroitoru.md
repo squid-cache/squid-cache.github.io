@@ -61,7 +61,7 @@ I have a complex lab setup with every major OS:
 
   - Windows Desktop+Server(2k12,2k16,2k19,7,8.1,10)
 
-  - Linux Desktop+Server+Router(CentOS,Ubunut,Debian,Alpine,Arch..)
+  - Linux Desktop+Server+Router(CentOS,Ubuntu,Debian,Alpine,Arch..)
 
   - BSD(Free.Open.Nano,BSDRP)
 
