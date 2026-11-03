@@ -154,40 +154,129 @@ extern void ReportUsage(ostream &); // global function CamelCased
 ## Class declaration layout
 
 ```c++
-class Foo : public Bar
+/// A non-normative illustration of selected layout rules.
+/// While usually required, Doxygen member documentation is not shown here.
+class Foo
 {
-  CBDATA_* or MEMPROXY_* special macro.
-
 public:
-  all public typedef
+    using A = Bar::B;
 
-  all constructors and operators
-  Foo destructor (if any)
+    Foo(const char *, size_t);
+    Foo(Foo &&) = delete;
 
-  /* Bar API */
-  all methods overloaded from FooBar parent class
+    void print(std::ostream &) const;
 
-  all public static methods
-  all public member methods
-
-  all public static variables
-  all public member variables
+    const InstanceId id;
 
 protected:
-  all protected static methods
-  all protected member methods
+    uint64_t currentMemoryUsage() const;
 
-  all protected static variables
-  all protected member variables
+    uint64_t maximumMemoryUsage() const;
 
 private:
-  all private static methods
-  all private member methods
+    friend class Bar;
 
-  all private static variables
-  all private member variables
+    static Storage &Cache();
+
+    SBuf buffer;
 };
 ```
+
+### Class section order
+
+Class "sections" order (by member access specifiers): public, protected,
+private. Each section, if present, declared once. Omit sections that would be
+empty.
+
+Rationale: List most commonly reused, most important things fist. In this
+context, those are public class interfaces. The private section is the least
+important implementation detail as far as the notion of a C++ class is
+concerned.
+
+### Class member order
+
+Within each section, the recommended member order is defined below.
+
+* friendship declarations
+* type and aliases declarations; nested classes/structs/unions
+* static member functions
+* constructors and assignment operators
+* destructors (just one until C++20)
+* other non-static member functions except overrides
+* overrides (see "Overridden virtual methods" subsection below)
+* static data members (most are banned in new code by the "No new globals" rule)
+* non-static data members
+
+Rationale: Group similar things together to facilitate searching and highlight
+differences. List things most likely to be reused (by other class members) and
+most important/influential things higher.
+
+### Overridden virtual methods
+
+Overrides (including `final` declarations) are a special case where we do not
+expect member descriptions but do expect a reference to the corresponding API
+as sketched below. Overrides are grouped by the (direct or indirect) class
+parent that _introduced_ the corresponding API method(s) (i.e. the parent
+class that declared the virtual method but could _not_ use an override keyword
+in that declaration). That class should describe the virtual method it
+introduced.
+
+```C++
+/// Overrides example.
+class Derived: public Base
+{
+public:
+    ~Derived() override;
+
+    /* Foo::Grandfather API */
+    void sync() override;
+    void close() override;
+
+    /* Base API */
+    void print(std::ostream &) const override;
+
+protected:
+    /* Foo::Grandfather API */
+    void maintain() override;
+    void sync() override;
+};
+```
+
+Rationale: Provide API context and facilitate searching for member
+descriptions without chasing overrides through parents.
+
+Destructors should be declared with `override` specifier, but are _not_
+grouped with other overrides.
+
+### CBDATA- and MEMPROXY-related declarations
+
+Squid has some legacy code that forces CBDATA- and MEMPROXY-related
+declarations to be hoisted to the very top of the class, into the "unnamed"
+section. Such hoisting is an exception to the above rules. Eventually, we will
+stop hoisting, but we should continue doing that for consistency sake until we
+get rid of the offending macros.
+
+```C++
+class Uri
+{
+    MEMPROXY_CLASS(Uri);
+
+public:
+    Uri();
+};
+```
+
+### Caveats
+
+The above rules are not meant to force authors to include any access
+specifiers or members that the code does not actually need (except the
+"private" specifier should be mentioned explicitly in class declarations that
+have only private members -- do not rely on the class default access specifier
+being "private").
+
+Like any style rules, these rules are not comprehensive. If your use case is
+not explicitly covered, then look around for similar Squid code and try to be
+consistent and/or reasonable.
 
 ## Member naming
 
